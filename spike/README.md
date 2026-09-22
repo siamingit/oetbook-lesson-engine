@@ -44,6 +44,10 @@ Lesson media lives outside the repository and is never committed:
     scribe_v2_response.json
     scribe_v2_response.headers.txt
     transcript.txt
+    slides/
+      slide_scores.json         per-sample frame-to-page scores
+      slide_timeline.json       intervals: which page is on screen when
+      checks/index.html         side-by-side visual review of every interval
 ```
 
 ## Order to run
@@ -57,6 +61,16 @@ python spike/scripts/transcribe.py        <lesson_dir> [--dry-run]
 python spike/scripts/make_transcript.py   <lesson_dir>/analysis [--offset SECONDS]
 ```
 
+The slide timeline is independent of the transcript and runs in three steps,
+the first two of which decode the whole video:
+
+```
+.venv/Scripts/python spike/scripts/build_slide_timeline.py <lesson_dir>
+.venv/Scripts/python spike/scripts/build_slide_timeline.py <lesson_dir> --stage2
+.venv/Scripts/python spike/scripts/build_slide_timeline.py <lesson_dir> \
+    --score-max 0.035 --margin-min 0.04 --margin-min-stage2 0.05
+```
+
 `.venv` in the first column marks a script that needs the virtual environment.
 
 | Script | Reads | Writes |
@@ -66,6 +80,7 @@ python spike/scripts/make_transcript.py   <lesson_dir>/analysis [--offset SECOND
 | `build_keyterms.py` | `analysis/keyterms_curated.txt`, `source/slides.pdf` | `analysis/keyterms.json` — verified, provenance-tagged, sent to the API |
 | `transcribe.py` | `analysis/audio.mp3`, `analysis/keyterms.json`, `.env` | `analysis/scribe_v2_response.json` (raw, unmodified), `analysis/scribe_v2_response.headers.txt` |
 | `make_transcript.py` | `analysis/scribe_v2_response.json` | `analysis/transcript.txt` — readable, timestamped |
+| `build_slide_timeline.py` **.venv** | `source/video.mp4`, `source/slides.pdf` | `analysis/slides/slide_scores.json`, `slide_timeline.json`, `checks/` |
 
 ### Options
 
@@ -138,6 +153,28 @@ A 200 response carries no `request-id`; the handle for a run is
 Measured rates are in `docs/01-METHODOLOGY.md` §14. Credit burn per minute
 differs by account tier by roughly 6.5×, so never project a paid run's cost
 from a free-tier one.
+
+## Slide timeline: why two stages
+
+Stage 1 compares whole frames at 160×90 against every page. That fails on this
+deck, because pages built from the same template differ only in their content —
+pages 13 and 17 are 0.0069 apart on a scale whose median page-pair distance is
+0.5714. Stage 1 put 151 samples on page 17 that belong to page 13, preferring
+the wrong page by a margin of 0.003.
+
+Stage 2 fixes that. When a frame's two best candidate pages share a template, it
+diffs those two page renders at full resolution, and re-scores the frame **only
+where they actually differ** — 3.05% of the frame for 13 vs 17. Margins go from
+0.003 to over 1.1.
+
+The trigger is per candidate **pair**, never a transitive cluster: page-pair
+distances form a continuum, so union-find at any useful threshold chains most of
+the deck into one group whose discriminative mask is the whole frame, which is
+stage 1 again.
+
+Slide order is never used to decide a page. It is reported as a consistency
+check (`page_order_regressions`), so it stays available as evidence rather than
+becoming a self-fulfilling assumption.
 
 ## Key handling
 
