@@ -48,6 +48,9 @@ Lesson media lives outside the repository and is never committed:
       slide_scores.json         per-sample frame-to-page scores
       slide_timeline.json       intervals: which page is on screen when
       checks/index.html         side-by-side visual review of every interval
+    annotations/
+      annotation_events.json    ink events, erasures, cursor dwells, carry-over
+      checks/index.html         per-interval annotation layer and event list
 ```
 
 ## Order to run
@@ -81,6 +84,7 @@ the first two of which decode the whole video:
 | `transcribe.py` | `analysis/audio.mp3`, `analysis/keyterms.json`, `.env` | `analysis/scribe_v2_response.json` (raw, unmodified), `analysis/scribe_v2_response.headers.txt` |
 | `make_transcript.py` | `analysis/scribe_v2_response.json` | `analysis/transcript.txt` — readable, timestamped |
 | `build_slide_timeline.py` **.venv** | `source/video.mp4`, `source/slides.pdf` | `analysis/slides/slide_scores.json`, `slide_timeline.json`, `checks/` |
+| `extract_annotations.py` **.venv** | `source/video.mp4`, `source/slides.pdf`, `analysis/slides/slide_timeline.json` | `analysis/annotations/annotation_events.json`, `checks/` |
 
 ### Options
 
@@ -175,6 +179,36 @@ stage 1 again.
 Slide order is never used to decide a page. It is reported as a consistency
 check (`page_order_regressions`), so it stays available as evidence rather than
 becoming a self-fulfilling assumption.
+
+## Annotation extraction
+
+```
+.venv/Scripts/python spike/scripts/extract_annotations.py <lesson_dir> [--measure-baseline]
+```
+
+Baseline is the per-pixel median of an interval's first frames, chosen by
+measurement (`--measure-baseline` reprints the evidence): against a probe frame
+the deck render leaves 31,419 px of colour and compression residual and the
+first frame leaves 84,846 px, where the median leaves 1,649.
+
+Three things this recording forced, all of which contradict a plain reading of
+methodology §5:
+
+- **Ink does not only accumulate.** Most annotations are erased before the slide
+  changes, so removals are events, emitted once per erased annotation.
+- **Ink outlives its slide.** The tool draws on the screen, not the slide, so ink
+  survives a slide change until it is erased. Such regions are attributed to the
+  previous interval and never resolved against the new slide's words.
+- **Frames absorbed from another page must be skipped.** The slide timeline folds
+  sub-5 s runs into their neighbour; those frames show a different slide, and
+  building a baseline from them turns that slide's artwork into annotation.
+
+Cursors are separated from ink by persistence first — a moving cursor never lands
+twice in the same place, and a *held* cursor keeps a constant footprint and
+vanishes without an erasure, where ink grows and only leaves by being erased.
+Shape matching runs last and only as cleanup, against templates harvested from
+blobs that already moved every sample rather than hand-specified, because §5
+records several cursor shapes in this material.
 
 ## Key handling
 
