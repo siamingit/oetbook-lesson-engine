@@ -19,6 +19,7 @@ word. No coordinates and no timings — methodology §6: the timeline is derived
 TTS word timings later, never authored here.
 """
 
+import hashlib
 import json
 import re
 import sys
@@ -135,7 +136,8 @@ PROVENANCE, on every utterance:
   adapted        — same teaching point, explained differently because the original \
 explanation does not survive the change of language
   authored       — you supplied this; it was not in the source
-Prefer source-derived. Connective lines that only carry the student from one point \
+  maintainer     — content supplied or approved by the maintainer during review
+Prefer source-derived. Use `maintainer` only where the brief you were given supplies the content itself, rather than asking you to find a way to say it. Connective lines that only carry the student from one point \
 to the next are `authored` — say so in the note.
 
 `note` is one line for the reviewer, saying what you changed and why, whenever \
@@ -215,7 +217,8 @@ SCHEMA = {
                                 "text_with_cues": {"type": "string"},
                                 "cues": {"type": "array", "items": CUE_SCHEMA},
                                 "provenance": {"enum": ["source-derived", "corrected",
-                                                        "adapted", "authored"]},
+                                                        "adapted", "authored",
+                                                        "maintainer"]},
                                 "note": {"type": "string"},
                             },
                         },
@@ -500,6 +503,7 @@ STYLE = """<style>
  .qsaid{color:#9aa0a6;font-size:13.5px;margin-top:5px;font-style:italic}
  .badge.critical{background:#3d1f1f;color:#ff6b6b} .badge.major{background:#3d2d1f;color:#e2a87e}
  .badge.minor{background:#262626;color:#9aa0a6}
+ .badge.qa{background:#1f3048;color:#7ec2e2} .badge.maint{background:#2e1f3d;color:#c7a8e2}
 </style>"""
 
 
@@ -597,7 +601,8 @@ def render(lesson: Path, page: int) -> None:
     src = gather(lesson, page)
     know = src["understanding"]
     checked = resolve(data, src["slide_text"])
-    complaints = checked["problems"] + audit(data, know)
+    complaints = (checked["problems"] + audit(data, know)
+                  + verify_applied(lesson, data))
 
     iv = src["interval"]
     usage = raw.get("usage") or {}
@@ -669,6 +674,14 @@ def render(lesson: Path, page: int) -> None:
                                  + esc(r["provenance"]) + "</span>"),
         ("in", lambda r: esc(", ".join(r["utterance_ids"]))),
     ], 4)
+    changes = table(data.get("changes", []), [
+        ("what changed", lambda c: esc(c["what"])),
+        ("source", lambda c: '<span class="badge ' +
+                             ("qa" if c["source"].startswith("qa") else "maint") +
+                             '">' + esc(c["source"]) + "</span>"),
+        ("beat", lambda c: esc(c.get("beat", ""))),
+        ("in", lambda c: esc(", ".join(c["utterance_ids"]))),
+    ], 4)
     unresolved = table(data["unresolved"], [
         ("topic", lambda u: esc(u["topic"])),
         ("what is missing", lambda u: esc(u["what_is_missing"])),
@@ -707,6 +720,10 @@ def render(lesson: Path, page: int) -> None:
             + "<h2>Replaced explanations</h2><p class=\"meta\">These could not be "
               "translated. Same teaching point, rebuilt for an English audience.</p>"
             + replacements
+            + "<h2>Changes applied</h2><p class=\"meta\">Every edit since the "
+              "first draft, with what asked for it. Utterance ids are stable: a "
+              "rewritten utterance gets a new id and the old one is retired, never "
+              "reused.</p>" + changes
             + "<h2>Still unresolved</h2>" + unresolved
             + qa_html(lesson, {u["id"]: u["text"] for u in utterances}))
 
@@ -729,12 +746,24 @@ def render(lesson: Path, page: int) -> None:
 REBEAT_SCHEMA = {
     "type": "object",
     "additionalProperties": False,
-    "required": ["beat", "corrections", "replacements", "unresolved_remove",
-                 "unresolved_add"],
+    "required": ["beat", "corrections", "replacements", "changes",
+                 "unresolved_remove", "unresolved_add"],
     "properties": {
         "beat": SCHEMA["properties"]["beats"]["items"],
         "corrections": SCHEMA["properties"]["corrections"],
         "replacements": SCHEMA["properties"]["replacements"],
+        "changes": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": False,
+                "required": ["what", "source", "utterance_ids"],
+                "properties": {"what": {"type": "string"},
+                               "source": {"type": "string"},
+                               "utterance_ids": {"type": "array",
+                                                 "items": {"type": "string"}}},
+            },
+        },
         "unresolved_remove": {"type": "array", "items": {"type": "string"}},
         "unresolved_add": SCHEMA["properties"]["unresolved"],
     },
@@ -755,32 +784,99 @@ collides with a beat you are not touching.\
 """
 
 
-def renumber(script: dict, fresh_index: int, fresh: set) -> None:
-    """Utterance ids are the join key for corrections and replacements.
+def log_applied(out: Path, beat_id: str, source: str, beat: dict) -> None:
+    """Append what this splice put into the script, outside the file it writes.
 
-    A regenerated beat numbers its utterances without seeing the beats it does not
-    touch, so ids can collide. Renumber everything in reading order and remap the
-    references. Records written by the regeneration resolve against the new beat,
-    every other record against the beats it already referred to, so a duplicated
-    old id is never ambiguous.
+    The ledger exists because a lost splice takes its own change log with it: both
+    lived in script.json. Kept separately, it can be compared against the script
+    afterwards, and a silently dropped edit shows up as a failed check.
     """
-    to_fresh: dict[str, str] = {}
-    to_old: dict[str, str] = {}
-    n = 0
-    for i, beat in enumerate(script["beats"]):
-        for utt in beat["utterances"]:
-            n += 1
-            (to_fresh if i == fresh_index else to_old)[utt["id"]] = f"u{n:02d}"
-            utt["id"] = f"u{n:02d}"
-    for group in ("corrections", "replacements"):
-        for record in script[group]:
-            table = to_fresh if id(record) in fresh else to_old
-            record["utterance_ids"] = [table.get(x, x)
-                                       for x in record["utterance_ids"]]
+    entry = {"beat": beat_id, "source": source,
+             "utterances": {u["id"]: hashlib.sha256(
+                 u["text_with_cues"].encode("utf-8")).hexdigest()[:12]
+                 for u in beat["utterances"]}}
+    with (out / "applied.jsonl").open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps(entry, ensure_ascii=False) + "\n")
 
 
-def regenerate(lesson: Path, page: int, beat_id: str, brief: str) -> None:
-    """Rewrite one beat in place. Every other beat is untouched."""
+def verify_applied(lesson: Path, data: dict) -> list[str]:
+    """Every edit the ledger records must still be in the script, unchanged."""
+    path = lesson / "analysis" / "script" / "applied.jsonl"
+    if not path.exists():
+        return []
+    entries = [json.loads(line) for line in
+               path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    latest: dict[str, dict] = {}
+    for entry in entries:
+        latest[entry["beat"]] = entry          # a later splice supersedes an earlier
+
+    present = {u["id"]: hashlib.sha256(
+        u["text_with_cues"].encode("utf-8")).hexdigest()[:12]
+        for b in data["beats"] for u in b["utterances"]}
+    out = []
+    for beat_id, entry in sorted(latest.items()):
+        missing = [i for i in entry["utterances"] if i not in present]
+        changed = [i for i, d in entry["utterances"].items()
+                   if i in present and present[i] != d]
+        if missing:
+            out.append(f"EDIT LOST: {beat_id} ({entry['source']}) was applied but "
+                       f"{', '.join(missing)} is not in the script")
+        if changed:
+            out.append(f"EDIT ALTERED: {beat_id} {', '.join(changed)} differs from "
+                       "what was applied")
+    return out
+
+
+def issue_ids(script: dict, index: int, new_beat: dict) -> dict[str, str]:
+    """Stable ids. Existing utterances keep theirs; a regenerated beat gets fresh
+    ones; the ids it replaces are retired and never reused.
+
+    Ids are the join key for corrections, replacements and changes, and they leave
+    this file — a reviewer quotes them, and a later stage will carry them onto TTS
+    segments. Renumbering to close a gap would silently repoint every reference
+    made before the edit, so gaps are correct and reuse is not.
+    """
+    registry = script.setdefault("id_registry", {"high_water": 0, "retired": []})
+    registry["high_water"] = max(
+        registry["high_water"],
+        max((int(u["id"][1:]) for b in script["beats"] for u in b["utterances"]
+             if u["id"][1:].isdigit()), default=0))
+
+    retired = [u["id"] for u in script["beats"][index]["utterances"]]
+    mapping: dict[str, str] = {}
+    for utt in new_beat["utterances"]:
+        registry["high_water"] += 1
+        mapping[utt["id"]] = f"u{registry['high_water']:02d}"
+        utt["id"] = mapping[utt["id"]]
+    registry["retired"] = sorted(set(registry["retired"]) | set(retired))
+    return mapping
+
+
+def repoint(script: dict, mapping: dict[str, str], retired: set,
+            fresh: set) -> None:
+    """Move fresh records onto the issued ids; drop retired ids from older ones."""
+    for group in ("corrections", "replacements", "changes"):
+        kept = []
+        for record in script.get(group, []):
+            if id(record) in fresh:
+                record["utterance_ids"] = [mapping.get(x, x)
+                                           for x in record["utterance_ids"]]
+                kept.append(record)
+                continue
+            remaining = [x for x in record["utterance_ids"] if x not in retired]
+            if remaining:
+                record["utterance_ids"] = remaining
+                kept.append(record)
+        script[group] = kept
+
+
+def regenerate(lesson: Path, page: int, beat_id: str, brief: str,
+               source: str, replay: bool = False) -> None:
+    """Rewrite one beat in place. Every other beat is untouched.
+
+    `replay` re-applies the saved response for this beat instead of calling the
+    API, so a splice can be redone without paying for it twice.
+    """
     out = lesson / "analysis" / "script"
     script = json.loads((out / "script.json").read_text(encoding="utf-8"))
     src = gather(lesson, page)
@@ -796,9 +892,13 @@ def regenerate(lesson: Path, page: int, beat_id: str, brief: str) -> None:
     def clean(beat):
         if not beat:
             return None
+        # `text` is derived at render time, so a beat spliced since the last
+        # render only has the authored form. Derive it here rather than assume.
         return {"id": beat["id"], "learning_objective": beat["learning_objective"],
-                "utterances": [{"id": u["id"], "text": u["text"]}
-                               for u in beat["utterances"]]}
+                "utterances": [
+                    {"id": u["id"],
+                     "text": u.get("text") or split_cues(u["text_with_cues"])[0]}
+                    for u in beat["utterances"]]}
 
     content = [
         {"type": "text", "text":
@@ -829,34 +929,46 @@ def regenerate(lesson: Path, page: int, beat_id: str, brief: str) -> None:
     for block in content:
         block["text"] = strip_bidi(block["text"])
 
-    import anthropic
-    client = anthropic.Anthropic(api_key=api_key())
-    with client.messages.stream(
-        model=MODEL, max_tokens=MAX_TOKENS,
-        system=SYSTEM,
-        thinking={"type": "adaptive"},
-        output_config={"effort": "high",
-                       "format": {"type": "json_schema", "schema": REBEAT_SCHEMA}},
-        messages=[{"role": "user", "content": content}],
-    ) as stream:
-        response = stream.get_final_message()
-    (out / f"raw_response_{beat_id}.json").write_text(response.to_json(),
-                                                      encoding="utf-8")
-    print("stop_reason:", response.stop_reason)
-    print("usage:", response.usage)
+    if not replay:
+        import anthropic
+        client = anthropic.Anthropic(api_key=api_key())
+        with client.messages.stream(
+            model=MODEL, max_tokens=MAX_TOKENS,
+            system=SYSTEM,
+            thinking={"type": "adaptive"},
+            output_config={"effort": "high",
+                           "format": {"type": "json_schema",
+                                      "schema": REBEAT_SCHEMA}},
+            messages=[{"role": "user", "content": content}],
+        ) as stream:
+            response = stream.get_final_message()
+        (out / f"raw_response_{beat_id}.json").write_text(response.to_json(),
+                                                          encoding="utf-8")
+        print("stop_reason:", response.stop_reason)
+        print("usage:", response.usage)
 
     saved = json.loads((out / f"raw_response_{beat_id}.json").read_text(
         encoding="utf-8"))
     new = json.loads([b["text"] for b in saved["content"]
                       if b["type"] == "text"][-1])
     old_ids = {u["id"] for u in target["utterances"]}
+    mapping = issue_ids(script, index, new["beat"])
     script["beats"][index] = new["beat"]
-    for group, key in (("corrections", "utterance_ids"),
-                       ("replacements", "utterance_ids")):
-        script[group] = [r for r in script[group]
-                         if not set(r[key]) & old_ids] + new[group]
-    renumber(script, index,
-             {id(r) for g in ("corrections", "replacements") for r in new[g]})
+    allowed = {s.strip() for s in source.split(";") if s.strip()}
+    stamped = []
+    for change in new["changes"]:
+        if change.get("source") not in allowed:
+            change["source"] = source          # unrecognised: attribute to the brief
+        change["beat"] = beat_id
+        stamped.append(change)
+    script.setdefault("changes", [])
+    fresh = {id(r) for r in new["corrections"] + new["replacements"] + stamped}
+    for group, incoming in (("corrections", new["corrections"]),
+                            ("replacements", new["replacements"]),
+                            ("changes", stamped)):
+        script[group] = script.get(group, []) + incoming
+    repoint(script, mapping, old_ids, fresh)
+    log_applied(out, beat_id, source, new["beat"])
     drop = set(new["unresolved_remove"])
     script["unresolved"] = [u for u in script["unresolved"]
                             if u["topic"] not in drop] + new["unresolved_add"]
@@ -866,13 +978,22 @@ def regenerate(lesson: Path, page: int, beat_id: str, brief: str) -> None:
     for block in raw["content"]:
         if block["type"] == "text":
             block["text"] = json.dumps(
-                {k: script[k] for k in ("beats", "corrections", "replacements",
-                                        "unresolved")}, ensure_ascii=False)
-    raw["usage"]["input_tokens"] += response.usage.input_tokens
-    raw["usage"]["output_tokens"] += response.usage.output_tokens
+                {k: script[k] for k in
+                 ("beats", "corrections", "replacements", "unresolved",
+                  "changes", "id_registry")}, ensure_ascii=False)
+    if not replay:
+        raw["usage"]["input_tokens"] += response.usage.input_tokens
+        raw["usage"]["output_tokens"] += response.usage.output_tokens
     (out / "raw_response.json").write_text(json.dumps(raw, ensure_ascii=False),
                                            encoding="utf-8")
-    print(f"{beat_id} replaced; {len(new['beat']['utterances'])} utterances")
+    # script.json is the file the next regeneration reads. Writing only
+    # raw_response.json here left each call splicing onto a stale script, so a
+    # run of regenerations kept only the last one.
+    script.pop("meta", None)
+    (out / "script.json").write_text(
+        json.dumps(script, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"{beat_id} replaced; {len(new['beat']['utterances'])} utterances"
+          + (" (replayed, no API call)" if replay else ""))
 
 def main() -> None:
     lesson = Path(sys.argv[1])
@@ -883,7 +1004,8 @@ def main() -> None:
         return
     if "--beat" in sys.argv:
         regenerate(lesson, page, opt("--beat"),
-                   Path(opt("--brief")).read_text(encoding="utf-8"))
+                   Path(opt("--brief")).read_text(encoding="utf-8"),
+                   opt("--source", "maintainer"), "--replay" in sys.argv)
         render(lesson, page)
         return
 
