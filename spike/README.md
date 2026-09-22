@@ -87,6 +87,7 @@ the first two of which decode the whole video:
 | `extract_annotations.py` **.venv** | `source/video.mp4`, `source/slides.pdf`, `analysis/slides/slide_timeline.json` | `analysis/annotations/annotation_events.json`, `checks/` |
 | `extract_understanding.py` **.venv** | `analysis/scribe_v2_response.json`, `analysis/slides/slide_timeline.json`, `analysis/annotations/annotation_events.json`, `source/slides.pdf`, `.env` | `analysis/understanding/raw_response.json`, `understanding.json`, `transcript_words.json`, `checks/` |
 | `write_script.py` **.venv** | `analysis/understanding/understanding.json`, `analysis/slides/slide_timeline.json`, `source/slides.pdf`, `.env` | `analysis/script/raw_response.json`, `script.json`, `checks/` |
+| `qa_script.py` **.venv** | `analysis/script/script.json`, `analysis/understanding/understanding.json` (exercise sentences only), `source/slides.pdf`, `.env` | `analysis/script/qa/qa_gemini.json`, `qa/raw_response.json` |
 
 ### Options
 
@@ -97,10 +98,20 @@ the first two of which decode the whole video:
   writes it elsewhere, so a probe does not overwrite a full run.
 - `make_transcript.py --offset SECONDS` shifts timestamps so an excerpt reads
   in whole-lesson time.
-- `extract_understanding.py` and `write_script.py` both take `--page N`, and
-  neither calls the API without `--call`. Without it they assemble the request
-  and print it, which costs nothing — always read the prompt before paying for
-  it. `--render` rebuilds the review page from the saved response, also free.
+- `extract_understanding.py`, `write_script.py` and `qa_script.py` all take
+  `--page N`, and none calls the API without `--call`. Without it they assemble
+  the request and print it, which costs nothing — always read the prompt before
+  paying for it. `write_script.py --render` rebuilds the review page from the
+  saved response, also free.
+- `write_script.py --beat ID --brief FILE` rewrites one beat and leaves the rest
+  untouched. Utterance ids are renumbered afterwards, because a regenerated beat
+  numbers its utterances without seeing the beats it was not given and will
+  otherwise collide with them.
+- `qa_script.py` is deliberately blind: it is given the English script, the
+  slide, and the deliberately wrong exercise sentences, and nothing else. It is
+  not told what the source taught, because a reviewer that knows a line came
+  from the source will defend it instead of judging it. It proposes findings and
+  never writes to `script.json`.
 
 Scribe settings are constants in `transcribe.py`: `model_id=scribe_v2`, batch
 (not realtime), word-level timestamps, diarization off, and **no

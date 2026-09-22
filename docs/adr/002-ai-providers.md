@@ -33,7 +33,7 @@ here is a one-way door: all four are API calls behind small adapters.
 |---|---|---|
 | Speech to text | **ElevenLabs Scribe v2** | In use |
 | Understanding, English writing | **Claude Opus 5** (`claude-opus-5`) | Being tested now |
-| Video understanding | **Gemini 3.1 Pro** | Not used yet |
+| Video understanding | **Gemini 3.1 Pro** (`gemini-3.1-pro-preview`) | Not used yet |
 | Text to speech | **Cartesia Sonic 3.6** | Not used yet |
 
 Basis: independent published benchmarks and the maintainer's judgement. The
@@ -50,6 +50,10 @@ Each provider is reached through its own small adapter in `spike/scripts/`, so a
 replacement is a contained change. ElevenLabs is called over HTTP with `curl`;
 Claude will use the official `anthropic` Python SDK, which is a new dependency
 and needs its own approval before it is added to `requirements.txt`.
+
+The only callable id for Gemini 3.1 Pro is `gemini-3.1-pro-preview`. There is no
+non-preview id, so the model this project calls is a preview release and may
+change or be withdrawn without notice.
 
 Four providers means four sets of credentials in `.env`, four billing
 relationships, and four independent points of failure or deprecation. Costs are

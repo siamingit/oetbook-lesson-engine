@@ -457,6 +457,9 @@ def audit(data: dict, know: dict) -> list[str]:
     return out
 
 
+CHECKS = ["grammar-rule", "example-or-typed-text", "misleading-for-oet",
+          "spoken-vs-typed", "british-english", "product-fit"]
+
 CUE_COLOUR = {"underline": "#7ee2a8", "highlight": "#e2cd7e", "circle": "#7ec2e2",
               "strike": "#e28c7e", "point": "#c7a8e2", "type-text": "#e2a87e"}
 
@@ -490,6 +493,13 @@ STYLE = """<style>
  th{color:#9aa0a6;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
  .warn{background:#3d1f1f;border:1px solid #6b3030;border-radius:5px;padding:10px 14px;margin-bottom:14px}
  .ok{color:#7ee2a8}
+ .qa{border-left:3px solid #444;padding:10px 0 10px 12px;margin-bottom:12px}
+ .qa.critical{border-left-color:#ff6b6b} .qa.major{border-left-color:#e2a87e}
+ .qa.minor{border-left-color:#9aa0a6}
+ .qa p{margin:6px 0 0} .qa .fix{color:#cfd3d6}
+ .qsaid{color:#9aa0a6;font-size:13.5px;margin-top:5px;font-style:italic}
+ .badge.critical{background:#3d1f1f;color:#ff6b6b} .badge.major{background:#3d2d1f;color:#e2a87e}
+ .badge.minor{background:#262626;color:#9aa0a6}
 </style>"""
 
 
@@ -525,6 +535,57 @@ def utterance_html(utt: dict) -> str:
             + '<span class="say">' + " ".join(parts) + "</span>"
             + '<span class="badge ' + esc(utt["provenance"]) + '">'
             + esc(utt["provenance"]) + "</span>" + targets + note + "</div>")
+
+
+SEVERITY_ORDER = {"critical": 0, "major": 1, "minor": 2}
+
+
+def qa_html(lesson: Path, utterances: dict) -> str:
+    """Independent QA findings, if the reviewer has run. It proposes; nothing is applied."""
+    path = lesson / "analysis" / "script" / "qa" / "qa_gemini.json"
+    if not path.exists():
+        return ""
+    qa = json.loads(path.read_text(encoding="utf-8"))
+    meta = qa.get("meta", {})
+    findings = sorted(qa["findings"],
+                      key=lambda f: (SEVERITY_ORDER[f["severity"]],
+                                     f["utterance_id"]))
+
+    rows = []
+    for f in findings:
+        said = utterances.get(f["utterance_id"])
+        quote = ('<div class="qsaid">' + esc(said) + "</div>") if said else ""
+        rows.append(
+            '<div class="qa ' + esc(f["severity"]) + '">'
+            + '<span class="badge ' + esc(f["severity"]) + '">'
+            + esc(f["severity"]) + "</span>"
+            + '<span class="uid">' + esc(f["utterance_id"]) + "</span>"
+            + '<span class="t">' + esc(f["check"]) + " &middot; "
+            + esc(f["confidence"]) + " confidence</span>"
+            + quote
+            + "<p>" + esc(f["issue"]) + "</p>"
+            + '<p class="fix"><b>Proposed fix.</b> ' + esc(f["proposed_fix"])
+            + "</p></div>")
+
+    seen = {f["check"] for f in findings}
+    clean = [c for c in CHECKS if c not in seen]
+    counts: dict[str, int] = {}
+    for f in findings:
+        counts[f["severity"]] = counts.get(f["severity"], 0) + 1
+    tally = ", ".join(f"{n} {s}" for s, n in
+                      sorted(counts.items(), key=lambda x: SEVERITY_ORDER[x[0]]))
+
+    return ("<h2>Independent QA</h2>"
+            + '<p class="meta">' + esc(meta.get("model", "")) + ", reviewing the "
+            + "English alone &mdash; no Persian transcript, no understanding "
+            + "beats, no provenance notes, so it cannot be steered by what the "
+            + "source taught. It proposes; nothing here is applied.<br>"
+            + (tally or "no findings") + " over "
+            + str(meta.get("reviewed_utterances", "?")) + " utterances"
+            + (" &nbsp;&middot;&nbsp; clean on: " + esc(", ".join(clean))
+               if clean else "")
+            + " &nbsp;&middot;&nbsp; $" + format(meta.get("cost_usd", 0), ".3f")
+            + "</p>" + "".join(rows))
 
 
 def render(lesson: Path, page: int) -> None:
@@ -646,7 +707,8 @@ def render(lesson: Path, page: int) -> None:
             + "<h2>Replaced explanations</h2><p class=\"meta\">These could not be "
               "translated. Same teaching point, rebuilt for an English audience.</p>"
             + replacements
-            + "<h2>Still unresolved</h2>" + unresolved)
+            + "<h2>Still unresolved</h2>" + unresolved
+            + qa_html(lesson, {u["id"]: u["text"] for u in utterances}))
 
     checks = out / "checks"
     checks.mkdir(parents=True, exist_ok=True)
