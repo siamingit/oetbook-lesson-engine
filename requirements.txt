@@ -9,4 +9,7 @@ numpy==2.5.3                   # BSD-3-Clause
 Pillow==12.3.0                 # MIT-CMU
 opencv-python-headless==5.0.0.93   # Apache-2.0; wheels bundle FFmpeg (LGPLv2.1)
 
+# AI providers — see docs/adr/002-ai-providers.md
+anthropic==1.7.0               # MIT
+
 # PyMuPDF is AGPL-3.0 and must not be added — see ADR 001.
