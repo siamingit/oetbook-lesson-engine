@@ -1,0 +1,12 @@
+# Imaging toolchain — see docs/adr/001-imaging-toolchain.md
+# Exact pins. Upgrade deliberately, and re-check licences when you do.
+# Install into the project virtual environment:
+#   python -m venv .venv
+#   .venv/Scripts/python -m pip install -r requirements.txt
+
+pypdfium2==5.13.0              # BSD-3-Clause / Apache-2.0
+numpy==2.5.3                   # BSD-3-Clause
+Pillow==12.3.0                 # MIT-CMU
+opencv-python-headless==5.0.0.93   # Apache-2.0; wheels bundle FFmpeg (LGPLv2.1)
+
+# PyMuPDF is AGPL-3.0 and must not be added — see ADR 001.

@@ -9,7 +9,19 @@ These scripts produced the first ASR run on Grammar 1, recorded in
 ## Requirements
 
 On `PATH`: `ffmpeg`, `ffprobe`, `pdftotext` (poppler), `curl`, `python` 3.12.
-No third-party Python packages — standard library only.
+
+Imaging scripts need the project virtual environment — `pypdfium2`, `numpy`,
+`Pillow` and `opencv-python-headless`, pinned in `requirements.txt` at the
+repository root and chosen in `docs/adr/001-imaging-toolchain.md`:
+
+```
+python -m venv .venv
+.venv/Scripts/python -m pip install -r requirements.txt
+```
+
+Run those scripts with `.venv/Scripts/python`, not a bare `python`. The table
+below marks which ones need it; the rest shell out to `ffmpeg` and `curl` and
+run on any 3.12 interpreter.
 
 `ELEVENLABS_API_KEY` must be in `.env` at the repository root. `transcribe.py`
 locates it relative to its own file, so it breaks if moved out of
@@ -44,6 +56,8 @@ python spike/scripts/build_keyterms.py    <lesson_dir>
 python spike/scripts/transcribe.py        <lesson_dir> [--dry-run]
 python spike/scripts/make_transcript.py   <lesson_dir>/analysis [--offset SECONDS]
 ```
+
+`.venv` in the first column marks a script that needs the virtual environment.
 
 | Script | Reads | Writes |
 |---|---|---|
