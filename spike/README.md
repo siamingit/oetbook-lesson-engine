@@ -85,6 +85,8 @@ the first two of which decode the whole video:
 | `make_transcript.py` | `analysis/scribe_v2_response.json` | `analysis/transcript.txt` — readable, timestamped |
 | `build_slide_timeline.py` **.venv** | `source/video.mp4`, `source/slides.pdf` | `analysis/slides/slide_scores.json`, `slide_timeline.json`, `checks/` |
 | `extract_annotations.py` **.venv** | `source/video.mp4`, `source/slides.pdf`, `analysis/slides/slide_timeline.json` | `analysis/annotations/annotation_events.json`, `checks/` |
+| `extract_understanding.py` **.venv** | `analysis/scribe_v2_response.json`, `analysis/slides/slide_timeline.json`, `analysis/annotations/annotation_events.json`, `source/slides.pdf`, `.env` | `analysis/understanding/raw_response.json`, `understanding.json`, `transcript_words.json`, `checks/` |
+| `write_script.py` **.venv** | `analysis/understanding/understanding.json`, `analysis/slides/slide_timeline.json`, `source/slides.pdf`, `.env` | `analysis/script/raw_response.json`, `script.json`, `checks/` |
 
 ### Options
 
@@ -95,6 +97,10 @@ the first two of which decode the whole video:
   writes it elsewhere, so a probe does not overwrite a full run.
 - `make_transcript.py --offset SECONDS` shifts timestamps so an excerpt reads
   in whole-lesson time.
+- `extract_understanding.py` and `write_script.py` both take `--page N`, and
+  neither calls the API without `--call`. Without it they assemble the request
+  and print it, which costs nothing — always read the prompt before paying for
+  it. `--render` rebuilds the review page from the saved response, also free.
 
 Scribe settings are constants in `transcribe.py`: `model_id=scribe_v2`, batch
 (not realtime), word-level timestamps, diarization off, and **no

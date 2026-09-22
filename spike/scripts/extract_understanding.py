@@ -57,6 +57,11 @@ odd or out-of-place word to the instructor as though they certainly said it. Whe
 a word looks like a mis-recognition and it matters to your reading, mark it \
 UNKNOWN instead of building on it.
 
+One exception, and it is decisive. If an odd word also appears verbatim on the \
+slide, it is not a mis-recognition — the instructor is reading what is printed, and \
+the error is in the source. Record it as a source error rather than an ASR error. \
+Check the slide text before calling a word UNKNOWN.
+
 EVIDENCE. Every beat cites evidence: transcript spans with their timestamps, \
 annotation event ids, and slide text. A beat you cannot evidence does not belong \
 in the output.
