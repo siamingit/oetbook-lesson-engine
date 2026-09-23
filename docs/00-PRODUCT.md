@@ -27,17 +27,32 @@ with the speech.
 - Content lives inside the frame. There is no side panel, no board
   beside the slide, nothing outside the 16:9 area.
 
-### Screens within a lesson
+### Boards within a lesson
 
-A lesson is a sequence of screens inside that frame.
+A lesson is a sequence of **boards**. One board per topic.
 
-A new screen starts when **the current screen is full** — when more
-content would crowd it or force the type smaller than is comfortable to
-read. It does **not** start because the original deck had a new slide.
+A board is what the original slide was: a stable surface the teacher
+works on for as long as the topic lasts. It is not a page that fills up
+and is replaced.
 
-A single teaching topic may run across several screens. It must not be
-broken mid-thought: if a topic needs more room, it continues on the next
-screen with enough context carried over to stay coherent.
+Each board has two layers:
+
+- A **fixed layer** — the topic's own content, authored once, never
+  erased while the topic is active. On an exercise topic this is the
+  sentence under discussion; on an explanatory topic it is the table,
+  forms or examples the topic is about.
+- A **working layer** — the notes and marks added while explaining.
+  These accumulate, are erased when the space fills, and accumulate
+  again in the cleared space.
+
+Erasing the working layer never changes the title, the topic, or the
+fixed layer. It is how a teacher uses a board, and the source lessons do
+it constantly.
+
+A board ends when its topic ends — never because space ran out.
+
+A topic is a unit of navigation, not a unit of space. Three to seven per
+page of source material. Never one per teaching beat.
 
 ### Contents and navigation
 
@@ -86,6 +101,23 @@ rebuilt.
 - Teaching that exists only because the deck was wrong — the instructor
   pointing out a typo aloud — is dropped, not translated. It teaches
   nothing once the error is gone.
+
+---
+
+## 2a. Title and contents boards
+
+Two boards are not written from a single page of source material.
+
+- **Title board** — the lesson title and a one-line description, in
+  English.
+- **What you will learn** — built from the topic titles of every board
+  in the lesson.
+
+Both are generated after all other boards exist, since the second
+depends on them. Neither carries Persian, a logo or a product name.
+
+They teach nothing, but they prepare the student for the lesson, so they
+are part of it.
 
 ---
 
