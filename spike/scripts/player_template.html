@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>__TITLE__</title>
+<style>
+  :root {
+    color-scheme: light;
+    --ink: #1c2a33;
+    --paper: #f4f5f2;
+    --panel: #ffffff;
+    --accent: #0f6a8c;
+    --accent-soft: rgba(15, 106, 140, 0.15);
+    --highlight: rgba(255, 214, 51, 0.4);
+    --underline: #d1495b;
+    --circle: #d1495b;
+    --pointer: #0f6a8c;
+    --note-bg: rgba(15, 106, 140, 0.06);
+    --note-border: rgba(15, 106, 140, 0.35);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+  }
+  #app {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 20px 20px 40px;
+  }
+  h1 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+  #layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 16px;
+  }
+  #stage-wrap {
+    background: var(--panel);
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  #stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  #slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  #overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .highlight-box { fill: var(--highlight); stroke: none; }
+  .underline-line { stroke: var(--underline); stroke-width: 4; stroke-linecap: round; }
+  .circle-mark { fill: none; stroke: var(--circle); stroke-width: 3; }
+  .note-box { fill: var(--note-bg); stroke: var(--note-border); stroke-width: 1.5; rx: 6; }
+  .note-text { fill: var(--ink); font-family: 'Courier New', Consolas, monospace; }
+  #pointer-group { opacity: 0; transition: transform 0.4s ease, opacity 0.2s ease; }
+  #pointer-group.visible { opacity: 1; }
+  #pointer-dot { fill: var(--pointer); }
+  #pointer-ring { fill: none; stroke: var(--pointer); stroke-width: 2; opacity: 0.5; }
+  .fade-in { animation: fadeIn 0.25s ease both; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  #subtitle {
+    min-height: 3.2em;
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: var(--panel);
+    border-radius: 8px;
+    font-size: 17px;
+    line-height: 1.4;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  #subtitle .provenance {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-right: 8px;
+    opacity: 0.7;
+  }
+
+  #transport {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+    background: var(--panel);
+    border-radius: 8px;
+    padding: 10px 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  #playPause {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background: var(--accent);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    flex: none;
+  }
+  #playPause:hover { filter: brightness(1.08); }
+  #scrubber { flex: 1; accent-color: var(--accent); }
+  #timeLabel {
+    font-variant-numeric: tabular-nums;
+    font-size: 13px;
+    color: #56636b;
+    flex: none;
+    min-width: 96px;
+    text-align: right;
+  }
+
+  #rail { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+
+  #board {
+    background: var(--panel);
+    border-radius: 10px;
+    padding: 10px 10px 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+  }
+  #board h2, #beatNav h2 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #7a8890;
+    margin: 4px 6px 8px;
+  }
+  #boardItems { overflow-y: auto; flex: 1; padding-right: 4px; }
+  .board-item {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    border-radius: 0 6px 6px 0;
+    padding: 7px 10px;
+    margin-bottom: 6px;
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 13.5px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    word-break: break-word;
+    animation: fadeIn 0.25s ease both;
+  }
+  .board-item.compare { border-left-color: #b8860b; background: rgba(184,134,11,0.10); }
+  .board-caption {
+    font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #7a8890;
+    margin-bottom: 4px;
+  }
+  .compare-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .compare-cols div {
+    background: rgba(255,255,255,0.7);
+    border-radius: 4px;
+    padding: 5px 7px;
+  }
+  #pauseBadge {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    background: rgba(15,106,140,0.12);
+    color: var(--accent);
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+  #pauseBadge.on { display: flex; }
+  #pauseDots { letter-spacing: 2px; }
+
+  #beatNav {
+    background: var(--panel);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  #beatNav h2 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #7a8890;
+    margin: 4px 6px 8px;
+  }
+  .beat-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 12.5px;
+    line-height: 1.35;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .beat-item:hover { background: var(--accent-soft); }
+  .beat-item.active { background: var(--accent); color: white; }
+  .beat-item .beat-id {
+    font-weight: 700;
+    margin-right: 6px;
+    opacity: 0.75;
+  }
+
+  @media (max-width: 860px) {
+    #layout { grid-template-columns: 1fr; }
+    #beatNav { max-height: 300px; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <h1>__TITLE__</h1>
+  <div id="layout">
+    <div id="stage-wrap">
+      <div id="stage">
+        <img id="slide" src="slide.png" alt="Slide 13">
+        <svg id="overlay" viewBox="0 0 1440 810" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+      <div id="subtitle"></div>
+      <div id="transport">
+        <button id="playPause" aria-label="Play">&#9654;</button>
+        <input type="range" id="scrubber" min="0" max="1" step="0.01" value="0">
+        <span id="timeLabel">0:00 / 0:00</span>
+      </div>
+    </div>
+    <div id="rail">
+      <div id="board">
+        <h2>Board</h2>
+        <div id="boardItems"></div>
+        <div id="pauseBadge"><span id="pauseDots">•••</span><span id="pauseText"></span></div>
+      </div>
+      <div id="beatNav">
+        <h2>Beats</h2>
+        <div id="beatList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+const BUNDLE = __BUNDLE_JSON__;
+
+const SVG_NS = "http://www.w3.org/2000/svg";
+const TYPE_CHARS_PER_SEC = 18;
+
+// Flatten beats/utterances into one ordered list for playback + lookups.
+const utterances = [];
+for (const beat of BUNDLE.beats) {
+  for (const utt of beat.utterances) {
+    utterances.push({ ...utt, beatId: beat.id });
+  }
+}
+const totalDuration = BUNDLE.meta.total_duration_s;
+
+// All cues, flattened, in time order -- needed for "active until superseded" logic.
+const allCues = [];
+for (const utt of utterances) {
+  for (const cue of utt.cues) {
+    allCues.push({ ...cue, utteranceId: utt.id });
+  }
+}
+allCues.sort((a, b) => a.time - b.time);
+
+function keyFor(cue) {
+  return cue.kind + ":" + (cue.row ?? "-") + ":" + JSON.stringify(cue.box);
+}
+
+// ---- DOM refs ----
+const audioEl = new Audio();
+audioEl.preload = "auto";
+const preloadEl = new Audio();   // holds only the next utterance, never played
+preloadEl.preload = "auto";
+const slideImg = document.getElementById("slide");
+const overlay = document.getElementById("overlay");
+const subtitleEl = document.getElementById("subtitle");
+const playPauseBtn = document.getElementById("playPause");
+const scrubber = document.getElementById("scrubber");
+const timeLabel = document.getElementById("timeLabel");
+const beatListEl = document.getElementById("beatList");
+
+scrubber.max = totalDuration;
+
+// ---- Overlay setup: one persistent element per cue, hidden until active ----
+const pointerGroup = document.createElementNS(SVG_NS, "g");
+pointerGroup.id = "pointer-group";
+const pointerRing = document.createElementNS(SVG_NS, "circle");
+pointerRing.id = "pointer-ring";
+pointerRing.setAttribute("r", "16");
+const pointerDot = document.createElementNS(SVG_NS, "circle");
+pointerDot.id = "pointer-dot";
+pointerDot.setAttribute("r", "6");
+pointerGroup.appendChild(pointerRing);
+pointerGroup.appendChild(pointerDot);
+
+function boxCenter(box) {
+  return [(box[0] + box[2]) / 2, (box[1] + box[3]) / 2];
+}
+
+function wrapLines(ctx, text, maxWidth) {
+  const words = text.split(" ");
+  const lines = [];
+  let line = "";
+  for (const word of words) {
+    const candidate = line ? line + " " + word : word;
+    if (ctx.measureText(candidate).width > maxWidth && line) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = candidate;
+    }
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
+const measureCanvas = document.createElement("canvas").getContext("2d");
+
+function makeCueElement(cue) {
+  // Board and pause cues live outside the slide overlay entirely.
+  if (cue.kind === "board_note" || cue.kind === "comparison" ||
+      cue.kind === "thinking_pause") {
+    return null;
+  }
+  if (cue.kind === "slide_phrase") {
+    const [x0, y0, x1, y1] = cue.box;
+    if (cue.type === "highlight") {
+      const rect = document.createElementNS(SVG_NS, "rect");
+      rect.setAttribute("class", "highlight-box");
+      rect.setAttribute("x", x0 - 4);
+      rect.setAttribute("y", y0 - 2);
+      rect.setAttribute("width", x1 - x0 + 8);
+      rect.setAttribute("height", y1 - y0 + 4);
+      rect.setAttribute("rx", 3);
+      return rect;
+    }
+    if (cue.type === "underline") {
+      const line = document.createElementNS(SVG_NS, "line");
+      line.setAttribute("class", "underline-line");
+      line.setAttribute("x1", x0);
+      line.setAttribute("x2", x1);
+      line.setAttribute("y1", y1 + 4);
+      line.setAttribute("y2", y1 + 4);
+      return line;
+    }
+    if (cue.type === "circle") {
+      const [cx, cy] = boxCenter(cue.box);
+      const rx = (x1 - x0) / 2 + 10;
+      const ry = (y1 - y0) / 2 + 8;
+      const ellipse = document.createElementNS(SVG_NS, "ellipse");
+      ellipse.setAttribute("class", "circle-mark");
+      ellipse.setAttribute("cx", cx);
+      ellipse.setAttribute("cy", cy);
+      ellipse.setAttribute("rx", rx);
+      ellipse.setAttribute("ry", ry);
+      return ellipse;
+    }
+    // "point" cues don't get their own element -- they drive the shared pointer.
+    return null;
+  }
+
+  // answer_box / annotation_note: a box with typed text inside.
+  const [x0, y0, x1, y1] = cue.box;
+  const g = document.createElementNS(SVG_NS, "g");
+  const rect = document.createElementNS(SVG_NS, "rect");
+  rect.setAttribute("class", "note-box");
+  rect.setAttribute("x", x0);
+  rect.setAttribute("y", y0);
+  rect.setAttribute("width", x1 - x0);
+  rect.setAttribute("height", y1 - y0);
+  rect.setAttribute("rx", 6);
+  g.appendChild(rect);
+
+  const padding = 10;
+  const fontSize = cue.kind === "answer_box" ? 20 : 15;
+  measureCanvas.font = fontSize + "px 'Courier New', monospace";
+  const maxWidth = (x1 - x0) - padding * 2;
+  const lines = wrapLines(measureCanvas, cue.text, maxWidth);
+
+  const text = document.createElementNS(SVG_NS, "text");
+  text.setAttribute("class", "note-text");
+  text.setAttribute("x", x0 + padding);
+  text.setAttribute("y", y0 + padding + fontSize);
+  text.setAttribute("font-size", fontSize);
+  const tspans = lines.map((line, i) => {
+    const tspan = document.createElementNS(SVG_NS, "tspan");
+    tspan.setAttribute("x", x0 + padding);
+    tspan.setAttribute("dy", i === 0 ? 0 : fontSize * 1.25);
+    text.appendChild(tspan);
+    return tspan;
+  });
+  g.appendChild(text);
+  g.dataset.lines = JSON.stringify(lines);
+  g._tspans = tspans;
+  g._lines = lines;
+  return g;
+}
+
+const cueElements = new Map(); // cue -> element
+for (const cue of allCues) {
+  const el = makeCueElement(cue);
+  if (el) {
+    el.style.display = "none";
+    overlay.appendChild(el);
+    cueElements.set(cue, el);
+  }
+}
+overlay.appendChild(pointerGroup);
+
+// ---- Beat nav ----
+const beatButtons = [];
+for (const beat of BUNDLE.beats) {
+  const btn = document.createElement("button");
+  btn.className = "beat-item";
+  btn.innerHTML = '<span class="beat-id">' + beat.id + '</span>' +
+                   escapeHtml(beat.learning_objective);
+  btn.addEventListener("click", () => {
+    seek(beat.start);
+    play();
+  });
+  beatListEl.appendChild(btn);
+  beatButtons.push({ beat, btn });
+}
+
+function escapeHtml(s) {
+  const d = document.createElement("div");
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+// ---- Playback state ----
+//
+// The audio element is the clock. While an utterance plays, the lesson's
+// time is its own start plus the element's currentTime -- nothing here
+// advances time on its own, so if audio stalls the lesson waits for it
+// instead of running on without it. The only timer is the silent gap
+// between utterances, where there is no audio to read a time from and no
+// cue can fire.
+const state = {
+  playing: false,
+  globalTime: 0,
+  index: 0,          // utterance playing, or awaited when inGap
+  inGap: false,
+  gapEndsAt: 0,      // performance.now() ms
+  gapRemaining: 0,   // seconds still to wait; survives a pause
+  scrubbing: false,
+  failure: null,
+};
+let gapTimer = null;
+
+function utteranceAt(t) {
+  for (const u of utterances) {
+    if (t >= u.start && t < u.end) return u;
+  }
+  return null;
+}
+
+function indexAt(t) {
+  for (let i = 0; i < utterances.length; i++) {
+    if (t >= utterances[i].start && t < utterances[i].end) return i;
+  }
+  return -1;
+}
+
+function indexAfter(t) {
+  for (let i = 0; i < utterances.length; i++) {
+    if (utterances[i].start > t) return i;
+  }
+  return -1;
+}
+
+function beatAt(t) {
+  for (const beat of BUNDLE.beats) {
+    if (t >= beat.start && t < beat.end + 0.001) return beat;
+  }
+  return BUNDLE.beats[BUNDLE.beats.length - 1];
+}
+
+function clearGapTimer() {
+  if (gapTimer !== null) {
+    clearTimeout(gapTimer);
+    gapTimer = null;
+  }
+}
+
+function setAudioTime(offset) {
+  if (audioEl.readyState >= 1) {
+    audioEl.currentTime = offset;
+  } else {
+    audioEl.addEventListener("loadedmetadata", () => {
+      audioEl.currentTime = offset;
+    }, { once: true });
+  }
+}
+
+// Audio is the clock, so a failure to play is a failure of the lesson: it
+// stops. Say so on screen instead of freezing with no explanation.
+function reportAudioFailure(detail) {
+  state.failure = detail;
+  subtitleEl.innerHTML = '<span class="provenance">audio error</span>' +
+    escapeHtml(detail + " — playback stopped.");
+  state.playing = false;
+  clearGapTimer();
+  updatePlayButton();
+}
+
+audioEl.addEventListener("error", () => {
+  const err = audioEl.error;
+  reportAudioFailure("could not load " + audioEl.getAttribute("data-src") +
+                      (err ? " (code " + err.code + ")" : ""));
+});
+
+function playWhenReady() {
+  const attempt = () => {
+    if (!state.playing || state.inGap) return;
+    audioEl.play().catch((e) => {
+      reportAudioFailure(e && e.name ? e.name + ": " + e.message : String(e));
+    });
+  };
+  if (audioEl.readyState >= 2) attempt();
+  else audioEl.addEventListener("canplay", attempt, { once: true });
+}
+
+function loadUtterance(index, offset) {
+  const utt = utterances[index];
+  if (audioEl.getAttribute("data-src") !== utt.audio_file) {
+    audioEl.src = utt.audio_file;
+    audioEl.setAttribute("data-src", utt.audio_file);
+  }
+  setAudioTime(offset);
+  const next = utterances[index + 1];
+  if (next) preloadEl.src = next.audio_file;  // warm the next file's cache
+}
+
+function startUtterance(index, offset) {
+  clearGapTimer();
+  state.index = index;
+  state.inGap = false;
+  state.globalTime = utterances[index].start + offset;
+  loadUtterance(index, offset);
+  playWhenReady();
+}
+
+function beginGap(index, seconds) {
+  clearGapTimer();
+  state.index = index;
+  state.inGap = true;
+  state.gapRemaining = Math.max(0, seconds);
+  state.gapEndsAt = performance.now() + state.gapRemaining * 1000;
+  loadUtterance(index, 0);
+  if (state.playing) armGapTimer();
+}
+
+function armGapTimer() {
+  clearGapTimer();
+  gapTimer = setTimeout(() => {
+    gapTimer = null;
+    startUtterance(state.index, 0);
+  }, Math.max(0, state.gapEndsAt - performance.now()));
+}
+
+function finish() {
+  clearGapTimer();
+  state.playing = false;
+  state.inGap = false;
+  state.globalTime = totalDuration;
+  updatePlayButton();
+  renderFrame(state.globalTime);
+}
+
+audioEl.addEventListener("ended", () => {
+  if (state.inGap) return;
+  const utt = utterances[state.index];
+  state.globalTime = utt.end;
+  const nextIndex = state.index + 1;
+  if (nextIndex >= utterances.length) {
+    finish();
+    return;
+  }
+  beginGap(nextIndex, utterances[nextIndex].start - utt.end);
+});
+
+function play() {
+  if (state.playing) return;
+  if (state.globalTime >= totalDuration - 0.01) seek(0);
+  state.playing = true;
+  updatePlayButton();
+  if (state.inGap) {
+    state.gapEndsAt = performance.now() + state.gapRemaining * 1000;
+    armGapTimer();
+  } else {
+    playWhenReady();
+  }
+}
+
+function pause() {
+  if (!state.playing) return;
+  state.playing = false;
+  if (state.inGap) {
+    state.gapRemaining = Math.max(0, (state.gapEndsAt - performance.now()) / 1000);
+    clearGapTimer();
+  } else {
+    audioEl.pause();
+  }
+  updatePlayButton();
+}
+
+function updatePlayButton() {
+  playPauseBtn.innerHTML = state.playing ? "&#10074;&#10074;" : "&#9654;";
+  playPauseBtn.setAttribute("aria-label", state.playing ? "Pause" : "Play");
+}
+
+function seek(t) {
+  t = Math.max(0, Math.min(totalDuration, t));
+  clearGapTimer();
+  audioEl.pause();
+  state.globalTime = t;
+
+  const inside = indexAt(t);
+  if (inside !== -1) {
+    state.index = inside;
+    state.inGap = false;
+    loadUtterance(inside, t - utterances[inside].start);
+    playWhenReady();
+  } else {
+    const next = indexAfter(t);
+    if (next === -1) {
+      state.index = utterances.length - 1;
+      state.inGap = false;
+      state.playing = false;
+      updatePlayButton();
+    } else {
+      state.index = next;
+      state.inGap = true;
+      state.gapRemaining = utterances[next].start - t;
+      state.gapEndsAt = performance.now() + state.gapRemaining * 1000;
+      loadUtterance(next, 0);
+      if (state.playing) armGapTimer();
+    }
+  }
+  renderFrame(t);
+}
+
+playPauseBtn.addEventListener("click", () => {
+  if (state.playing) pause(); else play();
+});
+
+scrubber.addEventListener("pointerdown", () => { state.scrubbing = true; });
+scrubber.addEventListener("pointerup", () => { state.scrubbing = false; });
+scrubber.addEventListener("input", () => {
+  seek(parseFloat(scrubber.value));
+});
+
+function fmtTime(s) {
+  s = Math.max(0, s);
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return m + ":" + String(sec).padStart(2, "0");
+}
+
+// ---- The board: written items, in the order they were written ----
+const boardCues = allCues.filter(c => c.kind === "board_note" || c.kind === "comparison");
+const pauseCues = allCues.filter(c => c.kind === "thinking_pause");
+const boardItemsEl = document.getElementById("boardItems");
+const pauseBadge = document.getElementById("pauseBadge");
+const pauseText = document.getElementById("pauseText");
+let boardShown = -1;
+
+function buildBoardItem(cue) {
+  const el = document.createElement("div");
+  el.className = "board-item" + (cue.kind === "comparison" ? " compare" : "");
+  if (cue.kind === "comparison") {
+    const cap = document.createElement("div");
+    cap.className = "board-caption";
+    cap.textContent = cue.text || "compare";
+    const cols = document.createElement("div");
+    cols.className = "compare-cols";
+    const left = document.createElement("div");
+    const right = document.createElement("div");
+    left.textContent = cue.left || "";
+    right.textContent = cue.right || "";
+    cols.appendChild(left);
+    cols.appendChild(right);
+    el.appendChild(cap);
+    el.appendChild(cols);
+  } else {
+    el.textContent = cue.text || "";
+  }
+  return el;
+}
+
+function renderBoard(t) {
+  const active = [];
+  for (const cue of boardCues) {
+    if (cue.time <= t) active.push(cue); else break;   // allCues is time-sorted
+  }
+  // Rebuild only when the set changes; seeking backwards shrinks it again.
+  if (active.length !== boardShown) {
+    boardItemsEl.replaceChildren(...active.map(buildBoardItem));
+    boardShown = active.length;
+    boardItemsEl.scrollTop = boardItemsEl.scrollHeight;
+  }
+  // The newest plain note types itself in, the way it would be written.
+  const last = active[active.length - 1];
+  if (last && last.kind === "board_note" && boardItemsEl.lastChild) {
+    const shown = Math.floor((t - last.time) * TYPE_CHARS_PER_SEC);
+    boardItemsEl.lastChild.textContent = (last.text || "").slice(0, Math.max(0, shown));
+  }
+
+  let pausing = null;
+  for (const cue of pauseCues) {
+    if (cue.time <= t && t < cue.time_end) { pausing = cue; break; }
+  }
+  if (pausing) {
+    const left = Math.max(0, Math.ceil(pausing.time_end - t));
+    pauseText.textContent = (pausing.text || "thinking time") + " — " + left + "s";
+    pauseBadge.classList.add("on");
+  } else {
+    pauseBadge.classList.remove("on");
+  }
+}
+
+// ---- Frame rendering ----
+function renderFrame(t) {
+  // Subtitle
+  const utt = utteranceAt(t);
+  if (utt) {
+    subtitleEl.innerHTML = '<span class="provenance">' + utt.provenance + '</span>' + escapeHtml(utt.text);
+  } else {
+    subtitleEl.innerHTML = "";
+  }
+
+  // Beat nav highlight
+  const beat = beatAt(t);
+  for (const { beat: b, btn } of beatButtons) {
+    const isActive = b.id === beat.id;
+    if (isActive && !btn.classList.contains("active")) {
+      btn.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
+    btn.classList.toggle("active", isActive);
+  }
+
+  // Pointer: last "point" cue at or before t
+  let activePointer = null;
+  for (const cue of allCues) {
+    if (cue.type !== "point") continue;
+    if (cue.time <= t) activePointer = cue; else break;
+  }
+  if (activePointer) {
+    const [cx, cy] = boxCenter(activePointer.box);
+    pointerGroup.setAttribute("transform", "translate(" + cx + "," + cy + ")");
+    pointerGroup.classList.add("visible");
+  } else {
+    pointerGroup.classList.remove("visible");
+  }
+
+  // Persistent marks (highlight/underline/circle): visible once their cue's
+  // time has passed, for the rest of the segment.
+  for (const [cue, el] of cueElements) {
+    if (cue.kind !== "slide_phrase") continue;
+    el.style.display = cue.time <= t ? "" : "none";
+  }
+
+  // Answer boxes / notes: the most recent cue for a given box wins; it
+  // replaces whatever an earlier cue on the same box had typed.
+  const activeByKey = new Map();
+  for (const cue of allCues) {
+    if (cue.kind !== "answer_box" && cue.kind !== "annotation_note") continue;
+    if (cue.time > t) continue;
+    activeByKey.set(keyFor(cue), cue);
+  }
+  for (const [cue, el] of cueElements) {
+    if (cue.kind !== "answer_box" && cue.kind !== "annotation_note") continue;
+    const isActive = activeByKey.get(keyFor(cue)) === cue;
+    if (!isActive) {
+      el.style.display = "none";
+      continue;
+    }
+    el.style.display = "";
+    const elapsed = Math.max(0, t - cue.time);
+    const charsShown = Math.floor(elapsed * TYPE_CHARS_PER_SEC);
+    let remaining = charsShown;
+    for (let i = 0; i < el._lines.length; i++) {
+      const line = el._lines[i];
+      const show = line.slice(0, Math.max(0, Math.min(line.length, remaining)));
+      el._tspans[i].textContent = show;
+      remaining -= line.length + 1;
+    }
+  }
+
+  renderBoard(t);
+
+  // Transport
+  if (!state.scrubbing) scrubber.value = t;
+  timeLabel.textContent = fmtTime(t) + " / " + fmtTime(totalDuration);
+}
+
+function tick() {
+  if (state.playing) {
+    if (state.inGap) {
+      // No audio to read from during a silence; count it down to the next
+      // utterance's start so the scrubber keeps moving. No cue lives here.
+      const remaining = Math.max(0, (state.gapEndsAt - performance.now()) / 1000);
+      state.globalTime = utterances[state.index].start - remaining;
+    } else {
+      state.globalTime = utterances[state.index].start + audioEl.currentTime;
+    }
+    renderFrame(state.globalTime);
+  }
+  requestAnimationFrame(tick);
+}
+
+seek(0);   // loads the first utterance so the play button has audio ready
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>

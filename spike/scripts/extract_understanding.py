@@ -23,10 +23,11 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import paths  # noqa: E402
 import build_slide_timeline as timeline   # noqa: E402
 
 MODEL = "claude-opus-5"
-MAX_TOKENS = 16000
+MAX_TOKENS = 32000          # 16,000 truncated page 6 (18.7 min of source) mid-JSON
 
 SYSTEM = """\
 You are analysing one slide of a recorded OET grammar lesson. The instructor \
@@ -316,7 +317,7 @@ def gather(lesson: Path, page: int) -> dict:
     layer_png = (lesson / "analysis" / "annotations" / "checks"
                  / f"{index:03d}_p{page:02d}.png")
 
-    out = lesson / "analysis" / "understanding"
+    out = paths.understanding_dir(lesson, page)
     out.mkdir(parents=True, exist_ok=True)
     (out / "transcript_words.json").write_text(
         json.dumps(words, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -456,7 +457,7 @@ STYLE = """<style>
 
 def render(lesson: Path, page: int) -> None:
     """Review page: every beat with its evidence, Persian rendered right-to-left."""
-    out = lesson / "analysis" / "understanding"
+    out = paths.understanding_dir(lesson, page)
     raw = json.loads((out / "raw_response.json").read_text(encoding="utf-8"))
     data = json.loads([b["text"] for b in raw["content"] if b["type"] == "text"][-1])
     (out / "understanding.json").write_text(
@@ -598,10 +599,33 @@ def main() -> None:
         messages=messages,
     ) as stream:
         response = stream.get_final_message()
-    out = lesson / "analysis" / "understanding"
+    refuse_if_truncated(response, MAX_TOKENS)
+    out = paths.understanding_dir(lesson, page)
     out.mkdir(parents=True, exist_ok=True)
     (out / "raw_response.json").write_text(response.to_json(), encoding="utf-8")
+    print("stop_reason:", response.stop_reason)
     print("usage:", response.usage)
+
+
+def refuse_if_truncated(response, cap: int) -> None:
+    """A truncated reply is not a result. Do not write it, do not call it success.
+
+    When the model hits the output cap it stops mid-JSON. The call itself looks
+    fine -- it returns, it reports usage, it prints a token count -- and the
+    damage only surfaces one stage later as a parse error a long way from its
+    cause. That silence is the expensive part: page 6 cost $0.58 to produce an
+    artefact nothing could read.
+
+    So the check belongs at the call site, before anything reaches disk, in
+    every script that calls a model.
+    """
+    if getattr(response, "stop_reason", None) == "max_tokens":
+        raise SystemExit(
+            f"REFUSED: the model hit its {cap:,}-token output cap, so the reply is "
+            "cut off mid-JSON and cannot be used. Nothing was written.\n"
+            "This is not a retryable error: raise the cap for this stage, or give "
+            "the stage less to do in one call."
+        )
 
 
 def api_key() -> str:

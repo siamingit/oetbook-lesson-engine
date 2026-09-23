@@ -27,7 +27,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_slide_timeline as timeline            # noqa: E402
-from extract_understanding import api_key, b64, esc, fa, strip_bidi, table  # noqa: E402
+import paths                                       # noqa: E402
+from extract_understanding import (api_key, b64, esc, fa,  # noqa: E402
+                                   refuse_if_truncated, strip_bidi, table)
 
 MODEL = "claude-opus-5"
 MAX_TOKENS = 32000          # last stage peaked at 14,387 against a 16,000 cap
@@ -35,7 +37,8 @@ MAX_TOKENS = 32000          # last stage peaked at 14,387 against a 16,000 cap
 # Only for the length ratio below. The real figure comes from TTS word timings.
 SPEAKING_WPM = 150
 
-CUE_TYPES = ["underline", "highlight", "circle", "strike", "point", "type-text"]
+CUE_TYPES = ["underline", "highlight", "circle", "strike", "point", "type-text",
+             "write", "pause", "compare"]
 
 SYSTEM = """\
 You are an experienced OET teacher writing the spoken script for one slide of an \
@@ -47,6 +50,26 @@ You are given the recovered teaching content of this slide: the beats, each with
 learning objective, a teaching point, and the evidence it came from. Your job is to \
 teach that same content in English.
 
+STUDENT LEVEL — THE MOST IMPORTANT RULE. Your students are healthcare professionals \
+with elementary general English, roughly A2 to B1. They know clinical vocabulary; \
+they do not have advanced general English. Write for that level:
+
+  - Use the simplest words that carry the meaning. Everyday English, not academic \
+English.
+  - Short sentences, one idea each. Do not stack subordinate clauses together.
+  - Medical and grammar terms are fine: hypothyroidism, present perfect, past \
+participle. Difficult general English is not.
+  - Define a grammar term the first time it appears, in plain words.
+  - Explain by showing an example first, then naming the rule.
+
+A script can be correct, well-organised and still useless, because the explanation \
+is harder English than the grammar point it explains. If a student cannot read your \
+sentence, they cannot reach the teaching inside it.
+
+This is about wording, never about syllabus. Simplifying the English does not let \
+you drop a teaching point, merge two points into one, or skip an example. Every \
+point survives, at the simpler level.
+
 TEACH, DO NOT TRANSLATE. The evidence shows what was taught. Write the lesson you \
 would give to reach the same learning objective. Keep every teaching point — \
 including asides, alternative correct answers, and the reasons given for a choice. \
@@ -54,10 +77,9 @@ Lose none of them. Do not reproduce the original wording, its digressions, its \
 repetitions or its filler. Expect your script to be considerably shorter than the \
 source.
 
-VOICE. First person, warm, direct, confident. Speak to the student as "you". Short \
-sentences. One idea per sentence. Plain classroom English — explain, do not lecture. \
-British English spelling and usage throughout ("recognise", "practise" as a verb, \
-"whilst" never).
+VOICE. First person, warm, direct, confident. Speak to the student as "you". Plain \
+classroom English at the level set above — explain, do not lecture. British English \
+spelling and usage throughout ("recognise", "practise" as a verb, "whilst" never).
 
 NEVER refer to the source. Do not mention Persian, a translation, an original \
 lesson, a recording, an instructor, or "he". You are the teacher, speaking now. \
@@ -86,7 +108,25 @@ utterance's `cues`, and every cue must have exactly one marker. Never give \
 coordinates and never give times — position in the text is the only timing \
 information you provide, and the markers are stripped before the text is spoken.
 
-Cue types: underline, highlight, circle, strike, point, type-text.
+Cue types: underline, highlight, circle, strike, point, type-text, write, pause, \
+compare.
+
+  underline / highlight / circle / strike / point — mark something already printed \
+on the slide. Target kind slide_phrase.
+  type-text — type an answer into item 1-4's answer box, or a note beside it. \
+Target kind answer_box or annotation_note.
+  write     — write a word, phrase, example or rule on the board beside the slide, \
+where it stays for the student to look at. Target kind board_note. This is your \
+main tool: use it for every new term, every extra example, every form worth \
+remembering.
+  compare   — show two things side by side on the board. Target kind comparison, \
+with `left` and `right` holding the two items and `text` naming what is being \
+contrasted.
+  pause     — stop speaking and leave the screen still so the student can think. \
+Target kind thinking_pause, with `seconds` (roughly 2 for "let that land", 4-6 \
+after a question you want answered) and `text` saying in a few words what the \
+student is doing in the silence.
+
 Cue targets:
   slide_phrase     — a phrase printed on the slide. Quote it EXACTLY as printed, \
 including its original spelling, digits and punctuation. This is matched against \
@@ -95,15 +135,41 @@ the slide text, so it must be verbatim.
 it, written as it should appear in writing: normal spelling, digits, punctuation.
   annotation_note  — a short note written beside or above item 1-4, for example a \
 word form or an active-voice rewrite. Give the text as it should be written.
+  board_note       — a word, phrase or short example written on the board. Keep it \
+short enough to read at a glance: a term, a form, one example sentence.
+  comparison       — two items side by side, in `left` and `right`.
+  thinking_pause   — silence, with `seconds`.
+
+A pause cue applies to the silence AFTER the utterance it sits in, so put its \
+marker on the last word of that utterance.
 
 The two forms differ on purpose. Your spoken text writes numbers as words; text \
 that is typed on screen is written normally. "twenty-five" in the utterance, \
 "25" in the answer box.
 
-CUE DENSITY. Use a cue only where it helps the student see what you are talking \
-about at that moment. Not every sentence needs one, and a screen covered in marks \
-teaches nothing. Prefer one clear mark per point over several. The answer to an \
-item is typed into its box once, cleanly.
+EVERY TEACHING MOMENT GETS A VISUAL ANCHOR.
+  - A new word or phrase you teach is written on screen, not only spoken. Write it, \
+pause, then explain it.
+  - An extra example you give aloud is written on screen as you say it.
+  - A key term, a form, or a rule worth remembering is written down.
+  - A contrast between two things is shown as two things side by side.
+  - Never let more than about fifteen seconds of speech pass with nothing happening \
+on screen. If a stretch has nothing to show, that is a sign the explanation itself \
+needs an example.
+
+A mark still has to mean something. The rule you are working to is not "more marks" \
+but "nothing taught without something to look at" — if you cannot say what a mark \
+shows the student, it should not be there.
+
+DELIBERATE PAUSES ARE PART OF TEACHING.
+  - After asking the student a question, pause long enough for them to think. Mark it.
+  - After writing something new, pause so the eye can catch up before you speak again.
+  - Pause lengths are cues, not fixed gaps.
+
+TIMING. A cue fires shortly before the word it belongs to, not on it, so the student \
+sees it and then hears about it, as in a real classroom. You do not control this \
+directly: place the marker on the word the cue belongs to, and the lead is applied \
+for you when the timeline is built.
 
 "point" means the pointer moves to a slide phrase and stays there. Use it when you \
 refer to something on the slide without marking it. The pointer moves only when a \
@@ -129,6 +195,25 @@ DO NOT ADD TEACHING. No grammar rule, no OET exam fact, no clinical fact that is
 not in the source. Rephrasing is yours; content is not. If a replacement tempts you \
 into a rule the source never states, stop and record it under `unresolved` instead. \
 Making the lesson better is not your job here; making it English is.
+
+NEVER JUDGE REGISTER. Do not say how formal, informal, common, rare, natural, \
+conversational, preferred or suitable-for-writing a word or phrase is, unless the \
+source says so. Not "usually is more conversational", not "at the moment is formal", \
+not "you see it less in medical writing", not "keep it out of your writing".
+
+This is the same rule as DO NOT ADD TEACHING, written out separately because it is \
+the one that slips through. A register claim feels like a harmless aside rather than \
+a rule, so it does not trip the instinct that stops you inventing grammar — and it \
+is just as false, just as confident, and just as likely to be carried into the exam. \
+A student who is told a normal word is too informal will avoid a word they needed.
+
+Teach what is CORRECT and what is WRONG. Those you can get from the source. How a \
+word feels to a native ear you cannot, and guessing produces claims that are simply \
+untrue.
+
+If register genuinely matters for a point, it has to come from the maintainer, and \
+the utterance carrying it is marked `maintainer`. If you find yourself wanting to \
+say it and the source does not, record it under `unresolved` and move on.
 
 PROVENANCE, on every utterance:
   source-derived — the same teaching content, re-expressed in English
@@ -182,9 +267,15 @@ CUE_SCHEMA = {
             "additionalProperties": False,
             "required": ["kind", "text"],
             "properties": {
-                "kind": {"enum": ["slide_phrase", "answer_box", "annotation_note"]},
+                "kind": {"enum": ["slide_phrase", "answer_box", "annotation_note",
+                                  "board_note", "comparison", "thinking_pause"]},
                 "text": {"type": "string"},
                 "item": {"type": ["integer", "null"]},
+                # comparison only: the two things shown side by side
+                "left": {"type": ["string", "null"]},
+                "right": {"type": ["string", "null"]},
+                # thinking_pause only: how long the silence lasts
+                "seconds": {"type": ["number", "null"]},
             },
         },
     },
@@ -278,14 +369,15 @@ def gather(lesson: Path, page: int) -> dict:
     read = lambda p: json.loads((lesson / p).read_text(encoding="utf-8"))
     tl = read("analysis/slides/slide_timeline.json")
     iv = next(i for i in tl["intervals"] if i["page"] == page)
-    know = read("analysis/understanding/understanding.json")
+    know = json.loads((paths.understanding_dir(lesson, page)
+                       / "understanding.json").read_text(encoding="utf-8"))
 
     import pypdfium2 as pdfium
     doc = pdfium.PdfDocument(str(lesson / "source" / "slides.pdf"))
     tp = doc[page - 1].get_textpage()
     slide_text = tp.get_text_range(0, tp.count_chars())
 
-    slide_png = lesson / "analysis" / "understanding" / "checks" / "slide.png"
+    slide_png = paths.understanding_dir(lesson, page) / "checks" / "slide.png"
     if not slide_png.exists():
         slide_png.parent.mkdir(parents=True, exist_ok=True)
         timeline.render_pages_colour(
@@ -376,22 +468,52 @@ def split_cues(text: str) -> tuple[str, list[str]]:
     """
     positions: list[tuple[str, int]] = []
     spoken: list[str] = []
+    pending: list[str] = []      # markers seen since the last word was emitted
+
+    def emit(word: str) -> None:
+        spoken.append(word)
+        for cue_id in pending:
+            positions.append((cue_id, len(spoken) - 1))
+        pending.clear()
+
     for token in text.split():
+        # A marker can sit anywhere in a token, not only at its start: a pause
+        # cue naturally lands after the final word ("today.{{c2}}"), and a
+        # marker that is never parsed both orphans its cue and leaves the
+        # marker text in what gets spoken aloud.
         while True:
-            m = CUE_MARKER.match(token)
+            m = CUE_MARKER.search(token)
             if not m:
                 break
-            positions.append((m.group(1), len(spoken)))
+            if token[:m.start()]:
+                emit(token[:m.start()])
+            pending.append(m.group(1))
             token = token[m.end():]
         if token:
-            spoken.append(token)
+            emit(token)
+
+    # Markers with no word after them belong to the last word spoken. For a
+    # pause that is exactly right -- it applies to the silence after this
+    # utterance, whose own word_index does not time it.
+    for cue_id in pending:
+        positions.append((cue_id, max(0, len(spoken) - 1)))
     return " ".join(spoken), positions
 
 
 def resolve(data: dict, slide_text: str) -> dict:
     """Attach spoken text, word indices and anchor words. Collect every complaint."""
     problems: list[str] = []
-    flat = slide_text.replace("\n", " ")
+    # Collapse every run of whitespace on BOTH sides before comparing. This deck's
+    # text layer wraps lines with \r\n, and replacing only \n left a stray \r in
+    # the middle of any phrase that crossed a line break -- so a phrase genuinely
+    # printed on the slide was reported as absent. Page 6's tense table wraps its
+    # example sentences, and lost 7 cues to it; pages 13 and 14 never noticed
+    # because their quoted phrases each sat on one line.
+    #
+    # This fixes the check, it does not loosen the rule: a line break now counts
+    # as a space and nothing else. The phrase must still appear on the slide
+    # character for character, the deck's own typos included.
+    flat = " ".join(slide_text.split())
     for beat in data["beats"]:
         for utt in beat["utterances"]:
             spoken, positions = split_cues(utt["text_with_cues"])
@@ -408,7 +530,8 @@ def resolve(data: dict, slide_text: str) -> dict:
                 cue["word_index"] = index
                 cue["anchor_word"] = words[index] if index < len(words) else ""
                 target = cue["target"]
-                if target["kind"] == "slide_phrase" and target["text"] not in flat:
+                if (target["kind"] == "slide_phrase"
+                        and " ".join(target["text"].split()) not in flat):
                     problems.append(f"{utt['id']}/{cue['id']}: slide phrase "
                                     f"{target['text']!r} is not on the slide")
             for orphan in placed:
@@ -457,6 +580,16 @@ def audit(data: dict, know: dict) -> list[str]:
     if len(data["replacements"]) < len(know["persian_dependent"]):
         out.append(f"{len(know['persian_dependent'])} explanations needed replacing, "
                    f"{len(data['replacements'])} recorded")
+
+    # Spoken text goes to TTS, so a digit is a defect: the synthesiser decides
+    # how to say it, and "10/08/2014" is not something anyone says out loud.
+    # Arithmetic catches this, so no reviewer should have to (AGENTS.md §8).
+    for beat in data["beats"]:
+        for utt in beat["utterances"]:
+            if re.search(r"\d", utt["text"]):
+                digits = " ".join(re.findall(r"\S*\d\S*", utt["text"]))
+                out.append(f"DIGITS IN SPOKEN TEXT: {utt['id']} ({digits}) "
+                           "— write it the way it should be said")
     return out
 
 
@@ -544,9 +677,9 @@ def utterance_html(utt: dict) -> str:
 SEVERITY_ORDER = {"critical": 0, "major": 1, "minor": 2}
 
 
-def qa_html(lesson: Path, utterances: dict) -> str:
+def qa_html(lesson: Path, page: int, utterances: dict) -> str:
     """Independent QA findings, if the reviewer has run. It proposes; nothing is applied."""
-    path = lesson / "analysis" / "script" / "qa" / "qa_gemini.json"
+    path = paths.script_dir(lesson, page) / "qa" / "qa_gemini.json"
     if not path.exists():
         return ""
     qa = json.loads(path.read_text(encoding="utf-8"))
@@ -592,9 +725,16 @@ def qa_html(lesson: Path, utterances: dict) -> str:
             + "</p>" + "".join(rows))
 
 
-def render(lesson: Path, page: int) -> None:
-    """English script beside the source evidence it came from."""
-    out = lesson / "analysis" / "script"
+def render(lesson: Path, page: int, full: bool = False) -> None:
+    """English script beside the source evidence it came from.
+
+    `full` means this is applying a whole new model response rather than
+    re-rendering after a beat splice, which is the moment the ledger has to be
+    told that every id in the script has just been replaced.
+    """
+    out = paths.script_dir(lesson, page)
+    if full:
+        note_full_regeneration(out, page)
     raw = json.loads((out / "raw_response.json").read_text(encoding="utf-8"))
     data = json.loads([b["text"] for b in raw["content"] if b["type"] == "text"][-1])
 
@@ -602,7 +742,7 @@ def render(lesson: Path, page: int) -> None:
     know = src["understanding"]
     checked = resolve(data, src["slide_text"])
     complaints = (checked["problems"] + audit(data, know)
-                  + verify_applied(lesson, data))
+                  + verify_applied(lesson, page, data) + verify_substance(lesson, page, data))
 
     iv = src["interval"]
     usage = raw.get("usage") or {}
@@ -725,7 +865,7 @@ def render(lesson: Path, page: int) -> None:
               "rewritten utterance gets a new id and the old one is retired, never "
               "reused.</p>" + changes
             + "<h2>Still unresolved</h2>" + unresolved
-            + qa_html(lesson, {u["id"]: u["text"] for u in utterances}))
+            + qa_html(lesson, page, {u["id"]: u["text"] for u in utterances}))
 
     checks = out / "checks"
     checks.mkdir(parents=True, exist_ok=True)
@@ -742,6 +882,14 @@ def render(lesson: Path, page: int) -> None:
         print("CHECK: " + c)
     if not complaints:
         print("all checks passed")
+
+    # A reintroduced defect is not a warning to scroll past. The script and the
+    # review page are written first, so the failure can be inspected.
+    lost = [c for c in complaints if c.startswith("FIX LOST")]
+    if lost:
+        print(f"\nFAILED: {len(lost)} previously applied fix(es) are missing from "
+              "the script. Nothing downstream should be built from it.")
+        raise SystemExit(1)
 
 REBEAT_SCHEMA = {
     "type": "object",
@@ -784,30 +932,170 @@ collides with a beat you are not touching.\
 """
 
 
-def log_applied(out: Path, beat_id: str, source: str, beat: dict) -> None:
+def read_ledger(out: Path) -> list[dict]:
+    path = out / "applied.jsonl"
+    if not path.exists():
+        return []
+    return [json.loads(line) for line in
+            path.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
+def append_ledger(out: Path, entry: dict) -> None:
+    with (out / "applied.jsonl").open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps(entry, ensure_ascii=False) + "\n")
+
+
+def raw_id(out: Path) -> str | None:
+    """Which full model response the current script is built on.
+
+    Beat splices rewrite raw_response.json's text block but leave its `id`, so
+    this changes only when a whole new script is generated. That makes it the
+    marker for "the ids in the script are a different set now".
+    """
+    path = out / "raw_response.json"
+    if not path.exists():
+        return None
+    return json.loads(path.read_text(encoding="utf-8")).get("id")
+
+
+def brief_directives(brief: str) -> dict:
+    """FORBID:/REQUIRE:/SUMMARY: lines in a brief, kept as the fix's substance.
+
+    Utterance ids and text hashes do not survive a full regeneration -- it issues
+    a fresh id for everything -- so a ledger built only from them goes blind
+    exactly when it is needed most. A phrase that must not come back, or must
+    stay, survives any amount of renumbering and rewording.
+
+    Plain case-insensitive substring matching, not regex: these are written by
+    whoever writes the brief, and a pattern that needs escaping is a pattern
+    that will be got wrong.
+    """
+    out = {"summary": "", "forbid": [], "require": []}
+    for line in brief.splitlines():
+        line = line.strip()
+        for key in ("FORBID", "REQUIRE"):
+            if line.upper().startswith(key + ":"):
+                value = line.split(":", 1)[1].strip()
+                if value:
+                    out[key.lower()].append(value)
+        if line.upper().startswith("SUMMARY:"):
+            out["summary"] = line.split(":", 1)[1].strip()
+    if not out["summary"]:
+        first = next((l.strip() for l in brief.splitlines() if l.strip()), "")
+        out["summary"] = first[:120]
+    return out
+
+
+def log_applied(out: Path, page: int, beat_id: str, source: str, beat: dict,
+                directives: dict | None = None) -> None:
     """Append what this splice put into the script, outside the file it writes.
 
     The ledger exists because a lost splice takes its own change log with it: both
     lived in script.json. Kept separately, it can be compared against the script
     afterwards, and a silently dropped edit shows up as a failed check.
     """
-    entry = {"beat": beat_id, "source": source,
+    directives = directives or {"summary": "", "forbid": [], "require": []}
+    entry = {"kind": "beat", "page": page, "beat": beat_id, "source": source,
+             "raw_id": raw_id(out),
+             "summary": directives["summary"],
+             "forbid": directives["forbid"],
+             "require": directives["require"],
              "utterances": {u["id"]: hashlib.sha256(
                  u["text_with_cues"].encode("utf-8")).hexdigest()[:12]
                  for u in beat["utterances"]}}
-    with (out / "applied.jsonl").open("a", encoding="utf-8") as fh:
-        fh.write(json.dumps(entry, ensure_ascii=False) + "\n")
+    append_ledger(out, entry)
 
 
-def verify_applied(lesson: Path, data: dict) -> list[str]:
-    """Every edit the ledger records must still be in the script, unchanged."""
-    path = lesson / "analysis" / "script" / "applied.jsonl"
+def note_full_regeneration(out: Path, page: int) -> None:
+    """Record that the whole script was replaced, so the ledger spans it.
+
+    Without this the ledger silently stops applying at a full regeneration: every
+    id it names is retired at once, every record looks stale, and the pruning
+    that follows throws away the record that the fix was ever made.
+    """
+    current = raw_id(out)
+    if current is None:
+        return
+    entries = read_ledger(out)
+    if any(e.get("kind") == "regenerate-all" and e.get("raw_id") == current
+           for e in entries):
+        return                                   # already recorded; stay idempotent
+    previous = next((e.get("raw_id") for e in reversed(entries)
+                     if e.get("raw_id")), None)
+    if previous == current:
+        return                                   # same response, nothing replaced
+    append_ledger(out, {"kind": "regenerate-all", "page": page, "raw_id": current,
+                        "replaced_raw_id": previous})
+
+
+def verify_substance(lesson: Path, page: int, data: dict) -> list[str]:
+    """A previously applied fix must not be undone by a later rewrite.
+
+    Checked against the whole current script, across every generation, because
+    this is the check that has to survive a full regeneration. A hit here is a
+    failure, not a warning: it means a defect someone already fixed is back.
+    """
+    out = paths.script_dir(lesson, page)
+    haystack = []
+    for beat in data["beats"]:
+        for utt in beat["utterances"]:
+            haystack.append(utt["text_with_cues"])
+            for cue in utt["cues"]:
+                text = cue.get("target", {}).get("text")
+                if text:
+                    haystack.append(text)
+    hay = " \n ".join(haystack).lower()
+
+    problems = []
+    for entry in read_ledger(out):
+        if entry.get("kind") == "regenerate-all":
+            continue
+        if entry.get("page") not in (None, page):
+            continue        # another page's fix; its ids and phrases are not ours
+        where = f"{entry.get('beat')} ({entry.get('source')})"
+        summary = entry.get("summary") or ""
+        tail = f" — {summary}" if summary else ""
+        for phrase in entry.get("forbid", []):
+            if phrase.lower() in hay:
+                problems.append(f"FIX LOST: {where} removed \"{phrase}\" but it is "
+                                f"back in the script{tail}")
+        for phrase in entry.get("require", []):
+            if phrase.lower() not in hay:
+                problems.append(f"FIX LOST: {where} added \"{phrase}\" but it is "
+                                f"gone from the script{tail}")
+    return problems
+
+
+def verify_applied(lesson: Path, page: int, data: dict) -> list[str]:
+    """Every edit the ledger records must still be in the script, unchanged.
+
+    Ids and text hashes only mean anything within one generation of the script:
+    a full regeneration retires every id at once, and those records are then
+    checked by verify_substance instead, which does not depend on ids.
+    """
+    path = paths.script_dir(lesson, page) / "applied.jsonl"
     if not path.exists():
         return []
     entries = [json.loads(line) for line in
                path.read_text(encoding="utf-8").splitlines() if line.strip()]
-    latest: dict[str, dict] = {}
+
+    # The ledger is append-ordered, so a record's generation is simply how many
+    # regenerate-all markers precede it. That dates records written before this
+    # field existed, which a raw_id comparison cannot.
+    generation = 0
+    dated = []
     for entry in entries:
+        if entry.get("kind") == "regenerate-all":
+            generation += 1
+            continue
+        if entry.get("page") not in (None, page):
+            continue        # another page's fix
+        dated.append((generation, entry))
+
+    latest: dict[str, dict] = {}
+    for gen, entry in dated:
+        if gen != generation:
+            continue          # ids from an older script; verify_substance covers it
         latest[entry["beat"]] = entry          # a later splice supersedes an earlier
 
     present = {u["id"]: hashlib.sha256(
@@ -877,7 +1165,7 @@ def regenerate(lesson: Path, page: int, beat_id: str, brief: str,
     `replay` re-applies the saved response for this beat instead of calling the
     API, so a splice can be redone without paying for it twice.
     """
-    out = lesson / "analysis" / "script"
+    out = paths.script_dir(lesson, page)
     script = json.loads((out / "script.json").read_text(encoding="utf-8"))
     src = gather(lesson, page)
     know = src["understanding"]
@@ -942,6 +1230,7 @@ def regenerate(lesson: Path, page: int, beat_id: str, brief: str,
             messages=[{"role": "user", "content": content}],
         ) as stream:
             response = stream.get_final_message()
+        refuse_if_truncated(response, MAX_TOKENS)
         (out / f"raw_response_{beat_id}.json").write_text(response.to_json(),
                                                           encoding="utf-8")
         print("stop_reason:", response.stop_reason)
@@ -968,7 +1257,7 @@ def regenerate(lesson: Path, page: int, beat_id: str, brief: str,
                             ("changes", stamped)):
         script[group] = script.get(group, []) + incoming
     repoint(script, mapping, old_ids, fresh)
-    log_applied(out, beat_id, source, new["beat"])
+    log_applied(out, page, beat_id, source, new["beat"], brief_directives(brief))
     drop = set(new["unresolved_remove"])
     script["unresolved"] = [u for u in script["unresolved"]
                             if u["topic"] not in drop] + new["unresolved_add"]
@@ -1000,7 +1289,7 @@ def main() -> None:
     page = int(opt("--page", "13"))
 
     if "--render" in sys.argv:
-        render(lesson, page)
+        render(lesson, page, full=True)
         return
     if "--beat" in sys.argv:
         regenerate(lesson, page, opt("--beat"),
@@ -1029,7 +1318,8 @@ def main() -> None:
         messages=messages,
     ) as stream:
         response = stream.get_final_message()
-    out = lesson / "analysis" / "script"
+    refuse_if_truncated(response, MAX_TOKENS)
+    out = paths.script_dir(lesson, page)
     out.mkdir(parents=True, exist_ok=True)
     (out / "raw_response.json").write_text(response.to_json(), encoding="utf-8")
     print("stop_reason:", response.stop_reason)

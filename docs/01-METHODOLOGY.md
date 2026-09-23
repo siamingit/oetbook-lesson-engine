@@ -597,34 +597,66 @@ check 8, `register-claim`, reported at `critical`.
 
 ---
 
-## 18. Slide redesign — a required stage, not yet built
+## 18. Screen content — the stage that replaced the slide redesign
 
 The international product **cannot reuse the Persian-branded deck**. Only
 the teaching content carries over: the exercise sentences, their answers,
 and the structure of each page. The artwork, branding, byline and Persian
 text do not.
 
-This is a **missing pipeline stage**, not a defect in an existing one.
-Nothing in `spike/` produces an international slide, and the current
-page-13 player renders the *Persian-branded* deck page because that is the
-only deck that exists. That is a stand-in, not the output.
+This section originally planned a *slide redesign*: a new deck in an
+international template, re-exported from Canva with per-word geometry so
+the existing cue targeting could keep working. **That plan is superseded.**
+Review of the first ten built pages (2026-09-23) found that the lessons had
+been written against the Persian deck, so deck typos and branding carried
+through and the narration in places explained an error a corrected deck
+would not contain. The fix is not a better deck; it is a stage that authors
+the screen content before any narration is written — `docs/00-PRODUCT.md`
+§2.
 
-What the stage must produce, at minimum:
+### What exists
 
-- A slide per page, in the international design, carrying the same
-  teaching content as the source page.
-- Per-word geometry for that new slide, since cue targets
-  (`slide_phrase`) are resolved against real text positions — see §6 and
-  §7. A redesign that ships only images would break annotation targeting
-  and force the geometry back to hand-authored coordinates.
-- Stable identity between source page and redesigned page, so an existing
-  script and timeline still apply after a redesign.
+`spike/scripts/write_screens.py`, run between understanding and script
+writing. Inputs: the page's understanding, the deck's PDF text layer (as the
+verbatim source of exercise sentences, never as artwork), the lesson's
+deck-defect register, and the maintainer's rulings from the superseded
+script's ledger. It is not given the deck image, so there is no layout to
+reproduce.
 
-Not yet built, not yet designed, and deliberately not started. See §4
-("Slides carry Persian-market branding") for what is wrong with the
-current deck, and §15 question 10.
+It follows the **board model** of `docs/02-DESIGN-SYSTEM.md` §2: one board
+per topic, a fixed layer that stays for the whole topic, and a working layer
+of notes that accumulates and is erased when the board fills. The model
+authors topics, thoughts and blocks and marks the fixed layer; the layout —
+which notes share a board, where the working layer is erased — is
+arithmetic, derived from the density rule, and re-run without a model call.
+Erase points are events the narration will know about, like cues.
 
-### Known limitation: cue geometry is hardcoded to page 13's layout
+What this changes for the rest of the pipeline:
+
+- **Geometry is the renderer's.** Every block carries an id (`k01..`) that
+  never depends on layout; a narration cue targets a block, a part of a
+  block, or a phrase within it by text. Nothing stores coordinates, so the
+  per-word PDF geometry the redesign plan needed is not needed at all.
+- **Deck defects are corrected here**, from the register, and teaching that
+  existed only because the deck was wrong is dropped. The register remains
+  the record.
+- **The script stage must be rewritten against `screens.json`.** The
+  existing `write_script.py`, and everything downstream of it, still work
+  from the deck page and its `slide_phrase` cues. The ten pages built that
+  way are superseded and kept only until the new stage is proven.
+
+First run on page 13: five boards, eleven erase points, fifty-eight blocks,
+four model calls to converge on the rules now in the prompt and audit
+(topic count, provenance tracing, no invented rejected forms, no board
+shorthand, no register caution on screen, the introduction showing the full
+set of items, sentence case, answers explained). Each rule was added as a
+deterministic check first and verified to fail the previous run before the
+next call.
+
+### Superseded: cue geometry is hardcoded to page 13's layout
+
+*Describes the deck-page path that the board model replaces. Kept because
+the code and the ten superseded pages still exist.*
 
 `build_bundle.py` carries page 13's four-item exercise layout as module
 constants — `ROW_RED`, `ROW_GREEN`, `ROW_NOTE`, measured once from that
@@ -668,35 +700,28 @@ There are three wrong ways to handle that and one right one.
   the deck is re-exported from Canva, so an edit would be overwritten.
 - **Ignoring it** ships the typo and loses the finding.
 - **Recording it** keeps the script honest, keeps the finding, and puts the
-  fix where it belongs — the redesign, which is rewriting the deck anyway.
+  fix where it belongs — the screen-content stage, which authors the screen
+  afresh.
 
 So: one register per lesson, `<lesson>/analysis/deck_defects.json`, listing
 page, the text as printed, the correction, what is wrong, which QA finding
 raised it, and when. It is a **lesson-level** artefact, not a page-level one
 — the deck spans pages, and §19's boundary rule puts it with the lesson.
 
-This register is an input to this stage. A redesign that does not clear it
-has not finished.
+This register is an input to `write_screens.py`: each entry for the page is
+applied, the block is marked `corrected`, and the audit fails if the printed
+form is still on screen. On the superseded deck-page path the typo reaches
+the student, and that was the correct trade there: a visible defect in one
+printed phrase, against a script that lies about what the slide says.
 
-Until then the typo reaches the student, and that is the correct trade:
-a visible defect in one printed phrase, against a script that lies about
-what the slide says.
+### Resolved: the board beside the slide had no mobile layout
 
-### The board has no mobile layout, and that belongs to this stage
-
-§17a puts written items on a board beside the slide. On a phone that does
-not work: a 16:9 slide and a board cannot sit side by side at phone width,
-and stacking them either shrinks the slide past readability or pushes the
-board off-screen while the student is meant to be reading it.
-
-This must be solved **as part of the slide redesign**, not separately. The
-reason is that the board only exists because the current deck is full — a
-redesigned slide can carry its own space for written items, which changes
-what the board is for and whether it remains a separate region at all.
-Designing a responsive layout for the board now would be designing around a
-deck that is being replaced.
-
-Recorded, not acted on.
+§17a put written items on a board *beside* the slide, because the deck was
+full. On a phone that could not work: a 16:9 slide and a side board cannot
+share phone width. The board model resolves it by removing the slide: the
+board *is* the content area of the frame, the topic's own content is its
+fixed layer, and written items are its working layer. There is no second
+region to lay out.
 ---
 
 ## 19. Artefacts are per page, per lesson, and shared across neither
