@@ -30,6 +30,25 @@ def generated_dir(lesson: Path, page: int) -> Path:
     return lesson / "generated" / page_tag(page)
 
 
+def lesson_label(lesson: Path) -> str:
+    """The lesson's title for prompts and page headings: the deck title
+    recorded in analysis/sections.json, or the lesson folder's name before
+    sections exist. Until 2026-09-24 the prompts said "Grammar 1 - Verb
+    Tenses" whatever the lesson."""
+    import json
+    p = lesson / "analysis" / "sections.json"
+    if p.exists():
+        title = (json.loads(p.read_text(encoding="utf-8")).get("lesson") or {}).get("title")
+        if title:
+            return title
+    return lesson.name
+
+
+def deck_pages(lesson: Path) -> int:
+    import pypdfium2 as pdfium
+    return len(pdfium.PdfDocument(str(lesson / "source" / "slides.pdf")))
+
+
 def screens_dir(lesson: Path, page: int) -> Path:
     return lesson / "analysis" / "screens" / page_tag(page)
 

@@ -53,12 +53,13 @@ introduction difference differently""".split())
 
 def candidates(lesson: Path, page: int, lex: dict) -> list[str]:
     texts = []
-    narr = json.loads((paths.narration_dir(lesson, page) / "narration.json").read_text(encoding="utf-8"))
+    pages = page if isinstance(page, list) else [page]
+    narr = json.loads((paths.narration_dir_for(lesson, pages) / "narration.json").read_text(encoding="utf-8"))
     for bd in narr["boards"]:
         for s in bd["states"]:
             for u in s["utterances"]:
                 texts.append(spoken(u["text_with_cues"]))
-    scr = json.loads((paths.screens_dir(lesson, page) / "screens.json").read_text(encoding="utf-8"))
+    scr = json.loads((paths.screens_dir_for(lesson, pages) / "screens.json").read_text(encoding="utf-8"))
     for t in scr["topics"]:
         for h in t["thoughts"]:
             for b in h["blocks"]:
@@ -81,14 +82,21 @@ def candidates(lesson: Path, page: int, lex: dict) -> list[str]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("lesson_dir", type=Path)
-    parser.add_argument("--page", type=int, required=True)
+    parser.add_argument("--page", type=int)
+    parser.add_argument("--pages", help="a section's pages, e.g. 5,6")
+    parser.add_argument("--speed", type=float, default=1.0)
     args = parser.parse_args()
 
     lex = lexicon.load()
-    terms = candidates(args.lesson_dir, args.page, lex)
-    out_dir = paths.boards_dir(args.lesson_dir, args.page)
-    probe_dir = out_dir / "term_probes"
+    pages = (sorted(int(x) for x in args.pages.split(",")) if args.pages
+             else [args.page])
+    terms = candidates(args.lesson_dir, pages, lex)
+    out_dir = paths.boards_dir_for(args.lesson_dir, pages)
+    # Probes are shared by the whole lesson (a term heard for one section is
+    # heard for all) and made at the lesson speed.
+    probe_dir = args.lesson_dir / "generated" / "term_probes"
     probe_dir.mkdir(parents=True, exist_ok=True)
+    out_dir.mkdir(parents=True, exist_ok=True)
 
     from cartesia import Cartesia
     client = Cartesia(api_key=cartesia_key())
@@ -100,11 +108,20 @@ def main() -> None:
     chars = 0
     print(f"{len(terms)} candidate terms not in the lexicon")
     for term in terms:
-        wav = probe_dir / (re.sub(r"[^a-z0-9]", "_", term) + ".wav")
+        wav = probe_dir / (re.sub(r"[^a-z0-9]", "_", term) + f"@{args.speed:g}.wav")
         heard_path = wav.with_suffix(".json")
         if not heard_path.exists():
             text = CARRIER.format(term=term)
-            res = synthesize(client, text, 0.6)
+            res = None
+            for wait in (5, 10, 20, 40, 60, 90, 120, None):
+                try:
+                    res = synthesize(client, text, args.speed)
+                    break
+                except Exception as e:      # the per-minute quota: wait and retry
+                    if wait is None:
+                        raise SystemExit(f'STOPPED probing {term!r}: {str(e)[:200]}')
+                    print(f'  {term}: {str(e)[:100]} - retry in {wait}s', flush=True)
+                    time.sleep(wait)
             write_wav(wav, res["pcm"])
             chars += len(text)
             heard = transcribe_file(wav, skey)

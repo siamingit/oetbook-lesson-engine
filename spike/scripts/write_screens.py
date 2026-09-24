@@ -305,7 +305,8 @@ than English.
 NEVER JUDGE REGISTER. Do not say or imply how formal, informal, common, rare, \
 natural, conversational, emotional, preferred or suitable-for-writing a word \
 or phrase is - unless a maintainer ruling says so, in which case the block \
-carrying it is marked `maintainer`. Teach what is correct and what is wrong.
+carrying it is marked `adapted` with a note naming the ruling. Teach what is \
+correct and what is wrong.
 
 DO NOT ADD TEACHING. No grammar rule, exam fact or clinical fact that is not \
 in the beats or the maintainer rulings. Rephrasing is yours; content is not. \
@@ -417,10 +418,11 @@ explanation depends on the student's first language
   authored        you supplied it; not in the source (task framing, connective \
 statements) - never a rule or a fact
   corrected       carries a correction of a real error in the source
-  maintainer      ONLY a block that quotes the maintainer's own words, i.e. \
-contains one of the ledger's `required_phrases`. A block you write to carry a \
-ruling is `adapted`, with a note naming the ruling. Expect few maintainer \
-blocks; a page with many is mislabelled.
+  maintainer      ONLY a block whose WHOLE wording is the maintainer's own: \
+every sentence of it is one of the ledger's `required_phrases`, word for word. \
+A block you write that carries a ruling is `adapted`, with a note naming the \
+ruling, even when it contains the maintainer's words. Expect almost no \
+maintainer blocks.
 `note` is one line for the reviewer whenever provenance is not source-derived, \
 saying what and why; empty otherwise. Notes are never shown to the student and \
 may name the source plainly.
@@ -775,6 +777,42 @@ REGISTER_WORDS = re.compile(
 NON_LATIN = re.compile(r"[؀-ۿݐ-ݿﭐ-﷿ﹰ-﻿]")
 
 
+# ---------------------------------------------------------------------------
+# Provenance `maintainer` (rule tightened by the maintainer, 2026-09-24): only
+# text whose WHOLE wording the maintainer supplied, i.e. every sentence of it
+# lies inside one of the ledger's `require` phrases, which are the only
+# maintainer-authored text on disk. Text the model writes that carries a ruling
+# is `adapted`, with a note naming the ruling. Shared by write_narration.py.
+# ---------------------------------------------------------------------------
+
+def _plain(s: str) -> str:
+    s = s.lower().replace("’", "'").replace("‘", "'")
+    s = re.sub(r"[^a-z0-9' ]+", " ", s)
+    return re.sub(r"\s+", " ", s).replace(" '", " ").replace("' ", " ").strip(" '")
+
+
+def maintainer_wording(texts: list[str], requires: list[str]) -> bool:
+    """True when every sentence of the text is inside a required phrase."""
+    phrases = [_plain(p) for p in requires if p.strip()]
+    sentences = [x for t in texts for x in re.split(r"(?<=[.!?:;])\s+", t or "") if _plain(x)]
+    return bool(sentences) and all(any(_plain(x) in p for p in phrases) for x in sentences)
+
+
+def rulings_in(text: str, rulings: list[dict]) -> list[dict]:
+    """The rulings whose required phrases the text contains."""
+    low = _plain(text)
+    return [r for r in rulings
+            if any(_plain(p) and _plain(p) in low for p in r.get("required_phrases") or [])]
+
+
+def relabel_note(text: str, rulings: list[dict]) -> str:
+    named = rulings_in(text, rulings)
+    what = ("; ".join(f"beat {r['beat']}: {r['decision']}" for r in named)
+            if named else "a maintainer ruling")
+    return ("Carries " + what + ". Model wording, so `adapted`: `maintainer` is only for "
+            "text wholly in the maintainer's words (rule of 2026-09-24).")
+
+
 def merge_understanding(lesson: Path, pages: list[int]) -> dict:
     """The understanding of every page of a section, as one. Beat ids are
     prefixed with their page when a section has more than one, so `p5.b1` and
@@ -859,7 +897,7 @@ def build_messages(data: dict) -> list[dict]:
              else f"Deck pages {', '.join(str(p) for p in pages)}, one section taught across "
                   f"them; beat ids carry their page (p5.b1)")
     images = data.get("slide_images") or {}
-    head = (f"Lesson: Grammar 1 - Verb Tenses. {where}.\n"
+    head = (f"Lesson: {paths.lesson_label(Path(data['lesson_dir']))}. {where}.\n"
             "You are given the recovered teaching content of this page and the "
             "deck's text layer. "
             + ("You are not given the deck image, and there is nothing to copy from: "
@@ -1470,9 +1508,19 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                 from_understanding = {norm(e["original"]) for e in
                                       data["understanding"].get("source_errors", [])
                                       if e.get("is_exercise_item")}
+                # A maintainer ruling may change a printed exercise sentence
+                # (2026-09-24: the brand name Mylanta became "an antacid"; the
+                # fault the student must find stays). It is recorded as an
+                # override whose `ruling` names the decision, and the ledger
+                # requires the new words, so the change is traceable.
+                ruled = b.get("ruling") and any(
+                    p.lower() in (b["text"] or "").lower() for p in data["requires"])
                 if norm(b["text"] or "") in from_understanding:
                     warn(b["id"], "exercise sentence verified against the understanding's "
                                   "exercise items, not the slide text layer (image slide)")
+                elif ruled:
+                    warn(b["id"], "exercise sentence changed from the slide by a maintainer "
+                                  "ruling: " + b["ruling"])
                 else:
                     fail(b["id"], "exercise sentence is not verbatim on the slide: "
                                   + repr(b["text"]))
@@ -1481,12 +1529,13 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
         # `maintainer` must trace to the maintainer's own words in the ledger.
         # Model-written text that carries a ruling is `adapted`, not the
         # maintainer's, however faithfully it carries it.
-        if b["provenance"] == "maintainer":
-            joined = " ".join(block_texts(b)).lower()
-            if not any(p.lower() in joined for p in data["requires"]):
-                fail(b["id"], "marked maintainer but contains none of the ledger's "
-                              "required phrases; model-written text carrying a "
-                              "ruling is `adapted`")
+        if b["provenance"] == "maintainer" and not maintainer_wording(
+                block_texts(b), data["requires"]):
+            fail(b["id"], "marked maintainer but not wholly the maintainer's words; "
+                          "model-written text carrying a ruling is `adapted`")
+        if b.get("relabelled"):
+            warn(b["id"], "relabelled maintainer -> adapted: model wording carrying a "
+                          "ruling (rule of 2026-09-24)")
 
     # 2. never-on-screen strings, Persian script, register claims
     forbids = FIXED_FORBIDS + data["forbids"]
@@ -2131,6 +2180,13 @@ def render(lesson: Path, page: int, data: dict) -> int:
     unflatten(topics)
     blocks = assign_ids(topics)
     overrides = apply_overrides(out_dir, blocks)
+    for b in blocks.values():
+        if b["provenance"] == "maintainer" and not maintainer_wording(
+                block_texts(b), data["requires"]):
+            b["provenance"] = "adapted"
+            b["note"] = ((b.get("note") or "") + " " + relabel_note(
+                " ".join(block_texts(b)), data["ledger"])).strip()
+            b["relabelled"] = "maintainer -> adapted"
     merges = merge_unjustified_splits(topics, blocks, pages)
     table_layout = summary_table_layout(topics, blocks, pages)
     lesson_info, section = section_for_page(lesson, page)
@@ -2200,7 +2256,8 @@ def render(lesson: Path, page: int, data: dict) -> int:
 
     html = ('<!doctype html><meta charset="utf-8"><title>Boards - page ' + str(page)
             + "</title><style>" + PAGE_CSS + FRAME_CSS + ":root{--w:812px}</style>"
-            + "<h1>Board content &mdash; Grammar 1, deck page " + str(page) + "</h1>"
+            + "<h1>Board content &mdash; " + paths.lesson_label(lesson) + ", deck page "
+            + str(page) + "</h1>"
             + '<div class="meta">' + str(len(boards)) + " boards, " + str(n_erase)
             + " erase points, " + str(len(blocks)) + " blocks &nbsp;&middot;&nbsp; "
             + esc(raw.get("model")) + " &nbsp;&middot;&nbsp; "

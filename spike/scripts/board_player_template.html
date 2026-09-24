@@ -308,19 +308,46 @@ function drawBoard(bd, s, erased) {
 // the block's own text, never by coordinates.
 function wrapPhrase(el, phrase, cls) {
   const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  const nodes = [];
   let node;
   while ((node = walker.nextNode())) {
     const i = node.data.indexOf(phrase);
-    if (i < 0) continue;
-    const range = document.createRange();
-    range.setStart(node, i);
-    range.setEnd(node, i + phrase.length);
-    const span = document.createElement("span");
-    span.className = "mk " + cls;
-    range.surroundContents(span);
-    return span;
+    if (i >= 0) {
+      const range = document.createRange();
+      range.setStart(node, i);
+      range.setEnd(node, i + phrase.length);
+      const span = document.createElement("span");
+      span.className = "mk " + cls;
+      range.surroundContents(span);
+      return span;
+    }
+    nodes.push(node);
   }
-  return null;
+  // The phrase crosses text nodes: a coloured label's span, or an earlier mark
+  // on part of the same words, splits it. Found in the block's text as a
+  // whole, then each piece is wrapped on its own; the first piece carries the
+  // mark (arrows, the pointer and a replacement's correction attach to it).
+  // Found 2026-09-24 by the mark check on the whole lesson: 13 marks drew
+  // nothing.
+  let text = "";
+  const starts = [];
+  for (const n of nodes) { starts.push(text.length); text += n.data; }
+  const at = text.indexOf(phrase);
+  if (at < 0) return null;
+  const end = at + phrase.length;
+  let first = null;
+  nodes.forEach((n, k) => {
+    const a = Math.max(at, starts[k]), b = Math.min(end, starts[k] + n.data.length);
+    if (a >= b) return;
+    const range = document.createRange();
+    range.setStart(n, a - starts[k]);
+    range.setEnd(n, b - starts[k]);
+    const span = document.createElement("span");
+    span.className = "mk " + cls + (first ? " mk-cont" : "");
+    range.surroundContents(span);
+    if (!first) first = span;
+  });
+  return first;
 }
 
 function applyMarks(s, t, erased) {

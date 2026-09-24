@@ -55,6 +55,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paths                                                   # noqa: E402
 from extract_understanding import api_key, esc, refuse_if_truncated, strip_bidi  # noqa: E402
+from write_screens import (maintainer_wording, relabel_note)                  # noqa: E402
 from write_screens import (FIXED_FORBIDS, FRAME_CSS, NON_LATIN, PAGE_CSS,     # noqa: E402
                            REGISTER_WORDS, block_html, block_texts, is_exercise_board,
                            ledger_phrases, ledger_rulings, rulings_from_script)
@@ -234,9 +235,11 @@ narration. Say them. Where a ruling and a beat disagree, the ruling wins.
 
 NEVER JUDGE REGISTER. Do not say how formal, informal, common, rare, natural, \
 conversational, emotional, preferred or suitable-for-writing a word is, unless \
-a maintainer ruling says so; then the utterance is marked `maintainer` if it \
-quotes the maintainer's own words, otherwise `adapted` with a note naming the \
-ruling. Teach what is correct and what is wrong.
+a maintainer ruling says so; then the utterance is `adapted` with a note \
+naming the ruling. `maintainer` is ONLY for an utterance whose whole wording \
+is the maintainer's own, every sentence one of the `required_phrases` word for \
+word; anything you word yourself is `adapted`, even when it contains the \
+maintainer's words. Teach what is correct and what is wrong.
 
 DO NOT ADD TEACHING. No grammar rule, exam fact or clinical fact that is not on \
 the boards, in the beats, or in a ruling. Rephrasing is yours; content is not. \
@@ -502,7 +505,7 @@ def build_messages(data: dict, rewrite: dict | None = None) -> list[dict]:
     pages = data.get("pages") or [data["page"]]
     where = (f"Deck page {pages[0]}" if len(pages) == 1
              else f"Deck pages {', '.join(str(p) for p in pages)}, one section")
-    head = (f"Lesson: Grammar 1 - Verb Tenses. {where}.\n"
+    head = (f"Lesson: {paths.lesson_label(Path(scr['lesson_dir']) if scr.get('lesson_dir') else Path(data['screens_path']).parents[3])}. {where}.\n"
             "The boards below are the screen content, already written and "
             "audited. Board order, titles, layers and erase points are fixed. "
             "You write what is said and when each working note appears.")
@@ -525,7 +528,8 @@ def build_messages(data: dict, rewrite: dict | None = None) -> list[dict]:
         {"type": "text", "text":
             "MAINTAINER RULINGS, from the applied-edit ledger. Each is a decision, "
             "by beat. `required_phrases` are the maintainer's own words and the "
-            "only text that may be marked `maintainer`; `forbidden_phrases` must "
+            "only text that may be marked `maintainer`, and only an utterance made "
+            "wholly of them; `forbidden_phrases` must "
             "not be spoken:\n" + json.dumps(data["ledger"], ensure_ascii=False)
             + "\n\nHOW THE EARLIER DRAFT CARRIED THOSE RULINGS. Model-written "
               "utterances, grouped by beat: evidence of each ruling's content, "
@@ -685,13 +689,20 @@ def assemble(data: dict, model_out: dict) -> tuple[list[dict], list[dict]]:
                 fixed_text = INTERFACE_WORD.sub(
                     lambda m: ("Coloured label" if m.group(0)[0].isupper() else "coloured label")
                     + ("s" if m.group(0).lower().endswith("s") else ""), text)
+                prov, note, relabelled = u["provenance"], u["note"], None
+                if prov == "maintainer" and not maintainer_wording(
+                        [spoken(fixed_text)], data["requires"]):
+                    prov, relabelled = "adapted", "maintainer -> adapted"
+                    note = ((note or "") + " " + relabel_note(spoken(fixed_text),
+                                                              data["ledger"])).strip()
                 out_utts.append({"id": f"{s['id']}.u{k}",
                                  "text_with_cues": fixed_text,
+                                 **({"relabelled": relabelled} if relabelled else {}),
                                  **({"normalised": ["'chip'/'tag' -> 'coloured label'"]}
                                     if fixed_text != text else {}),
                                  "cues": cues,
-                                 "provenance": u["provenance"],
-                                 "note": u["note"]})
+                                 "provenance": prov,
+                                 "note": note})
             last = n == len(bd["states"]) - 1
             states.append({"id": s["id"], "working": list(s["working"]),
                            "utterances": out_utts,
@@ -867,10 +878,12 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                         fail(uid, f"register claim? {m.group(0)!r} in {said!r} "
                                   "(not a maintainer utterance)")
                         break
-                else:
-                    if not any(p.lower() in low for p in data["requires"]):
-                        fail(uid, "marked maintainer but contains none of the "
-                                  "ledger's required phrases")
+                elif not maintainer_wording([said], data["requires"]):
+                    fail(uid, "marked maintainer but not wholly the maintainer's words; "
+                              "model-written text carrying a ruling is `adapted`")
+                if u.get("relabelled"):
+                    warn(uid, "relabelled maintainer -> adapted: model wording carrying a "
+                              "ruling (rule of 2026-09-24)")
                 if u["provenance"] != "source-derived" and not u["note"]:
                     warn(uid, f"{u['provenance']} utterance has no reviewer note")
 
@@ -1068,7 +1081,8 @@ def render(lesson: Path, page: int, data: dict) -> int:
     html = ('<!doctype html><meta charset="utf-8"><title>Narration - page ' + str(page)
             + "</title><style>" + PAGE_CSS + FRAME_CSS + NARR_CSS
             + ":root{--w:812px}</style>"
-            + "<h1>Narration &mdash; Grammar 1, deck page " + str(page) + "</h1>"
+            + "<h1>Narration &mdash; " + paths.lesson_label(lesson) + ", deck page "
+            + str(page) + "</h1>"
             + '<div class="meta">' + str(len(boards)) + " boards, " + str(n_utt)
             + " utterances, " + str(n_words) + " words, " + str(n_cues)
             + " cues &nbsp;&middot;&nbsp; about " + format(n_words / SPEAKING_WPM, ".1f")

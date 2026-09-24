@@ -1,6 +1,6 @@
 {
  "purpose": "Pronunciation lexicon: the single source of truth for how the voice says clinical and uncommon terms. British English. Synced to Cartesia by spike/scripts/lexicon.py --sync; never edited in Cartesia directly. Every synthesis script applies it and refuses to run if the dictionary on Cartesia differs from this file.",
- "version": 6,
+ "version": 7,
  "language": "en-GB",
  "cartesia": {
   "dict_id": "pdict_hvpmosZ9jAfyXDWFdaknq2",
@@ -23,15 +23,15 @@
    "kind": "default"
   },
   "OET": {
-   "alias": "O. E. T.",
+   "alias": null,
    "ipa": "əʊ iː tiː",
    "expect_phonemes": null,
    "reject_phonemes": null,
-   "note": "Initialism. Sonic 3.6 read it as the word 'oat' (terms check, 2026-09-23).",
-   "approved": false,
-   "approved_by": null,
-   "approved_on": null,
-   "kind": "alias",
+   "note": "APPROVED DEFAULT, by the maintainer's ear 2026-09-24: he prefers the voice's own rendering and its speed over every letter candidate (c1-c7 on the review page). The 2026-09-23 terms check heard the default as 'oat'; the maintainer chose it knowing that. No dictionary entry is sent for this term; it stays in the lexicon so its approval is recorded and its salt is in the cache key.",
+   "approved": true,
+   "approved_by": "maintainer",
+   "approved_on": "2026-09-24",
+   "kind": "default",
    "candidates": [
     {
      "id": "c1",

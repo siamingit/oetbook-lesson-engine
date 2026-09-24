@@ -19,10 +19,13 @@ a marketing site — STOP and ask. Those are out of scope right now.
 
 ---
 
-## 2. Project status: EXPLORATION
+## 2. Project status: EXPLORATION for the pipeline, PRODUCTION for lessons
 
-Almost nothing is decided yet. There is no approved architecture, no
-approved data model, and no approved AI provider.
+The pipeline itself is still exploratory: architecture, data model and
+rules can change, and only what is written in `docs/` and `docs/adr/` is
+decided. Building a lesson with `docs/03-RUNBOOK.md` is production work and
+follows the lesson-production exception in §3 (ADR 003, accepted
+2026-09-24).
 
 Treat every architectural question as OPEN unless it is written down in
 `docs/` or `docs/adr/`.
@@ -47,6 +50,28 @@ Ask in chat. Wait for an explicit answer. Do not proceed on assumption.
 - Changing `.gitignore`
 - `git commit`, `git push`, `git rebase`, `git reset`, branch operations
 - Deleting any file you did not create in this session
+
+### Exception: lesson production (ADR 003)
+
+When the maintainer has named, in chat, a lesson to build and its budget,
+these are pre-approved for that lesson:
+
+- API spend up to the stated budget, for the stages in `docs/03-RUNBOOK.md`
+  only; spend is reported at every gate
+- Re-runs of existing stages, paid re-runs included, within the budget
+- Writing inside that lesson's folder (its `analysis/` and `generated/`;
+  `source/` stays read-only)
+- Bug fixes in `spike/scripts/` that make an existing stage do what the
+  runbook and `docs/` already say; each is named at the next gate, and it
+  must leave the finished lessons' audits passing
+
+Everything else above still needs the maintainer's answer first:
+dependencies, schemas and file formats, models, providers and voices, any
+spend over the budget or outside the runbook, new or reordered stages,
+changes to the rules in `docs/` or to this file, credentials,
+`.gitignore`, git operations, and deleting files the agent did not create.
+A review gate is never approved by the agent, and a change to teaching
+content is reported, not applied, unless a maintainer policy covers it.
 
 ## 4. You may do these without asking
 

@@ -33,8 +33,10 @@ def wav_duration(path: Path) -> float:
         return w.getnframes() / w.getframerate()
 
 
-def check(lesson: Path, page: int) -> list[str]:
-    out_dir = paths.boards_dir(lesson, page)
+def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
+    # --dir checks a built player folder directly, such as the whole-lesson
+    # player; its audio_file paths are relative to that folder.
+    out_dir = out_dir or paths.boards_dir_for(lesson, page if isinstance(page, list) else [page])
     bundle = json.loads((out_dir / "bundle.json").read_text(encoding="utf-8"))
     meta = bundle["meta"]
     problems: list[str] = []
@@ -101,6 +103,7 @@ def check(lesson: Path, page: int) -> list[str]:
 
     blocks = bundle["blocks"]
     n_cues = 0
+    parts_drawn: dict[str, set] = {}
     for bd in bundle["boards"]:
         fixed = set(bd["fixed"])
         for i in bd["fixed"]:
@@ -121,7 +124,24 @@ def check(lesson: Path, page: int) -> list[str]:
                     if c["type"] == "pause":
                         continue
                     blk = c.get("block")
-                    if c["type"] == "reveal":
+                    if c["type"] == "reveal" and "." in str(blk):
+                        # a diagram PART ("k07.3"): its diagram must be on the
+                        # board (fixed, or a working block already revealed)
+                        # and have that part; each part is drawn once per board
+                        base, _, n = str(blk).rpartition(".")
+                        b = blocks.get(base) or {}
+                        parts = {str(it.get("part")) for it in (b.get("items") or [])}
+                        if b.get("type") != "timeline" or n not in parts:
+                            problems.append(f"{u['id']}/{c['id']}: reveal of {blk}, which is "
+                                            "not a part of a diagram")
+                        elif base not in fixed and base not in revealed:
+                            problems.append(f"{u['id']}/{c['id']}: part {blk} revealed before "
+                                            f"its diagram is on the board")
+                        elif blk in parts_drawn.setdefault(bd["id"], set()):
+                            problems.append(f"{u['id']}/{c['id']}: part {blk} drawn twice")
+                        else:
+                            parts_drawn[bd["id"]].add(blk)
+                    elif c["type"] == "reveal":
                         if blk not in working:
                             problems.append(f"{u['id']}/{c['id']}: reveal of {blk}, not a "
                                             f"working block of {s['id']}")
@@ -169,9 +189,12 @@ def check(lesson: Path, page: int) -> list[str]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("lesson_dir", type=Path)
-    parser.add_argument("--page", type=int, required=True)
+    parser.add_argument("--page", type=int)
+    parser.add_argument("--pages")
+    parser.add_argument("--dir", type=Path, help="a built player folder, e.g. generated/lesson-player")
     args = parser.parse_args()
-    problems = check(args.lesson_dir, args.page)
+    pages = ([int(x) for x in args.pages.split(",")] if args.pages else args.page)
+    problems = check(args.lesson_dir, pages, args.dir)
     for p in problems:
         print("FAIL: " + p)
     if problems:

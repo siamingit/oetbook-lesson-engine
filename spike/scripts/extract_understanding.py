@@ -322,7 +322,8 @@ def gather(lesson: Path, page: int) -> dict:
     (out / "transcript_words.json").write_text(
         json.dumps(words, ensure_ascii=False, indent=1), encoding="utf-8")
 
-    return {"interval": iv, "index": index, "words": words, "bulk": bulk,
+    return {"lesson_label": paths.lesson_label(lesson), "deck_pages": paths.deck_pages(lesson),
+            "interval": iv, "index": index, "words": words, "bulk": bulk,
             "utterances": utterances, "events": events,
             "dwells": dwells, "carry": carry, "slide_text": slide_text,
             "slide_png": slide_png, "layer_png": layer_png}
@@ -330,7 +331,7 @@ def gather(lesson: Path, page: int) -> dict:
 
 def build_messages(data: dict) -> list[dict]:
     iv = data["interval"]
-    head = (f"Lesson: Grammar 1 - Verb Tenses. Deck page {iv['page']} of 19.\n"
+    head = (f"Lesson: {data['lesson_label']}. Deck page {iv['page']} of {data['deck_pages']}.\n"
             f"Interval: {timeline.clock(iv['start'])}-{timeline.clock(iv['end'])} "
             f"({iv['start']}-{iv['end']} s), {iv['duration'] / 60:.1f} minutes.\n"
             f"Slide-match confidence: score {iv['mean_score']}, resolved by "
@@ -548,7 +549,8 @@ def render(lesson: Path, page: int) -> None:
 
     html = ('<!doctype html><meta charset="utf-8"><title>Teaching intent - page '
             + str(page) + "</title>" + STYLE
-            + "<h1>Teaching intent &mdash; Grammar 1, deck page " + str(page) + "</h1>"
+            + "<h1>Teaching intent &mdash; " + paths.lesson_label(lesson) + ", deck page "
+            + str(page) + "</h1>"
             + '<div class="meta">' + meta + "</div>"
             + '<div class="shots"><img src="slide.png" alt="clean deck page">'
               '<img src="layer.png" alt="annotation layer"></div>'

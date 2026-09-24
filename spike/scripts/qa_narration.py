@@ -28,9 +28,31 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paths                                                    # noqa: E402
-from qa_script import (CHECKS, MAX_OUTPUT_TOKENS, MODEL, THINKING_LEVEL,  # noqa: E402
-                       USD_PER_M_INPUT, USD_PER_M_OUTPUT, api_key)
 from write_narration import MARK_TYPES, opt, spoken               # noqa: E402
+
+# Held here since 2026-09-24, when qa_script.py (the slide-based reviewer they
+# came from) moved to spike/superseded/.
+MODEL = "gemini-3.1-pro-preview"
+THINKING_LEVEL = "high"
+MAX_OUTPUT_TOKENS = 32000
+# ai.google.dev/gemini-api/docs/pricing, standard tier, prompts <= 200k tokens.
+# Output price includes thinking tokens.
+USD_PER_M_INPUT = 2.00
+USD_PER_M_OUTPUT = 12.00
+CHECKS = ["grammar-rule", "example-or-typed-text", "misleading-for-oet",
+          "spoken-vs-typed", "british-english", "product-fit", "student-level",
+          "register-claim"]
+
+
+def api_key() -> str:
+    for line in (Path(__file__).resolve().parents[2] / ".env").read_text(
+            encoding="utf-8").splitlines():
+        line = line.strip()
+        if line and not line.startswith("#") and "=" in line:
+            name, value = line.split("=", 1)
+            if name.strip() == "GEMINI_API_KEY":
+                return value.strip().strip('"').strip("'")
+    raise SystemExit("GEMINI_API_KEY not found in .env")
 from write_screens import block_texts                             # noqa: E402
 
 SYSTEM = """\

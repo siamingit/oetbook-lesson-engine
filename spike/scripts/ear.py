@@ -140,7 +140,7 @@ def agreement(script: str, heard: str) -> float:
 
 def listen(lesson: Path, page: int, only_terms: bool = False, reuse: bool = False) -> dict:
     lex = lexicon.load()
-    out_dir = paths.boards_dir(lesson, page)
+    out_dir = paths.boards_dir_for(lesson, page if isinstance(page, list) else [page])
     index = json.loads((out_dir / "audio_index.json").read_text(encoding="utf-8"))
     key = api_key()
     previous: dict[str, dict] = {}
@@ -149,6 +149,12 @@ def listen(lesson: Path, page: int, only_terms: bool = False, reuse: bool = Fals
         previous = {r["id"]: r for r in old["utterances"]}
     results = []
     failures = []
+    # The section's clinical and uncommon words (check_terms.py) are listened for
+    # too: a gross check that each one came out as that word. Not heard is a
+    # warning, listed per utterance; only lexicon terms fail the build.
+    tc_path = out_dir / "terms_check.json"
+    watch = ([t["term"] for t in json.loads(tc_path.read_text(encoding="utf-8"))["terms"]]
+             if tc_path.exists() else [])
     for uid, e in index.items():
         terms = lexicon.terms_in(e["text"], lex)
         if only_terms and not terms:
@@ -165,7 +171,12 @@ def listen(lesson: Path, page: int, only_terms: bool = False, reuse: bool = Fals
         heard_norm = " " + " ".join(norm(w) for w in text.split()) + " "
         missing = [t for t in terms if " " + norm(t) + " " not in heard_norm
                    and norm(t) not in heard_norm.replace(" ", "")]
+        low_text = " " + " ".join(norm(w) for w in e["text"].split()) + " "
+        other = [t for t in watch if (" " + " ".join(norm(x) for x in t.split()) + " ") in low_text]
+        other_missing = [t for t in other
+                         if (" " + " ".join(norm(x) for x in t.split()) + " ") not in heard_norm]
         r = {"id": uid, "file": e["file"], "terms": terms, "missing": missing, "heard": text,
+             "watched_terms": other, "watched_not_heard": other_missing,
              "agreement": round(agreement(e["text"], text), 3),
              "language": heard.get("language_code"),
              "language_probability": heard.get("language_probability")}
@@ -184,18 +195,26 @@ def listen(lesson: Path, page: int, only_terms: bool = False, reuse: bool = Fals
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("lesson_dir", type=Path)
-    parser.add_argument("--page", type=int, required=True)
+    parser.add_argument("--page", type=int)
+    parser.add_argument("--pages", help="a section's pages, e.g. 5,6")
     parser.add_argument("--only-terms", action="store_true",
                         help="transcribe only utterances that contain a lexicon term")
     parser.add_argument("--recompare", action="store_true",
                         help="reuse transcripts in ear.json for unchanged audio files")
     args = parser.parse_args()
-    report = listen(args.lesson_dir, args.page, args.only_terms, args.recompare)
+    pages = (sorted(int(x) for x in args.pages.split(",")) if args.pages
+             else [args.page])
+    report = listen(args.lesson_dir, pages, args.only_terms, args.recompare)
     low = [r for r in report["utterances"] if r["agreement"] < 0.8]
     print(f"heard {len(report['utterances'])} utterances; "
           f"{len(low)} below 80% word agreement")
     for r in low:
         print(f"  LOW {r['id']} {r['agreement']:.0%}: heard {r['heard']!r}")
+    unheard = [(r["id"], t, r["heard"]) for r in report["utterances"]
+               for t in r.get("watched_not_heard", [])]
+    print(f"clinical and uncommon words not heard as written: {len(unheard)}")
+    for uid, t, h in unheard:
+        print(f"  NOT HEARD {uid}: {t!r}; heard {h!r}")
     for f in report["failures"]:
         print("FAIL: " + f)
     if report["failures"]:

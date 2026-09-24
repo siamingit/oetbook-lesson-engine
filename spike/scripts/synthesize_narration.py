@@ -94,20 +94,47 @@ def require_terms_check(out_dir: Path, narration_path: Path, accept: bool) -> di
     return tc
 
 
+RETRY_WAITS_S = [5, 10, 20, 40, 60, 90, 120]   # about six minutes in all
+
+
+def synthesize_with_retry(client, text: str, speed: float, dict_id: str, uid: str) -> dict:
+    """Cartesia has returned intermittent quota errors (402, 429) that clear
+    within a minute: a per-minute limit. Wait and retry with backoff; any
+    other error, or the last retry, is raised to the caller, which stops."""
+    import time
+    for n, wait in enumerate(RETRY_WAITS_S + [None], 1):
+        try:
+            return synthesize(client, text, speed, dict_id)
+        except Exception as e:
+            msg = str(e).lower()
+            transient = any(k in msg for k in ("402", "429", "quota", "rate", "limit",
+                                               "timeout", "timed out", "503", "502",
+                                               "connection"))
+            if wait is None or not transient:
+                raise
+            print(f"  {uid}: {str(e)[:120]} - retry {n} in {wait}s", flush=True)
+            time.sleep(wait)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("lesson_dir", type=Path)
-    parser.add_argument("--page", type=int, required=True)
-    parser.add_argument("--speed", type=float, default=0.6)
+    parser.add_argument("--page", type=int)
+    parser.add_argument("--pages", help="a section's pages, e.g. 5,6")
+    # 1.0 chosen by the maintainer by ear, 2026-09-24 (about 155 words per
+    # minute measured; methodology §23). Speed is part of the cache key.
+    parser.add_argument("--speed", type=float, default=1.0)
     parser.add_argument("--accept-terms", action="store_true",
                         help="build although the terms check listed failures")
     args = parser.parse_args()
+    pages = (sorted(int(x) for x in args.pages.split(",")) if args.pages
+             else [args.page])
 
-    narration_path = paths.narration_dir(args.lesson_dir, args.page) / "narration.json"
+    narration_path = paths.narration_dir_for(args.lesson_dir, pages) / "narration.json"
     narr = json.loads(narration_path.read_text(encoding="utf-8"))
-    if narr["page"] != args.page:
-        raise SystemExit(f"narration under page-{args.page} reports page {narr['page']}")
-    out_dir = paths.boards_dir(args.lesson_dir, args.page)
+    if narr.get("pages", [narr["page"]]) != pages:
+        raise SystemExit(f"narration for {pages} reports pages {narr.get('pages')}")
+    out_dir = paths.boards_dir_for(args.lesson_dir, pages)
     audio_dir = out_dir / "audio"
     audio_dir.mkdir(parents=True, exist_ok=True)
     index_path = out_dir / "audio_index.json"
@@ -151,7 +178,17 @@ def main() -> None:
                         blocked.setdefault(t, []).append(u["id"])
                     continue
                 wav_path = audio_dir / f"{key}.wav"
-                result = synthesize(client, text, args.speed, dict_id)
+                try:
+                    result = synthesize_with_retry(client, text, args.speed, dict_id, u["id"])
+                except Exception as e:
+                    # Never skip an utterance silently: keep what is made,
+                    # name what is not, and stop.
+                    partial = {**{k: v for k, v in old_index.items() if k not in index}, **index}
+                    index_path.write_text(json.dumps(partial, indent=2, ensure_ascii=False),
+                                          encoding="utf-8")
+                    raise SystemExit(f"STOPPED at {u['id']} after retries: {str(e)[:300]}. "
+                                     f"{synthesized} made this run are kept in the index; "
+                                     "re-run to continue (made clips are reused).")
                 write_wav(wav_path, result["pcm"])
                 duration_s = len(result["pcm"]) / 2 / SAMPLE_RATE
                 problems = [p for p in (lexicon.phoneme_check(t, result["phonemes"], lex)
@@ -175,6 +212,12 @@ def main() -> None:
                 synthesized += 1
                 total_chars += len(text)
                 total_duration_s += duration_s
+                if synthesized % 10 == 0:
+                    # written as it goes: an interrupted run keeps what it paid for
+                    partial = {**{k: v for k, v in old_index.items() if k not in index}, **index}
+                    index_path.write_text(json.dumps(partial, indent=2, ensure_ascii=False),
+                                          encoding="utf-8")
+                    print(f"  {synthesized} made, {total_chars} characters", flush=True)
 
     if blocked:
         # Keep the previous index entries for the blocked utterances so the

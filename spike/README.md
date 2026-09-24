@@ -76,6 +76,14 @@ the first two of which decode the whole video:
 
 `.venv` in the first column marks a script that needs the virtual environment.
 
+> **Superseded scripts** (the slide-based script, QA, timeline, bundle, player and
+> page check) were moved to `spike/superseded/` on 2026-09-24 so they are not run
+> by mistake. The board-model scripts replace them; the notes below that name
+> them describe the old path and are kept as history. `synthesize_audio.py` stays
+> in `spike/scripts/`: it holds the voice, the model and the WAV writer that the
+> live scripts import.
+
+
 | Script | Reads | Writes |
 |---|---|---|
 | `extract_audio.py` | `source/video.mp4` | `analysis/audio.mp3` — mono, 16 kHz, 64 kbps MP3 |
@@ -89,28 +97,31 @@ the first two of which decode the whole video:
 | `build_sections.py` **.venv** | `source/slides.pdf` (headings by position), `analysis/deck_defects.json` | `analysis/sections.json`: the lesson title, the contents slide, and one section per slide heading; `--set PAGE "TITLE"` records a maintainer title |
 | `write_screens.py` **.venv** | `analysis/understanding/page-<N>/understanding.json`, `analysis/deck_defects.json`, `analysis/script/page-<N>/script.json` and `applied.jsonl` (maintainer rulings), `source/slides.pdf` (text layer only), `.env` | `analysis/screens/page-<N>/raw_response.json`, `screens.json`, `checks/index.html` |
 | `write_narration.py` **.venv** | `analysis/screens/<section>/screens.json`, `analysis/understanding/page-<N>/understanding.json` (every page of the section), `analysis/script/page-<N>/script.json` and `applied.jsonl` (maintainer rulings), `.env`; `--pages 5,6` for a multi-page section | `analysis/narration/<section>/raw_response.json`, `narration.json`, `checks/index.html`; with `--states`, `raw_response.splice-<n>.json` and `splices.jsonl` |
-| `write_script.py` **.venv** *(superseded by `write_narration.py`; kept until the board path is proven)* | `analysis/understanding/understanding.json`, `analysis/slides/slide_timeline.json`, `source/slides.pdf`, `.env` | `analysis/script/raw_response.json`, `script.json`, `checks/` |
+| `write_script.py` **moved to `spike/superseded/`, 2026-09-24; do not run** | `analysis/understanding/understanding.json`, `analysis/slides/slide_timeline.json`, `source/slides.pdf`, `.env` | `analysis/script/raw_response.json`, `script.json`, `checks/` |
 | `qa_narration.py` **.venv** | `analysis/narration/<section>/narration.json`, `analysis/screens/<section>/screens.json`, `analysis/understanding/page-<N>/understanding.json` (exercise sentences only), `.env`; `--pages 5,6` for a multi-page section | `analysis/narration/<section>/qa/qa_pass<N>.json`, `qa/raw_response_pass<N>.json` |
 | `run_narration.py` **.venv** | `analysis/sections.json`, every section's `screens.json`, `.env` | every section's narration and QA pass 1, in lesson order, stopping at the first failure; `analysis/narration/sections_report.json` |
 | `build_narration_review.py` **.venv** | `analysis/sections.json`, every section's `screens.json`, `narration.json` and `qa/qa_pass<N>.json` | `analysis/narration/lesson-review/index.html`: the whole lesson's narration, board state by board state, with QA findings |
 | `build_lesson_boards.py` **.venv** | `analysis/sections.json`, `analysis/understanding/page-<contents>/understanding.json` (beat ids only) | `analysis/screens/lesson-boards.json`, and the introduction as a narratable section: `analysis/screens/page-<contents>/screens.json` (title board, contents board with one revealable block per category). Narrate it with `write_narration.py --pages <contents>` |
 | `build_lesson_preview.py` **.venv** | `analysis/sections.json`, `lesson-boards.json`, every section's `screens.json` | `analysis/screens/lesson-preview/index.html`: every board of the lesson, static |
+| `preflight_pack.py` **.venv** | `source/slides.pdf`, `source/video.mp4`, `analysis/sections.json` (built if missing) | `analysis/preflight/preflight_pack.zip`, `summary.md`, `analysis/preflight.json`: the source gate's review pack, under 4 MB |
+| `build_lesson.py` **.venv** | the lesson folder | runs the whole pipeline in order (docs/03-RUNBOOK.md), skipping what is done and passing, stopping at the maintainer's gates (`--approve GATE --by NAME`, recorded in `analysis/gates.json`), at a failure (`analysis/runner.log`) and at `--budget`; `--status` shows spend and approvals |
+| `build_lesson_player.py` **.venv** | `analysis/sections.json`, every section's `screens.json`, `narration.json` and `generated/<section>/boards/audio_index.json` with its WAVs | `generated/lesson-player/player.html`, `bundle.json`, `timeline.json`, `audio_index.json`: the whole lesson with audio, introduction first; `--silent --wpm N` writes the silent preview instead |
 | `build_silent_preview.py` **.venv** | `analysis/sections.json`, every section's `screens.json` and `narration.json` | `generated/lesson-preview/silent/player.html` and `bundle.json`: the whole lesson played with no audio on a timeline estimated at `--wpm` (default 135), using the real timeline, reading-pointer and player code |
 | `speed_probe.py` **.venv** | `generated/page-<N>/boards/audio_index.json`, `spike/lexicon.json`, `.env` | `spike/out/lexicon-review/speed_<setting>.wav`, `speed_probes.json`: one utterance at chosen speed settings, pace measured; shown on the lexicon review page |
-| `qa_script.py` **.venv**  *(superseded by the board-model script above)* | `analysis/script/script.json`, `analysis/understanding/understanding.json` (exercise sentences only), `source/slides.pdf`, `.env` | `analysis/script/qa/qa_gemini.json`, `qa/raw_response.json` |
+| `qa_script.py` **moved to `spike/superseded/`, 2026-09-24; do not run** | `analysis/script/script.json`, `analysis/understanding/understanding.json` (exercise sentences only), `source/slides.pdf`, `.env` | `analysis/script/qa/qa_gemini.json`, `qa/raw_response.json` |
 | `synthesize_narration.py` **.venv** | `analysis/narration/page-<N>/narration.json`, `generated/page-<N>/boards/terms_check.json` (fresh), `spike/lexicon.json`, `.env` | `generated/page-<N>/boards/audio/*.wav`, `boards/audio_index.json` |
 | `synthesize_audio.py`  *(superseded by the board-model script above)* | `analysis/script/script.json`, `.env` | `generated/page-<N>/audio/*.wav`, `audio_index.json` |
 | `build_board_timeline.py` **.venv** | `analysis/narration/page-<N>/narration.json`, `generated/page-<N>/boards/audio_index.json` | `generated/page-<N>/boards/timeline.json` |
-| `build_timeline.py`  *(superseded by the board-model script above)* | `analysis/script/script.json`, `generated/page-<N>/audio_index.json` | `generated/page-<N>/timeline.json` |
+| `build_timeline.py` **moved to `spike/superseded/`, 2026-09-24; do not run** | `analysis/script/script.json`, `generated/page-<N>/audio_index.json` | `generated/page-<N>/timeline.json` |
 | `build_board_bundle.py` **.venv** | `analysis/screens/page-<N>/screens.json`, `generated/page-<N>/boards/timeline.json` | `generated/page-<N>/boards/bundle.json` |
-| `build_bundle.py` **.venv**  *(superseded by the board-model script above)* | `analysis/script/script.json`, `generated/page-<N>/timeline.json`, `source/slides.pdf` | `generated/page-<N>/slide.png`, `bundle.json` |
+| `build_bundle.py` **moved to `spike/superseded/`, 2026-09-24; do not run** | `analysis/script/script.json`, `generated/page-<N>/timeline.json`, `source/slides.pdf` | `generated/page-<N>/slide.png`, `bundle.json` |
 | `build_board_player.py` **.venv** | `generated/page-<N>/boards/bundle.json`, `board_player_template.html` | `generated/page-<N>/boards/player.html` |
 | `lexicon.py` **.venv** | `spike/lexicon.json`, `.env` | `--sync` pushes the file to Cartesia; `--verify` fails unless Cartesia matches; the synthesis scripts call the same check |
 | `check_terms.py` **.venv** | `analysis/narration/page-<N>/narration.json`, `analysis/screens/page-<N>/screens.json`, `analysis/keyterms.json`, `spike/lexicon.json`, `.env` | `generated/page-<N>/boards/terms_check.json`, `term_probes/`; non-zero exit lists terms the ear did not hear |
 | `ear.py` | `generated/page-<N>/boards/audio_index.json` and its WAVs, `.env` | `generated/page-<N>/boards/ear.json`; non-zero exit on a lexicon term not heard |
 | `check_marks.py` | `generated/page-<N>/boards/player.html` | `generated/page-<N>/boards/marks_check.json`; non-zero exit on a mark touching neighbouring text |
 | `check_board_page.py` | `generated/page-<N>/boards/bundle.json`, `audio/` | nothing; non-zero exit on a structural problem |
-| `build_player.py`  *(superseded by the board-model script above)* | `generated/page-<N>/bundle.json`, `player_template.html` | `generated/page-<N>/player.html` |
+| `build_player.py` **moved to `spike/superseded/`, 2026-09-24; do not run** | `generated/page-<N>/bundle.json`, `player_template.html` | `generated/page-<N>/player.html` |
 
 ### Options
 
@@ -175,9 +186,11 @@ topic's fixed layer. Everything after that is arithmetic
   bigger than the board.
 
 **Provenance is traced, not trusted.** The applied-edit ledger's `require`
-phrases are the only maintainer-authored text on disk, so a block marked
-`maintainer` must contain one of them; model-written text that carries a
-ruling is `adapted`. This check exists because the first run marked 24 of 65
+phrases are the only maintainer-authored text on disk, so a block or
+utterance marked `maintainer` must be made wholly of them, every sentence
+inside a required phrase (tightened 2026-09-24; it used to be enough to
+contain one); model-written text that carries a ruling is `adapted`, and the
+build relabels it with a note naming the ruling. This check exists because the first run marked 24 of 65
 blocks `maintainer` on the strength of carrying a ruling, and one of those
 was an invented sentence.
 

@@ -120,9 +120,10 @@ def run(player: Path, width: int) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("lesson_dir", type=Path)
-    parser.add_argument("--page", type=int, required=True)
+    parser.add_argument("--page", type=int)
+    parser.add_argument("--dir", type=Path, help="a built player folder, e.g. generated/lesson-player")
     args = parser.parse_args()
-    out_dir = paths.boards_dir(args.lesson_dir, args.page)
+    out_dir = args.dir or paths.boards_dir(args.lesson_dir, args.page)
     player = out_dir / "player.html"
 
     report = {}

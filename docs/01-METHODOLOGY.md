@@ -562,7 +562,29 @@ timeline is built, and is not authored.
 **Never state how formal, informal, common, rare, natural or preferred a word
 or phrase is, unless the source says so.** Teach what is correct and what is
 wrong. If register genuinely matters for OET, it comes from the maintainer
-and the utterance carrying it is marked `maintainer`.
+as a ruling; the utterance carrying it is `adapted` with a note naming the
+ruling, and `maintainer` only if its whole wording is the maintainer's (see
+"Provenance `maintainer`" below).
+
+### Provenance `maintainer` — tightened 2026-09-24
+
+`maintainer` is only for text whose **whole wording** the maintainer
+supplied: every sentence of it lies inside one of the ledger's `require`
+phrases, which are the only maintainer-authored text on disk. Text the model
+writes that carries a ruling is always `adapted`, with a note naming the
+ruling, even when it contains the maintainer's words. The earlier rule (it
+must *contain* a required phrase) let the model label seven page-17 lines
+`maintainer` because each said "an antacid".
+
+Both builds apply it: `write_screens.py` after the overrides and
+`write_narration.py` in `assemble()` relabel a `maintainer` block or utterance
+that fails the test to `adapted`, add the note, and record `relabelled`; the
+audits fail any `maintainer` label that is not wholly the maintainer's words.
+On Grammar 1 this relabelled 13 blocks and 20 utterances. Two remain
+`maintainer`: the lesson description on the title board, and page 13's
+"'Suffers from' is correct English, but it sounds emotional, and that can
+cost you marks.", which the maintainer's brief of 2026-09-23 said quotes his
+own words and which the page 13 ledger now holds whole.
 
 Found on page 14, whose critical QA findings were all of this kind:
 
@@ -774,7 +796,8 @@ minutes of framing and agenda). `write_narration.py` recognises it by
 one to two minutes, every category revealed as it is named, no reference to
 the session, the course or the recording; the audit checks the length and
 the source words. The maintainer's lesson description is a `require` phrase
-in that page's ledger, so the utterance that reads it can be `maintainer`.
+in that page's ledger, so the title board's description block is
+`maintainer`; an utterance that reads it inside its own words is `adapted`.
 
 The narration never names interface parts. "Chip" and "tag" (for the tense
 labels) appeared in 80 utterances written before the rule; `assemble()`
@@ -1066,4 +1089,29 @@ minute, so a higher setting can come out slower. A chosen setting is
 therefore a target: the lesson's pace is measured again after synthesis,
 and the silent preview's estimate (`build_silent_preview.py --wpm`) follows
 the measured pace, not the setting.
+
+The maintainer chose 1.0 by ear. Grammar 1 was synthesised whole at 1.0
+(991 utterances, 84,766 characters, no quota retries needed) and measures
+**149.5 words per minute of speech** across the lesson: below the single
+utterance's 155, because longer utterances with lists and numbers run
+slower. The whole lesson plays in 120 minutes, 106 of them speech.
+
+### Building the whole lesson (2026-09-24)
+
+- `synthesize_narration.py`, `check_terms.py`, `ear.py` take `--pages` (a
+  section). Synthesis retries a transient error (402, 429, timeouts) with
+  backoff for about six minutes, writes its index every ten clips, and
+  stops naming the utterance if the error persists: an utterance is never
+  skipped silently. Term probes are shared by the whole lesson.
+- The ear also listens for every clinical and uncommon word of the section
+  (from the terms check), not only lexicon terms, and lists any not heard as
+  written. Most such lines are formats, not faults: digits for number words,
+  American spellings, "timeline" for "time line".
+- `build_lesson_player.py` builds one player for the lesson (introduction
+  first, contents menu) from each section's audio index; ids are prefixed
+  per section and audio stays in its section's folder. The structural check
+  and the mark check take `--dir` for it. The structural check learned
+  diagram parts; the mark check found that the player could not mark a
+  phrase split by a coloured label or an earlier mark (13 marks drew
+  nothing), fixed in `wrapPhrase`.
 
