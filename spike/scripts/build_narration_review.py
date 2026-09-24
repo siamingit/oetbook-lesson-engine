@@ -74,7 +74,7 @@ def main() -> None:
             blocks = {b["id"]: b for t in scr["topics"] for h in t["thoughts"] for b in h["blocks"]}
             raw = json.loads((out_dir / "raw_response.json").read_text(encoding="utf-8"))
             usage = raw.get("usage") or {}
-            cost = (usage.get("input_tokens", 0) * 5 + usage.get("output_tokens", 0) * 25) / 1e6
+            cost = __import__("llm").raw_cost(raw)
             cost += sum(x.get("cost", 0) for x in (d.get("inputs") or {}).get("splices", []))
             utts = [u for bd in d["boards"] for st_ in bd["states"] for u in st_["utterances"]]
             words = sum(len(spoken(u["text_with_cues"]).split()) for u in utts)

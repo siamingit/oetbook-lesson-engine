@@ -975,6 +975,19 @@ def build_messages(data: dict) -> list[dict]:
     return [{"role": "user", "content": content}]
 
 
+def request_params(messages: list[dict], ttl: str = "5m") -> dict:
+    """The request, the same for a direct call and a batch. The stable system
+    prompt comes first and is cached (llm.system_blocks); the page's own data
+    follows in `messages`, after the cached prefix."""
+    import llm
+    return {"model": MODEL, "max_tokens": MAX_TOKENS,
+            "system": llm.system_blocks(SYSTEM, ttl),
+            "thinking": {"type": "adaptive"},
+            "output_config": {"effort": "high",
+                              "format": {"type": "json_schema", "schema": SCHEMA}},
+            "messages": messages}
+
+
 def show(messages: list[dict]) -> None:
     print("=" * 78)
     print("SYSTEM")
@@ -2235,7 +2248,8 @@ def render(lesson: Path, page: int, data: dict) -> int:
         json.dumps(result, ensure_ascii=False, indent=1), encoding="utf-8")
 
     usage = raw.get("usage") or {}
-    cost = (usage.get("input_tokens", 0) * 5 + usage.get("output_tokens", 0) * 25) / 1e6
+    import llm
+    cost = llm.raw_cost(raw)
     topic_no = {t["id"]: n for n, t in enumerate(topics, 1)}
     fails = [f for f in findings if f["severity"] == "fail"]
     warns = [f for f in findings if f["severity"] == "warn"]
@@ -2332,14 +2346,7 @@ def main() -> None:
 
     import anthropic
     client = anthropic.Anthropic(api_key=api_key())
-    with client.messages.stream(
-        model=MODEL, max_tokens=MAX_TOKENS,
-        system=SYSTEM,
-        thinking={"type": "adaptive"},
-        output_config={"effort": "high",
-                       "format": {"type": "json_schema", "schema": SCHEMA}},
-        messages=messages,
-    ) as stream:
+    with client.messages.stream(**request_params(messages)) as stream:
         response = stream.get_final_message()
     refuse_if_truncated(response, MAX_TOKENS)
     out_dir = paths.screens_dir_for(lesson, pages)

@@ -37,8 +37,7 @@ THINKING_LEVEL = "high"
 MAX_OUTPUT_TOKENS = 32000
 # ai.google.dev/gemini-api/docs/pricing, standard tier, prompts <= 200k tokens.
 # Output price includes thinking tokens.
-USD_PER_M_INPUT = 2.00
-USD_PER_M_OUTPUT = 12.00
+# prices: llm.GEMINI_PRO (looked up 2026-09-24, docs/03-RUNBOOK.md)
 CHECKS = ["grammar-rule", "example-or-typed-text", "misleading-for-oet",
           "spoken-vs-typed", "british-english", "product-fit", "student-level",
           "register-claim"]
@@ -300,19 +299,16 @@ def build_input(data: dict) -> str:
     ])
 
 
-def main() -> None:
-    lesson = Path(sys.argv[1])
-    if opt("--pages"):
-        pages = sorted(int(p) for p in opt("--pages").split(","))
-    else:
-        pages = [int(opt("--page", "13"))]
-    n_pass = int(opt("--pass", "1"))
+def prepare(lesson: Path, pages: list[int], n_pass: int = 1, states: list[str] | None = None,
+            name: str | None = None) -> dict:
+    """What one QA review sends: the blind payload (limited to `states` for a
+    check of rewritten states) and the label its files are written under."""
     data = payload(lesson, pages)
     # --states limits the review to the named board states (a check of the
     # states just rewritten, not a new whole-page pass); each kept board still
     # carries its fixed layer. --name labels the output files instead of the
     # pass number, so a states-only check never overwrites qa_pass1/2.
-    only = [s.strip() for s in (opt("--states") or "").split(",") if s.strip()]
+    only = states or []
     if only:
         boards = []
         for bd in data["boards"]:
@@ -324,12 +320,79 @@ def main() -> None:
             raise SystemExit(f"states not in this narration: {missing}")
         data["boards"] = boards
         data["ids"] = [u["id"] for bd in boards for s in bd["states"] for u in s["utterances"]]
-    label = opt("--name") or f"pass{n_pass}"
     text = build_input(data)
     if only:
         text = ("ONLY SOME STATES ARE UNDER REVIEW: the ones below were just rewritten. "
                 "Judge them; earlier and later states are not shown and are not "
                 "missing content.\n\n" + text)
+    return {"data": data, "text": text, "label": name or f"pass{n_pass}", "n_pass": n_pass,
+            "out": paths.narration_dir_for(lesson, pages) / "qa"}
+
+
+def gemini_request(text: str) -> dict:
+    """One review as a Gemini batch-mode inline request (generateContent
+    shape): the stable system instruction first, then the lesson."""
+    return {"contents": [{"parts": [{"text": text}], "role": "user"}],
+            "config": {"system_instruction": {"parts": [{"text": SYSTEM}]},
+                       "response_mime_type": "application/json",
+                       "response_json_schema": SCHEMA,
+                       "thinking_config": {"thinking_level": THINKING_LEVEL},
+                       "max_output_tokens": MAX_OUTPUT_TOKENS}}
+
+
+def finish(prep: dict, result_text: str, usage: dict, batch: bool, raw_text: str) -> Path:
+    """Write the review's raw response and its findings with their cost, the
+    same for a direct call and a batch result. `usage`: input, output,
+    thought and cached token counts."""
+    import llm
+    data, out, label, n_pass = prep["data"], prep["out"], prep["label"], prep["n_pass"]
+    out.mkdir(parents=True, exist_ok=True)
+    (out / f"raw_response_{label}.json").write_text(raw_text, encoding="utf-8")
+    result = json.loads(result_text)
+    billable_output = usage["output"] + usage["thought"]
+    cost = llm.gemini_cost(usage["input"], billable_output, usage.get("cached", 0), batch)
+    known = set(data["ids"]) | {"whole-page"}
+    result["meta"] = {
+        "model": MODEL, "thinking_level": THINKING_LEVEL, "pass": n_pass,
+        "mode": "batch" if batch else "direct",
+        "reviewed_utterances": len(data["ids"]),
+        "input_tokens": usage["input"], "cached_tokens": usage.get("cached", 0),
+        "output_tokens": usage["output"], "thought_tokens": usage["thought"],
+        "billable_output_tokens": billable_output,
+        "cost_usd": round(cost, 4),
+        "unknown_ids": sorted({f["utterance_id"] for f in result["findings"]} - known),
+        "independent_of": "Persian transcript, understanding beats, provenance notes, "
+                          "rulings; given only a maintainer flag for check 8",
+    }
+    path = out / f"qa_{label}.json"
+    path.write_text(json.dumps(result, ensure_ascii=False, indent=1), encoding="utf-8")
+    counts: dict[str, int] = {}
+    for f in result["findings"]:
+        counts[f["severity"]] = counts.get(f["severity"], 0) + 1
+    print(str(path))
+    print("findings: " + (", ".join(f"{n} {s}" for s, n in sorted(counts.items())) or "none"))
+    for f in sorted(result["findings"],
+                    key=lambda f: ["critical", "major", "minor"].index(f["severity"])):
+        print(f"  {f['severity'].upper():8} {f['utterance_id']:>12} {f['check']:<22} "
+              f"[{f['confidence']}] {f['issue']}")
+        print(f"           fix: {f['proposed_fix']}")
+    print(f"tokens {usage['input']:,} in ({usage.get('cached', 0):,} cached) / "
+          f"{usage['output']:,} out + {usage['thought']:,} thinking | ${cost:.3f}"
+          + (" (batch)" if batch else ""))
+    if result["meta"]["unknown_ids"]:
+        print("CHECK: findings on unknown ids: " + ", ".join(result["meta"]["unknown_ids"]))
+    return path
+
+
+def main() -> None:
+    lesson = Path(sys.argv[1])
+    if opt("--pages"):
+        pages = sorted(int(p) for p in opt("--pages").split(","))
+    else:
+        pages = [int(opt("--page", "13"))]
+    only = [s.strip() for s in (opt("--states") or "").split(",") if s.strip()]
+    prep = prepare(lesson, pages, int(opt("--pass", "1")), only, opt("--name"))
+    data, text = prep["data"], prep["text"]
 
     if "--call" not in sys.argv:
         print("=" * 78)
@@ -352,6 +415,8 @@ def main() -> None:
         print("no API call made")
         return
 
+    # A direct call: a single review at a gate, where waiting for a batch would
+    # slow the maintainer. Whole-stage passes go through run_batch_stage.py.
     from google import genai
     client = genai.Client(api_key=api_key())
     interaction = client.interactions.create(
@@ -368,50 +433,11 @@ def main() -> None:
         raise SystemExit(
             f"REFUSED: the reviewer returned status {status!r}, not 'completed', so "
             f"its findings are incomplete. Nothing was written.")
-
-    out = paths.narration_dir_for(lesson, pages) / "qa"
-    out.mkdir(parents=True, exist_ok=True)
-    (out / f"raw_response_{label}.json").write_text(
-        interaction.model_dump_json(indent=1), encoding="utf-8")
-
-    result = json.loads(interaction.output_text)
-    usage = interaction.usage
-    billable_output = usage.total_output_tokens + usage.total_thought_tokens
-    cost = (usage.total_input_tokens * USD_PER_M_INPUT
-            + billable_output * USD_PER_M_OUTPUT) / 1e6
-
-    known = set(data["ids"]) | {"whole-page"}
-    result["meta"] = {
-        "model": MODEL, "thinking_level": THINKING_LEVEL, "pass": n_pass,
-        "reviewed_utterances": len(data["ids"]),
-        "input_tokens": usage.total_input_tokens,
-        "output_tokens": usage.total_output_tokens,
-        "thought_tokens": usage.total_thought_tokens,
-        "billable_output_tokens": billable_output,
-        "cost_usd": round(cost, 3),
-        "unknown_ids": sorted({f["utterance_id"] for f in result["findings"]} - known),
-        "independent_of": "Persian transcript, understanding beats, provenance notes, "
-                          "rulings; given only a maintainer flag for check 8",
-    }
-    path = out / f"qa_{label}.json"
-    path.write_text(json.dumps(result, ensure_ascii=False, indent=1), encoding="utf-8")
-
-    counts: dict[str, int] = {}
-    for f in result["findings"]:
-        counts[f["severity"]] = counts.get(f["severity"], 0) + 1
-    print(str(path))
-    print("findings: " + (", ".join(f"{n} {s}" for s, n in sorted(counts.items()))
-                          or "none"))
-    for f in sorted(result["findings"],
-                    key=lambda f: ["critical", "major", "minor"].index(f["severity"])):
-        print(f"  {f['severity'].upper():8} {f['utterance_id']:>12} {f['check']:<22} "
-              f"[{f['confidence']}] {f['issue']}")
-        print(f"           fix: {f['proposed_fix']}")
-    print(f"tokens {usage.total_input_tokens:,} in / {usage.total_output_tokens:,} out "
-          f"+ {usage.total_thought_tokens:,} thinking = {billable_output:,} billable "
-          f"out | ${cost:.3f}")
-    if result["meta"]["unknown_ids"]:
-        print("CHECK: findings on unknown ids: " + ", ".join(result["meta"]["unknown_ids"]))
+    u = interaction.usage
+    finish(prep, interaction.output_text,
+           {"input": u.total_input_tokens, "output": u.total_output_tokens,
+            "thought": u.total_thought_tokens, "cached": u.total_cached_tokens or 0},
+           False, interaction.model_dump_json(indent=1))
 
 
 if __name__ == "__main__":

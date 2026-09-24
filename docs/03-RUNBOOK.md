@@ -82,11 +82,15 @@ speech) at **149.5 words per minute**.
 
 Model spend on disk for Grammar 1 is $71.13, but most of that is
 development: the superseded slide-based path, rejected screen attempts and
-repeated rules changes. **A new lesson built on the finished pipeline should
-need about $30 of model spend** (understanding ~$6, screens ~$8, narration
+repeated rules changes. At full price, **a new lesson built on the finished
+pipeline would need about $30 of model spend** (understanding ~$6, screens ~$8, narration
 ~$8 plus rewrites ~$3, QA ~$5); set `--budget` with a margin, for example 45.
 Cartesia is billed in characters on the account's plan: about 85,000 per
 two-hour lesson. Its price in dollars depends on the plan and is UNKNOWN here.
+
+With the batch mode below, the same work is **estimated at about $14 of model
+spend**. That figure is an estimate, not a measurement, until lesson 2 runs;
+see "Cost controls".
 
 ---
 
@@ -106,21 +110,78 @@ Gates are marked **GATE**. Costs are Grammar 1's.
 | 6 | Slide timeline | `build_slide_timeline.py <L>`, `--stage2`, then `--score-max 0.035 --margin-min 0.04 --margin-min-stage2 0.05` | video, deck | `analysis/slides/slide_timeline.json` | free |
 | 7 | Annotations | `extract_annotations.py <L>` | video, deck, timeline | `analysis/annotations/annotation_events.json` | free |
 | 8 | Sections | `build_sections.py <L>` (already built by the preflight); `--set PAGE "TITLE"`, `--description "..."`, `--diagram-pages 5,11` at the source gate | deck, `deck_defects.json` | `analysis/sections.json` | free |
-| 9 | Understanding | `extract_understanding.py <L> --page N --call` for the contents slide and every section's pages | transcript, timeline, annotations, deck | `analysis/understanding/page-N/understanding.json` | $0.38 a page |
-| 10 | Screens | `run_sections.py <L> --budget USD` (each section: `write_screens.py <L> --pages ... --call`) | understanding, deck text, `deck_defects.json`, ledgers | `analysis/screens/<section>/screens.json` | about $0.60 a section |
+| 9 | Understanding | one batch: `run_batch_stage.py <L> --stage understanding` (direct, one page: `extract_understanding.py <L> --page N --call`) for the contents slide and every section's pages | transcript, timeline, annotations, deck | `analysis/understanding/page-N/understanding.json` | $0.38 a page |
+| 10 | Screens | one batch: `run_batch_stage.py <L> --stage screens` (direct, one section: `write_screens.py <L> --pages ... --call`) | understanding, deck text, `deck_defects.json`, ledgers | `analysis/screens/<section>/screens.json` | about $0.60 a section |
 | 11 | Opening boards and preview | `build_lesson_boards.py <L>`, `build_lesson_preview.py <L>` | sections, screens | `lesson-boards.json`, the introduction's `screens.json`, `analysis/screens/lesson-preview/index.html` | free |
 | | **GATE screens** | the maintainer reviews every board in the lesson preview | | | |
-| 12 | Narration | `write_narration.py <L> --pages <contents> --call` (introduction), `run_narration.py <L>` (every section, with QA pass 1) | screens, understanding, ledgers | `analysis/narration/<section>/narration.json`, `qa/qa_pass1.json` | about $0.60 a section, QA $0.15 a pass |
+| 12 | Narration | one batch each: `run_batch_stage.py <L> --stage narration` (the introduction and every section), then `--stage qa1` (Gemini batch mode) | screens, understanding, ledgers | `analysis/narration/<section>/narration.json`, `qa/qa_pass1.json` | about $0.60 a section, QA $0.15 a pass |
 | 13 | Silent preview and review page | `build_silent_preview.py <L>`, `build_narration_review.py <L>` | narration, screens | `generated/lesson-preview/silent/player.html`, `analysis/narration/lesson-review/index.html` | free |
 | | **GATE narration** | the maintainer watches the silent preview and reads the QA findings | | | |
 | 14 | Terms check | `check_terms.py <L> --pages ...` per section | narration, screens, keyterms, lexicon | `generated/<section>/boards/terms_check.json`, shared `generated/term_probes/` | a few thousand characters |
 | | **GATE lexicon** | only when the ear did not hear a term as written: `lexicon_review.py`, then `lexicon.py --approve TERM --by NAME` | | | |
 | 15 | Synthesis | `synthesize_narration.py <L> --pages ...` per section (speed 1.0; `--accept-terms` after the lexicon gate) | narration, lexicon, terms check | `generated/<section>/boards/audio/`, `audio_index.json` | about 85,000 characters a lesson |
 | 16 | Ear | `ear.py <L> --pages ... --recompare` per section | audio, lexicon, terms check | `generated/<section>/boards/ear.json` | Scribe, about 106 min of audio |
-| 17 | Lesson player and checks | `build_lesson_player.py <L>`, `check_board_page.py <L> --dir <L>/generated/lesson-player`, `check_marks.py <L> --dir ...` | every section's narration, screens and audio | `generated/lesson-player/player.html`, `marks_check.json` | free |
+| 17 | Lesson player and checks | `build_lesson_player.py <L>`, `check_board_page.py <L> --dir <L>/generated/lesson-player`, `check_marks.py <L> --dir ...` | every section's narration, screens and audio | `generated/lesson-player/`: the lesson bundle (`bundle.json`, `text.json`, `blocks.css`; docs/04-LESSON-BUNDLE.md), `player.html` (its reference renderer), `marks_check.json` | free |
 | | **GATE final** | the maintainer plays the finished lesson | | | |
 
 ---
+
+## Cost controls
+
+Recorded 2026-09-24, before lesson 2. Prices looked up that day, not assumed:
+
+| | Standard | Batch | Cache |
+|---|---|---|---|
+| Claude Opus 5, per million tokens | $5 in, $25 out | $2.50 in, $12.50 out (50%) | write $6.25 (5 min) or $10 (1 hour); read $0.50 |
+| Gemini 3.1 Pro Preview, per million tokens (prompts up to 200k) | $2 in, $12 out (thinking billed as output) | $1 in, $6 out (50%) | cached input $0.20 |
+
+Sources: platform.claude.com/docs/en/about-claude/pricing and
+.../build-with-claude/batch-processing; ai.google.dev/gemini-api/docs/pricing
+("last updated 2026-09-24"), .../batch-mode and .../caching. The Anthropic
+batch discount and the caching multipliers stack. Anthropic batches: up to
+100,000 requests or 256 MB, most done within an hour, at most 24 hours, results
+kept 29 days, no streaming; cache hits inside a batch are best effort and the
+1-hour cache is recommended there. Gemini batches: 24-hour target, inline
+requests up to 20 MB; implicit caching is automatic from 4,096 tokens on Gemini
+3.1 Pro.
+
+**Batch.** Every non-interactive model stage runs as one batch for the whole
+lesson: understanding, screens, narration and whole-section QA passes
+(`run_batch_stage.py`, which the runner calls). The batch id is saved the moment
+it is submitted, so a stopped run waits for the same batch and never pays twice.
+Single-section rewrites at a gate stay direct calls, where waiting would slow
+the maintainer: `write_narration.py --states --brief`, `write_screens.py
+--pages ... --call`, `qa_narration.py --states`.
+
+**Prompt caching.** Each stage's stable system prompt now comes first as a
+cached block (1-hour cache in a batch, 5-minute in a direct call); the page's
+own data follows it. Before this, every call showed `cache_read_input_tokens =
+0`. What caching can save is small, and the numbers say why: output dominates.
+On Grammar 1's page 12 the screens call took 20,148 input and 15,995 output
+tokens, the narration call 15,752 and 18,683, so output is about 80% of each
+call's cost. The cached prefixes are about 5,200 tokens (screens), 3,100
+(narration) and 1,000 (understanding), estimated at 3.6 characters a token: at
+most about 2 cents saved per screens call. The QA prompt, about 1,700 tokens,
+is below Gemini's 4,096-token minimum and cannot cache.
+
+Each request's closing task instruction stays after the page's data on
+purpose, since instructions read best after the material. It is short, so
+leaving it outside the cached prefix costs almost nothing.
+
+**Measured on lesson 2: pending.** `run_batch_stage.py` prints each batch's
+cost and the cache's effect (tokens written, tokens read, net saving) and keeps
+them in `analysis/batches/<stage>-<time>.json`. The first stage of lesson 2 is
+the measurement; this section and the baseline are updated from it.
+
+Estimated at batch prices from Grammar 1's token counts (`run_batch_stage.py
+--dry-run --all` on Grammar 1): understanding $2.23, screens $3.41, narration
+$3.38, QA pass 1 $0.99, about $10 of first drafts; with direct rewrites at a
+gate (about $3 on Grammar 1) and later QA passes, **about $14 a lesson**, against
+$30 at full price.
+
+A dry run is free: `run_batch_stage.py <L> --stage STAGE --dry-run` builds
+every pending request, checks its shape (the Gemini request through the SDK's
+own types) and prints the count, size and estimate.
 
 ## At each gate
 

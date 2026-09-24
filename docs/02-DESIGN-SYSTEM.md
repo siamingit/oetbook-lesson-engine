@@ -18,6 +18,11 @@ domain and logo are not decided and **never appear on lesson screens**.
 - Fills the viewport in fullscreen. On a phone: landscape.
 - All content sits inside the frame. No side panel, no board beside the
   slide, nothing outside it.
+- This governs the **lesson frame itself**. The website page around the
+  frame may have its own panels and controls (contents, progress, resume,
+  an AI chat); they are the page's, not the lesson's, and never draw inside
+  the frame. Clarified 2026-09-24 (docs/00-PRODUCT.md §1,
+  docs/04-LESSON-BUNDLE.md).
 - Background: **white**.
 - Mood: **clinical and precise, and visually rich**. Calm, uncluttered,
   never playful. Colour, badges, cards and timelines are used freely,
@@ -444,7 +449,8 @@ Marks belong to the working layer and are erased with it.
 
 ## 9. Controls
 
-- Play/pause, progress bar, elapsed time. Nothing else.
+- Play/pause, progress bar, elapsed time. Nothing else inside the frame;
+  the website page around it may carry more (§1).
 - Contents list reachable from the header, one entry per **section**,
   never per board or topic. The
   student can jump forward or back and return to where playback reached.

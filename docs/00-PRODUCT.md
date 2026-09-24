@@ -26,6 +26,12 @@ with the speech.
 - On a phone: landscape, filling the screen.
 - Content lives inside the frame. There is no side panel, no board
   beside the slide, nothing outside the 16:9 area.
+- That rule is about the **lesson frame itself**: the lesson's teaching
+  content never spills out of it. The website page the frame sits on is a
+  different thing, and may have panels and controls around it: a contents
+  panel, progress, resume, an AI chat about the lesson. Clarified by the
+  maintainer 2026-09-24; the page is built later, around the lesson bundle
+  (docs/04-LESSON-BUNDLE.md).
 
 ### Boards within a lesson
 

@@ -35,8 +35,8 @@ RATE_IN, RATE_OUT = 5, 25          # $ per million tokens, as the stages print i
 
 
 def cost_of(raw: dict) -> float:
-    u = raw.get("usage") or {}
-    return (u.get("input_tokens", 0) * RATE_IN + u.get("output_tokens", 0) * RATE_OUT) / 1e6
+    import llm
+    return llm.raw_cost(raw)       # cache writes/reads and the batch discount included
 
 
 def summarise(lesson: Path, pages: list[int]) -> dict | None:

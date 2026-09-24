@@ -468,7 +468,8 @@ def render(lesson: Path, page: int) -> None:
     events = {e["id"]: e for e in src["events"]}
     iv = src["interval"]
     usage = raw.get("usage") or {}
-    cost = (usage.get("input_tokens", 0) * 5 + usage.get("output_tokens", 0) * 25) / 1e6
+    import llm
+    cost = llm.raw_cost(raw)
 
     beats = []
     for b in data["beats"]:
@@ -592,14 +593,7 @@ def main() -> None:
 
     import anthropic
     client = anthropic.Anthropic(api_key=api_key())
-    with client.messages.stream(
-        model=MODEL, max_tokens=MAX_TOKENS,
-        system=SYSTEM,
-        thinking={"type": "adaptive"},
-        output_config={"effort": "high",
-                       "format": {"type": "json_schema", "schema": SCHEMA}},
-        messages=messages,
-    ) as stream:
+    with client.messages.stream(**request_params(messages)) as stream:
         response = stream.get_final_message()
     refuse_if_truncated(response, MAX_TOKENS)
     out = paths.understanding_dir(lesson, page)
@@ -607,6 +601,19 @@ def main() -> None:
     (out / "raw_response.json").write_text(response.to_json(), encoding="utf-8")
     print("stop_reason:", response.stop_reason)
     print("usage:", response.usage)
+
+
+def request_params(messages: list[dict], ttl: str = "5m") -> dict:
+    """The request, the same for a direct call and a batch. The stable system
+    prompt comes first and is cached (llm.system_blocks); the page's own data
+    follows in `messages`, after the cached prefix."""
+    import llm
+    return {"model": MODEL, "max_tokens": MAX_TOKENS,
+            "system": llm.system_blocks(SYSTEM, ttl),
+            "thinking": {"type": "adaptive"},
+            "output_config": {"effort": "high",
+                              "format": {"type": "json_schema", "schema": SCHEMA}},
+            "messages": messages}
 
 
 def refuse_if_truncated(response, cap: int) -> None:

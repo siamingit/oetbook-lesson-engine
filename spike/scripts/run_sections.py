@@ -30,8 +30,8 @@ EST_PER_SECTION = 0.75             # the guard before a call, from page-13 runs
 
 
 def cost_of(raw: dict) -> float:
-    u = raw.get("usage") or {}
-    return (u.get("input_tokens", 0) * RATE_IN + u.get("output_tokens", 0) * RATE_OUT) / 1e6
+    import llm
+    return llm.raw_cost(raw)       # cache writes/reads and the batch discount included
 
 
 def summarise(lesson: Path, pages: list[int]) -> dict | None:

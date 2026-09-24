@@ -49,7 +49,8 @@ GATES = {
                "lexicon entry; approve with lexicon.py --approve TERM --by NAME",
     "final": "generated/lesson-player/player.html: the finished lesson",
 }
-# Estimated model cost per unit, from Grammar 1 (docs/03-RUNBOOK.md, baseline).
+# Estimated model cost per unit at FULL price, from Grammar 1 (docs/03-RUNBOOK.md,
+# baseline); batched stages are charged at half (batch()).
 EST = {"understanding": 0.40, "screens": 0.75, "narration": 0.65, "qa": 0.15}
 
 
@@ -101,7 +102,8 @@ def spent(L: Path) -> float:
         except (json.JSONDecodeError, UnicodeDecodeError):
             continue
         if "input_tokens" in u:
-            total += (u["input_tokens"] * 5 + u.get("output_tokens", 0) * 25) / 1e6
+            import llm
+            total += llm.raw_cost(json.loads(p.read_text(encoding="utf-8")))
     for p in (L / "analysis").rglob("qa/qa_*.json"):
         total += json.loads(p.read_text(encoding="utf-8")).get("meta", {}).get("cost_usd", 0)
     return total
@@ -217,29 +219,37 @@ def stage_sections(L, a):
                    "build_sections.py --set PAGE \"TITLE\"")
 
 
+def batch(L, stage: str, pending: int, unit_est: float, a) -> None:
+    """One model stage for every pending unit as a single batch at half price
+    (run_batch_stage.py), within the budget. A batch already submitted is
+    waited for, never paid for twice."""
+    if pending == 0 and not (L / "analysis" / "batches" / f"{stage}.json").exists():
+        return
+    afford(L, a.budget, pending * unit_est * 0.5, f"{stage}: {pending} units in one batch")
+    run(L, [str(HERE / "run_batch_stage.py"), str(L), "--stage", stage],
+        f"{stage}, one batch of {pending}")
+
+
 def stage_understanding(L, a):
     info, secs = sections(L)
     pages = sorted({p for s in secs for p in s["pages"]})
     todo = [p for p in pages if not (paths.understanding_dir(L, p) / "understanding.json").exists()]
-    for p in todo:
-        afford(L, a.budget, EST["understanding"], f"understanding of page {p}")
-        run(L, [str(HERE / "extract_understanding.py"), str(L), "--page", str(p), "--call"],
-            f"understanding, page {p}")
+    batch(L, "understanding", len(todo), EST["understanding"], a)
 
 
 def stage_screens(L, a):
     info, secs = sections(L)
     body = secs[1:] if info.get("contents_page") else secs
     todo = [s for s in body if not audit_ok(paths.screens_dir_for(L, s["pages"]) / "screens.json")]
-    if todo:
-        afford(L, a.budget, EST["screens"], "screens of the next section")
-        remaining = max(0.0, a.budget - spent(L))
-        run(L, [str(HERE / "run_sections.py"), str(L), "--budget", f"{remaining:.2f}"],
-            "screens, section by section")
+    try:
+        batch(L, "screens", len(todo), EST["screens"], a)
+    except Stop as e:
         todo = [s for s in body if not audit_ok(paths.screens_dir_for(L, s["pages"]) / "screens.json")]
-        if todo:
-            raise Stop("screens not complete for: " + ", ".join(s["title"] for s in todo)
-                       + ". See analysis/screens/sections_report.json and runner.log.")
+        if not todo:
+            raise
+        raise Stop(str(e) + "\nSections not passing: " + ", ".join(s["title"] for s in todo)
+                   + ". Fix by override, or re-write one with write_screens.py --pages ... "
+                     "--call (a direct call); re-running the runner batches the rest again.")
     run(L, [str(HERE / "build_lesson_boards.py"), str(L)], "title and contents boards")
     run(L, [str(HERE / "build_lesson_preview.py"), str(L)], "screens preview")
     require_gate(L, "screens")
@@ -247,24 +257,11 @@ def stage_screens(L, a):
 
 def stage_narration(L, a):
     info, secs = sections(L)
-    cp = info.get("contents_page")
-    if cp:
-        nd = paths.narration_dir_for(L, [cp])
-        if not audit_ok(nd / "narration.json"):
-            afford(L, a.budget, EST["narration"] / 3, "introduction narration")
-            run(L, [str(HERE / "write_narration.py"), str(L), "--pages", str(cp), "--call"],
-                "introduction narration")
-        if not (nd / "qa" / "qa_pass1.json").exists():
-            afford(L, a.budget, EST["qa"] / 2, "introduction QA pass 1")
-            run(L, [str(HERE / "qa_narration.py"), str(L), "--pages", str(cp), "--call",
-                    "--pass", "1"], "introduction QA pass 1")
-    body = secs[1:] if cp else secs
-    todo = [s for s in body
-            if not audit_ok(paths.narration_dir_for(L, s["pages"]) / "narration.json")
-            or not (paths.narration_dir_for(L, s["pages"]) / "qa" / "qa_pass1.json").exists()]
-    if todo:
-        afford(L, a.budget, EST["narration"] + EST["qa"], "narration of the next section")
-        run(L, [str(HERE / "run_narration.py"), str(L)], "narration and QA pass 1, section by section")
+    todo = [s for s in secs if not audit_ok(paths.narration_dir_for(L, s["pages"]) / "narration.json")]
+    batch(L, "narration", len(todo), EST["narration"], a)
+    qa = [s for s in secs
+          if not (paths.narration_dir_for(L, s["pages"]) / "qa" / "qa_pass1.json").exists()]
+    batch(L, "qa1", len(qa), EST["qa"], a)
     run(L, [str(HERE / "build_silent_preview.py"), str(L)], "silent preview")
     run(L, [str(HERE / "build_narration_review.py"), str(L)], "narration review page")
     require_gate(L, "narration")

@@ -141,6 +141,38 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
 <div id="review"><div id="subtitle"></div><div id="where"></div></div>
 <script>
 const BUNDLE = __BUNDLE_JSON__;
+// A reference renderer of the lesson bundle (docs/04-LESSON-BUNDLE.md): it
+// reads what the bundle states - sections, each board's section, reveal times,
+// how long the working layer lasts, the pointer's hold - and works none of it
+// out. An older per-section bundle (build_board_bundle.py, no format_version)
+// is brought to the same shape first; nothing below knows the difference.
+if (!BUNDLE.format_version) (function legacy(b) {
+  b.sections = (b.meta.sections || []).map((s, i) => ({ ...s, id: "s" + (i + 1) }));
+  b.meta.reading_hold_s = 2.5;
+  b.boards.forEach((bd, bi) => {
+    let sec = b.sections[0];
+    for (const s of b.sections) if (s.start <= bd.start + 1e-6) sec = s;
+    bd.section = sec ? sec.id : null;
+    bd.until = bi + 1 < b.boards.length ? b.boards[bi + 1].start : b.meta.total_duration_s;
+    const parts = id => [...(b.blocks[id].html.matchAll(/data-part="([^"]+)"/g))].map(m => m[1]);
+    const fixedRev = {};
+    for (const s of bd.states) {
+      const sRev = {};
+      for (const u of s.utterances) for (const c of u.cues) if (c.type === "reveal") {
+        const base = String(c.block).split(".")[0];
+        if (base !== c.block && bd.fixed.includes(base)) fixedRev[c.block] = c.time; else sRev[c.block] = c.time;
+      }
+      s.reveal = {};
+      for (const w of s.working) if (w in sRev) {
+        s.reveal[w] = sRev[w];
+        for (const p of parts(w)) s.reveal[p] = p in sRev ? sRev[p] : sRev[w];
+      }
+      s.until = s.erase ? s.erase.time : bd.until;
+    }
+    bd.reveal = {};
+    for (const f of bd.fixed) for (const p of parts(f)) bd.reveal[p] = p in fixedRev ? fixedRev[p] : bd.start;
+  });
+})(BUNDLE);
 const blocks = BUNDLE.blocks;
 const boards = BUNDLE.boards;
 const totalDuration = BUNDLE.meta.total_duration_s;
@@ -200,7 +232,7 @@ const contentsList = document.getElementById("contentsList");
 scrubber.max = totalDuration;
 
 // Contents: one entry per SECTION, never per board (docs/00-PRODUCT.md §1).
-const sections = BUNDLE.meta.sections || [];
+const sections = BUNDLE.sections;
 const contentButtons = [];
 sections.forEach((sec, i) => {
   const li = document.createElement("li");
@@ -225,29 +257,25 @@ function stateAt(bd, t) {
   for (const s of bd.states) if (s.start <= t + 1e-6) cur = s; else break;
   return cur;
 }
-// Reveal time of each working block, keyed by state id + block id. A diagram
-// PART ("k07.3") of a working block is keyed the same way; a part of a
-// fixed-layer diagram is keyed by board id, because once drawn it stays for
-// the rest of the board, through every erasure.
+// Reveal times as the bundle states them: a state's `reveal` holds its working
+// blocks and their diagram parts; a board's `reveal` holds the parts of its
+// fixed diagrams, which stay for the rest of the board, through every erasure.
+// Marks are every cue that is neither a reveal nor a pause.
 const revealAt = new Map();
 const fixedPartAt = new Map();
 const marksByState = new Map();
-for (const bd of boards) for (const s of bd.states) {
-  const marks = [];
-  for (const u of s.utterances) for (const c of u.cues) {
-    if (c.type === "reveal") {
-      const base = String(c.block).split(".")[0];
-      if (base !== c.block && bd.fixed.includes(base)) fixedPartAt.set(bd.id + "|" + c.block, c.time);
-      else revealAt.set(s.id + "|" + c.block, c.time);
-    }
-    else if (c.type !== "pause") marks.push(c);
+for (const bd of boards) {
+  for (const [id, at] of Object.entries(bd.reveal)) fixedPartAt.set(bd.id + "|" + id, at);
+  for (const s of bd.states) {
+    for (const [id, at] of Object.entries(s.reveal)) revealAt.set(s.id + "|" + id, at);
+    const marks = [];
+    for (const u of s.utterances) for (const c of u.cues) if (c.type !== "reveal" && c.type !== "pause") marks.push(c);
+    marks.sort((a, b) => a.time - b.time);
+    marksByState.set(s.id, marks);
   }
-  marks.sort((a, b) => a.time - b.time);
-  marksByState.set(s.id, marks);
 }
 
-// Parts with no reveal cue of their own follow their block (an older
-// narration that reveals a timeline whole).
+// A part is shown while its block is shown, from its reveal time.
 function drawParts(bd, s, t, jumped) {
   for (const [id, el] of blockEls) {
     const fixed = el.dataset.layer === "fixed";
@@ -255,11 +283,11 @@ function drawParts(bd, s, t, jumped) {
     for (const p of el.querySelectorAll("[data-part]")) {
       const key = p.dataset.part;
       const at = fixed ? fixedPartAt.get(bd.id + "|" + key) : (s ? revealAt.get(s.id + "|" + key) : undefined);
-      const on = blockOn && (at === undefined ? true : t >= at);
+      const on = blockOn && at !== undefined && t >= at;
       if (on && !p.classList.contains("on")) {
         // Drawn in motion only when its cue has just passed during playback;
         // after a seek, or when redrawn long after its cue, it is simply there.
-        if (jumped || at === undefined || t - at > 1.2) p.classList.add("settled");
+        if (jumped || t - at > 1.2) p.classList.add("settled");
         p.classList.add("on");
       } else if (!on && p.classList.contains("on")) {
         p.classList.remove("on", "settled");
@@ -292,9 +320,7 @@ function drawBoard(bd, s, erased) {
     hdrNo.style.display = "none";
     hdrTitle.textContent = bd.title;
     for (const id of bd.fixed) drawBlock(id, true);
-    let here = null;
-    for (const sec of sections) if (sec.start <= bd.start + 1e-6) here = sec;
-    for (const { sec, b: btn } of contentButtons) btn.classList.toggle("here", sec === here);
+    for (const { sec, b: btn } of contentButtons) btn.classList.toggle("here", sec.id === bd.section);
     drawnBoard = bd; drawnState = null; drawnErased = null;
   }
   if (s !== drawnState || erased !== drawnErased) {
@@ -421,7 +447,7 @@ function wordRect(el, k) {
 // The pointer follows reading: the latest read word whose start has passed,
 // held for a moment after the run ends; otherwise an explicit point cue;
 // otherwise the pointer rests hidden.
-const READ_HOLD_S = 2.5;
+const READ_HOLD_S = BUNDLE.meta.reading_hold_s;
 function readingTarget(t) {
   let best = null;
   for (const u of utterances) {
