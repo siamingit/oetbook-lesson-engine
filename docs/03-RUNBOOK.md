@@ -109,7 +109,7 @@ Gates are marked **GATE**. Costs are Grammar 1's.
 | 5 | Transcription | `transcribe.py <L>`, then `make_transcript.py <L>/analysis` | audio, keyterms | `scribe_v2_response.json`, `transcript.txt` | $0.56 |
 | 6 | Slide timeline | `build_slide_timeline.py <L>`, `--stage2`, then `--score-max 0.035 --margin-min 0.04 --margin-min-stage2 0.05` | video, deck | `analysis/slides/slide_timeline.json` | free |
 | 7 | Annotations | `extract_annotations.py <L>` | video, deck, timeline | `analysis/annotations/annotation_events.json` | free |
-| 8 | Sections | `build_sections.py <L>` (already built by the preflight); `--set PAGE "TITLE"`, `--description "..."`, `--diagram-pages 5,11` at the source gate | deck, `deck_defects.json` | `analysis/sections.json` | free |
+| 8 | Sections | `build_sections.py <L>` (already built by the preflight); `--set PAGE "TITLE"`, `--description "..."`, `--diagram-pages 5,11`, `--categories FILE` at the source gate | deck, `deck_defects.json` | `analysis/sections.json` | free |
 | 9 | Understanding | one batch: `run_batch_stage.py <L> --stage understanding` (direct, one page: `extract_understanding.py <L> --page N --call`) for the contents slide and every section's pages | transcript, timeline, annotations, deck | `analysis/understanding/page-N/understanding.json` | $0.38 a page |
 | 10 | Screens | one batch: `run_batch_stage.py <L> --stage screens` (direct, one section: `write_screens.py <L> --pages ... --call`) | understanding, deck text, `deck_defects.json`, ledgers | `analysis/screens/<section>/screens.json` | about $0.60 a section |
 | 11 | Opening boards and preview | `build_lesson_boards.py <L>`, `build_lesson_preview.py <L>` | sections, screens | `lesson-boards.json`, the introduction's `screens.json`, `analysis/screens/lesson-preview/index.html` | free |
@@ -193,7 +193,10 @@ are the right recording. Every section needs a title; a slide with no heading is
 `build_sections.py --set`. Give the lesson its one-line description
 (`--description`, the maintainer's own words) and name the slides whose
 teaching is a diagram (`--diagram-pages`), which the screens model is then
-shown as a reference for the idea only.
+shown as a reference for the idea only. Where the deck has a contents slide,
+record its categories in the maintainer's translation with `--categories FILE`
+(JSON: `[{"title": ..., "sections": [section title, ...]}]`, in the slide's
+order); they are kept across re-runs, and a re-run that would lose one stops.
 
 **keyterms.** Write `analysis/keyterms_curated.txt` from the candidates: the
 clinical and grammar terms Scribe should listen for.

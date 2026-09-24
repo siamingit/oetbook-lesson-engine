@@ -26,8 +26,30 @@ A slide with no heading, or whose printed heading is wrong for its content,
 is titled by the maintainer with --set, recorded with status "maintainer"
 and kept across re-runs. Until then it has status "needs-title" and blocks
 the screens stage for its pages.
+
+Categories, the contents slide's groupings a level above sections
+(docs/00-PRODUCT.md §1), are maintainer data like those titles:
+
+    .venv/Scripts/python spike/scripts/build_sections.py <lesson_dir> --categories FILE
+
+FILE is JSON: [{"title": "...", "sections": ["section title", ...]}, ...] in
+the contents slide's order, the maintainer's translation. They are stored once,
+as the top-level `categories` list, and kept across re-runs; each section's
+`category` is written from that list every time, never kept on its own. A
+write that would lose a category - a category naming a section the lesson no
+longer has, or a section carrying a category the list does not back - is
+refused and nothing is written. --set carries a retitled section's place in
+its category with it.
+
+Every maintainer record survives a full re-run or stops it: titles (--set),
+the description (--description), diagram pages (--diagram-pages), accepted
+board splits (--accept-boards, kept for a section covering exactly the same
+slides) and categories. A re-run that would drop any of them, or any field it
+does not itself write, is refused with the list of what would be lost, and
+nothing is written.
 """
 
+import datetime
 import json
 import re
 import sys
@@ -99,10 +121,105 @@ def title_from(h: str) -> str:
     return t[:1].upper() + t[1:]
 
 
+def categorise(info: dict, previous_sections: list[dict]) -> None:
+    """Write each section's `category` from the category list, the one place
+    the maintainer's categories are stored. Refuses, before anything is
+    written, a list naming a section the lesson does not have or naming one
+    twice, and a section of `previous_sections` whose category the list does
+    not back: either would lose maintainer data silently."""
+    cats = info.get("categories") or []
+    titles = {s["title"] for s in info["sections"]}
+    of: dict[str, str] = {}
+    for c in cats:
+        for t in c["sections"]:
+            if t not in titles:
+                raise SystemExit(f"REFUSED: category {c['title']!r} lists the section {t!r}, "
+                                 "which this lesson does not have (a heading or title changed?). "
+                                 "Nothing written. Fix the category with --categories, or the "
+                                 "title with --set, then re-run.")
+            if t in of:
+                raise SystemExit(f"REFUSED: the section {t!r} is in two categories, {of[t]!r} "
+                                 f"and {c['title']!r}. Nothing written.")
+            of[t] = c["title"]
+    for s in previous_sections:
+        if s.get("category") and s["category"] != of.get(s["title"]):
+            raise SystemExit(f"REFUSED: the section {s['title']!r} has the category "
+                             f"{s['category']!r}, which the category list does not give it "
+                             f"({of.get(s['title'])!r}). Nothing written. Record the "
+                             "categories with --categories first.")
+    for s in info["sections"]:
+        if s["title"] in of:
+            s["category"] = of[s["title"]]
+        else:
+            s.pop("category", None)
+    if cats:
+        free = [s["title"] for s in info["sections"] if s["title"] not in of]
+        if free:
+            print("note: sections in no category: " + ", ".join(repr(t) for t in free))
+
+
+def nothing_lost(previous: dict, out: dict) -> None:
+    """Refuses a full re-run that would drop anything already recorded: a
+    maintainer title, a board-split acceptance or a category that no longer
+    lands on its section, or any field of the file, the lesson or a section
+    that the re-run does not write (a hand-recorded field is kept or it stops
+    the run, never lost). Only `why`, the hint on an untitled section, is
+    re-derived. A section with no maintainer data whose slides were regrouped
+    is simply rebuilt from the deck."""
+    lost = [f"the field {k!r}" for k in previous if k not in out]
+    lost += [f"the lesson's {k!r}" for k in previous.get("lesson") or {} if k not in out["lesson"]]
+    new = {s["pages"][0]: s for s in out["sections"]}
+    for s in previous.get("sections", []):
+        where = f"pages {s['pages']} ({s['title']!r})"
+        t = new.get(s["pages"][0])
+        held = [k for k in ("boards_accepted", "category") if s.get(k)]
+        if s.get("status") == "maintainer":
+            held.insert(0, "maintainer title")
+        if t is None:
+            if held:
+                lost.append(f"{where}: {', '.join(held)}; no section starts on page "
+                            f"{s['pages'][0]} any more")
+            continue
+        lost += [f"{where}: the field {k!r}" for k in s
+                 if k not in t and k not in ("why", "boards_accepted")]   # the latter below
+        if s.get("status") == "maintainer" and t["title"] != s["title"]:
+            lost.append(f"{where}: its maintainer title")
+        if s.get("boards_accepted") and t.get("boards_accepted") != s["boards_accepted"]:
+            lost.append(f"{where}: the maintainer's acceptance of its board splits; the "
+                        f"section now covers pages {t['pages']} (re-accept with --accept-boards)")
+    if lost:
+        raise SystemExit("REFUSED: this re-run would lose recorded data. Nothing written.\n  "
+                         + "\n  ".join(dict.fromkeys(lost)))
+
+
+def write(out_path: Path, info: dict) -> None:
+    out_path.write_text(json.dumps(info, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
 def main() -> None:
     lesson = Path(sys.argv[1])
     out_path = lesson / "analysis" / "sections.json"
     previous = json.loads(out_path.read_text(encoding="utf-8")) if out_path.exists() else {}
+
+    if "--categories" in sys.argv:
+        # The contents slide's groupings, translated by the maintainer
+        # (docs/00-PRODUCT.md §1). Kept across re-runs like a maintainer title.
+        if not previous:
+            raise SystemExit("run without --categories first")
+        src = Path(sys.argv[sys.argv.index("--categories") + 1])
+        given = json.loads(src.read_text(encoding="utf-8"))
+        cp = previous.get("contents_page")
+        prov = ("source-derived: the deck's own contents slide"
+                + (f" (page {cp})" if cp else "") + ", translated and corrected by the "
+                f"maintainer, {datetime.date.today().isoformat()}")
+        previous["categories"] = [{**c, "sections": list(c["sections"]),
+                                   "provenance": c.get("provenance") or prov} for c in given]
+        categorise(previous, [])
+        write(out_path, previous)
+        print(f"categories set (maintainer): {len(given)}")
+        for c in previous["categories"]:
+            print(f"  {c['title']!r}: {', '.join(repr(t) for t in c['sections'])}")
+        return
 
     if "--description" in sys.argv:
         # The title board's one-line description, in the maintainer's words
@@ -146,9 +263,14 @@ def main() -> None:
             raise SystemExit("run without --set first")
         for s in previous["sections"]:
             if page in s["pages"]:
+                old = s["title"]
                 s.update(title=title, status="maintainer", corrected_from=None)
                 s.pop("why", None)
-                out_path.write_text(json.dumps(previous, ensure_ascii=False, indent=1), encoding="utf-8")
+                # The section keeps its place in its category under its new title.
+                for c in previous.get("categories") or []:
+                    c["sections"] = [title if t == old else t for t in c["sections"]]
+                categorise(previous, [])
+                write(out_path, previous)
                 print(f"set pages {s['pages']} to {title!r} (maintainer)")
                 return
         raise SystemExit(f"page {page} is in no section")
@@ -213,7 +335,9 @@ def main() -> None:
     out = {"purpose": "Lesson structure from the deck (docs/00-PRODUCT.md §1). Sections are "
                       "slides, titled by their header-band headings corrected for deck defects "
                       "and normalised; a section with status needs-title must be titled by the "
-                      "maintainer (--set) before its pages can be built.",
+                      "maintainer (--set) before its pages can be built. Categories are the "
+                      "deck's own contents-slide groupings, a level above sections "
+                      "(docs/00-PRODUCT.md §1).",
            "lesson": {"title": lesson_title, "page": title_page["page"] if title_page else None,
                       "status": previous.get("lesson", {}).get("status", "from-deck"),
                       "description": previous.get("lesson", {}).get("description"),
@@ -221,7 +345,19 @@ def main() -> None:
            "contents_page": contents_page,
            "diagram_pages": previous.get("diagram_pages", []),
            "sections": sections}
-    out_path.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    if "categories" in previous:
+        out["categories"] = previous["categories"]
+    categorise(out, previous.get("sections", []))       # refuses before anything is written
+    # Board splits the maintainer accepted (--accept-boards) stay with a
+    # section that covers exactly the same slides; for any other grouping the
+    # acceptance was of different boards and is not carried.
+    prev_first = {s["pages"][0]: s for s in previous.get("sections", [])}
+    for s in sections:
+        p = prev_first.get(s["pages"][0])
+        if p and p.get("boards_accepted") and p["pages"] == s["pages"]:
+            s["boards_accepted"] = p["boards_accepted"]
+    nothing_lost(previous, out)                         # refuses before anything is written
+    write(out_path, out)
     print(f"lesson title: {lesson_title!r} (slide {out['lesson']['page']}); contents slide {contents_page}")
     for s in sections:
         flag = "" if s["status"] in ("ok", "maintainer") else "   <-- NEEDS TITLE: " + s["why"]
