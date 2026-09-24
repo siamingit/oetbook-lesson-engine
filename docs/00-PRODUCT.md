@@ -54,13 +54,39 @@ A board ends when its topic ends — never because space ran out.
 A topic is a unit of navigation, not a unit of space. Three to seven per
 page of source material. Never one per teaching beat.
 
+### Lesson structure
+
+Revised 2026-09-23. An earlier version of this section said the contents
+list is derived from the teaching content, not from slide boundaries. That
+is reversed: **the maintainer's slide titles are his structure for the
+lesson, and they win.**
+
+- **Lesson**: titled from the deck's own lesson title.
+- **Sections**: one per original slide, titled with that slide's own
+  heading, corrected for registered deck defects ("Time Makers" → "Time
+  Markers", "Passive vs Active from" → "form"). Two consecutive slides
+  that share a heading are one section.
+- **Boards**: steps inside a section. They have **no titles of their
+  own**, ever.
+
+Where the deck has a **contents slide**, its groupings are a level above
+sections: **category → section → boards**. The categories are the
+maintainer's own, translated and corrected, recorded as source-derived
+from that slide, and they order the contents menu and the contents board.
+Grammar 1's contents slide gives five: verb tenses and their uses; simple
+past and present perfect with time markers; signal words and verb tenses;
+active and passive; practice writing case notes. A deck without a contents
+slide has sections only. Recorded 2026-09-24.
+
+A slide whose heading is not a title for its content (a table's column
+labels, an image slide with no text) is listed for the maintainer to
+title, never guessed.
+
 ### Contents and navigation
 
-Every lesson has a **contents list**, derived automatically from the
-teaching content — not from the original slide boundaries.
-
-The student can move forward and back between topics freely, and return
-to where playback had reached.
+Every lesson has a **contents list** of its sections, and nothing
+smaller. The student can move forward and back between sections freely,
+and return to where playback had reached.
 
 ---
 
@@ -109,7 +135,10 @@ rebuilt.
 Two boards are not written from a single page of source material.
 
 - **Title board** — the lesson title and a one-line description, in
-  English.
+  English. The description is the maintainer's own words, recorded in
+  `sections.json` (`build_sections.py --description`) with provenance
+  `maintainer`; for Grammar 1: "Learn the verb tenses, when to use each
+  one, and how to use them in your OET writing." (2026-09-24).
 - **What you will learn** — built from the topic titles of every board
   in the lesson.
 
@@ -118,6 +147,25 @@ depends on them. Neither carries Persian, a logo or a product name.
 
 They teach nothing, but they prepare the student for the lesson, so they
 are part of it.
+
+### Every lesson opens with a narrated introduction
+
+Decided by the maintainer 2026-09-24, after the silent preview of Grammar 1
+jumped straight into verb tenses. His recorded sessions always open with a
+greeting, what the lesson covers, and a quick walk through the contents
+while the contents are on screen. A rule for every lesson:
+
+- The lesson opens with the **title board** and the **contents board**,
+  both narrated.
+- The narration greets the student, says what the lesson is about, and
+  walks through the categories. Each category on the contents board is a
+  block that is revealed as it is named.
+- Short: about one to two minutes.
+- The voice is not the instructor's. It never gives the instructor's name
+  and never speaks as him: a plain greeting.
+- The source is the understanding of the contents slide's interval, written
+  under the same rules as every section: student level, provenance, visual
+  anchors, no references to the source. Two QA passes.
 
 ---
 

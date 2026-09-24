@@ -714,6 +714,91 @@ form is still on screen. On the superseded deck-page path the typo reaches
 the student, and that was the correct trade there: a visible defect in one
 printed phrase, against a script that lies about what the slide says.
 
+### The slide image is shown for diagram slides only, as an idea
+
+The rule that the screens model is never given the deck image (§18, "authored,
+never copied") has one exception, recorded 2026-09-24: a slide whose teaching
+is carried by a diagram. Slides 5 and 11 of Grammar 1 teach with drawn
+timelines — arrows, ticks, a series of × marks with a final "X!", pointer
+arrows, example boxes — and the text layer alone loses which events sit where.
+For those pages, named by the maintainer (`sections.json`, `diagram_pages`),
+`write_screens.py` renders the page from the PDF at modest size and passes it
+with an instruction to read the diagram's teaching idea only and rebuild it in
+the diagram grammar (design system §7a). Nothing else changes: the image is
+data, decoration is never copied, and the exercise sentences still come from
+the text layer verbatim. The image costs about 1,500 input tokens.
+
+### Narration follows the section, and diagrams are drawn part by part
+
+`write_narration.py` and `qa_narration.py` take `--pages` like the screens
+stage and write to `analysis/narration/<section folder>/`; page 13 keeps its
+`page-13` folder. The narration model sees a diagram's parts by id
+(`k07.3`) and reveals each with its own cue; the audit checks every part is
+drawn once, in order, and that a fixed-layer diagram's parts are spread over
+the board rather than dumped in its first state. `run_narration.py` writes
+every section in lesson order with its first QA pass and stops at the first
+failure; `build_narration_review.py` builds one review page for the lesson.
+
+Three findings from the first whole-lesson run, 2026-09-24:
+
+- The model aimed some marks at a diagram part ("circle on k02.3"). Only a
+  reveal addresses a part; a mark is found as a phrase inside the block the
+  player drew. `assemble()` now resolves a mark's part id to its diagram
+  block, records it on the cue (`part_normalised`), and the phrase is still
+  audited against the block's text.
+- The register audit matched single words only, and page 14's narration
+  said "Usually is standard English", "Sometimes is everyday English" and
+  "The other day belongs to speaking". QA caught them; the pattern now
+  includes those phrasings. A register word printed on the board ("rarely"
+  as a signal word) is vocabulary, not a claim, and is exempt.
+- The QA reviewer was not shown tense tags, and reported every "the label
+  says past" as speech about nothing on screen. The payload now lists each
+  tag as it reads on screen, and the narration model is given the chip's
+  printed label ("up to now"), not the family key ("past_to_now").
+
+Most QA findings that survive two passes are about the on-screen text the
+narration reads aloud (a rule on a callout, a definition in a term box).
+Those are screens decisions for the maintainer; a narration rewrite cannot
+fix them without making speech and screen disagree.
+
+### The introduction is a section built by code, narrated like any other
+
+The lesson's opening (docs/00-PRODUCT.md §2a) needs no model for its boards:
+`build_lesson_boards.py` writes the title board and the contents board as a
+section's `screens.json` beside the contents slide's page, one revealable
+block per category (a compact "contents item": number, category, its
+sections; five category cards did not fit the frame). Its source is the
+understanding of the contents slide's interval (Grammar 1: page 4, 6.7
+minutes of framing and agenda). `write_narration.py` recognises it by
+`section.intro` and adds the introduction rules: a plain greeting, no name,
+one to two minutes, every category revealed as it is named, no reference to
+the session, the course or the recording; the audit checks the length and
+the source words. The maintainer's lesson description is a `require` phrase
+in that page's ledger, so the utterance that reads it can be `maintainer`.
+
+The narration never names interface parts. "Chip" and "tag" (for the tense
+labels) appeared in 80 utterances written before the rule; `assemble()`
+replaces them with "coloured label", records it on the utterance, and the
+audit fails any that survives. "Question tag" is grammar and is left alone.
+
+### Too-broad rules — policy (maintainer, 2026-09-24)
+
+When QA finds a rule too broad and its fix narrows the rule, the fix is
+applied to the screen and the narration together, unless it contradicts a
+maintainer ruling or loses the teaching point. A narrower true rule never
+misleads; a broad one does.
+
+How it is applied: the screen text changes by `overrides.json` (with an
+`expect` guard and a note naming the decision), the narration of only the
+affected states is rewritten from a brief (`write_narration.py --states`),
+and those states alone get one QA pass (`qa_narration.py --states ...
+--name decisions`, written to `qa/qa_decisions.json`, never over pass 1 or
+2). A screen edit must not move a board's layout: the build compares every
+board's states and working blocks before and after, and a longer text that
+shifts an erase point is reworded until it fits (the Verb tenses
+"experience" box, 2026-09-24). Maintainer wording that replaces a rule goes
+into the page's ledger as a `require` phrase, the old wording as `forbid`.
+
 ### Resolved: the board beside the slide had no mobile layout
 
 §17a put written items on a board *beside* the slide, because the deck was
@@ -804,4 +889,181 @@ Revisit only with a measurement: if duplicate spend across a real lesson is
 material, it is worth the care a shared store would need.
 
 ---
+
+
+## 20. Pronunciation — the lexicon, the cache, and two ears
+
+Found 2026-09-23 when the maintainer heard "fibrosis" mispronounced in the
+page 13 board player, after the fix had been "confirmed" from phoneme data.
+
+### What the investigation found
+
+The board synthesis script does apply the Cartesia pronunciation dictionary
+on every call, and its cache never reused audio made without it (the board
+build has its own cache folder, created with the dictionary from the first
+run). Cartesia's phoneme timestamps for all nine "fibrosis" utterances in
+the current build show the correct diphthong (`f aɪ b ɹ`), and the same
+text synthesised with no dictionary shows the short vowel (`f ɪ b ɹ`). So
+the dictionary was in effect for the build on disk. What the maintainer
+heard is not explained by the pipeline state; the likeliest candidates are
+the superseded deck-page player, which has its own audio, or a difference
+between what the phoneme timestamps report and what the voice renders.
+Neither could be settled without listening, which is what the ear below is
+for. The one real defect found on the way: the dictionary entry was
+case-sensitive, so a sentence-initial "Fibrosis" would not have matched.
+
+### The rule: the lexicon is a file
+
+`spike/lexicon.json` is the single source of truth for pronunciations,
+British English, versioned in git. `lexicon.py --sync` writes it to
+Cartesia; nothing is ever edited in Cartesia directly, and a synthesis
+script refuses to run while the dictionary there differs from the file
+(`lexicon.require_synced`). Every audio index entry records the lexicon
+version and the terms it applied; `check_board_page.py` fails a build in
+which any clip lacks that record.
+
+**The cache key contains the lexicon entries the utterance uses.** Changing
+a pronunciation therefore re-synthesises exactly the utterances that contain
+that term, and nothing else. This replaces the earlier key, which carried the
+dictionary's id but not its contents, so a changed entry left every cached
+clip untouched (§19).
+
+### Two ears, because one is not enough
+
+- **Phoneme check**, fine. Every synthesis asks Cartesia for phoneme
+  timestamps, and each lexicon term is checked against its expected and
+  rejected phoneme patterns. This discriminates a vowel; it is the
+  instrument that catches "fih-brosis". A failure names the utterance and
+  fails the build.
+- **Scribe**, coarse (`ear.py`). Every clip is transcribed with no keyterms
+  and no forced language, and compared with the script: a lexicon term in
+  the script but not heard is a failure with the utterance id, and the
+  word-level agreement of every utterance is reported. Scribe decides what
+  word was said, not how a vowel was coloured, so a mispronounced term can
+  still transcribe correctly; this ear catches a term that came out as a
+  different word, and gross failures.
+
+### A fix made from phoneme reports caused the error
+
+Heard by the maintainer 2026-09-24, on the lexicon review page: the voice's
+**default** rendering of "fibrosis", with no dictionary entry at all, is
+correct. The alias "fye-BROH-sis" added on 2026-09-22 was made from Cartesia's
+phoneme reports without anyone listening, and it introduced the error the
+maintainer later heard, in every clip. Phoneme reports are not evidence
+either way: they report what the alias asked for, and they reported the
+default as "wrong" by a pattern that was itself a guess. **Only the
+maintainer's ear approves.** The lexicon now has a kind for this outcome:
+an `approved default` entry sends nothing to Cartesia, records the approval,
+and salts the cache key so the change re-synthesises exactly the utterances
+that contain the term.
+
+### New terms are heard before the lesson is built
+
+`check_terms.py` extracts a page's clinical and uncommon terms (the lesson's
+curated keyterms, any word of nine or more letters, any word with a clinical
+ending), drops those already in the lexicon, synthesises each alone in a
+carrier sentence and transcribes it. Terms the ear does not hear back are
+listed for the maintainer, and the synthesis script refuses to run without a
+fresh terms check that has no failures. Failures are found before the build,
+never after. The heuristic over-collects ordinary long words; each costs a
+few characters.
+
+## 21. Marks are measured, not eyeballed
+
+Found on page 13, board 3: a circle around "before he quit" wrapped onto two
+lines and rendered as two open halves, and touched the words either side.
+
+- Every line fragment of a mark is drawn complete (`box-decoration-break:
+  clone`), and a circle carries real padding and margin so it never touches
+  a neighbour. The narration prompt keeps circles to one to three words; a
+  longer span gets an underline or a bracket, and the audit warns otherwise.
+- `check_marks.py` loads the built player in headless Edge at phone-landscape
+  and laptop width, applies every state's marks as playback would, and
+  measures with the browser's own geometry: a mark that touches a
+  neighbouring word fails the build, a mark that wraps is reported, and a
+  phrase that cannot be found in its block fails. No screenshot is
+  interpreted.
+
+### The ear is not evidence of pronunciation
+
+Recorded 2026-09-23. The maintainer heard "fibrosis" wrong, in two
+different ways, in a build where the phoneme check had passed every
+utterance and Scribe had heard every one as "fibrosis". Neither instrument
+is proof of pronunciation:
+
+- ASR is built to understand a mispronounced word, especially with
+  "cystic" in front of it. Scribe catches a term that came out as a
+  different word ("OET" as "oat") and nothing finer. Keep it for that.
+- Cartesia's phoneme timestamps report the phonemes the alias asked for,
+  not what the voice rendered. In the page-13 build all nine "fibrosis"
+  clips carried the alias phonemes, yet the word's duration fell into two
+  groups (about 1.1 s mid-sentence, 1.55 s sentence-final): the same alias,
+  two realisations.
+
+**The only proof of pronunciation is the maintainer's ear.** So:
+
+- `lexicon_review.py` builds a page with every lexicon term playable alone
+  and inside one sentence from a lesson, with the default rendering beside
+  it and the phonemes shown. The maintainer approves or rejects each.
+- Approval is recorded in `spike/lexicon.json` (`lexicon.py --approve
+  TERM --by NAME`). A term is used in a lesson only after approval; an
+  unapproved lexicon term in a page's text blocks synthesis.
+- The target for each entry is written in the file in British IPA with
+  stress ("fibrosis": /faɪˈbrəʊsɪs/, stress on the second syllable), so an
+  alias is judged against something stated.
+
+## 22. Lesson structure comes from the deck
+
+Revised 2026-09-23, reversing the earlier product rule that contents came
+from the teaching content rather than slide boundaries. A lesson is titled
+from the deck; its sections are the slides, titled by their headings
+corrected for registered deck defects, consecutive equal headings merged;
+boards are untitled steps inside a section. `build_sections.py` reads the
+headings and writes `analysis/sections.json`; a heading that is not a
+title (a table's column labels, an image slide) is listed for the
+maintainer and blocks the screens stage until titled. The screens audit
+fails a board with its own title and a section title that does not trace
+to a slide heading or a maintainer entry. On Grammar 1 the deck gives 12
+sections; three need the maintainer's title (the tense table on pages 6
+and 7–10, the timeline on page 11).
+
+## 23. Audio budget
+
+Cartesia credit is limited, and most of it so far went on rebuilding page
+13 several times. The rule, recorded 2026-09-23:
+
+- Audio is synthesised only after the narration is approved and every
+  lexicon term on the page is approved by the maintainer's ear.
+- Never re-synthesise a page speculatively. A rewording that has not been
+  reviewed is not a reason to spend credit; the content-addressed cache
+  makes a real change cheap, a speculative one is pure waste.
+- Probes for the lexicon review page are made once per candidate and kept.
+
+### Next on "fibrosis" — recorded, not acted on
+
+The maintainer heard all nine clips wrong. The target is /faɪˈbroʊ.sɪs/,
+stress on the second syllable. Cartesia's reported phonemes already match,
+so the fault is stress and rhythm: the word lasts 1.0–1.6 s, far too long
+for three syllables, and the hyphenated respelling "fye-BROH-sis" is
+probably read as three chunks. When credit is available: check Cartesia's
+documentation for a phoneme or IPA entry form that carries a stress mark,
+make three or four candidate entries, render each alone and in a sentence,
+add them to the lexicon review page, and stop for the maintainer to choose.
+
+### Voice speed is a target, not a setting (measured 2026-09-24)
+
+The maintainer found the delivery slightly slow. Page 13 at the lesson's
+setting (0.6) measures about 136 words per minute of speech. One 26-word
+utterance was synthesised at eleven settings (`speed_probe.py`):
+
+| setting | 0.6 | 0.65 | 0.7 | 0.75 | 0.85 | 0.875 | 0.9 | 0.925 | 0.95 | 1.0 | 1.2 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| words per minute | 137 | 137 | 141 | 138 | 148 | 152 | 144 | 157 | 157 | 155 | 157 |
+
+The response is flat and noisy below about 0.75, steeper to about 0.9, and
+levels off near 155 above it; run-to-run variation is several words per
+minute, so a higher setting can come out slower. A chosen setting is
+therefore a target: the lesson's pace is measured again after synthesis,
+and the silent preview's estimate (`build_silent_preview.py --wpm`) follows
+the measured pace, not the setting.
 

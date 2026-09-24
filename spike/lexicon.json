@@ -1,0 +1,109 @@
+{
+ "purpose": "Pronunciation lexicon: the single source of truth for how the voice says clinical and uncommon terms. British English. Synced to Cartesia by spike/scripts/lexicon.py --sync; never edited in Cartesia directly. Every synthesis script applies it and refuses to run if the dictionary on Cartesia differs from this file.",
+ "version": 6,
+ "language": "en-GB",
+ "cartesia": {
+  "dict_id": "pdict_hvpmosZ9jAfyXDWFdaknq2",
+  "name": "oetbook-lexicon"
+ },
+ "entries": {
+  "fibrosis": {
+   "alias": null,
+   "ipa": "faɪˈbrəʊsɪs",
+   "expect_phonemes": null,
+   "reject_phonemes": null,
+   "note": "APPROVED DEFAULT, by the maintainer's ear 2026-09-24: the voice's own rendering is correct. The 2026-09-22 alias 'fye-BROH-sis' was made from phoneme reports without listening and introduced the error (methodology §20). No dictionary entry is sent for this term; it stays in the lexicon so its approval is recorded and its salt is in the cache key.",
+   "approved": true,
+   "approved_by": "maintainer",
+   "approved_on": "2026-09-24",
+   "target": "/faɪˈbroʊ.sɪs/, stress on the second syllable",
+   "candidates": null,
+   "candidate_sentence": null,
+   "candidates_note": "2026-09-24: the << >> phoneme markup is read as letters by Sonic 3.6, so IPA with a stress mark is not available through this model. Viable respellings all give the same reported phonemes; stress and rhythm are only audible. Word duration in the sentence is 0.88-0.96 s for every viable candidate, and 1.4-2.2 s for any word placed at the end of the carrier sentence: the long durations are sentence-final lengthening, not the alias.",
+   "kind": "default"
+  },
+  "OET": {
+   "alias": "O. E. T.",
+   "ipa": "əʊ iː tiː",
+   "expect_phonemes": null,
+   "reject_phonemes": null,
+   "note": "Initialism. Sonic 3.6 read it as the word 'oat' (terms check, 2026-09-23).",
+   "approved": false,
+   "approved_by": null,
+   "approved_on": null,
+   "kind": "alias",
+   "candidates": [
+    {
+     "id": "c1",
+     "kind": "alias",
+     "value": "O. E. T.",
+     "why": "current entry: correct letters, too slow"
+    },
+    {
+     "id": "c2",
+     "kind": "alias",
+     "value": "O E T",
+     "why": "spaces only, no full stops"
+    },
+    {
+     "id": "c3",
+     "kind": "alias",
+     "value": "O-E-T",
+     "why": "hyphens, no spaces"
+    },
+    {
+     "id": "c4",
+     "kind": "alias",
+     "value": "oh ee tee",
+     "why": "letter names as words"
+    },
+    {
+     "id": "c5",
+     "kind": "alias",
+     "value": "OET",
+     "why": "no alias at all: the default, which the terms check heard as 'oat'"
+    },
+    {
+     "id": "c6",
+     "kind": "alias",
+     "value": "O.E.T.",
+     "why": "full stops, no spaces: letters run together (maintainer asked for O.E.T. variants, 2026-09-24)"
+    },
+    {
+     "id": "c7",
+     "kind": "alias",
+     "value": "oh-ee-tee",
+     "why": "letter names joined by hyphens, said as one fast unit"
+    }
+   ],
+   "candidate_sentence": "One warning for your OET letter."
+  },
+  "COPD": {
+   "alias": "C. O. P. D.",
+   "ipa": "siː əʊ piː diː",
+   "expect_phonemes": null,
+   "reject_phonemes": null,
+   "note": "Initialism. Read as a word by default (terms check, 2026-09-23).",
+   "approved": true,
+   "approved_by": "maintainer",
+   "approved_on": "2026-09-24",
+   "kind": "alias"
+  },
+  "Mylanta": {
+   "alias": "my-LAN-ta",
+   "ipa": "maɪˈlæntə",
+   "expect_phonemes": null,
+   "reject_phonemes": null,
+   "note": "Brand name. Heard as 'mylanter' (terms check, 2026-09-23).",
+   "approved": true,
+   "approved_by": "maintainer",
+   "approved_on": "2026-09-24",
+   "kind": "alias"
+  }
+ },
+ "approval_rule": "A term is used in a lesson only after the maintainer has approved its rendering by ear on the lexicon review page. approved is set by `lexicon.py --approve TERM --by NAME`; an unapproved term in a page's text blocks synthesis.",
+ "kinds": {
+  "alias": "a dictionary entry sent to Cartesia",
+  "default": "approved as the voice's own rendering; no entry is sent, the term is recorded so approval and cache salt apply"
+ }
+}

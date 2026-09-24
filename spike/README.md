@@ -86,13 +86,31 @@ the first two of which decode the whole video:
 | `build_slide_timeline.py` **.venv** | `source/video.mp4`, `source/slides.pdf` | `analysis/slides/slide_scores.json`, `slide_timeline.json`, `checks/` |
 | `extract_annotations.py` **.venv** | `source/video.mp4`, `source/slides.pdf`, `analysis/slides/slide_timeline.json` | `analysis/annotations/annotation_events.json`, `checks/` |
 | `extract_understanding.py` **.venv** | `analysis/scribe_v2_response.json`, `analysis/slides/slide_timeline.json`, `analysis/annotations/annotation_events.json`, `source/slides.pdf`, `.env` | `analysis/understanding/raw_response.json`, `understanding.json`, `transcript_words.json`, `checks/` |
+| `build_sections.py` **.venv** | `source/slides.pdf` (headings by position), `analysis/deck_defects.json` | `analysis/sections.json`: the lesson title, the contents slide, and one section per slide heading; `--set PAGE "TITLE"` records a maintainer title |
 | `write_screens.py` **.venv** | `analysis/understanding/page-<N>/understanding.json`, `analysis/deck_defects.json`, `analysis/script/page-<N>/script.json` and `applied.jsonl` (maintainer rulings), `source/slides.pdf` (text layer only), `.env` | `analysis/screens/page-<N>/raw_response.json`, `screens.json`, `checks/index.html` |
-| `write_script.py` **.venv** | `analysis/understanding/understanding.json`, `analysis/slides/slide_timeline.json`, `source/slides.pdf`, `.env` | `analysis/script/raw_response.json`, `script.json`, `checks/` |
-| `qa_script.py` **.venv** | `analysis/script/script.json`, `analysis/understanding/understanding.json` (exercise sentences only), `source/slides.pdf`, `.env` | `analysis/script/qa/qa_gemini.json`, `qa/raw_response.json` |
-| `synthesize_audio.py` | `analysis/script/script.json`, `.env` | `generated/page-<N>/audio/*.wav`, `audio_index.json` |
-| `build_timeline.py` | `analysis/script/script.json`, `generated/page-<N>/audio_index.json` | `generated/page-<N>/timeline.json` |
-| `build_bundle.py` **.venv** | `analysis/script/script.json`, `generated/page-<N>/timeline.json`, `source/slides.pdf` | `generated/page-<N>/slide.png`, `bundle.json` |
-| `build_player.py` | `generated/page-<N>/bundle.json`, `player_template.html` | `generated/page-<N>/player.html` |
+| `write_narration.py` **.venv** | `analysis/screens/<section>/screens.json`, `analysis/understanding/page-<N>/understanding.json` (every page of the section), `analysis/script/page-<N>/script.json` and `applied.jsonl` (maintainer rulings), `.env`; `--pages 5,6` for a multi-page section | `analysis/narration/<section>/raw_response.json`, `narration.json`, `checks/index.html`; with `--states`, `raw_response.splice-<n>.json` and `splices.jsonl` |
+| `write_script.py` **.venv** *(superseded by `write_narration.py`; kept until the board path is proven)* | `analysis/understanding/understanding.json`, `analysis/slides/slide_timeline.json`, `source/slides.pdf`, `.env` | `analysis/script/raw_response.json`, `script.json`, `checks/` |
+| `qa_narration.py` **.venv** | `analysis/narration/<section>/narration.json`, `analysis/screens/<section>/screens.json`, `analysis/understanding/page-<N>/understanding.json` (exercise sentences only), `.env`; `--pages 5,6` for a multi-page section | `analysis/narration/<section>/qa/qa_pass<N>.json`, `qa/raw_response_pass<N>.json` |
+| `run_narration.py` **.venv** | `analysis/sections.json`, every section's `screens.json`, `.env` | every section's narration and QA pass 1, in lesson order, stopping at the first failure; `analysis/narration/sections_report.json` |
+| `build_narration_review.py` **.venv** | `analysis/sections.json`, every section's `screens.json`, `narration.json` and `qa/qa_pass<N>.json` | `analysis/narration/lesson-review/index.html`: the whole lesson's narration, board state by board state, with QA findings |
+| `build_lesson_boards.py` **.venv** | `analysis/sections.json`, `analysis/understanding/page-<contents>/understanding.json` (beat ids only) | `analysis/screens/lesson-boards.json`, and the introduction as a narratable section: `analysis/screens/page-<contents>/screens.json` (title board, contents board with one revealable block per category). Narrate it with `write_narration.py --pages <contents>` |
+| `build_lesson_preview.py` **.venv** | `analysis/sections.json`, `lesson-boards.json`, every section's `screens.json` | `analysis/screens/lesson-preview/index.html`: every board of the lesson, static |
+| `build_silent_preview.py` **.venv** | `analysis/sections.json`, every section's `screens.json` and `narration.json` | `generated/lesson-preview/silent/player.html` and `bundle.json`: the whole lesson played with no audio on a timeline estimated at `--wpm` (default 135), using the real timeline, reading-pointer and player code |
+| `speed_probe.py` **.venv** | `generated/page-<N>/boards/audio_index.json`, `spike/lexicon.json`, `.env` | `spike/out/lexicon-review/speed_<setting>.wav`, `speed_probes.json`: one utterance at chosen speed settings, pace measured; shown on the lexicon review page |
+| `qa_script.py` **.venv**  *(superseded by the board-model script above)* | `analysis/script/script.json`, `analysis/understanding/understanding.json` (exercise sentences only), `source/slides.pdf`, `.env` | `analysis/script/qa/qa_gemini.json`, `qa/raw_response.json` |
+| `synthesize_narration.py` **.venv** | `analysis/narration/page-<N>/narration.json`, `generated/page-<N>/boards/terms_check.json` (fresh), `spike/lexicon.json`, `.env` | `generated/page-<N>/boards/audio/*.wav`, `boards/audio_index.json` |
+| `synthesize_audio.py`  *(superseded by the board-model script above)* | `analysis/script/script.json`, `.env` | `generated/page-<N>/audio/*.wav`, `audio_index.json` |
+| `build_board_timeline.py` **.venv** | `analysis/narration/page-<N>/narration.json`, `generated/page-<N>/boards/audio_index.json` | `generated/page-<N>/boards/timeline.json` |
+| `build_timeline.py`  *(superseded by the board-model script above)* | `analysis/script/script.json`, `generated/page-<N>/audio_index.json` | `generated/page-<N>/timeline.json` |
+| `build_board_bundle.py` **.venv** | `analysis/screens/page-<N>/screens.json`, `generated/page-<N>/boards/timeline.json` | `generated/page-<N>/boards/bundle.json` |
+| `build_bundle.py` **.venv**  *(superseded by the board-model script above)* | `analysis/script/script.json`, `generated/page-<N>/timeline.json`, `source/slides.pdf` | `generated/page-<N>/slide.png`, `bundle.json` |
+| `build_board_player.py` **.venv** | `generated/page-<N>/boards/bundle.json`, `board_player_template.html` | `generated/page-<N>/boards/player.html` |
+| `lexicon.py` **.venv** | `spike/lexicon.json`, `.env` | `--sync` pushes the file to Cartesia; `--verify` fails unless Cartesia matches; the synthesis scripts call the same check |
+| `check_terms.py` **.venv** | `analysis/narration/page-<N>/narration.json`, `analysis/screens/page-<N>/screens.json`, `analysis/keyterms.json`, `spike/lexicon.json`, `.env` | `generated/page-<N>/boards/terms_check.json`, `term_probes/`; non-zero exit lists terms the ear did not hear |
+| `ear.py` | `generated/page-<N>/boards/audio_index.json` and its WAVs, `.env` | `generated/page-<N>/boards/ear.json`; non-zero exit on a lexicon term not heard |
+| `check_marks.py` | `generated/page-<N>/boards/player.html` | `generated/page-<N>/boards/marks_check.json`; non-zero exit on a mark touching neighbouring text |
+| `check_board_page.py` | `generated/page-<N>/boards/bundle.json`, `audio/` | nothing; non-zero exit on a structural problem |
+| `build_player.py`  *(superseded by the board-model script above)* | `generated/page-<N>/bundle.json`, `player_template.html` | `generated/page-<N>/player.html` |
 
 ### Options
 
@@ -103,8 +121,15 @@ the first two of which decode the whole video:
   writes it elsewhere, so a probe does not overwrite a full run.
 - `make_transcript.py --offset SECONDS` shifts timestamps so an excerpt reads
   in whole-lesson time.
-- `extract_understanding.py`, `write_screens.py`, `write_script.py` and
-  `qa_script.py` all take `--page N`, and none calls the API without `--call`.
+- `write_narration.py --states t2.s5,t4.s2 --brief FILE` rewrites only the
+  named board states against a brief and splices them into the saved
+  response. The message id is kept, each splice's own reply is saved beside
+  it, and `splices.jsonl` records what was rewritten, against which brief,
+  at what cost. Utterance ids are reassigned in document order afterwards;
+  a state that gains or loses an utterance renumbers only its own.
+- `extract_understanding.py`, `write_screens.py`, `write_narration.py`,
+  `write_script.py` and `qa_script.py` all take `--page N`, and none calls
+  the API without `--call`.
   Without it they assemble the request and print it, which costs nothing —
   always read the prompt before paying for it. `write_script.py --render` and
   `write_screens.py --render` rebuild their review pages from the saved

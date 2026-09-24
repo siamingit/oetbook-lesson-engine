@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__</title>
+<style>
+/* The lesson frame, injected from write_screens.py so the player and the
+   previews draw a block identically. */
+/*__FRAME_CSS__*/
+
+/* Player: the frame fills the viewport (docs/02-DESIGN-SYSTEM.md §1), the
+   control band grows to keep every control at 44px on touch (§9), and the
+   marks are the re-authored marks of §8. Everything is a share of the frame. */
+html, body { margin: 0; height: 100%; background: #f4f3ef; }
+body { display: flex; flex-direction: column; align-items: center; justify-content: center;
+       gap: 10px; padding: 12px; box-sizing: border-box;
+       font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #4a4944; }
+.frame { display: flex; flex-direction: column; border: 1px solid #d6d4cc; }
+.frame .hdr { flex: none; justify-content: space-between; }
+.frame .hdr .t { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.frame .body { flex: 1; height: auto; min-height: 0; }
+.frame .ctl { flex: none; height: max(8cqh, 44px); }
+:fullscreen .frame, .frame:fullscreen { border: none; }
+
+.blk { opacity: 0; transition: opacity .25s ease; }
+.blk.on { opacity: 1; }
+
+/* Diagram parts are DRAWN, not shown (docs/02-DESIGN-SYSTEM.md §7a): each
+   part appears at its own reveal cue and is drawn in motion, the way a
+   teacher draws on a board. A part turned on after a seek, or long after its
+   cue, carries .settled and appears complete with no replay. Every motion is
+   well under a second so it never lags the speech. */
+.pt { opacity: 0; }
+.pt.on { opacity: 1; }
+@keyframes draw-x { from { clip-path: inset(-3cqh 100% -3cqh 0); } to { clip-path: inset(-3cqh -3cqh -3cqh 0); } }
+@keyframes draw-from-end { from { clip-path: inset(-2cqh 0 -2cqh 100%); } to { clip-path: inset(-2cqh 0 -2cqh -2.5cqh); } }
+@keyframes write-in { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes drop-in { from { transform: translateY(-1.5cqh); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes pop-x { from { opacity: 0; transform: translateX(-50%) scale(.4); } to { opacity: 1; transform: translateX(-50%) scale(1); } }
+@keyframes pop-tri { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: none; } }
+@keyframes open-box { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@media (prefers-reduced-motion: no-preference) {
+  .tl-arrow.on:not(.settled) .shaft { animation: draw-x .5s ease-out both; }
+  .tl-arrow.on:not(.settled) .lab { animation: write-in .35s ease-out .3s both; }
+  .tl-period.on:not(.settled) { animation: draw-x .5s ease-out both; }
+  .tl-marker.on:not(.settled) .tick, .tl-now.on:not(.settled), .tl-point.on:not(.settled) i { animation: drop-in .25s ease-out both; }
+  .tl-marker.on:not(.settled) .lab, .tl-now.on:not(.settled) span, .tl-point.on:not(.settled) span { animation: write-in .3s ease-out .15s both; }
+  .tl-series.on:not(.settled) .x { animation: pop-x .18s ease-out both; animation-delay: calc(var(--i) * var(--step)); }
+  .tl-legend.on:not(.settled) { animation: write-in .35s ease-out .3s both; }
+  .tl-pointer.on:not(.settled) .lab { animation: write-in .3s ease-out both; }
+  .tl-pointer.on:not(.settled) .pline { animation: draw-from-end .4s ease-out .15s both; }
+  .tl-callout.on:not(.settled) .cobox { animation: open-box .3s ease-out both; transform-origin: var(--tri) 0; }
+  .tl-callout.above.on:not(.settled) .cobox { transform-origin: var(--tri) 100%; }
+  .tl-callout.on:not(.settled) .tri { animation: pop-tri .2s ease-out .25s both; }
+}
+
+#contentsBtn { min-width: 44px; height: 100%; font: inherit; font-size: 2.4cqh; letter-spacing: .08em;
+               text-transform: uppercase; color: #5F5E5A; background: none; border: none;
+               border-left: 1px solid #E8E6DF; padding: 0 2.5cqw; cursor: pointer; }
+#contents { position: absolute; left: 0; right: 0; top: 8cqh; bottom: max(8cqh, 44px);
+            background: #fff; padding: 2.5cqh 5cqw; overflow: auto; display: none; box-sizing: border-box; }
+#contents.on { display: block; }
+#contents .lbl { margin-bottom: 1.5cqh; }
+#contents ol { margin: 0; padding: 0; list-style: none; }
+#contents li button { display: flex; gap: 2cqw; width: 100%; text-align: left; font: inherit; font-size: 3.2cqh;
+                      line-height: 1.35; color: #2C2C2A; background: none; border: none;
+                      border-bottom: 1px solid #E8E6DF; padding: 1.4cqh 0; min-height: 44px; cursor: pointer; }
+#contents li button .n { color: #888780; min-width: 4cqw; font-variant-numeric: tabular-nums; }
+#contents li button.here { color: #185FA5; }
+
+.mk-underline { text-decoration: underline; text-decoration-color: #185FA5;
+                text-decoration-thickness: max(2px, .4cqh); text-underline-offset: .18em; }
+/* Every line fragment of a mark is drawn complete (docs/02-DESIGN-SYSTEM.md
+   §8): a circle or bracket that wraps gets a closed shape on each line. */
+.mk { -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.mk-highlight { background: rgba(250, 199, 117, .55); }
+/* Real padding and margin, so the ring never touches the neighbouring word. */
+.mk-circle { border: max(1px, .28cqh) solid #185FA5; border-radius: 1em; padding: .05em .35em; margin: 0 .15em; }
+.mk-strike { text-decoration: line-through; text-decoration-color: #E24B4A;
+             text-decoration-thickness: max(2px, .4cqh); }
+.mk-bracket { border-bottom: max(2px, .35cqh) solid #185FA5; padding-bottom: .12em; position: relative; }
+.mk-bracket::before, .mk-bracket::after { content: ""; position: absolute; bottom: -.05em; width: max(2px, .35cqh);
+                                          height: .55em; background: #185FA5; }
+.mk-bracket::before { left: 0; } .mk-bracket::after { right: 0; }
+/* replace: the wrong phrase struck in red, the correction written above it in
+   the teacher's hand (docs/02-DESIGN-SYSTEM.md §8, the one second typeface). */
+.mk-replace { position: relative; text-decoration: line-through; text-decoration-color: #E24B4A;
+              text-decoration-thickness: max(2px, .4cqh); }
+.mk-replace::after { content: attr(data-with); position: absolute; left: 0; bottom: 88%; white-space: nowrap;
+                     font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive; font-size: .82em;
+                     line-height: 1; color: #185FA5; text-decoration: none; }
+.mk-arrow-from, .mk-arrow-to { }
+#overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+#overlay path { fill: none; stroke: #185FA5; stroke-linecap: round; }
+#overlay .head { fill: #185FA5; }
+#pointer { position: absolute; width: 2.6cqh; height: 2.6cqh; border-radius: 50%;
+           border: max(2px, .35cqh) solid #185FA5; background: rgba(24, 95, 165, .12);
+           transform: translate(-50%, -50%); opacity: 0; pointer-events: none;
+           transition: left .4s ease, top .4s ease, opacity .2s ease; }
+#pointer.on { opacity: 1; }
+
+#playPause { width: max(6cqh, 44px); height: max(6cqh, 44px); border-radius: 50%; border: 1px solid #5F5E5A;
+             background: #fff; color: #5F5E5A; font-size: 2.6cqh; cursor: pointer; flex: none; padding: 0; }
+#scrubber { flex: 1; height: max(4cqh, 44px); margin: 0; accent-color: #5F5E5A; cursor: pointer; }
+#timeLabel { font-variant-numeric: tabular-nums; flex: none; min-width: 12cqw; text-align: right; }
+
+/* Review chrome, outside the frame: what is being said, and where we are. */
+#review { width: var(--w); font-size: 13px; line-height: 1.45; display: flex; gap: 14px; align-items: baseline; }
+#subtitle { flex: 1; min-height: 2.9em; padding: 7px 10px; background: #fff; border: 1px solid #e3e1d9; }
+#subtitle .provenance { display: inline-block; font-size: 11px; letter-spacing: .04em; text-transform: uppercase;
+                        color: #888780; margin-right: 8px; }
+#where { flex: none; color: #888780; font-variant-numeric: tabular-nums; }
+#failure { color: #a11d1d; }
+/* Silent preview: no audio, timing estimated from word counts. Marked so
+   nobody mistakes it for the real lesson. */
+#silentBanner { display: none; width: var(--w); box-sizing: border-box; margin-bottom: 8px; padding: 8px 12px;
+                background: #FDF3DF; border: 1px solid #EF9F27; color: #412402; font-size: 13px; line-height: 1.4; }
+#silentBanner b { letter-spacing: .08em; }
+#silentTag { display: none; flex: none; font-size: 2cqh; letter-spacing: .1em; text-transform: uppercase;
+             color: #854F0B; border: 1px solid #EF9F27; padding: .3cqh .8cqw; }
+.silent #silentBanner { display: block; } .silent #silentTag { display: inline-block; }
+</style>
+</head>
+<body>
+<div id="silentBanner"></div>
+<div class="frame" id="frame">
+  <div class="hdr"><span class="n" id="hdrNo"></span><span class="t" id="hdrTitle"></span>
+    <button id="contentsBtn" aria-label="Contents">Contents</button></div>
+  <div class="body" id="board"></div>
+  <div id="contents"><div class="lbl">Contents</div><ol id="contentsList"></ol></div>
+  <svg id="overlay" aria-hidden="true"></svg>
+  <div id="pointer"></div>
+  <div class="ctl">
+    <button id="playPause" aria-label="Play">&#9654;</button>
+    <input type="range" id="scrubber" min="0" max="1" step="0.01" value="0" aria-label="Progress">
+    <span id="silentTag">silent</span>
+    <span id="timeLabel">0:00 / 0:00</span>
+  </div>
+</div>
+<div id="review"><div id="subtitle"></div><div id="where"></div></div>
+<script>
+const BUNDLE = __BUNDLE_JSON__;
+const blocks = BUNDLE.blocks;
+const boards = BUNDLE.boards;
+const totalDuration = BUNDLE.meta.total_duration_s;
+// SILENT PREVIEW (build_silent_preview.py): no audio at all. The clock is a
+// timer over the estimated timeline; everything else - boards, reveals,
+// marks, erasures, diagram drawing, reading pointer - is the real player's.
+const SILENT = !!BUNDLE.meta.silent;
+let silentClock0 = 0;
+if (SILENT) {
+  document.body.classList.add("silent");
+  document.getElementById("silentBanner").innerHTML = "<b>SILENT PREVIEW</b> &middot; no audio has been made. "
+    + "Timing is estimated from word counts at " + BUNDLE.meta.wpm + " words per minute; the narration shows "
+    + "as subtitles below the frame. The real lesson's timing will come from the voice.";
+}
+
+// Flatten for playback. The audio element is the clock (see the old player's
+// note on this): lesson time is the playing utterance's start plus the
+// element's currentTime, and only the silent gaps run on a timer.
+const utterances = [];
+for (const bd of boards) for (const s of bd.states) for (const u of s.utterances) {
+  utterances.push({ ...u, boardId: bd.id, stateId: s.id });
+}
+
+// ---- Layout: fit the frame to the viewport ----
+const frame = document.getElementById("frame");
+function fit() {
+  if (window.__lockWidth) {   // a measuring harness pins the frame width
+    document.documentElement.style.setProperty("--w", window.__lockWidth + "px");
+    return;
+  }
+  const fs = !!document.fullscreenElement;
+  const banner = document.getElementById("silentBanner");
+  const review = fs ? 0 : 56 + (banner && banner.offsetHeight ? banner.offsetHeight + 8 : 0);
+  const w = Math.min(window.innerWidth - (fs ? 0 : 24),
+                     (window.innerHeight - review - (fs ? 0 : 24)) * 16 / 9);
+  document.documentElement.style.setProperty("--w", Math.max(320, w) + "px");
+}
+window.addEventListener("resize", fit);
+document.addEventListener("fullscreenchange", fit);
+frame.addEventListener("dblclick", () => {
+  if (document.fullscreenElement) document.exitFullscreen(); else frame.requestFullscreen?.();
+});
+fit();
+
+// ---- DOM ----
+const boardEl = document.getElementById("board");
+const hdrNo = document.getElementById("hdrNo");
+const hdrTitle = document.getElementById("hdrTitle");
+const pointerEl = document.getElementById("pointer");
+const subtitleEl = document.getElementById("subtitle");
+const whereEl = document.getElementById("where");
+const playPauseBtn = document.getElementById("playPause");
+const scrubber = document.getElementById("scrubber");
+const timeLabel = document.getElementById("timeLabel");
+const contentsEl = document.getElementById("contents");
+const contentsList = document.getElementById("contentsList");
+scrubber.max = totalDuration;
+
+// Contents: one entry per SECTION, never per board (docs/00-PRODUCT.md §1).
+const sections = BUNDLE.meta.sections || [];
+const contentButtons = [];
+sections.forEach((sec, i) => {
+  const li = document.createElement("li");
+  const b = document.createElement("button");
+  b.innerHTML = '<span class="n">' + (i + 1) + "</span><span></span>";
+  b.lastChild.textContent = sec.title;
+  b.addEventListener("click", () => { contentsEl.classList.remove("on"); seek(sec.start); play(); });
+  li.appendChild(b);
+  contentsList.appendChild(li);
+  contentButtons.push({ sec, b });
+});
+document.getElementById("contentsBtn").addEventListener("click", () => contentsEl.classList.toggle("on"));
+
+// ---- What is on the board at time t ----
+function boardAt(t) {
+  let cur = boards[0];
+  for (const bd of boards) if (bd.start <= t + 1e-6) cur = bd; else break;
+  return cur;
+}
+function stateAt(bd, t) {
+  let cur = null;
+  for (const s of bd.states) if (s.start <= t + 1e-6) cur = s; else break;
+  return cur;
+}
+// Reveal time of each working block, keyed by state id + block id. A diagram
+// PART ("k07.3") of a working block is keyed the same way; a part of a
+// fixed-layer diagram is keyed by board id, because once drawn it stays for
+// the rest of the board, through every erasure.
+const revealAt = new Map();
+const fixedPartAt = new Map();
+const marksByState = new Map();
+for (const bd of boards) for (const s of bd.states) {
+  const marks = [];
+  for (const u of s.utterances) for (const c of u.cues) {
+    if (c.type === "reveal") {
+      const base = String(c.block).split(".")[0];
+      if (base !== c.block && bd.fixed.includes(base)) fixedPartAt.set(bd.id + "|" + c.block, c.time);
+      else revealAt.set(s.id + "|" + c.block, c.time);
+    }
+    else if (c.type !== "pause") marks.push(c);
+  }
+  marks.sort((a, b) => a.time - b.time);
+  marksByState.set(s.id, marks);
+}
+
+// Parts with no reveal cue of their own follow their block (an older
+// narration that reveals a timeline whole).
+function drawParts(bd, s, t, jumped) {
+  for (const [id, el] of blockEls) {
+    const fixed = el.dataset.layer === "fixed";
+    const blockOn = fixed || el.classList.contains("on");
+    for (const p of el.querySelectorAll("[data-part]")) {
+      const key = p.dataset.part;
+      const at = fixed ? fixedPartAt.get(bd.id + "|" + key) : (s ? revealAt.get(s.id + "|" + key) : undefined);
+      const on = blockOn && (at === undefined ? true : t >= at);
+      if (on && !p.classList.contains("on")) {
+        // Drawn in motion only when its cue has just passed during playback;
+        // after a seek, or when redrawn long after its cue, it is simply there.
+        if (jumped || at === undefined || t - at > 1.2) p.classList.add("settled");
+        p.classList.add("on");
+      } else if (!on && p.classList.contains("on")) {
+        p.classList.remove("on", "settled");
+      }
+    }
+  }
+}
+
+let drawnBoard = null, drawnState = null, drawnErased = null, drawnMarks = "";
+const blockEls = new Map();
+
+function drawBlock(id, fixed) {
+  const tpl = document.createElement("template");
+  tpl.innerHTML = blocks[id].html;
+  const el = tpl.content.firstElementChild;
+  el.classList.add("blk");
+  if (fixed) el.classList.add("on");
+  el.dataset.layer = fixed ? "fixed" : "working";
+  boardEl.appendChild(el);
+  blockEls.set(id, el);
+  return el;
+}
+
+function drawBoard(bd, s, erased) {
+  if (bd !== drawnBoard) {
+    boardEl.replaceChildren();
+    blockEls.clear();
+    // The header shows the section title and nothing else: no board title,
+    // no number (docs/02-DESIGN-SYSTEM.md §2, "The header").
+    hdrNo.style.display = "none";
+    hdrTitle.textContent = bd.title;
+    for (const id of bd.fixed) drawBlock(id, true);
+    let here = null;
+    for (const sec of sections) if (sec.start <= bd.start + 1e-6) here = sec;
+    for (const { sec, b: btn } of contentButtons) btn.classList.toggle("here", sec === here);
+    drawnBoard = bd; drawnState = null; drawnErased = null;
+  }
+  if (s !== drawnState || erased !== drawnErased) {
+    for (const [id, el] of [...blockEls]) if (el.dataset.layer === "working") { el.remove(); blockEls.delete(id); }
+    if (s && !erased) for (const id of s.working) drawBlock(id, false);
+    drawnState = s; drawnErased = erased; drawnMarks = "";
+  }
+}
+
+// A mark wraps the phrase inside the block it names. The phrase is found in
+// the block's own text, never by coordinates.
+function wrapPhrase(el, phrase, cls) {
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  let node;
+  while ((node = walker.nextNode())) {
+    const i = node.data.indexOf(phrase);
+    if (i < 0) continue;
+    const range = document.createRange();
+    range.setStart(node, i);
+    range.setEnd(node, i + phrase.length);
+    const span = document.createElement("span");
+    span.className = "mk " + cls;
+    range.surroundContents(span);
+    return span;
+  }
+  return null;
+}
+
+function applyMarks(s, t, erased) {
+  const active = (s && !erased) ? marksByState.get(s.id).filter(c => c.time <= t) : [];
+  const key = active.map(c => c.id + "@" + c.time).join(",");
+  if (key === drawnMarks) return;
+  drawnMarks = key;
+  // Redraw touched blocks from their source html, then apply every active mark.
+  for (const [id, el] of blockEls) {
+    if (el.querySelector(".mk")) {
+      const fresh = document.createElement("template");
+      fresh.innerHTML = blocks[id].html;
+      el.innerHTML = fresh.content.firstElementChild.innerHTML;
+    }
+  }
+  pointSpan = null;
+  arrows = [];
+  for (const c of active) {
+    const el = blockEls.get(c.block);
+    if (!el) continue;
+    if (c.type === "arrow") {
+      const from = wrapPhrase(el, c.text, "mk-arrow-from");
+      const toEl = blockEls.get(c.to_block || c.block);
+      const to = toEl ? wrapPhrase(toEl, c.to_text, "mk-arrow-to") : null;
+      if (from && to) arrows.push({ from, to });
+      continue;
+    }
+    const span = wrapPhrase(el, c.text, c.type === "point" ? "mk-point" : "mk-" + c.type);
+    if (!span) continue;
+    if (c.type === "point") pointSpan = span;
+    if (c.type === "replace") span.dataset.with = c.with || "";
+  }
+}
+
+// ---- Geometry measured on every render, never stored: the pointer and the
+// arrows follow the phrases wherever the layout puts them, in percentages of
+// the frame so they scale with it between renders. ----
+let pointSpan = null;
+let arrows = [];
+const overlay = document.getElementById("overlay");
+
+function placePointer(r, f) {
+  pointerEl.style.left = ((r.left - f.left) / f.width * 100 - 0.6) + "%";
+  pointerEl.style.top = ((r.top + r.height / 2 - f.top) / f.height * 100) + "%";
+  pointerEl.classList.add("on");
+}
+
+// Word k of a block, by the bundle's tokenisation: whitespace split, tokens
+// with no letter or digit skipped, counted across the block's text nodes.
+function wordRect(el, k) {
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  let node, count = 0;
+  const re = /\S+/g;
+  while ((node = walker.nextNode())) {
+    re.lastIndex = 0;
+    let m;
+    while ((m = re.exec(node.data))) {
+      if (!/[a-z0-9]/i.test(m[0])) continue;
+      if (count === k) {
+        const range = document.createRange();
+        range.setStart(node, m.index);
+        range.setEnd(node, m.index + m[0].length);
+        return range.getBoundingClientRect();
+      }
+      count++;
+    }
+  }
+  return null;
+}
+
+// The pointer follows reading: the latest read word whose start has passed,
+// held for a moment after the run ends; otherwise an explicit point cue;
+// otherwise the pointer rests hidden.
+const READ_HOLD_S = 2.5;
+function readingTarget(t) {
+  let best = null;
+  for (const u of utterances) {
+    if (u.start > t) break;
+    for (const run of u.reading || []) for (const w of run.words) {
+      if (w[1] <= t && (!best || w[1] >= best.start)) best = { block: run.block, k: w[0], start: w[1], end: w[2] };
+    }
+  }
+  return best && t <= best.end + READ_HOLD_S ? best : null;
+}
+
+function positionPointer(t) {
+  const f = frame.getBoundingClientRect();
+  if (!f.width || !f.height) return;
+  const read = readingTarget(t);
+  if (read) {
+    const el = blockEls.get(read.block);
+    if (el && el.classList.contains("on")) {
+      const r = wordRect(el, read.k);
+      if (r) { placePointer(r, f); return; }
+    }
+  }
+  if (pointSpan && pointSpan.isConnected) { placePointer(pointSpan.getBoundingClientRect(), f); return; }
+  pointerEl.classList.remove("on");
+}
+
+function positionArrows() {
+  const f = frame.getBoundingClientRect();
+  overlay.setAttribute("viewBox", "0 0 " + f.width + " " + f.height);
+  overlay.replaceChildren();
+  const stroke = Math.max(2, f.height * 0.0035);
+  for (const a of arrows) {
+    if (!a.from.isConnected || !a.to.isConnected) continue;
+    const r1 = a.from.getBoundingClientRect(), r2 = a.to.getBoundingClientRect();
+    const x1 = r1.left + r1.width / 2 - f.left, y1 = r1.top - f.top - stroke;
+    const x2 = r2.left + r2.width / 2 - f.left, y2 = r2.top - f.top - stroke;
+    const lift = Math.max(f.height * 0.05, Math.abs(x2 - x1) * 0.18);
+    const cx = (x1 + x2) / 2, cy = Math.min(y1, y2) - lift;
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", "M" + x1 + " " + y1 + " Q" + cx + " " + cy + " " + x2 + " " + y2);
+    path.setAttribute("stroke-width", stroke);
+    overlay.appendChild(path);
+    // Arrowhead along the curve's end tangent.
+    const tx = x2 - cx, ty = y2 - cy, len = Math.hypot(tx, ty) || 1;
+    const ux = tx / len, uy = ty / len, size = stroke * 4;
+    const head = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    head.setAttribute("class", "head");
+    head.setAttribute("d", "M" + x2 + " " + y2
+      + " L" + (x2 - ux * size - uy * size * 0.55) + " " + (y2 - uy * size + ux * size * 0.55)
+      + " L" + (x2 - ux * size + uy * size * 0.55) + " " + (y2 - uy * size - ux * size * 0.55) + " Z");
+    overlay.appendChild(head);
+  }
+}
+
+let lastRenderT = null;
+function renderFrame(t) {
+  const bd = boardAt(t);
+  const s = stateAt(bd, t);
+  const erased = !!(s && s.erase && t >= s.erase.time);
+  // A jump (seek, scrub, first frame) shows the diagram's state for that
+  // moment at once, with no replay of the drawing.
+  const jumped = lastRenderT === null || Math.abs(t - lastRenderT) > 0.75;
+  lastRenderT = t;
+  drawBoard(bd, s, erased);
+  if (s && !erased) {
+    for (const id of s.working) {
+      const el = blockEls.get(id);
+      const at = revealAt.get(s.id + "|" + id);
+      if (el) el.classList.toggle("on", at !== undefined && t >= at);
+    }
+  }
+  applyMarks(s, t, erased);
+  drawParts(bd, s && !erased ? s : null, t, jumped);
+  positionPointer(t);
+  positionArrows();
+
+  const u = utteranceAt(t);
+  if (u && !state.failure) {
+    subtitleEl.innerHTML = '<span class="provenance">' + u.provenance + "</span>";
+    subtitleEl.appendChild(document.createTextNode(u.text));
+  } else if (!state.failure) {
+    let pausing = null;
+    for (const uu of utterances) for (const c of uu.cues)
+      if (c.type === "pause" && c.time <= t && t < c.time_end) pausing = c;
+    subtitleEl.innerHTML = pausing ? '<span class="provenance">pause</span>' : "";
+    if (pausing) subtitleEl.appendChild(document.createTextNode(pausing.text || ""));
+  }
+  whereEl.textContent = bd.id + (s ? " · " + s.id : "") + (erased ? " · erased" : "");
+  if (!state.scrubbing) scrubber.value = t;
+  timeLabel.textContent = fmtTime(t) + " / " + fmtTime(totalDuration);
+}
+
+// ---- Playback engine: audio is the clock ----
+const audioEl = new Audio(); audioEl.preload = "auto";
+const preloadEl = new Audio(); preloadEl.preload = "auto";
+const state = { playing: false, globalTime: 0, index: 0, inGap: false, gapEndsAt: 0,
+                gapRemaining: 0, scrubbing: false, failure: null };
+let gapTimer = null;
+
+function utteranceAt(t) { for (const u of utterances) if (t >= u.start && t < u.end) return u; return null; }
+function indexAt(t) { for (let i = 0; i < utterances.length; i++) if (t >= utterances[i].start && t < utterances[i].end) return i; return -1; }
+function indexAfter(t) { for (let i = 0; i < utterances.length; i++) if (utterances[i].start > t) return i; return -1; }
+function clearGapTimer() { if (gapTimer !== null) { clearTimeout(gapTimer); gapTimer = null; } }
+function setAudioTime(offset) {
+  if (audioEl.readyState >= 1) audioEl.currentTime = offset;
+  else audioEl.addEventListener("loadedmetadata", () => { audioEl.currentTime = offset; }, { once: true });
+}
+function reportAudioFailure(detail) {
+  state.failure = detail;
+  subtitleEl.innerHTML = '<span id="failure">audio error: </span>';
+  subtitleEl.appendChild(document.createTextNode(detail + " - playback stopped."));
+  state.playing = false; clearGapTimer(); updatePlayButton();
+}
+audioEl.addEventListener("error", () => {
+  const err = audioEl.error;
+  reportAudioFailure("could not load " + audioEl.getAttribute("data-src") + (err ? " (code " + err.code + ")" : ""));
+});
+function playWhenReady() {
+  const attempt = () => {
+    if (!state.playing || state.inGap) return;
+    audioEl.play().catch(e => reportAudioFailure(e && e.name ? e.name + ": " + e.message : String(e)));
+  };
+  if (audioEl.readyState >= 2) attempt(); else audioEl.addEventListener("canplay", attempt, { once: true });
+}
+function loadUtterance(index, offset) {
+  const u = utterances[index];
+  if (audioEl.getAttribute("data-src") !== u.audio_file) { audioEl.src = u.audio_file; audioEl.setAttribute("data-src", u.audio_file); }
+  setAudioTime(offset);
+  const next = utterances[index + 1];
+  if (next) preloadEl.src = next.audio_file;
+}
+function startUtterance(index, offset) {
+  clearGapTimer(); state.index = index; state.inGap = false;
+  state.globalTime = utterances[index].start + offset;
+  loadUtterance(index, offset); playWhenReady();
+}
+function beginGap(index, seconds) {
+  clearGapTimer(); state.index = index; state.inGap = true;
+  state.gapRemaining = Math.max(0, seconds);
+  state.gapEndsAt = performance.now() + state.gapRemaining * 1000;
+  loadUtterance(index, 0);
+  if (state.playing) armGapTimer();
+}
+function armGapTimer() {
+  clearGapTimer();
+  gapTimer = setTimeout(() => { gapTimer = null; startUtterance(state.index, 0); },
+                        Math.max(0, state.gapEndsAt - performance.now()));
+}
+function finish() {
+  clearGapTimer(); state.playing = false; state.inGap = false;
+  state.globalTime = totalDuration; updatePlayButton(); renderFrame(state.globalTime);
+}
+audioEl.addEventListener("ended", () => {
+  if (state.inGap) return;
+  const u = utterances[state.index];
+  state.globalTime = u.end;
+  const next = state.index + 1;
+  if (next >= utterances.length) {
+    // The lesson ends after the last utterance's pause, if any.
+    beginTail(totalDuration - u.end);
+    return;
+  }
+  beginGap(next, utterances[next].start - u.end);
+});
+let tailTimer = null;
+function beginTail(seconds) {
+  clearGapTimer(); state.inGap = true; state.index = utterances.length - 1;
+  state.gapRemaining = Math.max(0, seconds);
+  state.gapEndsAt = performance.now() + state.gapRemaining * 1000;
+  tailTimer = setTimeout(finish, state.gapRemaining * 1000);
+}
+function play() {
+  if (state.playing) return;
+  if (SILENT) {
+    if (state.globalTime >= totalDuration - 0.01) state.globalTime = 0;
+    state.playing = true; silentClock0 = performance.now() - state.globalTime * 1000;
+    updatePlayButton(); return;
+  }
+  if (state.globalTime >= totalDuration - 0.01) seek(0);
+  state.playing = true; updatePlayButton();
+  if (state.inGap) { state.gapEndsAt = performance.now() + state.gapRemaining * 1000; armGapTimer(); }
+  else playWhenReady();
+}
+function pause() {
+  if (!state.playing) return;
+  if (SILENT) { state.playing = false; updatePlayButton(); return; }
+  state.playing = false;
+  if (state.inGap) { state.gapRemaining = Math.max(0, (state.gapEndsAt - performance.now()) / 1000); clearGapTimer(); }
+  else audioEl.pause();
+  updatePlayButton();
+}
+function updatePlayButton() {
+  playPauseBtn.innerHTML = state.playing ? "&#10074;&#10074;" : "&#9654;";
+  playPauseBtn.setAttribute("aria-label", state.playing ? "Pause" : "Play");
+}
+function seek(t) {
+  t = Math.max(0, Math.min(totalDuration, t));
+  if (SILENT) {
+    state.globalTime = t; silentClock0 = performance.now() - t * 1000;
+    renderFrame(t); return;
+  }
+  clearGapTimer(); if (tailTimer) { clearTimeout(tailTimer); tailTimer = null; }
+  audioEl.pause(); state.globalTime = t;
+  const inside = indexAt(t);
+  if (inside !== -1) { state.index = inside; state.inGap = false; loadUtterance(inside, t - utterances[inside].start); playWhenReady(); }
+  else {
+    const next = indexAfter(t);
+    if (next === -1) { state.index = utterances.length - 1; state.inGap = false; state.playing = false; updatePlayButton(); }
+    else {
+      state.index = next; state.inGap = true; state.gapRemaining = utterances[next].start - t;
+      state.gapEndsAt = performance.now() + state.gapRemaining * 1000; loadUtterance(next, 0);
+      if (state.playing) armGapTimer();
+    }
+  }
+  renderFrame(t);
+}
+playPauseBtn.addEventListener("click", () => { if (state.playing) pause(); else play(); });
+scrubber.addEventListener("pointerdown", () => { state.scrubbing = true; });
+scrubber.addEventListener("pointerup", () => { state.scrubbing = false; });
+scrubber.addEventListener("input", () => seek(parseFloat(scrubber.value)));
+function fmtTime(s) { s = Math.max(0, s); const m = Math.floor(s / 60), sec = Math.floor(s % 60); return m + ":" + String(sec).padStart(2, "0"); }
+
+function tick() {
+  if (state.playing && SILENT) {
+    state.globalTime = Math.min(totalDuration, (performance.now() - silentClock0) / 1000);
+    if (state.globalTime >= totalDuration) { state.playing = false; updatePlayButton(); }
+    renderFrame(state.globalTime);
+  } else if (state.playing) {
+    if (state.inGap) {
+      const remaining = Math.max(0, (state.gapEndsAt - performance.now()) / 1000);
+      const target = tailTimer ? totalDuration : utterances[state.index].start;
+      state.globalTime = target - remaining;
+    } else {
+      state.globalTime = utterances[state.index].start + audioEl.currentTime;
+    }
+    renderFrame(state.globalTime);
+  }
+  requestAnimationFrame(tick);
+}
+
+const startAt = parseFloat(new URLSearchParams(location.search).get("t") || "0");
+seek(isFinite(startAt) ? startAt : 0);
+// Any change to the frame's size re-renders, so measured positions never go
+// stale: a window resize, fullscreen, or a headless viewport settling late.
+new ResizeObserver(() => { fit(); renderFrame(state.globalTime); }).observe(document.body);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => renderFrame(state.globalTime));
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
