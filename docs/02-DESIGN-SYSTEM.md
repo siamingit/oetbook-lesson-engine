@@ -460,6 +460,12 @@ with a plain definition, as before).
 
 ### 7c. Kinds of content and the board style
 
+**This is the standard for every board of every lesson** (maintainer,
+2026-09-25). No board is built in the style before it: the screens audit
+and the structural check fail any block drawn the old way (a term box in the
+old blue box with a capitals label, a plain two-column comparison, a block
+with no kind). AGENTS.md makes it binding.
+
 Decided by the maintainer 2026-09-25 for every lesson (docs/adr/008-board-style.md),
 from his own slides; reference `docs/prototypes/p4-board-style-prototype.html`
 (style direction, not content). A board shows at a glance what kind of
@@ -522,10 +528,49 @@ now" teal), so **the screens audit fails a board where a word-class colour
 and a tense colour it is close to (difference under 20) appear together**,
 and any word-class colour within 20 of red or green.
 
-**Tables** keep §7 "Tables": a slide's table is a table board; its changed
-words are coloured in the cells, and its change cards stand beside the row.
-Table text starts at body size (3.2% of the frame's height) and is reduced
-only as far as the whole table needs to fit.
+**Table boards** (extension of 2026-09-25) keep §7 "Tables" and take the
+same style:
+
+- **Words that change are coloured in their cells, by word class:** the
+  source word in the notes column and before the arrow in the change column,
+  the new form after the arrow and in the sentence. A cell's word is marked
+  in that cell only. A typed word takes its colour when its typing ends; a
+  printed word when its row is first typed into, or when it is first marked.
+- **A side note that only states a word change is a change card:** "The
+  adjective 'sensitive' becomes the noun 'sensitivity'" is drawn as
+  sensitive (adjective) → sensitivity (noun); a note stating two changes is
+  one card with two lines. It is shown beside its row and erased as before. A
+  note that says anything more stays a note.
+- **Other term boxes are note cards:** the yellow note card with the term
+  in the medium weight and its tag in small sentence case ("Pronunciation",
+  "Abbreviation"). The definition pill is for a board that is not a table.
+- **The table** has the sky header with a firmer edge under it, and rounded
+  outer corners, as a slide box. Table text starts at body size (3.2% of the
+  frame's height) and is reduced only as far as the whole table needs to fit.
+
+**Word classes** come from what the section itself says: its change cards
+("Analyse (verb)"), its notes ("The adjective 'sensitive' becomes the noun
+'sensitivity'", "Symptomatic, asymptomatic and afebrile are all
+adjectives"), the table's header ("Nouns → Verbs"), then word endings
+(-tion, -ity: noun; -ive, -ous: adjective; -ise, -ate: verb). A word is
+matched only in its own forms (analyse, analysed), never by a shared stem
+(assess is not assessment). A word nothing classes stays uncoloured; a
+phrase that begins with a preposition ("on a daily basis") is not a noun
+phrase and stays uncoloured.
+
+**A board's palette.** No set of four colours is clear of all eight tense
+colours and still far enough apart. So each word class has alternates, near
+its own hue and 20 or more from every tense colour: verb `#0A8DB8`,
+`#1B8BBB`; noun `#0A84B8`, `#0A8DB8`; adjective `#008299`, `#3B8D9B`; clause
+`#C200C2`, `#DF00EB`. On a board that shows a tense colour too close to a
+class's main colour, that class takes its first alternate that is clear of
+everything on the board (Grammar 3: adjectives on the Non-physical
+complaints board, beside an "up to now" label; verbs on the Formal
+time-related expressions board, beside a "now" label). A board that no
+choice can clear fails the audit.
+
+**The introduction** keeps its title and contents items; its description is
+a slide box, the lesson's own words.
 
 **Presentation only.** The board style changes no block's text, no id, no
 cue and no state: narration and audio are unaffected. A cue on a folded

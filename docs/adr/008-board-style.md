@@ -76,3 +76,29 @@ bundle builder; the reference renderer draws pinned blocks and word marks.
   the fix then is a different board, not a different colour.
 - Table text now starts at body size and shrinks only to fit (§7 "Tables"):
   a small slide table no longer reads smaller than the notes beside it.
+
+## Extension, 2026-09-25: the standard for every board, table boards included
+
+Added by the maintainer after the whole of Grammar 3 was built with the style
+and only pages 4-5 showed it: the table boards had nothing to colour, because
+their changes are written in the cells and in notes, not on change cards.
+
+- **The board style is the standard for all lessons.** Every future lesson is
+  built with it, its colours and its approach, by default. The screens audit
+  and the structural check fail any block drawn in the older style, and
+  AGENTS.md says so.
+- **Table boards:** the changing words are coloured in their cells by word
+  class (the source in the notes and before the arrow, the new form after the
+  arrow and in the sentence), each in its own cell; a side note that only
+  states a word change becomes a change card; other term boxes become note
+  cards; the table keeps the slide style.
+- **Word classes** come from what the section says (cards, notes, the table
+  header), then word endings; a word is matched only in its own forms.
+- **Palette per board.** No fixed palette of four is clear of all tense
+  colours and far enough apart (the best measured was 13.3 between classes).
+  Each class has alternates clear of every tense colour; a board showing a
+  tense colour too close to a class's main colour uses the alternate. The
+  main colours stay the same everywhere else.
+- Bundle format 1.4: a word mark may name a table cell (`row`, `col`); a
+  board's `palette`. Nothing else changes: block text, ids, cues, narration and
+  audio are as they were.

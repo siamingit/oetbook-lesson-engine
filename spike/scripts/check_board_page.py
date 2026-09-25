@@ -108,6 +108,13 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
                         "its pause")
 
     blocks = bundle["blocks"]
+    # the board style is the standard (ADR 008): no block drawn in the old style
+    import board_style
+    drawn = {i for bd in bundle["boards"] for i in list(bd["fixed"])
+             + [w for s in bd["states"] for w in s["working"]]}
+    for i in sorted(drawn):
+        for why in board_style.legacy_reasons(blocks[i], blocks[i]["html"]):
+            problems.append(f"{i}: old board style: {why}")
     n_cues = 0
     parts_drawn: dict[str, set] = {}
     for bd in bundle["boards"]:

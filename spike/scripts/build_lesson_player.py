@@ -54,7 +54,7 @@ from write_screens import (FRAME_CSS, TAG_LABELS, block_html,     # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-FORMAT_VERSION = "1.3"             # docs/04-LESSON-BUNDLE.md; 1.1 refs (ADR 006), 1.2 table boards (ADR 007), 1.3 board style (ADR 008)
+FORMAT_VERSION = "1.4"             # docs/04-LESSON-BUNDLE.md; 1.1 refs (ADR 006), 1.2 table boards (ADR 007), 1.3 board style (ADR 008), 1.4 its table and palette extension
 READING_HOLD_S = 2.5               # the pointer stays on the last word read this long
 # Everything block_html draws from; pipeline notes (anchor, from_beats, note,
 # relabelled, ruling) stay in screens.json.
@@ -270,8 +270,10 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
         # a table board's table and each state's row (screens.json, ADR 007)
         for sb in scr["boards"]:
             links_of[pre + sb["id"]] = (
-                [dict(x, block=pre + x["block"], card=pre + x["card"]) for x in sb.get("wordlinks") or []],
-                [dict(x, block=pre + x["block"]) for x in sb.get("slidemarks") or []])
+                [dict(x, block=pre + x["block"], card=(pre + x["card"]) if x.get("card") else None)
+                 for x in sb.get("wordlinks") or []],
+                [dict(x, block=pre + x["block"]) for x in sb.get("slidemarks") or []],
+                sb.get("palette") or {})
             if sb.get("table"):
                 table_of[pre + sb["id"]] = pre + sb["table"]
             for ss in sb["states"]:
@@ -283,6 +285,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                 nb["beside"] = {"block": pre + nb["beside"]["block"], "row": nb["beside"]["row"]}
             if nb.get("fold_into"):
                 nb["fold_into"] = pre + nb["fold_into"]
+            if not nb.get("role") and nb["type"] == "plain":
+                nb["role"] = "slide"        # the title board's description: the lesson's own words
             blocks_all[pre + bid] = {**block_data(nb), "html": block_html(nb),
                                      "_tokens": block_tokens(b)}     # display words (1.3)
         section_marks.append({"id": tag, "title": sec["title"], "pages": pages,
@@ -406,6 +410,12 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             s["until"] = s["erase"]["time"] if s["erase"] else bd["until"]
         bd["reveal"] = {p: fixed_rev.get(p, bd["start"])
                         for fid in bd["fixed"] for p in diagram_parts(blocks_all[fid])}
+        # 1.2: a table board's table, each state's row, and the spotlight
+        bd["table"] = table_of.get(bd["id"])
+        for s in bd["states"]:
+            s["row"] = row_of.get(s["id"]) if bd["table"] else None
+        bd["focus"] = (table_focus(bd, blocks_all[bd["table"]], table_cells(blocks_all[bd["table"]]))
+                       if bd["table"] else [])
         # 1.3: a pinned block stays from its reveal to the board's end; a
         # word mark colours a changing word by its word class from the moment
         # its change card appears or the word is first marked, whichever is
@@ -413,7 +423,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
         # underline is there from the start
         bd["pinned"] = {i: s["reveal"][i] for s in bd["states"] for i in s["working"]
                         if blocks_all[i].get("pin") and i in s["reveal"]}
-        links, smarks = links_of.get(bd["id"], ([], []))
+        links, smarks, palette = links_of.get(bd["id"], ([], [], {}))
+        bd["palette"] = palette            # 1.4: a word class's colour on this board, where not its main one
         shown = {i: bd["start"] for i in bd["fixed"]}
         for s in bd["states"]:
             for i, at in s["reveal"].items():
@@ -421,23 +432,38 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
         marks = [(c, u) for s in bd["states"] for u in s["utterances"] for c in u["cues"]
                  if c["type"] not in ("reveal", "pause", "type")]
         wm = []
+        types = [c for s in bd["states"] for u in s["utterances"] for c in u["cues"] if c["type"] == "type"]
         for x in links:
-            if x["block"] not in shown or x["card"] not in shown:
+            if x["block"] not in shown or (x.get("card") and x["card"] not in shown):
                 continue
             first = [c["time"] for c, _ in marks if c.get("block") == x["block"] and c.get("text")
                      and (c["text"].lower() in x["text"].lower() or x["text"].lower() in c["text"].lower())]
-            at = min([shown[x["card"]]] + first)
-            wm.append({"block": x["block"], "text": x["text"], "cls": x["cls"],
-                       "time": round(max(shown[x["block"]], at), 3)})
+            cand = first + ([shown[x["card"]]] if x.get("card") else [])
+            if x.get("row") is not None:
+                # a word in a table cell: coloured when its typing ends if it is typed,
+                # otherwise when its row is first typed into, or first marked
+                cell = blocks_all[x["block"]]["rows"][x["row"]][x["col"]]
+                pos = cell.find(x["text"])
+                typed = [c for c in types if c["block"] == x["block"] and c["row"] == x["row"]
+                         and c["col"] == x["col"]]
+                cover = [c for c in typed if (blocks_all[x["block"]]["typed"][c["typed"]]["start"] <= pos
+                         < blocks_all[x["block"]]["typed"][c["typed"]]["start"]
+                         + len(blocks_all[x["block"]]["typed"][c["typed"]]["text"]))]
+                if cover:
+                    cand = [cover[0]["time_end"]]
+                else:
+                    cand += [c["time"] for c in types if c["block"] == x["block"] and c["row"] == x["row"]]
+                    cand += [f["time"] for f in bd.get("focus") or [] if f["row"] == x["row"]][:1]
+            at = min(cand) if cand else shown[x["block"]]
+            w = {"block": x["block"], "text": x["text"], "cls": x["cls"],
+                 "time": round(max(shown[x["block"]], at), 3)}
+            if x.get("row") is not None:
+                w.update(row=x["row"], col=x["col"])
+            wm.append(w)
         wm += [{"block": x["block"], "text": x["text"], "cls": "slide-underline", "time": bd["start"]}
                for x in smarks if x["block"] in shown]
         bd["wordmarks"] = sorted(wm, key=lambda x: x["time"])
-        # 1.2: a table board's table, each state's row, and the spotlight
-        bd["table"] = table_of.get(bd["id"])
-        for s in bd["states"]:
-            s["row"] = row_of.get(s["id"]) if bd["table"] else None
-        bd["focus"] = (table_focus(bd, blocks_all[bd["table"]], table_cells(blocks_all[bd["table"]]))
-                       if bd["table"] else [])
+
 
     # Categories and their sections as the contents board shows them
     # (build_lesson_boards.py): sections.json's category list, by section title.

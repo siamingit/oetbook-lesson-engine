@@ -95,27 +95,85 @@ def colour_distance(c1: str, c2: str) -> float:
     return math.sqrt((dL / SL) ** 2 + (dC / SC) ** 2 + (dH / SH) ** 2 + RT * (dC / SC) * (dH / SH))
 
 
-def board_colour_clashes(word_classes: set[str], families: set[str]) -> list[str]:
-    """Pairs of colours on one board that are too alike: two word classes, a
-    word class and a tense family shown with it, or a word class and red or
-    green. Empty when the board reads clearly."""
+# A word class's alternate colours, nearest its hue first, each 20 or more
+# from every tense colour: a board that shows a tense colour too close to a
+# word class's main colour draws that class in its first alternate that is
+# clear of everything else on the board (maintainer, 2026-09-25).
+ALTERNATES = {"verb": ["#0A8DB8", "#1B8BBB"], "noun": ["#0A84B8", "#0A8DB8"],
+              "adjective": ["#008299", "#3B8D9B"], "clause": ["#C200C2", "#DF00EB"]}
+CLASS_ORDER = ["verb", "noun", "adjective", "clause"]
+
+
+def _class_keys(word_classes: set[str]) -> list[str]:
+    ks = {"adjective" if CLASS_KEY.get(c, c) == "adverb" else CLASS_KEY.get(c, c) for c in word_classes}
+    return [k for k in CLASS_ORDER if k in ks]
+
+
+def board_palette(word_classes: set[str], families: set[str]) -> dict[str, str]:
+    """The colour of each word class on one board: its main colour, or its
+    first alternate clear of the board's tense colours, of red and green and
+    of the other classes' colours. Only the classes that change are returned."""
+    tense = [c for f in families for c in TENSE_COLOURS.get(f, ())]
+    chosen: dict[str, str] = {}
+    for k in _class_keys(word_classes):
+        for c in [WORD_COLOURS[k]] + ALTERNATES[k]:
+            if all(colour_distance(c, x) >= MIN_DISTANCE
+                   for x in tense + list(RESERVED.values()) + list(chosen.values())):
+                chosen[k] = c
+                break
+        else:
+            chosen[k] = WORD_COLOURS[k]
+    return {k: c for k, c in chosen.items() if c != WORD_COLOURS[k]}
+
+
+def board_colour_clashes(word_classes: set[str], families: set[str],
+                         palette: dict[str, str] | None = None) -> list[str]:
+    """Pairs of colours on one board that are too alike, with the board's
+    palette: two word classes, a word class and a tense colour shown with it,
+    or a word class and red or green. Empty when the board reads clearly."""
     out = []
-    keys = sorted({CLASS_KEY.get(c, c) for c in word_classes if CLASS_KEY.get(c, c) in WORD_COLOURS})
+    col = {k: (palette or {}).get(k, WORD_COLOURS[k]) for k in _class_keys(word_classes)}
+    keys = list(col)
     for i, a in enumerate(keys):
         for b in keys[i + 1:]:
-            if WORD_COLOURS[a] != WORD_COLOURS[b] and \
-                    colour_distance(WORD_COLOURS[a], WORD_COLOURS[b]) < MIN_DISTANCE:
+            if colour_distance(col[a], col[b]) < MIN_DISTANCE:
                 out.append(f"word classes {a} and {b}")
         for name, c in RESERVED.items():
-            if colour_distance(WORD_COLOURS[a], c) < MIN_DISTANCE:
+            if colour_distance(col[a], c) < MIN_DISTANCE:
                 out.append(f"word class {a} and {name} ({c})")
         for fam in families:
             for c in TENSE_COLOURS.get(fam, ()):
-                d = colour_distance(WORD_COLOURS[a], c)
+                d = colour_distance(col[a], c)
                 if d < MIN_DISTANCE:
-                    out.append(f"word class {a} ({WORD_COLOURS[a]}) and tense colour {fam} ({c}), "
+                    out.append(f"word class {a} ({col[a]}) and tense colour {fam} ({c}), "
                                f"difference {d:.1f}")
     return out
+
+
+def board_classes_families(bd: dict, blocks: dict) -> tuple[set[str], set[str]]:
+    """The word classes coloured on a board and the tense families it shows."""
+    on = [blocks[i] for i in list(bd["fixed"]) + [i for st in bd["states"] for i in st["working"]]]
+    classes = {x["cls"] for x in bd.get("wordlinks") or []}
+    fams = set()
+    for b in on:
+        c = b.get("card") or {}
+        for x in (c.get("pairs") or [c]):
+            classes |= {k for k in (x.get("from_class"), x.get("to_class")) if k}
+        fams |= {t.get("family") for t in b.get("tags") or [] if t.get("family")}
+        fams |= {it.get("family") for it in b.get("items") or [] if it.get("family")}
+        fams |= {f for f in (b.get("col_families") or []) if f}
+        if b.get("family"):
+            fams.add(b["family"])
+    return classes, fams
+
+
+def palette_style(palette: dict[str, str]) -> str:
+    """CSS custom properties that give a board its palette."""
+    out = []
+    for k, c in (palette or {}).items():
+        r, g, b = (int(c[i:i + 2], 16) for i in (1, 3, 5))
+        out.append(f"--wc-{k}:{c};--wc-{k}-soft:rgba({r},{g},{b},.11)")
+    return ";".join(out)
 
 
 def parse_side(text: str) -> tuple[str, str | None]:
@@ -149,6 +207,8 @@ def display_runs(b: dict, base_runs) -> list[str]:
         return [x for x in (b.get("term"), b.get("explanation")) if x]
     if style == "card":
         c = b["card"]
+        if c.get("pairs"):
+            return [w for x in c["pairs"] for w in (x["from"], x["to"]) if w]
         return [x for x in (c["label"], c["from"], c["to"]) if x]
     if b["type"] == "term_box" and b.get("label") == GLOSS_LABEL:
         return [x for x in (b.get("term"), b.get("explanation")) if x]
@@ -165,18 +225,19 @@ def display_phrase(b: dict, phrase: str | None) -> str | None:
 
 def _stem_find(text: str, word: str) -> str | None:
     """The word, or a phrase, in `text` as `text` writes it: a phrase case
-    insensitively; a single word also inflected ('Analyse' finds 'analysed')."""
+    insensitively; a single word in its own forms only ('Analyse' finds
+    'analysed', 'assess' never finds 'Assessment')."""
     low = text.lower()
-    w = word.lower().strip(" .")
+    w = word.lower().strip(" .'\"‘’")
     if not w:
         return None
     if " " in w:
         i = low.find(w)
         return text[i:i + len(w)] if i >= 0 else None
-    stem = w[:max(4, len(w) - 2)]
     for m in re.finditer(r"[A-Za-z'’-]+", text):
-        if m.group(0).lower().startswith(stem):
-            return m.group(0)
+        t = m.group(0).lower().strip("'’")
+        if _forms(t) & _forms(w) or _forms(t) & {w + "d", w + "s"}:
+            return m.group(0).strip("'’")
     return None
 
 
@@ -194,14 +255,24 @@ def derive(boards: list[dict], blocks: dict, section_title: str) -> None:
             if k != "style" or not b.get("style_override"):
                 b.pop(k, None)
     pills = []
+    lex = lexicon(list(blocks.values()), [b for b in blocks.values() if b["type"] == "table"])
     for bd in boards:
         table_board = bool(bd.get("table"))
         ids = list(bd["fixed"]) + [i for s in bd["states"] for i in s["working"]]
         for i in ids:
             b = blocks[i]
-            if b["type"] == "term_box" and b.get("label") != GLOSS_LABEL and not table_board:
+            pairs = note_pairs(b)
+            if pairs and i not in bd["fixed"]:
+                # a note that only states word changes is a change card
+                b["style"] = "card"
+                b["card"] = pairs_card(pairs, lex)
+            elif b["type"] == "term_box" and b.get("label") != GLOSS_LABEL and not table_board \
+                    and not any(x.get("style") == "pill" for x in pills
+                                if x["id"] in ids):
                 b["style"] = "pill"
                 pills.append(b)
+            elif b["type"] == "term_box" and b.get("label") != GLOSS_LABEL:
+                b["style"] = "term"             # a note card with its small tag
             elif b["type"] == "comparison":
                 b["style"] = "card"
                 b["card"] = card_of(b)
@@ -244,8 +315,30 @@ def derive(boards: list[dict], blocks: dict, section_title: str) -> None:
                 hit = _stem_find(host["text"], b["text"].strip(" ."))
                 if hit:
                     marks.append({"block": host["id"], "text": hit, "kind": "underline"})
+        if table_board:
+            # every link on a table board names its cell: a change card's words
+            # are found in the table's cells, and a cell is marked once
+            tb = blocks[bd["table"]]
+            cells = [(r, c, x) for r, row in enumerate(tb.get("rows") or []) for c, x in enumerate(row)]
+            placed = []
+            for x in links:
+                if x["block"] == tb["id"] and x.get("row") is None:
+                    at = next(((r, c) for r, c, t in cells if _stem_find(t, x["text"]) == x["text"]), None)
+                    if not at:
+                        continue
+                    x = dict(x, row=at[0], col=at[1])
+                placed.append(x)
+            links = placed + table_links(tb, lex)
+            seen, uniq = set(), []
+            for x in links:
+                key = (x["block"], x.get("row"), x.get("col"), x["text"].lower())
+                if key not in seen:
+                    seen.add(key)
+                    uniq.append(x)
+            links = uniq
         bd["wordlinks"] = links
         bd["slidemarks"] = marks
+        bd["palette"] = board_palette(*board_classes_families(bd, blocks))
         flow = not table_board and bool(links) and bool(sources)
         for b in on_board:
             if flow:
@@ -279,6 +372,10 @@ def card_html(b: dict, bid: str) -> str:
 
     cap = ('<span class="chg-cap">' + esc(c["label"]) + "</span>") if c["label"] else ""
     band = (' data-process="' + esc(b["band"]) + '"') if b.get("band") else ""
+    if c.get("pairs"):
+        rows = "".join('<span class="chg-pair">' + side(x["from"], x["from_class"], "from") + arrow
+                       + side(x["to"], x["to_class"], "to") + "</span>" for x in c["pairs"])
+        return '<div class="blk chg pairs"' + bid + ">" + rows + "</div>"
     return ('<div class="blk chg' + (" stacked" if c["stacked"] else "") + (" band" if b.get("band") else "")
             + '"' + bid + band + ">" + cap + side(c["from"], c["from_class"], "from") + arrow
             + side(c["to"], c["to_class"], "to") + "</div>")
@@ -295,6 +392,11 @@ def style_html(b: dict, bid: str) -> str | None:
         return card_html(b, bid)
     if b.get("style") == "pill":
         return pill_html(b, bid)
+    if b.get("style") == "term":
+        # a term note: the note card, its tag in sentence case, the term, the explanation
+        lbl = ('<div class="lbl">' + esc(b["label"]) + "</div>") if b.get("label") else ""
+        return ('<div class="blk term tnote"' + bid + ">" + lbl + '<div class="t">' + esc(b["term"])
+                + "</div><div>" + esc(b.get("explanation") or "") + "</div></div>")
     if b["type"] == "term_box" and b.get("label") == GLOSS_LABEL:
         # a gloss without its capitals label: "excessive (= too much)"
         return ('<div class="blk term gloss"' + bid + '><div class="t">' + esc(b["term"])
@@ -381,14 +483,248 @@ STYLE_CSS = """
 .wm.wc-adjective,.wm.wc-adverb{color:var(--wc-adjective);background:var(--wc-adjective-soft)}
 .wm.slide-underline{text-decoration:underline;text-decoration-thickness:max(2px,.3cqh);text-underline-offset:.22em;
   padding:0;background:none}
+.chg.pairs{flex-direction:column;align-items:flex-start;gap:.8cqh}
+.chg .chg-pair{display:flex;align-items:center;gap:1.2cqw}
+.term.tnote{background:var(--notebg);border-left:max(3px,.6cqh) solid var(--noteedge);color:#2C2C2A;
+  border-radius:0 1.4cqh 1.4cqh 0}
+.term.tnote .lbl{color:#7A5B00;font-size:2.1cqh;margin-bottom:.4cqh}
 /* a slide's table: its header in the source colour, rounded like the slide boxes */
 .tbl.core th{text-transform:none;letter-spacing:normal;font-size:inherit}
 .tbl.core.role-slide{border:max(1px,.2cqh) solid var(--src-edge);border-radius:2cqh;overflow:hidden}
 .tbl.core.role-slide table{border-style:hidden}
-.tbl.core.role-slide th{background:var(--src);color:var(--src-ink);border-color:var(--src-edge)}
+.tbl.core.role-slide th{background:var(--src);color:var(--src-ink);border-color:var(--src-edge);
+  border-bottom:max(2px,.35cqh) solid var(--src-edge)}
 /* labels in sentence case, never in capitals */
 .lbl{text-transform:none;letter-spacing:.01em}
 /* a flow reads top to bottom: pill, source, change cards, result, notes */
 .flow-pill{order:0} .flow-source{order:1} .flow-card{order:2} .flow-result{order:4} .flow-note{order:6}
 @media (prefers-reduced-motion: reduce){.wm{transition:none}}
 """
+
+
+# ---------------------------------------------------------------------------
+# Extension, 2026-09-25 (maintainer): the style on table boards and every board.
+# A section's word-class lexicon comes from what its own notes and cards say
+# ("The adjective 'sensitive' becomes the noun 'sensitivity'", "Symptomatic,
+# asymptomatic and afebrile are all adjectives", "Analyse (verb)"), then from
+# the table's header ("Nouns -> Verbs"), then from suffixes. A word the
+# lexicon cannot class is left uncoloured rather than guessed.
+# ---------------------------------------------------------------------------
+
+_Q = "['\"‘’“”]?"
+_W = r"([A-Za-z][A-Za-z' -]*?)"
+_C = r"(verb|noun|adjective|adverb)"
+PAIR_SENTENCES = [
+    # (pattern, groups -> (from, from_class, to, to_class))
+    (re.compile(rf"^the {_C} {_Q}{_W}{_Q} becomes the {_C} {_Q}{_W}{_Q}\.?$", re.I),
+     lambda g: (g[1], g[0], g[3], g[2])),
+    (re.compile(rf"^{_Q}{_W}{_Q} is an? {_C}\.? its {_C} is {_Q}{_W}{_Q}\.?$", re.I),
+     lambda g: (g[0], g[1], g[3], g[2])),
+    (re.compile(rf"^{_Q}{_W}{_Q} is an? {_C}\.? {_Q}{_W}{_Q} is the {_C}(?: you use instead)?\.?$", re.I),
+     lambda g: (g[0], g[1], g[2], g[3])),
+    (re.compile(rf"^(?:the {_C} )?{_Q}{_W}{_Q} gives the {_C} {_Q}{_W}{_Q}\.?$", re.I),
+     lambda g: (g[1], g[0], g[3], g[2])),
+]
+TERM_PAIRS = [
+    # a term box's explanation: (pattern, groups, term -> pair)
+    (re.compile(rf"^the {_C} of the {_C} {_Q}{_W}{_Q}\.?$", re.I),
+     lambda g, term: (g[2], g[1], term, g[0])),
+    (re.compile(rf"^the {_C} made from the word {_Q}{_W}{_Q}\.?$", re.I),
+     lambda g, term: (g[1], None, term, g[0])),
+]
+IS_CLASS = re.compile(rf"{_Q}([A-Za-z][A-Za-z-]*){_Q} is (?:a|an|the|its) {_C}\b(?! and also)", re.I)
+ALL_ARE = re.compile(rf"^([A-Za-z-]+(?:, [A-Za-z-]+)*,? and [A-Za-z-]+) are all {_C}s\b", re.I)
+SUFFIX = [(re.compile(r"(tion|sion|ment|ance|ence|ity|ness|sis|ism)$"), "noun"),
+          (re.compile(r"(ive|ous|ful|ile|ical|ic)$"), "adjective"),
+          (re.compile(r"(ise|ize|ate)$"), "verb"),
+          (re.compile(r"[a-z]{5,}ly$"), "adverb")]
+HEADER_CLASSES = re.compile(r"(noun|verb|adjective|adverb)s?\s*(?:→|->)\s*(noun|verb|adjective|adverb)s?", re.I)
+
+
+def _sentences(text: str) -> list[str]:
+    return [x.strip() for x in re.split(r"(?<=\.)\s+", (text or "").strip()) if x.strip()]
+
+
+def note_pairs(b: dict) -> list[tuple] | None:
+    """The word changes a note states, when stating them is ALL it does
+    (every sentence is a change); otherwise None, and the note stays a note."""
+    if b["type"] == "term_box" and b.get("label") != GLOSS_LABEL:
+        for pat, make in TERM_PAIRS:
+            m = pat.match((b.get("explanation") or "").strip())
+            if m:
+                return [make(m.groups(), b["term"])]
+        return None
+    if b["type"] != "plain":
+        return None
+    pairs = []
+    for s in _sentences(b.get("text")):
+        for pat, make in PAIR_SENTENCES:
+            m = pat.match(s)
+            if m:
+                pairs.append(make(m.groups()))
+                break
+        else:
+            # two sentences in one change: "'Restored' is a verb. Its noun is 'restoration'."
+            return _joined_pair(b.get("text"))
+    return pairs or None
+
+
+def _joined_pair(text: str) -> list[tuple] | None:
+    for pat, make in PAIR_SENTENCES[1:3]:
+        m = pat.match((text or "").strip())
+        if m:
+            return [make(m.groups())]
+    return None
+
+
+def lexicon(blocks: list[dict], tables: list[dict]) -> dict[str, str]:
+    """word (lower case) -> word class, from the section's own statements."""
+    lex: dict[str, str] = {}
+
+    def put(w, c):
+        if w and c:
+            lex.setdefault(w.strip(" '\".").lower(), c.lower())
+    for b in blocks:
+        if b["type"] == "comparison":
+            c = card_of(b)
+            put(c["from"], c["from_class"])
+            put(c["to"], c["to_class"])
+        for f, fc, t, tc in note_pairs(b) or []:
+            put(f, fc)
+            put(t, tc)
+        for text in (b.get("text"), b.get("explanation")):
+            for m in IS_CLASS.finditer(text or ""):
+                put(m.group(1), m.group(2))
+            m = ALL_ARE.match((text or "").strip())
+            if m:
+                for w in re.split(r",\s*|\s+and\s+", m.group(1)):
+                    put(w, m.group(2))
+    return lex
+
+
+PREPOSITIONS = {"on", "in", "at", "under", "with", "for", "by", "to", "from", "of", "into"}
+
+
+def _forms(w: str) -> set[str]:
+    """A word and its stem without an inflection: 'disturbed' meets 'disturb',
+    'confused' never meets 'confusion'."""
+    out = {w}
+    for end, cut in (("ing", 3), ("ed", 2), ("es", 2), ("s", 1), ("d", 1)):
+        if w.endswith(end) and len(w) - cut >= 3:
+            out.add(w[:-cut])
+    return out
+
+
+def word_class(word: str, lex: dict[str, str], default: str | None = None) -> str | None:
+    """A word or phrase's class: the lexicon (a phrase by its last word), the
+    table header's default, then a suffix."""
+    w = (word or "").strip(" .'\"").lower()
+    if not w or w.split()[0] in PREPOSITIONS:
+        return None                     # "on a daily basis" is not a noun phrase
+    for key in (w, w.split()[-1]):
+        for k, c in lex.items():
+            if _forms(key) & _forms(k):
+                return c
+    if default:
+        return default
+    last = w.split()[-1]
+    for pat, c in SUFFIX:
+        if pat.search(last):
+            return c
+    return None
+
+
+def cell_changes(table: dict) -> list[dict]:
+    """The word changes a table's own cells show, row by row: in the change
+    column, "from -> to" (the new form typed or printed), or a new form typed
+    alone. Three-column tables only (notes, change, sentence)."""
+    header = table.get("header") or []
+    if len(header) != 3:
+        return []
+    out = []
+    for r, row in enumerate(table.get("rows") or []):
+        cell = row[1]
+        pos = 0
+        for line in cell.split(" / "):
+            start = cell.find(line, pos)
+            pos = start + len(line)
+            m = re.match(r"^\s*(.+?)\s*(?:→|->)\s*(.*?)\s*$", line)
+            if m:
+                out.append({"row": r, "from": m.group(1), "to": m.group(2) or None, "line": line})
+            elif any(ty["row"] == r and ty["col"] == 1 and start <= ty["start"] < start + len(line)
+                     for ty in table.get("typed") or []):
+                out.append({"row": r, "from": None, "to": line.strip(), "line": line})
+    return out
+
+
+def table_links(table: dict, lex: dict[str, str]) -> list[dict]:
+    """Word links inside a table's cells (with their row and column): the
+    source word in the notes and in the change column, the new form in the
+    change column and in the sentence."""
+    header = table.get("header") or []
+    m = HEADER_CLASSES.search(header[1]) if len(header) == 3 else None
+    dfrom, dto = (m.group(1).lower(), m.group(2).lower()) if m else (None, None)
+    links = []
+    rows = table.get("rows") or []
+    for ch in cell_changes(table):
+        r = ch["row"]
+        # in the change column the source is before the arrow and the new form after it
+        line = ch.get("line") or rows[r][1]          # each line of the cell has its own arrow
+        before, _, after = line.partition("→") if "→" in line else ("", "", line)
+        if ch["from"]:
+            fc = word_class(ch["from"], lex, dfrom)
+            if fc:
+                for col, text in ((0, rows[r][0]), (1, before)):
+                    hit = _stem_find(text, ch["from"])
+                    if hit:
+                        links.append({"block": table["id"], "row": r, "col": col, "text": hit,
+                                      "cls": CLASS_KEY.get(fc, fc), "side": "from"})
+        if ch["to"]:
+            tc = word_class(ch["to"], lex, dto)
+            if tc:
+                for col, text in ((1, after), (2, rows[r][2])):
+                    hit = _stem_find(text, ch["to"])
+                    if hit:
+                        links.append({"block": table["id"], "row": r, "col": col, "text": hit,
+                                      "cls": CLASS_KEY.get(tc, tc), "side": "to"})
+    return links
+
+
+def pairs_card(pairs: list[tuple], lex: dict[str, str]) -> dict:
+    """A word-change note as a change card: its pairs, each side classed."""
+    ps = []
+    for f, fc, t, tc in pairs:
+        fc = fc or word_class(f, lex)
+        tc = tc or word_class(t, lex)
+        ps.append({"from": f.strip(" '\""), "from_class": fc and fc.lower(),
+                   "to": t.strip(" '\""), "to_class": tc and tc.lower()})
+    first = ps[0]
+    return {"from": first["from"], "from_class": first["from_class"], "to": first["to"],
+            "to_class": first["to_class"], "stacked": False, "label": None,
+            "pairs": ps if len(ps) > 1 else None}
+
+
+LEGACY_EXEMPT = {"lesson_title", "contents_item", "timeline", "category_card", "callout"}
+
+
+def legacy_reasons(b: dict, html: str) -> list[str]:
+    """Why a block would be drawn in the style before ADR 008 (empty when it
+    is not): the audit fails any. Checked on the block's own html."""
+    t = b["type"]
+    if t in LEGACY_EXEMPT:
+        return []
+    out = []
+    if not b.get("role"):
+        out.append("no role (slide, example or note)")
+    if t == "comparison" and b.get("style") != "card":
+        out.append("a comparison not drawn as a change card")
+    if t == "term_box" and b.get("style") not in ("pill", "term", "card") and \
+            b.get("label") != GLOSS_LABEL:
+        out.append("a term box in the old blue box with a label")
+    if t == "table" and b.get("core") and b.get("role") != "slide":
+        out.append("a slide's table without the slide style")
+    if 'class="lbl"' in html and b.get("style") != "term":
+        out.append("a capitals label")
+    if t == "plain" and "role-" not in html:
+        out.append("a plain block without its kind")
+    return out

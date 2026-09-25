@@ -175,6 +175,15 @@ supersedes it.
 
 ---
 
+## 10a. Board style is the standard
+
+Every board of every lesson is built in the board style of ADR 008 and
+docs/02-DESIGN-SYSTEM.md §7c: its kinds of content (slide, example, note),
+its change flows and change cards, its word-class colours (never red or
+green) and its table boards. Do not build, restore or approve a board in the
+older style; the screens audit and the structural check fail it. A change to
+the style is a rule change and goes to the maintainer.
+
 ## 11. Documentation
 
 If a change makes any file in `docs/` wrong, say so. Do not silently

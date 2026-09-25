@@ -2162,20 +2162,21 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
     # green, and clearly apart from each other and from any tense colour on
     # the same board (CIEDE2000 difference of 20 or more)
     for bd in out["boards"]:
-        on = [blocks[i] for i in list(bd["fixed"]) + [i for st in bd["states"] for i in st["working"]]]
-        classes_ = {x["cls"] for x in bd.get("wordlinks") or []}
-        for b in on:
-            if b.get("card"):
-                classes_ |= {c for c in (b["card"]["from_class"], b["card"]["to_class"]) if c}
-        fams = set()
-        for b in on:
-            fams |= {t.get("family") for t in b.get("tags") or [] if t.get("family")}
-            fams |= {it.get("family") for it in b.get("items") or [] if it.get("family")}
-            fams |= {f for f in (b.get("col_families") or []) if f}
-            if b.get("family"):
-                fams.add(b["family"])
-        for clash in board_style.board_colour_clashes(classes_, fams):
+        classes_, fams = board_style.board_classes_families(bd, blocks)
+        for clash in board_style.board_colour_clashes(classes_, fams, bd.get("palette")):
             fail(bd["id"], "colours too alike on one board: " + clash)
+
+    # 7f. the board style is the standard (ADR 008): no block may be drawn in
+    # the style before it (an old blue term box, a plain two-column comparison,
+    # a capitals label, a block with no kind)
+    seen = set()
+    for bd in out["boards"]:
+        for i in list(bd["fixed"]) + [i for st in bd["states"] for i in st["working"]]:
+            if i in seen or blocks[i].get("fold_into"):
+                continue
+            seen.add(i)
+            for why in board_style.legacy_reasons(blocks[i], block_html(blocks[i])):
+                fail(i, "old board style: " + why + " (docs/02-DESIGN-SYSTEM.md §7c)")
 
     # 7b. a state that explains a tense choice shows it: a timeline or tense tags
     tense_words = re.compile(r"\b(simple past|past continuous|past perfect|present perfect|"
@@ -2699,7 +2700,8 @@ def state_html(bd: dict, s: dict, n: int, blocks: dict, topic_no: int,
                       .replace(f'<tr data-row="{s["row"]}">',
                                f'<tr data-row="{s["row"]}" class="focus">', 1))
     frame = ('<div class="frame"><div class="hdr">'
-             + esc(bd["title"]) + '</div><div class="body">'
+             + esc(bd["title"]) + '</div><div class="body" style="'
+             + board_style.palette_style(bd.get("palette")) + '">'
              + fixed_html
              + "".join(block_html(blocks[i]) for i in s["working"])
              + '</div><div class="ctl"><span>▶</span><span class="bar"></span>'
