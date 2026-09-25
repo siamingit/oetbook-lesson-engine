@@ -251,6 +251,7 @@ headers, never on error or answer rows. Present-perfect teal and
 | Error row | A wrong sentence. Red tint, ✕, left bar. | usually fixed |
 | Answer row | A correct sentence. Green tint, ✓, left bar. | working |
 | Term box | A new word or phrase with its explanation. Blue tint, small label. | working |
+| Gloss | A hard general English word with a very short gloss beside it (§7b). A term box labelled WORD, drawn on one line. | working |
 | Comparison | Two items side by side. Equal columns, hairline between. | working |
 | Plain block | A statement or rule with no correctness value. | either |
 | Category card | Coloured header strip with a label, and a body. For tense families and for comparing categories. Header in the family colour, or neutral grey for a category that is not a tense. | working |
@@ -389,6 +390,30 @@ Tables are taught, not displayed.
   of its first board, and warns on a cell longer than a verb form.
 
 ---
+
+### 7b. Gloss
+
+Recorded 2026-09-25 (docs/00-PRODUCT.md §3, "Hard general words are
+glossed"). A gloss explains a hard **general** English word the first time
+it appears: never a clinical word, never a grammar term (grammar terms get
+a term box with a plain definition, as before).
+
+- **Data:** a term box with the label `WORD`, the word as it appears as its
+  `term`, and the gloss as its `explanation`: a simpler synonym or a few
+  plain words, no more than about five ("plan a time"; "a change to make it
+  work better"). No icon. No new block type and no new field: the bundle
+  contract is unchanged, and a renderer that knows nothing of glosses still
+  shows the label, the word and its gloss.
+- **Look:** on one line, "schedule (= plan a time)": the word in the
+  **medium** weight, the gloss in the **regular** weight inside "(= ...)".
+  The term box's own blue family (§5, "Blue: teacher emphasis, new term"),
+  with its small label above. No new weight and no new colour.
+- **Layer:** working, like any note, placed where the word first appears
+  and revealed as the narration says it.
+- **Narration:** one short sentence as it appears: "Schedule means to plan a
+  time for something."
+- **Not overloaded:** only a word a learner at A2-B1 is likely not to know.
+  A word glossed once is not glossed again later in the section.
 
 ## 8. Marks
 

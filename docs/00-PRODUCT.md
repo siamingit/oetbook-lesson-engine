@@ -195,6 +195,26 @@ They know clinical vocabulary. They do not have advanced general English.
 - A grammar term is defined in plain words the first time it appears.
 - Show an example first, then name the rule.
 
+### Hard general words are glossed
+
+Decided by the maintainer 2026-09-25, for every lesson type (grammar,
+reading, listening, writing, speaking, vocabulary) from lesson 3 on. In
+their own sessions the teacher explains hard words to the learner; the
+lessons do the same, in English.
+
+- Wherever a **general** English word would be hard for an A2–B1 learner
+  (in Grammar 2, "schedule" or "modification"), it is explained briefly the
+  first time it appears.
+- On the board: the word in the medium weight, with a very short gloss
+  beside it, such as a simpler synonym: "schedule (= plan a time)"
+  (docs/02-DESIGN-SYSTEM.md §7b).
+- In the narration: one short sentence, such as "Schedule means to plan a
+  time for something."
+- **Never gloss medical or clinical words**: the learners are healthcare
+  professionals and know them. Grammar terms keep their own rule above.
+- Do not overload: gloss only words a learner at this level is likely not
+  to know.
+
 ---
 
 ## 4. Teaching feel

@@ -1,8 +1,11 @@
-"""Run one model stage for every pending unit of a lesson as ONE batch, wait,
-and render each result exactly as a direct call would (docs/03-RUNBOOK.md,
-"Cost controls").
+"""Run one model stage for every pending unit of a lesson, and render each
+result exactly as a single-unit call would (docs/03-RUNBOOK.md, "Cost
+controls"). With --direct (the runner's default since 2026-09-24): direct calls
+with the 5-minute prompt cache, four at a time, the first alone until its reply
+starts so that the rest read the cache it wrote. Without it: ONE batch at half
+price, for an unattended run the maintainer asked for.
 
-    .venv/Scripts/python spike/scripts/run_batch_stage.py <lesson_dir> --stage STAGE [--dry-run]
+    .venv/Scripts/python spike/scripts/run_batch_stage.py <lesson_dir> --stage STAGE [--direct] [--dry-run]
     STAGE: understanding | screens | narration | qa1 | qa2
 
   understanding  every page the lesson needs (the contents slide and every
@@ -172,10 +175,11 @@ def run_direct(L: Path, stage: str, jobs: list[dict]) -> None:
     the 5-minute prompt cache: the default (docs/03-RUNBOOK.md, "Cost
     controls"). Each reply is written where a batch would write it, then
     rendered, one at a time, exactly as after a batch."""
+    import threading
     from concurrent.futures import ThreadPoolExecutor
     t0 = time.time()
 
-    def call(j: dict) -> str:
+    def call(j: dict, started: "threading.Event | None" = None) -> str:
         try:
             if j["provider"] == "gemini":
                 import qa_narration as qn
@@ -185,6 +189,10 @@ def run_direct(L: Path, stage: str, jobs: list[dict]) -> None:
             from extract_understanding import api_key
             client = anthropic.Anthropic(api_key=api_key(), max_retries=5)
             with client.messages.stream(**j["params"]) as st:
+                for _ in st:
+                    # the first event means the prompt, and so the cache, is written
+                    if started is not None and not started.is_set():
+                        started.set()
                 msg = st.get_final_message()
             if msg.stop_reason == "max_tokens":
                 return "cut off at the output cap; nothing written"
@@ -200,10 +208,32 @@ def run_direct(L: Path, stage: str, jobs: list[dict]) -> None:
             return f"refused: {e}"
         except Exception as e:                          # noqa: BLE001 - reported per unit
             return f"error: {type(e).__name__}: {e}"
+        finally:
+            if started is not None:
+                started.set()
 
     print(f"{stage}: {len(jobs)} direct calls, {DIRECT_WORKERS} at a time", flush=True)
     with ThreadPoolExecutor(DIRECT_WORKERS) as ex:
-        outcome = dict(zip([j["custom_id"] for j in jobs], ex.map(call, jobs)))
+        first = None
+        rest = jobs
+        if len(jobs) > 1 and jobs[0]["provider"] == "anthropic":
+            # Warm the prompt cache: calls that start together each write the
+            # cached system prompt before any can read it (Grammar 2: every
+            # stage wrote the cache and read almost nothing). The first call
+            # goes alone until its reply starts streaming, when its prompt,
+            # and so the cache, has been processed; the rest then read it.
+            # Waiting for the whole first reply could outlast the 5-minute cache.
+            started = threading.Event()
+            first = ex.submit(call, jobs[0], started)
+            started.wait()
+            print(f"  cache warmed by {jobs[0]['custom_id']}; "
+                  f"{len(jobs) - 1} more calls start now", flush=True)
+            rest = jobs[1:]
+        futures = [ex.submit(call, j) for j in rest]
+        outcome = {}
+        if first is not None:
+            outcome[jobs[0]["custom_id"]] = first.result()
+        outcome.update({j["custom_id"]: f.result() for j, f in zip(rest, futures)})
     print(f"calls ended after {(time.time() - t0) / 60:.1f} min", flush=True)
 
     failed = []

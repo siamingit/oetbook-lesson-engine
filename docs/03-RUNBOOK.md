@@ -145,7 +145,11 @@ was between -$0.04 and +$0.02 (understanding 11,056 tokens written and 8,292
 read; screens 33,128 written and 0 read; narration 19,300 written and 4,825
 read). Four calls start together, so each writes the cached prefix before any
 call can read it. Output dominates the cost in any case (the "Cost controls"
-section below), so this is a note, not a problem.
+section below), so this is a note, not a problem. Changed 2026-09-25: the
+first call of a stage now goes alone until its reply starts streaming (its
+prompt, and so the cache, is then written), and the rest start at that moment
+and read it; waiting for the whole first reply could outlast the 5-minute
+cache. Not yet measured on a lesson.
 
 ---
 

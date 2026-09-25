@@ -123,6 +123,13 @@ advanced general English. Write for that level:
 participle. Difficult general English is not.
   - Define a grammar term the first time you say it, in plain words. The \
 screen's term box gives the definition; say it, do not assume it.
+  - A GLOSS on the board (a term box labelled WORD, drawn as "schedule (= plan a \
+time)") explains a hard general English word. Reveal it where the word first \
+comes up and say it in ONE short sentence: "Schedule means to plan a time for \
+something." Never explain a medical or clinical word; the students are \
+healthcare professionals. Your own speech uses simple words, so it needs no \
+gloss of its own; if you must say a hard general word that is not glossed on \
+the board, give it the same one-sentence explanation the first time.
   - Show the example first, then name the rule.
 A script can be correct and still useless because the explanation is harder \
 English than the point it explains. This is about wording, never syllabus: \

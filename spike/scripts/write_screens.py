@@ -117,6 +117,7 @@ HARD_LIMIT = 0.84            # the content band: beyond it the content cannot be
 FIXED_ROOM_LIMIT = 0.78 - 2 * (0.032 * 1.35 + 0.018 * 2)   # a fixed layer must leave two notes' room
 MAX_NOTES = 4                # §3: the working layer holds about four notes at once
 CHARS_PER_LINE = 90          # ~0.81 of frame width at ~0.5em per character
+GLOSS_LABEL = "WORD"         # a term box with this label is a gloss (design system §7b)
 COMPARE_CHARS = 42           # one column of a comparison
 
 
@@ -157,7 +158,9 @@ exercise sentence, or a form that is rejected during the teaching \
   answer_row  a correct sentence, shown green with a large tick badge. Every \
 correct answer that is taught gets one, including second acceptable answers.
   term_box    a new word, phrase, form or pattern, with a plain explanation. \
-Blue, with a small label above (e.g. NEW WORD, FORM, TIME WORDS).
+Blue, with a small label above (e.g. NEW WORD, FORM, TIME WORDS). With the \
+label WORD it is a GLOSS (see STUDENT LEVEL): `term` the hard word, \
+`explanation` a very short gloss, drawn on one line as "schedule (= plan a time)".
   comparison  two things side by side, with a short caption saying what is \
 being contrasted. Use it for every contrast: active and passive, one \
 moment and a lasting state, a closed period and an open one, a state and \
@@ -288,6 +291,18 @@ advanced general English.
 participle. Difficult general English is not.
   - A grammar term gets a term_box with a plain definition the first time it \
 appears.
+  - GLOSS A HARD GENERAL WORD. Where a general English word on screen would be \
+hard for an A2-B1 learner - in a case note or an exercise sentence you must \
+show as printed, for example "schedule" or "modification" - add a gloss the \
+first time it appears in this section: a term_box with label "WORD", `term` the \
+word as it appears ("scheduled"), `explanation` a simpler synonym or a few plain \
+words, at most about five ("planned for a time"; "a change to make it work \
+better"), in the same thought as the block where the word first appears, \
+`anchor: false`, provenance `adapted`. NEVER gloss a medical or clinical word: \
+the learners are healthcare professionals and know them. Grammar terms keep \
+the rule above. Do not overload: gloss only a word a learner at this level is \
+likely not to know, once per section. Your own notes use simple words and \
+need no gloss.
   - Example first, then the rule.
 British English spelling throughout.
 
@@ -1081,7 +1096,10 @@ def wrapped_lines(text: str | None, cpl: int) -> int:
 def block_height(b: dict) -> float:
     """Share of frame height, from the design-system proportions."""
     t = b["type"]
-    if t == "term_box":
+    if t == "term_box" and b.get("label") == GLOSS_LABEL:
+        # a gloss: the word and "(= gloss)" on one line (design system §7b)
+        h = LABEL_LINE + wrapped_lines(f"{b['term']} (= {b['explanation']})", CHARS_PER_LINE) * LINE
+    elif t == "term_box":
         h = LABEL_LINE + (wrapped_lines(b["term"], CHARS_PER_LINE)
                           + wrapped_lines(b["explanation"], CHARS_PER_LINE)) * LINE
     elif t == "comparison":
@@ -1457,6 +1475,14 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
         if b.get("icon") and t != "term_box":
             fail(b["id"], f"icon on a {t}; icons go only inside a term box, beside a "
                           "clinical word")
+        if t == "term_box" and b.get("label") == GLOSS_LABEL:
+            # A gloss explains a hard general word, never a clinical one, in a
+            # few plain words (design system §7b).
+            if b.get("icon"):
+                fail(b["id"], "icon on a gloss; a gloss is never for a clinical word")
+            if len((b.get("explanation") or "").split()) > 6:
+                warn(b["id"], f"gloss of {len(b['explanation'].split())} words; a gloss is a "
+                              "simpler synonym or a few plain words")
         for tag in b.get("tags") or []:
             if t not in ("error_row", "answer_row", "plain", "comparison", "category_card"):
                 fail(b["id"], f"tense tag on a {t}; tags go under a phrase in a sentence")
@@ -1595,6 +1621,16 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                     fail(b["id"], f"register claim? {m.group(0)!r} in {text!r} "
                                   "(not a maintainer block)")
                     break
+
+    # 2b. a word is glossed once in a section (design system §7b)
+    glossed: dict[str, str] = {}
+    for b in blocks.values():
+        if b["type"] == "term_box" and b.get("label") == GLOSS_LABEL:
+            w = (b.get("term") or "").strip().lower()
+            if w in glossed:
+                warn(b["id"], f"{b['term']!r} is glossed again (first in {glossed[w]}); a word "
+                              "is glossed once, where it first appears")
+            glossed.setdefault(w, b["id"])
 
     # 3. deck defects: the printed form must be gone
     for d in data["defects"]:
@@ -1848,7 +1884,7 @@ FRAME_CSS = """
 .ans{background:#EAF3DE;border-color:#639922;color:#173404}
 .term{background:#E6F1FB;border-left:max(2px,.45cqh) solid #185FA5;color:#042C53}
 .lbl{font-size:2.4cqh;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.7cqh}
-.term .t{font-weight:500}
+.term .t{font-weight:500} .term .t .g{font-weight:400}
 .cmp{display:grid;grid-template-columns:1fr 1fr;column-gap:2.5cqw;padding-left:0;padding-right:0}
 .cmp .lbl{grid-column:1/-1;color:#888780}
 .cmp .r{border-left:1px solid #E8E6DF;padding-left:2.5cqw}
@@ -2117,6 +2153,12 @@ def block_html(b: dict) -> str:
         return ('<div class="blk row ' + cls + '"' + bid + ">" + num
                 + '<span class="verdict">' + glyph + "</span>"
                 + "<span>" + tagged(b["text"], tags) + "</span></div>")
+    if t == "term_box" and b.get("label") == GLOSS_LABEL:
+        # A gloss: the word in the medium weight, "(= gloss)" in the regular
+        # weight beside it, on one line (design system §7b).
+        return ('<div class="blk term gloss"' + bid + '><div class="lbl">' + esc(b["label"])
+                + '</div><div class="t">' + esc(b["term"]) + ' <span class="g">(= '
+                + esc(b["explanation"]) + ")</span></div></div>")
     if t == "term_box":
         # The one place an icon may appear: beside the clinical word it marks.
         ico = icon_svg(b.get("icon"))

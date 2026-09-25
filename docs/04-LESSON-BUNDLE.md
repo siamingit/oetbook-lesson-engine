@@ -183,7 +183,7 @@ A block is one thing on a board. Each carries its data and its rendered `html`.
 | `id` | block id |
 | `type` | `plain`, `error_row`, `answer_row`, `term_box`, `comparison`, `callout`, `category_card`, `timeline`, `table`, `contents_item`, `lesson_title` (docs/02-DESIGN-SYSTEM.md §7) |
 | `text` | the text of `plain`, `error_row`, `answer_row`, `callout`, `category_card` (body), `contents_item` (the category; in a lesson with no contents slide, the section's title, and its `explanation` is null), `lesson_title` |
-| `label` | a small label: `term_box` ("NEW WORD"), `comparison`, `category_card` (header), `timeline`; on a `contents_item`, its number |
+| `label` | a small label: `term_box` ("NEW WORD"; "WORD" marks a gloss of a hard general word, which the reference player draws on one line as "term (= explanation)", docs/02-DESIGN-SYSTEM.md §7b), `comparison`, `category_card` (header), `timeline`; on a `contents_item`, its number |
 | `term`, `explanation` | `term_box`; `explanation` also carries a `contents_item`'s section list |
 | `left`, `right` | `comparison` |
 | `family` | tense family, `past`, `past_to_now`, `now`, `future`: `category_card`, `timeline`, `table` header |

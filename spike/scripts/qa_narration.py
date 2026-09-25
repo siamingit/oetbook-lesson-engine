@@ -40,7 +40,7 @@ MAX_OUTPUT_TOKENS = 32000
 # prices: llm.GEMINI_PRO (looked up 2026-09-24, docs/03-RUNBOOK.md)
 CHECKS = ["grammar-rule", "example-or-typed-text", "misleading-for-oet",
           "spoken-vs-typed", "british-english", "product-fit", "student-level",
-          "register-claim"]
+          "register-claim", "unglossed-word"]
 
 
 def api_key() -> str:
@@ -124,6 +124,17 @@ the source did not contain, and a register judgement is teaching. Report a false
 register claim as `critical`. The ONE exception: an utterance flagged \
 `maintainer: true` quotes the course maintainer's own ruling; do not report a \
 register claim there, but do still report its grammar if it is wrong.
+9. Hard general words without a gloss. A general English word that an A2-B1 \
+learner is likely not to know (schedule, modification) must be explained the first \
+time it appears in this section: on screen by a gloss, a term box labelled WORD \
+("schedule (= plan a time)"), and in speech by one short sentence ("Schedule means \
+to plan a time for something."). Flag such a word used on screen or in speech \
+without a gloss at its first appearance, and propose the gloss. Report it as \
+`major` when the student needs the word to follow the teaching point, otherwise \
+`minor`. Also flag, as `minor`, a gloss on a medical or clinical word (the \
+students know them) or on a word a learner at this level already knows. Never flag \
+a clinical word for lacking a gloss, and never flag a grammar term here: check 7 \
+covers grammar terms.
 
 THE EXERCISE SENTENCES ARE DELIBERATELY WRONG. Where a page teaches error \
 correction, the sentences in its fixed layers contain faults on purpose, and the \
@@ -159,7 +170,7 @@ TASK = """\
 Review the narration above and report every finding as JSON matching the schema.
 
 For each finding give the utterance id it belongs to, the severity, what is wrong \
-and why it matters, a proposed fix, which of the eight checks it came under, and \
+and why it matters, a proposed fix, which of the nine checks it came under, and \
 your confidence. For a fault in a note on screen rather than in speech, give the \
 id of the utterance that reveals it and name the block id in the issue. Use the id \
 `whole-page` for a finding not tied to one utterance.
