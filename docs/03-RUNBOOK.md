@@ -40,6 +40,24 @@ Approvals are recorded in `<L>/analysis/gates.json` with who and when. Model
 spend is measured from the saved responses (Anthropic and Gemini), never
 estimated after the fact.
 
+**A stage whose code or rules are not ready does not run** (maintainer,
+2026-09-25, after a resumed run on Grammar 3 wrote every section's screens,
+$3.62, while the screens stage was being rebuilt):
+
+```
+.venv/Scripts/python spike/scripts/build_lesson.py <L> --hold screens --by NAME --reason "..."
+.venv/Scripts/python spike/scripts/build_lesson.py <L> --release screens
+```
+
+- A **hold** stops the run before its stage and every stage after it until it
+  is released. The agent places one the moment it starts changing a stage's
+  code, prompt or rules, and releases it when the change is finished and
+  checked. Holds are in `<L>/analysis/holds.json`; placing and releasing one is
+  logged in the decision log; `--status` lists them.
+- A **paid model stage** (understanding, screens, narration, QA) whose code has
+  uncommitted changes is refused. Commit the finished change, or name the
+  stage with `--accept-uncommitted STAGE` for that run, which is logged.
+
 The runner orders the stages and checks them; it decides no content. Fixes at
 a gate (overrides, briefs, rulings, lexicon entries) are made by hand or with
 the stage scripts below, then the runner continues.

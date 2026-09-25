@@ -1137,6 +1137,13 @@ def apply_overrides(out_dir: Path, blocks: dict[str, dict]) -> list[dict]:
                              "override.")
         before = {k: b.get(k) for k in fields}
         b.update(fields)
+        if b["type"] == "table" and fields.get("rows") \
+                and all(isinstance(r, str) for r in fields["rows"]):
+            # a table's rows in the reply's own form, "cell|cell|cell" with typed
+            # parts in [[...]] (ADR 007): parsed again, so `typed` follows them
+            b["rows"] = [[c.strip() for c in r.split("|")] for r in fields["rows"]]
+            b.pop("typed", None)
+            untype_rows(b)
         applied.append({"block": bid, "expect": expect, "replaced": before, "with": fields})
     return applied
 

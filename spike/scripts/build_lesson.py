@@ -20,6 +20,20 @@ batch at half price, only for an unattended run the maintainer asked for.
 Paid stages never run without --budget (AGENTS.md: paid calls are approved).
 Approvals are recorded in <lesson>/analysis/gates.json with who and when.
 
+Two guards stop a stage whose code or rules are not ready (Grammar 3,
+2026-09-25: a resumed run wrote every section's screens, $3.62, while the
+screens stage was being rebuilt, and all of it was thrown away):
+  - a HOLD: `--hold STAGE --reason TEXT` stops the run before that stage, and
+    so before every stage after it, until `--release STAGE`. The agent places
+    one on a stage the moment it starts changing that stage's code or rules.
+    Holds are kept in <lesson>/analysis/holds.json and logged in the decision
+    log;
+  - UNCOMMITTED CODE: a paid model stage whose code (STAGE_CODE) has changes
+    not committed to git is refused, unless the run names it with
+    `--accept-uncommitted STAGE`, which is logged. A change under way is
+    uncommitted, so a run that reaches it stops; a finished change is
+    committed, or accepted by name.
+
 Nothing here decides content. The runner only orders the stages that exist,
 checks their outputs, and refuses to go past a gate or a failure.
 """
@@ -250,6 +264,55 @@ def stage_sections(L, a):
                    "build_sections.py --set PAGE \"TITLE\"")
 
 
+# The code each paid model stage runs, for the uncommitted-code guard.
+STAGE_CODE = {
+    "understanding": ["extract_understanding.py", "build_sections.py", "llm.py", "run_batch_stage.py"],
+    "screens": ["write_screens.py", "build_sections.py", "llm.py", "run_batch_stage.py"],
+    "narration": ["write_narration.py", "write_screens.py", "llm.py", "run_batch_stage.py"],
+    "qa1": ["qa_narration.py", "write_narration.py", "run_batch_stage.py"],
+}
+
+
+def holds(L: Path) -> dict:
+    p = L / "analysis" / "holds.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+
+
+def check_hold(L: Path, stage: str) -> None:
+    """A held stage, or any stage after one, does not run."""
+    names = [n for n, _ in STAGES]
+    for held, h in holds(L).items():
+        if held in names and names.index(held) <= names.index(stage):
+            raise Stop(f"HOLD on '{held}' ({h['by']}, {h['on']}): {h['reason']}. Stages from "
+                       f"'{held}' on do not run until: .venv/Scripts/python "
+                       f"spike/scripts/build_lesson.py {L} --release {held}")
+
+
+def check_code(L: Path, stage: str, a) -> None:
+    """A paid model stage whose code has uncommitted changes is refused,
+    unless this run accepts it by name (logged)."""
+    files = [str(Path("spike/scripts") / f) for f in STAGE_CODE.get(stage, [])]
+    if not files:
+        return
+    try:
+        r = subprocess.run(["git", "status", "--porcelain", "--"] + files, capture_output=True,
+                           text=True, cwd=HERE.parents[1], check=True)
+    except (OSError, subprocess.CalledProcessError) as e:
+        raise Stop(f"{stage}: cannot check the stage's code with git ({e}); refusing the paid stage")
+    dirty = [l[3:] for l in r.stdout.splitlines() if l.strip()]
+    if not dirty:
+        return
+    if stage in (a.accept_uncommitted or []):
+        log_decision(L, f"{stage} run on uncommitted code, accepted for this run",
+                     "changed and not committed: " + ", ".join(dirty),
+                     "build_lesson.py --accept-uncommitted " + stage,
+                     "re-run the stage after committing if the change was not finished")
+        return
+    raise Stop(f"{stage} is a paid stage and its code has uncommitted changes: "
+               + ", ".join(dirty) + ". Finish and commit the change, or run with "
+               f"--accept-uncommitted {stage} if it is finished (logged).")
+
+
 def batch(L, stage: str, pending: int, unit_est: float, a) -> None:
     """One model stage for every pending unit, within the budget
     (run_batch_stage.py): direct calls with prompt caching by default, or with
@@ -258,6 +321,7 @@ def batch(L, stage: str, pending: int, unit_est: float, a) -> None:
     for twice."""
     if pending == 0 and not (L / "analysis" / "batches" / f"{stage}.json").exists():
         return
+    check_code(L, stage, a)
     if a.batch:
         afford(L, a.budget, pending * unit_est * 0.5, f"{stage}: {pending} units in one batch")
         run(L, [str(HERE / "run_batch_stage.py"), str(L), "--stage", stage],
@@ -411,10 +475,35 @@ def main() -> None:
     ap.add_argument("--approve", choices=sorted(GATES))
     ap.add_argument("--by", default="maintainer")
     ap.add_argument("--status", action="store_true")
+    ap.add_argument("--hold", choices=[n for n, _ in STAGES],
+                    help="stop runs before this stage (and every later one) until --release")
+    ap.add_argument("--reason", help="why the stage is held (with --hold)")
+    ap.add_argument("--release", choices=[n for n, _ in STAGES])
+    ap.add_argument("--accept-uncommitted", action="append", metavar="STAGE",
+                    help="run this paid stage although its code is not committed (logged)")
     a = ap.parse_args()
     L = a.lesson_dir
     (L / "analysis").mkdir(parents=True, exist_ok=True)
 
+    if a.hold or a.release:
+        hp = L / "analysis" / "holds.json"
+        h = holds(L)
+        if a.hold:
+            if not a.reason:
+                raise SystemExit("--hold needs --reason")
+            h[a.hold] = {"by": a.by, "on": f"{datetime.datetime.now():%Y-%m-%d %H:%M}",
+                         "reason": a.reason}
+            log_decision(L, f"hold on the '{a.hold}' stage", a.reason,
+                         "build_lesson.py guard: a stage whose code or rules are not ready "
+                         "does not run", f"build_lesson.py <L> --release {a.hold}")
+        else:
+            gone = h.pop(a.release, None)
+            log_decision(L, f"hold on the '{a.release}' stage released",
+                         (gone or {}).get("reason", "no hold was set"),
+                         "build_lesson.py guard", f"build_lesson.py <L> --hold {a.release}")
+        hp.write_text(json.dumps(h, indent=1), encoding="utf-8")
+        print(f"holds: {', '.join(h) or 'none'}")
+        return
     if a.approve:
         g = gates(L)
         g[a.approve] = {"by": a.by, "on": f"{datetime.datetime.now():%Y-%m-%d %H:%M}"}
@@ -426,11 +515,14 @@ def main() -> None:
               + (f" of ${a.budget:.2f}" if a.budget else ""))
         print("gates approved: " + (", ".join(f"{k} ({v['by']}, {v['on']})"
                                               for k, v in gates(L).items()) or "none"))
+        print("holds: " + (", ".join(f"{k} ({v['reason']})" for k, v in holds(L).items())
+                           or "none"))
         return
 
     for name, fn in STAGES:
         try:
             print(f"- {name}", flush=True)
+            check_hold(L, name)
             fn(L, a)
         except Stop as e:
             print(f"\nSTOPPED at {name}:\n{e}")
