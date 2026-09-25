@@ -385,6 +385,10 @@ def stage_player(L, a):
     d = str(L / "generated" / "lesson-player")
     run(L, [str(HERE / "check_board_page.py"), str(L), "--dir", d], "structural check")
     run(L, [str(HERE / "check_marks.py"), str(L), "--dir", d], "mark check")
+    # The last step of every build (ADR 006): the course index, rebuilt whole,
+    # outside the repository (docs/05-COURSE-INDEX.md). Again on every run, so
+    # it also records the final gate once approved.
+    print(run(L, [str(HERE / "build_course_index.py"), str(L)], "course index").strip())
     require_gate(L, "final")
 
 

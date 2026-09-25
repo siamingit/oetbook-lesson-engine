@@ -56,6 +56,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paths                                                   # noqa: E402
 from extract_understanding import api_key, esc, refuse_if_truncated, strip_bidi  # noqa: E402
 from write_screens import (maintainer_wording, relabel_note)                  # noqa: E402
+from build_course_index import check_ref                                      # noqa: E402
 from write_screens import (FIXED_FORBIDS, FRAME_CSS, NON_LATIN, PAGE_CSS,     # noqa: E402
                            REGISTER_WORDS, block_html, block_texts, is_exercise_board,
                            ledger_phrases, ledger_rulings, rulings_from_script)
@@ -77,6 +78,11 @@ SENTENCE_WORDS = 15           # average words per sentence above which to warn
 # The interface word the narration used for the tense labels; replaced in
 # assemble() and failed by the audit if it survives.
 INTERFACE_WORD = re.compile(r"\b(?:chips?|(?<!question )tags?)\b", re.I)
+# A pointer to another lesson that does not name it, or to the recording's
+# sessions (docs/00-PRODUCT.md §6, §6a).
+VAGUE_REF = re.compile(r"\b(?:(?:last|previous|next|earlier|other|another) lessons?|"
+                       r"(?:last|previous|next|earlier|first|second|third|our) (?:session|class)"
+                       r"(?:es|s)?|sessions? (?:one|two|three|four|five|\d+))\b", re.I)
 INTERFACE_WARN = re.compile(r"\b(pointer|working layer|fixed layer|block id)\b", re.I)
 
 SYSTEM = """\
@@ -126,8 +132,11 @@ screen's term box gives the definition; say it, do not assume it.
   - A GLOSS on the board (a term box labelled WORD, drawn as "schedule (= plan a \
 time)") explains a hard general English word. Reveal it where the word first \
 comes up and say it in ONE short sentence: "Schedule means to plan a time for \
-something." Never explain a medical or clinical word; the students are \
-healthcare professionals. Your own speech uses simple words, so it needs no \
+something." Never explain a medical word (specialist terminology: diseases, \
+drugs, procedures, anatomy, such as hypothyroidism, colonoscopy, warfarin); the \
+students are healthcare professionals. A general word common in clinical \
+settings (deteriorate, commence, schedule) is a general word: explain it when \
+it is glossed. Your own speech uses simple words, so it needs no \
 gloss of its own; if you must say a hard general word that is not glossed on \
 the board, give it the same one-sentence explanation the first time.
   - Show the example first, then name the rule.
@@ -146,9 +155,24 @@ VOICE. First person, warm, direct, confident. Speak to the student as "you". \
 Plain classroom English at the level above. British English spelling and usage \
 ("recognise", "practise" as a verb, "whilst" never).
 
-NEVER refer to the source. Do not mention Persian, a translation, an original \
-lesson, a recording, a video, a session, an instructor, or "he". You are the \
+NEVER refer to the source. Do not mention Persian, a translation, the original \
+recording, a video, a session, a class, an instructor, or "he". You are the \
 teacher, speaking now.
+
+OTHER LESSONS ARE NOT THE SOURCE. This lesson is one of a course of English \
+lessons, listed under OTHER LESSONS with their ids. Where the teacher referred to \
+another session and the reference was resolved to one of those lessons \
+(REFERENCES TO OTHER LESSONS), keep it. Name the lesson by its `short_title`: \
+"You learned this in the lesson Verb Tenses", "If the passive forms are still \
+hard, look again at the lesson Verb Tenses". Never a session number, never "the \
+last lesson" or "the previous lesson". Say it in the utterance where its point is \
+taught, and list it in that utterance's `refs` as {lesson, section}: the lesson \
+id, and the section id when the reference is to one section of it, otherwise \
+null. Where a point on your boards clearly depends on an earlier lesson, you may \
+add a short review pointer of your own, sparingly (at most one in a section), as \
+`authored` with a note saying so. A reference not resolved to a listed lesson is \
+not spoken. Every utterance that names another lesson has `refs`; every other \
+utterance has an empty `refs`.
 
 WRITTEN FOR THE EAR. This text goes to speech synthesis. Write every number, \
 date and abbreviation the way it should be spoken: "two thousand and ten", not \
@@ -274,7 +298,7 @@ Write the narration as JSON matching the provided schema.
 `boards`: one entry per board, in the order given, naming the board id. Each \
 has `states`, one entry per state in the order given, naming the state id, \
 with its `utterances` in speaking order. Every utterance has `text_with_cues`, \
-`cues`, `provenance` and `note`. Do not number utterances; ids are assigned \
+`cues`, `provenance`, `note` and `refs` (empty unless it names another lesson). Do not number utterances; ids are assigned \
 afterwards.
 
 Every working block listed for a state is revealed exactly once, inside that \
@@ -300,8 +324,10 @@ that part of the lesson covers. The note shows the sections of each category; \
 you may name them, you need not read them all.
   - Is short: about one to two minutes in total, roughly 130 to 270 words.
   - Never refers to the source: no session, class, course, recording, slide or \
-video, and no other courses. The beats describe a recorded talk; they are \
-intent only, never text to repeat.
+video, and no other courses. Where the teacher recaps another session that is a \
+listed lesson (REFERENCES TO OTHER LESSONS), name that lesson, briefly, with its \
+`refs`. The beats describe a recorded talk; they are intent only, never text to \
+repeat.
 Everything else - student level, provenance, visual anchors, pauses - is as for \
 any section.\
 """
@@ -341,15 +367,24 @@ CUE_SCHEMA = {
     },
 }
 
+REF_SCHEMA = {
+    "type": "object",
+    "additionalProperties": False,
+    "required": ["lesson", "section"],
+    "properties": {"lesson": {"type": "string"}, "section": {"type": ["string", "null"]}},
+}
+
 UTTERANCE_SCHEMA = {
     "type": "object",
     "additionalProperties": False,
-    "required": ["text_with_cues", "cues", "provenance", "note"],
+    "required": ["text_with_cues", "cues", "provenance", "note", "refs"],
     "properties": {
         "text_with_cues": {"type": "string"},
         "cues": {"type": "array", "items": CUE_SCHEMA},
         "provenance": {"enum": PROVENANCE},
         "note": {"type": "string"},
+        # other lessons named in this utterance (docs/00-PRODUCT.md §6a; ADR 006)
+        "refs": {"type": "array", "items": REF_SCHEMA},
     },
 }
 
@@ -467,8 +502,19 @@ def gather(lesson: Path, pages: list[int]) -> dict:
             rulings_from = str(script_path)
         ledger += ledger_rulings(paths.script_dir(lesson, page) / "applied.jsonl")
 
+    # The teacher's references to other sessions, as the understanding resolved
+    # them (docs/00-PRODUCT.md §6a); lessons built before ADR 006 have none, and
+    # a rewrite brief supplies them instead. The course catalogue checks them.
+    from build_course_index import catalogue
+    references = []
+    for page in pages:
+        up = paths.understanding_dir(lesson, page) / "understanding.json"
+        for r in (read(up).get("cross_references") or []) if up.exists() else []:
+            references.append(dict(r, page=page))
+
     return {"page": pages[0], "pages": pages, "screens": screens,
-            "screens_path": str(screens_path),
+            "screens_path": str(screens_path), "lesson_id": lesson.name,
+            "catalogue": catalogue(lesson), "references": references,
             "blocks": blocks, "understanding": know, "ledger": ledger,
             "rulings": rulings, "rulings_from": rulings_from,
             "forbids": ledger_phrases(ledger, "forbidden_phrases"),
@@ -547,6 +593,17 @@ def build_messages(data: dict, rewrite: dict | None = None) -> list[dict]:
               "utterances, grouped by beat: evidence of each ruling's content, "
               "NOT maintainer text and NOT wording to copy:\n"
             + json.dumps(data["rulings"], ensure_ascii=False)},
+        {"type": "text", "text":
+            "OTHER LESSONS of the course, by id, with their sections (none built "
+            "yet if empty). A reference names one by its short_title:\n"
+            + json.dumps([{k: e[k] for k in ("lesson", "short_title", "title", "status")}
+                          | {"sections": [{k: x[k] for k in ("section", "title")}
+                                          for x in e["sections"]]}
+                          for e in data.get("catalogue") or []], ensure_ascii=False)
+            + "\n\nREFERENCES TO OTHER LESSONS the teacher made in this section, as "
+              "the understanding resolved them. Keep every one whose `lesson` is set; "
+              "one with no `lesson` was not resolved and is not spoken:\n"
+            + json.dumps(data.get("references") or [], ensure_ascii=False)},
         {"type": "text", "text":
             "OPEN UNKNOWNS carried from earlier stages. Do not resolve them by "
             "inventing:\n" + json.dumps(scr["unresolved"] + know["unknowns"],
@@ -731,7 +788,9 @@ def assemble(data: dict, model_out: dict) -> tuple[list[dict], list[dict]]:
                                     if fixed_text != text else {}),
                                  "cues": cues,
                                  "provenance": prov,
-                                 "note": note})
+                                 "note": note,
+                                 "refs": [{"lesson": r["lesson"], "section": r.get("section")}
+                                          for r in u.get("refs") or []]})
             last = n == len(bd["states"]) - 1
             states.append({"id": s["id"], "working": list(s["working"]),
                            "utterances": out_utts,
@@ -956,6 +1015,53 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
         elif missing:
             warn(bd["id"], "fixed diagram is never drawn part by part; the player shows it "
                            "whole from the start of the board")
+
+    # References to other lessons (docs/00-PRODUCT.md §6a, ADR 006): every id
+    # resolves in the course index, the utterance names the lesson, a lesson is
+    # never pointed at without its ids, and every reference the understanding
+    # resolved is spoken somewhere in the section.
+    cat = data.get("catalogue") or []
+    by_lesson = {e["lesson"]: e for e in cat}
+    made: list[tuple] = []
+    for bd in boards:
+        for s in bd["states"]:
+            for u in s["utterances"]:
+                said = spoken(u["text_with_cues"])
+                m = VAGUE_REF.search(said)
+                if m:
+                    fail(u["id"], f"{m.group(0)!r}: a reference names the lesson by its title, "
+                                  "and never the recording's sessions")
+                for r in u.get("refs") or []:
+                    made.append((r["lesson"], r.get("section")))
+                    if r["lesson"] == data.get("lesson_id"):
+                        fail(u["id"], "refers to this lesson itself; refs are for other lessons")
+                        continue
+                    why = check_ref(cat, r["lesson"], r.get("section"))
+                    if why:
+                        fail(u["id"], f"reference does not resolve: {why}")
+                        continue
+                    e = by_lesson[r["lesson"]]
+                    if e["short_title"] and e["short_title"].lower() not in said.lower():
+                        warn(u["id"], f"refers to {r['lesson']} but does not say its title "
+                                      f"{e['short_title']!r}")
+                    if e["status"] != "built":
+                        warn(u["id"], f"refers to {r['lesson']}, which is not built yet: the "
+                                      "student does not have it until it is published")
+                    if u["provenance"] == "authored":
+                        warn(u["id"], f"review pointer to {r['lesson']} "
+                                      f"{r.get('section') or '(whole lesson)'} added by the "
+                                      "narration (authored): for the reviewer")
+                if not u.get("refs"):
+                    for e in cat:
+                        t = (e["short_title"] or "").lower()
+                        if t and re.search(r"\blesson,? " + re.escape(t) + r"\b", said.lower()):
+                            fail(u["id"], f"names the lesson {e['short_title']!r} without its refs")
+    for r in data.get("references") or []:
+        if r.get("lesson") and not any(l == r["lesson"] and (not r.get("section") or s == r["section"])
+                                       for l, s in made):
+            warn("references", f"the teacher's reference to {r['lesson']} "
+                               f"{r.get('section') or ''} ({r.get('said', '')[:80]!r}) is not "
+                               "narrated")
 
     # The introduction: one to two minutes, and never a source reference
     # (docs/00-PRODUCT.md §2a).

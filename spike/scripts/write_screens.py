@@ -298,8 +298,12 @@ first time it appears in this section: a term_box with label "WORD", `term` the 
 word as it appears ("scheduled"), `explanation` a simpler synonym or a few plain \
 words, at most about five ("planned for a time"; "a change to make it work \
 better"), in the same thought as the block where the word first appears, \
-`anchor: false`, provenance `adapted`. NEVER gloss a medical or clinical word: \
-the learners are healthcare professionals and know them. Grammar terms keep \
+`anchor: false`, provenance `adapted`. NEVER gloss a medical word: the \
+learners are healthcare professionals and know them. A medical word is \
+specialist terminology - diseases, drugs, procedures, anatomy, usually Latin or \
+Greek in origin (hypothyroidism, colonoscopy, warfarin). General words that are \
+common in clinical settings (deteriorate, commence, schedule, improve) are \
+general words, glossed when hard for an A2-B1 learner. Grammar terms keep \
 the rule above. Do not overload: gloss only a word a learner at this level is \
 likely not to know, once per section. Your own notes use simple words and \
 need no gloss.

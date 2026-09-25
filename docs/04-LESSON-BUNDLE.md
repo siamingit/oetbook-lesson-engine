@@ -4,9 +4,15 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.0. Status: Accepted** by the maintainer, 2026-09-24
-(docs/adr/004-lesson-bundle-contract.md). A change to it is a new format version
-(§3), recorded in a new ADR.
+**Format version 1.1. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+(docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
+2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md). A change
+to it is a new format version (§3), recorded in a new ADR.
+
+| Version | Date | Change |
+|---|---|---|
+| 1.0 | 2026-09-24 | first version |
+| 1.1 | 2026-09-25 | `refs` on every utterance (§5) and every narration entry of `text.json` (§6): the other lessons the utterance refers to, by id |
 
 ---
 
@@ -128,7 +134,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.0"` |
+| `format_version` | string | `"1.1"` |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -252,7 +258,25 @@ two things must hold, because cues and the reading pointer depend on them:
 | `audio_file` | the clip, relative to `bundle.json` (§8) |
 | `start`, `end` | when it plays; `end - start` is the clip's length |
 | `cues` | reveals, marks and pauses anchored in this utterance |
+| `refs` | 1.1. The other lessons this utterance refers to, `[{lesson, section}]` (below); an empty list when it refers to none |
 | `reading` | `[{block, words: [[k, start, end], …]}]`: the words of the board this utterance reads aloud, as word `k` of `block` (§5, rules) |
+
+### `refs[]` (1.1)
+
+A reference to another lesson of the product (docs/00-PRODUCT.md §6a): the
+utterance names that lesson aloud ("You learned this in the lesson Verb
+Tenses"), and the website may show it as a link.
+
+| Field | Meaning |
+|---|---|
+| `lesson` | the target lesson's id (§4) |
+| `section` | the target section's id in that lesson, or null when the reference is to the lesson as a whole, or the lesson is not yet built |
+
+Both are ids, never titles: a retitled or reordered lesson still resolves. An id
+the website does not know (a lesson not yet published) is shown as plain speech,
+without a link. What each lesson and section is, and which references point at
+it, is in the course index (docs/05-COURSE-INDEX.md), which is not published
+with the bundle.
 
 ### `cues[]`
 
@@ -320,12 +344,12 @@ no cues and no provenance.
 
 | Field | Meaning |
 |---|---|
-| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.0"` |
+| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.1"` |
 | `lesson` | the same object as `bundle.json`'s `lesson` |
 | `sections[]` | `{id, title, category, start, end, narration_text, board_text, boards}` |
 | `sections[].narration_text` | everything said in the section, one paragraph per board |
 | `sections[].board_text` | every block's words, one block per paragraph |
-| `sections[].boards[]` | `{id, start, board_text: [{block, text}], narration: [{id, start, text}]}` |
+| `sections[].boards[]` | `{id, start, board_text: [{block, text}], narration: [{id, start, text, refs}]}`; `refs` (1.1) as in `bundle.json` |
 
 - **Narration as spoken:** exactly the text the voice says, so numbers are
   words ("two thousand and ten") where the board shows digits ("2010").

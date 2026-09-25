@@ -173,7 +173,8 @@ while the contents are on screen. A rule for every lesson:
   and never speaks as him: a plain greeting.
 - The source is the understanding of the contents slide's interval, written
   under the same rules as every section: student level, provenance, visual
-  anchors, no references to the source. Two QA passes.
+  anchors, no references to the original recording (a reference to another
+  lesson of the product is kept, §6a). Two QA passes.
 - A deck with no contents slide (Grammar 2): the source is the recording's
   opening minutes, whatever slide is on screen, up to where the teacher moves
   from greeting to teaching. The contents board lists one item per section.
@@ -210,8 +211,14 @@ lessons do the same, in English.
   (docs/02-DESIGN-SYSTEM.md §7b).
 - In the narration: one short sentence, such as "Schedule means to plan a
   time for something."
-- **Never gloss medical or clinical words**: the learners are healthcare
+- **Never gloss medical words**: the learners are healthcare
   professionals and know them. Grammar terms keep their own rule above.
+- **What a "medical word" is** (maintainer, 2026-09-25): specialist
+  terminology: diseases, drugs, procedures, anatomy, usually Latin or Greek
+  in origin (hypothyroidism, colonoscopy, warfarin). General words that are
+  common in clinical settings (deteriorate, commence, schedule, improve) are
+  general words: they are glossed when hard for an A2–B1 learner, like any
+  other general word, and QA does not flag those glosses.
 - Do not overload: gloss only words a learner at this level is likely not
   to know.
 
@@ -274,10 +281,11 @@ face on the page, and possibly intros recorded in his own voice.
 ## 6. What must never appear
 
 - Any reference to the original recording: "the video", "pause the
-  video", "this session", "the class"
-- Any reference to Persian, translation, or an original lesson
+  video", "this session", "the last session", "the class"
+- Any reference to Persian, translation, or an original (Persian) lesson
 - Any pointer to material the student does not have: a coursebook,
-  another product
+  another product. Another lesson of this product is not such material
+  (§6a)
 - Claims about how formal, common, natural or preferred a word is,
   unless the instructor said so. Teach what is correct and what is
   wrong. Register advice comes from the maintainer and is marked as
@@ -286,6 +294,31 @@ face on the page, and possibly intros recorded in his own voice.
   supplied by the maintainer
 - Persian-market branding: the OETbook.ir logo, Persian text, the
   Persian copyright slide
+
+## 6a. References to other lessons are kept
+
+Decided by the maintainer 2026-09-25 (docs/adr/006). The teacher often
+points to other sessions: "this was taught in session one, verb tenses",
+"if active and passive is still hard, review grammar sessions one and two".
+These pointers are teaching, and they are kept, as references to the
+English lessons of the product.
+
+- **Allowed and wanted:** a reference to another lesson of the product, by
+  its title. "You learned this in the lesson Verb Tenses." "If the passive
+  forms are still hard, look again at the lesson Verb Tenses."
+- **Still forbidden (§6):** a reference to the original recording. "In the
+  last session", "this video", "in class".
+- The understanding stage finds the teacher's references and resolves each
+  against the course index (docs/05-COURSE-INDEX.md). The narration keeps
+  every one it resolved. A reference it cannot resolve is not narrated.
+- Where a point clearly depends on an earlier lesson, the narration may add
+  a short review pointer of its own. Sparingly: it is `authored`, and each
+  one is listed for the reviewer.
+- Each reference is data in the lesson bundle: the target lesson's id and
+  section id, so the website can make it a link (docs/04-LESSON-BUNDLE.md,
+  format 1.1). Ids, not titles, so a retitled or reordered lesson still
+  resolves.
+- References are spoken, not written on the boards.
 
 ---
 

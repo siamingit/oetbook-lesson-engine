@@ -395,8 +395,10 @@ Tables are taught, not displayed.
 
 Recorded 2026-09-25 (docs/00-PRODUCT.md §3, "Hard general words are
 glossed"). A gloss explains a hard **general** English word the first time
-it appears: never a clinical word, never a grammar term (grammar terms get
-a term box with a plain definition, as before).
+it appears: never a medical word (specialist terminology such as
+hypothyroidism or warfarin; "deteriorate" and "commence" are general words,
+docs/00-PRODUCT.md §3), never a grammar term (grammar terms get a term box
+with a plain definition, as before).
 
 - **Data:** a term box with the label `WORD`, the word as it appears as its
   `term`, and the gloss as its `explanation`: a simpler synonym or a few

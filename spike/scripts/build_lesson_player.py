@@ -53,7 +53,7 @@ from write_screens import (FRAME_CSS, TAG_LABELS, block_html,     # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-FORMAT_VERSION = "1.0"             # docs/04-LESSON-BUNDLE.md
+FORMAT_VERSION = "1.1"             # docs/04-LESSON-BUNDLE.md; 1.1 adds refs (ADR 006)
 READING_HOLD_S = 2.5               # the pointer stays on the last word read this long
 # Everything block_html draws from; pipeline notes (anchor, from_beats, note,
 # relabelled, ruling) stay in screens.json.
@@ -103,7 +103,8 @@ def text_export(lesson: dict, sections: list[dict], boards: list[dict], blocks: 
                     ids.append(i)
             bds.append({"id": bid, "start": bd["start"],
                         "board_text": [{"block": i, "text": block_plain(blocks[i])} for i in ids],
-                        "narration": [{"id": u["id"], "start": u["start"], "text": u["text"]}
+                        "narration": [{"id": u["id"], "start": u["start"], "text": u["text"],
+                                       "refs": u["refs"]}
                                       for s in bd["states"] for u in s["utterances"]]})
         out.append({"id": sec["id"], "title": sec["title"], "category": sec["category"],
                     "start": sec["start"], "end": sec["end"],

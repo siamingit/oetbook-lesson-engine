@@ -101,7 +101,10 @@ screen and spoken as words; that difference is by design and is not a finding.
 a video, not a live class, not a lecture, and there is no book. Flag anything \
 telling the student to pause or resume a video, referring to a session or a class, \
 or pointing at a coursebook or other material they do not have. Referring to what \
-is on screen, or to an earlier or later part of this lesson, is fine.
+is on screen, or to an earlier or later part of this lesson, is fine. Naming another \
+lesson of this course by its title ("You learned this in the lesson Verb Tenses") is \
+fine and wanted; "the last lesson", "session one" or a lesson not named by its title \
+is a finding.
 7. Student level. Flag any sentence a B1 learner would struggle with, and give a \
 simpler version as the proposed fix. What makes a sentence too hard: a \
 general-English word where a common one would do (utilise, subsequent, denote, in \
@@ -131,10 +134,14 @@ time it appears in this section: on screen by a gloss, a term box labelled WORD 
 to plan a time for something."). Flag such a word used on screen or in speech \
 without a gloss at its first appearance, and propose the gloss. Report it as \
 `major` when the student needs the word to follow the teaching point, otherwise \
-`minor`. Also flag, as `minor`, a gloss on a medical or clinical word (the \
-students know them) or on a word a learner at this level already knows. Never flag \
-a clinical word for lacking a gloss, and never flag a grammar term here: check 7 \
-covers grammar terms.
+`minor`. Also flag, as `minor`, a gloss on a medical word (the students know \
+them) or on a word a learner at this level already knows. A MEDICAL WORD is \
+specialist terminology: diseases, drugs, procedures, anatomy, usually Latin or \
+Greek in origin (hypothyroidism, colonoscopy, warfarin). General words that are \
+common in clinical settings (deteriorate, commence, schedule, improve) are NOT \
+medical words: they are general words, glossed when hard for an A2-B1 learner, \
+and a gloss on one is never a finding. Never flag a medical word for lacking a \
+gloss, and never flag a grammar term here: check 7 covers grammar terms.
 
 THE EXERCISE SENTENCES ARE DELIBERATELY WRONG. Where a page teaches error \
 correction, the sentences in its fixed layers contain faults on purpose, and the \

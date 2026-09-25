@@ -90,6 +90,20 @@ The opposite case matters just as much: text the instructor **types into the ans
 boxes** during the lesson is their model answer, not exercise material. An error \
 there is a genuine source error — record it, with a correction.
 
+REFERENCES TO OTHER SESSIONS. The instructor sometimes points to another \
+session of the course: "this was taught in session one, verb tenses", "if active \
+and passive is still hard, review grammar sessions one and two". Record every \
+such reference under `cross_references`. Each session of the course is now an \
+English lesson, listed under COURSE LESSONS with its id and its sections by \
+title. Resolve each reference to the lesson it means, and to the section \
+when the instructor points at one topic of it; decide by what the instructor says \
+was taught there, and by the session's number where the lesson id carries it \
+(grammar-01 is grammar session one). If no listed lesson fits, or you are not \
+sure, leave the target null: an unresolved reference is not spoken later, and a \
+wrong one sends the student to the wrong lesson. Talk about this recording itself \
+("earlier today", "as I said", "in this session") is not a reference to another \
+session and is not recorded here.
+
 PERSIAN-DEPENDENT TEACHING. Some explanations only work in Persian — contrasts \
 with Persian grammar, wordplay, or Persian-language mnemonics. Translating them \
 produces nonsense for an English audience. Flag these; they need replacement, not \
@@ -121,6 +135,10 @@ exercise sentences and leave their correction empty.
 `persian_dependent`: explanations that rely on Persian and would need replacing \
 rather than translating.
 
+`cross_references`: every reference the instructor makes to another session of \
+the course, in time order: when, what was said (in English), the lesson and \
+section it resolves to (null when it does not resolve), your confidence, and why.
+
 `unknowns`: anything you could not determine. Say what evidence would settle it.\
 """
 
@@ -128,7 +146,7 @@ SCHEMA = {
     "type": "object",
     "additionalProperties": False,
     "required": ["beats", "non_teaching", "source_errors", "persian_dependent",
-                 "unknowns"],
+                 "cross_references", "unknowns"],
     "properties": {
         "beats": {
             "type": "array",
@@ -208,6 +226,25 @@ SCHEMA = {
                     "description": {"type": "string"},
                     "why_replacement_needed": {"type": "string"},
                     "provenance": {"enum": ["source-derived", "adapted", "authored"]},
+                },
+            },
+        },
+        # ADR 006: the instructor's references to other sessions, resolved
+        # against the course index to a lesson id and section id, or null.
+        "cross_references": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": False,
+                "required": ["start", "end", "said", "lesson", "section", "confidence",
+                             "why"],
+                "properties": {
+                    "start": {"type": "number"}, "end": {"type": "number"},
+                    "said": {"type": "string"},
+                    "lesson": {"type": ["string", "null"]},
+                    "section": {"type": ["string", "null"]},
+                    "confidence": {"enum": ["high", "medium", "low"]},
+                    "why": {"type": "string"},
                 },
             },
         },
@@ -372,7 +409,9 @@ def gather(lesson: Path, page: int) -> dict:
     (out / "transcript_words.json").write_text(
         json.dumps(words, ensure_ascii=False, indent=1), encoding="utf-8")
 
+    from build_course_index import catalogue
     return {"lesson_label": paths.lesson_label(lesson), "deck_pages": paths.deck_pages(lesson),
+            "catalogue": catalogue(lesson),
             "interval": iv, "index": index, "words": words, "bulk": bulk,
             "utterances": utterances, "events": events,
             "dwells": dwells, "carry": carry, "slide_text": slide_text,
@@ -452,6 +491,11 @@ def build_messages(data: dict) -> list[dict]:
             "CURSOR DWELLS. Where the cursor was held still, with the words under "
             "it - the instructor pointing while talking:\n"
             + json.dumps(data["dwells"], ensure_ascii=False)},
+        {"type": "text", "text":
+            "COURSE LESSONS, the other sessions of the course as English lessons, by "
+            "id, with their sections by title, to resolve references against "
+            "(empty if none is built yet; a lesson not built has no sections):\n"
+            + json.dumps(data.get("catalogue") or [], ensure_ascii=False)},
         {"type": "text", "text": TASK},
     ]
     for block in content:
@@ -540,6 +584,15 @@ def render(lesson: Path, page: int) -> None:
     out = paths.understanding_dir(lesson, page)
     raw = json.loads((out / "raw_response.json").read_text(encoding="utf-8"))
     data = json.loads([b["text"] for b in raw["content"] if b["type"] == "text"][-1])
+    # A reference's ids are checked against the course index by code: one that
+    # does not resolve is kept, with its target cleared and the reason, so it is
+    # never narrated (ADR 006).
+    from build_course_index import catalogue, check_ref
+    cat = catalogue(lesson)
+    for r in data.get("cross_references") or []:
+        why = check_ref(cat, r["lesson"], r["section"]) if r.get("lesson") else None
+        if why:
+            r.update(lesson=None, section=None, unresolved=why)
     (out / "understanding.json").write_text(
         json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
 
@@ -607,6 +660,14 @@ def render(lesson: Path, page: int) -> None:
         ("what", lambda p: esc(p["description"])),
         ("why it needs replacing", lambda p: esc(p["why_replacement_needed"])),
     ], 3)
+    xrefs = table(data.get("cross_references") or [], [
+        ("time", lambda r: '<span class="t">' + timeline.clock(r["start"]) + "-"
+                           + timeline.clock(r["end"]) + "</span>"),
+        ("said", lambda r: esc(r["said"])),
+        ("resolves to", lambda r: esc(f"{r['lesson']} {r['section'] or ''}" if r.get("lesson")
+                                      else "unresolved " + (r.get("unresolved") or ""))),
+        ("why", lambda r: esc(f"{r['confidence']}: {r['why']}")),
+    ], 4)
     unknowns = table(data["unknowns"], [
         ("topic", lambda u: esc(u["topic"])),
         ("what is missing", lambda u: esc(u["what_is_missing"])),
@@ -641,6 +702,7 @@ def render(lesson: Path, page: int) -> None:
               "such and carry no correction.</p>" + errors
             + "<h2>Persian-dependent explanations</h2><p class=\"meta\">These need "
               "replacing for an English audience, not translating.</p>" + persian
+            + "<h2>References to other sessions</h2>" + xrefs
             + "<h2>UNKNOWN</h2>" + unknowns)
     (checks / "index.html").write_text(html, encoding="utf-8")
 

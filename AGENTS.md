@@ -51,7 +51,7 @@ Ask in chat. Wait for an explicit answer. Do not proceed on assumption.
 - `git commit`, `git push`, `git rebase`, `git reset`, branch operations
 - Deleting any file you did not create in this session
 
-### Exception: lesson production (ADR 003)
+### Exception: lesson production (ADR 003, ADR 005)
 
 When the maintainer has named, in chat, a lesson to build and its budget,
 these are pre-approved for that lesson:
@@ -70,8 +70,17 @@ dependencies, schemas and file formats, models, providers and voices, any
 spend over the budget or outside the runbook, new or reordered stages,
 changes to the rules in `docs/` or to this file, credentials,
 `.gitignore`, git operations, and deleting files the agent did not create.
-A review gate is never approved by the agent, and a change to teaching
-content is reported, not applied, unless a maintainer policy covers it.
+Decision policy (ADR 005): the agent decides, without asking, whenever
+the docs answer the question or one option clearly serves the student
+better by the product's own rules, and records each decision in the
+lesson's `analysis/decisions.md` (what, why, which rule, how to reverse
+it). It asks only for spend beyond the budget; a change to the bundle
+contract, a schema, a provider or a rule in the docs; what only the
+maintainer's ear or taste can settle; and a teaching claim genuinely in
+doubt and not settled by the docs. There are three gates, source,
+narration (the silent preview) and final, and the agent never approves
+them; it approves the keyterms and screens steps itself when their audits
+pass, and logs it.
 
 ## 4. You may do these without asking
 
@@ -107,6 +116,8 @@ Make one small, reviewable change at a time.
 - Never refactor while adding a feature
 - Never reformat a file you were not asked to change
 - If a task needs more than ~3 files changed, stop and propose a plan first
+- A complete specification from the maintainer counts as the plan; propose a
+  plan first only when the work goes beyond it
 
 Show the human what you are about to do before doing it.
 

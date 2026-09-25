@@ -110,7 +110,10 @@ def lay_timeline(narr: dict, audio_index: dict, utterance_gap: float = 0.4,
                                  "provenance": u["provenance"],
                                  "audio_file": entry["file"],
                                  "start": round(utt_start, 3), "end": round(utt_end, 3),
-                                 "cues": cues_out})
+                                 "cues": cues_out,
+                                 # other lessons this utterance refers to (bundle 1.1)
+                                 "refs": [{"lesson": r["lesson"], "section": r.get("section")}
+                                          for r in u.get("refs") or []]})
                 t = utt_end
                 if ui < len(s["utterances"]) - 1:
                     t += max(utterance_gap, pause_after)
