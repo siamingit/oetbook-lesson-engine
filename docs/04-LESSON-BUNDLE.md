@@ -4,10 +4,11 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.2. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.3. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
 2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
-table boards, on 2026-09-25 (docs/adr/007-table-boards.md). A change to it is a
+table boards, on 2026-09-25 (docs/adr/007-table-boards.md); 1.3, the board style
+and trimmed clips, on 2026-09-25 (docs/adr/008-board-style.md). A change to it is a
 new format version (§3), recorded in a new ADR.
 
 | Version | Date | Change |
@@ -15,6 +16,7 @@ new format version (§3), recorded in a new ADR.
 | 1.0 | 2026-09-24 | first version |
 | 1.1 | 2026-09-25 | `refs` on every utterance (§5) and every narration entry of `text.json` (§6): the other lessons the utterance refers to, by id |
 | 1.2 | 2026-09-25 | table boards (docs/02-DESIGN-SYSTEM.md §7, "Tables"): a table block's `core`, `typed`, `col_widths`, `font`; a working block's `beside`; the `type` cue; a board's `table` and `focus`; a state's `row`; rules 10 to 13 (§5) |
+| 1.3 | 2026-09-25 | the board style (docs/02-DESIGN-SYSTEM.md §7c): a block's `role`, `style`, `card`, `pin`, `fold_into`, `flow`, `band`; a board's `pinned` and `wordmarks`; an utterance's `clip_in` and `clip_out`; rules 14 to 17 |
 
 ---
 
@@ -136,7 +138,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.2"` |
+| `format_version` | string | `"1.3"` |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -203,6 +205,13 @@ A block is one thing on a board. Each carries its data and its rendered `html`.
 | `typed` | 1.2. `table`: the parts of cells typed live, `[{row, col, start, text}]`: row and column from 0, `start` the part's offset in the cell's text. Its index in this list is the part's number. Null when nothing is typed |
 | `col_widths` | 1.2. core `table`: each column's share of the width, per cent |
 | `font` | 1.2. core `table`: its text size, in hundredths of the frame's height |
+| `role` | 1.3. What kind of content the block is: `slide` (the deck's own), `example` (added by the teacher) or `note` |
+| `style` | 1.3. How the board draws it, when not the ordinary way: `pill` (a definition pill), `card` (a change card), `result` (the slide's result box) |
+| `card` | 1.3. A change card's sides as shown: `{from, from_class, to, to_class, stacked, label}`; a class is `verb`, `noun`, `noun phrase`, `adjective`, `adverb`, `clause` or `phrase`, or null; `label` is shown only when no class replaces it |
+| `pin` | 1.3. True for a working block that stays, once revealed, until its board ends |
+| `fold_into` | 1.3. The block this one is part of: it is not drawn, and every cue on it is given to that block (§5, `cues`) |
+| `flow` | 1.3. Its place in a change's flow on its board: `pill`, `source`, `card`, `result` or `note`; the board shows them in that order |
+| `band` | 1.3. On the first change card of a run, the process pill's text ("Nominalisation") |
 | `beside` | 1.2. a working block drawn beside a table row: `{block, row}`, the table and the row (from 0), or row null for a note about the whole table; otherwise null |
 | `items` | `timeline`: its diagram parts in order (below) |
 | `tags` | tense tags: `[{text, family, label}]`; `label` is what the chip says ("up to now") |
@@ -244,6 +253,8 @@ two things must hold, because cues and the reading pointer depend on them:
 | `exercise` | true when the board is one exercise item |
 | `reveal` | `{part id: time}` for every part of every fixed-layer diagram |
 | `table` | 1.2. On a table board, the id of its table; otherwise null |
+| `pinned` | 1.3. `{block: time}`: the working blocks that stay, from their reveal to the board's `until` |
+| `wordmarks` | 1.3. `[{block, text, cls, time}]`: from `time` to the board's `until`, `text` in `block` is marked `cls`, a word class (its colour, docs/02-DESIGN-SYSTEM.md §7c) or `slide-underline` (the slide's own underline) |
 | `focus` | 1.2. On a table board, the spotlight in time order: `[{time, row, col}]`, from each `time` the row in focus and the cell highlighted (both from 0; `col` null for the row alone; `row` null for the whole table, nothing dimmed). Empty on other boards |
 | `states` | the working-layer states in order |
 
@@ -268,7 +279,8 @@ two things must hold, because cues and the reading pointer depend on them:
 | `text` | exactly what the voice says |
 | `provenance` | as for blocks; for review |
 | `audio_file` | the clip, relative to `bundle.json` (§8) |
-| `start`, `end` | when it plays; `end - start` is the clip's length |
+| `start`, `end` | when it plays; `end - start` is the part of the clip played |
+| `clip_in`, `clip_out` | 1.3. The part of the clip played, in seconds into the file: its silence before the first sound and after the last is left out. Null in a silent preview |
 | `cues` | reveals, marks and pauses anchored in this utterance |
 | `refs` | 1.1. The other lessons this utterance refers to, `[{lesson, section}]` (below); an empty list when it refers to none |
 | `reading` | `[{block, words: [[k, start, end], …]}]`: the words of the board this utterance reads aloud, as word `k` of `block` (§5, rules) |
@@ -298,6 +310,7 @@ with the bundle.
 | `type` | `reveal`, `pause`, `type` (1.2), or a mark: `underline`, `highlight`, `circle`, `strike`, `bracket`, `point`, `arrow`, `replace` (docs/02-DESIGN-SYSTEM.md §8) |
 | `time` | when it takes effect: a lead before its word, or for a pause the end of the utterance |
 | `time_end` | the end of its word; for a pause, the end of the silence; for a `type`, the end of the typing |
+| `retargeted_from` | 1.3. Not in the bundle: a cue on a folded block names the block it is folded into, with its phrase as that block writes it, and a cue on a change card names the phrase without its word class ("Analysis", not "Analysis (noun)") |
 | `typed`, `row`, `col` | 1.2. A `type` cue: the typed part it types (its index in the table's `typed`), and that part's row and column |
 | `block` | the block (or diagram part, for a reveal) it acts on; null for a pause |
 | `text` | a mark's phrase inside `block`; a pause's description, for review |
@@ -357,6 +370,15 @@ These are the only rules. Every time and target they use is in the bundle.
     is smaller than 14 px, the view zooms onto the highlighted cell (or the row)
     and its visible side notes; otherwise the view is not zoomed. Under
     `prefers-reduced-motion`, without animation.
+14. **A pinned block** (1.3) is shown from its time in `pinned` until the board's
+    `until`, through every erasure.
+15. **Word marks** (1.3) are drawn under the cues' marks, from their `time` to
+    the board's `until`.
+16. **A folded block** (1.3) is not drawn; it is in no board's `fixed` and no
+    cue names it.
+17. **A trimmed clip** (1.3) plays from `clip_in`: lesson time is the utterance's
+    `start` plus the audio's position minus `clip_in` (rule 1), and the utterance
+    ends at `clip_out`.
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and
@@ -371,7 +393,7 @@ no cues and no provenance.
 
 | Field | Meaning |
 |---|---|
-| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.2"` |
+| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.3"` |
 | `lesson` | the same object as `bundle.json`'s `lesson` |
 | `sections[]` | `{id, title, category, start, end, narration_text, board_text, boards}` |
 | `sections[].narration_text` | everything said in the section, one paragraph per board |

@@ -184,7 +184,8 @@ Line height 1.35 for body text in blocks.
 
 ## 5. Colour
 
-Three content colours, one highlight. No more.
+Three content colours, one highlight, and the colours of the board style
+(§7c: slide boxes, word classes, the definition pill, notes). No more.
 
 | Colour | Meaning | Fill | Accent bar | Text |
 |---|---|---|---|---|
@@ -206,6 +207,9 @@ Neutrals:
 
 **One meaning per colour, across all lessons.** Green always means
 correct. A student learns the code in two lessons without being told.
+**Red and green are reserved for wrong and correct** (maintainer,
+2026-09-25): nothing else on any board uses them, not a word class, not a
+pill.
 
 **Colour is never the only signal.** Every coloured block also carries a
 non-colour marker: a ✕ or ✓ icon and a left accent bar. Required for
@@ -241,7 +245,7 @@ headers, never on error or answer rows. Present-perfect teal and
 - **Two weights only:** regular and medium. Never heavy.
 - **Sentence case** everywhere. Every block, and every side of a
   comparison, starts with a capital.
-- Small labels may be caps with wide letter-spacing at small size.
+- Small labels are in sentence case, never in capitals (2026-09-25; §7c).
 - No italics for emphasis; use colour and underline, as a teacher marks
   a board.
 
@@ -404,7 +408,7 @@ row on that board:
   follows the typing. At 14 px or more there is no zoom. Under
   `prefers-reduced-motion`, the camera moves without animation and
   typed answers appear whole at their cue.
-- **Type size.** A table's text starts at 2.6% of the frame's height
+- **Type size.** A table's text starts at body size (3.2% of the frame's height; 2.6% before 2026-09-25, §7c)
   and is reduced, to no less than 1.9%, only as far as the whole table
   needs to fit the content band. This is the one exception to "never
   solved by reducing the type size" (§3): auto zoom keeps a small table
@@ -445,14 +449,88 @@ with a plain definition, as before).
   shows the label, the word and its gloss.
 - **Look:** on one line, "schedule (= plan a time)": the word in the
   **medium** weight, the gloss in the **regular** weight inside "(= ...)".
-  The term box's own blue family (§5, "Blue: teacher emphasis, new term"),
-  with its small label above. No new weight and no new colour.
+  Since 2026-09-25 a gloss is a note (§7c): the pale yellow note card, with
+  no label above it. No new weight.
 - **Layer:** working, like any note, placed where the word first appears
   and revealed as the narration says it.
 - **Narration:** one short sentence as it appears: "Schedule means to plan a
   time for something."
 - **Not overloaded:** only a word a learner at A2-B1 is likely not to know.
   A word glossed once is not glossed again later in the section.
+
+### 7c. Kinds of content and the board style
+
+Decided by the maintainer 2026-09-25 for every lesson (docs/adr/008-board-style.md),
+from his own slides; reference `docs/prototypes/p4-board-style-prototype.html`
+(style direction, not content). A board shows at a glance what kind of
+content each thing is, and a change as a flow from one sentence to another.
+Colour and shape appear only where they say what the content is.
+
+**Three kinds of content** (each block's `role`, set by a rule; an override
+may correct it):
+
+| Kind | What | Look |
+|---|---|---|
+| Slide | The deck's own sentences, tables and main examples; a sentence written into a box the slide leaves for it | A rounded slide box, **never erased**: the source sentence sky blue (`#EAF4FC`, edge `#C9E0F3`), the result peach (`#FFF1E2`, edge `#F6D2A8`) with its green tick; a slide table has a sky header and rounded corners. Medium weight |
+| Example | An extra example the teacher gives | A change card, or a correct or wrong sentence with a smaller radius: clearly secondary |
+| Note | Side notes, glosses, rules, explanations | The pale yellow note card (`#FFF8DC`, gold edge `#E0AE12`), shown then erased; callouts keep their badges |
+
+A slide block that appears during the teaching (the result written into the
+slide's box) is **pinned**: once revealed it stays until the board ends,
+through every erasure. So is the definition pill.
+
+**The flow of a change.** Where a board changes one sentence into another:
+
+1. **Definition pill** at the top: the grammar term being taught, in a white
+   tag, and its definition, on the orange pill of the maintainer's header
+   pills (`#F7A531`). It replaces the term box with a capitals label.
+2. **Source sentence** in its slide box. A part the slide marks (the
+   underlined clause) stays **inside its sentence**, underlined, never as a
+   separate box; its marks are drawn there.
+3. **Process pill** (the process's name, neutral slate `#475569`) with a
+   chevron above and below, beside the first **change card** of a run.
+4. **Change cards**, one per change: "from → to", each side with its word
+   class under it in small type ("verb", "noun", "clause", "noun phrase").
+   Every comparison is drawn as a change card: side by side when the sides
+   are short, stacked (from above, to below) when they are sentences. Plain
+   two-column comparisons and capitals labels are no longer used.
+5. **Result sentence** in its slide box, pinned.
+6. Notes last.
+
+The order on the board follows the flow whatever order the blocks were
+revealed in.
+
+**Colour by grammatical role.** The words that change are marked in the
+source sentence in their word-class colour, and the same colour links them to
+their change card and to the result: a word takes its colour when it is first
+marked or its change card appears, and keeps it for the rest of the board;
+the result's words take theirs when the result appears. The slide's own
+underlines and highlights are kept.
+
+| Word class | Colour |
+|---|---|
+| Verb | deep blue `#084191` |
+| Noun, noun phrase | amber-brown `#916308` |
+| Adjective, adverb | teal `#1F7A73` |
+| Clause, phrase | magenta `#CB0BAB` |
+
+Text in the colour on a soft tint of it. Chosen by measured colour
+difference (CIEDE2000): 33.7 or more between any two, 28 or more from red
+and green, text contrast about 4.5:1 or better on white. Two colours are
+close to a tense colour (noun to the past accent, adjective to the "up to
+now" teal), so **the screens audit fails a board where a word-class colour
+and a tense colour it is close to (difference under 20) appear together**,
+and any word-class colour within 20 of red or green.
+
+**Tables** keep §7 "Tables": a slide's table is a table board; its changed
+words are coloured in the cells, and its change cards stand beside the row.
+Table text starts at body size (3.2% of the frame's height) and is reduced
+only as far as the whole table needs to fit.
+
+**Presentation only.** The board style changes no block's text, no id, no
+cue and no state: narration and audio are unaffected. A cue on a folded
+part lands on the same words in its sentence; a cue on a change card's
+"Analysis (noun)" lands on "Analysis" (the class is a tag, not words).
 
 ## 8. Marks
 
@@ -530,8 +608,8 @@ Marks belong to the working layer and are erased with it.
 - A per-screen title. Titles belong to topics, not to units of space.
 - Decoration with no teaching purpose: gradients, shadows,
   illustrations, photographs, background images
-- Colours other than the four content colours and the four family
-  colours above
+- Colours other than the four content colours, the four family colours
+  and the board style's colours (§7c)
 - Type smaller than the stated proportions
 - Board shorthand. "One moment + since 2010 = clash" is a note to
   oneself, not prose an elementary student reads.

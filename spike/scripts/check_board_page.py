@@ -71,6 +71,12 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
             continue
         planned = u["end"] - u["start"]
         actual = wav_duration(path)
+        if u.get("clip_in") is not None:
+            # a trimmed clip (bundle 1.3): plays from clip_in to clip_out
+            if not 0 <= u["clip_in"] < u["clip_out"] <= actual + TOLERANCE_S:
+                problems.append(f"{u['id']}: clip {u['clip_in']}-{u['clip_out']} is not inside "
+                                f"its audio ({actual:.3f}s)")
+            actual = u["clip_out"] - u["clip_in"]
         if abs(planned - actual) > TOLERANCE_S:
             problems.append(f"{u['id']}: timeline says {planned:.3f}s, audio is {actual:.3f}s")
 

@@ -78,8 +78,9 @@ def numberish(token: str) -> bool:
 def block_tokens(b: dict) -> list[str]:
     """Words of a block in the order its html emits them (write_screens.
     block_text_runs), which is the order the player counts them in."""
+    import board_style
     out = []
-    for run in block_text_runs(b):
+    for run in board_style.display_runs(b, block_text_runs):   # as the board shows it (1.3)
         for w in run.split():
             n = norm(w)
             if n:

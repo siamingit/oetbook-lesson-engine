@@ -48,12 +48,13 @@ import paths                                                      # noqa: E402
 from build_board_bundle import block_tokens, norm, reading_runs   # noqa: E402
 from build_board_timeline import lay_timeline                     # noqa: E402
 from write_narration import spoken                                # noqa: E402
+import board_style                                                # noqa: E402
 from write_screens import (FRAME_CSS, TAG_LABELS, block_html,     # noqa: E402
                            block_text_runs, is_exercise_board)
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-FORMAT_VERSION = "1.2"             # docs/04-LESSON-BUNDLE.md; 1.1 refs (ADR 006), 1.2 table boards (ADR 007)
+FORMAT_VERSION = "1.3"             # docs/04-LESSON-BUNDLE.md; 1.1 refs (ADR 006), 1.2 table boards (ADR 007), 1.3 board style (ADR 008)
 READING_HOLD_S = 2.5               # the pointer stays on the last word read this long
 # Everything block_html draws from; pipeline notes (anchor, from_beats, note,
 # relabelled, ruling) stay in screens.json.
@@ -61,7 +62,9 @@ BLOCK_FIELDS = ("id", "type", "label", "text", "term", "explanation", "left", "r
                 "family", "col_families", "kind", "icon", "items", "header", "rows",
                 "tags", "exercise_item", "provenance",
                 # 1.2, table boards (ADR 007)
-                "core", "col_widths", "font", "typed", "beside")
+                "core", "col_widths", "font", "typed", "beside",
+                # 1.3, kinds of content and the board style (ADR 008)
+                "role", "style", "card", "pin", "fold_into", "flow", "band")
 
 
 def block_data(b: dict) -> dict:
@@ -72,6 +75,38 @@ def block_data(b: dict) -> dict:
             if t.get("text") and t.get("family") in TAG_LABELS]
     d["tags"] = tags or None
     return d
+
+
+# A clip's own silence before its first sound and after its last is not part
+# of the lesson's timing (maintainer, 2026-09-25): each clip plays from
+# `clip_in` to `clip_out`, found in its signal, and every gap and pause the
+# timeline lays out stays exactly as it is. No audio is re-made.
+TRIM_DB = -40.0          # sound is anything louder than this, in 10 ms windows
+TRIM_KEEP_IN = 0.03      # seconds kept before the first sound
+TRIM_KEEP_OUT = 0.05     # and after the last
+
+
+def trim_clip(path: Path, e: dict) -> None:
+    """Set the entry's clip_in and clip_out from the WAV's signal, and make its
+    duration and word times the trimmed clip's. Never cuts into a word."""
+    import wave
+    import numpy as np
+    with wave.open(str(path), "rb") as w:
+        sr, n = w.getframerate(), w.getnframes()
+        a = np.frombuffer(w.readframes(n), dtype=np.int16).astype(float) / 32768
+    win = int(sr * 0.01)
+    env = np.array([np.abs(a[i:i + win]).max() for i in range(0, max(1, len(a) - win), win)])
+    loud = np.where(env > 10 ** (TRIM_DB / 20))[0]
+    dur = n / sr
+    if not len(loud) or not e.get("word_start"):
+        e.update(clip_in=0.0, clip_out=round(dur, 3))
+        return
+    cin = min(max(0.0, loud[0] * 0.01 - TRIM_KEEP_IN), e["word_start"][0])
+    cout = max(min(dur, (loud[-1] + 1) * 0.01 + TRIM_KEEP_OUT), min(dur, e["word_end"][-1]))
+    e["clip_in"], e["clip_out"] = round(cin, 3), round(cout, 3)
+    e["duration_s"] = round(cout - cin, 3)
+    e["word_start"] = [round(x - cin, 3) for x in e["word_start"]]
+    e["word_end"] = [round(x - cin, 3) for x in e["word_end"]]
 
 
 def table_cells(b: dict) -> list[tuple[int, int]]:
@@ -138,7 +173,7 @@ def block_plain(b: dict) -> str:
         lines = [" | ".join(b.get("header") or [])] + [" | ".join(r) for r in b.get("rows") or []]
         lines = [x.replace(" / ", "; ") for x in lines]
         return "\n".join(x for x in lines if x.strip(" |"))
-    return "\n".join(block_text_runs(b))
+    return "\n".join(board_style.display_runs(b, block_text_runs))
 
 
 def text_export(lesson: dict, sections: list[dict], boards: list[dict], blocks: dict) -> dict:
@@ -198,13 +233,19 @@ def lesson_sections(L: Path) -> tuple[dict, list[dict]]:
     return info, intro + info["sections"]
 
 
-def build(L: Path, silent: bool, wpm: float = 135.0) -> Path:
+def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = None,
+          out: str | None = None) -> Path:
     info, secs = lesson_sections(L)
-    out_dir = L / "generated" / ("lesson-preview/silent" if silent else "lesson-player")
+    if only:
+        # a sample of some sections (a design review), in its own folder
+        secs = [s for s in secs if paths.section_tag(s["pages"]) in only]
+        info = dict(info, categories=[])
+    out_dir = L / "generated" / (out or ("lesson-preview/silent" if silent else "lesson-player"))
     out_dir.mkdir(parents=True, exist_ok=True)
 
     boards_all, blocks_all, audio_index, section_marks = [], {}, {}, []
     table_of: dict[str, str] = {}
+    links_of: dict[str, tuple] = {}
     row_of: dict[str, int | None] = {}
     missing: list[str] = []
     for sec in secs:
@@ -228,6 +269,9 @@ def build(L: Path, silent: bool, wpm: float = 135.0) -> Path:
         blocks = {b["id"]: b for t in scr["topics"] for h in t["thoughts"] for b in h["blocks"]}
         # a table board's table and each state's row (screens.json, ADR 007)
         for sb in scr["boards"]:
+            links_of[pre + sb["id"]] = (
+                [dict(x, block=pre + x["block"], card=pre + x["card"]) for x in sb.get("wordlinks") or []],
+                [dict(x, block=pre + x["block"]) for x in sb.get("slidemarks") or []])
             if sb.get("table"):
                 table_of[pre + sb["id"]] = pre + sb["table"]
             for ss in sb["states"]:
@@ -237,14 +281,17 @@ def build(L: Path, silent: bool, wpm: float = 135.0) -> Path:
             nb["id"] = pre + bid
             if nb.get("beside"):
                 nb["beside"] = {"block": pre + nb["beside"]["block"], "row": nb["beside"]["row"]}
+            if nb.get("fold_into"):
+                nb["fold_into"] = pre + nb["fold_into"]
             blocks_all[pre + bid] = {**block_data(nb), "html": block_html(nb),
-                                     "_tokens": block_tokens(b)}
+                                     "_tokens": block_tokens(b)}     # display words (1.3)
         section_marks.append({"id": tag, "title": sec["title"], "pages": pages,
                               "intro": bool(sec.get("intro")),
                               "first_board": None, "boards": []})
         for bd in narr["boards"]:
             nbd = {"id": pre + bd["id"], "title": bd["title"],
-                   "fixed": [pre + i for i in bd["fixed"]], "states": []}
+                   "fixed": [pre + i for i in bd["fixed"] if not blocks[i].get("fold_into")],
+                   "states": []}
             for s in bd["states"]:
                 ns = {"id": pre + s["id"], "working": [pre + i for i in s["working"]],
                       "erase_after": ({"blocks": [pre + i for i in s["erase_after"]["blocks"]]}
@@ -254,9 +301,19 @@ def build(L: Path, silent: bool, wpm: float = 135.0) -> Path:
                     nu = copy.deepcopy(u)
                     nu["id"] = pre + u["id"]
                     for c in nu["cues"]:
-                        for key in ("block", "to_block"):
-                            if c.get(key):
-                                c[key] = pre + c[key]
+                        for key, tkey in (("block", "text"), ("to_block", "to_text")):
+                            if not c.get(key):
+                                continue
+                            b0 = blocks.get(c[key].split(".")[0])
+                            if b0 and b0.get("fold_into") and c.get(tkey):
+                                host = blocks[b0["fold_into"]]
+                                hit = board_style._stem_find(host["text"], c[tkey])
+                                c["retargeted_from"] = pre + c[key]
+                                c[key] = b0["fold_into"]
+                                c[tkey] = hit or c[tkey]
+                            elif b0:
+                                c[tkey] = board_style.display_phrase(b0, c.get(tkey))
+                            c[key] = pre + c[key]
                     ns["utterances"].append(nu)
                     if silent:
                         audio_index[nu["id"]] = estimate(spoken(u["text_with_cues"]).split(), wpm)
@@ -278,6 +335,9 @@ def build(L: Path, silent: bool, wpm: float = 135.0) -> Path:
                          f"from other text: {', '.join(missing[:12])}"
                          + (" ..." if len(missing) > 12 else ""))
 
+    if not silent:
+        for e in audio_index.values():
+            trim_clip(out_dir / e["file"], e)
     narr_all = {"lesson": L.name, "boards": boards_all}
     gaps = {"utterance_gap_s": 0.4, "state_gap_s": 1.2, "board_gap_s": 1.5, "cue_lead_s": 0.35}
     boards_out, events, total = lay_timeline(narr_all, audio_index, gaps["utterance_gap_s"],
@@ -285,6 +345,11 @@ def build(L: Path, silent: bool, wpm: float = 135.0) -> Path:
                                              gaps["cue_lead_s"])
 
     tokens = {i: b.pop("_tokens") for i, b in blocks_all.items()}
+    for bd in boards_out:
+        for s in bd["states"]:
+            for u in s["utterances"]:
+                e = audio_index[u["id"]]
+                u["clip_in"], u["clip_out"] = e.get("clip_in"), e.get("clip_out")   # 1.3
     # A type cue names the typed part it types (its index in the table's
     # `typed`, and that part's row and column): the first part with its text
     # not yet typed on the board, as the narration audit counted them.
@@ -341,6 +406,32 @@ def build(L: Path, silent: bool, wpm: float = 135.0) -> Path:
             s["until"] = s["erase"]["time"] if s["erase"] else bd["until"]
         bd["reveal"] = {p: fixed_rev.get(p, bd["start"])
                         for fid in bd["fixed"] for p in diagram_parts(blocks_all[fid])}
+        # 1.3: a pinned block stays from its reveal to the board's end; a
+        # word mark colours a changing word by its word class from the moment
+        # its change card appears or the word is first marked, whichever is
+        # first (never before its block is on the board); the slide's own
+        # underline is there from the start
+        bd["pinned"] = {i: s["reveal"][i] for s in bd["states"] for i in s["working"]
+                        if blocks_all[i].get("pin") and i in s["reveal"]}
+        links, smarks = links_of.get(bd["id"], ([], []))
+        shown = {i: bd["start"] for i in bd["fixed"]}
+        for s in bd["states"]:
+            for i, at in s["reveal"].items():
+                shown.setdefault(i, at)
+        marks = [(c, u) for s in bd["states"] for u in s["utterances"] for c in u["cues"]
+                 if c["type"] not in ("reveal", "pause", "type")]
+        wm = []
+        for x in links:
+            if x["block"] not in shown or x["card"] not in shown:
+                continue
+            first = [c["time"] for c, _ in marks if c.get("block") == x["block"] and c.get("text")
+                     and (c["text"].lower() in x["text"].lower() or x["text"].lower() in c["text"].lower())]
+            at = min([shown[x["card"]]] + first)
+            wm.append({"block": x["block"], "text": x["text"], "cls": x["cls"],
+                       "time": round(max(shown[x["block"]], at), 3)})
+        wm += [{"block": x["block"], "text": x["text"], "cls": "slide-underline", "time": bd["start"]}
+               for x in smarks if x["block"] in shown]
+        bd["wordmarks"] = sorted(wm, key=lambda x: x["time"])
         # 1.2: a table board's table, each state's row, and the spotlight
         bd["table"] = table_of.get(bd["id"])
         for s in bd["states"]:
@@ -422,8 +513,13 @@ def main() -> None:
     ap.add_argument("lesson_dir", type=Path)
     ap.add_argument("--silent", action="store_true")
     ap.add_argument("--wpm", type=float, default=135.0)
+    ap.add_argument("--sections", help="build only these sections (tags, comma-separated): a sample")
+    ap.add_argument("--out", help="folder under generated/ for a sample build")
     args = ap.parse_args()
-    build(args.lesson_dir, args.silent, args.wpm)
+    if bool(args.sections) != bool(args.out):
+        raise SystemExit("--sections and --out go together: a sample never replaces the lesson's player")
+    build(args.lesson_dir, args.silent, args.wpm,
+          args.sections.split(",") if args.sections else None, args.out)
 
 
 if __name__ == "__main__":

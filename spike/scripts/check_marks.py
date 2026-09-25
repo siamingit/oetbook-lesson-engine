@@ -42,7 +42,12 @@ HARNESS = r"""
   fit();
   const out = [];
   function rectsTouch(a, b) {
-    return !(a.right <= b.left || b.right <= a.left || a.bottom <= b.top || b.bottom <= a.top);
+    // Only a neighbour on the same line can touch: a fragment of a wrapped mark
+    // and the last word of the line above share a strip of their glyph boxes
+    // when the line height is tight (table cells, 1.3), without touching.
+    const overlapY = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+    if (overlapY < 0.5 * Math.min(a.height, b.height)) return false;
+    return !(a.right <= b.left || b.right <= a.left);
   }
   function neighbourRects(span) {
     // The word before and the word after the mark, as ranges in the same block.

@@ -1216,7 +1216,7 @@ def block_height(b: dict) -> float:
 # content band. The size starts at the reference prototype's (19 px in a 720 px
 # frame) and steps down to a floor; the player zooms onto the active cell
 # when the size on screen is under 14 px, so a small size is still read.
-TABLE_TEXT = 0.026             # share of frame height
+TABLE_TEXT = 0.032             # share of frame height: body size, stepped down only to fit
 TABLE_TEXT_MIN = 0.019
 TABLE_LINE = 1.3
 TABLE_PAD_V = 0.016            # a cell's padding, top and bottom
@@ -2145,6 +2145,38 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                     warn(tb["id"], f"row {r + 1}, column {c + 1}: printed text {shown.strip()!r} "
                                    f"differs from the slide's {printed!r}")
 
+    # 7d. roles (bundle 1.3): slide content is never erased, so a slide block
+    # belongs to the fixed layer; the rule's classification of plain blocks,
+    # where it is least sure, is listed for the reviewer
+    fixed_all = {i for bd in out["boards"] for i in bd["fixed"]}
+    for b in blocks.values():
+        if b.get("role") == "slide" and b["id"] not in fixed_all and not b.get("pin"):
+            warn(b["id"], "slide content in the working layer: it is erased with its state")
+    plains = {r: [b["id"] for b in blocks.values() if b["type"] == "plain" and b.get("role") == r]
+              for r in ROLES}
+    if any(plains.values()):
+        warn("roles", "plain blocks by rule: " + "; ".join(f"{r} {', '.join(v)}"
+                                                           for r, v in plains.items() if v))
+
+    # 7e. word-class colours (docs/02-DESIGN-SYSTEM.md §7c): never red or
+    # green, and clearly apart from each other and from any tense colour on
+    # the same board (CIEDE2000 difference of 20 or more)
+    for bd in out["boards"]:
+        on = [blocks[i] for i in list(bd["fixed"]) + [i for st in bd["states"] for i in st["working"]]]
+        classes_ = {x["cls"] for x in bd.get("wordlinks") or []}
+        for b in on:
+            if b.get("card"):
+                classes_ |= {c for c in (b["card"]["from_class"], b["card"]["to_class"]) if c}
+        fams = set()
+        for b in on:
+            fams |= {t.get("family") for t in b.get("tags") or [] if t.get("family")}
+            fams |= {it.get("family") for it in b.get("items") or [] if it.get("family")}
+            fams |= {f for f in (b.get("col_families") or []) if f}
+            if b.get("family"):
+                fams.add(b["family"])
+        for clash in board_style.board_colour_clashes(classes_, fams):
+            fail(bd["id"], "colours too alike on one board: " + clash)
+
     # 7b. a state that explains a tense choice shows it: a timeline or tense tags
     tense_words = re.compile(r"\b(simple past|past continuous|past perfect|present perfect|"
                              r"present continuous|present simple|future)\b", re.I)
@@ -2358,6 +2390,9 @@ FRAME_CSS = """
 .citem .cs{font-size:2.4cqh;color:#888780;margin-top:.3cqh;line-height:1.35}
 """
 
+import board_style                                              # noqa: E402
+FRAME_CSS = FRAME_CSS + board_style.STYLE_CSS
+
 PAGE_CSS = """
 body{background:#f4f3ef;color:#2C2C2A;font:14px/1.5 system-ui,sans-serif;margin:0;padding:24px 28px 60px}
 h1{font-size:20px;margin:0 0 4px} h2{font-size:16px;margin:36px 0 10px}
@@ -2527,7 +2562,56 @@ def core_table_html(b: dict, bid: str) -> str:
             + "</tr></thead><tbody>" + body + "</tbody></table></div>")
 
 
+ROLES = ("slide", "example", "note")
+
+
+def block_role(b: dict, printed: str) -> str:
+    """What kind of content a block is (bundle 1.3; maintainer 2026-09-25):
+      slide    the deck's own content: a board's whole table, a printed
+               exercise sentence, or a block whose text the deck prints
+               (text layer or transcribed table, deck corrections applied);
+      example  an example the teacher adds: a correct or wrong sentence not
+               printed on the slide, or a comparison of two sentences;
+      note     everything else: terms, glosses, callouts, rules,
+               explanations, word forms.
+    `printed` is the section's printed text, normalised and lower case. An
+    override may set `role` where this rule is wrong; it is kept."""
+    if b.get("role") in ROLES:
+        return b["role"]
+    t = b["type"]
+    norm = lambda s: re.sub(r"\s+", " ", s or "").strip().lower()
+    if (t == "table" and b.get("core")) or b.get("exercise_item") is not None:
+        return "slide"
+    texts = [x for x in (b.get("text"),) if x]
+    if t in ("plain", "error_row", "answer_row") and texts and \
+            all(len(norm(x)) >= 12 and norm(x).rstrip(".") in printed for x in texts):
+        return "slide"
+    if t in ("answer_row", "error_row"):
+        return "example"
+    sentence = lambda s: len((s or "").split()) >= 5 and (s or "").rstrip()[-1:] in ".?!"
+    # an explanation is not an example: a side led by a term and a colon
+    # ("Febrile: the patient has a fever."), or one that talks about word classes
+    explains = lambda s: bool(re.match(r"^[\w' -]{1,30}:\s", s or "")) or bool(
+        re.search(r"\b(verb|noun|adjective|adverb)s?\b", s or "", re.I))
+    if t == "comparison" and all(sentence(b.get(k)) and not explains(b.get(k))
+                                 for k in ("left", "right")):
+        return "example"
+    return "note"
+
+
 def block_html(b: dict) -> str:
+    """A block as HTML (bundle 1.3): drawn in its board style where it has one
+    (board_style: change card, definition pill, gloss), carrying its role, its
+    style and its place in a flow as classes."""
+    bid = ' data-id="' + esc(b["id"]) + '"'
+    html = board_style.style_html(b, bid) or _block_html(b)
+    extra = board_style.classes(b)
+    if extra:
+        html = html.replace('class="blk ', 'class="blk ' + extra + " ", 1)
+    return html
+
+
+def _block_html(b: dict) -> str:
     """A block as HTML. Text is emitted in the order block_text_runs gives it;
     badges, icons and tag chips carry no text a mark or the reading pointer
     could hit (an SVG path, a CSS attribute, or a glyph with no letter)."""
@@ -2603,10 +2687,15 @@ def state_html(bd: dict, s: dict, n: int, blocks: dict, topic_no: int,
     never to units of space. The state is described only in reviewer chrome."""
     # The header shows the section title and nothing else: no board title, no
     # number (docs/02-DESIGN-SYSTEM.md §2, "The header").
-    fixed_html = "".join(block_html(blocks[i]) for i in bd["fixed"])
+    fixed_html = "".join(block_html(blocks[i]) for i in bd["fixed"]
+                         if not blocks[i].get("fold_into"))
+    # a pinned block stays from its state to the end of the board
+    k = bd["states"].index(s)
+    fixed_html += "".join(block_html(blocks[i]) for st in bd["states"][:k]
+                          for i in st["working"] if blocks[i].get("pin"))
     if bd.get("table") and s.get("row") is not None:
         # a table board's state is a row: in focus, the others dimmed
-        fixed_html = (fixed_html.replace('class="blk tbl core"', 'class="blk tbl core spot"', 1)
+        fixed_html = (fixed_html.replace(' tbl core"', ' tbl core spot"', 1)
                       .replace(f'<tr data-row="{s["row"]}">',
                                f'<tr data-row="{s["row"]}" class="focus">', 1))
     frame = ('<div class="frame"><div class="hdr">'
@@ -2697,6 +2786,15 @@ def render(lesson: Path, page: int, data: dict) -> int:
                          f"a section is built whole. Use --pages "
                          + ",".join(str(p) for p in section["pages"]))
     boards = lay_out(topics, blocks, section["title"])
+    # each block's role (bundle 1.3), from the section's printed text with its
+    # registered deck corrections; an override's `role` is kept
+    printed = re.sub(r"\s+", " ", data["slide_text"])
+    for d in data["defects"]:
+        printed = printed.replace(d["printed"], d["correction"])
+    printed = printed.lower()
+    for b in blocks.values():
+        b["role"] = block_role(b, printed)
+    board_style.derive(boards, blocks, section["title"])
     result = {
         "lesson_title": lesson_info,
         "section": section,
