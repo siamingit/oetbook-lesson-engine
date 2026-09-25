@@ -45,7 +45,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paths                                                      # noqa: E402
-from build_board_bundle import block_tokens, reading_runs         # noqa: E402
+from build_board_bundle import block_tokens, norm, reading_runs   # noqa: E402
 from build_board_timeline import lay_timeline                     # noqa: E402
 from write_narration import spoken                                # noqa: E402
 from write_screens import (FRAME_CSS, TAG_LABELS, block_html,     # noqa: E402
@@ -53,13 +53,15 @@ from write_screens import (FRAME_CSS, TAG_LABELS, block_html,     # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-FORMAT_VERSION = "1.1"             # docs/04-LESSON-BUNDLE.md; 1.1 adds refs (ADR 006)
+FORMAT_VERSION = "1.2"             # docs/04-LESSON-BUNDLE.md; 1.1 refs (ADR 006), 1.2 table boards (ADR 007)
 READING_HOLD_S = 2.5               # the pointer stays on the last word read this long
 # Everything block_html draws from; pipeline notes (anchor, from_beats, note,
 # relabelled, ruling) stay in screens.json.
 BLOCK_FIELDS = ("id", "type", "label", "text", "term", "explanation", "left", "right",
                 "family", "col_families", "kind", "icon", "items", "header", "rows",
-                "tags", "exercise_item", "provenance")
+                "tags", "exercise_item", "provenance",
+                # 1.2, table boards (ADR 007)
+                "core", "col_widths", "font", "typed", "beside")
 
 
 def block_data(b: dict) -> dict:
@@ -70,6 +72,56 @@ def block_data(b: dict) -> dict:
             if t.get("text") and t.get("family") in TAG_LABELS]
     d["tags"] = tags or None
     return d
+
+
+def table_cells(b: dict) -> list[tuple[int, int]]:
+    """(row, column) of each word of a table, in block_tokens order; the header
+    is row -1. What the reading pointer reads tells the spotlight which cell."""
+    cells = [(-1, c, x) for c, x in enumerate(b.get("header") or [])]
+    cells += [(r, c, x) for r, row in enumerate(b.get("rows") or []) for c, x in enumerate(row)]
+    return [(r, c) for r, c, x in cells if x for w in x.split() if norm(w)]
+
+
+def table_focus(bd: dict, table: dict, cells: list[tuple[int, int]]) -> list[dict]:
+    """The spotlight of a table board, stated for the renderer (bundle 1.2): at
+    each time, the row in focus and the cell highlighted, or null for the
+    whole table. A row's state brings its row into focus; the cell follows
+    what is read aloud, typed or marked in the table; when a row ends, before
+    another row or at the board's end, the whole table shows again."""
+    tid = table["id"]
+    ev: list[tuple[float, int | None, int | None]] = []
+    states = bd["states"]
+    for n, s in enumerate(states):
+        row = s.get("row")
+        ev.append((s["start"], row, None))
+        for u in s["utterances"]:
+            for run in u.get("reading") or []:
+                if run["block"] == tid:
+                    for k, t0, _ in run["words"]:
+                        r, c = cells[k]
+                        if r >= 0:
+                            ev.append((t0, r, c))
+            for c in u["cues"]:
+                if c.get("block") != tid or c["type"] in ("reveal", "pause"):
+                    continue
+                if c["type"] == "type":
+                    ev.append((c["time"], c["row"], c["col"]))
+                    continue
+                hits = [(r, k) for r, rw in enumerate(table.get("rows") or [])
+                        for k, x in enumerate(rw) if c.get("text") and c["text"] in x]
+                hits.sort(key=lambda h: h[0] != row)
+                if hits:
+                    ev.append((c["time"], hits[0][0], hits[0][1]))
+        nxt = states[n + 1].get("row") if n + 1 < len(states) else "end"
+        if row is not None and nxt != row:
+            ev.append((s["until"], None, None))
+    ev.sort(key=lambda e: e[0])
+    out: list[dict] = []
+    for t, r, c in ev:
+        if out and (out[-1]["row"], out[-1]["col"]) == (r, c):
+            continue
+        out.append({"time": round(t, 3), "row": r, "col": c})
+    return out
 
 
 def diagram_parts(b: dict) -> list[str]:
@@ -84,6 +136,7 @@ def block_plain(b: dict) -> str:
     row per line with cells separated by ' | '."""
     if b["type"] == "table":
         lines = [" | ".join(b.get("header") or [])] + [" | ".join(r) for r in b.get("rows") or []]
+        lines = [x.replace(" / ", "; ") for x in lines]
         return "\n".join(x for x in lines if x.strip(" |"))
     return "\n".join(block_text_runs(b))
 
@@ -151,6 +204,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0) -> Path:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     boards_all, blocks_all, audio_index, section_marks = [], {}, {}, []
+    table_of: dict[str, str] = {}
+    row_of: dict[str, int | None] = {}
     missing: list[str] = []
     for sec in secs:
         pages = sec["pages"]
@@ -171,9 +226,17 @@ def build(L: Path, silent: bool, wpm: float = 135.0) -> Path:
             sec_index = json.loads(ip.read_text(encoding="utf-8")) if ip.exists() else {}
         pre = tag + "_"
         blocks = {b["id"]: b for t in scr["topics"] for h in t["thoughts"] for b in h["blocks"]}
+        # a table board's table and each state's row (screens.json, ADR 007)
+        for sb in scr["boards"]:
+            if sb.get("table"):
+                table_of[pre + sb["id"]] = pre + sb["table"]
+            for ss in sb["states"]:
+                row_of[pre + ss["id"]] = ss.get("row")
         for bid, b in blocks.items():
             nb = copy.deepcopy(b)
             nb["id"] = pre + bid
+            if nb.get("beside"):
+                nb["beside"] = {"block": pre + nb["beside"]["block"], "row": nb["beside"]["row"]}
             blocks_all[pre + bid] = {**block_data(nb), "html": block_html(nb),
                                      "_tokens": block_tokens(b)}
         section_marks.append({"id": tag, "title": sec["title"], "pages": pages,
@@ -222,6 +285,21 @@ def build(L: Path, silent: bool, wpm: float = 135.0) -> Path:
                                              gaps["cue_lead_s"])
 
     tokens = {i: b.pop("_tokens") for i, b in blocks_all.items()}
+    # A type cue names the typed part it types (its index in the table's
+    # `typed`, and that part's row and column): the first part with its text
+    # not yet typed on the board, as the narration audit counted them.
+    for bd in boards_out:
+        done: dict[str, list[int]] = {}
+        for s in bd["states"]:
+            for u in s["utterances"]:
+                for c in u["cues"]:
+                    if c["type"] != "type":
+                        continue
+                    typed = blocks_all[c["block"]].get("typed") or []
+                    got = done.setdefault(c["block"], [])
+                    i = next(k for k, ty in enumerate(typed) if ty["text"] == c["text"] and k not in got)
+                    got.append(i)
+                    c.update(typed=i, row=typed[i]["row"], col=typed[i]["col"])
     starts = {bd["id"]: bd["start"] for bd in boards_out}
     n_read = 0
     for bd in boards_out:
@@ -263,6 +341,12 @@ def build(L: Path, silent: bool, wpm: float = 135.0) -> Path:
             s["until"] = s["erase"]["time"] if s["erase"] else bd["until"]
         bd["reveal"] = {p: fixed_rev.get(p, bd["start"])
                         for fid in bd["fixed"] for p in diagram_parts(blocks_all[fid])}
+        # 1.2: a table board's table, each state's row, and the spotlight
+        bd["table"] = table_of.get(bd["id"])
+        for s in bd["states"]:
+            s["row"] = row_of.get(s["id"]) if bd["table"] else None
+        bd["focus"] = (table_focus(bd, blocks_all[bd["table"]], table_cells(blocks_all[bd["table"]]))
+                       if bd["table"] else [])
 
     # Categories and their sections as the contents board shows them
     # (build_lesson_boards.py): sections.json's category list, by section title.

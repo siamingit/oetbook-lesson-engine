@@ -64,6 +64,19 @@ between them, is read by the understanding stage as one span (Grammar 2 page
 stored as the top-level `page_spans` ({page: {from_s, to_s, off_deck: [{from_s,
 to_s, what}], by}}).
 
+Where the maintainer groups slides into sections differently from "consecutive
+equal headings" (Grammar 3: one section per table on slides sharing a heading),
+the grouping is recorded as the top-level `groups` ({pages: [[4, 5], [6], ...],
+by}) and replaces the heading rule. A content page in no group is in no
+section: Grammar 3's page 10 is an identical copy of page 9, folded into it
+(the timeline gives the two one interval; extract_understanding reads it for
+page 9):
+
+    .venv/Scripts/python spike/scripts/build_sections.py <lesson_dir> --groups 4-5,6,7,8,9,11
+
+The lesson title is corrected for the title slide's registered deck defects,
+like a heading.
+
 Every maintainer record survives a full re-run or stops it: titles (--set),
 the description (--description), diagram pages (--diagram-pages), the title
 slide and introduction range (--title-page, --intro-range), accepted
@@ -147,6 +160,29 @@ def slide_text(pdf: Path, page: int) -> str:
                         str(pdf), "-"], capture_output=True, text=True, encoding="utf-8",
                        check=True)
     return r.stdout.replace("\f", "").strip() + "\n"
+
+
+def slide_tables(lesson: Path, page: int) -> list[dict]:
+    """The page's tables that are pasted images with no text layer, as the agent
+    transcribed them (analysis/slide_tables.json; maintainer, 2026-09-25)."""
+    p = lesson / "analysis" / "slide_tables.json"
+    if not p.exists():
+        return []
+    return [t for t in json.loads(p.read_text(encoding="utf-8"))["tables"] if t["page"] == page]
+
+
+def slide_tables_text(lesson: Path, page: int) -> str:
+    """Those tables as text, appended to the page's text layer for the
+    understanding and screens stages. A line break inside a cell is " / "; an
+    empty cell, left for the class to fill, is "(empty)"."""
+    out = []
+    for t in slide_tables(lesson, page):
+        cell = lambda c: c.replace("\n", " / ") if c.strip() else "(empty)"
+        out.append("[table on this slide, a pasted image, transcribed as printed"
+                   + (f"; caption: {t['caption']}" if t.get("caption") else "") + "]")
+        out.append("columns: " + " | ".join(t["header"]))
+        out += [f"row {n}: " + " | ".join(cell(c) for c in r) for n, r in enumerate(t["rows"], 1)]
+    return ("\n" + "\n".join(out) + "\n") if out else ""
 
 
 def correct(h: str, page: int, defects: list[dict]) -> tuple[str, str | None]:
@@ -296,6 +332,21 @@ def main() -> None:
             print(f"page {page}: off deck {a:.0f}-{b:.0f} s: {what}")
         write(out_path, previous)
         return
+    if "--groups" in sys.argv:
+        # The maintainer's grouping of slides into sections, where it differs
+        # from "consecutive equal headings" (Grammar 3, 2026-09-25: pages 4-5
+        # are one section under two headings; 6, 7 and 8 share a heading but
+        # are three sections, one per table). "4-5,6,7,8,9-10,11". The deck is
+        # then re-read below.
+        if not previous:
+            raise SystemExit("run without --groups first")
+        spec = sys.argv[sys.argv.index("--groups") + 1]
+        groups = []
+        for part in spec.split(","):
+            a, _, b = part.partition("-")
+            groups.append(list(range(int(a), int(b or a) + 1)))
+        by = sys.argv[sys.argv.index("--by") + 1] if "--by" in sys.argv else "maintainer"
+        previous["groups"] = {"pages": groups, "by": f"{by} {today}"}
     if "--title-page" in sys.argv:
         # The title slide, named by the maintainer where no contents slide
         # follows it to find it by. It is not a section; the lesson title is
@@ -386,6 +437,7 @@ def main() -> None:
     reg_path = lesson / "analysis" / "deck_defects.json"
     defects = json.loads(reg_path.read_text(encoding="utf-8"))["defects"] if reg_path.exists() else []
     kept = {s["pages"][0]: s for s in previous.get("sections", []) if s.get("status") == "maintainer"}
+    groups = (previous.get("groups") or {}).get("pages")
 
     pages = []
     for i in range(len(doc)):
@@ -402,6 +454,8 @@ def main() -> None:
     if previous.get("lesson", {}).get("page_by"):                  # --title-page
         title_page = pages[previous["lesson"]["page"] - 1]
     lesson_title = ": ".join(title_page["latin"]) if title_page and title_page["latin"] else None
+    if lesson_title:                        # corrected like a heading (docs/00-PRODUCT.md §1)
+        lesson_title = correct(lesson_title, title_page["page"], defects)[0]
     branding = set(pages[0]["latin"])
     if previous.get("lesson", {}).get("status") == "maintainer":
         lesson_title = previous["lesson"]["title"]
@@ -416,7 +470,14 @@ def main() -> None:
         if not h and not p["latin"]:
             if p["page"] in (1, len(pages)):
                 continue                                  # branding pages
-        if h and sections and sections[-1]["heading"] and h.lower() == sections[-1]["heading"].lower() \
+        if groups is not None:
+            if not any(p["page"] in g for g in groups):
+                continue                                  # left out by the maintainer's grouping
+            if sections and p["page"] == sections[-1]["pages"][-1] + 1 \
+                    and any(sections[-1]["pages"][0] in g and p["page"] in g for g in groups):
+                sections[-1]["pages"].append(p["page"])
+                continue
+        elif h and sections and sections[-1]["heading"] and h.lower() == sections[-1]["heading"].lower() \
                 and p["page"] == sections[-1]["pages"][-1] + 1:
             sections[-1]["pages"].append(p["page"])
             continue
@@ -454,6 +515,7 @@ def main() -> None:
                       "description_status": previous.get("lesson", {}).get("description_status")},
            "contents_page": contents_page,
            **({"intro": previous["intro"]} if "intro" in previous else {}),
+           **({"groups": previous["groups"]} if "groups" in previous else {}),
            **({"page_spans": previous["page_spans"]} if "page_spans" in previous else {}),
            "diagram_pages": previous.get("diagram_pages", []),
            "sections": sections}

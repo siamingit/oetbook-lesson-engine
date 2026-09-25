@@ -176,6 +176,22 @@ video frames). Untested.
 
 `UNKNOWN`: what proportion of slides across the library are image slides.
 
+**Tables on image slides — answered for tables, 2026-09-25 (ADR 007).**
+Grammar 3's tables (pages 5-11) are pasted images. The agent transcribes
+each from a 2x render into `analysis/slide_tables.json`, as printed,
+checking cell by cell; the maintainer decided this over showing the image to
+the screens model, because a file can be checked and audited against. The
+transcription is appended to the page's text for the understanding and
+screens stages, and the screens audit compares the board's printed cells
+with it. Other image content (diagrams, pasted sentences) is not covered.
+
+**Identical deck pages.** Grammar 3's pages 9 and 10 render identically, so
+the slide timeline cannot tell them apart and names their one interval after
+one of them (its checks page showed an unresolvable interval, and crashed on
+it until 2026-09-25). A page left out of every section by the maintainer's
+grouping (`build_sections.py --groups`) is folded into its twin, and the
+understanding stage reads the twin's interval as the page's own.
+
 ### Rendering
 
 Published slides can be rendered from Canva exports at any resolution, so
@@ -645,6 +661,14 @@ sentence. Expect this failure on any vocabulary or word-choice page.
 
 Enforced in `write_script.py`'s prompt ("NEVER JUDGE REGISTER") and as QA
 check 8, `register-claim`, reported at `critical`.
+
+The screens and narration audits flag register words by a word list, a
+proxy. Since 2026-09-25 (Grammar 3, whose subject is formal writing) the
+proxy exempts, besides words the slide prints: a word of the section's
+title, and a word of a maintainer ruling on the section's pages when the
+block or utterance is `adapted` with a note, which is how this section says a
+ruling is carried. Before, "formal" failed every block that carried the
+maintainer's ruling that nominalisation makes writing more formal.
 
 ---
 

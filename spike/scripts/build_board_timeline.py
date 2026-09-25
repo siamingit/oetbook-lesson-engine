@@ -23,7 +23,10 @@ Events, all derived:
           before the notes vanish. The next state's speech starts a state
           gap later, on the clean board.
 A pause cue governs the silence after its utterance and never shortens the
-gap it sits in. A reveal or mark fires a cue lead before its word.
+gap it sits in. A reveal or mark fires a cue lead before its word. A type cue
+(a table cell typed live, docs/02-DESIGN-SYSTEM.md §7) starts a cue lead before
+its word and types TYPE_CHAR_S a character, so its `time_end` is when the
+typing ends, not its word's end.
 """
 
 import argparse
@@ -35,6 +38,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paths                                   # noqa: E402
 from write_narration import MARKER, spoken     # noqa: E402
+
+TYPE_CHAR_S = 0.045           # typing speed of a table cell: about 22 characters a second
 
 
 def marker_positions(text_with_cues: str) -> tuple[list[str], dict[str, int]]:
@@ -99,13 +104,16 @@ def lay_timeline(narr: dict, audio_index: dict, utterance_gap: float = 0.4,
                                          "time_end": round(utt_end + seconds, 3)})
                         continue
                     at = utt_start + entry["word_start"][wi] - cue_lead
+                    end = utt_start + entry["word_end"][wi]
+                    if c["type"] == "type":
+                        end = max(0.0, at) + max(0.4, len(c.get("text") or "") * TYPE_CHAR_S)
                     cues_out.append({"id": c["id"], "type": c["type"],
                                      "block": c.get("block"), "text": c.get("text"),
                                      "to_block": c.get("to_block"), "to_text": c.get("to_text"),
                                      "with": c.get("with"),
                                      "word_index": wi, "anchor_word": words[wi],
                                      "time": round(max(0.0, at), 3),
-                                     "time_end": round(utt_start + entry["word_end"][wi], 3)})
+                                     "time_end": round(end, 3)})
                 utts_out.append({"id": u["id"], "text": entry["text"],
                                  "provenance": u["provenance"],
                                  "audio_file": entry["file"],

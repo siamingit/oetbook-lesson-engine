@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Table board prototype: Physical symptoms</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --page:#DCE4EC; --paper:#F7F9FB; --ink:#182433; --muted:#5B6B7C; --line:#CFD9E3;
+  --head:#0F4C63; --headsoft:#E3EEF3; --teacher:#1554C0;
+  --glass:rgba(255,204,51,.26); --glassedge:rgba(214,158,0,.55);
+  --note:#FFF6DA; --noteedge:#E2B43A;
+  --font:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  box-sizing:border-box;
+}
+*,*::before,*::after{box-sizing:inherit}
+html,body{margin:0;height:100%;background:var(--page);font-family:var(--font);color:var(--ink)}
+body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:12px}
+
+/* ---- fixed 16:9 lesson frame, 1280x720 logical ---- */
+#stage{position:relative;width:1280px;height:720px;flex:none}
+#frame{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:0 0;
+  background:var(--paper);border-radius:10px;overflow:hidden;box-shadow:0 6px 24px rgba(15,40,60,.18)}
+#header{height:64px;background:var(--head);color:#fff;display:flex;align-items:center;padding:0 36px;
+  font-size:28px;font-weight:700;letter-spacing:.2px}
+#board{position:relative;width:1280px;height:656px;overflow:hidden}
+#cam{position:absolute;left:0;top:0;width:1280px;height:656px;transform-origin:0 0;
+  transition:transform .75s cubic-bezier(.4,0,.2,1)}
+
+/* ---- the table (core content, never erased) ---- */
+table{position:absolute;left:32px;top:30px;width:1216px;border-collapse:collapse;table-layout:fixed;font-size:19px;line-height:1.3}
+col.c1{width:34%} col.c2{width:22%} col.c3{width:44%}
+th{background:var(--headsoft);color:var(--head);font-weight:700;text-align:left;padding:9px 14px;border:1px solid var(--line)}
+td{vertical-align:top;padding:9px 14px;border:1px solid var(--line);background:#fff;position:relative;
+  transition:opacity .45s, background-color .45s}
+tbody tr:nth-child(even) td{background:#FAFBFC}
+td b{font-weight:700}
+.given{color:var(--ink)}
+.tw{position:relative;display:inline-block}
+.ghost{visibility:hidden}
+.live{position:absolute;left:0;top:0;right:0;color:var(--teacher);white-space:inherit}
+.tw .live{white-space:nowrap}
+.sent{position:relative}
+.typing::after{content:"";display:inline-block;width:2px;height:1.05em;background:var(--teacher);
+  vertical-align:-2px;margin-left:1px;animation:blink .8s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* spotlight */
+tr.dim td{opacity:.3}
+tr.focus td{background:#fff}
+td.active{box-shadow:inset 0 0 0 2px var(--glassedge);background:linear-gradient(var(--glass),var(--glass)),#fff !important}
+
+/* side note: added while talking, erased afterwards */
+#note{position:absolute;max-width:560px;background:var(--note);border:1.5px solid var(--noteedge);border-radius:8px;
+  padding:10px 16px;font-size:18px;line-height:1.35;opacity:0;transform:translateY(6px);
+  transition:opacity .35s, transform .35s;pointer-events:none}
+#note.show{opacity:1;transform:none}
+#note b{color:var(--teacher)}
+
+/* ---- player chrome (outside the lesson frame) ---- */
+#caption{width:min(1280px,96vw);min-height:2.6em;font-size:16px;line-height:1.3;color:var(--ink);text-align:center}
+#controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;font-size:14px}
+button,select{font:inherit;font-size:14px;padding:7px 14px;border-radius:6px;border:1px solid #9FB1C2;background:#fff;color:var(--ink);cursor:pointer}
+button:focus-visible,select:focus-visible{outline:3px solid var(--teacher);outline-offset:2px}
+button.primary{background:var(--head);color:#fff;border-color:var(--head);min-width:88px}
+#counter,#readout{color:var(--muted)}
+#footnote{font-size:12.5px;color:var(--muted);text-align:center;max-width:720px}
+
+@media (prefers-reduced-motion: reduce){
+  #cam,td,#note{transition:none}
+  .typing::after{animation:none}
+}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="frame">
+    <div id="header">Physical symptoms</div>
+    <div id="board"><div id="cam">
+      <table id="tbl">
+        <colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup>
+        <thead><tr><th>Notes</th><th>Formal expression</th><th>Sentence</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div id="note"></div>
+    </div></div>
+  </div>
+</div>
+<div id="caption" aria-live="polite"></div>
+<div id="controls">
+  <button id="prev" aria-label="Previous row">Previous row</button>
+  <button id="play" class="primary">Play</button>
+  <button id="next" aria-label="Next row">Next row</button>
+  <span id="counter"></span>
+  <label>Focus
+    <select id="mode">
+      <option value="auto">Auto (by screen size)</option>
+      <option value="spot">Spotlight only</option>
+      <option value="zoom">Spotlight + zoom</option>
+    </select>
+  </label>
+  <span id="readout"></span>
+</div>
+<div id="footnote">Sample answers and narration for the prototype only. In the real lesson they come from the original recording. The caption line stands in for the voice.</div>
+
+<script>
+const ROWS = [
+ {notes:"No fever, no cough, no runny nose", expr:[{g:"Asymptomatic",t:""}],
+  sent:"The patient was asymptomatic.",
+  note:"<b>a-</b> means “without”: asymptomatic = without symptoms",
+  say:["The first note says: no fever, no cough, no runny nose.","One formal word covers all three: asymptomatic.","So in the letter we write: The patient was asymptomatic.","The prefix a- means without. Asymptomatic means without symptoms."]},
+ {notes:"No fever<br>No temp", expr:[{g:"",t:"Afebrile"}],
+  sent:"She remained afebrile.",
+  note:"<b>afebrile</b> = without a fever",
+  say:["Next: no fever, no temperature.","The formal word is afebrile.","We write: She remained afebrile.","Afebrile simply means without a fever."]},
+ {notes:"Symptoms suggest acute colonic pseudo-obstruction", expr:[{g:"suggest → ",t:"suggestive of"}],
+  sent:"His symptoms are suggestive of acute colonic pseudo-obstruction.",
+  note:"verb → adjective: <b>suggest</b> → <b>suggestive of</b>",
+  say:["Now: symptoms suggest acute colonic pseudo-obstruction.","We change the verb suggest into suggestive of.","His symptoms are suggestive of acute colonic pseudo-obstruction.","A verb becomes an adjective. It sounds more formal."]},
+ {notes:"<b>Subjective</b><br>Tooth 26 → sensitive to hot and cold<br>“not too serious”",
+  expr:[{g:"Sensitive → ",t:"sensitivity"},{g:"Not too serious → ",t:"mild"}],
+  sent:"She reported mild sensitivity to hot and cold in tooth 26.",
+  note:"adjective → noun: <b>sensitive</b> → <b>sensitivity</b>",
+  say:["This note is subjective. It is what the patient told the dentist.","Sensitive becomes the noun sensitivity. Not too serious becomes mild.","She reported mild sensitivity to hot and cold in tooth 26.","Here an adjective becomes a noun: sensitive, sensitivity."]},
+ {notes:"12/05/20 Tooth 26 <u>permanently restored</u>", expr:[{g:"",t:"permanent restoration"}],
+  sent:"Tooth 26 received a permanent restoration on 12 May 2020.",
+  note:"verb → noun: <b>restored</b> → <b>restoration</b>",
+  say:["Next: on the twelfth of May, tooth 26 was permanently restored.","The verb restored becomes the noun restoration.","Tooth 26 received a permanent restoration on 12 May 2020.","Restored is a verb. Restoration is its noun."]},
+ {notes:"Mr Z c/o osteoarthritis in both knees for many years.<br>R more than L.", expr:[{g:"",t:"long-standing history of"}],
+  sent:"Mr Z has a long-standing history of osteoarthritis in both knees, worse on the right.",
+  note:"<b>long-standing</b> = lasting a long time",
+  say:["Mr Z complains of osteoarthritis in both knees, for many years. The right is worse than the left.","For many years, we can say: a long-standing history of.","Mr Z has a long-standing history of osteoarthritis in both knees, worse on the right.","Long-standing is a useful word. It means lasting a long time."]},
+ {notes:"Patient complained of “breaking wind” last 3 days.", expr:[{g:"Breaking wind → ",t:"flatulence"}],
+  sent:"The patient has reported flatulence over the past three days.",
+  note:"informal → formal: <b>breaking wind</b> → <b>flatulence</b>",
+  say:["The last note: the patient complained of breaking wind for three days.","Breaking wind is informal. The formal word is flatulence.","The patient has reported flatulence over the past three days.","In a letter, always choose the formal word."]}
+];
+
+const N = ROWS.length, BW = 1280, BH = 656, BASE_FONT = 19, MIN_READABLE = 14;
+const $ = s => document.querySelector(s);
+const tbody = $("#tbl tbody"), cam = $("#cam"), note = $("#note"), caption = $("#caption");
+const tbl = $("#tbl");
+
+// ---- build rows; ghosts reserve final size so the table never reflows ----
+ROWS.forEach((r,i)=>{
+  const tr = document.createElement("tr");
+  const exprHtml = r.expr.map((e,k)=>`<div>${e.g?`<span class="given">${e.g}</span>`:""}${e.t?`<span class="tw"><span class="ghost">${e.t}</span><span class="live" data-k="${k}"></span></span>`:""}</div>`).join("");
+  tr.innerHTML = `<td>${r.notes}</td><td>${exprHtml}</td><td><div class="sent"><span class="ghost">${r.sent}</span><span class="live"></span></div></td>`;
+  tbody.appendChild(tr);
+});
+const rowEl = i => tbody.rows[i];
+const cellEl = (i,c) => rowEl(i).cells[c];
+
+// ---- geometry in board coordinates (offsets ignore transforms) ----
+function rectOf(el){
+  if (el.tagName === "TD") return {x:tbl.offsetLeft+el.offsetLeft, y:tbl.offsetTop+el.offsetTop, w:el.offsetWidth, h:el.offsetHeight};
+  return {x:el.offsetLeft, y:el.offsetTop, w:el.offsetWidth, h:el.offsetHeight};
+}
+function union(a,b){const x=Math.min(a.x,b.x),y=Math.min(a.y,b.y);return {x,y,w:Math.max(a.x+a.w,b.x+b.w)-x,h:Math.max(a.y+a.h,b.y+b.h)-y}}
+
+// ---- frame scaling and the auto zoom rule ----
+let frameScale = 1, mode = "auto", lastFocus = null;
+function fit(){
+  const availW = Math.min(window.innerWidth-24, 1280), availH = window.innerHeight - 170;
+  frameScale = Math.max(.2, Math.min(availW/1280, availH/720));
+  const st = $("#stage"); st.style.width = 1280*frameScale+"px"; st.style.height = 720*frameScale+"px";
+  $("#frame").style.transform = `scale(${frameScale})`;
+  $("#caption").style.width = Math.max(320,1280*frameScale)+"px";
+  const eff = BASE_FONT*frameScale;
+  $("#readout").textContent = `Table text here: ${eff.toFixed(1)}px${mode==="auto" ? (eff<MIN_READABLE?" → zoom on":" → zoom off") : ""}`;
+  if (lastFocus) applyFocus(lastFocus.i, lastFocus.part); else camera(null);
+}
+const zoomOn = () => mode==="zoom" || (mode==="auto" && BASE_FONT*frameScale < MIN_READABLE);
+
+function camera(r){
+  if (!r || !zoomOn()){ cam.style.transform = "none"; return; }
+  // enough zoom that text reaches a readable size, never so much the cell overflows
+  const want = Math.max(1, MIN_READABLE*1.15/(BASE_FONT*frameScale));
+  const s = Math.max(1, Math.min(want, 1.9, BW*.92/r.w, BH*.8/r.h));
+  let tx = BW/2 - (r.x + r.w/2)*s, ty = BH/2 - (r.y + r.h/2)*s;
+  tx = Math.min(0, Math.max(BW - BW*s, tx)); ty = Math.min(0, Math.max(BH - BH*s, ty));
+  cam.style.transform = `translate(${tx}px,${ty}px) scale(${s})`;
+}
+
+function applyFocus(i, part){
+  lastFocus = {i, part};
+  [...tbody.rows].forEach((tr,k)=>{ tr.classList.toggle("dim", k!==i); tr.classList.toggle("focus", k===i); });
+  document.querySelectorAll("td.active").forEach(td=>td.classList.remove("active"));
+  let r;
+  if (part==="notes"){ cellEl(i,0).classList.add("active"); r = rectOf(cellEl(i,0)); }
+  else if (part==="expr"){ cellEl(i,1).classList.add("active"); r = rectOf(cellEl(i,1)); }
+  else if (part==="sent"){ cellEl(i,2).classList.add("active"); r = rectOf(cellEl(i,2)); }
+  else if (part==="note"){ r = union(union(rectOf(cellEl(i,1)), rectOf(cellEl(i,2))), rectOf(note)); }
+  camera(r);
+}
+function overview(){
+  lastFocus = null;
+  [...tbody.rows].forEach(tr=>tr.classList.remove("dim","focus"));
+  document.querySelectorAll("td.active").forEach(td=>td.classList.remove("active"));
+  camera(null);
+}
+
+function placeNote(i){
+  note.innerHTML = ROWS[i].note;
+  const row = union(rectOf(cellEl(i,0)), rectOf(cellEl(i,2)));
+  const ex = rectOf(cellEl(i,1));
+  note.style.left = ex.x + "px";
+  let y = row.y + row.h + 10;
+  if (y + note.offsetHeight > BH - 12) y = row.y - note.offsetHeight - 10;
+  note.style.top = y + "px";
+}
+
+// ---- timing ----
+let runId = 0, playing = false, cur = 0;
+class Cancel extends Error {}
+const sleep = (ms,id) => new Promise((res,rej)=>setTimeout(()=> id===runId ? res() : rej(new Cancel()), ms));
+function say(text){ caption.textContent = text; const w = text.split(/\s+/).length; return Math.max(1300, w/155*60000 + 450); }
+async function typeInto(el, text, id){
+  el.classList.add("typing");
+  try { for (const ch of text){ el.textContent += ch; await sleep(42,id); } }
+  finally { el.classList.remove("typing"); }
+}
+function fillRow(i, full){
+  const r = ROWS[i], tr = rowEl(i);
+  tr.cells[1].querySelectorAll(".live").forEach(el=>{ el.textContent = full ? r.expr[+el.dataset.k].t : ""; el.classList.remove("typing"); });
+  const s = tr.cells[2].querySelector(".live"); s.textContent = full ? r.sent : ""; s.classList.remove("typing");
+}
+
+async function playRow(i, id){
+  const r = ROWS[i];
+  applyFocus(i,"notes"); await sleep(say(r.say[0]), id);
+  applyFocus(i,"expr");
+  const t1 = sleep(say(r.say[1]), id);
+  for (const el of cellEl(i,1).querySelectorAll(".live")) await typeInto(el, r.expr[+el.dataset.k].t, id);
+  await t1;
+  applyFocus(i,"sent");
+  const t2 = sleep(say(r.say[2]), id);
+  await typeInto(cellEl(i,2).querySelector(".live"), r.sent, id);
+  await t2;
+  placeNote(i); note.classList.add("show"); applyFocus(i,"note");
+  await sleep(say(r.say[3]), id);
+  note.classList.remove("show"); caption.textContent = "";
+  await sleep(500, id);
+  overview(); await sleep(1300, id);
+}
+
+function resetTo(i){
+  note.classList.remove("show"); caption.textContent = ""; overview();
+  for (let k=0;k<N;k++) fillRow(k, k<i);
+  cur = i; updateUi();
+}
+function updateUi(){
+  $("#counter").textContent = cur>=N ? "All rows done" : `Row ${cur+1} of ${N}`;
+  $("#play").textContent = playing ? "Pause" : (cur>=N ? "Replay" : "Play");
+  $("#prev").disabled = cur<=0; $("#next").disabled = cur>=N;
+}
+async function play(){
+  if (cur>=N) resetTo(0);
+  playing = true; const id = ++runId; updateUi();
+  try{
+    for (; cur<N; cur++){ updateUi(); await playRow(cur, id); }
+    playing = false; updateUi();
+  } catch(e){ if (!(e instanceof Cancel)) throw e; }
+}
+function stop(){ runId++; playing = false; }
+$("#play").onclick = () => { if (playing){ stop(); resetTo(cur); } else play(); };
+$("#next").onclick = () => { const was = playing; stop(); resetTo(Math.min(N, cur+1)); if (was && cur<N) play(); };
+$("#prev").onclick = () => { const was = playing; stop(); resetTo(Math.max(0, cur-1)); if (was) play(); };
+$("#mode").onchange = e => { mode = e.target.value; fit(); };
+window.addEventListener("resize", fit);
+document.fonts?.ready.then(fit);
+fit(); resetTo(0);
+</script>
+</body>
+</html>

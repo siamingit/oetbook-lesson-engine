@@ -289,6 +289,11 @@ def payload(lesson: Path, pages: list[int]) -> dict:
                     marks.append(m)
                 if reveals:
                     item["reveals"] = reveals
+                # a table board's answers, typed into their cells as this is said
+                # (ADR 007); before it they are not on screen
+                typed = [c.get("text") for c in u["cues"] if c["type"] == "type"]
+                if typed:
+                    item["types_into_table"] = typed
                 if marks:
                     item["marks"] = marks
                 if u["provenance"] == "maintainer":

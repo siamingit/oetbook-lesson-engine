@@ -196,11 +196,13 @@ its callout. At most ten parts, at most three callouts.
   callout     `kind` "warning" (red "!" badge on an amber tint) for a trap that \
 costs marks, or "key_rule" (blue "i" badge on a blue tint) for the rule to \
 remember. `text` is one or two short sentences.
-  table       a tense table: `header` cells and `rows` of cells. Each header \
-cell may carry its own family, written "family:label" ("past:Past"), which \
-colours that column's header; otherwise the block's `family` colours the \
-whole header row. Small: at most four columns and five rows, and each cell \
-short enough to read at phone width (a verb form, not a sentence).
+  table       a table: `header` cells and `rows` of cells. On a tense table \
+each header cell may carry its own family, written "family:label" \
+("past:Past"), which colours that column's header; otherwise the block's \
+`family` colours the whole header row, and a table that is not about tenses \
+has no family. A table in the WORKING layer is small: at most four columns \
+and five rows, each cell a verb form or a few words. A table that IS the \
+slide - the slide's own table - is the fixed layer, whole: see TABLE BOARDS.
 
 TENSE FAMILY COLOURS, the same in every lesson. Colour follows where the time \
 reference sits, not the tense name:
@@ -251,6 +253,44 @@ with a first column "Tense" and no family); rows simple / continuous / perfect \
 "had smoked", "had been smoking"). It is a quick overview of every tense; the \
 detail - the examples, the diagrams - follows on the boards after it. Never \
 split that table across boards.
+
+TABLE BOARDS - a table is core content (maintainer, 2026-09-25). When a \
+slide's content is a table, that table is the fixed layer of ONE board, WHOLE: \
+every row, never split by row or by meaning, whatever its size. The player \
+teaches it row by row: the row being discussed is at full strength and the \
+others are dimmed, the cell being discussed is highlighted, and the camera \
+zooms onto the cell on a small screen. You write:
+  - the table block, `anchor: true`: `header` and `rows` as on the slide. The \
+printed cells are the TABLE ON THIS SLIDE given with the slide text, copied \
+EXACTLY (only registered deck defects corrected, and a header in sentence \
+case); a line break inside a cell is written " / ". A cell the class fills in \
+is not left empty: write in it what the teacher wrote there in the recording, \
+from the beats, wrapped in double square brackets - [[The patient was \
+asymptomatic.]] - which the student sees TYPED INTO THE CELL LIVE as the \
+narration reaches it. Where the slide prints the start of a cell ("suggest \
+→"), keep the printed part and add the typed part after it: "suggest → \
+[[suggestive of]]". Where the slide prints a sentence with gaps ("The \
+patient ______ diet until her ______."), write the sentence with each gap \
+typed: "The patient [[followed a gluten-free]] diet until her [[symptoms \
+resolved]]." Typed text begins and ends at word boundaries. It is ONLY what \
+the teacher put in that cell as the answer: never invented, never tidied \
+beyond correcting a real error (a typo, a wrong form - record it under \
+`corrections`). An alternative answer the teacher gave goes in the same cell \
+after " / ", also typed. Several typed parts in one cell are typed in order.
+  - one or more THOUGHTS PER ROW, in row order, each `purpose` starting \
+"Row N: " (N counts from 1, the first row under the header). What the \
+teacher says before the first row, about the whole table, is a thought whose \
+purpose starts "Table: ". The layout gives each row its own state: the row \
+comes into focus, its notes appear, and when the row is done its notes are \
+erased and the whole table shows again.
+  - SIDE NOTES: the working blocks of a row's thought - a gloss, a word-form \
+change ("Restored is a verb. Restoration is its noun."), a term, an \
+alternative - drawn BESIDE that row, over the dimmed rows, and erased when \
+the next thought or row begins. At most TWO per thought, and short: a side \
+note never repeats the table's text, it adds to it. The answer itself is in \
+the cell, never a separate answer row.
+Everything else on the slide is taught through the table: a table board has \
+no other fixed block.
 
 Every graphic element carries meaning. Green always means correct, red always \
 means wrong, blue always means a term, a rule or teacher emphasis, a family \
@@ -354,7 +394,9 @@ that was rejected and nothing more. Never extend a rejected fragment into a \
 full sentence the source never contained.
 
 PROSE, NOT SHORTHAND. Screen text is sentences an elementary student reads. \
-Never board shorthand: no "=" or "+" formulas, no "x -> y" notes. A rule is a \
+Never board shorthand: no "=" or "+" formulas, no "x -> y" notes (a slide's \
+printed table cells are case notes and keep their shorthand exactly; this rule \
+is for what you write). A rule is a \
 sentence; a form is named in words. A comparison's two sides may be short \
 phrases, but each must read on its own.
 
@@ -372,8 +414,9 @@ topic per item, with everything about that item - spotting the fault, the \
 explanation, every accepted answer, the rule drawn from it - in that topic;
   - OVERSIZED FIXED CONTENT: a board's fixed layer must leave room for notes: \
 about 45% of the frame at most, which is roughly four short rows or eight \
-lines of body text. When a slide's own content is more than that (a full tense \
-table, a usage slide with three tenses' examples), split it into topics BY \
+lines of body text. When a slide's own content is more than that (a usage \
+slide with three tenses' examples; never a table, which stays whole: TABLE \
+BOARDS), split it into topics BY \
 MEANING (past / present / future; one tense per part), never by beat, each \
 part's fixed layer within that size, and begin each part's `title` with \
 "Split: " followed by what part of the slide it carries. A split has as few \
@@ -475,7 +518,8 @@ null. A timeline item is one string: "arrow|label|family|from|to", \
 above the line), "period|label|family|from|to", "point|label|family|at" or \
 "now|label|at", with from, to and at numbers on the 0-100 axis. A table \
 `header` is one string of cells separated by "|", a cell optionally prefixed \
-"family:" to colour its column; each entry of `rows` is one such string. \
+"family:" to colour its column; each entry of `rows` is one such string, typed \
+text inside [[ ]] (see TABLE BOARDS). \
 `icon` is a concept from the icon list, only on a term_box for a clinical \
 object or procedure, or null. `tags` is a list of \
 "phrase|family" strings for tense tags, or null. `exercise_item` is the item \
@@ -591,6 +635,33 @@ def unflatten(topics: list[dict]) -> None:
                 if isinstance(b.get("rows"), list):
                     b["rows"] = [[c.strip() for c in r.split("|")] if isinstance(r, str) else r
                                  for r in b["rows"]]
+                    untype_rows(b)
+
+
+TYPED = re.compile(r"\[\[(.*?)\]\]")
+
+
+def untype_rows(b: dict) -> None:
+    """A table cell's text typed live (TABLE BOARDS, [[...]] in the model's
+    rows) becomes plain text in `rows` and an entry in `typed`: its row and
+    column (from 0), where it starts in the cell's text, and the text. The
+    cell's text is therefore always its final text, and the player hides each
+    typed part until its `type` cue. A table with nothing typed gets no
+    `typed` field, so older tables are unchanged."""
+    typed = []
+    for r, row in enumerate(b["rows"]):
+        for c, cell in enumerate(row):
+            if "[[" not in cell:
+                continue
+            out, pos = "", 0
+            for m in TYPED.finditer(cell):
+                out += cell[pos:m.start()]
+                typed.append({"row": r, "col": c, "start": len(out), "text": m.group(1)})
+                out += m.group(1)
+                pos = m.end()
+            row[c] = out + cell[pos:]
+    if typed:
+        b["typed"] = typed
 
 
 BLOCK_SCHEMA = {
@@ -869,8 +940,10 @@ def gather(lesson: Path, pages: list[int]) -> dict:
     import pypdfium2 as pdfium
     from build_sections import slide_text as read_slide_text
     doc = pdfium.PdfDocument(str(lesson / "source" / "slides.pdf"))
+    from build_sections import slide_tables_text
+    # an image table's transcription stands in for its missing text layer
     slide_texts = {page: read_slide_text(lesson / "source" / "slides.pdf", page)
-                   for page in pages}
+                   + slide_tables_text(lesson, page) for page in pages}
     slide_text = "\n".join((f"[slide {p}]\n" if len(pages) > 1 else "") + t
                            for p, t in slide_texts.items())
 
@@ -1120,6 +1193,8 @@ def block_height(b: dict) -> float:
     elif t == "timeline":
         g = diagram_geometry(b)
         h = g["height"] / 100 + (LABEL_LINE if b.get("label") else 0)
+    elif t == "table" and b.get("core"):
+        return table_height(b, b["font"] / 100)
     elif t == "table":
         h = (1 + len(b.get("rows") or [])) * LINE * 1.15
     else:
@@ -1127,6 +1202,114 @@ def block_height(b: dict) -> float:
     if b.get("tags"):
         h += TAG_ROW                # a tagged line grows to hold its chips
     return h + PAD_V
+
+
+# A table board (docs/02-DESIGN-SYSTEM.md §7, "Tables"; maintainer 2026-09-25):
+# the whole table is the fixed layer, at a table text size that fits the
+# content band. The size starts at the reference prototype's (19 px in a 720 px
+# frame) and steps down to a floor; the player zooms onto the active cell
+# when the size on screen is under 14 px, so a small size is still read.
+TABLE_TEXT = 0.026             # share of frame height
+TABLE_TEXT_MIN = 0.019
+TABLE_LINE = 1.3
+TABLE_PAD_V = 0.016            # a cell's padding, top and bottom
+TABLE_WIDTH = 0.9 * 16 / 9     # the content band's width, in frame heights
+ROW_PURPOSE = re.compile(r"^\s*row\s+(\d+)\s*:", re.I)
+TABLE_PURPOSE = re.compile(r"^\s*table\s*:", re.I)
+MAX_SIDE_NOTES = 2             # beside a row, per thought
+
+
+def cell_lines(b: dict) -> list[list[str]]:
+    """Header and rows, each cell as its lines (" / " is a line break)."""
+    return [[c.split(" / ") for c in r] for r in [b.get("header") or []] + (b.get("rows") or [])]
+
+
+def table_col_widths(b: dict) -> list[int]:
+    """Column shares in per cent, from how much each column holds: the mean
+    length of its cells, never under 15% of the width."""
+    rows = cell_lines(b)
+    n = max(len(r) for r in rows) or 1
+    w = []
+    for c in range(n):
+        cells = [" ".join(r[c]) for r in rows[1:] if c < len(r)]
+        head = len(" ".join(rows[0][c])) if c < len(rows[0]) else 0
+        w.append(max(10.0, head + 2, sum(len(x) for x in cells) / max(1, len(cells))))
+    shares = [max(0.15, x / sum(w)) for x in w]
+    pct = [round(100 * x / sum(shares)) for x in shares]
+    pct[-1] += 100 - sum(pct)
+    return pct
+
+
+def table_height(b: dict, text: float) -> float:
+    """Share of frame height of a whole table at text size `text`."""
+    widths = b.get("col_widths") or table_col_widths(b)
+    total = 0.0
+    for r in cell_lines(b):
+        lines = 1
+        for c, cell in enumerate(r):
+            cpl = max(8, int(TABLE_WIDTH * widths[c] / 100 / (0.5 * text)) - 3)
+            lines = max(lines, sum(wrapped_lines(l, cpl) for l in cell))
+        total += lines * text * TABLE_LINE + TABLE_PAD_V
+    return total
+
+
+def fit_table(b: dict) -> bool:
+    """Make `b` a core table: its column widths, and the largest table text
+    size, in hundredths of frame height, at which the whole table fits the
+    content band. False when it does not fit even at the floor."""
+    b["core"] = True
+    b["col_widths"] = table_col_widths(b)
+    text = TABLE_TEXT
+    while table_height(b, text) > HARD_LIMIT - PAD_V and text > TABLE_TEXT_MIN + 1e-9:
+        text = round(text - 0.001, 3)
+    b["font"] = round(text * 100, 1)
+    return table_height(b, text) <= HARD_LIMIT - PAD_V
+
+
+def is_table_topic(t: dict, b: dict) -> bool:
+    """A topic taught as a table board: its fixed table has typed cells, or its
+    thoughts go row by row."""
+    return b["type"] == "table" and (bool(b.get("typed")) or any(
+        ROW_PURPOSE.match(h.get("purpose") or "") for h in t["thoughts"]))
+
+
+def lay_out_table(t: dict, fixed: list[str], table: dict, blocks: dict,
+                  section_title: str) -> dict:
+    """A table board: one state per row, in the order the thoughts take the
+    rows; within a row, a thought with side notes erases the notes of the
+    thought before. Side notes are drawn beside their row (`beside`), over
+    the dimmed rows, so they take no space of their own."""
+    fits = fit_table(table)
+    fixed_h = stack_height(fixed, blocks)
+    states: list[dict] = []
+    erasures: list[dict] = []
+    cur = None
+    for h in t["thoughts"]:
+        m = ROW_PURPOSE.match(h.get("purpose") or "")
+        row = int(m.group(1)) - 1 if m else None
+        notes = [b["id"] for b in h["blocks"] if b["id"] not in fixed]
+        if cur is None or row != cur["row"] or (notes and cur["working"]):
+            if cur is not None:
+                erasures.append({"after_thought": cur["thoughts"][-1], "before_thought": h["id"]})
+            cur = {"thoughts": [], "working": [], "row": row}
+            states.append(cur)
+        cur["thoughts"].append(h["id"])
+        cur["working"] += notes
+        for i in notes:
+            blocks[i]["beside"] = {"block": table["id"], "row": row}
+    if not states:
+        states = [{"thoughts": [], "working": [], "row": None}]
+    for n, s in enumerate(states, 1):
+        s["id"] = f"{t['id']}.s{n}"
+        s["notes"] = len(s["working"])
+        s["height"] = round(fixed_h, 3)
+        s["fill"] = round(fixed_h / CONTENT_BAND, 3)
+    for e, s in zip(erasures, states):
+        e["fill_before"] = s["fill"]
+        e["notes_before"] = s["notes"]
+    return {"id": t["id"], "topic": t["id"], "title": section_title, "label": t["title"],
+            "fixed": fixed, "fixed_height": round(fixed_h, 3), "table": table["id"],
+            "table_fits": fits, "states": states, "erasures": erasures}
 
 
 TIMELINE_HEIGHT = 0.17         # axis, bars, points and two rows of labels
@@ -1281,9 +1464,59 @@ def merge_unjustified_splits(topics: list[dict], blocks: dict, pages: list[int])
     return merges
 
 
+def one_board_per_slide(topics: list[dict], blocks: dict, pages: list[int]) -> list[dict]:
+    """One board per slide (docs/02-DESIGN-SYSTEM.md §2), completed by the
+    layout where the model wrote more topics for a slide than it may, as the
+    summary-table rule already does. Exercise slides and declared splits keep
+    their own rules. On a table slide every other topic of the slide is taught
+    through the table (§7, "Tables"): its thoughts join the table board as
+    "Table: " thoughts, anchors cleared. On any other slide the topics merge
+    when their fixed layers fit together as one. Ids are untouched; each merge
+    is recorded and reported."""
+    has_item = lambda t: any(b.get("exercise_item") is not None
+                             for h in t["thoughts"] for b in h["blocks"])
+    records = []
+    by_slide: dict[int, list[dict]] = {}
+    for t in topics:
+        by_slide.setdefault(topic_slide(t, pages), []).append(t)
+    for slide, ts in by_slide.items():
+        ts = [t for t in ts if not has_item(t)
+              and not t["title"].lower().startswith("split:")]
+        if len(ts) < 2:
+            continue
+        table_t = next((t for t in ts if any(b["anchor"] and is_table_topic(t, b)
+                                             for h in t["thoughts"] for b in h["blocks"])), None)
+        if table_t is None:
+            union, _ = fixed_union(ts)
+            if stack_height(union, blocks) > FIXED_ROOM_LIMIT:
+                continue                       # genuinely oversized: the audit decides
+        host = table_t or ts[0]
+        thoughts = []
+        for t in ts:
+            if t is host:
+                thoughts += t["thoughts"]
+                continue
+            for h in t["thoughts"]:
+                if table_t is not None:
+                    for b in h["blocks"]:
+                        b["anchor"] = False
+                    if not (ROW_PURPOSE.match(h.get("purpose") or "")
+                            or TABLE_PURPOSE.match(h.get("purpose") or "")):
+                        h["purpose"] = "Table: " + (h.get("purpose") or "")
+                thoughts.append(h)
+            host["from_beats"] = list(dict.fromkeys(host["from_beats"] + t["from_beats"]))
+            topics.remove(t)
+            records.append({"slide": slide, "into": host["id"], "topic": t["id"],
+                            "title": t["title"], "table": table_t is not None})
+        host["thoughts"] = thoughts
+    return records
+
+
 def is_summary_table(b: dict) -> bool:
+    """A tense summary table (Verb tenses, slides 5-6). A table whose cells are
+    typed live is a slide's exercise table, taught as a table board."""
     return (b["type"] == "table" and len(b.get("header") or []) >= 3
-            and len(b.get("rows") or []) >= 4)
+            and len(b.get("rows") or []) >= 4 and not b.get("typed"))
 
 
 def summary_table_layout(topics: list[dict], blocks: dict, pages: list[int]) -> dict:
@@ -1334,6 +1567,10 @@ def lay_out(topics: list[dict], blocks: dict, section_title: str) -> list[dict]:
     boards: list[dict] = []
     for t in topics:
         fixed = fixed_layer(t)
+        table = next((blocks[i] for i in fixed if is_table_topic(t, blocks[i])), None)
+        if table is not None:
+            boards.append(lay_out_table(t, fixed, table, blocks, section_title))
+            continue
         fixed_h = stack_height(fixed, blocks)
         states: list[dict] = [{"thoughts": [], "working": []}]
         erasures: list[dict] = []
@@ -1472,7 +1709,7 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                           "cards, timelines and table headers")
         if b.get("family") and b["family"] not in FAMILIES:
             fail(b["id"], f"unknown family {b['family']!r}")
-        if t == "table" and not b.get("family") and not b.get("col_families"):
+        if t == "table" and not b.get("family") and not b.get("col_families")                 and not b.get("core"):
             warn(b["id"], "table with no family colour on its header")
         if b.get("icon") and b["icon"] not in ICONS:
             fail(b["id"], f"icon {b['icon']!r} is not in the catalogue")
@@ -1557,10 +1794,21 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                                       "to the other side or to another diagram")
         if t == "table":
             hdr = b.get("header") or []
-            if len(hdr) > 4 or len(b.get("rows") or []) > 5:
+            if not b.get("core") and (len(hdr) > 4 or len(b.get("rows") or []) > 5):
                 fail(b["id"], "table larger than four columns by five rows")
             if any(len(r) != len(hdr) for r in (b.get("rows") or [])):
                 fail(b["id"], "table rows do not match the header width")
+            if b.get("typed") and not b.get("core"):
+                fail(b["id"], "typed cells in a table that is not a table board's fixed layer")
+            for ty in b.get("typed") or []:
+                cell = b["rows"][ty["row"]][ty["col"]]
+                a, z = ty["start"], ty["start"] + len(ty["text"])
+                if not ty["text"].strip():
+                    fail(b["id"], f"empty typed text in row {ty['row'] + 1}")
+                elif (a > 0 and not cell[a - 1].isspace()) or \
+                        (z < len(cell) and cell[z].isalnum()):
+                    fail(b["id"], f"typed text {ty['text']!r} does not begin and end at word "
+                                  "boundaries")
         if b.get("exercise_item") is not None:
             if t != "error_row":
                 fail(b["id"], "exercise_item set on a block that is not an error_row")
@@ -1619,8 +1867,17 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                 # A register word that the slide itself prints is content being
                 # taught (a signal-words table lists "rarely"), not a claim.
                 slide_words = set(re.findall(r"[a-z]+", data["slide_text"].lower()))
+                # ...and so is a word of the section's title ("Formal time-related
+                # expressions"). A block carrying a maintainer ruling that makes
+                # the register point is `adapted` with a note (methodology §17b):
+                # the ruling's own words are then allowed in it.
+                slide_words |= set(re.findall(r"[a-z]+", out["section"]["title"].lower()))
+                ruled = set(re.findall(r"[a-z]+", " ".join(
+                    r["decision"] for r in data["ledger"]).lower()))
                 for m in REGISTER_WORDS.finditer(text):
                     if m.group(0).lower() in slide_words:
+                        continue
+                    if b["provenance"] == "adapted" and b.get("note")                             and m.group(0).lower() in ruled:
                         continue
                     fail(b["id"], f"register claim? {m.group(0)!r} in {text!r} "
                                   "(not a maintainer block)")
@@ -1676,6 +1933,11 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
         warn("boards", f"slide {m['slide']}: the model split it into {len(m['parts'])} boards "
                        f"({', '.join(m['parts'])}) whose fixed content fits together "
                        f"({m['fixed_total']:.0%} of the frame); merged back into one board")
+    for m in out.get("merged_topics", []):
+        warn("boards", f"slide {m['slide']}: the model's board {m['title']!r} was merged into "
+                       f"board {m['into']}" + (" as thoughts about the whole table (a table "
+                                               "board teaches its slide through the table)"
+                                               if m["table"] else " (one board per slide)"))
     stl = out.get("summary_table_layout") or {}
     if stl.get("absorbed"):
         warn("boards", "summary-table rule applied by the layout: the model's boards "
@@ -1738,8 +2000,7 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
     # 5b. a summary table opens its section, whole, on one board, condensed
     # (docs/02-DESIGN-SYSTEM.md §7 "Tables"; maintainer 2026-09-24). A summary
     # table is one of three or more columns and four or more rows.
-    summary_tables = [b for b in blocks.values() if b["type"] == "table"
-                      and len(b.get("header") or []) >= 3 and len(b.get("rows") or []) >= 4]
+    summary_tables = [b for b in blocks.values() if is_summary_table(b)]
     if summary_tables and out["boards"]:
         first = out["boards"][0]
         if not any(b["id"] in first["fixed"] for b in summary_tables):
@@ -1751,7 +2012,8 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             if longest > 24:          # "will have been smoking" is 22
                 warn(b["id"], f"summary table cell of {longest} characters; condensed "
                               "means the verb form only, so every cell reads at phone width")
-        if len([b for b in blocks.values() if b["type"] == "table"]) > len(summary_tables):
+        if len([b for b in blocks.values()
+                if b["type"] == "table" and not b.get("core")]) > len(summary_tables):
             warn("boards", "the section has a summary table and other tables; the summary "
                            "table is never split across boards")
 
@@ -1795,6 +2057,8 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
     # hard limit is the content band itself"), and its states are held to the
     # band by the density check.
     for bd in out["boards"]:
+        if bd.get("table"):
+            continue                 # a table board: 7c below
         if not bd["fixed"]:
             warn(bd["id"], "no fixed layer: nothing stays on the board for the topic")
         elif bd["id"] in intro_topics and FIXED_ROOM_LIMIT < bd["fixed_height"] <= CONTENT_BAND:
@@ -1807,6 +2071,72 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
         elif bd["fixed_height"] > BUDGET / 2:
             warn(bd["id"], f"fixed layer takes {bd['fixed_height']:.0%} of the frame; "
                            "the working layer will erase often")
+
+    # 7c. a table board (docs/02-DESIGN-SYSTEM.md §7, "Tables"; maintainer
+    # 2026-09-25): the whole table, taught row by row, its printed cells as the
+    # slide prints them, its side notes short and beside their row.
+    for bd in out["boards"]:
+        if not bd.get("table"):
+            continue
+        tb = blocks[bd["table"]]
+        topic = next(t for t in out["topics"] if t["id"] == bd["topic"])
+        nrows = len(tb.get("rows") or [])
+        if not bd.get("table_fits"):
+            fail(bd["id"], f"the whole table does not fit the frame even at the smallest table "
+                           f"text ({TABLE_TEXT_MIN:.1%} of the frame's height); a table is "
+                           "never split, so its cells must be shorter")
+        others = [i for i in bd["fixed"] if i != tb["id"]]
+        if others:
+            warn(bd["id"], f"a table board has other fixed blocks {others}; everything else "
+                           "is taught through the table")
+        taught = set()
+        for h in topic["thoughts"]:
+            m = ROW_PURPOSE.match(h.get("purpose") or "")
+            if m:
+                taught.add(int(m.group(1)))
+                if not 1 <= int(m.group(1)) <= nrows:
+                    fail(h["id"], f"row {m.group(1)} is not a row of the table ({nrows} rows)")
+            elif not TABLE_PURPOSE.match(h.get("purpose") or ""):
+                fail(h["id"], "a thought on a table board names no row: its purpose starts "
+                              "'Row N: ' or 'Table: '")
+            notes = [b for b in h["blocks"] if b["id"] not in bd["fixed"]]
+            if len(notes) > MAX_SIDE_NOTES:
+                fail(h["id"], f"{len(notes)} side notes in one thought; at most "
+                              f"{MAX_SIDE_NOTES} beside a row")
+            for b in notes:
+                if b["type"] not in ("term_box", "plain", "callout", "comparison"):
+                    warn(b["id"], f"a {b['type']} as a side note; beside a row a note is a "
+                                  "short term box, gloss, plain note or callout")
+        missing = [n for n in range(1, nrows + 1) if n not in taught]
+        if missing:
+            warn(bd["id"], f"rows {missing} have no thought of their own")
+        from build_sections import slide_tables
+        page = topic_slide(topic, out["pages"])
+        src = [x for x in slide_tables(lesson_path_for(data), page)
+               if len(x["header"]) == len(tb.get("header") or [])]
+        if not src:
+            continue
+        st = src[0]
+        if len(st["rows"]) != nrows:
+            fail(bd["id"], f"the table has {nrows} rows and the slide's has {len(st['rows'])}; "
+                           "a table is shown whole")
+            continue
+        # compared without slashes: " / " is a line break, and the typed
+        # alternatives of a cell leave theirs behind when the typing is removed
+        squash = lambda x: re.sub(r"\s+", " ", re.sub(r"[_/]", " ", x)).strip().lower()
+        defects = [d for d in data["defects"] if d["page"] == page]
+        for r, row in enumerate(tb["rows"]):
+            for c, cell in enumerate(row):
+                shown = cell
+                for ty in sorted((y for y in tb.get("typed") or [] if y["row"] == r and y["col"] == c),
+                                 key=lambda y: -y["start"]):
+                    shown = shown[:ty["start"]] + " " + shown[ty["start"] + len(ty["text"]):]
+                printed = st["rows"][r][c] if c < len(st["rows"][r]) else ""
+                for d in defects:
+                    printed = printed.replace(d["printed"], d["correction"])
+                if squash(shown) != squash(printed):
+                    warn(tb["id"], f"row {r + 1}, column {c + 1}: printed text {shown.strip()!r} "
+                                   f"differs from the slide's {printed!r}")
 
     # 7b. a state that explains a tense choice shows it: a timeline or tense tags
     tense_words = re.compile(r"\b(simple past|past continuous|past perfect|present perfect|"
@@ -1827,6 +2157,8 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             t = b.get(k)
             if not t:
                 continue
+            if k == "explanation" and b.get("label") == GLOSS_LABEL:
+                continue             # "schedule (= plan a time)": design system §7b
             first = next((c for c in t if c.isalpha()), "")
             # A side or block that begins with a word FORM stays as the form is
             # written: quoted ('was' ...), or colon-terminated (was: I, he, she).
@@ -1846,6 +2178,8 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
     # 10. density: a thought must fit an empty working layer, so every state
     # that the layout could not keep within the limit is a thought too big
     for bd in out["boards"]:
+        if bd.get("table"):
+            continue                 # side notes are drawn over the table: 7c
         for s in bd["states"]:
             if s["notes"] > MAX_NOTES:
                 fail(s["id"], f"{s['notes']} working notes at once, limit {MAX_NOTES}: "
@@ -1993,6 +2327,20 @@ FRAME_CSS = """
 .tbl{padding:0} .tbl table{border-collapse:collapse;width:100%;font-size:3cqh;line-height:1.3}
 .tbl th{background:var(--f);color:var(--f-on);font-weight:500;text-align:left;padding:1cqh 2cqw}
 .tbl td{padding:1cqh 2cqw;border-bottom:1px solid #E8E6DF}
+/* a table board (docs/02-DESIGN-SYSTEM.md §7, "Tables"): the whole table, the
+   row being discussed at full strength and the others dimmed, the cell being
+   discussed highlighted in amber, answers typed in blue into cells whose size
+   is reserved; side notes drawn beside their row */
+.tbl.core table{table-layout:fixed;font-size:var(--tf,2.6cqh);line-height:1.3}
+.tbl.core th{background:#F1F0EB;color:#2C2C2A;font-weight:500;text-align:left;padding:.8cqh 1.2cqw;
+  border:1px solid #E8E6DF;vertical-align:bottom}
+.tbl.core td{padding:.8cqh 1.2cqw;border:1px solid #E8E6DF;vertical-align:top;
+  transition:opacity .35s ease,background-color .35s ease}
+.tbl.core .tw{color:#185FA5}
+.tbl.core.spot tbody tr:not(.focus) td{opacity:.3}
+.tbl.core td.active{background:rgba(250,199,117,.35);box-shadow:inset 0 0 0 max(1px,.25cqh) #FAC775}
+.blk.beside{position:absolute;z-index:3;max-width:58%;margin:0}
+.plain.beside{background:#fff;border:1px solid #E8E6DF;padding:1.2cqh 2cqw}
 /* the lesson's opening boards (docs/00-PRODUCT.md §2a) */
 .ltitle{font-size:6cqh;font-weight:500;line-height:1.2;padding-top:12cqh;padding-left:0;padding-right:0}
 .citem{display:flex;gap:2cqw;align-items:flex-start;padding-left:0;padding-right:0;padding-top:1cqh;padding-bottom:1cqh}
@@ -2143,6 +2491,35 @@ def is_exercise_board(fixed_ids: list[str], blocks: dict) -> bool:
     return any(blocks[i].get("exercise_item") is not None for i in fixed_ids if i in blocks)
 
 
+def core_table_html(b: dict, bid: str) -> str:
+    """A table board's table (docs/02-DESIGN-SYSTEM.md §7, "Tables"). Rows and
+    cells carry data-row and data-col (from 0) for the spotlight; each typed
+    part is a span data-typed="<its index in `typed`>" holding its final text,
+    which the player hides until its cue and types in, so the cell keeps its
+    final size and the table never reflows. " / " in a cell is a line break.
+    Text is emitted in block_text_runs order: header, then rows."""
+    def cell(text: str, parts: list[tuple[int, dict]]) -> str:
+        out, pos = "", 0
+        printed = lambda x: esc(x).replace(" / ", "<br>")
+        for i, ty in sorted(parts, key=lambda p: p[1]["start"]):
+            out += printed(text[pos:ty["start"]])
+            out += '<span class="tw" data-typed="' + str(i) + '">' + esc(ty["text"]) + "</span>"
+            pos = ty["start"] + len(ty["text"])
+        return out + printed(text[pos:])
+    typed = list(enumerate(b.get("typed") or []))
+    cols = "".join('<col style="width:' + str(w) + '%">' for w in b.get("col_widths") or [])
+    head = "".join("<th>" + cell(c, []) + "</th>" for c in b.get("header") or [])
+    body = "".join(
+        '<tr data-row="' + str(r) + '">' + "".join(
+            '<td data-col="' + str(c) + '">'
+            + cell(x, [(i, ty) for i, ty in typed if ty["row"] == r and ty["col"] == c]) + "</td>"
+            for c, x in enumerate(row)) + "</tr>"
+        for r, row in enumerate(b.get("rows") or []))
+    return ('<div class="blk tbl core"' + bid + ' style="--tf:' + str(b.get("font") or 2.6)
+            + 'cqh"><table><colgroup>' + cols + "</colgroup><thead><tr>" + head
+            + "</tr></thead><tbody>" + body + "</tbody></table></div>")
+
+
 def block_html(b: dict) -> str:
     """A block as HTML. Text is emitted in the order block_text_runs gives it;
     badges, icons and tag chips carry no text a mark or the reading pointer
@@ -2187,6 +2564,8 @@ def block_html(b: dict) -> str:
         return ('<div class="blk callout ' + esc(kind) + '"' + bid
                 + '><span class="badge-c">' + CALLOUT_KINDS.get(kind, "i") + "</span>"
                 + "<span>" + esc(b["text"]) + "</span></div>")
+    if t == "table" and b.get("core"):
+        return core_table_html(b, bid)
     if t == "table":
         fam = esc(b.get("family") or "none")
         fams = b.get("col_families") or [None] * len(b.get("header") or [])
@@ -2217,9 +2596,15 @@ def state_html(bd: dict, s: dict, n: int, blocks: dict, topic_no: int,
     never to units of space. The state is described only in reviewer chrome."""
     # The header shows the section title and nothing else: no board title, no
     # number (docs/02-DESIGN-SYSTEM.md §2, "The header").
+    fixed_html = "".join(block_html(blocks[i]) for i in bd["fixed"])
+    if bd.get("table") and s.get("row") is not None:
+        # a table board's state is a row: in focus, the others dimmed
+        fixed_html = (fixed_html.replace('class="blk tbl core"', 'class="blk tbl core spot"', 1)
+                      .replace(f'<tr data-row="{s["row"]}">',
+                               f'<tr data-row="{s["row"]}" class="focus">', 1))
     frame = ('<div class="frame"><div class="hdr">'
              + esc(bd["title"]) + '</div><div class="body">'
-             + "".join(block_html(blocks[i]) for i in bd["fixed"])
+             + fixed_html
              + "".join(block_html(blocks[i]) for i in s["working"])
              + '</div><div class="ctl"><span>▶</span><span class="bar"></span>'
                "<span>0:00</span></div></div>")
@@ -2297,6 +2682,7 @@ def render(lesson: Path, page: int, data: dict) -> int:
                 " ".join(block_texts(b)), data["ledger"])).strip()
             b["relabelled"] = "maintainer -> adapted"
     merges = merge_unjustified_splits(topics, blocks, pages)
+    slide_merges = one_board_per_slide(topics, blocks, pages)
     table_layout = summary_table_layout(topics, blocks, pages)
     lesson_info, section = section_for_page(lesson, page)
     if sorted(section["pages"]) != sorted(pages):
@@ -2332,6 +2718,7 @@ def render(lesson: Path, page: int, data: dict) -> int:
         "boards": boards,
         "overrides": overrides,
         "merged_splits": merges,
+        **({"merged_topics": slide_merges} if slide_merges else {}),
         "summary_table_layout": table_layout,
         "corrections": model_out["corrections"],
         "replacements": model_out["replacements"],

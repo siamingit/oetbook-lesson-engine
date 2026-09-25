@@ -362,7 +362,12 @@ def gather(lesson: Path, page: int) -> dict:
                                     round(min(i["end"], b), 1)] for _, i in on]}
         in_span = lambda e: e["interval"] in {n for n, _ in on} and a <= e["start"] < b
     else:
-        iv = next(i for i in tl["intervals"] if i["page"] == page)
+        # A deck page identical to another (Grammar 3, pages 9 and 10) cannot be
+        # told apart on screen; the timeline names the interval after one of
+        # them, and a page folded into its twin reads that interval as its own.
+        twins = {page} | {int(p) for p in (tl.get("pages_identical_to_another") or {})
+                          .get(str(page), [])}
+        iv = next(i for i in tl["intervals"] if i["page"] in twins)
         index = tl["intervals"].index(iv)
         in_span = lambda e: e["interval"] == index
 
@@ -392,12 +397,13 @@ def gather(lesson: Path, page: int) -> dict:
 
     from build_sections import slide_text as read_slide_text
     pdf = lesson / "source" / "slides.pdf"
-    shown_page = iv.get("shown_page", page)
+    shown_page = iv.get("shown_page", iv["page"])   # a twin page: the interval's own
     if span and sp["kind"] == "intro":
         slide_text = "\n".join(f"[slide {p}, on screen {timeline.clock(s)}-{timeline.clock(e)}]\n"
                                + read_slide_text(pdf, p) for p, s, e in iv["slides_on_screen"])
     else:
-        slide_text = read_slide_text(pdf, page)
+        from build_sections import slide_tables_text
+        slide_text = read_slide_text(pdf, page) + slide_tables_text(lesson, page)
 
     slide_png = lesson / "analysis" / "annotations" / "checks" / "_slide_clean.png"
     timeline.render_pages_colour(pdf)[shown_page - 1].save(slide_png)

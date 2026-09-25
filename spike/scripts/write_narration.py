@@ -66,7 +66,8 @@ MAX_TOKENS = 64000          # 32,000 cut off the 34-state Verb tenses section (2
 
 MARK_TYPES = ["underline", "highlight", "circle", "strike", "point",
               "arrow", "bracket", "replace"]
-CUE_TYPES = ["reveal"] + MARK_TYPES + ["pause"]
+# `type` types a table cell's answer live (TABLE BOARDS; bundle 1.2)
+CUE_TYPES = ["reveal"] + MARK_TYPES + ["pause", "type"]
 PROVENANCE = ["source-derived", "adapted", "authored", "corrected", "maintainer"]
 
 # Free proxies. Real timing comes from TTS word timings later (methodology §6);
@@ -207,6 +208,7 @@ points to (`to_block` may be the same block).
   replace    strike a phrase and write the correction above it in the \
 teacher's hand. `block` and `text` name the wrong phrase; `with` is the \
 correction, exactly as it should be written.
+  type       type a table cell's answer live, on a table board (below). `block` names the table and `text` is the typed part EXACTLY as listed.
   pause      stop speaking and leave the board still. `seconds` roughly 2 to \
 let something land, 4 to 6 after a question you want the student to answer; \
 `text` says in a few words what the student is doing. A pause governs the \
@@ -239,6 +241,8 @@ once, and never reveal a part twice. Say what each part shows as you draw \
 it: the events and the reference points first, then the arrow or the marks \
 being explained, then its example box. A mark's `text` on a diagram quotes a \
 part's label or a callout's sentence exactly.
+
+TABLE BOARDS. Some boards are one whole table, the fixed layer, and are marked `table_board`. Each of their states is one ROW of the table (`row`; "whole table" for what comes before the first row). The player brings that row into focus, dims the others, highlights the cell you are reading or typing into, and shows the whole table again when the row ends. You cue none of that. Teach each row in its own state: read its case note aloud, then give the formal expression, then the sentence. Text shown in [[double brackets]] in a row is NOT on screen yet: it is TYPED INTO ITS CELL LIVE. Every typed part has exactly one `type` cue, in the state of its row: `block` the table's id, `text` the typed part exactly as listed under `to_type`. Put the marker just before you say it, and say it aloud, word for word, as it is typed ("So we write: {{c1}}The patient was asymptomatic."). The parts of one cell are typed in order. Never mark or point at a typed part before it is typed. The row's working blocks are SIDE NOTES drawn beside the row: reveal each where you explain it, and they are erased when the next note or row begins.
 
 THE POINTER FOLLOWS YOUR READING BY ITSELF. Whenever you read aloud text that \
 is on the board, the pointer moves along it word by word in time with your \
@@ -464,7 +468,20 @@ def compact(b: dict) -> dict:
             out[k] = b[k]
     if b["type"] == "timeline" and b.get("items"):
         out["parts"] = [part_line(b, it) for it in b["items"]]
-    if b["type"] == "table":
+    if b["type"] == "table" and b.get("typed"):
+        # a table board's table: typed parts shown in [[ ]], as the screens
+        # stage wrote them, and listed in the order they are typed
+        rows = [list(r) for r in b.get("rows") or []]
+        for ty in sorted(b["typed"], key=lambda y: -y["start"]):
+            c = rows[ty["row"]][ty["col"]]
+            a = ty["start"]
+            rows[ty["row"]][ty["col"]] = c[:a] + "[[" + ty["text"] + "]]" + c[a + len(ty["text"]):]
+        hdr = b.get("header") or []
+        out["header"] = hdr
+        out["rows"] = rows
+        out["to_type"] = [f"row {ty['row'] + 1}, {hdr[ty['col']] if ty['col'] < len(hdr) else ty['col'] + 1}: "
+                          f"{ty['text']}" for ty in b["typed"]]
+    elif b["type"] == "table":
         out["header"] = b.get("header")
         out["rows"] = b.get("rows")
     if b.get("tags"):
@@ -527,11 +544,14 @@ def boards_for_model(data: dict) -> list[dict]:
     for bd in data["screens"]["boards"]:
         states = []
         for n, s in enumerate(bd["states"]):
-            states.append({"id": s["id"],
-                           "working": [compact(blocks[i]) for i in s["working"]],
-                           "erased_after": n < len(bd["states"]) - 1})
+            st = {"id": s["id"], "working": [compact(blocks[i]) for i in s["working"]],
+                  "erased_after": n < len(bd["states"]) - 1}
+            if bd.get("table"):
+                st["row"] = s["row"] + 1 if s.get("row") is not None else "whole table"
+            states.append(st)
         out.append({"id": bd["id"], "section_title": bd["title"],
                     "reviewer_label": bd.get("label"),
+                    **({"table_board": True} if bd.get("table") else {}),
                     "fixed": [compact(blocks[i]) for i in bd["fixed"]],
                     "states": states})
     return out
@@ -772,6 +792,15 @@ def assemble(data: dict, model_out: dict) -> tuple[list[dict], list[dict]]:
                 # said so called the tense labels "chips"; the word is replaced
                 # here, deterministically, and recorded on the utterance.
                 text = u["text_with_cues"]
+                # A pause belongs to the end of its utterance (its marker "on the
+                # last word"), which is where the timeline puts it whatever the
+                # marker says. A pause cue whose marker the model left out gets
+                # it there; recorded on the utterance (Grammar 3, 2026-09-25).
+                given_markers = set(MARKER.findall(text))
+                lost = [c["id"] for c in u["cues"]
+                        if c["type"] == "pause" and c["id"] not in given_markers]
+                if lost:
+                    text = text.rstrip() + "".join("{{" + i + "}}" for i in lost)
                 fixed_text = INTERFACE_WORD.sub(
                     lambda m: ("Coloured label" if m.group(0)[0].isupper() else "coloured label")
                     + ("s" if m.group(0).lower().endswith("s") else ""), text)
@@ -786,6 +815,7 @@ def assemble(data: dict, model_out: dict) -> tuple[list[dict], list[dict]]:
                                  **({"relabelled": relabelled} if relabelled else {}),
                                  **({"normalised": ["'chip'/'tag' -> 'coloured label'"]}
                                     if fixed_text != text else {}),
+                                 **({"pause_marker_added": lost} if lost else {}),
                                  "cues": cues,
                                  "provenance": prov,
                                  "note": note,
@@ -817,9 +847,30 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
             return []
         return [f"{bid}.{it.get('part')}" for it in (b.get("items") or [])]
 
+    # a table board's rows by state id (TABLE BOARDS): each typed part is typed
+    # once, in the state of its row, and is not marked before it is typed
+    scr_boards = {b["id"]: b for b in data["screens"]["boards"]}
     for bd in boards:
         fixed = set(bd["fixed"])
         erased_texts: list[tuple[str, str]] = []      # (block id, lowered text)
+        sb = scr_boards.get(bd["id"]) or {}
+        state_row = {x["id"]: x.get("row") for x in sb.get("states", [])}
+        typed_done: dict[str, list[int]] = {i: [] for i in bd["fixed"]
+                                            if (blocks.get(i) or {}).get("typed")}
+
+        def untyped_only(tb: str, phrase: str) -> bool:
+            """The phrase is in the table only inside parts not yet typed."""
+            b = blocks.get(tb) or {}
+            if tb not in typed_done or not phrase:
+                return False
+            rows = [list(r) for r in b.get("rows") or []]
+            for i, ty in sorted(enumerate(b["typed"]), key=lambda x: -x[1]["start"]):
+                if i not in typed_done[tb]:
+                    c = rows[ty["row"]][ty["col"]]
+                    rows[ty["row"]][ty["col"]] = (c[:ty["start"]] + " "
+                                                  + c[ty["start"] + len(ty["text"]):])
+            shown = " ".join(x for r in [b.get("header") or []] + rows for x in r)
+            return phrase not in shown
         # Parts of a fixed-layer diagram are drawn across the board's states
         # and stay; each is revealed once per board, in listed order.
         fixed_parts_due = [p for bid in bd["fixed"] for p in parts_of(bid)]
@@ -895,6 +946,32 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                             revealed.append(blk)
                             if working.index(blk) != len(revealed) - 1:
                                 warn(uid, f"{blk} revealed out of the listed order")
+                    elif typ == "type":
+                        b = blocks.get(blk) or {}
+                        text_ = c.get("text") or ""
+                        if blk not in typed_done:
+                            fail(uid, f"type on {blk}, which is not a table with typed cells "
+                                      "on this board")
+                        else:
+                            left = [i for i, ty in enumerate(b["typed"])
+                                    if ty["text"] == text_ and i not in typed_done[blk]]
+                            if not left:
+                                fail(uid, f"type {text_!r}: not a part of {blk} still to type")
+                            else:
+                                i = left[0]
+                                ty = b["typed"][i]
+                                typed_done[blk].append(i)
+                                row = state_row.get(s["id"])
+                                if ty["row"] != row:
+                                    fail(uid, f"type {text_!r} is in row {ty['row'] + 1}, typed "
+                                              "in the state of "
+                                              + (f"row {row + 1}" if row is not None
+                                                 else "the whole table"))
+                                before = [k for k, y in enumerate(b["typed"])
+                                          if y["row"] == ty["row"] and y["col"] == ty["col"]
+                                          and y["start"] < ty["start"]]
+                                if any(k not in typed_done[blk] for k in before):
+                                    warn(uid, f"type {text_!r} before an earlier part of its cell")
                     elif typ in MARK_TYPES:
                         targets = [(blk, c.get("text"))]
                         if typ == "arrow":
@@ -913,6 +990,8 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                             else:
                                 fail(uid, f"{typ} on {tb}, which is not on the board "
                                           f"during {s['id']}")
+                            if untyped_only(tb, phrase or ""):
+                                fail(uid, f"{typ} on {phrase!r} in {tb} before it is typed")
                             if tb in blocks:
                                 phrase = phrase or ""
                                 texts = block_texts(blocks[tb])
@@ -960,8 +1039,18 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                     # words. Found in any block of this state's board.
                     on_board = " ".join(t for bid in list(fixed) + working
                                         for t in block_texts(blocks[bid]) if bid in blocks).lower()
+                    # ...and so is a word of the section title on the header.
+                    # An utterance carrying a maintainer ruling that makes the
+                    # register point is `adapted` with a note (methodology
+                    # §17b): the ruling's own words are allowed in it.
+                    on_board += " " + bd["title"].lower()
+                    ruled = set(re.findall(r"[a-z]+", " ".join(
+                        r["decision"] for r in data["ledger"]).lower()))
                     for m in REGISTER_WORDS.finditer(said):
                         if re.search(r"\b" + re.escape(m.group(0).lower()) + r"\b", on_board):
+                            continue
+                        if u["provenance"] == "adapted" and u["note"] \
+                                and m.group(0).lower() in ruled:
                             continue
                         fail(uid, f"register claim? {m.group(0)!r} in {said!r} "
                                   "(not a maintainer utterance)")
@@ -1009,6 +1098,10 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                     b = blocks.get(blk)
                     if b and b.get("text"):
                         erased_texts.append((blk, b["text"].lower()))
+        for tb, done in typed_done.items():
+            never = [ty["text"] for i, ty in enumerate(blocks[tb]["typed"]) if i not in done]
+            if never:
+                fail(bd["id"], f"typed parts of {tb} never typed: {never}")
         missing = [p for p in fixed_parts_due if p not in fixed_parts_done]
         if missing and fixed_parts_done:
             fail(bd["id"], f"fixed diagram parts never drawn: {missing}")

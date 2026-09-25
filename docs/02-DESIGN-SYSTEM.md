@@ -120,9 +120,11 @@ brought, so the main content does not change.
 - **Exception, exercise slides:** an introduction board showing all the
   items, then one board per item, as on page 13.
 - **Exception, oversized fixed content:** a board is split only when its
-  fixed content cannot fit the frame at phone-landscape width, such as the
-  full tense table on page 6, and then **by meaning** (past / present /
-  future), never by beat.
+  fixed content cannot fit the frame at phone-landscape width, and then
+  **by meaning** (past / present / future), never by beat. **A table is
+  never split** (§7, Tables; 2026-09-25): it stays whole on one board and
+  is read with row focus and auto zoom. Grammar 1's split tense table was
+  built before this rule and is kept as accepted.
 
 The audit fails a section with more boards than it has slides, unless each
 extra board is an exercise item or a declared split of oversized fixed
@@ -150,7 +152,8 @@ needs erasing. The fixed layer counts against the space it occupies.
 
 The binding test is **phone-landscape width, not desktop**. If a board
 is not comfortably readable there, erase sooner. It is never solved by
-reducing the type size.
+reducing the type size, with one exception: a table board, whose table
+may be set smaller to stay whole and is zoomed into instead (§7, Tables).
 
 When a board's fixed layer is heavy (a table part, a sentence with its
 answers) and a single thought's notes do not fit beside it, the layout
@@ -257,7 +260,7 @@ headers, never on error or answer rows. Present-perfect teal and
 | Category card | Coloured header strip with a label, and a body. For tense families and for comparing categories. Header in the family colour, or neutral grey for a category that is not a tense. | working |
 | Timeline | A diagram on a time axis: tense arrows, reference markers, event series, pointer arrows, callout boxes (and plain points and periods), each in a family colour. Structured data only; code draws it, part by part as the narration reveals them (§7a). | working, or fixed on a diagram slide |
 | Callout | Two kinds only. Warning: red circle with "!" on an amber tint. Key rule: blue circle with "i" on a blue tint. | working |
-| Table | A tense table with its header row coloured by family. | working, or fixed on an explanatory topic |
+| Table | A slide's table, whole, taught row by row (§7, Tables); or a small tense table with its header row coloured by family. | fixed when it is the slide's content; a small table written while teaching is working |
 
 An answer row never stands alone: it is accompanied by a plain or term
 block saying why it is right.
@@ -369,14 +372,48 @@ Rules:
 
 ### Tables
 
-Tables are taught, not displayed.
+Tables are taught, not displayed. Revised 2026-09-25 by the maintainer
+for every lesson (docs/adr/007-table-boards.md), replacing the earlier
+rule that a table too large for the frame is split by meaning. The
+reference implementation of the behaviour is
+`docs/prototypes/table-board-prototype.html` (its answers and narration
+are placeholders, not lesson content).
 
-- Rows appear in time with the narration, not all at once.
-- A row not yet reached is shown at reduced opacity, not hidden.
-- The row being discussed is at full opacity.
-- A table too large for the frame is split by meaning at a natural
-  boundary — never mid-row, never mid-idea. A split table is a fixed
-  layer that changes with the topic, not an erasure.
+**A table is core content: shown whole, on one board, never split by
+row.** When a slide's content is a table, that table is the fixed layer
+of one board, with every row, whatever its size. It is taught row by
+row on that board:
+
+- **Row focus is a spotlight.** The row being discussed is at full
+  strength and the other rows are dimmed. The cell being discussed gets
+  the glass highlight (amber, translucent), moving through the row as
+  the teaching does: notes, then formal expression, then sentence.
+- **Answers are typed live into empty cells**, character by character
+  in time with the narration (§8, typed text), in the blue of teacher
+  emphasis. Every cell's final size is reserved from the start, so the
+  table never reflows while typing. What is typed is what the teacher
+  wrote in that cell in the recording, never invented.
+- **Side notes** (a gloss, a word-form change, a short term or rule)
+  appear next to the row, over the dimmed rows, and are erased once
+  they have been spoken. They are the board's working layer; a table
+  board has no other fixed block.
+- **At the end of each row, the whole table shows again**, no row
+  dimmed, before the next row comes into focus.
+- **Auto zoom.** When the table's text on screen is smaller than 14 px,
+  the camera zooms onto the active cell, with its side notes, and
+  follows the typing. At 14 px or more there is no zoom. Under
+  `prefers-reduced-motion`, the camera moves without animation and
+  typed answers appear whole at their cue.
+- **Type size.** A table's text starts at 2.6% of the frame's height
+  and is reduced, to no less than 1.9%, only as far as the whole table
+  needs to fit the content band. This is the one exception to "never
+  solved by reducing the type size" (§3): auto zoom keeps a small table
+  readable, and splitting it would break the rule above. A table that
+  does not fit even at 1.9% fails the audit; its cells must be shorter.
+
+A small table written while teaching (a working note, not the slide's
+own content) stays small: at most four columns and five rows.
+
 - **A summary table opens its section, whole, on one board.** Decided by
   the maintainer 2026-09-24 for the tense table of Verb tenses (slides 5
   and 6): a section whose core is a summary table opens with the whole

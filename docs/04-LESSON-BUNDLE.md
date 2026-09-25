@@ -4,15 +4,17 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.1. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.2. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
-2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md). A change
-to it is a new format version (§3), recorded in a new ADR.
+2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
+table boards, on 2026-09-25 (docs/adr/007-table-boards.md). A change to it is a
+new format version (§3), recorded in a new ADR.
 
 | Version | Date | Change |
 |---|---|---|
 | 1.0 | 2026-09-24 | first version |
 | 1.1 | 2026-09-25 | `refs` on every utterance (§5) and every narration entry of `text.json` (§6): the other lessons the utterance refers to, by id |
+| 1.2 | 2026-09-25 | table boards (docs/02-DESIGN-SYSTEM.md §7, "Tables"): a table block's `core`, `typed`, `col_widths`, `font`; a working block's `beside`; the `type` cue; a board's `table` and `focus`; a state's `row`; rules 10 to 13 (§5) |
 
 ---
 
@@ -134,7 +136,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.1"` |
+| `format_version` | string | `"1.2"` |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -196,7 +198,12 @@ A block is one thing on a board. Each carries its data and its rendered `html`.
 | `col_families` | `table`: one family (or null) per header column |
 | `kind` | `callout`: `warning` or `key_rule` |
 | `icon` | `term_box`: a clinical icon name from the design system's list, or null |
-| `header`, `rows` | `table`: header cells; rows of cells |
+| `header`, `rows` | `table`: header cells; rows of cells. A cell's text is its final text, typed parts included; " / " in a cell is a line break |
+| `core` | 1.2. `table`: true when the table is a table board's whole table, taught row by row; otherwise null |
+| `typed` | 1.2. `table`: the parts of cells typed live, `[{row, col, start, text}]`: row and column from 0, `start` the part's offset in the cell's text. Its index in this list is the part's number. Null when nothing is typed |
+| `col_widths` | 1.2. core `table`: each column's share of the width, per cent |
+| `font` | 1.2. core `table`: its text size, in hundredths of the frame's height |
+| `beside` | 1.2. a working block drawn beside a table row: `{block, row}`, the table and the row (from 0), or row null for a note about the whole table; otherwise null |
 | `items` | `timeline`: its diagram parts in order (below) |
 | `tags` | tense tags: `[{text, family, label}]`; `label` is what the chip says ("up to now") |
 | `exercise_item` | the item number an exercise sentence carries in its badge, or null |
@@ -219,7 +226,9 @@ two things must hold, because cues and the reading pointer depend on them:
   diagram glyphs are never text: they are drawn from attributes or CSS, so they
   are not counted as words.
 - **Hooks.** The block's element carries `data-id="<block id>"`; each diagram part
-  carries `data-part="<part id>"`.
+  carries `data-part="<part id>"`. In a core table (1.2), each body row carries
+  `data-row`, each cell `data-col`, and each typed part is an element
+  `data-typed="<its index in typed>"` holding its final text.
 
 ### `boards[]`
 
@@ -234,6 +243,8 @@ two things must hold, because cues and the reading pointer depend on them:
 | `until` | the next board appears (or the lesson ends) |
 | `exercise` | true when the board is one exercise item |
 | `reveal` | `{part id: time}` for every part of every fixed-layer diagram |
+| `table` | 1.2. On a table board, the id of its table; otherwise null |
+| `focus` | 1.2. On a table board, the spotlight in time order: `[{time, row, col}]`, from each `time` the row in focus and the cell highlighted (both from 0; `col` null for the row alone; `row` null for the whole table, nothing dimmed). Empty on other boards |
 | `states` | the working-layer states in order |
 
 ### `states[]`
@@ -245,6 +256,7 @@ two things must hold, because cues and the reading pointer depend on them:
 | `start`, `end` | its first speech starts, its last speech ends |
 | `until` | its working layer and marks disappear: the erase, or the board's `until` |
 | `erase` | `{time, blocks}` when the state ends in an erase, otherwise null |
+| `row` | 1.2. On a table board, the row this state teaches (from 0), or null for the whole table; null on other boards |
 | `reveal` | `{id: time}` for every working block and every part of a working diagram |
 | `utterances` | what is said in this state, in order |
 
@@ -283,9 +295,10 @@ with the bundle.
 | Field | Meaning |
 |---|---|
 | `id` | cue id, within the utterance |
-| `type` | `reveal`, `pause`, or a mark: `underline`, `highlight`, `circle`, `strike`, `bracket`, `point`, `arrow`, `replace` (docs/02-DESIGN-SYSTEM.md §8) |
+| `type` | `reveal`, `pause`, `type` (1.2), or a mark: `underline`, `highlight`, `circle`, `strike`, `bracket`, `point`, `arrow`, `replace` (docs/02-DESIGN-SYSTEM.md §8) |
 | `time` | when it takes effect: a lead before its word, or for a pause the end of the utterance |
-| `time_end` | the end of its word; for a pause, the end of the silence |
+| `time_end` | the end of its word; for a pause, the end of the silence; for a `type`, the end of the typing |
+| `typed`, `row`, `col` | 1.2. A `type` cue: the typed part it types (its index in the table's `typed`), and that part's row and column |
 | `block` | the block (or diagram part, for a reveal) it acts on; null for a pause |
 | `text` | a mark's phrase inside `block`; a pause's description, for review |
 | `to_block`, `to_text` | an arrow's end |
@@ -330,6 +343,20 @@ These are the only rules. Every time and target they use is in the bundle.
    the block's text in document order.
 9. **A pause** is silence of `seconds` after its utterance, already included in
    the next `start`.
+10. **A typed part** (1.2) of a core table is hidden before its `type` cue's
+    `time`, typed in from `time` to `time_end` (the share of its characters
+    shown grows evenly), and shown whole after. It keeps its final size while
+    hidden, so the table never reflows. While typing it may be split in the
+    renderer's DOM; for rule 8 it is still counted as one text.
+11. **The spotlight** (1.2) on a table board is the latest `focus` entry whose
+    `time` ≤ `t`: rows other than `row` are dimmed and the cell (`row`, `col`)
+    is highlighted; with `row` null nothing is dimmed.
+12. **A side note** (1.2), a working block with `beside`, is shown by rule 4 and
+    drawn next to its row, over the other rows, not in the flow of the board.
+13. **Auto zoom** (1.2) is the renderer's: when a core table's text on screen
+    is smaller than 14 px, the view zooms onto the highlighted cell (or the row)
+    and its visible side notes; otherwise the view is not zoomed. Under
+    `prefers-reduced-motion`, without animation.
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and
@@ -344,7 +371,7 @@ no cues and no provenance.
 
 | Field | Meaning |
 |---|---|
-| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.1"` |
+| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.2"` |
 | `lesson` | the same object as `bundle.json`'s `lesson` |
 | `sections[]` | `{id, title, category, start, end, narration_text, board_text, boards}` |
 | `sections[].narration_text` | everything said in the section, one paragraph per board |
@@ -355,7 +382,8 @@ no cues and no provenance.
   words ("two thousand and ten") where the board shows digits ("2010").
 - **Board text:** the words of every block the board shows. The fixed layer comes
   first, then each state's working blocks in order, each block once. A table
-  gives one row per line, cells separated by ` | `. Chip labels and badges are
+  gives one row per line, cells separated by ` | `, and a line break inside a
+  cell as `; `. Chip labels and badges are
   not words and are not included; they are in `bundle.json`.
 - The text repeats wherever the lesson repeats it: an exercise sentence appears on
   the introduction board and again on its own board.

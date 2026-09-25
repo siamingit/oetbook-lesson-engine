@@ -26,6 +26,20 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
 .blk { opacity: 0; transition: opacity .25s ease; }
 .blk.on { opacity: 1; }
 
+/* The camera: everything on the board sits in #cam, which a table board zooms
+   onto the active cell when the table's text on screen is under 14px
+   (docs/02-DESIGN-SYSTEM.md §7, "Tables"). Otherwise it is not transformed. */
+#cam { display: flex; flex-direction: column; gap: 2.5cqh; position: relative; min-height: 100%;
+       transform-origin: 0 0; }
+@media (prefers-reduced-motion: no-preference) {
+  #cam.glide { transition: transform .6s cubic-bezier(.4, 0, .2, 1); }
+}
+/* A typed part of a table cell keeps its final size from the start: the part
+   not yet typed is present but invisible, so the table never reflows. */
+.tw-none, .tw-h { visibility: hidden; }
+.typing .tw-s::after { content: ""; display: inline-block; width: max(2px, .25cqh); height: 1em;
+                       margin-right: calc(-1 * max(2px, .25cqh)); vertical-align: -.12em; background: #185FA5; }
+
 /* Diagram parts are DRAWN, not shown (docs/02-DESIGN-SYSTEM.md §7a): each
    part appears at its own reveal cue and is drawn in motion, the way a
    teacher draws on a board. A part turned on after a seek, or long after its
@@ -127,7 +141,7 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
 <div class="frame" id="frame">
   <div class="hdr"><span class="n" id="hdrNo"></span><span class="t" id="hdrTitle"></span>
     <button id="contentsBtn" aria-label="Contents">Contents</button></div>
-  <div class="body" id="board"></div>
+  <div class="body" id="board"><div id="cam"></div></div>
   <div id="contents"><div class="lbl">Contents</div><ol id="contentsList"></ol></div>
   <svg id="overlay" aria-hidden="true"></svg>
   <div id="pointer"></div>
@@ -219,6 +233,7 @@ fit();
 
 // ---- DOM ----
 const boardEl = document.getElementById("board");
+const camEl = document.getElementById("cam");
 const hdrNo = document.getElementById("hdrNo");
 const hdrTitle = document.getElementById("hdrTitle");
 const pointerEl = document.getElementById("pointer");
@@ -264,12 +279,16 @@ function stateAt(bd, t) {
 const revealAt = new Map();
 const fixedPartAt = new Map();
 const marksByState = new Map();
+const typedAt = new Map();        // "<table>|<typed index>" -> [time, time_end] (bundle 1.2)
 for (const bd of boards) {
   for (const [id, at] of Object.entries(bd.reveal)) fixedPartAt.set(bd.id + "|" + id, at);
   for (const s of bd.states) {
     for (const [id, at] of Object.entries(s.reveal)) revealAt.set(s.id + "|" + id, at);
     const marks = [];
-    for (const u of s.utterances) for (const c of u.cues) if (c.type !== "reveal" && c.type !== "pause") marks.push(c);
+    for (const u of s.utterances) for (const c of u.cues) {
+      if (c.type === "type") typedAt.set(c.block + "|" + c.typed, [c.time, c.time_end]);
+      else if (c.type !== "reveal" && c.type !== "pause") marks.push(c);
+    }
     marks.sort((a, b) => a.time - b.time);
     marksByState.set(s.id, marks);
   }
@@ -306,15 +325,18 @@ function drawBlock(id, fixed) {
   el.classList.add("blk");
   if (fixed) el.classList.add("on");
   el.dataset.layer = fixed ? "fixed" : "working";
-  boardEl.appendChild(el);
+  if (!fixed && blocks[id].beside) el.classList.add("beside");
+  camEl.appendChild(el);
   blockEls.set(id, el);
   return el;
 }
 
 function drawBoard(bd, s, erased) {
   if (bd !== drawnBoard) {
-    boardEl.replaceChildren();
+    camEl.replaceChildren();
     blockEls.clear();
+    camEl.classList.remove("glide");
+    camEl.style.transform = "";
     // The header shows the section title and nothing else: no board title,
     // no number (docs/02-DESIGN-SYSTEM.md §2, "The header").
     hdrNo.style.display = "none";
@@ -387,6 +409,7 @@ function applyMarks(s, t, erased) {
       const fresh = document.createElement("template");
       fresh.innerHTML = blocks[id].html;
       el.innerHTML = fresh.content.firstElementChild.innerHTML;
+      el.removeAttribute("data-focus");    // redraw the spotlight and the typing
     }
   }
   pointSpan = null;
@@ -423,19 +446,34 @@ function placePointer(r, f) {
 
 // Word k of a block, by the bundle's tokenisation: whitespace split, tokens
 // with no letter or digit skipped, counted across the block's text nodes.
+// A typed part being typed is split into its typed and untyped halves; the
+// halves are one text for counting, so a word across them is one word.
 function wordRect(el, k) {
   const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
-  let node, count = 0;
-  const re = /\S+/g;
+  const groups = [];
+  let node;
   while ((node = walker.nextNode())) {
+    const tw = node.parentElement && node.parentElement.closest("[data-typed]");
+    const last = groups[groups.length - 1];
+    if (tw && last && last.tw === tw) { last.nodes.push(node); last.text += node.data; }
+    else groups.push({ tw, nodes: [node], text: node.data });
+  }
+  const at = (g, off) => {
+    for (const n of g.nodes) { if (off <= n.data.length) return [n, off]; off -= n.data.length; }
+    const n = g.nodes[g.nodes.length - 1];
+    return [n, n.data.length];
+  };
+  let count = 0;
+  const re = /\S+/g;
+  for (const g of groups) {
     re.lastIndex = 0;
     let m;
-    while ((m = re.exec(node.data))) {
+    while ((m = re.exec(g.text))) {
       if (!/[a-z0-9]/i.test(m[0])) continue;
       if (count === k) {
         const range = document.createRange();
-        range.setStart(node, m.index);
-        range.setEnd(node, m.index + m[0].length);
+        range.setStart(...at(g, m.index));
+        range.setEnd(...at(g, m.index + m[0].length));
         return range.getBoundingClientRect();
       }
       count++;
@@ -502,6 +540,134 @@ function positionArrows() {
   }
 }
 
+// ---- Table boards (docs/02-DESIGN-SYSTEM.md §7, "Tables"; bundle 1.2) ----
+// The bundle states the spotlight (`focus`), each typed part's cue and each
+// side note's row; the renderer draws them. How they move is the renderer's:
+// typing follows the cue's time and time_end, and the camera zooms onto the
+// active cell only when the table's text on screen is under 14px.
+const MIN_READABLE_PX = 14;
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+function applyTyping(bd, t) {
+  const el = bd.table && blockEls.get(bd.table);
+  if (!el) return;
+  const typed = blocks[bd.table].typed || [];
+  for (const span of el.querySelectorAll("[data-typed]")) {
+    const i = +span.dataset.typed, full = typed[i].text;
+    const at = typedAt.get(bd.table + "|" + i);
+    let n = full.length;
+    if (at) n = t < at[0] ? 0 : (t >= at[1] || reducedMotion.matches) ? full.length
+      : Math.floor(full.length * (t - at[0]) / (at[1] - at[0]));
+    if (span.dataset.n === String(n)) continue;
+    span.dataset.n = n;
+    if (n >= full.length) {
+      if (span.querySelector(".tw-h") || span.classList.contains("tw-none")) span.textContent = full;
+      span.classList.remove("tw-none", "typing");
+    } else if (n === 0) {
+      span.textContent = full;
+      span.classList.add("tw-none");
+      span.classList.remove("typing");
+    } else {
+      const a = document.createElement("span"), b = document.createElement("span");
+      a.className = "tw-s"; a.textContent = full.slice(0, n);
+      b.className = "tw-h"; b.textContent = full.slice(n);
+      span.replaceChildren(a, b);
+      span.classList.remove("tw-none");
+      span.classList.add("typing");
+    }
+  }
+}
+
+function applyFocus(bd, t) {
+  const el = bd.table && blockEls.get(bd.table);
+  if (!el) return null;
+  let f = null;
+  for (const x of bd.focus) if (x.time <= t) f = x; else break;
+  const row = f ? f.row : null, col = f ? f.col : null;
+  const key = row + "," + col;
+  if (el.dataset.focus !== key) {
+    el.dataset.focus = key;
+    el.classList.toggle("spot", row !== null);
+    for (const tr of el.querySelectorAll("tbody tr")) tr.classList.toggle("focus", +tr.dataset.row === row);
+    for (const td of el.querySelectorAll("td"))
+      td.classList.toggle("active", col !== null && +td.parentElement.dataset.row === row && +td.dataset.col === col);
+  }
+  return row === null ? null : { row, col, el };
+}
+
+function offsetIn(el, root) {
+  let x = 0, y = 0, e = el;
+  while (e && e !== root) { x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; }
+  return { x, y, w: el.offsetWidth, h: el.offsetHeight };
+}
+
+// Side notes: beside their row, below it, or above it when there is no room
+// below; notes about the whole table go under the table.
+function placeBeside(bd, s) {
+  const tableEl = bd.table && blockEls.get(bd.table);
+  if (!tableEl || !s) return [];
+  const H = camEl.offsetHeight, W = camEl.offsetWidth, gap = frame.offsetHeight * 0.012;
+  const placed = [];
+  const byRow = new Map();
+  for (const id of s.working) {
+    const el = blockEls.get(id), b = blocks[id];
+    if (!el || !b.beside) continue;
+    const k = b.beside.row;
+    if (!byRow.has(k)) byRow.set(k, []);
+    byRow.get(k).push(el);
+  }
+  const tb = offsetIn(tableEl, camEl);
+  for (const [row, els] of byRow) {
+    const tr = row === null ? null : tableEl.querySelector('tbody tr[data-row="' + row + '"]');
+    const cell = tr && (tr.children[1] || tr.children[0]);
+    const r = tr ? offsetIn(tr, camEl) : tb;
+    const left0 = cell ? offsetIn(cell, camEl).x : tb.x;
+    const total = els.reduce((a, e) => a + e.offsetHeight + gap, -gap);
+    let top = r.y + r.h + gap;
+    if (top + total > H && tr) top = r.y - total - gap;
+    top = Math.max(0, Math.min(top, H - total));
+    for (const el of els) {
+      el.style.left = Math.max(0, Math.min(left0, W - el.offsetWidth)) + "px";
+      el.style.top = top + "px";
+      top += el.offsetHeight + gap;
+      if (el.classList.contains("on")) placed.push(el);
+    }
+  }
+  return placed;
+}
+
+// The camera: onto the active cell (or the row), with the row's visible side
+// notes, when the table's text on screen is under 14px; otherwise still.
+function camera(bd, focus, notes, jumped) {
+  let tf = "";
+  if (focus) {
+    const td0 = focus.el.querySelector("td");
+    const px = td0 ? parseFloat(getComputedStyle(td0).fontSize) : 99;
+    if (px < MIN_READABLE_PX) {
+      const tr = focus.el.querySelector('tbody tr[data-row="' + focus.row + '"]');
+      const target = focus.col !== null && tr ? tr.children[focus.col] : tr;
+      if (target) {
+        let r = offsetIn(target, camEl);
+        for (const n of notes) {
+          const q = offsetIn(n, camEl);
+          const x = Math.min(r.x, q.x), y = Math.min(r.y, q.y);
+          r = { x, y, w: Math.max(r.x + r.w, q.x + q.w) - x, h: Math.max(r.y + r.h, q.y + q.h) - y };
+        }
+        const W = camEl.offsetWidth, H = camEl.offsetHeight;
+        const sc = Math.max(1, Math.min(MIN_READABLE_PX * 1.15 / px, 2.2, W * 0.92 / r.w, H * 0.8 / r.h));
+        let tx = W / 2 - (r.x + r.w / 2) * sc, ty = H / 2 - (r.y + r.h / 2) * sc;
+        tx = Math.min(0, Math.max(W - W * sc, tx));
+        ty = Math.min(0, Math.max(H - H * sc, ty));
+        if (sc > 1.001) tf = "translate(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px) scale(" + sc.toFixed(3) + ")";
+      }
+    }
+  }
+  if (camEl.style.transform !== tf) {
+    camEl.classList.toggle("glide", !jumped);
+    camEl.style.transform = tf;
+  }
+}
+
 let lastRenderT = null;
 function renderFrame(t) {
   const bd = boardAt(t);
@@ -520,6 +686,10 @@ function renderFrame(t) {
     }
   }
   applyMarks(s, t, erased);
+  applyTyping(bd, t);
+  const focus = applyFocus(bd, t);
+  const notes = placeBeside(bd, s && !erased ? s : null);
+  camera(bd, focus, notes, jumped);
   drawParts(bd, s && !erased ? s : null, t, jumped);
   positionPointer(t);
   positionArrows();

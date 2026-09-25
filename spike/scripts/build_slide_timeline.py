@@ -385,6 +385,9 @@ def margin_label(iv: dict) -> str:
         return (f"stage-2 margin {iv['min_margin_stage2']:.3f}"
                 + (f" (+stage-1 {iv['min_margin_stage1']:.3f})"
                    if iv["min_margin_stage1"] is not None else ""))
+    if iv["min_margin_stage1"] is None:
+        # every sample unresolvable: two deck pages identical (Grammar 3, 9 and 10)
+        return "margin none (unresolvable)"
     return f"margin {iv['min_margin_stage1']:.3f}"
 
 
