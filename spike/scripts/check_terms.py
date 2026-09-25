@@ -59,23 +59,35 @@ def candidates(lesson: Path, page: int, lex: dict) -> list[str]:
         for s in bd["states"]:
             for u in s["utterances"]:
                 texts.append(spoken(u["text_with_cues"]))
-    scr = json.loads((paths.screens_dir_for(lesson, pages) / "screens.json").read_text(encoding="utf-8"))
+    n_spoken = len(texts)
+    scr =json.loads((paths.screens_dir_for(lesson, pages) / "screens.json").read_text(encoding="utf-8"))
     for t in scr["topics"]:
         for h in t["thoughts"]:
             for b in h["blocks"]:
                 texts += block_text_runs(b)
     words = set()
-    for text in texts:
+    for i, text in enumerate(texts):
         for w in re.findall(r"[A-Za-z][A-Za-z'-]+", text):
             n = w.lower().strip("'-")
             if (len(n) >= MIN_LETTERS or CLINICAL_ENDING.search(n)) and n not in STOP:
                 words.add(n)
+        # Initialisms and dotted abbreviations, kept in their own case: the
+        # voice may read one as a word ("OT" heard as "ought", Grammar 2), and
+        # "cad" in lower case would be a different word (maintainer,
+        # 2026-09-25: initialisms get the terms check like other terms). From
+        # the narration only: the screens' upper-case labels ("NEW WORD") are
+        # never spoken.
+        if i < n_spoken:
+            words.update(re.findall(r"\b[A-Z]{2,5}\b", text))
+            words.update(re.findall(r"\b(?:[A-Z] ){1,4}[A-Z]\b(?=[\s.,;:!?'\"]|$)", text))
+            words.update(re.findall(r"\b[a-z] [a-z]\b(?= means|[.,;:!?]|$)", text))   # "b d"
+            words.update(m.rstrip(".") + "." for m in re.findall(r"\b(?:[a-z]\.){1,3}[a-z]\b\.?", text))
     kt_path = lesson / "analysis" / "keyterms.json"
     if kt_path.exists():
         kt = json.loads(kt_path.read_text(encoding="utf-8")).get("keyterms", [])
         for k in kt:
             term = k["term"] if isinstance(k, dict) else str(k)
-            words.add(term.lower())
+            words.add(term if term.isupper() else term.lower())   # "OT", not "ot"
     return sorted(w for w in words if not lexicon.has_term(w, lex))
 
 
@@ -108,7 +120,12 @@ def main() -> None:
     chars = 0
     print(f"{len(terms)} candidate terms not in the lexicon")
     for term in terms:
-        wav = probe_dir / (re.sub(r"[^a-z0-9]", "_", term) + f"@{args.speed:g}.wav")
+        slug = re.sub(r"[^a-z0-9]", "_", term)
+        if term != term.lower():
+            # Upper case would slug to underscores alone, and "A D L", "C A D"
+            # and "B M I" would share one probe: keep the letters and the case.
+            slug = "caps-" + re.sub(r"[^A-Za-z0-9]", "_", term)
+        wav = probe_dir / (slug + f"@{args.speed:g}.wav")
         heard_path = wav.with_suffix(".json")
         if not heard_path.exists():
             text = CARRIER.format(term=term)

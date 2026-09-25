@@ -298,6 +298,11 @@ intent only, never text to repeat.
 Everything else - student level, provenance, visual anchors, pauses - is as for \
 any section.\
 """
+INTRO_NO_CATEGORIES = """\
+This lesson has no categories: each note on the contents board is one section \
+of the lesson, by its title. Walk through the sections in the same way, \
+revealing each note as you name it.\
+"""
 
 TASK_PARTIAL = """\
 Rewrite ONLY the states named above, as JSON matching the provided schema: one \
@@ -542,6 +547,10 @@ def build_messages(data: dict, rewrite: dict | None = None) -> list[dict]:
     ]
     if scr.get("section", {}).get("intro"):
         content.append({"type": "text", "text": INTRO})
+        items = [b for t in scr["topics"] for h in t["thoughts"] for b in h["blocks"]
+                 if b["type"] == "contents_item"]
+        if items and not any(b.get("explanation") for b in items):
+            content.append({"type": "text", "text": INTRO_NO_CATEGORIES})
     if rewrite:
         content.append({"type": "text", "text":
             "STATES TO REWRITE: " + ", ".join(rewrite["ids"]) + ". Their current "

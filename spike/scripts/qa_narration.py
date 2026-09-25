@@ -415,14 +415,18 @@ def main() -> None:
         print("no API call made")
         return
 
-    # A direct call: a single review at a gate, where waiting for a batch would
-    # slow the maintainer. Whole-stage passes go through run_batch_stage.py.
+    call_direct(prep)
+
+
+def call_direct(prep: dict) -> Path:
+    """One direct review call for a prepared section (the default: docs/03-RUNBOOK.md,
+    "Cost controls"; run_batch_stage.py calls it for a whole stage)."""
     from google import genai
     client = genai.Client(api_key=api_key())
     interaction = client.interactions.create(
         model=MODEL,
         system_instruction=SYSTEM,
-        input=text,
+        input=prep["text"],
         generation_config={"thinking_level": THINKING_LEVEL,
                            "max_output_tokens": MAX_OUTPUT_TOKENS},
         response_format={"type": "text", "mime_type": "application/json",
@@ -434,10 +438,10 @@ def main() -> None:
             f"REFUSED: the reviewer returned status {status!r}, not 'completed', so "
             f"its findings are incomplete. Nothing was written.")
     u = interaction.usage
-    finish(prep, interaction.output_text,
-           {"input": u.total_input_tokens, "output": u.total_output_tokens,
-            "thought": u.total_thought_tokens, "cached": u.total_cached_tokens or 0},
-           False, interaction.model_dump_json(indent=1))
+    return finish(prep, interaction.output_text,
+                  {"input": u.total_input_tokens, "output": u.total_output_tokens,
+                   "thought": u.total_thought_tokens, "cached": u.total_cached_tokens or 0},
+                  False, interaction.model_dump_json(indent=1))
 
 
 if __name__ == "__main__":

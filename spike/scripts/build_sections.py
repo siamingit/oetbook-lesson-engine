@@ -41,8 +41,32 @@ longer has, or a section carrying a category the list does not back - is
 refused and nothing is written. --set carries a retitled section's place in
 its category with it.
 
+The title slide is the page before the contents slide. A deck with no
+contents slide has it named by the maintainer, and its lesson introduction
+(docs/00-PRODUCT.md §2a) is sourced from the recording's opening, whatever
+slide is on screen, and stored with the title slide's page (maintainer,
+2026-09-24):
+
+    .venv/Scripts/python spike/scripts/build_sections.py <lesson_dir> --title-page 3
+    .venv/Scripts/python spike/scripts/build_sections.py <lesson_dir> --intro-range 0 240
+
+--title-page records `lesson.page_by` and, with no contents slide, the
+top-level `intro` ({source, from_s, to_s}); --intro-range sets its range in
+seconds once the transcript shows where the opening ends.
+
+A page the timeline splits into several intervals, with off-deck material
+between them, is read by the understanding stage as one span (Grammar 2 page
+8, maintainer 2026-09-24), with what is on screen off the deck recorded:
+
+    .venv/Scripts/python spike/scripts/build_sections.py <lesson_dir> --page-span 8 3014 4046
+    .venv/Scripts/python spike/scripts/build_sections.py <lesson_dir> --off-deck 8 3708 3816 "a web page"
+
+stored as the top-level `page_spans` ({page: {from_s, to_s, off_deck: [{from_s,
+to_s, what}], by}}).
+
 Every maintainer record survives a full re-run or stops it: titles (--set),
-the description (--description), diagram pages (--diagram-pages), accepted
+the description (--description), diagram pages (--diagram-pages), the title
+slide and introduction range (--title-page, --intro-range), accepted
 board splits (--accept-boards, kept for a section covering exactly the same
 slides) and categories. A re-run that would drop any of them, or any field it
 does not itself write, is refused with the list of what would be lost, and
@@ -98,6 +122,31 @@ def heading_of(page) -> str | None:
 
 def latin_lines(page) -> list[str]:
     return [l[3] for l in page_lines(page) if not NON_LATIN.search(l[3])]
+
+
+def fragmented(text: str) -> bool:
+    """A text layer pypdfium2 returns one glyph per line, with no spaces
+    (Grammar 2, page 7: "T\\r\\nh\\r\\ne\\r\\nd..."): most lines are one or
+    two characters long."""
+    lines = [l for l in text.splitlines() if l.strip()]
+    return len(lines) >= 10 and sorted(len(l.strip()) for l in lines)[len(lines) // 2] <= 2
+
+
+def slide_text(pdf: Path, page: int) -> str:
+    """A deck page's text layer, as the understanding and screens stages read
+    it: pypdfium2's, unless that comes out fragmented, when pdftotext (poppler,
+    already used by the keyterm stages) reads the same layer with its words
+    and spaces intact. A page pypdfium2 reads whole is returned unchanged."""
+    import pypdfium2 as pdfium
+    tp = pdfium.PdfDocument(str(pdf))[page - 1].get_textpage()
+    text = tp.get_text_range(0, tp.count_chars())
+    if not fragmented(text):
+        return text
+    import subprocess
+    r = subprocess.run(["pdftotext", "-enc", "UTF-8", "-f", str(page), "-l", str(page),
+                        str(pdf), "-"], capture_output=True, text=True, encoding="utf-8",
+                       check=True)
+    return r.stdout.replace("\f", "").strip() + "\n"
 
 
 def correct(h: str, page: int, defects: list[dict]) -> tuple[str, str | None]:
@@ -196,10 +245,67 @@ def write(out_path: Path, info: dict) -> None:
     out_path.write_text(json.dumps(info, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
+INTRO_SOURCE = ("the recording's opening, whatever slide is on screen: the deck has no "
+                "contents slide (maintainer, 2026-09-24)")
+
+
 def main() -> None:
     lesson = Path(sys.argv[1])
     out_path = lesson / "analysis" / "sections.json"
     previous = json.loads(out_path.read_text(encoding="utf-8")) if out_path.exists() else {}
+    today = datetime.date.today().isoformat()
+
+    if "--intro-range" in sys.argv:
+        # The introduction's source in a deck with no contents slide: the
+        # recording from FROM to TO seconds, whatever slide is on screen.
+        if "intro" not in previous:
+            raise SystemExit("no introduction range to set: it exists only for a deck with no "
+                             "contents slide, after --title-page")
+        i = sys.argv.index("--intro-range")
+        a, b = float(sys.argv[i + 1]), float(sys.argv[i + 2])
+        if not 0 <= a < b:
+            raise SystemExit(f"bad range {a}-{b}")
+        by = sys.argv[sys.argv.index("--by") + 1] if "--by" in sys.argv else "maintainer"
+        previous["intro"].update(from_s=a, to_s=b, range_by=f"{by} {today}")
+        write(out_path, previous)
+        print(f"introduction source: the recording {a:.0f}-{b:.0f} s ({by})")
+        return
+    if "--page-span" in sys.argv or "--off-deck" in sys.argv:
+        # A page whose teaching the timeline splits into several intervals,
+        # with off-deck material between (Grammar 2 page 8, maintainer
+        # 2026-09-24): its understanding reads the recording from FROM to TO
+        # as one span. --off-deck records what is on screen in a stretch of it
+        # that is not the deck, so the model is told.
+        by = sys.argv[sys.argv.index("--by") + 1] if "--by" in sys.argv else "maintainer"
+        spans = previous.setdefault("page_spans", {})
+        if "--page-span" in sys.argv:
+            i = sys.argv.index("--page-span")
+            page, a, b = sys.argv[i + 1], float(sys.argv[i + 2]), float(sys.argv[i + 3])
+            if not 0 <= a < b:
+                raise SystemExit(f"bad range {a}-{b}")
+            spans[page] = {**spans.get(page, {"off_deck": []}), "from_s": a, "to_s": b,
+                           "by": f"{by} {today}"}
+            print(f"page {page}: understanding reads the recording {a:.0f}-{b:.0f} s ({by})")
+        else:
+            i = sys.argv.index("--off-deck")
+            page, a, b, what = (sys.argv[i + 1], float(sys.argv[i + 2]), float(sys.argv[i + 3]),
+                                sys.argv[i + 4])
+            if page not in spans or not spans[page]["from_s"] <= a < b <= spans[page]["to_s"]:
+                raise SystemExit("an off-deck stretch lies inside a page span set with --page-span")
+            spans[page]["off_deck"].append({"from_s": a, "to_s": b, "what": what})
+            print(f"page {page}: off deck {a:.0f}-{b:.0f} s: {what}")
+        write(out_path, previous)
+        return
+    if "--title-page" in sys.argv:
+        # The title slide, named by the maintainer where no contents slide
+        # follows it to find it by. It is not a section; the lesson title is
+        # read from it. The deck is then re-read below.
+        if not previous:
+            raise SystemExit("run without --title-page first")
+        n = int(sys.argv[sys.argv.index("--title-page") + 1])
+        previous["lesson"].update(page=n, page_by=f"maintainer {today}")
+        if not previous.get("contents_page") and "intro" not in previous:
+            previous["intro"] = {"source": INTRO_SOURCE, "from_s": 0.0, "to_s": None}
 
     if "--categories" in sys.argv:
         # The contents slide's groupings, translated by the maintainer
@@ -293,6 +399,8 @@ def main() -> None:
     contents = next((p for p in pages if p["heading"] and "content" in p["heading"].lower()), None)
     contents_page = contents["page"] if contents else None
     title_page = next((p for p in pages if contents and p["page"] == contents["page"] - 1), None)
+    if previous.get("lesson", {}).get("page_by"):                  # --title-page
+        title_page = pages[previous["lesson"]["page"] - 1]
     lesson_title = ": ".join(title_page["latin"]) if title_page and title_page["latin"] else None
     branding = set(pages[0]["latin"])
     if previous.get("lesson", {}).get("status") == "maintainer":
@@ -339,10 +447,14 @@ def main() -> None:
                       "deck's own contents-slide groupings, a level above sections "
                       "(docs/00-PRODUCT.md §1).",
            "lesson": {"title": lesson_title, "page": title_page["page"] if title_page else None,
+                      **({"page_by": previous["lesson"]["page_by"]}
+                         if previous.get("lesson", {}).get("page_by") else {}),
                       "status": previous.get("lesson", {}).get("status", "from-deck"),
                       "description": previous.get("lesson", {}).get("description"),
                       "description_status": previous.get("lesson", {}).get("description_status")},
            "contents_page": contents_page,
+           **({"intro": previous["intro"]} if "intro" in previous else {}),
+           **({"page_spans": previous["page_spans"]} if "page_spans" in previous else {}),
            "diagram_pages": previous.get("diagram_pages", []),
            "sections": sections}
     if "categories" in previous:

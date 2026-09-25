@@ -383,7 +383,14 @@ is asked to find the fault in each sentence, and that only works if they can \
 see all of them together. So the introduction topic's fixed layer is one short \
 plain block of instruction, first, followed by every exercise sentence as an \
 error_row with its exercise_item number - all marked `anchor: true`, in that \
-order. Each sentence's own topic then has that sentence as its fixed layer.
+order. Each sentence's own topic then has that sentence as its fixed layer. \
+The introduction carries NO working notes: what the teacher says about the \
+set as a whole goes into the first item's topic. A section taught across two \
+exercise slides has one introduction per slide, each just before that slide's \
+items. When one slide's set is taller than the frame's content band at phone \
+width (more than about six long sentences), split its introduction BY MEANING \
+into two topics titled "Split: ...", each showing part of the set, before the \
+first item. `exercise_item` goes on error_rows only, never on an answer row.
 
 A grammar term gets its one-sentence definition the first time it appears, \
 even when the full lesson on it comes later. A student who meets "passive" \
@@ -841,11 +848,10 @@ def gather(lesson: Path, pages: list[int]) -> dict:
     know = merge_understanding(lesson, pages)
 
     import pypdfium2 as pdfium
+    from build_sections import slide_text as read_slide_text
     doc = pdfium.PdfDocument(str(lesson / "source" / "slides.pdf"))
-    slide_texts = {}
-    for page in pages:
-        tp = doc[page - 1].get_textpage()
-        slide_texts[page] = tp.get_text_range(0, tp.count_chars())
+    slide_texts = {page: read_slide_text(lesson / "source" / "slides.pdf", page)
+                   for page in pages}
     slide_text = "\n".join((f"[slide {p}]\n" if len(pages) > 1 else "") + t
                            for p, t in slide_texts.items())
 
@@ -1415,6 +1421,20 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
 
     norm = lambda s: re.sub(r"\s+", " ", s).strip()
     slide_lines = [norm(l) for l in data["slide_text"].splitlines() if l.strip()]
+    # An exercise sentence is verbatim when it is in the slide text with its
+    # whitespace normalised, as printed or with this section's registered deck
+    # corrections applied (maintainer, 2026-09-24): a table cell wraps over
+    # lines and shares a line with its neighbours (Grammar 2, pages 5-9), and
+    # a registered typo or date fix changes the printed sentence.
+    printed = norm(data["slide_text"])
+    fixed, before = printed, None
+    for _ in range(len(data["defects"]) + 1):   # two entries may touch one sentence
+        if fixed == before:
+            break
+        before = fixed
+        for d in data["defects"]:
+            fixed = fixed.replace(norm(d["printed"]), norm(d["correction"]))
+    verbatim = lambda t: norm(t) in slide_lines or norm(t) in printed or norm(t) in fixed
 
     # 1. required fields per type; the catalogue; exercise rows verbatim on the slide
     for b in blocks.values():
@@ -1514,7 +1534,7 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
         if b.get("exercise_item") is not None:
             if t != "error_row":
                 fail(b["id"], "exercise_item set on a block that is not an error_row")
-            elif norm(b["text"] or "") not in slide_lines:
+            elif not verbatim(b["text"] or ""):
                 # An image slide (methodology §4) has no text layer for its
                 # sentences; the understanding stage read them from the render
                 # and recorded them as exercise items. Verify against those.
@@ -1695,22 +1715,52 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             warn("boards", "the section has a summary table and other tables; the summary "
                            "table is never split across boards")
 
-    # 6. an exercise page shows its full set of items in the introduction
-    items = sorted({b["exercise_item"] for b in blocks.values()
-                    if b.get("exercise_item") is not None})
-    if items and out["topics"]:
-        first = out["topics"][0]
-        shown = {b["exercise_item"] for h in first["thoughts"] for b in h["blocks"]
-                 if b["type"] == "error_row" and b.get("exercise_item") is not None}
+    # 6. an exercise SLIDE shows its full set of items in its introduction
+    # (design system §2: "an introduction board showing all the items", per
+    # exercise slide). A section taught across two exercise slides has two
+    # introductions (Grammar 2, pages 5-6 and 8-9), and an introduction too
+    # tall for the content band is split by meaning (§2, oversized fixed
+    # content): its parts are the slide's leading topics with no answer rows.
+    def topic_page(t):
+        m = [re.match(r"p(\d+)\.", str(b)) for b in t.get("from_beats") or []]
+        return next((int(x.group(1)) for x in m if x), out["pages"][0])
+
+    def item_blocks(t, types):
+        return [b for h in t["thoughts"] for b in h["blocks"] if b["type"] in types]
+
+    intro_topics: set[str] = set()
+    for page in dict.fromkeys(topic_page(t) for t in out["topics"]):
+        ts = [t for t in out["topics"] if topic_page(t) == page]
+        items = sorted({b["exercise_item"] for t in ts for b in item_blocks(t, ("error_row",))
+                        if b.get("exercise_item") is not None})
+        if not items:
+            continue
+        lead = []
+        for t in ts:
+            if item_blocks(t, ("answer_row",)):
+                break
+            lead.append(t)
+        lead = lead or ts[:1]
+        intro_topics |= {t["id"] for t in lead}
+        shown = {b["exercise_item"] for t in lead for b in item_blocks(t, ("error_row",))
+                 if b.get("exercise_item") is not None}
         missing = [i for i in items if i not in shown]
         if missing:
-            fail(first["id"], f"introduction does not show exercise items {missing}; "
-                              "the full set is shown before they are worked one by one")
+            fail(lead[0]["id"], f"introduction does not show exercise items {missing}; "
+                                "the full set is shown before they are worked one by one")
 
-    # 7. the fixed layer: present, and leaves room for the working layer
+    # 7. the fixed layer: present, and leaves room for the working layer. An
+    # exercise introduction's fixed layer is the slide's whole set; inside the
+    # content band it is reported as tight, not failed (design system §3: "the
+    # hard limit is the content band itself"), and its states are held to the
+    # band by the density check.
     for bd in out["boards"]:
         if not bd["fixed"]:
             warn(bd["id"], "no fixed layer: nothing stays on the board for the topic")
+        elif bd["id"] in intro_topics and FIXED_ROOM_LIMIT < bd["fixed_height"] <= CONTENT_BAND:
+            warn(bd["id"], f"tight: exercise introduction's fixed layer takes "
+                           f"{bd['fixed_height']:.0%} of the frame; any note is written one "
+                           "per state beside it")
         elif bd["fixed_height"] > FIXED_ROOM_LIMIT:
             fail(bd["id"], f"fixed layer takes {bd['fixed_height']:.0%} of the frame "
                            "and leaves no room for working notes")

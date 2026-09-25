@@ -47,6 +47,18 @@ This decomposition is what makes the whole approach possible.
 Recording settings are not uniform across the library. Every stage must
 read the actual properties of each file, never assume them.
 
+Grammar 2 (2026-09-24) was recorded at **1284 × 720**, not 16:9: the slide
+fills all 1284 columns, stretched 4 px wider than the deck render, with no
+padding. Stage 2 of the slide timeline compares full frames with the 1280 × 720
+render and crashed on it. Scaling the frame matched the render better than any
+crop (mean absolute difference 9.5 against 11.0 to 12.0 for crops at offsets
+0 to 4), so every full frame the timeline and annotation stages decode is
+scaled to the render's size when the recording differs
+(`build_slide_timeline.analysis_size`, `to_render_size`), and every coordinate
+downstream is on the render's 1280 × 720 frame. `slide_timeline.json` keeps
+the recording's own size as `recorded_size`. A recording already at the
+render's size is decoded exactly as before.
+
 ---
 
 ## 2. What FAILED
@@ -128,6 +140,23 @@ ink event bbox  ∩  PDF word bbox  →  the phrase being annotated
 ```
 
 No OCR. No vision model guessing what was underlined. This is arithmetic.
+
+### A text layer one extractor reads and another does not
+
+Found on Grammar 2, 2026-09-24. Page 7's text layer comes out of pypdfium2
+(which the sections, understanding, screens and annotation stages use) one
+glyph per line and no spaces between words, so joined it reads
+"ThedoctorprescribedOxycontin.". pdftotext (poppler, which the keyterm stages use) reads the same
+page correctly: "The doctor prescribed Oxycontin." A heuristic on character
+gaps did not recover the words reliably (kerning splits "docto r").
+
+So a page's text is read by `build_sections.slide_text`: pypdfium2's, unless
+that comes out fragmented (most lines one or two characters), when pdftotext's.
+Grammar 1's 19 pages and Grammar 2's other nine read identically before and
+after; only Grammar 2 page 7 changed. Not fixed: the annotation stage's word
+boxes on such a page are still single letters, so an ink event there resolves
+to letters, not words, and the page's heading read by position is wrong ("i"
+on page 7, titled by the maintainer instead).
 
 ### Image slides — text layer absent
 
@@ -799,6 +828,22 @@ the source words. The maintainer's lesson description is a `require` phrase
 in that page's ledger, so the title board's description block is
 `maintainer`; an utterance that reads it inside its own words is `adapted`.
 
+A deck with no contents slide (Grammar 2, maintainer 2026-09-24) has neither
+the contents slide to store the introduction with nor its interval as a source.
+The maintainer names the title slide (`build_sections.py --title-page`), which
+is then no section and gives the lesson title; the introduction is stored with
+that page. Its source is the recording's opening, whatever slide is on screen,
+from 0 to where the teacher moves from greeting to teaching, recorded in
+`sections.json` as `intro` and set from the transcript with `--intro-range`;
+the runner stops before understanding until it is set. The understanding stage
+reads that span across slides (`extract_understanding.intro_span`): transcript
+words and events inside it, the images of the slide on screen longest, and the
+text of every slide on screen. The same stretch is also part of its slides' own
+intervals. The contents board then lists one item per section, labelled
+`maintainer` where the maintainer titled the section, and the narration is told
+it walks through sections, not categories. Every script finds the introduction
+through one helper, `paths.intro_section`.
+
 The narration never names interface parts. "Chip" and "tag" (for the tense
 labels) appeared in 80 utterances written before the rule; `assemble()`
 replaces them with "coloured label", records it on the utterance, and the
@@ -1115,3 +1160,34 @@ slower. The whole lesson plays in 120 minutes, 106 of them speech.
   phrase split by a coloured label or an earlier mark (13 marks drew
   nothing), fixed in `wrapPhrase`.
 
+
+## 24. Exercise sentences: accidental typos and relative dates
+
+Two rules for every lesson, set by the maintainer 2026-09-24 at the Grammar 2
+preflight. Both refine §10's caution that deliberately wrong sentences are never
+corrected, and docs/00-PRODUCT.md §2, "reproduced exactly": the intended error is
+reproduced exactly; nothing else about the sentence is protected.
+
+### Accidental typos inside wrong sentences are corrected
+
+An exercise sentence is wrong on purpose, and the error the student must find
+stays exactly as printed. A typo that is not that error is corrected: Grammar 2
+has "thre" for "the", "baout" for "about" and "diabetess" for "diabetes" inside
+its wrong sentences. Each correction is a deck-defect register entry like any
+other, with the typo as `printed`, so the screens audit proves it is gone.
+
+### Exercise sentences must not depend on the current year
+
+A sentence that counts time from the day it was recorded ("4 years ago", "for 10
+years") was true when it was recorded and is wrong for a student later: the
+recordings date from 2021-22, and the durations no longer match the case notes'
+dates. The relative time is replaced with the date the case note gives, and each
+sentence keeps its intended error. The model answer is rewritten to match and
+must stay consistent with earlier maintainer rulings (Grammar 1: a patient does
+not diagnose, and "was diagnosed" takes a point in time, never "since").
+
+Where the relative time is itself the intended error, it stays in the wrong
+sentence, and the model answer still uses the case note's date, so no answer
+depends on the current year either (maintainer, 2026-09-24). Grammar 2: "He has
+had arthritis from 5 years" and "since 6 months" stay as printed; their answers
+say "since 2013" and "since May 2018".

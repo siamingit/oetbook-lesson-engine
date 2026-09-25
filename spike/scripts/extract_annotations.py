@@ -114,7 +114,8 @@ def in_absorbed(iv: dict, t: float) -> bool:
 def frame_stream(video: Path, width: int, height: int):
     """Sampled RGB frames, one decode pass."""
     cmd = ["ffmpeg", "-v", "error", "-i", str(video),
-           "-vf", f"fps={1 / SAMPLE_SECONDS},format=rgb24", "-f", "rawvideo", "-"]
+           "-vf", f"fps={1 / SAMPLE_SECONDS},{timeline.to_render_size(video)}format=rgb24",
+           "-f", "rawvideo", "-"]
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     size = width * height * 3
     while True:

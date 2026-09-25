@@ -51,9 +51,8 @@ def tag(pages: list[int]) -> str:
 
 def sections(L: Path) -> tuple[dict, list[dict]]:
     info = json.loads((L / "analysis" / "sections.json").read_text(encoding="utf-8"))
-    cp = info.get("contents_page")
-    intro = [{"title": "Introduction", "pages": [cp], "intro": True}] if cp else []
-    return info, intro + list(info["sections"])
+    intro = paths.intro_section(info)
+    return info, ([intro] if intro else []) + list(info["sections"])
 
 
 def audit_ok(p: Path) -> bool:
@@ -61,7 +60,7 @@ def audit_ok(p: Path) -> bool:
                                   for f in json.loads(p.read_text(encoding="utf-8"))["audit"])
 
 
-def jobs_for(L: Path, stage: str, include_done: bool = False) -> list[dict]:
+def jobs_for(L: Path, stage: str, include_done: bool = False, ttl: str = "1h") -> list[dict]:
     """The pending units of a stage: custom_id, the request, where the reply
     goes, and how to render it afterwards."""
     info, secs = sections(L)
@@ -74,7 +73,7 @@ def jobs_for(L: Path, stage: str, include_done: bool = False) -> list[dict]:
                 continue
             data = eu.gather(L, p)
             jobs.append({"custom_id": f"page-{p}", "provider": "anthropic",
-                         "params": eu.request_params(eu.build_messages(data), "1h"),
+                         "params": eu.request_params(eu.build_messages(data), ttl),
                          "out": paths.understanding_dir(L, p) / "raw_response.json",
                          "render": (lambda p=p: eu.render(L, p))})
     elif stage == "screens":
@@ -87,7 +86,7 @@ def jobs_for(L: Path, stage: str, include_done: bool = False) -> list[dict]:
                 continue
             data = ws.gather(L, s["pages"])
             jobs.append({"custom_id": tag(s["pages"]), "provider": "anthropic",
-                         "params": ws.request_params(ws.build_messages(data), "1h"),
+                         "params": ws.request_params(ws.build_messages(data), ttl),
                          "out": d / "raw_response.json",
                          "render": (lambda s=s, data=data: ws.render(L, s["pages"][0], data))})
     elif stage == "narration":
@@ -101,7 +100,7 @@ def jobs_for(L: Path, stage: str, include_done: bool = False) -> list[dict]:
                                  "is never written on failing screens")
             data = wn.gather(L, s["pages"])
             jobs.append({"custom_id": tag(s["pages"]), "provider": "anthropic",
-                         "params": wn.request_params(wn.build_messages(data), "1h"),
+                         "params": wn.request_params(wn.build_messages(data), ttl),
                          "out": d / "raw_response.json",
                          "render": (lambda s=s, data=data: wn.render(L, s["pages"][0], data))})
     elif stage in ("qa1", "qa2"):
@@ -115,7 +114,7 @@ def jobs_for(L: Path, stage: str, include_done: bool = False) -> list[dict]:
             prep = qn.prepare(L, s["pages"], n)
             out = prep["out"] / f"batch_pass{n}.json"
             jobs.append({"custom_id": tag(s["pages"]), "provider": "gemini",
-                         "request": qn.gemini_request(prep["text"]), "out": out,
+                         "request": qn.gemini_request(prep["text"]), "out": out, "prep": prep,
                          "render": (lambda prep=prep, out=out: finish_qa(qn, prep, out))})
     else:
         raise SystemExit(f"unknown stage {stage!r}")
@@ -165,6 +164,94 @@ def dry_run(stage: str, jobs: list[dict]) -> None:
           f"(output estimated from Grammar 1; uncached input). No API call made.")
 
 
+DIRECT_WORKERS = 4        # direct calls in flight at once
+
+
+def run_direct(L: Path, stage: str, jobs: list[dict]) -> None:
+    """Every pending unit as a direct call, a few at a time, at full price with
+    the 5-minute prompt cache: the default (docs/03-RUNBOOK.md, "Cost
+    controls"). Each reply is written where a batch would write it, then
+    rendered, one at a time, exactly as after a batch."""
+    from concurrent.futures import ThreadPoolExecutor
+    t0 = time.time()
+
+    def call(j: dict) -> str:
+        try:
+            if j["provider"] == "gemini":
+                import qa_narration as qn
+                qn.call_direct(j["prep"])
+                return "ok"
+            import anthropic
+            from extract_understanding import api_key
+            client = anthropic.Anthropic(api_key=api_key(), max_retries=5)
+            with client.messages.stream(**j["params"]) as st:
+                msg = st.get_final_message()
+            if msg.stop_reason == "max_tokens":
+                return "cut off at the output cap; nothing written"
+            j["out"].parent.mkdir(parents=True, exist_ok=True)
+            if j["out"].exists():
+                # A reply being replaced was paid for: kept under a name the
+                # runner's spend check (raw_response*.json) still counts.
+                j["out"].rename(j["out"].with_name(
+                    f"raw_response.superseded-{datetime.datetime.now():%Y%m%d-%H%M%S}.json"))
+            j["out"].write_text(msg.to_json(), encoding="utf-8")
+            return "ok"
+        except SystemExit as e:
+            return f"refused: {e}"
+        except Exception as e:                          # noqa: BLE001 - reported per unit
+            return f"error: {type(e).__name__}: {e}"
+
+    print(f"{stage}: {len(jobs)} direct calls, {DIRECT_WORKERS} at a time", flush=True)
+    with ThreadPoolExecutor(DIRECT_WORKERS) as ex:
+        outcome = dict(zip([j["custom_id"] for j in jobs], ex.map(call, jobs)))
+    print(f"calls ended after {(time.time() - t0) / 60:.1f} min", flush=True)
+
+    failed = []
+    for j in jobs:
+        res = outcome[j["custom_id"]]
+        if res != "ok":
+            failed.append(f"{j['custom_id']}: {res}")
+            continue
+        if j["provider"] == "gemini":
+            continue                                   # call_direct wrote and rendered it
+        try:
+            rc = j["render"]()
+        except SystemExit as e:
+            rc = e.code
+        if rc:
+            failed.append(f"{j['custom_id']}: audit failed after rendering (see its preview)")
+
+    cost = saving = 0.0
+    cache_read = cache_write = 0
+    for j in jobs:
+        if outcome[j["custom_id"]] != "ok":
+            continue
+        if j["provider"] == "anthropic":
+            rec = json.loads(j["out"].read_text(encoding="utf-8"))
+            u = rec.get("usage") or {}
+            cost += llm.raw_cost(rec)
+            saving += llm.cache_saving(u)
+            cache_read += u.get("cache_read_input_tokens", 0) or 0
+            cache_write += u.get("cache_creation_input_tokens", 0) or 0
+        else:
+            n = int(stage[-1])
+            qa = json.loads((j["prep"]["out"] / f"qa_pass{n}.json").read_text(encoding="utf-8"))
+            cost += qa.get("meta", {}).get("cost_usd", 0)
+    print(f"cost ${cost:.2f} at full price | cache: {cache_write:,} tokens written, "
+          f"{cache_read:,} read, net saving ${saving:.3f}")
+    rec_path = L / "analysis" / "batches" / f"{stage}-direct-{datetime.datetime.now():%Y%m%d-%H%M}.json"
+    rec_path.parent.mkdir(parents=True, exist_ok=True)
+    rec_path.write_text(json.dumps({"mode": "direct", "outcome": outcome, "cost_usd": round(cost, 4),
+                                    "cache_read_tokens": cache_read,
+                                    "cache_write_tokens": cache_write,
+                                    "cache_saving_usd": round(saving, 4), "failed": failed},
+                                   indent=1), encoding="utf-8")
+    for f in failed:
+        print("FAILED " + f)
+    if failed:
+        raise SystemExit(f"{len(failed)} unit(s) did not pass; see above")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("lesson_dir", type=Path)
@@ -173,12 +260,15 @@ def main() -> None:
     ap.add_argument("--all", action="store_true",
                     help="with --dry-run: build requests for finished units too (a free test)")
     ap.add_argument("--poll", type=int, default=60)
+    ap.add_argument("--direct", action="store_true",
+                    help="direct calls with the 5-minute cache instead of one batch")
     a = ap.parse_args()
     L = a.lesson_dir
     state_path = L / "analysis" / "batches" / f"{a.stage}.json"
 
     resuming = state_path.exists() and not json.loads(state_path.read_text(encoding="utf-8")).get("collected")
-    jobs = jobs_for(L, a.stage, include_done=a.all and a.dry_run)
+    ttl = "5m" if a.direct and not resuming else "1h"
+    jobs = jobs_for(L, a.stage, include_done=a.all and a.dry_run, ttl=ttl)
     if not jobs and not resuming:
         print(f"{a.stage}: nothing pending")
         return
@@ -186,6 +276,14 @@ def main() -> None:
     if a.dry_run:
         dry_run(a.stage.rstrip("12") if a.stage.startswith("qa") else a.stage, jobs)
         return
+    if a.direct and not resuming:
+        run_direct(L, a.stage, jobs)
+        return
+    if a.direct:
+        # A batch already submitted is collected first (it may have finished,
+        # or be cancelled): a reply it produced is paid for and is never asked
+        # for twice. What it did not produce then goes as direct calls.
+        print(f"{a.stage}: collecting the batch already submitted before any direct call")
 
     t0 = time.time()
     if jobs and jobs[0]["provider"] == "gemini":
@@ -239,6 +337,11 @@ def main() -> None:
                  cache_write_tokens=cache_write, cache_saving_usd=round(saving, 4), failed=failed)
     done.write_text(json.dumps(state, indent=1), encoding="utf-8")
     state_path.unlink()
+    if a.direct:
+        rest = jobs_for(L, a.stage, ttl="5m")
+        if rest:
+            run_direct(L, a.stage, rest)
+            return
     for f in failed:
         print("FAILED " + f)
     if failed:

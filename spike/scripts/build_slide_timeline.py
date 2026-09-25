@@ -25,6 +25,7 @@ Method (methodology §3, §4, §8):
     that is not in the deck
 """
 
+import functools
 import json
 import subprocess
 import sys
@@ -77,6 +78,7 @@ def opt(name, default=None):
     return sys.argv[sys.argv.index(name) + 1] if name in sys.argv else default
 
 
+@functools.lru_cache(maxsize=None)
 def video_info(path: Path) -> tuple[float, int, int]:
     out = subprocess.run(
         ["ffprobe", "-v", "error", "-select_streams", "v:0",
@@ -87,6 +89,27 @@ def video_info(path: Path) -> tuple[float, int, int]:
     data = json.loads(out)
     stream = data["streams"][0]
     return float(data["format"]["duration"]), stream["width"], stream["height"]
+
+
+@functools.lru_cache(maxsize=None)
+def analysis_size(video: Path) -> tuple[int, int]:
+    """The size every full frame is analysed at: the deck render's, RENDER_W
+    wide (the deck beside the video in source/). A recording at that size is
+    decoded as it is. Grammar 2 was captured at 1284x720, the slide stretched
+    4 px wider than the render; scaling it matched the render better than any
+    crop (mean difference 9.5 against 11.0-12.0, measured 2026-09-24), so such
+    a recording is scaled to the render before any comparison, and every
+    coordinate downstream is on the render's frame."""
+    page = pdfium.PdfDocument(video.with_name("slides.pdf"))[0]
+    return RENDER_W, round(RENDER_W * page.get_height() / page.get_width())
+
+
+def to_render_size(video: Path) -> str:
+    """An ffmpeg filter step scaling a frame to analysis_size(), with its
+    trailing comma, or nothing when the recording is already that size."""
+    _, w, h = video_info(video)
+    aw, ah = analysis_size(video)
+    return "" if (w, h) == (aw, ah) else f"scale={aw}:{ah},"
 
 
 def render_pages(pdf: Path) -> list[np.ndarray]:
@@ -190,10 +213,13 @@ def stage2_scores(frame: np.ndarray, pages: list[np.ndarray],
     return out
 
 
-def full_frame_stream(video: Path, width: int, height: int):
-    """Yield sampled frames at full resolution, same sample times as stage 1."""
+def full_frame_stream(video: Path):
+    """Yield sampled frames at full resolution (analysis_size), same sample
+    times as stage 1."""
+    width, height = analysis_size(video)
     cmd = ["ffmpeg", "-v", "error", "-i", str(video),
-           "-vf", f"fps={1 / SAMPLE_SECONDS},format=gray", "-f", "rawvideo", "-"]
+           "-vf", f"fps={1 / SAMPLE_SECONDS},{to_render_size(video)}format=gray",
+           "-f", "rawvideo", "-"]
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     size = width * height
     while True:
@@ -371,9 +397,11 @@ def grab_frame(video: Path, at: float) -> Image.Image:
     seconds earlier and decoding forward costs little and lands on the right frame.
     """
     pre = min(SEEK_DECODE_WINDOW, at)
+    scale = to_render_size(video).rstrip(",")
     out = subprocess.run(
         ["ffmpeg", "-v", "error", "-ss", f"{at - pre:.3f}", "-i", str(video),
-         "-ss", f"{pre:.3f}", "-frames:v", "1", "-f", "image2pipe", "-vcodec", "png", "-"],
+         "-ss", f"{pre:.3f}", "-frames:v", "1"] + (["-vf", scale] if scale else [])
+        + ["-f", "image2pipe", "-vcodec", "png", "-"],
         check=True, capture_output=True,
     ).stdout
     import io
@@ -477,7 +505,7 @@ def run_stage2(video: Path, pdf: Path, scores_path: Path,
     print(f"\n{len(todo)} of {len(samples)} samples need stage 2")
 
     resolved = 0
-    for index, frame in enumerate(full_frame_stream(video, width, height)):
+    for index, frame in enumerate(full_frame_stream(video)):
         if index >= len(samples) or index not in todo:
             continue
         s = samples[index]
@@ -603,7 +631,8 @@ def main() -> None:
 
     timeline = {
         "video": str(video), "pdf": str(pdf),
-        "video_size": [width, height], "duration": round(duration, 3),
+        "video_size": list(analysis_size(video)), "duration": round(duration, 3),
+        **({"recorded_size": [width, height]} if to_render_size(video) else {}),
         "pages": cached["pages"],
         "method": ("trimmed-mean absolute difference of contrast-normalised "
                    "greyscale; deterministic, no AI"),

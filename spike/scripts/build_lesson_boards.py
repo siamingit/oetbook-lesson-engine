@@ -9,8 +9,10 @@ Writes: <lesson_dir>/analysis/screens/lesson-boards.json
 Deterministic: no model. The title board carries the deck's lesson title.
 Its one-line description is UNKNOWN until the maintainer writes one, and is
 rendered as a visible placeholder rather than invented. The contents board
-lists the deck's categories, each with its sections, in lesson order.
-Both are generated after the sections exist and follow their titles.
+lists the deck's categories, each with its sections, in lesson order; a deck
+with no contents slide has no categories, and the board lists one item per
+section (maintainer, 2026-09-24). Both are generated after the sections exist
+and follow their titles.
 """
 
 import json
@@ -30,11 +32,12 @@ def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
           narration reveals when it says what the lesson is about
       t2  contents board: one block per category, each revealed as it is named
 
-    Stored with the contents slide's page (paths.screens_dir_for), because the
-    understanding of that slide's interval is the narration's source."""
+    Stored with the introduction's page (paths.intro_section: the contents
+    slide's, or the title slide's in a deck with none), because the
+    understanding of that page is the narration's source."""
     import paths
     from write_screens import BUDGET, block_height, stack_height
-    page = sec.get("contents_page")
+    page = paths.intro_section(sec)["pages"][0]
     tb, cb = boards["title"], boards["contents"]
     und = paths.understanding_dir(lesson, page) / "understanding.json"
     beats = ([b["id"] for b in json.loads(und.read_text(encoding="utf-8"))["beats"]]
@@ -52,8 +55,11 @@ def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
     desc = blk("k02", "plain", tb["description"] or "",
                prov=tb.get("description_provenance") or "authored",
                note="The maintainer's one-line description (sections.json).")
-    items = [blk(f"k{n + 2:02d}", "contents_item", c["title"], " · ".join(c["sections"]),
-                 label=str(n), note="Category " + str(n) + " of the contents slide, with its sections")
+    items = [blk(f"k{n + 2:02d}", "contents_item", c["title"], " · ".join(c["sections"]) or None,
+                 label=str(n), prov=c.get("provenance") or "source-derived",
+                 note=("Category " + str(n) + " of the contents slide, with its sections"
+                       if c["sections"] else "Section " + str(n) + " of the lesson, by its title "
+                       "(sections.json); the deck has no contents slide"))
              for n, c in enumerate(cb["categories"], 1)]
     blocks = {b["id"]: b for b in [title, desc] + items}
     topics = [
@@ -103,7 +109,12 @@ def main() -> None:
     lesson = Path(sys.argv[1])
     sec = json.loads((lesson / "analysis" / "sections.json").read_text(encoding="utf-8"))
     title = sec["lesson"]["title"]
-    cats = sec.get("categories") or [{"title": None, "sections": [s["title"] for s in sec["sections"]]}]
+    # No contents slide: one item per section, with no sections listed under it.
+    # A title the maintainer set is his wording; one read from a heading is the deck's.
+    cats = sec.get("categories") or [
+        {"title": s["title"], "sections": [],
+         "item_provenance": "maintainer" if s.get("status") == "maintainer" else "source-derived"}
+        for s in sec["sections"]]
     desc = sec["lesson"].get("description")
     boards = {
         "title": {"id": "lesson.title", "kind": "title", "title": title,
@@ -120,17 +131,23 @@ def main() -> None:
                                    if desc else "")},
         "contents": {"id": "lesson.contents", "kind": "contents",
                      "heading": "What you will learn",
-                     "categories": [{"title": c["title"], "sections": c["sections"]} for c in cats],
-                     "provenance": "source-derived: the deck's contents slide, page "
-                                   + str(sec.get("contents_page")) + ", translated and corrected "
-                                   "by the maintainer; section titles from sections.json"},
+                     "categories": [{"title": c["title"], "sections": c["sections"],
+                                     **({"provenance": c["item_provenance"]}
+                                        if "item_provenance" in c else {})} for c in cats],
+                     "provenance": ("source-derived: the deck's contents slide, page "
+                                    + str(sec.get("contents_page")) + ", translated and corrected "
+                                    "by the maintainer; section titles from sections.json")
+                                   if sec.get("categories") else
+                                   "the lesson's sections, by their titles in sections.json; the "
+                                   "deck has no contents slide"},
     }
     out = lesson / "analysis" / "screens" / "lesson-boards.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(boards, ensure_ascii=False, indent=1), encoding="utf-8")
     write_intro_screens(lesson, sec, boards)
-    print(f"title board: {title!r}; contents board: {len(cats)} categories, "
-          f"{sum(len(c['sections']) for c in cats)} sections")
+    print(f"title board: {title!r}; contents board: "
+          + (f"{len(cats)} categories, {sum(len(c['sections']) for c in cats)} sections"
+             if sec.get("categories") else f"{len(cats)} sections (no contents slide)"))
     print(f"wrote {out}")
 
 

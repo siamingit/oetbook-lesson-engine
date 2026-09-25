@@ -85,3 +85,19 @@ def narration_dir_for(lesson: Path, pages: list[int]) -> Path:
 
 def boards_dir_for(lesson: Path, pages: list[int]) -> Path:
     return lesson / "generated" / section_tag(pages) / "boards"
+
+
+def intro_section(info: dict) -> dict | None:
+    """The lesson's introduction as a section (docs/00-PRODUCT.md §2a), or
+    None. Stored with the contents slide's page, whose interval is its source;
+    in a deck with no contents slide, with the title slide's page, its source
+    the recording's opening, whatever slide is on screen (sections.json
+    `intro`, maintainer 2026-09-24), carried here as `span`."""
+    cp = info.get("contents_page")
+    if cp:
+        return {"title": "Introduction", "pages": [cp], "intro": True}
+    it, tp = info.get("intro"), (info.get("lesson") or {}).get("page")
+    if it and tp:
+        return {"title": "Introduction", "pages": [tp], "intro": True,
+                "span": [it["from_s"], it["to_s"]]}
+    return None

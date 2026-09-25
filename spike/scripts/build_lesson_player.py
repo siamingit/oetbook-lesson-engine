@@ -133,13 +133,14 @@ def estimate(words: list[str], wpm: float) -> dict:
 
 
 def lesson_sections(L: Path) -> tuple[dict, list[dict]]:
-    """The introduction, stored with the contents slide's page, then the
-    sections in lesson order (docs/00-PRODUCT.md §2a)."""
+    """The introduction (paths.intro_section: with the contents slide's page,
+    or the title slide's in a deck with none), then the sections in lesson
+    order (docs/00-PRODUCT.md §2a)."""
     info = json.loads((L / "analysis" / "sections.json").read_text(encoding="utf-8"))
     intro = []
-    cp = info.get("contents_page")
-    if cp and (paths.narration_dir_for(L, [cp]) / "narration.json").exists():
-        intro = [{"title": "Introduction", "pages": [cp], "intro": True}]
+    it = paths.intro_section(info)
+    if it and (paths.narration_dir_for(L, it["pages"]) / "narration.json").exists():
+        intro = [{"title": "Introduction", "pages": it["pages"], "intro": True}]
     return info, intro + info["sections"]
 
 

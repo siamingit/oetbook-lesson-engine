@@ -130,6 +130,8 @@ rebuilt.
   the lesson's deck-defect register.
 - Deliberately wrong sentences used as exercise material are **not**
   errors. They are content and are reproduced exactly.
+  Their intended error is reproduced exactly; accidental typos and
+  year-dependent relative times in them are corrected (methodology §24).
 - Teaching that exists only because the deck was wrong — the instructor
   pointing out a typo aloud — is dropped, not translated. It teaches
   nothing once the error is gone.
@@ -172,6 +174,10 @@ while the contents are on screen. A rule for every lesson:
 - The source is the understanding of the contents slide's interval, written
   under the same rules as every section: student level, provenance, visual
   anchors, no references to the source. Two QA passes.
+- A deck with no contents slide (Grammar 2): the source is the recording's
+  opening minutes, whatever slide is on screen, up to where the teacher moves
+  from greeting to teaching. The contents board lists one item per section.
+  Decided by the maintainer 2026-09-24.
 
 ---
 

@@ -3,16 +3,20 @@ review gates, and resuming from where it stopped (docs/03-RUNBOOK.md).
 
     .venv/Scripts/python spike/scripts/build_lesson.py <lesson_dir> --status
     .venv/Scripts/python spike/scripts/build_lesson.py <lesson_dir> --budget 40
-    .venv/Scripts/python spike/scripts/build_lesson.py <lesson_dir> --approve screens --by NAME
+    .venv/Scripts/python spike/scripts/build_lesson.py <lesson_dir> --approve narration --by NAME
 
 Every stage has a test for "done and passing"; a stage that passes is
 skipped, so running the command again continues from the first stage that
 does not. The run stops at:
-  - a GATE the maintainer has not approved (source, keyterms, screens,
-    narration, lexicon, final), with what to review and how to approve;
+  - a GATE the maintainer has not approved (source, narration, final; ADR
+    005), with what to review and how to approve. The keyterms and screens
+    steps are approved by the agent when their checks pass, recorded in
+    gates.json as the agent's and appended to <lesson>/analysis/decisions.md;
   - a stage that fails, with its output in <lesson>/analysis/runner.log;
   - a paid stage whose estimated cost would take the lesson's model spend
     (Anthropic + Gemini, measured from the saved responses) over --budget.
+Model stages run as direct calls with prompt caching; --batch runs each as one
+batch at half price, only for an unattended run the maintainer asked for.
 Paid stages never run without --budget (AGENTS.md: paid calls are approved).
 Approvals are recorded in <lesson>/analysis/gates.json with who and when.
 
@@ -38,16 +42,14 @@ GATES = {
               "text or image, templates, section titles, video frames and specs; plus the "
               "lesson description (build_sections.py --description) and the diagram "
               "slides (--diagram-pages)",
-    "keyterms": "analysis/keyterms_candidates.json: write analysis/keyterms_curated.txt, the "
-                "terms the transcription is told to listen for",
-    "screens": "analysis/screens/lesson-preview/index.html: every board of the lesson",
     "narration": "generated/lesson-preview/silent/player.html and "
                  "analysis/narration/lesson-review/index.html: the narration with QA pass 1; "
                  "fixes go through write_narration.py --states --brief, then one QA pass on "
                  "the rewritten states",
-    "lexicon": "spike/out/lexicon-review/index.html: terms the ear did not hear, and any new "
-               "lexicon entry; approve with lexicon.py --approve TERM --by NAME",
-    "final": "generated/lesson-player/player.html: the finished lesson",
+    "final": "generated/lesson-player/player.html: the finished lesson, and by ear every "
+             "term the terms check did not hear as written (analysis/terms_failures.json; "
+             "spike/out/lexicon-review/index.html); a new lexicon entry is approved with "
+             "lexicon.py --approve TERM --by NAME",
 }
 # Estimated model cost per unit at FULL price, from Grammar 1 (docs/03-RUNBOOK.md,
 # baseline); batched stages are charged at half (batch()).
@@ -82,6 +84,30 @@ def run(L: Path, args: list[str], what: str) -> str:
 def gates(L: Path) -> dict:
     p = L / "analysis" / "gates.json"
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+
+
+def agent_approves(L: Path, name: str, why: str, reverse: str) -> None:
+    """A step the agent approves when its checks pass (ADR 005): recorded in
+    gates.json as the agent's, and in the lesson's decision log."""
+    g = gates(L)
+    if name in g:
+        return
+    g[name] = {"by": "agent (ADR 005): checks pass", "on": f"{datetime.datetime.now():%Y-%m-%d %H:%M}"}
+    (L / "analysis" / "gates.json").write_text(json.dumps(g, indent=1), encoding="utf-8")
+    log_decision(L, f"{name} step approved by the agent", why,
+                 "ADR 005: keyterms and screens are approved by the agent when their checks pass",
+                 reverse)
+
+
+def log_decision(L: Path, what: str, why: str, rule: str, reverse: str) -> None:
+    """Append one decision to the lesson's decision log (ADR 005)."""
+    p = L / "analysis" / "decisions.md"
+    head = "" if p.exists() else (f"# Decision log: {L.name}\n\nDecisions made without asking "
+                                  "under ADR 005. The maintainer reviews them at the gates and "
+                                  "may reverse any.\n")
+    with p.open("a", encoding="utf-8") as f:
+        f.write(head + f"\n## {datetime.datetime.now():%Y-%m-%d %H:%M} {what}\n\n- Why: {why}\n"
+                f"- Rule: {rule}\n- To reverse: {reverse}\n")
 
 
 def require_gate(L: Path, name: str) -> None:
@@ -121,10 +147,8 @@ def afford(L: Path, budget: float | None, estimate: float, what: str) -> None:
 
 def sections(L: Path) -> tuple[dict, list[dict]]:
     info = json.loads((L / "analysis" / "sections.json").read_text(encoding="utf-8"))
-    secs = list(info["sections"])
-    cp = info.get("contents_page")
-    intro = [{"title": "Introduction", "pages": [cp]}] if cp else []
-    return info, intro + secs
+    intro = paths.intro_section(info)
+    return info, ([intro] if intro else []) + list(info["sections"])
 
 
 def audit_ok(p: Path) -> bool:
@@ -155,6 +179,10 @@ def stage_preflight(L, a):
         raise Stop(f"GATE 'source': sections without a title, pages {facts['needs_title']}. "
                    "Set each with build_sections.py --set PAGE \"TITLE\"; the pack is rebuilt "
                    f"on the next run. Pack: {pack}")
+    if not paths.intro_section(json.loads(sp.read_text(encoding="utf-8"))):
+        raise Stop("GATE 'source': the deck has no contents slide, so the lesson has no "
+                   "introduction yet: name the title slide with build_sections.py --title-page "
+                   "PAGE (docs/00-PRODUCT.md §2a)")
     if "source" not in gates(L):
         raise Stop(f"GATE 'source': review the preflight pack {pack} (summary.md inside), "
                    "set the lesson description (build_sections.py --description) and the "
@@ -175,12 +203,15 @@ def stage_keyterm_candidates(L, a):
 def stage_keyterms(L, a):
     curated = L / "analysis" / "keyterms_curated.txt"
     if not curated.exists():
-        raise Stop(f"GATE 'keyterms': write {curated} from keyterms_candidates.json, then "
-                   f"--approve keyterms")
-    require_gate(L, "keyterms")
+        raise Stop(f"keyterms: write {curated} from keyterms_candidates.json (the agent curates "
+                   "it, methodology §12), then re-run")
     kt = L / "analysis" / "keyterms.json"
     if not kt.exists() or kt.stat().st_mtime < curated.stat().st_mtime:
         run(L, [str(HERE / "build_keyterms.py"), str(L)], "build keyterms")
+    agent_approves(L, "keyterms", "keyterms.json built from keyterms_curated.txt and verified "
+                   "against the deck by build_keyterms.py",
+                   "edit analysis/keyterms_curated.txt and delete analysis/scribe_v2_response.json "
+                   "to transcribe again (Scribe, paid)")
 
 
 def stage_transcribe(L, a):
@@ -220,18 +251,29 @@ def stage_sections(L, a):
 
 
 def batch(L, stage: str, pending: int, unit_est: float, a) -> None:
-    """One model stage for every pending unit as a single batch at half price
-    (run_batch_stage.py), within the budget. A batch already submitted is
-    waited for, never paid for twice."""
+    """One model stage for every pending unit, within the budget
+    (run_batch_stage.py): direct calls with prompt caching by default, or with
+    --batch one batch at half price, for an unattended run (docs/03-RUNBOOK.md,
+    "Cost controls"). A batch already submitted is collected first, never paid
+    for twice."""
     if pending == 0 and not (L / "analysis" / "batches" / f"{stage}.json").exists():
         return
-    afford(L, a.budget, pending * unit_est * 0.5, f"{stage}: {pending} units in one batch")
-    run(L, [str(HERE / "run_batch_stage.py"), str(L), "--stage", stage],
-        f"{stage}, one batch of {pending}")
+    if a.batch:
+        afford(L, a.budget, pending * unit_est * 0.5, f"{stage}: {pending} units in one batch")
+        run(L, [str(HERE / "run_batch_stage.py"), str(L), "--stage", stage],
+            f"{stage}, one batch of {pending}")
+    else:
+        afford(L, a.budget, pending * unit_est, f"{stage}: {pending} direct calls")
+        run(L, [str(HERE / "run_batch_stage.py"), str(L), "--stage", stage, "--direct"],
+            f"{stage}, {pending} direct calls")
 
 
 def stage_understanding(L, a):
     info, secs = sections(L)
+    if secs and secs[0].get("span") and secs[0]["span"][1] is None:
+        raise Stop("the introduction's source is the recording's opening (no contents slide), "
+                   "and where the opening ends is not set: read analysis/transcript.txt and set "
+                   f"it with build_sections.py {L} --intro-range 0 SECONDS")
     pages = sorted({p for s in secs for p in s["pages"]})
     todo = [p for p in pages if not (paths.understanding_dir(L, p) / "understanding.json").exists()]
     batch(L, "understanding", len(todo), EST["understanding"], a)
@@ -239,7 +281,7 @@ def stage_understanding(L, a):
 
 def stage_screens(L, a):
     info, secs = sections(L)
-    body = secs[1:] if info.get("contents_page") else secs
+    body = [s for s in secs if not s.get("intro")]
     todo = [s for s in body if not audit_ok(paths.screens_dir_for(L, s["pages"]) / "screens.json")]
     try:
         batch(L, "screens", len(todo), EST["screens"], a)
@@ -249,10 +291,14 @@ def stage_screens(L, a):
             raise
         raise Stop(str(e) + "\nSections not passing: " + ", ".join(s["title"] for s in todo)
                    + ". Fix by override, or re-write one with write_screens.py --pages ... "
-                     "--call (a direct call); re-running the runner batches the rest again.")
+                     "--call (a direct call); re-running the runner runs the rest again.")
     run(L, [str(HERE / "build_lesson_boards.py"), str(L)], "title and contents boards")
     run(L, [str(HERE / "build_lesson_preview.py"), str(L)], "screens preview")
-    require_gate(L, "screens")
+    agent_approves(L, "screens", "every section's screens audit passes (no fail findings); "
+                   "the boards are reviewed with the narration in the silent preview",
+                   "fix a board by override in the section's overrides.json and re-render with "
+                   "write_screens.py --render, or re-write the section with write_screens.py "
+                   "--pages ... --call")
 
 
 def stage_narration(L, a):
@@ -286,15 +332,25 @@ def stage_terms(L, a):
             f = json.loads(tc.read_text(encoding="utf-8")).get("failures") or []
             if f:
                 failures[s["title"]] = f
+    fp = L / "analysis" / "terms_failures.json"
     if failures:
-        (L / "analysis" / "terms_failures.json").write_text(
-            json.dumps(failures, ensure_ascii=False, indent=1), encoding="utf-8")
-        if "lexicon" not in gates(L):
-            raise Stop("GATE 'lexicon': the ear did not hear these as written: "
-                       + "; ".join(f"{k}: {', '.join(v)}" for k, v in failures.items())
-                       + ".\nAdd real mispronunciations to spike/lexicon.json (lexicon_review.py "
-                       "to hear them), then --approve lexicon; sections whose failures are "
-                       "only transcription artefacts are then built with --accept-terms.")
+        # ADR 005: the lexicon gate is folded into the final gate. These terms
+        # are synthesised with the voice's default (--accept-terms, below) and
+        # judged by the maintainer's ear there.
+        new = not fp.exists() or json.loads(fp.read_text(encoding="utf-8")) != failures
+        fp.write_text(json.dumps(failures, ensure_ascii=False, indent=1), encoding="utf-8")
+        if new:
+            log_decision(L, "terms not heard as written go to the final gate",
+                         "the ear did not hear these as written: "
+                         + "; ".join(f"{k}: {', '.join(v)}" for k, v in failures.items())
+                         + ". They are synthesised with the voice's default and listed for the "
+                           "maintainer's ear at the final gate",
+                         "ADR 005 (pronunciation is the maintainer's ear, at the final gate); "
+                         "methodology §20",
+                         "add an entry to spike/lexicon.json, have the maintainer approve it, and "
+                         "re-run: the cache re-makes only the clips that contain the term")
+    elif fp.exists():
+        fp.unlink()
 
 
 def stage_audio_build(L, a):
@@ -313,7 +369,7 @@ def stage_audio_build(L, a):
                 raise Stop("synthesis (Cartesia) is paid: run with --budget USD")
             cmd = [str(HERE / "synthesize_narration.py"), str(L), "--pages", pp(s["pages"])]
             if s["title"] in fails:
-                cmd.append("--accept-terms")     # the lexicon gate has been approved
+                cmd.append("--accept-terms")     # judged by ear at the final gate (ADR 005)
             run(L, cmd, f"synthesis, {s['title']} ({len(need)} utterances)")
         ear = paths.boards_dir_for(L, s["pages"]) / "ear.json"
         if not ear.exists() or ear.stat().st_mtime < ip.stat().st_mtime:
@@ -345,6 +401,9 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("lesson_dir", type=Path)
     ap.add_argument("--budget", type=float, help="model spend allowed for this lesson, USD")
+    ap.add_argument("--batch", action="store_true",
+                    help="batch mode at half price, only for an unattended run the maintainer "
+                         "asked for (up to 24 hours per stage); default: direct calls")
     ap.add_argument("--approve", choices=sorted(GATES))
     ap.add_argument("--by", default="maintainer")
     ap.add_argument("--status", action="store_true")

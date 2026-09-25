@@ -277,11 +277,57 @@ def collapse_bulk_removals(events: list[dict]) -> tuple[list[dict], list[dict]]:
     return kept, collapsed
 
 
+def span_of(lesson: Path, page: int) -> dict | None:
+    """When this page is read as a span of the recording rather than its slide
+    interval (maintainer, 2026-09-24): {"span": [from, to], "kind", "off_deck"}.
+      intro  the introduction of a deck with no contents slide: the recording's
+             opening, whatever slide is on screen (paths.intro_section);
+      page   a page the timeline splits into several intervals with off-deck
+             material between them (sections.json `page_spans`)."""
+    sp = lesson / "analysis" / "sections.json"
+    if not sp.exists():
+        return None
+    info = json.loads(sp.read_text(encoding="utf-8"))
+    it = paths.intro_section(info)
+    if it and it.get("span") and it["pages"] == [page]:
+        if it["span"][1] is None:
+            raise SystemExit("the introduction's range is not set: build_sections.py --intro-range")
+        return {"span": it["span"], "kind": "intro", "off_deck": []}
+    ps = (info.get("page_spans") or {}).get(str(page))
+    if ps:
+        return {"span": [ps["from_s"], ps["to_s"]], "kind": "page", "off_deck": ps["off_deck"]}
+    return None
+
+
 def gather(lesson: Path, page: int) -> dict:
     read = lambda p: json.loads((lesson / p).read_text(encoding="utf-8"))
     tl = read("analysis/slides/slide_timeline.json")
-    iv = next(i for i in tl["intervals"] if i["page"] == page)
-    index = tl["intervals"].index(iv)
+    sp = span_of(lesson, page)
+    span = sp["span"] if sp else None
+    if span:
+        # The opening spans slides: its images are those of the slide on screen
+        # longest, its events every event that starts inside the range. A page
+        # span keeps only the page's own intervals for images and events: the
+        # others matched off-deck material to the nearest page, so their events
+        # were measured against the wrong slide.
+        a, b = span
+        on = [(n, i) for n, i in enumerate(tl["intervals"]) if i["start"] < b and i["end"] > a]
+        if sp["kind"] == "page":
+            on = [(n, i) for n, i in on if i["page"] == page]
+        index, shown = max(on, key=lambda x: min(x[1]["end"], b) - max(x[1]["start"], a))
+        iv = {"page": page, "start": a, "end": b, "duration": b - a, "mean_score": None,
+              "resolved_by": ("maintainer: the recording's opening, whatever slide is on screen"
+                              if sp["kind"] == "intro" else
+                              "maintainer: one span for a page the timeline splits"),
+              "span_kind": sp["kind"], "off_deck": sp["off_deck"],
+              "shown_page": shown["page"],
+              "slides_on_screen": [[i["page"], round(max(i["start"], a), 1),
+                                    round(min(i["end"], b), 1)] for _, i in on]}
+        in_span = lambda e: e["interval"] in {n for n, _ in on} and a <= e["start"] < b
+    else:
+        iv = next(i for i in tl["intervals"] if i["page"] == page)
+        index = tl["intervals"].index(iv)
+        in_span = lambda e: e["interval"] == index
 
     scribe = read("analysis/scribe_v2_response.json")
     words = [[round(w["start"], 2), round(w["end"], 2), w["text"]]
@@ -291,7 +337,7 @@ def gather(lesson: Path, page: int) -> dict:
 
     ann = read("analysis/annotations/annotation_events.json")
     events = []
-    for n, e in enumerate(ev for ev in ann["events"] if ev["interval"] == index):
+    for n, e in enumerate(ev for ev in ann["events"] if in_span(ev)):
         events.append({
             "id": f"e{n:03d}", "kind": e["kind"],
             "start": e["start"], "end": e["end"],
@@ -304,18 +350,22 @@ def gather(lesson: Path, page: int) -> dict:
     events, bulk = collapse_bulk_removals(events)
     dwells = [{"start": d["start"], "end": d["end"], "position": d["position"],
                "words_under": d["words_under"]}
-              for d in ann["cursor_dwells"] if d["interval"] == index]
-    carry = [c for c in ann["carry_over"] if c["interval"] == index]
+              for d in ann["cursor_dwells"] if in_span(d)]
+    carry = [] if span else [c for c in ann["carry_over"] if c["interval"] == index]
 
-    import pypdfium2 as pdfium
-    doc = pdfium.PdfDocument(str(lesson / "source" / "slides.pdf"))
-    tp = doc[page - 1].get_textpage()
-    slide_text = tp.get_text_range(0, tp.count_chars())
+    from build_sections import slide_text as read_slide_text
+    pdf = lesson / "source" / "slides.pdf"
+    shown_page = iv.get("shown_page", page)
+    if span and sp["kind"] == "intro":
+        slide_text = "\n".join(f"[slide {p}, on screen {timeline.clock(s)}-{timeline.clock(e)}]\n"
+                               + read_slide_text(pdf, p) for p, s, e in iv["slides_on_screen"])
+    else:
+        slide_text = read_slide_text(pdf, page)
 
     slide_png = lesson / "analysis" / "annotations" / "checks" / "_slide_clean.png"
-    timeline.render_pages_colour(lesson / "source" / "slides.pdf")[page - 1].save(slide_png)
+    timeline.render_pages_colour(pdf)[shown_page - 1].save(slide_png)
     layer_png = (lesson / "analysis" / "annotations" / "checks"
-                 / f"{index:03d}_p{page:02d}.png")
+                 / f"{index:03d}_p{shown_page:02d}.png")
 
     out = paths.understanding_dir(lesson, page)
     out.mkdir(parents=True, exist_ok=True)
@@ -340,6 +390,35 @@ def build_messages(data: dict) -> list[dict]:
             "every annotation drawn during this interval over a faded copy of that "
             "page. Regions tinted red in the second image were erased before the "
             "slide changed.")
+    if iv.get("span_kind") == "page":
+        clk = lambda t: timeline.clock(t)
+        head = (f"Lesson: {data['lesson_label']}. Deck page {iv['page']} of "
+                f"{data['deck_pages']}, read as ONE span of the recording: "
+                f"{clk(iv['start'])}-{clk(iv['end'])} ({iv['start']}-{iv['end']} s), "
+                f"{iv['duration'] / 60:.1f} minutes. The page is on screen at "
+                + ", ".join(f"{clk(s)}-{clk(e)}" for _, s, e in iv["slides_on_screen"])
+                + ". Between those, the screen shows material that is not this deck: "
+                + "; ".join(f"{clk(o['from_s'])}-{clk(o['to_s'])}: {o['what']}"
+                            for o in iv["off_deck"])
+                + ". What is said then is still part of this page's teaching and is covered "
+                  "like any other time; the student will not have that material.\n\n"
+                  f"Two images follow: the clean deck page {iv['page']}, then the union of "
+                  "every annotation drawn during its longest interval over a faded copy of "
+                  "that page. Regions tinted red in the second image were erased before the "
+                  "slide changed. The events below are this page's, from all its intervals.")
+    elif iv.get("slides_on_screen"):
+        head = (f"Lesson: {data['lesson_label']}. The lesson's OPENING, not one slide: "
+                f"{timeline.clock(iv['start'])}-{timeline.clock(iv['end'])} "
+                f"({iv['start']}-{iv['end']} s), {iv['duration'] / 60:.1f} minutes, whatever "
+                "slide is on screen. It is the source of the lesson's introduction: the "
+                "greeting, what the lesson is about, and what it will cover. Slides on screen, "
+                "[page, from, to] in seconds: " + json.dumps(iv["slides_on_screen"]) + ". "
+                "The same stretch is also analysed as part of its slides' own intervals.\n\n"
+                f"Two images follow: the clean deck page {iv['shown_page']}, the slide on "
+                "screen longest here, then the union of every annotation drawn while it was on "
+                "screen over a faded copy of that page. Regions tinted red in the second image "
+                "were erased before the slide changed. The events below are those that start "
+                "inside the opening.")
 
     carry_note = ""
     if data["carry"]:
