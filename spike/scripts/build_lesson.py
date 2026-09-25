@@ -391,7 +391,10 @@ def stage_terms(L, a):
                 run(L, [str(HERE / "check_terms.py"), str(L), "--pages", pp(s["pages"])],
                     f"terms check, {s['title']}")
             except Stop:
-                pass           # failures are listed below, for the lexicon gate
+                # terms not heard are listed below, for the final gate; a check
+                # that crashed (a Scribe 429, Grammar 4) wrote no result: stop
+                if not tc.exists() or tc.stat().st_mtime < nd.stat().st_mtime:
+                    raise
         if tc.exists():
             f = json.loads(tc.read_text(encoding="utf-8")).get("failures") or []
             if f:
