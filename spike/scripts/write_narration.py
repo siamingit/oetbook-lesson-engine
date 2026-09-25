@@ -242,7 +242,9 @@ it: the events and the reference points first, then the arrow or the marks \
 being explained, then its example box. A mark's `text` on a diagram quotes a \
 part's label or a callout's sentence exactly.
 
-TABLE BOARDS. Some boards are one whole table, the fixed layer, and are marked `table_board`. Each of their states is one ROW of the table (`row`; "whole table" for what comes before the first row). The player brings that row into focus, dims the others, highlights the cell you are reading or typing into, and shows the whole table again when the row ends. You cue none of that. Teach each row in its own state: read its case note aloud, then give the formal expression, then the sentence. Text shown in [[double brackets]] in a row is NOT on screen yet: it is TYPED INTO ITS CELL LIVE. Every typed part has exactly one `type` cue, in the state of its row: `block` the table's id, `text` the typed part exactly as listed under `to_type`. Put the marker just before you say it, and say it aloud, word for word, as it is typed ("So we write: {{c1}}The patient was asymptomatic."). The parts of one cell are typed in order. Never mark or point at a typed part before it is typed. The row's working blocks are SIDE NOTES drawn beside the row: reveal each where you explain it, and they are erased when the next note or row begins.
+TABLE BOARDS. Some boards are one whole table, the fixed layer, and are marked `table_board`. Each of their states is one ROW of the table (`row`; "whole table" for what comes before the first row). The player brings that row into focus, dims the others, highlights the cell you are reading or typing into, and shows the whole table again when the row ends. You cue none of that. Teach each row in its own state, cell by cell in the order the table is taught (a case note, then its formal expression, then the sentence; a wrong sentence, then its answer). Text shown in [[double brackets]] in a row is NOT on screen yet: it is TYPED INTO ITS CELL LIVE. Every typed part has exactly one `type` cue, in the state of its row: `block` the table's id, `text` the typed part exactly as listed under `to_type`. Put the marker just before you say it, and say it aloud, word for word, as it is typed ("So we write: {{c1}}The patient was asymptomatic."). The parts of one cell are typed in order. Never mark or point at a typed part before it is typed. The row's working blocks are SIDE NOTES drawn beside the row: reveal each where you explain it, and they are erased when the next note or row begins. A mark on a table lands in the cell of the current row that contains its phrase, so its `text` must occur only ONCE in that row: "the left knee operation", not "left knee operation" when every cell of the row has it; a phrase that also occurs in other rows is fine.
+
+CHOICE TABLES (bundle 1.6). A table whose cells carry `verdicts` gives versions of one sentence to choose between. Nothing is typed. In each row's state, read the versions, then settle the row as the teacher did: when you say a version is wrong, STRIKE the words that make it wrong in that cell (its article, or the noun that is missing one: "a stomach", "underwent left knee"); when you say a version is right, CIRCLE its article or the one to three words that make it right (a circle in a choice table means right; use an underline for anything else). The player fades each wrong cell at its strike and ticks the right cell at its circle, or once the wrong ones are struck. A `possible` cell is never struck: say when it can be used.
 
 THE POINTER FOLLOWS YOUR READING BY ITSELF. Whenever you read aloud text that \
 is on the board, the pointer moves along it word by word in time with your \
@@ -484,6 +486,11 @@ def compact(b: dict) -> dict:
     elif b["type"] == "table":
         out["header"] = b.get("header")
         out["rows"] = b.get("rows")
+    if b["type"] == "table" and b.get("verdicts"):
+        # a choice table (bundle 1.6): each cell's verdict, as the teacher taught it
+        hdr = b.get("header") or []
+        out["verdicts"] = [f"row {v['row'] + 1}, {hdr[v['col']] if v['col'] < len(hdr) else v['col'] + 1}: "
+                           f"{v['verdict']}" for v in b["verdicts"]]
     if b.get("tags"):
         # The chip's printed label, not the family key: page 9's narration said
         # "past-to-now" for a chip that reads "up to now" (QA, 2026-09-24).
@@ -850,6 +857,7 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
     # a table board's rows by state id (TABLE BOARDS): each typed part is typed
     # once, in the state of its row, and is not marked before it is typed
     scr_boards = {b["id"]: b for b in data["screens"]["boards"]}
+    struck_cells: set[tuple[str, int, int]] = set()     # a choice table's struck cells (1.6)
     for bd in boards:
         fixed = set(bd["fixed"])
         erased_texts: list[tuple[str, str]] = []      # (block id, lowered text)
@@ -974,15 +982,17 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                                     warn(uid, f"type {text_!r} before an earlier part of its cell")
                     elif typ in MARK_TYPES:
                         targets = [(blk, c.get("text"))]
+                        named = {0: (c.get("row"), c.get("col"))}     # a cell named by override (1.6)
                         if typ == "arrow":
                             targets.append((c.get("to_block") or blk, c.get("to_text")))
+                            named[1] = (c.get("to_row"), c.get("to_col"))
                         if typ == "replace" and not (c.get("with") or "").strip():
                             fail(uid, f"replace on {blk} gives no correction (`with`)")
                         if typ == "circle" and len((c.get("text") or "").split()) > 3:
                             warn(uid, f"circle around {len(c['text'].split())} words "
                                       f"{c['text']!r}; a circle is for one to three words, "
                                       "a longer span takes an underline or a bracket")
-                        for tb, phrase in targets:
+                        for ti, (tb, phrase) in enumerate(targets):
                             if tb in fixed or tb in revealed:
                                 pass
                             elif tb in working:
@@ -1003,6 +1013,40 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                                                   "ignoring case")
                                     else:
                                         fail(uid, f"phrase {phrase!r} is not in {tb}")
+                                tbl = blocks[tb]
+                                row = state_row.get(s["id"])
+                                if phrase and tbl["type"] == "table" and tbl.get("core") \
+                                        and row is not None and row < len(tbl.get("rows") or []):
+                                    # a mark on a table lands in the cell of the
+                                    # state's row that holds its phrase (1.6)
+                                    cols = [k for k, x in enumerate(tbl["rows"][row]) if phrase in x]
+                                    nr, nc = named.get(ti, (None, None))
+                                    if nr is not None:
+                                        # the cell is named (overrides.json): its phrase must be there
+                                        rows_ = tbl.get("rows") or []
+                                        if not (0 <= nr < len(rows_) and 0 <= nc < len(rows_[nr])
+                                                and phrase in rows_[nr][nc]):
+                                            fail(uid, f"{typ} on {phrase!r}: the named cell (row {nr + 1}, "
+                                                      f"column {nc + 1}) does not hold it")
+                                        cols = [nc] if nr == row else []
+                                    if len(cols) > 1:
+                                        # in a choice table a misplaced strike fades the wrong
+                                        # cell; elsewhere the mark only sits in the first one
+                                        (fail if tbl.get("verdicts") else warn)(
+                                            uid, f"{typ} on {phrase!r}: it is in {len(cols)} cells "
+                                                 f"of row {row + 1}; name words only one cell has")
+                                    elif not cols and any(phrase in t for t in texts):
+                                        warn(uid, f"{typ} on {phrase!r}: not in row {row + 1}, the "
+                                                  "row this state teaches")
+                                    verdict = {(v["row"], v["col"]): v["verdict"]
+                                               for v in tbl.get("verdicts") or []}
+                                    if cols and verdict:
+                                        v = verdict.get((row, cols[0]))
+                                        if typ == "strike" and v in ("right", "possible"):
+                                            fail(uid, f"strike on {phrase!r}, in a {v} cell of row "
+                                                      f"{row + 1}; only a wrong cell is struck")
+                                        if typ == "strike":
+                                            struck_cells.add((tb, row, cols[0]))
                     elif typ == "pause":
                         sec = c.get("seconds")
                         if sec is None or not 0.5 <= sec <= 10:
@@ -1171,6 +1215,15 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                     m = src.search(spoken(u["text_with_cues"]))
                     if m:
                         fail(u["id"], f"source reference {m.group(0)!r} in the introduction")
+
+    # A choice table (bundle 1.6): a wrong cell the narration never strikes
+    # fades only when its row ends, with no word said about it.
+    for bd in boards:
+        for tb in bd["fixed"]:
+            for v in (blocks.get(tb) or {}).get("verdicts") or []:
+                if v["verdict"] == "wrong" and (tb, v["row"], v["col"]) not in struck_cells:
+                    warn(bd["id"], f"choice table {tb}: the wrong cell in row {v['row'] + 1}, "
+                                   f"column {v['col'] + 1} is never struck")
     return findings
 
 
@@ -1247,6 +1300,32 @@ def state_html(bd: dict, s: dict, n: int, blocks: dict, topic_no: int,
     return '<section class="scr">' + frame + side + "</section>" + erase
 
 
+def apply_cue_overrides(out_dir: Path, boards: list[dict]) -> list[dict]:
+    """Fields set on cues from the section's overrides.json (bundle 1.6):
+    {"cues": {"<utterance id>/<cue id>": {"expect": phrase, "row": r, "col": c,
+    "to_row": r, "to_col": c, "note": why}}}. It names the table cell a mark
+    (or an arrow's end) is drawn in where its words are in more than one cell
+    of the row. Nothing spoken changes, so no audio does. Applied on every
+    render, like the screens' overrides; the saved reply is never edited."""
+    p = out_dir / "overrides.json"
+    if not p.exists():
+        return []
+    spec = json.loads(p.read_text(encoding="utf-8")).get("cues") or {}
+    cues = {f"{u['id']}/{c['id']}": c for bd in boards for s in bd["states"]
+            for u in s["utterances"] for c in u["cues"]}
+    out = []
+    for key, f in spec.items():
+        c = cues.get(key)
+        if c is None or (f.get("expect") and f["expect"] not in (c.get("text"), c.get("to_text"))):
+            raise SystemExit(f"overrides.json: cue {key} is not there or no longer marks "
+                             f"{f.get('expect')!r}; retire or re-key the override")
+        c.update({k: v for k, v in f.items() if k in ("row", "col", "to_row", "to_col")})
+        c["overridden"] = f.get("note") or True
+        out.append({"severity": "info", "where": key, "what": "cell named by override: "
+                    + json.dumps({k: v for k, v in f.items() if k != 'note'})})
+    return out
+
+
 def render(lesson: Path, page: int, data: dict) -> int:
     pages = data.get("pages") or [page]
     out_dir = paths.narration_dir_for(lesson, pages)
@@ -1254,6 +1333,7 @@ def render(lesson: Path, page: int, data: dict) -> int:
     model_out = json.loads([b["text"] for b in raw["content"] if b["type"] == "text"][-1])
 
     boards, structural = assemble(data, model_out)
+    structural += apply_cue_overrides(out_dir, boards)
     findings = structural + audit(boards, data)
     result = {
         "lesson": lesson.name,

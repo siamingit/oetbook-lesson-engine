@@ -178,6 +178,37 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
                 problems.append(f"{s['id']}: erase clears {s['erase']['blocks']}, not the "
                                 f"state's working layer {working}")
 
+    # 1.6: a mark on a table names a cell that holds its phrase; a choice
+    # table's verdicts are the table's own, each shown within its board
+    for bd in bundle["boards"]:
+        tb = blocks.get(bd.get("table") or "") or {}
+        for s in bd["states"]:
+            for u in s["utterances"]:
+                for c in u["cues"]:
+                    if c["type"] in ("type", "reveal", "pause") or c.get("row") is None:
+                        continue
+                    rows = tb.get("rows") or []
+                    if c.get("block") != bd.get("table") or not (0 <= c["row"] < len(rows)) \
+                            or not (0 <= c["col"] < len(rows[c["row"]])) \
+                            or (c.get("text") or "") not in rows[c["row"]][c["col"]]:
+                        problems.append(f"{u['id']}/{c['id']}: {c['type']} names row {c['row']}, "
+                                        f"column {c['col']}, which does not hold {c.get('text')!r}")
+                    if c.get("to_row") is not None:
+                        rows = tb.get("rows") or []
+                        r, k = c["to_row"], c["to_col"]
+                        if not (0 <= r < len(rows) and 0 <= k < len(rows[r])) \
+                                or (c.get("to_text") or "") not in rows[r][k]:
+                            problems.append(f"{u['id']}/{c['id']}: arrow end names row {r}, column {k}, "
+                                            f"which does not hold {c.get('to_text')!r}")
+        want = sorted((v["row"], v["col"], v["verdict"]) for v in tb.get("verdicts") or [])
+        got = sorted((v["row"], v["col"], v["verdict"]) for v in bd.get("verdicts") or [])
+        if want != got:
+            problems.append(f"{bd['id']}: its verdicts do not match its table's")
+        for v in bd.get("verdicts") or []:
+            if not bd["start"] - TOLERANCE_S <= v["time"] <= bd["until"] + TOLERANCE_S:
+                problems.append(f"{bd['id']}: the verdict of row {v['row']}, column {v['col']} "
+                                f"shows at {v['time']}s, outside the board")
+
     erases = [e for e in bundle["events"] if e["type"] == "erase"]
     expected_erases = sum(1 for bd in bundle["boards"] for s in bd["states"] if s["erase"])
     if len(erases) != expected_erases:

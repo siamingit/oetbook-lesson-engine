@@ -318,7 +318,9 @@ FILE --call`, then one QA pass on those states:
 `qa_narration.py <L> --pages ... --states ... --name decisions --call`. A QA
 finding that is about on-screen text is a screens decision; a narrower true
 rule is applied to screen and narration together unless it contradicts a
-maintainer ruling (methodology §18).
+maintainer ruling (methodology §18). A mark on a table whose words are in more
+than one cell of its row gets its cell named in the section's narration
+`overrides.json` (ADR 009), re-rendered with `write_narration.py --render`, free.
 
 **final** (gate). Play `generated/lesson-player/player.html`.
 

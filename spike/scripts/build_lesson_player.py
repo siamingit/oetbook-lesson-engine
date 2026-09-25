@@ -54,7 +54,7 @@ from write_screens import (FRAME_CSS, TAG_LABELS, block_html,     # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-FORMAT_VERSION = "1.5"             # docs/04-LESSON-BUNDLE.md; 1.1 refs, 1.2 table boards, 1.3 board style, 1.4 table cells, 1.5 tense colours by lesson
+FORMAT_VERSION = "1.6"             # docs/04-LESSON-BUNDLE.md; 1.1 refs, 1.2 table boards, 1.3 board style, 1.4 table cells, 1.5 tense colours by lesson, 1.6 choice tables and marks in cells
 READING_HOLD_S = 2.5               # the pointer stays on the last word read this long
 # Everything block_html draws from; pipeline notes (anchor, from_beats, note,
 # relabelled, ruling) stay in screens.json.
@@ -64,7 +64,9 @@ BLOCK_FIELDS = ("id", "type", "label", "text", "term", "explanation", "left", "r
                 # 1.2, table boards (ADR 007)
                 "core", "col_widths", "font", "typed", "beside",
                 # 1.3, kinds of content and the board style (ADR 008)
-                "role", "style", "card", "pin", "fold_into", "flow", "band")
+                "role", "style", "card", "pin", "fold_into", "flow", "band",
+                # 1.6, choice tables (ADR 009)
+                "verdicts")
 
 
 def block_data(b: dict) -> dict:
@@ -117,6 +119,66 @@ def table_cells(b: dict) -> list[tuple[int, int]]:
     return [(r, c) for r, c, x in cells if x for w in x.split() if norm(w)]
 
 
+def table_cell_of(table: dict, text: str, row: int | None) -> tuple[int, int] | None:
+    """The cell a mark on a table lands in (bundle 1.6): the first cell of the
+    state's row that holds the phrase, else the first cell of the table that
+    does; None when only the header holds it."""
+    rows = table.get("rows") or []
+    if not text:
+        return None
+    order = ([row] if row is not None and row < len(rows) else []) + list(range(len(rows)))
+    for r in order:
+        for k, x in enumerate(rows[r]):
+            if text in x:
+                return (r, k)
+    return None
+
+
+def table_verdicts(bd: dict, table: dict) -> list[dict]:
+    """A choice table's verdicts with the time each shows (bundle 1.6): a wrong
+    cell fades at its first strike, or when its row is settled (the row's last
+    speech ends) if never struck; the right cell takes its tick at its first
+    circle, or when the row's last wrong cell fades; a possible cell is marked
+    when the row is settled. From then until the board's `until`."""
+    vs = table.get("verdicts") or []
+    if not vs:
+        return []
+    strikes: dict[tuple[int, int], float] = {}
+    circles: dict[tuple[int, int], float] = {}
+    settle: dict[int, float] = {}
+    for s in bd["states"]:
+        if s.get("row") is not None:
+            settle[s["row"]] = max(settle.get(s["row"], 0.0), s["end"])
+        for u in s["utterances"]:
+            for c in u["cues"]:
+                if c.get("block") != table["id"] or c.get("row") is None:
+                    continue
+                if c["type"] == "strike":
+                    strikes.setdefault((c["row"], c["col"]), c["time"])
+                elif c["type"] == "circle":
+                    circles.setdefault((c["row"], c["col"]), c["time"])
+    last = bd["states"][-1]["end"] if bd["states"] else bd["start"]
+    out = []
+    for r in sorted({v["row"] for v in vs}):
+        end = settle.get(r, last)
+        row_vs = [v for v in vs if v["row"] == r]
+        fades = []
+        for v in row_vs:
+            if v["verdict"] == "wrong":
+                t = min(strikes.get((r, v["col"]), end), end)
+                fades.append(t)
+                out.append({"row": r, "col": v["col"], "verdict": "wrong", "time": round(t, 3)})
+        for v in row_vs:
+            if v["verdict"] == "right":
+                t = circles.get((r, v["col"]))
+                if t is None or t > end:
+                    t = max(fades) if fades else end
+                out.append({"row": r, "col": v["col"], "verdict": "right", "time": round(t, 3)})
+            elif v["verdict"] == "possible":
+                out.append({"row": r, "col": v["col"], "verdict": "possible", "time": round(end, 3)})
+    return sorted(out, key=lambda x: (x["time"], x["row"], x["col"]))
+
+
 def table_focus(bd: dict, table: dict, cells: list[tuple[int, int]]) -> list[dict]:
     """The spotlight of a table board, stated for the renderer (bundle 1.2): at
     each time, the row in focus and the cell highlighted, or null for the
@@ -139,7 +201,7 @@ def table_focus(bd: dict, table: dict, cells: list[tuple[int, int]]) -> list[dic
             for c in u["cues"]:
                 if c.get("block") != tid or c["type"] in ("reveal", "pause"):
                     continue
-                if c["type"] == "type":
+                if c["type"] == "type" or c.get("row") is not None:     # 1.6: a mark names its cell
                     ev.append((c["time"], c["row"], c["col"]))
                     continue
                 hits = [(r, k) for r, rw in enumerate(table.get("rows") or [])
@@ -415,8 +477,26 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
         bd["table"] = table_of.get(bd["id"])
         for s in bd["states"]:
             s["row"] = row_of.get(s["id"]) if bd["table"] else None
+        # 1.6: a mark on the table names the cell it lands in, the state's row
+        # first, as the narration audit requires its phrase to be in one cell
+        if bd["table"]:
+            tb = blocks_all[bd["table"]]
+            for s in bd["states"]:
+                for u in s["utterances"]:
+                    for c in u["cues"]:
+                        if c.get("block") == bd["table"] and c["type"] not in ("reveal", "pause", "type") \
+                                and c.get("row") is None:
+                            rc = table_cell_of(tb, c.get("text") or "", s["row"])
+                            if rc:
+                                c.update(row=rc[0], col=rc[1])
+                        if c["type"] == "arrow" and (c.get("to_block") or c.get("block")) == bd["table"] \
+                                and c.get("to_row") is None:
+                            rc = table_cell_of(tb, c.get("to_text") or "", s["row"])
+                            if rc:
+                                c.update(to_row=rc[0], to_col=rc[1])
         bd["focus"] = (table_focus(bd, blocks_all[bd["table"]], table_cells(blocks_all[bd["table"]]))
                        if bd["table"] else [])
+        bd["verdicts"] = table_verdicts(bd, blocks_all[bd["table"]]) if bd["table"] else []
         # 1.3: a pinned block stays from its reveal to the board's end; a
         # word mark colours a changing word by its word class from the moment
         # its change card appears or the word is first marked, whichever is

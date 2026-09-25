@@ -432,13 +432,18 @@ function applyMarks(s, t, erased) {
     const el = blockEls.get(c.block);
     if (!el) continue;
     if (c.type === "arrow") {
-      const from = wrapPhrase(el, c.text, "mk-arrow-from");
-      const toEl = blockEls.get(c.to_block || c.block);
+      const cell = (e, r, k) => e && r != null
+        ? e.querySelector('tbody tr[data-row="' + r + '"] td[data-col="' + k + '"]') || e : e;
+      const from = wrapPhrase(cell(el, c.row, c.col), c.text, "mk-arrow-from");
+      const toEl = cell(blockEls.get(c.to_block || c.block), c.to_row, c.to_col);
       const to = toEl ? wrapPhrase(toEl, c.to_text, "mk-arrow-to") : null;
       if (from && to) arrows.push({ from, to });
       continue;
     }
-    const span = wrapPhrase(el, c.text, c.type === "point" ? "mk-point" : "mk-" + c.type);
+    // a mark on a table names its cell (bundle 1.6) and is drawn in that cell only
+    const scope = c.row != null
+      ? el.querySelector('tbody tr[data-row="' + c.row + '"] td[data-col="' + c.col + '"]') || el : el;
+    const span = wrapPhrase(scope, c.text, c.type === "point" ? "mk-point" : "mk-" + c.type);
     if (!span) continue;
     if (c.type === "point") pointSpan = span;
     if (c.type === "replace") span.dataset.with = c.with || "";
@@ -609,6 +614,18 @@ function applyFocus(bd, t) {
   return row === null ? null : { row, col, el };
 }
 
+// A choice table's verdicts (bundle 1.6): from each one's time to the board's
+// end, a wrong cell is faded and the right one carries its tick. The look is
+// blocks.css's (.v-wrong, .v-right, .v-possible).
+function applyVerdicts(bd, t) {
+  const el = bd.table && blockEls.get(bd.table);
+  if (!el || !(bd.verdicts || []).length) return;
+  for (const v of bd.verdicts) {
+    const td = el.querySelector('tbody tr[data-row="' + v.row + '"] td[data-col="' + v.col + '"]');
+    if (td) td.classList.toggle("v-" + v.verdict, v.time <= t);
+  }
+}
+
 function offsetIn(el, root) {
   let x = 0, y = 0, e = el;
   while (e && e !== root) { x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; }
@@ -706,6 +723,7 @@ function renderFrame(t) {
   applyMarks(s, t, erased);
   applyTyping(bd, t);
   const focus = applyFocus(bd, t);
+  applyVerdicts(bd, t);
   const notes = placeBeside(bd, s && !erased ? s : null);
   camera(bd, focus, notes, jumped);
   drawParts(bd, s && !erased ? s : null, t, jumped);

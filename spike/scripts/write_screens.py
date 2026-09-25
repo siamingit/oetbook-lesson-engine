@@ -291,6 +291,16 @@ note never repeats the table's text, it adds to it. The answer itself is in \
 the cell, never a separate answer row.
 Everything else on the slide is taught through the table: a table board has \
 no other fixed block.
+  - CHOICE TABLES (maintainer, 2026-09-25; bundle 1.6). Where each row of the \
+slide's table gives versions of one sentence for the class to choose between \
+("Indefinite | Definite | Zero", "One | Two"), nothing is typed: end EVERY cell \
+of the table body with its verdict as the teacher taught it, {{right}} for the \
+correct version, {{wrong}} for a wrong one, {{possible}} for one that is also \
+acceptable or correct only in some context: "Mary has been experiencing pain in \
+the stomach {{right}}". Each row has at least one {{right}}. The player fades \
+each wrong cell and puts a tick on the right one as the narration settles the \
+row. A table whose empty cells are typed in ("Wrong | Right") is not a choice \
+table and has no verdicts.
 
 Every graphic element carries meaning. Green always means correct, red always \
 means wrong, blue always means a term, a rule or teacher emphasis, a family \
@@ -636,9 +646,27 @@ def unflatten(topics: list[dict]) -> None:
                     b["rows"] = [[c.strip() for c in r.split("|")] if isinstance(r, str) else r
                                  for r in b["rows"]]
                     untype_rows(b)
+                    unverdict_rows(b)
 
 
 TYPED = re.compile(r"\[\[(.*?)\]\]")
+VERDICT = re.compile(r"\s*\{\{\s*(right|wrong|possible)\s*\}\}\s*$", re.I)
+
+
+def unverdict_rows(b: dict) -> None:
+    """A choice table's verdicts (CHOICE TABLES, {{right}} / {{wrong}} /
+    {{possible}} at the end of a cell; bundle 1.6) leave the cell's text and
+    become `verdicts`: [{row, col, verdict}], rows and columns from 0. A table
+    with none gets no field, so older tables are unchanged."""
+    verdicts = []
+    for r, row in enumerate(b["rows"]):
+        for c, cell in enumerate(row):
+            m = VERDICT.search(cell)
+            if m:
+                row[c] = cell[:m.start()]
+                verdicts.append({"row": r, "col": c, "verdict": m.group(1).lower()})
+    if verdicts:
+        b["verdicts"] = verdicts
 
 
 def untype_rows(b: dict) -> None:
@@ -862,7 +890,12 @@ FIXED_FORBIDS = ["video", "recording", "this session", "the session", "the class
 REGISTER_WORDS = re.compile(
     r"\b(formal|informal|formality|common|uncommon|rare|rarely|natural|unnatural|"
     r"conversational|colloquial|casual|polite|preferred|prefer|native speakers?|"
-    r"emotional|sounds?|everyday english|standard english|plain english|"
+    r"emotional|everyday english|standard english|plain english|"
+    # "sound" as a verb that judges a word ("it sounds emotional", "sounds
+    # like"), not the noun of pronunciation ("a vowel sound"; Grammar 4)
+    r"sounds?\s+(?:(?:more|less|very|too|quite|rather|a bit|a little)\s+)?"
+    r"(?:formal|informal|natural|unnatural|polite|rude|emotional|odd|strange|better|worse|"
+    r"professional|casual|friendly|academic|old-fashioned|awkward|nicer|softer|stronger|like)|"
     r"belongs? to (?:speaking|writing|speech)|(?:only|mainly) (?:in|for) (?:your )?(?:speaking|writing)|"
     r"fine in (?:speaking|writing)|(?:less|more) often than|(?:less|more) frequent)\b", re.I)
 # The last two lines added 2026-09-24: page 14's narration said "Usually is
@@ -1144,6 +1177,8 @@ def apply_overrides(out_dir: Path, blocks: dict[str, dict]) -> list[dict]:
             b["rows"] = [[c.strip() for c in r.split("|")] for r in fields["rows"]]
             b.pop("typed", None)
             untype_rows(b)
+            b.pop("verdicts", None)          # and the verdicts of a choice table (1.6)
+            unverdict_rows(b)
         applied.append({"block": bid, "expect": expect, "replaced": before, "with": fields})
     return applied
 
@@ -1193,8 +1228,11 @@ def block_height(b: dict) -> float:
     elif t == "category_card":
         h = LABEL_LINE + 0.02 + wrapped_lines(b["text"], CHARS_PER_LINE) * LINE + PAD_V
     elif t == "contents_item":
-        # the category in body type, its sections on small label lines
-        h = LINE + wrapped_lines(b.get("explanation"), int(CHARS_PER_LINE * 3.2 / 2.4)) * LABEL_LINE
+        # the category in body type, its sections on small label lines (none
+        # in a deck with no contents slide), and the item's own padding, 1cqh
+        # top and bottom (.citem), not a block's
+        lines = wrapped_lines(b["explanation"], int(CHARS_PER_LINE * 3.2 / 2.4)) if b.get("explanation") else 0
+        return LINE + lines * LABEL_LINE + 0.02
     elif t == "lesson_title":
         h = 0.06 * 1.2 * wrapped_lines(b["text"], 40) + 0.08
     elif t == "timeline":
@@ -1276,7 +1314,7 @@ def fit_table(b: dict) -> bool:
 def is_table_topic(t: dict, b: dict) -> bool:
     """A topic taught as a table board: its fixed table has typed cells, or its
     thoughts go row by row."""
-    return b["type"] == "table" and (bool(b.get("typed")) or any(
+    return b["type"] == "table" and (bool(b.get("typed")) or bool(b.get("verdicts")) or any(
         ROW_PURPOSE.match(h.get("purpose") or "") for h in t["thoughts"]))
 
 
@@ -1521,9 +1559,10 @@ def one_board_per_slide(topics: list[dict], blocks: dict, pages: list[int]) -> l
 
 def is_summary_table(b: dict) -> bool:
     """A tense summary table (Verb tenses, slides 5-6). A table whose cells are
-    typed live is a slide's exercise table, taught as a table board."""
+    typed live, or chosen between (a choice table, 1.6), is a slide's exercise
+    table, taught as a table board."""
     return (b["type"] == "table" and len(b.get("header") or []) >= 3
-            and len(b.get("rows") or []) >= 4 and not b.get("typed"))
+            and len(b.get("rows") or []) >= 4 and not b.get("typed") and not b.get("verdicts"))
 
 
 def summary_table_layout(topics: list[dict], blocks: dict, pages: list[int]) -> dict:
@@ -2096,6 +2135,18 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
         if others:
             warn(bd["id"], f"a table board has other fixed blocks {others}; everything else "
                            "is taught through the table")
+        # a choice table (bundle 1.6): every body cell has its verdict, each row
+        # at least one right, and nothing is typed
+        if tb.get("verdicts"):
+            have = {(v["row"], v["col"]) for v in tb["verdicts"]}
+            for r, row in enumerate(tb.get("rows") or []):
+                missing = [c + 1 for c in range(len(row)) if (r, c) not in have]
+                if missing:
+                    fail(tb["id"], f"choice table: row {r + 1}, columns {missing} have no verdict")
+                if not any(v["row"] == r and v["verdict"] == "right" for v in tb["verdicts"]):
+                    fail(tb["id"], f"choice table: row {r + 1} has no right cell")
+            if tb.get("typed"):
+                fail(tb["id"], "a choice table has typed cells; its cells are chosen, not typed")
         taught = set()
         for h in topic["thoughts"]:
             m = ROW_PURPOSE.match(h.get("purpose") or "")
@@ -2386,6 +2437,18 @@ FRAME_CSS = """
 .tbl.core .tw{color:#185FA5}
 .tbl.core.spot tbody tr:not(.focus) td{opacity:.3}
 .tbl.core td.active{background:rgba(250,199,117,.35);box-shadow:inset 0 0 0 max(1px,.25cqh) #FAC775}
+/* bundle 1.6: a gap in a printed sentence is a blank line of fixed width, the
+   answer typed onto it; a choice table's wrong cell fades and its right cell
+   takes a green tick (docs/02-DESIGN-SYSTEM.md §7, "Tables") */
+.tbl.core .tw.gap{display:inline-block;min-width:3.2em;text-align:center;
+  border-bottom:max(1px,.18cqh) solid #5F5E5A;line-height:1.15}
+.tbl.core .tw.gap.tw-none{visibility:visible;color:transparent}
+.tbl.core td.v-wrong{opacity:.32}
+.tbl.core.spot tbody tr:not(.focus) td.v-wrong{opacity:.15}
+.tbl.core td.v-right{position:relative;background:#EAF3DE}
+.tbl.core td.v-right::after{content:"\\2713";position:absolute;right:.6cqh;bottom:.6cqh;width:2.8cqh;
+  height:2.8cqh;border-radius:50%;background:#639922;color:#fff;font-size:1.9cqh;line-height:2.8cqh;
+  text-align:center;font-weight:500}
 .blk.beside{position:absolute;z-index:3;max-width:58%;margin:0}
 .plain.beside{background:#fff;border:1px solid #E8E6DF;padding:1.2cqh 2cqw}
 /* the lesson's opening boards (docs/00-PRODUCT.md §2a) */
@@ -2551,9 +2614,15 @@ def core_table_html(b: dict, bid: str) -> str:
     def cell(text: str, parts: list[tuple[int, dict]]) -> str:
         out, pos = "", 0
         printed = lambda x: esc(x).replace(" / ", "<br>")
+        # a typed part inside printed words is a gap in a sentence, drawn as a
+        # blank line until it is typed (bundle 1.6); one that fills its cell is not
+        outside = text
+        for _, ty in sorted(parts, key=lambda p: -p[1]["start"]):
+            outside = outside[:ty["start"]] + " " + outside[ty["start"] + len(ty["text"]):]
+        cls = "tw gap" if re.search(r"[A-Za-z0-9]", outside) else "tw"
         for i, ty in sorted(parts, key=lambda p: p[1]["start"]):
             out += printed(text[pos:ty["start"]])
-            out += '<span class="tw" data-typed="' + str(i) + '">' + esc(ty["text"]) + "</span>"
+            out += '<span class="' + cls + '" data-typed="' + str(i) + '">' + esc(ty["text"]) + "</span>"
             pos = ty["start"] + len(ty["text"])
         return out + printed(text[pos:])
     typed = list(enumerate(b.get("typed") or []))

@@ -4,14 +4,15 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.5. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.6. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
 2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
 table boards, on 2026-09-25 (docs/adr/007-table-boards.md); 1.3, the board style
 and trimmed clips, on 2026-09-25 (docs/adr/008-board-style.md); 1.4, the style on
 table boards and per-board colours, the same day (ADR 008, extension); 1.5, tense
-colours by lesson, the same day (ADR 008, second extension). A change to it is a
-new format version (§3), recorded in a new ADR.
+colours by lesson, the same day (ADR 008, second extension); 1.6, choice tables,
+gaps and marks in table cells, the same day (docs/adr/009-choice-tables-and-gaps.md).
+A change to it is a new format version (§3), recorded in a new ADR.
 
 | Version | Date | Change |
 |---|---|---|
@@ -21,6 +22,7 @@ new format version (§3), recorded in a new ADR.
 | 1.3 | 2026-09-25 | the board style (docs/02-DESIGN-SYSTEM.md §7c): a block's `role`, `style`, `card`, `pin`, `fold_into`, `flow`, `band`; a board's `pinned` and `wordmarks`; an utterance's `clip_in` and `clip_out`; rules 14 to 17 |
 | 1.4 | 2026-09-25 | a word mark may name a table cell (`row`, `col`); a board's `palette` (ADR 008, extension) |
 | 1.5 | 2026-09-25 | the lesson's `tense_colours`; a board's `palette` is no longer written (word-class colours are the same everywhere; ADR 008, second extension) |
+| 1.6 | 2026-09-25 | choice tables: a table block's `verdicts`, a board's `verdicts` with times; a mark on a core table names its cell (`row`, `col`), an arrow's end its cell (`to_row`, `to_col`); a typed part inside printed words carries the class `gap`; rules 6, 10 and 18 (ADR 009) |
 
 ---
 
@@ -142,7 +144,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.5"` |
+| `format_version` | string | `"1.6"` |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -217,6 +219,7 @@ A block is one thing on a board. Each carries its data and its rendered `html`.
 | `fold_into` | 1.3. The block this one is part of: it is not drawn, and every cue on it is given to that block (§5, `cues`) |
 | `flow` | 1.3. Its place in a change's flow on its board: `pill`, `source`, `card`, `result` or `note`; the board shows them in that order |
 | `band` | 1.3. On the first change card of a run, the process pill's text ("Nominalisation") |
+| `verdicts` | 1.6. A choice table (a core `table` whose rows offer versions of one sentence to choose between): each body cell's verdict, `[{row, col, verdict}]`, `verdict` `right`, `wrong` or `possible` (also acceptable, or correct only in some context). Null for any other table |
 | `beside` | 1.2. a working block drawn beside a table row: `{block, row}`, the table and the row (from 0), or row null for a note about the whole table; otherwise null |
 | `items` | `timeline`: its diagram parts in order (below) |
 | `tags` | tense tags: `[{text, family, label}]`; `label` is what the chip says ("up to now") |
@@ -242,7 +245,8 @@ two things must hold, because cues and the reading pointer depend on them:
 - **Hooks.** The block's element carries `data-id="<block id>"`; each diagram part
   carries `data-part="<part id>"`. In a core table (1.2), each body row carries
   `data-row`, each cell `data-col`, and each typed part is an element
-  `data-typed="<its index in typed>"` holding its final text.
+  `data-typed="<its index in typed>"` holding its final text. 1.6: a typed
+  part inside printed words (a gap in a sentence) also carries the class `gap`.
 
 ### `boards[]`
 
@@ -262,6 +266,7 @@ two things must hold, because cues and the reading pointer depend on them:
 | `wordmarks` | 1.3. `[{block, text, cls, time}]`: from `time` to the board's `until`, `text` in `block` is marked `cls`, a word class (its colour, docs/02-DESIGN-SYSTEM.md §7c) or `slide-underline` (the slide's own underline). 1.4: with `row` and `col`, `text` is marked inside that table cell only |
 | `palette` | 1.4 only. Not written from 1.5: every word class has one colour everywhere. A reader treats it as absent |
 | `focus` | 1.2. On a table board, the spotlight in time order: `[{time, row, col}]`, from each `time` the row in focus and the cell highlighted (both from 0; `col` null for the row alone; `row` null for the whole table, nothing dimmed). Empty on other boards |
+| `verdicts` | 1.6. On a board whose table is a choice table, `[{row, col, verdict, time}]` in time order: from `time` to the board's `until`, the cell shows its verdict (rule 18). A wrong cell's time is its first strike, or the end of its row's last speech; a right cell's is its first circle, or when its row's last wrong cell fades; a possible cell's is the end of its row's last speech. Empty otherwise |
 | `states` | the working-layer states in order |
 
 ### `states[]`
@@ -317,7 +322,7 @@ with the bundle.
 | `time` | when it takes effect: a lead before its word, or for a pause the end of the utterance |
 | `time_end` | the end of its word; for a pause, the end of the silence; for a `type`, the end of the typing |
 | `retargeted_from` | 1.3. Not in the bundle: a cue on a folded block names the block it is folded into, with its phrase as that block writes it, and a cue on a change card names the phrase without its word class ("Analysis", not "Analysis (noun)") |
-| `typed`, `row`, `col` | 1.2. A `type` cue: the typed part it types (its index in the table's `typed`), and that part's row and column |
+| `typed`, `row`, `col` | 1.2. A `type` cue: the typed part it types (its index in the table's `typed`), and that part's row and column. 1.6: a mark cue on a board's core table also carries `row` and `col`, the cell it is drawn in: the first cell of its state's row that holds its phrase, else the first cell of the table that does, unless the narration names the cell (its `overrides.json`); an arrow whose end is in the table carries `to_row` and `to_col` the same way |
 | `block` | the block (or diagram part, for a reveal) it acts on; null for a pause |
 | `text` | a mark's phrase inside `block`; a pause's description, for review |
 | `to_block`, `to_text` | an arrow's end |
@@ -350,7 +355,9 @@ These are the only rules. Every time and target they use is in the bundle.
    `state.reveal` for a working one.
 6. **A mark** is shown from its `time` until its state's `until`, on `text` as
    it occurs in its block's words (the narration audit and `check_marks.py`
-   verify it is there). It
+   verify it is there); a mark with `row` and `col` (1.6) is drawn on `text`
+   inside that table cell, and an arrow's end with `to_row` and `to_col` on
+   `to_text` inside that cell. It
    may cross elements inside the block, such as a tense chip. An arrow joins `text` in `block` to `to_text` in
    `to_block`. A replace strikes `text` and writes `with` above it.
 7. **A tense chip** sits under the first occurrence of each tag's `text` in each
@@ -366,7 +373,9 @@ These are the only rules. Every time and target they use is in the bundle.
     `time`, typed in from `time` to `time_end` (the share of its characters
     shown grows evenly), and shown whole after. It keeps its final size while
     hidden, so the table never reflows. While typing it may be split in the
-    renderer's DOM; for rule 8 it is still counted as one text.
+    renderer's DOM; for rule 8 it is still counted as one text. 1.6: a part
+    with the class `gap` is drawn as a blank line of fixed width before its cue,
+    and its answer is typed onto that line.
 11. **The spotlight** (1.2) on a table board is the latest `focus` entry whose
     `time` ≤ `t`: rows other than `row` are dimmed and the cell (`row`, `col`)
     is highlighted; with `row` null nothing is dimmed.
@@ -385,6 +394,10 @@ These are the only rules. Every time and target they use is in the bundle.
 17. **A trimmed clip** (1.3) plays from `clip_in`: lesson time is the utterance's
     `start` plus the audio's position minus `clip_in` (rule 1), and the utterance
     ends at `clip_out`.
+18. **A verdict** (1.6) on a choice table's cell is shown from its `time` until
+    the board's `until`, through every change of the spotlight: a `wrong` cell
+    is faded, a `right` cell carries a tick on the green of "correct", a
+    `possible` cell is left as it is (docs/02-DESIGN-SYSTEM.md §7, "Tables").
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and
@@ -399,7 +412,7 @@ no cues and no provenance.
 
 | Field | Meaning |
 |---|---|
-| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.5"` |
+| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.6"` |
 | `lesson` | the same object as `bundle.json`'s `lesson` |
 | `sections[]` | `{id, title, category, start, end, narration_text, board_text, boards}` |
 | `sections[].narration_text` | everything said in the section, one paragraph per board |

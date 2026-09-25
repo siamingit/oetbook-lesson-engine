@@ -416,6 +416,23 @@ row on that board:
   readable, and splitting it would break the rule above. A table that
   does not fit even at 1.9% fails the audit; its cells must be shorter.
 
+- **Choice tables** (maintainer, 2026-09-25; docs/adr/009). Where each row
+  gives versions of one sentence to choose between ("Indefinite / Definite
+  / Zero"), nothing is typed. As the narration settles a row, each wrong
+  cell fades as its wrong words are struck, and the right cell takes a tick
+  on the pale green of "correct" as it is circled. A version that is also
+  acceptable, or right only in some context, is neither faded nor ticked; the
+  narration says when it can be used. The fades and ticks stay to the end of
+  the board, so the whole table ends as a summary of the answers.
+- **Gaps.** A typed part inside a printed sentence is a gap: a blank line of
+  fixed width, whatever the answer's length, with the answer typed onto it.
+  An answer that fills its own cell is not drawn until it is typed.
+- **A text with gaps** (a letter to complete) is taught as a table of one
+  column: its greeting as the header, a row per paragraph, its closing last.
+  The spotlight moves paragraph by paragraph.
+- A mark on a table is drawn in one cell: the cell of the row being taught
+  that holds its words.
+
 A small table written while teaching (a working note, not the slide's
 own content) stays small: at most four columns and five rows.
 
