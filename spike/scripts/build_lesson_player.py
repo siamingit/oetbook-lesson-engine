@@ -54,7 +54,7 @@ from write_screens import (FRAME_CSS, TAG_LABELS, block_html,     # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-FORMAT_VERSION = "1.4"             # docs/04-LESSON-BUNDLE.md; 1.1 refs (ADR 006), 1.2 table boards (ADR 007), 1.3 board style (ADR 008), 1.4 its table and palette extension
+FORMAT_VERSION = "1.5"             # docs/04-LESSON-BUNDLE.md; 1.1 refs, 1.2 table boards, 1.3 board style, 1.4 table cells, 1.5 tense colours by lesson
 READING_HOLD_S = 2.5               # the pointer stays on the last word read this long
 # Everything block_html draws from; pipeline notes (anchor, from_beats, note,
 # relabelled, ruling) stay in screens.json.
@@ -272,8 +272,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             links_of[pre + sb["id"]] = (
                 [dict(x, block=pre + x["block"], card=(pre + x["card"]) if x.get("card") else None)
                  for x in sb.get("wordlinks") or []],
-                [dict(x, block=pre + x["block"]) for x in sb.get("slidemarks") or []],
-                sb.get("palette") or {})
+                [dict(x, block=pre + x["block"]) for x in sb.get("slidemarks") or []])
             if sb.get("table"):
                 table_of[pre + sb["id"]] = pre + sb["table"]
             for ss in sb["states"]:
@@ -287,6 +286,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                 nb["fold_into"] = pre + nb["fold_into"]
             if not nb.get("role") and nb["type"] == "plain":
                 nb["role"] = "slide"        # the title board's description: the lesson's own words
+            if not info["lesson"].get("tense_lesson"):
+                nb["tense_neutral"] = True
             blocks_all[pre + bid] = {**block_data(nb), "html": block_html(nb),
                                      "_tokens": block_tokens(b)}     # display words (1.3)
         section_marks.append({"id": tag, "title": sec["title"], "pages": pages,
@@ -423,8 +424,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
         # underline is there from the start
         bd["pinned"] = {i: s["reveal"][i] for s in bd["states"] for i in s["working"]
                         if blocks_all[i].get("pin") and i in s["reveal"]}
-        links, smarks, palette = links_of.get(bd["id"], ([], [], {}))
-        bd["palette"] = palette            # 1.4: a word class's colour on this board, where not its main one
+        links, smarks = links_of.get(bd["id"], ([], []))
         shown = {i: bd["start"] for i in bd["fixed"]}
         for s in bd["states"]:
             for i, at in s["reveal"].items():
@@ -485,6 +485,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                              "intro": m["intro"], "category": cat_ids.get(m["category_title"]),
                              "start": start, "end": end, "boards": m["boards"]})
     lesson = {"id": L.name, "title": info["lesson"]["title"],
+              # 1.5: tense colours are drawn only in a lesson about tenses
+              "tense_colours": bool(info["lesson"].get("tense_lesson")),
               "description": info["lesson"].get("description"),
               "categories": [{"id": cid, "title": title,
                               "sections": [s["id"] for s in sections_out if s["category"] == cid]}

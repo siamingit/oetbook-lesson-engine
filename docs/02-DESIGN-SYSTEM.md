@@ -234,7 +234,8 @@ sits**, not the tense name.
 | Future | all future forms | `#D4537E` pink | `#4B1528` | `#993556` |
 
 Family colours appear **only** on category cards, timelines and table
-headers, never on error or answer rows. Present-perfect teal and
+headers, never on error or answer rows, and **only in a tense lesson**
+(§7c): elsewhere tense labels are drawn neutral. Present-perfect teal and
 "correct" green must never be confused; that is why they differ.
 
 ---
@@ -558,16 +559,26 @@ matched only in its own forms (analyse, analysed), never by a shared stem
 phrase that begins with a preposition ("on a daily basis") is not a noun
 phrase and stays uncoloured.
 
-**A board's palette.** No set of four colours is clear of all eight tense
-colours and still far enough apart. So each word class has alternates, near
-its own hue and 20 or more from every tense colour: verb `#0A8DB8`,
-`#1B8BBB`; noun `#0A84B8`, `#0A8DB8`; adjective `#008299`, `#3B8D9B`; clause
-`#C200C2`, `#DF00EB`. On a board that shows a tense colour too close to a
-class's main colour, that class takes its first alternate that is clear of
-everything on the board (Grammar 3: adjectives on the Non-physical
-complaints board, beside an "up to now" label; verbs on the Formal
-time-related expressions board, beside a "now" label). A board that no
-choice can clear fails the audit.
+**Word-class colours are the same everywhere; tense colours only in tense
+lessons** (maintainer, 2026-09-25, replacing per-board alternates). A lesson
+is a tense lesson when the maintainer says so at the source gate
+(`build_sections.py --tense-lesson yes`; Grammar 1 and 2 are). Only a tense
+lesson draws the tense family colours (§5a). In any other lesson, a tense
+label keeps its words ("up to now", "now") and is drawn neutral, as are
+timelines, category cards and table headers that would carry a family
+colour. The audit fails a tense colour in a lesson that is not about tenses,
+and, in a tense lesson, a board where a word-class colour and a tense colour
+it shows are too close (difference under 20).
+
+**A word's class from grammar.** Where the section does not say a word's
+class, the grammar of its change can: a noun made from a verb by its suffix
+(-ion, -ment, -ance, -ence, -al) makes its base a verb (interact →
+interaction, assess → assessment, comply → compliance, adhere →
+adherence), and one made from an adjective (-ity, -iety, -ness) makes its
+base an adjective (anxious → anxiety); the same in the other direction for a
+noun turned back into a verb (removal → remove). A word is left uncoloured
+only when its class is truly ambiguous: a participle such as "confused" can
+be an adjective or a verb.
 
 **The introduction** keeps its title and contents items; its description is
 a slide box, the lesson's own words.

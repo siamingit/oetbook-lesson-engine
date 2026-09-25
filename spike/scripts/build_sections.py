@@ -389,6 +389,20 @@ def main() -> None:
         out_path.write_text(json.dumps(previous, ensure_ascii=False, indent=1), encoding="utf-8")
         print(f"lesson description set (maintainer): {text!r}")
         return
+    if "--tense-lesson" in sys.argv:
+        # A lesson about tenses (docs/02-DESIGN-SYSTEM.md §7c): only its boards
+        # draw tense colours; in any other lesson tense labels are neutral.
+        if not previous:
+            raise SystemExit("run without --tense-lesson first")
+        v = sys.argv[sys.argv.index("--tense-lesson") + 1].lower()
+        if v not in ("yes", "no"):
+            raise SystemExit("--tense-lesson yes|no")
+        previous["lesson"]["tense_lesson"] = v == "yes"
+        by = sys.argv[sys.argv.index("--by") + 1] if "--by" in sys.argv else "maintainer"
+        previous["lesson"]["tense_lesson_by"] = f"{by} {datetime.date.today().isoformat()}"
+        write(out_path, previous)
+        print(f"tense lesson: {v} ({by})")
+        return
     if "--diagram-pages" in sys.argv:
         # Slides whose teaching is carried by a diagram: write_screens.py shows
         # their image to the model as a reference for the diagram's idea
@@ -512,6 +526,8 @@ def main() -> None:
                          if previous.get("lesson", {}).get("page_by") else {}),
                       "status": previous.get("lesson", {}).get("status", "from-deck"),
                       "description": previous.get("lesson", {}).get("description"),
+                      **({k: previous["lesson"][k] for k in ("tense_lesson", "tense_lesson_by")
+                          if k in previous.get("lesson", {})}),
                       "description_status": previous.get("lesson", {}).get("description_status")},
            "contents_page": contents_page,
            **({"intro": previous["intro"]} if "intro" in previous else {}),

@@ -95,13 +95,8 @@ def colour_distance(c1: str, c2: str) -> float:
     return math.sqrt((dL / SL) ** 2 + (dC / SC) ** 2 + (dH / SH) ** 2 + RT * (dC / SC) * (dH / SH))
 
 
-# A word class's alternate colours, nearest its hue first, each 20 or more
-# from every tense colour: a board that shows a tense colour too close to a
-# word class's main colour draws that class in its first alternate that is
-# clear of everything else on the board (maintainer, 2026-09-25).
-ALTERNATES = {"verb": ["#0A8DB8", "#1B8BBB"], "noun": ["#0A84B8", "#0A8DB8"],
-              "adjective": ["#008299", "#3B8D9B"], "clause": ["#C200C2", "#DF00EB"]}
 CLASS_ORDER = ["verb", "noun", "adjective", "clause"]
+TENSE_FAMILY_CLASS = re.compile(r"\bfam-(past|past_to_now|now|future)\b")
 
 
 def _class_keys(word_classes: set[str]) -> list[str]:
@@ -109,30 +104,21 @@ def _class_keys(word_classes: set[str]) -> list[str]:
     return [k for k in CLASS_ORDER if k in ks]
 
 
-def board_palette(word_classes: set[str], families: set[str]) -> dict[str, str]:
-    """The colour of each word class on one board: its main colour, or its
-    first alternate clear of the board's tense colours, of red and green and
-    of the other classes' colours. Only the classes that change are returned."""
-    tense = [c for f in families for c in TENSE_COLOURS.get(f, ())]
-    chosen: dict[str, str] = {}
-    for k in _class_keys(word_classes):
-        for c in [WORD_COLOURS[k]] + ALTERNATES[k]:
-            if all(colour_distance(c, x) >= MIN_DISTANCE
-                   for x in tense + list(RESERVED.values()) + list(chosen.values())):
-                chosen[k] = c
-                break
-        else:
-            chosen[k] = WORD_COLOURS[k]
-    return {k: c for k, c in chosen.items() if c != WORD_COLOURS[k]}
+def neutral_tense(html: str) -> str:
+    """A block drawn without tense colours: in a lesson that is not about
+    tenses, a tense label keeps its words and is drawn neutral (maintainer,
+    2026-09-25)."""
+    return TENSE_FAMILY_CLASS.sub("fam-none", html)
 
 
-def board_colour_clashes(word_classes: set[str], families: set[str],
-                         palette: dict[str, str] | None = None) -> list[str]:
-    """Pairs of colours on one board that are too alike, with the board's
-    palette: two word classes, a word class and a tense colour shown with it,
-    or a word class and red or green. Empty when the board reads clearly."""
+def board_colour_clashes(word_classes: set[str], families: set[str]) -> list[str]:
+    """Pairs of colours on one board that are too alike: two word classes, a
+    word class and a tense colour shown with it (in a tense lesson; elsewhere
+    tense labels are neutral and `families` is empty), or a word class and red
+    or green. Word-class colours are the same everywhere. Empty when the board
+    reads clearly."""
     out = []
-    col = {k: (palette or {}).get(k, WORD_COLOURS[k]) for k in _class_keys(word_classes)}
+    col = {k: WORD_COLOURS[k] for k in _class_keys(word_classes)}
     keys = list(col)
     for i, a in enumerate(keys):
         for b in keys[i + 1:]:
@@ -167,15 +153,6 @@ def board_classes_families(bd: dict, blocks: dict) -> tuple[set[str], set[str]]:
     return classes, fams
 
 
-def palette_style(palette: dict[str, str]) -> str:
-    """CSS custom properties that give a board its palette."""
-    out = []
-    for k, c in (palette or {}).items():
-        r, g, b = (int(c[i:i + 2], 16) for i in (1, 3, 5))
-        out.append(f"--wc-{k}:{c};--wc-{k}-soft:rgba({r},{g},{b},.11)")
-    return ";".join(out)
-
-
 def parse_side(text: str) -> tuple[str, str | None]:
     """'Analyse (verb)' -> ('Analyse', 'verb'); text without a class unchanged."""
     m = PAREN_CLASS.search(text or "")
@@ -192,6 +169,8 @@ def card_of(b: dict) -> dict:
     m = BECOMES.search(b.get("label") or "")
     if m and not (lc or rc):
         lc, rc = m.group(1).lower(), m.group(2).lower()
+    if not (lc or rc):
+        lc, rc = pair_classes(left, right)
     words = max(len(left.split()), len(right.split()))
     label_shown = bool(b.get("label")) and not m and not (lc or rc)
     return {"from": left, "from_class": lc, "to": right, "to_class": rc,
@@ -338,7 +317,6 @@ def derive(boards: list[dict], blocks: dict, section_title: str) -> None:
             links = uniq
         bd["wordlinks"] = links
         bd["slidemarks"] = marks
-        bd["palette"] = board_palette(*board_classes_families(bd, blocks))
         flow = not table_board and bool(links) and bool(sources)
         for b in on_board:
             if flow:
@@ -496,6 +474,10 @@ STYLE_CSS = """
   border-bottom:max(2px,.35cqh) solid var(--src-edge)}
 /* labels in sentence case, never in capitals */
 .lbl{text-transform:none;letter-spacing:.01em}
+/* the definition pill leads its board on every board, and a tense label is in
+   small sentence case like every other label */
+.body>.defpill,#cam>.defpill{order:-1}
+.tag::after{text-transform:none;letter-spacing:.02em}
 /* a flow reads top to bottom: pill, source, change cards, result, notes */
 .flow-pill{order:0} .flow-source{order:1} .flow-card{order:2} .flow-result{order:4} .flow-note{order:6}
 @media (prefers-reduced-motion: reduce){.wm{transition:none}}
@@ -615,6 +597,43 @@ def _forms(w: str) -> set[str]:
     return out
 
 
+NOUN_FROM_VERB = ["ation", "ition", "tion", "sion", "ion", "ment", "ance", "ence", "ancy", "ency", "al"]
+NOUN_FROM_ADJ = ["ity", "iety", "ness"]
+
+
+def _derived_from(base: str, stem: str) -> bool:
+    """Is `stem` (a derived word without its suffix) made from `base`?
+    interact/interac(tion), comply/compli(ance), adhere/adher(ence),
+    remove/remov(al), assess/assess(ment), anxious/anx(iety)."""
+    cands = {base, base[:-1] if base.endswith("e") else base,
+             base[:-1] + "i" if base.endswith("y") else base}
+    if any(stem == c or stem == c[:-1] for c in cands):
+        return True
+    return len(stem) >= 3 and (base.startswith(stem) if len(stem) >= 4 else base.startswith(stem)
+                               and len(base) - len(stem) <= 4)
+
+
+def pair_classes(a: str, b: str) -> tuple[str | None, str | None]:
+    """The classes the grammar of a change gives its two sides: a noun made
+    from a verb or an adjective by its suffix names its base's class
+    (interact -> interaction: verb, noun), in either direction
+    (removal -> remove: noun, verb). A participle (-ed, -ing) can be an
+    adjective or a verb, so it gives nothing."""
+    x = (a or "").strip(" .'\"").lower().split()
+    y = (b or "").strip(" .'\"").lower().split()
+    if len(x) != 1 or len(y) != 1:
+        return None, None
+    x, y = x[0], y[0]
+    for base, derived, flip in ((x, y, False), (y, x, True)):
+        if base.endswith(("ed", "ing")):
+            continue
+        for sufs, cls in ((NOUN_FROM_VERB, "verb"), (NOUN_FROM_ADJ, "adjective")):
+            suf = next((u for u in sufs if derived.endswith(u) and len(derived) > len(u) + 2), None)
+            if suf and _derived_from(base, derived[:-len(suf)]):
+                return (("noun", cls) if flip else (cls, "noun"))
+    return None, None
+
+
 def word_class(word: str, lex: dict[str, str], default: str | None = None) -> str | None:
     """A word or phrase's class: the lexicon (a phrase by its last word), the
     table header's default, then a suffix."""
@@ -671,8 +690,9 @@ def table_links(table: dict, lex: dict[str, str]) -> list[dict]:
         # in the change column the source is before the arrow and the new form after it
         line = ch.get("line") or rows[r][1]          # each line of the cell has its own arrow
         before, _, after = line.partition("→") if "→" in line else ("", "", line)
+        pf, pt = pair_classes(ch["from"], ch["to"])
         if ch["from"]:
-            fc = word_class(ch["from"], lex, dfrom)
+            fc = word_class(ch["from"], lex, dfrom) or pf
             if fc:
                 for col, text in ((0, rows[r][0]), (1, before)):
                     hit = _stem_find(text, ch["from"])
@@ -680,7 +700,7 @@ def table_links(table: dict, lex: dict[str, str]) -> list[dict]:
                         links.append({"block": table["id"], "row": r, "col": col, "text": hit,
                                       "cls": CLASS_KEY.get(fc, fc), "side": "from"})
         if ch["to"]:
-            tc = word_class(ch["to"], lex, dto)
+            tc = word_class(ch["to"], lex, dto) or pt
             if tc:
                 for col, text in ((1, after), (2, rows[r][2])):
                     hit = _stem_find(text, ch["to"])
@@ -694,8 +714,9 @@ def pairs_card(pairs: list[tuple], lex: dict[str, str]) -> dict:
     """A word-change note as a change card: its pairs, each side classed."""
     ps = []
     for f, fc, t, tc in pairs:
-        fc = fc or word_class(f, lex)
-        tc = tc or word_class(t, lex)
+        pf, pt = pair_classes(f, t)
+        fc = fc or word_class(f, lex) or pf
+        tc = tc or word_class(t, lex) or pt
         ps.append({"from": f.strip(" '\""), "from_class": fc and fc.lower(),
                    "to": t.strip(" '\""), "to_class": tc and tc.lower()})
     first = ps[0]

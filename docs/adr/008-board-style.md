@@ -102,3 +102,22 @@ their changes are written in the cells and in notes, not on change cards.
 - Bundle format 1.4: a word mark may name a table cell (`row`, `col`); a
   board's `palette`. Nothing else changes: block text, ids, cues, narration and
   audio are as they were.
+
+## Second extension, 2026-09-25: one palette; tense colours only in tense lessons
+
+Supersedes the per-board palette above, at the maintainer's word: word-class
+colours must be the same everywhere.
+
+- **No alternates.** Each word class has one colour in every lesson.
+- **Tense colours only in tense lessons.** The maintainer names a tense lesson
+  at the source gate (`--tense-lesson yes`; Grammar 1 and 2). In any other
+  lesson tense labels, timelines, category cards and table headers are drawn
+  neutral, their words kept. The audit fails a tense colour outside a tense
+  lesson, and in a tense lesson a board where a word-class colour and a tense
+  colour it shows are too alike; the fix there is a different board, not a
+  different colour.
+- **Word classes from grammar.** Where the section does not say a word's class,
+  the suffix of the noun made from it does (interact -> interaction: verb). A
+  word stays uncoloured only when its class is truly ambiguous (a participle).
+- Bundle format 1.5: the lesson's `tense_colours`; a board's `palette` is no
+  longer written.

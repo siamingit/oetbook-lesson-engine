@@ -2161,9 +2161,16 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
     # 7e. word-class colours (docs/02-DESIGN-SYSTEM.md §7c): never red or
     # green, and clearly apart from each other and from any tense colour on
     # the same board (CIEDE2000 difference of 20 or more)
+    tense_lesson = bool((out.get("lesson_title") or {}).get("tense_lesson"))
     for bd in out["boards"]:
         classes_, fams = board_style.board_classes_families(bd, blocks)
-        for clash in board_style.board_colour_clashes(classes_, fams, bd.get("palette")):
+        if not tense_lesson:
+            fams = set()                   # tense labels are neutral here
+            for i in list(bd["fixed"]) + [i for st in bd["states"] for i in st["working"]]:
+                if board_style.TENSE_FAMILY_CLASS.search(block_html(blocks[i])):
+                    fail(i, "a tense colour in a lesson that is not about tenses; tense labels "
+                            "are drawn neutral there (docs/02-DESIGN-SYSTEM.md §7c)")
+        for clash in board_style.board_colour_clashes(classes_, fams):
             fail(bd["id"], "colours too alike on one board: " + clash)
 
     # 7f. the board style is the standard (ADR 008): no block may be drawn in
@@ -2609,6 +2616,8 @@ def block_html(b: dict) -> str:
     extra = board_style.classes(b)
     if extra:
         html = html.replace('class="blk ', 'class="blk ' + extra + " ", 1)
+    if b.get("tense_neutral"):
+        html = board_style.neutral_tense(html)     # not a tense lesson: no tense colours
     return html
 
 
@@ -2700,8 +2709,7 @@ def state_html(bd: dict, s: dict, n: int, blocks: dict, topic_no: int,
                       .replace(f'<tr data-row="{s["row"]}">',
                                f'<tr data-row="{s["row"]}" class="focus">', 1))
     frame = ('<div class="frame"><div class="hdr">'
-             + esc(bd["title"]) + '</div><div class="body" style="'
-             + board_style.palette_style(bd.get("palette")) + '">'
+             + esc(bd["title"]) + '</div><div class="body">'
              + fixed_html
              + "".join(block_html(blocks[i]) for i in s["working"])
              + '</div><div class="ctl"><span>▶</span><span class="bar"></span>'
@@ -2794,8 +2802,13 @@ def render(lesson: Path, page: int, data: dict) -> int:
     for d in data["defects"]:
         printed = printed.replace(d["printed"], d["correction"])
     printed = printed.lower()
+    tense_lesson = bool(lesson_info.get("tense_lesson"))
     for b in blocks.values():
         b["role"] = block_role(b, printed)
+        if tense_lesson:
+            b.pop("tense_neutral", None)
+        else:
+            b["tense_neutral"] = True
     board_style.derive(boards, blocks, section["title"])
     result = {
         "lesson_title": lesson_info,

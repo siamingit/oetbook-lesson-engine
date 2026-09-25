@@ -4,12 +4,13 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.4. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.5. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
 2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
 table boards, on 2026-09-25 (docs/adr/007-table-boards.md); 1.3, the board style
 and trimmed clips, on 2026-09-25 (docs/adr/008-board-style.md); 1.4, the style on
-table boards and per-board colours, the same day (ADR 008, extension). A change to it is a
+table boards and per-board colours, the same day (ADR 008, extension); 1.5, tense
+colours by lesson, the same day (ADR 008, second extension). A change to it is a
 new format version (§3), recorded in a new ADR.
 
 | Version | Date | Change |
@@ -19,6 +20,7 @@ new format version (§3), recorded in a new ADR.
 | 1.2 | 2026-09-25 | table boards (docs/02-DESIGN-SYSTEM.md §7, "Tables"): a table block's `core`, `typed`, `col_widths`, `font`; a working block's `beside`; the `type` cue; a board's `table` and `focus`; a state's `row`; rules 10 to 13 (§5) |
 | 1.3 | 2026-09-25 | the board style (docs/02-DESIGN-SYSTEM.md §7c): a block's `role`, `style`, `card`, `pin`, `fold_into`, `flow`, `band`; a board's `pinned` and `wordmarks`; an utterance's `clip_in` and `clip_out`; rules 14 to 17 |
 | 1.4 | 2026-09-25 | a word mark may name a table cell (`row`, `col`); a board's `palette` (ADR 008, extension) |
+| 1.5 | 2026-09-25 | the lesson's `tense_colours`; a board's `palette` is no longer written (word-class colours are the same everywhere; ADR 008, second extension) |
 
 ---
 
@@ -140,7 +142,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.4"` |
+| `format_version` | string | `"1.5"` |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -157,6 +159,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | `id` | the lesson id |
 | `title` | the lesson title, from the deck |
 | `description` | one line in the maintainer's own words (docs/00-PRODUCT.md §2a); may be null |
+| `tense_colours` | 1.5. True in a lesson about tenses: only then do tense labels, timelines, category cards and table headers carry tense family colours; otherwise every block's `html` draws them neutral (docs/02-DESIGN-SYSTEM.md §7c) |
 | `categories` | `[{id, title, sections: [section id, …]}]`, in the order of the deck's contents slide, exactly as the contents board shows them. Empty for a deck with no contents slide. The introduction is in no category |
 
 ### `sections[]`
@@ -257,7 +260,7 @@ two things must hold, because cues and the reading pointer depend on them:
 | `table` | 1.2. On a table board, the id of its table; otherwise null |
 | `pinned` | 1.3. `{block: time}`: the working blocks that stay, from their reveal to the board's `until` |
 | `wordmarks` | 1.3. `[{block, text, cls, time}]`: from `time` to the board's `until`, `text` in `block` is marked `cls`, a word class (its colour, docs/02-DESIGN-SYSTEM.md §7c) or `slide-underline` (the slide's own underline). 1.4: with `row` and `col`, `text` is marked inside that table cell only |
-| `palette` | 1.4. `{word class: colour}`: the board draws these word classes in these colours instead of their main ones (docs/02-DESIGN-SYSTEM.md §7c, "A board's palette"); empty when all are the main ones |
+| `palette` | 1.4 only. Not written from 1.5: every word class has one colour everywhere. A reader treats it as absent |
 | `focus` | 1.2. On a table board, the spotlight in time order: `[{time, row, col}]`, from each `time` the row in focus and the cell highlighted (both from 0; `col` null for the row alone; `row` null for the whole table, nothing dimmed). Empty on other boards |
 | `states` | the working-layer states in order |
 
@@ -396,7 +399,7 @@ no cues and no provenance.
 
 | Field | Meaning |
 |---|---|
-| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.4"` |
+| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.5"` |
 | `lesson` | the same object as `bundle.json`'s `lesson` |
 | `sections[]` | `{id, title, category, start, end, narration_text, board_text, boards}` |
 | `sections[].narration_text` | everything said in the section, one paragraph per board |
