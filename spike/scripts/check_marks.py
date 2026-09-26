@@ -49,19 +49,24 @@ HARNESS = r"""
     if (overlapY < 0.5 * Math.min(a.height, b.height)) return false;
     return !(a.right <= b.left || b.right <= a.left);
   }
-  function neighbourRects(span) {
-    // The word before and the word after the mark, as ranges in the same block.
+  function neighbourRects(pieces) {
+    // The nearest letters or digits before and after the mark's phrase, walking
+    // the block's text as the player does: punctuation beside a phrase is not a
+    // neighbouring word, and a neighbour inside another wrapper is still found.
+    const root = pieces[0].closest(".blk") || pieces[0].parentElement;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let prev = null, next = null, seen = false, node;
+    while ((node = walker.nextNode())) {
+      if (pieces.some(p => p.contains(node))) { seen = true; continue; }
+      if (!seen) { const m = node.data.match(/([A-Za-z0-9]+)[^A-Za-z0-9]*$/); if (m) prev = [node, m.index, m[1].length]; }
+      else { const m = node.data.match(/^[^A-Za-z0-9]*([A-Za-z0-9]+)/);
+             if (m) { next = [node, m.index + m[0].length - m[1].length, m[1].length]; break; } }
+    }
     const rects = [];
-    for (const dir of ["prev", "next"]) {
-      let node = dir === "prev" ? span.previousSibling : span.nextSibling;
-      while (node && node.nodeType !== 3) node = dir === "prev" ? node.previousSibling : node.nextSibling;
-      if (!node) continue;
-      const text = node.data;
-      const m = dir === "prev" ? text.match(/(\S+)\s*$/) : text.match(/^\s*(\S+)/);
-      if (!m) continue;
-      const start = dir === "prev" ? m.index : m.index + m[0].length - m[1].length;
+    for (const x of [prev, next]) {
+      if (!x) continue;
       const r = document.createRange();
-      r.setStart(node, start); r.setEnd(node, start + m[1].length);
+      r.setStart(x[0], x[1]); r.setEnd(x[0], x[1] + x[2]);
       for (const rr of r.getClientRects()) rects.push(rr);
     }
     return rects;
@@ -73,21 +78,27 @@ HARNESS = r"""
     // Apply every mark of the state at once, as at the end of the state.
     drawnMarks = "";
     applyMarks(s, 1e9, false);
+    if (typeof positionMarks === "function") positionMarks();   // marks are drawn in the overlay
     const marks = marksByState.get(s.id);
-    const spans = [...boardEl.querySelectorAll(".mk")];
-    let k = 0;
     for (const c of marks) {
       const want = c.type === "arrow" ? 2 : 1;
       for (let j = 0; j < want; j++) {
-        const span = spans[k++];
+        // each mark's wrapper, by its cue (every phrase is wrapped ahead of time)
+        const w = WRAPS.get(c.type === "arrow" ? c._uid + (j ? ">" : "<") : c._uid);
+        const span = w && w.first;
         const rec = { state: s.id, cue: c.id, type: c.type, block: c.block, text: j ? c.to_text : c.text };
         if (!span) { rec.found = false; out.push(rec); continue; }
         rec.found = true;
-        const frags = [...span.getClientRects()];
-        rec.fragments = frags.length;
+        const frags = w.spans.flatMap(p => [...p.getClientRects()]);
+        rec.fragments = new Set(frags.map(f => Math.round(f.top))).size;   // lines, not pieces
+        // a ring (drawn in the overlay since 2026-09-26) is measured as drawn;
+        // a line or a tint is measured on its phrase, as before
+        const shapes = c.type === "circle" && span.dataset.mk !== undefined
+          ? [...document.querySelectorAll('#marks [data-mk="' + span.dataset.mk + '"]')] : [];
+        const drawn = shapes.length ? shapes.map(e => e.getBoundingClientRect()) : frags;
         const box = span.getBoundingClientRect();
         const cs = getComputedStyle(span);
-        rec.overlap = neighbourRects(span).some(n => frags.some(f => rectsTouch(f, n)));
+        rec.overlap = neighbourRects(w.spans).some(n => drawn.some(f => rectsTouch(f, n)));
         rec.width = Math.round(box.width);
         out.push(rec);
       }

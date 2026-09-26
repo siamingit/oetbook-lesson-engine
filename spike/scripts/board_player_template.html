@@ -16,7 +16,10 @@ html, body { margin: 0; height: 100%; background: #f4f3ef; }
 body { display: flex; flex-direction: column; align-items: center; justify-content: center;
        gap: 10px; padding: 12px; box-sizing: border-box;
        font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #4a4944; }
-.frame { display: flex; flex-direction: column; border: 1px solid #d6d4cc; }
+.frame { display: flex; flex-direction: column; border: 1px solid #d6d4cc; flex: none; }
+/* flex: none: the frame keeps its 16:9 size. It used to shrink when the review
+   subtitle under it wrapped to more lines, and every size in it (a share of
+   its height) changed with it: every word moved (2026-09-26). */
 .frame .hdr { flex: none; justify-content: space-between; }
 .frame .hdr .t { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .frame .body { flex: 1; height: auto; min-height: 0; }
@@ -30,15 +33,18 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
    onto the active cell when the table's text on screen is under 14px
    (docs/02-DESIGN-SYSTEM.md §7, "Tables"). Otherwise it is not transformed. */
 #cam { display: flex; flex-direction: row; flex-wrap: wrap; align-content: flex-start; gap: 2.5cqh 2cqw;
-       position: relative; min-height: 100%; transform-origin: 0 0; }
+       position: relative; min-height: 100%; transform-origin: 0 0; flex: 0 0 100%; width: 100%; }
+/* flex 0 0 100%: the board area is a wrapping row (board style), so #cam was
+   sized by what it held and every block's width changed with it (2026-09-26). */
 @media (prefers-reduced-motion: no-preference) {
   #cam.glide { transition: transform .6s cubic-bezier(.4, 0, .2, 1); }
 }
 /* A typed part of a table cell keeps its final size from the start: the part
    not yet typed is present but invisible, so the table never reflows. */
 .tw-none, .tw-h { visibility: hidden; }
-.typing .tw-s::after { content: ""; display: inline-block; width: max(2px, .25cqh); height: 1em;
-                       margin-right: calc(-1 * max(2px, .25cqh)); vertical-align: -.12em; background: #185FA5; }
+.typing .tw-s { position: relative; }
+.typing .tw-s::after { content: ""; position: absolute; right: calc(-1 * max(2px, .25cqh)); top: .1em;
+                       width: max(2px, .25cqh); height: 1em; background: #185FA5; }
 
 /* Diagram parts are DRAWN, not shown (docs/02-DESIGN-SYSTEM.md §7a): each
    part appears at its own reveal cue and is drawn in motion, the way a
@@ -83,35 +89,30 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
 #contents li button .n { color: #888780; min-width: 4cqw; font-variant-numeric: tabular-nums; }
 #contents li button.here { color: #185FA5; }
 
-.mk-underline { text-decoration: underline; text-decoration-color: #185FA5;
-                text-decoration-thickness: max(2px, .4cqh); text-underline-offset: .18em; }
-/* Every line fragment of a mark is drawn complete (docs/02-DESIGN-SYSTEM.md
-   §8): a circle or bracket that wraps gets a closed shape on each line. */
-.mk { -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-.mk-highlight { background: rgba(250, 199, 117, .55); }
-/* Real padding and margin, so the ring never touches the neighbouring word. */
-.mk-circle { border: max(1px, .28cqh) solid #185FA5; border-radius: 1em; padding: .05em .35em; margin: 0 .15em; }
-.mk-strike { text-decoration: line-through; text-decoration-color: #E24B4A;
-             text-decoration-thickness: max(2px, .4cqh); }
-.mk-bracket { border-bottom: max(2px, .35cqh) solid #185FA5; padding-bottom: .12em; position: relative; }
-.mk-bracket::before, .mk-bracket::after { content: ""; position: absolute; bottom: -.05em; width: max(2px, .35cqh);
-                                          height: .55em; background: #185FA5; }
-.mk-bracket::before { left: 0; } .mk-bracket::after { right: 0; }
-/* replace: the wrong phrase struck in red, the correction written above it in
-   the teacher's hand (docs/02-DESIGN-SYSTEM.md §8, the one second typeface). */
-.mk-replace { position: relative; text-decoration: line-through; text-decoration-color: #E24B4A;
-              text-decoration-thickness: max(2px, .4cqh); }
-.mk-replace::after { content: attr(data-with); position: absolute; left: 0; bottom: 88%; white-space: nowrap;
-                     font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive; font-size: .82em;
-                     line-height: 1; color: #185FA5; text-decoration: none; }
+/* Marks are drawn in an overlay layer, never inline (docs/02-DESIGN-SYSTEM.md
+   §8a, 2026-09-26): the phrase is wrapped in a span that has no box and no
+   decoration, so a mark never moves a word; #marks draws the ring, line or
+   tint over each line fragment of the span, measured on every render. */
+#marks { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 6; }
+/* a word mark wrapped ahead of its time shows nothing until then */
+.wm.wm-off { color: inherit !important; background: none !important; text-decoration: none !important; }
+/* above everything on the board, side notes (z-index 3) included */
+#marks > div { position: absolute; box-sizing: border-box; }
+#marks .m-highlight { background: rgba(250, 199, 117, .6); mix-blend-mode: multiply; border-radius: .3cqh; }
+#marks .m-line { background: #185FA5; border-radius: 1px; }
+#marks .m-strike { background: #E24B4A; border-radius: 1px; }
+#marks .m-circle { border: max(1px, .28cqh) solid #185FA5; border-radius: 999px; }
+#marks .m-tick { background: #185FA5; }
+#marks .m-with { white-space: nowrap; line-height: 1; color: #185FA5;
+                 font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive; }
 .mk-arrow-from, .mk-arrow-to { }
-#overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+#overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 6; }
 #overlay path { fill: none; stroke: #185FA5; stroke-linecap: round; }
 #overlay .head { fill: #185FA5; }
 #pointer { position: absolute; width: 2.6cqh; height: 2.6cqh; border-radius: 50%;
            border: max(2px, .35cqh) solid #185FA5; background: rgba(24, 95, 165, .12);
            transform: translate(-50%, -50%); opacity: 0; pointer-events: none;
-           transition: left .4s ease, top .4s ease, opacity .2s ease; }
+           transition: left .4s ease, top .4s ease, opacity .2s ease; z-index: 7; }
 #pointer.on { opacity: 1; }
 
 #playPause { width: max(6cqh, 44px); height: max(6cqh, 44px); border-radius: 50%; border: 1px solid #5F5E5A;
@@ -144,6 +145,7 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
   <div class="body" id="board"><div id="cam"></div></div>
   <div id="contents"><div class="lbl">Contents</div><ol id="contentsList"></ol></div>
   <svg id="overlay" aria-hidden="true"></svg>
+  <div id="marks" aria-hidden="true"></div>
   <div id="pointer"></div>
   <div class="ctl">
     <button id="playPause" aria-label="Play">&#9654;</button>
@@ -287,7 +289,7 @@ for (const bd of boards) {
     const marks = [];
     for (const u of s.utterances) for (const c of u.cues) {
       if (c.type === "type") typedAt.set(c.block + "|" + c.typed, [c.time, c.time_end]);
-      else if (c.type !== "reveal" && c.type !== "pause") marks.push(c);
+      else if (c.type !== "reveal" && c.type !== "pause") { c._uid = u.id + "/" + c.id; marks.push(c); }
     }
     marks.sort((a, b) => a.time - b.time);
     marksByState.set(s.id, marks);
@@ -349,16 +351,58 @@ function drawBoard(bd, s, erased) {
     }
     for (const { sec, b: btn } of contentButtons) btn.classList.toggle("here", sec.id === bd.section);
     drawnBoard = bd; drawnState = null; drawnErased = null;
+    settleBoard(bd);
   }
   if (s !== drawnState || erased !== drawnErased) {
     for (const [id, el] of [...blockEls]) if (el.dataset.layer === "working") { el.remove(); blockEls.delete(id); }
     if (s && !erased) for (const id of s.working) if (!(bd.pinned && id in bd.pinned)) drawBlock(id, false);
-    drawnState = s; drawnErased = erased; drawnMarks = "";
+    drawnState = s; drawnErased = erased; drawnMarks = ""; wrappedFor = null;
+  }
+}
+
+// Nothing about a board's state moves a word (docs/02-DESIGN-SYSTEM.md §8a).
+// A state's working blocks can come before a fixed or pinned block in the
+// board's flow (change cards between a source sentence and its result), so
+// when the board is drawn every state is laid out once and each fixed and
+// pinned block's lowest place is kept; in every state it is held there.
+function keptBlocks() {
+  return [...blockEls.entries()].filter(([, el]) => el.dataset.layer !== "working");
+}
+// Exact layout top inside #cam (offsetTop rounds to whole pixels).
+function topIn(el) {
+  const tf = getComputedStyle(camEl).transform;
+  const sc = tf && tf !== "none" ? new DOMMatrix(tf).a : 1;
+  return (el.getBoundingClientRect().top - camEl.getBoundingClientRect().top) / sc;
+}
+function settleBoard(bd) {
+  const target = new Map();
+  const note = () => { for (const [id, el] of keptBlocks()) target.set(id, Math.max(target.get(id) ?? -1, topIn(el))); };
+  WRAPS.clear();
+  prewrap(bd);
+  note();
+  for (const st of bd.states) {
+    const tmp = st.working.filter(id => !(bd.pinned && id in bd.pinned)).map(id => [id, drawBlock(id, false)]);
+    prewrap(bd);
+    note();
+    for (const [id, el] of tmp) { el.remove(); blockEls.delete(id); }
+    for (const [k, w] of [...WRAPS]) if (!w.first.isConnected) WRAPS.delete(k);
+  }
+  WRAPS.clear();
+  bd._places = target;
+}
+function holdPlaces(bd) {
+  const kept = keptBlocks();
+  for (const [, el] of kept) el.style.marginTop = "";
+  kept.sort((a, b) => topIn(a[1]) - topIn(b[1]));
+  for (const [id, el] of kept) {           // each push moves the ones after it too
+    const d = (bd._places && bd._places.has(id) ? bd._places.get(id) : topIn(el)) - topIn(el);
+    if (d > 0.05) el.style.marginTop = d + "px";
   }
 }
 
 // A mark wraps the phrase inside the block it names. The phrase is found in
 // the block's own text, never by coordinates.
+let wrapCollect = null;             // the spans of the mark being wrapped
 function wrapPhrase(el, phrase, cls, base = "mk") {
   const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
   const nodes = [];
@@ -369,9 +413,10 @@ function wrapPhrase(el, phrase, cls, base = "mk") {
       const range = document.createRange();
       range.setStart(node, i);
       range.setEnd(node, i + phrase.length);
-      const span = document.createElement("span");
+      const span = document.createElement("m-k");     // not a span: no style for spans reaches it
       span.className = base + " " + cls;
       range.surroundContents(span);
+      if (wrapCollect) wrapCollect.push(span);
       return span;
     }
     nodes.push(node);
@@ -395,58 +440,107 @@ function wrapPhrase(el, phrase, cls, base = "mk") {
     const range = document.createRange();
     range.setStart(n, a - starts[k]);
     range.setEnd(n, b - starts[k]);
-    const span = document.createElement("span");
+    const span = document.createElement("m-k");
     span.className = base + " " + cls + (first ? " " + base + "-cont" : "");
     range.surroundContents(span);
+    if (wrapCollect) wrapCollect.push(span);
     if (!first) first = span;
   });
   return first;
 }
 
+// Every phrase a mark or a word mark of the board will take is wrapped once,
+// when the state is drawn (docs/02-DESIGN-SYSTEM.md §8a): a wrapper, even one
+// with no style, splits the text into runs that are shaped apart, so wrapping
+// a phrase only when its mark comes on could re-break a line that fitted to a
+// fraction of a pixel (Grammar 3, page 7). Marks then only switch on and off.
+// A phrase inside a typed answer is wrapped when its mark comes on: typing
+// rewrites that text.
+const WRAPS = new Map();           // wrap key -> {spans, first}
+let wrappedFor = null;
+function cellOf(el, r, k) {
+  return el && r != null ? el.querySelector('tbody tr[data-row="' + r + '"] td[data-col="' + k + '"]') || el : el;
+}
+function wrapOne(key, el, text, cls, base, late) {
+  if (!el || !text) return WRAPS.get(key) || null;
+  if (WRAPS.has(key)) return WRAPS.get(key);
+  wrapCollect = [];
+  const first = wrapPhrase(el, text, cls, base);
+  const spans = wrapCollect; wrapCollect = null;
+  if (!first) return null;
+  if (!late && spans.some(sp => sp.parentElement.closest("[data-typed]"))) {
+    for (const sp of spans) { const par = sp.parentNode; sp.replaceWith(...sp.childNodes); par.normalize(); }
+    return null;
+  }
+  const w = { spans, first };
+  WRAPS.set(key, w);
+  return w;
+}
+function wmClass(w) { return w.cls === "slide-underline" ? w.cls : "wc-" + w.cls; }
+function prewrap(bd) {
+  (bd.wordmarks || []).forEach((w, i) => {
+    const x = wrapOne("w" + i, cellOf(blockEls.get(w.block), w.row, w.col), w.text, wmClass(w), "wm");
+    if (x) x.spans.forEach(sp => sp.classList.add("wm-off"));
+  });
+  for (const st of bd.states) for (const c of marksByState.get(st.id)) {
+    const el = blockEls.get(c.block);
+    if (!el) continue;
+    if (c.type === "arrow") {
+      wrapOne(c._uid + "<", cellOf(el, c.row, c.col), c.text, "mk-arrow-from");
+      wrapOne(c._uid + ">", cellOf(blockEls.get(c.to_block || c.block), c.to_row, c.to_col), c.to_text, "mk-arrow-to");
+    } else {
+      wrapOne(c._uid, cellOf(el, c.row, c.col), c.text, c.type === "point" ? "mk-point" : "mk-" + c.type);
+    }
+  }
+}
+
 function applyMarks(s, t, erased) {
+  const bd = drawnBoard;
+  const skey = (bd ? bd.id : "") + "|" + (s ? s.id : "") + "|" + erased;
   const active = (s && !erased) ? marksByState.get(s.id).filter(c => c.time <= t) : [];
-  const words = (drawnBoard && drawnBoard.wordmarks || []).filter(w => w.time <= t);
-  const key = active.map(c => c.id + "@" + c.time).join(",") + "|" + words.length;
+  const words = (bd && bd.wordmarks) || [];
+  const key = skey + "#" + active.map(c => c._uid + "@" + c.time).join(",") + "|"
+    + words.filter(w => w.time <= t).length;
   if (key === drawnMarks) return;
   drawnMarks = key;
-  // Redraw touched blocks from their source html, then apply every active mark.
-  for (const [id, el] of blockEls) {
-    if (el.querySelector(".mk, .wm")) {
+  if (skey !== wrappedFor) {
+    // each block from its source, then every phrase of the board wrapped once
+    for (const [id, el] of blockEls) {
       const fresh = document.createElement("template");
       fresh.innerHTML = blocks[id].html;
       el.innerHTML = fresh.content.firstElementChild.innerHTML;
       el.removeAttribute("data-focus");    // redraw the spotlight and the typing
     }
+    WRAPS.clear();
+    if (bd) { prewrap(bd); holdPlaces(bd); }
+    wrappedFor = skey;
   }
   pointSpan = null;
   arrows = [];
-  // word classes and the slide's own underline first (bundle 1.3); marks go on top
-  for (const w of words) {
-    const el = blockEls.get(w.block);
-    // a word in a table cell is marked in that cell only (bundle 1.4)
-    const scope = el && w.row != null
-      ? el.querySelector('tbody tr[data-row="' + w.row + '"] td[data-col="' + w.col + '"]') : el;
-    if (scope) wrapPhrase(scope, w.text, w.cls === "slide-underline" ? w.cls : "wc-" + w.cls, "wm");
-  }
+  drawnMarkList = [];
+  for (const el of document.querySelectorAll("#cam [data-mk]")) delete el.dataset.mk;
+  // word classes and the slide's own underline (bundle 1.3, 1.4), from their time
+  words.forEach((w, i) => {
+    let x = WRAPS.get("w" + i);
+    if (!x && w.time <= t) x = wrapOne("w" + i, cellOf(blockEls.get(w.block), w.row, w.col), w.text, wmClass(w), "wm", true);
+    if (x) x.spans.forEach(sp => sp.classList.toggle("wm-off", w.time > t));
+  });
   for (const c of active) {
     const el = blockEls.get(c.block);
     if (!el) continue;
     if (c.type === "arrow") {
-      const cell = (e, r, k) => e && r != null
-        ? e.querySelector('tbody tr[data-row="' + r + '"] td[data-col="' + k + '"]') || e : e;
-      const from = wrapPhrase(cell(el, c.row, c.col), c.text, "mk-arrow-from");
-      const toEl = cell(blockEls.get(c.to_block || c.block), c.to_row, c.to_col);
-      const to = toEl ? wrapPhrase(toEl, c.to_text, "mk-arrow-to") : null;
-      if (from && to) arrows.push({ from, to });
+      const from = wrapOne(c._uid + "<", cellOf(el, c.row, c.col), c.text, "mk-arrow-from", "mk", true);
+      const to = wrapOne(c._uid + ">", cellOf(blockEls.get(c.to_block || c.block), c.to_row, c.to_col),
+                         c.to_text, "mk-arrow-to", "mk", true);
+      if (from && to) arrows.push({ from: from.first, to: to.first });
       continue;
     }
     // a mark on a table names its cell (bundle 1.6) and is drawn in that cell only
-    const scope = c.row != null
-      ? el.querySelector('tbody tr[data-row="' + c.row + '"] td[data-col="' + c.col + '"]') || el : el;
-    const span = wrapPhrase(scope, c.text, c.type === "point" ? "mk-point" : "mk-" + c.type);
-    if (!span) continue;
-    if (c.type === "point") pointSpan = span;
-    if (c.type === "replace") span.dataset.with = c.with || "";
+    const w = wrapOne(c._uid, cellOf(el, c.row, c.col), c.text, c.type === "point" ? "mk-point" : "mk-" + c.type, "mk", true);
+    if (!w) continue;
+    if (c.type === "point") pointSpan = w.first;
+    else { w.first.dataset.mk = drawnMarkList.length;
+           drawnMarkList.push({ type: c.type, spans: w.spans, with: c.with || "" }); }
   }
 }
 
@@ -529,6 +623,83 @@ function positionPointer(t) {
   }
   if (pointSpan && pointSpan.isConnected) { placePointer(pointSpan.getBoundingClientRect(), f); return; }
   pointerEl.classList.remove("on");
+}
+
+// ---- Marks in the overlay (docs/02-DESIGN-SYSTEM.md §8a) ----
+let drawnMarkList = [];
+const marksEl = document.getElementById("marks");
+// The boxes a mark draws over one line fragment `r` of its phrase, in frame
+// px. Shared with check_marks.py, which measures what is drawn.
+function markBoxes(type, r, t) {
+  const h = r.height, em = h / 1.2;
+  if (type === "highlight") return [{ cls: "m-highlight", x: r.left - .08 * em, y: r.top, w: r.width + .16 * em, h }];
+  if (type === "underline") return [{ cls: "m-line", x: r.left, y: r.bottom - .06 * h, w: r.width, h: t }];
+  if (type === "strike") return [{ cls: "m-strike", x: r.left - .04 * em, y: r.top + .55 * h - t / 2, w: r.width + .08 * em, h: t }];
+  if (type === "circle") return [{ cls: "m-circle", x: r.left - .22 * em, y: r.top - .06 * h, w: r.width + .44 * em, h: h * 1.12 }];
+  if (type === "bracket") return [{ cls: "m-line", x: r.left, y: r.bottom + .02 * h, w: r.width, h: t },
+                                  { cls: "m-tick", x: r.left, y: r.bottom - .42 * h, w: t, h: .44 * h + t },
+                                  { cls: "m-tick", x: r.right - t, y: r.bottom - .42 * h, w: t, h: .44 * h + t }];
+  if (type === "replace") return [{ cls: "m-strike", x: r.left, y: r.top + .55 * h - t / 2, w: r.width, h: t }];
+  return [];
+}
+// The nearest visible character before and after a mark's phrase, in its
+// block: a ring stops short of the neighbouring words (§8, never touching).
+function neighbourEdges(m) {
+  const spans = m.spans.filter(x => x.isConnected);
+  if (!spans.length) return [null, null];
+  const root = spans[0].closest(".blk") || spans[0].parentElement;
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const inMark = n => spans.some(sp => sp.contains(n));
+  let prev = null, next = null, seen = false, node;
+  while ((node = walker.nextNode())) {
+    if (inMark(node)) { seen = true; continue; }
+    // a letter or digit: a ring may pass over punctuation next to its phrase
+    if (!seen) { const i = node.data.search(/[A-Za-z0-9][^A-Za-z0-9]*$/); if (i >= 0) prev = [node, i]; }
+    else { const i = node.data.search(/[A-Za-z0-9]/); if (i >= 0) { next = [node, i]; break; } }
+  }
+  const rect = x => { if (!x) return null; const r = document.createRange();
+    r.setStart(x[0], x[1]); r.setEnd(x[0], x[1] + 1); return r.getClientRects()[0] || null; };
+  return [rect(prev), rect(next)];
+}
+function positionMarks() {
+  const f = frame.getBoundingClientRect();
+  marksEl.replaceChildren();
+  const t = Math.max(2, f.height * 0.004);
+  drawnMarkList.forEach((m, mi) => {
+    let first = null;
+    const [pv, nx] = m.type === "circle" ? neighbourEdges(m) : [null, null];
+    const sameLine = (a, cr) => a && Math.min(a.bottom, cr.bottom) - Math.max(a.top, cr.top) > 0.5 * cr.height;
+    for (const sp of m.spans) {
+      if (!sp.isConnected) continue;
+      for (const cr of sp.getClientRects()) {
+        const r = { left: cr.left - f.left, top: cr.top - f.top, right: cr.right - f.left,
+                    bottom: cr.bottom - f.top, width: cr.width, height: cr.height };
+        if (!first) first = r;
+        for (const b of markBoxes(m.type, r, t)) {
+          if (b.cls === "m-circle") {        // stop 1px short of a word on the same line
+            let x0 = b.x, x1 = b.x + b.w;
+            if (sameLine(pv, cr)) x0 = Math.max(x0, pv.right - f.left + 1);
+            if (sameLine(nx, cr)) x1 = Math.min(x1, nx.left - f.left - 1);
+            b.x = Math.min(x0, r.left); b.w = Math.max(x1, r.right) - b.x;
+          }
+          const d = document.createElement("div");
+          d.dataset.mk = mi;
+          d.className = b.cls;
+          d.style.cssText = "left:" + b.x + "px;top:" + b.y + "px;width:" + b.w + "px;height:" + b.h + "px";
+          marksEl.appendChild(d);
+        }
+      }
+    }
+    if (m.type === "replace" && first && m.with) {
+      const d = document.createElement("div");
+      d.dataset.mk = mi;
+      d.className = "m-with";
+      d.textContent = m.with;
+      d.style.cssText = "left:" + first.left + "px;top:" + (first.top - first.height * .78) + "px;font-size:"
+        + (first.height / 1.2 * .82) + "px";
+      marksEl.appendChild(d);
+    }
+  });
 }
 
 function positionArrows() {
@@ -729,6 +900,7 @@ function renderFrame(t) {
   drawParts(bd, s && !erased ? s : null, t, jumped);
   positionPointer(t);
   positionArrows();
+  positionMarks();
 
   const u = utteranceAt(t);
   if (u && !state.failure) {

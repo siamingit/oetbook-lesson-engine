@@ -398,6 +398,11 @@ These are the only rules. Every time and target they use is in the bundle.
     the board's `until`, through every change of the spotlight: a `wrong` cell
     is faded, a `right` cell carries a tick on the green of "correct", a
     `possible` cell is left as it is (docs/02-DESIGN-SYSTEM.md §7, "Tables").
+19. **Nothing moves a word** (2026-09-26; no data change): whatever a renderer
+    draws for a moment, spotlight, marks, verdicts or typing, it never moves a
+    word of the board. Marks are drawn over the words, never inline; active
+    styling never changes a border width, padding or size; the frame's size
+    does not depend on the page around it (docs/02-DESIGN-SYSTEM.md §8a).
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and

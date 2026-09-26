@@ -2726,7 +2726,7 @@ def _block_html(b: dict) -> str:
         fam = b.get("family") or "none"
         return ('<div class="blk card fam-' + esc(fam) + '"' + bid
                 + '><div class="cardhd">' + esc(b["label"]) + "</div>"
-                + '<div class="cardbd">' + tagged(b["text"], tags) + "</div></div>")
+                + '<div class="cardbd"><span>' + tagged(b["text"], tags) + "</span></div></div>")
     if t == "timeline":
         return timeline_html(b, bid)
     if t == "callout":

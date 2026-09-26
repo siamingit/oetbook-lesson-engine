@@ -649,8 +649,10 @@ the first board player used two kinds of mark six times in ten minutes.
   (`box-decoration-break: clone`), never as two open halves.
 - A circle is for one to three words. A longer span gets an underline or a
   bracket; the narration audit warns otherwise.
-- A circle carries horizontal padding and margin, so it never overlaps the
-  adjacent word.
+- A circle never overlaps the adjacent word: drawn in the overlay (§8a), its
+  ring stops short of the nearest letter or digit on either side on its line
+  (punctuation beside the phrase may sit inside it). Until 2026-09-26 the ring
+  was inline padding and margin, which moved the words after it (§8a).
 - The build measures every mark in a real browser at phone-landscape and
   laptop width (`check_marks.py`): a mark that touches neighbouring text
   fails the build, and a mark that breaks across lines is reported.
@@ -659,6 +661,57 @@ Found 2026-09-23 on page 13, board 3: "before he quit" circled as two open
 halves, touching "years" and "before".
 
 Marks belong to the working layer and are erased with it.
+
+### 8a. Nothing about a board's state moves any text
+
+Decided by the maintainer 2026-09-26, for every lesson, after the p15 letter
+of Grammar 4 was seen re-wrapping ("runny nose" breaking differently) as the
+spotlight, marks and typing changed. A word, once on a board, stays exactly
+where it is until the board ends or its note is erased.
+
+- **Spotlight and active styling** (row focus, the active cell, a verdict) use
+  opacity, background, `outline` or `box-shadow` only: never a change of
+  border width, padding, margin, font or size.
+- **Marks are drawn in an overlay layer, never inline.** The phrase is wrapped
+  only to be found; the ring, line, tint or bracket is drawn over it, measured
+  from where the words already are.
+- **Typed answers have their final width reserved from the start** (§7,
+  Tables); the typing cursor takes no room in the line.
+- **The frame's size never depends on what is shown around it**: a longer
+  caption or review line under the frame must not shrink it, since every size
+  in the frame is a share of its height.
+- **Checked, not eyeballed**: `check_layout.py` drives the player to every
+  moment at which a board changes and measures every word, at phone-landscape
+  and laptop width; a word found at two positions on one board fails the build.
+
+- **A block's text never changes structure while its board is shown**: every
+  phrase a mark or a word colour will take is wrapped when the state is drawn,
+  and marks only switch on and off. A wrapper, even one with no style, splits
+  the text into runs shaped apart, which can re-break a line that fitted to a
+  fraction of a pixel.
+- **Fixed and pinned blocks hold their place**: where a state's working blocks
+  come before them in the board's flow (change cards before a result), each is
+  held at the lowest place it takes in any state of the board.
+
+The causes found and fixed on 2026-09-26, by the check:
+1. The player's frame shrank when the review line under it wrapped: every
+   word rescaled by a pixel or more, enough to re-break lines (Grammar 4's
+   letter).
+2. A circle's inline border, padding and margin pushed the words after it,
+   and a note sized by its content grew and was placed again.
+3. The typing cursor was an inline box.
+4. The board area (`#cam`) was sized by what it held, so every block's width
+   changed with the notes beside it (Grammar 1's tables).
+5. A category card's text sat directly in a flex container with a gap, so a
+   marked phrase became a flex item of its own (Grammar 1 and 2).
+6. A mark's wrapper was a span, which the timeline's label styles reached.
+7. A state's change cards, drawn before they appear, pushed the result below
+   them down (Grammar 3, pages 4-5).
+8. Wrapping a phrase when its word colour came on re-broke a line that fitted
+   by 0.25 px (Grammar 3, page 7).
+
+Before the fixes the check found 3,497 word moves on Grammar 4 alone; after
+them, none in any of the four lessons.
 
 ---
 
