@@ -71,18 +71,6 @@ def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
         elif x["type"] == "term_box":
             b["style"] = "term"
         extra.append(b)
-    # The first lesson of a course maps the course on its title board (ADR 014
-    # amendment), from the course index: the lessons ahead, by their titles.
-    from build_course_index import course_map
-    cm = course_map(lesson)
-    if cm:
-        b = blk(f"k{len(extra) + 2:02d}", "plain",
-                "The " + cm["course"].capitalize() + " course, lesson by lesson: "
-                + " · ".join(x["short_title"] for x in cm["lessons"]) + ".",
-                prov="authored", note="ADR 014 amendment: the course map of a course's first "
-                                      "lesson, from the course index (its lessons in order).")
-        b["role"] = "note"
-        extra.append(b)
     desc = blk(f"k{len(extra) + 2:02d}", "plain", tb["description"] or "",
                prov=tb.get("description_provenance") or "authored",
                note="The maintainer's one-line description (sections.json).")

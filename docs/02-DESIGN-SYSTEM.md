@@ -662,8 +662,9 @@ a slide box, the lesson's own words. Its title board also shows what the
 narration describes (ADR 014, 2026-09-27): the lesson's own intro blocks from
 sections.json `intro_board` (a note linking to the previous lesson, a change
 card from short sentences to one clear sentence), revealed as they are said.
-A course's first lesson shows the course map there instead of a link to another
-lesson, drawn from the course index (ADR 014 amendment).
+A course's first lesson links to no other lesson, and no board anywhere shows
+a course map, a lesson count or a list of lessons: the course is still growing
+(ADR 014 amendment; the screens audit fails a lesson count).
 
 **Presentation only.** The board style changes no block's text, no id, no
 cue and no state: narration and audio are unaffected. A cue on a folded

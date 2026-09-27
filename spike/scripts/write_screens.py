@@ -2368,6 +2368,15 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                               "is glossed once, where it first appears")
             glossed.setdefault(w, b["id"])
 
+    # 2c. no lesson count on a board: the course is still growing (ADR 014
+    # amendment, maintainer 2026-09-27)
+    from write_narration import LESSON_COUNT
+    for b in blocks.values():
+        for t in block_texts(b):
+            m = LESSON_COUNT.search(t or "")
+            if m:
+                fail(b["id"], f"states how many lessons the course has ({m.group(0)!r})")
+
     # 3. deck defects: the printed form must be gone
     for d in data["defects"]:
         for b in blocks.values():

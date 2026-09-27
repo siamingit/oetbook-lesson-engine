@@ -392,8 +392,9 @@ def previous_lesson(L: Path) -> dict | None:
 def course_map(L: Path) -> dict | None:
     """The course a lesson opens, when it is the first of its type in the course
     index (ADR 014 amendment: the first lesson welcomes the learner to the whole
-    course and maps it): the course's lessons in order, id and short title.
-    None for any other lesson."""
+    course), else None. Used to know that a lesson is a course's first; its
+    list of lessons is never shown to the narration or put on a board (the
+    course is still growing: no lesson count or lesson list anywhere)."""
     ix = load(L)
     lessons = (ix or {}).get("lessons", [])
     me = next((e for e in lessons if e["id"] == L.name), None)

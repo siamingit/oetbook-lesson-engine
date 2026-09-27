@@ -184,9 +184,12 @@ while the contents are on screen. A rule for every lesson:
   learner to the whole course, explains simply why grammar matters in the OET
   letter (the reader is another health professional who needs clear, exact
   information; grammar is part of how the letter is assessed; no grade
-  promises), maps the course from the course index, says why its topic is the
-  first step and starts the lesson. It never assumes earlier study; its title
-  board shows the course map.
+  promises), says why its topic is the first step and starts the lesson. It
+  never assumes earlier study.
+- **No course map, no lesson count, no list of lessons**, in any lesson: the
+  course is still growing (maintainer, 2026-09-27). Naming one other lesson
+  where it helps is fine; the narration and screens audits fail a lesson count,
+  and the narration audit an utterance that lists three or more lessons.
 - Short: about one to two minutes.
 - The voice is not the instructor's. It never gives the instructor's name
   and never speaks as him.

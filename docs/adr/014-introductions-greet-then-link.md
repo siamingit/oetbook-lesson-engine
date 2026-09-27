@@ -71,13 +71,19 @@ its introduction instead
 2. explains simply why grammar matters in the OET letter: the reader is another
    health professional and needs clear, exact information, and grammar is part
    of how the letter is assessed (no grade promises);
-3. gives a short map of the course from the course index (the topics ahead, in a
-   few simple sentences);
-4. says why this lesson's topic is the first step, and starts the lesson.
+3. says why this lesson's topic is the first step ("By the end of this lesson
+   ..."), and starts the lesson.
 
-A2-B1 language, a warm tone. The title board shows what is said: code adds the
-course map (`build_course_index.course_map`, drawn by `build_lesson_boards.py`),
-and the lesson's own blocks (`--intro-board`) carry the rest. The audit fails a
-first lesson's introduction that assumes earlier study ("so far", "welcome
-back", "again", "in the last lesson", "you learned"). Every other lesson keeps
-the rule above.
+A2-B1 language, a warm tone. The title board shows what is said, from the
+lesson's own blocks (`--intro-board`). The audit fails a first lesson's
+introduction that assumes earlier study ("so far", "welcome back", "again", "in
+the last lesson", "you learned"). Every other lesson keeps the rule above.
+
+**No course map, no lesson count, no list of lessons** (maintainer, the same day,
+replacing a course map first built into this amendment): the course is still
+growing, so a first lesson's introduction has no course map, and no lesson of
+any course states how many lessons the course has or lists the other lessons.
+Naming one other lesson where it helps (the link above) is not a list. The
+narration audit fails a lesson count ("the first of six lessons", "the course
+has six lessons", "lesson 1 of 6") and an utterance that names three or more
+other lessons; the screens audit fails a lesson count on a board.

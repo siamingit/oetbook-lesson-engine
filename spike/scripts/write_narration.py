@@ -452,9 +452,9 @@ any section.\
 INTRO_FIRST = """\
 THIS IS THE INTRODUCTION OF THE FIRST LESSON OF THE COURSE (docs/00-PRODUCT.md \
 §2a; ADR 014, amendment of 2026-09-27), not a section. Two boards: the title \
-board (the lesson title, then its notes: why grammar matters, the course map, \
-the lesson's description), then the contents board with one note per category \
-or section of this lesson. Your narration, in this order:
+board (the lesson title, then its notes: why grammar matters, the lesson's \
+description), then the contents board with one note per category or section \
+of this lesson. Your narration, in this order:
   1. WELCOMES THE LEARNER TO THE WHOLE COURSE, warmly, like a teacher meeting \
 their students for the first time. The first sentence is a greeting with \
 "welcome", and it must not be any other lesson's first sentence (OTHER \
@@ -464,13 +464,13 @@ learned"); the audit fails it.
   2. Explains simply why grammar matters in the OET letter: the reader is \
 another health professional who needs clear, exact information, and grammar \
 is part of how the letter is assessed. No grade or score promises.
-  3. Gives a short map of the course from the COURSE MAP, revealing the course \
-map note as you say it: the topics ahead, in a few simple sentences (not one \
-sentence per lesson).
-  4. Says why verb tenses (this lesson's topic) are the first step, reveals the \
-description as you say what the learner will be able to do, then walks \
-through the contents board IN ORDER, revealing each note as you name it, and \
-starts the lesson.
+  3. Says why this lesson's topic is the first step, reveals the description \
+as you say what the learner will be able to do ("By the end of this lesson, \
+..."), then walks through the contents board IN ORDER, revealing each note as \
+you name it, and starts the lesson.
+  - NO COURSE MAP: the course is still growing. Never say how many lessons the \
+course has ("the first of six lessons") and never list the other lessons or \
+their topics; the audit fails both.
   - The voice is not the instructor's: never give a name, never say "I" about \
 teaching experience. Never the recording, a session, a class, a slide or a video.
   - A2-B1: short sentences, simple words, a warm tone. About one to two \
@@ -820,9 +820,7 @@ def build_messages(data: dict, rewrite: dict | None = None) -> list[dict]:
     if scr.get("section", {}).get("intro") and data.get("course_map"):
         content.append({"type": "text", "text": INTRO_FIRST})
         content.append({"type": "text", "text":
-            "COURSE MAP (this lesson is the first; the lessons of the course in order):\n"
-            + json.dumps(data["course_map"], ensure_ascii=False)
-            + "\n\nOTHER LESSONS' OPENINGS (never open with any of these sentences):\n"
+            "OTHER LESSONS' OPENINGS (never open with any of these sentences):\n"
             + json.dumps(data.get("openings") or {}, ensure_ascii=False)})
     elif scr.get("section", {}).get("intro"):
         content.append({"type": "text", "text": INTRO})
@@ -1038,6 +1036,13 @@ POINTING = re.compile(
     r"|(?:in|on) (?:this|the) (?:picture|image|photo|drawing|illustration)"
     r"|the (?:picture|image|photo|drawing|illustration) (?:shows|is showing)"
     r"|(?:this|here is a|here's a) (?:picture|image|photo|drawing|illustration))\b", re.I)
+# ADR 014 amendment: no lesson count anywhere ("the first of six lessons",
+# "six lessons", "lesson 1 of 6", "the course has six lessons")
+_NUM = r"(?:\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|several|many)"
+LESSON_COUNT = re.compile(
+    r"\b(?:(?:first|second|third|fourth|fifth|sixth|last|\d+(?:st|nd|rd|th)?) (?:of|out of) " + _NUM
+    + r" lessons|" + _NUM + r" lessons (?:in|of) (?:the|this|our) course|(?:the|this|our) course "
+      r"(?:has|is made of|contains) " + _NUM + r" lessons|lesson \d+ (?:of|out of) \d+)\b", re.I)
 # ADR 014 amendment: the first lesson of a course never assumes earlier study
 ASSUMES_STUDY = re.compile(
     r"\b(?:so far|welcome back|hello again|see you again|good to see you again"
@@ -1492,6 +1497,21 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                 fail("intro", f"the introduction opens with the same sentence as {other}: "
                               f"{first!r}")
     findings += gloss_moment_findings(boards, blocks)
+    # No lesson count and no list of the other lessons, in any lesson: the course
+    # is still growing (ADR 014 amendment, maintainer 2026-09-27)
+    titles = [c.get("short_title") or "" for c in data.get("catalogue") or []]
+    for bd in boards:
+        for s in bd["states"]:
+            for u in s["utterances"]:
+                said = spoken(u["text_with_cues"])
+                m = LESSON_COUNT.search(said)
+                if m:
+                    fail(u["id"], f"states how many lessons the course has ({m.group(0)!r}); the "
+                                  "course is still growing")
+                named = [t for t in titles if t and re.search(r"\b" + re.escape(t) + r"\b", said, re.I)]
+                if len(named) >= 3:
+                    fail(u["id"], f"lists other lessons ({', '.join(named)}); the course is still "
+                                  "growing: name one lesson where it helps, never a list")
     for bd in boards:
         for s in bd["states"]:
             for u in s["utterances"]:
