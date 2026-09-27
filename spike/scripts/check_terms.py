@@ -79,6 +79,7 @@ def candidates(lesson: Path, page: int, lex: dict) -> list[str]:
         # never spoken.
         if i < n_spoken:
             words.update(re.findall(r"\b[A-Z]{2,5}\b", text))
+            words.update(re.findall(r"\b[A-Z](?:-[A-Z]){1,5}\b", text))   # "C-O-P-D" (2026-09-27)
             words.update(re.findall(r"\b(?:[A-Z] ){1,4}[A-Z]\b(?=[\s.,;:!?'\"]|$)", text))
             words.update(re.findall(r"\b[a-z] [a-z]\b(?= means|[.,;:!?]|$)", text))   # "b d"
             words.update(m.rstrip(".") + "." for m in re.findall(r"\b(?:[a-z]\.){1,3}[a-z]\b\.?", text))

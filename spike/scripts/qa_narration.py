@@ -95,7 +95,9 @@ sentence or an answer aloud with different words from the note on screen, or \
 explains a note as saying something it does not say, that is a finding. A plain \
 note, a term box or a rule may be paraphrased in speech; a difference of wording \
 with the same meaning is not a finding. Numbers and dates are written as digits on \
-screen and spoken as words; that difference is by design and is not a finding.
+screen and spoken as words; that difference is by design and is not a finding. \
+Initialisms are written with hyphens for the voice ("C-O-P-D") where the screen \
+shows "COPD"; that is by design too.
 5. British English, consistently. Spelling, usage, and idiom.
 6. References that do not fit a self-paced interactive English product. This is not \
 a video, not a live class, not a lecture, and there is no book. Flag anything \

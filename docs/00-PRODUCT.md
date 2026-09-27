@@ -297,6 +297,11 @@ product contradiction.
 - Pace around 130–140 words per minute. These are non-native listeners.
 - Medical terms pronounced correctly; a pronunciation dictionary where
   the voice gets one wrong.
+- Initialisms (COPD, MRI, GP, IV, ECG, CT) said quickly and naturally, the
+  letters run together as one group, like a native speaker; never letter by
+  letter with gaps (maintainer, 2026-09-27; lessons built after Grammar 1-6). The
+  narration writes them "C-O-P-D" for the voice; the screen shows "COPD"
+  (ADR 016; methodology §20).
 - The same voice across every lesson. It becomes the product's voice.
 
 `OPEN`: how the instructor's identity is carried instead — his name and

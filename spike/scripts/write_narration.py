@@ -264,6 +264,13 @@ date and abbreviation the way it should be spoken: "two thousand and ten", not \
 "2010"; "the tenth of August two thousand and fourteen", not "10/08/2014"; \
 "twenty-five years", not "25 years". The screen keeps the written form; you \
 voice it. Avoid brackets, bullet characters and anything that cannot be said.
+INITIALISMS (a short form said letter by letter) are written as their capital \
+letters joined by hyphens: "C-O-P-D", "M-R-I", "G-P", "I-V", "E-C-G", "C-T", \
+"O-T". The voice then says the letters quickly, as one group. Never with spaces \
+("C O P D") or full stops ("C. O. P. D.", "C.O.P.D."), which make a pause after \
+each letter or a word, and never in plain capitals ("COPD"), which the voice may \
+read as a word or a number ("IV" as "four"). The screen keeps "COPD". The one \
+exception is "OET", written as it is. The audit fails every other form.
 
 UTTERANCES. A state is narrated as a list of utterances. An utterance is one \
 unit of speech synthesised on its own, typically one or two sentences: short \
@@ -1036,6 +1043,41 @@ POINTING = re.compile(
     r"|(?:in|on) (?:this|the) (?:picture|image|photo|drawing|illustration)"
     r"|the (?:picture|image|photo|drawing|illustration) (?:shows|is showing)"
     r"|(?:this|here is a|here's a) (?:picture|image|photo|drawing|illustration))\b", re.I)
+# Initialisms are written for the voice with hyphens, "C-O-P-D" (maintainer
+# 2026-09-27; methodology §20, measured with initialism_probe.py): spaces or
+# full stops between the letters put a pause after each letter, and plain
+# capitals or letters joined by full stops may be read as a word or a numeral
+# (COPD as "copd", IV as "roman four", ECG as "eck-g"). For lessons that
+# follow the rule; the six built before it only report (they are not changed).
+INITIALISM_FORMS = [
+    (re.compile(r"\b(?:[A-Z]\.? ){1,5}[A-Z]\b\.?"),
+     "letters with spaces or full stops between them are said with a pause after each letter"),
+    (re.compile(r"\b(?:[A-Z]\.){2,6}"),
+     "letters joined by full stops may be read as a word or a numeral (C.O.P.D. as 'copd', "
+     "I.V. as 'roman four')"),
+    (re.compile(r"\b[A-Z]{2,6}\b"),
+     "an initialism in plain capitals may be read as a word or a numeral (COPD as 'copd', "
+     "IV as 'roman four', ECG as 'eck-g')"),
+]
+LESSONS_BEFORE_INITIALISM_RULE = {
+    "grammar-01-verb-tenses", "grammar-02-verb-use", "grammar-03-nominalization",
+    "grammar-04-articles", "grammar-05-complex-compound", "grammar-06-clause"}
+
+
+def initialism_findings(said: str, keep: set[str]) -> list[tuple[str, str]]:
+    """Initialisms written in a form known to be said badly, with the reason:
+    (the words, why). `keep` holds the lexicon's approved-default terms (OET),
+    which are written as they are."""
+    out, taken = [], []
+    for rx, why in INITIALISM_FORMS:
+        for m in rx.finditer(said):
+            if m.group(0) in keep or any(a < m.end() and m.start() < b for a, b in taken):
+                continue
+            taken.append(m.span())
+            out.append((m.group(0).strip(), why))
+    return out
+
+
 # ADR 014 amendment: no lesson count anywhere ("the first of six lessons",
 # "six lessons", "lesson 1 of 6", "the course has six lessons")
 _NUM = r"(?:\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|several|many)"
@@ -1512,6 +1554,15 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                 if len(named) >= 3:
                     fail(u["id"], f"lists other lessons ({', '.join(named)}); the course is still "
                                   "growing: name one lesson where it helps, never a list")
+    import lexicon
+    keep = {t for t, e in lexicon.load()["entries"].items() if e.get("kind") == "default"}
+    flag = warn if data.get("lesson_id") in LESSONS_BEFORE_INITIALISM_RULE else fail
+    for bd in boards:
+        for s in bd["states"]:
+            for u in s["utterances"]:
+                for words, why in initialism_findings(spoken(u["text_with_cues"]), keep):
+                    hy = "-".join(c for c in words if c.isalpha())
+                    flag(u["id"], f"initialism {words!r}: {why}; write {hy!r}")
     for bd in boards:
         for s in bd["states"]:
             for u in s["utterances"]:

@@ -1145,6 +1145,43 @@ documentation for a phoneme or IPA entry form that carries a stress mark,
 make three or four candidate entries, render each alone and in a sentence,
 add them to the lexicon review page, and stop for the maintainer to choose.
 
+### Initialisms are written with hyphens (measured 2026-09-27; ADR 016)
+
+The maintainer heard COPD, MRI and the like spoken letter by letter with long
+gaps. Two causes: the lexicon's COPD alias was "C. O. P. D.", and the narration
+writer spelled initialisms with spaces ("G P", "C A D", "M R I", "B M I."). A
+full stop or a space between letters is a pause.
+
+`initialism_probe.py` put each written form into the same carrier sentence at
+the lesson speed with no dictionary (330 + 124 characters), and recorded the
+clip length, the initialism's span and gaps from word timestamps, the phonemes
+said in that span, and Scribe's transcript:
+
+| form | "She has _ and needs an _ scan today." | COPD said as | IV, OT, ECG |
+|---|---|---|---|
+| "C. O. P. D.", "M. R. I." (the old alias) | 8.32 s; COPD 2.88 s | letters, 0.18 s gaps | |
+| "C O P D", "M R I" | 5.68 s; COPD 1.84 s | letters, 0.08 s gaps | |
+| "C.O.P.D.", "M.R.I." | 4.16 s | **a word**, "k ɑː p d" | "I.V." read "roman four" |
+| "COPD", "MRI" | 4.24 s | **a word**, "k ɑː p d" | "IV" read "roman four"; "ECG" "ɛ k ɡ"; "OT" "ɑː t" |
+| **"C-O-P-D", "M-R-I"** | **4.96 s; COPD 1.76 s** | **letters, one group, no gap** | "I-V", "O-T", "E-C-G", "G-P", "C-T": letters, as fast as plain capitals |
+
+Scribe wrote "COPD" and "MRI" for every form: it cannot tell letters from a
+word, so the phonemes and the ear decide. **The rule, for lessons built after
+Grammar 1-6:** the narration writes an initialism as its capital letters joined
+by hyphens ("C-O-P-D"); the screen keeps "COPD". The one exception is a lexicon
+term approved as the voice's default (OET), written as it is. The narration
+audit fails an initialism with spaces or full stops between its letters, joined
+by full stops, or in plain capitals (`initialism_findings`); for Grammar 1-6,
+built before the rule and not changed, it only reports. `check_terms.py` hears
+every hyphenated initialism of a new lesson (Scribe's "COPD" matches
+"C-O-P-D": the check compares letters only).
+
+The lexicon's COPD entry keeps its alias "C. O. P. D." for now: the cache key
+carries the alias, so changing it would re-synthesise every COPD clip of
+Grammar 1-6 at their next build. A lesson written to the rule never sends the
+text "COPD", so the entry does not apply to it. Retire the entry when the
+maintainer rebuilds those lessons' COPD clips.
+
 ### Voice speed is a target, not a setting (measured 2026-09-24)
 
 The maintainer found the delivery slightly slow. Page 13 at the lesson's
