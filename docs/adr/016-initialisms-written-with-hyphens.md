@@ -57,3 +57,28 @@ measured from Cartesia's word and phoneme timestamps and Scribe's transcript.
 - Grammar 1-6 still have initialisms the voice may misread (plain "COPD" through
   the old alias, "US" for ultrasound, "IV"); the audit lists them as warnings
   whenever one of those sections is rendered again.
+
+## Amendment (2026-09-27): Grammar 1-6 rewritten to the rule
+
+The maintainer, the same day: "Apply the initialism rule (ADR 016, the
+'C-O-P-D' form) to all six lessons (1-6) ... Rewrite only those utterances to
+the new form and re-synthesise only those clips. Change nothing else."
+
+- `spike/scripts/apply_initialisms.py` finds every initialism in an old form
+  with the audit's own finder and writes one utterance override each, merged
+  with an override the utterance already had; each re-rendered section changed
+  only those utterances. 56 initialisms in 44 utterances (Grammar 1: 13,
+  2: 21, 3: 4, 4: 15, 5: none, 6: 3).
+- The rule now holds for every lesson: `LESSONS_BEFORE_INITIALISM_RULE` is
+  removed and the audit fails an old form in any lesson.
+- The COPD lexicon entry applies to no lesson now; it stays until the
+  maintainer retires it.
+- A maintainer's required sentence spoken with a hyphenated initialism
+  ("not 'C-A-D'" for "not 'CAD'") now matches their words, so one utterance of
+  Grammar 2 is labelled `maintainer` again instead of `adapted`.
+
+- The terms check's probe cache named "G-P" and "G P" alike, so a hyphenated
+  initialism reused the spaced form's probe; hyphens now stay in the probe's
+  name, and the changed sections were checked again (every hyphenated form
+  heard as letters; Scribe writes "P-P" as "pee pee" and "I-C-U" as "I see
+  you", listed at the final gate).

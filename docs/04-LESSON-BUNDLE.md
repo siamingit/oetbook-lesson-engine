@@ -477,7 +477,7 @@ no cues and no provenance.
 - **Narration as spoken:** exactly the text the voice says, so numbers are
   words ("two thousand and ten") where the board shows digits ("2010"), and an
   initialism is written with hyphens ("C-O-P-D") where the board shows "COPD"
-  (lessons built after Grammar 1-6).
+  (ADR 016).
 - **Board text:** the words of every block the board shows. The fixed layer comes
   first, then each state's working blocks in order, each block once. A table
   gives one row per line, cells separated by ` | `, and a line break inside a

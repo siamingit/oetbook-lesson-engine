@@ -83,7 +83,7 @@
    "ipa": "siː əʊ piː diː",
    "expect_phonemes": null,
    "reject_phonemes": null,
-   "note": "Initialism. Read as a word by default (terms check, 2026-09-23). 2026-09-27: this alias's full stops put a pause after each letter (methodology §20, 'Initialisms are written with hyphens'). Kept only for Grammar 1-6, whose cached COPD clips it keys; lessons built after them write 'C-O-P-D' in the narration, so this entry never applies to them. Retire it when those clips are rebuilt.",
+   "note": "Initialism. Read as a word by default (terms check, 2026-09-23). 2026-09-27: this alias's full stops put a pause after each letter (methodology §20, 'Initialisms are written with hyphens'). Since the same day every lesson writes 'C-O-P-D' in the narration (ADR 016 and its amendment), so this entry applies to none; it stays until the maintainer retires it.",
    "approved": true,
    "approved_by": "maintainer",
    "approved_on": "2026-09-24",

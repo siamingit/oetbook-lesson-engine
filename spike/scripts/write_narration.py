@@ -1047,8 +1047,8 @@ POINTING = re.compile(
 # 2026-09-27; methodology §20, measured with initialism_probe.py): spaces or
 # full stops between the letters put a pause after each letter, and plain
 # capitals or letters joined by full stops may be read as a word or a numeral
-# (COPD as "copd", IV as "roman four", ECG as "eck-g"). For lessons that
-# follow the rule; the six built before it only report (they are not changed).
+# (COPD as "copd", IV as "roman four", ECG as "eck-g"). Every lesson: Grammar
+# 1-6 were rewritten to the rule the same day (apply_initialisms.py).
 INITIALISM_FORMS = [
     (re.compile(r"\b(?:[A-Z]\.? ){1,5}[A-Z]\b\.?"),
      "letters with spaces or full stops between them are said with a pause after each letter"),
@@ -1059,9 +1059,6 @@ INITIALISM_FORMS = [
      "an initialism in plain capitals may be read as a word or a numeral (COPD as 'copd', "
      "IV as 'roman four', ECG as 'eck-g')"),
 ]
-LESSONS_BEFORE_INITIALISM_RULE = {
-    "grammar-01-verb-tenses", "grammar-02-verb-use", "grammar-03-nominalization",
-    "grammar-04-articles", "grammar-05-complex-compound", "grammar-06-clause"}
 
 
 def initialism_findings(said: str, keep: set[str]) -> list[tuple[str, str]]:
@@ -1556,13 +1553,12 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                                   "growing: name one lesson where it helps, never a list")
     import lexicon
     keep = {t for t, e in lexicon.load()["entries"].items() if e.get("kind") == "default"}
-    flag = warn if data.get("lesson_id") in LESSONS_BEFORE_INITIALISM_RULE else fail
     for bd in boards:
         for s in bd["states"]:
             for u in s["utterances"]:
                 for words, why in initialism_findings(spoken(u["text_with_cues"]), keep):
                     hy = "-".join(c for c in words if c.isalpha())
-                    flag(u["id"], f"initialism {words!r}: {why}; write {hy!r}")
+                    fail(u["id"], f"initialism {words!r}: {why}; write {hy!r}")
     for bd in boards:
         for s in bd["states"]:
             for u in s["utterances"]:

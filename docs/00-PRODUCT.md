@@ -307,7 +307,7 @@ product contradiction.
   the voice gets one wrong.
 - Initialisms (COPD, MRI, GP, IV, ECG, CT) said quickly and naturally, the
   letters run together as one group, like a native speaker; never letter by
-  letter with gaps (maintainer, 2026-09-27; lessons built after Grammar 1-6). The
+  letter with gaps (maintainer, 2026-09-27; every lesson). The
   narration writes them "C-O-P-D" for the voice; the screen shows "COPD"
   (ADR 016; methodology §20).
 - The same voice across every lesson. It becomes the product's voice.

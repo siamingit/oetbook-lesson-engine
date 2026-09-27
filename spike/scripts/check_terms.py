@@ -130,7 +130,8 @@ def main() -> None:
         if term != term.lower():
             # Upper case would slug to underscores alone, and "A D L", "C A D"
             # and "B M I" would share one probe: keep the letters and the case.
-            slug = "caps-" + re.sub(r"[^A-Za-z0-9]", "_", term)
+            # hyphens kept: "C-O-P-D" (ADR 016) is not the probe of "C O P D"
+            slug = "caps-" + re.sub(r"[^A-Za-z0-9-]", "_", term)
         wav = probe_dir / (slug + f"@{args.speed:g}.wav")
         heard_path = wav.with_suffix(".json")
         if not heard_path.exists():

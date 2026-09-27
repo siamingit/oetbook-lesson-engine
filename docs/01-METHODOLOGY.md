@@ -1174,21 +1174,22 @@ said in that span, and Scribe's transcript:
 | **"C-O-P-D", "M-R-I"** | **4.96 s; COPD 1.76 s** | **letters, one group, no gap** | "I-V", "O-T", "E-C-G", "G-P", "C-T": letters, as fast as plain capitals |
 
 Scribe wrote "COPD" and "MRI" for every form: it cannot tell letters from a
-word, so the phonemes and the ear decide. **The rule, for lessons built after
-Grammar 1-6:** the narration writes an initialism as its capital letters joined
+word, so the phonemes and the ear decide. **The rule, for every lesson:** the
+narration writes an initialism as its capital letters joined
 by hyphens ("C-O-P-D"); the screen keeps "COPD". The one exception is a lexicon
 term approved as the voice's default (OET), written as it is. The narration
 audit fails an initialism with spaces or full stops between its letters, joined
-by full stops, or in plain capitals (`initialism_findings`); for Grammar 1-6,
-built before the rule and not changed, it only reports. `check_terms.py` hears
-every hyphenated initialism of a new lesson (Scribe's "COPD" matches
+by full stops, or in plain capitals (`initialism_findings`). `check_terms.py`
+hears every hyphenated initialism (Scribe's "COPD" matches
 "C-O-P-D": the check compares letters only).
 
-The lexicon's COPD entry keeps its alias "C. O. P. D." for now: the cache key
-carries the alias, so changing it would re-synthesise every COPD clip of
-Grammar 1-6 at their next build. A lesson written to the rule never sends the
-text "COPD", so the entry does not apply to it. Retire the entry when the
-maintainer rebuilds those lessons' COPD clips.
+Grammar 1-6, first left as they were, were rewritten to the rule the same day
+at the maintainer's word (ADR 016 amendment): `apply_initialisms.py` lists a
+lesson's old forms and writes one utterance override each (narration only; the
+boards keep "COPD"), and only those clips are re-synthesised. No lesson now
+sends the text "COPD", so the lexicon's COPD entry ("C. O. P. D.") applies to
+none; it stays until the maintainer retires it (a change to the Cartesia
+dictionary).
 
 ### Voice speed is a target, not a setting (measured 2026-09-24)
 
