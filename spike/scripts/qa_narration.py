@@ -153,7 +153,7 @@ are fair game.
 
 DIAGRAMS. A timeline is drawn part by part: a reveal of a "diagram part" adds one \
 arrow, tick, series of marks, pointer or example box to a diagram already on \
-screen. Judge whether what is said about the part matches what the part shows. A clause diagram is drawn the same way: a clause piece (dependent: cannot stand alone; independent: can), the glue (the joining word), an S or V label over a subject or verb, and the join of the pieces (with a comma when the dependent clause comes first); a relative clause set into a sentence (its commas as its edges when non-defining), the removal test (the sentence without the clause, green when it still works, red when we lose who we mean), and a subject link from the main clause's subject to a participle (broken with a cross when the subjects differ: a dangling participle).
+screen. Judge whether what is said about the part matches what the part shows. A clause diagram is drawn the same way: a clause piece (dependent: cannot stand alone; independent: can), the glue (the joining word), an S or V label over a subject or verb, and the join of the pieces (with a comma when the dependent clause comes first); a relative clause set into a sentence (its commas as its edges when non-defining), the removal test (the sentence without the clause, green when it still works, red when we lose who we mean), and a subject link from the main clause's subject to a participle (broken with a cross when the subjects differ: a dangling participle). A gloss (a hard general word) is drawn the same way: the word, then its meaning, a simple line drawing when the word is concrete, and an example sentence.
 
 SEVERITY.
   critical - a wrong or overgeneralised rule, a wrong fact, or a false claim about \

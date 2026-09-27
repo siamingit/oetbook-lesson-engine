@@ -26,6 +26,7 @@ sections and objectives, so that a reference can be resolved to ids
 import argparse
 import csv
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -346,6 +347,46 @@ def catalogue(L: Path) -> list[dict]:
                     "sections": [{"section": s["id"], "title": s["title"]}
                                  for s in e["sections"] if not s["intro"]]})
     return out
+
+
+def first_sentence(text: str) -> str:
+    """A text's first sentence, as spoken."""
+    m = re.match(r"\s*(.+?[.!?])(\s|$)", text or "", re.S)
+    return (m.group(1) if m else (text or "")).strip()
+
+
+def same_sentence(a: str, b: str) -> bool:
+    """Two sentences are the same when their words are, case and punctuation aside."""
+    norm = lambda x: re.sub(r"[^a-z0-9 ]", "", re.sub(r"\s+", " ", x.lower())).strip()
+    return bool(norm(a)) and norm(a) == norm(b)
+
+
+def openings(L: Path) -> dict[str, str]:
+    """The first sentence of every OTHER lesson's introduction, by lesson id
+    (ADR 013: no two lessons open with the same sentence)."""
+    ix = load(L)
+    out = {}
+    for e in (ix or {}).get("lessons", []):
+        if e["id"] == L.name:
+            continue
+        intro = next((s for s in e.get("sections") or [] if s.get("intro")), None)
+        if intro and intro.get("narration_text"):
+            out[e["id"]] = first_sentence(intro["narration_text"])
+    return out
+
+
+def previous_lesson(L: Path) -> dict | None:
+    """The lesson before this one in the course, as the introduction may link
+    to it (ADR 013): id, title, description, its section titles."""
+    ix = load(L)
+    ids = [e["id"] for e in (ix or {}).get("lessons", [])]
+    if L.name not in ids or ids.index(L.name) == 0:
+        return None
+    e = ix["lessons"][ids.index(L.name) - 1]
+    return {"lesson": e["id"], "title": e["title"], "short_title": e["short_title"],
+            "description": e.get("description"),
+            "sections": [{"section": s["id"], "title": s["title"]}
+                         for s in e["sections"] if not s["intro"]]}
 
 
 def check_ref(cat: list[dict], lesson: str | None, section: str | None) -> str | None:

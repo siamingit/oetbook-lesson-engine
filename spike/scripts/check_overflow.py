@@ -25,7 +25,16 @@ import argparse
 import json
 import re
 import subprocess
+import shutil
+import atexit
+import tempfile
 from pathlib import Path
+
+# Headless Edge runs with its own profile, removed on exit: with the default one,
+# a run could be handed to an Edge window already open and never return
+# (the layout check's 900 s time-outs on Grammar 6, 2026-09-27).
+EDGE_PROFILE = tempfile.mkdtemp(prefix="oet-edge-")
+atexit.register(shutil.rmtree, EDGE_PROFILE, True)
 
 EDGE = [r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
         r"C:\Program Files\Microsoft\Edge\Application\msedge.exe"]
@@ -129,7 +138,7 @@ def run(player: Path, width: int) -> dict:
     script = (HARNESS.replace("__WIDTH__", str(width)).replace("__TOL__", str(TOLERANCE_PX))
               .replace("__ACR__", json.dumps(ACRONYMS)).replace("__LABELS__", json.dumps(LABELS)))
     harness.write_text(html.replace("</body>", script + "</body>"), encoding="utf-8")
-    r = subprocess.run([edge, "--headless=new", "--disable-gpu", f"--window-size={width + 200},{int(width * 0.75)}",
+    r = subprocess.run([edge, "--headless=new", "--user-data-dir=" + EDGE_PROFILE, "--disable-gpu", f"--window-size={width + 200},{int(width * 0.75)}",
                         "--virtual-time-budget=60000", "--dump-dom", harness.resolve().as_uri()],
                        capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=900)
     harness.unlink(missing_ok=True)

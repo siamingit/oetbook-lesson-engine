@@ -262,7 +262,7 @@ headers, never on error or answer rows, and **only in a tense lesson**
 | Error row | A wrong sentence. Red tint, ✕, left bar. | usually fixed |
 | Answer row | A correct sentence. Green tint, ✓, left bar. | working |
 | Term box | A new word or phrase with its explanation. Blue tint, small label. | working |
-| Gloss | A hard general English word with a very short gloss beside it (§7b). A term box labelled WORD, drawn on one line. | working |
+| Gloss | A hard general English word, taught as a moment of about fifteen seconds: the word, its meaning, a line drawing when the word is concrete, one example sentence (§7b; ADR 013). The block type `gloss`; before 2026-09-27 a term box labelled WORD, drawn on one line. | working |
 | Comparison | Two items side by side. Equal columns, hairline between. | working |
 | Plain block | A statement or rule with no correctness value. | either |
 | Category card | Coloured header strip with a label, and a body. For tense families and for comparing categories. Header in the family colour, or neutral grey for a category that is not a tense. | working |
@@ -374,7 +374,8 @@ Rules:
   choice with neither.
 - At most one timeline and two icons per board state. The layout erases
   sooner rather than exceed either.
-- No photographs, no illustrations.
+- No photographs, no illustrations, with one exception: a gloss's line
+  drawing of a concrete word, from the curated gloss catalogue (§7b; ADR 013).
 - Every element stays legible at phone-landscape width.
 - Narration reveals and marks these like any block, and the reading
   pointer follows the text inside them.
@@ -455,6 +456,39 @@ own content) stays small: at most four columns and five rows.
 ---
 
 ### 7b. Gloss
+
+**Revised 2026-09-27 (maintainer; docs/adr/013-gloss-moments-and-teacher-openings.md):
+a gloss is a teaching moment, not an aside.** The rules below on which words
+are glossed stand; how a gloss is shown and spoken changes, for every lesson
+from Grammar 6 on (lessons built before keep their one-line glosses until
+rebuilt):
+
+- **Data:** the block type `gloss`: `term` the word as it appears,
+  `explanation` its meaning (a simpler synonym or a few plain words, about
+  five), `text` one short example sentence that uses the word, in a medical
+  context where natural, and `icon` a picture from the gloss catalogue when
+  the word is concrete, else none. Its parts, revealed by the narration in
+  this order: the meaning, the picture (when there is one), the example.
+- **Look:** the pale yellow note card; the word a little above body size in
+  the medium weight; "= meaning" under it; the example under a small
+  "Example" label; the picture beside them, a simple line drawing in neutral
+  slate, drawn line by line as it is revealed. Every part's room is reserved
+  from the start, so nothing moves (§8a).
+- **Pictures:** curated in code (`write_screens.GLOSS_PICTURES`), like the
+  icons: the screens model names one, code draws it; the model never draws.
+  Only a concrete word gets one (grazed, cleansed, orderly, clumsy); an
+  abstract word never gets a forced picture. The catalogue grows only as a
+  lesson needs a drawing, each checked in the player.
+- **Narration:** about fifteen seconds: the block revealed as the word is
+  first said, the word said clearly on its own, a pause of about a second; the
+  meaning revealed and said; the picture revealed and described in one short
+  sentence; the example revealed and read; a pause of about a second and a
+  half; then the lesson goes on. The narration audit fails a gloss whose parts
+  are not all revealed in order in one state, or whose moment has fewer than
+  two pauses or is estimated under ten seconds (words at 150 a minute plus
+  pauses), and warns under thirteen.
+
+The rules as they were for the one-line gloss, kept for lessons built before:
 
 Recorded 2026-09-25 (docs/00-PRODUCT.md §3, "Hard general words are
 glossed"). A gloss explains a hard **general** English word the first time

@@ -207,10 +207,15 @@ advanced general English. Write for that level:
 participle. Difficult general English is not.
   - Define a grammar term the first time you say it, in plain words. The \
 screen's term box gives the definition; say it, do not assume it.
-  - A GLOSS on the board (a term box labelled WORD, drawn as "schedule (= plan a \
-time)") explains a hard general English word. Reveal it where the word first \
-comes up and say it in ONE short sentence: "Schedule means to plan a time for \
-something." Never explain a medical word (specialist terminology: diseases, \
+  - A GLOSS (type gloss; ADR 013) teaches a hard general English word as a \
+short moment of its own, about fifteen seconds: reveal the block where the word \
+first comes up and say the word clearly; PAUSE about a second; reveal its \
+meaning part and say it simply ("Grazed means the skin is scraped."); reveal \
+its picture part, when it has one, and say in one short sentence what it shows; \
+reveal its example part and read the sentence; PAUSE about a second and a half; \
+then go on with the lesson. Every part in order, in one state. (An older gloss, \
+a term box labelled WORD drawn as "schedule (= plan a time)", is said in one \
+short sentence.) Never explain a medical word (specialist terminology: diseases, \
 drugs, procedures, anatomy, such as hypothyroidism, colonoscopy, warfarin); the \
 students are healthcare professionals. A general word common in clinical \
 settings (deteriorate, commence, schedule) is a general word: explain it when \
@@ -407,12 +412,19 @@ INTRO = """\
 THIS IS THE LESSON'S INTRODUCTION (docs/00-PRODUCT.md §2a), not a section. Two \
 boards: the title board, then the contents board with one note per category \
 of the lesson. Your narration:
-  - Greets the student plainly ("Hello, and welcome."). The voice is not the \
-instructor's: never give a name, never speak as a particular teacher, never \
-say "I" about teaching experience.
-  - Says what the lesson is about, revealing the description on the title \
-board as you say it. The teaching beats tell you why this matters in OET: use \
-that intent, briefly.
+  - OPENS LIKE A REAL TEACHER, never with a template (ADR 013): no "Hello, and \
+welcome.", no "This lesson is called ...". Choose ONE opening that fits this \
+lesson: a link to what the student did in the previous lesson (PREVIOUS \
+LESSON: name it by its title, with its `refs`), a real problem from a letter \
+(two case notes that make a clumsy sentence, said simply), or a question to \
+the student. Warm, natural and short. Your first sentence must differ from \
+every other lesson's first sentence (OTHER LESSONS' OPENINGS): the audit fails \
+a repeat. The voice is not the instructor's: never give a name, never speak as \
+a particular teacher, never say "I" about teaching experience.
+  - Says why the topic matters for the student's letters, and what they will be \
+able to do by the end, revealing the description on the title board as you \
+say it. The teaching beats tell you why this matters in OET: use that intent, \
+briefly.
   - Walks through the categories on the contents board IN ORDER, revealing each \
 note at the word where you name it, with one or two short sentences on what \
 that part of the lesson covers. The note shows the sections of each category; \
@@ -593,6 +605,10 @@ def compact(b: dict) -> dict:
         out["parts"] = [part_line(b, it) for it in b["items"]]
     if b["type"] == "clauses" and b.get("items"):
         out["parts"] = [clause_part_line(b, it) for it in b["items"]]
+    if b["type"] == "gloss" and b.get("items"):
+        out["parts"] = [f"{b['id']}.{it['part']}: {it['kind']}"
+                        + (f" '{it['text']}'" if it["kind"] != "picture"
+                           else f" (a line drawing: {it['text']})") for it in b["items"]]
     if b["type"] == "table" and b.get("typed"):
         # a table board's table: typed parts shown in [[ ]], as the screens
         # stage wrote them, and listed in the order they are typed
@@ -652,7 +668,7 @@ def gather(lesson: Path, pages: list[int]) -> dict:
     # The teacher's references to other sessions, as the understanding resolved
     # them (docs/00-PRODUCT.md §6a); lessons built before ADR 006 have none, and
     # a rewrite brief supplies them instead. The course catalogue checks them.
-    from build_course_index import catalogue
+    from build_course_index import catalogue, openings, previous_lesson
     references = []
     for page in pages:
         up = paths.understanding_dir(lesson, page) / "understanding.json"
@@ -662,6 +678,7 @@ def gather(lesson: Path, pages: list[int]) -> dict:
     return {"page": pages[0], "pages": pages, "screens": screens,
             "screens_path": str(screens_path), "lesson_id": lesson.name,
             "catalogue": catalogue(lesson), "references": references,
+            "previous_lesson": previous_lesson(lesson), "openings": openings(lesson),
             "blocks": blocks, "understanding": know, "ledger": ledger,
             "rulings": rulings, "rulings_from": rulings_from,
             "forbids": ledger_phrases(ledger, "forbidden_phrases"),
@@ -761,6 +778,11 @@ def build_messages(data: dict, rewrite: dict | None = None) -> list[dict]:
     ]
     if scr.get("section", {}).get("intro"):
         content.append({"type": "text", "text": INTRO})
+        content.append({"type": "text", "text":
+            "PREVIOUS LESSON (the one before this in the course; null for the first):\n"
+            + json.dumps(data.get("previous_lesson"), ensure_ascii=False)
+            + "\n\nOTHER LESSONS' OPENINGS (never open with any of these sentences):\n"
+            + json.dumps(data.get("openings") or {}, ensure_ascii=False)})
         items = [b for t in scr["topics"] for h in t["thoughts"] for b in h["blocks"]
                  if b["type"] == "contents_item"]
         if items and not any(b.get("explanation") for b in items):
@@ -960,6 +982,54 @@ def assemble(data: dict, model_out: dict) -> tuple[list[dict], list[dict]]:
     return boards, findings
 
 
+# ADR 013: a stock opening - a greeting alone, or the lesson named as the opening
+TEMPLATE_OPENING = re.compile(
+    r"^(?:(?:hello|hi|welcome)(?:,? and welcome)?(?: back)?(?: everyone| to (?:the|this) lesson)?[.!]"
+    r"|this lesson is (?:called )?grammar for oet\b.*)$", re.I)
+GLOSS_WPS = 2.5            # words a second, spoken (about 150 a minute)
+GLOSS_MIN_S, GLOSS_AIM_S = 10.0, 13.0
+
+
+def gloss_moment_findings(boards: list[dict], blocks: dict) -> list[dict]:
+    """ADR 013: a gloss is a teaching moment of about fifteen seconds: its
+    block and every part revealed in one state, in order, with at least two
+    pauses, the speech from the block's reveal to its last part long enough.
+    The time is estimated from words and pauses; synthesis measures it."""
+    out = []
+    for bd in boards:
+        for s in bd["states"]:
+            for bid, b in blocks.items():
+                if b.get("type") != "gloss":
+                    continue
+                parts = [f"{bid}.{it['part']}" for it in b.get("items") or []]
+                at = {}
+                for i, u in enumerate(s["utterances"]):
+                    for c in u["cues"]:
+                        if c["type"] == "reveal" and c.get("block") in [bid] + parts:
+                            at.setdefault(c["block"], i)
+                if bid not in at:
+                    continue
+                missing = [p for p in parts if p not in at]
+                if missing:
+                    out.append({"severity": "fail", "where": s["id"],
+                                "what": f"gloss {bid} ({b.get('term')!r}): parts {missing} never revealed"})
+                    continue
+                if [at[p] for p in parts] != sorted(at[p] for p in parts):
+                    out.append({"severity": "fail", "where": s["id"],
+                                "what": f"gloss {bid}: parts revealed out of order"})
+                span = s["utterances"][at[bid]:max(at[p] for p in parts) + 1]
+                words = sum(len(spoken(u["text_with_cues"]).split()) for u in span)
+                pauses = [c for u in span for c in u["cues"] if c["type"] == "pause"]
+                est = words / GLOSS_WPS + sum(c.get("seconds") or 0 for c in pauses)
+                what = (f"gloss {bid} ({b.get('term')!r}): about {est:.0f} s ({words} words, "
+                        f"{len(pauses)} pauses); a gloss is a moment of about fifteen seconds")
+                if len(pauses) < 2 or est < GLOSS_MIN_S:
+                    out.append({"severity": "fail", "where": s["id"], "what": what})
+                elif est < GLOSS_AIM_S:
+                    out.append({"severity": "warn", "where": s["id"], "what": what})
+    return out
+
+
 def sentences(text: str) -> list[str]:
     return [s for s in re.split(r"(?<=[.!?])\s+", text) if s.strip()]
 
@@ -973,7 +1043,7 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
 
     def parts_of(bid: str) -> list[str]:
         b = blocks.get(bid)
-        if not b or b["type"] not in ("timeline", "clauses"):
+        if not b or b["type"] not in ("timeline", "clauses", "gloss"):
             return []
         return [f"{bid}.{it.get('part')}" for it in (b.get("items") or [])]
 
@@ -1340,6 +1410,19 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                     m = src.search(spoken(u["text_with_cues"]))
                     if m:
                         fail(u["id"], f"source reference {m.group(0)!r} in the introduction")
+        # ADR 013: a teacher's opening, never a template and never another
+        # lesson's first sentence (from the course index)
+        from build_course_index import first_sentence, same_sentence
+        first = first_sentence(said_all[0]) if said_all else ""
+        if TEMPLATE_OPENING.match(first):
+            fail("intro", f"the introduction opens with a template ({first!r}); open like a "
+                          "teacher: a link to the previous lesson, a problem from a letter, or "
+                          "a question")
+        for other, sent in (data.get("openings") or {}).items():
+            if same_sentence(first, sent):
+                fail("intro", f"the introduction opens with the same sentence as {other}: "
+                              f"{first!r}")
+    findings += gloss_moment_findings(boards, blocks)
 
     # A choice table (bundle 1.6): a wrong cell the narration never strikes
     # fades only when its row ends, with no word said about it.

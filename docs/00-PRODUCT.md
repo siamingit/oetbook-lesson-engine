@@ -165,12 +165,20 @@ while the contents are on screen. A rule for every lesson:
 
 - The lesson opens with the **title board** and the **contents board**,
   both narrated.
-- The narration greets the student, says what the lesson is about, and
-  walks through the categories. Each category on the contents board is a
-  block that is revealed as it is named.
+- The narration opens like a real teacher, differently in every lesson
+  (maintainer, 2026-09-27; docs/adr/013-gloss-moments-and-teacher-openings.md):
+  never a template ("Hello, and welcome. This lesson is called Grammar for
+  OET: ..."), but a link to what the student did in the previous lesson (from
+  the course index), a real problem from a letter, or a question. It says
+  why the topic matters for their letters and what they will be able to do
+  by the end, then walks through the categories. Each category on the
+  contents board is a block that is revealed as it is named. Warm, natural,
+  short. No two lessons open with the same sentence: the narration audit
+  fails a first sentence that another lesson's introduction already uses
+  (course index) or a stock greeting on its own.
 - Short: about one to two minutes.
 - The voice is not the instructor's. It never gives the instructor's name
-  and never speaks as him: a plain greeting.
+  and never speaks as him.
 - The source is the understanding of the contents slide's interval, written
   under the same rules as every section: student level, provenance, visual
   anchors, no references to the original recording (a reference to another
@@ -206,11 +214,14 @@ lessons do the same, in English.
 - Wherever a **general** English word would be hard for an A2–B1 learner
   (in Grammar 2, "schedule" or "modification"), it is explained briefly the
   first time it appears.
-- On the board: the word in the medium weight, with a very short gloss
-  beside it, such as a simpler synonym: "schedule (= plan a time)"
-  (docs/02-DESIGN-SYSTEM.md §7b).
-- In the narration: one short sentence, such as "Schedule means to plan a
-  time for something."
+- Each gloss is a short teaching moment of its own, about fifteen seconds
+  (maintainer, 2026-09-27; docs/adr/013-gloss-moments-and-teacher-openings.md):
+  the word appears on the board and the narration says it clearly and
+  pauses; a simple meaning, spoken and shown; a simple line drawing where the
+  word is concrete (a grazed palm, a wound being cleaned), none for an
+  abstract word; one short example sentence, in a medical context where
+  natural; a short pause, then the lesson goes on (docs/02-DESIGN-SYSTEM.md
+  §7b). Which words are glossed is unchanged.
 - **Never gloss medical words**: the learners are healthcare
   professionals and know them. Grammar terms keep their own rule above.
 - **What a "medical word" is** (maintainer, 2026-09-25): specialist

@@ -16,8 +16,17 @@ non-zero. Run it on every review page before handing it over.
 import json
 import re
 import subprocess
+import shutil
+import atexit
+import tempfile
 import sys
 from pathlib import Path
+
+# Headless Edge runs with its own profile, removed on exit: with the default one,
+# a run could be handed to an Edge window already open and never return
+# (the layout check's 900 s time-outs on Grammar 6, 2026-09-27).
+EDGE_PROFILE = tempfile.mkdtemp(prefix="oet-edge-")
+atexit.register(shutil.rmtree, EDGE_PROFILE, True)
 
 EDGE = [r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
         r"C:\Program Files\Microsoft\Edge\Application\msedge.exe"]
@@ -61,7 +70,7 @@ def check(page: Path) -> list[dict]:
     harness.write_text(html.replace("</body>", HARNESS + "</body>") if "</body>" in html
                        else html + HARNESS, encoding="utf-8")
     try:
-        r = subprocess.run([edge, "--headless=new", "--disable-gpu", "--mute-audio",
+        r = subprocess.run([edge, "--headless=new", "--user-data-dir=" + EDGE_PROFILE, "--disable-gpu", "--mute-audio",
                             "--virtual-time-budget=15000", "--dump-dom",
                             harness.resolve().as_uri()], capture_output=True, text=True,
                            encoding="utf-8", errors="replace", timeout=120)

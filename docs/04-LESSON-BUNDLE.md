@@ -4,7 +4,7 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.9. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.10. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
 2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
 table boards, on 2026-09-25 (docs/adr/007-table-boards.md); 1.3, the board style
@@ -15,7 +15,8 @@ gaps and marks in table cells, the same day (docs/adr/009-choice-tables-and-gaps
 the clause diagram, on 2026-09-27 (docs/adr/010-clause-diagram.md); 1.8, clears
 and tight boards so every block fits, the same day (docs/adr/011-boards-fit.md); 1.9,
 relative and participle clauses in the clause diagram, the same day
-(docs/adr/012-relative-and-participle-clauses.md).
+(docs/adr/012-relative-and-participle-clauses.md); 1.10, the gloss block, the
+same day (docs/adr/013-gloss-moments-and-teacher-openings.md).
 A change to it is a new format version (§3), recorded in a new ADR.
 
 | Version | Date | Change |
@@ -30,6 +31,7 @@ A change to it is a new format version (§3), recorded in a new ADR.
 | 1.7 | 2026-09-27 | the clause diagram: the block type `clauses`, its `items` (`{kind, text, piece, part}`); rule 20 (ADR 010) |
 | 1.8 | 2026-09-27 | every block fits the board: a state's `clears`, a board's `tight`; a table's `font` may be set by the fit; rules 21 to 23 (ADR 011) |
 | 1.9 | 2026-09-27 | relative and participle clauses: the `clauses` part kinds `defining`, `nondefining`, `remove` (with `keeps`) and `link`, `dangling` (with `from`); rule 24 (ADR 012) |
+| 1.10 | 2026-09-27 | the gloss block: the block type `gloss` (`term`, `explanation`, `text`, `icon`, `items` `{kind, text, part}` with kinds `meaning`, `picture`, `example`); rule 25 (ADR 013) |
 
 ---
 
@@ -151,7 +153,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.9"` |
+| `format_version` | string | `"1.10"` |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -205,7 +207,7 @@ A block is one thing on a board. Each carries its data and its rendered `html`.
 | Field | Meaning |
 |---|---|
 | `id` | block id |
-| `type` | `plain`, `error_row`, `answer_row`, `term_box`, `comparison`, `callout`, `category_card`, `timeline`, `table`, `clauses` (1.7), `contents_item`, `lesson_title` (docs/02-DESIGN-SYSTEM.md §7) |
+| `type` | `plain`, `error_row`, `answer_row`, `term_box`, `comparison`, `callout`, `category_card`, `timeline`, `table`, `clauses` (1.7), `gloss` (1.10), `contents_item`, `lesson_title` (docs/02-DESIGN-SYSTEM.md §7) |
 | `text` | the text of `plain`, `error_row`, `answer_row`, `callout`, `category_card` (body), `contents_item` (the category; in a lesson with no contents slide, the section's title, and its `explanation` is null), `lesson_title` |
 | `label` | a small label: `term_box` ("NEW WORD"; "WORD" marks a gloss of a hard general word, which the reference player draws on one line as "term (= explanation)", docs/02-DESIGN-SYSTEM.md §7b), `comparison`, `category_card` (header), `timeline`; on a `contents_item`, its number |
 | `term`, `explanation` | `term_box`; `explanation` also carries a `contents_item`'s section list |
@@ -442,6 +444,11 @@ These are the only rules. Every time and target they use is in the bundle.
     a head; a `dangling` part draws the same arc broken, with a red cross where
     it breaks. The arcs are drawn over the board like marks (rule 19), measured
     from where the words are.
+25. **A gloss** (1.10) is a block whose word shows from its reveal; its parts
+    (`meaning`, `picture`, `example`) are revealed by rule 5, each with its
+    room reserved from the start. A `picture` part is a line drawing in the
+    block's `html`, drawn line by line from its reveal (each shape carries
+    `pathLength="1"`); after a seek it is simply there.
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and
@@ -456,7 +463,7 @@ no cues and no provenance.
 
 | Field | Meaning |
 |---|---|
-| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.9"` |
+| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.10"` |
 | `lesson` | the same object as `bundle.json`'s `lesson` |
 | `sections[]` | `{id, title, category, start, end, narration_text, board_text, boards}` |
 | `sections[].narration_text` | everything said in the section, one paragraph per board |
