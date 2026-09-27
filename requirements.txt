@@ -17,3 +17,6 @@ google-genai==2.24.0           # Apache-2.0
 
 # Text to speech — see docs/adr/002-ai-providers.md
 cartesia==4.2.0                # Apache-2.0
+
+# Gloss images: background removal with rembg's ISNet model, run directly — see docs/adr/015-gloss-images.md
+onnxruntime==1.30.0          # MIT

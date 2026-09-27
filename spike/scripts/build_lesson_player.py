@@ -49,12 +49,12 @@ from build_board_bundle import block_tokens, norm, reading_runs   # noqa: E402
 from build_board_timeline import lay_timeline                     # noqa: E402
 from write_narration import spoken                                # noqa: E402
 import board_style                                                # noqa: E402
-from write_screens import (FRAME_CSS, TAG_LABELS, block_html,     # noqa: E402
+from write_screens import (FRAME_CSS, TAG_LABELS, block_html, resolve_images, IMAGE_TOKEN,     # noqa: E402
                            block_text_runs, is_exercise_board)
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-FORMAT_VERSION = "1.10"             # docs/04-LESSON-BUNDLE.md; 1.1 refs, 1.2 table boards, 1.3 board style, 1.4 table cells, 1.5 tense colours by lesson, 1.6 choice tables and marks in cells, 1.7 the clause diagram, 1.8 clears and table fit, 1.9 relative and participle clauses in the clause diagram, 1.10 the gloss block
+FORMAT_VERSION = "1.11"             # docs/04-LESSON-BUNDLE.md; 1.1 refs, 1.2 table boards, 1.3 board style, 1.4 table cells, 1.5 tense colours by lesson, 1.6 choice tables and marks in cells, 1.7 the clause diagram, 1.8 clears and table fit, 1.9 relative and participle clauses in the clause diagram, 1.10 the gloss block, 1.11 gloss images
 READING_HOLD_S = 2.5               # the pointer stays on the last word read this long
 # Everything block_html draws from; pipeline notes (anchor, from_beats, note,
 # relabelled, ruling) stay in screens.json.
@@ -66,7 +66,9 @@ BLOCK_FIELDS = ("id", "type", "label", "text", "term", "explanation", "left", "r
                 # 1.3, kinds of content and the board style (ADR 008)
                 "role", "style", "card", "pin", "fold_into", "flow", "band",
                 # 1.6, choice tables (ADR 009)
-                "verdicts")
+                "verdicts",
+                # 1.11, a gloss's generated image (ADR 015)
+                "image")
 
 
 def block_data(b: dict) -> dict:
@@ -356,7 +358,11 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                 nb["tense_neutral"] = True
             if nb["id"] in (fit.get("fonts") or {}):
                 nb["font"] = fit["fonts"][nb["id"]]      # 1.8: smaller, so the table fits
-            blocks_all[pre + bid] = {**block_data(nb), "html": block_html(nb),
+            html_b = resolve_images(block_html(nb), out_dir, L)
+            if nb.get("image"):                      # 1.11: the file, relative to the bundle's folder
+                nb["image"] = {**nb["image"], "file": resolve_images(
+                    IMAGE_TOKEN + "/" + nb["image"]["file"], out_dir, L)}
+            blocks_all[pre + bid] = {**block_data(nb), "html": html_b,
                                      "_tokens": block_tokens(b)}     # display words (1.3)
         section_marks.append({"id": tag, "title": sec["title"], "pages": pages,
                               "intro": bool(sec.get("intro")),

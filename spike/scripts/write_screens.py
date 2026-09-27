@@ -114,68 +114,31 @@ ICONS = {
     "inhaler":       "M8 3h6v8H8zM8 11l-3 8h12l-3-8M11 6h-3",
 }
 
-# Gloss pictures (docs/02-DESIGN-SYSTEM.md §7b, ADR 013; maintainer 2026-09-27):
-# simple line drawings, one per CONCRETE general word a gloss explains, drawn
-# on the board as the narration reaches it. Curated here, like the icons: the
-# screens model names one, code draws it; an abstract word gets none. Each
-# drawing is neutral slate line work on a 64 x 64 grid; `fill` marks a shape
-# filled with the note's colour so it hides the lines behind it. The list grows
-# only as a lesson needs a picture, each drawing checked in the player.
-GLOSS_PICTURES = {
-    # an open hand, palm up, with a scraped patch on the palm
-    "grazed-palm": [
-        ("rect", 'x="19" y="9" width="7" height="24" rx="3.5"'),
-        ("rect", 'x="27" y="5" width="7" height="27" rx="3.5"'),
-        ("rect", 'x="35" y="6" width="7" height="26" rx="3.5"'),
-        ("rect", 'x="43" y="11" width="6" height="22" rx="3"'),
-        ("rect", 'x="5" y="30" width="18" height="7" rx="3.5" transform="rotate(-35 14 33.5)"'),
-        ("rect", 'x="17" y="27" width="32" height="26" rx="9" class="fill"'),
-        ("path", 'd="M23 53v9M43 53v9"'),
-        ("path", 'd="M25 37l9-4M26 42l11-5M28 47l10-4.5M35 44.5l5-2.2" class="mk"'),
-    ],
-    # a forearm with a small wound, and a cotton swab wiping it clean
-    "cleaning-wound": [
-        ("path", 'd="M2 40h60M2 56h60"'),
-        ("ellipse", 'cx="24" cy="48" rx="7" ry="3.2"'),
-        ("path", 'd="M20 48h8M22 46.5l4 3" class="mk"'),
-        ("path", 'd="M52 12L37 40"'),
-        ("ellipse", 'cx="35.5" cy="43" rx="4" ry="3" transform="rotate(-28 35.5 43)" class="fill"'),
-        ("path", 'd="M42 50q4 2 8 0M44 54q3 1.5 6 0" class="mk"'),
-        ("path", 'd="M14 20q-3 5 0 7q3-2 0-7z"'),
-    ],
-    # a hospital worker pushing a patient in a wheelchair
-    "orderly-wheelchair": [
-        ("circle", 'cx="9" cy="12" r="4.5"'),
-        ("path", 'd="M9 17v22M9 39l-4 21M9 39l5 21M9 23l12 1"'),
-        ("path", 'd="M21 24h4v18h22l3 14"'),
-        ("circle", 'cx="34" cy="50" r="10"'),
-        ("circle", 'cx="50" cy="59" r="3"'),
-        ("circle", 'cx="37" cy="16" r="4.5"'),
-        ("path", 'd="M36 21l-3 18h15l3 13M35 27l9 6"'),
-    ],
-    # a cup falling from an open hand, drops on the floor
-    "clumsy-dropping": [
-        ("path", 'd="M4 16q8-6 16 0M8 12l-2-7M13 11l0-8M18 12l2-7"'),
-        ("path", 'd="M26 30l15 5-4 14-13-4z" class="fill"'),
-        ("path", 'd="M40 38q6 1 4 7-1 2-5 1"'),
-        ("path", 'd="M22 22l3 5M30 20l2 6M20 30l4 2" class="mk"'),
-        ("path", 'd="M8 61h50"'),
-        ("circle", 'cx="36" cy="57" r="1.3"'),
-        ("circle", 'cx="42" cy="55" r="1.3"'),
-        ("circle", 'cx="30" cy="56" r="1.3"'),
-    ],
-}
+# Gloss images (docs/02-DESIGN-SYSTEM.md §7b; ADR 015, replacing ADR 013's line
+# drawings): a concrete word's gloss carries an image brief in `icon`, "alt text |
+# what to draw"; gloss_images.py generates the illustration from the brief and
+# the course's style guide, cut out on a transparent background, cached by the
+# brief. The block's html names it by a token that each page resolves to its own
+# relative path (resolve_images), so one html serves the player, the silent
+# preview and the review pages.
+IMAGE_TOKEN = "@@gloss-images@@"
 
 
-def gloss_picture_svg(name: str | None) -> str:
-    """A gloss picture, inline, drawn part by part (every shape carries
-    pathLength so the player can draw its line in). Empty for a name not in
-    the catalogue."""
-    shapes = GLOSS_PICTURES.get(name or "")
-    if not shapes:
-        return ""
-    return ('<svg viewBox="0 0 64 64" aria-hidden="true">'
-            + "".join(f'<{tag} {attrs} pathLength="1"/>' for tag, attrs in shapes) + "</svg>")
+def gloss_alt(b: dict) -> str:
+    """A gloss image's alt text: the image's own, else the brief's first part."""
+    if b.get("image") and b["image"].get("alt"):
+        return b["image"]["alt"]
+    return (b.get("icon") or "").split("|")[0].strip()
+
+
+def resolve_images(html: str, page_dir: Path, lesson: Path) -> str:
+    """Point a page's gloss images at <lesson>/generated/images, relative to
+    the folder the page is written in."""
+    import os
+    if IMAGE_TOKEN not in html:
+        return html
+    rel = os.path.relpath(lesson / "generated" / "images", page_dir).replace(os.sep, "/")
+    return html.replace(IMAGE_TOKEN, rel)
 
 
 def gloss_items(b: dict) -> list[dict]:
@@ -183,8 +146,8 @@ def gloss_items(b: dict) -> list[dict]:
     (when it has one), its example sentence. The word itself is the block: it
     appears when the block is revealed."""
     items = [{"kind": "meaning", "text": b.get("explanation") or ""}]
-    if b.get("icon") in GLOSS_PICTURES:
-        items.append({"kind": "picture", "text": b["icon"]})
+    if (b.get("icon") or "").strip():
+        items.append({"kind": "picture", "text": gloss_alt(b)})
     items.append({"kind": "example", "text": b.get("text") or ""})
     for n, it in enumerate(items, 1):
         it["part"] = n
@@ -282,10 +245,12 @@ its own type, below.
 `term` the word as it appears ("grazed"), `explanation` its meaning, a simpler \
 synonym or a few plain words, at most about five ("scraped the skin"), `text` \
 ONE short example sentence that uses the word, in a medical context where that \
-is natural ("She fell and grazed her knee."), and `icon` a PICTURE name from \
-GLOSS PICTURES when the word is concrete and one of them shows it, else null \
+is natural ("She fell and grazed her knee."), and `icon` an IMAGE BRIEF when the \
+word is concrete and a picture helps understanding, else null: "alt text | what \
+to draw", subject only ("An open palm with a light graze | an adult's open \
+palm with a lightly grazed patch of skin"); code generates the illustration \
 (an abstract word never gets a forced picture). Code draws the word, then its \
-meaning, the picture and the example, part by part.
+meaning, the image and the example, part by part.
   comparison  two things side by side, with a short caption saying what is \
 being contrasted. Use it for every contrast: active and passive, one \
 moment and a lasting state, a closed period and an open one, a state and \
@@ -517,13 +482,9 @@ show as printed, for example "schedule" or "modification" - add a gloss the \
 first time it appears in this section: a block of type gloss, `term` the \
 word as it appears ("scheduled"), `explanation` a simpler synonym or a few plain \
 words, at most about five ("planned for a time"; "a change to make it work \
-better"), `text` one short example sentence, `icon` a GLOSS PICTURE or null, \
-alone in its own thought, right after the thought where the word first appears, \
-`anchor: false`, provenance `adapted`. GLOSS PICTURES (a concrete word only): \
-grazed-palm (a scraped palm: grazed, scraped), cleaning-wound (a swab cleaning \
-a wound: cleansed, cleaned, wiped), orderly-wheelchair (a hospital worker \
-pushing a wheelchair: orderly, porter), clumsy-dropping (a cup falling from a \
-hand: clumsy, dropped). NEVER gloss a medical word: the \
+better"), `text` one short example sentence, `icon` an image brief (a concrete \
+word only, where a picture helps) or null, alone in its own thought, right after \
+the thought where the word first appears, `anchor: false`, provenance `adapted`. NEVER gloss a medical word: the \
 learners are healthcare professionals and know them. A medical word is \
 specialist terminology - diseases, drugs, procedures, anatomy, usually Latin or \
 Greek in origin (hypothyroidism, colonoscopy, warfarin). General words that are \
@@ -1504,10 +1465,10 @@ def block_height(b: dict) -> float:
     elif t == "gloss":
         # the word, its meaning, the example under a small label, a picture
         # beside them when it has one (ADR 013)
-        pic = b.get("icon") in GLOSS_PICTURES
+        pic = bool((b.get("icon") or "").strip())
         cpl = int(CHARS_PER_LINE * (0.7 if pic else 1.0))
-        text = (GLOSS_WORD_LINE + wrapped_lines(b.get("explanation"), cpl) * LINE
-                + GLOSS_EXAMPLE_GAP + LABEL_LINE + wrapped_lines(b.get("text"), cpl) * LINE)
+        text = (wrapped_lines(f"{b.get('term')} = {b.get('explanation')}", cpl) * GLOSS_WORD_LINE
+                + GLOSS_EXAMPLE_GAP + wrapped_lines("Example: " + (b.get("text") or ""), cpl) * LINE)
         h = max(text, GLOSS_PICTURE if pic else 0)
     elif t == "term_box":
         h = LABEL_LINE + (wrapped_lines(b["term"], CHARS_PER_LINE)
@@ -2144,8 +2105,9 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
         if t == "gloss":
             # a gloss teaches a hard general word (ADR 013): its picture comes
             # from the gloss catalogue, its meaning is short, its example uses it
-            if b.get("icon") and b["icon"] not in GLOSS_PICTURES:
-                fail(b["id"], f"gloss picture {b['icon']!r} is not in the catalogue")
+            if (b.get("icon") or "").strip() and not b.get("image"):
+                warn(b["id"], f"gloss image not generated yet for {gloss_alt(b)!r}: the runner's "
+                              "images stage makes it (gloss_images.py)")
             if len((b.get("explanation") or "").split()) > 7:
                 warn(b["id"], f"gloss meaning of {len(b['explanation'].split())} words; about five")
             if b.get("term") and b.get("text") and not re.search(
@@ -2963,15 +2925,13 @@ FRAME_CSS = """
 .gl{display:flex;align-items:center;gap:2.5cqw;background:#FFF8DC;border-left:max(3px,.6cqh) solid #E0AE12;
   border-radius:0 1.4cqh 1.4cqh 0;color:#2C2C2A}
 .gl-txt{flex:1;min-width:0}
-.gl-w{font-size:3.6cqh;line-height:1.3;font-weight:500}
-.gl-m{font-size:3.2cqh;line-height:1.35}
+.gl-h{font-size:3.2cqh;line-height:1.35}
+.gl-w{font-size:3.6cqh;font-weight:500}
 .gl-m::before{content:"= ";color:#888780}
 .gl-x{margin-top:.8cqh;font-size:3.2cqh;line-height:1.35}
-.gl-x::before{content:"Example";display:block;font-size:2.4cqh;line-height:1.35;color:#888780}
+.gl-x::before{content:"Example: ";font-size:2.4cqh;color:#888780}
 .gl-pic{flex:none;width:14cqh;height:13cqh}
-.gl-pic svg{width:100%;height:100%;overflow:visible}
-.gl-pic svg *{fill:none;stroke:#475569;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.gl-pic svg .fill{fill:#FFF8DC} .gl-pic svg .mk{stroke-width:2.6}
+.gl-pic img{display:block;width:100%;height:100%;object-fit:contain}
 .term .t .ico{vertical-align:-.25em;margin-left:1.2cqw}
 /* tense tags: the phrase stays in the text flow; the chip hangs under it, as
    a CSS attribute so it is never a word to the reading pointer */
@@ -3367,12 +3327,15 @@ def _block_html(b: dict) -> str:
         pid = lambda it: f' data-part="{esc(b["id"])}.{it["part"]}"'
         parts = {it["kind"]: it for it in b.get("items") or gloss_items(b)}
         pic = parts.get("picture")
-        return ('<div class="blk gl"' + bid + '><div class="gl-txt"><div class="gl-w">'
-                + esc(b["term"]) + '</div><div class="pt gl-m"' + pid(parts["meaning"]) + ">"
-                + esc(b.get("explanation") or "") + '</div><div class="pt gl-x"'
+        img = b.get("image") or {}
+        picture = (('<img class="gl-img" src="' + IMAGE_TOKEN + "/" + esc(img["file"]) + '" alt="'
+                    + esc(gloss_alt(b)) + '">') if img.get("file") else "")
+        return ('<div class="blk gl"' + bid + '><div class="gl-txt"><div class="gl-h"><span class="gl-w">'
+                + esc(b["term"]) + '</span> <span class="pt gl-m"' + pid(parts["meaning"]) + ">"
+                + esc(b.get("explanation") or "") + '</span></div><div class="pt gl-x"'
                 + pid(parts["example"]) + ">" + esc(b.get("text") or "") + "</div></div>"
-                + (('<div class="pt gl-pic"' + pid(pic) + ">" + gloss_picture_svg(pic["text"])
-                    + "</div>") if pic else "") + "</div>")
+                + (('<div class="pt gl-pic"' + pid(pic) + ">" + picture + "</div>") if pic else "")
+                + "</div>")
     if t == "term_box" and b.get("label") == GLOSS_LABEL:
         # A gloss: the word in the medium weight, "(= gloss)" in the regular
         # weight beside it, on one line (design system §7b).
@@ -3522,6 +3485,12 @@ def render(lesson: Path, page: int, data: dict) -> int:
     overrides = apply_overrides(out_dir, blocks)
     for b in blocks.values():
         if b["type"] == "gloss":
+            b["image"] = None
+            if (b.get("icon") or "").strip():    # a generated image, from the cache (ADR 015)
+                import gloss_images
+                got = gloss_images.find(lesson, b["icon"])
+                if got:
+                    b["image"] = {"file": got["file"], "alt": got.get("alt") or gloss_alt(b)}
             b["items"] = gloss_items(b)          # its parts, from its fields (ADR 013)
     for b in blocks.values():
         if b["provenance"] == "maintainer" and not maintainer_wording(
@@ -3672,7 +3641,7 @@ def render(lesson: Path, page: int, data: dict) -> int:
               "b.classList.add('on')}</script>")
     checks = out_dir / "checks"
     checks.mkdir(parents=True, exist_ok=True)
-    (checks / "index.html").write_text(html, encoding="utf-8")
+    (checks / "index.html").write_text(resolve_images(html, checks, lesson), encoding="utf-8")
 
     print(str(checks / "index.html"))
     print(f"boards {len(boards)} | erase points {n_erase} | blocks {len(blocks)} | "

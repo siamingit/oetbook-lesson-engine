@@ -99,15 +99,13 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
      the words are, so it appears whole at its reveal. */
   .cl-emb.on:not(.settled) { animation: glue-in .4s ease-out both; }
   .cl-rm.on:not(.settled) { animation: write-in .45s ease-out both; }
-  /* a gloss (ADR 013): its meaning and example are written in, its picture
-     drawn line by line */
+  /* a gloss (ADR 013): its meaning and example are written in; its image
+     (ADR 015) fades in */
   .gl-m.on:not(.settled), .gl-x.on:not(.settled) { animation: write-in .4s ease-out both; }
-  .gl-pic.on:not(.settled) svg * { stroke-dasharray: 1; animation: gl-draw .9s ease-out both; }
-  .gl-pic.on:not(.settled) svg .fill { animation: gl-draw .9s ease-out both, fade-in .9s ease-in both; }
+  .gl-pic.on:not(.settled) { animation: fade-in .5s ease-out both; }
 }
 @keyframes glue-in { from { background: transparent; box-shadow: 0 0 0 .35cqh transparent; } }
 @keyframes cl-tab { from { transform: none; } }
-@keyframes gl-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes cl-neck { from { width: 0; } }
 @keyframes fade-in { from { opacity: 0; } }
 

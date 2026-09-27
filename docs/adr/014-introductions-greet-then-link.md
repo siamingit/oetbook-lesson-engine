@@ -52,3 +52,10 @@ on its own, and against "This lesson is called ...", is removed.
   repeat check when their narration is next rendered. They are not changed now.
 - A lesson with no `intro_board` has the title and the description only, as
   before; the runbook asks for the board at the introduction's narration.
+
+## Clarification, 2026-09-27
+
+Added by the maintainer with the update of lessons 1-5: the link to another
+lesson never assumes the order in which the student takes the lessons ("The
+lesson Complex sentences shows how to ...", never "In the last lesson you ...").
+The link is usually to the previous lesson; the first lesson links to another.

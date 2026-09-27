@@ -58,7 +58,7 @@ from extract_understanding import api_key, esc, refuse_if_truncated, strip_bidi 
 from write_screens import (maintainer_wording, relabel_note)                  # noqa: E402
 from build_course_index import check_ref                                      # noqa: E402
 from write_screens import (FIXED_FORBIDS, FRAME_CSS, NON_LATIN, PAGE_CSS,     # noqa: E402
-                           REGISTER_WORDS, block_html, block_texts, is_exercise_board,
+                           REGISTER_WORDS, block_html, block_texts, is_exercise_board, resolve_images,
                            ledger_phrases, ledger_rulings, rulings_from_script)
 
 MODEL = "claude-opus-5"
@@ -211,8 +211,10 @@ screen's term box gives the definition; say it, do not assume it.
 short moment of its own, about fifteen seconds: reveal the block where the word \
 first comes up and say the word clearly; PAUSE about a second; reveal its \
 meaning part and say it simply ("Grazed means the skin is scraped."); reveal \
-its picture part, when it has one, and say in one short sentence what it shows; \
-reveal its example part and read the sentence; PAUSE about a second and a half; \
+its picture part, when it has one, right after the meaning, while you are still \
+explaining the word (say nothing about the picture: never "look at the picture", \
+"as you can see in the picture", "the drawing shows"; ADR 015); reveal its \
+example part and read the sentence; PAUSE about a second and a half; \
 then go on with the lesson. Every part in order, in one state. (An older gloss, \
 a term box labelled WORD drawn as "schedule (= plan a time)", is said in one \
 short sentence.) Never explain a medical word (specialist terminology: diseases, \
@@ -421,9 +423,11 @@ any other lesson's first sentence (OTHER LESSONS' OPENINGS): the audit fails a \
 repeat, and an introduction whose first sentence is not a greeting. The voice is \
 not the instructor's: never give a name, never say "I" about teaching \
 experience.
-  - Then links to the previous lesson (PREVIOUS LESSON: name it by its title, \
-with its `refs`), says why this topic matters for the student's letters, and \
-what they will be able to do by the end. The teaching beats tell you why this \
+  - Then links to another lesson (usually PREVIOUS LESSON: name it by its \
+title, with its `refs`) WITHOUT assuming the student has taken it (lessons can \
+be taken in any order: "The lesson Complex sentences shows how to ...", never \
+"In the last lesson you ..."), says why this topic matters for the student's \
+letters, and what they will be able to do by the end. The teaching beats tell you why this \
 matters in OET: use that intent, briefly.
   - THE BOARD SHOWS WHAT YOU DESCRIBE: the title board's blocks (a link to the \
 previous lesson, a problem from a letter, the description of what they will be \
@@ -615,7 +619,8 @@ def compact(b: dict) -> dict:
     if b["type"] == "gloss" and b.get("items"):
         out["parts"] = [f"{b['id']}.{it['part']}: {it['kind']}"
                         + (f" '{it['text']}'" if it["kind"] != "picture"
-                           else f" (a line drawing: {it['text']})") for it in b["items"]]
+                           else f" (an image, shown while the word is explained; never "
+                                f"point at it: {it['text']})") for it in b["items"]]
     if b["type"] == "table" and b.get("typed"):
         # a table board's table: typed parts shown in [[ ]], as the screens
         # stage wrote them, and listed in the order they are typed
@@ -989,6 +994,14 @@ def assemble(data: dict, model_out: dict) -> tuple[list[dict], list[dict]]:
     return boards, findings
 
 
+# ADR 015: the narration never points at a picture; the image appears while
+# the word is explained, and that is enough
+POINTING = re.compile(
+    r"\b(?:(?:as )?you can see (?:it )?in the (?:picture|image|photo|drawing|illustration)"
+    r"|look at the (?:picture|image|photo|drawing|illustration)"
+    r"|(?:in|on) (?:this|the) (?:picture|image|photo|drawing|illustration)"
+    r"|the (?:picture|image|photo|drawing|illustration) (?:shows|is showing)"
+    r"|(?:this|here is a|here's a) (?:picture|image|photo|drawing|illustration))\b", re.I)
 # ADR 014: an introduction's first sentence is a greeting
 GREETING = re.compile(r"\b(hello|hi|welcome|good (?:morning|afternoon|evening|to see you))\b", re.I)
 GLOSS_WPS = 2.5            # words a second, spoken (about 150 a minute)
@@ -1430,6 +1443,13 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                 fail("intro", f"the introduction opens with the same sentence as {other}: "
                               f"{first!r}")
     findings += gloss_moment_findings(boards, blocks)
+    for bd in boards:
+        for s in bd["states"]:
+            for u in s["utterances"]:
+                m = POINTING.search(spoken(u["text_with_cues"]))
+                if m:
+                    fail(u["id"], f"points at a picture ({m.group(0)!r}); the image appears while "
+                                  "the word is explained, say nothing about it (ADR 015)")
 
     # A choice table (bundle 1.6): a wrong cell the narration never strikes
     # fades only when its row ends, with no word said about it.
@@ -1663,7 +1683,7 @@ def render(lesson: Path, page: int, data: dict) -> int:
               "b.classList.add('on')}</script>")
     checks = out_dir / "checks"
     checks.mkdir(parents=True, exist_ok=True)
-    (checks / "index.html").write_text(html, encoding="utf-8")
+    (checks / "index.html").write_text(resolve_images(html, checks, lesson), encoding="utf-8")
 
     print(str(checks / "index.html"))
     print(f"boards {len(boards)} | utterances {n_utt} | words {n_words} "

@@ -169,7 +169,8 @@ while the contents are on screen. A rule for every lesson:
   teacher talking to their own students ("Hello again, and welcome back. I
   hope the course has been useful for you so far. Today we're going to look
   at another important part of grammar."), in wording that varies from lesson
-  to lesson; then it links to the previous lesson (course index), says why the
+  to lesson; then it links to another lesson, usually the previous one (course
+  index), without assuming the student has taken it, says why the
   topic matters for their letters and what they will be able to do by the
   end, and walks through the categories. Each category on the contents board
   is a block that is revealed as it is named. Short sentences, simple words, a
@@ -220,9 +221,10 @@ lessons do the same, in English.
 - Each gloss is a short teaching moment of its own, about fifteen seconds
   (maintainer, 2026-09-27; docs/adr/013-gloss-moments-and-teacher-openings.md):
   the word appears on the board and the narration says it clearly and
-  pauses; a simple meaning, spoken and shown; a simple line drawing where the
-  word is concrete (a grazed palm, a wound being cleaned), none for an
-  abstract word; one short example sentence, in a medical context where
+  pauses; a simple meaning, spoken and shown; a generated illustration where
+  the word is concrete and a picture helps (a grazed palm, a wound being
+  cleaned; ADR 015), none for an abstract word, and never a word pointing at
+  it; one short example sentence, in a medical context where
   natural; a short pause, then the lesson goes on (docs/02-DESIGN-SYSTEM.md
   §7b). Which words are glossed is unchanged.
 - **Never gloss medical words**: the learners are healthcare

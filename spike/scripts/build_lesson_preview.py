@@ -109,7 +109,8 @@ def main() -> None:
               "for(const x of document.querySelectorAll('.tog button'))x.classList.remove('on');b.classList.add('on')}</script>")
     out = lesson / "analysis" / "screens" / "lesson-preview" / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
+    from write_screens import resolve_images
+    out.write_text(resolve_images(html, out.parent, lesson), encoding="utf-8")   # gloss images (ADR 015)
     print(f"{built} sections built, {missing} not yet")
     print(f"wrote {out}")
 

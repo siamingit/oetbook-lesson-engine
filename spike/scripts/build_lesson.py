@@ -152,6 +152,9 @@ def spent(L: Path) -> float:
     lost = L / "analysis" / "spend_unrecorded.json"
     if lost.exists():
         total += sum(e["cost_usd"] for e in json.loads(lost.read_text(encoding="utf-8"))["entries"])
+    # Gloss images (ADR 015): every generated image's recorded cost, failed ones included
+    import gloss_images
+    total += gloss_images.spent(L)
     return total
 
 
@@ -371,6 +374,36 @@ def stage_screens(L, a):
                    "--pages ... --call")
 
 
+def stage_images(L, a):
+    """Gloss images (ADR 015): every gloss with an image brief gets its
+    illustration, generated once and cached by the brief; the sections are
+    re-rendered, free, so their html names the images."""
+    import gloss_images
+    missing = []
+    info, secs = sections(L)
+    for s in secs:
+        f = paths.screens_dir_for(L, s["pages"]) / "screens.json"
+        d = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {"topics": []}
+        briefs = [b["icon"].strip() for t in d["topics"] for h in t["thoughts"] for b in h["blocks"]
+                  if b.get("type") == "gloss" and (b.get("icon") or "").strip()]
+        todo = [x for x in briefs if not gloss_images.find(L, x)]
+        stale = [x for x in briefs if gloss_images.find(L, x)
+                 and not any(b.get("image") for t in d["topics"] for h in t["thoughts"]
+                             for b in h["blocks"] if (b.get("icon") or "").strip() == x)]
+        if todo or stale:
+            missing.append((s, todo))
+    if not missing:
+        return
+    n = sum(len(t) for _, t in missing)
+    if n:
+        afford(L, a.budget, 0.10 * n, f"{n} gloss image(s)")
+        run(L, [str(HERE / "gloss_images.py"), str(L), "--all", "--call"], "gloss images")
+    for s, _ in missing:
+        if not s.get("intro"):
+            run(L, [str(HERE / "write_screens.py"), str(L), "--pages", pp(s["pages"]), "--render"],
+                f"screens render with images, {s['title']}")
+
+
 def stage_narration(L, a):
     info, secs = sections(L)
     todo = [s for s in secs if not audit_ok(paths.narration_dir_for(L, s["pages"]) / "narration.json")]
@@ -476,6 +509,7 @@ STAGES = [("preflight", stage_preflight), ("audio", stage_audio),
           ("transcription", stage_transcribe), ("slide timeline", stage_slides),
           ("annotations", stage_annotations), ("sections", stage_sections),
           ("understanding", stage_understanding), ("screens", stage_screens),
+          ("images", stage_images),
           ("narration", stage_narration), ("terms check", stage_terms),
           ("audio and ear", stage_audio_build), ("player and checks", stage_player)]
 

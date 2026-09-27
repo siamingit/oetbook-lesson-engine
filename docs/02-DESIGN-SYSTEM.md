@@ -374,8 +374,8 @@ Rules:
   choice with neither.
 - At most one timeline and two icons per board state. The layout erases
   sooner rather than exceed either.
-- No photographs, no illustrations, with one exception: a gloss's line
-  drawing of a concrete word, from the curated gloss catalogue (§7b; ADR 013).
+- No photographs, no illustrations, with one exception: a gloss's generated
+  illustration of a concrete word (§7b; ADR 015).
 - Every element stays legible at phone-landscape width.
 - Narration reveals and marks these like any block, and the reading
   pointer follows the text inside them.
@@ -470,20 +470,42 @@ rebuilt):
   the word is concrete, else none. Its parts, revealed by the narration in
   this order: the meaning, the picture (when there is one), the example.
 - **Look:** the pale yellow note card; the word a little above body size in
-  the medium weight; "= meaning" under it; the example under a small
-  "Example" label; the picture beside them, a simple line drawing in neutral
-  slate, drawn line by line as it is revealed. Every part's room is reserved
-  from the start, so nothing moves (§8a).
-- **Pictures:** curated in code (`write_screens.GLOSS_PICTURES`), like the
-  icons: the screens model names one, code draws it; the model never draws.
-  Only a concrete word gets one (grazed, cleansed, orderly, clumsy); an
-  abstract word never gets a forced picture. The catalogue grows only as a
-  lesson needs a drawing, each checked in the player.
+  the medium weight, with "= meaning" beside it on the same line; the example
+  under it, after a small "Example:"; the image beside them, fading in as it is
+  revealed (compact since 2026-09-27: a gloss on a board with a heavy fixed
+  layer overflowed with the word, meaning and label on lines of their own). Every
+  part's room is reserved from the start, so nothing moves (§8a).
+- **Images** (revised 2026-09-27, docs/adr/015-gloss-images.md, replacing
+  ADR 013's line drawings): a generated illustration, only where the word is
+  concrete and a picture helps understanding; an abstract word keeps the
+  example sentence only. The gloss's `icon` is its image brief, "alt text |
+  what to draw", subject only. The model never draws on the board: code
+  generates the image from the brief and the style guide
+  (`spike/scripts/gloss_images.py`), cached by the brief like audio clips.
+- **Image style guide** (`gloss_images.STYLE`): a clean, professional
+  medical-education illustration, semi-realistic with soft shading and clean
+  edges; a modern, calm, nursing-textbook look; not a photograph and not
+  childish. Skin in natural, realistic tones; a restrained palette of soft
+  blues, teal and slate grey for clothing and objects only, so it sits well
+  on the white board and the pale yellow note. The subject only, isolated:
+  no background, scenery, floor, shadow or clutter (only the palm; only the
+  orderly and the patient, no corridor). No text in the image. Nothing graphic
+  or gory: a lightly grazed palm, never blood or an open wound. The same style
+  in every lesson.
+- **Image pipeline:** drawn by the model on plain white; the background
+  removed locally (rembg's ISNet model on onnxruntime), the white taken out of
+  the edge pixels, specks dropped, trimmed to the subject; a transparent PNG,
+  512 px on its longer side, 256 colours (about 30-50 KB), with alt text. Its
+  edges are checked (an edge report per image; looked at on a checkerboard and
+  on a dark background when the style changes).
 - **Narration:** about fifteen seconds: the block revealed as the word is
   first said, the word said clearly on its own, a pause of about a second; the
-  meaning revealed and said; the picture revealed and described in one short
-  sentence; the example revealed and read; a pause of about a second and a
-  half; then the lesson goes on. The narration audit fails a gloss whose parts
+  meaning revealed and said; the image revealed right after the meaning, with
+  nothing said about it; the example revealed and read; a pause of about a
+  second and a half; then the lesson goes on. **The narration never points at
+  a picture** ("as you can see in the picture", "look at the image", "in this
+  picture", "the drawing shows"): the image appears while the word is
+  explained, and that is enough; the narration audit fails a pointing phrase. The narration audit fails a gloss whose parts
   are not all revealed in order in one state, or whose moment has fewer than
   two pauses or is estimated under ten seconds (words at 150 a minute plus
   pauses), and warns under thirteen.
