@@ -1427,6 +1427,53 @@ def apply_overrides(out_dir: Path, blocks: dict[str, dict]) -> list[dict]:
     return applied
 
 
+BLOCK_DEFAULTS = {"type": None, "text": None, "label": None, "term": None, "explanation": None,
+                  "left": None, "right": None, "family": None, "kind": None, "icon": None,
+                  "items": None, "header": None, "rows": None, "tags": None,
+                  "exercise_item": None, "anchor": False, "from_beats": [], "note": ""}
+
+
+def add_blocks(out_dir: Path, topics: list[dict], blocks: dict[str, dict]) -> list[dict]:
+    """Blocks added to a section after it was written (overrides.json `add`;
+    maintainer 2026-09-27, glossing lessons built before the gloss rule): each
+    {"id", "thought", "after"?, "state"?, "block"} puts a new block into a
+    thought, after the block named, with an id of its own (never a renumbering
+    of the others). For a section already narrated, `state` names the state of
+    its saved plan the block joins (place_added)."""
+    path = out_dir / "overrides.json"
+    spec = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    added = spec.get("add") or []
+    for a in added:
+        if a["id"] in blocks:
+            raise SystemExit(f"overrides.json add: {a['id']} is already a block of this section")
+        th = next((h for t in topics for h in t["thoughts"] if h.get("id") == a["thought"]), None)
+        if th is None:
+            raise SystemExit(f"overrides.json add: no thought {a['thought']}")
+        b = {**BLOCK_DEFAULTS, **a["block"], "id": a["id"], "added": True}
+        at = next((i + 1 for i, x in enumerate(th["blocks"]) if x["id"] == a.get("after")), len(th["blocks"]))
+        th["blocks"].insert(at, b)
+        blocks[a["id"]] = b
+    return added
+
+
+def place_added(boards: list[dict], blocks: dict[str, dict], added: list[dict]) -> None:
+    """An added block joins its state in a kept (narrated) plan, after the block
+    it follows; beside a table row where that state's notes are."""
+    for a in added:
+        for bd in boards:
+            for st in bd["states"]:
+                if st["id"] != a.get("state") or a["id"] in st["working"]:
+                    continue
+                at = st["working"].index(a["after"]) + 1 if a.get("after") in st["working"] \
+                    else len(st["working"])
+                st["working"].insert(at, a["id"])
+                st["notes"] = len(st["working"])
+                side = next((blocks[w].get("beside") for w in st["working"]
+                             if w != a["id"] and blocks.get(w, {}).get("beside")), None)
+                if side and not blocks[a["id"]].get("beside"):
+                    blocks[a["id"]]["beside"] = dict(side)
+
+
 def assign_ids(topics: list[dict]) -> dict[str, dict]:
     """Document-order ids. Block ids never depend on the layout, so a re-layout
     never renumbers them and a narration cue written against k07 stays valid."""
@@ -3491,6 +3538,7 @@ def render(lesson: Path, page: int, data: dict) -> int:
     topics = model_out["topics"]
     unflatten(topics)
     blocks = assign_ids(topics)
+    added = add_blocks(out_dir, topics, blocks)
     overrides = apply_overrides(out_dir, blocks)
     for b in blocks.values():
         if b["type"] == "gloss":
@@ -3528,6 +3576,7 @@ def render(lesson: Path, page: int, data: dict) -> int:
     if saved and saved.get("raw_id") == raw.get("id") and all(
             i in blocks for bd in saved["boards"]
             for i in bd["fixed"] + [w for st in bd["states"] for w in st["working"]]):
+        place_added(saved["boards"], blocks, added)
         if [[st["working"] for st in bd["states"]] for bd in saved["boards"]] !=                 [[st["working"] for st in bd["states"]] for bd in boards]:
             print("layout kept as narrated: the estimates would now plan it differently")
         boards = saved["boards"]

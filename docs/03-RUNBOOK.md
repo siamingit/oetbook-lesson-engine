@@ -311,6 +311,11 @@ candidates: the clinical and grammar terms Scribe should listen for
 **screens** (step). Approved by the runner when every section's audit passes;
 the agent looks at `analysis/screens/lesson-preview/index.html` and fixes what
 the docs decide, logging each fix.
+A block added after a section is written (a gloss for a lesson built before the
+gloss rule; maintainer, 2026-09-27) is an `add` entry in the same file: `{"id",
+"thought", "state", "after"?, "block"}`, an id of its own after the section's last,
+placed in the named state of a narrated section's kept plan (no other state or id
+changes); the narration of that state is then rewritten.
 A fix to on-screen text is an override in the section's `overrides.json`
 (with an `expect` guard and a note naming the decision); re-render with
 `write_screens.py <L> --pages ... --render`, free. A screen edit must not move
