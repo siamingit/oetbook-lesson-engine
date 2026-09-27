@@ -378,6 +378,23 @@ def main() -> None:
             print(f"  {c['title']!r}: {', '.join(repr(t) for t in c['sections'])}")
         return
 
+    if "--intro-board" in sys.argv:
+        # The title board's own blocks (ADR 014): what the introduction's
+        # narration describes - a link to the previous lesson, a problem from
+        # a letter - in existing block types (plain, comparison, term_box,
+        # answer_row, error_row), each with its provenance and a note. Kept
+        # across re-runs like the description.
+        src = Path(sys.argv[sys.argv.index("--intro-board") + 1])
+        blocks = json.loads(src.read_text(encoding="utf-8"))
+        ok = {"plain", "comparison", "term_box", "answer_row", "error_row"}
+        bad = [b for b in blocks if b.get("type") not in ok or not b.get("provenance")]
+        if bad:
+            raise SystemExit(f"--intro-board: each block needs a type in {sorted(ok)} and a provenance")
+        by = sys.argv[sys.argv.index("--by") + 1] if "--by" in sys.argv else "maintainer"
+        previous["intro_board"] = {"blocks": blocks, "by": f"{by} {today}"}
+        write(out_path, previous)
+        print(f"title board: {len(blocks)} block(s) of the introduction ({by})")
+        return
     if "--description" in sys.argv:
         # The title board's one-line description, in the maintainer's words
         # (docs/00-PRODUCT.md §2a). Kept across re-runs like a maintainer title.
@@ -533,6 +550,7 @@ def main() -> None:
            **({"intro": previous["intro"]} if "intro" in previous else {}),
            **({"groups": previous["groups"]} if "groups" in previous else {}),
            **({"page_spans": previous["page_spans"]} if "page_spans" in previous else {}),
+           **({"intro_board": previous["intro_board"]} if "intro_board" in previous else {}),
            "diagram_pages": previous.get("diagram_pages", []),
            "sections": sections}
     if "categories" in previous:

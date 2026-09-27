@@ -35,6 +35,7 @@ def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
     Stored with the introduction's page (paths.intro_section: the contents
     slide's, or the title slide's in a deck with none), because the
     understanding of that page is the narration's source."""
+    import board_style
     import paths
     from write_screens import BUDGET, block_height, stack_height
     page = paths.intro_section(sec)["pages"][0]
@@ -52,20 +53,39 @@ def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
 
     title = blk("k01", "lesson_title", tb["title"],
                 note="The deck's lesson title, slide " + str(sec["lesson"].get("page")))
-    desc = blk("k02", "plain", tb["description"] or "",
+    # The title board shows what the narration describes (ADR 014): the
+    # lesson's own intro blocks (sections.json `intro_board`: a link to the
+    # previous lesson, a problem from a letter), then the description, what
+    # the student will be able to do by the end.
+    extra = []
+    for n, x in enumerate((sec.get("intro_board") or {}).get("blocks") or [], 2):
+        b = blk(f"k{n:02d}", x["type"], x.get("text"), x.get("explanation"), x.get("label"),
+                prov=x.get("provenance") or "authored", note=x.get("note") or "")
+        b.update({k: x[k] for k in ("term", "left", "right") if x.get(k)})
+        # the board style (ADR 008), as the screens stage derives it: a
+        # comparison is a change card, a term box a note card with its tag
+        b["role"] = x.get("role") or ("example" if x["type"] in ("comparison", "answer_row", "error_row")
+                                      else "note")
+        if x["type"] == "comparison":
+            b["style"], b["card"] = "card", board_style.card_of(b)
+        elif x["type"] == "term_box":
+            b["style"] = "term"
+        extra.append(b)
+    desc = blk(f"k{len(extra) + 2:02d}", "plain", tb["description"] or "",
                prov=tb.get("description_provenance") or "authored",
                note="The maintainer's one-line description (sections.json).")
-    items = [blk(f"k{n + 2:02d}", "contents_item", c["title"], " · ".join(c["sections"]) or None,
+    first = len(extra) + 2
+    items = [blk(f"k{n + first:02d}", "contents_item", c["title"], " · ".join(c["sections"]) or None,
                  label=str(n), prov=c.get("provenance") or "source-derived",
                  note=("Category " + str(n) + " of the contents slide, with its sections"
                        if c["sections"] else "Section " + str(n) + " of the lesson, by its title "
                        "(sections.json); the deck has no contents slide"))
              for n, c in enumerate(cb["categories"], 1)]
-    blocks = {b["id"]: b for b in [title, desc] + items}
+    blocks = {b["id"]: b for b in [title] + extra + [desc] + items}
     topics = [
         {"id": "t1", "title": "Title board", "from_beats": beats, "split": None,
          "thoughts": [{"id": "t1.1", "purpose": "the lesson title, then what the lesson is about",
-                       "blocks": [title, desc]}]},
+                       "blocks": [title] + extra + [desc]}]},
         {"id": "t2", "title": "Contents board", "from_beats": beats, "split": None,
          "thoughts": [{"id": "t2.1", "purpose": "each category, revealed as it is named",
                        "blocks": items}]},
@@ -78,7 +98,7 @@ def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
     out_boards = [
         {"id": "t1", "title": "", "label": "Title board", "fixed": ["k01"],
          "fixed_height": round(block_height(title), 3),
-         "states": [state("t1.s1", ["k01"], ["k02"])], "erasures": []},
+         "states": [state("t1.s1", ["k01"], [b["id"] for b in extra + [desc]])], "erasures": []},
         {"id": "t2", "title": cb["heading"], "label": "Contents board", "fixed": [],
          "fixed_height": 0.0,
          "states": [state("t2.s1", [], [b["id"] for b in items])], "erasures": []},

@@ -845,9 +845,10 @@ block per category (a compact "contents item": number, category, its
 sections; five category cards did not fit the frame). Its source is the
 understanding of the contents slide's interval (Grammar 1: page 4, 6.7
 minutes of framing and agenda). `write_narration.py` recognises it by
-`section.intro` and adds the introduction rules: a teacher's opening, never a
-template (ADR 013, 2026-09-27: the previous lesson, a letter problem or a
-question; the first sentence differs from every other lesson's), no name,
+`section.intro` and adds the introduction rules: a warm greeting and welcome
+first, then the previous lesson, why it matters and what the student will be
+able to do (ADR 014, 2026-09-27; the first sentence differs from every other
+lesson's), no name,
 one to two minutes, every category revealed as it is named, no reference to
 the session, the course or the recording; the audit checks the length and
 the source words. The maintainer's lesson description is a `require` phrase

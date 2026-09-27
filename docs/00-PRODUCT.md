@@ -165,17 +165,20 @@ while the contents are on screen. A rule for every lesson:
 
 - The lesson opens with the **title board** and the **contents board**,
   both narrated.
-- The narration opens like a real teacher, differently in every lesson
-  (maintainer, 2026-09-27; docs/adr/013-gloss-moments-and-teacher-openings.md):
-  never a template ("Hello, and welcome. This lesson is called Grammar for
-  OET: ..."), but a link to what the student did in the previous lesson (from
-  the course index), a real problem from a letter, or a question. It says
-  why the topic matters for their letters and what they will be able to do
-  by the end, then walks through the categories. Each category on the
-  contents board is a block that is revealed as it is named. Warm, natural,
-  short. No two lessons open with the same sentence: the narration audit
-  fails a first sentence that another lesson's introduction already uses
-  (course index) or a stock greeting on its own.
+- The narration always starts with a warm greeting and welcome, like a
+  teacher talking to their own students ("Hello again, and welcome back. I
+  hope the course has been useful for you so far. Today we're going to look
+  at another important part of grammar."), in wording that varies from lesson
+  to lesson; then it links to the previous lesson (course index), says why the
+  topic matters for their letters and what they will be able to do by the
+  end, and walks through the categories. Each category on the contents board
+  is a block that is revealed as it is named. Short sentences, simple words, a
+  friendly tone (A2-B1). The board shows what the narration describes, not
+  only the title. Only the exact same opening sentence as another lesson is
+  forbidden: the narration audit fails it, and an introduction that does not
+  open with a greeting and a welcome (maintainer, 2026-09-27;
+  docs/adr/014-introductions-greet-then-link.md, superseding ADR 013's
+  opening rule).
 - Short: about one to two minutes.
 - The voice is not the instructor's. It never gives the instructor's name
   and never speaks as him.

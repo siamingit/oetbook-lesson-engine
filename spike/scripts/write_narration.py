@@ -412,26 +412,33 @@ INTRO = """\
 THIS IS THE LESSON'S INTRODUCTION (docs/00-PRODUCT.md §2a), not a section. Two \
 boards: the title board, then the contents board with one note per category \
 of the lesson. Your narration:
-  - OPENS LIKE A REAL TEACHER, never with a template (ADR 013): no "Hello, and \
-welcome.", no "This lesson is called ...". Choose ONE opening that fits this \
-lesson: a link to what the student did in the previous lesson (PREVIOUS \
-LESSON: name it by its title, with its `refs`), a real problem from a letter \
-(two case notes that make a clumsy sentence, said simply), or a question to \
-the student. Warm, natural and short. Your first sentence must differ from \
-every other lesson's first sentence (OTHER LESSONS' OPENINGS): the audit fails \
-a repeat. The voice is not the instructor's: never give a name, never speak as \
-a particular teacher, never say "I" about teaching experience.
-  - Says why the topic matters for the student's letters, and what they will be \
-able to do by the end, revealing the description on the title board as you \
-say it. The teaching beats tell you why this matters in OET: use that intent, \
-briefly.
+  - ALWAYS STARTS WITH A WARM GREETING AND WELCOME (ADR 014), like a teacher \
+talking to their own students, for example: "Hello again, and welcome back. I \
+hope the course has been useful for you so far. Today we're going to look at \
+another important part of grammar." Say it in your own words: the wording \
+changes from lesson to lesson, and your FIRST SENTENCE must not be the same as \
+any other lesson's first sentence (OTHER LESSONS' OPENINGS): the audit fails a \
+repeat, and an introduction whose first sentence is not a greeting. The voice is \
+not the instructor's: never give a name, never say "I" about teaching \
+experience.
+  - Then links to the previous lesson (PREVIOUS LESSON: name it by its title, \
+with its `refs`), says why this topic matters for the student's letters, and \
+what they will be able to do by the end. The teaching beats tell you why this \
+matters in OET: use that intent, briefly.
+  - THE BOARD SHOWS WHAT YOU DESCRIBE: the title board's blocks (a link to the \
+previous lesson, a problem from a letter, the description of what they will be \
+able to do) are revealed, each as you say what it shows. The description is \
+the maintainer's words: read it, or say it in your own words right after \
+revealing it.
+  - The learners are A2-B1: short sentences, simple words, a friendly tone.
   - Walks through the categories on the contents board IN ORDER, revealing each \
 note at the word where you name it, with one or two short sentences on what \
 that part of the lesson covers. The note shows the sections of each category; \
 you may name them, you need not read them all.
   - Is short: about one to two minutes in total, roughly 130 to 270 words.
-  - Never refers to the source: no session, class, course, recording, slide or \
-video, and no other courses. Where the teacher recaps another session that is a \
+  - Never refers to the source: no session, class, recording, slide or video, \
+and no other courses. "The course" as this product's course of lessons is fine \
+("I hope the course has been useful"). Where the teacher recaps another session that is a \
 listed lesson (REFERENCES TO OTHER LESSONS), name that lesson, briefly, with its \
 `refs`. The beats describe a recorded talk; they are intent only, never text to \
 repeat.
@@ -982,10 +989,8 @@ def assemble(data: dict, model_out: dict) -> tuple[list[dict], list[dict]]:
     return boards, findings
 
 
-# ADR 013: a stock opening - a greeting alone, or the lesson named as the opening
-TEMPLATE_OPENING = re.compile(
-    r"^(?:(?:hello|hi|welcome)(?:,? and welcome)?(?: back)?(?: everyone| to (?:the|this) lesson)?[.!]"
-    r"|this lesson is (?:called )?grammar for oet\b.*)$", re.I)
+# ADR 014: an introduction's first sentence is a greeting
+GREETING = re.compile(r"\b(hello|hi|welcome|good (?:morning|afternoon|evening|to see you))\b", re.I)
 GLOSS_WPS = 2.5            # words a second, spoken (about 150 a minute)
 GLOSS_MIN_S, GLOSS_AIM_S = 10.0, 13.0
 
@@ -1403,21 +1408,23 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
         n = sum(len(x.split()) for x in said_all)
         if not 120 <= n <= 300:
             warn("intro", f"introduction is {n} words; about one to two minutes is 130 to 270")
-        src = re.compile(r"\b(session|class|course|recording|slide|video|lecture)s?\b", re.I)
+        src = re.compile(r"\b(session|class|recording|slide|video|lecture)s?\b", re.I)
         for bd in boards:
             for s in bd["states"]:
                 for u in s["utterances"]:
                     m = src.search(spoken(u["text_with_cues"]))
                     if m:
                         fail(u["id"], f"source reference {m.group(0)!r} in the introduction")
-        # ADR 013: a teacher's opening, never a template and never another
-        # lesson's first sentence (from the course index)
+        # ADR 014 (superseding ADR 013's opening rule): a warm greeting and a
+        # welcome first; only the exact first sentence of another lesson is
+        # forbidden (from the course index)
         from build_course_index import first_sentence, same_sentence
         first = first_sentence(said_all[0]) if said_all else ""
-        if TEMPLATE_OPENING.match(first):
-            fail("intro", f"the introduction opens with a template ({first!r}); open like a "
-                          "teacher: a link to the previous lesson, a problem from a letter, or "
-                          "a question")
+        opening = " ".join(sentences(" ".join(said_all))[:2])
+        if not GREETING.search(first):
+            fail("intro", f"the introduction does not start with a greeting: {first!r}")
+        if not re.search(r"\bwelcome\b", opening, re.I):
+            fail("intro", f"no welcome in the introduction's first two sentences: {opening!r}")
         for other, sent in (data.get("openings") or {}).items():
             if same_sentence(first, sent):
                 fail("intro", f"the introduction opens with the same sentence as {other}: "
