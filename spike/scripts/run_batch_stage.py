@@ -197,11 +197,9 @@ def run_direct(L: Path, stage: str, jobs: list[dict]) -> None:
             if msg.stop_reason == "max_tokens":
                 return "cut off at the output cap; nothing written"
             j["out"].parent.mkdir(parents=True, exist_ok=True)
-            if j["out"].exists():
-                # A reply being replaced was paid for: kept under a name the
-                # runner's spend check (raw_response*.json) still counts.
-                j["out"].rename(j["out"].with_name(
-                    f"raw_response.superseded-{datetime.datetime.now():%Y%m%d-%H%M%S}.json"))
+            # A reply being replaced was paid for: kept under a name the
+            # runner's spend check (raw_response*.json) still counts.
+            paths.keep_superseded(j["out"])
             j["out"].write_text(msg.to_json(), encoding="utf-8")
             return "ok"
         except SystemExit as e:

@@ -3309,6 +3309,7 @@ def main() -> None:
     refuse_if_truncated(response, MAX_TOKENS)
     out_dir = paths.screens_dir_for(lesson, pages)
     out_dir.mkdir(parents=True, exist_ok=True)
+    paths.keep_superseded(out_dir / "raw_response.json")      # a replaced reply is still counted
     (out_dir / "raw_response.json").write_text(response.to_json(), encoding="utf-8")
     print("stop_reason:", response.stop_reason)
     print("usage:", response.usage)

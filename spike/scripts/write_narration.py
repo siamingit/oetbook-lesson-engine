@@ -1510,6 +1510,7 @@ def main() -> None:
                                     json.loads(response.to_json())["usage"])},
                                ensure_ascii=False) + "\n")
     else:
+        paths.keep_superseded(out_dir / "raw_response.json")  # a replaced reply is still counted
         (out_dir / "raw_response.json").write_text(response.to_json(), encoding="utf-8")
     raise SystemExit(render(lesson, page, data))
 

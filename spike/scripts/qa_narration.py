@@ -370,6 +370,8 @@ def finish(prep: dict, result_text: str, usage: dict, batch: bool, raw_text: str
     import llm
     data, out, label, n_pass = prep["data"], prep["out"], prep["label"], prep["n_pass"]
     out.mkdir(parents=True, exist_ok=True)
+    paths.keep_superseded(out / f"raw_response_{label}.json")  # a replaced review is still counted
+    paths.keep_superseded(out / f"qa_{label}.json")
     (out / f"raw_response_{label}.json").write_text(raw_text, encoding="utf-8")
     result = json.loads(result_text)
     billable_output = usage["output"] + usage["thought"]

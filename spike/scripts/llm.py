@@ -19,8 +19,12 @@ recommends the 1-hour cache there.
 """
 
 import json
+import sys
 import time
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import paths                                       # noqa: E402
 
 # $ per million tokens
 OPUS = {"input": 5.00, "output": 25.00, "write_5m": 6.25, "write_1h": 10.00, "read": 0.50}
@@ -131,6 +135,7 @@ def run_anthropic_batch(client, jobs: list[dict], state_path: Path, poll_s: int 
             d = json.loads(msg.to_json())
             d["_billing"] = {"mode": "batch", "batch_id": bid}
             out.parent.mkdir(parents=True, exist_ok=True)
+            paths.keep_superseded(out)                 # a replaced reply is still counted
             out.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
             outcome[r.custom_id] = "ok"
         elif r.result.type == "errored":

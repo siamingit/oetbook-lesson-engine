@@ -11,7 +11,26 @@ the same ids.
 match it rather than inventing a second convention.
 """
 
+import datetime
 from pathlib import Path
+
+
+def keep_superseded(path: Path) -> None:
+    """A saved model reply that is about to be replaced was paid for. It is
+    kept beside the new one as <stem>.superseded-<time><suffix>, which the
+    runner's spend check (build_lesson.spent: raw_response*.json and
+    qa/qa_*.json) still counts, so the runner's total always matches what was
+    spent (maintainer, 2026-09-27, after two replaced screens drafts of
+    Grammar 5 were overwritten and left out of its total). Every stage that
+    writes a reply calls this first; nothing is ever deleted."""
+    if path.exists():
+        stamp = f"{datetime.datetime.now():%Y%m%d-%H%M%S}"
+        target = path.with_name(f"{path.stem}.superseded-{stamp}{path.suffix}")
+        n = 1
+        while target.exists():
+            n += 1
+            target = path.with_name(f"{path.stem}.superseded-{stamp}-{n}{path.suffix}")
+        path.rename(target)
 
 
 def page_tag(page: int) -> str:

@@ -143,7 +143,13 @@ plays in **51.2 minutes** (45.7 of speech) at **146.1 words per minute**.
 an audit rule since corrected. The runner's own figure read $12.89 at the end
 because replaced replies were overwritten; a direct run now keeps a replaced
 reply as `raw_response.superseded-<time>.json`, so the measured figure is
-complete from here on.
+complete from here on. Since 2026-09-27 this is a rule for every stage
+(maintainer, after Grammar 5's `write_screens.py --call` overwrote two paid
+drafts): whatever writes a model reply, a direct call, a single-section call,
+a batch collection or a QA review, first keeps the reply it replaces
+(`paths.keep_superseded`), and the runner counts every kept reply. Spend
+whose reply was lost before the rule is recorded, with the source of its
+figure, in `<L>/analysis/spend_unrecorded.json`, which the runner also counts.
 
 **Per minute of finished lesson:**
 

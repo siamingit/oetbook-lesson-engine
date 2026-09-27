@@ -146,6 +146,12 @@ def spent(L: Path) -> float:
             total += llm.raw_cost(json.loads(p.read_text(encoding="utf-8")))
     for p in (L / "analysis").rglob("qa/qa_*.json"):
         total += json.loads(p.read_text(encoding="utf-8")).get("meta", {}).get("cost_usd", 0)
+    # Spend whose reply is no longer on disk (overwritten before replaced
+    # replies were kept, paths.keep_superseded), recorded with where its
+    # figure comes from, so the total matches what was spent.
+    lost = L / "analysis" / "spend_unrecorded.json"
+    if lost.exists():
+        total += sum(e["cost_usd"] for e in json.loads(lost.read_text(encoding="utf-8"))["entries"])
     return total
 
 
