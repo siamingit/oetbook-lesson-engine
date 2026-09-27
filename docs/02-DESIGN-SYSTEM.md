@@ -767,6 +767,24 @@ is re-planned, never left to overflow:
 - **Checked, not eyeballed**: `check_overflow.py` fails any block outside the
   board or clipped, and any label drawn in capitals (§6).
 
+### 8c. The narration never says where something is
+
+Decided by the maintainer 2026-09-27, after lesson 5's narration said "on the
+left you can see the case notes, and on the right, one sentence" over a board
+that stacks them. The boards are laid out anew, not as the original slides, and
+differently on a phone and a laptop. So the narration never locates a thing by
+its position (left, right, top, bottom, above, below, this side, side by side):
+it names it by its label, header or words ("in the case notes", "in the
+sentence", "in the Wrong column", "in the green answer").
+
+A position word is used only where the board's layout keeps it on every
+screen: a table's columns (left to right) and rows (top to bottom), the two
+pieces of one clause diagram, the two sides of a change card drawn side by side
+(or, stacked, one above the other), and a timeline's axis (the past to the left
+of now). Even there, a column's header is better than its side. The narration
+audit fails any other position word (`write_narration.position_findings`); a
+number "below 38" and a "left knee" are not positions.
+
 ---
 
 ## 9. Controls

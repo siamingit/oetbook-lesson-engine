@@ -85,6 +85,83 @@ VAGUE_REF = re.compile(r"\b(?:(?:last|previous|next|earlier|other|another) lesso
                        r"(?:last|previous|next|earlier|first|second|third|our) (?:session|class)"
                        r"(?:es|s)?|sessions? (?:one|two|three|four|five|\d+))\b", re.I)
 INTERFACE_WARN = re.compile(r"\b(pointer|working layer|fixed layer|block id)\b", re.I)
+# Narration never locates a thing by its position on the board (maintainer,
+# 2026-09-27; docs/02-DESIGN-SYSTEM.md §8c): the boards are laid out anew,
+# stacked or side by side, and differently on a phone and a laptop. A
+# position word passes only where a block the utterance itself cues keeps that
+# position on every screen: the two pieces of a clause diagram and the two
+# sides of a change card drawn side by side (left, right, this side); the two
+# sides of a stacked change card (above, below); a table's columns (left,
+# right) and rows (above, below), on a board whose fixed layer is that table,
+# cued or not; a timeline's axis (past on the left, future on the right).
+# "Right" as "correct", a left knee, a number below another, "mixed up here",
+# and words read from the board are not positions.
+BODY = (r"(?!\s+(?:knee|ankle|leg|arm|eye|ear|hand|foot|hip|shoulder|lung|breast|kidney|wrist|"
+        r"elbow|chest|lobe|ventricle|atrium))")
+POS_SIDE = (r"\b(?:on|to|at|in|from) the (?:far )?(?:left|right)\b" + BODY + r"|"
+            r"\b(?:left|right)[- ]hand\b" + BODY + r"|\b(?:left|right) side\b|"
+            r"\bleft (?:column|box|card|part|half|piece|sentence|one)\b|"
+            r"\b(?:this|that|the other) side\b|\bside by side\b")
+POS_VERT = (r"\bat the (?:top|bottom)\b|\bon top\b|"
+            r"\b(?:top|bottom) (?:of the (?:board|screen|table|box|card)|row|line|box|part|half|one|"
+            r"sentence|note)\b|\babove\b|"
+            r"\bbelow\b(?!\s*(?:\d|one|two|three|four|five|six|seven|eight|nine|ten|twenty|thirty|"
+            r"forty|fifty|a hundred))|\b(?:upper|lower) (?:part|half|box|line|row|one)\b")
+POSITION = re.compile(f"(?P<side>{POS_SIDE})|(?P<vert>{POS_VERT})", re.I)
+
+
+def position_findings(said: str, u: dict, blocks: dict, state: dict, board: dict) -> list[str]:
+    """Position words in an utterance that no block it points to keeps on every
+    screen size. A phrase read from the board ("based on the above") is not one."""
+    on_board = " ".join(t.lower() for bid in list(board.get("fixed") or []) + list(state.get("working") or [])
+                        if bid in blocks for t in block_texts(blocks[bid]))
+    cued = []
+    for c in u.get("cues") or []:
+        for end in (c.get("block"), c.get("to_block")):
+            b = blocks.get(str(end or "").split(".")[0])
+            if b:
+                cued.append(b)
+    # a block whose words the utterance reads aloud is referred to as well
+    flat = lambda x: re.sub(r"[^a-z0-9 ]+", "", x.lower()).strip()
+    heard = flat(said)
+    for bid in list(board.get("fixed") or []) + list(state.get("working") or []):
+        b = blocks.get(bid)
+        if b and b not in cued and any(len(flat(t)) >= 12 and flat(t) in heard
+                                       for t in block_texts(b) if b["type"] != "table"):
+            cued.append(b)
+    tables =[blocks[i] for i in board.get("fixed") or [] if i in blocks and blocks[i]["type"] == "table"]
+    if all(b in tables for b in cued):
+        cued += tables            # about the board's table: its columns and rows stay
+    quoted = [q.span() for q in re.finditer(r"(?<![a-z])'[^']{1,60}'(?![a-z])", said, re.I)]
+
+    def keeps(b: dict, side: bool) -> bool:
+        if b["type"] == "table":
+            return True                                   # columns and rows
+        if b["type"] == "timeline":
+            return side                                   # the axis: past left, future right
+        if b["type"] == "clauses":
+            return side and len([i for i in b.get("items") or []
+                                 if i.get("kind") in ("dependent", "independent")]) == 2
+        if b.get("style") == "card" and b.get("card"):
+            return side != bool(b["card"].get("stacked"))
+        return False
+
+    out = []
+    for m in POSITION.finditer(said):
+        before = said[:m.start()].split()[-2:]
+        after = said[m.end():].split()[:2]
+        window = " ".join(before + [m.group(0)] + after).lower().strip(" .,:;!?'\"")
+        if window and window in on_board:
+            continue                                      # words read from the board
+        if any(a <= m.start() and m.end() <= z for a, z in quoted):
+            continue                                      # a quoted phrase ('the above')
+        side = m.group("side") is not None
+        if any(keeps(b, side) for b in cued):
+            continue
+        out.append(f"position word {m.group(0)!r} in {said!r}: say what the thing is (its label, "
+                   "header or words), not where it is; no block this utterance points to keeps "
+                   "that position on every screen")
+    return out
 
 SYSTEM = """\
 You are an experienced OET teacher writing the spoken narration for one page of \
@@ -227,6 +304,17 @@ each one "the coloured label", or say what it reads ("the label says past").
 NEVER NAME INTERFACE PARTS. The student sees a lesson, not software. Never say \
 chip, tag, block, card, layer, cue, pointer, state or reveal. Say what the \
 student sees: the sentence, the note, the table, the line, the coloured label.
+
+NEVER SAY WHERE SOMETHING IS. The board is laid out anew, stacked or side by \
+side, and differently on a phone and a laptop, so never locate a thing by its \
+position: no "on the left", "on the right", "at the top", "at the bottom", \
+"above", "below", "this side", "side by side". Name it by its label, header or \
+words: "in the case notes", "in the sentence", "in the Wrong column", "in the \
+green answer", "in the first piece". Only a table's columns and rows, the two \
+pieces of one clause diagram, and a timeline's axis (the past to the left of \
+now) keep their places on every screen; for those, say "the first column" or \
+the column's header rather than "on the left" wherever you can. The audit \
+fails any other position word.
 
 DIAGRAMS ARE DRAWN, NOT SHOWN. A timeline block lists its `parts`, each with \
 an id like k07.3. The parts are revealed ONE BY ONE, each with its own \
@@ -1090,6 +1178,8 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                         fail(uid, f"forbidden phrase {p!r} in {said!r}")
                 if INTERFACE_WORD.search(said):
                     fail(uid, f"interface word in {said!r}; say 'the coloured label'")
+                for what in position_findings(said, u, blocks, s, bd):
+                    fail(uid, what)
                 m = INTERFACE_WARN.search(said)
                 if m:
                     warn(uid, f"interface word {m.group(0)!r}? the student never hears the "
@@ -1346,14 +1436,48 @@ def apply_cue_overrides(out_dir: Path, boards: list[dict]) -> list[dict]:
     return out
 
 
+def apply_utterance_overrides(out_dir: Path, model_out: dict) -> list[dict]:
+    """An utterance's words set from the section's overrides.json (2026-09-27):
+    {"utterances": {"<utterance id>": {"expect": the words it has now,
+    "text_with_cues": its new words, cue markers kept, "note": why}}}. For a
+    fix of one utterance's wording that must change nothing else (a position
+    word, docs/02-DESIGN-SYSTEM.md §8c): its clip alone is made again. Applied
+    before assembly on every render; the saved reply is never edited. The id is
+    the utterance's place in its state (t1.s3.u2 is the second of t1.s3)."""
+    p = out_dir / "overrides.json"
+    if not p.exists():
+        return []
+    spec = json.loads(p.read_text(encoding="utf-8")).get("utterances") or {}
+    states = {ms["state"]: ms["utterances"] for mb in model_out["boards"] for ms in mb["states"]}
+    out = []
+    for uid, f in spec.items():
+        sid, _, n = uid.rpartition(".u")
+        us = states.get(sid) or []
+        u = us[int(n) - 1] if n.isdigit() and 0 < int(n) <= len(us) else None
+        if u is None or f["expect"] not in u["text_with_cues"]:
+            raise SystemExit(f"overrides.json: utterance {uid} is not there or no longer says "
+                             f"{f['expect']!r}; retire or re-key the override")
+        before = re.findall(r"\{\{c\d+\}\}", u["text_with_cues"])
+        new = u["text_with_cues"].replace(f["expect"], f["text_with_cues"], 1)
+        if re.findall(r"\{\{c\d+\}\}", new) != before:
+            raise SystemExit(f"overrides.json: utterance {uid}: the new words must keep every cue "
+                             f"marker, in order ({before})")
+        u["text_with_cues"] = new
+        u["note"] = ((u.get("note") or "") + " " + (f.get("note") or "wording set by override")).strip()
+        out.append({"severity": "info", "where": uid, "what": "words set by override: "
+                    + json.dumps({"from": f["expect"], "to": f["text_with_cues"]}, ensure_ascii=False)})
+    return out
+
+
 def render(lesson: Path, page: int, data: dict) -> int:
     pages = data.get("pages") or [page]
     out_dir = paths.narration_dir_for(lesson, pages)
     raw = json.loads((out_dir / "raw_response.json").read_text(encoding="utf-8"))
     model_out = json.loads([b["text"] for b in raw["content"] if b["type"] == "text"][-1])
 
+    worded = apply_utterance_overrides(out_dir, model_out)
     boards, structural = assemble(data, model_out)
-    structural += apply_cue_overrides(out_dir, boards)
+    structural += worded + apply_cue_overrides(out_dir, boards)
     findings = structural + audit(boards, data)
     result = {
         "lesson": lesson.name,
