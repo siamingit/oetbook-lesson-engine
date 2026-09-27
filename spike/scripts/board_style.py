@@ -472,8 +472,10 @@ STYLE_CSS = """
 .tbl.core.role-slide table{border-style:hidden}
 .tbl.core.role-slide th{background:var(--src);color:var(--src-ink);border-color:var(--src-edge);
   border-bottom:max(2px,.35cqh) solid var(--src-edge)}
-/* labels in sentence case, never in capitals */
+/* labels in sentence case, never in capitals; a category card's header too
+   (2026-09-27: it was still drawn in capitals) */
 .lbl{text-transform:none;letter-spacing:.01em}
+.cardhd{text-transform:none;letter-spacing:.01em}
 /* the definition pill leads its board on every board, and a tense label is in
    small sentence case like every other label */
 .body>.defpill,#cam>.defpill{order:-1}

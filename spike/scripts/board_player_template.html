@@ -27,6 +27,9 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
 :fullscreen .frame, .frame:fullscreen { border: none; }
 
 .blk { opacity: 0; transition: opacity .25s ease; }
+.blk.pin-later { display: none; }
+/* a working block cleared inside its state (bundle 1.8, state `clears`) */
+.blk.cleared { display: none; }
 .blk.on { opacity: 1; }
 
 /* The camera: everything on the board sits in #cam, which a table board zooms
@@ -36,6 +39,15 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
        position: relative; min-height: 100%; transform-origin: 0 0; flex: 0 0 100%; width: 100%; }
 /* flex 0 0 100%: the board area is a wrapping row (board style), so #cam was
    sized by what it held and every block's width changed with it (2026-09-26). */
+/* a tight board (bundle 1.8), where its fullest state would not otherwise fit,
+   on the whole board from its start so nothing moves: level 1 halves the gap
+   between blocks, level 2 also halves the blocks' own vertical padding */
+#cam.tight { row-gap: 1.2cqh; }
+#cam.tight2 > .blk { padding-top: .9cqh; padding-bottom: .9cqh; }
+#cam.tight2 > .blk.card, #cam.tight2 > .blk.tl, #cam.tight2 > .blk.cl, #cam.tight2 > .blk.tbl { padding-top: 0; padding-bottom: 0; }
+#cam.tight2 .cardhd { padding-top: .5cqh; padding-bottom: .5cqh; }
+#cam.tight2 .cardbd { padding-top: .9cqh; padding-bottom: .9cqh; }
+#cam.tight2 .cl-piece { padding-top: .8cqh; padding-bottom: .8cqh; }
 @media (prefers-reduced-motion: no-preference) {
   #cam.glide { transition: transform .6s cubic-bezier(.4, 0, .2, 1); }
 }
@@ -352,6 +364,8 @@ function drawBoard(bd, s, erased) {
     blockEls.clear();
     camEl.classList.remove("glide");
     camEl.style.transform = "";
+    camEl.classList.toggle("tight", (bd.tight || 0) >= 1);
+    camEl.classList.toggle("tight2", (bd.tight || 0) >= 2);
     // The header shows the section title and nothing else: no board title,
     // no number (docs/02-DESIGN-SYSTEM.md §2, "The header").
     hdrNo.style.display = "none";
@@ -368,8 +382,23 @@ function drawBoard(bd, s, erased) {
   }
   if (s !== drawnState || erased !== drawnErased) {
     for (const [id, el] of [...blockEls]) if (el.dataset.layer === "working") { el.remove(); blockEls.delete(id); }
+    pinRoom(bd, s);
     if (s && !erased) for (const id of s.working) if (!(bd.pinned && id in bd.pinned)) drawBlock(id, false);
     drawnState = s; drawnErased = erased; drawnMarks = ""; wrappedFor = null;
+  }
+}
+
+// A pinned block takes room from the start of the state it appears in, never
+// before (2026-09-27): in an earlier state it is not drawn, so that state's
+// notes use the room (Grammar 5, 7:22: a result revealed later held its room
+// from the board's start, and a note was pushed under the controls). Within
+// its own state it is there, unseen, from the state's start, so nothing moves
+// when it appears; a fixed or pinned block after it still holds its lowest
+// place (below).
+function pinRoom(bd, s) {
+  for (const [id, t] of Object.entries(bd.pinned || {})) {
+    const el = blockEls.get(id);
+    if (el) el.classList.toggle("pin-later", !s || t >= s.until);
   }
 }
 
@@ -389,11 +418,14 @@ function topIn(el) {
 }
 function settleBoard(bd) {
   const target = new Map();
-  const note = () => { for (const [id, el] of keptBlocks()) target.set(id, Math.max(target.get(id) ?? -1, topIn(el))); };
+  const note = () => { for (const [id, el] of keptBlocks()) if (!el.classList.contains("pin-later"))
+                          target.set(id, Math.max(target.get(id) ?? -1, topIn(el))); };
   WRAPS.clear();
+  pinRoom(bd, bd.states[0]);
   prewrap(bd);
   note();
   for (const st of bd.states) {
+    pinRoom(bd, st);
     const tmp = st.working.filter(id => !(bd.pinned && id in bd.pinned)).map(id => [id, drawBlock(id, false)]);
     prewrap(bd);
     note();
@@ -404,7 +436,7 @@ function settleBoard(bd) {
   bd._places = target;
 }
 function holdPlaces(bd) {
-  const kept = keptBlocks();
+  const kept = keptBlocks().filter(([, el]) => !el.classList.contains("pin-later"));
   for (const [, el] of kept) el.style.marginTop = "";
   kept.sort((a, b) => topIn(a[1]) - topIn(b[1]));
   for (const [id, el] of kept) {           // each push moves the ones after it too
@@ -509,7 +541,7 @@ function prewrap(bd) {
 
 function applyMarks(s, t, erased) {
   const bd = drawnBoard;
-  const skey = (bd ? bd.id : "") + "|" + (s ? s.id : "") + "|" + erased;
+  const skey = (bd ? bd.id : "") + "|" + (s ? s.id : "") + "|" + erased + "|" + clearedAt(s, t).size;
   const active = (s && !erased) ? marksByState.get(s.id).filter(c => c.time <= t) : [];
   const words = (bd && bd.wordmarks) || [];
   const key = skey + "#" + active.map(c => c._uid + "@" + c.time).join(",") + "|"
@@ -540,7 +572,7 @@ function applyMarks(s, t, erased) {
   });
   for (const c of active) {
     const el = blockEls.get(c.block);
-    if (!el) continue;
+    if (!el || el.classList.contains("cleared")) continue;
     if (c.type === "arrow") {
       const from = wrapOne(c._uid + "<", cellOf(el, c.row, c.col), c.text, "mk-arrow-from", "mk", true);
       const to = wrapOne(c._uid + ">", cellOf(blockEls.get(c.to_block || c.block), c.to_row, c.to_col),
@@ -629,7 +661,7 @@ function positionPointer(t) {
   const read = readingTarget(t);
   if (read) {
     const el = blockEls.get(read.block);
-    if (el && el.classList.contains("on")) {
+    if (el && el.classList.contains("on") && !el.classList.contains("cleared")) {
       const r = wordRect(el, read.k);
       if (r) { placePointer(r, f); return; }
     }
@@ -884,6 +916,15 @@ function camera(bd, focus, notes, jumped) {
 }
 
 let lastRenderT = null;
+// Working blocks cleared inside their state by `t` (bundle 1.8): where a
+// state's notes would not fit the board, the notes shown before a later one
+// are cleared as it appears, like an erase; fixed and pinned blocks stay.
+function clearedAt(s, t) {
+  const out = new Set();
+  for (const c of (s && s.clears) || []) if (t >= c.time) for (const id of c.blocks) out.add(id);
+  return out;
+}
+
 function renderFrame(t) {
   const bd = boardAt(t);
   const s = stateAt(bd, t);
@@ -893,11 +934,15 @@ function renderFrame(t) {
   const jumped = lastRenderT === null || Math.abs(t - lastRenderT) > 0.75;
   lastRenderT = t;
   drawBoard(bd, s, erased);
+  const gone = clearedAt(s, t);
   if (s && !erased) {
     for (const id of s.working) {
       const el = blockEls.get(id);
       const at = revealAt.get(s.id + "|" + id);
-      if (el && el.dataset.layer === "working") el.classList.toggle("on", at !== undefined && t >= at);
+      if (el && el.dataset.layer === "working") {
+        el.classList.toggle("on", at !== undefined && t >= at);
+        el.classList.toggle("cleared", gone.has(id));
+      }
     }
   }
   for (const [id, at] of Object.entries(bd.pinned || {})) {

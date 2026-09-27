@@ -6,8 +6,8 @@ Rule (docs/02-DESIGN-SYSTEM.md §8a, maintainer 2026-09-26): a spotlight, a
 mark, a verdict or a typed answer never moves a word. For every board the
 player is driven, in headless Edge, to every moment at which something on it
 changes (each state, each cue and its end, each change of the spotlight, each
-verdict), and the position of every word of every block on the board is
-measured at each. A word that is found at two positions on one board fails,
+verdict), and the position of every word shown on the board is measured at
+each (a block not yet revealed, or cleared, is not on the board). A word that is found at two positions on one board fails,
 at phone-landscape or laptop width.
 
 Positions are taken inside the board with the camera's transform undone (it is
@@ -90,7 +90,10 @@ HARNESS = r"""
       renderFrame(t);
       samples++;
       for (const [id, el] of blockEls) {
-        if (!el.isConnected) continue;
+        // a word counts once it is on the board: a block shown, not one
+        // waiting for its reveal, cleared, or pinned in a later state
+        if (!el.isConnected || getComputedStyle(el).display === "none") continue;
+        if (!(el.dataset.layer === "fixed" || el.classList.contains("on"))) continue;
         for (const [n, word, x, y] of tokens(el)) {
           const key = id + "|" + n;
           const was = seen.get(key);

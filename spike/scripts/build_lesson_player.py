@@ -54,7 +54,7 @@ from write_screens import (FRAME_CSS, TAG_LABELS, block_html,     # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-FORMAT_VERSION = "1.7"             # docs/04-LESSON-BUNDLE.md; 1.1 refs, 1.2 table boards, 1.3 board style, 1.4 table cells, 1.5 tense colours by lesson, 1.6 choice tables and marks in cells, 1.7 the clause diagram
+FORMAT_VERSION = "1.8"             # docs/04-LESSON-BUNDLE.md; 1.1 refs, 1.2 table boards, 1.3 board style, 1.4 table cells, 1.5 tense colours by lesson, 1.6 choice tables and marks in cells, 1.7 the clause diagram, 1.8 clears and table fit
 READING_HOLD_S = 2.5               # the pointer stays on the last word read this long
 # Everything block_html draws from; pipeline notes (anchor, from_beats, note,
 # relabelled, ruling) stay in screens.json.
@@ -296,7 +296,7 @@ def lesson_sections(L: Path) -> tuple[dict, list[dict]]:
 
 
 def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = None,
-          out: str | None = None) -> Path:
+          out: str | None = None, use_fit: bool = True) -> Path:
     info, secs = lesson_sections(L)
     if only:
         # a sample of some sections (a design review), in its own folder
@@ -306,6 +306,10 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     out_dir.mkdir(parents=True, exist_ok=True)
 
     boards_all, blocks_all, audio_index, section_marks = [], {}, {}, []
+    # 1.8: the fit (fit_boards.py): where a state's notes are cleared so the
+    # next one fits the board, and a table's text size where the table did not
+    fit_path = L / "analysis" / "fit.json"
+    fit = json.loads(fit_path.read_text(encoding="utf-8")) if use_fit and fit_path.exists() else {}
     table_of: dict[str, str] = {}
     links_of: dict[str, tuple] = {}
     row_of: dict[str, int | None] = {}
@@ -350,6 +354,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                 nb["role"] = "slide"        # the title board's description: the lesson's own words
             if not info["lesson"].get("tense_lesson"):
                 nb["tense_neutral"] = True
+            if nb["id"] in (fit.get("fonts") or {}):
+                nb["font"] = fit["fonts"][nb["id"]]      # 1.8: smaller, so the table fits
             blocks_all[pre + bid] = {**block_data(nb), "html": block_html(nb),
                                      "_tokens": block_tokens(b)}     # display words (1.3)
         section_marks.append({"id": tag, "title": sec["title"], "pages": pages,
@@ -504,6 +510,24 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
         # underline is there from the start
         bd["pinned"] = {i: s["reveal"][i] for s in bd["states"] for i in s["working"]
                         if blocks_all[i].get("pin") and i in s["reveal"]}
+        # 1.8: a tight board, from the fit: 0, or 1 (half the gap between
+        # blocks), or 2 (and half the blocks' vertical padding)
+        bd["tight"] = int((fit.get("tight") or {}).get(bd["id"], 0))
+        # 1.8: a clear inside a state, from the fit: as `before` appears, the
+        # working blocks shown before it are cleared (never a pinned one)
+        for s in bd["states"]:
+            s["clears"], gone = [], set()
+            for c in (fit.get("clears") or {}).get(s["id"], []):
+                at = s["reveal"].get(c)
+                if at is None:
+                    print(f"WARN fit: {s['id']} clears before {c}, which it does not reveal")
+                    continue
+                ids = [w for w in s["working"] if w not in bd["pinned"] and w not in gone
+                       and s["reveal"].get(w, at) < at]
+                if ids:
+                    s["clears"].append({"time": at, "blocks": ids})
+                    gone.update(ids)
+            s["clears"].sort(key=lambda c: c["time"])
         links, smarks = links_of.get(bd["id"], ([], []))
         shown = {i: bd["start"] for i in bd["fixed"]}
         for s in bd["states"]:

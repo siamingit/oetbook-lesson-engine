@@ -246,7 +246,10 @@ headers, never on error or answer rows, and **only in a tense lesson**
 - **Two weights only:** regular and medium. Never heavy.
 - **Sentence case** everywhere. Every block, and every side of a
   comparison, starts with a capital.
-- Small labels are in sentence case, never in capitals (2026-09-25; §7c).
+- Small labels are in sentence case, never in capitals (2026-09-25; §7c). A
+  label written in capitals is put in sentence case when parsed (acronyms
+  kept), the screens audit fails one that is not, and the overflow check fails
+  one drawn in capitals, by its text or by its style (2026-09-27).
 - No italics for emphasis; use colour and underline, as a teacher marks
   a board.
 
@@ -743,6 +746,26 @@ The causes found and fixed on 2026-09-26, by the check:
 
 Before the fixes the check found 3,497 word moves on Grammar 4 alone; after
 them, none in any of the four lessons.
+
+### 8b. Every block fits the board
+
+Decided by the maintainer 2026-09-27 (docs/adr/011-boards-fit.md), after a note
+on Grammar 5 was pushed under the player controls. Every block shown lies fully
+inside the board, in every state, at phone-landscape and laptop width, while
+no word moves between states (§8a). Where a board cannot hold both, its layout
+is re-planned, never left to overflow:
+
+- **A pinned block takes room from the start of the state it appears in**, not
+  from the board's start.
+- **The layout counts a pinned block in every later state** of its board.
+- **The fit**, measured in the player (`fit_boards.py`): where a note would
+  not fit, the notes shown before it in its state are **cleared** as it appears
+  (never a fixed or pinned block, never a note the narration still marks or
+  reads); a board still too full is made **tight** on the whole board (half the
+  gaps between blocks, then half the blocks' vertical padding); a table alone
+  too tall gets smaller text, to the tables' floor (§7, Tables).
+- **Checked, not eyeballed**: `check_overflow.py` fails any block outside the
+  board or clipped, and any label drawn in capitals (§6).
 
 ---
 

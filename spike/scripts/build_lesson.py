@@ -454,11 +454,16 @@ def stage_audio_build(L, a):
 
 
 def stage_player(L, a):
+    # the fit first (ADR 011): where a state's notes are cleared, which boards
+    # are tight and which tables smaller, measured in the drawn player; the
+    # player is then built with it and every block must lie inside the board
+    print(run(L, [str(HERE / "fit_boards.py"), str(L)], "board fit").strip().splitlines()[-1])
     run(L, [str(HERE / "build_lesson_player.py"), str(L)], "whole-lesson player")
     d = str(L / "generated" / "lesson-player")
     run(L, [str(HERE / "check_board_page.py"), str(L), "--dir", d], "structural check")
     run(L, [str(HERE / "check_marks.py"), str(L), "--dir", d], "mark check")
     run(L, [str(HERE / "check_layout.py"), str(L), "--dir", d], "layout check")
+    run(L, [str(HERE / "check_overflow.py"), str(L), "--dir", d], "overflow check")
     # The last step of every build (ADR 006): the course index, rebuilt whole,
     # outside the repository (docs/05-COURSE-INDEX.md). Again on every run, so
     # it also records the final gate once approved.

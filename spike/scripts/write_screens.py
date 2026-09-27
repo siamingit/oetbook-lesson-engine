@@ -127,6 +127,29 @@ FIXED_ROOM_LIMIT = 0.78 - 2 * (0.032 * 1.35 + 0.018 * 2)   # a fixed layer must 
 MAX_NOTES = 4                # §3: the working layer holds about four notes at once
 CHARS_PER_LINE = 90          # ~0.81 of frame width at ~0.5em per character
 GLOSS_LABEL = "WORD"         # a term box with this label is a gloss (design system §7b)
+# Labels are in sentence case, never in capitals (docs/02-DESIGN-SYSTEM.md §6,
+# §7c). These words may stay in capitals in a label: acronyms only.
+LABEL_ACRONYMS = {"OET", "FANBOYS", "NHS", "GP", "BP", "ICU", "MRI", "CT", "ECG", "COPD", "IV", "UK",
+                  "US", "HIV", "ADHD", "A&E", "ED", "DVT", "TB", "BMI"}
+CAPS_WORD = re.compile(r"\b[A-Z][A-Z'&]+\b")
+
+
+def label_capitals(label: str | None) -> list[str]:
+    """The words of a label written in capitals that are not acronyms."""
+    if not label or label == GLOSS_LABEL:           # the gloss marker is data, never drawn
+        return []
+    return [w for w in CAPS_WORD.findall(label) if w not in LABEL_ACRONYMS]
+
+
+def sentence_label(label: str | None) -> str | None:
+    """A label the model wrote in capitals ("GRAMMAR TERM") in sentence case
+    ("Grammar term"), acronyms kept (Grammar 5, 2026-09-27). Only the case
+    changes, so the label's words and their count are the same."""
+    if not label_capitals(label):
+        return label
+    words = [w if w in LABEL_ACRONYMS else w.lower() for w in label.split(" ")]
+    out = " ".join(words)
+    return out[:1].upper() + out[1:]
 COMPARE_CHARS = 42           # one column of a comparison
 
 
@@ -167,7 +190,7 @@ exercise sentence, or a form that is rejected during the teaching \
   answer_row  a correct sentence, shown green with a large tick badge. Every \
 correct answer that is taught gets one, including second acceptable answers.
   term_box    a new word, phrase, form or pattern, with a plain explanation. \
-Blue, with a small label above (e.g. NEW WORD, FORM, TIME WORDS). With the \
+Blue, with a small label above, in sentence case, never in capitals (e.g. New word, Form, Time words). With the \
 label WORD it is a GLOSS (see STUDENT LEVEL): `term` the hard word, \
 `explanation` a very short gloss, drawn on one line as "schedule (= plan a time)".
   comparison  two things side by side, with a short caption saying what is \
@@ -596,6 +619,8 @@ def unflatten(topics: list[dict]) -> None:
     for t in topics:
         for h in t["thoughts"]:
             for b in h["blocks"]:
+                if b.get("label"):
+                    b["label"] = sentence_label(b["label"])
                 if b.get("type") == "clauses" and isinstance(b.get("items"), list):
                     b["items"] = clause_items(b["items"])
                 elif isinstance(b.get("items"), list):
@@ -727,6 +752,11 @@ def clause_items(raw_items: list) -> list[dict]:
     for n, it in enumerate(items, 1):
         it["part"] = n                      # addressed as <block id>.<n>
     return items
+
+
+def clause_has_labels(b: dict) -> bool:
+    """A clause diagram that draws S or V labels, which need tall lines."""
+    return any(it.get("kind") in ("subject", "verb") for it in b.get("items") or [])
 
 
 def clause_pieces(b: dict) -> list[dict]:
@@ -1481,7 +1511,8 @@ def diagram_geometry(b: dict) -> dict:
 # tall line, so the S and V labels sit above their words in the line's own
 # leading and never move a word. The pieces share the content width in
 # proportion to their text; the gap between them is where the tab travels.
-CLAUSE_LINE = 3.2 * 2.3        # body size on a 2.3 line
+CLAUSE_LINE = 3.2 * 2.3        # body size on a 2.3 line: room for the S and V labels
+CLAUSE_LINE_PLAIN = 3.2 * 1.5  # a diagram with no S or V label needs no such room
 CLAUSE_KIND = 3.6              # the small kind label and its margin
 CLAUSE_PAD = 1.6               # a piece's padding, top and bottom
 CLAUSE_GAP = 6.0               # cqw between two pieces; the tab's travel
@@ -1503,7 +1534,8 @@ def clause_geometry(b: dict) -> dict:
     for p, g in zip(pieces, grow):
         w = avail * g / (sum(grow) or 1) - 2 * 3.9 - 3.0           # padding, tab room
         lines.append(wrapped_lines(p.get("text") or "", max(8, int(w / CLAUSE_CHAR))))
-    height = CLAUSE_KIND + max(lines or [1]) * CLAUSE_LINE + 2 * CLAUSE_PAD
+    line = CLAUSE_LINE if clause_has_labels(b) else CLAUSE_LINE_PLAIN
+    height = CLAUSE_KIND + max(lines or [1]) * line + 2 * CLAUSE_PAD
     return {"grow": grow, "lines": lines, "height": height}
 
 
@@ -1724,10 +1756,17 @@ def summary_table_layout(topics: list[dict], blocks: dict, pages: list[int]) -> 
     return record
 
 
-def lay_out(topics: list[dict], blocks: dict, section_title: str) -> list[dict]:
+def lay_out(topics: list[dict], blocks: dict, section_title: str,
+            pinned: frozenset = frozenset()) -> list[dict]:
     """One board per topic. The fixed layer stays; working notes accumulate
     thought by thought and are erased, between thoughts, when the next thought
-    would not fit. A `state` is the board between two erasures."""
+    would not fit. A `state` is the board between two erasures.
+
+    `pinned`: working blocks that stay, once revealed, until the board ends
+    (board_style: a result, a definition pill). Each counts in every later
+    state of its board, as the player draws it there (2026-09-27: a pinned
+    result carried into the next state pushed a note under the controls; the
+    layout had not counted it)."""
     boards: list[dict] = []
     for t in topics:
         fixed = fixed_layer(t)
@@ -1736,8 +1775,15 @@ def lay_out(topics: list[dict], blocks: dict, section_title: str) -> list[dict]:
             boards.append(lay_out_table(t, fixed, table, blocks, section_title))
             continue
         fixed_h = stack_height(fixed, blocks)
-        states: list[dict] = [{"thoughts": [], "working": []}]
+        states: list[dict] = [{"thoughts": [], "working": [], "carried": []}]
         erasures: list[dict] = []
+        carried: list[str] = []            # pinned blocks revealed in an earlier state
+
+        def new_state() -> dict:
+            carried.extend(i for i in states[-1]["working"] if i in pinned)
+            st = {"thoughts": [], "working": [], "carried": list(carried)}
+            states.append(st)
+            return st
 
         def fits(working: list[str], limit: float = BUDGET) -> bool:
             """Within the working budget (the normal erase threshold, which the
@@ -1750,8 +1796,8 @@ def lay_out(topics: list[dict], blocks: dict, section_title: str) -> list[dict]:
                 return False
             if sum(1 for b in on_board if b.get("icon")) > MAX_ICONS_PER_STATE:
                 return False
-            h = fixed_h + stack_height(working, blocks)
-            if fixed and working:
+            h = fixed_h + stack_height(carried + working, blocks)
+            if (fixed or carried) and working:
                 h += GAP
             return h <= limit
 
@@ -1761,8 +1807,7 @@ def lay_out(topics: list[dict], blocks: dict, section_title: str) -> list[dict]:
             if cur["thoughts"] and not fits(cur["working"] + notes):
                 erasures.append({"after_thought": cur["thoughts"][-1],
                                  "before_thought": h["id"]})
-                cur = {"thoughts": [], "working": []}
-                states.append(cur)
+                cur = new_state()
             if not fits(notes) and len(notes) > 1:
                 # A thought too big for an empty working layer beside a heavy
                 # fixed layer: its notes go on one per state, erased between,
@@ -1772,8 +1817,7 @@ def lay_out(topics: list[dict], blocks: dict, section_title: str) -> list[dict]:
                     if cur["working"] and not fits(cur["working"] + [note], HARD_LIMIT):
                         erasures.append({"after_thought": cur["thoughts"][-1],
                                          "before_thought": h["id"], "inside_thought": h["id"]})
-                        cur = {"thoughts": [], "working": []}
-                        states.append(cur)
+                        cur = new_state()
                     if h["id"] not in cur["thoughts"]:
                         cur["thoughts"].append(h["id"])
                     cur["working"].append(note)
@@ -1783,9 +1827,12 @@ def lay_out(topics: list[dict], blocks: dict, section_title: str) -> list[dict]:
             cur["working"] += notes
 
         for n, s in enumerate(states, 1):
-            h = fixed_h + stack_height(s["working"], blocks)
-            if fixed and s["working"]:
+            kept = s.pop("carried", [])
+            h = fixed_h + stack_height(kept + s["working"], blocks)
+            if (fixed or kept) and s["working"]:
                 h += GAP
+            if kept:
+                s["carried"] = kept
             s["id"] = f"{t['id']}.s{n}"
             s["notes"] = len(s["working"])
             s["height"] = round(h, 3)
@@ -1886,6 +1933,9 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             fail(b["id"], f"unknown family {b['family']!r}")
         if t == "table" and not b.get("family") and not b.get("col_families")                 and not b.get("core"):
             warn(b["id"], "table with no family colour on its header")
+        for w in label_capitals(b.get("label")):
+            fail(b["id"], f"label {b['label']!r} has {w!r} in capitals; labels are in sentence "
+                          "case (docs/02-DESIGN-SYSTEM.md §6)")
         if b.get("icon") and b["icon"] not in ICONS:
             fail(b["id"], f"icon {b['icon']!r} is not in the catalogue")
         if b.get("icon") and t != "term_box":
@@ -2598,7 +2648,8 @@ FRAME_CSS = """
   background:var(--t);border-radius:2cqh;padding:1.6cqh 3.9cqh}
 .cl-piece.dep{--c:var(--dep);--t:var(--dep-t)} .cl-piece.ind{--c:var(--ind);--t:var(--ind-t)}
 .cl-kind{font-size:2.4cqh;line-height:1.2;font-weight:500;color:var(--c);margin-bottom:.8cqh}
-.cl-text{font-size:3.2cqh;line-height:2.3;color:#2C2C2A}
+.cl-text{font-size:3.2cqh;line-height:1.5;color:#2C2C2A}
+.cl.sv .cl-text{line-height:2.3}
 .cl-piece.dep.first .cl-text::after{content:",";color:transparent}
 .cl-row:has(.cl-join.on) .cl-piece.dep.first .cl-text::after{color:var(--dep);font-weight:500}
 .cl-glue.on{background:var(--glue);color:var(--glue-on);border-radius:.6cqh;box-shadow:0 0 0 .35cqh var(--glue)}
@@ -2874,7 +2925,8 @@ def clauses_html(b: dict, bid: str) -> str:
                    + ('<i class="cl-notch"></i>' if p["kind"] == "independent" and complex_ else "")
                    + "</div>")
     joined = ('<i class="cl-join"' + pid(join) + "></i>") if join else ""
-    return ('<div class="blk cl"' + bid + ">" + lbl + '<div class="cl-row' + (
+    return ('<div class="blk cl' + (" sv" if clause_has_labels(b) else "") + '"' + bid + ">" + lbl
+            + '<div class="cl-row' + (
         " compound" if bridges else "") + '">' + "".join(row) + joined + "</div></div>")
 
 
@@ -3151,6 +3203,22 @@ def render(lesson: Path, page: int, data: dict) -> int:
                          f"a section is built whole. Use --pages "
                          + ",".join(str(p) for p in section["pages"]))
     boards = lay_out(topics, blocks, section["title"])
+    # A section already narrated keeps the plan its narration was written
+    # against (a screen edit never moves a board's layout, methodology §18):
+    # its saved boards and states are reused while they come from the same
+    # model reply and name the same blocks, whatever the height estimates now
+    # say; the renderer's fit makes them fit (ADR 011).
+    narrated = (paths.narration_dir_for(lesson, pages) / "narration.json").exists()
+    saved_p = out_dir / "screens.json"
+    saved = json.loads(saved_p.read_text(encoding="utf-8")) if narrated and saved_p.exists() else None
+    if saved and saved.get("raw_id") == raw.get("id") and all(
+            i in blocks for bd in saved["boards"]
+            for i in bd["fixed"] + [w for st in bd["states"] for w in st["working"]]):
+        if [[st["working"] for st in bd["states"]] for bd in saved["boards"]] !=                 [[st["working"] for st in bd["states"]] for bd in boards]:
+            print("layout kept as narrated: the estimates would now plan it differently")
+        boards = saved["boards"]
+    else:
+        saved = None
     # each block's role (bundle 1.3), from the section's printed text with its
     # registered deck corrections; an override's `role` is kept
     printed = re.sub(r"\s+", " ", data["slide_text"])
@@ -3165,6 +3233,14 @@ def render(lesson: Path, page: int, data: dict) -> int:
         else:
             b["tense_neutral"] = True
     board_style.derive(boards, blocks, section["title"])
+    # A pinned block stays on its board once revealed; the layout is planned
+    # again with it counted in every later state (pins come from the style,
+    # which needs the boards; the boards are topics, so pins do not change).
+    # (a narrated section keeps its plan, above)
+    pins = frozenset(i for i, b in blocks.items() if b.get("pin"))
+    if pins and not saved:
+        boards = lay_out(topics, blocks, section["title"], pins)
+        board_style.derive(boards, blocks, section["title"])
     result = {
         "lesson_title": lesson_info,
         "section": section,

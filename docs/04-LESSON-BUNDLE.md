@@ -4,7 +4,7 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.7. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.8. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
 2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
 table boards, on 2026-09-25 (docs/adr/007-table-boards.md); 1.3, the board style
@@ -12,7 +12,8 @@ and trimmed clips, on 2026-09-25 (docs/adr/008-board-style.md); 1.4, the style o
 table boards and per-board colours, the same day (ADR 008, extension); 1.5, tense
 colours by lesson, the same day (ADR 008, second extension); 1.6, choice tables,
 gaps and marks in table cells, the same day (docs/adr/009-choice-tables-and-gaps.md); 1.7,
-the clause diagram, on 2026-09-27 (docs/adr/010-clause-diagram.md).
+the clause diagram, on 2026-09-27 (docs/adr/010-clause-diagram.md); 1.8, clears
+and tight boards so every block fits, the same day (docs/adr/011-boards-fit.md).
 A change to it is a new format version (§3), recorded in a new ADR.
 
 | Version | Date | Change |
@@ -25,6 +26,7 @@ A change to it is a new format version (§3), recorded in a new ADR.
 | 1.5 | 2026-09-25 | the lesson's `tense_colours`; a board's `palette` is no longer written (word-class colours are the same everywhere; ADR 008, second extension) |
 | 1.6 | 2026-09-25 | choice tables: a table block's `verdicts`, a board's `verdicts` with times; a mark on a core table names its cell (`row`, `col`), an arrow's end its cell (`to_row`, `to_col`); a typed part inside printed words carries the class `gap`; rules 6, 10 and 18 (ADR 009) |
 | 1.7 | 2026-09-27 | the clause diagram: the block type `clauses`, its `items` (`{kind, text, piece, part}`); rule 20 (ADR 010) |
+| 1.8 | 2026-09-27 | every block fits the board: a state's `clears`, a board's `tight`; a table's `font` may be set by the fit; rules 21 to 23 (ADR 011) |
 
 ---
 
@@ -146,7 +148,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.7"` |
+| `format_version` | string | `"1.8"` |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -268,6 +270,7 @@ two things must hold, because cues and the reading pointer depend on them:
 | `wordmarks` | 1.3. `[{block, text, cls, time}]`: from `time` to the board's `until`, `text` in `block` is marked `cls`, a word class (its colour, docs/02-DESIGN-SYSTEM.md §7c) or `slide-underline` (the slide's own underline). 1.4: with `row` and `col`, `text` is marked inside that table cell only |
 | `palette` | 1.4 only. Not written from 1.5: every word class has one colour everywhere. A reader treats it as absent |
 | `focus` | 1.2. On a table board, the spotlight in time order: `[{time, row, col}]`, from each `time` the row in focus and the cell highlighted (both from 0; `col` null for the row alone; `row` null for the whole table, nothing dimmed). Empty on other boards |
+| `tight` | 1.8. How tightly the board is set so its fullest state fits (ADR 011): 0, 1 (half the gap between blocks) or 2 (and half the blocks' vertical padding), on the whole board |
 | `verdicts` | 1.6. On a board whose table is a choice table, `[{row, col, verdict, time}]` in time order: from `time` to the board's `until`, the cell shows its verdict (rule 18). A wrong cell's time is its first strike, or the end of its row's last speech; a right cell's is its first circle, or when its row's last wrong cell fades; a possible cell's is the end of its row's last speech. Empty otherwise |
 | `states` | the working-layer states in order |
 
@@ -281,6 +284,7 @@ two things must hold, because cues and the reading pointer depend on them:
 | `until` | its working layer and marks disappear: the erase, or the board's `until` |
 | `erase` | `{time, blocks}` when the state ends in an erase, otherwise null |
 | `row` | 1.2. On a table board, the row this state teaches (from 0), or null for the whole table; null on other boards |
+| `clears` | 1.8. `[{time, blocks}]` in time order: from `time`, the working `blocks` are cleared (not drawn) for the rest of the state, so the note revealed at `time` fits the board (ADR 011). Never a pinned block. Empty when nothing is cleared |
 | `reveal` | `{id: time}` for every working block and every part of a working diagram |
 | `utterances` | what is said in this state, in order |
 
@@ -412,6 +416,17 @@ These are the only rules. Every time and target they use is in the bundle.
     the verb blue); from the `join`'s reveal the tab stands in the notch and a
     dependent piece that comes first shows its comma. None of it moves a word
     (rule 19; docs/02-DESIGN-SYSTEM.md §7d).
+21. **A pinned block's room** (1.8): a pinned block takes room on its board from
+    the start of the state in which it appears (its time in `pinned`), and none
+    in earlier states; within its state it is there, unseen, until its time.
+22. **A clear** (1.8): from a clear's `time` to its state's `until`, its
+    `blocks` are not drawn and take no room; the blocks after them close up (none
+    of them was shown before the clear, and every fixed or pinned block holds its
+    place, rule 19).
+23. **A tight board** (1.8): with `tight` 1 the vertical gap between the board's
+    blocks is halved; with 2 the blocks' own vertical padding is halved too; on
+    the whole board, from its start. With rules 19 to 22, every block shown lies
+    inside the board (docs/02-DESIGN-SYSTEM.md §8b).
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and
@@ -426,7 +441,7 @@ no cues and no provenance.
 
 | Field | Meaning |
 |---|---|
-| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.7"` |
+| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.8"` |
 | `lesson` | the same object as `bundle.json`'s `lesson` |
 | `sections[]` | `{id, title, category, start, end, narration_text, board_text, boards}` |
 | `sections[].narration_text` | everything said in the section, one paragraph per board |

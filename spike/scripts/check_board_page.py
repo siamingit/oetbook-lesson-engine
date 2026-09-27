@@ -178,6 +178,30 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
                 problems.append(f"{s['id']}: erase clears {s['erase']['blocks']}, not the "
                                 f"state's working layer {working}")
 
+    # 1.8: a clear inside a state takes only working blocks shown before it,
+    # never a pinned one; nothing marks, points at or reads a cleared block
+    for bd in bundle["boards"]:
+        for s in bd["states"]:
+            gone: dict[str, float] = {}
+            for c in s.get("clears") or []:
+                for i in c["blocks"]:
+                    if i not in s["working"] or i in (bd.get("pinned") or {}):
+                        problems.append(f"{s['id']}: clear at {c['time']} takes {i}, not a "
+                                        "working block of the state that may be cleared")
+                    elif s["reveal"].get(i, c["time"]) > c["time"]:
+                        problems.append(f"{s['id']}: clear at {c['time']} takes {i} before it appears")
+                    gone.setdefault(i, c["time"])
+            for u in s["utterances"]:
+                for c in u["cues"]:
+                    base = str(c.get("block") or "").split(".")[0]
+                    for end in ([base] + ([c["to_block"]] if c.get("to_block") else [])):
+                        if end in gone and c["time"] >= gone[end] and c["type"] not in ("reveal", "pause"):
+                            problems.append(f"{u['id']}/{c['id']}: {c['type']} on {end}, cleared at "
+                                            f"{gone[end]}")
+                for r in u.get("reading") or []:
+                    if r["block"] in gone and any(w[1] >= gone[r["block"]] for w in r["words"]):
+                        problems.append(f"{u['id']}: reads {r['block']}, cleared at {gone[r['block']]}")
+
     # 1.6: a mark on a table names a cell that holds its phrase; a choice
     # table's verdicts are the table's own, each shown within its board
     for bd in bundle["boards"]:
