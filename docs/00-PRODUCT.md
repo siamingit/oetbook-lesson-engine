@@ -180,6 +180,13 @@ while the contents are on screen. A rule for every lesson:
   open with a greeting and a welcome (maintainer, 2026-09-27;
   docs/adr/014-introductions-greet-then-link.md, superseding ADR 013's
   opening rule).
+- **The first lesson of a course** (ADR 014 amendment, 2026-09-27) welcomes the
+  learner to the whole course, explains simply why grammar matters in the OET
+  letter (the reader is another health professional who needs clear, exact
+  information; grammar is part of how the letter is assessed; no grade
+  promises), maps the course from the course index, says why its topic is the
+  first step and starts the lesson. It never assumes earlier study; its title
+  board shows the course map.
 - Short: about one to two minutes.
 - The voice is not the instructor's. It never gives the instructor's name
   and never speaks as him.

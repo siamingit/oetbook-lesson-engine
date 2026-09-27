@@ -389,6 +389,23 @@ def previous_lesson(L: Path) -> dict | None:
                          for s in e["sections"] if not s["intro"]]}
 
 
+def course_map(L: Path) -> dict | None:
+    """The course a lesson opens, when it is the first of its type in the course
+    index (ADR 014 amendment: the first lesson welcomes the learner to the whole
+    course and maps it): the course's lessons in order, id and short title.
+    None for any other lesson."""
+    ix = load(L)
+    lessons = (ix or {}).get("lessons", [])
+    me = next((e for e in lessons if e["id"] == L.name), None)
+    if not me:
+        return None
+    same = [e for e in lessons if e.get("type") == me.get("type")]
+    if not same or same[0]["id"] != L.name:
+        return None
+    return {"course": me.get("type"), "lessons": [{"lesson": e["id"], "short_title": e["short_title"],
+                                                   "description": e.get("description")} for e in same]}
+
+
 def check_ref(cat: list[dict], lesson: str | None, section: str | None) -> str | None:
     """None when {lesson, section} resolves in the catalogue, else why not."""
     e = next((x for x in cat if x["lesson"] == lesson), None)

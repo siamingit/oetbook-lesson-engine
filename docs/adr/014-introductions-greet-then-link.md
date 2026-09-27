@@ -59,3 +59,25 @@ Added by the maintainer with the update of lessons 1-5: the link to another
 lesson never assumes the order in which the student takes the lessons ("The
 lesson Complex sentences shows how to ...", never "In the last lesson you ...").
 The link is usually to the previous lesson; the first lesson links to another.
+
+## Amendment, 2026-09-27: the first lesson of a course
+
+Added by the maintainer after Grammar 1's introduction said "I hope the course
+has been useful for you so far" and linked to another lesson: a course's first
+lesson (the first of its type in the course index) is the learner's start, so
+its introduction instead
+
+1. welcomes the learner to the whole course;
+2. explains simply why grammar matters in the OET letter: the reader is another
+   health professional and needs clear, exact information, and grammar is part
+   of how the letter is assessed (no grade promises);
+3. gives a short map of the course from the course index (the topics ahead, in a
+   few simple sentences);
+4. says why this lesson's topic is the first step, and starts the lesson.
+
+A2-B1 language, a warm tone. The title board shows what is said: code adds the
+course map (`build_course_index.course_map`, drawn by `build_lesson_boards.py`),
+and the lesson's own blocks (`--intro-board`) carry the rest. The audit fails a
+first lesson's introduction that assumes earlier study ("so far", "welcome
+back", "again", "in the last lesson", "you learned"). Every other lesson keeps
+the rule above.

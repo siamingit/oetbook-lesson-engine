@@ -449,6 +449,34 @@ repeat.
 Everything else - student level, provenance, visual anchors, pauses - is as for \
 any section.\
 """
+INTRO_FIRST = """\
+THIS IS THE INTRODUCTION OF THE FIRST LESSON OF THE COURSE (docs/00-PRODUCT.md \
+§2a; ADR 014, amendment of 2026-09-27), not a section. Two boards: the title \
+board (the lesson title, then its notes: why grammar matters, the course map, \
+the lesson's description), then the contents board with one note per category \
+or section of this lesson. Your narration, in this order:
+  1. WELCOMES THE LEARNER TO THE WHOLE COURSE, warmly, like a teacher meeting \
+their students for the first time. The first sentence is a greeting with \
+"welcome", and it must not be any other lesson's first sentence (OTHER \
+LESSONS' OPENINGS). This is the start: never say or suggest the learner has \
+studied before ("so far", "welcome back", "again", "in the last lesson", "you \
+learned"); the audit fails it.
+  2. Explains simply why grammar matters in the OET letter: the reader is \
+another health professional who needs clear, exact information, and grammar \
+is part of how the letter is assessed. No grade or score promises.
+  3. Gives a short map of the course from the COURSE MAP, revealing the course \
+map note as you say it: the topics ahead, in a few simple sentences (not one \
+sentence per lesson).
+  4. Says why verb tenses (this lesson's topic) are the first step, reveals the \
+description as you say what the learner will be able to do, then walks \
+through the contents board IN ORDER, revealing each note as you name it, and \
+starts the lesson.
+  - The voice is not the instructor's: never give a name, never say "I" about \
+teaching experience. Never the recording, a session, a class, a slide or a video.
+  - A2-B1: short sentences, simple words, a warm tone. About one to two \
+minutes in all.
+Everything else - provenance, visual anchors, pauses - is as for any section.\
+"""
 INTRO_NO_CATEGORIES = """\
 This lesson has no categories: each note on the contents board is one section \
 of the lesson, by its title. Walk through the sections in the same way, \
@@ -680,7 +708,7 @@ def gather(lesson: Path, pages: list[int]) -> dict:
     # The teacher's references to other sessions, as the understanding resolved
     # them (docs/00-PRODUCT.md §6a); lessons built before ADR 006 have none, and
     # a rewrite brief supplies them instead. The course catalogue checks them.
-    from build_course_index import catalogue, openings, previous_lesson
+    from build_course_index import catalogue, course_map, openings, previous_lesson
     references = []
     for page in pages:
         up = paths.understanding_dir(lesson, page) / "understanding.json"
@@ -691,6 +719,7 @@ def gather(lesson: Path, pages: list[int]) -> dict:
             "screens_path": str(screens_path), "lesson_id": lesson.name,
             "catalogue": catalogue(lesson), "references": references,
             "previous_lesson": previous_lesson(lesson), "openings": openings(lesson),
+            "course_map": course_map(lesson),
             "blocks": blocks, "understanding": know, "ledger": ledger,
             "rulings": rulings, "rulings_from": rulings_from,
             "forbids": ledger_phrases(ledger, "forbidden_phrases"),
@@ -788,7 +817,14 @@ def build_messages(data: dict, rewrite: dict | None = None) -> list[dict]:
             "inventing:\n" + json.dumps(scr["unresolved"] + know["unknowns"],
                                         ensure_ascii=False)},
     ]
-    if scr.get("section", {}).get("intro"):
+    if scr.get("section", {}).get("intro") and data.get("course_map"):
+        content.append({"type": "text", "text": INTRO_FIRST})
+        content.append({"type": "text", "text":
+            "COURSE MAP (this lesson is the first; the lessons of the course in order):\n"
+            + json.dumps(data["course_map"], ensure_ascii=False)
+            + "\n\nOTHER LESSONS' OPENINGS (never open with any of these sentences):\n"
+            + json.dumps(data.get("openings") or {}, ensure_ascii=False)})
+    elif scr.get("section", {}).get("intro"):
         content.append({"type": "text", "text": INTRO})
         content.append({"type": "text", "text":
             "PREVIOUS LESSON (the one before this in the course; null for the first):\n"
@@ -1002,6 +1038,11 @@ POINTING = re.compile(
     r"|(?:in|on) (?:this|the) (?:picture|image|photo|drawing|illustration)"
     r"|the (?:picture|image|photo|drawing|illustration) (?:shows|is showing)"
     r"|(?:this|here is a|here's a) (?:picture|image|photo|drawing|illustration))\b", re.I)
+# ADR 014 amendment: the first lesson of a course never assumes earlier study
+ASSUMES_STUDY = re.compile(
+    r"\b(?:so far|welcome back|hello again|see you again|good to see you again"
+    r"|(?:last|previous|earlier) lesson|you (?:have )?(?:already )?(?:learned|learnt|studied|saw|met))\b",
+    re.I)
 # ADR 014: an introduction's first sentence is a greeting
 GREETING = re.compile(r"\b(hello|hi|welcome|good (?:morning|afternoon|evening|to see you))\b", re.I)
 GLOSS_WPS = 2.5            # words a second, spoken (about 150 a minute)
@@ -1436,6 +1477,14 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
         opening = " ".join(sentences(" ".join(said_all))[:2])
         if not GREETING.search(first):
             fail("intro", f"the introduction does not start with a greeting: {first!r}")
+        if data.get("course_map"):
+            # the first lesson of a course: nothing that assumes earlier study
+            # (ADR 014 amendment)
+            for x in said_all:
+                m = ASSUMES_STUDY.search(x)
+                if m:
+                    fail("intro", f"the first lesson's introduction assumes earlier study "
+                                  f"({m.group(0)!r}): {x[:80]!r}")
         if not re.search(r"\bwelcome\b", opening, re.I):
             fail("intro", f"no welcome in the introduction's first two sentences: {opening!r}")
         for other, sent in (data.get("openings") or {}).items():
