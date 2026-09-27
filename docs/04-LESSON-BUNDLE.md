@@ -4,14 +4,15 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.6. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.7. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
 2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
 table boards, on 2026-09-25 (docs/adr/007-table-boards.md); 1.3, the board style
 and trimmed clips, on 2026-09-25 (docs/adr/008-board-style.md); 1.4, the style on
 table boards and per-board colours, the same day (ADR 008, extension); 1.5, tense
 colours by lesson, the same day (ADR 008, second extension); 1.6, choice tables,
-gaps and marks in table cells, the same day (docs/adr/009-choice-tables-and-gaps.md).
+gaps and marks in table cells, the same day (docs/adr/009-choice-tables-and-gaps.md); 1.7,
+the clause diagram, on 2026-09-27 (docs/adr/010-clause-diagram.md).
 A change to it is a new format version (§3), recorded in a new ADR.
 
 | Version | Date | Change |
@@ -23,6 +24,7 @@ A change to it is a new format version (§3), recorded in a new ADR.
 | 1.4 | 2026-09-25 | a word mark may name a table cell (`row`, `col`); a board's `palette` (ADR 008, extension) |
 | 1.5 | 2026-09-25 | the lesson's `tense_colours`; a board's `palette` is no longer written (word-class colours are the same everywhere; ADR 008, second extension) |
 | 1.6 | 2026-09-25 | choice tables: a table block's `verdicts`, a board's `verdicts` with times; a mark on a core table names its cell (`row`, `col`), an arrow's end its cell (`to_row`, `to_col`); a typed part inside printed words carries the class `gap`; rules 6, 10 and 18 (ADR 009) |
+| 1.7 | 2026-09-27 | the clause diagram: the block type `clauses`, its `items` (`{kind, text, piece, part}`); rule 20 (ADR 010) |
 
 ---
 
@@ -144,7 +146,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.6"` |
+| `format_version` | string | `"1.7"` |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -198,7 +200,7 @@ A block is one thing on a board. Each carries its data and its rendered `html`.
 | Field | Meaning |
 |---|---|
 | `id` | block id |
-| `type` | `plain`, `error_row`, `answer_row`, `term_box`, `comparison`, `callout`, `category_card`, `timeline`, `table`, `contents_item`, `lesson_title` (docs/02-DESIGN-SYSTEM.md §7) |
+| `type` | `plain`, `error_row`, `answer_row`, `term_box`, `comparison`, `callout`, `category_card`, `timeline`, `table`, `clauses` (1.7), `contents_item`, `lesson_title` (docs/02-DESIGN-SYSTEM.md §7) |
 | `text` | the text of `plain`, `error_row`, `answer_row`, `callout`, `category_card` (body), `contents_item` (the category; in a lesson with no contents slide, the section's title, and its `explanation` is null), `lesson_title` |
 | `label` | a small label: `term_box` ("NEW WORD"; "WORD" marks a gloss of a hard general word, which the reference player draws on one line as "term (= explanation)", docs/02-DESIGN-SYSTEM.md §7b), `comparison`, `category_card` (header), `timeline`; on a `contents_item`, its number |
 | `term`, `explanation` | `term_box`; `explanation` also carries a `contents_item`'s section list |
@@ -221,7 +223,7 @@ A block is one thing on a board. Each carries its data and its rendered `html`.
 | `band` | 1.3. On the first change card of a run, the process pill's text ("Nominalisation") |
 | `verdicts` | 1.6. A choice table (a core `table` whose rows offer versions of one sentence to choose between): each body cell's verdict, `[{row, col, verdict}]`, `verdict` `right`, `wrong` or `possible` (also acceptable, or correct only in some context). Null for any other table |
 | `beside` | 1.2. a working block drawn beside a table row: `{block, row}`, the table and the row (from 0), or row null for a note about the whole table; otherwise null |
-| `items` | `timeline`: its diagram parts in order (below) |
+| `items` | `timeline`: its diagram parts in order (below). 1.7, `clauses`: its parts in order, `{kind, text, piece, part}`: `kind` `dependent` or `independent` (a piece, `text` its words), `glue` (the joining word; `piece` the piece it is in, from 1, or null for a bridge between two independent pieces), `subject` or `verb` (a label over `text` in `piece`), or `join`; the part id is `<block id>.<part>` |
 | `tags` | tense tags: `[{text, family, label}]`; `label` is what the chip says ("up to now") |
 | `exercise_item` | the item number an exercise sentence carries in its badge, or null |
 | `provenance` | `source-derived`, `adapted`, `corrected`, `authored` or `maintainer` (AGENTS.md §9). For review; the student is not shown it |
@@ -403,6 +405,13 @@ These are the only rules. Every time and target they use is in the bundle.
     word of the board. Marks are drawn over the words, never inline; active
     styling never changes a border width, padding or size; the frame's size
     does not depend on the page around it (docs/02-DESIGN-SYSTEM.md §8a).
+20. **A clause diagram** (1.7) is a diagram: its parts are revealed by rule 5.
+    A piece (`dependent`, `independent`) and a bridge are shown from their
+    reveal; a `glue`, `subject` or `verb` part is a phrase already shown in its
+    piece that takes its look from its reveal (the glue chip, the S or V label,
+    the verb blue); from the `join`'s reveal the tab stands in the notch and a
+    dependent piece that comes first shows its comma. None of it moves a word
+    (rule 19; docs/02-DESIGN-SYSTEM.md §7d).
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and
@@ -417,7 +426,7 @@ no cues and no provenance.
 
 | Field | Meaning |
 |---|---|
-| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.6"` |
+| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.7"` |
 | `lesson` | the same object as `bundle.json`'s `lesson` |
 | `sections[]` | `{id, title, category, start, end, narration_text, board_text, boards}` |
 | `sections[].narration_text` | everything said in the section, one paragraph per board |

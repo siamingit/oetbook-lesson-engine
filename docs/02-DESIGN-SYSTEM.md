@@ -266,6 +266,7 @@ headers, never on error or answer rows, and **only in a tense lesson**
 | Timeline | A diagram on a time axis: tense arrows, reference markers, event series, pointer arrows, callout boxes (and plain points and periods), each in a family colour. Structured data only; code draws it, part by part as the narration reveals them (§7a). | working, or fixed on a diagram slide |
 | Callout | Two kinds only. Warning: red circle with "!" on an amber tint. Key rule: blue circle with "i" on a blue tint. | working |
 | Table | A slide's table, whole, taught row by row (§7, Tables); or a small tense table with its header row coloured by family. | fixed when it is the slide's content; a small table written while teaching is working |
+| Clause diagram | A sentence as puzzle pieces: a dependent and an independent clause, the joining word as glue, S and V labels, the join (§7d; 2026-09-27). Structured data only; code draws it, part by part. | fixed when it is the slide's content; otherwise working |
 
 An answer row never stands alone: it is accompanied by a plain or term
 block saying why it is right.
@@ -604,6 +605,36 @@ a slide box, the lesson's own words.
 cue and no state: narration and audio are unaffected. A cue on a folded
 part lands on the same words in its sentence; a cue on a change card's
 "Analysis (noun)" lands on "Analysis" (the class is a tag, not words).
+
+### 7d. The clause diagram
+
+Decided by the maintainer 2026-09-27 for every lesson (docs/adr/010-clause-diagram.md),
+from `docs/prototypes/p5-complex-sentence-prototype.html` (direction, not
+content). A sentence is drawn as **puzzle pieces**, to show how clauses join.
+Like the timeline it is structured data drawn by code, part by part as the
+narration reveals it (§7a); the screens model never draws.
+
+| Part | Look |
+|---|---|
+| Dependent clause | A piece in the clause magenta (`#CB0BAB`, the word-class colour of a clause) on a pale tint, labelled "Dependent clause", with a **tab** on the side facing the other piece: it cannot stand alone |
+| Independent clause | A piece in neutral slate (`#475569`), labelled "Independent clause", with a **notch** where a dependent piece joins it: it can stand alone |
+| Glue | The joining word, on the orange of the maintainer's pills (`#F7A531`): a chip on the word inside its piece ("Although"), or a bridge between two independent pieces ("and") |
+| Subject, verb | A small "S" (neutral) or "V" (verb blue `#084191`) above the phrase; the verb takes the verb blue |
+| Join | Last: the tab slides across the gap into the notch; when the dependent clause comes first, its comma shows. On a compound sentence the bridge reaches out to both pieces |
+
+- One or two pieces, in the order the sentence has them. Piece text is the
+  sentence's own words, or, for a pattern, the names of its parts
+  ("subordinator + dependent clause").
+- **Compound and complex** read at a glance: two complete slate pieces bridged
+  by an orange "and" is a compound sentence; a magenta piece that plugs into a
+  slate one is a complex sentence.
+- **Nothing moves a word** (§8a). The pieces never move: only the tab and its
+  neck do. The S and V labels sit in the line's own leading, the glue chip is a
+  background and a shadow, and the comma's room is reserved from the start.
+- At most ten parts. The slide's own diagram is the board's fixed layer
+  (role slide); one drawn while teaching is an example.
+- The stand-alone test is drawn with the ordinary rows: the independent
+  clause alone as a correct sentence, the dependent clause alone as a wrong one.
 
 ## 8. Marks
 

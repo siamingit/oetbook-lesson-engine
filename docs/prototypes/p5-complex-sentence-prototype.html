@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Board style prototype: What is a complex sentence?</title>
+<style>
+:root{
+  --page:#DCE4EC; --paper:#fff; --ink:#16263A; --muted:#5A6B7E; --navy:#0B5277;
+  --dep:#B3368C; --deptint:#FAE8F3; --ind:#0F6E7A; --indtint:#E3F3F4;
+  --verb:#1E4FA3; --glue:#F59E1B; --gluetint:#FFF1DC;
+  --right:#1F8A4C; --wrong:#D23B3B;
+  --font:"Segoe UI",system-ui,-apple-system,sans-serif;
+  box-sizing:border-box;
+}
+*,*::before,*::after{box-sizing:inherit}
+html,body{margin:0;height:100%;background:var(--page);font-family:var(--font);color:var(--ink)}
+body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:12px}
+#stage{position:relative;width:1280px;height:720px;flex:none}
+#frame{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:0 0;background:var(--paper);border-radius:12px;overflow:hidden;box-shadow:0 8px 28px rgba(12,40,64,.18)}
+#header{height:64px;display:flex;align-items:center;padding:0 40px;font-size:27px;font-weight:600;color:var(--navy);border-bottom:3px solid var(--navy)}
+#board{position:relative;height:656px;padding:22px 44px 0}
+
+.def{display:inline-flex;align-items:center;gap:12px;background:var(--gluetint);border:1.5px solid #F3C98A;border-radius:999px;padding:8px 22px 8px 10px;font-size:19px}
+.def .tag{background:var(--navy);color:#fff;font-weight:700;border-radius:999px;padding:5px 14px;font-size:16px}
+.def .d{color:var(--dep);font-weight:700} .def .i{color:var(--ind);font-weight:700}
+
+svg#pieces{display:block;margin-top:14px;overflow:visible}
+.piece{transition:transform .9s cubic-bezier(.4,0,.2,1)}
+.ptitle{font:700 23px var(--font)}
+.psub{font:400 16px var(--font);fill:var(--muted)}
+.slot rect{rx:14}
+.slot text{font:600 15px var(--font)}
+.gluechip rect{fill:var(--glue)} .gluechip text{font:700 15px var(--font);fill:#3B2300}
+
+.sentence{margin-top:16px;border-radius:20px;background:#EEF5FB;border:1.5px solid #CFE2F1;padding:22px 26px 18px;font-size:23px;line-height:2.1}
+.cl{border-radius:8px;padding:3px 4px;transition:background-color .5s,box-shadow .5s}
+.on.cl.d{background:var(--deptint);box-shadow:inset 0 -3px 0 var(--dep)}
+.on.cl.i{background:var(--indtint);box-shadow:inset 0 -3px 0 var(--ind)}
+.w{position:relative;display:inline-block}
+.w .lab{position:absolute;left:50%;top:-1.05em;transform:translateX(-50%);font-size:12px;font-weight:700;letter-spacing:.3px;
+  border-radius:6px;padding:1px 6px;line-height:1.4;opacity:0;transition:opacity .4s}
+.lab.s{background:#EDEFF2;color:var(--ink)} .lab.v{background:#E3EBF8;color:var(--verb)}
+.sv .w .lab{opacity:1}
+.sv .w.vb{color:var(--verb);font-weight:600}
+.glueword{border-radius:7px;padding:1px 6px;transition:background-color .5s}
+.on .glueword,.glueword.on{background:var(--glue);color:#3B2300;font-weight:700}
+.comma{display:inline-block;transition:transform .4s,color .4s}
+.comma.on{color:var(--glue);transform:scale(1.8);font-weight:800}
+
+.test{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+.tcard{border-radius:16px;padding:12px 18px;font-size:18px;display:flex;gap:14px;align-items:flex-start;border:1.5px solid}
+.tcard .badge{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700}
+.tcard small{display:block;color:var(--muted);font-size:14px;margin-top:3px}
+.tcard.ok{background:#EFF8F2;border-color:#BFE3CB} .ok .badge{background:var(--right)}
+.tcard.no{background:#FCEFEF;border-color:#F0C3C3} .no .badge{background:var(--wrong)}
+
+.step{opacity:0;transition:opacity .5s}
+.step.show{opacity:1}
+#controls{display:flex;gap:10px;align-items:center;font-size:14px}
+button{font:inherit;padding:7px 16px;border-radius:8px;border:1px solid #9FB1C2;background:#fff;color:var(--ink);cursor:pointer}
+button.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+button:focus-visible{outline:3px solid var(--glue);outline-offset:2px}
+#say{max-width:900px;text-align:center;min-height:2.6em;font-size:15px}
+@media (prefers-reduced-motion:reduce){.piece,.step,.cl,.comma,.lab{transition:none}}
+</style>
+</head>
+<body>
+<div id="stage"><div id="frame">
+  <div id="header">What is a complex sentence?</div>
+  <div id="board">
+    <div class="def step" data-s="1"><span class="tag">Complex sentence</span>
+      <span class="d">dependent clause</span> + <span class="i">independent clause</span></div>
+
+    <svg id="pieces" width="1192" height="176" viewBox="0 0 1192 176">
+      <!-- dependent piece: tab on the right, it must plug into something -->
+      <g class="piece step" id="dep" data-s="2">
+        <path d="M22 8 H410 Q430 8 430 28 V58 C476 58 476 118 430 118 V148 Q430 168 410 168 H22 Q2 168 2 148 V28 Q2 8 22 8 Z"
+              fill="var(--deptint)" stroke="var(--dep)" stroke-width="3"/>
+        <text class="ptitle" x="30" y="48" fill="var(--dep)">Dependent clause</text>
+        <text class="psub" x="30" y="74">cannot stand alone</text>
+        <g class="slot step" data-s="3"><rect x="30" y="104" width="104" height="40" fill="#fff" stroke="#C9CFD6"/><text x="82" y="130" text-anchor="middle" fill="var(--ink)">subject</text></g>
+        <text class="step" data-s="3" x="150" y="131" font-size="22" font-weight="700" fill="var(--muted)">+</text>
+        <g class="slot step" data-s="3"><rect x="174" y="104" width="90" height="40" fill="#fff" stroke="#9DB3D8"/><text x="219" y="130" text-anchor="middle" fill="var(--verb)">verb</text></g>
+        <g class="gluechip step" data-s="4"><rect x="290" y="104" width="118" height="40" rx="14"/><text x="349" y="130" text-anchor="middle">although</text></g>
+      </g>
+      <!-- independent piece: notch on the left, complete on its own -->
+      <g class="piece step" id="ind" data-s="2">
+        <path d="M22 8 H410 Q430 8 430 28 V148 Q430 168 410 168 H22 Q2 168 2 148 V118 C48 118 48 58 2 58 V28 Q2 8 22 8 Z"
+              fill="var(--indtint)" stroke="var(--ind)" stroke-width="3"/>
+        <text class="ptitle" x="66" y="48" fill="var(--ind)">Independent clause</text>
+        <text class="psub" x="66" y="74">can stand alone</text>
+        <g class="slot step" data-s="3"><rect x="66" y="104" width="104" height="40" fill="#fff" stroke="#C9CFD6"/><text x="118" y="130" text-anchor="middle" fill="var(--ink)">subject</text></g>
+        <text class="step" data-s="3" x="186" y="131" font-size="22" font-weight="700" fill="var(--muted)">+</text>
+        <g class="slot step" data-s="3"><rect x="210" y="104" width="90" height="40" fill="#fff" stroke="#9DB3D8"/><text x="255" y="130" text-anchor="middle" fill="var(--verb)">verb</text></g>
+      </g>
+    </svg>
+
+    <div class="sentence step" id="sent" data-s="5">
+      <span class="cl d"><span class="glueword">Although</span> <span class="w"><span class="lab s">S</span>Karen</span>
+      <span class="w vb"><span class="lab v">V</span>discontinued</span> her use of Microgynon 30</span><span class="comma">,</span>
+      <span class="cl i"><span class="w"><span class="lab s">S</span>she</span> <span class="w vb"><span class="lab v">V</span>is still having</span> problems falling pregnant.</span>
+    </div>
+
+    <div class="test">
+      <div class="tcard no step" data-s="8"><span class="badge">✗</span>
+        <div>Although Karen discontinued her use of Microgynon 30.<small>Dependent clause alone: not a full sentence.</small></div></div>
+      <div class="tcard ok step" data-s="8"><span class="badge">✓</span>
+        <div>She is still having problems falling pregnant.<small>Independent clause alone: a full sentence.</small></div></div>
+    </div>
+  </div>
+</div></div>
+<div id="say" aria-live="polite"></div>
+<div id="controls">
+  <button id="back">Back</button><button id="next" class="primary">Next</button>
+  <button id="all">Show final board</button><span id="count"></span>
+</div>
+<script>
+const SAY=["",
+ "A complex sentence has two parts: a dependent clause and an independent clause.",
+ "Think of them as two puzzle pieces. The independent clause can stand alone. The dependent clause cannot: it needs a partner.",
+ "Each piece is a clause, so each one has a subject and a verb.",
+ "The dependent clause starts with a joining word, like although. This is the glue.",
+ "Here is the sentence from the slide.",
+ "The pink part is the dependent clause. The teal part is the independent clause. When the dependent clause comes first, we put a comma between them.",
+ "Now find the subject and the verb in each part: Karen discontinued; she is still having.",
+ "Try them alone. The independent clause is a full sentence. The dependent clause alone is not.",
+ "So we join them. The two pieces fit together and make one complex sentence."];
+const LAST=SAY.length-1; let s=0;
+const dep=document.getElementById("dep"), ind=document.getElementById("ind");
+function render(){
+  document.querySelectorAll(".step").forEach(el=>el.classList.toggle("show", s>=+el.dataset.s));
+  const joined = s>=LAST;
+  dep.style.transform = joined ? "translate(150px,0)" : "translate(40px,0)";
+  ind.style.transform = joined ? "translate(578px,0)" : "translate(700px,0)";
+  document.querySelectorAll(".cl").forEach(el=>el.classList.toggle("on", s>=6));
+  document.querySelector(".glueword").classList.toggle("on", s>=5);
+  document.querySelector(".comma").classList.toggle("on", s===6);
+  document.getElementById("sent").classList.toggle("sv", s>=7);
+  document.getElementById("say").textContent=SAY[s];
+  document.getElementById("count").textContent=`Step ${s} of ${LAST}`;
+  document.getElementById("back").disabled=s===0; document.getElementById("next").disabled=s===LAST;
+}
+document.getElementById("next").onclick=()=>{s=Math.min(LAST,s+1);render()};
+document.getElementById("back").onclick=()=>{s=Math.max(0,s-1);render()};
+document.getElementById("all").onclick=()=>{s=LAST;render()};
+function fit(){const k=Math.max(.2,Math.min((innerWidth-24)/1280,(innerHeight-120)/720));
+  const st=document.getElementById("stage");st.style.width=1280*k+"px";st.style.height=720*k+"px";
+  document.getElementById("frame").style.transform=`scale(${k})`;}
+addEventListener("resize",fit);fit();render();
+</script>
+</body>
+</html>

@@ -56,7 +56,7 @@ MODEL = "claude-opus-5"
 MAX_TOKENS = 64000          # 32,000 truncated the two-page section 5-6 (the tense table)
 
 BLOCK_TYPES = ["error_row", "answer_row", "term_box", "comparison", "plain",
-               "category_card", "timeline", "callout", "table"]
+               "category_card", "timeline", "callout", "table", "clauses"]
 PROVENANCE = ["source-derived", "adapted", "authored", "corrected", "maintainer"]
 
 # ---------------------------------------------------------------------------
@@ -80,6 +80,15 @@ MAX_TIMELINES_PER_STATE = 1
 MAX_ICONS_PER_STATE = 2
 MAX_TIMELINE_ITEMS = 10
 MAX_SERIES_MARKS = 16
+# The clause diagram (docs/02-DESIGN-SYSTEM.md §7d, ADR 010; maintainer
+# 2026-09-27): a sentence as puzzle pieces. A dependent clause is a piece with
+# a tab (it cannot stand alone), an independent clause a piece that can; the
+# joining word is the glue. Every item is a PART the narration reveals, like a
+# timeline's, addressed as <block id>.<n> in listed order.
+CLAUSE_KINDS = ["dependent", "independent", "glue", "subject", "verb", "join"]
+MAX_CLAUSE_PARTS = 10
+MAX_CLAUSE_PIECES = 2
+DIAGRAM_TYPES = ("timeline", "clauses")      # blocks drawn part by part
 
 # Curated outline icons, 24x24, stroke only. The model names a concept; code
 # maps it to the drawing. Nothing outside this list renders. Clinical objects
@@ -151,7 +160,7 @@ thought is ONE note, because a thought that does not fit beside the fixed \
 layer fails the layout and the whole section with it. The working layer holds \
 about four notes at once on a light board and one or two on a heavy one.
 
-BLOCK TYPES. Exactly these nine:
+BLOCK TYPES. Exactly these ten:
   error_row   a wrong sentence, shown red with a large cross badge. A printed \
 exercise sentence, or a form that is rejected during the teaching \
 (e.g. "The patient has diagnosed").
@@ -203,6 +212,30 @@ each header cell may carry its own family, written "family:label" \
 has no family. A table in the WORKING layer is small: at most four columns \
 and five rows, each cell a verb form or a few words. A table that IS the \
 slide - the slide's own table - is the fixed layer, whole: see TABLE BOARDS.
+  clauses     a CLAUSE DIAGRAM: one sentence drawn as puzzle pieces, to show \
+how clauses join. You give structured data only: `items`, the PARTS, and an \
+optional short `label`; code draws it. The parts:
+      dependent    a dependent clause, a piece with a tab: it cannot stand \
+alone. Its words, with the joining word that starts it: "dependent|Although \
+Karen discontinued her use of Microgynon 30". No comma: code draws the comma \
+when the dependent clause comes first.
+      independent  an independent clause, a complete piece: it can stand \
+alone. "independent|she is still having problems falling pregnant."
+      glue         the joining word, drawn as an orange glue chip. When the \
+word is inside a piece ("glue|Although") the chip marks it there; a \
+coordinating conjunction between two independent pieces ("glue|and") is drawn \
+as a bridge between them.
+      subject, verb   a small S or V label over a phrase of a piece: \
+"subject|Karen", "verb|discontinued". Add "|2" to name the second piece when \
+the phrase is in both ("subject|the patient|2").
+      join         the pieces join: the tab slides into its place, and the \
+comma appears when the dependent clause comes first. "join".
+One or two pieces, in the order the sentence has them (dependent first or \
+second). Piece text is the sentence's own words, or, for a pattern, the names \
+of its parts ("subordinator + dependent clause"). List the parts in teaching \
+order: the pieces first, then the glue, the subject and verb labels, and the \
+join last. At most ten parts. Use a clause diagram wherever the boards show \
+how clauses join: dependent and independent, complex and compound.
 
 TENSE FAMILY COLOURS, the same in every lesson. Colour follows where the time \
 reference sits, not the tense name:
@@ -521,8 +554,11 @@ Every block has `type` and the fields that type uses - `text` for \
 error_row, answer_row, plain and callout; `label`, `term` and `explanation` \
 for term_box; `label`, `left` and `right` for comparison; `label`, `family` \
 and `text` for category_card; `label`, `items` for timeline; `kind` and `text` \
-for callout; `family`, `header` and `rows` for table - with the unused fields \
-null. A timeline item is one string: "arrow|label|family|from|to", \
+for callout; `family`, `header` and `rows` for table; `items` (and an \
+optional `label`) for clauses - with the unused fields null. A clauses item is \
+one string: "dependent|words", "independent|words", "glue|word", \
+"subject|phrase", "verb|phrase" (either with "|2" for the second piece), or \
+"join". A timeline item is one string: "arrow|label|family|from|to", \
 "marker|label|at", "series|label|family|from|to|count|final_label", \
 "pointer|label|family|at", "callout|text|family|at" (add "|above" to place it \
 above the line), "period|label|family|from|to", "point|label|family|at" or \
@@ -560,7 +596,9 @@ def unflatten(topics: list[dict]) -> None:
     for t in topics:
         for h in t["thoughts"]:
             for b in h["blocks"]:
-                if isinstance(b.get("items"), list):
+                if b.get("type") == "clauses" and isinstance(b.get("items"), list):
+                    b["items"] = clause_items(b["items"])
+                elif isinstance(b.get("items"), list):
                     items = []
                     for raw in b["items"]:
                         if isinstance(raw, dict):
@@ -647,6 +685,52 @@ def unflatten(topics: list[dict]) -> None:
                                  for r in b["rows"]]
                     untype_rows(b)
                     unverdict_rows(b)
+
+
+def clause_items(raw_items: list) -> list[dict]:
+    """A clause diagram's parts (ADR 010) from their strings: {kind, text,
+    piece, part}. `piece` is the piece a glue, subject or verb phrase sits in
+    (1 or 2, counted among the pieces in listed order): the one named, else
+    the first piece holding the phrase; a glue in no piece is a bridge (piece
+    None). Malformed entries keep kind 'bad' for the audit."""
+    items = []
+    for raw in raw_items:
+        if isinstance(raw, dict):
+            items.append(dict(raw))
+            continue
+        parts = [x.strip() for x in str(raw).split("|")]
+        kind = parts[0].lower() if parts and parts[0].lower() in CLAUSE_KINDS else "bad"
+        it = {"kind": kind, "text": parts[1] if len(parts) > 1 else "", "piece": None}
+        if kind in ("subject", "verb", "glue") and len(parts) > 2 and parts[2].isdigit():
+            it["piece"] = int(parts[2])
+        if kind == "bad":
+            it["text"] = str(raw)
+        items.append(it)
+    pieces = [it for it in items if it["kind"] in ("dependent", "independent")]
+    for it in items:
+        if it["kind"] not in ("subject", "verb", "glue") or not it["text"]:
+            continue
+        # the model often gives a phrase in another case than the piece has it
+        # ("subordinator" in "Subordinator + dependent clause"): it takes the
+        # piece's own casing, as a tense tag does
+        order = ([pieces[it["piece"] - 1]] if it["piece"] and it["piece"] <= len(pieces)
+                 else pieces)
+        if not any(it["text"] in p["text"] for p in order):
+            for p in order:
+                i = p["text"].lower().find(it["text"].lower())
+                if i >= 0:
+                    it["text"] = p["text"][i:i + len(it["text"])]
+                    break
+        if it["piece"] is None:
+            it["piece"] = next((n for n, p in enumerate(pieces, 1) if it["text"] in p["text"]),
+                               None)
+    for n, it in enumerate(items, 1):
+        it["part"] = n                      # addressed as <block id>.<n>
+    return items
+
+
+def clause_pieces(b: dict) -> list[dict]:
+    return [it for it in b.get("items") or [] if it.get("kind") in ("dependent", "independent")]
 
 
 TYPED = re.compile(r"\[\[(.*?)\]\]")
@@ -1170,6 +1254,8 @@ def apply_overrides(out_dir: Path, blocks: dict[str, dict]) -> list[dict]:
                              "override.")
         before = {k: b.get(k) for k in fields}
         b.update(fields)
+        if b["type"] == "clauses" and fields.get("items")                 and all(isinstance(x, str) for x in fields["items"]):
+            b["items"] = clause_items(fields["items"])      # the reply's own form (ADR 010)
         if b["type"] == "table" and fields.get("rows") \
                 and all(isinstance(r, str) for r in fields["rows"]):
             # a table's rows in the reply's own form, "cell|cell|cell" with typed
@@ -1238,6 +1324,8 @@ def block_height(b: dict) -> float:
     elif t == "timeline":
         g = diagram_geometry(b)
         h = g["height"] / 100 + (LABEL_LINE if b.get("label") else 0)
+    elif t == "clauses":
+        h = clause_geometry(b)["height"] / 100 + (LABEL_LINE if b.get("label") else 0)
     elif t == "table" and b.get("core"):
         return table_height(b, b["font"] / 100)
     elif t == "table":
@@ -1387,6 +1475,36 @@ def diagram_geometry(b: dict) -> dict:
     height = axis_h + 2.0 + LEGEND_BAND * len(series)
     return {"axis_y": axis_y, "axis_h": axis_h, "height": height, "has_above": bool(above),
             "has_below": bool(below), "n_series": len(series)}
+
+
+# The clause diagram's plan (ADR 010), in cqh. Piece text is body size on a
+# tall line, so the S and V labels sit above their words in the line's own
+# leading and never move a word. The pieces share the content width in
+# proportion to their text; the gap between them is where the tab travels.
+CLAUSE_LINE = 3.2 * 2.3        # body size on a 2.3 line
+CLAUSE_KIND = 3.6              # the small kind label and its margin
+CLAUSE_PAD = 1.6               # a piece's padding, top and bottom
+CLAUSE_GAP = 6.0               # cqw between two pieces; the tab's travel
+CLAUSE_WIDTH = 160.0           # cqh: the content band's width (90% of 177.8)
+CLAUSE_CHAR = 1.7              # cqh: an average character at body size
+CLAUSE_KIND_LABEL = {"dependent": "Dependent clause", "independent": "Independent clause"}
+
+
+def clause_geometry(b: dict) -> dict:
+    """Each piece's share of the width and the diagram's height, from its
+    parts alone; block_height and clauses_html use the same numbers."""
+    pieces = clause_pieces(b)
+    bridge = [it for it in b.get("items") or [] if it.get("kind") == "glue" and it.get("piece") is None]
+    grow = [max(len(p.get("text") or ""), 14) for p in pieces]
+    gaps = CLAUSE_GAP * 1.778 * max(0, len(pieces) - 1)          # cqw to cqh
+    bridge_w = sum(len(x.get("text") or "") * CLAUSE_CHAR + 4.0 for x in bridge)
+    avail = CLAUSE_WIDTH - gaps - bridge_w
+    lines = []
+    for p, g in zip(pieces, grow):
+        w = avail * g / (sum(grow) or 1) - 2 * 3.9 - 3.0           # padding, tab room
+        lines.append(wrapped_lines(p.get("text") or "", max(8, int(w / CLAUSE_CHAR))))
+    height = CLAUSE_KIND + max(lines or [1]) * CLAUSE_LINE + 2 * CLAUSE_PAD
+    return {"grow": grow, "lines": lines, "height": height}
 
 
 def callout_box(at: float) -> tuple[float, float]:
@@ -1709,6 +1827,17 @@ def block_text_runs(b: dict) -> list[str]:
     elif t == "table":
         return [c for c in (b.get("header") or []) if c] + \
                [c for row in (b.get("rows") or []) for c in row if c]
+    elif t == "clauses":
+        # DOM order: the label, then each piece's kind and words, a bridge
+        # glue between the first piece and the second
+        runs = [x for x in [b.get("label")] if x]
+        bridge = [it["text"] for it in b.get("items") or []
+                  if it.get("kind") == "glue" and it.get("piece") is None and it.get("text")]
+        for n, p in enumerate(clause_pieces(b), 1):
+            if n == 2:
+                runs += bridge
+            runs += [CLAUSE_KIND_LABEL[p["kind"]], p["text"]]
+        return [r for r in runs if r]
     else:
         keys = ("text",)
     return [b[k] for k in keys if b.get(k)]
@@ -1745,7 +1874,7 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
     for b in blocks.values():
         t = b["type"]
         need = {"term_box": ["term", "explanation"], "comparison": ["left", "right"],
-                "category_card": ["label", "text"], "timeline": ["items"],
+                "category_card": ["label", "text"], "timeline": ["items"], "clauses": ["items"],
                 "callout": ["kind", "text"], "table": ["header", "rows"]}.get(t, ["text"])
         for k in need:
             if not b.get(k):
@@ -1786,6 +1915,46 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                           f"its text: {(b.get('text') or '')[:60]!r}")
         for phrase in b.get("tags_dropped") or []:
             warn(b["id"], f"tense tag {phrase!r} dropped: the phrase is not in this block")
+        if t == "clauses":
+            items = b.get("items") or []
+            pieces = clause_pieces(b)
+            if len(items) > MAX_CLAUSE_PARTS:
+                fail(b["id"], f"clause diagram has {len(items)} parts, limit {MAX_CLAUSE_PARTS}")
+            if not 1 <= len(pieces) <= MAX_CLAUSE_PIECES:
+                fail(b["id"], f"clause diagram has {len(pieces)} pieces; 1 or 2")
+            seen_pieces = 0
+            for it in items:
+                k = it.get("kind")
+                if k == "bad":
+                    fail(b["id"], f"clause part {it.get('text')!r} is not one of "
+                                  + ", ".join(CLAUSE_KINDS))
+                    continue
+                if k in ("dependent", "independent"):
+                    seen_pieces += 1
+                    if not it.get("text"):
+                        fail(b["id"], f"{k} piece {it.get('part')} has no words")
+                    elif it["text"].rstrip().endswith(","):
+                        fail(b["id"], f"{k} piece {it['text']!r} ends with a comma; the join "
+                                      "draws the comma")
+                elif k in ("glue", "subject", "verb"):
+                    if not it.get("text"):
+                        fail(b["id"], f"{k} part {it.get('part')} names no phrase")
+                    elif it.get("piece") is None and k != "glue":
+                        fail(b["id"], f"{k} {it['text']!r} is in no piece")
+                    elif it.get("piece") is not None and (
+                            it["piece"] > len(pieces) or it["text"] not in pieces[it["piece"] - 1]["text"]):
+                        fail(b["id"], f"{k} {it['text']!r} is not in piece {it['piece']}")
+                    elif it.get("piece") is not None and it["piece"] > seen_pieces:
+                        fail(b["id"], f"{k} {it['text']!r} is listed before its piece")
+                    if k == "glue" and it.get("piece") is None and not (
+                            len(pieces) == 2 and all(p["kind"] == "independent" for p in pieces)):
+                        fail(b["id"], f"glue {it['text']!r} is in no piece; a bridge joins two "
+                                      "independent pieces only")
+                elif k == "join":
+                    if it is not items[-1]:
+                        fail(b["id"], "the join is not the last part")
+                    if len(pieces) != 2:
+                        fail(b["id"], "a join needs two pieces")
         if t == "timeline":
             items = b.get("items") or []
             if len(items) > MAX_TIMELINE_ITEMS:
@@ -2414,6 +2583,55 @@ FRAME_CSS = """
   border-right:1.3cqh solid transparent}
 .tl-callout.below .tri{top:-1.5cqh;border-bottom:1.5cqh solid var(--f)}
 .tl-callout.above .tri{bottom:-1.5cqh;border-top:1.5cqh solid var(--f)}
+/* the clause diagram (docs/02-DESIGN-SYSTEM.md §7d, ADR 010): puzzle pieces.
+   Dependent: the clause magenta, a tab. Independent: neutral slate, a notch.
+   Glue: the orange of the maintainer's pills. Nothing here changes a box's
+   size when a part comes on: labels, chips, the comma and the tab are drawn
+   in room reserved from the start (§8a). */
+.cl{padding-left:0;padding-right:0;--dep:#CB0BAB;--dep-t:#FBEAF7;--ind:#475569;--ind-t:#F1F4F7;
+  --glue:#F7A531;--glue-on:#3B2300;--cl-gap:6cqw;--tab:4.8cqh}
+.cl-lbl{text-transform:none;letter-spacing:0;color:#5F5E5A}
+.cl-row{display:flex;align-items:stretch;gap:var(--cl-gap);position:relative}
+.cl-row.compound{gap:1.6cqw;align-items:center}
+.cl-row.compound .cl-piece{align-self:stretch}
+.cl-piece{position:relative;box-sizing:border-box;min-width:0;border:max(2px,.35cqh) solid var(--c);
+  background:var(--t);border-radius:2cqh;padding:1.6cqh 3.9cqh}
+.cl-piece.dep{--c:var(--dep);--t:var(--dep-t)} .cl-piece.ind{--c:var(--ind);--t:var(--ind-t)}
+.cl-kind{font-size:2.4cqh;line-height:1.2;font-weight:500;color:var(--c);margin-bottom:.8cqh}
+.cl-text{font-size:3.2cqh;line-height:2.3;color:#2C2C2A}
+.cl-piece.dep.first .cl-text::after{content:",";color:transparent}
+.cl-row:has(.cl-join.on) .cl-piece.dep.first .cl-text::after{color:var(--dep);font-weight:500}
+.cl-glue.on{background:var(--glue);color:var(--glue-on);border-radius:.6cqh;box-shadow:0 0 0 .35cqh var(--glue)}
+.cl-w{position:relative}
+.cl-w::after{position:absolute;left:50%;bottom:100%;transform:translate(-50%,.15em);font-size:2.1cqh;line-height:1.2;
+  font-weight:500;padding:0 .5cqh;border-radius:.5cqh;opacity:0;white-space:nowrap}
+.cl-s::after{content:"S";background:#E8E6DF;color:#2C2C2A}
+.cl-v::after{content:"V";background:rgba(8,65,145,.12);color:#084191}
+.cl-w.on::after{opacity:1} .cl-v.on{color:#084191}
+.cl-bridge{flex:none;font-size:3.2cqh;line-height:1.35;background:var(--glue);color:var(--glue-on);font-weight:500;
+  border-radius:.8cqh;padding:.6cqh 1.2cqw}
+.cl-bridge{position:relative}
+.cl-bridge::before,.cl-bridge::after{content:"";position:absolute;top:50%;width:1.6cqw;height:max(2px,.35cqh);
+  margin-top:calc(max(2px,.35cqh) / -2);background:var(--glue);opacity:0}
+.cl-bridge::before{right:100%} .cl-bridge::after{left:100%}
+.cl-row:has(.cl-join.on) .cl-bridge::before,.cl-row:has(.cl-join.on) .cl-bridge::after{opacity:1}
+.cl-tab,.cl-notch{position:absolute;top:50%;width:var(--tab);height:var(--tab);margin-top:calc(var(--tab) / -2);
+  border-radius:50%;box-sizing:border-box;border:max(2px,.35cqh) solid var(--c);z-index:1}
+.cl-tab{background:var(--t);z-index:3}
+.tab-r .cl-tab{right:calc(var(--tab) / -2)} .tab-l .cl-tab{left:calc(var(--tab) / -2)}
+.cl-tab::after{content:"";position:absolute;top:-.1cqh;bottom:-.1cqh;width:55%;background:var(--t)}
+.tab-r .cl-tab::after{left:-.4cqh} .tab-l .cl-tab::after{right:-.4cqh}
+.cl-notch{background:#fff}
+.notch-l .cl-notch{left:calc(var(--tab) / -2)} .notch-r .cl-notch{right:calc(var(--tab) / -2)}
+.cl-notch::after{content:"";position:absolute;top:-.5cqh;bottom:-.5cqh;width:52%;background:#fff}
+.notch-l .cl-notch::after{left:-.5cqh} .notch-r .cl-notch::after{right:-.5cqh}
+.cl-row:has(.cl-join.on) .tab-r .cl-tab{transform:translateX(var(--cl-gap))}
+.cl-row:has(.cl-join.on) .tab-l .cl-tab{transform:translateX(calc(-1 * var(--cl-gap)))}
+.cl-neck{position:absolute;z-index:2;top:50%;height:calc(var(--tab) * .5);margin-top:calc(var(--tab) * -.25);width:0;
+  box-sizing:border-box;background:var(--t);border:solid var(--c);border-width:max(2px,.35cqh) 0}
+.tab-r .cl-neck{left:100%} .tab-l .cl-neck{right:100%}
+.cl-row:has(.cl-join.on) .cl-neck{width:var(--cl-gap)}
+.cl-join{position:absolute;width:0;height:0}
 .term .t .ico{vertical-align:-.25em;margin-left:1.2cqw}
 /* tense tags: the phrase stays in the text flow; the chip hangs under it, as
    a CSS attribute so it is never a word to the reading pointer */
@@ -2598,6 +2816,68 @@ def timeline_html(b: dict, bid: str) -> str:
             + "".join(parts) + "</div>" + "".join(legends) + "</div>")
 
 
+def clauses_html(b: dict, bid: str) -> str:
+    """A clause diagram (docs/02-DESIGN-SYSTEM.md §7d, ADR 010). Each piece is
+    a part (.pt, shown at its reveal); a glue, subject or verb part is the
+    phrase itself, wrapped from the start and only styled when its reveal
+    comes (a background, a colour, a label in CSS content), so no word ever
+    moves (§8a). The tab and the comma are drawn by CSS: the tab crosses the
+    fixed gap into the notch when the join part comes, and the comma, its
+    room reserved from the start, shows after a dependent clause that comes
+    first. Text is emitted in block_text_runs order."""
+    pid = lambda it: f' data-part="{esc(b["id"])}.{it.get("part", 0)}"'
+    items = b.get("items") or []
+    pieces = clause_pieces(b)
+    g = clause_geometry(b)
+    kinds = [p["kind"] for p in pieces]
+    lbl = ('<div class="lbl cl-lbl">' + esc(b["label"]) + "</div>") if b.get("label") else ""
+    cls_of = {"glue": "cl-glue", "subject": "cl-w cl-s", "verb": "cl-w cl-v"}
+
+    def words(n: int, text: str) -> str:
+        spans = []                                  # (start, end, item), no overlaps
+        for it in items:
+            if it.get("kind") not in cls_of or it.get("piece") != n or not it.get("text"):
+                continue
+            i = text.find(it["text"])
+            while i >= 0 and any(i < e and i + len(it["text"]) > s for s, e, _ in spans):
+                i = text.find(it["text"], i + 1)
+            if i >= 0:
+                spans.append((i, i + len(it["text"]), it))
+        out, pos = "", 0
+        for s, e, it in sorted(spans, key=lambda x: x[0]):
+            out += esc(text[pos:s]) + '<span class="' + cls_of[it["kind"]] + '"' + pid(it) + ">" \
+                   + esc(text[s:e]) + "</span>"
+            pos = e
+        return out + esc(text[pos:])
+
+    bridges = [it for it in items if it.get("kind") == "glue" and it.get("piece") is None]
+    join = next((it for it in items if it.get("kind") == "join"), None)
+    complex_ = "dependent" in kinds and "independent" in kinds
+    row = []
+    for n, (p, grow) in enumerate(zip(pieces, g["grow"]), 1):
+        if n == 2:
+            row += ['<span class="pt cl-bridge"' + pid(x) + ">" + esc(x["text"]) + "</span>"
+                    for x in bridges]
+        side = ("r" if n == 1 else "l") if len(pieces) == 2 else ("r" if p["kind"] == "dependent" else "")
+        cls = "cl-piece " + ("dep" if p["kind"] == "dependent" else "ind")
+        if p["kind"] == "dependent":
+            cls += " tab-" + side if side else ""
+            if n == 1 and complex_:
+                cls += " first"                      # the comma after it
+        elif complex_:
+            cls += " notch-" + side
+        row.append('<div class="pt ' + cls + '"' + pid(p) + ' style="flex:' + str(grow)
+                   + ' 1 0"><div class="cl-kind">' + CLAUSE_KIND_LABEL[p["kind"]]
+                   + '</div><div class="cl-text">' + words(n, p.get("text") or "") + "</div>"
+                   + ('<i class="cl-neck"></i><i class="cl-tab"></i>'
+                      if p["kind"] == "dependent" and side else "")
+                   + ('<i class="cl-notch"></i>' if p["kind"] == "independent" and complex_ else "")
+                   + "</div>")
+    joined = ('<i class="cl-join"' + pid(join) + "></i>") if join else ""
+    return ('<div class="blk cl"' + bid + ">" + lbl + '<div class="cl-row' + (
+        " compound" if bridges else "") + '">' + "".join(row) + joined + "</div></div>")
+
+
 def is_exercise_board(fixed_ids: list[str], blocks: dict) -> bool:
     """An exercise topic shows only the item number, never the topic number
     beside it (docs/02-DESIGN-SYSTEM.md §7a)."""
@@ -2659,6 +2939,10 @@ def block_role(b: dict, printed: str) -> str:
     norm = lambda s: re.sub(r"\s+", " ", s or "").strip().lower()
     if (t == "table" and b.get("core")) or b.get("exercise_item") is not None:
         return "slide"
+    if t == "clauses":
+        # the slide's own diagram is its fixed layer; one drawn while teaching
+        # is the teacher's example (ADR 010)
+        return "slide" if b.get("anchor") else "example"
     texts = [x for x in (b.get("text"),) if x]
     if t in ("plain", "error_row", "answer_row") and texts and \
             all(len(norm(x)) >= 12 and norm(x).rstrip(".") in printed for x in texts):
@@ -2729,6 +3013,8 @@ def _block_html(b: dict) -> str:
                 + '<div class="cardbd"><span>' + tagged(b["text"], tags) + "</span></div></div>")
     if t == "timeline":
         return timeline_html(b, bid)
+    if t == "clauses":
+        return clauses_html(b, bid)
     if t == "callout":
         kind = b.get("kind") or "key_rule"
         return ('<div class="blk callout ' + esc(kind) + '"' + bid

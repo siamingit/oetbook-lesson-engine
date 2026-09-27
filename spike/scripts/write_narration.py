@@ -241,6 +241,7 @@ once, and never reveal a part twice. Say what each part shows as you draw \
 it: the events and the reference points first, then the arrow or the marks \
 being explained, then its example box. A mark's `text` on a diagram quotes a \
 part's label or a callout's sentence exactly.
+A CLAUSE DIAGRAM (type clauses) is drawn the same way, part by part: its pieces (a dependent clause, a piece that cannot stand alone; an independent clause, a piece that can), then the glue (the joining word, which turns orange), the S and V labels over each subject and verb, and last the join, when the pieces fit together (with the comma, when the dependent clause comes first). Reveal each part as you speak about it, in the listed order. Read a piece's words aloud when you reveal it. A mark's `text` on a clause diagram quotes words of one piece exactly. Call the pieces "the two parts of the sentence" or "the pieces", never a puzzle piece's software name.
 
 TABLE BOARDS. Some boards are one whole table, the fixed layer, and are marked `table_board`. Each of their states is one ROW of the table (`row`; "whole table" for what comes before the first row). The player brings that row into focus, dims the others, highlights the cell you are reading or typing into, and shows the whole table again when the row ends. You cue none of that. Teach each row in its own state, cell by cell in the order the table is taught (a case note, then its formal expression, then the sentence; a wrong sentence, then its answer). Text shown in [[double brackets]] in a row is NOT on screen yet: it is TYPED INTO ITS CELL LIVE. Every typed part has exactly one `type` cue, in the state of its row: `block` the table's id, `text` the typed part exactly as listed under `to_type`. Put the marker just before you say it, and say it aloud, word for word, as it is typed ("So we write: {{c1}}The patient was asymptomatic."). The parts of one cell are typed in order. Never mark or point at a typed part before it is typed. The row's working blocks are SIDE NOTES drawn beside the row: reveal each where you explain it, and they are erased when the next note or row begins. A mark on a table lands in the cell of the current row that contains its phrase, so its `text` must occur only ONCE in that row: "the left knee operation", not "left knee operation" when every cell of the row has it; a phrase that also occurs in other rows is fine.
 
@@ -460,6 +461,23 @@ def part_line(b: dict, it: dict) -> str:
     return f"{pid}: {k} '{it.get('label')}'{fam} at {it.get('at')}"
 
 
+def clause_part_line(b: dict, it: dict) -> str:
+    """One clause-diagram part as the model sees it (ADR 010)."""
+    pid = f"{b['id']}.{it.get('part')}"
+    k = it.get("kind")
+    if k in ("dependent", "independent"):
+        return f"{pid}: {k} clause piece '{it.get('text')}'"
+    if k == "glue":
+        where = f"in piece {it['piece']}" if it.get("piece") else "between the pieces"
+        return f"{pid}: glue (joining word) '{it.get('text')}', {where}"
+    if k in ("subject", "verb"):
+        return f"{pid}: {k} label over '{it.get('text')}' in piece {it.get('piece')}"
+    return f"{pid}: join: the pieces fit together" + (
+        ", and the comma appears after the dependent clause" if (
+            [p['kind'] for p in b.get('items') or [] if p.get('kind') in ('dependent', 'independent')][:1]
+            == ['dependent']) else "")
+
+
 def compact(b: dict) -> dict:
     """A block as the model sees it: id, type, its text fields, and the
     reviewer note, which is where the screens stage recorded which ruling a
@@ -470,6 +488,8 @@ def compact(b: dict) -> dict:
             out[k] = b[k]
     if b["type"] == "timeline" and b.get("items"):
         out["parts"] = [part_line(b, it) for it in b["items"]]
+    if b["type"] == "clauses" and b.get("items"):
+        out["parts"] = [clause_part_line(b, it) for it in b["items"]]
     if b["type"] == "table" and b.get("typed"):
         # a table board's table: typed parts shown in [[ ]], as the screens
         # stage wrote them, and listed in the order they are typed
@@ -850,7 +870,7 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
 
     def parts_of(bid: str) -> list[str]:
         b = blocks.get(bid)
-        if not b or b["type"] != "timeline":
+        if not b or b["type"] not in ("timeline", "clauses"):
             return []
         return [f"{bid}.{it.get('part')}" for it in (b.get("items") or [])]
 

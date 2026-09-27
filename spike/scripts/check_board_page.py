@@ -144,7 +144,7 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
                         base, _, n = str(blk).rpartition(".")
                         b = blocks.get(base) or {}
                         parts = {str(it.get("part")) for it in (b.get("items") or [])}
-                        if b.get("type") != "timeline" or n not in parts:
+                        if b.get("type") not in ("timeline", "clauses") or n not in parts:
                             problems.append(f"{u['id']}/{c['id']}: reveal of {blk}, which is "
                                             "not a part of a diagram")
                         elif base not in fixed and base not in revealed:

@@ -73,7 +73,20 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
   .tl-callout.on:not(.settled) .cobox { animation: open-box .3s ease-out both; transform-origin: var(--tri) 0; }
   .tl-callout.above.on:not(.settled) .cobox { transform-origin: var(--tri) 100%; }
   .tl-callout.on:not(.settled) .tri { animation: pop-tri .2s ease-out .25s both; }
+  /* the clause diagram (ADR 010): a piece is drawn in, the glue takes its
+     colour, and at the join the tab slides across the gap into the notch.
+     Only the tab, its neck and colours move: no word does (§8a). */
+  .cl-piece.on:not(.settled) { animation: write-in .45s ease-out both; }
+  .cl-bridge.on:not(.settled) { animation: drop-in .25s ease-out both; }
+  .cl-glue.on:not(.settled) { animation: glue-in .35s ease-out both; }
+  .cl-w.on:not(.settled)::after { animation: fade-in .3s ease-out both; }
+  .cl-row:has(.cl-join.on:not(.settled)) .cl-tab { animation: cl-tab .55s cubic-bezier(.4, 0, .2, 1) both; }
+  .cl-row:has(.cl-join.on:not(.settled)) .cl-neck { animation: cl-neck .55s cubic-bezier(.4, 0, .2, 1) both; }
 }
+@keyframes glue-in { from { background: transparent; box-shadow: 0 0 0 .35cqh transparent; } }
+@keyframes cl-tab { from { transform: none; } }
+@keyframes cl-neck { from { width: 0; } }
+@keyframes fade-in { from { opacity: 0; } }
 
 #contentsBtn { min-width: 44px; height: 100%; font: inherit; font-size: 2.4cqh; letter-spacing: .08em;
                text-transform: uppercase; color: #5F5E5A; background: none; border: none;

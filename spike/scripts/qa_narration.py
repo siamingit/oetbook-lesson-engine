@@ -153,7 +153,7 @@ are fair game.
 
 DIAGRAMS. A timeline is drawn part by part: a reveal of a "diagram part" adds one \
 arrow, tick, series of marks, pointer or example box to a diagram already on \
-screen. Judge whether what is said about the part matches what the part shows.
+screen. Judge whether what is said about the part matches what the part shows. A clause diagram is drawn the same way: a clause piece (dependent: cannot stand alone; independent: can), the glue (the joining word), an S or V label over a subject or verb, and the join of the pieces (with a comma when the dependent clause comes first).
 
 SEVERITY.
   critical - a wrong or overgeneralised rule, a wrong fact, or a false claim about \
@@ -241,7 +241,7 @@ def part_shown(b: dict, part_id: str) -> dict:
     if not it:
         return {"id": part_id, "type": "diagram part (unknown)"}
     out = {"id": part_id, "type": "diagram part: " + str(it.get("kind")),
-           "label": it.get("label")}
+           "label": it.get("label") if it.get("label") is not None else it.get("text")}
     if it.get("final"):
         out["final_mark"] = it["final"]
     return out
