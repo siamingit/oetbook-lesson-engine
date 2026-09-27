@@ -85,7 +85,13 @@ MAX_SERIES_MARKS = 16
 # a tab (it cannot stand alone), an independent clause a piece that can; the
 # joining word is the glue. Every item is a PART the narration reveals, like a
 # timeline's, addressed as <block id>.<n> in listed order.
-CLAUSE_KINDS = ["dependent", "independent", "glue", "subject", "verb", "join"]
+CLAUSE_KINDS = ["dependent", "independent", "glue", "subject", "verb", "join",
+                # ADR 012 (maintainer 2026-09-27): a relative clause inside a
+                # piece, the test of taking it out, and the subject link of a
+                # participle clause
+                "defining", "nondefining", "remove", "link", "dangling"]
+CLAUSE_EMBEDDED = ("defining", "nondefining")
+CLAUSE_LINKS = ("link", "dangling")
 MAX_CLAUSE_PARTS = 10
 MAX_CLAUSE_PIECES = 2
 DIAGRAM_TYPES = ("timeline", "clauses")      # blocks drawn part by part
@@ -259,6 +265,27 @@ of its parts ("subordinator + dependent clause"). List the parts in teaching \
 order: the pieces first, then the glue, the subject and verb labels, and the \
 join last. At most ten parts. Use a clause diagram wherever the boards show \
 how clauses join: dependent and independent, complex and compound.
+    Relative and participle clauses (ADR 012) use five more parts:
+      defining, nondefining   a relative clause INSIDE an independent piece, \
+drawn as a piece set into the sentence. Give the independent piece the WHOLE \
+sentence, with its commas, and name the clause's words, without the commas: \
+"independent|Ms Smith, who is a 19-year-old woman, recently tested positive \
+for chlamydia." then "nondefining|who is a 19-year-old woman". A non-defining \
+clause has its commas as its edges: it can be taken out. A defining clause has \
+no commas and is fixed in place: "defining|who recently tested positive for \
+chlamydia". At most one per diagram.
+      remove       the test of taking the clause out: the clause fades and \
+code writes the sentence without it on a new line, green when it still works \
+(non-defining), red when we lose who or what we mean (defining). "remove". \
+After the defining or nondefining part.
+      link, dangling   the subject of a participle clause. Give the two pieces \
+(the participle clause is a dependent piece: "dependent|complaining of lower \
+back pain"), the main clause's subject ("subject|Mr P"), then "link|complaining" \
+(the participle's words): an arc from the subject to the participle shows they \
+share one subject. "dangling|Being keen" draws the arc broken with a cross: the \
+main clause's subject is NOT the participle's subject, so the sentence is wrong \
+(use it only for a sentence shown as wrong). After the subject part; the join \
+may come before or after it.
 
 TENSE FAMILY COLOURS, the same in every lesson. Colour follows where the time \
 reference sits, not the tense name:
@@ -580,8 +607,9 @@ and `text` for category_card; `label`, `items` for timeline; `kind` and `text` \
 for callout; `family`, `header` and `rows` for table; `items` (and an \
 optional `label`) for clauses - with the unused fields null. A clauses item is \
 one string: "dependent|words", "independent|words", "glue|word", \
-"subject|phrase", "verb|phrase" (either with "|2" for the second piece), or \
-"join". A timeline item is one string: "arrow|label|family|from|to", \
+"subject|phrase", "verb|phrase" (either with "|2" for the second piece), \
+"join", "defining|words", "nondefining|words", "remove", "link|words" or \
+"dangling|words". A timeline item is one string: "arrow|label|family|from|to", \
 "marker|label|at", "series|label|family|from|to|count|final_label", \
 "pointer|label|family|at", "callout|text|family|at" (add "|above" to place it \
 above the line), "period|label|family|from|to", "point|label|family|at" or \
@@ -724,16 +752,17 @@ def clause_items(raw_items: list) -> list[dict]:
             items.append(dict(raw))
             continue
         parts = [x.strip() for x in str(raw).split("|")]
-        kind = parts[0].lower() if parts and parts[0].lower() in CLAUSE_KINDS else "bad"
+        k0 = parts[0].lower().replace("-", "") if parts else ""
+        kind = k0 if k0 in CLAUSE_KINDS else "bad"
         it = {"kind": kind, "text": parts[1] if len(parts) > 1 else "", "piece": None}
-        if kind in ("subject", "verb", "glue") and len(parts) > 2 and parts[2].isdigit():
+        if kind in PHRASE_PARTS and len(parts) > 2 and parts[2].isdigit():
             it["piece"] = int(parts[2])
         if kind == "bad":
             it["text"] = str(raw)
         items.append(it)
     pieces = [it for it in items if it["kind"] in ("dependent", "independent")]
     for it in items:
-        if it["kind"] not in ("subject", "verb", "glue") or not it["text"]:
+        if it["kind"] not in PHRASE_PARTS or not it["text"]:
             continue
         # the model often gives a phrase in another case than the piece has it
         # ("subordinator" in "Subordinator + dependent clause"): it takes the
@@ -751,7 +780,53 @@ def clause_items(raw_items: list) -> list[dict]:
                                None)
     for n, it in enumerate(items, 1):
         it["part"] = n                      # addressed as <block id>.<n>
+    # ADR 012: the removal test writes the sentence without the relative
+    # clause; a subject link starts at the main clause's subject part
+    emb = next((it for it in items if it["kind"] in CLAUSE_EMBEDDED and it.get("piece")), None)
+    for it in items:
+        if it["kind"] == "remove":
+            it["text"] = ""
+            if emb and emb["piece"] <= len(pieces):
+                it["text"] = without_clause(pieces[emb["piece"] - 1]["text"], emb["text"])
+            it["keeps"] = bool(emb) and emb["kind"] == "nondefining"
+        elif it["kind"] in CLAUSE_LINKS:
+            subj = [s for s in items[:it["part"] - 1] if s["kind"] == "subject" and s.get("piece")
+                    and s["piece"] <= len(pieces) and pieces[s["piece"] - 1]["kind"] == "independent"]
+            it["from"] = subj[0]["part"] if subj else None
     return items
+
+
+PHRASE_PARTS = ("subject", "verb", "glue") + CLAUSE_EMBEDDED + CLAUSE_LINKS
+
+
+def clause_edges(text: str, phrase: str) -> tuple[int, int, int, int]:
+    """Where a relative clause sits in its sentence (ADR 012): the start and
+    end of its words, widened to the commas around it when it has them
+    (start of the leading comma, end of the trailing one)."""
+    i = text.find(phrase)
+    if i < 0:
+        return -1, -1, -1, -1
+    j = i + len(phrase)
+    s = i
+    while s > 0 and text[s - 1] == " ":
+        s -= 1
+    s = s - 1 if s > 0 and text[s - 1] == "," else i
+    e = j + 1 if text[j:j + 1] == "," else j
+    return s, i, j, e
+
+
+def without_clause(text: str, phrase: str) -> str:
+    """The sentence with its relative clause and the clause's commas taken
+    out, spaces tidied: what is left when the clause is removed."""
+    s, i, j, e = clause_edges(text, phrase)
+    if i < 0:
+        return text
+    if s == i:                                  # no leading comma: drop the space before
+        while s > 0 and text[s - 1] == " ":
+            s -= 1
+    gap = " " if e < len(text) and text[e:e + 1] not in ".,;:!?" and s > 0 else ""
+    out = text[:s] + gap + text[e:].lstrip(" ")
+    return re.sub(r"\s+", " ", out).strip()
 
 
 def clause_has_labels(b: dict) -> bool:
@@ -1519,6 +1594,14 @@ CLAUSE_GAP = 6.0               # cqw between two pieces; the tab's travel
 CLAUSE_WIDTH = 160.0           # cqh: the content band's width (90% of 177.8)
 CLAUSE_CHAR = 1.7              # cqh: an average character at body size
 CLAUSE_KIND_LABEL = {"dependent": "Dependent clause", "independent": "Independent clause"}
+# ADR 012: the second label of a piece holding a relative clause, and the
+# removal test's line, green when the sentence still works, red when not
+CLAUSE_EMBED_LABEL = {"defining": "Defining relative clause inside",
+                      "nondefining": "Non-defining relative clause inside"}
+CLAUSE_REMOVE_LABEL = {True: "Without the clause: still a full sentence",
+                       False: "Without the clause: we lose who or what we mean"}
+CLAUSE_REMOVE_LINE = 3.2 * 1.35    # the removal line's text
+CLAUSE_REMOVE_BOX = 2.4 * 1.2 + 0.6 + 2 * 1.2 + 1.6   # its label, padding, the gap above it
 
 
 def clause_geometry(b: dict) -> dict:
@@ -1536,7 +1619,21 @@ def clause_geometry(b: dict) -> dict:
         lines.append(wrapped_lines(p.get("text") or "", max(8, int(w / CLAUSE_CHAR))))
     line = CLAUSE_LINE if clause_has_labels(b) else CLAUSE_LINE_PLAIN
     height = CLAUSE_KIND + max(lines or [1]) * line + 2 * CLAUSE_PAD
+    rm = clause_remove(b)
+    if rm:
+        height += CLAUSE_REMOVE_BOX + CLAUSE_REMOVE_LINE * wrapped_lines(
+            rm.get("text") or "", max(8, int((CLAUSE_WIDTH - 8.0) / CLAUSE_CHAR)))
     return {"grow": grow, "lines": lines, "height": height}
+
+
+def clause_remove(b: dict) -> dict | None:
+    return next((it for it in b.get("items") or [] if it.get("kind") == "remove"), None)
+
+
+def clause_embedded(b: dict, n: int) -> dict | None:
+    """The relative clause set into piece n, if any (ADR 012)."""
+    return next((it for it in b.get("items") or []
+                 if it.get("kind") in CLAUSE_EMBEDDED and it.get("piece") == n), None)
 
 
 def callout_box(at: float) -> tuple[float, float]:
@@ -1883,7 +1980,12 @@ def block_text_runs(b: dict) -> list[str]:
         for n, p in enumerate(clause_pieces(b), 1):
             if n == 2:
                 runs += bridge
-            runs += [CLAUSE_KIND_LABEL[p["kind"]], p["text"]]
+            emb = clause_embedded(b, n)
+            runs += [CLAUSE_KIND_LABEL[p["kind"]],
+                     CLAUSE_EMBED_LABEL[emb["kind"]] if emb else "", p["text"]]
+        rm = clause_remove(b)
+        if rm:
+            runs += [CLAUSE_REMOVE_LABEL[bool(rm.get("keeps"))], rm.get("text") or ""]
         return [r for r in runs if r]
     else:
         keys = ("text",)
@@ -1986,7 +2088,7 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                     elif it["text"].rstrip().endswith(","):
                         fail(b["id"], f"{k} piece {it['text']!r} ends with a comma; the join "
                                       "draws the comma")
-                elif k in ("glue", "subject", "verb"):
+                elif k in PHRASE_PARTS:
                     if not it.get("text"):
                         fail(b["id"], f"{k} part {it.get('part')} names no phrase")
                     elif it.get("piece") is None and k != "glue":
@@ -2001,10 +2103,43 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                         fail(b["id"], f"glue {it['text']!r} is in no piece; a bridge joins two "
                                       "independent pieces only")
                 elif k == "join":
-                    if it is not items[-1]:
-                        fail(b["id"], "the join is not the last part")
+                    if any(x.get("kind") not in ("remove",) + CLAUSE_LINKS
+                           for x in items[items.index(it) + 1:]):
+                        fail(b["id"], "the join is not the last part (only a removal test or a "
+                                      "subject link may follow it)")
                     if len(pieces) != 2:
                         fail(b["id"], "a join needs two pieces")
+                if k in CLAUSE_EMBEDDED and it.get("text") and it.get("piece"):
+                    host = pieces[it["piece"] - 1] if it["piece"] <= len(pieces) else {}
+                    if host.get("kind") != "independent":
+                        fail(b["id"], f"relative clause {it['text']!r} is not inside an "
+                                      "independent piece")
+                    else:
+                        s0, i0, j0, e0 = clause_edges(host["text"], it["text"])
+                        commas = s0 < i0
+                        if k == "nondefining" and not commas:
+                            fail(b["id"], f"non-defining clause {it['text']!r} has no comma before "
+                                          "it in its sentence")
+                        if k == "defining" and commas:
+                            fail(b["id"], f"defining clause {it['text']!r} has a comma before it; "
+                                          "a defining clause takes no comma")
+                if k == "remove":
+                    emb = [x for x in items if x.get("kind") in CLAUSE_EMBEDDED]
+                    if not emb or items.index(emb[0]) > items.index(it):
+                        fail(b["id"], "a removal test needs a defining or nondefining part "
+                                      "listed before it")
+                    if it is not items[-1]:
+                        fail(b["id"], "the removal test is not the last part")
+                if k in CLAUSE_LINKS:
+                    if not it.get("from"):
+                        fail(b["id"], f"{k} {it.get('text')!r} has no subject part of an "
+                                      "independent piece listed before it")
+                    host = pieces[it["piece"] - 1] if it.get("piece") and it["piece"] <= len(pieces) else {}
+                    if host and host["kind"] != "dependent":
+                        fail(b["id"], f"{k} {it.get('text')!r} is not in a dependent piece "
+                                      "(the participle clause)")
+            if sum(1 for x in items if x.get("kind") in CLAUSE_EMBEDDED) > 1:
+                fail(b["id"], "more than one relative clause set into a piece")
         if t == "timeline":
             items = b.get("items") or []
             if len(items) > MAX_TIMELINE_ITEMS:
@@ -2683,6 +2818,32 @@ FRAME_CSS = """
 .tab-r .cl-neck{left:100%} .tab-l .cl-neck{right:100%}
 .cl-row:has(.cl-join.on) .cl-neck{width:var(--cl-gap)}
 .cl-join{position:absolute;width:0;height:0}
+/* ADR 012: a relative clause set into its sentence, its commas as its edges
+   (non-defining: a dashed edge, it can be taken out) or pinned in place
+   (defining); the removal test's line. Colours, outlines and absolute pins
+   only: no word moves (§8a). The subject link's arc is the renderer's. */
+.cl-kind2{margin-left:1.2cqh;color:var(--dep);opacity:0}
+.cl-kind2::before{content:"\\00B7";margin-right:1.2cqh;color:#888780}
+.cl-piece:has(.cl-emb.on) .cl-kind2{opacity:1}
+.cl-emb{position:relative;border-radius:.6cqh;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.cl-emb.on{background:var(--dep-t);box-shadow:0 0 0 .25cqh var(--dep-t)}
+.cl-emb.nd.on{outline:max(2px,.3cqh) dashed var(--dep);outline-offset:.25cqh}
+.cl-emb.df.on{outline:max(2px,.3cqh) solid var(--dep);outline-offset:.25cqh}
+.cl-emb.on .cl-edge{color:var(--dep);background:rgba(203,11,171,.18);border-radius:.3cqh}
+.cl-emb.df::before,.cl-emb.df::after{content:"";position:absolute;top:50%;width:1.2cqh;height:1.2cqh;
+  margin-top:-.6cqh;border-radius:50%;background:var(--ind);opacity:0}
+.cl-emb.df::before{left:-1cqh} .cl-emb.df::after{right:-1cqh}
+.cl-emb.df.on::before,.cl-emb.df.on::after{opacity:1}
+.cl:has(.cl-rm.on) .cl-emb{opacity:.35}
+.cl-rm{position:relative;margin-top:1.6cqh;border-left:max(2px,.35cqh) solid;border-radius:1.2cqh;
+  padding:1.2cqh 2.5cqh 1.2cqh 6cqh}
+.cl-rm.ok{background:#EAF3DE;border-color:#639922;color:#173404}
+.cl-rm.lost{background:#FCEBEB;border-color:#E24B4A;color:#501313}
+.cl-rm::before{position:absolute;left:1.6cqh;top:50%;width:3.2cqh;height:3.2cqh;margin-top:-1.6cqh;
+  border-radius:50%;color:#fff;font-size:2cqh;line-height:3.2cqh;text-align:center;font-weight:500}
+.cl-rm.ok::before{content:"\\2713";background:#639922} .cl-rm.lost::before{content:"\\2715";background:#E24B4A}
+.cl-rm-lbl{font-size:2.4cqh;line-height:1.2;font-weight:500;margin-bottom:.6cqh}
+.cl-rm-text{font-size:3.2cqh;line-height:1.35}
 .term .t .ico{vertical-align:-.25em;margin-left:1.2cqw}
 /* tense tags: the phrase stays in the text flow; the chip hangs under it, as
    a CSS attribute so it is never a word to the reading pointer */
@@ -2882,24 +3043,45 @@ def clauses_html(b: dict, bid: str) -> str:
     g = clause_geometry(b)
     kinds = [p["kind"] for p in pieces]
     lbl = ('<div class="lbl cl-lbl">' + esc(b["label"]) + "</div>") if b.get("label") else ""
-    cls_of = {"glue": "cl-glue", "subject": "cl-w cl-s", "verb": "cl-w cl-v"}
+    cls_of = {"glue": "cl-glue", "subject": "cl-w cl-s", "verb": "cl-w cl-v",
+              "link": "cl-lk", "dangling": "cl-lk dg"}
+    used: set[int] = set()                          # each phrase part is wrapped once
 
     def words(n: int, text: str) -> str:
         spans = []                                  # (start, end, item), no overlaps
         for it in items:
-            if it.get("kind") not in cls_of or it.get("piece") != n or not it.get("text"):
+            if it.get("kind") not in cls_of or it.get("piece") != n or not it.get("text") \
+                    or id(it) in used:
                 continue
             i = text.find(it["text"])
             while i >= 0 and any(i < e and i + len(it["text"]) > s for s, e, _ in spans):
                 i = text.find(it["text"], i + 1)
             if i >= 0:
                 spans.append((i, i + len(it["text"]), it))
+                used.add(id(it))
         out, pos = "", 0
         for s, e, it in sorted(spans, key=lambda x: x[0]):
-            out += esc(text[pos:s]) + '<span class="' + cls_of[it["kind"]] + '"' + pid(it) + ">" \
-                   + esc(text[s:e]) + "</span>"
+            frm = (f' data-from="{esc(b["id"])}.{it["from"]}"'
+                   if it.get("kind") in CLAUSE_LINKS and it.get("from") else "")
+            out += esc(text[pos:s]) + '<span class="' + cls_of[it["kind"]] + '"' + pid(it) + frm \
+                + ">" + esc(text[s:e]) + "</span>"
             pos = e
         return out + esc(text[pos:])
+
+    def piece_text(n: int, text: str) -> str:
+        """A piece's words; a relative clause set into it (ADR 012) is its own
+        span, its commas drawn as its edges, all there from the start."""
+        emb = clause_embedded(b, n)
+        s0, i0, j0, e0 = clause_edges(text, emb["text"]) if emb else (-1, -1, -1, -1)
+        if i0 < 0:
+            return words(n, text)
+        edge = lambda c: '<span class="cl-edge">' + esc(c) + "</span>"
+        lead = text[s0:i0]
+        lead_html = (edge(lead[0]) + esc(lead[1:])) if lead.startswith(",") else esc(lead)
+        kind = "nd" if emb["kind"] == "nondefining" else "df"
+        return (words(n, text[:s0]) + '<span class="cl-emb ' + kind + '"' + pid(emb) + ">"
+                + lead_html + words(n, text[i0:j0]) + (edge(text[j0:e0]) if e0 > j0 else "")
+                + "</span>" + words(n, text[e0:]))
 
     bridges = [it for it in items if it.get("kind") == "glue" and it.get("piece") is None]
     join = next((it for it in items if it.get("kind") == "join"), None)
@@ -2919,15 +3101,23 @@ def clauses_html(b: dict, bid: str) -> str:
             cls += " notch-" + side
         row.append('<div class="pt ' + cls + '"' + pid(p) + ' style="flex:' + str(grow)
                    + ' 1 0"><div class="cl-kind">' + CLAUSE_KIND_LABEL[p["kind"]]
-                   + '</div><div class="cl-text">' + words(n, p.get("text") or "") + "</div>"
+                   + (('<span class="cl-kind2">' + CLAUSE_EMBED_LABEL[clause_embedded(b, n)["kind"]]
+                       + "</span>") if clause_embedded(b, n) else "")
+                   + '</div><div class="cl-text">' + piece_text(n, p.get("text") or "") + "</div>"
                    + ('<i class="cl-neck"></i><i class="cl-tab"></i>'
                       if p["kind"] == "dependent" and side else "")
                    + ('<i class="cl-notch"></i>' if p["kind"] == "independent" and complex_ else "")
                    + "</div>")
     joined = ('<i class="cl-join"' + pid(join) + "></i>") if join else ""
+    rm = clause_remove(b)
+    removal = ('<div class="pt cl-rm ' + ("ok" if rm.get("keeps") else "lost") + '"' + pid(rm)
+               + '><div class="cl-rm-lbl">' + CLAUSE_REMOVE_LABEL[bool(rm.get("keeps"))]
+               + '</div><div class="cl-rm-text">' + esc(rm.get("text") or "") + "</div></div>"
+               ) if rm else ""
     return ('<div class="blk cl' + (" sv" if clause_has_labels(b) else "") + '"' + bid + ">" + lbl
             + '<div class="cl-row' + (
-        " compound" if bridges else "") + '">' + "".join(row) + joined + "</div></div>")
+        " compound" if bridges else "") + '">' + "".join(row) + joined + "</div>" + removal
+            + "</div>")
 
 
 def is_exercise_board(fixed_ids: list[str], blocks: dict) -> bool:

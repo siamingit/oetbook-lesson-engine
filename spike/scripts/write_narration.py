@@ -329,7 +329,7 @@ once, and never reveal a part twice. Say what each part shows as you draw \
 it: the events and the reference points first, then the arrow or the marks \
 being explained, then its example box. A mark's `text` on a diagram quotes a \
 part's label or a callout's sentence exactly.
-A CLAUSE DIAGRAM (type clauses) is drawn the same way, part by part: its pieces (a dependent clause, a piece that cannot stand alone; an independent clause, a piece that can), then the glue (the joining word, which turns orange), the S and V labels over each subject and verb, and last the join, when the pieces fit together (with the comma, when the dependent clause comes first). Reveal each part as you speak about it, in the listed order. Read a piece's words aloud when you reveal it. A mark's `text` on a clause diagram quotes words of one piece exactly. Call the pieces "the two parts of the sentence" or "the pieces", never a puzzle piece's software name.
+A CLAUSE DIAGRAM (type clauses) is drawn the same way, part by part: its pieces (a dependent clause, a piece that cannot stand alone; an independent clause, a piece that can), then the glue (the joining word, which turns orange), the S and V labels over each subject and verb, and last the join, when the pieces fit together (with the comma, when the dependent clause comes first). Reveal each part as you speak about it, in the listed order. Read a piece's words aloud when you reveal it. A mark's `text` on a clause diagram quotes words of one piece exactly. Call the pieces "the two parts of the sentence" or "the pieces", never a puzzle piece's software name. A relative clause SET INTO a sentence (defining or non-defining) is a part of its own: reveal it as you name the clause; its commas are its edges. A removal test is revealed as you take the clause out: read the sentence that is left, and say whether it still works (non-defining) or we lose who we mean (defining). A subject link is revealed as you show that the participle and the main clause share one subject; a broken link (dangling) as you show that they do not, and why the sentence is wrong.
 
 TABLE BOARDS. Some boards are one whole table, the fixed layer, and are marked `table_board`. Each of their states is one ROW of the table (`row`; "whole table" for what comes before the first row). The player brings that row into focus, dims the others, highlights the cell you are reading or typing into, and shows the whole table again when the row ends. You cue none of that. Teach each row in its own state, cell by cell in the order the table is taught (a case note, then its formal expression, then the sentence; a wrong sentence, then its answer). Text shown in [[double brackets]] in a row is NOT on screen yet: it is TYPED INTO ITS CELL LIVE. Every typed part has exactly one `type` cue, in the state of its row: `block` the table's id, `text` the typed part exactly as listed under `to_type`. Put the marker just before you say it, and say it aloud, word for word, as it is typed ("So we write: {{c1}}The patient was asymptomatic."). The parts of one cell are typed in order. Never mark or point at a typed part before it is typed. The row's working blocks are SIDE NOTES drawn beside the row: reveal each where you explain it, and they are erased when the next note or row begins. A mark on a table lands in the cell of the current row that contains its phrase, so its `text` must occur only ONCE in that row: "the left knee operation", not "left knee operation" when every cell of the row has it; a phrase that also occurs in other rows is fine.
 
@@ -560,6 +560,21 @@ def clause_part_line(b: dict, it: dict) -> str:
         return f"{pid}: glue (joining word) '{it.get('text')}', {where}"
     if k in ("subject", "verb"):
         return f"{pid}: {k} label over '{it.get('text')}' in piece {it.get('piece')}"
+    if k in ("defining", "nondefining"):              # ADR 012
+        return (f"{pid}: {'non-defining' if k == 'nondefining' else 'defining'} relative clause "
+                f"'{it.get('text')}' set into piece {it.get('piece')}"
+                + (", its commas drawn as its edges: it can be taken out" if k == "nondefining"
+                   else ", no commas, fixed in place"))
+    if k == "remove":
+        return (f"{pid}: removal test: the clause fades and the sentence without it is written: "
+                f"'{it.get('text')}' ("
+                + ("green: still a full sentence" if it.get("keeps")
+                   else "red: we lose who or what we mean") + ")")
+    if k in ("link", "dangling"):
+        return (f"{pid}: subject link: an arc from the subject label (part {it.get('from')}) to "
+                f"'{it.get('text')}'" + (": they share one subject" if k == "link" else
+                                          ", broken with a cross: NOT the same subject, the "
+                                          "sentence is wrong (a dangling participle)"))
     return f"{pid}: join: the pieces fit together" + (
         ", and the comma appears after the dependent clause" if (
             [p['kind'] for p in b.get('items') or [] if p.get('kind') in ('dependent', 'independent')][:1]

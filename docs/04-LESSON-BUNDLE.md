@@ -4,7 +4,7 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.8. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.9. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
 2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
 table boards, on 2026-09-25 (docs/adr/007-table-boards.md); 1.3, the board style
@@ -13,7 +13,9 @@ table boards and per-board colours, the same day (ADR 008, extension); 1.5, tens
 colours by lesson, the same day (ADR 008, second extension); 1.6, choice tables,
 gaps and marks in table cells, the same day (docs/adr/009-choice-tables-and-gaps.md); 1.7,
 the clause diagram, on 2026-09-27 (docs/adr/010-clause-diagram.md); 1.8, clears
-and tight boards so every block fits, the same day (docs/adr/011-boards-fit.md).
+and tight boards so every block fits, the same day (docs/adr/011-boards-fit.md); 1.9,
+relative and participle clauses in the clause diagram, the same day
+(docs/adr/012-relative-and-participle-clauses.md).
 A change to it is a new format version (§3), recorded in a new ADR.
 
 | Version | Date | Change |
@@ -27,6 +29,7 @@ A change to it is a new format version (§3), recorded in a new ADR.
 | 1.6 | 2026-09-25 | choice tables: a table block's `verdicts`, a board's `verdicts` with times; a mark on a core table names its cell (`row`, `col`), an arrow's end its cell (`to_row`, `to_col`); a typed part inside printed words carries the class `gap`; rules 6, 10 and 18 (ADR 009) |
 | 1.7 | 2026-09-27 | the clause diagram: the block type `clauses`, its `items` (`{kind, text, piece, part}`); rule 20 (ADR 010) |
 | 1.8 | 2026-09-27 | every block fits the board: a state's `clears`, a board's `tight`; a table's `font` may be set by the fit; rules 21 to 23 (ADR 011) |
+| 1.9 | 2026-09-27 | relative and participle clauses: the `clauses` part kinds `defining`, `nondefining`, `remove` (with `keeps`) and `link`, `dangling` (with `from`); rule 24 (ADR 012) |
 
 ---
 
@@ -148,7 +151,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.8"` |
+| `format_version` | string | `"1.9"` |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -225,7 +228,7 @@ A block is one thing on a board. Each carries its data and its rendered `html`.
 | `band` | 1.3. On the first change card of a run, the process pill's text ("Nominalisation") |
 | `verdicts` | 1.6. A choice table (a core `table` whose rows offer versions of one sentence to choose between): each body cell's verdict, `[{row, col, verdict}]`, `verdict` `right`, `wrong` or `possible` (also acceptable, or correct only in some context). Null for any other table |
 | `beside` | 1.2. a working block drawn beside a table row: `{block, row}`, the table and the row (from 0), or row null for a note about the whole table; otherwise null |
-| `items` | `timeline`: its diagram parts in order (below). 1.7, `clauses`: its parts in order, `{kind, text, piece, part}`: `kind` `dependent` or `independent` (a piece, `text` its words), `glue` (the joining word; `piece` the piece it is in, from 1, or null for a bridge between two independent pieces), `subject` or `verb` (a label over `text` in `piece`), or `join`; the part id is `<block id>.<part>` |
+| `items` | `timeline`: its diagram parts in order (below). 1.7, `clauses`: its parts in order, `{kind, text, piece, part}`: `kind` `dependent` or `independent` (a piece, `text` its words), `glue` (the joining word; `piece` the piece it is in, from 1, or null for a bridge between two independent pieces), `subject` or `verb` (a label over `text` in `piece`), or `join`; 1.9: `defining` or `nondefining` (a relative clause set into the independent `piece`, `text` its words without its commas), `remove` (the removal test: `text` the sentence without the clause, `keeps` true when it still works), `link` or `dangling` (`text` a participle in the dependent `piece`, `from` the part number of the main clause's `subject`); the part id is `<block id>.<part>` |
 | `tags` | tense tags: `[{text, family, label}]`; `label` is what the chip says ("up to now") |
 | `exercise_item` | the item number an exercise sentence carries in its badge, or null |
 | `provenance` | `source-derived`, `adapted`, `corrected`, `authored` or `maintainer` (AGENTS.md §9). For review; the student is not shown it |
@@ -427,6 +430,18 @@ These are the only rules. Every time and target they use is in the bundle.
     blocks is halved; with 2 the blocks' own vertical padding is halved too; on
     the whole board, from its start. With rules 19 to 22, every block shown lies
     inside the board (docs/02-DESIGN-SYSTEM.md §8b).
+24. **Relative and participle clauses** (1.9): a `defining` or `nondefining`
+    part is a phrase already shown in its piece (its commas included when it
+    has them) that takes its look from its reveal: the clause's tint, a dashed
+    edge and coloured commas (non-defining) or a solid edge pinned at both ends
+    (defining). A `remove` part is a line under the pieces, its room reserved
+    from the start, shown from its reveal: `text` on the green of "correct"
+    with a tick when `keeps`, on the red of "wrong" with a cross when not; from
+    then the set-in clause is faded. A `link` part draws, from its reveal, an
+    arc over the words from the phrase of part `from` to its own phrase, with
+    a head; a `dangling` part draws the same arc broken, with a red cross where
+    it breaks. The arcs are drawn over the board like marks (rule 19), measured
+    from where the words are.
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and
@@ -441,7 +456,7 @@ no cues and no provenance.
 
 | Field | Meaning |
 |---|---|
-| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.8"` |
+| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.9"` |
 | `lesson` | the same object as `bundle.json`'s `lesson` |
 | `sections[]` | `{id, title, category, start, end, narration_text, board_text, boards}` |
 | `sections[].narration_text` | everything said in the section, one paragraph per board |

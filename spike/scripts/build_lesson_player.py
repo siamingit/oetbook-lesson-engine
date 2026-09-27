@@ -54,7 +54,7 @@ from write_screens import (FRAME_CSS, TAG_LABELS, block_html,     # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-FORMAT_VERSION = "1.8"             # docs/04-LESSON-BUNDLE.md; 1.1 refs, 1.2 table boards, 1.3 board style, 1.4 table cells, 1.5 tense colours by lesson, 1.6 choice tables and marks in cells, 1.7 the clause diagram, 1.8 clears and table fit
+FORMAT_VERSION = "1.9"             # docs/04-LESSON-BUNDLE.md; 1.1 refs, 1.2 table boards, 1.3 board style, 1.4 table cells, 1.5 tense colours by lesson, 1.6 choice tables and marks in cells, 1.7 the clause diagram, 1.8 clears and table fit, 1.9 relative and participle clauses in the clause diagram
 READING_HOLD_S = 2.5               # the pointer stays on the last word read this long
 # Everything block_html draws from; pipeline notes (anchor, from_beats, note,
 # relabelled, ruling) stay in screens.json.

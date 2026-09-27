@@ -269,7 +269,7 @@ headers, never on error or answer rows, and **only in a tense lesson**
 | Timeline | A diagram on a time axis: tense arrows, reference markers, event series, pointer arrows, callout boxes (and plain points and periods), each in a family colour. Structured data only; code draws it, part by part as the narration reveals them (§7a). | working, or fixed on a diagram slide |
 | Callout | Two kinds only. Warning: red circle with "!" on an amber tint. Key rule: blue circle with "i" on a blue tint. | working |
 | Table | A slide's table, whole, taught row by row (§7, Tables); or a small tense table with its header row coloured by family. | fixed when it is the slide's content; a small table written while teaching is working |
-| Clause diagram | A sentence as puzzle pieces: a dependent and an independent clause, the joining word as glue, S and V labels, the join (§7d; 2026-09-27). Structured data only; code draws it, part by part. | fixed when it is the slide's content; otherwise working |
+| Clause diagram | A sentence as puzzle pieces: a dependent and an independent clause, the joining word as glue, S and V labels, the join (§7d; 2026-09-27); a relative clause set into its sentence, its removal test, the subject link of a participle clause (2026-09-27, ADR 012). Structured data only; code draws it, part by part. | fixed when it is the slide's content; otherwise working |
 
 An answer row never stands alone: it is accompanied by a plain or term
 block saying why it is right.
@@ -638,6 +638,21 @@ narration reveals it (§7a); the screens model never draws.
   (role slide); one drawn while teaching is an example.
 - The stand-alone test is drawn with the ordinary rows: the independent
   clause alone as a correct sentence, the dependent clause alone as a wrong one.
+
+**Relative and participle clauses** (maintainer, 2026-09-27;
+docs/adr/012-relative-and-participle-clauses.md). Five more parts, for every lesson:
+
+| Part | Look |
+|---|---|
+| Non-defining clause | Set into its sentence inside the slate piece, on the magenta tint with a **dashed** magenta edge; its commas, coloured, are its edges: it can be taken out. The piece's label adds "Non-defining relative clause inside" |
+| Defining clause | Set in the same way with no commas, a **solid** edge and a slate pin at each end: it is fixed in place |
+| Removal test | Last: the clause fades and the sentence without it is written on a line under the pieces: green with a tick, "Without the clause: still a full sentence" (non-defining); red with a cross, "Without the clause: we lose who or what we mean" (defining) |
+| Subject link | An arc over the words, from the main clause's S to the participle ("Mr P" to "complaining"): one subject shared by both clauses |
+| Dangling participle | The same arc broken, with a red cross where it breaks: the main clause's subject is not the participle's; drawn only on a sentence shown as wrong |
+
+Nothing moves a word (§8a): the set-in clause is styled in place, the removal
+line's room is reserved from the start, and the arcs are drawn over the board
+like marks, measured from where the words are.
 
 ## 8. Marks
 

@@ -94,6 +94,11 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
   .cl-w.on:not(.settled)::after { animation: fade-in .3s ease-out both; }
   .cl-row:has(.cl-join.on:not(.settled)) .cl-tab { animation: cl-tab .55s cubic-bezier(.4, 0, .2, 1) both; }
   .cl-row:has(.cl-join.on:not(.settled)) .cl-neck { animation: cl-neck .55s cubic-bezier(.4, 0, .2, 1) both; }
+  /* ADR 012: the set-in clause takes its tint and edge, and the removal line
+     is written in. A subject link's arc is redrawn on every render from where
+     the words are, so it appears whole at its reveal. */
+  .cl-emb.on:not(.settled) { animation: glue-in .4s ease-out both; }
+  .cl-rm.on:not(.settled) { animation: write-in .45s ease-out both; }
 }
 @keyframes glue-in { from { background: transparent; box-shadow: 0 0 0 .35cqh transparent; } }
 @keyframes cl-tab { from { transform: none; } }
@@ -134,6 +139,9 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
 #overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 6; }
 #overlay path { fill: none; stroke: #185FA5; stroke-linecap: round; }
 #overlay .head { fill: #185FA5; }
+#overlay path.cl-link { stroke: #475569; } #overlay .head.cl-link { fill: #475569; stroke: none; }
+#overlay path.cl-link.dg { stroke: #888780; stroke-dasharray: 0; }
+#overlay .cl-x { fill: #E24B4A; stroke: none; } #overlay .cl-x-mark { stroke: #fff; }
 #pointer { position: absolute; width: 2.6cqh; height: 2.6cqh; border-radius: 50%;
            border: max(2px, .35cqh) solid #185FA5; background: rgba(24, 95, 165, .12);
            transform: translate(-50%, -50%); opacity: 0; pointer-events: none;
@@ -772,6 +780,66 @@ function positionArrows() {
       + " L" + (x2 - ux * size - uy * size * 0.55) + " " + (y2 - uy * size + ux * size * 0.55)
       + " L" + (x2 - ux * size + uy * size * 0.55) + " " + (y2 - uy * size - ux * size * 0.55) + " Z");
     overlay.appendChild(head);
+  }
+  // A clause diagram's subject link (bundle 1.9, rule 24; ADR 012): an arc
+  // from the main clause's subject to the participle once the link part is on;
+  // a dangling link is drawn broken, with a red cross where it breaks.
+  for (const lk of document.querySelectorAll("#cam .cl-lk.on[data-from]")) {
+    const blk = lk.closest(".cl");
+    const from = blk && blk.querySelector('[data-part="' + lk.dataset.from + '"]');
+    if (!from || !lk.getClientRects().length || !from.getClientRects().length) continue;
+    const r1 = from.getClientRects()[0], r2 = lk.getClientRects()[0];
+    // Under the words when both phrases sit on the last line of their piece
+    // (the usual case), clear of the S label and the kind labels above; over
+    // them, above the S label, when a line of text lies below either phrase.
+    const lastLine = (el, r) => {
+      const tx = el.closest(".cl-text");
+      return tx && tx.getBoundingClientRect().bottom - r.bottom < r.height * 0.8;
+    };
+    const below = lastLine(from, r1) && lastLine(lk, r2);
+    const chip = from.classList.contains("cl-s") ? f.height * 0.03 : 0;
+    const x1 = r1.left + r1.width / 2 - f.left, x2 = r2.left + r2.width / 2 - f.left;
+    const y1 = below ? r1.bottom - f.top + stroke : r1.top - f.top - stroke - chip;
+    const y2 = below ? r2.bottom - f.top + stroke : r2.top - f.top - stroke;
+    const lift = below ? f.height * 0.03 : Math.max(f.height * 0.035, Math.abs(x2 - x1) * 0.08);
+    const cx = (x1 + x2) / 2, cy = below ? Math.max(y1, y2) + lift : Math.min(y1, y2) - lift;
+    const q = t => [(1 - t) * (1 - t) * x1 + 2 * (1 - t) * t * cx + t * t * x2,
+                    (1 - t) * (1 - t) * y1 + 2 * (1 - t) * t * cy + t * t * y2];
+    const dangling = lk.classList.contains("dg");
+    const seg = (a, b) => {
+      let d = "";
+      for (let i = 0; i <= 24; i++) { const [x, y] = q(a + (b - a) * i / 24); d += (i ? " L" : "M") + x + " " + y; }
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", d);
+      path.setAttribute("stroke-width", stroke);
+      path.setAttribute("class", "cl-link" + (dangling ? " dg" : ""));
+      overlay.appendChild(path);
+    };
+    if (!dangling) {
+      seg(0, 1);
+      const [hx, hy] = q(0.92), ux0 = x2 - hx, uy0 = y2 - hy, len = Math.hypot(ux0, uy0) || 1;
+      const ux = ux0 / len, uy = uy0 / len, size = stroke * 4;
+      const head = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      head.setAttribute("class", "head cl-link");
+      head.setAttribute("d", "M" + x2 + " " + y2
+        + " L" + (x2 - ux * size - uy * size * 0.55) + " " + (y2 - uy * size + ux * size * 0.55)
+        + " L" + (x2 - ux * size + uy * size * 0.55) + " " + (y2 - uy * size - ux * size * 0.55) + " Z");
+      overlay.appendChild(head);
+    } else {
+      seg(0, 0.4); seg(0.6, 1);
+      const [mx, my] = q(0.5), rr = f.height * 0.016;
+      const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      c.setAttribute("cx", mx); c.setAttribute("cy", my); c.setAttribute("r", rr);
+      c.setAttribute("class", "cl-x");
+      overlay.appendChild(c);
+      const xs = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      const k = rr * 0.45;
+      xs.setAttribute("d", "M" + (mx - k) + " " + (my - k) + " L" + (mx + k) + " " + (my + k)
+        + " M" + (mx + k) + " " + (my - k) + " L" + (mx - k) + " " + (my + k));
+      xs.setAttribute("stroke-width", stroke);
+      xs.setAttribute("class", "cl-x-mark");
+      overlay.appendChild(xs);
+    }
   }
 }
 
