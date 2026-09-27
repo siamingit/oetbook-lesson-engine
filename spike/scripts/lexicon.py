@@ -57,6 +57,24 @@ def terms_in(text: str, lex: dict | None = None) -> list[str]:
             if re.search(r"\b" + re.escape(t.lower()) + r"\b", low)]
 
 
+# A person's name in the deck or the lesson (maintainer, 2026-09-27: the
+# patient 'Yuri Nation' sounded like 'urination' and was renamed): a title with
+# a surname and an optional first name, a full name in brackets ("Man aged 62
+# (Yuri Nation)"), or after "name is" / "Name:". Every name is listed at the
+# source gate and heard by the terms check.
+PERSON_NAME = re.compile(
+    r"\b(?:Mr|Mrs|Ms|Miss|Dr|Master)\.? (?:[A-Z][a-z'-]+ )?[A-Z][a-z'-]+"
+    r"|(?<=\()[A-Z][a-z'-]+ [A-Z][a-z'-]+(?=\))"
+    r"|(?<=[Nn]ame is )[A-Z][a-z'-]+(?: [A-Z][a-z'-]+)?"
+    r"|(?<=[Nn]ame: )[A-Z][a-z'-]+(?: [A-Z][a-z'-]+)?")
+
+
+def person_names(text: str) -> list[str]:
+    """The people's names in a text, as written (a title's full stop dropped)."""
+    return sorted({re.sub(r"^(Mr|Mrs|Ms|Miss|Dr|Master)\.", r"\1", m.group(0))
+                   for m in PERSON_NAME.finditer(text or "")})
+
+
 def has_term(word: str, lex: dict) -> bool:
     return word.lower() in {t.lower() for t in lex["entries"]}
 

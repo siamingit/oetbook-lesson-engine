@@ -262,7 +262,7 @@ headers, never on error or answer rows, and **only in a tense lesson**
 | Error row | A wrong sentence. Red tint, ✕, left bar. | usually fixed |
 | Answer row | A correct sentence. Green tint, ✓, left bar. | working |
 | Term box | A new word or phrase with its explanation. Blue tint, small label. | working |
-| Gloss | A hard general English word, taught as a moment of about fifteen seconds: the word, its meaning, a line drawing when the word is concrete, one example sentence (§7b; ADR 013). The block type `gloss`; before 2026-09-27 a term box labelled WORD, drawn on one line. | working |
+| Gloss | A hard general English word, taught as a moment of about fifteen seconds: the word, its meaning, a generated illustration when the word is concrete, one example sentence (§7b; ADR 013, ADR 015). The block type `gloss`; before 2026-09-27 a term box labelled WORD, drawn on one line. | working |
 | Comparison | Two items side by side. Equal columns, hairline between. | working |
 | Plain block | A statement or rule with no correctness value. | either |
 | Category card | Coloured header strip with a label, and a body. For tense families and for comparing categories. Header in the family colour, or neutral grey for a category that is not a tense. | working |

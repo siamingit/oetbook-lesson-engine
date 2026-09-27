@@ -53,9 +53,10 @@ import paths                                                      # noqa: E402
 PY = sys.executable
 GATES = {
     "source": "the preflight pack (analysis/preflight/preflight_pack.zip): deck pages, "
-              "text or image, templates, section titles, video frames and specs; plus the "
-              "lesson description (build_sections.py --description) and the diagram "
-              "slides (--diagram-pages)",
+              "text or image, templates, section titles, video frames and specs, people's "
+              "names (a name that sounds like other words is renamed); plus the lesson "
+              "description (build_sections.py --description), the diagram slides "
+              "(--diagram-pages) and whether the lesson is about tenses (--tense-lesson yes|no)",
     "narration": "generated/lesson-preview/silent/player.html and "
                  "analysis/narration/lesson-review/index.html: the narration with QA pass 1; "
                  "fixes go through write_narration.py --states --brief, then one QA pass on "
@@ -124,9 +125,18 @@ def log_decision(L: Path, what: str, why: str, rule: str, reverse: str) -> None:
                 f"- Rule: {rule}\n- To reverse: {reverse}\n")
 
 
+# What each gate opens, as full file:/// URLs (AGENTS.md §11a)
+GATE_FILES = {"source": ["analysis/preflight/summary.md"],
+              "narration": ["generated/lesson-preview/silent/player.html",
+                            "analysis/narration/lesson-review/index.html"],
+              "final": ["generated/lesson-player/player.html"]}
+
+
 def require_gate(L: Path, name: str) -> None:
     if name not in gates(L):
-        raise Stop(f"GATE '{name}': review {GATES[name]}.\nThen: .venv/Scripts/python "
+        urls = "".join(f"\n  {(L / f).resolve().as_uri()}" for f in GATE_FILES.get(name, [])
+                       if (L / f).exists())
+        raise Stop(f"GATE '{name}': review {GATES[name]}.{urls}\nThen: .venv/Scripts/python "
                    f"spike/scripts/build_lesson.py {L} --approve {name} --by NAME")
 
 
@@ -207,10 +217,18 @@ def stage_preflight(L, a):
                    "introduction yet: name the title slide with build_sections.py --title-page "
                    "PAGE (docs/00-PRODUCT.md §2a)")
     if "source" not in gates(L):
-        raise Stop(f"GATE 'source': review the preflight pack {pack} (summary.md inside), "
-                   "set the lesson description (build_sections.py --description) and the "
-                   "diagram slides (--diagram-pages).\nThen: .venv/Scripts/python "
+        raise Stop(f"GATE 'source': review the preflight pack {pack.resolve().as_uri()} "
+                   "(summary.md inside), set the lesson description (build_sections.py "
+                   "--description), the diagram slides (--diagram-pages) and whether the lesson "
+                   "is about tenses (--tense-lesson yes|no), and rename any person whose name "
+                   "sounds like other words (deck_defects.json).\nThen: .venv/Scripts/python "
                    f"spike/scripts/build_lesson.py {L} --approve source --by NAME")
+    # Only a tense lesson draws tense colours (docs/02-DESIGN-SYSTEM.md §5a, §7c):
+    # the maintainer says which, never a default
+    if json.loads(sp.read_text(encoding="utf-8"))["lesson"].get("tense_lesson") is None:
+        raise Stop("GATE 'source': whether this lesson is about tenses is not set. Set it with "
+                   f"build_sections.py {L} --tense-lesson yes|no --by NAME (only a tense lesson "
+                   "draws tense colours)")
 
 
 def stage_audio(L, a):
@@ -349,6 +367,13 @@ def stage_understanding(L, a):
                    f"it with build_sections.py {L} --intro-range 0 SECONDS")
     pages = sorted({p for s in secs for p in s["pages"]})
     todo = [p for p in pages if not (paths.understanding_dir(L, p) / "understanding.json").exists()]
+    # ADR 007: the deck's tables are transcribed, cell by cell, before the
+    # understanding reads the pages (runbook step 1b); a deck with none has
+    # the file with an empty `tables` list
+    if todo and not (L / "analysis" / "slide_tables.json").exists():
+        raise Stop("step image tables (ADR 007; docs/03-RUNBOOK.md 1b): transcribe every table "
+                   "of the deck, as printed, into analysis/slide_tables.json (checked against a "
+                   "2x render); with no table, write it with an empty `tables` list")
     batch(L, "understanding", len(todo), EST["understanding"], a)
 
 
@@ -365,6 +390,17 @@ def stage_screens(L, a):
         raise Stop(str(e) + "\nSections not passing: " + ", ".join(s["title"] for s in todo)
                    + ". Fix by override, or re-write one with write_screens.py --pages ... "
                      "--call (a direct call); re-running the runner runs the rest again.")
+    # ADR 014: the title board shows what the introduction says (a course's
+    # first lesson: why grammar matters; any other: a link to one earlier
+    # lesson and a problem from a letter), before the title board is built
+    if not info.get("intro_board"):
+        raise Stop("step intro board (ADR 014; docs/02-DESIGN-SYSTEM.md §7c): write the title "
+                   "board's own blocks as a JSON list (plain, comparison, term_box, answer_row "
+                   "or error_row, each with provenance and a note) and set them with "
+                   f"build_sections.py {L} --intro-board FILE --by NAME. A course's first lesson: "
+                   "why grammar matters in the OET letter. Any other: a note linking to one "
+                   "earlier lesson, and a problem from a letter. Never a course map, a lesson "
+                   "count or a list of lessons")
     run(L, [str(HERE / "build_lesson_boards.py"), str(L)], "title and contents boards")
     run(L, [str(HERE / "build_lesson_preview.py"), str(L)], "screens preview")
     agent_approves(L, "screens", "every section's screens audit passes (no fail findings); "
@@ -445,6 +481,17 @@ def stage_terms(L, a):
         # judged by the maintainer's ear there.
         new = not fp.exists() or json.loads(fp.read_text(encoding="utf-8")) != failures
         fp.write_text(json.dumps(failures, ensure_ascii=False, indent=1), encoding="utf-8")
+        names = sorted({t for s in secs for t in json.loads(
+            (paths.boards_dir_for(L, s["pages"]) / "terms_check.json").read_text(encoding="utf-8"))
+            .get("name_failures") or []
+            if (paths.boards_dir_for(L, s["pages"]) / "terms_check.json").exists()})
+        if names and new:
+            log_decision(L, "people's names not heard as written: " + ", ".join(names),
+                         "a name the ear hears as other words may sound like them to a learner "
+                         "too ('Yuri Nation', heard 'urination'); listed for the maintainer at "
+                         "the final gate, to rename or keep",
+                         "docs/00-PRODUCT.md §2 (people's names); maintainer 2026-09-27",
+                         "rename through deck_defects.json (screen and narration), or keep")
         if new:
             log_decision(L, "terms not heard as written go to the final gate",
                          "the ear did not hear these as written: "

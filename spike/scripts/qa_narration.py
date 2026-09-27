@@ -144,6 +144,10 @@ common in clinical settings (deteriorate, commence, schedule, improve) are NOT \
 medical words: they are general words, glossed when hard for an A2-B1 learner, \
 and a gloss on one is never a finding. Never flag a medical word for lacking a \
 gloss, and never flag a grammar term here: check 7 covers grammar terms.
+10. People's names. Flag, as `major`, a patient's or person's name that sounds like \
+another word or phrase when spoken ('Yuri Nation' sounds like 'urination'), or that \
+could embarrass or distract a learner, and propose a plain, plausible replacement \
+name. It is renamed on screen and in speech.
 
 THE EXERCISE SENTENCES ARE DELIBERATELY WRONG. Where a page teaches error \
 correction, the sentences in its fixed layers contain faults on purpose, and the \
@@ -155,7 +159,7 @@ are fair game.
 
 DIAGRAMS. A timeline is drawn part by part: a reveal of a "diagram part" adds one \
 arrow, tick, series of marks, pointer or example box to a diagram already on \
-screen. Judge whether what is said about the part matches what the part shows. A clause diagram is drawn the same way: a clause piece (dependent: cannot stand alone; independent: can), the glue (the joining word), an S or V label over a subject or verb, and the join of the pieces (with a comma when the dependent clause comes first); a relative clause set into a sentence (its commas as its edges when non-defining), the removal test (the sentence without the clause, green when it still works, red when we lose who we mean), and a subject link from the main clause's subject to a participle (broken with a cross when the subjects differ: a dangling participle). A gloss (a hard general word) is drawn the same way: the word, then its meaning, a simple line drawing when the word is concrete, and an example sentence.
+screen. Judge whether what is said about the part matches what the part shows. A clause diagram is drawn the same way: a clause piece (dependent: cannot stand alone; independent: can), the glue (the joining word), an S or V label over a subject or verb, and the join of the pieces (with a comma when the dependent clause comes first); a relative clause set into a sentence (its commas as its edges when non-defining), the removal test (the sentence without the clause, green when it still works, red when we lose who we mean), and a subject link from the main clause's subject to a participle (broken with a cross when the subjects differ: a dangling participle). A gloss (a hard general word) is drawn the same way: the word, then its meaning, an illustration when the word is concrete (it appears while the word is explained; the teacher never points at it), and an example sentence.
 
 SEVERITY.
   critical - a wrong or overgeneralised rule, a wrong fact, or a false claim about \

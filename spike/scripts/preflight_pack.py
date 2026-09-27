@@ -124,11 +124,15 @@ def build(L: Path) -> Path:
     sections = json.loads(sp.read_text(encoding="utf-8"))
 
     doc = pdfium.PdfDocument(str(src / "slides.pdf"))
-    pages, thumbs, sigs = [], {}, {}
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import lexicon
+    pages, thumbs, sigs, names = [], {}, {}, {}
     for i in range(len(doc)):
         page = doc[i]
         tp = page.get_textpage()
         chars = tp.count_chars()
+        for nm in lexicon.person_names(tp.get_text_range() if chars else ""):
+            names.setdefault(nm, []).append(i + 1)
         img = page.render(scale=THUMB_W / page.get_width()).to_pil()
         thumbs[i + 1] = img
         sigs[i + 1] = border_signature(img)
@@ -168,7 +172,8 @@ def build(L: Path) -> Path:
              "image_pages": [p["page"] for p in pages if p["text_chars"] < 20],
              "template_groups": groups, "sections": heads,
              "needs_title": [h["pages"] for h in heads if h["needs_title"]],
-             "video": video, "frames_at_s": [round(t, 1) for t, _ in frames]}
+             "video": video, "frames_at_s": [round(t, 1) for t, _ in frames],
+             "names": names}
     (L / "analysis" / "preflight.json").write_text(json.dumps(facts, ensure_ascii=False, indent=1),
                                                    encoding="utf-8")
 
@@ -197,9 +202,15 @@ def build(L: Path) -> Path:
     for h in heads:
         flag = "**NEEDS A TITLE**: " + (h["why"] or "") if h["needs_title"] else (h["status"] or "")
         md.append(f"| {', '.join(map(str, h['pages']))} | {h['title']} | {h['heading'] or ''} | {flag} |")
+    md += ["", "## People's names", "",
+           "Say each aloud: a name that sounds like other words ('Yuri Nation', "
+           "'urination') is renamed, on screen and in speech, through the deck-defect "
+           "register (docs/00-PRODUCT.md §2). Names on image pages are not read here.", ""]
+    md += [f"- {nm} (page {', '.join(map(str, pg))})" for nm, pg in sorted(names.items())] or ["- none found"]
     md += ["", "To review: every title, the lesson's one-line description "
-               "(`build_sections.py --description`), and which slides teach with a diagram "
-               "(`--diagram-pages`). Set a missing title with `build_sections.py --set PAGE \"TITLE\"`.",
+               "(`build_sections.py --description`), which slides teach with a diagram "
+               "(`--diagram-pages`), whether the lesson is about tenses (`--tense-lesson yes|no`) "
+               "and the names above. Set a missing title with `build_sections.py --set PAGE \"TITLE\"`.",
            "Then approve: `build_lesson.py <lesson> --approve source --by NAME`."]
     (out / "summary.md").write_text("\n".join(md) + "\n", encoding="utf-8")
 

@@ -1159,6 +1159,8 @@ NON_LATIN = re.compile(r"[؀-ۿݐ-ݿﭐ-﷿ﹰ-﻿]")
 
 def _plain(s: str) -> str:
     s = s.lower().replace("’", "'").replace("‘", "'")
+    # an initialism written for the voice ("c-o-p-d", ADR 016) is the word "copd"
+    s = re.sub(r"\b[a-z](?:-[a-z]\b)+", lambda m: m.group(0).replace("-", ""), s)
     s = re.sub(r"[^a-z0-9' ]+", " ", s)
     return re.sub(r"\s+", " ", s).replace(" '", " ").replace("' ", " ").strip(" '")
 

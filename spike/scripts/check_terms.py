@@ -41,6 +41,7 @@ from write_screens import block_text_runs                               # noqa: 
 CLINICAL_ENDING = re.compile(r"(itis|osis|ectomy|aemia|emia|pathy|ology|plasty|scopy|algia|oma)$")
 MIN_LETTERS = 9
 CARRIER = "The word is {term}."
+NAME_CARRIER = "The patient's name is {term}."   # a person's name (lexicon.person_names)
 STOP = set("""sentence sentences correction corrected correctly condition conditions continuous
 continues continue something different remember important explanation instruction
 instructions understand questions everything grammar underline underlined highlight
@@ -77,6 +78,10 @@ def candidates(lesson: Path, page: int, lex: dict) -> list[str]:
         # 2026-09-25: initialisms get the terms check like other terms). From
         # the narration only: the screens' upper-case labels ("NEW WORD") are
         # never spoken.
+        # People's names, on screen and in speech: a name that sounds like
+        # other words ('Yuri Nation', heard 'urination') is renamed
+        # (docs/00-PRODUCT.md §2, maintainer 2026-09-27)
+        words.update(lexicon.person_names(text))
         if i < n_spoken:
             words.update(re.findall(r"\b[A-Z]{2,5}\b", text))
             words.update(re.findall(r"\b[A-Z](?:-[A-Z]){1,5}\b", text))   # "C-O-P-D" (2026-09-27)
@@ -129,7 +134,7 @@ def main() -> None:
         wav = probe_dir / (slug + f"@{args.speed:g}.wav")
         heard_path = wav.with_suffix(".json")
         if not heard_path.exists():
-            text = CARRIER.format(term=term)
+            text = (NAME_CARRIER if lexicon.PERSON_NAME.fullmatch(term) else CARRIER).format(term=term)
             res = None
             for wait in (5, 10, 20, 40, 60, 90, 120, None):
                 try:
@@ -147,13 +152,15 @@ def main() -> None:
         heard = json.loads(heard_path.read_text(encoding="utf-8"))
         text = heard.get("text", "")
         ok = norm(term) in "".join(norm(w) for w in text.split())
-        results.append({"term": term, "heard": text, "ok": ok})
+        results.append({"term": term, "heard": text, "ok": ok,
+                        **({"name": True} if lexicon.PERSON_NAME.fullmatch(term) else {})})
         if not ok:
             failures.append(term)
         print(f"  {'ok  ' if ok else 'FAIL'} {term:<24} heard: {text!r}")
 
     report = {"checked_at": time.time(), "lexicon_version": lex["version"],
-              "terms": results, "failures": failures, "characters_synthesised": chars}
+              "terms": results, "failures": failures, "characters_synthesised": chars,
+              "name_failures": [r["term"] for r in results if r.get("name") and not r["ok"]]}
     (out_dir / "terms_check.json").write_text(json.dumps(report, ensure_ascii=False, indent=1),
                                               encoding="utf-8")
     print(f"characters synthesised: {chars}")

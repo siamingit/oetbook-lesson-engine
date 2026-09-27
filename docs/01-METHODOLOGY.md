@@ -1063,6 +1063,14 @@ fresh terms check that has no failures. Failures are found before the build,
 never after. The heuristic over-collects ordinary long words; each costs a
 few characters.
 
+People's names are heard too (2026-09-27), in their own carrier sentence ("The
+patient's name is ..."): `lexicon.person_names` finds a title with a surname,
+a full name in brackets, and a name after "name is" or "Name:". A name the ear
+hears as other words ("Yuri Nation" as "urination") is recorded in
+`terms_check.json` `name_failures` and listed at the final gate to rename or
+keep (docs/00-PRODUCT.md §2); the same finder lists the deck's names in the
+preflight pack for the source gate, where a rename is cheapest.
+
 ## 21. Marks are measured, not eyeballed
 
 Found on page 13, board 3: a circle around "before he quit" wrapped onto two

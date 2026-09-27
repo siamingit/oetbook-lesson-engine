@@ -135,6 +135,14 @@ rebuilt.
 - Teaching that exists only because the deck was wrong — the instructor
   pointing out a typo aloud — is dropped, not translated. It teaches
   nothing once the error is gone.
+- **People's names that sound like other words are renamed** (maintainer,
+  2026-09-27: the patient "Yuri Nation" sounded like "urination" and became
+  "David Harper"). A name that, spoken, sounds like another word or phrase,
+  or could embarrass or distract a learner, is replaced by a plain, plausible
+  name, on screen and in speech, through the deck-defect register. The
+  preflight pack lists every name for the source gate; the terms check hears
+  every name, and one heard as other words is listed at the final gate; QA
+  reports one as a major finding (ADR 017).
 
 ---
 
