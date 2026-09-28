@@ -155,6 +155,8 @@ def position_findings(said: str, u: dict, blocks: dict, state: dict, board: dict
             continue                                      # words read from the board
         if any(a <= m.start() and m.end() <= z for a, z in quoted):
             continue                                      # a quoted phrase ('the above')
+        if re.match(r"-(?!hand\b|side\b)[a-z]", said[m.end():], re.I):
+            continue                                      # part of a word ('above-mentioned')
         side = m.group("side") is not None
         if any(keeps(b, side) for b in cued):
             continue

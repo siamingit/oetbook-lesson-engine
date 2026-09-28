@@ -349,18 +349,28 @@ def gather(lesson: Path, page: int) -> dict:
         # were measured against the wrong slide.
         a, b = span
         on = [(n, i) for n, i in enumerate(tl["intervals"]) if i["start"] < b and i["end"] > a]
+        unseen = False
         if sp["kind"] == "page":
-            on = [(n, i) for n, i in on if i["page"] == page]
+            own = [(n, i) for n, i in on if i["page"] == page]
+            # A page the timeline never recognises inside its span (Grammar 7:
+            # page 9 is never on screen, its example typed on page 7; page 8
+            # is matched to its template twin, page 10): the span's words are
+            # still its own, but no interval's ink or events were measured
+            # against this page, so none are read, and its image is its own.
+            unseen = not own
+            on = own or on
         index, shown = max(on, key=lambda x: min(x[1]["end"], b) - max(x[1]["start"], a))
+        if unseen:
+            shown = {"page": page}
         iv = {"page": page, "start": a, "end": b, "duration": b - a, "mean_score": None,
               "resolved_by": ("maintainer: the recording's opening, whatever slide is on screen"
                               if sp["kind"] == "intro" else
                               "maintainer: one span for a page the timeline splits"),
               "span_kind": sp["kind"], "off_deck": sp["off_deck"],
-              "shown_page": shown["page"],
-              "slides_on_screen": [[i["page"], round(max(i["start"], a), 1),
-                                    round(min(i["end"], b), 1)] for _, i in on]}
-        in_span = lambda e: e["interval"] in {n for n, _ in on} and a <= e["start"] < b
+              "shown_page": shown["page"], "unseen": unseen,
+              "slides_on_screen": [] if unseen else [[i["page"], round(max(i["start"], a), 1),
+                                                      round(min(i["end"], b), 1)] for _, i in on]}
+        in_span = lambda e: not unseen and e["interval"] in {n for n, _ in on} and a <= e["start"] < b
     else:
         # A deck page identical to another (Grammar 3, pages 9 and 10) cannot be
         # told apart on screen; the timeline names the interval after one of
@@ -409,6 +419,8 @@ def gather(lesson: Path, page: int) -> dict:
     timeline.render_pages_colour(pdf)[shown_page - 1].save(slide_png)
     layer_png = (lesson / "analysis" / "annotations" / "checks"
                  / f"{index:03d}_p{shown_page:02d}.png")
+    if iv.get("unseen"):
+        layer_png = slide_png                     # no ink was measured against this page
 
     out = paths.understanding_dir(lesson, page)
     out.mkdir(parents=True, exist_ok=True)
@@ -440,8 +452,15 @@ def build_messages(data: dict) -> list[dict]:
         head = (f"Lesson: {data['lesson_label']}. Deck page {iv['page']} of "
                 f"{data['deck_pages']}, read as ONE span of the recording: "
                 f"{clk(iv['start'])}-{clk(iv['end'])} ({iv['start']}-{iv['end']} s), "
-                f"{iv['duration'] / 60:.1f} minutes. The page is on screen at "
-                + ", ".join(f"{clk(s)}-{clk(e)}" for _, s, e in iv["slides_on_screen"])
+                f"{iv['duration'] / 60:.1f} minutes. "
+                + ("The slide timeline does not recognise this page on screen anywhere in "
+                   "the span (the teacher may teach it while another slide of the same "
+                   "template is shown, or type its example there): there are no annotation "
+                   "events or cursor dwells for it, and both images below are the clean page. "
+                   "Read the page's teaching from the transcript and the slide text"
+                   if iv.get("unseen") else
+                   "The page is on screen at "
+                   + ", ".join(f"{clk(s)}-{clk(e)}" for _, s, e in iv["slides_on_screen"]))
                 + ". Between those, the screen shows material that is not this deck: "
                 + "; ".join(f"{clk(o['from_s'])}-{clk(o['to_s'])}: {o['what']}"
                             for o in iv["off_deck"])
