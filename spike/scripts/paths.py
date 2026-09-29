@@ -82,10 +82,24 @@ def boards_dir(lesson: Path, page: int) -> Path:
     return lesson / "generated" / page_tag(page) / "boards"
 
 
+# An authored section (docs/adr/018-authored-sections.md) has no deck page: it
+# takes a slot numbered above every deck (101, 102, ...), so every page-keyed
+# path works for it (its plan in understanding/page-101, its rulings in
+# script/page-101), and its own folders and id are added-01, added-02, ...
+ADDED_BASE = 100
+
+
+def is_added(page: int) -> bool:
+    return page > ADDED_BASE
+
+
 def section_tag(pages: list[int]) -> str:
     """page-NN for a one-page section (page 13 was built that way);
-    pages-NN-MM for a section taught across several slides."""
+    pages-NN-MM for a section taught across several slides; added-NN for an
+    authored section (ADR 018)."""
     pages = sorted(pages)
+    if len(pages) == 1 and is_added(pages[0]):
+        return f"added-{pages[0] - ADDED_BASE:02d}"
     if len(pages) == 1:
         return page_tag(pages[0])
     return "pages-" + "-".join(f"{p:02d}" for p in pages)

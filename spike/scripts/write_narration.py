@@ -950,9 +950,16 @@ def assemble(data: dict, model_out: dict) -> tuple[list[dict], list[dict]]:
 
     given: dict[str, list[dict]] = {}
     order_seen: list[str] = []
+    # states the screens took out (overrides.json `drop`, ADR 018): their
+    # narration goes with them
+    gone = set((data["screens"].get("taken_out") or {}).get("states") or [])
     for mb in model_out["boards"]:
         for ms in mb["states"]:
             sid = ms["state"]
+            if sid in gone:
+                findings.append({"severity": "info", "where": sid,
+                                 "what": "state taken out with its blocks (overrides.json drop)"})
+                continue
             if sid in given:
                 fail(sid, "state narrated twice")
                 continue
@@ -1720,6 +1727,12 @@ def render(lesson: Path, page: int, data: dict) -> int:
 
     worded = apply_utterance_overrides(out_dir, model_out)
     boards, structural = assemble(data, model_out)
+    if all(paths.is_added(p) for p in pages):
+        # an authored section (ADR 018): every utterance is the agent's
+        for bd in boards:
+            for s in bd["states"]:
+                for u in s["utterances"]:
+                    u["provenance"] = "authored"
     structural += worded + apply_cue_overrides(out_dir, boards)
     findings = structural + audit(boards, data)
     result = {

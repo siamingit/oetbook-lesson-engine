@@ -364,7 +364,9 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                     IMAGE_TOKEN + "/" + nb["image"]["file"], out_dir, L)}
             blocks_all[pre + bid] = {**block_data(nb), "html": html_b,
                                      "_tokens": block_tokens(b)}     # display words (1.3)
-        section_marks.append({"id": tag, "title": sec["title"], "pages": pages,
+        # an authored section (ADR 018) covers no deck page
+        section_marks.append({"id": tag, "title": sec["title"],
+                              "pages": [x for x in pages if not paths.is_added(x)],
                               "intro": bool(sec.get("intro")),
                               "first_board": None, "boards": []})
         for bd in narr["boards"]:

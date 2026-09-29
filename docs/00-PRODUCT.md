@@ -72,6 +72,11 @@ lesson, and they win.**
   heading, corrected for registered deck defects ("Time Makers" → "Time
   Markers", "Passive vs Active from" → "form"). Two consecutive slides
   that share a heading are one section.
+- **Authored sections** (maintainer, 2026-09-29; docs/adr/018-authored-sections.md):
+  at the maintainer's request a lesson may add sections the recording does not
+  teach, after the deck's, with the maintainer's titles. Everything in them is
+  `authored`, written from the agent's plan; the recorded and authored parts
+  are the lesson's two categories.
 - **Boards**: steps inside a section. They have **no titles of their
   own**, ever.
 

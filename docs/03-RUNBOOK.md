@@ -316,6 +316,16 @@ gloss rule; maintainer, 2026-09-27) is an `add` entry in the same file: `{"id",
 "thought", "state", "after"?, "block"}`, an id of its own after the section's last,
 placed in the named state of a narrated section's kept plan (no other state or id
 changes); the narration of that state is then rewritten.
+Blocks taken out of a written section (notes moved elsewhere; maintainer,
+2026-09-29, ADR 018) are a `drop` entry: `{"blocks": [ids], "note"}`; a state
+left empty goes with its narration, only at the end of its board; a state that
+keeps some blocks has its narration rewritten.
+An authored section (ADR 018, only at the maintainer's request) is added with
+`build_sections.py <L> --add-section N "TITLE" --by NAME`; the agent writes its
+plan as `analysis/understanding/page-(100+N)/understanding.json` (beats with no
+recording times, provenance `authored`) and its rulings in
+`analysis/script/page-(100+N)/applied.jsonl`; the stages then run as for any
+section, and the parts are set as categories (`--categories`).
 A fix to on-screen text is an override in the section's `overrides.json`
 (with an `expect` guard and a note naming the decision); re-render with
 `write_screens.py <L> --pages ... --render`, free. A screen edit must not move

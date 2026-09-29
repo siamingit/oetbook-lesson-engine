@@ -149,7 +149,11 @@ def slide_text(pdf: Path, page: int) -> str:
     """A deck page's text layer, as the understanding and screens stages read
     it: pypdfium2's, unless that comes out fragmented, when pdftotext (poppler,
     already used by the keyterm stages) reads the same layer with its words
-    and spaces intact. A page pypdfium2 reads whole is returned unchanged."""
+    and spaces intact. A page pypdfium2 reads whole is returned unchanged.
+    An authored section's slot (ADR 018) has no slide: its text is empty."""
+    import paths
+    if paths.is_added(page):
+        return ""
     import pypdfium2 as pdfium
     tp = pdfium.PdfDocument(str(pdf))[page - 1].get_textpage()
     text = tp.get_text_range(0, tp.count_chars())
@@ -277,6 +281,13 @@ def nothing_lost(previous: dict, out: dict) -> None:
                          + "\n  ".join(dict.fromkeys(lost)))
 
 
+def added_section(a: dict) -> dict:
+    """An authored section (ADR 018) as a section: its slot page, the
+    maintainer's title, no heading."""
+    return {"pages": [a["page"]], "heading": None, "title": a["title"], "corrected_from": None,
+            "status": "maintainer", "added": True}
+
+
 def write(out_path: Path, info: dict) -> None:
     out_path.write_text(json.dumps(info, ensure_ascii=False, indent=1), encoding="utf-8")
 
@@ -378,6 +389,28 @@ def main() -> None:
             print(f"  {c['title']!r}: {', '.join(repr(t) for t in c['sections'])}")
         return
 
+    if "--add-section" in sys.argv:
+        # An authored section (ADR 018): no deck page, placed after the deck's
+        # sections in the order of N; its slot is page 100 + N. Its title is
+        # the maintainer's (the request that asked for it); its teaching plan
+        # is the agent's, in understanding/page-(100+N)/understanding.json.
+        import paths
+        i = sys.argv.index("--add-section")
+        n, title = int(sys.argv[i + 1]), sys.argv[i + 2]
+        if not previous or not 0 < n < 100:
+            raise SystemExit("--add-section N TITLE, N from 1 to 99, after the deck's sections exist")
+        by = sys.argv[sys.argv.index("--by") + 1] if "--by" in sys.argv else "maintainer"
+        page = paths.ADDED_BASE + n
+        added = [a for a in previous.get("added", []) if a["page"] != page]
+        added.append({"page": page, "title": title, "by": f"{by} {today}"})
+        previous["added"] = sorted(added, key=lambda a: a["page"])
+        previous["sections"] = [s for s in previous["sections"] if s["pages"] != [page]] \
+            + [added_section(a) for a in previous["added"] if a["page"] == page]
+        previous["sections"].sort(key=lambda s: s["pages"][0])
+        categorise(previous, [])
+        write(out_path, previous)
+        print(f"authored section {paths.section_tag([page])}: {title!r} ({by})")
+        return
     if "--intro-board" in sys.argv:
         # The title board's own blocks (ADR 014): what the introduction's
         # narration describes - a link to the previous lesson, a problem from
@@ -526,6 +559,7 @@ def main() -> None:
             sections.append({"pages": [p["page"]], "heading": None, "title": "",
                              "corrected_from": None, "status": "needs-title",
                              "why": "no text layer on this slide; set a title by hand"})
+    sections += [added_section(a) for a in previous.get("added", [])]   # ADR 018
     for s in sections:
         k = kept.get(s["pages"][0])
         if k:
@@ -551,6 +585,7 @@ def main() -> None:
            **({"groups": previous["groups"]} if "groups" in previous else {}),
            **({"page_spans": previous["page_spans"]} if "page_spans" in previous else {}),
            **({"intro_board": previous["intro_board"]} if "intro_board" in previous else {}),
+           **({"added": previous["added"]} if "added" in previous else {}),
            "diagram_pages": previous.get("diagram_pages", []),
            "sections": sections}
     if "categories" in previous:

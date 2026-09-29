@@ -104,7 +104,9 @@ def understanding(L: Path, pages: list[int]) -> tuple[list, list, list]:
         if not f.exists():
             continue
         u = read(f)
-        times = [(b["start"], b["end"]) for b in u.get("beats") or []] + \
+        # an authored section's plan (ADR 018) has beats with no recording times
+        times = [(b["start"], b["end"]) for b in u.get("beats") or []
+                 if b.get("start") is not None] + \
                 [(n["start"], n["end"]) for n in u.get("non_teaching") or []]
         if times:
             spans.append({"page": p, "from_s": round(min(t[0] for t in times), 1),

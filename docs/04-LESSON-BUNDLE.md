@@ -106,7 +106,7 @@ identical to the build before this format).
 | Id | Example | Made from | Scope |
 |---|---|---|---|
 | lesson | `grammar-01-verb-tenses` | the lesson folder's name | library |
-| section | `page-13`, `pages-05-06` | the deck pages it covers | lesson |
+| section | `page-13`, `pages-05-06`, `added-01` | the deck pages it covers; `added-NN` for an authored section, which covers none (docs/adr/018-authored-sections.md) | lesson |
 | category | `c2` | its position on the deck's contents slide | lesson |
 | block | `page-13_k07` | section + the block's place in the section's screen content, in document order (`k01`, `k02`, …) | lesson |
 | diagram part | `page-11_k02.3` | block + the part's number in the diagram | lesson |
@@ -181,7 +181,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 |---|---|
 | `id` | the section id |
 | `title` | the section title: the slide heading, corrected, or the maintainer's title |
-| `pages` | the deck pages it covers (for traceability, not for display) |
+| `pages` | the deck pages it covers (for traceability, not for display); empty for an authored section (ADR 018) |
 | `intro` | true for the introduction (the title board and the contents board) |
 | `category` | category id, or null |
 | `start`, `end` | the section plays from `start` until the next section's `start` (`end`) |

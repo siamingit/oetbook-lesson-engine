@@ -115,7 +115,7 @@ topics per page" rule. A slide stays as it was unless it is too heavy; notes
 are written in the free space and erased when it fills; a new page is never
 brought, so the main content does not change.
 
-- **One board per original slide.** Teaching beats become working-layer
+- **One board per original slide**, and one per authored section (ADR 018). Teaching beats become working-layer
   states with erasures, never boards.
 - **Exception, exercise slides:** an introduction board showing all the
   items, then one board per item, as on page 13.

@@ -1216,7 +1216,6 @@ def gather(lesson: Path, pages: list[int]) -> dict:
 
     import pypdfium2 as pdfium
     from build_sections import slide_text as read_slide_text
-    doc = pdfium.PdfDocument(str(lesson / "source" / "slides.pdf"))
     from build_sections import slide_tables_text
     # an image table's transcription stands in for its missing text layer
     slide_texts = {page: read_slide_text(lesson / "source" / "slides.pdf", page)
@@ -1233,6 +1232,8 @@ def gather(lesson: Path, pages: list[int]) -> dict:
     sections_info = read(sections_path) if sections_path.exists() else {}
     diagram_pages = [p for p in sections_info.get("diagram_pages", []) if p in pages]
     slide_images = {}
+    # the deck is opened only for a diagram page (an authored section has none)
+    doc = pdfium.PdfDocument(str(lesson / "source" / "slides.pdf")) if diagram_pages else None
     for page in diagram_pages:
         png = doc[page - 1].render(scale=1.0).to_pil()
         import io
@@ -1281,6 +1282,15 @@ def build_messages(data: dict) -> list[dict]:
                "slide image, as a reference for the diagram's teaching idea only; "
                "everything else is yours to author."))
 
+    if all(paths.is_added(p) for p in pages):
+        head = (f"Lesson: {paths.lesson_label(Path(data['lesson_dir']))}. An AUTHORED section "
+                "(docs/adr/018-authored-sections.md): it has no slide and no recording. Its "
+                "teaching plan is given below as beats, written by the agent at the "
+                "maintainer's request; every block you write is `authored` (role example or "
+                "note), and none is a printed exercise sentence, so no block sets "
+                "exercise_item. Write ONE board: a short explanation, examples from a medical "
+                "letter (right and wrong, as answer and error rows), and the plan's short "
+                "practice item, its answer revealed after it. Use every beat.")
     content = [
         {"type": "text", "text": head},
         {"type": "text", "text":
@@ -1456,6 +1466,51 @@ def add_blocks(out_dir: Path, topics: list[dict], blocks: dict[str, dict]) -> li
         th["blocks"].insert(at, b)
         blocks[a["id"]] = b
     return added
+
+
+def drop_blocks(out_dir: Path, topics: list[dict], blocks: dict[str, dict]) -> list[str]:
+    """Blocks taken out of a written section (overrides.json `drop`; maintainer
+    2026-09-29, ADR 018: notes moved from the comma boards into authored
+    sections): {"blocks": [ids], "note"}. Each leaves its thought (a thought
+    left empty goes too); no other id changes."""
+    path = out_dir / "overrides.json"
+    spec = (json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}).get("drop") or {}
+    ids = list(spec.get("blocks") or [])
+    for i in ids:
+        if i not in blocks:
+            raise SystemExit(f"overrides.json drop: {i} is not a block of this section")
+        del blocks[i]
+    for t in topics:
+        for h in t["thoughts"]:
+            h["blocks"] = [b for b in h["blocks"] if b["id"] not in ids]
+        t["thoughts"] = [h for h in t["thoughts"] if h["blocks"]]
+    return ids
+
+
+def drop_from_plan(boards: list[dict], dropped: list[str]) -> list[str]:
+    """Dropped blocks leave a kept (narrated) plan: a state left with no
+    working block goes, and only at the end of its board, so no state is
+    renumbered; its narration is dropped with it (write_narration.py,
+    `drop_states`). Returns the ids of the states that went."""
+    gone = []
+    for bd in boards:
+        bd["fixed"] = [i for i in bd["fixed"] if i not in dropped]
+        keep = []
+        for st in bd["states"]:
+            emptied = st["working"] and all(i in dropped for i in st["working"])
+            st["working"] = [i for i in st["working"] if i not in dropped]
+            if st.get("carried"):
+                st["carried"] = [i for i in st["carried"] if i not in dropped]
+            st["notes"] = len(st["working"])
+            if emptied:
+                gone.append(st["id"])
+            else:
+                if gone and gone[-1].rsplit(".", 1)[0] == bd["id"]:
+                    raise SystemExit(f"overrides.json drop: state {gone[-1]} would go from the "
+                                     f"middle of board {bd['id']}; only a board's last states can go")
+                keep.append(st)
+        bd["states"] = keep
+    return gone
 
 
 def place_added(boards: list[dict], blocks: dict[str, dict], added: list[dict]) -> None:
@@ -3541,7 +3596,19 @@ def render(lesson: Path, page: int, data: dict) -> int:
     unflatten(topics)
     blocks = assign_ids(topics)
     added = add_blocks(out_dir, topics, blocks)
+    dropped = drop_blocks(out_dir, topics, blocks)
     overrides = apply_overrides(out_dir, blocks)
+    if all(paths.is_added(p) for p in pages):
+        # An authored section (ADR 018): every block is the agent's, and none
+        # is a printed exercise sentence (there is no slide)
+        for b in blocks.values():
+            if b["provenance"] != "authored":
+                b["note"] = ((b.get("note") or "") + f" (was {b['provenance']})").strip()
+            b["provenance"] = "authored"
+            b["exercise_item"] = None
+            if "added:" not in (b.get("note") or ""):
+                b["note"] = ("added: maintainer request 2026-09-29 (ADR 018). "
+                             + (b.get("note") or "")).strip()
     for b in blocks.values():
         if b["type"] == "gloss":
             b["image"] = None
@@ -3575,6 +3642,7 @@ def render(lesson: Path, page: int, data: dict) -> int:
     narrated = (paths.narration_dir_for(lesson, pages) / "narration.json").exists()
     saved_p = out_dir / "screens.json"
     saved = json.loads(saved_p.read_text(encoding="utf-8")) if narrated and saved_p.exists() else None
+    dropped_states = drop_from_plan(saved["boards"], dropped) if saved and dropped else []
     if saved and saved.get("raw_id") == raw.get("id") and all(
             i in blocks for bd in saved["boards"]
             for i in bd["fixed"] + [w for st in bd["states"] for w in st["working"]]):
@@ -3633,6 +3701,7 @@ def render(lesson: Path, page: int, data: dict) -> int:
         "topics": topics,
         "boards": boards,
         "overrides": overrides,
+        **({"taken_out": {"blocks": dropped, "states": dropped_states}} if dropped else {}),
         "merged_splits": merges,
         **({"merged_topics": slide_merges} if slide_merges else {}),
         "summary_table_layout": table_layout,
