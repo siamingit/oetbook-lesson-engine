@@ -2484,10 +2484,17 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             if m:
                 fail(b["id"], f"states how many lessons the course has ({m.group(0)!r})")
 
-    # 3. deck defects: the printed form must be gone
+    # 3. deck defects: the printed form must be gone. Matched as whole words:
+    # a printed "dilate" corrected to "dilated" is not still present in
+    # "dilated" (vocabulary-01, 2026-09-29)
+    def still_there(printed: str, text: str) -> bool:
+        p = norm(printed)
+        pat = ((r"(?<!\w)" if p[:1].isalnum() else "") + re.escape(p)
+               + (r"(?!\w)" if p[-1:].isalnum() else ""))
+        return bool(re.search(pat, norm(text)))
     for d in data["defects"]:
         for b in blocks.values():
-            if any(norm(d["printed"]) in norm(t) for t in block_texts(b)):
+            if any(still_there(d["printed"], t) for t in block_texts(b)):
                 fail(b["id"], f"registered deck defect still present: {d['printed']!r}")
 
     # 4. coverage of beats
