@@ -510,6 +510,18 @@ rebuilt):
   two pauses or is estimated under ten seconds (words at 150 a minute plus
   pauses), and warns under thirteen.
 
+**Vocabulary lessons** (maintainer, 2026-09-29; docs/adr/019-vocabulary-lessons.md).
+In a lesson whose type is vocabulary, every key word (a word or collocation the
+section teaches, and the everyday adjectives, nouns and verbs needed to use it)
+gets a full moment where it is first taught, in existing blocks, in this order:
+the gloss (meaning, image when concrete, an example from a medical letter); an
+answer row with an example said to a patient; then, where it helps, a note
+"Word family", a note "Collocations", and a near-synonym as a comparison with
+the difference in use. Every section adds examples of its own. All of it is
+`authored` (role example or note). A key word that is a medical term is glossed
+with the plain words a patient would understand, never a dictionary meaning.
+A2-B1 throughout; no register claims.
+
 The rules as they were for the one-line gloss, kept for lessons built before:
 
 Recorded 2026-09-25 (docs/00-PRODUCT.md §3, "Hard general words are

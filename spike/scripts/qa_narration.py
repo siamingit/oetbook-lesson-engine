@@ -350,6 +350,9 @@ def prepare(lesson: Path, pages: list[int], n_pass: int = 1, states: list[str] |
         data["boards"] = boards
         data["ids"] = [u["id"] for bd in boards for s in bd["states"] for u in s["utterances"]]
     text = build_input(data)
+    import vocabulary_rule
+    if vocabulary_rule.is_vocabulary(lesson):
+        text = vocabulary_rule.QA + "\n\n" + text
     if only:
         text = ("ONLY SOME STATES ARE UNDER REVIEW: the ones below were just rewritten. "
                 "Judge them; earlier and later states are not shown and are not "

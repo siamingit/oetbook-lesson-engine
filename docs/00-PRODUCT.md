@@ -265,6 +265,14 @@ lessons do the same, in English.
   other general word, and QA does not flag those glosses.
 - Do not overload: gloss only words a learner at this level is likely not
   to know.
+- **Vocabulary lessons go further** (maintainer, 2026-09-29;
+  docs/adr/019-vocabulary-lessons.md): every key word gets a full gloss moment
+  with an example from a medical letter (Writing) and one said to a patient
+  (Speaking); the vocabulary is widened with the word family, common
+  collocations and near-synonyms with the difference in use; general English
+  for building sentences is taught too; every section has more examples, all
+  `authored`. A key word that is a medical term is glossed with the words a
+  patient would understand (docs/02-DESIGN-SYSTEM.md §7b).
 
 ---
 

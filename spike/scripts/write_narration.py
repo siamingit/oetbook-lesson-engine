@@ -842,6 +842,10 @@ def build_messages(data: dict, rewrite: dict | None = None) -> list[dict]:
                  if b["type"] == "contents_item"]
         if items and not any(b.get("explanation") for b in items):
             content.append({"type": "text", "text": INTRO_NO_CATEGORIES})
+    import vocabulary_rule
+    lesson_dir = Path(scr["lesson_dir"]) if scr.get("lesson_dir") else Path(data["screens_path"]).parents[3]
+    if vocabulary_rule.is_vocabulary(lesson_dir) and not scr.get("section", {}).get("intro"):
+        content.append({"type": "text", "text": vocabulary_rule.NARRATION})
     if rewrite:
         content.append({"type": "text", "text":
             "STATES TO REWRITE: " + ", ".join(rewrite["ids"]) + ". Their current "

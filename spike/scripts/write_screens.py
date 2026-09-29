@@ -1352,8 +1352,11 @@ def build_messages(data: dict) -> list[dict]:
             + "\n\nCORRECTIONS the earlier draft applied to real source errors, "
               "also binding:\n"
             + json.dumps(data["script_corrections"], ensure_ascii=False)},
-        {"type": "text", "text": TASK},
     ]
+    import vocabulary_rule
+    if vocabulary_rule.is_vocabulary(Path(data["lesson_dir"])):
+        content.append({"type": "text", "text": vocabulary_rule.SCREENS})
+    content.append({"type": "text", "text": TASK})
     for block in content:
         if block["type"] == "text":
             block["text"] = strip_bidi(block["text"])

@@ -294,9 +294,11 @@ def stage_sections(L, a):
 # The code each paid model stage runs, for the uncommitted-code guard.
 STAGE_CODE = {
     "understanding": ["extract_understanding.py", "build_sections.py", "llm.py", "run_batch_stage.py"],
-    "screens": ["write_screens.py", "build_sections.py", "llm.py", "run_batch_stage.py"],
-    "narration": ["write_narration.py", "write_screens.py", "llm.py", "run_batch_stage.py"],
-    "qa1": ["qa_narration.py", "write_narration.py", "run_batch_stage.py"],
+    "screens": ["write_screens.py", "build_sections.py", "llm.py", "run_batch_stage.py",
+                "vocabulary_rule.py"],
+    "narration": ["write_narration.py", "write_screens.py", "llm.py", "run_batch_stage.py",
+                  "vocabulary_rule.py"],
+    "qa1": ["qa_narration.py", "write_narration.py", "run_batch_stage.py", "vocabulary_rule.py"],
 }
 
 
