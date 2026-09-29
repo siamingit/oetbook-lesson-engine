@@ -98,8 +98,13 @@ INTERFACE_WARN = re.compile(r"\b(pointer|working layer|fixed layer|block id)\b",
 # and words read from the board are not positions.
 BODY = (r"(?!\s+(?:knee|ankle|leg|arm|eye|ear|hand|foot|hip|shoulder|lung|breast|kidney|wrist|"
         r"elbow|chest|lobe|ventricle|atrium))")
-POS_SIDE = (r"\b(?:on|to|at|in|from) the (?:far )?(?:left|right)\b" + BODY + r"|"
-            r"\b(?:left|right)[- ]hand\b" + BODY + r"|\b(?:left|right) side\b|"
+# "right" as "correct" ("in the right way"), and a side of the body ("pain in my
+# right side"), are not positions either (vocabulary-03, 2026-09-29)
+CORRECT = r"(?!\s+(?:way|word|words|form|forms|order|place|time|answer|tense|dose|thing|one|choice))"
+POSSESSED = r"(?<!\bmy )(?<!\bhis )(?<!\bher )(?<!\byour )(?<!\btheir )(?<!\bits )"
+POS_SIDE = (r"\b(?:on|to|at|in|from) the (?:far )?(?:left|right)\b" + BODY + CORRECT + r"|"
+            r"\b(?:left|right)[- ]hand\b" + BODY + r"|" + POSSESSED + r"\b(?:left|right) side\b"
+            r"(?!\s+of (?:the|his|her|my|your) (?:body|chest|head|face|abdomen|neck))|"
             r"\bleft (?:column|box|card|part|half|piece|sentence|one)\b|"
             r"\b(?:this|that|the other) side\b|\bside by side\b")
 POS_VERT = (r"\bat the (?:top|bottom)\b|\bon top\b|"
