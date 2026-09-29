@@ -177,6 +177,36 @@ cache. Not yet measured on a lesson.
 
 ---
 
+## Measured: night run 1 (2026-09-29), four lessons unattended
+
+grammar-08, vocabulary-01, -02 and -03, run side by side, understanding
+submitted as Message Batches (`--batch`). **The batches did not start**: 37
+requests in four batches showed `processing 37, succeeded 0` two hours after
+submission, as Grammar 2's batch in September. They were cancelled; the cancel
+finished 14 of them at batch prices ($2.72), and the rest, and every later
+stage, ran as direct calls with the 5-minute cache. Batch mode has not yet
+delivered a stage on time on this account: plan an unattended run as direct
+calls, or submit batches in the evening and collect them the next day.
+
+Prompt caching saved $2.90 across the night (cache reads 682,013 tokens), about
+5% of the spend: output still dominates, as above.
+
+| | grammar-08 | vocabulary-01 | vocabulary-02 | vocabulary-03 |
+|---|---|---|---|---|
+| Recording | 83.7 min | 103.9 min | 47.7 min | 45.6 min |
+| Stopped at | narration gate | screens (budget) | narration gate | narration gate |
+| Silent preview | 54:57 | | 95:29 | 77:39 |
+| Model spend (images) | $13.73 | $10.52 | $17.83 ($1.18) | $15.10 ($0.86) |
+
+The vocabulary rule (ADR 019) roughly doubles a vocabulary lesson's length
+against its recording (174 authored blocks in vocabulary-02) and makes screens
+and narration outputs larger: about $6-7 each for a 48-minute recording, against
+$3-5 for a grammar lesson. Budget a vocabulary lesson at about $20 to the
+narration gate before QA fixes, and cap its key-word moments to stay near the
+maintainer's length.
+
+---
+
 ## The procedure
 
 Gates are marked **GATE**; steps the agent approves when their checks pass are
