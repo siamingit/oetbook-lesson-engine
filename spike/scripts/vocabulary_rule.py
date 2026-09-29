@@ -56,6 +56,13 @@ are certainly true; never a register claim; never a clinical fact. \
   - MORE EXAMPLES IN EVERY SECTION: wherever the section teaches a word, a form \
 or a pattern with only the slide's own examples, add at least one answer_row of \
 your own, from a medical letter or from talking to a patient. \
+  - ONE BOARD PER SLIDE STILL HOLDS: every block you add under this rule is a \
+WORKING note (`anchor: false`), in its own thought, erased as the board fills; \
+it never makes a new topic. The fixed layer stays the slide's own content, kept \
+small (a slide's list of words or example sentences is the fixed layer; a \
+matching list of words and definitions is ONE table: see TABLE BOARDS). A \
+gloss's example sentence must contain the glossed words exactly as written in \
+`term`. Every block's text starts with a capital letter. \
   - Do not overload one board: one key word's moment (gloss, second example, \
 at most two widening notes) is one run of thoughts, erased before the next key \
 word begins. When a section has many key words (more than about eight), give \

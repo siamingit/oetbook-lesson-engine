@@ -168,6 +168,7 @@ GAP = 0.025                  # between blocks
 CONTENT_BAND = 0.84          # §1: the board's share of frame height
 BUDGET = 0.78                # of frame height; leaves slack in the band for the eye
 HARD_LIMIT = 0.84            # the content band: beyond it the content cannot be drawn
+TIGHT_LIMIT = 0.90           # an estimate up to here is left to the fit's tight boards (ADR 011)
 FIXED_ROOM_LIMIT = 0.78 - 2 * (0.032 * 1.35 + 0.018 * 2)   # a fixed layer must leave two notes' room
 MAX_NOTES = 4                # §3: the working layer holds about four notes at once
 CHARS_PER_LINE = 90          # ~0.81 of frame width at ~0.5em per character
@@ -2834,7 +2835,13 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             if s["notes"] > MAX_NOTES:
                 fail(s["id"], f"{s['notes']} working notes at once, limit {MAX_NOTES}: "
                               "a thought is too big for the board")
-            if s["height"] > HARD_LIMIT:
+            if HARD_LIMIT < s["height"] <= TIGHT_LIMIT:
+                # ADR 011: a board still too full after clearing is made tight
+                # (half the gaps, then half the padding) by the fit, measured
+                # in the player; check_overflow stays the binding check
+                warn(s["id"], f"board height {s['height']:.0%} of frame, over the content band "
+                              f"({HARD_LIMIT:.0%}) by the estimate: made tight by the fit (ADR 011)")
+            elif s["height"] > HARD_LIMIT:
                 fail(s["id"], f"board height {s['height']:.0%} of frame exceeds the content "
                               f"band ({HARD_LIMIT:.0%}): a single note does not fit beside the "
                               "fixed layer")
