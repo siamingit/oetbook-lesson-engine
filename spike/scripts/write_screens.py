@@ -3643,6 +3643,11 @@ def render(lesson: Path, page: int, data: dict) -> int:
     saved_p = out_dir / "screens.json"
     saved = json.loads(saved_p.read_text(encoding="utf-8")) if narrated and saved_p.exists() else None
     dropped_states = drop_from_plan(saved["boards"], dropped) if saved and dropped else []
+    if saved and dropped:
+        # states taken out on an earlier render are no longer in the saved plan;
+        # they stay recorded, so their narration keeps going with them
+        dropped_states = sorted(set(dropped_states) | set(
+            (saved.get("taken_out") or {}).get("states") or []))
     if saved and saved.get("raw_id") == raw.get("id") and all(
             i in blocks for bd in saved["boards"]
             for i in bd["fixed"] + [w for st in bd["states"] for w in st["working"]]):

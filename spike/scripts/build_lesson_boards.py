@@ -104,6 +104,11 @@ def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
          "states": [state("t2.s1", [], [b["id"] for b in items])], "erasures": []},
     ]
     findings = []
+    # every section of the lesson is on the contents board by name, authored
+    # ones included (maintainer, 2026-09-29; docs/00-PRODUCT.md §2a)
+    for title in missing_sections([s["title"] for s in sec["sections"]], items):
+        findings.append({"severity": "fail", "where": "t2",
+                         "what": f"section {title!r} is not listed on the contents board"})
     for bd in out_boards:
         for s in bd["states"]:
             if s["height"] > 0.84:
@@ -123,6 +128,18 @@ def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
     print(f"introduction boards: {d / 'screens.json'} | contents board fill "
           f"{out_boards[1]['states'][0]['height']:.0%} of frame | "
           f"{len(findings)} failures | beats from understanding: {len(beats)}")
+    if findings:
+        raise SystemExit("introduction boards: " + "; ".join(f["what"] for f in findings))
+
+
+def missing_sections(titles: list[str], items: list[dict]) -> list[str]:
+    """Section titles that no contents item names: as its own item, or in a
+    category's list of sections (" · ")."""
+    listed = set()
+    for b in items:
+        listed.add(b.get("text"))
+        listed.update(x.strip() for x in (b.get("explanation") or "").split(" · "))
+    return [t for t in titles if t not in listed]
 
 
 def main() -> None:

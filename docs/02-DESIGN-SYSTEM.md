@@ -657,7 +657,8 @@ noun turned back into a verb (removal → remove). A word is left uncoloured
 only when its class is truly ambiguous: a participle such as "confused" can
 be an adjective or a verb.
 
-**The introduction** keeps its title and contents items; its description is
+**The introduction** keeps its title and contents items, which list every section
+of the lesson by name, authored ones included (docs/00-PRODUCT.md §2a); its description is
 a slide box, the lesson's own words. Its title board also shows what the
 narration describes (ADR 014, 2026-09-27): the lesson's own intro blocks from
 sections.json `intro_board` (a note linking to the previous lesson, a change

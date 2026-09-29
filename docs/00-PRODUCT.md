@@ -203,6 +203,11 @@ while the contents are on screen. A rule for every lesson:
   course is still growing (maintainer, 2026-09-27). Naming one other lesson
   where it helps is fine; the narration and screens audits fail a lesson count,
   and the narration audit an utterance that lists three or more lessons.
+- **The contents board lists every section of the lesson by name**, authored
+  sections included (maintainer, 2026-09-29): as its own item, or in its
+  category's list. The contents walk-through in the narration names them.
+  `build_lesson_boards.py` and the structural check (`check_board_page.py`)
+  fail a board that leaves one out.
 - Short: about one to two minutes.
 - The voice is not the instructor's. It never gives the instructor's name
   and never speaks as him.
