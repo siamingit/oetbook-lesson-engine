@@ -81,6 +81,24 @@ one short sentence. \
 Never say how formal, common or natural a word is unless the board or a ruling \
 says so."""
 
+def intro_first(text: str) -> str:
+    """The first-lesson introduction (ADR 014 amendment) was written for the
+    grammar course. For the first lesson of the vocabulary course it says why
+    vocabulary matters instead, with no claim about how OET assesses it (the
+    maintainer's ruling covers grammar only)."""
+    old = ("  2. Explains simply why grammar matters in the OET letter: the reader is \n"
+           "another health professional who needs clear, exact information, and grammar \n"
+           "is part of how the letter is assessed. No grade or score promises.")
+    old = old.replace(" \n", " ")
+    new = ("  2. Explains simply why vocabulary matters for OET: the right words make a "
+           "letter clear and exact for the health professional who reads it, and help "
+           "the learner talk clearly with patients. No claim about how OET marks it, no "
+           "grade or score promises.")
+    if old not in text:
+        raise SystemExit("vocabulary_rule.intro_first: the first-lesson prompt changed; update it")
+    return text.replace(old, new).replace("why grammar matters", "why vocabulary matters")
+
+
 QA = """\
 THIS IS A VOCABULARY LESSON (docs/adr/019-vocabulary-lessons.md). Its key words \
 are taught with a full gloss moment, a Writing example, a Speaking example \

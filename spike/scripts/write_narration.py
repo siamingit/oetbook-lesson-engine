@@ -827,7 +827,10 @@ def build_messages(data: dict, rewrite: dict | None = None) -> list[dict]:
                                         ensure_ascii=False)},
     ]
     if scr.get("section", {}).get("intro") and data.get("course_map"):
-        content.append({"type": "text", "text": INTRO_FIRST})
+        import vocabulary_rule
+        lesson_dir = Path(scr["lesson_dir"]) if scr.get("lesson_dir") else Path(data["screens_path"]).parents[3]
+        content.append({"type": "text", "text": vocabulary_rule.intro_first(INTRO_FIRST)
+                        if vocabulary_rule.is_vocabulary(lesson_dir) else INTRO_FIRST})
         content.append({"type": "text", "text":
             "OTHER LESSONS' OPENINGS (never open with any of these sentences):\n"
             + json.dumps(data.get("openings") or {}, ensure_ascii=False)})
