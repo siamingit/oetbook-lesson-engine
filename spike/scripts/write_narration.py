@@ -1696,7 +1696,10 @@ def apply_cue_overrides(out_dir: Path, boards: list[dict]) -> list[dict]:
         if c is None or (f.get("expect") and f["expect"] not in (c.get("text"), c.get("to_text"))):
             raise SystemExit(f"overrides.json: cue {key} is not there or no longer marks "
                              f"{f.get('expect')!r}; retire or re-key the override")
-        c.update({k: v for k, v in f.items() if k in ("row", "col", "to_row", "to_col")})
+        # also a mark's phrase where the reply's phrase is not drawn as one span
+        # (words on several lines of one cell; 2026-09-30): no word is spoken
+        # differently, so no audio changes
+        c.update({k: v for k, v in f.items() if k in ("row", "col", "to_row", "to_col", "text")})
         c["overridden"] = f.get("note") or True
         out.append({"severity": "info", "where": key, "what": "cell named by override: "
                     + json.dumps({k: v for k, v in f.items() if k != 'note'})})
