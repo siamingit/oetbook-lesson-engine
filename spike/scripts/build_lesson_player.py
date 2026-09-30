@@ -68,7 +68,9 @@ BLOCK_FIELDS = ("id", "type", "label", "text", "term", "explanation", "left", "r
                 # 1.6, choice tables (ADR 009)
                 "verdicts",
                 # 1.11, a gloss's generated image (ADR 015)
-                "image")
+                "image",
+                # 1.12, a board's picture's size where the fit made it smaller (ADR 021)
+                "size")
 
 
 def block_data(b: dict) -> dict:
@@ -358,6 +360,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                 nb["tense_neutral"] = True
             if nb["id"] in (fit.get("fonts") or {}):
                 nb["font"] = fit["fonts"][nb["id"]]      # 1.8: smaller, so the table fits
+            if nb["id"] in (fit.get("pics") or {}):
+                nb["size"] = fit["pics"][nb["id"]]       # 1.12: smaller, so the board fits (ADR 021)
             html_b = resolve_images(block_html(nb), out_dir, L)
             if nb.get("image"):                      # 1.11: the file, relative to the bundle's folder
                 nb["image"] = {**nb["image"], "file": resolve_images(

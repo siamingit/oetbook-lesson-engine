@@ -131,7 +131,9 @@ IMAGE_TOKEN = "@@gloss-images@@"
 # (at the first erasure, or earlier by the fit when a later note needs its room).
 # Its brief is the agent's, one per board, in <lesson>/analysis/pictures.json;
 # code adds the block (type `picture`, `icon` the brief) and gloss_images.py draws it.
-PICTURE_HEIGHT = 0.20      # share of the frame's height: the picture's room when it is shown
+PICTURE_HEIGHT = 0.10      # share of the frame's height the layout counts: the picture's
+                           # smallest size; it is drawn at up to 20cqh, as the fit measures
+PICTURE_MAX, PICTURE_MIN = 20.0, 10.0      # cqh (ADR 021)
 
 
 def gloss_alt(b: dict) -> str:
@@ -3181,7 +3183,7 @@ FRAME_CSS = """
   text-align:center;font-weight:500}
 .blk.beside{position:absolute;z-index:3;max-width:100%;margin:0}
 /* a board's picture (ADR 021): in the flow, never over text */
-.blk.pic{flex:0 0 auto;padding:0;background:none;border:0;height:20cqh;width:20cqh}
+.blk.pic{flex:0 0 auto;padding:0;background:none;border:0;height:var(--ph,20cqh);width:var(--ph,20cqh)}
 .blk.pic .pic-img{display:block;height:100%;width:100%;object-fit:contain}
 /* a diagram under a table is drawn at the table's width (ADR 020) */
 .blk.tl.beside,.blk.cl.beside{width:100%;max-width:100%}
@@ -3547,7 +3549,8 @@ def _block_html(b: dict) -> str:
         img = b.get("image") or {}
         inner = ('<img class="pic-img" src="' + IMAGE_TOKEN + "/" + esc(img["file"]) + '" alt="'
                  + esc(img.get("alt") or "") + '">') if img.get("file") else ""
-        return '<div class="blk pic"' + bid + ' role="img" aria-label="' + esc(
+        size = (f' style="--ph:{b["size"]:.1f}cqh"' if b.get("size") else "")
+        return '<div class="blk pic"' + bid + size + ' role="img" aria-label="' + esc(
             img.get("alt") or (b.get("icon") or "").split("|")[0].strip()) + '">' + inner + "</div>"
     if t == "gloss":
         # A gloss (ADR 013): the word, then its meaning, its picture and its

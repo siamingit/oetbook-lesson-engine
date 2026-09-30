@@ -65,7 +65,7 @@ HARNESS = r"""
   const style = document.createElement("style");
   style.textContent = "*{transition:none!important;animation:none!important}";
   document.head.appendChild(style);
-  const TOL = __TOL__, FMIN = __FMIN__, INIT = __INIT__;
+  const TOL = __TOL__, FMIN = __FMIN__, INIT = __INIT__, PMAX = __PMAX__, PMIN = __PMIN__;
   const body = camEl.parentElement;
   function area() {
     const r = body.getBoundingClientRect(), cs = getComputedStyle(body);
@@ -110,6 +110,18 @@ HARNESS = r"""
     blocks[id].font = f; blocks[id].html = blocks[id].html.replace(/--tf:[0-9.]+cqh/, "--tf:" + f + "cqh");
   }
   const tight = Object.assign({}, INIT.tight || {});
+  // a board's picture (ADR 021) drawn smaller, to no less than PMIN, where the
+  // board does not fit with it at full size; kept for the whole board
+  const pics = Object.assign({}, INIT.pics || {});
+  function setPic(id, h) {
+    pics[id] = +h.toFixed(1);
+    blocks[id].size = pics[id];
+    blocks[id].html = blocks[id].html.replace(/ style="--ph:[0-9.]+cqh"/, "")
+                                     .replace('class="blk pic"', 'style="--ph:' + pics[id] + 'cqh" class="blk pic"');
+    const el = blockEls.get(id);
+    if (el) el.style.setProperty("--ph", pics[id] + "cqh");
+  }
+  for (const [id, h] of Object.entries(pics)) if (blocks[id]) setPic(id, h);
   // boards where the camera may pan to show a table's notes: only after the
   // table's text is at its floor and the notes still do not fit (ADR 020)
   const panOk = new Set();
@@ -188,6 +200,13 @@ HARNESS = r"""
       drawnBoard = null;
       fitBoard(bd);
     }
+    const pid = (bd.states[0] || { working: [] }).working.find(i => blocks[i] && blocks[i].type === "picture");
+    while (unfit.length > n0 && pid && (blocks[pid].size || PMAX) > PMIN + 1e-6) {
+      unfit.length = n0;
+      setPic(pid, Math.max(PMIN, (blocks[pid].size || PMAX) - 2));
+      drawnBoard = null;
+      fitBoard(bd);
+    }
     if (unfit.length > n0 && tid) {
       unfit.length = n0;
       panOk.add(bd.id);
@@ -197,7 +216,7 @@ HARNESS = r"""
   }
   const pre = document.createElement("pre");
   pre.id = "fit-result";
-  pre.textContent = JSON.stringify({ clears, fonts, unfit, tight });
+  pre.textContent = JSON.stringify({ clears, fonts, unfit, tight, pics });
   document.body.appendChild(pre);
 })();
 </script>
@@ -211,7 +230,7 @@ def run(player: Path, width: int, init: dict) -> dict:
     harness = player.with_name("player_fit.html")
     html = player.read_text(encoding="utf-8")
     script = (HARNESS.replace("__WIDTH__", str(width)).replace("__TOL__", str(TOLERANCE_PX))
-              .replace("__FMIN__", str(TABLE_FONT_MIN)).replace("__INIT__", json.dumps(init)))
+              .replace("__FMIN__", str(TABLE_FONT_MIN)).replace("__PMAX__", "20").replace("__PMIN__", "10").replace("__INIT__", json.dumps(init)))
     harness.write_text(html.replace("</body>", script + "</body>"), encoding="utf-8")
     r = subprocess.run([edge, "--headless=new", "--user-data-dir=" + EDGE_PROFILE, "--disable-gpu", f"--window-size={width + 200},{int(width * 0.75)}",
                         "--virtual-time-budget=60000", "--dump-dom", harness.resolve().as_uri()],
@@ -234,11 +253,12 @@ def main() -> None:
     # measured on a player built without any fit, so the plan is made from
     # scratch every time (a table already made smaller would look as if it fitted)
     folder = build(a.lesson_dir, silent=a.silent, out="lesson-fit", use_fit=False)
-    plan: dict = {"clears": {}, "fonts": {}, "tight": {}}
+    plan: dict = {"clears": {}, "fonts": {}, "tight": {}, "pics": {}}
     unfit: list = []
     for name, width in WIDTHS.items():
         res = run(folder / "player.html", width, plan)
-        plan = {"clears": res["clears"], "fonts": res["fonts"], "tight": res["tight"]}
+        plan = {"clears": res["clears"], "fonts": res["fonts"], "tight": res["tight"],
+                "pics": res.get("pics") or {}}
         unfit = res["unfit"]                  # the last width saw every earlier plan applied
         n = sum(len(v) for v in res["clears"].values())
         print(f"{name}: {n} clear(s) in {len(res['clears'])} state(s), {len(res['fonts'])} table size(s), "
@@ -250,10 +270,11 @@ def main() -> None:
     doc = {"purpose": "Where a state's notes are cleared so the next fits the board, and a table's text "
                       "size where it did not fit (fit_boards.py; ADR 011). Read by build_lesson_player.py.",
            "clears": dict(sorted(plan["clears"].items())), "fonts": dict(sorted(plan["fonts"].items())),
+           "pics": dict(sorted(plan["pics"].items())),
            "tight": dict(sorted(plan["tight"].items())),
            "unfit": unfit}
     out.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
-    changed = prev is None or {k: prev.get(k) for k in ("clears", "fonts", "tight")} != {k: doc[k] for k in ("clears", "fonts", "tight")}
+    changed = prev is None or {k: prev.get(k) for k in ("clears", "fonts", "tight", "pics")} != {k: doc[k] for k in ("clears", "fonts", "tight", "pics")}
     print(f"wrote {out}" + (" (changed: rebuild the player)" if changed else " (unchanged)"))
     for u in unfit:
         print("  UNFIT", json.dumps(u, ensure_ascii=False))
