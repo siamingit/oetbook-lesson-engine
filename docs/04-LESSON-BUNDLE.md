@@ -463,7 +463,8 @@ These are the only rules. Every time and target they use is in the bundle.
     `image.alt` as its alt text; the renderer shows it from its part's reveal
     (a short fade; none under reduced motion). The narration never points at it.
 27. **A board's picture** (1.12) is a working block of type `picture` in its
-    board's first state, with no words; its `image` is as rule 26's. It is
+    board's first state, with no words; its `image` is as rule 26's; its
+    `size`, where set, is its side in cqh (20 when absent). It is
     shown from its state's `start` (its time in the state's `reveal`) until the
     state is erased or a clear takes it, like any note (rule 22). No cue names
     it, and the narration never points at it.

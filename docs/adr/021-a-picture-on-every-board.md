@@ -40,7 +40,9 @@ in the approved style, that means something on that board.
   the exercise items of one exercise share one picture.
 - **Shown**: from the first state's start until that state is erased, or until
   the fit clears it because a later note needs its room (ADR 011). Drawn in
-  the board's flow, a square 20% of the frame's height; on a table board at
+  the board's flow, a square 20% of the frame's height, made smaller by the
+  fit, to no less than 10%, where the board does not fit with it (its size is
+  kept for the whole board: fit.json `pics`, the bundle's `size`); on a table board at
   the right under the table, the side notes to its left. Never over text
   (ADR 020). The narration never points at it; the narration model is not
   shown it.

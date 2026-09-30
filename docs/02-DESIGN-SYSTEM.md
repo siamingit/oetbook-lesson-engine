@@ -747,7 +747,8 @@ concept. Meaningful, never decorative; never over text.
 - **The block** `picture` opens the board: the first note of its first state,
   shown from the state's start with no cue, erased with that state or cleared
   by the fit when a later note needs its room (§8b). A square, 20% of the
-  frame's height, in the board's flow; on a table board at the right under the
+  frame's height (smaller, to no less than 10%, where the fit finds the board
+  too full), in the board's flow; on a table board at the right under the
   table, the side notes beside it on its left.
 - **The narration never points at it**, as for a gloss's image.
 
