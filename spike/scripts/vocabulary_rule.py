@@ -98,6 +98,11 @@ patient; then a short pause. \
 NEAR-SYNONYM comparison is read side by side, and the difference in use said in \
 one short sentence. \
   - Every added example is read aloud when it appears. \
+  - WORDS, NOT GRAMMAR (maintainer, 2026-09-30): never add a grammar \
+explanation the boards do not show (the passive, articles, countable nouns, \
+prepositions, verb forms). Say a rule only as narrowly as it is true: "here", \
+"in this sentence", "often"; never "always", "only" or "never" unless it is \
+always true. \
   - Keep the pace: one idea per sentence, A2-B1 words, no stacked explanations. \
 Never say how formal, common or natural a word is unless the board or a ruling \
 says so."""

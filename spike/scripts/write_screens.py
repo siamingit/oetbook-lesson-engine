@@ -1925,8 +1925,10 @@ def section_for_page(lesson: Path, page: int) -> tuple[dict, dict]:
 
 
 def topic_slide(t: dict, pages: list[int]) -> int:
-    prefixes = {b.split(".")[0] for b in t["from_beats"] if b.startswith("p")}
-    return int(prefixes.pop()[1:]) if len(prefixes) == 1 else pages[0]
+    # a beat of a multi-page section is 'p8.b3'; a one-page section's own ids
+    # may look like 'p8-b3' (vocabulary-02, 2026-09-30) and name no other slide
+    prefixes = {m.group(1) for b in t["from_beats"] if (m := re.match(r"p(\d+)\.", b))}
+    return int(prefixes.pop()) if len(prefixes) == 1 else pages[0]
 
 
 def fixed_union(parts: list[dict]) -> tuple[list[str], set[str]]:
