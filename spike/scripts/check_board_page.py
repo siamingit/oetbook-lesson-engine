@@ -132,7 +132,10 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
                 problems.append(f"{bd['id']}: fixed block {i} missing from bundle")
         for s in bd["states"]:
             working = list(s["working"])
-            revealed = []
+            # a board's picture (bundle 1.12, rule 27) is shown from its state's
+            # start, with its time in the state's reveal, and no cue
+            revealed = [i for i in working if (blocks.get(i) or {}).get("type") == "picture"
+                        and i in (s.get("reveal") or {})]
             for i in working:
                 if i not in blocks or not blocks[i].get("html"):
                     problems.append(f"{s['id']}: working block {i} missing from bundle")
