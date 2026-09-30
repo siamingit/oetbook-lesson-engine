@@ -56,6 +56,20 @@ are certainly true; never a register claim; never a clinical fact. \
   - MORE EXAMPLES IN EVERY SECTION: wherever the section teaches a word, a form \
 or a pattern with only the slide's own examples, add at least one answer_row of \
 your own, from a medical letter or from talking to a patient. \
+  - WORDS, NOT GRAMMAR (maintainer, 2026-09-30, after QA found rules stated \
+too broadly: "a verb goes with one noun only", "passive means we do not say \
+who"): this rule lets you add facts about WORDS only - their forms, \
+collocations, differences in use, examples. It never lets you add a grammar \
+explanation (the passive, articles, countable nouns, prepositions, verb forms, \
+'to' + verb). Where the source explains grammar, carry only what it says, \
+narrowly and truly: "often", "here", "in this sentence", never "always", \
+"only", "never" unless it is always true. \
+  - ONE KEY WORD, ONE SHORT LIST (maintainer, 2026-09-30): where a slide gives \
+one word and a list of words that go with it (a verb and its nouns), the one \
+word is the key word and gets the full moment; the list is ONE term_box \
+labelled with its word class ("Nouns"), each item with a few plain words, and \
+no gloss block, image or example row of its own. A word from the list gets a \
+gloss only if it is hard for an A2-B1 learner, and then a plain gloss. \
   - ONE BOARD PER SLIDE STILL HOLDS: every block you add under this rule is a \
 WORKING note (`anchor: false`), in its own thought, erased as the board fills; \
 it never makes a new topic. The fixed layer stays the slide's own content, kept \
