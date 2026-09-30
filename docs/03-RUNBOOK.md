@@ -110,9 +110,8 @@ pipeline would need about $30 of model spend** (understanding ~$6, screens ~$8, 
 Cartesia is billed in characters on the account's plan: about 85,000 per
 two-hour lesson. Its price in dollars depends on the plan and is UNKNOWN here.
 
-The runner's default is direct calls at full price with prompt caching, so
-the figure above applies. Batch mode, only for an unattended run, is
-**estimated at about $14** for the same work; see "Cost controls".
+The runner makes direct calls at full price with prompt caching, so the figure
+above applies. Batch mode is off ("Cost controls").
 
 ---
 
@@ -184,9 +183,7 @@ submitted as Message Batches (`--batch`). **The batches did not start**: 37
 requests in four batches showed `processing 37, succeeded 0` two hours after
 submission, as Grammar 2's batch in September. They were cancelled; the cancel
 finished 14 of them at batch prices ($2.72), and the rest, and every later
-stage, ran as direct calls with the 5-minute cache. Batch mode has not yet
-delivered a stage on time on this account: plan an unattended run as direct
-calls, or submit batches in the evening and collect them the next day.
+stage, ran as direct calls with the 5-minute cache. Batch mode was then turned off (maintainer, 2026-09-30; "Cost controls").
 
 Prompt caching saved $2.90 across the night (cache reads 682,013 tokens), about
 5% of the spend: output still dominates, as above.
@@ -261,7 +258,14 @@ kept 29 days, no streaming; cache hits inside a batch are best effort and the
 requests up to 20 MB; implicit caching is automatic from 4,096 tokens on Gemini
 3.1 Pro.
 
-**Direct calls by default; batch only for an unattended run.** Rule set by the
+**Batch mode is off; prompt caching stays** (maintainer, 2026-09-30, after night
+run 1, when four batches did not start a single request in two hours). Every
+model stage runs as direct calls with prompt caching, attended or not;
+`build_lesson.py --batch` is refused. The paragraph below is the rule it
+replaces, kept for the record; `run_batch_stage.py` still collects a batch
+already submitted before any direct call.
+
+*Superseded:* **Direct calls by default; batch only for an unattended run.** Rule set by the
 maintainer 2026-09-24, on Grammar 2. Every model stage runs as direct calls with
 prompt caching, four at a time (`run_batch_stage.py --direct`, which the runner
 calls by default). Batch mode halves the price but Anthropic may take up to 24

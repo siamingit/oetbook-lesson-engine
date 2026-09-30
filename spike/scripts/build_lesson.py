@@ -15,8 +15,9 @@ does not. The run stops at:
   - a stage that fails, with its output in <lesson>/analysis/runner.log;
   - a paid stage whose estimated cost would take the lesson's model spend
     (Anthropic + Gemini, measured from the saved responses) over --budget.
-Model stages run as direct calls with prompt caching; --batch runs each as one
-batch at half price, only for an unattended run the maintainer asked for.
+Model stages run as direct calls with prompt caching. Batch mode is off
+(maintainer, 2026-09-30, after the night run's batches did not start in two
+hours): --batch is refused.
 Paid stages never run without --budget (AGENTS.md: paid calls are approved).
 Approvals are recorded in <lesson>/analysis/gates.json with who and when.
 
@@ -567,7 +568,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("lesson_dir", type=Path)
     ap.add_argument("--budget", type=float, help="model spend allowed for this lesson, USD")
-    ap.add_argument("--batch", action="store_true",
+    ap.add_argument("--batch", action="store_true",  # refused below: batch mode is off
                     help="batch mode at half price, only for an unattended run the maintainer "
                          "asked for (up to 24 hours per stage); default: direct calls")
     ap.add_argument("--approve", choices=sorted(GATES))
@@ -580,6 +581,10 @@ def main() -> None:
     ap.add_argument("--accept-uncommitted", action="append", metavar="STAGE",
                     help="run this paid stage although its code is not committed (logged)")
     a = ap.parse_args()
+    if a.batch:
+        raise SystemExit("batch mode is off (maintainer, 2026-09-30; docs/03-RUNBOOK.md, Cost "
+                         "controls): the night run's batches did not start in two hours. Run "
+                         "without --batch: direct calls with prompt caching")
     L = a.lesson_dir
     (L / "analysis").mkdir(parents=True, exist_ok=True)
 
