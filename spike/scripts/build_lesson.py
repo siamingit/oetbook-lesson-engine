@@ -418,6 +418,18 @@ def stage_images(L, a):
     illustration, generated once and cached by the brief; the sections are
     re-rendered, free, so their html names the images."""
     import gloss_images
+    # ADR 021: every board has a picture; its brief is the agent's, one per
+    # board, in analysis/pictures.json (step pictures, like the tables of 1b)
+    pp = L / "analysis" / "pictures.json"
+    if not pp.exists():
+        raise Stop("step pictures (ADR 021; docs/02-DESIGN-SYSTEM.md §7e): write "
+                   "analysis/pictures.json, one image brief per board ('alt text | what to "
+                   "draw': the patient in the case notes, a clinic scene, the concept; meaningful, "
+                   "never decorative), keyed by section folder and board number; see "
+                   "docs/03-RUNBOOK.md step 10c")
+    pics = json.loads(pp.read_text(encoding="utf-8")).get("sections") or {}
+    missing_pics = [e["brief"].strip() for es in pics.values() for e in es
+                    if (e.get("brief") or "").strip() and not gloss_images.find(L, e["brief"].strip())]
     missing = []
     info, secs = sections(L)
     for s in secs:
@@ -429,18 +441,22 @@ def stage_images(L, a):
         stale = [x for x in briefs if gloss_images.find(L, x)
                  and not any(b.get("image") for t in d["topics"] for h in t["thoughts"]
                              for b in h["blocks"] if (b.get("icon") or "").strip() == x)]
-        if todo or stale:
+        pic_stale = any(b.get("type") == "picture" and not b.get("image")
+                        for t in d["topics"] for h in t["thoughts"] for b in h["blocks"])
+        if todo or stale or pic_stale or paths.section_tag(s["pages"]) in pics and not any(
+                b.get("type") == "picture" for t in d["topics"] for h in t["thoughts"] for b in h["blocks"]):
             missing.append((s, todo))
-    if not missing:
+    if not missing and not missing_pics:
         return
-    n = sum(len(t) for _, t in missing)
+    n = sum(len(t) for _, t in missing) + len(missing_pics)
     if n:
-        afford(L, a.budget, 0.10 * n, f"{n} gloss image(s)")
-        run(L, [str(HERE / "gloss_images.py"), str(L), "--all", "--call"], "gloss images")
-    for s, _ in missing:
+        afford(L, a.budget, 0.10 * n, f"{n} image(s)")
+        run(L, [str(HERE / "gloss_images.py"), str(L), "--all", "--call"], "gloss and board images")
+    for s in secs:
         if not s.get("intro"):
             run(L, [str(HERE / "write_screens.py"), str(L), "--pages", pp(s["pages"]), "--render"],
                 f"screens render with images, {s['title']}")
+    run(L, [str(HERE / "build_lesson_boards.py"), str(L)], "title and contents boards, with pictures")
 
 
 def stage_narration(L, a):
@@ -450,7 +466,13 @@ def stage_narration(L, a):
     qa = [s for s in secs
           if not (paths.narration_dir_for(L, s["pages"]) / "qa" / "qa_pass1.json").exists()]
     batch(L, "qa1", len(qa), EST["qa"], a)
+    # the silent preview is fitted and checked like the finished player (ADR
+    # 011, ADR 020): every block inside the board, nothing over anything
+    run(L, [str(HERE / "fit_boards.py"), str(L), "--silent"], "board fit (silent preview)")
     run(L, [str(HERE / "build_silent_preview.py"), str(L)], "silent preview")
+    d = str(L / "generated" / "lesson-preview" / "silent")
+    run(L, [str(HERE / "check_overflow.py"), str(L), "--dir", d], "overflow check (silent preview)")
+    run(L, [str(HERE / "check_overlap.py"), str(L), "--dir", d], "overlap check (silent preview)")
     run(L, [str(HERE / "build_narration_review.py"), str(L)], "narration review page")
     require_gate(L, "narration")
 
@@ -547,6 +569,7 @@ def stage_player(L, a):
     run(L, [str(HERE / "check_marks.py"), str(L), "--dir", d], "mark check")
     run(L, [str(HERE / "check_layout.py"), str(L), "--dir", d], "layout check")
     run(L, [str(HERE / "check_overflow.py"), str(L), "--dir", d], "overflow check")
+    run(L, [str(HERE / "check_overlap.py"), str(L), "--dir", d], "overlap check")
     # The last step of every build (ADR 006): the course index, rebuilt whole,
     # outside the repository (docs/05-COURSE-INDEX.md). Again on every run, so
     # it also records the final gate once approved.

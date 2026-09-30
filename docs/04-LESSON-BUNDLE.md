@@ -4,7 +4,7 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.11. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.12. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
 2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
 table boards, on 2026-09-25 (docs/adr/007-table-boards.md); 1.3, the board style
@@ -17,7 +17,9 @@ and tight boards so every block fits, the same day (docs/adr/011-boards-fit.md);
 relative and participle clauses in the clause diagram, the same day
 (docs/adr/012-relative-and-participle-clauses.md); 1.10, the gloss block, the
 same day (docs/adr/013-gloss-moments-and-teacher-openings.md); 1.11, a gloss's
-generated image, the same day (docs/adr/015-gloss-images.md).
+generated image, the same day (docs/adr/015-gloss-images.md); 1.12, a picture on
+every board and no block over another, on 2026-09-30 (docs/adr/020-no-overlap.md,
+docs/adr/021-a-picture-on-every-board.md).
 A change to it is a new format version (§3), recorded in a new ADR.
 
 | Version | Date | Change |
@@ -34,6 +36,7 @@ A change to it is a new format version (§3), recorded in a new ADR.
 | 1.9 | 2026-09-27 | relative and participle clauses: the `clauses` part kinds `defining`, `nondefining`, `remove` (with `keeps`) and `link`, `dangling` (with `from`); rule 24 (ADR 012) |
 | 1.10 | 2026-09-27 | the gloss block: the block type `gloss` (`term`, `explanation`, `text`, `icon`, `items` `{kind, text, part}` with kinds `meaning`, `picture`, `example`); rule 25 (ADR 013) |
 | 1.11 | 2026-09-27 | a gloss's generated image: the block's `image` (`file`, relative to the bundle's folder; `alt`); its `icon` is the image brief; rule 26 (ADR 015) |
+| 1.12 | 2026-09-30 | the block type `picture` (`icon` its brief, `image`), a board's picture shown from its state's start (rule 27); side notes under the table, never over it, and the view panned to them (rules 12, 13 changed; ADR 020, ADR 021) |
 
 ---
 
@@ -155,7 +158,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.11"` |
+| `format_version` | string | `"1.12"` |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -209,7 +212,7 @@ A block is one thing on a board. Each carries its data and its rendered `html`.
 | Field | Meaning |
 |---|---|
 | `id` | block id |
-| `type` | `plain`, `error_row`, `answer_row`, `term_box`, `comparison`, `callout`, `category_card`, `timeline`, `table`, `clauses` (1.7), `gloss` (1.10), `contents_item`, `lesson_title` (docs/02-DESIGN-SYSTEM.md §7) |
+| `type` | `plain`, `error_row`, `answer_row`, `term_box`, `comparison`, `callout`, `category_card`, `timeline`, `table`, `clauses` (1.7), `gloss` (1.10), `picture` (1.12), `contents_item`, `lesson_title` (docs/02-DESIGN-SYSTEM.md §7) |
 | `text` | the text of `plain`, `error_row`, `answer_row`, `callout`, `category_card` (body), `contents_item` (the category; in a lesson with no contents slide, the section's title, and its `explanation` is null), `lesson_title` |
 | `label` | a small label: `term_box` ("NEW WORD"; "WORD" marks a gloss of a hard general word, which the reference player draws on one line as "term (= explanation)", docs/02-DESIGN-SYSTEM.md §7b), `comparison`, `category_card` (header), `timeline`; on a `contents_item`, its number |
 | `term`, `explanation` | `term_box`; `explanation` also carries a `contents_item`'s section list |
@@ -393,11 +396,17 @@ These are the only rules. Every time and target they use is in the bundle.
     `time` ≤ `t`: rows other than `row` are dimmed and the cell (`row`, `col`)
     is highlighted; with `row` null nothing is dimmed.
 12. **A side note** (1.2), a working block with `beside`, is shown by rule 4 and
-    drawn next to its row, over the other rows, not in the flow of the board.
+    drawn under the table (and under anything else in the board's flow), in the
+    order its state lists the notes, never over the table or any text (1.12;
+    before 1.12 it was drawn next to its row, over the other rows). A board's
+    picture on a table board sits at the right under the table, the notes to
+    its left.
 13. **Auto zoom** (1.2) is the renderer's: when a core table's text on screen
     is smaller than 14 px, the view zooms onto the highlighted cell (or the row)
-    and its visible side notes; otherwise the view is not zoomed. Under
-    `prefers-reduced-motion`, without animation.
+    and its visible side notes; otherwise the view is not zoomed. Where the
+    side notes shown run past the board, the view pans the table up, unzoomed,
+    until they are in view (1.12). Under `prefers-reduced-motion`, without
+    animation.
 14. **A pinned block** (1.3) is shown from its time in `pinned` until the board's
     `until`, through every erasure.
 15. **Word marks** (1.3) are drawn under the cues' marks, from their `time` to
@@ -453,6 +462,13 @@ These are the only rules. Every time and target they use is in the bundle.
     the bundle's folder, the same file the block's `html` shows, with
     `image.alt` as its alt text; the renderer shows it from its part's reveal
     (a short fade; none under reduced motion). The narration never points at it.
+27. **A board's picture** (1.12) is a working block of type `picture` in its
+    board's first state, with no words; its `image` is as rule 26's. It is
+    shown from its state's `start` (its time in the state's `reveal`) until the
+    state is erased or a clear takes it, like any note (rule 22). No cue names
+    it, and the narration never points at it.
+28. **Nothing over anything** (1.12; no data change): no block is drawn over
+    another block or its text, and no text over other text, in any state.
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and
@@ -467,7 +483,7 @@ no cues and no provenance.
 
 | Field | Meaning |
 |---|---|
-| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.11"` |
+| `format`, `format_version` | `"oetbook-lesson-text"`, `"1.12"` |
 | `lesson` | the same object as `bundle.json`'s `lesson` |
 | `sections[]` | `{id, title, category, start, end, narration_text, board_text, boards}` |
 | `sections[].narration_text` | everything said in the section, one paragraph per board |

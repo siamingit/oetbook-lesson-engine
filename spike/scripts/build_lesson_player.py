@@ -54,7 +54,7 @@ from write_screens import (FRAME_CSS, TAG_LABELS, block_html, resolve_images, IM
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-FORMAT_VERSION = "1.11"             # docs/04-LESSON-BUNDLE.md; 1.1 refs, 1.2 table boards, 1.3 board style, 1.4 table cells, 1.5 tense colours by lesson, 1.6 choice tables and marks in cells, 1.7 the clause diagram, 1.8 clears and table fit, 1.9 relative and participle clauses in the clause diagram, 1.10 the gloss block, 1.11 gloss images
+FORMAT_VERSION = "1.12"             # docs/04-LESSON-BUNDLE.md; 1.1 refs, 1.2 table boards, 1.3 board style, 1.4 table cells, 1.5 tense colours by lesson, 1.6 choice tables and marks in cells, 1.7 the clause diagram, 1.8 clears and table fit, 1.9 relative and participle clauses in the clause diagram, 1.10 the gloss block, 1.11 gloss images, 1.12 board pictures and no overlap
 READING_HOLD_S = 2.5               # the pointer stays on the last word read this long
 # Everything block_html draws from; pipeline notes (anchor, from_beats, note,
 # relabelled, ruling) stay in screens.json.
@@ -484,6 +484,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                     s["reveal"][wid] = s_rev[wid]
                     for p in diagram_parts(blocks_all[wid]):
                         s["reveal"][p] = s_rev.get(p, s_rev[wid])
+                elif blocks_all[wid].get("type") == "picture":
+                    s["reveal"][wid] = s["start"]       # 1.12: the board's picture opens its state (ADR 021)
             s["until"] = s["erase"]["time"] if s["erase"] else bd["until"]
         bd["reveal"] = {p: fixed_rev.get(p, bd["start"])
                         for fid in bd["fixed"] for p in diagram_parts(blocks_all[fid])}

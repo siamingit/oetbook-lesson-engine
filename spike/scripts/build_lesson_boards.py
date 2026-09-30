@@ -81,27 +81,49 @@ def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
                        if c["sections"] else "Section " + str(n) + " of the lesson, by its title "
                        "(sections.json); the deck has no contents slide"))
              for n, c in enumerate(cb["categories"], 1)]
-    blocks = {b["id"]: b for b in [title] + extra + [desc] + items}
+    # a picture on each board (ADR 021), from the agent's briefs in pictures.json
+    from write_screens import load_pictures, gloss_alt
+    import gloss_images
+    pic_spec = {e["topic"]: e for e in (load_pictures(lesson).get("sections") or {}).get(
+        paths.section_tag([page])) or [] if (e.get("brief") or "").strip()}
+    pics = {}
+    nxt = len(extra) + 2 + len(items) + 1
+    for topic in (1, 2):
+        e = pic_spec.get(topic)
+        if not e:
+            continue
+        b = blk(f"k{nxt:02d}", "picture", None, prov="authored",
+                note="ADR 021: the board's picture, brief by the agent. " + (e.get("why") or ""))
+        b.update(icon=e["brief"].strip(), anchor=False, role="note")
+        got = gloss_images.find(lesson, b["icon"])
+        b["image"] = {"file": got["file"], "alt": got.get("alt") or gloss_alt(b)} if got else None
+        pics[topic] = b
+        nxt += 1
+    blocks = {b["id"]: b for b in [title] + extra + [desc] + items + list(pics.values())}
     topics = [
         {"id": "t1", "title": "Title board", "from_beats": beats, "split": None,
          "thoughts": [{"id": "t1.1", "purpose": "the lesson title, then what the lesson is about",
-                       "blocks": [title] + extra + [desc]}]},
+                       "blocks": ([pics[1]] if 1 in pics else []) + [title] + extra + [desc]}]},
         {"id": "t2", "title": "Contents board", "from_beats": beats, "split": None,
          "thoughts": [{"id": "t2.1", "purpose": "each category, revealed as it is named",
-                       "blocks": items}]},
+                       "blocks": ([pics[2]] if 2 in pics else []) + items}]},
     ]
 
     def state(sid, fixed, working):
-        h = stack_height(list(fixed) + list(working), blocks)
+        # the board's picture is cleared by the fit when the notes need its
+        # room (ADR 021), so the estimate counts the board without it
+        h = stack_height([i for i in list(fixed) + list(working) if blocks[i]["type"] != "picture"], blocks)
         return {"id": sid, "working": list(working), "notes": len(working),
                 "height": round(h, 3), "fill": round(h / BUDGET, 3), "thoughts": [sid.split(".")[0] + ".1"]}
     out_boards = [
         {"id": "t1", "title": "", "label": "Title board", "fixed": ["k01"],
          "fixed_height": round(block_height(title), 3),
-         "states": [state("t1.s1", ["k01"], [b["id"] for b in extra + [desc]])], "erasures": []},
+         "states": [state("t1.s1", ["k01"], ([pics[1]["id"]] if 1 in pics else [])
+                          + [b["id"] for b in extra + [desc]])], "erasures": []},
         {"id": "t2", "title": cb["heading"], "label": "Contents board", "fixed": [],
          "fixed_height": 0.0,
-         "states": [state("t2.s1", [], [b["id"] for b in items])], "erasures": []},
+         "states": [state("t2.s1", [], ([pics[2]["id"]] if 2 in pics else []) + [b["id"] for b in items])],
+         "erasures": []},
     ]
     findings = []
     # every section of the lesson is on the contents board by name, authored

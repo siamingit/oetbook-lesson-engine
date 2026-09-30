@@ -374,8 +374,9 @@ Rules:
   choice with neither.
 - At most one timeline and two icons per board state. The layout erases
   sooner rather than exceed either.
-- No photographs, no illustrations, with one exception: a gloss's generated
-  illustration of a concrete word (§7b; ADR 015).
+- No photographs, no illustrations, with two exceptions: a gloss's generated
+  illustration of a concrete word (§7b; ADR 015), and the board's picture
+  (§7e; ADR 021).
 - Every element stays legible at phone-landscape width.
 - Narration reveals and marks these like any block, and the reading
   pointer follows the text inside them.
@@ -404,9 +405,13 @@ row on that board:
   table never reflows while typing. What is typed is what the teacher
   wrote in that cell in the recording, never invented.
 - **Side notes** (a gloss, a word-form change, a short term or rule)
-  appear next to the row, over the dimmed rows, and are erased once
-  they have been spoken. They are the board's working layer; a table
-  board has no other fixed block.
+  appear under the table, never over its rows (revised 2026-09-30, ADR 020;
+  they were drawn next to the row, over the dimmed rows), and are erased
+  once they have been spoken; the spotlight shows which row they belong to.
+  Where they do not fit, earlier notes are cleared, the board made tight,
+  the table's text made smaller to its floor, and only then the view pans
+  the table up to them. They are the board's working layer; a table board
+  has no other fixed block.
 - **At the end of each row, the whole table shows again**, no row
   dimmed, before the next row comes into focus.
 - **Auto zoom.** When the table's text on screen is smaller than 14 px,
@@ -729,6 +734,23 @@ Nothing moves a word (§8a): the set-in clause is styled in place, the removal
 line's room is reserved from the start, and the arcs are drawn over the board
 like marks, measured from where the words are.
 
+### 7e. A picture on every board
+
+Decided by the maintainer 2026-09-30 for every lesson (docs/adr/021-a-picture-on-every-board.md).
+Every board has at least one relevant generated image in the approved style
+(§7b): the patient in the case notes, a clinic scene, or a picture of the
+concept. Meaningful, never decorative; never over text.
+
+- **The brief** is the agent's, one per board, in `analysis/pictures.json`
+  ("alt text | what to draw"), written from the board's content; the exercise
+  items of one exercise share one picture.
+- **The block** `picture` opens the board: the first note of its first state,
+  shown from the state's start with no cue, erased with that state or cleared
+  by the fit when a later note needs its room (§8b). A square, 20% of the
+  frame's height, in the board's flow; on a table board at the right under the
+  table, the side notes beside it on its left.
+- **The narration never points at it**, as for a gloss's image.
+
 ## 8. Marks
 
 Clean and re-authored. Never copies of the instructor's ink.
@@ -876,6 +898,20 @@ audit fails any other position word (`write_narration.position_findings`); a
 number "below 38" and a "left knee" are not positions.
 
 ---
+
+### 8d. Nothing is drawn over anything
+
+Decided by the maintainer 2026-09-30, for every lesson (docs/adr/020-no-overlap.md),
+after Grammar 8 showed a timeline over a table's text and a timeline's labels
+over each other. In every state, at phone-landscape and laptop width, no block
+overlaps another block, and no text is drawn over other text (a diagram's
+labels, a table's cells). Side notes go under their table (§7, Tables);
+timeline marker labels that would meet take further lines under the axis.
+
+- **Checked, not eyeballed**: `check_overlap.py` drives the player to every
+  moment at which a board changes and measures every block and every line of
+  text; any overlap fails the build. It runs on the finished player and on the
+  silent preview before the narration gate.
 
 ## 9. Controls
 

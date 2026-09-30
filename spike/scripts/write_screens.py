@@ -123,6 +123,16 @@ ICONS = {
 # preview and the review pages.
 IMAGE_TOKEN = "@@gloss-images@@"
 
+# A picture on every board (maintainer, 2026-09-30; docs/adr/021-a-picture-on-every-board.md):
+# a generated illustration in the gloss images' approved style, meaningful to the
+# board (the patient in its case notes, a clinic scene, the concept). It opens
+# the board: the first note of its first state, shown from the state's start with
+# no cue, drawn in the flow so it never lies over text, and erased like any note
+# (at the first erasure, or earlier by the fit when a later note needs its room).
+# Its brief is the agent's, one per board, in <lesson>/analysis/pictures.json;
+# code adds the block (type `picture`, `icon` the brief) and gloss_images.py draws it.
+PICTURE_HEIGHT = 0.20      # share of the frame's height: the picture's room when it is shown
+
 
 def gloss_alt(b: dict) -> str:
     """A gloss image's alt text: the image's own, else the brief's first part."""
@@ -1472,6 +1482,37 @@ def add_blocks(out_dir: Path, topics: list[dict], blocks: dict[str, dict]) -> li
     return added
 
 
+def load_pictures(lesson: Path) -> dict:
+    """The board pictures' briefs (ADR 021): {"sections": {section tag: [{"topic":
+    n, "brief": "alt text | what to draw", "why": ...}]}}."""
+    p = lesson / "analysis" / "pictures.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+
+
+def add_pictures(lesson: Path, pages: list[int], topics: list[dict],
+                 blocks: dict[str, dict]) -> list[tuple[int, str]]:
+    """One picture block per board that has a brief, in its topic's fixed layer
+    (anchored, after the topic's own blocks), with an id after the section's
+    last: [(topic number, block id)]."""
+    spec = (load_pictures(lesson).get("sections") or {}).get(paths.section_tag(pages)) or []
+    nums = [int(i[1:]) for i in blocks if re.fullmatch(r"k\d+", i)]
+    n = max(nums, default=0)
+    out = []
+    for e in sorted(spec, key=lambda e: e["topic"]):
+        if not 1 <= e["topic"] <= len(topics) or not (e.get("brief") or "").strip():
+            continue
+        n += 1
+        bid = f"k{n:02d}"
+        b = {**BLOCK_DEFAULTS, "type": "picture", "icon": e["brief"].strip(), "anchor": False,
+             "provenance": "authored", "id": bid,
+             "note": "ADR 021: the board's picture, brief by the agent. " + (e.get("why") or "")}
+        # the board's first note: it opens the board
+        topics[e["topic"] - 1]["thoughts"][0]["blocks"].insert(0, b)
+        blocks[bid] = b
+        out.append((e["topic"], bid))
+    return out
+
+
 def drop_blocks(out_dir: Path, topics: list[dict], blocks: dict[str, dict]) -> list[str]:
     """Blocks taken out of a written section (overrides.json `drop`; maintainer
     2026-09-29, ADR 018: notes moved from the comma boards into authored
@@ -1567,6 +1608,8 @@ def wrapped_lines(text: str | None, cpl: int) -> int:
 def block_height(b: dict) -> float:
     """Share of frame height, from the design-system proportions."""
     t = b["type"]
+    if t == "picture":
+        return PICTURE_HEIGHT
     if t == "term_box" and b.get("label") == GLOSS_LABEL:
         # a gloss: the word and "(= gloss)" on one line (design system §7b)
         h = LABEL_LINE + wrapped_lines(f"{b['term']} (= {b['explanation']})", CHARS_PER_LINE) * LINE
@@ -1743,12 +1786,43 @@ def diagram_geometry(b: dict) -> dict:
     series = [it for it in items if it.get("kind") == "series"]
     top = CALLOUT_BAND if above else 0.0
     axis_y = top + AXIS_Y
-    axis_h = top + AXIS_BAND + (CALLOUT_BAND if below else 0.0)
+    lanes = marker_lanes(b)
+    extra = LABEL_LANE * max(lanes.values(), default=0)
+    axis_h = top + AXIS_BAND + extra + (CALLOUT_BAND if below else 0.0)
     # The layout height keeps the original timeline's 2cqh of slack under the
     # axis band (TIMELINE_HEIGHT), so a plain timeline packs exactly as before.
     height = axis_h + 2.0 + LEGEND_BAND * len(series)
     return {"axis_y": axis_y, "axis_h": axis_h, "height": height, "has_above": bool(above),
-            "has_below": bool(below), "n_series": len(series)}
+            "has_below": bool(below), "n_series": len(series), "lanes": lanes, "extra": extra}
+
+
+# Marker labels that would overlap on one line (ADR 020: no text over text) are
+# set on further lines under the axis, nearest first. A label's width is
+# estimated from its characters at the label size (2.4cqh, about 0.8% of a
+# full-width axis a character); check_overlap.py measures the drawing.
+LABEL_LANE = 3.0          # cqh: one more line of marker labels
+LABEL_CHAR_PCT = 0.8      # % of the axis a label character takes
+LABEL_GAP_PCT = 1.5
+
+
+def marker_lanes(b: dict) -> dict[int, int]:
+    """{part number: lane} for the marker labels of a timeline, lane 0 the
+    first line under the axis."""
+    spans: list[list[tuple[float, float]]] = []
+    out = {}
+    marks = [it for it in b.get("items") or [] if it.get("kind") == "marker"]
+    for it in sorted(marks, key=lambda it: float(it.get("at") or 0)):
+        x = float(it.get("at") or 0)
+        half = (len(it.get("label") or "") * LABEL_CHAR_PCT + LABEL_GAP_PCT) / 2
+        lo, hi = x - half, x + half
+        lane = 0
+        while lane < len(spans) and any(lo < b1 and hi > a1 for a1, b1 in spans[lane]):
+            lane += 1
+        if lane == len(spans):
+            spans.append([])
+        spans[lane].append((lo, hi))
+        out[it.get("part", 0)] = lane
+    return out
 
 
 # The clause diagram's plan (ADR 010), in cqh. Piece text is body size on a
@@ -2196,7 +2270,8 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
         need = {"term_box": ["term", "explanation"], "gloss": ["term", "explanation", "text"],
                 "comparison": ["left", "right"],
                 "category_card": ["label", "text"], "timeline": ["items"], "clauses": ["items"],
-                "callout": ["kind", "text"], "table": ["header", "rows"]}.get(t, ["text"])
+                "callout": ["kind", "text"], "table": ["header", "rows"],
+                "picture": ["icon"]}.get(t, ["text"])
         for k in need:
             if not b.get(k):
                 fail(b["id"], f"{t} is missing `{k}`")
@@ -2221,9 +2296,14 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             if b.get("term") and b.get("text") and not re.search(
                     r"\b" + re.escape(b["term"].split()[0][:5]), b["text"], re.I):
                 fail(b["id"], f"the gloss's example does not use {b['term']!r}")
+        elif t == "picture":
+            # the board's picture (ADR 021): its `icon` is an image brief, as a gloss's
+            if not b.get("image"):
+                warn(b["id"], f"board picture not generated yet for {gloss_alt(b)!r}: the "
+                              "runner's images stage makes it (gloss_images.py)")
         elif b.get("icon") and b["icon"] not in ICONS:
             fail(b["id"], f"icon {b['icon']!r} is not in the catalogue")
-        if b.get("icon") and t not in ("term_box", "gloss"):
+        if b.get("icon") and t not in ("term_box", "gloss", "picture"):
             fail(b["id"], f"icon on a {t}; icons go only inside a term box, beside a "
                           "clinical word")
         if t == "term_box" and b.get("label") == GLOSS_LABEL:
@@ -2948,7 +3028,7 @@ FRAME_CSS = """
 .tl-arrow.lane1 .lab.above{left:100%;bottom:auto;top:-1.4cqh;transform:none;margin-left:3.2cqh}
 .tl-marker{position:absolute;top:var(--ay);width:0;--f-ac:#2C2C2A}
 .tl-marker .tick{position:absolute;left:-.18cqh;top:-2.6cqh;width:max(2px,.36cqh);height:5.2cqh;background:#2C2C2A}
-.tl-marker .lab.below{top:3.1cqh;left:0;transform:translateX(-50%)}
+.tl-marker .lab.below{top:calc(3.1cqh + var(--lane,0) * 3cqh);left:0;transform:translateX(-50%)}
 .tl-series{position:absolute;top:var(--ay);height:0}
 .tl-series .x{position:absolute;top:.5cqh;transform:translateX(-50%);font-style:normal;font-size:2.6cqh;line-height:1;
   color:var(--f-ac);font-weight:500}
@@ -3097,7 +3177,12 @@ FRAME_CSS = """
 .tbl.core td.v-right::after{content:"\\2713";position:absolute;right:.6cqh;bottom:.6cqh;width:2.8cqh;
   height:2.8cqh;border-radius:50%;background:#639922;color:#fff;font-size:1.9cqh;line-height:2.8cqh;
   text-align:center;font-weight:500}
-.blk.beside{position:absolute;z-index:3;max-width:58%;margin:0}
+.blk.beside{position:absolute;z-index:3;max-width:100%;margin:0}
+/* a board's picture (ADR 021): in the flow, never over text */
+.blk.pic{flex:0 0 auto;padding:0;background:none;border:0;height:20cqh;width:20cqh}
+.blk.pic .pic-img{display:block;height:100%;width:100%;object-fit:contain}
+/* a diagram under a table is drawn at the table's width (ADR 020) */
+.blk.tl.beside,.blk.cl.beside{width:100%;max-width:100%}
 .plain.beside{background:#fff;border:1px solid #E8E6DF;padding:1.2cqh 2cqw}
 /* the lesson's opening boards (docs/00-PRODUCT.md §2a) */
 .ltitle{font-size:6cqh;font-weight:500;line-height:1.2;padding-top:12cqh;padding-left:0;padding-right:0}
@@ -3203,7 +3288,9 @@ def timeline_html(b: dict, bid: str) -> str:
                          + '"><div class="shaft"><i class="head"></i></div>'
                          + '<span class="lab above">' + esc(it["label"]) + "</span></div>")
         elif kind == "marker":
+            lane = g["lanes"].get(it.get("part", 0), 0)
             parts.append('<div class="pt tl-marker"' + pid + ' style="left:' + f"{x:.1f}%"
+                         + (f";--lane:{lane}" if lane else "")
                          + '"><i class="tick"></i><span class="lab below">'
                          + esc(it["label"]) + "</span></div>")
         elif kind == "series":
@@ -3235,7 +3322,7 @@ def timeline_html(b: dict, bid: str) -> str:
             # Below: the box hangs under the marker labels, its pointer tip
             # clear of them. Above: the box is anchored by its bottom edge so
             # the tip always ends the same distance above the arrow labels.
-            place = (f"top:{ay + 7.6:.2f}cqh" if side == "below"
+            place = (f"top:{ay + 7.6 + g['extra']:.2f}cqh" if side == "below"
                      else f"bottom:{g['axis_h'] - (ay - 6.0):.2f}cqh")
             parts.append('<div class="pt tl-callout ' + side + ' fam-' + fam + '"' + pid
                          + ' style="left:' + f"{left:.1f}%;width:{CALLOUT_WIDTH:.1f}%;"
@@ -3397,6 +3484,8 @@ def block_role(b: dict, printed: str) -> str:
         return b["role"]
     t = b["type"]
     norm = lambda s: re.sub(r"\s+", " ", s or "").strip().lower()
+    if t == "picture":
+        return "note"                            # a picture the teacher shows (ADR 021)
     if (t == "table" and b.get("core")) or b.get("exercise_item") is not None:
         return "slide"
     if t == "clauses":
@@ -3450,6 +3539,14 @@ def _block_html(b: dict) -> str:
         return ('<div class="blk row ' + cls + '"' + bid + ">" + num
                 + '<span class="verdict">' + glyph + "</span>"
                 + "<span>" + tagged(b["text"], tags) + "</span></div>")
+    if t == "picture":
+        # A board's picture (ADR 021): no words; its room reserved whether or
+        # not the image is made yet, so nothing moves when it is
+        img = b.get("image") or {}
+        inner = ('<img class="pic-img" src="' + IMAGE_TOKEN + "/" + esc(img["file"]) + '" alt="'
+                 + esc(img.get("alt") or "") + '">') if img.get("file") else ""
+        return '<div class="blk pic"' + bid + ' role="img" aria-label="' + esc(
+            img.get("alt") or (b.get("icon") or "").split("|")[0].strip()) + '">' + inner + "</div>"
     if t == "gloss":
         # A gloss (ADR 013): the word, then its meaning, its picture and its
         # example as parts the narration reveals, each with its room reserved
@@ -3614,6 +3711,7 @@ def render(lesson: Path, page: int, data: dict) -> int:
     blocks = assign_ids(topics)
     added = add_blocks(out_dir, topics, blocks)
     dropped = drop_blocks(out_dir, topics, blocks)
+    pictures = add_pictures(lesson, pages, topics, blocks)
     overrides = apply_overrides(out_dir, blocks)
     if all(paths.is_added(p) for p in pages):
         # An authored section (ADR 018): every block is the agent's, and none
@@ -3626,6 +3724,12 @@ def render(lesson: Path, page: int, data: dict) -> int:
             if "added:" not in (b.get("note") or ""):
                 b["note"] = ("added: maintainer request 2026-09-29 (ADR 018). "
                              + (b.get("note") or "")).strip()
+    for b in blocks.values():
+        if b["type"] == "picture":
+            import gloss_images
+            got = gloss_images.find(lesson, b["icon"])
+            b["image"] = ({"file": got["file"], "alt": got.get("alt") or gloss_alt(b)}
+                          if got else None)
     for b in blocks.values():
         if b["type"] == "gloss":
             b["image"] = None
@@ -3665,10 +3769,30 @@ def render(lesson: Path, page: int, data: dict) -> int:
         # they stay recorded, so their narration keeps going with them
         dropped_states = sorted(set(dropped_states) | set(
             (saved.get("taken_out") or {}).get("states") or []))
+    if saved:
+        # a picture the saved plan holds but this render does not (pictures.json
+        # changed) leaves the plan; the plan itself is kept (ADR 021)
+        gone_pics = {b["id"] for t in saved.get("topics") or [] for h in t["thoughts"]
+                     for b in h["blocks"] if b.get("type") == "picture" and b["id"] not in blocks}
+        for bd in saved["boards"]:
+            bd["fixed"] = [i for i in bd["fixed"] if i not in gone_pics]
+            for st in bd["states"]:
+                st["working"] = [i for i in st["working"] if i not in gone_pics]
     if saved and saved.get("raw_id") == raw.get("id") and all(
             i in blocks for bd in saved["boards"]
             for i in bd["fixed"] + [w for st in bd["states"] for w in st["working"]]):
         place_added(saved["boards"], blocks, added)
+        # ADR 021: the board's picture is the kept plan's first note, and only
+        # there (a plan saved by an earlier render may hold it elsewhere)
+        pic_ids = {pid for _, pid in pictures}
+        for bd in saved["boards"]:
+            bd["fixed"] = [i for i in bd["fixed"] if i not in pic_ids]
+            for st in bd["states"]:
+                st["working"] = [i for i in st["working"] if i not in pic_ids]
+        for ti, pid in pictures:
+            bd = saved["boards"][ti - 1] if ti - 1 < len(saved["boards"]) else None
+            if bd is not None and bd["states"]:
+                bd["states"][0]["working"].insert(0, pid)
         if [[st["working"] for st in bd["states"]] for bd in saved["boards"]] !=                 [[st["working"] for st in bd["states"]] for bd in boards]:
             print("layout kept as narrated: the estimates would now plan it differently")
         boards = saved["boards"]

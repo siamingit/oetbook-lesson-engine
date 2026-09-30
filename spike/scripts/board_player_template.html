@@ -920,37 +920,46 @@ function offsetIn(el, root) {
   return { x, y, w: el.offsetWidth, h: el.offsetHeight };
 }
 
-// Side notes: beside their row, below it, or above it when there is no room
-// below; notes about the whole table go under the table.
+// Side notes (bundle 1.12; docs/adr/020-no-overlap.md): under the whole table,
+// in the order the state lists them, never over the table's rows. The row a
+// note belongs to is shown by the spotlight, not by where the note sits. Where
+// the notes do not fit under the table, the fit (fit_boards.py) makes the
+// table's text smaller or clears earlier notes; nothing is drawn over text.
 function placeBeside(bd, s) {
   const tableEl = bd.table && blockEls.get(bd.table);
   if (!tableEl || !s) return [];
-  const H = camEl.offsetHeight, W = camEl.offsetWidth, gap = frame.offsetHeight * 0.012;
+  const W = camEl.offsetWidth, gap = frame.offsetHeight * 0.012;
   const placed = [];
-  const byRow = new Map();
+  const tb = offsetIn(tableEl, camEl);
+  // under everything drawn in the flow (the table, the board's picture)
+  let top = tb.y + tb.h;
+  for (const [bid, e] of blockEls) {
+    if (e.classList.contains("beside") || (blocks[bid] || {}).type === "picture"
+        || !(e.dataset.layer === "fixed" || e.classList.contains("on"))) continue;
+    if (getComputedStyle(e).display === "none") continue;
+    const q = offsetIn(e, camEl);
+    top = Math.max(top, q.y + q.h);
+  }
+  top += gap;
+  // the board's picture (ADR 021) on a table board: at the right under the
+  // table, the notes beside it on its left, so both show together
+  let right = tb.x + tb.w;
   for (const id of s.working) {
     const el = blockEls.get(id), b = blocks[id];
-    if (!el || !b.beside) continue;
-    const k = b.beside.row;
-    if (!byRow.has(k)) byRow.set(k, []);
-    byRow.get(k).push(el);
+    if (!el || b.type !== "picture") continue;
+    el.style.position = "absolute";
+    el.style.left = (tb.x + tb.w - el.offsetWidth) + "px";
+    el.style.top = top + "px";
+    if (el.classList.contains("on") && !el.classList.contains("cleared")) right = tb.x + tb.w - el.offsetWidth - gap;
   }
-  const tb = offsetIn(tableEl, camEl);
-  for (const [row, els] of byRow) {
-    const tr = row === null ? null : tableEl.querySelector('tbody tr[data-row="' + row + '"]');
-    const cell = tr && (tr.children[1] || tr.children[0]);
-    const r = tr ? offsetIn(tr, camEl) : tb;
-    const left0 = cell ? offsetIn(cell, camEl).x : tb.x;
-    const total = els.reduce((a, e) => a + e.offsetHeight + gap, -gap);
-    let top = r.y + r.h + gap;
-    if (top + total > H && tr) top = r.y - total - gap;
-    top = Math.max(0, Math.min(top, H - total));
-    for (const el of els) {
-      el.style.left = Math.max(0, Math.min(left0, W - el.offsetWidth)) + "px";
-      el.style.top = top + "px";
-      top += el.offsetHeight + gap;
-      if (el.classList.contains("on")) placed.push(el);
-    }
+  for (const id of s.working) {
+    const el = blockEls.get(id), b = blocks[id];
+    if (!el || !b.beside || b.type === "picture") continue;
+    el.style.maxWidth = Math.max(0, right - tb.x) + "px";
+    el.style.left = Math.max(0, Math.min(tb.x, W - el.offsetWidth)) + "px";
+    el.style.top = top + "px";
+    // only the notes shown now take room: an erased or cleared note leaves it
+    if (el.classList.contains("on")) { top += el.offsetHeight + gap; placed.push(el); }
   }
   return placed;
 }
@@ -976,9 +985,23 @@ function camera(bd, focus, notes, jumped) {
         const sc = Math.max(1, Math.min(MIN_READABLE_PX * 1.15 / px, 2.2, W * 0.92 / r.w, H * 0.8 / r.h));
         let tx = W / 2 - (r.x + r.w / 2) * sc, ty = H / 2 - (r.y + r.h / 2) * sc;
         tx = Math.min(0, Math.max(W - W * sc, tx));
-        ty = Math.min(0, Math.max(H - H * sc, ty));
+        // the content reaches down to the notes under the table (ADR 020)
+        const Hc = Math.max(H, ...notes.map(n => { const q = offsetIn(n, camEl); return q.y + q.h + frame.offsetHeight * 0.012; }));
+        ty = Math.min(0, Math.max(H - Hc * sc, ty));
         if (sc > 1.001) tf = "translate(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px) scale(" + sc.toFixed(3) + ")";
       }
+    }
+  }
+  // ADR 020: notes go under the table, never over it. Where the notes shown
+  // run past the board, the camera pans the table up (no zoom) so the notes
+  // are in view; rows above them leave the view, as they do under the zoom.
+  // Nothing is drawn over text.
+  if (!tf && bd.table && notes.length) {
+    const H = camEl.offsetHeight, gap = frame.offsetHeight * 0.012;
+    const bottom = Math.max(...notes.map(n => { const q = offsetIn(n, camEl); return q.y + q.h; }));
+    if (bottom > H) {
+      const ty = H - bottom - gap;
+      if (ty < -0.5) tf = "translate(0px," + ty.toFixed(1) + "px)";
     }
   }
   if (camEl.style.transform !== tf) {

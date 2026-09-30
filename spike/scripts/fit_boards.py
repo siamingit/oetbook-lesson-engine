@@ -75,9 +75,13 @@ HARNESS = r"""
   // what lies outside the board now: [block id, px], the camera's zoom undone
   function outside() {
     const keep = camEl.style.transform;
-    camEl.style.transform = "none";
+    // as check_overflow.py: a table board's notes as its camera shows them
+    const bd = drawnBoard || null;
+    const viewed = bd && panOk.has(bd.id) && bd.table && keep && keep !== "none";
+    if (!viewed) camEl.style.transform = "none";
     const A = area(), out = [];
     for (const [id, el] of blockEls) {
+      if (viewed && !el.classList.contains("beside")) continue;
       if (!el.isConnected || getComputedStyle(el).display === "none") continue;
       if (!(el.dataset.layer === "fixed" || el.classList.contains("on"))) continue;
       const r = el.getBoundingClientRect();
@@ -106,6 +110,9 @@ HARNESS = r"""
     blocks[id].font = f; blocks[id].html = blocks[id].html.replace(/--tf:[0-9.]+cqh/, "--tf:" + f + "cqh");
   }
   const tight = Object.assign({}, INIT.tight || {});
+  // boards where the camera may pan to show a table's notes: only after the
+  // table's text is at its floor and the notes still do not fit (ADR 020)
+  const panOk = new Set();
   function fitBoard(bd) {
     const unfitBefore = unfit.length;
     for (const s of bd.states) { s.clears = []; delete clears[s.id]; }
@@ -171,6 +178,22 @@ HARNESS = r"""
       unfit.length = n0;
       bd.tight += 1; tight[bd.id] = bd.tight;
     }
+    // ADR 020: notes go under a table, never over it; where they still do not
+    // fit, the table's text is made smaller, to the tables' floor, for the
+    // whole board (so no word moves between its states)
+    const tid = bd.table && blocks[bd.table] && blocks[bd.table].core ? bd.table : null;
+    while (unfit.length > n0 && tid && (blocks[tid].font || 2.6) > FMIN + 1e-6) {
+      unfit.length = n0;
+      setFont(bd, tid, Math.max(FMIN, (blocks[tid].font || 2.6) - 0.1));
+      drawnBoard = null;
+      fitBoard(bd);
+    }
+    if (unfit.length > n0 && tid) {
+      unfit.length = n0;
+      panOk.add(bd.id);
+      drawnBoard = null;
+      fitBoard(bd);
+    }
   }
   const pre = document.createElement("pre");
   pre.id = "fit-result";
@@ -204,10 +227,13 @@ def run(player: Path, width: int, init: dict) -> dict:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("lesson_dir", type=Path)
+    ap.add_argument("--silent", action="store_true",
+                    help="fit the silent preview (no audio yet: the narration gate); the plan "
+                         "keys on state and block ids, so the final fit replaces it")
     a = ap.parse_args()
     # measured on a player built without any fit, so the plan is made from
     # scratch every time (a table already made smaller would look as if it fitted)
-    folder = build(a.lesson_dir, silent=False, out="lesson-fit", use_fit=False)
+    folder = build(a.lesson_dir, silent=a.silent, out="lesson-fit", use_fit=False)
     plan: dict = {"clears": {}, "fonts": {}, "tight": {}}
     unfit: list = []
     for name, width in WIDTHS.items():

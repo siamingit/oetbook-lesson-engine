@@ -88,10 +88,15 @@ HARNESS = r"""
       renderFrame(t);
       samples++;
       const keep = camEl.style.transform;
-      camEl.style.transform = "none";          // measure the board unzoomed
+      // measure the board unzoomed; on a table board whose camera has panned
+      // or zoomed to show its notes (ADR 007, ADR 020), measure what the
+      // camera shows: the notes must be in view; the table itself may leave it
+      const viewed = bd.table && keep && keep !== "none";
+      if (!viewed) camEl.style.transform = "none";
       const A = area();
       for (const [id, el] of blockEls) {
         if (!shown(el)) continue;
+        if (viewed && !el.classList.contains("beside")) continue;   // under the camera: the notes
         const r = el.getBoundingClientRect();
         if (!r.width && !r.height) continue;
         const over = { top: A.t - r.top, bottom: r.bottom - A.b, left: A.l - r.left, right: r.right - A.r };

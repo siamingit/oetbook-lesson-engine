@@ -746,7 +746,10 @@ def boards_for_model(data: dict) -> list[dict]:
     for bd in data["screens"]["boards"]:
         states = []
         for n, s in enumerate(bd["states"]):
-            st = {"id": s["id"], "working": [compact(blocks[i]) for i in s["working"]],
+            # a board's picture (ADR 021) shows by itself at the state's start:
+            # nothing to reveal or say about it
+            st = {"id": s["id"], "working": [compact(blocks[i]) for i in s["working"]
+                                             if blocks[i].get("type") != "picture"],
                   "erased_after": n < len(bd["states"]) - 1}
             if bd.get("table"):
                 st["row"] = s["row"] + 1 if s.get("row") is not None else "whole table"
@@ -1444,6 +1447,8 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                 warn(s["id"], f"ends with about {since_visual} words after the last "
                               "visual event")
             for blk in working:
+                if blk not in revealed and (blocks.get(blk) or {}).get("type") == "picture":
+                    continue                     # shown at its state's start (ADR 021)
                 if blk not in revealed:
                     fail(s["id"], f"{blk} is never revealed")
                 elif parts_of(blk):

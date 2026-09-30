@@ -243,6 +243,17 @@ def main() -> None:
                             n += 1
                             print(f"{f.parent.name} {b['id']} {b['term']!r}: "
                                   + (f"${out.get('cost')}" if call else "to generate"))
+        # every board's picture (ADR 021), from the agent's briefs
+        pp = lesson / "analysis" / "pictures.json"
+        pics = json.loads(pp.read_text(encoding="utf-8")).get("sections", {}) if pp.exists() else {}
+        for tag, entries in sorted(pics.items()):
+            for e in entries:
+                brief = (e.get("brief") or "").strip()
+                if brief and not find(lesson, brief):
+                    out = generate(lesson, brief, brief.split("|")[0].strip(), call)
+                    n += 1
+                    print(f"{tag} board {e['topic']} picture: "
+                          + (f"${out.get('cost')}" if call else "to generate"))
         print(f"{n} image(s) {'generated' if call else 'missing'}; images spent ${spent(lesson):.2f}")
         return
     raise SystemExit("give --brief (and --alt), --all, or see the module docstring")
