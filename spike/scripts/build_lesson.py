@@ -465,6 +465,15 @@ def stage_narration(L, a):
     batch(L, "narration", len(todo), EST["narration"], a)
     qa = [s for s in secs
           if not (paths.narration_dir_for(L, s["pages"]) / "qa" / "qa_pass1.json").exists()]
+    if qa and a.no_new_qa:
+        # the maintainer asked for no new full QA round after the fixes of a
+        # reviewed lesson (2026-09-30): the sections rewritten since their QA
+        # pass 1 are not reviewed again; logged
+        log_decision(L, "No new QA pass on sections rewritten after QA (--no-new-qa)",
+                     "not reviewed again: " + ", ".join(s["title"] for s in qa),
+                     "maintainer's instruction in chat: no new full QA round after the fixes",
+                     "run without --no-new-qa (qa1 on those sections)")
+        qa = []
     batch(L, "qa1", len(qa), EST["qa"], a)
     # the silent preview is fitted and checked like the finished player (ADR
     # 011, ADR 020): every block inside the board, nothing over anything
@@ -601,6 +610,9 @@ def main() -> None:
                     help="stop runs before this stage (and every later one) until --release")
     ap.add_argument("--reason", help="why the stage is held (with --hold)")
     ap.add_argument("--release", choices=[n for n, _ in STAGES])
+    ap.add_argument("--no-new-qa", action="store_true",
+                    help="do not run QA pass 1 on sections rewritten after their QA (maintainer's "
+                         "instruction: no new full QA round after fixes); logged")
     ap.add_argument("--accept-uncommitted", action="append", metavar="STAGE",
                     help="run this paid stage although its code is not committed (logged)")
     a = ap.parse_args()
