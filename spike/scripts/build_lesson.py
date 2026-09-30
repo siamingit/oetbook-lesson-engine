@@ -420,14 +420,14 @@ def stage_images(L, a):
     import gloss_images
     # ADR 021: every board has a picture; its brief is the agent's, one per
     # board, in analysis/pictures.json (step pictures, like the tables of 1b)
-    pp = L / "analysis" / "pictures.json"
-    if not pp.exists():
+    pics_path = L / "analysis" / "pictures.json"
+    if not pics_path.exists():
         raise Stop("step pictures (ADR 021; docs/02-DESIGN-SYSTEM.md §7e): write "
                    "analysis/pictures.json, one image brief per board ('alt text | what to "
                    "draw': the patient in the case notes, a clinic scene, the concept; meaningful, "
                    "never decorative), keyed by section folder and board number; see "
                    "docs/03-RUNBOOK.md step 10c")
-    pics = json.loads(pp.read_text(encoding="utf-8")).get("sections") or {}
+    pics = json.loads(pics_path.read_text(encoding="utf-8")).get("sections") or {}
     missing_pics = [e["brief"].strip() for es in pics.values() for e in es
                     if (e.get("brief") or "").strip() and not gloss_images.find(L, e["brief"].strip())]
     missing = []
