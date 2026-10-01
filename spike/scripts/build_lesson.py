@@ -141,6 +141,56 @@ def require_gate(L: Path, name: str) -> None:
                    f"spike/scripts/build_lesson.py {L} --approve {name} --by NAME")
 
 
+def qa_reviews(L: Path) -> list[Path]:
+    """Every QA review's findings, with the reviews a later one replaced: a
+    replaced section's qa/ folder is kept as qa.superseded-<time>/
+    (paths.keep_superseded) and was paid for. Until 2026-10-01 those were left
+    out of the total ($0.84 in Vocabulary 1, $1.68 in Vocabulary 2)."""
+    return [p for p in (L / "analysis").rglob("qa_*.json")
+            if p.parent.name == "qa" or p.parent.name.startswith("qa.superseded")]
+
+
+NEAR_CAP = 0.85        # ADR 022: a reply this close to its stage's output cap is reported
+
+
+def near_cap(L: Path) -> list[str]:
+    """Saved replies whose output reached NEAR_CAP of their stage's current
+    output cap (ADR 022), so the cap is raised before a reply is cut off. A
+    cut-off reply is refused, and the whole call is lost."""
+    import extract_understanding
+    import qa_narration
+    import write_narration
+    import write_screens
+    caps = {"understanding": extract_understanding.MAX_TOKENS,
+            "screens": write_screens.MAX_TOKENS, "narration": write_narration.MAX_TOKENS}
+    found = []
+    for p in sorted((L / "analysis").rglob("raw_response*.json")):
+        stage = p.relative_to(L / "analysis").parts[0]
+        if stage not in caps or any(x.startswith("qa") for x in p.parts):
+            continue
+        try:
+            out = (json.loads(p.read_text(encoding="utf-8")).get("usage") or {}).get("output_tokens", 0)
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            continue
+        if out >= NEAR_CAP * caps[stage]:
+            found.append(f"{stage}: {out:,} of {caps[stage]:,} ({out / caps[stage]:.0%}) "
+                         f"{p.relative_to(L)}")
+    cap = qa_narration.MAX_OUTPUT_TOKENS                   # Gemini: thinking counts toward it
+    for p in sorted(qa_reviews(L)):
+        m = json.loads(p.read_text(encoding="utf-8")).get("meta", {})
+        out = m.get("output_tokens", 0) + m.get("thought_tokens", 0)
+        if out >= NEAR_CAP * cap:
+            found.append(f"qa: {out:,} of {cap:,} ({out / cap:.0%}) {p.relative_to(L)}")
+    return found
+
+
+def report_spend(L: Path, label: str, budget: float | None = None) -> None:
+    """The lesson's model spend, and every reply near its output cap (ADR 022)."""
+    print(f"{label}: ${spent(L):.2f}" + (f" of ${budget:.2f}" if budget else ""))
+    for line in near_cap(L):
+        print(f"  NEAR CAP (85%+), raise the stage's cap: {line}")
+
+
 def spent(L: Path) -> float:
     """Model spend so far, measured from the saved responses: Anthropic
     (understanding, screens, narration and its splices) and Gemini (QA)."""
@@ -155,7 +205,7 @@ def spent(L: Path) -> float:
         if "input_tokens" in u:
             import llm
             total += llm.raw_cost(json.loads(p.read_text(encoding="utf-8")))
-    for p in (L / "analysis").rglob("qa/qa_*.json"):
+    for p in qa_reviews(L):
         total += json.loads(p.read_text(encoding="utf-8")).get("meta", {}).get("cost_usd", 0)
     # Spend whose reply is no longer on disk (overwritten before replaced
     # replies were kept, paths.keep_superseded), recorded with where its
@@ -649,8 +699,7 @@ def main() -> None:
         print(f"gate '{a.approve}' approved by {a.by}")
         return
     if a.status:
-        print(f"model spend so far: ${spent(L):.2f}"
-              + (f" of ${a.budget:.2f}" if a.budget else ""))
+        report_spend(L, "model spend so far", a.budget)
         print("gates approved: " + (", ".join(f"{k} ({v['by']}, {v['on']})"
                                               for k, v in gates(L).items()) or "none"))
         print("holds: " + (", ".join(f"{k} ({v['reason']})" for k, v in holds(L).items())
@@ -664,10 +713,10 @@ def main() -> None:
             fn(L, a)
         except Stop as e:
             print(f"\nSTOPPED at {name}:\n{e}")
-            print(f"model spend so far: ${spent(L):.2f}")
+            report_spend(L, "model spend so far")
             sys.exit(2)
     print(f"\nlesson complete: {L / 'generated' / 'lesson-player' / 'player.html'}")
-    print(f"model spend: ${spent(L):.2f}")
+    report_spend(L, "model spend")
 
 
 if __name__ == "__main__":

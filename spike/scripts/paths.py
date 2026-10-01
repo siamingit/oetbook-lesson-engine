@@ -18,8 +18,9 @@ from pathlib import Path
 def keep_superseded(path: Path) -> None:
     """A saved model reply that is about to be replaced was paid for. It is
     kept beside the new one as <stem>.superseded-<time><suffix>, which the
-    runner's spend check (build_lesson.spent: raw_response*.json and
-    qa/qa_*.json) still counts, so the runner's total always matches what was
+    runner's spend check (build_lesson.spent: raw_response*.json, and
+    build_lesson.qa_reviews: qa_*.json in qa/ and in a replaced qa.superseded-*/)
+    still counts, so the runner's total always matches what was
     spent (maintainer, 2026-09-27, after two replaced screens drafts of
     Grammar 5 were overwritten and left out of its total). Every stage that
     writes a reply calls this first; nothing is ever deleted."""

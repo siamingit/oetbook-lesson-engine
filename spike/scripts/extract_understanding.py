@@ -27,7 +27,9 @@ import paths  # noqa: E402
 import build_slide_timeline as timeline   # noqa: E402
 
 MODEL = "claude-opus-5"
-MAX_TOKENS = 32000          # 16,000 truncated page 6 (18.7 min of source) mid-JSON
+MAX_TOKENS = 48000          # 16,000 truncated page 6 (18.7 min of source) mid-JSON; 32,000
+                            # was reached to 92% (Vocabulary lessons, ADR 022)
+EFFORT = "medium"           # TRIAL for the next lesson only (ADR 022); "high" before
 
 SYSTEM = """\
 You are analysing one slide of a recorded OET grammar lesson. The instructor \
@@ -122,6 +124,9 @@ whole slide and not a single sentence. On an exercise slide that typically means
 one beat per exercise item, plus separate beats for general explanations and for \
 digressions. For each: its time range, the learning objective, the teaching point \
 in plain English, provenance, evidence, and your confidence.
+
+Call the teacher "the instructor" every time, in every field; never "he" or \
+"she".
 
 COVERAGE. Every part of the interval must be accounted for. Time that is not a \
 teaching beat goes in `non_teaching` with its own start, end and a reason — \
@@ -753,7 +758,7 @@ def main() -> None:
     if "--call" not in sys.argv:
         show(messages)
         print(f"\nmodel={MODEL}  max_tokens={MAX_TOKENS}  "
-              f"thinking=adaptive  effort=high")
+              f"thinking=adaptive  effort={EFFORT}")
         print("no API call made")
         return
 
@@ -778,7 +783,7 @@ def request_params(messages: list[dict], ttl: str = "5m") -> dict:
     return {"model": MODEL, "max_tokens": MAX_TOKENS,
             "system": llm.system_blocks(SYSTEM, ttl),
             "thinking": {"type": "adaptive"},
-            "output_config": {"effort": "high",
+            "output_config": {"effort": EFFORT,
                               "format": {"type": "json_schema", "schema": SCHEMA}},
             "messages": messages}
 

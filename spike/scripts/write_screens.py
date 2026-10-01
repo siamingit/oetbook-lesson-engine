@@ -54,6 +54,7 @@ from extract_understanding import (api_key, esc, refuse_if_truncated,  # noqa: E
 
 MODEL = "claude-opus-5"
 MAX_TOKENS = 64000          # 32,000 truncated the two-page section 5-6 (the tense table)
+EFFORT = "medium"           # ADR 022: as complete as "high" when measured, 15% cheaper
 
 BLOCK_TYPES = ["error_row", "answer_row", "term_box", "comparison", "plain",
                "category_card", "timeline", "callout", "table", "clauses", "gloss"]
@@ -1384,7 +1385,7 @@ def request_params(messages: list[dict], ttl: str = "5m") -> dict:
     return {"model": MODEL, "max_tokens": MAX_TOKENS,
             "system": llm.system_blocks(SYSTEM, ttl),
             "thinking": {"type": "adaptive"},
-            "output_config": {"effort": "high",
+            "output_config": {"effort": EFFORT,
                               "format": {"type": "json_schema", "schema": SCHEMA}},
             "messages": messages}
 
@@ -3959,7 +3960,7 @@ def main() -> None:
     messages = build_messages(data)
     if "--call" not in sys.argv:
         show(messages)
-        print(f"\nmodel={MODEL}  max_tokens={MAX_TOKENS}  thinking=adaptive  effort=high")
+        print(f"\nmodel={MODEL}  max_tokens={MAX_TOKENS}  thinking=adaptive  effort={EFFORT}")
         print("no API call made")
         return
 
