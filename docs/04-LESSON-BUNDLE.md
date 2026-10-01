@@ -72,6 +72,7 @@ One folder per lesson: `<lesson>/generated/lesson-player/`.
 | `text.json` | **yes** | the clean text of every section (§6) |
 | `blocks.css` | **yes** | the stylesheet each block's `html` is written against (§7) |
 | audio, `../<section>/boards/audio/<hash>.wav` | **yes** | one clip per utterance, named in `bundle.json` (§8) |
+| images, `../images/<hash>.png` | **yes** | the gloss images (1.11) and board pictures (1.12), each named by a block's `image.file` (rules 26, 27); several blocks may name one file. The folder, `generated/images/`, also holds earlier drafts that no bundle names: only the files named are part of the lesson |
 | `player.html` | no | the reference renderer, with the bundle embedded |
 | `timeline.json`, `audio_index.json` | no | build intermediates: the timeline is repeated in `bundle.json`; the audio index holds per-word timings and voice settings the website does not need |
 | `marks_check.json` | no | the mark check's report |
@@ -240,7 +241,8 @@ A block is one thing on a board. Each carries its data and its rendered `html`.
 | `flow` | 1.3. Its place in a change's flow on its board: `pill`, `source`, `card`, `result` or `note`; the board shows them in that order |
 | `band` | 1.3. On the first change card of a run, the process pill's text ("Nominalisation") |
 | `verdicts` | 1.6. A choice table (a core `table` whose rows offer versions of one sentence to choose between): each body cell's verdict, `[{row, col, verdict}]`, `verdict` `right`, `wrong` or `possible` (also acceptable, or correct only in some context). Null for any other table |
-| `beside` | 1.2. a working block drawn beside a table row: `{block, row}`, the table and the row (from 0), or row null for a note about the whole table; otherwise null |
+| `beside` | 1.2. a side note on a table board: `{block, row}`, the table and the row it is about (from 0), or row null for a note about the whole table; otherwise null. 1.12: drawn under the table, never over it; the row is shown by the spotlight (`focus`), not by where the note sits (rule 12). A board's picture on a table board carries it with row null |
+| `size` | 1.12. `picture`: the side of its square box in cqh (hundredths of the frame's height), set where the fit made it smaller so the board fits, never below 10; null for 20 (rule 27) |
 | `items` | `timeline`: its diagram parts in order (below). 1.7, `clauses`: its parts in order, `{kind, text, piece, part}`: `kind` `dependent` or `independent` (a piece, `text` its words), `glue` (the joining word; `piece` the piece it is in, from 1, or null for a bridge between two independent pieces), `subject` or `verb` (a label over `text` in `piece`), or `join`; 1.9: `defining` or `nondefining` (a relative clause set into the independent `piece`, `text` its words without its commas), `remove` (the removal test: `text` the sentence without the clause, `keeps` true when it still works), `link` or `dangling` (`text` a participle in the dependent `piece`, `from` the part number of the main clause's `subject`); the part id is `<block id>.<part>` |
 | `tags` | tense tags: `[{text, family, label}]`; `label` is what the chip says ("up to now") |
 | `exercise_item` | the item number an exercise sentence carries in its badge, or null |
