@@ -21,6 +21,10 @@ The arithmetic, measured on the 83 finished sections of the first 11 lessons
     1.10 (grammar) or 1.19 (vocabulary): pauses, gaps, reading holds;
   - speech minutes are words / 147, the rate the fit was measured with;
   - a thought carries about 45 spoken words (grammar), 35 (vocabulary).
+A section with no recorded teaching has no beat times (ADR 024): an untaught
+deck page, planned by the agent, gets the median of the type's recorded
+sections (6.7 min of speech, grammar; 6.0, vocabulary); an authored section
+(ADR 018) the fit's floor, 3.8 min (Grammar 7's nine averaged 3.9).
 The target's speech is shared out in proportion to the sections' natural
 speech, the introduction keeping its own. A vocabulary section gets a cap on
 full key-word moments (ADR 019): half its time at about 30 s a moment, a
@@ -31,7 +35,8 @@ logged in the lesson's decisions.md, ADR 005); the other sections share what
 is left. --clear removes it. Both are kept across re-runs.
 
 The budget is guidance. The screens and narration audits WARN when a section
-is off it (thoughts more than 30% off, words more than 20% over), never fail:
+is off it (thoughts more than 40% off, words more than 30% over; ADR 024: about
+5% of approved sections each), never fail:
 a failing audit makes the runner rewrite the section, which is the spend this
 exists to avoid. The narration gate shows every warning beside the lesson's
 estimated length against its target.
@@ -53,7 +58,8 @@ WPM = 147                           # words a minute, the conversion the fit use
 PLAY_RATIO = {"grammar": 1.10, "vocabulary": 1.19}       # silent preview / speech
 WORDS_PER_THOUGHT = {"grammar": 45, "vocabulary": 35}
 KEYWORD_SHARE, KEYWORD_SECONDS = 0.5, 30                  # vocabulary: full moments
-THOUGHTS_OFF, WORDS_OVER = 0.30, 0.20                     # the audits' warning limits
+UNTAUGHT_SPEECH_MIN = {"grammar": 6.7, "vocabulary": 6.0}  # ADR 024: median recorded section
+THOUGHTS_OFF, WORDS_OVER = 0.40, 0.30                     # the audits' warning limits (ADR 024)
 
 
 def kind(L: Path) -> str:
@@ -100,9 +106,14 @@ def natural(L: Path) -> dict:
         if t is None:
             missing.append(s["pages"])
             continue
+        untaught = t == 0 and not all(paths.is_added(p) for p in s["pages"])
+        authored = t == 0 and not untaught
         rows.append({"tag": paths.section_tag(s["pages"]), "title": s["title"],
                      "pages": s["pages"], "intro": False, "teaching_min": round(t, 2),
-                     "natural_speech_min": round(FIT_A + FIT_B * t, 2)})
+                     "natural_speech_min": (UNTAUGHT_SPEECH_MIN[k] if untaught
+                                            else round(FIT_A + FIT_B * t, 2)),
+                     **({"untaught": True} if untaught else {}),
+                     **({"authored": True} if authored else {})})
     if missing:
         raise SystemExit(f"no natural length yet: pages {missing} have no understanding "
                          "(the length follows the understanding's teaching beats)")
@@ -115,10 +126,10 @@ def print_natural(nat: dict) -> None:
     print(f"{'section':<14} {'source teaching min':>19} {'natural speech min':>18}  title")
     for r in nat["sections"]:
         t = "-" if r["teaching_min"] is None else f"{r['teaching_min']:.1f}"
-        floor = (r["teaching_min"] == 0 and not r["intro"])
-        print(f"{r['tag']:<14} {t:>19} {r['natural_speech_min']:>18.1f}  {r['title']}"
-              + ("  [no recorded teaching: the fit's floor; --set it with a reason if the "
-                 "section needs more]" if floor else ""))
+        note = ("  [untaught deck page: the type's median recorded section (ADR 024)]"
+                if r.get("untaught") else
+                "  [authored section: the fit's floor (ADR 024)]" if r.get("authored") else "")
+        print(f"{r['tag']:<14} {t:>19} {r['natural_speech_min']:>18.1f}  {r['title']}{note}")
     src = sum(r["teaching_min"] or 0 for r in nat["sections"])
     print(f"natural length: about {nat['lesson_min']:.0f} min of lesson ({nat['speech_min']:.0f} min "
           f"of speech, x{PLAY_RATIO[nat['kind']]} for a {nat['kind']} lesson) from {src:.0f} min "
@@ -182,7 +193,8 @@ def build(L: Path) -> dict:
                    "by": lesson.get("length_target_by"),
                    "speech_min": round(speech_target, 1)},
         "natural": {"lesson_min": nat["lesson_min"], "speech_min": nat["speech_min"]},
-        "constants": {"fit": [FIT_A, FIT_B], "intro_speech_min": INTRO_SPEECH_MIN, "wpm": WPM,
+        "constants": {"fit": [FIT_A, FIT_B], "intro_speech_min": INTRO_SPEECH_MIN,
+                      "untaught_speech_min": UNTAUGHT_SPEECH_MIN[k], "wpm": WPM,
                       "play_ratio": PLAY_RATIO[k], "words_per_thought": WORDS_PER_THOUGHT[k],
                       **({"keyword_share": KEYWORD_SHARE, "keyword_seconds": KEYWORD_SECONDS}
                          if k == "vocabulary" else {})},
@@ -252,11 +264,11 @@ def findings(L: Path, pages: list[int], thoughts: int | None = None,
         if abs(thoughts - r["thoughts"]) > THOUGHTS_OFF * r["thoughts"]:
             out.append({"severity": "warn", "where": "length",
                         "what": f"{thoughts} thoughts against a budget of about {r['thoughts']} "
-                                f"(more than {THOUGHTS_OFF:.0%} off; ADR 023)"})
+                                f"(more than {THOUGHTS_OFF:.0%} off; ADR 023, 024)"})
     if words is not None and words > (1 + WORDS_OVER) * r["words"]:
         out.append({"severity": "warn", "where": "length",
                     "what": f"{words} spoken words against a budget of about {r['words']} "
-                            f"(more than {WORDS_OVER:.0%} over; ADR 023)"})
+                            f"(more than {WORDS_OVER:.0%} over; ADR 023, 024)"})
     return out
 
 
