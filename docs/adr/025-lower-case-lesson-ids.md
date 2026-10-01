@@ -42,6 +42,10 @@ lesson ids before it imports the approved lessons.
   new ones.
 - The backup drive holds the two folders under their old names. The backup's
   mirror (robocopy, docs/03-RUNBOOK.md step 19) matches names without regard
-  to case on exFAT, so it may keep the old capitals while mirroring the
-  contents; a lesson restored from it under an old name is refused by the
-  check until its folder is renamed.
+  to case on exFAT, so it keeps the old capitals. Renaming the folders on the
+  drive is not enough either: the files whose ids were rewritten kept their
+  size and time, so the mirror skips them, the copy keeps the old ids inside
+  them, and `-Verify` (SHA-256) fails. The fix is to delete the two old
+  folders on the drive and run `-Copy`, then `-Verify`. Until then, a lesson
+  restored from the drive under an old name is refused by the check until its
+  folder is renamed.
