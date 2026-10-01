@@ -186,11 +186,33 @@ def near_cap(L: Path) -> list[str]:
     return found
 
 
+BACKUP_STAMP = HERE.parents[1] / "spike" / "out" / "backup-logs" / "last-verified.txt"
+BACKUP_DAYS = 14       # docs/03-RUNBOOK.md step 19
+
+
+def backup_reminder() -> str | None:
+    """A reminder when the last verified backup to the OETBACKUP drive
+    (backup_oet.ps1 -Verify writes the stamp) is more than BACKUP_DAYS old."""
+    how = ("powershell -File spike\\scripts\\backup_oet.ps1 -Copy, then -Verify, then "
+           "Safely Remove the drive (docs/03-RUNBOOK.md step 19)")
+    if not BACKUP_STAMP.exists():
+        return f"BACKUP: no verified backup recorded. Connect OETBACKUP and run {how}"
+    last = datetime.datetime.fromisoformat(BACKUP_STAMP.read_text(encoding="utf-8").strip())
+    days = (datetime.datetime.now() - last).days
+    if days > BACKUP_DAYS:
+        return f"BACKUP: the last verified backup is {days} days old ({last:%Y-%m-%d}). Run {how}"
+    return None
+
+
 def report_spend(L: Path, label: str, budget: float | None = None) -> None:
-    """The lesson's model spend, and every reply near its output cap (ADR 022)."""
+    """The lesson's model spend, every reply near its output cap (ADR 022), and
+    a reminder when the last verified backup is too old."""
     print(f"{label}: ${spent(L):.2f}" + (f" of ${budget:.2f}" if budget else ""))
     for line in near_cap(L):
         print(f"  NEAR CAP (85%+), raise the stage's cap: {line}")
+    reminder = backup_reminder()
+    if reminder:
+        print(reminder)
 
 
 def spent(L: Path) -> float:
