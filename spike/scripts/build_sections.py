@@ -77,6 +77,18 @@ page 9):
 The lesson title is corrected for the title slide's registered deck defects,
 like a heading.
 
+The lesson's length target (ADR 023), in minutes of lesson as the silent
+preview plays it, is `lesson.length_target_min` with its source:
+
+    .venv/Scripts/python spike/scripts/build_sections.py <lesson_dir> --length-target natural
+    .venv/Scripts/python spike/scripts/build_sections.py <lesson_dir> --length-target 60 --by NAME
+
+`natural` (the default; the runner writes it after understanding, the first
+point the teaching minutes exist) is the lesson's natural length from its
+content (length_budget.py); a number is the maintainer's override, for a
+shorter lesson. Both print the natural length beside each section's source
+teaching minutes.
+
 Every maintainer record survives a full re-run or stops it: titles (--set),
 the description (--description), diagram pages (--diagram-pages), the title
 slide and introduction range (--title-page, --intro-range), accepted
@@ -453,6 +465,41 @@ def main() -> None:
         write(out_path, previous)
         print(f"tense lesson: {v} ({by})")
         return
+    if "--length-target" in sys.argv:
+        # The lesson's length target (ADR 023). By default its natural length,
+        # from its content: the runner writes it after understanding, the first
+        # point the teaching minutes exist. A number is the maintainer's
+        # override, for a lesson to be shorter; kept until set again.
+        if not previous:
+            raise SystemExit("run without --length-target first")
+        import length_budget
+        v = sys.argv[sys.argv.index("--length-target") + 1].lower()
+        by = sys.argv[sys.argv.index("--by") + 1] if "--by" in sys.argv else "maintainer"
+        try:
+            nat = length_budget.natural(lesson)
+            length_budget.print_natural(nat)
+        except SystemExit as e:
+            if v == "natural":
+                raise
+            nat = None
+            print(f"({e}; the natural length is shown once the understanding exists)")
+        if v == "natural":
+            target, source, by = nat["lesson_min"], "natural", "runner (ADR 023)"
+        else:
+            try:
+                target, source = float(v), "override"
+            except ValueError:
+                raise SystemExit("--length-target natural|MINUTES")
+        meta = previous["lesson"]
+        if (meta.get("length_target_min"), meta.get("length_target_source")) == (target, source):
+            print(f"length target unchanged: {target:g} min ({source})")
+            return
+        meta["length_target_min"] = target
+        meta["length_target_source"] = source
+        meta["length_target_by"] = f"{by} {datetime.date.today().isoformat()}"
+        write(out_path, previous)
+        print(f"length target: {target:g} min of lesson ({source}, {by})")
+        return
     if "--diagram-pages" in sys.argv:
         # Slides whose teaching is carried by a diagram: write_screens.py shows
         # their image to the model as a reference for the diagram's idea
@@ -577,7 +624,8 @@ def main() -> None:
                          if previous.get("lesson", {}).get("page_by") else {}),
                       "status": previous.get("lesson", {}).get("status", "from-deck"),
                       "description": previous.get("lesson", {}).get("description"),
-                      **({k: previous["lesson"][k] for k in ("tense_lesson", "tense_lesson_by")
+                      **({k: previous["lesson"][k] for k in ("tense_lesson", "tense_lesson_by", "length_target_min",
+                                    "length_target_source", "length_target_by")
                           if k in previous.get("lesson", {})}),
                       "description_status": previous.get("lesson", {}).get("description_status")},
            "contents_page": contents_page,

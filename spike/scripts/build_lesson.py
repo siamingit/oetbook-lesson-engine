@@ -133,12 +133,14 @@ GATE_FILES = {"source": ["analysis/preflight/summary.md"],
               "final": ["generated/lesson-player/player.html"]}
 
 
-def require_gate(L: Path, name: str) -> None:
+def require_gate(L: Path, name: str, summary: str = "") -> None:
     if name not in gates(L):
         urls = "".join(f"\n  {(L / f).resolve().as_uri()}" for f in GATE_FILES.get(name, [])
                        if (L / f).exists())
-        raise Stop(f"GATE '{name}': review {GATES[name]}.{urls}\nThen: .venv/Scripts/python "
-                   f"spike/scripts/build_lesson.py {L} --approve {name} --by NAME")
+        raise Stop(f"GATE '{name}': review {GATES[name]}.{urls}"
+                   + (f"\n{summary}" if summary else "")
+                   + f"\nThen: .venv/Scripts/python spike/scripts/build_lesson.py {L} "
+                     f"--approve {name} --by NAME")
 
 
 def qa_reviews(L: Path) -> list[Path]:
@@ -272,7 +274,10 @@ def stage_preflight(L, a):
                    "(summary.md inside), set the lesson description (build_sections.py "
                    "--description), the diagram slides (--diagram-pages) and whether the lesson "
                    "is about tenses (--tense-lesson yes|no), and rename any person whose name "
-                   "sounds like other words (deck_defects.json).\nThen: .venv/Scripts/python "
+                   "sounds like other words (deck_defects.json). The lesson's length follows its "
+                   "content: after understanding the runner sets its natural length as the "
+                   "target (ADR 023); only for a shorter lesson, build_sections.py "
+                   "--length-target MINUTES.\nThen: .venv/Scripts/python "
                    f"spike/scripts/build_lesson.py {L} --approve source --by NAME")
     # Only a tense lesson draws tense colours (docs/02-DESIGN-SYSTEM.md §5a, §7c):
     # the maintainer says which, never a default
@@ -346,9 +351,9 @@ def stage_sections(L, a):
 STAGE_CODE = {
     "understanding": ["extract_understanding.py", "build_sections.py", "llm.py", "run_batch_stage.py"],
     "screens": ["write_screens.py", "build_sections.py", "llm.py", "run_batch_stage.py",
-                "vocabulary_rule.py"],
+                "vocabulary_rule.py", "length_budget.py"],
     "narration": ["write_narration.py", "write_screens.py", "llm.py", "run_batch_stage.py",
-                  "vocabulary_rule.py"],
+                  "vocabulary_rule.py", "length_budget.py"],
     "qa1": ["qa_narration.py", "write_narration.py", "run_batch_stage.py", "vocabulary_rule.py"],
 }
 
@@ -428,6 +433,31 @@ def stage_understanding(L, a):
                    "of the deck, as printed, into analysis/slide_tables.json (checked against a "
                    "2x render); with no table, write it with an empty `tables` list")
     batch(L, "understanding", len(todo), EST["understanding"], a)
+
+
+def stage_length_budget(L, a):
+    """ADR 023 (docs/03-RUNBOOK.md step 9b): the lesson's length target and each
+    section's share of it, before any screens or narration draft. The target
+    is the lesson's natural length unless the maintainer set one
+    (build_sections.py --length-target MINUTES); it is written here, the first
+    point the understanding's teaching minutes exist, and kept in step with
+    them. A lesson whose screens and narration all pass needs no budget and is
+    left untouched."""
+    info, secs = sections(L)
+    pending = [s for s in secs
+               if (not s.get("intro")
+                   and not audit_ok(paths.screens_dir_for(L, s["pages"]) / "screens.json"))
+               or not audit_ok(paths.narration_dir_for(L, s["pages"]) / "narration.json")]
+    if not pending:
+        return
+    if info["lesson"].get("length_target_source") != "override":
+        print(run(L, [str(HERE / "build_sections.py"), str(L), "--length-target", "natural"],
+                  "length target: the natural length").strip())
+        info, _ = sections(L)
+    if not info["lesson"].get("length_target_min"):
+        raise Stop("the lesson has no length target (sections.json lesson.length_target_min): "
+                   f"build_sections.py {L} --length-target natural, or --length-target MINUTES")
+    print(run(L, [str(HERE / "length_budget.py"), str(L)], "length budget").strip())
 
 
 def stage_screens(L, a):
@@ -533,7 +563,8 @@ def stage_narration(L, a):
     run(L, [str(HERE / "check_overflow.py"), str(L), "--dir", d], "overflow check (silent preview)")
     run(L, [str(HERE / "check_overlap.py"), str(L), "--dir", d], "overlap check (silent preview)")
     run(L, [str(HERE / "build_narration_review.py"), str(L)], "narration review page")
-    require_gate(L, "narration")
+    import length_budget            # ADR 023: estimated length against target, every warning
+    require_gate(L, "narration", length_budget.gate_summary(L))
 
 
 def stage_terms(L, a):
@@ -640,7 +671,8 @@ STAGES = [("preflight", stage_preflight), ("audio", stage_audio),
           ("keyterm candidates", stage_keyterm_candidates), ("keyterms", stage_keyterms),
           ("transcription", stage_transcribe), ("slide timeline", stage_slides),
           ("annotations", stage_annotations), ("sections", stage_sections),
-          ("understanding", stage_understanding), ("screens", stage_screens),
+          ("understanding", stage_understanding), ("length budget", stage_length_budget),
+          ("screens", stage_screens),
           ("images", stage_images),
           ("narration", stage_narration), ("terms check", stage_terms),
           ("audio and ear", stage_audio_build), ("player and checks", stage_player)]
