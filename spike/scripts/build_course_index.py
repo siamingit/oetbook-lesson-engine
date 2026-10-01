@@ -167,7 +167,7 @@ def lesson_entry(L: Path) -> dict:
     first = L.name.split("-")[0]
     gp = L / "analysis" / "gates.json"
     final = read(gp).get("final") if gp.exists() else None
-    entry = {"id": L.name, "title": title, "short_title": short_title(title),
+    entry = {"id": paths.lesson_id(L), "title": title, "short_title": short_title(title),
              "description": (info.get("lesson") or {}).get("description"),
              "type": first if first in TYPES else None,
              "status": "not built", "final_gate": final, "source": source_of(L),

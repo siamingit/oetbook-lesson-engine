@@ -82,6 +82,10 @@ The lesson folder:
 <L>/generated/           audio and players
 ```
 
+The folder's name is the lesson id (docs/04-LESSON-BUNDLE.md §4): lower case,
+`<type>-<NN>-<topic>`, for example `vocabulary-02-collocations`. The runner
+refuses a name that is not lower case before any stage runs (ADR 025).
+
 ---
 
 ## Baseline: Grammar 1 (Verb Tenses)

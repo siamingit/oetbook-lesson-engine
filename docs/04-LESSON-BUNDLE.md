@@ -108,7 +108,7 @@ identical to the build before this format).
 
 | Id | Example | Made from | Scope |
 |---|---|---|---|
-| lesson | `grammar-01-verb-tenses` | the lesson folder's name | library |
+| lesson | `grammar-01-verb-tenses` | the lesson folder's name, which must be lower case (ADR 025) | library |
 | section | `page-13`, `pages-05-06`, `added-01` | the deck pages it covers; `added-NN` for an authored section, which covers none (docs/adr/018-authored-sections.md) | lesson |
 | category | `c2` | its position on the deck's contents slide | lesson |
 | block | `page-13_k07` | section + the block's place in the section's screen content, in document order (`k01`, `k02`, …) | lesson |
@@ -136,7 +136,13 @@ Ids **do** change when the content they name is replaced:
   new board, state, block and utterance ids **for that section only**;
 - a change to the layout rules that moves an erase point renumbers the states,
   and so the utterances, of the boards it moves;
-- a change of deck that regroups pages changes section ids.
+- a change of deck that regroups pages changes section ids;
+- a lesson folder renamed changes the lesson id. Lesson ids are lower case,
+  and the runner, the player and the course index refuse any other
+  (docs/adr/025-lower-case-lesson-ids.md). On 2026-10-01
+  `vocabulary-02-Collocations` became `vocabulary-02-collocations` and
+  `vocabulary-03-Collocations-2` became `vocabulary-03-collocations-2`, their
+  content unchanged.
 
 ### What the website should key on
 

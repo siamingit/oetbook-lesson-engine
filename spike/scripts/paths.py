@@ -34,6 +34,17 @@ def keep_superseded(path: Path) -> None:
         path.rename(target)
 
 
+def lesson_id(lesson: Path) -> str:
+    """The lesson id: the lesson folder's name, which must be lower case (the
+    website's contract rule; maintainer, 2026-10-01; docs/04-LESSON-BUNDLE.md
+    §4). Any other name is refused before anything is built or indexed."""
+    name = lesson.name
+    if name != name.lower():
+        raise SystemExit(f"REFUSED: lesson id {name!r} is not lower case: rename the lesson "
+                         f"folder to {name.lower()!r} (docs/04-LESSON-BUNDLE.md §4)")
+    return name
+
+
 def page_tag(page: int) -> str:
     return f"page-{page}"
 

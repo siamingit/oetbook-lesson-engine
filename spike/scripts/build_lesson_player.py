@@ -602,7 +602,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
         sections_out.append({"id": m["id"], "title": m["title"], "pages": m["pages"],
                              "intro": m["intro"], "category": cat_ids.get(m["category_title"]),
                              "start": start, "end": end, "boards": m["boards"]})
-    lesson = {"id": L.name, "title": info["lesson"]["title"],
+    lesson = {"id": paths.lesson_id(L), "title": info["lesson"]["title"],
               # 1.5: tense colours are drawn only in a lesson about tenses
               "tense_colours": bool(info["lesson"].get("tense_lesson")),
               "description": info["lesson"].get("description"),

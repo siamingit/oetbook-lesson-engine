@@ -725,6 +725,7 @@ def main() -> None:
                          "controls): the night run's batches did not start in two hours. Run "
                          "without --batch: direct calls with prompt caching")
     L = a.lesson_dir
+    paths.lesson_id(L)              # lower case, or nothing runs (docs/04-LESSON-BUNDLE.md §4)
     (L / "analysis").mkdir(parents=True, exist_ok=True)
 
     if a.hold or a.release:
