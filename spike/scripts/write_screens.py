@@ -2867,6 +2867,10 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
         if not src:
             continue
         st = src[0]
+        if st.get("replaced"):
+            # the slide's table replaced by a ruling (ADR 026: Reading lesson 2's
+            # word table, 2026-10-06): the board is held to the replacement
+            st = {**st, **{k: st["replaced"][k] for k in ("header", "rows")}}
         if len(st["rows"]) != nrows:
             fail(bd["id"], f"the table has {nrows} rows and the slide's has {len(st['rows'])}; "
                            "a table is shown whole")

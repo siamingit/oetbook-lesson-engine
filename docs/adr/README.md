@@ -27,9 +27,9 @@ old one.
 | [019 — Vocabulary lessons: every key word gets a full moment, and the vocabulary is widened](019-vocabulary-lessons.md) | 2026-09-29 |
 | [020 — No block overlaps another block or its text](020-no-overlap.md) | 2026-09-30 |
 | [021 — A picture on every board](021-a-picture-on-every-board.md) | 2026-09-30 |
-| [022 — Effort per model stage, and output caps](022-stage-effort-and-output-caps.md) | 2026-10-01; amended 2026-10-06 |
+| [022 — Effort per model stage, and output caps](022-stage-effort-and-output-caps.md) | 2026-10-01; amended twice 2026-10-06 |
 | [023 — A length budget before the first drafts](023-length-budget-before-first-drafts.md) | 2026-10-01 |
 | [024 — Length budget calibration: untaught pages and warning limits](024-length-budget-calibration.md) | 2026-10-01 |
 | [025 — Lesson ids are lower case](025-lower-case-lesson-ids.md) | 2026-10-01 |
-| [026 — Reading lessons: practice sets, vocabulary and visual design](026-reading-lessons.md) | 2026-10-05; amended twice 2026-10-06 |
+| [026 — Reading lessons: practice sets, vocabulary and visual design](026-reading-lessons.md) | 2026-10-05; amended three times 2026-10-06 |
 | [027 — The voice of Reading and Listening lessons: Courtney, about 135 words a minute](027-reading-and-listening-voice.md) | 2026-10-06 |
