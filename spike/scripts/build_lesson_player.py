@@ -49,7 +49,7 @@ from build_board_bundle import block_tokens, norm, reading_runs   # noqa: E402
 from build_board_timeline import lay_timeline                     # noqa: E402
 from write_narration import spoken                                # noqa: E402
 import board_style                                                # noqa: E402
-from write_screens import (FRAME_CSS, frame_css, TAG_LABELS, block_html, resolve_images, IMAGE_TOKEN,     # noqa: E402
+from write_screens import (FRAME_CSS, frame_css, has_map, TAG_LABELS, block_html, resolve_images, IMAGE_TOKEN,     # noqa: E402
                            block_text_runs, is_exercise_board)
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -77,18 +77,25 @@ BLOCK_FIELDS = ("id", "type", "label", "text", "term", "explanation", "left", "r
 # a Reading lesson's bundle only, so no other lesson's bundle changes
 BLOCK_FIELDS_113 = ("doc", "question")
 READING_FORMAT_VERSION = "1.13"
+# 1.14, the map of the four texts (ADR 026, Part A question method): written
+# only in the bundle of a lesson that has a map, so no other bundle changes
+BLOCK_FIELDS_114 = ("map",)
+MAP_FORMAT_VERSION = "1.14"
 
 
-def format_version(lesson_id: str) -> str:
-    """The bundle format a lesson is written in: 1.13 for a Reading lesson
-    (ADR 026), FORMAT_VERSION for every other."""
+def format_version(lesson_id: str, with_map: bool = False) -> str:
+    """The bundle format a lesson is written in: 1.14 for a lesson with a map,
+    1.13 for another Reading lesson (ADR 026), FORMAT_VERSION for every other."""
+    if with_map:
+        return MAP_FORMAT_VERSION
     return READING_FORMAT_VERSION if lesson_id.split("-")[0] == "reading" else FORMAT_VERSION
 
 
-def block_data(b: dict, reading: bool = False) -> dict:
+def block_data(b: dict, reading: bool = False, with_map: bool = False) -> dict:
     """A block's data as the bundle carries it: every field its html is drawn
     from, each tense tag with the label printed on its chip."""
-    d = {k: b.get(k) for k in BLOCK_FIELDS + (BLOCK_FIELDS_113 if reading else ())}
+    d = {k: b.get(k) for k in BLOCK_FIELDS + (BLOCK_FIELDS_113 if reading else ())
+         + (BLOCK_FIELDS_114 if with_map else ())}
     tags = [dict(t, label=TAG_LABELS[t["family"]]) for t in (b.get("tags") or [])
             if t.get("text") and t.get("family") in TAG_LABELS]
     d["tags"] = tags or None
@@ -254,7 +261,8 @@ def block_plain(b: dict) -> str:
     return "\n".join(board_style.display_runs(b, block_text_runs))
 
 
-def text_export(lesson: dict, sections: list[dict], boards: list[dict], blocks: dict) -> dict:
+def text_export(lesson: dict, sections: list[dict], boards: list[dict], blocks: dict,
+                with_map: bool = False) -> dict:
     """The lesson as clean text, per section: the narration as spoken and the
     words on the board, with no cues and no provenance (docs/04-LESSON-BUNDLE.md)."""
     by_id = {bd["id"]: bd for bd in boards}
@@ -278,7 +286,7 @@ def text_export(lesson: dict, sections: list[dict], boards: list[dict], blocks: 
                                                   for b in bds),
                     "board_text": "\n\n".join(x["text"] for b in bds for x in b["board_text"]),
                     "boards": bds})
-    return {"format": "oetbook-lesson-text", "format_version": format_version(lesson["id"]),
+    return {"format": "oetbook-lesson-text", "format_version": format_version(lesson["id"], with_map),
             "lesson": lesson, "sections": out}
 
 
@@ -329,6 +337,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     table_of: dict[str, str] = {}
     links_of: dict[str, tuple] = {}
     row_of: dict[str, int | None] = {}
+    lens_of: dict[str, dict] = {}
+    with_map = has_map(L)
     missing: list[str] = []
     for sec in secs:
         pages = sec["pages"]
@@ -359,6 +369,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                 table_of[pre + sb["id"]] = pre + sb["table"]
             for ss in sb["states"]:
                 row_of[pre + ss["id"]] = ss.get("row")
+                if "zoom" in ss:                 # 1.14: a map board's text and zoom
+                    lens_of[pre + ss["id"]] = {"doc": ss.get("doc"), "zoom": ss.get("zoom")}
         for bid, b in blocks.items():
             nb = copy.deepcopy(b)
             nb["id"] = pre + bid
@@ -378,7 +390,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             if nb.get("image"):                      # 1.11: the file, relative to the bundle's folder
                 nb["image"] = {**nb["image"], "file": resolve_images(
                     IMAGE_TOKEN + "/" + nb["image"]["file"], out_dir, L)}
-            blocks_all[pre + bid] = {**block_data(nb, L.name.split("-")[0] == "reading"), "html": html_b,
+            blocks_all[pre + bid] = {**block_data(nb, L.name.split("-")[0] == "reading", with_map), "html": html_b,
                                      "_tokens": block_tokens(b)}     # display words (1.3)
         # an authored section (ADR 018) covers no deck page
         section_marks.append({"id": tag, "title": sec["title"],
@@ -509,6 +521,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
         bd["table"] = table_of.get(bd["id"])
         for s in bd["states"]:
             s["row"] = row_of.get(s["id"]) if bd["table"] else None
+            if s["id"] in lens_of:
+                s.update(lens_of[s["id"]])
         # 1.6: a mark on the table names the cell it lands in, the state's row
         # first, as the narration audit requires its phrase to be in one cell
         if bd["table"]:
@@ -626,7 +640,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     meta = {"silent": silent, **gaps, "wpm": wpm if silent else None,
             "voice": first.get("voice"), "model": first.get("model"), "speed": first.get("speed"),
             "total_duration_s": round(total, 3), "reading_hold_s": READING_HOLD_S}
-    bundle = {"format": "oetbook-lesson-bundle", "format_version": format_version(lesson["id"]),
+    bundle = {"format": "oetbook-lesson-bundle", "format_version": format_version(lesson["id"], with_map),
               "lesson": lesson, "sections": sections_out, "meta": meta,
               "stylesheet": "blocks.css", "text": "text.json",
               "blocks": {i: b for i, b in blocks_all.items() if i in used},
@@ -635,7 +649,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                                          encoding="utf-8")
     (out_dir / "blocks.css").write_text(frame_css(L).strip() +"\n", encoding="utf-8")
     (out_dir / "text.json").write_text(
-        json.dumps(text_export(lesson, sections_out, boards_out, blocks_all),
+        json.dumps(text_export(lesson, sections_out, boards_out, blocks_all, with_map),
                    ensure_ascii=False, indent=1), encoding="utf-8")
     (out_dir / "timeline.json").write_text(json.dumps({"meta": meta, "boards": boards_out,
                                                        "events": events}, ensure_ascii=False,

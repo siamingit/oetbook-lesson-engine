@@ -50,7 +50,17 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
 #cam.tight2 .cl-piece { padding-top: .8cqh; padding-bottom: .8cqh; }
 @media (prefers-reduced-motion: no-preference) {
   #cam.glide { transition: transform .6s cubic-bezier(.4, 0, .2, 1); }
+  .dmap-grid.glide { transition: transform .6s cubic-bezier(.4, 0, .2, 1); }
 }
+/* A map board (bundle 1.14; ADR 026, Part A question method): the map of the
+   four texts in the left column, the question and its notes beside it, in
+   reading order. The camera never moves on a map board: the map has its own
+   lens, so the question stays in view while the map zooms. */
+#cam.mapboard { display: grid; grid-template-columns: 58% minmax(0, 1fr); grid-auto-rows: min-content;
+                align-content: start; column-gap: 2cqw; row-gap: 1.5cqh; flex-wrap: nowrap; }
+#cam.mapboard > .blk.dmap { grid-column: 1; grid-row: 1 / span 40; }
+#cam.mapboard > .blk:not(.dmap) { grid-column: 2; width: auto; max-width: none; }
+#cam.mapboard > .blk.beside { position: static; }
 /* A typed part of a table cell keeps its final size from the start: the part
    not yet typed is present but invisible, so the table never reflows. */
 .tw-none, .tw-h { visibility: hidden; }
@@ -382,6 +392,7 @@ function drawBoard(bd, s, erased) {
     camEl.style.transform = "";
     camEl.classList.toggle("tight", (bd.tight || 0) >= 1);
     camEl.classList.toggle("tight2", (bd.tight || 0) >= 2);
+    camEl.classList.toggle("mapboard", isMapBoard(bd));
     // The header shows the section title and nothing else: no board title,
     // no number (docs/02-DESIGN-SYSTEM.md §2, "The header").
     hdrNo.style.display = "none";
@@ -679,7 +690,7 @@ function positionPointer(t) {
     const el = blockEls.get(read.block);
     if (el && el.classList.contains("on") && !el.classList.contains("cleared")) {
       const r = wordRect(el, read.k);
-      if (r) { placePointer(r, f); return; }
+      if (r && !outsideClip(r, lensClip(el.querySelector(".dmap-view")))) { placePointer(r, f); return; }
     }
   }
   if (pointSpan && pointSpan.isConnected) { placePointer(pointSpan.getBoundingClientRect(), f); return; }
@@ -733,7 +744,9 @@ function positionMarks() {
     const sameLine = (a, cr) => a && Math.min(a.bottom, cr.bottom) - Math.max(a.top, cr.top) > 0.5 * cr.height;
     for (const sp of m.spans) {
       if (!sp.isConnected) continue;
+      const clip = lensClip(sp);
       for (const cr of sp.getClientRects()) {
+        if (outsideClip(cr, clip)) continue;
         const r = { left: cr.left - f.left, top: cr.top - f.top, right: cr.right - f.left,
                     bottom: cr.bottom - f.top, width: cr.width, height: cr.height };
         if (!first) first = r;
@@ -907,6 +920,67 @@ function applyFocus(bd, t) {
   return row === null ? null : { row, col, el };
 }
 
+// ---- The map of the four texts (bundle 1.14; ADR 026, Part A question
+// method): the four texts small, in a grid; the state's `doc` dims the others;
+// its `zoom` shows that text alone at a document's size ("doc"), then sets
+// the state's row larger, in the middle of the map's frame ("row"), so it is
+// read on a phone. The map's lens moves inside the map; the camera never does.
+function isMapBoard(bd) { return !!(bd && bd.table && blocks[bd.table] && blocks[bd.table].map); }
+// each page scaled to its quarter of the map, so the four texts show whole
+function fitMapPages(el) {
+  const grid = el.querySelector(".dmap-grid");
+  if (!grid) return;
+  for (const p of grid.querySelectorAll(".dpanel")) {
+    const page = p.firstElementChild;
+    if (!page) continue;
+    const pw = p.clientWidth, ph = p.clientHeight;
+    // the largest scale at which the whole page, laid out at the width that
+    // scale gives it, fits its quarter (a wider page is shorter)
+    const fits = sc => { page.style.width = (pw / sc) + "px"; return page.offsetHeight * sc <= ph; };
+    let lo = 0.05, hi = 1;
+    if (fits(1)) lo = 1;
+    else for (let i = 0; i < 16; i++) { const mid = (lo + hi) / 2; if (fits(mid)) lo = mid; else hi = mid; }
+    const sc = lo;
+    page.style.width = (pw / sc) + "px";
+    page.style.transform = "scale(" + sc.toFixed(4) + ")";
+  }
+}
+function applyLens(bd, s, jumped) {
+  if (!isMapBoard(bd)) return;
+  const el = blockEls.get(bd.table);
+  const grid = el && el.querySelector(".dmap-grid"), view = el && el.querySelector(".dmap-view");
+  if (!grid || !view) return;
+  const doc = s && s.doc != null ? s.doc : null;
+  const zoom = doc !== null ? s.zoom || null : null;
+  const row = zoom === "row" && s.row != null ? s.row : null;
+  const key = doc + "|" + zoom + "|" + row + "|" + view.clientWidth + "x" + view.clientHeight;
+  if (grid._lens === key) return;
+  const moved = grid._lens !== undefined;
+  grid._lens = key;
+  el.classList.toggle("dspot", doc !== null);
+  el.classList.toggle("solo", zoom !== null);
+  for (const p of grid.querySelectorAll(".dpanel")) p.classList.toggle("dfocus", doc !== null && +p.dataset.doc === doc);
+  for (const tr of grid.querySelectorAll("tr.loupe")) tr.classList.remove("loupe");
+  if (zoom === null) fitMapPages(el);
+  let ty = 0;
+  if (row !== null) {
+    const tr = grid.querySelector('tbody tr[data-row="' + row + '"]');
+    if (tr) {
+      tr.classList.add("loupe");
+      const r = offsetIn(tr, grid), H = view.clientHeight;
+      ty = Math.min(0, Math.max(H - grid.scrollHeight, H / 2 - (r.y + r.h / 2)));
+    }
+  }
+  grid.classList.toggle("glide", moved && !jumped);
+  grid.style.transform = ty ? "translateY(" + ty.toFixed(1) + "px)" : "";
+}
+// a mark or the pointer inside the map is drawn only where the lens shows it
+function lensClip(node) {
+  const v = node && node.closest && node.closest(".dmap-view");
+  return v ? v.getBoundingClientRect() : null;
+}
+function outsideClip(r, c) { return c && (r.bottom <= c.top + 1 || r.top >= c.bottom - 1 || r.right <= c.left || r.left >= c.right); }
+
 // A choice table's verdicts (bundle 1.6): from each one's time to the board's
 // end, a wrong cell is faded and the right one carries its tick. The look is
 // blocks.css's (.v-wrong, .v-right, .v-possible).
@@ -931,6 +1005,7 @@ function offsetIn(el, root) {
 // the notes do not fit under the table, the fit (fit_boards.py) makes the
 // table's text smaller or clears earlier notes; nothing is drawn over text.
 function placeBeside(bd, s) {
+  if (isMapBoard(bd)) return [];        // beside the map, in its own column (bundle 1.14)
   const tableEl = bd.table && blockEls.get(bd.table);
   if (!tableEl || (!s && !Object.keys(bd.pinned || {}).length)) return [];
   // between two states only the board's pinned side notes are shown
@@ -986,6 +1061,7 @@ function placeBeside(bd, s) {
 // notes, when the table's text on screen is under 14px; otherwise still.
 function camera(bd, focus, notes, jumped) {
   let tf = "";
+  if (isMapBoard(bd)) focus = null;     // the map's lens zooms, not the camera
   if (focus) {
     const td0 = focus.el.querySelector("td");
     const px = td0 ? parseFloat(getComputedStyle(td0).fontSize) : 99;
@@ -1065,6 +1141,7 @@ function renderFrame(t) {
   applyMarks(s, t, erased);
   applyTyping(bd, t);
   const focus = applyFocus(bd, t);
+  applyLens(bd, s, jumped);
   applyVerdicts(bd, t);
   const notes = placeBeside(bd, s && !erased ? s : null);
   camera(bd, focus, notes, jumped);
