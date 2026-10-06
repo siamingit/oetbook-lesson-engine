@@ -58,7 +58,7 @@ from extract_understanding import api_key, esc, refuse_if_truncated, strip_bidi 
 from write_screens import (maintainer_wording, relabel_note)                  # noqa: E402
 from build_course_index import check_ref                                      # noqa: E402
 from write_screens import (FIXED_FORBIDS, FRAME_CSS, frame_css, NON_LATIN, PAGE_CSS,     # noqa: E402
-                           REGISTER_WORDS, block_html, block_texts, is_exercise_board, resolve_images,
+                           REGISTER_WORDS, block_html, block_texts, has_parts, is_exercise_board, resolve_images,
                            ledger_phrases, ledger_rulings, rulings_from_script)
 
 MODEL = "claude-opus-5"
@@ -672,6 +672,14 @@ def compact(b: dict) -> dict:
         out["parts"] = [part_line(b, it) for it in b["items"]]
     if b["type"] == "clauses" and b.get("items"):
         out["parts"] = [clause_part_line(b, it) for it in b["items"]]
+    if b.get("question") and b["question"].get("options"):
+        # a Part B question (bundle 1.15): its options, and the parts that rule
+        # each wrong option out and tick the answer, revealed by their ids
+        out["options"] = [f"{o['letter']}: {o['text']}" for o in b["question"]["options"]]
+        out["parts"] = [(f"{b['id']}.{it['part']}: option {it['option']} ruled out: struck through, "
+                         f"its reason label '{it['text']}' appears") if it["kind"] == "out" else
+                        f"{b['id']}.{it['part']}: option {it['option']} ticked as the answer"
+                        for it in b.get("items") or []]
     if b["type"] == "gloss" and b.get("items"):
         out["parts"] = [f"{b['id']}.{it['part']}: {it['kind']}"
                         + (f" '{it['text']}'" if it["kind"] != "picture"
@@ -785,6 +793,13 @@ def boards_for_model(data: dict) -> list[dict]:
             st = {"id": s["id"], "working": [compact(blocks[i]) for i in s["working"]
                                              if blocks[i].get("type") != "picture"],
                   "erased_after": n < len(bd["states"]) - 1}
+            if "veil" in s:
+                # a Part B question board (bundle 1.15): the text is covered
+                st["text"] = ("COVERED: its words cannot be seen; read nothing from it and mark nothing "
+                              "in it" if s["veil"] else "uncovered: the whole text is shown")
+            still = [i for p in bd["states"][:n] for i in p["working"] if blocks[i].get("pin")]
+            if still:
+                st["still_on_board"] = still      # pinned blocks shown in an earlier state
             mp = (blocks.get(bd.get("table")) or {}).get("map")
             if mp:
                 st["map"] = map_view(mp, s)
@@ -920,6 +935,10 @@ def build_messages(data: dict, rewrite: dict | None = None, chunk: dict | None =
         if any(b.get("doc") or b.get("question") for t in scr["topics"] for h in t["thoughts"]
                for b in h["blocks"]):
             content.append({"type": "text", "text": reading_rule.NARRATION_SET})
+        if reading_rule.is_part_b(lesson_dir) and any(
+                b.get("vocab") or b.get("vocab_table") or (b.get("question") or {}).get("options")
+                for t in scr["topics"] for h in t["thoughts"] for b in h["blocks"]):
+            content.append({"type": "text", "text": reading_rule.NARRATION_PART_B})   # 1.15
     if rewrite:
         content.append({"type": "text", "text":
             "STATES TO REWRITE: " + ", ".join(rewrite["ids"]) + ". Their current "
@@ -1307,9 +1326,15 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
     blocks = data["blocks"]
     forbids = FIXED_FORBIDS + data["forbids"]
 
+    def stays(bid: str) -> bool:
+        """A pinned practice-set question: on its board from its reveal to the
+        board's end, marked and its parts revealed in later states (1.15)."""
+        b = blocks.get(bid) or {}
+        return bool(b.get("pin") and b.get("question"))
+
     def parts_of(bid: str) -> list[str]:
         b = blocks.get(bid)
-        if not b or b["type"] not in ("timeline", "clauses", "gloss"):
+        if not b or not has_parts(b):
             return []
         return [f"{bid}.{it.get('part')}" for it in (b.get("items") or [])]
 
@@ -1342,9 +1367,17 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
         # and stay; each is revealed once per board, in listed order.
         fixed_parts_due = [p for bid in bd["fixed"] for p in parts_of(bid)]
         fixed_parts_done: list[str] = []
+        # a pinned block (a practice-set question) stays on its board once
+        # shown: later states may mark it and reveal its parts (bundle 1.15)
+        pinned_shown: list[str] = []
+        pinned_parts_done: list[str] = []
+        veil_of = {x["id"]: x.get("veil") for x in sb.get("states", [])}
+        last_revealed: list[str] = []
         for s in bd["states"]:
+            pinned_shown += [i for i in last_revealed if stays(i) and i not in pinned_shown]
             working = list(s["working"])
             revealed: list[str] = []
+            last_revealed = revealed
             parts_done: list[str] = []
             since_visual = 0        # words spoken since something happened on screen
             for u in s["utterances"]:
@@ -1386,6 +1419,14 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                             else:
                                 fixed_parts_done.append(blk)
                                 if fixed_parts_due.index(blk) != len(fixed_parts_done) - 1:
+                                    warn(uid, f"part {blk} revealed out of the listed order")
+                        elif base in pinned_shown and base not in working:
+                            if blk in pinned_parts_done:
+                                fail(uid, f"part {blk} revealed twice")
+                            else:
+                                pinned_parts_done.append(blk)
+                                if parts_of(base).index(blk) != len([p for p in pinned_parts_done
+                                                                     if p.startswith(base + ".")]) - 1:
                                     warn(uid, f"part {blk} revealed out of the listed order")
                         elif base in working:
                             if base not in revealed:
@@ -1454,7 +1495,10 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                                       f"{c['text']!r}; a circle is for one to three words, "
                                       "a longer span takes an underline or a bracket")
                         for ti, (tb, phrase) in enumerate(targets):
-                            if tb in fixed or tb in revealed:
+                            if tb in fixed and veil_of.get(s["id"]) and tb == sb.get("table"):
+                                fail(uid, f"{typ} on {tb}, the covered text: it cannot be seen in "
+                                          f"{s['id']} (bundle 1.15)")
+                            if tb in fixed or tb in revealed or (tb in pinned_shown and tb not in working):
                                 pass
                             elif tb in working:
                                 fail(uid, f"{typ} on {tb} before its reveal")
@@ -1592,6 +1636,11 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                     continue                     # shown at its state's start (ADR 021)
                 if blk not in revealed:
                     fail(s["id"], f"{blk} is never revealed")
+                elif parts_of(blk) and stays(blk):
+                    # a pinned block's parts may come in later states: checked
+                    # when the board ends (bundle 1.15)
+                    pinned_parts_done += [p for p in parts_done if p.startswith(blk + ".")
+                                          and p not in pinned_parts_done]
                 elif parts_of(blk):
                     # a working diagram revealed whole (no part cues) is allowed:
                     # the player then draws its parts with the block; revealed in
@@ -1611,6 +1660,10 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
             never = [ty["text"] for i, ty in enumerate(blocks[tb]["typed"]) if i not in done]
             if never:
                 fail(bd["id"], f"typed parts of {tb} never typed: {never}")
+        for blk in pinned_shown + [i for i in last_revealed if stays(i) and i not in pinned_shown]:
+            gone = [p for p in parts_of(blk) if p not in pinned_parts_done]
+            if gone:
+                fail(bd["id"], f"parts of {blk} never revealed on its board: {gone}")
         missing = [p for p in fixed_parts_due if p not in fixed_parts_done]
         if missing and fixed_parts_done:
             fail(bd["id"], f"fixed diagram parts never drawn: {missing}")

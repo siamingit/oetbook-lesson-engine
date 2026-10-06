@@ -257,8 +257,10 @@ prompts by the stages themselves. What the agent does by hand, in this order:
 | Before screens, for a section that teaches the practice set | `practice_set.py <L> --set <set id>`, then `--teach-pages N,M`; `--check` re-checks it | copies the set from the local release (`%LOCALAPPDATA%\oetacademy-exercises\releases\pilot-v1`) into `analysis/practice_set.json`, every text and item checked against its `content_hash`; never in git |
 | After screens and narration, and at every gate | `check_source_terms.py <L>` | fails on any forbidden term in what a learner reads or hears |
 | Narration audit, and the runner's player step | `check_doc_marks.py <L>` (`--narration` before synthesis) | fails on any phrase of a practice-set text read aloud with no highlight or keyword pair timed to it (ADR 026, 2026-10-06); the narration audit applies the same rule to every draft |
-| Not yet built | `<library>/course/vocab-ids.json` | the `lx:` word-ID map for the Part B and Part C vocabulary layer |
+| Before screens, Parts B and C | `vocab.py <L> --sync`, then `--briefs FILE` (one image brief per word: "alt \| what to draw") and `--copy-audio`; `--check` | the `lx:` word-ID map `<library>/course/vocab-ids.json` (stable engine keys, current and earlier IDs, image briefs), and the word bank's pronunciation clips in `generated/vocab-audio/`; `--check` fails a word with no meaning, synonym, example, audio or brief (a gap in the word bank is an issue in the exercises repository) |
 
+A Part B lesson's bundle is format 1.15 (the question with its options, the
+covered text, the word-bank glosses; ADR 026, 2026-10-06 amendment).
 The bundle of a Reading lesson is format 1.13 (docs/04-LESSON-BUNDLE.md):
 documents, questions and the keyword pairs `match1` to `match3`
 (docs/02-DESIGN-SYSTEM.md §8). Paid stages refuse uncommitted code in the

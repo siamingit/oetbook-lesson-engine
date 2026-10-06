@@ -123,6 +123,7 @@ ICONS = {
 # relative path (resolve_images), so one html serves the player, the silent
 # preview and the review pages.
 IMAGE_TOKEN = "@@gloss-images@@"
+AUDIO_TOKEN = "@@vocab-audio@@"      # a word-bank gloss's pronunciation clip (bundle 1.15)
 
 # A picture on every board (maintainer, 2026-09-30; docs/adr/021-a-picture-on-every-board.md):
 # a generated illustration in the gloss images' approved style, meaningful to the
@@ -148,17 +149,30 @@ def resolve_images(html: str, page_dir: Path, lesson: Path) -> str:
     """Point a page's gloss images at <lesson>/generated/images, relative to
     the folder the page is written in."""
     import os
+    if AUDIO_TOKEN in html:
+        # a word-bank gloss's pronunciation clip (bundle 1.15)
+        html = html.replace(AUDIO_TOKEN, os.path.relpath(lesson / "generated" / "vocab-audio", page_dir)
+                            .replace(os.sep, "/"))
     if IMAGE_TOKEN not in html:
         return html
     rel = os.path.relpath(lesson / "generated" / "images", page_dir).replace(os.sep, "/")
     return html.replace(IMAGE_TOKEN, rel)
 
 
+def has_parts(b: dict) -> bool:
+    """A block drawn part by part: a diagram, a gloss, or (bundle 1.15) a Part B
+    question whose options are ruled out and whose answer is ticked."""
+    return b.get("type") in DIAGRAM_TYPES or bool(b.get("question") and b.get("items"))
+
+
 def gloss_items(b: dict) -> list[dict]:
-    """A gloss's parts (ADR 013), in teaching order: its meaning, its picture
-    (when it has one), its example sentence. The word itself is the block: it
-    appears when the block is revealed."""
+    """A gloss's parts (ADR 013), in teaching order: its meaning, a synonym
+    (a word-bank gloss, bundle 1.15), its picture (when it has one), its
+    example sentence. The word itself is the block: it appears when the block
+    is revealed."""
     items = [{"kind": "meaning", "text": b.get("explanation") or ""}]
+    if b.get("synonym"):
+        items.append({"kind": "synonym", "text": b["synonym"]})
     if (b.get("icon") or "").strip():
         items.append({"kind": "picture", "text": gloss_alt(b)})
     items.append({"kind": "example", "text": b.get("text") or ""})
@@ -722,6 +736,8 @@ def unflatten(topics: list[dict]) -> None:
                     b["label"] = sentence_label(b["label"])
                 if b.get("type") == "clauses" and isinstance(b.get("items"), list):
                     b["items"] = clause_items(b["items"])
+                elif b.get("type") == "plain" and re.match(r"oa-reading-\d", (b.get("label") or "").strip()):
+                    pass        # a practice-set question's parts: parsed by expand_practice (1.15)
                 elif isinstance(b.get("items"), list):
                     items = []
                     for raw in b["items"]:
@@ -1746,6 +1762,7 @@ def is_table_topic(t: dict, b: dict) -> bool:
     """A topic taught as a table board: its fixed table has typed cells, or its
     thoughts go row by row."""
     return b["type"] == "table" and (bool(b.get("doc")) or bool(b.get("map")) or bool(b.get("typed"))
+                                     or bool(b.get("vocab_table"))
                                      or bool(b.get("verdicts")) or any(
         ROW_PURPOSE.match(h.get("purpose") or "") for h in t["thoughts"]))
 
@@ -1767,6 +1784,9 @@ def lay_out_table(t: dict, fixed: list[str], table: dict, blocks: dict,
     states: list[dict] = []
     erasures: list[dict] = []
     cur = None
+    # a Part B question board (bundle 1.15): the text is covered in the states
+    # of the question, the options and "try it first"
+    veiled = any(h.get("veil") for h in t["thoughts"])
     for h in t["thoughts"]:
         m = ROW_PURPOSE.match(h.get("purpose") or "")
         row = int(m.group(1)) - 1 if m else None
@@ -1776,10 +1796,12 @@ def lay_out_table(t: dict, fixed: list[str], table: dict, blocks: dict,
             # after the answer is found, the map stays on it (a note on the
             # answer's form, the section's close)
             row, lens = cur["row"], cur["lens"]
-        if cur is None or row != cur["row"] or (notes and cur["working"])                 or (is_map and lens != cur["lens"]):
+        if cur is None or row != cur["row"] or (notes and cur["working"])                 or (is_map and lens != cur["lens"]) \
+                or (veiled and bool(h.get("veil")) != cur["veil"]):
             if cur is not None:
                 erasures.append({"after_thought": cur["thoughts"][-1], "before_thought": h["id"]})
-            cur = {"thoughts": [], "working": [], "row": row, **({"lens": lens} if is_map else {})}
+            cur = {"thoughts": [], "working": [], "row": row, **({"lens": lens} if is_map else {}),
+                   **({"veil": bool(h.get("veil"))} if veiled else {})}
             states.append(cur)
         cur["thoughts"].append(h["id"])
         cur["working"] += notes
@@ -2052,7 +2074,7 @@ def one_board_per_slide(topics: list[dict], blocks: dict, pages: list[int]) -> l
     when their fixed layers fit together as one. Ids are untouched; each merge
     is recorded and reported."""
     # an exercise item, or a practice-set text on a board of its own (ADR 026)
-    has_item = lambda t: any(b.get("exercise_item") is not None or b.get("doc")
+    has_item = lambda t: any(b.get("exercise_item") is not None or b.get("doc") or b.get("vocab_table")
                              for h in t["thoughts"] for b in h["blocks"])
     records = []
     by_slide: dict[int, list[dict]] = {}
@@ -2096,7 +2118,8 @@ def is_summary_table(b: dict) -> bool:
     typed live, or chosen between (a choice table, 1.6), is a slide's exercise
     table, taught as a table board."""
     return (b["type"] == "table" and len(b.get("header") or []) >= 3
-            and len(b.get("rows") or []) >= 4 and not b.get("typed") and not b.get("verdicts"))
+            and len(b.get("rows") or []) >= 4 and not b.get("typed") and not b.get("verdicts")
+            and not b.get("vocab_table"))
 
 
 def summary_table_layout(topics: list[dict], blocks: dict, pages: list[int]) -> dict:
@@ -2237,8 +2260,16 @@ def block_text_runs(b: dict) -> list[str]:
     tokenises these in this order and the player counts words through the
     block's text nodes in document order, so the two must agree."""
     t = b["type"]
+    if b.get("question") and b["question"].get("options"):
+        # a Part B question (bundle 1.15): its wording, then each option and,
+        # under a wrong one, its reason label (the letters are CSS attributes)
+        reasons = {it["option"]: it.get("text") for it in b.get("items") or [] if it["kind"] == "out"}
+        runs = [b.get("text") or ""]
+        for o in b["question"]["options"]:
+            runs += [o["text"], reasons.get(o["letter"]) or ""]
+        return [r for r in runs if r]
     if t == "gloss":
-        keys = ("term", "explanation", "text")    # the picture has no words
+        keys = ("term", "explanation", "synonym", "text")    # the picture has no words
     elif t == "term_box":
         keys = ("label", "term", "explanation")
     elif t == "comparison":
@@ -2335,9 +2366,10 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             if (b.get("icon") or "").strip() and not b.get("image"):
                 warn(b["id"], f"gloss image not generated yet for {gloss_alt(b)!r}: the runner's "
                               "images stage makes it (gloss_images.py)")
-            if len((b.get("explanation") or "").split()) > 7:
+            if len((b.get("explanation") or "").split()) > 7 and not b.get("vocab"):
                 warn(b["id"], f"gloss meaning of {len(b['explanation'].split())} words; about five")
-            if b.get("term") and b.get("text") and not re.search(
+            # a word-bank gloss (1.15) is the bank's own meaning and example (ADR 026 §2)
+            if b.get("term") and b.get("text") and not b.get("vocab") and not re.search(
                     r"\b" + re.escape(b["term"].split()[0][:5]), b["text"], re.I):
                 fail(b["id"], f"the gloss's example does not use {b['term']!r}")
         elif t == "picture":
@@ -2559,6 +2591,58 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             warn(b["id"], "relabelled maintainer -> adapted: model wording carrying a "
                           "ruling (rule of 2026-09-24)")
 
+    # 1b. the Part B question method (ADR 026; bundle 1.15): each wrong option
+    # is ruled out with a short reason, then the key is ticked, as the release
+    # keys it; the text stays covered for the question, options and try-it-first
+    ps_items = {}
+    if any(b.get("question") and b["question"].get("options") for b in blocks.values()):
+        import practice_set
+        ps = practice_set.load(lesson_path_for(data)) or {}
+        ps_items = practice_set.items(ps) if ps else {}
+    for b in blocks.values():
+        if b.get("vocab_ref_unknown"):
+            fail(b["id"], f"names {b['vocab_ref_unknown']!r}, which is not a word of the word bank "
+                          "mapping (vocab.py --sync)")
+        if not (b.get("question") and b["question"].get("options")):
+            continue
+        for line in b.get("bad_items") or []:
+            fail(b["id"], f"question part {line!r}: write 'out|<letter>|<reason>' or 'key|<letter>'")
+        it = ps_items.get(b["question"]["item"])
+        if not it:
+            continue
+        letter = {o["option"]: o["letter"] for o in b["question"]["options"]}
+        key = letter[it["scoring"]["key_option_id"]]
+        parts = b.get("items") or []
+        outs = [p["option"] for p in parts if p["kind"] == "out"]
+        keys = [p["option"] for p in parts if p["kind"] == "key"]
+        wrong = sorted(set(letter.values()) - {key})
+        if sorted(outs) != wrong:
+            fail(b["id"], f"the wrong options are {wrong}; ruled out: {sorted(outs)}")
+        if keys != [key]:
+            fail(b["id"], f"the answer is option {key}; ticked: {keys}")
+        if parts and parts[-1]["kind"] != "key":
+            fail(b["id"], "the answer is ticked after every wrong option is ruled out")
+        for p in parts:
+            if p["kind"] == "out":
+                n = len((p.get("text") or "").split())
+                if not n:
+                    fail(b["id"], f"option {p['option']} is ruled out with no reason label")
+                elif n > MAX_REASON_WORDS:
+                    fail(b["id"], f"option {p['option']}'s reason label has {n} words; at most "
+                                  f"{MAX_REASON_WORDS}")
+    for t in out["topics"]:
+        if not any(b.get("question") and b["question"].get("options")
+                   for h in t["thoughts"] for b in h["blocks"]):
+            continue
+        veils = [bool(h.get("veil")) for h in t["thoughts"]]
+        if not any(veils):
+            fail(t["id"], "a Part B question board covers its text while the question, the options "
+                          "and try-it-first are taught: name those thoughts 'Covered: ...'")
+        else:
+            opened = veils.index(False) if False in veils else len(veils)
+            if not veils[0] or any(veils[opened:]):
+                fail(t["id"], "the covered thoughts come first, before the text appears")
+
     # 2. never-on-screen strings, Persian script, register claims
     forbids = FIXED_FORBIDS + data["forbids"]
     for b in blocks.values():
@@ -2574,7 +2658,8 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             # vocabulary, not a claim about register.
             defines_slide_word = (b["type"] == "term_box" and (b.get("term") or "").lower()
                                   in set(re.findall(r"[a-z]+", data["slide_text"].lower())))
-            released = bool(b.get("doc") or b.get("map") or b.get("question"))     # ADR 026: as released
+            released = bool(b.get("doc") or b.get("map") or b.get("question")     # ADR 026: as released
+                            or b.get("vocab") or b.get("vocab_table"))         # the word bank's own words (1.15)
             if b["provenance"] != "maintainer" and not defines_slide_word and not released:
                 # A register word that the slide itself prints is content being
                 # taught (a signal-words table lists "rarely"), not a claim.
@@ -2598,6 +2683,8 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
     # 2b. a word is glossed once in a section (design system §7b)
     glossed: dict[str, str] = {}
     for b in blocks.values():
+        if b.get("vocab"):
+            continue        # a word-bank word is glossed wherever it occurs (ADR 026 §2)
         if (b["type"] == "term_box" and b.get("label") == GLOSS_LABEL) or b["type"] == "gloss":
             w = (b.get("term") or "").strip().lower()
             if w in glossed:
@@ -2704,6 +2791,8 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                       and not any(b.get("exercise_item") is not None for h in t["thoughts"]
                                   for b in h["blocks"])]
         allowed += len(doc_boards)
+        # a text's pre-teaching and word-recap boards (bundle 1.15) count the same way
+        allowed += len([t for t in ts if any(b.get("vocab_table") for h in t["thoughts"] for b in h["blocks"])])
         if any(b.get("question") for t in ts for h in t["thoughts"] for b in h["blocks"]):
             allowed += 1           # the slide's own board, then the questions' introduction
         splits = [t for t in ts if t.get("split")]
@@ -2860,6 +2949,8 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
         missing = [n for n in range(1, nrows + 1) if n not in taught]
         if missing:
             warn(bd["id"], f"rows {missing} have no thought of their own")
+        if tb.get("vocab_table"):
+            continue        # built from the word bank (bundle 1.15), not the slide's table
         from build_sections import slide_tables
         page = topic_slide(topic, out["pages"])
         src = [x for x in slide_tables(lesson_path_for(data), page)
@@ -3309,6 +3400,72 @@ MAP_CSS = """
 """
 
 
+# A Part B lesson's blocks (bundle 1.15; ADR 026, the Part B question method):
+# added only to a lesson whose practice set has a Part B, so no other lesson's
+# stylesheet changes. Everything here is colour, background, outline or an
+# absolutely placed glyph: nothing moves a word (design system §8a).
+PART_B_CSS = """
+.blk.q.mcq .qb{display:flex;flex-direction:column;gap:.6cqh;min-width:0}
+.blk.q.mcq .qt{display:block;margin-bottom:.3cqh}
+.blk.q .qo{position:relative;display:block;padding:.35cqh 4.2cqh .35cqh 4.6cqh;border-radius:.9cqh;
+  font-weight:400;color:#2C2C2A;transition:background .3s ease,box-shadow .3s ease}
+.blk.q .qo .ol::before{content:attr(data-l);position:absolute;left:.6cqh;top:.35cqh;display:inline-flex;
+  align-items:center;justify-content:center;width:3cqh;height:3cqh;border-radius:50%;
+  border:max(1px,.2cqh) solid #475569;color:#475569;font-size:.8em;font-weight:500;box-sizing:border-box}
+.blk.q .qo .ot{transition:opacity .3s ease}
+.blk.q .qo .orsn{display:block;font-size:.82em;color:#501313;margin-top:.2cqh;transition:opacity .3s ease}
+.blk.q .qo .orsn::before{content:"\\2715";display:inline-block;margin-right:.45em;color:#E24B4A;font-weight:500}
+.blk.q .qo:has(.orsn.on) .ot{text-decoration:line-through;text-decoration-color:#E24B4A;
+  text-decoration-thickness:max(1px,.22cqh);opacity:.55}
+.blk.q .qo:has(.orsn.on){background:#FCEBEB;box-shadow:inset max(3px,.45cqh) 0 0 #E24B4A}
+.blk.q .qo .okey{position:absolute;right:.8cqw;top:.2cqh;color:#639922;font-size:1.15em;font-weight:500}
+.blk.q .qo .okey::before{content:"\\2713"}
+.blk.q .qo:has(.okey.on){background:#EAF3DE;box-shadow:inset max(3px,.45cqh) 0 0 #639922}
+.blk.q .qo:has(.okey.on) .ol::before{background:#639922;border-color:#639922;color:#fff}
+.tbl.core.doc.veiled td,.tbl.core.doc.veiled th{color:transparent!important;
+  background-image:repeating-linear-gradient(-45deg,#F1F0EB 0 1.2cqh,#E8E6DF 1.2cqh 2.4cqh)}
+.tbl.core.doc.veiled td *{color:transparent!important;border-color:transparent!important}
+.tbl.core.doc.veiled th::before{color:#fff!important}
+.tbl.core.doc.veiled{transition:none}
+.tbl.core.doc-email{border-radius:1.6cqh;box-shadow:0 0 0 max(1px,.2cqh) #C9D3DE}
+.tbl.core.doc-email th{background:#F4F6F9;border-bottom:max(1px,.25cqh) solid #D3D9E1;padding-top:3.4cqh;
+  position:relative}
+.tbl.core.doc-email th::after{content:"";position:absolute;left:1.4cqw;top:1.1cqh;width:7cqh;height:1.2cqh;
+  background:radial-gradient(circle,#B4BCC7 45%,transparent 50%) 0 0/2.3cqh 1.2cqh repeat-x}
+.tbl.core.doc-procedure{border-top:max(3px,.7cqh) solid #475569}
+.tbl.core.doc-procedure th{background:#F1F0EB;color:#2C2C2A;border-bottom:max(2px,.45cqh) double #888780}
+.tbl.core.doc-procedure td{border-left:max(1px,.2cqh) solid #E8E6DF}
+.tbl.core.doc-guideline{border-left:max(4px,.9cqh) solid #185FA5}
+.tbl.core.doc-guideline th{background:#E6F1FB}
+.tbl.core.doc-manual{border:max(1px,.25cqh) dashed #5F5E5A;background:#FBFBF9}
+.tbl.core.doc-manual th{background:#2C2C2A;color:#fff}
+.tbl.core.doc-manual th::before{background:#fff;color:#2C2C2A}
+.tbl.core.doc-policy{border-top:max(4px,.9cqh) solid #2C2C2A;border-radius:.4cqh}
+.tbl.core.doc-policy th{background:#fff;color:#2C2C2A;border-bottom:max(1px,.2cqh) solid #2C2C2A}
+.tbl.core.doc-notice{background:#FFFDF4;border:max(1px,.25cqh) solid #E0AE12;overflow:visible;position:relative}
+.tbl.core.doc-notice::before{content:"";position:absolute;left:50%;top:-1.1cqh;width:2.2cqh;height:2.2cqh;
+  margin-left:-1.1cqh;border-radius:50%;background:#475569;box-shadow:0 .3cqh .5cqh rgba(0,0,0,.25);z-index:1}
+.tbl.core.doc-notice th{background:#FFF8DC;border-bottom:max(1px,.25cqh) solid #E0AE12}
+.blk.gl .gl-s{font-size:.9em;color:#5F5E5A}
+.blk.gl .gl-s::before{content:"Synonym: ";color:#888780}
+.blk.gl .gl-say{display:inline-block;vertical-align:-.15em;width:3.2cqh;height:3.2cqh;margin:0 .2em 0 .45em;
+  padding:0;border:none;border-radius:50%;background:#185FA5;cursor:pointer;position:relative}
+.blk.gl .gl-say::before{content:"";position:absolute;left:50%;top:50%;width:1.6cqh;height:1.6cqh;
+  transform:translate(-50%,-50%);background:#fff;
+  clip-path:polygon(0 35%,30% 35%,62% 8%,62% 92%,30% 65%,0 65%)}
+.blk.gl .gl-say.playing{background:#042C53}
+"""
+
+
+def has_part_b(lesson) -> bool:
+    """A lesson whose practice set has a Part B (bundle 1.15)."""
+    if not lesson:
+        return False
+    import practice_set
+    ps = practice_set.load(Path(lesson))
+    return bool(ps) and any(p.get("code") == "RB" for p in ps.get("parts") or [])
+
+
 def has_map(lesson) -> bool:
     """A lesson with a map of the four texts in any section (bundle 1.14)."""
     return bool(lesson) and any('"map": {' in p.read_text(encoding="utf-8")
@@ -3321,7 +3478,7 @@ def frame_css(lesson) -> str:
     a map (bundle 1.14)."""
     import reading_rule
     return (FRAME_CSS + (READING_CSS if lesson and reading_rule.is_reading(Path(lesson)) else "")
-            + (MAP_CSS if has_map(lesson) else ""))
+            + (MAP_CSS if has_map(lesson) else "") + (PART_B_CSS if has_part_b(lesson) else ""))
 
 
 PAGE_CSS = """
@@ -3599,7 +3756,9 @@ def core_table_html(b: dict, bid: str) -> str:
 
 DOC_KINDS = {"table": "Table", "guideline": "Guideline", "protocol": "Protocol", "notes": "Notes",
              "email": "Email", "memo": "Memo", "policy": "Policy", "extract": "Extract",
-             "article": "Article", "letter": "Letter", "text": "Text"}
+             "article": "Article", "letter": "Letter", "text": "Text",
+             # bundle 1.15: the Part B set's other genres (ADR 026)
+             "procedure": "Procedure", "manual": "Manual", "notice": "Notice"}
 
 
 def doc_table_html(b: dict, bid: str, first_row: int = 0, panel: bool = False) -> str:
@@ -3655,7 +3814,28 @@ def map_html(b: dict, bid: str) -> str:
 
 def question_html(b: dict, bid: str) -> str:
     """A practice-set question (ADR 026, bundle 1.13): its number as a badge
-    (a CSS attribute, never a word) and its wording as released."""
+    (a CSS attribute, never a word) and its wording as released. A Part B
+    question (bundle 1.15) also shows its options as released, each lettered
+    by CSS; a wrong option's reason label and the answer's tick are parts the
+    narration reveals, their room reserved from the start (nothing moves)."""
+    opts = b["question"].get("options")
+    if opts:
+        parts = {(it["kind"], it["option"]): it for it in b.get("items") or []}
+        rows = ""
+        for o in opts:
+            out = parts.get(("out", o["letter"]))
+            key = parts.get(("key", o["letter"]))
+            rows += ('<div class="qo" data-opt="' + o["letter"] + '"><span class="ol" data-l="' + o["letter"]
+                     + '"></span><span class="ot">' + esc(o["text"]) + "</span>"
+                     + (('<span class="pt okey" data-part="' + esc(b["id"]) + "." + str(key["part"]) + '"></span>')
+                        if key else "")
+                     + (('<span class="pt orsn" data-part="' + esc(b["id"]) + "." + str(out["part"]) + '">'
+                         + esc(out["text"]) + "</span>") if out else "")
+                     + "</div>")
+        return ('<div class="blk q mcq"' + bid + ' data-item="' + esc(b["question"]["item"])
+                + '"><span class="qn" data-n="' + esc(str(b.get("exercise_item") or ""))
+                + '"></span><div class="qb"><span class="qt">' + esc(b["text"]) + "</span>" + rows
+                + "</div></div>")
     return ('<div class="blk q"' + bid + ' data-item="' + esc(b["question"]["item"]) + '"><span class="qn" data-n="'
             + esc(str(b.get("exercise_item") or "")) + '"></span><span class="qt">' + esc(b["text"])
             + "</span></div>")
@@ -3753,9 +3933,19 @@ def _block_html(b: dict) -> str:
         img = b.get("image") or {}
         picture = (('<img class="gl-img" src="' + IMAGE_TOKEN + "/" + esc(img["file"]) + '" alt="'
                     + esc(gloss_alt(b)) + '">') if img.get("file") else "")
-        return ('<div class="blk gl"' + bid + '><div class="gl-txt"><div class="gl-h"><span class="gl-w">'
-                + esc(b["term"]) + '</span> <span class="pt gl-m"' + pid(parts["meaning"]) + ">"
-                + esc(b.get("explanation") or "") + '</span></div><div class="pt gl-x"'
+        # a word-bank gloss (bundle 1.15) adds its synonym, and a button that
+        # plays the word bank's pronunciation when the learner taps it (no
+        # autoplay; maintainer, 2026-10-06); the button has no words
+        syn = (('<div class="pt gl-s"' + pid(parts["synonym"]) + ">" + esc(b["synonym"]) + "</div>")
+               if parts.get("synonym") else "")
+        aud = b.get("audio") or {}
+        say = (('<button type="button" class="gl-say" data-audio="' + AUDIO_TOKEN + "/" + esc(aud["file"])
+                + '" aria-label="' + esc("Hear " + (b.get("term") or "")) + '"></button>')
+               if aud.get("file") else "")
+        return ('<div class="blk gl' + (" glv" if b.get("vocab") else "") + '"' + bid
+                + '><div class="gl-txt"><div class="gl-h"><span class="gl-w">'
+                + esc(b["term"]) + "</span>" + say + ' <span class="pt gl-m"' + pid(parts["meaning"]) + ">"
+                + esc(b.get("explanation") or "") + "</span></div>" + syn + '<div class="pt gl-x"'
                 + pid(parts["example"]) + ">" + esc(b.get("text") or "") + "</div></div>"
                 + (('<div class="pt gl-pic"' + pid(pic) + ">" + picture + "</div>") if pic else "")
                 + "</div>")
@@ -3912,6 +4102,30 @@ def map_block(stims: list[dict]) -> dict:
             "note": "the set's texts as released, as a map (ADR 026); built by code, never written by the model"}
 
 
+COVERED_PURPOSE = re.compile(r"^\s*covered\s*:", re.I)
+MAX_REASON_WORDS = 14          # a wrong option's reason label (bundle 1.15)
+QUESTION_PART = re.compile(r"^\s*(out|key)\s*\|\s*([A-Z])\s*(?:\|\s*(.*\S))?\s*$", re.I)
+
+
+def question_parts(raw: list[str], options: list[dict]) -> tuple[list[dict], list[str]]:
+    """A Part B question's parts (bundle 1.15), as the screens model wrote them
+    on its question block: "out|B|<short reason>" for each wrong option, then
+    "key|A" for the answer, in the order the narration reveals them. Parsed into
+    {kind, option, text, part}; lines that do not parse are returned to audit."""
+    letters = {o["letter"] for o in options}
+    out, bad = [], []
+    for line in raw:
+        m = QUESTION_PART.match(line or "")
+        if not m or m.group(2).upper() not in letters:
+            bad.append(line)
+            continue
+        kind = m.group(1).lower()
+        out.append({"kind": kind, "option": m.group(2).upper(),
+                    "text": (m.group(3) or "").strip() if kind == "out" else None,
+                    "part": len(out) + 1})
+    return out, bad
+
+
 def expand_practice(lesson: Path, topics: list[dict]) -> None:
     """A Reading lesson's practice set (ADR 026, bundle 1.13): a table block
     whose label is a stimulus ID becomes that text as a document, and a plain
@@ -3934,8 +4148,34 @@ def expand_practice(lesson: Path, topics: list[dict]) -> None:
                     b.update({**BLOCK_DEFAULTS, **practice_set.document_block(stim[ref]), **keep,
                               "anchor": True})
                 elif b.get("type") == "plain" and ref in items:
+                    raw = list(b.get("items") or [])
                     b.clear()
                     b.update({**BLOCK_DEFAULTS, **practice_set.question_block(ps, items[ref]), **keep})
+                    if b["question"].get("options"):
+                        # bundle 1.15: the options ruled out and the answer ticked
+                        b["items"], bad = question_parts(raw, b["question"]["options"])
+                        if bad:
+                            b["bad_items"] = bad
+                elif b.get("type") == "gloss" and re.match(r"^(lx|w):", ref):
+                    # a word-bank gloss (ADR 026 §2, bundle 1.15), built from its ID
+                    import vocab
+                    k = vocab.key_of(lesson, ref)
+                    if k:
+                        b.clear()
+                        b.update({**BLOCK_DEFAULTS, **vocab.gloss_block(lesson, k), **keep})
+                    else:
+                        b["vocab_ref_unknown"] = ref
+                elif b.get("type") == "table" and re.match(r"^(MATCH|RECAP)\b", ref, re.I):
+                    # the instructor's word-to-meaning matching table, or a text's
+                    # word recap, built from the word bank (bundle 1.15)
+                    import vocab
+                    keys, bad = vocab.keys_from_label(lesson, ref)
+                    if keys and not bad:
+                        build = vocab.match_block if ref.upper().startswith("MATCH") else vocab.recap_block
+                        b.clear()
+                        b.update({**BLOCK_DEFAULTS, **build(lesson, keys), **keep, "anchor": True})
+                    else:
+                        b["vocab_ref_unknown"] = ref
                 elif b.get("type") == "table" and ref.upper() == "MAP":
                     # the map of the set's texts (ADR 026, Part A question method)
                     b.clear()
@@ -3986,9 +4226,20 @@ def expand_practice(lesson: Path, topics: list[dict]) -> None:
                 if m and m.group(2).upper() in letters:
                     h["map_doc"] = letters[m.group(2).upper()]
                     h["map_zoom"] = "doc" if m.group(1).lower() == "zoom" else None
+        # a Part B question board (bundle 1.15): the text stays covered while
+        # the question, the options and "try it first" are taught, as the
+        # instructor covers it; those thoughts are named "Covered: ..."
+        if any(b.get("doc") for h in t["thoughts"] for b in h["blocks"]) and qs \
+                and qs[0]["question"].get("options"):
+            for h in t["thoughts"]:
+                m = COVERED_PURPOSE.match(h.get("purpose") or "")
+                if m:
+                    h["veil"] = True
+                    h["purpose"] = "Table: " + h["purpose"][m.end():].strip()
         # a board whose fixed layer is a text is a table board: a thought that
         # names no row is about the whole text, as one_board_per_slide marks it
-        if any(b.get("doc") or b.get("map") for h in t["thoughts"] for b in h["blocks"]):
+        if any(b.get("doc") or b.get("map") or b.get("vocab_table")
+               for h in t["thoughts"] for b in h["blocks"]):
             for h in t["thoughts"]:
                 if not (ROW_PURPOSE.match(h.get("purpose") or "") or TABLE_PURPOSE.match(h.get("purpose") or "")):
                     h["purpose"] = "Table: " + (h.get("purpose") or "")

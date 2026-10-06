@@ -352,9 +352,14 @@ function drawParts(bd, s, t, jumped) {
   for (const [id, el] of blockEls) {
     const fixed = el.dataset.layer === "fixed";
     const blockOn = fixed || el.classList.contains("on");
+    // 1.15: a pinned question's parts (an option ruled out, the answer ticked)
+    // are on the board's reveal and stay to its end, like a fixed diagram's
+    const onBoard = !fixed && el.dataset.layer === "pinned";
     for (const p of el.querySelectorAll("[data-part]")) {
       const key = p.dataset.part;
-      const at = fixed ? fixedPartAt.get(bd.id + "|" + key) : (s ? revealAt.get(s.id + "|" + key) : undefined);
+      const at = fixed ? fixedPartAt.get(bd.id + "|" + key)
+        : (onBoard && fixedPartAt.has(bd.id + "|" + key)) ? fixedPartAt.get(bd.id + "|" + key)
+        : (s ? revealAt.get(s.id + "|" + key) : undefined);
       const on = blockOn && at !== undefined && t >= at;
       if (on && !p.classList.contains("on")) {
         // Drawn in motion only when its cue has just passed during playback;
@@ -1123,6 +1128,12 @@ function renderFrame(t) {
   const jumped = lastRenderT === null || Math.abs(t - lastRenderT) > 0.75;
   lastRenderT = t;
   drawBoard(bd, s, erased);
+  // 1.15: on a Part B question board the text is covered (type tag only, its
+  // room kept) while the question, the options and try-it-first are taught
+  if (bd.table) {
+    const tb = blockEls.get(bd.table);
+    if (tb) tb.classList.toggle("veiled", !!(s && s.veil));
+  }
   const gone = clearedAt(s, t);
   if (s && !erased) {
     for (const id of s.working) {
@@ -1168,6 +1179,20 @@ function renderFrame(t) {
 
 // ---- Playback engine: audio is the clock ----
 const audioEl = new Audio(); audioEl.preload = "auto";
+const sayEl = new Audio();
+camEl.addEventListener("click", e => {
+  const btn = e.target.closest && e.target.closest(".gl-say");
+  if (!btn) return;
+  e.stopPropagation();
+  const resume = state.playing;
+  if (resume) pause();
+  for (const b of camEl.querySelectorAll(".gl-say.playing")) b.classList.remove("playing");
+  btn.classList.add("playing");
+  sayEl.src = btn.dataset.audio;
+  const done = () => { btn.classList.remove("playing"); if (resume) play(); };
+  sayEl.onended = done; sayEl.onerror = done;
+  sayEl.play().catch(done);
+});
 const preloadEl = new Audio(); preloadEl.preload = "auto";
 const state = { playing: false, globalTime: 0, index: 0, inGap: false, gapEndsAt: 0,
                 gapRemaining: 0, scrubbing: false, failure: null };

@@ -229,6 +229,10 @@ def shown(b: dict) -> dict:
               "items", "header", "rows"):
         if b.get(k):
             out[k] = b[k]
+    if (b.get("question") or {}).get("options"):          # a Part B question (bundle 1.15)
+        out["options"] = [f"{o['letter']}: {o['text']}" for o in b["question"]["options"]]
+    if b.get("synonym"):                                  # a word-bank gloss (bundle 1.15)
+        out["synonym"] = b["synonym"]
     # Tense tags are on screen too: small labelled chips under a phrase. Left
     # out until 2026-09-24, when the reviewer reported every "the label says
     # past" as speech about something not on screen.
@@ -248,6 +252,9 @@ def part_shown(b: dict, part_id: str) -> dict:
         return {"id": part_id, "type": "diagram part (unknown)"}
     out = {"id": part_id, "type": "diagram part: " + str(it.get("kind")),
            "label": it.get("label") if it.get("label") is not None else it.get("text")}
+    if it.get("option"):                                  # a Part B question's part (1.15)
+        out["type"] = (f"option {it['option']} ruled out (struck, reason label shown)"
+                       if it["kind"] == "out" else f"option {it['option']} ticked as the answer")
     if it.get("final"):
         out["final_mark"] = it["final"]
     return out
@@ -356,6 +363,8 @@ def prepare(lesson: Path, pages: list[int], n_pass: int = 1, states: list[str] |
     import reading_rule                        # ADR 026
     if reading_rule.is_reading(lesson):
         text = reading_rule.QA + "\n\n" + text
+        if reading_rule.is_part_b(lesson):
+            text = reading_rule.QA_PART_B + "\n\n" + text      # bundle 1.15
     if only:
         text =("ONLY SOME STATES ARE UNDER REVIEW: the ones below were just rewritten. "
                 "Judge them; earlier and later states are not shown and are not "

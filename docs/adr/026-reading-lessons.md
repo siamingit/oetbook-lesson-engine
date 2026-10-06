@@ -380,3 +380,80 @@ Added at the maintainer's request in the review of reading-02-part-a.
 - **No lesson may suggest using a highlighter in the paper test**, in words
   or in a picture. The highlight on a board is only the lesson's display.
   Carried by the reading rule (screens, narration and QA prompts).
+
+## Amendment, 2026-10-06: the Part B question method, the vocabulary layer built, bundle 1.15
+
+Added at the maintainer's request in the brief for Reading lesson 3 ("Part B
+question method (new; record it in ADR 026)") and approved with bundle 1.15 at
+its source gate (2026-10-06).
+
+### The Part B question method
+
+- **The method** (maintainer). Each Part B question is solved in eight steps,
+  so the learner reads the question and the options before the text (QAT:
+  Question, Answers, Text), and searches before the answer is shown:
+  1. the question appears and is read; its keywords are marked;
+  2. the three options are read, with their keywords marked (underlined, as
+     the instructor underlines them);
+  3. **try it first**: the learner is invited to pause and choose, then a few
+     seconds of silence (4 s);
+  4. the extract appears: the whole text and the question on one board. Until
+     then the text is **covered** (its type tag shown, its room kept), as the
+     instructor covers it in yellow while he reads the question and options;
+  5. keyword pairs light up in shared colours (`match1` to `match3`);
+  6. the paraphrase bridge links the text's wording to the correct option;
+  7. each wrong option is ruled out: struck through, with a short reason label
+     based on the release's own feedback for that option (at most 12 words in
+     the prompt, 14 in the audit; A2-B1; QA checks it against the text);
+  8. the answer is confirmed: a tick on the option.
+- Every phrase read from a text is marked (the rule of 2026-10-06 and
+  `check_doc_marks.py`); nothing is read or marked in a covered text.
+- **Boards of a Part B text**, in order: its pre-teaching board, its question
+  board, its word-recap board (below).
+
+### The vocabulary layer, as built
+
+- **The mapping file** `<library>/course/vocab-ids.json` exists
+  (`vocab.py --sync`): each word has a stable engine key (`w:` and the ID first
+  seen), its current `lx:` ID, its earlier IDs and the engine's image brief for
+  its gloss picture (`vocab.py --briefs`). Screens store the key; a bundle's
+  `lx:` ID is read from the file at build time.
+- **Pre-teaching board**: the instructor's word-to-meaning matching table
+  (format c), built by code from the word bank (the words in order, their
+  meanings moved one place on), taught row by row: an arrow from the word to
+  its meaning, then the word's gloss. The instructor's other two formats are
+  used where the set's own words fit them (maintainer, 2026-10-06): a
+  collocation pair (a) and an attributive-noun chain (b; the qualifier is a
+  noun used as a modifier), each a one-row table of the text's own words.
+- **Gloss** (bundle 1.15): the word, its meaning, a synonym and the example,
+  all from the word bank, the engine's own background-free image, and the word
+  bank's pronunciation clip on a button the learner taps (no autoplay, so no
+  second voice in the narration; maintainer, 2026-10-06). The clips are copied
+  into the lesson (`generated/vocab-audio/`). A word is glossed where it is
+  pre-taught and again wherever it occurs in the text, the question or an
+  option.
+- **Word-recap board**: a table of each word, its meaning and a synonym, built
+  by code from the word bank, at the end of each text.
+- `vocab.py --check` fails a word with no meaning, synonym, example, audio
+  file or image brief; a gap in the word bank is an issue in the exercises
+  repository, never filled by the engine (none for oa-set-rb-0001).
+
+### How it is carried (bundle 1.15)
+
+- A question block of a Part B item carries `question.options` (`{option,
+  letter, text}`, in the release's display order) and parts (`items`):
+  `{kind: "out", option, text}` for each wrong option, then `{kind: "key",
+  option}`. The screens model writes them as strings on the question
+  placeholder ("out|B|reason", "key|A"); code checks them against the release's
+  key. The question is pinned, so its parts may be revealed in later states:
+  the bundle puts their times in the board's `reveal`, where they stay.
+- A thought named "Covered: ..." on a Part B question board makes a covered
+  state (a state's `veil`); covered thoughts come first.
+- Gloss blocks and word tables are placeholders the model names by `lx:` ID
+  ({"type": "gloss", "label": "lx:..."}, {"type": "table", "label": "MATCH
+  lx:... lx:..."} or "RECAP ..."); code builds them.
+- New document types `procedure`, `manual`, `notice`, and a page look for each
+  of the six genres, drawn by the stylesheet only (no word added).
+- Everything is added only to a lesson whose set has a Part B (format 1.15,
+  `PART_B_CSS`); Reading 1 and 2 and every other lesson are unchanged, checked
+  by rendering all 13 built lessons before and after.

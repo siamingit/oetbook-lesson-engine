@@ -775,6 +775,29 @@ ADR 026, the Part A question method; bundle 1.14, rule 31.
 - Marks, keyword pairs and the pointer inside the map are drawn only where the
   map's frame shows them.
 
+### 7g. A Part B question, the covered text, and the word bank's glosses (Reading)
+
+ADR 026, the Part B question method and the vocabulary layer; bundle 1.15, rules
+32 to 34.
+
+- **The question with its options.** Under the question, options A to C, each
+  with its letter in a small circle. A wrong option, when ruled out, is struck
+  through in red on the pale red of "wrong", with a short reason label under
+  it after a cross; the answer takes a tick on the pale green of "correct". The
+  room of every label and tick is kept from the start, so nothing moves.
+- **The covered text.** While the question, the options and "try it first" are
+  taught, the text's page shows only its type tag on a hatched grey cover, at
+  its full size, as the instructor covers the text; then it appears.
+- **Document looks by genre** (stylesheet only, no words added): an email as a
+  mail window; a procedure with a document-control band; a guideline with a
+  blue edge; a manual on a dark header with a dashed edge; a policy with a
+  formal black rule; a notice pinned on a pale yellow sheet.
+- **A word-bank gloss**: the gloss card (§7b) with the word's synonym under its
+  meaning ("Synonym:"), and a small round speaker button beside the word that
+  the learner taps to hear it (never played by the lesson itself).
+- **Word tables**: the matching table (Word | Meaning) and the recap table (Word |
+  Meaning | Synonym) are table boards (§7, Tables).
+
 ## 8. Marks
 
 Clean and re-authored. Never copies of the instructor's ink.
