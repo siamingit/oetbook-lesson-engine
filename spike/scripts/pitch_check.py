@@ -1,9 +1,10 @@
-"""How lively a voice clip sounds, measured: its pitch variation (a proposal,
-maintainer 2026-10-06: "an automated check for monotony").
+"""The monotony check: how lively a lesson's voice is, measured by its pitch
+variation (adopted by the maintainer, 2026-10-06; ADR 027 amendment). The
+runner runs it on every lesson's finished player.
 
-    .venv/Scripts/python spike/scripts/pitch_check.py --baseline       # Rupert's approved lessons
-    .venv/Scripts/python spike/scripts/pitch_check.py FILE.wav [...]   # score clips against it
-    .venv/Scripts/python spike/scripts/pitch_check.py --lesson <lesson_dir>
+    .venv/Scripts/python spike/scripts/pitch_check.py <lesson_dir>         # the check
+    .venv/Scripts/python spike/scripts/pitch_check.py FILE.wav [...]       # score clips
+    .venv/Scripts/python spike/scripts/pitch_check.py --baseline           # re-measure Rupert's lessons
 
 A monotonous reading keeps its pitch close to one note; a teacher's voice rises
 and falls. For each clip the fundamental frequency (F0) is tracked every 10 ms
@@ -15,9 +16,13 @@ on one scale. Two figures per clip:
   - `pitch_range`: the 90th minus the 10th percentile, in semitones.
 Frames more than 12 semitones from the median (octave errors) are left out.
 The baseline is the distribution of `pitch_sd` over clips of the lessons the
-maintainer approved with Rupert's voice; a clip is flagged below that
-distribution's 10th percentile, and a lesson whose median clip is below its
-25th percentile fails. This is a signal for the ear, not a judge of it.
+maintainer approved with Rupert's voice (660 clips, 2026-10-06: median 4.42,
+10th percentile 3.71, 25th percentile 4.07). A lesson whose median clip is
+below 4.07 fails; every clip below 3.71 is listed, with its time in the
+lesson, for the maintainer's ear. The thresholds are fixed here (ADR 027
+amendment); --baseline measures the lessons again for information only. All
+eleven approved lessons pass (medians 4.32 to 4.46). This is a signal for the
+ear, not a judge of it.
 """
 
 import json
@@ -30,6 +35,8 @@ import numpy as np
 
 LESSONS = Path(r"C:\OET\lessons")
 BASELINE = Path(__file__).resolve().parents[1] / "out" / "pitch-baseline.json"
+FAIL_BELOW = 4.07          # semitones: a lesson's median clip (ADR 027 amendment)
+FLAG_BELOW = 3.71          # semitones: a clip listed for the maintainer's ear
 RUPERT_LESSONS = ["grammar-01-verb-tenses", "grammar-02-verb-use", "grammar-03-nominalization",
                   "grammar-04-articles", "grammar-05-complex-compound", "grammar-06-clause",
                   "grammar-07-punctuation", "grammar-08-paraphrasing", "vocabulary-01-word-forms",
@@ -119,10 +126,41 @@ def baseline(per_lesson: int = 60, seed: int = 7) -> dict:
     return b
 
 
+def check_lesson(lesson: Path) -> int:
+    """Every clip of the lesson's player: the median against FAIL_BELOW, each
+    clip under FLAG_BELOW listed with its time; written to pitch_check.json."""
+    d = lesson / "generated" / "lesson-player"
+    t = json.loads((d / "timeline.json").read_text(encoding="utf-8"))
+    start = {u["id"]: u["start"] for bd in t["boards"] for st in bd["states"] for u in st["utterances"]}
+    url = "file:///" + str(d / "player.html").replace("\\", "/")
+    rows = []
+    for ip in sorted((lesson / "generated").glob("*/boards/audio_index.json")):
+        tag = ip.parents[1].name
+        for uid, e in json.loads(ip.read_text(encoding="utf-8")).items():
+            sc = score(ip.parent / e["file"])
+            if sc and f"{tag}_{uid}" in start:
+                rows.append({"id": f"{tag}_{uid}", "time": start[f"{tag}_{uid}"], "text": e["text"], **sc})
+    sm = summary(rows)
+    flagged = sorted((r for r in rows if r["pitch_sd"] < FLAG_BELOW), key=lambda r: r["time"])
+    ok = sm["pitch_sd_median"] >= FAIL_BELOW
+    (d / "pitch_check.json").write_text(json.dumps(
+        {"fail_below": FAIL_BELOW, "flag_below": FLAG_BELOW, **sm, "passed": ok,
+         "flagged": flagged}, ensure_ascii=False, indent=1), encoding="utf-8")
+    for r in flagged:
+        s_ = int(r["time"])
+        print(f"FLAG {r['id']} {r['pitch_sd']} semitones  {url}?t={s_} ({s_ // 60}:{s_ % 60:02d})  {r['text'][:70]!r}")
+    print(f"{lesson.name}: {sm['clips']} clips, median pitch variation {sm['pitch_sd_median']} semitones "
+          f"(fails below {FAIL_BELOW}); {len(flagged)} clip(s) below {FLAG_BELOW} for the ear")
+    print("pitch check " + ("passed" if ok else "FAILED: the lesson sounds monotonous"))
+    return 0 if ok else 1
+
+
 def main() -> None:
     if "--baseline" in sys.argv:
         print(json.dumps(baseline(), indent=1))
         return
+    if len(sys.argv) == 2 and Path(sys.argv[1]).is_dir():
+        raise SystemExit(check_lesson(Path(sys.argv[1])))
     base = json.loads(BASELINE.read_text(encoding="utf-8"))
     if "--lesson" in sys.argv:
         clips = lesson_clips(Path(sys.argv[sys.argv.index("--lesson") + 1]))

@@ -79,3 +79,56 @@ lessons recomputed equal, 2026-10-06).
   Reading lesson's final gate.
 - To change the rate: change `sentence_pause_s` or `speed` in `voices.py` and
   record a new ADR; the cache then makes every Reading clip again.
+
+## Amendment, 2026-10-06: Rupert for every lesson; the delivery rule; the monotony check
+
+Recorded at the maintainer's request after the delivery audition: "switch the
+Reading and Listening lessons to Rupert. Do not use Courtney."
+
+### The voice
+
+- **Rupert is the voice of every lesson**, Reading and Listening included,
+  with exactly the provider and settings of the approved Grammar and
+  Vocabulary lessons: Cartesia `sonic-3.6`, voice
+  `0ad65e7f-006c-47cf-bd31-52279d487913`, speed 1.0, nothing added to the clip,
+  under the pronunciation lexicon. **The choice of a female voice for Reading
+  and Listening (Courtney, above) is withdrawn.** `voices.py` gives every
+  lesson type Rupert; Courtney's settings stay only for the audition record.
+- **Why.** The maintainer found Courtney's delivery monotonous, "like someone
+  reading from a script". Measured on question one of Reading lesson 2
+  (`delivery_audition.py`, C:\OET\voice-audition\reading\delivery\): her
+  median pitch variation was 3.20 semitones as narrated (speed 0.6) and 3.26 at
+  speed 1.0 with the same script; a teacher-style script raised it to 3.53,
+  and Cartesia's emotion setting to 3.63 at most (in a probe, the emotion
+  settings lowered it). Rupert's approved lessons measure 4.32 to 4.46. The
+  audition files are kept for the record.
+
+### The delivery rule
+
+- **Reading and Listening lessons are delivered like an engaged teacher, never
+  as monotonous reading** (maintainer). The narration stage's DELIVERY rule
+  (`write_narration.py`, given to Reading and Listening lessons only), as in
+  the audition's variant v2: short questions to the learner and their
+  answers, signposting, weight on the key point, varied sentence length, a
+  brief reaction when the answer is found. It changes how things are said, not
+  what is taught.
+- **Longer lessons are accepted**: there is no length cap for this style.
+- **Added teaching points.** A teaching point or a generalisation the
+  instructor did not make may stay when it is accurate and consistent with
+  his method. The narration marks each (an utterance note starting
+  "ADDED: "), and every one is listed for the maintainer at the final gate.
+
+### The monotony check
+
+- `pitch_check.py` measures each clip's pitch variation (the standard
+  deviation of its pitch, in semitones about the clip's own median, from an
+  autocorrelation pitch track every 10 ms). The baseline is 660 clips of the
+  eleven lessons approved with Rupert: median 4.42, 10th percentile 3.71,
+  25th percentile 4.07.
+- **A lesson fails if its median clip is below 4.07; every clip below 3.71 is
+  flagged** for the maintainer's ear, with its time. The runner runs it on
+  every lesson's finished player (`pitch_check.json`). The eleven approved
+  lessons all pass (medians 4.32 to 4.46); about one clip in ten is flagged in
+  each, by the baseline's own definition.
+- It is a signal for the ear, not a judge of it; the final gate stays the
+  maintainer's.
