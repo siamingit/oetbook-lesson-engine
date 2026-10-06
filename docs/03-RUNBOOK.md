@@ -237,7 +237,7 @@ marked **step** (ADR 005). Costs are Grammar 1's.
 | 13 | Silent preview and review page | `fit_boards.py <L> --silent` (the fit, on the silent preview; ADR 011, ADR 020), `build_silent_preview.py <L>`, `check_overflow.py` and `check_overlap.py` on it, `build_narration_review.py <L>` | narration, screens | `generated/lesson-preview/silent/player.html`, `analysis/narration/lesson-review/index.html` | free |
 | | **GATE narration** | the maintainer watches the silent preview (screens and narration together), reads the QA findings and the decision log | | | |
 | 14 | Terms check | `check_terms.py <L> --pages ...` per section | narration, screens, keyterms, lexicon | `generated/<section>/boards/terms_check.json`, shared `generated/term_probes/` | a few thousand characters |
-| 15 | Synthesis | `synthesize_narration.py <L> --pages ...` per section (the lesson's voice, `voices.py`: Rupert at speed 1.0 for every lesson, ADR 027 amendment; `--accept-terms` for sections with terms the ear did not hear, which the maintainer judges by ear at the final gate) | narration, lexicon, terms check | `generated/<section>/boards/audio/`, `audio_index.json` | about 85,000 characters a lesson |
+| 15 | Synthesis | `synthesize_narration.py <L> --pages ...` per section (the lesson's voice, `voices.py`: Rupert at speed 1.0 for every lesson, ADR 027 amendment; `--accept-terms` for sections with terms the ear did not hear, which the maintainer judges by ear at the final gate; 15 clips at a time and no budget needed, ADR 028) | narration, lexicon, terms check | `generated/<section>/boards/audio/`, `audio_index.json` | about 85,000 characters a lesson, free on the Scale plan (ADR 028) |
 | 16 | Ear | `ear.py <L> --pages ... --recompare` per section | audio, lexicon, terms check | `generated/<section>/boards/ear.json` | Scribe, about 106 min of audio |
 | 17 | Lesson player and checks | `fit_boards.py <L>` (the fit: clears, tight boards, table text size, measured in the player; ADR 011), `build_lesson_player.py <L>`, `check_board_page.py <L> --dir <L>/generated/lesson-player`, `check_marks.py <L> --dir ...`, `check_layout.py <L> --dir ...` (no word moves between states; design system §8a), `check_overflow.py <L> --dir ...` (every block inside the board, every label in sentence case; §8b), `check_overlap.py <L> --dir ...` (no block over another block or its text; §8d, ADR 020), for a Reading lesson `check_doc_marks.py <L>` (every phrase of a text read aloud is marked; ADR 026), and `pitch_check.py <L>` (the monotony check: fails a lesson whose median clip varies less than 4.07 semitones, lists every clip under 3.71 for the ear; ADR 027 amendment) | every section's narration, screens and audio | `analysis/fit.json`; `generated/lesson-player/`: the lesson bundle (`bundle.json`, `text.json`, `blocks.css`; docs/04-LESSON-BUNDLE.md), `player.html` (its reference renderer), `marks_check.json` | free |
 | 18 | Course index | `build_course_index.py <L>`: the last step of every build, rebuilt whole from every lesson folder (ADR 006) | every lesson's bundle, text, sections, understanding, gates and source | `<library>/course/course-index.json` and `course-index.md`, **outside the repository** (docs/05-COURSE-INDEX.md) | free, seconds |
@@ -304,6 +304,18 @@ kept 29 days, no streaming; cache hits inside a batch are best effort and the
 1-hour cache is recommended there. Gemini batches: 24-hour target, inline
 requests up to 20 MB; implicit caching is automatic from 4,096 tokens on Gemini
 3.1 Pro.
+
+**Cartesia: the Scale plan, not rationed** (maintainer, 2026-10-06; ADR 028).
+The account is on Cartesia Scale through the Cartesia Startups grant, free
+until about October 2027: 8 million characters a month (previously 1.25
+million), 2x rollover, 15 concurrent TTS requests (Cartesia's documentation,
+read 2026-10-06). Cartesia cost or quota is not a reason to economise or to ask:
+re-takes, auditions, variants and re-runs go ahead, synthesis needs no
+`--budget`, and a section's clips are made 15 at a time
+(`synthesize_narration.py --workers`), with backoff and jitter on 429 and
+server errors. The maintainer is told before a single job of more than about
+2 million characters (the script stops there; `--allow-large-job`), or if
+usage rises abnormally. Anthropic, Gemini and Scribe budgets are unchanged.
 
 **Batch mode is off; prompt caching stays** (maintainer, 2026-09-30, after night
 run 1, when four batches did not start a single request in two hours). Every

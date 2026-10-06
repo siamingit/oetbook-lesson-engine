@@ -106,12 +106,24 @@ def require_terms_check(out_dir: Path, narration_path: Path, accept: bool) -> di
 
 RETRY_WAITS_S = [5, 10, 20, 40, 60, 90, 120]   # about six minutes in all
 
+# Cartesia Scale plan (ADR 028): 15 concurrent TTS requests (docs.cartesia.ai,
+# "Concurrency limits and timeouts", read 2026-10-06); over it, 429. One run
+# uses them all; runs side by side share them and the retries absorb the 429s
+# (or pass --workers to divide them).
+TTS_CONCURRENCY = 15
+# The maintainer is told before a single job above about 2 million characters
+# (ADR 028); the quota is 8 million a month.
+JOB_CHARACTERS_LIMIT = 2_000_000
+
 
 def synthesize_with_retry(client, text: str, speed: float, dict_id: str, uid: str,
                           voice: dict = voices.RUPERT) -> dict:
-    """Cartesia has returned intermittent quota errors (402, 429) that clear
-    within a minute: a per-minute limit. Wait and retry with backoff; any
-    other error, or the last retry, is raised to the caller, which stops."""
+    """Cartesia returns 429 over the concurrency limit and has returned
+    intermittent quota and server errors (402, 429, 5xx) that clear within a
+    minute. Wait and retry with backoff, with jitter so parallel workers do not
+    retry in step; any other error, or the last retry, is raised to the caller,
+    which stops."""
+    import random
     import time
     for n, wait in enumerate(RETRY_WAITS_S + [None], 1):
         try:
@@ -119,11 +131,12 @@ def synthesize_with_retry(client, text: str, speed: float, dict_id: str, uid: st
         except Exception as e:
             msg = str(e).lower()
             transient = any(k in msg for k in ("402", "429", "quota", "rate", "limit",
-                                               "timeout", "timed out", "503", "502",
-                                               "connection"))
+                                               "timeout", "timed out", "500", "503", "502",
+                                               "504", "connection"))
             if wait is None or not transient:
                 raise
-            print(f"  {uid}: {str(e)[:120]} - retry {n} in {wait}s", flush=True)
+            wait = wait * random.uniform(0.8, 1.2)
+            print(f"  {uid}: {str(e)[:120]} - retry {n} in {wait:.0f}s", flush=True)
             time.sleep(wait)
 
 
@@ -138,6 +151,11 @@ def main() -> None:
     parser.add_argument("--speed", type=float, default=None)
     parser.add_argument("--accept-terms", action="store_true",
                         help="build although the terms check listed failures")
+    parser.add_argument("--workers", type=int, default=TTS_CONCURRENCY,
+                        help=f"parallel Cartesia requests (the plan allows {TTS_CONCURRENCY})")
+    parser.add_argument("--allow-large-job", action="store_true",
+                        help=f"make more than {JOB_CHARACTERS_LIMIT:,} characters in one run "
+                             "(the maintainer is told first, ADR 028)")
     args = parser.parse_args()
     pages = (sorted(int(x) for x in args.pages.split(",")) if args.pages
              else [args.page])
@@ -168,6 +186,11 @@ def main() -> None:
     total_duration_s = 0.0
     phoneme_failures: list[str] = []
 
+    # Plan every utterance in narration order: a cached clip, a blocked one, or
+    # a clip to make. Clips are then made in parallel (ADR 028) and the index is
+    # assembled in narration order, so it is the same as a run one by one.
+    plan: list[tuple[dict, str, list, str]] = []     # (utterance, text, terms, key)
+    to_make: dict[str, tuple[str, str, list]] = {}   # key -> (first uid, text, terms)
     for bd in narr["boards"]:
         for s in bd["states"]:
             for u in s["utterances"]:
@@ -175,67 +198,90 @@ def main() -> None:
                 terms = lexicon.terms_in(text, lex)
                 salt = lexicon.cache_salt(text, lex)
                 key = cache_key(text, args.speed, salt, dict_id, voice)
-                known = by_hash.get(key)
-                if known:
-                    # The key already carries every pronunciation decision the
-                    # utterance depends on (the salt), so a cached clip is valid
-                    # whatever the lexicon version now says.
-                    index[u["id"]] = {**known, "id": u["id"]}
-                    cached += 1
-                    total_duration_s += known["duration_s"]
-                    continue
-                # New audio is never made with a pronunciation the maintainer
-                # has not approved by ear (methodology §20). A cached clip that
-                # contains an unapproved term is left as it is.
-                unapproved = lexicon.unapproved_in(text, lex)
-                if unapproved:
-                    for t in unapproved:
-                        blocked.setdefault(t, []).append(u["id"])
-                    continue
-                wav_path = audio_dir / f"{key}.wav"
+                if key not in by_hash and key not in to_make:
+                    # New audio is never made with a pronunciation the maintainer
+                    # has not approved by ear (methodology §20). A cached clip that
+                    # contains an unapproved term is left as it is.
+                    unapproved = lexicon.unapproved_in(text, lex)
+                    if unapproved:
+                        for t in unapproved:
+                            blocked.setdefault(t, []).append(u["id"])
+                        continue
+                    to_make[key] = (u["id"], text, terms)
+                plan.append((u, text, terms, key))
+
+    job_chars = sum(len(t) for _, t, _ in to_make.values())
+    if job_chars > JOB_CHARACTERS_LIMIT and not args.allow_large_job:
+        raise SystemExit(f"REFUSED: this run would send {job_chars:,} characters, over "
+                         f"{JOB_CHARACTERS_LIMIT:,}: tell the maintainer first (ADR 028), then "
+                         "pass --allow-large-job.")
+
+    def make(key: str) -> tuple[str, dict]:
+        uid, text, terms = to_make[key]
+        result = synthesize_with_retry(client, text, args.speed, dict_id, uid, voice)
+        wav_path = audio_dir / f"{key}.wav"
+        write_wav(wav_path, result["pcm"])
+        problems = [p for p in (lexicon.phoneme_check(t, result["phonemes"], lex)
+                                for t in terms) if p]
+        return key, {
+            "id": uid, "hash": key, "voice": voice["name"], "voice_id": voice["id"],
+            "model": MODEL_ID, "speed": args.speed,
+            **({"sentence_pause_s": voice["sentence_pause_s"]}
+               if voice["sentence_pause_s"] else {}),
+            "pronunciation_dict_id": dict_id,
+            "lexicon_version": lex["version"], "lexicon_terms": terms,
+            "phoneme_check": "fail" if problems else ("ok" if terms else "n/a"),
+            "phonemes": result["phonemes"],
+            "file": f"audio/{wav_path.name}", "text": text,
+            "words": result["words"], "word_start": result["word_start"],
+            "word_end": result["word_end"], "duration_s": len(result["pcm"]) / 2 / SAMPLE_RATE,
+            "characters": len(text),
+        }, problems
+
+    def write_partial() -> None:
+        # written as it goes: an interrupted run keeps what it made
+        made = {e["id"]: e for k, e in by_hash.items() if k in to_make}
+        partial = {**{k: v for k, v in old_index.items() if k not in made}, **made}
+        index_path.write_text(json.dumps(partial, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    problems_by_key: dict[str, list] = {}
+    if to_make:
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+        print(f"making {len(to_make)} clips, {job_chars} characters, "
+              f"{max(1, args.workers)} at a time", flush=True)
+        with ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
+            futures = {pool.submit(make, k): k for k in to_make}
+            for f in as_completed(futures):
                 try:
-                    result = synthesize_with_retry(client, text, args.speed, dict_id, u["id"],
-                                                   voice)
+                    key, entry, problems = f.result()
                 except Exception as e:
                     # Never skip an utterance silently: keep what is made,
                     # name what is not, and stop.
-                    partial = {**{k: v for k, v in old_index.items() if k not in index}, **index}
-                    index_path.write_text(json.dumps(partial, indent=2, ensure_ascii=False),
-                                          encoding="utf-8")
-                    raise SystemExit(f"STOPPED at {u['id']} after retries: {str(e)[:300]}. "
-                                     f"{synthesized} made this run are kept in the index; "
-                                     "re-run to continue (made clips are reused).")
-                write_wav(wav_path, result["pcm"])
-                duration_s = len(result["pcm"]) / 2 / SAMPLE_RATE
-                problems = [p for p in (lexicon.phoneme_check(t, result["phonemes"], lex)
-                                        for t in terms) if p]
-                for p in problems:
-                    phoneme_failures.append(f"{u['id']}: {p}")
-                entry = {
-                    "id": u["id"], "hash": key, "voice": voice["name"], "voice_id": voice["id"],
-                    "model": MODEL_ID, "speed": args.speed,
-                    **({"sentence_pause_s": voice["sentence_pause_s"]}
-                       if voice["sentence_pause_s"] else {}),
-                    "pronunciation_dict_id": dict_id,
-                    "lexicon_version": lex["version"], "lexicon_terms": terms,
-                    "phoneme_check": "fail" if problems else ("ok" if terms else "n/a"),
-                    "phonemes": result["phonemes"],
-                    "file": f"audio/{wav_path.name}", "text": text,
-                    "words": result["words"], "word_start": result["word_start"],
-                    "word_end": result["word_end"], "duration_s": duration_s,
-                    "characters": len(text),
-                }
-                index[u["id"]] = entry
+                    for other in futures:
+                        other.cancel()
+                    write_partial()
+                    raise SystemExit(f"STOPPED at {to_make[futures[f]][0]} after retries: "
+                                     f"{str(e)[:300]}. {synthesized} made this run are kept in "
+                                     "the index; re-run to continue (made clips are reused).")
                 by_hash[key] = entry
+                problems_by_key[key] = problems
                 synthesized += 1
-                total_chars += len(text)
-                total_duration_s += duration_s
+                total_chars += entry["characters"]
                 if synthesized % 10 == 0:
-                    # written as it goes: an interrupted run keeps what it paid for
-                    partial = {**{k: v for k, v in old_index.items() if k not in index}, **index}
-                    index_path.write_text(json.dumps(partial, indent=2, ensure_ascii=False),
-                                          encoding="utf-8")
+                    write_partial()
                     print(f"  {synthesized} made, {total_chars} characters", flush=True)
+
+    for u, text, terms, key in plan:
+        known = by_hash[key]
+        # The key carries every pronunciation decision the utterance depends on
+        # (the salt), so a cached clip is valid whatever the lexicon version says.
+        entry = known if (key in to_make and known["id"] == u["id"]) else {**known, "id": u["id"]}
+        index[u["id"]] = entry
+        total_duration_s += entry["duration_s"]
+        if key in to_make and known["id"] == u["id"]:
+            phoneme_failures.extend(f"{u['id']}: {p}" for p in problems_by_key[key])
+        else:
+            cached += 1
 
     if blocked:
         # Keep the previous index entries for the blocked utterances so the

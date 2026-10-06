@@ -57,7 +57,10 @@ When the maintainer has named, in chat, a lesson to build and its budget,
 these are pre-approved for that lesson:
 
 - API spend up to the stated budget, for the stages in `docs/03-RUNBOOK.md`
-  only; spend is reported at every gate
+  only; spend is reported at every gate. Cartesia synthesis is outside the
+  budget and needs no approval (ADR 028, maintainer 2026-10-06): tell the
+  maintainer only before a single job above about 2 million characters, or if
+  usage rises abnormally
 - Re-runs of existing stages, paid re-runs included, within the budget
 - Writing inside that lesson's folder (its `analysis/` and `generated/`;
   `source/` stays read-only)

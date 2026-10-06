@@ -656,9 +656,8 @@ def stage_audio_build(L, a):
         need = [u["id"] for bd in n["boards"] for st in bd["states"] for u in st["utterances"]
                 if (idx.get(u["id"]) or {}).get("text") != spoken(u["text_with_cues"])]
         if need:
-            if a.budget is None:
-                raise Stop("synthesis (Cartesia) is paid: run with --budget USD")
-            cmd = [str(HERE / "synthesize_narration.py"), str(L), "--pages", pp(s["pages"])]
+            # Cartesia is not rationed (ADR 028): no budget is needed to synthesise
+            cmd =[str(HERE / "synthesize_narration.py"), str(L), "--pages", pp(s["pages"])]
             if s["title"] in fails:
                 cmd.append("--accept-terms")     # judged by ear at the final gate (ADR 005)
             run(L, cmd, f"synthesis, {s['title']} ({len(need)} utterances)")
