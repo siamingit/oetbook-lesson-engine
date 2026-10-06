@@ -1813,7 +1813,7 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                 if not docs:
                     continue
                 for u in s["utterances"]:
-                    qs = check_doc_marks.questions_of(list(bd["fixed"]) + list(working), blocks)
+                    qs = check_doc_marks.questions_of(check_doc_marks.board_blocks(sb or bd), blocks)
                     for x in check_doc_marks.utterance_quotes(u["text_with_cues"], u["cues"], docs, qs)[1]:
                         fail(u["id"], f"reads {x} from the text with no mark on those words: put a "
                                       "highlight or keyword-pair cue on them, just before they are said")
