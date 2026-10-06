@@ -1,0 +1,8 @@
+{
+ "purpose": "Answer forms of the exercises releases that check_release_answers.py does not look for: words so generic that this repository uses them in its own text (spike/scripts/check_release_answers.py). By item ID and form, never the answer itself. Each is reviewed: the repository's use must not be about the practice set.",
+ "exempt": [
+  {"item": "oa-reading-000020", "form": "accepted[0]", "why": "a length of time; the runbook and the runner state the same span for batch limits", "by": "agent 2026-10-06"},
+  {"item": "oa-reading-000021", "form": "accepted[1]", "why": "a common clinical initialism; the narration and initialism code use it as an example (ADR 016)", "by": "agent 2026-10-06"},
+  {"item": "oa-reading-000022", "form": "accepted[0]", "why": "the same initialism as oa-reading-000021", "by": "agent 2026-10-06"}
+ ]
+}
