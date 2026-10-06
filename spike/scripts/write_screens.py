@@ -1691,7 +1691,7 @@ TABLE_PURPOSE = re.compile(r"^\s*table\s*:", re.I)
 # "Zoom D:" zooms into it, "Row D3:" onto its third part.
 MAP_PURPOSE = re.compile(r"^\s*(text|zoom)\s+([A-Z])\s*:", re.I)
 MAP_ROW_PURPOSE = re.compile(r"^\s*row\s+([A-Z])\s*(\d+)\s*:", re.I)
-MAP_HEIGHT = 0.80              # the map fills the board's left column, its own frame
+MAP_HEIGHT = 0.77              # the map fills the board's left column, its own frame
 MAX_SIDE_NOTES = 2             # beside a row, per thought
 
 
@@ -3288,7 +3288,7 @@ READING_CSS = """
 # one, so no other lesson's stylesheet changes. A map board is two columns:
 # the map, and the question and its notes beside it, never under the lens.
 MAP_CSS = """
-.blk.dmap{position:relative;padding:0;height:80cqh;background:#F7F6F2;border-radius:1.2cqh}
+.blk.dmap{position:relative;padding:0;height:77cqh;background:#F7F6F2;border-radius:1.2cqh}
 .dmap-view{position:absolute;inset:0;overflow:hidden;border-radius:1.2cqh}
 .dmap-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:1cqh;padding:1cqh;
   box-sizing:border-box;width:100%;height:100%;transform-origin:0 0}
