@@ -49,7 +49,7 @@ from build_board_bundle import block_tokens, norm, reading_runs   # noqa: E402
 from build_board_timeline import lay_timeline                     # noqa: E402
 from write_narration import spoken                                # noqa: E402
 import board_style                                                # noqa: E402
-from write_screens import (FRAME_CSS, TAG_LABELS, block_html, resolve_images, IMAGE_TOKEN,     # noqa: E402
+from write_screens import (FRAME_CSS, frame_css, TAG_LABELS, block_html, resolve_images, IMAGE_TOKEN,     # noqa: E402
                            block_text_runs, is_exercise_board)
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -73,10 +73,22 @@ BLOCK_FIELDS = ("id", "type", "label", "text", "term", "explanation", "left", "r
                 "size")
 
 
-def block_data(b: dict) -> dict:
+# 1.13, a Reading lesson's practice-set text and question (ADR 026): written in
+# a Reading lesson's bundle only, so no other lesson's bundle changes
+BLOCK_FIELDS_113 = ("doc", "question")
+READING_FORMAT_VERSION = "1.13"
+
+
+def format_version(lesson_id: str) -> str:
+    """The bundle format a lesson is written in: 1.13 for a Reading lesson
+    (ADR 026), FORMAT_VERSION for every other."""
+    return READING_FORMAT_VERSION if lesson_id.split("-")[0] == "reading" else FORMAT_VERSION
+
+
+def block_data(b: dict, reading: bool = False) -> dict:
     """A block's data as the bundle carries it: every field its html is drawn
     from, each tense tag with the label printed on its chip."""
-    d = {k: b.get(k) for k in BLOCK_FIELDS}
+    d = {k: b.get(k) for k in BLOCK_FIELDS + (BLOCK_FIELDS_113 if reading else ())}
     tags = [dict(t, label=TAG_LABELS[t["family"]]) for t in (b.get("tags") or [])
             if t.get("text") and t.get("family") in TAG_LABELS]
     d["tags"] = tags or None
@@ -266,7 +278,7 @@ def text_export(lesson: dict, sections: list[dict], boards: list[dict], blocks: 
                                                   for b in bds),
                     "board_text": "\n\n".join(x["text"] for b in bds for x in b["board_text"]),
                     "boards": bds})
-    return {"format": "oetbook-lesson-text", "format_version": FORMAT_VERSION,
+    return {"format": "oetbook-lesson-text", "format_version": format_version(lesson["id"]),
             "lesson": lesson, "sections": out}
 
 
@@ -366,7 +378,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             if nb.get("image"):                      # 1.11: the file, relative to the bundle's folder
                 nb["image"] = {**nb["image"], "file": resolve_images(
                     IMAGE_TOKEN + "/" + nb["image"]["file"], out_dir, L)}
-            blocks_all[pre + bid] = {**block_data(nb), "html": html_b,
+            blocks_all[pre + bid] = {**block_data(nb, L.name.split("-")[0] == "reading"), "html": html_b,
                                      "_tokens": block_tokens(b)}     # display words (1.3)
         # an authored section (ADR 018) covers no deck page
         section_marks.append({"id": tag, "title": sec["title"],
@@ -614,14 +626,14 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     meta = {"silent": silent, **gaps, "wpm": wpm if silent else None,
             "voice": first.get("voice"), "model": first.get("model"), "speed": first.get("speed"),
             "total_duration_s": round(total, 3), "reading_hold_s": READING_HOLD_S}
-    bundle = {"format": "oetbook-lesson-bundle", "format_version": FORMAT_VERSION,
+    bundle = {"format": "oetbook-lesson-bundle", "format_version": format_version(lesson["id"]),
               "lesson": lesson, "sections": sections_out, "meta": meta,
               "stylesheet": "blocks.css", "text": "text.json",
               "blocks": {i: b for i, b in blocks_all.items() if i in used},
               "boards": boards_out, "events": events}
     (out_dir / "bundle.json").write_text(json.dumps(bundle, ensure_ascii=False, indent=1),
                                          encoding="utf-8")
-    (out_dir / "blocks.css").write_text(FRAME_CSS.strip() + "\n", encoding="utf-8")
+    (out_dir / "blocks.css").write_text(frame_css(L).strip() +"\n", encoding="utf-8")
     (out_dir / "text.json").write_text(
         json.dumps(text_export(lesson, sections_out, boards_out, blocks_all),
                    ensure_ascii=False, indent=1), encoding="utf-8")
@@ -633,7 +645,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     template = (REPO_ROOT / "spike" / "scripts" / "board_player_template.html").read_text(encoding="utf-8")
     title = ("SILENT PREVIEW - " if silent else "") + info["lesson"]["title"]
     html = (template.replace("__TITLE__", title)
-            .replace("/*__FRAME_CSS__*/", FRAME_CSS)
+            .replace("/*__FRAME_CSS__*/", frame_css(L))
             .replace("__BUNDLE_JSON__", json.dumps(bundle, ensure_ascii=False).replace("</", "<\\/")))
     (out_dir / "player.html").write_text(html, encoding="utf-8")
 

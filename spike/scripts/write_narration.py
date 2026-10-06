@@ -57,7 +57,7 @@ import paths                                                   # noqa: E402
 from extract_understanding import api_key, esc, refuse_if_truncated, strip_bidi  # noqa: E402
 from write_screens import (maintainer_wording, relabel_note)                  # noqa: E402
 from build_course_index import check_ref                                      # noqa: E402
-from write_screens import (FIXED_FORBIDS, FRAME_CSS, NON_LATIN, PAGE_CSS,     # noqa: E402
+from write_screens import (FIXED_FORBIDS, FRAME_CSS, frame_css, NON_LATIN, PAGE_CSS,     # noqa: E402
                            REGISTER_WORDS, block_html, block_texts, is_exercise_board, resolve_images,
                            ledger_phrases, ledger_rulings, rulings_from_script)
 
@@ -66,6 +66,11 @@ MAX_TOKENS = 64000          # 32,000 cut off the 34-state Verb tenses section (2
 
 MARK_TYPES = ["underline", "highlight", "circle", "strike", "point",
               "arrow", "bracket", "replace"]
+# keyword pairs, one colour a pair, Reading lessons only (ADR 026, bundle 1.13)
+MATCH_TYPES = ["match1", "match2", "match3"]
+MARK_TYPES = MARK_TYPES + MATCH_TYPES
+# marks of one phrase that an override may swap for each other (apply_cue_overrides)
+PHRASE_MARKS = {"underline", "circle", "highlight"}
 # `type` types a table cell's answer live (TABLE BOARDS; bundle 1.2)
 CUE_TYPES = ["reveal"] + MARK_TYPES + ["pause", "type"]
 PROVENANCE = ["source-derived", "adapted", "authored", "corrected", "maintainer"]
@@ -840,13 +845,19 @@ def build_messages(data: dict, rewrite: dict | None = None) -> list[dict]:
     if scr.get("section", {}).get("intro") and data.get("course_map"):
         import vocabulary_rule
         lesson_dir = Path(scr["lesson_dir"]) if scr.get("lesson_dir") else Path(data["screens_path"]).parents[3]
+        import reading_rule
         content.append({"type": "text", "text": vocabulary_rule.intro_first(INTRO_FIRST)
-                        if vocabulary_rule.is_vocabulary(lesson_dir) else INTRO_FIRST})
+                        if vocabulary_rule.is_vocabulary(lesson_dir) else
+                        reading_rule.intro_first(INTRO_FIRST) if reading_rule.is_reading(lesson_dir)
+                        else INTRO_FIRST})
         content.append({"type": "text", "text":
             "OTHER LESSONS' OPENINGS (never open with any of these sentences):\n"
             + json.dumps(data.get("openings") or {}, ensure_ascii=False)})
     elif scr.get("section", {}).get("intro"):
-        content.append({"type": "text", "text": INTRO})
+        import reading_rule
+        lesson_dir = Path(scr["lesson_dir"]) if scr.get("lesson_dir") else Path(data["screens_path"]).parents[3]
+        content.append({"type": "text", "text": reading_rule.intro(INTRO)
+                        if reading_rule.is_reading(lesson_dir) else INTRO})
         content.append({"type": "text", "text":
             "PREVIOUS LESSON (the one before this in the course; null for the first):\n"
             + json.dumps(data.get("previous_lesson"), ensure_ascii=False)
@@ -860,6 +871,12 @@ def build_messages(data: dict, rewrite: dict | None = None) -> list[dict]:
     lesson_dir = Path(scr["lesson_dir"]) if scr.get("lesson_dir") else Path(data["screens_path"]).parents[3]
     if vocabulary_rule.is_vocabulary(lesson_dir) and not scr.get("section", {}).get("intro"):
         content.append({"type": "text", "text": vocabulary_rule.NARRATION})
+    import reading_rule                        # ADR 026; other lessons unchanged
+    if reading_rule.is_reading(lesson_dir):
+        content.append({"type": "text", "text": reading_rule.NARRATION})
+        if any(b.get("doc") or b.get("question") for t in scr["topics"] for h in t["thoughts"]
+               for b in h["blocks"]):
+            content.append({"type": "text", "text": reading_rule.NARRATION_SET})
     if rewrite:
         content.append({"type": "text", "text":
             "STATES TO REWRITE: " + ", ".join(rewrite["ids"]) + ". Their current "
@@ -1308,6 +1325,8 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                                 if any(k not in typed_done[blk] for k in before):
                                     warn(uid, f"type {text_!r} before an earlier part of its cell")
                     elif typ in MARK_TYPES:
+                        if typ in MATCH_TYPES and not data.get("lesson_id", "").startswith("reading"):
+                            fail(uid, f"{typ} is a Reading lesson's keyword pair (ADR 026)")
                         targets = [(blk, c.get("text"))]
                         named = {0: (c.get("row"), c.get("col"))}     # a cell named by override (1.6)
                         if typ == "arrow":
@@ -1690,7 +1709,9 @@ def apply_cue_overrides(out_dir: Path, boards: list[dict]) -> list[dict]:
     "to_row": r, "to_col": c, "note": why}}}. It names the table cell a mark
     (or an arrow's end) is drawn in where its words are in more than one cell
     of the row. Nothing spoken changes, so no audio does. Applied on every
-    render, like the screens' overrides; the saved reply is never edited."""
+    render, like the screens' overrides; the saved reply is never edited.
+    `type` swaps a phrase mark for another (underline, circle, highlight;
+    maintainer 2026-10-06: the skimming path is highlighted, ADR 026)."""
     p = out_dir / "overrides.json"
     if not p.exists():
         return []
@@ -1703,10 +1724,14 @@ def apply_cue_overrides(out_dir: Path, boards: list[dict]) -> list[dict]:
         if c is None or (f.get("expect") and f["expect"] not in (c.get("text"), c.get("to_text"))):
             raise SystemExit(f"overrides.json: cue {key} is not there or no longer marks "
                              f"{f.get('expect')!r}; retire or re-key the override")
+        if "type" in f and not {c["type"], f["type"]} <= PHRASE_MARKS:
+            raise SystemExit(f"overrides.json: cue {key}: a type override swaps one of "
+                             f"{sorted(PHRASE_MARKS)} for another, not {c['type']} for {f['type']}")
         # also a mark's phrase where the reply's phrase is not drawn as one span
         # (words on several lines of one cell; 2026-09-30): no word is spoken
         # differently, so no audio changes
-        c.update({k: v for k, v in f.items() if k in ("row", "col", "to_row", "to_col", "text")})
+        c.update({k: v for k, v in f.items()
+                  if k in ("row", "col", "to_row", "to_col", "text", "type")})
         c["overridden"] = f.get("note") or True
         out.append({"severity": "info", "where": key, "what": "cell named by override: "
                     + json.dumps({k: v for k, v in f.items() if k != 'note'})})
@@ -1819,7 +1844,7 @@ def render(lesson: Path, page: int, data: dict) -> int:
             body += state_html(bd, s, n, data["blocks"], topic_no[bd["id"]], findings)
 
     html = ('<!doctype html><meta charset="utf-8"><title>Narration - page ' + str(page)
-            + "</title><style>" + PAGE_CSS + FRAME_CSS + NARR_CSS
+            + "</title><style>" + PAGE_CSS + frame_css(lesson) + NARR_CSS
             + ":root{--w:812px}</style>"
             + "<h1>Narration &mdash; " + paths.lesson_label(lesson) + ", deck page "
             + str(page) + "</h1>"

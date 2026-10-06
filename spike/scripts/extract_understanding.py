@@ -29,7 +29,7 @@ import build_slide_timeline as timeline   # noqa: E402
 MODEL = "claude-opus-5"
 MAX_TOKENS = 48000          # 16,000 truncated page 6 (18.7 min of source) mid-JSON; 32,000
                             # was reached to 92% (Vocabulary lessons, ADR 022)
-EFFORT = "medium"           # TRIAL for the next lesson only (ADR 022); "high" before
+EFFORT = "medium"           # ADR 022, kept by the maintainer 2026-10-06; "high" before
 
 SYSTEM = """\
 You are analysing one slide of a recorded OET grammar lesson. The instructor \
@@ -337,7 +337,13 @@ def span_of(lesson: Path, page: int) -> dict | None:
         return {"span": it["span"], "kind": "intro", "off_deck": []}
     ps = (info.get("page_spans") or {}).get(str(page))
     if ps:
-        return {"span": [ps["from_s"], ps["to_s"]], "kind": "page", "off_deck": ps["off_deck"]}
+        out = {"span": [ps["from_s"], ps["to_s"]], "kind": "page", "off_deck": ps["off_deck"]}
+        if ps.get("also"):
+            # further ranges read as part of the page (build_sections.py --page-also)
+            out["ranges"] = [[ps["from_s"], ps["to_s"]]] + [[x["from_s"], x["to_s"]] for x in ps["also"]]
+            out["off_deck"] = ps["off_deck"] + [{"from_s": x["from_s"], "to_s": x["to_s"], "what": x["what"]}
+                                                for x in ps["also"]]
+        return out
     return None
 
 
@@ -353,7 +359,12 @@ def gather(lesson: Path, page: int) -> dict:
         # others matched off-deck material to the nearest page, so their events
         # were measured against the wrong slide.
         a, b = span
-        on = [(n, i) for n, i in enumerate(tl["intervals"]) if i["start"] < b and i["end"] > a]
+        ranges = sp.get("ranges") or [[a, b]]
+        if sp.get("ranges"):
+            a, b = min(r[0] for r in ranges), max(r[1] for r in ranges)
+        inside = lambda t: any(x <= t < y for x, y in ranges)
+        overlap = lambda i: sum(max(0.0, min(i["end"], y) - max(i["start"], x)) for x, y in ranges)
+        on = [(n, i) for n, i in enumerate(tl["intervals"]) if overlap(i) > 0]
         unseen = False
         if sp["kind"] == "page":
             own = [(n, i) for n, i in on if i["page"] == page]
@@ -364,10 +375,10 @@ def gather(lesson: Path, page: int) -> dict:
             # against this page, so none are read, and its image is its own.
             unseen = not own
             on = own or on
-        index, shown = max(on, key=lambda x: min(x[1]["end"], b) - max(x[1]["start"], a))
+        index, shown = max(on, key=lambda x: overlap(x[1]))
         if unseen:
             shown = {"page": page}
-        iv = {"page": page, "start": a, "end": b, "duration": b - a, "mean_score": None,
+        iv = {"page": page, "start": a, "end": b, "duration": sum(y - x for x, y in ranges), "mean_score": None,
               "resolved_by": ("maintainer: the recording's opening, whatever slide is on screen"
                               if sp["kind"] == "intro" else
                               "maintainer: one span for a page the timeline splits"),
@@ -375,7 +386,12 @@ def gather(lesson: Path, page: int) -> dict:
               "shown_page": shown["page"], "unseen": unseen,
               "slides_on_screen": [] if unseen else [[i["page"], round(max(i["start"], a), 1),
                                                       round(min(i["end"], b), 1)] for _, i in on]}
-        in_span = lambda e: not unseen and e["interval"] in {n for n, _ in on} and a <= e["start"] < b
+        if sp.get("ranges"):
+            iv["ranges"] = ranges
+            iv["slides_on_screen"] = [] if unseen else [
+                [i["page"], round(max(i["start"], x), 1), round(min(i["end"], y), 1)]
+                for _, i in on for x, y in ranges if i["start"] < y and i["end"] > x]
+        in_span = lambda e: not unseen and e["interval"] in {n for n, _ in on} and inside(e["start"])
     else:
         # A deck page identical to another (Grammar 3, pages 9 and 10) cannot be
         # told apart on screen; the timeline names the interval after one of
@@ -389,7 +405,8 @@ def gather(lesson: Path, page: int) -> dict:
     scribe = read("analysis/scribe_v2_response.json")
     words = [[round(w["start"], 2), round(w["end"], 2), w["text"]]
              for w in scribe["words"]
-             if w.get("type") == "word" and iv["start"] <= w["start"] < iv["end"]]
+             if w.get("type") == "word" and (any(x <= w["start"] < y for x, y in iv["ranges"])
+                                             if iv.get("ranges") else iv["start"] <= w["start"] < iv["end"])]
     utterances = group_utterances(words)
 
     ann = read("analysis/annotations/annotation_events.json")
@@ -456,8 +473,10 @@ def build_messages(data: dict) -> list[dict]:
         clk = lambda t: timeline.clock(t)
         head = (f"Lesson: {data['lesson_label']}. Deck page {iv['page']} of "
                 f"{data['deck_pages']}, read as ONE span of the recording: "
-                f"{clk(iv['start'])}-{clk(iv['end'])} ({iv['start']}-{iv['end']} s), "
-                f"{iv['duration'] / 60:.1f} minutes. "
+                + (" and ".join(f"{clk(x)}-{clk(y)} ({x}-{y} s)" for x, y in iv["ranges"])
+                   + " (nothing between them belongs to this page), "
+                   if iv.get("ranges") else f"{clk(iv['start'])}-{clk(iv['end'])} ({iv['start']}-{iv['end']} s), ")
+                + f"{iv['duration'] / 60:.1f} minutes. "
                 + ("The slide timeline does not recognise this page on screen anywhere in "
                    "the span (the teacher may teach it while another slide of the same "
                    "template is shown, or type its example there): there are no annotation "

@@ -1374,6 +1374,12 @@ def build_messages(data: dict) -> list[dict]:
     import vocabulary_rule
     if vocabulary_rule.is_vocabulary(Path(data["lesson_dir"])):
         content.append({"type": "text", "text": vocabulary_rule.SCREENS})
+    import reading_rule                        # ADR 026; other lessons unchanged
+    if reading_rule.is_reading(Path(data["lesson_dir"])):
+        content.append({"type": "text", "text": reading_rule.SCREENS})
+        practice = reading_rule.set_text(Path(data["lesson_dir"]), data["pages"])
+        if practice:
+            content.append({"type": "text", "text": practice})
     import length_budget                       # ADR 023; none for a lesson built before it
     budget = length_budget.prompt_block(Path(data["lesson_dir"]), data["pages"], "screens")
     if budget:
@@ -1501,12 +1507,13 @@ def load_pictures(lesson: Path) -> dict:
 
 
 def add_pictures(lesson: Path, pages: list[int], topics: list[dict],
-                 blocks: dict[str, dict]) -> list[tuple[int, str]]:
+                 blocks: dict[str, dict], dropped: list[str] = ()) -> list[tuple[int, str]]:
     """One picture block per board that has a brief, in its topic's fixed layer
     (anchored, after the topic's own blocks), with an id after the section's
-    last: [(topic number, block id)]."""
+    last: [(topic number, block id)]. Dropped blocks count, so a picture never
+    takes a dropped block's id (reading-01 page 5, 2026-10-06)."""
     spec = (load_pictures(lesson).get("sections") or {}).get(paths.section_tag(pages)) or []
-    nums = [int(i[1:]) for i in blocks if re.fullmatch(r"k\d+", i)]
+    nums = [int(i[1:]) for i in [*blocks, *dropped] if re.fullmatch(r"k\d+", i)]
     n = max(nums, default=0)
     out = []
     for e in sorted(spec, key=lambda e: e["topic"]):
@@ -1730,7 +1737,7 @@ def fit_table(b: dict) -> bool:
 def is_table_topic(t: dict, b: dict) -> bool:
     """A topic taught as a table board: its fixed table has typed cells, or its
     thoughts go row by row."""
-    return b["type"] == "table" and (bool(b.get("typed")) or bool(b.get("verdicts")) or any(
+    return b["type"] == "table" and (bool(b.get("doc")) or bool(b.get("typed")) or bool(b.get("verdicts")) or any(
         ROW_PURPOSE.match(h.get("purpose") or "") for h in t["thoughts"]))
 
 
@@ -2021,7 +2028,8 @@ def one_board_per_slide(topics: list[dict], blocks: dict, pages: list[int]) -> l
     "Table: " thoughts, anchors cleared. On any other slide the topics merge
     when their fixed layers fit together as one. Ids are untouched; each merge
     is recorded and reported."""
-    has_item = lambda t: any(b.get("exercise_item") is not None
+    # an exercise item, or a practice-set text on a board of its own (ADR 026)
+    has_item = lambda t: any(b.get("exercise_item") is not None or b.get("doc")
                              for h in t["thoughts"] for b in h["blocks"])
     records = []
     by_slide: dict[int, list[dict]] = {}
@@ -2485,7 +2493,11 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                         (z < len(cell) and cell[z].isalnum()):
                     fail(b["id"], f"typed text {ty['text']!r} does not begin and end at word "
                                   "boundaries")
-        if b.get("exercise_item") is not None:
+        if b.get("practice_ref_unknown"):
+            fail(b["id"], f"names {b['practice_ref_unknown']!r}, which is not in this lesson's practice set")
+        if b.get("exercise_item") is not None and b.get("question"):
+            pass                     # a practice-set question, built from the release (ADR 026)
+        elif b.get("exercise_item") is not None:
             if t != "error_row":
                 fail(b["id"], "exercise_item set on a block that is not an error_row")
             elif not verbatim(b["text"] or ""):
@@ -2539,7 +2551,8 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             # vocabulary, not a claim about register.
             defines_slide_word = (b["type"] == "term_box" and (b.get("term") or "").lower()
                                   in set(re.findall(r"[a-z]+", data["slide_text"].lower())))
-            if b["provenance"] != "maintainer" and not defines_slide_word:
+            released = bool(b.get("doc") or b.get("question"))     # ADR 026: as released
+            if b["provenance"] != "maintainer" and not defines_slide_word and not released:
                 # A register word that the slide itself prints is content being
                 # taught (a signal-words table lists "rarely"), not a claim.
                 slide_words = set(re.findall(r"[a-z]+", data["slide_text"].lower()))
@@ -2588,7 +2601,10 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
         return bool(re.search(pat, norm(text)))
     for d in data["defects"]:
         for b in blocks.values():
-            if any(still_there(d["printed"], t) for t in block_texts(b)):
+            # `allow`: phrases in which a ruling teaches the printed form itself
+            # ("the US spelling hypoglycemia is also accepted"; ADR 026)
+            if any(still_there(d["printed"], t) and not any(a.lower() in t.lower() for a in d.get("allow") or [])
+                   for t in block_texts(b)):
                 fail(b["id"], f"registered deck defect still present: {d['printed']!r}")
 
     # 4. coverage of beats
@@ -2660,6 +2676,13 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
         items = {b.get("exercise_item") for t in ts for h in t["thoughts"] for b in h["blocks"]
                  if b.get("exercise_item") is not None}
         allowed = 1 + len(items) if items else 1
+        # a practice-set text on a board of its own counts like an item (ADR 026)
+        doc_boards = [t for t in ts if any(b.get("doc") for h in t["thoughts"] for b in h["blocks"])
+                      and not any(b.get("exercise_item") is not None for h in t["thoughts"]
+                                  for b in h["blocks"])]
+        allowed += len(doc_boards)
+        if any(b.get("question") for t in ts for h in t["thoughts"] for b in h["blocks"]):
+            allowed += 1           # the slide's own board, then the questions' introduction
         splits = [t for t in ts if t.get("split")]
         if splits:
             union, _ = fixed_union(splits)
@@ -3210,6 +3233,41 @@ FRAME_CSS = """
 import board_style                                              # noqa: E402
 FRAME_CSS = FRAME_CSS + board_style.STYLE_CSS
 
+# Reading lessons' blocks (ADR 026, bundle 1.13): added to a Reading lesson's
+# stylesheet only, so every other lesson's blocks.css is unchanged.
+READING_CSS = """
+.tbl.core.doc{background:#fff;border:max(1px,.2cqh) solid #D3D1C7;border-radius:1.2cqh;overflow:hidden}
+.tbl.core.doc table{border-style:hidden}
+.tbl.core.doc th{background:#EAF4FC;color:#042C53;border:none;border-bottom:max(1px,.25cqh) solid #C9E0F3;
+  padding:.9cqh 1.4cqw;font-weight:500}
+.tbl.core.doc th::before{content:attr(data-kind);display:inline-block;margin-right:.7em;padding:.05em .6em;
+  border-radius:1em;background:#475569;color:#fff;font-size:.78em;font-weight:500;vertical-align:.08em}
+.tbl.core.doc td{border:none;padding:.3cqh 1.4cqw}
+.tbl.core.doc tr.dp-heading td{font-weight:500;color:#042C53;padding-top:.8cqh}
+.tbl.core.doc tr.dp-bullet td,.tbl.core.doc tr.dp-num td{position:relative;padding-left:3.4cqw}
+.tbl.core.doc tr.dp-bullet td::before{content:"\\2022";position:absolute;left:1.8cqw;color:#475569}
+.tbl.core.doc tr.dp-num td::before{content:attr(data-mark) ".";position:absolute;left:1.4cqw;color:#475569}
+.tbl.core.doc tr.dp-thead td,.tbl.core.doc tr.dp-trow td{padding-top:0;padding-bottom:0}
+.tbl.core.doc .dgrid{display:grid;grid-template-columns:var(--dcols);border-left:1px solid #D3D1C7}
+.tbl.core.doc tr.dp-thead .dgrid{border-top:1px solid #D3D1C7;margin-top:.5cqh}
+.tbl.core.doc tr.dp-trow:last-of-type .dgrid,.tbl.core.doc tr.dp-trow + tr:not(.dp-trow) td{margin-bottom:.5cqh}
+.tbl.core.doc .dc{padding:.3cqh .6cqw;border-right:1px solid #D3D1C7;border-bottom:1px solid #D3D1C7}
+.tbl.core.doc tr.dp-thead .dc{background:#F1F0EB;font-weight:500}
+.tbl.core.doc .dsep{display:none}
+.blk.q{display:flex;gap:1.2cqw;align-items:flex-start;background:#fff;border:max(1px,.2cqh) solid #C9E0F3;
+  border-left:max(3px,.55cqh) solid #185FA5;border-radius:1.2cqh;padding:1.2cqh 1.6cqw;color:#042C53;font-weight:500}
+.blk.q .qn::before{content:attr(data-n);display:inline-flex;align-items:center;justify-content:center;
+  min-width:3.4cqh;height:3.4cqh;border-radius:50%;background:#185FA5;color:#fff;font-size:.8em}
+"""
+
+
+def frame_css(lesson) -> str:
+    """The blocks' stylesheet for a lesson: FRAME_CSS, plus the Reading blocks'
+    rules for a Reading lesson only (ADR 026)."""
+    import reading_rule
+    return FRAME_CSS + (READING_CSS if lesson and reading_rule.is_reading(Path(lesson)) else "")
+
+
 PAGE_CSS = """
 body{background:#f4f3ef;color:#2C2C2A;font:14px/1.5 system-ui,sans-serif;margin:0;padding:24px 28px 60px}
 h1{font-size:20px;margin:0 0 4px} h2{font-size:16px;margin:36px 0 10px}
@@ -3465,6 +3523,8 @@ def core_table_html(b: dict, bid: str) -> str:
             out += '<span class="' + cls + '" data-typed="' + str(i) + '">' + esc(ty["text"]) + "</span>"
             pos = ty["start"] + len(ty["text"])
         return out + printed(text[pos:])
+    if b.get("doc"):
+        return doc_table_html(b, bid)
     typed = list(enumerate(b.get("typed") or []))
     cols = "".join('<col style="width:' + str(w) + '%">' for w in b.get("col_widths") or [])
     head = "".join("<th>" + cell(c, []) + "</th>" for c in b.get("header") or [])
@@ -3477,6 +3537,54 @@ def core_table_html(b: dict, bid: str) -> str:
     return ('<div class="blk tbl core"' + bid + ' style="--tf:' + str(b.get("font") or 2.6)
             + 'cqh"><table><colgroup>' + cols + "</colgroup><thead><tr>" + head
             + "</tr></thead><tbody>" + body + "</tbody></table></div>")
+
+
+DOC_KINDS = {"table": "Table", "guideline": "Guideline", "protocol": "Protocol", "notes": "Notes",
+             "email": "Email", "memo": "Memo", "policy": "Policy", "extract": "Extract",
+             "article": "Article", "letter": "Letter", "text": "Text"}
+
+
+def doc_table_html(b: dict, bid: str) -> str:
+    """A practice-set text drawn as a realistic page (ADR 026, bundle 1.13):
+    the header names the text and its type (the type is a CSS attribute, not a
+    word of the block), each part is a row the spotlight can walk (the
+    skimming path), a heading is set as one, a list item takes its marker from
+    CSS, and a table inside the text is a grid whose " | " separators stay in
+    the text, hidden, so the words and their order are the released ones."""
+    doc = b["doc"]
+    kinds = doc["parts"]
+    grid_rows = [r[0].split(" | ") for r, k in zip(b["rows"], kinds) if k["kind"] in ("thead", "trow")]
+    ncol = max((len(r) for r in grid_rows), default=0)
+    fr = []
+    for c in range(ncol):
+        cells = [r[c] for r in grid_rows if c < len(r)]
+        fr.append(max(1.0, sum(len(x) for x in cells) / max(1, len(cells)) / 10))
+    dcols = " ".join(f"{x:.2f}fr" for x in fr)
+    head = esc((b.get("header") or [""])[0])
+    body = ""
+    for r, (row, k) in enumerate(zip(b["rows"], kinds)):
+        text = row[0]
+        if k["kind"] in ("thead", "trow"):
+            cells = text.split(" | ")
+            inner = ('<span class="dgrid" style="--dcols:' + dcols + '">' + '<span class="dsep"> | </span>'.join(
+                '<span class="dc">' + esc(c) + "</span>" for c in cells) + "</span>")
+        else:
+            inner = esc(text)
+        mark = (' data-mark="' + esc(k["mark"]) + '"') if k.get("mark") else ""
+        body += ('<tr data-row="' + str(r) + '" class="dp dp-' + k["kind"] + '"><td data-col="0"'
+                 + mark + ">" + inner + "</td></tr>")
+    return ('<div class="blk tbl core doc doc-' + esc(doc["text_type"]) + '"' + bid + ' style="--tf:'
+            + str(b.get("font") or 2.6) + 'cqh"><table><colgroup><col style="width:100%"></colgroup>'
+            + '<thead><tr><th data-kind="' + esc(DOC_KINDS.get(doc["text_type"], "Text")) + '">' + head
+            + "</th></tr></thead><tbody>" + body + "</tbody></table></div>")
+
+
+def question_html(b: dict, bid: str) -> str:
+    """A practice-set question (ADR 026, bundle 1.13): its number as a badge
+    (a CSS attribute, never a word) and its wording as released."""
+    return ('<div class="blk q"' + bid + ' data-item="' + esc(b["question"]["item"]) + '"><span class="qn" data-n="'
+            + esc(str(b.get("exercise_item") or "")) + '"></span><span class="qt">' + esc(b["text"])
+            + "</span></div>")
 
 
 ROLES = ("slide", "example", "note")
@@ -3529,7 +3637,7 @@ def block_html(b: dict) -> str:
     (board_style: change card, definition pill, gloss), carrying its role, its
     style and its place in a flow as classes."""
     bid = ' data-id="' + esc(b["id"]) + '"'
-    html = board_style.style_html(b, bid) or _block_html(b)
+    html = question_html(b, bid) if b.get("question") else (board_style.style_html(b, bid) or _block_html(b))
     extra = board_style.classes(b)
     if extra:
         html = html.replace('class="blk ', 'class="blk ' + extra + " ", 1)
@@ -3714,6 +3822,63 @@ def table(rows: list[dict], cols: list[str]) -> str:
     return "<table><tr>" + head + "</tr>" + body + "</table>"
 
 
+def expand_practice(lesson: Path, topics: list[dict]) -> None:
+    """A Reading lesson's practice set (ADR 026, bundle 1.13): a table block
+    whose label is a stimulus ID becomes that text as a document, and a plain
+    block whose label is an item ID becomes that question, both built here
+    from the release, never written by the model. Anything the model put in
+    them is replaced; an ID the set does not have is left for the audit."""
+    import practice_set
+    ps = practice_set.load(lesson)
+    if not ps:
+        return
+    stim, items = practice_set.stimuli(ps), practice_set.items(ps)
+    for t in topics:
+        for h in t["thoughts"]:
+            for b in h["blocks"]:
+                ref = (b.get("label") or "").strip()
+                keep = {k: b[k] for k in ("anchor", "from_beats") if k in b}
+                if b.get("type") == "table" and ref in stim:
+                    b.clear()
+                    # a text is always the fixed layer of its own board (ADR 026)
+                    b.update({**BLOCK_DEFAULTS, **practice_set.document_block(stim[ref]), **keep,
+                              "anchor": True})
+                elif b.get("type") == "plain" and ref in items:
+                    b.clear()
+                    b.update({**BLOCK_DEFAULTS, **practice_set.question_block(ps, items[ref]), **keep})
+                elif b.get("type") in ("table", "plain") and re.fullmatch(r"oa-(?:set|reading)-[\w-]+", ref):
+                    b["practice_ref_unknown"] = ref
+        # the answer in the release's exact form (ADR 026): a sentence to
+        # complete shows the released sentence with its gap filled; a short
+        # answer is "Answer: " and the form; a matching answer is the text
+        qs = [b for h in t["thoughts"] for b in h["blocks"] if b.get("question")]
+        if qs:
+            it = items[qs[0]["question"]["item"]]
+            key = practice_set.answer_key(it)
+            plain_form = lambda x: re.sub(r"[()]", "", x).strip().lower()
+            for h in t["thoughts"]:
+                for b in h["blocks"]:
+                    if b.get("type") != "answer_row" or not b.get("text"):
+                        continue
+                    said = plain_form(b["text"].removeprefix("Answer:").strip().rstrip("."))
+                    form = next((a for a in key["accepted"] if plain_form(a) == said), None)
+                    if form is None or it["type"] == "choice":
+                        continue
+                    form = " ".join(form.replace("(", "").replace(")", "").split())
+                    kind = (it.get("admin") or {}).get("kind")
+                    b["text"] = (it["prompt"].replace("____", form) if kind == "sentence-completion"
+                                 and "____" in it["prompt"] else "Answer: " + form)
+                    b["provenance"] = "source-derived"
+                    b["note"] = ("the answer in the release's exact form, set by code (ADR 026); "
+                                 + (b.get("note") or "")).strip()
+        # a board whose fixed layer is a text is a table board: a thought that
+        # names no row is about the whole text, as one_board_per_slide marks it
+        if any(b.get("doc") for h in t["thoughts"] for b in h["blocks"]):
+            for h in t["thoughts"]:
+                if not (ROW_PURPOSE.match(h.get("purpose") or "") or TABLE_PURPOSE.match(h.get("purpose") or "")):
+                    h["purpose"] = "Table: " + (h.get("purpose") or "")
+
+
 def render(lesson: Path, page: int, data: dict) -> int:
     pages = data["pages"]
     out_dir = paths.screens_dir_for(lesson, pages)
@@ -3722,10 +3887,13 @@ def render(lesson: Path, page: int, data: dict) -> int:
 
     topics = model_out["topics"]
     unflatten(topics)
+    import reading_rule                        # ADR 026: the practice set, built by code
+    if reading_rule.is_reading(lesson):
+        expand_practice(lesson, topics)
     blocks = assign_ids(topics)
     added = add_blocks(out_dir, topics, blocks)
     dropped = drop_blocks(out_dir, topics, blocks)
-    pictures = add_pictures(lesson, pages, topics, blocks)
+    pictures = add_pictures(lesson, pages, topics, blocks, dropped)
     overrides = apply_overrides(out_dir, blocks)
     if all(paths.is_added(p) for p in pages):
         # An authored section (ADR 018): every block is the agent's, and none
@@ -3900,7 +4068,7 @@ def render(lesson: Path, page: int, data: dict) -> int:
         + str(len(bd["erasures"])) + " erase)</span></li>" for bd in boards) + "</ol>")
 
     html = ('<!doctype html><meta charset="utf-8"><title>Boards - page ' + str(page)
-            + "</title><style>" + PAGE_CSS + FRAME_CSS + ":root{--w:812px}</style>"
+            + "</title><style>" + PAGE_CSS + frame_css(lesson) + ":root{--w:812px}</style>"
             + "<h1>Board content &mdash; " + paths.lesson_label(lesson) + ", deck page "
             + str(page) + "</h1>"
             + '<div class="meta">' + str(len(boards)) + " boards, " + str(n_erase)

@@ -1,0 +1,205 @@
+"""The Reading-lesson rule (docs/adr/026-reading-lessons.md; maintainer,
+2026-10-05): what the screens, narration and QA prompts add for a lesson whose
+type is reading (its id's first word, as in the course index), as
+vocabulary_rule.py does for vocabulary lessons (ADR 019).
+
+A Reading lesson that teaches a practice set gets the set's texts and
+questions by ID (practice_set.py): code builds them, the model never writes
+them, and they are shown exactly as released.
+"""
+
+import re
+from pathlib import Path
+
+import practice_set
+
+
+def is_reading(lesson: Path) -> bool:
+    return Path(lesson).name.split("-")[0].lower() == "reading"
+
+
+NOTE = "reading rule (ADR 026)"
+
+# The keyword-pair marks (ADR 026, bundle 1.13): one colour per pair, meaning
+# only "these words correspond". Drawn at 55% over the text.
+MATCH_COLOURS = {"match1": "#0688F9", "match2": "#A860FB", "match3": "#F9E806"}
+MATCH_TYPES = list(MATCH_COLOURS)
+
+SCREENS = """\
+READING LESSON (docs/adr/026-reading-lessons.md; maintainer, 2026-10-05). This \
+lesson teaches the OET READING test, not grammar. Where these instructions speak \
+of grammar terms, exercise sentences or letters, read them as the reading \
+strategies, the texts and the questions this section teaches. The rules below \
+ADD to the rest of these instructions; everything else holds (A2-B1 wording, \
+DO NOT ADD TEACHING, NEVER JUDGE REGISTER, one board per slide, the board style).
+  - EXAM FACTS. Only the facts in the beats and in the MAINTAINER RULINGS. Where \
+a ruling corrects the source (a grade, a time, a number of questions or texts), \
+teach the ruling's version as plain fact and never mention the error.
+  - RICHER THAN THE SLIDE. Every graphic helps understanding: a TIMELINE for time \
+(the 60 minutes of the test, the 15 minutes of Part A; give every part a family \
+as usual: this is not a tense lesson, so every family is drawn neutral), a COMPARISON for a before-and-after or a \
+conversion (a score to a grade), a small TABLE for a map of parts and skills, a \
+timeline of points or category cards for a path of steps. One graphic per idea; \
+never decoration. A graphic is a block on its slide's ONE board, like any other: \
+a path of four steps is one board whose steps are revealed one by one, never a \
+board per step (TOPICS ARE BOARDS, AND A BOARD IS A SLIDE).
+  - SMALL TABLES. A table you write has two columns, or at most three rows: a \
+table of three or more columns and four or more rows is a SUMMARY TABLE, which \
+must be the first board's whole fixed layer. A map of four texts is two \
+columns ("Text" | "What it covers"); a score plan is two ("Part" | "Correct \
+answers to aim for").
+  - A LIGHT FIXED LAYER. Anchor only the slide's own short content, at most \
+about four short lines (a list of tips or of dos and don'ts is anchored as one \
+plain block per item, and the explanations are notes). A list longer than \
+that is split BY MEANING into two boards at most, never more: a slide of dos \
+and don'ts is "Split: dos" and "Split: don'ts".
+  - OFFICIAL OET SAMPLE TEXTS NEVER APPEAR: no text, title, sentence, \
+paraphrase or description of one, even where the beats quote the source's \
+examples. The instructor's TEACHING carries over (his strategies, his \
+explanations, his order) and is applied to this lesson's own practice set where \
+the section has one.
+  - PAPER-ONLY ADVICE (a pen, underlining, crossing out instead of erasing) is \
+advice for the paper test: say so on the block ("On the paper test, ..."). Never \
+name a tool of the computer test.
+  - NEVER ADVISE TAKING A MOCK TEST FIRST (maintainer, 2026-10-06): no block \
+tells the learner to take a mock test, a practice test or any full test before \
+studying, even where the beats do; record such a beat under `dropped`.
+  - NO GLOSS inside a practice set's texts or questions: they are shown exactly \
+as released. The gloss rule applies to your own teaching blocks only.\
+"""
+
+SCREENS_SET = """\
+THE PRACTICE SET OF THIS LESSON (ADR 026). Its texts and questions are listed \
+below, by ID. They are shown EXACTLY as released: you never copy, quote in a \
+block of your own, shorten, reorder or paraphrase them. CODE BUILDS THEM:
+  - A TEXT is a DOCUMENT: write a block {"type": "table", "label": "<its \
+stimulus ID>", "anchor": true}, with NO header and NO rows (code fills them \
+from the release). It is the fixed layer of a TABLE BOARD of its own, and its \
+ROWS are the document's parts as numbered below: teach it with thoughts whose \
+`purpose` starts "Row N: " (N as listed) or "Table: " for the whole text, as on \
+any table board. The SKIMMING PATH is a sequence of row thoughts over the \
+parts the instructor says to skim (headings, the first sentences, lists, a \
+table, bold), in order; a SCANNING path is a row thought on the part that holds \
+the answer. Nothing is typed into a document. Side notes go under it as on any \
+table board, at most one or two short ones per thought.
+  - A QUESTION is written {"type": "plain", "label": "<its item ID>", "anchor": \
+false}, with NO text: code writes its number and its wording. Put it in the \
+FIRST thought of its board (purpose "Table: the question"); it stays on the \
+board to the end. Then the row thought(s) where its keywords are found, then \
+the answer as an answer_row in the EXACT form the text gives (the key below), \
+and, where the release gives one, a note on why a tempting wrong answer is \
+wrong (its reason, in your plain words). One board per question: its fixed \
+layer is the DOCUMENT that holds the answer (for a matching question, the key's \
+text). Its `title` is "Item <number>: <item ID>".
+  - BOARDS. A section that demonstrates skimming has one board per text, in \
+order A to D, each with its document as the fixed layer. A section that works \
+through the questions has, in this order: the slide's own board; where its \
+beats skim the texts again before the questions, one board per text; one short \
+board (plain blocks only) that names the three question groups and how many \
+minutes each gets; one board per question, in question order. Any teaching that \
+comes after the last question (a conclusion, study advice) is the last \
+question board's final thoughts, never a board of its own. These boards are \
+this section's exercise items: the audit counts them like exercise items. Every \
+beat is used or recorded under `dropped`: a beat about how the instructor \
+solved one practice question becomes the same move on the matching question of \
+this set.
+  - KEYWORDS ON SCREEN are marked by the narration (same-colour pairs), not \
+written as blocks: never write a block that lists the question's keywords \
+again.\
+"""
+
+NARRATION = """\
+READING LESSON (ADR 026; maintainer, 2026-10-05). This lesson teaches the OET \
+Reading test. These rules ADD to the others.
+  - EXAM FACTS only from the beats and the rulings; a ruling's corrected fact is \
+said as plain fact, never "not B+" or "the slide is wrong".
+  - Paper-only advice is said as advice for the paper test. Never describe a \
+tool of the computer test.
+  - Never advise taking a mock test, or any full practice test, before \
+studying (maintainer, 2026-10-06).
+  - Official OET sample texts are never named, quoted or described.
+  - A practice-set text or question on the board is read EXACTLY as printed when \
+you read it aloud (quote it word for word, or do not quote it).\
+"""
+
+NARRATION_SET = """\
+KEYWORD PAIRS (ADR 026, bundle 1.13). Three extra mark types draw a pair of \
+places in ONE colour, meaning "these words correspond": `match1` (sky blue), \
+`match2` (violet), `match3` (yellow). On a question board:
+  - mark each KEYWORD of the question with a match type, and the WORDS IN THE \
+TEXT that match it with THE SAME type, in the same state: question first, then \
+the text ("The question says 'breathlessness'. {{c1}}In Text B, we find \
+{{c2}}shortness of breath."). Use match1 for the first pair on the board, match2 for \
+the second, match3 for a third; at most three pairs a board.
+  - THE PARAPHRASE BRIDGE: when the answer is found, mark the text's wording \
+and the answer's wording with one match type, and say in one sentence how they \
+say the same thing.
+  - Use `highlight` (amber) for nothing on a question board: keywords and \
+their matches are match marks.
+  - On a skimming board, mark the parts you skim (a heading, a first sentence, \
+a number) with `highlight`, as the instructor highlights them, in reading \
+order, as the spotlight moves: that is the skimming path. Never `underline` or \
+`circle` on a skimming board.
+  - The answer is said and shown in its EXACT form from the text ("nil by \
+mouth", "twice daily"), and a wrong form is named only where the release gives \
+it as a tempting wrong answer.\
+"""
+
+QA = """\
+READING LESSON (ADR 026). The lesson teaches the OET Reading test. The \
+practice set's texts and questions (blocks built from the release, shown \
+exactly as released) are not findings: never suggest changing their wording. \
+The exam facts in the maintainer rulings are correct (OET grades A, B, C+, C, \
+D, E; target Grade B, 350; Reading 60 minutes, Part A 15 minutes separately, \
+Parts B and C 45 minutes; every question one mark). Report any official OET \
+sample text named, quoted or described, any claim about a tool of the computer \
+test, any advice to take a mock test first, and any match mark pair whose two places do not say the same thing.\
+"""
+
+
+def intro_first(text: str) -> str:
+    """The first lesson of the Reading course (ADR 026 §4; ADR 014 amendment):
+    why reading matters, not why grammar matters."""
+    text = text.replace("notes: why grammar matters, the lesson's", "notes: why reading matters, the lesson's")
+    return re.sub(
+        r"  2\. Explains simply why grammar matters in the OET letter:.*?No grade or score promises\.",
+        "  2. Explains simply why reading matters: at work, healthcare professionals "
+        "read guidelines, policies, notes and emails, and must find the right "
+        "information quickly and exactly; and Reading is one of the four parts of "
+        "OET. No grade or score promises.", text, flags=re.S)
+
+
+def intro(text: str) -> str:
+    """Any other Reading lesson's introduction: why the topic matters for the
+    learner's reading, not their letters; never a second welcome to the course."""
+    return (text.replace("why this topic matters for the student's letters",
+                     "why this topic matters for the student's reading at work and in OET")
+            + "\nREADING COURSE (ADR 026 §4): this lesson continues the Reading course. "
+              "Open warmly and in your own words, but do not welcome the learner to "
+              "the course again.")
+
+
+def set_text(lesson: Path, pages: list[int]) -> str:
+    """The practice set, by ID, for a section that teaches it, or ''."""
+    ps = practice_set.load(lesson)
+    if not ps:
+        return ""
+    if not section_teaches_set(lesson, pages):
+        # another section of the lesson may name the set's texts (their labels,
+        # titles and types), never quote them
+        return (f"THIS LESSON'S PRACTICE SET ({ps['set_id']}, ADR 026), taught in another section. "
+                "Where this section needs an example of the four texts, name them by label, "
+                "title and type only; never quote them:\n" + "\n".join(
+                    f"  {st['label']}: {st.get('title') or '(no title)'}; a {st.get('text_type') or 'text'}"
+                    for st in practice_set.stimuli(ps).values()))
+    out = [SCREENS_SET, f"PRACTICE SET {ps['set_id']}:"]
+    out += [practice_set.document_for_prompt(st) for st in practice_set.stimuli(ps).values()]
+    out += [practice_set.question_for_prompt(ps, it) for it in practice_set.items(ps).values()]
+    return "\n\n".join(out)
+
+
+def section_teaches_set(lesson: Path, pages: list[int]) -> bool:
+    """The sections that teach the set: practice_set.json `teach_pages`, set
+    by the agent with practice_set.py --teach-pages and logged (ADR 005)."""
+    ps = practice_set.load(lesson) or {}
+    return bool(set(ps.get("teach_pages") or []) & set(pages))

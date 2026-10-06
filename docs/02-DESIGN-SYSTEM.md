@@ -185,7 +185,8 @@ Line height 1.35 for body text in blocks.
 ## 5. Colour
 
 Three content colours, one highlight, and the colours of the board style
-(§7c: slide boxes, word classes, the definition pill, notes). No more.
+(§7c: slide boxes, word classes, the definition pill, notes). No more, except
+in a Reading lesson, which adds the three keyword-pair colours (§8e).
 
 | Colour | Meaning | Fill | Accent bar | Text |
 |---|---|---|---|---|
@@ -767,6 +768,7 @@ Clean and re-authored. Never copies of the instructor's ink.
 | Arrow | From one phrase to another, to show a relationship: a verb and the time marker it clashes with, the two halves of a contrast. Thin blue curve with a head. |
 | Bracket | Under a span of a sentence, blue, with end ticks |
 | Replace | The wrong phrase struck through in red, the correction written above it in a handwriting-style face. The one place a second typeface appears. |
+| Keyword pair (Reading lessons only) | `match1`, `match2`, `match3`: a highlight in sky blue `#0688F9`, violet `#A860FB` or yellow `#F9E806`, at 55% over the text. See §8e. |
 
 A mark appears shortly **before** the word it belongs to, so the student
 sees it and then hears about it.
@@ -913,6 +915,29 @@ timeline marker labels that would meet take further lines under the axis.
   moment at which a board changes and measures every block and every line of
   text; any overlap fails the build. It runs on the finished player and on the
   silent preview before the narration gate.
+
+### 8e. Reading lessons: keyword pairs and the skimming path
+
+ADR 026; bundle 1.13 (docs/04-LESSON-BUNDLE.md rules 29 and 30).
+
+- **A pair shares one colour, and the colour means only "these words
+  correspond".** A question's keywords and the words in the text that match
+  them take the same pair mark, in the same state, the question first. When
+  the answer is found, the text's wording and the answer's wording take one
+  pair colour (the paraphrase bridge). At most three pairs a board: `match1`
+  for the first, `match2` for the second, `match3` for a third.
+- **The colours were chosen by measured difference** (CIEDE2000), as the word
+  classes were (§7c): 25.3 or more between any two, and 26 or more from red
+  and green and their tints, so a pair never reads as right or wrong.
+- **On a question board the amber highlight is not used**: the yellow pair is
+  only 14.9 from it, so keywords and their matches are always pair marks.
+- **The skimming path is highlighted** (maintainer, 2026-10-06: "use yellow
+  highlighting, as the instructor does"). On a skimming board (a practice-set
+  text with no question) the parts skimmed, such as a heading, a first sentence
+  or a number, take the `highlight` mark in reading order as the spotlight
+  moves, never an underline or a circle. A skimming board has no pairs, so the
+  highlight and the yellow pair never meet on one board.
+- Pair marks are refused outside Reading lessons by the narration audit.
 
 ## 9. Controls
 

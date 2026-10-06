@@ -329,6 +329,26 @@ def main() -> None:
         write(out_path, previous)
         print(f"introduction source: the recording {a:.0f}-{b:.0f} s ({by})")
         return
+    if "--page-also" in sys.argv:
+        # A further range of the recording read as part of a page's span
+        # (maintainer, 2026-10-05, Reading Part A: the instructor's off-deck
+        # walk-through of a whole practice set, 36:15-80:50, belongs to the
+        # Scanning page): page_spans[page]["also"] [{from_s, to_s, what}],
+        # after the span set with --page-span, never overlapping it.
+        by = sys.argv[sys.argv.index("--by") + 1] if "--by" in sys.argv else "maintainer"
+        i = sys.argv.index("--page-also")
+        page, a, b, what = sys.argv[i + 1], float(sys.argv[i + 2]), float(sys.argv[i + 3]), sys.argv[i + 4]
+        spans = previous.get("page_spans") or {}
+        if page not in spans:
+            raise SystemExit("--page-also adds to a page span: set it first with --page-span")
+        sp = spans[page]
+        ranges = [(sp["from_s"], sp["to_s"])] + [(x["from_s"], x["to_s"]) for x in sp.get("also", [])]
+        if not 0 <= a < b or any(a < y and x < b for x, y in ranges):
+            raise SystemExit(f"bad range {a}-{b}: empty or overlapping the page's span")
+        sp.setdefault("also", []).append({"from_s": a, "to_s": b, "what": what, "by": f"{by} {today}"})
+        print(f"page {page}: understanding also reads the recording {a:.0f}-{b:.0f} s: {what}")
+        write(out_path, previous)
+        return
     if "--page-span" in sys.argv or "--off-deck" in sys.argv:
         # A page whose teaching the timeline splits into several intervals,
         # with off-deck material between (Grammar 2 page 8, maintainer

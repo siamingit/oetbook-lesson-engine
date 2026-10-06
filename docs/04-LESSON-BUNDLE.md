@@ -4,7 +4,7 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.12. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.13 for a Reading lesson, 1.12 for every other lesson. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
 2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
 table boards, on 2026-09-25 (docs/adr/007-table-boards.md); 1.3, the board style
@@ -19,7 +19,10 @@ relative and participle clauses in the clause diagram, the same day
 same day (docs/adr/013-gloss-moments-and-teacher-openings.md); 1.11, a gloss's
 generated image, the same day (docs/adr/015-gloss-images.md); 1.12, a picture on
 every board and no block over another, on 2026-09-30 (docs/adr/020-no-overlap.md,
-docs/adr/021-a-picture-on-every-board.md).
+docs/adr/021-a-picture-on-every-board.md); 1.13, a Reading lesson's practice-set
+texts and questions and its keyword pairs, on 2026-10-05
+(docs/adr/026-reading-lessons.md). A lesson is written in 1.13 only when it is a
+Reading lesson; every other lesson stays 1.12, byte for byte, until rebuilt.
 A change to it is a new format version (§3), recorded in a new ADR.
 
 | Version | Date | Change |
@@ -37,6 +40,7 @@ A change to it is a new format version (§3), recorded in a new ADR.
 | 1.10 | 2026-09-27 | the gloss block: the block type `gloss` (`term`, `explanation`, `text`, `icon`, `items` `{kind, text, part}` with kinds `meaning`, `picture`, `example`); rule 25 (ADR 013) |
 | 1.11 | 2026-09-27 | a gloss's generated image: the block's `image` (`file`, relative to the bundle's folder; `alt`); its `icon` is the image brief; rule 26 (ADR 015) |
 | 1.12 | 2026-09-30 | the block type `picture` (`icon` its brief, `image`), a board's picture shown from its state's start (rule 27); side notes under the table, never over it, and the view panned to them (rules 12, 13 changed; ADR 020, ADR 021) |
+| 1.13 | 2026-10-05 | Reading lessons only: a core `table` block's `doc` (a practice-set text drawn as a document) and a `plain` block's `question` (a practice-set question), both null on every other block of the lesson; the mark cue types `match1`, `match2`, `match3` (keyword pairs); rules 29 and 30; `blocks.css` adds the documents' and questions' rules (ADR 026) |
 
 ---
 
@@ -165,7 +169,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.12"` |
+| `format_version` | string | `"1.12"`; `"1.13"` for a Reading lesson |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -242,6 +246,8 @@ A block is one thing on a board. Each carries its data and its rendered `html`.
 | `band` | 1.3. On the first change card of a run, the process pill's text ("Nominalisation") |
 | `verdicts` | 1.6. A choice table (a core `table` whose rows offer versions of one sentence to choose between): each body cell's verdict, `[{row, col, verdict}]`, `verdict` `right`, `wrong` or `possible` (also acceptable, or correct only in some context). Null for any other table |
 | `beside` | 1.2. a side note on a table board: `{block, row}`, the table and the row it is about (from 0), or row null for a note about the whole table; otherwise null. 1.12: drawn under the table, never over it; the row is shown by the spotlight (`focus`), not by where the note sits (rule 12). A board's picture on a table board carries it with row null |
+| `doc` | 1.13, Reading lessons. A core `table` that is a practice-set text: `{stimulus, label, title, text_type, parts}`. `stimulus` is its id in the exercises release, `label` ("Text B") and `title` as released, `text_type` (`table`, `guideline`, `protocol`, `notes`; Parts B and C add `email`, `memo`, `policy`, `extract`), and `parts` one `{kind, mark}` per row: `heading`, `para`, `bullet`, `num` (`mark` its number), `thead` and `trow` (a row of a table inside the text, its cells joined by " \| " in the row's text). The table has one column; its `header` is the label and title; each row's text is the released line, its list marker drawn by the stylesheet (rule 29). Null on any other block |
+| `question` | 1.13, Reading lessons. A `plain` block that is a practice-set question: `{item, kind, max_words}`, `item` its id in the exercises release (`oa-reading-000014`), `kind` `matching`, `short-answer` or `sentence-completion`; the block's `text` is the question as released (a matching item's lead-in and stem), `exercise_item` its number. Null on any other block |
 | `size` | 1.12. `picture`: the side of its square box in cqh (hundredths of the frame's height), set where the fit made it smaller so the board fits, never below 10; null for 20 (rule 27) |
 | `items` | `timeline`: its diagram parts in order (below). 1.7, `clauses`: its parts in order, `{kind, text, piece, part}`: `kind` `dependent` or `independent` (a piece, `text` its words), `glue` (the joining word; `piece` the piece it is in, from 1, or null for a bridge between two independent pieces), `subject` or `verb` (a label over `text` in `piece`), or `join`; 1.9: `defining` or `nondefining` (a relative clause set into the independent `piece`, `text` its words without its commas), `remove` (the removal test: `text` the sentence without the clause, `keeps` true when it still works), `link` or `dangling` (`text` a participle in the dependent `piece`, `from` the part number of the main clause's `subject`); the part id is `<block id>.<part>` |
 | `tags` | tense tags: `[{text, family, label}]`; `label` is what the chip says ("up to now") |
@@ -342,7 +348,7 @@ with the bundle.
 | Field | Meaning |
 |---|---|
 | `id` | cue id, within the utterance |
-| `type` | `reveal`, `pause`, `type` (1.2), or a mark: `underline`, `highlight`, `circle`, `strike`, `bracket`, `point`, `arrow`, `replace` (docs/02-DESIGN-SYSTEM.md §8) |
+| `type` | `reveal`, `pause`, `type` (1.2), or a mark: `underline`, `highlight`, `circle`, `strike`, `bracket`, `point`, `arrow`, `replace` (docs/02-DESIGN-SYSTEM.md §8); 1.13, Reading lessons: `match1`, `match2`, `match3`, a keyword pair (rule 30) |
 | `time` | when it takes effect: a lead before its word, or for a pause the end of the utterance |
 | `time_end` | the end of its word; for a pause, the end of the silence; for a `type`, the end of the typing |
 | `retargeted_from` | 1.3. Not in the bundle: a cue on a folded block names the block it is folded into, with its phrase as that block writes it, and a cue on a change card names the phrase without its word class ("Analysis", not "Analysis (noun)") |
@@ -478,6 +484,18 @@ These are the only rules. Every time and target they use is in the bundle.
     it, and the narration never points at it.
 28. **Nothing over anything** (1.12; no data change): no block is drawn over
     another block or its text, and no text over other text, in any state.
+29. **A practice-set text** (1.13): a core table with `doc` is a table board
+    (rules 10 to 13) drawn as a page: its header carries the text's type as a
+    tag (a stylesheet attribute, never a word of the block), a `heading` row is
+    set as a heading, a `bullet` or `num` row takes its marker from the
+    stylesheet (the number from `mark`), and a `thead` or `trow` row is a grid
+    whose cells are the parts of its text between " | ", the separators kept in
+    the text and hidden. Its words are the released words, in order.
+30. **A keyword pair** (1.13): a `match1`, `match2` or `match3` mark is drawn as
+    a highlight, in sky blue `#0688F9`, violet `#A860FB` or yellow `#F9E806`
+    respectively, at 55% over the text. Marks of one type on one board are one
+    pair (a question's words and the text's words that match them), and mean
+    only that those words correspond.
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and

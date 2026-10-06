@@ -23,7 +23,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paths                                                          # noqa: E402
 from extract_understanding import esc                                 # noqa: E402
 from write_narration import NARR_CSS, SPEAKING_WPM, spoken, state_html  # noqa: E402
-from write_screens import FRAME_CSS, PAGE_CSS                         # noqa: E402
+from write_screens import FRAME_CSS, PAGE_CSS, frame_css                         # noqa: E402
 
 
 def qa_html(out_dir: Path) -> str:
@@ -97,7 +97,7 @@ def main() -> None:
             tot_cost += cost
 
     html = ('<!doctype html><meta charset="utf-8"><title>Narration review</title><style>' + PAGE_CSS
-            + FRAME_CSS + NARR_CSS + ":root{--w:812px} .scr{margin:18px 0}</style>"
+            + frame_css(lesson) + NARR_CSS + ":root{--w:812px} .scr{margin:18px 0}</style>"
             + "<h1>" + esc(sec["lesson"]["title"] or "Lesson") + " &mdash; narration review</h1>"
             + '<div class="meta">' + str(built) + " sections narrated, " + str(missing) + " not yet; "
             + str(tot_utt) + " utterances, " + str(tot_words) + " words (about "

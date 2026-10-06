@@ -22,7 +22,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paths                                                          # noqa: E402
 from extract_understanding import esc                                 # noqa: E402
-from write_screens import FRAME_CSS, PAGE_CSS, block_html, is_exercise_board   # noqa: E402
+from write_screens import FRAME_CSS, PAGE_CSS, frame_css, block_html, is_exercise_board   # noqa: E402
 
 
 def frame(title: str, inner: str) -> str:
@@ -97,7 +97,7 @@ def main() -> None:
             built += 1
 
     html = ('<!doctype html><meta charset="utf-8"><title>Lesson preview</title><style>' + PAGE_CSS
-            + FRAME_CSS + ":root{--w:812px} .scr{margin:18px 0}</style>"
+            + frame_css(lesson) + ":root{--w:812px} .scr{margin:18px 0}</style>"
             + "<h1>" + esc(sec["lesson"]["title"] or "Lesson") + " &mdash; every board</h1>"
             + '<div class="meta">' + str(built) + " sections built, " + str(missing)
             + " not yet. Static preview, no audio; every board in every state of its working layer, "
