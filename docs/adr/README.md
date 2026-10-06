@@ -32,3 +32,4 @@ old one.
 | [024 — Length budget calibration: untaught pages and warning limits](024-length-budget-calibration.md) | 2026-10-01 |
 | [025 — Lesson ids are lower case](025-lower-case-lesson-ids.md) | 2026-10-01 |
 | [026 — Reading lessons: practice sets, vocabulary and visual design](026-reading-lessons.md) | 2026-10-05; amended 2026-10-06 |
+| [027 — The voice of Reading and Listening lessons: Courtney, about 135 words a minute](027-reading-and-listening-voice.md) | 2026-10-06 |

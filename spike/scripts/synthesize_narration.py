@@ -41,21 +41,29 @@ from cartesia import Cartesia
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import lexicon                                                        # noqa: E402
+import voices                                                         # noqa: E402
 import paths                                                          # noqa: E402
-from synthesize_audio import (MODEL_ID, SAMPLE_RATE, VOICE_ID, VOICE_NAME,  # noqa: E402
+from synthesize_audio import (MODEL_ID, SAMPLE_RATE,  # noqa: E402
                               api_key, write_wav)
 from write_narration import spoken                                    # noqa: E402
 
 
-def cache_key(text: str, speed: float, salt: str, dict_id: str) -> str:
-    basis = f"{text}|{VOICE_ID}|{MODEL_ID}|{speed:.3f}|{dict_id}|{salt}"
+def cache_key(text: str, speed: float, salt: str, dict_id: str,
+              voice: dict = voices.RUPERT) -> str:
+    basis = f"{text}|{voice['id']}|{MODEL_ID}|{speed:.3f}|{dict_id}|{salt}"
+    if voice["sentence_pause_s"]:
+        # only a voice with added pauses (ADR 027) adds them to the key, so
+        # every clip made before stays cached under the key it has
+        basis += f"|pause{voice['sentence_pause_s']:.2f}"
     return hashlib.sha256(basis.encode("utf-8")).hexdigest()[:12]
 
 
-def synthesize(client: Cartesia, text: str, speed: float, dict_id: str) -> dict:
-    """Cartesia SSE with word and phoneme timestamps, under the lexicon."""
+def synthesize(client: Cartesia, text: str, speed: float, dict_id: str,
+               voice: dict = voices.RUPERT) -> dict:
+    """Cartesia SSE with word and phoneme timestamps, under the lexicon; the
+    voice's sentence pauses added after (ADR 027)."""
     events = client.tts.sse(
-        model_id=MODEL_ID, transcript=text, voice={"id": VOICE_ID}, language="en",
+        model_id=MODEL_ID, transcript=text, voice={"id": voice["id"]}, language="en",
         add_timestamps=True, add_phoneme_timestamps=True,
         generation_config={"speed": speed}, pronunciation_dict_id=dict_id,
         output_format={"container": "raw", "encoding": "pcm_s16le", "sample_rate": SAMPLE_RATE},
@@ -74,6 +82,8 @@ def synthesize(client: Cartesia, text: str, speed: float, dict_id: str) -> dict:
             phonemes.extend(ev.phoneme_timestamps.phonemes)
         elif ev.type == "error":
             raise RuntimeError(f"Cartesia error: {ev}")
+    pcm, word_start, word_end = voices.add_sentence_pauses(
+        bytes(pcm), words, word_start, word_end, voice["sentence_pause_s"], SAMPLE_RATE)
     return {"pcm": bytes(pcm), "words": words, "word_start": word_start,
             "word_end": word_end, "phonemes": " ".join(phonemes)}
 
@@ -97,14 +107,15 @@ def require_terms_check(out_dir: Path, narration_path: Path, accept: bool) -> di
 RETRY_WAITS_S = [5, 10, 20, 40, 60, 90, 120]   # about six minutes in all
 
 
-def synthesize_with_retry(client, text: str, speed: float, dict_id: str, uid: str) -> dict:
+def synthesize_with_retry(client, text: str, speed: float, dict_id: str, uid: str,
+                          voice: dict = voices.RUPERT) -> dict:
     """Cartesia has returned intermittent quota errors (402, 429) that clear
     within a minute: a per-minute limit. Wait and retry with backoff; any
     other error, or the last retry, is raised to the caller, which stops."""
     import time
     for n, wait in enumerate(RETRY_WAITS_S + [None], 1):
         try:
-            return synthesize(client, text, speed, dict_id)
+            return synthesize(client, text, speed, dict_id, voice)
         except Exception as e:
             msg = str(e).lower()
             transient = any(k in msg for k in ("402", "429", "quota", "rate", "limit",
@@ -121,14 +132,18 @@ def main() -> None:
     parser.add_argument("lesson_dir", type=Path)
     parser.add_argument("--page", type=int)
     parser.add_argument("--pages", help="a section's pages, e.g. 5,6")
-    # 1.0 chosen by the maintainer by ear, 2026-09-24 (about 155 words per
-    # minute measured; methodology §23). Speed is part of the cache key.
-    parser.add_argument("--speed", type=float, default=1.0)
+    # The lesson's voice sets the speed (voices.py, ADR 027): Rupert 1.0,
+    # chosen by ear 2026-09-24 (methodology §23); Courtney 0.6 for Reading and
+    # Listening. Speed is part of the cache key.
+    parser.add_argument("--speed", type=float, default=None)
     parser.add_argument("--accept-terms", action="store_true",
                         help="build although the terms check listed failures")
     args = parser.parse_args()
     pages = (sorted(int(x) for x in args.pages.split(",")) if args.pages
              else [args.page])
+    voice = voices.for_lesson(args.lesson_dir)
+    if args.speed is None:
+        args.speed = voice["speed"]
 
     narration_path = paths.narration_dir_for(args.lesson_dir, pages) / "narration.json"
     narr = json.loads(narration_path.read_text(encoding="utf-8"))
@@ -159,7 +174,7 @@ def main() -> None:
                 text = spoken(u["text_with_cues"])
                 terms = lexicon.terms_in(text, lex)
                 salt = lexicon.cache_salt(text, lex)
-                key = cache_key(text, args.speed, salt, dict_id)
+                key = cache_key(text, args.speed, salt, dict_id, voice)
                 known = by_hash.get(key)
                 if known:
                     # The key already carries every pronunciation decision the
@@ -179,7 +194,8 @@ def main() -> None:
                     continue
                 wav_path = audio_dir / f"{key}.wav"
                 try:
-                    result = synthesize_with_retry(client, text, args.speed, dict_id, u["id"])
+                    result = synthesize_with_retry(client, text, args.speed, dict_id, u["id"],
+                                                   voice)
                 except Exception as e:
                     # Never skip an utterance silently: keep what is made,
                     # name what is not, and stop.
@@ -196,8 +212,10 @@ def main() -> None:
                 for p in problems:
                     phoneme_failures.append(f"{u['id']}: {p}")
                 entry = {
-                    "id": u["id"], "hash": key, "voice": VOICE_NAME, "voice_id": VOICE_ID,
+                    "id": u["id"], "hash": key, "voice": voice["name"], "voice_id": voice["id"],
                     "model": MODEL_ID, "speed": args.speed,
+                    **({"sentence_pause_s": voice["sentence_pause_s"]}
+                       if voice["sentence_pause_s"] else {}),
                     "pronunciation_dict_id": dict_id,
                     "lexicon_version": lex["version"], "lexicon_terms": terms,
                     "phoneme_check": "fail" if problems else ("ok" if terms else "n/a"),
