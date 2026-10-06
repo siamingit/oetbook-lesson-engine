@@ -34,6 +34,7 @@ import lexicon                                                          # noqa: 
 import paths                                                            # noqa: E402
 from ear import norm, transcribe_file                                    # noqa: E402
 from synthesize_audio import MODEL_ID, VOICE_ID, api_key as cartesia_key, synthesize, write_wav  # noqa: E402
+import voices                                                           # noqa: E402
 from transcribe import api_key as scribe_key                            # noqa: E402
 from write_narration import spoken                                      # noqa: E402
 from write_screens import block_text_runs                               # noqa: E402
@@ -102,8 +103,14 @@ def main() -> None:
     parser.add_argument("lesson_dir", type=Path)
     parser.add_argument("--page", type=int)
     parser.add_argument("--pages", help="a section's pages, e.g. 5,6")
-    parser.add_argument("--speed", type=float, default=1.0)
+    parser.add_argument("--speed", type=float, default=None,
+                        help="default: the lesson voice's speed (voices.py, ADR 027)")
     args = parser.parse_args()
+    voice = voices.for_lesson(args.lesson_dir)
+    if args.speed is None:
+        args.speed = voice["speed"]
+    # a probe is heard in the lesson's own voice; Rupert's probes keep their names
+    tag = "" if voice is voices.RUPERT else f"{voice['name']}-"
 
     lex = lexicon.load()
     pages = (sorted(int(x) for x in args.pages.split(",")) if args.pages
@@ -132,14 +139,14 @@ def main() -> None:
             # and "B M I" would share one probe: keep the letters and the case.
             # hyphens kept: "C-O-P-D" (ADR 016) is not the probe of "C O P D"
             slug = "caps-" + re.sub(r"[^A-Za-z0-9-]", "_", term)
-        wav = probe_dir / (slug + f"@{args.speed:g}.wav")
+        wav = probe_dir / (slug + f"@{tag}{args.speed:g}.wav")
         heard_path = wav.with_suffix(".json")
         if not heard_path.exists():
             text = (NAME_CARRIER if lexicon.PERSON_NAME.fullmatch(term) else CARRIER).format(term=term)
             res = None
             for wait in (5, 10, 20, 40, 60, 90, 120, None):
                 try:
-                    res = synthesize(client, text, args.speed)
+                    res = synthesize(client, text, args.speed, voice["id"])
                     break
                 except Exception as e:      # the per-minute quota: wait and retry
                     if wait is None:
