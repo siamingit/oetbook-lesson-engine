@@ -1,0 +1,280 @@
+# 026 — Reading lessons: practice sets, vocabulary and visual design
+
+Date: 2026-10-05
+Status: **Accepted** (the rules) by the maintainer in chat, 2026-10-05, in the
+brief for Reading lessons 1 and 2: "Write this ADR and add it to the ADR index.
+It governs all four Reading lessons." The brief named it ADR 025; that number
+was already taken (lower-case lesson ids), so it is 026. How the rules are
+carried ("How it is carried" below) was chosen by the agent under that request;
+the maintainer may reverse it.
+
+## Context
+
+The Reading course has four lessons: an overview (reading-01-overview) and one
+lesson for each part of the test (Parts A, B and C). In the recorded sessions
+the instructor taught Parts A to C on official OET sample texts. Those texts
+belong to OET and must not reach the product.
+
+The product has its own practice sets, written and checked in the exercises
+repository (`siamingit/oetacademy-exercises`, private) and released as
+`pilot-v1`. The same sets are the learners' Practice Test 1. The exercises
+repository also holds a vocabulary layer for the Part B and Part C sets: a word
+bank with meanings, synonyms, examples and pronunciation audio, and the places
+where each word occurs.
+
+Nothing in the engine could teach from a text that is not on the deck. No
+block could show a realistic document, and no mark could link the words of a
+question to the words of a text. A Reading lesson also needs richer visuals
+than the source decks, which are mostly lists on coloured cards.
+
+This repository is public and the exercises repository is private. So set
+text, question wording and word-bank content never enter this repository.
+Only their IDs do.
+
+## Options considered
+
+For the texts:
+
+1. **Keep the official samples.** Rejected by the maintainer: they are OET's
+   material.
+2. **Write new texts per lesson.** Rejected: they would be unchecked, and they
+   would differ from Practice Test 1.
+3. **Teach the released sets, unchanged** (this decision).
+
+For how a set reaches the boards:
+
+1. **The screens model copies the texts into its reply.** Every board would
+   repeat about 200 words of output, and a verbatim check would have to catch
+   every slip.
+2. **Code builds the text and question blocks from the release by ID; the
+   model names the ID** (this decision). The wording cannot drift, and the
+   model writes only the teaching around it.
+
+## Decision
+
+### 1. Practice sets
+
+- The texts and questions of Reading Parts A, B and C come **only** from the
+  exercises repository, release `pilot-v1` (local copy:
+  `%LOCALAPPDATA%\oetacademy-exercises\releases\pilot-v1`):
+  - Part A: `oa-set-ra-0001`;
+  - Part B: `oa-set-rb-0001`;
+  - Part C: `oa-set-rc-0001`, texts `t1` and `t2`.
+- **Shown exactly as released.** No text, question or option is rewritten,
+  shortened, reordered or paraphrased. The sets stay unchanged as Practice
+  Test 1.
+- **Questions are referred to only by their IDs** (`oa-reading-000007`) in all
+  lesson data, scripts and reports.
+- **The exercises repository is read-only for the engine.** Any need (a
+  missing field, an error found, data required) is a GitHub issue in
+  `siamingit/oetacademy-exercises`, with a clear title, the IDs involved and
+  what is needed.
+- **Official OET sample texts never appear in an English lesson**: no text,
+  screenshot, paraphrase or book cover. The instructor's teaching carries over
+  and is applied to the new sets: his strategies, his explanations and the
+  order he teaches in.
+
+### 2. Vocabulary (Parts B and C only)
+
+- Vocabulary is a primary focus of the Part B and Part C lessons. The only
+  source is the exercises repository's word bank (`vocab/lexicon.json`, with
+  `vocab/occurrences/<set>.json` for where each word occurs; read
+  `docs/vocab/README.md` there first). The engine writes no word list and no
+  definition of its own.
+- Words are referred to by their `lx:` IDs. These are provisional
+  (oetacademy-web#51), so the engine keeps them in **one mapping file** (see
+  "How it is carried") that is easy to update.
+- For every word:
+  - it is pre-taught on a board before the text it belongs to;
+  - it is glossed again where it appears in the text, a question or an option;
+  - it is in a word-recap board at the end of that text.
+- **A gloss shows** the meaning, a synonym and the short example, all from the
+  word bank, and a background-free image made by this engine with Gemini (ADR
+  015's style). An abstract word gets a small illustrative scene, extending ADR
+  015's "concrete words only" for this vocabulary layer. Images are the
+  engine's own assets, keyed by `lx:` ID.
+- **Where the word bank lacks** a meaning, a synonym or an example, the engine
+  writes none: it opens an issue in the exercises repository and lists it in
+  its report. Checked 2026-10-05: all 112 entries that `oa-set-rb-0001` and
+  `oa-set-rc-0001` use have all three, and an audio file.
+- **Pronunciation audio.** `docs/vocab/README.md` describes the word-bank
+  audio as pronunciation audio (Cartesia `sonic-3.6`, voice Imogen, speed
+  1.0, one MP3 per spoken headword), so it is used for that. How it is played
+  in a lesson is settled when Part B is built, and reported then.
+- **Glossed words are recorded in the course index**, with their `lx:` IDs
+  and the lesson and section that teach them.
+- **Part A has no vocabulary layer.** No gloss is added to the Part A set's
+  texts or questions. The word table the instructor taught in his Part A
+  session stays as part of his teaching. The general gloss rule
+  (docs/00-PRODUCT.md §3) applies only to the lesson's own teaching boards and
+  narration.
+
+### 3. Visual design
+
+- **Richer than the source decks**: diagrams, timelines, realistic document
+  mock-ups (memo, email, policy, guideline, table layouts) and annotated
+  highlights. Every graphic must help understanding; none is decoration.
+- **Paraphrase bridge.** When a question is solved, the wording in the text and
+  the wording in the correct answer take one shared colour. Each wrong option
+  is ruled out visibly, with a short reason label.
+- **Keyword matching.** A question's keywords and the matching words in the
+  text are highlighted in the same colour.
+- **Board layout by part:**
+  - Part C (long texts): one paragraph and its question per board, plus a
+    whole-text map board that shows which paragraph is active;
+  - Part B: the full extract and its question on one board;
+  - Part A: each of the four texts as a realistic document, with the skimming
+    and scanning paths shown visually.
+- The existing rules still apply: a table whole on one board with the
+  spotlight (ADR 007), the board style and word-class colours (ADR 008), one
+  relevant picture per board (ADR 021), no references to left or right or to
+  the picture (design system §8c, ADR 015), initialisms written "C-O-P-D" in
+  the narration (ADR 016).
+
+### 4. Every Reading lesson
+
+- **The first lesson of the Reading course** (reading-01-overview) welcomes the
+  learner to the course. It explains why reading matters for healthcare
+  professionals (guidelines, policies, notes and emails at work) and for OET.
+  It gives no course map, no lesson count and no list of lessons (ADR 014
+  amendment, applied to the Reading course). Every other Reading lesson opens
+  warmly, links on and does not welcome the learner to the course again.
+- **Exam facts supplied by the maintainer** (2026-10-05), taught as the correct
+  version without mentioning the source's error:
+  - OET has no "B+" grade: the grades are A, B, C+, C, D and E, and the target
+    is Grade B, 350;
+  - about 30 of 42 correct answers usually corresponds to Grade B, but grade
+    boundaries vary slightly between test sessions; 15 of 20 is a guide for
+    Part A within that target;
+  - Reading lasts 60 minutes. Part A has 15 minutes, timed separately, and
+    Parts B and C share 45 minutes;
+  - Part A has 4 short texts and 20 questions: matching, sentence completion
+    and short answer;
+  - Part B has 6 short workplace texts of 100-150 words, with one 3-option
+    question each;
+  - Part C has 2 long texts of about 800 words, with 16 questions of 4 options;
+  - every question carries one mark.
+- **Paper-only advice** (a pen, underlining, crossing out instead of erasing)
+  is presented as advice for the paper test. No on-screen tool of the computer
+  test is claimed unless it is verified on oet.com, and the verification is
+  reported.
+
+## How it is carried
+
+Chosen by the agent under the maintainer's request.
+
+- **The set in the lesson.** A script reads the set from the local release
+  copy, checks every text's and item's `content_hash` against the release, and
+  writes `<lesson>/analysis/practice_set.json`: the release id, the set, its
+  texts and items as released, and the hashes. It is never in git. The screens
+  stage of a section that teaches the set is given the texts and items by ID.
+- **Blocks built by code** (bundle format 1.13, docs/04-LESSON-BUNDLE.md; the
+  maintainer approved building it on 2026-10-05, with a before-and-after proof
+  on every built lesson):
+  - a **document**: the screens model writes a `table` block whose label is a
+    stimulus ID and nothing else; code (`practice_set.py`,
+    `write_screens.expand_practice`) replaces it with the text as a core table
+    of one column carrying `doc`: one row per part (a heading, a paragraph, a
+    list item, a row of a table inside the text), each the released line with
+    only its list marker taken off, which the stylesheet draws. So every table
+    board rule applies to it (ADR 007: the spotlight, zoom, marks in a row), and
+    the skimming path is the spotlight walking the parts. It is always the
+    fixed layer of a board of its own, drawn as a page with a type tag (Table,
+    Guideline, Protocol, Notes; Email, Memo, Policy, Extract for Parts B and C).
+  - a **question**: a `plain` block whose label is an item ID; code writes its
+    number and its wording as released and the `question` field. It opens its
+    board and stays (role slide, pinned).
+  - **answers in the exact form**: an answer row the model writes for an item
+    is replaced by code with the release's accepted form: a sentence to
+    complete shows the released sentence with its gap filled, a short answer
+    "Answer: " and the form, a matching item the text's label. A reason a wrong
+    option is ruled out comes from the release's own feedback where it has one.
+  - Part C's whole-text **map** is built with Part C.
+- **Keyword pairs**: three mark types, `match1`, `match2`, `match3`, drawn as a
+  highlight in sky blue `#0688F9`, violet `#A860FB` or yellow `#F9E806` at 55%
+  over the text, put on a question's (or answer's) words and on the text's words
+  that match them. A pair shares one colour, which means only "these words
+  correspond". Chosen by measured difference (CIEDE2000) as ADR 008 chose its
+  colours: 25.3 or more between any two, 26 or more from red and green and their
+  tints; the yellow is 14.9 from the amber highlight, so on a question board the
+  narration uses pairs, never the amber highlight. Reading lessons only (the
+  narration audit fails them elsewhere).
+- **The instructor's method from off-deck teaching**: where the instructor
+  teaches on material that is not the deck (Part A: a whole practice set solved
+  on a course website, 36:15-80:13), the understanding stage reads it as part
+  of the page it belongs to (`sections.json` `page_spans[page].also`,
+  `build_sections.py --page-also`; maintainer, 2026-10-05), so the method
+  carries over and is applied to the product's own set.
+- **Nothing of the excluded material reaches a lesson**: each lesson lists the
+  distinctive terms of what it may not use (`analysis/forbidden_source_terms.json`);
+  `check_source_terms.py` fails on any of them in what a learner reads or
+  hears, and the longer terms are also forbidden phrases in the page ledgers.
+- **The word-ID mapping file** lives with the course index, outside the
+  repository: `<library>/course/vocab-ids.json`. Every `lx:` ID the engine
+  writes is read from it. When oetacademy-web#51 changes the IDs, the file is
+  updated and the affected lessons are rebuilt from it with no model call.
+- **The lesson type** `reading` (a lesson id beginning `reading`) adds a reading
+  rule module to the screens, narration and QA prompts, as
+  `vocabulary_rule.py` does for vocabulary lessons (ADR 019). It carries the
+  rules above, including no gloss inside the Part A set and never an official
+  sample text. The first-lesson introduction rule (ADR 014 amendment) takes its
+  reasons from the lesson's type, not always from grammar.
+
+## Consequences
+
+- The Overview lesson needs nothing new. Its timeline, score converter, skills
+  map and success path are drawn with existing blocks (timeline, change card,
+  table).
+- The Part A lesson needs bundle 1.13 and its renderer rules. Lessons built
+  before it keep their format, and their screens must re-render
+  byte-identical with the new code, checked before the change is used.
+- The lessons show every answer of `oa-set-ra-0001`, `oa-set-rb-0001` and
+  `oa-set-rc-0001`, which are also Practice Test 1. The release says keys and
+  the vocabulary layer's glosses are shown only after the learner submits.
+  Whether a learner must submit Practice Test 1 before watching these lessons
+  is the website's decision. This ADR records the tension; it does not settle
+  it.
+- Set content is in lesson folders and bundles only, never in git. Reports and
+  logs use IDs.
+- To reverse a carrying decision: drop the reading rule module and the 1.13
+  blocks and record a new ADR. The rules themselves are the maintainer's.
+
+## Amendment, 2026-10-06: the review of Reading lessons 1 and 2
+
+Added at the maintainer's request in the review of reading-01-overview and
+reading-02-part-a ("Add this to ADR 026 as a rule"; "Record this distinction
+in ADR 026"). The rules above stand; these are added to them.
+
+- **No mock test first** (maintainer's rule). A Reading lesson never advises
+  the learner to take a mock test, or any full practice test, before
+  studying, even where the instructor did. Carried by the reading rule module
+  (screens, narration and QA prompts); the Overview lesson's advice was taken
+  out.
+- **Glosses in Parts B and C** (maintainer's distinction). The word bank's
+  rule that glosses are shown only after the learner submits applies to the
+  exercise player on the website, not to lessons. Lessons pre-teach and gloss
+  the words as §2 says. This settles the glosses half of the tension recorded
+  under Consequences; whether a learner must submit Practice Test 1 before
+  seeing its answers in a lesson is still the website's decision.
+- **Part C method** (maintainer's teaching point, for the Overview and the
+  Part C lesson). Part C questions follow the order of the text. The learner
+  works paragraph by paragraph: reads the question, then the paragraph it
+  refers to, then answers. The Part C lesson teaches this method in full;
+  "read the whole text first" is not taught.
+- **Part A time split** (maintainer's fact). In the order of the set and of the
+  test: skim the four texts 3 minutes, matching questions 2, short answers 5,
+  sentence completion 5; 15 minutes in all.
+- **Skimming is highlighted** (maintainer, Part A: "use yellow highlighting,
+  as the instructor does, instead of underlining and circling"). On a skimming
+  board the narration marks the skimming path with the `highlight` mark, never
+  `underline` or `circle`. Applying it to every Reading lesson's skimming
+  boards, through the reading rule module, is the agent's choice under that
+  request. The mark is the design system's one highlight, amber `#FAC775`
+  (docs/02-DESIGN-SYSTEM.md §8); a truer yellow would be a change to the design
+  system for every lesson, and would sit close to the yellow keyword pair
+  `match3`.
+- **Kept as built** (maintainer agreed): the two exam claims the agent could
+  not verify stay out of the lessons (that markers accept other wordings, and
+  that underlining on the answer booklet is not allowed), and the Part A
+  lesson keeps "many students answer 17 or 18 of the 20 correctly" beside the
+  guide of 15 of 20.

@@ -373,10 +373,11 @@ def stage_sections(L, a):
 STAGE_CODE = {
     "understanding": ["extract_understanding.py", "build_sections.py", "llm.py", "run_batch_stage.py"],
     "screens": ["write_screens.py", "build_sections.py", "llm.py", "run_batch_stage.py",
-                "vocabulary_rule.py", "length_budget.py"],
+                "vocabulary_rule.py", "length_budget.py", "reading_rule.py", "practice_set.py"],
     "narration": ["write_narration.py", "write_screens.py", "llm.py", "run_batch_stage.py",
-                  "vocabulary_rule.py", "length_budget.py"],
-    "qa1": ["qa_narration.py", "write_narration.py", "run_batch_stage.py", "vocabulary_rule.py"],
+                  "vocabulary_rule.py", "length_budget.py", "reading_rule.py", "practice_set.py"],
+    "qa1": ["qa_narration.py", "write_narration.py", "run_batch_stage.py", "vocabulary_rule.py",
+            "reading_rule.py"],
 }
 
 

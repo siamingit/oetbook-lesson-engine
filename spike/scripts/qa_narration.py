@@ -353,8 +353,11 @@ def prepare(lesson: Path, pages: list[int], n_pass: int = 1, states: list[str] |
     import vocabulary_rule
     if vocabulary_rule.is_vocabulary(lesson):
         text = vocabulary_rule.QA + "\n\n" + text
+    import reading_rule                        # ADR 026
+    if reading_rule.is_reading(lesson):
+        text = reading_rule.QA + "\n\n" + text
     if only:
-        text = ("ONLY SOME STATES ARE UNDER REVIEW: the ones below were just rewritten. "
+        text =("ONLY SOME STATES ARE UNDER REVIEW: the ones below were just rewritten. "
                 "Judge them; earlier and later states are not shown and are not "
                 "missing content.\n\n" + text)
     return {"data": data, "text": text, "label": name or f"pass{n_pass}", "n_pass": n_pass,

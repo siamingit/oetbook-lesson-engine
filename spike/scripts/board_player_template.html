@@ -133,6 +133,10 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
 /* above everything on the board, side notes (z-index 3) included */
 #marks > div { position: absolute; box-sizing: border-box; }
 #marks .m-highlight { background: rgba(250, 199, 117, .6); mix-blend-mode: multiply; border-radius: .3cqh; }
+/* keyword pairs, one colour a pair (ADR 026, bundle 1.13): drawn at 55% like a highlight */
+#marks .m-match1 { background: rgba(6, 136, 249, .55); mix-blend-mode: multiply; border-radius: .3cqh; }
+#marks .m-match2 { background: rgba(168, 96, 251, .55); mix-blend-mode: multiply; border-radius: .3cqh; }
+#marks .m-match3 { background: rgba(249, 232, 6, .55); mix-blend-mode: multiply; border-radius: .3cqh; }
 #marks .m-line { background: #185FA5; border-radius: 1px; }
 #marks .m-strike { background: #E24B4A; border-radius: 1px; }
 #marks .m-circle { border: max(1px, .28cqh) solid #185FA5; border-radius: 999px; }
@@ -690,6 +694,7 @@ const marksEl = document.getElementById("marks");
 function markBoxes(type, r, t) {
   const h = r.height, em = h / 1.2;
   if (type === "highlight") return [{ cls: "m-highlight", x: r.left - .08 * em, y: r.top, w: r.width + .16 * em, h }];
+  if (/^match[123]$/.test(type)) return [{ cls: "m-" + type, x: r.left - .08 * em, y: r.top, w: r.width + .16 * em, h }];
   if (type === "underline") return [{ cls: "m-line", x: r.left, y: r.bottom - .06 * h, w: r.width, h: t }];
   if (type === "strike") return [{ cls: "m-strike", x: r.left - .04 * em, y: r.top + .55 * h - t / 2, w: r.width + .08 * em, h: t }];
   if (type === "circle") return [{ cls: "m-circle", x: r.left - .22 * em, y: r.top - .06 * h, w: r.width + .44 * em, h: h * 1.12 }];
@@ -927,7 +932,9 @@ function offsetIn(el, root) {
 // table's text smaller or clears earlier notes; nothing is drawn over text.
 function placeBeside(bd, s) {
   const tableEl = bd.table && blockEls.get(bd.table);
-  if (!tableEl || !s) return [];
+  if (!tableEl || (!s && !Object.keys(bd.pinned || {}).length)) return [];
+  // between two states only the board's pinned side notes are shown
+  s = s || { working: [] };
   const W = camEl.offsetWidth, gap = frame.offsetHeight * 0.012;
   const placed = [];
   const tb = offsetIn(tableEl, camEl);
@@ -952,10 +959,21 @@ function placeBeside(bd, s) {
     el.style.top = top + "px";
     if (el.classList.contains("on") && !el.classList.contains("cleared")) right = tb.x + tb.w - el.offsetWidth - gap;
   }
-  for (const id of s.working) {
+  // a side note pinned in an earlier state of the board (a practice-set
+  // question, ADR 026) stays first under the table; this state's notes follow it
+  const pinnedFirst = Object.entries(bd.pinned || {}).sort((a, b) => a[1] - b[1]).map(p => p[0])
+    .filter(id => !s.working.includes(id) && blocks[id] && blocks[id].beside);
+  // a pinned note keeps one width for the whole board, the room left beside the
+  // board's picture, so its words never move when the picture goes (§8a)
+  const picId = bd.states.flatMap(st => st.working).find(id => blocks[id] && blocks[id].type === "picture");
+  // its declared size (rule 27), not its measured box, which is 0 once erased
+  const picW = picId ? frame.offsetHeight * (blocks[picId].size || 20) / 100 : 0;
+  const pinnedRight = picId ? tb.x + tb.w - picW - gap : tb.x + tb.w;
+  for (const id of pinnedFirst.concat(s.working)) {
     const el = blockEls.get(id), b = blocks[id];
     if (!el || !b.beside || b.type === "picture") continue;
-    el.style.maxWidth = Math.max(0, right - tb.x) + "px";
+    const r = bd.pinned && id in bd.pinned ? pinnedRight : right;
+    el.style.maxWidth = Math.max(0, r - tb.x) + "px";
     el.style.left = Math.max(0, Math.min(tb.x, W - el.offsetWidth)) + "px";
     el.style.top = top + "px";
     // only the notes shown now take room: an erased or cleared note leaves it

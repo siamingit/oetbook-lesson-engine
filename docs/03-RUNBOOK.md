@@ -244,6 +244,45 @@ marked **step** (ADR 005). Costs are Grammar 1's.
 | | **GATE final** | the maintainer plays the finished lesson and judges by ear every term the terms check did not hear as written; a new lexicon entry is approved with `lexicon.py --approve TERM --by NAME` | | | |
 | 19 | Backup | after each lesson's final gate, with the external drive labelled `OETBACKUP` connected: `powershell -File spike\scripts\backup_oet.ps1 -Copy`, then `-Verify` (0 differences, SHA-256 of every copied file), then **Safely Remove** the drive (exFAT has no journal). The only backup destination; lesson content is not in git. Credentials are never copied: their paths are listed in the local, gitignored `spike/out/backup-exclude.txt`, without which the script refuses to run. The runner reminds at every stop when the last verified backup is more than 14 days old | `C:\OET`, `spike/out/` voice_samples, initialism-probe, lexicon-review | `<drive>:\Backups\OET\OET`, `...\repo-evidence\`, `...\logs\` | free |
 
+### Reading lessons (ADR 026)
+
+A lesson whose id begins `reading` is built by the same procedure. The reading
+rule module (`reading_rule.py`) is added to the screens, narration and QA
+prompts by the stages themselves. What the agent does by hand, in this order:
+
+| When | Command | What it does |
+|---|---|---|
+| At the source gate, where the instructor teaches off the deck | `build_sections.py <L> --page-span PAGE FROM_S TO_S`, then `--page-also PAGE FROM_S TO_S "WHAT"` (seconds of the recording) | the understanding stage also reads that range of the recording as part of the page, so his method carries over (Part A: his walk-through of a whole practice set) |
+| Before understanding | the agent writes `analysis/forbidden_source_terms.json` (`{"terms", "sources"}`): the distinctive terms of material the lesson may not use (official OET samples, the instructor's own practice texts); the longer ones also go into the page ledgers as forbidden phrases | the screens and narration audits stop a draft that uses one |
+| Before screens, for a section that teaches the practice set | `practice_set.py <L> --set <set id>`, then `--teach-pages N,M`; `--check` re-checks it | copies the set from the local release (`%LOCALAPPDATA%\oetacademy-exercises\releases\pilot-v1`) into `analysis/practice_set.json`, every text and item checked against its `content_hash`; never in git |
+| After screens and narration, and at every gate | `check_source_terms.py <L>` | fails on any forbidden term in what a learner reads or hears |
+| Not yet built | `<library>/course/vocab-ids.json` | the `lx:` word-ID map for the Part B and Part C vocabulary layer |
+
+The bundle of a Reading lesson is format 1.13 (docs/04-LESSON-BUNDLE.md):
+documents, questions and the keyword pairs `match1` to `match3`
+(docs/02-DESIGN-SYSTEM.md §8). Paid stages refuse uncommitted code in the
+files they use, `reading_rule.py` and `practice_set.py` included.
+
+### Changing shared code: prove the built lessons do not move
+
+Maintainer, 2026-10-05: before a change to shared pipeline or renderer code is
+used, every built lesson is rendered before and after it and compared
+automatically; if any lesson differs, the agent stops and tells the maintainer.
+
+```
+.venv/Scripts/python spike/scripts/render_compare.py backup
+.venv/Scripts/python spike/scripts/render_compare.py snapshot before
+(change the code)
+.venv/Scripts/python spike/scripts/render_compare.py snapshot after
+.venv/Scripts/python spike/scripts/render_compare.py compare before after
+.venv/Scripts/python spike/scripts/render_compare.py restore
+```
+
+Free; about half an hour for eleven lessons. It compares the data files byte
+for byte and both players moment by moment in headless Edge. Output in
+`spike/out/render-compare/` (gitignored). `restore` puts back the files the
+renders overwrote.
+
 ---
 
 ## Cost controls
@@ -420,3 +459,18 @@ exactly the clips that changed.
 - **A hidden or background run dies silently.** Set `PYTHONIOENCODING=utf-8`:
   a script printing Persian to a non-UTF-8 pipe dies after its paid call; its
   saved response is rendered for free with `--render`.
+
+## Known items
+
+- **Older files that a re-render would rewrite** (found 2026-10-05 by
+  `render_compare.py`; maintainer, 2026-10-06: no action now). Rendering the
+  built lessons again with the code of that day, before any change, gave
+  different bytes in 85 files from those on disk: the silent preview's five
+  data files (`bundle.json`, `text.json`, `blocks.css`, `timeline.json`,
+  `audio_index.json`) of Grammar 1 to 6 (30 files), and 55 `screens.json` and
+  `narration.json` files of Grammar 7 and Vocabulary 2 and 3. Older code wrote
+  them; the re-render adds fields added since (a section's `category`, for
+  example) or rewrites the silent preview in the current format. The finished
+  lesson players of all eleven lessons were identical. The backup copies are
+  in `spike/out/render-compare/backup/`. They change the next time those
+  lessons are rendered, which is expected and not a regression.

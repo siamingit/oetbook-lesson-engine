@@ -83,3 +83,11 @@ any cap.
   paths use it.
 - To reverse: set the stage's `EFFORT` back to `"high"` (or `MAX_TOKENS` back
   to 32,000) and record a new ADR.
+
+## Amendment, 2026-10-06: understanding stays at medium
+
+Recorded at the maintainer's request in the review of Reading lessons 1 and 2:
+"Understanding stays at medium permanently." The trial above is over. The
+understanding stage (`extract_understanding.py`) runs at effort `medium` for
+every lesson, as screens does. To reverse: set its `EFFORT` back to `"high"`
+and record a new ADR.
