@@ -12,7 +12,8 @@ at phone-landscape or laptop width.
 
 Positions are taken inside the board with the camera's transform undone (it is
 a translate and a scale about the board's corner), so the camera, which zooms a
-table board by design, is not counted as a move.
+table board by design, is not counted as a move. The map of the four texts
+(bundle 1.14) is left out for the same reason: its own lens zooms its words.
 A word is the first character of each whitespace-separated token of the
 block's text, found through the text nodes however marks or typing split them.
 
@@ -103,6 +104,9 @@ HARNESS = r"""
         // waiting for its reveal, cleared, or pinned in a later state
         if (!el.isConnected || getComputedStyle(el).display === "none") continue;
         if (!(el.dataset.layer === "fixed" || el.classList.contains("on"))) continue;
+        // the map of the texts moves its words by design: its lens zooms
+        // (bundle 1.14; ADR 026, Part A question method), as the camera does
+        if (blocks[id] && blocks[id].map) continue;
         for (const [n, word, x, y] of tokens(el)) {
           const key = id + "|" + n;
           const was = seen.get(key);

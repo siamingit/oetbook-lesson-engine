@@ -4,7 +4,7 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.13 for a Reading lesson, 1.12 for every other lesson. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.14 for a Reading lesson with a map of its texts, 1.13 for another Reading lesson, 1.12 for every other lesson. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
 2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
 table boards, on 2026-09-25 (docs/adr/007-table-boards.md); 1.3, the board style
@@ -41,6 +41,7 @@ A change to it is a new format version (§3), recorded in a new ADR.
 | 1.11 | 2026-09-27 | a gloss's generated image: the block's `image` (`file`, relative to the bundle's folder; `alt`); its `icon` is the image brief; rule 26 (ADR 015) |
 | 1.12 | 2026-09-30 | the block type `picture` (`icon` its brief, `image`), a board's picture shown from its state's start (rule 27); side notes under the table, never over it, and the view panned to them (rules 12, 13 changed; ADR 020, ADR 021) |
 | 1.13 | 2026-10-05 | Reading lessons only: a core `table` block's `doc` (a practice-set text drawn as a document) and a `plain` block's `question` (a practice-set question), both null on every other block of the lesson; the mark cue types `match1`, `match2`, `match3` (keyword pairs); rules 29 and 30; `blocks.css` adds the documents' and questions' rules (ADR 026) |
+| 1.14 | 2026-10-06 | a lesson with a map of its texts only (ADR 026, the Part A question method): a core `table` block's `map` (the four texts as one table, each starting at its own row), null on every other block; on a map board, a state's `doc` and `zoom`; rule 31; `blocks.css` adds the map's rules. Additive: a 1.13 renderer that ignores `map`, `doc` and `zoom` draws a map as a table of every part |
 
 ---
 
@@ -169,7 +170,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.12"`; `"1.13"` for a Reading lesson |
+| `format_version` | string | `"1.12"`; `"1.13"` for a Reading lesson; `"1.14"` for a lesson with a map of its texts |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -248,6 +249,7 @@ A block is one thing on a board. Each carries its data and its rendered `html`.
 | `beside` | 1.2. a side note on a table board: `{block, row}`, the table and the row it is about (from 0), or row null for a note about the whole table; otherwise null. 1.12: drawn under the table, never over it; the row is shown by the spotlight (`focus`), not by where the note sits (rule 12). A board's picture on a table board carries it with row null |
 | `doc` | 1.13, Reading lessons. A core `table` that is a practice-set text: `{stimulus, label, title, text_type, parts}`. `stimulus` is its id in the exercises release, `label` ("Text B") and `title` as released, `text_type` (`table`, `guideline`, `protocol`, `notes`; Parts B and C add `email`, `memo`, `policy`, `extract`), and `parts` one `{kind, mark}` per row: `heading`, `para`, `bullet`, `num` (`mark` its number), `thead` and `trow` (a row of a table inside the text, its cells joined by " \| " in the row's text). The table has one column; its `header` is the label and title; each row's text is the released line, its list marker drawn by the stylesheet (rule 29). Null on any other block |
 | `question` | 1.13, Reading lessons. A `plain` block that is a practice-set question: `{item, kind, max_words}`, `item` its id in the exercises release (`oa-reading-000014`), `kind` `matching`, `short-answer` or `sentence-completion`; the block's `text` is the question as released (a matching item's lead-in and stem), `exercise_item` its number. Null on any other block |
+| `map` | 1.14. A core `table` that is a map of a practice set's texts (ADR 026, Part A question method): `{docs}`, one entry per text in order, `{stimulus, label, title, text_type, parts, header, first, count}`: the text as `doc` gives it (rule 29), its header line, and the table's rows it holds, `first` (from 0) and `count`. The table's `rows` are every text's parts in that order, each the released line; its `header` is a label for the whole. Null on any other block |
 | `size` | 1.12. `picture`: the side of its square box in cqh (hundredths of the frame's height), set where the fit made it smaller so the board fits, never below 10; null for 20 (rule 27) |
 | `items` | `timeline`: its diagram parts in order (below). 1.7, `clauses`: its parts in order, `{kind, text, piece, part}`: `kind` `dependent` or `independent` (a piece, `text` its words), `glue` (the joining word; `piece` the piece it is in, from 1, or null for a bridge between two independent pieces), `subject` or `verb` (a label over `text` in `piece`), or `join`; 1.9: `defining` or `nondefining` (a relative clause set into the independent `piece`, `text` its words without its commas), `remove` (the removal test: `text` the sentence without the clause, `keeps` true when it still works), `link` or `dangling` (`text` a participle in the dependent `piece`, `from` the part number of the main clause's `subject`); the part id is `<block id>.<part>` |
 | `tags` | tense tags: `[{text, family, label}]`; `label` is what the chip says ("up to now") |
@@ -308,6 +310,8 @@ two things must hold, because cues and the reading pointer depend on them:
 | `until` | its working layer and marks disappear: the erase, or the board's `until` |
 | `erase` | `{time, blocks}` when the state ends in an erase, otherwise null |
 | `row` | 1.2. On a table board, the row this state teaches (from 0), or null for the whole table; null on other boards |
+| `doc` | 1.14. On a map board (its `table` has `map`): the text in view, its index in `map.docs`, or null for all four. Absent on other boards |
+| `zoom` | 1.14. On a map board: null (the four texts small; with `doc`, the others dimmed), `"doc"` (that text alone, at a document's size) or `"row"` (the state's `row` of that text set larger, in the middle of the map's frame). Absent on other boards |
 | `clears` | 1.8. `[{time, blocks}]` in time order: from `time`, the working `blocks` are cleared (not drawn) for the rest of the state, so the note revealed at `time` fits the board (ADR 011). Never a pinned block. Empty when nothing is cleared |
 | `reveal` | `{id: time}` for every working block and every part of a working diagram |
 | `utterances` | what is said in this state, in order |
@@ -496,6 +500,18 @@ These are the only rules. Every time and target they use is in the bundle.
     respectively, at 55% over the text. Marks of one type on one board are one
     pair (a question's words and the text's words that match them), and mean
     only that those words correspond.
+
+31. **A map of the texts** (1.14): a core table with `map` is drawn as each
+    text a small page (rule 29), in a grid of two by two, inside a frame of
+    its own; the board's other blocks are a column beside it, never under or
+    over it. The state's `doc` dims every other text; `zoom` "doc" shows that
+    text alone at a document's size, `zoom` "row" sets the state's `row`
+    larger and brings it to the middle of the map's frame, every other row
+    dimmed (the spotlight, rule 11). The map's words are never shrunk to the
+    table text floor and need not be readable while all four show; the zoom
+    is where they are read. Marks and the pointer inside the map are drawn
+    only where the map's frame shows them. The camera does not move on a map
+    board (rule 13 does not apply).
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and

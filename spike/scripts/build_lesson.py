@@ -683,6 +683,10 @@ def stage_player(L, a):
     run(L, [str(HERE / "check_layout.py"), str(L), "--dir", d], "layout check")
     run(L, [str(HERE / "check_overflow.py"), str(L), "--dir", d], "overflow check")
     run(L, [str(HERE / "check_overlap.py"), str(L), "--dir", d], "overlap check")
+    if L.name.split("-")[0] == "reading":
+        # ADR 026 (maintainer, 2026-10-06): every phrase of a text read aloud
+        # has its mark, timed to the voice's own words
+        run(L, [str(HERE / "check_doc_marks.py"), str(L)], "doc marks check")
     # The last step of every build (ADR 006): the course index, rebuilt whole,
     # outside the repository (docs/05-COURSE-INDEX.md). Again on every run, so
     # it also records the final gate once approved.

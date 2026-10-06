@@ -256,6 +256,7 @@ prompts by the stages themselves. What the agent does by hand, in this order:
 | Before understanding | the agent writes `analysis/forbidden_source_terms.json` (`{"terms", "sources"}`): the distinctive terms of material the lesson may not use (official OET samples, the instructor's own practice texts); the longer ones also go into the page ledgers as forbidden phrases | the screens and narration audits stop a draft that uses one |
 | Before screens, for a section that teaches the practice set | `practice_set.py <L> --set <set id>`, then `--teach-pages N,M`; `--check` re-checks it | copies the set from the local release (`%LOCALAPPDATA%\oetacademy-exercises\releases\pilot-v1`) into `analysis/practice_set.json`, every text and item checked against its `content_hash`; never in git |
 | After screens and narration, and at every gate | `check_source_terms.py <L>` | fails on any forbidden term in what a learner reads or hears |
+| Narration audit, and the runner's player step | `check_doc_marks.py <L>` (`--narration` before synthesis) | fails on any phrase of a practice-set text read aloud with no highlight or keyword pair timed to it (ADR 026, 2026-10-06); the narration audit applies the same rule to every draft |
 | Not yet built | `<library>/course/vocab-ids.json` | the `lx:` word-ID map for the Part B and Part C vocabulary layer |
 
 The bundle of a Reading lesson is format 1.13 (docs/04-LESSON-BUNDLE.md):
