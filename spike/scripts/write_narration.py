@@ -1570,8 +1570,14 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                 # never-on-screen strings, Persian, register, provenance tracing
                 said = spoken(text)
                 low = said.lower()
+                own = low
+                for bid in list(bd["fixed"]) + list(s["working"]) + list(pinned_shown):
+                    rb = blocks.get(bid) or {}
+                    if rb.get("doc") or rb.get("question") or rb.get("vocab") or rb.get("vocab_table"):
+                        for t in block_texts(rb):
+                            own = own.replace(t.lower().rstrip("."), " ")
                 for p in forbids:
-                    if p.lower() in low:
+                    if p.lower() in (low if p in data["forbids"] else own):
                         fail(uid, f"forbidden phrase {p!r} in {said!r}")
                 if INTERFACE_WORD.search(said):
                     fail(uid, f"interface word in {said!r}; say 'the coloured label'")

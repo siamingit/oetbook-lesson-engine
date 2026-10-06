@@ -235,8 +235,9 @@ block.
 option, A, B and C, word for word, naming its letter, and `underline` its keywords \
 in the question block, as the instructor underlines them. Reveal the glosses of \
 the option and question words as you meet them (gloss moments).
-     3. Try it first, still COVERED: invite the learner to pause the lesson and \
-choose an option, then end the state with a `pause` of 4 seconds.
+     3. Try it first, still COVERED: invite the learner to stop and choose an \
+option before going on ("Try it first. Which option do you think is right?"; \
+never the words "pause the"), then end the state with a `pause` of 4 seconds.
      4. The text appears (the first uncovered state): say so, and read the parts \
 you need, each phrase marked.
      5. Keyword pairs: mark a keyword of the question or of an option and the \

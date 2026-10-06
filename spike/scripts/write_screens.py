@@ -2646,9 +2646,11 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
     # 2. never-on-screen strings, Persian script, register claims
     forbids = FIXED_FORBIDS + data["forbids"]
     for b in blocks.values():
+        as_released = bool(b.get("doc") or b.get("map") or b.get("question") or b.get("vocab")
+                           or b.get("vocab_table"))
         for text in block_texts(b):
             low = text.lower()
-            for p in forbids:
+            for p in (data["forbids"] if as_released else forbids):
                 if p.lower() in low:
                     fail(b["id"], f"forbidden phrase {p!r} in {text!r}")
             if NON_LATIN.search(text):
