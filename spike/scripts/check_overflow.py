@@ -113,6 +113,9 @@ HARNESS = r"""
         for (const lab of el.querySelectorAll(LABELS)) {
           const txt = lab.textContent.trim();
           if (!txt) continue;
+          // a practice-set text's header is its title as released (ADR 026), not a
+          // label the lesson writes: a code in it ("RC-12") stays as released
+          if (lab.closest(".doc")) continue;
           const tt = getComputedStyle(lab).textTransform;
           const w = tt === "uppercase" ? "(text-transform: uppercase)" : capsWord(txt);
           if (w && !seenCaps.has(id + "|" + txt)) {
