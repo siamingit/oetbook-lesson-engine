@@ -19,19 +19,15 @@ def clip(seconds: float) -> bytes:
 
 
 class VoiceByLessonType(unittest.TestCase):
-    def test_reading_and_listening_are_courtney(self):
-        for name in ("reading-02-part-a", "listening-01-overview"):
-            self.assertIs(voices.for_lesson(Path("C:/x") / name), voices.COURTNEY)
+    def test_every_lesson_is_rupert(self):
+        # ADR 027 amendment (2026-10-06): Reading and Listening too
+        for name in ("reading-02-part-a", "listening-01-overview", "grammar-04-articles",
+                     "vocabulary-01-word-forms"):
+            self.assertIs(voices.for_lesson(Path("C:/x") / name), voices.RUPERT)
 
-    def test_other_lessons_keep_rupert(self):
-        for name in ("grammar-04-articles", "vocabulary-01-word-forms"):
-            self.assertIs(voices.for_lesson(Path(name)), voices.RUPERT)
+    def test_rupert_as_approved(self):
         self.assertEqual(voices.RUPERT["speed"], 1.0)
         self.assertEqual(voices.RUPERT["sentence_pause_s"], 0.0)
-
-    def test_courtney_as_decided(self):
-        self.assertEqual(voices.COURTNEY["speed"], 0.6)
-        self.assertEqual(voices.COURTNEY["sentence_pause_s"], 0.30)
 
 
 class SentencePauses(unittest.TestCase):
