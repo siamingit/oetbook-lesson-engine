@@ -341,3 +341,42 @@ this method in ADR 026 as the Part A question method").
 - **Parts B and C.** The Part B lesson keeps one text per question board. The
   Part C lesson will consider the same pattern: the whole-text map, then a
   zoom to the paragraph.
+
+## Amendment, 2026-10-06: Reading lesson 2's word table; pens, pencils and highlighters
+
+Added at the maintainer's request in the review of reading-02-part-a.
+
+### Reading lesson 2's word table (an exception for this lesson only)
+
+- **The exception** (maintainer). In reading-02-part-a only, the instructor's
+  eight words are replaced by about ten words that the engine selects from the
+  texts of `oa-set-ra-0001`: words that are hard, or common and important in
+  healthcare reading, medical terms included, preferring words the learner
+  needs for the questions. The engine writes their meanings itself, one plain
+  English meaning a word, simple and accurate, reviewed by QA. The word bank
+  does not cover Part A; no issue is opened in the exercises repository.
+- **Taught the instructor's way**, at the same point of the lesson as his
+  table: his Word | Meaning table, a spotlight on each row as it is taught,
+  and for each word a short example quoted exactly from the set's text where
+  the word appears.
+- **The rule stays in force**: Part A has no vocabulary layer from the
+  exercises repository (§2). This exception is not a vocabulary layer and
+  does not apply to any other lesson.
+- **How it is carried.** The words, meanings and examples are in the lesson's
+  `analysis/word_table_2026-10-06.json` (not in git: the examples are set
+  text), and the deck's transcribed table keeps what the deck prints, with
+  `replaced` recording the table the board shows; the screens audit holds the
+  board to the replacement.
+
+### Pens, pencils and highlighters (verified on oet.com by the maintainer)
+
+- Reading and Listening Part A: a pen or a pencil may be used. The Part A
+  lesson keeps the instructor's pen advice.
+- Parts B and C: the answer is shaded with a 2B pencil, and on paper only a
+  shaded circle counts: no tick, cross or circling. For the Part B and Part C
+  lessons.
+- Mechanical pens and pencils, highlighters and correction fluid are not
+  allowed.
+- **No lesson may suggest using a highlighter in the paper test**, in words
+  or in a picture. The highlight on a board is only the lesson's display.
+  Carried by the reading rule (screens, narration and QA prompts).

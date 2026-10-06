@@ -143,6 +143,9 @@ def position_findings(said: str, u: dict, blocks: dict, state: dict, board: dict
     if all(b in tables for b in cued):
         cued += tables            # about the board's table: its columns and rows stay
     quoted = [q.span() for q in re.finditer(r"(?<![a-z])'[^']{1,60}'(?![a-z])", said, re.I)]
+    # a text quoted in double quotes is read from the board, whatever its words
+    # (a dose "of 5 mg or above", reading-02, 2026-10-06)
+    quoted += [q.span() for q in re.finditer(r'"[^"]{1,300}"|“[^”]{1,300}”', said)]
 
     def keeps(b: dict, side: bool) -> bool:
         if b["type"] == "table":
@@ -251,6 +254,23 @@ single line. Do not reproduce the source's wording, repetitions or filler.
 VOICE. First person, warm, direct, confident. Speak to the student as "you". \
 Plain classroom English at the level above. British English spelling and usage \
 ("recognise", "practise" as a verb, "whilst" never).
+
+DELIVERY: AN ENGAGED TEACHER, NEVER A SCRIPT READ ALOUD (maintainer, \
+2026-10-06). Speak like a teacher in front of a class who wants the student to \
+get it, with energy:
+  - Ask the student short questions, then answer them ("So which text is it? \
+Text D."): on most boards at least one.
+  - Signpost the steps, at most once a state: "Now, here's the trick.", "Look \
+at this.", "Watch what happens.", "Next,".
+  - Give the key point weight: say it plainly, then once more in other words, \
+or open it with "This is the key point:".
+  - Vary sentence length: mostly short sentences, a longer one where it \
+explains; never a run of sentences of the same length and shape.
+  - React to what you find, briefly ("There it is.", "Good.").
+This changes only HOW things are said. What is taught stays exactly as it is: \
+the facts, the steps and their order, the examples, every word read from a \
+board, and every rule above and below. Same A2-B1 words; no idioms; at most one \
+exclamation mark a board.
 
 NEVER refer to the source. Do not mention Persian, a translation, the original \
 recording, a video, a session, a class, an instructor, or "he". You are the \
@@ -504,6 +524,9 @@ This lesson has no categories: each note on the contents board is one section \
 of the lesson, by its title. Walk through the sections in the same way, \
 revealing each note as you name it.\
 """
+
+TASK_CHUNK = """THIS SECTION IS DRAFTED IN PARTS (part {n} of {of}), joined afterwards and audited as one. Write ONLY these boards, in the order given, each complete: {ids}. Every other board is written in another part and is not returned. The section's narration just before these boards ends: {before}
+Go on from there naturally: do not greet, introduce the section again or sum it up unless one of your boards is where that happens."""
 
 TASK_PARTIAL = """\
 Rewrite ONLY the states named above, as JSON matching the provided schema: one \
@@ -811,7 +834,7 @@ def current_states(out_dir: Path, ids: list[str]) -> list[dict]:
     return found
 
 
-def build_messages(data: dict, rewrite: dict | None = None) -> list[dict]:
+def build_messages(data: dict, rewrite: dict | None = None, chunk: dict | None = None) -> list[dict]:
     know = data["understanding"]
     beats = [{"id": b["id"], "learning_objective": b["learning_objective"],
               "teaching_point": b["teaching_point"]} for b in know["beats"]]
@@ -914,6 +937,11 @@ def build_messages(data: dict, rewrite: dict | None = None) -> list[dict]:
         if budget:
             content.append({"type": "text", "text": budget})
         content.append({"type": "text", "text": TASK})
+        if chunk:
+            # ADR 022 amendment (2026-10-06): a long section drafted in parts
+            content.append({"type": "text", "text": TASK_CHUNK.format(
+                n=chunk["n"], of=chunk["of"], ids=", ".join(chunk["ids"]),
+                before=chunk["before"] or "(this is the first part: the section starts here)")})
     for block in content:
         block["text"] = strip_bidi(block["text"])
     return [{"role": "user", "content": content}]
@@ -939,6 +967,73 @@ def with_ids(states: list[dict]) -> list[dict]:
         utts = [dict(u, id=f"{s['state']}.u{k}") for k, u in enumerate(s["utterances"], 1)]
         out.append({"board": s["board"], "state": s["state"], "utterances": utts})
     return out
+
+
+# ADR 022 amendment (maintainer, 2026-10-06): the output cap is not raised; a
+# section with more boards than this is drafted in parts, a call for each run
+# of boards, and the parts are joined into one reply, rendered and audited as
+# one. Each part is kept (raw_response.part-N.json, counted in the spend); the
+# joined reply carries no usage of its own, so nothing is counted twice.
+CHUNK_BOARDS = 10
+
+
+def chunk_plan(data: dict) -> list[list[str]]:
+    """The runs of boards drafted together, in order: one run for a section of
+    CHUNK_BOARDS boards or fewer, else runs of about equal size."""
+    import math
+    ids = [b["id"] for b in data["screens"]["boards"]]
+    if len(ids) <= CHUNK_BOARDS:
+        return [ids]
+    size = math.ceil(len(ids) / math.ceil(len(ids) / CHUNK_BOARDS))
+    return [ids[i:i + size] for i in range(0, len(ids), size)]
+
+
+def draft(lesson: Path, pages: list[int], data: dict) -> None:
+    """A full draft of a section's narration, in parts when it is long, written
+    to raw_response.json (the parts beside it)."""
+    import anthropic
+    out_dir = paths.narration_dir_for(lesson, pages)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    client = anthropic.Anthropic(api_key=api_key(), max_retries=5)
+    plan = chunk_plan(data)
+    if len(plan) == 1:
+        with client.messages.stream(**request_params(build_messages(data))) as stream:
+            response = stream.get_final_message()
+        refuse_if_truncated(response, MAX_TOKENS)
+        print("stop_reason:", response.stop_reason)
+        print("usage:", response.usage)
+        paths.keep_superseded(out_dir / "raw_response.json")  # a replaced reply is still counted
+        (out_dir / "raw_response.json").write_text(response.to_json(), encoding="utf-8")
+        return
+    parts, raws, before = [], [], ""
+    for n, ids in enumerate(plan, 1):
+        msgs = build_messages(data, chunk={"n": n, "of": len(plan), "ids": ids, "before": before})
+        with client.messages.stream(**request_params(msgs)) as stream:
+            response = stream.get_final_message()
+        refuse_if_truncated(response, MAX_TOKENS)
+        raw = json.loads(response.to_json())
+        out = json.loads([b.text for b in response.content if b.type == "text"][-1])
+        got = [b["board"] for b in out["boards"]]
+        if got != ids:
+            raise SystemExit(f"REFUSED: part {n} returned boards {got}, not {ids}; nothing was joined")
+        print(f"part {n} of {len(plan)}: boards {ids[0]}-{ids[-1]}, usage {response.usage}")
+        parts.append(out)
+        raws.append(raw)
+        last = [u["text_with_cues"] for st in out["boards"][-1]["states"] for u in st["utterances"]][-2:]
+        before = '"' + " ".join(re.sub(r"\{\{c\d+\}\}", "", t) for t in last) + '"'
+    for n, raw in enumerate(raws, 1):
+        paths.keep_superseded(out_dir / f"raw_response.part-{n}.json")
+        (out_dir / f"raw_response.part-{n}.json").write_text(json.dumps(raw, ensure_ascii=False), encoding="utf-8")
+    joined = {"boards": [b for p in parts for b in p["boards"]],
+              "unresolved": [x for p in parts for x in p.get("unresolved", [])]}
+    paths.keep_superseded(out_dir / "raw_response.json")
+    (out_dir / "raw_response.json").write_text(json.dumps({
+        "id": "joined:" + "+".join(r["id"] for r in raws), "type": "message", "role": "assistant",
+        "model": raws[0].get("model"), "stop_reason": "end_turn",
+        "content": [{"type": "text", "text": json.dumps(joined, ensure_ascii=False)}],
+        "usage": {}, "parts": [f"raw_response.part-{n}.json" for n in range(1, len(raws) + 1)],
+        "note": "joined from parts (ADR 022 amendment); the cost is in the parts"},
+        ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 def splice(out_dir: Path, partial: dict, ids: list[str]) -> None:
@@ -1959,6 +2054,10 @@ def main() -> None:
         print(f"\nmodel={MODEL}  max_tokens={MAX_TOKENS}  thinking=adaptive  effort=high")
         print("no API call made")
         return
+
+    if not rewrite:
+        draft(lesson, pages, data)                # in parts when long (ADR 022 amendment)
+        raise SystemExit(render(lesson, page, data))
 
     import anthropic
     client = anthropic.Anthropic(api_key=api_key())
