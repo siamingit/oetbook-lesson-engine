@@ -14,7 +14,7 @@ any file git tracks:
     text of the set (a matching item's "Text B", which says nothing).
 
 Words are compared as lower-case runs of letters and digits, whole words only,
-so "Peaked T-waves" matches "peaked T waves". It reports the file, the line
+so "Nil-by-mouth" matches "nil by mouth". It reports the file, the line
 and the item ID with the form's place, NEVER the answer itself, since the log
 of a public repository's CI is public. A form so generic that the repository
 needs it in its own words ("ECG") is exempted by item ID and form number in
