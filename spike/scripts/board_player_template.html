@@ -983,19 +983,25 @@ function applyLens(bd, s, jumped) {
 // (1.15: and inside a Part B text's lens frame)
 function lensClip(node) {
   const v = node && node.closest && (node.closest(".dmap-view") || node.closest(".lens-frame"));
-  return v ? v.getBoundingClientRect() : null;
+  if (!v) return null;
+  const r = v.getBoundingClientRect();
+  if (!v._win || !v.offsetHeight) return r;
+  // a Part B lens: only its window of whole lines, not the faded cue bands
+  const sc = r.height / v.offsetHeight;
+  return { left: r.left, right: r.right, top: r.top + v._win.top * sc, bottom: r.top + v._win.bottom * sc };
 }
 // 1.15: the lens of a Part B question board (ADR 026; maintainer, 2026-10-07).
 // The text keeps the room it takes unzoomed, as a frame of its own; while it is
 // uncovered and the spotlight has a row, the text is set at body size inside
 // that frame and the row being read is brought to its middle, the others
 // dimmed, so it is readable on a phone. Only the text's own words move.
-function applyDocLens(bd, s, focus, jumped) {
+function applyDocLens(bd, s, focus, jumped, t) {
   if (!bd || !bd.lens) return;
   const el = bd.table && blockEls.get(bd.table);
   const tbl = el && el.querySelector("table");
   if (!tbl) return;
-  const row = s && !s.veil && focus ? focus.row : null;
+  // the whole extract shows first, once, before the lens follows the reading
+  const row = s && !s.veil && focus && t >= (bd.lens_from || 0) ? focus.row : null;
   // the lens centres on the latest phrase marked in the text (the words being
   // read), else on the spotlight's row: a long paragraph does not fit the frame
   let mark = null;
@@ -1003,28 +1009,75 @@ function applyDocLens(bd, s, focus, jumped) {
     for (const m of drawnMarkList) for (const sp of m.spans) if (sp.isConnected && tbl.contains(sp)) mark = sp;
   const key = row + "|" + (mark ? drawnMarkList.findIndex(m => m.spans.includes(mark)) : -1)
               + "|" + camEl.offsetWidth + "x" + camEl.offsetHeight;
-  if (el._lens === key) return;
-  const moved = el._lens !== undefined;
-  el._lens = key;
+  // kept on the table: drawing the marks may rebuild it, and a new table is
+  // set again, never left unmoved under the last window
+  if (tbl._lens === key) return;
+  const moved = el._lensSeen === true;
+  tbl._lens = key; el._lensSeen = true;
   el.classList.remove("lensed");
   tbl.style.transform = "";
   el.style.height = "";
   el.classList.add("lens-frame");
   el.style.height = el.offsetHeight + "px";
+  el._win = null;
+  el.style.removeProperty("--lt"); el.style.removeProperty("--lb");
   for (const tr of tbl.querySelectorAll("tr.loupe")) tr.classList.remove("loupe");
   if (row === null) return;
   el.classList.add("lensed");
   const tr = (mark && mark.closest("tr[data-row]")) || tbl.querySelector('tbody tr[data-row="' + row + '"]');
+  delete el.dataset.lensTop; delete el.dataset.lensBottom;
   if (!tr) return;
   tr.classList.add("loupe");
-  const H = el.clientHeight;
-  let r = offsetIn(tr, el);
-  if (mark) {
-    const e = el.getBoundingClientRect(), m = mark.getBoundingClientRect();
-    const sc = e.height ? el.offsetHeight / e.height : 1;      // under the camera's scale
-    r = { y: (m.top - e.top) * sc, h: m.height * sc };
+  // the text's lines, in layout px from the frame's inner top edge, where the
+  // window is measured (the camera's scale undone); the table moves them all
+  const E = el.getBoundingClientRect(), sc = E.height ? el.offsetHeight / E.height : 1;
+  const T = { top: E.top + el.clientTop / sc };
+  const rects = [];
+  const walker = document.createTreeWalker(tbl, NodeFilter.SHOW_TEXT);
+  for (let n; (n = walker.nextNode());) {
+    if (!n.data.trim()) continue;
+    const rg = document.createRange(); rg.selectNodeContents(n);
+    for (const q of rg.getClientRects()) if (q.height > 0 && q.width > 0)
+      rects.push({ top: (q.top - T.top) * sc, bottom: (q.bottom - T.top) * sc });
   }
-  const ty = Math.min(0, Math.max(H - tbl.offsetHeight, H / 2 - (r.y + r.h / 2)));
+  rects.sort((a, b) => a.top - b.top);
+  const lines = [];
+  for (const q of rects) {
+    const l = lines[lines.length - 1];
+    if (l && q.top < l.bottom - 0.5 * (l.bottom - l.top)) { l.top = Math.min(l.top, q.top); l.bottom = Math.max(l.bottom, q.bottom); }
+    else lines.push({ top: q.top, bottom: q.bottom });
+  }
+  if (!lines.length) return;
+  // the line to keep in view: the marked phrase's, else the row's middle
+  const ref = (mark || tr).getBoundingClientRect();
+  const mid = ((ref.top + ref.bottom) / 2 - T.top) * sc;
+  let k = lines.findIndex(l => l.bottom >= mid);
+  if (k < 0) k = lines.length - 1;
+  // whole lines only, grown from that line; where more text lies above or
+  // below, a band of about half a line shows the next one, faded, as a cue
+  const H = el.clientHeight;
+  const lh = lines.map(l => l.bottom - l.top).sort((a, b) => a - b)[Math.floor(lines.length / 2)];
+  const cue = Math.round(lh * 0.5);
+  // a window's edge lies midway between two lines: line boxes overlap by a
+  // pixel or two (a glyph box is taller than the line's pitch)
+  const last = lines.length - 1;
+  const above = i => (lines[i - 1].bottom + lines[i].top) / 2;
+  const below = j => (lines[j].bottom + lines[j + 1].top) / 2;
+  const fits = (i, j) => (j < last ? below(j) : lines[j].bottom) - (i > 0 ? above(i) : 0)
+                         <= H - (i > 0 ? cue : 0) - (j < last ? cue : 0);
+  let i = k, j = k, grew = true;
+  while (grew) {
+    grew = false;
+    if (j < last && fits(i, j + 1)) { j++; grew = true; }
+    if (i > 0 && fits(i - 1, j)) { i--; grew = true; }
+  }
+  const ty = i > 0 ? cue - above(i) : 0;
+  const wTop = i > 0 ? cue : 0;
+  const wBot = j < last ? below(j) + ty : H;
+  el._win = { top: wTop, bottom: wBot };
+  el.dataset.lensTop = wTop.toFixed(1); el.dataset.lensBottom = wBot.toFixed(1);
+  el.style.setProperty("--lt", wTop.toFixed(1) + "px");
+  el.style.setProperty("--lb", (H - wBot).toFixed(1) + "px");
   tbl.classList.toggle("glide", moved && !jumped);
   tbl.style.transform = ty ? "translateY(" + ty.toFixed(1) + "px)" : "";
 }
@@ -1197,7 +1250,7 @@ function renderFrame(t) {
   applyTyping(bd, t);
   const focus = applyFocus(bd, t);
   applyLens(bd, s, jumped);
-  applyDocLens(bd, s, focus, jumped);
+  applyDocLens(bd, s, focus, jumped, t);
   applyVerdicts(bd, t);
   const notes = placeBeside(bd, s && !erased ? s : null);
   camera(bd, focus, notes, jumped);

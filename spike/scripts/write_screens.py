@@ -3460,6 +3460,7 @@ PART_B_CSS = """
 .tbl.core.doc.lensed{--tf:3.2cqh!important}
 .tbl.core.doc.lensed table.glide{transition:transform .45s ease}
 .tbl.core.doc.lensed tbody tr:not(.loupe) td{opacity:.3}
+.tbl.core.doc.lensed{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 var(--lt,0px),#000 calc(100% - var(--lb,0px)),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 var(--lt,0px),#000 calc(100% - var(--lb,0px)),transparent 100%)}
 @media (prefers-reduced-motion:reduce){.tbl.core.doc.lensed table.glide{transition:none}}
 """
 

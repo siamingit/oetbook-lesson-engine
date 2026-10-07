@@ -582,6 +582,12 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             # 1.15: a Part B question board's text is read through its lens
             # (rule 35): the spotlight's row, at body size, inside the text's frame
             bd["lens"] = True
+            # the whole extract shows once before the lens follows the reading
+            # (maintainer, 2026-10-07): until the end of the first sentence said
+            # once the text is uncovered, and for 3 seconds at least
+            first = next((s for s in bd["states"] if not s.get("veil")), None)
+            if first and first["utterances"]:
+                bd["lens_from"] = round(max(first["start"] + 3.0, first["utterances"][0]["end"]), 3)
         bd["verdicts"] = table_verdicts(bd, blocks_all[bd["table"]]) if bd["table"] else []
         # 1.3: a pinned block stays from its reveal to the board's end; a
         # word mark colours a changing word by its word class from the moment

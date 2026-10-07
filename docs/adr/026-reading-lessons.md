@@ -481,3 +481,19 @@ its source gate (2026-10-06).
   text's words move by design, so the layout check leaves them out (§8a); the
   frame hides the text beyond it, so the overflow check and the fit do not count
   it as clipped.
+- **Whole lines, a cue, the whole extract first** (maintainer, 2026-10-07, at the
+  final-gate review: the lens cut the first and last lines in half). The lens's
+  window is a run of whole lines grown from the line being read; its edges lie
+  midway between two lines, never through one. Where more text lies above or
+  below, a band of about half a line shows the next line under a soft fade (a
+  mask), so the learner sees that the text goes on; marks and the pointer are
+  drawn only in the window. When the text first appears, the whole extract shows
+  once: the lens starts only at the board's `lens_from`, the end of the first
+  sentence said once the text is uncovered (3 seconds at least).
+- **Checked, not eyeballed**: `check_lens.py` drives the player to every moment
+  of every board with a lens or a map and fails any line of text that lies partly
+  inside a lens or zoom window and partly outside it, at phone-landscape and
+  laptop width; the runner runs it on a Reading lesson's silent preview and its
+  finished player. Run on Reading 2's map zoom (2026-10-07) it finds clipped lines
+  there (77 at the two widths); Reading 2 is left as approved until the
+  maintainer decides.

@@ -798,9 +798,11 @@ ADR 026, the Part B question method and the vocabulary layer; bundle 1.15, rules
 - **Word tables**: the matching table (Word | Meaning) and the recap table (Word |
   Meaning | Synonym) are table boards (§7, Tables).
 - **The lens** (maintainer, 2026-10-07): on a question board the text keeps its
-  own frame; once it is uncovered, the lines being read are set at body size in
-  the middle of that frame, readable on a phone, the rest dimmed, as Part A's map
-  zooms (§7f). Exempt from the table text floor's look and from "nothing moves
+  own frame; once it is uncovered, the whole extract shows once, then the lines
+  being read are set at body size in that frame, readable on a phone, the rest
+  dimmed, as Part A's map zooms (§7f). It shows whole lines only, never half a
+  line; where the text goes on above or below, the next line shows faded, as a
+  cue (checked by `check_lens.py`). Exempt from the table text floor's look and from "nothing moves
   a word" for the text's own words only (§8a), as the map is.
 
 ## 8. Marks

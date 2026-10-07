@@ -201,8 +201,11 @@ Added by the maintainer, 2026-09-25.
 
 - Every file to review is given as a full `file:///` URL.
 - Every moment in a lesson is given as minutes:seconds next to its full
-  plain-text URL, for example
-  `file:///C:/OET/lessons/grammar-04-articles/generated/lesson-preview/silent/player.html?t=1249 (20:49)`.
+  plain-text URL. Revised by the maintainer 2026-10-07: the URL ends at the
+  file name, with no `?t=SECONDS` (which fails when pasted into Windows
+  Explorer); the moment is given separately, for example
+  `file:///C:/OET/lessons/grammar-04-articles/generated/lesson-preview/silent/player.html` at 20:49.
+  See docs/03-RUNBOOK.md, "Reporting".
 - Never write a link as a markdown link or with a relative target: the
   editor opens those inside VS Code, not in the browser.
 

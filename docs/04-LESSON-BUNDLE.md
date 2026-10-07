@@ -301,6 +301,7 @@ two things must hold, because cues and the reading pointer depend on them:
 | `wordmarks` | 1.3. `[{block, text, cls, time}]`: from `time` to the board's `until`, `text` in `block` is marked `cls`, a word class (its colour, docs/02-DESIGN-SYSTEM.md §7c) or `slide-underline` (the slide's own underline). 1.4: with `row` and `col`, `text` is marked inside that table cell only |
 | `palette` | 1.4 only. Not written from 1.5: every word class has one colour everywhere. A reader treats it as absent |
 | `lens` | 1.15. On a Part B question board: true. The text is read through its lens (rule 35). Absent on other boards |
+| `lens_from` | 1.15. On a board with `lens`: the time from which the lens may follow the reading; before it, once the text is uncovered, the whole extract shows (rule 35) |
 | `focus` | 1.2. On a table board, the spotlight in time order: `[{time, row, col}]`, from each `time` the row in focus and the cell highlighted (both from 0; `col` null for the row alone; `row` null for the whole table, nothing dimmed). Empty on other boards |
 | `tight` | 1.8. How tightly the board is set so its fullest state fits (ADR 011): 0, 1 (half the gap between blocks) or 2 (and half the blocks' vertical padding), on the whole board |
 | `verdicts` | 1.6. On a board whose table is a choice table, `[{row, col, verdict, time}]` in time order: from `time` to the board's `until`, the cell shows its verdict (rule 18). A wrong cell's time is its first strike, or the end of its row's last speech; a right cell's is its first circle, or when its row's last wrong cell fades; a possible cell's is the end of its row's last speech. Empty otherwise |
@@ -536,11 +537,13 @@ These are the only rules. Every time and target they use is in the bundle.
     the reference player pauses the lesson while it plays and resumes after.
 35. **A text's lens** (1.15): on a board with `lens`, the board's table (a
     practice-set text) keeps the room it takes unzoomed as a frame of its own.
-    While the current state's `veil` is false and the spotlight (rule 11) has a
-    row, the text is set at body size inside that frame, the other rows dimmed,
-    and moved so that the latest phrase marked in it (else that row) is in the
-    middle of the frame. Marks and the pointer inside the text are drawn only
-    where the frame shows them. The camera does not zoom on such a board (rule
+    While the current state's `veil` is false, the time is at or after the
+    board's `lens_from` and the spotlight (rule 11) has a row, the text is set at
+    body size inside that frame, the other rows dimmed, and moved so that the
+    latest phrase marked in it (else that row) is in view. The frame shows whole
+    lines only: its window's edges lie between two lines, and where more text
+    lies above or below, about half a line of it shows under a soft fade, as a
+    cue. Marks and the pointer inside the text are drawn only in the window. The camera does not zoom on such a board (rule
     13). The lens moves the text's words by design (rule 19 does not apply to
     them).
 

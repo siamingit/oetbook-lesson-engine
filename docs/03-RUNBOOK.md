@@ -239,7 +239,7 @@ marked **step** (ADR 005). Costs are Grammar 1's.
 | 14 | Terms check | `check_terms.py <L> --pages ...` per section | narration, screens, keyterms, lexicon | `generated/<section>/boards/terms_check.json`, shared `generated/term_probes/` | a few thousand characters |
 | 15 | Synthesis | `synthesize_narration.py <L> --pages ...` per section (the lesson's voice, `voices.py`: Rupert at speed 1.0 for every lesson, ADR 027 amendment; `--accept-terms` for sections with terms the ear did not hear, which the maintainer judges by ear at the final gate; 15 clips at a time and no budget needed, ADR 028) | narration, lexicon, terms check | `generated/<section>/boards/audio/`, `audio_index.json` | about 85,000 characters a lesson, free on the Scale plan (ADR 028) |
 | 16 | Ear | `ear.py <L> --pages ... --recompare` per section | audio, lexicon, terms check | `generated/<section>/boards/ear.json` | Scribe, about 106 min of audio |
-| 17 | Lesson player and checks | `fit_boards.py <L>` (the fit: clears, tight boards, table text size, measured in the player; ADR 011), `build_lesson_player.py <L>`, `check_board_page.py <L> --dir <L>/generated/lesson-player`, `check_marks.py <L> --dir ...`, `check_layout.py <L> --dir ...` (no word moves between states; design system §8a), `check_overflow.py <L> --dir ...` (every block inside the board, every label in sentence case; §8b), `check_overlap.py <L> --dir ...` (no block over another block or its text; §8d, ADR 020), for a Reading lesson `check_doc_marks.py <L>` (every phrase of a text read aloud is marked; ADR 026), and `pitch_check.py <L>` (the monotony check: fails a lesson whose median clip varies less than 4.07 semitones, lists every clip under 3.71 for the ear; ADR 027 amendment) | every section's narration, screens and audio | `analysis/fit.json`; `generated/lesson-player/`: the lesson bundle (`bundle.json`, `text.json`, `blocks.css`; docs/04-LESSON-BUNDLE.md), `player.html` (its reference renderer), `marks_check.json` | free |
+| 17 | Lesson player and checks | `fit_boards.py <L>` (the fit: clears, tight boards, table text size, measured in the player; ADR 011), `build_lesson_player.py <L>`, `check_board_page.py <L> --dir <L>/generated/lesson-player`, `check_marks.py <L> --dir ...`, `check_layout.py <L> --dir ...` (no word moves between states; design system §8a), `check_overflow.py <L> --dir ...` (every block inside the board, every label in sentence case; §8b), `check_overlap.py <L> --dir ...` (no block over another block or its text; §8d, ADR 020), for a Reading lesson `check_doc_marks.py <L>` (every phrase of a text read aloud is marked; ADR 026) and `check_lens.py <L> --dir ...` (no line inside a lens or zoom window is clipped; ADR 026, 2026-10-07; also on the silent preview), and `pitch_check.py <L>` (the monotony check: fails a lesson whose median clip varies less than 4.07 semitones, lists every clip under 3.71 for the ear; ADR 027 amendment) | every section's narration, screens and audio | `analysis/fit.json`; `generated/lesson-player/`: the lesson bundle (`bundle.json`, `text.json`, `blocks.css`; docs/04-LESSON-BUNDLE.md), `player.html` (its reference renderer), `marks_check.json` | free |
 | 18 | Course index | `build_course_index.py <L>`: the last step of every build, rebuilt whole from every lesson folder (ADR 006) | every lesson's bundle, text, sections, understanding, gates and source | `<library>/course/course-index.json` and `course-index.md`, **outside the repository** (docs/05-COURSE-INDEX.md) | free, seconds |
 | | **GATE final** | the maintainer plays the finished lesson and judges by ear every term the terms check did not hear as written; a new lexicon entry is approved with `lexicon.py --approve TERM --by NAME` | | | |
 | 19 | Backup | after each lesson's final gate, with the external drive labelled `OETBACKUP` connected: `powershell -File spike\scripts\backup_oet.ps1 -Copy`, then `-Verify` (0 differences, SHA-256 of every copied file), then **Safely Remove** the drive (exFAT has no journal). The only backup destination; lesson content is not in git. Credentials are never copied: their paths are listed in the local, gitignored `spike/out/backup-exclude.txt`, without which the script refuses to run. The runner reminds at every stop when the last verified backup is more than 14 days old | `C:\OET`, `spike/out/` voice_samples, initialism-probe, lexicon-review | `<drive>:\Backups\OET\OET`, `...\repo-evidence\`, `...\logs\` | free |
@@ -372,6 +372,19 @@ $30 at full price.
 A dry run is free: `run_batch_stage.py <L> --stage STAGE --dry-run` builds
 every pending request, checks its shape (the Gemini request through the SDK's
 own types) and prints the count, size and estimate.
+
+## Reporting
+
+Standing rule for every report to the maintainer (maintainer, 2026-10-07;
+AGENTS.md §11a):
+
+- Each file is a plain `file:///` address ending at the file name, never a
+  markdown link, a relative path or a query: no `?t=SECONDS`, which fails when
+  pasted into Windows Explorer.
+- Each moment is given separately, as mm:ss next to the file it is in, for
+  example `file:///C:/OET/lessons/reading-03-part-b/generated/lesson-player/player.html`
+  at 16:13. A tool's output that prints `?t=` (the doc-marks check) is
+  rewritten in this form in the report.
 
 ## At each gate and step
 
