@@ -457,3 +457,27 @@ its source gate (2026-10-06).
 - Everything is added only to a lesson whose set has a Part B (format 1.15,
   `PART_B_CSS`); Reading 1 and 2 and every other lesson are unchanged, checked
   by rendering all 13 built lessons before and after.
+
+### The Part B lens (maintainer, 2026-10-07)
+
+- **Why.** On a question board the whole text, the question with its three
+  options and the glosses share one board, so the fit sets the text at the
+  table floor (1.9% of the frame: about 12 px on a laptop, 8.7 px on a phone),
+  and the camera cannot zoom a one-column page (a full-width row fits at 1x).
+  The maintainer, at the silent-player review: "build the lens, as in Part A's
+  map. It zooms onto the paragraph or lines being read, readable on a phone. Do
+  not shorten the glosses."
+- **The lens.** The text keeps the room it takes unzoomed, as a frame of its
+  own. While the text is uncovered and the spotlight has a row, the text is set
+  at body size (3.2% of the frame, readable on a phone) inside that frame, the
+  row being read is brought to the middle, and the others are dimmed; the
+  lens centres on the latest phrase marked in the text, so a paragraph longer
+  than the frame shows the words being read. Marks and the pointer are drawn
+  only where the frame shows them. The camera does not zoom on such a board.
+- **Carried by** a board's `lens` (bundle 1.15, rule 35), set by the builder on
+  every Part B question board; the row is the spotlight's (`focus`, rule 11),
+  which follows what is read and marked. The player's `applyDocLens`.
+- **Exemptions, as for the map** (maintainer: "as in Part A's map"): the lensed
+  text's words move by design, so the layout check leaves them out (§8a); the
+  frame hides the text beyond it, so the overflow check and the fit do not count
+  it as clipped.

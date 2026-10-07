@@ -578,6 +578,10 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                                 c.update(to_row=rc[0], to_col=rc[1])
         bd["focus"] = (table_focus(bd, blocks_all[bd["table"]], table_cells(blocks_all[bd["table"]]))
                        if bd["table"] else [])
+        if bd["table"] and any("veil" in s for s in bd["states"]):
+            # 1.15: a Part B question board's text is read through its lens
+            # (rule 35): the spotlight's row, at body size, inside the text's frame
+            bd["lens"] = True
         bd["verdicts"] = table_verdicts(bd, blocks_all[bd["table"]]) if bd["table"] else []
         # 1.3: a pinned block stays from its reveal to the board's end; a
         # word mark colours a changing word by its word class from the moment

@@ -3456,6 +3456,11 @@ PART_B_CSS = """
   transform:translate(-50%,-50%);background:#fff;
   clip-path:polygon(0 35%,30% 35%,62% 8%,62% 92%,30% 65%,0 65%)}
 .blk.gl .gl-say.playing{background:#042C53}
+.tbl.core.doc.lens-frame{overflow:hidden;box-sizing:border-box;position:relative}
+.tbl.core.doc.lensed{--tf:3.2cqh!important}
+.tbl.core.doc.lensed table.glide{transition:transform .45s ease}
+.tbl.core.doc.lensed tbody tr:not(.loupe) td{opacity:.3}
+@media (prefers-reduced-motion:reduce){.tbl.core.doc.lensed table.glide{transition:none}}
 """
 
 

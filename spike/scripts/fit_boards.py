@@ -88,6 +88,7 @@ HARNESS = r"""
       if (!r.width && !r.height) continue;
       // clipped: only a block that hides what overflows it (as check_overflow)
       const clip = /(hidden|clip|auto|scroll)/.test(getComputedStyle(el).overflowY)
+                   && !el.classList.contains("lens-frame")      // a Part B text's lens (1.15)
                    ? el.scrollHeight - el.clientHeight : 0;
       const px = Math.max(A.t - r.top, r.bottom - A.b, A.l - r.left, r.right - A.r, clip);
       if (px > TOL) out.push([id, px]);

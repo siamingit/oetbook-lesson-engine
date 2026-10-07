@@ -797,6 +797,11 @@ ADR 026, the Part B question method and the vocabulary layer; bundle 1.15, rules
   the learner taps to hear it (never played by the lesson itself).
 - **Word tables**: the matching table (Word | Meaning) and the recap table (Word |
   Meaning | Synonym) are table boards (§7, Tables).
+- **The lens** (maintainer, 2026-10-07): on a question board the text keeps its
+  own frame; once it is uncovered, the lines being read are set at body size in
+  the middle of that frame, readable on a phone, the rest dimmed, as Part A's map
+  zooms (§7f). Exempt from the table text floor's look and from "nothing moves
+  a word" for the text's own words only (§8a), as the map is.
 
 ## 8. Marks
 

@@ -695,7 +695,7 @@ function positionPointer(t) {
     const el = blockEls.get(read.block);
     if (el && el.classList.contains("on") && !el.classList.contains("cleared")) {
       const r = wordRect(el, read.k);
-      if (r && !outsideClip(r, lensClip(el.querySelector(".dmap-view")))) { placePointer(r, f); return; }
+      if (r && !outsideClip(r, lensClip(el.querySelector(".dmap-view") || (el.classList.contains("lens-frame") ? el : null)))) { placePointer(r, f); return; }
     }
   }
   if (pointSpan && pointSpan.isConnected) { placePointer(pointSpan.getBoundingClientRect(), f); return; }
@@ -980,9 +980,53 @@ function applyLens(bd, s, jumped) {
   grid.style.transform = ty ? "translateY(" + ty.toFixed(1) + "px)" : "";
 }
 // a mark or the pointer inside the map is drawn only where the lens shows it
+// (1.15: and inside a Part B text's lens frame)
 function lensClip(node) {
-  const v = node && node.closest && node.closest(".dmap-view");
+  const v = node && node.closest && (node.closest(".dmap-view") || node.closest(".lens-frame"));
   return v ? v.getBoundingClientRect() : null;
+}
+// 1.15: the lens of a Part B question board (ADR 026; maintainer, 2026-10-07).
+// The text keeps the room it takes unzoomed, as a frame of its own; while it is
+// uncovered and the spotlight has a row, the text is set at body size inside
+// that frame and the row being read is brought to its middle, the others
+// dimmed, so it is readable on a phone. Only the text's own words move.
+function applyDocLens(bd, s, focus, jumped) {
+  if (!bd || !bd.lens) return;
+  const el = bd.table && blockEls.get(bd.table);
+  const tbl = el && el.querySelector("table");
+  if (!tbl) return;
+  const row = s && !s.veil && focus ? focus.row : null;
+  // the lens centres on the latest phrase marked in the text (the words being
+  // read), else on the spotlight's row: a long paragraph does not fit the frame
+  let mark = null;
+  if (row !== null)
+    for (const m of drawnMarkList) for (const sp of m.spans) if (sp.isConnected && tbl.contains(sp)) mark = sp;
+  const key = row + "|" + (mark ? drawnMarkList.findIndex(m => m.spans.includes(mark)) : -1)
+              + "|" + camEl.offsetWidth + "x" + camEl.offsetHeight;
+  if (el._lens === key) return;
+  const moved = el._lens !== undefined;
+  el._lens = key;
+  el.classList.remove("lensed");
+  tbl.style.transform = "";
+  el.style.height = "";
+  el.classList.add("lens-frame");
+  el.style.height = el.offsetHeight + "px";
+  for (const tr of tbl.querySelectorAll("tr.loupe")) tr.classList.remove("loupe");
+  if (row === null) return;
+  el.classList.add("lensed");
+  const tr = (mark && mark.closest("tr[data-row]")) || tbl.querySelector('tbody tr[data-row="' + row + '"]');
+  if (!tr) return;
+  tr.classList.add("loupe");
+  const H = el.clientHeight;
+  let r = offsetIn(tr, el);
+  if (mark) {
+    const e = el.getBoundingClientRect(), m = mark.getBoundingClientRect();
+    const sc = e.height ? el.offsetHeight / e.height : 1;      // under the camera's scale
+    r = { y: (m.top - e.top) * sc, h: m.height * sc };
+  }
+  const ty = Math.min(0, Math.max(H - tbl.offsetHeight, H / 2 - (r.y + r.h / 2)));
+  tbl.classList.toggle("glide", moved && !jumped);
+  tbl.style.transform = ty ? "translateY(" + ty.toFixed(1) + "px)" : "";
 }
 function outsideClip(r, c) { return c && (r.bottom <= c.top + 1 || r.top >= c.bottom - 1 || r.right <= c.left || r.left >= c.right); }
 
@@ -1066,7 +1110,7 @@ function placeBeside(bd, s) {
 // notes, when the table's text on screen is under 14px; otherwise still.
 function camera(bd, focus, notes, jumped) {
   let tf = "";
-  if (isMapBoard(bd)) focus = null;     // the map's lens zooms, not the camera
+  if (isMapBoard(bd) || bd.lens) focus = null;     // the lens zooms (the map's, 1.14; a Part B text's, 1.15), not the camera
   if (focus) {
     const td0 = focus.el.querySelector("td");
     const px = td0 ? parseFloat(getComputedStyle(td0).fontSize) : 99;
@@ -1153,6 +1197,7 @@ function renderFrame(t) {
   applyTyping(bd, t);
   const focus = applyFocus(bd, t);
   applyLens(bd, s, jumped);
+  applyDocLens(bd, s, focus, jumped);
   applyVerdicts(bd, t);
   const notes = placeBeside(bd, s && !erased ? s : null);
   camera(bd, focus, notes, jumped);
