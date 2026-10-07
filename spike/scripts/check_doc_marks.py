@@ -155,7 +155,7 @@ def questions_of(block_ids: list[str], blocks: dict) -> list[list[str]]:
         if x.get("question"):
             out.append(tokens(x.get("text") or ""))
             out += [tokens(o["text"]) for o in x["question"].get("options") or []]
-        elif x.get("vocab"):
+        elif x.get("vocab") or x.get("lexicon"):      # a word-bank gloss (screens; bundle)
             out += [tokens(x.get(k) or "") for k in ("term", "text")]
     return out
 
