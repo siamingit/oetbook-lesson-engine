@@ -261,6 +261,8 @@ def derive(boards: list[dict], blocks: dict, section_title: str) -> None:
                 b["pin"] = True
             if i not in bd["fixed"] and b.get("question"):
                 b["pin"] = True        # a practice-set question stays to its board's end (ADR 026)
+            if i not in bd["fixed"] and b["type"] == "scale":
+                b["pin"] = True        # an attitude scale stays to its board's end (Part C, 1.17)
         # a slide sentence's part shown again on its own is folded into it
         slides = [blocks[i] for i in bd["fixed"] if blocks[i].get("role") == "slide"
                   and blocks[i]["type"] == "plain"]

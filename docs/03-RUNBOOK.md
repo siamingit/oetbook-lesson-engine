@@ -258,11 +258,34 @@ prompts by the stages themselves. What the agent does by hand, in this order:
 | After screens and narration, and at every gate | `check_source_terms.py <L>` | fails on any forbidden term in what a learner reads or hears |
 | Narration audit, and the runner's player step | `check_doc_marks.py <L>` (`--narration` before synthesis) | fails on any phrase of a practice-set text read aloud with no highlight or keyword pair timed to it (ADR 026, 2026-10-06); the narration audit applies the same rule to every draft |
 | The fit, a Part B lesson (silent preview and player) | `fit_boards.py <L>` (`--silent`), then `check_lens.py` and `check_wide_font.py <L> --dir ...` | each question board in two columns (ADR 026, 2026-10-08): the question column gets the room it needs at body size, the extract the rest at the largest size that fits whole, 3.2% down to 2.6% of the frame; a gloss that does not fit goes over the question column's foot, briefly. Fitted at the phone and laptop frames with Segoe UI, Arial and Roboto; on the small phone frame (915x412) and with any wider font the player's guard fits it, and `check_wide_font.py` (Verdana, three frames) proves it. Written to `analysis/fit.json` (`splits`, `overlay`, `ends`, `qboards`, `frames`); the fit prints each board's split and size. An extract that does not fit whole at 2.6% is UNFIT: stop and report it, never scroll |
+| Before screens, a lesson that teaches some of a set's questions (Reading Part C (1) on) | `practice_set.py <L> --lesson-items ID,ID,... --by NAME` | the questions the lesson teaches, in the order taught, numbered from 1 (ADR 026 amendment of 2026-10-08): the badge, the word recap's question column and the prompts use that number; the item IDs are unchanged |
+| Narration audit, and the runner's preview and player steps | `check_question_numbers.py <L> --dir ...` | fails when the lesson's first question is not 1, or a spoken question number is not the one its board shows (on a board that shows none, not one the lesson teaches) |
 | Before screens, Parts B and C | `vocab.py <L> --sync`, then `--briefs FILE` (one image brief per word: "alt \| what to draw") and `--copy-audio`; `--check` | the `lx:` word-ID map `<library>/course/vocab-ids.json` (stable engine keys, current and earlier IDs, image briefs), and the word bank's pronunciation clips in `generated/vocab-audio/`; `--check` fails a word with no meaning, synonym, example, audio or brief (a gap in the word bank is an issue in the exercises repository) |
 
 A Part B lesson's bundle is format 1.16 (the question with its options, the
 covered text, the word-bank glosses; ADR 026, 2026-10-06 amendment; its question
-boards in two columns, the extract whole, 2026-10-08 amendment).
+boards in two columns, the extract whole, 2026-10-08 amendment). A Part C lesson's
+is format 1.17 (ADR 026, the Part C question method amendment of 2026-10-08): its
+question boards are two columns as Part B's, the text a map or the paragraph read,
+whole; the fit, the guard, `check_lens.py` and `check_wide_font.py` treat them as
+Part B's, measuring every paragraph view; words are pre-taught per question
+(`vocab.question_words`) and recapped by question; the page ledgers name where
+the instructor's formats (a) and (b) go.
+A lesson built from part of another lesson's source (ADR 026 amendment of
+2026-10-08; Reading Part C (2) from Part C's recording): a new lesson folder whose
+`source/` is a byte copy of the other's, never changed; the transcript, keyterms,
+slide timeline, annotations, deck defects, slide tables, practice set and
+forbidden source terms are copied; the sections it takes are moved as built
+(screens, narration and overrides, understanding and rulings of their pages,
+their pictures and images), so nothing paid is run again; a paid reply both
+lessons use is kept in one lesson only, and an image both use carries `cost` 0
+and `carried_from` in the other, so each lesson's spend counts once. The new
+lesson has its own `sections.json` (`groups` only its pages; its own title and
+description), `practice_set.json` (`--teach-pages`, `--lesson-items`),
+`pictures.json`, `gates.json` and `decisions.md`; its source gate is the
+maintainer's. In the lesson it came from, the moved section leaves `groups` and
+`sections` by a direct edit of `sections.json` logged in `decisions.md`
+(`build_sections.py` refuses to drop a titled section).
 The bundle of a Reading lesson is format 1.13 (docs/04-LESSON-BUNDLE.md):
 documents, questions and the keyword pairs `match1` to `match3`
 (docs/02-DESIGN-SYSTEM.md §8). Paid stages refuse uncommitted code in the
@@ -439,6 +462,14 @@ plan as `analysis/understanding/page-(100+N)/understanding.json` (beats with no
 recording times, provenance `authored`) and its rulings in
 `analysis/script/page-(100+N)/applied.jsonl`; the stages then run as for any
 section, and the parts are set as categories (`--categories`).
+A method review or a closing is an authored section of a kind (ADR 018 and ADR 014
+amendments of 2026-10-08): `--kind review --before PAGE` places a review before the
+deck section that starts on PAGE; `--kind closing` puts a closing last, and
+`--next LESSON_ID` names the next lesson when that is certain (the closing may
+then say what it is about). Every lesson from Reading Part C (1) on ends with a
+closing: one board, about 30 to 60 seconds, held 3 seconds after the last word.
+Their screens and narration prompts and audits follow the kind; no categories
+are needed.
 A fix to on-screen text is an override in the section's `overrides.json`
 (with an `expect` guard and a note naming the decision); re-render with
 `write_screens.py <L> --pages ... --render`, free. A screen edit must not move

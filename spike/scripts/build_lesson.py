@@ -590,6 +590,8 @@ def stage_narration(L, a):
         run(L, [str(HERE / "check_lens.py"), str(L), "--dir", d], "lens check (silent preview)")
         # maintainer, 2026-10-08: a wider device font hides nothing on a Part B question board
         run(L, [str(HERE / "check_wide_font.py"), str(L), "--dir", d], "wide-font check (silent preview)")
+        run(L, [str(HERE / "check_question_numbers.py"), str(L), "--dir", d],
+            "question-number check (silent preview)")
     run(L, [str(HERE / "build_narration_review.py"), str(L)], "narration review page")
     import length_budget            # ADR 023: estimated length against target, every warning
     require_gate(L, "narration", length_budget.gate_summary(L))
@@ -695,6 +697,9 @@ def stage_player(L, a):
         run(L, [str(HERE / "check_lens.py"), str(L), "--dir", d], "lens check")
         # maintainer, 2026-10-08: a wider device font hides nothing on a Part B question board
         run(L, [str(HERE / "check_wide_font.py"), str(L), "--dir", d], "wide-font check")
+        # ADR 026 amendment of 2026-10-08: a lesson's questions from 1, every
+        # spoken question number the one its board shows
+        run(L, [str(HERE / "check_question_numbers.py"), str(L), "--dir", d], "question-number check")
     # ADR 027 amendment (maintainer, 2026-10-06): never a monotonous delivery;
     # the clips under the flag line are listed for the final gate's ear
     run(L, [str(HERE / "pitch_check.py"), str(L)], "pitch check")

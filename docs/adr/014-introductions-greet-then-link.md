@@ -87,3 +87,28 @@ Naming one other lesson where it helps (the link above) is not a list. The
 narration audit fails a lesson count ("the first of six lessons", "the course
 has six lessons", "lesson 1 of 6") and an utterance that names three or more
 other lessons; the screens audit fails a lesson count on a board.
+
+## Amendment, 2026-10-08: every lesson ends with a closing
+
+Added by the maintainer with the split of Reading Part C: no lesson stops
+abruptly. Every lesson from Reading Part C (1) on ends with a short closing on
+its own final board, about 30 to 60 seconds:
+
+1. a quick recap of the two or three most important points of that lesson;
+2. then a warm, creative goodbye that is different in every lesson (no fixed
+   template: for example hoping the lesson was useful, encouraging practice, or
+   saying the learner will be seen in the next lesson).
+
+It may name what the next lesson is about only when that is certain (the
+closing's `next` in sections.json, set from the maintainer's word); it never
+states how many lessons there are or lists them. The final board stays on screen
+3 seconds after the last word (`build_lesson_player.CLOSING_HOLD_S`; the
+lesson's length, no new bundle field). Earlier lessons are not changed now.
+
+Carried as an authored section of kind `closing` (ADR 018 amendment of the same
+day): `build_sections.py <L> --add-section N "Closing" --kind closing [--next
+LESSON_ID]`, its plan the agent's. The screens prompt asks for one board with one
+state: two or three short notes and a picture. The narration prompt gives the
+next lesson (or none) and every other lesson's closing; the audit fails a
+closing of more than one board or over 180 words (warns outside 60-150) and a
+goodbye whose sentence is one of another lesson's closing's last three.

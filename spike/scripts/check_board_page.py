@@ -106,7 +106,14 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
                             f"produces (expected {expected})")
 
     last_u = seq[-1][0]
-    if abs(meta["total_duration_s"] - (last_u["end"] + pause_after(last_u))) > TOLERANCE_S:
+    end = last_u["end"] + pause_after(last_u)
+    sp = Path(lesson) / "analysis" / "sections.json"
+    if sp.exists() and (json.loads(sp.read_text(encoding="utf-8"))["sections"] or [{}])[-1].get("kind") == "closing":
+        # a lesson that ends with its closing holds the final board 3 s after
+        # the last word (ADR 014 amendment of 2026-10-08)
+        from build_lesson_player import CLOSING_HOLD_S
+        end = max(end, last_u["end"] + CLOSING_HOLD_S)
+    if abs(meta["total_duration_s"] - end) > TOLERANCE_S:
         problems.append("total_duration_s does not match the last utterance's end plus "
                         "its pause")
 
@@ -159,7 +166,7 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
                         base, _, n = str(blk).rpartition(".")
                         b = blocks.get(base) or {}
                         parts = {str(it.get("part")) for it in (b.get("items") or [])}
-                        if (b.get("type") not in ("timeline", "clauses", "gloss")
+                        if (b.get("type") not in ("timeline", "clauses", "gloss", "scale")   # scale: 1.17
                                 and not (b.get("question") and b.get("items"))) or n not in parts:
                             problems.append(f"{u['id']}/{c['id']}: reveal of {blk}, which is "
                                             "not a part of a diagram")
@@ -191,7 +198,8 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
                 if i not in revealed:
                     problems.append(f"{s['id']}: {i} is never revealed")
             stays += [i for i in revealed if i not in stays and (blocks.get(i) or {}).get("pin")
-                      and (blocks.get(i) or {}).get("question")]
+                      and ((blocks.get(i) or {}).get("question")
+                           or (blocks.get(i) or {}).get("type") == "scale")]   # 1.17: a pinned scale too
             if s["erase"] and sorted(s["erase"]["blocks"]) != sorted(working):
                 problems.append(f"{s['id']}: erase clears {s['erase']['blocks']}, not the "
                                 f"state's working layer {working}")
