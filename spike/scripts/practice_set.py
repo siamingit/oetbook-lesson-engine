@@ -190,10 +190,29 @@ def answer_key(item: dict) -> dict:
     return {"answer": acc[0], "accepted": acc, "stimulus": None}
 
 
+def is_options_item(item: dict) -> bool:
+    """A Part B or C question: a choice item whose options are answers (A, B,
+    C...), not the texts of a Part A matching item."""
+    return item["type"] == "choice" and bool(item.get("options")) and \
+        not any(o.get("stimulus_id") for o in item["options"])
+
+
+def options_of(item: dict) -> list[dict]:
+    """The options in the order the release displays them, lettered A, B, C."""
+    by_id = {o["option_id"]: o for o in item["options"]}
+    order = item.get("display_order") or [o["option_id"] for o in item["options"]]
+    return [{"option": oid, "letter": chr(65 + n), "text": by_id[oid]["text"]}
+            for n, oid in enumerate(order)]
+
+
 def question_block(ps: dict, item: dict) -> dict:
+    q = {"item": item["item_id"], "kind": (item.get("admin") or {}).get("kind") or item["type"],
+         "max_words": (item.get("response") or {}).get("max_words")}
+    if is_options_item(item):
+        # bundle 1.15 (ADR 026, Part B): the options as released, lettered
+        q["options"] = options_of(item)
     return {"type": "plain", "text": question_text(ps, item), "exercise_item": item["number"],
-            "question": {"item": item["item_id"], "kind": (item.get("admin") or {}).get("kind") or item["type"],
-                         "max_words": (item.get("response") or {}).get("max_words")},
+            "question": q,
             "provenance": "source-derived",
             "note": f"practice set item {item['item_id']} as released (ADR 026); built by code"}
 
@@ -201,6 +220,21 @@ def question_block(ps: dict, item: dict) -> dict:
 def question_for_prompt(ps: dict, item: dict) -> str:
     k = answer_key(item)
     fb = item.get("feedback") or {}
+    if is_options_item(item):
+        # a Part B question: the options by letter, the key's letter, and the
+        # release's own reason for each wrong option (for the reason labels)
+        opts = options_of(item)
+        letter = {o["option"]: o["letter"] for o in opts}
+        key = item["scoring"]["key_option_id"]
+        return (f"QUESTION {item['item_id']} (number {item['number']}, "
+                f"{(item.get('admin') or {}).get('question_type') or 'choice'}; its text is "
+                f"{', '.join(item['stimulus_ids'])}): {question_text(ps, item)}"
+                + "".join(f"\n  option {o['letter']}: {o['text']}" for o in opts)
+                + f"\n  key: option {letter[key]}"
+                + (f"\n  evidence in the text: {item['evidence']}" if item.get("evidence") else "")
+                + (f"\n  the release's reason for the key: {fb['key']}" if fb.get("key") else "")
+                + "".join(f"\n  option {letter[oid]} is wrong (release): {w['why_wrong']}"
+                          for oid, w in (fb.get("options") or {}).items() if oid in letter))
     wrong = []
     for oid, w in (fb.get("options") or {}).items():
         opt = next((o["text"] for o in item.get("options") or [] if o["option_id"] == oid), oid)

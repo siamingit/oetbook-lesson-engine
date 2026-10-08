@@ -162,6 +162,103 @@ For a matching question, the text of steps 3 to 5 is the key's text. One board \
 per question, in question order; its `title` is "Item <number>: <item ID>".\
 """
 
+PART_B_METHOD = """\
+THE PART B LESSON (maintainer, 2026-10-06; ADR 026, the Part B question method and \
+the vocabulary layer). For Part B this REPLACES the QUESTION and BOARDS paragraphs \
+above (the document, keyword and gloss rules stay). Every text of the set that this \
+section teaches gets THREE \
+BOARDS, in this order: its PRE-TEACHING board, its QUESTION board, its WORD-RECAP \
+board. The words of each text are listed below under WORDS OF <stimulus ID>, by \
+their lx: IDs. Code builds every word block from its ID (meaning, synonym, example \
+and picture from the word bank): you never write a meaning, synonym or example of \
+your own.
+  1. PRE-TEACHING BOARD (the instructor's word-to-meaning matching table). Its \
+fixed layer: {"type": "table", "label": "MATCH <lx: ID> <lx: ID> ...", "anchor": \
+true}, the text's word IDs in the order listed, with NO header and NO rows (code \
+writes the words in column 1 and their meanings in column 2 in another order, so \
+the learner matches them). Thoughts: "Table: ..." with ONE plain note inviting the \
+learner to match each word with its meaning first; then one "Row N: ..." thought \
+per word, in row order, holding ONE block: that word's gloss, written {"type": \
+"gloss", "label": "<its lx: ID>"} with nothing else in it. Where a MAINTAINER \
+RULING names a collocation pair (an adjective or adverb with the noun or verb it \
+goes with, as the text prints them) or an attributive-noun chain (adjective + \
+qualifier noun + head noun, from an option) for this text, add after the word \
+rows ONE "Table: ..." thought with a small table of one row in the instructor's \
+format, its cells the text's own words exactly as printed (header \
+["Adjective", "Noun"], or ["Adjective", "Qualifier noun", "Head noun"]), and one \
+plain note: for a chain, that the qualifier is a NOUN used as a modifier, never \
+an adjective.
+  2. QUESTION BOARD. Its fixed layer is the DOCUMENT of the text ({"type": \
+"table", "label": "<stimulus ID>", "anchor": true}). Its thoughts, in order:
+     a. "Covered: the question": ONLY the question block, {"type": "plain", \
+"label": "<item ID>", "items": [...]}, with NO text. Its `items` rule the wrong \
+options out and tick the answer, in this order: "out|<letter>|<reason label>" for \
+EACH WRONG option (the label at most 12 plain words, A2-B1, saying why it is \
+wrong, based on the release's own reason for that option, never adding a fact), \
+then "key|<letter>" for the answer. The text stays COVERED in every "Covered:" \
+thought, as the instructor covers it until the question and the options are read.
+     b. "Covered: ..." thoughts, one per word of the question or the options that \
+the word list names (where: question / option X), each holding that word's gloss \
+({"type": "gloss", "label": "<lx: ID>"}).
+     c. "Covered: try it first": ONE short plain note inviting the learner to \
+choose before the text appears ("Try it first: which option is right?").
+     d. Then the text appears: "Row N: ..." thoughts on the parts that hold the \
+keywords and the answer, in reading order; each word the list names in the text \
+is glossed again in the row thought of the part where it occurs (one gloss per \
+thought). Then, on the row that holds the answer, ONE plain note naming the \
+paraphrase: how the text's words and the right option say the same thing. Where \
+the release's reason for a wrong option points at a part of the text, a row \
+thought there may hold ONE short plain note.
+     e. "Table: the answer": an answer_row "Answer: <letter>", and nothing else.
+  3. WORD-RECAP BOARD. Its fixed layer: {"type": "table", "label": "RECAP <lx: \
+ID> ...", "anchor": true}, the same IDs as the pre-teaching board, NO header and \
+NO rows (code writes word, meaning, synonym). ONE thought, "Table: recap", with \
+ONE plain note ("The words of Text N").
+  Every board keeps the board style. No board of the section shows anything of an \
+official OET sample text or of the instructor's own practice texts.\
+"""
+
+NARRATION_PART_B = """\
+THE PART B LESSON (maintainer, 2026-10-06; ADR 026). These rules ADD to the others.
+  - PRE-TEACHING BOARD: first invite the learner to match the words with their \
+meanings, then a `pause` of 3 seconds. Then, row by row: say the word, draw an \
+`arrow` from the word in its row (`text` the word as the table prints it) to its \
+meaning (`to_text` a phrase of the meaning as the table prints it), then the \
+word's gloss moment (the gloss rule: the word, a pause, its meaning, its synonym, \
+its example, a pause). A small collocation or chain table is read cell by cell, \
+each cell marked, and the note said: the qualifier is a noun used as a modifier.
+  - QUESTION BOARD, the eight steps of the Part B question method, in order:
+     1. The question (a COVERED state: the text cannot be seen): read the question \
+word for word and mark its keywords with `match1` (and `match2`) on the question \
+block.
+     2. The options (QAT: Question, Answers, then Text), still COVERED: read each \
+option, A, B and C, word for word, naming its letter, and `underline` its keywords \
+in the question block, as the instructor underlines them. Reveal the glosses of \
+the option and question words as you meet them (gloss moments).
+     3. Try it first, still COVERED: invite the learner to stop and choose an \
+option before going on ("Try it first. Which option do you think is right?"; \
+never the words "pause the"), then end the state with a `pause` of 4 seconds.
+     4. The text appears (the first uncovered state): say so, and read the parts \
+you need, each phrase marked.
+     5. Keyword pairs: mark a keyword of the question or of an option and the \
+words of the text that match it with ONE match type, the question's or the \
+option's words first (`match1`, `match2`, `match3`; at most three pairs a board). \
+Gloss again each listed word of the text where it occurs.
+     6. The paraphrase bridge: the text's wording and the right option's wording \
+in ONE match type, and one sentence on how they say the same thing.
+     7. Rule each wrong option out: reveal its part (`<question id>.<n>`, the \
+option struck and its reason label shown) as you give the reason in a short \
+sentence that agrees with the label.
+     8. Confirm the answer: reveal the tick part and say the letter and the option.
+     In a COVERED state read nothing from the text and mark nothing in it; the \
+question block stays on the board for the whole board (it is pinned), so steps 5 \
+to 8 mark it and reveal its parts in later states.
+  - WORD-RECAP BOARD: read each word and its meaning, row by row, each word \
+`highlight`ed as you say it, briskly; a closing sentence links to the next text.
+  - On the paper test, Part B answers are shaded with a 2B pencil; only a shaded \
+circle counts. Never suggest a highlighter.\
+"""
+
 NARRATION_SET = """\
 KEYWORD PAIRS (ADR 026, bundle 1.13). Three extra mark types draw a pair of \
 places in ONE colour, meaning "these words correspond": `match1` (sky blue), \
@@ -203,6 +300,14 @@ out from the keywords; read nothing from the texts here, they are too small; \
 as you name it; (5) the part: the keyword pairs between the question and the \
 text, the paraphrase bridge and the answer in its exact form, as on any \
 question board.\
+"""
+
+QA_PART_B = """\
+PART B (ADR 026; bundle 1.15). Word glosses, matching tables and recap tables are \
+built from the exercises repository's word bank: their meanings, synonyms and \
+examples are not findings. Report a wrong option's reason label that does not \
+agree with the text, a paraphrase bridge whose two places do not say the same \
+thing, and any reading of the text while it is covered.\
 """
 
 QA = """\
@@ -254,10 +359,20 @@ def set_text(lesson: Path, pages: list[int]) -> str:
                     f"  {st['label']}: {st.get('title') or '(no title)'}; a {st.get('text_type') or 'text'}"
                     for st in practice_set.stimuli(ps).values()))
     part_a = any(p.get("code") == "RA" for p in ps.get("parts") or [])
-    out = [SCREENS_SET] + ([PART_A_METHOD] if part_a else []) + [f"PRACTICE SET {ps['set_id']}:"]
+    part_b = any(p.get("code") == "RB" for p in ps.get("parts") or [])
+    out = [SCREENS_SET] + ([PART_A_METHOD] if part_a else []) + ([PART_B_METHOD] if part_b else []) \
+        + [f"PRACTICE SET {ps['set_id']}:"]
     out += [practice_set.document_for_prompt(st) for st in practice_set.stimuli(ps).values()]
     out += [practice_set.question_for_prompt(ps, it) for it in practice_set.items(ps).values()]
+    if part_b:
+        import vocab                         # the word bank's words, by ID (ADR 026 §2)
+        out.append(vocab.words_for_prompt(lesson))
     return "\n\n".join(out)
+
+
+def is_part_b(lesson: Path) -> bool:
+    ps = practice_set.load(lesson) or {}
+    return any(p.get("code") == "RB" for p in ps.get("parts") or [])
 
 
 def section_teaches_set(lesson: Path, pages: list[int]) -> bool:

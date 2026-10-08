@@ -107,6 +107,8 @@ HARNESS = r"""
         // the map of the texts moves its words by design: its lens zooms
         // (bundle 1.14; ADR 026, Part A question method), as the camera does
         if (blocks[id] && blocks[id].map) continue;
+        // a Part B text's lens moves its words inside its frame by design (1.15)
+        if (el.classList.contains("lens-frame")) continue;
         for (const [n, word, x, y] of tokens(el)) {
           const key = id + "|" + n;
           const was = seen.get(key);

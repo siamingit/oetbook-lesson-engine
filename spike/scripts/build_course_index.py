@@ -154,7 +154,12 @@ def built_lesson(L: Path, info: dict, entry: dict) -> None:
                            "explanation": b["explanation"]}
                           for b in bl if b["type"] == "term_box" and b.get("label") != "WORD"],
             "glossed_words": [{"block": b["id"], "word": b["term"], "gloss": b["explanation"]}
-                              for b in bl if b["type"] == "term_box" and b.get("label") == "WORD"],
+                              for b in bl if b["type"] == "term_box" and b.get("label") == "WORD"]
+                             # a word-bank gloss with its lx: ID, once per section (ADR 026 §2; 1.15)
+                             + [{"block": b["id"], "word": b["term"], "gloss": b["explanation"],
+                                 "lexicon": b["lexicon"]}
+                                for n, b in enumerate(bl) if b["type"] == "gloss" and b.get("lexicon")
+                                and b["lexicon"] not in {x.get("lexicon") for x in bl[:n]}],
             "refs": refs, "referenced_by": [],
             "narration_text": texts[sec["id"]]["narration_text"],
             "board_text": texts[sec["id"]]["board_text"]})

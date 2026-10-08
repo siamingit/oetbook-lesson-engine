@@ -774,6 +774,39 @@ ADR 026, the Part A question method; bundle 1.14, rule 31.
   out. Every other block on a map board is held to §8a.
 - Marks, keyword pairs and the pointer inside the map are drawn only where the
   map's frame shows them.
+- **Whole lines only** (maintainer, 2026-10-07): a zoomed map never cuts a line;
+  where the text goes on above or below, the next line shows faded, as a cue, as
+  in the Part B lens (§7g; `check_lens.py`).
+
+### 7g. A Part B question, the covered text, and the word bank's glosses (Reading)
+
+ADR 026, the Part B question method and the vocabulary layer; bundle 1.15, rules
+32 to 34.
+
+- **The question with its options.** Under the question, options A to C, each
+  with its letter in a small circle. A wrong option, when ruled out, is struck
+  through in red on the pale red of "wrong", with a short reason label under
+  it after a cross; the answer takes a tick on the pale green of "correct". The
+  room of every label and tick is kept from the start, so nothing moves.
+- **The covered text.** While the question, the options and "try it first" are
+  taught, the text's page shows only its type tag on a hatched grey cover, at
+  its full size, as the instructor covers the text; then it appears.
+- **Document looks by genre** (stylesheet only, no words added): an email as a
+  mail window; a procedure with a document-control band; a guideline with a
+  blue edge; a manual on a dark header with a dashed edge; a policy with a
+  formal black rule; a notice pinned on a pale yellow sheet.
+- **A word-bank gloss**: the gloss card (§7b) with the word's synonym under its
+  meaning ("Synonym:"), and a small round speaker button beside the word that
+  the learner taps to hear it (never played by the lesson itself).
+- **Word tables**: the matching table (Word | Meaning) and the recap table (Word |
+  Meaning | Synonym) are table boards (§7, Tables).
+- **The lens** (maintainer, 2026-10-07): on a question board the text keeps its
+  own frame; once it is uncovered, the whole extract shows once, then the lines
+  being read are set at body size in that frame, readable on a phone, the rest
+  dimmed, as Part A's map zooms (§7f). It shows whole lines only, never half a
+  line; where the text goes on above or below, the next line shows faded, as a
+  cue (checked by `check_lens.py`). Exempt from the table text floor's look and from "nothing moves
+  a word" for the text's own words only (§8a), as the map is.
 
 ## 8. Marks
 

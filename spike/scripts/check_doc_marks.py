@@ -145,7 +145,28 @@ def in_questions(run: list[str], questions: list[list[str]]) -> bool:
 
 
 def questions_of(block_ids: list[str], blocks: dict) -> list[list[str]]:
-    return [tokens(blocks[b].get("text") or "") for b in block_ids if (blocks.get(b) or {}).get("question")]
+    """The words that are read from something other than the text: a
+    question's wording and (bundle 1.15) each of its options, and a word-bank
+    gloss's word and example. Reading them is not reading the text, even where
+    the text has the same words."""
+    out = []
+    for b in block_ids:
+        x = blocks.get(b) or {}
+        if x.get("question"):
+            out.append(tokens(x.get("text") or ""))
+            out += [tokens(o["text"]) for o in x["question"].get("options") or []]
+        elif x.get("vocab") or x.get("lexicon"):      # a word-bank gloss (screens; bundle)
+            out += [tokens(x.get(k) or "") for k in ("term", "text")]
+    return out
+
+
+def board_blocks(bd: dict) -> list[str]:
+    """Every block a board shows in any state: a pinned question stays from
+    its reveal, so it is read in later states too."""
+    out = list(bd["fixed"])
+    for st in bd["states"]:
+        out += [i for i in st["working"] if i not in out]
+    return out
 
 
 def utterance_quotes(text_with_cues: str, cues: list[dict], docs: list[dict],
@@ -218,7 +239,7 @@ def check_player(lesson: Path) -> tuple[int, list[str]]:
                     for p in parts(doc):
                         for r in quotes(spoken, p):
                             label.setdefault(r, doc["doc"]["label"])
-                qs = questions_of(bd["fixed"] + st["working"], blocks)
+                qs = questions_of(board_blocks(bd), blocks)
                 for i, j in [r for r in dedupe(list(label)) if not in_questions(spoken[r[0]:r[1]], qs)]:
                             found += 1
                             doc_label = label[(i, j)]
@@ -257,7 +278,7 @@ def check_narration(lesson: Path) -> tuple[int, list[str]]:
                     continue
                 for u in s["utterances"]:
                     n, bad = utterance_quotes(u["text_with_cues"], u["cues"], docs,
-                                              questions_of(bd["fixed"] + working, blocks))
+                                              questions_of(board_blocks(bd), blocks))
                     found += n
                     failures += [f"{paths.section_tag(pages)} {u['id']}: {x} unmarked" for x in bad]
     return found, failures

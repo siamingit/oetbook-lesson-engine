@@ -585,6 +585,9 @@ def stage_narration(L, a):
     d = str(L / "generated" / "lesson-preview" / "silent")
     run(L, [str(HERE / "check_overflow.py"), str(L), "--dir", d], "overflow check (silent preview)")
     run(L, [str(HERE / "check_overlap.py"), str(L), "--dir", d], "overlap check (silent preview)")
+    if L.name.split("-")[0] == "reading":
+        # maintainer, 2026-10-07: no line inside a lens or zoom window is clipped
+        run(L, [str(HERE / "check_lens.py"), str(L), "--dir", d], "lens check (silent preview)")
     run(L, [str(HERE / "build_narration_review.py"), str(L)], "narration review page")
     import length_budget            # ADR 023: estimated length against target, every warning
     require_gate(L, "narration", length_budget.gate_summary(L))
@@ -656,9 +659,8 @@ def stage_audio_build(L, a):
         need = [u["id"] for bd in n["boards"] for st in bd["states"] for u in st["utterances"]
                 if (idx.get(u["id"]) or {}).get("text") != spoken(u["text_with_cues"])]
         if need:
-            if a.budget is None:
-                raise Stop("synthesis (Cartesia) is paid: run with --budget USD")
-            cmd = [str(HERE / "synthesize_narration.py"), str(L), "--pages", pp(s["pages"])]
+            # Cartesia is not rationed (ADR 028): no budget is needed to synthesise
+            cmd =[str(HERE / "synthesize_narration.py"), str(L), "--pages", pp(s["pages"])]
             if s["title"] in fails:
                 cmd.append("--accept-terms")     # judged by ear at the final gate (ADR 005)
             run(L, cmd, f"synthesis, {s['title']} ({len(need)} utterances)")
@@ -687,6 +689,8 @@ def stage_player(L, a):
         # ADR 026 (maintainer, 2026-10-06): every phrase of a text read aloud
         # has its mark, timed to the voice's own words
         run(L, [str(HERE / "check_doc_marks.py"), str(L)], "doc marks check")
+        # maintainer, 2026-10-07: no line inside a lens or zoom window is clipped
+        run(L, [str(HERE / "check_lens.py"), str(L), "--dir", d], "lens check")
     # ADR 027 amendment (maintainer, 2026-10-06): never a monotonous delivery;
     # the clips under the flag line are listed for the final gate's ear
     run(L, [str(HERE / "pitch_check.py"), str(L)], "pitch check")

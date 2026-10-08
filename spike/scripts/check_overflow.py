@@ -102,7 +102,9 @@ HARNESS = r"""
         const over = { top: A.t - r.top, bottom: r.bottom - A.b, left: A.l - r.left, right: r.right - A.r };
         const worst = Object.entries(over).filter(([, v]) => v > TOL).sort((a, b) => b[1] - a[1])[0];
         const cs = getComputedStyle(el);
-        const clipped = /(hidden|clip|auto|scroll)/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + TOL;
+        // a Part B text's lens frame hides the text beyond it by design (1.15)
+        const clipped = /(hidden|clip|auto|scroll)/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + TOL
+                        && !el.classList.contains("lens-frame");
         if ((worst || clipped) && !seenOut.has(bd.id + "|" + id)) {
           seenOut.add(bd.id + "|" + id);
           out.push({ board: bd.id, block: id, t, state: (stateAt(bd, t) || {}).id || null,
@@ -113,6 +115,9 @@ HARNESS = r"""
         for (const lab of el.querySelectorAll(LABELS)) {
           const txt = lab.textContent.trim();
           if (!txt) continue;
+          // a practice-set text's header is its title as released (ADR 026), not a
+          // label the lesson writes: a code in it ("RC-12") stays as released
+          if (lab.closest(".doc")) continue;
           const tt = getComputedStyle(lab).textTransform;
           const w = tt === "uppercase" ? "(text-transform: uppercase)" : capsWord(txt);
           if (w && !seenCaps.has(id + "|" + txt)) {

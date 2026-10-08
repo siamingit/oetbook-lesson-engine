@@ -380,3 +380,127 @@ Added at the maintainer's request in the review of reading-02-part-a.
 - **No lesson may suggest using a highlighter in the paper test**, in words
   or in a picture. The highlight on a board is only the lesson's display.
   Carried by the reading rule (screens, narration and QA prompts).
+
+## Amendment, 2026-10-06: the Part B question method, the vocabulary layer built, bundle 1.15
+
+Added at the maintainer's request in the brief for Reading lesson 3 ("Part B
+question method (new; record it in ADR 026)") and approved with bundle 1.15 at
+its source gate (2026-10-06).
+
+### The Part B question method
+
+- **The method** (maintainer). Each Part B question is solved in eight steps,
+  so the learner reads the question and the options before the text (QAT:
+  Question, Answers, Text), and searches before the answer is shown:
+  1. the question appears and is read; its keywords are marked;
+  2. the three options are read, with their keywords marked (underlined, as
+     the instructor underlines them);
+  3. **try it first**: the learner is invited to pause and choose, then a few
+     seconds of silence (4 s);
+  4. the extract appears: the whole text and the question on one board. Until
+     then the text is **covered** (its type tag shown, its room kept), as the
+     instructor covers it in yellow while he reads the question and options;
+  5. keyword pairs light up in shared colours (`match1` to `match3`);
+  6. the paraphrase bridge links the text's wording to the correct option;
+  7. each wrong option is ruled out: struck through, with a short reason label
+     based on the release's own feedback for that option (at most 12 words in
+     the prompt, 14 in the audit; A2-B1; QA checks it against the text);
+  8. the answer is confirmed: a tick on the option.
+- Every phrase read from a text is marked (the rule of 2026-10-06 and
+  `check_doc_marks.py`); nothing is read or marked in a covered text.
+- **Boards of a Part B text**, in order: its pre-teaching board, its question
+  board, its word-recap board (below).
+
+### The vocabulary layer, as built
+
+- **The mapping file** `<library>/course/vocab-ids.json` exists
+  (`vocab.py --sync`): each word has a stable engine key (`w:` and the ID first
+  seen), its current `lx:` ID, its earlier IDs and the engine's image brief for
+  its gloss picture (`vocab.py --briefs`). Screens store the key; a bundle's
+  `lx:` ID is read from the file at build time.
+- **Pre-teaching board**: the instructor's word-to-meaning matching table
+  (format c), built by code from the word bank (the words in order, their
+  meanings moved one place on), taught row by row: an arrow from the word to
+  its meaning, then the word's gloss. The instructor's other two formats are
+  used where the set's own words fit them (maintainer, 2026-10-06): a
+  collocation pair (a) and an attributive-noun chain (b; the qualifier is a
+  noun used as a modifier), each a one-row table of the text's own words.
+- **Gloss** (bundle 1.15): the word, its meaning, a synonym and the example,
+  all from the word bank, the engine's own background-free image, and the word
+  bank's pronunciation clip on a button the learner taps (no autoplay, so no
+  second voice in the narration; maintainer, 2026-10-06). The clips are copied
+  into the lesson (`generated/vocab-audio/`). A word is glossed where it is
+  pre-taught and again wherever it occurs in the text, the question or an
+  option.
+- **Word-recap board**: a table of each word, its meaning and a synonym, built
+  by code from the word bank, at the end of each text.
+- `vocab.py --check` fails a word with no meaning, synonym, example, audio
+  file or image brief; a gap in the word bank is an issue in the exercises
+  repository, never filled by the engine (none for oa-set-rb-0001).
+
+### How it is carried (bundle 1.15)
+
+- A question block of a Part B item carries `question.options` (`{option,
+  letter, text}`, in the release's display order) and parts (`items`):
+  `{kind: "out", option, text}` for each wrong option, then `{kind: "key",
+  option}`. The screens model writes them as strings on the question
+  placeholder ("out|B|reason", "key|A"); code checks them against the release's
+  key. The question is pinned, so its parts may be revealed in later states:
+  the bundle puts their times in the board's `reveal`, where they stay.
+- A thought named "Covered: ..." on a Part B question board makes a covered
+  state (a state's `veil`); covered thoughts come first.
+- Gloss blocks and word tables are placeholders the model names by `lx:` ID
+  ({"type": "gloss", "label": "lx:..."}, {"type": "table", "label": "MATCH
+  lx:... lx:..."} or "RECAP ..."); code builds them.
+- New document types `procedure`, `manual`, `notice`, and a page look for each
+  of the six genres, drawn by the stylesheet only (no word added).
+- Everything is added only to a lesson whose set has a Part B (format 1.15,
+  `PART_B_CSS`); Reading 1 and 2 and every other lesson are unchanged, checked
+  by rendering all 13 built lessons before and after.
+
+### The Part B lens (maintainer, 2026-10-07)
+
+- **Why.** On a question board the whole text, the question with its three
+  options and the glosses share one board, so the fit sets the text at the
+  table floor (1.9% of the frame: about 12 px on a laptop, 8.7 px on a phone),
+  and the camera cannot zoom a one-column page (a full-width row fits at 1x).
+  The maintainer, at the silent-player review: "build the lens, as in Part A's
+  map. It zooms onto the paragraph or lines being read, readable on a phone. Do
+  not shorten the glosses."
+- **The lens.** The text keeps the room it takes unzoomed, as a frame of its
+  own. While the text is uncovered and the spotlight has a row, the text is set
+  at body size (3.2% of the frame, readable on a phone) inside that frame, the
+  row being read is brought to the middle, and the others are dimmed; the
+  lens centres on the latest phrase marked in the text, so a paragraph longer
+  than the frame shows the words being read. Marks and the pointer are drawn
+  only where the frame shows them. The camera does not zoom on such a board.
+- **Carried by** a board's `lens` (bundle 1.15, rule 35), set by the builder on
+  every Part B question board; the row is the spotlight's (`focus`, rule 11),
+  which follows what is read and marked. The player's `applyDocLens`.
+- **Exemptions, as for the map** (maintainer: "as in Part A's map"): the lensed
+  text's words move by design, so the layout check leaves them out (§8a); the
+  frame hides the text beyond it, so the overflow check and the fit do not count
+  it as clipped.
+- **Whole lines, a cue, the whole extract first** (maintainer, 2026-10-07, at the
+  final-gate review: the lens cut the first and last lines in half). The lens's
+  window is a run of whole lines grown from the line being read; its edges lie
+  midway between two lines, never through one. Where more text lies above or
+  below, a band of about half a line shows the next line under a soft fade (a
+  mask), so the learner sees that the text goes on; marks and the pointer are
+  drawn only in the window. When the text first appears, the whole extract shows
+  once: the lens starts only at the board's `lens_from`, the end of the first
+  sentence said once the text is uncovered (3 seconds at least).
+- **Checked, not eyeballed**: `check_lens.py` drives the player to every moment
+  of every board with a lens or a map and fails any line of text that lies partly
+  inside a lens or zoom window and partly outside it, at phone-landscape and
+  laptop width; the runner runs it on a Reading lesson's silent preview and its
+  finished player. Run on Reading 2's map zoom (2026-10-07) it found clipped lines
+  there (77 at the two widths).
+- **The map's zoom shows whole lines too** (maintainer, 2026-10-07: "apply the
+  same whole-line window to the map's zoom ... Change only the zoom windows").
+  When the map zooms into a text or a part, its view shows a window of whole
+  lines grown from the part being read (from the text's top when no part is
+  chosen), with the same faded half-line cue above and below. Reading 2's player
+  was rebuilt with it: 0 clipped lines; its bundle, narration, timing and audio
+  are unchanged, and Reading 2 keeps its final approval unless the maintainer
+  finds a problem in the changed moments.
