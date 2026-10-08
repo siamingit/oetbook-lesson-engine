@@ -4,7 +4,7 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.15 for a Reading Part B lesson, 1.14 for a Reading lesson with a map of its texts, 1.13 for another Reading lesson, 1.12 for every other lesson. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.16 for a Reading Part B lesson, 1.14 for a Reading lesson with a map of its texts, 1.13 for another Reading lesson, 1.12 for every other lesson. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
 2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
 table boards, on 2026-09-25 (docs/adr/007-table-boards.md); 1.3, the board style
@@ -43,6 +43,7 @@ A change to it is a new format version (§3), recorded in a new ADR.
 | 1.13 | 2026-10-05 | Reading lessons only: a core `table` block's `doc` (a practice-set text drawn as a document) and a `plain` block's `question` (a practice-set question), both null on every other block of the lesson; the mark cue types `match1`, `match2`, `match3` (keyword pairs); rules 29 and 30; `blocks.css` adds the documents' and questions' rules (ADR 026) |
 | 1.15 | 2026-10-06 | a Reading Part B lesson only (ADR 026, the Part B question method and the vocabulary layer): a question block's `question.options` and its parts (`items` kinds `out`, `key`), revealed in later states and kept in the board's `reveal`; a state's `veil` (the text covered); a gloss's `synonym` (part kind `synonym`), `audio` and `lexicon`; a table's `vocab_table`; document types `procedure`, `manual`, `notice`; rules 32 to 34; `blocks.css` adds the Part B rules. Additive: a 1.14 renderer shows the options, the gloss's synonym and the button, and draws the text uncovered |
 | 1.14 | 2026-10-06 | a lesson with a map of its texts only (ADR 026, the Part A question method): a core `table` block's `map` (the four texts as one table, each starting at its own row), null on every other block; on a map board, a state's `doc` and `zoom`; rule 31; `blocks.css` adds the map's rules. Additive: a 1.13 renderer that ignores `map`, `doc` and `zoom` draws a map as a table of every part |
+| 1.16 | 2026-10-08 | a Reading Part B lesson only (ADR 026, 2026-10-08 amendment): a question board in two columns, the extract whole, replacing 1.15's lens: a board's `split`; a state's `overlay` (glosses drawn over the question column), a gloss's going as a `clears` entry; the board's `focus` with no row until the whole extract has shown; `lens` and `lens_from` no longer written; rule 36 (rule 35 is 1.15 only); `blocks.css` adds the whole extract's spotlight. Minor: a 1.15 renderer finds no `lens` and draws the board as a table board, every block in one flow |
 
 ---
 
@@ -171,7 +172,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.12"`; `"1.13"` for a Reading lesson; `"1.14"` for a lesson with a map of its texts; `"1.15"` for a Reading Part B lesson |
+| `format_version` | string | `"1.12"`; `"1.13"` for a Reading lesson; `"1.14"` for a lesson with a map of its texts; `"1.16"` for a Reading Part B lesson (`"1.15"` for one built before 2026-10-08) |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -300,8 +301,9 @@ two things must hold, because cues and the reading pointer depend on them:
 | `pinned` | 1.3. `{block: time}`: the working blocks that stay, from their reveal to the board's `until` |
 | `wordmarks` | 1.3. `[{block, text, cls, time}]`: from `time` to the board's `until`, `text` in `block` is marked `cls`, a word class (its colour, docs/02-DESIGN-SYSTEM.md §7c) or `slide-underline` (the slide's own underline). 1.4: with `row` and `col`, `text` is marked inside that table cell only |
 | `palette` | 1.4 only. Not written from 1.5: every word class has one colour everywhere. A reader treats it as absent |
-| `lens` | 1.15. On a Part B question board: true. The text is read through its lens (rule 35). Absent on other boards |
-| `lens_from` | 1.15. On a board with `lens`: the time from which the lens may follow the reading; before it, once the text is uncovered, the whole extract shows (rule 35) |
+| `lens` | 1.15 only. On a Part B question board: true. The text is read through its lens (rule 35). Not written from 1.16 (the board has `split`); a reader treats it as absent |
+| `lens_from` | 1.15 only. On a board with `lens`: the time from which the lens may follow the reading; before it, once the text is uncovered, the whole extract shows (rule 35). Not written from 1.16: the same moment is in the board's `focus`, which has no row until then |
+| `split` | 1.16. On a Part B question board: the share of the board's width, per cent, of the column that holds its table (the practice-set text), shown whole; the question and every other block are the column beside it (rule 36). Absent on other boards |
 | `focus` | 1.2. On a table board, the spotlight in time order: `[{time, row, col}]`, from each `time` the row in focus and the cell highlighted (both from 0; `col` null for the row alone; `row` null for the whole table, nothing dimmed). Empty on other boards |
 | `tight` | 1.8. How tightly the board is set so its fullest state fits (ADR 011): 0, 1 (half the gap between blocks) or 2 (and half the blocks' vertical padding), on the whole board |
 | `verdicts` | 1.6. On a board whose table is a choice table, `[{row, col, verdict, time}]` in time order: from `time` to the board's `until`, the cell shows its verdict (rule 18). A wrong cell's time is its first strike, or the end of its row's last speech; a right cell's is its first circle, or when its row's last wrong cell fades; a possible cell's is the end of its row's last speech. Empty otherwise |
@@ -319,8 +321,9 @@ two things must hold, because cues and the reading pointer depend on them:
 | `row` | 1.2. On a table board, the row this state teaches (from 0), or null for the whole table; null on other boards |
 | `doc` | 1.14. On a map board (its `table` has `map`): the text in view, its index in `map.docs`, or null for all four. Absent on other boards |
 | `veil` | 1.15. On a Part B question board: true while the text (the board's `table`) is covered, false once it appears. Absent on other boards |
+| `overlay` | 1.16. On a Part B question board (one with `split`): the working blocks of this state, glosses only, drawn over the foot of the question column because they do not fit in it beside the question (rule 36); empty when none. Absent on other boards |
 | `zoom` | 1.14. On a map board: null (the four texts small; with `doc`, the others dimmed), `"doc"` (that text alone, at a document's size) or `"row"` (the state's `row` of that text set larger, in the middle of the map's frame). Absent on other boards |
-| `clears` | 1.8. `[{time, blocks}]` in time order: from `time`, the working `blocks` are cleared (not drawn) for the rest of the state, so the note revealed at `time` fits the board (ADR 011). Never a pinned block. Empty when nothing is cleared |
+| `clears` | 1.8. `[{time, blocks}]` in time order: from `time`, the working `blocks` are cleared (not drawn) for the rest of the state, so the note revealed at `time` fits the board (ADR 011). 1.16: also a gloss in the state's `overlay`, at the moment before anything of the question under it is read or marked. Never a pinned block. Empty when nothing is cleared |
 | `reveal` | `{id: time}` for every working block and every part of a working diagram |
 | `utterances` | what is said in this state, in order |
 
@@ -537,7 +540,7 @@ These are the only rules. Every time and target they use is in the bundle.
 34. **A pronunciation clip** (1.15): a gloss with `audio` shows a button with no
     words; tapping it plays the clip. The lesson's own clock never plays it;
     the reference player pauses the lesson while it plays and resumes after.
-35. **A text's lens** (1.15): on a board with `lens`, the board's table (a
+35. **A text's lens** (1.15 only; replaced by rule 36 from 1.16): on a board with `lens`, the board's table (a
     practice-set text) keeps the room it takes unzoomed as a frame of its own.
     While the current state's `veil` is false, the time is at or after the
     board's `lens_from` and the spotlight (rule 11) has a row, the text is set at
@@ -548,6 +551,20 @@ These are the only rules. Every time and target they use is in the bundle.
     cue. Marks and the pointer inside the text are drawn only in the window. The camera does not zoom on such a board (rule
     13). The lens moves the text's words by design (rule 19 does not apply to
     them).
+36. **A Part B question board in two columns** (1.16): on a board with `split`,
+    the board's table (a practice-set text, rule 29) is drawn whole as a page in
+    a column `split` per cent of the board's width, at its `font`, from the
+    board's top; every other block (the question, its options and labels, the
+    notes, the glosses, the board's picture) is drawn in a column beside it, in
+    the board's order, never over it. Once uncovered (rule 33), every line of the
+    text is shown at every moment: nothing scrolls, zooms or hides any of it,
+    the camera does not move (rule 13 does not apply), and none of its words
+    move (rule 19). The spotlight (rule 11) dims the other rows only slightly,
+    so they stay readable, and draws no highlighted cell on this text
+    (`blocks.css`: the class `qtext` the renderer sets on it). A block in the
+    state's `overlay` is drawn over the foot of the question column, its top edge
+    between two lines of what it covers, never over the text or another note;
+    while it is shown, a mark or the pointer under it is not drawn.
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and

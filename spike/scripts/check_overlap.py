@@ -17,6 +17,11 @@ board appears or goes, as in check_overflow.py, with the camera's zoom undone.
 No screenshot is interpreted: every figure is geometry the browser reports.
 Marks are drawn in an overlay (design system §8a) and are not blocks; they are
 not measured here.
+
+One exception (bundle 1.16, rule 36; maintainer, 2026-10-08): on a Part B
+question board, a gloss that does not fit beside the question is drawn over the
+foot of the question column (its state's `overlay`). It may lie over the board's
+question and over nothing else: never over the extract or another note.
 """
 
 import argparse
@@ -95,11 +100,16 @@ HARNESS = r"""
       const keep = camEl.style.transform;
       camEl.style.transform = "none";
       const els = [...blockEls].filter(([, el]) => shown(el) && visible(el));
+      const st = stateAt(bd, t);
+      const over = new Set(isQBoard(bd) && st ? st.overlay || [] : []);
+      const pins = new Set(Object.keys(bd.pinned || {}));
       const rects = els.map(([id, el]) => [id, el, el.getBoundingClientRect()]);
       for (let i = 0; i < rects.length; i++) {
         for (let j = i + 1; j < rects.length; j++) {
           const [a, ea, ra] = rects[i], [b, eb, rb] = rects[j];
           if (ea.contains(eb) || eb.contains(ea)) continue;
+          // 1.16: a gloss over the question column, over the question only
+          if ((over.has(a) && pins.has(b)) || (over.has(b) && pins.has(a))) continue;
           const c = cross(ra, rb);
           const key = bd.id + "|" + [a, b].sort().join("|");
           if (c && !seenB.has(key)) {

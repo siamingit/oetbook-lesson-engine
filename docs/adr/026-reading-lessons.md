@@ -460,6 +460,10 @@ its source gate (2026-10-06).
 
 ### The Part B lens (maintainer, 2026-10-07)
 
+**Superseded on Part B question boards on 2026-10-08** by the two-column board
+(the amendment of that date, below). Kept as history: Reading 3 was built with it
+in bundle 1.15. The map's whole-line zoom (the last point here) stands.
+
 - **Why.** On a question board the whole text, the question with its three
   options and the glosses share one board, so the fit sets the text at the
   table floor (1.9% of the frame: about 12 px on a laptop, 8.7 px on a phone),
@@ -504,3 +508,111 @@ its source gate (2026-10-06).
   was rebuilt with it: 0 clipped lines; its bundle, narration, timing and audio
   are unchanged, and Reading 2 keeps its final approval unless the maintainer
   finds a problem in the changed moments.
+
+## Amendment, 2026-10-08: the Part B question board in two columns, the extract whole (bundle 1.16)
+
+Added at the maintainer's request after the final-gate review of reading-03-part-b
+("record it as an ADR 026 amendment replacing the lens on Part B question boards").
+It replaces the Part B lens (2026-10-07, above) on every Part B question board.
+
+### Why
+
+The maintainer, at the final-gate review (2026-10-08): "Not acceptable. The box is
+small and the whole text does not fit in it. The reading text must be given more
+room, or the font can be made smaller as far as it stays readable. Now the whole
+text is not visible and it scrolls during the lesson." Measured on the player at
+1296 px: the extract, the question with its three options and the gloss were
+stacked, so the lens showed about 4 lines of an extract of about 8 and scrolled
+it, while the right of the question box and the foot of the board stayed empty.
+
+### The rule (maintainer)
+
+- **The whole extract is visible at every moment of a Part B question board once
+  it is uncovered**: no lens, no scrolling, no window, no hidden lines. The covered
+  state (the veil) before it is uncovered is unchanged.
+- **Two columns.** The extract is a fixed page in one column, its type tag and
+  page look kept. The question, its options, the reason labels, the tick, the
+  notes, the glosses and the board's picture are in the other column.
+- **The split** (maintainer, in chat, 2026-10-08, after the measurements below):
+  the question column gets the room it needs at body size: the narrowest column
+  that holds the question and every note of every state, with the fit's clears,
+  tight setting and smaller picture (ADR 011, ADR 021). The extract's column takes
+  the rest, and its text is set at the largest size at which it fits whole, from
+  body size (3.2% of the frame) down to a floor of 2.6%, never below. The extract
+  need not be the larger share. An extract that would not fit whole at 2.6% stops
+  the build and is reported with numbers; scrolling never comes back.
+- **Only a gloss may go over the question column.** A gloss that does not fit in
+  the question column with the question and the options is drawn over that
+  column's foot, never over the extract or another note. It is shown briefly:
+  it goes when the next note appears, and before any part of the question under
+  it is read or marked; it never stays while the narration still needs it. Its
+  top edge lies between two lines of what it covers, never through one.
+- **Following the reading** without moving the text: the spotlight shows the
+  paragraph being read at full strength and the others slightly dimmed (60%),
+  still readable; the marks, keyword pairs, paraphrase bridge and pointer are
+  drawn on the whole visible text as before. The spotlight's amber cell is not
+  drawn on the extract (the yellow pair is 14.9 from the amber, "Keyword pairs"
+  above). "The whole extract first" stays: once uncovered, the extract shows
+  undimmed until the moment 1.15 called `lens_from` (the end of the first
+  sentence said once it is uncovered, 3 seconds at least).
+- At phone-landscape and laptop width. The camera does not zoom these boards.
+- **Part C** will follow the same principle (a paragraph shown whole, beside its
+  question in two columns, the same split rule, no scrolling) instead of a lens;
+  nothing is built for it yet.
+
+### Measured, and why the split rule
+
+The brief first asked for the extract to take the larger share of the width.
+Measured in the player (fit_boards.py, phone-landscape width): with the extract
+in 51% or more of the width, the question column, whose question block keeps the
+room of its reason labels from the start (§7g of the design system), could not
+hold the question and some notes at body size on Text 1 (a 28-word callout 6 px
+over at 51%, 88 px over at 55%) and Text 4 (notes and a callout). The maintainer
+chose the rule above rather than drawing notes over the question column.
+
+### How it is carried (bundle 1.16, for a Part B lesson only)
+
+- A Part B question board carries `split` (the extract's share of the board's
+  width, per cent) instead of `lens` and `lens_from`, which are no longer written
+  (1.15 only). The extract's size is its table's `font` (since 1.2). A state of
+  such a board carries `overlay`: the glosses drawn over the question column. A
+  gloss's going is a `clears` entry at its time (1.8). The board's `focus` has no
+  row from the moment the text is uncovered until the whole-extract moment.
+  Rule 36 of docs/04-LESSON-BUNDLE.md.
+- **The fit** (`fit_boards.py`, ADR 011) chooses them in the drawn player: for
+  each Part B question board it tries the extract's share from 75% down, one per
+  cent at a time, and keeps the first at which the question column holds
+  everything; then the extract's size, from 3.2% down by 0.05; then the glosses
+  over the column and when each goes. Written to `analysis/fit.json` (`splits`,
+  `overlay`, `ends`, and `qboards`, what was tried), read by
+  `build_lesson_player.py`.
+- **The player** draws the two columns (the extract absolutely placed in its
+  column, the question and its notes in a column beside it), the gloss over the
+  column's foot, and no mark or pointer under a gloss while it is shown.
+- **Checks.** `check_lens.py` now also fails any line of a Part B question
+  board's extract that lies outside its page or the board, wholly or in part, at
+  any moment after it is uncovered, at both widths, and reports the extract's
+  size per board. `check_overflow.py` and the fit no longer exempt the extract.
+  `check_overlap.py` allows a gloss in its state's `overlay` over the board's
+  question, and nothing else over anything.
+- Every other lesson is unchanged: its bundle stays in its format, byte for byte
+  (checked by rendering all built lessons before and after, below).
+
+### Results (reading-03-part-b, 2026-10-08)
+
+- The fit chose, the same at phone-landscape and laptop width (the extract's share
+  of the width, its size as a share of the frame): Text 1 49%, 3.05%; Text 2 (the
+  email) 54%, 2.75%; Text 3 56%, 3.2%; Text 4 50%, 3.0%; Text 5 55%, 3.2%; Text 6
+  55%, 3.2%. No extract needed the 2.6% floor. Every gloss on these boards is
+  drawn over the question column; one goes early, before the keyword pair under it
+  is marked.
+- `check_lens.py`: 0 lines of any extract outside its page or the board, at both
+  widths, on the silent preview and the player; every other check passes.
+- Reading 3's narration, timing and audio are unchanged: 448 utterances and every
+  board and state time identical, and 464 files hash-identical (clips, word-bank
+  clips, narration, audio indexes). No paid call.
+- All 13 other built lessons, Reading 2's map zoom included, render identical
+  before and after (`render_compare.py`: data files byte for byte, both players
+  moment by moment). On Reading 3, only the six question boards changed, apart
+  from the hidden reading pointer's resting place at the first moment of the two
+  boards after a question board.

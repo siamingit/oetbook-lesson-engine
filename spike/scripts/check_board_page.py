@@ -53,7 +53,10 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
     # term in it passed the phoneme check (methodology §20).
     index_path = out_dir / "audio_index.json"
     index = json.loads(index_path.read_text(encoding="utf-8")) if index_path.exists() else {}
-    for u, _, _ in seq:
+    # a silent preview has no audio yet (meta.silent): its clips and their
+    # pronunciation are not checked; its timeline, boards and blocks are
+    silent = bool(meta.get("silent"))
+    for u, _, _ in ([] if silent else seq):
         e = index.get(u["id"])
         if not e:
             problems.append(f"{u['id']}: not in audio_index.json")
@@ -63,7 +66,7 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
             problems.append(f"{u['id']}: a lexicon term failed its phoneme check")
 
     referenced = set()
-    for u, _, _ in seq:
+    for u, _, _ in ([] if silent else seq):
         path = out_dir / u["audio_file"]
         referenced.add(u["audio_file"])
         if not path.exists():

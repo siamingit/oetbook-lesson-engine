@@ -1,4 +1,5 @@
-"""Lens check: no line of text inside a lens or zoom window is clipped.
+"""Lens check: no line of text inside a lens or zoom window is clipped, and a
+Part B question board's extract is whole.
 
     .venv/Scripts/python spike/scripts/check_lens.py <lesson_dir> --dir <player folder>
 
@@ -13,6 +14,12 @@ change of the spotlight), at phone-landscape and laptop width, and every line
 of text in the window's element is measured: a line that lies partly inside the
 window and partly outside it (above, below or to a side) fails. A line wholly
 outside the window (hidden, or in a cue band) is not a finding.
+
+A Part B question board in two columns (bundle 1.16, rule 36; maintainer,
+2026-10-08) has no lens: its extract is shown whole. At every moment after the
+text is uncovered, every line of the extract must lie inside its page and inside
+the board; a line outside either, wholly or in part, fails. The extract's size
+is reported per board, in px and as a share of the frame's height.
 
 The harness is the player itself, as in check_layout.py: no screenshot is
 interpreted; every figure is geometry the browser reports.
@@ -67,8 +74,61 @@ HARNESS = r"""
     }
     return out;
   }
-  const clipped = [], seen = new Set();
+  const clipped = [], seen = new Set(), whole = [];
   let samples = 0, windows = 0;
+  const body = camEl.parentElement;
+  // 1.16: the extract of a Part B question board, whole on its page and on the
+  // board at every moment after it is uncovered
+  for (const bd of boards) {
+    if (!isQBoard(bd)) continue;
+    const shown = bd.states.find(s => !s.veil);
+    if (!shown) continue;
+    const times = new Set([shown.start + 0.001]);
+    for (const s of bd.states) {
+      if (s.veil) continue;
+      times.add(s.start + 0.001); times.add(s.end - 0.001);
+      for (const u of s.utterances) for (const c of u.cues) {
+        times.add(c.time + 0.001);
+        if (c.time_end) times.add(c.time_end + 0.001);
+      }
+      for (const c of s.clears || []) times.add(c.time + 0.001);
+    }
+    for (const f of bd.focus || []) times.add(f.time + 0.001);
+    let font = null, out = 0, n = 0;
+    for (const t of [...times].filter(t => t >= shown.start && t < bd.until).sort((a, b) => a - b)) {
+      lastRenderT = null;
+      renderFrame(t);
+      samples++;
+      const el = blockEls.get(bd.table);
+      if (!el) continue;
+      windows++;
+      const P = el.getBoundingClientRect(), B = body.getBoundingClientRect(), cs = getComputedStyle(body);
+      const W = { top: Math.max(P.top + el.clientTop, B.top + parseFloat(cs.paddingTop)),
+                  bottom: Math.min(P.top + el.clientTop + el.clientHeight, B.bottom - parseFloat(cs.paddingBottom)),
+                  left: Math.max(P.left + el.clientLeft, B.left + parseFloat(cs.paddingLeft)),
+                  right: Math.min(P.left + el.clientLeft + el.clientWidth, B.right - parseFloat(cs.paddingRight)) };
+      const td = el.querySelector("tbody td");
+      font = td ? parseFloat(getComputedStyle(td).fontSize) : null;
+      for (const [q, text] of lines(el)) {
+        n++;
+        const sides = [];
+        if (q.top < W.top - TOL) sides.push("top");
+        if (q.bottom > W.bottom + TOL) sides.push("bottom");
+        if (q.left < W.left - TOL) sides.push("left");
+        if (q.right > W.right + TOL) sides.push("right");
+        if (!sides.length) continue;
+        out++;
+        const key = bd.id + "|" + text + "|" + sides.join(",");
+        if (seen.has(key)) continue;
+        seen.add(key);
+        clipped.push({ board: bd.id, kind: "extract", t: +t.toFixed(3), state: (stateAt(bd, t) || {}).id || null,
+                       text, sides, px: +Math.max(W.top - q.top, q.bottom - W.bottom, W.left - q.left, q.right - W.right).toFixed(1) });
+      }
+    }
+    const fh = frame.getBoundingClientRect().height;
+    whole.push({ board: bd.id, split: bd.split, font_px: font, font_cqh: font ? +(font / fh * 100).toFixed(2) : null,
+                 bundle_font: blocks[bd.table].font, lines_measured: n, lines_outside: out });
+  }
   for (const bd of boards) {
     const tb = bd.table && blocks[bd.table];
     if (!tb || !(tb.map || bd.lens)) continue;
@@ -113,7 +173,7 @@ HARNESS = r"""
   const pre = document.createElement("pre");
   pre.id = "lens-result";
   pre.textContent = JSON.stringify({ width: window.innerWidth, frame: Math.round(frame.getBoundingClientRect().width),
-                                     samples, windows, clipped });
+                                     samples, windows, clipped, whole });
   document.body.appendChild(pre);
 })();
 </script>
@@ -157,8 +217,12 @@ def main() -> None:
         res = run(a.dir / "player.html", width)
         report[name] = res
         failures += len(res["clipped"])
-        print(f"{name} ({res['frame']}px frame): {res['samples']} moments, {res['windows']} lens or zoom "
-              f"window(s) measured; {len(res['clipped'])} clipped line(s)")
+        print(f"{name} ({res['frame']}px frame): {res['samples']} moments, {res['windows']} lens, zoom "
+              f"or extract window(s) measured; {len(res['clipped'])} clipped line(s)")
+        for w in res.get("whole") or []:
+            print(f"  {w['board']}: the extract {w['split']}% of the width, its text {w['font_px']}px "
+                  f"({w['font_cqh']}% of the frame; bundle {w['bundle_font']}); {w['lines_outside']} of "
+                  f"{w['lines_measured']} line measurements outside its page or the board")
         for c in res["clipped"][:a.show]:
             print(f"  CLIPPED {c['board']} ({c['kind']}) at {mmss(c['t'])}: {c['text']!r} cut at the "
                   f"{'/'.join(c['sides'])} by {c['px']}px")
@@ -166,7 +230,8 @@ def main() -> None:
     out.write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
     if failures:
         raise SystemExit(f"lens check failed: {failures} clipped line(s); see {out}")
-    print("lens check passed: every line inside a lens or zoom window is whole")
+    print("lens check passed: every line inside a lens or zoom window is whole, and every Part B "
+          "question board's extract is whole on its page")
 
 
 if __name__ == "__main__":

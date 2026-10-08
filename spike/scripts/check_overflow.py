@@ -102,9 +102,9 @@ HARNESS = r"""
         const over = { top: A.t - r.top, bottom: r.bottom - A.b, left: A.l - r.left, right: r.right - A.r };
         const worst = Object.entries(over).filter(([, v]) => v > TOL).sort((a, b) => b[1] - a[1])[0];
         const cs = getComputedStyle(el);
-        // a Part B text's lens frame hides the text beyond it by design (1.15)
-        const clipped = /(hidden|clip|auto|scroll)/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + TOL
-                        && !el.classList.contains("lens-frame");
+        // no exemption: a Part B question board's extract is shown whole (1.16;
+        // its 1.15 lens, which hid the text beyond its frame, is gone)
+        const clipped = /(hidden|clip|auto|scroll)/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + TOL;
         if ((worst || clipped) && !seenOut.has(bd.id + "|" + id)) {
           seenOut.add(bd.id + "|" + id);
           out.push({ board: bd.id, block: id, t, state: (stateAt(bd, t) || {}).id || null,
