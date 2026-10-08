@@ -759,7 +759,9 @@ words fit them (the page ledgers name them).
   The scale is written on a plain block labelled SCALE (`left`, `text`, `right`, and
   `items` "marker|65", "out|A|20", "key|B|75"), and code makes it a block of type
   `scale`; the reply's schema is unchanged. Code adds the question's first part, which
-  shows its options; the release's bold targets (`**...**`, release format oa-text-v1)
+  shows its options; their room is taken from the start of the state in which they
+  appear (a Part C question with four options and three reason labels is about
+  as tall as the board at body size in half its width, measured by the fit); the release's bold targets (`**...**`, release format oa-text-v1)
   become a text part's `bold` and a question's `target`.
 - **Words by question** (`vocab.question_words`): a word goes to the first question
   whose paragraph, stem or options hold it; where two questions share a paragraph, to
@@ -771,7 +773,7 @@ words fit them (the page ledgers name them).
   text fits its column (too small to read; exempt from the table floor, as Part A's map),
   or the paragraph(s) at the size the fit chose, from body size to 2.6%. The guard
   measures every paragraph view of the board. A block that an opinion-signal mark names
-  keeps room between its lines (line height 2.15) from its board's start, so the label
+  keeps room between its lines (line height 1.75, the label at about 0.4 of the text's size) from its board's start, so the label
   never covers a line and nothing moves when it comes.
 - **On a Part C question board** a phrase read is marked with the amber highlight, and
   keyword pairs use `match1` and `match2` only: the yellow `match3` is 14.9 from the

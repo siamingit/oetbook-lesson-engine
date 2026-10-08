@@ -304,7 +304,20 @@ HARNESS = r"""
     const tried = [];
     let use = null;
     columnOnly = true;
-    for (const sp of given ? SPLITS.filter(x => x <= given) : SPLITS) {
+    let cands = given ? SPLITS.filter(x => x <= given) : SPLITS;
+    if (isPCBoard(bd) && cands.length > 2) {
+      // 1.17: a Part C board's question column is long; its split is found by
+      // halving (the column that fits at a share fits at every smaller one), then
+      // tried from there as below; a Part B board is fitted share by share as built
+      let lo = 0, hi = cands.length - 1;          // cands run from the widest extract down
+      const fitsAt = sp => { bd.split = sp; bd.tight = 2; const n = unfit.length;
+                             fitBoard(bd); const ok = unfit.length === n; unfit.length = n; return ok; };
+      if (fitsAt(cands[hi])) {
+        while (lo < hi) { const mid = (lo + hi) >> 1; if (fitsAt(cands[mid])) hi = mid; else lo = mid + 1; }
+        cands = cands.slice(Math.max(0, lo - 1));
+      }
+    }
+    for (const sp of cands) {
       bd.split = sp;
       // the question column, as any board: clears, then tight, then a smaller picture
       if (pid && !(INIT.pics || {})[pid]) resetPic(pid);
@@ -405,7 +418,7 @@ def run(player: Path, width: int, init: dict, font: str = "", qonly: bool = Fals
     harness.write_text(html.replace("</body>", script + "</body>"), encoding="utf-8")
     r = subprocess.run([edge, "--headless=new", "--user-data-dir=" + EDGE_PROFILE, "--disable-gpu", f"--window-size={width + 200},{int(width * 0.75)}",
                         "--virtual-time-budget=60000", "--dump-dom", harness.resolve().as_uri()],
-                       capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=900)
+                       capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=3600)
     harness.unlink(missing_ok=True)
     m = re.search(r'<pre id="fit-result">(.*?)</pre>', r.stdout, re.S)
     if not m:

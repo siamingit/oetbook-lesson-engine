@@ -588,7 +588,10 @@ These are the only rules. Every time and target they use is in the bundle.
     word), and nothing scrolls; a renderer whose fonts or frame leave less room keeps
     each paragraph view whole as rule 36's guard does, measuring every view the board
     has. The question's options (`options_later`) are shown from the reveal of its part
-    of kind `options`, their room kept from the start. Words of the text move between
+    of kind `options`, their room taken from the start of the state in which that
+    part is revealed (as a pinned block's, rule 21), never before; and the reason
+    labels' room likewise from the start of the state in which its first `out` part
+    is revealed. Words of the text move between
     the map and a paragraph by design (rule 19 holds within each view).
 38. **An opinion-signal mark** (1.17): `sig_opinion`, `sig_hedge`, `sig_judge` and
     `sig_main` are drawn as an underline under `text` in indigo `#2B006B`, teal
@@ -596,7 +599,7 @@ These are the only rules. Every time and target they use is in the bundle.
     respectively, with a small label above the phrase's first line, white on the same
     colour: "opinion word", "hedge", "judgement", "main clause"; `sig_aside` dims its
     phrase under a white veil, with no label. A block that any of these marks names is
-    set with line height 2.15 for its whole board, so a label lies between two lines and
+    set with line height 1.75 for its whole board, so a label lies between two lines and
     nothing moves when it comes.
 39. **An attitude scale** (1.17): a `scale` block is a line labelled `left`, `text` and
     `right`, at its two ends and its middle; its parts are revealed by rule 5 (a pinned

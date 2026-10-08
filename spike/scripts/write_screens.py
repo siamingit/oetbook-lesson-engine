@@ -3565,7 +3565,10 @@ PART_B_CSS = """
 # added only to a lesson whose practice set has a Part C, so no other lesson's
 # stylesheet changes. The renderer sets the classes: `pc-map` (the whole text as
 # a map, `pc-here` on the paragraph that holds the answer) or `pc-para` (only the
-# rows `pc-in` shown, whole, with the position cue in `data-pos`), and `opx` on a
+# rows `pc-in` shown, whole, with the position cue in `data-pos`), `optroom` on a
+# Part C question from the start of the state in which its options appear (their
+# room taken from then, as a pinned block's, rule 21), `rsnroom` likewise from the
+# state in which its first option is ruled out (the reason labels' room), and `opx` on a
 # block that an opinion-signal mark of its board names (room between its lines
 # for the mark's label, from the board's start, so nothing moves).
 PART_C_CSS = """
@@ -3579,9 +3582,12 @@ PART_C_CSS = """
 .tbl.core.doc.qtext.pc-map tbody tr.pc-here td{opacity:1;background:#E6F1FB;
   box-shadow:inset 0 0 0 max(2px,.35cqh) #185FA5}
 .tbl.core.doc.qtext.pc-map td.active{background:none}
-.tbl.core.doc.opx td{line-height:2.15}
-.blk.opx{line-height:2.15}
-.blk.q .qopts.pt{display:block}
+.tbl.core.doc.opx td{line-height:1.75}
+.blk.opx{line-height:1.75}
+.blk.q.qc .qopts.pt{display:none}
+.blk.q.qc.optroom .qopts.pt{display:block}
+.blk.q.qc .qo .orsn{display:none}
+.blk.q.qc.rsnroom .qo .orsn{display:block}
 .blk.scl{padding:1.2cqh 1.6cqw;background:#fff;border:max(1px,.2cqh) solid #D3D1C7;border-radius:1.2cqh}
 .scl-ends{display:flex;justify-content:space-between;gap:1em;font-size:.82em;color:#475569;font-weight:500}
 .scl-ends .scl-c{text-align:center;color:#888780;font-weight:400}
@@ -4625,6 +4631,16 @@ def render(lesson: Path, page: int, data: dict) -> int:
         if [[st["working"] for st in bd["states"]] for bd in saved["boards"]] !=                 [[st["working"] for st in bd["states"]] for bd in boards]:
             print("layout kept as narrated: the estimates would now plan it differently")
         boards = saved["boards"]
+        # 1.17: a Part C state's view (and row) follows its thoughts' purposes as they
+        # are now (overrides.json `purposes`); the plan's states and ids are kept
+        th_view = {h["id"]: h.get("view") for t in topics for h in t["thoughts"]}
+        for bd in boards:
+            for st in bd["states"]:
+                v = next((th_view[i] for i in st.get("thoughts") or [] if th_view.get(i)), None)
+                if "view" in st and v:
+                    st["view"] = v
+                    if not v["map"]:
+                        st["row"] = v["rows"][0]
     else:
         saved = None
     # each block's role (bundle 1.3), from the section's printed text with its

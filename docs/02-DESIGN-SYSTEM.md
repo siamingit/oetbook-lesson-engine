@@ -850,7 +850,8 @@ to 40.
   a lens window. A Part C text is an article: a page with a navy top rule.
 - **The options come later (QTA).** The question shows its stem alone, in-context
   words in bold as the test prints them; its options appear when the paragraph has
-  been read, their room kept from the start.
+  been read, their room taken from the start of that state (as a pinned block's,
+  §8b), so the question column has room for the reading before them.
 - **The attitude scale**: on a question about the writer's or a person's attitude or
   view only. A grey line labelled at its two ends and its middle in words fitted to the
   question ("Sceptical", "Neutral", "Enthusiastic"); a blue marker moves along it as the
@@ -1073,7 +1074,7 @@ ADR 026 (amendment of 2026-10-08); bundle 1.17, rule 38.
   pairs were: 28.8 or more between any two, and from the keyword pairs, the amber
   highlight, red, green, their tints and the marks' blue; dark enough for white label
   text (4.5:1 or better).
-- **Room for the label**: a block that a signal mark names keeps line height 2.15 on its
+- **Room for the label**: a block that a signal mark names keeps line height 1.75 on its
   whole board, so the label sits between two lines and nothing moves when it comes
   (§8a).
 - The narration says what each signal shows, and whose view a reported verb gives

@@ -505,6 +505,7 @@ function settleBoard(bd) {
   note();
   for (const st of bd.states) {
     pinRoom(bd, st);
+    optRoom(bd, st);                     // 1.17: the options' room, as in that state
     const tmp = st.working.filter(id => !(bd.pinned && id in bd.pinned)).map(id => [id, drawBlock(id, false, st)]);
     prewrap(bd);
     note();
@@ -832,12 +833,12 @@ function positionMarks() {
     }
     if (SIG_LABELS[m.type] && first) {
       // the label, above the first line of the phrase, in the line gap kept for it
-      const fs = first.height / 1.2 * .52;
+      const fs = first.height / 1.2 * .42;
       const d = document.createElement("div");
       d.dataset.mk = mi;
       d.className = "m-siglab " + m.type;
       d.textContent = SIG_LABELS[m.type];
-      d.style.cssText = "left:" + first.left + "px;top:" + (first.top - fs * 1.22) + "px;font-size:" + fs + "px";
+      d.style.cssText = "left:" + first.left + "px;top:" + (first.top - fs * 1.18) + "px;font-size:" + fs + "px";
       marksEl.appendChild(d);
     }
     if (m.type === "replace" && first && m.with) {
@@ -1049,9 +1050,28 @@ function mapFont(bd, el) {
   let lo = 0.3, hi = 3.2;
   if (!over(hi)) lo = hi;
   else for (let i = 0; i < 14; i++) { const mid = (lo + hi) / 2; if (over(mid)) hi = mid; else lo = mid; }
-  const f = +lo.toFixed(3);
+  // a margin under the page: its last line ends inside the page's own edge too
+  const f = +(lo * 0.95).toFixed(3);
   el.style.setProperty("--tf", f + "cqh");
   bd._mapFont = { key, f };
+}
+// 1.17: a Part C question's options take room from the start of the state in
+// which they are revealed (as a pinned block does, rule 21), never before
+function optRoom(bd, s) {
+  if (!isPCBoard(bd)) return;
+  for (const [id, el] of blockEls) {
+    const q = blocks[id] && blocks[id].question;
+    if (!q || !q.options_later) continue;
+    const stateOf = at => at === undefined ? Infinity
+      : (bd.states.find(st => st.start <= at + 1e-6 && at < st.until + 1e-6) || { start: at }).start;
+    const from = stateOf(bd.reveal[id + ".1"]);
+    // the reason labels likewise, from the state in which the first option is ruled out
+    const outs = (blocks[id].items || []).filter(it => it.kind === "out").map(it => bd.reveal[id + "." + it.part])
+      .filter(t => t !== undefined);
+    const rfrom = outs.length ? stateOf(Math.min(...outs)) : Infinity;
+    el.classList.toggle("optroom", !!s && s.start >= from - 1e-6);
+    el.classList.toggle("rsnroom", !!s && s.start >= rfrom - 1e-6);
+  }
 }
 function applyView(bd, s) {
   if (!isPCBoard(bd)) return;
@@ -1126,6 +1146,8 @@ function guardSet(bd, split, font, zoom) {
   if (t) t.style.setProperty("--tf", font + "cqh");
   zoomCol = zoom; zoomSkip = bd.table;
   for (const [id, el] of blockEls) if (id !== bd.table) el.style.zoom = zoom === 1 ? "" : zoom;
+  // 1.17: a Part C board's held places depend on the column's width and size
+  if (isPCBoard(bd)) settleBoard(bd);
 }
 function extractOver(bd) {
   const el = blockEls.get(bd.table), A = guardArea();
@@ -1148,7 +1170,11 @@ function columnOver(bd) {
   let worst = -Infinity;
   for (const st of bd.states) {
     pinRoom(bd, st);
+    optRoom(bd, st);
     const tmp = st.working.filter(id => !(bd.pinned && id in bd.pinned)).map(id => [id, drawBlock(id, false, st)]);
+    // as drawn: a pinned block held at its lowest place on the board (a scale
+    // under a Part C question; 1.17), measured with the hold
+    if (isPCBoard(bd) && bd._places) holdPlaces(bd);
     const moments = [st.start, ...Object.values(st.reveal), ...(st.clears || []).map(c => c.time)]
       .filter(t => t >= st.start && t < st.until).sort((a, b) => a - b);
     for (const m of moments) {
@@ -1586,6 +1612,9 @@ function renderFrame(t) {
     const el = blockEls.get(id);
     if (el) el.classList.toggle("on", t >= at);
   }
+  // 1.17: the options' room, from their state; set before the marks, whose
+  // redraw holds each kept block at its place
+  optRoom(bd, s);
   applyMarks(s, t, erased);
   applyTyping(bd, t);
   const focus = applyFocus(bd, t);
