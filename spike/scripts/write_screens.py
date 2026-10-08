@@ -4588,9 +4588,13 @@ def render(lesson: Path, page: int, data: dict) -> int:
                 b["note"] = ((b.get("note") or "") + f" (was {b['provenance']})").strip()
             b["provenance"] = "authored"
             b["exercise_item"] = None
+            kind = section_for_page(lesson, pages[0])[1].get("kind")
+            why = (f"added: the {kind}, maintainer brief 2026-10-08 (ADR 018 amendment). " if kind
+                   else "added: maintainer request 2026-09-29 (ADR 018). ")
             if "added:" not in (b.get("note") or ""):
-                b["note"] = ("added: maintainer request 2026-09-29 (ADR 018). "
-                             + (b.get("note") or "")).strip()
+                b["note"] = (why + (b.get("note") or "")).strip()
+            elif kind and "added: maintainer request 2026-09-29 (ADR 018). " in b["note"]:
+                b["note"] = b["note"].replace("added: maintainer request 2026-09-29 (ADR 018). ", why)
     for b in blocks.values():
         if b["type"] == "picture":
             import gloss_images
