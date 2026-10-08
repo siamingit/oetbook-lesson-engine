@@ -774,6 +774,9 @@ ADR 026, the Part A question method; bundle 1.14, rule 31.
   out. Every other block on a map board is held to §8a.
 - Marks, keyword pairs and the pointer inside the map are drawn only where the
   map's frame shows them.
+- **Whole lines only** (maintainer, 2026-10-07): a zoomed map never cuts a line;
+  where the text goes on above or below, the next line shows faded, as a cue, as
+  in the Part B lens (§7g; `check_lens.py`).
 
 ### 7g. A Part B question, the covered text, and the word bank's glosses (Reading)
 

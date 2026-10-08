@@ -48,11 +48,13 @@ HARNESS = r"""
   // the window of a lens element, in client px
   function windowOf(el) {
     const r = el.getBoundingClientRect();
-    if (el.classList.contains("dmap-view")) return { kind: "map", top: r.top, bottom: r.bottom, left: r.left, right: r.right };
+    const map = el.classList.contains("dmap-view");
     const sc = el.offsetHeight ? r.height / el.offsetHeight : 1;
-    const top = el.dataset.lensTop != null && el.classList.contains("lensed") ? +el.dataset.lensTop : 0;
-    const bot = el.dataset.lensBottom != null && el.classList.contains("lensed") ? +el.dataset.lensBottom : el.clientHeight;
-    return { kind: "text", top: r.top + (el.clientTop + top) * sc, bottom: r.top + (el.clientTop + bot) * sc,
+    // the window the player set: the map's zoom (2026-10-07) or a Part B lens
+    const set = el.dataset.lensTop != null && (map || el.classList.contains("lensed"));
+    const top = set ? +el.dataset.lensTop : 0;
+    const bot = set ? +el.dataset.lensBottom : el.clientHeight;
+    return { kind: map ? "map" : "text", top: r.top + (el.clientTop + top) * sc, bottom: r.top + (el.clientTop + bot) * sc,
              left: r.left + el.clientLeft * sc, right: r.left + (el.clientLeft + el.clientWidth) * sc };
   }
   function lines(el) {

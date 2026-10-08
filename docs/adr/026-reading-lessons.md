@@ -494,6 +494,13 @@ its source gate (2026-10-06).
   of every board with a lens or a map and fails any line of text that lies partly
   inside a lens or zoom window and partly outside it, at phone-landscape and
   laptop width; the runner runs it on a Reading lesson's silent preview and its
-  finished player. Run on Reading 2's map zoom (2026-10-07) it finds clipped lines
-  there (77 at the two widths); Reading 2 is left as approved until the
-  maintainer decides.
+  finished player. Run on Reading 2's map zoom (2026-10-07) it found clipped lines
+  there (77 at the two widths).
+- **The map's zoom shows whole lines too** (maintainer, 2026-10-07: "apply the
+  same whole-line window to the map's zoom ... Change only the zoom windows").
+  When the map zooms into a text or a part, its view shows a window of whole
+  lines grown from the part being read (from the text's top when no part is
+  chosen), with the same faded half-line cue above and below. Reading 2's player
+  was rebuilt with it: 0 clipped lines; its bundle, narration, timing and audio
+  are unchanged, and Reading 2 keeps its final approval unless the maintainer
+  finds a problem in the changed moments.

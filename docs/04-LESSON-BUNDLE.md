@@ -515,7 +515,9 @@ These are the only rules. Every time and target they use is in the bundle.
     over it. The state's `doc` dims every other text; `zoom` "doc" shows that
     text alone at a document's size, `zoom` "row" sets the state's `row`
     larger and brings it to the middle of the map's frame, every other row
-    dimmed (the spotlight, rule 11). The map's words are never shrunk to the
+    dimmed (the spotlight, rule 11). A zoomed map shows whole lines only
+    (2026-10-07): the window's edges lie between two lines, and where more text
+    lies above or below, about half a line of it shows under a soft fade. The map's words are never shrunk to the
     table text floor and need not be readable while all four show; the zoom
     is where they are read. Marks and the pointer inside the map are drawn
     only where the map's frame shows them. The camera does not move on a map

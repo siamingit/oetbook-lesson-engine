@@ -967,17 +967,73 @@ function applyLens(bd, s, jumped) {
   for (const p of grid.querySelectorAll(".dpanel")) p.classList.toggle("dfocus", doc !== null && +p.dataset.doc === doc);
   for (const tr of grid.querySelectorAll("tr.loupe")) tr.classList.remove("loupe");
   if (zoom === null) fitMapPages(el);
-  let ty = 0;
-  if (row !== null) {
-    const tr = grid.querySelector('tbody tr[data-row="' + row + '"]');
-    if (tr) {
-      tr.classList.add("loupe");
-      const r = offsetIn(tr, grid), H = view.clientHeight;
-      ty = Math.min(0, Math.max(H - grid.scrollHeight, H / 2 - (r.y + r.h / 2)));
-    }
+  let ty = 0, win = null;
+  if (zoom !== null) {
+    // the zoom shows whole lines only (maintainer, 2026-10-07, as the Part B
+    // lens): a window grown from the part being read, its edges between two
+    // lines; where more text lies above or below, about half a line of it under
+    // a soft fade, as a cue
+    const tr = row !== null ? grid.querySelector('tbody tr[data-row="' + row + '"]') : null;
+    if (tr) tr.classList.add("loupe");
+    win = mapWindow(view, grid, tr);
+    if (win) ty = win.ty;
   }
+  view._win = win ? { top: win.top, bottom: win.bottom } : null;
+  const H = view.clientHeight, faded = win && (win.top > 0 || win.bottom < H);
+  if (faded) {
+    view.dataset.lensTop = win.top.toFixed(1); view.dataset.lensBottom = win.bottom.toFixed(1);
+  } else { delete view.dataset.lensTop; delete view.dataset.lensBottom; }
+  const mask = faded ? "linear-gradient(to bottom,transparent 0," + (win.top > 0 ? "#000 " + win.top.toFixed(1) + "px," : "#000 0,")
+    + (win.bottom < H ? "#000 " + win.bottom.toFixed(1) + "px,transparent " + H + "px)" : "#000 100%)") : "";
+  view.style.maskImage = mask; view.style.webkitMaskImage = mask;
   grid.classList.toggle("glide", moved && !jumped);
   grid.style.transform = ty ? "translateY(" + ty.toFixed(1) + "px)" : "";
+}
+// The map's zoom window of whole lines (2026-10-07): the text's lines, in layout
+// px from the view's inner top (the camera's scale undone), and the run of whole
+// lines around the part being read (from the top when no part is chosen).
+function mapWindow(view, grid, tr) {
+  grid.style.transform = "";
+  const V = view.getBoundingClientRect(), sc = V.height ? view.offsetHeight / V.height : 1;
+  const top0 = V.top + view.clientTop / sc, H = view.clientHeight;
+  const rects = [];
+  const walker = document.createTreeWalker(grid, NodeFilter.SHOW_TEXT);
+  for (let n; (n = walker.nextNode());) {
+    if (!n.data.trim()) continue;
+    const rg = document.createRange(); rg.selectNodeContents(n);
+    for (const q of rg.getClientRects()) if (q.height > 0 && q.width > 0)
+      rects.push({ top: (q.top - top0) * sc, bottom: (q.bottom - top0) * sc });
+  }
+  rects.sort((x, y) => x.top - y.top);
+  const lines = [];
+  for (const q of rects) {
+    const l = lines[lines.length - 1];
+    if (l && q.top < l.bottom - 0.5 * (l.bottom - l.top)) { l.top = Math.min(l.top, q.top); l.bottom = Math.max(l.bottom, q.bottom); }
+    else lines.push({ top: q.top, bottom: q.bottom });
+  }
+  if (!lines.length) return null;
+  const last = lines.length - 1;
+  if (lines[0].top >= 0 && lines[last].bottom <= H) return { ty: 0, top: 0, bottom: H };
+  let k = 0;
+  if (tr) {
+    const R = tr.getBoundingClientRect(), mid = ((R.top + R.bottom) / 2 - top0) * sc;
+    k = lines.findIndex(l => l.bottom >= mid);
+    if (k < 0) k = last;
+  }
+  const lh = lines.map(l => l.bottom - l.top).sort((x, y) => x - y)[Math.floor(lines.length / 2)];
+  const cue = Math.round(lh * 0.5);
+  const above = i => (lines[i - 1].bottom + lines[i].top) / 2;
+  const below = j => (lines[j].bottom + lines[j + 1].top) / 2;
+  const fits = (i, j) => (j < last ? below(j) : lines[j].bottom) - (i > 0 ? above(i) : 0)
+                         <= H - (i > 0 ? cue : 0) - (j < last ? cue : 0);
+  let i = k, j = k, grew = true;
+  while (grew) {
+    grew = false;
+    if (j < last && fits(i, j + 1)) { j++; grew = true; }
+    if (i > 0 && fits(i - 1, j)) { i--; grew = true; }
+  }
+  const ty = i > 0 ? cue - above(i) : 0;
+  return { ty, top: i > 0 ? cue : 0, bottom: j < last ? below(j) + ty : H };
 }
 // a mark or the pointer inside the map is drawn only where the lens shows it
 // (1.15: and inside a Part B text's lens frame)
