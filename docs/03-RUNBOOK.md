@@ -262,7 +262,13 @@ prompts by the stages themselves. What the agent does by hand, in this order:
 
 A Part B lesson's bundle is format 1.16 (the question with its options, the
 covered text, the word-bank glosses; ADR 026, 2026-10-06 amendment; its question
-boards in two columns, the extract whole, 2026-10-08 amendment).
+boards in two columns, the extract whole, 2026-10-08 amendment). A Part C lesson's
+is format 1.17 (ADR 026, the Part C question method amendment of 2026-10-08): its
+question boards are two columns as Part B's, the text a map or the paragraph read,
+whole; the fit, the guard, `check_lens.py` and `check_wide_font.py` treat them as
+Part B's, measuring every paragraph view; words are pre-taught per question
+(`vocab.question_words`) and recapped by question; the page ledgers name where
+the instructor's formats (a) and (b) go.
 The bundle of a Reading lesson is format 1.13 (docs/04-LESSON-BUNDLE.md):
 documents, questions and the keyword pairs `match1` to `match3`
 (docs/02-DESIGN-SYSTEM.md §8). Paid stages refuse uncommitted code in the

@@ -685,3 +685,103 @@ chose the rule above rather than drawing notes over the question column.
   stands again. Deferred to a separate task: the places in other built lessons
   where content sits 2-7 px under the control bar at the small-phone frame, and
   Reading 1's picture at 9:05.
+
+## Amendment, 2026-10-08: the Part C question method, opinion signals and the attitude scale (bundle 1.17)
+
+Added at the maintainer's request in the brief for Reading lesson 4 ("record it as an
+ADR 026 amendment"; "Record both, and the Part C method, in an ADR 026 amendment"),
+which also approved the additive bundle format after 1.16 for Part C only. How each
+rule is carried was chosen by the agent under that brief; the maintainer may reverse it.
+
+### The Part C question method (maintainer)
+
+Each of the 16 Part C questions, in text order, is solved on a question board built on
+the Part A map and on Part B's two columns (the amendment above): the passage being
+solved is always shown whole, never scrolled, never in a lens window; the split rule,
+the 2.6% floor, the fit with Segoe UI, Arial and Roboto, and the player's guard apply
+as built for Part B. The steps:
+
+1. **Where we are**: the whole-text map of the current text, every paragraph, too small
+   to read on purpose. Questions follow the order of the text, paragraph by paragraph;
+   "read the whole text first" is not taught.
+2. **Question only**: the stem appears and is read, its keywords marked; the options
+   are not shown yet (QTA). The paragraph that holds the answer is then marked on the
+   map, because the stem names it or its keywords lead there.
+3. **Text**: the map gives way to that paragraph, shown whole in the text's column with
+   a position cue ("Paragraph 3 of 7") and the text's type tag; the question in the
+   other column. Two neighbouring paragraphs are shown together where the answer needs
+   both. Every phrase read is marked (`check_doc_marks.py`), the key words are marked,
+   and the opinion signals in it are marked by kind (below).
+4. **My own answer**: a short note gives the paragraph's main idea in relation to the
+   question, in simple words, before any option is seen.
+5. **Answers**: the four options appear and are read, their keywords marked.
+6. **Try it first**: the learner is invited to choose, then 4 s of silence.
+7. **Paraphrase bridge**: a keyword pair links the text's wording to the right option.
+8. **Rule out**: each wrong option struck through with a short reason label from the
+   release's own feedback (12 words in the prompt, 14 in the audit; A2-B1), naming the
+   distractor type where it helps.
+9. **Confirm**: a tick on the right option. On the paper test only a circle shaded with
+   a 2B pencil counts; no highlighter.
+
+**Boards of a Part C text**, in order: for each question, its pre-teaching board (the
+word-bank words of that question's paragraph, stem and options, each word once a text,
+at its first occurrence), then its question board; after the last question, one
+word-recap board. The instructor's formats (a) and (b) are used where the text's own
+words fit them (the page ledgers name them).
+
+### Opinion signals and the attitude scale (maintainer)
+
+- **Opinion-signal marks**, four kinds: an opinion word (believe, think, argue, claim,
+  say), a hedge (likely, probably, may, seems), a word of emotion or judgement
+  (unfortunately, worryingly, sensible), and the main clause that holds the view (a
+  subordinate clause beside it dimmed). Each kind is drawn as an underline in its own
+  colour and pattern, with a small text label above the words ("opinion word", "hedge",
+  "judgement", "main clause"), so colour never carries the meaning alone. Used on the
+  teaching boards of "How to identify opinions" and on the practice paragraphs.
+- **Colours, by measured difference** (CIEDE2000, as ADR 008 and the keyword pairs were
+  chosen; the agent's search over saturated colours with 4.5:1 contrast for white label
+  text): opinion word indigo `#2B006B`, hedge teal `#006B60`, judgement maroon `#6B0020`,
+  main clause brown `#6B4B00`. Each is 28.8 or more from the other three and from the
+  keyword pairs, the amber highlight, red, green, their tints and the marks' blue. The
+  brown and the teal are close to two word-class colours (noun, adjective), which a
+  Reading lesson does not draw.
+- **The attitude scale**, only for a question about the writer's or a person's attitude
+  or view: a line from a negative view to a positive one, its three labels fitted to the
+  question; a marker moves as the evidence in the paragraph is read; each option is
+  placed on it when it is ruled out (struck) or chosen (ticked).
+
+### How it is carried (bundle 1.17, a Part C lesson only)
+
+- **The screens model** writes a Part C question board as Part B's (the text's stimulus
+  ID as the fixed table, the question as a plain block with its parts), with thoughts
+  named by what the text shows: "Map: ...", "Map P3: ..." (the map, paragraph 3
+  marked), "Para 3: ..." or "Para 6-7: ...". Code turns them into each state's `view`.
+  The scale is written on a plain block labelled SCALE (`left`, `text`, `right`, and
+  `items` "marker|65", "out|A|20", "key|B|75"), and code makes it a block of type
+  `scale`; the reply's schema is unchanged. Code adds the question's first part, which
+  shows its options; the release's bold targets (`**...**`, release format oa-text-v1)
+  become a text part's `bold` and a question's `target`.
+- **Words by question** (`vocab.question_words`): a word goes to the first question
+  whose paragraph, stem or options hold it; where two questions share a paragraph, to
+  the later one when the word is in that question's evidence. The recap is one row per
+  question, each word with a synonym (`recap_grouped`): a Part C text uses 43 to 54
+  words, and one row per word with its meaning (Part B's recap) cannot be whole on one
+  board at any readable size (ADR 007: a table is never split).
+- **The player**: the text column shows the map at the largest size at which the whole
+  text fits its column (too small to read; exempt from the table floor, as Part A's map),
+  or the paragraph(s) at the size the fit chose, from body size to 2.6%. The guard
+  measures every paragraph view of the board. A block that an opinion-signal mark names
+  keeps room between its lines (line height 2.15) from its board's start, so the label
+  never covers a line and nothing moves when it comes.
+- **On a Part C question board** a phrase read is marked with the amber highlight, and
+  keyword pairs use `match1` and `match2` only: the yellow `match3` is 14.9 from the
+  amber (the agent's narrowing of the Part B rule, where the highlight is not used).
+- **Checks**: the narration audit fails a mark in the text while it is a map, a mark on
+  words of a paragraph that is not shown, `match3` on a Part C question board, an option
+  marked before the options appear, and a signal mark outside a Part C lesson; the
+  screens audit fails a board that does not open on the map with the question alone,
+  that never shows the paragraph, or whose scale ticks or rules out the wrong option;
+  `check_doc_marks.py` counts a signal mark as a mark; `check_layout.py` holds the text's
+  words still within each view, not between views; `check_lens.py` measures every line
+  of the text on its page and on the board at every moment, and reports the paragraph's
+  size. Every other lesson is unchanged (render_compare on all built lessons).

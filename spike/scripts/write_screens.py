@@ -4525,6 +4525,14 @@ def render(lesson: Path, page: int, data: dict) -> int:
     model_out = json.loads([b["text"] for b in raw["content"] if b["type"] == "text"][-1])
 
     topics = model_out["topics"]
+    # a thought's purpose corrected by the agent (overrides.json `purposes`, by
+    # thought id "t<topic>.<n>"; 2026-10-08, a Part C board whose answer needs two
+    # paragraphs: "Para 4-5: ..."); its blocks and ids are unchanged
+    ov = out_dir / "overrides.json"
+    for tid, purpose in (json.loads(ov.read_text(encoding="utf-8")).get("purposes") or {}).items() \
+            if ov.exists() else []:
+        tn, _, hn = tid.lstrip("t").partition(".")
+        topics[int(tn) - 1]["thoughts"][int(hn) - 1]["purpose"] = purpose
     unflatten(topics)
     import reading_rule                        # ADR 026: the practice set, built by code
     if reading_rule.is_reading(lesson):

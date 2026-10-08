@@ -1020,6 +1020,7 @@ def with_ids(states: list[dict]) -> list[dict]:
 # one. Each part is kept (raw_response.part-N.json, counted in the spend); the
 # joined reply carries no usage of its own, so nothing is counted twice.
 CHUNK_BOARDS = 10
+CHUNK_STATES = 45            # a part's states at most, about (Part B's largest: 51 in 43k output)
 
 
 def chunk_plan(data: dict) -> list[list[str]]:
@@ -1030,7 +1031,23 @@ def chunk_plan(data: dict) -> list[list[str]]:
     if len(ids) <= CHUNK_BOARDS:
         return [ids]
     size = math.ceil(len(ids) / math.ceil(len(ids) / CHUNK_BOARDS))
-    return [ids[i:i + size] for i in range(0, len(ids), size)]
+    weight = {b["id"]: len(b["states"]) for b in data["screens"]["boards"]}
+    if sum(weight.values()) <= CHUNK_STATES * math.ceil(len(ids) / size):
+        return [ids[i:i + size] for i in range(0, len(ids), size)]
+    # a section whose boards are heavy (a Reading Part C text: a question board has
+    # fifteen or more states) is sized by its states, so no part nears the output
+    # cap: consecutive runs of about CHUNK_STATES states each, never more boards
+    # than CHUNK_BOARDS in one
+    n = math.ceil(sum(weight.values()) / CHUNK_STATES)
+    target = sum(weight.values()) / n
+    runs, cur, w = [], [], 0
+    for i in ids:
+        if cur and (w + weight[i] > target * 1.15 or len(cur) >= CHUNK_BOARDS):
+            runs.append(cur)
+            cur, w = [], 0
+        cur.append(i)
+        w += weight[i]
+    return runs + ([cur] if cur else [])
 
 
 def draft(lesson: Path, pages: list[int], data: dict) -> None:

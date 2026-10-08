@@ -186,7 +186,8 @@ Line height 1.35 for body text in blocks.
 
 Three content colours, one highlight, and the colours of the board style
 (§7c: slide boxes, word classes, the definition pill, notes). No more, except
-in a Reading lesson, which adds the three keyword-pair colours (§8e).
+in a Reading lesson, which adds the three keyword-pair colours (§8e), and a
+Reading Part C lesson, which adds the four opinion-signal colours (§8f).
 
 | Colour | Meaning | Fill | Accent bar | Text |
 |---|---|---|---|---|
@@ -832,6 +833,35 @@ ADR 026, the Part B question method and the vocabulary layer; bundle 1.15, rules
   laptop frames, and `check_wide_font.py` (Verdana forced). Part C will follow
   the same principle.
 
+### 7h. A Part C question board and the attitude scale (Reading)
+
+ADR 026, the Part C question method (amendment of 2026-10-08); bundle 1.17, rules 37
+to 40.
+
+- **Two columns, as Part B's (§7g)**: the text in one, the question, its options,
+  labels and tick, the notes, the glosses, a scale and the board's picture in the
+  other, with the same split rule, floor, fit, guard and checks.
+- **The text, a map or a paragraph.** First the whole text as a map, every paragraph,
+  too small to read on purpose (exempt from the table floor, as Part A's map, §7f), the
+  paragraph that holds the answer marked in pale blue with a blue edge, the others
+  faded. Then only that paragraph (or two neighbours where the answer needs both),
+  whole, at the largest size from body size to 2.6% at which it fits, with a position
+  cue in the header ("Paragraph 3 of 7") and the text's type tag. Never scrolled, never
+  a lens window. A Part C text is an article: a page with a navy top rule.
+- **The options come later (QTA).** The question shows its stem alone, in-context
+  words in bold as the test prints them; its options appear when the paragraph has
+  been read, their room kept from the start.
+- **The attitude scale**: on a question about the writer's or a person's attitude or
+  view only. A grey line labelled at its two ends and its middle in words fitted to the
+  question ("Sceptical", "Neutral", "Enthusiastic"); a blue marker moves along it as the
+  evidence is read (the latest place only); each option's letter is placed on it, in a
+  small circle, struck on the pale red of "wrong" when ruled out, filled in green with
+  the tick colour when chosen. Two letters closer than a tenth of the line take two
+  lanes, above and below it, so they never meet. Pinned once shown.
+- **Words a phrase read takes** on a Part C question board: the amber highlight, and
+  keyword pairs `match1` and `match2` only (the yellow `match3` is too close to the
+  amber, §8e).
+
 ## 8. Marks
 
 Clean and re-authored. Never copies of the instructor's ink.
@@ -1024,6 +1054,30 @@ ADR 026; bundle 1.13 (docs/04-LESSON-BUNDLE.md rules 29 and 30).
   moves, never an underline or a circle. A skimming board has no pairs, so the
   highlight and the yellow pair never meet on one board.
 - Pair marks are refused outside Reading lessons by the narration audit.
+
+### 8f. Reading Part C: opinion-signal marks
+
+ADR 026 (amendment of 2026-10-08); bundle 1.17, rule 38.
+
+| Mark | Kind | Colour | Line | Label |
+|---|---|---|---|---|
+| `sig_opinion` | an opinion word: believe, think, argue, claim, say | indigo `#2B006B` | solid | opinion word |
+| `sig_hedge` | a hedge: likely, probably, may, seems | teal `#006B60` | dashed | hedge |
+| `sig_judge` | a word of emotion or judgement: unfortunately, worryingly | maroon `#6B0020` | dotted | judgement |
+| `sig_main` | the main clause that holds the view | brown `#6B4B00` | with end ticks | main clause |
+| `sig_aside` | a subordinate clause beside it | none: dimmed under a white veil | none | none |
+
+- **Colour never carries the meaning alone**: each kind has its own line pattern and a
+  small label, white on its colour, above the phrase's first line.
+- **Chosen by measured difference** (CIEDE2000), as the word classes and the keyword
+  pairs were: 28.8 or more between any two, and from the keyword pairs, the amber
+  highlight, red, green, their tints and the marks' blue; dark enough for white label
+  text (4.5:1 or better).
+- **Room for the label**: a block that a signal mark names keeps line height 2.15 on its
+  whole board, so the label sits between two lines and nothing moves when it comes
+  (§8a).
+- The narration says what each signal shows, and whose view a reported verb gives
+  ("patients say", "some doctors argue") when it is not the writer's.
 
 ## 9. Controls
 
