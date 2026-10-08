@@ -679,3 +679,9 @@ chose the rule above rather than drawing notes over the question column.
 - **For the website phase** (maintainer; not built now): consider bundling one
   open-licence web font for every lesson, so every device draws the metrics the
   fit measured.
+- **Approved** (maintainer, 2026-10-08, after reviewing commit dff3598): the
+  two-column question boards, and the small-phone judgement call (the question
+  column at 96% on Texts 1 and 2 at the 590 px frame). Reading 3's final approval
+  stands again. Deferred to a separate task: the places in other built lessons
+  where content sits 2-7 px under the control bar at the small-phone frame, and
+  Reading 1's picture at 9:05.
