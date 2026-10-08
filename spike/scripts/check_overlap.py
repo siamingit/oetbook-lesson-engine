@@ -22,6 +22,10 @@ One exception (bundle 1.16, rule 36; maintainer, 2026-10-08): on a Part B
 question board, a gloss that does not fit beside the question is drawn over the
 foot of the question column (its state's `overlay`). It may lie over the board's
 question and over nothing else: never over the extract or another note.
+
+A block is also never under the frame's header or its control bar (maintainer,
+2026-10-08: on a small frame the controls keep 44 px and cover more of it):
+every block shown is measured against both, as drawn at each width.
 """
 
 import argparse
@@ -38,7 +42,10 @@ atexit.register(shutil.rmtree, EDGE_PROFILE, True)
 
 EDGE = [r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
         r"C:\Program Files\Microsoft\Edge\Application\msedge.exe"]
-WIDTHS = {"phone": 812, "laptop": 1120}
+# the frame the reference player draws in a phone held landscape, 915x412 (its
+# controls keep 44 px, 13% of this frame), then phone-landscape and laptop
+# (maintainer, 2026-10-08: the board measured above the control bar at every width)
+WIDTHS = {"small phone": 590, "phone": 812, "laptop": 1120}
 TOLERANCE_PX = 2.0
 
 HARNESS = r"""
@@ -51,6 +58,8 @@ HARNESS = r"""
   style.textContent = "*{transition:none!important;animation:none!important}";
   document.head.appendChild(style);
   const TOL = __TOL__;
+  // a player built before bundle 1.16 has no Part B question board (and no isQBoard)
+  const qb = bd => typeof isQBoard === "function" && isQBoard(bd);
   function shown(el) {
     if (!el.isConnected || getComputedStyle(el).display === "none") return false;
     return el.dataset.layer === "fixed" || el.classList.contains("on");
@@ -98,10 +107,27 @@ HARNESS = r"""
       renderFrame(t);
       samples++;
       const keep = camEl.style.transform;
+      // under the header or the control bar, as the frame draws them and the
+      // camera shows them (as check_overflow.py: where a table board's camera
+      // has moved, the table may leave the view; its notes may not)
+      const viewed = bd.table && keep && keep !== "none";
+      for (const [id, el] of blockEls) {
+        if (!(shown(el) && visible(el)) || (viewed && !el.classList.contains("beside"))) continue;
+        const r = el.getBoundingClientRect();
+        for (const bar of [".hdr", ".ctl"]) {
+          const c = cross(r, document.querySelector(".frame " + bar).getBoundingClientRect());
+          const key = bd.id + "|" + id + "|" + bar;
+          if (c && !seenB.has(key)) {
+            seenB.add(key);
+            blocksOut.push({ board: bd.id, a: id, b: bar === ".ctl" ? "the control bar" : "the header", t,
+                             state: (stateAt(bd, t) || {}).id || null, w: +c[0].toFixed(1), h: +c[1].toFixed(1) });
+          }
+        }
+      }
       camEl.style.transform = "none";
       const els = [...blockEls].filter(([, el]) => shown(el) && visible(el));
       const st = stateAt(bd, t);
-      const over = new Set(isQBoard(bd) && st ? st.overlay || [] : []);
+      const over = new Set(qb(bd) && st ? st.overlay || [] : []);
       const pins = new Set(Object.keys(bd.pinned || {}));
       const rects = els.map(([id, el]) => [id, el, el.getBoundingClientRect()]);
       for (let i = 0; i < rects.length; i++) {

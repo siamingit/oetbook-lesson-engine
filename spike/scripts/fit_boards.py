@@ -43,6 +43,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_lesson_player import build          # noqa: E402
+from write_screens import has_part_b            # noqa: E402
 
 # Headless Edge runs with its own profile, removed on exit: with the default one,
 # a run could be handed to an Edge window already open and never return
@@ -53,6 +54,15 @@ atexit.register(shutil.rmtree, EDGE_PROFILE, True)
 EDGE = [r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
         r"C:\Program Files\Microsoft\Edge\Application\msedge.exe"]
 WIDTHS = {"phone": 812, "laptop": 1120}
+# the frame the reference player draws in a phone held landscape, 915x412: its
+# controls keep 44 px, 13% of this frame, so the board is shorter (maintainer,
+# 2026-10-08). Fitted for every lesson fitted from 2026-10-08 on, and a lesson
+# opted in with --small-phone; a lesson fitted before keeps its plan until then
+SMALL_PHONE = {"small phone": 590}
+# 1.16: a Part B question board is also fitted with the fonts other devices draw
+# for `system-ui` (Arial standing for Helvetica and San Francisco, Roboto for
+# Android); a wider font is the player's guard's (check_wide_font.py)
+QBOARD_FONTS = ["Arial", "Roboto"]
 TOLERANCE_PX = 1.0
 TABLE_FONT_MIN = 1.9          # cqh: docs/02-DESIGN-SYSTEM.md §7, Tables
 # 1.16, a Part B question board (ADR 026, 2026-10-08): the extract's share of the
@@ -66,13 +76,15 @@ HARNESS = r"""
 <script>
 (function () {
   window.__lockWidth = __WIDTH__;
+  window.__noGuard = true;            // 1.16: the fit measures the board itself, not the player's guard
+  const style = document.createElement("style");
+  style.textContent = "*{transition:none!important;animation:none!important}"
+    + (__FONT__ ? ".frame,.frame *{font-family:" + __FONT__ + "!important}" : "");
+  document.head.appendChild(style);
   fit();
   camEl.classList.remove("glide");
-  const style = document.createElement("style");
-  style.textContent = "*{transition:none!important;animation:none!important}";
-  document.head.appendChild(style);
   const TOL = __TOL__, FMIN = __FMIN__, INIT = __INIT__, PMAX = __PMAX__, PMIN = __PMIN__;
-  const SPLITS = __SPLITS__, QTOP = __QTOP__, QMIN = __QMIN__;
+  const SPLITS = __SPLITS__, QTOP = __QTOP__, QMIN = __QMIN__, QONLY = __QONLY__, NOQ = __NOQ__;
   const body = camEl.parentElement;
   function area() {
     const r = body.getBoundingClientRect(), cs = getComputedStyle(body);
@@ -105,7 +117,8 @@ HARNESS = r"""
   }
   function show(t) { lastRenderT = null; renderFrame(t); }
   const fonts = Object.assign({}, INIT.fonts || {});
-  const clears = {}, unfit = [];
+  // a pass for the Part B question boards only keeps every other board's plan
+  const clears = QONLY || NOQ ? Object.assign({}, INIT.clears || {}) : {}, unfit = [];
   // a table's text size, set on the block and on its drawing
   function setFont(bd, id, f) {
     fonts[id] = +f.toFixed(2);
@@ -324,7 +337,9 @@ HARNESS = r"""
     qboards[bd.id] = { split: use.split, font: f, whole, tight: use.tight, tried };
   }
   for (const bd of boards) {
+    if (isQBoard(bd) && NOQ) continue;      // the small phone: the player's guard fits it there
     if (isQBoard(bd)) { fitQBoard(bd); continue; }        // 1.16: its own columns
+    if (QONLY) continue;
     bd.tight = tight[bd.id] || 0;
     const n0 = unfit.length;
     // still outside after clearing: the board is made tighter, level by level,
@@ -366,7 +381,8 @@ HARNESS = r"""
 """
 
 
-def run(player: Path, width: int, init: dict) -> dict:
+def run(player: Path, width: int, init: dict, font: str = "", qonly: bool = False,
+        noq: bool = False) -> dict:
     edge = next((e for e in EDGE if Path(e).exists()), None)
     if not edge:
         raise SystemExit("Edge not found; the fit needs a browser")
@@ -374,7 +390,9 @@ def run(player: Path, width: int, init: dict) -> dict:
     html = player.read_text(encoding="utf-8")
     script = (HARNESS.replace("__WIDTH__", str(width)).replace("__TOL__", str(TOLERANCE_PX))
               .replace("__FMIN__", str(TABLE_FONT_MIN)).replace("__SPLITS__", json.dumps(QBOARD_SPLITS))
-              .replace("__QTOP__", str(QBOARD_FONT)).replace("__QMIN__", str(QBOARD_FONT_MIN)).replace("__PMAX__", "20").replace("__PMIN__", "10").replace("__INIT__", json.dumps(init)))
+              .replace("__QTOP__", str(QBOARD_FONT)).replace("__QMIN__", str(QBOARD_FONT_MIN))
+              .replace("__FONT__", json.dumps(font)).replace("__QONLY__", "true" if qonly else "false")
+              .replace("__NOQ__", "true" if noq else "false").replace("__PMAX__", "20").replace("__PMIN__", "10").replace("__INIT__", json.dumps(init)))
     harness.write_text(html.replace("</body>", script + "</body>"), encoding="utf-8")
     r = subprocess.run([edge, "--headless=new", "--user-data-dir=" + EDGE_PROFILE, "--disable-gpu", f"--window-size={width + 200},{int(width * 0.75)}",
                         "--virtual-time-budget=60000", "--dump-dom", harness.resolve().as_uri()],
@@ -393,7 +411,29 @@ def main() -> None:
     ap.add_argument("--silent", action="store_true",
                     help="fit the silent preview (no audio yet: the narration gate); the plan "
                          "keys on state and block ids, so the final fit replaces it")
+    ap.add_argument("--small-phone", action="store_true",
+                    help="also fit the small phone frame (915x412) for a lesson fitted before "
+                         "2026-10-08; recorded in fit.json, so later runs keep it")
     a = ap.parse_args()
+    out = a.lesson_dir / "analysis" / "fit.json"
+    prev = json.loads(out.read_text(encoding="utf-8")) if out.exists() else None
+    # the small phone frame: every lesson fitted from 2026-10-08 on (no plan yet),
+    # one fitted with it before, or one opted in; a lesson fitted before keeps its
+    # plan (and so its board) until the maintainer asks
+    small = a.small_phone or prev is None or "small phone" in (prev.get("frames") or [])
+    frames = {**(SMALL_PHONE if small else {}), **WIDTHS}
+    # 1.16: a lesson with Part B question boards fits them also with the other
+    # devices' fonts, before each frame's own pass; on the small phone frame its
+    # question boards are left to the player's guard (the question column at
+    # body size does not leave the extract room at 2.6% there; ADR 026,
+    # 2026-10-08), every other board is fitted
+    part_b = has_part_b(a.lesson_dir)
+    passes = []
+    for name, width in frames.items():
+        small_frame = name in SMALL_PHONE
+        if part_b and not small_frame:
+            passes += [(f"{name}, {f}", width, f, True, False) for f in QBOARD_FONTS]
+        passes.append((name, width, "", False, part_b and small_frame))
     # measured on a player built without any fit, so the plan is made from
     # scratch every time (a table already made smaller would look as if it fitted)
     folder = build(a.lesson_dir, silent=a.silent, out="lesson-fit", use_fit=False)
@@ -401,8 +441,8 @@ def main() -> None:
     unfit: list = []
     ends: dict = {}
     qboards: dict = {}
-    for name, width in WIDTHS.items():
-        res = run(folder / "player.html", width, plan)
+    for name, width, font, qonly, noq in passes:
+        res = run(folder / "player.html", width, plan, font, qonly, noq)
         plan = {"clears": res["clears"], "fonts": res["fonts"], "tight": res["tight"],
                 "pics": res.get("pics") or {}}
         if res.get("splits"):
@@ -414,7 +454,10 @@ def main() -> None:
                 for g, at in es:
                     ends.setdefault(sid, {})[g] = min(at, ends.get(sid, {}).get(g, at))
             qboards[name] = res["qboards"]
-        unfit = res["unfit"]                  # the last width saw every earlier plan applied
+        if small:                             # every frame and font: what any of them could not fit
+            unfit += [u for u in res["unfit"] if u not in unfit]
+        else:
+            unfit = res["unfit"]              # the last width saw every earlier plan applied
         n = sum(len(v) for v in res["clears"].values())
         print(f"{name}: {n} clear(s) in {len(res['clears'])} state(s), {len(res['fonts'])} table size(s), "
               f"{len(res['tight'])} tight board(s), "
@@ -424,14 +467,14 @@ def main() -> None:
                   f"tight {q['tight']}{'' if q['whole'] else ', NOT WHOLE'}; the question column first holds "
                   f"everything at {q['split']}% ({len(q['tried'])} split(s) tried)")
     shutil.rmtree(folder, ignore_errors=True)
-    out = a.lesson_dir / "analysis" / "fit.json"
-    prev = json.loads(out.read_text(encoding="utf-8")) if out.exists() else None
     doc = {"purpose": "Where a state's notes are cleared so the next fits the board, and a table's text "
                       "size where it did not fit (fit_boards.py; ADR 011). Read by build_lesson_player.py.",
            "clears": dict(sorted(plan["clears"].items())), "fonts": dict(sorted(plan["fonts"].items())),
            "pics": dict(sorted(plan["pics"].items())),
            "tight": dict(sorted(plan["tight"].items())),
            "unfit": unfit}
+    if small:
+        doc["frames"] = list(frames)
     if plan.get("splits"):                      # 1.16: written only for a lesson with Part B questions
         doc["purpose"] += (" On a Part B question board: the extract's share of the width (splits), the "
                            "glosses drawn over the question column (overlay) and when each goes (ends).")
@@ -440,7 +483,7 @@ def main() -> None:
         doc["ends"] = {sid: sorted([g, at] for g, at in v.items()) for sid, v in sorted(ends.items())}
         doc["qboards"] = qboards
     out.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
-    keys = ("clears", "fonts", "tight", "pics", "splits", "overlay", "ends")
+    keys = ("clears", "fonts", "tight", "pics", "splits", "overlay", "ends", "frames")
     changed = prev is None or {k: prev.get(k) for k in keys} != {k: doc.get(k) for k in keys}
     print(f"wrote {out}" + (" (changed: rebuild the player)" if changed else " (unchanged)"))
     for u in unfit:

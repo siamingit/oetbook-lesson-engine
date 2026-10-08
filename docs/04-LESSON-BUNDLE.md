@@ -565,6 +565,15 @@ These are the only rules. Every time and target they use is in the bundle.
     state's `overlay` is drawn over the foot of the question column, its top edge
     between two lines of what it covers, never over the text or another note;
     while it is shown, a mark or the pointer under it is not drawn.
+    `split` and the table's `font` were measured with the reference player's
+    fonts on its frames (the board between the header and the control bar). A
+    renderer whose fonts or frame leave less room (a wider font, a small screen
+    whose controls keep 44 px) keeps nothing hidden, measuring on the device
+    whenever the frame's size or the fonts change: the text set smaller, never
+    below 2.6% of the frame (and a wider column for it if it does not fit
+    there); the text's column narrowed where the other column does not hold its
+    blocks at every moment; as a last resort that other column set smaller, to
+    the same floor. Nothing scrolls (2026-10-08; no data change).
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and

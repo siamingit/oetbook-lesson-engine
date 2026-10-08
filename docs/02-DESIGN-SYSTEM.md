@@ -820,10 +820,17 @@ ADR 026, the Part B question method and the vocabulary layer; bundle 1.15, rules
   once it is uncovered. Only a gloss may go over the question column, at its
   foot, its top edge between two lines, briefly, and never while the part of the
   question it covers is read or marked; never over the extract (§8d). The camera
-  does not zoom these boards. Checked by `check_lens.py` (every line of the
-  extract on its page and on the board after it is uncovered),
-  `check_overflow.py` and `check_overlap.py`. Part C will follow the same
-  principle.
+  does not zoom these boards. The board is the room between the header and the
+  control bar, which keeps 44 px on a small screen (2026-10-08). The fit
+  measures the phone and laptop frames with Segoe UI, Arial and Roboto; on a
+  smaller frame or with a wider device font the player's guard keeps everything
+  whole: the extract smaller (never below 2.6%), the question column wider, and
+  as a last resort the question column smaller, to the same floor. Checked by
+  `check_lens.py` (every line of the extract on its page and on the board after
+  it is uncovered), `check_overflow.py` and `check_overlap.py` (nothing under
+  the control bar), at a phone held landscape (915x412), phone-landscape and
+  laptop frames, and `check_wide_font.py` (Verdana forced). Part C will follow
+  the same principle.
 
 ## 8. Marks
 
@@ -1026,7 +1033,9 @@ ADR 026; bundle 1.13 (docs/04-LESSON-BUNDLE.md rules 29 and 30).
   never per board or topic. The
   student can jump forward or back and return to where playback reached.
 - **On touch, every control is at least 44px.** The control band grows
-  proportionally on small screens.
+  proportionally on small screens. The board is what lies above it: the fit and the
+  checks measure the board between the header and the control band as drawn,
+  on a phone held landscape (915x412) too (2026-10-08).
 - Controls are neutral grey and must not compete with the teaching.
 
 ---

@@ -208,6 +208,9 @@ Added by the maintainer, 2026-09-25.
   See docs/03-RUNBOOK.md, "Reporting".
 - Never write a link as a markdown link or with a relative target: the
   editor opens those inside VS Code, not in the browser.
+- Added by the maintainer, 2026-10-08: every message that ends while work is
+  still running in the background starts with "NOT DONE — still running" and
+  the estimated time left; the final report starts with "DONE".
 
 ---
 

@@ -39,7 +39,10 @@ atexit.register(shutil.rmtree, EDGE_PROFILE, True)
 
 EDGE = [r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
         r"C:\Program Files\Microsoft\Edge\Application\msedge.exe"]
-WIDTHS = {"phone": 812, "laptop": 1120}
+# the frame the reference player draws in a phone held landscape, 915x412 (its
+# controls keep 44 px, 13% of this frame), then phone-landscape and laptop
+# (maintainer, 2026-10-08: the board measured above the control bar at every width)
+WIDTHS = {"small phone": 590, "phone": 812, "laptop": 1120}
 TOLERANCE_PX = 1.0
 
 HARNESS = r"""
@@ -52,6 +55,8 @@ HARNESS = r"""
   style.textContent = "*{transition:none!important;animation:none!important}";
   document.head.appendChild(style);
   const TOL = __TOL__;
+  // a player built before bundle 1.16 has no Part B question board (and no isQBoard)
+  const qb = bd => typeof isQBoard === "function" && isQBoard(bd);
   // the window of a lens element, in client px
   function windowOf(el) {
     const r = el.getBoundingClientRect();
@@ -80,7 +85,7 @@ HARNESS = r"""
   // 1.16: the extract of a Part B question board, whole on its page and on the
   // board at every moment after it is uncovered
   for (const bd of boards) {
-    if (!isQBoard(bd)) continue;
+    if (!qb(bd)) continue;
     const shown = bd.states.find(s => !s.veil);
     if (!shown) continue;
     const times = new Set([shown.start + 0.001]);
@@ -125,8 +130,9 @@ HARNESS = r"""
                        text, sides, px: +Math.max(W.top - q.top, q.bottom - W.bottom, W.left - q.left, q.right - W.right).toFixed(1) });
       }
     }
-    const fh = frame.getBoundingClientRect().height;
-    whole.push({ board: bd.id, split: bd.split, font_px: font, font_cqh: font ? +(font / fh * 100).toFixed(2) : null,
+    const fh = frame.clientHeight;          // cqh: a share of the frame's inner height
+    const g = bd._guard || {};             // what the player's guard chose on this frame (1.16)
+    whole.push({ board: bd.id, split: g.split ?? bd.split, zoom: g.zoom ?? 1, font_px: font, font_cqh: font ? +(font / fh * 100).toFixed(2) : null,
                  bundle_font: blocks[bd.table].font, lines_measured: n, lines_outside: out });
   }
   for (const bd of boards) {
@@ -221,7 +227,8 @@ def main() -> None:
               f"or extract window(s) measured; {len(res['clipped'])} clipped line(s)")
         for w in res.get("whole") or []:
             print(f"  {w['board']}: the extract {w['split']}% of the width, its text {w['font_px']}px "
-                  f"({w['font_cqh']}% of the frame; bundle {w['bundle_font']}); {w['lines_outside']} of "
+                  f"({w['font_cqh']}% of the frame; bundle {w['bundle_font']}), the question column at "
+                  f"{round(w['zoom'] * 100)}%; {w['lines_outside']} of "
                   f"{w['lines_measured']} line measurements outside its page or the board")
         for c in res["clipped"][:a.show]:
             print(f"  CLIPPED {c['board']} ({c['kind']}) at {mmss(c['t'])}: {c['text']!r} cut at the "

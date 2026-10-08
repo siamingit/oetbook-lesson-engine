@@ -600,10 +600,13 @@ chose the rule above rather than drawing notes over the question column.
 
 ### Results (reading-03-part-b, 2026-10-08)
 
-- The fit chose, the same at phone-landscape and laptop width (the extract's share
-  of the width, its size as a share of the frame): Text 1 49%, 3.05%; Text 2 (the
-  email) 54%, 2.75%; Text 3 56%, 3.2%; Text 4 50%, 3.0%; Text 5 55%, 3.2%; Text 6
-  55%, 3.2%. No extract needed the 2.6% floor. Every gloss on these boards is
+- The fit chose, the same at phone-landscape and laptop width with Segoe UI,
+  Arial and Roboto (the extract's share of the width, its size as a share of the
+  frame; after the second review below): Text 1 48%, 3.0% (49%, 3.05% in the
+  first version); Text 2 (the email) 54%, 2.75%; Text 3 56%, 3.2%; Text 4 50%,
+  3.0%; Text 5 55%, 3.2%; Text 6 55%, 3.2%. On the small phone frame the guard
+  sets them to 40% at 2.65%, 50% at 2.6%, 46% at 2.8%, 47% at 2.8%, 53% at 3.1%
+  and 44% at 2.95%, the question column at 96% on Texts 1 and 2. Every gloss on these boards is
   drawn over the question column; one goes early, before the keyword pair under it
   is marked.
 - `check_lens.py`: 0 lines of any extract outside its page or the board, at both
@@ -616,3 +619,63 @@ chose the rule above rather than drawing notes over the question column.
   moment by moment). On Reading 3, only the six question boards changed, apart
   from the hidden reading pointer's resting place at the first moment of the two
   boards after a question board.
+
+### Second review, 2026-10-08: lines under the control bar, small screens and device fonts
+
+- **What the maintainer saw.** Rendered in headless Chromium at 1296x1100,
+  1920x1080 and 915x412, the last line of an extract (and Text 6's tip callout)
+  was cut off by the control bar on every question board.
+- **Why, measured.** Two causes, neither seen by the checks of the first
+  version. (1) A small screen: the controls keep 44 px on touch (design system
+  §9), so in the reference player at 915x412 (a 590x332 px frame) they take 13%
+  of the frame, not 8%, and the board is 245 px, 74% of the frame instead of
+  79%; the fit and the checks measured only the 812 and 1120 px frames. (2) The
+  device's font: the player asks for `system-ui`, which is Segoe UI on Windows,
+  where the fit measured, and another, usually wider, font elsewhere. At 1296
+  and 1920 the controls take exactly the 8% the fit assumed; the extract was
+  longer because the maintainer's Chromium drew a wider font. Forced on the
+  first version's player at a 1120 px frame: Arial put Text 1's callout 1% of
+  the frame over; Verdana (about as wide as DejaVu Sans, which Linux draws for
+  `system-ui`) put every board 4 to 14% over.
+- **The rule** (maintainer, 2026-10-08): the board is what lies between the
+  header and the control bar, as drawn, at every width; the fit, the split rule
+  and the font-size choice use it; the checks measure it; nothing on the board
+  is ever hidden or under the controls.
+- **Fit and guard** (maintainer chose them over bundling a font or fitting to
+  the widest font). The fit measures each question board at the phone and
+  laptop frames with Segoe UI, Arial (standing for Helvetica and San Francisco)
+  and Roboto (Android). On the device, the player's guard measures again
+  whenever the frame's size or the fonts change, for both columns: the extract
+  smaller, never below 2.6% (a wider column first if it does not fit there);
+  the extract's column narrower where the question column does not hold the
+  question and every note at every moment; as a last resort the question column
+  set smaller, to the same floor. Nothing scrolls. Where the fit measured, it
+  changes nothing.
+- **The small phone frame.** On it, Text 1 and Text 2 cannot hold every note
+  beside the question at body size and the extract whole at 2.6% (Text 1: the
+  question column needs 64% of the width, and the extract then needs 263 px at
+  2.6% in a 245 px board; Text 2: 53%, and 255 px). The fit therefore leaves the
+  six question boards to the guard on that frame, which keeps everything whole
+  by setting the question column smaller: on Texts 1 and 2 to 96% (3.07% of the
+  frame), the extract at 2.65% and 2.6%. Every other board of Reading 3 is
+  fitted on the small phone frame too. The fit adds that frame for every lesson
+  fitted from 2026-10-08 on (`frames` in fit.json); a lesson fitted before
+  keeps its plan until the maintainer asks (`fit_boards.py --small-phone` opts
+  one in; Reading 3 is).
+- **The camera** on a table board (rule 13) now brings the board's picture into
+  its frame when its zoom would leave the picture out of view; where the picture
+  stayed in view the camera is unchanged. Found on Reading 3's word-recap boards
+  on the small phone frame.
+- **Checks.** `check_overflow.py`, `check_overlap.py` and `check_lens.py` measure
+  at the small phone frame (590 px), the phone (812 px) and the laptop (1120 px);
+  `check_overlap.py` also fails any block under the header or the control bar.
+  `check_wide_font.py` forces Verdana on the whole frame at the three frames and
+  fails any block or line of a Part B question board outside the board or its
+  own block (a line under a gloss over the question column excepted). On the
+  first version's player (commit dd65ec6, kept as a fixture in the lesson
+  folder) the fixed checks fail: 29 blocks outside the board, 10 under the
+  control bar, 5 extract lines cut, and 258 findings with Verdana
+  (`spike/tests/test_visible_area.py`).
+- **For the website phase** (maintainer; not built now): consider bundling one
+  open-licence web font for every lesson, so every device draws the metrics the
+  fit measured.
