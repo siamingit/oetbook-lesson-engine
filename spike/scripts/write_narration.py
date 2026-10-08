@@ -68,7 +68,9 @@ MARK_TYPES = ["underline", "highlight", "circle", "strike", "point",
               "arrow", "bracket", "replace"]
 # keyword pairs, one colour a pair, Reading lessons only (ADR 026, bundle 1.13)
 MATCH_TYPES = ["match1", "match2", "match3"]
-MARK_TYPES = MARK_TYPES + MATCH_TYPES
+# opinion-signal marks, a Reading Part C lesson only (ADR 026, 2026-10-08; bundle 1.17)
+SIGNAL_TYPES = ["sig_opinion", "sig_hedge", "sig_judge", "sig_main", "sig_aside"]
+MARK_TYPES = MARK_TYPES + MATCH_TYPES + SIGNAL_TYPES
 # marks of one phrase that an override may swap for each other (apply_cue_overrides)
 PHRASE_MARKS = {"underline", "circle", "highlight"}
 # `type` types a table cell's answer live (TABLE BOARDS; bundle 1.2)
@@ -678,8 +680,21 @@ def compact(b: dict) -> dict:
         out["options"] = [f"{o['letter']}: {o['text']}" for o in b["question"]["options"]]
         out["parts"] = [(f"{b['id']}.{it['part']}: option {it['option']} ruled out: struck through, "
                          f"its reason label '{it['text']}' appears") if it["kind"] == "out" else
+                        (f"{b['id']}.{it['part']}: THE FOUR OPTIONS APPEAR (hidden until then: never "
+                         "read or mention an option before this part is revealed)")
+                        if it["kind"] == "options" else
                         f"{b['id']}.{it['part']}: option {it['option']} ticked as the answer"
                         for it in b.get("items") or []]
+        if b["question"].get("target"):
+            out["printed_in_bold"] = b["question"]["target"]
+    if b["type"] == "scale" and b.get("items"):
+        # an attitude scale (Part C, bundle 1.17): its parts, revealed by their ids
+        out["parts"] = [f"{b['id']}.{it['part']}: " + (
+            f"the marker moves to {it['at']} of 100 (0 = '{b.get('left')}', 100 = '{b.get('right')}')"
+            if it["kind"] == "marker" else
+            f"option {it['option']} placed at {it['at']}, " + ("struck: ruled out" if it["kind"] == "out"
+                                                              else "ticked: the answer"))
+            for it in b["items"] if it["kind"] != "bad"]
     if b["type"] == "gloss" and b.get("items"):
         out["parts"] = [f"{b['id']}.{it['part']}: {it['kind']}"
                         + (f" '{it['text']}'" if it["kind"] != "picture"
@@ -797,6 +812,15 @@ def boards_for_model(data: dict) -> list[dict]:
                 # a Part B question board (bundle 1.15): the text is covered
                 st["text"] = ("COVERED: its words cannot be seen; read nothing from it and mark nothing "
                               "in it" if s["veil"] else "uncovered: the whole text is shown")
+            if s.get("view"):
+                # a Part C question board (bundle 1.17): the text as a map, or a paragraph whole
+                v = s["view"]
+                st["text"] = (("MAP: the whole text, too small to read; read nothing from it and mark "
+                               "nothing in it" + (f"; paragraph {v['rows'][0] + 1} is marked" if v["rows"] else ""))
+                              if v["map"] else
+                              "PARAGRAPH " + " and ".join(str(r + 1) for r in v["rows"])
+                              + " shown whole and readable (row " + ", ".join(str(r + 1) for r in v["rows"])
+                              + " of the table); read and mark only " + ("it" if len(v["rows"]) == 1 else "them"))
             still = [i for p in bd["states"][:n] for i in p["working"] if blocks[i].get("pin")]
             if still:
                 st["still_on_board"] = still      # pinned blocks shown in an earlier state
@@ -939,6 +963,11 @@ def build_messages(data: dict, rewrite: dict | None = None, chunk: dict | None =
                 b.get("vocab") or b.get("vocab_table") or (b.get("question") or {}).get("options")
                 for t in scr["topics"] for h in t["thoughts"] for b in h["blocks"]):
             content.append({"type": "text", "text": reading_rule.NARRATION_PART_B})   # 1.15
+        if reading_rule.is_part_c(lesson_dir) and not scr.get("section", {}).get("intro"):
+            content.append({"type": "text", "text": reading_rule.NARRATION_SIGNALS})  # 1.17
+            if any(b.get("vocab") or b.get("vocab_table") or (b.get("question") or {}).get("options")
+                   for t in scr["topics"] for h in t["thoughts"] for b in h["blocks"]):
+                content.append({"type": "text", "text": reading_rule.NARRATION_PART_C})
     if rewrite:
         content.append({"type": "text", "text":
             "STATES TO REWRITE: " + ", ".join(rewrite["ids"]) + ". Their current "
@@ -1328,9 +1357,16 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
 
     def stays(bid: str) -> bool:
         """A pinned practice-set question: on its board from its reveal to the
-        board's end, marked and its parts revealed in later states (1.15)."""
+        board's end, marked and its parts revealed in later states (1.15); an
+        attitude scale likewise (1.17)."""
         b = blocks.get(bid) or {}
-        return bool(b.get("pin") and b.get("question"))
+        return bool(b.get("pin") and (b.get("question") or b.get("type") == "scale"))
+
+    # a Reading Part C lesson (bundle 1.17): the opinion-signal marks are its only
+    part_c_lesson = False
+    if data.get("lesson_id", "").startswith("reading"):
+        import reading_rule
+        part_c_lesson = reading_rule.is_part_c(Path(data["screens_path"]).parents[3])
 
     def parts_of(bid: str) -> list[str]:
         b = blocks.get(bid)
@@ -1372,6 +1408,7 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
         pinned_shown: list[str] = []
         pinned_parts_done: list[str] = []
         veil_of = {x["id"]: x.get("veil") for x in sb.get("states", [])}
+        view_of = {x["id"]: x["view"] for x in sb.get("states", []) if x.get("view")}    # 1.17
         last_revealed: list[str] = []
         for s in bd["states"]:
             pinned_shown += [i for i in last_revealed if stays(i) and i not in pinned_shown]
@@ -1483,6 +1520,29 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                     elif typ in MARK_TYPES:
                         if typ in MATCH_TYPES and not data.get("lesson_id", "").startswith("reading"):
                             fail(uid, f"{typ} is a Reading lesson's keyword pair (ADR 026)")
+                        if typ in SIGNAL_TYPES and not part_c_lesson:
+                            fail(uid, f"{typ} is a Reading Part C lesson's opinion-signal mark (ADR 026, 1.17)")
+                        view = view_of.get(s["id"])
+                        if view is not None and typ == "match3":
+                            fail(uid, "match3 on a Part C question board: its yellow is too close to the amber "
+                                      "highlight that marks what is read; use match1 or match2")
+                        if view is not None and blk == sb.get("table"):
+                            shown = " ".join((blocks[blk].get("rows") or [[""]])[r][0] for r in view["rows"]
+                                             if r < len(blocks[blk].get("rows") or []))
+                            if view["map"]:
+                                fail(uid, f"{typ} on {blk} in {s['id']}: the text is a map there, too small to "
+                                          "read; nothing is marked in it (bundle 1.17)")
+                            elif (c.get("text") or "") not in shown:
+                                fail(uid, f"{typ} on {c.get('text')!r}: not in the paragraph shown in {s['id']} "
+                                          f"(paragraph {', '.join(str(r + 1) for r in view['rows'])})")
+                        qb = blocks.get(blk) or {}
+                        if (qb.get("question") or {}).get("options_later") \
+                                and f"{blk}.1" not in pinned_parts_done + parts_done:
+                            phr = c.get("text") or ""
+                            if phr and phr not in (qb.get("text") or "") and any(
+                                    phr in o["text"] for o in qb["question"]["options"]):
+                                fail(uid, f"{typ} on an option of {blk} before the options appear "
+                                          f"({blk}.1): QTA reads the paragraph first")
                         targets = [(blk, c.get("text"))]
                         named = {0: (c.get("row"), c.get("col"))}     # a cell named by override (1.6)
                         if typ == "arrow":

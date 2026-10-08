@@ -99,6 +99,12 @@ def items(ps: dict) -> dict:
     return {i["item_id"]: i for p in ps["parts"] for i in p["items"]}
 
 
+def part_code(ps: dict, item: dict) -> str | None:
+    """The part of the test an item belongs to: RA, RB or RC."""
+    return next((p.get("code") for p in ps["parts"]
+                 if any(i["item_id"] == item["item_id"] for i in p["items"])), None)
+
+
 def group_of(ps: dict, item: dict) -> dict | None:
     for p in ps["parts"]:
         for g in p.get("question_groups") or []:
@@ -147,21 +153,45 @@ def doc_header(st: dict) -> str:
     return st["label"] + (": " + st["title"] if st.get("title") else "")
 
 
+# Words printed in bold in a released body (the release's oa-text-v1 format:
+# Reading Part C in-context targets, as the real test prints them)
+BOLD = re.compile(r"\*\*(.+?)\*\*")
+
+
+def unbold(text: str) -> tuple[str, list[str]]:
+    """A released line with its bold markers taken off, and the phrases they
+    marked, in order (bundle 1.17: a doc part's `bold`)."""
+    return BOLD.sub(lambda m: m.group(1), text), BOLD.findall(text)
+
+
+def doc_part(p: dict) -> dict:
+    """A row's kind and marker; a row with bold words also names them (1.17).
+    A text with none is exactly as before, so no earlier bundle changes."""
+    out = {"kind": p["kind"], "mark": p["mark"]}
+    bold = unbold(p["text"])[1]
+    if bold:
+        out["bold"] = bold
+    return out
+
+
 def document_block(st: dict) -> dict:
-    """The text as a core table of one column (bundle 1.13 `doc`)."""
+    """The text as a core table of one column (bundle 1.13 `doc`). A word the
+    release prints in bold keeps its words in the row, the markers off, and is
+    named in its part's `bold` (bundle 1.17)."""
     ps = parts(st["body"])
     if not verbatim(st["body"], ps):
         raise SystemExit(f"{st['stimulus_id']}: the parts are not the released text")
-    return {"type": "table", "header": [doc_header(st)], "rows": [[p["text"]] for p in ps],
+    return {"type": "table", "header": [doc_header(st)], "rows": [[unbold(p["text"])[0]] for p in ps],
             "doc": {"stimulus": st["stimulus_id"], "label": st["label"], "title": st.get("title") or "",
                     "text_type": st.get("text_type") or "text",
-                    "parts": [{"kind": p["kind"], "mark": p["mark"]} for p in ps]},
+                    "parts": [doc_part(p) for p in ps]},
             "provenance": "source-derived",
             "note": f"practice set {st['stimulus_id']} as released (ADR 026); built by code, never written by the model"}
 
 
 def document_for_prompt(st: dict) -> str:
-    rows = "\n".join(f"  row {n}: [{p['kind']}] " + (f"{p['mark']}. " if p["mark"] else "") + p["text"]
+    rows = "\n".join(f"  row {n}: [{p['kind']}] " + (f"{p['mark']}. " if p["mark"] else "") + unbold(p["text"])[0]
+                     + "".join(f" [printed in bold: '{w}']" for w in unbold(p["text"])[1])
                      for n, p in enumerate(parts(st["body"]), 1))
     return (f"DOCUMENT {st['stimulus_id']} ({doc_header(st)}; a {st.get('text_type') or 'text'}), "
             f"its rows as the board shows them:\n{rows}")
@@ -211,6 +241,13 @@ def question_block(ps: dict, item: dict) -> dict:
     if is_options_item(item):
         # bundle 1.15 (ADR 026, Part B): the options as released, lettered
         q["options"] = options_of(item)
+    if part_code(ps, item) == "RC":
+        # bundle 1.17 (ADR 026, the Part C question method): the options are a
+        # part revealed once the paragraph is read (QTA), and an in-context
+        # target is printed in bold in the stem, as the real test prints it
+        q["options_later"] = True
+        if (item.get("target") or {}).get("text"):
+            q["target"] = item["target"]["text"]
     return {"type": "plain", "text": question_text(ps, item), "exercise_item": item["number"],
             "question": q,
             "provenance": "source-derived",
@@ -231,6 +268,9 @@ def question_for_prompt(ps: dict, item: dict) -> str:
                 f"{', '.join(item['stimulus_ids'])}): {question_text(ps, item)}"
                 + "".join(f"\n  option {o['letter']}: {o['text']}" for o in opts)
                 + f"\n  key: option {letter[key]}"
+                + (f"\n  the answer's paragraph: {item['evidence_paragraph']}; question type: "
+                   f"{(item.get('admin') or {}).get('question_type')}"
+                   if part_code(ps, item) == "RC" and item.get("evidence_paragraph") else "")
                 + (f"\n  evidence in the text: {item['evidence']}" if item.get("evidence") else "")
                 + (f"\n  the release's reason for the key: {fb['key']}" if fb.get("key") else "")
                 + "".join(f"\n  option {letter[oid]} is wrong (release): {w['why_wrong']}"

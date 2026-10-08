@@ -39,7 +39,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paths  # noqa: E402
 
-MARKS = {"highlight", "match1", "match2", "match3"}
+MARKS = {"highlight", "match1", "match2", "match3",
+         # a Part C lesson's opinion-signal marks (bundle 1.17) mark what they cover
+         "sig_opinion", "sig_hedge", "sig_judge", "sig_main", "sig_aside"}
 LEAD_S, TAIL_S, LEAD_WORDS = 1.5, 0.3, 3
 STOP = set("""a an the and or but of to in on at for from by with as is are was were be been
 this that these those it its you your we our they their he she his her i me my not no do does

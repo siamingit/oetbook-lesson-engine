@@ -50,7 +50,7 @@ from build_board_timeline import lay_timeline                     # noqa: E402
 from write_narration import spoken                                # noqa: E402
 import board_style                                                # noqa: E402
 from write_screens import (FRAME_CSS, frame_css, has_map, TAG_LABELS, block_html, resolve_images, IMAGE_TOKEN,     # noqa: E402
-                           block_text_runs, is_exercise_board, has_part_b, has_parts, AUDIO_TOKEN)
+                           block_text_runs, is_exercise_board, has_part_b, has_part_c, has_parts, AUDIO_TOKEN)
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
@@ -87,15 +87,24 @@ MAP_FORMAT_VERSION = "1.14"
 # `overlay`; ADR 026, 2026-10-08), replacing 1.15's lens
 BLOCK_FIELDS_115 = ("synonym", "audio", "lexicon", "vocab_table")
 PART_B_FORMAT_VERSION = "1.16"
+# 1.17, a Reading Part C lesson (ADR 026, the Part C question method, the
+# opinion-signal marks and the attitude scale): a state's `view` on a question
+# board (the text as a map, or the paragraph read, whole), the `scale` block, a
+# doc part's `bold`, a question's `options_later` and `target`, the
+# `recap_grouped` word table; written only in such a lesson's bundle
+PART_C_FORMAT_VERSION = "1.17"
 # the extract's share of a Part B question board's width, per cent, until the
 # fit has measured it (fit_boards.py)
 SPLIT_DEFAULT = 55
 
 
-def format_version(lesson_id: str, with_map: bool = False, part_b: bool = False) -> str:
-    """The bundle format a lesson is written in: 1.15 for a Reading Part B
-    lesson, 1.14 for a lesson with a map, 1.13 for another Reading lesson
-    (ADR 026), FORMAT_VERSION for every other."""
+def format_version(lesson_id: str, with_map: bool = False, part_b: bool = False,
+                   part_c: bool = False) -> str:
+    """The bundle format a lesson is written in: 1.17 for a Reading Part C
+    lesson, 1.16 for a Reading Part B lesson, 1.14 for a lesson with a map,
+    1.13 for another Reading lesson (ADR 026), FORMAT_VERSION for every other."""
+    if part_c:
+        return PART_C_FORMAT_VERSION
     if part_b:
         return PART_B_FORMAT_VERSION
     if with_map:
@@ -290,7 +299,7 @@ def block_plain(b: dict) -> str:
 
 
 def text_export(lesson: dict, sections: list[dict], boards: list[dict], blocks: dict,
-                with_map: bool = False, part_b: bool = False) -> dict:
+                with_map: bool = False, part_b: bool = False, part_c: bool = False) -> dict:
     """The lesson as clean text, per section: the narration as spoken and the
     words on the board, with no cues and no provenance (docs/04-LESSON-BUNDLE.md)."""
     by_id = {bd["id"]: bd for bd in boards}
@@ -314,7 +323,7 @@ def text_export(lesson: dict, sections: list[dict], boards: list[dict], blocks: 
                                                   for b in bds),
                     "board_text": "\n\n".join(x["text"] for b in bds for x in b["board_text"]),
                     "boards": bds})
-    return {"format": "oetbook-lesson-text", "format_version": format_version(lesson["id"], with_map, part_b),
+    return {"format": "oetbook-lesson-text", "format_version": format_version(lesson["id"], with_map, part_b, part_c),
             "lesson": lesson, "sections": out}
 
 
@@ -368,8 +377,10 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     lens_of: dict[str, dict] = {}
     with_map = has_map(L)
     part_b = has_part_b(L)
+    part_c = has_part_c(L)                    # 1.17
     veil_of: dict[str, bool] = {}
-    if part_b:
+    view_of: dict[str, dict] = {}
+    if part_b or part_c:
         import vocab                          # the pronunciation clips, into the lesson (1.15)
         vocab.copy_audio(L)
     missing: list[str] = []
@@ -406,6 +417,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                     lens_of[pre + ss["id"]] = {"doc": ss.get("doc"), "zoom": ss.get("zoom")}
                 if "veil" in ss:                 # 1.15: a Part B question board's covered text
                     veil_of[pre + ss["id"]] = bool(ss["veil"])
+                if ss.get("view"):               # 1.17: a Part C question board's map or paragraph
+                    view_of[pre + ss["id"]] = {"map": bool(ss["view"]["map"]), "rows": list(ss["view"]["rows"])}
         for bid, b in blocks.items():
             nb = copy.deepcopy(b)
             nb["id"] = pre + bid
@@ -425,7 +438,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             if nb.get("image"):                      # 1.11: the file, relative to the bundle's folder
                 nb["image"] = {**nb["image"], "file": resolve_images(
                     IMAGE_TOKEN + "/" + nb["image"]["file"], out_dir, L)}
-            if part_b:
+            if part_b or part_c:
                 # 1.15: a word-bank word's lx: ID from the mapping file, its
                 # pronunciation clip relative to the bundle's folder
                 if nb.get("vocab"):
@@ -434,9 +447,13 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                     nb["audio"] = {**nb["audio"], "file": resolve_images(
                         AUDIO_TOKEN + "/" + nb["audio"]["file"], out_dir, L)}
                 if nb.get("vocab_table"):
-                    nb["vocab_table"] = {"kind": nb["vocab_table"]["kind"],
-                                         "lexicon": [vocab.lexicon_id(L, k) for k in nb["vocab_table"]["words"]]}
-            blocks_all[pre + bid] = {**block_data(nb, L.name.split("-")[0] == "reading", with_map, part_b), "html": html_b,
+                    vt = nb["vocab_table"]
+                    nb["vocab_table"] = {"kind": vt["kind"],
+                                         "lexicon": [vocab.lexicon_id(L, k) for k in vt["words"]]}
+                    if vt.get("groups"):         # 1.17: a recap by question, its rows' words
+                        nb["vocab_table"]["groups"] = [[n, [vocab.lexicon_id(L, k) for k in keys]]
+                                                       for n, keys in vt["groups"]]
+            blocks_all[pre + bid] = {**block_data(nb, L.name.split("-")[0] == "reading", with_map, part_b or part_c), "html": html_b,
                                      "_tokens": block_tokens(b)}     # display words (1.3)
         # an authored section (ADR 018) covers no deck page
         section_marks.append({"id": tag, "title": sec["title"],
@@ -558,12 +575,14 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                 # 1.15: a pinned question's parts (an option ruled out, the answer
                 # ticked) come in later states, and stay to the board's end
                 base = p.split(".")[0]
-                if "." in p and blocks_all.get(base, {}).get("pin") and blocks_all[base].get("question"):
-                    pinned_rev.setdefault(p, at)
+                if "." in p and blocks_all.get(base, {}).get("pin") and (
+                        blocks_all[base].get("question") or blocks_all[base].get("type") == "scale"):
+                    pinned_rev.setdefault(p, at)     # 1.17: an attitude scale's parts too
             for wid in s["working"]:
                 if wid in s_rev:
                     s["reveal"][wid] = s_rev[wid]
-                    stays = blocks_all[wid].get("pin") and blocks_all[wid].get("question")
+                    stays = blocks_all[wid].get("pin") and (blocks_all[wid].get("question")
+                                                            or blocks_all[wid].get("type") == "scale")
                     for p in ([] if stays else diagram_parts(blocks_all[wid])):
                         s["reveal"][p] = s_rev.get(p, s_rev[wid])
                 elif blocks_all[wid].get("type") == "picture":
@@ -580,6 +599,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                 s.update(lens_of[s["id"]])
             if s["id"] in veil_of:
                 s["veil"] = veil_of[s["id"]]          # 1.15
+            if s["id"] in view_of:
+                s["view"] = view_of[s["id"]]          # 1.17
         # 1.6: a mark on the table names the cell it lands in, the state's row
         # first, as the narration audit requires its phrase to be in one cell
         if bd["table"]:
@@ -599,6 +620,10 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                                 c.update(to_row=rc[0], to_col=rc[1])
         bd["focus"] = (table_focus(bd, blocks_all[bd["table"]], table_cells(blocks_all[bd["table"]]))
                        if bd["table"] else [])
+        if bd["table"] and any("view" in s for s in bd["states"]):
+            # 1.17: a Part C question board is two columns too (rule 37): the text,
+            # as a map or the paragraph read, whole, in the first; nothing scrolls
+            bd["split"] = (fit.get("splits") or {}).get(bd["id"], SPLIT_DEFAULT)
         if bd["table"] and any("veil" in s for s in bd["states"]):
             # 1.16: a Part B question board is two columns (rule 36; maintainer,
             # 2026-10-08, replacing 1.15's lens): the extract whole in the first,
@@ -718,7 +743,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     meta = {"silent": silent, **gaps, "wpm": wpm if silent else None,
             "voice": first.get("voice"), "model": first.get("model"), "speed": first.get("speed"),
             "total_duration_s": round(total, 3), "reading_hold_s": READING_HOLD_S}
-    bundle = {"format": "oetbook-lesson-bundle", "format_version": format_version(lesson["id"], with_map, part_b),
+    bundle = {"format": "oetbook-lesson-bundle", "format_version": format_version(lesson["id"], with_map, part_b, part_c),
               "lesson": lesson, "sections": sections_out, "meta": meta,
               "stylesheet": "blocks.css", "text": "text.json",
               "blocks": {i: b for i, b in blocks_all.items() if i in used},
@@ -727,7 +752,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                                          encoding="utf-8")
     (out_dir / "blocks.css").write_text(frame_css(L).strip() +"\n", encoding="utf-8")
     (out_dir / "text.json").write_text(
-        json.dumps(text_export(lesson, sections_out, boards_out, blocks_all, with_map, part_b),
+        json.dumps(text_export(lesson, sections_out, boards_out, blocks_all, with_map, part_b, part_c),
                    ensure_ascii=False, indent=1), encoding="utf-8")
     (out_dir / "timeline.json").write_text(json.dumps({"meta": meta, "boards": boards_out,
                                                        "events": events}, ensure_ascii=False,

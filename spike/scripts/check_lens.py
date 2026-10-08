@@ -112,8 +112,10 @@ HARNESS = r"""
                   bottom: Math.min(P.top + el.clientTop + el.clientHeight, B.bottom - parseFloat(cs.paddingBottom)),
                   left: Math.max(P.left + el.clientLeft, B.left + parseFloat(cs.paddingLeft)),
                   right: Math.min(P.left + el.clientLeft + el.clientWidth, B.right - parseFloat(cs.paddingRight)) };
-      const td = el.querySelector("tbody td");
-      font = td ? parseFloat(getComputedStyle(td).fontSize) : null;
+      // 1.17: a Part C board's size is its paragraph's, not its map's
+      const pc = el.classList.contains("pc-map");
+      const td = el.querySelector("tbody tr.pc-in td") || el.querySelector("tbody td");
+      if (!pc || font === null) font = td && !pc ? parseFloat(getComputedStyle(td).fontSize) : font;
       for (const [q, text] of lines(el)) {
         n++;
         const sides = [];

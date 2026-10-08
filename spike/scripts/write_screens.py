@@ -95,7 +95,29 @@ CLAUSE_EMBEDDED = ("defining", "nondefining")
 CLAUSE_LINKS = ("link", "dangling")
 MAX_CLAUSE_PARTS = 10
 MAX_CLAUSE_PIECES = 2
-DIAGRAM_TYPES = ("timeline", "clauses", "gloss")   # blocks drawn part by part
+DIAGRAM_TYPES = ("timeline", "clauses", "gloss", "scale")   # blocks drawn part by part
+# An attitude scale (ADR 026, the Part C question method; bundle 1.17): a line
+# from a negative view (`left`) through `text` to a positive one (`right`);
+# its parts are the marker's places as the evidence is read ("marker|65") and
+# each option's place as it is ruled out or chosen ("out|A|20", "key|B|75").
+SCALE_PART = re.compile(r"^\s*(marker|out|key)\s*\|\s*(?:([A-Z])\s*\|\s*)?(\d{1,3})\s*$", re.I)
+
+
+def scale_items(raw: list) -> list[dict]:
+    """A scale's parts, parsed from the screens model's strings; a line that does
+    not parse is kept as kind 'bad' for the audit."""
+    out = []
+    for line in raw:
+        m = SCALE_PART.match(str(line))
+        kind = m.group(1).lower() if m else "bad"
+        if m and (kind == "marker") == bool(m.group(2)):
+            kind = "bad"
+        out.append({"kind": kind, "option": (m.group(2) or "").upper() or None if m else None,
+                    "at": max(0, min(100, int(m.group(3)))) if m else None,
+                    **({"raw": str(line)} if kind == "bad" else {})})
+    for n, it in enumerate(out, 1):
+        it["part"] = n
+    return out
 
 # Curated outline icons, 24x24, stroke only. The model names a concept; code
 # maps it to the drawing. Nothing outside this list renders. Clinical objects
@@ -738,6 +760,11 @@ def unflatten(topics: list[dict]) -> None:
                     b["items"] = clause_items(b["items"])
                 elif b.get("type") == "plain" and re.match(r"oa-reading-\d", (b.get("label") or "").strip()):
                     pass        # a practice-set question's parts: parsed by expand_practice (1.15)
+                elif b.get("type") == "plain" and (b.get("label") or "").strip().upper() == "SCALE":
+                    # an attitude scale (Part C, bundle 1.17): written on a plain block
+                    # so the reply's schema is unchanged; it becomes a `scale` here
+                    b["type"], b["label"] = "scale", None
+                    b["items"] = scale_items(b.get("items") or [])
                 elif isinstance(b.get("items"), list):
                     items = []
                     for raw in b["items"]:
@@ -1393,6 +1420,8 @@ def build_messages(data: dict) -> list[dict]:
     import reading_rule                        # ADR 026; other lessons unchanged
     if reading_rule.is_reading(Path(data["lesson_dir"])):
         content.append({"type": "text", "text": reading_rule.SCREENS})
+        if reading_rule.is_part_c(Path(data["lesson_dir"])):
+            content.append({"type": "text", "text": reading_rule.SCREENS_SIGNALS})    # 1.17
         practice = reading_rule.set_text(Path(data["lesson_dir"]), data["pages"])
         if practice:
             content.append({"type": "text", "text": practice})
@@ -1778,6 +1807,13 @@ def lay_out_table(t: dict, fixed: list[str], table: dict, blocks: dict,
         # a map is not shrunk to the table floor: its pages scale to its frame
         # and the zoom makes them readable (bundle 1.14; design system §7, Tables)
         table["core"], fits = True, True
+    elif any(h.get("view") for h in t["thoughts"]):
+        # a Part C text (bundle 1.17) is never shown whole at a reading size: as
+        # a map it is scaled to its column, and a paragraph is set at the size
+        # the fit finds for it (fit_boards.py), from body size to 2.6%
+        table["core"], fits = True, True
+        table["col_widths"] = [100]
+        table["font"] = round(TABLE_TEXT * 100, 1)
     else:
         fits = fit_table(table)
     fixed_h = stack_height(fixed, blocks)
@@ -1787,6 +1823,10 @@ def lay_out_table(t: dict, fixed: list[str], table: dict, blocks: dict,
     # a Part B question board (bundle 1.15): the text is covered in the states
     # of the question, the options and "try it first"
     veiled = any(h.get("veil") for h in t["thoughts"])
+    # a Part C question board (bundle 1.17): the text shown as a map or as the
+    # paragraph(s) being read, a state's `view`
+    viewed = any(h.get("view") for h in t["thoughts"])
+    view = None
     for h in t["thoughts"]:
         m = ROW_PURPOSE.match(h.get("purpose") or "")
         row = int(m.group(1)) - 1 if m else None
@@ -1796,12 +1836,17 @@ def lay_out_table(t: dict, fixed: list[str], table: dict, blocks: dict,
             # after the answer is found, the map stays on it (a note on the
             # answer's form, the section's close)
             row, lens = cur["row"], cur["lens"]
+        if viewed:
+            view = h.get("view") or view or {"map": True, "rows": []}
+            if not view["map"]:
+                row = view["rows"][0]
         if cur is None or row != cur["row"] or (notes and cur["working"])                 or (is_map and lens != cur["lens"]) \
-                or (veiled and bool(h.get("veil")) != cur["veil"]):
+                or (veiled and bool(h.get("veil")) != cur["veil"]) or (viewed and view != cur["view"]):
             if cur is not None:
                 erasures.append({"after_thought": cur["thoughts"][-1], "before_thought": h["id"]})
             cur = {"thoughts": [], "working": [], "row": row, **({"lens": lens} if is_map else {}),
-                   **({"veil": bool(h.get("veil"))} if veiled else {})}
+                   **({"veil": bool(h.get("veil"))} if veiled else {}),
+                   **({"view": view} if viewed else {})}
             states.append(cur)
         cur["thoughts"].append(h["id"])
         cur["working"] += notes
@@ -2262,7 +2307,8 @@ def block_text_runs(b: dict) -> list[str]:
     t = b["type"]
     if b.get("question") and b["question"].get("options"):
         # a Part B question (bundle 1.15): its wording, then each option and,
-        # under a wrong one, its reason label (the letters are CSS attributes)
+        # under a wrong one, its reason label (the letters are CSS attributes);
+        # a Part C question the same (1.17: the options a part shown later)
         reasons = {it["option"]: it.get("text") for it in b.get("items") or [] if it["kind"] == "out"}
         runs = [b.get("text") or ""]
         for o in b["question"]["options"]:
@@ -2278,6 +2324,8 @@ def block_text_runs(b: dict) -> list[str]:
         keys = ("label", "text")
     elif t in ("contents_item", "lesson_title"):
         keys = ("text", "explanation")
+    elif t == "scale":
+        keys = ("left", "text", "right")        # an attitude scale's labels (1.17)
     elif t == "timeline":
         # DOM order: the block label, then every part on the axis in listed
         # order (a series has no words on the axis), then each series legend.
@@ -2631,8 +2679,51 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                     fail(b["id"], f"option {p['option']}'s reason label has {n} words; at most "
                                   f"{MAX_REASON_WORDS}")
     for t in out["topics"]:
-        if not any(b.get("question") and b["question"].get("options")
-                   for h in t["thoughts"] for b in h["blocks"]):
+        qb = next((b for h in t["thoughts"] for b in h["blocks"]
+                   if b.get("question") and b["question"].get("options")), None)
+        if not qb:
+            continue
+        if qb["question"].get("options_later"):
+            # the Part C question method (ADR 026; bundle 1.17): where we are on the
+            # map, the question alone, then the paragraph whole, then the options
+            for h in t["thoughts"]:
+                if h.get("view_bad"):
+                    fail(t["id"], f"thought {h['id']}: purpose {h['view_bad']!r} names no view: start it "
+                                  "'Map:', 'Map P<N>:', 'Para <N>:' or 'Para <N>-<M>:' (two neighbours)")
+            views = [h.get("view") for h in t["thoughts"]]
+            if not views or not (views[0] or {}).get("map") or qb["id"] not in [b["id"] for b in t["thoughts"][0]["blocks"]]:
+                fail(t["id"], "a Part C question board opens on the map with the question alone ('Map: the question')")
+            seen_para = False
+            for v in views:
+                if v and not v["map"]:
+                    seen_para = True
+                elif v and v["map"] and seen_para:
+                    fail(t["id"], "the map comes before the paragraph, never after it")
+                    break
+            if not seen_para:
+                fail(t["id"], "a Part C question board shows the question's paragraph ('Para <N>: ...')")
+            if (qb.get("items") or [{}])[0].get("kind") != "options":
+                fail(qb["id"], "a Part C question's options are its first part (code adds it)")
+            it = ps_items.get(qb["question"]["item"])
+            key = None
+            if it:
+                letter = {o["option"]: o["letter"] for o in qb["question"]["options"]}
+                key = letter[it["scoring"]["key_option_id"]]
+            for b in [b for h in t["thoughts"] for b in h["blocks"] if b["type"] == "scale"]:
+                parts = b.get("items") or []
+                for p in parts:
+                    if p["kind"] == "bad":
+                        fail(b["id"], f"scale part {p.get('raw')!r}: write 'marker|<0-100>', "
+                                      "'out|<letter>|<0-100>' or 'key|<letter>|<0-100>'")
+                if not any(p["kind"] == "marker" for p in parts):
+                    fail(b["id"], "an attitude scale moves its marker at least once ('marker|<0-100>')")
+                if key and [p["option"] for p in parts if p["kind"] == "key"] not in ([], [key]):
+                    fail(b["id"], f"the scale ticks the wrong option: the answer is {key}")
+                if key and any(p["kind"] == "out" and p["option"] == key for p in parts):
+                    fail(b["id"], f"the scale rules out option {key}, the answer")
+                for k in ("left", "text", "right"):
+                    if not (b.get(k) or "").strip() or len((b.get(k) or "").split()) > 3:
+                        fail(b["id"], f"the scale's {k} label is one to three words")
             continue
         veils = [bool(h.get("veil")) for h in t["thoughts"]]
         if not any(veils):
@@ -3470,6 +3561,60 @@ PART_B_CSS = """
 """
 
 
+# A Part C lesson's blocks (bundle 1.17; ADR 026, the Part C question method):
+# added only to a lesson whose practice set has a Part C, so no other lesson's
+# stylesheet changes. The renderer sets the classes: `pc-map` (the whole text as
+# a map, `pc-here` on the paragraph that holds the answer) or `pc-para` (only the
+# rows `pc-in` shown, whole, with the position cue in `data-pos`), and `opx` on a
+# block that an opinion-signal mark of its board names (room between its lines
+# for the mark's label, from the board's start, so nothing moves).
+PART_C_CSS = """
+.tbl.core.doc-article{border-top:max(4px,.8cqh) solid #042C53;border-radius:.6cqh}
+.tbl.core.doc-article th{background:#F7F6F2;color:#042C53;border-bottom:max(1px,.2cqh) solid #D3D1C7}
+.tbl.core.doc .dbold,.blk.q .qt .dbold{font-weight:500}
+.tbl.core.doc.qtext.pc-para tbody tr:not(.pc-in){display:none}
+.tbl.core.doc.qtext.pc-para th::after{content:attr(data-pos);float:right;margin-left:1em;font-weight:400;
+  font-size:.8em;color:#5F5E5A}
+.tbl.core.doc.qtext.pc-map tbody tr td{opacity:.35}
+.tbl.core.doc.qtext.pc-map tbody tr.pc-here td{opacity:1;background:#E6F1FB;
+  box-shadow:inset 0 0 0 max(2px,.35cqh) #185FA5}
+.tbl.core.doc.qtext.pc-map td.active{background:none}
+.tbl.core.doc.opx td{line-height:2.15}
+.blk.opx{line-height:2.15}
+.blk.q .qopts.pt{display:block}
+.blk.scl{padding:1.2cqh 1.6cqw;background:#fff;border:max(1px,.2cqh) solid #D3D1C7;border-radius:1.2cqh}
+.scl-ends{display:flex;justify-content:space-between;gap:1em;font-size:.82em;color:#475569;font-weight:500}
+.scl-ends .scl-c{text-align:center;color:#888780;font-weight:400}
+.scl-ends .scl-r{text-align:right}
+.scl-track{position:relative;height:8cqh;margin:0 1.6cqw}
+.scl-line{position:absolute;left:0;right:0;top:50%;height:max(2px,.35cqh);margin-top:max(-1px,-.17cqh);
+  background:#888780;border-radius:1cqh}
+.scl-line::after{content:"";position:absolute;left:50%;top:-.9cqh;width:max(1px,.2cqh);height:2.2cqh;background:#888780}
+.scl-mk{position:absolute;left:var(--at);top:50%;width:2.6cqh;height:2.6cqh;margin:-1.3cqh 0 0 -1.3cqh;
+  border-radius:50%;background:#185FA5;box-shadow:0 0 0 .45cqh #fff;z-index:1}
+.scl-mk.on:has(~ .scl-mk.on){opacity:0}
+.scl-op{position:absolute;left:var(--at);width:3.2cqh;height:3.2cqh;margin-left:-1.6cqh;border-radius:50%;
+  border:max(1px,.22cqh) solid #475569;background:#fff;color:#475569;font-style:normal;font-size:1.9cqh;
+  font-weight:500;display:flex;align-items:center;justify-content:center;box-sizing:border-box}
+.scl-op::before{content:attr(data-l)}
+.scl-op.lane0{top:0}
+.scl-op.lane1{bottom:0}
+.scl-op.scl-out{background:#FCEBEB;border-color:#E24B4A;color:#501313}
+.scl-op.scl-out::after{content:"";position:absolute;left:8%;right:8%;top:50%;height:max(1px,.22cqh);
+  background:#E24B4A;transform:rotate(-35deg)}
+.scl-op.scl-key{background:#639922;border-color:#639922;color:#fff}
+"""
+
+
+def has_part_c(lesson) -> bool:
+    """A lesson whose practice set has a Part C (bundle 1.17)."""
+    if not lesson:
+        return False
+    import practice_set
+    ps = practice_set.load(Path(lesson))
+    return bool(ps) and any(p.get("code") == "RC" for p in ps.get("parts") or [])
+
+
 def has_part_b(lesson) -> bool:
     """A lesson whose practice set has a Part B (bundle 1.15)."""
     if not lesson:
@@ -3490,8 +3635,10 @@ def frame_css(lesson) -> str:
     rules for a Reading lesson only (ADR 026), plus the map's for a lesson with
     a map (bundle 1.14)."""
     import reading_rule
+    part_c = has_part_c(lesson)          # 1.17: Part C draws Part B's question and gloss too
     return (FRAME_CSS + (READING_CSS if lesson and reading_rule.is_reading(Path(lesson)) else "")
-            + (MAP_CSS if has_map(lesson) else "") + (PART_B_CSS if has_part_b(lesson) else ""))
+            + (MAP_CSS if has_map(lesson) else "") + (PART_B_CSS if has_part_b(lesson) or part_c else "")
+            + (PART_C_CSS if part_c else ""))
 
 
 PAGE_CSS = """
@@ -3774,6 +3921,19 @@ DOC_KINDS = {"table": "Table", "guideline": "Guideline", "protocol": "Protocol",
              "procedure": "Procedure", "manual": "Manual", "notice": "Notice"}
 
 
+def bolded(text: str, bold: list[str] | None) -> str:
+    """A released line, escaped, with the words the release prints in bold set
+    in bold (bundle 1.17: a doc part's `bold`, a Part C question's `target`).
+    Only the type changes: the words and their order are the released ones."""
+    out = esc(text)
+    for w in bold or []:
+        e = esc(w)
+        i = out.find(e)
+        if i >= 0:
+            out = out[:i] + '<b class="dbold">' + e + "</b>" + out[i + len(e):]
+    return out
+
+
 def doc_table_html(b: dict, bid: str, first_row: int = 0, panel: bool = False) -> str:
     """A practice-set text drawn as a realistic page (ADR 026, bundle 1.13):
     the header names the text and its type (the type is a CSS attribute, not a
@@ -3799,7 +3959,7 @@ def doc_table_html(b: dict, bid: str, first_row: int = 0, panel: bool = False) -
             inner = ('<span class="dgrid" style="--dcols:' + dcols + '">' + '<span class="dsep"> | </span>'.join(
                 '<span class="dc">' + esc(c) + "</span>" for c in cells) + "</span>")
         else:
-            inner = esc(text)
+            inner = bolded(text, k.get("bold"))
         mark = (' data-mark="' + esc(k["mark"]) + '"') if k.get("mark") else ""
         body += ('<tr data-row="' + str(first_row + r) + '" class="dp dp-' + k["kind"] + '"><td data-col="0"'
                  + mark + ">" + inner + "</td></tr>")
@@ -3807,6 +3967,46 @@ def doc_table_html(b: dict, bid: str, first_row: int = 0, panel: bool = False) -
             + str(b.get("font") or 2.6) + 'cqh"><table><colgroup><col style="width:100%"></colgroup>'
             + '<thead><tr><th data-kind="' + esc(DOC_KINDS.get(doc["text_type"], "Text")) + '">' + head
             + "</th></tr></thead><tbody>" + body + "</tbody></table></div>")
+
+
+SCALE_LANE_GAP = 10           # options closer than this on the 0-100 line take the other lane
+
+
+def scale_lanes(items: list[dict]) -> dict[int, int]:
+    """Each option chip's lane on a scale (0 above the line, 1 below), so two
+    chips never meet: nearer than SCALE_LANE_GAP, the next takes the other lane."""
+    lanes: dict[int, int] = {}
+    last = {0: -100.0, 1: -100.0}
+    for it in sorted((i for i in items if i["kind"] in ("out", "key")), key=lambda i: i["at"]):
+        lane = 0 if it["at"] - last[0] >= SCALE_LANE_GAP else 1 if it["at"] - last[1] >= SCALE_LANE_GAP else 0
+        lanes[it["part"]] = lane
+        last[lane] = it["at"]
+    return lanes
+
+
+def scale_html(b: dict, bid: str) -> str:
+    """An attitude scale (ADR 026, the Part C question method; bundle 1.17): a
+    line from the negative view to the positive one, labelled at both ends and
+    the middle; its parts are revealed by the narration: the marker, at each
+    place the evidence puts the view (only the latest one shows), and each
+    option's letter where its view sits, struck when ruled out, ticked when
+    chosen. Letters are CSS attributes, never words; every part's room is kept
+    from the start, so nothing moves."""
+    items = [i for i in b.get("items") or [] if i["kind"] != "bad"]
+    lanes = scale_lanes(items)
+    parts = ""
+    for it in items:
+        pid = ' data-part="' + esc(b["id"]) + "." + str(it["part"]) + '"'
+        at = f' style="--at:{it["at"]}%"'
+        if it["kind"] == "marker":
+            parts += '<i class="pt scl-mk"' + pid + at + "></i>"
+        else:
+            parts += ('<i class="pt scl-op scl-' + it["kind"] + " lane" + str(lanes.get(it["part"], 0)) + '"'
+                      + pid + at + ' data-l="' + esc(it["option"] or "") + '"></i>')
+    return ('<div class="blk scl"' + bid + '><div class="scl-ends"><span class="scl-l">' + esc(b.get("left") or "")
+            + '</span><span class="scl-c">' + esc(b.get("text") or "") + '</span><span class="scl-r">'
+            + esc(b.get("right") or "") + '</span></div><div class="scl-track"><div class="scl-line"></div>'
+            + parts + "</div></div>")
 
 
 def map_html(b: dict, bid: str) -> str:
@@ -3845,6 +4045,18 @@ def question_html(b: dict, bid: str) -> str:
                      + (('<span class="pt orsn" data-part="' + esc(b["id"]) + "." + str(out["part"]) + '">'
                          + esc(out["text"]) + "</span>") if out else "")
                      + "</div>")
+        if b["question"].get("options_later"):
+            # 1.17 (Part C, QTA): the options are part 1, their room kept from the
+            # start; the stem's in-context target in bold, as the test prints it
+            later = next((it for it in b.get("items") or [] if it["kind"] == "options"), None)
+            if later:
+                rows = ('<div class="pt qopts" data-part="' + esc(b["id"]) + "." + str(later["part"]) + '">'
+                        + rows + "</div>")
+            return ('<div class="blk q mcq qc"' + bid + ' data-item="' + esc(b["question"]["item"])
+                    + '"><span class="qn" data-n="' + esc(str(b.get("exercise_item") or ""))
+                    + '"></span><div class="qb"><span class="qt">'
+                    + bolded(b["text"], [b["question"]["target"]] if b["question"].get("target") else None)
+                    + "</span>" + rows + "</div></div>")
         return ('<div class="blk q mcq"' + bid + ' data-item="' + esc(b["question"]["item"])
                 + '"><span class="qn" data-n="' + esc(str(b.get("exercise_item") or ""))
                 + '"></span><div class="qb"><span class="qt">' + esc(b["text"]) + "</span>" + rows
@@ -3987,6 +4199,8 @@ def _block_html(b: dict) -> str:
                 + '<div class="cardbd"><span>' + tagged(b["text"], tags) + "</span></div></div>")
     if t == "timeline":
         return timeline_html(b, bid)
+    if t == "scale":
+        return scale_html(b, bid)
     if t == "clauses":
         return clauses_html(b, bid)
     if t == "callout":
@@ -4116,6 +4330,9 @@ def map_block(stims: list[dict]) -> dict:
 
 
 COVERED_PURPOSE = re.compile(r"^\s*covered\s*:", re.I)
+# a Part C question board's views (bundle 1.17): "Map:", "Map P3:", "Para 3:", "Para 6-7:"
+PC_MAP = re.compile(r"^\s*map(?:\s+p(?:ara(?:graph)?)?\s*(\d+))?\s*:", re.I)
+PC_PARA = re.compile(r"^\s*para(?:graph)?\s+(\d+)(?:\s*[-–]\s*(\d+))?\s*:", re.I)
 MAX_REASON_WORDS = 14          # a wrong option's reason label (bundle 1.15)
 QUESTION_PART = re.compile(r"^\s*(out|key)\s*\|\s*([A-Z])\s*(?:\|\s*(.*\S))?\s*$", re.I)
 
@@ -4169,6 +4386,12 @@ def expand_practice(lesson: Path, topics: list[dict]) -> None:
                         b["items"], bad = question_parts(raw, b["question"]["options"])
                         if bad:
                             b["bad_items"] = bad
+                        if b["question"].get("options_later"):
+                            # 1.17 (Part C, QTA): the options are part 1, shown once the
+                            # paragraph is read; ruling out and the tick follow
+                            for it in b["items"]:
+                                it["part"] += 1
+                            b["items"].insert(0, {"kind": "options", "option": None, "text": None, "part": 1})
                 elif b.get("type") == "gloss" and re.match(r"^(lx|w):", ref):
                     # a word-bank gloss (ADR 026 §2, bundle 1.15), built from its ID
                     import vocab
@@ -4178,6 +4401,14 @@ def expand_practice(lesson: Path, topics: list[dict]) -> None:
                         b.update({**BLOCK_DEFAULTS, **vocab.gloss_block(lesson, k), **keep})
                     else:
                         b["vocab_ref_unknown"] = ref
+                elif b.get("type") == "table" and re.match(r"^RECAP\s+oa-set-[\w-]+$", ref, re.I) \
+                        and ref.split()[1] in stim:
+                    # a Part C text's word recap, one row per question (bundle 1.17)
+                    import vocab
+                    b.clear()
+                    b.update({**BLOCK_DEFAULTS, **vocab.recap_grouped_block(
+                        lesson, vocab.recap_groups_for_text(lesson, ref.split()[1].rsplit("-", 1)[-1])),
+                        **keep, "anchor": True})
                 elif b.get("type") == "table" and re.match(r"^(MATCH|RECAP)\b", ref, re.I):
                     # the instructor's word-to-meaning matching table, or a text's
                     # word recap, built from the word bank (bundle 1.15)
@@ -4239,6 +4470,35 @@ def expand_practice(lesson: Path, topics: list[dict]) -> None:
                 if m and m.group(2).upper() in letters:
                     h["map_doc"] = letters[m.group(2).upper()]
                     h["map_zoom"] = "doc" if m.group(1).lower() == "zoom" else None
+        # a Part C question board (bundle 1.17; ADR 026, the Part C question
+        # method): each thought says what the text shows, the whole text as a map
+        # ("Map:", "Map P3:" with paragraph 3 marked) or a paragraph whole
+        # ("Para 3:", "Para 6-7:"); a paragraph thought is that row's state
+        doc = next((b for h in t["thoughts"] for b in h["blocks"] if b.get("doc")), None)
+        if doc and qs and qs[0]["question"].get("options_later"):
+            n_rows = len(doc["rows"])
+            for h in t["thoughts"]:
+                purpose = h.get("purpose") or ""
+                m = PC_MAP.match(purpose)
+                if m:
+                    k = int(m.group(1)) if m.group(1) else None
+                    if k is not None and not 1 <= k <= n_rows:
+                        h["view_bad"] = purpose
+                        continue
+                    h["view"] = {"map": True, "rows": [k - 1] if k else []}
+                    h["purpose"] = "Table: " + purpose[m.end():].strip()
+                    continue
+                m = PC_PARA.match(purpose)
+                if m:
+                    a = int(m.group(1))
+                    b_ = int(m.group(2)) if m.group(2) else a
+                    if not (1 <= a <= b_ <= n_rows and b_ - a <= 1):
+                        h["view_bad"] = purpose
+                        continue
+                    h["view"] = {"map": False, "rows": list(range(a - 1, b_))}
+                    h["purpose"] = f"Row {a}: " + purpose[m.end():].strip()
+                elif not COVERED_PURPOSE.match(purpose):
+                    h["view_bad"] = purpose
         # a Part B question board (bundle 1.15): the text stays covered while
         # the question, the options and "try it first" are taught, as the
         # instructor covers it; those thoughts are named "Covered: ..."

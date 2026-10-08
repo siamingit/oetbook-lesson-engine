@@ -43,7 +43,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_lesson_player import build          # noqa: E402
-from write_screens import has_part_b            # noqa: E402
+from write_screens import has_part_b, has_part_c    # noqa: E402
 
 # Headless Edge runs with its own profile, removed on exit: with the default one,
 # a run could be handed to an Edge window already open and never return
@@ -286,7 +286,16 @@ HARNESS = r"""
   // fits whole, from body size down to the floor; it need not be the larger share.
   function extractFits(bd) {
     drawnBoard = null; show(bd.start + 0.001);
-    return !outside().some(([i]) => i === bd.table);
+    if (!isPCBoard(bd)) return !outside().some(([i]) => i === bd.table);
+    // 1.17: a Part C text, a paragraph at a time: each paragraph view whole
+    const seen = new Set();
+    for (const s of bd.states) {
+      if (!s.view || s.view.map || seen.has(s.view.rows.join(","))) continue;
+      seen.add(s.view.rows.join(","));
+      show(s.start + 0.001);
+      if (outside().some(([i]) => i === bd.table)) return false;
+    }
+    return true;
   }
   function fitQBoard(bd) {
     const tid = bd.table, n0 = unfit.length;
@@ -427,7 +436,8 @@ def main() -> None:
     # question boards are left to the player's guard (the question column at
     # body size does not leave the extract room at 2.6% there; ADR 026,
     # 2026-10-08), every other board is fitted
-    part_b = has_part_b(a.lesson_dir)
+    # 1.17: a Part C lesson's question boards are two columns too, fitted the same way
+    part_b = has_part_b(a.lesson_dir) or has_part_c(a.lesson_dir)
     passes = []
     for name, width in frames.items():
         small_frame = name in SMALL_PHONE

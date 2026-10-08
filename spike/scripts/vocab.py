@@ -174,6 +174,39 @@ def words_for_prompt(lesson: Path) -> str:
     return "\n".join(lines)
 
 
+def words_for_prompt_part_c(lesson: Path, text_ids: list[str] | None = None) -> str:
+    """A Part C set's words for the screens stage (bundle 1.17), by the question
+    whose pre-teaching board teaches each (question_words), with every place the
+    word occurs, so it is glossed again there; never to be copied into a block."""
+    lex, _ = bank()
+    ps = practice_set.load(lesson)
+    items = practice_set.items(ps)
+    where: dict[tuple[str, str], list[str]] = {}
+    for o in occurrences(set_id(lesson) or ""):
+        loc = o["location"]
+        at = (f"text paragraph {loc['paragraph']}" if loc["kind"] == "text" else
+              "the question" if loc["kind"] == "stem" else f"option {loc.get('option')}")
+        if loc["kind"] != "text":
+            at += f" of question {items[loc['item_id']]['number']}"
+        where.setdefault((o["text_id"], o["lexicon_id"]), []).append(f"{at}: '{o['surface']}'")
+    lines = []
+    for item, keys in question_words(lesson).items():
+        it = items[item]
+        tid = it["stimulus_ids"][0].rsplit("-", 1)[-1]
+        if text_ids and tid not in text_ids:
+            continue
+        lines.append(f"WORDS FOR QUESTION {it['number']} ({item}; its text {it['stimulus_ids'][0]}), "
+                     "pre-taught on that question's PRE-TEACHING board, in this order:"
+                     + ("" if keys else " none (no pre-teaching board for this question)"))
+        for k in keys:
+            lid = lexicon_id(lesson, k)
+            e = lex[lid]
+            lines.append(f"  {lid} = {e['headword']} ({e['part_of_speech']}): {e['definition']} | synonym: "
+                         f"{(e.get('synonyms') or ['-'])[0]} | occurs in "
+                         + "; ".join(where.get((tid, lid), [])))
+    return "\n".join(lines)
+
+
 def audio_file(e: dict) -> str | None:
     a = e.get("audio") or {}
     return Path(a["file"]).name if a.get("file") else None
@@ -221,6 +254,60 @@ def recap_block(lesson: Path, keys: list[str]) -> dict:
             "provenance": "source-derived",
             "note": "word recap, built by code from the word bank: "
                     + ", ".join(lexicon_id(lesson, k) for k in keys)}
+
+
+def question_words(lesson: Path) -> dict[str, list[str]]:
+    """A Part C text's words by the question whose pre-teaching board teaches
+    them (ADR 026, Part C; bundle 1.17), each word once a text, at its first
+    occurrence: a word of a paragraph goes to the paragraph's question; where
+    two questions share the paragraph, to the later one when the word is in
+    that question's evidence; a word of a stem or an option to its question.
+    {item id: [key, ...]}, the items in number order."""
+    ps = practice_set.load(lesson) or {"parts": []}
+    items = practice_set.items(ps)
+    out: dict[str, list[str]] = {i: [] for i in sorted(items, key=lambda i: items[i]["number"])}
+    seen: dict[str, set] = {}
+    for o in occurrences(set_id(lesson) or ""):
+        loc = o["location"]
+        if loc["kind"] == "text":
+            ids = loc.get("paragraph_item_ids") or []
+            later = [i for i in ids[1:] if o["surface"].lower() in (items[i].get("evidence") or "").lower()]
+            item = later[-1] if later else ids[0]
+        else:
+            item = loc["item_id"]
+        k = key_of(lesson, o["lexicon_id"])
+        got = seen.setdefault(o["text_id"], set())
+        if k in got:
+            continue
+        got.add(k)
+        out.setdefault(item, []).append(k)
+    return out
+
+
+def recap_grouped_block(lesson: Path, groups: list[tuple[int, list[str]]]) -> dict:
+    """A long text's word recap (Part C, bundle 1.17): one row per question,
+    its words each with a synonym from the word bank, so the forty to fifty
+    words of a Part C text stay whole on one board. `groups` is [(question
+    number, [key, ...]), ...]."""
+    rows, words = [], []
+    for n, keys in groups:
+        es = [entry(lesson, k) for k in keys]
+        rows.append([str(n), "; ".join(f"{e['headword']} ({(e.get('synonyms') or [''])[0]})" for e in es)])
+        words += keys
+    return {"type": "table", "header": ["Question", "Words (a synonym)"], "rows": rows,
+            "vocab_table": {"kind": "recap_grouped", "words": words,
+                            "groups": [[n, list(keys)] for n, keys in groups]},
+            "provenance": "source-derived",
+            "note": "word recap by question, built by code from the word bank: "
+                    + ", ".join(lexicon_id(lesson, k) for k in words)}
+
+
+def recap_groups_for_text(lesson: Path, text_id: str) -> list[tuple[int, list[str]]]:
+    """A Part C text's words grouped by question number (question_words)."""
+    ps = practice_set.load(lesson)
+    items = practice_set.items(ps)
+    return [(items[i]["number"], keys) for i, keys in question_words(lesson).items()
+            if keys and items[i]["stimulus_ids"][0].rsplit("-", 1)[-1] == text_id]
 
 
 def keys_from_label(lesson: Path, label: str) -> tuple[list[str], list[str]]:
