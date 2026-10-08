@@ -776,12 +776,12 @@ ADR 026, the Part A question method; bundle 1.14, rule 31.
   map's frame shows them.
 - **Whole lines only** (maintainer, 2026-10-07): a zoomed map never cuts a line;
   where the text goes on above or below, the next line shows faded, as a cue, as
-  in the Part B lens (§7g; `check_lens.py`).
+  the Part B lens did (§7g; `check_lens.py`).
 
 ### 7g. A Part B question, the covered text, and the word bank's glosses (Reading)
 
 ADR 026, the Part B question method and the vocabulary layer; bundle 1.15, rules
-32 to 34.
+32 to 34; the two-column question board, bundle 1.16, rule 36.
 
 - **The question with its options.** Under the question, options A to C, each
   with its letter in a small circle. A wrong option, when ruled out, is struck
@@ -800,13 +800,37 @@ ADR 026, the Part B question method and the vocabulary layer; bundle 1.15, rules
   the learner taps to hear it (never played by the lesson itself).
 - **Word tables**: the matching table (Word | Meaning) and the recap table (Word |
   Meaning | Synonym) are table boards (§7, Tables).
-- **The lens** (maintainer, 2026-10-07): on a question board the text keeps its
-  own frame; once it is uncovered, the whole extract shows once, then the lines
-  being read are set at body size in that frame, readable on a phone, the rest
-  dimmed, as Part A's map zooms (§7f). It shows whole lines only, never half a
-  line; where the text goes on above or below, the next line shows faded, as a
-  cue (checked by `check_lens.py`). Exempt from the table text floor's look and from "nothing moves
-  a word" for the text's own words only (§8a), as the map is.
+- **The lens** (maintainer, 2026-10-07; **superseded on 2026-10-08** by the two
+  columns below, kept as history: Reading 3 was built with it in bundle 1.15): on
+  a question board the text kept its own frame; once it was uncovered, the whole
+  extract showed once, then the lines being read were set at body size in that
+  frame, the rest dimmed, as Part A's map zooms (§7f), whole lines only.
+- **Two columns, the extract whole** (maintainer, 2026-10-08; ADR 026 amendment of
+  that date). Once uncovered, the whole extract is visible at every moment: no
+  lens, no scrolling, no hidden line. The extract is a fixed page (its type tag
+  and look kept) in one column; the question, its options, reason labels and
+  tick, the notes, the glosses and the board's picture are a column beside it.
+  The question column gets the room it needs at body size; the extract takes the
+  rest, at the largest size at which it fits whole, from body size (3.2% of the
+  frame) to no less than 2.6% (the table exception of §3 and §7, with a higher
+  floor); it need not be the larger share. The reading is followed by the
+  spotlight: the paragraph being read at full strength, the others at 60%, still
+  readable, with no amber cell (§8e); the marks, pairs and pointer as before. The
+  whole extract shows undimmed first, until the end of the first sentence said
+  once it is uncovered. Only a gloss may go over the question column, at its
+  foot, its top edge between two lines, briefly, and never while the part of the
+  question it covers is read or marked; never over the extract (§8d). The camera
+  does not zoom these boards. The board is the room between the header and the
+  control bar, which keeps 44 px on a small screen (2026-10-08). The fit
+  measures the phone and laptop frames with Segoe UI, Arial and Roboto; on a
+  smaller frame or with a wider device font the player's guard keeps everything
+  whole: the extract smaller (never below 2.6%), the question column wider, and
+  as a last resort the question column smaller, to the same floor. Checked by
+  `check_lens.py` (every line of the extract on its page and on the board after
+  it is uncovered), `check_overflow.py` and `check_overlap.py` (nothing under
+  the control bar), at a phone held landscape (915x412), phone-landscape and
+  laptop frames, and `check_wide_font.py` (Verdana forced). Part C will follow
+  the same principle.
 
 ## 8. Marks
 
@@ -965,6 +989,9 @@ over each other. In every state, at phone-landscape and laptop width, no block
 overlaps another block, and no text is drawn over other text (a diagram's
 labels, a table's cells). Side notes go under their table (§7, Tables);
 timeline marker labels that would meet take further lines under the axis.
+One exception (maintainer, 2026-10-08; §7g): on a Part B question board, a gloss
+that does not fit beside the question is drawn over the foot of the question
+column, briefly, never over the extract or another note.
 
 - **Checked, not eyeballed**: `check_overlap.py` drives the player to every
   moment at which a board changes and measures every block and every line of
@@ -1006,7 +1033,9 @@ ADR 026; bundle 1.13 (docs/04-LESSON-BUNDLE.md rules 29 and 30).
   never per board or topic. The
   student can jump forward or back and return to where playback reached.
 - **On touch, every control is at least 44px.** The control band grows
-  proportionally on small screens.
+  proportionally on small screens. The board is what lies above it: the fit and the
+  checks measure the board between the header and the control band as drawn,
+  on a phone held landscape (915x412) too (2026-10-08).
 - Controls are neutral grey and must not compete with the teaching.
 
 ---
