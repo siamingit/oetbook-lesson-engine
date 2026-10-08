@@ -2941,6 +2941,8 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                               "explained while teaching are the working layer, not fixed"
                               + (f" (boards accepted by the {accepted})" if accepted else ""))
             allowed += len(splits) - 1
+        if out["section"].get("kind") == "review":
+            allowed = max(allowed, 3)  # a method review: two or three boards (ADR 018 amendment)
         if len(ts) > allowed:
             fail("boards", f"slide {slide} has {len(ts)} boards; one per slide"
                            + (f", plus {len(items)} exercise items" if items else "")
