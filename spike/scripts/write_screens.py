@@ -1327,6 +1327,31 @@ def gather(lesson: Path, pages: list[int]) -> dict:
             "requires": ledger_phrases(ledger, "required_phrases")}
 
 
+# Authored sections of a kind (ADR 018 amendment of 2026-10-08): the screens
+# prompt's opening for each, in place of the one-board grammar section's.
+AUTHORED_KINDS = {
+    "review": (
+        "An AUTHORED METHOD REVIEW (docs/adr/018-authored-sections.md, amendment of "
+        "2026-10-08): it has no slide and no recording. It reminds the learner, quickly, "
+        "of what another lesson of the course taught, before this lesson's practice: "
+        "simpler and faster than that lesson, never a copy of its boards. Its plan is "
+        "given below as beats, written by the agent at the maintainer's request; use "
+        "every beat, in their order. Write TWO or THREE boards in all, about five minutes "
+        "of narration together: short notes and numbered steps in plain words, one short "
+        "example per point that you invent (never a sentence of a practice set), and a "
+        "picture on every board. Every block you write is `authored` (role example or "
+        "note); none is a printed exercise, so no block sets exercise_item."),
+    "closing": (
+        "An AUTHORED CLOSING (docs/adr/014-introductions-greet-then-link.md, amendment of "
+        "2026-10-08): the lesson's own final board, so the lesson never stops abruptly. "
+        "It has no slide and no recording. Write ONE board with ONE state: two or three "
+        "short notes, the most important points of this lesson as the beats give them, "
+        "and a picture. No exercise, no new teaching, nothing the lesson did not teach, "
+        "no list of other lessons and no lesson count. Every block you write is "
+        "`authored` (role note); no block sets exercise_item."),
+}
+
+
 def build_messages(data: dict) -> list[dict]:
     know = data["understanding"]
     pages = data["pages"]
@@ -1352,6 +1377,11 @@ def build_messages(data: dict) -> list[dict]:
                 "exercise_item. Write ONE board: a short explanation, examples from a medical "
                 "letter (right and wrong, as answer and error rows), and the plan's short "
                 "practice item, its answer revealed after it. Use every beat.")
+        kind = section_for_page(Path(data["lesson_dir"]), pages[0])[1].get("kind")
+        if kind in AUTHORED_KINDS:
+            # a method review or a closing (ADR 018 and ADR 014 amendments of 2026-10-08)
+            head = (f"Lesson: {paths.lesson_label(Path(data['lesson_dir']))}. "
+                    + AUTHORED_KINDS[kind])
     content = [
         {"type": "text", "text": head},
         {"type": "text", "text":

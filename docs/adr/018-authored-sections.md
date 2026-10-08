@@ -77,3 +77,21 @@ practice. Its content had first been added as short notes on the comma boards
   prompt and provenance, the deck opened only for diagrams), `write_narration.py`
   (taken-out states, authored provenance), `build_lesson_player.py` (empty
   `pages`), `build_course_index.py` (beats without times).
+
+## Amendment, 2026-10-08: placed before a deck section, and of a kind
+
+Added under the maintainer's brief that split Reading Part C (its §1-§3, which
+approve any runner change the split needs):
+
+- **Placement.** An authored section may be placed before a deck section:
+  `--before PAGE` puts it before the deck section whose first page is PAGE
+  (sections.json `added[].before`; `build_sections.place_sections`). Without it,
+  authored sections follow the deck's, as before.
+- **Kinds.** `--kind review` (a method review before a lesson's practice: two or
+  three boards, about five minutes, reminding the learner quickly of what
+  another lesson taught, simpler and faster, never a copy, the other lesson named
+  as a cross-reference, ADR 006) and `--kind closing` (ADR 014 amendment of the
+  same day). The kind is carried on the section (`kind`); the screens prompt's
+  opening and the narration prompt follow it, and the narration audit warns a
+  review outside 450-950 words. A section with no kind is as before (Grammar 7's).
+- **Bundle.** Nothing new: an authored section's `pages` stays empty.

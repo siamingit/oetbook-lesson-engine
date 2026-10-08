@@ -3,6 +3,7 @@
     .venv/Scripts/python spike/scripts/practice_set.py <lesson_dir> --set oa-set-ra-0001
     .venv/Scripts/python spike/scripts/practice_set.py <lesson_dir> --teach-pages 7,9
     .venv/Scripts/python spike/scripts/practice_set.py <lesson_dir> --check
+    .venv/Scripts/python spike/scripts/practice_set.py <lesson_dir> --lesson-items oa-reading-000027,... --by NAME
 
 The texts and questions of Reading Parts A, B and C come only from the
 exercises repository's release (pilot-v1), shown exactly as released. This
@@ -103,6 +104,17 @@ def part_code(ps: dict, item: dict) -> str | None:
     """The part of the test an item belongs to: RA, RB or RC."""
     return next((p.get("code") for p in ps["parts"]
                  if any(i["item_id"] == item["item_id"] for i in p["items"])), None)
+
+
+def number(ps: dict, item: dict) -> int:
+    """The number a question carries in this lesson. From Reading Part C (1)
+    on, a lesson numbers the questions it teaches from 1 in the order taught
+    (ADR 026 amendment of 2026-10-08; `numbering: lesson`, the items in
+    `lesson_items`), never by the release's number; the item ID is unchanged.
+    A lesson without it keeps the release's number (Reading 2 and 3)."""
+    if ps.get("numbering") == "lesson" and item["item_id"] in ps["lesson_items"]:
+        return ps["lesson_items"].index(item["item_id"]) + 1
+    return item["number"]              # not taught in this lesson: never shown
 
 
 def group_of(ps: dict, item: dict) -> dict | None:
@@ -248,7 +260,7 @@ def question_block(ps: dict, item: dict) -> dict:
         q["options_later"] = True
         if (item.get("target") or {}).get("text"):
             q["target"] = item["target"]["text"]
-    return {"type": "plain", "text": question_text(ps, item), "exercise_item": item["number"],
+    return {"type": "plain", "text": question_text(ps, item), "exercise_item": number(ps, item),
             "question": q,
             "provenance": "source-derived",
             "note": f"practice set item {item['item_id']} as released (ADR 026); built by code"}
@@ -263,7 +275,7 @@ def question_for_prompt(ps: dict, item: dict) -> str:
         opts = options_of(item)
         letter = {o["option"]: o["letter"] for o in opts}
         key = item["scoring"]["key_option_id"]
-        return (f"QUESTION {item['item_id']} (number {item['number']}, "
+        return (f"QUESTION {item['item_id']} (number {number(ps, item)}, "
                 f"{(item.get('admin') or {}).get('question_type') or 'choice'}; its text is "
                 f"{', '.join(item['stimulus_ids'])}): {question_text(ps, item)}"
                 + "".join(f"\n  option {o['letter']}: {o['text']}" for o in opts)
@@ -281,7 +293,7 @@ def question_for_prompt(ps: dict, item: dict) -> str:
         wrong.append(f"{opt}: {w['why_wrong']}")
     for w in fb.get("wrong_answers") or []:
         wrong.append(f"'{w['answer']}': {w['why_wrong']}")
-    return (f"QUESTION {item['item_id']} (number {item['number']}, {(item.get('admin') or {}).get('kind')}): "
+    return (f"QUESTION {item['item_id']} (number {number(ps, item)}, {(item.get('admin') or {}).get('kind')}): "
             f"{question_text(ps, item)}\n  key: {k['answer']} (accepted: {' / '.join(k['accepted'])})"
             + (f"\n  evidence in the text: {item['evidence']}" if item.get("evidence") else "")
             + (f"\n  the release's reason for the key: {fb['key']}" if fb.get("key") else "")
@@ -301,6 +313,18 @@ def main() -> None:
         ps["teach_pages"] = sorted(int(x) for x in sys.argv[sys.argv.index("--teach-pages") + 1].split(","))
         path(lesson).write_text(json.dumps(ps, ensure_ascii=False, indent=1), encoding="utf-8")
         print(f"sections teaching the set: pages {ps['teach_pages']}")
+    if "--lesson-items" in sys.argv:
+        # the questions this lesson teaches, in the order taught: numbered
+        # from 1 (ADR 026 amendment of 2026-10-08)
+        ids = [x.strip() for x in sys.argv[sys.argv.index("--lesson-items") + 1].split(",") if x.strip()]
+        unknown = [i for i in ids if i not in items(ps)]
+        if unknown or len(set(ids)) != len(ids):
+            raise SystemExit(f"--lesson-items: unknown or repeated items {unknown or ids}")
+        by = sys.argv[sys.argv.index("--by") + 1] if "--by" in sys.argv else "maintainer"
+        import datetime
+        ps.update(numbering="lesson", lesson_items=ids, numbering_by=f"{by} {datetime.date.today()}")
+        path(lesson).write_text(json.dumps(ps, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(f"questions numbered in this lesson: 1-{len(ids)} ({ids[0]} to {ids[-1]})")
     bad = check_hashes({"parts": ps["parts"]})
     for st in stimuli(ps).values():
         if not verbatim(st["body"], parts(st["body"])):

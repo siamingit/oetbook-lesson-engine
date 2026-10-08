@@ -48,6 +48,7 @@ slide is on screen, and stored with the title slide's page (maintainer,
 2026-09-24):
 
     .venv/Scripts/python spike/scripts/build_sections.py <lesson_dir> --title-page 3
+    .venv/Scripts/python spike/scripts/build_sections.py <lesson_dir> --add-section 1 "TITLE" --by NAME [--before 13] [--kind review|closing] [--next LESSON_ID]
     .venv/Scripts/python spike/scripts/build_sections.py <lesson_dir> --intro-range 0 240
 
 --title-page records `lesson.page_by` and, with no contents slide, the
@@ -295,9 +296,28 @@ def nothing_lost(previous: dict, out: dict) -> None:
 
 def added_section(a: dict) -> dict:
     """An authored section (ADR 018) as a section: its slot page, the
-    maintainer's title, no heading."""
+    maintainer's title, no heading; its kind (a method review or a closing,
+    ADR 014 amendment of 2026-10-08) when it has one."""
     return {"pages": [a["page"]], "heading": None, "title": a["title"], "corrected_from": None,
-            "status": "maintainer", "added": True}
+            "status": "maintainer", "added": True, **({"kind": a["kind"]} if a.get("kind") else {})}
+
+
+def place_sections(sections: list[dict], added: list[dict]) -> list[dict]:
+    """The deck's sections in page order, then each authored section: before
+    the deck section whose first page is its `before` (a method review before
+    the practice it reviews for), else after the deck's sections in the order
+    of its slot (ADR 018)."""
+    deck = sorted([s for s in sections if not s.get("added")], key=lambda s: s["pages"][0])
+    by_page = {a["page"]: added_section(a) for a in added}
+    out = []
+    for s in deck:
+        out += [by_page[a["page"]] for a in sorted(added, key=lambda a: a["page"])
+                if a.get("before") == s["pages"][0]]
+        out.append(s)
+    firsts = {s["pages"][0] for s in deck}
+    out += [by_page[a["page"]] for a in sorted(added, key=lambda a: a["page"])
+            if a.get("before") not in firsts]
+    return out
 
 
 def write(out_path: Path, info: dict) -> None:
@@ -434,11 +454,22 @@ def main() -> None:
         by = sys.argv[sys.argv.index("--by") + 1] if "--by" in sys.argv else "maintainer"
         page = paths.ADDED_BASE + n
         added = [a for a in previous.get("added", []) if a["page"] != page]
-        added.append({"page": page, "title": title, "by": f"{by} {today}"})
+        entry = {"page": page, "title": title, "by": f"{by} {today}"}
+        # placed before a deck section (--before P) and of a kind (--kind
+        # review|closing): ADR 018 amendment of 2026-10-08
+        if "--before" in sys.argv:
+            entry["before"] = int(sys.argv[sys.argv.index("--before") + 1])
+        if "--kind" in sys.argv:
+            entry["kind"] = sys.argv[sys.argv.index("--kind") + 1]
+            if entry["kind"] not in ("review", "closing"):
+                raise SystemExit("--kind is review or closing")
+        if "--next" in sys.argv:
+            # a closing names the next lesson only when it is certain (ADR 014
+            # amendment of 2026-10-08): the lesson id, set by the maintainer's brief
+            entry["next"] = sys.argv[sys.argv.index("--next") + 1]
+        added.append(entry)
         previous["added"] = sorted(added, key=lambda a: a["page"])
-        previous["sections"] = [s for s in previous["sections"] if s["pages"] != [page]] \
-            + [added_section(a) for a in previous["added"] if a["page"] == page]
-        previous["sections"].sort(key=lambda s: s["pages"][0])
+        previous["sections"] = place_sections(previous["sections"], previous["added"])
         categorise(previous, [])
         write(out_path, previous)
         print(f"authored section {paths.section_tag([page])}: {title!r} ({by})")
@@ -626,7 +657,7 @@ def main() -> None:
             sections.append({"pages": [p["page"]], "heading": None, "title": "",
                              "corrected_from": None, "status": "needs-title",
                              "why": "no text layer on this slide; set a title by hand"})
-    sections += [added_section(a) for a in previous.get("added", [])]   # ADR 018
+    sections = place_sections(sections, previous.get("added", []))   # ADR 018
     for s in sections:
         k = kept.get(s["pages"][0])
         if k:

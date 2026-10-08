@@ -510,6 +510,28 @@ of the lesson, by its title. Walk through the sections in the same way, \
 revealing each note as you name it.\
 """
 
+# Authored sections of a kind (ADR 018 and ADR 014 amendments of 2026-10-08)
+CLOSING = """\
+THIS SECTION IS THE LESSON'S CLOSING (ADR 014 amendment of 2026-10-08): no lesson \
+stops abruptly. About 30 to 60 seconds in all (70 to 140 words) on its one board. \
+First a quick recap of the two or three most important points of this lesson: the \
+board's notes, in the order shown, each revealed as you say it. Then a warm, creative \
+goodbye in your own words, different from every other lesson's closing listed below; \
+there is no fixed template (for example: hoping the lesson was useful, encouraging the \
+learner to practise, or saying you will see them in the next lesson). Name what the \
+next lesson is about only when NEXT LESSON below is given: it is then certain; with \
+none, say nothing about what comes next. Never say how many lessons there are and \
+never list lessons. Do not greet, and teach nothing new.\
+"""
+REVIEW = """\
+THIS SECTION IS A METHOD REVIEW (ADR 018 amendment of 2026-10-08), before the \
+lesson's practice: about five minutes in all. Remind the learner quickly of what the \
+plan's lesson taught, simpler and faster than that lesson; never teach it again in \
+full. Name that lesson once by its short title, as a cross-reference (ADR 006), \
+without assuming the learner has taken it ("The lesson X shows ..."). Do not start \
+the practice here: the practice is the next section.\
+"""
+
 TASK_CHUNK = """THIS SECTION IS DRAFTED IN PARTS (part {n} of {of}), joined afterwards and audited as one. Write ONLY these boards, in the order given, each complete: {ids}. Every other board is written in another part and is not returned. The section's narration just before these boards ends: {before}
 Go on from there naturally: do not greet, introduce the section again or sum it up unless one of your boards is where that happens."""
 
@@ -777,11 +799,49 @@ def gather(lesson: Path, pages: list[int]) -> dict:
             "screens_path": str(screens_path), "lesson_id": lesson.name,
             "catalogue": catalogue(lesson), "references": references,
             "previous_lesson": previous_lesson(lesson), "openings": openings(lesson),
+            "closings": closings(lesson), "next_lesson": next_lesson(lesson, pages),
             "course_map": course_map(lesson),
             "blocks": blocks, "understanding": know, "ledger": ledger,
             "rulings": rulings, "rulings_from": rulings_from,
             "forbids": ledger_phrases(ledger, "forbidden_phrases"),
             "requires": ledger_phrases(ledger, "required_phrases")}
+
+
+def closings(lesson: Path) -> dict[str, str]:
+    """Every OTHER lesson's closing as spoken, by lesson id (ADR 014 amendment
+    of 2026-10-08: the goodbye differs in every lesson), read from the lesson
+    folders beside this one."""
+    out = {}
+    for other in sorted(p for p in lesson.parent.iterdir() if p.is_dir() and p.name != lesson.name):
+        sp = other / "analysis" / "sections.json"
+        if not sp.exists():
+            continue
+        for sec in json.loads(sp.read_text(encoding="utf-8")).get("sections", []):
+            if sec.get("kind") != "closing":
+                continue
+            np_ = paths.narration_dir_for(other, sec["pages"]) / "narration.json"
+            if np_.exists():
+                n = json.loads(np_.read_text(encoding="utf-8"))
+                out[other.name] = " ".join(spoken(u["text_with_cues"]) for bd in n["boards"]
+                                           for st in bd["states"] for u in st["utterances"])
+    return out
+
+
+def next_lesson(lesson: Path, pages: list[int]) -> dict | None:
+    """The lesson after this one, for a closing, only when it is certain: the
+    closing's `next` in sections.json (build_sections.py --next), with that
+    lesson's title and description."""
+    p = lesson / "analysis" / "sections.json"
+    if not p.exists():
+        return None
+    info = json.loads(p.read_text(encoding="utf-8"))
+    a = next((x for x in info.get("added", []) if [x["page"]] == list(pages)), None)
+    nid = (a or {}).get("next")
+    if not nid:
+        return None
+    np_ = lesson.parent / nid / "analysis" / "sections.json"
+    nl = json.loads(np_.read_text(encoding="utf-8"))["lesson"] if np_.exists() else {}
+    return {"lesson": nid, "title": nl.get("title"), "description": nl.get("description")}
 
 
 def map_view(mp: dict, s: dict) -> str:
@@ -947,6 +1007,15 @@ def build_messages(data: dict, rewrite: dict | None = None, chunk: dict | None =
                  if b["type"] == "contents_item"]
         if items and not any(b.get("explanation") for b in items):
             content.append({"type": "text", "text": INTRO_NO_CATEGORIES})
+    kind = scr.get("section", {}).get("kind")
+    if kind == "closing":
+        content.append({"type": "text", "text": CLOSING
+                        + "\n\nNEXT LESSON (certain; null when not known):\n"
+                        + json.dumps(data.get("next_lesson"), ensure_ascii=False)
+                        + "\n\nOTHER LESSONS' CLOSINGS (never reuse their goodbye):\n"
+                        + json.dumps(data.get("closings") or {}, ensure_ascii=False)})
+    elif kind == "review":
+        content.append({"type": "text", "text": REVIEW})
     import vocabulary_rule
     lesson_dir = Path(scr["lesson_dir"]) if scr.get("lesson_dir") else Path(data["screens_path"]).parents[3]
     if vocabulary_rule.is_vocabulary(lesson_dir) and not scr.get("section", {}).get("intro"):
@@ -1031,7 +1100,7 @@ def chunk_plan(data: dict) -> list[list[str]]:
     if len(ids) <= CHUNK_BOARDS:
         return [ids]
     size = math.ceil(len(ids) / math.ceil(len(ids) / CHUNK_BOARDS))
-    weight = {b["id"]: len(b["states"]) for b in data["screens"]["boards"]}
+    weight = {b["id"]: len(b.get("states") or ()) or 1 for b in data["screens"]["boards"]}
     if sum(weight.values()) <= CHUNK_STATES * math.ceil(len(ids) / size):
         return [ids[i:i + size] for i in range(0, len(ids), size)]
     # a section whose boards are heavy (a Reading Part C text: a question board has
@@ -1840,6 +1909,45 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
             if same_sentence(first, sent):
                 fail("intro", f"the introduction opens with the same sentence as {other}: "
                               f"{first!r}")
+    # A closing (ADR 014 amendment of 2026-10-08): about 30 to 60 seconds, one
+    # board, a goodbye that is not another lesson's; a method review about
+    # five minutes (ADR 018 amendment of the same day)
+    kind = data["screens"].get("section", {}).get("kind")
+    if kind in ("closing", "review"):
+        said_all = [spoken(u["text_with_cues"]) for bd in boards for s in bd["states"]
+                    for u in s["utterances"]]
+        n_words = sum(len(x.split()) for x in said_all)
+    if kind == "closing":
+        if len(boards) != 1:
+            fail("closing", f"a closing is one board; this one has {len(boards)}")
+        if n_words > 180:
+            fail("closing", f"the closing is {n_words} words; about 30 to 60 seconds is 70 to 140")
+        elif not 60 <= n_words <= 150:
+            warn("closing", f"the closing is {n_words} words; about 30 to 60 seconds is 70 to 140")
+        from build_course_index import same_sentence
+        last = sentences(" ".join(said_all))[-2:] if said_all else []
+        for other, text in (data.get("closings") or {}).items():
+            theirs = sentences(text)[-3:]
+            for a in last:
+                if any(same_sentence(a, b) for b in theirs):
+                    fail("closing", f"the closing's goodbye is {other}'s: {a!r}")
+    # Question numbers (ADR 026 amendment of 2026-10-08): a number spoken is
+    # one the board shows; on a board that shows none, one the lesson teaches
+    import question_numbers
+    taught = question_numbers.lesson_numbers(blocks)
+    lesson_dir = Path(data["screens"]["lesson_dir"]) if data["screens"].get("lesson_dir")         else Path(data["screens_path"]).parents[3]
+    import practice_set
+    ps = practice_set.load(lesson_dir) if (lesson_dir / "analysis").exists() else None
+    if ps and ps.get("numbering") == "lesson":
+        taught = list(range(1, len(ps["lesson_items"]) + 1))
+    elif ps and taught:
+        # a lesson numbered by the release (Reading 2 and 3): any number of the set
+        taught = sorted(i["number"] for i in practice_set.items(ps).values())
+    for bd in boards:
+        for f in question_numbers.board_findings(bd, blocks, taught):
+            fail(f["where"], f["what"])
+    if kind == "review" and not 450 <= n_words <= 950:
+        warn("review", f"the method review is {n_words} words; about five minutes is 550 to 800")
     findings += gloss_moment_findings(boards, blocks)
     # No lesson count and no list of the other lessons, in any lesson: the course
     # is still growing (ADR 014 amendment, maintainer 2026-09-27)

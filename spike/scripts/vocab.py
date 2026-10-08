@@ -187,7 +187,7 @@ def words_for_prompt_part_c(lesson: Path, text_ids: list[str] | None = None) -> 
         at = (f"text paragraph {loc['paragraph']}" if loc["kind"] == "text" else
               "the question" if loc["kind"] == "stem" else f"option {loc.get('option')}")
         if loc["kind"] != "text":
-            at += f" of question {items[loc['item_id']]['number']}"
+            at += f" of question {practice_set.number(ps, items[loc['item_id']])}"
         where.setdefault((o["text_id"], o["lexicon_id"]), []).append(f"{at}: '{o['surface']}'")
     lines = []
     for item, keys in question_words(lesson).items():
@@ -195,7 +195,7 @@ def words_for_prompt_part_c(lesson: Path, text_ids: list[str] | None = None) -> 
         tid = it["stimulus_ids"][0].rsplit("-", 1)[-1]
         if text_ids and tid not in text_ids:
             continue
-        lines.append(f"WORDS FOR QUESTION {it['number']} ({item}; its text {it['stimulus_ids'][0]}), "
+        lines.append(f"WORDS FOR QUESTION {practice_set.number(ps, it)} ({item}; its text {it['stimulus_ids'][0]}), "
                      "pre-taught on that question's PRE-TEACHING board, in this order:"
                      + ("" if keys else " none (no pre-teaching board for this question)"))
         for k in keys:
@@ -303,10 +303,11 @@ def recap_grouped_block(lesson: Path, groups: list[tuple[int, list[str]]]) -> di
 
 
 def recap_groups_for_text(lesson: Path, text_id: str) -> list[tuple[int, list[str]]]:
-    """A Part C text's words grouped by question number (question_words)."""
+    """A Part C text's words grouped by question number (question_words),
+    the number the question carries in this lesson (practice_set.number)."""
     ps = practice_set.load(lesson)
     items = practice_set.items(ps)
-    return [(items[i]["number"], keys) for i, keys in question_words(lesson).items()
+    return [(practice_set.number(ps, items[i]), keys) for i, keys in question_words(lesson).items()
             if keys and items[i]["stimulus_ids"][0].rsplit("-", 1)[-1] == text_id]
 
 

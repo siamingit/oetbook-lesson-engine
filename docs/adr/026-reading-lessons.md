@@ -787,3 +787,39 @@ words fit them (the page ledgers name them).
   words still within each view, not between views; `check_lens.py` measures every line
   of the text on its page and on the board at every moment, and reports the paragraph's
   size. Every other lesson is unchanged (render_compare on all built lessons).
+
+## Amendment, 2026-10-08: a lesson from part of another lesson's source; questions numbered in the lesson
+
+Decided by the maintainer on 2026-10-08, after the silent preview of Reading
+Part C (169 minutes):
+
+- **The split.** Reading Part C is split at the start of Text 2:
+  `reading-04-part-c`, "Reading Part C (1)" (the opening, the method, Practice:
+  Text 1, a closing), and `reading-05-part-c-2`, "Reading Part C (2): More
+  Practice" (an opening linking back to Part C (1), a method review of about
+  five minutes before any practice, Practice: Text 2, a closing).
+- **A lesson built from part of another lesson's source.** Its folder's
+  `source/` is a byte copy of the other lesson's (the source is never changed);
+  what both need from the source stages is copied, and the sections it takes are
+  moved as built, so nothing that passes is paid for again. Each paid reply
+  stays in one lesson; an image both use is copied with `cost` 0 and
+  `carried_from`, so the course's spend counts it once. It has its own
+  sections.json, practice_set.json (the same set and hashes; `teach_pages` its
+  own), forbidden source terms (the same), pictures, gates and decision log.
+  The procedure is in docs/03-RUNBOOK.md (Reading lessons).
+- **Questions numbered in the lesson.** A lesson numbers the questions it
+  teaches from 1 in the order taught, never by the release's number: Reading
+  Part C (1) questions 1-8 (items oa-reading-000027 to 000034), Reading Part C
+  (2) questions 1-8 (000035 to 000042). `practice_set.py <L> --lesson-items`
+  records them (`numbering: lesson`, `lesson_items`); the question block's
+  `exercise_item` (its badge), the grouped word recap's question column and the
+  prompts carry that number (`practice_set.number`); the item IDs are unchanged.
+  Spoken numbers already drafted were changed deterministically by utterance
+  override, each listed in the lesson's decisions.md. Reading 2 and Reading 3
+  keep the release's numbers (both teach a set from its first question).
+- **The check.** `question_numbers.py`: in the narration audit, a spoken question
+  number ("question eight", "questions one to eight") must be one the board
+  shows (a question's badge or a recap row); on a board that shows none, one the
+  lesson teaches. `check_question_numbers.py`, in the runner's silent-preview and
+  player steps, also fails when the lesson's first question is not 1. Reading 2
+  and Reading 3 pass it unchanged (2026-10-08).
