@@ -1651,7 +1651,8 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                 for bid in list(bd["fixed"]) + list(s["working"]) + list(pinned_shown):
                     rb = blocks.get(bid) or {}
                     if rb.get("doc") or rb.get("question") or rb.get("vocab") or rb.get("vocab_table"):
-                        for t in block_texts(rb):
+                        # longest first: a gloss's word must not break the match of its example
+                        for t in sorted(block_texts(rb), key=len, reverse=True):
                             own = own.replace(t.lower().rstrip("."), " ")
                 for p in forbids:
                     if p.lower() in (low if p in data["forbids"] else own):
@@ -1671,7 +1672,8 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                     # taught ("rarely" among the signal words of page 14), not a
                     # claim; the same exemption the screens audit gives slide
                     # words. Found in any block of this state's board.
-                    on_board = " ".join(t for bid in list(fixed) + working
+                    # (a pinned question shown in an earlier state too: its options, 1.15)
+                    on_board = " ".join(t for bid in list(fixed) + working + list(pinned_shown)
                                         for t in block_texts(blocks[bid]) if bid in blocks).lower()
                     # ...and so is a word of the section title on the header.
                     # An utterance carrying a maintainer ruling that makes the
@@ -1891,6 +1893,8 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                     continue
                 for u in s["utterances"]:
                     qs = check_doc_marks.questions_of(check_doc_marks.board_blocks(sb or bd), blocks)
+                    if check_doc_marks.part_c_board(check_doc_marks.board_blocks(sb or bd), blocks):
+                        qs += check_doc_marks.notes_of(list(bd["fixed"]) + list(working), blocks)   # 1.17
                     for x in check_doc_marks.utterance_quotes(u["text_with_cues"], u["cues"], docs, qs)[1]:
                         fail(u["id"], f"reads {x} from the text with no mark on those words: put a "
                                       "highlight or keyword-pair cue on them, just before they are said")

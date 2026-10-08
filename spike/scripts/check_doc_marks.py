@@ -157,9 +157,35 @@ def questions_of(block_ids: list[str], blocks: dict) -> list[list[str]]:
         if x.get("question"):
             out.append(tokens(x.get("text") or ""))
             out += [tokens(o["text"]) for o in x["question"].get("options") or []]
+            if x["question"].get("options_later"):
+                # 1.17, a Part C question: its reason labels are read from the question
+                out += [tokens(it.get("text") or "") for it in x.get("items") or [] if it.get("text")]
         elif x.get("vocab") or x.get("lexicon"):      # a word-bank gloss (screens; bundle)
             out += [tokens(x.get(k) or "") for k in ("term", "text")]
+            if x.get("synonym") is not None and x.get("explanation"):
+                # its meaning and synonym too (found on Part C, 2026-10-08: a gloss's
+                # meaning read aloud shared two words with the text)
+                out += [tokens(x.get(k) or "") for k in ("explanation", "synonym")]
     return out
+
+
+NOTE_TYPES = ("plain", "callout", "answer_row", "term_box")
+
+
+def notes_of(block_ids: list[str], blocks: dict) -> list[list[str]]:
+    """The words of the notes shown in a state of a Part C question board (1.17:
+    the learner's own answer, the paraphrase note), read from the note on the
+    board, not from the text, even where the note repeats the text's words."""
+    out = []
+    for b in block_ids:
+        x = blocks.get(b) or {}
+        if x.get("type") in NOTE_TYPES and not x.get("question") and x.get("text"):
+            out.append(tokens(x["text"]))
+    return out
+
+
+def part_c_board(block_ids: list[str], blocks: dict) -> bool:
+    return any(((blocks.get(b) or {}).get("question") or {}).get("options_later") for b in block_ids)
 
 
 def board_blocks(bd: dict) -> list[str]:
@@ -242,6 +268,8 @@ def check_player(lesson: Path) -> tuple[int, list[str]]:
                         for r in quotes(spoken, p):
                             label.setdefault(r, doc["doc"]["label"])
                 qs = questions_of(board_blocks(bd), blocks)
+                if part_c_board(board_blocks(bd), blocks):      # 1.17: the state's notes too
+                    qs += notes_of(bd["fixed"] + st["working"], blocks)
                 for i, j in [r for r in dedupe(list(label)) if not in_questions(spoken[r[0]:r[1]], qs)]:
                             found += 1
                             doc_label = label[(i, j)]
@@ -278,9 +306,11 @@ def check_narration(lesson: Path) -> tuple[int, list[str]]:
                 docs = docs_of(bd["fixed"] + working, blocks)
                 if not docs:
                     continue
+                qs = questions_of(board_blocks(bd), blocks)
+                if part_c_board(board_blocks(bd), blocks):      # 1.17: the state's notes too
+                    qs += notes_of(bd["fixed"] + working, blocks)
                 for u in s["utterances"]:
-                    n, bad = utterance_quotes(u["text_with_cues"], u["cues"], docs,
-                                              questions_of(board_blocks(bd), blocks))
+                    n, bad = utterance_quotes(u["text_with_cues"], u["cues"], docs, qs)
                     found += n
                     failures += [f"{paths.section_tag(pages)} {u['id']}: {x} unmarked" for x in bad]
     return found, failures
