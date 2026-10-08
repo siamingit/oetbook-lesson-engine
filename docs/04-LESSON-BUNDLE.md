@@ -589,9 +589,8 @@ These are the only rules. Every time and target they use is in the bundle.
     each paragraph view whole as rule 36's guard does, measuring every view the board
     has. The question's options (`options_later`) are shown from the reveal of its part
     of kind `options`, their room taken from the start of the state in which that
-    part is revealed (as a pinned block's, rule 21), never before; and the reason
-    labels' room likewise from the start of the state in which its first `out` part
-    is revealed. Words of the text move between
+    part is revealed (as a pinned block's, rule 21), never before, with the room of
+    its reason labels, so an option's words never move once shown (docs/02-DESIGN-SYSTEM.md §8a). Words of the text move between
     the map and a paragraph by design (rule 19 holds within each view).
 38. **An opinion-signal mark** (1.17): `sig_opinion`, `sig_hedge`, `sig_judge` and
     `sig_main` are drawn as an underline under `text` in indigo `#2B006B`, teal

@@ -850,8 +850,9 @@ to 40.
   a lens window. A Part C text is an article: a page with a navy top rule.
 - **The options come later (QTA).** The question shows its stem alone, in-context
   words in bold as the test prints them; its options appear when the paragraph has
-  been read, their room taken from the start of that state (as a pinned block's,
-  §8b), so the question column has room for the reading before them.
+  been read, their room (with their reason labels') taken from the start of that
+  state (as a pinned block's, §8b), so the question column has room for the reading
+  before them and an option's words never move once shown.
 - **The attitude scale**: on a question about the writer's or a person's attitude or
   view only. A grey line labelled at its two ends and its middle in words fitted to the
   question ("Sceptical", "Neutral", "Enthusiastic"); a blue marker moves along it as the

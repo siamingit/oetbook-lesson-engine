@@ -3599,8 +3599,8 @@ PART_B_CSS = """
 # a map, `pc-here` on the paragraph that holds the answer) or `pc-para` (only the
 # rows `pc-in` shown, whole, with the position cue in `data-pos`), `optroom` on a
 # Part C question from the start of the state in which its options appear (their
-# room taken from then, as a pinned block's, rule 21), `rsnroom` likewise from the
-# state in which its first option is ruled out (the reason labels' room), and `opx` on a
+# room taken from then, as a pinned block's, rule 21), `rsnroom` with it (the reason
+# labels' room, so an option's words never move once shown), and `opx` on a
 # block that an opinion-signal mark of its board names (room between its lines
 # for the mark's label, from the board's start, so nothing moves).
 PART_C_CSS = """

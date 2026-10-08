@@ -521,7 +521,8 @@ function holdPlaces(bd) {
   kept.sort((a, b) => topIn(a[1]) - topIn(b[1]));
   for (const [id, el] of kept) {           // each push moves the ones after it too
     const d = (bd._places && bd._places.has(id) ? bd._places.get(id) : topIn(el)) - topIn(el);
-    if (d > 0.05) el.style.marginTop = d + "px";
+    // a block the guard set smaller (CSS zoom) scales its own margin too
+    if (d > 0.05) el.style.marginTop = d / (parseFloat(el.style.zoom) || 1) + "px";
   }
 }
 
@@ -1065,12 +1066,10 @@ function optRoom(bd, s) {
     const stateOf = at => at === undefined ? Infinity
       : (bd.states.find(st => st.start <= at + 1e-6 && at < st.until + 1e-6) || { start: at }).start;
     const from = stateOf(bd.reveal[id + ".1"]);
-    // the reason labels likewise, from the state in which the first option is ruled out
-    const outs = (blocks[id].items || []).filter(it => it.kind === "out").map(it => bd.reveal[id + "." + it.part])
-      .filter(t => t !== undefined);
-    const rfrom = outs.length ? stateOf(Math.min(...outs)) : Infinity;
+    // the reason labels' room with them: an option's words never move once
+    // shown (docs/02-DESIGN-SYSTEM.md §8a)
     el.classList.toggle("optroom", !!s && s.start >= from - 1e-6);
-    el.classList.toggle("rsnroom", !!s && s.start >= rfrom - 1e-6);
+    el.classList.toggle("rsnroom", !!s && s.start >= from - 1e-6);
   }
 }
 function applyView(bd, s) {

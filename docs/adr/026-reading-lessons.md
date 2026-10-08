@@ -759,8 +759,8 @@ words fit them (the page ledgers name them).
   The scale is written on a plain block labelled SCALE (`left`, `text`, `right`, and
   `items` "marker|65", "out|A|20", "key|B|75"), and code makes it a block of type
   `scale`; the reply's schema is unchanged. Code adds the question's first part, which
-  shows its options; their room is taken from the start of the state in which they
-  appear (a Part C question with four options and three reason labels is about
+  shows its options; their room, with their reason labels', is taken from the start
+  of the state in which they appear, so an option's words never move once shown (a Part C question with four options and three reason labels is about
   as tall as the board at body size in half its width, measured by the fit); the release's bold targets (`**...**`, release format oa-text-v1)
   become a text part's `bold` and a question's `target`.
 - **Words by question** (`vocab.question_words`): a word goes to the first question
