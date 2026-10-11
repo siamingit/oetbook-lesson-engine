@@ -407,6 +407,24 @@ function drawParts(bd, s, t, jumped) {
 let drawnBoard = null, drawnState = null, drawnErased = null, drawnMarks = "";
 const blockEls = new Map();
 let zoomCol = 1, zoomSkip = null;        // 1.16: the question column's size, set by the guard
+// the size the guard set the blocks of a board other than a question board
+// (below), and its pictures' share of their size
+function boardZoom(bd) { return (bd && !isQBoard(bd) && bd._fitZoom) || 1; }
+function boardPic(bd) { return (bd && !isQBoard(bd) && bd._fitPic) || 1; }
+let fitZ = 1, picFit = 1;
+// a block's own size under the guard: a table's text never below the tables'
+// floor (1.9% of the frame), every other block the board's
+function blockZoom(b) { return b.font && !b.map ? Math.max(fitZ, 1.9 / b.font) : fitZ; }
+// a picture's size, in the frame's units before the zoom: its share, and never
+// below 10% of the frame once zoomed (design system 7e)
+function picPh(b) { return +Math.max((b.size || 20) * picFit, 10 / fitZ).toFixed(2); }
+// a block's zoom, and an element's box in the board's units: a block the guard
+// set smaller has its offsets in its own units
+function zoomOf(el) { const b = el.closest && el.closest("#cam > .blk"); return b && b.style.zoom ? parseFloat(b.style.zoom) : 1; }
+function visIn(el) {
+  const q = offsetIn(el, camEl), z = zoomOf(el);
+  return z === 1 ? q : { x: q.x * z, y: q.y * z, w: q.w * z, h: q.h * z };
+}
 
 function drawBlock(id, fixed, s) {
   const tpl = document.createElement("template");
@@ -423,6 +441,9 @@ function drawBlock(id, fixed, s) {
   // beside the question of a Part B question board (a state's `overlay`)
   if (s && (s.overlay || []).includes(id)) el.classList.add("over");
   if (zoomCol !== 1 && id !== zoomSkip) el.style.zoom = zoomCol;      // 1.16: the guard, below
+  if (fitZ !== 1) { const z = blockZoom(blocks[id]); if (z < 1) el.style.zoom = +z.toFixed(4); }   // the guard
+  if ((picFit !== 1 || fitZ !== 1) && blocks[id].type === "picture")  // the guard: a picture smaller
+    el.style.setProperty("--ph", picPh(blocks[id]) + "cqh");
   camEl.appendChild(el);
   blockEls.set(id, el);
   return el;
@@ -433,7 +454,9 @@ function drawBoard(bd, s, erased) {
     camEl.replaceChildren();
     blockEls.clear();
     camEl.classList.remove("glide");
-    camEl.style.transform = "";
+    // only where there is a transform: setting it empty leaves an empty style
+    // attribute on the board once the guard's measuring has moved the camera
+    if (camEl.style.transform) camEl.style.transform = "";
     camEl.classList.toggle("tight", (bd.tight || 0) >= 1);
     camEl.classList.toggle("tight2", (bd.tight || 0) >= 2);
     camEl.classList.toggle("mapboard", isMapBoard(bd));
@@ -445,7 +468,7 @@ function drawBoard(bd, s, erased) {
     hdrNo.style.display = "none";
     hdrTitle.textContent = bd.title;
 
-    zoomCol = 1; zoomSkip = null;
+    zoomCol = 1; zoomSkip = null; fitZ = boardZoom(bd); picFit = boardPic(bd);
     for (const id of bd.fixed) {
       const el = drawBlock(id, true);
       if (isQBoard(bd) && id === bd.table) el.classList.add("qtext");   // 1.16: the extract, whole
@@ -1460,16 +1483,18 @@ function placeBeside(bd, s) {
   if (!tableEl || (!s && !Object.keys(bd.pinned || {}).length)) return [];
   // between two states only the board's pinned side notes are shown
   s = s || { working: [] };
+  // measured and placed in the board's units: a block the guard set smaller (CSS
+  // zoom) has its offsets and the places set on it in its own (zoomOf)
   const W = camEl.offsetWidth, gap = frame.offsetHeight * 0.012;
   const placed = [];
-  const tb = offsetIn(tableEl, camEl);
+  const tb = visIn(tableEl);
   // under everything drawn in the flow (the table, the board's picture)
   let top = tb.y + tb.h;
   for (const [bid, e] of blockEls) {
     if (e.classList.contains("beside") || (blocks[bid] || {}).type === "picture"
         || !(e.dataset.layer === "fixed" || e.classList.contains("on"))) continue;
     if (getComputedStyle(e).display === "none") continue;
-    const q = offsetIn(e, camEl);
+    const q = visIn(e);
     top = Math.max(top, q.y + q.h);
   }
   top += gap;
@@ -1479,10 +1504,11 @@ function placeBeside(bd, s) {
   for (const id of s.working) {
     const el = blockEls.get(id), b = blocks[id];
     if (!el || b.type !== "picture") continue;
+    const z = zoomOf(el);
     el.style.position = "absolute";
-    el.style.left = (tb.x + tb.w - el.offsetWidth) + "px";
-    el.style.top = top + "px";
-    if (el.classList.contains("on") && !el.classList.contains("cleared")) right = tb.x + tb.w - el.offsetWidth - gap;
+    el.style.left = (tb.x + tb.w - el.offsetWidth * z) / z + "px";
+    el.style.top = top / z + "px";
+    if (el.classList.contains("on") && !el.classList.contains("cleared")) right = tb.x + tb.w - el.offsetWidth * z - gap;
   }
   // a side note pinned in an earlier state of the board (a practice-set
   // question, ADR 026) stays first under the table; this state's notes follow it
@@ -1492,17 +1518,18 @@ function placeBeside(bd, s) {
   // board's picture, so its words never move when the picture goes (§8a)
   const picId = bd.states.flatMap(st => st.working).find(id => blocks[id] && blocks[id].type === "picture");
   // its declared size (rule 27), not its measured box, which is 0 once erased
-  const picW = picId ? frame.offsetHeight * (blocks[picId].size || 20) / 100 : 0;
+  const picW = !picId ? 0 : fitZ === 1 && picFit === 1 ? frame.offsetHeight * (blocks[picId].size || 20) / 100
+    : frame.offsetHeight * picPh(blocks[picId]) * fitZ / 100;
   const pinnedRight = picId ? tb.x + tb.w - picW - gap : tb.x + tb.w;
   for (const id of pinnedFirst.concat(s.working)) {
     const el = blockEls.get(id), b = blocks[id];
     if (!el || !b.beside || b.type === "picture") continue;
-    const r = bd.pinned && id in bd.pinned ? pinnedRight : right;
-    el.style.maxWidth = Math.max(0, r - tb.x) + "px";
-    el.style.left = Math.max(0, Math.min(tb.x, W - el.offsetWidth)) + "px";
-    el.style.top = top + "px";
+    const r = bd.pinned && id in bd.pinned ? pinnedRight : right, z = zoomOf(el);
+    el.style.maxWidth = Math.max(0, r - tb.x) / z + "px";
+    el.style.left = Math.max(0, Math.min(tb.x, W - el.offsetWidth * z)) / z + "px";
+    el.style.top = top / z + "px";
     // only the notes shown now take room: an erased or cleared note leaves it
-    if (el.classList.contains("on")) { top += el.offsetHeight + gap; placed.push(el); }
+    if (el.classList.contains("on")) { top += el.offsetHeight * z + gap; placed.push(el); }
   }
   return placed;
 }
@@ -1511,20 +1538,22 @@ function placeBeside(bd, s) {
 // notes, when the table's text on screen is under 14px; otherwise still.
 function camera(bd, focus, notes, jumped) {
   let tf = "";
+  // in the board's units: a block the guard set smaller has its offsets in its own
+  const oi = visIn;
   if (isMapBoard(bd) || bd.lens) focus = null;     // the lens zooms (the map's, 1.14; a Part B text's, 1.15), not the camera
   if (isQBoard(bd)) focus = null;                  // 1.16: the extract is whole; nothing zooms
   if (focus) {
     const td0 = focus.el.querySelector("td");
-    const px = td0 ? parseFloat(getComputedStyle(td0).fontSize) : 99;
+    const px = td0 ? parseFloat(getComputedStyle(td0).fontSize) * zoomOf(td0) : 99;
     if (px < MIN_READABLE_PX) {
       const tr = focus.el.querySelector('tbody tr[data-row="' + focus.row + '"]');
       const target = focus.col !== null && tr ? tr.children[focus.col] : tr;
       if (target) {
         const W = camEl.offsetWidth, H = camEl.offsetHeight;
         const view = (shown) => {
-          let r = offsetIn(target, camEl);
+          let r = oi(target);
           for (const n of shown) {
-            const q = offsetIn(n, camEl);
+            const q = oi(n);
             const x = Math.min(r.x, q.x), y = Math.min(r.y, q.y);
             r = { x, y, w: Math.max(r.x + r.w, q.x + q.w) - x, h: Math.max(r.y + r.h, q.y + q.h) - y };
           }
@@ -1532,7 +1561,7 @@ function camera(bd, focus, notes, jumped) {
           let tx = W / 2 - (r.x + r.w / 2) * sc, ty = H / 2 - (r.y + r.h / 2) * sc;
           tx = Math.min(0, Math.max(W - W * sc, tx));
           // the content reaches down to the notes under the table (ADR 020)
-          const Hc = Math.max(H, ...shown.map(n => { const q = offsetIn(n, camEl); return q.y + q.h + frame.offsetHeight * 0.012; }));
+          const Hc = Math.max(H, ...shown.map(n => { const q = oi(n); return q.y + q.h + frame.offsetHeight * 0.012; }));
           ty = Math.min(0, Math.max(H - Hc * sc, ty));
           return { sc, tx, ty };
         };
@@ -1542,7 +1571,7 @@ function camera(bd, focus, notes, jumped) {
         // notes, only where it would otherwise leave the view
         const pics = [...blockEls].filter(([bid, e]) => blocks[bid] && blocks[bid].type === "picture"
           && e.classList.contains("on") && !e.classList.contains("cleared")).map(([, e]) => e);
-        const outOfView = e => { const q = offsetIn(e, camEl);
+        const outOfView = e => { const q = oi(e);
           return q.x * v.sc + v.tx < -0.5 || (q.x + q.w) * v.sc + v.tx > W + 0.5
               || q.y * v.sc + v.ty < -0.5 || (q.y + q.h) * v.sc + v.ty > H + 0.5; };
         if (v.sc > 1.001 && pics.some(outOfView)) v = view(notes.concat(pics));
@@ -1557,7 +1586,7 @@ function camera(bd, focus, notes, jumped) {
   // Nothing is drawn over text.
   if (!tf && bd.table && notes.length) {
     const H = camEl.offsetHeight, gap = frame.offsetHeight * 0.012;
-    const bottom = Math.max(...notes.map(n => { const q = offsetIn(n, camEl); return q.y + q.h; }));
+    const bottom = Math.max(...notes.map(n => { const q = oi(n); return q.y + q.h; }));
     if (bottom > H) {
       const ty = H - bottom - gap;
       if (ty < -0.5) tf = "translate(0px," + ty.toFixed(1) + "px)";
@@ -1579,12 +1608,172 @@ function clearedAt(s, t) {
   return out;
 }
 
+// The guard for every other board (maintainer, 2026-10-11): the fit measured the
+// board at the phone and laptop frames, with the fonts of the device it ran on;
+// a smaller frame (a phone held landscape, whose controls keep 44 px) or a wider
+// device font can leave a block under the header or the control bar, or past an
+// edge. Measured on the device when the board is first drawn, and again whenever
+// the frame's size or the fonts change, at the moments the overflow check
+// measures (each state's start and end, each reveal, each pinned block, each
+// erase): where any block shown would lie outside the board (or a word would
+// spill out of its block), first its pictures
+// are set smaller, whole, never cropped, where that helps (§7e), then every block
+// of the board together (CSS zoom, in steps of 0.5%), its layout and proportions
+// kept, until all of it fits; never below the design system's floors: body text
+// 2.6% of the frame (as the Part B guard's question column), a table's text
+// 1.9% (it stops there, the others go on), a picture 10%. The sizes are the
+// board's for all its states, so nothing
+// moves between them (§8a). Where the board fits, it changes nothing. A question
+// board has its own guard.
+let guarding = false;
+const FIT_TOL = 1;                 // px, as check_overflow.py
+function boardMoments(bd) {
+  const times = new Set([bd.start + 0.001]);
+  for (const s of bd.states) {
+    times.add(s.start + 0.001); times.add(s.end - 0.001);
+    if (s.erase) times.add(s.erase.time - 0.001);
+    for (const t of Object.values(s.reveal || {})) times.add(t + 0.001);
+  }
+  for (const t of Object.values(bd.reveal || {})) times.add(t + 0.001);
+  for (const t of Object.values(bd.pinned || {})) times.add(t + 0.001);
+  return [...times].filter(t => t >= bd.start && t < bd.until).sort((a, b) => a - b);
+}
+// how far the blocks shown now lie outside the board, up or down and to a side,
+// as check_overflow.py measures them: the board as drawn when its camera has not
+// moved (only a table board's camera moves), else only the notes, which must be
+// in view as the camera shows them
+function boardOver() {
+  const keep = camEl.style.transform;
+  const viewed = drawnBoard && drawnBoard.table && keep && keep !== "none";
+  const r = boardEl.getBoundingClientRect(), cs = getComputedStyle(boardEl);
+  const A = { l: r.left + parseFloat(cs.paddingLeft), t: r.top + parseFloat(cs.paddingTop),
+              r: r.right - parseFloat(cs.paddingRight), b: r.bottom - parseFloat(cs.paddingBottom) };
+  let v = 0, h = 0;
+  for (const [, el] of blockEls) {
+    if (!el.isConnected || getComputedStyle(el).display === "none") continue;
+    if (!(el.dataset.layer === "fixed" || el.classList.contains("on"))) continue;
+    if (viewed && !el.classList.contains("beside")) continue;
+    const q = el.getBoundingClientRect();
+    if (!q.width && !q.height) continue;
+    v = Math.max(v, A.t - q.top, q.bottom - A.b);
+    // and what spills out of the block to its right (a long word in a narrow
+    // cell): cut off by a block that clips, else past the board's edge
+    const sc = el.offsetWidth ? q.width / el.offsetWidth : 1;
+    const spill = /(hidden|clip|auto|scroll)/.test(getComputedStyle(el).overflowX)
+      ? (el.scrollWidth - el.clientWidth) * sc : q.left + (el.clientLeft + el.scrollWidth) * sc - A.r;
+    h = Math.max(h, A.l - q.left, q.right - A.r, spill);
+  }
+  return { v, h, H: A.b - A.t, W: A.r - A.l };
+}
+// the moments to measure: on a board with no table (no camera), a state that
+// clears nothing keeps every block in its place, and a block once revealed stays
+// until the erase, so its last moment shows what all its moments show
+function fitMoments(bd) {
+  const all = boardMoments(bd);
+  if (bd.table) return all;
+  const last = new Map();
+  for (const t of all) {
+    const s = stateAt(bd, t);
+    if (s && (s.clears || []).length) { last.set(t, t); continue; }
+    last.set((s ? s.id : "") + "|" + !!(s && s.erase && t >= s.erase.time), t);
+  }
+  return [...last.values()];
+}
+// the worst of the moments given, drawn at the size set, and the moments over
+function boardWorst(bd, moments) {
+  let w = { v: 0, h: 0, H: 1, W: 1, hot: [] };
+  drawnBoard = null;                 // drawn afresh once: the size applies to every block
+  for (const t of moments) {
+    lastRenderT = null;
+    renderFrame(t);
+    const o = boardOver();
+    w = { v: Math.max(w.v, o.v), h: Math.max(w.h, o.h), H: o.H, W: o.W, hot: w.hot };
+    if (Math.max(o.v, o.h) > FIT_TOL) w.hot.push(t);
+  }
+  return w;
+}
+// body text (3.2% of the frame) to no less than 2.6%; a table's text and a
+// picture keep their own floors (blockZoom, picPh)
+const ZOOM_FLOOR = 2.6 / 3.2;
+function boardPictures(bd) {
+  const ids = new Set([...bd.fixed, ...Object.keys(bd.pinned || {}), ...bd.states.flatMap(s => s.working)]);
+  return [...ids].filter(id => blocks[id] && blocks[id].type === "picture");
+}
+function fitBoard(bd) {
+  bd._fitKey = guardKey();
+  bd._fitZoom = 1; bd._fitPic = 1;
+  if (window.__noGuard) return;      // the fit measures the board itself (fit_boards.py)
+  // what the measuring changes on the board element (the camera) is put back
+  const keepT = lastRenderT, keepCam = camEl.getAttribute("style");
+  guarding = true;
+  try {
+    const all = fitMoments(bd);
+    let w = boardWorst(bd, all);
+    // between the first and the last measure only the moments that were over: a
+    // smaller picture or block never pushes another moment out; the last measures all
+    for (let round = 0; round < 3 && fitOver(w) > FIT_TOL; round++) {
+      const was = bd._fitZoom + "|" + bd._fitPic;
+      shrink(bd, w.hot, w);
+      if (bd._fitZoom + "|" + bd._fitPic === was) break;   // at its floors: nothing more to try
+      w = boardWorst(bd, all);
+    }
+    bd._fitOver = Math.max(0, fitOver(w));  // what still does not fit at the floors (0: it fits)
+  } finally {
+    guarding = false;
+    drawnBoard = null;               // the moment asked for is drawn afresh
+    lastRenderT = keepT;
+    // (read first: the browser writes a style change to the attribute late, and
+    // would put back an empty one after the removal)
+    if (camEl.getAttribute("style") !== keepCam) {
+      if (keepCam === null) camEl.removeAttribute("style"); else camEl.setAttribute("style", keepCam);
+    }
+  }
+}
+function fitOver(w) { return Math.max(w.v, w.h); }
+function shrink(bd, moments, w) {
+  // first the board's pictures smaller (§7e: to no less than 10% of the frame),
+  // so its text keeps its size; kept only where it helps
+  const pics = boardPictures(bd);
+  if (fitOver(w) > FIT_TOL && pics.length && (bd._fitZoom || 1) === 1) {
+    const size = Math.max(...pics.map(id => blocks[id].size || 20));
+    const pmin = Math.max(...pics.map(id => 10 / (blocks[id].size || 20)));
+    let pf = bd._fitPic || 1;
+    for (let i = 0; i < 10 && fitOver(w) > FIT_TOL && pf > pmin + 1e-6; i++) {
+      const px = frame.offsetHeight * size / 100;
+      let next = Math.floor((pf * px - fitOver(w) - 0.5) / px * 100 + 1e-6) / 100;
+      if (next >= pf - 1e-6) next = pf - 0.01;
+      next = Math.max(pmin, +next.toFixed(3));
+      bd._fitPic = next;
+      const w2 = boardWorst(bd, moments);
+      if (fitOver(w2) > fitOver(w) - 0.05) { bd._fitPic = pf; break; }
+      pf = next; w = w2;
+    }
+  }
+  // then every block of the board smaller together, each to its floor; the best
+  // size found is kept: after three steps that bring nothing closer (what does
+  // not fit is at its floor; a measure in whole pixels can stand still a step)
+  let z = bd._fitZoom || 1, best = { z, w }, idle = 0;
+  for (let i = 0; i < 24 && fitOver(w) > FIT_TOL && z > ZOOM_FLOOR + 1e-6 && idle < 3; i++) {
+    let next = z * Math.min(w.H / (w.H + Math.max(0, w.v)), w.W / (w.W + Math.max(0, w.h)));
+    next = Math.floor(next * 200 + 1e-6) / 200;
+    if (next >= z - 1e-6) next = z - 0.005;
+    z = Math.max(ZOOM_FLOOR, +next.toFixed(3));
+    bd._fitZoom = z;
+    w = boardWorst(bd, moments);
+    if (fitOver(w) < fitOver(best.w) - 0.05) { best = { z, w }; idle = 0; } else idle++;
+  }
+  bd._fitZoom = best.z;
+  return best.w;
+}
+
 function renderFrame(t) {
   const bd = boardAt(t);
   const s = stateAt(bd, t);
   const erased = !!(s && s.erase && t >= s.erase.time);
   // 1.16: the guard measures again when the frame's size or the fonts change
   if (isQBoard(bd) && !window.__noGuard && bd === drawnBoard && bd._guardKey !== guardKey()) drawnBoard = null;
+  // every other board: fitted on the device once per frame size and fonts (below)
+  if (!guarding && !isQBoard(bd) && bd._fitKey !== guardKey()) fitBoard(bd);
   // A jump (seek, scrub, first frame) shows the diagram's state for that
   // moment at once, with no replay of the drawing.
   const jumped = lastRenderT === null || Math.abs(t - lastRenderT) > 0.75;
@@ -1624,6 +1813,7 @@ function renderFrame(t) {
   const notes = placeBeside(bd, s && !erased ? s : null);
   if (isQBoard(bd)) placeOverlay();
   camera(bd, focus, notes, jumped);
+  if (guarding) return;               // the guard measures the board's blocks only
   drawParts(bd, s && !erased ? s : null, t, jumped);
   positionPointer(t);
   positionArrows();

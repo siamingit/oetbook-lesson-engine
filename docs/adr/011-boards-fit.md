@@ -92,3 +92,107 @@ maintainer asked for screens only, no audio.
   estimates missed.
 - A board fitted tight looks slightly denser than the others. A board that
   still does not fit at level 2 fails the build and needs a screen change.
+
+## Amendment, 2026-10-11: the player's guard on every board of every lesson
+
+Decided by the maintainer in the brief of 2026-10-11 ("extend the player's runtime
+guard (built for Part B) to every board type ... Pictures are scaled to fit, never
+cropped ... Record the rule in the design system and an ADR amendment: the runtime
+guard applies to every board in every lesson"). How it is carried was chosen by the
+agent under that brief; the maintainer may reverse it.
+
+### Context
+
+The fixed visible-area checks of 2026-10-08 (ADR 026, second review) measure the
+board between the header and the control bar at three frames: a phone held
+landscape (915x412, a 590 px frame whose controls keep 44 px, 13% of its height),
+phone-landscape (812 px) and laptop (1120 px). The fit (this record) measured only
+the last two for every lesson fitted before 2026-10-08. On the 590 px frame, where
+the controls take relatively more of the frame, they found content of 14 built
+lessons a few pixels under the control bar or past the board's foot: 140 blocks
+outside the board and 50 under the control bar, every one at that frame only
+(text blocks 2 to 15 px, the board pictures of Reading 2, Grammar 8 and Vocabulary
+1 to 3, Reading 2's map 10.8 px on its 20 question boards). Reading 1's picture at
+9:05 (118 px past the right edge in the table zoom) was already fixed by the camera
+change of 2026-10-08 once the player is rebuilt. The same can happen on any device
+whose font is wider than the fit's. Part B and Part C question boards had their
+own guard (ADR 026, 2026-10-08); no other board had one.
+
+### Options considered
+
+1. Re-fit every lesson with the small phone frame (`fit_boards.py --small-phone`).
+   Rejected: the fit's plan is one for all frames (clears, tight, table size), so
+   it would change the lessons at 812 and 1120 px too, and it does not cover
+   device fonts.
+2. Scale every board at a small frame by a fixed factor. Rejected: it changes
+   boards that fit, and a fixed factor knows nothing of fonts.
+3. **A guard in the player for every board, measured on the device** (chosen):
+   it changes only a board that does not fit, on the device where it does not fit.
+
+### Decision
+
+- **Every board other than a question board** is measured by the player on the
+  device when it is first drawn and again whenever the frame's size or the fonts
+  change, at the moments `check_overflow.py` measures (each state's start and
+  end, each reveal, each pinned block, each erase), as that check measures them
+  (the camera's zoom undone, except on a table board whose camera has moved,
+  where its notes must be in view as shown). Where any block shown would lie
+  outside the board (under the header or the control bar, or past an edge), or
+  whose words would spill out of it (a long word in a narrow table cell):
+  - first the board's **pictures** are set smaller, scaled whole and never
+    cropped, to no less than 10% of the frame (design system §7e), where that
+    makes the board fit or brings it closer;
+  - then **every block of the board** is set smaller together (CSS zoom, in
+    steps of 0.5%), its layout and proportions kept, until everything fits, never
+    below the floors: body text 2.6% of the frame (the floor of the Part B guard's
+    question column), a table's text 1.9% (the tables' floor: a table stops there
+    while the other blocks go on), a picture 10% (it keeps that size as the board
+    shrinks). A step that brings nothing closer is not kept: the best size found
+    is drawn.
+  The sizes hold for the whole board, so nothing moves between its states
+  (design system §8a). Where the board fits, the guard changes nothing. A Part B
+  or Part C question board keeps its own guard.
+- **No data change**: the bundle is unchanged (renderer rule 41,
+  docs/04-LESSON-BUNDLE.md). The fit runs with the guard off, as before.
+- **Checks.** `check_wide_font.py` now forces Verdana on every board of every
+  lesson at the three frames (question boards as before; every other board at
+  the overflow check's moments, with its camera rule) and reports each board the
+  guard set smaller; the runner runs it for every lesson, not only Reading.
+
+### Consequences
+
+- On a frame where everything fits (the reference player at 812 and 1120 px),
+  every built lesson draws exactly as before: proved by `render_compare.py`
+  (below). On a smaller frame, or with a wider font, a board that would not fit
+  is drawn slightly smaller.
+- The first drawing of a board measures it, once per frame size and fonts: in
+  headless Edge on this machine typically 5 to 30 ms a board; a table board with
+  many moments takes longer (Grammar 3's largest, 111 moments, about 1.4 s at
+  every frame, Grammar 6's and Vocabulary 1's largest 0.3 to 1 s), when the
+  board first appears. Open: measuring ahead of the board, so no board waits.
+- A board that does not fit even at the floors is reported by the checks, never
+  hidden: it needs a screen change or the maintainer's ruling.
+
+### Results (2026-10-11, the 16 built lessons)
+
+- **Before** (the current player code, every lesson rebuilt with it): at the
+  590 px frame 140 blocks outside the board and 50 under the control bar, in 14
+  lessons; at 812 and 1120 px none.
+- **After**: `check_overflow.py`, `check_overlap.py` and `check_lens.py` pass every
+  lesson at 590, 812 and 1120 px. At 590 px the guard sets 89 boards smaller in 13
+  lessons (Reading 3, 4 and 5 were fitted for that frame and need nothing): the
+  whole board at 94% to 99% (body text 3.0% to 3.17% of the frame), or only its
+  pictures at 75% to 97% of their size. `check_wide_font.py` (Verdana, every
+  board) passes 15 lessons at the three frames, and Grammar 6 at 812 and 1120 px.
+- **Not fitted**: Grammar 6, board pages-07-08_t2 (18:30 to 27:32), with Verdana
+  at 590 px only: its table, already at the tables' floor (1.9%) and tight, is
+  251 px tall in a 245 px board while it shows whole, 1.3 to 6.3 px over the
+  board's foot at 32 moments. With the default fonts it fits. Left to the
+  maintainer (a table's text below 1.9% under the guard on a small frame, or a
+  shorter table); the floor is not broken.
+- **Unchanged**: `render_compare.py` (before and after, every lesson): 16 of 16
+  identical at 812 and 1120 px: 468 data files byte for byte (bundle, text,
+  timeline, audio index, fit), 113,532 moments drawn and in the DOM identically,
+  no board's timing changed. Every lesson's 9,058 audio, narration and player
+  data files hash-identical (8,464 clips, 8,650 utterances with their text, times
+  and clips, every board's and state's times). No paid call; no audio made.

@@ -609,6 +609,20 @@ These are the only rules. Every time and target they use is in the bundle.
 40. **Bold in a released text** (1.17): a doc part's `bold` phrases and a question's
     `target` are set in the medium weight where they first occur in the row or the stem;
     only the type changes, never a word.
+41. **Every board fits the device** (every format; 2026-10-11, no data change). The
+    fit (`clears`, `tight`, a table's `font`, a picture's `size`) was measured with
+    the reference player's fonts on its phone and laptop frames. A renderer whose
+    frame or fonts leave less room (a small screen whose controls keep 44 px, a
+    wider font) measures each board other than a question board (rules 36, 37 keep
+    their own guard) on the device when it is first drawn and whenever the frame's
+    size or the fonts change, at every state's start and end, every reveal, every
+    pinned block and every erase; where a block shown would lie outside the board
+    (under the header or the controls, or past an edge), or its words spill out of
+    it, it sets the board's pictures smaller, whole, to no less than 10% of the
+    frame, then every block of the board smaller together, its layout kept, to no
+    less than 2.6% of the frame for body text and 1.9% for a table's text (a table
+    stops at its floor, the others go on), until it fits. The size holds for the
+    whole board (rule 19). Where the board fits, nothing changes.
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and

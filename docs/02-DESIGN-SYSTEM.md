@@ -750,8 +750,9 @@ concept. Meaningful, never decorative; never over text.
   shown from the state's start with no cue, erased with that state or cleared
   by the fit when a later note needs its room (§8b). A square, 20% of the
   frame's height (smaller, to no less than 10%, where the fit finds the board
-  too full), in the board's flow; on a table board at the right under the
-  table, the side notes beside it on its left.
+  too full, or where the player's guard finds it too full on the device, §8b),
+  in the board's flow; on a table board at the right under the
+  table, the side notes beside it on its left. Always scaled whole, never cropped.
 - **The narration never points at it**, as for a gloss's image.
 
 ### 7f. The map of the texts (Reading, Part A questions)
@@ -992,6 +993,25 @@ is re-planned, never left to overflow:
   too tall gets smaller text, to the tables' floor (§7, Tables).
 - **Checked, not eyeballed**: `check_overflow.py` fails any block outside the
   board or clipped, and any label drawn in capitals (§6).
+- **On the device, the player's guard fits every board** (maintainer,
+  2026-10-11; ADR 011 amendment of that date). The fit measures the phone and
+  laptop frames with the fonts of the machine it runs on; a smaller frame (a
+  phone held landscape, 915x412, whose controls keep 44 px, §9) or a wider
+  device font can leave a block under the header or the control bar, or past an
+  edge. On every board of every lesson the player measures again on the device,
+  when the board is first drawn and whenever the frame's size or the fonts
+  change, at the moments `check_overflow.py` measures. Where any block would lie
+  outside the board, or a word would spill out of its block: first the board's
+  pictures are set smaller, scaled whole and never cropped, to no less than 10%
+  of the frame (§7e), where that helps; then every block of the board together,
+  its layout and proportions kept, until everything fits, never below the
+  floors: body text 2.6% of the frame (as the Part B question column, §7g), a
+  table's text 1.9% (§7, Tables; a table stops there while the other blocks go
+  on), a picture 10%.
+  The size holds for the whole board, so nothing moves between its states
+  (§8a). Where the board fits, the guard changes nothing. A Part B or Part C
+  question board keeps its own guard (§7g, §7h). `check_wide_font.py` proves it,
+  with Verdana forced on every board at the three frames.
 
 ### 8c. The narration never says where something is
 
@@ -1091,7 +1111,8 @@ ADR 026 (amendment of 2026-10-08); bundle 1.17, rule 38.
 - **On touch, every control is at least 44px.** The control band grows
   proportionally on small screens. The board is what lies above it: the fit and the
   checks measure the board between the header and the control band as drawn,
-  on a phone held landscape (915x412) too (2026-10-08).
+  on a phone held landscape (915x412) too (2026-10-08). Where a board does not
+  fit there, the player's guard fits it on the device (§8b; 2026-10-11).
 - Controls are neutral grey and must not compete with the teaching.
 
 ---

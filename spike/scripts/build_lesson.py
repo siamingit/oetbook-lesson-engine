@@ -585,11 +585,12 @@ def stage_narration(L, a):
     d = str(L / "generated" / "lesson-preview" / "silent")
     run(L, [str(HERE / "check_overflow.py"), str(L), "--dir", d], "overflow check (silent preview)")
     run(L, [str(HERE / "check_overlap.py"), str(L), "--dir", d], "overlap check (silent preview)")
+    # maintainer, 2026-10-08: a wider device font hides nothing on a Part B question
+    # board; 2026-10-11: on any board of any lesson (the player's guard, every board)
+    run(L, [str(HERE / "check_wide_font.py"), str(L), "--dir", d], "wide-font check (silent preview)")
     if L.name.split("-")[0] == "reading":
         # maintainer, 2026-10-07: no line inside a lens or zoom window is clipped
         run(L, [str(HERE / "check_lens.py"), str(L), "--dir", d], "lens check (silent preview)")
-        # maintainer, 2026-10-08: a wider device font hides nothing on a Part B question board
-        run(L, [str(HERE / "check_wide_font.py"), str(L), "--dir", d], "wide-font check (silent preview)")
         run(L, [str(HERE / "check_question_numbers.py"), str(L), "--dir", d],
             "question-number check (silent preview)")
     run(L, [str(HERE / "build_narration_review.py"), str(L)], "narration review page")
@@ -689,14 +690,15 @@ def stage_player(L, a):
     run(L, [str(HERE / "check_layout.py"), str(L), "--dir", d], "layout check")
     run(L, [str(HERE / "check_overflow.py"), str(L), "--dir", d], "overflow check")
     run(L, [str(HERE / "check_overlap.py"), str(L), "--dir", d], "overlap check")
+    # maintainer, 2026-10-08: a wider device font hides nothing on a Part B question
+    # board; 2026-10-11: on any board of any lesson (the player's guard, every board)
+    run(L, [str(HERE / "check_wide_font.py"), str(L), "--dir", d], "wide-font check")
     if L.name.split("-")[0] == "reading":
         # ADR 026 (maintainer, 2026-10-06): every phrase of a text read aloud
         # has its mark, timed to the voice's own words
         run(L, [str(HERE / "check_doc_marks.py"), str(L)], "doc marks check")
         # maintainer, 2026-10-07: no line inside a lens or zoom window is clipped
         run(L, [str(HERE / "check_lens.py"), str(L), "--dir", d], "lens check")
-        # maintainer, 2026-10-08: a wider device font hides nothing on a Part B question board
-        run(L, [str(HERE / "check_wide_font.py"), str(L), "--dir", d], "wide-font check")
         # ADR 026 amendment of 2026-10-08: a lesson's questions from 1, every
         # spoken question number the one its board shows
         run(L, [str(HERE / "check_question_numbers.py"), str(L), "--dir", d], "question-number check")
