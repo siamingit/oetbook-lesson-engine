@@ -3405,7 +3405,10 @@ MAP_CSS = """
 # A Part B lesson's blocks (bundle 1.15; ADR 026, the Part B question method):
 # added only to a lesson whose practice set has a Part B, so no other lesson's
 # stylesheet changes. Everything here is colour, background, outline or an
-# absolutely placed glyph: nothing moves a word (design system §8a).
+# absolutely placed glyph: nothing moves a word (design system §8a). The lens
+# rules serve a 1.15 bundle; from 1.16 a question board's extract is shown whole
+# (`qtext`, set by the renderer), its spotlight dimming the other paragraphs only
+# slightly and drawing no amber cell (ADR 026, 2026-10-08).
 PART_B_CSS = """
 .blk.q.mcq .qb{display:flex;flex-direction:column;gap:.6cqh;min-width:0}
 .blk.q.mcq .qt{display:block;margin-bottom:.3cqh}
@@ -3462,6 +3465,8 @@ PART_B_CSS = """
 .tbl.core.doc.lensed tbody tr:not(.loupe) td{opacity:.3}
 .tbl.core.doc.lensed{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 var(--lt,0px),#000 calc(100% - var(--lb,0px)),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 var(--lt,0px),#000 calc(100% - var(--lb,0px)),transparent 100%)}
 @media (prefers-reduced-motion:reduce){.tbl.core.doc.lensed table.glide{transition:none}}
+.tbl.core.doc.qtext.spot tbody tr:not(.focus) td{opacity:.6}
+.tbl.core.doc.qtext td.active{background:none;box-shadow:none}
 """
 
 

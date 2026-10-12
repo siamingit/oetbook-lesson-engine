@@ -61,6 +61,18 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
 #cam.mapboard > .blk.dmap { grid-column: 1; grid-row: 1 / span 40; }
 #cam.mapboard > .blk:not(.dmap) { grid-column: 2; width: auto; max-width: none; }
 #cam.mapboard > .blk.beside { position: static; }
+/* A Part B question board (bundle 1.16; ADR 026, 2026-10-08): two columns. The
+   extract is a fixed page in the first, `split` per cent of the board's width,
+   shown whole: no lens, no scrolling. The question and its notes are a column
+   beside it; a gloss that does not fit there is drawn over that column's foot
+   (a state's `overlay`), never over the extract. The camera never moves. */
+#cam.qboard { flex-direction: column; flex-wrap: nowrap; align-content: normal; box-sizing: border-box;
+              padding-left: calc(var(--split) + 2cqw); }
+#cam.qboard > .blk { flex: 0 0 auto; }
+#cam.qboard > .blk.qtext { position: absolute; left: 0; top: 0; width: var(--split); margin: 0; }
+#cam.qboard > .blk.beside { position: static; }
+#cam.qboard > .blk.over { position: absolute; right: 0; bottom: 0; width: calc(100% - var(--split) - 2cqw);
+                          z-index: 4; }
 /* A typed part of a table cell keeps its final size from the start: the part
    not yet typed is present but invisible, so the table never reflows. */
 .tw-none, .tw-h { visibility: hidden; }
@@ -375,8 +387,9 @@ function drawParts(bd, s, t, jumped) {
 
 let drawnBoard = null, drawnState = null, drawnErased = null, drawnMarks = "";
 const blockEls = new Map();
+let zoomCol = 1, zoomSkip = null;        // 1.16: the question column's size, set by the guard
 
-function drawBlock(id, fixed) {
+function drawBlock(id, fixed, s) {
   const tpl = document.createElement("template");
   tpl.innerHTML = blocks[id].html;
   const el = tpl.content.firstElementChild;
@@ -384,6 +397,10 @@ function drawBlock(id, fixed) {
   if (fixed) el.classList.add("on");
   el.dataset.layer = fixed ? "fixed" : "working";
   if (!fixed && blocks[id].beside) el.classList.add("beside");
+  // 1.16: a gloss drawn over the question column's foot, where it does not fit
+  // beside the question of a Part B question board (a state's `overlay`)
+  if (s && (s.overlay || []).includes(id)) el.classList.add("over");
+  if (zoomCol !== 1 && id !== zoomSkip) el.style.zoom = zoomCol;      // 1.16: the guard, below
   camEl.appendChild(el);
   blockEls.set(id, el);
   return el;
@@ -398,16 +415,24 @@ function drawBoard(bd, s, erased) {
     camEl.classList.toggle("tight", (bd.tight || 0) >= 1);
     camEl.classList.toggle("tight2", (bd.tight || 0) >= 2);
     camEl.classList.toggle("mapboard", isMapBoard(bd));
+    camEl.classList.toggle("qboard", isQBoard(bd));
+    if (isQBoard(bd)) camEl.style.setProperty("--split", bd.split + "%");
+    else if (camEl.style.getPropertyValue("--split")) camEl.style.removeProperty("--split");
     // The header shows the section title and nothing else: no board title,
     // no number (docs/02-DESIGN-SYSTEM.md §2, "The header").
     hdrNo.style.display = "none";
     hdrTitle.textContent = bd.title;
 
-    for (const id of bd.fixed) drawBlock(id, true);
+    zoomCol = 1; zoomSkip = null;
+    for (const id of bd.fixed) {
+      const el = drawBlock(id, true);
+      if (isQBoard(bd) && id === bd.table) el.classList.add("qtext");   // 1.16: the extract, whole
+    }
     for (const id of Object.keys(bd.pinned || {})) {
       const el = drawBlock(id, false);
       el.dataset.layer = "pinned";
     }
+    if (isQBoard(bd) && !window.__noGuard) guardQBoard(bd);
     for (const { sec, b: btn } of contentButtons) btn.classList.toggle("here", sec.id === bd.section);
     drawnBoard = bd; drawnState = null; drawnErased = null;
     settleBoard(bd);
@@ -415,7 +440,7 @@ function drawBoard(bd, s, erased) {
   if (s !== drawnState || erased !== drawnErased) {
     for (const [id, el] of [...blockEls]) if (el.dataset.layer === "working") { el.remove(); blockEls.delete(id); }
     pinRoom(bd, s);
-    if (s && !erased) for (const id of s.working) if (!(bd.pinned && id in bd.pinned)) drawBlock(id, false);
+    if (s && !erased) for (const id of s.working) if (!(bd.pinned && id in bd.pinned)) drawBlock(id, false, s);
     drawnState = s; drawnErased = erased; drawnMarks = ""; wrappedFor = null;
   }
 }
@@ -458,7 +483,7 @@ function settleBoard(bd) {
   note();
   for (const st of bd.states) {
     pinRoom(bd, st);
-    const tmp = st.working.filter(id => !(bd.pinned && id in bd.pinned)).map(id => [id, drawBlock(id, false)]);
+    const tmp = st.working.filter(id => !(bd.pinned && id in bd.pinned)).map(id => [id, drawBlock(id, false, st)]);
     prewrap(bd);
     note();
     for (const [id, el] of tmp) { el.remove(); blockEls.delete(id); }
@@ -695,10 +720,13 @@ function positionPointer(t) {
     const el = blockEls.get(read.block);
     if (el && el.classList.contains("on") && !el.classList.contains("cleared")) {
       const r = wordRect(el, read.k);
-      if (r && !outsideClip(r, lensClip(el.querySelector(".dmap-view") || (el.classList.contains("lens-frame") ? el : null)))) { placePointer(r, f); return; }
+      if (r && !outsideClip(r, lensClip(el.querySelector(".dmap-view") || (el.classList.contains("lens-frame") ? el : null)))
+          && !underOverlay(r, el)) { placePointer(r, f); return; }
     }
   }
-  if (pointSpan && pointSpan.isConnected) { placePointer(pointSpan.getBoundingClientRect(), f); return; }
+  if (pointSpan && pointSpan.isConnected && !underOverlay(pointSpan.getBoundingClientRect(), pointSpan)) {
+    placePointer(pointSpan.getBoundingClientRect(), f); return;
+  }
   pointerEl.classList.remove("on");
 }
 
@@ -751,7 +779,7 @@ function positionMarks() {
       if (!sp.isConnected) continue;
       const clip = lensClip(sp);
       for (const cr of sp.getClientRects()) {
-        if (outsideClip(cr, clip)) continue;
+        if (outsideClip(cr, clip) || underOverlay(cr, sp)) continue;
         const r = { left: cr.left - f.left, top: cr.top - f.top, right: cr.right - f.left,
                     bottom: cr.bottom - f.top, width: cr.width, height: cr.height };
         if (!first) first = r;
@@ -931,6 +959,131 @@ function applyFocus(bd, t) {
 // the state's row larger, in the middle of the map's frame ("row"), so it is
 // read on a phone. The map's lens moves inside the map; the camera never does.
 function isMapBoard(bd) { return !!(bd && bd.table && blocks[bd.table] && blocks[bd.table].map); }
+// 1.16: a Part B question board in two columns (its `split`), the extract whole
+function isQBoard(bd) { return !!(bd && bd.table && bd.split); }
+// a mark or the pointer under a gloss drawn over the question column (1.16) is
+// not drawn: the gloss hides that part of the question while it is shown
+function underOverlay(r, node) {
+  for (const o of camEl.querySelectorAll(".blk.over.on:not(.cleared)")) {
+    if (o.contains(node)) continue;
+    const q = o.getBoundingClientRect();
+    if (r.right > q.left && r.left < q.right && r.bottom > q.top && r.top < q.bottom) return true;
+  }
+  return false;
+}
+// 1.16: a gloss over the question column covers whole lines of what it covers:
+// its top edge is raised (more room above its word, which does not move) to
+// lie between two lines, never through one
+function placeOverlay() {
+  for (const o of camEl.querySelectorAll(".blk.over")) {
+    if (o.dataset.placed === frame.offsetWidth + "|" + guardEpoch) continue;
+    o.dataset.placed = frame.offsetWidth + "|" + guardEpoch;
+    o.style.paddingTop = "";
+    const lines = [];
+    for (const el of camEl.querySelectorAll(":scope > .blk:not(.over):not(.qtext)")) {
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      for (let n; (n = walker.nextNode());) {
+        if (!n.data.trim()) continue;
+        const rg = document.createRange(); rg.selectNodeContents(n);
+        for (const q of rg.getClientRects()) if (q.width > 0 && q.height > 0) lines.push(q);
+      }
+    }
+    const sc = o.getBoundingClientRect().height / (o.offsetHeight || 1);
+    for (let i = 0; i < 8; i++) {
+      const top = o.getBoundingClientRect().top;
+      const cut = lines.filter(q => q.top < top - 0.5 && q.bottom > top + 0.5);
+      if (!cut.length) break;
+      const raise = (top - Math.min(...cut.map(q => q.top))) / sc + frame.offsetHeight * 0.004;
+      // in the frame's units, so it holds at any size of the frame
+      o.style.paddingTop = ((parseFloat(getComputedStyle(o).paddingTop) + raise) / frame.offsetHeight * 100).toFixed(3) + "cqh";
+    }
+  }
+}
+// 1.16: the guard (maintainer, 2026-10-08). The fit measured the board with
+// some fonts at some frame sizes; the learner's device may draw a wider font,
+// or a smaller frame whose controls keep 44 px. Measured on the device when the
+// board is drawn, and again whenever the frame's size or the fonts change: if
+// the extract does not fit whole above the controls, it is set smaller, never
+// below 2.6% of the frame; if the question column does not hold the question
+// and every note at every moment, the extract's column narrows (the question
+// column gets the room it needs), the extract staying whole; as a last resort
+// the question column is set smaller, to the same floor. An extract that does
+// not fit at its floor first gets a wider column. Nothing is hidden and
+// nothing scrolls. On the device the fit measured, it changes nothing.
+let guardEpoch = 0;
+function guardReset() { guardEpoch++; }
+function guardKey() { return frame.offsetWidth + "x" + frame.offsetHeight + "|" + guardEpoch; }
+function guardArea() {
+  const r = boardEl.getBoundingClientRect(), cs = getComputedStyle(boardEl);
+  return { top: r.top + parseFloat(cs.paddingTop), bottom: r.bottom - parseFloat(cs.paddingBottom) };
+}
+function guardSet(bd, split, font, zoom) {
+  camEl.style.setProperty("--split", split + "%");
+  const t = blockEls.get(bd.table);
+  if (t) t.style.setProperty("--tf", font + "cqh");
+  zoomCol = zoom; zoomSkip = bd.table;
+  for (const [id, el] of blockEls) if (id !== bd.table) el.style.zoom = zoom === 1 ? "" : zoom;
+}
+function extractOver(bd) {
+  const el = blockEls.get(bd.table), A = guardArea(), r = el.getBoundingClientRect();
+  return Math.max(r.bottom - A.bottom, A.top - r.top, el.scrollHeight - el.clientHeight);
+}
+// how far the question column runs past the board at its worst moment: each
+// state, at its start, each reveal and each clear, the blocks shown then
+function columnOver(bd) {
+  const A = guardArea();
+  let worst = -Infinity;
+  for (const st of bd.states) {
+    pinRoom(bd, st);
+    const tmp = st.working.filter(id => !(bd.pinned && id in bd.pinned)).map(id => [id, drawBlock(id, false, st)]);
+    const moments = [st.start, ...Object.values(st.reveal), ...(st.clears || []).map(c => c.time)]
+      .filter(t => t >= st.start && t < st.until).sort((a, b) => a - b);
+    for (const m of moments) {
+      const gone = new Set();
+      for (const c of st.clears || []) if (m >= c.time) c.blocks.forEach(b => gone.add(b));
+      for (const [id, el] of tmp) el.style.display = gone.has(id) ? "none" : "";
+      for (const [id, el] of blockEls) {
+        if (id === bd.table || getComputedStyle(el).display === "none") continue;
+        const at = el.dataset.layer === "pinned" ? bd.pinned[id] : st.reveal[id];
+        if (at === undefined || at > m) continue;
+        const r = el.getBoundingClientRect();
+        worst = Math.max(worst, r.bottom - A.bottom, A.top - r.top);
+      }
+    }
+    for (const [id, el] of tmp) { el.remove(); blockEls.delete(id); }
+  }
+  pinRoom(bd, bd.states[0]);
+  return worst;
+}
+function guardQBoard(bd) {
+  const TOL = 1, FMIN = 2.6, ZMIN = 2.6 / 3.2;
+  let split = bd.split, font = blocks[bd.table].font || 3.2, zoom = 1;
+  const fitExtract = () => {
+    guardSet(bd, split, font, zoom);
+    while (extractOver(bd) > TOL && font > FMIN + 1e-6) {
+      font = Math.max(FMIN, +(font - 0.05).toFixed(2));
+      guardSet(bd, split, font, zoom);
+    }
+    return extractOver(bd) <= TOL;
+  };
+  // the extract whole first: smaller, to the floor; then, if it still does
+  // not fit, a wider column for it (the question column may then be set smaller)
+  if (!fitExtract()) while (split < 80) { split += 1; if (fitExtract()) break; }
+  let col = columnOver(bd);
+  while (col > TOL && split > 20) {
+    const keep = [split, font];
+    split -= 1;
+    if (!fitExtract()) { [split, font] = keep; guardSet(bd, split, font, zoom); break; }
+    col = columnOver(bd);
+  }
+  while (col > TOL && zoom > ZMIN + 1e-6) {
+    zoom = Math.max(ZMIN, +(zoom - 0.02).toFixed(3));
+    guardSet(bd, split, font, zoom);
+    col = columnOver(bd);
+  }
+  bd._guard = { split, font, zoom };
+  bd._guardKey = guardKey();
+}
 // each page scaled to its quarter of the map, so the four texts show whole
 function fitMapPages(el) {
   const grid = el.querySelector(".dmap-grid");
@@ -1164,6 +1317,7 @@ function offsetIn(el, root) {
 // table's text smaller or clears earlier notes; nothing is drawn over text.
 function placeBeside(bd, s) {
   if (isMapBoard(bd)) return [];        // beside the map, in its own column (bundle 1.14)
+  if (isQBoard(bd)) return [];          // beside the extract, in its own column (bundle 1.16)
   const tableEl = bd.table && blockEls.get(bd.table);
   if (!tableEl || (!s && !Object.keys(bd.pinned || {}).length)) return [];
   // between two states only the board's pinned side notes are shown
@@ -1220,6 +1374,7 @@ function placeBeside(bd, s) {
 function camera(bd, focus, notes, jumped) {
   let tf = "";
   if (isMapBoard(bd) || bd.lens) focus = null;     // the lens zooms (the map's, 1.14; a Part B text's, 1.15), not the camera
+  if (isQBoard(bd)) focus = null;                  // 1.16: the extract is whole; nothing zooms
   if (focus) {
     const td0 = focus.el.querySelector("td");
     const px = td0 ? parseFloat(getComputedStyle(td0).fontSize) : 99;
@@ -1227,19 +1382,33 @@ function camera(bd, focus, notes, jumped) {
       const tr = focus.el.querySelector('tbody tr[data-row="' + focus.row + '"]');
       const target = focus.col !== null && tr ? tr.children[focus.col] : tr;
       if (target) {
-        let r = offsetIn(target, camEl);
-        for (const n of notes) {
-          const q = offsetIn(n, camEl);
-          const x = Math.min(r.x, q.x), y = Math.min(r.y, q.y);
-          r = { x, y, w: Math.max(r.x + r.w, q.x + q.w) - x, h: Math.max(r.y + r.h, q.y + q.h) - y };
-        }
         const W = camEl.offsetWidth, H = camEl.offsetHeight;
-        const sc = Math.max(1, Math.min(MIN_READABLE_PX * 1.15 / px, 2.2, W * 0.92 / r.w, H * 0.8 / r.h));
-        let tx = W / 2 - (r.x + r.w / 2) * sc, ty = H / 2 - (r.y + r.h / 2) * sc;
-        tx = Math.min(0, Math.max(W - W * sc, tx));
-        // the content reaches down to the notes under the table (ADR 020)
-        const Hc = Math.max(H, ...notes.map(n => { const q = offsetIn(n, camEl); return q.y + q.h + frame.offsetHeight * 0.012; }));
-        ty = Math.min(0, Math.max(H - Hc * sc, ty));
+        const view = (shown) => {
+          let r = offsetIn(target, camEl);
+          for (const n of shown) {
+            const q = offsetIn(n, camEl);
+            const x = Math.min(r.x, q.x), y = Math.min(r.y, q.y);
+            r = { x, y, w: Math.max(r.x + r.w, q.x + q.w) - x, h: Math.max(r.y + r.h, q.y + q.h) - y };
+          }
+          const sc = Math.max(1, Math.min(MIN_READABLE_PX * 1.15 / px, 2.2, W * 0.92 / r.w, H * 0.8 / r.h));
+          let tx = W / 2 - (r.x + r.w / 2) * sc, ty = H / 2 - (r.y + r.h / 2) * sc;
+          tx = Math.min(0, Math.max(W - W * sc, tx));
+          // the content reaches down to the notes under the table (ADR 020)
+          const Hc = Math.max(H, ...shown.map(n => { const q = offsetIn(n, camEl); return q.y + q.h + frame.offsetHeight * 0.012; }));
+          ty = Math.min(0, Math.max(H - Hc * sc, ty));
+          return { sc, tx, ty };
+        };
+        let v = view(notes);
+        // a board's picture shown under the table (ADR 021) stays in view under
+        // the zoom (2026-10-08, found on a small phone's frame): framed with the
+        // notes, only where it would otherwise leave the view
+        const pics = [...blockEls].filter(([bid, e]) => blocks[bid] && blocks[bid].type === "picture"
+          && e.classList.contains("on") && !e.classList.contains("cleared")).map(([, e]) => e);
+        const outOfView = e => { const q = offsetIn(e, camEl);
+          return q.x * v.sc + v.tx < -0.5 || (q.x + q.w) * v.sc + v.tx > W + 0.5
+              || q.y * v.sc + v.ty < -0.5 || (q.y + q.h) * v.sc + v.ty > H + 0.5; };
+        if (v.sc > 1.001 && pics.some(outOfView)) v = view(notes.concat(pics));
+        const { sc, tx, ty } = v;
         if (sc > 1.001) tf = "translate(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px) scale(" + sc.toFixed(3) + ")";
       }
     }
@@ -1276,6 +1445,8 @@ function renderFrame(t) {
   const bd = boardAt(t);
   const s = stateAt(bd, t);
   const erased = !!(s && s.erase && t >= s.erase.time);
+  // 1.16: the guard measures again when the frame's size or the fonts change
+  if (isQBoard(bd) && !window.__noGuard && bd === drawnBoard && bd._guardKey !== guardKey()) drawnBoard = null;
   // A jump (seek, scrub, first frame) shows the diagram's state for that
   // moment at once, with no replay of the drawing.
   const jumped = lastRenderT === null || Math.abs(t - lastRenderT) > 0.75;
@@ -1309,6 +1480,7 @@ function renderFrame(t) {
   applyDocLens(bd, s, focus, jumped, t);
   applyVerdicts(bd, t);
   const notes = placeBeside(bd, s && !erased ? s : null);
+  if (isQBoard(bd)) placeOverlay();
   camera(bd, focus, notes, jumped);
   drawParts(bd, s && !erased ? s : null, t, jumped);
   positionPointer(t);
@@ -1503,7 +1675,7 @@ seek(isFinite(startAt) ? startAt : 0);
 // Any change to the frame's size re-renders, so measured positions never go
 // stale: a window resize, fullscreen, or a headless viewport settling late.
 new ResizeObserver(() => { fit(); renderFrame(state.globalTime); }).observe(document.body);
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => renderFrame(state.globalTime));
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { guardReset(); renderFrame(state.globalTime); });
 requestAnimationFrame(tick);
 </script>
 </body>

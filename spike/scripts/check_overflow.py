@@ -10,7 +10,8 @@ laptop width, in every state, while no word moves between states
 every moment at which something on it appears or goes (each state's start and
 end, each reveal, each pinned block, each erase), the camera's zoom is undone,
 and each block shown is measured against the board area (the frame's content
-band, inside its padding). A block that extends outside it fails, and so does a
+band, inside its padding: what lies between the header and the control bar as
+the frame draws them; on a small frame the controls keep 44 px). A block that extends outside it fails, and so does a
 block whose own content is clipped (it scrolls inside itself).
 
 It also fails a label drawn in capitals (docs/02-DESIGN-SYSTEM.md §6, §7c:
@@ -38,7 +39,10 @@ atexit.register(shutil.rmtree, EDGE_PROFILE, True)
 
 EDGE = [r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
         r"C:\Program Files\Microsoft\Edge\Application\msedge.exe"]
-WIDTHS = {"phone": 812, "laptop": 1120}
+# the frame the reference player draws in a phone held landscape, 915x412 (its
+# controls keep 44 px, 13% of this frame), then phone-landscape and laptop
+# (maintainer, 2026-10-08: the board measured above the control bar at every width)
+WIDTHS = {"small phone": 590, "phone": 812, "laptop": 1120}
 TOLERANCE_PX = 1.0
 # words a label may keep in capitals: acronyms, never ordinary words
 ACRONYMS = ["OET", "FANBOYS", "NHS", "GP", "BP", "ICU", "MRI", "CT", "ECG", "COPD", "IV", "UK",
@@ -102,9 +106,9 @@ HARNESS = r"""
         const over = { top: A.t - r.top, bottom: r.bottom - A.b, left: A.l - r.left, right: r.right - A.r };
         const worst = Object.entries(over).filter(([, v]) => v > TOL).sort((a, b) => b[1] - a[1])[0];
         const cs = getComputedStyle(el);
-        // a Part B text's lens frame hides the text beyond it by design (1.15)
-        const clipped = /(hidden|clip|auto|scroll)/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + TOL
-                        && !el.classList.contains("lens-frame");
+        // no exemption: a Part B question board's extract is shown whole (1.16;
+        // its 1.15 lens, which hid the text beyond its frame, is gone)
+        const clipped = /(hidden|clip|auto|scroll)/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + TOL;
         if ((worst || clipped) && !seenOut.has(bd.id + "|" + id)) {
           seenOut.add(bd.id + "|" + id);
           out.push({ board: bd.id, block: id, t, state: (stateAt(bd, t) || {}).id || null,

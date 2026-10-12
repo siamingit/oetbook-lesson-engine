@@ -82,9 +82,14 @@ READING_FORMAT_VERSION = "1.13"
 BLOCK_FIELDS_114 = ("map",)
 MAP_FORMAT_VERSION = "1.14"
 # 1.15, a Reading Part B lesson (ADR 026, the Part B question method and the
-# vocabulary layer): written only in such a lesson's bundle
+# vocabulary layer): written only in such a lesson's bundle. 1.16: its question
+# boards in two columns, the extract whole (a board's `split`, a state's
+# `overlay`; ADR 026, 2026-10-08), replacing 1.15's lens
 BLOCK_FIELDS_115 = ("synonym", "audio", "lexicon", "vocab_table")
-PART_B_FORMAT_VERSION = "1.15"
+PART_B_FORMAT_VERSION = "1.16"
+# the extract's share of a Part B question board's width, per cent, until the
+# fit has measured it (fit_boards.py)
+SPLIT_DEFAULT = 55
 
 
 def format_version(lesson_id: str, with_map: bool = False, part_b: bool = False) -> str:
@@ -249,6 +254,22 @@ def table_focus(bd: dict, table: dict, cells: list[tuple[int, int]]) -> list[dic
             continue
         out.append({"time": round(t, 3), "row": r, "col": c})
     return out
+
+
+def whole_first(focus: list[dict], shown: float, until: float) -> list[dict]:
+    """A Part B question board's spotlight (1.16): no row from the moment its
+    text is uncovered (`shown`) until `until`, so the whole extract shows first,
+    undimmed; from `until`, the spotlight in force at that moment."""
+    before = [f for f in focus if f["time"] < shown]
+    held = [f for f in focus if shown <= f["time"] <= until]
+    after = [f for f in focus if f["time"] > until]
+    now = held[-1] if held else None
+    out = before + [{"time": round(shown, 3), "row": None, "col": None}]
+    if now and now["row"] is not None:
+        out.append({"time": until, "row": now["row"], "col": now["col"]})
+    out += after
+    return [f for n, f in enumerate(out)
+            if not n or (f["row"], f["col"]) != (out[n - 1]["row"], out[n - 1]["col"])]
 
 
 def diagram_parts(b: dict) -> list[str]:
@@ -579,15 +600,18 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
         bd["focus"] = (table_focus(bd, blocks_all[bd["table"]], table_cells(blocks_all[bd["table"]]))
                        if bd["table"] else [])
         if bd["table"] and any("veil" in s for s in bd["states"]):
-            # 1.15: a Part B question board's text is read through its lens
-            # (rule 35): the spotlight's row, at body size, inside the text's frame
-            bd["lens"] = True
-            # the whole extract shows once before the lens follows the reading
-            # (maintainer, 2026-10-07): until the end of the first sentence said
-            # once the text is uncovered, and for 3 seconds at least
+            # 1.16: a Part B question board is two columns (rule 36; maintainer,
+            # 2026-10-08, replacing 1.15's lens): the extract whole in the first,
+            # `split` per cent of the board's width, from the fit
+            bd["split"] = (fit.get("splits") or {}).get(bd["id"], SPLIT_DEFAULT)
+            # the whole extract shows first, undimmed, once it is uncovered
+            # (maintainer, 2026-10-07): the spotlight has no row until the end of
+            # the first sentence said then, and for 3 seconds at least (1.15's
+            # `lens_from`, the same moment)
             first = next((s for s in bd["states"] if not s.get("veil")), None)
             if first and first["utterances"]:
-                bd["lens_from"] = round(max(first["start"] + 3.0, first["utterances"][0]["end"]), 3)
+                bd["focus"] = whole_first(bd["focus"], first["start"],
+                                          round(max(first["start"] + 3.0, first["utterances"][0]["end"]), 3))
         bd["verdicts"] = table_verdicts(bd, blocks_all[bd["table"]]) if bd["table"] else []
         # 1.3: a pinned block stays from its reveal to the board's end; a
         # word mark colours a changing word by its word class from the moment
@@ -603,17 +627,25 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
         # working blocks shown before it are cleared (never a pinned one)
         for s in bd["states"]:
             s["clears"], gone = [], set()
+            # 1.16: a gloss drawn over a Part B question board's question column
+            # goes at its end time, before anything it covers is read or marked
+            ends = [(at, None, b) for b, at in (fit.get("ends") or {}).get(s["id"], [])]
+            befores = []
             for c in (fit.get("clears") or {}).get(s["id"], []):
                 at = s["reveal"].get(c)
                 if at is None:
                     print(f"WARN fit: {s['id']} clears before {c}, which it does not reveal")
                     continue
-                ids = [w for w in s["working"] if w not in bd["pinned"] and w not in gone
-                       and s["reveal"].get(w, at) < at]
+                befores.append((at, c, None))
+            for at, c, b in sorted(befores + ends, key=lambda e: e[0]):
+                ids = ([w for w in s["working"] if w not in bd["pinned"] and w not in gone
+                        and s["reveal"].get(w, at) < at] if c else [b] if b not in gone else [])
                 if ids:
                     s["clears"].append({"time": at, "blocks": ids})
                     gone.update(ids)
             s["clears"].sort(key=lambda c: c["time"])
+            if bd.get("split"):
+                s["overlay"] = list((fit.get("overlay") or {}).get(s["id"], []))
         links, smarks = links_of.get(bd["id"], ([], []))
         shown = {i: bd["start"] for i in bd["fixed"]}
         for s in bd["states"]:
