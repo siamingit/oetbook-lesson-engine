@@ -90,6 +90,12 @@ pass, and logs it.
 - Running read-only shell commands (`ls`, `cat`, `git status`, `git diff`)
 - Running local tests
 - Formatting and linting
+- Exempting answer forms in `spike/ci/answer_check_exempt.json` (owner,
+  2026-10-12): when a new exercises release fails the release-answers check
+  only because of generic words the repository uses in its own text, add the
+  exemptions by item ID and form, each with its reason. Ask the owner only if
+  a flagged line could be about the practice set itself. The check must still
+  never print or store an answer.
 
 ---
 
