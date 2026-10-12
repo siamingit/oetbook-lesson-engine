@@ -196,3 +196,70 @@ own guard (ADR 026, 2026-10-08); no other board had one.
   no board's timing changed. Every lesson's 9,058 audio, narration and player
   data files hash-identical (8,464 clips, 8,650 utterances with their text, times
   and clips, every board's and state's times). No paid call; no audio made.
+
+## Amendment, 2026-10-12: one table shown whole, boards measured ahead, phone text size
+
+Decided by the owner in the brief of 2026-10-12. How the first two are carried was
+chosen by the agent under that brief; the owner may reverse it.
+
+### Grammar 6, board pages-07-08_t2: the table whole, below its floor (owner)
+
+A per-board exception, not a rule change (design system §7, Tables). On this board
+only (18:30 to 27:32) the table's auto zoom is removed: the camera never zooms onto
+the active cell, and never pans the table up to its notes, so the whole table is in
+view at every moment. The player's guard sets the board smaller as far as the whole
+table and its notes need to fit; the table's text may go below 1.9% of the frame,
+and the other blocks stop at the body floor (2.6%), as the guard's search goes on
+with the table alone. On this board the guard keeps the largest size that fits (in
+steps of 0.5%), not the first found. Carried in the reference player only
+(`TABLE_FREE`, by lesson and board id): the bundle is unchanged, and the fit
+(`fit_boards.py`, guard off) plans the board as before. A renderer that draws from
+the bundle alone does not know of the exception.
+
+### Boards measured ahead
+
+The guard measured a board the first time it was drawn, so a large board waited as
+it appeared (measured 2026-10-12 in headless Edge: up to 1.14 s, Grammar 3 page-8 at
+the 590 px frame; 0.79 to 0.90 s on Grammar 3, 6, 8 and Vocabulary 1). Now the
+player measures every board other than a question board ahead, from the board after
+the one shown on, in a hidden copy of the page (the same frame size, viewport, styles
+and fonts), one moment or one state's layout at a time in idle time, and hands the
+sizes to the page. The copy runs the same guard code, so the sizes are the same;
+only when they are measured changes. A board not yet measured (a jump far ahead, a
+frame just resized) is measured as it is drawn, as before; so is every board where
+the copy's frame does not match the page's (it stops), and in a measuring harness,
+where the copy does not start (`__lockWidth` without `__measureAheadOn`). The first
+board shown is measured at load, as before. A question board keeps its own guard,
+which measures when the board is drawn.
+
+### Phone board text size: no change (owner)
+
+The site chat (siamingit/oetacademy-web) reported board text too small on phones
+(about 5 to 6 px held upright, about 9 to 10 px in fullscreen sideways) and offered
+three options: (1) a minimum text size, (2) a readability zoom for ordinary text,
+(3) a phone layout variant. Owner decision, 2026-10-12: none of them for now; board
+text sizing on phones stays as it is. Nothing is needed from the site side
+(siamingit/oetacademy-web#91).
+
+### Results (2026-10-12, the 16 built lessons)
+
+- **Grammar 6, pages-07-08_t2**: no zoom and no pan at any frame. At 590 px the board
+  is set at 91.5% with the default fonts (table text 1.74% of the frame, about 5.8
+  px) and 89.0% with Verdana (1.69%, about 5.6 px); at 812 px 97% and 92.5%; at 1120
+  px 100% and 93.5%. The table and its notes are whole inside the board at every
+  moment.
+- **Measured ahead**: in a hidden copy, every board other than a question board of
+  every lesson, at 590, 812 and 1120 px, with the default fonts and with Verdana
+  (96 runs): every board measured ahead, and every size identical to the board
+  measured as drawn. In a browser window of 915x412: Grammar 3's boards all measured
+  within 25 s of opening, Grammar 6's within 30 s; the longest step 10 to 14 ms; a
+  board's change now 0.3 to 68 ms (its drawing; Grammar 3's page-8, 1.14 s before).
+- **Unchanged**: `render_compare.py` (before and after, every lesson, 812 and 1120
+  px): 15 of 16 identical, and every data file of all 16 byte for byte, no timing
+  changed. Grammar 6 differs only on pages-07-08_t2 (the zoom gone, the board
+  smaller at 812 px), and, carried from it, the hidden reading pointer's resting
+  place at the first three moments of pages-09-10_t1 at 812 px, and an empty style
+  attribute the old zoom left on the board element. 13,019 audio, narration and data
+  files hash-identical. `check_overflow.py`, `check_overlap.py`, `check_lens.py` and
+  `check_wide_font.py` pass all 16 lessons at the three frames. No paid call; no
+  audio made.
