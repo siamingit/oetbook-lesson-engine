@@ -1,8 +1,14 @@
 {
- "purpose": "Answer forms of the exercises releases that check_release_answers.py does not look for: words so generic that this repository uses them in its own text (spike/scripts/check_release_answers.py). By item ID and form, never the answer itself. Each is reviewed: the repository's use must not be about the practice set.",
+ "purpose": "Answer forms of the exercises releases that check_release_answers.py does not look for: words so generic that this repository uses them in its own text (spike/scripts/check_release_answers.py). By item ID and form, never the answer itself. Each is reviewed: the repository's use must not be about the practice set. Rule (owner, 2026-10-12): when a new exercises release fails the check only because of generic words the repository uses in its own text, the agent adds the exemptions itself, with reasons, without asking; it asks the owner only if a flagged line could be about the practice set itself. The check still never prints or stores an answer.",
  "exempt": [
   {"item": "oa-reading-000020", "form": "accepted[0]", "why": "a length of time; the runbook and the runner state the same span for batch limits", "by": "agent 2026-10-06"},
   {"item": "oa-reading-000021", "form": "accepted[1]", "why": "a common clinical initialism; the narration and initialism code use it as an example (ADR 016)", "by": "agent 2026-10-06"},
-  {"item": "oa-reading-000022", "form": "accepted[0]", "why": "the same initialism as oa-reading-000021", "by": "agent 2026-10-06"}
+  {"item": "oa-reading-000022", "form": "accepted[0]", "why": "the same initialism as oa-reading-000021", "by": "agent 2026-10-06"},
+  {"item": "oa-reading-000096", "form": "accepted[0]", "why": "a number word; the repository's code and docs use it throughout", "by": "owner 2026-10-12"},
+  {"item": "oa-reading-000096", "form": "accepted[1]", "why": "the same number word in another form; used throughout the code and docs", "by": "owner 2026-10-12"},
+  {"item": "oa-reading-000061", "form": "accepted[0]", "why": "an everyday time phrase; the docs and code use it in their own sense", "by": "owner 2026-10-12"},
+  {"item": "oa-reading-000053", "form": "accepted[0]", "why": "a profession word; the repository uses it only in a Grammar 3 nominalisation example, in a different setting from the item", "by": "owner 2026-10-12"},
+  {"item": "oa-reading-000053", "form": "accepted[1]", "why": "the plural of oa-reading-000053 accepted[0], exempt ahead so it does not trip later", "by": "owner 2026-10-12"},
+  {"item": "oa-reading-000059", "form": "accepted[0]", "why": "a general noun; the design system uses it only as an example of a noun suffix", "by": "owner 2026-10-12"}
  ]
 }
