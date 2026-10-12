@@ -427,6 +427,12 @@ row on that board:
   solved by reducing the type size" (§3): auto zoom keeps a small table
   readable, and splitting it would break the rule above. A table that
   does not fit even at 1.9% fails the audit; its cells must be shorter.
+  *Owner decision, 2026-10-12: a per-board exception, not a rule change.* On
+  Grammar 6's board pages-07-08_t2 (18:30 to 27:32) only, the auto zoom is
+  removed (no camera zoom onto the cell, no pan to the notes), and the player's
+  guard (§8b) sets the table smaller than 1.9% on the device, as far as the
+  whole table and its notes need to fit the board. Everywhere else the floor
+  stands.
 
 - **Choice tables** (maintainer, 2026-09-25; docs/adr/009). Where each row
   gives versions of one sentence to choose between ("Indefinite / Definite
@@ -999,15 +1005,16 @@ is re-planned, never left to overflow:
   phone held landscape, 915x412, whose controls keep 44 px, §9) or a wider
   device font can leave a block under the header or the control bar, or past an
   edge. On every board of every lesson the player measures again on the device,
-  when the board is first drawn and whenever the frame's size or the fonts
-  change, at the moments `check_overflow.py` measures. Where any block would lie
+  ahead of the board while the lesson plays (2026-10-12; else when the board is
+  first drawn) and whenever the frame's size or the fonts change, at the moments
+  `check_overflow.py` measures. Where any block would lie
   outside the board, or a word would spill out of its block: first the board's
   pictures are set smaller, scaled whole and never cropped, to no less than 10%
   of the frame (§7e), where that helps; then every block of the board together,
   its layout and proportions kept, until everything fits, never below the
   floors: body text 2.6% of the frame (as the Part B question column, §7g), a
   table's text 1.9% (§7, Tables; a table stops there while the other blocks go
-  on), a picture 10%.
+  on; one board excepted, owner 2026-10-12, §7, Tables), a picture 10%.
   The size holds for the whole board, so nothing moves between its states
   (§8a). Where the board fits, the guard changes nothing. A Part B or Part C
   question board keeps its own guard (§7g, §7h). `check_wide_font.py` proves it,

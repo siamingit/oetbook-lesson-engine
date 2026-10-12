@@ -614,8 +614,9 @@ These are the only rules. Every time and target they use is in the bundle.
     the reference player's fonts on its phone and laptop frames. A renderer whose
     frame or fonts leave less room (a small screen whose controls keep 44 px, a
     wider font) measures each board other than a question board (rules 36, 37 keep
-    their own guard) on the device when it is first drawn and whenever the frame's
-    size or the fonts change, at every state's start and end, every reveal, every
+    their own guard) on the device before or when it is first drawn (the reference
+    renderer measures ahead, 2026-10-12) and whenever the frame's size or the fonts
+    change, at every state's start and end, every reveal, every
     pinned block and every erase; where a block shown would lie outside the board
     (under the header or the controls, or past an edge), or its words spill out of
     it, it sets the board's pictures smaller, whole, to no less than 10% of the
