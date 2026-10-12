@@ -19,7 +19,9 @@ Each quote must have a mark, a `highlight` or a keyword pair (`match1` to
 quote is spoken: in the finished player, the mark's time from 1.5 s before the
 quote's first word to 0.3 s after its last (the voice's own word timings); with
 `--narration`, before the clips exist, the mark's cue marker placed at most
-three words before the quote's first word or inside it. A quote with no such
+three words before the quote's first word or inside it. A mark covers its own
+whole phrase, so the window before the quote is longer by the mark's words
+(0.4 s, or one word, a word): "six point zero to six point four" under one mark. A quote with no such
 mark fails the check, with its time in the lesson. Words that are also words of
 a question on the board are the question read aloud, not the text: they are not
 a quote of the text (where they match the text, they are a keyword pair and are
@@ -167,7 +169,8 @@ def utterance_quotes(text_with_cues: str, cues: list[dict], docs: list[dict],
     bad = []
     for i, j in runs:
         words = content(spoken[i:j])
-        if not any(i - LEAD_WORDS <= marker_at.get(c["id"], -99) <= j - 1
+        # a mark covers its whole phrase: from its marker to the end of its words
+        if not any(i - LEAD_WORDS - len(tokens(c.get("text") or "")) <= marker_at.get(c["id"], -99) <= j - 1
                    and content(tokens(c.get("text") or "")) & words for c in marks):
             bad.append(f"\"{' '.join(spoken[i:j])}\" ({label[(i, j)]})")
     return len(runs), bad
@@ -221,7 +224,8 @@ def check_player(lesson: Path) -> tuple[int, list[str]]:
                             doc_label = label[(i, j)]
                             t0, t1 = at[i][0], at[j - 1][1]
                             words = content(spoken[i:j])
-                            ok = any(t0 - LEAD_S <= c["time"] <= t1 + TAIL_S
+                            # a mark covers its whole phrase (about 0.4 s a word)
+                            ok = any(t0 - LEAD_S - 0.4 * len(tokens(c.get("text") or "")) <= c["time"] <= t1 + TAIL_S
                                      and content(tokens(c.get("text") or "")) & words for c in marks)
                             if not ok:
                                 failures.append(f"{u['id']}: \"{' '.join(spoken[i:j])}\" ({doc_label}) "

@@ -255,23 +255,6 @@ VOICE. First person, warm, direct, confident. Speak to the student as "you". \
 Plain classroom English at the level above. British English spelling and usage \
 ("recognise", "practise" as a verb, "whilst" never).
 
-DELIVERY: AN ENGAGED TEACHER, NEVER A SCRIPT READ ALOUD (maintainer, \
-2026-10-06). Speak like a teacher in front of a class who wants the student to \
-get it, with energy:
-  - Ask the student short questions, then answer them ("So which text is it? \
-Text D."): on most boards at least one.
-  - Signpost the steps, at most once a state: "Now, here's the trick.", "Look \
-at this.", "Watch what happens.", "Next,".
-  - Give the key point weight: say it plainly, then once more in other words, \
-or open it with "This is the key point:".
-  - Vary sentence length: mostly short sentences, a longer one where it \
-explains; never a run of sentences of the same length and shape.
-  - React to what you find, briefly ("There it is.", "Good.").
-This changes only HOW things are said. What is taught stays exactly as it is: \
-the facts, the steps and their order, the examples, every word read from a \
-board, and every rule above and below. Same A2-B1 words; no idioms; at most one \
-exclamation mark a board.
-
 NEVER refer to the source. Do not mention Persian, a translation, the original \
 recording, a video, a session, a class, an instructor, or "he". You are the \
 teacher, speaking now.
@@ -834,6 +817,18 @@ def current_states(out_dir: Path, ids: list[str]) -> list[dict]:
     return found
 
 
+# The DELIVERY rule (maintainer, 2026-10-06; ADR 027 amendment): Reading and
+# Listening lessons are narrated like an engaged teacher, never as a script
+# read aloud. Given to those lessons only; no length cap for this style.
+DELIVERY = """DELIVERY: AN ENGAGED TEACHER, NEVER A SCRIPT READ ALOUD (maintainer, 2026-10-06). Speak like a teacher in front of a class who wants the student to get it, with energy:
+  - Ask the student short questions, then answer them ("So which text is it? Text D."): on most boards at least one.
+  - Signpost the steps, at most once a state: "Now, here's the trick.", "Look at this.", "Watch what happens.", "Next,".
+  - Give the key point weight: say it plainly, then once more in other words, or open it with "This is the key point:".
+  - Vary sentence length: mostly short sentences, a longer one where it explains; never a run of sentences of the same length and shape.
+  - React to what you find, briefly ("There it is.", "Good.").
+This changes HOW things are said. What is taught stays as it is: the facts, the steps and their order, the examples, every word read from a board, and every other rule. Same A2-B1 words; no idioms; at most one exclamation mark a board. The narration may be longer for this; there is no length cap for it.
+ADDED TEACHING POINTS. Where you add a teaching point or a generalisation that the beats and the boards do not make ("the text must answer the whole question"), it must be accurate and consistent with the instructor's method, and that utterance's `note` must start "ADDED: " and say the point, so the maintainer can review every one."""
+
 def build_messages(data: dict, rewrite: dict | None = None, chunk: dict | None = None) -> list[dict]:
     know = data["understanding"]
     beats = [{"id": b["id"], "learning_objective": b["learning_objective"],
@@ -918,6 +913,8 @@ def build_messages(data: dict, rewrite: dict | None = None, chunk: dict | None =
     if vocabulary_rule.is_vocabulary(lesson_dir) and not scr.get("section", {}).get("intro"):
         content.append({"type": "text", "text": vocabulary_rule.NARRATION})
     import reading_rule                        # ADR 026; other lessons unchanged
+    if lesson_dir.name.split("-")[0].lower() in ("reading", "listening"):
+        content.append({"type": "text", "text": DELIVERY})    # ADR 027 amendment
     if reading_rule.is_reading(lesson_dir):
         content.append({"type": "text", "text": reading_rule.NARRATION})
         if any(b.get("doc") or b.get("question") for t in scr["topics"] for h in t["thoughts"]

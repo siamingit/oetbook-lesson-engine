@@ -1,22 +1,22 @@
-"""The narration voice of a lesson, chosen by its type (ADR 027).
+"""The narration voice of a lesson (ADR 027 and its amendment).
 
-Grammar and Vocabulary lessons keep Rupert at speed 1.0 (maintainer,
-2026-09-22 and 2026-09-24; methodology §23), with nothing added to the clip,
-so their cache keys and audio are unchanged. Reading and Listening lessons
-use Courtney at about 135 words a minute (maintainer, 2026-10-06, by ear from
-C:\\OET\\voice-audition\\reading\\courtney_135wpm.wav): Cartesia's lowest
-speed setting, 0.6, which gives her about 140-144 words a minute, and 0.30 s
-of silence added after every sentence of a clip but its last.
+Every lesson is narrated by Rupert at speed 1.0, with nothing added to the
+clip: the voice, provider and settings of the approved Grammar and Vocabulary
+lessons (maintainer, 2026-09-22 and 2026-09-24; methodology §23). The female
+voice first chosen for Reading and Listening (Courtney, 2026-10-06) was
+withdrawn the same day (ADR 027 amendment); COURTNEY stays here only for the
+audition record (delivery_audition.py), never for a lesson.
 """
 
 from pathlib import Path
 
 RUPERT = {"name": "rupert", "id": "0ad65e7f-006c-47cf-bd31-52279d487913",
           "speed": 1.0, "sentence_pause_s": 0.0}
+# withdrawn 2026-10-06 (ADR 027 amendment): for the auditions' record only
 COURTNEY = {"name": "courtney", "id": "16a4052e-1f11-47ac-95f5-9330bee062f9",
             "speed": 0.6, "sentence_pause_s": 0.30}
 
-BY_TYPE = {"reading": COURTNEY, "listening": COURTNEY}
+BY_TYPE: dict[str, dict] = {}                  # every lesson type: Rupert (ADR 027 amendment)
 
 SENTENCE_END = (".", "?", "!")
 
