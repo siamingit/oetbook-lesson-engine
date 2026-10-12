@@ -155,9 +155,13 @@ def restore() -> None:
             t.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(f, t)
             n += 1
-    # a file the renders created that the backup does not have is removed
+    # a file the renders created that the backup does not have is removed;
+    # only in a lesson the backup holds: one built since the backup was taken
+    # is not the comparison's and is never touched (2026-10-06)
     extra = 0
     for L in built():
+        if not (src / L.name).is_dir():
+            continue
         for f in files_to_keep(L):
             if not (src / L.name / f.relative_to(L)).exists():
                 f.unlink()

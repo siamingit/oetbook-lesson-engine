@@ -60,12 +60,12 @@ def cache_key(text: str, speed: float) -> str:
     return hashlib.sha256(basis.encode("utf-8")).hexdigest()[:12]
 
 
-def synthesize(client: Cartesia, text: str, speed: float) -> dict:
+def synthesize(client: Cartesia, text: str, speed: float, voice_id: str = VOICE_ID) -> dict:
     """Call Cartesia's SSE endpoint and collect audio + word timestamps."""
     events = client.tts.sse(
         model_id=MODEL_ID,
         transcript=text,
-        voice={"id": VOICE_ID},
+        voice={"id": voice_id},
         language="en",
         add_timestamps=True,
         generation_config={"speed": speed},
