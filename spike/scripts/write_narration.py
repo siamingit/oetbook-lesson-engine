@@ -68,7 +68,9 @@ MARK_TYPES = ["underline", "highlight", "circle", "strike", "point",
               "arrow", "bracket", "replace"]
 # keyword pairs, one colour a pair, Reading lessons only (ADR 026, bundle 1.13)
 MATCH_TYPES = ["match1", "match2", "match3"]
-MARK_TYPES = MARK_TYPES + MATCH_TYPES
+# opinion-signal marks, a Reading Part C lesson only (ADR 026, 2026-10-08; bundle 1.17)
+SIGNAL_TYPES = ["sig_opinion", "sig_hedge", "sig_judge", "sig_main", "sig_aside"]
+MARK_TYPES = MARK_TYPES + MATCH_TYPES + SIGNAL_TYPES
 # marks of one phrase that an override may swap for each other (apply_cue_overrides)
 PHRASE_MARKS = {"underline", "circle", "highlight"}
 # `type` types a table cell's answer live (TABLE BOARDS; bundle 1.2)
@@ -508,6 +510,28 @@ of the lesson, by its title. Walk through the sections in the same way, \
 revealing each note as you name it.\
 """
 
+# Authored sections of a kind (ADR 018 and ADR 014 amendments of 2026-10-08)
+CLOSING = """\
+THIS SECTION IS THE LESSON'S CLOSING (ADR 014 amendment of 2026-10-08): no lesson \
+stops abruptly. About 30 to 60 seconds in all (70 to 140 words) on its one board. \
+First a quick recap of the two or three most important points of this lesson: the \
+board's notes, in the order shown, each revealed as you say it. Then a warm, creative \
+goodbye in your own words, different from every other lesson's closing listed below; \
+there is no fixed template (for example: hoping the lesson was useful, encouraging the \
+learner to practise, or saying you will see them in the next lesson). Name what the \
+next lesson is about only when NEXT LESSON below is given: it is then certain; with \
+none, say nothing about what comes next. Never say how many lessons there are and \
+never list lessons. Do not greet, and teach nothing new.\
+"""
+REVIEW = """\
+THIS SECTION IS A METHOD REVIEW (ADR 018 amendment of 2026-10-08), before the \
+lesson's practice: about five minutes in all. Remind the learner quickly of what the \
+plan's lesson taught, simpler and faster than that lesson; never teach it again in \
+full. Name that lesson once by its short title, as a cross-reference (ADR 006), \
+without assuming the learner has taken it ("The lesson X shows ..."). Do not start \
+the practice here: the practice is the next section.\
+"""
+
 TASK_CHUNK = """THIS SECTION IS DRAFTED IN PARTS (part {n} of {of}), joined afterwards and audited as one. Write ONLY these boards, in the order given, each complete: {ids}. Every other board is written in another part and is not returned. The section's narration just before these boards ends: {before}
 Go on from there naturally: do not greet, introduce the section again or sum it up unless one of your boards is where that happens."""
 
@@ -678,8 +702,21 @@ def compact(b: dict) -> dict:
         out["options"] = [f"{o['letter']}: {o['text']}" for o in b["question"]["options"]]
         out["parts"] = [(f"{b['id']}.{it['part']}: option {it['option']} ruled out: struck through, "
                          f"its reason label '{it['text']}' appears") if it["kind"] == "out" else
+                        (f"{b['id']}.{it['part']}: THE FOUR OPTIONS APPEAR (hidden until then: never "
+                         "read or mention an option before this part is revealed)")
+                        if it["kind"] == "options" else
                         f"{b['id']}.{it['part']}: option {it['option']} ticked as the answer"
                         for it in b.get("items") or []]
+        if b["question"].get("target"):
+            out["printed_in_bold"] = b["question"]["target"]
+    if b["type"] == "scale" and b.get("items"):
+        # an attitude scale (Part C, bundle 1.17): its parts, revealed by their ids
+        out["parts"] = [f"{b['id']}.{it['part']}: " + (
+            f"the marker moves to {it['at']} of 100 (0 = '{b.get('left')}', 100 = '{b.get('right')}')"
+            if it["kind"] == "marker" else
+            f"option {it['option']} placed at {it['at']}, " + ("struck: ruled out" if it["kind"] == "out"
+                                                              else "ticked: the answer"))
+            for it in b["items"] if it["kind"] != "bad"]
     if b["type"] == "gloss" and b.get("items"):
         out["parts"] = [f"{b['id']}.{it['part']}: {it['kind']}"
                         + (f" '{it['text']}'" if it["kind"] != "picture"
@@ -762,11 +799,49 @@ def gather(lesson: Path, pages: list[int]) -> dict:
             "screens_path": str(screens_path), "lesson_id": lesson.name,
             "catalogue": catalogue(lesson), "references": references,
             "previous_lesson": previous_lesson(lesson), "openings": openings(lesson),
+            "closings": closings(lesson), "next_lesson": next_lesson(lesson, pages),
             "course_map": course_map(lesson),
             "blocks": blocks, "understanding": know, "ledger": ledger,
             "rulings": rulings, "rulings_from": rulings_from,
             "forbids": ledger_phrases(ledger, "forbidden_phrases"),
             "requires": ledger_phrases(ledger, "required_phrases")}
+
+
+def closings(lesson: Path) -> dict[str, str]:
+    """Every OTHER lesson's closing as spoken, by lesson id (ADR 014 amendment
+    of 2026-10-08: the goodbye differs in every lesson), read from the lesson
+    folders beside this one."""
+    out = {}
+    for other in sorted(p for p in lesson.parent.iterdir() if p.is_dir() and p.name != lesson.name):
+        sp = other / "analysis" / "sections.json"
+        if not sp.exists():
+            continue
+        for sec in json.loads(sp.read_text(encoding="utf-8")).get("sections", []):
+            if sec.get("kind") != "closing":
+                continue
+            np_ = paths.narration_dir_for(other, sec["pages"]) / "narration.json"
+            if np_.exists():
+                n = json.loads(np_.read_text(encoding="utf-8"))
+                out[other.name] = " ".join(spoken(u["text_with_cues"]) for bd in n["boards"]
+                                           for st in bd["states"] for u in st["utterances"])
+    return out
+
+
+def next_lesson(lesson: Path, pages: list[int]) -> dict | None:
+    """The lesson after this one, for a closing, only when it is certain: the
+    closing's `next` in sections.json (build_sections.py --next), with that
+    lesson's title and description."""
+    p = lesson / "analysis" / "sections.json"
+    if not p.exists():
+        return None
+    info = json.loads(p.read_text(encoding="utf-8"))
+    a = next((x for x in info.get("added", []) if [x["page"]] == list(pages)), None)
+    nid = (a or {}).get("next")
+    if not nid:
+        return None
+    np_ = lesson.parent / nid / "analysis" / "sections.json"
+    nl = json.loads(np_.read_text(encoding="utf-8"))["lesson"] if np_.exists() else {}
+    return {"lesson": nid, "title": nl.get("title"), "description": nl.get("description")}
 
 
 def map_view(mp: dict, s: dict) -> str:
@@ -797,6 +872,15 @@ def boards_for_model(data: dict) -> list[dict]:
                 # a Part B question board (bundle 1.15): the text is covered
                 st["text"] = ("COVERED: its words cannot be seen; read nothing from it and mark nothing "
                               "in it" if s["veil"] else "uncovered: the whole text is shown")
+            if s.get("view"):
+                # a Part C question board (bundle 1.17): the text as a map, or a paragraph whole
+                v = s["view"]
+                st["text"] = (("MAP: the whole text, too small to read; read nothing from it and mark "
+                               "nothing in it" + (f"; paragraph {v['rows'][0] + 1} is marked" if v["rows"] else ""))
+                              if v["map"] else
+                              "PARAGRAPH " + " and ".join(str(r + 1) for r in v["rows"])
+                              + " shown whole and readable (row " + ", ".join(str(r + 1) for r in v["rows"])
+                              + " of the table); read and mark only " + ("it" if len(v["rows"]) == 1 else "them"))
             still = [i for p in bd["states"][:n] for i in p["working"] if blocks[i].get("pin")]
             if still:
                 st["still_on_board"] = still      # pinned blocks shown in an earlier state
@@ -923,6 +1007,15 @@ def build_messages(data: dict, rewrite: dict | None = None, chunk: dict | None =
                  if b["type"] == "contents_item"]
         if items and not any(b.get("explanation") for b in items):
             content.append({"type": "text", "text": INTRO_NO_CATEGORIES})
+    kind = scr.get("section", {}).get("kind")
+    if kind == "closing":
+        content.append({"type": "text", "text": CLOSING
+                        + "\n\nNEXT LESSON (certain; null when not known):\n"
+                        + json.dumps(data.get("next_lesson"), ensure_ascii=False)
+                        + "\n\nOTHER LESSONS' CLOSINGS (never reuse their goodbye):\n"
+                        + json.dumps(data.get("closings") or {}, ensure_ascii=False)})
+    elif kind == "review":
+        content.append({"type": "text", "text": REVIEW})
     import vocabulary_rule
     lesson_dir = Path(scr["lesson_dir"]) if scr.get("lesson_dir") else Path(data["screens_path"]).parents[3]
     if vocabulary_rule.is_vocabulary(lesson_dir) and not scr.get("section", {}).get("intro"):
@@ -939,6 +1032,11 @@ def build_messages(data: dict, rewrite: dict | None = None, chunk: dict | None =
                 b.get("vocab") or b.get("vocab_table") or (b.get("question") or {}).get("options")
                 for t in scr["topics"] for h in t["thoughts"] for b in h["blocks"]):
             content.append({"type": "text", "text": reading_rule.NARRATION_PART_B})   # 1.15
+        if reading_rule.is_part_c(lesson_dir) and not scr.get("section", {}).get("intro"):
+            content.append({"type": "text", "text": reading_rule.NARRATION_SIGNALS})  # 1.17
+            if any(b.get("vocab") or b.get("vocab_table") or (b.get("question") or {}).get("options")
+                   for t in scr["topics"] for h in t["thoughts"] for b in h["blocks"]):
+                content.append({"type": "text", "text": reading_rule.NARRATION_PART_C})
     if rewrite:
         content.append({"type": "text", "text":
             "STATES TO REWRITE: " + ", ".join(rewrite["ids"]) + ". Their current "
@@ -991,6 +1089,7 @@ def with_ids(states: list[dict]) -> list[dict]:
 # one. Each part is kept (raw_response.part-N.json, counted in the spend); the
 # joined reply carries no usage of its own, so nothing is counted twice.
 CHUNK_BOARDS = 10
+CHUNK_STATES = 45            # a part's states at most, about (Part B's largest: 51 in 43k output)
 
 
 def chunk_plan(data: dict) -> list[list[str]]:
@@ -1001,7 +1100,23 @@ def chunk_plan(data: dict) -> list[list[str]]:
     if len(ids) <= CHUNK_BOARDS:
         return [ids]
     size = math.ceil(len(ids) / math.ceil(len(ids) / CHUNK_BOARDS))
-    return [ids[i:i + size] for i in range(0, len(ids), size)]
+    weight = {b["id"]: len(b.get("states") or ()) or 1 for b in data["screens"]["boards"]}
+    if sum(weight.values()) <= CHUNK_STATES * math.ceil(len(ids) / size):
+        return [ids[i:i + size] for i in range(0, len(ids), size)]
+    # a section whose boards are heavy (a Reading Part C text: a question board has
+    # fifteen or more states) is sized by its states, so no part nears the output
+    # cap: consecutive runs of about CHUNK_STATES states each, never more boards
+    # than CHUNK_BOARDS in one
+    n = math.ceil(sum(weight.values()) / CHUNK_STATES)
+    target = sum(weight.values()) / n
+    runs, cur, w = [], [], 0
+    for i in ids:
+        if cur and (w + weight[i] > target * 1.15 or len(cur) >= CHUNK_BOARDS):
+            runs.append(cur)
+            cur, w = [], 0
+        cur.append(i)
+        w += weight[i]
+    return runs + ([cur] if cur else [])
 
 
 def draft(lesson: Path, pages: list[int], data: dict) -> None:
@@ -1328,9 +1443,16 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
 
     def stays(bid: str) -> bool:
         """A pinned practice-set question: on its board from its reveal to the
-        board's end, marked and its parts revealed in later states (1.15)."""
+        board's end, marked and its parts revealed in later states (1.15); an
+        attitude scale likewise (1.17)."""
         b = blocks.get(bid) or {}
-        return bool(b.get("pin") and b.get("question"))
+        return bool(b.get("pin") and (b.get("question") or b.get("type") == "scale"))
+
+    # a Reading Part C lesson (bundle 1.17): the opinion-signal marks are its only
+    part_c_lesson = False
+    if data.get("lesson_id", "").startswith("reading"):
+        import reading_rule
+        part_c_lesson = reading_rule.is_part_c(Path(data["screens_path"]).parents[3])
 
     def parts_of(bid: str) -> list[str]:
         b = blocks.get(bid)
@@ -1372,6 +1494,7 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
         pinned_shown: list[str] = []
         pinned_parts_done: list[str] = []
         veil_of = {x["id"]: x.get("veil") for x in sb.get("states", [])}
+        view_of = {x["id"]: x["view"] for x in sb.get("states", []) if x.get("view")}    # 1.17
         last_revealed: list[str] = []
         for s in bd["states"]:
             pinned_shown += [i for i in last_revealed if stays(i) and i not in pinned_shown]
@@ -1483,6 +1606,29 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                     elif typ in MARK_TYPES:
                         if typ in MATCH_TYPES and not data.get("lesson_id", "").startswith("reading"):
                             fail(uid, f"{typ} is a Reading lesson's keyword pair (ADR 026)")
+                        if typ in SIGNAL_TYPES and not part_c_lesson:
+                            fail(uid, f"{typ} is a Reading Part C lesson's opinion-signal mark (ADR 026, 1.17)")
+                        view = view_of.get(s["id"])
+                        if view is not None and typ == "match3":
+                            fail(uid, "match3 on a Part C question board: its yellow is too close to the amber "
+                                      "highlight that marks what is read; use match1 or match2")
+                        if view is not None and blk == sb.get("table"):
+                            shown = " ".join((blocks[blk].get("rows") or [[""]])[r][0] for r in view["rows"]
+                                             if r < len(blocks[blk].get("rows") or []))
+                            if view["map"]:
+                                fail(uid, f"{typ} on {blk} in {s['id']}: the text is a map there, too small to "
+                                          "read; nothing is marked in it (bundle 1.17)")
+                            elif (c.get("text") or "") not in shown:
+                                fail(uid, f"{typ} on {c.get('text')!r}: not in the paragraph shown in {s['id']} "
+                                          f"(paragraph {', '.join(str(r + 1) for r in view['rows'])})")
+                        qb = blocks.get(blk) or {}
+                        if (qb.get("question") or {}).get("options_later") \
+                                and f"{blk}.1" not in pinned_parts_done + parts_done:
+                            phr = c.get("text") or ""
+                            if phr and phr not in (qb.get("text") or "") and any(
+                                    phr in o["text"] for o in qb["question"]["options"]):
+                                fail(uid, f"{typ} on an option of {blk} before the options appear "
+                                          f"({blk}.1): QTA reads the paragraph first")
                         targets = [(blk, c.get("text"))]
                         named = {0: (c.get("row"), c.get("col"))}     # a cell named by override (1.6)
                         if typ == "arrow":
@@ -1574,7 +1720,8 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                 for bid in list(bd["fixed"]) + list(s["working"]) + list(pinned_shown):
                     rb = blocks.get(bid) or {}
                     if rb.get("doc") or rb.get("question") or rb.get("vocab") or rb.get("vocab_table"):
-                        for t in block_texts(rb):
+                        # longest first: a gloss's word must not break the match of its example
+                        for t in sorted(block_texts(rb), key=len, reverse=True):
                             own = own.replace(t.lower().rstrip("."), " ")
                 for p in forbids:
                     if p.lower() in (low if p in data["forbids"] else own):
@@ -1594,7 +1741,8 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                     # taught ("rarely" among the signal words of page 14), not a
                     # claim; the same exemption the screens audit gives slide
                     # words. Found in any block of this state's board.
-                    on_board = " ".join(t for bid in list(fixed) + working
+                    # (a pinned question shown in an earlier state too: its options, 1.15)
+                    on_board = " ".join(t for bid in list(fixed) + working + list(pinned_shown)
                                         for t in block_texts(blocks[bid]) if bid in blocks).lower()
                     # ...and so is a word of the section title on the header.
                     # An utterance carrying a maintainer ruling that makes the
@@ -1761,6 +1909,45 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
             if same_sentence(first, sent):
                 fail("intro", f"the introduction opens with the same sentence as {other}: "
                               f"{first!r}")
+    # A closing (ADR 014 amendment of 2026-10-08): about 30 to 60 seconds, one
+    # board, a goodbye that is not another lesson's; a method review about
+    # five minutes (ADR 018 amendment of the same day)
+    kind = data["screens"].get("section", {}).get("kind")
+    if kind in ("closing", "review"):
+        said_all = [spoken(u["text_with_cues"]) for bd in boards for s in bd["states"]
+                    for u in s["utterances"]]
+        n_words = sum(len(x.split()) for x in said_all)
+    if kind == "closing":
+        if len(boards) != 1:
+            fail("closing", f"a closing is one board; this one has {len(boards)}")
+        if n_words > 180:
+            fail("closing", f"the closing is {n_words} words; about 30 to 60 seconds is 70 to 140")
+        elif not 60 <= n_words <= 150:
+            warn("closing", f"the closing is {n_words} words; about 30 to 60 seconds is 70 to 140")
+        from build_course_index import same_sentence
+        last = sentences(" ".join(said_all))[-2:] if said_all else []
+        for other, text in (data.get("closings") or {}).items():
+            theirs = sentences(text)[-3:]
+            for a in last:
+                if any(same_sentence(a, b) for b in theirs):
+                    fail("closing", f"the closing's goodbye is {other}'s: {a!r}")
+    # Question numbers (ADR 026 amendment of 2026-10-08): a number spoken is
+    # one the board shows; on a board that shows none, one the lesson teaches
+    import question_numbers
+    taught = question_numbers.lesson_numbers(blocks)
+    lesson_dir = Path(data["screens"]["lesson_dir"]) if data["screens"].get("lesson_dir")         else Path(data["screens_path"]).parents[3]
+    import practice_set
+    ps = practice_set.load(lesson_dir) if (lesson_dir / "analysis").exists() else None
+    if ps and ps.get("numbering") == "lesson":
+        taught = list(range(1, len(ps["lesson_items"]) + 1))
+    elif ps and taught:
+        # a lesson numbered by the release (Reading 2 and 3): any number of the set
+        taught = sorted(i["number"] for i in practice_set.items(ps).values())
+    for bd in boards:
+        for f in question_numbers.board_findings(bd, blocks, taught):
+            fail(f["where"], f["what"])
+    if kind == "review" and not 450 <= n_words <= 950:
+        warn("review", f"the method review is {n_words} words; about five minutes is 550 to 800")
     findings += gloss_moment_findings(boards, blocks)
     # No lesson count and no list of the other lessons, in any lesson: the course
     # is still growing (ADR 014 amendment, maintainer 2026-09-27)
@@ -1814,6 +2001,8 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                     continue
                 for u in s["utterances"]:
                     qs = check_doc_marks.questions_of(check_doc_marks.board_blocks(sb or bd), blocks)
+                    if check_doc_marks.part_c_board(check_doc_marks.board_blocks(sb or bd), blocks):
+                        qs += check_doc_marks.notes_of(list(bd["fixed"]) + list(working), blocks)   # 1.17
                     for x in check_doc_marks.utterance_quotes(u["text_with_cues"], u["cues"], docs, qs)[1]:
                         fail(u["id"], f"reads {x} from the text with no mark on those words: put a "
                                       "highlight or keyword-pair cue on them, just before they are said")

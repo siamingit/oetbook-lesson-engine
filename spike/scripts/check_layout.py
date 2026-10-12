@@ -109,8 +109,12 @@ HARNESS = r"""
         if (blocks[id] && blocks[id].map) continue;
         // a Part B text's lens moves its words inside its frame by design (1.15)
         if (el.classList.contains("lens-frame")) continue;
+        // a Part C text (1.17) is shown as a map or as a paragraph, by design: its
+        // words are held still within each view, never between two views
+        const vk = el.classList.contains("pc-map") ? "map|"
+          : el.classList.contains("pc-para") ? "para:" + [...el.querySelectorAll("tbody tr.pc-in")].map(r => r.dataset.row).join(",") + "|" : "";
         for (const [n, word, x, y] of tokens(el)) {
-          const key = id + "|" + n;
+          const key = id + "|" + vk + n;
           const was = seen.get(key);
           if (!was) { seen.set(key, [x, y, t, word]); continue; }
           if ((Math.abs(was[0] - x) > TOL || Math.abs(was[1] - y) > TOL) && !moved.has(key)) {

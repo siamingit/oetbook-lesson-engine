@@ -4,7 +4,7 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.16 for a Reading Part B lesson, 1.14 for a Reading lesson with a map of its texts, 1.13 for another Reading lesson, 1.12 for every other lesson. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.17 for a Reading Part C lesson, 1.16 for a Reading Part B lesson, 1.14 for a Reading lesson with a map of its texts, 1.13 for another Reading lesson, 1.12 for every other lesson. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
 2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
 table boards, on 2026-09-25 (docs/adr/007-table-boards.md); 1.3, the board style
@@ -43,6 +43,7 @@ A change to it is a new format version (§3), recorded in a new ADR.
 | 1.13 | 2026-10-05 | Reading lessons only: a core `table` block's `doc` (a practice-set text drawn as a document) and a `plain` block's `question` (a practice-set question), both null on every other block of the lesson; the mark cue types `match1`, `match2`, `match3` (keyword pairs); rules 29 and 30; `blocks.css` adds the documents' and questions' rules (ADR 026) |
 | 1.15 | 2026-10-06 | a Reading Part B lesson only (ADR 026, the Part B question method and the vocabulary layer): a question block's `question.options` and its parts (`items` kinds `out`, `key`), revealed in later states and kept in the board's `reveal`; a state's `veil` (the text covered); a gloss's `synonym` (part kind `synonym`), `audio` and `lexicon`; a table's `vocab_table`; document types `procedure`, `manual`, `notice`; rules 32 to 34; `blocks.css` adds the Part B rules. Additive: a 1.14 renderer shows the options, the gloss's synonym and the button, and draws the text uncovered |
 | 1.14 | 2026-10-06 | a lesson with a map of its texts only (ADR 026, the Part A question method): a core `table` block's `map` (the four texts as one table, each starting at its own row), null on every other block; on a map board, a state's `doc` and `zoom`; rule 31; `blocks.css` adds the map's rules. Additive: a 1.13 renderer that ignores `map`, `doc` and `zoom` draws a map as a table of every part |
+| 1.17 | 2026-10-08 | a Reading Part C lesson only (ADR 026, the Part C question method amendment of 2026-10-08): a state's `view` on a Part C question board (the text as a map or the paragraph read, whole); the block type `scale` (an attitude scale; its `items` kinds `marker`, `out`, `key`); a question's `options_later` (its first part, kind `options`, shows the options) and `target`; a doc part's `bold`; a `vocab_table` kind `recap_grouped` with `groups`; the mark cue types `sig_opinion`, `sig_hedge`, `sig_judge`, `sig_main`, `sig_aside`; rules 37 to 40; `blocks.css` adds the Part C rules. Additive: a 1.16 renderer draws the text whole, the options from the start and no signal marks |
 | 1.16 | 2026-10-08 | a Reading Part B lesson only (ADR 026, 2026-10-08 amendment): a question board in two columns, the extract whole, replacing 1.15's lens: a board's `split`; a state's `overlay` (glosses drawn over the question column), a gloss's going as a `clears` entry; the board's `focus` with no row until the whole extract has shown; `lens` and `lens_from` no longer written; rule 36 (rule 35 is 1.15 only); `blocks.css` adds the whole extract's spotlight. Minor: a 1.15 renderer finds no `lens` and draws the board as a table board, every block in one flow |
 
 ---
@@ -172,7 +173,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.12"`; `"1.13"` for a Reading lesson; `"1.14"` for a lesson with a map of its texts; `"1.16"` for a Reading Part B lesson (`"1.15"` for one built before 2026-10-08) |
+| `format_version` | string | `"1.12"`; `"1.13"` for a Reading lesson; `"1.14"` for a lesson with a map of its texts; `"1.16"` for a Reading Part B lesson (`"1.15"` for one built before 2026-10-08); `"1.17"` for a Reading Part C lesson |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -226,11 +227,11 @@ A block is one thing on a board. Each carries its data and its rendered `html`.
 | Field | Meaning |
 |---|---|
 | `id` | block id |
-| `type` | `plain`, `error_row`, `answer_row`, `term_box`, `comparison`, `callout`, `category_card`, `timeline`, `table`, `clauses` (1.7), `gloss` (1.10), `picture` (1.12), `contents_item`, `lesson_title` (docs/02-DESIGN-SYSTEM.md §7) |
+| `type` | `plain`, `error_row`, `answer_row`, `term_box`, `comparison`, `callout`, `category_card`, `timeline`, `table`, `clauses` (1.7), `gloss` (1.10), `picture` (1.12), `scale` (1.17), `contents_item`, `lesson_title` (docs/02-DESIGN-SYSTEM.md §7) |
 | `text` | the text of `plain`, `error_row`, `answer_row`, `callout`, `category_card` (body), `contents_item` (the category; in a lesson with no contents slide, the section's title, and its `explanation` is null), `lesson_title` |
 | `label` | a small label: `term_box` ("NEW WORD"; "WORD" marks a gloss of a hard general word, which the reference player draws on one line as "term (= explanation)", docs/02-DESIGN-SYSTEM.md §7b), `comparison`, `category_card` (header), `timeline`; on a `contents_item`, its number |
 | `term`, `explanation` | `term_box`; `explanation` also carries a `contents_item`'s section list |
-| `left`, `right` | `comparison` |
+| `left`, `right` | `comparison`; 1.17, `scale`: the labels of its negative and positive ends (its `text` the middle label) |
 | `family` | tense family, `past`, `past_to_now`, `now`, `future`: `category_card`, `timeline`, `table` header |
 | `col_families` | `table`: one family (or null) per header column |
 | `kind` | `callout`: `warning` or `key_rule` |
@@ -250,14 +251,15 @@ A block is one thing on a board. Each carries its data and its rendered `html`.
 | `verdicts` | 1.6. A choice table (a core `table` whose rows offer versions of one sentence to choose between): each body cell's verdict, `[{row, col, verdict}]`, `verdict` `right`, `wrong` or `possible` (also acceptable, or correct only in some context). Null for any other table |
 | `beside` | 1.2. a side note on a table board: `{block, row}`, the table and the row it is about (from 0), or row null for a note about the whole table; otherwise null. 1.12: drawn under the table, never over it; the row is shown by the spotlight (`focus`), not by where the note sits (rule 12). A board's picture on a table board carries it with row null |
 | `doc` | 1.13, Reading lessons. A core `table` that is a practice-set text: `{stimulus, label, title, text_type, parts}`. `stimulus` is its id in the exercises release, `label` ("Text B") and `title` as released, `text_type` (`table`, `guideline`, `protocol`, `notes`; Parts B and C add `email`, `memo`, `policy`, `extract`), and `parts` one `{kind, mark}` per row: `heading`, `para`, `bullet`, `num` (`mark` its number), `thead` and `trow` (a row of a table inside the text, its cells joined by " \| " in the row's text). The table has one column; its `header` is the label and title; each row's text is the released line, its list marker drawn by the stylesheet (rule 29). Null on any other block |
-| `question` | 1.13, Reading lessons. A `plain` block that is a practice-set question: `{item, kind, max_words}`, `item` its id in the exercises release (`oa-reading-000014`), `kind` `matching`, `short-answer` or `sentence-completion`; the block's `text` is the question as released (a matching item's lead-in and stem), `exercise_item` its number. Null on any other block |
+| `question` | 1.13, Reading lessons. A `plain` block that is a practice-set question: `{item, kind, max_words}`, `item` its id in the exercises release (`oa-reading-000014`), `kind` `matching`, `short-answer` or `sentence-completion`; the block's `text` is the question as released (a matching item's lead-in and stem), `exercise_item` its number (from Reading Part C (1) on, its number in the lesson, from 1 in the order taught, never the release's: ADR 026 amendment of 2026-10-08; no new field). Null on any other block. 1.17, a Part C question: `options_later` true (its options are its first part, kind `options`, shown only from that part's reveal) and `target`, the in-context words its stem prints in bold, where it has them |
 | `map` | 1.14. A core `table` that is a map of a practice set's texts (ADR 026, Part A question method): `{docs}`, one entry per text in order, `{stimulus, label, title, text_type, parts, header, first, count}`: the text as `doc` gives it (rule 29), its header line, and the table's rows it holds, `first` (from 0) and `count`. The table's `rows` are every text's parts in that order, each the released line; its `header` is a label for the whole. Null on any other block |
 | `synonym` | 1.15. A word-bank `gloss`: one synonym from the word bank, shown under the meaning (part kind `synonym`) |
 | `audio` | 1.15. A word-bank `gloss`: `{file, seconds}`, the word bank's pronunciation clip (an MP3), relative to the bundle's folder; played only when the learner taps the gloss's button (rule 34) |
 | `lexicon` | 1.15. A word-bank `gloss`: the word's `lx:` ID in the exercises repository's word bank (provisional; read from `<library>/course/vocab-ids.json` at build time) |
-| `vocab_table` | 1.15. A core `table` built from the word bank: `{kind, lexicon}`, `kind` `match` (word-to-meaning matching: meanings in another order) or `recap`, `lexicon` the `lx:` IDs of its rows in order |
+| `vocab_table` | 1.15. A core `table` built from the word bank: `{kind, lexicon}`, `kind` `match` (word-to-meaning matching: meanings in another order) or `recap`, `lexicon` the `lx:` IDs of its rows in order. 1.17: `kind` `recap_grouped`, one row per question (its number, then its words each with a synonym, separated by "; "), `lexicon` every word in order and `groups` `[[question number, [lx: ID, ...]], ...]`, a row's words |
+| `bold` | 1.17. In `doc.parts[]`: the phrases of that row the release prints in bold, in order (the release's markers are taken off the row's text); absent where there is none |
 | `size` | 1.12. `picture`: the side of its square box in cqh (hundredths of the frame's height), set where the fit made it smaller so the board fits, never below 10; null for 20 (rule 27) |
-| `items` | `timeline`: its diagram parts in order (below). 1.7, `clauses`: its parts in order, `{kind, text, piece, part}`: `kind` `dependent` or `independent` (a piece, `text` its words), `glue` (the joining word; `piece` the piece it is in, from 1, or null for a bridge between two independent pieces), `subject` or `verb` (a label over `text` in `piece`), or `join`; 1.9: `defining` or `nondefining` (a relative clause set into the independent `piece`, `text` its words without its commas), `remove` (the removal test: `text` the sentence without the clause, `keeps` true when it still works), `link` or `dangling` (`text` a participle in the dependent `piece`, `from` the part number of the main clause's `subject`); the part id is `<block id>.<part>` |
+| `items` | 1.17, `scale`: its parts in order, `{kind, option, at, part}`: `marker` (the view the evidence read so far points to, at `at` on 0-100 from the negative end), `out` or `key` (option `option`'s place at `at`, struck or ticked). `timeline`: its diagram parts in order (below). 1.7, `clauses`: its parts in order, `{kind, text, piece, part}`: `kind` `dependent` or `independent` (a piece, `text` its words), `glue` (the joining word; `piece` the piece it is in, from 1, or null for a bridge between two independent pieces), `subject` or `verb` (a label over `text` in `piece`), or `join`; 1.9: `defining` or `nondefining` (a relative clause set into the independent `piece`, `text` its words without its commas), `remove` (the removal test: `text` the sentence without the clause, `keeps` true when it still works), `link` or `dangling` (`text` a participle in the dependent `piece`, `from` the part number of the main clause's `subject`); the part id is `<block id>.<part>` |
 | `tags` | tense tags: `[{text, family, label}]`; `label` is what the chip says ("up to now") |
 | `exercise_item` | the item number an exercise sentence carries in its badge, or null |
 | `provenance` | `source-derived`, `adapted`, `corrected`, `authored` or `maintainer` (AGENTS.md §9). For review; the student is not shown it |
@@ -321,6 +323,7 @@ two things must hold, because cues and the reading pointer depend on them:
 | `row` | 1.2. On a table board, the row this state teaches (from 0), or null for the whole table; null on other boards |
 | `doc` | 1.14. On a map board (its `table` has `map`): the text in view, its index in `map.docs`, or null for all four. Absent on other boards |
 | `veil` | 1.15. On a Part B question board: true while the text (the board's `table`) is covered, false once it appears. Absent on other boards |
+| `view` | 1.17. On a Part C question board: `{map, rows}`: `map` true shows the whole text as a map, too small to read, `rows` (from 0) the paragraph marked on it, or none; `map` false shows only the paragraphs `rows`, whole (rule 37). Absent on other boards |
 | `overlay` | 1.16. On a Part B question board (one with `split`): the working blocks of this state, glosses only, drawn over the foot of the question column because they do not fit in it beside the question (rule 36); empty when none. Absent on other boards |
 | `zoom` | 1.14. On a map board: null (the four texts small; with `doc`, the others dimmed), `"doc"` (that text alone, at a document's size) or `"row"` (the state's `row` of that text set larger, in the middle of the map's frame). Absent on other boards |
 | `clears` | 1.8. `[{time, blocks}]` in time order: from `time`, the working `blocks` are cleared (not drawn) for the rest of the state, so the note revealed at `time` fits the board (ADR 011). 1.16: also a gloss in the state's `overlay`, at the moment before anything of the question under it is read or marked. Never a pinned block. Empty when nothing is cleared |
@@ -363,7 +366,7 @@ with the bundle.
 | Field | Meaning |
 |---|---|
 | `id` | cue id, within the utterance |
-| `type` | `reveal`, `pause`, `type` (1.2), or a mark: `underline`, `highlight`, `circle`, `strike`, `bracket`, `point`, `arrow`, `replace` (docs/02-DESIGN-SYSTEM.md §8); 1.13, Reading lessons: `match1`, `match2`, `match3`, a keyword pair (rule 30) |
+| `type` | `reveal`, `pause`, `type` (1.2), or a mark: `underline`, `highlight`, `circle`, `strike`, `bracket`, `point`, `arrow`, `replace` (docs/02-DESIGN-SYSTEM.md §8); 1.13, Reading lessons: `match1`, `match2`, `match3`, a keyword pair (rule 30); 1.17, Reading Part C lessons: `sig_opinion`, `sig_hedge`, `sig_judge`, `sig_main`, `sig_aside`, an opinion-signal mark (rule 38) |
 | `time` | when it takes effect: a lead before its word, or for a pause the end of the utterance |
 | `time_end` | the end of its word; for a pause, the end of the silence; for a `type`, the end of the typing |
 | `retargeted_from` | 1.3. Not in the bundle: a cue on a folded block names the block it is folded into, with its phrase as that block writes it, and a cue on a change card names the phrase without its word class ("Analysis", not "Analysis (noun)") |
@@ -574,6 +577,38 @@ These are the only rules. Every time and target they use is in the bundle.
     there); the text's column narrowed where the other column does not hold its
     blocks at every moment; as a last resort that other column set smaller, to
     the same floor. Nothing scrolls (2026-10-08; no data change).
+
+37. **A Part C question board** (1.17): a board with `split` whose states carry `view`
+    is drawn in two columns as rule 36 says, its table (the practice-set text) in the
+    first. Where the state's `view` has `map` true, the whole text is drawn at the
+    largest size at which it fits its column whole (too small to read; the table floor
+    does not apply), the rows of `rows` marked and the others faded. Where `map` is
+    false, only the rows of `rows` are drawn, whole, at the table's `font`, with a
+    position cue in the header ("Paragraph 3 of 7", a stylesheet attribute, never a
+    word), and nothing scrolls; a renderer whose fonts or frame leave less room keeps
+    each paragraph view whole as rule 36's guard does, measuring every view the board
+    has. The question's options (`options_later`) are shown from the reveal of its part
+    of kind `options`, their room taken from the start of the state in which that
+    part is revealed (as a pinned block's, rule 21), never before, with the room of
+    its reason labels, so an option's words never move once shown (docs/02-DESIGN-SYSTEM.md §8a). Words of the text move between
+    the map and a paragraph by design (rule 19 holds within each view).
+38. **An opinion-signal mark** (1.17): `sig_opinion`, `sig_hedge`, `sig_judge` and
+    `sig_main` are drawn as an underline under `text` in indigo `#2B006B`, teal
+    `#006B60` (dashed), maroon `#6B0020` (dotted) or brown `#6B4B00` (with end ticks)
+    respectively, with a small label above the phrase's first line, white on the same
+    colour: "opinion word", "hedge", "judgement", "main clause"; `sig_aside` dims its
+    phrase under a white veil, with no label. A block that any of these marks names is
+    set with line height 1.75 for its whole board, so a label lies between two lines and
+    nothing moves when it comes.
+39. **An attitude scale** (1.17): a `scale` block is a line labelled `left`, `text` and
+    `right`, at its two ends and its middle; its parts are revealed by rule 5 (a pinned
+    scale keeps them, with its board's `reveal`, to the board's end). Of its `marker`
+    parts only the latest revealed shows, at `at` per cent along the line; an `out` part
+    shows option `option`'s letter at `at`, struck, and a `key` part ticked. Letters are
+    attributes, never words; every part's room is kept from the start.
+40. **Bold in a released text** (1.17): a doc part's `bold` phrases and a question's
+    `target` are set in the medium weight where they first occur in the row or the stem;
+    only the type changes, never a word.
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and

@@ -159,6 +159,20 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
 #marks .m-match1 { background: rgba(6, 136, 249, .55); mix-blend-mode: multiply; border-radius: .3cqh; }
 #marks .m-match2 { background: rgba(168, 96, 251, .55); mix-blend-mode: multiply; border-radius: .3cqh; }
 #marks .m-match3 { background: rgba(249, 232, 6, .55); mix-blend-mode: multiply; border-radius: .3cqh; }
+/* opinion-signal marks (ADR 026, Part C; bundle 1.17): an underline in the
+   kind's colour, its pattern its own, with a small label above the words, so
+   colour never carries the meaning alone; a subordinate clause is dimmed */
+#marks .m-sig { border-radius: 1px; }
+#marks .m-sig.sig_opinion { background: #2B006B; }
+#marks .m-sig.sig_hedge { background: repeating-linear-gradient(90deg, #006B60 0 .9em, transparent .9em 1.25em); }
+#marks .m-sig.sig_judge { background: repeating-linear-gradient(90deg, #6B0020 0 .35em, transparent .35em .6em); }
+#marks .m-sig.sig_main { background: #6B4B00; }
+#marks .m-sigtick { background: #6B4B00; }
+#marks .m-aside { background: rgba(255, 255, 255, .55); }
+#marks .m-siglab { white-space: nowrap; line-height: 1.15; color: #fff; padding: 0 .45em; border-radius: .7em;
+                   font-weight: 500; letter-spacing: .01em; }
+#marks .m-siglab.sig_opinion { background: #2B006B; } #marks .m-siglab.sig_hedge { background: #006B60; }
+#marks .m-siglab.sig_judge { background: #6B0020; } #marks .m-siglab.sig_main { background: #6B4B00; }
 #marks .m-line { background: #185FA5; border-radius: 1px; }
 #marks .m-strike { background: #E24B4A; border-radius: 1px; }
 #marks .m-circle { border: max(1px, .28cqh) solid #185FA5; border-radius: 999px; }
@@ -359,6 +373,11 @@ for (const bd of boards) {
   }
 }
 
+// 1.17: the blocks an opinion-signal mark names (their lines keep room for its label)
+const SIG_BLOCKS = new Set();
+for (const bd of boards) for (const s of bd.states) for (const u of s.utterances)
+  for (const c of u.cues) if (/^sig_/.test(c.type) && c.block) SIG_BLOCKS.add(c.block);
+
 // A part is shown while its block is shown, from its reveal time.
 function drawParts(bd, s, t, jumped) {
   for (const [id, el] of blockEls) {
@@ -397,6 +416,9 @@ function drawBlock(id, fixed, s) {
   if (fixed) el.classList.add("on");
   el.dataset.layer = fixed ? "fixed" : "working";
   if (!fixed && blocks[id].beside) el.classList.add("beside");
+  // 1.17: a block an opinion-signal mark names keeps room between its lines for
+  // the mark's label, from the board's start, so nothing moves when it comes
+  if (SIG_BLOCKS.has(id)) el.classList.add("opx");
   // 1.16: a gloss drawn over the question column's foot, where it does not fit
   // beside the question of a Part B question board (a state's `overlay`)
   if (s && (s.overlay || []).includes(id)) el.classList.add("over");
@@ -483,6 +505,7 @@ function settleBoard(bd) {
   note();
   for (const st of bd.states) {
     pinRoom(bd, st);
+    optRoom(bd, st);                     // 1.17: the options' room, as in that state
     const tmp = st.working.filter(id => !(bd.pinned && id in bd.pinned)).map(id => [id, drawBlock(id, false, st)]);
     prewrap(bd);
     note();
@@ -498,7 +521,8 @@ function holdPlaces(bd) {
   kept.sort((a, b) => topIn(a[1]) - topIn(b[1]));
   for (const [id, el] of kept) {           // each push moves the ones after it too
     const d = (bd._places && bd._places.has(id) ? bd._places.get(id) : topIn(el)) - topIn(el);
-    if (d > 0.05) el.style.marginTop = d + "px";
+    // a block the guard set smaller (CSS zoom) scales its own margin too
+    if (d > 0.05) el.style.marginTop = d / (parseFloat(el.style.zoom) || 1) + "px";
   }
 }
 
@@ -746,8 +770,18 @@ function markBoxes(type, r, t) {
                                   { cls: "m-tick", x: r.left, y: r.bottom - .42 * h, w: t, h: .44 * h + t },
                                   { cls: "m-tick", x: r.right - t, y: r.bottom - .42 * h, w: t, h: .44 * h + t }];
   if (type === "replace") return [{ cls: "m-strike", x: r.left, y: r.top + .55 * h - t / 2, w: r.width, h: t }];
+  // 1.17: an opinion signal's underline (the main clause's with end ticks, as a
+  // bracket), or a subordinate clause dimmed under a white veil
+  if (type === "sig_aside") return [{ cls: "m-aside", x: r.left - .04 * em, y: r.top, w: r.width + .08 * em, h }];
+  if (type === "sig_main") return [{ cls: "m-sig sig_main", x: r.left, y: r.bottom + .02 * h, w: r.width, h: t * 1.2 },
+                                   { cls: "m-sigtick", x: r.left, y: r.bottom - .38 * h, w: t, h: .4 * h + t },
+                                   { cls: "m-sigtick", x: r.right - t, y: r.bottom - .38 * h, w: t, h: .4 * h + t }];
+  if (SIG_LABELS[type]) return [{ cls: "m-sig " + type, x: r.left, y: r.bottom - .02 * h, w: r.width, h: t * 1.4 }];
   return [];
 }
+// 1.17: each opinion signal's label, drawn above its first line in the room
+// the block keeps between its lines (`opx`)
+const SIG_LABELS = { sig_opinion: "opinion word", sig_hedge: "hedge", sig_judge: "judgement", sig_main: "main clause" };
 // The nearest visible character before and after a mark's phrase, in its
 // block: a ring stops short of the neighbouring words (§8, never touching).
 function neighbourEdges(m) {
@@ -797,6 +831,16 @@ function positionMarks() {
           marksEl.appendChild(d);
         }
       }
+    }
+    if (SIG_LABELS[m.type] && first) {
+      // the label, above the first line of the phrase, in the line gap kept for it
+      const fs = first.height / 1.2 * .42;
+      const d = document.createElement("div");
+      d.dataset.mk = mi;
+      d.className = "m-siglab " + m.type;
+      d.textContent = SIG_LABELS[m.type];
+      d.style.cssText = "left:" + first.left + "px;top:" + (first.top - fs * 1.18) + "px;font-size:" + fs + "px";
+      marksEl.appendChild(d);
     }
     if (m.type === "replace" && first && m.with) {
       const d = document.createElement("div");
@@ -961,6 +1005,84 @@ function applyFocus(bd, t) {
 function isMapBoard(bd) { return !!(bd && bd.table && blocks[bd.table] && blocks[bd.table].map); }
 // 1.16: a Part B question board in two columns (its `split`), the extract whole
 function isQBoard(bd) { return !!(bd && bd.table && bd.split); }
+// 1.17: a Part C question board, two columns as Part B's; each state's `view`
+// shows the text as a map (every paragraph, too small to read, the answer's
+// paragraph marked) or the paragraph(s) read, whole, with a position cue
+function isPCBoard(bd) { return isQBoard(bd) && bd.states.some(s => s.view); }
+function viewOf(bd, s) {
+  if (s && s.view) return s.view;
+  const first = bd.states.find(x => x.view);
+  return first ? first.view : null;
+}
+function paraViews(bd) {
+  const seen = new Set(), out = [];
+  for (const s of bd.states) if (s.view && !s.view.map) {
+    const k = s.view.rows.join(",");
+    if (!seen.has(k)) { seen.add(k); out.push(s.view); }
+  }
+  return out;
+}
+// the size a paragraph is set at: the guard's, else the fit's (the table's `font`)
+function paraFont(bd) { return bd._guard ? bd._guard.font : (blocks[bd.table].font || 3.2); }
+function setView(bd, el, v, font) {
+  el.classList.toggle("pc-map", !!v.map);
+  el.classList.toggle("pc-para", !v.map);
+  const trs = el.querySelectorAll("tbody tr");
+  for (const tr of trs) {
+    const r = +tr.dataset.row;
+    tr.classList.toggle("pc-in", !v.map && v.rows.includes(r));
+    tr.classList.toggle("pc-here", !!v.map && v.rows.includes(r));
+  }
+  const th = el.querySelector("thead th");
+  if (th) {
+    if (v.map) th.removeAttribute("data-pos");
+    else th.dataset.pos = (v.rows.length > 1 ? "Paragraphs " + (v.rows[0] + 1) + " and " + (v.rows[v.rows.length - 1] + 1)
+                                              : "Paragraph " + (v.rows[0] + 1)) + " of " + trs.length;
+  }
+  if (v.map) mapFont(bd, el); else el.style.setProperty("--tf", (font || paraFont(bd)) + "cqh");
+}
+// the map: the whole text at the largest size at which it fits its column, too
+// small to read on purpose; measured on the device, like the guard
+function mapFont(bd, el) {
+  const key = guardKey() + "|" + camEl.style.getPropertyValue("--split") + "|" + (el.style.zoom || "");
+  if (bd._mapFont && bd._mapFont.key === key) { el.style.setProperty("--tf", bd._mapFont.f + "cqh"); return; }
+  const A = guardArea();
+  const over = f => { el.style.setProperty("--tf", f + "cqh"); return el.getBoundingClientRect().bottom - A.bottom > 0.5; };
+  let lo = 0.3, hi = 3.2;
+  if (!over(hi)) lo = hi;
+  else for (let i = 0; i < 14; i++) { const mid = (lo + hi) / 2; if (over(mid)) hi = mid; else lo = mid; }
+  // a margin under the page: its last line ends inside the page's own edge too
+  const f = +(lo * 0.95).toFixed(3);
+  el.style.setProperty("--tf", f + "cqh");
+  bd._mapFont = { key, f };
+}
+// 1.17: a Part C question's options take room from the start of the state in
+// which they are revealed (as a pinned block does, rule 21), never before
+function optRoom(bd, s) {
+  if (!isPCBoard(bd)) return;
+  for (const [id, el] of blockEls) {
+    const q = blocks[id] && blocks[id].question;
+    if (!q || !q.options_later) continue;
+    const stateOf = at => at === undefined ? Infinity
+      : (bd.states.find(st => st.start <= at + 1e-6 && at < st.until + 1e-6) || { start: at }).start;
+    const from = stateOf(bd.reveal[id + ".1"]);
+    // the reason labels' room with them: an option's words never move once
+    // shown (docs/02-DESIGN-SYSTEM.md §8a)
+    el.classList.toggle("optroom", !!s && s.start >= from - 1e-6);
+    el.classList.toggle("rsnroom", !!s && s.start >= from - 1e-6);
+  }
+}
+function applyView(bd, s) {
+  if (!isPCBoard(bd)) return;
+  const el = blockEls.get(bd.table), tb = el && el.querySelector("tbody");
+  const v = viewOf(bd, s);
+  if (!tb || !v) return;
+  // kept on the table's body: drawing the marks may rebuild it
+  const key = JSON.stringify(v) + "|" + guardKey() + "|" + paraFont(bd);
+  if (tb._view === key) return;
+  tb._view = key;
+  setView(bd, el, v);
+}
 // a mark or the pointer under a gloss drawn over the question column (1.16) is
 // not drawn: the gloss hides that part of the question while it is shown
 function underOverlay(r, node) {
@@ -1023,10 +1145,22 @@ function guardSet(bd, split, font, zoom) {
   if (t) t.style.setProperty("--tf", font + "cqh");
   zoomCol = zoom; zoomSkip = bd.table;
   for (const [id, el] of blockEls) if (id !== bd.table) el.style.zoom = zoom === 1 ? "" : zoom;
+  // 1.17: a Part C board's held places depend on the column's width and size
+  if (isPCBoard(bd)) settleBoard(bd);
 }
 function extractOver(bd) {
-  const el = blockEls.get(bd.table), A = guardArea(), r = el.getBoundingClientRect();
-  return Math.max(r.bottom - A.bottom, A.top - r.top, el.scrollHeight - el.clientHeight);
+  const el = blockEls.get(bd.table), A = guardArea();
+  const one = () => { const r = el.getBoundingClientRect();
+    return Math.max(r.bottom - A.bottom, A.top - r.top, el.scrollHeight - el.clientHeight); };
+  if (!isPCBoard(bd)) return one();
+  // 1.17: a Part C text is shown a paragraph at a time: each view the board has
+  // must fit whole at the size set (the map scales itself to its column)
+  const font = parseFloat(el.style.getPropertyValue("--tf")) || paraFont(bd);
+  let worst = -Infinity;
+  for (const v of paraViews(bd)) { setView(bd, el, v, font); worst = Math.max(worst, one()); }
+  const tb = el.querySelector("tbody");
+  if (tb) tb._view = null;            // the state's own view is set again when it is drawn
+  return worst;
 }
 // how far the question column runs past the board at its worst moment: each
 // state, at its start, each reveal and each clear, the blocks shown then
@@ -1035,7 +1169,11 @@ function columnOver(bd) {
   let worst = -Infinity;
   for (const st of bd.states) {
     pinRoom(bd, st);
+    optRoom(bd, st);
     const tmp = st.working.filter(id => !(bd.pinned && id in bd.pinned)).map(id => [id, drawBlock(id, false, st)]);
+    // as drawn: a pinned block held at its lowest place on the board (a scale
+    // under a Part C question; 1.17), measured with the hold
+    if (isPCBoard(bd) && bd._places) holdPlaces(bd);
     const moments = [st.start, ...Object.values(st.reveal), ...(st.clears || []).map(c => c.time)]
       .filter(t => t >= st.start && t < st.until).sort((a, b) => a - b);
     for (const m of moments) {
@@ -1473,9 +1611,13 @@ function renderFrame(t) {
     const el = blockEls.get(id);
     if (el) el.classList.toggle("on", t >= at);
   }
+  // 1.17: the options' room, from their state; set before the marks, whose
+  // redraw holds each kept block at its place
+  optRoom(bd, s);
   applyMarks(s, t, erased);
   applyTyping(bd, t);
   const focus = applyFocus(bd, t);
+  applyView(bd, s);                  // 1.17: a Part C text as a map, or a paragraph whole
   applyLens(bd, s, jumped);
   applyDocLens(bd, s, focus, jumped, t);
   applyVerdicts(bd, t);

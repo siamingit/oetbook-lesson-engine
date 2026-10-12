@@ -302,6 +302,176 @@ text, the paraphrase bridge and the answer in its exact form, as on any \
 question board.\
 """
 
+# The opinion-signal marks (ADR 026, 2026-10-08 amendment; bundle 1.17), a Part
+# C lesson only: each kind its colour and a small text label drawn above the
+# words, so colour never carries the meaning alone. Chosen by measured
+# difference (CIEDE2000): 28.8 or more from each other, from the keyword pairs,
+# the amber highlight, red, green, their tints and the marks' blue.
+SIGNAL_TYPES = {"sig_opinion": ("#2B006B", "opinion word"), "sig_hedge": ("#006B60", "hedge"),
+                "sig_judge": ("#6B0020", "judgement"), "sig_main": ("#6B4B00", "main clause")}
+# a subordinate clause beside the main clause is dimmed (no colour, no label)
+SIGNAL_ASIDE = "sig_aside"
+
+PART_C_METHOD = """\
+THE PART C LESSON (maintainer, 2026-10-08; ADR 026, the Part C question method and the \
+vocabulary layer). For Part C this REPLACES the QUESTION and BOARDS paragraphs above (the \
+document, keyword and gloss rules stay). A practice section teaches ONE text of the set (the \
+MAINTAINER RULINGS say which), EVERY question of it, in question order. For EACH question, \
+in this order: its PRE-TEACHING board (only when its WORDS FOR QUESTION list below is not \
+empty), then its QUESTION board. After the last question board, ONE WORD-RECAP board for \
+the text. Code builds every word block from its ID: you never write a meaning, synonym or \
+example of your own.
+  1. PRE-TEACHING BOARD (the instructor's word-to-meaning matching table, format c). Its \
+fixed layer: {"type": "table", "label": "MATCH <lx: ID> <lx: ID> ...", "anchor": true}, that \
+question's word IDs in the order listed, with NO header and NO rows. Thoughts: "Table: ..." \
+with ONE plain note inviting the learner to match each word with its meaning first; then one \
+"Row N: ..." thought per word, in row order, holding ONE block: that word's gloss, written \
+{"type": "gloss", "label": "<its lx: ID>"} with nothing else in it. Where a MAINTAINER RULING \
+names a collocation pair or an attributive-noun chain from this question's paragraph, add \
+after the word rows ONE "Table: ..." thought with a small table of one row in the \
+instructor's format, its cells the text's own words exactly as printed (header ["Adjective", \
+"Noun"], or ["Adjective", "Qualifier noun", "Head noun"]), and one plain note: for a chain, \
+that the qualifier is a NOUN used as a modifier, never an adjective.
+  2. QUESTION BOARD. Its fixed layer is the DOCUMENT of the text ({"type": "table", "label": \
+"<stimulus ID>", "anchor": true}). The player shows it either as a MAP of the whole text \
+(every paragraph, too small to read, on purpose) or as the paragraph being read, WHOLE and \
+readable, never scrolled. Each thought's `purpose` starts with what the document shows:
+     "Map: ..."            the whole text as a map, no paragraph marked;
+     "Map P<N>: ..."       the map with paragraph N marked (paragraphs count from 1, as the \
+document's rows are numbered);
+     "Para <N>: ..."       paragraph N alone, whole and readable;
+     "Para <N>-<M>: ..."   two neighbouring paragraphs together, only where the answer needs \
+both.
+   Its thoughts, in this order (the QTA method: Question, Text, then Answers):
+     a. "Map: the question": ONLY the question block, {"type": "plain", "label": "<item \
+ID>", "items": [...]}, with NO text. Its `items` rule the wrong options out and tick the \
+answer, in this order: "out|<letter>|<reason label>" for EACH WRONG option (the label at \
+most 12 plain words, A2-B1, saying why it is wrong, based on the release's own reason for \
+that option, never adding a fact; where it helps, it names the trap: it uses the text's \
+words but changes the meaning; it is true but not what the question asks; it is too \
+strong; it is someone else's view, not the writer's), then "key|<letter>" for the answer. \
+The OPTIONS STAY HIDDEN until step g: code adds the part that shows them.
+     b. "Map: ..." thoughts, one per word of the QUESTION that its word list names, each \
+holding that word's gloss.
+     c. "Map P<N>: where we are": ONE short plain note saying which paragraph holds the \
+answer and why: the question names it, or its keywords lead there, since the questions \
+follow the order of the text ("The question names the third paragraph."). Never "read the \
+whole text first".
+     d. "Para <N>: ..." the paragraph appears and is read: one thought per listed word of \
+the paragraph, in reading order, each holding that word's gloss (glossed again here). The \
+first "Para" thought may hold no block (purpose "Para <N>: the text").
+     e. For a question about the writer's or a person's ATTITUDE or VIEW (the release's \
+question type attitude-opinion, or an inference about how someone sees something), ONE \
+thought "Para <N>: the scale" holding ONLY an attitude scale: {"type": "plain", "label": \
+"SCALE", "text": "<the middle label, e.g. Neutral>", "left": "<the negative end, e.g. \
+Sceptical>", "right": "<the positive end, e.g. Enthusiastic>", "items": ["marker|<0-100>", \
+..., "out|<letter>|<0-100>" for each wrong option, "key|<letter>|<0-100>"]}, its three \
+labels fitted to the question (one to three words each); each "marker" is where the evidence \
+read so far puts the view, in reading order (the narration moves it as it reads), each \
+option placed where the view it states sits. Never a scale for a question that is not about \
+an attitude or a view.
+     f. "Para <N>: my own answer": ONE plain note: the paragraph's main idea in relation to \
+the question, in simple words, before any option is seen.
+     g. "Para <N>: the options": ONE short plain note ("Now read the four options."); then \
+one thought per word of an OPTION that its word list names, each holding its gloss.
+     h. "Para <N>: try it first": ONE short plain note inviting the learner to choose \
+("Try it first: which option is right?").
+     i. "Para <N>: the paraphrase": ONE plain note naming how the text's words and the \
+right option say the same thing.
+     j. "Para <N>: the answer": an answer_row "Answer: <letter>", and nothing else.
+  3. WORD-RECAP BOARD. Its fixed layer: {"type": "table", "label": "RECAP <stimulus ID>", \
+"anchor": true}, NO header and NO rows (code writes each question's words with a synonym). \
+ONE thought, "Table: recap", with ONE plain note ("The words of Text N").
+  Every board keeps the board style. No board shows anything of an official OET sample text \
+or of the instructor's own practice text or examples.\
+"""
+
+SCREENS_SIGNALS = """\
+OPINION SIGNALS (maintainer, 2026-10-08; ADR 026; a Part C lesson). The narration marks the \
+signals of an opinion by kind, each with its own colour and a small label: an opinion word \
+(believe, think, argue, claim, say), a hedge (likely, probably, may, seems), a word of emotion \
+or judgement (unfortunately, worryingly, sensible), and the main clause that holds the view \
+(a subordinate clause beside it is dimmed). Where a board teaches these signals, write the \
+example sentences as blocks of their own (the lesson's own healthcare sentences, never the \
+practice set's and never the instructor's examples), one idea each, so the narration can \
+mark the signal inside them.\
+"""
+
+NARRATION_SIGNALS = """\
+OPINION-SIGNAL MARKS (maintainer, 2026-10-08; ADR 026; a Part C lesson; bundle 1.17). Five \
+more mark types, drawn as a coloured underline with a small label above the words: \
+`sig_opinion` (an opinion word: believe, think, argue, claim, say, feel), `sig_hedge` (a hedge \
+that makes a claim less certain: likely, probably, may, might, seems, appears, suggests), \
+`sig_judge` (a word of emotion or judgement: unfortunately, worryingly, sensible, crucially), \
+`sig_main` (the main clause that holds the view) and `sig_aside` (a subordinate clause beside \
+it: it is dimmed, no label). Put each on EXACTLY the words of its kind, marker just before you \
+say them, and say what it shows ("'likely' is a hedge: the writer is not certain"). A verb \
+such as say, claim or argue with ANOTHER subject ("patients say", "some doctors argue") \
+reports someone else's view: say whose view it is; Part C often asks for the WRITER'S own \
+view. In a sentence such as "Although X, Y", mark Y `sig_main` and X `sig_aside`: the main \
+clause holds the view. A signal mark also counts as the mark of the words it covers when you \
+read them aloud. Never use them for anything else.\
+"""
+
+NARRATION_PART_C = """\
+THE PART C LESSON (maintainer, 2026-10-08; ADR 026). These rules ADD to the others.
+  - PRE-TEACHING BOARD: first invite the learner to match the words with their meanings, then \
+a `pause` of 3 seconds. Then, row by row: say the word, draw an `arrow` from the word in its \
+row (`text` the word as the table prints it) to its meaning (`to_text` a phrase of the meaning \
+as the table prints it), then the word's gloss moment (the word, a pause, its meaning, its \
+synonym, its example, a pause). A small collocation or chain table is read cell by cell, each \
+cell marked.
+  - QUESTION BOARD, the Part C question method (QTA: Question, Text, then Answers), in order:
+     1. Where we are (a MAP state): the whole text, too small to read on purpose. Read \
+nothing from it and mark nothing in it.
+     2. The question only: read the question word for word and mark its keywords with \
+`match1` (and `match2`) on the question block. The options are NOT shown yet: never read or \
+mention them before step 7. Gloss moments for the question's listed words.
+     3. Say which paragraph holds the answer and why (the question names it, or its \
+keywords lead there; the questions follow the order of the text). Never say "read the whole \
+text first".
+     4. The text (the first PARA state): say that the paragraph is now shown whole, then read \
+it phrase by phrase, explaining each in simple words as you go (the instructor reads it for \
+its general idea first, without stopping at hard words, then again for the words). Every \
+phrase you read is marked: `highlight` (amber) on what you read; where words of the \
+paragraph match a keyword of the question, use the question's pair type instead (`match1` or \
+`match2`; never `match3` on a Part C question board: its yellow is too close to the amber). \
+Gloss moments for the paragraph's listed words, where they occur.
+     5. The opinion signals in it, by kind (OPINION-SIGNAL MARKS), and whose view each is. On \
+a scale, reveal each `marker` part as you read the evidence that moves the view.
+     6. My own answer: reveal the note and say the paragraph's main idea in relation to the \
+question, in simple words, BEFORE any option.
+     7. The answers: reveal the options (the question's part 1, `<question id>.1`), then read \
+each option A to D word for word, naming its letter, and `underline` its keywords on the \
+question block. Gloss moments for the options' listed words.
+     8. Try it first: invite the learner to stop and choose ("Try it first. Which option do you \
+think is right?"; never "pause the"), then end the state with a `pause` of 4 seconds.
+     9. The paraphrase bridge: the text's wording and the right option's wording in ONE pair \
+type, and one sentence on how they say the same thing.
+     10. Rule each wrong option out: reveal its part (the option struck, its reason label \
+shown) as you give the reason in a short sentence that agrees with the label; name the kind \
+of trap where it helps. On a scale, reveal the option's place on it as you rule it out.
+     11. Confirm the answer: reveal the tick part (and its place on the scale) and say the \
+letter and the option.
+     In a MAP state read and mark nothing in the text; in a PARA state read and mark only the \
+paragraph(s) shown. The question block stays on the board (it is pinned), so later states \
+mark it and reveal its parts; so does a scale.
+  - WORD-RECAP BOARD: read each question's words with their synonyms, row by row, each word \
+`highlight`ed as you say it, briskly; a closing sentence.
+  - On the paper test, Part C answers are shaded with a 2B pencil; only a shaded circle \
+counts. Never suggest a highlighter.\
+"""
+
+QA_PART_C = """\
+PART C (ADR 026; bundle 1.17). Word glosses, matching tables and recap tables are built from \
+the exercises repository's word bank: their meanings, synonyms and examples are not \
+findings. Report a wrong option's reason label that does not agree with the text, a \
+paraphrase bridge whose two places do not say the same thing, an opinion-signal mark of the \
+wrong kind (a hedge marked as an opinion word, a reported view treated as the writer's own), \
+an attitude-scale position the text does not support, any option read or named before the \
+paragraph is read (the QTA order), and any advice to read the whole text first.\
+"""
+
 QA_PART_B = """\
 PART B (ADR 026; bundle 1.15). Word glosses, matching tables and recap tables are \
 built from the exercises repository's word bank: their meanings, synonyms and \
@@ -360,19 +530,29 @@ def set_text(lesson: Path, pages: list[int]) -> str:
                     for st in practice_set.stimuli(ps).values()))
     part_a = any(p.get("code") == "RA" for p in ps.get("parts") or [])
     part_b = any(p.get("code") == "RB" for p in ps.get("parts") or [])
+    part_c = any(p.get("code") == "RC" for p in ps.get("parts") or [])
     out = [SCREENS_SET] + ([PART_A_METHOD] if part_a else []) + ([PART_B_METHOD] if part_b else []) \
-        + [f"PRACTICE SET {ps['set_id']}:"]
+        + ([PART_C_METHOD] if part_c else []) + [f"PRACTICE SET {ps['set_id']}:"]
     out += [practice_set.document_for_prompt(st) for st in practice_set.stimuli(ps).values()]
     out += [practice_set.question_for_prompt(ps, it) for it in practice_set.items(ps).values()]
     if part_b:
         import vocab                         # the word bank's words, by ID (ADR 026 §2)
         out.append(vocab.words_for_prompt(lesson))
+    if part_c:
+        import vocab                         # by the question that pre-teaches each (1.17)
+        out.append(vocab.words_for_prompt_part_c(lesson))
     return "\n\n".join(out)
 
 
 def is_part_b(lesson: Path) -> bool:
     ps = practice_set.load(lesson) or {}
     return any(p.get("code") == "RB" for p in ps.get("parts") or [])
+
+
+def is_part_c(lesson: Path) -> bool:
+    """A lesson whose practice set has a Part C (bundle 1.17)."""
+    ps = practice_set.load(lesson) or {}
+    return any(p.get("code") == "RC" for p in ps.get("parts") or [])
 
 
 def section_teaches_set(lesson: Path, pages: list[int]) -> bool:
