@@ -684,6 +684,13 @@ def compact(b: dict) -> dict:
         out["rows"] = rows
         out["to_type"] = [f"row {ty['row'] + 1}, {hdr[ty['col']] if ty['col'] < len(hdr) else ty['col'] + 1}: "
                           f"{ty['text']}" for ty in b["typed"]]
+    elif b["type"] == "table" and b.get("map"):
+        # the map of the four texts (bundle 1.14): each text with its parts, as
+        # "D3", the third part of Text D
+        out["map_of_texts"] = [{"text": d["label"], "title": d["title"],
+                                "parts": [f"{d['label'].split()[-1]}{n}: {b['rows'][d['first'] + n - 1][0]}"
+                                          for n in range(1, d["count"] + 1)]}
+                               for d in b["map"]["docs"]]
     elif b["type"] == "table":
         out["header"] = b.get("header")
         out["rows"] = b.get("rows")
@@ -748,6 +755,19 @@ def gather(lesson: Path, pages: list[int]) -> dict:
             "requires": ledger_phrases(ledger, "required_phrases")}
 
 
+def map_view(mp: dict, s: dict) -> str:
+    """What the map shows in a state (bundle 1.14), in the narration's words."""
+    if s.get("doc") is None:
+        return "all four texts, small: too small to read; read nothing from them"
+    d = mp["docs"][s["doc"]]
+    if s.get("zoom") == "row" and s.get("row") is not None:
+        return (f"zoomed onto {d['label']}, part {d['label'].split()[-1]}{s['row'] - d['first'] + 1}, "
+                "large and readable")
+    if s.get("zoom") == "doc":
+        return f"zoomed into {d['label']} alone, readable"
+    return f"{d['label']} chosen, the other texts dimmed; all still too small to read"
+
+
 def boards_for_model(data: dict) -> list[dict]:
     blocks = data["blocks"]
     out = []
@@ -759,7 +779,10 @@ def boards_for_model(data: dict) -> list[dict]:
             st = {"id": s["id"], "working": [compact(blocks[i]) for i in s["working"]
                                              if blocks[i].get("type") != "picture"],
                   "erased_after": n < len(bd["states"]) - 1}
-            if bd.get("table"):
+            mp = (blocks.get(bd.get("table")) or {}).get("map")
+            if mp:
+                st["map"] = map_view(mp, s)
+            elif bd.get("table"):
                 st["row"] = s["row"] + 1 if s.get("row") is not None else "whole table"
             states.append(st)
         out.append({"id": bd["id"], "section_title": bd["title"],
@@ -1627,6 +1650,22 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                 if v["verdict"] == "wrong" and (tb, v["row"], v["col"]) not in struck_cells:
                     warn(bd["id"], f"choice table {tb}: the wrong cell in row {v['row'] + 1}, "
                                    f"column {v['col'] + 1} is never struck")
+    # ADR 026 (maintainer, 2026-10-06): every phrase of a practice-set text the
+    # narration reads aloud is marked as it is said (check_doc_marks.py)
+    if (data.get("lesson_id") or "").split("-")[0] == "reading":
+        import check_doc_marks
+        for bd in boards:
+            sb = scr_boards.get(bd["id"]) or {}
+            for s in bd["states"]:
+                working = next((x["working"] for x in sb.get("states", []) if x["id"] == s["id"]), [])
+                docs = check_doc_marks.docs_of(list(bd["fixed"]) + list(working), blocks)
+                if not docs:
+                    continue
+                for u in s["utterances"]:
+                    qs = check_doc_marks.questions_of(list(bd["fixed"]) + list(working), blocks)
+                    for x in check_doc_marks.utterance_quotes(u["text_with_cues"], u["cues"], docs, qs)[1]:
+                        fail(u["id"], f"reads {x} from the text with no mark on those words: put a "
+                                      "highlight or keyword-pair cue on them, just before they are said")
     return findings
 
 

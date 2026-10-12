@@ -278,3 +278,66 @@ in ADR 026"). The rules above stand; these are added to them.
   that underlining on the answer booklet is not allowed), and the Part A
   lesson keeps "many students answer 17 or 18 of the 20 correctly" beside the
   guide of 15 of 20.
+
+## Amendment, 2026-10-06: the Part A question method, and every phrase read is marked
+
+Added at the maintainer's request in the review of reading-02-part-a ("Record
+this method in ADR 026 as the Part A question method").
+
+### Every phrase of a text that is read aloud is marked
+
+- **The rule** (maintainer). Every phrase of a practice-set text that the
+  narration reads or quotes while the text is on screen has a mark, a
+  `highlight` or a keyword pair, timed to the moment it is spoken.
+- **Why it was broken.** The narration (effort `high`) read several parts of
+  a text in one sentence and marked only the first (three numbered steps of
+  a protocol named in one sentence, one mark), and the screens plan gave each
+  skimming board two or three stops while the narration read three to six
+  parts. No rule required a mark for each part read, and nothing checked it.
+  The screens stage's effort (ADR 022, `medium`) did not cause it: four drafts
+  of the Skimming section on a copy, two at `high` and two at `medium`, planned
+  the same number of stops (one to three per text either way).
+- **How it is carried.** The reading rule tells the screens stage to give each
+  part that will be read its own row (stop), and the narration to mark every
+  phrase it reads from a text, one mark per phrase. The narration audit fails a
+  draft that reads a text's words with no mark on them, before any audio is
+  made, and `check_doc_marks.py` checks the finished player against the voice's
+  own word timings (the runner's player step). A quote is a run of words shared
+  with a part of the text holding two content words, or a whole short part (a
+  heading); words that are also the question's are the question read aloud.
+
+### The Part A question method
+
+- **The method** (maintainer). Each of the 20 Part A questions is solved in
+  five steps, so the learner always searches before the answer is shown:
+  1. a **map** shows all four texts at once, too small to read on purpose;
+  2. the question appears and the instructor reads it; its keywords are
+     marked;
+  3. **try it first**: the instructor invites the learner to pause and find
+     where the answer is, then a few seconds of silence (4 s);
+  4. **eliminating texts**: from the keywords, the instructor says which text
+     must hold the answer and rules the others out; the other texts dim and
+     the chosen one stays bright;
+  5. a **zoom** into that text, then into the exact part (section or table
+     row), readable on a phone; the keyword pairs light up in shared colours
+     and the answer is found in its exact form.
+- **How it is carried** (bundle 1.14, additive; docs/04-LESSON-BUNDLE.md). The
+  map is one table block with `map`: the four texts' parts as its rows, in
+  order, and where each text starts, so the spotlight, the marks and the
+  pairs find a part as on any table. Each state of a map board carries `doc`
+  (the text chosen) and `zoom` (null, "doc" or "row"). The player draws the
+  four texts as small pages in a two-by-two grid, beside a column for the
+  question and its notes, and zooms the map inside its own frame (a lens), so
+  the question stays in view: "doc" shows the chosen text alone at a
+  document's size, "row" sets that part larger, in the middle of the frame,
+  the other parts dimmed. The screens model writes the map as a placeholder
+  ({"type": "table", "label": "MAP"}) and thoughts named "Text D:", "Zoom D:"
+  and "Row D3:"; code builds the map from the release.
+- **Exemptions**, recorded as the maintainer asked: the map is exempt from the
+  table text floor (1.9% of the frame, docs/02-DESIGN-SYSTEM.md §7, Tables):
+  it is not shrunk to fit, its pages are scaled to their quarter and are not
+  meant to be read; and from the layout check's "no word moves" (§8a): the
+  lens moves the map's words by design, as the camera does a table's.
+- **Parts B and C.** The Part B lesson keeps one text per question board. The
+  Part C lesson will consider the same pattern: the whole-text map, then a
+  zoom to the paragraph.

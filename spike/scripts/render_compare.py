@@ -1,6 +1,6 @@
 """Prove that a change to shared code leaves the built lessons unchanged.
 
-    .venv/Scripts/python spike/scripts/render_compare.py backup
+    .venv/Scripts/python spike/scripts/render_compare.py backup [LESSON,LESSON,...]
     .venv/Scripts/python spike/scripts/render_compare.py snapshot before
     (change the code)
     .venv/Scripts/python spike/scripts/render_compare.py snapshot after
@@ -131,18 +131,21 @@ def files_to_keep(L: Path):
                 yield f
 
 
-def backup() -> None:
+def backup(only: list[str]) -> None:
+    """Every built lesson, or only those named: a lesson being changed while
+    the proof runs is left out, so `restore` never touches it."""
     dest = OUT / "backup"
     if dest.exists():
         raise SystemExit(f"{dest} exists: restore or remove it first, a backup is never overwritten")
     n = 0
-    for L in built():
+    lessons = [L for L in built() if not only or L.name in only]
+    for L in lessons:
         for f in files_to_keep(L):
             t = dest / L.name / f.relative_to(L)
             t.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(f, t)
             n += 1
-    print(f"backed up {n} files of {len(built())} lessons to {dest}")
+    print(f"backed up {n} files of {len(lessons)} lessons to {dest}")
 
 
 def restore() -> None:
@@ -287,7 +290,7 @@ def compare(a: str, b: str) -> None:
 def main() -> None:
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     if cmd == "backup":
-        backup()
+        backup(sys.argv[2].split(",") if len(sys.argv) > 2 else [])
     elif cmd == "restore":
         restore()
     elif cmd == "snapshot":

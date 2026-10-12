@@ -77,10 +77,12 @@ stimulus ID>", "anchor": true}, with NO header and NO rows (code fills them \
 from the release). It is the fixed layer of a TABLE BOARD of its own, and its \
 ROWS are the document's parts as numbered below: teach it with thoughts whose \
 `purpose` starts "Row N: " (N as listed) or "Table: " for the whole text, as on \
-any table board. The SKIMMING PATH is a sequence of row thoughts over the \
-parts the instructor says to skim (headings, the first sentences, lists, a \
-table, bold), in order; a SCANNING path is a row thought on the part that holds \
-the answer. Nothing is typed into a document. Side notes go under it as on any \
+any table board. The SKIMMING PATH is a sequence of row thoughts, ONE FOR EACH \
+PART THAT WILL BE READ ALOUD (maintainer, 2026-10-06): every heading, first \
+sentence, list item, table row or bold line the instructor skims gets its own \
+row thought, in reading order (four headings are four row thoughts); the \
+narration reads a part only in its own row thought. A SCANNING path is a row \
+thought on the part that holds the answer. Nothing is typed into a document. Side notes go under it as on any \
 table board, at most one or two short ones per thought.
   - A QUESTION is written {"type": "plain", "label": "<its item ID>", "anchor": \
 false}, with NO text: code writes its number and its wording. Put it in the \
@@ -90,7 +92,8 @@ the answer as an answer_row in the EXACT form the text gives (the key below), \
 and, where the release gives one, a note on why a tempting wrong answer is \
 wrong (its reason, in your plain words). One board per question: its fixed \
 layer is the DOCUMENT that holds the answer (for a matching question, the key's \
-text). Its `title` is "Item <number>: <item ID>".
+text). Its `title` is "Item <number>: <item ID>". (Part A questions use the \
+MAP instead: see THE PART A QUESTION METHOD.)
   - BOARDS. A section that demonstrates skimming has one board per text, in \
 order A to D, each with its document as the fixed layer. A section that works \
 through the questions has, in this order: the slide's own board; where its \
@@ -122,6 +125,32 @@ studying (maintainer, 2026-10-06).
 you read it aloud (quote it word for word, or do not quote it).\
 """
 
+PART_A_METHOD = """\
+THE PART A QUESTION METHOD (maintainer, 2026-10-06; ADR 026). Every Part A \
+question board teaches the instructor's method in five steps, so the learner \
+searches before the answer is shown. Its fixed layer is the MAP of the four \
+texts: write {"type": "table", "label": "MAP", "anchor": true} with NO header \
+and NO rows (code draws the four texts small, side by side: too small to read, \
+on purpose). Never put a text's stimulus ID on a question board: the map \
+replaces it. Its thoughts, in this order:
+  1. "Table: the question": the question block, nothing else.
+  2. "Table: try it first": ONE short plain note inviting the learner to find \
+the answer first ("Try it first: which text has the answer?").
+  3. "Text <letter>: ...": ONE or TWO short plain notes: from the question's \
+keywords, which text must hold the answer, and why the others are ruled out \
+(the instructor's "eliminating texts" move), e.g. "Only Text D is about \
+checks after treatment." The other texts dim.
+  4. "Zoom <letter>: ...": ONE short plain note naming where in that text to \
+look (its heading or section). The map zooms into that text.
+  5. "Row <letter><N>: ..." (N as that text's rows are numbered below, e.g. \
+"Row D3: ..."): the part that holds the answer, as on a table board: the row \
+thought(s) where the keywords are found, then the answer as an answer_row in \
+the EXACT form, and where the release gives one, a note on why a tempting wrong \
+answer is wrong.
+For a matching question, the text of steps 3 to 5 is the key's text. One board \
+per question, in question order; its `title` is "Item <number>: <item ID>".\
+"""
+
 NARRATION_SET = """\
 KEYWORD PAIRS (ADR 026, bundle 1.13). Three extra mark types draw a pair of \
 places in ONE colour, meaning "these words correspond": `match1` (sky blue), \
@@ -142,7 +171,27 @@ order, as the spotlight moves: that is the skimming path. Never `underline` or \
 `circle` on a skimming board.
   - The answer is said and shown in its EXACT form from the text ("nil by \
 mouth", "twice daily"), and a wrong form is named only where the release gives \
-it as a tempting wrong answer.\
+it as a tempting wrong answer.
+  - EVERY WORD YOU READ FROM A TEXT IS MARKED (maintainer, 2026-10-06; checked \
+by code: a draft that breaks it fails). Each time you read aloud or quote words \
+printed in a text (a heading, a step, a number, a list item, the words that \
+hold the answer), put a mark cue on EXACTLY those words as the text prints \
+them, its marker JUST BEFORE you say them: `highlight` on a skimming board, the \
+pair's type (match1 to match3) on a question board. One mark per phrase: three \
+headings read are three marks. Never read words of a text without their mark; \
+to avoid a mark, do not read them. On a skimming board, read each part in the \
+state whose row is that part.
+  - THE MAP (Part A question boards): the fixed layer is the map of the four \
+texts, and each state says what it shows (`map`). Narrate the five steps: (1) \
+the question: read it word for word and mark its keywords with match types on \
+the question block; (2) try it first: invite the learner to pause the lesson \
+and find where the answer is, then end the state with a `pause` cue of 4 \
+seconds; (3) the text: say which text must hold the answer and rule the others \
+out from the keywords; read nothing from the texts here, they are too small; \
+(4) the zoom: say where in the text you are going and highlight that heading \
+as you name it; (5) the part: the keyword pairs between the question and the \
+text, the paraphrase bridge and the answer in its exact form, as on any \
+question board.\
 """
 
 QA = """\
@@ -192,7 +241,8 @@ def set_text(lesson: Path, pages: list[int]) -> str:
                 "title and type only; never quote them:\n" + "\n".join(
                     f"  {st['label']}: {st.get('title') or '(no title)'}; a {st.get('text_type') or 'text'}"
                     for st in practice_set.stimuli(ps).values()))
-    out = [SCREENS_SET, f"PRACTICE SET {ps['set_id']}:"]
+    part_a = any(p.get("code") == "RA" for p in ps.get("parts") or [])
+    out = [SCREENS_SET] + ([PART_A_METHOD] if part_a else []) + [f"PRACTICE SET {ps['set_id']}:"]
     out += [practice_set.document_for_prompt(st) for st in practice_set.stimuli(ps).values()]
     out += [practice_set.question_for_prompt(ps, it) for it in practice_set.items(ps).values()]
     return "\n\n".join(out)

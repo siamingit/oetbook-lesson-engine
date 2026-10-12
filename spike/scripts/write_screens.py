@@ -1661,6 +1661,8 @@ def block_height(b: dict) -> float:
         h = g["height"] / 100 + (LABEL_LINE if b.get("label") else 0)
     elif t == "clauses":
         h = clause_geometry(b)["height"] / 100 + (LABEL_LINE if b.get("label") else 0)
+    elif t == "table" and b.get("map"):
+        return MAP_HEIGHT             # its four pages scale to their frame (bundle 1.14)
     elif t == "table" and b.get("core"):
         return table_height(b, b["font"] / 100)
     elif t == "table":
@@ -1684,6 +1686,12 @@ TABLE_PAD_V = 0.016            # a cell's padding, top and bottom
 TABLE_WIDTH = 0.9 * 16 / 9     # the content band's width, in frame heights
 ROW_PURPOSE = re.compile(r"^\s*row\s+(\d+)\s*:", re.I)
 TABLE_PURPOSE = re.compile(r"^\s*table\s*:", re.I)
+# The map of the four Part A texts (ADR 026, Part A question method; bundle
+# 1.14): "Text D:" names the text that holds the answer (the others dim),
+# "Zoom D:" zooms into it, "Row D3:" onto its third part.
+MAP_PURPOSE = re.compile(r"^\s*(text|zoom)\s+([A-Z])\s*:", re.I)
+MAP_ROW_PURPOSE = re.compile(r"^\s*row\s+([A-Z])\s*(\d+)\s*:", re.I)
+MAP_HEIGHT = 0.77              # the map fills the board's left column, its own frame
 MAX_SIDE_NOTES = 2             # beside a row, per thought
 
 
@@ -1737,7 +1745,8 @@ def fit_table(b: dict) -> bool:
 def is_table_topic(t: dict, b: dict) -> bool:
     """A topic taught as a table board: its fixed table has typed cells, or its
     thoughts go row by row."""
-    return b["type"] == "table" and (bool(b.get("doc")) or bool(b.get("typed")) or bool(b.get("verdicts")) or any(
+    return b["type"] == "table" and (bool(b.get("doc")) or bool(b.get("map")) or bool(b.get("typed"))
+                                     or bool(b.get("verdicts")) or any(
         ROW_PURPOSE.match(h.get("purpose") or "") for h in t["thoughts"]))
 
 
@@ -1747,7 +1756,13 @@ def lay_out_table(t: dict, fixed: list[str], table: dict, blocks: dict,
     rows; within a row, a thought with side notes erases the notes of the
     thought before. Side notes are drawn beside their row (`beside`), over
     the dimmed rows, so they take no space of their own."""
-    fits = fit_table(table)
+    is_map = bool(table.get("map"))
+    if is_map:
+        # a map is not shrunk to the table floor: its pages scale to its frame
+        # and the zoom makes them readable (bundle 1.14; design system §7, Tables)
+        table["core"], fits = True, True
+    else:
+        fits = fit_table(table)
     fixed_h = stack_height(fixed, blocks)
     states: list[dict] = []
     erasures: list[dict] = []
@@ -1756,10 +1771,15 @@ def lay_out_table(t: dict, fixed: list[str], table: dict, blocks: dict,
         m = ROW_PURPOSE.match(h.get("purpose") or "")
         row = int(m.group(1)) - 1 if m else None
         notes = [b["id"] for b in h["blocks"] if b["id"] not in fixed]
-        if cur is None or row != cur["row"] or (notes and cur["working"]):
+        lens = (h.get("map_doc"), h.get("map_zoom")) if is_map else None
+        if is_map and row is None and lens == (None, None) and cur is not None and cur["lens"][1] == "row":
+            # after the answer is found, the map stays on it (a note on the
+            # answer's form, the section's close)
+            row, lens = cur["row"], cur["lens"]
+        if cur is None or row != cur["row"] or (notes and cur["working"])                 or (is_map and lens != cur["lens"]):
             if cur is not None:
                 erasures.append({"after_thought": cur["thoughts"][-1], "before_thought": h["id"]})
-            cur = {"thoughts": [], "working": [], "row": row}
+            cur = {"thoughts": [], "working": [], "row": row, **({"lens": lens} if is_map else {})}
             states.append(cur)
         cur["thoughts"].append(h["id"])
         cur["working"] += notes
@@ -1769,6 +1789,9 @@ def lay_out_table(t: dict, fixed: list[str], table: dict, blocks: dict,
         states = [{"thoughts": [], "working": [], "row": None}]
     for n, s in enumerate(states, 1):
         s["id"] = f"{t['id']}.s{n}"
+        if is_map:
+            # the text in view and how far the map is zoomed (bundle 1.14)
+            s["doc"], s["zoom"] = s.pop("lens")
         s["notes"] = len(s["working"])
         s["height"] = round(fixed_h, 3)
         s["fill"] = round(fixed_h / CONTENT_BAND, 3)
@@ -2551,7 +2574,7 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             # vocabulary, not a claim about register.
             defines_slide_word = (b["type"] == "term_box" and (b.get("term") or "").lower()
                                   in set(re.findall(r"[a-z]+", data["slide_text"].lower())))
-            released = bool(b.get("doc") or b.get("question"))     # ADR 026: as released
+            released = bool(b.get("doc") or b.get("map") or b.get("question"))     # ADR 026: as released
             if b["provenance"] != "maintainer" and not defines_slide_word and not released:
                 # A register word that the slide itself prints is content being
                 # taught (a signal-words table lists "rarely"), not a claim.
@@ -3261,11 +3284,40 @@ READING_CSS = """
 """
 
 
+# The map of the four texts (bundle 1.14): added only to a lesson that has
+# one, so no other lesson's stylesheet changes. A map board is two columns:
+# the map, and the question and its notes beside it, never under the lens.
+MAP_CSS = """
+.blk.dmap{position:relative;padding:0;height:77cqh;background:#F7F6F2;border-radius:1.2cqh}
+.dmap-view{position:absolute;inset:0;overflow:hidden;border-radius:1.2cqh}
+.dmap-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:1cqh;padding:1cqh;
+  box-sizing:border-box;width:100%;height:100%;transform-origin:0 0}
+.dpanel{position:relative;min-width:0;min-height:0;transition:opacity .4s ease}
+.dpanel>.tbl{position:absolute;left:0;top:0;transform-origin:0 0}
+.dmap.dspot .dpanel:not(.dfocus){opacity:.18}
+.dmap.spot .dpanel.dfocus tbody tr:not(.focus) td{opacity:.3}
+.dmap-grid{position:relative}
+.dmap.solo .dmap-grid{display:block;height:auto;padding:1cqh}
+.dmap.solo .dpanel{display:none}
+.dmap.solo .dpanel.dfocus{display:block}
+.dmap.solo .dpanel.dfocus>.tbl{position:relative;width:auto!important;transform:none!important;--tf:2.4cqh!important}
+.dmap.solo tr.loupe td{font-size:1.75em}
+"""
+
+
+def has_map(lesson) -> bool:
+    """A lesson with a map of the four texts in any section (bundle 1.14)."""
+    return bool(lesson) and any('"map": {' in p.read_text(encoding="utf-8")
+                                for p in (Path(lesson) / "analysis" / "screens").glob("*/screens.json"))
+
+
 def frame_css(lesson) -> str:
     """The blocks' stylesheet for a lesson: FRAME_CSS, plus the Reading blocks'
-    rules for a Reading lesson only (ADR 026)."""
+    rules for a Reading lesson only (ADR 026), plus the map's for a lesson with
+    a map (bundle 1.14)."""
     import reading_rule
-    return FRAME_CSS + (READING_CSS if lesson and reading_rule.is_reading(Path(lesson)) else "")
+    return (FRAME_CSS + (READING_CSS if lesson and reading_rule.is_reading(Path(lesson)) else "")
+            + (MAP_CSS if has_map(lesson) else ""))
 
 
 PAGE_CSS = """
@@ -3523,6 +3575,8 @@ def core_table_html(b: dict, bid: str) -> str:
             out += '<span class="' + cls + '" data-typed="' + str(i) + '">' + esc(ty["text"]) + "</span>"
             pos = ty["start"] + len(ty["text"])
         return out + printed(text[pos:])
+    if b.get("map"):
+        return map_html(b, bid)
     if b.get("doc"):
         return doc_table_html(b, bid)
     typed = list(enumerate(b.get("typed") or []))
@@ -3544,7 +3598,7 @@ DOC_KINDS = {"table": "Table", "guideline": "Guideline", "protocol": "Protocol",
              "article": "Article", "letter": "Letter", "text": "Text"}
 
 
-def doc_table_html(b: dict, bid: str) -> str:
+def doc_table_html(b: dict, bid: str, first_row: int = 0, panel: bool = False) -> str:
     """A practice-set text drawn as a realistic page (ADR 026, bundle 1.13):
     the header names the text and its type (the type is a CSS attribute, not a
     word of the block), each part is a row the spotlight can walk (the
@@ -3571,12 +3625,28 @@ def doc_table_html(b: dict, bid: str) -> str:
         else:
             inner = esc(text)
         mark = (' data-mark="' + esc(k["mark"]) + '"') if k.get("mark") else ""
-        body += ('<tr data-row="' + str(r) + '" class="dp dp-' + k["kind"] + '"><td data-col="0"'
+        body += ('<tr data-row="' + str(first_row + r) + '" class="dp dp-' + k["kind"] + '"><td data-col="0"'
                  + mark + ">" + inner + "</td></tr>")
-    return ('<div class="blk tbl core doc doc-' + esc(doc["text_type"]) + '"' + bid + ' style="--tf:'
+    return ('<div class="' + ("" if panel else "blk ") + 'tbl core doc doc-' + esc(doc["text_type"]) + '"' + bid + ' style="--tf:'
             + str(b.get("font") or 2.6) + 'cqh"><table><colgroup><col style="width:100%"></colgroup>'
             + '<thead><tr><th data-kind="' + esc(DOC_KINDS.get(doc["text_type"], "Text")) + '">' + head
             + "</th></tr></thead><tbody>" + body + "</tbody></table></div>")
+
+
+def map_html(b: dict, bid: str) -> str:
+    """The map of the four texts (ADR 026, Part A question method; bundle
+    1.14): each text as a small page, in a grid of two by two, inside a frame
+    of its own that the player zooms (the lens). Its rows are the texts' parts
+    in order, numbered across the map, so the spotlight and the marks find a
+    part as on any table; the words are the released ones."""
+    panels = ""
+    for i, d in enumerate(b["map"]["docs"]):
+        sub = {"rows": b["rows"][d["first"]:d["first"] + d["count"]], "header": [d["header"]],
+               "doc": d, "font": 1.6}
+        panels += ('<div class="dpanel" data-doc="' + str(i) + '">'
+                   + doc_table_html(sub, "", d["first"], panel=True) + "</div>")
+    return ('<div class="blk dmap"' + bid + '><div class="dmap-view"><div class="dmap-grid">'
+            + panels + "</div></div></div>")
 
 
 def question_html(b: dict, bid: str) -> str:
@@ -3822,6 +3892,22 @@ def table(rows: list[dict], cols: list[str]) -> str:
     return "<table><tr>" + head + "</tr>" + body + "</table>"
 
 
+def map_block(stims: list[dict]) -> dict:
+    """The map of a set's texts (ADR 026, Part A question method; bundle
+    1.14): one table whose rows are every text's parts in order, and `map`,
+    where each text's rows start. Each text is the released one
+    (practice_set.document_block)."""
+    import practice_set
+    docs, rows = [], []
+    for st in stims:
+        d = practice_set.document_block(st)
+        docs.append({**d["doc"], "header": d["header"][0], "first": len(rows), "count": len(d["rows"])})
+        rows += d["rows"]
+    return {"type": "table", "header": ["The four texts"], "rows": rows, "map": {"docs": docs},
+            "provenance": "source-derived",
+            "note": "the set's texts as released, as a map (ADR 026); built by code, never written by the model"}
+
+
 def expand_practice(lesson: Path, topics: list[dict]) -> None:
     """A Reading lesson's practice set (ADR 026, bundle 1.13): a table block
     whose label is a stimulus ID becomes that text as a document, and a plain
@@ -3846,6 +3932,10 @@ def expand_practice(lesson: Path, topics: list[dict]) -> None:
                 elif b.get("type") == "plain" and ref in items:
                     b.clear()
                     b.update({**BLOCK_DEFAULTS, **practice_set.question_block(ps, items[ref]), **keep})
+                elif b.get("type") == "table" and ref.upper() == "MAP":
+                    # the map of the set's texts (ADR 026, Part A question method)
+                    b.clear()
+                    b.update({**BLOCK_DEFAULTS, **map_block(list(stim.values())), **keep, "anchor": True})
                 elif b.get("type") in ("table", "plain") and re.fullmatch(r"oa-(?:set|reading)-[\w-]+", ref):
                     b["practice_ref_unknown"] = ref
         # the answer in the release's exact form (ADR 026): a sentence to
@@ -3871,9 +3961,30 @@ def expand_practice(lesson: Path, topics: list[dict]) -> None:
                     b["provenance"] = "source-derived"
                     b["note"] = ("the answer in the release's exact form, set by code (ADR 026); "
                                  + (b.get("note") or "")).strip()
+        # a map board's thoughts: "Text D:" (the others dim), "Zoom D:", and
+        # "Row D3:" (the map's row, counted across the four texts)
+        mp = next((b for h in t["thoughts"] for b in h["blocks"] if b.get("map")), None)
+        if mp:
+            letters = {d["label"].split()[-1].upper(): n for n, d in enumerate(mp["map"]["docs"])}
+            for h in t["thoughts"]:
+                purpose = h.get("purpose") or ""
+                m = MAP_ROW_PURPOSE.match(purpose)
+                if m and m.group(1).upper() in letters:
+                    n = letters[m.group(1).upper()]
+                    d, k = mp["map"]["docs"][n], int(m.group(2))
+                    if 1 <= k <= d["count"]:
+                        h["purpose"] = f"Row {d['first'] + k}: " + purpose[m.end():].strip()
+                        h["map_doc"], h["map_zoom"] = n, "row"
+                    else:
+                        h["map_bad_row"] = purpose
+                    continue
+                m = MAP_PURPOSE.match(purpose)
+                if m and m.group(2).upper() in letters:
+                    h["map_doc"] = letters[m.group(2).upper()]
+                    h["map_zoom"] = "doc" if m.group(1).lower() == "zoom" else None
         # a board whose fixed layer is a text is a table board: a thought that
         # names no row is about the whole text, as one_board_per_slide marks it
-        if any(b.get("doc") for h in t["thoughts"] for b in h["blocks"]):
+        if any(b.get("doc") or b.get("map") for h in t["thoughts"] for b in h["blocks"]):
             for h in t["thoughts"]:
                 if not (ROW_PURPOSE.match(h.get("purpose") or "") or TABLE_PURPOSE.match(h.get("purpose") or "")):
                     h["purpose"] = "Table: " + (h.get("purpose") or "")

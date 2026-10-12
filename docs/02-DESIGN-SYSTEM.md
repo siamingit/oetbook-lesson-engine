@@ -753,6 +753,28 @@ concept. Meaningful, never decorative; never over text.
   table, the side notes beside it on its left.
 - **The narration never points at it**, as for a gloss's image.
 
+### 7f. The map of the texts (Reading, Part A questions)
+
+ADR 026, the Part A question method; bundle 1.14, rule 31.
+
+- **What it is.** The four Part A texts at once, each a small page, in a grid
+  of two by two, in the board's left column; the question and its notes are a
+  column beside it. It is a map: too small to read on purpose. Its words are
+  read only once the map zooms.
+- **Steps, one per state.** All four texts; the chosen text bright and the
+  others dimmed; that text alone, at a document's size; its part that holds the
+  answer set larger in the middle of the map's frame, the other parts dimmed.
+  The zoom is inside the map's own frame (a lens), so the question and its
+  keyword marks stay in view.
+- **Exempt from the table text floor.** The 1.9% floor of §7, Tables, does not
+  apply: the map's pages are scaled to their quarter and need not be readable
+  until the zoom (maintainer, 2026-10-06).
+- **Exempt from "nothing moves a word"** (§8a): the lens moves the map's words
+  by design, as the camera does a table's; the layout check leaves the map
+  out. Every other block on a map board is held to §8a.
+- Marks, keyword pairs and the pointer inside the map are drawn only where the
+  map's frame shows them.
+
 ## 8. Marks
 
 Clean and re-authored. Never copies of the instructor's ink.
@@ -931,6 +953,10 @@ ADR 026; bundle 1.13 (docs/04-LESSON-BUNDLE.md rules 29 and 30).
   and green and their tints, so a pair never reads as right or wrong.
 - **On a question board the amber highlight is not used**: the yellow pair is
   only 14.9 from it, so keywords and their matches are always pair marks.
+- **Every phrase read from a text is marked** (maintainer, 2026-10-06): a
+  `highlight`, or a keyword pair on a question board, on exactly the words
+  read, timed to the moment they are spoken. One mark per phrase.
+  `check_doc_marks.py` checks it against the voice's word timings.
 - **The skimming path is highlighted** (maintainer, 2026-10-06: "use yellow
   highlighting, as the instructor does"). On a skimming board (a practice-set
   text with no question) the parts skimmed, such as a heading, a first sentence
