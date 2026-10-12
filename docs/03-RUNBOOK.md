@@ -281,7 +281,31 @@ automatically; if any lesson differs, the agent stops and tells the maintainer.
 Free; about half an hour for eleven lessons. It compares the data files byte
 for byte and both players moment by moment in headless Edge. Output in
 `spike/out/render-compare/` (gitignored). `restore` puts back the files the
-renders overwrote.
+renders overwrote. This proof stays a local check: it needs the lesson
+folders, which are not in git.
+
+### Checks on every pull request (CI)
+
+Maintainer, 2026-10-06. `.github/workflows/checks.yml` runs on every pull
+request and every push to main, on GitHub's runners, with nothing that needs
+`C:\OET`:
+
+- **tests**: every script under `spike/scripts` and `spike/tests` compiles, and
+  the unit tests pass (`.venv/Scripts/python -m unittest discover -s spike/tests`,
+  standard library only, no install).
+- **release-answers**: downloads every release of the private
+  `siamingit/oetacademy-exercises` and runs `check_release_answers.py`: it
+  fails if any answer of any practice set (every accepted form of a typed item,
+  the key option of a choice item) is in a committed file, naming the file,
+  line and item ID, never the answer (ADR 026). A generic form the repository
+  needs in its own words is exempted by item ID in
+  `spike/ci/answer_check_exempt.json`, with the reason. Run it locally, on the
+  local release copies, with `.venv/Scripts/python spike/scripts/check_release_answers.py`.
+  It needs the repository secret `EXERCISES_RELEASES_TOKEN`, a read-only token
+  for the exercises repository; without it the job fails, so a fork's pull
+  request (which gets no secrets) cannot pass unchecked.
+
+A pull request is merged when both jobs are green.
 
 ---
 

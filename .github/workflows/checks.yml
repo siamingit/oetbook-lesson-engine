@@ -1,0 +1,60 @@
+# Checks on every pull request and every push to main (maintainer, 2026-10-06).
+# Lesson folders (C:\OET) are not here, so nothing that needs them runs; the
+# before/after render proof stays a local check (docs/03-RUNBOOK.md).
+name: checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Every script compiles
+        run: python -m compileall -q spike/scripts spike/tests
+      - name: Unit tests
+        run: python -m unittest discover -s spike/tests -v
+
+  release-answers:
+    # ADR 026: no answer of a practice set in this public repository. The
+    # releases are private: EXERCISES_RELEASES_TOKEN is a read-only token for
+    # siamingit/oetacademy-exercises. Without it (a fork's pull request) the
+    # job fails rather than pass unchecked. The check never prints an answer.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Download every exercises release
+        env:
+          GH_TOKEN: ${{ secrets.EXERCISES_RELEASES_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::secret EXERCISES_RELEASES_TOKEN is not set; the answers cannot be checked"
+            exit 1
+          fi
+          repo=siamingit/oetacademy-exercises
+          tags=$(gh release list -R "$repo" --limit 1000 --json tagName --jq '.[].tagName')
+          [ -n "$tags" ] || { echo "::error::no release found in $repo"; exit 1; }
+          for tag in $tags; do
+            dir="$RUNNER_TEMP/releases/$tag"
+            mkdir -p "$dir"
+            if ! gh release download "$tag" -R "$repo" -p package.json -D "$dir" 2>/dev/null; then
+              # a release with the zipped package only
+              gh release download "$tag" -R "$repo" -p '*.zip' -D "$dir"
+              unzip -q -o -j "$dir"/*.zip '*/package.json' -d "$dir"
+            fi
+            echo "$tag: $(ls "$dir"/package.json)"
+          done
+      - name: No answer in a committed file
+        run: python spike/scripts/check_release_answers.py "$RUNNER_TEMP"/releases/*/package.json
