@@ -91,3 +91,25 @@ Recorded at the maintainer's request in the review of Reading lessons 1 and 2:
 understanding stage (`extract_understanding.py`) runs at effort `medium` for
 every lesson, as screens does. To reverse: set its `EFFORT` back to `"high"`
 and record a new ADR.
+
+## Amendment, 2026-10-06: long sections are drafted in parts; the cap stays
+
+Recorded at the maintainer's request after Reading lesson 2's Scanning section
+used 63,145 of the narration stage's 64,000 output tokens (99%): "do not raise
+it. Instead, let a long page's narration be drafted in chunks (e.g. per question
+group) and joined, with the same audits."
+
+- The narration cap stays at 64,000.
+- A section with more than 10 boards (`CHUNK_BOARDS`, `write_narration.py`) is
+  drafted in parts: consecutive runs of boards of about equal size (26 boards:
+  9, 9 and 8). Each call is given the whole section as context, writes only
+  its own boards, and is told how the narration just before them ends, so the
+  parts read on. A part that returns other boards is refused.
+- The parts are joined into one reply, which is rendered and audited exactly
+  as a single draft (a joined test of Reading lesson 2's Scanning section gave
+  the same boards and the same audit). Each part is kept
+  (`raw_response.part-N.json`) and counted in the spend; the joined reply
+  carries no usage of its own.
+- A state rewrite from a brief is unchanged: it is already one call for a few
+  states. The Part C lesson will need parts for its long texts.
+- To reverse: set `CHUNK_BOARDS` high and record a new ADR.

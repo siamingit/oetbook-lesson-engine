@@ -61,6 +61,13 @@ the section has one.
   - PAPER-ONLY ADVICE (a pen, underlining, crossing out instead of erasing) is \
 advice for the paper test: say so on the block ("On the paper test, ..."). Never \
 name a tool of the computer test.
+  - PEN, PENCIL, NEVER A HIGHLIGHTER (maintainer, 2026-10-06, verified on \
+oet.com). Reading and Listening Part A: a pen or a pencil. Parts B and C: the \
+answer is shaded with a 2B pencil, and on paper only a shaded circle counts (no \
+tick, cross or circling). Mechanical pens and pencils, highlighters and \
+correction fluid are not allowed. Nothing in a lesson suggests a highlighter \
+for the test, in words or in a picture: the highlight on a board is only how \
+the lesson shows the words.
   - NEVER ADVISE TAKING A MOCK TEST FIRST (maintainer, 2026-10-06): no block \
 tells the learner to take a mock test, a practice test or any full test before \
 studying, even where the beats do; record such a beat under `dropped`.
@@ -120,6 +127,10 @@ said as plain fact, never "not B+" or "the slide is wrong".
 tool of the computer test.
   - Never advise taking a mock test, or any full practice test, before \
 studying (maintainer, 2026-10-06).
+  - Never suggest a highlighter for the test: highlighters are not allowed. \
+Part A: a pen or a pencil. Parts B and C: shade the answer's circle with a 2B \
+pencil; only a shaded circle counts (maintainer, 2026-10-06, from oet.com). The \
+highlight on the board is how this lesson shows words, not a tool.
   - Official OET sample texts are never named, quoted or described.
   - A practice-set text or question on the board is read EXACTLY as printed when \
 you read it aloud (quote it word for word, or do not quote it).\
@@ -202,7 +213,8 @@ The exam facts in the maintainer rulings are correct (OET grades A, B, C+, C, \
 D, E; target Grade B, 350; Reading 60 minutes, Part A 15 minutes separately, \
 Parts B and C 45 minutes; every question one mark). Report any official OET \
 sample text named, quoted or described, any claim about a tool of the computer \
-test, any advice to take a mock test first, and any match mark pair whose two places do not say the same thing.\
+test, any advice to take a mock test first, any suggestion of a highlighter \
+for the test, and any match mark pair whose two places do not say the same thing.\
 """
 
 

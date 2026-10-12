@@ -102,10 +102,14 @@ def jobs_for(L: Path, stage: str, include_done: bool = False, ttl: str = "1h") -
                 raise SystemExit(f"REFUSED: {s['title']!r} has no passing screens; narration "
                                  "is never written on failing screens")
             data = wn.gather(L, s["pages"])
-            jobs.append({"custom_id": tag(s["pages"]), "provider": "anthropic",
-                         "params": wn.request_params(wn.build_messages(data), ttl),
-                         "out": d / "raw_response.json",
-                         "render": (lambda s=s, data=data: wn.render(L, s["pages"][0], data))})
+            job = {"custom_id": tag(s["pages"]), "provider": "anthropic",
+                   "params": wn.request_params(wn.build_messages(data), ttl),
+                   "out": d / "raw_response.json",
+                   "render": (lambda s=s, data=data: wn.render(L, s["pages"][0], data))}
+            if len(wn.chunk_plan(data)) > 1:
+                # drafted in parts and joined (ADR 022 amendment, 2026-10-06)
+                job["run"] = (lambda s=s, data=data: wn.draft(L, s["pages"], data))
+            jobs.append(job)
     elif stage in ("qa1", "qa2"):
         import qa_narration as qn
         n = int(stage[-1])
@@ -184,6 +188,9 @@ def run_direct(L: Path, stage: str, jobs: list[dict]) -> None:
             if j["provider"] == "gemini":
                 import qa_narration as qn
                 qn.call_direct(j["prep"])
+                return "ok"
+            if j.get("run"):
+                j["run"]()                         # a draft in parts writes its own reply
                 return "ok"
             import anthropic
             from extract_understanding import api_key

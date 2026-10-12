@@ -71,3 +71,22 @@ class SentencePauses(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class NarrationInParts(unittest.TestCase):
+    """ADR 022 amendment (2026-10-06): a long section is drafted in parts."""
+
+    def plan(self, n):
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+        import write_narration
+        return write_narration.chunk_plan({"screens": {"boards": [{"id": f"t{i}"} for i in range(1, n + 1)]}})
+
+    def test_short_section_is_one_part(self):
+        self.assertEqual(len(self.plan(10)), 1)
+
+    def test_long_section_parts_cover_every_board_in_order(self):
+        for n in (11, 26, 40):
+            parts = self.plan(n)
+            self.assertEqual([b for p in parts for b in p], [f"t{i}" for i in range(1, n + 1)])
+            self.assertTrue(all(len(p) <= 10 for p in parts))
+            self.assertLessEqual(max(map(len, parts)) - min(map(len, parts)), 1)
