@@ -130,12 +130,13 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
         for i in bd["fixed"]:
             if i not in blocks or not blocks[i].get("html"):
                 problems.append(f"{bd['id']}: fixed block {i} missing from bundle")
+        stays: list[str] = []      # 1.15: a pinned question, on its board once shown
         for s in bd["states"]:
             working = list(s["working"])
             # a board's picture (bundle 1.12, rule 27) is shown from its state's
             # start, with its time in the state's reveal, and no cue
             revealed = [i for i in working if (blocks.get(i) or {}).get("type") == "picture"
-                        and i in (s.get("reveal") or {})]
+                        and i in (s.get("reveal") or {})] + [i for i in stays if i not in working]
             for i in working:
                 if i not in blocks or not blocks[i].get("html"):
                     problems.append(f"{s['id']}: working block {i} missing from bundle")
@@ -155,7 +156,8 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
                         base, _, n = str(blk).rpartition(".")
                         b = blocks.get(base) or {}
                         parts = {str(it.get("part")) for it in (b.get("items") or [])}
-                        if b.get("type") not in ("timeline", "clauses", "gloss") or n not in parts:
+                        if (b.get("type") not in ("timeline", "clauses", "gloss")
+                                and not (b.get("question") and b.get("items"))) or n not in parts:
                             problems.append(f"{u['id']}/{c['id']}: reveal of {blk}, which is "
                                             "not a part of a diagram")
                         elif base not in fixed and base not in revealed:
@@ -185,6 +187,8 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
             for i in working:
                 if i not in revealed:
                     problems.append(f"{s['id']}: {i} is never revealed")
+            stays += [i for i in revealed if i not in stays and (blocks.get(i) or {}).get("pin")
+                      and (blocks.get(i) or {}).get("question")]
             if s["erase"] and sorted(s["erase"]["blocks"]) != sorted(working):
                 problems.append(f"{s['id']}: erase clears {s['erase']['blocks']}, not the "
                                 f"state's working layer {working}")

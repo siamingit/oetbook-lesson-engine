@@ -1142,6 +1142,14 @@ Cartesia credit is limited, and most of it so far went on rebuilding page
   makes a real change cheap, a speculative one is pure waste.
 - Probes for the lexicon review page are made once per candidate and kept.
 
+**Amended 2026-10-06 (maintainer; docs/adr/028-cartesia-scale-plan.md).**
+Credit is no longer limited: the account is on Cartesia Scale, free until
+about October 2027, 8 million characters a month. Cartesia cost is no reason
+to economise or to ask: re-takes, auditions, variants and re-runs go ahead,
+and synthesis runs 15 clips at a time. What stays is not about credit: a
+lesson is synthesised after its narration is approved, and a lexicon term is
+used only after the maintainer's ear approves it (§20).
+
 ### Next on "fibrosis" — recorded, not acted on
 
 The maintainer heard all nine clips wrong. The target is /faɪˈbroʊ.sɪs/,
