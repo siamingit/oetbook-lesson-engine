@@ -1,5 +1,5 @@
-"""Wide-font check: a Part B question board hides nothing when the learner's
-device draws a wider font than the one the fit measured.
+"""Wide-font check: no board hides anything when the learner's device draws a
+wider font than the one the fit measured.
 
     .venv/Scripts/python spike/scripts/check_wide_font.py <lesson_dir> --dir <player folder> [--font Verdana]
 
@@ -17,6 +17,14 @@ any line of text, that lies outside the board area (under the header or the
 control bar) or outside its own block where that block clips. A line under a
 gloss drawn over the question column (its state's `overlay`) is hidden by the
 gloss rule and is not a finding. It reports what the guard chose per board.
+
+Every other board (maintainer, 2026-10-11: the player's guard applies to every
+board of every lesson) is driven to the moments check_overflow.py measures (each
+state's start and end, each reveal, each pinned block, each erase), with the
+same camera rule: the board unzoomed, except a table board whose camera has
+moved, where its notes must be in view as it shows them. A block outside the
+board, or a line of text outside the board or outside its own block where that
+block clips, fails. It reports each board the guard set smaller, and by how much.
 
 The harness is the player itself, as in check_overflow.py: no screenshot is
 interpreted; every figure is geometry the browser reports.
@@ -72,28 +80,37 @@ HARNESS = r"""
     if (q.right > W.right + TOL) s.push("right");
     return s;
   }
-  const hidden = [], seen = new Set(), guards = [];
+  const hidden = [], seen = new Set(), guards = [], fitted = [];
   let samples = 0;
   for (const bd of boards) {
-    if (!qb(bd)) continue;
+    const isQ = qb(bd);
     const times = new Set([bd.start + 0.001]);
     for (const s of bd.states) {
       times.add(s.start + 0.001); times.add(s.end - 0.001);
       for (const t of Object.values(s.reveal || {})) times.add(t + 0.001);
-      for (const c of s.clears || []) times.add(c.time + 0.001);
-      for (const u of s.utterances) for (const c of u.cues) times.add(c.time + 0.001);
+      if (isQ) {
+        for (const c of s.clears || []) times.add(c.time + 0.001);
+        for (const u of s.utterances) for (const c of u.cues) times.add(c.time + 0.001);
+      } else if (s.erase) times.add(s.erase.time - 0.001);
     }
     for (const t of Object.values(bd.pinned || {})) times.add(t + 0.001);
-    for (const f of bd.focus || []) times.add(f.time + 0.001);
+    if (isQ) for (const f of bd.focus || []) times.add(f.time + 0.001);
+    else for (const t of Object.values(bd.reveal || {})) times.add(t + 0.001);
     for (const t of [...times].filter(t => t >= bd.start && t < bd.until).sort((a, b) => a - b)) {
       lastRenderT = null;
       renderFrame(t);
       samples++;
+      // as check_overflow.py: every other board unzoomed, except a table board
+      // whose camera has moved, where only its notes are measured, as shown
+      const keep = camEl.style.transform;
+      const viewed = !isQ && bd.table && keep && keep !== "none";
+      if (!isQ && !viewed) camEl.style.transform = "none";
       const A = area();
       const st = stateAt(bd, t);
       const overs = [...camEl.querySelectorAll(".blk.over.on:not(.cleared)")];
       for (const [id, el] of blockEls) {
         if (!shown(el)) continue;
+        if (viewed && !el.classList.contains("beside")) continue;
         if (id === bd.table && st && st.veil) continue;       // covered: its words are not shown yet
         const r = el.getBoundingClientRect();
         if (!r.width && !r.height) continue;
@@ -116,24 +133,45 @@ HARNESS = r"""
             if (!q.width || !q.height) continue;
             if (overs.some(o => !o.contains(n) && (() => { const g = o.getBoundingClientRect();
                   return q.right > g.left && q.left < g.right && q.bottom > g.top && q.top < g.bottom; })())) continue;
-            const W = clips ? { left: Math.max(A.left, own.left), top: Math.max(A.top, own.top),
-                                right: Math.min(A.right, own.right), bottom: Math.min(A.bottom, own.bottom) } : A;
+            let W = clips ? { left: Math.max(A.left, own.left), top: Math.max(A.top, own.top),
+                              right: Math.min(A.right, own.right), bottom: Math.min(A.bottom, own.bottom) } : A;
+            // the map of the texts (bundle 1.14) shows its lines through its lens
+            // window of whole lines, by design: a line wholly outside it (hidden,
+            // or in a faded cue band) is not shown; a line in it is measured
+            // against it (the window as check_lens.py takes it)
+            const lens = n.parentElement && n.parentElement.closest(".dmap-view");
+            if (lens && el.contains(lens)) {
+              const R = lens.getBoundingClientRect(), sc = lens.offsetHeight ? R.height / lens.offsetHeight : 1;
+              const set = lens.dataset.lensTop != null;
+              const v = { top: R.top + (lens.clientTop + (set ? +lens.dataset.lensTop : 0)) * sc,
+                          bottom: R.top + (lens.clientTop + (set ? +lens.dataset.lensBottom : lens.clientHeight)) * sc,
+                          left: R.left + lens.clientLeft * sc, right: R.left + (lens.clientLeft + lens.clientWidth) * sc };
+              if (q.bottom <= v.top + 1 || q.top >= v.bottom - 1 || q.right <= v.left || q.left >= v.right) continue;
+              W = { left: Math.max(W.left, v.left), top: Math.max(W.top, v.top),
+                    right: Math.min(W.right, v.right), bottom: Math.min(W.bottom, v.bottom) };
+            }
             const s = outside(q, W);
             if (s.length) add("line " + JSON.stringify(n.data.trim().slice(0, 40)), s,
                               Math.max(W.top - q.top, q.bottom - W.bottom, W.left - q.left, q.right - W.right));
           }
         }
       }
+      camEl.style.transform = keep;
     }
-    const g = bd._guard || { split: bd.split, font: blocks[bd.table].font, zoom: 1 };
-    guards.push({ board: bd.id, split: g.split, font: g.font, zoom: g.zoom, bundle_split: bd.split,
-                  bundle_font: blocks[bd.table].font });
+    if (isQ) {
+      const g = bd._guard || { split: bd.split, font: blocks[bd.table].font, zoom: 1 };
+      guards.push({ board: bd.id, split: g.split, font: g.font, zoom: g.zoom, bundle_split: bd.split,
+                    bundle_font: blocks[bd.table].font });
+    } else if ((bd._fitZoom || 1) !== 1 || (bd._fitPic || 1) !== 1) {
+      // 2026-10-11: a board the guard set smaller, with its pictures' share of their size
+      fitted.push({ board: bd.id, zoom: bd._fitZoom || 1, pic: bd._fitPic || 1 });
+    }
   }
   const pre = document.createElement("pre");
   pre.id = "wide-result";
   pre.textContent = JSON.stringify({ frame: Math.round(frame.getBoundingClientRect().width),
                                      ctl: Math.round(document.querySelector(".frame .ctl").getBoundingClientRect().height),
-                                     samples, hidden, guards });
+                                     samples, hidden, guards, fitted });
   document.body.appendChild(pre);
 } catch (e) {
   const pre = document.createElement("pre");
@@ -188,6 +226,12 @@ def main() -> None:
         failures += len(res["hidden"])
         print(f"{name} ({res['frame']}px frame, controls {res['ctl']}px), {a.font}: {res['samples']} moments; "
               f"{len(res['hidden'])} hidden")
+        fitted = res.get("fitted", [])
+        if fitted:
+            print(f"  the guard set {len(fitted)} other board(s) smaller: "
+                  + ", ".join(f"{f['board']} {round(f['zoom'] * 100, 1)}%"
+                              + (f" (pictures {round(f['pic'] * 100)}%)" if f["pic"] != 1 else "")
+                              for f in fitted))
         for g in res["guards"]:
             print(f"  {g['board']}: the extract {g['split']}% (bundle {g['bundle_split']}%) at {g['font']}% "
                   f"(bundle {g['bundle_font']}%), the question column at {round((g['zoom'] or 1) * 100)}%")
@@ -197,7 +241,7 @@ def main() -> None:
     (a.dir / "wide_font_check.json").write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
     if failures:
         raise SystemExit(f"wide-font check failed: {failures} finding(s); see {a.dir / 'wide_font_check.json'}")
-    print(f"wide-font check passed: with {a.font}, nothing on a Part B question board is hidden or under the controls")
+    print(f"wide-font check passed: with {a.font}, nothing on any board is hidden or under the controls")
 
 
 if __name__ == "__main__":
