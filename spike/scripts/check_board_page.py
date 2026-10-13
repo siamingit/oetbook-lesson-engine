@@ -33,6 +33,23 @@ def wav_duration(path: Path) -> float:
         return w.getnframes() / w.getframerate()
 
 
+def exam_problems(lesson: Path, u: dict, path: Path) -> list[str]:
+    """A recording of the release (bundle 1.18): the file is the release's, byte
+    for byte, and its span lies inside the extract's audio."""
+    import practice_set
+    x = u.get("exam") or {}
+    out = []
+    if practice_set._sha256(path) != x.get("sha256"):
+        out.append(f"{u['id']}: {path.name} is not the release's file (sha256)")
+    st = practice_set.stimuli(practice_set.load(Path(lesson)) or {"parts": []}).get(x.get("stimulus"))
+    dur = (st or {}).get("audio", {}).get("duration_s")
+    if not st or dur is None:
+        out.append(f"{u['id']}: {x.get('stimulus')} is not an extract of the lesson's practice set")
+    elif not 0 <= u["clip_in"] < u["clip_out"] <= dur + TOLERANCE_S:
+        out.append(f"{u['id']}: span {u['clip_in']}-{u['clip_out']} is not inside its audio ({dur}s)")
+    return out
+
+
 def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
     # --dir checks a built player folder directly, such as the whole-lesson
     # player; its audio_file paths are relative to that folder.
@@ -57,6 +74,8 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
     # pronunciation are not checked; its timeline, boards and blocks are
     silent = bool(meta.get("silent"))
     for u, _, _ in ([] if silent else seq):
+        if u.get("kind") == "exam":
+            continue              # 1.18: a recording of the release, not synthesised speech
         e = index.get(u["id"])
         if not e:
             problems.append(f"{u['id']}: not in audio_index.json")
@@ -73,6 +92,14 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
             problems.append(f"{u['id']}: audio missing ({u['audio_file']})")
             continue
         planned = u["end"] - u["start"]
+        if u.get("kind") == "exam":
+            # 1.18 (ADR 029): the release's own audio, copied unchanged: its
+            # sha256 is the release's, and the span lies inside the file
+            problems += exam_problems(lesson, u, path)
+            if abs(planned - (u["clip_out"] - u["clip_in"])) > TOLERANCE_S:
+                problems.append(f"{u['id']}: timeline says {planned:.3f}s, its span is "
+                                f"{u['clip_out'] - u['clip_in']:.3f}s")
+            continue
         actual = wav_duration(path)
         if u.get("clip_in") is not None:
             # a trimmed clip (bundle 1.3): plays from clip_in to clip_out
@@ -156,7 +183,7 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
                     if not (0 <= c["time"] <= meta["total_duration_s"] + TOLERANCE_S):
                         problems.append(f"{u['id']}/{c['id']}: fires at {c['time']}s, "
                                         "outside the lesson")
-                    if c["type"] == "pause":
+                    if c["type"] in ("pause", "play"):      # play: 1.18, a recording, no target
                         continue
                     blk = c.get("block")
                     if c["type"] == "reveal" and "." in str(blk):

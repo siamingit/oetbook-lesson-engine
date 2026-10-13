@@ -212,6 +212,20 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
 #silentTag { display: none; flex: none; font-size: 2cqh; letter-spacing: .1em; text-transform: uppercase;
              color: #854F0B; border: 1px solid #EF9F27; padding: .3cqh .8cqw; }
 .silent #silentBanner { display: block; } .silent #silentTag { display: inline-block; }
+/* 1.18 (ADR 029): while a recording of the practice set plays (an utterance of
+   kind "exam"), the board says so: a label in the header and an outline round
+   the board, drawn over nothing (box-shadow inside the board's own edge), so no
+   word moves. Present only in a lesson that has recordings. */
+#recTag { display: none; flex: none; align-items: center; gap: .6em; margin: 0 1.2cqw; padding: .25cqh 1.1cqw;
+          border-radius: 999px; background: #185FA5; color: #fff; font-size: 2.2cqh; font-weight: 500;
+          white-space: nowrap; }
+#recTag::before { content: ""; width: .7em; height: .7em; border-radius: 50%; background: #fff; }
+.frame.rec #recTag { display: inline-flex; }
+.frame.rec .body { box-shadow: inset 0 0 0 max(2px, .4cqh) #185FA5; }
+@media (prefers-reduced-motion: no-preference) {
+  .frame.rec #recTag::before { animation: recpulse 1.4s ease-in-out infinite; }
+}
+@keyframes recpulse { 50% { opacity: .35; } }
 </style>
 </head>
 <body>
@@ -295,6 +309,16 @@ for (const bd of boards) for (const s of bd.states) for (const u of s.utterances
 
 // ---- Layout: fit the frame to the viewport ----
 const frame = document.getElementById("frame");
+// 1.18: a lesson with recordings of its practice set (utterances of kind "exam")
+const HAS_EXAM = utterances.some(u => u.kind === "exam");
+let recTag = null;
+if (HAS_EXAM) {
+  recTag = document.createElement("span");
+  recTag.id = "recTag";
+  recTag.setAttribute("aria-live", "polite");
+  const hdr = frame.querySelector(".hdr");
+  hdr.insertBefore(recTag, document.getElementById("contentsBtn"));
+}
 function fit() {
   if (window.__lockWidth) {   // a measuring harness pins the frame width
     document.documentElement.style.setProperty("--w", window.__lockWidth + "px");
@@ -370,7 +394,7 @@ for (const bd of boards) {
     const marks = [];
     for (const u of s.utterances) for (const c of u.cues) {
       if (c.type === "type") typedAt.set(c.block + "|" + c.typed, [c.time, c.time_end]);
-      else if (c.type !== "reveal" && c.type !== "pause") { c._uid = u.id + "/" + c.id; marks.push(c); }
+      else if (c.type !== "reveal" && c.type !== "pause" && c.type !== "play") { c._uid = u.id + "/" + c.id; marks.push(c); }
     }
     marks.sort((a, b) => a.time - b.time);
     marksByState.set(s.id, marks);
@@ -1866,7 +1890,16 @@ function renderFrame(t) {
   positionMarks();
 
   const u = utteranceAt(t);
-  if (u && !state.failure) {
+  if (HAS_EXAM) {
+    // 1.18: a recording is playing
+    const rec = !!(u && u.kind === "exam");
+    frame.classList.toggle("rec", rec);
+    if (rec) recTag.textContent = "Recording" + (u.exam && u.exam.label ? " \u00b7 " + u.exam.label : "");
+  }
+  if (u && u.kind === "exam" && !state.failure) {
+    subtitleEl.innerHTML = '<span class="provenance">recording</span>';
+    subtitleEl.appendChild(document.createTextNode((u.exam.label || u.exam.stimulus) + ", " + u.exam.span));
+  } else if (u && !state.failure) {
     subtitleEl.innerHTML = '<span class="provenance">' + u.provenance + "</span>";
     subtitleEl.appendChild(document.createTextNode(u.text));
   } else if (!state.failure) {
@@ -2001,16 +2034,27 @@ function aheadSchedule() {
 const audioEl = new Audio(); audioEl.preload = "auto";
 const sayEl = new Audio();
 camEl.addEventListener("click", e => {
-  const btn = e.target.closest && e.target.closest(".gl-say");
+  const btn = e.target.closest && e.target.closest(".gl-say, .gl-heard");
   if (!btn) return;
   e.stopPropagation();
   const resume = state.playing;
   if (resume) pause();
-  for (const b of camEl.querySelectorAll(".gl-say.playing")) b.classList.remove("playing");
+  for (const b of camEl.querySelectorAll(".gl-say.playing, .gl-heard.playing")) b.classList.remove("playing");
   btn.classList.add("playing");
+  sayEl.ontimeupdate = null;
   sayEl.src = btn.dataset.audio;
-  const done = () => { btn.classList.remove("playing"); if (resume) play(); };
+  let over = false;
+  const done = () => { if (over) return; over = true; sayEl.ontimeupdate = null; sayEl.pause();
+                       btn.classList.remove("playing"); if (resume) play(); };
   sayEl.onended = done; sayEl.onerror = done;
+  if (btn.classList.contains("gl-heard")) {
+    // 1.18: a span of the recording, its two times in the release's own file
+    const a = parseFloat(btn.dataset.start), z = parseFloat(btn.dataset.end);
+    sayEl.ontimeupdate = () => { if (sayEl.currentTime >= z) done(); };
+    const go = () => { sayEl.currentTime = a; sayEl.play().catch(done); };
+    if (sayEl.readyState >= 1) go(); else sayEl.addEventListener("loadedmetadata", go, { once: true });
+    return;
+  }
   sayEl.play().catch(done);
 });
 const preloadEl = new Audio(); preloadEl.preload = "auto";

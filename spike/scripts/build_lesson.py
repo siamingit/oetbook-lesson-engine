@@ -50,6 +50,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import paths                                                      # noqa: E402
+import lesson_type                                                # noqa: E402
 
 PY = sys.executable
 GATES = {
@@ -588,11 +589,15 @@ def stage_narration(L, a):
     # maintainer, 2026-10-08: a wider device font hides nothing on a Part B question
     # board; 2026-10-11: on any board of any lesson (the player's guard, every board)
     run(L, [str(HERE / "check_wide_font.py"), str(L), "--dir", d], "wide-font check (silent preview)")
-    if L.name.split("-")[0] == "reading":
+    if lesson_type.has(L, "practice_checks"):
         # maintainer, 2026-10-07: no line inside a lens or zoom window is clipped
         run(L, [str(HERE / "check_lens.py"), str(L), "--dir", d], "lens check (silent preview)")
         run(L, [str(HERE / "check_question_numbers.py"), str(L), "--dir", d],
             "question-number check (silent preview)")
+    if lesson_type.has(L, "source_terms"):
+        # ADR 029: nothing of the excluded material (the exam audio the
+        # instructor played) in what a learner reads or hears
+        run(L, [str(HERE / "check_source_terms.py"), str(L)], "source-terms check (silent preview)")
     run(L, [str(HERE / "build_narration_review.py"), str(L)], "narration review page")
     import length_budget            # ADR 023: estimated length against target, every warning
     require_gate(L, "narration", length_budget.gate_summary(L))
@@ -693,10 +698,13 @@ def stage_player(L, a):
     # maintainer, 2026-10-08: a wider device font hides nothing on a Part B question
     # board; 2026-10-11: on any board of any lesson (the player's guard, every board)
     run(L, [str(HERE / "check_wide_font.py"), str(L), "--dir", d], "wide-font check")
-    if L.name.split("-")[0] == "reading":
+    if lesson_type.has(L, "doc_marks"):
         # ADR 026 (maintainer, 2026-10-06): every phrase of a text read aloud
         # has its mark, timed to the voice's own words
         run(L, [str(HERE / "check_doc_marks.py"), str(L)], "doc marks check")
+    if lesson_type.has(L, "source_terms"):
+        run(L, [str(HERE / "check_source_terms.py"), str(L)], "source-terms check")    # ADR 029
+    if lesson_type.has(L, "practice_checks"):
         # maintainer, 2026-10-07: no line inside a lens or zoom window is clipped
         run(L, [str(HERE / "check_lens.py"), str(L), "--dir", d], "lens check")
         # ADR 026 amendment of 2026-10-08: a lesson's questions from 1, every

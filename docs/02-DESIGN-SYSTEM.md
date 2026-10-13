@@ -871,6 +871,34 @@ to 40.
   keyword pairs `match1` and `match2` only (the yellow `match3` is too close to the
   amber, §8e).
 
+### 7i. Listening: the note form, transcripts and recordings
+
+ADR 029; bundle 1.18, rules 42 to 45.
+
+- **The Part A note form** is a table board (§7, Tables): a page with a blue top
+  rule, its tag "Notes", a heading row per heading, a row per gap with the gap's
+  exam number as a small blue badge (a stylesheet attribute, never a word). Each gap
+  is a blank line of fixed width (§7, Gaps) until the lesson types its answer, after
+  "try it first"; the learner never types. The spotlight walks the rows; the camera
+  zooms onto the row being filled when the form's text is small. The form board has
+  **no board picture**: the form is its picture, and the two do not fit together
+  (measured, ADR 029; an exception to §7e for the owner).
+- **A transcript** is a page with a slate left edge and the tag "Transcript"; each
+  turn's speaker label is set in the medium weight and navy, nothing more. It is
+  **covered** (§7g) until the question it answers is solved, then shown whole (Part
+  B, two columns as §7g) or a part at a time (Parts A and C, the view of §7h with any
+  number of neighbouring rows: a heading's or a question's section), never scrolled;
+  a section too long to be whole at 2.6% is shown as two parts, one after the other.
+- **A recording playing** (the practice set's own audio, in the lesson's clock): a
+  "Recording · Extract N" label in the header, white on blue with a pulsing dot (no
+  pulse under reduced motion), and a blue outline inside the board's edge, drawn over
+  nothing; nothing else changes and no word moves. While the board's transcript is
+  uncovered, the spotlight follows the row being spoken. A short spoken cue always
+  comes first ("Now listen to Extract 1."); the narration never speaks over it.
+- **A heard word**: a word-bank gloss of a word heard in a recording has a second
+  round button beside the speaker button, white with a blue edge and three bars,
+  that plays the sentence of the recording the word is said in (never by itself).
+
 ## 8. Marks
 
 Clean and re-authored. Never copies of the instructor's ink.

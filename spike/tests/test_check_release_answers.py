@@ -75,5 +75,68 @@ class Find(unittest.TestCase):
             self.assertEqual(c.main(), 1)
 
 
+# A made-up Listening release (ADR 029): a Part A gap-fill item, whose gaps
+# carry the answers, and an extract with a transcript
+TRANSCRIPT = ("Nurse: Good morning, the plorvex dressing on your left gallimer needs changing today.\n"
+              "Patient: Right, and will the quindle tablets still be taken twice a day after that?")
+LISTENING = {"sets": [{"parts": [{"stimuli": [
+    {"stimulus_id": "s-e1", "type": "audio-extract",
+     "speakers": [{"label": "Nurse"}, {"label": "Patient"}],
+     "transcript": {"format": "oa-transcript-v1", "text": TRANSCRIPT}}],
+    "items": [{"item_id": "g-item", "type": "gapfill", "numbers": [1, 2], "gaps": [
+        {"gap_id": "g-1", "number": 1, "prompt": "Wound: ____ dressing",
+         "scoring": {"accepted": ["Vexadrine gauze"], "accepted_misspellings": ["vexadrin gauze"]}},
+        {"gap_id": "g-2", "number": 2, "prompt": "Pain: ____", "scoring": {"accepted": ["trelloid ache"]}}]}]}]}]}
+
+
+class Listening(unittest.TestCase):
+    def files(self, *texts):
+        return Find.files(self, *texts)
+
+    def test_gap_answers_and_misspellings(self):
+        got = c.answers(LISTENING)
+        self.assertIn(("g-1", "accepted[0]", "vexadrine gauze"), got)
+        self.assertIn(("g-1", "misspelling[0]", "vexadrin gauze"), got)
+        self.assertIn(("g-2", "accepted[0]", "trelloid ache"), got)
+
+    def test_a_planted_gap_answer_is_found(self):
+        hits = c.find(c.answers(LISTENING), self.files("notes\nThe answer was Vexadrine-gauze."), set())
+        self.assertEqual(len(hits), 1)
+        self.assertIn(":2: an answer of g-1 (accepted[0])", hits[0])
+
+    def test_transcript_runs_leave_the_speaker_out(self):
+        runs = c.transcript_runs(LISTENING)
+        self.assertIn(tuple("good morning the plorvex dressing on your left".split()), runs)
+        self.assertFalse(any(r[0] == "nurse" for r in runs))
+        self.assertEqual(runs[tuple("good morning the plorvex dressing on your left".split())], ("s-e1", "run@0"))
+
+    def test_a_planted_transcript_line_is_found_across_lines(self):
+        hits = c.find_runs(c.transcript_runs(LISTENING),
+                           self.files("intro\nwill the quindle tablets still\nbe taken twice a day"), set())
+        self.assertEqual(len(hits), 1)
+        self.assertIn(":2: a run of 8 words of the transcript of s-e1", hits[0])
+
+    def test_seven_words_are_not_a_run(self):
+        self.assertEqual(c.find_runs(c.transcript_runs(LISTENING),
+                                     self.files("will the quindle tablets still be taken"), set()), [])
+
+    def test_an_exempt_run(self):
+        f = self.files("good morning the plorvex dressing on your left")
+        self.assertEqual(c.find_runs(c.transcript_runs(LISTENING), f, {("s-e1", "run@0")}), [])
+
+    def test_neither_answer_nor_transcript_is_printed(self):
+        pkg = Path(tempfile.mkdtemp()) / "package.json"
+        pkg.write_text(json.dumps({**LISTENING, "sets": LISTENING["sets"] + PACKAGE["sets"]}), encoding="utf-8")
+        files = self.files("we wrote vexadrine gauze\nand the plorvex dressing on your left gallimer needs changing")
+        out = io.StringIO()
+        with mock.patch.object(sys, "argv", ["x", str(pkg), "--files", *map(str, files)]), redirect_stdout(out):
+            self.assertEqual(c.main(), 1)
+        text = out.getvalue().lower()
+        self.assertIn("g-1 (accepted[0])", text)
+        self.assertIn("transcript of s-e1", text)
+        for word in ("vexadrine", "plorvex", "gallimer", "dressing"):
+            self.assertNotIn(word, text)
+
+
 if __name__ == "__main__":
     unittest.main()

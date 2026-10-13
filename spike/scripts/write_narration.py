@@ -57,7 +57,7 @@ import paths                                                   # noqa: E402
 from extract_understanding import api_key, esc, refuse_if_truncated, strip_bidi  # noqa: E402
 from write_screens import (maintainer_wording, relabel_note)                  # noqa: E402
 from build_course_index import check_ref                                      # noqa: E402
-from write_screens import (FIXED_FORBIDS, FRAME_CSS, frame_css, NON_LATIN, PAGE_CSS,     # noqa: E402
+from write_screens import (FIXED_FORBIDS, fixed_forbids, FRAME_CSS, frame_css, NON_LATIN, PAGE_CSS,     # noqa: E402
                            REGISTER_WORDS, block_html, block_texts, has_parts, is_exercise_board, resolve_images,
                            ledger_phrases, ledger_rulings, rulings_from_script)
 
@@ -75,6 +75,18 @@ MARK_TYPES = MARK_TYPES + MATCH_TYPES + SIGNAL_TYPES
 PHRASE_MARKS = {"underline", "circle", "highlight"}
 # `type` types a table cell's answer live (TABLE BOARDS; bundle 1.2)
 CUE_TYPES = ["reveal"] + MARK_TYPES + ["pause", "type"]
+# `play` plays a span of a Listening extract's own audio after its utterance,
+# in the lesson's clock (ADR 029, bundle 1.18): `text` the extract's stimulus ID,
+# `with` the span ("exam", "extract" or "lines N-M"). A Listening lesson's reply
+# schema only; every other lesson's is unchanged.
+PLAY = "play"
+# a pause whose `text` begins "reading time" is the exam's reading time, in a
+# Listening lesson only: it may be as long as the set's longest reading time
+# (ADR 029); every other pause stays 0.5 to 10 seconds
+READING_TIME = re.compile(r"^\s*reading time\b", re.I)
+PAUSE_MAX_S = 10.0
+READING_TIME_MAX_S = 95.0      # the longest reading time of a Listening set (Part C, 90.3 s) and a margin
+PLAY_CUE_WORDS = 12            # the spoken cue before a recording is short
 PROVENANCE = ["source-derived", "adapted", "authored", "corrected", "maintainer"]
 
 # Free proxies. Real timing comes from TTS word timings later (methodology §6);
@@ -986,18 +998,22 @@ def build_messages(data: dict, rewrite: dict | None = None, chunk: dict | None =
         import vocabulary_rule
         lesson_dir = Path(scr["lesson_dir"]) if scr.get("lesson_dir") else Path(data["screens_path"]).parents[3]
         import reading_rule
+        import listening_rule
         content.append({"type": "text", "text": vocabulary_rule.intro_first(INTRO_FIRST)
                         if vocabulary_rule.is_vocabulary(lesson_dir) else
                         reading_rule.intro_first(INTRO_FIRST) if reading_rule.is_reading(lesson_dir)
+                        else listening_rule.intro_first(INTRO_FIRST) if listening_rule.is_listening(lesson_dir)
                         else INTRO_FIRST})
         content.append({"type": "text", "text":
             "OTHER LESSONS' OPENINGS (never open with any of these sentences):\n"
             + json.dumps(data.get("openings") or {}, ensure_ascii=False)})
     elif scr.get("section", {}).get("intro"):
         import reading_rule
+        import listening_rule
         lesson_dir = Path(scr["lesson_dir"]) if scr.get("lesson_dir") else Path(data["screens_path"]).parents[3]
         content.append({"type": "text", "text": reading_rule.intro(INTRO)
-                        if reading_rule.is_reading(lesson_dir) else INTRO})
+                        if reading_rule.is_reading(lesson_dir) else listening_rule.intro(INTRO)
+                        if listening_rule.is_listening(lesson_dir) else INTRO})
         content.append({"type": "text", "text":
             "PREVIOUS LESSON (the one before this in the course; null for the first):\n"
             + json.dumps(data.get("previous_lesson"), ensure_ascii=False)
@@ -1021,7 +1037,8 @@ def build_messages(data: dict, rewrite: dict | None = None, chunk: dict | None =
     if vocabulary_rule.is_vocabulary(lesson_dir) and not scr.get("section", {}).get("intro"):
         content.append({"type": "text", "text": vocabulary_rule.NARRATION})
     import reading_rule                        # ADR 026; other lessons unchanged
-    if lesson_dir.name.split("-")[0].lower() in ("reading", "listening"):
+    import lesson_type
+    if lesson_type.has(lesson_dir, "delivery"):
         content.append({"type": "text", "text": DELIVERY})    # ADR 027 amendment
     if reading_rule.is_reading(lesson_dir):
         content.append({"type": "text", "text": reading_rule.NARRATION})
@@ -1037,6 +1054,9 @@ def build_messages(data: dict, rewrite: dict | None = None, chunk: dict | None =
             if any(b.get("vocab") or b.get("vocab_table") or (b.get("question") or {}).get("options")
                    for t in scr["topics"] for h in t["thoughts"] for b in h["blocks"]):
                 content.append({"type": "text", "text": reading_rule.NARRATION_PART_C})
+    import listening_rule                      # ADR 029; other lessons unchanged
+    if listening_rule.is_listening(lesson_dir):
+        content.append({"type": "text", "text": listening_rule.narration_text(lesson_dir, scr)})
     if rewrite:
         content.append({"type": "text", "text":
             "STATES TO REWRITE: " + ", ".join(rewrite["ids"]) + ". Their current "
@@ -1061,7 +1081,21 @@ def build_messages(data: dict, rewrite: dict | None = None, chunk: dict | None =
     return [{"role": "user", "content": content}]
 
 
-def request_params(messages: list[dict], ttl: str = "5m") -> dict:
+def schema_for(lesson: Path | None) -> dict:
+    """The reply's schema: a Listening lesson's cues may also `play` a span of
+    its practice set's audio (ADR 029); every other lesson's is SCHEMA, unchanged."""
+    import copy
+    import lesson_type
+    if lesson is None or not lesson_type.has(lesson, "exam_audio"):
+        return SCHEMA
+    s = copy.deepcopy(SCHEMA)
+    cue = s["properties"]["boards"]["items"]["properties"]["states"]["items"]["properties"][
+        "utterances"]["items"]["properties"]["cues"]["items"]
+    cue["properties"]["type"]["enum"] = CUE_TYPES + [PLAY]
+    return s
+
+
+def request_params(messages: list[dict], ttl: str = "5m", lesson: Path | None = None) -> dict:
     """The request, the same for a direct call and a batch. The stable system
     prompt comes first and is cached (llm.system_blocks); the page's own data
     follows in `messages`, after the cached prefix."""
@@ -1070,7 +1104,7 @@ def request_params(messages: list[dict], ttl: str = "5m") -> dict:
             "system": llm.system_blocks(SYSTEM, ttl),
             "thinking": {"type": "adaptive"},
             "output_config": {"effort": "high",
-                              "format": {"type": "json_schema", "schema": SCHEMA}},
+                              "format": {"type": "json_schema", "schema": schema_for(lesson)}},
             "messages": messages}
 
 
@@ -1128,7 +1162,7 @@ def draft(lesson: Path, pages: list[int], data: dict) -> None:
     client = anthropic.Anthropic(api_key=api_key(), max_retries=5)
     plan = chunk_plan(data)
     if len(plan) == 1:
-        with client.messages.stream(**request_params(build_messages(data))) as stream:
+        with client.messages.stream(**request_params(build_messages(data), lesson=lesson)) as stream:
             response = stream.get_final_message()
         refuse_if_truncated(response, MAX_TOKENS)
         print("stop_reason:", response.stop_reason)
@@ -1139,7 +1173,7 @@ def draft(lesson: Path, pages: list[int], data: dict) -> None:
     parts, raws, before = [], [], ""
     for n, ids in enumerate(plan, 1):
         msgs = build_messages(data, chunk={"n": n, "of": len(plan), "ids": ids, "before": before})
-        with client.messages.stream(**request_params(msgs)) as stream:
+        with client.messages.stream(**request_params(msgs, lesson=lesson)) as stream:
             response = stream.get_final_message()
         refuse_if_truncated(response, MAX_TOKENS)
         raw = json.loads(response.to_json())
@@ -1254,6 +1288,8 @@ def assemble(data: dict, model_out: dict) -> tuple[list[dict], list[dict]]:
             given[sid] = ms["utterances"]
             order_seen.append(sid)
 
+    import lesson_type
+    reading_time_ok = lesson_type.has(Path(data["screens_path"]).parents[3], "reading_time")
     expected = [s["id"] for bd in data["screens"]["boards"] for s in bd["states"]]
     for sid in order_seen:
         if sid not in expected:
@@ -1283,6 +1319,8 @@ def assemble(data: dict, model_out: dict) -> tuple[list[dict], list[dict]]:
                 cues = []
                 for c in u["cues"]:
                     c = dict(c)
+                    if c["type"] == "pause" and reading_time_ok and READING_TIME.match(c.get("text") or ""):
+                        c["reading_time"] = True          # ADR 029: the exam's reading time
                     for key in ("block", "to_block"):
                         v = c.get(key)
                         if c["type"] in MARK_TYPES and v and "." in str(v):
@@ -1439,7 +1477,7 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
     fail = lambda where, what: findings.append({"severity": "fail", "where": where, "what": what})
     warn = lambda where, what: findings.append({"severity": "warn", "where": where, "what": what})
     blocks = data["blocks"]
-    forbids = FIXED_FORBIDS + data["forbids"]
+    forbids = fixed_forbids(Path(data["screens_path"]).parents[3]) + data["forbids"]
 
     def stays(bid: str) -> bool:
         """A pinned practice-set question: on its board from its reveal to the
@@ -1450,9 +1488,19 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
 
     # a Reading Part C lesson (bundle 1.17): the opinion-signal marks are its only
     part_c_lesson = False
-    if data.get("lesson_id", "").startswith("reading"):
+    import lesson_type
+    lesson_dir_ = Path(data["screens_path"]).parents[3]
+    if lesson_type.of(lesson_dir_) == "reading":
         import reading_rule
-        part_c_lesson = reading_rule.is_part_c(Path(data["screens_path"]).parents[3])
+        part_c_lesson = reading_rule.is_part_c(lesson_dir_)
+    # a Listening lesson (ADR 029): the extracts a `play` cue may name, and the
+    # longest pause its reading times allow
+    exam_ok = lesson_type.has(lesson_dir_, "exam_audio")
+    import practice_set
+    ps_ = practice_set.load(lesson_dir_) if exam_ok else None
+    audio_st = {k for k, st in practice_set.stimuli(ps_ or {"parts": []}).items() if practice_set.is_audio(st)}
+    reading_max = min(READING_TIME_MAX_S, max([float(st.get("reading_time_s") or 0) + 1.0 for st in
+                                               practice_set.stimuli(ps_ or {"parts": []}).values()] or [0.0]))
 
     def parts_of(bid: str) -> list[str]:
         b = blocks.get(bid)
@@ -1604,8 +1652,8 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                                 if any(k not in typed_done[blk] for k in before):
                                     warn(uid, f"type {text_!r} before an earlier part of its cell")
                     elif typ in MARK_TYPES:
-                        if typ in MATCH_TYPES and not data.get("lesson_id", "").startswith("reading"):
-                            fail(uid, f"{typ} is a Reading lesson's keyword pair (ADR 026)")
+                        if typ in MATCH_TYPES and not lesson_type.has(lesson_dir_, "keyword_pairs"):
+                            fail(uid, f"{typ} is a Reading or Listening lesson's keyword pair (ADR 026, ADR 029)")
                         if typ in SIGNAL_TYPES and not part_c_lesson:
                             fail(uid, f"{typ} is a Reading Part C lesson's opinion-signal mark (ADR 026, 1.17)")
                         view = view_of.get(s["id"])
@@ -1698,9 +1746,37 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                                                       f"{row + 1}; only a wrong cell is struck")
                                         if typ == "strike":
                                             struck_cells.add((tb, row, cols[0]))
+                    elif typ == PLAY:
+                        # ADR 029, bundle 1.18: a span of an extract's own audio,
+                        # played after its utterance; the utterance is its short cue
+                        if not exam_ok:
+                            fail(uid, "play is a Listening lesson's cue (ADR 029)")
+                        elif (c.get("text") or "") not in audio_st:
+                            fail(uid, f"play names {c.get('text')!r}, which is not an extract of this "
+                                      "lesson's practice set")
+                        else:
+                            try:
+                                practice_set.exam_span(ps_, c["text"], c.get("with") or "")
+                            except ValueError as e:
+                                fail(uid, f"play {c['text']}: {e}")
+                        if c is not u["cues"][-1]:
+                            fail(uid, "play is the utterance's last cue: the recording starts when it ends")
+                        if any(x["type"] == "pause" for x in u["cues"]):
+                            fail(uid, "an utterance that plays a recording has no pause")
+                        last = re.split(r"(?<=[.?!])\s+", spoken(text).strip())[-1]
+                        if len(last.split()) > PLAY_CUE_WORDS:
+                            fail(uid, f"the spoken cue before a recording is short: its last sentence "
+                                      f"has {len(last.split())} words, at most {PLAY_CUE_WORDS}")
+                        if blk:
+                            warn(uid, "play names a block; it has no target")
                     elif typ == "pause":
                         sec = c.get("seconds")
-                        if sec is None or not 0.5 <= sec <= 10:
+                        if c.get("reading_time"):
+                            # ADR 029: the exam's reading time, as long as the set's
+                            if sec is None or not 0.5 <= sec <= reading_max:
+                                fail(uid, f"a reading-time pause of {sec} s; this lesson's reading times "
+                                          f"allow 0.5 to {reading_max:g}")
+                        elif sec is None or not 0.5 <= sec <= PAUSE_MAX_S:
                             warn(uid, f"pause of {sec} s; expected 0.5 to 10")
                         if blk:
                             warn(uid, "pause names a block; it has no target")
@@ -1941,8 +2017,10 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
     if ps and ps.get("numbering") == "lesson":
         taught = list(range(1, len(ps["lesson_items"]) + 1))
     elif ps and taught:
-        # a lesson numbered by the release (Reading 2 and 3): any number of the set
-        taught = sorted(i["number"] for i in practice_set.items(ps).values())
+        # a lesson numbered by the release (Reading 2 and 3; every Listening
+        # lesson, ADR 029, a gap-fill item's gaps included): any number of the set
+        taught = sorted(n for i in practice_set.items(ps).values()
+                        for n in (i["numbers"] if practice_set.is_gapfill(i) else [i["number"]]))
     for bd in boards:
         for f in question_numbers.board_findings(bd, blocks, taught):
             fail(f["where"], f["what"])
@@ -1990,7 +2068,7 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                                    f"column {v['col'] + 1} is never struck")
     # ADR 026 (maintainer, 2026-10-06): every phrase of a practice-set text the
     # narration reads aloud is marked as it is said (check_doc_marks.py)
-    if (data.get("lesson_id") or "").split("-")[0] == "reading":
+    if lesson_type.has(Path(data["screens_path"]).parents[3], "doc_marks"):
         import check_doc_marks
         for bd in boards:
             sb = scr_boards.get(bd["id"]) or {}
@@ -2306,7 +2384,7 @@ def main() -> None:
 
     import anthropic
     client = anthropic.Anthropic(api_key=api_key())
-    with client.messages.stream(**request_params(messages)) as stream:
+    with client.messages.stream(**request_params(messages, lesson=lesson)) as stream:
         response = stream.get_final_message()
     refuse_if_truncated(response, MAX_TOKENS)
     out_dir.mkdir(parents=True, exist_ok=True)

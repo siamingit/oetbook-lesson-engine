@@ -4,7 +4,7 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.17 for a Reading Part C lesson, 1.16 for a Reading Part B lesson, 1.14 for a Reading lesson with a map of its texts, 1.13 for another Reading lesson, 1.12 for every other lesson. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.18 for a Listening lesson, 1.17 for a Reading Part C lesson, 1.16 for a Reading Part B lesson, 1.14 for a Reading lesson with a map of its texts, 1.13 for another Reading lesson, 1.12 for every other lesson. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
 2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
 table boards, on 2026-09-25 (docs/adr/007-table-boards.md); 1.3, the board style
@@ -21,8 +21,10 @@ generated image, the same day (docs/adr/015-gloss-images.md); 1.12, a picture on
 every board and no block over another, on 2026-09-30 (docs/adr/020-no-overlap.md,
 docs/adr/021-a-picture-on-every-board.md); 1.13, a Reading lesson's practice-set
 texts and questions and its keyword pairs, on 2026-10-05
-(docs/adr/026-reading-lessons.md). A lesson is written in 1.13 only when it is a
-Reading lesson; every other lesson stays 1.12, byte for byte, until rebuilt.
+(docs/adr/026-reading-lessons.md); 1.18, a Listening lesson's recordings,
+transcripts and note forms, on 2026-10-13 (docs/adr/029-listening-lessons.md). A
+lesson is written in 1.13 only when it is a Reading lesson, and in 1.18 only when it
+is a Listening lesson; every other lesson stays 1.12, byte for byte, until rebuilt.
 A change to it is a new format version (§3), recorded in a new ADR.
 
 | Version | Date | Change |
@@ -45,6 +47,7 @@ A change to it is a new format version (§3), recorded in a new ADR.
 | 1.14 | 2026-10-06 | a lesson with a map of its texts only (ADR 026, the Part A question method): a core `table` block's `map` (the four texts as one table, each starting at its own row), null on every other block; on a map board, a state's `doc` and `zoom`; rule 31; `blocks.css` adds the map's rules. Additive: a 1.13 renderer that ignores `map`, `doc` and `zoom` draws a map as a table of every part |
 | 1.17 | 2026-10-08 | a Reading Part C lesson only (ADR 026, the Part C question method amendment of 2026-10-08): a state's `view` on a Part C question board (the text as a map or the paragraph read, whole); the block type `scale` (an attitude scale; its `items` kinds `marker`, `out`, `key`); a question's `options_later` (its first part, kind `options`, shows the options) and `target`; a doc part's `bold`; a `vocab_table` kind `recap_grouped` with `groups`; the mark cue types `sig_opinion`, `sig_hedge`, `sig_judge`, `sig_main`, `sig_aside`; rules 37 to 40; `blocks.css` adds the Part C rules. Additive: a 1.16 renderer draws the text whole, the options from the start and no signal marks |
 | 1.16 | 2026-10-08 | a Reading Part B lesson only (ADR 026, 2026-10-08 amendment): a question board in two columns, the extract whole, replacing 1.15's lens: a board's `split`; a state's `overlay` (glosses drawn over the question column), a gloss's going as a `clears` entry; the board's `focus` with no row until the whole extract has shown; `lens` and `lens_from` no longer written; rule 36 (rule 35 is 1.15 only); `blocks.css` adds the whole extract's spotlight. Minor: a 1.15 renderer finds no `lens` and draws the board as a table board, every block in one flow |
+| 1.18 | 2026-10-13 | a Listening lesson only (ADR 029): an utterance of `kind` "exam", a recording of the practice set's own audio in the lesson's clock (`exam`, `provenance` "release", `text` null, its span `clip_in`/`clip_out` in the release's file); the cue type `play` that starts it; a pause's `reading_time`; a doc's `text_type` `transcript` (parts `turn` with `speaker`, `para`) and `form` (a Part A note form, its gaps typed parts); a gloss's `heard`; rules 42 to 45; `blocks.css` adds the Listening rules. Additive: a 1.17 renderer plays a recording as an utterance (rules 1, 17), draws a transcript and a form as documents, a form's gaps as typed gaps (rule 10), shows no recording state and no second button |
 
 ---
 
@@ -81,6 +84,7 @@ One folder per lesson: `<lesson>/generated/lesson-player/`.
 | `blocks.css` | **yes** | the stylesheet each block's `html` is written against (§7) |
 | audio, `../<section>/boards/audio/<hash>.wav` | **yes** | one clip per utterance, named in `bundle.json` (§8) |
 | images, `../images/<hash>.png` | **yes** | the gloss images (1.11) and board pictures (1.12), each named by a block's `image.file` (rules 26, 27); several blocks may name one file. The folder, `generated/images/`, also holds earlier drafts that no bundle names: only the files named are part of the lesson |
+| recordings, `../exam-audio/<file>.mp3` | **yes** | 1.18, a Listening lesson: the practice set's extract audio, copied from the exercises release unchanged (its sha256 the release's), named by a recording's `audio_file` and a gloss's `heard.file` |
 | `player.html` | no | the reference renderer, with the bundle embedded |
 | `timeline.json`, `audio_index.json` | no | build intermediates: the timeline is repeated in `bundle.json`; the audio index holds per-word timings and voice settings the website does not need |
 | `marks_check.json` | no | the mark check's report |
@@ -173,7 +177,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.12"`; `"1.13"` for a Reading lesson; `"1.14"` for a lesson with a map of its texts; `"1.16"` for a Reading Part B lesson (`"1.15"` for one built before 2026-10-08); `"1.17"` for a Reading Part C lesson |
+| `format_version` | string | `"1.12"`; `"1.13"` for a Reading lesson; `"1.14"` for a lesson with a map of its texts; `"1.16"` for a Reading Part B lesson (`"1.15"` for one built before 2026-10-08); `"1.17"` for a Reading Part C lesson; `"1.18"` for a Listening lesson |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -250,7 +254,7 @@ A block is one thing on a board. Each carries its data and its rendered `html`.
 | `band` | 1.3. On the first change card of a run, the process pill's text ("Nominalisation") |
 | `verdicts` | 1.6. A choice table (a core `table` whose rows offer versions of one sentence to choose between): each body cell's verdict, `[{row, col, verdict}]`, `verdict` `right`, `wrong` or `possible` (also acceptable, or correct only in some context). Null for any other table |
 | `beside` | 1.2. a side note on a table board: `{block, row}`, the table and the row it is about (from 0), or row null for a note about the whole table; otherwise null. 1.12: drawn under the table, never over it; the row is shown by the spotlight (`focus`), not by where the note sits (rule 12). A board's picture on a table board carries it with row null |
-| `doc` | 1.13, Reading lessons. A core `table` that is a practice-set text: `{stimulus, label, title, text_type, parts}`. `stimulus` is its id in the exercises release, `label` ("Text B") and `title` as released, `text_type` (`table`, `guideline`, `protocol`, `notes`; Parts B and C add `email`, `memo`, `policy`, `extract`), and `parts` one `{kind, mark}` per row: `heading`, `para`, `bullet`, `num` (`mark` its number), `thead` and `trow` (a row of a table inside the text, its cells joined by " \| " in the row's text). The table has one column; its `header` is the label and title; each row's text is the released line, its list marker drawn by the stylesheet (rule 29). Null on any other block |
+| `doc` | 1.13, Reading lessons. A core `table` that is a practice-set text: `{stimulus, label, title, text_type, parts}`. `stimulus` is its id in the exercises release, `label` ("Text B") and `title` as released, `text_type` (`table`, `guideline`, `protocol`, `notes`; Parts B and C add `email`, `memo`, `policy`, `extract`), and `parts` one `{kind, mark}` per row: `heading`, `para`, `bullet`, `num` (`mark` its number), `thead` and `trow` (a row of a table inside the text, its cells joined by " \| " in the row's text). 1.18, a Listening lesson: `text_type` `transcript` (an extract's transcript, `stimulus` its ID; parts `turn`, a line that opens with a speaker's label, `speaker` that label, and `para`, a further paragraph of a talk; each row the released line) and `form` (a Part A note form, `stimulus` its extract and `item` its gap-fill item; parts `heading` and `num`, `mark` the gap's exam number and `gap` its ID; the block's `typed` holds each gap's answer, rule 42) The table has one column; its `header` is the label and title; each row's text is the released line, its list marker drawn by the stylesheet (rule 29). Null on any other block |
 | `question` | 1.13, Reading lessons. A `plain` block that is a practice-set question: `{item, kind, max_words}`, `item` its id in the exercises release (`oa-reading-000014`), `kind` `matching`, `short-answer` or `sentence-completion`; the block's `text` is the question as released (a matching item's lead-in and stem), `exercise_item` its number (from Reading Part C (1) on, its number in the lesson, from 1 in the order taught, never the release's: ADR 026 amendment of 2026-10-08; no new field). Null on any other block. 1.17, a Part C question: `options_later` true (its options are its first part, kind `options`, shown only from that part's reveal) and `target`, the in-context words its stem prints in bold, where it has them |
 | `map` | 1.14. A core `table` that is a map of a practice set's texts (ADR 026, Part A question method): `{docs}`, one entry per text in order, `{stimulus, label, title, text_type, parts, header, first, count}`: the text as `doc` gives it (rule 29), its header line, and the table's rows it holds, `first` (from 0) and `count`. The table's `rows` are every text's parts in that order, each the released line; its `header` is a label for the whole. Null on any other block |
 | `synonym` | 1.15. A word-bank `gloss`: one synonym from the word bank, shown under the meaning (part kind `synonym`) |
@@ -262,7 +266,8 @@ A block is one thing on a board. Each carries its data and its rendered `html`.
 | `items` | 1.17, `scale`: its parts in order, `{kind, option, at, part}`: `marker` (the view the evidence read so far points to, at `at` on 0-100 from the negative end), `out` or `key` (option `option`'s place at `at`, struck or ticked). `timeline`: its diagram parts in order (below). 1.7, `clauses`: its parts in order, `{kind, text, piece, part}`: `kind` `dependent` or `independent` (a piece, `text` its words), `glue` (the joining word; `piece` the piece it is in, from 1, or null for a bridge between two independent pieces), `subject` or `verb` (a label over `text` in `piece`), or `join`; 1.9: `defining` or `nondefining` (a relative clause set into the independent `piece`, `text` its words without its commas), `remove` (the removal test: `text` the sentence without the clause, `keeps` true when it still works), `link` or `dangling` (`text` a participle in the dependent `piece`, `from` the part number of the main clause's `subject`); the part id is `<block id>.<part>` |
 | `tags` | tense tags: `[{text, family, label}]`; `label` is what the chip says ("up to now") |
 | `exercise_item` | the item number an exercise sentence carries in its badge, or null |
-| `provenance` | `source-derived`, `adapted`, `corrected`, `authored` or `maintainer` (AGENTS.md §9). For review; the student is not shown it |
+| `provenance` | `source-derived`, `adapted`, `corrected`, `authored` or `maintainer` (AGENTS.md §9). For review; the student is not shown it. 1.18: an utterance of kind "exam" is `release` (the practice set's own recording) |
+| `heard` | 1.18, a Listening lesson's word-bank `gloss`: `{file, start, end}`, the sentence of a recording the word is heard in, as two times in the extract's own audio file (relative to the bundle's folder); played only when the learner taps the gloss's second button (rule 45) |
 | `html` | the block drawn by the pipeline, styled by `blocks.css` |
 
 A diagram part (`items[]`): `kind` (`period`, `point`, `now`, `arrow`, `marker`,
@@ -334,8 +339,10 @@ two things must hold, because cues and the reading pointer depend on them:
 
 | Field | Meaning |
 |---|---|
-| `id` | utterance id |
-| `text` | exactly what the voice says |
+| `id` | utterance id; 1.18, a recording: its `play` cue's utterance's id and `.x` |
+| `kind` | 1.18. `"exam"`: a recording of the practice set's own audio (rule 43); absent for narration |
+| `exam` | 1.18, a recording: `{stimulus, label, span, rows, release, sha256}`: the extract, its label ("Extract 1"), the span ("exam", "extract" or "lines N-M"), the transcript rows it holds (from 0, `[first, last]`, null for a whole span), the release, and the sha256 of its file |
+| `text` | exactly what the voice says; 1.18, null for a recording |
 | `provenance` | as for blocks; for review |
 | `audio_file` | the clip, relative to `bundle.json` (§8) |
 | `start`, `end` | when it plays; `end - start` is the part of the clip played |
@@ -366,7 +373,7 @@ with the bundle.
 | Field | Meaning |
 |---|---|
 | `id` | cue id, within the utterance |
-| `type` | `reveal`, `pause`, `type` (1.2), or a mark: `underline`, `highlight`, `circle`, `strike`, `bracket`, `point`, `arrow`, `replace` (docs/02-DESIGN-SYSTEM.md §8); 1.13, Reading lessons: `match1`, `match2`, `match3`, a keyword pair (rule 30); 1.17, Reading Part C lessons: `sig_opinion`, `sig_hedge`, `sig_judge`, `sig_main`, `sig_aside`, an opinion-signal mark (rule 38) |
+| `type` | `reveal`, `pause`, `type` (1.2), `play` (1.18: starts a recording, rule 43), or a mark: `underline`, `highlight`, `circle`, `strike`, `bracket`, `point`, `arrow`, `replace` (docs/02-DESIGN-SYSTEM.md §8); 1.13, Reading lessons: `match1`, `match2`, `match3`, a keyword pair (rule 30); 1.17, Reading Part C lessons: `sig_opinion`, `sig_hedge`, `sig_judge`, `sig_main`, `sig_aside`, an opinion-signal mark (rule 38) |
 | `time` | when it takes effect: a lead before its word, or for a pause the end of the utterance |
 | `time_end` | the end of its word; for a pause, the end of the silence; for a `type`, the end of the typing |
 | `retargeted_from` | 1.3. Not in the bundle: a cue on a folded block names the block it is folded into, with its phrase as that block writes it, and a cue on a change card names the phrase without its word class ("Analysis", not "Analysis (noun)") |
@@ -376,6 +383,8 @@ with the bundle.
 | `to_block`, `to_text` | an arrow's end |
 | `with` | a replace mark's correction |
 | `seconds` | a pause's length |
+| `reading_time` | 1.18. A pause that is the exam's reading time, in a Listening lesson: up to 95 seconds (every other pause 0.5 to 10) |
+| `with` (play) | 1.18. A `play` cue's span; its `text` the extract's stimulus ID; its `time` and `time_end` the recording's start and end |
 | `word_index`, `anchor_word` | the spoken word the cue sits on; informational |
 
 ### `events[]`
@@ -625,6 +634,26 @@ These are the only rules. Every time and target they use is in the bundle.
     stops at its floor, the others go on), until it fits. The size holds for the
     whole board (rule 19). Where the board fits, nothing changes.
 
+42. **A note form** (1.18): a core table whose `doc.text_type` is `form` is a
+    document (rule 29), a Part A note form: a `heading` row is set as a heading, a
+    `num` row carries its gap number as a badge (a stylesheet attribute, never a
+    word); each gap is a typed part with the class `gap` (rules 10, 1.6), typed in
+    by the lesson's `type` cue. The learner never types.
+43. **A recording** (1.18): an utterance of `kind` "exam" is played by rules 1 and
+    17 (its `audio_file` from `clip_in` to `clip_out`, the release's file unchanged).
+    While the lesson time is inside it, the renderer shows that a recording is
+    playing (the reference player: "Recording" and the extract's label in the header,
+    and an outline round the board), over no word (rule 19). The narration never
+    speaks over it; its `play` cue is in the utterance before it.
+44. **A transcript following a recording** (1.18): a core table whose
+    `doc.text_type` is `transcript` is a document (rule 29); its row times while a
+    recording of it plays are in the board's `focus` (rule 11), stated by the
+    builder. On a board with `split` it is drawn as rule 36 (whole) or rule 37 (a
+    `view` of any number of neighbouring rows), its covered states by rule 33.
+45. **A heard word** (1.18): a gloss with `heard` shows a second button with no
+    words; tapping it plays `file` from `start` to `end`, as rule 34 plays a
+    pronunciation clip (the lesson's own clock never plays it).
+
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and
 reduced motion. A seek shows the correct state at once, with no replay.
@@ -645,6 +674,9 @@ no cues and no provenance.
 | `sections[].board_text` | every block's words, one block per paragraph |
 | `sections[].boards[]` | `{id, start, board_text: [{block, text}], narration: [{id, start, text, refs}]}`; `refs` (1.1) as in `bundle.json` |
 
+- **No recordings** (1.18): an utterance of kind "exam" is not narration and is
+  not in `narration`; a transcript or note form on a board is in `board_text`, like
+  any document.
 - **Narration as spoken:** exactly the text the voice says, so numbers are
   words ("two thousand and ten") where the board shows digits ("2010"), and an
   initialism is written with hyphens ("C-O-P-D") where the board shows "COPD"
@@ -685,6 +717,8 @@ voice settings and pronunciations, so a changed text always gets a new file
 
 The bundle's times are the clips' own. A published copy may be re-encoded
 as long as each clip keeps its length.
+A Listening recording (1.18) is the exercises release's own MP3, never changed by
+the engine (ADR 029): its loudness is the release's.
 
 **Audio for the web — `OPEN`, recorded by the maintainer 2026-09-24.** The WAV
 clips are the masters: they stay local, with the lesson, and are never

@@ -328,6 +328,11 @@ INTRO_SOURCE = ("the recording's opening, whatever slide is on screen: the deck 
                 "contents slide (maintainer, 2026-09-24)")
 
 
+def lesson_type_default(lesson: Path) -> str:
+    import lesson_type
+    return lesson_type.from_id(lesson)
+
+
 def main() -> None:
     lesson = Path(sys.argv[1])
     out_path = lesson / "analysis" / "sections.json"
@@ -502,6 +507,20 @@ def main() -> None:
         out_path.write_text(json.dumps(previous, ensure_ascii=False, indent=1), encoding="utf-8")
         print(f"lesson description set (maintainer): {text!r}")
         return
+    if "--type" in sys.argv:
+        # The lesson's type (lesson_type.py; ADR 029): the features it turns on.
+        # A config made before 2026-10-13 has none and takes its id's first word.
+        import lesson_type
+        if not previous:
+            raise SystemExit("run without --type first")
+        v = sys.argv[sys.argv.index("--type") + 1].lower()
+        if v not in lesson_type.TYPES:
+            raise SystemExit(f"--type {'|'.join(lesson_type.TYPES)}")
+        by = sys.argv[sys.argv.index("--by") + 1] if "--by" in sys.argv else "maintainer"
+        previous["lesson"].update(type=v, type_by=f"{by} {today}")
+        write(out_path, previous)
+        print(f"lesson type: {v} ({by})")
+        return
     if "--tense-lesson" in sys.argv:
         # A lesson about tenses (docs/02-DESIGN-SYSTEM.md §7c): only its boards
         # draw tense colours; in any other lesson tense labels are neutral.
@@ -671,6 +690,11 @@ def main() -> None:
                       "deck's own contents-slide groupings, a level above sections "
                       "(docs/00-PRODUCT.md §1).",
            "lesson": {"title": lesson_title, "page": title_page["page"] if title_page else None,
+                      # the lesson's type (lesson_type.py, ADR 029): kept, or, for a
+                      # config made now, the first word of the lesson's id
+                      **({k: previous["lesson"][k] for k in ("type", "type_by") if k in previous["lesson"]}
+                         if previous.get("lesson") else {"type": lesson_type_default(lesson),
+                                                         "type_by": f"default, from the lesson id {today}"}),
                       **({"page_by": previous["lesson"]["page_by"]}
                          if previous.get("lesson", {}).get("page_by") else {}),
                       "status": previous.get("lesson", {}).get("status", "from-deck"),

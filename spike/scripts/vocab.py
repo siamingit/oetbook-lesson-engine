@@ -1,5 +1,6 @@
-"""The vocabulary layer of a Reading Part B or C lesson (docs/adr/026-reading-lessons.md
-§2; bundle 1.15).
+"""The vocabulary layer of a Reading or Listening Part B or C lesson
+(docs/adr/026-reading-lessons.md §2, bundle 1.15; docs/adr/029-listening-lessons.md,
+bundle 1.18).
 
     .venv/Scripts/python spike/scripts/vocab.py <lesson_dir> --sync
     .venv/Scripts/python spike/scripts/vocab.py <lesson_dir> --briefs FILE
@@ -25,6 +26,13 @@ from it with no model call.
 `--briefs FILE` sets image briefs ({"<lx: ID or key>": "alt | what to draw"});
 `--check` fails when a word of the set has no meaning, synonym, example,
 audio file or image brief.
+
+A Listening set's words occur in its transcripts (location kind `transcript`,
+by speaker turn and paragraph) as well as in its stems and options. A word
+heard in a recording also gets `heard` (bundle 1.18): the sentence it is said in,
+as two times in the extract's own audio file (the word bank's sentence times,
+padded 0.15 s before and 0.1 s after, as the word bank advises), for a "hear it
+in the recording" button. The release's audio is never changed.
 """
 
 import json
@@ -133,6 +141,27 @@ def entry(lesson: Path, key: str) -> dict:
     return lex[lid]
 
 
+def transcript_row(lesson: Path, text_id: str, loc: dict) -> int | None:
+    """The transcript row (from 1) of a word-bank location in a Listening
+    extract: its speaker turn's first row, plus its paragraph within the turn."""
+    ps = practice_set.load(lesson)
+    st = practice_set.stimuli(ps or {"parts": []}).get(text_of(lesson, text_id))
+    if not st or not practice_set.is_audio(st):
+        return None
+    turns = [n for n, p in enumerate(practice_set.transcript_parts(st), 1) if p["kind"] == "turn"]
+    if not 1 <= loc.get("turn", 0) <= len(turns):
+        return None
+    return turns[loc["turn"] - 1] + max(0, (loc.get("paragraph") or 1) - 1)
+
+
+def where_of(lesson: Path, o: dict) -> str:
+    loc = o["location"]
+    if loc["kind"] == "transcript":
+        return f"transcript row {transcript_row(lesson, o['text_id'], loc)}"
+    return ("text" if loc["kind"] == "text" else
+            "question" if loc["kind"] == "stem" else f"option {loc.get('option')}")
+
+
 def set_words(lesson: Path) -> dict[str, list[dict]]:
     """The set's words by text id (t1...), in the order they first occur:
     [{key, lexicon_id, headword, where: [...]}]."""
@@ -140,9 +169,7 @@ def set_words(lesson: Path) -> dict[str, list[dict]]:
     out: dict[str, list[dict]] = {}
     for o in occurrences(sid or ""):
         k = key_of(lesson, o["lexicon_id"])
-        loc = o["location"]
-        where = ("text" if loc["kind"] == "text" else
-                 "question" if loc["kind"] == "stem" else f"option {loc.get('option')}")
+        where = where_of(lesson, o)
         words = out.setdefault(o["text_id"], [])
         w = next((x for x in words if x["key"] == k), None)
         if not w:
@@ -185,8 +212,9 @@ def words_for_prompt_part_c(lesson: Path, text_ids: list[str] | None = None) -> 
     for o in occurrences(set_id(lesson) or ""):
         loc = o["location"]
         at = (f"text paragraph {loc['paragraph']}" if loc["kind"] == "text" else
+              where_of(lesson, o) if loc["kind"] == "transcript" else
               "the question" if loc["kind"] == "stem" else f"option {loc.get('option')}")
-        if loc["kind"] != "text":
+        if loc["kind"] not in ("text", "transcript"):
             at += f" of question {practice_set.number(ps, items[loc['item_id']])}"
         where.setdefault((o["text_id"], o["lexicon_id"]), []).append(f"{at}: '{o['surface']}'")
     lines = []
@@ -212,17 +240,57 @@ def audio_file(e: dict) -> str | None:
     return Path(a["file"]).name if a.get("file") else None
 
 
+HEARD_BEFORE_S = 0.15         # a sentence span is padded before (the word bank's advice)
+HEARD_AFTER_S = 0.10          # and after
+
+
+def _occ_file(set_id_: str) -> dict:
+    p = EXERCISES / "vocab" / "occurrences" / f"{set_id_}.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+
+
+def heard(lesson: Path, key: str) -> dict | None:
+    """Where a Listening word is first heard in the set's recordings (bundle
+    1.18): {file, stimulus, start, end}, the sentence it is said in, as times in
+    the extract's own audio file (the word bank's sentence times are in the part
+    file; they move by the word's own offset between the two), padded as the
+    word bank advises. None for a word never heard (in a stem or an option
+    only), or where the extract's audio is not the file the word bank timed."""
+    ps = practice_set.load(lesson)
+    lid = lexicon_id(lesson, key)
+    sid = set_id(lesson)
+    if not ps or not lid or not sid:
+        return None
+    timed = {x["text_id"]: x for x in (_occ_file(sid).get("audio") or {}).get("extracts") or []}
+    for o in occurrences(sid):
+        if o["lexicon_id"] != lid or o["location"]["kind"] != "transcript" or not o.get("audio"):
+            continue
+        st = practice_set.stimuli(ps).get(text_of(lesson, o["text_id"]))
+        if not st or (timed.get(o["text_id"]) or {}).get("sha256") != st["audio"]["sha256"]:
+            return None
+        a = o["audio"]
+        off = a["start_s"] - a["extract_start_s"]
+        return {"file": Path(st["audio"]["path"]).name, "stimulus": st["stimulus_id"],
+                "start": round(max(0.0, a["sentence_start_s"] - off - HEARD_BEFORE_S), 3),
+                "end": round(min(st["audio"].get("duration_s") or 1e9,
+                                 a["sentence_end_s"] - off + HEARD_AFTER_S), 3)}
+    return None
+
+
 def gloss_block(lesson: Path, key: str) -> dict:
     """A word-bank gloss (bundle 1.15): the word, its meaning, a synonym and its
     example from the word bank, the engine's image brief, its lx: ID and its
-    pronunciation clip. Built by code from the ID; never written by the model."""
+    pronunciation clip. Built by code from the ID; never written by the model.
+    A Listening word also has `heard` (bundle 1.18), where a recording says it."""
     e = entry(lesson, key)
     w = load_ids(lesson)["words"][key]
     a = e.get("audio") or {}
+    hd = heard(lesson, key)
     return {"type": "gloss", "term": e["headword"], "explanation": e["definition"],
             "synonym": (e.get("synonyms") or [None])[0], "text": e["example"],
             "icon": w.get("image_brief"), "vocab": key,
             "audio": ({"file": audio_file(e), "seconds": a.get("seconds")} if audio_file(e) else None),
+            **({"heard": hd} if hd else {}),
             "provenance": "source-derived",
             "note": f"word bank {w['lexicon_id']} (oetacademy-exercises vocab/lexicon.json): meaning, "
                     "synonym and example as the bank gives them; built by code (ADR 026 §2)"}
@@ -265,12 +333,18 @@ def question_words(lesson: Path) -> dict[str, list[str]]:
     {item id: [key, ...]}, the items in number order."""
     ps = practice_set.load(lesson) or {"parts": []}
     items = practice_set.items(ps)
-    out: dict[str, list[str]] = {i: [] for i in sorted(items, key=lambda i: items[i]["number"])}
+    out: dict[str, list[str]] = {i: [] for i in sorted(items, key=lambda i: practice_set.release_number(items[i]))}
     seen: dict[str, set] = {}
     for o in occurrences(set_id(lesson) or ""):
         loc = o["location"]
-        if loc["kind"] == "text":
-            ids = loc.get("paragraph_item_ids") or []
+        if loc["kind"] in ("text", "transcript"):
+            # a Listening word heard in a question's section of the recording goes
+            # to that question; one heard outside every section, to the first
+            # question of its extract (ADR 029)
+            ids = loc.get("paragraph_item_ids" if loc["kind"] == "text" else "section_item_ids") or [
+                i for i in out if text_of(lesson, o["text_id"]) in items[i]["stimulus_ids"]][:1]
+            if not ids:
+                continue
             later = [i for i in ids[1:] if o["surface"].lower() in (items[i].get("evidence") or "").lower()]
             item = later[-1] if later else ids[0]
         else:

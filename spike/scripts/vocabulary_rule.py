@@ -12,7 +12,9 @@ from pathlib import Path
 
 
 def is_vocabulary(lesson: Path) -> bool:
-    return Path(lesson).name.split("-")[0].lower() == "vocabulary"
+    """A lesson of type vocabulary (lesson_type.py: its config's type, else its id's first word)."""
+    import lesson_type
+    return lesson_type.of(lesson) == "vocabulary"
 
 
 NOTE = "vocabulary rule (ADR 019)"

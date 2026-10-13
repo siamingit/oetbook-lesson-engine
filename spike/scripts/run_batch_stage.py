@@ -103,7 +103,7 @@ def jobs_for(L: Path, stage: str, include_done: bool = False, ttl: str = "1h") -
                                  "is never written on failing screens")
             data = wn.gather(L, s["pages"])
             job = {"custom_id": tag(s["pages"]), "provider": "anthropic",
-                   "params": wn.request_params(wn.build_messages(data), ttl),
+                   "params": wn.request_params(wn.build_messages(data), ttl, lesson=L),
                    "out": d / "raw_response.json",
                    "render": (lambda s=s, data=data: wn.render(L, s["pages"][0], data))}
             if len(wn.chunk_plan(data)) > 1:
