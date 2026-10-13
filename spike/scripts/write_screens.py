@@ -146,6 +146,7 @@ ICONS = {
 # preview and the review pages.
 IMAGE_TOKEN = "@@gloss-images@@"
 AUDIO_TOKEN = "@@vocab-audio@@"      # a word-bank gloss's pronunciation clip (bundle 1.15)
+EXAM_TOKEN = "@@exam-audio@@"        # a Listening extract's audio, as released (bundle 1.18)
 
 # A picture on every board (maintainer, 2026-09-30; docs/adr/021-a-picture-on-every-board.md):
 # a generated illustration in the gloss images' approved style, meaningful to the
@@ -174,6 +175,10 @@ def resolve_images(html: str, page_dir: Path, lesson: Path) -> str:
     if AUDIO_TOKEN in html:
         # a word-bank gloss's pronunciation clip (bundle 1.15)
         html = html.replace(AUDIO_TOKEN, os.path.relpath(lesson / "generated" / "vocab-audio", page_dir)
+                            .replace(os.sep, "/"))
+    if EXAM_TOKEN in html:
+        # a Listening extract's audio file, copied unchanged (bundle 1.18)
+        html = html.replace(EXAM_TOKEN, os.path.relpath(lesson / "generated" / "exam-audio", page_dir)
                             .replace(os.sep, "/"))
     if IMAGE_TOKEN not in html:
         return html
@@ -758,7 +763,7 @@ def unflatten(topics: list[dict]) -> None:
                     b["label"] = sentence_label(b["label"])
                 if b.get("type") == "clauses" and isinstance(b.get("items"), list):
                     b["items"] = clause_items(b["items"])
-                elif b.get("type") == "plain" and re.match(r"oa-reading-\d", (b.get("label") or "").strip()):
+                elif b.get("type") == "plain" and re.match(r"oa-(?:reading|listening)-\d", (b.get("label") or "").strip()):
                     pass        # a practice-set question's parts: parsed by expand_practice (1.15)
                 elif b.get("type") == "plain" and (b.get("label") or "").strip().upper() == "SCALE":
                     # an attitude scale (Part C, bundle 1.17): written on a plain block
@@ -1188,6 +1193,16 @@ FIXED_FORBIDS = ["video", "recording", "this session", "the session", "the class
                  "coursebook", "oetbook", "persian", "translat", "pause the",
                  "logo", "instructor"]
 
+
+def fixed_forbids(lesson) -> list[str]:
+    """FIXED_FORBIDS for a lesson. In a Listening lesson "recording" names the
+    practice set's own audio, which the lesson plays (ADR 029): it is the
+    subject, not the source session, so only it is allowed there."""
+    import lesson_type
+    if lesson and lesson_type.has(Path(lesson), "exam_audio"):
+        return [f for f in FIXED_FORBIDS if f != "recording"]
+    return FIXED_FORBIDS
+
 # Proxy for a register claim (methodology §17b). A hit is a finding for the
 # reviewer, not proof: "common cold" would trip it. Maintainer blocks are exempt.
 REGISTER_WORDS = re.compile(
@@ -1453,6 +1468,12 @@ def build_messages(data: dict) -> list[dict]:
         if reading_rule.is_part_c(Path(data["lesson_dir"])):
             content.append({"type": "text", "text": reading_rule.SCREENS_SIGNALS})    # 1.17
         practice = reading_rule.set_text(Path(data["lesson_dir"]), data["pages"])
+        if practice:
+            content.append({"type": "text", "text": practice})
+    import listening_rule                      # ADR 029; other lessons unchanged
+    if listening_rule.is_listening(Path(data["lesson_dir"])):
+        content.append({"type": "text", "text": listening_rule.SCREENS})
+        practice = listening_rule.set_text(Path(data["lesson_dir"]), data["pages"])
         if practice:
             content.append({"type": "text", "text": practice})
     import length_budget                       # ADR 023; none for a lesson built before it
@@ -2763,9 +2784,19 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             opened = veils.index(False) if False in veils else len(veils)
             if not veils[0] or any(veils[opened:]):
                 fail(t["id"], "the covered thoughts come first, before the text appears")
+    # 1c. a Listening transcript (ADR 029, bundle 1.18): each part shown names its
+    # rows, and the transcript is covered first, until the question is solved
+    for t in out["topics"]:
+        if not any((b.get("doc") or {}).get("text_type") == "transcript"
+                   for h in t["thoughts"] for b in h["blocks"]):
+            continue
+        for h in t["thoughts"]:
+            if h.get("view_bad"):
+                fail(t["id"], f"thought {h['id']}: purpose {h['view_bad']!r} names no part of the "
+                              "transcript: start it 'Map:', 'Map P<N>:', 'Para <N>:' or 'Para <N>-<M>:'")
 
     # 2. never-on-screen strings, Persian script, register claims
-    forbids = FIXED_FORBIDS + data["forbids"]
+    forbids = fixed_forbids(data.get("lesson_dir")) + data["forbids"]
     for b in blocks.values():
         as_released = bool(b.get("doc") or b.get("map") or b.get("question") or b.get("vocab")
                            or b.get("vocab_table"))
@@ -3644,22 +3675,56 @@ PART_C_CSS = """
 """
 
 
+# A Listening lesson's blocks (bundle 1.18; ADR 029): added only to a lesson whose
+# practice set is a Listening set, so no other lesson's stylesheet changes. A
+# transcript is a page whose speakers' labels are set apart by type only; a Part
+# A note form is a page whose gap numbers are badges (CSS attributes, never
+# words); a word's "hear it in the recording" button has no words. Nothing here
+# moves a word (design system §8a).
+LISTENING_CSS = """
+.tbl.core.doc-transcript{border-left:max(4px,.9cqh) solid #475569}
+.tbl.core.doc-transcript th{background:#F1F0EB;color:#2C2C2A;border-bottom-color:#D3D1C7}
+.tbl.core.doc tr.dp-turn td .spk{font-weight:500;color:#042C53}
+.tbl.core.doc-form{border-top:max(3px,.7cqh) solid #185FA5}
+.tbl.core.doc-form th{background:#F4F6F9}
+.tbl.core.doc-form tr.dp-num td{padding-left:4.6cqw}
+.tbl.core.doc-form tr.dp-num td::before{content:attr(data-mark);left:1cqw;top:.45cqh;display:inline-flex;
+  align-items:center;justify-content:center;min-width:1.15em;height:1.15em;padding:0 .15em;box-sizing:border-box;
+  border-radius:.6em;background:#185FA5;color:#fff;font-size:.78em;font-weight:500;line-height:1}
+.blk.gl .gl-heard{display:inline-block;vertical-align:-.15em;width:3.2cqh;height:3.2cqh;margin:0 .2em 0 .1em;
+  padding:0;border:max(1px,.2cqh) solid #185FA5;border-radius:50%;background:#fff;cursor:pointer;position:relative;
+  box-sizing:border-box}
+.blk.gl .gl-heard::before{content:"";position:absolute;left:50%;top:50%;width:1.7cqh;height:1.3cqh;
+  transform:translate(-50%,-50%);background:linear-gradient(#185FA5,#185FA5) 0 50%/18% 40% no-repeat,
+  linear-gradient(#185FA5,#185FA5) 50% 50%/18% 100% no-repeat,linear-gradient(#185FA5,#185FA5) 100% 50%/18% 65% no-repeat}
+.blk.gl .gl-heard.playing{background:#E6F1FB}
+"""
+
+
 def has_part_c(lesson) -> bool:
-    """A lesson whose practice set has a Part C (bundle 1.17)."""
-    if not lesson:
-        return False
-    import practice_set
-    ps = practice_set.load(Path(lesson))
-    return bool(ps) and any(p.get("code") == "RC" for p in ps.get("parts") or [])
+    """A lesson whose practice set has a Part C (bundle 1.17), Reading's or
+    Listening's (ADR 029: a transcript shown a part at a time, as a Part C text)."""
+    return bool(set_codes(lesson) & {"RC", "LC"})
 
 
 def has_part_b(lesson) -> bool:
-    """A lesson whose practice set has a Part B (bundle 1.15)."""
+    """A lesson whose practice set has a Part B (bundle 1.15), Reading's or
+    Listening's (ADR 029: the question with its options, the covered text)."""
+    return bool(set_codes(lesson) & {"RB", "LB"})
+
+
+def set_codes(lesson) -> set[str]:
+    """The part codes of a lesson's practice set (RA ... RC, LA ... LC)."""
     if not lesson:
-        return False
+        return set()
     import practice_set
     ps = practice_set.load(Path(lesson))
-    return bool(ps) and any(p.get("code") == "RB" for p in ps.get("parts") or [])
+    return {p.get("code") for p in (ps or {}).get("parts") or []}
+
+
+def has_listening_set(lesson) -> bool:
+    """A lesson whose practice set is a Listening set (bundle 1.18, ADR 029)."""
+    return bool(set_codes(lesson) & {"LA", "LB", "LC"})
 
 
 def has_map(lesson) -> bool:
@@ -3672,11 +3737,11 @@ def frame_css(lesson) -> str:
     """The blocks' stylesheet for a lesson: FRAME_CSS, plus the Reading blocks'
     rules for a Reading lesson only (ADR 026), plus the map's for a lesson with
     a map (bundle 1.14)."""
-    import reading_rule
+    import lesson_type
     part_c = has_part_c(lesson)          # 1.17: Part C draws Part B's question and gloss too
-    return (FRAME_CSS + (READING_CSS if lesson and reading_rule.is_reading(Path(lesson)) else "")
+    return (FRAME_CSS + (READING_CSS if lesson and lesson_type.has(Path(lesson), "practice_set") else "")
             + (MAP_CSS if has_map(lesson) else "") + (PART_B_CSS if has_part_b(lesson) or part_c else "")
-            + (PART_C_CSS if part_c else ""))
+            + (PART_C_CSS if part_c else "") + (LISTENING_CSS if has_listening_set(lesson) else ""))
 
 
 PAGE_CSS = """
@@ -3913,6 +3978,24 @@ def is_exercise_board(fixed_ids: list[str], blocks: dict) -> bool:
     return any(blocks[i].get("exercise_item") is not None for i in fixed_ids if i in blocks)
 
 
+def typed_cell_html(text: str, parts: list[tuple[int, dict]]) -> str:
+    """A table cell's html with its typed parts, `parts` [(index in `typed`,
+    part)]: each a span data-typed holding its final text. " / " is a line break."""
+    out, pos = "", 0
+    printed = lambda x: esc(x).replace(" / ", "<br>")
+    # a typed part inside printed words is a gap in a sentence, drawn as a
+    # blank line until it is typed (bundle 1.6); one that fills its cell is not
+    outside = text
+    for _, ty in sorted(parts, key=lambda p: -p[1]["start"]):
+        outside = outside[:ty["start"]] + " " + outside[ty["start"] + len(ty["text"]):]
+    cls = "tw gap" if re.search(r"[A-Za-z0-9]", outside) else "tw"
+    for i, ty in sorted(parts, key=lambda p: p[1]["start"]):
+        out += printed(text[pos:ty["start"]])
+        out += '<span class="' + cls + '" data-typed="' + str(i) + '">' + esc(ty["text"]) + "</span>"
+        pos = ty["start"] + len(ty["text"])
+    return out + printed(text[pos:])
+
+
 def core_table_html(b: dict, bid: str) -> str:
     """A table board's table (docs/02-DESIGN-SYSTEM.md §7, "Tables"). Rows and
     cells carry data-row and data-col (from 0) for the spotlight; each typed
@@ -3920,20 +4003,7 @@ def core_table_html(b: dict, bid: str) -> str:
     which the player hides until its cue and types in, so the cell keeps its
     final size and the table never reflows. " / " in a cell is a line break.
     Text is emitted in block_text_runs order: header, then rows."""
-    def cell(text: str, parts: list[tuple[int, dict]]) -> str:
-        out, pos = "", 0
-        printed = lambda x: esc(x).replace(" / ", "<br>")
-        # a typed part inside printed words is a gap in a sentence, drawn as a
-        # blank line until it is typed (bundle 1.6); one that fills its cell is not
-        outside = text
-        for _, ty in sorted(parts, key=lambda p: -p[1]["start"]):
-            outside = outside[:ty["start"]] + " " + outside[ty["start"] + len(ty["text"]):]
-        cls = "tw gap" if re.search(r"[A-Za-z0-9]", outside) else "tw"
-        for i, ty in sorted(parts, key=lambda p: p[1]["start"]):
-            out += printed(text[pos:ty["start"]])
-            out += '<span class="' + cls + '" data-typed="' + str(i) + '">' + esc(ty["text"]) + "</span>"
-            pos = ty["start"] + len(ty["text"])
-        return out + printed(text[pos:])
+    cell = typed_cell_html
     if b.get("map"):
         return map_html(b, bid)
     if b.get("doc"):
@@ -3956,7 +4026,9 @@ DOC_KINDS = {"table": "Table", "guideline": "Guideline", "protocol": "Protocol",
              "email": "Email", "memo": "Memo", "policy": "Policy", "extract": "Extract",
              "article": "Article", "letter": "Letter", "text": "Text",
              # bundle 1.15: the Part B set's other genres (ADR 026)
-             "procedure": "Procedure", "manual": "Manual", "notice": "Notice"}
+             "procedure": "Procedure", "manual": "Manual", "notice": "Notice",
+             # bundle 1.18: a Listening extract's transcript, a Part A note form (ADR 029)
+             "transcript": "Transcript", "form": "Notes"}
 
 
 def bolded(text: str, bold: list[str] | None) -> str:
@@ -3996,6 +4068,14 @@ def doc_table_html(b: dict, bid: str, first_row: int = 0, panel: bool = False) -
             cells = text.split(" | ")
             inner = ('<span class="dgrid" style="--dcols:' + dcols + '">' + '<span class="dsep"> | </span>'.join(
                 '<span class="dc">' + esc(c) + "</span>" for c in cells) + "</span>")
+        elif any(ty["row"] == first_row + r for ty in b.get("typed") or []):
+            # a Listening note form's gap (bundle 1.18): typed in by the lesson
+            inner = typed_cell_html(text, [(i, ty) for i, ty in enumerate(b["typed"])
+                                           if ty["row"] == first_row + r])
+        elif k.get("speaker") and text.startswith(k["speaker"] + ":"):
+            # a transcript's turn (bundle 1.18): its speaker's label set apart by type only
+            n = len(k["speaker"]) + 1
+            inner = '<span class="spk">' + esc(text[:n]) + "</span>" + bolded(text[n:], k.get("bold"))
         else:
             inner = bolded(text, k.get("bold"))
         mark = (' data-mark="' + esc(k["mark"]) + '"') if k.get("mark") else ""
@@ -4205,6 +4285,14 @@ def _block_html(b: dict) -> str:
         say = (('<button type="button" class="gl-say" data-audio="' + AUDIO_TOKEN + "/" + esc(aud["file"])
                 + '" aria-label="' + esc("Hear " + (b.get("term") or "")) + '"></button>')
                if aud.get("file") else "")
+        # a Listening word (bundle 1.18): a second button plays the sentence of
+        # the recording the word is heard in, a span of the release's own audio
+        hd = b.get("heard") or {}
+        if hd.get("file"):
+            say += ('<button type="button" class="gl-heard" data-audio="' + EXAM_TOKEN + "/" + esc(hd["file"])
+                    + '" data-start="' + str(hd["start"]) + '" data-end="' + str(hd["end"])
+                    + '" aria-label="' + esc("Hear " + (b.get("term") or "") + " in the recording")
+                    + '"></button>')
         return ('<div class="blk gl' + (" glv" if b.get("vocab") else "") + '"' + bid
                 + '><div class="gl-txt"><div class="gl-h"><span class="gl-w">'
                 + esc(b["term"]) + "</span>" + say + ' <span class="pt gl-m"' + pid(parts["meaning"]) + ">"
@@ -4399,7 +4487,9 @@ def expand_practice(lesson: Path, topics: list[dict]) -> None:
     whose label is a stimulus ID becomes that text as a document, and a plain
     block whose label is an item ID becomes that question, both built here
     from the release, never written by the model. Anything the model put in
-    them is replaced; an ID the set does not have is left for the audit."""
+    them is replaced; an ID the set does not have is left for the audit.
+    A Listening lesson's too (ADR 029, bundle 1.18): an extract's ID becomes its
+    transcript, and a Part A item's ID on a table becomes its note form."""
     import practice_set
     ps = practice_set.load(lesson)
     if not ps:
@@ -4412,9 +4502,19 @@ def expand_practice(lesson: Path, topics: list[dict]) -> None:
                 keep = {k: b[k] for k in ("anchor", "from_beats") if k in b}
                 if b.get("type") == "table" and ref in stim:
                     b.clear()
-                    # a text is always the fixed layer of its own board (ADR 026)
-                    b.update({**BLOCK_DEFAULTS, **practice_set.document_block(stim[ref]), **keep,
+                    # a text is always the fixed layer of its own board (ADR 026); a
+                    # Listening extract's is its transcript (ADR 029, bundle 1.18)
+                    build = (practice_set.transcript_block if practice_set.is_audio(stim[ref])
+                             else practice_set.document_block)
+                    b.update({**BLOCK_DEFAULTS, **build(stim[ref]), **keep, "anchor": True})
+                elif b.get("type") == "table" and ref in items and practice_set.is_gapfill(items[ref]):
+                    # a Listening Part A item: its note form, the gaps filled by the
+                    # lesson after "try it first" (ADR 029, bundle 1.18)
+                    b.clear()
+                    b.update({**BLOCK_DEFAULTS, **practice_set.form_block(ps, items[ref]), **keep,
                               "anchor": True})
+                elif b.get("type") == "plain" and ref in items and practice_set.is_gapfill(items[ref]):
+                    b["practice_ref_unknown"] = ref + " (a gap-fill item is its note form: a table)"
                 elif b.get("type") == "plain" and ref in items:
                     raw = list(b.get("items") or [])
                     b.clear()
@@ -4462,7 +4562,7 @@ def expand_practice(lesson: Path, topics: list[dict]) -> None:
                     # the map of the set's texts (ADR 026, Part A question method)
                     b.clear()
                     b.update({**BLOCK_DEFAULTS, **map_block(list(stim.values())), **keep, "anchor": True})
-                elif b.get("type") in ("table", "plain") and re.fullmatch(r"oa-(?:set|reading)-[\w-]+", ref):
+                elif b.get("type") in ("table", "plain") and re.fullmatch(r"oa-(?:set|reading|listening)-[\w-]+", ref):
                     b["practice_ref_unknown"] = ref
         # the answer in the release's exact form (ADR 026): a sentence to
         # complete shows the released sentence with its gap filled; a short
@@ -4537,6 +4637,39 @@ def expand_practice(lesson: Path, topics: list[dict]) -> None:
                     h["purpose"] = f"Row {a}: " + purpose[m.end():].strip()
                 elif not COVERED_PURPOSE.match(purpose):
                     h["view_bad"] = purpose
+        # a Listening transcript (ADR 029, bundle 1.18): covered ("Covered: ...")
+        # until the question it answers is solved, then shown whole, or as a map
+        # ("Map:", "Map P3:" with row 3 marked), or a part at a time ("Para 3:",
+        # "Para 3-7:": the rows of a heading or of a question's section, as many
+        # neighbouring rows as the part has; the fit sets them at a size at which
+        # they fit whole, and nothing scrolls)
+        if doc and (doc.get("doc") or {}).get("text_type") == "transcript":
+            n_rows = len(doc["rows"])
+            for h in t["thoughts"]:
+                purpose = h.get("purpose") or ""
+                m = COVERED_PURPOSE.match(purpose)
+                if m:
+                    h["veil"] = True
+                    h["purpose"] = "Table: " + purpose[m.end():].strip()
+                    continue
+                m = PC_MAP.match(purpose)
+                if m:
+                    k = int(m.group(1)) if m.group(1) else None
+                    if k is not None and not 1 <= k <= n_rows:
+                        h["view_bad"] = purpose
+                        continue
+                    h["view"] = {"map": True, "rows": [k - 1] if k else []}
+                    h["purpose"] = "Table: " + purpose[m.end():].strip()
+                    continue
+                m = PC_PARA.match(purpose)
+                if m:
+                    a = int(m.group(1))
+                    b_ = int(m.group(2)) if m.group(2) else a
+                    if not 1 <= a <= b_ <= n_rows:
+                        h["view_bad"] = purpose
+                        continue
+                    h["view"] = {"map": False, "rows": list(range(a - 1, b_))}
+                    h["purpose"] = f"Row {a}: " + purpose[m.end():].strip()
         # a Part B question board (bundle 1.15): the text stays covered while
         # the question, the options and "try it first" are taught, as the
         # instructor covers it; those thoughts are named "Covered: ..."
@@ -4572,8 +4705,8 @@ def render(lesson: Path, page: int, data: dict) -> int:
         tn, _, hn = tid.lstrip("t").partition(".")
         topics[int(tn) - 1]["thoughts"][int(hn) - 1]["purpose"] = purpose
     unflatten(topics)
-    import reading_rule                        # ADR 026: the practice set, built by code
-    if reading_rule.is_reading(lesson):
+    import lesson_type                         # ADR 026, ADR 029: the practice set, built by code
+    if lesson_type.has(lesson, "practice_set"):
         expand_practice(lesson, topics)
     blocks = assign_ids(topics)
     added = add_blocks(out_dir, topics, blocks)
@@ -4583,11 +4716,16 @@ def render(lesson: Path, page: int, data: dict) -> int:
     if all(paths.is_added(p) for p in pages):
         # An authored section (ADR 018): every block is the agent's, and none
         # is a printed exercise sentence (there is no slide)
+        import lesson_type
+        exam_numbers = lesson_type.has(lesson, "exam_numbers")
         for b in blocks.values():
             if b["provenance"] != "authored":
                 b["note"] = ((b.get("note") or "") + f" (was {b['provenance']})").strip()
             b["provenance"] = "authored"
-            b["exercise_item"] = None
+            if not (exam_numbers and b.get("question")):
+                # a Listening question keeps its exam number in an authored
+                # section (ADR 029: the interview of Part C (2) has no source teaching)
+                b["exercise_item"] = None
             kind = section_for_page(lesson, pages[0])[1].get("kind")
             why = (f"added: the {kind}, maintainer brief 2026-10-08 (ADR 018 amendment). " if kind
                    else "added: maintainer request 2026-09-29 (ADR 018). ")

@@ -11,11 +11,13 @@ them, and they are shown exactly as released.
 import re
 from pathlib import Path
 
+import lesson_type
 import practice_set
 
 
 def is_reading(lesson: Path) -> bool:
-    return Path(lesson).name.split("-")[0].lower() == "reading"
+    """A lesson of type reading (lesson_type.py: its config's type, else its id's first word)."""
+    return lesson_type.of(lesson) == "reading"
 
 
 NOTE = "reading rule (ADR 026)"

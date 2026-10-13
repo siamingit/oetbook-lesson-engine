@@ -367,6 +367,9 @@ def prepare(lesson: Path, pages: list[int], n_pass: int = 1, states: list[str] |
             text = reading_rule.QA_PART_B + "\n\n" + text      # bundle 1.15
         if reading_rule.is_part_c(lesson):
             text = reading_rule.QA_PART_C + "\n\n" + text      # bundle 1.17
+    import listening_rule                      # ADR 029
+    if listening_rule.is_listening(lesson):
+        text = listening_rule.QA + "\n\n" + text
     if only:
         text =("ONLY SOME STATES ARE UNDER REVIEW: the ones below were just rewritten. "
                 "Judge them; earlier and later states are not shown and are not "

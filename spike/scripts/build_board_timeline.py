@@ -23,7 +23,12 @@ Events, all derived:
           before the notes vanish. The next state's speech starts a state
           gap later, on the clean board.
 A pause cue governs the silence after its utterance and never shortens the
-gap it sits in. A reveal or mark fires a cue lead before its word. A type cue
+gap it sits in: 0.5 to 10 seconds, or, for a pause marked as the exam's reading
+time in a Listening lesson, up to READING_TIME_MAX_S (ADR 029). A play cue
+(bundle 1.18) plays a span of a Listening extract's own audio after its
+utterance, an utterance gap later: the span is an utterance of its own, kind
+"exam", its id the cue's utterance's plus ".x", laid in the clock like any
+other. A reveal or mark fires a cue lead before its word. A type cue
 (a table cell typed live, docs/02-DESIGN-SYSTEM.md §7) starts a cue lead before
 its word and types TYPE_CHAR_S a character, so its `time_end` is when the
 typing ends, not its word's end.
@@ -37,7 +42,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paths                                   # noqa: E402
-from write_narration import MARKER, spoken     # noqa: E402
+from write_narration import MARKER, READING_TIME_MAX_S, PAUSE_MAX_S, spoken     # noqa: E402
 
 TYPE_CHAR_S = 0.045           # typing speed of a table cell: about 22 characters a second
 
@@ -61,10 +66,12 @@ def marker_positions(text_with_cues: str) -> tuple[list[str], dict[str, int]]:
 
 def lay_timeline(narr: dict, audio_index: dict, utterance_gap: float = 0.4,
                  state_gap: float = 1.2, board_gap: float = 1.5,
-                 cue_lead: float = 0.35) -> tuple[list[dict], list[dict], float]:
+                 cue_lead: float = 0.35, exam=None) -> tuple[list[dict], list[dict], float]:
     """Boards, events and total duration from a narration and its audio
     index. Shared by the real build (Cartesia timings) and the silent
-    preview (estimated timings), so both play on the same rules."""
+    preview (estimated timings), so both play on the same rules. `exam`, for a
+    Listening lesson, gives a play cue's span of release audio: {audio_file,
+    clip_in, clip_out, exam: {...}} (build_lesson_player.exam_clip)."""
     t = 0.0
     boards_out = []
     events = []
@@ -90,15 +97,29 @@ def lay_timeline(narr: dict, audio_index: dict, utterance_gap: float = 0.4,
                 utt_end = t + entry["duration_s"]
                 pause_after = 0.0
                 cues_out = []
+                played = None
                 for c in u["cues"]:
                     wi = positions.get(c["id"])
                     if wi is None:
                         raise SystemExit(f"{u['id']}/{c['id']}: no marker in the text")
+                    if c["type"] == "play":
+                        # bundle 1.18: a span of release audio after the utterance
+                        if exam is None:
+                            raise SystemExit(f"{u['id']}/{c['id']}: a play cue, and no exam audio to play")
+                        played = exam(c)
+                        x0 = utt_end + utterance_gap
+                        cues_out.append({"id": c["id"], "type": "play", "block": None,
+                                         "text": c.get("text"), "with": c.get("with"),
+                                         "word_index": wi, "time": round(x0, 3),
+                                         "time_end": round(x0 + played["clip_out"] - played["clip_in"], 3)})
+                        continue
                     if c["type"] == "pause":
-                        seconds = min(10.0, max(0.5, float(c.get("seconds") or 2.0)))
+                        cap = READING_TIME_MAX_S if c.get("reading_time") else PAUSE_MAX_S
+                        seconds = min(cap, max(0.5, float(c.get("seconds") or 2.0)))
                         pause_after = max(pause_after, seconds)
                         cues_out.append({"id": c["id"], "type": "pause",
                                          "text": c.get("text"), "seconds": seconds,
+                                         **({"reading_time": True} if c.get("reading_time") else {}),
                                          "word_index": wi,
                                          "time": round(utt_end, 3),
                                          "time_end": round(utt_end + seconds, 3)})
@@ -123,6 +144,16 @@ def lay_timeline(narr: dict, audio_index: dict, utterance_gap: float = 0.4,
                                  "refs": [{"lesson": r["lesson"], "section": r.get("section")}
                                           for r in u.get("refs") or []]})
                 t = utt_end
+                if played:
+                    # the recording, an utterance of its own (kind "exam"), as released
+                    x0 = utt_end + utterance_gap
+                    x1 = x0 + played["clip_out"] - played["clip_in"]
+                    utts_out.append({"id": u["id"] + ".x", "kind": "exam", "text": None,
+                                     "provenance": "release", "audio_file": played["audio_file"],
+                                     "start": round(x0, 3), "end": round(x1, 3),
+                                     "clip_in": played["clip_in"], "clip_out": played["clip_out"],
+                                     "cues": [], "refs": [], "exam": played["exam"]})
+                    t = x1
                 if ui < len(s["utterances"]) - 1:
                     t += max(utterance_gap, pause_after)
 

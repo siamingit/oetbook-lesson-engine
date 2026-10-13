@@ -45,12 +45,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paths                                                      # noqa: E402
+import lesson_type                                                # noqa: E402
 from build_board_bundle import block_tokens, norm, reading_runs   # noqa: E402
 from build_board_timeline import lay_timeline                     # noqa: E402
 from write_narration import spoken                                # noqa: E402
 import board_style                                                # noqa: E402
 from write_screens import (FRAME_CSS, frame_css, has_map, TAG_LABELS, block_html, resolve_images, IMAGE_TOKEN,     # noqa: E402
-                           block_text_runs, is_exercise_board, has_part_b, has_part_c, has_parts, AUDIO_TOKEN)
+                           block_text_runs, is_exercise_board, has_part_b, has_part_c, has_parts, AUDIO_TOKEN,
+                           EXAM_TOKEN)
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
@@ -94,16 +96,26 @@ PART_B_FORMAT_VERSION = "1.16"
 # doc part's `bold`, a question's `options_later` and `target`, the
 # `recap_grouped` word table; written only in such a lesson's bundle
 PART_C_FORMAT_VERSION = "1.17"
+# 1.18, a Listening lesson (ADR 029): the release's own audio in the lesson's
+# clock (an utterance of kind "exam", from a narration `play` cue), a word's
+# span of it (a gloss's `heard`), transcripts and note forms (a doc's text type
+# `transcript` and `form`), the spotlight on the transcript following the
+# recording; written only in a Listening lesson's bundle
+BLOCK_FIELDS_118 = ("heard",)
+LISTENING_FORMAT_VERSION = "1.18"
 # the extract's share of a Part B question board's width, per cent, until the
 # fit has measured it (fit_boards.py)
 SPLIT_DEFAULT = 55
 
 
 def format_version(lesson_id: str, with_map: bool = False, part_b: bool = False,
-                   part_c: bool = False) -> str:
-    """The bundle format a lesson is written in: 1.17 for a Reading Part C
-    lesson, 1.16 for a Reading Part B lesson, 1.14 for a lesson with a map,
-    1.13 for another Reading lesson (ADR 026), FORMAT_VERSION for every other."""
+                   part_c: bool = False, listening: bool = False) -> str:
+    """The bundle format a lesson is written in: 1.18 for a Listening lesson
+    (ADR 029), 1.17 for a Reading Part C lesson, 1.16 for a Reading Part B
+    lesson, 1.14 for a lesson with a map, 1.13 for another Reading lesson (ADR
+    026), FORMAT_VERSION for every other."""
+    if listening:
+        return LISTENING_FORMAT_VERSION
     if part_c:
         return PART_C_FORMAT_VERSION
     if part_b:
@@ -113,11 +125,13 @@ def format_version(lesson_id: str, with_map: bool = False, part_b: bool = False,
     return READING_FORMAT_VERSION if lesson_id.split("-")[0] == "reading" else FORMAT_VERSION
 
 
-def block_data(b: dict, reading: bool = False, with_map: bool = False, part_b: bool = False) -> dict:
+def block_data(b: dict, reading: bool = False, with_map: bool = False, part_b: bool = False,
+               listening: bool = False) -> dict:
     """A block's data as the bundle carries it: every field its html is drawn
     from, each tense tag with the label printed on its chip."""
     d = {k: b.get(k) for k in BLOCK_FIELDS + (BLOCK_FIELDS_113 if reading else ())
-         + (BLOCK_FIELDS_114 if with_map else ()) + (BLOCK_FIELDS_115 if part_b else ())}
+         + (BLOCK_FIELDS_114 if with_map else ()) + (BLOCK_FIELDS_115 if part_b else ())
+         + (BLOCK_FIELDS_118 if listening else ())}
     tags = [dict(t, label=TAG_LABELS[t["family"]]) for t in (b.get("tags") or [])
             if t.get("text") and t.get("family") in TAG_LABELS]
     d["tags"] = tags or None
@@ -300,9 +314,11 @@ def block_plain(b: dict) -> str:
 
 
 def text_export(lesson: dict, sections: list[dict], boards: list[dict], blocks: dict,
-                with_map: bool = False, part_b: bool = False, part_c: bool = False) -> dict:
+                with_map: bool = False, part_b: bool = False, part_c: bool = False,
+                listening: bool = False) -> dict:
     """The lesson as clean text, per section: the narration as spoken and the
-    words on the board, with no cues and no provenance (docs/04-LESSON-BUNDLE.md)."""
+    words on the board, with no cues and no provenance (docs/04-LESSON-BUNDLE.md).
+    A recording (an utterance of kind "exam", 1.18) is not narration: it is left out."""
     by_id = {bd["id"]: bd for bd in boards}
     out = []
     for sec in sections:
@@ -317,15 +333,72 @@ def text_export(lesson: dict, sections: list[dict], boards: list[dict], blocks: 
                         "board_text": [{"block": i, "text": block_plain(blocks[i])} for i in ids],
                         "narration": [{"id": u["id"], "start": u["start"], "text": u["text"],
                                        "refs": u["refs"]}
-                                      for s in bd["states"] for u in s["utterances"]]})
+                                      for s in bd["states"] for u in s["utterances"]
+                                      if u.get("kind") != "exam"]})
         out.append({"id": sec["id"], "title": sec["title"], "category": sec["category"],
                     "start": sec["start"], "end": sec["end"],
                     "narration_text": "\n\n".join(" ".join(n["text"] for n in b["narration"])
                                                   for b in bds),
                     "board_text": "\n\n".join(x["text"] for b in bds for x in b["board_text"]),
                     "boards": bds})
-    return {"format": "oetbook-lesson-text", "format_version": format_version(lesson["id"], with_map, part_b, part_c),
+    return {"format": "oetbook-lesson-text",
+            "format_version": format_version(lesson["id"], with_map, part_b, part_c, listening),
             "lesson": lesson, "sections": out}
+
+
+def exam_clips(L: Path, out_dir: Path):
+    """A Listening lesson's `play` cues (ADR 029, bundle 1.18): the span of an
+    extract's own audio each plays, the file copied into the lesson unchanged
+    (practice_set.copy_exam_audio, sha256 checked), named relative to the bundle."""
+    import os
+    import practice_set
+    ps = practice_set.load(L)
+    rel = {"package": f"{ps['release']['package_id']} v{ps['release']['package_version']}"} if ps else {}
+
+    def clip(c: dict) -> dict:
+        span = practice_set.exam_span(ps, c["text"], c.get("with") or "")
+        f = practice_set.copy_exam_audio(L, c["text"])
+        return {"audio_file": os.path.relpath(f, out_dir).replace(os.sep, "/"),
+                "clip_in": span["clip_in"], "clip_out": span["clip_out"],
+                "exam": {"stimulus": span["stimulus"], "label": span["label"], "span": span["span"],
+                         "rows": span["rows"], "release": rel.get("package"), "sha256": span["sha256"]}}
+    return clip
+
+
+def exam_focus(bd: dict, table: dict, focus: list[dict], times: dict) -> list[dict]:
+    """The spotlight on a transcript while its recording plays (bundle 1.18): from
+    each row's time in the recording, that row in focus (no cell); when the
+    recording ends, the spotlight in force before it. `times` gives each
+    extract's row times in its file (practice_set.row_times)."""
+    st = (table.get("doc") or {}).get("stimulus")
+    rows_t = times.get(st) if (table.get("doc") or {}).get("text_type") == "transcript" else None
+    if not rows_t:
+        return focus
+    out = list(focus)
+    for s in bd["states"]:
+        if s.get("veil"):
+            continue                     # the transcript is covered: nothing to follow
+        for u in s["utterances"]:
+            x = u.get("exam") or {}
+            if u.get("kind") != "exam" or x.get("stimulus") != st:
+                continue
+            before = [f for f in out if f["time"] < u["start"]]
+            prev = before[-1] if before else {"row": None, "col": None}
+            ev = [{"time": round(u["start"] + max(0.0, tk - u["clip_in"]), 3), "row": k, "col": None}
+                  for k, tk in enumerate(rows_t) if tk is not None and u["clip_in"] - 1e-6 <= tk < u["clip_out"]]
+            if ev and ev[0]["time"] > u["start"]:
+                # the row being spoken when the span starts (a span that starts mid-row)
+                k0 = max([k for k, tk in enumerate(rows_t) if tk is not None and tk <= u["clip_in"]], default=None)
+                if k0 is not None:
+                    ev.insert(0, {"time": round(u["start"], 3), "row": k0, "col": None})
+            if not ev:
+                continue
+            inside = [f for f in out if u["start"] <= f["time"] < u["end"]]
+            out = [f for f in out if f not in inside] + ev + [{"time": round(u["end"], 3), "row": prev["row"],
+                                                             "col": prev["col"]}]
+            out.sort(key=lambda f: f["time"])
+    return [f for n, f in enumerate(out)
+            if not n or (f["row"], f["col"]) != (out[n - 1]["row"], out[n - 1]["col"])]
 
 
 def estimate(words: list[str], wpm: float) -> dict:
@@ -379,6 +452,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     with_map = has_map(L)
     part_b = has_part_b(L)
     part_c = has_part_c(L)                    # 1.17
+    listening = lesson_type.of(L) == "listening"      # 1.18 (ADR 029)
+    practice = lesson_type.has(L, "practice_set")     # 1.13: a practice set's texts and questions
     veil_of: dict[str, bool] = {}
     view_of: dict[str, dict] = {}
     if part_b or part_c:
@@ -447,6 +522,13 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                 if nb.get("audio"):
                     nb["audio"] = {**nb["audio"], "file": resolve_images(
                         AUDIO_TOKEN + "/" + nb["audio"]["file"], out_dir, L)}
+                if nb.get("heard"):
+                    # 1.18: the sentence of the recording a word is heard in, in the
+                    # extract's own file, copied into the lesson unchanged
+                    import practice_set
+                    practice_set.copy_exam_audio(L, nb["heard"]["stimulus"])
+                    nb["heard"] = {"file": resolve_images(EXAM_TOKEN + "/" + nb["heard"]["file"], out_dir, L),
+                                   "start": nb["heard"]["start"], "end": nb["heard"]["end"]}
                 if nb.get("vocab_table"):
                     vt = nb["vocab_table"]
                     nb["vocab_table"] = {"kind": vt["kind"],
@@ -454,7 +536,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                     if vt.get("groups"):         # 1.17: a recap by question, its rows' words
                         nb["vocab_table"]["groups"] = [[n, [vocab.lexicon_id(L, k) for k in keys]]
                                                        for n, keys in vt["groups"]]
-            blocks_all[pre + bid] = {**block_data(nb, L.name.split("-")[0] == "reading", with_map, part_b or part_c), "html": html_b,
+            blocks_all[pre + bid] = {**block_data(nb, practice, with_map, part_b or part_c, listening), "html": html_b,
                                      "_tokens": block_tokens(b)}     # display words (1.3)
         # an authored section (ADR 018) covers no deck page
         section_marks.append({"id": tag, "title": sec["title"],
@@ -515,7 +597,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     gaps = {"utterance_gap_s": 0.4, "state_gap_s": 1.2, "board_gap_s": 1.5, "cue_lead_s": 0.35}
     boards_out, events, total = lay_timeline(narr_all, audio_index, gaps["utterance_gap_s"],
                                              gaps["state_gap_s"], gaps["board_gap_s"],
-                                             gaps["cue_lead_s"])
+                                             gaps["cue_lead_s"],
+                                             exam=exam_clips(L, out_dir) if listening else None)
     if secs and secs[-1].get("kind") == "closing" and boards_out:
         # a lesson that ends with its closing: the final board stays on screen
         # 3 seconds after the last word (ADR 014 amendment of 2026-10-08)
@@ -527,6 +610,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     for bd in boards_out:
         for s in bd["states"]:
             for u in s["utterances"]:
+                if u.get("kind") == "exam":
+                    continue                     # 1.18: its span is the release file's own
                 e = audio_index[u["id"]]
                 u["clip_in"], u["clip_out"] = e.get("clip_in"), e.get("clip_out")   # 1.3
     # A type cue names the typed part it types (its index in the table's
@@ -551,6 +636,9 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
         for s in bd["states"]:
             cands = {i: tokens[i] for i in list(bd["fixed"]) + list(s["working"])}
             for u in s["utterances"]:
+                if u.get("kind") == "exam":
+                    u["reading"] = []            # 1.18: a recording reads nothing of the board
+                    continue
                 e = audio_index[u["id"]]
                 u["reading"] = reading_runs(e["words"], e["word_start"], e["word_end"],
                                             u["start"], cands)
@@ -559,6 +647,12 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     used = {i for bd in boards_out for i in bd["fixed"]} | \
            {i for bd in boards_out for s in bd["states"] for i in s["working"]}
 
+    row_times = {}
+    if listening:
+        import practice_set
+        ps = practice_set.load(L)
+        row_times = {k: practice_set.row_times(ps, k) for k, st in practice_set.stimuli(ps).items()
+                     if practice_set.is_audio(st)} if ps else {}
     # Visibility, stated rather than left to the renderer. A fixed block shows
     # from its board's start until the board's `until`; a working block from
     # its reveal until its state's `until` (the erase, or the board's end); a
@@ -644,6 +738,9 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             if first and first["utterances"]:
                 bd["focus"] = whole_first(bd["focus"], first["start"],
                                           round(max(first["start"] + 3.0, first["utterances"][0]["end"]), 3))
+        if listening and bd["table"]:
+            # 1.18: while a recording plays, the spotlight follows its transcript's rows
+            bd["focus"] = exam_focus(bd, blocks_all[bd["table"]], bd["focus"], row_times)
         bd["verdicts"] = table_verdicts(bd, blocks_all[bd["table"]]) if bd["table"] else []
         # 1.3: a pinned block stays from its reveal to the board's end; a
         # word mark colours a changing word by its word class from the moment
@@ -750,7 +847,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     meta = {"silent": silent, **gaps, "wpm": wpm if silent else None,
             "voice": first.get("voice"), "model": first.get("model"), "speed": first.get("speed"),
             "total_duration_s": round(total, 3), "reading_hold_s": READING_HOLD_S}
-    bundle = {"format": "oetbook-lesson-bundle", "format_version": format_version(lesson["id"], with_map, part_b, part_c),
+    bundle = {"format": "oetbook-lesson-bundle",
+              "format_version": format_version(lesson["id"], with_map, part_b, part_c, listening),
               "lesson": lesson, "sections": sections_out, "meta": meta,
               "stylesheet": "blocks.css", "text": "text.json",
               "blocks": {i: b for i, b in blocks_all.items() if i in used},
@@ -759,7 +857,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                                          encoding="utf-8")
     (out_dir / "blocks.css").write_text(frame_css(L).strip() +"\n", encoding="utf-8")
     (out_dir / "text.json").write_text(
-        json.dumps(text_export(lesson, sections_out, boards_out, blocks_all, with_map, part_b, part_c),
+        json.dumps(text_export(lesson, sections_out, boards_out, blocks_all, with_map, part_b, part_c, listening),
                    ensure_ascii=False, indent=1), encoding="utf-8")
     (out_dir / "timeline.json").write_text(json.dumps({"meta": meta, "boards": boards_out,
                                                        "events": events}, ensure_ascii=False,

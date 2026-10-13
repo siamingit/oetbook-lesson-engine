@@ -291,6 +291,30 @@ documents, questions and the keyword pairs `match1` to `match3`
 (docs/02-DESIGN-SYSTEM.md §8). Paid stages refuse uncommitted code in the
 files they use, `reading_rule.py` and `practice_set.py` included.
 
+### Listening lessons (ADR 029)
+
+A lesson whose type is `listening` (its config's `lesson.type`; `build_sections.py
+<L> --type listening`, or the first word of its id when the config is first made) is
+built by the same procedure, with Reading's devices and these additions. The
+Listening rule module (`listening_rule.py`) is added to the screens, narration and QA
+prompts by the stages themselves.
+
+| When | Command | What it does |
+|---|---|---|
+| Before understanding | the agent writes `analysis/forbidden_source_terms.json` from the exam-audio spans of the transcript (the third-party recordings the instructor played; the analysis lists them) | the runner's `check_source_terms.py` (silent preview and player steps) fails on any of them in what a learner reads or hears |
+| Before screens | `practice_set.py <L> --set oa-set-la-0001` (or `-lb-`, `-lc-`), then `--teach-pages N,M` | copies the set from the pinned release (`sample-tests-v2`, ADR 029; any other set or release is refused), its hashes checked (RFC 8785); its transcripts' rows and gaps checked |
+| Before screens, Parts B and C | `vocab.py <L> --sync`, `--briefs FILE`, `--copy-audio`, `--check` | as Reading; a word heard in a recording also gets its sentence span (`heard`) |
+| Screens | a transcript: `{"type": "table", "label": "<extract ID>"}`; a Part A note form: `{"type": "table", "label": "<gap-fill item ID>"}`; questions as Reading Part B | code builds them; "Covered: ..." thoughts first, then "Para N-M: ..." parts or the transcript whole; every row thought holds a note; the form board has no board picture (no brief in `pictures.json`) |
+| Narration | a `play` cue at the end of a short spoken cue: `text` the extract's ID, `with` "exam", "extract" or "lines N-M" | the recording plays in the clock (bundle 1.18); "exam" includes the real reading time; a section is replayed with "lines N-M" |
+| Player step | `build_lesson_player.py` | copies each extract's audio into `generated/exam-audio/`, byte for byte (sha256 checked); `check_board_page.py` checks each recording's file and span |
+
+Questions keep the exam's numbers (1-24, 25-30, 31-42; `check_question_numbers.py`
+allows it). Release audio is never changed: its loudness is the exercises
+repository's (an issue there). The placeholder prototype
+(`listening_prototype.py <folder outside C:\OET\lessons> --checks`) rebuilds the
+three Listening layouts on made-up data and runs the checks: run it after a change
+to a Listening device.
+
 ### Changing shared code: prove the built lessons do not move
 
 Maintainer, 2026-10-05: before a change to shared pipeline or renderer code is

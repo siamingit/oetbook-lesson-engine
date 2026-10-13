@@ -99,6 +99,10 @@ pass, and logs it.
   exemptions by item ID and form, each with its reason. Ask the owner only if
   a flagged line could be about the practice set itself. The check must still
   never print or store an answer.
+- ElevenLabs speech-to-text (Scribe) of lesson sources (owner, 2026-10-13): run
+  it without asking. Ask the owner only if one job would cost more than $5, or if
+  the ElevenLabs credit is running low. The Anthropic and Gemini rules (§3) are
+  unchanged; Cartesia stays as §3 says.
 
 ---
 

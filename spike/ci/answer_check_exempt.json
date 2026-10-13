@@ -9,6 +9,19 @@
   {"item": "oa-reading-000061", "form": "accepted[0]", "why": "an everyday time phrase; the docs and code use it in their own sense", "by": "owner 2026-10-12"},
   {"item": "oa-reading-000053", "form": "accepted[0]", "why": "a profession word; the repository uses it only in a Grammar 3 nominalisation example, in a different setting from the item", "by": "owner 2026-10-12"},
   {"item": "oa-reading-000053", "form": "accepted[1]", "why": "the plural of oa-reading-000053 accepted[0], exempt ahead so it does not trip later", "by": "owner 2026-10-12"},
-  {"item": "oa-reading-000059", "form": "accepted[0]", "why": "a general noun; the design system uses it only as an example of a noun suffix", "by": "owner 2026-10-12"}
+  {"item": "oa-reading-000059", "form": "accepted[0]", "why": "a general noun; the design system uses it only as an example of a noun suffix", "by": "owner 2026-10-12"},
+  {"item": "oa-reading-000138", "form": "accepted[0]", "why": "sample-tests-v2: a common five-letter English word; 124 lines in 37 files of the repository's own text, all written before the release", "by": "agent 2026-10-13"},
+  {"item": "oa-reading-000144", "form": "accepted[0]", "why": "sample-tests-v2: an everyday two-word phrase; the bundle spec's version history and the methodology use it (19 lines), all written before the release", "by": "agent 2026-10-13"},
+  {"item": "oa-reading-000135", "form": "accepted[0]", "why": "sample-tests-v2: a length of time; the runbook and the runner state batch limits with it", "by": "agent 2026-10-13"},
+  {"item": "oa-reading-000146", "form": "accepted[0]", "why": "sample-tests-v2: a time word; the table-board prototype's placeholder notes use it (2026-09-25)", "by": "agent 2026-10-13"},
+  {"item": "oa-listening-000145", "form": "accepted[0]", "why": "a Part A gap (sample-tests-v2), checked since 2026-10-13 (ADR 029): a common four-letter English word; 344 lines in 57 files of the repository's own text", "by": "agent 2026-10-13"},
+  {"item": "oa-listening-000028", "form": "accepted[0]", "why": "a Part A gap, checked since 2026-10-13 (ADR 029): a three-letter term the code and docs use throughout (78 lines in 13 files), never about a practice set", "by": "agent 2026-10-13"},
+  {"item": "oa-listening-000027", "form": "accepted[1]", "why": "a Part A gap, checked since 2026-10-13 (ADR 029): two numbers as the docs write page ranges and contrast ratios (30 lines in 8 files)", "by": "agent 2026-10-13"},
+  {"item": "oa-listening-000021", "form": "accepted[1]", "why": "a Part A gap, checked since 2026-10-13 (ADR 029): an everyday verb the methodology and code comments use (10 lines)", "by": "agent 2026-10-13"},
+  {"item": "oa-listening-000094", "form": "accepted[1]", "why": "a Part A gap (sample-tests-v2), checked since 2026-10-13 (ADR 029): an everyday verb the product doc and design system use (3 lines)", "by": "agent 2026-10-13"},
+  {"item": "oa-listening-000012", "form": "accepted[0]", "why": "a Part A gap, checked since 2026-10-13 (ADR 029): an everyday word in the gloss-image prompt", "by": "agent 2026-10-13"},
+  {"item": "oa-listening-000024", "form": "accepted[1]", "why": "a Part A gap, checked since 2026-10-13 (ADR 029): a time of day in the narration audit's greeting pattern", "by": "agent 2026-10-13"},
+  {"item": "oa-listening-000062", "form": "accepted[0]", "why": "a Part A gap (sample-tests-v2), checked since 2026-10-13 (ADR 029): a body part in the narration audit's list of body parts", "by": "agent 2026-10-13"},
+  {"item": "oa-listening-000136", "form": "accepted[1]", "why": "a Part A gap (sample-tests-v2), checked since 2026-10-13 (ADR 029): a body part in the narration audit's list of body parts", "by": "agent 2026-10-13"}
  ]
 }

@@ -248,6 +248,8 @@ def check_player(lesson: Path) -> tuple[int, list[str]]:
             if not docs:
                 continue
             for u in st["utterances"]:
+                if u.get("kind") == "exam":
+                    continue          # 1.18: a recording of the release reads nothing aloud
                 if not u.get("audio_file"):
                     raise SystemExit(f"{u['id']} has no audio: run on a narrated player, or use --narration")
                 clip = (d / u["audio_file"]).resolve()

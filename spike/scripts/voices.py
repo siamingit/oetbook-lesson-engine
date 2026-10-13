@@ -22,8 +22,9 @@ SENTENCE_END = (".", "?", "!")
 
 
 def for_lesson(lesson: Path) -> dict:
-    """The voice of a lesson, from the first word of its id (docs/04-LESSON-BUNDLE.md §4)."""
-    return BY_TYPE.get(Path(lesson).name.split("-")[0].lower(), RUPERT)
+    """The voice of a lesson, from its type (lesson_type.py)."""
+    import lesson_type
+    return BY_TYPE.get(lesson_type.of(lesson), RUPERT)
 
 
 def add_sentence_pauses(pcm: bytes, words: list[str], start: list[float], end: list[float],

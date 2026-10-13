@@ -16,7 +16,9 @@ from pathlib import Path
 import question_numbers as qn
 
 
-def check(bundle: dict) -> tuple[list[int], list[dict]]:
+def check(bundle: dict, exam_numbers: bool = False) -> tuple[list[int], list[dict]]:
+    """`exam_numbers`: a lesson whose questions keep the exam's numbers (a
+    Listening lesson, ADR 029), whose first question need not be 1."""
     blocks = bundle["blocks"] if isinstance(bundle["blocks"], dict) else {b["id"]: b for b in bundle["blocks"]}
     taught = qn.lesson_numbers(blocks)
     findings = []
@@ -31,7 +33,7 @@ def check(bundle: dict) -> tuple[list[int], list[dict]]:
             if nums:
                 first = (bd["id"], min(nums))
                 break
-        if first and first[1] != 1:
+        if first and first[1] != 1 and not exam_numbers:
             findings.append({"where": first[0], "what": f"the lesson's first question is {first[1]}, not 1"})
         for bd in bundle["boards"]:
             findings += qn.board_findings(bd, blocks, taught)
@@ -44,7 +46,9 @@ def main() -> None:
     ap.add_argument("--dir", type=Path, required=True, help="a built player folder, e.g. generated/lesson-player")
     a = ap.parse_args()
     bundle = json.loads((a.dir / "bundle.json").read_text(encoding="utf-8"))
-    taught, findings = check(bundle)
+    import lesson_type
+    exam_numbers = lesson_type.has(a.lesson_dir, "exam_numbers")
+    taught, findings = check(bundle, exam_numbers)
     if not taught:
         print("question-number check passed: no practice-set question in this lesson")
         return
@@ -52,8 +56,9 @@ def main() -> None:
         print(f"  NUMBER {f['where']}: {f['what']}")
     if findings:
         raise SystemExit(f"question-number check failed: {len(findings)} finding(s)")
-    print(f"question-number check passed: questions {taught[0]}-{taught[-1]}, the first is 1, "
-          "every spoken number shown on its board")
+    print(f"question-number check passed: questions {taught[0]}-{taught[-1]}, "
+          + ("the exam's numbers (ADR 029), " if exam_numbers else "the first is 1, ")
+          + "every spoken number shown on its board")
 
 
 if __name__ == "__main__":
