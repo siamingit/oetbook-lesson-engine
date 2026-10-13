@@ -2084,6 +2084,14 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                     for x in check_doc_marks.utterance_quotes(u["text_with_cues"], u["cues"], docs, qs)[1]:
                         fail(u["id"], f"reads {x} from the text with no mark on those words: put a "
                                       "highlight or keyword-pair cue on them, just before they are said")
+    # a Listening lesson's pause-and-try prompts (ADR 030): never a sentence twice in
+    # the lesson, nor a near copy, this section's and every other narrated section's
+    if exam_ok:
+        import listening_rule
+        tag = Path(data["screens_path"]).parent.name
+        for uid, what in listening_rule.prompt_findings(listening_rule.prompts(boards),
+                                                        listening_rule.lesson_prompts(lesson_dir_, skip=tag)):
+            fail(uid, what)
     return findings
 
 

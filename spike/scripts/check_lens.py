@@ -15,6 +15,17 @@ of text in the window's element is measured: a line that lies partly inside the
 window and partly outside it (above, below or to a side) fails. A line wholly
 outside the window (hidden, or in a cue band) is not a finding.
 
+A Listening board (bundle 1.19, ADR 030): its transcript's box and a Part A
+note form's window show whole lines only, at every moment (its states, and every
+half second while a recording plays): a line partly inside fails. While a
+recording plays, the marker is under the word being said (as the word times
+give it) and that word's line is inside the box, the fourth line from the top
+(or higher at the transcript's start, lower at its end), and the question column
+shows the question of the section the word is in, and only it. Reported per
+board: the box's type as a share of the frame (fails under 2.6%), the lines it
+shows (fails outside 8 to 10), and the justified lines' word gaps (the widest,
+as a multiple of a normal space, and how many are over twice one).
+
 A Part B question board in two columns (bundle 1.16, rule 36; maintainer,
 2026-10-08) has no lens: its extract is shown whole. At every moment after the
 text is uncovered, every line of the extract must lie inside its page and inside
@@ -28,6 +39,7 @@ interpreted; every figure is geometry the browser reports.
 import argparse
 import atexit
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -36,6 +48,12 @@ from pathlib import Path
 
 EDGE_PROFILE = tempfile.mkdtemp(prefix="oet-edge-")
 atexit.register(shutil.rmtree, EDGE_PROFILE, True)
+# A Listening transcript is hyphenated (ADR 030). Edge and Chrome download their
+# hyphenation data into a profile; a new profile has none, so the one this check
+# makes is given the user's Edge's, and measures the lines as the user's browser breaks them.
+HYPHEN_DATA = Path(os.environ.get("LOCALAPPDATA", "")) / "Microsoft" / "Edge" / "User Data" / "hyphen-data"
+if HYPHEN_DATA.is_dir():
+    shutil.copytree(HYPHEN_DATA, Path(EDGE_PROFILE) / "hyphen-data")
 
 EDGE = [r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
         r"C:\Program Files\Microsoft\Edge\Application\msedge.exe"]
@@ -137,6 +155,131 @@ HARNESS = r"""
     whole.push({ board: bd.id, split: g.split ?? bd.split, zoom: g.zoom ?? 1, font_px: font, font_cqh: font ? +(font / fh * 100).toFixed(2) : null,
                  bundle_font: blocks[bd.table].font, lines_measured: n, lines_outside: out });
   }
+  // 1.19 (ADR 030): a Listening board
+  const listen = [];
+  // lines with their text node's visibility (a note form's rows outside its window are hidden)
+  const vlines = el => { const out = [];
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    for (let n; (n = walker.nextNode());) {
+      if (!n.data.trim()) continue;
+      const vis = getComputedStyle(n.parentElement).visibility;
+      const rg = document.createRange(); rg.selectNodeContents(n);
+      for (const q of rg.getClientRects()) if (q.width > 0 && q.height > 0) out.push([q, n.data.trim().slice(0, 50), vis]);
+    }
+    return out; };
+  for (const bd of boards) {
+    if (typeof isLBoard !== "function" || !isLBoard(bd)) continue;
+    const L = bd.listen;
+    const times = new Set([bd.start + 0.001]);
+    for (const s of bd.states) {
+      times.add(s.start + 0.001); times.add(s.end - 0.001);
+      for (const u of s.utterances) {
+        for (const c of u.cues) { times.add(c.time + 0.001); if (c.time_end) times.add(c.time_end + 0.001); }
+        if (u.kind === "exam") for (let x = u.start + 0.25; x < u.end; x += 0.5) times.add(x);
+      }
+    }
+    for (const t of listenMoments(bd)) times.add(t);
+    const rep = { board: bd.id, font_cqh: null, lines_min: 99, lines_max: 0, moments: 0, said: 0,
+                  marker_bad: 0, line_bad: 0, question_bad: 0, gap_max: 0, gaps_over_2: 0, gaps: 0 };
+    let first = true;
+    for (const t of [...times].filter(t => t >= bd.start && t < bd.until).sort((a, b) => a - b)) {
+      lastRenderT = null;
+      renderFrame(t);
+      samples++; rep.moments++;
+      const el = blockEls.get(L.block);
+      const win = el && el.querySelector(".lt-win");
+      if (!win) continue;
+      windows++;
+      const W = win.getBoundingClientRect();
+      const td = el.querySelector(".lt-scr td");
+      rep.font_cqh = +(parseFloat(getComputedStyle(td).fontSize) / frame.clientHeight * 100).toFixed(2);
+      const lh = parseFloat(getComputedStyle(td).lineHeight);
+      const tops = new Set();
+      const boxes = [[el.querySelector(".lt-scr"), W, "box"]];
+      const fw = lformId && blockEls.get(lformId) && blockEls.get(lformId).querySelector(".lt-win");
+      if (fw) boxes.push([blockEls.get(lformId).querySelector(".lt-scr"), fw.getBoundingClientRect(), "form"]);
+      for (const [node, R, kind] of boxes) {
+        for (const [q, text] of vlines(node).filter(x => x[2] !== "hidden")) {
+          const vin = Math.min(q.bottom, R.bottom) - Math.max(q.top, R.top);
+          if (vin <= TOL) continue;                                   // wholly outside: not shown
+          if (kind === "box" && q.top >= R.top - TOL && q.bottom <= R.bottom + TOL) tops.add(Math.round(q.top - R.top));
+          const sides = [];
+          if (q.top < R.top - TOL) sides.push("top");
+          if (q.bottom > R.bottom + TOL) sides.push("bottom");
+          if (!sides.length) continue;
+          const key = bd.id + "|" + kind + "|" + text + "|" + sides.join(",");
+          if (seen.has(key)) continue;
+          seen.add(key);
+          clipped.push({ board: bd.id, kind, t: +t.toFixed(3), state: (stateAt(bd, t) || {}).id || null,
+                         text, sides, px: +Math.max(R.top - q.top, q.bottom - R.bottom).toFixed(1) });
+        }
+      }
+      // whole lines shown in the box, counted by their tops on the line grid
+      const n = new Set([...tops].map(x => Math.round(x / lh))).size;
+      rep.lines_min = Math.min(rep.lines_min, n); rep.lines_max = Math.max(rep.lines_max, n);
+      // while a recording is said: the marker, the line, the question
+      const s = stateAt(bd, t), at = listenAt(bd, s, t);
+      if (at.rec && at.said) {
+        rep.said++;
+        const ws = lwords(el), w = ws[at.word];
+        const r = document.createRange(); r.setStart(w.sn, w.so); r.setEnd(w.en, w.eo);
+        const q = r.getClientRects()[0];
+        const mk = el.querySelector(".lt-mk").getBoundingClientRect();
+        const mkOn = el.querySelector(".lt-mk").classList.contains("on");
+        if (!mkOn || Math.abs(mk.left - q.left) > 1.5 || Math.abs(mk.width - q.width) > 1.5
+            || mk.top < q.bottom - 1 || mk.top > q.bottom + 6) {
+          rep.marker_bad++;
+          if (rep.marker_bad <= 3) clipped.push({ board: bd.id, kind: "marker", t: +t.toFixed(3), state: s ? s.id : null,
+                                                  text: "word " + at.word, sides: ["marker"], px: +Math.abs(mk.left - q.left).toFixed(1) });
+        }
+        const line = Math.round((q.top - W.top) / lh);
+        const lineAbs = Math.floor(((q.top + q.bottom) / 2 - el.querySelector(".lt-scr").getBoundingClientRect().top) / lh);
+        const total = Math.round(el.querySelector(".lt-scr").offsetHeight / lh);
+        const want = Math.min(lineAbs, 3) + Math.max(0, lineAbs - 3 - (total - L.lines));
+        if (q.top < W.top - TOL || q.bottom > W.bottom + TOL || line !== want) {
+          rep.line_bad++;
+          if (rep.line_bad <= 3) clipped.push({ board: bd.id, kind: "line", t: +t.toFixed(3), state: s ? s.id : null,
+                                                text: "word " + at.word + " on line " + (line + 1) + " of the box, not " + (want + 1),
+                                                sides: ["line"], px: 0 });
+        }
+        const sec = L.sections.find(x => at.word >= x.from && at.word <= x.to);
+        const want_q = sec ? sec.block : null;
+        const shown = [...lsecEls].filter(([, e]) => getComputedStyle(e).display !== "none").map(([id]) => id);
+        const own = [...lsecEls.keys()].filter(id => { const e = blockEls.get(id); return e && getComputedStyle(e).display !== "none"; });
+        if (want_q && (shown.length !== 1 || shown[0] !== want_q || own.length)) {
+          rep.question_bad++;
+          if (rep.question_bad <= 3) clipped.push({ board: bd.id, kind: "question", t: +t.toFixed(3), state: s ? s.id : null,
+                                                    text: "shown " + shown.join(",") + " / want " + want_q, sides: ["question"], px: 0 });
+        }
+      }
+      if (first) {
+        // the justified lines' word gaps, against a normal space of the same type
+        first = false;
+        const probe = document.createElement("span");
+        probe.style.cssText = "position:absolute;visibility:hidden;white-space:pre;font:inherit";
+        td.appendChild(probe);
+        probe.textContent = "a a"; const a3 = probe.getBoundingClientRect().width;
+        probe.textContent = "aa"; const a2 = probe.getBoundingClientRect().width;
+        probe.remove();
+        const space = a3 - a2;
+        const ws = lwords(el), rects = ws.map(w => { const r = document.createRange(); r.setStart(w.sn, w.so); r.setEnd(w.en, w.eo); return r.getClientRects(); });
+        for (let k = 1; k < ws.length; k++) {
+          const a = rects[k - 1][rects[k - 1].length - 1], b = rects[k][0];
+          if (!a || !b || Math.abs(a.top - b.top) > 2 || ws[k].sn.parentElement.closest("td") !== ws[k - 1].sn.parentElement.closest("td")) continue;
+          // the last line of a paragraph is set left: not a justified line
+          const tdEl = ws[k].sn.parentElement.closest("td"), last = [...rects].findLast((r, j) => ws[j].sn.parentElement.closest("td") === tdEl);
+          if (last && last[last.length - 1] && Math.abs(last[last.length - 1].top - b.top) < 2) continue;
+          const g = (b.left - a.right) / space;
+          rep.gaps++; rep.gap_max = Math.max(rep.gap_max, +g.toFixed(2)); if (g > 2) rep.gaps_over_2++;
+        }
+      }
+    }
+    if (rep.font_cqh !== null && rep.font_cqh < 2.6 - 0.01)
+      clipped.push({ board: bd.id, kind: "font", t: 0, state: null, text: "the box's type is " + rep.font_cqh + "% of the frame", sides: ["floor"], px: 0 });
+    if (rep.lines_min < 8 || rep.lines_max > 10)
+      clipped.push({ board: bd.id, kind: "lines", t: 0, state: null, text: "the box shows " + rep.lines_min + "-" + rep.lines_max + " lines", sides: ["lines"], px: 0 });
+    listen.push(rep);
+  }
   for (const bd of boards) {
     const tb = bd.table && blocks[bd.table];
     if (!tb || !(tb.map || bd.lens)) continue;
@@ -181,7 +324,7 @@ HARNESS = r"""
   const pre = document.createElement("pre");
   pre.id = "lens-result";
   pre.textContent = JSON.stringify({ width: window.innerWidth, frame: Math.round(frame.getBoundingClientRect().width),
-                                     samples, windows, clipped, whole });
+                                     samples, windows, clipped, whole, listen });
   document.body.appendChild(pre);
 })();
 </script>
@@ -232,6 +375,11 @@ def main() -> None:
                   f"({w['font_cqh']}% of the frame; bundle {w['bundle_font']}), the question column at "
                   f"{round(w['zoom'] * 100)}%; {w['lines_outside']} of "
                   f"{w['lines_measured']} line measurements outside its page or the board")
+        for w in res.get("listen") or []:
+            print(f"  {w['board']} (Listening): the box's type {w['font_cqh']}% of the frame, {w['lines_min']}-"
+                  f"{w['lines_max']} lines shown; {w['moments']} moments, {w['said']} with a word said: marker off "
+                  f"{w['marker_bad']}, line off {w['line_bad']}, question off {w['question_bad']}; justified word "
+                  f"gaps: widest {w['gap_max']}x a space, {w['gaps_over_2']} of {w['gaps']} over 2x")
         for c in res["clipped"][:a.show]:
             print(f"  CLIPPED {c['board']} ({c['kind']}) at {mmss(c['t'])}: {c['text']!r} cut at the "
                   f"{'/'.join(c['sides'])} by {c['px']}px")

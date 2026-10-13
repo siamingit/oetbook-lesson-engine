@@ -87,6 +87,8 @@ HARNESS = r"""
     }
     for (const t of Object.values(bd.reveal || {})) times.add(t + 0.001);
     for (const t of Object.values(bd.pinned || {})) times.add(t + 0.001);
+    // 1.19 (ADR 030): on a Listening board, each section's start while a recording plays
+    if (typeof isLBoard === "function" && isLBoard(bd)) for (const t of listenMoments(bd)) times.add(t);
     for (const t of [...times].filter(t => t >= bd.start && t < bd.until).sort((a, b) => a - b)) {
       lastRenderT = null;
       renderFrame(t);
@@ -98,7 +100,7 @@ HARNESS = r"""
       const viewed = bd.table && keep && keep !== "none";
       if (!viewed) camEl.style.transform = "none";
       const A = area();
-      for (const [id, el] of blockEls) {
+      for (const [id, el] of [...blockEls, ...(typeof lsecEls === "object" ? lsecEls : [])]) {
         if (!shown(el)) continue;
         if (viewed && !el.classList.contains("beside")) continue;   // under the camera: the notes
         const r = el.getBoundingClientRect();

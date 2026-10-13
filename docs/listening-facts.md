@@ -1,9 +1,10 @@
-# Listening fact sheet (DRAFT, for the chat to verify)
+# Listening fact sheet
 
-Status: **DRAFT, 2026-10-13. Not a ruling and not an ADR.** Every exam fact the
-Listening lessons will state, with where it is on oet.com. The chat verifies it;
-only then is it recorded (an ADR 029 amendment and ledger lines), and only the
-verified facts are taught (ADR 029, owner decision 9; AGENTS.md §5).
+Status: **Verified, 2026-10-13** (the chat on oet.com; the owner's rulings recorded in
+[ADR 030](adr/030-listening-board-layout.md), decision 6). Every exam fact the
+Listening lessons state, with where it is on oet.com. Only the verified facts are
+taught, and facts 20 to 22 only as their rulings say (ADR 029, owner decision 9;
+AGENTS.md §5).
 
 - **VERIFIED**: the quote was read on the page named, on 2026-10-13, by the agent,
   or confirmed by the chat from https://oet.com/learn/listening the same day.
@@ -46,10 +47,10 @@ enough.
 | 17 | Part A answers are written in the booklet; Parts B and C answers are shaded | L: "For Part A, you must write your answers in the space provided in the question booklet"; "For Part B and Part C, you must shade the lozenge next to the appropriate answer" | VERIFIED |
 | 18 | Grade B (350) typically needs at least 30 of 42 marks; boundaries vary slightly by test version | L: "Test-takers awarded grade B (a scale score of 350) will typically have a score of at least 30 marks"; "The grade boundaries are adjusted slightly for each test" | VERIFIED (chat, 2026-10-13) |
 | 19 | Speakers have a range of accents | L: "A range of accents are used across all three parts to reflect the global nature of the healthcare workforce" | VERIFIED |
-| 20 | Part A: answers may use common abbreviations | not found on L, A | UNVERIFIED |
-| 21 | Part A: a time to read the general instructions before Part A, usable as extra reading time | not found on L, A | UNVERIFIED |
-| 22 | A target of about 20 of 24 in Part A (or 4 of 6 in Part B, 8 of 12 in Part C) | no oet.com source; a study target the instructor set | UNVERIFIED |
-| 23 | Paper test: Part A may be written in pen or pencil; Parts B and C shaded with a 2B pencil | the owner's oet.com check of 2026-10-06 (ADR 026); not re-read for this sheet | UNVERIFIED (re-check the page) |
+| 20 | Part A: answers may use common abbreviations | not found on L, A; oet.com stresses writing the words heard (fact 8) | **NOT TAUGHT** (owner, 2026-10-13): teach writing the words heard |
+| 21 | Part A: a time to read the general instructions before Part A, usable as extra reading time | not found on L, A | **NOT TAUGHT** (owner, 2026-10-13): teach only the 30 seconds to look at the notes before each extract (fact 7) |
+| 22 | A target of about 20 of 24 in Part A (or 4 of 6 in Part B, 8 of 12 in Part C) | no oet.com source; a study target the instructor set | **ONLY AS "the instructor's suggested targets"** (owner, 2026-10-13), with fact 18: grade B typically needs at least 30 of 42 marks, varying slightly from test to test |
+| 23 | Paper test: Part A may be written in pen or pencil; Parts B and C shaded with a 2B pencil | verified on oet.com by the chat, 2026-10-13 | VERIFIED (chat, 2026-10-13) |
 
 ## Not taught (corrected silently, owner decision 9)
 

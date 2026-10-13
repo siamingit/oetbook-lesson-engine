@@ -34,4 +34,5 @@ old one.
 | [026 — Reading lessons: practice sets, vocabulary and visual design](026-reading-lessons.md) | 2026-10-05; amended four times 2026-10-06; amended 2026-10-08 (the Part B question board in two columns) |
 | [027 — The voice of Reading and Listening lessons (amended: Rupert for every lesson; the delivery rule; the monotony check)](027-reading-and-listening-voice.md) | 2026-10-06; amended 2026-10-06 |
 | [028 — Cartesia on the Scale plan: synthesis is not rationed, and runs in parallel](028-cartesia-scale-plan.md) | 2026-10-06 |
-| [029 — Listening lessons: the pinned sets, the recordings in the lesson, transcripts and note forms (bundle 1.18)](029-listening-lessons.md) | 2026-10-13 |
+| [029 — Listening lessons: the pinned sets, the recordings in the lesson, transcripts and note forms (bundle 1.18)](029-listening-lessons.md) | 2026-10-13; amended by 030 |
+| [030 — The Listening board: one layout, a transcript that follows the recording, word times (bundle 1.19)](030-listening-board-layout.md) | 2026-10-13 |

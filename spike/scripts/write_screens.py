@@ -1759,6 +1759,8 @@ def block_height(b: dict) -> float:
         h = clause_geometry(b)["height"] / 100 + (LABEL_LINE if b.get("label") else 0)
     elif t == "table" and b.get("map"):
         return MAP_HEIGHT             # its four pages scale to their frame (bundle 1.14)
+    elif t == "table" and (b.get("doc") or {}).get("text_type") == "transcript":
+        return 0.0                    # a Listening transcript: a box in its own column (ADR 030)
     elif t == "table" and b.get("core"):
         return table_height(b, b["font"] / 100)
     elif t == "table":
@@ -1865,6 +1867,11 @@ def lay_out_table(t: dict, fixed: list[str], table: dict, blocks: dict,
         table["core"], fits = True, True
         table["col_widths"] = [100]
         table["font"] = round(TABLE_TEXT * 100, 1)
+    elif (table.get("doc") or {}).get("text_type") == "transcript":
+        # a Listening transcript (ADR 030): a box of fixed size that moves line by
+        # line, beside the questions; it always fits
+        table["core"], fits = True, True
+        table["col_widths"] = [100]
     else:
         fits = fit_table(table)
     fixed_h = stack_height(fixed, blocks)
@@ -2274,6 +2281,13 @@ def lay_out(topics: list[dict], blocks: dict, section_title: str,
     for t in topics:
         fixed = fixed_layer(t)
         table = next((blocks[i] for i in fixed if is_table_topic(t, blocks[i])), None)
+        if table is not None and (table.get("doc") or {}).get("text_type") == "transcript":
+            # a Listening board with a Part A note form (ADR 030): the form is the
+            # board's table (its rows, its gaps typed in); the transcript is its box
+            table["core"] = True
+            table["col_widths"] = [100]
+            table = next((blocks[i] for i in fixed if (blocks[i].get("doc") or {}).get("text_type") == "form"),
+                         table)
         if table is not None:
             boards.append(lay_out_table(t, fixed, table, blocks, section_title))
             continue
@@ -2734,6 +2748,8 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                    if b.get("question") and b["question"].get("options")), None)
         if not qb:
             continue
+        if any((b.get("doc") or {}).get("text_type") == "transcript" for h in t["thoughts"] for b in h["blocks"]):
+            continue            # a Listening board: its transcript is never covered (ADR 030; 1c below)
         if qb["question"].get("options_later"):
             # the Part C question method (ADR 026; bundle 1.17): where we are on the
             # map, the question alone, then the paragraph whole, then the options
@@ -2784,16 +2800,17 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             opened = veils.index(False) if False in veils else len(veils)
             if not veils[0] or any(veils[opened:]):
                 fail(t["id"], "the covered thoughts come first, before the text appears")
-    # 1c. a Listening transcript (ADR 029, bundle 1.18): each part shown names its
-    # rows, and the transcript is covered first, until the question is solved
+    # 1c. a Listening transcript (ADR 030, bundle 1.19): on screen from the board's
+    # start, never covered, never shown in parts or as a map
     for t in out["topics"]:
         if not any((b.get("doc") or {}).get("text_type") == "transcript"
                    for h in t["thoughts"] for b in h["blocks"]):
             continue
         for h in t["thoughts"]:
-            if h.get("view_bad"):
-                fail(t["id"], f"thought {h['id']}: purpose {h['view_bad']!r} names no part of the "
-                              "transcript: start it 'Map:', 'Map P<N>:', 'Para <N>:' or 'Para <N>-<M>:'")
+            if h.get("listen_bad"):
+                fail(t["id"], f"thought {h['id']}: purpose {h['listen_bad']!r}: a Listening transcript is "
+                              "always shown, in its box beside the questions (ADR 030): no 'Covered:', "
+                              "'Map:' or 'Para:'; name a row as 'Row <N>:' or the whole as 'Table:'")
 
     # 2. never-on-screen strings, Persian script, register claims
     forbids = fixed_forbids(data.get("lesson_dir")) + data["forbids"]
@@ -4081,6 +4098,26 @@ def doc_table_html(b: dict, bid: str, first_row: int = 0, panel: bool = False) -
         mark = (' data-mark="' + esc(k["mark"]) + '"') if k.get("mark") else ""
         body += ('<tr data-row="' + str(first_row + r) + '" class="dp dp-' + k["kind"] + '"><td data-col="0"'
                  + mark + ">" + inner + "</td></tr>")
+    if doc["text_type"] == "form" and not panel:
+        # a Part A note form (bundle 1.19): its header, then its rows in a window
+        # (`lt-win`), which on a Listening board shows whole rows only and moves
+        # to the heading being heard or the gap being filled (ADR 030)
+        return ('<div class="blk tbl core doc doc-form"' + bid + ' style="--tf:'
+                + str(b.get("font") or 2.6) + 'cqh"><table class="lt-head"><colgroup><col style="width:100%">'
+                + '</colgroup><thead><tr><th data-kind="' + esc(DOC_KINDS["form"]) + '">' + head
+                + '</th></tr></thead></table><div class="lt-win"><div class="lt-scr"><table><colgroup>'
+                + '<col style="width:100%"></colgroup><tbody>' + body + '</tbody></table></div></div></div>')
+    if doc["text_type"] == "transcript" and not panel:
+        # a Listening transcript (ADR 030, bundle 1.19): its page's header, then a
+        # window of fixed size over its rows (`lt-win`), in which the rows move
+        # (`lt-scr`) with the marker under the word being said and the caret at
+        # its line; the player sizes and moves them
+        return ('<div class="blk tbl core doc doc-transcript"' + bid + ' style="--tf:'
+                + str(b.get("font") or 2.6) + 'cqh"><table class="lt-head"><colgroup><col style="width:100%">'
+                + '</colgroup><thead><tr><th data-kind="' + esc(DOC_KINDS["transcript"]) + '">' + head
+                + '</th></tr></thead></table><div class="lt-win"><div class="lt-scr"><table><colgroup>'
+                + '<col style="width:100%"></colgroup><tbody>' + body + '</tbody></table><div class="lt-mk">'
+                + '</div><div class="lt-caret"></div></div></div></div>')
     return ('<div class="' + ("" if panel else "blk ") + 'tbl core doc doc-' + esc(doc["text_type"]) + '"' + bid + ' style="--tf:'
             + str(b.get("font") or 2.6) + 'cqh"><table><colgroup><col style="width:100%"></colgroup>'
             + '<thead><tr><th data-kind="' + esc(DOC_KINDS.get(doc["text_type"], "Text")) + '">' + head
@@ -4637,44 +4674,23 @@ def expand_practice(lesson: Path, topics: list[dict]) -> None:
                     h["purpose"] = f"Row {a}: " + purpose[m.end():].strip()
                 elif not COVERED_PURPOSE.match(purpose):
                     h["view_bad"] = purpose
-        # a Listening transcript (ADR 029, bundle 1.18): covered ("Covered: ...")
-        # until the question it answers is solved, then shown whole, or as a map
-        # ("Map:", "Map P3:" with row 3 marked), or a part at a time ("Para 3:",
-        # "Para 3-7:": the rows of a heading or of a question's section, as many
-        # neighbouring rows as the part has; the fit sets them at a size at which
-        # they fit whole, and nothing scrolls)
+        # a Listening transcript (ADR 030, amending ADR 029; bundle 1.19): on
+        # screen whole from the board's start, in a box of fixed size that
+        # follows the recording line by line; never covered, never shown in
+        # parts or as a map. "Row N: ..." on a Part B or C board names the row
+        # the box shows (a Part A board's rows are its note form's)
         if doc and (doc.get("doc") or {}).get("text_type") == "transcript":
-            n_rows = len(doc["rows"])
             for h in t["thoughts"]:
                 purpose = h.get("purpose") or ""
-                m = COVERED_PURPOSE.match(purpose)
-                if m:
-                    h["veil"] = True
-                    h["purpose"] = "Table: " + purpose[m.end():].strip()
-                    continue
-                m = PC_MAP.match(purpose)
-                if m:
-                    k = int(m.group(1)) if m.group(1) else None
-                    if k is not None and not 1 <= k <= n_rows:
-                        h["view_bad"] = purpose
-                        continue
-                    h["view"] = {"map": True, "rows": [k - 1] if k else []}
-                    h["purpose"] = "Table: " + purpose[m.end():].strip()
-                    continue
-                m = PC_PARA.match(purpose)
-                if m:
-                    a = int(m.group(1))
-                    b_ = int(m.group(2)) if m.group(2) else a
-                    if not 1 <= a <= b_ <= n_rows:
-                        h["view_bad"] = purpose
-                        continue
-                    h["view"] = {"map": False, "rows": list(range(a - 1, b_))}
-                    h["purpose"] = f"Row {a}: " + purpose[m.end():].strip()
+                if COVERED_PURPOSE.match(purpose) or PC_MAP.match(purpose) or PC_PARA.match(purpose):
+                    h["listen_bad"] = purpose
         # a Part B question board (bundle 1.15): the text stays covered while
         # the question, the options and "try it first" are taught, as the
         # instructor covers it; those thoughts are named "Covered: ..."
         if any(b.get("doc") for h in t["thoughts"] for b in h["blocks"]) and qs \
-                and qs[0]["question"].get("options"):
+                and qs[0]["question"].get("options") \
+                and not any((b.get("doc") or {}).get("text_type") == "transcript"
+                            for h in t["thoughts"] for b in h["blocks"]):
             for h in t["thoughts"]:
                 m = COVERED_PURPOSE.match(h.get("purpose") or "")
                 if m:

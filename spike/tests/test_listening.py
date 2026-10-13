@@ -1,8 +1,10 @@
-"""Listening lessons (docs/adr/029-listening-lessons.md; bundle 1.18): the lesson
-type and its features, the practice set's transcripts, note forms and audio
-spans, the Listening rule module, the play cue in the timeline, and the
-practice-set loader on the three pinned Listening sets (only where the local
-release copy exists: it is private, so CI runs the made-up set alone).
+"""Listening lessons (docs/adr/029-listening-lessons.md, bundle 1.18; ADR 030,
+bundle 1.19): the lesson type and its features, the practice set's transcripts,
+note forms, word times, sections and audio spans, the Listening rule module and
+its pause-and-try prompt check, the play cue in the timeline, a Listening
+board's `listen`, and the practice-set loader on the three pinned Listening sets
+(only where the local release copy exists: it is private, so CI runs the
+made-up set alone).
 
     .venv/Scripts/python -m unittest discover -s spike/tests
 """
@@ -22,6 +24,7 @@ import build_lesson_player as blp   # noqa: E402
 import lesson_type                  # noqa: E402
 import listening_rule               # noqa: E402
 import practice_set as P            # noqa: E402
+import word_times as WT             # noqa: E402
 import write_narration as wn        # noqa: E402
 import write_screens as ws          # noqa: E402
 
@@ -63,6 +66,24 @@ SET = {"set_id": "oa-set-lx-0001", "release": {"file": "x", "package_id": "p", "
        "parts": [{"code": "LA", "stimuli": [STIM], "items": [GAPFILL]},
                  {"code": "LB", "stimuli": [], "items": [CHOICE]}],
        "teach_pages": [5]}
+# its word times (14 words: 6, 3 and 5 a row; the speakers' labels are not words)
+# and its sections (heading 1 from word 0, heading 2 from word 9), as word_times.py
+# writes them (ADR 030)
+TIMES = [[25.0 + k, 25.5 + k] for k in range(6)] + [[31.5, 31.9], [32.0, 32.4], [32.5, 33.0]] \
+    + [[34.0 + k * .5, 34.4 + k * .5] for k in range(5)]
+WORD_TIMES = {"stimuli": {STIM["stimulus_id"]: {
+    "audio_sha256": STIM["audio"]["sha256"], "transcript_sha256": WT.transcript_sha(STIM),
+    "row_words": [6, 3, 5], "words": 14, "matched": 14, "times": TIMES}}}
+SECTIONS = {"stimuli": {STIM["stimulus_id"]: [{"heading": 1, "first_gap": 1, "from": 0},
+                                              {"heading": 2, "first_gap": 2, "from": 9}]}}
+
+
+def setUpModule():
+    WT._cache.update(f=WORD_TIMES, s=SECTIONS)
+
+
+def tearDownModule():
+    WT._cache.clear()
 
 
 class LessonType(unittest.TestCase):
@@ -97,8 +118,28 @@ class ListeningSet(unittest.TestCase):
         self.assertEqual([r[0] for r in b["rows"]], STIM["transcript"]["text"].split("\n"))
         self.assertEqual(b["doc"]["text_type"], "transcript")
 
-    def test_row_times_from_turns(self):
-        self.assertEqual(P.row_times(SET, STIM["stimulus_id"]), [25.0, 31.5, None])
+    def test_row_times_from_the_word_times(self):
+        # each row's first word, 0.15 s before, never before the extract (ADR 030:
+        # the release's admin turn times are not used)
+        self.assertEqual(P.row_times(SET, STIM["stimulus_id"]), [25.0, 31.35, 33.85])
+        self.assertEqual(WT.words_of(STIM)[1], [6, 3, 5])
+        self.assertEqual(WT.words_of(STIM)[0][6], "Sore")
+
+    def test_word_times_must_fit_their_transcript_and_audio(self):
+        other = dict(STIM, transcript={"format": "oa-transcript-v1", "text": "Nurse: Hello."})
+        self.assertIsNone(WT.for_stimulus(other))
+        self.assertIsNone(WT.for_stimulus(dict(STIM, audio=dict(STIM["audio"], sha256="1" * 64))))
+        self.assertIsNotNone(WT.for_stimulus(STIM))
+
+    def test_sections(self):
+        secs = P.section_rows(STIM)
+        self.assertEqual([(x["from"], x["to"], x["rows"]) for x in secs], [(0, 8, [0, 1]), (9, 13, [2, 2])])
+        self.assertIn("heading 2 (gaps from 2): rows 3-3", P.transcript_for_prompt(SET, STIM))
+
+    def test_a_quote_found_in_fragments(self):
+        words = WT.words_of(STIM)[0]
+        self.assertEqual(WT.find_quote(words, "Mr Plon: Sore since Tuesday. ... wakes me", ["Mr Plon"]), (6, 11))
+        self.assertIsNone(WT.find_quote(words, "since Monday"))
 
     def test_the_note_form(self):
         f = P.form_block(SET, GAPFILL)
@@ -115,10 +156,13 @@ class ListeningSet(unittest.TestCase):
                           P.exam_span(SET, STIM["stimulus_id"], "exam")["clip_out"]), (0.25, 60.0))
         self.assertEqual(P.exam_span(SET, STIM["stimulus_id"], "extract")["clip_in"], 25.0)
         s = P.exam_span(SET, STIM["stimulus_id"], "lines 1-1")
-        self.assertEqual((s["clip_in"], s["clip_out"], s["rows"]), (25.0, 31.5, [0, 0]))
+        self.assertEqual((s["clip_in"], s["clip_out"], s["rows"]), (25.0, 31.35, [0, 0]))
         s = P.exam_span(SET, STIM["stimulus_id"], "Line 2")
-        self.assertEqual((s["clip_in"], s["clip_out"]), (31.5, 60.0))
-        for bad in ("lines 3", "lines 2-9", "some"):
+        self.assertEqual((s["clip_in"], s["clip_out"]), (31.35, 33.85))
+        s = P.exam_span(SET, STIM["stimulus_id"], "heading 2")
+        self.assertEqual((s["clip_in"], s["clip_out"], s["rows"]), (33.85, 60.0, [2, 2]))
+        self.assertEqual(P.exam_span(SET, STIM["stimulus_id"], "heading 1")["clip_out"], 33.85)
+        for bad in ("lines 4", "lines 2-9", "some", "heading 3", "question 25"):
             with self.assertRaises(ValueError):
                 P.exam_span(SET, STIM["stimulus_id"], bad)
 
@@ -126,6 +170,9 @@ class ListeningSet(unittest.TestCase):
         self.assertEqual(P.release_number(GAPFILL), 1)
         self.assertEqual(P.number(SET, CHOICE), 25)
         self.assertEqual(P.check_listening(SET), [])
+        with mock.patch.dict(WT._cache, {"f": {"stimuli": {}}}):
+            self.assertEqual(P.check_listening(SET), [STIM["stimulus_id"] + " (no word times for this transcript "
+                                                      "and audio)"])
 
     def test_rfc8785_hash(self):
         # an integral float hashes as an integer, as the exercises repository writes it
@@ -147,10 +194,33 @@ class Rule(unittest.TestCase):
         self.assertIn("QUESTION oa-listening-990025 (number 25", text)
         self.assertNotIn("Morning", listening_rule.set_text(L, [6]))
 
+    def test_pause_and_try_prompts_never_repeat(self):
+        u = lambda i, text: {"id": i, "text_with_cues": text + "{{c1}}",
+                             "cues": [{"id": "c1", "type": "pause", "seconds": 4, "text": "try it first"}]}
+        boards = [{"states": [{"utterances": [
+            u("a", "Pause the lesson now and try to find the answer. Then play it again."),
+            u("b", "Can you hear it yourself? Stop here, have a go, and press play when you are ready."),
+            {"id": "c", "text_with_cues": "Pause the lesson now and try to find the answer.", "cues": []},
+            u("d", "Pause the lesson here and try to find the answer.")]}]}]
+        found = listening_rule.prompt_findings(listening_rule.prompts(boards))
+        self.assertEqual([x[0] for x in found], ["d"])          # one word swapped; "c" is no prompt
+        self.assertIn("nearly repeats a", found[0][1])
+        same = listening_rule.prompt_findings([("x", "Then play it again.")], [("other:y", "Then play it again!")])
+        self.assertIn("repeats other:y", same[0][1])
+        self.assertEqual(listening_rule.prompt_findings([("x", "Your turn: find answer 27.")],
+                                                        [("y", "Over to you, which option fits?")]), [])
+
+    def test_the_rule_carries_the_owners_layout_and_facts(self):
+        for text in ("NEVER covered", "NO board picture", "question N"):
+            self.assertIn(text, listening_rule.SCREENS_SET)
+        self.assertIn("PAUSE-AND-TRY PROMPTS", listening_rule.NARRATION)
+        self.assertIn("instructor's suggested", listening_rule.SCREENS)
+        self.assertNotIn("Covered:", listening_rule.NARRATION_QUESTION)
+
     def test_narration_text_follows_the_boards(self):
         form = {"topics": [{"thoughts": [{"blocks": [{"doc": {"text_type": "form"}}]}]}]}
         self.assertIn("NOTE FORM", listening_rule.narration_text(Path("."), form))
-        self.assertNotIn("QUESTION BOARD", listening_rule.narration_text(Path("."), form))
+        self.assertNotIn("LISTENING BOARD (ADR 029", listening_rule.narration_text(Path("."), form))
 
     def test_first_lesson_welcome(self):
         self.assertIn("why listening matters", listening_rule.intro_first(wn.INTRO_FIRST))
@@ -217,21 +287,30 @@ class Timeline(unittest.TestCase):
 
 class Bundle(unittest.TestCase):
     def test_format(self):
-        self.assertEqual(blp.format_version("listening-02-part-a", part_b=True, listening=True), "1.18")
+        self.assertEqual(blp.format_version("listening-02-part-a", part_b=True, listening=True), "1.19")
         self.assertEqual(blp.format_version("reading-03-part-b", part_b=True), "1.16")
         self.assertEqual(blp.format_version("grammar-01-verb-tenses"), "1.12")
 
-    def test_the_spotlight_follows_the_recording(self):
-        table = {"doc": {"stimulus": "s1", "text_type": "transcript"}}
-        exam = {"id": "u.x", "kind": "exam", "start": 100.0, "end": 120.0, "clip_in": 30.0, "clip_out": 50.0,
-                "exam": {"stimulus": "s1"}}
-        bd = {"states": [{"utterances": [exam]}]}
-        focus = [{"time": 90.0, "row": 4, "col": None}]
-        out = blp.exam_focus(bd, table, focus, {"s1": [25.0, 35.0, 45.0, None, 60.0]})
-        self.assertEqual([(f["time"], f["row"]) for f in out], [(90.0, 4), (100.0, 0), (105.0, 1), (115.0, 2),
-                                                              (120.0, 4)])
-        bd["states"][0]["veil"] = True
-        self.assertEqual(blp.exam_focus(bd, table, focus, {"s1": [25.0, 35.0]}), focus)
+    def test_a_listening_board(self):
+        # 1.19 (ADR 030): a board with a transcript gets its `listen`: the word
+        # times, the sections, and on a Part A board the form's heading rows
+        L = lesson("listening-09-x", "listening", SET)
+        tr, form = P.transcript_block(STIM), P.form_block(SET, GAPFILL)
+        blocks_all = {"k1": dict(tr, id="k1"), "k2": dict(form, id="k2"), "k3": {"type": "plain"}}
+        bd = {"id": "x_t1", "fixed": ["k1", "k2"], "states": [{"working": ["k3"]}]}
+        ls = blp.listen_board(L, bd, blocks_all)
+        self.assertEqual((ls["block"], ls["form"], ls["split"], ls["lines"]), ("k1", "k2", 58, 10))
+        self.assertEqual(ls["times"], TIMES)
+        self.assertEqual([(x["from"], x["to"], x["row"]) for x in ls["sections"]], [(0, 8, 0), (9, 13, 2)])
+        self.assertGreaterEqual(ls["font"], 2.6)
+        self.assertGreaterEqual(ls["form_font"], 2.6)
+        self.assertIsNone(blp.listen_board(L, {"id": "x_t2", "fixed": ["k2"], "states": []}, blocks_all))
+
+    def test_a_transcript_is_drawn_in_its_box(self):
+        html = ws.doc_table_html(P.transcript_block(STIM), ' data-id="k1"')
+        for part in ('class="lt-head"', 'class="lt-win"', 'class="lt-scr"', 'class="lt-mk"', 'class="lt-caret"'):
+            self.assertIn(part, html)
+        self.assertIn('<span class="spk">Mr Plon:</span>', html)
 
     def test_a_recording_is_not_narration_in_text_json(self):
         bd = {"id": "b", "start": 0, "fixed": [], "states": [{"working": [], "utterances": [
@@ -240,7 +319,7 @@ class Bundle(unittest.TestCase):
         out = blp.text_export({"id": "listening-09-x"}, [{"id": "s", "title": "t", "category": None, "start": 0,
                                                           "end": 2, "boards": ["b"]}], [bd], {}, listening=True)
         self.assertEqual([n["id"] for n in out["sections"][0]["boards"][0]["narration"]], ["u1"])
-        self.assertEqual(out["format_version"], "1.18")
+        self.assertEqual(out["format_version"], "1.19")
 
 
 RELEASE = P.release_path(P.LISTENING_PIN["release"])
@@ -258,7 +337,8 @@ class PinnedSets(unittest.TestCase):
                 (L / "analysis").mkdir(parents=True)
                 ps = P.import_set(L, sid)
                 self.assertEqual(P.check_hashes({"parts": ps["parts"]}), [])
-                self.assertEqual(P.check_listening(ps), [])
+                with mock.patch.dict(WT._cache, clear=True):          # the committed word times
+                    self.assertEqual(P.check_listening(ps), [])
                 for st in P.stimuli(ps).values():
                     self.assertTrue(P.is_audio(st))
                     self.assertEqual([r[0] for r in P.transcript_block(st)["rows"]], P.transcript_lines(st))
@@ -274,6 +354,16 @@ class PinnedSets(unittest.TestCase):
                         self.assertFalse(P.question_block(ps, it)["question"].get("options_later"))
         finally:
             shutil.rmtree(tmp, ignore_errors=True)
+
+    def test_the_committed_word_times_and_sections(self):
+        with mock.patch.dict(WT._cache, clear=True):
+            self.assertEqual(WT.check(), [])
+            pkg, _ = WT.release()
+            lc = next(x for x in pkg["sets"] if x["set_id"] == "oa-set-lc-0001")
+            ps = {"parts": lc["parts"], "release": {}}
+            for n in range(31, 37):
+                s = P.exam_span(ps, "oa-set-lc-0001-e1", f"question {n}")
+                self.assertLess(s["clip_in"], s["clip_out"])
 
     def test_only_the_pinned_sets(self):
         L = Path(tempfile.mkdtemp()) / "listening-90-x"
