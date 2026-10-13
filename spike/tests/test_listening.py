@@ -13,6 +13,7 @@ import shutil
 import sys
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
@@ -137,7 +138,10 @@ class ListeningSet(unittest.TestCase):
 class Rule(unittest.TestCase):
     def test_set_text_for_a_section_that_teaches_it(self):
         L = lesson("listening-09-x", "listening", SET)
-        text = listening_rule.set_text(L, [5])
+        import vocab                  # the word bank is private: not on CI
+        with mock.patch.object(vocab, "words_for_prompt", return_value="WORDS"):
+            text = listening_rule.set_text(L, [5])
+        self.assertIn("WORDS", text)
         self.assertIn("TRANSCRIPT oa-set-lx-0001-e1", text)
         self.assertIn("NOTE FORM oa-listening-990001", text)
         self.assertIn("QUESTION oa-listening-990025 (number 25", text)
