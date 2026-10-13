@@ -85,7 +85,12 @@ HARNESS = r"""
       if (!n.textContent.trim() || !visible(n.parentElement)) continue;
       const rg = document.createRange();
       rg.selectNodeContents(n);
-      for (const r of rg.getClientRects()) if (r.width > 1 && r.height > 1) out.push([k, r, n.textContent.trim().slice(0, 40)]);
+      // 1.19 (ADR 030): a Listening box shows its lines through its window; a line
+      // wholly outside it is not shown (check_lens.py: none is cut at its edge)
+      const win = n.parentElement.closest(".lt-win"), V = win && win.getBoundingClientRect();
+      for (const r of rg.getClientRects()) if (r.width > 1 && r.height > 1
+                                              && !(V && (r.bottom <= V.top + 1 || r.top >= V.bottom - 1)))
+        out.push([k, r, n.textContent.trim().slice(0, 40)]);
       k++;
     }
     return out;
@@ -102,6 +107,8 @@ HARNESS = r"""
     }
     for (const t of Object.values(bd.reveal || {})) times.add(t + 0.001);
     for (const t of Object.values(bd.pinned || {})) times.add(t + 0.001);
+    // 1.19 (ADR 030): on a Listening board, each section's start while a recording plays
+    if (typeof isLBoard === "function" && isLBoard(bd)) for (const t of listenMoments(bd)) times.add(t);
     for (const t of [...times].filter(t => t >= bd.start && t < bd.until).sort((a, b) => a - b)) {
       lastRenderT = null;
       renderFrame(t);
@@ -111,7 +118,7 @@ HARNESS = r"""
       // camera shows them (as check_overflow.py: where a table board's camera
       // has moved, the table may leave the view; its notes may not)
       const viewed = bd.table && keep && keep !== "none";
-      for (const [id, el] of blockEls) {
+      for (const [id, el] of [...blockEls, ...(typeof lsecEls === "object" ? lsecEls : [])]) {
         if (!(shown(el) && visible(el)) || (viewed && !el.classList.contains("beside"))) continue;
         const r = el.getBoundingClientRect();
         for (const bar of [".hdr", ".ctl"]) {
@@ -125,7 +132,7 @@ HARNESS = r"""
         }
       }
       camEl.style.transform = "none";
-      const els = [...blockEls].filter(([, el]) => shown(el) && visible(el));
+      const els = [...blockEls, ...(typeof lsecEls === "object" ? lsecEls : [])].filter(([, el]) => shown(el) && visible(el));
       const st = stateAt(bd, t);
       const over = new Set(qb(bd) && st ? st.overlay || [] : []);
       const pins = new Set(Object.keys(bd.pinned || {}));

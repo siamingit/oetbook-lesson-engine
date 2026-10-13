@@ -1,0 +1,141 @@
+{
+ "format": "oetbook-listening-sections",
+ "version": 1,
+ "adr": "030",
+ "words": "word indices as in sample-tests-v2.json (word_times.words_of); a section runs to the word before the next one's `from`",
+ "by": "the agent, 2026-10-13: a new section where the speaker signposts the next point (Part C), or where the conversation turns to the next heading (Part A); each checked to hold its questions' evidence (word_times.py --check)",
+ "stimuli": {
+  "oa-set-la-0001-e1": [
+   {
+    "heading": 1,
+    "first_gap": 1,
+    "from": 0
+   },
+   {
+    "heading": 2,
+    "first_gap": 4,
+    "from": 134
+   },
+   {
+    "heading": 3,
+    "first_gap": 7,
+    "from": 277
+   },
+   {
+    "heading": 4,
+    "first_gap": 10,
+    "from": 466
+   }
+  ],
+  "oa-set-la-0001-e2": [
+   {
+    "heading": 1,
+    "first_gap": 13,
+    "from": 0
+   },
+   {
+    "heading": 2,
+    "first_gap": 19,
+    "from": 338
+   },
+   {
+    "heading": 3,
+    "first_gap": 22,
+    "from": 485
+   },
+   {
+    "heading": 4,
+    "first_gap": 24,
+    "from": 623
+   }
+  ],
+  "oa-set-lb-0001-e1": [
+   {
+    "item": "oa-listening-000001",
+    "from": 0
+   }
+  ],
+  "oa-set-lb-0001-e2": [
+   {
+    "item": "oa-listening-000002",
+    "from": 0
+   }
+  ],
+  "oa-set-lb-0001-e3": [
+   {
+    "item": "oa-listening-000003",
+    "from": 0
+   }
+  ],
+  "oa-set-lb-0001-e4": [
+   {
+    "item": "oa-listening-000004",
+    "from": 0
+   }
+  ],
+  "oa-set-lb-0001-e5": [
+   {
+    "item": "oa-listening-000005",
+    "from": 0
+   }
+  ],
+  "oa-set-lb-0001-e6": [
+   {
+    "item": "oa-listening-000006",
+    "from": 0
+   }
+  ],
+  "oa-set-lc-0001-e1": [
+   {
+    "item": "oa-listening-000031",
+    "from": 0
+   },
+   {
+    "item": "oa-listening-000032",
+    "from": 192
+   },
+   {
+    "item": "oa-listening-000033",
+    "from": 318
+   },
+   {
+    "item": "oa-listening-000034",
+    "from": 407
+   },
+   {
+    "item": "oa-listening-000035",
+    "from": 441
+   },
+   {
+    "item": "oa-listening-000036",
+    "from": 494
+   }
+  ],
+  "oa-set-lc-0001-e2": [
+   {
+    "item": "oa-listening-000037",
+    "from": 0
+   },
+   {
+    "item": "oa-listening-000038",
+    "from": 96
+   },
+   {
+    "item": "oa-listening-000039",
+    "from": 297
+   },
+   {
+    "item": "oa-listening-000040",
+    "from": 397
+   },
+   {
+    "item": "oa-listening-000041",
+    "from": 497
+   },
+   {
+    "item": "oa-listening-000042",
+    "from": 598
+   }
+  ]
+ }
+}

@@ -1,4 +1,5 @@
-"""The Listening-lesson rule (docs/adr/029-listening-lessons.md; owner, 2026-10-13):
+"""The Listening-lesson rule (docs/adr/029-listening-lessons.md, amended by
+docs/adr/030-listening-board-layout.md; owner, 2026-10-13):
 what the screens, narration and QA prompts add for a lesson of type listening
 (lesson_type.py), as reading_rule.py does for Reading (ADR 026) and
 vocabulary_rule.py for vocabulary lessons (ADR 019).
@@ -7,10 +8,19 @@ A Listening lesson teaches the pinned release's sets (practice_set.py,
 sample-tests-v2): code builds every transcript, note form and question from
 its ID, exactly as released, and the release's own audio plays inside the
 lesson's clock (a narration `play` cue; bundle 1.18). Exam facts come only from
-the beats, the rulings and the verified fact sheet (docs/listening-facts.md,
-once the owner has verified it).
+the beats, the rulings and the verified fact sheet (docs/listening-facts.md).
+Every board with a transcript is a Listening board (ADR 030, bundle 1.19).
+
+    .venv/Scripts/python spike/scripts/listening_rule.py <lesson_dir> --prompts
+
+checks a lesson's pause-and-try prompts (ADR 030): no sentence twice, nor a
+near copy of another (exit 1 on a finding).
 """
 
+import difflib
+import json
+import re
+import sys
 from pathlib import Path
 
 import lesson_type
@@ -49,6 +59,14 @@ count or a list of the other lessons.
 the test. Listening Part A: a pen or a pencil. Parts B and C on paper: the \
 answer's circle is shaded with a 2B pencil. Paper-only advice is said to be \
 for the paper test; never name a tool of the computer test.
+  - THE FACT SHEET'S RULINGS (owner, 2026-10-13; docs/listening-facts.md): a \
+target of 20 of 24 (Part A), 4 of 6 (Part B) or 8 of 12 (Part C) is only ever \
+"the instructor's suggested target", and where one is given, say that grade B \
+typically needs at least 30 of the 42 marks, varying slightly from test to \
+test. NEVER teach that abbreviations are accepted in Part A (teach writing the \
+words heard), and NEVER teach that the instructions' time can be used as extra \
+reading time: teach only the 30 seconds to look at the Part A notes before \
+each extract.
   - QUESTION NUMBERS ARE THE EXAM'S (owner, 2026-10-13): Part A gaps 1-24, Part B \
 questions 25-30, Part C questions 31-42, because the recordings announce them. \
 Never renumber them from 1.
@@ -59,27 +77,36 @@ of your own, shorten or paraphrase a transcript, a note form or a question.\
 """
 
 SCREENS_SET = """\
-THE PRACTICE SET OF THIS LESSON (ADR 029). Its recordings' transcripts, its note \
-forms and its questions are listed below, by ID, exactly as the board will show \
-them. CODE BUILDS THEM; the release's own audio plays in the lesson (the \
-narration starts it).
+THE PRACTICE SET OF THIS LESSON (ADR 029, ADR 030). Its recordings' \
+transcripts, its note forms and its questions are listed below, by ID, exactly \
+as the board will show them. CODE BUILDS THEM; the release's own audio plays in \
+the lesson (the narration starts it).
+  - A LISTENING BOARD (owner, 2026-10-13; ADR 030): every board with a \
+transcript has ONE layout, for Parts A, B and C: the transcript in a box on \
+the left (about 58% of the width; about ten lines of fixed size, moving line by \
+line with the recording, a marker under the word being said) and the questions \
+on the right (Part A: the note form; Part B: the question and its three \
+options; Part C: the question being taught, and while a recording plays, the \
+question its section is about). It has NO board picture. Write no pictures \
+for it.
   - A TRANSCRIPT: write {"type": "table", "label": "<the extract's stimulus ID>", \
 "anchor": true}, with NO header and NO rows. Its rows are the released lines \
-(a speaker's turn, or a paragraph of a talk), numbered as listed. It is the \
-fixed layer of a board of its own (a TABLE BOARD). A transcript stays COVERED \
-until the question it answers has been solved (owner, 2026-10-13): those \
-thoughts are named "Covered: ...". Then it is shown in PARTS, never scrolled: \
-a thought named "Para N-M: ..." shows rows N to M whole (a heading's section of \
-a Part A conversation, or the section of the recording a Part B or C question \
-is answered from; one row is "Para N: ..."); "Map: ..." shows the whole \
-transcript, too small to read, to say where we are ("Map PN: ..." marks row \
-N). A Part B transcript is short and is shown whole once uncovered (thoughts \
-"Row N: ..." on the rows read).
+(a speaker's turn, or a paragraph of a talk), numbered as listed. It is on \
+screen from the board's start, whenever a recording plays, the first time too: \
+NEVER covered, never shown in parts or as a map (no "Covered:", "Para:" or \
+"Map:" thoughts). On a Part B or C board a thought "Row N: ..." shows row N in \
+the box (the rows read, the keywords, the answer); "Table: ..." is about the \
+whole board.
+  - THE SECTIONS: each extract's transcript lists where each question (or each \
+heading of a note form) is answered: its SECTION, from where the speaker \
+signposts that point to where the next one is signposted. A replay of one is \
+the narration's "question N" or "heading K".
   - A PART A NOTE FORM: write {"type": "table", "label": "<the gap-fill item \
-ID>", "anchor": true}, with NO header and NO rows. Its rows are listed below: a \
-row for each heading and a numbered row for each gap. It is the fixed layer of \
-a TABLE BOARD: one "Row N: ..." thought per gap, in order. Code types each gap's \
-answer in its exact form; the narration types it.
+ID>", "anchor": true}, with NO header and NO rows, on the SAME board as its \
+extract's transcript (both anchors): the form is the board's table. Its rows \
+are listed below: a row for each heading and a numbered row for each gap. One \
+"Row N: ..." thought per gap, in order. Code types each gap's answer in its \
+exact form; the narration types it.
   - A QUESTION (Parts B and C): {"type": "plain", "label": "<its item ID>", \
 "anchor": false, "items": [...]}, with NO text: code writes its number (the \
 exam's), its stem and its three options, shown from the start (in the test, \
@@ -96,12 +123,12 @@ in a transcript, a question or an option, and the recap {"type": "table", \
 word heard in a recording gets a button that plays the sentence it is heard \
 in: code adds it.
   - THE RECORDING plays while the board stays as it is: give the moment its own \
-thought only where the board changes (a new part of the transcript).\
+thought only where the board changes.\
 """
 
 PART_A_METHOD = """\
-THE PART A LESSON (owner, 2026-10-13; ADR 029). For each extract (gaps 1-12 and \
-13-24), in this order:
+THE PART A LESSON (owner, 2026-10-13; ADR 029, ADR 030). For each extract (gaps \
+1-12 and 13-24), in this order:
   1. VOCABULARY WARM-UP, the instructor's method on this set's vocabulary \
 (owner, 2026-10-13): a few short sentences of your own, each with one gap, whose \
 missing words are words the learner will hear in this set's recordings (medical \
@@ -110,49 +137,46 @@ and the words around it, then it is shown. Never a sentence of a transcript or \
 a form, and never a word that answers a gap of the form. Then a SHORT \
 PREDICTION DRILL on the form's stems: the kind of word each gap needs (a body \
 part, a medicine, a length of time, a job, a feeling, a number with a unit).
-  2. THE NOTE FORM BOARD (its fixed layer the form; it has NO board picture: the \
-form is its picture, and the two do not fit together): "Table: ..." the \
-headings first (what the conversation will cover, in order); then "Row N: ..." \
-for each gap, the stem read and the kind of word predicted (one short plain \
-note each); "Table: listen": the recording plays once (the narration plays it); \
-"Table: try it first": ONE short plain note inviting the learner to write each \
-answer before it is shown; then one "Row N: ..." thought per gap where the \
-lesson fills it, each with ONE short plain note (where the answer was said, or \
-why a tempting wrong answer is wrong, from the release's reason). A row \
-thought with no block is lost: every row thought has its note.
-  3. THE TRANSCRIPT, by heading: a board whose fixed layer is the transcript, \
-"Covered: ..." first, then one "Para N-M: ..." thought per heading, the rows \
-that hold that heading's gaps, each answer's words found where they are said.\
+  2. THE LISTENING BOARD (the transcript and the note form, both anchors; no \
+board picture): "Table: ..." the headings first (what the conversation will \
+cover, in order); "Table: listen": the recording plays once, with the 30 \
+seconds to look at the notes; after EACH HEADING'S GROUP of gaps, a \
+pause-and-try prompt (the narration's); then one "Row N: ..." thought per gap \
+where the lesson fills it, each with ONE short plain note (where the answer was \
+said, or why a tempting wrong answer is wrong, from the release's reason). A \
+row thought with no block is lost: every row thought has its note.\
 """
 
 PART_B_METHOD = """\
-THE PART B LESSON (owner, 2026-10-13; ADR 029). For each extract, in this order:
+THE PART B LESSON (owner, 2026-10-13; ADR 029, ADR 030). For each extract, in \
+this order:
   1. PRE-TEACHING board (MATCH table, a gloss per word), as Reading Part B.
-  2. QUESTION board, its fixed layer the TRANSCRIPT: "Covered: the question" (the \
-question block only); "Covered: ..." a gloss of each listed word of the stem or \
-options; "Covered: listen": the recording plays once, with its real reading \
-time; "Covered: try it first": ONE short plain note; "Covered: the answer": \
-an answer_row "Answer: <letter>"; then the transcript appears, whole: "Row N: \
+  2. THE LISTENING BOARD (the transcript, anchor; the question in its first \
+thought): "Table: the question" (the question block); a gloss of each listed \
+word of the stem or options; "Table: listen": the recording plays once, with \
+its real reading time, the transcript on screen; a pause-and-try prompt (the \
+narration's); "Table: the answer": an answer_row "Answer: <letter>"; "Row N: \
 ..." on the turns that hold the keywords and the answer (a word of the list \
 glossed again in the row thought where it is said); ONE plain note naming the \
-paraphrase on the answer's row; "Table: replay": the part of the recording that \
-holds the answer is played again.
+paraphrase on the answer's row; "Table: replay": the question's section is \
+played again.
   3. WORD-RECAP board (RECAP table), as Reading Part B.\
 """
 
 PART_C_METHOD = """\
-THE PART C LESSON (owner, 2026-10-13; ADR 029). For each extract: a board of its \
-six stems (the questions' blocks, read in the 90 seconds of reading time: \
-keywords, the kind of answer, the opinion question); the recording played once \
-in full, with its real reading time; then, for each question in order: its \
-PRE-TEACHING board (the words of its section), then its QUESTION board, its \
-fixed layer the TRANSCRIPT: "Covered: the question" (the question block only); \
-"Covered: the answer" (an answer_row "Answer: <letter>"); then "Para N-M: ..." \
-the rows of the question's section, whole (the turns from the cue to the \
-evidence; a section too long to fit is shown as two neighbouring parts, one \
-after the other); the section replayed; the keyword pairs, the paraphrase and \
-each wrong option ruled out. After the last question, the WORD-RECAP board \
-("RECAP <stimulus ID>").
+THE PART C LESSON (owner, 2026-10-13; ADR 029, ADR 030). For each extract: a \
+board of its six stems (the questions' blocks, read in the 90 seconds of \
+reading time: keywords, the kind of answer, the opinion question); the \
+recording played once in full, with its real reading time, on a LISTENING \
+BOARD (the transcript, and the first question: while it plays, the question \
+column follows the sections); then, for each question in order: its \
+PRE-TEACHING board (the words of its section), then its LISTENING BOARD (the \
+transcript, anchor; the question in its first thought): "Table: the question"; \
+a pause-and-try prompt (the narration's); "Table: the answer" (an answer_row \
+"Answer: <letter>"); "Row N: ..." on the rows of the question's section (from \
+the signpost to the evidence); the section replayed ("question N"); the keyword \
+pairs, the paraphrase and each wrong option ruled out. After the last question, \
+the WORD-RECAP board ("RECAP <stimulus ID>").
   An INTERVIEW extract has no source teaching (owner, 2026-10-13): it carries \
 the instructor's presentation method over, and it is an authored section \
 (ADR 018), flagged for the owner at the silent preview.\
@@ -166,6 +190,12 @@ said as plain fact, never "not four options" or "the slide is wrong".
   - Never name, quote or describe the instructor's practice recordings, forms or \
 questions, a website, a course series or a Persian audience. Never advise a \
 mock test first; never suggest a highlighter.
+  - The fact sheet's rulings: a score target is only "the instructor's suggested \
+target" (20 of 24, 4 of 6, 8 of 12), and grade B typically needs at least 30 of \
+42 marks, varying slightly from test to test; never say abbreviations are \
+accepted in Part A (the learner writes the words heard); never call the \
+instructions' time extra reading time (only the 30 seconds to look at the Part \
+A notes before each extract).
   - Question numbers are the exam's (gaps 1-24, questions 25-42): say them as \
 the board shows them.
   - THE RECORDINGS. The release's own audio plays inside the lesson, started by \
@@ -177,10 +207,22 @@ last sentence). The recording starts when the utterance ends; the board shows \
 that a recording is playing; you never speak over it, and that utterance has \
 no pause. Spans: "exam" (the extract as the test plays it: the announcement, \
 the real reading time, the tone, the extract), "extract" (from its first word), \
-"lines N-M" (transcript rows N to M, a replay of one part). Each extract is \
-heard ONCE in full with its real reading time ("exam") before it is discussed; \
-in Parts B and C the part that answers each question is replayed ("lines N-M") \
-when that question is discussed.
+"lines N-M" (transcript rows N to M), "question N" (the section of the talk \
+that answers question N) or "heading K" (the section of a note form's K-th \
+heading). Each extract is heard ONCE in full with its real reading time \
+("exam") before it is discussed; in Parts B and C each question's section is \
+replayed ("question N") when that question is discussed. The transcript is on \
+screen whenever a recording plays (the first time too) and follows it.
+  - PAUSE-AND-TRY PROMPTS (owner, 2026-10-13; ADR 030). In Parts B and C after \
+EACH QUESTION is read (before its answer), and in Part A after EACH HEADING'S \
+GROUP of gaps (never after every gap), one utterance invites the learner to \
+pause the lesson, try to find the answer themselves, then play it again; it \
+ends with a `pause` cue of 4 seconds whose `text` is "try it first". VARY THE \
+WORDING: never the same sentence twice in the lesson, and no near copy (the \
+same sentence with one word swapped, or the same pattern reworded slightly). \
+Write each one fresh, in a different shape: a question to the learner, an \
+instruction, a challenge, a reason to try. A check fails the lesson on any \
+repeat or near copy.
   - A pause of the exam's reading time, where a recording is not played with \
 it: a `pause` whose `text` begins "reading time", its `seconds` the extract's \
 reading time.
@@ -189,25 +231,25 @@ them (a keyword pair on a question board).\
 """
 
 NARRATION_PART_A = """\
-THE PART A NOTE FORM (ADR 029): on the form board, read each stem and say the \
-kind of word the gap needs; play the recording ("exam"); try it first: invite \
-the learner to write each answer, then a `pause` of 4 seconds; then for each gap \
-in order, in its row's state, say the answer and `type` it, its `text` exactly \
-the answer as the row prints it, and, where the release gives one, why a \
-tempting wrong answer is wrong.\
+THE PART A NOTE FORM (ADR 029, ADR 030): on its Listening board, read each \
+stem and say the kind of word the gap needs; play the recording ("exam"); after \
+each heading's group a pause-and-try prompt (above), replaying that group's \
+section ("heading K") where it helps; then for each gap in order, in its row's \
+state, say the answer and `type` it, its `text` exactly the answer as the row \
+prints it, and, where the release gives one, why a tempting wrong answer is \
+wrong.\
 """
 
 NARRATION_QUESTION = """\
-A PART B OR C QUESTION BOARD (ADR 029): while the transcript is COVERED, read \
-the question and its three options, A, B and C, word for word, marking their \
-keywords with `match1` and `match2` on the question block; play the recording; \
-try it first (a `pause` of 4 seconds); say the answer. Only then is the \
-transcript shown: read the part that holds the answer, the keyword pairs \
-between the option and the transcript in one match type, the paraphrase \
-bridge, each wrong option ruled out (reveal its part as you give the reason), \
-the tick last. In a covered state read nothing from the transcript and mark \
-nothing in it. On the paper test, Parts B and C answers are shaded with a 2B \
-pencil.\
+A PART B OR C LISTENING BOARD (ADR 029, ADR 030): read the question and its \
+three options, A, B and C, word for word, marking their keywords with `match1` \
+and `match2` on the question block; play the recording (the transcript is on \
+screen and follows it); a pause-and-try prompt (above); say the answer; read \
+the part of the transcript that holds it, the keyword pairs between the option \
+and the transcript in one match type, the paraphrase bridge, each wrong option \
+ruled out (reveal its part as you give the reason), the tick last; replay the \
+question's section ("question N"). On the paper test, Parts B and C answers \
+are shaded with a 2B pencil.\
 """
 
 QA = """\
@@ -220,7 +262,8 @@ instructor's own practice material named, quoted or described; any reference \
 to a website, a course series or a Persian audience; any exam fact not in the \
 rulings; any claim about a tool of the computer test; any advice to take a mock \
 test first or to use a highlighter; narration spoken over a recording; and any \
-match mark pair whose two places do not say the same thing.\
+match mark pair whose two places do not say the same thing; and any \
+pause-and-try prompt that repeats another's sentence or pattern.\
 """
 
 
@@ -294,3 +337,80 @@ def narration_text(lesson: Path, scr: dict) -> str:
     if any((b.get("question") or {}).get("options") for b in blocks):
         out.append(NARRATION_QUESTION)
     return "\n\n".join(out)
+
+
+# ---- pause-and-try prompts (owner, 2026-10-13; ADR 030) ----
+
+PROMPT_PAUSE = "try it first"     # the `text` of the pause that ends a pause-and-try prompt
+NEAR_RATIO = 0.8                  # two sentences of four words or more this alike are near copies
+
+
+def prompts(boards: list[dict]) -> list[tuple[str, str]]:
+    """A narration's pause-and-try prompts, (utterance id, words said): each
+    utterance with a `pause` cue whose text begins "try it first"."""
+    from write_narration import spoken
+    out = []
+    for bd in boards:
+        for s in bd["states"]:
+            for u in s["utterances"]:
+                if any(c.get("type") == "pause" and (c.get("text") or "").strip().lower().startswith(PROMPT_PAUSE)
+                       for c in u.get("cues") or []):
+                    out.append((u["id"], spoken(u["text_with_cues"])))
+    return out
+
+
+def _sentences(text: str) -> list[list[str]]:
+    return [w for w in (re.findall(r"[a-z0-9']+", x.lower()) for x in re.split(r"(?<=[.?!])\s+", text)) if w]
+
+
+def near_copy(a: list[str], b: list[str]) -> bool:
+    """The same sentence, or a near copy: one word swapped, or (four words or
+    more) alike by NEAR_RATIO of their words in order."""
+    if a == b:
+        return True
+    if len(a) == len(b) and len(a) >= 3 and sum(x != y for x, y in zip(a, b)) <= 1:
+        return True
+    return min(len(a), len(b)) >= 4 and difflib.SequenceMatcher(a=a, b=b, autojunk=False).ratio() >= NEAR_RATIO
+
+
+def prompt_findings(mine: list[tuple[str, str]], others: list[tuple[str, str]] = ()) -> list[tuple[str, str]]:
+    """(utterance id, what) for each prompt of `mine` with a sentence that is
+    another prompt's (of `mine`, or of `others`: the lesson's other sections)."""
+    out = []
+    for i, (uid, text) in enumerate(mine):
+        for vid, other in list(mine[:i]) + list(others):
+            hit = next(((a, b) for a in _sentences(text) for b in _sentences(other) if near_copy(a, b)), None)
+            if hit:
+                same = hit[0] == hit[1]
+                out.append((uid, f"pause-and-try prompt {'repeats' if same else 'nearly repeats'} {vid}: "
+                                 f"{' '.join(hit[0])!r} / {' '.join(hit[1])!r}: word each one fresh (ADR 030)"))
+                break
+    return out
+
+
+def lesson_prompts(lesson: Path, skip: str | None = None) -> list[tuple[str, str]]:
+    """Every narrated section's prompts (analysis/narration/<tag>/narration.json),
+    but the section `skip`."""
+    out = []
+    for f in sorted((Path(lesson) / "analysis" / "narration").glob("*/narration.json")):
+        if f.parent.name == skip:
+            continue
+        d = json.loads(f.read_text(encoding="utf-8"))
+        out += [(f"{f.parent.name}:{uid}", t) for uid, t in prompts(d.get("boards") or [])]
+    return out
+
+
+def main() -> None:
+    lesson = Path(sys.argv[1])
+    if "--prompts" in sys.argv:
+        found = prompt_findings(lesson_prompts(lesson))
+        for uid, what in found:
+            print(f"FAIL {uid}: {what}")
+        n = len(lesson_prompts(lesson))
+        print(f"{n} pause-and-try prompt(s); {len(found)} repeated or near copies")
+        sys.exit(1 if found else 0)
+
+
+if __name__ == "__main__":
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    main()

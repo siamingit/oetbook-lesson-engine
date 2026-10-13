@@ -5,7 +5,9 @@
 The page is copied beside itself with a small harness added, opened from its
 file:// URL in headless Edge with the sound muted, and read back with
 --dump-dom (the same method as check_marks.py). The harness loads every
-<audio> and records, per element, its duration or its error code. Nothing is
+<audio> and records, per element, its duration or its error code; on a lesson
+player it first adds one for every file its utterances play (a Listening
+lesson's recordings, bundle 1.19). Nothing is
 played aloud and nothing is paid for.
 
 Exit code 0 only when the page has at least one audio element and every one
@@ -34,6 +36,14 @@ EDGE = [r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
 HARNESS = """
 <script>
 (function () {
+  // a lesson player (bundle 1.19): every file its utterances play (a Listening
+  // lesson's recordings in its silent preview too) is checked as an audio element
+  if (typeof BUNDLE === 'object' && BUNDLE && BUNDLE.boards) {
+    const srcs = new Set();
+    for (const bd of BUNDLE.boards) for (const s of bd.states) for (const u of s.utterances)
+      if (u.audio_file) srcs.add(u.audio_file);
+    for (const src of srcs) { const a = document.createElement('audio'); a.setAttribute('src', src); document.body.appendChild(a); }
+  }
   const els = Array.from(document.querySelectorAll('audio'));
   const out = els.map(a => ({src: a.getAttribute('src'), ok: false, duration: null, error: null}));
   let left = els.length;

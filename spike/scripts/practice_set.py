@@ -528,28 +528,44 @@ def segment(st: dict, kind: str) -> dict | None:
 
 
 def row_times(ps: dict, stimulus_id: str) -> list[float | None]:
-    """Each transcript row's start in the extract file: a turn's from the
-    release's turn starts (an admin field until per-line times are released for
-    learners: an issue in the exercises repository), a further paragraph none."""
+    """Each transcript row's start in the extract file, from the word times
+    (word_times.py, ADR 030: speech-to-text times lined up with the release's own
+    words); every row None where there are none. The release's admin turn times
+    are not used (owner, 2026-10-13)."""
+    import word_times
     st = stimuli(ps)[stimulus_id]
-    starts = list((st.get("admin") or {}).get("turn_starts_s") or [])
-    out: list[float | None] = []
-    for p in transcript_parts(st):
-        out.append(starts.pop(0) if p["kind"] == "turn" and starts else None)
-    return out
+    return word_times.row_times(st) or [None] * len(transcript_parts(st))
+
+
+def section_rows(st: dict) -> list[dict]:
+    """An extract's sections (word_times.sections_for, ADR 030), each with the
+    rows it runs over (from 0): a question's (Parts B, C) or a heading's (Part A)."""
+    import word_times
+    firsts = word_times.row_first_words(st)
+    row_of = lambda w: max(n for n, f in enumerate(firsts) if f <= w)
+    return [{**s, "rows": [row_of(s["from"]), row_of(s["to"])]} for s in word_times.sections_for(st)]
 
 
 def transcript_for_prompt(ps: dict, st: dict) -> str:
-    """An extract for the screens stage: its rows as the board shows them,
-    marked where the release gives the row no time (a replay starts on a timed row)."""
-    times = row_times(ps, st["stimulus_id"])
-    rows = "\n".join(f"  row {n}: " + ("" if times[n - 1] is not None else "[no time] ") + p["text"]
-                     for n, p in enumerate(transcript_parts(st), 1))
-    return (f"TRANSCRIPT {st['stimulus_id']} ({st['label']}; {len(times)} rows; reading time "
-            f"{st.get('reading_time_s')} s), its rows as the board shows them:\n{rows}")
+    """An extract for the screens stage: its rows as the board shows them, and
+    the part of the recording each question (or each heading of a note form)
+    is answered from."""
+    parts = transcript_parts(st)
+    rows = "\n".join(f"  row {n}: " + p["text"] for n, p in enumerate(parts, 1))
+    its = items(ps)
+    secs = []
+    for s in section_rows(st):
+        who = (f"question {number(ps, its[s['item']])}" if s.get("item") in its
+               else f"heading {s['heading']} (gaps from {s['first_gap']})" if s.get("heading") else "")
+        secs.append(f"  {who}: rows {s['rows'][0] + 1}-{s['rows'][1] + 1}")
+    return (f"TRANSCRIPT {st['stimulus_id']} ({st['label']}; {len(parts)} rows; reading time "
+            f"{st.get('reading_time_s')} s), its rows as the board shows them:\n{rows}"
+            + ("\n  Its sections (where each is answered; a replay of one is \"question N\" or "
+               "\"heading K\"):\n" + "\n".join(secs) if secs else ""))
 
 
 SPAN = re.compile(r"lines?\s+(\d+)(?:\s*[-–]\s*(\d+))?")
+SECTION_SPAN = re.compile(r"(question|heading)\s+(\d+)")
 
 
 def exam_span(ps: dict, stimulus_id: str, span: str) -> dict:
@@ -557,7 +573,10 @@ def exam_span(ps: dict, stimulus_id: str, span: str) -> dict:
     "exam" plays it as the test does, from the announcement through the reading
     time and the tone to the extract's end; "extract" from its first word to its
     end; "lines N-M" (or "line N") the transcript's rows N to M, from row N's
-    start to the next timed row's start (or the extract's end), for a replay.
+    start to the next timed row's start (or the extract's end), for a replay;
+    "question N" (the exam's number) or "heading K" (a note form's K-th
+    heading) a section (ADR 030), from its first word to the next section's.
+    Row and section times are the word times' (word_times.py, ADR 030).
     The audio is never changed: a span is two times in the file."""
     st = stimuli(ps)[stimulus_id]
     ext = segment(st, "extract")
@@ -565,14 +584,30 @@ def exam_span(ps: dict, stimulus_id: str, span: str) -> dict:
         raise ValueError(f"{stimulus_id}: the release gives no extract segment")
     rows = None
     s = " ".join((span or "").strip().lower().split())
+    m2 = SECTION_SPAN.fullmatch(s)
     if s == "exam":
         a, z = (segment(st, "announcement") or ext)["start_s"], ext["end_s"]
     elif s == "extract":
         a, z = ext["start_s"], ext["end_s"]
+    elif m2:
+        k = int(m2.group(2))
+        its = items(ps)
+        secs = section_rows(st)
+        sec = next((x for x in secs if (m2.group(1) == "question" and x.get("item") in its
+                                        and number(ps, its[x["item"]]) == k)
+                    or (m2.group(1) == "heading" and x.get("heading") == k)), None)
+        if not sec:
+            raise ValueError(f"span {span!r}: {stimulus_id} has no such section")
+        import word_times
+        wt = word_times.for_stimulus(st)["times"]
+        a = max(ext["start_s"], wt[sec["from"]][0] - word_times.ROW_PAD_S)
+        after = [x for x in secs if x["from"] > sec["from"]]
+        z = (max(ext["start_s"], wt[after[0]["from"]][0] - word_times.ROW_PAD_S) if after else ext["end_s"])
+        rows = sec["rows"]
     else:
         m = SPAN.fullmatch(s)
         if not m:
-            raise ValueError(f"span {span!r}: write 'exam', 'extract' or 'lines N-M'")
+            raise ValueError(f"span {span!r}: write 'exam', 'extract', 'lines N-M', 'question N' or 'heading K'")
         n1, n2 = int(m.group(1)), int(m.group(2) or m.group(1))
         times = row_times(ps, stimulus_id)
         if not 1 <= n1 <= n2 <= len(times):
@@ -618,7 +653,10 @@ def copy_exam_audio(lesson: Path, stimulus_id: str) -> Path:
 
 def check_listening(ps: dict) -> list[str]:
     """A Listening set's own checks: every transcript's rows are its released
-    lines, every turn has a time, and every gap's prompt has one blank."""
+    lines, every word has a time (word_times.py, ADR 030; never the release's
+    admin turn times) and the extract its sections, and every gap's prompt has
+    one blank."""
+    import word_times
     bad = []
     for st in stimuli(ps).values():
         if not is_audio(st):
@@ -626,8 +664,10 @@ def check_listening(ps: dict) -> list[str]:
         rows = transcript_parts(st)
         if [p["text"] for p in rows] != transcript_lines(st):
             bad.append(st["stimulus_id"] + " (transcript rows)")
-        if sum(p["kind"] == "turn" for p in rows) != len((st.get("admin") or {}).get("turn_starts_s") or []):
-            bad.append(st["stimulus_id"] + " (turn times)")
+        if not word_times.for_stimulus(st):
+            bad.append(st["stimulus_id"] + " (no word times for this transcript and audio)")
+        elif not word_times.sections_for(st):
+            bad.append(st["stimulus_id"] + " (no sections)")
         if not segment(st, "extract"):
             bad.append(st["stimulus_id"] + " (no extract segment)")
     for it in items(ps).values():

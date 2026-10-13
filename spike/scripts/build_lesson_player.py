@@ -102,7 +102,21 @@ PART_C_FORMAT_VERSION = "1.17"
 # `transcript` and `form`), the spotlight on the transcript following the
 # recording; written only in a Listening lesson's bundle
 BLOCK_FIELDS_118 = ("heard",)
-LISTENING_FORMAT_VERSION = "1.18"
+# 1.19, a Listening lesson (ADR 030, amending ADR 029): one board layout for Parts
+# A, B and C, the transcript in a box of fixed size that follows the recording
+# line by line (a board's `listen`: the extract's word times and sections), a
+# marker under the word being said; the transcript never covered. Written only
+# in a Listening lesson's bundle; 1.18's fields stay.
+LISTENING_FORMAT_VERSION = "1.19"
+LISTEN_SPLIT = 58             # the transcript's share of a Listening board's width, per cent (owner)
+LISTEN_LINES = 10             # the lines the transcript's box shows (owner: about 8 to 10)
+LISTEN_FONT = 3.4             # cqh: a little over body size, fixed; never below the 2.6 floor (design system §7j)
+# justified, the transcript's lines left gaps of up to 3.8 spaces (a quarter of
+# them over 2) at 590, 812 and 1120 px: it is hyphenated (owner, 2026-10-13: "if
+# it does, enable hyphenation for the transcript only"; check_lens.py measures)
+LISTEN_HYPHENS = True
+LISTEN_FORM_FONT = 2.8        # cqh: a Part A note form's type on a Listening board, fixed (never below 2.6)
+LISTEN_NOTE_ROOM = 14         # cqh: kept under the note form for the board's notes, where it has any
 # the extract's share of a Part B question board's width, per cent, until the
 # fit has measured it (fit_boards.py)
 SPLIT_DEFAULT = 55
@@ -365,40 +379,63 @@ def exam_clips(L: Path, out_dir: Path):
     return clip
 
 
-def exam_focus(bd: dict, table: dict, focus: list[dict], times: dict) -> list[dict]:
-    """The spotlight on a transcript while its recording plays (bundle 1.18): from
-    each row's time in the recording, that row in focus (no cell); when the
-    recording ends, the spotlight in force before it. `times` gives each
-    extract's row times in its file (practice_set.row_times)."""
-    st = (table.get("doc") or {}).get("stimulus")
-    rows_t = times.get(st) if (table.get("doc") or {}).get("text_type") == "transcript" else None
-    if not rows_t:
-        return focus
-    out = list(focus)
-    for s in bd["states"]:
-        if s.get("veil"):
-            continue                     # the transcript is covered: nothing to follow
-        for u in s["utterances"]:
-            x = u.get("exam") or {}
-            if u.get("kind") != "exam" or x.get("stimulus") != st:
-                continue
-            before = [f for f in out if f["time"] < u["start"]]
-            prev = before[-1] if before else {"row": None, "col": None}
-            ev = [{"time": round(u["start"] + max(0.0, tk - u["clip_in"]), 3), "row": k, "col": None}
-                  for k, tk in enumerate(rows_t) if tk is not None and u["clip_in"] - 1e-6 <= tk < u["clip_out"]]
-            if ev and ev[0]["time"] > u["start"]:
-                # the row being spoken when the span starts (a span that starts mid-row)
-                k0 = max([k for k, tk in enumerate(rows_t) if tk is not None and tk <= u["clip_in"]], default=None)
-                if k0 is not None:
-                    ev.insert(0, {"time": round(u["start"], 3), "row": k0, "col": None})
-            if not ev:
-                continue
-            inside = [f for f in out if u["start"] <= f["time"] < u["end"]]
-            out = [f for f in out if f not in inside] + ev + [{"time": round(u["end"], 3), "row": prev["row"],
-                                                             "col": prev["col"]}]
-            out.sort(key=lambda f: f["time"])
-    return [f for n, f in enumerate(out)
-            if not n or (f["row"], f["col"]) != (out[n - 1]["row"], out[n - 1]["col"])]
+def listen_board(L: Path, bd: dict, blocks_all: dict, pre: str = "") -> dict | None:
+    """A Listening board's `listen` (bundle 1.19, ADR 030), for a board whose
+    fixed layer holds a transcript: the extract, each word's start and end in
+    the extract's own file (word_times.py: speech-to-text times lined up with
+    the release's words; the words are the block's), each row's word count, and
+    the extract's sections, each with the block the question column shows while
+    the recording is in it (Parts B and C: its question, built here when the
+    board has no block of it) or the note form's row of its heading (Part A).
+    None for a board with no transcript."""
+    import practice_set
+    import word_times
+    tid = next((i for i in bd["fixed"] if ((blocks_all.get(i) or {}).get("doc") or {}).get("text_type")
+                == "transcript"), None)
+    if not tid:
+        return None
+    ps = practice_set.load(L)
+    st = practice_set.stimuli(ps)[blocks_all[tid]["doc"]["stimulus"]]
+    w = word_times.for_stimulus(st)
+    if not w:
+        raise SystemExit(f"REFUSED: {st['stimulus_id']} has no word times for its transcript and audio "
+                         "(word_times.py, ADR 030)")
+    on_board = {i for i in bd["fixed"]} | {i for s in bd["states"] for i in s["working"]}
+    q_of = {(blocks_all[i].get("question") or {}).get("item"): i for i in on_board
+            if (blocks_all[i].get("question") or {}).get("item")}
+    form = next((i for i in bd["fixed"] if ((blocks_all.get(i) or {}).get("doc") or {}).get("text_type")
+                 == "form"), None)
+    secs = []
+    for sec in practice_set.section_rows(st):
+        out = {"from": sec["from"], "to": sec["to"], "rows": sec["rows"], "block": None, "row": None}
+        if sec.get("item"):
+            out["block"] = q_of.get(sec["item"]) or question_block_for(L, ps, sec["item"], blocks_all, pre)
+        if sec.get("heading") and form:
+            # the note form's row of this heading (its K-th heading row)
+            heads = [n for n, p in enumerate(blocks_all[form]["doc"]["parts"]) if p["kind"] == "heading"]
+            out["row"] = heads[sec["heading"] - 1] if sec["heading"] <= len(heads) else None
+        secs.append(out)
+    notes = any(blocks_all[i].get("type") != "picture" for s in bd["states"] for i in s["working"])
+    return {"block": tid, "stimulus": st["stimulus_id"], "form": form, "split": LISTEN_SPLIT,
+            "lines": LISTEN_LINES, "font": LISTEN_FONT, "hyphens": LISTEN_HYPHENS,
+            **({"form_font": LISTEN_FORM_FONT, "form_room": LISTEN_NOTE_ROOM if notes else 0} if form else {}),
+            "row_words": w["row_words"],
+            "times": w["times"], "sections": secs}
+
+
+def question_block_for(L: Path, ps: dict, item_id: str, blocks_all: dict, pre: str) -> str:
+    """A question a Listening board's section shows while the recording is in it,
+    where the board has no block of it (bundle 1.19): built from the release as
+    the screens stage builds one, its stem and three options only."""
+    import practice_set
+    from write_screens import BLOCK_DEFAULTS
+    bid = f"{pre}sec-{item_id}"
+    if bid not in blocks_all:
+        nb = {**BLOCK_DEFAULTS, **practice_set.question_block(ps, practice_set.items(ps)[item_id]),
+              "id": bid, "anchor": False, "provenance": "source-derived", "items": [],
+              "note": "a section's question (bundle 1.19), built by code from the release"}
+        blocks_all[bid] = {**block_data(nb, True, False, True, True), "html": block_html(nb), "_tokens": []}
+    return bid
 
 
 def estimate(words: list[str], wpm: float) -> dict:
@@ -647,12 +684,13 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     used = {i for bd in boards_out for i in bd["fixed"]} | \
            {i for bd in boards_out for s in bd["states"] for i in s["working"]}
 
-    row_times = {}
     if listening:
-        import practice_set
-        ps = practice_set.load(L)
-        row_times = {k: practice_set.row_times(ps, k) for k, st in practice_set.stimuli(ps).items()
-                     if practice_set.is_audio(st)} if ps else {}
+        # 1.19 (ADR 030): a board with a transcript is a Listening board
+        for bd in boards_out:
+            ls = listen_board(L, bd, blocks_all, bd["id"].split("_")[0] + "_")
+            if ls:
+                bd["listen"] = ls
+                used.update(x["block"] for x in ls["sections"] if x["block"])
     # Visibility, stated rather than left to the renderer. A fixed block shows
     # from its board's start until the board's `until`; a working block from
     # its reveal until its state's `until` (the erase, or the board's end); a
@@ -721,7 +759,12 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                                 c.update(to_row=rc[0], to_col=rc[1])
         bd["focus"] = (table_focus(bd, blocks_all[bd["table"]], table_cells(blocks_all[bd["table"]]))
                        if bd["table"] else [])
-        if bd["table"] and any("view" in s for s in bd["states"]):
+        if bd.get("listen"):
+            # 1.19 (ADR 030): the transcript is never covered and never spotlit; the
+            # marker under the word being said follows the recording (the player)
+            if bd["table"] == bd["listen"]["block"]:
+                bd["focus"] = []
+        elif bd["table"] and any("view" in s for s in bd["states"]):
             # 1.17: a Part C question board is two columns too (rule 37): the text,
             # as a map or the paragraph read, whole, in the first; nothing scrolls
             bd["split"] = (fit.get("splits") or {}).get(bd["id"], SPLIT_DEFAULT)
@@ -738,9 +781,6 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             if first and first["utterances"]:
                 bd["focus"] = whole_first(bd["focus"], first["start"],
                                           round(max(first["start"] + 3.0, first["utterances"][0]["end"]), 3))
-        if listening and bd["table"]:
-            # 1.18: while a recording plays, the spotlight follows its transcript's rows
-            bd["focus"] = exam_focus(bd, blocks_all[bd["table"]], bd["focus"], row_times)
         bd["verdicts"] = table_verdicts(bd, blocks_all[bd["table"]]) if bd["table"] else []
         # 1.3: a pinned block stays from its reveal to the board's end; a
         # word mark colours a changing word by its word class from the moment

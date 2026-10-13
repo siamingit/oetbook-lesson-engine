@@ -96,6 +96,8 @@ HARNESS = r"""
     for (const t of Object.values(bd.pinned || {})) times.add(t + 0.001);
     if (isQ) for (const f of bd.focus || []) times.add(f.time + 0.001);
     else for (const t of Object.values(bd.reveal || {})) times.add(t + 0.001);
+    // 1.19 (ADR 030): on a Listening board, each section's start while a recording plays
+    if (typeof isLBoard === "function" && isLBoard(bd)) for (const t of listenMoments(bd)) times.add(t);
     for (const t of [...times].filter(t => t >= bd.start && t < bd.until).sort((a, b) => a - b)) {
       lastRenderT = null;
       renderFrame(t);
@@ -108,7 +110,7 @@ HARNESS = r"""
       const A = area();
       const st = stateAt(bd, t);
       const overs = [...camEl.querySelectorAll(".blk.over.on:not(.cleared)")];
-      for (const [id, el] of blockEls) {
+      for (const [id, el] of [...blockEls, ...(typeof lsecEls === "object" ? lsecEls : [])]) {
         if (!shown(el)) continue;
         if (viewed && !el.classList.contains("beside")) continue;
         if (id === bd.table && st && st.veil) continue;       // covered: its words are not shown yet
@@ -139,6 +141,16 @@ HARNESS = r"""
             // window of whole lines, by design: a line wholly outside it (hidden,
             // or in a faded cue band) is not shown; a line in it is measured
             // against it (the window as check_lens.py takes it)
+            // 1.19 (ADR 030): a Listening box (and a note form's window) shows its
+            // lines through a window of whole lines, as the map's lens does
+            const box = n.parentElement && n.parentElement.closest(".lt-win");
+            if (box && el.contains(box)) {
+              if (getComputedStyle(n.parentElement).visibility === "hidden") continue;
+              const v = box.getBoundingClientRect();
+              if (q.bottom <= v.top + 1 || q.top >= v.bottom - 1) continue;
+              W = { left: Math.max(W.left, v.left), top: Math.max(W.top, v.top),
+                    right: Math.min(W.right, v.right), bottom: Math.min(W.bottom, v.bottom) };
+            }
             const lens = n.parentElement && n.parentElement.closest(".dmap-view");
             if (lens && el.contains(lens)) {
               const R = lens.getBoundingClientRect(), sc = lens.offsetHeight ? R.height / lens.offsetHeight : 1;

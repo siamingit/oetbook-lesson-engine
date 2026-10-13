@@ -4,7 +4,7 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.18 for a Listening lesson, 1.17 for a Reading Part C lesson, 1.16 for a Reading Part B lesson, 1.14 for a Reading lesson with a map of its texts, 1.13 for another Reading lesson, 1.12 for every other lesson. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.19 for a Listening lesson, 1.17 for a Reading Part C lesson, 1.16 for a Reading Part B lesson, 1.14 for a Reading lesson with a map of its texts, 1.13 for another Reading lesson, 1.12 for every other lesson. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
 2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
 table boards, on 2026-09-25 (docs/adr/007-table-boards.md); 1.3, the board style
@@ -22,8 +22,9 @@ every board and no block over another, on 2026-09-30 (docs/adr/020-no-overlap.md
 docs/adr/021-a-picture-on-every-board.md); 1.13, a Reading lesson's practice-set
 texts and questions and its keyword pairs, on 2026-10-05
 (docs/adr/026-reading-lessons.md); 1.18, a Listening lesson's recordings,
-transcripts and note forms, on 2026-10-13 (docs/adr/029-listening-lessons.md). A
-lesson is written in 1.13 only when it is a Reading lesson, and in 1.18 only when it
+transcripts and note forms, on 2026-10-13 (docs/adr/029-listening-lessons.md); 1.19,
+the Listening board, the same day (docs/adr/030-listening-board-layout.md). A
+lesson is written in 1.13 only when it is a Reading lesson, and in 1.19 only when it
 is a Listening lesson; every other lesson stays 1.12, byte for byte, until rebuilt.
 A change to it is a new format version (§3), recorded in a new ADR.
 
@@ -47,6 +48,7 @@ A change to it is a new format version (§3), recorded in a new ADR.
 | 1.14 | 2026-10-06 | a lesson with a map of its texts only (ADR 026, the Part A question method): a core `table` block's `map` (the four texts as one table, each starting at its own row), null on every other block; on a map board, a state's `doc` and `zoom`; rule 31; `blocks.css` adds the map's rules. Additive: a 1.13 renderer that ignores `map`, `doc` and `zoom` draws a map as a table of every part |
 | 1.17 | 2026-10-08 | a Reading Part C lesson only (ADR 026, the Part C question method amendment of 2026-10-08): a state's `view` on a Part C question board (the text as a map or the paragraph read, whole); the block type `scale` (an attitude scale; its `items` kinds `marker`, `out`, `key`); a question's `options_later` (its first part, kind `options`, shows the options) and `target`; a doc part's `bold`; a `vocab_table` kind `recap_grouped` with `groups`; the mark cue types `sig_opinion`, `sig_hedge`, `sig_judge`, `sig_main`, `sig_aside`; rules 37 to 40; `blocks.css` adds the Part C rules. Additive: a 1.16 renderer draws the text whole, the options from the start and no signal marks |
 | 1.16 | 2026-10-08 | a Reading Part B lesson only (ADR 026, 2026-10-08 amendment): a question board in two columns, the extract whole, replacing 1.15's lens: a board's `split`; a state's `overlay` (glosses drawn over the question column), a gloss's going as a `clears` entry; the board's `focus` with no row until the whole extract has shown; `lens` and `lens_from` no longer written; rule 36 (rule 35 is 1.15 only); `blocks.css` adds the whole extract's spotlight. Minor: a 1.15 renderer finds no `lens` and draws the board as a table board, every block in one flow |
+| 1.19 | 2026-10-13 | a Listening lesson only (ADR 030, amending ADR 029): a board's `listen` (a Listening board: the transcript in a box of fixed size that follows a recording by its word times, the question column by its sections); a transcript's and a note form's html carry their window (`lt-win`, `lt-scr`; a transcript's marker `lt-mk` and caret `lt-caret`); no covered transcript, no `view` and no `focus` on a transcript; rules 46 to 48, which replace rule 44. Additive: a 1.18 renderer draws the transcript whole in its column and ignores `listen` |
 | 1.18 | 2026-10-13 | a Listening lesson only (ADR 029): an utterance of `kind` "exam", a recording of the practice set's own audio in the lesson's clock (`exam`, `provenance` "release", `text` null, its span `clip_in`/`clip_out` in the release's file); the cue type `play` that starts it; a pause's `reading_time`; a doc's `text_type` `transcript` (parts `turn` with `speaker`, `para`) and `form` (a Part A note form, its gaps typed parts); a gloss's `heard`; rules 42 to 45; `blocks.css` adds the Listening rules. Additive: a 1.17 renderer plays a recording as an utterance (rules 1, 17), draws a transcript and a form as documents, a form's gaps as typed gaps (rule 10), shows no recording state and no second button |
 
 ---
@@ -177,7 +179,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.12"`; `"1.13"` for a Reading lesson; `"1.14"` for a lesson with a map of its texts; `"1.16"` for a Reading Part B lesson (`"1.15"` for one built before 2026-10-08); `"1.17"` for a Reading Part C lesson; `"1.18"` for a Listening lesson |
+| `format_version` | string | `"1.12"`; `"1.13"` for a Reading lesson; `"1.14"` for a lesson with a map of its texts; `"1.16"` for a Reading Part B lesson (`"1.15"` for one built before 2026-10-08); `"1.17"` for a Reading Part C lesson; `"1.19"` for a Listening lesson (`"1.18"` for one built before ADR 030) |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -310,6 +312,7 @@ two things must hold, because cues and the reading pointer depend on them:
 | `palette` | 1.4 only. Not written from 1.5: every word class has one colour everywhere. A reader treats it as absent |
 | `lens` | 1.15 only. On a Part B question board: true. The text is read through its lens (rule 35). Not written from 1.16 (the board has `split`); a reader treats it as absent |
 | `lens_from` | 1.15 only. On a board with `lens`: the time from which the lens may follow the reading; before it, once the text is uncovered, the whole extract shows (rule 35). Not written from 1.16: the same moment is in the board's `focus`, which has no row until then |
+| `listen` | 1.19, a Listening board (rules 46 to 48): `{block, stimulus, form, split, lines, font, hyphens, form_font, form_room, row_words, times, sections}`: the transcript's block and its extract; the note form's block on a Part A board (else null); the transcript column's share of the width (per cent), the lines its box shows, its type (per cent of the frame's height, fixed), whether it is hyphenated; the form's type and the room kept under it (per cent of the frame's height); each row's word count; each word's `[start, end]` in the extract's own file (a word is a run of non-space characters of the rows in order, a speaker's label left out); and the extract's sections `[{from, to, rows, block, row}]` (words `from` to `to`, the rows they run over, the question block shown while a recording is in it, or the note form's heading row). Absent on other boards |
 | `split` | 1.16. On a Part B question board: the share of the board's width, per cent, of the column that holds its table (the practice-set text), shown whole; the question and every other block are the column beside it (rule 36). Absent on other boards |
 | `focus` | 1.2. On a table board, the spotlight in time order: `[{time, row, col}]`, from each `time` the row in focus and the cell highlighted (both from 0; `col` null for the row alone; `row` null for the whole table, nothing dimmed). Empty on other boards |
 | `tight` | 1.8. How tightly the board is set so its fullest state fits (ADR 011): 0, 1 (half the gap between blocks) or 2 (and half the blocks' vertical padding), on the whole board |
@@ -653,6 +656,27 @@ These are the only rules. Every time and target they use is in the bundle.
 45. **A heard word** (1.18): a gloss with `heard` shows a second button with no
     words; tapping it plays `file` from `start` to `end`, as rule 34 plays a
     pronunciation clip (the lesson's own clock never plays it).
+46. **A Listening board** (1.19, replacing rule 44): a board with `listen` is two
+    columns: its transcript in the first (`split` per cent of the width), every other
+    block in the second, in flow. The transcript is its page's header and a window
+    of `lines` lines at `font` (fixed: never set smaller by rule 41), its rows on one
+    line grid; the window moves by whole lines and never shows part of a line. It is
+    never covered. The camera never moves on the board.
+47. **Following a recording** (1.19): while the lesson time is inside an utterance of
+    kind "exam" whose `exam.stimulus` is the board's, the word being said is the last
+    whose start is at or before `clip_in` plus the time into the utterance (before
+    the span's first word, that first word); the window moves (smoothly, by whole
+    lines) so its line is the fourth from the top, or as near as the transcript's
+    start and end allow; a thin line is drawn under the word and a small caret in the
+    left margin at its line; no word is recoloured. Outside a recording the window
+    shows the state's `row` (when the board's table is the transcript), else where
+    the last recording on the board ended, else the top; no marker.
+48. **The question column follows the sections** (1.19): while a recording plays, the
+    section holding the word being said shows its `block` in place of the board's
+    own question blocks; a Part A board's note form (`form`, at `form_font`, fixed)
+    shows its rows in a window down to `form_room` above the board's foot, whole rows
+    only, moved to the section's heading `row`, or, outside a recording, to the
+    state's gap (under its heading where both fit).
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and

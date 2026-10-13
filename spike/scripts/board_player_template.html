@@ -226,6 +226,50 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
   .frame.rec #recTag::before { animation: recpulse 1.4s ease-in-out infinite; }
 }
 @keyframes recpulse { 50% { opacity: .35; } }
+/* 1.19 (ADR 030): a Listening board, one layout for Parts A, B and C. The
+   transcript is a box of fixed size and fixed type in the first column, `split`
+   per cent of the board's width; the questions (Part A's note form, a Part B or
+   C question and its options) and the notes are a column beside it. The box
+   shows `lines` lines; while a recording plays it moves line by line, smoothly,
+   keeping the line being said about the fourth from its top, a thin line under
+   the word being said and a small caret in its left margin at that line. No
+   word is recoloured or highlighted; nothing in the box is ever cut: its lines
+   are on one grid (no space between rows) and it moves by whole lines. The
+   camera never moves on these boards. */
+#cam.lboard { flex-direction: column; flex-wrap: nowrap; align-content: normal; box-sizing: border-box;
+              padding-left: calc(var(--lsplit) + 2cqw); }
+#cam.lboard > .blk { flex: 0 0 auto; }
+#cam.lboard > .blk.ltext { position: absolute; left: 0; top: 0; width: var(--lsplit); margin: 0; }
+#cam.lboard > .blk.beside { position: static; }
+#cam.lboard > .blk.lsec { order: -1; }
+#cam.lboard > .blk.lsec-off { display: none; }
+#cam .ltext table.lt-head { margin: 0; }
+#cam .ltext .lt-win { position: relative; overflow: hidden; height: calc(var(--llines) * var(--llh)); }
+#cam .ltext .lt-scr { position: relative; }
+#cam .ltext .lt-scr > table { margin: 0; }
+#cam .ltext .lt-scr td { font-size: var(--lfs); line-height: var(--llh); padding: 0 1.4cqw 0 calc(1.4cqw + 1.1em);
+                    text-align: justify; text-align-last: left; }
+#cam .ltext.hyph .lt-scr td { hyphens: auto; -webkit-hyphens: auto; }
+#cam .ltext .lt-mk { position: absolute; left: 0; top: 0; width: 0; height: max(2px, .32cqh); border-radius: 1px;
+                background: #185FA5; opacity: 0; pointer-events: none; }
+#cam .ltext .lt-caret { position: absolute; left: calc(1.4cqw + .15em); top: 0; width: 0; height: 0; opacity: 0;
+                   border-left: .55em solid #185FA5; border-top: .32em solid transparent;
+                   border-bottom: .32em solid transparent; font-size: var(--lfs); pointer-events: none; }
+#cam .ltext .lt-mk.on, #cam .ltext .lt-caret.on { opacity: 1; }
+/* a Part A note form on a Listening board: its type fixed, its rows in a window
+   that shows whole rows only (a row partly outside is not drawn) and moves to
+   the heading being heard, or to the gap being filled */
+#cam .lform .lt-win { position: relative; overflow: hidden; height: var(--lfh); }
+#cam .lform .lt-scr { position: relative; }
+#cam .lform .lt-scr > table, #cam .lform table.lt-head { margin: 0; }
+#cam .lform tr.lt-out, #cam .lform tr.lt-out * { visibility: hidden !important; }
+@media (prefers-reduced-motion: no-preference) {
+  #cam .lform .lt-scr.glide { transition: transform .45s cubic-bezier(.4, 0, .2, 1); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  #cam .ltext .lt-scr.glide { transition: transform .45s cubic-bezier(.4, 0, .2, 1); }
+  #cam .ltext .lt-mk.glide { transition: left .14s linear, width .14s linear; }
+}
 </style>
 </head>
 <body>
@@ -311,6 +355,9 @@ for (const bd of boards) for (const s of bd.states) for (const u of s.utterances
 const frame = document.getElementById("frame");
 // 1.18: a lesson with recordings of its practice set (utterances of kind "exam")
 const HAS_EXAM = utterances.some(u => u.kind === "exam");
+if (SILENT && HAS_EXAM)
+  // 1.19 (ADR 030): the silent preview plays the practice set's own recordings
+  document.getElementById("silentBanner").innerHTML += " The recordings of the practice set play as released.";
 let recTag = null;
 if (HAS_EXAM) {
   recTag = document.createElement("span");
@@ -483,7 +530,8 @@ function drawBlock(id, fixed, s) {
   // beside the question of a Part B question board (a state's `overlay`)
   if (s && (s.overlay || []).includes(id)) el.classList.add("over");
   if (zoomCol !== 1 && id !== zoomSkip) el.style.zoom = zoomCol;      // 1.16: the guard, below
-  if (fitZ !== 1) { const z = blockZoom(blocks[id]); if (z < 1) el.style.zoom = +z.toFixed(4); }   // the guard
+  // the guard; never a Listening board's transcript, whose box and type are fixed (1.19)
+  if (fitZ !== 1 && id !== ltextId && id !== lformId) { const z = blockZoom(blocks[id]); if (z < 1) el.style.zoom = +z.toFixed(4); }
   if ((picFit !== 1 || fitZ !== 1) && blocks[id].type === "picture")  // the guard: a picture smaller
     el.style.setProperty("--ph", picPh(blocks[id]) + "cqh");
   camEl.appendChild(el);
@@ -515,6 +563,12 @@ function* newBoardSteps(bd) {
   camEl.classList.toggle("qboard", isQBoard(bd));
   if (isQBoard(bd)) camEl.style.setProperty("--split", bd.split + "%");
   else if (camEl.style.getPropertyValue("--split")) camEl.style.removeProperty("--split");
+  lsecEls.clear();
+  ltextId = isLBoard(bd) ? bd.listen.block : null;
+  lformId = isLBoard(bd) ? bd.listen.form || null : null;
+  if (isLBoard(bd) || camEl.classList.contains("lboard")) camEl.classList.toggle("lboard", isLBoard(bd));
+  if (isLBoard(bd)) camEl.style.setProperty("--lsplit", bd.listen.split + "%");
+  else if (camEl.style.getPropertyValue("--lsplit")) camEl.style.removeProperty("--lsplit");
   // The header shows the section title and nothing else: no board title,
   // no number (docs/02-DESIGN-SYSTEM.md §2, "The header").
   hdrNo.style.display = "none";
@@ -524,7 +578,10 @@ function* newBoardSteps(bd) {
   for (const id of bd.fixed) {
     const el = drawBlock(id, true);
     if (isQBoard(bd) && id === bd.table) el.classList.add("qtext");   // 1.16: the extract, whole
+    if (id === ltextId) setupLText(bd, el);                          // 1.19: the transcript's box
+    if (id === lformId) { el.classList.add("lform"); el.style.setProperty("--tf", bd.listen.form_font + "cqh"); }
   }
+  if (isLBoard(bd)) drawSections(bd);
   for (const id of Object.keys(bd.pinned || {})) {
     const el = drawBlock(id, false);
     el.dataset.layer = "pinned";
@@ -1075,6 +1132,8 @@ function applyFocus(bd, t) {
 function isMapBoard(bd) { return !!(bd && bd.table && blocks[bd.table] && blocks[bd.table].map); }
 // 1.16: a Part B question board in two columns (its `split`), the extract whole
 function isQBoard(bd) { return !!(bd && bd.table && bd.split); }
+// 1.19 (ADR 030): a Listening board, its transcript in a box beside the questions
+function isLBoard(bd) { return !!(bd && bd.listen); }
 // 1.17: a Part C question board, two columns as Part B's; each state's `view`
 // shows the text as a map (every paragraph, too small to read, the answer's
 // paragraph marked) or the paragraph(s) read, whole, with a position cue
@@ -1526,6 +1585,7 @@ function offsetIn(el, root) {
 function placeBeside(bd, s) {
   if (isMapBoard(bd)) return [];        // beside the map, in its own column (bundle 1.14)
   if (isQBoard(bd)) return [];          // beside the extract, in its own column (bundle 1.16)
+  if (isLBoard(bd)) return [];          // beside the transcript, in its own column (bundle 1.19)
   const tableEl = bd.table && blockEls.get(bd.table);
   if (!tableEl || (!s && !Object.keys(bd.pinned || {}).length)) return [];
   // between two states only the board's pinned side notes are shown
@@ -1581,6 +1641,207 @@ function placeBeside(bd, s) {
   return placed;
 }
 
+// ---- 1.19 (ADR 030): a Listening board ----
+// The transcript's block is drawn as its page's header and, under it, a window
+// of `lines` lines over the rows; the rows move inside it. Its word k is the
+// k-th run of non-space characters of its rows in order, a speaker's label left
+// out (word_times.py counts the same way); `times` gives each word's start and
+// end in the extract's own file.
+let ltextId = null, lformId = null;
+const lsecEls = new Map();          // a section's question, drawn for the recording
+function setupLText(bd, el) {
+  el.classList.add("ltext");
+  if (bd.listen.hyphens) el.classList.add("hyph");
+  el.style.setProperty("--llines", bd.listen.lines);
+  el._lt = { key: "", lh: 0, line: null, off: null, scr: null };
+}
+// the box's parts, found afresh: drawing the marks may rebuild the block's inside
+function ltParts(el) {
+  const lt = el._lt, scr = el.querySelector(".lt-scr");
+  if (scr !== lt.scr) { lt.scr = scr; lt.line = null; lt.off = null; }
+  lt.win = el.querySelector(".lt-win"); lt.mk = el.querySelector(".lt-mk"); lt.ca = el.querySelector(".lt-caret");
+  return lt;
+}
+// the box's size, set from the frame (its type is `font` per cent of the frame
+// height; its lines a whole number of pixels, so they sit on one grid)
+function sizeLText(bd, el) {
+  const lt = el._lt, k = guardKey();
+  if (lt.key === k) return;
+  lt.key = k;
+  const px = frame.offsetHeight * bd.listen.font / 100, lh = Math.round(px * 1.5);
+  el.style.setProperty("--lfs", px.toFixed(2) + "px");
+  el.style.setProperty("--llh", lh + "px");
+  lt.lh = lh; lt.line = null; lt.off = null;
+}
+// the transcript's words as ranges of its text nodes (a mark's wrapping splits
+// nodes, so they are found afresh)
+function lwords(el) {
+  const out = [];
+  for (const td of el._lt.scr.querySelectorAll("tbody td")) {
+    const tw = document.createTreeWalker(td, NodeFilter.SHOW_TEXT,
+      { acceptNode: n => n.parentElement.closest(".spk") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+    let w = null;
+    for (let n; (n = tw.nextNode());) {
+      const d = n.data;
+      for (let i = 0; i < d.length; i++) {
+        if (/\s/.test(d[i])) { w = null; continue; }
+        if (!w) { w = { sn: n, so: i, en: n, eo: i + 1 }; out.push(w); } else { w.en = n; w.eo = i + 1; }
+      }
+    }
+  }
+  return out;
+}
+// the last word said by `ft` seconds into the file (-1: none yet)
+function lwordAt(times, ft) {
+  let lo = 0, hi = times.length - 1, k = -1;
+  while (lo <= hi) { const m = (lo + hi) >> 1; if (times[m][0] <= ft) { k = m; lo = m + 1; } else hi = m - 1; }
+  return k;
+}
+// where the box is at t: during a recording of the board's extract, the word
+// being said (`said`: the marker under it) or, before the first, the first word
+// of the span; otherwise the state's row on a Part B or C board, else where the
+// last recording on the board ended, else the top
+function listenAt(bd, s, t) {
+  const L = bd.listen;
+  let last = null;
+  for (const st of bd.states) for (const u of st.utterances) {
+    if (u.kind !== "exam" || !u.exam || u.exam.stimulus !== L.stimulus) continue;
+    const first = lwordAt(L.times, u.clip_in - 1e-6) + 1;
+    if (t >= u.start && t < u.end) {
+      const k = lwordAt(L.times, u.clip_in + (t - u.start));
+      return { rec: true, said: k >= first, word: Math.max(k, first) };
+    }
+    if (u.end <= t) last = Math.max(first, lwordAt(L.times, u.clip_out - 1e-6));
+  }
+  if (s && s.row !== null && s.row !== undefined && bd.table === L.block) {
+    let k = 0;
+    for (let r = 0; r < s.row; r++) k += L.row_words[r];
+    return { rec: false, said: false, word: k };
+  }
+  return { rec: false, said: false, word: last === null ? 0 : last };
+}
+// the moments a guard measures besides the board's own: each section's first
+// word while a recording of the extract plays on the board
+function listenMoments(bd) {
+  const L = bd.listen, out = [];
+  for (const st of bd.states) for (const u of st.utterances) {
+    if (u.kind !== "exam" || !u.exam || u.exam.stimulus !== L.stimulus) continue;
+    for (const sec of L.sections) {
+      const at = u.start + L.times[sec.from][0] - u.clip_in + 0.01;
+      if (at >= u.start && at < u.end) out.push(at);
+    }
+  }
+  return out;
+}
+// a section's question, drawn once with the board, hidden until a recording is
+// in its section (it is not a state's block: a state's own question is drawn as
+// before, and hidden while the recording shows this one)
+function drawSections(bd) {
+  for (const id of new Set(bd.listen.sections.map(x => x.block).filter(Boolean))) {
+    const tpl = document.createElement("template");
+    tpl.innerHTML = blocks[id].html;
+    const el = tpl.content.firstElementChild;
+    el.classList.add("blk", "on", "lsec", "lsec-off");
+    el.dataset.layer = "section";
+    camEl.appendChild(el);
+    lsecEls.set(id, el);
+  }
+}
+function applyListen(bd, s, t, jumped) {
+  if (!isLBoard(bd)) return;
+  const el = blockEls.get(bd.listen.block);
+  if (!el || !el._lt) return;
+  const L = bd.listen;
+  sizeLText(bd, el);
+  const lt = ltParts(el);
+  if (!lt.scr) return;
+  const at = listenAt(bd, s, t);
+  const ws = lwords(el);
+  const w = ws[Math.min(at.word, ws.length - 1)];
+  if (w) {
+    const r = document.createRange();
+    r.setStart(w.sn, w.so); r.setEnd(w.en, w.eo);
+    const q = r.getClientRects()[0] || r.getBoundingClientRect(), sr = lt.scr.getBoundingClientRect();
+    const line = Math.floor(((q.top + q.bottom) / 2 - sr.top) / lt.lh);
+    const lines = Math.round(lt.scr.offsetHeight / lt.lh);
+    const off = Math.max(0, Math.min(line - 3, lines - L.lines)) * lt.lh;
+    if (lt.off !== off) {
+      lt.scr.classList.toggle("glide", !jumped && lt.off !== null);
+      lt.scr.style.transform = off ? "translateY(" + -off + "px)" : "";
+      lt.off = off;
+    }
+    // the marker under the word, the caret at its line, while it is said
+    const on = at.rec && at.said;
+    lt.mk.classList.toggle("glide", !jumped && line === lt.line);
+    lt.mk.classList.toggle("on", on);
+    lt.ca.classList.toggle("on", on);
+    if (on) {
+      lt.mk.style.left = (q.left - sr.left).toFixed(1) + "px";
+      lt.mk.style.width = q.width.toFixed(1) + "px";
+      lt.mk.style.top = (q.bottom - sr.top + 1).toFixed(1) + "px";
+      lt.ca.style.top = (line * lt.lh + lt.lh / 2 - lt.ca.offsetHeight / 2).toFixed(1) + "px";
+    }
+    lt.line = line;
+  }
+  // the question column: while a recording plays, the question of the section
+  // it is in, in place of the board's own question blocks
+  let show = null;
+  if (at.rec) {
+    const sec = L.sections.find(x => at.word >= x.from && at.word <= x.to);
+    show = sec ? sec.block : null;
+  }
+  for (const [id, e] of lsecEls) e.classList.toggle("lsec-off", id !== show);
+  if (lformId) applyForm(bd, s, at, jumped);
+  for (const id of lsecEls.keys()) {
+    const e = blockEls.get(id);
+    if (e) e.classList.toggle("lsec-off", show !== null);
+  }
+}
+
+// a Part A note form's window: from its top to the board's foot, less the room
+// kept for the board's notes; it shows the rows from the target row down, whole
+// rows only. The target: while a recording plays, the heading of its section;
+// otherwise the state's gap, under its heading where both fit, else alone at the
+// top; else the form's top.
+function applyForm(bd, s, at, jumped) {
+  const el = blockEls.get(lformId), L = bd.listen;
+  if (!el) return;
+  const win = el.querySelector(".lt-win"), scr = el.querySelector(".lt-scr");
+  if (!win || !scr) return;
+  const B = boardEl.getBoundingClientRect(), cs = getComputedStyle(boardEl);
+  const H = Math.max(0, B.bottom - parseFloat(cs.paddingBottom) - win.getBoundingClientRect().top
+                        - frame.offsetHeight * (L.form_room || 0) / 100 - 2);
+  const hk = guardKey() + "|" + Math.round(H);
+  if (el._lfh !== hk) { el._lfh = hk; el.style.setProperty("--lfh", Math.floor(H) + "px"); }
+  const trs = [...scr.querySelectorAll("tbody tr")];
+  if (!trs.length) return;
+  const top0 = trs[0].offsetTop, tops = trs.map(tr => tr.offsetTop - top0), hs = trs.map(tr => tr.offsetHeight);
+  const parts = blocks[lformId].doc.parts;
+  const headOf = r => { for (let k = r; k >= 0; k--) if (parts[k].kind === "heading") return k; return 0; };
+  let target = 0;
+  if (at.rec) {
+    const sec = L.sections.find(x => at.word >= x.from && at.word <= x.to);
+    if (sec && sec.row !== null && sec.row !== undefined) target = sec.row;
+  } else if (s && s.row !== null && s.row !== undefined && bd.table === lformId) {
+    const h = headOf(s.row);
+    target = tops[s.row] + hs[s.row] - tops[h] <= H ? h : s.row;
+  }
+  const total = tops[tops.length - 1] + hs[hs.length - 1];
+  // never past the form's end: the last rows fill the window
+  let off = tops[target];
+  while (off > 0 && total - off < H) {
+    const k = tops.findIndex(t => t >= off);
+    if (k <= 0 || total - tops[k - 1] > H) break;
+    off = tops[k - 1];
+  }
+  if (scr._off !== off) {
+    scr.classList.toggle("glide", !jumped && scr._off !== undefined);
+    scr.style.transform = off ? "translateY(" + -off + "px)" : "";
+    scr._off = off;
+  }
+  trs.forEach((tr, k) => tr.classList.toggle("lt-out", tops[k] < off - 0.5 || tops[k] + hs[k] > off + H + 0.5));
+}
+
 // The camera: onto the active cell (or the row), with the row's visible side
 // notes, when the table's text on screen is under 14px; otherwise still.
 function camera(bd, focus, notes, jumped) {
@@ -1590,6 +1851,7 @@ function camera(bd, focus, notes, jumped) {
   if (isMapBoard(bd) || bd.lens) focus = null;     // the lens zooms (the map's, 1.14; a Part B text's, 1.15), not the camera
   if (isQBoard(bd)) focus = null;                  // 1.16: the extract is whole; nothing zooms
   if (isTableFree(bd)) focus = null;               // the owner's exception (above): the table whole
+  if (isLBoard(bd)) focus = null;                  // 1.19: the transcript's box moves, never the camera
   if (focus) {
     const td0 = focus.el.querySelector("td");
     const px = td0 ? parseFloat(getComputedStyle(td0).fontSize) * zoomOf(td0) : 99;
@@ -1632,7 +1894,7 @@ function camera(bd, focus, notes, jumped) {
   // run past the board, the camera pans the table up (no zoom) so the notes
   // are in view; rows above them leave the view, as they do under the zoom.
   // Nothing is drawn over text.
-  if (!tf && bd.table && notes.length && !isTableFree(bd)) {
+  if (!tf && bd.table && notes.length && !isTableFree(bd) && !isLBoard(bd)) {
     const H = camEl.offsetHeight, gap = frame.offsetHeight * 0.012;
     const bottom = Math.max(...notes.map(n => { const q = oi(n); return q.y + q.h; }));
     if (bottom > H) {
@@ -1697,7 +1959,7 @@ function boardOver() {
   const A = { l: r.left + parseFloat(cs.paddingLeft), t: r.top + parseFloat(cs.paddingTop),
               r: r.right - parseFloat(cs.paddingRight), b: r.bottom - parseFloat(cs.paddingBottom) };
   let v = 0, h = 0;
-  for (const [, el] of blockEls) {
+  for (const [, el] of [...blockEls, ...lsecEls]) {
     if (!el.isConnected || getComputedStyle(el).display === "none") continue;
     if (!(el.dataset.layer === "fixed" || el.classList.contains("on"))) continue;
     if (viewed && !el.classList.contains("beside")) continue;
@@ -1718,6 +1980,8 @@ function boardOver() {
 // until the erase, so its last moment shows what all its moments show
 function fitMoments(bd) {
   const all = boardMoments(bd);
+  // 1.19: and on a Listening board, each section's start while a recording plays
+  if (isLBoard(bd)) return [...new Set(all.concat(listenMoments(bd)))].sort((a, b) => a - b);
   if (bd.table) return all;
   const last = new Map();
   for (const t of all) {
@@ -1880,6 +2144,7 @@ function renderFrame(t) {
   applyLens(bd, s, jumped);
   applyDocLens(bd, s, focus, jumped, t);
   applyVerdicts(bd, t);
+  applyListen(bd, s, t, jumped);      // 1.19: the transcript's box, the marker, the section's question
   const notes = placeBeside(bd, s && !erased ? s : null);
   if (isQBoard(bd)) placeOverlay();
   camera(bd, focus, notes, jumped);
@@ -2117,7 +2382,7 @@ function finish() {
 }
 // An utterance ends at its clip_out (bundle 1.3), or at the file's end.
 function utteranceDone() {
-  if (state.inGap) return;
+  if (state.inGap || SILENT) return;   // the silent clock runs on its own (a recording's end: silentExam)
   audioEl.pause();
   const u = utterances[state.index];
   state.globalTime = u.end;
@@ -2137,6 +2402,34 @@ function beginTail(seconds) {
   state.gapEndsAt = performance.now() + state.gapRemaining * 1000;
   tailTimer = setTimeout(finish, state.gapRemaining * 1000);
 }
+// 1.19 (ADR 030): in the silent preview a recording is heard. While the clock
+// is inside an utterance of kind "exam", the release's file plays from the same
+// moment and the clock follows it; while the file loads or seeks, the clock holds
+// (at `prev`, the time last drawn, never before the recording's start); outside a
+// recording the file is stopped.
+function silentExam(t, prev) {
+  const u = utteranceAt(t);
+  if (!(u && u.kind === "exam")) { if (!audioEl.paused) audioEl.pause(); return t; }
+  const hold = () => { const h = Math.max(u.start, Math.min(t, prev)); silentClock0 = performance.now() - h * 1000; return h; };
+  if (audioEl.getAttribute("data-src") !== u.audio_file) {
+    audioEl.src = u.audio_file; audioEl.setAttribute("data-src", u.audio_file);
+  }
+  const at = Math.max(u.start, Math.min(t, prev));
+  const want = u.clip_in + (at - u.start);
+  if (audioEl.readyState < 1) return hold();
+  if (Math.abs(audioEl.currentTime - want) > 0.35 && !audioEl.seeking) {
+    audioEl.currentTime = want;
+    return hold();
+  }
+  if (audioEl.paused) {
+    audioEl.play().catch(e => reportAudioFailure(e && e.name ? e.name + ": " + e.message : String(e)));
+    return hold();
+  }
+  if (audioEl.readyState < 3 || audioEl.seeking) return hold();
+  const t2 = u.start + audioEl.currentTime - u.clip_in;
+  silentClock0 = performance.now() - t2 * 1000;
+  return t2;
+}
 function play() {
   if (state.playing) return;
   if (SILENT) {
@@ -2151,7 +2444,7 @@ function play() {
 }
 function pause() {
   if (!state.playing) return;
-  if (SILENT) { state.playing = false; updatePlayButton(); return; }
+  if (SILENT) { state.playing = false; if (HAS_EXAM) audioEl.pause(); updatePlayButton(); return; }
   state.playing = false;
   if (state.inGap) { state.gapRemaining = Math.max(0, (state.gapEndsAt - performance.now()) / 1000); clearGapTimer(); }
   else audioEl.pause();
@@ -2164,6 +2457,7 @@ function updatePlayButton() {
 function seek(t) {
   t = Math.max(0, Math.min(totalDuration, t));
   if (SILENT) {
+    if (HAS_EXAM) audioEl.pause();
     state.globalTime = t; silentClock0 = performance.now() - t * 1000;
     renderFrame(t); return;
   }
@@ -2190,7 +2484,9 @@ function fmtTime(s) { s = Math.max(0, s); const m = Math.floor(s / 60), sec = Ma
 
 function tick() {
   if (state.playing && SILENT) {
+    const prev = state.globalTime;
     state.globalTime = Math.min(totalDuration, (performance.now() - silentClock0) / 1000);
+    if (HAS_EXAM) state.globalTime = Math.min(totalDuration, silentExam(state.globalTime, prev));
     if (state.globalTime >= totalDuration) { state.playing = false; updatePlayButton(); }
     renderFrame(state.globalTime);
   } else if (state.playing) {
