@@ -129,3 +129,15 @@ recap after it. Used for three words in listening-03-part-b. The authoring promp
 changed: this is a fit fallback, chosen when a check fails, not a default. Agent's carrying
 choice under the owner's brief. To reverse: give the word its full gloss again and shorten
 other notes on that board.
+
+## Amendment, 2026-10-14: no copy of a pinned question while a recording plays
+
+Found by the layout check on listening-03-part-b's voiced player: while a recording played,
+the player hid a Part B board's question and drew a copy of it (the section's question, bundle
+1.19) at the column's top without the room kept for its reasons, so the question and the note
+under it moved by up to 93 px (462 word moves, every Part B board). `listen_board` in
+`build_lesson_player.py` now gives a section no question block when its question is pinned
+on the board: that question is already in the column for the whole board, so the recording
+shows it where it is. A section whose question is not on the board, or is a state's own
+block (Part C), keeps the copy as before. Proved by render_compare on every built lesson.
+To reverse: drop the `pinned` test in `listen_board`.
