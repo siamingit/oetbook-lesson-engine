@@ -197,6 +197,13 @@ green) and its table boards. Do not build, restore or approve a board in the
 older style; the screens audit and the structural check fail it. A change to
 the style is a rule change and goes to the maintainer.
 
+## 10b. Lesson ids are permanent
+
+Added by the maintainer, 2026-10-14 (ADR 032). A lesson's folder name and its
+lesson id never change once made, not even to fix a typo: the handouts
+repository (oetacademy-handouts) and the site link to them. Never rename a
+lesson folder or a lesson id; ask the maintainer instead.
+
 ## 11. Documentation
 
 If a change makes any file in `docs/` wrong, say so. Do not silently
