@@ -13,8 +13,9 @@ Every board with a transcript is a Listening board (ADR 030, bundle 1.19).
 
     .venv/Scripts/python spike/scripts/listening_rule.py <lesson_dir> --prompts
 
-checks a lesson's pause-and-try prompts (ADR 030): no sentence twice, nor a
-near copy of another (exit 1 on a finding).
+checks a lesson's pause-and-try prompts (ADR 030), vocabulary explanations
+(ADR 031) and rapport talk (ADR 033): no sentence twice, nor a near copy of
+another (exit 1 on a finding).
 """
 
 import difflib
@@ -59,11 +60,13 @@ count or a list of the other lessons.
 the test. Listening Part A: a pen or a pencil. Parts B and C on paper: the \
 answer's circle is shaded with a 2B pencil. Paper-only advice is said to be \
 for the paper test; never name a tool of the computer test.
-  - THE FACT SHEET'S RULINGS (owner, 2026-10-13; docs/listening-facts.md): a \
-target of 20 of 24 (Part A), 4 of 6 (Part B) or 8 of 12 (Part C) is only ever \
-"the instructor's suggested target", and where one is given, say that grade B \
-typically needs at least 30 of the 42 marks, varying slightly from test to \
-test. NEVER teach that abbreviations are accepted in Part A (teach writing the \
+  - THE FACT SHEET'S RULINGS (owner, 2026-10-13, 2026-10-14; ADR 033; \
+docs/listening-facts.md): a target of 20 of 24 (Part A), 4 of 6 (Part B) or 8 \
+of 12 (Part C) is the teacher's own recommendation, in the first person ("I'd \
+recommend aiming for 20 out of 24 in Part A."), never "the instructor's" \
+anything; where one is given, the grade is one sentence: "Grade B usually needs \
+about 30 of the 42 Listening marks." (no separate words about tests varying). \
+NEVER teach that abbreviations are accepted in Part A (teach writing the \
 words heard), and NEVER teach that the instructions' time can be used as extra \
 reading time: teach only the 30 seconds to look at the Part A notes before \
 each extract.
@@ -211,9 +214,12 @@ said as plain fact, never "not four options" or "the slide is wrong".
   - Never name, quote or describe the instructor's practice recordings, forms or \
 questions, a website, a course series or a Persian audience. Never advise a \
 mock test first; never suggest a highlighter.
-  - The fact sheet's rulings: a score target is only "the instructor's suggested \
-target" (20 of 24, 4 of 6, 8 of 12), and grade B typically needs at least 30 of \
-42 marks, varying slightly from test to test; never say abbreviations are \
+  - The fact sheet's rulings (ADR 033): you are the teacher, so a score target \
+(20 of 24, 4 of 6, 8 of 12) is your own recommendation, said in the first \
+person ("I'd recommend aiming for 20 out of 24 in Part A."), never "the \
+instructor's" anything; with it, the grade in one sentence: "Grade B usually \
+needs about 30 of the 42 Listening marks." (never a separate sentence about \
+tests varying); never say abbreviations are \
 accepted in Part A (the learner writes the words heard); never call the \
 instructions' time extra reading time (only the 30 seconds to look at the Part \
 A notes before each extract).
@@ -265,13 +271,29 @@ lesson on any.\
 """
 
 NARRATION_PART_A = """\
-THE PART A NOTE FORM (ADR 029, ADR 030): on its Listening board, read each \
-stem and say the kind of word the gap needs; play the recording ("exam"); after \
+THE PART A NOTE FORM (ADR 029, ADR 030): on its Listening board, preview the \
+form before the recording, gap by gap (below); play the recording ("exam"); after \
 each heading's group a pause-and-try prompt (above), replaying that group's \
 section ("heading K") where it helps; then for each gap in order, in its row's \
 state, say the answer and `type` it, its `text` exactly the answer as the row \
 prints it, and, where the release gives one, why a tempting wrong answer is \
-wrong.\
+wrong.
+  THE PREVIEW, GAP BY GAP (owner, 2026-10-14; ADR 033). Slow down: this is the \
+skill of the 30 seconds, taught at the student's pace. For EACH gap, in order, \
+read its note and say what kind of word or phrase can go there: its part of \
+speech (a noun, a verb in the past, an adjective...), the kind of information (a \
+symptom, a part of the body, a medicine, a time, a job, a number with a unit...), \
+and the clues in the words around the gap that tell you so. Then give one or \
+two EXAMPLE words of that kind ("a country, like Kenya or Peru"). An example \
+word is NEVER the answer, an accepted form or spelling of it, a word inside it, \
+nor anything that gives it away or points to it: choose examples you know are \
+wrong for this gap, and never a word the recording says for this gap (AGENTS.md \
+§4; the audit fails a gap's answer said before the gap is answered). End each \
+gap's last utterance with a `pause` of 2 to 3 seconds whose `text` says what \
+the student does ("thinking about gap 4"), so there is a clear pause between \
+gaps and it never feels rushed (the audit fails a preview with fewer pauses \
+than gaps). A heading opens its group with a short sentence on what that part \
+of the talk will be about.\
 """
 
 NARRATION_QUESTION = """\
@@ -283,7 +305,14 @@ the part of the transcript that holds it, the keyword pairs between the option \
 and the transcript in one match type, the paraphrase bridge, each wrong option \
 ruled out (reveal its part as you give the reason), the tick last; replay the \
 question's section ("question N"). On the paper test, Parts B and C answers \
-are shaded with a 2B pencil.\
+are shaded with a 2B pencil.
+  READING THE STEM AND THE OPTIONS (owner, 2026-10-14; ADR 033), before the \
+recording, slowly: say what the stem asks and so what to listen for (who, the \
+setting, a purpose, an opinion, a next step), and for each option what it means \
+and how a speaker might say it in other words (a paraphrase of its keywords). \
+Never say or hint which option is right before the answer; the paraphrases \
+you suggest are never the transcript's own words for the key. Leave a short \
+`pause` (2 to 3 seconds) after the options so the student can think.\
 """
 
 QA = """\
@@ -297,7 +326,12 @@ to a website, a course series or a Persian audience; any exam fact not in the \
 rulings; any claim about a tool of the computer test; any advice to take a mock \
 test first or to use a highlighter; narration spoken over a recording; and any \
 match mark pair whose two places do not say the same thing; and any \
-pause-and-try prompt that repeats another's sentence or pattern.\
+pause-and-try prompt that repeats another's sentence or pattern; any mention of \
+"the instructor" or of the teacher in the third person (the narrator is the \
+teacher: "I"); a score target not said as the teacher's own recommendation; a \
+grade B line other than "Grade B usually needs about 30 of the 42 Listening \
+marks."; and any example word in a gap's preview that is its answer, a form of \
+it, or gives it away (ADR 033).\
 """
 
 
@@ -420,6 +454,73 @@ def prompt_findings(mine: list[tuple[str, str]], others: list[tuple[str, str]] =
                                  f"{' '.join(hit[0])!r} / {' '.join(hit[1])!r}: word each one fresh (ADR 030)"))
                 break
     return out
+
+
+def _words(text: str) -> list[str]:
+    return re.findall(r"[a-z0-9]+", text.lower())
+
+
+def preview_findings(boards: list[dict], blocks: dict, ps: dict | None) -> list[tuple[str, str]]:
+    """(utterance or board id, what) for a Part A note form's preview (owner,
+    2026-10-14; ADR 033): a gap's answer, one of its accepted forms or accepted
+    misspellings said in a state before the one that answers it (an example word
+    is never the answer), and a preview with fewer pauses to think than the form
+    has gaps before its recording ("exam") plays. Never prints an answer."""
+    from write_narration import spoken
+    gaps = {g["gap_id"]: g for it in practice_set.items(ps or {"parts": []}).values()
+            for g in practice_set.gaps_of(it)}
+    out = []
+    for bd in boards:
+        forms = [blocks[i] for i in bd["fixed"] if ((blocks.get(i) or {}).get("doc") or {}).get("text_type") == "form"
+                 and blocks[i].get("typed")]
+        for fb in forms:
+            parts = fb["doc"]["parts"]
+            # each typed gap: its number, its forms (as words), and the state that types it
+            todo = []
+            for ty in fb["typed"]:
+                p = parts[ty["row"]]
+                g = gaps.get(p.get("gap"))
+                if not g:
+                    continue
+                sc = g["scoring"]
+                forms_ = [w for w in (_words(x) for x in (sc.get("accepted") or []) + (sc.get("accepted_misspellings") or [])) if w]
+                at = next((k for k, s in enumerate(bd["states"]) for u in s["utterances"] for c in u.get("cues") or []
+                           if c.get("type") == "type" and c.get("block") == fb["id"] and c.get("text") == ty["text"]), None)
+                if at is not None:
+                    todo.append((p["mark"], forms_, at))
+            for k, s in enumerate(bd["states"]):
+                for u in s["utterances"]:
+                    # the narrator's own words: a quote of the form or the transcript,
+                    # marked as it is read, is what the board already shows
+                    said = spoken(u["text_with_cues"]).lower()
+                    for c in u.get("cues") or []:
+                        if c.get("text") and c.get("type") not in ("type", PLAY, "pause", "reveal"):
+                            said = said.replace(c["text"].lower(), " ")
+                    said = _words(said)
+                    for mark, forms_, at in todo:
+                        if k < at and any(said[i:i + len(f)] == f for f in forms_ for i in range(len(said) - len(f) + 1)):
+                            out.append((u["id"], f"says the answer to gap {mark} (or an accepted form of it) before "
+                                                 "the gap is answered: a preview's example words are never the answer "
+                                                 "(ADR 033)"))
+            # the preview: a pause to think for each gap before the recording plays
+            n_gaps = sum(1 for p in parts if p.get("kind") == "num")
+            pauses, played = 0, False
+            for s in bd["states"]:
+                for u in s["utterances"]:
+                    cues = u.get("cues") or []
+                    if any(c.get("type") == PLAY and c.get("with") == "exam" for c in cues):
+                        played = True
+                        break
+                    pauses += sum(1 for c in cues if c.get("type") == "pause")
+                if played:
+                    break
+            if played and pauses < n_gaps:
+                out.append((bd["id"], f"the preview of the note form {fb['id']} has {pauses} pause(s) for {n_gaps} "
+                                      "gaps before the recording: leave a pause to think after each gap (ADR 033)"))
+    return out
+
+
+PLAY = "play"
 
 
 def lesson_prompts(lesson: Path, skip: str | None = None) -> list[tuple[str, str]]:
@@ -684,10 +785,16 @@ def main() -> None:
         vfound = vocab_findings(lesson_vocab(lesson))
         for uid, what in vfound:
             print(f"FAIL {uid}: {what}")
+        import write_narration                 # the rapport talk (ADR 033), every lesson type
+        rap = write_narration.lesson_rapport(lesson)
+        rfound = write_narration.rapport_findings(rap)
+        for uid, what in rfound:
+            print(f"FAIL {uid}: {what}")
         n = len(lesson_prompts(lesson))
         print(f"{n} pause-and-try prompt(s); {len(found)} repeated or near copies; "
-              f"{len(lesson_vocab(lesson))} vocabulary explanation(s); {len(vfound)} repeated or near copies")
-        sys.exit(1 if found or vfound else 0)
+              f"{len(lesson_vocab(lesson))} vocabulary explanation(s); {len(vfound)} repeated or near copies; "
+              f"{len(rap)} rapport utterance(s); {len(rfound)} repeated, near copies or filler")
+        sys.exit(1 if found or vfound or rfound else 0)
 
 
 if __name__ == "__main__":

@@ -57,7 +57,7 @@ import paths                                                   # noqa: E402
 from extract_understanding import api_key, esc, refuse_if_truncated, strip_bidi  # noqa: E402
 from write_screens import (maintainer_wording, relabel_note)                  # noqa: E402
 from build_course_index import check_ref                                      # noqa: E402
-from write_screens import (FIXED_FORBIDS, fixed_forbids, without_allowed, FRAME_CSS, frame_css, NON_LATIN, PAGE_CSS,     # noqa: E402
+from write_screens import (FIXED_FORBIDS, fixed_forbids, FRAME_CSS, frame_css, NON_LATIN, PAGE_CSS,     # noqa: E402
                            REGISTER_WORDS, block_html, block_texts, has_parts, is_exercise_board, resolve_images,
                            ledger_phrases, ledger_rulings, rulings_from_script)
 
@@ -940,6 +940,62 @@ DELIVERY = """DELIVERY: AN ENGAGED TEACHER, NEVER A SCRIPT READ ALOUD (maintaine
 This changes HOW things are said. What is taught stays as it is: the facts, the steps and their order, the examples, every word read from a board, and every other rule. Same A2-B1 words; no idioms; at most one exclamation mark a board. The narration may be longer for this; there is no length cap for it.
 ADDED TEACHING POINTS. Where you add a teaching point or a generalisation that the beats and the boards do not make ("the text must answer the whole question"), it must be accurate and consistent with the instructor's method, and that utterance's `note` must start "ADDED: " and say the point, so the maintainer can review every one."""
 
+# The RAPPORT rule (owner, 2026-10-14; ADR 033): every lesson, of every type,
+# drafted from now on talks with the learner. Lessons narrated before it carry
+# no RAPPORT notes, so its audit finds nothing in them.
+RAPPORT = """TALK WITH THE STUDENT, NOT AT THE BOARDS (owner, 2026-10-14; ADR 033). The narration is the teacher talking with one student, as the teacher does in the source classes: never a reading of the boards. Model the warmth and the moves of the source teacher's own talk in the beats, said naturally in English, never translated word for word. Add, in your own words:
+  - TRANSITIONS: where a board or the topic changes, a short bridge from what was just done to what comes next ("Right, now that we've seen the format, let's look at how to actually prepare.").
+  - SHORT QUESTIONS to the student ("Have you noticed how...?", "What would you write here?"), then a short pause or the answer.
+  - ENCOURAGEMENT, short and tied to what the student has just done ("If you got most of those, you're doing well.").
+  - COMMON MISTAKES: where the beats or the rulings name a mistake learners make, say it as a mistake you often see ("A mistake I see a lot is..."). Only mistakes the source names; never invent one.
+  - CHECK-INS AND RECAPS: a short check that the student is with you, and a recap of one or two sentences when a topic ends.
+The teacher is "I" and the student "you": never speak of the teacher, the instructor or the source in the third person. No empty filler ("without further ado", "let's dive in", "awesome", "amazing"), no idioms or slang above the student's level, and no personal story or experience the source teacher does not tell. Every rapport moment does a job: it links, asks, encourages, warns or recaps; one or two sentences, a few a board, never more talk than teaching.
+VARIETY: no rapport sentence twice in the lesson, nor a near copy, nor the same shape with other words; write each one fresh. Give every utterance that carries rapport talk a `note` that begins "RAPPORT: " and names its kind (transition, question, encouragement, mistake, check-in, recap), with provenance `authored`, or `source-derived` where the source teacher says it. The audit compares every rapport sentence of the lesson with every other and fails a repeat, a near copy or filler."""
+RAPPORT_NOTE = re.compile(r"^\s*RAPPORT\b")
+RAPPORT_FILLER = re.compile(r"\b(?:without further ado|dive (?:in|into)|buckle up|awesome|amazing|super excited)\b", re.I)
+RAPPORT_MIN_WORDS = 3          # "Right." or "Good." may come back; a sentence of three words or more may not
+
+
+def rapport(boards: list[dict]) -> list[tuple[str, str]]:
+    """A narration's rapport talk (ADR 033), (utterance id, words said): each
+    utterance whose note begins "RAPPORT"."""
+    return [(u["id"], spoken(u["text_with_cues"])) for bd in boards for s in bd["states"]
+            for u in s["utterances"] if RAPPORT_NOTE.match(u.get("note") or "")]
+
+
+def rapport_findings(mine: list[tuple[str, str]], others: list[tuple[str, str]] = ()) -> list[tuple[str, str]]:
+    """(utterance id, what) for each rapport utterance of `mine` with filler, or
+    with a sentence of RAPPORT_MIN_WORDS or more that another rapport utterance
+    (of `mine`, or of the lesson's other sections) repeats or nearly repeats."""
+    import listening_rule
+    out = []
+    for i, (uid, text) in enumerate(mine):
+        m = RAPPORT_FILLER.search(text)
+        if m:
+            out.append((uid, f"rapport filler {m.group(0)!r}: every rapport moment does a job (ADR 033)"))
+        mine_s = [a for a in listening_rule._sentences(text) if len(a) >= RAPPORT_MIN_WORDS]
+        for vid, other in list(mine[:i]) + list(others):
+            hit = next(((a, b) for a in mine_s for b in listening_rule._sentences(other)
+                        if len(b) >= RAPPORT_MIN_WORDS and listening_rule.near_copy(a, b)), None)
+            if hit:
+                same = hit[0] == hit[1]
+                out.append((uid, f"rapport sentence {'repeats' if same else 'nearly repeats'} {vid}: "
+                                 f"{' '.join(hit[0])!r} / {' '.join(hit[1])!r}: word each one fresh (ADR 033)"))
+                break
+    return out
+
+
+def lesson_rapport(lesson: Path, skip: str | None = None) -> list[tuple[str, str]]:
+    """Every narrated section's rapport talk (analysis/narration/<tag>/narration.json),
+    but the section `skip`."""
+    out = []
+    for f in sorted((Path(lesson) / "analysis" / "narration").glob("*/narration.json")):
+        if f.parent.name == skip:
+            continue
+        d = json.loads(f.read_text(encoding="utf-8"))
+        out += [(f"{f.parent.name}:{uid}", t) for uid, t in rapport(d.get("boards") or [])]
+    return out
+
 def build_messages(data: dict, rewrite: dict | None = None, chunk: dict | None = None) -> list[dict]:
     know = data["understanding"]
     beats = [{"id": b["id"], "learning_objective": b["learning_objective"],
@@ -1040,6 +1096,7 @@ def build_messages(data: dict, rewrite: dict | None = None, chunk: dict | None =
     import lesson_type
     if lesson_type.has(lesson_dir, "delivery"):
         content.append({"type": "text", "text": DELIVERY})    # ADR 027 amendment
+    content.append({"type": "text", "text": RAPPORT})         # ADR 033: every lesson type
     if reading_rule.is_reading(lesson_dir):
         content.append({"type": "text", "text": reading_rule.NARRATION})
         if any(b.get("doc") or b.get("question") for t in scr["topics"] for h in t["thoughts"]
@@ -1799,7 +1856,6 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                         # longest first: a gloss's word must not break the match of its example
                         for t in sorted(block_texts(rb), key=len, reverse=True):
                             own = own.replace(t.lower().rstrip("."), " ")
-                own = without_allowed(lesson_dir_, own)     # fact 22, Listening only
                 for p in forbids:
                     if p.lower() in (low if p in data["forbids"] else own):
                         fail(uid, f"forbidden phrase {p!r} in {said!r}")
@@ -2099,6 +2155,15 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
         for uid, what in listening_rule.vocab_findings(listening_rule.vocab_explanations(boards, blocks),
                                                        listening_rule.lesson_vocab(lesson_dir_, skip=tag)):
             fail(uid, what)
+        # a Part A note form's preview (ADR 033): no gap's answer before it is
+        # answered, and a pause to think for every gap before the recording
+        for uid, what in listening_rule.preview_findings(boards, blocks, ps_):
+            fail(uid, what)
+    # every lesson's rapport talk (ADR 033): no sentence twice in the lesson, nor
+    # a near copy, nor filler
+    for uid, what in rapport_findings(rapport(boards),
+                                      lesson_rapport(lesson_dir_, skip=Path(data["screens_path"]).parent.name)):
+        fail(uid, what)
     return findings
 
 

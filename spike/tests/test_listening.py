@@ -282,7 +282,12 @@ class Rule(unittest.TestCase):
         self.assertIn("PAUSE-AND-TRY PROMPTS", listening_rule.NARRATION)
         self.assertIn("PANEL Row <N>", listening_rule.SCREENS_SET)
         self.assertIn("THE VOCABULARY PANEL", listening_rule.NARRATION)
-        self.assertIn("instructor's suggested", listening_rule.SCREENS)
+        for rule in (listening_rule.SCREENS, listening_rule.NARRATION):     # ADR 033
+            self.assertIn("I'd recommend aiming for 20 out of 24 in Part A.", rule)
+            self.assertIn("Grade B usually needs about 30 of the 42 Listening marks.", rule)
+            self.assertNotIn("instructor's suggested", rule)
+        self.assertIn("THE PREVIEW, GAP BY GAP", listening_rule.NARRATION_PART_A)
+        self.assertIn("READING THE STEM AND THE OPTIONS", listening_rule.NARRATION_QUESTION)
         self.assertNotIn("Covered:", listening_rule.NARRATION_QUESTION)
 
     def test_narration_text_follows_the_boards(self):
@@ -304,12 +309,53 @@ class Rule(unittest.TestCase):
         self.assertNotIn("recording", ws.fixed_forbids(lesson("listening-09-x")))
         self.assertIn("recording", ws.fixed_forbids(lesson("reading-02-part-a")))
 
-    def test_the_instructors_suggested_targets_only_in_listening(self):
-        # fact 22: the one phrase with "instructor" a Listening lesson may say
-        said = "These are the instructor's suggested targets: 20 of 24."
-        self.assertNotIn("instructor", ws.without_allowed(lesson("listening-09-x"), said).lower())
-        self.assertIn("instructor", ws.without_allowed(lesson("listening-09-x"), "The instructor says so.").lower())
-        self.assertEqual(ws.without_allowed(lesson("reading-02-part-a"), said), said)
+    def test_instructor_is_never_said_in_listening_either(self):
+        # ADR 033: the narrator is the teacher; the fact-22 exception is gone
+        self.assertIn("instructor", ws.fixed_forbids(lesson("listening-09-x")))
+        self.assertFalse(hasattr(ws, "without_allowed"))
+
+    def test_rapport_never_repeats(self):
+        # ADR 033: utterances noted RAPPORT are compared across the lesson
+        u = lambda i, text, note="RAPPORT: transition": {"id": i, "text_with_cues": text, "cues": [], "note": note}
+        boards = [{"states": [{"utterances": [
+            u("a", "Right, now that we've seen the format, let's look at how to prepare."),
+            u("b", "Good. Now that we've seen the format, let's look at how to prepare."),
+            u("c", "Now that we've seen the format, let's look at how to prepare.", note="teaching"),
+            u("d", "Right. Have you noticed how short the notes are?"),
+            u("e", "Right. Let's dive in.")]}]}]
+        found = wn.rapport_findings(wn.rapport(boards))
+        self.assertEqual([x[0] for x in found], ["b", "e"])     # "c" is no rapport; "Right." may come back
+        self.assertIn("nearly repeats a", found[0][1])
+        self.assertIn("filler", found[1][1])
+        self.assertIn("repeats other:y", wn.rapport_findings([("x", "What would you write here?")],
+                                                             [("other:y", "What would you write here?")])[0][1])
+
+    def test_a_preview_never_says_the_answer_and_pauses_per_gap(self):
+        # ADR 033: before a gap is answered no utterance says its accepted forms;
+        # a pause to think per gap before the recording plays
+        form = P.form_block(SET, GAPFILL) | {"id": "k02"}
+        cue = lambda i, typ, **kw: {"id": i, "type": typ, **kw}
+        st = lambda sid, *us: {"id": sid, "utterances": list(us)}
+        utt = lambda i, text, *cues: {"id": i, "text_with_cues": text, "cues": list(cues)}
+        boards = [{"id": "t1", "fixed": ["k02"], "states": [
+            st("s1", utt("u1", "Gap one: a day, like Monday.{{c1}}", cue("c1", "pause", seconds=2)),
+               utt("u2", "Gap two: a verb, like wakes.{{c1}}", cue("c1", "pause", seconds=2))),
+            st("s2", utt("u3", "Listen.{{c1}}", cue("c1", "play", text="x", **{"with": "exam"}))),
+            st("s3", utt("u4", "So, {{c1}}Tuesday.", cue("c1", "type", block="k02", text="Tuesday"))),
+            st("s4", utt("u5", "And {{c1}}wakes him.", cue("c1", "type", block="k02", text="wakes him")))]}]
+        found = listening_rule.preview_findings(boards, {"k02": form}, SET)
+        self.assertEqual([x[0] for x in found], ["u2"])          # an accepted form of gap 2, before s4
+        self.assertNotIn("wakes", found[0][1])                   # never prints an answer
+        # a quote of the board, marked as it is read, is not the narrator's own word
+        boards[0]["states"][0]["utterances"][1]["text_with_cues"] = "Gap two: {{c2}}wakes him at night.{{c1}}"
+        boards[0]["states"][0]["utterances"][1]["cues"].append(cue("c2", "highlight", block="k01",
+                                                                   text="wakes him at night"))
+        self.assertEqual(listening_rule.preview_findings(boards, {"k02": form}, SET), [])
+        boards[0]["states"][0]["utterances"][1]["cues"] = []
+        boards[0]["states"][0]["utterances"][1]["text_with_cues"] = "Gap two: a verb, like stops."
+        found = listening_rule.preview_findings(boards, {"k02": form}, SET)
+        self.assertEqual([x[0] for x in found], ["t1"])
+        self.assertIn("1 pause(s) for 2 gaps", found[0][1])
 
     def test_parts_b_and_c_of_either_skill(self):
         L = lesson("listening-09-x", "listening", SET)

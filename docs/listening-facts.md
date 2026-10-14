@@ -4,7 +4,7 @@ Status: **Verified, 2026-10-13** (the chat on oet.com; the owner's rulings recor
 [ADR 030](adr/030-listening-board-layout.md), decision 6). Every exam fact the
 Listening lessons state, with where it is on oet.com. Only the verified facts are
 taught, and facts 20 to 22 only as their rulings say (ADR 029, owner decision 9;
-AGENTS.md §5).
+ADR 033; AGENTS.md §5).
 
 - **VERIFIED**: the quote was read on the page named, on 2026-10-13, by the agent,
   or confirmed by the chat from https://oet.com/learn/listening the same day.
@@ -45,11 +45,11 @@ enough.
 | 15 | Part C: 90 seconds to read the questions before each recording | C: "Before the audio begins, you have 90 seconds to read through the questions" | VERIFIED |
 | 16 | On paper, two minutes at the end to check all answers; on computer and OET@Home, a short pause after each question | L: "If you take OET on paper, you will have two minutes at the end of the Listening sub-test to check your answers"; "If you take OET on computer or OET@Home, there will be a short pause at the end of each question to check your answers" | VERIFIED (chat, 2026-10-13) |
 | 17 | Part A answers are written in the booklet; Parts B and C answers are shaded | L: "For Part A, you must write your answers in the space provided in the question booklet"; "For Part B and Part C, you must shade the lozenge next to the appropriate answer" | VERIFIED |
-| 18 | Grade B (350) typically needs at least 30 of 42 marks; boundaries vary slightly by test version | L: "Test-takers awarded grade B (a scale score of 350) will typically have a score of at least 30 marks"; "The grade boundaries are adjusted slightly for each test" | VERIFIED (chat, 2026-10-13) |
+| 18 | Grade B (350) typically needs at least 30 of 42 marks; boundaries vary slightly by test version | L: "Test-takers awarded grade B (a scale score of 350) will typically have a score of at least 30 marks"; "The grade boundaries are adjusted slightly for each test" | VERIFIED (chat, 2026-10-13). Said in one sentence (owner, 2026-10-14, ADR 033): "Grade B usually needs about 30 of the 42 Listening marks."; test-to-test variation is not mentioned separately |
 | 19 | Speakers have a range of accents | L: "A range of accents are used across all three parts to reflect the global nature of the healthcare workforce" | VERIFIED |
 | 20 | Part A: answers may use common abbreviations | not found on L, A; oet.com stresses writing the words heard (fact 8) | **NOT TAUGHT** (owner, 2026-10-13): teach writing the words heard |
 | 21 | Part A: a time to read the general instructions before Part A, usable as extra reading time | not found on L, A | **NOT TAUGHT** (owner, 2026-10-13): teach only the 30 seconds to look at the notes before each extract (fact 7) |
-| 22 | A target of about 20 of 24 in Part A (or 4 of 6 in Part B, 8 of 12 in Part C) | no oet.com source; a study target the instructor set | **ONLY AS "the instructor's suggested targets"** (owner, 2026-10-13), with fact 18: grade B typically needs at least 30 of 42 marks, varying slightly from test to test |
+| 22 | A target of about 20 of 24 in Part A (or 4 of 6 in Part B, 8 of 12 in Part C) | no oet.com source; a study target the instructor set | **ONLY AS THE TEACHER'S OWN RECOMMENDATION, in the first person** (owner, 2026-10-14, [ADR 033](adr/033-owner-review-listening-01-02-narration.md); it replaces "the instructor's suggested targets" of 2026-10-13): "I'd recommend aiming for 20 out of 24 in Part A.", with fact 18 said as: "Grade B usually needs about 30 of the 42 Listening marks." |
 | 23 | Paper test: Part A may be written in pen or pencil; Parts B and C shaded with a 2B pencil | verified on oet.com by the chat, 2026-10-13 | VERIFIED (chat, 2026-10-13) |
 
 ## Not taught (corrected silently, owner decision 9)
