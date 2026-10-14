@@ -304,6 +304,13 @@ class Rule(unittest.TestCase):
         self.assertNotIn("recording", ws.fixed_forbids(lesson("listening-09-x")))
         self.assertIn("recording", ws.fixed_forbids(lesson("reading-02-part-a")))
 
+    def test_the_instructors_suggested_targets_only_in_listening(self):
+        # fact 22: the one phrase with "instructor" a Listening lesson may say
+        said = "These are the instructor's suggested targets: 20 of 24."
+        self.assertNotIn("instructor", ws.without_allowed(lesson("listening-09-x"), said).lower())
+        self.assertIn("instructor", ws.without_allowed(lesson("listening-09-x"), "The instructor says so.").lower())
+        self.assertEqual(ws.without_allowed(lesson("reading-02-part-a"), said), said)
+
     def test_parts_b_and_c_of_either_skill(self):
         L = lesson("listening-09-x", "listening", SET)
         self.assertTrue(ws.has_part_b(L) and ws.has_listening_set(L))
