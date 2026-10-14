@@ -1203,6 +1203,23 @@ def fixed_forbids(lesson) -> list[str]:
         return [f for f in FIXED_FORBIDS if f != "recording"]
     return FIXED_FORBIDS
 
+
+# The fact sheet's ruling (docs/listening-facts.md fact 22; ADR 030 decision 6):
+# in a Listening lesson a score target is only ever "the instructor's suggested
+# target(s)". That phrase is the one place "instructor" may be said or shown
+# there; everywhere else, and in every other lesson, it stays forbidden.
+SUGGESTED_TARGETS = re.compile(r"\binstructor[’']s suggested targets?\b", re.I)
+
+
+def without_allowed(lesson, text: str) -> str:
+    """`text` with the phrases a lesson's type allows despite FIXED_FORBIDS
+    taken out, for the never-on-screen check: in a Listening lesson, "the
+    instructor's suggested target(s)" (fact 22). Unchanged for any other lesson."""
+    import lesson_type
+    if lesson and lesson_type.of(Path(lesson)) == "listening":
+        return SUGGESTED_TARGETS.sub(" ", text)
+    return text
+
 # Proxy for a register claim (methodology §17b). A hit is a finding for the
 # reviewer, not proof: "common cold" would trip it. Maintainer blocks are exempt.
 REGISTER_WORDS = re.compile(
@@ -2827,7 +2844,7 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
         as_released = bool(b.get("doc") or b.get("map") or b.get("question") or b.get("vocab")
                            or b.get("vocab_table"))
         for text in block_texts(b):
-            low = text.lower()
+            low = without_allowed(data.get("lesson_dir"), text).lower()
             for p in (data["forbids"] if as_released else forbids):
                 if p.lower() in low:
                     fail(b["id"], f"forbidden phrase {p!r} in {text!r}")
