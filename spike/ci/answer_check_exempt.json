@@ -22,6 +22,9 @@
   {"item": "oa-listening-000012", "form": "accepted[0]", "why": "a Part A gap, checked since 2026-10-13 (ADR 029): an everyday word in the gloss-image prompt", "by": "agent 2026-10-13"},
   {"item": "oa-listening-000024", "form": "accepted[1]", "why": "a Part A gap, checked since 2026-10-13 (ADR 029): a time of day in the narration audit's greeting pattern", "by": "agent 2026-10-13"},
   {"item": "oa-listening-000062", "form": "accepted[0]", "why": "a Part A gap (sample-tests-v2), checked since 2026-10-13 (ADR 029): a body part in the narration audit's list of body parts", "by": "agent 2026-10-13"},
-  {"item": "oa-listening-000136", "form": "accepted[1]", "why": "a Part A gap (sample-tests-v2), checked since 2026-10-13 (ADR 029): a body part in the narration audit's list of body parts", "by": "agent 2026-10-13"}
+  {"item": "oa-listening-000136", "form": "accepted[1]", "why": "a Part A gap (sample-tests-v2), checked since 2026-10-13 (ADR 029): a body part in the narration audit's list of body parts", "by": "agent 2026-10-13"},
+  {"item": "oa-reading-000178", "form": "accepted[0]", "why": "sample-tests-v3 (a Reading Part A set): an everyday dosing phrase; only in the made-up Listening transcript of spike/tests/test_check_release_answers.py, written 2026-10-13 before the release", "by": "agent 2026-10-14"},
+  {"item": "oa-listening-000182", "form": "accepted[0]", "why": "sample-tests-v3 (a Part A gap of oa-set-la-0005): a colour word in British spelling; the design system, ADR 015 and the screens, image and annotation code use it in their own sense (17 lines), all written before the release", "by": "agent 2026-10-14"},
+  {"item": "oa-listening-000182", "form": "accepted[1]", "why": "the same colour word in US spelling; the slide-timeline code uses it for greyscale images, written before the release", "by": "agent 2026-10-14"}
  ]
 }

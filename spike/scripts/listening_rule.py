@@ -223,6 +223,12 @@ tests varying); never say abbreviations are \
 accepted in Part A (the learner writes the words heard); never call the \
 instructions' time extra reading time (only the 30 seconds to look at the Part \
 A notes before each extract).
+  - SPELLING AND ASIDES (owner, 2026-10-14; ADR 034): where an answer's \
+spelling matters, say it in the owner's words: "Spell it carefully — a \
+spelling mistake can cost you the mark." Never that a word "must be spelt \
+correctly" (minor variations may be accepted, fact 10). A joke or an aside \
+speaks to every learner ("So, everyone, please take care with your \
+handwriting!"), never to one profession.
   - Question numbers are the exam's (gaps 1-24, questions 25-42): say them as \
 the board shows them.
   - THE RECORDINGS. The release's own audio plays inside the lesson, started by \
@@ -331,7 +337,9 @@ pause-and-try prompt that repeats another's sentence or pattern; any mention of 
 teacher: "I"); a score target not said as the teacher's own recommendation; a \
 grade B line other than "Grade B usually needs about 30 of the 42 Listening \
 marks."; and any example word in a gap's preview that is its answer, a form of \
-it, or gives it away (ADR 033).\
+it, or gives it away (ADR 033); a claim that a word "must be spelt correctly" \
+(the owner's line is "Spell it carefully — a spelling mistake can cost you the \
+mark."), and a joke or aside aimed at one profession (ADR 034).\
 """
 
 
