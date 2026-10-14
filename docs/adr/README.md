@@ -39,3 +39,4 @@ old one.
 | [031 — The Listening board, revised: no split words, a smaller transcript, a vocabulary panel, the whole note form in the reading time (bundle 1.20)](031-listening-vocabulary-panel.md) | 2026-10-14; amended by 032 |
 | [032 — Listening: the owner's answers to ADR 031, practice question numbers, permanent lesson ids](032-listening-owner-answers-numbering-stable-ids.md) | 2026-10-14; amended by 033 |
 | [033 — The owner's review of Listening 01 and 02: the first person, the grade B line, the gap-by-gap preview, talking with the learner](033-owner-review-listening-01-02-narration.md) | 2026-10-14 |
+| [034 — Listening: the owner's spelling line, and asides that speak to everyone](034-listening-spelling-line-and-asides.md) | 2026-10-14 |
