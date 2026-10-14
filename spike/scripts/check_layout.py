@@ -109,6 +109,11 @@ HARNESS = r"""
         if (blocks[id] && blocks[id].map) continue;
         // a Part B text's lens moves its words inside its frame by design (1.15)
         if (el.classList.contains("lens-frame")) continue;
+        // a Listening board's transcript box and its note form's window move their
+        // rows with the recording, line by line, and the form is shown whole in the
+        // reading time, by design (ADR 030, ADR 031, bundles 1.19-1.20); check_lens.py
+        // measures them (no cut line, the marker, the line, the form whole)
+        if (el.querySelector(".lt-win")) continue;
         // a Part C text (1.17) is shown as a map or as a paragraph, by design: its
         // words are held still within each view, never between two views
         const vk = el.classList.contains("pc-map") ? "map|"

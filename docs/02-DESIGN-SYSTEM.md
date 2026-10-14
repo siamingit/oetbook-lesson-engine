@@ -891,7 +891,11 @@ form in the reading time.
   said and a small blue caret marks its line in the left margin; no word is
   recoloured or highlighted. It is on screen whenever a recording plays, the first
   time too. A Part A note form is set at 2.8% in a window of whole rows that moves to
-  the heading being heard, or to the gap being filled. No board picture.
+  the heading being heard, or to the gap being filled. No board picture. The box and
+  the form's window are exempt from "nothing moves a word" (§8a), as the map's lens
+  is: they move their rows by design, and the form is shown whole in the reading
+  time; `check_lens.py` measures them instead (`check_layout.py` leaves them out,
+  2026-10-14). Every other block on a Listening board is held to §8a.
 - **The vocabulary panel** (ADR 031): under the transcript's box, in its column, at
   2.8% (fixed). Each item is a gloss (§7b colours) drawn compact: the word in the
   medium weight, the "hear it in the recording" button, "= meaning", "· Similar:"
