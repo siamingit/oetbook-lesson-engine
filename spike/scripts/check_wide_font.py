@@ -110,7 +110,7 @@ HARNESS = r"""
       const A = area();
       const st = stateAt(bd, t);
       const overs = [...camEl.querySelectorAll(".blk.over.on:not(.cleared)")];
-      for (const [id, el] of [...blockEls, ...(typeof lsecEls === "object" ? lsecEls : [])]) {
+      for (const [id, el] of [...blockEls, ...(typeof lsecEls === "object" ? lsecEls : []), ...(typeof lpanEls === "object" ? lpanEls : [])]) {
         if (!shown(el)) continue;
         if (viewed && !el.classList.contains("beside")) continue;
         if (id === bd.table && st && st.veil) continue;       // covered: its words are not shown yet

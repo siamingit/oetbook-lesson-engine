@@ -875,13 +875,16 @@ to 40.
 
 ADR 029; bundle 1.18, rules 42 to 45. Amended by ADR 030 (bundle 1.19, rules 46 to
 48): the Listening board below replaces the covered transcript, its parts, the row
-spotlight and the full-width note-form board.
+spotlight and the full-width note-form board. Amended by ADR 031 (bundle 1.20, rules
+49 to 51): no hyphenation, a smaller transcript, the vocabulary panel, the whole note
+form in the reading time.
 
 - **The Listening board** (ADR 030): one layout for Parts A, B and C. The transcript
-  in a box on the left (58% of the board), the questions on the right: Part A the
-  note form, Part B the question and its options, Part C the question the recording
-  is covering. The box is fixed: ten lines at 3.4% of the frame (never below the
-  2.6% floor), justified (each paragraph's last line set left) and hyphenated, its
+  in a box on the left (62% of the board; ADR 031), the questions on the right: Part A
+  the note form, Part B the question and its options, Part C the question the
+  recording is covering. The box is fixed: ten lines at 3.1% of the frame (never below
+  the 2.6% floor), justified (each paragraph's last line set left), never hyphenated:
+  no word is broken across two lines (ADR 031), its
   speakers' labels at the start of their turns, its rows on one line grid so no line
   is ever cut. While a recording plays it moves smoothly, line by line, the line
   being said the fourth from its top; a thin blue line runs under the word being
@@ -889,6 +892,17 @@ spotlight and the full-width note-form board.
   recoloured or highlighted. It is on screen whenever a recording plays, the first
   time too. A Part A note form is set at 2.8% in a window of whole rows that moves to
   the heading being heard, or to the gap being filled. No board picture.
+- **The vocabulary panel** (ADR 031): under the transcript's box, in its column, at
+  2.8% (fixed). Each item is a gloss (§7b colours) drawn compact: the word in the
+  medium weight, the "hear it in the recording" button, "= meaning", "· Similar:"
+  and its synonyms (a paraphrase pair: "· Same as:" and the question's or the notes'
+  words first) flowing as one paragraph, the example under them. While a recording
+  plays the items appear as the marker passes their word, the newest last; while the
+  narration teaches one, the box shows the line it is said in and the term is
+  highlighted there. Whole items only: where they do not fit, fewer, never smaller.
+- **The reading time before a Part A extract** (ADR 031): the note form alone, every
+  row, the width of the board, at 3.0% (to the floor where needed); the transcript and
+  the panel wait for the first word.
 - **The Part A note form** is a page with a blue top rule, its tag "Notes", a heading
   row per heading, a row per gap with the gap's exam number as a small blue badge (a
   stylesheet attribute, never a word). Each gap is a blank line of fixed width (§7,

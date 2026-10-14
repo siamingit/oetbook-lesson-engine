@@ -373,7 +373,8 @@ HARNESS = r"""
     // ADR 020: notes go under a table, never over it; where they still do not
     // fit, the table's text is made smaller, to the tables' floor, for the
     // whole board (so no word moves between its states)
-    const tid = bd.table && blocks[bd.table] && blocks[bd.table].core ? bd.table : null;
+    // (never a Listening board's transcript or note form, whose type is fixed: ADR 030)
+    const tid = bd.table && blocks[bd.table] && blocks[bd.table].core && !bd.listen ? bd.table : null;
     while (unfit.length > n0 && tid && (blocks[tid].font || 2.6) > FMIN + 1e-6) {
       unfit.length = n0;
       setFont(bd, tid, Math.max(FMIN, (blocks[tid].font || 2.6) - 0.1));

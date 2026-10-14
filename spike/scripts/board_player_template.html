@@ -270,6 +270,34 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
   #cam .ltext .lt-scr.glide { transition: transform .45s cubic-bezier(.4, 0, .2, 1); }
   #cam .ltext .lt-mk.glide { transition: left .14s linear, width .14s linear; }
 }
+/* 1.20 (ADR 031): the vocabulary panel, in the transcript's column under its
+   box: each item its word, a button that plays the sentence it is said in, its
+   meaning, its synonyms and an example, at a fixed size (never below the
+   floor); only whole items are shown, the newest last, and an item that does
+   not fit is not drawn. While a recording plays, the items the marker has
+   passed; otherwise the items the narration is teaching. */
+#cam .lpanel { position: absolute; left: 0; top: 0; width: var(--lsplit); height: 0; overflow: hidden;
+               display: flex; flex-direction: column; gap: 1cqh; font-size: var(--lpf); }
+#cam .lpanel > .blk { position: static; margin: 0; flex: 0 0 auto; max-width: 100%; }
+#cam .lpanel > .blk.lpan-off { display: none; }
+#cam .lpanel .blk.gl.lvoc { padding: .6cqh 1.4cqw; font-size: var(--lpf); line-height: 1.3; }
+#cam .lpanel .lvoc .gl-txt { display: block; }
+#cam .lpanel .lvoc .gl-h, #cam .lpanel .lvoc .gl-w, #cam .lpanel .lvoc .gl-x,
+#cam .lpanel .lvoc .gl-s { font-size: var(--lpf); line-height: 1.3; margin: 0; color: inherit; }
+/* the word, its meaning and its synonyms flow as one paragraph; the example under them */
+#cam .lpanel .lvoc .gl-h, #cam .lpanel .lvoc .gl-s { display: inline; }
+#cam .lpanel .lvoc .gl-x { display: block; }
+#cam .lpanel .lvoc .gl-w { font-weight: 600; }
+#cam .lpanel .lvoc .gl-s::before { content: " \00B7  Similar: "; color: #5F5E5A; }
+#cam .lpanel .lvoc.lv-pair .gl-s::before { content: " \00B7  Same as: "; }
+#cam .lpanel .lvoc .gl-x::before { font-size: var(--lpf); color: #5F5E5A; }
+#cam .lpanel .lvoc .gl-heard, #cam .lpanel .lvoc .gl-say { width: calc(var(--lpf) * 1.15); height: calc(var(--lpf) * 1.15); }
+/* the note form whole, the width of the board, while the reading time before a
+   Part A extract plays (1.20, ADR 031); the transcript and the notes wait */
+#cam.lboard.lread { padding-left: 0; }
+#cam.lboard.lread > .blk:not(.lform), #cam.lboard.lread .lpanel { display: none; }
+#cam.lboard.lread > .blk.lform { width: 100%; }
+#cam.lboard.lread .lform .lt-win { height: auto; }
 </style>
 </head>
 <body>
@@ -531,10 +559,11 @@ function drawBlock(id, fixed, s) {
   if (s && (s.overlay || []).includes(id)) el.classList.add("over");
   if (zoomCol !== 1 && id !== zoomSkip) el.style.zoom = zoomCol;      // 1.16: the guard, below
   // the guard; never a Listening board's transcript, whose box and type are fixed (1.19)
-  if (fitZ !== 1 && id !== ltextId && id !== lformId) { const z = blockZoom(blocks[id]); if (z < 1) el.style.zoom = +z.toFixed(4); }
+  if (fitZ !== 1 && id !== ltextId && id !== lformId && !(lpanelEl && blocks[id].panel)) { const z = blockZoom(blocks[id]); if (z < 1) el.style.zoom = +z.toFixed(4); }
   if ((picFit !== 1 || fitZ !== 1) && blocks[id].type === "picture")  // the guard: a picture smaller
     el.style.setProperty("--ph", picPh(blocks[id]) + "cqh");
-  camEl.appendChild(el);
+  // 1.20: a Listening board's vocabulary item is drawn in its panel (ADR 031)
+  (lpanelEl && blocks[id].panel ? lpanelEl : camEl).appendChild(el);
   blockEls.set(id, el);
   return el;
 }
@@ -564,6 +593,8 @@ function* newBoardSteps(bd) {
   if (isQBoard(bd)) camEl.style.setProperty("--split", bd.split + "%");
   else if (camEl.style.getPropertyValue("--split")) camEl.style.removeProperty("--split");
   lsecEls.clear();
+  lpanEls.clear(); lpanelEl = null;
+  if (camEl.classList.contains("lread")) camEl.classList.remove("lread");
   ltextId = isLBoard(bd) ? bd.listen.block : null;
   lformId = isLBoard(bd) ? bd.listen.form || null : null;
   if (isLBoard(bd) || camEl.classList.contains("lboard")) camEl.classList.toggle("lboard", isLBoard(bd));
@@ -581,7 +612,7 @@ function* newBoardSteps(bd) {
     if (id === ltextId) setupLText(bd, el);                          // 1.19: the transcript's box
     if (id === lformId) { el.classList.add("lform"); el.style.setProperty("--tf", bd.listen.form_font + "cqh"); }
   }
-  if (isLBoard(bd)) drawSections(bd);
+  if (isLBoard(bd)) { drawSections(bd); drawPanel(bd); }
   for (const id of Object.keys(bd.pinned || {})) {
     const el = drawBlock(id, false);
     el.dataset.layer = "pinned";
@@ -1649,6 +1680,10 @@ function placeBeside(bd, s) {
 // end in the extract's own file.
 let ltextId = null, lformId = null;
 const lsecEls = new Map();          // a section's question, drawn for the recording
+// 1.20 (ADR 031): the vocabulary panel, and a copy of each of its items shown
+// while a recording plays, once the marker has passed it
+let lpanelEl = null;
+const lpanEls = new Map();
 function setupLText(bd, el) {
   el.classList.add("ltext");
   if (bd.listen.hyphens) el.classList.add("hyph");
@@ -1713,6 +1748,15 @@ function listenAt(bd, s, t) {
     }
     if (u.end <= t) last = Math.max(first, lwordAt(L.times, u.clip_out - 1e-6));
   }
+  // 1.20 (ADR 031): while the narration teaches a panel item, the line it is said in
+  if (s && L.panel) {
+    let w = null, wt = -1;
+    for (const it of L.panel.items) {
+      const r = revealAt.get(s.id + "|" + it.block);
+      if (r !== undefined && t >= r && r >= wt && s.working.includes(it.block)) { w = it.word; wt = r; }
+    }
+    if (w !== null) return { rec: false, said: false, word: w };
+  }
   if (s && s.row !== null && s.row !== undefined && bd.table === L.block) {
     let k = 0;
     for (let r = 0; r < s.row; r++) k += L.row_words[r];
@@ -1728,6 +1772,11 @@ function listenMoments(bd) {
     if (u.kind !== "exam" || !u.exam || u.exam.stimulus !== L.stimulus) continue;
     for (const sec of L.sections) {
       const at = u.start + L.times[sec.from][0] - u.clip_in + 0.01;
+      if (at >= u.start && at < u.end) out.push(at);
+    }
+    // 1.20: each panel item's word, and the first word (the reading time's end)
+    for (const k of (L.panel ? L.panel.items.map(x => x.word) : []).concat(L.reading ? [lwordAt(L.times, u.clip_in - 1e-6) + 1] : [])) {
+      const at = k < L.times.length ? u.start + L.times[k][0] - u.clip_in + 0.01 : -1;
       if (at >= u.start && at < u.end) out.push(at);
     }
   }
@@ -1747,6 +1796,88 @@ function drawSections(bd) {
     lsecEls.set(id, el);
   }
 }
+// the panel, drawn with the board: its box, and a copy of each item for the
+// recording (every part shown); the items a state teaches are its own blocks,
+// drawn into the panel as they are revealed (drawBlock)
+function drawPanel(bd) {
+  if (!bd.listen.panel) return;
+  lpanelEl = document.createElement("div");
+  lpanelEl.className = "lpanel";
+  lpanelEl.dataset.layer = "panel";
+  lpanelEl.style.setProperty("--lpf", bd.listen.panel.font + "cqh");
+  camEl.appendChild(lpanelEl);
+  for (const it of bd.listen.panel.items) {
+    const tpl = document.createElement("template");
+    tpl.innerHTML = blocks[it.block].html;
+    const el = tpl.content.firstElementChild;
+    el.classList.add("blk", "on", "lpan", "lpan-off");
+    for (const p of el.querySelectorAll("[data-part]")) p.classList.add("on", "settled");
+    el.dataset.layer = "section";
+    lpanelEl.appendChild(el);
+    lpanEls.set(it.block, el);
+  }
+}
+// what the panel shows at t: while a recording plays, the items the marker has
+// passed (an item tied to an answer only once the state teaching it has begun),
+// the newest last; otherwise the state's own items. Whole items only, at most
+// `max`: an item that does not fit is not drawn, the oldest first.
+function applyPanel(bd, s, t, at, el) {
+  const P = bd.listen.panel;
+  if (!lpanelEl || !P) return;
+  const r = offsetIn(el, camEl), B = boardEl.getBoundingClientRect(), cs = getComputedStyle(boardEl);
+  const gap = frame.offsetHeight * 0.015;
+  const top = r.y + r.h + gap;
+  const H = Math.max(0, Math.floor(B.bottom - parseFloat(cs.paddingBottom) - camEl.getBoundingClientRect().top - top));
+  const k = Math.round(top) + "|" + H;
+  if (lpanelEl._k !== k) { lpanelEl._k = k; lpanelEl.style.top = Math.round(top) + "px"; lpanelEl.style.height = H + "px"; }
+  const own = [...lpanelEl.children].filter(e => e.dataset.layer === "working");
+  let show;
+  if (at.rec) {
+    const st = id => bd.states.find(x => x.id === id);
+    show = P.items.filter(x => at.said && x.word <= at.word && (!x.after_answer || (st(x.state) && t >= st(x.state).start)))
+                  .map(x => lpanEls.get(x.block));
+  } else show = own.filter(e => e.classList.contains("on") && !e.classList.contains("cleared"));
+  show = show.slice(-P.max);
+  for (const e of lpanEls.values()) e.classList.toggle("lpan-off", !show.includes(e));
+  for (const e of own) e.classList.toggle("lpan-off", at.rec || !show.includes(e));
+  // whole items only: the oldest go first where they do not all fit
+  const g = parseFloat(getComputedStyle(lpanelEl).rowGap) || 0;
+  let used = show.reduce((a, e) => a + e.offsetHeight, 0) + g * Math.max(0, show.length - 1);
+  while (show.length && used > H + 0.5) {
+    const e = show.shift();
+    e.classList.add("lpan-off");
+    used = show.reduce((a, x) => a + x.offsetHeight, 0) + g * Math.max(0, show.length - 1);
+  }
+}
+// the reading time before a Part A extract (1.20, ADR 031): while a recording of
+// the board's extract plays and no word of it is said yet, the note form is
+// shown whole, the width of the board, at the reading size (or smaller, to the
+// floor, where it would not fit); the transcript, the panel and the notes wait
+function applyReading(bd, at) {
+  const L = bd.listen, on = !!(L.reading && lformId && at.rec && !at.said);
+  const el = blockEls.get(lformId);
+  if (camEl.classList.contains("lread") !== on) camEl.classList.toggle("lread", on);
+  if (!el) return on;
+  const scr = el.querySelector(".lt-scr");
+  if (on) {
+    const k = guardKey();
+    if (el._lrk !== k) {
+      el._lrk = k;
+      if (scr) { scr.style.transform = ""; scr._off = undefined; scr.classList.remove("glide"); }
+      for (const tr of el.querySelectorAll("tr.lt-out")) tr.classList.remove("lt-out");
+      const B = boardEl.getBoundingClientRect(), cs = getComputedStyle(boardEl);
+      const room = B.bottom - parseFloat(cs.paddingBottom) - el.getBoundingClientRect().top;
+      for (const f of [L.reading.font, L.form_font, 2.6]) {
+        el.style.setProperty("--tf", f + "cqh");
+        if (el.getBoundingClientRect().height <= room + 0.5) break;
+      }
+    }
+  } else if (el._lrk) {
+    el._lrk = null; el._lfh = null;
+    el.style.setProperty("--tf", L.form_font + "cqh");
+  }
+  return on;
+}
 function applyListen(bd, s, t, jumped) {
   if (!isLBoard(bd)) return;
   const el = blockEls.get(bd.listen.block);
@@ -1756,6 +1887,7 @@ function applyListen(bd, s, t, jumped) {
   const lt = ltParts(el);
   if (!lt.scr) return;
   const at = listenAt(bd, s, t);
+  if (applyReading(bd, at)) return;
   const ws = lwords(el);
   const w = ws[Math.min(at.word, ws.length - 1)];
   if (w) {
@@ -1796,6 +1928,7 @@ function applyListen(bd, s, t, jumped) {
     const e = blockEls.get(id);
     if (e) e.classList.toggle("lsec-off", show !== null);
   }
+  applyPanel(bd, s, t, at, el);
 }
 
 // a Part A note form's window: from its top to the board's foot, less the room

@@ -1,25 +1,28 @@
-"""The Listening boards on the real practice set, for review (docs/adr/030-listening-board-layout.md).
+"""The Listening boards on the real practice set, for review (docs/adr/030-listening-board-layout.md,
+docs/adr/031-listening-vocabulary-panel.md).
 
     .venv/Scripts/python spike/scripts/listening_prototype.py <out_dir> [--checks]
 
-Builds three lessons of one board each in <out_dir>, which must be outside git
-(the owner's review folder is C:\\OET\\lessons\\_listening-preview), from the pinned
-release (practice_set.LISTENING_PIN), through the real free stages: the screens
-and narration are rendered from replies written here (no model call), then the
-fit and the silent preview, and with --checks the overflow, overlap, lens and
-wide-font checks (590, 812 and 1120 px) and the review-page audio check:
+Builds three lessons in <out_dir>, which must be outside git (the owner's review
+folder is C:\\OET\\lessons\\_listening-preview), from the pinned release
+(practice_set.LISTENING_PIN), through the real free stages: the screens and
+narration are rendered from replies written here (no model call), then the fit
+and the silent preview, and with --checks the overflow, overlap, lens and
+wide-font checks (590, 812 and 1120 px), the review-page audio check and the
+narration's variety check (pause-and-try prompts and vocabulary explanations):
 
-  - part-a: Part A extract 1, its transcript and its note form (gaps 1-12);
+  - part-a: Part A extract 1, its transcript and its note form (gaps 1-12), the
+    recording played with its reading time (the form whole meanwhile);
   - part-b: Part B's longest extract, its transcript and its question;
-  - part-c: Part C extract 1, its transcript and its questions (31-36), the
-    question shown following the recording's sections.
+  - part-c: Part C extract 1 and questions 31 and 32, a board each.
 
-Each board says one line (a subtitle; no narration voice is made) and plays its
-extract from the first word; the silent preview plays the release's own audio,
-and the transcript's box and its marker follow the word times (word_times.py).
-ADR 029's prototype on placeholder data is replaced: word times exist only for
-the released transcripts. The folders hold the release's wording: they never go
-into git. Nothing is printed but counts and the checks' results.
+What each board shows and says is read from <out_dir>/preview-content.json:
+the steps (a thought and its state each), the vocabulary panel's items and the
+lines that teach them (ADR 031). That file and the folders hold the release's
+wording, so they never go into git. No narration voice is made: the lines are
+subtitles; the silent preview plays the release's own audio, and the
+transcript's box and its marker follow the word times (word_times.py).
+Nothing is printed but counts and the checks' results.
 """
 
 import json
@@ -35,6 +38,7 @@ import practice_set  # noqa: E402
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
 MARK = ".listening-preview"
+CONTENT = "preview-content.json"   # in <out_dir>: the boards' steps, the panel items, the lines (ADR 031)
 
 
 def block(**kw) -> dict:
@@ -60,14 +64,6 @@ def utt(text: str, cues: list[dict]) -> dict:
 
 def words(st: dict) -> int:
     return len(st["transcript"]["text"].split())
-
-
-def parts_of(ps: dict, item: dict) -> list[str]:
-    """A question's parts as the screens stage reads them: the wrong options
-    ruled out, then the key (never revealed on these boards)."""
-    letter = {o["option"]: o["letter"] for o in practice_set.options_of(item)}
-    key = letter[item["scoring"]["key_option_id"]]
-    return [f"out|{x}|not the answer" for x in sorted(set(letter.values()) - {key})] + [f"key|{key}"]
 
 
 def build(out_dir: Path, name: str, set_id: str, title: str) -> tuple[Path, dict]:
@@ -103,38 +99,76 @@ def build(out_dir: Path, name: str, set_id: str, title: str) -> tuple[Path, dict
     return L, ps
 
 
-def screens(L: Path, blocks: list[dict], gap_rows: list[tuple[int, str]]) -> None:
-    """One board: the transcript and the question column; on a Part A board a
-    thought per gap after the recording, its row's state, with a short note."""
-    thoughts = [{"purpose": "Table: the recording", "blocks": blocks}]
-    thoughts += [{"purpose": f"Row {r}: gap {m}", "blocks": [block(text=f"Gap {m}.", role="note", anchor=False)]}
-                 for r, m in gap_rows]
+def resolve(spec: dict, ps: dict, st: dict) -> dict:
+    """A block of the content file as the screens stage's reply writes it."""
+    key = spec["key"]
+    if key == "transcript":
+        return block(type="table", label=st["stimulus_id"])
+    if key == "form":
+        it = next(i for i in practice_set.items(ps).values()
+                  if practice_set.is_gapfill(i) and st["stimulus_id"] in i["stimulus_ids"])
+        return block(type="table", label=it["item_id"])
+    if "question" in spec:
+        it = practice_set.items(ps)[spec["question"]]
+        letter = {o["option"]: o["letter"] for o in practice_set.options_of(it)}
+        k = letter[it["scoring"]["key_option_id"]]
+        why = spec.get("reasons") or {}
+        return block(label=it["item_id"], anchor=False,
+                     items=[f"out|{x}|{why.get(x, 'not the answer')}" for x in sorted(set(letter.values()) - {k})]
+                     + [f"key|{k}"])
+    if "panel" in spec:
+        w = spec["panel"]
+        return block(type="gloss", label=f"PANEL Row {w['row']}", term=w["term"], kind=w["kind"],
+                     explanation=w["explanation"], synonym=w["synonym"], text=w["text"], left=w.get("left"),
+                     anchor=False, note="listening preview: a vocabulary panel item (ADR 031)")
+    return block(text=spec["note"], role="note", anchor=False)
+
+
+def screens(L: Path, content: dict, ps: dict, st: dict) -> None:
+    """The boards of the content file: one topic each, a thought per step."""
+    topics = [{"title": "Listen", "from_beats": ["b1"],
+               "thoughts": [{"purpose": step["purpose"], "blocks": [resolve(x, ps, st) for x in step.get("blocks", [])]}
+                            for step in bd["steps"]]}
+              for bd in content["boards"]]
     (L / "analysis" / "screens" / "added-01" / "raw_response.json").write_text(json.dumps(reply({
-        "topics": [{"title": "Listen", "from_beats": ["b1"], "thoughts": thoughts}],
-        "corrections": [], "replacements": [], "dropped": [], "unresolved": []})), encoding="utf-8")
+        "topics": topics, "corrections": [], "replacements": [], "dropped": [], "unresolved": []})), encoding="utf-8")
 
 
-def narrate(L: Path, stimulus: str, label: str) -> None:
-    """The recording, from its first word, in the board's first state; on a
-    Part A board each gap's answer typed in its row's state (a subtitle each)."""
+def narrate(L: Path, content: dict, st: dict) -> None:
+    """The narration of the content file, a state per step: its utterances, each
+    cue's block named by its key in the content file ("@key", or "@key.N" for a
+    part), the recording by "@stimulus", a gap's typed answer by "@typed"."""
     scr = json.loads((L / "analysis" / "screens" / "added-01" / "screens.json").read_text(encoding="utf-8"))
-    bd = scr["boards"][0]
-    blocks = {b["id"]: b for t in scr["topics"] for h in t["thoughts"] for b in h["blocks"]}
-    form = blocks.get(bd.get("table") or "")
-    states = []
-    for n, st in enumerate(bd["states"]):
-        us = []
-        for wid in st["working"]:
-            us.append(utt(f"{{{{c1}}}}{blocks[wid].get('text') or 'Look.'}", [{"type": "reveal", "block": wid}]))
-        if n == 0:
-            us.append(utt(f"Listen to {label}.{{{{c1}}}}", [{"type": "play", "text": stimulus, "with": "extract"}]))
-        ty = next((x for x in (form or {}).get("typed") or [] if x["row"] == st.get("row")), None)
-        if ty:
-            us.append(utt("{{c1}}Here.", [{"type": "type", "block": form["id"], "text": ty["text"]}]))
-        states.append({"state": st["id"], "utterances": us or [utt("Look.", [])]})
-    out = {"boards": [{"board": bd["id"], "states": states}], "unresolved": []}
-    (L / "analysis" / "narration" / "added-01" / "raw_response.json").write_text(json.dumps(reply(out)),
-                                                                                  encoding="utf-8")
+    by_id = {b["id"]: b for t in scr["topics"] for h in t["thoughts"] for b in h["blocks"]}
+    boards = []
+    for bd, cb, t in zip(scr["boards"], content["boards"], scr["topics"]):
+        keys = {}
+        for h, step in zip(t["thoughts"], cb["steps"]):
+            for b, spec in zip(h["blocks"], step.get("blocks", [])):
+                keys[spec["key"]] = b["id"]
+        if len(bd["states"]) != len(cb["steps"]):
+            raise SystemExit(f"{L.name}: {len(bd['states'])} states for {len(cb['steps'])} steps: a step is a state")
+        form = by_id.get(bd.get("table") or "")
+        states = []
+        for s, step in zip(bd["states"], cb["steps"]):
+            us = []
+            for u in step["say"]:
+                cues = []
+                for c in u["cues"]:
+                    c = dict(c)
+                    if c.get("block"):
+                        k, _, part = c["block"].lstrip("@").partition(".")
+                        c["block"] = keys[k] + (f".{part}" if part else "")
+                    if c.get("text") == "@stimulus":
+                        c["text"] = st["stimulus_id"]
+                    if c.get("text") == "@typed":
+                        c["text"] = next(x["text"] for x in form["typed"] if x["row"] == s["row"])
+                    cues.append(c)
+                us.append(utt(u["text"], cues))
+            states.append({"state": s["id"], "utterances": us})
+        boards.append({"board": bd["id"], "states": states})
+    (L / "analysis" / "narration" / "added-01" / "raw_response.json").write_text(
+        json.dumps(reply({"boards": boards, "unresolved": []})), encoding="utf-8")
 
 
 def run(args: list[str]) -> tuple[int, str]:
@@ -151,35 +185,23 @@ def main() -> None:
     out_dir = Path(sys.argv[1]).resolve()
     if REPO in out_dir.parents or out_dir == REPO:
         raise SystemExit("REFUSED: the preview holds the release's wording; build it outside the repository")
+    cfile = out_dir / CONTENT
+    if not cfile.exists():
+        raise SystemExit(f"REFUSED: {cfile} is missing: the boards, the panel items and the lines that "
+                         "teach them are written there, outside git, as they hold the release's words")
+    content = json.loads(cfile.read_text(encoding="utf-8"))
     real = json.loads(practice_set.release_path(practice_set.LISTENING_PIN["release"]).read_text(encoding="utf-8"))
     sets = {s["set_id"]: s for s in real["sets"]}
     la, lb, lc = (sets[k]["parts"][0] for k in practice_set.LISTENING_PIN["sets"])
-    a_st, a_it = la["stimuli"][0], la["items"][0]
-    b_st = max(lb["stimuli"], key=words)
-    b_it = next(i for i in lb["items"] if i["stimulus_ids"] == [b_st["stimulus_id"]])
-    c_st = lc["stimuli"][0]
-    c_its = [i for i in lc["items"] if i["stimulus_ids"] == [c_st["stimulus_id"]]]
-    plan = [("part-a", "oa-set-la-0001", "Listening preview: Part A", a_st,
-             [block(type="table", label=a_st["stimulus_id"]), block(type="table", label=a_it["item_id"])]),
-            ("part-b", "oa-set-lb-0001", "Listening preview: Part B", b_st,
-             [block(type="table", label=b_st["stimulus_id"]), block(label=b_it["item_id"], items=None)]),
-            ("part-c", "oa-set-lc-0001", "Listening preview: Part C", c_st,
-             [block(type="table", label=c_st["stimulus_id"]), block(label=c_its[0]["item_id"], items=None)])]
+    plan = [("part-a", "oa-set-la-0001", "Listening preview: Part A", la["stimuli"][0]),
+            ("part-b", "oa-set-lb-0001", "Listening preview: Part B", max(lb["stimuli"], key=words)),
+            ("part-c", "oa-set-lc-0001", "Listening preview: Part C", lc["stimuli"][0])]
     built = []
-    for name, set_id, title, st, blocks in plan:
+    for name, set_id, title, st in plan:
         L, ps = build(out_dir, name, set_id, title)
-        for b in blocks:
-            if b["type"] == "plain":
-                b["items"] = parts_of(ps, practice_set.items(ps)[b["label"]])
-        gap_rows = []
-        for b in blocks:
-            it = practice_set.items(ps).get(b["label"])
-            if b["type"] == "table" and it and practice_set.is_gapfill(it):
-                fb = practice_set.form_block(ps, it)
-                gap_rows = [(n + 1, p["mark"]) for n, p in enumerate(fb["doc"]["parts"]) if p["kind"] == "num"]
-        screens(L, blocks, gap_rows)
+        screens(L, content[name], ps, st)
         run([str(HERE / "write_screens.py"), str(L), "--pages", "101", "--render"])
-        narrate(L, st["stimulus_id"], st["label"])
+        narrate(L, content[name], st)
         run([str(HERE / "write_narration.py"), str(L), "--pages", "101", "--render"])
         run([str(HERE / "fit_boards.py"), str(L), "--silent", "--small-phone"])
         run([str(HERE / "build_lesson_player.py"), str(L), "--silent"])
@@ -195,6 +217,8 @@ def main() -> None:
                 code, _ = run([str(HERE / c), str(L), "--dir", d])
                 fails += code != 0
             code, _ = run([str(HERE / "check_review_page.py"), str(Path(d) / "player.html")])
+            fails += code != 0
+            code, _ = run([str(HERE / "listening_rule.py"), str(L), "--prompts"])
             fails += code != 0
         print(f"checks: {fails} failed")
         sys.exit(1 if fails else 0)
