@@ -4626,6 +4626,13 @@ def expand_practice(lesson: Path, topics: list[dict]) -> None:
                 if b.get("type") == "gloss" and listening_rule.PANEL_LABEL.match((b.get("label") or "").strip()):
                     b["panel_bad"] = (listening_rule.panel_item(ps, stim[tr["doc"]["stimulus"]], b) if tr
                                       else ["a panel item is on a Listening board, with its transcript"])
+                elif tr and b.get("type") == "gloss" and b.get("vocab"):
+                    # a word-bank word glossed again on a Listening board (ADR 035): no
+                    # picture, as a panel item has none (ADR 031); the question column
+                    # has no room for one, and the word's picture is on its matching
+                    # and recap boards
+                    b["icon"] = None
+                    b["note"] = (b.get("note") or "") + "; on a Listening board, no picture (ADR 035)"
         # the answer in the release's exact form (ADR 026): a sentence to
         # complete shows the released sentence with its gap filled; a short
         # answer is "Answer: " and the form; a matching answer is the text

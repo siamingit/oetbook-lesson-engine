@@ -102,3 +102,16 @@ understanding stage's `--page-also`** (chosen).
 - listening-04-part-c inherits the numbering, the real-test sentence and the preview audit.
 - To reverse: `PRACTICE_NUMBERED = ()` restores the release's numbers; drop the call to
   `question_preview_findings`; a new ADR.
+
+## Amendment, 2026-10-14: a word-bank word glossed again on a Listening board has no picture
+
+Found on listening-03-part-b's silent preview: a word-bank gloss (ADR 026 §2: glossed again
+where the word is said or printed) drawn in a Listening board's question column, under the
+question and its options, ran up to 50 px past the board's foot at all three frames (39
+findings). On a board with a transcript, `write_screens.expand_practice` now gives such a
+gloss no picture part (as a panel item has none, ADR 031): its meaning, synonym and example
+stay, its picture is on the word's matching board and recap. A Listening lesson's narration
+reveals three parts there, not four. Agent's carrying choice under the owner's brief; no
+built lesson has such a gloss (Listening 02 is Part A). To reverse: drop the branch in
+`expand_practice`.
+
