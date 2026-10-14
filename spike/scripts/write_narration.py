@@ -2074,12 +2074,14 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
     if ps and ps.get("numbering") == "lesson":
         taught = list(range(1, len(ps["lesson_items"]) + 1))
     elif ps and taught:
-        # a lesson numbered by the release (Reading 2 and 3; every Listening
-        # lesson, ADR 029, a gap-fill item's gaps included): any number of the set
+        # a lesson numbered by its set (Reading 2 and 3 by the release; every
+        # Listening lesson, ADR 029, a gap-fill item's gaps included, its Part B
+        # and C questions by practice number, ADR 032): any number of the set
         taught = sorted(n for i in practice_set.items(ps).values()
-                        for n in (i["numbers"] if practice_set.is_gapfill(i) else [i["number"]]))
+                        for n in (i["numbers"] if practice_set.is_gapfill(i) else [practice_set.number(ps, i)]))
+    exam_of = practice_set.exam_numbers(ps) if ps else None
     for bd in boards:
-        for f in question_numbers.board_findings(bd, blocks, taught):
+        for f in question_numbers.board_findings(bd, blocks, taught, exam_of):
             fail(f["where"], f["what"])
     if kind == "review" and not 450 <= n_words <= 950:
         warn("review", f"the method review is {n_words} words; about five minutes is 550 to 800")
@@ -2158,6 +2160,10 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
         # a Part A note form's preview (ADR 033): no gap's answer before it is
         # answered, and a pause to think for every gap before the recording
         for uid, what in listening_rule.preview_findings(boards, blocks, ps_):
+            fail(uid, what)
+        # a Part B or C question's preview (ADR 033, ADR 035): a pause after each
+        # option, a prompt before the answer, no word of its evidence before it
+        for uid, what in listening_rule.question_preview_findings(boards, blocks, ps_):
             fail(uid, what)
     # every lesson's rapport talk (ADR 033): no sentence twice in the lesson, nor
     # a near copy, nor filler

@@ -16,9 +16,13 @@ from pathlib import Path
 import question_numbers as qn
 
 
-def check(bundle: dict, exam_numbers: bool = False) -> tuple[list[int], list[dict]]:
-    """`exam_numbers`: a lesson whose questions keep the exam's numbers (a
-    Listening lesson, ADR 029), whose first question need not be 1."""
+def check(bundle: dict, exam_numbers: bool = False,
+          exam_of: dict[int, int] | None = None) -> tuple[list[int], list[dict]]:
+    """`exam_numbers`: a lesson whose questions keep their set's numbers (a
+    Listening lesson: Part A's gaps 1-24, Parts B and C their practice numbers,
+    ADR 029, ADR 032), whose first question need not be 1 (Part C (1) teaches
+    7-12). `exam_of`: each Part B or C practice number's real-test number, which
+    may be spoken as context (question_numbers.board_findings)."""
     blocks = bundle["blocks"] if isinstance(bundle["blocks"], dict) else {b["id"]: b for b in bundle["blocks"]}
     taught = qn.lesson_numbers(blocks)
     findings = []
@@ -36,7 +40,7 @@ def check(bundle: dict, exam_numbers: bool = False) -> tuple[list[int], list[dic
         if first and first[1] != 1 and not exam_numbers:
             findings.append({"where": first[0], "what": f"the lesson's first question is {first[1]}, not 1"})
         for bd in bundle["boards"]:
-            findings += qn.board_findings(bd, blocks, taught)
+            findings += qn.board_findings(bd, blocks, taught, exam_of)
     return taught, findings
 
 
@@ -48,7 +52,9 @@ def main() -> None:
     bundle = json.loads((a.dir / "bundle.json").read_text(encoding="utf-8"))
     import lesson_type
     exam_numbers = lesson_type.has(a.lesson_dir, "exam_numbers")
-    taught, findings = check(bundle, exam_numbers)
+    import practice_set
+    ps = practice_set.load(a.lesson_dir) if exam_numbers else None
+    taught, findings = check(bundle, exam_numbers, practice_set.exam_numbers(ps) if ps else None)
     if not taught:
         print("question-number check passed: no practice-set question in this lesson")
         return
@@ -57,7 +63,7 @@ def main() -> None:
     if findings:
         raise SystemExit(f"question-number check failed: {len(findings)} finding(s)")
     print(f"question-number check passed: questions {taught[0]}-{taught[-1]}, "
-          + ("the exam's numbers (ADR 029), " if exam_numbers else "the first is 1, ")
+          + ("the set's numbers (ADR 029, ADR 032), " if exam_numbers else "the first is 1, ")
           + "every spoken number shown on its board")
 
 

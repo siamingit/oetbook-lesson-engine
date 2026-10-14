@@ -37,6 +37,7 @@ old one.
 | [029 — Listening lessons: the pinned sets, the recordings in the lesson, transcripts and note forms (bundle 1.18)](029-listening-lessons.md) | 2026-10-13; amended by 030 |
 | [030 — The Listening board: one layout, a transcript that follows the recording, word times (bundle 1.19)](030-listening-board-layout.md) | 2026-10-13; amended by 031 |
 | [031 — The Listening board, revised: no split words, a smaller transcript, a vocabulary panel, the whole note form in the reading time (bundle 1.20)](031-listening-vocabulary-panel.md) | 2026-10-14; amended by 032 |
-| [032 — Listening: the owner's answers to ADR 031, practice question numbers, permanent lesson ids](032-listening-owner-answers-numbering-stable-ids.md) | 2026-10-14; amended by 033 |
+| [032 — Listening: the owner's answers to ADR 031, practice question numbers, permanent lesson ids](032-listening-owner-answers-numbering-stable-ids.md) | 2026-10-14; amended by 033; carried by 035 |
 | [033 — The owner's review of Listening 01 and 02: the first person, the grade B line, the gap-by-gap preview, talking with the learner](033-owner-review-listening-01-02-narration.md) | 2026-10-14 |
 | [034 — Listening: the owner's spelling line, and asides that speak to everyone](034-listening-spelling-line-and-asides.md) | 2026-10-14 |
+| [035 — Listening Part B: practice numbers in the engine, the option-by-option preview, and how the session maps onto the practice set](035-listening-part-b-numbering-and-option-preview.md) | 2026-10-14 |

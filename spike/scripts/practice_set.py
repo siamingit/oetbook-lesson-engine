@@ -206,15 +206,39 @@ def part_code(ps: dict, item: dict) -> str | None:
                  if any(i["item_id"] == item["item_id"] for i in p["items"])), None)
 
 
+PRACTICE_NUMBERED = ("LB", "LC")       # Listening parts numbered by practice number (ADR 032)
+
+
 def number(ps: dict, item: dict) -> int:
     """The number a question carries in this lesson. From Reading Part C (1)
     on, a lesson numbers the questions it teaches from 1 in the order taught
     (ADR 026 amendment of 2026-10-08; `numbering: lesson`, the items in
     `lesson_items`), never by the release's number; the item ID is unchanged.
-    A lesson without it keeps the release's number (Reading 2 and 3)."""
+    A Listening Part B or C question carries its practice number (ADR 032;
+    owner, 2026-10-14): its place in its part, 1-6 in Part B and 1-12 in Part
+    C, as the website numbers them; the real test's number (`exam_number`) is
+    said as context. Part A's gaps are 1-24 in both. Any other lesson keeps the
+    release's number (Reading 2 and 3)."""
     if ps.get("numbering") == "lesson" and item["item_id"] in ps["lesson_items"]:
         return ps["lesson_items"].index(item["item_id"]) + 1
+    code = part_code(ps, item)
+    if code in PRACTICE_NUMBERED:
+        first = min(release_number(i) for p in ps["parts"] if p.get("code") == code for i in p["items"])
+        return release_number(item) - first + 1
     return release_number(item)         # not taught in this lesson: never shown
+
+
+def exam_number(item: dict) -> int:
+    """A question's number in the real test, as the release's audio announces
+    it (Listening Part B 25-30, Part C 31-42; ADR 032: said once as context)."""
+    return release_number(item)
+
+
+def exam_numbers(ps: dict) -> dict[int, int]:
+    """A Listening set's practice numbers and the real test's number of each
+    (ADR 032), for the Part B and C questions; {} for any other set."""
+    return {number(ps, i): exam_number(i) for i in items(ps).values()
+            if part_code(ps, i) in PRACTICE_NUMBERED and not is_gapfill(i)}
 
 
 def release_number(item: dict) -> int:
@@ -383,7 +407,9 @@ def question_for_prompt(ps: dict, item: dict) -> str:
         opts = options_of(item)
         letter = {o["option"]: o["letter"] for o in opts}
         key = item["scoring"]["key_option_id"]
-        return (f"QUESTION {item['item_id']} (number {number(ps, item)}, "
+        real = (f"; question {exam_number(item)} in the real test, as its recording announces"
+                if part_code(ps, item) in PRACTICE_NUMBERED else "")
+        return (f"QUESTION {item['item_id']} (number {number(ps, item)}{real}, "
                 f"{(item.get('admin') or {}).get('question_type') or 'choice'}; its text is "
                 f"{', '.join(item['stimulus_ids'])}): {question_text(ps, item)}"
                 + "".join(f"\n  option {o['letter']}: {o['text']}" for o in opts)
@@ -574,7 +600,8 @@ def exam_span(ps: dict, stimulus_id: str, span: str) -> dict:
     time and the tone to the extract's end; "extract" from its first word to its
     end; "lines N-M" (or "line N") the transcript's rows N to M, from row N's
     start to the next timed row's start (or the extract's end), for a replay;
-    "question N" (the exam's number) or "heading K" (a note form's K-th
+    "question N" (the question's number in the lesson: Part B and C practice
+    numbers, ADR 032) or "heading K" (a note form's K-th
     heading) a section (ADR 030), from its first word to the next section's.
     Row and section times are the word times' (word_times.py, ADR 030).
     The audio is never changed: a span is two times in the file."""

@@ -22,7 +22,8 @@ TYPES = ("grammar", "vocabulary", "reading", "listening", "writing", "speaking")
 #   delivery         the narration's DELIVERY rule (ADR 027 amendment)
 #   exam_audio       release audio played in the lesson clock, `play` cues (ADR 029, bundle 1.18)
 #   reading_time     a pause marked as reading time may be as long as the exam's (ADR 029)
-#   exam_numbers     questions keep the exam's numbers (ADR 029; not from 1 in the lesson)
+#   exam_numbers     questions keep their set's numbers, not from 1 in the lesson: Part A
+#                    gaps 1-24, Parts B and C their practice numbers (ADR 029, ADR 032)
 #   source_terms     the runner runs check_source_terms.py (ADR 029; by hand for Reading)
 #   vocabulary_rule  the vocabulary rule (ADR 019)
 FEATURES = {
