@@ -118,7 +118,7 @@ HARNESS = r"""
       // camera shows them (as check_overflow.py: where a table board's camera
       // has moved, the table may leave the view; its notes may not)
       const viewed = bd.table && keep && keep !== "none";
-      for (const [id, el] of [...blockEls, ...(typeof lsecEls === "object" ? lsecEls : [])]) {
+      for (const [id, el] of [...blockEls, ...(typeof lsecEls === "object" ? lsecEls : []), ...(typeof lpanEls === "object" ? lpanEls : [])]) {
         if (!(shown(el) && visible(el)) || (viewed && !el.classList.contains("beside"))) continue;
         const r = el.getBoundingClientRect();
         for (const bar of [".hdr", ".ctl"]) {
@@ -132,7 +132,7 @@ HARNESS = r"""
         }
       }
       camEl.style.transform = "none";
-      const els = [...blockEls, ...(typeof lsecEls === "object" ? lsecEls : [])].filter(([, el]) => shown(el) && visible(el));
+      const els = [...blockEls, ...(typeof lsecEls === "object" ? lsecEls : []), ...(typeof lpanEls === "object" ? lpanEls : [])].filter(([, el]) => shown(el) && visible(el));
       const st = stateAt(bd, t);
       const over = new Set(qb(bd) && st ? st.overlay || [] : []);
       const pins = new Set(Object.keys(bd.pinned || {}));

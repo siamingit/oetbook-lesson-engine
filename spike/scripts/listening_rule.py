@@ -123,7 +123,28 @@ in a transcript, a question or an option, and the recap {"type": "table", \
 word heard in a recording gets a button that plays the sentence it is heard \
 in: code adds it.
   - THE RECORDING plays while the board stays as it is: give the moment its own \
-thought only where the board changes.\
+thought only where the board changes.
+  - THE VOCABULARY PANEL (owner, 2026-10-14; ADR 031). The instructor teaches \
+every difficult word, verb, phrase and expression of a recording: its meaning \
+in simple English, a synonym or two and an example. On every Listening board, \
+after the pause-and-try prompt and the answer, teach the transcript's own \
+words in its panel (under the transcript's box): medical terms, everyday verbs \
+and phrasal verbs, idioms and spoken expressions, and above all the PARAPHRASE \
+PAIRS, a word of a question, an option or the notes that the speaker says \
+differently. Each is a gloss {"type": "gloss", "label": "PANEL Row <N>", \
+"kind": "medical" | "verb" | "phrase" | "idiom" | "word" | "paraphrase", \
+"term": "<the words as the speaker says them in transcript row N>", \
+"explanation": "<the meaning: plain English, at most 8 words>", "synonym": \
+"<one or two synonyms, separated by a comma>", "text": "<ONE short example \
+sentence of YOUR OWN, at most 14 words, using the term; never a sentence or \
+four words in a row of a transcript or a question>", "left": "<a paraphrase \
+pair only: the question's, option's or notes' words, exactly as printed>"}. \
+Code finds the term in row N, adds the button that plays the sentence it is \
+said in, and shows a pair or an answer word only once its answer is taught. \
+At most 2 panel items a thought; a thought "Row <N>: ..." (the row of the \
+first) after the answer's. A word of the word bank's list keeps its own gloss \
+(above): never a panel item. No register words (formal, informal, common, \
+natural, polite...).\
 """
 
 PART_A_METHOD = """\
@@ -216,7 +237,8 @@ screen whenever a recording plays (the first time too) and follows it.
   - PAUSE-AND-TRY PROMPTS (owner, 2026-10-13; ADR 030). In Parts B and C after \
 EACH QUESTION is read (before its answer), and in Part A after EACH HEADING'S \
 GROUP of gaps (never after every gap), one utterance invites the learner to \
-pause the lesson, try to find the answer themselves, then play it again; it \
+pause the lesson, try to find the answer themselves, then play it again (never \
+the words "pause the", which a check forbids: "stop here", "press pause"); it \
 ends with a `pause` cue of 4 seconds whose `text` is "try it first". VARY THE \
 WORDING: never the same sentence twice in the lesson, and no near copy (the \
 same sentence with one word swapped, or the same pattern reworded slightly). \
@@ -227,7 +249,19 @@ repeat or near copy.
 it: a `pause` whose `text` begins "reading time", its `seconds` the extract's \
 reading time.
   - Quote a transcript only as it is printed, and mark the words as you say \
-them (a keyword pair on a question board).\
+them (a keyword pair on a question board).
+  - THE VOCABULARY PANEL (owner, 2026-10-14; ADR 031). Never over a recording: \
+teach the panel's items in the states after the pause-and-try prompt and the \
+answer, each as a gloss moment (above): reveal the item and say the word, \
+`highlight` it in the transcript as you say it (the box shows its line), its \
+meaning, its synonyms (a paraphrase pair: the words the question prints), its \
+example (`highlight` the term in the item before you read it). In Listening, a \
+medical term in the panel IS explained, simply: the instructor teaches every \
+clinical word in English. Where it helps, tell the learner once that the \
+small button plays the sentence again. VARY THE WORDING as for the prompts: no \
+teaching sentence twice in the lesson, no near copy, no frame repeated with \
+other words in it ("Here is a useful verb: ..." twice fails); a check fails the \
+lesson on any.\
 """
 
 NARRATION_PART_A = """\
@@ -400,15 +434,260 @@ def lesson_prompts(lesson: Path, skip: str | None = None) -> list[tuple[str, str
     return out
 
 
+# ---- the vocabulary panel (owner, 2026-10-14; ADR 031) ----
+
+PANEL_LABEL = re.compile(r"^PANEL\s+Row\s+(\d+)$", re.I)
+PANEL_KINDS = ("medical", "verb", "phrase", "idiom", "word", "paraphrase")
+PANEL_MAX = 2                 # panel items one thought teaches; the panel shows fewer where they do not fit
+PANEL_MEANING_WORDS = 10      # the prompt asks for at most 8
+PANEL_EXAMPLE_WORDS = 16      # the prompt asks for at most 14
+PANEL_SHINGLE = 4             # an example sharing this many words in a row with a transcript is copied
+SENTENCE_END = re.compile(r"[.?!][\"'”’)\]]*$")
+
+
+def _norm(w: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", w.lower())
+
+
+def _same_word(a: str, b: str) -> bool:
+    """A word of a term and a word said: the same, or one an inflection of the
+    other (a common start of all but the last three letters, four at least)."""
+    if a == b:
+        return True
+    n = min(len(a), len(b))
+    p = next((i for i in range(n) if a[i] != b[i]), n)
+    return n >= 4 and p >= max(4, n - 3)
+
+
+def _find(words: list[str], phrase: str, lo: int = 0, hi: int | None = None) -> tuple[int, int] | None:
+    q = [_norm(x) for x in phrase.split() if _norm(x)]
+    a = [_norm(x) for x in words]
+    hi = len(a) if hi is None else hi
+    for i in range(lo, hi - len(q) + 1):
+        if q and all(_same_word(x, a[i + j]) for j, x in enumerate(q)):
+            return i, i + len(q) - 1
+    return None
+
+
+def _sentence(words: list[str], counts: list[int], k: int) -> tuple[int, int]:
+    """The sentence word k is said in: from the word after the last sentence end
+    (or its row's start) to the next sentence end (or its row's end)."""
+    starts, n = [], 0
+    for c in counts:
+        starts.append(n)
+        n += c
+    row = max(r for r, s in enumerate(starts) if s <= k)
+    a, z = starts[row], starts[row] + counts[row] - 1
+    i = k
+    while i > a and not SENTENCE_END.search(words[i - 1]):
+        i -= 1
+    j = k
+    while j < z and not SENTENCE_END.search(words[j]):
+        j += 1
+    return i, j
+
+
+def answers_of(ps: dict, st: dict) -> list[tuple[str, str]]:
+    """The extract's answers, as (kind, text): each question's evidence (a quote
+    of the transcript) and its key option, each gap's accepted forms."""
+    out = []
+    for it in practice_set.items(ps).values():
+        if st["stimulus_id"] not in (it.get("stimulus_ids") or []):
+            continue
+        if it.get("evidence"):
+            out.append(("evidence", it["evidence"]))
+        if it["type"] == "choice" and it.get("scoring"):
+            out.append(("key", practice_set.answer_key(it)["answer"]))
+        for g in practice_set.gaps_of(it):
+            out += [("gap", a) for a in g["scoring"]["accepted"]]
+            if g.get("evidence"):
+                out.append(("evidence", g["evidence"]))
+    return out
+
+
+def question_texts(ps: dict, st: dict) -> list[tuple[str, str]]:
+    """Where a paraphrase pair's printed side may be: ("question", a stem or an
+    option), then ("notes", a note form's line) of the extract's items."""
+    qs, notes = [], []
+    for it in practice_set.items(ps).values():
+        if st["stimulus_id"] not in (it.get("stimulus_ids") or []):
+            continue
+        if it.get("stem"):
+            qs.append(("question", it["stem"]))
+        qs += [("question", o["text"]) for o in it.get("options") or []]
+        notes += [("notes", g["prompt"]) for g in practice_set.gaps_of(it)]
+        notes += [("notes", g["heading"]) for g in practice_set.gaps_of(it) if g.get("heading")]
+    return qs + notes
+
+
+def panel_item(ps: dict, st: dict, b: dict) -> list[str]:
+    """A vocabulary-panel item (ADR 031): a gloss labelled "PANEL Row N" on a
+    Listening board, the words said in row N of the board's transcript. Sets
+    its `panel` ({kind, row, word, to, pair, after_answer}: the words' indices
+    in the transcript, as the player counts them), its `heard` (the sentence it
+    is said in, as two times in the extract's own file, from the word times)
+    and its synonym line; returns what is wrong with it."""
+    import word_times
+    bad = []
+    m = PANEL_LABEL.match((b.get("label") or "").strip())
+    words, counts = word_times.words_of(st)
+    row = int(m.group(1)) - 1 if m else -1
+    if not 0 <= row < len(counts):
+        return [f"label {b.get('label')!r}: the transcript has rows 1-{len(counts)}"]
+    kind = (b.get("kind") or "").strip().lower()
+    if kind not in PANEL_KINDS:
+        bad.append(f"kind {b.get('kind')!r}: one of {', '.join(PANEL_KINDS)}")
+    first = sum(counts[:row])
+    at = _find(words, b.get("term") or "", first, first + counts[row])
+    if not at:
+        other = _find(words, b.get("term") or "")
+        where = (f"; it is said in row {next(r for r in range(len(counts)) if sum(counts[:r + 1]) > other[0]) + 1}"
+                 if other else "; it is not in the transcript")
+        return bad + [f"{b.get('term')!r} is not said in row {row + 1}{where}: a panel word is the speaker's own"]
+    syns = [x.strip() for x in re.split(r"[;,]", b.get("synonym") or "") if x.strip()]
+    if not 1 <= len(syns) <= 2:
+        bad.append(f"synonym {b.get('synonym')!r}: one or two, separated by a comma")
+    if len((b.get("explanation") or "").split()) > PANEL_MEANING_WORDS:
+        bad.append(f"meaning of {len(b['explanation'].split())} words; at most 8")
+    ex = [_norm(x) for x in (b.get("text") or "").split() if _norm(x)]
+    if not ex or len(ex) > PANEL_EXAMPLE_WORDS:
+        bad.append(f"example of {len(ex)} words; one short sentence of at most 14")
+    said = [_norm(x) for x in words if _norm(x)]
+    grams = {tuple(said[i:i + PANEL_SHINGLE]) for i in range(len(said) - PANEL_SHINGLE + 1)}
+    for _, t in question_texts(ps, st):
+        q = [_norm(x) for x in t.split() if _norm(x)]
+        grams |= {tuple(q[i:i + PANEL_SHINGLE]) for i in range(len(q) - PANEL_SHINGLE + 1)}
+    # the example uses the term: a run of words wholly inside it is not a copy
+    own = _find(ex, b.get("term") or "")
+    inside = lambda i: bool(own) and own[0] <= i and i + PANEL_SHINGLE - 1 <= own[1]
+    if any(tuple(ex[i:i + PANEL_SHINGLE]) in grams and not inside(i) for i in range(len(ex) - PANEL_SHINGLE + 1)):
+        bad.append("the example copies words of the recording or a question: write a sentence of your own")
+    pair = (b.get("left") or "").strip() or None
+    pair_in = None
+    if kind == "paraphrase":
+        pair_in = next((w for w, t in question_texts(ps, st) if pair and _find(t.split(), pair)), None)
+        if not pair_in:
+            bad.append(f"paraphrase of {pair!r}: `left` is the words of a question, an option or the "
+                       "notes, as printed")
+    elif pair:
+        bad.append("`left` is only for a paraphrase pair")
+    # an answer, or a pair that leads to one, is shown only once its answer is
+    # taught (ADR 031): never during a recording before it
+    after = kind == "paraphrase"
+    term = [_norm(x) for x in words[at[0]:at[1] + 1]]
+    for k, t in answers_of(ps, st):
+        if k == "evidence":
+            ev = word_times.find_quote(words, t, practice_set.speakers_of(st))
+            after |= bool(ev and ev[0] <= at[1] and at[0] <= ev[1])
+        else:
+            # the answer inside the term, or the term inside the answer
+            a = [_norm(x) for x in t.split() if _norm(x)]
+            short, long_ = (a, term) if len(a) <= len(term) else (term, a)
+            after |= bool(short) and any(long_[i:i + len(short)] == short
+                                         for i in range(len(long_) - len(short) + 1))
+    w = word_times.for_stimulus(st)
+    if w:
+        s0, s1 = _sentence(words, counts, at[0])
+        seg = practice_set.segment(st, "extract")
+        b["heard"] = {"file": Path(practice_set.extract_audio(st)["path"]).name, "stimulus": st["stimulus_id"],
+                      "start": round(max(seg["start_s"], w["times"][s0][0] - word_times.ROW_PAD_S), 3),
+                      "end": round(min(seg["end_s"], w["times"][s1][1] + 0.1), 3)}
+    b["panel"] = {"kind": kind, "row": row, "word": at[0], "to": at[1], "pair": pair, "after_answer": after}
+    b["icon"] = None                   # a panel item has no picture: the panel has no room for one
+    if pair_in:
+        b["synonym"] = f"{pair} (in the {pair_in})" + (f"; similar: {', '.join(syns)}" if syns else "")
+    else:
+        b["synonym"] = ", ".join(syns)
+    return bad
+
+
+def vocab_explanations(boards: list[dict], blocks: dict) -> list[tuple[str, str, set]]:
+    """A narration's vocabulary explanations (ADR 031), (utterance id, words
+    said, the item's own words): each utterance that reveals a panel item or a
+    part of one."""
+    out = []
+    for bd in boards:
+        for s in bd["states"]:
+            for u in s["utterances"]:
+                ids = {(c.get("block") or "").split(".")[0] for c in u.get("cues") or [] if c.get("type") == "reveal"}
+                own = set()
+                for i in ids:
+                    b = blocks.get(i) or {}
+                    if b.get("panel"):
+                        for k in ("term", "explanation", "synonym", "text"):
+                            own |= set(re.findall(r"[a-z0-9']+", (b.get(k) or "").lower()))
+                if own:
+                    from write_narration import spoken
+                    out.append((u["id"], spoken(u["text_with_cues"]), own))
+    return out
+
+
+def _frame(words: list[str], own: set) -> list[str]:
+    """A sentence with the item's own words taken out: its frame ("_" for each run)."""
+    out = []
+    for w in words:
+        x = "_" if w in own else w
+        if not (x == "_" and out and out[-1] == "_"):
+            out.append(x)
+    return out
+
+
+def vocab_findings(mine: list[tuple[str, str, set]], others: list[tuple[str, str, set]] = ()) \
+        -> list[tuple[str, str]]:
+    """(utterance id, what) for each vocabulary explanation of `mine` with a
+    sentence that another's repeats or nearly repeats (ADR 031): the same rule as
+    the pause-and-try prompts, on the sentences and on their frames (the item's
+    own words taken out, four words of frame or more), so "Here is a useful
+    verb: X." twice fails whatever X is."""
+    out = []
+    for i, (uid, text, own) in enumerate(mine):
+        for vid, other, own2 in list(mine[:i]) + list(others):
+            hit = None
+            for a in _sentences(text):
+                for b in _sentences(other):
+                    fa, fb = _frame(a, own), _frame(b, own2)
+                    if (len(a) >= 3 and near_copy(a, b)) or (
+                            sum(x != "_" for x in fa) >= 4 and sum(x != "_" for x in fb) >= 4 and near_copy(fa, fb)):
+                        hit = (a, b)
+                        break
+                if hit:
+                    break
+            if hit:
+                out.append((uid, f"vocabulary explanation repeats the pattern of {vid}: {' '.join(hit[0])!r} / "
+                                 f"{' '.join(hit[1])!r}: word each one fresh (ADR 031)"))
+                break
+    return out
+
+
+def lesson_vocab(lesson: Path, skip: str | None = None) -> list[tuple[str, str, set]]:
+    """Every narrated section's vocabulary explanations, but the section `skip`."""
+    out = []
+    for f in sorted((Path(lesson) / "analysis" / "narration").glob("*/narration.json")):
+        if f.parent.name == skip:
+            continue
+        sp = Path(lesson) / "analysis" / "screens" / f.parent.name / "screens.json"
+        if not sp.exists():
+            continue
+        scr = json.loads(sp.read_text(encoding="utf-8"))
+        blocks = {b["id"]: b for t in scr.get("topics") or [] for h in t["thoughts"] for b in h["blocks"]}
+        d = json.loads(f.read_text(encoding="utf-8"))
+        out += [(f"{f.parent.name}:{uid}", t, own) for uid, t, own in vocab_explanations(d.get("boards") or [], blocks)]
+    return out
+
+
 def main() -> None:
     lesson = Path(sys.argv[1])
     if "--prompts" in sys.argv:
         found = prompt_findings(lesson_prompts(lesson))
         for uid, what in found:
             print(f"FAIL {uid}: {what}")
+        vfound = vocab_findings(lesson_vocab(lesson))
+        for uid, what in vfound:
+            print(f"FAIL {uid}: {what}")
         n = len(lesson_prompts(lesson))
-        print(f"{n} pause-and-try prompt(s); {len(found)} repeated or near copies")
-        sys.exit(1 if found else 0)
+        print(f"{n} pause-and-try prompt(s); {len(found)} repeated or near copies; "
+              f"{len(lesson_vocab(lesson))} vocabulary explanation(s); {len(vfound)} repeated or near copies")
+        sys.exit(1 if found or vfound else 0)
 
 
 if __name__ == "__main__":

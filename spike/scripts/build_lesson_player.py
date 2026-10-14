@@ -102,21 +102,29 @@ PART_C_FORMAT_VERSION = "1.17"
 # `transcript` and `form`), the spotlight on the transcript following the
 # recording; written only in a Listening lesson's bundle
 BLOCK_FIELDS_118 = ("heard",)
+# 1.20, a Listening lesson (ADR 031, amending ADR 030): a board's vocabulary
+# panel under the transcript's box (`listen.panel`, a gloss's `panel` and its
+# synonym line), the note form whole on a Part A board while the reading time
+# plays (`listen.reading`), the transcript not hyphenated
+BLOCK_FIELDS_120 = ("panel", "synonym")
 # 1.19, a Listening lesson (ADR 030, amending ADR 029): one board layout for Parts
 # A, B and C, the transcript in a box of fixed size that follows the recording
 # line by line (a board's `listen`: the extract's word times and sections), a
 # marker under the word being said; the transcript never covered. Written only
 # in a Listening lesson's bundle; 1.18's fields stay.
-LISTENING_FORMAT_VERSION = "1.19"
-LISTEN_SPLIT = 58             # the transcript's share of a Listening board's width, per cent (owner)
-LISTEN_LINES = 10             # the lines the transcript's box shows (owner: about 8 to 10)
-LISTEN_FONT = 3.4             # cqh: a little over body size, fixed; never below the 2.6 floor (design system §7j)
-# justified, the transcript's lines left gaps of up to 3.8 spaces (a quarter of
-# them over 2) at 590, 812 and 1120 px: it is hyphenated (owner, 2026-10-13: "if
-# it does, enable hyphenation for the transcript only"; check_lens.py measures)
-LISTEN_HYPHENS = True
+LISTENING_FORMAT_VERSION = "1.20"
+LISTEN_SPLIT = 62             # the transcript's share of a Listening board's width, per cent (owner, ADR 031: 58 to 62)
+LISTEN_LINES = 10             # the lines the transcript's box shows (owner: about 10)
+LISTEN_FONT = 3.1             # cqh: a little under 1.19's 3.4, fixed; never below the 2.6 floor (owner, ADR 031)
+# justified, the last line of a paragraph set left; never hyphenated: a word is
+# never broken across two lines (owner, 2026-10-14, ADR 031, replacing ADR 030's
+# hyphenation); the wider column and the smaller type keep the gaps down
+# (check_lens.py measures them)
+LISTEN_HYPHENS = False
 LISTEN_FORM_FONT = 2.8        # cqh: a Part A note form's type on a Listening board, fixed (never below 2.6)
 LISTEN_NOTE_ROOM = 14         # cqh: kept under the note form for the board's notes, where it has any
+LISTEN_PANEL_FONT = 2.8       # cqh: the vocabulary panel's type, fixed (never below 2.6; ADR 031)
+LISTEN_READING_FONT = 3.0     # cqh: the note form's type, whole and full width, in the reading time (ADR 031)
 # the extract's share of a Part B question board's width, per cent, until the
 # fit has measured it (fit_boards.py)
 SPLIT_DEFAULT = 55
@@ -145,7 +153,7 @@ def block_data(b: dict, reading: bool = False, with_map: bool = False, part_b: b
     from, each tense tag with the label printed on its chip."""
     d = {k: b.get(k) for k in BLOCK_FIELDS + (BLOCK_FIELDS_113 if reading else ())
          + (BLOCK_FIELDS_114 if with_map else ()) + (BLOCK_FIELDS_115 if part_b else ())
-         + (BLOCK_FIELDS_118 if listening else ())}
+         + (BLOCK_FIELDS_118 + BLOCK_FIELDS_120 if listening else ())}
     tags = [dict(t, label=TAG_LABELS[t["family"]]) for t in (b.get("tags") or [])
             if t.get("text") and t.get("family") in TAG_LABELS]
     d["tags"] = tags or None
@@ -390,6 +398,7 @@ def listen_board(L: Path, bd: dict, blocks_all: dict, pre: str = "") -> dict | N
     None for a board with no transcript."""
     import practice_set
     import word_times
+    from listening_rule import PANEL_MAX
     tid = next((i for i in bd["fixed"] if ((blocks_all.get(i) or {}).get("doc") or {}).get("text_type")
                 == "transcript"), None)
     if not tid:
@@ -415,10 +424,24 @@ def listen_board(L: Path, bd: dict, blocks_all: dict, pre: str = "") -> dict | N
             heads = [n for n, p in enumerate(blocks_all[form]["doc"]["parts"]) if p["kind"] == "heading"]
             out["row"] = heads[sec["heading"] - 1] if sec["heading"] <= len(heads) else None
         secs.append(out)
-    notes = any(blocks_all[i].get("type") != "picture" for s in bd["states"] for i in s["working"])
+    notes = any(blocks_all[i].get("type") != "picture" and not blocks_all[i].get("panel")
+                for s in bd["states"] for i in s["working"])
+    # 1.20 (ADR 031): the vocabulary panel's items, in the order they are said;
+    # `state` the state that teaches each (an item tied to an answer is shown in
+    # a recording only once that state has begun)
+    items = {}
+    for s in bd["states"]:
+        for i in s["working"]:
+            pn = blocks_all[i].get("panel")
+            if pn and i not in items:
+                items[i] = {"block": i, "word": pn["word"], "to": pn["to"],
+                            "after_answer": pn["after_answer"], "state": s["id"]}
     return {"block": tid, "stimulus": st["stimulus_id"], "form": form, "split": LISTEN_SPLIT,
             "lines": LISTEN_LINES, "font": LISTEN_FONT, "hyphens": LISTEN_HYPHENS,
-            **({"form_font": LISTEN_FORM_FONT, "form_room": LISTEN_NOTE_ROOM if notes else 0} if form else {}),
+            **({"form_font": LISTEN_FORM_FONT, "form_room": LISTEN_NOTE_ROOM if notes else 0,
+                "reading": {"font": LISTEN_READING_FONT}} if form else {}),
+            "panel": {"font": LISTEN_PANEL_FONT, "max": PANEL_MAX,
+                      "items": sorted(items.values(), key=lambda x: (x["word"], x["block"]))},
             "row_words": w["row_words"],
             "times": w["times"], "sections": secs}
 

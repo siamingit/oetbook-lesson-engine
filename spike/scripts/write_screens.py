@@ -1909,7 +1909,8 @@ def lay_out_table(t: dict, fixed: list[str], table: dict, blocks: dict,
         cur["thoughts"].append(h["id"])
         cur["working"] += notes
         for i in notes:
-            blocks[i]["beside"] = {"block": table["id"], "row": row}
+            if not blocks[i].get("panel"):        # a panel item is drawn in the panel (ADR 031)
+                blocks[i]["beside"] = {"block": table["id"], "row": row}
     if not states:
         states = [{"thoughts": [], "working": [], "row": None}]
     for n, s in enumerate(states, 1):
@@ -2716,6 +2717,8 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
         if b.get("vocab_ref_unknown"):
             fail(b["id"], f"names {b['vocab_ref_unknown']!r}, which is not a word of the word bank "
                           "mapping (vocab.py --sync)")
+        for what in b.get("panel_bad") or []:
+            fail(b["id"], f"vocabulary panel item {b.get('term')!r}: {what} (ADR 031)")
         if not (b.get("question") and b["question"].get("options")):
             continue
         for line in b.get("bad_items") or []:
@@ -2811,6 +2814,12 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                 fail(t["id"], f"thought {h['id']}: purpose {h['listen_bad']!r}: a Listening transcript is "
                               "always shown, in its box beside the questions (ADR 030): no 'Covered:', "
                               "'Map:' or 'Para:'; name a row as 'Row <N>:' or the whole as 'Table:'")
+            # the vocabulary panel (ADR 031): at most PANEL_MAX items taught at once
+            import listening_rule
+            n = sum(1 for b in h["blocks"] if b.get("panel"))
+            if n > listening_rule.PANEL_MAX:
+                fail(t["id"], f"thought {h['id']} teaches {n} panel items; at most "
+                              f"{listening_rule.PANEL_MAX} at once (ADR 031): give the others a thought each")
 
     # 2. never-on-screen strings, Persian script, register claims
     forbids = fixed_forbids(data.get("lesson_dir")) + data["forbids"]
@@ -3217,6 +3226,8 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                 continue
             if k == "explanation" and (b.get("label") == GLOSS_LABEL or b.get("type") == "gloss"):
                 continue             # "schedule (= plan a time)": design system §7b
+            if k == "left" and b.get("panel"):
+                continue             # a panel pair: the question's own words, as printed (ADR 031)
             first = next((c for c in t if c.isalpha()), "")
             # A side or block that begins with a word FORM stays as the form is
             # written: quoted ('was' ...), or colon-terminated (was: I, he, she).
@@ -4330,7 +4341,11 @@ def _block_html(b: dict) -> str:
                     + '" data-start="' + str(hd["start"]) + '" data-end="' + str(hd["end"])
                     + '" aria-label="' + esc("Hear " + (b.get("term") or "") + " in the recording")
                     + '"></button>')
-        return ('<div class="blk gl' + (" glv" if b.get("vocab") else "") + '"' + bid
+        # a Listening board's vocabulary panel item (bundle 1.20, ADR 031): drawn
+        # in the panel under the transcript's box (`lvoc`), no picture
+        return ('<div class="blk gl' + (" glv" if b.get("vocab") else "") + (" lvoc" if b.get("panel") else "")
+                + (" lv-pair" if (b.get("panel") or {}).get("kind") == "paraphrase" else "")
+                + '"' + bid
                 + '><div class="gl-txt"><div class="gl-h"><span class="gl-w">'
                 + esc(b["term"]) + "</span>" + say + ' <span class="pt gl-m"' + pid(parts["meaning"]) + ">"
                 + esc(b.get("explanation") or "") + "</span></div>" + syn + '<div class="pt gl-x"'
@@ -4601,6 +4616,16 @@ def expand_practice(lesson: Path, topics: list[dict]) -> None:
                     b.update({**BLOCK_DEFAULTS, **map_block(list(stim.values())), **keep, "anchor": True})
                 elif b.get("type") in ("table", "plain") and re.fullmatch(r"oa-(?:set|reading|listening)-[\w-]+", ref):
                     b["practice_ref_unknown"] = ref
+        # a Listening board's vocabulary panel (ADR 031, bundle 1.20): a gloss
+        # "PANEL Row N" is the words said in row N of the board's transcript
+        import listening_rule
+        tr = next((b for h in t["thoughts"] for b in h["blocks"]
+                   if (b.get("doc") or {}).get("text_type") == "transcript"), None)
+        for h in t["thoughts"]:
+            for b in h["blocks"]:
+                if b.get("type") == "gloss" and listening_rule.PANEL_LABEL.match((b.get("label") or "").strip()):
+                    b["panel_bad"] = (listening_rule.panel_item(ps, stim[tr["doc"]["stimulus"]], b) if tr
+                                      else ["a panel item is on a Listening board, with its transcript"])
         # the answer in the release's exact form (ADR 026): a sentence to
         # complete shows the released sentence with its gap filled; a short
         # answer is "Answer: " and the form; a matching answer is the text

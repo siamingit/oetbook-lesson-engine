@@ -1,7 +1,8 @@
 """Listening lessons (docs/adr/029-listening-lessons.md, bundle 1.18; ADR 030,
-bundle 1.19): the lesson type and its features, the practice set's transcripts,
-note forms, word times, sections and audio spans, the Listening rule module and
-its pause-and-try prompt check, the play cue in the timeline, a Listening
+bundle 1.19; ADR 031, bundle 1.20): the lesson type and its features, the
+practice set's transcripts, note forms, word times, sections and audio spans, the
+Listening rule module, its pause-and-try prompt check and its vocabulary panel
+(items, answers, the variety check), the play cue in the timeline, a Listening
 board's `listen`, and the practice-set loader on the three pinned Listening sets
 (only where the local release copy exists: it is private, so CI runs the
 made-up set alone).
@@ -210,10 +211,77 @@ class Rule(unittest.TestCase):
         self.assertEqual(listening_rule.prompt_findings([("x", "Your turn: find answer 27.")],
                                                         [("y", "Over to you, which option fits?")]), [])
 
+    def item(self, **kw):
+        b = {"type": "gloss", "label": "PANEL Row 3", "term": "wakes me", "kind": "verb",
+             "explanation": "stops my sleep", "synonym": "rouses, disturbs", "text": "The pain wakes him every night."}
+        b.update(kw)
+        return b, listening_rule.panel_item(SET, STIM, b)
+
+    def test_a_panel_item(self):
+        # ADR 031: the words said in row N, their sentence's span from the word
+        # times, an answer's word shown only once it is taught
+        b, bad = self.item()
+        self.assertEqual(bad, [])
+        self.assertEqual((b["panel"]["row"], b["panel"]["word"], b["panel"]["to"]), (2, 10, 11))
+        self.assertTrue(b["panel"]["after_answer"])         # gap 2's accepted form "wakes" is in it
+        self.assertEqual((b["heard"]["start"], b["heard"]["end"]), (33.85, 36.5))   # "It wakes me at night."
+        self.assertIsNone(b["icon"])
+        self.assertEqual(b["synonym"], "rouses, disturbs")
+        b, bad = self.item(term="morning", label="PANEL Row 1", kind="word", text="Come back in the morning.")
+        self.assertEqual(bad, [])
+        self.assertFalse(b["panel"]["after_answer"])
+
+    def test_a_panel_item_is_the_speakers_own_words(self):
+        _, bad = self.item(label="PANEL Row 1")
+        self.assertIn("said in row 3", bad[0])
+        _, bad = self.item(label="PANEL Row 9")
+        self.assertIn("rows 1-3", bad[0])
+        _, bad = self.item(kind="slang", synonym="a, b, c")
+        self.assertEqual(len(bad), 2)
+
+    def test_a_panel_example_is_never_copied(self):
+        _, bad = self.item(text="It wakes me at night again.")
+        self.assertTrue(any("copies" in x for x in bad))
+        # an idiom's own words inside the example are not a copy
+        _, bad = self.item(term="wakes me at night", text="Her cough wakes me at night too.")
+        self.assertFalse(any("copies" in x for x in bad))
+
+    def test_a_paraphrase_pair(self):
+        b, bad = self.item(term="Sore", label="PANEL Row 2", kind="paraphrase", synonym="painful", left="pain",
+                           text="My knee is sore after the run.")
+        self.assertEqual(bad, [])
+        self.assertEqual(b["synonym"], "pain (in the question); similar: painful")
+        self.assertTrue(b["panel"]["after_answer"])         # a pair leads to an answer
+        _, bad = self.item(term="Sore", label="PANEL Row 2", kind="paraphrase", left="fever and cough",
+                           text="My knee is sore after the run.")
+        self.assertTrue(any("as printed" in x for x in bad))
+
+    def test_vocabulary_explanations_never_repeat(self):
+        def u(i, text, block):
+            return {"id": i, "text_with_cues": "{{c1}}" + text, "cues": [{"id": "c1", "type": "reveal", "block": block}]}
+        blocks = {"w1": {"panel": {"kind": "verb"}, "term": "wakes", "explanation": "stops sleep", "synonym": "rouses",
+                         "text": "Noise wakes me."},
+                  "w2": {"panel": {"kind": "word"}, "term": "sore", "explanation": "painful", "synonym": "aching",
+                         "text": "My leg is sore."},
+                  "n1": {"term": None}}
+        boards = [{"states": [{"utterances": [
+            u("a", "Here is a really useful verb for you: wakes.", "w1"),
+            u("b", "Here is a really useful verb for you: sore.", "w2.1"),
+            u("c", "Here is a really useful verb for you: sore.", "n1")]}]}]
+        mine = listening_rule.vocab_explanations(boards, blocks)
+        self.assertEqual([x[0] for x in mine], ["a", "b"])                  # "c" teaches no panel item
+        found = listening_rule.vocab_findings(mine)
+        self.assertEqual([x[0] for x in found], ["b"])                      # the same frame, another word
+        self.assertEqual(listening_rule.vocab_findings(
+            [("x", "Wakes means stops sleep.", {"wakes", "stops", "sleep"})],
+            [("y", "Sore? Think of aching.", {"sore", "aching"})]), [])
+
     def test_the_rule_carries_the_owners_layout_and_facts(self):
         for text in ("NEVER covered", "NO board picture", "question N"):
             self.assertIn(text, listening_rule.SCREENS_SET)
         self.assertIn("PAUSE-AND-TRY PROMPTS", listening_rule.NARRATION)
+        self.assertIn("PANEL Row <N>", listening_rule.SCREENS_SET)
+        self.assertIn("THE VOCABULARY PANEL", listening_rule.NARRATION)
         self.assertIn("instructor's suggested", listening_rule.SCREENS)
         self.assertNotIn("Covered:", listening_rule.NARRATION_QUESTION)
 
@@ -287,7 +355,7 @@ class Timeline(unittest.TestCase):
 
 class Bundle(unittest.TestCase):
     def test_format(self):
-        self.assertEqual(blp.format_version("listening-02-part-a", part_b=True, listening=True), "1.19")
+        self.assertEqual(blp.format_version("listening-02-part-a", part_b=True, listening=True), "1.20")
         self.assertEqual(blp.format_version("reading-03-part-b", part_b=True), "1.16")
         self.assertEqual(blp.format_version("grammar-01-verb-tenses"), "1.12")
 
@@ -299,12 +367,43 @@ class Bundle(unittest.TestCase):
         blocks_all = {"k1": dict(tr, id="k1"), "k2": dict(form, id="k2"), "k3": {"type": "plain"}}
         bd = {"id": "x_t1", "fixed": ["k1", "k2"], "states": [{"working": ["k3"]}]}
         ls = blp.listen_board(L, bd, blocks_all)
-        self.assertEqual((ls["block"], ls["form"], ls["split"], ls["lines"]), ("k1", "k2", 58, 10))
+        self.assertEqual((ls["block"], ls["form"], ls["split"], ls["lines"]), ("k1", "k2", 62, 10))
+        # ADR 031: never hyphenated, a little smaller than 1.19's 3.4, the form whole in the reading time
+        self.assertFalse(ls["hyphens"])
+        self.assertTrue(2.6 <= ls["font"] < 3.4)
+        self.assertGreaterEqual(ls["reading"]["font"], 2.6)
+        self.assertEqual(ls["panel"]["items"], [])
         self.assertEqual(ls["times"], TIMES)
         self.assertEqual([(x["from"], x["to"], x["row"]) for x in ls["sections"]], [(0, 8, 0), (9, 13, 2)])
         self.assertGreaterEqual(ls["font"], 2.6)
         self.assertGreaterEqual(ls["form_font"], 2.6)
         self.assertIsNone(blp.listen_board(L, {"id": "x_t2", "fixed": ["k2"], "states": []}, blocks_all))
+
+    def test_a_boards_panel_items(self):
+        # 1.20 (ADR 031): the panel's items, in the order they are said, each
+        # with the state that teaches it; a panel item is no note of the board
+        L = lesson("listening-09-x", "listening", SET)
+        tr = P.transcript_block(STIM)
+        pn = lambda w, after: {"type": "gloss", "panel": {"kind": "verb", "row": 2, "word": w, "to": w + 1,
+                                                           "pair": None, "after_answer": after}}
+        blocks_all = {"k1": dict(tr, id="k1"), "k5": pn(10, True), "k6": pn(6, False), "k7": {"type": "plain"}}
+        bd = {"id": "x_t1", "fixed": ["k1"], "states": [{"id": "x_t1.s1", "working": ["k7"]},
+                                                        {"id": "x_t1.s2", "working": ["k5", "k6"]}]}
+        ls = blp.listen_board(L, bd, blocks_all)
+        self.assertEqual([(x["block"], x["word"], x["after_answer"], x["state"]) for x in ls["panel"]["items"]],
+                         [("k6", 6, False, "x_t1.s2"), ("k5", 10, True, "x_t1.s2")])
+        self.assertEqual(ls["panel"]["max"], listening_rule.PANEL_MAX)
+        self.assertGreaterEqual(ls["panel"]["font"], 2.6)
+        self.assertNotIn("reading", ls)                     # no note form on the board
+
+    def test_a_panel_item_is_drawn_for_the_panel(self):
+        b = {"id": "k5", "type": "gloss", "term": "wakes me", "explanation": "stops my sleep",
+             "synonym": "pain (in the question)", "text": "The pain wakes him.", "icon": None,
+             "panel": {"kind": "paraphrase"}}
+        html = ws.block_html(b)
+        self.assertIn("gl lvoc lv-pair", html)
+        self.assertNotIn("gl-pic", html)
+        self.assertNotIn("lvoc", ws.block_html(dict(b, panel=None)))
 
     def test_a_transcript_is_drawn_in_its_box(self):
         html = ws.doc_table_html(P.transcript_block(STIM), ' data-id="k1"')
@@ -319,7 +418,7 @@ class Bundle(unittest.TestCase):
         out = blp.text_export({"id": "listening-09-x"}, [{"id": "s", "title": "t", "category": None, "start": 0,
                                                           "end": 2, "boards": ["b"]}], [bd], {}, listening=True)
         self.assertEqual([n["id"] for n in out["sections"][0]["boards"][0]["narration"]], ["u1"])
-        self.assertEqual(out["format_version"], "1.19")
+        self.assertEqual(out["format_version"], "1.20")
 
 
 RELEASE = P.release_path(P.LISTENING_PIN["release"])

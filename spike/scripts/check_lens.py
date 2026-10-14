@@ -48,9 +48,11 @@ from pathlib import Path
 
 EDGE_PROFILE = tempfile.mkdtemp(prefix="oet-edge-")
 atexit.register(shutil.rmtree, EDGE_PROFILE, True)
-# A Listening transcript is hyphenated (ADR 030). Edge and Chrome download their
-# hyphenation data into a profile; a new profile has none, so the one this check
-# makes is given the user's Edge's, and measures the lines as the user's browser breaks them.
+# A Listening transcript was hyphenated by ADR 030 and is not since ADR 031 (no
+# word broken across two lines). Edge and Chrome download their hyphenation data
+# into a profile; a new profile has none, so the one this check makes is given
+# the user's Edge's, so that a player built before ADR 031 measures as the
+# user's browser breaks its lines.
 HYPHEN_DATA = Path(os.environ.get("LOCALAPPDATA", "")) / "Microsoft" / "Edge" / "User Data" / "hyphen-data"
 if HYPHEN_DATA.is_dir():
     shutil.copytree(HYPHEN_DATA, Path(EDGE_PROFILE) / "hyphen-data")
@@ -180,7 +182,17 @@ HARNESS = r"""
     }
     for (const t of listenMoments(bd)) times.add(t);
     const rep = { board: bd.id, font_cqh: null, lines_min: 99, lines_max: 0, moments: 0, said: 0,
-                  marker_bad: 0, line_bad: 0, question_bad: 0, gap_max: 0, gaps_over_2: 0, gaps: 0 };
+                  marker_bad: 0, line_bad: 0, question_bad: 0, gap_max: 0, gaps_over_2: 0, gaps: 0,
+                  panel_max: 0, panel_font_cqh: null, panel_moments: 0, reading: 0, reading_font_cqh: null };
+    const BI = () => { const B = body.getBoundingClientRect(), cs = getComputedStyle(body);
+      return { top: B.top + parseFloat(cs.paddingTop), bottom: B.bottom - parseFloat(cs.paddingBottom),
+               left: B.left + parseFloat(cs.paddingLeft), right: B.right - parseFloat(cs.paddingRight) }; };
+    const cut = (q, R) => { const s = [];
+      if (q.top < R.top - TOL) s.push("top"); if (q.bottom > R.bottom + TOL) s.push("bottom");
+      if (q.left < R.left - TOL) s.push("left"); if (q.right > R.right + TOL) s.push("right"); return s; };
+    const flag = (t, kind, text, sides, px) => { const key = bd.id + "|" + kind + "|" + text + "|" + sides.join(",");
+      if (seen.has(key)) return; seen.add(key);
+      clipped.push({ board: bd.id, kind, t: +t.toFixed(3), state: (stateAt(bd, t) || {}).id || null, text, sides, px }); };
     let first = true;
     for (const t of [...times].filter(t => t >= bd.start && t < bd.until).sort((a, b) => a - b)) {
       lastRenderT = null;
@@ -190,6 +202,21 @@ HARNESS = r"""
       const win = el && el.querySelector(".lt-win");
       if (!win) continue;
       windows++;
+      // 1.20 (ADR 031): the reading time before a Part A extract: the note form
+      // whole, the width of the board, inside it, at the floor or over
+      if (camEl.classList.contains("lread")) {
+        rep.reading++;
+        const fe = blockEls.get(lformId), R = BI();
+        const ftd = fe.querySelector(".lt-scr td");
+        rep.reading_font_cqh = +(parseFloat(getComputedStyle(ftd).fontSize) / frame.clientHeight * 100).toFixed(2);
+        if (rep.reading_font_cqh < 2.6 - 0.01) flag(t, "reading", "the note form's type is " + rep.reading_font_cqh + "%", ["floor"], 0);
+        if (fe.querySelector("tr.lt-out")) flag(t, "reading", "a row of the note form is hidden", ["form"], 0);
+        for (const [q, text] of vlines(fe)) { const sd = cut(q, R); if (sd.length) flag(t, "reading", text, sd, 0); }
+        if (fe.getBoundingClientRect().width < (R.right - R.left) * 0.9) flag(t, "reading", "the note form is not the width of the board", ["width"], 0);
+        for (const [id, e] of blockEls) if (e !== fe && getComputedStyle(e).display !== "none" && e.getBoundingClientRect().height)
+          flag(t, "reading", id + " is shown beside the whole note form", ["alone"], 0);
+        continue;
+      }
       const W = win.getBoundingClientRect();
       const td = el.querySelector(".lt-scr td");
       rep.font_cqh = +(parseFloat(getComputedStyle(td).fontSize) / frame.clientHeight * 100).toFixed(2);
@@ -250,6 +277,29 @@ HARNESS = r"""
           rep.question_bad++;
           if (rep.question_bad <= 3) clipped.push({ board: bd.id, kind: "question", t: +t.toFixed(3), state: s ? s.id : null,
                                                     text: "shown " + shown.join(",") + " / want " + want_q, sides: ["question"], px: 0 });
+        }
+      }
+      // 1.20 (ADR 031): the vocabulary panel: whole items only, inside the panel
+      // and the board, at the floor or over, at most its `max`; an item tied to
+      // an answer never shown in a recording before the state teaching it
+      const pe = el.parentElement && camEl.querySelector(".lpanel");
+      if (pe && L.panel) {
+        const R = pe.getBoundingClientRect(), B = BI();
+        const shownP = [...pe.children].filter(e => getComputedStyle(e).display !== "none" && e.getBoundingClientRect().height
+                                                    && getComputedStyle(e).opacity !== "0");
+        rep.panel_max = Math.max(rep.panel_max, shownP.length);
+        if (shownP.length) rep.panel_moments++;
+        if (shownP.length > L.panel.max) flag(t, "panel", shownP.length + " items shown", ["max"], 0);
+        for (const e of shownP) {
+          const id = e.dataset.id, q = e.getBoundingClientRect();
+          const sd = cut(q, { top: Math.max(R.top, B.top), bottom: Math.min(R.bottom, B.bottom), left: B.left, right: Math.max(R.right, B.left) });
+          if (sd.length) flag(t, "panel", "item " + id, sd, +Math.max(q.bottom - R.bottom, 0).toFixed(1));
+          const fz = parseFloat(getComputedStyle(e.querySelector(".gl-m") || e).fontSize) / frame.clientHeight * 100;
+          rep.panel_font_cqh = rep.panel_font_cqh === null ? +fz.toFixed(2) : Math.min(rep.panel_font_cqh, +fz.toFixed(2));
+          if (fz < 2.6 - 0.01) flag(t, "panel", "item " + id + " at " + fz.toFixed(2) + "%", ["floor"], 0);
+          const it = L.panel.items.find(x => x.block === id), st = it && bd.states.find(x => x.id === it.state);
+          if (at.rec && it && it.after_answer && st && t < st.start) flag(t, "panel", "item " + id + " (an answer) before it is taught", ["answer"], 0);
+          if (at.rec && it && (!at.said || it.word > at.word)) flag(t, "panel", "item " + id + " before the marker reaches it", ["early"], 0);
         }
       }
       if (first) {
@@ -379,7 +429,10 @@ def main() -> None:
             print(f"  {w['board']} (Listening): the box's type {w['font_cqh']}% of the frame, {w['lines_min']}-"
                   f"{w['lines_max']} lines shown; {w['moments']} moments, {w['said']} with a word said: marker off "
                   f"{w['marker_bad']}, line off {w['line_bad']}, question off {w['question_bad']}; justified word "
-                  f"gaps: widest {w['gap_max']}x a space, {w['gaps_over_2']} of {w['gaps']} over 2x")
+                  f"gaps: widest {w['gap_max']}x a space, {w['gaps_over_2']} of {w['gaps']} over 2x; panel: "
+                  f"up to {w.get('panel_max', 0)} item(s) at {w.get('panel_font_cqh')}% ({w.get('panel_moments', 0)} "
+                  f"moments with items)" + (f"; reading time: the form whole at {w['reading_font_cqh']}% "
+                                            f"({w['reading']} moments)" if w.get('reading') else ""))
         for c in res["clipped"][:a.show]:
             print(f"  CLIPPED {c['board']} ({c['kind']}) at {mmss(c['t'])}: {c['text']!r} cut at the "
                   f"{'/'.join(c['sides'])} by {c['px']}px")

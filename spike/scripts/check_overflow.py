@@ -100,7 +100,7 @@ HARNESS = r"""
       const viewed = bd.table && keep && keep !== "none";
       if (!viewed) camEl.style.transform = "none";
       const A = area();
-      for (const [id, el] of [...blockEls, ...(typeof lsecEls === "object" ? lsecEls : [])]) {
+      for (const [id, el] of [...blockEls, ...(typeof lsecEls === "object" ? lsecEls : []), ...(typeof lpanEls === "object" ? lpanEls : [])]) {
         if (!shown(el)) continue;
         if (viewed && !el.classList.contains("beside")) continue;   // under the camera: the notes
         const r = el.getBoundingClientRect();

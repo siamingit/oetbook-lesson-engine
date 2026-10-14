@@ -2092,6 +2092,10 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
         for uid, what in listening_rule.prompt_findings(listening_rule.prompts(boards),
                                                         listening_rule.lesson_prompts(lesson_dir_, skip=tag)):
             fail(uid, what)
+        # and its vocabulary explanations (ADR 031), by the same rule
+        for uid, what in listening_rule.vocab_findings(listening_rule.vocab_explanations(boards, blocks),
+                                                       listening_rule.lesson_vocab(lesson_dir_, skip=tag)):
+            fail(uid, what)
     return findings
 
 
