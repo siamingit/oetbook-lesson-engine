@@ -245,7 +245,7 @@ def snapshot(name: str, only: list[str]) -> None:
     work = library_copy(name, only)
     try:
         for L in built(work):
-            render_one(L, dest)
+            render_one(L, dest, work)
     finally:
         shutil.rmtree(guard(WORK / name))
     after = manifest()
@@ -257,7 +257,18 @@ def snapshot(name: str, only: list[str]) -> None:
     print(f"{name}: no file under {LESSONS} changed", flush=True)
 
 
-def render_one(L: Path, dest: Path) -> None:
+def unplace(data: bytes, work: Path) -> bytes:
+    """A data file as the lesson itself would have it: the stages record their
+    inputs' paths (screens.json, narration.json), which in a copy name the copy;
+    they are written back as the lessons' paths, so a snapshot compares with one
+    taken in place (before 2026-10-14) and with another copy."""
+    for a, b in ((str(work), str(LESSONS)), (work.as_posix(), LESSONS.as_posix())):
+        for x, y in ((a, b), (json.dumps(a)[1:-1], json.dumps(b)[1:-1])):
+            data = data.replace(x.encode("utf-8"), y.encode("utf-8"))
+    return data
+
+
+def render_one(L: Path, dest: Path, work: Path) -> None:
     """Render and fingerprint one lesson of the copy (L is never a finished lesson)."""
     guard(L)
     d = guard(dest / L.name)
@@ -279,7 +290,7 @@ def render_one(L: Path, dest: Path) -> None:
         if f.exists():
             t = d / "files" / f.relative_to(L)
             t.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(f, t)
+            t.write_bytes(unplace(f.read_bytes(), work))
     fp = {}
     for which, rel in PLAYERS.items():
         if (L / rel).exists():

@@ -13,6 +13,7 @@ Standard library only; runs in CI.
 
 import builtins
 import hashlib
+import json
 import os
 import shutil
 import sys
@@ -115,7 +116,10 @@ class ReadOnly(unittest.TestCase):
         """A render script: writes into the lesson it is given, as the real stages do."""
         L = Path(cmd[2])
         self.given.append(str(L))
-        (L / "analysis" / "fit.json").write_text('{"rendered": true}', encoding="utf-8")
+        # a stage records its input's path, as screens.json and narration.json do
+        (L / "analysis" / "fit.json").write_text(
+            json.dumps({"rendered": True, "input": str(L / "analysis" / "sections.json")}),
+            encoding="utf-8")
         (L / "generated" / "lesson-player" / "bundle.json").write_text('{"v": 2}', encoding="utf-8")
         (L / "generated" / "new-file.json").write_text("{}", encoding="utf-8")
         return SimpleNamespace(returncode=0, stdout="", stderr="")
@@ -142,8 +146,10 @@ class ReadOnly(unittest.TestCase):
             self.assertFalse(rc.under(g, self.lessons) or real_lessons(g), g)
             self.assertTrue(rc.under(g, self.out / "work"), g)
         snap = self.out / "after" / "grammar-99-test"
-        self.assertEqual((snap / "files" / "analysis" / "fit.json").read_text(encoding="utf-8"),
-                         '{"rendered": true}')
+        # the snapshot holds what the lesson itself would: its own paths, not the copy's
+        self.assertEqual(json.loads((snap / "files" / "analysis" / "fit.json").read_text(encoding="utf-8")),
+                         {"rendered": True, "input": str(self.lessons / "grammar-99-test" / "analysis"
+                                                          / "sections.json")})
         self.assertTrue((snap / "fingerprint.json").exists())
         self.assertFalse((self.out / "work" / "after").exists(), "the copy is deleted")
 
