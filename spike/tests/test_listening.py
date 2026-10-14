@@ -470,6 +470,13 @@ class PinnedSets(unittest.TestCase):
         with self.assertRaises(SystemExit):
             P.import_set(L, "oa-set-la-0002")
 
+    def test_layout_check_leaves_the_listening_windows_out(self):
+        # the transcript's box and the form's window move their rows by design
+        # (ADR 030, 031), as the map's lens does: check_lens.py measures them
+        import check_layout
+        self.assertIn('if (el.querySelector(".lt-win")) continue;', check_layout.HARNESS)
+        self.assertIn('if (el.classList.contains("lens-frame")) continue;', check_layout.HARNESS)
+
 
 if __name__ == "__main__":
     unittest.main()
