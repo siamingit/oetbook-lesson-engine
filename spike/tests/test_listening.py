@@ -346,6 +346,11 @@ class Rule(unittest.TestCase):
         found = listening_rule.preview_findings(boards, {"k02": form}, SET)
         self.assertEqual([x[0] for x in found], ["u2"])          # an accepted form of gap 2, before s4
         self.assertNotIn("wakes", found[0][1])                   # never prints an answer
+        # a quote of the board, marked as it is read, is not the narrator's own word
+        boards[0]["states"][0]["utterances"][1]["text_with_cues"] = "Gap two: {{c2}}wakes him at night.{{c1}}"
+        boards[0]["states"][0]["utterances"][1]["cues"].append(cue("c2", "highlight", block="k01",
+                                                                   text="wakes him at night"))
+        self.assertEqual(listening_rule.preview_findings(boards, {"k02": form}, SET), [])
         boards[0]["states"][0]["utterances"][1]["cues"] = []
         boards[0]["states"][0]["utterances"][1]["text_with_cues"] = "Gap two: a verb, like stops."
         found = listening_rule.preview_findings(boards, {"k02": form}, SET)

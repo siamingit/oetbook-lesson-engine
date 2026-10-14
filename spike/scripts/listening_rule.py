@@ -490,7 +490,13 @@ def preview_findings(boards: list[dict], blocks: dict, ps: dict | None) -> list[
                     todo.append((p["mark"], forms_, at))
             for k, s in enumerate(bd["states"]):
                 for u in s["utterances"]:
-                    said = _words(spoken(u["text_with_cues"]))
+                    # the narrator's own words: a quote of the form or the transcript,
+                    # marked as it is read, is what the board already shows
+                    said = spoken(u["text_with_cues"]).lower()
+                    for c in u.get("cues") or []:
+                        if c.get("text") and c.get("type") not in ("type", PLAY, "pause", "reveal"):
+                            said = said.replace(c["text"].lower(), " ")
+                    said = _words(said)
                     for mark, forms_, at in todo:
                         if k < at and any(said[i:i + len(f)] == f for f in forms_ for i in range(len(said) - len(f) + 1)):
                             out.append((u["id"], f"says the answer to gap {mark} (or an accepted form of it) before "
