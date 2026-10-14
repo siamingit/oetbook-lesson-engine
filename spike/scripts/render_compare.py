@@ -1,11 +1,9 @@
 """Prove that a change to shared code leaves the built lessons unchanged.
 
-    .venv/Scripts/python spike/scripts/render_compare.py backup [LESSON,LESSON,...]
-    .venv/Scripts/python spike/scripts/render_compare.py snapshot before
+    .venv/Scripts/python spike/scripts/render_compare.py snapshot before [LESSON,LESSON,...]
     (change the code)
-    .venv/Scripts/python spike/scripts/render_compare.py snapshot after
+    .venv/Scripts/python spike/scripts/render_compare.py snapshot after [LESSON,LESSON,...]
     .venv/Scripts/python spike/scripts/render_compare.py compare before after
-    .venv/Scripts/python spike/scripts/render_compare.py restore
 
 Maintainer, 2026-10-05, on bundle 1.13 (ADR 026): "render all 11 before and
 after the change and run an automated comparison (rendered output and
@@ -23,12 +21,22 @@ the camera. `compare` diffs the data files byte for byte and the fingerprints
 moment by moment. The player's own HTML is not compared as bytes, since the
 template is the code that changes; what it draws is.
 
-The renders write over the lessons' files, so `backup` copies every lesson's
-analysis/ and generated/ text files first (no audio, images or video) and
-`restore` puts them back. Output: spike/out/render-compare/ (gitignored).
+Read-only (owner, 2026-10-14, after a stale backup of 00:29 was restored over
+the 16 finished lessons): the renders write into the lesson they are given, so
+`snapshot` copies the library (every lesson folder but its video, and the
+course folder) to spike/out/render-compare/work/<name>/ and renders and
+fingerprints the copies there, then deletes them. Nothing is ever written under
+C:\\OET\\lessons: every write and every lesson path given to a render is checked
+(`guard`), and the lessons' files are listed (size and time) before and after a
+snapshot, which stops loudly if any changed. There is no backup and no restore.
+A stale `backup/` (the old commands' folder), a copy left by an unfinished run
+or a snapshot of the same name stops the run before anything is copied or
+rendered; old backups are kept in spike/out/render-compare/_stale/, never
+restored. Output: spike/out/render-compare/ (gitignored).
 """
 
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -41,8 +49,10 @@ from check_layout import EDGE, EDGE_PROFILE, WIDTHS
 HERE = Path(__file__).resolve().parent
 PY = sys.executable
 LESSONS = Path(r"C:\OET\lessons")
-OUT = HERE.parents[1] / "spike" / "out" / "render-compare"
-SKIP = {".wav", ".mp3", ".mp4", ".png", ".jpg", ".jpeg", ".webp", ".onnx", ".zip"}
+REPO = HERE.parents[1]
+OUT = REPO / "spike" / "out" / "render-compare"
+WORK = OUT / "work"                    # the snapshots' temporary copies of the library
+VIDEO = {".mp4", ".mkv", ".mov", ".webm"}   # the source recording: no render reads it
 DATA = ["generated/lesson-player/bundle.json", "generated/lesson-player/text.json",
         "generated/lesson-player/blocks.css", "generated/lesson-preview/silent/bundle.json",
         "generated/lesson-preview/silent/text.json", "generated/lesson-preview/silent/blocks.css",
@@ -119,62 +129,82 @@ HARNESS = r"""
 """
 
 
-def built() -> list[Path]:
-    return sorted(p for p in LESSONS.iterdir()
+def built(root: Path | None = None) -> list[Path]:
+    return sorted(p for p in (root or LESSONS).iterdir()
                   if (p / "generated" / "lesson-player" / "bundle.json").exists())
 
 
-def files_to_keep(L: Path):
-    for sub in ("analysis", "generated"):
-        for f in (L / sub).rglob("*"):
-            if f.is_file() and f.suffix.lower() not in SKIP:
-                yield f
+def under(path, root: Path) -> bool:
+    a = os.path.normcase(os.path.abspath(path))
+    b = os.path.normcase(os.path.abspath(root))
+    return a == b or a.startswith(b.rstrip("\\/") + os.sep)
 
 
-def backup(only: list[str]) -> None:
-    """Every built lesson, or only those named: a lesson being changed while
-    the proof runs is left out, so `restore` never touches it."""
-    dest = OUT / "backup"
-    if dest.exists():
-        raise SystemExit(f"{dest} exists: restore or remove it first, a backup is never overwritten")
-    n = 0
-    lessons = [L for L in built() if not only or L.name in only]
-    for L in lessons:
-        for f in files_to_keep(L):
-            t = dest / L.name / f.relative_to(L)
-            t.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(f, t)
-            n += 1
-    print(f"backed up {n} files of {len(lessons)} lessons to {dest}")
+def guard(path: Path) -> Path:
+    """Every path this script writes, and every lesson it hands to a render, goes
+    through here: never one under the finished lessons."""
+    if under(path, LESSONS):
+        raise SystemExit(f"REFUSED: render_compare never writes under {LESSONS} ({path}); "
+                         f"it renders copies in {WORK}")
+    return path
 
 
-def restore() -> None:
-    src = OUT / "backup"
-    n = 0
-    for f in src.rglob("*"):
-        if f.is_file():
-            rel = f.relative_to(src)
-            t = LESSONS / rel
-            t.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(f, t)
-            n += 1
-    # a file the renders created that the backup does not have is removed;
-    # only in a lesson the backup holds: one built since the backup was taken
-    # is not the comparison's and is never touched (2026-10-06)
-    extra = 0
-    for L in built():
-        if not (src / L.name).is_dir():
-            continue
-        for f in files_to_keep(L):
-            if not (src / L.name / f.relative_to(L)).exists():
-                f.unlink()
-                extra += 1
-    print(f"restored {n} files; removed {extra} file(s) the renders created")
+def stale(name: str) -> list[str]:
+    """What stops a snapshot before anything is copied or rendered."""
+    found = []
+    if (OUT / "backup").exists():
+        found.append(f"{OUT / 'backup'}: a backup left by the old backup/restore commands. "
+                     f"Never restore it: move it into {OUT / '_stale'} (a clearly named folder)")
+    if WORK.exists() and any(WORK.iterdir()):
+        found.append(f"{WORK}: a copy of the library left by a run that did not finish, or "
+                     f"one still running. If no render_compare is running, delete it (it is "
+                     f"only a copy)")
+    if (OUT / name).exists():
+        found.append(f"{OUT / name}: a snapshot of that name exists: choose another name, or "
+                     f"move the old one into {OUT / '_stale'}")
+    return found
+
+
+def manifest() -> dict:
+    """Every file under the lessons, with its size and time: the proof that a
+    snapshot wrote nothing there."""
+    out, root = {}, LESSONS
+    for dirpath, _, files in os.walk(root):
+        for f in files:
+            p = os.path.join(dirpath, f)
+            st = os.stat(p)
+            out[os.path.relpath(p, root)] = (st.st_size, st.st_mtime_ns)
+    return out
+
+
+def library_copy(name: str, only: list[str]) -> Path:
+    """The lessons folder of a copy of the library, outside the lessons: each
+    built lesson (or each named) whole but its video; of every other lesson its
+    config only (the narration reads the other lessons' configs); the course
+    folder (the course index, the word IDs)."""
+    lib = guard(WORK / name)
+    dest = guard(lib / "lessons")
+    dest.mkdir(parents=True)
+    skip = lambda d, names: [n for n in names if Path(n).suffix.lower() in VIDEO]  # noqa: E731
+    keep = {L.name for L in built() if not only or L.name in only}
+    for L in sorted(p for p in LESSONS.iterdir() if p.is_dir()):
+        if L.name in keep:
+            shutil.copytree(L, guard(dest / L.name), ignore=skip)
+        elif (L / "analysis" / "sections.json").exists():
+            t = guard(dest / L.name / "analysis" / "sections.json")
+            t.parent.mkdir(parents=True)
+            shutil.copy2(L / "analysis" / "sections.json", t)
+    if (LESSONS.parent / "course").is_dir():
+        shutil.copytree(LESSONS.parent / "course", guard(lib / "course"))
+    return dest
 
 
 def run(args: list[str], L: Path, log) -> None:
-    r = subprocess.run([PY, *args], capture_output=True, text=True, encoding="utf-8",
-                       errors="replace", env={**__import__("os").environ, "PYTHONIOENCODING": "utf-8"})
+    for a in args:
+        if os.path.isabs(a):
+            guard(Path(a))
+    r = subprocess.run([PY, *args], capture_output=True, text=True, encoding="utf-8", cwd=REPO,
+                       errors="replace", env={**os.environ, "PYTHONIOENCODING": "utf-8"})
     log.write(f"$ {' '.join(args)}\n{r.stdout[-3000:]}{r.stderr[-3000:]}\n")
     if r.returncode:
         raise SystemExit(f"{L.name}: {Path(args[0]).name} failed (exit {r.returncode}); see the log")
@@ -182,7 +212,7 @@ def run(args: list[str], L: Path, log) -> None:
 
 def fingerprint(player: Path, width: int) -> dict:
     edge = next(e for e in EDGE if Path(e).exists())
-    harness = player.with_name("player_fp.html")
+    harness = guard(player.with_name("player_fp.html"))
     html = player.read_text(encoding="utf-8")
     harness.write_text(html.replace("</body>", HARNESS.replace("__WIDTH__", str(width)) + "</body>"),
                        encoding="utf-8")
@@ -206,38 +236,58 @@ def sections(L: Path) -> list[dict]:
 
 
 def snapshot(name: str, only: list[str]) -> None:
-    dest = OUT / name
-    for L in built():
-        if only and L.name not in only:
-            continue
-        d = dest / L.name
-        d.mkdir(parents=True, exist_ok=True)
-        with open(d / "render.log", "w", encoding="utf-8") as log:
-            run([str(HERE / "build_lesson_boards.py"), str(L)], L, log)
-            for s in sections(L):
-                pp = ",".join(str(p) for p in s["pages"])
-                if not s.get("intro"):
-                    run([str(HERE / "write_screens.py"), str(L), "--pages", pp, "--render"], L, log)
-                run([str(HERE / "write_narration.py"), str(L), "--pages", pp, "--render"], L, log)
-            run([str(HERE / "fit_boards.py"), str(L), "--silent"], L, log)
-            run([str(HERE / "build_silent_preview.py"), str(L)], L, log)
-            run([str(HERE / "fit_boards.py"), str(L)], L, log)
-            run([str(HERE / "build_lesson_player.py"), str(L)], L, log)
-        for f in [*(L / "analysis" / "screens").rglob("screens.json"),
-                  *(L / "analysis" / "narration").rglob("narration.json"),
-                  *(L / p for p in DATA)]:
-            if f.exists():
-                t = d / "files" / f.relative_to(L)
-                t.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copy2(f, t)
-        fp = {}
-        for which, rel in PLAYERS.items():
-            if (L / rel).exists():
-                for wname, width in WIDTHS.items():
-                    fp[f"{which}/{wname}"] = fingerprint(L / rel, width)
-        (d / "fingerprint.json").write_text(json.dumps(fp), encoding="utf-8")
-        moments = sum(len(b["moments"]) for v in fp.values() for b in v["boards"])
-        print(f"{L.name}: rendered; {moments} moments fingerprinted", flush=True)
+    found = stale(name)
+    if found:
+        raise SystemExit("STOPPED: nothing was copied, rendered or restored.\n  "
+                         + "\n  ".join(found))
+    dest = guard(OUT / name)
+    before = manifest()
+    work = library_copy(name, only)
+    try:
+        for L in built(work):
+            render_one(L, dest)
+    finally:
+        shutil.rmtree(guard(WORK / name))
+    after = manifest()
+    changed = sorted(k for k in set(before) | set(after) if before.get(k) != after.get(k))
+    if changed:
+        raise SystemExit(f"ALARM: {len(changed)} file(s) under {LESSONS} changed while the snapshot "
+                         f"ran (render_compare writes only to copies: another process, or a bug "
+                         f"here). First: {changed[:5]}")
+    print(f"{name}: no file under {LESSONS} changed", flush=True)
+
+
+def render_one(L: Path, dest: Path) -> None:
+    """Render and fingerprint one lesson of the copy (L is never a finished lesson)."""
+    guard(L)
+    d = guard(dest / L.name)
+    d.mkdir(parents=True, exist_ok=True)
+    with open(d / "render.log", "w", encoding="utf-8") as log:
+        run([str(HERE / "build_lesson_boards.py"), str(L)], L, log)
+        for s in sections(L):
+            pp = ",".join(str(p) for p in s["pages"])
+            if not s.get("intro"):
+                run([str(HERE / "write_screens.py"), str(L), "--pages", pp, "--render"], L, log)
+            run([str(HERE / "write_narration.py"), str(L), "--pages", pp, "--render"], L, log)
+        run([str(HERE / "fit_boards.py"), str(L), "--silent"], L, log)
+        run([str(HERE / "build_silent_preview.py"), str(L)], L, log)
+        run([str(HERE / "fit_boards.py"), str(L)], L, log)
+        run([str(HERE / "build_lesson_player.py"), str(L)], L, log)
+    for f in [*(L / "analysis" / "screens").rglob("screens.json"),
+              *(L / "analysis" / "narration").rglob("narration.json"),
+              *(L / p for p in DATA)]:
+        if f.exists():
+            t = d / "files" / f.relative_to(L)
+            t.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(f, t)
+    fp = {}
+    for which, rel in PLAYERS.items():
+        if (L / rel).exists():
+            for wname, width in WIDTHS.items():
+                fp[f"{which}/{wname}"] = fingerprint(L / rel, width)
+    (d / "fingerprint.json").write_text(json.dumps(fp), encoding="utf-8")
+    moments = sum(len(b["moments"]) for v in fp.values() for b in v["boards"])
+    print(f"{L.name}: rendered; {moments} moments fingerprinted", flush=True)
 
 
 def compare(a: str, b: str) -> None:
@@ -289,10 +339,11 @@ def compare(a: str, b: str) -> None:
 
 def main() -> None:
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
-    if cmd == "backup":
-        backup(sys.argv[2].split(",") if len(sys.argv) > 2 else [])
-    elif cmd == "restore":
-        restore()
+    if cmd in ("backup", "restore"):
+        raise SystemExit(f"REFUSED: render_compare no longer backs up or restores (owner, "
+                         f"2026-10-14): it renders copies in {WORK} and never writes under "
+                         f"{LESSONS}. Run `snapshot NAME` before and after the change, then "
+                         f"`compare`.")
     elif cmd == "snapshot":
         snapshot(sys.argv[2], sys.argv[3].split(",") if len(sys.argv) > 3 else [])
     elif cmd == "compare":

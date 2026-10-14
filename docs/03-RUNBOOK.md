@@ -328,19 +328,26 @@ used, every built lesson is rendered before and after it and compared
 automatically; if any lesson differs, the agent stops and tells the maintainer.
 
 ```
-.venv/Scripts/python spike/scripts/render_compare.py backup
 .venv/Scripts/python spike/scripts/render_compare.py snapshot before
 (change the code)
 .venv/Scripts/python spike/scripts/render_compare.py snapshot after
 .venv/Scripts/python spike/scripts/render_compare.py compare before after
-.venv/Scripts/python spike/scripts/render_compare.py restore
 ```
 
 Free; about half an hour for eleven lessons. It compares the data files byte
 for byte and both players moment by moment in headless Edge. Output in
-`spike/out/render-compare/` (gitignored). `restore` puts back the files the
-renders overwrote. This proof stays a local check: it needs the lesson
-folders, which are not in git.
+`spike/out/render-compare/` (gitignored). This proof stays a local check: it
+needs the lesson folders, which are not in git.
+
+**Read-only** (owner, 2026-10-14, after a stale backup was restored over the
+finished lessons): a snapshot copies the library (each lesson but its video,
+and the course folder) to `spike/out/render-compare/work/<name>/`, renders and
+fingerprints the copies, and deletes them; it never writes under
+`C:\OET\lessons`, and stops with an alarm if any file there changed while it
+ran. There is no `backup` or `restore`. A leftover `backup/`, a leftover copy in
+`work/` or a snapshot of the same name stops it before anything is copied; old
+backups are kept in `spike/out/render-compare/_stale/` and never restored.
+`spike/tests/test_render_compare.py` fails if it writes under the lessons.
 
 ### Checks on every pull request (CI)
 
