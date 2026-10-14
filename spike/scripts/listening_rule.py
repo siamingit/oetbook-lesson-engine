@@ -70,9 +70,11 @@ NEVER teach that abbreviations are accepted in Part A (teach writing the \
 words heard), and NEVER teach that the instructions' time can be used as extra \
 reading time: teach only the 30 seconds to look at the Part A notes before \
 each extract.
-  - QUESTION NUMBERS ARE THE EXAM'S (owner, 2026-10-13): Part A gaps 1-24, Part B \
-questions 25-30, Part C questions 31-42, because the recordings announce them. \
-Never renumber them from 1.
+  - QUESTION NUMBERS (owner, 2026-10-14; ADR 032): Part A gaps 1-24; Part B \
+questions 1-6 and Part C questions 1-12, their PRACTICE numbers, as the \
+website numbers them and as each question block shows. The real test's number \
+(Part B 25-30, Part C 31-42, which the recording announces) is context only, \
+said once for each question in the narration; never on a board.
   - THE LEARNER NEVER TYPES. A Part A note form is shown on a board and the \
 lesson fills each gap after "try it first".
   - A WORD ON A BOARD is never a transcript's: you never copy, quote in a block \
@@ -111,8 +113,8 @@ are listed below: a row for each heading and a numbered row for each gap. One \
 "Row N: ..." thought per gap, in order. Code types each gap's answer in its \
 exact form; the narration types it.
   - A QUESTION (Parts B and C): {"type": "plain", "label": "<its item ID>", \
-"anchor": false, "items": [...]}, with NO text: code writes its number (the \
-exam's), its stem and its three options, shown from the start (in the test, \
+"anchor": false, "items": [...]}, with NO text: code writes its number (its \
+practice number, ADR 032), its stem and its three options, shown from the start (in the test, \
 the options are read in the reading time). Its `items` rule the wrong options \
 out and tick the answer, in this order: "out|<letter>|<reason label>" for each \
 WRONG option (at most 12 plain words, A2-B1, based on the release's own reason \
@@ -229,8 +231,12 @@ spelling mistake can cost you the mark." Never that a word "must be spelt \
 correctly" (minor variations may be accepted, fact 10). A joke or an aside \
 speaks to every learner ("So, everyone, please take care with your \
 handwriting!"), never to one profession.
-  - Question numbers are the exam's (gaps 1-24, questions 25-42): say them as \
-the board shows them.
+  - QUESTION NUMBERS (owner, 2026-10-14; ADR 032): say them as the board shows \
+them: Part A gaps 1-24; Part B questions 1-6 and Part C questions 1-12, their \
+practice numbers. ONCE for each Part B or C question, give the real test's \
+number as context, in a sentence that names the real test or the recording \
+("In the real test, this is question twenty-five, and that is the number you \
+will hear in the recording."); never otherwise.
   - THE RECORDINGS. The release's own audio plays inside the lesson, started by \
 a `play` cue: {"type": "play", "text": "<the extract's stimulus ID>", "with": \
 "<span>", "block": null, "to_block": null, "to_text": null, "seconds": null}, \
@@ -314,19 +320,24 @@ question's section ("question N"). On the paper test, Parts B and C answers \
 are shaded with a 2B pencil.
   READING THE STEM AND THE OPTIONS (owner, 2026-10-14; ADR 033), before the \
 recording, slowly: say what the stem asks and so what to listen for (who, the \
-setting, a purpose, an opinion, a next step), and for each option what it means \
-and how a speaker might say it in other words (a paraphrase of its keywords). \
-Never say or hint which option is right before the answer; the paraphrases \
-you suggest are never the transcript's own words for the key. Leave a short \
-`pause` (2 to 3 seconds) after the options so the student can think.\
+setting, a purpose, an opinion, a next step), and for EACH option what it means \
+and what to listen for: how a speaker might say it in other words (a paraphrase \
+of its keywords), with one or two EXAMPLES of such words. Never say or hint \
+which option is right before the answer; an example is never the transcript's \
+own words for the answer (the audit fails a word of the answer's evidence said \
+before the answer). End EACH option's last utterance with a `pause` of 2 to 3 \
+seconds whose `text` says what the student does ("thinking about option B"), \
+so there is a clear pause between the options and it never feels rushed (the \
+audit fails a preview with fewer pauses than options before the recording).\
 """
 
 QA = """\
 LISTENING LESSON (ADR 029). The lesson teaches the OET Listening test. The \
 practice set's transcripts, note forms and questions (blocks built from the \
 release, shown exactly as released) are not findings: never suggest changing \
-their wording. Question numbers are the exam's (1-24, 25-30, 31-42), never \
-renumbered. Report any recording, form, question or speaker of the \
+their wording. Question numbers: Part A gaps 1-24; Parts B and C their practice \
+numbers (1-6, 1-12, ADR 032), the real test's number (25-30, 31-42) said once \
+per question as context; these are not findings. Report any recording, form, question or speaker of the \
 instructor's own practice material named, quoted or described; any reference \
 to a website, a course series or a Persian audience; any exam fact not in the \
 rulings; any claim about a tool of the computer test; any advice to take a mock \
@@ -525,6 +536,87 @@ def preview_findings(boards: list[dict], blocks: dict, ps: dict | None) -> list[
             if played and pauses < n_gaps:
                 out.append((bd["id"], f"the preview of the note form {fb['id']} has {pauses} pause(s) for {n_gaps} "
                                       "gaps before the recording: leave a pause to think after each gap (ADR 033)"))
+    return out
+
+
+# everyday words of five letters or more that say nothing of an answer
+EVIDENCE_STOP = set("""about above after again actually along always among another anything around
+because before being below between both cannot could didn't doesn't during either every first going
+great having maybe might never often other really right shall should since something still their
+there these thing things think those though three through today under until where which while
+whole would yours""".split())
+
+
+def evidence_words(ps: dict, item: dict) -> set[str]:
+    """The words of a question's released evidence (five letters or more) that
+    neither its stem, its options nor its recording's rubric print: the
+    transcript's own words for the answer."""
+    st = stimuli_of(ps, item)
+    texts = [item.get("stem") or ""] + [o["text"] for o in item.get("options") or []]
+    printed = set(_words(" ".join(texts + [(st or {}).get("rubric") or ""])))
+    return {w for w in _words(item.get("evidence") or "") if len(w) >= 5 and w not in printed
+            and w not in EVIDENCE_STOP}
+
+
+def stimuli_of(ps: dict, item: dict) -> dict | None:
+    sts = practice_set.stimuli(ps)
+    return next((sts[i] for i in item.get("stimulus_ids") or [] if i in sts), None)
+
+
+def question_preview_findings(boards: list[dict], blocks: dict, ps: dict | None) -> list[tuple[str, str]]:
+    """(utterance or board id, what) for a Part B or C question's preview on a
+    Listening board (owner, 2026-10-14; ADR 033, ADR 035): before the recording
+    plays in full ("exam" or "extract"), a pause to think after each option;
+    after it, a pause-and-try prompt before the answer; and, before the key is
+    ticked, no word of the answer's evidence in the narrator's own words (an
+    example of what to listen for is never the transcript's words for the
+    answer). Never prints an answer."""
+    from write_narration import spoken
+    its = practice_set.items(ps or {"parts": []})
+    out = []
+    for bd in boards:
+        ids = list(bd.get("fixed") or []) + [i for s in bd["states"] for i in s.get("working") or []]
+        qs = [blocks[i] for i in dict.fromkeys(ids) if ((blocks.get(i) or {}).get("question") or {}).get("options")
+              and blocks[i]["question"].get("item") in its]
+        for qb in qs:
+            item = its[qb["question"]["item"]]
+            key = next((p["part"] for p in qb.get("items") or [] if p.get("kind") == "key"), None)
+            at_key = next((k for k, s in enumerate(bd["states"]) for u in s["utterances"] for c in u.get("cues") or []
+                           if c.get("type") == "reveal" and c.get("block") == f"{qb['id']}.{key}"), None)
+            if at_key is None:
+                continue
+            ev = evidence_words(ps, item)
+            pauses, played, tried = 0, False, False
+            for k, s in enumerate(bd["states"]):
+                for u in s["utterances"]:
+                    cues = u.get("cues") or []
+                    if k < at_key:
+                        said = spoken(u["text_with_cues"]).lower()
+                        for c in cues:
+                            if c.get("text") and c.get("type") not in ("type", PLAY, "pause", "reveal"):
+                                said = said.replace(c["text"].lower(), " ")
+                        hit = sorted(ev & set(_words(said)))
+                        if hit:
+                            out.append((u["id"], f"says {len(hit)} word(s) of the answer's evidence before the "
+                                                 f"answer to question {qb.get('exercise_item')} (an example of what "
+                                                 "to listen for is never the transcript's words for the answer; "
+                                                 "ADR 033, ADR 035)"))
+                    if played and k <= at_key and any(c.get("type") == "pause" and (c.get("text") or "").strip()
+                                                      .lower().startswith(PROMPT_PAUSE) for c in cues):
+                        tried = True
+                    if not played:
+                        if any(c.get("type") == PLAY and c.get("with") in ("exam", "extract") for c in cues):
+                            played = True
+                        else:
+                            pauses += sum(1 for c in cues if c.get("type") == "pause")
+            n = len(qb["question"]["options"])
+            if played and pauses < n:
+                out.append((bd["id"], f"the preview of question {qb.get('exercise_item')} has {pauses} pause(s) "
+                                      f"for {n} options before the recording: leave a pause to think after each "
+                                      "option (ADR 033, ADR 035)"))
+            if played and not tried:
+                out.append((bd["id"], f"question {qb.get('exercise_item')} has no pause-and-try prompt between the "
+                                      "recording and its answer (ADR 030)"))
     return out
 
 

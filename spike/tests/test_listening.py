@@ -169,7 +169,12 @@ class ListeningSet(unittest.TestCase):
 
     def test_numbers(self):
         self.assertEqual(P.release_number(GAPFILL), 1)
-        self.assertEqual(P.number(SET, CHOICE), 25)
+        # ADR 032: a Part B (or C) question carries its practice number; the real
+        # test's number is context
+        self.assertEqual((P.number(SET, CHOICE), P.exam_number(CHOICE)), (1, 25))
+        self.assertEqual(P.number(SET, GAPFILL), 1)
+        self.assertEqual(P.exam_numbers(SET), {1: 25})
+        self.assertIn("(number 1; question 25 in the real test", P.question_for_prompt(SET, CHOICE))
         self.assertEqual(P.check_listening(SET), [])
         with mock.patch.dict(WT._cache, {"f": {"stimuli": {}}}):
             self.assertEqual(P.check_listening(SET), [STIM["stimulus_id"] + " (no word times for this transcript "
@@ -192,7 +197,7 @@ class Rule(unittest.TestCase):
         self.assertIn("WORDS", text)
         self.assertIn("TRANSCRIPT oa-set-lx-0001-e1", text)
         self.assertIn("NOTE FORM oa-listening-990001", text)
-        self.assertIn("QUESTION oa-listening-990025 (number 25", text)
+        self.assertIn("QUESTION oa-listening-990025 (number 1; question 25 in the real test", text)
         self.assertNotIn("Morning", listening_rule.set_text(L, [6]))
 
     def test_pause_and_try_prompts_never_repeat(self):
@@ -357,6 +362,50 @@ class Rule(unittest.TestCase):
         self.assertEqual([x[0] for x in found], ["t1"])
         self.assertIn("1 pause(s) for 2 gaps", found[0][1])
 
+    def test_the_real_tests_number_is_context_only(self):
+        # ADR 032: the board shows question 1; "twenty-five" may be said only in a
+        # sentence that names the real test or the recording
+        import question_numbers as qn
+        blocks = {"k01": {"question": {"item": CHOICE["item_id"]}, "exercise_item": 1}}
+        board = lambda text: {"fixed": ["k01"], "states": [{"working": [], "utterances": [
+            {"id": "u1", "text_with_cues": text}]}]}
+        ok = "Question one. In the real test, this is question twenty-five, the number in the recording."
+        self.assertEqual(qn.board_findings(board(ok), blocks, [1], P.exam_numbers(SET)), [])
+        self.assertEqual(len(qn.board_findings(board("Now question twenty-five."), blocks, [1],
+                                               P.exam_numbers(SET))), 1)
+        self.assertEqual(len(qn.board_findings(board(ok), blocks, [1])), 1)      # no map: not allowed
+
+    def test_a_question_preview_pauses_per_option_and_never_says_the_evidence(self):
+        # ADR 033, ADR 035: a pause after each option before the recording; a
+        # pause-and-try prompt before the answer; no evidence word before the tick
+        item = dict(CHOICE, evidence="Mr Plon: Sore since Tuesday.")
+        ps = dict(SET, parts=[SET["parts"][0], {"code": "LB", "stimuli": [], "items": [item]}])
+        qb = {"id": "k03", "question": {"item": item["item_id"], "options": P.options_of(item)},
+              "exercise_item": 1, "items": [{"kind": "out", "option": "B", "part": 1},
+                                             {"kind": "out", "option": "C", "part": 2},
+                                             {"kind": "key", "option": "A", "part": 3}]}
+        cue = lambda i, typ, **kw: {"id": i, "type": typ, **kw}
+        utt = lambda i, text, *cues: {"id": i, "text_with_cues": text, "cues": list(cues)}
+        pause = lambda: cue("c1", "pause", seconds=2, text="thinking about it")
+        boards = [{"id": "t1", "fixed": ["k03"], "states": [
+            {"id": "s1", "working": [], "utterances": [
+                utt("u1", "A: pain, maybe aching.{{c1}}", pause()),
+                utt("u2", "B: a cough, maybe since Tuesday.{{c1}}", pause()),
+                utt("u3", "C: a fever, maybe hot.{{c1}}", pause()),
+                utt("u4", "Listen.{{c1}}", cue("c1", "play", text="x", **{"with": "exam"})),
+                utt("u5", "Try it.{{c1}}", cue("c1", "pause", seconds=4, text="try it first"))]},
+            {"id": "s2", "working": [], "utterances": [utt("u6", "It is A. {{c1}}", cue("c1", "reveal", block="k03.3"))]}]}]
+        found = listening_rule.question_preview_findings(boards, {"k03": qb}, ps)
+        self.assertEqual([x[0] for x in found], ["u2"])          # "tuesday" is the evidence's word
+        self.assertNotIn("Tuesday", found[0][1])                 # never prints it
+        boards[0]["states"][0]["utterances"][1]["text_with_cues"] = "B: a cough, maybe a dry one.{{c1}}"
+        self.assertEqual(listening_rule.question_preview_findings(boards, {"k03": qb}, ps), [])
+        del boards[0]["states"][0]["utterances"][4]                 # no prompt
+        boards[0]["states"][0]["utterances"][2]["cues"] = []        # two pauses for three options
+        found = listening_rule.question_preview_findings(boards, {"k03": qb}, ps)
+        self.assertEqual(sorted(x[1].split(" (")[0][:40] for x in found),
+                         ["question 1 has no pause-and-try prompt b", "the preview of question 1 has 2 pause(s)"])
+
     def test_parts_b_and_c_of_either_skill(self):
         L = lesson("listening-09-x", "listening", SET)
         self.assertTrue(ws.has_part_b(L) and ws.has_listening_set(L))
@@ -513,7 +562,7 @@ class PinnedSets(unittest.TestCase):
             pkg, _ = WT.release()
             lc = next(x for x in pkg["sets"] if x["set_id"] == "oa-set-lc-0001")
             ps = {"parts": lc["parts"], "release": {}}
-            for n in range(31, 37):
+            for n in range(1, 7):            # practice numbers (ADR 032): Part C 31-36 are 1-6
                 s = P.exam_span(ps, "oa-set-lc-0001-e1", f"question {n}")
                 self.assertLess(s["clip_in"], s["clip_out"])
 

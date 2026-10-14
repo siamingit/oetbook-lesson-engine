@@ -72,10 +72,19 @@ def lesson_numbers(blocks: dict) -> list[int]:
                    if b.get("question") and b.get("exercise_item") is not None})
 
 
-def board_findings(board: dict, blocks: dict, taught: list[int]) -> list[dict]:
+# A sentence that gives the real test's number as context (ADR 032): "in the
+# real test, this is question twenty-five"; "the recording calls it question 25"
+REAL_TEST = re.compile(r"\b(?:real test|the recording|recording calls|recording says)\b", re.I)
+
+
+def board_findings(board: dict, blocks: dict, taught: list[int],
+                   exam_of: dict[int, int] | None = None) -> list[dict]:
     """A board's spoken question numbers against the numbers it shows. `board`
     has `fixed`, `states` (each with `working` and `utterances`, an utterance's
-    text in `text` or `text_with_cues`) and may have `pinned`."""
+    text in `text` or `text_with_cues`) and may have `pinned`. `exam_of` maps a
+    Listening Part B or C question's practice number to the real test's
+    (practice_set.exam_numbers, ADR 032): that number may be spoken, as context,
+    in a sentence that names the real test or the recording."""
     findings = []
     if not taught:
         return findings
@@ -86,6 +95,10 @@ def board_findings(board: dict, blocks: dict, taught: list[int]) -> list[dict]:
         for u in s.get("utterances") or []:
             text = re.sub(r"\{\{[^}]*\}\}", "", u.get("text") or u.get("text_with_cues") or "")
             for n, said in spoken_numbers(text):
+                real = [x for x in (shown or taught) if (exam_of or {}).get(x) == n]
+                if real and any(n in [m for m, _ in spoken_numbers(x)] for x in re.split(r"(?<=[.?!])\s+", text)
+                                if REAL_TEST.search(x)):
+                    continue
                 if shown and n not in shown:
                     findings.append({"where": u["id"], "what": f"{said!r} is spoken; the board shows "
                                      f"question {', '.join(str(x) for x in sorted(shown))}"})
