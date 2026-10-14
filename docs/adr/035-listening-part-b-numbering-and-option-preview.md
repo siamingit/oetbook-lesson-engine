@@ -115,3 +115,17 @@ reveals three parts there, not four. Agent's carrying choice under the owner's b
 built lesson has such a gloss (Listening 02 is Part A). To reverse: drop the branch in
 `expand_practice`.
 
+
+## Amendment, 2026-10-14: a one-line reminder where the full gloss does not fit
+
+Found on listening-03-part-b's wide-font check (Verdana forced, 590 px small phone): even
+without its picture, a word-bank gloss under a Part B question could run a few pixels past
+the board's foot after the player's guard had set the question column to its floor. Where
+that happens, the screens author may give the word, on the Listening board only, a one-line
+reminder of the word bank's meaning (a plain note, "word: meaning") in place of the full
+gloss, and the narration says that meaning once. The full gloss (meaning, synonym, example,
+picture) stays on the word's matching board just before the Listening board, and on the
+recap after it. Used for three words in listening-03-part-b. The authoring prompt is not
+changed: this is a fit fallback, chosen when a check fails, not a default. Agent's carrying
+choice under the owner's brief. To reverse: give the word its full gloss again and shorten
+other notes on that board.
