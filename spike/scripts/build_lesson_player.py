@@ -412,12 +412,17 @@ def listen_board(L: Path, bd: dict, blocks_all: dict, pre: str = "") -> dict | N
     on_board = {i for i in bd["fixed"]} | {i for s in bd["states"] for i in s["working"]}
     q_of = {(blocks_all[i].get("question") or {}).get("item"): i for i in on_board
             if (blocks_all[i].get("question") or {}).get("item")}
+    # a question pinned on the board (a Part B Listening board's one question) is
+    # in the question column for the whole board: a recording shows it where it
+    # is, and no copy is drawn in its place (a copy, drawn at the column's top
+    # without the room kept for its reasons, moved its words; ADR 035)
+    pinned = {i for s in bd["states"] for i in s["working"] if blocks_all[i].get("pin")}
     form = next((i for i in bd["fixed"] if ((blocks_all.get(i) or {}).get("doc") or {}).get("text_type")
                  == "form"), None)
     secs = []
     for sec in practice_set.section_rows(st):
         out = {"from": sec["from"], "to": sec["to"], "rows": sec["rows"], "block": None, "row": None}
-        if sec.get("item"):
+        if sec.get("item") and q_of.get(sec["item"]) not in pinned:
             out["block"] = q_of.get(sec["item"]) or question_block_for(L, ps, sec["item"], blocks_all, pre)
         if sec.get("heading") and form:
             # the note form's row of this heading (its K-th heading row)
