@@ -2030,7 +2030,9 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
     findings += gloss_moment_findings(boards, blocks)
     # No lesson count and no list of the other lessons, in any lesson: the course
     # is still growing (ADR 014 amendment, maintainer 2026-09-27)
-    titles = [c.get("short_title") or "" for c in data.get("catalogue") or []]
+    # each short title once: two lessons may share one ("Overview" for Reading and
+    # Listening, "Part A"), and saying it once is naming one lesson, not a list
+    titles = list(dict.fromkeys(c.get("short_title") or "" for c in data.get("catalogue") or []))
     for bd in boards:
         for s in bd["states"]:
             for u in s["utterances"]:
