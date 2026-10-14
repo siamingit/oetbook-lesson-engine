@@ -57,7 +57,7 @@ import paths                                                   # noqa: E402
 from extract_understanding import api_key, esc, refuse_if_truncated, strip_bidi  # noqa: E402
 from write_screens import (maintainer_wording, relabel_note)                  # noqa: E402
 from build_course_index import check_ref                                      # noqa: E402
-from write_screens import (FIXED_FORBIDS, fixed_forbids, FRAME_CSS, frame_css, NON_LATIN, PAGE_CSS,     # noqa: E402
+from write_screens import (FIXED_FORBIDS, fixed_forbids, without_allowed, FRAME_CSS, frame_css, NON_LATIN, PAGE_CSS,     # noqa: E402
                            REGISTER_WORDS, block_html, block_texts, has_parts, is_exercise_board, resolve_images,
                            ledger_phrases, ledger_rulings, rulings_from_script)
 
@@ -1799,6 +1799,7 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
                         # longest first: a gloss's word must not break the match of its example
                         for t in sorted(block_texts(rb), key=len, reverse=True):
                             own = own.replace(t.lower().rstrip("."), " ")
+                own = without_allowed(lesson_dir_, own)     # fact 22, Listening only
                 for p in forbids:
                     if p.lower() in (low if p in data["forbids"] else own):
                         fail(uid, f"forbidden phrase {p!r} in {said!r}")
@@ -2029,7 +2030,9 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
     findings += gloss_moment_findings(boards, blocks)
     # No lesson count and no list of the other lessons, in any lesson: the course
     # is still growing (ADR 014 amendment, maintainer 2026-09-27)
-    titles = [c.get("short_title") or "" for c in data.get("catalogue") or []]
+    # each short title once: two lessons may share one ("Overview" for Reading and
+    # Listening, "Part A"), and saying it once is naming one lesson, not a list
+    titles = list(dict.fromkeys(c.get("short_title") or "" for c in data.get("catalogue") or []))
     for bd in boards:
         for s in bd["states"]:
             for u in s["utterances"]:
