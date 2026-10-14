@@ -308,8 +308,10 @@ prompts by the stages themselves.
 | Narration | a `play` cue at the end of a short spoken cue: `text` the extract's ID, `with` "exam", "extract", "lines N-M", "question N" or "heading K"; pause-and-try prompts (a `pause` with `text` "try it first") after each Part B and C question and each Part A heading group | the recording plays in the clock; "exam" includes the real reading time; a question's or heading's section is replayed with "question N" or "heading K"; the audit fails a prompt that repeats or nearly repeats another of the lesson's (`listening_rule.py <L> --prompts` checks the whole lesson) |
 | Player step | `build_lesson_player.py` | copies each extract's audio into `generated/exam-audio/`, byte for byte (sha256 checked); `check_board_page.py` checks each recording's file and span |
 
-Questions keep the exam's numbers (1-24, 25-30, 31-42; `check_question_numbers.py`
-allows it). Release audio is never changed: its loudness is the exercises
+Part A questions keep their numbers (1-24). Parts B and C are numbered by their
+practice numbers, 1-6 and 1-12, the real exam's numbers said once per part as
+context (ADR 032; carried in the engine when Part B is built: until then
+`check_question_numbers.py` still allows the exam's numbers). Release audio is never changed: its loudness is the exercises
 repository's (an issue there). Word times and sections (ADR 030) are committed in
 `spike/word_times/` (indices and times only, never words); `word_times.py --check`
 proves they still fit the release's transcripts and audio, and every question's
@@ -541,6 +543,12 @@ than one cell of its row gets its cell named in the section's narration
 `overrides.json` (ADR 009), re-rendered with `write_narration.py --render`, free.
 
 **final** (gate). Play `generated/lesson-player/player.html`.
+
+A Listening lesson's final approval also checks (ADR 032): the release audio has
+been replaced by the practice rendition of oetacademy-exercises #37 once it is
+delivered, and the word times re-run (`word_times.py --transcribe`, `--align`,
+`--check`) and the lesson re-checked; and the owner spot-checks the narration's
+explanations of medical terms.
 
 Pronunciation is judged here (ADR 005 folded the lexicon gate into this one).
 Terms the terms check did not hear as written are listed in
