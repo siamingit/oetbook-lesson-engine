@@ -2079,7 +2079,9 @@ def audit(boards: list[dict], data: dict) -> list[dict]:
         # and C questions by practice number, ADR 032): any number of the set
         taught = sorted(n for i in practice_set.items(ps).values()
                         for n in (i["numbers"] if practice_set.is_gapfill(i) else [practice_set.number(ps, i)]))
-    exam_of = practice_set.exam_numbers(ps) if ps else None
+    # the real test's numbers of the questions this lesson shows: Part C's two
+    # extracts are both numbered 1-6 (ADR 035 amendment of 2026-10-16)
+    exam_of = practice_set.exam_numbers(ps, practice_set.taught_items(lesson_dir)) if ps else None
     for bd in boards:
         for f in question_numbers.board_findings(bd, blocks, taught, exam_of):
             fail(f["where"], f["what"])

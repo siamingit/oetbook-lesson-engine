@@ -324,6 +324,32 @@ def recap_block(lesson: Path, keys: list[str]) -> dict:
                     + ", ".join(lexicon_id(lesson, k) for k in keys)}
 
 
+def section_item(lesson: Path, o: dict) -> str | None:
+    """The question whose section of its recording (the engine's sections,
+    spike/word_times, ADR 030) holds a transcript occurrence of a word: found by
+    the occurrence's sentence in the transcript's words, then the word itself in
+    it. None without word times or sections."""
+    import word_times
+    ps = practice_set.load(lesson)
+    st = practice_set.stimuli(ps or {"parts": []}).get(text_of(lesson, o["text_id"]))
+    if not st or not practice_set.is_audio(st):
+        return None
+    secs = word_times.sections_for(st)
+    if not secs:
+        return None
+    words, _ = word_times.words_of(st)
+    at = word_times.find_quote(words, o.get("sentence") or "", practice_set.speakers_of(st))
+    if not at:
+        row = transcript_row(lesson, o["text_id"], o["location"])
+        if not row:
+            return None
+        k = word_times.row_first_words(st)[row - 1]
+        at = (k, k)
+    first = next((word_times.norm(w) for w in (o.get("surface") or "").split() if word_times.norm(w)), "")
+    k = next((i for i in range(at[0], at[1] + 1) if first and word_times.norm(words[i]).startswith(first)), at[0])
+    return next((s.get("item") for s in secs if s["from"] <= k <= s["to"]), None)
+
+
 def question_words(lesson: Path) -> dict[str, list[str]]:
     """A Part C text's words by the question whose pre-teaching board teaches
     them (ADR 026, Part C; bundle 1.17), each word once a text, at its first
@@ -339,10 +365,16 @@ def question_words(lesson: Path) -> dict[str, list[str]]:
         loc = o["location"]
         if loc["kind"] in ("text", "transcript"):
             # a Listening word heard in a question's section of the recording goes
-            # to that question; one heard outside every section, to the first
-            # question of its extract (ADR 029)
-            ids = loc.get("paragraph_item_ids" if loc["kind"] == "text" else "section_item_ids") or [
-                i for i in out if text_of(lesson, o["text_id"]) in items[i]["stimulus_ids"]][:1]
+            # to that question. The word bank leaves some words outside every
+            # section (the end of a talk, after the last question's evidence):
+            # each goes to the question whose section, as the lesson replays it
+            # (the engine's own sections, ADR 030), holds it; never by default
+            # to the extract's first question (2026-10-16: Part C (1) taught two
+            # words of the talk's last sentence before its first question)
+            ids = loc.get("paragraph_item_ids" if loc["kind"] == "text" else "section_item_ids") or []
+            if not ids and loc["kind"] == "transcript":
+                ids = [x for x in [section_item(lesson, o)] if x]
+            ids = ids or [i for i in out if text_of(lesson, o["text_id"]) in items[i]["stimulus_ids"]][:1]
             if not ids:
                 continue
             later = [i for i in ids[1:] if o["surface"].lower() in (items[i].get("evidence") or "").lower()]
