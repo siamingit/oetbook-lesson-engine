@@ -7,7 +7,8 @@ taught, and facts 20 to 22 only as their rulings say (ADR 029, owner decision 9;
 ADR 033; AGENTS.md §5).
 
 - **VERIFIED**: the quote was read on the page named, on 2026-10-13, by the agent,
-  or confirmed by the chat from https://oet.com/learn/listening the same day.
+  or confirmed by the chat from https://oet.com/learn/listening the same day; a fact
+  added later (24 on) gives its own date and page.
 - **UNVERIFIED**: not found in those words on oet.com; never taught until verified.
 
 Quotes are short and as the agent read them (the page text through a fetch tool).
@@ -23,6 +24,7 @@ enough.
 | A | https://oet.com/en-us/post/listening-part-a-the-complete-guide |
 | B | https://oet.com/en-us/post/listening-part-b-the-complete-guide |
 | C | https://oet.com/en-us/post/listening-part-c-the-complete-guide |
+| B2 | https://oet.com/post/listening-part-b-the-complete-guide (the same guide without the region in its address; read by the agent on 2026-10-16) |
 
 ## The facts
 
@@ -51,6 +53,7 @@ enough.
 | 21 | Part A: a time to read the general instructions before Part A, usable as extra reading time | not found on L, A | **NOT TAUGHT** (owner, 2026-10-13): teach only the 30 seconds to look at the notes before each extract (fact 7) |
 | 22 | A target of about 20 of 24 in Part A (or 4 of 6 in Part B, 8 of 12 in Part C) | no oet.com source; a study target the instructor set | **ONLY AS THE TEACHER'S OWN RECOMMENDATION, in the first person** (owner, 2026-10-14, [ADR 033](adr/033-owner-review-listening-01-02-narration.md); it replaces "the instructor's suggested targets" of 2026-10-13): "I'd recommend aiming for 20 out of 24 in Part A.", with fact 18 said as: "Grade B usually needs about 30 of the 42 Listening marks." |
 | 23 | Paper test: Part A may be written in pen or pencil; Parts B and C shaded with a 2B pencil | verified on oet.com by the chat, 2026-10-13 | VERIFIED (chat, 2026-10-13) |
+| 24 | What Part B tests: the main idea (gist) of a workplace interaction, specific details, a speaker's purpose (why they say what they say), their attitude and opinion, and the listener's course of action (what they will do as a result) | B2: "Listening Part B tests your ability to understand common workplace interactions. More specifically, you're being tested on your ability to listen for gist (or main idea) of an interaction, to listen for specific details, to identify a speaker's purpose (why they're saying what they're saying), attitude and opinion, and the listener's course of action" | VERIFIED (agent, 2026-10-16, owner brief of that day). Taught in Listening 03, "The Part B format" |
 
 ## Not taught (corrected silently, owner decision 9)
 
