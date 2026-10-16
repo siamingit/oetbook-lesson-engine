@@ -180,6 +180,19 @@ class ListeningSet(unittest.TestCase):
             self.assertEqual(P.check_listening(SET), [STIM["stimulus_id"] + " (no word times for this transcript "
                                                       "and audio)"])
 
+    def test_stems(self):
+        # ADR 036: a Part C extract's questions without their options, as released
+        b = P.stems_block(SET, STIM)
+        self.assertEqual(b["header"], ["Number", "Question"])
+        self.assertEqual(b["rows"], [["1", "What is the problem?"]])
+        self.assertNotIn("pain", json.dumps(b["rows"]))
+        topics = [{"thoughts": [{"blocks": [{"type": "table", "label": "STEMS " + STIM["stimulus_id"]}]}]}]
+        with mock.patch.object(P, "load", return_value=SET):
+            ws.expand_practice(Path("x"), topics)
+        got = topics[0]["thoughts"][0]["blocks"][0]
+        self.assertEqual((got["rows"], got["anchor"], got["provenance"]),
+                         ([["1", "What is the problem?"]], True, "source-derived"))
+
     def test_rfc8785_hash(self):
         # an integral float hashes as an integer, as the exercises repository writes it
         self.assertEqual(P._jcs({"b": 49.0, "a": [0.5, 1e21, 1e-7]}), '{"a":[0.5,1e+21,1e-7],"b":49}')

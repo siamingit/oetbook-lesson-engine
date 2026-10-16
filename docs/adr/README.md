@@ -41,3 +41,4 @@ old one.
 | [033 — The owner's review of Listening 01 and 02: the first person, the grade B line, the gap-by-gap preview, talking with the learner](033-owner-review-listening-01-02-narration.md) | 2026-10-14 |
 | [034 — Listening: the owner's spelling line, and asides that speak to everyone](034-listening-spelling-line-and-asides.md) | 2026-10-14 |
 | [035 — Listening Part B: practice numbers in the engine, the option-by-option preview, and how the session maps onto the practice set](035-listening-part-b-numbering-and-option-preview.md) | 2026-10-14 |
+| [036 — Listening Part C: the six questions read first, as a table built from the release](036-listening-part-c-stems-table.md) | 2026-10-16 |

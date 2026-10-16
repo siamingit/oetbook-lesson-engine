@@ -4591,6 +4591,13 @@ def expand_practice(lesson: Path, topics: list[dict]) -> None:
                         b.update({**BLOCK_DEFAULTS, **vocab.gloss_block(lesson, k), **keep})
                     else:
                         b["vocab_ref_unknown"] = ref
+                elif b.get("type") == "table" and re.match(r"^STEMS\s+oa-set-[\w-]+$", ref, re.I) \
+                        and ref.split()[1] in stim:
+                    # a Listening Part C extract's questions without their options,
+                    # read in the 90 seconds (ADR 036)
+                    b.clear()
+                    b.update({**BLOCK_DEFAULTS, **practice_set.stems_block(ps, stim[ref.split()[1]]), **keep,
+                              "anchor": True})
                 elif b.get("type") == "table" and re.match(r"^RECAP\s+oa-set-[\w-]+$", ref, re.I) \
                         and ref.split()[1] in stim:
                     # a Part C text's word recap, one row per question (bundle 1.17)

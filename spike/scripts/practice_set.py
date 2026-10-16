@@ -398,6 +398,22 @@ def question_block(ps: dict, item: dict) -> dict:
             "note": f"practice set item {item['item_id']} as released (ADR 026); built by code"}
 
 
+def stems_block(ps: dict, stim: dict) -> dict:
+    """A Listening Part C extract's questions without their options (ADR 036):
+    the instructor reads the six stems in the 90 seconds, the options hidden, and
+    underlines their keywords. A table built by code from the release, one row per
+    question of the extract: its number in this lesson (`number`) and its stem as
+    released; never an option, a key or a reason."""
+    its = sorted((i for i in items(ps).values()
+                  if stim["stimulus_id"] in (i.get("stimulus_ids") or []) and not is_gapfill(i)),
+                 key=release_number)
+    return {"type": "table", "header": ["Number", "Question"],
+            "rows": [[str(number(ps, i)), question_text(ps, i)] for i in its],
+            "provenance": "source-derived",
+            "note": f"the questions of {stim['stimulus_id']} without their options, as released, built by "
+                    "code (ADR 036): " + ", ".join(i["item_id"] for i in its)}
+
+
 def question_for_prompt(ps: dict, item: dict) -> str:
     k = answer_key(item)
     fb = item.get("feedback") or {}
