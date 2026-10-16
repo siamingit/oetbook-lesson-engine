@@ -70,11 +70,12 @@ NEVER teach that abbreviations are accepted in Part A (teach writing the \
 words heard), and NEVER teach that the instructions' time can be used as extra \
 reading time: teach only the 30 seconds to look at the Part A notes before \
 each extract.
-  - QUESTION NUMBERS (owner, 2026-10-14; ADR 032): Part A gaps 1-24; Part B \
-questions 1-6 and Part C questions 1-12, their PRACTICE numbers, as the \
-website numbers them and as each question block shows. The real test's number \
-(Part B 25-30, Part C 31-42, which the recording announces) is context only, \
-said once for each question in the narration; never on a board.
+  - QUESTION NUMBERS (owner, 2026-10-14 and 2026-10-16; ADR 032, ADR 035 \
+amendment): the practice questions are numbered from 1 in each lesson, as each \
+question block shows: Part A gaps 1-24; Part B questions 1-6; Part C questions \
+1-6 in each Part C lesson (one extract each: never 7-12). The real test's \
+number (Part B 25-30, Part C 31-42, which the recording announces) is context \
+only, said once for each question in the narration; never on a board.
   - THE LEARNER NEVER TYPES. A Part A note form is shown on a board and the \
 lesson fills each gap after "try it first".
   - A WORD ON A BOARD is never a transcript's: you never copy, quote in a block \
@@ -234,12 +235,14 @@ spelling mistake can cost you the mark." Never that a word "must be spelt \
 correctly" (minor variations may be accepted, fact 10). A joke or an aside \
 speaks to every learner ("So, everyone, please take care with your \
 handwriting!"), never to one profession.
-  - QUESTION NUMBERS (owner, 2026-10-14; ADR 032): say them as the board shows \
-them: Part A gaps 1-24; Part B questions 1-6 and Part C questions 1-12, their \
-practice numbers. ONCE for each Part B or C question, give the real test's \
-number as context, in a sentence that names the real test or the recording \
-("In the real test, this is question twenty-five, and that is the number you \
-will hear in the recording."); never otherwise.
+  - QUESTION NUMBERS (owner, 2026-10-14 and 2026-10-16; ADR 032, ADR 035 \
+amendment): say them as the board shows them, numbered from 1 in this lesson: \
+Part A gaps 1-24; Part B questions 1-6; Part C questions 1-6 (each Part C \
+lesson teaches one extract: never 7-12). ONCE for each Part B or C question, \
+give the real test's number as context, in a sentence of its own that names \
+the real test or the recording ("In the real test, this is question \
+twenty-five, and that is the number you will hear in the recording."); never \
+otherwise, and never in the sentence that says the practice number.
   - THE RECORDINGS. The release's own audio plays inside the lesson, started by \
 a `play` cue: {"type": "play", "text": "<the extract's stimulus ID>", "with": \
 "<span>", "block": null, "to_block": null, "to_text": null, "seconds": null}, \
@@ -339,8 +342,10 @@ LISTENING LESSON (ADR 029). The lesson teaches the OET Listening test. The \
 practice set's transcripts, note forms and questions (blocks built from the \
 release, shown exactly as released) are not findings: never suggest changing \
 their wording. Question numbers: Part A gaps 1-24; Parts B and C their practice \
-numbers (1-6, 1-12, ADR 032), the real test's number (25-30, 31-42) said once \
-per question as context; these are not findings. Report any recording, form, question or speaker of the \
+numbers, from 1 in each lesson (Part B 1-6, each Part C lesson 1-6; ADR 032, \
+ADR 035 amendment), the real test's number (25-30, 31-42) said once per \
+question as context; these are not findings, but report a Part C practice \
+number above 6, or a real test number said as if it were the practice number. Report any recording, form, question or speaker of the \
 instructor's own practice material named, quoted or described; any reference \
 to a website, a course series or a Persian audience; any exam fact not in the \
 rulings; any claim about a tool of the computer test; any advice to take a mock \

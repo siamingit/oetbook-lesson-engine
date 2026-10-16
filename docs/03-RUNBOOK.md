@@ -308,11 +308,15 @@ prompts by the stages themselves.
 | Narration | a `play` cue at the end of a short spoken cue: `text` the extract's ID, `with` "exam", "extract", "lines N-M", "question N" or "heading K"; pause-and-try prompts (a `pause` with `text` "try it first") after each Part B and C question and each Part A heading group | the recording plays in the clock; "exam" includes the real reading time; a question's or heading's section is replayed with "question N" or "heading K"; the audit fails a prompt that repeats or nearly repeats another of the lesson's (`listening_rule.py <L> --prompts` checks the whole lesson, its vocabulary explanations and its rapport talk too); a Part A preview goes gap by gap with a pause after each and example words that are never the answer: the audit fails a gap's accepted form said before the gap is answered, or fewer pauses than gaps before the recording (ADR 033); a Part B or C question's preview has a pause after each option before the recording, a pause-and-try prompt before the answer, and no word of the answer's evidence before the answer (ADR 035) |
 | Player step | `build_lesson_player.py` | copies each extract's audio into `generated/exam-audio/`, byte for byte (sha256 checked); `check_board_page.py` checks each recording's file and span |
 
-Part A questions keep their numbers (1-24). Parts B and C are numbered by their
-practice numbers, 1-6 and 1-12 (`practice_set.number`), the real test's number said
-once per question as context, in a sentence that names the real test or the
-recording (ADR 032, carried by ADR 035: `check_question_numbers.py` and the narration
-audit allow that number only there). Release audio is never changed: its loudness is the exercises
+In every Listening lesson the practice questions are numbered from 1 within the
+lesson (owner, 2026-10-16; ADR 035 amendment): Part A's gaps 1-24, Part B 1-6, each
+Part C lesson 1-6 (one extract each: Part C (1) never 7-12) (`practice_set.number`),
+the real test's number said once per question as context, in a sentence of its own
+that names the real test or the recording (ADR 032, carried by ADR 035:
+`check_question_numbers.py` and the narration audit allow that number only there, and
+fail a lesson whose questions do not run from 1). After the narration is voiced or
+re-voiced, `check_spoken_numbers.py <L>` (Scribe, paid, about $0.20 a lesson) checks
+every question number as the voice says it against the script and the board. Release audio is never changed: its loudness is the exercises
 repository's (an issue there). Word times and sections (ADR 030) are committed in
 `spike/word_times/` (indices and times only, never words); `word_times.py --check`
 proves they still fit the release's transcripts and audio, and every question's

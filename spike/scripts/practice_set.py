@@ -207,6 +207,7 @@ def part_code(ps: dict, item: dict) -> str | None:
 
 
 PRACTICE_NUMBERED = ("LB", "LC")       # Listening parts numbered by practice number (ADR 032)
+PER_EXTRACT = ("LC",)                  # numbered within its extract: one extract a lesson (ADR 035 amendment)
 
 
 def number(ps: dict, item: dict) -> int:
@@ -214,17 +215,20 @@ def number(ps: dict, item: dict) -> int:
     on, a lesson numbers the questions it teaches from 1 in the order taught
     (ADR 026 amendment of 2026-10-08; `numbering: lesson`, the items in
     `lesson_items`), never by the release's number; the item ID is unchanged.
-    A Listening Part B or C question carries its practice number (ADR 032;
-    owner, 2026-10-14): its place in its part, 1-6 in Part B and 1-12 in Part
-    C, as the website numbers them; the real test's number (`exam_number`) is
+    A Listening Part B or C question carries its practice number, counted from
+    1 in the lesson that teaches it (ADR 032; owner, 2026-10-14 and 2026-10-16,
+    ADR 035 amendment): Part B 1-6, its place in its part (one lesson teaches
+    all six); Part C 1-6, its place in its extract (each Part C lesson teaches
+    one extract, ADR 029 decision 7). The real test's number (`exam_number`) is
     said as context. Part A's gaps are 1-24 in both. Any other lesson keeps the
     release's number (Reading 2 and 3)."""
     if ps.get("numbering") == "lesson" and item["item_id"] in ps["lesson_items"]:
         return ps["lesson_items"].index(item["item_id"]) + 1
     code = part_code(ps, item)
     if code in PRACTICE_NUMBERED:
-        first = min(release_number(i) for p in ps["parts"] if p.get("code") == code for i in p["items"])
-        return release_number(item) - first + 1
+        peers = [i for p in ps["parts"] if p.get("code") == code for i in p["items"]
+                 if code not in PER_EXTRACT or i.get("stimulus_ids") == item.get("stimulus_ids")]
+        return release_number(item) - min(release_number(i) for i in peers) + 1
     return release_number(item)         # not taught in this lesson: never shown
 
 
@@ -234,11 +238,32 @@ def exam_number(item: dict) -> int:
     return release_number(item)
 
 
-def exam_numbers(ps: dict) -> dict[int, int]:
+def exam_numbers(ps: dict, item_ids=None) -> dict[int, int]:
     """A Listening set's practice numbers and the real test's number of each
-    (ADR 032), for the Part B and C questions; {} for any other set."""
+    (ADR 032), for the Part B and C questions; {} for any other set. Part C's
+    two extracts are both numbered 1-6, so a lesson passes the items it shows
+    (`item_ids`, its question blocks' items, `taught_items`): the map is then
+    that lesson's, never the other extract's."""
     return {number(ps, i): exam_number(i) for i in items(ps).values()
-            if part_code(ps, i) in PRACTICE_NUMBERED and not is_gapfill(i)}
+            if part_code(ps, i) in PRACTICE_NUMBERED and not is_gapfill(i)
+            and (item_ids is None or i["item_id"] in item_ids)}
+
+
+def taught_items(lesson: Path) -> set[str] | None:
+    """The practice-set items a lesson's boards show as questions: the items of
+    the question blocks in its sections' screens (analysis/screens/*/
+    screens.json); None while no section has screens."""
+    files = sorted((Path(lesson) / "analysis" / "screens").glob("*/screens.json"))
+    if not files:
+        return None
+    found = set()
+    for f in files:
+        for t in json.loads(f.read_text(encoding="utf-8")).get("topics") or []:
+            for h in t.get("thoughts") or []:
+                for b in h.get("blocks") or []:
+                    if (b.get("question") or {}).get("item"):
+                        found.add(b["question"]["item"])
+    return found
 
 
 def release_number(item: dict) -> int:

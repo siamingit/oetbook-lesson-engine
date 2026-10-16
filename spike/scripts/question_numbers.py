@@ -38,7 +38,9 @@ def word_number(w: str) -> int | None:
 NUM = (r"(?:\d{1,2}|(?:twenty|thirty|forty|fifty)(?:[- ](?:one|two|three|four|five|six|seven|eight|nine))?"
        r"|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|ten"
        r"|one|two|three|four|five|six|seven|eight|nine)")
-SPOKEN = re.compile(r"\bquestions?\s+(?:number\s+)?(" + NUM + r")(?:\s*(?:to|-|through|and)\s*(" + NUM + r"))?\b",
+# "question eight", "questions one to six", "question number 8", and "the last
+# question, number six" (2026-10-16: a number after the comma is the question's)
+SPOKEN = re.compile(r"\bquestions?(?:,?\s+number)?\s+(" + NUM + r")(?:\s*(?:to|-|through|and)\s*(" + NUM + r"))?\b",
                     re.I)
 
 

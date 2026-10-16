@@ -388,6 +388,66 @@ class Rule(unittest.TestCase):
                                                P.exam_numbers(SET))), 1)
         self.assertEqual(len(qn.board_findings(board(ok), blocks, [1])), 1)      # no map: not allowed
 
+    def test_practice_numbers_from_one_in_each_lesson(self):
+        # ADR 035 amendment (owner, 2026-10-16): each Part C lesson teaches one
+        # extract and numbers its questions 1-6 (Part C (1) never 7-12); the real
+        # test's map is the lesson's own extract's
+        def item(n, e):
+            return dict(CHOICE, item_id=f"oa-listening-9900{n}", number=n, stimulus_ids=[f"oa-set-lx-0001-e{e}"])
+        ps = {"set_id": "oa-set-lx-0001", "parts": [
+            {"code": "LC", "stimuli": [], "items": [item(n, 1) for n in range(31, 37)] + [item(n, 2) for n in range(37, 43)]}]}
+        its = P.items(ps)
+        self.assertEqual([P.number(ps, its[f"oa-listening-9900{n}"]) for n in range(31, 43)],
+                         [1, 2, 3, 4, 5, 6] * 2)
+        e2 = {f"oa-listening-9900{n}" for n in range(37, 43)}
+        self.assertEqual(P.exam_numbers(ps, e2), {k: 36 + k for k in range(1, 7)})
+        self.assertEqual(P.number(SET, CHOICE), 1)                                  # Part B: its place in its part
+        lesson_ps = dict(ps, numbering="lesson", lesson_items=["oa-listening-990040"])
+        self.assertEqual(P.number(lesson_ps, its["oa-listening-990040"]), 1)        # a lesson's own order wins
+
+    def test_the_lesson_check_fails_numbers_that_do_not_start_from_1(self):
+        import check_question_numbers as cqn
+
+        def bundle(nums, items=None):
+            items = items or [f"i{n}" for n in nums]
+            blocks = {f"k{k}": {"question": {"item": it}, "exercise_item": n}
+                      for k, (n, it) in enumerate(zip(nums, items))}
+            return {"blocks": blocks, "boards": [{"id": f"b{k}", "fixed": [f"k{k}"], "states": [
+                {"working": [], "utterances": []}]} for k in range(len(nums))]}
+        self.assertEqual(cqn.check(bundle([1, 2, 3, 4, 5, 6]), True)[1], [])
+        found = cqn.check(bundle([7, 8, 9, 10, 11, 12]), True)[1]           # a Listening lesson too
+        self.assertTrue(any("first question is 7, not 1" in f["what"] for f in found))
+        self.assertTrue(any("without 4" in f["what"] for f in cqn.check(bundle([1, 2, 3, 5]), True)[1]))
+        self.assertTrue(any("2 different questions" in f["what"]
+                            for f in cqn.check(bundle([1, 1, 2], ["a", "b", "c"]), True)[1]))
+
+    def test_the_last_question_comma_number(self):
+        # "The last question, number twelve." names a question number
+        import question_numbers as qn
+        self.assertEqual([n for n, _ in qn.spoken_numbers("The last question, number six.")], [6])
+        self.assertEqual(qn.spoken_numbers("Two questions, one answer."), [])
+        blocks = {"k01": {"question": {"item": "x"}, "exercise_item": 6}}
+        board = {"fixed": ["k01"], "states": [{"working": [], "utterances": [
+            {"id": "u1", "text_with_cues": "The last question, number twelve."}]}]}
+        self.assertEqual(len(qn.board_findings(board, blocks, [1, 2, 3, 4, 5, 6])), 1)
+
+    def test_a_word_outside_the_word_banks_sections_goes_to_its_own_section(self):
+        # 2026-10-16: the word bank gives no section for a word of a talk's last
+        # sentence; it goes to the question whose section of the recording holds
+        # it (the engine's sections), never to the extract's first question
+        import vocab
+        L = lesson("listening-09-x", "listening", SET)
+        occ = {"text_id": "e1", "lexicon_id": "lx:wake", "surface": "wakes", "sentence": "It wakes me at night.",
+               "location": {"kind": "transcript", "turn": 2, "paragraph": 2, "section_item_ids": []}}
+        secs = [{"item": GAPFILL["item_id"], "from": 0, "to": 8}, {"item": CHOICE["item_id"], "from": 9, "to": 13}]
+        with mock.patch.object(WT, "sections_for", return_value=secs), \
+                mock.patch.object(vocab, "occurrences", return_value=[occ]), \
+                mock.patch.object(vocab, "key_of", return_value="w:wake"):
+            self.assertEqual(vocab.section_item(L, occ), CHOICE["item_id"])
+            words = vocab.question_words(L)
+        self.assertEqual(words[CHOICE["item_id"]], ["w:wake"])
+        self.assertEqual(words[GAPFILL["item_id"]], [])
+
     def test_a_question_preview_pauses_per_option_and_never_says_the_evidence(self):
         # ADR 033, ADR 035: a pause after each option before the recording; a
         # pause-and-try prompt before the answer; no evidence word before the tick

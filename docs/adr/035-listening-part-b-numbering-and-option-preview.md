@@ -141,3 +141,65 @@ on the board: that question is already in the column for the whole board, so the
 shows it where it is. A section whose question is not on the board, or is a state's own
 block (Part C), keeps the copy as before. Proved by render_compare on every built lesson.
 To reverse: drop the `pinned` test in `listen_board`.
+
+## Amendment, 2026-10-16: practice questions are numbered from 1 in every Listening lesson
+
+Decided by the owner in chat on 2026-10-16, after reviewing listening-04-part-c ("the
+agreed rule is that practice questions in a Listening lesson are numbered from 1, as on
+the website ... Renumber them 1-6 everywhere"). It replaces decision 1's "Part C 1-12"
+and decision 2's "Part C (1) starts at 7"; ADR 032's numbering of Part C 1-12 is
+replaced by the same rule.
+
+### The rule (owner)
+
+- **In every Listening lesson, the practice questions are numbered from 1 within that
+  lesson.** Part A's gaps 1-24 (Listening 02 teaches both extracts); Part B 1-6
+  (Listening 03); Part C (1), the presentation, 1-6 (never 7-12); Part C (2), the
+  interview, not built yet, 1-6 as well.
+- **The real test's number is said once per section**, as context, in a sentence of its
+  own that names the real test or the recording (decision 2): Part C (1) says 37 to 42,
+  one on each question's board, Part C (2) will say 31 to 36. A practice number and a
+  real test's number are never said in one sentence.
+- Board text, question badges, the six-questions table (ADR 036), section titles, the
+  contents, the word lists, the recap and every spoken number follow it.
+
+### How it is carried
+
+- `practice_set.number`: a Listening Part C question is numbered by its place in its
+  **extract** (`PER_EXTRACT`), as each Part C lesson teaches one extract (ADR 029
+  decision 7); Part B keeps its place in its part (one lesson teaches all six). No
+  manual step; a lesson that teaches only some questions of a part still uses
+  `practice_set.py --lesson-items` (ADR 026 amendment of 2026-10-08).
+  `practice_set.exam_numbers(ps, item_ids)` gives the real test's numbers of the
+  questions the lesson shows only (`practice_set.taught_items`, the question blocks of
+  its screens), since both Part C extracts are numbered 1-6.
+- **The check fails any practice number that does not start from 1 in its lesson**:
+  `check_question_numbers.py` (the runner's silent-preview and player steps) no longer
+  exempts a Listening lesson: the lesson's first question is 1, its numbers run 1 to N
+  with none missing, and no number is given to two different questions. Run on every
+  built lesson on 2026-10-16: every lesson passes except listening-04-part-c as built
+  (7-12), which fails until it is renumbered.
+- `question_numbers.SPOKEN` also reads "the last question, number six" (a number after
+  "question,"); "number N" alone is not read, since lessons use it for list items.
+- `listening_rule.py`: the screens, narration and QA rules say the numbers above, and
+  the narration rule that the real test's number has a sentence of its own.
+- **Spoken numbers are checked as heard**: `check_spoken_numbers.py` (paid, Scribe;
+  AGENTS.md §4) transcribes every narration clip of a built lesson and fails a clip whose
+  heard question numbers differ from its script's, or that break the board rule above
+  as heard. It writes `spoken_numbers_check.json` beside the player. Not a runner step;
+  run after a lesson's narration is voiced or re-voiced.
+- Found with it, and fixed in the same change: `vocab.question_words` gave a word the
+  word bank leaves outside every section (the end of a talk) to the extract's first
+  question, so Part C (1) pre-taught two words said in the talk's last sentence
+  before question 1. Such a word now goes to the question whose section of the
+  recording, as the lesson replays it (spike/word_times, ADR 030), holds it.
+  Where the word bank names a section, it agreed with the engine's for every word of
+  oa-set-lc-0001 (checked 2026-10-16).
+
+### Consequences
+
+- listening-04-part-c is renumbered 1-6 (screens and narration; only the lines that say a
+  practice number, and the moved word lessons, re-voiced). Every other built lesson
+  renders identical (render_compare, before-num / after-num).
+- To reverse: `PER_EXTRACT = ()` and the Listening exemption in
+  `check_question_numbers.py`; a new ADR. The rule is the owner's.
