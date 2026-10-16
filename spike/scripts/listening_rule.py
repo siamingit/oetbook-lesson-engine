@@ -190,9 +190,12 @@ played again.
 """
 
 PART_C_METHOD = """\
-THE PART C LESSON (owner, 2026-10-13; ADR 029, ADR 030). For each extract: a \
-board of its six stems (the questions' blocks, read in the 90 seconds of \
-reading time: keywords, the kind of answer, the opinion question); the \
+THE PART C LESSON (owner, 2026-10-13; ADR 029, ADR 030, ADR 036). For each \
+extract: a board of its six stems, read in the 90 seconds of reading time \
+(keywords, the kind of answer, the opinion question): {"type": "table", \
+"label": "STEMS <the extract's stimulus ID>", "anchor": true}, which code \
+builds as a table of the questions without their options, one "Row N: ..." \
+thought per question; the \
 recording played once in full, with its real reading time, on a LISTENING \
 BOARD (the transcript, and the first question: while it plays, the question \
 column follows the sections); then, for each question in order: its \
