@@ -42,3 +42,4 @@ old one.
 | [034 — Listening: the owner's spelling line, and asides that speak to everyone](034-listening-spelling-line-and-asides.md) | 2026-10-14 |
 | [035 — Listening Part B: practice numbers in the engine, the option-by-option preview, and how the session maps onto the practice set](035-listening-part-b-numbering-and-option-preview.md) | 2026-10-14; amended three times 2026-10-14; amended 2026-10-16 (practice questions numbered from 1 in every Listening lesson) |
 | [036 — Listening Part C: the six questions read first, as a table built from the release](036-listening-part-c-stems-table.md) | 2026-10-16 |
+| [037 — Listening Part C (2): an all-authored lesson on the interview, and the interviewer as a signpost](037-listening-part-c-2-interview.md) | 2026-10-17 |
