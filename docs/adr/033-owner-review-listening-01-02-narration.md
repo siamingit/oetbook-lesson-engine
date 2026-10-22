@@ -60,6 +60,9 @@ read the boards rather than talking with the learner.
 6. **Recorded for later** (no work now): the Listening narration prompt switches to
    practice numbering at listening-03-part-b (ADR 032); Reading 5 is renumbered to
    9–16 after the Listening course is finished.
+   **The Reading 5 renumbering is CANCELLED** (owner, 2026-10-22): practice questions in
+   every lesson start at 1 and the real exam's number is said once per section (ADR 035,
+   amendment of 2026-10-16), so Reading 5 stays 1–8. See ADR 035's amendment of 2026-10-22.
 
 ## How it is carried
 

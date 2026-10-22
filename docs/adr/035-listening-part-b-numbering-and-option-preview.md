@@ -203,3 +203,17 @@ replaced by the same rule.
   renders identical (render_compare, before-num / after-num).
 - To reverse: `PER_EXTRACT = ()` and the Listening exemption in
   `check_question_numbers.py`; a new ADR. The rule is the owner's.
+
+## Amendment, 2026-10-22: Reading 5 stays 1–8
+
+Decided by the owner in chat on 2026-10-22. ADR 033 decision 6 recorded a plan to
+renumber Reading 5 (`reading-05-part-c-2`) from 1–8 to 9–16 after the Listening course.
+That plan is cancelled: under the amendment of 2026-10-16 above, practice questions in
+every lesson start at 1, and the real exam's number is said once per section in a
+sentence of its own.
+
+**Reading 5 stays 1–8. The 9–16 renumbering is cancelled. No future session should do it.**
+
+No lesson, code or check changes: Reading 5 already numbers its questions 1–8 (ADR 026
+amendment of 2026-10-08), and `check_question_numbers.py` fails a lesson whose first
+question is not 1.
