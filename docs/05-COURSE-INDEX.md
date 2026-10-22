@@ -30,6 +30,13 @@ index holds the product's full teaching content: every lesson's narration and
 board text. This document is its format description, and the only part of it
 that is kept here.
 
+**A summary of it does** (owner, 2026-10-21; docs/adr/038-public-course-index.md):
+`docs/course-index.json` and `docs/course-index.md`, what each lesson teaches and
+where, with ids and times but no narration, no practice-set text or answers and no
+word-bank meanings, for the handouts project and the website. Its schema is
+`docs/course-index.schema.json`; it is built by
+`spike/scripts/build_public_course_index.py`, right after this index.
+
 ---
 
 ## 2. How it is built

@@ -1,0 +1,358 @@
+{
+ "about": "The reviewed source of the public course index (docs/adr/038-public-course-index.md), read by spike/scripts/build_public_course_index.py. Only what the lesson data does not state: where each OET fact and exam method is taught (an utterance, board or block id of the lesson; the time is resolved on every build), what the docs record about each lesson's source session, topics that continue in another lesson, and topics for the topic index that no section title or term box names. Every line is faithful to the narration at its anchor. Every built lesson has an entry, even an empty one. Listening facts are numbers of docs/listening-facts.md; other facts are keys of `facts` below.",
+ "facts": {
+  "reading-grade-b": "The target is Grade B, a score of 350.",
+  "reading-thirty-of-42": "About 30 of the 42 Reading questions correct usually gives Grade B; grade boundaries change a little between test sessions.",
+  "reading-timing": "Reading lasts 60 minutes: Part A has 15 minutes, timed on its own; Parts B and C share 45 minutes.",
+  "reading-part-a": "Part A has four short texts and 20 questions.",
+  "reading-part-b": "Part B has six short workplace texts of 100 to 150 words, one question each.",
+  "reading-part-c": "Part C has two long texts of about 800 words, with 16 questions of four options.",
+  "reading-one-mark": "Every question carries one mark.",
+  "reading-part-a-time-plan": "Part A time plan: three minutes to skim the four texts, then the questions in order (two minutes for the matching questions).",
+  "reading-part-a-guide": "15 of the 20 Part A questions is a guide within the Grade B target.",
+  "reading-pencils": "On the paper test, mark with a pen or a pencil; highlighters are not allowed.",
+  "reading-shade": "On the paper test, Part B and C answers are shaded with a 2B pencil, and only a shaded circle counts.",
+  "writing-grammar-assessed": "Grammar is part of how the OET letter is assessed.",
+  "writing-vocabulary-range": "Assessors look at the range of vocabulary in the letter.",
+  "writing-letter-length": "An OET letter is 180 to 200 words."
+ },
+ "lessons": {
+  "grammar-01-verb-tenses": {
+   "session": "The Grammar 1 (Verb Tenses) session, in its newer recording, made after the deck was corrected; an older recording exists and is not the source (docs/01-METHODOLOGY.md §1, §8).",
+   "facts": [{"fact": "writing-grammar-assessed", "at": "page-4_t1.s1.u4"}],
+   "methods": [],
+   "continues_in": [{"lesson": "grammar-02-verb-use", "why": "Verb Use practises choosing the tense, and the active or the passive, taught here."}],
+   "topics": [
+    {"topic": "present simple", "at": "page-7_t1"},
+    {"topic": "past simple", "at": "page-7_t1"},
+    {"topic": "future simple", "at": "page-7_t1"},
+    {"topic": "continuous tenses", "at": "page-8_t1"},
+    {"topic": "present perfect", "at": "page-9_t2"},
+    {"topic": "past perfect", "at": "page-9_t3"},
+    {"topic": "future perfect", "at": "page-9_t4"},
+    {"topic": "perfect continuous tenses", "at": "page-10_t1"},
+    {"topic": "active and passive", "at": "page-15_t1"},
+    {"topic": "passive forms", "at": "page-16_t1"}
+   ]
+  },
+  "grammar-02-verb-use": {
+   "session": "The Grammar 2 (Verb Use) session, recorded at 1284 x 720 (docs/01-METHODOLOGY.md §1).",
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": [
+    {"topic": "choosing the tense", "at": "pages-05-06_t1"},
+    {"topic": "active and passive", "at": "page-7_t1"}
+   ]
+  },
+  "grammar-03-nominalization": {
+   "session": null,
+   "facts": [{"fact": "writing-vocabulary-range", "at": "page-7_t1.s14.u2"}],
+   "methods": [],
+   "continues_in": [],
+   "topics": [{"topic": "nominalisation", "at": "pages-04-05_t1"}]
+  },
+  "grammar-04-articles": {
+   "session": null,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": [
+    {"topic": "articles", "at": "pages-04-05_t1"},
+    {"topic": "a or an", "at": "pages-11-12_t1"}
+   ]
+  },
+  "grammar-05-complex-compound": {
+   "session": null,
+   "facts": [],
+   "methods": [],
+   "continues_in": [
+    {"lesson": "grammar-06-clause", "why": "Relative and participle clauses build on the clauses and joining words taught here."},
+    {"lesson": "grammar-07-punctuation", "why": "Punctuation teaches the comma in complex and compound sentences."}
+   ],
+   "topics": [
+    {"topic": "complex sentence", "at": "pages-04-05_t1"},
+    {"topic": "compound sentence", "at": "pages-08-09_t1"},
+    {"topic": "subordinating conjunctions", "at": "page-7_t1"}
+   ]
+  },
+  "grammar-06-clause": {
+   "session": null,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": [
+    {"topic": "relative clauses", "at": "pages-04-05_t1"},
+    {"topic": "defining and non-defining relative clauses", "at": "page-6_t1"},
+    {"topic": "participle clauses", "at": "pages-09-10_t1"}
+   ]
+  },
+  "grammar-07-punctuation": {
+   "session": "The recording teaches commas only; the second part (sections added-01 to added-09) is authored, with no recording (ADR 018).",
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": [{"topic": "commas", "at": "page-5_t1"}]
+  },
+  "grammar-08-paraphrasing": {
+   "session": null,
+   "facts": [{"fact": "writing-letter-length", "at": "page-6_t1.s24.u1"}],
+   "methods": [],
+   "continues_in": [],
+   "topics": [{"topic": "paraphrasing", "at": "page-4_t1"}]
+  },
+  "vocabulary-01-word-forms": {
+   "session": "Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).",
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": [
+    {"topic": "word forms", "at": "page-4_t1"},
+    {"topic": "relative pronouns", "at": "page-7_t1"}
+   ]
+  },
+  "vocabulary-02-collocations": {
+   "session": "Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).",
+   "facts": [],
+   "methods": [],
+   "continues_in": [{"lesson": "vocabulary-03-collocations-2", "why": "Adjective + noun collocations follow the verb + noun collocations taught here."}],
+   "topics": [{"topic": "verb + noun collocations", "at": "page-4_t1"}]
+  },
+  "vocabulary-03-collocations-2": {
+   "session": "Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).",
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": [{"topic": "adjective + noun collocations", "at": "page-5_t1"}]
+  },
+  "reading-01-overview": {
+   "session": "The Reading overview session, the first of the four recorded Reading sessions (ADR 026).",
+   "facts": [
+    {"fact": "reading-grade-b", "at": "page-4_t1.s2.u6"},
+    {"fact": "reading-thirty-of-42", "at": "page-5_t1.s4.u2"},
+    {"fact": "reading-timing", "at": "page-6_t1.s1.u1"},
+    {"fact": "reading-part-a", "at": "page-6_t1.s2.u1"},
+    {"fact": "reading-part-b", "at": "page-6_t1.s4.u1"},
+    {"fact": "reading-part-c", "at": "page-6_t1.s4.u2"},
+    {"fact": "reading-one-mark", "at": "page-8_t1.s2.u1"}
+   ],
+   "methods": [],
+   "continues_in": [
+    {"lesson": "reading-02-part-a", "why": "Part A in full."},
+    {"lesson": "reading-03-part-b", "why": "Part B in full."},
+    {"lesson": "reading-04-part-c", "why": "Part C in full."}
+   ],
+   "topics": []
+  },
+  "reading-02-part-a": {
+   "session": "The Reading Part A session. The instructor solved an official OET sample set, which is excluded; the lesson applies his method to the practice set oa-set-ra-0001 (ADR 026).",
+   "facts": [
+    {"fact": "reading-part-a", "at": "page-3_t1.s1.u3"},
+    {"fact": "reading-part-a-time-plan", "at": "page-6_t1.s3.u1"},
+    {"fact": "reading-pencils", "at": "page-7_t1.s3.u2"},
+    {"fact": "reading-thirty-of-42", "at": "page-11_t1.s1.u5"},
+    {"fact": "reading-part-a-guide", "at": "page-11_t1.s3.u8"}
+   ],
+   "methods": [
+    {"name": "Skimming", "text": "Read all four texts quickly first, by their headings, bullet points, tables, bold and italics; the path is highlighted.", "at": "page-7_t1"},
+    {"name": "The Part A question method", "text": "For each question: the four texts as a map, the question and its keywords, try it first, rule out the texts that cannot hold the answer, then zoom into the one that does and find the answer in its exact form (ADR 026).", "at": "page-9_t7"}
+   ],
+   "continues_in": [],
+   "topics": []
+  },
+  "reading-03-part-b": {
+   "session": "The Reading Part B session. The instructor taught on official OET sample texts, which are excluded; the lesson applies his method to the practice set oa-set-rb-0001 (ADR 026).",
+   "facts": [
+    {"fact": "reading-timing", "at": "page-5_t1.s2.u2"},
+    {"fact": "reading-part-b", "at": "page-5_t1.s6.u1"},
+    {"fact": "reading-shade", "at": "page-8_t2.s13.u2"},
+    {"fact": "reading-thirty-of-42", "at": "page-15_t1.s1.u4"}
+   ],
+   "methods": [
+    {"name": "The QAT method", "text": "Question, Answers, Text: read the question and its three options, with their keywords, before the text.", "at": "page-7_t1"},
+    {"name": "The Part B question method", "text": "The question and its keywords, the three options, try it first, then the extract: keyword pairs, the paraphrase of the right option, a reason for each wrong option, and the answer confirmed (ADR 026).", "at": "page-8_t2"}
+   ],
+   "continues_in": [],
+   "topics": []
+  },
+  "reading-04-part-c": {
+   "session": "The Reading Part C session, split at the start of Text 2: this lesson teaches Text 1, and reading-05-part-c-2 is built from the rest (ADR 026 amendment of 2026-10-08).",
+   "facts": [
+    {"fact": "reading-part-c", "at": "page-3_t1.s1.u3"},
+    {"fact": "reading-thirty-of-42", "at": "page-5_t1.s1.u3"},
+    {"fact": "reading-part-a-guide", "at": "page-5_t1.s2.u2"},
+    {"fact": "reading-timing", "at": "page-6_t1.s3.u1"},
+    {"fact": "reading-one-mark", "at": "page-6_t1.s11.u1"}
+   ],
+   "methods": [
+    {"name": "Opinion signals", "text": "A writer's view shows in four signals: opinion words, hedges, words of emotion or judgement, and the main clause that holds the view.", "at": "page-8_t1"},
+    {"name": "The QTA method", "text": "Question, Text, Answers: read the stem without the options, read the paragraph it points to and answer in your own words, then read the four options.", "at": "page-9_t1"},
+    {"name": "The Part C question method", "text": "In the order of the text, paragraph by paragraph: the question alone, the paragraph it is about, your own answer, the four options, try it first, the paraphrase of the right option, a reason for each wrong option, then the answer confirmed (ADR 026).", "at": "pages-10-11-12_t2"},
+    {"name": "The attitude scale", "text": "For a question about a view: a line from negative to positive, a marker moved as the evidence is read, and each option placed on it.", "at": "pages-10-11-12_k48"}
+   ],
+   "continues_in": [],
+   "topics": [
+    {"topic": "opinion signals", "at": "page-8_t1"},
+    {"topic": "hedging", "at": "page-8_t1"}
+   ]
+  },
+  "reading-05-part-c-2": {
+   "session": "Built from the Reading Part C session (a byte copy of reading-04-part-c's source): it teaches the session's Text 2, deck pages 13 to 15 (ADR 026 amendment of 2026-10-08).",
+   "facts": [
+    {"fact": "reading-timing", "at": "added-01_t3.s2.u1"},
+    {"fact": "reading-part-c", "at": "added-01_t3.s2.u2"},
+    {"fact": "reading-shade", "at": "added-01_t3.s2.u4"}
+   ],
+   "methods": [
+    {"name": "The QTA method (review)", "text": "Question, Text, Answers, in three steps, reviewed before the practice.", "at": "added-01_t1"},
+    {"name": "Opinion signals (review)", "text": "The four signals of a view, reviewed.", "at": "added-01_t2"},
+    {"name": "The attitude scale (review)", "text": "Rule out an option at the wrong point on the line, or one that goes too far.", "at": "added-01_t3"},
+    {"name": "The Part C question method", "text": "Applied to all eight questions of Text 2, paragraph by paragraph.", "at": "pages-13-14-15_t2"}
+   ],
+   "continues_in": [],
+   "topics": []
+  },
+  "listening-01-overview": {
+   "session": "The Listening overview session, the first of the four recorded Listening sessions (ADR 029).",
+   "facts": [
+    {"fact": 1, "at": "page-4_t1.s11.u1"},
+    {"fact": 2, "at": "page-4_t1.s11.u2"},
+    {"fact": 3, "at": "page-4_t1.s11.u1"},
+    {"fact": 4, "at": "page-7_t1.s2.u2"},
+    {"fact": 5, "at": "page-5_t1.s1.u3"},
+    {"fact": 6, "at": "page-4_t1.s3.u1"},
+    {"fact": 7, "at": "page-4_t1.s5.u1"},
+    {"fact": 8, "at": "page-6_t1.s2.u3", "note": "write the words you hear"},
+    {"fact": 10, "at": "page-5_t1.s2.u1"},
+    {"fact": 11, "at": "page-4_t1.s6.u2"},
+    {"fact": 12, "at": "page-4_t1.s7.u1"},
+    {"fact": 13, "at": "page-4_t1.s7.u2"},
+    {"fact": 14, "at": "page-4_t1.s9.u2"},
+    {"fact": 15, "at": "page-4_t1.s9.u4"},
+    {"fact": 16, "at": "page-5_t1.s1.u6"},
+    {"fact": 17, "at": "page-5_t1.s2.u3"},
+    {"fact": 18, "at": "page-4_t1.s12.u5"},
+    {"fact": 19, "at": "page-4_t1.s2.u2"},
+    {"fact": 22, "at": "page-4_t1.s12.u1", "note": "the teacher's own recommendation, in the first person"},
+    {"fact": 23, "at": "page-5_t1.s2.u3"},
+    {"fact": 24, "at": "page-6_t1.s4.u1", "note": "Part B: the gist"},
+    {"fact": 25, "at": "page-6_t1.s7.u1", "note": "taught as the speaker's purpose and opinion"},
+    {"fact": 29, "at": "page-6_t1.s6.u1"}
+   ],
+   "methods": [],
+   "continues_in": [
+    {"lesson": "listening-02-part-a", "why": "Part A in full."},
+    {"lesson": "listening-03-part-b", "why": "Part B in full."},
+    {"lesson": "listening-04-part-c", "why": "Part C in full."}
+   ],
+   "topics": []
+  },
+  "listening-02-part-a": {
+   "session": "The Listening Part A session. The instructor played third-party exam audio, which is excluded; the lesson practises on oa-set-la-0001 of sample-tests-v2 (ADR 029).",
+   "facts": [
+    {"fact": 6, "at": "page-4_t1.s1.u3"},
+    {"fact": 5, "at": "page-4_t1.s2.u1"},
+    {"fact": 2, "at": "page-4_t1.s2.u2"},
+    {"fact": 7, "at": "page-5_t1.s1.u2"},
+    {"fact": 16, "at": "page-5_t1.s5.u2"},
+    {"fact": 4, "at": "page-5_t1.s6.u4"},
+    {"fact": 17, "at": "page-6_t1.s1.u3"},
+    {"fact": 23, "at": "page-6_t1.s1.u4"},
+    {"fact": 8, "at": "page-6_t1.s2.u3"},
+    {"fact": 9, "at": "page-6_t1.s2.u5"},
+    {"fact": 10, "at": "page-6_t1.s3.u1"},
+    {"fact": 22, "at": "pages-10-11_t2.s1.u2", "note": "the teacher's own recommendation, in the first person"},
+    {"fact": 18, "at": "pages-10-11_t2.s1.u3"}
+   ],
+   "methods": [
+    {"name": "Predict each gap", "text": "In the 30 seconds before each extract, read ahead: work out the kind of word each gap needs from the words around it.", "at": "page-5_t1"},
+    {"name": "The gap-by-gap preview", "text": "Before each recording, the note form gap by gap: the kind of word that fits and example words that are never the answer, with a pause after each (ADR 033).", "at": "pages-12-13-14_t1"}
+   ],
+   "continues_in": [],
+   "topics": []
+  },
+  "listening-03-part-b": {
+   "session": "The Listening Part B session. It taught on a third-party Part B recording and official sample questions, which are excluded; the lesson practises on oa-set-lb-0001 (ADR 029, ADR 035).",
+   "facts": [
+    {"fact": 11, "at": "page-4_t1.s1.u3"},
+    {"fact": 12, "at": "page-4_t1.s1.u6"},
+    {"fact": 2, "at": "page-4_t1.s1.u7"},
+    {"fact": 13, "at": "page-4_t1.s2.u1"},
+    {"fact": 29, "at": "page-4_t1.s3.u2"},
+    {"fact": 24, "at": "page-4_t1.s3.u3"},
+    {"fact": 14, "at": "page-4_t1.s3.u5", "note": "mentioned: Part C is taught later"},
+    {"fact": 30, "at": "page-7_t1.s2.u2", "note": "contrast words, for Part B"},
+    {"fact": 22, "at": "page-9_t1.s1.u2", "note": "the teacher's own recommendation, in the first person"},
+    {"fact": 18, "at": "page-9_t1.s1.u3"},
+    {"fact": 17, "at": "page-9_t1.s2.u1"},
+    {"fact": 23, "at": "page-9_t1.s2.u1"},
+    {"fact": 5, "at": "page-10_t2.s5.u1"},
+    {"fact": 19, "at": "page-12_t2.s15.u1"},
+    {"fact": 4, "at": "page-14_t1.s1.u1"}
+   ],
+   "methods": [
+    {"name": "Main point, not detail", "text": "A speaker may mention all three options: choose the speaker's main point.", "at": "page-5_t1"},
+    {"name": "Before you listen", "text": "Use the 15 seconds to read the question carefully and know what to listen for.", "at": "page-6_t1"},
+    {"name": "Signal words", "text": "While you listen, follow the signal words; after a contrast word such as 'however' comes the real point.", "at": "page-7_t1"},
+    {"name": "Tempting wrong options", "text": "The kinds of tempting wrong option, each tied to the practice questions that show it (ADR 035).", "at": "page-8_t1"},
+    {"name": "The option-by-option preview", "text": "Before the recording: the stem, then each option and what to listen for, with a pause after each; try it first; then listen (ADR 035).", "at": "page-10_t2"}
+   ],
+   "continues_in": [],
+   "topics": []
+  },
+  "listening-04-part-c": {
+   "session": "The Listening Part C session. This lesson is Part C (1), the method and the presentation (oa-set-lc-0001, extract 2); the interview is taught in listening-05-part-c-2 (ADR 029 decision 7).",
+   "facts": [
+    {"fact": 14, "at": "page-4_t1.s1.u3"},
+    {"fact": 12, "at": "page-4_t1.s1.u4"},
+    {"fact": 2, "at": "page-4_t1.s1.u5"},
+    {"fact": 26, "at": "page-5_t1.s1.u2"},
+    {"fact": 27, "at": "page-5_t1.s2.u3", "note": "the questions follow the talk in order"},
+    {"fact": 29, "at": "page-6_t1.s1.u3"},
+    {"fact": 25, "at": "page-6_t1.s3.u1"},
+    {"fact": 15, "at": "page-7_t1.s1.u2"},
+    {"fact": 28, "at": "page-8_t1.s1.u1"},
+    {"fact": 31, "at": "page-8_t1.s2.u4"},
+    {"fact": 30, "at": "page-9_t1.s1.u5"},
+    {"fact": 22, "at": "pages-10-11_t1.s1.u2", "note": "the teacher's own recommendation, in the first person"},
+    {"fact": 18, "at": "pages-10-11_t1.s1.u3"},
+    {"fact": 5, "at": "page-12_t2.s1.u1"}
+   ],
+   "methods": [
+    {"name": "Signposts", "text": "Signposts tell you that a new point, or the next question, is coming.", "at": "page-8_t1"},
+    {"name": "Signal words", "text": "Contrast words such as but, however, yet and nevertheless: the main point often comes after them.", "at": "page-9_t1"},
+    {"name": "Read the six questions first", "text": "In the 90 seconds, read all six questions, with the options covered, and underline their keywords (ADR 036).", "at": "page-12_t1"},
+    {"name": "The Part C question method", "text": "For each question: what to listen for in each option, try it first, then listen for the lead-in and rule out what is not said.", "at": "page-13_t2"}
+   ],
+   "continues_in": [{"lesson": "listening-05-part-c-2", "why": "Part C (2) applies the same method to an interview."}],
+   "topics": [{"topic": "signposts", "at": "page-8_t1"}]
+  },
+  "listening-05-part-c-2": {
+   "session": "Built from the Listening Part C session (a byte copy of listening-04-part-c's source), but every section is authored: the session never teaches the interview (oa-set-lc-0001, extract 1; ADR 037).",
+   "facts": [
+    {"fact": 14, "at": "added-01_t1.s1.u2"},
+    {"fact": 12, "at": "added-01_t1.s1.u3"},
+    {"fact": 2, "at": "added-01_t1.s1.u3"},
+    {"fact": 22, "at": "added-01_t1.s2.u1", "note": "the teacher's own recommendation, in the first person"},
+    {"fact": 18, "at": "added-01_t1.s2.u2"},
+    {"fact": 15, "at": "added-01_t1.s2.u4"},
+    {"fact": 30, "at": "added-01_t1.s4.u3"},
+    {"fact": 29, "at": "added-01_t1.s4.u4"},
+    {"fact": 31, "at": "added-01_t1.s4.u5"},
+    {"fact": 28, "at": "added-01_t1.s6.u1", "note": "in an interview, the interviewer's question"},
+    {"fact": 27, "at": "added-02_t1.s1.u3"},
+    {"fact": 5, "at": "added-02_t2.s1.u1"}
+   ],
+   "methods": [
+    {"name": "The Part C method (review)", "text": "The format, the 90 seconds, signposts, linking words, other words, and keep listening, reviewed before the practice.", "at": "added-01_t1"},
+    {"name": "The interviewer as a signpost", "text": "In an interview the interviewer's question can show where the next part starts; the question's keywords decide (ADR 037).", "at": "added-01_t1.s6.u1"},
+    {"name": "Read the six questions first", "text": "In the 90 seconds, read the six questions with the options covered, and look for each one's keywords.", "at": "added-02_t1"}
+   ],
+   "continues_in": [],
+   "topics": [
+    {"topic": "signposts", "at": "added-01_t1.s4.u2"},
+    {"topic": "interview", "at": "added-02_t1"}
+   ]
+  }
+ }
+}

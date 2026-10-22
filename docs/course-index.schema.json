@@ -1,0 +1,349 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://github.com/siamingit/oetbook-lesson-engine/docs/course-index.schema.json",
+ "title": "OETbook public course index",
+ "description": "What each lesson teaches, and where (docs/adr/038-public-course-index.md). Format oetbook-public-course-index, schema version 1.0. A minor version only adds fields; a reader ignores a field it does not know. A major version removes, renames or changes the meaning of a field. Ids are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4); a lesson id is permanent (AGENTS.md §10b). Every time is seconds from the start of the lesson's player (start_s, three decimals) with the same moment as minutes:seconds (start, rounded down).",
+ "type": "object",
+ "additionalProperties": false,
+ "required": ["format", "schema_version", "about", "courses", "lessons", "topic_index", "totals"],
+ "properties": {
+  "format": {"const": "oetbook-public-course-index"},
+  "schema_version": {"type": "string", "pattern": "^1\\.\\d+$"},
+  "about": {"type": "string"},
+  "courses": {
+   "description": "The courses in their order (Grammar, Vocabulary, Reading, Listening), each with its built lessons in order.",
+   "type": "array",
+   "items": {
+    "type": "object", "additionalProperties": false, "required": ["id", "title", "lessons"],
+    "properties": {
+     "id": {"enum": ["grammar", "vocabulary", "reading", "listening"]},
+     "title": {"type": "string"},
+     "lessons": {"type": "array", "items": {"$ref": "#/$defs/lesson_id"}}
+    }
+   }
+  },
+  "lessons": {"type": "array", "items": {"$ref": "#/$defs/lesson"}},
+  "topic_index": {
+   "description": "Topics and terms in alphabetical order (by key), each with every lesson that teaches it and the first moment there. From section titles, term boxes that name a concept, and the curated topics.",
+   "type": "array",
+   "items": {
+    "type": "object", "additionalProperties": false, "required": ["topic", "key", "entries"],
+    "properties": {
+     "topic": {"type": "string", "description": "as first written in the course"},
+     "key": {"type": "string", "description": "the topic in lower case, quotes and end punctuation taken off: what entries are merged by"},
+     "entries": {
+      "type": "array",
+      "items": {
+       "type": "object", "additionalProperties": false,
+       "required": ["lesson", "section", "start_s", "start", "source"],
+       "properties": {
+        "lesson": {"$ref": "#/$defs/lesson_id"},
+        "section": {"$ref": "#/$defs/id"},
+        "start_s": {"$ref": "#/$defs/seconds"},
+        "start": {"$ref": "#/$defs/mmss"},
+        "source": {"enum": ["section", "term", "curated"]}
+       }
+      }
+     }
+    }
+   }
+  },
+  "totals": {
+   "description": "Counts over the whole index; checked against the lessons.",
+   "type": "object", "additionalProperties": false,
+   "required": ["lessons", "sections", "topics", "teaching_points", "rules", "warnings", "terms",
+                "wrong_examples", "facts", "methods", "vocabulary", "vocabulary_word_bank",
+                "practice_items", "references", "topic_index", "withheld_panel_words",
+                "withheld_answer_lines"],
+   "properties": {
+    "lessons": {"$ref": "#/$defs/count"}, "sections": {"$ref": "#/$defs/count"},
+    "topics": {"$ref": "#/$defs/count"}, "teaching_points": {"$ref": "#/$defs/count"},
+    "rules": {"$ref": "#/$defs/count"}, "warnings": {"$ref": "#/$defs/count"},
+    "terms": {"$ref": "#/$defs/count"}, "wrong_examples": {"$ref": "#/$defs/count"},
+    "facts": {"$ref": "#/$defs/count"}, "methods": {"$ref": "#/$defs/count"},
+    "vocabulary": {"$ref": "#/$defs/count"}, "vocabulary_word_bank": {"$ref": "#/$defs/count"},
+    "practice_items": {"$ref": "#/$defs/count"}, "references": {"$ref": "#/$defs/count"},
+    "topic_index": {"$ref": "#/$defs/count"}, "withheld_panel_words": {"$ref": "#/$defs/count"},
+    "withheld_answer_lines": {"$ref": "#/$defs/count"}
+   }
+  }
+ },
+ "$defs": {
+  "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+  "lesson_id": {"type": "string", "pattern": "^(grammar|vocabulary|reading|listening|writing|speaking)-\\d{2}-[a-z0-9-]+$",
+                "description": "the lesson folder's name, lower case and permanent"},
+  "seconds": {"type": "number", "minimum": 0},
+  "mmss": {"type": "string", "pattern": "^\\d+:[0-5]\\d$"},
+  "count": {"type": "integer", "minimum": 0},
+  "lesson": {
+   "type": "object", "additionalProperties": false,
+   "required": ["id", "folder", "title", "description", "course", "order", "length_s", "length",
+                "bundle_format", "status", "approval", "source", "categories", "sections", "facts",
+                "methods", "vocabulary", "withheld", "practice_set", "deck_exercises", "links"],
+   "properties": {
+    "id": {"$ref": "#/$defs/lesson_id"},
+    "folder": {"type": "string", "description": "the folder in the lessons library (C:\\OET\\lessons\\<folder>); always equal to id"},
+    "title": {"type": "string"},
+    "description": {"type": ["string", "null"], "description": "the owner's one line"},
+    "course": {"enum": ["grammar", "vocabulary", "reading", "listening"]},
+    "order": {"type": "integer", "minimum": 1, "description": "its number in its course, from the id"},
+    "length_s": {"$ref": "#/$defs/seconds"},
+    "length": {"$ref": "#/$defs/mmss"},
+    "bundle_format": {"type": "string", "description": "the lesson bundle's format_version"},
+    "status": {"enum": ["approved", "built"], "description": "approved: the owner's final gate is recorded"},
+    "approval": {
+     "type": ["object", "null"], "additionalProperties": false, "required": ["by", "on"],
+     "properties": {"by": {"type": "string"}, "on": {"type": "string", "description": "YYYY-MM-DD HH:MM, as recorded"}}
+    },
+    "source": {
+     "description": "The original Persian session the lesson was made from.",
+     "type": "object", "additionalProperties": false,
+     "required": ["folder", "recording", "recording_duration_s", "recording_partial_hash", "deck",
+                  "deck_pages", "same_recording_as", "note"],
+     "properties": {
+      "folder": {"const": "source"},
+      "recording": {"type": ["string", "null"]},
+      "recording_duration_s": {"type": ["number", "null"]},
+      "recording_partial_hash": {"type": ["string", "null"], "description": "the library inventory's hash of the file (library_inventory.py), which identifies the recording"},
+      "deck": {"type": ["string", "null"]},
+      "deck_pages": {"type": ["integer", "null"]},
+      "same_recording_as": {"type": "array", "items": {"$ref": "#/$defs/lesson_id"}},
+      "note": {"type": ["string", "null"], "description": "what the docs record about the session; null where they record nothing more"}
+     }
+    },
+    "categories": {
+     "type": "array",
+     "items": {
+      "type": "object", "additionalProperties": false, "required": ["id", "title", "sections"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "title": {"type": "string"},
+                     "sections": {"type": "array", "items": {"$ref": "#/$defs/id"}}}
+     }
+    },
+    "sections": {"type": "array", "items": {"$ref": "#/$defs/section"}},
+    "facts": {
+     "description": "OET facts the lesson states, at the utterance that states each.",
+     "type": "array",
+     "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["fact", "text", "note", "section", "start_s", "start"],
+      "properties": {
+       "fact": {"type": ["integer", "string"], "description": "a Listening fact's number in docs/listening-facts.md, or a key of the curated file's facts"},
+       "text": {"type": "string"},
+       "note": {"type": ["string", "null"], "description": "how the lesson states it, where it states part of the fact"},
+       "section": {"$ref": "#/$defs/id"}, "board": {"$ref": "#/$defs/id"},
+       "utterance": {"$ref": "#/$defs/id"}, "block": {"$ref": "#/$defs/id"},
+       "start_s": {"$ref": "#/$defs/seconds"}, "start": {"$ref": "#/$defs/mmss"}
+      }
+     }
+    },
+    "methods": {
+     "description": "Named exam methods and strategies, where each is first taught.",
+     "type": "array",
+     "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "text", "section", "start_s", "start"],
+      "properties": {
+       "name": {"type": "string"}, "text": {"type": "string"},
+       "section": {"$ref": "#/$defs/id"}, "board": {"$ref": "#/$defs/id"},
+       "utterance": {"$ref": "#/$defs/id"}, "block": {"$ref": "#/$defs/id"},
+       "start_s": {"$ref": "#/$defs/seconds"}, "start": {"$ref": "#/$defs/mmss"}
+      }
+     }
+    },
+    "vocabulary": {
+     "description": "Each word taught, at its first moment in the lesson. No meanings: a word-bank item's are in the exercises repository, by its lx: ID.",
+     "type": "array",
+     "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["word", "kind", "lexicon", "section", "block", "start_s", "start"],
+      "properties": {
+       "word": {"type": "string"},
+       "kind": {"enum": ["word-bank", "gloss", "new-word"], "description": "word-bank: a gloss from the exercises repository's word bank; gloss: the lesson's own gloss of a hard word; new-word: a term box that teaches a new word or phrase"},
+       "lexicon": {"type": ["string", "null"], "pattern": "^lx:", "description": "the word bank's lx: ID (provisional, oetacademy-web#51)"},
+       "section": {"$ref": "#/$defs/id"}, "block": {"$ref": "#/$defs/id"},
+       "start_s": {"$ref": "#/$defs/seconds"}, "start": {"$ref": "#/$defs/mmss"}
+      }
+     }
+    },
+    "withheld": {
+     "description": "What this public index leaves out, counted.",
+     "type": "object", "additionalProperties": false,
+     "required": ["listening_panel_words", "lines_naming_an_answer"],
+     "properties": {
+      "listening_panel_words": {"$ref": "#/$defs/count", "description": "words of the Listening vocabulary panel (ADR 031: never in git)"},
+      "lines_naming_an_answer": {"$ref": "#/$defs/count", "description": "teaching points, titles, rules, terms or words that name an answer of the lesson's practice set, or quote six words in a row of its wording (ADR 026)"}
+     }
+    },
+    "practice_set": {
+     "type": ["object", "null"], "additionalProperties": false,
+     "required": ["set", "release", "numbering", "recordings"],
+     "properties": {
+      "set": {"type": "string", "description": "the exercises repository's set id"},
+      "release": {
+       "type": "object", "additionalProperties": false, "required": ["package_id", "package_version"],
+       "properties": {"package_id": {"type": ["string", "null"]}, "package_version": {"type": ["integer", "string", "null"]}}
+      },
+      "numbering": {"enum": ["release", "lesson", "practice"], "description": "how the lesson numbers its questions: release (the real test's numbers), lesson (from 1 in the order taught, ADR 026 amendment of 2026-10-08), practice (Listening, from 1 in the lesson, ADR 035 amendment of 2026-10-16)"},
+      "recordings": {
+       "type": "array",
+       "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["stimulus", "label", "plays", "start_s", "start"],
+        "properties": {
+         "stimulus": {"type": "string"}, "label": {"type": ["string", "null"]},
+         "plays": {"type": "integer", "minimum": 1},
+         "start_s": {"$ref": "#/$defs/seconds"}, "start": {"$ref": "#/$defs/mmss"}
+        }
+       }
+      }
+     }
+    },
+    "deck_exercises": {
+     "description": "Grammar and Vocabulary: the deck's exercise items each section teaches, by their numbers.",
+     "type": "array",
+     "items": {
+      "type": "object", "additionalProperties": false, "required": ["section", "items"],
+      "properties": {"section": {"$ref": "#/$defs/id"},
+                     "items": {"type": "array", "items": {"type": "integer"}}}
+     }
+    },
+    "links": {
+     "type": "object", "additionalProperties": false,
+     "required": ["refers_to", "referred_to_by", "continues_in", "continues_from"],
+     "properties": {
+      "refers_to": {
+       "description": "Other lessons this lesson names (the bundle's refs), the first utterance for each target.",
+       "type": "array",
+       "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["lesson", "section", "from_section", "utterance", "start_s", "start"],
+        "properties": {
+         "lesson": {"$ref": "#/$defs/lesson_id"}, "section": {"type": ["string", "null"]},
+         "from_section": {"$ref": "#/$defs/id"}, "utterance": {"$ref": "#/$defs/id"},
+         "start_s": {"$ref": "#/$defs/seconds"}, "start": {"$ref": "#/$defs/mmss"}
+        }
+       }
+      },
+      "referred_to_by": {
+       "type": "array",
+       "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["lesson", "section", "to_section", "utterance", "start_s", "start"],
+        "properties": {
+         "lesson": {"$ref": "#/$defs/lesson_id"}, "section": {"$ref": "#/$defs/id"},
+         "to_section": {"type": ["string", "null"]}, "utterance": {"$ref": "#/$defs/id"},
+         "start_s": {"$ref": "#/$defs/seconds", "description": "in the referring lesson"},
+         "start": {"$ref": "#/$defs/mmss"}
+        }
+       }
+      },
+      "continues_in": {"type": "array", "items": {"$ref": "#/$defs/continuation"}},
+      "continues_from": {"type": "array", "items": {"$ref": "#/$defs/continuation"}}
+     }
+    }
+   }
+  },
+  "continuation": {
+   "type": "object", "additionalProperties": false, "required": ["lesson", "why", "source"],
+   "properties": {
+    "lesson": {"$ref": "#/$defs/lesson_id"}, "why": {"type": "string"},
+    "source": {"enum": ["closing", "curated"], "description": "closing: the lesson's closing names the next lesson (sections.json); curated: the reviewed file"}
+   }
+  },
+  "section": {
+   "type": "object", "additionalProperties": false,
+   "required": ["id", "title", "kind", "pages", "category", "start_s", "start", "end_s", "topics",
+                "rules", "terms", "wrong_examples", "practice", "refs"],
+   "properties": {
+    "id": {"$ref": "#/$defs/id"},
+    "title": {"type": "string"},
+    "kind": {"enum": ["intro", "deck", "authored", "review", "closing"], "description": "deck: taught from the source's slides; authored, review, closing: written with no slide (ADR 018)"},
+    "pages": {"type": "array", "items": {"type": "integer"}},
+    "category": {"type": ["string", "null"]},
+    "start_s": {"$ref": "#/$defs/seconds"}, "start": {"$ref": "#/$defs/mmss"},
+    "end_s": {"$ref": "#/$defs/seconds"},
+    "topics": {
+     "description": "Each board in playing order: its topic and its teaching points, the screens stage's own one-line purposes, timed by the blocks they show.",
+     "type": "array",
+     "items": {
+      "type": "object", "additionalProperties": false, "required": ["board", "title", "start_s", "start", "points"],
+      "properties": {
+       "board": {"$ref": "#/$defs/id"}, "title": {"type": "string"},
+       "start_s": {"$ref": "#/$defs/seconds"}, "start": {"$ref": "#/$defs/mmss"},
+       "points": {
+        "type": "array",
+        "items": {
+         "type": "object", "additionalProperties": false, "required": ["text", "block", "start_s", "start"],
+         "properties": {"text": {"type": "string"}, "block": {"$ref": "#/$defs/id"},
+                        "start_s": {"$ref": "#/$defs/seconds"}, "start": {"$ref": "#/$defs/mmss"}}
+        }
+       }
+      }
+     }
+    },
+    "rules": {
+     "description": "Every rule (kind rule) and warning about a common mistake (kind warning) on the section's boards.",
+     "type": "array",
+     "items": {
+      "type": "object", "additionalProperties": false, "required": ["block", "kind", "text", "start_s", "start"],
+      "properties": {"block": {"$ref": "#/$defs/id"}, "kind": {"enum": ["rule", "warning"]},
+                     "text": {"type": "string"},
+                     "start_s": {"$ref": "#/$defs/seconds"}, "start": {"$ref": "#/$defs/mmss"}}
+     }
+    },
+    "terms": {
+     "type": "array",
+     "items": {
+      "type": "object", "additionalProperties": false, "required": ["block", "label", "term", "start_s", "start"],
+      "properties": {"block": {"$ref": "#/$defs/id"}, "label": {"type": ["string", "null"]},
+                     "term": {"type": "string"},
+                     "start_s": {"$ref": "#/$defs/seconds"}, "start": {"$ref": "#/$defs/mmss"}}
+     }
+    },
+    "wrong_examples": {
+     "description": "Grammar and Vocabulary: the wrong sentences the section corrects.",
+     "type": "array",
+     "items": {
+      "type": "object", "additionalProperties": false, "required": ["block", "text", "start_s", "start"],
+      "properties": {"block": {"$ref": "#/$defs/id"}, "text": {"type": "string"},
+                     "start_s": {"$ref": "#/$defs/seconds"}, "start": {"$ref": "#/$defs/mmss"}}
+     }
+    },
+    "practice": {
+     "description": "Reading and Listening: the practice questions and note forms the section solves, by id. Never their wording or answers.",
+     "type": "array",
+     "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["item", "kind", "number", "real_test_number", "board", "start_s", "start"],
+      "properties": {
+       "item": {"type": "string", "description": "the exercises repository's item id"},
+       "kind": {"type": ["string", "null"], "description": "matching, short-answer, sentence-completion, multiple-choice ... or note-form (a Listening Part A gap-fill)"},
+       "number": {"type": ["integer", "null"], "description": "the number the lesson shows"},
+       "real_test_number": {"type": ["integer", "null"], "description": "the question's number in the real test"},
+       "gaps": {
+        "type": "array",
+        "items": {"type": "object", "additionalProperties": false, "required": ["gap", "number"],
+                  "properties": {"gap": {"type": ["string", "null"]}, "number": {"type": "integer"}}}
+       },
+       "board": {"$ref": "#/$defs/id"},
+       "start_s": {"$ref": "#/$defs/seconds"}, "start": {"$ref": "#/$defs/mmss"}
+      }
+     }
+    },
+    "refs": {
+     "description": "Every utterance of the section that names another lesson.",
+     "type": "array",
+     "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["utterance", "lesson", "section", "provenance", "start_s", "start"],
+      "properties": {
+       "utterance": {"$ref": "#/$defs/id"}, "lesson": {"$ref": "#/$defs/lesson_id"},
+       "section": {"type": ["string", "null"]}, "provenance": {"type": ["string", "null"]},
+       "start_s": {"$ref": "#/$defs/seconds"}, "start": {"$ref": "#/$defs/mmss"}
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -717,6 +717,9 @@ def stage_player(L, a):
     # outside the repository (docs/05-COURSE-INDEX.md). Again on every run, so
     # it also records the final gate once approved.
     print(run(L, [str(HERE / "build_course_index.py"), str(L)], "course index").strip())
+    # ADR 038: the public course index in the repository (docs/course-index.*),
+    # rebuilt whole the same way; a change is committed with the lesson's PR
+    print(run(L, [str(HERE / "build_public_course_index.py"), str(L)], "public course index").strip())
     require_gate(L, "final")
 
 

@@ -27,6 +27,12 @@ jobs:
         run: python -m compileall -q spike/scripts spike/tests
       - name: Unit tests
         run: python -m unittest discover -s spike/tests -v
+      # ADR 038: the public course index lists every built lesson (each has an
+      # entry in spike/course_index/curated.json), matches its schema, and its
+      # Markdown is generated from its JSON. Whether it is up to date with the
+      # lesson data is checked where the lessons are (--check, the runner).
+      - name: Public course index
+        run: python spike/scripts/build_public_course_index.py --verify
 
   release-answers:
     # ADR 026: no answer of a practice set in this public repository. The
