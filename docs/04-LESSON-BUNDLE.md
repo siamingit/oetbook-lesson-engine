@@ -765,14 +765,21 @@ voice settings and pronunciations, so a changed text always gets a new file
 The bundle's times are the clips' own. A published copy may be re-encoded
 as long as each clip keeps its length.
 A Listening recording (1.18) is the exercises release's own MP3, never changed by
-the engine (ADR 029): its loudness is the release's.
+the engine (ADR 029): its loudness is the release's. The lesson keeps it byte for
+byte; the published package carries an encoding of it (below).
 
-**Audio for the web — `OPEN`, recorded by the maintainer 2026-09-24.** The WAV
-clips are the masters: they stay local, with the lesson, and are never
-published as they are. A compressed format for the website is chosen when the
-site is built, together with where the clips are hosted and whether a published
-bundle rewrites `audio_file` or maps it. Until then no lesson is re-encoded, and
-choosing the format later needs no rebuild of any bundle.
+**Audio for the web — decided (ADR 039, 2026-10-22).** The WAV clips are the
+masters: they stay local, with the lesson, and are never published as they are.
+The package published to the site (oetacademy-web ADR-0005 and ENGINE-GAPS G2,
+adopted by ADR 039) carries each clip as AAC-LC in `.m4a`, mono, 44.1 kHz, 64
+kb/s, named by its hash (`audio/<hash>.m4a`), each keeping its length and its
+start so `clip_in` and `clip_out` stay valid; the published `bundle.json`
+rewrites every `audio_file` to it. Every exam extract a lesson plays is carried
+the same way, and the manifest marks it as an exam extract with its exercise set
+and part (ADR 039, decision 2); the site's own exercise audio is never
+referenced. Packages are released in `siamingit/oetacademy-sessions`. The local
+bundle described here is unchanged. The publish step is not built yet (ADR 039,
+decision 7).
 
 ---
 
@@ -794,5 +801,5 @@ choosing the format later needs no rebuild of any bundle.
 
 | # | Question | Status |
 |---|---|---|
-| 1 | Audio for the web: the compressed format, where clips are hosted, and whether a published bundle rewrites `audio_file` or maps it | open: WAV masters stay local; decided when the site is built (§8) |
-| 2 | Whether the lesson folder's name is the lesson's public id | not decided; it is stable |
+| 1 | Audio for the web: the compressed format, where clips are hosted, and whether a published bundle rewrites `audio_file` or maps it | decided by ADR 039 (§8): AAC `.m4a` at 64 kb/s in the published package, `audio_file` rewritten; WAV masters stay local |
+| 2 | Whether the lesson folder's name is the lesson's public id | decided: yes, and it is permanent (AGENTS.md §10b; the site's contract, adopted by ADR 039) |
