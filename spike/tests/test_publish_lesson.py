@@ -121,7 +121,7 @@ def made_up_library() -> Path:
         {"final": {"by": "Siavash", "on": "2026-10-01 10:00"}}), encoding="utf-8")
     (L / "analysis" / "practice_set.json").write_text(json.dumps({
         "set_id": "oa-set-la-0099", "release": {"package_id": "oa-pkg-made-up", "package_version": 1},
-        "parts": [{"code": "LA", "stimuli": [{"id": "oa-set-la-0099-e1", "audio": {"sha256": sha}}]}]}),
+        "parts": [{"code": "LA", "stimuli": [{"stimulus_id": "oa-set-la-0099-e1", "audio": {"sha256": sha}}]}]}),
         encoding="utf-8")
     write_tags(L, {"page-1": [], "page-2": ["grammar.verb-tenses.present-perfect"]})
     return L
@@ -240,6 +240,16 @@ class Refusals(unittest.TestCase):
         self.assertIn("PUB-EXAM-SOURCE", str(e.exception))
         self.assert_nothing_written()
 
+    def test_exam_release_only_from_the_release_data(self):
+        ps = self.L / "analysis" / "practice_set.json"
+        doc = json.loads(ps.read_text(encoding="utf-8"))
+        del doc["release"]
+        ps.write_text(json.dumps(doc), encoding="utf-8")
+        with self.assertRaises(pub.Refused) as e:
+            pub.build(self.L, CONTRACTS, workers=2, log=quiet)
+        self.assertIn("names no release", str(e.exception))
+        self.assert_nothing_written()
+
     def test_no_final_gate(self):
         (self.L / "analysis" / "gates.json").write_text("{}", encoding="utf-8")
         with self.assertRaises(pub.Refused):
@@ -266,6 +276,36 @@ class Refusals(unittest.TestCase):
         self.assertEqual(plan["repository"], "siamingit/oetacademy-sessions")
         self.assertFalse(any("create" in c for c in calls))
         self.assertFalse(pub.record_path(self.L).exists())
+
+    def test_release_checked_on_github_before_it_is_recorded(self):
+        pub.build(self.L, CONTRACTS, workers=2, log=quiet)
+        write_tags(self.L, {"page-1": [], "page-2": ["grammar.verb-tenses.present-perfect"]},
+                   approved={"by": "siavash", "on": "2026-10-23"})
+        tag = f"{LESSON}-v1"
+        folder, zpath = pub.package_dir(self.L) / tag, pub.package_dir(self.L) / f"{tag}.zip"
+        assets = [{"name": p.name, "size": p.stat().st_size, "digest": f"sha256:{lp.sha256_file(p)}"}
+                  for p in (folder / "manifest.json", zpath)]
+
+        def fake_gh(view):
+            def run(*args):
+                if args[:2] == ("release", "list"):
+                    return "[]"
+                if args[:2] == ("release", "view"):
+                    return json.dumps(view)
+                return ""
+            return run
+        good = {"tagName": tag, "assets": assets, "isDraft": False, "isPrerelease": False,
+                "publishedAt": "2026-10-23T10:00:00Z", "url": "https://example.invalid/" + tag}
+        bad = dict(good, assets=[dict(assets[0]), dict(assets[1], digest="sha256:" + "0" * 64)])
+        with mock.patch.object(pub.lp, "load", lambda: CONTRACTS):
+            with mock.patch.object(pub, "gh", fake_gh(bad)):
+                with self.assertRaises(pub.Refused):
+                    pub.release(self.L, dry_run=False, log=quiet)
+            self.assertFalse(pub.record_path(self.L).exists())
+            with mock.patch.object(pub, "gh", fake_gh(good)):
+                pub.release(self.L, dry_run=False, log=quiet)
+        record = json.loads(pub.record_path(self.L).read_text(encoding="utf-8"))
+        self.assertEqual([r["tag"] for r in record["releases"]], [tag])
 
 
 class Checks(unittest.TestCase):
