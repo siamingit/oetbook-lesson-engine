@@ -35,8 +35,9 @@ written. The same inputs give byte-identical files and zip.
 --release publishes the package built for the next version as a release of
 siamingit/oetacademy-sessions, tag <id>-v<n>, with exactly two assets (manifest.json and the zip),
 after checking it again, the owner's approval of the course's tags, and the repository's releases.
-It records the release in <L>/analysis/publish.json, the lesson's package versions and published
-section ids. --dry-run prints what it would create and changes nothing.
+It then checks the release on GitHub (its tag, published, and each asset's name, size and SHA-256
+equal to the local files) and only then records it in <L>/analysis/publish.json, the lesson's
+package versions and published section ids. --dry-run prints what it would create and changes nothing.
 """
 
 import argparse
@@ -268,7 +269,7 @@ def exam_sources(L: Path) -> tuple[dict[str, dict], str | None]:
         for s in part.get("stimuli", []):
             audio = s.get("audio") or {}
             if audio.get("sha256"):
-                out[audio["sha256"]] = {"set": ps["set_id"], "part": part["code"], "stimulus": s["id"]}
+                out[audio["sha256"]] = {"set": ps["set_id"], "part": part["code"], "stimulus": s["stimulus_id"]}
     rel = ps.get("release") or {}
     release = f"{rel['package_id']} v{rel['package_version']}" if rel.get("package_id") else None
     return out, release
@@ -508,8 +509,11 @@ def _assemble(L, player, bundle, contracts, stage, version, approved, tags, reti
             if not source:
                 f.error("PUB-EXAM-SOURCE", "audio", "an exam file is in no stimulus of the release data "
                         "(analysis/practice_set.json)", f"{at}: {rel}")
+            elif not release:
+                f.error("PUB-EXAM-SOURCE", "audio", "the release data names no release "
+                        "(analysis/practice_set.json)", f"{at}: {rel}")
             else:
-                entry["exam"] = dict(source, **({"release": release} if release else {}))
+                entry["exam"] = dict(source, release=release)
         if not (stage / name).exists():
             (stage / name).write_bytes(data)
             media.append(entry)
@@ -673,10 +677,12 @@ def release(L: Path, dry_run: bool, log=print) -> dict:
         raise Refused("; ".join(blockers))
     gh(*cmd)
     view = json.loads(gh("release", "view", tag, "--repo", SESSIONS_REPO, "--json",
-                         "assets,isDraft,isPrerelease,publishedAt,url"))
-    names = sorted(a["name"] for a in view["assets"])
-    if names != sorted(["manifest.json", zpath.name]) or view["isDraft"] or view["isPrerelease"]:
-        raise Refused(f"the release {tag} was created but is not as planned: {view}; tell the owner, never edit it")
+                         "tagName,assets,isDraft,isPrerelease,publishedAt,url"))
+    got = sorted((a["name"], a["size"], a.get("digest")) for a in view["assets"])
+    planned = sorted((a["name"], a["bytes"], f"sha256:{a['sha256']}") for a in plan["assets"])
+    if view["tagName"] != tag or got != planned or view["isDraft"] or view["isPrerelease"]:
+        raise Refused(f"the release {tag} was created but is not as planned (tag, draft, or assets' names, "
+                      f"sizes and SHA-256): {view}; tell the owner, never edit it")
     if manifest["lesson"]["approved"]["on"] > view["publishedAt"][:10]:
         raise Refused(f"the approval date is after the release's {view['publishedAt']}; tell the owner")
     record["releases"].append({
