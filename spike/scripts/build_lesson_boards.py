@@ -21,6 +21,20 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+# a block's provenance, as the bundle carries it (AGENTS.md §9; docs/04-LESSON-BUNDLE.md §5)
+PROVENANCES = ("source-derived", "adapted", "corrected", "authored", "maintainer")
+
+
+def description_provenance(status: str | None) -> tuple[str, str]:
+    """The title board's description block's provenance and note. A description
+    written by the agent records who wrote it in sections.json
+    (`description_status`, "agent (...)"): its block is `authored`, and that
+    record is its note (bundle 1.21, ADR 041: a provenance is one of the format's)."""
+    status = status or "authored"
+    if status in PROVENANCES:
+        return status, "The maintainer's one-line description (sections.json)."
+    return "authored", f"The lesson's one-line description (sections.json), by {status}"
+
 
 def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
     """The title and contents boards as a narratable section, the lesson's
@@ -71,9 +85,8 @@ def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
         elif x["type"] == "term_box":
             b["style"] = "term"
         extra.append(b)
-    desc = blk(f"k{len(extra) + 2:02d}", "plain", tb["description"] or "",
-               prov=tb.get("description_provenance") or "authored",
-               note="The maintainer's one-line description (sections.json).")
+    dprov, dnote = description_provenance(tb.get("description_provenance"))
+    desc = blk(f"k{len(extra) + 2:02d}", "plain", tb["description"] or "", prov=dprov, note=dnote)
     first = len(extra) + 2
     items = [blk(f"k{n + first:02d}", "contents_item", c["title"], " · ".join(c["sections"]) or None,
                  label=str(n), prov=c.get("provenance") or "source-derived",

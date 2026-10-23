@@ -1,7 +1,7 @@
-# Lesson bundle format changelog: 1.12 to 1.20
+# Lesson bundle format changelog: 1.12 to 1.21
 
 For the oetacademy-web team, before the site accepts bundle formats 1.13 to 1.20.
-Written 2026-10-22. It is complete on its own: it does not assume access to the
+Written 2026-10-22; format 1.21 added 2026-10-23 (§9a). It is complete on its own: it does not assume access to the
 engine's repository. The 1.12 contract the site already implements is the
 engine's "Player rendering rules: bundle format 1.12" (rules 1 to 28, sent
 2026-10-01) and "Lesson bundle 1.12: what changed since 1.11"; this page lists
@@ -27,6 +27,17 @@ kinds of file are new beside the lesson player: the exam recordings (MP3, 1.18),
 the word bank's pronunciation clips (MP3, 1.15) and per-lesson stylesheets
 (`blocks.css` is no longer one shared copy per format).
 
+Format 1.21 (2026-10-23, §9a) adds one optional board field, `fit` (a board shown
+whole, never zoomed: Grammar 6's one exception, until then known only to the reference
+player), and ends the stray data of §12: the five lessons that had either were
+rebuilt at 1.21 with nothing visible changed. Unlike 1.13 to 1.20, a lesson is 1.21
+only where it uses the field or was rebuilt by the clean-up; every other lesson keeps
+its version.
+
+**Releases.** From 1.21 on, each format version is released as a git tag of the
+engine's repository, `bundle-format-v<version>` (`bundle-format-v1.21`), on the commit
+that merges it. Formats 1.0 to 1.20 have no tag.
+
 | Version | Date | Main change | Required or optional | Approved lessons using it |
 |---|---|---|---|---|
 | 1.13 | 2026-10-05 | Reading: a practice-set text drawn as a document (`doc`), a practice-set question (`question`), keyword-pair marks `match1` to `match3`, a side note pinned under the table | **Required** (the data fields alone are optional; the marks, the pinned note and the stylesheet are required) | Features: R2–R5, L2–L5. Label only, no feature used: R1 |
@@ -37,6 +48,7 @@ the word bank's pronunciation clips (MP3, 1.15) and per-lesson stylesheets
 | 1.18 | 2026-10-13 | Listening: the exam recordings played in the lesson's clock (`kind: "exam"`, cue `play`), transcripts and note forms, a "hear it in the recording" button | **Required** | No lesson is 1.18. Features: L2–L5 |
 | 1.19 | 2026-10-13 | The Listening board (`listen`): a transcript box that follows the recording by word times; the question column follows the recording | **Required** | No lesson is 1.19. Features: L2–L5 |
 | 1.20 | 2026-10-14 | The vocabulary panel under the transcript, the whole note form during the reading time, no hyphenation | **Required** | L2–L5. Label only, no feature used: L1 |
+| 1.21 | 2026-10-23 | A board shown whole, never zoomed (`fit`); the clean-up of §12's data | **Required** (`fit`, rule 52) | G6 (`fit`). Rebuilt by the clean-up, no new feature used: R5, L2, L4, L5 |
 
 ## 1. How to read this page
 
@@ -44,18 +56,18 @@ the word bank's pronunciation clips (MP3, 1.15) and per-lesson stylesheets
 
 | Short | Lesson id | `format_version` | Final approval |
 |---|---|---|---|
-| G1–G8 | `grammar-01-verb-tenses` … `grammar-08-paraphrasing` | 1.12 | 2026-09-27 to 2026-10-01 |
+| G1–G8 | `grammar-01-verb-tenses` … `grammar-08-paraphrasing` | 1.12; G6 1.21 from 2026-10-23 (§9a) | 2026-09-27 to 2026-10-01 |
 | V1–V3 | `vocabulary-01-word-forms`, `vocabulary-02-collocations`, `vocabulary-03-collocations-2` | 1.12 | 2026-10-01 |
 | R1 | `reading-01-overview` | 1.13 | 2026-10-06 |
 | R2 | `reading-02-part-a` | 1.14 | 2026-10-06 |
 | R3 | `reading-03-part-b` | 1.16 | 2026-10-07 (built at 1.15; rebuilt at 1.16 on 2026-10-08 and the approval confirmed that day) |
 | R4 | `reading-04-part-c` | 1.17 | 2026-10-11 |
-| R5 | `reading-05-part-c-2` | 1.17 | 2026-10-11 |
+| R5 | `reading-05-part-c-2` | 1.21 (1.17 until 2026-10-23, §9a) | 2026-10-11 |
 | L1 | `listening-01-overview` | 1.20 | 2026-10-17 |
-| L2 | `listening-02-part-a` | 1.20 | 2026-10-14 |
+| L2 | `listening-02-part-a` | 1.21 (1.20 until 2026-10-23, §9a) | 2026-10-14 |
 | L3 | `listening-03-part-b` | 1.20 | 2026-10-16 |
-| L4 | `listening-04-part-c` | 1.20 | 2026-10-17 |
-| L5 | `listening-05-part-c-2` | 1.20 | 2026-10-21 |
+| L4 | `listening-04-part-c` | 1.21 (1.20 until 2026-10-23, §9a) | 2026-10-17 |
+| L5 | `listening-05-part-c-2` | 1.21 (1.20 until 2026-10-23, §9a) | 2026-10-21 |
 
 ### Required and optional
 
@@ -857,6 +869,127 @@ L1 has `heard` and `panel` null on every block, no recording, and no
 Listening board: it plays correctly in a 1.12 player that accepts the format
 string, the null fields and its own `blocks.css`.
 
+## 9a. Format 1.21 — a board shown whole; the stray data cleaned up
+
+2026-10-23 (engine ADR 041), released as the tag `bundle-format-v1.21` of the engine's
+repository. One optional board field, and the end of the data §12 lists. Grammar 6 is
+the only lesson that uses the field.
+
+### Added: `boards[].fit`
+
+| Field | Type | Values | Meaning | When absent |
+|---|---|---|---|---|
+| `boards[].fit` | string, optional | `"whole"` (the only value) | The board is shown whole on every screen size, at every moment: the player never zooms the view onto a cell or a row of its table, and never pans the table up to its notes (rule 13 does not apply). Where the board does not fit the device, the guard (rule 41) sets the whole board smaller, as far as it needs, keeping the largest size that fits; the table's text may go below its 1.9% floor, every other block stops at 2.6%. | rules 13 and 41 as before |
+
+It is only on a table board on which rule 13 could zoom: a board whose `table` is not
+null, with no `split` (a question board), no `listen` (a Listening board), and whose
+table has no `map`. Those three never zoom anyway. The engine's checks refuse it
+anywhere else, with another value, or in a bundle before 1.21.
+
+```json
+{"id": "page-9_t2", "section": "page-9", "table": "page-9_k04", "tight": 2,
+ "focus": [{"time": 1110.35, "row": 0, "col": null}, "…"],
+ "fit": "whole", "states": ["…"]}
+```
+
+### Rule 52, a board shown whole
+
+On a board whose `fit` is `"whole"`, rule 13 does not apply: no camera zoom onto the
+highlighted cell or row, and no pan to the side notes, so the whole board, its table
+and every note shown, is in view at every moment. The spotlight (rule 11), typing
+(rule 10), marks and verdicts are drawn as on any table board. Where the board does not
+fit the device, the guard of rule 41 sets the board smaller as far as it needs: the
+table's text may go below its 1.9% floor (the reference player bounds its search at a
+quarter of the board's size), the other blocks stop at the 2.6% body floor, and the
+board keeps the largest size that fits, in steps of 0.5% (reference: once a size that
+fits is found, a halving search between it and the last size that did not). The size
+holds for the whole board. The fit the bundle states (`clears`, `tight`, the table's
+`font`) was planned as for any table board; only the device's guard and the camera
+differ.
+
+Measured in the reference player on Grammar 6's board, default fonts: at a 590 px
+frame the board at 91.5% (table text 1.74% of the frame's height, about 5.8 px), at 812
+px 97%, at 1120 px 100% (no change). With Verdana forced: 89.0%, 92.5% and 93.5%.
+
+**Where it is used:** Grammar 6 (`grammar-06-clause`), board `pages-07-08_t2`, 18:30 to
+27:32: the owner's decision of 2026-10-12, until now the exception §10 described as
+"not in the bundle". From 1.21 the bundle states it: a player needs no list of lesson
+and board ids.
+
+### Changed in the data: the clean-up
+
+From 1.21 the engine writes none of the data §12 lists, in any bundle. Five approved
+lessons were rebuilt at 1.21 on 2026-10-23. Their `bundle.json` and `text.json` differ
+from the earlier build only in the fields below; nothing they show or play changed
+(every board at 590 and 1120 px compared pixel by pixel before and after, every audio
+file, time and text compared byte for byte). They keep their final approval.
+
+| Lesson | Field | Before | After |
+|---|---|---|---|
+| G6 `grammar-06-clause` | `format_version` (`bundle.json` and `text.json`) | `"1.12"` | `"1.21"` |
+| G6 | `boards[]` `pages-07-08_t2`: `fit` | absent | `"whole"` |
+| R5 `reading-05-part-c-2` | `format_version` (both files) | `"1.17"` | `"1.21"` |
+| R5 | `blocks["page-3_k04"].provenance` (the title board's description) | free text beginning `"agent ("` | `"authored"` |
+| L2 `listening-02-part-a` | `format_version` (both files) | `"1.20"` | `"1.21"` |
+| L2 | `heard` on its 20 word-bank glosses | `{file: "<extract id>.<12 hex>.mp3", stimulus, start, end}`, the file a bare name | `{file: "../exam-audio/<extract id>.<12 hex>.mp3", start, end}`: the path relative to the bundle's folder, as in L3 to L5; `stimulus` gone; `start` and `end` and the block's `html` unchanged |
+| L4 `listening-04-part-c` | `format_version` (both files) | `"1.20"` | `"1.21"` |
+| L4 | `_tokens` on the 36 section-question blocks (ids ending `_sec-oa-listening-…`) | `[]` | gone |
+| L5 `listening-05-part-c-2` | `format_version` (both files) | `"1.20"` | `"1.21"` |
+| L5 | `blocks["page-3_k04"].provenance` (the title board's description) | free text beginning `"agent ("` | `"authored"` |
+| L5 | `_tokens` on the 36 section-question blocks | `[]` | gone |
+
+No other lesson changed: the other 16 approved bundles are byte for byte as before, at
+their own versions (1.12, 1.13, 1.14, 1.16, 1.17, 1.20). A lesson is written at 1.21
+when it has a board with `fit`, or when it declares 1.21 because the clean-up rebuilt
+it; every other lesson keeps its version until it is rebuilt.
+
+### Can a site that knows only 1.20 read 1.21?
+
+- **The JSON is additive.** Nothing the format documents is removed, renamed or changes
+  type. `_tokens` and `heard.stimulus` were never part of the format; `heard.file` now
+  has the documented form. A 1.21 bundle is valid 1.20 data plus one optional board
+  field.
+- **The contract refuses it.** In the site's contracts `contracts-v1.8.0`,
+  `format_version` is an enumeration of `"1.8"` to `"1.20"` in
+  `schemas/lesson-bundle.schema.json` and `schemas/lesson-text.schema.json`, and so is the
+  manifest's `lesson.bundle_format_version` in `schemas/lesson-manifest.schema.json`. A
+  1.21 package therefore fails the schema check (`LP-BUNDLE-SCHEMA`, `LP-TEXT-SCHEMA`,
+  `LP-MANIFEST-SCHEMA`), at the engine's publish step and at the site's import. The
+  board definition allows unknown fields, so `fit` itself passes.
+- **Played by a 1.20 player** (if the version check were relaxed): R5, L2, L4 and L5
+  play exactly as their 1.20 or 1.17 versions do. G6 plays, but its board
+  `pages-07-08_t2` is zoomed and panned like any table board, which is not how the owner
+  approved it. Reading 1.21 is safe; playing G6 as approved needs rule 52.
+- **The §12 tolerances stay.** The v1 packages of R5, L2, L4 and L5 released on
+  2026-10-23 are 1.17 and 1.20 bundles that still hold that data; keep accepting it for
+  bundles before 1.21.
+
+### What the site must do
+
+1. **Contracts** (a new release, for example `contracts-v1.9.0`): add `"1.21"` to the
+   three enumerations above; add `fit` to the board definition as an optional
+   `{"enum": ["whole"]}`. Optionally, for bundles of 1.21 or later, the stricter forms
+   now guaranteed: a block's and an utterance's `provenance` one of `source-derived`,
+   `adapted`, `corrected`, `authored`, `maintainer`, `release`; `heard` exactly
+   `{file, start, end}` with `file` under the package's `audio/`.
+2. **Player**: rule 52. Its spotlight, typing, marks and verdicts are unchanged.
+3. **Tell the engine** the release's tag and its zip's SHA-256: the engine pins it (a new
+   amendment of its ADR 039), and only then packages and publishes any 1.21 lesson.
+4. **Field index** (§13): `1.21 bundle.boards[].fit` and `1.21 bundle.boards[].fit = "whole"`.
+
+### The packages that follow, once the site accepts 1.21
+
+| Lesson | Package version | Why |
+|---|---|---|
+| G6 `grammar-06-clause` | 2 | first engine package of the Grammar and Vocabulary lessons (version 1 was imported by hand on 2026-10-01); the other ten Grammar and Vocabulary lessons are version 2 too, at 1.12 |
+| R5 `reading-05-part-c-2` | 2 | its data changed (v1 released 2026-10-23) |
+| L2 `listening-02-part-a` | 2 | its data changed (v1 released 2026-10-23) |
+| L4 `listening-04-part-c` | 2 | its data changed (v1 released 2026-10-23); the practice-audio swap after oetacademy-exercises #37 is then version 3 |
+| L5 `listening-05-part-c-2` | 2 | as L4 |
+
+Nothing else changes for the other published lessons (R1 to R4, L1, L3): their v1
+packages stay as they are.
+
 ## 10. Player changes with no format version
 
 These apply to every format, 1.12 included, so they also concern the eleven
@@ -884,9 +1017,9 @@ lessons the site already holds.
   the table's cell nor pans to its notes; the guard sets the board smaller as
   far as the whole table and its notes need, the table's text below its 1.9%
   floor if needed (the other blocks stop at 2.6%), keeping the largest size
-  that fits. The reference player knows it by lesson and board id; the bundle
-  does not say it. A player drawing from the bundle alone will zoom this board
-  as any table board.
+  that fits. Until 1.21 the reference player knew it by lesson and board id and
+  the bundle did not say it. **From 1.21 the bundle states it**: the board's
+  `fit` `"whole"`, rule 52 (§9a); the reference player reads only the field.
 - **Phone text size**: no change (owner, 2026-10-12; the site's issue #91).
 
 ## 11. Audio and other files
@@ -914,7 +1047,11 @@ lessons the site already holds.
 ## 12. What the approved bundles hold that is not in the format
 
 Found by the cross-check and by reading the bundles. None changes how a lesson
-plays in the reference player; a strict validator will see them.
+plays in the reference player; a strict validator will see them. **Ended by 1.21**
+(§9a): the engine writes none of them from 2026-10-23, and the four lessons that held
+them (R5, L2, L4, L5) were rebuilt at 1.21 without them. Their v1 packages, released on
+2026-10-23 at 1.17 and 1.20, still hold them until they are republished, so a site
+keeps accepting them in bundles before 1.21.
 
 1. **`_tokens`** (an empty list) on the code-built section-question blocks, 36
    in L4 and 36 in L5: a build field that should have been removed. Ignore it.
@@ -936,7 +1073,11 @@ plays in the reference player; a strict validator will see them.
 the lesson library and writes nothing). On 2026-10-22: 21 approved lessons,
 formats 1.12, 1.13, 1.14, 1.16, 1.17 and 1.20; not in the 1.12 bundles: 120
 field paths, 3 widened types and 68 enumerated values; **uncovered: 0**. Every
-one is in the index below, with the version that introduced it.
+one is in the index below, with the version that introduced it. On 2026-10-23,
+after 1.21 (§9a): formats 1.12, 1.13, 1.14, 1.16, 1.17, 1.20 and 1.21; 119 paths,
+3 widened types and 69 values (`_tokens` and `heard.stimulus` gone, `fit` and its
+value added, and Grammar 6's clause-diagram kinds `link` and `dangling`, 1.9, no
+longer in a 1.12 bundle); **uncovered: 0**.
 
 ## 13. Index of every field path, type and value not in the 1.12 bundles
 
@@ -947,6 +1088,10 @@ a regular expression). Entries in no approved bundle are listed for
 completeness.
 
 ```fields
+# before 1.13, in the 1.12 contract: values only Grammar 6 holds, which is 1.21
+# from 2026-10-23 (§9a), so they are no longer in a 1.12 bundle
+1.9 bundle.blocks.*.items[].kind = "dangling"
+1.9 bundle.blocks.*.items[].kind = "link"
 # 1.13
 1.13 bundle.blocks.*.doc
 1.13 bundle.blocks.*.doc.label
@@ -1065,7 +1210,8 @@ completeness.
 1.17 bundle.boards[].states[].view.map
 1.17 bundle.boards[].states[].view.rows
 1.17 bundle.boards[].states[].view.rows[]
-# not the format: free-text provenance on one block of R5 and one of L5 (§12, item 3)
+# not the format: free-text provenance on one block of R5 and one of L5 (§12, item 3);
+# in no approved bundle from 1.21 (§9a), kept for the v1 packages
 1.17 bundle.blocks.*.provenance ~ "^agent \\("
 # 1.18
 1.18 bundle.blocks.*.doc.item
@@ -1149,7 +1295,11 @@ completeness.
 1.20 bundle.boards[].listen.panel.max
 1.20 bundle.boards[].listen.reading
 1.20 bundle.boards[].listen.reading.font
-# not the format: a build field (§12, item 1) and L2's extra heard field (§12, item 2)
+# not the format: a build field (§12, item 1) and L2's extra heard field (§12, item 2);
+# in no approved bundle from 1.21 (§9a), kept for the v1 packages
 1.20 bundle.blocks.*._tokens
 1.20 bundle.blocks.*.heard.stimulus
+# 1.21
+1.21 bundle.boards[].fit
+1.21 bundle.boards[].fit = "whole"
 ```

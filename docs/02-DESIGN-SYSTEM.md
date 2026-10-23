@@ -432,7 +432,8 @@ row on that board:
   removed (no camera zoom onto the cell, no pan to the notes), and the player's
   guard (§8b) sets the table smaller than 1.9% on the device, as far as the
   whole table and its notes need to fit the board. Everywhere else the floor
-  stands.
+  stands. From bundle 1.21 the bundle states it: the board's `fit` "whole"
+  (docs/04-LESSON-BUNDLE.md, rule 52; ADR 041).
 
 - **Choice tables** (maintainer, 2026-09-25; docs/adr/009). Where each row
   gives versions of one sentence to choose between ("Indefinite / Definite

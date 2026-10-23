@@ -534,6 +534,16 @@ class Bundle(unittest.TestCase):
         self.assertEqual(blp.format_version("reading-03-part-b", part_b=True), "1.16")
         self.assertEqual(blp.format_version("grammar-01-verb-tenses"), "1.12")
 
+    def test_a_sections_question_carries_no_build_field(self):
+        # 1.21 (ADR 041): the question a section shows during a recording is built
+        # after the board's words are counted; `_tokens` stayed on it before
+        blocks_all = {}
+        bid = blp.question_block_for(lesson("listening-09-x", "listening", SET), SET, CHOICE["item_id"],
+                                     blocks_all, "p_")
+        self.assertEqual(bid, "p_sec-" + CHOICE["item_id"])
+        self.assertNotIn("_tokens", blocks_all[bid])
+        self.assertEqual(blocks_all[bid]["provenance"], "source-derived")
+
     def test_a_listening_board(self):
         # 1.19 (ADR 030): a board with a transcript gets its `listen`: the word
         # times, the sections, and on a Part A board the form's heading rows

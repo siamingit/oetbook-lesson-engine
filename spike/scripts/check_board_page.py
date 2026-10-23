@@ -286,6 +286,20 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
                 problems.append(f"{bd['id']}: the verdict of row {v['row']}, column {v['col']} "
                                 f"shows at {v['time']}s, outside the board")
 
+    # 1.21: a board shown whole (`fit`, rule 52) is a table board the camera may
+    # zoom (rule 13): not a question, Listening or map board; its value is the
+    # format's, in a bundle of 1.21 or later
+    for bd in bundle["boards"]:
+        if "fit" not in bd:
+            continue
+        tb = blocks.get(bd.get("table") or "") or {}
+        if bd["fit"] != "whole":
+            problems.append(f"{bd['id']}: fit {bd['fit']!r} is not a value of the format (\"whole\")")
+        if not tb or bd.get("split") or bd.get("listen") or tb.get("map"):
+            problems.append(f"{bd['id']}: fit on a board that is not a table board the camera may zoom")
+        if tuple(int(x) for x in bundle["format_version"].split(".")) < (1, 21):
+            problems.append(f"{bd['id']}: fit in a bundle of format {bundle['format_version']}, before 1.21")
+
     erases = [e for e in bundle["events"] if e["type"] == "erase"]
     expected_erases = sum(1 for bd in bundle["boards"] for s in bd["states"] if s["erase"])
     if len(erases) != expected_erases:

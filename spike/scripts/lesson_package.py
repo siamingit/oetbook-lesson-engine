@@ -16,8 +16,8 @@ memory, never from an unpacked copy.
 The check is the three schemas (jsonschema, draft 2020-12, every schema registered by its `$id`,
 nothing fetched) and then the rules the schemas cannot express, as the site's validator states
 them (oetacademy-web packages/shared/src/contracts/lesson.ts at contracts 1.8.0), with its codes
-(`LP-...`), plus one of the engine's own: no file reference in the package points outside it
-(`PUB-OUTSIDE`). The site validates again at import and refuses a package with any error.
+(`LP-...`), plus two of the engine's own: no file reference in the package points outside it
+(`PUB-OUTSIDE`), and a board's `fit` (bundle 1.21) is one the format allows (`PUB-FIT`). The site validates again at import and refuses a package with any error.
 """
 
 import argparse
@@ -658,6 +658,22 @@ def references(bundle: dict, css: str) -> list[tuple[str, str]]:
     return [(at, p) for at, p in out if not p.startswith(("data:", "#"))]
 
 
+def check_fit(bundle: dict, f: Findings) -> None:
+    """PUB-FIT (the engine's own, bundle 1.21, ADR 041): a board's `fit` is "whole", on a table
+    board the camera may zoom (rule 13; not a question, Listening or map board), in a bundle of
+    1.21 or later. Contracts 1.8.0 do not know the field (their schema refuses format 1.21)."""
+    for x in bundle["boards"]:
+        if "fit" not in x:
+            continue
+        table = bundle["blocks"].get(x.get("table") or "") or {}
+        if x["fit"] != "whole":
+            f.error("PUB-FIT", "bundle.json", "a board's fit must be \"whole\"", x["id"])
+        if not table or x.get("split") or x.get("listen") or table.get("map"):
+            f.error("PUB-FIT", "bundle.json", "fit on a board that is not a table board the camera may zoom", x["id"])
+        if version_tuple(bundle["format_version"]) < (1, 21):
+            f.error("PUB-FIT", "bundle.json", "fit in a bundle before format 1.21", x["id"])
+
+
 def check_inside(bundle: dict, css: str, folder: Path, f: Findings) -> None:
     """PUB-OUTSIDE (the engine's own): every reference resolves to a file inside the package."""
     for at, p in references(bundle, css):
@@ -693,6 +709,7 @@ def validate_package(folder: Path, contracts: Contracts) -> Findings:
         if t:
             check_text(t, b, f)
         check_inside(b, css_path.read_text(encoding="utf-8") if css_path.is_file() else "", folder, f)
+        check_fit(b, f)
     if m:
         check_manifest(m, folder, contracts, f)
         if b:

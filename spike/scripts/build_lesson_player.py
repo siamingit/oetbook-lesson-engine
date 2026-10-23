@@ -128,23 +128,69 @@ LISTEN_READING_FONT = 3.0     # cqh: the note form's type, whole and full width,
 # the extract's share of a Part B question board's width, per cent, until the
 # fit has measured it (fit_boards.py)
 SPLIT_DEFAULT = 55
+# 1.21 (ADR 041): a board shown whole on the device, never zoomed onto a cell nor
+# panned to its notes (a board's `fit`, rule 52), named by board id in the
+# lesson's sections.json (`boards_fit`); and a lesson whose sections.json declares
+# a newer format (`lesson.bundle_format`) is written in it. Either way the lesson
+# is written in 1.21; every other lesson keeps its format, byte for byte.
+NEWEST_FORMAT_VERSION = "1.21"
+FIT_VALUES = ("whole",)
+
+
+def vkey(v: str) -> tuple[int, ...]:
+    return tuple(int(x) for x in v.split("."))
 
 
 def format_version(lesson_id: str, with_map: bool = False, part_b: bool = False,
-                   part_c: bool = False, listening: bool = False) -> str:
-    """The bundle format a lesson is written in: 1.18 for a Listening lesson
-    (ADR 029), 1.17 for a Reading Part C lesson, 1.16 for a Reading Part B
+                   part_c: bool = False, listening: bool = False, newer: str | None = None) -> str:
+    """The bundle format a lesson is written in: 1.20 for a Listening lesson
+    (ADR 029 to 031), 1.17 for a Reading Part C lesson, 1.16 for a Reading Part B
     lesson, 1.14 for a lesson with a map, 1.13 for another Reading lesson (ADR
-    026), FORMAT_VERSION for every other."""
+    026), FORMAT_VERSION for every other; `newer` where it is later (1.21: a
+    board shown whole, or the lesson's declared format; ADR 041)."""
     if listening:
-        return LISTENING_FORMAT_VERSION
-    if part_c:
-        return PART_C_FORMAT_VERSION
-    if part_b:
-        return PART_B_FORMAT_VERSION
-    if with_map:
-        return MAP_FORMAT_VERSION
-    return READING_FORMAT_VERSION if lesson_id.split("-")[0] == "reading" else FORMAT_VERSION
+        v = LISTENING_FORMAT_VERSION
+    elif part_c:
+        v = PART_C_FORMAT_VERSION
+    elif part_b:
+        v = PART_B_FORMAT_VERSION
+    elif with_map:
+        v = MAP_FORMAT_VERSION
+    else:
+        v = READING_FORMAT_VERSION if lesson_id.split("-")[0] == "reading" else FORMAT_VERSION
+    return newer if newer and vkey(newer) > vkey(v) else v
+
+
+def board_fits(info: dict, boards: list[dict], blocks_all: dict, sample: bool = False) -> None:
+    """1.21 (ADR 041): each board the lesson's sections.json names in `boards_fit`
+    takes its `fit` ("whole": rule 52). Only a table board on which the camera may
+    zoom (rule 13) can be named: not a question board, a Listening board or a map
+    board, which never zoom. A name that is not such a board stops the build; a
+    sample build (`--sections`) skips the boards it does not hold."""
+    by_id = {bd["id"]: bd for bd in boards}
+    for bid, how in (info.get("boards_fit") or {}).items():
+        bd = by_id.get(bid)
+        if bd is None:
+            if sample:
+                continue
+            raise SystemExit(f"REFUSED: sections.json boards_fit names {bid!r}, not a board of the lesson")
+        if how not in FIT_VALUES:
+            raise SystemExit(f"REFUSED: sections.json boards_fit gives {bid!r} the fit {how!r}; "
+                             f"the format has {', '.join(FIT_VALUES)}")
+        if not bd.get("table") or bd.get("split") or bd.get("listen") or blocks_all[bd["table"]].get("map"):
+            raise SystemExit(f"REFUSED: sections.json boards_fit names {bid!r}, which is not a table board "
+                             "the camera may zoom (rule 13)")
+        bd["fit"] = how
+
+
+def declared_format(info: dict) -> str | None:
+    """The newer format a lesson's sections.json declares (`lesson.bundle_format`;
+    ADR 041), checked against the formats this builder writes."""
+    v = (info.get("lesson") or {}).get("bundle_format")
+    if v and (not isinstance(v, str) or vkey(v) > vkey(NEWEST_FORMAT_VERSION)):
+        raise SystemExit(f"REFUSED: sections.json lesson.bundle_format {v!r} is not a format this builder "
+                         f"writes (newest {NEWEST_FORMAT_VERSION})")
+    return v
 
 
 def block_data(b: dict, reading: bool = False, with_map: bool = False, part_b: bool = False,
@@ -337,7 +383,7 @@ def block_plain(b: dict) -> str:
 
 def text_export(lesson: dict, sections: list[dict], boards: list[dict], blocks: dict,
                 with_map: bool = False, part_b: bool = False, part_c: bool = False,
-                listening: bool = False) -> dict:
+                listening: bool = False, newer: str | None = None) -> dict:
     """The lesson as clean text, per section: the narration as spoken and the
     words on the board, with no cues and no provenance (docs/04-LESSON-BUNDLE.md).
     A recording (an utterance of kind "exam", 1.18) is not narration: it is left out."""
@@ -364,7 +410,7 @@ def text_export(lesson: dict, sections: list[dict], boards: list[dict], blocks: 
                     "board_text": "\n\n".join(x["text"] for b in bds for x in b["board_text"]),
                     "boards": bds})
     return {"format": "oetbook-lesson-text",
-            "format_version": format_version(lesson["id"], with_map, part_b, part_c, listening),
+            "format_version": format_version(lesson["id"], with_map, part_b, part_c, listening, newer),
             "lesson": lesson, "sections": out}
 
 
@@ -462,7 +508,9 @@ def question_block_for(L: Path, ps: dict, item_id: str, blocks_all: dict, pre: s
         nb = {**BLOCK_DEFAULTS, **practice_set.question_block(ps, practice_set.items(ps)[item_id]),
               "id": bid, "anchor": False, "provenance": "source-derived", "items": [],
               "note": "a section's question (bundle 1.19), built by code from the release"}
-        blocks_all[bid] = {**block_data(nb, True, False, True, True), "html": block_html(nb), "_tokens": []}
+        # no display words: it is built after the board's words are counted, and
+        # nothing reads it aloud (1.21: the build field `_tokens` stayed on it before)
+        blocks_all[bid] = {**block_data(nb, True, False, True, True), "html": block_html(nb)}
     return bid
 
 
@@ -587,13 +635,6 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                 if nb.get("audio"):
                     nb["audio"] = {**nb["audio"], "file": resolve_images(
                         AUDIO_TOKEN + "/" + nb["audio"]["file"], out_dir, L)}
-                if nb.get("heard"):
-                    # 1.18: the sentence of the recording a word is heard in, in the
-                    # extract's own file, copied into the lesson unchanged
-                    import practice_set
-                    practice_set.copy_exam_audio(L, nb["heard"]["stimulus"])
-                    nb["heard"] = {"file": resolve_images(EXAM_TOKEN + "/" + nb["heard"]["file"], out_dir, L),
-                                   "start": nb["heard"]["start"], "end": nb["heard"]["end"]}
                 if nb.get("vocab_table"):
                     vt = nb["vocab_table"]
                     nb["vocab_table"] = {"kind": vt["kind"],
@@ -601,6 +642,15 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                     if vt.get("groups"):         # 1.17: a recap by question, its rows' words
                         nb["vocab_table"]["groups"] = [[n, [vocab.lexicon_id(L, k) for k in keys]]
                                                        for n, keys in vt["groups"]]
+            if nb.get("heard"):
+                # 1.18: the sentence of the recording a word is heard in, in the
+                # extract's own file, copied into the lesson unchanged, named
+                # relative to the bundle's folder (1.21: in a Part A lesson too,
+                # which wrote the bare name and the extract's id before)
+                import practice_set
+                practice_set.copy_exam_audio(L, nb["heard"]["stimulus"])
+                nb["heard"] = {"file": resolve_images(EXAM_TOKEN + "/" + nb["heard"]["file"], out_dir, L),
+                               "start": nb["heard"]["start"], "end": nb["heard"]["end"]}
             blocks_all[pre + bid] = {**block_data(nb, practice, with_map, part_b or part_c, listening), "html": html_b,
                                      "_tokens": block_tokens(b)}     # display words (1.3)
         # an authored section (ADR 018) covers no deck page
@@ -882,6 +932,12 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
         wm += [{"block": x["block"], "text": x["text"], "cls": "slide-underline", "time": bd["start"]}
                for x in smarks if x["block"] in shown]
         bd["wordmarks"] = sorted(wm, key=lambda x: x["time"])
+    # 1.21 (ADR 041): the boards shown whole, and the format they and the
+    # lesson's own declaration call for
+    board_fits(info, boards_out, blocks_all, sample=bool(only))
+    newer = max([v for v in (declared_format(info),
+                             NEWEST_FORMAT_VERSION if any(bd.get("fit") for bd in boards_out) else None) if v],
+                key=vkey, default=None)
 
 
     # Categories and their sections as the contents board shows them
@@ -916,7 +972,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             "voice": first.get("voice"), "model": first.get("model"), "speed": first.get("speed"),
             "total_duration_s": round(total, 3), "reading_hold_s": READING_HOLD_S}
     bundle = {"format": "oetbook-lesson-bundle",
-              "format_version": format_version(lesson["id"], with_map, part_b, part_c, listening),
+              "format_version": format_version(lesson["id"], with_map, part_b, part_c, listening, newer),
               "lesson": lesson, "sections": sections_out, "meta": meta,
               "stylesheet": "blocks.css", "text": "text.json",
               "blocks": {i: b for i, b in blocks_all.items() if i in used},
@@ -925,7 +981,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                                          encoding="utf-8")
     (out_dir / "blocks.css").write_text(frame_css(L).strip() +"\n", encoding="utf-8")
     (out_dir / "text.json").write_text(
-        json.dumps(text_export(lesson, sections_out, boards_out, blocks_all, with_map, part_b, part_c, listening),
+        json.dumps(text_export(lesson, sections_out, boards_out, blocks_all, with_map, part_b, part_c, listening,
+                               newer),
                    ensure_ascii=False, indent=1), encoding="utf-8")
     (out_dir / "timeline.json").write_text(json.dumps({"meta": meta, "boards": boards_out,
                                                        "events": events}, ensure_ascii=False,
