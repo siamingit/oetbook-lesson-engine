@@ -774,12 +774,14 @@ The package published to the site (oetacademy-web ADR-0005 and ENGINE-GAPS G2,
 adopted by ADR 039) carries each clip as AAC-LC in `.m4a`, mono, 44.1 kHz, 64
 kb/s, named by its hash (`audio/<hash>.m4a`), each keeping its length and its
 start so `clip_in` and `clip_out` stay valid; the published `bundle.json`
-rewrites every `audio_file` to it. Every exam extract a lesson plays is carried
-the same way, and the manifest marks it as an exam extract with its exercise set
-and part (ADR 039, decision 2); the site's own exercise audio is never
-referenced. Packages are released in `siamingit/oetacademy-sessions`. The local
-bundle described here is unchanged. The publish step is not built yet (ADR 039,
-decision 7).
+rewrites every `audio_file` to it. Every exam extract a lesson plays, and every
+pronunciation clip, is carried as the original MP3, byte for byte, named
+`audio/<the first 16 hex of its SHA-256>.mp3`, and the manifest gives each audio
+file its kind (`narration`, `exam`, `pronunciation`) and an exam file its set,
+part, extract and release (ADR 039 amendment of 2026-10-23, superseding decision
+2's `.m4a`); the site's own exercise audio is never referenced. Packages are
+released in `siamingit/oetacademy-sessions` by `spike/scripts/publish_lesson.py`
+(docs/03-RUNBOOK.md, step 18b). The local bundle described here is unchanged.
 
 ---
 

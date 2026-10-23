@@ -131,3 +131,90 @@ These are for the owner and the site; they are listed, not settled.
   the owner to accept (its ADR-0034, Q3).
 - Listening 03, 04 and 05 will each have a second package version after #37.
 - To reverse a decision: a new ADR. The decisions are the owner's.
+
+## Amendment — 2026-10-23: the site's answers, and the publish step built
+
+Status: **Accepted** by the owner in chat, 2026-10-22 (the site chat's answers, given in the brief
+"build the publish step"), with two choices asked the same day (below). **It supersedes decision 2
+where they differ**, and closes decision 7's first two items. The publish step (ENGINE-GAPS G1 to G7)
+is built: `spike/scripts/publish_lesson.py` and `spike/scripts/lesson_package.py`.
+
+### The owner's answers (2026-10-22)
+
+1. **Contracts pinned: `contracts-v1.8.0`**, its zip's SHA-256
+   `d98a94223c9915b845dd8ba4434c577deaff2e94c75583ddd00964f42a13f3dd` (checked: it matches). It
+   accepts bundle formats 1.8 to 1.20.
+2. **Audio** (replaces decision 2's "every exam extract as `audio/<hash>.m4a`"). Every audio file in
+   the manifest has a `kind`:
+   - `narration`: AAC `.m4a`, 64 kb/s, named by content hash;
+   - `exam` and `pronunciation`: the **original MP3 files, byte for byte, never re-encoded**, named
+     `audio/<the first 16 hex characters of the file's SHA-256>.mp3`. Every word time (`clip_in`,
+     `clip_out`, `heard.start`/`end`, `listen.times`) is seconds into the original MP3; the site
+     checks the hash against `exam.sha256`. `.mp3` is allowed for these two kinds only;
+   - an `exam` file carries `exam: {set, part, stimulus, release}` (`part` `LA`, `LB` or `LC`), taken
+     from the exercises release data, never guessed;
+   - the `data-audio` of the block html (the speaker and "hear it" buttons) is rewritten to the
+     package's paths, and after packaging no `data-audio`, `src` or file reference may point outside
+     the package. This settles "Found while recording this", items 1 to 3.
+3. **`lesson.professions` is `"all"`; every section has `criteria: []`** (item 5).
+4. **The manifest names its taxonomy version.** Each section's `teaches` comes from the pinned
+   contracts' `data/session-section-tags.json` (taxonomy v2): a topic key where the section clearly
+   teaches one topic, otherwise a skill key; an introduction none. The owner approves the proposed
+   tags once per course (decision 4; decision 7's tag list).
+5. **Narration names collide across section folders** (Reading 3, Listening 3 to 5, Grammar 3 and 7,
+   Vocabulary 3: one name, different audio). In the package every file has a unique name; content
+   naming does it, and a check fails on any collision.
+6. **The bundle quirks** of the changelog's §12 are tolerated by the site's importer (item 4). Their
+   clean-up, and format 1.21's "show whole, no zoom" board flag (item 6), are a later session.
+7. **Order**: Reading 1–5, then Listening, then the eleven Grammar and Vocabulary lessons as package
+   version 2 (decision 5). Reading packages are package version 1.
+8. **`lesson.approved` is `{"by": "siavash", "on": <the final gate's date in gates.json>}`** for every
+   approved lesson (decision 3).
+
+### Asked in chat, 2026-10-23
+
+- **The dependency** `jsonschema==4.26.0` (MIT) is pinned in `requirements.txt` for G6's schema
+  check (owner: yes).
+- **Where the pinned contracts live.** The contracts release is in the private oetacademy-web and
+  this repository is public, so the release is **not** committed (G7 says "keep it in the engine
+  repo"; the owner chose otherwise): `spike/publish/contracts.lock.json` holds its tag and SHA-256;
+  the zip is downloaded with `gh` into `%LOCALAPPDATA%\oetacademy-contracts\` and its hash checked
+  every time it is read, every file read from the zip in memory. **Contract validation runs
+  locally, at publish time**: `--package` and `--release` stop if the contracts are missing or their
+  hash does not match; **CI skips it because the contracts repository is private** (owner,
+  2026-10-23: no `CONTRACTS_READ_TOKEN`; the tests that need the contracts are skipped there, the
+  others run).
+
+### Decided by the agent under the brief (ADR 005; the owner may reverse any)
+
+- **Narration names**: `audio/<the first 16 hex of the WAV master's SHA-256>.m4a`, the master's hash
+  rather than the encoding's, so a name follows its content and two identical masters are one file.
+- **The encoder's priming.** ffmpeg's AAC encoder adds 1024 samples (23.2 ms) of priming; its MP4
+  muxer writes an edit list that skips them and plays exactly the master's length. For every
+  narration file the step checks that edit list (one entry, its length the master's within 10 ms)
+  and decodes the file as a browser does (the edit list applied) and compares it with the master:
+  start (by cross-correlation) and length within 10 ms, or the package fails. Encoding is
+  bit-exact (`-fflags +bitexact`, no metadata), so the same masters give the same bytes.
+- **Where things are written**, all outside git: the package and its zip in
+  `<L>/generated/package/<id>-v<n>/` and `<id>-v<n>.zip` (with an encoding cache and a report); the
+  record of releases, package versions and published section ids (G5) in `<L>/analysis/publish.json`,
+  written only by a release; the section tags, proposed and approved per course, in
+  `<library>/course/section-tags.json`, beside the course index, with its review page
+  `section-tags-review.html`. A section published once and gone later needs its replacements in
+  `<L>/analysis/publish_retired.json`, or the package is refused.
+- **The checks** are the three schemas and every rule of the site's validator (ADR-0005 §10 and
+  ADR-0034 Amendment 13, codes `LP-…`, ported from its code at contracts 1.8.0), plus the engine's
+  own (`PUB-…`): names, references inside the package, audio timing, the exam source in the release
+  data, the zip. A package with any error is not written. The Reading packages were also checked
+  with the site's own validator, run locally from its code: the same result.
+- **A release** checks the package again, the course's tags approved, the zip's `manifest.json`
+  byte-identical to the asset, and that the sessions repository holds exactly the versions the
+  record lists; then `gh release create` (published, two assets), and checks the release it made.
+
+### Consequences
+
+- Decision 7: the contracts release and the tag list exist; publishing waits only for the owner's
+  approval of each course's tags (and the write token is the owner's `gh` login).
+- `docs/04-LESSON-BUNDLE.md` §8 said exam extracts are carried as `.m4a`; corrected to this
+  amendment.
+- To reverse: a new amendment. The answers are the owner's.

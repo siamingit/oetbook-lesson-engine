@@ -23,9 +23,41 @@ jobs:
       # The project's requirements, so CI tests the owner's setup (owner, 2026-10-12)
       - name: Install the requirements
         run: python -m pip install -r requirements.txt
+      # ADR 039 amendment of 2026-10-23: the publish step's tests need ffmpeg and the
+      # pinned contracts. The contracts release is private (oetacademy-web); with
+      # CONTRACTS_READ_TOKEN it is downloaded and its SHA-256 checked against
+      # spike/publish/contracts.lock.json. Without the secret (owner, 2026-10-23: there
+      # is none) the tests that need it are skipped; contract validation runs locally,
+      # at publish time (publish_lesson.py --package and --release stop without it).
+      # The runner has no ffmpeg; man-db's trigger can hang an apt install for many minutes, so it
+      # is switched off, with no recommended packages. The runner's Azure mirror crawled on
+      # 2026-10-23 (an install timed out), so apt uses the main archive.
+      - name: ffmpeg
+        timeout-minutes: 12
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          command -v ffmpeg && exit 0
+          sudo rm -f /var/lib/man-db/auto-update
+          sudo sed -i 's|http://azure.archive.ubuntu.com|http://archive.ubuntu.com|g' /etc/apt/sources.list.d/*.sources /etc/apt/sources.list 2>/dev/null || true
+          sudo apt-get update -q
+          sudo apt-get install -y -q --no-install-recommends ffmpeg
+      - name: Pinned contracts
+        env:
+          GH_TOKEN: ${{ secrets.CONTRACTS_READ_TOKEN }}
+          OETBOOK_CONTRACTS_DIR: ${{ runner.temp }}/contracts
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::notice::skipped: contracts not available in CI (no CONTRACTS_READ_TOKEN); contract validation runs locally at publish time"
+            echo "OETBOOK_CONTRACTS_OPTIONAL=1" >> "$GITHUB_ENV"
+            exit 0
+          fi
+          python spike/scripts/lesson_package.py --fetch
       - name: Every script compiles
         run: python -m compileall -q spike/scripts spike/tests
       - name: Unit tests
+        env:
+          OETBOOK_CONTRACTS_DIR: ${{ runner.temp }}/contracts
         run: python -m unittest discover -s spike/tests -v
       # ADR 038: the public course index lists every built lesson (each has an
       # entry in spike/course_index/curated.json), matches its schema, and its
