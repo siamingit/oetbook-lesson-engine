@@ -16,7 +16,7 @@ old one.
 | [008 — The board style: kinds of content, change flows, word-class colours](008-board-style.md) | 2026-09-25 |
 | [009 — Choice tables, gaps in a printed text, and marks in table cells](009-choice-tables-and-gaps.md) | 2026-09-25 |
 | [010 — The clause diagram: sentences drawn as puzzle pieces](010-clause-diagram.md) | 2026-09-27 |
-| [011 — Every block fits the board: the fit, clears inside a state, tight boards](011-boards-fit.md) | 2026-09-27; amended 2026-10-11 (the player's guard on every board), 2026-10-12 (one table whole, boards measured ahead, phone text size) |
+| [011 — Every block fits the board: the fit, clears inside a state, tight boards](011-boards-fit.md) | 2026-09-27; amended 2026-10-11 (the player's guard on every board), 2026-10-12 (one table whole, boards measured ahead, phone text size); the table whole carried in the bundle by 041 (2026-10-23) |
 | [012 — Relative and participle clauses in the clause diagram](012-relative-and-participle-clauses.md) | 2026-09-27 |
 | [013 — Gloss moments and teacher-like openings](013-gloss-moments-and-teacher-openings.md) | 2026-09-27 |
 | [014 — Introductions greet first, then link, and the board shows what is said](014-introductions-greet-then-link.md) | 2026-09-27 |
@@ -46,3 +46,4 @@ old one.
 | [038 — The public course index: what each lesson teaches, in the repository, by code](038-public-course-index.md) | 2026-10-22; supersedes 006's "outside the repository" for this summary only |
 | [039 — Publishing lessons to oetacademy-sessions: the engine adopts the site's package contract](039-publish-to-oetacademy-sessions.md) | 2026-10-22; amends 032 decision 2 for Listening 03–05; closes the bundle contract's open items; amended 2026-10-23 (the site's answers: MP3s byte for byte, audio kinds, tags; the publish step built) |
 | [040 — Writing course: content decisions, the pinned samples, and authored sessions](040-writing-course-content-decisions.md) | 2026-10-23 |
+| [041 — Bundle format 1.21: a board shown whole, and the approved bundles' stray data cleaned up](041-bundle-format-1-21.md) | 2026-10-23; carries 011's Grammar 6 exception in the bundle; settles 039's "Found while recording this" items 4 and 6 |

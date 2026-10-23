@@ -33,7 +33,8 @@ ID_MAPS = {"bundle.blocks", "bundle.boards[].reveal", "bundle.boards[].pinned",
            "bundle.boards[].states[].reveal"}
 # keys whose string values are an enumeration: a new value is a format change
 ENUM_KEYS = {"type", "kind", "text_type", "style", "role", "flow", "provenance",
-             "verdict", "cls", "family", "side", "zoom", "from_class", "to_class"}
+             "verdict", "cls", "family", "side", "zoom", "from_class", "to_class",
+             "fit"}                     # 1.21: a board shown whole
 
 
 def vkey(v: str) -> tuple[int, ...]:

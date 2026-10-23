@@ -2013,7 +2013,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 6. Grammar for OET: Relative Clauses and Participle Clauses
 
-- Lesson ID and folder: `grammar-06-clause` (folder `grammar-06-clause`); course grammar, lesson 6; length 50:53; bundle format 1.12
+- Lesson ID and folder: `grammar-06-clause` (folder `grammar-06-clause`); course grammar, lesson 6; length 50:53; bundle format 1.21
 - Status: approved by siavash, 2026-09-27 23:08
 - Description: Learn to add information with relative clauses, make them shorter, and join case notes with participle clauses in your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 79:14 long, partial hash `6ef7636e4afb83cb`; deck `source/slides.pdf`, 12 pages
@@ -6071,7 +6071,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 5. Reading Part C (2): More Practice
 
-- Lesson ID and folder: `reading-05-part-c-2` (folder `reading-05-part-c-2`); course reading, lesson 5; length 87:09; bundle format 1.17
+- Lesson ID and folder: `reading-05-part-c-2` (folder `reading-05-part-c-2`); course reading, lesson 5; length 87:09; bundle format 1.21
 - Status: approved by siavash, 2026-10-11 21:11
 - Description: A quick review of the QTA method and the opinion signals, then a second long Part C text worked through question by question.
 - Original session: folder `source`: `source/video.mp4`, 70:48 long, partial hash `82473fa2c482c498`; deck `source/slides.pdf`, 15 pages; the same recording as `reading-04-part-c`
@@ -6576,7 +6576,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 2. OET Listening: Part A
 
-- Lesson ID and folder: `listening-02-part-a` (folder `listening-02-part-a`); course listening, lesson 2; length 55:12; bundle format 1.20
+- Lesson ID and folder: `listening-02-part-a` (folder `listening-02-part-a`); course listening, lesson 2; length 55:12; bundle format 1.21
 - Status: approved by siavash, 2026-10-14 19:20
 - Description: Learn how Listening Part A works, predict the kind of word each gap needs, follow what the patient says, and practise on two full consultations.
 - Original session: folder `source`: `source/video.mp4`, 81:34 long, partial hash `5e2efa78ad8e72f2`; deck `source/slides.pdf`, 18 pages
@@ -7171,7 +7171,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 4. OET Listening: Part C (1)
 
-- Lesson ID and folder: `listening-04-part-c` (folder `listening-04-part-c`); course listening, lesson 4; length 66:37; bundle format 1.20
+- Lesson ID and folder: `listening-04-part-c` (folder `listening-04-part-c`); course listening, lesson 4; length 66:37; bundle format 1.21
 - Status: approved by Siavash, 2026-10-17 11:54
 - Description: Learn how Listening Part C works, use the 90 seconds to read the questions, follow a long talk part by part with its signposts, rule out tempting options, and practise on a presentation about patients who come back to the emergency department again and again.
 - Original session: folder `source`: `source/video.mp4`, 85:52 long, partial hash `716e6a30c3fad891`; deck `source/slides.pdf`, 19 pages; the same recording as `listening-05-part-c-2`
@@ -7520,7 +7520,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 5. OET Listening: Part C (2)
 
-- Lesson ID and folder: `listening-05-part-c-2` (folder `listening-05-part-c-2`); course listening, lesson 5; length 64:52; bundle format 1.20
+- Lesson ID and folder: `listening-05-part-c-2` (folder `listening-05-part-c-2`); course listening, lesson 5; length 64:52; bundle format 1.21
 - Status: approved by Siavash, 2026-10-21 22:01
 - Description: A quick review of the Part C method, then a whole Part C interview, question by question: how the interviewer's questions show where each part begins, and how to rule out the wrong options that look right.
 - Original session: folder `source`: `source/video.mp4`, 85:52 long, partial hash `716e6a30c3fad891`; deck `source/slides.pdf`, 19 pages; the same recording as `listening-04-part-c`

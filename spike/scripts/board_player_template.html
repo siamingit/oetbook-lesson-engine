@@ -515,14 +515,13 @@ let zoomCol = 1, zoomSkip = null;        // 1.16: the question column's size, se
 function boardZoom(bd) { return (bd && !isQBoard(bd) && bd._fitZoom) || 1; }
 function boardPic(bd) { return (bd && !isQBoard(bd) && bd._fitPic) || 1; }
 let fitZ = 1, picFit = 1, tableFree = false;
-// One board whose table is shown whole on the device, by the owner's decision of
-// 2026-10-12 (a per-board exception, not a rule; design system §7, Tables): the
-// camera never zooms onto its cell nor pans to its notes, and the guard sets its
-// table smaller than the tables' floor, as far as the whole table and its notes
-// need to fit the board. The fit (window.__noGuard) plans it as before.
-const TABLE_FREE = { "grammar-06-clause": ["pages-07-08_t2"] };
+// 1.21: a board shown whole on the device, its `fit` "whole" (rule 52, ADR 041;
+// first the owner's per-board decision of 2026-10-12, Grammar 6): the camera
+// never zooms onto its cell nor pans to its notes, and the guard sets its table
+// smaller than the tables' floor, as far as the whole table and its notes need
+// to fit the board. The fit (window.__noGuard) plans it as before.
 function isTableFree(bd) {
-  return !!bd && !window.__noGuard && (TABLE_FREE[BUNDLE.lesson.id] || []).includes(bd.id);
+  return !!bd && !window.__noGuard && bd.fit === "whole";
 }
 // a block's own size under the guard: a table's text never below the tables'
 // floor (1.9% of the frame), every other block the board's; on a board whose
@@ -1983,7 +1982,7 @@ function camera(bd, focus, notes, jumped) {
   const oi = visIn;
   if (isMapBoard(bd) || bd.lens) focus = null;     // the lens zooms (the map's, 1.14; a Part B text's, 1.15), not the camera
   if (isQBoard(bd)) focus = null;                  // 1.16: the extract is whole; nothing zooms
-  if (isTableFree(bd)) focus = null;               // the owner's exception (above): the table whole
+  if (isTableFree(bd)) focus = null;               // 1.21: a board shown whole (`fit`, above)
   if (isLBoard(bd)) focus = null;                  // 1.19: the transcript's box moves, never the camera
   if (focus) {
     const td0 = focus.el.querySelector("td");
