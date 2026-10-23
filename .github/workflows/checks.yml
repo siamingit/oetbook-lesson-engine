@@ -24,10 +24,11 @@ jobs:
       - name: Install the requirements
         run: python -m pip install -r requirements.txt
       # ADR 039 amendment of 2026-10-23: the publish step's tests need ffmpeg and the
-      # pinned contracts. The contracts release is private (oetacademy-web), so it is
-      # downloaded with CONTRACTS_READ_TOKEN (read-only Contents on oetacademy-web) and
-      # its SHA-256 checked against spike/publish/contracts.lock.json; without the
-      # secret the job fails rather than skip the package checks.
+      # pinned contracts. The contracts release is private (oetacademy-web); with
+      # CONTRACTS_READ_TOKEN it is downloaded and its SHA-256 checked against
+      # spike/publish/contracts.lock.json. Without the secret (owner, 2026-10-23: there
+      # is none) the tests that need it are skipped; contract validation runs locally,
+      # at publish time (publish_lesson.py --package and --release stop without it).
       - name: ffmpeg
         run: command -v ffmpeg || (sudo apt-get update -q && sudo apt-get install -y -q ffmpeg)
       - name: Pinned contracts
@@ -36,8 +37,9 @@ jobs:
           OETBOOK_CONTRACTS_DIR: ${{ runner.temp }}/contracts
         run: |
           if [ -z "$GH_TOKEN" ]; then
-            echo "::error::secret CONTRACTS_READ_TOKEN is not set; the lesson packages cannot be checked"
-            exit 1
+            echo "::notice::skipped: contracts not available in CI (no CONTRACTS_READ_TOKEN); contract validation runs locally at publish time"
+            echo "OETBOOK_CONTRACTS_OPTIONAL=1" >> "$GITHUB_ENV"
+            exit 0
           fi
           python spike/scripts/lesson_package.py --fetch
       - name: Every script compiles

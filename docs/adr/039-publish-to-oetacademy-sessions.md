@@ -179,9 +179,11 @@ is built: `spike/scripts/publish_lesson.py` and `spike/scripts/lesson_package.py
   this repository is public, so the release is **not** committed (G7 says "keep it in the engine
   repo"; the owner chose otherwise): `spike/publish/contracts.lock.json` holds its tag and SHA-256;
   the zip is downloaded with `gh` into `%LOCALAPPDATA%\oetacademy-contracts\` and its hash checked
-  every time it is read, every file read from the zip in memory. CI downloads it with the secret
-  `CONTRACTS_READ_TOKEN` (read-only Contents on oetacademy-web) and fails without it, as the
-  release-answers job does.
+  every time it is read, every file read from the zip in memory. **Contract validation runs
+  locally, at publish time**: `--package` and `--release` stop if the contracts are missing or their
+  hash does not match; **CI skips it because the contracts repository is private** (owner,
+  2026-10-23: no `CONTRACTS_READ_TOKEN`; the tests that need the contracts are skipped there, the
+  others run).
 
 ### Decided by the agent under the brief (ADR 005; the owner may reverse any)
 

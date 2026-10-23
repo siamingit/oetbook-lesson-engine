@@ -81,8 +81,12 @@ def fetch(lk: dict | None = None) -> Path:
     if target.exists() and sha256_file(target) == lk["sha256"]:
         return target
     target.parent.mkdir(parents=True, exist_ok=True)
-    subprocess.run(["gh", "release", "download", lk["tag"], "--repo", lk["repository"],
-                    "--pattern", lk["asset"], "--dir", str(target.parent), "--clobber"], check=True)
+    try:
+        subprocess.run(["gh", "release", "download", lk["tag"], "--repo", lk["repository"],
+                        "--pattern", lk["asset"], "--dir", str(target.parent), "--clobber"], check=True)
+    except (OSError, subprocess.CalledProcessError) as e:
+        raise SystemExit(f"REFUSED: the pinned contracts {lk['tag']} could not be downloaded ({e}); "
+                         f"nothing is packaged or published without them")
     got = sha256_file(target)
     if got != lk["sha256"]:
         target.unlink()

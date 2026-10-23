@@ -8,13 +8,16 @@ dry run creates nothing.
 The made-up lesson is the contracts' own example lesson (examples/lesson/grammar-99-example),
 turned back into the engine's local form (WAV masters in section folders, ../ paths) and given an
 exam recording, a heard sentence and a pronunciation clip. Needs ffmpeg and the pinned contracts
-(lesson_package.py --fetch; CI downloads them).
+(lesson_package.py --fetch). The contracts are private and CI has no token for them (owner,
+2026-10-23): CI sets OETBOOK_CONTRACTS_OPTIONAL=1, and the tests that need them are skipped there
+("skipped: contracts not available in CI"); everywhere else a missing contract fails the tests.
 
     .venv/Scripts/python -m unittest spike/tests/test_publish_lesson.py
 """
 
 import copy
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -31,7 +34,15 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import lesson_package as lp  # noqa: E402
 import publish_lesson as pub  # noqa: E402
 
-CONTRACTS = lp.load(fetch_missing=False)
+SKIPPED = "skipped: contracts not available in CI"
+if os.environ.get("OETBOOK_CONTRACTS_OPTIONAL") == "1":
+    try:
+        CONTRACTS = lp.load(fetch_missing=False)
+    except SystemExit:
+        CONTRACTS = None
+else:
+    CONTRACTS = lp.load(fetch_missing=False)
+needs_contracts = unittest.skipIf(CONTRACTS is None, SKIPPED)
 EXAMPLE = "examples/lesson/grammar-99-example/"
 LESSON = "grammar-99-example"
 
@@ -129,6 +140,7 @@ def quiet(*_):
     pass
 
 
+@needs_contracts
 class BuiltPackage(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -198,6 +210,7 @@ class BuiltPackage(unittest.TestCase):
         self.assertEqual(again["manifest_sha256"], self.report["manifest_sha256"])
 
 
+@needs_contracts
 class Refusals(unittest.TestCase):
     def setUp(self):
         self.L = made_up_library()
@@ -265,6 +278,7 @@ class Checks(unittest.TestCase):
         self.assertTrue(f.ok)
         self.assertEqual(len(set(names.values())), 2)
 
+    @needs_contracts
     def test_reference_outside_the_package_fails(self):
         L = made_up_library()
         try:
@@ -336,6 +350,9 @@ class PinnedContracts(unittest.TestCase):
         lk = lp.lock()
         self.assertEqual((lk["tag"], lk["sha256"]), ("contracts-v1.8.0",
                          "d98a94223c9915b845dd8ba4434c577deaff2e94c75583ddd00964f42a13f3dd"))
+
+    @needs_contracts
+    def test_the_loaded_contracts_are_1_8_0(self):
         self.assertEqual(CONTRACTS.version, "1.8.0")
 
 

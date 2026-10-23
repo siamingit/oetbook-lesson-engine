@@ -383,11 +383,11 @@ request and every push to main, on GitHub's runners, with nothing that needs
   index is up to date is checked locally (`--check`, and the unit test when `C:\OET\lessons`
   exists).
 
-- **lesson packages** (in the tests job, ADR 039 amendment of 2026-10-23): the publish step's
-  unit tests build a package from the contracts' example lesson and check it against the pinned
-  contracts, which CI downloads with the secret `CONTRACTS_READ_TOKEN` (read-only Contents on the
-  private oetacademy-web) and checks against `spike/publish/contracts.lock.json`; without the
-  secret the job fails.
+- **lesson packages** (in the tests job, ADR 039 amendment of 2026-10-23): contract validation
+  runs locally at publish time (`publish_lesson.py --package` and `--release` stop if the pinned
+  contracts are missing or their hash does not match); CI skips the tests that need the contracts,
+  because the contracts repository is private ("skipped: contracts not available in CI"), and runs
+  the publish step's other tests.
 
 A pull request is merged when both jobs are green.
 
