@@ -29,8 +29,17 @@ jobs:
       # spike/publish/contracts.lock.json. Without the secret (owner, 2026-10-23: there
       # is none) the tests that need it are skipped; contract validation runs locally,
       # at publish time (publish_lesson.py --package and --release stop without it).
+      # The runner has no ffmpeg; man-db's trigger can hang an apt install for many minutes, so it
+      # is switched off, with no recommended packages.
       - name: ffmpeg
-        run: command -v ffmpeg || (sudo apt-get update -q && sudo apt-get install -y -q ffmpeg)
+        timeout-minutes: 8
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          command -v ffmpeg && exit 0
+          sudo rm -f /var/lib/man-db/auto-update
+          sudo apt-get update -q
+          sudo apt-get install -y -q --no-install-recommends ffmpeg
       - name: Pinned contracts
         env:
           GH_TOKEN: ${{ secrets.CONTRACTS_READ_TOKEN }}
