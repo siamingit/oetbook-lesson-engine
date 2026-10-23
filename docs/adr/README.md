@@ -45,3 +45,4 @@ old one.
 | [037 — Listening Part C (2): an all-authored lesson on the interview, and the interviewer as a signpost](037-listening-part-c-2-interview.md) | 2026-10-17 |
 | [038 — The public course index: what each lesson teaches, in the repository, by code](038-public-course-index.md) | 2026-10-22; supersedes 006's "outside the repository" for this summary only |
 | [039 — Publishing lessons to oetacademy-sessions: the engine adopts the site's package contract](039-publish-to-oetacademy-sessions.md) | 2026-10-22; amends 032 decision 2 for Listening 03–05; closes the bundle contract's open items; amended 2026-10-23 (the site's answers: MP3s byte for byte, audio kinds, tags; the publish step built) |
+| [040 — Writing course: content decisions, the pinned samples, and authored sessions](040-writing-course-content-decisions.md) | 2026-10-23 |
