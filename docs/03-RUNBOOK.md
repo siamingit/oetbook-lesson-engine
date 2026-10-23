@@ -241,7 +241,8 @@ marked **step** (ADR 005). Costs are Grammar 1's.
 | 16 | Ear | `ear.py <L> --pages ... --recompare` per section | audio, lexicon, terms check | `generated/<section>/boards/ear.json` | Scribe, about 106 min of audio |
 | 17 | Lesson player and checks | `fit_boards.py <L>` (the fit: clears, tight boards, table text size, measured in the player; ADR 011), `build_lesson_player.py <L>`, `check_board_page.py <L> --dir <L>/generated/lesson-player`, `check_marks.py <L> --dir ...`, `check_layout.py <L> --dir ...` (no word moves between states; design system §8a), `check_overflow.py <L> --dir ...` (every block inside the board, every label in sentence case; §8b), `check_overlap.py <L> --dir ...` (no block over another block or its text, nor under the header or the control bar; §8d, ADR 020), these two and the lens check at three frames: a phone held landscape (915x412, a 590 px frame whose controls keep 44 px), phone-landscape and laptop (2026-10-08); the fit adds the small phone frame for every lesson fitted from 2026-10-08 on (`frames` in fit.json; `fit_boards.py --small-phone` opts in a lesson fitted before), for a Reading lesson `check_doc_marks.py <L>` (every phrase of a text read aloud is marked; ADR 026) and `check_lens.py <L> --dir ...` (no line inside a lens or zoom window is clipped, ADR 026, 2026-10-07; every line of a Part B question board's extract on its page and on the board after it is uncovered, with the extract's size per board, 2026-10-08; also on the silent preview); for every lesson `check_wide_font.py <L> --dir ...` (with Verdana forced, nothing on any board hidden or under the controls, at the three frames: the player's guard, on Part B question boards from 2026-10-08 and on every board of every lesson from 2026-10-11, design system §8b; also on the silent preview), and `pitch_check.py <L>` (the monotony check: fails a lesson whose median clip varies less than 4.07 semitones, lists every clip under 3.71 for the ear; ADR 027 amendment) | every section's narration, screens and audio | `analysis/fit.json`; `generated/lesson-player/`: the lesson bundle (`bundle.json`, `text.json`, `blocks.css`; docs/04-LESSON-BUNDLE.md), `player.html` (its reference renderer), `marks_check.json` | free |
 | 18 | Course index | `build_course_index.py <L>`: the last step of every build, rebuilt whole from every lesson folder (ADR 006); then **re-run the public course index**, `build_public_course_index.py <L>` (ADR 038; the runner does both). A new lesson first gets its entry in `spike/course_index/curated.json` (where its OET facts and exam methods are taught, by utterance or board id; its session note); then run `check_release_answers.py` and commit `docs/course-index.*` with the lesson's pull request. `build_public_course_index.py --check C:\OET\lessons` fails while the committed index is out of date; CI runs `--verify` | every lesson's bundle, text, sections, understanding, gates and source; for the public index also the screens, `practice_set.json`, the local exercises releases and the curated file | `<library>/course/course-index.json` and `course-index.md`, **outside the repository** (docs/05-COURSE-INDEX.md); `docs/course-index.json` and `docs/course-index.md`, the public summary, **in the repository** (ADR 038) | free, seconds |
-| | **GATE final** | the maintainer plays the finished lesson and judges by ear every term the terms check did not hear as written; a new lexicon entry is approved with `lexicon.py --approve TERM --by NAME`. An approved lesson is then published to `siamingit/oetacademy-sessions` (ADR 039; the publish step is not built yet) | | | |
+| | **GATE final** | the maintainer plays the finished lesson and judges by ear every term the terms check did not hear as written; a new lexicon entry is approved with `lexicon.py --approve TERM --by NAME`. An approved lesson is then published (step 18b) | | | |
+| 18b | Publish | after the final gate and step 18, in the order Reading, Listening, then Grammar and Vocabulary (ADR 039 and its amendment of 2026-10-23): once per course the agent proposes every section's tag in `<library>/course/section-tags.json` (keys only from the pinned contracts' session section tag list) and writes the review page (`publish_lesson.py <L> --tags-page`); the owner approves the course's tags in chat and the agent records it (`--approve-tags --by NAME`). Then `publish_lesson.py <L> --package` (the next package version, checked against the pinned contracts and by the engine's checks, narration timing within 10 ms of each master; a failing package is not written), `--release --dry-run` (what it would create, and anything blocking it), and `--release` (a release `<id>-v<n>` in `siamingit/oetacademy-sessions` with `manifest.json` and the zip, recorded in `analysis/publish.json`). A new contracts release is pinned only by a new lock (`spike/publish/contracts.lock.json`) and an ADR amendment | the lesson player's bundle, text, stylesheet, WAV masters, images, MP3s; `gates.json`; `practice_set.json` (exam sources); the section tags; the pinned contracts (`lesson_package.py --fetch`) | `<L>/generated/package/<id>-v<n>/`, `<id>-v<n>.zip` and its report; `<L>/analysis/publish.json` (a release only); the release | free; seconds to a minute a lesson |
 | 19 | Backup | after each lesson's final gate, with the external drive labelled `OETBACKUP` connected: `powershell -File spike\scripts\backup_oet.ps1 -Copy`, then `-Verify` (0 differences, SHA-256 of every copied file), then **Safely Remove** the drive (exFAT has no journal). The only backup destination; lesson content is not in git. Credentials are never copied: their paths are listed in the local, gitignored `spike/out/backup-exclude.txt`, without which the script refuses to run. The runner reminds at every stop when the last verified backup is more than 14 days old | `C:\OET`, `spike/out/` voice_samples, initialism-probe, lexicon-review | `<drive>:\Backups\OET\OET`, `...\repo-evidence\`, `...\logs\` | free |
 
 ### Reading lessons (ADR 026)
@@ -381,6 +382,12 @@ request and every push to main, on GitHub's runners, with nothing that needs
   `docs/course-index.md` is not generated from it. It cannot see the lessons, so whether the
   index is up to date is checked locally (`--check`, and the unit test when `C:\OET\lessons`
   exists).
+
+- **lesson packages** (in the tests job, ADR 039 amendment of 2026-10-23): the publish step's
+  unit tests build a package from the contracts' example lesson and check it against the pinned
+  contracts, which CI downloads with the secret `CONTRACTS_READ_TOKEN` (read-only Contents on the
+  private oetacademy-web) and checks against `spike/publish/contracts.lock.json`; without the
+  secret the job fails.
 
 A pull request is merged when both jobs are green.
 
@@ -578,11 +585,11 @@ as a package of the site's contract (oetacademy-web ADR-0034, ENGINE-GAPS G1 to
 G8): a release in `siamingit/oetacademy-sessions` per package version, tagged
 `<lesson id>-v<package_version>`, with two assets, `manifest.json` and
 `<lesson id>-v<package_version>.zip`; `lesson.approved.by` is `"siavash"`; audio
-as AAC `.m4a`, exam extracts included. The order: Reading 1–5, then Listening,
-then the eleven Grammar and Vocabulary lessons as package version 2. The publish
-step is not built yet: it waits for the site's contracts release for formats
-1.13 to 1.20, the allowed tag list and a token that can write releases there.
-Until then nothing is published.
+as AAC `.m4a`, exam recordings and pronunciation clips as their original MP3s, byte
+for byte (ADR 039 amendment of 2026-10-23). The order: Reading 1–5, then Listening,
+then the eleven Grammar and Vocabulary lessons as package version 2. The step is
+18b above (`publish_lesson.py`); a release needs the owner's approval of its
+course's section tags.
 
 Pronunciation is judged here (ADR 005 folded the lexicon gate into this one).
 Terms the terms check did not hear as written are listed in

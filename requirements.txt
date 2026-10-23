@@ -20,3 +20,6 @@ cartesia==4.2.0                # Apache-2.0
 
 # Gloss images: background removal with rembg's ISNet model, run directly — see docs/adr/015-gloss-images.md
 onnxruntime==1.30.0          # MIT
+
+# Lesson packages: the pinned contracts' JSON Schemas, draft 2020-12 — see docs/adr/039 (amendment of 2026-10-23)
+jsonschema==4.26.0           # MIT

@@ -1,0 +1,8 @@
+{
+  "about": "The site's contracts release the publish step validates against (ADR 039 amendment of 2026-10-23; oetacademy-web ENGINE-GAPS G7). The release is private and this repository is public, so only its name and hash are kept here; lesson_package.py downloads the zip with gh and checks this sha256 every time it reads it. Upgrade deliberately: a new lock is a new ADR amendment.",
+  "repository": "siamingit/oetacademy-web",
+  "tag": "contracts-v1.8.0",
+  "version": "1.8.0",
+  "asset": "oetacademy-contracts-1.8.0.zip",
+  "sha256": "d98a94223c9915b845dd8ba4434c577deaff2e94c75583ddd00964f42a13f3dd"
+}
