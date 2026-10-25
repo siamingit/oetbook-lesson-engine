@@ -2,7 +2,7 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://github.com/siamingit/oetbook-lesson-engine/docs/course-index.schema.json",
  "title": "OETbook public course index",
- "description": "What each lesson teaches, and where (docs/adr/038-public-course-index.md). Format oetbook-public-course-index, schema version 1.0. A minor version only adds fields; a reader ignores a field it does not know. A major version removes, renames or changes the meaning of a field. Ids are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4); a lesson id is permanent (AGENTS.md §10b). Every time is seconds from the start of the lesson's player (start_s, three decimals) with the same moment as minutes:seconds (start, rounded down).",
+ "description": "What each lesson teaches, and where (docs/adr/038-public-course-index.md). Format oetbook-public-course-index, schema version 1.1 (1.1, 2026-10-25: the Writing course). A minor version only adds fields; a reader ignores a field it does not know. A major version removes, renames or changes the meaning of a field. Ids are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4); a lesson id is permanent (AGENTS.md §10b). Every time is seconds from the start of the lesson's player (start_s, three decimals) with the same moment as minutes:seconds (start, rounded down).",
  "type": "object",
  "additionalProperties": false,
  "required": ["format", "schema_version", "about", "courses", "lessons", "topic_index", "totals"],
@@ -11,12 +11,12 @@
   "schema_version": {"type": "string", "pattern": "^1\\.\\d+$"},
   "about": {"type": "string"},
   "courses": {
-   "description": "The courses in their order (Grammar, Vocabulary, Reading, Listening), each with its built lessons in order.",
+   "description": "The courses in their order (Grammar, Vocabulary, Reading, Listening, Writing), each with its built lessons in order.",
    "type": "array",
    "items": {
     "type": "object", "additionalProperties": false, "required": ["id", "title", "lessons"],
     "properties": {
-     "id": {"enum": ["grammar", "vocabulary", "reading", "listening"]},
+     "id": {"enum": ["grammar", "vocabulary", "reading", "listening", "writing"]},
      "title": {"type": "string"},
      "lessons": {"type": "array", "items": {"$ref": "#/$defs/lesson_id"}}
     }
@@ -85,7 +85,7 @@
     "folder": {"type": "string", "description": "the folder in the lessons library (C:\\OET\\lessons\\<folder>); always equal to id"},
     "title": {"type": "string"},
     "description": {"type": ["string", "null"], "description": "the owner's one line"},
-    "course": {"enum": ["grammar", "vocabulary", "reading", "listening"]},
+    "course": {"enum": ["grammar", "vocabulary", "reading", "listening", "writing"]},
     "order": {"type": "integer", "minimum": 1, "description": "its number in its course, from the id"},
     "length_s": {"$ref": "#/$defs/seconds"},
     "length": {"$ref": "#/$defs/mmss"},

@@ -14,7 +14,26 @@
   "reading-shade": "On the paper test, Part B and C answers are shaded with a 2B pencil, and only a shaded circle counts.",
   "writing-grammar-assessed": "Grammar is part of how the OET letter is assessed.",
   "writing-vocabulary-range": "Assessors look at the range of vocabulary in the letter.",
-  "writing-letter-length": "An OET letter is 180 to 200 words."
+  "writing-letter-length": "An OET letter is 180 to 200 words.",
+  "writing-one-task": "Writing has one task: a letter written from case notes, to another health professional or to a person who helps with the patient's care (writing-facts 1).",
+  "writing-profession": "The Writing task is specific to your profession: a nurse writes a Nursing task, a doctor a Medicine task (writing-facts 2).",
+  "writing-letter-types": "The letter is usually a referral, a discharge or a transfer letter; OET also names advice letters (writing-facts 3).",
+  "writing-time": "Writing takes 45 minutes: 5 minutes of reading time, then 40 minutes of writing time (writing-facts 4).",
+  "writing-reading-only": "The 5 minutes of reading time are for reading only: no writing, underlining or circling (writing-facts 5).",
+  "writing-notes-during-writing": "During the 40 minutes you can look at the task and the case notes again at any time (writing-facts 6).",
+  "writing-six-criteria": "Six criteria assess the letter, the same for every profession (writing-facts 8).",
+  "writing-two-assessors": "Two assessors mark the letter (writing-facts 10).",
+  "writing-score-scale": "Each sub-test is scored from 0 to 500 (writing-facts 12).",
+  "writing-grade-b": "Grade B is a score of 350 to 440 (writing-facts 12).",
+  "writing-ielts": "OET's own table compares grade B with IELTS 7.0 to 7.5 (writing-facts 13).",
+  "writing-word-guide": "180 to 200 words is a guide for the body, not a strict limit, with no automatic penalty (writing-facts 14).",
+  "writing-length-signals": "Much longer usually means something the reader does not need; much shorter usually means something important is missing (writing-facts 15).",
+  "writing-body-counted": "Only the body of the letter, its paragraphs, is counted (writing-facts 16).",
+  "writing-computer-counter": "On computer, the word counter counts every word typed, not only the body (writing-facts 17).",
+  "writing-style": "The style is clinical and factual, with polite language and no personal feelings (writing-facts 21).",
+  "writing-address": "Copy the reader's name and address from the task (writing-facts 24).",
+  "writing-re-line": "The Re line gives the patient's full name and date of birth (writing-facts 26).",
+  "writing-sign-off": "Sign with a job title, not your own name (writing-facts 25)."
  },
  "lessons": {
   "grammar-01-verb-tenses": {
@@ -352,6 +371,43 @@
    "topics": [
     {"topic": "signposts", "at": "added-01_t1.s4.u2"},
     {"topic": "interview", "at": "added-02_t1"}
+   ]
+  },
+  "writing-01-overview": {
+   "session": "Writing Session 1 of the Persian Writing course, «جلسه رایتینگ: مقدمه‌ای بر رایتینگ» (Writing: an introduction), the first of the recorded Writing sessions; its official OET sample is replaced by our sample oa-ws-med-0001 at oetacademy-exercises 5320d19 (ADR 040).",
+   "facts": [
+    {"fact": "writing-one-task", "at": "pages-06-07_t1.s3.u1"},
+    {"fact": "writing-profession", "at": "pages-06-07_t2.s5.u1"},
+    {"fact": "writing-letter-types", "at": "page-4_t1.s2.u5"},
+    {"fact": "writing-time", "at": "pages-06-07_t2.s6.u1"},
+    {"fact": "writing-reading-only", "at": "pages-06-07_t2.s6.u3"},
+    {"fact": "writing-notes-during-writing", "at": "pages-06-07_t2.s7.u1"},
+    {"fact": "writing-six-criteria", "at": "page-4_t1.s1.u2"},
+    {"fact": "writing-two-assessors", "at": "page-5_t1.s4.u3"},
+    {"fact": "writing-score-scale", "at": "pages-06-07_t1.s4.u2"},
+    {"fact": "writing-grade-b", "at": "pages-06-07_t1.s5.u1"},
+    {"fact": "writing-ielts", "at": "pages-06-07_t1.s5.u3"},
+    {"fact": "writing-word-guide", "at": "pages-06-07_t2.s10.u1"},
+    {"fact": "writing-length-signals", "at": "pages-06-07_t2.s11.u1"},
+    {"fact": "writing-body-counted", "at": "pages-06-07_t2.s9.u2"},
+    {"fact": "writing-computer-counter", "at": "page-9_t1.s15.u1"},
+    {"fact": "writing-style", "at": "pages-06-07_t2.s8.u2"},
+    {"fact": "writing-address", "at": "page-9_t1.s2.u1"},
+    {"fact": "writing-re-line", "at": "page-9_t1.s5.u2"},
+    {"fact": "writing-sign-off", "at": "page-9_t1.s13.u2", "note": "a job title, such as Doctor"}
+   ],
+   "methods": [
+    {"name": "Five steps towards successful writing", "text": "Grammar, then vocabulary, then the assessment criteria, then the general Writing lessons, then practice on your own profession's tasks; and first, look at one or two sample tasks and their model letters.", "at": "page-5_t1.s1.u1"},
+    {"name": "The three parts of the case-notes paper", "text": "The setting (today's date, who you are, the patient), the case notes, and the Writing Task (letter type, reader, purpose).", "at": "page-8_t1.s10.u1"},
+    {"name": "Relevant or not", "text": "Keep the notes this reader needs, such as the patient's job when a cause at work is asked about; leave out the rest, such as hobbies.", "at": "page-8_t1.s7.u5"},
+    {"name": "The teacher's word-count advice", "text": "Ten or twelve words more or fewer do no harm; what matters is that the reader gets everything they need, nothing they do not, and less important points briefly.", "at": "pages-06-07_t2.s12.u1"}
+   ],
+   "continues_in": [],
+   "topics": [
+    {"topic": "Parts of an OET letter", "at": "page-9_t1.s1.u2"},
+    {"topic": "Case notes and the Writing Task", "at": "page-8_t1.s10.u1"},
+    {"topic": "Word count of the letter body", "at": "pages-06-07_t2.s9.u2"},
+    {"topic": "Closing sentence", "at": "page-9_t1.s11.u2"}
    ]
   }
  }

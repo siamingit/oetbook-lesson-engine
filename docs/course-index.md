@@ -1,8 +1,8 @@
 # Course index
 
-What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.0; decision: `docs/adr/038-public-course-index.md`.
+What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.1; decision: `docs/adr/038-public-course-index.md`.
 
-21 lessons, 202 sections, 478 board topics, 3762 teaching points, 221 rules and 61 warnings, 468 terms, 104 OET facts, 26 methods, 506 vocabulary items (189 from the word bank), 62 practice questions and note forms, 72 links to other lessons, 323 topics in the topic index.
+22 lessons, 209 sections, 487 board topics, 3821 teaching points, 226 rules and 61 warnings, 470 terms, 123 OET facts, 30 methods, 512 vocabulary items (189 from the word bank), 62 practice questions and note forms, 75 links to other lessons, 332 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -10,6 +10,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 - Vocabulary: [Vocabulary for OET: Word Forms and Sentence Structure](#vocabulary-01-word-forms), [Vocabulary for OET: Verb + Noun Collocations](#vocabulary-02-collocations), [Vocabulary for OET: Adjective + Noun Collocations](#vocabulary-03-collocations-2)
 - Reading: [Reading for OET: Overview](#reading-01-overview), [Reading for OET: Part A](#reading-02-part-a), [Reading for OET: Part B](#reading-03-part-b), [Reading Part C (1)](#reading-04-part-c), [Reading Part C (2): More Practice](#reading-05-part-c-2)
 - Listening: [OET Listening: Overview](#listening-01-overview), [OET Listening: Part A](#listening-02-part-a), [OET Listening: Part B](#listening-03-part-b), [OET Listening: Part C (1)](#listening-04-part-c), [OET Listening: Part C (2)](#listening-05-part-c-2)
+- Writing: [OET Writing: Overview](#writing-01-overview)
 
 ---
 
@@ -759,6 +760,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Treat" at 45:11, about section `page-15`
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Schedule" at 49:29, about section `page-16`
 - referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Practice: conditions and types of pain" at 20:52, about section `page-10`
+- referred to by OET Writing: Overview (`writing-01-overview`), "Steps towards successful writing" at 3:22
 - continues in Grammar for OET: Verb Use (`grammar-02-verb-use`): Verb Use practises choosing the tense, and the active or the passive, taught here.
 
 
@@ -3107,6 +3109,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 28:14 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Capital letters" (in `page-7_t1.s18.u2`)
 - 28:14 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Apostrophes" (in `page-7_t1.s18.u2`)
 - 38:14 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-8_t1.s19.u2`)
+- referred to by OET Writing: Overview (`writing-01-overview`), "Steps towards successful writing" at 3:22, about section `page-4`
+- referred to by OET Writing: Overview (`writing-01-overview`), "The case notes" at 11:58, about section `page-6`
 
 
 ---
@@ -7827,6 +7831,186 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ---
 
+# Writing
+
+| # | Lesson | Lesson ID | Length | Sections | Approved |
+|---|---|---|---|---|---|
+| 1 | OET Writing: Overview | `writing-01-overview` | 19:05 | 7 | not yet |
+
+<a id="writing-01-overview"></a>
+
+## 1. OET Writing: Overview
+
+- Lesson ID and folder: `writing-01-overview` (folder `writing-01-overview`); course writing, lesson 1; length 19:05; bundle format 1.21
+- Status: built, final gate not approved
+- Description: Meet the OET Writing test: the one letter you write, the time you have, how it is scored, how to read the case notes and the task, and the parts of a good letter.
+- Original session: folder `source`: `source/video.mp4`, 26:24 long, partial hash `62ec09d19c942acf`; deck `source/slides.pdf`, 10 pages
+  - Writing Session 1 of the Persian Writing course, «جلسه رایتینگ: مقدمه‌ای بر رایتینگ» (Writing: an introduction), the first of the recorded Writing sessions; its official OET sample is replaced by our sample oa-ws-med-0001 at oetacademy-exercises 5320d19 (ADR 040).
+
+### Sections
+
+#### 0:00 Introduction (`page-3`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 0:56 **Contents board**
+  - 0:56 each category, revealed as it is named
+
+#### 1:31 One test for every profession (`page-4`, deck)
+
+- 1:31 **One task for every profession, a different topic for each**
+  - 1:31 The same for everyone, and what changes
+  - 1:52 A doctor's usual letter
+  - 2:19 Three kinds of letter in our samples
+  - 2:47 What to study first
+
+*Rules on the boards*
+
+- 2:47 Learn what is the same for every profession first. Then practise the topics of your own profession.
+
+#### 3:01 Steps towards successful writing (`page-5`, deck)
+
+- 3:01 **Five steps towards successful writing**
+  - 3:01 the five steps
+  - 3:17 grammar first
+  - 3:42 vocabulary
+  - 3:57 the word criteria
+  - 4:10 why the criteria matter
+  - 4:29 the general Writing lessons
+  - 4:46 your own profession
+  - 5:00 before all this
+
+*Rules on the boards*
+
+- 5:00 Before you start, look at one or two sample tasks and their model letters.
+
+#### 5:18 The Writing test (`pages-06-07`, deck)
+
+- 5:18 **What to expect and how it is scored**
+  - 5:18 three questions about the test
+  - 5:27 what you get and what you do
+  - 5:44 who reads the letter
+  - 5:53 the scale
+  - 6:01 grade B
+  - 6:30 a sample task
+- 6:38 **The Writing test at a glance**
+  - 6:38 five things to know
+  - 6:51 what formal means
+  - 6:58 the shape of a formal letter
+  - 7:19 the word specific
+  - 7:34 your profession
+  - 7:57 reading time and writing time
+  - 8:13 the notes stay with you
+  - 8:25 the style
+  - 8:38 the body
+  - 8:58 a guide
+  - 9:07 too long or too short
+  - 9:22 my advice
+
+*Rules on the boards*
+
+- 9:22 My advice: ten or twelve words more or fewer do no harm.
+
+*Terms*: Formal (Meaning, 6:51)
+
+#### 9:46 The case notes (`page-8`, deck)
+
+- 9:46 **The case-notes paper: setting, notes, task**
+  - 9:46 the whole paper
+  - 10:18 the setting
+  - 10:49 the case notes
+  - 11:21 the Writing Task tells you three things
+  - 11:45 In your answer: relevant
+  - 12:11 In your answer: expand
+  - 12:46 a relevant note, from the notes to the letter
+  - 13:17 an irrelevant note
+  - 13:34 no note form
+  - 13:47 the three parts of the paper
+
+*Rules on the boards*
+
+- 13:47 The paper has three parts: the setting, the case notes and the Writing Task.
+
+#### 14:04 A sample letter (`page-9`, deck)
+
+- 14:04 **The parts of a letter**
+  - 14:04 the whole letter
+  - 14:21 the address
+  - 14:34 the date
+  - 14:45 the greeting
+  - 14:52 Re
+  - 15:17 the introduction
+  - 15:38 a new paragraph for a new topic
+  - 15:49 the second body paragraph
+  - 16:21 the word appreciate
+  - 16:35 the conclusion
+  - 16:58 the closing sentence
+  - 17:09 learn a few sentences
+  - 17:30 the sign-off
+  - 17:42 routine parts and the body
+  - 18:08 counting on computer
+
+*Rules on the boards*
+
+- 17:09 My advice: learn a few useful sentences like these, but do not memorise whole paragraphs.
+
+*Terms*: Re (Meaning, 14:52)
+
+#### 18:23 Closing (`added-01`, closing)
+
+- 18:23 **Closing**
+  - 18:23 The three things to remember
+  - 18:43 The third thing
+
+### OET facts
+
+- 1:37 (`writing-six-criteria`) Six criteria assess the letter, the same for every profession (writing-facts 8).
+- 2:38 (`writing-letter-types`) The letter is usually a referral, a discharge or a transfer letter; OET also names advice letters (writing-facts 3).
+- 3:59 (`writing-two-assessors`) Two assessors mark the letter (writing-facts 10).
+- 5:42 (`writing-one-task`) Writing has one task: a letter written from case notes, to another health professional or to a person who helps with the patient's care (writing-facts 1).
+- 5:53 (`writing-score-scale`) Each sub-test is scored from 0 to 500 (writing-facts 12).
+- 6:02 (`writing-grade-b`) Grade B is a score of 350 to 440 (writing-facts 12).
+- 6:11 (`writing-ielts`) OET's own table compares grade B with IELTS 7.0 to 7.5 (writing-facts 13).
+- 7:34 (`writing-profession`) The Writing task is specific to your profession: a nurse writes a Nursing task, a doctor a Medicine task (writing-facts 2).
+- 7:53 (`writing-time`) Writing takes 45 minutes: 5 minutes of reading time, then 40 minutes of writing time (writing-facts 4).
+- 7:59 (`writing-reading-only`) The 5 minutes of reading time are for reading only: no writing, underlining or circling (writing-facts 5).
+- 8:13 (`writing-notes-during-writing`) During the 40 minutes you can look at the task and the case notes again at any time (writing-facts 6).
+- 8:25 (`writing-style`) The style is clinical and factual, with polite language and no personal feelings (writing-facts 21).
+- 8:38 (`writing-body-counted`) Only the body of the letter, its paragraphs, is counted (writing-facts 16).
+- 8:57 (`writing-word-guide`) 180 to 200 words is a guide for the body, not a strict limit, with no automatic penalty (writing-facts 14).
+- 9:07 (`writing-length-signals`) Much longer usually means something the reader does not need; much shorter usually means something important is missing (writing-facts 15).
+- 14:19 (`writing-address`) Copy the reader's name and address from the task (writing-facts 24).
+- 14:52 (`writing-re-line`) The Re line gives the patient's full name and date of birth (writing-facts 26).
+- 17:31 (`writing-sign-off`) Sign with a job title, not your own name (writing-facts 25). *(a job title, such as Doctor)*
+- 18:08 (`writing-computer-counter`) On computer, the word counter counts every word typed, not only the body (writing-facts 17).
+
+### Exam methods and strategies
+
+- 3:01 **Five steps towards successful writing**: Grammar, then vocabulary, then the assessment criteria, then the general Writing lessons, then practice on your own profession's tasks; and first, look at one or two sample tasks and their model letters.
+- 9:23 **The teacher's word-count advice**: Ten or twelve words more or fewer do no harm; what matters is that the reader gets everything they need, nothing they do not, and less important points briefly.
+- 13:03 **Relevant or not**: Keep the notes this reader needs, such as the patient's job when a cause at work is asked about; leave out the rest, such as hobbies.
+- 13:47 **The three parts of the case-notes paper**: The setting (today's date, who you are, the patient), the case notes, and the Writing Task (letter type, reader, purpose).
+
+### Vocabulary
+
+First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
+
+- 3:57 criteria
+- 7:19 specific
+- 10:18 assume
+- 11:45 relevant
+- 12:11 expand
+- 16:21 appreciate
+
+### Links to other lessons
+
+- 3:22 refers to Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" (in `page-5_t1.s2.u3`)
+- 3:22 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `page-5_t1.s2.u3`)
+- 11:58 refers to Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Omit" (in `page-8_t1.s5.u4`)
+
+
+---
+
 # Topic index
 
 Each topic or term, then each lesson that teaches it and the first moment there.
@@ -7836,6 +8020,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **A needle in a haystack**: `reading-02-part-a` 1:48
 - **A or an**: `grammar-04-articles` 9:45
 - **A quick review of the method**: `reading-05-part-c-2` 1:23; `listening-05-part-c-2` 1:10
+- **A sample letter**: `writing-01-overview` 14:04
 - **A target score for Part B**: `listening-03-part-b` 11:46
 - **A target score for Part C**: `listening-04-part-c` 9:16
 - **A two-week history of**: `grammar-08-paraphrasing` 35:43
@@ -7870,12 +8055,14 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **c/o**: `grammar-03-nominalization` 15:22
 - **Capital letters**: `grammar-07-punctuation` 60:13
 - **Case notes**: `grammar-01-verb-tenses` 106:13
+- **Case notes and the Writing Task**: `writing-01-overview` 13:47
 - **Case notes: error correction**: `grammar-01-verb-tenses` 106:03
 - **Case-note abbreviations**: `grammar-07-punctuation` 73:12
 - **Choosing the right word form**: `vocabulary-01-word-forms` 2:25
 - **choosing the tense**: `grammar-02-verb-use` 8:36
 - **Chunking**: `reading-02-part-a` 18:43
 - **Clause**: `grammar-05-complex-compound` 3:57
+- **Closing sentence**: `writing-01-overview` 16:58
 - **Collocation**: `vocabulary-02-collocations` 1:35
 - **Collocations in a letter**: `vocabulary-03-collocations-2` 60:38
 - **Colon (:)**: `grammar-07-punctuation` 47:10
@@ -8002,6 +8189,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Occasionally**: `grammar-01-verb-tenses` 72:06
 - **Omit**: `grammar-08-paraphrasing` 6:18
 - **one of which**: `vocabulary-01-word-forms` 57:08
+- **One test for every profession**: `writing-01-overview` 1:31
 - **opinion signals**: `reading-04-part-c` 12:37
 - **Order**: `vocabulary-02-collocations` 52:44
 - **Paraphrase bridge**: `reading-05-part-c-2` 2:14
@@ -8011,6 +8199,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Part C: breakdown**: `reading-04-part-c` 5:53
 - **Participle clause**: `grammar-06-clause` 28:59
 - **Participle clauses**: `grammar-06-clause` 28:57
+- **Parts of an OET letter**: `writing-01-overview` 14:12
 - **Passive**: `grammar-01-verb-tenses` 46:59; `grammar-02-verb-use` 6:16; `grammar-03-nominalization` 5:49; `grammar-05-complex-compound` 22:43; `grammar-06-clause` 36:03; `grammar-07-punctuation` 11:41; `grammar-08-paraphrasing` 4:59; `vocabulary-01-word-forms` 23:25; `vocabulary-02-collocations` 34:40
 - **passive forms**: `grammar-01-verb-tenses` 90:23
 - **Passive forms of the verb tenses**: `grammar-01-verb-tenses` 90:23
@@ -8083,6 +8272,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Spot the correct sentence**: `grammar-04-articles` 42:41
 - **Stat dose**: `grammar-04-articles` 58:34
 - **stative verb**: `grammar-01-verb-tenses` 67:52
+- **Steps towards successful writing**: `writing-01-overview` 3:01
 - **Strategies for Part A**: `listening-02-part-a` 2:25
 - **Subject**: `grammar-01-verb-tenses` 79:27; `grammar-02-verb-use` 36:47; `grammar-08-paraphrasing` 9:53
 - **Subject and verb**: `grammar-01-verb-tenses` 5:15
@@ -8098,6 +8288,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Tempting wrong options**: `listening-03-part-b` 9:21
 - **The -ing form**: `grammar-01-verb-tenses` 8:00
 - **The -ing form (present participle)**: `grammar-06-clause` 20:28
+- **The case notes**: `writing-01-overview` 9:46
 - **The Listening test**: `listening-01-overview` 1:12
 - **The other day**: `grammar-01-verb-tenses` 74:37
 - **The Part A format**: `listening-02-part-a` 1:11
@@ -8110,6 +8301,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The Reading test**: `reading-01-overview` 1:29
 - **The six questions, then the whole interview**: `listening-05-part-c-2` 4:40
 - **The six questions, then the whole talk**: `listening-04-part-c` 9:36
+- **The Writing test**: `writing-01-overview` 5:18
 - **Time**: `listening-04-part-c` 8:41
 - **Time management in Part A**: `reading-02-part-a` 7:53
 - **Time marker**: `grammar-01-verb-tenses` 31:43; `grammar-02-verb-use` 4:01
@@ -8151,6 +8343,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Will have smoked**: `grammar-01-verb-tenses` 51:40
 - **woke up**: `vocabulary-03-collocations-2` 29:02
 - **Word bank**: `reading-03-part-b` 57:12
+- **Word count of the letter body**: `writing-01-overview` 8:38
 - **word forms**: `vocabulary-01-word-forms` 2:25
 - **Word meaning**: `reading-02-part-a` 56:52
 - **Zero article**: `grammar-04-articles` 43:09
