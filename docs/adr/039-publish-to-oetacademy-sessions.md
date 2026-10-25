@@ -218,3 +218,43 @@ is built: `spike/scripts/publish_lesson.py` and `spike/scripts/lesson_package.py
 - `docs/04-LESSON-BUNDLE.md` §8 said exam extracts are carried as `.m4a`; corrected to this
   amendment.
 - To reverse: a new amendment. The answers are the owner's.
+
+## Amendment — 2026-10-25: contracts 1.9.0 pinned (bundle format 1.21)
+
+Status: **Accepted** by the owner in chat, 2026-10-25 (the brief "pin the site's new contracts
+(contracts-v1.9.0) and publish the four rebuilt Reading/Listening lessons as package_version 2"). It
+replaces the pin of the amendment of 2026-10-23, answer 1, and nothing else.
+
+### Context
+
+The site accepts bundle format 1.21 (oetacademy-web PR #155, in production) and released contracts
+that say so. Under `contracts-v1.8.0` the five lessons rebuilt at 1.21 on 2026-10-23 (Grammar 6,
+Reading 5, Listening 2, 4 and 5; [ADR 041](041-bundle-format-1-21.md)) could not be packaged: its
+schemas allow `format_version` 1.8 to 1.20 only.
+
+### Decision
+
+1. **Contracts pinned: `contracts-v1.9.0`**, asset `oetacademy-contracts-1.9.0.zip`, SHA-256
+   `5d37246f853e0f327eb09f8dc829712ec36eae752da283576565de8637f908c0`. Checked on 2026-10-25: the zip
+   downloaded with `gh` from the release (tag on oetacademy-web commit 5762e70, published 2026-10-24)
+   has exactly that hash, the hash the site's chat gave and the release's own asset digest. The lock
+   is `spike/publish/contracts.lock.json`; the zip stays outside git, as before.
+2. **What 1.9.0 changes** (its CHANGELOG): `"1.21"` accepted in `format_version` of `bundle.json` and
+   `text.json` and in the manifest's `lesson.bundle_format_version`; an optional `boards[].fit`,
+   `"whole"` only; formats 1.8 to 1.20 checked exactly as under 1.8.0, the changelog's §12 tolerance
+   included. Its three new rules, all for bundles of 1.21 or later, are ported into the engine's check
+   (`lesson_package.py`) with the site's codes: `LP-FIT` (`fit` only on a table board rule 13 could
+   zoom; the engine's own `PUB-FIT` of ADR 041 is now reported under this code), `LP-PROVENANCE`
+   (every block's and utterance's provenance one of the format's six values; before 1.21 still the
+   warning `LP-PROVENANCE-UNKNOWN`) and `LP-HEARD` (a gloss's `heard` exactly `{file, start, end}`, its
+   file under `audio/`). The session section tag list and taxonomy are unchanged (taxonomy v2).
+3. **Packages that follow** (ADR 041, Consequences): Reading 5, Listening 2, 4 and 5 are republished
+   as package version 2 with the section tags the owner approved on 2026-10-23. Grammar 6 and the other
+   ten Grammar and Vocabulary lessons wait for the owner's approval of their courses' section tags.
+
+### Consequences
+
+- The real 1.21 bundles of the five lessons are checked against the pinned contracts on the engine's
+  machine before any is published; a package with any error is not written.
+- The tests that name the pinned version (`spike/tests/test_publish_lesson.py`) name 1.9.0.
+- To reverse: a new amendment pinning another release; the lock and this record change together.

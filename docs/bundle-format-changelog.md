@@ -1021,6 +1021,12 @@ lessons the site already holds.
   the bundle did not say it. **From 1.21 the bundle states it**: the board's
   `fit` `"whole"`, rule 52 (§9a); the reference player reads only the field.
 - **Phone text size**: no change (owner, 2026-10-12; the site's issue #91).
+- **Nothing that stays is redrawn visibly** (owner, 2026-10-25; rule 19). At a new
+  state, an erase or a clear, a board's fixed blocks and its pinned blocks keep their
+  look: only what changes at that moment changes, and no transition or drawing motion
+  is replayed on what stays. The reference player had a flash here (it rebuilt every
+  block and set the spotlight again from a reset look, so a table in focus dimmed and
+  faded back); see the engine's docs/integration/note-for-site-board-flash.md.
 
 ## 11. Audio and other files
 

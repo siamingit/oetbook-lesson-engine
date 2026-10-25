@@ -1016,6 +1016,16 @@ where it is until the board ends or its note is erased.
 - **Fixed and pinned blocks hold their place**: where a state's working blocks
   come before them in the board's flow (change cards before a result), each is
   held at the lowest place it takes in any state of the board.
+- **Nothing that stays is redrawn visibly** (owner, 2026-10-25, after the case-notes
+  board of Writing 1 blanked like a camera flash at every new state, erase and clear).
+  A board's core content stays on screen untouched for the whole topic; only what
+  changes changes: a highlight moves, a note or a pop-up appears, side notes fade out
+  when erased or cleared. Nothing that stays may disappear, dim, blink, fade in again
+  or be drawn in motion again, and no image that stays is loaded again. A move to a new
+  board may use the normal board transition. The reference player rebuilds a block's
+  inside at a new state to re-wrap its phrases, so the new nodes take the old look (the
+  row in focus, the active cell, verdicts, drawn parts, word colours, images) before the
+  browser first styles them (docs/integration/note-for-site-board-flash.md).
 
 The causes found and fixed on 2026-09-26, by the check:
 1. The player's frame shrank when the review line under it wrapped: every

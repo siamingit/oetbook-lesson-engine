@@ -76,7 +76,28 @@ class Fit(unittest.TestCase):
                     {"boards": [{"id": "a_t1", "table": "t", "fit": "full"}]}):
             f = lp.Findings()
             lp.check_fit({**bundle, **bad}, f)
-            self.assertEqual(f.codes("error"), ["PUB-FIT"], bad)
+            self.assertEqual(f.codes("error"), ["LP-FIT"], bad)
+
+    def test_the_stricter_forms_of_contracts_1_9_0(self):
+        # from 1.21 a provenance outside the format's values and a heard sentence in another
+        # form are errors (LP-PROVENANCE, LP-HEARD); before 1.21 the tolerance of §12 stays
+        def bundle(version, provenance, heard):
+            return {"format_version": version, "lesson": {"id": "listening-02-part-a"},
+                    "meta": {"silent": False, "total_duration_s": 0}, "sections": [], "boards": [],
+                    "blocks": {"g": {"id": "g", "type": "gloss", "provenance": provenance, "heard": heard,
+                                     "html": ""}}}
+        good = {"file": "audio/0123456789abcdef.mp3", "start": 1.0, "end": 2.0}
+        bare = {"file": "x.0123456789ab.mp3", "stimulus": "x", "start": 1.0, "end": 2.0}
+        cases = [("1.21", "authored", good, []), ("1.21", "agent (brief)", good, ["LP-PROVENANCE"]),
+                 ("1.21", "authored", bare, ["LP-HEARD"]), ("1.20", "agent (brief)", bare, [])]
+        for version, provenance, heard, want in cases:
+            f = lp.Findings()
+            lp.check_bundle(bundle(version, provenance, heard), Path("."), f)
+            got = [c for c in f.codes("error") if c in ("LP-PROVENANCE", "LP-HEARD")]
+            self.assertEqual(got, want, (version, provenance, heard))
+        f = lp.Findings()
+        lp.check_bundle(bundle("1.20", "agent (brief)", good), Path("."), f)
+        self.assertIn("LP-PROVENANCE-UNKNOWN", f.codes("warning"))
 
 
 class Provenance(unittest.TestCase):
