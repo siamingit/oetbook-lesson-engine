@@ -70,5 +70,7 @@ the images themselves.
 Only `spike/scripts/board_player_template.html` (the reference player). The bundle,
 the text, the stylesheet and the audio of every lesson are unchanged. Every board
 change of all 22 built lessons was screenshot before and after at the 590 px and
-1120 px frames and compared pixel by pixel; frame-by-frame captures of Writing 1 at
-the owner's moments show no blank frame after the fix.
+1120 px frames and compared pixel by pixel: 21,414 of 21,514 identical, the rest
+different only in anti-aliasing (a timeline part now shown drawn where the old redraw
+replayed its drawing). Frame-by-frame captures of Writing 1 at the owner's moments
+show no blank frame after the fix.
