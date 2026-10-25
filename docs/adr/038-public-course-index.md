@@ -132,3 +132,18 @@ note at least as an empty entry), then the release-answers check runs on the new
   are not in the vocabulary list; three of them are Part A answers in any case.
 - The full index (ADR 006, docs/05-COURSE-INDEX.md) is unchanged and still feeds the pipeline.
 - To reverse: delete `docs/course-index.*`, the CI step and the runner's call, and record a new ADR.
+
+## Amendment, 2026-10-25: the Writing course (schema 1.1)
+
+Under the owner's brief of 2026-10-25 for writing-01-overview ("add the curated.json entry for this
+lesson ... Rebuild the course index as the runbook says"), the first Writing lesson enters the public
+index, so the index gains its fifth course:
+
+- **Schema 1.1**: `writing` is added to the course enumerations (`courses[].id`, `lessons[].course`); the
+  courses' order is Grammar, Vocabulary, Reading, Listening, Writing. Nothing is removed or renamed; a
+  1.0 reader that ignores the Writing course reads every other lesson as before.
+- `build_public_course_index.py` lists the course (`COURSES`); nothing else in the builder changes. A
+  Writing lesson's OET facts are keys of the curated file's `facts`, each worded as
+  docs/writing-facts.md states it, with the fact sheet's number in brackets.
+- The 21 lessons already indexed are unchanged, except that the lessons the new one refers to
+  (Paraphrasing, Verb Tenses) list it under `referred_to_by` (checked by a diff of the JSON).
