@@ -15,9 +15,10 @@ memory, never from an unpacked copy.
 
 The check is the three schemas (jsonschema, draft 2020-12, every schema registered by its `$id`,
 nothing fetched) and then the rules the schemas cannot express, as the site's validator states
-them (oetacademy-web packages/shared/src/contracts/lesson.ts at contracts 1.8.0), with its codes
-(`LP-...`), plus two of the engine's own: no file reference in the package points outside it
-(`PUB-OUTSIDE`), and a board's `fit` (bundle 1.21) is one the format allows (`PUB-FIT`). The site validates again at import and refuses a package with any error.
+them (oetacademy-web packages/shared/src/contracts/lesson.ts at contracts 1.8.0, and the three
+rules contracts 1.9.0 add for bundle 1.21: `LP-FIT`, `LP-PROVENANCE`, `LP-HEARD`), with its codes
+(`LP-...`), plus one of the engine's own: no file reference in the package points outside it
+(`PUB-OUTSIDE`). The site validates again at import and refuses a package with any error.
 """
 
 import argparse
@@ -367,10 +368,22 @@ def check_bundle(b: dict, folder: Path, f: Findings) -> None:
         if not outside(p) and not (folder / p).is_file():
             f.error("LP-AUDIO-MISSING", where, "audio file not found", p)
 
+    # contracts 1.9.0: from bundle 1.21 the stray data of the changelog's §12 is gone, so a
+    # provenance outside the format's values and a heard sentence in any other form are errors
+    strict = version_tuple(b["format_version"]) >= (1, 21)
     for x in list(b["blocks"].values()) + utts:
         if x.get("provenance") not in PROVENANCE:
-            f.warning("LP-PROVENANCE-UNKNOWN", where, "provenance outside the format's values "
-                      "(accepted, never shown)", x["id"])
+            if strict:
+                f.error("LP-PROVENANCE", where, "provenance must be one of the format's values", x["id"])
+            else:
+                f.warning("LP-PROVENANCE-UNKNOWN", where, "provenance outside the format's values "
+                          "(accepted, never shown)", x["id"])
+    if strict:
+        for block in b["blocks"].values():
+            heard = block.get("heard")
+            if heard and (set(heard) != {"file", "start", "end"} or not str(heard["file"]).startswith("audio/")):
+                f.error("LP-HEARD", where, "heard must be exactly {file, start, end}, its file under audio/",
+                        block["id"])
 
     for x in b["boards"]:
         table = b["blocks"].get(x["table"]) if x.get("table") else None
@@ -659,19 +672,19 @@ def references(bundle: dict, css: str) -> list[tuple[str, str]]:
 
 
 def check_fit(bundle: dict, f: Findings) -> None:
-    """PUB-FIT (the engine's own, bundle 1.21, ADR 041): a board's `fit` is "whole", on a table
-    board the camera may zoom (rule 13; not a question, Listening or map board), in a bundle of
-    1.21 or later. Contracts 1.8.0 do not know the field (their schema refuses format 1.21)."""
+    """LP-FIT (contracts 1.9.0; the engine's PUB-FIT before them, ADR 041): a board's `fit` is
+    "whole", on a table board the camera may zoom (rule 13; not a question, Listening or map board),
+    in a bundle of 1.21 or later."""
     for x in bundle["boards"]:
         if "fit" not in x:
             continue
         table = bundle["blocks"].get(x.get("table") or "") or {}
         if x["fit"] != "whole":
-            f.error("PUB-FIT", "bundle.json", "a board's fit must be \"whole\"", x["id"])
+            f.error("LP-FIT", "bundle.json", "a board's fit must be \"whole\"", x["id"])
         if not table or x.get("split") or x.get("listen") or table.get("map"):
-            f.error("PUB-FIT", "bundle.json", "fit on a board that is not a table board the camera may zoom", x["id"])
+            f.error("LP-FIT", "bundle.json", "fit on a board that is not a table board the camera may zoom", x["id"])
         if version_tuple(bundle["format_version"]) < (1, 21):
-            f.error("PUB-FIT", "bundle.json", "fit in a bundle before format 1.21", x["id"])
+            f.error("LP-FIT", "bundle.json", "fit in a bundle before format 1.21", x["id"])
 
 
 def check_inside(bundle: dict, css: str, folder: Path, f: Findings) -> None:

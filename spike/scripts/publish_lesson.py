@@ -23,7 +23,7 @@ oetacademy-web ADR-0005, ADR-0034 §2 and Amendment 13, ENGINE-GAPS G1 to G7).
   is taken from the lesson's copy of the exercises release (analysis/practice_set.json), never
   inferred from a name;
 - images: the files a block names, keeping their names, in images/;
-- manifest.json (contracts 1.8.0): lesson.approved {"by": "siavash", "on": the final gate's date};
+- manifest.json (contracts 1.8.0 and later): lesson.approved {"by": "siavash", "on": the final gate's date};
   professions "all" and criteria [] everywhere; each section's `teaches` from
   <library>/course/section-tags.json (proposed by the agent, approved by the owner once per course);
   terms and references restating the boards; retired sections carried and added (G5).
@@ -706,64 +706,86 @@ def approve_tags(L: Path, by: str) -> None:
 
 
 def tags_page(L: Path) -> Path:
-    """One page for the owner: every lesson's sections with the proposed tag, its label in the
-    taxonomy and, where the choice is not obvious, one line of reasoning. Written beside the tags
+    """One page for the owner, course by course: each lesson's sections with the proposed tag in
+    plain words (its label in the taxonomy, the key beside it) and one short reason. The courses
+    waiting for approval come first; an approved course is folded away. Written beside the tags
     file, outside git."""
     import html as h
     p = tags_path(L)
     doc = read_json(p)
     c = lp.load()
-    rows = []
+    allowed = set(c.tag_keys)
+    courses = {}
     for lesson, entry in doc["lessons"].items():
-        course = doc.get("courses", {}).get(lesson.split("-")[0]) or {}
-        state = (f"approved by {course['approved']['by']} on {course['approved']['on']}"
-                 if course.get("approved") else "proposed, not approved")
-        title = lesson
-        player = build_course_index.library_of(L) / "lessons" / lesson / "generated" / "lesson-player" / "bundle.json"
-        if player.exists():
-            title = read_json(player)["lesson"]["title"]
-        rows.append(f'<tr class="lesson"><th colspan="4">{h.escape(title)} <span class="id">{lesson}</span>'
-                    f' <span class="state">{state}</span></th></tr>')
-        for s in entry["sections"]:
-            keys = s["teaches"] or [None]
-            tag = "<br>".join(f"<code>{k}</code>" if k else "<i>none (introduction)</i>" for k in keys)
-            label = "<br>".join(h.escape(c.label(k) or "NOT A KEY") if k else "" for k in keys)
-            why = h.escape(s.get("reason") or "") if s["teaches"] and s.get("reason") else ""
-            rows.append(f'<tr><td>{h.escape(s["title"])} <span class="id">{s["id"]}</span></td>'
-                        f'<td>{tag}</td><td>{label}</td><td class="why">{why}</td></tr>')
+        courses.setdefault(lesson.split("-")[0], []).append((lesson, entry))
+    order = sorted(courses, key=lambda k: (bool((doc.get("courses", {}).get(k) or {}).get("approved")),
+                                           list(courses).index(k)))
+    parts = []
+    for name in order:
+        course = doc.get("courses", {}).get(name) or {}
+        n = sum(len(e["sections"]) for _, e in courses[name])
+        rows = []
+        for lesson, entry in courses[name]:
+            title = lesson
+            player = build_course_index.library_of(L) / "lessons" / lesson / "generated" / "lesson-player" / "bundle.json"
+            if player.exists():
+                title = read_json(player)["lesson"]["title"]
+            for i, s in enumerate(entry["sections"]):
+                if s["teaches"]:
+                    tag = "<br>".join(f'{h.escape(c.label(k) or "NOT A KEY")} <code>{k}</code>'
+                                      + ("" if k in allowed else ' <span class="warn">not yet on the site&#x27;s list</span>')
+                                      for k in s["teaches"])
+                else:
+                    tag = "<i>none (introduction)</i>"
+                why = h.escape(s.get("reason") or "") if s["teaches"] else ""
+                lcell = f'<td class="les" rowspan="{len(entry["sections"])}">{h.escape(title)}<span class="id">{lesson}</span></td>' if i == 0 else ""
+                rows.append(f'<tr>{lcell}<td>{h.escape(s["title"])}</td><td>{tag}</td><td class="why">{why}</td></tr>')
+        table = ('<table><thead><tr><th>Lesson</th><th>Section</th><th>Proposed tag</th><th>Reason</th></tr></thead>'
+                 f'<tbody>{chr(10).join(rows)}</tbody></table>')
+        note = f'<p class="note">{h.escape(course["note"])}</p>' if course.get("note") else ""
+        if course.get("approved"):
+            parts.append(f'<details><summary><h2>{name.capitalize()}</h2> <span class="state">approved by '
+                         f'{course["approved"]["by"]} on {course["approved"]["on"]}, {n} sections</span></summary>'
+                         f'{note}{table}</details>')
+        else:
+            parts.append(f'<section><h2>{name.capitalize()}</h2> <span class="state wait">{n} sections waiting for '
+                         f'your approval</span>{note}{table}</section>')
     out = p.with_name("section-tags-review.html")
     out.write_text(f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Section tags review</title>
 <style>
-:root {{ --bg:#fff; --fg:#1b1b1b; --muted:#666; --line:#ddd; --band:#f2f5f8; --code:#0b5277; }}
+:root {{ --bg:#fff; --fg:#1b1b1b; --muted:#666; --line:#ddd; --band:#f2f5f8; --code:#0b5277; --warn:#8a4b00; }}
 @media (prefers-color-scheme: dark) {{ :root {{ --bg:#16181b; --fg:#e8e8e8; --muted:#9a9a9a; --line:#33373c;
-  --band:#22262b; --code:#8cc8ec; }} }}
+  --band:#22262b; --code:#8cc8ec; --warn:#f0b46a; }} }}
 body {{ background:var(--bg); color:var(--fg); font:15px/1.45 "Segoe UI", system-ui, sans-serif; margin:0; padding:24px 16px; }}
 main {{ max-width:1100px; margin:0 auto; }}
 h1 {{ font-size:22px; margin:0 0 6px; }}
+h2 {{ font-size:19px; margin:28px 0 6px; display:inline-block; }}
+summary h2 {{ margin:18px 0 6px; }}
+summary {{ cursor:pointer; }}
 p {{ margin:4px 0 12px; color:var(--muted); }}
-table {{ border-collapse:collapse; width:100%; }}
+p.note {{ color:var(--warn); }}
+table {{ border-collapse:collapse; width:100%; margin-top:6px; }}
 th, td {{ text-align:left; vertical-align:top; padding:7px 10px; border-bottom:1px solid var(--line); }}
 thead th {{ font-size:13px; color:var(--muted); font-weight:600; }}
-tr.lesson th {{ background:var(--band); font-size:16px; padding-top:12px; }}
-.id {{ color:var(--muted); font-size:12px; font-weight:400; margin-left:6px; }}
-.state {{ float:right; font-size:13px; font-weight:400; color:var(--muted); }}
-code {{ color:var(--code); font:13px Consolas, monospace; }}
+td.les {{ background:var(--band); font-weight:600; width:22%; }}
+.id {{ display:block; color:var(--muted); font-size:12px; font-weight:400; }}
+.state {{ margin-left:10px; font-size:14px; color:var(--muted); }}
+.state.wait {{ color:var(--warn); font-weight:600; }}
+code {{ color:var(--code); font:12px Consolas, monospace; display:block; }}
+.warn {{ color:var(--warn); font-size:12px; }}
 .why {{ color:var(--muted); font-size:14px; }}
 @media (max-width:700px) {{ td, th {{ display:block; border:0; padding:3px 6px; }} tr {{ display:block;
-  border-bottom:1px solid var(--line); padding:6px 0; }} thead {{ display:none; }} .state {{ float:none; display:block; }} }}
+  border-bottom:1px solid var(--line); padding:6px 0; }} thead {{ display:none; }} td.les {{ width:auto; }} }}
 </style></head><body><main>
-<h1>Section tags for the site: proposed</h1>
-<p>What each section teaches, as the site's manifest will say it (<code>sections[].teaches</code>). Keys come only from
-the pinned contracts' session section tag list (contracts {c.version}, taxonomy v{c.tag_taxonomy['version']}): a topic
-where a section clearly teaches one, otherwise the skill; an introduction none. A reason is given where the choice is
-not obvious. To approve, say so in chat, or name the changes (lesson, section, key). Data:
-<code>{h.escape(str(p))}</code>.</p>
-<table><thead><tr><th>Section</th><th>Proposed tag</th><th>Label in the taxonomy</th><th>Why</th></tr></thead>
-<tbody>
-{chr(10).join(rows)}
-</tbody></table></main></body></html>
+<h1>Section tags for the site</h1>
+<p>What each section teaches, as the site will list it. A section that clearly teaches one topic gets that topic;
+any other teaching section gets its skill (Grammar, Vocabulary ...); an introduction gets none. Tags come from the
+site's list (contracts {c.version}, taxonomy v{c.tag_taxonomy['version']}). To approve a course, say so in chat, or name
+the changes (lesson, section, tag). Data: <code>{h.escape(str(p))}</code>.</p>
+{chr(10).join(parts)}
+</main></body></html>
 """, encoding="utf-8")
     return out
 

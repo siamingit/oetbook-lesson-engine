@@ -760,10 +760,12 @@ function wrapOne(key, el, text, cls, base, late) {
   return w;
 }
 function wmClass(w) { return w.cls === "slide-underline" ? w.cls : "wc-" + w.cls; }
-function prewrap(bd) {
+// (at `t`, a redraw: each word mark already as it is at t, so its colour is not
+// faded in again; without `t`, as when the board is measured, every one off)
+function prewrap(bd, t) {
   (bd.wordmarks || []).forEach((w, i) => {
     const x = wrapOne("w" + i, cellOf(blockEls.get(w.block), w.row, w.col), w.text, wmClass(w), "wm");
-    if (x) x.spans.forEach(sp => sp.classList.add("wm-off"));
+    if (x) x.spans.forEach(sp => sp.classList.toggle("wm-off", t === undefined || w.time > t));
   });
   for (const st of bd.states) for (const c of marksByState.get(st.id)) {
     const el = blockEls.get(c.block);
@@ -777,6 +779,55 @@ function prewrap(bd) {
   }
 }
 
+// A redraw never shows (owner, 2026-10-25, after the case-notes board of
+// Writing 1 blanked at every change of state: the board flash). The marks'
+// redraw below builds each block's inside afresh at every new state, erase and
+// clear, and the new nodes were first styled, by the layout read that holds the
+// blocks' places, before the spotlight, a verdict or a word's colour was set on
+// them again: each cell then faded back from its reset look (blocks.css fades a
+// cell's opacity and background, a word's colour), and the whole page of a table
+// in focus went pale for a third of a second. So each block's new inside takes
+// the look of the old one before anything reads the layout: the row in focus
+// and the cell highlighted, each verdict, each diagram part drawn (as drawn, so
+// it is not drawn in motion again), each text of a map in focus, each paragraph
+// marked on a Part C map; and its old images, so none is decoded again. Only
+// what changes at the moment then changes, from its old look. None of these
+// classes moves a word (docs/02-DESIGN-SYSTEM.md §8a).
+const LOOK = ["focus", "active", "v-right", "v-wrong", "v-possible", "on", "settled", "dfocus", "pc-here"];
+const LOOK_SEL = "tr[data-row], td[data-col], [data-part], .dpanel[data-doc]";
+function lookKeys(el) {
+  const seen = new Map();
+  return [...el.querySelectorAll(LOOK_SEL)].map(n => {
+    const tr = n.closest("tr[data-row]");
+    const k = n.tagName + "|" + (tr ? tr.dataset.row : "") + "|" + (n.dataset.col ?? "") + "|"
+      + (n.dataset.part ?? "") + "|" + (n.dataset.doc ?? "");
+    const i = seen.get(k) || 0;
+    seen.set(k, i + 1);
+    return [n, k + "#" + i];
+  });
+}
+function lookOf(el) {
+  const cls = new Map();
+  for (const [n, k] of lookKeys(el)) {
+    const on = LOOK.filter(c => n.classList.contains(c));
+    if (on.length) cls.set(k, on);
+  }
+  return { cls, imgs: [...el.querySelectorAll("img")] };
+}
+function setLook(el, look) {
+  for (const [n, k] of lookKeys(el)) {
+    const on = look.cls.get(k);
+    if (!on) continue;
+    n.classList.add(...on);
+    if (on.includes("on") && n.dataset.part) n.classList.add("settled");
+  }
+  const old = look.imgs;
+  for (const im of el.querySelectorAll("img")) {
+    const i = old.findIndex(o => o.outerHTML === im.outerHTML);
+    if (i >= 0) { im.replaceWith(old[i]); old.splice(i, 1); }
+  }
+}
+
 function applyMarks(s, t, erased) {
   const bd = drawnBoard;
   const skey = (bd ? bd.id : "") + "|" + (s ? s.id : "") + "|" + erased + "|" + clearedAt(s, t).size;
@@ -787,15 +838,18 @@ function applyMarks(s, t, erased) {
   if (key === drawnMarks) return;
   drawnMarks = key;
   if (skey !== wrappedFor) {
-    // each block from its source, then every phrase of the board wrapped once
+    // each block from its source, then every phrase of the board wrapped once;
+    // what stays on the board keeps its look through it (lookOf, below)
     for (const [id, el] of blockEls) {
       const fresh = document.createElement("template");
       fresh.innerHTML = blocks[id].html;
+      const look = guarding ? null : lookOf(el);     // (the guard's measuring is never shown)
       el.innerHTML = fresh.content.firstElementChild.innerHTML;
+      if (look) setLook(el, look);
       el.removeAttribute("data-focus");    // redraw the spotlight and the typing
     }
     WRAPS.clear();
-    if (bd) { prewrap(bd); holdPlaces(bd); }
+    if (bd) { prewrap(bd, t); holdPlaces(bd); }
     wrappedFor = skey;
   }
   pointSpan = null;

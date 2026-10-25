@@ -477,7 +477,12 @@ These are the only rules. Every time and target they use is in the bundle.
     draws for a moment, spotlight, marks, verdicts or typing, it never moves a
     word of the board. Marks are drawn over the words, never inline; active
     styling never changes a border width, padding or size; the frame's size
-    does not depend on the page around it (docs/02-DESIGN-SYSTEM.md §8a).
+    does not depend on the page around it (docs/02-DESIGN-SYSTEM.md §8a). Nor is
+    anything that stays on the board redrawn visibly (2026-10-25; no data
+    change): the fixed blocks, and the pinned ones once shown, keep their look
+    through every state, erase and clear; only what changes at the moment
+    changes, and no transition or drawing motion is replayed on what stays
+    (docs/integration/note-for-site-board-flash.md).
 20. **A clause diagram** (1.7) is a diagram: its parts are revealed by rule 5.
     A piece (`dependent`, `independent`) and a bridge are shown from their
     reveal; a `glue`, `subject` or `verb` part is a phrase already shown in its

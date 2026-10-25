@@ -161,7 +161,7 @@ class BuiltPackage(unittest.TestCase):
 
     def test_manifest(self):
         m = self.manifest["lesson"]
-        self.assertEqual(self.manifest["contracts_version"], "1.8.0")
+        self.assertEqual(self.manifest["contracts_version"], "1.9.0")
         self.assertEqual(self.manifest["taxonomy"], CONTRACTS.tag_taxonomy)
         self.assertEqual(m["approved"], {"by": "siavash", "on": "2026-10-01"})
         self.assertEqual(m["package_version"], 1)
@@ -391,14 +391,14 @@ class PinnedContracts(unittest.TestCase):
         finally:
             shutil.rmtree(d)
 
-    def test_the_lock_pins_1_8_0(self):
+    def test_the_lock_pins_1_9_0(self):
         lk = lp.lock()
-        self.assertEqual((lk["tag"], lk["sha256"]), ("contracts-v1.8.0",
-                         "d98a94223c9915b845dd8ba4434c577deaff2e94c75583ddd00964f42a13f3dd"))
+        self.assertEqual((lk["tag"], lk["sha256"]), ("contracts-v1.9.0",
+                         "5d37246f853e0f327eb09f8dc829712ec36eae752da283576565de8637f908c0"))
 
     @needs_contracts
-    def test_the_loaded_contracts_are_1_8_0(self):
-        self.assertEqual(CONTRACTS.version, "1.8.0")
+    def test_the_loaded_contracts_are_1_9_0(self):
+        self.assertEqual(CONTRACTS.version, "1.9.0")
 
 
 if __name__ == "__main__":
