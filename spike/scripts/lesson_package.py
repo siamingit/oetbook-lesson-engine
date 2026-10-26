@@ -16,7 +16,8 @@ memory, never from an unpacked copy.
 The check is the three schemas (jsonschema, draft 2020-12, every schema registered by its `$id`,
 nothing fetched) and then the rules the schemas cannot express, as the site's validator states
 them (oetacademy-web packages/shared/src/contracts/lesson.ts at contracts 1.8.0, and the three
-rules contracts 1.9.0 add for bundle 1.21: `LP-FIT`, `LP-PROVENANCE`, `LP-HEARD`), with its codes
+rules contracts 1.9.0 add for bundle 1.21: `LP-FIT`, `LP-PROVENANCE`, `LP-HEARD`; from 1.10.0 a
+manifest names taxonomy v2 or v3, its keys checked against the version it names), with its codes
 (`LP-...`), plus one of the engine's own: no file reference in the package points outside it
 (`PUB-OUTSIDE`). The site validates again at import and refuses a package with any error.
 """
@@ -41,6 +42,8 @@ MP3_PATH = re.compile(r"^audio/[0-9a-f]{16}\.mp3$")
 IMAGE_PATH = re.compile(r"^images/[a-z0-9][a-z0-9-]*\.(png|svg)$")
 PROVENANCE = {"source-derived", "adapted", "corrected", "authored", "maintainer", "release"}
 SESSION_RULES_FROM = (1, 8, 0)       # contracts 1.8.0: audio kinds, taxonomy and tag list required
+TAG_LIST_FROM_TAXONOMY = 2           # the tag list's first taxonomy; a manifest names it or a later one
+                                     # up to the list's own (v3 from contracts 1.10.0)
 TIME_TOLERANCE_S = 0.001
 CLIP_TOLERANCE_S = 0.05
 MIN_AUDIO_KBPS = 64                  # narration, ADR-0005 §8; 10% slack, as the site allows
@@ -115,18 +118,33 @@ class Contracts:
         tags = json.loads(files["data/session-section-tags.json"])
         self.tag_keys = list(tags["keys"])
         self.tag_taxonomy = dict(tags["taxonomy"])
+        # Every taxonomy version the release holds, by number, its hash from its own bytes (as the
+        # site's taxonomy-versions.ts). A manifest names one of them (contracts 1.10.0: v2 or v3).
+        self.taxonomies: dict[int, dict] = {}
+        for n, raw in files.items():
+            m = re.fullmatch(r"taxonomy/v(\d+)\.json", n)
+            if m:
+                tax = json.loads(raw)
+                self.taxonomies[int(m[1])] = {
+                    "ref": {"id": tax["taxonomy"], "version": int(m[1]), "sha256": sha256_bytes(raw)},
+                    "nodes": {x["key"]: x for x in tax["nodes"]},
+                    "criteria": {c["key"] for group in tax["criteria"].values() for c in group}}
         tv = self.tag_taxonomy["version"]
-        raw = files[f"taxonomy/v{tv}.json"]
-        if sha256_bytes(raw) != self.tag_taxonomy["sha256"]:
+        if tv not in self.taxonomies or self.taxonomies[tv]["ref"] != self.tag_taxonomy:
             raise SystemExit(f"REFUSED: taxonomy/v{tv}.json does not have the SHA-256 the tag list names")
-        tax = json.loads(raw)
-        self.taxonomy = {n["key"]: n for n in tax["nodes"]}
-        self.criteria = {c["key"] for group in tax["criteria"].values() for c in group}
+        self.taxonomy = self.taxonomies[tv]["nodes"]
+        self.criteria = self.taxonomies[tv]["criteria"]
         prof = json.loads(files["data/professions.json"])
         self.professions = {p["id"] for p in prof["professions"] if p.get("active", True)}
 
     def validator(self, name: str):
         return self._validators[name]
+
+    def taxonomy_ref(self, version: int) -> dict:
+        """The `taxonomy` a manifest names for taxonomy `version` of this release."""
+        if version not in self.taxonomies:
+            raise SystemExit(f"REFUSED: contracts {self.version} hold no taxonomy v{version}")
+        return dict(self.taxonomies[version]["ref"])
 
     def label(self, key: str) -> str | None:
         node = self.taxonomy.get(key)
@@ -497,11 +515,23 @@ def check_manifest(m: dict, folder: Path, c: Contracts, f: Findings) -> None:
     if session_rules and not tax:
         f.error("LP-TAXONOMY-REQUIRED", f"{where} taxonomy", "a manifest of contracts 1.8.0 or later names "
                 "its taxonomy version")
-    if tax and (tax["version"] != c.tag_taxonomy["version"] or tax["sha256"] != c.tag_taxonomy["sha256"]
-                or tax["id"] != c.tag_taxonomy["id"]):
-        f.error("LP-TAXONOMY-HASH", f"{where} taxonomy", "the taxonomy is not the version of the session "
-                "section tag list, byte for byte")
-    allowed = set(c.tag_keys)
+    # The version the manifest names, if this release has it with the same bytes (contracts 1.10.0:
+    # v2 or v3, each key also a key of the version named).
+    named = None
+    if tax:
+        got = c.taxonomies.get(tax["version"])
+        if not got:
+            f.error("LP-TAXONOMY-UNKNOWN", f"{where} taxonomy", f"taxonomy v{tax['version']} is not in this "
+                    "contracts release")
+        elif tax["sha256"] != got["ref"]["sha256"] or tax["id"] != got["ref"]["id"]:
+            f.error("LP-TAXONOMY-HASH", f"{where} taxonomy", f"sha256 differs from taxonomy v{tax['version']} "
+                    "in this release")
+        else:
+            named = got
+    listed_version = tax and TAG_LIST_FROM_TAXONOMY <= tax["version"] <= c.tag_taxonomy["version"]
+    allowed = set(c.tag_keys) if listed_version else set()
+    nodes_of = named["nodes"] if named else {}
+    criteria_of = named["criteria"] if named else set()
 
     def professions_ok(p, at):
         if p != "all" and any(x not in c.professions for x in p):
@@ -511,21 +541,23 @@ def check_manifest(m: dict, folder: Path, c: Contracts, f: Findings) -> None:
     for s in m["sections"]:
         at = f"{where} sections[{s['id']}]"
         for key in s["teaches"]:
-            node = c.taxonomy.get(key)
-            if session_rules and key not in allowed:
-                f.error("LP-TEACHES-NOT-ALLOWED", f"{where} sections", "not on the session section tag list",
-                        f"{s['id']}: {key}")
+            node = nodes_of.get(key)
+            if session_rules and tax and key not in allowed:
+                f.error("LP-TEACHES-NOT-ALLOWED", f"{where} sections", "not on the session section tag list "
+                        f"(taxonomy v{TAG_LIST_FROM_TAXONOMY} to v{c.tag_taxonomy['version']})", f"{s['id']}: {key}")
+            if not named:
+                continue
             if not node:
-                f.error("LP-TOPIC-UNKNOWN", at, "not a key of the taxonomy", key)
+                f.error("LP-TOPIC-UNKNOWN", at, f"not a key of taxonomy v{tax['version']}", key)
             elif node.get("status") == "retired":
                 f.error("LP-TOPIC-RETIRED", at, "retired in the taxonomy", key)
-        nodes = [c.taxonomy[k] for k in s["teaches"] if k in c.taxonomy]
+        nodes = [nodes_of[k] for k in s["teaches"] if k in nodes_of]
         if not s["intro"] and not s["teaches"]:
             f.error("LP-TEACHES-EMPTY", at, "a teaching section needs at least one topic it teaches")
         elif nodes and all(n["level"] == "skill" for n in nodes):
             f.warning("LP-TEACHES-BROAD", f"{where} sections", "tagged with a skill only", s["id"])
-        for k in s["criteria"]:
-            if k not in c.criteria:
+        for k in s["criteria"] if named else []:
+            if k not in criteria_of:
                 f.error("LP-CRITERION-UNKNOWN", at, "not a criterion key of the taxonomy", k)
         professions_ok(s["professions"], at)
         lp = m["lesson"]["professions"]

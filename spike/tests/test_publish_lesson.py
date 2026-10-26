@@ -161,8 +161,8 @@ class BuiltPackage(unittest.TestCase):
 
     def test_manifest(self):
         m = self.manifest["lesson"]
-        self.assertEqual(self.manifest["contracts_version"], "1.9.0")
-        self.assertEqual(self.manifest["taxonomy"], CONTRACTS.tag_taxonomy)
+        self.assertEqual(self.manifest["contracts_version"], "1.10.0")
+        self.assertEqual(self.manifest["taxonomy"], CONTRACTS.taxonomy_ref(2))       # a Grammar lesson: v2
         self.assertEqual(m["approved"], {"by": "siavash", "on": "2026-10-01"})
         self.assertEqual(m["package_version"], 1)
         self.assertEqual(m["professions"], "all")
@@ -224,7 +224,7 @@ class Refusals(unittest.TestCase):
         self.assertEqual(left, [])
 
     def test_a_failing_package_is_not_written(self):
-        write_tags(self.L, {"page-1": [], "page-2": ["writing"]})          # not on the session tag list
+        write_tags(self.L, {"page-1": [], "page-2": ["speaking"]})         # not on the session tag list
         with self.assertRaises(pub.Refused) as e:
             pub.build(self.L, CONTRACTS, workers=2, log=quiet)
         self.assertIn("LP-TEACHES-NOT-ALLOWED", str(e.exception))
@@ -391,14 +391,69 @@ class PinnedContracts(unittest.TestCase):
         finally:
             shutil.rmtree(d)
 
-    def test_the_lock_pins_1_9_0(self):
+    def test_the_lock_pins_1_10_0(self):
         lk = lp.lock()
-        self.assertEqual((lk["tag"], lk["sha256"]), ("contracts-v1.9.0",
-                         "5d37246f853e0f327eb09f8dc829712ec36eae752da283576565de8637f908c0"))
+        self.assertEqual((lk["tag"], lk["sha256"]), ("contracts-v1.10.0",
+                         "3bf0d421ec35590087d2514b6554ac8a7aa4afdfc12a222aa6932b7ab8442420"))
 
     @needs_contracts
-    def test_the_loaded_contracts_are_1_9_0(self):
-        self.assertEqual(CONTRACTS.version, "1.9.0")
+    def test_the_loaded_contracts_are_1_10_0(self):
+        self.assertEqual(CONTRACTS.version, "1.10.0")
+        self.assertEqual(CONTRACTS.tag_taxonomy, {"id": "oetacademy-topics", "version": 3, "sha256":
+                         "2742d1c707a59215fa5f07e240a48fceb8ab2f5318c829a617e10ea7fff3814c"})
+        self.assertEqual(CONTRACTS.taxonomy_ref(2)["sha256"],
+                         "f3ef57ae8243acc24eeee4ef79efcc9426fe5d3f1fd404d8aaf8984d2a434761")
+
+
+@needs_contracts
+class TaxonomyPerCourse(unittest.TestCase):
+    """ADR 039 amendment of 2026-10-26: Writing manifests name taxonomy v3, every other course v2;
+    the check takes v2 or v3 (contracts 1.10.0), each key checked against the version named."""
+
+    def manifest(self, version, keys):
+        return {"contracts_version": CONTRACTS.version, "taxonomy": CONTRACTS.taxonomy_ref(version),
+                "lesson": {"professions": "all", "package_version": 1}, "files": {}, "media": [],
+                "retired_sections": [],
+                "sections": [{"id": "page-2", "intro": False, "teaches": keys, "criteria": [], "professions": "all"}]}
+
+    def codes(self, m):
+        f = lp.Findings()
+        lp.check_manifest(m, Path(tempfile.gettempdir()), CONTRACTS, f)
+        return f.codes("error")
+
+    def test_course_versions(self):
+        self.assertEqual(pub.manifest_taxonomy("writing-01-overview", CONTRACTS), CONTRACTS.taxonomy_ref(3))
+        for lesson in ("grammar-01-verb-tenses", "vocabulary-01-word-forms", "reading-01-overview",
+                       "listening-01-overview"):
+            self.assertEqual(pub.manifest_taxonomy(lesson, CONTRACTS), CONTRACTS.taxonomy_ref(2))
+
+    def test_v2_and_v3_both_accepted(self):
+        self.assertEqual(self.codes(self.manifest(2, ["writing.content"])), [])
+        self.assertEqual(self.codes(self.manifest(3, ["writing.language.word-order"])), [])
+
+    def test_a_v3_key_under_v2_is_unknown(self):
+        self.assertEqual(self.codes(self.manifest(2, ["writing.language.word-order"])), ["LP-TOPIC-UNKNOWN"])
+
+    def test_a_version_or_hash_not_in_the_release(self):
+        m = self.manifest(2, ["grammar"])
+        m["taxonomy"] = dict(m["taxonomy"], version=99)
+        self.assertIn("LP-TAXONOMY-UNKNOWN", self.codes(m))
+        m = self.manifest(2, ["grammar"])
+        m["taxonomy"] = dict(m["taxonomy"], sha256="0" * 64)
+        self.assertIn("LP-TAXONOMY-HASH", self.codes(m))
+        m = self.manifest(1, ["grammar"])                                   # in the release, before the list
+        self.assertIn("LP-TEACHES-NOT-ALLOWED", self.codes(m))
+
+    def test_tags_file_refuses_a_key_its_course_version_lacks(self):
+        L = made_up_library()
+        try:
+            write_tags(L, {"page-1": [], "page-2": ["writing.language.grammar"]})      # a Grammar lesson: v2
+            bundle = json.loads((L / "generated" / "lesson-player" / "bundle.json").read_text(encoding="utf-8"))
+            with self.assertRaises(pub.Refused) as e:
+                pub.lesson_tags(L, bundle, CONTRACTS)
+            self.assertIn("taxonomy v2", str(e.exception))
+        finally:
+            shutil.rmtree(L.parents[1])
 
 
 if __name__ == "__main__":

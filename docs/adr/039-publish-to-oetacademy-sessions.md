@@ -258,3 +258,61 @@ schemas allow `format_version` 1.8 to 1.20 only.
   machine before any is published; a package with any error is not written.
 - The tests that name the pinned version (`spike/tests/test_publish_lesson.py`) name 1.9.0.
 - To reverse: a new amendment pinning another release; the lock and this record change together.
+
+## Amendment — 2026-10-26: contracts 1.10.0 pinned (the Writing keys, taxonomy v3)
+
+Status: **Accepted** by the owner in chat, 2026-10-26 (the brief "pin the site's new contracts
+(contracts-v1.10.0) and taxonomy v3"). It replaces the pin of the amendment of 2026-10-25, decision 1,
+and the amendment of 2026-10-23, answer 4, where they name taxonomy v2 for every manifest; nothing else.
+
+### Context
+
+Writing 1 (`writing-01-overview`, bundle 1.21) is approved but could not be packaged: the session section
+tag list of contracts 1.9.0 has no Writing keys (they were "planned" in taxonomy v2). The site added them in
+oetacademy-web PR #159 (in production), as taxonomy v3, and released contracts that say so. The site's
+chat also reports: its own player had the same board flash as the engine's reference player
+(docs/integration/note-for-site-board-flash.md), fixed in oetacademy-web PR #158, in production; and the
+four packages of the amendment of 2026-10-25 (`reading-05-part-c-2-v2`, `listening-02-part-a-v2`,
+`listening-04-part-c-v2`, `listening-05-part-c-2-v2`) are imported and live.
+
+### Decision
+
+1. **Contracts pinned: `contracts-v1.10.0`**, asset `oetacademy-contracts-1.10.0.zip`, SHA-256
+   `3bf0d421ec35590087d2514b6554ac8a7aa4afdfc12a222aa6932b7ab8442420`. Checked on 2026-10-26: the zip
+   downloaded with `gh` from the release (tag on oetacademy-web commit 36e49c2, published 2026-10-25) has
+   exactly that hash, the hash the site's chat gave and the release's own asset digest. The lock is
+   `spike/publish/contracts.lock.json`; the zip stays outside git, as before.
+2. **Taxonomy v3**, `taxonomy/v3.json` in that zip, SHA-256
+   `2742d1c707a59215fa5f07e240a48fceb8ab2f5318c829a617e10ea7fff3814c` (checked: it matches, and it is
+   the version the tag list names). v3 is v2 (the `writing` skill key and its 23 Writing topics and
+   subtopics unchanged) plus the topic `writing.language` (Language accuracy) with three subtopics:
+   `writing.language.grammar` (Grammar in letters), `writing.language.word-order` (Word order and
+   sentence structure), `writing.language.vocabulary-spelling` (Word choice and spelling). `taxonomy/v2.json`
+   in the same zip is unchanged (SHA-256 `f3ef57ae8243acc24eeee4ef79efcc9426fe5d3f1fd404d8aaf8984d2a434761`).
+   "Planned" keys are accepted as live ones are.
+3. **Which taxonomy a manifest names.** A manifest may name taxonomy v2 or v3, and each of its keys must
+   also be a key of the version it names (so a `writing.language` key needs v3). **Writing lessons'
+   manifests name taxonomy v3. Every other course's name v2**: the eleven Grammar and Vocabulary lessons'
+   packages (package version 2) stay on v2, and so do Reading and Listening, as they were published and
+   approved. The publish step writes it per course (`publish_lesson.py`, `MANIFEST_TAXONOMY`) and refuses
+   a lesson whose tags use a key its course's version does not have.
+4. **What 1.10.0 changes** (its CHANGELOG): the session section tag list holds the skill key `writing`
+   and every Writing topic and subtopic of v3 (28 keys, 145 in all), and names v3; `LP-TEACHES-NOT-ALLOWED`
+   accepts a manifest naming v2 or v3; a key new in v3 under a v2 manifest is `LP-TOPIC-UNKNOWN`. Every
+   1.9.0 document stays valid. Ported into the engine's check (`lesson_package.py`) with the site's codes,
+   from its code at the tag: every `taxonomy/v<N>.json` of the release is loaded with its hash from its
+   own bytes; a manifest's version not in the release is `LP-TAXONOMY-UNKNOWN`, another hash
+   `LP-TAXONOMY-HASH`.
+5. **The section tags file** (`<library>/course/section-tags.json`) names the tag list's taxonomy, v3; each
+   course's proposals are checked against its own version. The Writing proposals were revised for v3
+   (owner brief, STEP 3); the Grammar and Vocabulary proposals are unchanged, on v2. Publishing still waits
+   for the owner's approval of each course's tags.
+
+### Consequences
+
+- Writing 1 can be packaged (package version 1, bundle 1.21, taxonomy v3) once its course's tags are
+  approved; the eleven Grammar and Vocabulary lessons as package version 2 on taxonomy v2, as before.
+- A package of an already published lesson built under 1.10.0 names `contracts_version` 1.10.0, so it is
+  not "unchanged" against its release: it is published only when there is a reason to, as before.
+- The tests that name the pinned version name 1.10.0, and test the taxonomy per course.
+- To reverse: a new amendment pinning another release; the lock and this record change together.
