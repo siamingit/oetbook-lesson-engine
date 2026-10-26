@@ -570,6 +570,11 @@ than one cell of its row gets its cell named in the section's narration
 
 **final** (gate). Play `generated/lesson-player/player.html`.
 
+Errata corrections that change no teaching content, no section and no section id are given their final
+approval by "chat (owner's delegation)" (ADR 005 amendment of 2026-10-26): the approval being replaced is
+first kept in `gates.json` under its own key, unchanged, then the gate is recorded with `--approve final`;
+the manifest's `lesson.approved.by` stays `siavash`. Anything else still goes to the owner.
+
 A Listening lesson's final approval also checks (ADR 032): the owner spot-checks
 the narration's explanations of medical terms; and a lesson approved after
 oetacademy-exercises #37 delivers the practice rendition of the audio uses it,

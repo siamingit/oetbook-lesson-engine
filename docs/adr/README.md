@@ -10,7 +10,7 @@ old one.
 | [002 — AI providers](002-ai-providers.md) | 2026-09-22 |
 | [003 — Lesson production permissions](003-lesson-production-permissions.md) | 2026-09-24 |
 | [004 — The lesson bundle is the contract between pipeline and website](004-lesson-bundle-contract.md) | 2026-09-24 |
-| [005 — Decision policy and three gates](005-decision-policy-and-three-gates.md) | 2026-09-24 |
+| [005 — Decision policy and three gates](005-decision-policy-and-three-gates.md) | 2026-09-24; amended 2026-10-26 (errata corrections approved by the chat on the owner's delegation) |
 | [006 — Cross-lesson references and the course index](006-cross-lesson-references-and-course-index.md) | 2026-09-25 |
 | [007 — Table boards: a table is shown whole and taught row by row](007-table-boards.md) | 2026-09-25 |
 | [008 — The board style: kinds of content, change flows, word-class colours](008-board-style.md) | 2026-09-25 |
