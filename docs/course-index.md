@@ -7843,7 +7843,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
 | 1 | OET Writing: Overview | `writing-01-overview` | 19:05 | 7 | 2026-10-26 00:07 (Siavash) |
-| 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 29:42 | 10 | not yet |
+| 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 29:42 | 10 | 2026-10-26 23:34 (Siavash) |
 
 <a id="writing-01-overview"></a>
 
@@ -8023,7 +8023,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 2. OET Writing: Assessment Criteria
 
 - Lesson ID and folder: `writing-02-assessment-criteria` (folder `writing-02-assessment-criteria`); course writing, lesson 2; length 29:42; bundle format 1.22
-- Status: built, final gate not approved
+- Status: approved by Siavash, 2026-10-26 23:34
 - Description: Learn the six criteria OET uses to assess your letter, how each one is scored, and what each one asks you to do when you write.
 - Original session: folder `source`: `source/video.mp4`, 48:38 long, partial hash `c14729b6930ac321`; deck `source/slides.pdf`, 21 pages
   - Writing Session 2 of the Persian Writing course, «جلسه رایتینگ: معیار های ارزیابی» (Writing: the assessment criteria); its official OET sample and the photo of OET's criteria table are replaced by our sample oa-ws-med-0002 (and short parts of oa-ws-nur-0001, oa-ws-nur-0002, oa-ws-med-0003) at oetacademy-exercises 5320d19, and an own-words criteria table (ADR 040).
