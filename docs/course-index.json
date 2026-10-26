@@ -52,7 +52,8 @@
    "id": "writing",
    "title": "Writing",
    "lessons": [
-    "writing-01-overview"
+    "writing-01-overview",
+    "writing-02-assessment-criteria"
    ]
   }
  ],
@@ -4603,6 +4604,22 @@
       "utterance": "page-5_t1.s2.u3",
       "start_s": 202.961,
       "start": "3:22"
+     },
+     {
+      "lesson": "writing-02-assessment-criteria",
+      "section": "pages-12-13-14",
+      "to_section": "page-11",
+      "utterance": "pages-12-13-14_t3.s2.u2",
+      "start_s": 1236.745,
+      "start": "20:36"
+     },
+     {
+      "lesson": "writing-02-assessment-criteria",
+      "section": "page-19",
+      "to_section": null,
+      "utterance": "page-19_t1.s6.u5",
+      "start_s": 1695.592,
+      "start": "28:15"
      }
     ],
     "continues_in": [
@@ -11849,6 +11866,14 @@
       "utterance": "page-9_t1.s37.u2",
       "start_s": 4156.565,
       "start": "69:16"
+     },
+     {
+      "lesson": "writing-02-assessment-criteria",
+      "section": "page-19",
+      "to_section": null,
+      "utterance": "page-19_t1.s7.u2",
+      "start_s": 1711.452,
+      "start": "28:31"
      }
     ],
     "continues_in": [
@@ -16367,6 +16392,22 @@
       "utterance": "page-7_t1.s18.u2",
       "start_s": 1696.551,
       "start": "28:16"
+     },
+     {
+      "lesson": "writing-02-assessment-criteria",
+      "section": "pages-15-16-17",
+      "to_section": "added-08",
+      "utterance": "pages-15-16-17_t3.s2.u3",
+      "start_s": 1482.878,
+      "start": "24:42"
+     },
+     {
+      "lesson": "writing-02-assessment-criteria",
+      "section": "page-19",
+      "to_section": "page-5",
+      "utterance": "page-19_t1.s9.u1",
+      "start_s": 1729.862,
+      "start": "28:49"
      }
     ],
     "continues_in": [],
@@ -18442,6 +18483,22 @@
       "utterance": "page-8_t1.s5.u4",
       "start_s": 718.815,
       "start": "11:58"
+     },
+     {
+      "lesson": "writing-02-assessment-criteria",
+      "section": "pages-12-13-14",
+      "to_section": "page-8",
+      "utterance": "pages-12-13-14_t2.s8.u5",
+      "start_s": 1187.283,
+      "start": "19:47"
+     },
+     {
+      "lesson": "writing-02-assessment-criteria",
+      "section": "page-19",
+      "to_section": "pages-09-10",
+      "utterance": "page-19_t1.s5.u2",
+      "start_s": 1660.942,
+      "start": "27:40"
      }
     ],
     "continues_in": [],
@@ -48612,6 +48669,1770 @@
       "start": "11:58"
      }
     ],
+    "referred_to_by": [
+     {
+      "lesson": "writing-02-assessment-criteria",
+      "section": "page-3",
+      "to_section": null,
+      "utterance": "page-3_t1.s1.u2",
+      "start_s": 5.1,
+      "start": "0:05"
+     }
+    ],
+    "continues_in": [],
+    "continues_from": []
+   }
+  },
+  {
+   "id": "writing-02-assessment-criteria",
+   "folder": "writing-02-assessment-criteria",
+   "title": "OET Writing: Assessment Criteria",
+   "description": "Learn the six criteria OET uses to assess your letter, how each one is scored, and what each one asks you to do when you write.",
+   "course": "writing",
+   "order": 2,
+   "length_s": 1782.618,
+   "length": "29:42",
+   "bundle_format": "1.21",
+   "status": "built",
+   "approval": null,
+   "source": {
+    "folder": "source",
+    "recording": "source/video.mp4",
+    "recording_duration_s": 2918.3,
+    "recording_partial_hash": "c14729b6930ac321",
+    "deck": "source/slides.pdf",
+    "deck_pages": 21,
+    "same_recording_as": [],
+    "note": "Writing Session 2 of the Persian Writing course, «جلسه رایتینگ: معیار های ارزیابی» (Writing: the assessment criteria); its official OET sample and the photo of OET's criteria table are replaced by our sample oa-ws-med-0002 (and short parts of oa-ws-nur-0001, oa-ws-nur-0002, oa-ws-med-0003) at oetacademy-exercises 5320d19, and an own-words criteria table (ADR 040)."
+   },
+   "categories": [],
+   "sections": [
+    {
+     "id": "page-3",
+     "title": "Introduction",
+     "kind": "intro",
+     "pages": [
+      3
+     ],
+     "category": null,
+     "start_s": 0.0,
+     "start": "0:00",
+     "end_s": 84.764,
+     "topics": [
+      {
+       "board": "page-3_t1",
+       "title": "Title board",
+       "start_s": 0.0,
+       "start": "0:00",
+       "points": [
+        {
+         "text": "the lesson title, then what the lesson is about",
+         "block": "page-3_k15",
+         "start_s": 0.0,
+         "start": "0:00"
+        }
+       ]
+      },
+      {
+       "board": "page-3_t2",
+       "title": "Contents board",
+       "start_s": 51.77,
+       "start": "0:51",
+       "points": [
+        {
+         "text": "each category, revealed as it is named",
+         "block": "page-3_k16",
+         "start_s": 51.77,
+         "start": "0:51"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [
+      {
+       "block": "page-3_k03",
+       "text": "I am writing about Mrs Lisa Holden, who was admitted to our ward on 14 October.",
+       "start_s": 16.424,
+       "start": "0:16"
+      }
+     ],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-3_t1.s1.u2",
+       "lesson": "writing-01-overview",
+       "section": null,
+       "provenance": "source-derived",
+       "start_s": 5.1,
+       "start": "0:05"
+      }
+     ]
+    },
+    {
+     "id": "page-4",
+     "title": "The six criteria",
+     "kind": "deck",
+     "pages": [
+      4
+     ],
+     "category": null,
+     "start_s": 84.764,
+     "start": "1:24",
+     "end_s": 241.056,
+     "topics": [
+      {
+       "board": "page-4_t1",
+       "title": "The six criteria in a few words",
+       "start_s": 84.764,
+       "start": "1:24",
+       "points": [
+        {
+         "text": "six criteria",
+         "block": "page-4_k11",
+         "start_s": 84.764,
+         "start": "1:24"
+        },
+        {
+         "text": "the word criteria",
+         "block": "page-4_k02",
+         "start_s": 98.064,
+         "start": "1:38"
+        },
+        {
+         "text": "two assessors",
+         "block": "page-4_k03",
+         "start_s": 112.944,
+         "start": "1:52"
+        },
+        {
+         "text": "purpose",
+         "block": "page-4_k04",
+         "start_s": 124.02,
+         "start": "2:04"
+        },
+        {
+         "text": "content",
+         "block": "page-4_k05",
+         "start_s": 138.726,
+         "start": "2:18"
+        },
+        {
+         "text": "conciseness and clarity",
+         "block": "page-4_k06",
+         "start_s": 158.796,
+         "start": "2:38"
+        },
+        {
+         "text": "genre and style",
+         "block": "page-4_k07",
+         "start_s": 184.056,
+         "start": "3:04"
+        },
+        {
+         "text": "organisation and layout",
+         "block": "page-4_k08",
+         "start_s": 201.356,
+         "start": "3:21"
+        },
+        {
+         "text": "language",
+         "block": "page-4_k09",
+         "start_s": 215.966,
+         "start": "3:35"
+        },
+        {
+         "text": "OET's own document",
+         "block": "page-4_k10",
+         "start_s": 225.436,
+         "start": "3:45"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "page-5",
+     "title": "How your letter is scored",
+     "kind": "deck",
+     "pages": [
+      5
+     ],
+     "category": null,
+     "start_s": 241.056,
+     "start": "4:01",
+     "end_s": 357.237,
+     "topics": [
+      {
+       "board": "page-5_t1",
+       "title": "How the letter is scored",
+       "start_s": 241.056,
+       "start": "4:01",
+       "points": [
+        {
+         "text": "the score",
+         "block": "page-5_k11",
+         "start_s": 241.056,
+         "start": "4:01"
+        },
+        {
+         "text": "levels",
+         "block": "page-5_k02",
+         "start_s": 245.682,
+         "start": "4:05"
+        },
+        {
+         "text": "the OET score",
+         "block": "page-5_k03",
+         "start_s": 261.23,
+         "start": "4:21"
+        },
+        {
+         "text": "grade B",
+         "block": "page-5_k04",
+         "start_s": 267.282,
+         "start": "4:27"
+        },
+        {
+         "text": "purpose",
+         "block": "page-5_k06",
+         "start_s": 287.342,
+         "start": "4:47"
+        },
+        {
+         "text": "each of the other five",
+         "block": "page-5_k07",
+         "start_s": 294.567,
+         "start": "4:54"
+        },
+        {
+         "text": "the grade B rule",
+         "block": "page-5_k09",
+         "start_s": 328.965,
+         "start": "5:28"
+        },
+        {
+         "text": "language is one of six",
+         "block": "page-5_k10",
+         "start_s": 338.389,
+         "start": "5:38"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-5_k09",
+       "kind": "rule",
+       "text": "For grade B, you need at least 2 out of 3 for Purpose and at least 5 out of 7 for each of the other five criteria.",
+       "start_s": 328.965,
+       "start": "5:28"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "pages-06-07-08",
+     "title": "Purpose",
+     "kind": "deck",
+     "pages": [
+      6,
+      7,
+      8
+     ],
+     "category": null,
+     "start_s": 357.237,
+     "start": "5:57",
+     "end_s": 631.249,
+     "topics": [
+      {
+       "board": "pages-06-07-08_t1",
+       "title": "Immediately apparent: the opening",
+       "start_s": 357.237,
+       "start": "5:57",
+       "points": [
+        {
+         "text": "Fixed: the opening of a discharge letter",
+         "block": "pages-06-07-08_k19",
+         "start_s": 357.237,
+         "start": "5:57"
+        },
+        {
+         "text": "Imagine you are the reader",
+         "block": "pages-06-07-08_k02",
+         "start_s": 362.568,
+         "start": "6:02"
+        },
+        {
+         "text": "OET's words",
+         "block": "pages-06-07-08_k03",
+         "start_s": 384.297,
+         "start": "6:24"
+        },
+        {
+         "text": "What the opening tells the reader",
+         "block": "pages-06-07-08_k04",
+         "start_s": 432.974,
+         "start": "7:12"
+        },
+        {
+         "text": "The word withheld",
+         "block": "pages-06-07-08_k05",
+         "start_s": 457.93,
+         "start": "7:37"
+        }
+       ]
+      },
+      {
+       "board": "pages-06-07-08_t2",
+       "title": "Sufficiently expanded: the rest of the letter",
+       "start_s": 469.339,
+       "start": "7:49",
+       "points": [
+        {
+         "text": "the opening, the next paragraph, the last paragraph",
+         "block": "pages-06-07-08_k20",
+         "start_s": 469.339,
+         "start": "7:49"
+        },
+        {
+         "text": "OET's words",
+         "block": "pages-06-07-08_k07",
+         "start_s": 472.699,
+         "start": "7:52"
+        },
+        {
+         "text": "the opening says it briefly",
+         "block": "pages-06-07-08_k08",
+         "start_s": 487.93,
+         "start": "8:07"
+        },
+        {
+         "text": "my method",
+         "block": "pages-06-07-08_k09",
+         "start_s": 494.912,
+         "start": "8:14"
+        },
+        {
+         "text": "what the next paragraph adds",
+         "block": "pages-06-07-08_k10",
+         "start_s": 506.089,
+         "start": "8:26"
+        },
+        {
+         "text": "OET's definition",
+         "block": "pages-06-07-08_k11",
+         "start_s": 524.191,
+         "start": "8:44"
+        },
+        {
+         "text": "what the last paragraph adds",
+         "block": "pages-06-07-08_k12",
+         "start_s": 533.779,
+         "start": "8:53"
+        },
+        {
+         "text": "the purpose all through the letter",
+         "block": "pages-06-07-08_k13",
+         "start_s": 553.589,
+         "start": "9:13"
+        },
+        {
+         "text": "the score",
+         "block": "pages-06-07-08_k14",
+         "start_s": 569.631,
+         "start": "9:29"
+        }
+       ]
+      },
+      {
+       "board": "pages-06-07-08_t3",
+       "title": "Try it: which opening?",
+       "start_s": 577.589,
+       "start": "9:37",
+       "points": [
+        {
+         "text": "Fixed: two openings",
+         "block": "pages-06-07-08_k21",
+         "start_s": 577.589,
+         "start": "9:37"
+        },
+        {
+         "text": "The answer",
+         "block": "pages-06-07-08_k17",
+         "start_s": 608.659,
+         "start": "10:08"
+        },
+        {
+         "text": "Why the first is weak",
+         "block": "pages-06-07-08_k18",
+         "start_s": 614.939,
+         "start": "10:14"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "pages-06-07-08_k02",
+       "kind": "rule",
+       "text": "Do not learn the criteria word for word. Understand them: imagine you are the reader.",
+       "start_s": 362.568,
+       "start": "6:02"
+      },
+      {
+       "block": "pages-06-07-08_k09",
+       "kind": "rule",
+       "text": "My advice: expand the purpose straight after, in the next paragraph.",
+       "start_s": 494.912,
+       "start": "8:14"
+      },
+      {
+       "block": "pages-06-07-08_k11",
+       "kind": "rule",
+       "text": "OET: state the purpose clearly at the start, then expand it with more detail at the end of the letter.",
+       "start_s": 524.191,
+       "start": "8:44"
+      },
+      {
+       "block": "pages-06-07-08_k17",
+       "kind": "rule",
+       "text": "The second opening: the reader knows at once why you are writing and what the problem is.",
+       "start_s": 608.659,
+       "start": "10:08"
+      }
+     ],
+     "terms": [
+      {
+       "block": "pages-06-07-08_k03",
+       "label": "The criterion",
+       "term": "Immediately apparent",
+       "start_s": 384.297,
+       "start": "6:24"
+      },
+      {
+       "block": "pages-06-07-08_k07",
+       "label": "The criterion",
+       "term": "Sufficiently expanded",
+       "start_s": 472.699,
+       "start": "7:52"
+      }
+     ],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "pages-09-10-11",
+     "title": "Content",
+     "kind": "deck",
+     "pages": [
+      9,
+      10,
+      11
+     ],
+     "category": null,
+     "start_s": 631.249,
+     "start": "10:31",
+     "end_s": 953.692,
+     "topics": [
+      {
+       "board": "pages-09-10-11_t1",
+       "title": "The reader: read the task first",
+       "start_s": 631.249,
+       "start": "10:31",
+       "points": [
+        {
+         "text": "Fixed: the Writing Task",
+         "block": "pages-09-10-11_k23",
+         "start_s": 631.249,
+         "start": "10:31"
+        },
+        {
+         "text": "OET's words",
+         "block": "pages-09-10-11_k02",
+         "start_s": 636.778,
+         "start": "10:36"
+        },
+        {
+         "text": "Read the task first",
+         "block": "pages-09-10-11_k03",
+         "start_s": 646.244,
+         "start": "10:46"
+        },
+        {
+         "text": "Who am I writing to?",
+         "block": "pages-09-10-11_k04",
+         "start_s": 686.269,
+         "start": "11:26"
+        },
+        {
+         "text": "This reader",
+         "block": "pages-09-10-11_k05",
+         "start_s": 690.909,
+         "start": "11:30"
+        },
+        {
+         "text": "The same kind of note, two letters",
+         "block": "pages-09-10-11_k06",
+         "start_s": 710.082,
+         "start": "11:50"
+        },
+        {
+         "text": "The reader and the task decide",
+         "block": "pages-09-10-11_k07",
+         "start_s": 732.049,
+         "start": "12:12"
+        }
+       ]
+      },
+      {
+       "board": "pages-09-10-11_t2",
+       "title": "What is needed to continue care",
+       "start_s": 745.969,
+       "start": "12:25",
+       "points": [
+        {
+         "text": "OET's words",
+         "block": "pages-09-10-11_k09",
+         "start_s": 745.619,
+         "start": "12:25"
+        },
+        {
+         "text": "Fixed: the last paragraph",
+         "block": "pages-09-10-11_k24",
+         "start_s": 745.969,
+         "start": "12:25"
+        },
+        {
+         "text": "Key information",
+         "block": "pages-09-10-11_k10",
+         "start_s": 754.279,
+         "start": "12:34"
+        },
+        {
+         "text": "What you want from the reader",
+         "block": "pages-09-10-11_k11",
+         "start_s": 759.859,
+         "start": "12:39"
+        },
+        {
+         "text": "No fixed structure",
+         "block": "pages-09-10-11_k12",
+         "start_s": 783.267,
+         "start": "13:03"
+        },
+        {
+         "text": "A few sentences you can learn",
+         "block": "pages-09-10-11_k13",
+         "start_s": 803.051,
+         "start": "13:23"
+        },
+        {
+         "text": "Every profession",
+         "block": "pages-09-10-11_k15",
+         "start_s": 819.242,
+         "start": "13:39"
+        }
+       ]
+      },
+      {
+       "board": "pages-09-10-11_t3",
+       "title": "Accurate: as the case notes say it",
+       "start_s": 839.252,
+       "start": "13:59",
+       "points": [
+        {
+         "text": "accurate",
+         "block": "pages-09-10-11_k25",
+         "start_s": 839.252,
+         "start": "13:59"
+        },
+        {
+         "text": "OET's words",
+         "block": "pages-09-10-11_k17",
+         "start_s": 843.228,
+         "start": "14:03"
+        },
+        {
+         "text": "the place",
+         "block": "pages-09-10-11_k18",
+         "start_s": 873.345,
+         "start": "14:33"
+        },
+        {
+         "text": "withheld is not stopped",
+         "block": "pages-09-10-11_k19",
+         "start_s": 890.532,
+         "start": "14:50"
+        },
+        {
+         "text": "better is not normal",
+         "block": "pages-09-10-11_k20",
+         "start_s": 908.375,
+         "start": "15:08"
+        },
+        {
+         "text": "how far she agrees",
+         "block": "pages-09-10-11_k21",
+         "start_s": 930.753,
+         "start": "15:30"
+        },
+        {
+         "text": "check every line",
+         "block": "pages-09-10-11_k22",
+         "start_s": 939.922,
+         "start": "15:39"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "pages-09-10-11_k04",
+       "kind": "rule",
+       "text": "Ask yourself: who am I writing to, and what will they do?",
+       "start_s": 686.269,
+       "start": "11:26"
+      },
+      {
+       "block": "pages-09-10-11_k12",
+       "kind": "rule",
+       "text": "My advice: do not memorise one structure for every letter. Each letter follows its own case notes.",
+       "start_s": 783.267,
+       "start": "13:03"
+      },
+      {
+       "block": "pages-09-10-11_k22",
+       "kind": "warning",
+       "text": "Check the place, the numbers and every word of status against the case notes.",
+       "start_s": 939.922,
+       "start": "15:39"
+      }
+     ],
+     "terms": [
+      {
+       "block": "pages-09-10-11_k02",
+       "label": "The criterion",
+       "term": "Appropriate to the intended reader",
+       "start_s": 636.778,
+       "start": "10:36"
+      },
+      {
+       "block": "pages-09-10-11_k09",
+       "label": "The criterion",
+       "term": "What is needed to continue care",
+       "start_s": 745.619,
+       "start": "12:25"
+      },
+      {
+       "block": "pages-09-10-11_k17",
+       "label": "The criterion",
+       "term": "Accurately represents the case notes",
+       "start_s": 843.228,
+       "start": "14:03"
+      }
+     ],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "pages-12-13-14",
+     "title": "Conciseness and Clarity",
+     "kind": "deck",
+     "pages": [
+      12,
+      13,
+      14
+     ],
+     "category": null,
+     "start_s": 953.692,
+     "start": "15:53",
+     "end_s": 1249.845,
+     "topics": [
+      {
+       "board": "pages-12-13-14_t1",
+       "title": "The length of the letter",
+       "start_s": 953.692,
+       "start": "15:53",
+       "points": [
+        {
+         "text": "what is counted",
+         "block": "pages-12-13-14_k24",
+         "start_s": 953.692,
+         "start": "15:53"
+        },
+        {
+         "text": "OET's words",
+         "block": "pages-12-13-14_k02",
+         "start_s": 960.142,
+         "start": "16:00"
+        },
+        {
+         "text": "the task is made for it",
+         "block": "pages-12-13-14_k03",
+         "start_s": 971.104,
+         "start": "16:11"
+        },
+        {
+         "text": "not counted",
+         "block": "pages-12-13-14_k04",
+         "start_s": 989.012,
+         "start": "16:29"
+        },
+        {
+         "text": "a guide",
+         "block": "pages-12-13-14_k05",
+         "start_s": 995.334,
+         "start": "16:35"
+        },
+        {
+         "text": "my advice",
+         "block": "pages-12-13-14_k06",
+         "start_s": 1001.074,
+         "start": "16:41"
+        },
+        {
+         "text": "much longer, much shorter",
+         "block": "pages-12-13-14_k07",
+         "start_s": 1007.791,
+         "start": "16:47"
+        },
+        {
+         "text": "what matters",
+         "block": "pages-12-13-14_k08",
+         "start_s": 1016.934,
+         "start": "16:56"
+        },
+        {
+         "text": "an example",
+         "block": "pages-12-13-14_k09",
+         "start_s": 1026.824,
+         "start": "17:06"
+        },
+        {
+         "text": "not counted",
+         "block": "pages-12-13-14_k10",
+         "start_s": 1044.407,
+         "start": "17:24"
+        }
+       ]
+      },
+      {
+       "board": "pages-12-13-14_t2",
+       "title": "Summarise: keep, keep briefly, leave out",
+       "start_s": 1048.444,
+       "start": "17:28",
+       "points": [
+        {
+         "text": "the history in the case notes",
+         "block": "pages-12-13-14_k25",
+         "start_s": 1048.444,
+         "start": "17:28"
+        },
+        {
+         "text": "the word summarise",
+         "block": "pages-12-13-14_k12",
+         "start_s": 1053.591,
+         "start": "17:33"
+        },
+        {
+         "text": "old and unrelated",
+         "block": "pages-12-13-14_k13",
+         "start_s": 1085.127,
+         "start": "18:05"
+        },
+        {
+         "text": "briefly",
+         "block": "pages-12-13-14_k14",
+         "start_s": 1094.637,
+         "start": "18:14"
+        },
+        {
+         "text": "looks related",
+         "block": "pages-12-13-14_k15",
+         "start_s": 1114.995,
+         "start": "18:34"
+        },
+        {
+         "text": "briefly",
+         "block": "pages-12-13-14_k16",
+         "start_s": 1127.043,
+         "start": "18:47"
+        },
+        {
+         "text": "looks related",
+         "block": "pages-12-13-14_k17",
+         "start_s": 1138.178,
+         "start": "18:58"
+        },
+        {
+         "text": "gather related notes",
+         "block": "pages-12-13-14_k18",
+         "start_s": 1156.98,
+         "start": "19:16"
+        }
+       ]
+      },
+      {
+       "board": "pages-12-13-14_t3",
+       "title": "Clear: each fact in its time",
+       "start_s": 1192.933,
+       "start": "19:52",
+       "points": [
+        {
+         "text": "Fixed: a paragraph of the letter",
+         "block": "pages-12-13-14_k26",
+         "start_s": 1192.933,
+         "start": "19:52"
+        },
+        {
+         "text": "OET's words",
+         "block": "pages-12-13-14_k21",
+         "start_s": 1194.903,
+         "start": "19:54"
+        },
+        {
+         "text": "The verbs and their time",
+         "block": "pages-12-13-14_k22",
+         "start_s": 1208.684,
+         "start": "20:08"
+        },
+        {
+         "text": "The tense puts each fact in its time",
+         "block": "pages-12-13-14_k23",
+         "start_s": 1229.925,
+         "start": "20:29"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "pages-12-13-14_k06",
+       "kind": "rule",
+       "text": "My advice: ten or twelve words more or fewer do no harm.",
+       "start_s": 1001.074,
+       "start": "16:41"
+      },
+      {
+       "block": "pages-12-13-14_k23",
+       "kind": "rule",
+       "text": "The tense tells the reader what happened, what is true now and what comes next.",
+       "start_s": 1229.925,
+       "start": "20:29"
+      }
+     ],
+     "terms": [
+      {
+       "block": "pages-12-13-14_k02",
+       "label": "The criterion",
+       "term": "Appropriate to the case and reader",
+       "start_s": 960.142,
+       "start": "16:00"
+      },
+      {
+       "block": "pages-12-13-14_k21",
+       "label": "The criterion",
+       "term": "Presented clearly",
+       "start_s": 1194.903,
+       "start": "19:54"
+      }
+     ],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "pages-12-13-14_t2.s8.u5",
+       "lesson": "grammar-08-paraphrasing",
+       "section": "page-8",
+       "provenance": "source-derived",
+       "start_s": 1187.283,
+       "start": "19:47"
+      },
+      {
+       "utterance": "pages-12-13-14_t3.s2.u2",
+       "lesson": "grammar-01-verb-tenses",
+       "section": "page-11",
+       "provenance": "authored",
+       "start_s": 1236.745,
+       "start": "20:36"
+      }
+     ]
+    },
+    {
+     "id": "pages-15-16-17",
+     "title": "Genre and Style",
+     "kind": "deck",
+     "pages": [
+      15,
+      16,
+      17
+     ],
+     "category": null,
+     "start_s": 1249.845,
+     "start": "20:49",
+     "end_s": 1492.948,
+     "topics": [
+      {
+       "board": "pages-15-16-17_t1",
+       "title": "Clinical and factual",
+       "start_s": 1249.845,
+       "start": "20:49",
+       "points": [
+        {
+         "text": "Fixed: a wrong sentence",
+         "block": "pages-15-16-17_k24",
+         "start_s": 1249.845,
+         "start": "20:49"
+        },
+        {
+         "text": "The social background",
+         "block": "pages-15-16-17_k02",
+         "start_s": 1256.004,
+         "start": "20:56"
+        },
+        {
+         "text": "OET's words",
+         "block": "pages-15-16-17_k03",
+         "start_s": 1267.195,
+         "start": "21:07"
+        },
+        {
+         "text": "Problem 1",
+         "block": "pages-15-16-17_k04",
+         "start_s": 1299.401,
+         "start": "21:39"
+        },
+        {
+         "text": "Problem 2",
+         "block": "pages-15-16-17_k05",
+         "start_s": 1306.233,
+         "start": "21:46"
+        },
+        {
+         "text": "Problem 3",
+         "block": "pages-15-16-17_k06",
+         "start_s": 1314.483,
+         "start": "21:54"
+        },
+        {
+         "text": "My rule on fortunately",
+         "block": "pages-15-16-17_k07",
+         "start_s": 1320.365,
+         "start": "22:00"
+        },
+        {
+         "text": "For this reader",
+         "block": "pages-15-16-17_k08",
+         "start_s": 1337.906,
+         "start": "22:17"
+        }
+       ]
+      },
+      {
+       "board": "pages-15-16-17_t2",
+       "title": "Right for the reader: knowledge and polite requests",
+       "start_s": 1357.775,
+       "start": "22:37",
+       "points": [
+        {
+         "text": "Fixed: two wrong openings",
+         "block": "pages-15-16-17_k25",
+         "start_s": 1357.775,
+         "start": "22:37"
+        },
+        {
+         "text": "OET's words",
+         "block": "pages-15-16-17_k12",
+         "start_s": 1376.697,
+         "start": "22:56"
+        },
+        {
+         "text": "The first opening",
+         "block": "pages-15-16-17_k13",
+         "start_s": 1386.176,
+         "start": "23:06"
+        },
+        {
+         "text": "The second opening: orders",
+         "block": "pages-15-16-17_k14",
+         "start_s": 1396.065,
+         "start": "23:16"
+        },
+        {
+         "text": "Polite requests in our letter",
+         "block": "pages-15-16-17_k15",
+         "start_s": 1402.761,
+         "start": "23:22"
+        },
+        {
+         "text": "My rule on firstly",
+         "block": "pages-15-16-17_k18",
+         "start_s": 1422.797,
+         "start": "23:42"
+        }
+       ]
+      },
+      {
+       "board": "pages-15-16-17_t3",
+       "title": "Technical terms and abbreviations",
+       "start_s": 1433.068,
+       "start": "23:53",
+       "points": [
+        {
+         "text": "OET's words",
+         "block": "pages-15-16-17_k20",
+         "start_s": 1432.758,
+         "start": "23:52"
+        },
+        {
+         "text": "abbreviations for a GP",
+         "block": "pages-15-16-17_k26",
+         "start_s": 1433.068,
+         "start": "23:53"
+        },
+        {
+         "text": "abbreviate for the reader",
+         "block": "pages-15-16-17_k21",
+         "start_s": 1463.117,
+         "start": "24:23"
+        },
+        {
+         "text": "well-known abbreviations",
+         "block": "pages-15-16-17_k22",
+         "start_s": 1468.158,
+         "start": "24:28"
+        },
+        {
+         "text": "technical terms",
+         "block": "pages-15-16-17_k23",
+         "start_s": 1478.328,
+         "start": "24:38"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "pages-15-16-17_k07",
+       "kind": "rule",
+       "text": "My advice: use \"fortunately\" or \"unfortunately\" at most once in a letter, and never about a patient's habits.",
+       "start_s": 1320.365,
+       "start": "22:00"
+      },
+      {
+       "block": "pages-15-16-17_k18",
+       "kind": "rule",
+       "text": "My advice: never use \"firstly\", \"secondly\" or \"finally\" in your letter. Give each point in its own sentence.",
+       "start_s": 1422.797,
+       "start": "23:42"
+      }
+     ],
+     "terms": [
+      {
+       "block": "pages-15-16-17_k03",
+       "label": "The criterion",
+       "term": "Clinical and factual",
+       "start_s": 1267.195,
+       "start": "21:07"
+      },
+      {
+       "block": "pages-15-16-17_k12",
+       "label": "The criterion",
+       "term": "Right for the reader's discipline and knowledge",
+       "start_s": 1376.697,
+       "start": "22:56"
+      },
+      {
+       "block": "pages-15-16-17_k20",
+       "label": "The criterion",
+       "term": "Technical terms, abbreviations and polite language",
+       "start_s": 1432.758,
+       "start": "23:52"
+      }
+     ],
+     "wrong_examples": [
+      {
+       "block": "pages-15-16-17_k01",
+       "text": "You might be interested to know that Mrs Holden works at a school. She drinks quite a lot, which is a major concern, but luckily she doesn't smoke.",
+       "start_s": 1249.845,
+       "start": "20:49"
+      },
+      {
+       "block": "pages-15-16-17_k10",
+       "text": "Dear district nurse, here is a very technical description of Mrs Dawson's blood tests!",
+       "start_s": 1357.775,
+       "start": "22:37"
+      },
+      {
+       "block": "pages-15-16-17_k11",
+       "text": "Dear specialist, let me tell you what's what. Firstly, do this. Secondly, I think you should do that.",
+       "start_s": 1357.775,
+       "start": "22:37"
+      }
+     ],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "pages-15-16-17_t3.s2.u3",
+       "lesson": "grammar-07-punctuation",
+       "section": "added-08",
+       "provenance": "source-derived",
+       "start_s": 1482.878,
+       "start": "24:42"
+      }
+     ]
+    },
+    {
+     "id": "page-18",
+     "title": "Organisation and Layout",
+     "kind": "deck",
+     "pages": [
+      18
+     ],
+     "category": null,
+     "start_s": 1492.948,
+     "start": "24:52",
+     "end_s": 1606.089,
+     "topics": [
+      {
+       "board": "page-18_t1",
+       "title": "The letter, part by part",
+       "start_s": 1492.948,
+       "start": "24:52",
+       "points": [
+        {
+         "text": "the whole letter",
+         "block": "page-18_k14",
+         "start_s": 1492.948,
+         "start": "24:52"
+        },
+        {
+         "text": "OET's words",
+         "block": "page-18_k02",
+         "start_s": 1499.467,
+         "start": "24:59"
+        },
+        {
+         "text": "copy the address",
+         "block": "page-18_k03",
+         "start_s": 1512.36,
+         "start": "25:12"
+        },
+        {
+         "text": "the date",
+         "block": "page-18_k04",
+         "start_s": 1521.338,
+         "start": "25:21"
+        },
+        {
+         "text": "the Re line",
+         "block": "page-18_k05",
+         "start_s": 1528.731,
+         "start": "25:28"
+        },
+        {
+         "text": "the purpose first",
+         "block": "page-18_k06",
+         "start_s": 1533.285,
+         "start": "25:33"
+        },
+        {
+         "text": "then the story in order",
+         "block": "page-18_k07",
+         "start_s": 1540.298,
+         "start": "25:40"
+        },
+        {
+         "text": "one topic, key information first",
+         "block": "page-18_k08",
+         "start_s": 1553.623,
+         "start": "25:53"
+        },
+        {
+         "text": "not the order of the case notes",
+         "block": "page-18_k09",
+         "start_s": 1570.054,
+         "start": "26:10"
+        },
+        {
+         "text": "the requests last",
+         "block": "page-18_k10",
+         "start_s": 1577.668,
+         "start": "26:17"
+        },
+        {
+         "text": "the sign-off",
+         "block": "page-18_k11",
+         "start_s": 1587.662,
+         "start": "26:27"
+        },
+        {
+         "text": "learn the layout once",
+         "block": "page-18_k12",
+         "start_s": 1591.701,
+         "start": "26:31"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-18_k08",
+       "kind": "rule",
+       "text": "One topic in each paragraph. Put the most important information first.",
+       "start_s": 1553.623,
+       "start": "25:53"
+      },
+      {
+       "block": "page-18_k12",
+       "kind": "rule",
+       "text": "My advice: learn a clear layout once, and use it in every letter.",
+       "start_s": 1591.701,
+       "start": "26:31"
+      }
+     ],
+     "terms": [
+      {
+       "block": "page-18_k02",
+       "label": "The criterion",
+       "term": "Appropriate, logical and clear",
+       "start_s": 1499.467,
+       "start": "24:59"
+      }
+     ],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "page-19",
+     "title": "Language",
+     "kind": "deck",
+     "pages": [
+      19
+     ],
+     "category": null,
+     "start_s": 1606.089,
+     "start": "26:46",
+     "end_s": 1742.522,
+     "topics": [
+      {
+       "board": "page-19_t1",
+       "title": "Language",
+       "start_s": 1606.089,
+       "start": "26:46",
+       "points": [
+        {
+         "text": "what OET looks for",
+         "block": "page-19_k11",
+         "start_s": 1606.089,
+         "start": "26:46"
+        },
+        {
+         "text": "meaning",
+         "block": "page-19_k02",
+         "start_s": 1614.141,
+         "start": "26:54"
+        },
+        {
+         "text": "precise words",
+         "block": "page-19_k03",
+         "start_s": 1621.588,
+         "start": "27:01"
+        },
+        {
+         "text": "your own words",
+         "block": "page-19_k04",
+         "start_s": 1637.032,
+         "start": "27:17"
+        },
+        {
+         "text": "keep the medical words",
+         "block": "page-19_k05",
+         "start_s": 1649.869,
+         "start": "27:29"
+        },
+        {
+         "text": "tense changes meaning",
+         "block": "page-19_k06",
+         "start_s": 1670.746,
+         "start": "27:50"
+        },
+        {
+         "text": "not too long",
+         "block": "page-19_k08",
+         "start_s": 1702.66,
+         "start": "28:22"
+        },
+        {
+         "text": "spelling",
+         "block": "page-19_k09",
+         "start_s": 1722.439,
+         "start": "28:42"
+        },
+        {
+         "text": "punctuation",
+         "block": "page-19_k10",
+         "start_s": 1732.075,
+         "start": "28:52"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-19_t1.s5.u2",
+       "lesson": "grammar-08-paraphrasing",
+       "section": "pages-09-10",
+       "provenance": "source-derived",
+       "start_s": 1660.942,
+       "start": "27:40"
+      },
+      {
+       "utterance": "page-19_t1.s6.u5",
+       "lesson": "grammar-01-verb-tenses",
+       "section": null,
+       "provenance": "source-derived",
+       "start_s": 1695.592,
+       "start": "28:15"
+      },
+      {
+       "utterance": "page-19_t1.s7.u2",
+       "lesson": "grammar-05-complex-compound",
+       "section": null,
+       "provenance": "source-derived",
+       "start_s": 1711.452,
+       "start": "28:31"
+      },
+      {
+       "utterance": "page-19_t1.s9.u1",
+       "lesson": "grammar-07-punctuation",
+       "section": "page-5",
+       "provenance": "source-derived",
+       "start_s": 1729.862,
+       "start": "28:49"
+      }
+     ]
+    },
+    {
+     "id": "added-01",
+     "title": "Closing",
+     "kind": "closing",
+     "pages": [],
+     "category": null,
+     "start_s": 1742.522,
+     "start": "29:02",
+     "end_s": 1782.618,
+     "topics": [
+      {
+       "board": "added-01_t1",
+       "title": "Closing",
+       "start_s": 1742.522,
+       "start": "29:02",
+       "points": [
+        {
+         "text": "Recap",
+         "block": "added-01_k04",
+         "start_s": 1742.522,
+         "start": "29:02"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    }
+   ],
+   "facts": [
+    {
+     "fact": "writing-six-criteria",
+     "text": "Six criteria assess the letter, the same for every profession (writing-facts 8).",
+     "note": null,
+     "section": "page-3",
+     "board": "page-3_t1",
+     "utterance": "page-3_t1.s1.u6",
+     "start_s": 32.59,
+     "start": "0:32"
+    },
+    {
+     "fact": "writing-two-assessors",
+     "text": "Two assessors mark the letter (writing-facts 10).",
+     "note": null,
+     "section": "page-4",
+     "board": "page-4_t1",
+     "utterance": "page-4_t1.s3.u1",
+     "start_s": 113.274,
+     "start": "1:53"
+    },
+    {
+     "fact": "writing-language",
+     "text": "Language: grammar, vocabulary, spelling, punctuation and sentence structure that make the meaning clear (writing-facts 23).",
+     "note": null,
+     "section": "page-4",
+     "board": "page-4_t1",
+     "utterance": "page-4_t1.s9.u1",
+     "start_s": 207.216,
+     "start": "3:27"
+    },
+    {
+     "fact": "writing-score-scale",
+     "text": "Each sub-test is scored from 0 to 500 (writing-facts 12).",
+     "note": null,
+     "section": "page-5",
+     "board": "page-5_t1",
+     "utterance": "page-5_t1.s3.u1",
+     "start_s": 259.162,
+     "start": "4:19"
+    },
+    {
+     "fact": "writing-grade-b",
+     "text": "Grade B is a score of 350 to 440 (writing-facts 12).",
+     "note": null,
+     "section": "page-5",
+     "board": "page-5_t1",
+     "utterance": "page-5_t1.s4.u1",
+     "start_s": 267.612,
+     "start": "4:27"
+    },
+    {
+     "fact": "writing-ielts",
+     "text": "OET's own table compares grade B with IELTS 7.0 to 7.5 (writing-facts 13).",
+     "note": null,
+     "section": "page-5",
+     "board": "page-5_t1",
+     "utterance": "page-5_t1.s4.u2",
+     "start_s": 272.672,
+     "start": "4:32"
+    },
+    {
+     "fact": "writing-criteria-scores",
+     "text": "Purpose is scored out of 3; each of the other five criteria is scored out of 7, on its own (writing-facts 9).",
+     "note": null,
+     "section": "page-5",
+     "board": "page-5_t1",
+     "utterance": "page-5_t1.s6.u2",
+     "start_s": 302.772,
+     "start": "5:02"
+    },
+    {
+     "fact": "writing-grade-b-profile",
+     "text": "For grade B, you need at least 2 out of 3 for Purpose and at least 5 out of 7 for each of the other five criteria (writing-facts 11).",
+     "note": null,
+     "section": "page-5",
+     "board": "page-5_t1",
+     "utterance": "page-5_t1.s7.u1",
+     "start_s": 327.297,
+     "start": "5:27"
+    },
+    {
+     "fact": "writing-purpose",
+     "text": "Purpose: the reader sees at once why you are writing; the purpose is stated clearly at the start and expanded with more detail at the end of the letter (writing-facts 18, 30).",
+     "note": null,
+     "section": "pages-06-07-08",
+     "board": "pages-06-07-08_t2",
+     "utterance": "pages-06-07-08_t2.s6.u1",
+     "start_s": 522.859,
+     "start": "8:42"
+    },
+    {
+     "fact": "writing-content",
+     "text": "Content: what this reader needs to continue care, with nothing important missing and the case notes represented accurately (writing-facts 19).",
+     "note": null,
+     "section": "pages-09-10-11",
+     "board": "pages-09-10-11_t2",
+     "utterance": "pages-09-10-11_t2.s1.u1",
+     "start_s": 745.969,
+     "start": "12:25"
+    },
+    {
+     "fact": "writing-conciseness",
+     "text": "Conciseness and Clarity: only the information the reader needs, and the case summarised and presented clearly (writing-facts 20).",
+     "note": null,
+     "section": "pages-12-13-14",
+     "board": "pages-12-13-14_t1",
+     "utterance": "pages-12-13-14_t1.s2.u1",
+     "start_s": 960.492,
+     "start": "16:00"
+    },
+    {
+     "fact": "writing-body-counted",
+     "text": "Only the body of the letter, its paragraphs, is counted (writing-facts 16).",
+     "note": null,
+     "section": "pages-12-13-14",
+     "board": "pages-12-13-14_t1",
+     "utterance": "pages-12-13-14_t1.s5.u1",
+     "start_s": 992.564,
+     "start": "16:32"
+    },
+    {
+     "fact": "writing-word-guide",
+     "text": "180 to 200 words is a guide for the body, not a strict limit, with no automatic penalty (writing-facts 14).",
+     "note": null,
+     "section": "pages-12-13-14",
+     "board": "pages-12-13-14_t1",
+     "utterance": "pages-12-13-14_t1.s5.u1",
+     "start_s": 992.564,
+     "start": "16:32"
+    },
+    {
+     "fact": "writing-length-signals",
+     "text": "Much longer usually means something the reader does not need; much shorter usually means something important is missing (writing-facts 15).",
+     "note": null,
+     "section": "pages-12-13-14",
+     "board": "pages-12-13-14_t1",
+     "utterance": "pages-12-13-14_t1.s7.u1",
+     "start_s": 1008.104,
+     "start": "16:48"
+    },
+    {
+     "fact": "writing-style",
+     "text": "The style is clinical and factual, with polite language and no personal feelings (writing-facts 21).",
+     "note": null,
+     "section": "pages-15-16-17",
+     "board": "pages-15-16-17_t1",
+     "utterance": "pages-15-16-17_t1.s1.u3",
+     "start_s": 1267.535,
+     "start": "21:07"
+    },
+    {
+     "fact": "writing-abbreviations",
+     "text": "Abbreviate for the reader and do not overdo it; abbreviations better known than their full form, such as MRI, BMI, CT and ECG, can be used (writing-facts 21, 38).",
+     "note": null,
+     "section": "pages-15-16-17",
+     "board": "pages-15-16-17_t3",
+     "utterance": "pages-15-16-17_t3.s2.u1",
+     "start_s": 1468.438,
+     "start": "24:28"
+    },
+    {
+     "fact": "writing-address",
+     "text": "Copy the reader's name and address from the task (writing-facts 24).",
+     "note": null,
+     "section": "page-18",
+     "board": "page-18_t1",
+     "utterance": "page-18_t1.s3.u1",
+     "start_s": 1509.288,
+     "start": "25:09"
+    },
+    {
+     "fact": "writing-re-line",
+     "text": "The Re line gives the patient's full name and date of birth (writing-facts 26).",
+     "note": null,
+     "section": "page-18",
+     "board": "page-18_t1",
+     "utterance": "page-18_t1.s5.u1",
+     "start_s": 1525.628,
+     "start": "25:25"
+    },
+    {
+     "fact": "writing-organisation",
+     "text": "Organisation: one topic per paragraph, the most important information first; simply following the order of the case notes is a weakness (writing-facts 22, 40).",
+     "note": null,
+     "section": "page-18",
+     "board": "page-18_t1",
+     "utterance": "page-18_t1.s8.u2",
+     "start_s": 1553.968,
+     "start": "25:53"
+    },
+    {
+     "fact": "writing-sign-off",
+     "text": "Sign with a job title, not your own name (writing-facts 25).",
+     "note": "a job title, such as Doctor",
+     "section": "page-18",
+     "board": "page-18_t1",
+     "utterance": "page-18_t1.s11.u1",
+     "start_s": 1583.368,
+     "start": "26:23"
+    },
+    {
+     "fact": "writing-no-fixed-layout",
+     "text": "There is no one required layout for the letter (writing-facts 24).",
+     "note": null,
+     "section": "page-18",
+     "board": "page-18_t1",
+     "utterance": "page-18_t1.s12.u2",
+     "start_s": 1599.818,
+     "start": "26:39"
+    },
+    {
+     "fact": "writing-spelling",
+     "text": "Spelling does not need to be perfect for grade B (writing-facts 43).",
+     "note": null,
+     "section": "page-19",
+     "board": "page-19_t1",
+     "utterance": "page-19_t1.s8.u1",
+     "start_s": 1720.752,
+     "start": "28:40"
+    }
+   ],
+   "methods": [
+    {
+     "name": "Expanding the purpose (the teacher's method)",
+     "text": "Say briefly in the opening why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.",
+     "section": "pages-06-07-08",
+     "board": "pages-06-07-08_t2",
+     "utterance": "pages-06-07-08_t2.s4.u1",
+     "start_s": 493.379,
+     "start": "8:13"
+    },
+    {
+     "name": "Read the paper in this order",
+     "text": "The setting first, then the Writing Task, then the case notes line by line; ask who the reader is and what they will do.",
+     "section": "pages-09-10-11",
+     "board": "pages-09-10-11_t1",
+     "utterance": "pages-09-10-11_t1.s1.u3",
+     "start_s": 644.359,
+     "start": "10:44"
+    },
+    {
+     "name": "The teacher's word-count advice",
+     "text": "Ten or twelve words more or fewer do no harm; what matters is that the reader gets everything they need, nothing they do not, and less important points briefly.",
+     "section": "pages-12-13-14",
+     "board": "pages-12-13-14_t1",
+     "utterance": "pages-12-13-14_t1.s6.u1",
+     "start_s": 1001.394,
+     "start": "16:41"
+    },
+    {
+     "name": "Keep, keep briefly or leave out",
+     "text": "For each note, ask what this reader will do with it: lines that only look related are left out; lines that explain the problem are kept briefly.",
+     "section": "pages-12-13-14",
+     "board": "pages-12-13-14_t2",
+     "utterance": "pages-12-13-14_t2.s2.u3",
+     "start_s": 1065.441,
+     "start": "17:45"
+    },
+    {
+     "name": "The teacher's advice on style",
+     "text": "Never firstly, secondly or finally in the letter; fortunately or unfortunately at most once, and never about a patient's habits.",
+     "section": "pages-15-16-17",
+     "board": "pages-15-16-17_t2",
+     "utterance": "pages-15-16-17_t2.s3.u1",
+     "start_s": 1423.108,
+     "start": "23:43"
+    }
+   ],
+   "vocabulary": [
+    {
+     "word": "criteria",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "page-4",
+     "block": "page-4_k02",
+     "start_s": 98.064,
+     "start": "1:38"
+    },
+    {
+     "word": "withheld",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "pages-06-07-08",
+     "block": "pages-06-07-08_k05",
+     "start_s": 457.93,
+     "start": "7:37"
+    },
+    {
+     "word": "summarise",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "pages-12-13-14",
+     "block": "pages-12-13-14_k12",
+     "start_s": 1053.591,
+     "start": "17:33"
+    }
+   ],
+   "withheld": {
+    "listening_panel_words": 0,
+    "lines_naming_an_answer": 0
+   },
+   "practice_set": null,
+   "deck_exercises": [],
+   "links": {
+    "refers_to": [
+     {
+      "lesson": "writing-01-overview",
+      "section": null,
+      "from_section": "page-3",
+      "utterance": "page-3_t1.s1.u2",
+      "start_s": 5.1,
+      "start": "0:05"
+     },
+     {
+      "lesson": "grammar-08-paraphrasing",
+      "section": "page-8",
+      "from_section": "pages-12-13-14",
+      "utterance": "pages-12-13-14_t2.s8.u5",
+      "start_s": 1187.283,
+      "start": "19:47"
+     },
+     {
+      "lesson": "grammar-01-verb-tenses",
+      "section": "page-11",
+      "from_section": "pages-12-13-14",
+      "utterance": "pages-12-13-14_t3.s2.u2",
+      "start_s": 1236.745,
+      "start": "20:36"
+     },
+     {
+      "lesson": "grammar-07-punctuation",
+      "section": "added-08",
+      "from_section": "pages-15-16-17",
+      "utterance": "pages-15-16-17_t3.s2.u3",
+      "start_s": 1482.878,
+      "start": "24:42"
+     },
+     {
+      "lesson": "grammar-08-paraphrasing",
+      "section": "pages-09-10",
+      "from_section": "page-19",
+      "utterance": "page-19_t1.s5.u2",
+      "start_s": 1660.942,
+      "start": "27:40"
+     },
+     {
+      "lesson": "grammar-01-verb-tenses",
+      "section": null,
+      "from_section": "page-19",
+      "utterance": "page-19_t1.s6.u5",
+      "start_s": 1695.592,
+      "start": "28:15"
+     },
+     {
+      "lesson": "grammar-05-complex-compound",
+      "section": null,
+      "from_section": "page-19",
+      "utterance": "page-19_t1.s7.u2",
+      "start_s": 1711.452,
+      "start": "28:31"
+     },
+     {
+      "lesson": "grammar-07-punctuation",
+      "section": "page-5",
+      "from_section": "page-19",
+      "utterance": "page-19_t1.s9.u1",
+      "start_s": 1729.862,
+      "start": "28:49"
+     }
+    ],
     "referred_to_by": [],
     "continues_in": [],
     "continues_from": []
@@ -48753,6 +50574,32 @@
      "start_s": 566.746,
      "start": "9:26",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Abbreviations in the letter",
+   "key": "abbreviations in the letter",
+   "entries": [
+    {
+     "lesson": "writing-02-assessment-criteria",
+     "section": "pages-15-16-17",
+     "start_s": 1463.428,
+     "start": "24:23",
+     "source": "curated"
+    }
+   ]
+  },
+  {
+   "topic": "Accuracy to the case notes",
+   "key": "accuracy to the case notes",
+   "entries": [
+    {
+     "lesson": "writing-02-assessment-criteria",
+     "section": "pages-09-10-11",
+     "start_s": 843.572,
+     "start": "14:03",
+     "source": "curated"
     }
    ]
   },
@@ -49501,6 +51348,19 @@
    ]
   },
   {
+   "topic": "Conciseness and Clarity",
+   "key": "conciseness and clarity",
+   "entries": [
+    {
+     "lesson": "writing-02-assessment-criteria",
+     "section": "pages-12-13-14",
+     "start_s": 953.692,
+     "start": "15:53",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Conditional clause",
    "key": "conditional clause",
    "entries": [
@@ -49549,6 +51409,19 @@
      "start_s": 1320.646,
      "start": "22:00",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Content",
+   "key": "content",
+   "entries": [
+    {
+     "lesson": "writing-02-assessment-criteria",
+     "section": "pages-09-10-11",
+     "start_s": 631.249,
+     "start": "10:31",
+     "source": "section"
     }
    ]
   },
@@ -50205,6 +52078,19 @@
    ]
   },
   {
+   "topic": "Genre and Style",
+   "key": "genre and style",
+   "entries": [
+    {
+     "lesson": "writing-02-assessment-criteria",
+     "section": "pages-15-16-17",
+     "start_s": 1249.845,
+     "start": "20:49",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Gerund",
    "key": "gerund",
    "entries": [
@@ -50253,6 +52139,19 @@
      "start_s": 2633.245,
      "start": "43:53",
      "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Grade B in OET Writing",
+   "key": "grade b in oet writing",
+   "entries": [
+    {
+     "lesson": "writing-02-assessment-criteria",
+     "section": "page-5",
+     "start_s": 327.297,
+     "start": "5:27",
+     "source": "curated"
     }
    ]
   },
@@ -50447,6 +52346,19 @@
      "section": "page-5",
      "start_s": 370.081,
      "start": "6:10",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "How your letter is scored",
+   "key": "how your letter is scored",
+   "entries": [
+    {
+     "lesson": "writing-02-assessment-criteria",
+     "section": "page-5",
+     "start_s": 241.056,
+     "start": "4:01",
      "source": "section"
     }
    ]
@@ -50689,6 +52601,19 @@
      "start_s": 613.485,
      "start": "10:13",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Language",
+   "key": "language",
+   "entries": [
+    {
+     "lesson": "writing-02-assessment-criteria",
+     "section": "page-19",
+     "start_s": 1606.089,
+     "start": "26:46",
+     "source": "section"
     }
    ]
   },
@@ -51021,6 +52946,19 @@
      "section": "page-14",
      "start_s": 3173.303,
      "start": "52:53",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Organisation and Layout",
+   "key": "organisation and layout",
+   "entries": [
+    {
+     "lesson": "writing-02-assessment-criteria",
+     "section": "page-18",
+     "start_s": 1492.948,
+     "start": "24:52",
      "source": "section"
     }
    ]
@@ -51612,6 +53550,19 @@
      "section": "page-14",
      "start_s": 2112.804,
      "start": "35:12",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Purpose",
+   "key": "purpose",
+   "entries": [
+    {
+     "lesson": "writing-02-assessment-criteria",
+     "section": "pages-06-07-08",
+     "start_s": 357.237,
+     "start": "5:57",
      "source": "section"
     }
    ]
@@ -52402,6 +54353,19 @@
    ]
   },
   {
+   "topic": "Tense in the letter",
+   "key": "tense in the letter",
+   "entries": [
+    {
+     "lesson": "writing-02-assessment-criteria",
+     "section": "pages-12-13-14",
+     "start_s": 1230.255,
+     "start": "20:30",
+     "source": "curated"
+    }
+   ]
+  },
+  {
    "topic": "The -ing form",
    "key": "the -ing form",
    "entries": [
@@ -52566,6 +54530,32 @@
      "section": "page-4",
      "start_s": 89.66,
      "start": "1:29",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "The six assessment criteria",
+   "key": "the six assessment criteria",
+   "entries": [
+    {
+     "lesson": "writing-02-assessment-criteria",
+     "section": "page-4",
+     "start_s": 87.064,
+     "start": "1:27",
+     "source": "curated"
+    }
+   ]
+  },
+  {
+   "topic": "The six criteria",
+   "key": "the six criteria",
+   "entries": [
+    {
+     "lesson": "writing-02-assessment-criteria",
+     "section": "page-4",
+     "start_s": 84.764,
+     "start": "1:24",
      "source": "section"
     }
    ]
@@ -53210,21 +55200,21 @@
   }
  ],
  "totals": {
-  "lessons": 22,
-  "sections": 209,
-  "topics": 487,
-  "teaching_points": 3821,
-  "rules": 226,
-  "warnings": 61,
-  "terms": 470,
-  "wrong_examples": 270,
-  "facts": 123,
-  "methods": 30,
-  "vocabulary": 512,
+  "lessons": 23,
+  "sections": 219,
+  "topics": 506,
+  "teaching_points": 3942,
+  "rules": 239,
+  "warnings": 62,
+  "terms": 481,
+  "wrong_examples": 274,
+  "facts": 145,
+  "methods": 35,
+  "vocabulary": 515,
   "vocabulary_word_bank": 189,
   "practice_items": 62,
-  "references": 75,
-  "topic_index": 332,
+  "references": 83,
+  "topic_index": 345,
   "withheld_panel_words": 139,
   "withheld_answer_lines": 9
  }
