@@ -31,7 +31,7 @@ jobs:
       # at publish time (publish_lesson.py --package and --release stop without it).
       # The runner has no ffmpeg; man-db's trigger can hang an apt install for many minutes, so it
       # is switched off, with no recommended packages. The runner's Azure mirror crawled on
-      # 2026-10-23 (an install timed out), so apt uses the main archive.
+      # 2026-10-23 (an install timed out), so apt uses the main archive (newer runner images list the mirror in /etc/apt/apt-mirrors.txt, 2026-10-26).
       - name: ffmpeg
         timeout-minutes: 12
         env:
@@ -39,7 +39,7 @@ jobs:
         run: |
           command -v ffmpeg && exit 0
           sudo rm -f /var/lib/man-db/auto-update
-          sudo sed -i 's|http://azure.archive.ubuntu.com|http://archive.ubuntu.com|g' /etc/apt/sources.list.d/*.sources /etc/apt/sources.list 2>/dev/null || true
+          sudo sed -i 's|http://azure.archive.ubuntu.com|http://archive.ubuntu.com|g' /etc/apt/apt-mirrors.txt /etc/apt/sources.list.d/*.sources /etc/apt/sources.list 2>/dev/null || true
           sudo apt-get update -q
           sudo apt-get install -y -q --no-install-recommends ffmpeg
       - name: Pinned contracts
