@@ -9,7 +9,7 @@ in it (docs/00-PRODUCT.md §6a). It serves later: the website and its AI chat,
 which must know which topic is taught in which lesson and in which original
 session.
 
-**Format `oetbook-course-index`, version 1.0.**
+**Format `oetbook-course-index`, version 1.1.**
 
 ---
 
@@ -63,7 +63,7 @@ word-bank meanings, for the handouts project and the website. Its schema is
 
 | Field | Meaning |
 |---|---|
-| `format`, `format_version` | `"oetbook-course-index"`, `"1.0"` |
+| `format`, `format_version` | `"oetbook-course-index"`, `"1.1"` (1.1 adds `published`, 2026-10-26) |
 | `lessons` | every lesson folder, in id order (§3, `lessons[]`) |
 | `references` | every reference from one lesson to another, flattened (§3, `references[]`) |
 | `library` | the library inventory's recordings, each matched to its lesson folder where there is one (§5); empty when there is no inventory |
@@ -79,6 +79,7 @@ word-bank meanings, for the handouts project and the website. Its schema is
 | `type` | the lesson type, from the id's first word: `grammar`, `reading`, `listening`, `writing`, `speaking`, `vocabulary` |
 | `status` | `built` (a lesson bundle exists) or `not built` |
 | `final_gate` | `{by, on}` when the maintainer approved the finished lesson (`analysis/gates.json`), otherwise null |
+| `published` | the latest release to the site, `{package_version, tag, url, released_at, versions}` (`analysis/publish.json`, written by `publish_lesson.py --release`; ADR 039), otherwise null. The site's own import state (live, or held for the owner) is not recorded; the public index (ADR 038) does not carry this field (owner, 2026-10-26) |
 | `source` | the original session it came from: `recording` (path in the lesson folder), `duration_s`, `partial_hash` (the library inventory's hash of the file, so the two can be matched), `deck`, `deck_pages` |
 | `bundle` | built lessons: `{path, format_version, duration_s}` |
 | `categories` | as in the bundle's `lesson.categories` |

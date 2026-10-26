@@ -4,7 +4,7 @@ oetacademy-web ADR-0005, ADR-0034 §2 and Amendment 13, ENGINE-GAPS G1 to G7).
     .venv/Scripts/python spike/scripts/publish_lesson.py <L> --package
     .venv/Scripts/python spike/scripts/publish_lesson.py <L> --release --dry-run
     .venv/Scripts/python spike/scripts/publish_lesson.py <L> --release
-    .venv/Scripts/python spike/scripts/publish_lesson.py <L> --status
+    .venv/Scripts/python spike/scripts/publish_lesson.py <L> --status      (also: the tags and reasons)
     .venv/Scripts/python spike/scripts/publish_lesson.py <L> --approve-tags --by NAME
     .venv/Scripts/python spike/scripts/publish_lesson.py <L> --tags-page
 
@@ -25,7 +25,8 @@ oetacademy-web ADR-0005, ADR-0034 §2 and Amendment 13, ENGINE-GAPS G1 to G7).
 - images: the files a block names, keeping their names, in images/;
 - manifest.json (contracts 1.8.0 and later): lesson.approved {"by": "siavash", "on": the final gate's date};
   professions "all" and criteria [] everywhere; each section's `teaches` from
-  <library>/course/section-tags.json (proposed by the agent, approved by the owner once per course);
+  <library>/course/section-tags.json (proposed by the agent with the lesson, approved with its final
+  approval: ADR 039 amendment of 2026-10-26 (2));
   `taxonomy` its course's version (MANIFEST_TAXONOMY: Writing v3, every other course v2);
   terms and references restating the boards; retired sections carried and added (G5).
 
@@ -35,7 +36,7 @@ written. The same inputs give byte-identical files and zip.
 
 --release publishes the package built for the next version as a release of
 siamingit/oetacademy-sessions, tag <id>-v<n>, with exactly two assets (manifest.json and the zip),
-after checking it again, the owner's approval of the course's tags, and the repository's releases.
+after checking it again, the approval of the lesson's tags, and the repository's releases.
 It then checks the release on GitHub (its tag, published, and each asset's name, size and SHA-256
 equal to the local files) and only then records it in <L>/analysis/publish.json, the lesson's
 package versions and published section ids. --dry-run prints what it would create and changes nothing.
@@ -315,12 +316,12 @@ def manifest_taxonomy(lesson: str, contracts: lp.Contracts) -> dict:
 
 
 def lesson_tags(L: Path, bundle: dict, contracts: lp.Contracts) -> tuple[dict[str, list], dict | None]:
-    """{section id: teaches} from <library>/course/section-tags.json, and the course's approval.
-    The file names the tag list's taxonomy (the pinned list, all its keys); each lesson's keys must
+    """{section id: teaches} from <library>/course/section-tags.json, and the approval of the lesson's
+    tags. The file names the tag list's taxonomy (the pinned list, all its keys); each lesson's keys must
     also be keys of the version its course's manifests name."""
     p = tags_path(L)
     if not p.exists():
-        raise Refused(f"no section tags: {p} does not exist (propose them, the owner approves them once per course)")
+        raise Refused(f"no section tags: {p} does not exist (propose them with the lesson; they are approved with its final approval)")
     doc = read_json(p)
     if doc.get("taxonomy") != contracts.tag_taxonomy:
         raise Refused(f"{p} names taxonomy {doc.get('taxonomy')}, the pinned tag list {contracts.tag_taxonomy}")
@@ -338,8 +339,24 @@ def lesson_tags(L: Path, bundle: dict, contracts: lp.Contracts) -> tuple[dict[st
     if unknown:
         raise Refused(f"{p}: the tags of {L.name} use {unknown}, not keys of taxonomy v{tv}, the version the "
                       f"{course_of(L.name)} course's manifests name")
-    course = doc.get("courses", {}).get(course_of(L.name)) or {}
-    return tags, course.get("approved")
+    return tags, tags_approval(L, doc)
+
+
+def tags_approval(L: Path, doc: dict) -> dict | None:
+    """Who approved the lesson's tags: its own record (lessons.<id>.approved, written with its final
+    approval since the owner's decision of 2026-10-26), or else its course's approval, recorded once per
+    course until then, which covers only the lessons whose final gate came on or before it."""
+    own = (doc.get("lessons", {}).get(L.name) or {}).get("approved")
+    if own:
+        return own
+    course = (doc.get("courses", {}).get(course_of(L.name)) or {}).get("approved")
+    if not course:
+        return None
+    try:
+        final = final_gate(L)["on"]
+    except (Refused, FileNotFoundError):
+        return None
+    return course if final <= course["on"][:10] else None
 
 
 def retirements(L: Path, record: dict, current: list[str], version: int) -> list[dict]:
@@ -666,8 +683,8 @@ def release(L: Path, dry_run: bool, log=print) -> dict:
     tags, tags_approved = lesson_tags(L, bundle, contracts)
     blockers = []
     if not tags_approved:
-        blockers.append(f"the section tags of the {lesson.split('-')[0]} course are not approved by the owner "
-                        f"({tags_path(L)})")
+        blockers.append(f"the section tags of {lesson} are not approved: record it with its final approval "
+                        f"(--approve-tags; {tags_path(L)})")
     if any(s["teaches"] != tags[s["id"]] for s in manifest["sections"]):
         blockers.append("the package's tags are not the ones in the tags file: run --package again")
     with open(folder / "manifest.json", "rb") as a, zipfile.ZipFile(zpath) as z:
@@ -718,20 +735,28 @@ def release(L: Path, dry_run: bool, log=print) -> dict:
 
 
 def approve_tags(L: Path, by: str) -> None:
+    """Records the approval of one lesson's tags, made with its final approval (ADR 039 amendment of
+    2026-10-26 (2): the chat approves them on the owner's behalf). Only a lesson with its final gate
+    recorded and tags that are keys of its course's taxonomy; a recorded approval is never changed."""
     p = tags_path(L)
     doc = read_json(p)
-    course = L.name.split("-")[0]
-    entry = doc.setdefault("courses", {}).setdefault(course, {})
-    entry["approved"] = {"by": by, "on": datetime.date.today().isoformat()}
+    final_gate(L)
+    lesson_tags(L, read_json(L / "generated" / "lesson-player" / "bundle.json"), lp.load())
+    entry = doc["lessons"][L.name]
+    if entry.get("approved"):
+        raise Refused(f"the tags of {L.name} were approved already ({entry['approved']}); a recorded approval "
+                      f"is never changed")
+    entry["approved"] = {"by": by, "on": datetime.datetime.now().strftime("%Y-%m-%d %H:%M")}
     write_json(p, doc)
-    print(f"the {course} course's section tags approved by {by}")
+    print(f"the section tags of {L.name} approved by {by}")
 
 
 def tags_page(L: Path) -> Path:
-    """One page for the owner, course by course: each lesson's sections with the proposed tag in
-    plain words (its label in the taxonomy, the key beside it) and one short reason. The courses
-    waiting for approval come first; an approved course is folded away. Written beside the tags
-    file, outside git."""
+    """One page, course by course: each lesson's sections with its tag in plain words (its label in
+    the taxonomy, the key beside it), one short reason, and who approved the lesson's tags. Since the
+    owner's decision of 2026-10-26 the tags are approved with each lesson's final approval, and the
+    owner may look over a finished course here; that look is not a gate. A course approved as a whole
+    (until then) is folded away. Written beside the tags file, outside git."""
     import html as h
     p = tags_path(L)
     doc = read_json(p)
@@ -747,8 +772,9 @@ def tags_page(L: Path) -> Path:
     for name in order:
         course = doc.get("courses", {}).get(name) or {}
         n = sum(len(e["sections"]) for _, e in courses[name])
-        if not course.get("approved"):
-            waiting.append(f"{name.capitalize()} ({n} sections)")
+        for lesson, entry in courses[name]:
+            if not course.get("approved") and not entry.get("approved"):
+                waiting.append(lesson)
         tv = MANIFEST_TAXONOMY.get(name, MANIFEST_TAXONOMY_DEFAULT)
         nodes = c.taxonomies[tv]["nodes"]
         rows = []
@@ -765,7 +791,11 @@ def tags_page(L: Path) -> Path:
                 else:
                     tag = "<i>none (introduction)</i>"
                 why = h.escape(s.get("reason") or "") if s["teaches"] else ""
-                lcell = f'<td class="les" rowspan="{len(entry["sections"])}">{h.escape(title)}<span class="id">{lesson}</span></td>' if i == 0 else ""
+                own = entry.get("approved")
+                state = (f'<span class="id">tags approved by {h.escape(own["by"])}, {h.escape(own["on"])}</span>' if own
+                         else "" if course.get("approved") else '<span class="id warn">tags not yet approved</span>')
+                lcell = (f'<td class="les" rowspan="{len(entry["sections"])}">{h.escape(title)}<span class="id">{lesson}</span>'
+                         f'{state}</td>') if i == 0 else ""
                 rows.append(f'<tr>{lcell}<td>{h.escape(s["title"])}</td><td>{tag}</td><td class="why">{why}</td></tr>')
         table = ('<table><thead><tr><th>Lesson</th><th>Section</th><th>Proposed tag</th><th>Reason</th></tr></thead>'
                  f'<tbody>{chr(10).join(rows)}</tbody></table>')
@@ -776,9 +806,10 @@ def tags_page(L: Path) -> Path:
                          f'{course["approved"]["by"]} on {course["approved"]["on"]}, {n} sections</span></summary>'
                          f'{tax}{note}{table}</details>')
         else:
-            parts.append(f'<section><h2>{name.capitalize()}</h2> <span class="state wait">{n} sections waiting for '
-                         f'your approval</span>{tax}{note}{table}</section>')
-    ask = (f'Waiting for you: {", ".join(waiting)}. ' if waiting else "Nothing is waiting for you. ")
+            parts.append(f'<section><h2>{name.capitalize()}</h2> <span class="state">{n} sections, approved '
+                         f'lesson by lesson</span>{tax}{note}{table}</section>')
+    ask = (f'Not yet approved (each waits for its final approval): {", ".join(waiting)}. ' if waiting
+           else "Every lesson's tags here are approved. ")
     out = p.with_name("section-tags-review.html")
     out.write_text(f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -811,9 +842,9 @@ code.path {{ display:inline; }}
   border-bottom:1px solid var(--line); padding:6px 0; }} thead {{ display:none; }} td.les {{ width:auto; }} }}
 </style></head><body><main>
 <h1>Section tags for the site</h1>
-<p class="ask">You are approving what each section of a lesson teaches, as the site will list it. You approve each
-course once, for all its lessons: say "Grammar tags approved" in chat, or name the changes (lesson, section, tag).
-{h.escape(ask)}</p>
+<p class="ask">What each section of a lesson teaches, as the site lists it. The tags are proposed with each lesson
+and approved by the chat on your behalf with the lesson's final approval (your decision of 2026-10-26). You may look
+over a finished course here; it is not a gate: name any change in chat (lesson, section, tag). {h.escape(ask)}</p>
 <p>A section that clearly teaches one topic gets that topic; any other teaching section gets its skill (Grammar,
 Writing ...); an introduction gets none. Tags come from the site's list (contracts {c.version}, taxonomy
 v{c.tag_taxonomy['version']}). Data: <code class="path">{h.escape(str(p))}</code></p>
@@ -832,7 +863,12 @@ def status(L: Path) -> None:
     try:
         bundle = read_json(L / "generated" / "lesson-player" / "bundle.json")
         _, approved = lesson_tags(L, bundle, lp.load())
-        print(f"  tags: {'approved ' + json.dumps(approved) if approved else 'proposed, not approved'}")
+        print(f"  tags: {'approved ' + json.dumps(approved) if approved else 'proposed, not approved'}; "
+              f"keys checked against the pinned tag list and the course's taxonomy")
+        titles = {s["id"]: s["title"] for s in bundle["sections"]}
+        for s in read_json(tags_path(L))["lessons"][L.name]["sections"]:
+            print(f"  - {s['id']} ({titles.get(s['id'], s.get('title'))}): {', '.join(s['teaches']) or 'none'}"
+                  f" | {s.get('reason') or ''}")
     except Refused as e:
         print(f"  tags: {e}")
 
@@ -847,7 +883,7 @@ def main() -> None:
     mode.add_argument("--approve-tags", action="store_true")
     mode.add_argument("--tags-page", action="store_true", help="write the owner's review page of the tags")
     ap.add_argument("--dry-run", action="store_true", help="--release: print what it would create")
-    ap.add_argument("--by", help="--approve-tags: who approved")
+    ap.add_argument("--by", help="--approve-tags: who approved (\"chat (owner's delegation)\" with a final approval)")
     ap.add_argument("--workers", type=int)
     a = ap.parse_args()
     L = a.lesson.resolve()

@@ -33,7 +33,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paths                                                      # noqa: E402
 
-FORMAT_VERSION = "1.0"
+FORMAT_VERSION = "1.1"
 TYPES = ("grammar", "reading", "listening", "writing", "speaking", "vocabulary")
 
 
@@ -165,6 +165,18 @@ def built_lesson(L: Path, info: dict, entry: dict) -> None:
             "board_text": texts[sec["id"]]["board_text"]})
 
 
+def published_of(L: Path) -> dict | None:
+    """The lesson's latest release to the site (analysis/publish.json, written by publish_lesson.py
+    --release), or None. The site's own import state is not recorded here."""
+    rp = L / "analysis" / "publish.json"
+    releases = read(rp).get("releases") if rp.exists() else None
+    if not releases:
+        return None
+    last = releases[-1]
+    return {"package_version": last["package_version"], "tag": last["tag"], "url": last["url"],
+            "released_at": last["published_at"], "versions": [r["package_version"] for r in releases]}
+
+
 def lesson_entry(L: Path) -> dict:
     sp = L / "analysis" / "sections.json"
     info = read(sp) if sp.exists() else {}
@@ -175,7 +187,7 @@ def lesson_entry(L: Path) -> dict:
     entry = {"id": paths.lesson_id(L), "title": title, "short_title": short_title(title),
              "description": (info.get("lesson") or {}).get("description"),
              "type": first if first in TYPES else None,
-             "status": "not built", "final_gate": final, "source": source_of(L),
+             "status": "not built", "final_gate": final, "published": published_of(L), "source": source_of(L),
              "bundle": None, "categories": [], "sections": [], "referenced_by": []}
     if (L / "generated" / "lesson-player" / "bundle.json").exists():
         entry["status"] = "built"
@@ -274,7 +286,8 @@ def markdown(ix: dict) -> str:
            "|---|---|---|---|---|---|"]
     for e in ix["lessons"]:
         out.append(f"| {e['title'] or '(title not read yet)'} (`{e['id']}`) | {e['type'] or '?'} | "
-                   f"{e['status']}{', final gate approved' if e['final_gate'] else ''} | "
+                   f"{e['status']}{', final gate approved' if e['final_gate'] else ''}"
+                   f"{', published v' + str(e['published']['package_version']) if e.get('published') else ''} | "
                    f"{len(e['sections']) or ''} | "
                    f"{hms(e['bundle']['duration_s']) if e['bundle'] else ''} | "
                    f"{e['source']['recording'] or '?'}, {hms(e['source']['duration_s'])} |")
@@ -282,7 +295,10 @@ def markdown(ix: dict) -> str:
         out += ["", "---", "", f"## {e['title'] or e['id']}", "",
                 f"- Id: `{e['id']}`; type: {e['type'] or 'UNKNOWN'}; status: {e['status']}"
                 + (f"; final gate approved by {e['final_gate']['by']}, {e['final_gate']['on']}"
-                   if e["final_gate"] else "; final gate not approved"),
+                   if e["final_gate"] else "; final gate not approved")
+                + (f"; published to the site as `{e['published']['tag']}`, {e['published']['released_at'][:10]}"
+                   f" (package versions {', '.join(map(str, e['published']['versions']))})"
+                   if e.get("published") else "; not published"),
                 f"- Original recording: `{e['source']['recording']}`, "
                 f"{hms(e['source']['duration_s'])}; deck `{e['source']['deck']}`, "
                 f"{e['source']['deck_pages']} pages"]

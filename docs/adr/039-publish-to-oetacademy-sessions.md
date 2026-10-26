@@ -316,3 +316,58 @@ four packages of the amendment of 2026-10-25 (`reading-05-part-c-2-v2`, `listeni
   not "unchanged" against its release: it is published only when there is a reason to, as before.
 - The tests that name the pinned version name 1.10.0, and test the taxonomy per course.
 - To reverse: a new amendment pinning another release; the lock and this record change together.
+
+## Amendment — 2026-10-26 (2): section tags are approved with each lesson, not reviewed per course
+
+Status: **Accepted**: the owner's decision of 2026-10-26, given in chat in the brief "record and publish;
+new standing rule for tags". It replaces decision 4's "the owner approves them once per course" and answer 4
+of the amendment of 2026-10-23 where it says the same; the tags themselves (topic, else skill; an
+introduction none; keys from the pinned tag list and the course's taxonomy version) are unchanged.
+
+### Context
+
+Until now the owner reviewed each course's section tags on a page of their own
+(`<library>/course/section-tags-review.html`), and a release was refused until the course was approved.
+The owner approved Reading and Listening on 2026-10-23, and Grammar (74 sections), Vocabulary (31) and
+Writing (7) on 2026-10-26 at 08:40, as the page showed them; the twelve lessons were then published. A
+separate review step for every course is a step the owner no longer wants.
+
+### Decision (owner, 2026-10-26)
+
+1. **Section tags are no longer a separate owner review step.** For every new lesson the agent proposes the
+   section tags as part of building it, with a one-line reason for each, from its course's taxonomy version
+   (Writing v3, every other course v2), and checks them against the pinned contracts.
+2. **The tags and their reasons are listed in the agent's build report** for the lesson, so the chat checks
+   them in the same step as the rest of the report.
+3. **The chat approves the tags on the owner's behalf.** When the owner gives the lesson's final approval,
+   the tag approval is recorded at the same time (by: `chat (owner's delegation)`), and the lesson is
+   published with its tags.
+4. **The owner may look over a whole course's tags** once the course is finished; that look is not a gate.
+5. **Recorded approvals are not changed**: the course approvals of Reading, Listening (siavash, 2026-10-23),
+   Grammar, Vocabulary and Writing (siavash, 2026-10-26) stand as recorded.
+
+### How it is carried (agent, under the brief; ADR 005)
+
+- **Approval per lesson.** `section-tags.json` gains `lessons.<id>.approved` (`{"by", "on": "YYYY-MM-DD
+  HH:MM"}`), written by `publish_lesson.py <L> --approve-tags --by "chat (owner's delegation)"`, which now
+  records one lesson, refuses a lesson without its final gate recorded or with a key its course's taxonomy
+  lacks, and never changes an approval already recorded. It no longer writes a course's approval: under the
+  old command a new lesson's approval would have overwritten its course's recorded one.
+- **What a release accepts.** A lesson's own approval, or else its course's approval recorded before this
+  amendment, which covers only the lessons whose final gate came on or before that approval's date (the 22
+  lessons published by 2026-10-26). Without this, an approved course would have let a new lesson's tags
+  through unseen. A new lesson whose final gate is recorded on the very day of its course's approval would
+  still be covered by it (the course records hold a date only); the runbook has the agent record the
+  lesson's own approval in any case.
+- **The build report.** `publish_lesson.py <L> --status` prints each section's tag and reason, after checking
+  every key against the pinned tag list and the course's taxonomy version; the full contract check runs when
+  the package is built, after the final gate, as before.
+- **The review page** (`--tags-page`) shows who approved each lesson's tags and is described as an optional
+  look, not a request for approval.
+- docs/03-RUNBOOK.md step 18b and "After the final gate: publishing" say the same.
+
+### Consequences
+
+- No owner step stands between a lesson's final approval and its publication, other than the final approval
+  itself.
+- To reverse: a new amendment; the owner's decision.
