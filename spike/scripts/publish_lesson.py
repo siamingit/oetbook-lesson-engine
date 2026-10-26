@@ -26,6 +26,7 @@ oetacademy-web ADR-0005, ADR-0034 §2 and Amendment 13, ENGINE-GAPS G1 to G7).
 - manifest.json (contracts 1.8.0 and later): lesson.approved {"by": "siavash", "on": the final gate's date};
   professions "all" and criteria [] everywhere; each section's `teaches` from
   <library>/course/section-tags.json (proposed by the agent, approved by the owner once per course);
+  `taxonomy` its course's version (MANIFEST_TAXONOMY: Writing v3, every other course v2);
   terms and references restating the boards; retired sections carried and added (G5).
 
 The package is checked against the pinned contracts (lesson_package.py) and by the engine's own
@@ -76,6 +77,10 @@ LAG_WINDOW_S = 0.05
 ZIP_WARN = 700 * 1024 * 1024          # tell the owner (ADR-0034, requests, item 8)
 ZIP_LIMIT = 1024 * 1024 * 1024        # the site refuses a larger zip
 ZIP_DATE = (1980, 1, 1, 0, 0, 0)
+# The taxonomy version a course's manifests name (ADR 039 amendment of 2026-10-26): Writing v3, whose
+# Writing Language topic is new in v3; every other course v2, as its packages were published and approved.
+MANIFEST_TAXONOMY = {"writing": 3}
+MANIFEST_TAXONOMY_DEFAULT = 2
 
 
 class Refused(Exception):
@@ -300,8 +305,19 @@ def section_references(bundle: dict, section: dict) -> list[dict]:
             for r in u["refs"]]
 
 
+def course_of(lesson: str) -> str:
+    return lesson.split("-")[0]
+
+
+def manifest_taxonomy(lesson: str, contracts: lp.Contracts) -> dict:
+    """The `taxonomy` the lesson's manifest names: its course's version, from the pinned contracts."""
+    return contracts.taxonomy_ref(MANIFEST_TAXONOMY.get(course_of(lesson), MANIFEST_TAXONOMY_DEFAULT))
+
+
 def lesson_tags(L: Path, bundle: dict, contracts: lp.Contracts) -> tuple[dict[str, list], dict | None]:
-    """{section id: teaches} from <library>/course/section-tags.json, and the course's approval."""
+    """{section id: teaches} from <library>/course/section-tags.json, and the course's approval.
+    The file names the tag list's taxonomy (the pinned list, all its keys); each lesson's keys must
+    also be keys of the version its course's manifests name."""
     p = tags_path(L)
     if not p.exists():
         raise Refused(f"no section tags: {p} does not exist (propose them, the owner approves them once per course)")
@@ -316,7 +332,13 @@ def lesson_tags(L: Path, bundle: dict, contracts: lp.Contracts) -> tuple[dict[st
     if sorted(tags) != sorted(ids):
         raise Refused(f"{p}: the tags of {L.name} name sections {sorted(set(tags) ^ set(ids))} that the "
                       f"bundle does not have, or miss ones it has")
-    course = doc.get("courses", {}).get(L.name.split("-")[0]) or {}
+    tv = manifest_taxonomy(L.name, contracts)["version"]
+    keys = contracts.taxonomies[tv]["nodes"]
+    unknown = sorted({k for v in tags.values() for k in v if k not in keys})
+    if unknown:
+        raise Refused(f"{p}: the tags of {L.name} use {unknown}, not keys of taxonomy v{tv}, the version the "
+                      f"{course_of(L.name)} course's manifests name")
+    course = doc.get("courses", {}).get(course_of(L.name)) or {}
     return tags, course.get("approved")
 
 
@@ -572,7 +594,7 @@ def _assemble(L, player, bundle, contracts, stage, version, approved, tags, reti
     manifest = {
         "format": "oetacademy-lesson-package",
         "contracts_version": contracts.version,
-        "taxonomy": contracts.tag_taxonomy,
+        "taxonomy": manifest_taxonomy(pub["lesson"]["id"], contracts),
         "lesson": {"id": pub["lesson"]["id"], "package_version": version, "title": title,
                    "short_title": build_course_index.short_title(title),
                    "description": pub["lesson"].get("description"), "professions": "all",
@@ -721,9 +743,14 @@ def tags_page(L: Path) -> Path:
     order = sorted(courses, key=lambda k: (bool((doc.get("courses", {}).get(k) or {}).get("approved")),
                                            list(courses).index(k)))
     parts = []
+    waiting = []
     for name in order:
         course = doc.get("courses", {}).get(name) or {}
         n = sum(len(e["sections"]) for _, e in courses[name])
+        if not course.get("approved"):
+            waiting.append(f"{name.capitalize()} ({n} sections)")
+        tv = MANIFEST_TAXONOMY.get(name, MANIFEST_TAXONOMY_DEFAULT)
+        nodes = c.taxonomies[tv]["nodes"]
         rows = []
         for lesson, entry in courses[name]:
             title = lesson
@@ -732,7 +759,7 @@ def tags_page(L: Path) -> Path:
                 title = read_json(player)["lesson"]["title"]
             for i, s in enumerate(entry["sections"]):
                 if s["teaches"]:
-                    tag = "<br>".join(f'{h.escape(c.label(k) or "NOT A KEY")} <code>{k}</code>'
+                    tag = "<br>".join(f'{h.escape(nodes[k]["label"] if k in nodes else "NOT A KEY OF v" + str(tv))} <code>{k}</code>'
                                       + ("" if k in allowed else ' <span class="warn">not yet on the site&#x27;s list</span>')
                                       for k in s["teaches"])
                 else:
@@ -743,13 +770,15 @@ def tags_page(L: Path) -> Path:
         table = ('<table><thead><tr><th>Lesson</th><th>Section</th><th>Proposed tag</th><th>Reason</th></tr></thead>'
                  f'<tbody>{chr(10).join(rows)}</tbody></table>')
         note = f'<p class="note">{h.escape(course["note"])}</p>' if course.get("note") else ""
+        tax = f'<p>Its packages name taxonomy v{tv}.</p>'
         if course.get("approved"):
             parts.append(f'<details><summary><h2>{name.capitalize()}</h2> <span class="state">approved by '
                          f'{course["approved"]["by"]} on {course["approved"]["on"]}, {n} sections</span></summary>'
-                         f'{note}{table}</details>')
+                         f'{tax}{note}{table}</details>')
         else:
             parts.append(f'<section><h2>{name.capitalize()}</h2> <span class="state wait">{n} sections waiting for '
-                         f'your approval</span>{note}{table}</section>')
+                         f'your approval</span>{tax}{note}{table}</section>')
+    ask = (f'Waiting for you: {", ".join(waiting)}. ' if waiting else "Nothing is waiting for you. ")
     out = p.with_name("section-tags-review.html")
     out.write_text(f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -766,6 +795,7 @@ summary h2 {{ margin:18px 0 6px; }}
 summary {{ cursor:pointer; }}
 p {{ margin:4px 0 12px; color:var(--muted); }}
 p.note {{ color:var(--warn); }}
+p.ask {{ color:var(--fg); font-weight:600; border-left:4px solid var(--warn); padding:6px 12px; background:var(--band); }}
 table {{ border-collapse:collapse; width:100%; margin-top:6px; }}
 th, td {{ text-align:left; vertical-align:top; padding:7px 10px; border-bottom:1px solid var(--line); }}
 thead th {{ font-size:13px; color:var(--muted); font-weight:600; }}
@@ -774,16 +804,19 @@ td.les {{ background:var(--band); font-weight:600; width:22%; }}
 .state {{ margin-left:10px; font-size:14px; color:var(--muted); }}
 .state.wait {{ color:var(--warn); font-weight:600; }}
 code {{ color:var(--code); font:12px Consolas, monospace; display:block; }}
+code.path {{ display:inline; }}
 .warn {{ color:var(--warn); font-size:12px; }}
 .why {{ color:var(--muted); font-size:14px; }}
 @media (max-width:700px) {{ td, th {{ display:block; border:0; padding:3px 6px; }} tr {{ display:block;
   border-bottom:1px solid var(--line); padding:6px 0; }} thead {{ display:none; }} td.les {{ width:auto; }} }}
 </style></head><body><main>
 <h1>Section tags for the site</h1>
-<p>What each section teaches, as the site will list it. A section that clearly teaches one topic gets that topic;
-any other teaching section gets its skill (Grammar, Vocabulary ...); an introduction gets none. Tags come from the
-site's list (contracts {c.version}, taxonomy v{c.tag_taxonomy['version']}). To approve a course, say so in chat, or name
-the changes (lesson, section, tag). Data: <code>{h.escape(str(p))}</code>.</p>
+<p class="ask">You are approving what each section of a lesson teaches, as the site will list it. You approve each
+course once, for all its lessons: say "Grammar tags approved" in chat, or name the changes (lesson, section, tag).
+{h.escape(ask)}</p>
+<p>A section that clearly teaches one topic gets that topic; any other teaching section gets its skill (Grammar,
+Writing ...); an introduction gets none. Tags come from the site's list (contracts {c.version}, taxonomy
+v{c.tag_taxonomy['version']}). Data: <code class="path">{h.escape(str(p))}</code></p>
 {chr(10).join(parts)}
 </main></body></html>
 """, encoding="utf-8")

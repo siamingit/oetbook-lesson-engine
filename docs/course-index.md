@@ -7835,14 +7835,14 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | OET Writing: Overview | `writing-01-overview` | 19:05 | 7 | not yet |
+| 1 | OET Writing: Overview | `writing-01-overview` | 19:05 | 7 | 2026-10-26 00:07 (Siavash) |
 
 <a id="writing-01-overview"></a>
 
 ## 1. OET Writing: Overview
 
 - Lesson ID and folder: `writing-01-overview` (folder `writing-01-overview`); course writing, lesson 1; length 19:05; bundle format 1.21
-- Status: built, final gate not approved
+- Status: approved by Siavash, 2026-10-26 00:07
 - Description: Meet the OET Writing test: the one letter you write, the time you have, how it is scored, how to read the case notes and the task, and the parts of a good letter.
 - Original session: folder `source`: `source/video.mp4`, 26:24 long, partial hash `62ec09d19c942acf`; deck `source/slides.pdf`, 10 pages
   - Writing Session 1 of the Persian Writing course, «جلسه رایتینگ: مقدمه‌ای بر رایتینگ» (Writing: an introduction), the first of the recorded Writing sessions; its official OET sample is replaced by our sample oa-ws-med-0001 at oetacademy-exercises 5320d19 (ADR 040).
