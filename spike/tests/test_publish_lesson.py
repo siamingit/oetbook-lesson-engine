@@ -456,5 +456,51 @@ class TaxonomyPerCourse(unittest.TestCase):
             shutil.rmtree(L.parents[1])
 
 
+@needs_contracts
+class TagApproval(unittest.TestCase):
+    """ADR 039 amendment of 2026-10-26 (2): a lesson's tags are approved with its final approval, recorded
+    per lesson; a course approval recorded before then covers only lessons whose final gate came on or
+    before it, and a recorded approval is never changed."""
+
+    def setUp(self):
+        self.L = made_up_library()                       # final gate 2026-10-01 10:00
+        self.bundle = json.loads((self.L / "generated" / "lesson-player" / "bundle.json").read_text(encoding="utf-8"))
+        self.tags = {"page-1": [], "page-2": ["grammar.verb-tenses.present-perfect"]}
+
+    def tearDown(self):
+        shutil.rmtree(self.L.parents[1])
+
+    def approval(self):
+        return pub.lesson_tags(self.L, self.bundle, CONTRACTS)[1]
+
+    def test_a_course_approval_covers_only_lessons_approved_by_then(self):
+        on = {"by": "siavash", "on": "2026-10-01"}
+        write_tags(self.L, self.tags, approved=on)
+        self.assertEqual(self.approval(), on)
+        write_tags(self.L, self.tags, approved={"by": "siavash", "on": "2026-09-30"})
+        self.assertIsNone(self.approval())
+
+    def test_approved_per_lesson_once(self):
+        write_tags(self.L, self.tags, approved={"by": "siavash", "on": "2026-09-30"})
+        with mock.patch.object(pub.lp, "load", lambda: CONTRACTS):
+            pub.approve_tags(self.L, "chat (owner's delegation)")
+            with self.assertRaises(pub.Refused):
+                pub.approve_tags(self.L, "someone else")
+        doc = json.loads(pub.tags_path(self.L).read_text(encoding="utf-8"))
+        own = doc["lessons"][LESSON]["approved"]
+        self.assertEqual(own["by"], "chat (owner's delegation)")
+        self.assertRegex(own["on"], r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$")
+        self.assertEqual(doc["courses"]["grammar"]["approved"], {"by": "siavash", "on": "2026-09-30"})
+        self.assertEqual(self.approval(), own)
+
+    def test_not_before_the_final_approval(self):
+        write_tags(self.L, self.tags)
+        (self.L / "analysis" / "gates.json").write_text("{}", encoding="utf-8")
+        with mock.patch.object(pub.lp, "load", lambda: CONTRACTS), self.assertRaises(pub.Refused):
+            pub.approve_tags(self.L, "chat (owner's delegation)")
+        doc = json.loads(pub.tags_path(self.L).read_text(encoding="utf-8"))
+        self.assertNotIn("approved", doc["lessons"][LESSON])
+
+
 if __name__ == "__main__":
     unittest.main()
