@@ -53,7 +53,7 @@ HARNESS = r"""
 (function () { try {
   window.__lockWidth = __WIDTH__;
   const style = document.createElement("style");
-  style.textContent = "*{transition:none!important;animation:none!important}"
+  style.textContent = "*{transition:none!important;animation:none!important}.frame{--sc-motion:0}.frame .blk{transition:none!important}"
     + ".frame,.frame *{font-family:" + __FONT__ + "!important}";
   document.head.appendChild(style);
   fit();

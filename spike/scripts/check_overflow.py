@@ -16,7 +16,9 @@ block whose own content is clipped (it scrolls inside itself).
 
 It also fails a label drawn in capitals (docs/02-DESIGN-SYSTEM.md §6, §7c:
 labels are in sentence case): a label element whose computed style uppercases
-its text, or whose text has a word in capitals that is not an acronym.
+its text, or whose text has a word in capitals that is not an acronym. In a
+style C lesson (ADR 042) a table's column labels are drawn in capitals by
+design: only their words are checked.
 
 The harness is the player itself, as in check_layout.py: no screenshot is
 interpreted; every figure is geometry the browser reports.
@@ -56,7 +58,7 @@ HARNESS = r"""
   fit();
   camEl.classList.remove("glide");
   const style = document.createElement("style");
-  style.textContent = "*{transition:none!important;animation:none!important}";
+  style.textContent = "*{transition:none!important;animation:none!important}.frame{--sc-motion:0}.frame .blk{transition:none!important}";
   document.head.appendChild(style);
   const TOL = __TOL__, ACR = new Set(__ACR__), LABELS = __LABELS__;
   const body = camEl.parentElement;
@@ -125,7 +127,10 @@ HARNESS = r"""
           // label the lesson writes: a code in it ("RC-12") stays as released
           if (lab.closest(".doc")) continue;
           const tt = getComputedStyle(lab).textTransform;
-          const w = tt === "uppercase" ? "(text-transform: uppercase)" : capsWord(txt);
+          // style C (ADR 042): a table's column labels are drawn in letter-spaced
+          // capitals by design; their words are still checked in sentence case
+          const colLabel = typeof STYLE_C !== "undefined" && STYLE_C && lab.tagName === "TH";
+          const w = tt === "uppercase" && !colLabel ? "(text-transform: uppercase)" : capsWord(txt);
           if (w && !seenCaps.has(id + "|" + txt)) {
             seenCaps.add(id + "|" + txt);
             caps.push({ board: bd.id, block: id, t, label: txt, why: w });

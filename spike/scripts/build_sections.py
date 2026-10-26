@@ -521,6 +521,20 @@ def main() -> None:
         write(out_path, previous)
         print(f"lesson type: {v} ({by})")
         return
+    if "--style" in sys.argv:
+        # The lesson's look (ADR 042): "c", style C, the look of Writing 2 and of
+        # every lesson built after it; a lesson with no style keeps its look.
+        import style_c
+        if not previous:
+            raise SystemExit("run without --style first")
+        v = sys.argv[sys.argv.index("--style") + 1].lower()
+        if v not in style_c.STYLES:
+            raise SystemExit(f"--style {'|'.join(style_c.STYLES)}")
+        by = sys.argv[sys.argv.index("--by") + 1] if "--by" in sys.argv else "maintainer"
+        previous["lesson"].update(style=v, style_by=f"{by} {today}")
+        write(out_path, previous)
+        print(f"lesson style: {v} ({by})")
+        return
     if "--tense-lesson" in sys.argv:
         # A lesson about tenses (docs/02-DESIGN-SYSTEM.md §7c): only its boards
         # draw tense colours; in any other lesson tense labels are neutral.
@@ -702,6 +716,11 @@ def main() -> None:
                       **({k: previous["lesson"][k] for k in ("tense_lesson", "tense_lesson_by", "length_target_min",
                                     "length_target_source", "length_target_by")
                           if k in previous.get("lesson", {})}),
+                      # the lesson's look (ADR 042): kept; a config made now is in
+                      # style C, the look of every lesson built from 2026-10-26
+                      **({k: previous["lesson"][k] for k in ("style", "style_by") if k in previous["lesson"]}
+                         if previous.get("lesson") else {"style": "c",
+                                                         "style_by": f"default, ADR 042 {today}"}),
                       "description_status": previous.get("lesson", {}).get("description_status")},
            "contents_page": contents_page,
            **({"intro": previous["intro"]} if "intro" in previous else {}),

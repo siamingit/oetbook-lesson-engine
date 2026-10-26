@@ -300,6 +300,62 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
         if tuple(int(x) for x in bundle["format_version"].split(".")) < (1, 21):
             problems.append(f"{bd['id']}: fit in a bundle of format {bundle['format_version']}, before 1.21")
 
+    # 1.22 (ADR 042): style C. The lesson's style is one of the format's, only
+    # from 1.22; each state's effects name a block of its board, at times inside
+    # the state, in time order; a zoom names a row of the board's own table
+    style = (bundle.get("lesson") or {}).get("style")
+    v122 = tuple(int(x) for x in bundle["format_version"].split(".")) >= (1, 22)
+    if style is not None and (style != "c" or not v122):
+        problems.append(f"lesson.style {style!r}: not a style of format {bundle['format_version']}")
+    for bd in bundle["boards"]:
+        on_board = set(bd["fixed"]) | {w for s in bd["states"] for w in s["working"]}
+        for s in bd["states"]:
+            fx = s.get("effects")
+            if fx is None:
+                if style:
+                    problems.append(f"{s['id']}: no effects in a style C lesson")
+                continue
+            if not style:
+                problems.append(f"{s['id']}: effects in a lesson that is not in style C")
+            if [e["time"] for e in fx] != sorted(e["time"] for e in fx):
+                problems.append(f"{s['id']}: effects not in time order")
+            for e in fx:
+                if e.get("type") not in ("lift", "zoom") or e.get("block") not in on_board:
+                    problems.append(f"{s['id']}: effect {e!r} is not a lift or zoom of a block on its board")
+                    continue
+                if not (s["start"] - TOLERANCE_S <= e["time"] < e["until"] <= s["until"] + TOLERANCE_S):
+                    problems.append(f"{s['id']}: effect on {e['block']} at {e['time']}-{e['until']}s "
+                                    "is not inside its state")
+                if e["type"] == "zoom" and (e["block"] != bd.get("table")
+                                            or not 0 <= e.get("row", -1) < len(blocks[e["block"]]["rows"])):
+                    problems.append(f"{s['id']}: a zoom names {e['block']} row {e.get('row')}, "
+                                    "not a row of its board's table")
+    # style C's teal of "right" (#0f766e) is 1.8 from the adjective's word-class
+    # teal and 17.2 from the "up to now" tense teal (CIEDE2000; the design system
+    # asks 20): until the owner chooses other colours, a style C lesson draws
+    # neither (ADR 042, open item)
+    if style:
+        if (bundle.get("lesson") or {}).get("tense_colours"):
+            problems.append("a style C lesson with tense colours: their colours are not chosen yet (ADR 042)")
+        for bd in bundle["boards"]:
+            for w in bd.get("wordmarks") or []:
+                if w["cls"] in ("adjective", "adverb"):
+                    problems.append(f"{bd['id']}: an {w['cls']} word mark in a style C lesson: its colour is "
+                                    "too close to the teal of right; not chosen yet (ADR 042)")
+    # a short list fits on one board (ADR 042): the contents board's items are
+    # never cleared to make room; a style C lesson fails, an older one is warned
+    for bd in bundle["boards"]:
+        for s in bd["states"]:
+            for c in s.get("clears") or []:
+                hit = [i for i in c["blocks"] if blocks[i]["type"] == "contents_item"]
+                if hit:
+                    msg = (f"{s['id']}: contents items {hit} are cleared: the contents must fit on one "
+                           "board (ADR 042)")
+                    if style:
+                        problems.append(msg)
+                    else:
+                        print("WARN " + msg + "; a lesson built before style C keeps its board")
+
     erases = [e for e in bundle["events"] if e["type"] == "erase"]
     expected_erases = sum(1 for bd in bundle["boards"] for s in bd["states"] if s["erase"])
     if len(erases) != expected_erases:

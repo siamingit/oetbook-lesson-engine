@@ -10,6 +10,14 @@ identified the layout model as wrong.
 This document covers the teaching surface only. Product brand, name,
 domain and logo are not decided and **never appear on lesson screens**.
 
+**Two looks** (owner, 2026-10-26; docs/adr/042-style-c-and-motion.md). Writing 2 and every
+lesson built after it are drawn in **style C, "soft notebook"** (§1a) with its motion (§8g); a
+lesson is in style C when its `sections.json` says so (`lesson.style` "c"), and a lesson config
+made from 2026-10-26 on is written with it. The 22 lessons published before it keep the look
+they were built in, which the rest of this document describes where style C does not change it;
+restyling them is the owner's later decision. Where a rule below differs between the two, both
+are given.
+
 ---
 
 ## 1. The frame
@@ -23,12 +31,50 @@ domain and logo are not decided and **never appear on lesson screens**.
   an AI chat); they are the page's, not the lesson's, and never draw inside
   the frame. Clarified 2026-09-24 (docs/00-PRODUCT.md §1,
   docs/04-LESSON-BUNDLE.md).
-- Background: **white**.
+- Background: **the frame ground**: lilac `#f3f0fb` in style C (§1a); white in the lessons built
+  before it.
 - Mood: **clinical and precise, and visually rich**. Calm, uncluttered,
   never playful. Colour, badges, cards and timelines are used freely,
   and **colour always carries meaning**: nothing on a board is
   decoration. Revised 2026-09-23, approved against a mockup, to bring the
   boards closer to the instructor's original decks.
+
+### 1a. Style C, "soft notebook"
+
+The owner's choice of 2026-10-26 (issue #46; ADR 042), for the contents board and every teaching
+board of Writing 2 and every lesson after it. Warm and varied, like the handouts on the site, never
+playful. Pixel values are at a 720 px frame; the stylesheet sets them as shares of the frame (§4):
+16 px is 2.2% of its height, 20 px 2.8%, 24 px 3.3%, 44 px 6.1%. The values live in
+`spike/scripts/style_c.py` (`CSS`), appended to the lesson's own `blocks.css`.
+
+| Role | Value |
+|---|---|
+| Frame ground | `#f3f0fb`, soft lilac: the header band and the board |
+| Ink | `#1c1733`; muted `#4a4466` / `#6b6585`; faint `#a49fbc` |
+| Panels and cards | white `#ffffff`, radius 16 to 24 px (rows 16, cards 20, big panels 24), **no borders, no left-border cards** |
+| Marker highlight (key words) | `linear-gradient(transparent 55%, #ffd27a 55%)`: a band under the words; teal `#b8ece4` and blue `#c8dcfa` markers when a sentence has several parts that a table below names (not used yet: they need a mark of their own) |
+| Number badge | a 44 px rounded square (radius 12), a soft tint with its ink, in turn: teal `#d7f0ec`/`#0f766e`, red `#fde5e0`/`#b83b28`, violet `#ece6fb`/`#5b3fc4`, amber `#ffe9c7`/`#8a5300`, blue `#e2eefb`/`#1d5fb4`; the contents board's numbers, a cross or a tick on a sentence, a callout's sign |
+| Column labels | 14 px, bold, letter-spaced capitals; Wrong in `#b83b28`, Accurate or right in `#0f766e` (the label's words decide: `style_c.TONE_WORDS`), and that column's text in the same ink |
+| Wrong text | `#b83b28` on `#fde5e0`; struck through in `#b83b28` as it is named (§8g) |
+| Right text | `#0f766e` on `#d7f0ec` |
+| Gloss, "Meaning", "Word" | a dark card `#1c1733`, white text, an amber chip `#ffd27a` ("Word" on a gloss; the term itself on a definition pill) |
+| Small chips | `#ece6fb` / `#5b3fc4`, radius 10: a note's tag ("The criterion") |
+| Type | IBM Plex Sans (the site's font), 400 to 700: titles and badges 700, terms and labels 600 or 700, text 400 |
+| Shadow | only on the active element (a lifted row or block, §8g): `0 10px 30px rgba(91,63,196,0.18)`, with a lilac outline `#c9bdf5` |
+
+**Colour still carries meaning** (§5): teal = right or keep, red = wrong or leave out, amber = the
+key word or the request, blue = the problem, violet = a label. A cross or a tick still goes with
+every wrong or right sentence (colour is never the only signal). A callout's warning takes the red
+badge, a key rule the amber one.
+
+**What stays**: the 16:9 frame, its bands and margins; one board per topic, several per section; the
+section title alone in the header; the board style's kinds of content (§7c) and their flows; every
+size as a share of the frame, with its floors; nothing moves a word, every block fits, nothing over
+anything (§8a, §8b, §8d).
+
+**Open** (ADR 042): style C's teal of right is 1.8 (CIEDE2000) from the adjective's word-class teal
+and 17.2 from the tense teal of "up to now" (§7c asks 20). Until the owner chooses other colours, the
+structural check fails a style C lesson that draws an adjective or adverb word mark or tense colours.
 
 ### Vertical division
 
@@ -125,6 +171,13 @@ brought, so the main content does not change.
   never split** (§7, Tables; 2026-09-25): it stays whole on one board and
   is read with row focus and auto zoom. Grammar 1's split tense table was
   built before this rule and is kept as accepted.
+
+**A short list fits on one board** (owner, 2026-10-26; ADR 042). A list of up to about ten items,
+such as a lesson's contents (up to 12 parts), is on one board, in two columns if needed, and is never
+cleared to make room. In style C the contents board is two columns of white rows beside the board's
+picture. The screens stage (`build_lesson_boards.py`) fails a style C lesson with more than 12 parts
+(group its sections into categories); the structural check (`check_board_page.py`) fails a style C
+lesson whose contents items are cleared, and warns on a lesson built before.
 
 The audit fails a section with more boards than it has slides, unless each
 extra board is an exercise item or a declared split of oversized fixed
@@ -244,10 +297,14 @@ headers, never on error or answer rows, and **only in a tense lesson**
 
 ## 6. Typography
 
-- One sans-serif family throughout.
-- **Two weights only:** regular and medium. Never heavy.
+- One sans-serif family throughout. Style C: IBM Plex Sans, the site's own font (§1a); the
+  reference player embeds a pinned copy (`spike/fonts/ibm-plex-sans.lock.json`).
+- **Two weights only:** regular and medium. Never heavy. Style C: 400 to 700 (§1a).
 - **Sentence case** everywhere. Every block, and every side of a
   comparison, starts with a capital.
+- Style C: a table's column labels are letter-spaced capitals, drawn so by the stylesheet; their
+  words stay in sentence case in the data, and the overflow check checks the words only (ADR 042).
+  Every other label stays in sentence case.
 - Small labels are in sentence case, never in capitals (2026-09-25; §7c). A
   label written in capitals is put in sentence case when parsed (acronyms
   kept), the screens audit fails one that is not, and the overflow check fails
@@ -948,6 +1005,10 @@ Clean and re-authored. Never copies of the instructor's ink.
 A mark appears shortly **before** the word it belongs to, so the student
 sees it and then hears about it.
 
+**Style C** (ADR 042): a highlight is the marker band of §1a (`#ffd27a` under the lower 42% of the
+line), swept in from left to right over 0.3 s; a strike is `#b83b28`, drawn from left to right over
+0.25 s as the wrong phrase is named (§8g). The other marks keep their blue.
+
 ### The pointer follows reading
 
 When the narration reads aloud text that is on the board, the pointer
@@ -1007,6 +1068,9 @@ where it is until the board ends or its note is erased.
 - **Checked, not eyeballed**: `check_layout.py` drives the player to every
   moment at which a board changes and measures every word, at phone-landscape
   and laptop width; a word found at two positions on one board fails the build.
+- **Style C's lift and zoom are not moves** (ADR 042): a lift scales the whole element about its
+  centre and a zoom moves the camera; nothing reflows, re-wraps or changes size, and the element
+  settles back. The checks measure the board at rest (`--sc-motion: 0`).
 
 - **A block's text never changes structure while its board is shown**: every
   phrase a mark or a word colour will take is wrapped when the state is drawn,
@@ -1175,6 +1239,42 @@ ADR 026 (amendment of 2026-10-08); bundle 1.17, rule 38.
 - The narration says what each signal shows, and whose view a reported verb gives
   ("patients say", "some doctors argue") when it is not the writer's.
 
+### 8g. Motion and effects (style C)
+
+Decided by the owner on 2026-10-26 (issue #46; ADR 042): fade, zoom or enlarge, shrink and the like,
+so the learner sees where to look. **Every motion is short (150 to 400 ms), eased, never bouncy, tied
+to the narration's own times like a reveal, and switched off under `prefers-reduced-motion`.** A seek
+shows the correct state at once.
+
+| Effect | What it does | Driven by |
+|---|---|---|
+| Soft appear | a new block fades in and rises 1.2% of the frame (0.3 s) | its reveal; `blocks.css` |
+| Fade | on a table board, the rows other than the one being taught at half strength | the spotlight (rule 11); `blocks.css` |
+| Lift | the element being discussed grows a little (1.5% for a table row, 2% for a block), takes the shadow and the lilac outline, and settles back when the narration moves on (0.25 s) | a table row: the spotlight; a block: the state's `effects` (bundle 1.22, rule 54) |
+| Zoom | the view zooms onto a line of a document while the narration is on it, and back out (0.35 s), at the scale that sets the line at body size, never above 2.2, only as far as every note shown stays in view | the state's `effects` (rule 55) |
+| Strike drawn | a strike is drawn across the wrong phrase from left to right as it is named (0.25 s) | the strike's time (rule 53) |
+| Marker sweep | a highlight sweeps in from left to right (0.3 s) | the highlight's time (rule 53) |
+| Shrink | a note that goes, by an erase or a clear, fades and shrinks (0.25 s); a cleared note's room closes up instead of jumping | the erase and the clear (rule 53) |
+
+**Where each effect is used.** Where it helps the learner follow, not everywhere; the builder writes
+the effects with data (`style_c.effects`), deterministically:
+
+- **Every board**: soft appear for its notes; shrink for notes that go. A fixed block never moves.
+- **The contents board**: each item soft-appears and is **lifted while it is named**, from its reveal
+  until the next is named (the last until the end of what is said with it). At the end every item is
+  at rest.
+- **A table board** (case notes, a letter, a criteria table): the row being taught is **lifted**, the
+  others **faded**; at each row's end the whole table shows again (§7, Tables).
+- **A document set well under body size** (its text 2.8% or less, or a board shown whole): the
+  **zoom**, from a mark the narration draws on a line until it moves on to a note or its sentence
+  ends; a later mark takes the view on. Where the line is as wide as the board, or a note shown would
+  leave the view, the zoom is as small as it must be, or none.
+- **A board with two or more fixed sentences or cards** (two openings side by side, an opening and
+  its comparison): each is **lifted while the narration reads it**.
+- **Wrong phrases**: the **strike is drawn** as each is named. **Key words**: the **marker sweeps**
+  in.
+- Never: on a picture, on a gloss's parts (they are written in, as before), or two lifts at once.
+
 ## 9. Controls
 
 - Play/pause, progress bar, elapsed time. Nothing else inside the frame;
@@ -1196,9 +1296,10 @@ ADR 026 (amendment of 2026-10-08); bundle 1.17, rule 38.
 - Logo, product name, domain, any branding
 - A per-screen title. Titles belong to topics, not to units of space.
 - Decoration with no teaching purpose: gradients, shadows,
-  illustrations, photographs, background images
+  illustrations, photographs, background images. Style C's marker band and the shadow of the
+  active element (§1a) carry meaning: where to look
 - Colours other than the four content colours, the four family colours
-  and the board style's colours (§7c)
+  and the board style's colours (§7c), and in style C its own (§1a)
 - Type smaller than the stated proportions
 - Board shorthand. "One moment + since 2010 = clash" is a note to
   oneself, not prose an elementary student reads.
