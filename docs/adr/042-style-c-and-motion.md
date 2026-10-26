@@ -86,8 +86,8 @@ effects, and rebuild Writing 2 in it" (ADR 005); the owner may reverse any of it
      room closes up instead of jumping.
 5. **Bundle format 1.22**: `lesson.style` ("c") and each state's `effects` (`lift`, `zoom`), with rules
    53 to 55 (docs/04-LESSON-BUNDLE.md; docs/bundle-format-changelog.md §9b). A lesson is 1.22 only when
-   it is in style C. The text for the site is docs/integration/1.22-changelog-for-site.md and the
-   oetacademy-web issue it names.
+   it is in style C. The text for the site is docs/integration/1.22-changelog-for-site.md, sent as
+   siamingit/oetacademy-web issue #173 (label `from-lesson-engine`).
 6. **Checks.** The engine's measuring checks measure the board at rest (`--sc-motion: 0`, no
    transitions): a lift or a zoom moves no word in the layout. In style C a table's column labels are
    drawn in capitals by design; the overflow check checks their words only. The structural check checks
@@ -103,11 +103,14 @@ effects, and rebuild Writing 2 in it" (ADR 005); the owner may reverse any of it
 - Writing 2 is rebuilt in style C (format 1.22). No narration, no audio and no id changed; its
   contents are on one board.
 - **The site must change before Writing 2 can be published**: its contracts and player accept 1.21 at
-  most, and the effects with data, the marks' looks and the shrinking notes are its player's. Until it
-  releases contracts that accept 1.22 and the engine pins them (a new amendment of ADR 039), Writing 2 is
+  most, and the effects with data, the marks' looks and the shrinking notes are its player's. The request is
+  oetacademy-web issue #173. Until it releases contracts that accept 1.22 and the engine pins them (a new amendment of ADR 039), Writing 2 is
   not packaged. The static look and the spotlight's lift and fade need no site change.
 - The 22 published lessons are unchanged, proven by the render comparison before and after the change
-  (docs/03-RUNBOOK.md, "Changing shared code").
+  (docs/03-RUNBOOK.md, "Changing shared code"; `render_compare.py` snapshots `before-stylec` on the code
+  of main at 10ba5c5 and `after-stylec` on this change, 2026-10-26): **22 of 22 identical**, 662 data
+  files byte for byte (bundles, texts, stylesheets, timelines, fits) and 150,072 moments at the phone and
+  laptop frames drawn identically, with no board timing difference.
 - **Open, for the owner**: style C's teal of right (`#0f766e`) is 1.8 (CIEDE2000) from the word-class
   adjective teal `#1F7A73` and 17.2 from the tense teal of "up to now" (the design system asks 20). Until
   other colours are chosen, the structural check fails a style C lesson that draws an adjective or adverb

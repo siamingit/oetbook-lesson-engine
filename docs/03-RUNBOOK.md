@@ -590,7 +590,7 @@ depend on #37.
 
 **A style C lesson** (bundle 1.22, ADR 042) is packaged only once the site's contracts accept 1.22 and
 the engine pins them (a new amendment of ADR 039); until then `--package` refuses it on the contracts'
-format check, and the lesson waits, approved or not (oetacademy-web issue, ADR 042).
+format check, and the lesson waits, approved or not (oetacademy-web issue #173, ADR 042).
 
 **After the final gate: publishing** (ADR 039). An approved lesson is published
 as a package of the site's contract (oetacademy-web ADR-0034, ENGINE-GAPS G1 to
