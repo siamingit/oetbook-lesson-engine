@@ -330,18 +330,21 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
                                             or not 0 <= e.get("row", -1) < len(blocks[e["block"]]["rows"])):
                     problems.append(f"{s['id']}: a zoom names {e['block']} row {e.get('row')}, "
                                     "not a row of its board's table")
-    # style C's teal of "right" (#0f766e) is 1.8 from the adjective's word-class
-    # teal and 17.2 from the "up to now" tense teal (CIEDE2000; the design system
-    # asks 20): until the owner chooses other colours, a style C lesson draws
-    # neither (ADR 042, open item)
-    if style:
+    # style C's right is olive since the owner's review (ADR 042, amendment of
+    # 2026-10-26), 26.8 (CIEDE2000) from the adjective's word-class teal and 21.3
+    # or more from the tense teals. The teal of the criterion Conciseness and
+    # Clarity is 1.8 from the adjective teal and 17.2 from the "up to now" teal
+    # (the design system asks 20): a lesson that draws the criteria's colours
+    # draws neither
+    if style and any('data-crit="cc"' in (b.get("html") or "") for b in blocks.values()):
         if (bundle.get("lesson") or {}).get("tense_colours"):
-            problems.append("a style C lesson with tense colours: their colours are not chosen yet (ADR 042)")
+            problems.append("a style C lesson with the criteria's colours and tense colours: the teal of "
+                            "Conciseness and Clarity is too close to the tense teal (ADR 042)")
         for bd in bundle["boards"]:
             for w in bd.get("wordmarks") or []:
                 if w["cls"] in ("adjective", "adverb"):
-                    problems.append(f"{bd['id']}: an {w['cls']} word mark in a style C lesson: its colour is "
-                                    "too close to the teal of right; not chosen yet (ADR 042)")
+                    problems.append(f"{bd['id']}: an {w['cls']} word mark in a lesson with the criteria's "
+                                    "colours: the teal of Conciseness and Clarity is too close to it (ADR 042)")
     # a short list fits on one board (ADR 042): the contents board's items are
     # never cleared to make room; a style C lesson fails, an older one is warned
     for bd in bundle["boards"]:

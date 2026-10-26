@@ -726,21 +726,32 @@ These are the only rules. Every time and target they use is in the bundle.
 
 53. **Style C** (1.22): in a lesson whose `lesson.style` is `"c"`, the look is the lesson's
     `blocks.css`, keyed on the classes rules 4, 11 and 18 already set and on `fx-lift` (rule 54). The
-    renderer draws what it draws itself in style C's looks and motion (docs/02-DESIGN-SYSTEM.md §8g):
-    a `highlight` is a marker band, `#ffd27a`, under the lower 42% of each line box of its phrase
-    (`linear-gradient(transparent 58%, #ffd27a 58%)`, multiplied over the text), and a `strike` is
-    `#b83b28`; a `highlight` is drawn in from left to right over 0.3 s from its `time`, a `strike` over
+    renderer draws what it draws itself in style C's looks and motion (docs/02-DESIGN-SYSTEM.md §8g;
+    amended 2026-10-26 at the owner's review, ADR 042 amendment (2)):
+    a `highlight` is a marker band, `#ffe19c`, behind the lower 38% of each line box of its phrase
+    (`linear-gradient(transparent 62%, #ffe19c 62%)`, `mix-blend-mode: multiply`), and the multiply
+    must reach the words: nothing between the band and the frame makes a group of its own (a positioned
+    element with a z-index, an opacity under 1, a transform, a filter), so a letter stays as dark as it
+    is and only its ground takes the amber, never a band laid over the glyphs; a `strike` is
+    `#b42318`; a `highlight` is drawn in from left to right over 0.3 s from its `time`, a `strike` over
     0.25 s, line after line, the share drawn `(t - time) / duration` of the phrase's total width, from
     the lesson's clock (a seek shows them whole); from an erase's `time` the working blocks fade out and
     shrink to 96% over 0.25 s and then go; a block a clear names does the same, its height and the gap
     after it closing to nothing over those 0.25 s, so what follows it rises into its room instead of
     jumping; the camera glides over 0.35 s (rules 13 and 55). Under `prefers-reduced-motion` none of
     it moves: marks appear whole, blocks go at once. At rest the board is exactly as without the
-    motion, and no word moves inside its block (rule 19).
+    motion, and no word moves inside its block (rule 19). A style C block's `html` may carry a board
+    layout (docs/02-DESIGN-SYSTEM.md §7j): the classes `lay` and `lay-<layout>` (and `n2` or `n4`;
+    `crit` on a criterion's card, `num` on a step's number cell),
+    the attributes `data-crit`, `data-mono`, `data-mono-len`, `data-label`, `data-bin`, `data-yes`,
+    `data-l`, and empty `<i>` and `<span aria-hidden="true">` elements; they are for `blocks.css`
+    alone, hold no words (rule 8 counts none of them) and leave every hook of §4 as it is. The
+    renderer draws the `html` as given; it has nothing else to do for a layout.
 54. **A lift** (1.22): while a state is current and not erased, from an `effects` entry's `time` to
-    its `until`, a `lift` entry's `block` carries the class `fx-lift`; `blocks.css` draws it (style C:
-    the block scaled to 102% about its centre, the shadow, a lilac outline, over 0.25 s; under reduced
-    motion the outline and shadow only). The renderer only sets and clears the class.
+    its `until`, a `lift` entry's `block` carries the class `fx-lift`; `blocks.css` draws it (style C,
+    since the owner's review of 2026-10-26: a soft neutral shadow and a very small scale about its
+    centre, 1% for a block and 2% for a contents item, over 0.25 s, no outline; under reduced motion
+    the shadow only). The renderer only sets and clears the class.
 55. **A zoom** (1.22): while a state is current and not erased, and not under
     `prefers-reduced-motion`, from a `zoom` entry's `time` to its `until`, the view zooms onto the
     words `text` as they occur in the cell (`row`, `col`) of the board's table `block` (the whole cell
