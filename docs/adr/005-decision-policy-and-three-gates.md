@@ -103,3 +103,44 @@ fits the lesson's budget, the agent applies them without asking: briefs, state
 rewrites, overrides, and one QA pass on the changed states, each logged. It
 stops to ask only when a decision is genuinely the maintainer's (ADR 005's
 list above), or when the maintainer has set an explicit stop for that round.
+
+## Amendment, 2026-10-26: errata corrections approved by the chat on the owner's delegation
+
+Status: **Accepted**: the owner's delegation of 2026-10-26, given to the chat and passed in the brief
+"errata corrections for the eleven Grammar and Vocabulary lessons, published as package version 3".
+It adds one case to the final gate; nothing else in this record changes.
+
+### Context
+
+The handouts project reviewed the eleven Grammar and Vocabulary lessons and listed errors in them
+(oetacademy-handouts, `docs/plan/grammar-vocab-clinic.md`, section 8): wrong model sentences, a wrong
+medical fact, a wrong date, rules stated too absolutely. Correcting them changes what a learner reads
+and hears, so each lesson's final approval (ADR 005, the final gate) covers a lesson that no longer
+exists. The owner wants these corrections made with as little of his involvement as possible.
+
+### Decision (owner, 2026-10-26)
+
+1. **Errata corrections that change no teaching content, no section and no section id** are given their
+   final approval by **"chat (owner's delegation)"**: the agent records the final gate with
+   `build_lesson.py <L> --approve final --by "chat (owner's delegation, errata 2026-10-26)"` once the
+   lesson's checks pass, and the lesson's section tags with the same final approval
+   (`publish_lesson.py <L> --approve-tags`, ADR 039 amendment of 2026-10-26 (2)).
+2. **Anything else still goes to the owner**: a correction that would add teaching content, remove or
+   reorder a section, change a section id, or change a teaching choice he made (his rulings in the
+   decision logs, his own words, his teacher's-advice rules) is not made under this amendment; it is
+   listed for him.
+3. **The package manifest's `lesson.approved.by` stays `"siavash"`**, as the site's contract requires
+   (ADR 039 decision 3): the approval is made with his authority. `lesson.approved.on` is the new final
+   gate's date, as for any approval.
+4. **An earlier approval is never changed.** Before the new final gate is recorded, the approval it
+   replaces is kept in the same `analysis/gates.json` under `final_before_errata_2026_10_26`, its `by`
+   and `on` exactly as they were, with `superseded` (the date) and `why` (as `final_withdrawn` keeps
+   Reading 1's). The lesson's decision log keeps its record too, and the published v2 manifest keeps it.
+
+### Consequences
+
+- The eleven lessons are corrected, re-voiced where their words change, checked, approved under this
+  amendment and published as package version 3, which the site holds for acceptance (ADR 039).
+- The chat reads the agent's report (an issue in this repository, label `chat-review`) and accepts the
+  held versions on the site; the owner may review any change from the report's review page.
+- To reverse: a new amendment; the delegation is the owner's.

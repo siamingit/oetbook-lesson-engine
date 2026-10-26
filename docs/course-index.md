@@ -18,21 +18,21 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 118:52 | 14 | 2026-09-27 23:08 (siavash) |
-| 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 52:09 | 5 | 2026-09-27 23:08 (siavash) |
-| 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 52:22 | 7 | 2026-09-27 23:08 (siavash) |
-| 4 | Grammar for OET: Articles | `grammar-04-articles` | 59:31 | 9 | 2026-09-27 23:08 (siavash) |
-| 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 56:09 | 8 | 2026-09-27 23:08 (siavash) |
-| 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 50:53 | 6 | 2026-09-27 23:08 (siavash) |
-| 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 82:34 | 18 | 2026-09-29 20:47 (siavash) |
-| 8 | Grammar for OET: Paraphrasing | `grammar-08-paraphrasing` | 54:11 | 7 | 2026-10-01 08:06 (siavash) |
+| 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 118:56 | 14 | 2026-10-26 13:13 (chat (owner's delegation, errata 2026-10-26)) |
+| 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 52:20 | 5 | 2026-10-26 13:19 (chat (owner's delegation, errata 2026-10-26)) |
+| 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 52:33 | 7 | 2026-10-26 13:29 (chat (owner's delegation, errata 2026-10-26)) |
+| 4 | Grammar for OET: Articles | `grammar-04-articles` | 59:31 | 9 | 2026-10-26 13:29 (chat (owner's delegation, errata 2026-10-26)) |
+| 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 56:31 | 8 | 2026-10-26 13:40 (chat (owner's delegation, errata 2026-10-26)) |
+| 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 51:03 | 6 | 2026-10-26 13:40 (chat (owner's delegation, errata 2026-10-26)) |
+| 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 83:00 | 18 | 2026-10-26 13:40 (chat (owner's delegation, errata 2026-10-26)) |
+| 8 | Grammar for OET: Paraphrasing | `grammar-08-paraphrasing` | 54:16 | 7 | 2026-10-26 13:43 (chat (owner's delegation, errata 2026-10-26)) |
 
 <a id="grammar-01-verb-tenses"></a>
 
 ## 1. Grammar for OET: Verb Tenses
 
-- Lesson ID and folder: `grammar-01-verb-tenses` (folder `grammar-01-verb-tenses`); course grammar, lesson 1; length 118:52; bundle format 1.12
-- Status: approved by siavash, 2026-09-27 23:08
+- Lesson ID and folder: `grammar-01-verb-tenses` (folder `grammar-01-verb-tenses`); course grammar, lesson 1; length 118:56; bundle format 1.12
+- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:13
 - Description: Learn the verb tenses, when to use each one, and how to use them in your OET writing.
 - Original session: folder `source`: `source/video.mp4`, 125:10 long, partial hash `8fd03776aa09bf2b`; deck `source/slides.pdf`, 19 pages
   - The Grammar 1 (Verb Tenses) session, in its newer recording, made after the deck was corrected; an older recording exists and is not the source (docs/01-METHODOLOGY.md §1, §8).
@@ -304,7 +304,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 
 *Rules on the boards*
 
-- 52:37 By the time the patient is discharged tomorrow, all the cigarettes will already be smoked.
+- 52:37 By the time the patient is discharged tomorrow, they will have smoked all their cigarettes.
 
 *Terms*: The perfect forms (Form, 48:35); Had smoked (Form, 49:09); Has smoked (Form, 50:06); Will have smoked (Form, 51:40)
 
@@ -316,23 +316,23 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
   - 53:25 Show the two model sentences and name the tense
   - 53:55 Contrast what each marker tells the reader
   - 54:20 Draw the period that runs up to now
-  - 54:36 Fix the pair in one rule
+  - 54:35 Fix the pair in one rule
 - 54:46 **for with the simple past**
   - 54:46 Show 'for' in a simple past sentence
-  - 55:05 Show that the past period needs an end point, and gloss the phrase
+  - 55:04 Show that the past period needs an end point, and gloss the phrase
   - 55:21 Contrast the finished period with the period that reaches now
-  - 55:48 Draw the closed past period
+  - 55:47 Draw the closed past period
   - 56:06 State the rule that decides the tense
 - 56:20 **since, not from**
   - 56:20 Show the printed wrong example
   - 56:39 Give the correct sentence and the rule behind it
-  - 57:09 Warn about the common slip, without the first-language explanation
+  - 57:08 Warn about the common slip, without the first-language explanation
 - 57:27 **ago with the simple past**
   - 57:27 Show the model sentence with 'ago'
   - 57:40 Draw the point counted back from now
   - 57:50 State the tense rule for 'ago'
-- 58:05 **in and on with dates in the simple past**
-  - 58:05 Show the two dated sentences and name the tense
+- 58:04 **in and on with dates in the simple past**
+  - 58:04 Show the two dated sentences and name the tense
   - 58:35 Define the passive, met here for the first time
   - 58:50 Stop students reading the passive as a different tense
   - 59:02 Point forward to the choice of preposition
@@ -344,13 +344,13 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 
 *Rules on the boards*
 
-- 54:36 'For' gives the length of the period. 'Since' gives the point when it started.
+- 54:35 'For' gives the length of the period. 'Since' gives the point when it started.
 - 56:06 The end of the period decides the tense. A finished period takes the simple past. A period up to now takes the present perfect.
 - 57:50 Use the simple past with 'ago'.
 
 *Warnings (common mistakes)*
 
-- 57:09 Writing 'from 2010' with the present perfect is a mistake. Write 'since 2010'.
+- 57:08 Writing 'from 2010' with the present perfect is a mistake. Write 'since 2010'.
 - 59:49 Do not use 'at' with a year or a month. We say 'in 2004', not 'at 2004'.
 
 *Wrong sentences corrected*
@@ -369,7 +369,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
   - 61:55 Define the passive and name the tense under it
   - 62:15 Show the active form to prove the tense is simple past
   - 62:32 First repair: change the time marker
-  - 62:57 Second repair: keep 'since 2010' and change the verb
+  - 62:56 Second repair: keep 'since 2010' and change the verb
   - 63:08 Draw the two time references
   - 63:28 Reject 'The patient has diagnosed' on the grounds of who does the action
   - 63:37 Put the two voices side by side
@@ -381,15 +381,15 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
   - 65:17 Draw the open period
   - 65:27 Contrast a closed period with an open one
   - 66:02 Give the second accepted answer
-- 66:15 **An exact date and the verb 'undergo'**
-  - 66:15 Show sentence 3 and name the time marker
+- 66:14 **An exact date and the verb 'undergo'**
+  - 66:14 Show sentence 3 and name the time marker
   - 66:31 Teach 'undergo' and who does the operation
   - 66:52 Reject 'do' for an operation
   - 67:03 Give the corrected sentence and the rule behind it
   - 67:22 Draw the finished point in the past
 - 67:35 **'Have' as a state verb**
   - 67:35 Show sentence 4 and say what is already right
-  - 67:46 Locate the fault in the verb and define the term
+  - 67:45 Locate the fault in the verb and define the term
   - 68:01 Say what the continuous form is and what 'have' still does
   - 68:18 Qualify the rule: 'have' is stative only when it means possessing
   - 68:45 Give the corrected sentence for item 4
@@ -413,7 +413,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 - 61:32 The patient was diagnosed with hypothyroidism since 2010
 - 63:28 The patient has diagnosed.
 - 64:31 He is smoking 2 packs of cigarettes a day for the past 25 years.
-- 66:15 She has underwent triple coronary bypass surgery on 10/08/2014
+- 66:14 She has underwent triple coronary bypass surgery on 10/08/2014
 - 66:52 She has done triple coronary bypass.
 - 67:35 Paul has been having cystic fibrosis since birth
 
@@ -427,8 +427,8 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 - 71:39 **present simple row**
   - 71:39 Show the present simple row of the table
   - 71:58 Explain 'seldom' in English
-  - 72:06 Teach 'occasionally' and the preposition with 'occasion'
-  - 72:28 Clinical example with 'on some occasions'
+  - 72:05 Teach 'occasionally' and the preposition with 'occasion'
+  - 72:27 Clinical example with 'on some occasions'
   - 72:57 Show 'usually' in a clinical sentence
 - 73:15 **present continuous row**
   - 73:15 Show the present continuous row of the table
@@ -437,80 +437,80 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
   - 74:08 Draw the time reference of 'at the moment'
 - 74:27 **past simple row**
   - 74:27 Show the past simple row of the table
-  - 74:37 Define 'the other day'
+  - 74:36 Define 'the other day'
   - 74:43 State the tense choice
   - 74:53 Draw the finished past time
 - 75:12 **past continuous row**
   - 75:12 Show the past continuous row of the table
-  - 75:17 Say what these words do and what to take from them here
+  - 75:15 Say what these words do and what to take from them here
 - 75:34 **present perfect simple row**
   - 75:34 Show the present perfect simple row of the table
   - 75:43 Define 'so far'
   - 75:50 Draw the past-up-to-now time reference
-- 76:05 **present perfect continuous row**
-  - 76:05 Show the present perfect continuous row of the table
+- 76:06 **present perfect continuous row**
+  - 76:06 Show the present perfect continuous row of the table
   - 76:12 State what these words show
   - 76:22 Draw the duration up to now
-- 76:35 **past perfect simple row**
-  - 76:35 Show the past perfect simple row of the table
-  - 76:42 Make the once / when point clear
+- 76:36 **past perfect simple row**
+  - 76:36 Show the past perfect simple row of the table
+  - 76:43 Make the once / when point clear
 - 76:56 **past perfect continuous row and closing advice**
   - 76:56 Show the past perfect continuous row of the table
-  - 77:05 Show that for and since serve two tenses
+  - 77:06 Show that for and since serve two tenses
   - 77:28 Take the pressure off memorising the table
   - 77:35 Why signal words matter in writing
 
 *Rules on the boards*
 
 - 71:07 This is a tendency, not a rule. The word "always" does not force you to use the present simple.
-- 75:22 For now, learn them as signals for the past continuous.
+- 75:19 They are often signals for the past continuous, but the tense comes from the meaning, not from the time word.
 - 77:35 When you write a patient's history, put the time into your sentences. Then the reader can follow when each thing happened.
 
-*Terms*: Signal word (New term, 70:44); Seldom (Signal word, 71:58); Occasionally (Signal word, 72:06); The other day (Signal word, 74:37); So far (Signal word, 75:43)
+*Terms*: Signal word (New term, 70:44); Seldom (Signal word, 71:58); Occasionally (Signal word, 72:05); The other day (Signal word, 74:36); So far (Signal word, 75:43)
 
 #### 77:47 Active vs passive (`page-15`, deck)
 
 - 77:47 **what the active and the passive do**
   - 77:47 Set up the two forms and define the grammar term 'passive'
   - 78:27 First reason letters use the passive: no doer in the notes
-  - 78:57 Second reason: the writer does not repeat 'I'
-- 79:16 **the aspirin example, from active to passive**
-  - 79:16 Name the parts of the active sentence
-  - 79:37 Define 'active' and note that an object is not always needed
-  - 79:51 Show which part can move and which part stays with the verb
+  - 78:58 Second reason: the writer does not repeat 'I'
+- 79:17 **the aspirin example, from active to passive**
+  - 79:17 Name the parts of the active sentence
+  - 79:38 Define 'active' and note that an object is not always needed
+  - 79:52 Show which part can move and which part stays with the verb
   - 80:12 Build the passive in English by dropping the doer and fronting the object
-  - 80:29 State the rule for the change
+  - 80:30 State the rule for the change
 - 80:45 **two passive forms and where the focus falls**
   - 80:45 Show both passive forms and state that both are correct
-  - 80:57 Explain the focus difference in English, through the front position
-  - 81:14 Set up the context for choosing the form that fits
+  - 80:58 Explain the focus difference in English, through the front position
+  - 81:15 Set up the context for choosing the form that fits
   - 81:33 Choose the form whose focus matches the context
-- 81:54 **the form of the passive verb**
-  - 81:54 Give the form and define 'past participle'
+- 81:55 **the form of the passive verb**
+  - 81:55 Give the form and define 'past participle'
   - 82:28 Show that the tense does not change
-  - 82:55 Regular and irregular past participles
+  - 82:56 Regular and irregular past participles
   - 83:22 Warn against reading the participle -ed as a past tense -ed
   - 83:36 The be verb carries the tense: past
-  - 83:51 The be verb carries the tense: present
+  - 83:52 The be verb carries the tense: present
   - 84:02 The be verb carries the tense: future
 - 84:23 **row 1, took and was given**
   - 84:23 Show why 'take' cannot carry the passive meaning
   - 84:46 Give the passive with the new verb and name its parts
   - 84:59 Contrast the meaning of the active and the passive
-  - 85:23 Turn the sentence round so the focus is on the medicine
-- 85:35 **row 2, had arthritis and was diagnosed**
-  - 85:35 Show that 'have' cannot be made passive
+  - 85:24 Turn the sentence round so the focus is on the medicine
+- 85:36 **row 2, had arthritis and was diagnosed**
+  - 85:36 Show that 'have' cannot be made passive
   - 85:56 Change the verb and identify who diagnoses
   - 86:19 Give the passive with the patient first
   - 86:34 Give the form with the condition first
   - 86:44 Show where the word 'with' belongs
   - 87:11 Reassure about what the exam asks for
-- 87:22 **row 3, the appointment in the present simple**
-  - 87:22 Explain the present simple in a sentence about tomorrow
+- 87:23 **row 3, the appointment in the present simple**
+  - 87:23 Explain the present simple in a sentence about tomorrow
   - 87:45 Draw the time: the appointment exists now, the visit is tomorrow
   - 87:55 Show that the will-form is also correct and why we choose the present simple
-- 88:15 **row 3 passive, will be seen**
-  - 88:15 Explain why the passive here is future
+- 88:16 **row 3 passive, will be seen**
+  - 88:16 Explain why the passive here is future
   - 88:30 Name the participle and the doer
 - 88:43 **row 3, focus on the appointment and the verb schedule**
   - 88:43 Teach the verb 'schedule' in English
@@ -524,7 +524,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 
 *Rules on the boards*
 
-- 80:29 In the passive the object moves to the front. The doer is often left out; you can add it with 'by'. The verb changes form too.
+- 80:30 In the passive the object moves to the front. The doer is often left out; you can add it with 'by'. The verb changes form too.
 - 83:22 The -ed on a past participle is not the past tense -ed. In every passive the main verb is a past participle.
 - 90:08 Most sentences in a letter use the simple past or the present perfect.
 
@@ -532,7 +532,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 
 - 85:50 Arthritis was had by the patient.
 
-*Terms*: Passive (Grammar term, 78:15); Subject (Grammar term, 79:27); Object (Grammar term, 79:33); Active (Grammar term, 79:37); Be verb plus past participle (Form, 81:54); Past participle (Grammar term, 82:12); Schedule (New word, 88:50); Has been scheduled (Form, 89:24)
+*Terms*: Passive (Grammar term, 78:16); Subject (Grammar term, 79:28); Object (Grammar term, 79:33); Active (Grammar term, 79:38); Be verb plus past participle (Form, 81:55); Past participle (Grammar term, 82:12); Schedule (New word, 88:50); Has been scheduled (Form, 89:24)
 
 #### 90:23 Passive forms of the verb tenses (`page-16`, deck)
 
@@ -540,13 +540,13 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
   - 90:23 Set up the board: one sentence in the passive across all 12 tenses, grouped in four families of form
   - 90:41 Define the grammar term 'passive' the first time it appears
   - 91:10 Give the study priority for the whole table
-  - 91:22 Fix the priority as a rule to remember
-- 91:44 **the simple passive forms**
-  - 91:44 the three simple passive rows of the table
+  - 91:23 Fix the priority as a rule to remember
+- 91:45 **the simple passive forms**
+  - 91:45 the three simple passive rows of the table
   - 92:19 Define past participle, the part of the passive that never changes
-  - 92:37 State what actually changes between the three rows
+  - 92:38 State what actually changes between the three rows
   - 92:53 Note the plural subject change
-  - 93:10 Replace the first-language glosses with an English time reference for the three forms
+  - 93:11 Replace the first-language glosses with an English time reference for the three forms
 - 93:33 **the continuous passive forms**
   - 93:33 the two continuous passive rows
   - 93:53 State how the continuous passive is built
@@ -555,22 +555,22 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
   - 94:26 the two useful perfect passive rows
   - 94:47 State how the perfect passive is built
   - 94:58 Mark these two forms as worth learning
-  - 95:06 Set the future perfect passive aside
+  - 95:07 Set the future perfect passive aside
 - 95:22 **the passive forms we do not use**
   - 95:22 the rejected rows of the table
-  - 95:43 Explain in English why these forms are rejected (replaces the first-language argument)
+  - 95:44 Explain in English why these forms are rejected (replaces the first-language argument)
   - 95:55 Close the point with the rule to remember
-- 96:07 **the priority list from the table**
-  - 96:07 the five priority forms of the table
+- 96:08 **the priority list from the table**
+  - 96:08 the five priority forms of the table
   - 96:29 State why the simple forms come first
-  - 96:37 Say where the future form is needed
-  - 96:53 Close with the study rule for the whole table
+  - 96:38 Say where the future form is needed
+  - 96:52 Close with the study rule for the whole table
 
 *Rules on the boards*
 
-- 91:22 Learn the simple forms well.
+- 91:23 Learn the simple forms well.
 - 95:55 You do not need these forms. Learn the simple and perfect passives instead.
-- 96:53 Practise these five forms until you can use them easily.
+- 96:52 Practise these five forms until you can use them easily.
 
 *Wrong sentences corrected*
 
@@ -580,129 +580,129 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 
 *Terms*: Passive (Grammar term, 90:41); Past participle (Grammar term, 92:19)
 
-#### 97:10 Passive vs active form: error correction (`page-17`, deck)
+#### 97:09 Passive vs active form: error correction (`page-17`, deck)
 
-- 97:10 **Introduction: the four sentences**
-  - 97:10 Set the task and show the whole set of faulty sentences
-  - 97:50 Say what to take from the set
-  - 98:02 State the page topic with the deck's title typo corrected
-- 98:24 **Item 1: Mylanta prescribed**
-  - 98:27 Show that the first part of the sentence is already correct
-  - 98:54 Show that the date sits in past time, so the simple past fits
-  - 99:07 Teach the verb 'administer' and its pattern
-  - 99:25 Contrast active and passive with the same verb
-  - 99:56 Define the grammar term 'passive'
-  - 100:08 Locate the fault in the second part
-  - 100:34 Give the corrected sentence and say what the passive changes
-- 101:10 **Item 2: was presented**
-  - 101:10 Keep the faulty sentence on the board
-  - 101:29 Test the form by asking who does the action, and give the answer
-  - 101:53 Give the model sentence for a writing task
-  - 102:13 Teach 'attend' as a second verb with the correct pattern
-  - 102:22 State the decision test
-  - 102:34 Show that the same action can be written in both forms
-  - 102:58 Give the rule for choosing the passive
-- 103:17 **Item 3: a liver scan**
-  - 103:17 Keep the faulty sentence on the board and teach 'confirm'
-  - 103:41 Give the corrected sentence and say why it is active
-  - 103:55 Teach 'reveal' as a second verb for findings
-  - 104:11 Give a second example with a test as the subject
-- 104:29 **Item 4: admitted to hospital**
-  - 104:29 Keep the faulty sentence on the board and teach 'admit'
-  - 104:42 Explain what the printed sentence says
-  - 104:51 Give the corrected sentence
-  - 105:08 Show that the active is also correct, and why we choose the passive
-  - 105:34 Close with the contrast between the two verbs and the rule
+- 97:09 **Introduction: the four sentences**
+  - 97:09 Set the task and show the whole set of faulty sentences
+  - 97:49 Say what to take from the set
+  - 98:01 State the page topic with the deck's title typo corrected
+- 98:23 **Item 1: Mylanta prescribed**
+  - 98:26 Show that the first part of the sentence is already correct
+  - 98:53 Show that the date sits in past time, so the simple past fits
+  - 99:06 Teach the verb 'administer' and its pattern
+  - 99:24 Contrast active and passive with the same verb
+  - 99:55 Define the grammar term 'passive'
+  - 100:07 Locate the fault in the second part
+  - 100:33 Give the corrected sentence and say what the passive changes
+- 101:09 **Item 2: was presented**
+  - 101:09 Keep the faulty sentence on the board
+  - 101:28 Test the form by asking who does the action, and give the answer
+  - 101:52 Give the model sentence for a writing task
+  - 102:12 Teach 'attend' as a second verb with the correct pattern
+  - 102:21 State the decision test
+  - 102:33 Show that the same action can be written in both forms
+  - 102:57 Give the rule for choosing the passive
+- 103:16 **Item 3: a liver scan**
+  - 103:16 Keep the faulty sentence on the board and teach 'confirm'
+  - 103:40 Give the corrected sentence and say why it is active
+  - 103:54 Teach 'reveal' as a second verb for findings
+  - 104:10 Give a second example with a test as the subject
+- 104:28 **Item 4: admitted to hospital**
+  - 104:28 Keep the faulty sentence on the board and teach 'admit'
+  - 104:40 Explain what the printed sentence says
+  - 104:49 Give the corrected sentence
+  - 105:07 Show that the active is also correct, and why we choose the passive
+  - 105:32 Close with the contrast between the two verbs and the rule
 
 *Rules on the boards*
 
-- 102:58 We choose the passive when the doer is not known, or is obvious, or is not the point.
-- 105:50 Look at the meaning of the verb and its subject. That shows you which form to use.
+- 102:57 We choose the passive when the doer is not known, or is obvious, or is not the point.
+- 105:49 Look at the meaning of the verb and its subject. That shows you which form to use.
 
 *Wrong sentences corrected*
 
-- 97:10 The patient had the flu vaccination on 16/05/2014 and an antacid prescribed
-- 97:10 The patient was presented to hospital on 12/03/2016
-- 97:10 A liver scan was confirmed a 10 cm liver abscess
-- 97:10 The patient admitted to hospital yesterday
-- 100:17 And an antacid prescribed
-- 101:10 The patient was presented to hospital on 12/03/2016
-- 103:17 A liver scan was confirmed a 10 cm liver abscess
-- 104:29 The patient admitted to hospital yesterday
+- 97:09 The patient had the flu vaccination on 16/05/2014 and an antacid prescribed
+- 97:09 The patient was presented to hospital on 12/03/2016
+- 97:09 A liver scan was confirmed a 10 cm liver abscess
+- 97:09 The patient admitted to hospital yesterday
+- 100:16 And an antacid prescribed
+- 101:09 The patient was presented to hospital on 12/03/2016
+- 103:16 A liver scan was confirmed a 10 cm liver abscess
+- 104:28 The patient admitted to hospital yesterday
 
-*Terms*: Administer (New word, 99:07); Passive (Grammar term, 99:56); Present (New word, 101:23); Confirm (New word, 103:29); Reveal (New word, 103:55); Admit (New word, 104:38)
+*Terms*: Administer (New word, 99:06); Passive (Grammar term, 99:55); Present (New word, 101:22); Confirm (New word, 103:28); Reveal (New word, 103:54); Admit (New word, 104:36)
 
-#### 106:03 Case notes: error correction (`page-18`, deck)
+#### 106:02 Case notes: error correction (`page-18`, deck)
 
-- 106:03 **Case notes: the four items to correct**
-  - 106:03 Set the task and show the whole set of exercise sentences
-  - 106:13 Define case notes
-  - 106:31 Contrast a note with a full sentence
-  - 106:57 State what paraphrasing a case note means
-- 107:26 **Item 1: diagnosed with COPD since 2002**
-  - 107:26 Fix the sentence under discussion on the board, with tense tags
-  - 107:34 Teach the opening phrase for the medical history paragraph
-  - 107:46 Define the grammar term 'passive' at first appearance
-  - 107:58 Name the form and the time marker in the faulty sentence
-  - 108:27 Show in English why the diagnosis cannot run from 2002 until now
-  - 108:53 Draw the moment of diagnosis against the lasting condition
-  - 109:15 First correct answer: simple past passive with a point in time
-  - 110:03 Second correct answer: change the verb and keep 'since'
-  - 110:24 Name the two perfect forms correctly
-  - 110:50 Teach the pattern 'suffer from'
-  - 110:59 Generalise the rule about one-moment verbs
-- 111:25 **Item 2: poor appetite and 5 kg weight loss**
-  - 111:25 Fix the sentence under discussion on the board, with tense tags
+- 106:02 **Case notes: the four items to correct**
+  - 106:02 Set the task and show the whole set of exercise sentences
+  - 106:11 Define case notes
+  - 106:29 Contrast a note with a full sentence
+  - 106:56 State what paraphrasing a case note means
+- 107:25 **Item 1: diagnosed with COPD since 2002**
+  - 107:25 Fix the sentence under discussion on the board, with tense tags
+  - 107:32 Teach the opening phrase for the medical history paragraph
+  - 107:45 Define the grammar term 'passive' at first appearance
+  - 107:57 Name the form and the time marker in the faulty sentence
+  - 108:25 Show in English why the diagnosis cannot run from 2002 until now
+  - 108:52 Draw the moment of diagnosis against the lasting condition
+  - 109:14 First correct answer: simple past passive with a point in time
+  - 110:01 Second correct answer: change the verb and keep 'since'
+  - 110:23 Name the two perfect forms correctly
+  - 110:49 Teach the pattern 'suffer from'
+  - 110:58 Generalise the rule about one-moment verbs
+- 111:24 **Item 2: poor appetite and 5 kg weight loss**
+  - 111:24 Fix the sentence under discussion on the board, with tense tags
   - 111:31 Gloss the clinical phrase
-  - 111:42 Explain the two-clause structure and the dropped subject
+  - 111:41 Explain the two-clause structure and the dropped subject
   - 112:11 Name the second verb form and check the voice
-  - 112:33 Show in English that the meaning is wrong
+  - 112:32 Show in English that the meaning is wrong
   - 112:57 First correct answer
-  - 113:16 Second correct answer
-  - 113:32 Show when the continuous form is correct
-  - 113:42 Draw the finished loss against the continuing loss
-  - 114:01 Close item 2
+  - 113:15 Second correct answer
+  - 113:31 Show when the continuous form is correct
+  - 113:41 Draw the finished loss against the continuing loss
+  - 114:00 Close item 2
 - 114:16 **Item 3: the seizure and hyperventilation**
   - 114:16 Fix the sentence under discussion on the board, with the tense clash tagged
   - 114:25 Explain the question mark in the notes
-  - 114:36 Gloss the two key words
-  - 115:08 Model active and passive with a simple example
-  - 115:26 Show that the tense of a passive sentence sits in the 'be' verb
-  - 115:49 Analyse the subject and the agent in item 3
-  - 116:03 Name the fault
-  - 116:22 Give the correct answer
-  - 116:35 Name the form correctly
+  - 114:35 Gloss the two key words
+  - 115:07 Model active and passive with a simple example
+  - 115:25 Show that the tense of a passive sentence sits in the 'be' verb
+  - 115:48 Analyse the subject and the agent in item 3
+  - 116:02 Name the fault
+  - 116:21 Give the correct answer
+  - 116:34 Name the form correctly
   - 116:48 Explain why the verb after a modal has no ending
-- 117:10 **Item 4: the dated physiotherapy visit**
-  - 117:10 Fix the sentence under discussion on the board, with the tense clash tagged
+- 117:09 **Item 4: the dated physiotherapy visit**
+  - 117:09 Fix the sentence under discussion on the board, with the tense clash tagged
   - 117:20 Give the rule about dates in case notes
-  - 117:28 Gloss the abbreviation in the note
-  - 117:39 Show the simple subject-verb structure
-  - 117:52 Show why the verb must be passive
-  - 118:04 Correct the first clause
-  - 118:27 Correct the second clause
-  - 118:36 Keep both verbs in the same time
+  - 117:33 Gloss the abbreviation in the note
+  - 117:43 Show the simple subject-verb structure
+  - 117:57 Show why the verb must be passive
+  - 118:09 Correct the first clause
+  - 118:31 Correct the second clause
+  - 118:41 Keep both verbs in the same time
 
 *Rules on the boards*
 
-- 106:57 In the letter you cannot write in note form. Add a verb, choose the right tense, and add a subject where you need one.
-- 110:59 Verbs like 'diagnose' happen at one time and finish. Use the simple past with them.
-- 117:20 When you see a date in case notes, you are writing about the past. Use a past tense.
-- 118:36 Both parts of the sentence talk about the same past date, so both verbs are in the past.
+- 106:56 In the letter you cannot write in note form. Add a verb, choose the right tense, and add a subject where you need one.
+- 110:58 Verbs like 'diagnose' happen at one time and finish. Use the simple past with them.
+- 117:20 A date that marks one finished time, like this one, takes a past tense. With 'since' and a date, use the present perfect.
+- 118:41 Both parts of the sentence talk about the same past date, so both verbs are in the past.
 
 *Wrong sentences corrected*
 
-- 106:03 Regarding her medical history, she has been diagnosed with COPD since 2002.
-- 106:03 She also has a poor appetite and has been losing 5kg after the operation.
-- 106:03 Noah had an episode of petit mal epileptic seizure, which may be triggered by hyperventilation during the dental procedure.
-- 106:03 On 20/06/2015, her trunk joint range of motion reduced and the range is similar to the first visit.
-- 107:26 Regarding her medical history, she has been diagnosed with COPD since 2002.
-- 111:25 She also has a poor appetite and has been losing 5kg after the operation.
+- 106:02 Regarding her medical history, she has been diagnosed with COPD since 2002.
+- 106:02 She also has a poor appetite and has been losing 5kg after the operation.
+- 106:02 Noah had an episode of petit mal epileptic seizure, which may be triggered by hyperventilation during the dental procedure.
+- 106:02 On 20/06/2015, her trunk joint range of motion reduced and the range is similar to the first visit.
+- 107:25 Regarding her medical history, she has been diagnosed with COPD since 2002.
+- 111:24 She also has a poor appetite and has been losing 5kg after the operation.
 - 114:16 Noah had an episode of petit mal epileptic seizure, which may be triggered by hyperventilation during the dental procedure.
 - 116:48 May is triggered
-- 117:10 On 20/06/2015, her trunk joint range of motion reduced and the range is similar to the first visit.
+- 117:09 On 20/06/2015, her trunk joint range of motion reduced and the range is similar to the first visit.
 
-*Terms*: Case notes (New term, 106:13); Regarding her medical history, ... (Useful phrase, 107:34); Passive (Grammar term, 107:46); Suffer from (Pattern, 110:50); Poor appetite (New words, 111:31); Compound sentence (Grammar term, 111:42); Trigger (New word, 114:36); Hyperventilation (New word, 114:39); May have been triggered (Form, 116:35); ROM (Abbreviation, 117:28)
+*Terms*: Case notes (New term, 106:11); Regarding her medical history, ... (Useful phrase, 107:32); Passive (Grammar term, 107:45); Suffer from (Pattern, 110:49); Poor appetite (New words, 111:31); Compound sentence (Grammar term, 111:41); Trigger (New word, 114:35); Hyperventilation (New word, 114:38); May have been triggered (Form, 116:34); ROM (Abbreviation, 117:33)
 
 ### OET facts
 
@@ -719,17 +719,17 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 61:06 underwent
 - 66:31 undergo / underwent
 - 88:50 Schedule
-- 99:07 Administer
-- 101:23 Present
-- 103:29 Confirm
-- 103:55 Reveal
-- 104:38 Admit
-- 107:34 Regarding her medical history, ...
-- 109:42 regarding
+- 99:06 Administer
+- 101:22 Present
+- 103:28 Confirm
+- 103:54 Reveal
+- 104:36 Admit
+- 107:32 Regarding her medical history, ...
+- 109:41 regarding
 - 111:31 Poor appetite
-- 114:36 Trigger
-- 114:39 Hyperventilation
-- 114:45 triggered
+- 114:35 Trigger
+- 114:38 Hyperventilation
+- 114:44 triggered
 
 ### Practice material
 
@@ -740,26 +740,26 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ### Links to other lessons
 
 - referred to by Grammar for OET: Verb Use (`grammar-02-verb-use`), "Introduction" at 0:08
-- referred to by Grammar for OET: Verb Use (`grammar-02-verb-use`), "Verb use: active or passive" at 39:35, about section `page-16`
-- referred to by Grammar for OET: Verb Use (`grammar-02-verb-use`), "Verb use: active or passive" at 39:35, about section `pages-05-06`
-- referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "What is nominalisation?" at 5:59, about section `page-15`
-- referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Non-physical complaints" at 23:19, about section `page-9`
-- referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Formal time-related expressions" at 36:51, about section `page-12`
-- referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Denominalisation" at 49:43, about section `page-16`
-- referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Compound or complex?" at 22:54, about section `page-15`
-- referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Gap fill" at 30:17, about section `page-9`
+- referred to by Grammar for OET: Verb Use (`grammar-02-verb-use`), "Verb use: active or passive" at 39:44, about section `page-16`
+- referred to by Grammar for OET: Verb Use (`grammar-02-verb-use`), "Verb use: active or passive" at 39:44, about section `pages-05-06`
+- referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "What is nominalisation?" at 5:58, about section `page-15`
+- referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Non-physical complaints" at 23:20, about section `page-9`
+- referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Formal time-related expressions" at 36:57, about section `page-12`
+- referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Denominalisation" at 49:54, about section `page-16`
+- referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Compound or complex?" at 23:02, about section `page-15`
+- referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Gap fill" at 30:25, about section `page-9`
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Reduced relative clauses" at 19:12, about section `page-10`
-- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 36:11, about section `page-16`
-- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 41:01
+- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 36:22, about section `page-16`
+- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 41:11
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 11:55, about section `page-15`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 5:08, about section `page-15`
-- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Expand" at 15:13
-- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Rearrange" at 38:14, about section `page-9`
-- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Medical terms: vocabulary and word form" at 23:48, about section `page-15`
-- referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Key points to remember" at 14:47, about section `page-9`
-- referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Treat" at 45:11, about section `page-15`
-- referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Schedule" at 49:29, about section `page-16`
-- referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Practice: conditions and types of pain" at 20:52, about section `page-10`
+- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Expand" at 15:14
+- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Rearrange" at 38:16, about section `page-9`
+- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Medical terms: vocabulary and word form" at 24:06, about section `page-15`
+- referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Key points to remember" at 14:51, about section `page-9`
+- referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Treat" at 45:17, about section `page-15`
+- referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Schedule" at 49:39, about section `page-16`
+- referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Practice: conditions and types of pain" at 20:54, about section `page-10`
 - referred to by OET Writing: Overview (`writing-01-overview`), "Steps towards successful writing" at 3:22
 - continues in Grammar for OET: Verb Use (`grammar-02-verb-use`): Verb Use practises choosing the tense, and the active or the passive, taught here.
 
@@ -768,8 +768,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 2. Grammar for OET: Verb Use
 
-- Lesson ID and folder: `grammar-02-verb-use` (folder `grammar-02-verb-use`); course grammar, lesson 2; length 52:09; bundle format 1.12
-- Status: approved by siavash, 2026-09-27 23:08
+- Lesson ID and folder: `grammar-02-verb-use` (folder `grammar-02-verb-use`); course grammar, lesson 2; length 52:20; bundle format 1.12
+- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:19
 - Description: Learn how to choose the right tense and the right voice when you turn case notes into sentences for your OET letter.
 - Original session: folder `source`: `source/video.mp4`, 75:02 long, partial hash `678ddc1608d757d6`; deck `source/slides.pdf`, 10 pages
   - The Grammar 2 (Verb Use) session, recorded at 1284 x 720 (docs/01-METHODOLOGY.md §1).
@@ -838,22 +838,22 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 16:16 **Item 4: Warfarin therapy**
   - 16:16 Fix the item and show that the tense is not the fault.
   - 16:41 Name the real fault.
-  - 16:51 Give the corrected sentence using the case-note date.
+  - 16:52 Give the corrected sentence using the case-note date.
   - 17:07 Show the two ways of writing the sentence with commenced.
-  - 17:28 Give the passive answer and its preposition.
+  - 17:29 Give the passive answer and its preposition.
 - 17:48 **Item 5: hypertension 2010**
   - 17:48 Fix the item and read the abbreviation.
   - 18:18 Explain why since cannot follow was diagnosed.
   - 18:28 Give the simple past answer.
   - 18:40 Teach the preposition with dates.
   - 18:59 Give the present perfect answer with a different verb.
-- 19:15 **Item 6: smoker for 25 to 30 years**
-  - 19:15 Fix the item and name the tense fault.
+- 19:16 **Item 6: smoker for 25 to 30 years**
+  - 19:16 Fix the item and name the tense fault.
   - 19:43 Draw the repeated action from the past up to now.
-  - 20:08 Give the answer in the same structure.
+  - 20:09 Give the answer in the same structure.
   - 20:28 Show how to report the meaning of the data.
-- 20:46 **Introduction: exercise sentences 7 to 11**
-  - 20:46 Show the second set of sentences.
+- 20:47 **Introduction: exercise sentences 7 to 11**
+  - 20:47 Show the second set of sentences.
 - 21:43 **Item 7: ulcer since August 2017**
   - 21:43 Fix the item and teach joining ideas.
   - 22:19 Show what which does in this sentence.
@@ -863,30 +863,30 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 23:26 Fix the item and turn the two dates into one time phrase.
   - 23:57 Teach the phrase during hospitalization.
   - 24:05 Teach the describing word before progress.
-  - 24:29 Contrast a small change with a big one.
+  - 24:31 Contrast a small change with a big one.
   - 25:00 Separate significant from significance.
   - 25:15 Show the correct sentence with significant.
-  - 25:25 Name the tense fault in the exercise sentence.
-  - 25:37 Give the corrected sentence and the rule for progression.
-  - 25:52 Warn about commas.
-  - 26:00 Give the study priority for tenses.
-- 26:20 **Item 9: over the past three weeks**
-  - 26:20 Fix the item and show that tense and punctuation are already right.
-  - 26:42 Show the repeated meaning.
-  - 26:52 Give the corrected sentence.
-- 27:03 **Item 10: blood pressure on examination**
-  - 27:03 Fix the item and say what an examination finding is.
-  - 27:30 State the rule for findings.
-  - 27:57 Give the corrected sentence.
-  - 28:14 Warn about abbreviations.
-  - 28:23 Give a second way to write the finding.
-- 28:37 **Item 11: limp and anxiety**
-  - 28:37 Fix the item and separate objective from subjective information.
-  - 29:10 Locate the verbs.
-  - 29:19 Contrast a changing finding with a lasting symptom.
-  - 29:40 Give the corrected sentence.
-  - 29:58 Note that the simple past is also possible.
-  - 30:07 State the closing rule.
+  - 25:26 Name the tense fault in the exercise sentence.
+  - 25:41 Give the corrected sentence and the rule for progression.
+  - 25:56 Warn about commas.
+  - 26:04 Give the study priority for tenses.
+- 26:24 **Item 9: over the past three weeks**
+  - 26:24 Fix the item and show that tense and punctuation are already right.
+  - 26:46 Show the repeated meaning.
+  - 26:56 Give the corrected sentence.
+- 27:07 **Item 10: blood pressure on examination**
+  - 27:07 Fix the item and say what an examination finding is.
+  - 27:34 State the rule for findings.
+  - 28:01 Give the corrected sentence.
+  - 28:18 Warn about abbreviations.
+  - 28:28 Give a second way to write the finding.
+- 28:41 **Item 11: limp and anxiety**
+  - 28:41 Fix the item and separate objective from subjective information.
+  - 29:14 Locate the verbs.
+  - 29:23 Contrast a changing finding with a lasting symptom.
+  - 29:44 Give the corrected sentence.
+  - 30:02 Note that the simple past is also possible.
+  - 30:11 State the closing rule.
 
 *Rules on the boards*
 
@@ -894,168 +894,168 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 13:25 When in, on or at points to a date in the past, use the simple past.
 - 14:01 Small words are easy to forget when you write quickly. A missing a is marked as an error.
 - 16:41 6 months is a length of time. Since does not go with a length of time.
-- 27:30 Use the simple past for a finding taken on a particular date. There is no progression here.
-- 30:07 Unless the case notes say the symptom has gone, use the simple present for symptoms that have not changed.
+- 27:34 Use the simple past for a finding taken on a particular date. There is no progression here.
+- 30:11 Unless the case notes say the symptom has gone, use the simple present for symptoms that have not changed.
 
 *Warnings (common mistakes)*
 
 - 15:22 From is not a time word here. Do not write from 5 years or from 2013.
-- 25:52 Use a comma only where you are sure. A wrong comma counts as a grammar mistake.
-- 28:14 If you are not sure the reader will know a short form, write it in full: 'coronary artery disease', not 'CAD'.
+- 25:56 Use a comma only where you are sure. A wrong comma counts as a grammar mistake.
+- 28:18 If you are not sure the reader will know a short form, write it in full: 'coronary artery disease', not 'CAD'.
 
 *Wrong sentences corrected*
 
 - 8:36 The patient has started taking oral insulin in November 2017
 - 8:36 The patient has heart attack in 2017.
 - 8:36 He has had arthritis from 5 years.
-- 9:20 The patient has been receiving Warfarin therapy since 6 months.
+- 9:20 The patient has been receiving warfarin therapy since 6 months.
 - 9:20 The patient was diagnosed with Hypertension since 2010
 - 9:20 He smokes 2 packs of cigarettes a day for the past 25 - 30 years.
 - 9:57 The patient has started taking oral insulin in November 2017
 - 12:56 The patient has heart attack in 2017.
 - 14:09 He has had arthritis from 5 years.
-- 16:16 The patient has been receiving Warfarin therapy since 6 months.
+- 16:16 The patient has been receiving warfarin therapy since 6 months.
 - 17:48 The patient was diagnosed with Hypertension since 2010
-- 19:15 He smokes 2 packs of cigarettes a day for the past 25 - 30 years.
-- 20:46 There is an ulcer on right lower lateral border of the tongue which is present for more than one year.
-- 20:46 During hospitalization the patient is making steady progress.
-- 20:46 Over the past three weeks, the patient progress has improved
-- 20:46 On the examination, the patient has a blood pressure of 140/90.
-- 20:46 The patient had limp and was anxious about his ability to work.
+- 19:16 He smokes 2 packs of cigarettes a day for the past 25 - 30 years.
+- 20:47 There is an ulcer on right lower lateral border of the tongue which is present for more than one year.
+- 20:47 During hospitalization the patient is making steady progress.
+- 20:47 Over the past three weeks, the patient progress has improved
+- 20:47 On the examination, the patient has a blood pressure of 140/90.
+- 20:47 The patient had limp and was anxious about his ability to work.
 - 21:43 There is an ulcer on right lower lateral border of the tongue which is present for more than one year.
 - 23:26 During hospitalization the patient is making steady progress.
-- 26:20 Over the past three weeks, the patient progress has improved
-- 27:03 On the examination, the patient has a blood pressure of 140/90.
-- 28:37 The patient had limp and was anxious about his ability to work.
+- 26:24 Over the past three weeks, the patient progress has improved
+- 27:07 On the examination, the patient has a blood pressure of 140/90.
+- 28:41 The patient had limp and was anxious about his ability to work.
 
-*Terms*: commenced (New word, 10:04); taking (Useful verb, 10:23); Present perfect (Form, 10:49); Countable noun (Grammar word, 13:31); Passive (Form, 15:50); HTN (Case-note short form, 17:54); Connectives (Joining words, 22:00); during hospitalization (Useful phrase, 23:57); steady progress (Word choice, 24:05); significant (Word choice, 25:00)
+*Terms*: commenced (New word, 10:04); taking (Useful verb, 10:23); Present perfect (Form, 10:49); Countable noun (Grammar word, 13:31); Passive (Form, 15:50); HTN (Case-note short form, 17:55); Connectives (Joining words, 22:00); during hospitalization (Useful phrase, 23:57); steady progress (Word choice, 24:05); significant (Word choice, 25:00)
 
-#### 30:23 Passive vs active (`page-7`, deck)
+#### 30:28 Passive vs active (`page-7`, deck)
 
-- 30:23 **active voice example, the two passive examples**
-  - 30:23 Show the slide's active example and frame the idea that one fact can be written in three ways
-  - 30:23 Show the two passive cards and read the patient-first one
-  - 31:27 Define the two grammar terms at first appearance
-  - 32:12 Work out the focus of the active sentence
-  - 32:27 State the rule for the active voice
-  - 33:14 Read the medicine-first passive
-  - 33:29 Contrast the two passive patterns side by side
-  - 34:02 Worked example of choosing the pattern in writing
-  - 34:27 State the rule for choosing between the three versions
-
-*Rules on the boards*
-
-- 32:27 In the active voice, the focus is on the person who does the action.
-- 34:27 In your writing, choose the version that puts your main idea first: the doctor, the patient or the medicine.
-
-*Terms*: Active voice (Grammar term, 31:27); Passive voice (Grammar term, 31:45)
-
-#### 34:48 Verb use: active or passive (`pages-08-09`, deck)
-
-- 34:48 **exercise set, appetite and general health rows**
-  - 34:48 Show the first part of the exercise set so the student can look for the fault
-- 35:37 **exercise set, mood, medication and pain rows**
-  - 35:37 Show the rest of the exercise set
-- 36:09 **Appetite row**
-  - 36:09 Fix the case note, the preferred form and the two wrong sentences on the board
-  - 36:32 Name the fault
-  - 36:38 Define active and passive in English terms
-  - 36:47 Define the grammar term 'subject'
-  - 37:05 Apply the rule to this row
-  - 37:24 Give the answer and say why it is correct
-  - 37:45 Contrast one-moment verbs with over-time verbs
-  - 38:22 Example of a one-moment verb
-  - 38:49 Example of an over-time verb
-- 39:04 **General health row**
-  - 39:04 Fix the case note, the preferred form and the two wrong sentences
-  - 39:23 Name the fault again
-  - 39:48 Teach the verb 'deteriorate'
-  - 39:56 Give the answer and say why it is correct
-  - 40:16 Show the present perfect continuous as a grammatical option
-- 40:35 **Mood row**
-  - 40:35 Fix the case note, the preferred form and the two wrong sentences
-  - 40:51 Show it is the same fault as the appetite row
-  - 41:15 Give the answer and say why it is correct
-  - 41:40 Add a time adverb to the answer
-- 41:55 **Medication row**
-  - 41:55 Fix the case note, the preferred form and the wrong sentence
-  - 42:03 Read the case-note abbreviations
-  - 42:09 Abbreviations in case notes and in the letter
-  - 42:50 Name the fault in the sentence
-  - 43:04 Give the answer and say why it is correct
-  - 43:21 Draw the medication period up to now
-  - 43:48 Contrast the continuing course with the finished course
-  - 44:10 Show what a real passive would look like
-- 44:25 **Reported pain row**
-  - 44:25 Fix the case note, the preferred form and the wrong sentence
-  - 44:39 Give the passive marker rule
-  - 44:47 Apply the rule to this sentence
-  - 44:55 Give the answer and say why it is correct
-  - 45:16 Separate the verb from the noun
-- 45:29 **Exercise set: colonoscopy, diabetes and home modification rows**
-  - 45:29 Show the three items of the second set
-- 46:38 **Colonoscopy row**
-  - 46:38 Fix the case note, the preferred form and the wrong sentence
-  - 46:57 Name the verb and the meaning problem
-  - 47:08 Show that changing the voice is not enough
-  - 47:20 Teach the verb undergo
-  - 47:29 Give the active answer
-  - 47:53 Give the passive answer
-  - 48:10 Give the rule to remember
-- 48:22 **Diabetes row**
-  - 48:22 Fix the case note, the preferred form and the wrong sentence
-  - 48:41 Teach the meaning of the verb
-  - 48:49 Name the fault
-  - 48:59 Repair 1: keep the active and name the doer
-  - 49:14 Repair 2: use the passive
-  - 49:39 Repair 3: change the verb to keep John as subject
-  - 49:58 Give the rule to remember
-- 50:09 **Home modification row**
-  - 50:09 Fix the case note, the preferred form and the wrong sentence
-  - 50:35 Show why the sentence needs the passive
-  - 50:41 Name the form used and the form needed
-  - 50:50 Teach the present perfect passive form
-  - 50:59 Give the answer and say why it is correct
-  - 51:24 Point out the missing article and define the term
-  - 51:40 Keep the two verbs in the same tense
+- 30:28 **active voice example, the two passive examples**
+  - 30:28 Show the slide's active example and frame the idea that one fact can be written in three ways
+  - 30:28 Show the two passive cards and read the patient-first one
+  - 31:31 Define the two grammar terms at first appearance
+  - 32:16 Work out the focus of the active sentence
+  - 32:31 State the rule for the active voice
+  - 33:18 Read the medicine-first passive
+  - 33:33 Contrast the two passive patterns side by side
+  - 34:06 Worked example of choosing the pattern in writing
+  - 34:31 State the rule for choosing between the three versions
 
 *Rules on the boards*
 
-- 44:39 'Was' and 'were' before a past participle are a sign of the passive.
-- 49:58 Before you choose the passive, think about the meaning of the verb: who does the action?
-- 51:40 Two completed actions reported together: use the same tense for both.
+- 32:31 In the active voice, the focus is on the person who does the action.
+- 34:31 In your writing, choose the version that puts your main idea first: the doctor, the patient or the medicine.
+
+*Terms*: Active voice (Grammar term, 31:31); Passive voice (Grammar term, 31:49)
+
+#### 34:52 Verb use: active or passive (`pages-08-09`, deck)
+
+- 34:52 **exercise set, appetite and general health rows**
+  - 34:52 Show the first part of the exercise set so the student can look for the fault
+- 35:41 **exercise set, mood, medication and pain rows**
+  - 35:41 Show the rest of the exercise set
+- 36:13 **Appetite row**
+  - 36:13 Fix the case note, the preferred form and the two wrong sentences on the board
+  - 36:37 Name the fault
+  - 36:43 Define active and passive in English terms
+  - 36:52 Define the grammar term 'subject'
+  - 37:11 Apply the rule to this row
+  - 37:30 Give the answer and say why it is correct
+  - 37:51 Contrast one-moment verbs with over-time verbs
+  - 38:29 Example of a one-moment verb
+  - 38:58 Example of an over-time verb
+- 39:13 **General health row**
+  - 39:13 Fix the case note, the preferred form and the two wrong sentences
+  - 39:31 Name the fault again
+  - 39:57 Teach the verb 'deteriorate'
+  - 40:05 Give the answer and say why it is correct
+  - 40:25 Show the present perfect continuous as a grammatical option
+- 40:44 **Mood row**
+  - 40:44 Fix the case note, the preferred form and the two wrong sentences
+  - 41:00 Show it is the same fault as the appetite row
+  - 41:24 Give the answer and say why it is correct
+  - 41:49 Add a time adverb to the answer
+- 42:04 **Medication row**
+  - 42:04 Fix the case note, the preferred form and the wrong sentence
+  - 42:13 Read the case-note abbreviations
+  - 42:18 Abbreviations in case notes and in the letter
+  - 43:00 Name the fault in the sentence
+  - 43:13 Give the answer and say why it is correct
+  - 43:30 Draw the medication period up to now
+  - 43:57 Contrast the continuing course with the finished course
+  - 44:20 Show what a real passive would look like
+- 44:34 **Reported pain row**
+  - 44:34 Fix the case note, the preferred form and the wrong sentence
+  - 44:48 Give the passive marker rule
+  - 44:56 Apply the rule to this sentence
+  - 45:05 Give the answer and say why it is correct
+  - 45:25 Separate the verb from the noun
+- 45:38 **Exercise set: colonoscopy, diabetes and home modification rows**
+  - 45:38 Show the three items of the second set
+- 46:47 **Colonoscopy row**
+  - 46:47 Fix the case note, the preferred form and the wrong sentence
+  - 47:06 Name the verb and the meaning problem
+  - 47:17 Show that changing the voice is not enough
+  - 47:29 Teach the verb undergo
+  - 47:38 Give the active answer
+  - 48:02 Give the passive answer
+  - 48:19 Give the rule to remember
+- 48:33 **Diabetes row**
+  - 48:33 Fix the case note, the preferred form and the wrong sentence
+  - 48:51 Teach the meaning of the verb
+  - 48:59 Name the fault
+  - 49:10 Repair 1: keep the active and name the doer
+  - 49:25 Repair 2: use the passive
+  - 49:49 Repair 3: change the verb to keep John as subject
+  - 50:08 Give the rule to remember
+- 50:19 **Home modification row**
+  - 50:19 Fix the case note, the preferred form and the wrong sentence
+  - 50:45 Show why the sentence needs the passive
+  - 50:52 Name the form used and the form needed
+  - 51:01 Teach the present perfect passive form
+  - 51:10 Give the answer and say why it is correct
+  - 51:35 Point out the missing article and define the term
+  - 51:50 Keep the two verbs in the same tense
+
+*Rules on the boards*
+
+- 44:48 'Was' and 'were' before a past participle are a sign of the passive.
+- 50:08 Before you choose the passive, think about the meaning of the verb: who does the action?
+- 51:50 Two completed actions reported together: use the same tense for both.
 
 *Warnings (common mistakes)*
 
-- 48:10 Do not use 'do' or 'done' for a procedure. Use 'undergo' or 'perform'.
+- 48:19 A patient does not do a procedure. Write 'underwent', not 'did' or 'had done'.
 
 *Wrong sentences corrected*
 
-- 34:48 The patient's appetite has been increased.
-- 34:48 The patient's appetite is increased.
-- 34:48 The patient's health has been deteriorated.
-- 34:48 The patient's health was deteriorated
-- 35:37 The patient's mood has been improved.
-- 35:37 The patient's mood is improved.
-- 35:37 She has been taken OxyContin 5mg twice a day to control her pain.
-- 35:37 The patient was complained of pain in her both feet
-- 36:09 The patient's appetite has been increased.
-- 36:09 The patient's appetite is increased.
-- 39:04 The patient's health has been deteriorated.
-- 39:04 The patient's health was deteriorated
-- 40:35 The patient's mood has been improved.
-- 40:35 The patient's mood is improved.
-- 41:55 She has been taken OxyContin 5mg twice a day to control her pain.
-- 44:25 The patient was complained of pain in her both feet
-- 45:29 Patient had done a colonoscopy on 21/11/2018
-- 45:29 John has diagnosed with diabetes since 2012.
-- 45:29 Home modification have completed and GP appointment scheduled for 7/12/2018
-- 46:38 Patient had done a colonoscopy on 21/11/2018
-- 47:08 Patient did a colonoscopy.
-- 48:22 John has diagnosed with diabetes since 2012.
-- 50:09 Home modification have completed and GP appointment scheduled for 7/12/2018
+- 34:52 The patient's appetite has been increased.
+- 34:52 The patient's appetite is increased.
+- 34:52 The patient's health has been deteriorated.
+- 34:52 The patient's health was deteriorated
+- 35:41 The patient's mood has been improved.
+- 35:41 The patient's mood is improved.
+- 35:41 She has been taken OxyContin 5mg twice a day to control her pain.
+- 35:41 The patient was complained of pain in her both feet
+- 36:13 The patient's appetite has been increased.
+- 36:13 The patient's appetite is increased.
+- 39:13 The patient's health has been deteriorated.
+- 39:13 The patient's health was deteriorated
+- 40:44 The patient's mood has been improved.
+- 40:44 The patient's mood is improved.
+- 42:04 She has been taken OxyContin 5mg twice a day to control her pain.
+- 44:34 The patient was complained of pain in her both feet
+- 45:38 Patient had done a colonoscopy on 21/11/2018
+- 45:38 John has diagnosed with diabetes since 2012.
+- 45:38 Home modification have completed and GP appointment scheduled for 7/12/2018
+- 46:47 Patient had done a colonoscopy on 21/11/2018
+- 47:17 Patient did a colonoscopy.
+- 48:33 John has diagnosed with diabetes since 2012.
+- 50:19 Home modification have completed and GP appointment scheduled for 7/12/2018
 
-*Terms*: subject (Grammar term, 36:47); deteriorate (New word, 39:48); Med, b.d (Abbreviations, 42:03); complain / complaint (Word forms, 45:16); undergo / underwent (Verb, 47:20); diagnose (Verb, 48:41); present perfect passive (Form, 50:50); article (Grammar term, 51:31)
+*Terms*: subject (Grammar term, 36:52); deteriorate (New word, 39:57); Med, b.d (Abbreviations, 42:13); complain / complaint (Word forms, 45:25); undergo / underwent (Verb, 47:29); diagnose (Verb, 48:51); present perfect passive (Form, 51:01); article (Grammar term, 51:42)
 
 ### Vocabulary
 
@@ -1066,10 +1066,10 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 10:23 taking
 - 23:57 during hospitalization
 - 24:43 significant
-- 35:10 deteriorated
-- 39:48 deteriorate
-- 45:55 modification
-- 46:12 scheduled
+- 35:14 deteriorated
+- 39:57 deteriorate
+- 46:04 modification
+- 46:21 scheduled
 
 ### Practice material
 
@@ -1079,8 +1079,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ### Links to other lessons
 
 - 0:08 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `page-3_t1.s1.u3`)
-- 39:35 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `pages-08-09_t4.s1.u5`)
-- 39:35 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Verb tenses" (in `pages-08-09_t4.s1.u5`)
+- 39:44 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `pages-08-09_t4.s1.u5`)
+- 39:44 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Verb tenses" (in `pages-08-09_t4.s1.u5`)
 - referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Introduction" at 0:16
 - continues from Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`): Verb Use practises choosing the tense, and the active or the passive, taught here.
 
@@ -1089,8 +1089,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 3. Grammar for OET: Nominalisation
 
-- Lesson ID and folder: `grammar-03-nominalization` (folder `grammar-03-nominalization`); course grammar, lesson 3; length 52:22; bundle format 1.12
-- Status: approved by siavash, 2026-09-27 23:08
+- Lesson ID and folder: `grammar-03-nominalization` (folder `grammar-03-nominalization`); course grammar, lesson 3; length 52:33; bundle format 1.12
+- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:29
 - Description: Learn how to turn verbs and adjectives into nouns to write formal sentences from case notes, and how to turn nouns back into verbs.
 - Original session: folder `source`: `source/video.mp4`, 73:11 long, partial hash `4f8496a9f96ff0dc`; deck `source/slides.pdf`, 12 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -1101,284 +1101,284 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 - 0:00 **Title board**
   - 0:00 the lesson title, then what the lesson is about
-- 1:10 **Contents board**
-  - 1:11 each category, revealed as it is named
+- 1:09 **Contents board**
+  - 1:10 each category, revealed as it is named
 
 #### 1:57 What is nominalisation? (`pages-04-05`, deck)
 
 - 1:57 **What nominalisation is (slide 4 definition and example)**
   - 1:57 Show the slide's before sentence and name the process
   - 1:57 State the benefit for writing
-  - 2:37 Show the two verbs and their noun forms
-  - 2:59 Give the rewritten sentence
-  - 3:25 Show that the new sentence is shorter and keeps the meaning
-  - 3:44 Fix the clause and its noun phrase on the board
-  - 3:55 State that the phrase works as one noun
-  - 4:05 Gloss the two new words inside the phrase
-  - 4:53 Link the technique to the case notes task
-- 5:07 **Example table: without and with nominalisation (slide 5)**
-  - 5:07 State what the technique does to a sentence
-  - 5:07 introduce the two columns
-  - 5:23 Say what changes in the writing, and warn against the passive idea
+  - 2:36 Show the two verbs and their noun forms
+  - 2:58 Give the rewritten sentence
+  - 3:24 Show that the new sentence is shorter and keeps the meaning
+  - 3:43 Fix the clause and its noun phrase on the board
+  - 3:54 State that the phrase works as one noun
+  - 4:04 Gloss the two new words inside the phrase
+  - 4:52 Link the technique to the case notes task
+- 5:06 **Example table: without and with nominalisation (slide 5)**
+  - 5:06 State what the technique does to a sentence
+  - 5:06 introduce the two columns
+  - 5:22 Say what changes in the writing, and warn against the passive idea
   - 5:40 Correct the idea that nominalisation is the passive
-  - 6:31 the verb becomes a noun
-  - 6:42 the actor is left out
-  - 6:53 note the passive verb here is only one option
-  - 7:21 the verb becomes a noun
+  - 6:30 the verb becomes a noun
+  - 6:41 the actor is left out
+  - 6:52 note the passive verb here is only one option
+  - 7:20 the verb becomes a noun
   - 7:38 the adjective becomes a noun
-  - 7:50 the subject stays and the verb stays active
+  - 7:49 the subject stays and the verb stays active
   - 8:06 sum up the aim
 
 *Rules on the boards*
 
-- 4:48 Formal, clear sentences can help your score in the writing task.
+- 4:47 Formal, clear sentences can help your score in the writing task.
 
 *Warnings (common mistakes)*
 
 - 5:40 Nominalisation is not the passive voice. The change is the noun in place of the verb. The verb may stay active.
 
-*Terms*: Nominalisation (New term, 1:59); Passive (Grammar term, 5:49)
+*Terms*: Nominalisation (New term, 1:58); Passive (Grammar term, 5:49)
 
 #### 8:23 Physical symptoms (`page-6`, deck)
 
 - 8:23 **Physical symptoms case-note table**
   - 8:23 frame what the table does
-  - 9:09 meaning of symptomatic
+  - 9:08 meaning of symptomatic
   - 9:26 the a- prefix
-  - 9:37 one word instead of a list
-  - 10:05 febrile and afebrile
-  - 10:27 the writing rule
-  - 10:52 silent p
-  - 11:02 verb to adjective
-  - 11:16 the preposition
-  - 11:47 subjective and objective
-  - 12:15 mild and severe
-  - 12:29 the acute trap
-  - 12:45 adjective to noun
-  - 12:59 opener for subjective notes
-  - 13:11 hot and cold means temperature
-  - 13:38 verb to noun
-  - 13:46 adverb to adjective
-  - 14:04 the earlier words were adjectives
-  - 14:26 preposition with a full date
-  - 14:34 technique for finding the missing verb
-  - 14:53 an action was carried out
-  - 15:22 the abbreviation c/o
-  - 15:28 learn the abbreviations
-  - 15:41 bilateral and chronic
-  - 15:52 same subjective opener with the name
-  - 16:09 the verb for laterality
-  - 16:28 join the clauses
-  - 16:49 gloss for the alternative clause
-  - 17:18 what breaking wind means
-  - 17:35 patient words become the medical term
-  - 17:51 the exact duration
-  - 18:03 the time word option
-  - 18:18 varying the reporting verb
-  - 18:34 dropping 'that'
+  - 9:38 one word instead of a list
+  - 10:06 febrile and afebrile
+  - 10:28 the writing rule
+  - 10:54 silent p
+  - 11:04 verb to adjective
+  - 11:18 the preposition
+  - 11:49 subjective and objective
+  - 12:17 mild and severe
+  - 12:31 the acute trap
+  - 12:47 adjective to noun
+  - 13:01 opener for subjective notes
+  - 13:12 hot and cold means temperature
+  - 13:40 verb to noun
+  - 13:48 adverb to adjective
+  - 14:06 the earlier words were adjectives
+  - 14:28 preposition with a full date
+  - 14:36 technique for finding the missing verb
+  - 14:55 an action was carried out
+  - 15:24 the abbreviation c/o
+  - 15:31 learn the abbreviations
+  - 15:44 bilateral and chronic
+  - 15:55 same subjective opener with the name
+  - 16:12 the verb for laterality
+  - 16:31 join the clauses
+  - 16:52 gloss for the alternative clause
+  - 17:20 what breaking wind means
+  - 17:37 patient words become the medical term
+  - 17:52 the exact duration
+  - 18:05 the time word option
+  - 18:20 varying the reporting verb
+  - 18:35 dropping 'that'
 
 *Rules on the boards*
 
-- 10:27 In writing, do not spell out "no fever, normal temperature, no cough". Use one word.
-- 14:26 With a full date — day, month and year — use "on".
-- 16:28 Join the two parts with a joining word such as "with". Do not stop and start short separate sentences.
+- 10:28 In writing, do not spell out "no fever, normal temperature, no cough". Use one word.
+- 14:28 With a full date — day, month and year — use "on".
+- 16:31 Join the two parts with a joining word such as "with". Do not stop and start short separate sentences.
 
 *Warnings (common mistakes)*
 
-- 12:29 Do not use "acute" to mean severe. "Acute" is the opposite of "chronic".
+- 12:31 Do not use "acute" to mean severe. "Acute" is the opposite of "chronic".
 
-*Terms*: symptomatic (Form, 9:09); a- (Prefix, 9:26); pseudo- (Pronunciation, 10:52); suggestive of (Form, 11:16); c/o (Abbreviation, 15:22)
+*Terms*: symptomatic (Form, 9:08); a- (Prefix, 9:26); pseudo- (Pronunciation, 10:54); suggestive of (Form, 11:18); c/o (Abbreviation, 15:24)
 
-#### 18:57 Non-physical complaints (`page-7`, deck)
+#### 18:58 Non-physical complaints (`page-7`, deck)
 
-- 18:57 **Non-physical complaints table**
-  - 18:57 introduce the three-column task for non-physical complaints
-  - 19:32 the arrow in the notes shows a result
-  - 20:09 words that carry the result
-  - 20:22 paraphrase the note wording
-  - 20:52 nominalise the result
-  - 21:25 more than one wording works
-  - 21:59 what the notes say about Nathan
-  - 22:14 name the technique
-  - 22:42 open the sentence with a contrast word
-  - 23:03 tense for the change in anxiety
-  - 23:25 choose another word for 'little'
-  - 23:42 joining two opposite facts
-  - 24:12 nominalise 'disturbed'
-  - 24:21 use synonyms, not the note words
-  - 24:40 another word for 'pain'
-  - 24:52 write the short time span
-  - 25:05 why 'a recent history'
-  - 25:48 phrases with 'history'
-  - 26:16 more phrases with 'history'
-  - 26:42 a subjective note
-  - 26:47 from drinking to consumption
-  - 27:18 'reported' shows the patient said it
-  - 27:30 'more' becomes a noun
-  - 27:42 a way to find your own wording
-
-*Rules on the boards*
-
-- 20:09 Show the result with words such as due to, resulted in or consequently.
-- 23:42 When two facts contrast, you can join them in one sentence with while or although.
-- 24:21 Do not copy the case notes word for word. Use words with the same meaning.
-- 27:42 First say the note to yourself in simple English words. Then write it again with a noun.
-
-*Terms*: Nominalisation (Grammar, 22:14); Disturbance (Word form, 24:12)
-
-#### 28:03 Treatment (`page-8`, deck)
-
-- 28:03 **Nominalising the case-note table**
-  - 28:03 how the three columns work
-  - 28:30 the term for the whole task
-  - 28:52 read the shorthand first
-  - 29:13 the noun 'intake'
-  - 29:40 'gargle' has one form for verb and noun
-  - 30:11 why the sentence is passive
-  - 30:42 a ready opener for treatment information
-  - 31:00 what the plan note asks for
-  - 31:19 the noun needs a verb with it
-  - 31:42 the preposition after the noun
-  - 32:10 the second, impersonal sentence
-  - 32:44 what the note means
-  - 33:11 the meaning of 'adhere to'
-  - 33:35 joining the two ideas with 'due to'
-  - 34:02 the second version of the cause
-  - 34:33 read the examination note
-  - 34:47 the two nouns
-  - 35:15 an adjective carries the negative idea
-  - 35:45 the full sentence pattern
-
-*Terms*: Nominalisation (Form, 28:30); Intake (Noun, 29:13); Passive (Form, 30:11); In terms of treatment (Phrase, 30:42); An assessment of (Phrase, 31:42); Prior to (Phrase, 32:22)
-
-#### 36:20 Formal time-related expressions (`page-9`, deck)
-
-- 36:20 **Formal time expressions table**
-  - 36:20 the case note is a timeline of the patient's history
-  - 36:47 the time words decide the tense
-  - 37:04 what the exercise does with each note
-  - 37:19 what the note means
-  - 37:32 the noun occasion
-  - 37:55 verbs for a patient coming to the clinic
-  - 38:17 other sentences that work
-  - 38:32 attend a place, attend to a person
-  - 38:50 what attend to means
-  - 39:02 do not add 'to' for a clinic visit
-  - 39:18 the preposition after 'presented'
-  - 39:34 verbs to learn for the writing task
-  - 39:56 the colon shows subjective information
-  - 40:11 sometimes becomes at times
-  - 40:22 the noun confusion
-  - 40:32 the reporting verb for a subjective note
-  - 40:45 experience in present simple
-  - 41:06 paraphrase, do not copy
-  - 41:33 advice and advise
-  - 41:41 the two words sound different
-  - 41:51 the wrong letter costs a mark
-  - 42:06 every day becomes on a daily basis
-  - 42:17 no agent, so the sentence is passive
-  - 42:30 what passive means
-  - 42:43 advised is the verb here
-  - 43:02 normally becomes under normal circumstances
-  - 43:16 gloss of the word fairly
-  - 43:29 fairly becomes relatively
-  - 43:37 comma after the opening phrase
-  - 43:52 a comma in the wrong place costs a mark
-  - 44:05 the two words that changed
-  - 44:29 the noun onset
-  - 44:33 onset in real case notes
-  - 44:49 verb becomes noun
-  - 45:12 use this sentence in the letter
+- 18:58 **Non-physical complaints table**
+  - 18:58 introduce the three-column task for non-physical complaints
+  - 19:34 the arrow in the notes shows a result
+  - 20:10 words that carry the result
+  - 20:23 paraphrase the note wording
+  - 20:53 nominalise the result
+  - 21:27 more than one wording works
+  - 22:00 what the notes say about Nathan
+  - 22:15 name the technique
+  - 22:43 open the sentence with a contrast word
+  - 23:04 tense for the change in anxiety
+  - 23:27 choose another word for 'little'
+  - 23:44 joining two opposite facts
+  - 24:13 nominalise 'disturbed'
+  - 24:23 use synonyms, not the note words
+  - 24:42 another word for 'pain'
+  - 24:54 write the short time span
+  - 25:07 why 'a recent history'
+  - 25:50 phrases with 'history'
+  - 26:19 more phrases with 'history'
+  - 26:49 a subjective note
+  - 26:54 from drinking to consumption
+  - 27:24 'reported' shows the patient said it
+  - 27:36 'more' becomes a noun
+  - 27:49 a way to find your own wording
 
 *Rules on the boards*
 
-- 41:06 Do not copy the case note into your letter. Change the words and use your own vocabulary.
+- 20:10 Show the result with words such as due to, resulted in or consequently.
+- 23:44 When two facts contrast, you can join them in one sentence with while or although.
+- 24:23 Do not copy the case notes word for word. Use words with the same meaning.
+- 27:49 First say the note to yourself in simple English words. Then write it again with a noun.
+
+*Terms*: Nominalisation (Grammar, 22:15); Disturbance (Word form, 24:13)
+
+#### 28:09 Treatment (`page-8`, deck)
+
+- 28:09 **Nominalising the case-note table**
+  - 28:09 how the three columns work
+  - 28:36 the term for the whole task
+  - 28:59 read the shorthand first
+  - 29:20 the noun 'intake'
+  - 29:47 'gargle' has one form for verb and noun
+  - 30:17 why the sentence is passive
+  - 30:48 a ready opener for treatment information
+  - 31:07 what the plan note asks for
+  - 31:26 the noun needs a verb with it
+  - 31:48 the preposition after the noun
+  - 32:16 the second, impersonal sentence
+  - 32:51 what the note means
+  - 33:17 the meaning of 'adhere to'
+  - 33:42 joining the two ideas with 'due to'
+  - 34:08 the second version of the cause
+  - 34:39 read the examination note
+  - 34:53 the two nouns
+  - 35:22 an adjective carries the negative idea
+  - 35:51 the full sentence pattern
+
+*Terms*: Nominalisation (Form, 28:36); Intake (Noun, 29:20); Passive (Form, 30:17); In terms of treatment (Phrase, 30:48); An assessment of (Phrase, 31:48); Prior to (Phrase, 32:29)
+
+#### 36:27 Formal time-related expressions (`page-9`, deck)
+
+- 36:27 **Formal time expressions table**
+  - 36:27 the case note is a timeline of the patient's history
+  - 36:53 the time words decide the tense
+  - 37:10 what the exercise does with each note
+  - 37:25 what the note means
+  - 37:38 the noun occasion
+  - 38:01 verbs for a patient coming to the clinic
+  - 38:23 other sentences that work
+  - 38:38 attend a place, attend to a person
+  - 38:56 what attend to means
+  - 39:08 do not add 'to' for a clinic visit
+  - 39:25 the preposition after 'presented'
+  - 39:44 verbs to learn for the writing task
+  - 40:06 the colon shows subjective information
+  - 40:22 sometimes becomes at times
+  - 40:33 the noun confusion
+  - 40:43 the reporting verb for a subjective note
+  - 40:56 experience in present simple
+  - 41:17 paraphrase, do not copy
+  - 41:43 advice and advise
+  - 41:52 the two words sound different
+  - 42:02 the wrong letter costs a mark
+  - 42:17 every day becomes on a daily basis
+  - 42:28 no agent, so the sentence is passive
+  - 42:41 what passive means
+  - 42:54 advised is the verb here
+  - 43:13 normally becomes under normal circumstances
+  - 43:27 gloss of the word fairly
+  - 43:39 fairly becomes relatively
+  - 43:48 comma after the opening phrase
+  - 44:03 a comma in the wrong place costs a mark
+  - 44:16 the two words that changed
+  - 44:39 the noun onset
+  - 44:44 onset in real case notes
+  - 45:00 verb becomes noun
+  - 45:23 use this sentence in the letter
+
+*Rules on the boards*
+
+- 41:17 Do not copy the case note into your letter. Change the words and use your own vocabulary.
 
 *Warnings (common mistakes)*
 
-- 39:02 For a patient coming to the clinic, do not add 'to'. 'Attended to' is wrong here.
-- 41:51 Writing 'advice' for the verb, or 'advise' for the noun, is counted as an error.
-- 43:52 A comma in the wrong place is a mistake too, and it can cost you marks.
+- 39:08 For a patient coming to the clinic, do not add 'to'. 'Attended to' is wrong here.
+- 42:02 Writing 'advice' for the verb, or 'advise' for the noun, is counted as an error.
+- 44:03 A comma in the wrong place is a mistake too, and it can cost you marks.
 
-*Terms*: Occasion (New word, 37:32); Attend, present, visit (Verbs, 37:55); Attend to (Phrase, 38:50); Confusion (Noun, 40:22); Passive (Grammar, 42:30); Under normal circumstances (Phrase, 43:02); Onset (Noun, 44:29)
+*Terms*: Occasion (New word, 37:38); Attend, present, visit (Verbs, 38:01); Attend to (Phrase, 38:56); Confusion (Noun, 40:33); Passive (Grammar, 42:41); Under normal circumstances (Phrase, 43:13); Onset (Noun, 44:39)
 
-#### 45:27 Denominalisation (`page-11`, deck)
+#### 45:38 Denominalisation (`page-11`, deck)
 
-- 45:27 **Denominalisation case-note table**
-  - 45:27 the two directions - nominalisation and denominalisation
-  - 45:51 why this technique is useful for case notes
-  - 46:23 pull the verb out of the noun
-  - 46:38 gloss the verb resolve
-  - 46:57 the note has no verb for the diet
-  - 47:20 the noun form is not wrong - the aim is to change the note
-  - 47:43 the obvious verb is not always the one you want
-  - 48:00 the version to avoid
-  - 48:22 check the verb, look for a synonym
-  - 48:47 gloss combing
-  - 49:01 gloss eradicate and link it to the noun
-  - 49:24 define the passive
-  - 49:49 active and passive versions of the same sentence
-  - 50:14 removal gives remove
-  - 50:22 rewrite 'necessary' at the start of the sentence
-  - 50:38 the instrument phrase
-  - 51:01 a or the with lice comb
-  - 51:22 two nouns, two verbs
-  - 51:35 gloss commence
-  - 51:55 where this kind of note is used
-  - 52:01 the request form in the model sentence
+- 45:38 **Denominalisation case-note table**
+  - 45:38 the two directions - nominalisation and denominalisation
+  - 46:02 why this technique is useful for case notes
+  - 46:34 pull the verb out of the noun
+  - 46:49 gloss the verb resolve
+  - 47:07 the note has no verb for the diet
+  - 47:31 the noun form is not wrong - the aim is to change the note
+  - 47:54 the obvious verb is not always the one you want
+  - 48:11 the version to avoid
+  - 48:32 check the verb, look for a synonym
+  - 48:58 gloss combing
+  - 49:12 gloss eradicate and link it to the noun
+  - 49:35 define the passive
+  - 50:00 active and passive versions of the same sentence
+  - 50:24 removal gives remove
+  - 50:33 rewrite 'necessary' at the start of the sentence
+  - 50:49 the instrument phrase
+  - 51:12 a or the with lice comb
+  - 51:33 two nouns, two verbs
+  - 51:46 gloss commence
+  - 52:06 where this kind of note is used
+  - 52:12 the request form in the model sentence
 
 *Rules on the boards*
 
-- 47:20 'Until the resolution of symptoms' is not wrong. The aim is to change the note, not to copy it into your letter.
-- 48:22 Check the verb you make from the noun. If it does not fit the sentence, look for a synonym.
+- 47:31 'Until the resolution of symptoms' is not wrong. The aim is to change the note, not to copy it into your letter.
+- 48:32 Check the verb you make from the noun. If it does not fit the sentence, look for a synonym.
 
 *Wrong sentences corrected*
 
-- 48:00 The biopsy results finds...
+- 48:11 The biopsy results finds...
 
-*Terms*: Passive (Form, 49:24)
+*Terms*: Passive (Form, 49:35)
 
 ### OET facts
 
-- 24:27 (`writing-vocabulary-range`) Assessors look at the range of vocabulary in the letter.
+- 24:29 (`writing-vocabulary-range`) Assessors look at the range of vocabulary in the letter.
 
 ### Vocabulary
 
 First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
 
-- 4:05 Excessive
-- 4:21 Intake
-- 16:49 more pronounced
-- 17:18 breaking wind
-- 19:46 Illumination
-- 20:35 Inadequate
-- 26:56 Consume
-- 30:42 In terms of treatment
-- 31:42 An assessment of
-- 32:22 Prior to
-- 33:11 Adhere to
-- 37:32 Occasion
-- 38:50 Attend to
-- 43:02 Under normal circumstances
-- 43:16 fairly
-- 46:38 resolve
-- 48:47 combing
-- 49:01 eradicate
-- 50:38 lice comb
-- 51:35 commence
+- 4:04 Excessive
+- 4:20 Intake
+- 16:52 more pronounced
+- 17:20 breaking wind
+- 19:48 Illumination
+- 20:36 Inadequate
+- 27:03 Consume
+- 30:48 In terms of treatment
+- 31:48 An assessment of
+- 32:29 Prior to
+- 33:17 Adhere to
+- 37:38 Occasion
+- 38:56 Attend to
+- 43:13 Under normal circumstances
+- 43:27 fairly
+- 46:49 resolve
+- 48:58 combing
+- 49:12 eradicate
+- 50:49 lice comb
+- 51:46 commence
 
 ### Links to other lessons
 
 - 0:16 refers to Grammar for OET: Verb Use (`grammar-02-verb-use`) (in `page-3_t1.s1.u4`)
-- 5:59 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `pages-04-05_t5.s3.u3`)
-- 23:19 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-7_t1.s10.u3`)
-- 36:51 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Time markers" (in `page-9_t1.s2.u2`)
-- 49:43 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `page-11_t1.s12.u4`)
+- 5:58 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `pages-04-05_t5.s3.u3`)
+- 23:20 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-7_t1.s10.u3`)
+- 36:57 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Time markers" (in `page-9_t1.s2.u2`)
+- 49:54 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `page-11_t1.s12.u4`)
 - referred to by Grammar for OET: Articles (`grammar-04-articles`), "Introduction" at 0:16
-- referred to by Grammar for OET: Articles (`grammar-04-articles`), "Spot the correct sentence" at 49:05, about section `pages-04-05`
+- referred to by Grammar for OET: Articles (`grammar-04-articles`), "Spot the correct sentence" at 49:06, about section `pages-04-05`
 - referred to by Grammar for OET: Articles (`grammar-04-articles`), "Gap fill: articles" at 56:07, about section `page-6`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 5:42
-- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Adjectives and nouns" at 26:58
+- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Adjectives and nouns" at 27:15
 
 
 <a id="grammar-04-articles"></a>
@@ -1386,7 +1386,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 4. Grammar for OET: Articles
 
 - Lesson ID and folder: `grammar-04-articles` (folder `grammar-04-articles`); course grammar, lesson 4; length 59:31; bundle format 1.12
-- Status: approved by siavash, 2026-09-27 23:08
+- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:29
 - Description: Learn when to use a, an, the or no article, and how to use articles correctly in your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 54:32 long, partial hash `39acd9b8365dc034`; deck `source/slides.pdf`, 16 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -1514,18 +1514,18 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 23:06 why both printed versions are wrong
   - 23:23 the verb for having an operation
   - 23:45 the verb 'do' is rejected
-  - 24:11 the article error itself
-  - 24:33 uncountable 'surgery' against countable 'operation'
-  - 25:05 the phrase for the end of a letter
-  - 25:41 education and information are uncountable
+  - 24:10 the article error itself
+  - 24:32 uncountable 'surgery' against countable 'operation'
+  - 25:04 the phrase for the end of a letter
+  - 25:40 education and information are uncountable
   - 26:03 what 'accommodation' means and where you meet it
-  - 26:30 uncountable 'accommodation' against countable housing words
+  - 26:29 uncountable 'accommodation' against countable housing words
   - 27:03 pain in general, or one particular pain
   - 27:32 a describing word makes one single pain
   - 27:44 'pain' against countable 'ache'
-  - 28:06 'the pain' after a first mention
+  - 28:05 'the pain' after a first mention
   - 28:29 the opening sentence pattern
-  - 28:46 why 'the' must go
+  - 28:45 why 'the' must go
   - 29:13 the test for non-specific
 
 *Rules on the boards*
@@ -1536,7 +1536,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 *Wrong sentences corrected*
 
 - 23:45 The patient done a surgery.
-- 24:11 A surgery
+- 24:10 A surgery
 
 *Terms*: undergo (past: underwent) (Form, 23:23)
 
@@ -1545,162 +1545,162 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 29:38 **Specific nouns take 'the'**
   - 29:38 the slide's two paths, countable and uncountable, both leading to 'the'
   - 29:42 Recap the non-specific rule taught before
-  - 30:22 Define 'specific' and give the one rule of this board
+  - 30:21 Define 'specific' and give the one rule of this board
   - 30:56 Show first mention against second mention with the pain example
 - 31:31 **Case notes table: wrong and right**
   - 31:31 how to work through the five sentences
   - 32:16 a named period of time takes 'the'
-  - 32:27 more time phrases that take 'the'
-  - 32:43 warn that this article is often left out
-  - 33:06 drug names take no article
+  - 32:28 more time phrases that take 'the'
+  - 32:44 warn that this article is often left out
+  - 33:07 drug names take no article
   - 33:38 the same rule for 12 years, plus a second correct version
   - 33:58 words that describe a patient are countable
   - 34:30 the body part is specific
-  - 34:41 two ways to mark it
-  - 35:15 'the above information' points back
-  - 35:32 'admission' with 'an' or with no article
+  - 34:42 two ways to mark it
+  - 35:16 'the above information' points back
+  - 35:33 'admission' with 'an' or with no article
   - 36:07 read the referral sentence and find the phrase to fix
-  - 36:44 the noun phrase cannot stand alone
-  - 37:03 'the' or 'a', and what changes
+  - 36:45 the noun phrase cannot stand alone
+  - 37:04 'the' or 'a', and what changes
 
 *Rules on the boards*
 
-- 30:34 A specific noun takes 'the'. It does not matter if it is countable or uncountable.
-- 32:16 When you name a period of time, use 'the': for the previous 5 years.
+- 30:33 A specific noun takes 'the'. It does not matter if it is countable or uncountable.
+- 32:16 With 'previous' or 'last' and a number, use 'the': for the previous 5 years.
 
 *Warnings (common mistakes)*
 
-- 32:43 Before a period of time, like 'the last 12 years' or 'the previous 5 years', we use 'the'. Many candidates leave it out.
+- 32:44 Before a period of time, like 'the last 12 years' or 'the previous 5 years', we use 'the'. Many candidates leave it out.
 
 *Wrong sentences corrected*
 
-- 33:14 She has been on the Microgynon.
+- 33:16 She was on the Microgynon.
 
-*Terms*: Specific noun (Term, 30:22)
+*Terms*: Specific noun (Term, 30:21)
 
 #### 37:43 A or an? (`pages-11-12`, deck)
 
 - 37:43 **A or an: which one?**
   - 37:43 Set the rule: look at the word that follows the article
   - 38:09 Name the vowel letters
-  - 38:19 Show 'an' with words that begin with a vowel sound
-- 38:41 **One or two: choosing a or an by sound**
-  - 38:41 how the two columns work
-  - 39:06 the rule behind every row
-  - 39:33 '18-year-old' begins with a vowel sound
-  - 39:55 '83-year-old' works the same way
-  - 40:20 '17-year-old' begins with a consonant sound
-  - 40:35 contrast the two numbers
+  - 38:20 Show 'an' with words that begin with a vowel sound
+- 38:42 **One or two: choosing a or an by sound**
+  - 38:42 how the two columns work
+  - 39:07 the rule behind every row
+  - 39:34 '18-year-old' begins with a vowel sound
+  - 39:56 '83-year-old' works the same way
+  - 40:21 '17-year-old' begins with a consonant sound
+  - 40:36 contrast the two numbers
   - 41:07 'university' is written with U but begins with a 'you' sound
-  - 41:30 'urine' behaves like 'university'
-  - 41:56 'MRI' is read letter by letter
-  - 42:13 the same pattern in other test names
+  - 41:31 'urine' behaves like 'university'
+  - 41:57 'MRI' is read letter by letter
+  - 42:14 the same pattern in other test names
 
 *Rules on the boards*
 
-- 39:06 The choice depends on the sound the word begins with, not on the first letter you see.
+- 39:07 The choice depends on the sound the word begins with, not on the first letter you see.
 
 *Terms*: A, E, I, O, U (Vowels, 38:09)
 
-#### 42:41 Spot the correct sentence (`pages-13-14`, deck)
+#### 42:42 Spot the correct sentence (`pages-13-14`, deck)
 
-- 42:41 **Choice table, page 13 sentences**
-  - 42:41 the three versions of each sentence
+- 42:42 **Choice table, page 13 sentences**
+  - 42:42 the three versions of each sentence
   - 43:09 the term for the third column
   - 43:27 what the student has to do
   - 44:03 the word 'underwent'
   - 44:18 why the indefinite version is right
-  - 44:39 operation and surgery take different articles
-  - 45:05 a part of the body is specific
+  - 44:40 operation and surgery take different articles
+  - 45:06 a part of the body is specific
   - 45:22 a possessive works too
   - 45:44 'ache' is countable
-  - 45:58 ache beside pain
-  - 46:23 when the definite version works
-  - 46:38 the zero version is wrong
-  - 46:59 diseases and articles
-  - 47:14 the limit of that rule
-  - 47:38 -ing activities
-- 47:54 **Choice table, page 14 sentences**
-  - 47:54 five more sentences in three versions
-  - 48:23 two versions are out
-  - 48:34 why the definite version is right
-  - 48:46 the name for a noun made from a verb
-  - 48:59 where this is useful
-  - 49:24 one particular course of treatment
-  - 49:51 a second sentence to compare
-  - 50:05 what the two words mean and which article follows
+  - 45:59 ache beside pain
+  - 46:24 when the definite version works
+  - 46:39 the zero version is wrong
+  - 47:00 diseases and articles
+  - 47:15 the limit of that rule
+  - 47:39 -ing activities
+- 47:55 **Choice table, page 14 sentences**
+  - 47:55 five more sentences in three versions
+  - 48:24 two versions are out
+  - 48:35 why the definite version is right
+  - 48:47 the name for a noun made from a verb
+  - 49:00 where this is useful
+  - 49:25 one particular course of treatment
+  - 49:52 a second sentence to compare
+  - 50:06 what the two words mean and which article follows
   - 50:22 why the other two versions are wrong
-  - 50:39 the rule to take away
-  - 51:09 the word 'ongoing'
-  - 51:22 'care' is uncountable
-  - 51:35 the care is non-specific
-  - 52:03 two reasons for no article
-  - 52:19 the indefinite version is also possible
+  - 50:40 the rule to take away
+  - 51:10 the word 'ongoing'
+  - 51:23 'care' is uncountable
+  - 51:36 the care is non-specific
+  - 52:04 two reasons for no article
+  - 52:20 the indefinite version is also possible
 
 *Rules on the boards*
 
-- 50:39 Look at the word in front of the noun. Its meaning tells you if the noun is specific or not.
+- 50:40 Look at the word in front of the noun. Its meaning tells you if the noun is specific or not.
 
-*Terms*: Zero article (Grammar term, 43:09); Nominalisation (Grammar term, 48:46)
+*Terms*: Zero article (Grammar term, 43:09); Nominalisation (Grammar term, 48:47)
 
-#### 52:50 Gap fill: articles (`page-15`, deck)
+#### 52:51 Gap fill: articles (`page-15`, deck)
 
-- 52:50 **Gap-fill letter: choosing the articles**
-  - 52:50 the task - 13 gaps in a referral letter, each needing a, an, the, or no article
-  - 53:21 gap 1 - 'the first child'
-  - 53:35 gap 2 - 'a family of 5'
-  - 53:57 gaps 3 and 4 - first mention of a measurement
+- 52:51 **Gap-fill letter: choosing the articles**
+  - 52:51 the task - 13 gaps in a referral letter, each needing a, an, the, or no article
+  - 53:22 gap 1 - 'the first child'
+  - 53:36 gap 2 - 'a family of 5'
+  - 53:58 gaps 3 and 4 - first mention of a measurement
   - 54:17 what 'febrile' means, taught correctly
-  - 54:30 gap 5 - 'over the next two days'
-  - 55:19 gap 6 - 'the fever', already mentioned
-  - 55:30 gap 6 - the possessive option
-  - 55:46 naming the process of making a noun from a verb or adjective
-  - 56:23 condensing a symptom list into one word
+  - 54:31 gap 5 - 'over the next two days'
+  - 55:20 gap 6 - 'the fever', already mentioned
+  - 55:31 gap 6 - the possessive option
+  - 55:47 naming the process of making a noun from a verb or adjective
+  - 56:24 condensing a symptom list into one word
   - 56:59 gaps 7 and 8 - a new reading takes 'a' again
-  - 57:11 warning - do not switch to 'the' for the second reading
-  - 57:28 gap 9 - 'over the legs' or 'over her legs'
-  - 57:50 gaps 10 and 11 - the blood result
-  - 58:07 gap 12 - 'based on the above'
-  - 58:25 gap 13 - 'as a stat dose'
-  - 58:34 what a stat dose is
-  - 58:49 close the letter and check the whole set of answers
+  - 57:12 warning - do not switch to 'the' for the second reading
+  - 57:29 gap 9 - 'over the legs' or 'over her legs'
+  - 57:51 gaps 10 and 11 - the blood result
+  - 58:08 gap 12 - 'based on the above'
+  - 58:26 gap 13 - 'as a stat dose'
+  - 58:35 what a stat dose is
+  - 58:50 close the letter and check the whole set of answers
 
 *Warnings (common mistakes)*
 
-- 57:11 Do not write 'the temperature of 40.2'. The word 'temperature' came earlier, but this reading is new, so we use 'a'.
+- 57:12 Do not write 'the temperature of 40.2'. The word 'temperature' came earlier, but this reading is new, so we use 'a'.
 
-*Terms*: From case notes to one word (Term, 55:46); Stat dose (Term, 58:34)
+*Terms*: From case notes to one word (Term, 55:47); Stat dose (Term, 58:35)
 
 ### Vocabulary
 
 First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
 
 - 13:05 Abstractions
-- 25:16 appreciate
+- 25:15 appreciate
 - 26:03 accommodation
-- 36:16 surgery
+- 36:17 surgery
 - 44:03 Underwent
-- 51:09 Ongoing
-- 54:58 Deteriorate
+- 51:10 Ongoing
+- 54:59 Deteriorate
 
 ### Links to other lessons
 
 - 0:16 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`) (in `page-3_t1.s1.u4`)
-- 49:05 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`), "What is nominalisation?" (in `pages-13-14_t2.s5.u2`)
+- 49:06 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`), "What is nominalisation?" (in `pages-13-14_t2.s5.u2`)
 - 56:07 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Physical symptoms" (in `page-15_t1.s9.u3`)
 - referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Introduction" at 0:09
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Expand" at 11:27
-- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Choosing the right word form" at 8:59, about section `page-6`
-- referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Prescribe" at 42:00, about section `page-6`
-- referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Types of pain" at 18:14, about section `page-6`
+- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Choosing the right word form" at 9:02, about section `page-6`
+- referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Prescribe" at 42:06, about section `page-6`
+- referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Types of pain" at 18:16, about section `page-6`
 
 
 <a id="grammar-05-complex-compound"></a>
 
 ## 5. Grammar for OET: Complex sentences
 
-- Lesson ID and folder: `grammar-05-complex-compound` (folder `grammar-05-complex-compound`); course grammar, lesson 5; length 56:09; bundle format 1.12
-- Status: approved by siavash, 2026-09-27 23:08
+- Lesson ID and folder: `grammar-05-complex-compound` (folder `grammar-05-complex-compound`); course grammar, lesson 5; length 56:31; bundle format 1.12
+- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:40
 - Description: Learn how to join two ideas in one complex sentence, with the right linking word and comma, for your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 65:06 long, partial hash `49e48848f0038580`; deck `source/slides.pdf`, 14 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -1723,16 +1723,16 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 3:14 Show the score consequence: simple sentences only means grade C
   - 3:57 Define clause and independent clause
   - 4:34 Define dependent clause and contrast the two kinds
-- 5:06 **Complex sentence diagram: Although Karen discontinued...**
-  - 5:06 Reveal the slide's clause diagram, piece by piece, and gloss the hard word
-  - 5:52 Name what the diagram shows and the shared structure of both clauses
-  - 6:18 Stand-alone test on the second clause: it is independent
-  - 6:49 Stand-alone test on the first clause: it is dependent
-  - 7:19 Warn against writing a dependent clause as a whole sentence
-  - 7:36 Give the second name for a dependent clause
-  - 7:55 Name the joining word in the example
-  - 8:01 State what conjunctions are used for
-  - 8:13 Show the finished complex sentence
+- 5:12 **Complex sentence diagram: Although Karen discontinued...**
+  - 5:12 Reveal the slide's clause diagram, piece by piece, and gloss the hard word
+  - 5:57 Name what the diagram shows and the shared structure of both clauses
+  - 6:23 Stand-alone test on the second clause: it is independent
+  - 6:54 Stand-alone test on the first clause: it is dependent
+  - 7:24 Warn against writing a dependent clause as a whole sentence
+  - 7:41 Give the second name for a dependent clause
+  - 8:00 Name the joining word in the example
+  - 8:06 State what conjunctions are used for
+  - 8:18 Show the finished complex sentence
 
 *Rules on the boards*
 
@@ -1740,273 +1740,273 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 *Warnings (common mistakes)*
 
-- 7:19 A dependent clause with a full stop is not a sentence. In a letter, never write "Although she has good family support." on its own. Join it to an independent clause.
+- 7:24 A dependent clause with a full stop is not a sentence. In a letter, never write "Although she has good family support." on its own. Join it to an independent clause.
 
 *Wrong sentences corrected*
 
-- 6:49 Although Karen discontinued her use of Microgynon 30.
+- 6:54 Although Karen discontinued her use of Microgynon 30.
 
-*Terms*: Clause (Grammar term, 3:57); Independent clause (Grammar term, 4:15); Dependent clause (Grammar term, 4:34); Subordinate clause (Grammar term, 7:36); Conjunction (Grammar term, 7:55)
+*Terms*: Clause (Grammar term, 3:57); Independent clause (Grammar term, 4:15); Dependent clause (Grammar term, 4:34); Subordinate clause (Grammar term, 7:41); Conjunction (Grammar term, 8:00)
 
-#### 8:46 From case notes to a sentence (`page-6`, deck)
+#### 8:51 From case notes to a sentence (`page-6`, deck)
 
-- 8:46 **Case notes turned into one complex sentence**
-  - 8:46 Show the notes and the finished sentence, and frame the task
-  - 9:15 Read the first notes: who the patient is
-  - 9:32 Gloss the equipment word in the notes
-  - 9:47 Read the last two notes: the family comment and the action taken
-  - 9:59 Show the contrast hidden in the notes
-  - 10:14 Why the contrast forces one joined sentence
-  - 10:45 The word that marks the contrast
-  - 10:52 The expression that gives the reason
-  - 11:25 Test the 'due to' part on its own
-  - 11:40 Correct the label: the 'due to' part is a phrase, not a clause
-  - 12:00 Define dependent clause before the diagram
-  - 12:06 Define independent clause before the diagram
-  - 12:28 Draw the sentence as two clause pieces joined by 'Although'
-  - 13:12 Sum up what the sentence is made of
-
-*Rules on the boards*
-
-- 10:14 When two notes contrast like this, join them in one sentence instead of listing them one by one.
-- 11:40 'Due to his high care needs' is not a clause. It has no subject and no verb. It is a phrase.
-
-*Terms*: Hoist (New word, 9:32); Although (Joining word, 10:45); Due to (Linking words, 10:52); Dependent clause (Grammar, 12:00); Independent clause (Grammar, 12:06)
-
-#### 13:30 Subordinating conjunctions (`page-7`, deck)
-
-- 13:30 **The joining words**
-  - 13:30 Show the list of joining words and recall the two clauses of a complex sentence
-  - 13:30 Show both orders as clause diagrams and teach order 1
-  - 14:19 Name the glue and its two types
-  - 14:41 Contrast subordinating and coordinating conjunctions
-  - 15:19 Memory aid: the subordinate clause and its conjunction
-  - 16:06 What each joining word shows
-  - 16:42 Who and which are relative pronouns
-  - 17:02 Who for people, which for things, and the comma
-  - 18:07 Worked example of the comma with which
-  - 19:27 Explain order 1 and then show order 2
-  - 19:57 Explain order 2 and its comma
-  - 20:20 Warn against the missing comma
+- 8:51 **Case notes turned into one complex sentence**
+  - 8:51 Show the notes and the finished sentence, and frame the task
+  - 9:20 Read the first notes: who the patient is
+  - 9:37 Gloss the equipment word in the notes
+  - 9:52 Read the last two notes: the family comment and the action taken
+  - 10:04 Show the contrast hidden in the notes
+  - 10:19 Why the contrast forces one joined sentence
+  - 10:50 The word that marks the contrast
+  - 10:58 The expression that gives the reason
+  - 11:31 Test the 'due to' part on its own
+  - 11:45 Correct the label: the 'due to' part is a phrase, not a clause
+  - 12:05 Define dependent clause before the diagram
+  - 12:12 Define independent clause before the diagram
+  - 12:33 Draw the sentence as two clause pieces joined by 'Although'
+  - 13:17 Sum up what the sentence is made of
 
 *Rules on the boards*
 
-- 15:40 A subordinating conjunction starts the subordinate clause. That is the glue for complex sentences.
-- 17:17 When who or which only adds extra information, put a comma before it, and another after that information if the sentence goes on.
-- 20:29 When the dependent clause comes first, the comma is required. Leaving it out is an error.
+- 10:19 When two notes contrast like this, join them in one sentence instead of listing them one by one.
+- 11:45 'Due to his high care needs' is not a clause. It has no subject and no verb. It is a phrase.
+
+*Terms*: Hoist (New word, 9:37); Although (Joining word, 10:50); Due to (Linking words, 10:58); Dependent clause (Grammar, 12:05); Independent clause (Grammar, 12:12)
+
+#### 13:35 Subordinating conjunctions (`page-7`, deck)
+
+- 13:35 **The joining words**
+  - 13:35 Show the list of joining words and recall the two clauses of a complex sentence
+  - 13:35 Show both orders as clause diagrams and teach order 1
+  - 14:24 Name the glue and its two types
+  - 14:46 Contrast subordinating and coordinating conjunctions
+  - 15:24 Memory aid: the subordinate clause and its conjunction
+  - 16:12 What each joining word shows
+  - 16:48 Who and which are relative pronouns
+  - 17:09 Who for people, which for things, and the comma
+  - 18:13 Worked example of the comma with which
+  - 19:33 Explain order 1 and then show order 2
+  - 20:05 Explain order 2 and its comma
+  - 20:27 Warn against the missing comma
+
+*Rules on the boards*
+
+- 15:45 A subordinating conjunction starts the subordinate clause. That is the glue for complex sentences.
+- 17:24 When who or which only adds extra information, put a comma before it, and another after that information if the sentence goes on.
+- 20:35 When the dependent clause comes first, put a comma after it. It shows the reader where the first clause ends.
 
 *Wrong sentences corrected*
 
-- 20:20 After she started the new medication the patient felt better.
+- 20:27 After she started the new medication the patient felt better.
 
-*Terms*: Conjunction (Term, 14:19); Subordinate clause (Term, 15:19); Relative clause (Term, 16:48)
+*Terms*: Conjunction (Term, 14:24); Subordinate clause (Term, 15:24); Relative clause (Term, 16:54)
 
-#### 20:39 Compound or complex? (`pages-08-09`, deck)
+#### 20:47 Compound or complex? (`pages-08-09`, deck)
 
-- 20:39 **Compound and complex sentence boxes**
-  - 20:39 Open the two boxes and name the joining word of a compound sentence
-  - 21:08 Teach the seven coordinating conjunctions through FANBOYS
-  - 21:34 State the FANBOYS test as the rule to remember
-  - 21:43 Both sentence types are built from two clauses
-  - 21:57 Define independent clause
-  - 22:19 Reject the active form in the second clause of the example
-  - 22:38 Give the finished compound example with the passive second clause
-  - 23:00 Draw the example as two independent pieces with 'and' between them
-  - 23:35 State what the diagram shows
-  - 23:49 Leave out the repeated subject in the second clause
-  - 24:05 Reject the comma splice
-  - 24:25 Give the correct version of the comma splice
-  - 24:42 Fill the Complex box: the joining word and the dependent clause
-  - 25:06 Draw the shape of a complex sentence
-- 25:50 **Which joining word makes which sentence**
-  - 25:50 Set up the test printed on the slide and reject FANBOYS inside a complex sentence
-  - 26:07 Warn what the wrong joining word does to the sentence
-  - 26:24 Re-express the slide's 'glue' gloss in English and give the test
-  - 26:41 State the complement of the test: anything else is subordinating
-  - 27:07 Reject two joining words in one sentence: Although ... but ...
-  - 27:37 Give the correct version and the rule behind it
-  - 27:53 Same rule with Because ... so ...
-  - 28:08 Give the correct version of the Because sentence
+- 20:47 **Compound and complex sentence boxes**
+  - 20:47 Open the two boxes and name the joining word of a compound sentence
+  - 21:16 Teach the seven coordinating conjunctions through FANBOYS
+  - 21:42 State the FANBOYS test as the rule to remember
+  - 21:51 Both sentence types are built from two clauses
+  - 22:05 Define independent clause
+  - 22:27 Reject the active form in the second clause of the example
+  - 22:47 Give the finished compound example with the passive second clause
+  - 23:08 Draw the example as two independent pieces with 'and' between them
+  - 23:44 State what the diagram shows
+  - 23:57 Leave out the repeated subject in the second clause
+  - 24:13 Reject the comma splice
+  - 24:33 Give the correct version of the comma splice
+  - 24:50 Fill the Complex box: the joining word and the dependent clause
+  - 25:14 Draw the shape of a complex sentence
+- 25:58 **Which joining word makes which sentence**
+  - 25:58 Set up the test printed on the slide and reject FANBOYS inside a complex sentence
+  - 26:15 Warn what the wrong joining word does to the sentence
+  - 26:33 Re-express the slide's 'glue' gloss in English and give the test
+  - 26:49 State the complement of the test: anything else is subordinating
+  - 27:15 Reject two joining words in one sentence: Although ... but ...
+  - 27:45 Give the correct version and the rule behind it
+  - 28:01 Same rule with Because ... so ...
+  - 28:16 Give the correct version of the Because sentence
 
 *Rules on the boards*
 
-- 21:34 When one of these seven words joins the two parts, the sentence is compound.
-- 26:41 A subordinating conjunction, like because or although, makes a complex sentence.
+- 21:42 When one of these seven words joins the two parts, the sentence is compound.
+- 26:49 A subordinating conjunction, like because or although, makes a complex sentence.
 
 *Warnings (common mistakes)*
 
-- 26:07 The wrong joining word can change the meaning of your sentence, or make it hard for the reader to understand. Then the sentence is wrong.
+- 26:15 The wrong joining word can change the meaning of your sentence, or make it hard for the reader to understand. Then the sentence is wrong.
 
 *Wrong sentences corrected*
 
-- 22:19 He examined immediately.
-- 24:05 He presented yesterday, he was examined immediately.
-- 27:07 Although her pain has reduced, but she insists on taking the medication.
-- 27:53 Because the medication causes drowsiness, so do not drive.
+- 22:27 He examined immediately.
+- 24:13 He presented yesterday, he was examined immediately.
+- 27:15 Although her pain has reduced, but she insists on taking the medication.
+- 28:01 Because the medication causes drowsiness, so do not drive.
 
-*Terms*: Coordinating conjunction (Form, 20:59); FANBOYS (Memory word, 21:08); Clause (Term, 21:49); Independent clause (Term, 21:57); Passive (Term, 22:43); Subordinating conjunction (Form, 24:42); Dependent clause (Term, 24:51); Conjunction (Term, 26:24)
+*Terms*: Coordinating conjunction (Form, 21:08); FANBOYS (Memory word, 21:16); Clause (Term, 21:57); Independent clause (Term, 22:05); Passive (Term, 22:51); Subordinating conjunction (Form, 24:50); Dependent clause (Term, 25:00); Conjunction (Term, 26:33)
 
-#### 28:24 Gap fill (`page-10`, deck)
+#### 28:32 Gap fill (`page-10`, deck)
 
-- 28:24 **Gap fill: choosing the right conjunction**
-  - 28:24 introduce the task
-  - 28:48 how the word list works
-  - 29:25 find the link between the two clauses
-  - 30:03 the verb form rules one word out
-  - 30:27 since against when
-  - 30:59 name the relationship
-  - 31:24 two words for contrast
-  - 31:50 two accounts that do not agree
-  - 32:09 while as a contrast word
-  - 32:29 the second meaning of while
-  - 33:02 a clause of condition
-  - 33:22 gloss and use in letters
-  - 33:58 two events in order
-  - 34:18 a second condition
-  - 34:41 one specific past occasion
-  - 34:55 the two clauses of the sentence
-  - 35:19 the comma rule for both word orders
-  - 35:47 a clause of reason
-  - 36:04 one action must come first
-  - 36:38 the gap opens a relative clause
-  - 36:51 which or who
-  - 37:07 no extra pronoun after which or who
-  - 37:30 why there is a comma before the gap
-  - 37:49 who, and who it points back to
-  - 38:05 why there is a comma before the gap
-  - 38:15 writing the age modifier
-  - 38:28 using these conjunctions in letter writing
+- 28:32 **Gap fill: choosing the right conjunction**
+  - 28:32 introduce the task
+  - 28:56 how the word list works
+  - 29:33 find the link between the two clauses
+  - 30:11 the verb form rules one word out
+  - 30:35 since against when
+  - 31:10 name the relationship
+  - 31:36 two words for contrast
+  - 32:02 two accounts that do not agree
+  - 32:20 while as a contrast word
+  - 32:41 the second meaning of while
+  - 33:14 a clause of condition
+  - 33:34 gloss and use in letters
+  - 34:09 two events in order
+  - 34:30 a second condition
+  - 34:52 one specific past occasion
+  - 35:06 the two clauses of the sentence
+  - 35:31 the comma rule for both word orders
+  - 36:02 a clause of reason
+  - 36:19 one action must come first
+  - 36:53 the gap opens a relative clause
+  - 37:06 which or who
+  - 37:23 no extra pronoun after which or who
+  - 37:46 why there is a comma before the gap
+  - 38:05 who, and who it points back to
+  - 38:20 why there is a comma before the gap
+  - 38:31 writing the age modifier
+  - 38:43 using these conjunctions in letter writing
 
 *Rules on the boards*
 
-- 38:28 Use these joining words to join your case notes into complex sentences. Choose the word by the link you need: time, contrast, reason, condition or extra information.
+- 38:43 Use these joining words to join your case notes into complex sentences. Choose the word by the link you need: time, contrast, reason, condition or extra information.
 
 *Wrong sentences corrected*
 
-- 37:12 Pre-eclampsia, which it led to an emergency caesarean section.
+- 37:28 Pre-eclampsia, which it led to an emergency caesarean section.
 
-*Terms*: Conditional clause (Form, 33:10); Relative clause (Form, 36:38); 16-year-old (Form, 38:15)
+*Terms*: Conditional clause (Form, 33:22); Relative clause (Form, 36:53); 16-year-old (Form, 38:31)
 
-#### 39:01 Due to, despite, as well as (`pages-11-12`, deck)
+#### 39:17 Due to, despite, as well as (`pages-11-12`, deck)
 
-- 39:01 **the rule and due to, despite, as well as**
-  - 39:01 Show the pattern these three words take, with the first model sentence
-  - 39:01 Show the model sentence and reject the clause version
-  - 39:01 Show the model sentence and its function
-  - 39:27 Define the grammar term 'clause'
-  - 39:36 Define 'gerund' in English, without the first-language grammar term
-  - 39:59 Analyse what follows 'due to' in the model sentence
-  - 40:13 Give the meaning of 'due to'
-  - 40:23 Show that 'due to' works best with a noun
-  - 40:37 Change card, part one: 'because' takes a clause
-  - 40:53 Change card, part two: 'because of' and 'due to' take a noun
-  - 41:40 Show how the clause turns into the gerund phrase
-  - 41:48 Give the meaning of 'despite'
-  - 41:57 Separate 'despite' from 'in spite of'
-  - 42:12 Show the form of 'despite' that does take a clause
-  - 42:27 Note the difference: although takes a dependent clause
-  - 43:00 Consolidate the two meanings
-  - 43:29 Show when to use it in OET writing
-  - 43:43 Teach the punctuation pattern shared by all three examples
-  - 44:02 Check the second halves and restate the rule
-- 44:23 **Listing findings with as well as**
-  - 44:23 Show the two versions of the findings sentence
-  - 44:42 Start from the main clause
-  - 45:00 Reject 'has blood pressure'
-  - 45:04 Give the correct wording for raised pressure
-  - 45:20 Punctuating a list of findings
-  - 45:30 Point out the articles in the list
-  - 45:44 Why the writer chooses 'as well as'
-  - 45:48 Contrast the comma version with the 'and' version
-  - 46:12 State the rule for the item before 'as well as'
+- 39:17 **the rule and due to, despite, as well as**
+  - 39:17 Show the pattern these three words take, with the first model sentence
+  - 39:17 Show the model sentence and reject the clause version
+  - 39:17 Show the model sentence and its function
+  - 39:43 Define the grammar term 'clause'
+  - 39:52 Define 'gerund' in English, without the first-language grammar term
+  - 40:15 Analyse what follows 'due to' in the model sentence
+  - 40:29 Give the meaning of 'due to'
+  - 40:39 Show that 'due to' works best with a noun
+  - 40:52 Change card, part one: 'because' takes a clause
+  - 41:08 Change card, part two: 'because of' and 'due to' take a noun
+  - 41:56 Show how the clause turns into the gerund phrase
+  - 42:03 Give the meaning of 'despite'
+  - 42:13 Separate 'despite' from 'in spite of'
+  - 42:28 Show the form of 'despite' that does take a clause
+  - 42:42 Note the difference: although takes a dependent clause
+  - 43:15 Consolidate the two meanings
+  - 43:45 Show when to use it in OET writing
+  - 43:59 Teach the punctuation pattern shared by all three examples
+  - 44:18 Check the second halves and restate the rule
+- 44:39 **Listing findings with as well as**
+  - 44:39 Show the two versions of the findings sentence
+  - 44:57 Start from the main clause
+  - 45:15 Reject 'has blood pressure'
+  - 45:20 Give the correct wording for raised pressure
+  - 45:36 Punctuating a list of findings
+  - 45:46 Point out the articles in the list
+  - 46:00 Why the writer chooses 'as well as'
+  - 46:04 Contrast the comma version with the 'and' version
+  - 46:32 State the rule for the item before 'as well as'
 
 *Rules on the boards*
 
-- 44:12 After due to, despite and as well as, use a noun or an -ing form, never a clause.
-- 46:12 Before 'as well as', join the other items with 'and', not only commas.
+- 44:28 After due to, despite and as well as, use a noun or an -ing form, never a clause.
+- 46:32 Before 'as well as', join the other items with 'and': then 'as well as' clearly adds the last finding.
 
 *Wrong sentences corrected*
 
-- 41:25 Despite he use a local anaesthetic
-- 45:00 The patient has blood pressure.
+- 41:41 Despite he use a local anaesthetic
+- 45:15 The patient has blood pressure.
 
-*Terms*: Clause (Term, 39:27); Gerund (Form, 39:36); Independent clause (Term, 43:43)
+*Terms*: Clause (Term, 39:43); Gerund (Form, 39:52); Independent clause (Term, 43:59)
 
-#### 46:22 Correct the sentences (`page-13`, deck)
+#### 46:43 Correct the sentences (`page-13`, deck)
 
-- 46:22 **Correct the sentences table**
-  - 46:22 what the class does with this table
-  - 47:02 the meaning of intermittent pain
-  - 47:26 the missing comma
-  - 47:42 'of' never follows 'despite'
-  - 47:55 the two correct forms
-  - 48:11 adding the second problem with 'as well as'
-  - 48:29 the forms of 'swell'
-  - 48:42 the verbs used with treatment and medication
-  - 49:14 the meaning of deteriorated
-  - 49:38 the meaning of distance vision
-  - 50:01 where 'Although' can stand
-  - 50:17 the two clauses joined with 'Although'
-  - 50:53 keeping the original order with 'However'
-  - 51:28 why 'due to' cannot be used here
-  - 51:37 the two ways to write the cause
-  - 52:14 the meaning of passed away
-  - 52:40 the only fault
-  - 52:47 the comma goes between the clauses
-  - 53:05 the rule to remember
-  - 53:36 the same fault as row 3
-  - 53:43 the two ways to fix it
-  - 54:11 the meaning of shelter
-  - 54:43 the meaning of reluctant
-  - 54:54 where the fault is
-  - 55:15 what a gerund is
-  - 55:21 clause or gerund after 'as well as'
-  - 55:49 the rule for these linking words
+- 46:43 **Correct the sentences table**
+  - 46:43 what the class does with this table
+  - 47:23 the meaning of intermittent pain
+  - 47:47 the missing comma
+  - 48:04 'of' never follows 'despite'
+  - 48:17 the two correct forms
+  - 48:32 adding the second problem with 'as well as'
+  - 48:51 the forms of 'swell'
+  - 49:04 the verbs used with treatment and medication
+  - 49:35 the meaning of deteriorated
+  - 50:00 the meaning of distance vision
+  - 50:23 where 'Although' can stand
+  - 50:38 the two clauses joined with 'Although'
+  - 51:15 keeping the original order with 'However'
+  - 51:50 why 'due to' cannot be used here
+  - 51:59 the two ways to write the cause
+  - 52:35 the meaning of passed away
+  - 53:02 the only fault
+  - 53:09 the comma goes between the clauses
+  - 53:27 the rule to remember
+  - 53:58 the same fault as row 3
+  - 54:05 the two ways to fix it
+  - 54:33 the meaning of shelter
+  - 55:04 the meaning of reluctant
+  - 55:16 where the fault is
+  - 55:37 what a gerund is
+  - 55:42 clause or gerund after 'as well as'
+  - 56:11 the rule for these linking words
 
 *Rules on the boards*
 
-- 53:05 When the dependent clause comes first, the comma goes at the end of that clause, not after Although.
+- 53:27 When the dependent clause comes first, the comma goes at the end of that clause, not after Although.
 
 *Warnings (common mistakes)*
 
-- 55:49 Due to, despite and as well as are followed by a noun or a gerund, never by a clause.
+- 56:11 Due to, despite and as well as are followed by a noun or a gerund, never by a clause.
 
 *Wrong sentences corrected*
 
-- 47:42 Despite of the treatment
+- 48:04 Despite of the treatment
 
-*Terms*: Swollen (Form, 48:29); Gerund (Grammar term, 55:15)
+*Terms*: Swollen (Form, 48:51); Gerund (Grammar term, 55:37)
 
 ### Vocabulary
 
 First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
 
-- 5:19 Discontinued
-- 9:32 Hoist
-- 27:15 Insists
-- 33:22 hesitate
-- 44:29 Elevated
-- 47:02 Intermittent
-- 49:14 Deteriorated
-- 49:38 Distance vision
-- 52:14 Passed away
-- 54:11 Shelter
-- 54:43 Reluctant
+- 5:24 Discontinued
+- 9:37 Hoist
+- 27:23 Insists
+- 33:34 hesitate
+- 44:45 Elevated
+- 47:23 Intermittent
+- 49:35 Deteriorated
+- 50:00 Distance vision
+- 52:35 Passed away
+- 54:33 Shelter
+- 55:04 Reluctant
 
 ### Links to other lessons
 
 - 0:09 refers to Grammar for OET: Articles (`grammar-04-articles`) (in `page-3_t1.s1.u2`)
-- 22:54 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `pages-08-09_t1.s6.u3`)
-- 30:17 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-10_t1.s4.u3`)
+- 23:02 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `pages-08-09_t1.s6.u3`)
+- 30:25 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-10_t1.s4.u3`)
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Introduction" at 0:10
-- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 37:52, about section `pages-11-12`
-- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 41:42, about section `pages-04-05`
+- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 38:03, about section `pages-11-12`
+- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 41:53, about section `pages-04-05`
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Commas: overview" at 3:38
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 5:44, about section `pages-04-05`
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 6:11, about section `pages-08-09`
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 10:25, about section `pages-11-12`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 7:47
-- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Avoid a series of short sentences" at 68:50
+- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Avoid a series of short sentences" at 69:16
 - continues in Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`): Relative and participle clauses build on the clauses and joining words taught here.
 - continues in Grammar for OET: Punctuation (`grammar-07-punctuation`): Punctuation teaches the comma in complex and compound sentences.
 
@@ -2015,8 +2015,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 6. Grammar for OET: Relative Clauses and Participle Clauses
 
-- Lesson ID and folder: `grammar-06-clause` (folder `grammar-06-clause`); course grammar, lesson 6; length 50:53; bundle format 1.21
-- Status: approved by siavash, 2026-09-27 23:08
+- Lesson ID and folder: `grammar-06-clause` (folder `grammar-06-clause`); course grammar, lesson 6; length 51:03; bundle format 1.21
+- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:40
 - Description: Learn to add information with relative clauses, make them shorter, and join case notes with participle clauses in your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 79:14 long, partial hash `6ef7636e4afb83cb`; deck `source/slides.pdf`, 12 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -2115,123 +2115,123 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 21:50 the reduction
   - 22:17 what 'which' points back to
   - 22:59 the pronoun repeats the subject
-  - 23:07 the reduction
-  - 23:34 the rule so far
-  - 23:48 framing the radiology rows
-  - 24:05 the orderly
-  - 24:42 the phrasal verb
-  - 24:53 gloss a hard word
-  - 25:14 active verb and passive verb
-  - 25:45 name the past participle
-  - 26:02 the passive rule
-  - 26:19 when you cannot reduce
-  - 26:44 gloss a hard word
-  - 27:14 a time clause, not a relative clause
-  - 27:23 the repeated subject
-  - 27:32 passive verb again
-  - 28:04 the subject 'you' can go
-  - 28:10 X-ray as a verb
-  - 28:27 meaning of the sentence
+  - 23:09 the reduction
+  - 23:35 the rule so far
+  - 23:52 framing the radiology rows
+  - 24:09 the orderly
+  - 24:46 the phrasal verb
+  - 24:57 gloss a hard word
+  - 25:18 active verb and passive verb
+  - 25:49 name the past participle
+  - 26:06 the passive rule
+  - 26:23 when you cannot reduce
+  - 26:48 gloss a hard word
+  - 27:18 a time clause, not a relative clause
+  - 27:27 the repeated subject
+  - 27:36 passive verb again
+  - 28:08 the subject 'you' can go
+  - 28:14 X-ray as a verb
+  - 28:31 meaning of the sentence
 
 *Rules on the boards*
 
-- 23:34 Remove the relative pronoun. If the verb is active, use its -ing form.
-- 26:02 With a passive verb, remove the relative pronoun and 'was'. Keep the past participle.
+- 23:35 Remove the relative pronoun. If the verb is active, use its -ing form, but not for one finished action in the past.
+- 26:06 With a passive verb, remove the relative pronoun and 'was'. Keep the past participle.
 
 *Warnings (common mistakes)*
 
-- 26:19 Use the -ing form only when the relative pronoun is the subject. In 'the tablets which she takes', 'which' is the object: you can only leave it out: 'the tablets she takes'.
+- 26:23 Use the -ing form only when the relative pronoun is the subject. In 'the tablets which she takes', 'which' is the object: you can only leave it out: 'the tablets she takes'.
 
-*Terms*: Reduced relative clause (New term, 17:10); Relative pronoun (Form, 17:33); radiates (Word, 19:55); The -ing form (present participle) (Form, 20:28); called away (Phrase, 24:42); Past participle (Form, 25:45)
+*Terms*: Reduced relative clause (New term, 17:10); Relative pronoun (Form, 17:33); radiates (Word, 19:55); The -ing form (present participle) (Form, 20:28); called away (Phrase, 24:46); Past participle (Form, 25:49)
 
-#### 28:57 Participle clauses (`pages-09-10`, deck)
+#### 29:03 Participle clauses (`pages-09-10`, deck)
 
-- 28:57 **Participle clauses: forms and rules**
-  - 28:57 the three participle forms
-  - 28:59 Define the grammar term
-  - 29:39 Why participle clauses are used
-  - 29:55 Show the long form and the reduced form side by side
-  - 30:24 What a participle clause can express
-  - 30:44 Link each meaning to a familiar connector
-  - 31:04 State the same-subject rule
-  - 31:17 Diagram 1: one shared subject
-  - 31:54 Diagram 2: different subjects
-  - 32:44 Name the fault
-  - 32:58 The correct version of the wrong sentence
-  - 33:21 Participle clauses after conjunctions and prepositions
-  - 33:40 An example of the perfect participle
-- 34:05 **Case notes, standard sentence, participle clause**
-  - 34:05 what the three answer columns do
-  - 34:41 turn the two dates into a time expression
-  - 34:56 the function
-  - 35:09 check the subjects before reducing
-  - 35:25 name the form used
-  - 35:44 the same case note written a second way
-  - 36:24 the form that is wrong here
-  - 36:45 the rule for choosing the form
-  - 37:19 reading the case note
-  - 37:41 what follows 'due to'
-  - 38:14 what is deleted
-  - 38:40 the version that breaks the same-subject rule
-  - 39:14 hard words in the note and the sentence
-  - 40:04 find the real subject
-  - 40:22 the second subject matches
-  - 40:35 active, so the -ing form
-  - 40:56 active and passive are needed in every row
-  - 41:17 the meaning of the note
-  - 41:35 the standard sentence with 'although'
-  - 42:00 the three connectors that take an -ing form
-  - 42:25 a second acceptable answer
-  - 43:06 words in the case note
-  - 43:46 words in the standard sentence
-  - 44:04 the function
-  - 44:17 reducing the time clause
-  - 44:47 the version that breaks the same-subject rule
-  - 45:18 how much to reduce
-
-*Rules on the boards*
-
-- 40:56 You must see quickly whether the verb is active or passive. Review it in the lesson Verb Tenses.
-
-*Wrong sentences corrected*
-
-- 36:24 Concerning about lower back pain
-- 38:40 Due to being a recently qualified teacher, her professional voice use may have contributed to the dysphonia.
-- 44:47 Being keen to return to work, I suggested she practise affirmations and meditations when feeling anxious.
-
-*Terms*: Present participle (Form, 28:57); Past participle (Form, 28:57); Perfect participle (Form, 28:57); Participle clause (Grammar term, 28:59); Dangling participle (Grammar term, 32:44); Passive (Grammar term, 36:03)
-
-#### 45:35 Expressing reason with 'given' (`page-11`, deck)
-
-- 45:35 **Given: case notes table**
-  - 45:35 introduce the board and the word being studied
-  - 46:00 show the meaning inside the slide's own example
-  - 46:14 correct what 'given' expresses
-  - 46:29 where 'given' is used in the letter
-  - 46:52 what the two notes say
-  - 47:11 the form 'given that'
-  - 47:22 a second ending for the same sentence
-  - 47:48 the noun phrase version
-  - 48:14 the rule behind the two versions
-  - 48:35 see that the two notes are a contrast
-  - 48:44 reject 'given' here
-  - 49:00 the word for a contrast
-  - 49:36 read the case notes
-  - 49:59 condense the detail
-  - 50:15 what the sentence does
-  - 50:26 close with the use of 'given'
-  - 50:36 why the word is worth learning
+- 29:03 **Participle clauses: forms and rules**
+  - 29:03 the three participle forms
+  - 29:06 Define the grammar term
+  - 29:46 Why participle clauses are used
+  - 30:02 Show the long form and the reduced form side by side
+  - 30:31 What a participle clause can express
+  - 30:51 Link each meaning to a familiar connector
+  - 31:14 State the same-subject rule
+  - 31:27 Diagram 1: one shared subject
+  - 32:05 Diagram 2: different subjects
+  - 32:54 Name the fault
+  - 33:09 The correct version of the wrong sentence
+  - 33:31 Participle clauses after conjunctions and prepositions
+  - 33:50 An example of the perfect participle
+- 34:15 **Case notes, standard sentence, participle clause**
+  - 34:15 what the three answer columns do
+  - 34:52 turn the two dates into a time expression
+  - 35:07 the function
+  - 35:20 check the subjects before reducing
+  - 35:35 name the form used
+  - 35:54 the same case note written a second way
+  - 36:34 the form that is wrong here
+  - 36:55 the rule for choosing the form
+  - 37:29 reading the case note
+  - 37:51 what follows 'due to'
+  - 38:25 what is deleted
+  - 38:50 the version that breaks the same-subject rule
+  - 39:24 hard words in the note and the sentence
+  - 40:15 find the real subject
+  - 40:32 the second subject matches
+  - 40:45 active, so the -ing form
+  - 41:06 active and passive are needed in every row
+  - 41:27 the meaning of the note
+  - 41:45 the standard sentence with 'although'
+  - 42:11 the three connectors that take an -ing form
+  - 42:35 a second acceptable answer
+  - 43:16 words in the case note
+  - 43:57 words in the standard sentence
+  - 44:14 the function
+  - 44:27 reducing the time clause
+  - 44:58 the version that breaks the same-subject rule
+  - 45:28 how much to reduce
 
 *Rules on the boards*
 
-- 46:14 'Given' gives a reason. It does not give a condition.
-- 50:26 'Given' joins two case notes into one sentence. It is useful in the closing part of your letter.
+- 41:06 You must see quickly whether the verb is active or passive. Review it in the lesson Verb Tenses.
 
 *Wrong sentences corrected*
 
-- 48:44 Given his age, Mr X is in excellent physical condition.
+- 36:34 Concerning about lower back pain
+- 38:50 Due to being a recently qualified teacher, her professional voice use may have contributed to the dysphonia.
+- 44:58 Being keen to return to work, I suggested she practise affirmations and meditations when feeling anxious.
 
-*Terms*: given (New word, 45:52); given that (Form, 47:11); despite (Word for a contrast, 49:00)
+*Terms*: Present participle (Form, 29:03); Past participle (Form, 29:03); Perfect participle (Form, 29:03); Participle clause (Grammar term, 29:06); Dangling participle (Grammar term, 32:54); Passive (Grammar term, 36:14)
+
+#### 45:45 Expressing reason with 'given' (`page-11`, deck)
+
+- 45:45 **Given: case notes table**
+  - 45:45 introduce the board and the word being studied
+  - 46:10 show the meaning inside the slide's own example
+  - 46:24 correct what 'given' expresses
+  - 46:39 where 'given' is used in the letter
+  - 47:02 what the two notes say
+  - 47:22 the form 'given that'
+  - 47:33 a second ending for the same sentence
+  - 47:58 the noun phrase version
+  - 48:25 the rule behind the two versions
+  - 48:45 see that the two notes are a contrast
+  - 48:55 reject 'given' here
+  - 49:11 the word for a contrast
+  - 49:46 read the case notes
+  - 50:10 condense the detail
+  - 50:25 what the sentence does
+  - 50:36 close with the use of 'given'
+  - 50:46 why the word is worth learning
+
+*Rules on the boards*
+
+- 46:24 'Given' gives a reason. It does not give a condition.
+- 50:36 'Given' joins two case notes into one sentence. It is useful in the closing part of your letter.
+
+*Wrong sentences corrected*
+
+- 48:55 Given his age, Mr X is in excellent physical condition.
+
+*Terms*: given (New word, 46:02); given that (Form, 47:22); despite (Word for a contrast, 49:11)
 
 ### Vocabulary
 
@@ -2241,30 +2241,30 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 9:03 cleansed
 - 16:19 Non-essential
 - 19:55 radiates
-- 24:05 orderly
-- 24:42 called away
-- 24:53 scheduled
-- 26:44 postponement
-- 39:14 friction
-- 39:37 detrimental
-- 43:06 coping strategies
-- 43:20 affirmations
-- 43:46 keen
-- 45:52 given
-- 47:29 capacity
-- 49:36 clumsy
+- 24:09 orderly
+- 24:46 called away
+- 24:57 scheduled
+- 26:48 postponement
+- 39:24 friction
+- 39:48 detrimental
+- 43:16 coping strategies
+- 43:30 affirmations
+- 43:57 keen
+- 46:02 given
+- 47:40 capacity
+- 49:46 clumsy
 
 ### Links to other lessons
 
 - 0:10 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`) (in `page-3_t1.s1.u3`)
 - 19:12 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect continuous tenses" (in `pages-07-08_t2.s2.u4`)
-- 36:11 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `pages-09-10_t2.s6.u5`)
-- 37:52 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Due to, despite, as well as" (in `pages-09-10_t2.s10.u2`)
-- 41:01 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `pages-09-10_t2.s17.u2`)
-- 41:42 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "What is a complex sentence?" (in `pages-09-10_t2.s19.u3`)
+- 36:22 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `pages-09-10_t2.s6.u5`)
+- 38:03 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Due to, despite, as well as" (in `pages-09-10_t2.s10.u2`)
+- 41:11 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `pages-09-10_t2.s17.u2`)
+- 41:53 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "What is a complex sentence?" (in `pages-09-10_t2.s19.u3`)
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Introduction" at 0:18
-- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Joining sentences with relative pronouns" at 36:49
-- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Joining sentences with relative pronouns" at 37:16, about section `page-6`
+- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Joining sentences with relative pronouns" at 37:06
+- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Joining sentences with relative pronouns" at 37:33, about section `page-6`
 - continues from Grammar for OET: Complex sentences (`grammar-05-complex-compound`): Relative and participle clauses build on the clauses and joining words taught here.
 
 
@@ -2272,8 +2272,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 7. Grammar for OET: Punctuation
 
-- Lesson ID and folder: `grammar-07-punctuation` (folder `grammar-07-punctuation`); course grammar, lesson 7; length 82:34; bundle format 1.12
-- Status: approved by siavash, 2026-09-29 20:47
+- Lesson ID and folder: `grammar-07-punctuation` (folder `grammar-07-punctuation`); course grammar, lesson 7; length 83:00; bundle format 1.12
+- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:40
 - Description: Learn to punctuate your OET letters: where to put commas, and how to use full stops, semicolons, colons, apostrophes, hyphens, capital letters, numbers and short forms correctly.
 - Original session: folder `source`: `source/video.mp4`, 33:26 long, partial hash `297821a41d0a0437`; deck `source/slides.pdf`, 18 pages
   - The recording teaches commas only; the second part (sections added-01 to added-09) is authored, with no recording (ADR 018).
@@ -2359,407 +2359,407 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 16:38 Why join clauses instead of writing two sentences
   - 17:04 The typed example: one clause with two verbs takes no comma
   - 17:30 Contrast one clause and two clauses
-- 17:51 **Semi-colon and conjunctive adverb**
-  - 17:51 Reveal the second pattern and its example, and name the conjunctive adverb
-  - 18:18 Show the semi-colon itself and where the two marks go
-  - 18:47 Hear the two pauses when reading aloud
-  - 19:03 Both clauses here are independent
+- 17:52 **Semi-colon and conjunctive adverb**
+  - 17:52 Reveal the second pattern and its example, and name the conjunctive adverb
+  - 18:19 Show the semi-colon itself and where the two marks go
+  - 18:48 Hear the two pauses when reading aloud
+  - 19:04 Both clauses here are independent
   - 19:19 A way to write the same idea without a semi-colon
 - 19:34 **Common error: a comma with no joining word**
   - 19:34 Reveal the faulty sentence and name the error
-  - 20:03 Gloss a hard general word from the printed sentence
-  - 20:21 Show that each part is a complete sentence with nothing joining them
-  - 20:38 The repair with a FANBOYS word
+  - 20:04 Gloss a hard general word from the printed sentence
+  - 20:22 Show that each part is a complete sentence with nothing joining them
+  - 20:39 The repair with a FANBOYS word
 
 *Rules on the boards*
 
 - 15:59 To join two independent clauses with a comma, you also need a FANBOYS word. A comma alone is not enough.
-- 18:53 Each pause is one punctuation mark: the semi-colon, then the comma.
-- 20:51 When a comma joins two independent clauses, check that a FANBOYS word is there too.
+- 18:54 Each pause is one punctuation mark: the semi-colon, then the comma.
+- 20:52 When a comma joins two independent clauses, check that a FANBOYS word is there too.
 
 *Wrong sentences corrected*
 
 - 19:34 Eye drops were administered, the patient was told to return several days later.
 
-*Terms*: Independent clause (Grammar word, 13:43); FANBOYS (Joining words, 13:55); Complex sentence (Grammar word, 14:36); Conjunctive adverb (Grammar word, 18:09); Semi-colon (;) (Punctuation mark, 18:18); Comma splice (Grammar word, 19:55)
+*Terms*: Independent clause (Grammar word, 13:43); FANBOYS (Joining words, 13:55); Complex sentence (Grammar word, 14:36); Conjunctive adverb (Grammar word, 18:09); Semi-colon (;) (Punctuation mark, 18:19); Comma splice (Grammar word, 19:56)
 
-#### 21:01 Introductory phrases (`page-10`, deck)
+#### 21:02 Introductory phrases (`page-10`, deck)
 
-- 21:01 **what an introductory phrase is and the comma pattern, the three example sentences**
-  - 21:01 Show the pattern the whole board is about
-  - 21:01 Show the three examples and split the first one
-  - 21:28 State what the comma does, and define the second part
+- 21:02 **what an introductory phrase is and the comma pattern, the three example sentences**
+  - 21:02 Show the pattern the whole board is about
+  - 21:02 Show the three examples and split the first one
+  - 21:29 State what the comma does, and define the second part
   - 22:43 Gloss a hard general word from example 1
-  - 23:09 Split the second example into phrase and main clause
-  - 23:31 Split the third example into phrase and main clause
-  - 23:39 Generalise the rule across all three examples
-  - 24:08 Close with the rule to remember
+  - 23:10 Split the second example into phrase and main clause
+  - 23:32 Split the third example into phrase and main clause
+  - 23:40 Generalise the rule across all three examples
+  - 24:09 Close with the rule to remember
 
 *Rules on the boards*
 
-- 23:39 The part after the comma is a main clause: it works as a complete sentence on its own. The part in front of the comma is the introductory phrase.
-- 24:08 When a sentence starts with an introductory phrase, put a comma after it.
+- 23:40 The part after the comma is a main clause: it works as a complete sentence on its own. The part in front of the comma is the introductory phrase.
+- 24:09 When a sentence starts with an introductory phrase, put a comma after it.
 
-*Terms*: Introductory phrase (New term, 21:06); Main clause (independent clause) (Grammar term, 21:47)
+*Terms*: Introductory phrase (New term, 21:06); Main clause (independent clause) (Grammar term, 21:48)
 
-#### 24:25 Lists and series (`pages-11-12`, deck)
+#### 24:26 Lists and series (`pages-11-12`, deck)
 
-- 24:25 **Commas in a list of items**
-  - 24:25 Show the model list sentence and state the basic rule
-  - 24:42 Name the three items and show that they are the same kind of thing
-  - 25:19 Give the list pattern in words and the rule about the last comma
-  - 25:52 Show that both versions of the final item are correct
-- 26:30 **Commas in a series of phrases**
-  - 26:30 Show the two model sentences and state that list items can be phrases
-  - 26:46 Break the first sentence into its four phrases
-  - 26:56 Explain the first two phrases in simple English
-  - 27:17 Note the verb form in the third phrase
-  - 27:26 Count the commas in the series
-  - 27:34 Show that the pattern is the same as a list of single words
+- 24:26 **Commas in a list of items**
+  - 24:26 Show the model list sentence and state the basic rule
+  - 24:43 Name the three items and show that they are the same kind of thing
+  - 25:20 Give the list pattern in words and the rule about the last comma
+  - 25:53 Show that both versions of the final item are correct
+- 26:31 **Commas in a series of phrases**
+  - 26:31 Show the two model sentences and state that list items can be phrases
+  - 26:47 Break the first sentence into its four phrases
+  - 26:57 Explain the first two phrases in simple English
+  - 27:18 Note the verb form in the third phrase
+  - 27:27 Count the commas in the series
+  - 27:35 Show that the pattern is the same as a list of single words
   - 28:12 Second sentence: every phrase has a verb
-  - 28:20 Gloss a hard general word from the second sentence
-  - 28:41 A medical series of actions with the same punctuation
+  - 28:21 Gloss a hard general word from the second sentence
+  - 28:42 A medical series of actions with the same punctuation
 
 *Rules on the boards*
 
-- 25:29 Before the final "and" or "or", the comma is optional in British English. Use it or leave it out, but be consistent in the whole letter.
+- 25:30 Before the final "and" or "or", the comma is optional in British English. Use it or leave it out, but be consistent in the whole letter.
 
-*Terms*: Slid (Verb form, 27:17)
+*Terms*: Slid (Verb form, 27:18)
 
-#### 29:10 Practice (`page-13`, deck)
+#### 29:11 Practice (`page-13`, deck)
 
-- 29:10 **Practice paragraph: adding punctuation**
-  - 29:10 the task and the unpunctuated practice paragraph
-  - 29:35 Sentence 1: the answer and why there is no comma
+- 29:11 **Practice paragraph: adding punctuation**
+  - 29:11 the task and the unpunctuated practice paragraph
+  - 29:36 Sentence 1: the answer and why there is no comma
   - 30:09 Sentence 1: clause diagram showing one subject with two verbs
-  - 30:38 Sentence 2: the answer and the comma after the introductory phrase
+  - 30:39 Sentence 2: the answer and the comma after the introductory phrase
   - 30:59 Sentence 2: the 'which' clause adds extra information, so it takes a comma
-  - 31:36 Sentence 2: define the grammar term
-  - 32:01 Sentence 3: the answer and the comma after the dependent clause
-  - 32:36 Gloss the general word 'slightly'
-  - 32:49 Sentence 3: clause diagram of the dependent clause joining the main clause
-  - 33:25 Sentence 3: no comma before 'and is making'
-  - 33:48 Sentence 4: the answer with a semi-colon and a comma
-  - 34:09 Sentence 4: the form that is wrong
-  - 34:29 Sentence 4: define the grammar term
-  - 34:46 Count the punctuation the paragraph needs
-  - 35:01 Why punctuation matters
+  - 31:37 Sentence 2: define the grammar term
+  - 32:02 Sentence 3: the answer and the comma after the dependent clause
+  - 32:37 Gloss the general word 'slightly'
+  - 32:50 Sentence 3: clause diagram of the dependent clause joining the main clause
+  - 33:26 Sentence 3: no comma before 'and is making'
+  - 33:49 Sentence 4: the answer with a semi-colon and a comma
+  - 34:13 Sentence 4: the form that is wrong
+  - 34:35 Sentence 4: define the grammar term
+  - 34:52 Count the punctuation the paragraph needs
+  - 35:07 Why punctuation matters
 
 *Rules on the boards*
 
-- 33:25 When two verbs share one subject, do not put a comma before 'and'. Here 'she' has lost weight and is making good progress.
-- 35:01 Correct punctuation makes your letter clear for the reader.
+- 33:26 When two verbs share one subject, do not put a comma before 'and'. Here 'she' has lost weight and is making good progress.
+- 35:07 Correct punctuation makes your letter clear for the reader.
 
 *Wrong sentences corrected*
 
-- 29:10 The patient has an allergy to latex and is currently taking Xanax for anxiety. Last year she had surgery on her left knee which has fully healed now. Although she is slightly overweight she has lost weight over the past six months and is making good progress. She takes regular exercise however she drinks at the weekend.
-- 34:09 She takes regular exercise, however she drinks at the weekend.
+- 29:11 The patient has an allergy to latex and is currently taking Xanax for anxiety. Last year she had surgery on her left knee which has fully healed now. Although she is slightly overweight she has lost weight over the past six months and is making good progress. She takes regular exercise however she drinks at the weekend.
+- 34:13 She takes regular exercise, however she drinks at the weekend.
 
-*Terms*: Non-defining clause (Grammar term, 31:36); Comma splice (Grammar term, 34:29)
+*Terms*: Non-defining clause (Grammar term, 31:37); Comma splice (Grammar term, 34:35)
 
-#### 35:06 Punctuation in OET letters (`page-14`, deck)
+#### 35:12 Punctuation in OET letters (`page-14`, deck)
 
-- 35:06 **Optional commas and full stops in an OET letter**
-  - 35:06 Show the four places where the mark is optional, and say why
-  - 35:23 Gloss the general word 'optional'
-  - 35:41 Show the greeting written in both ways
-  - 35:53 State that both greetings are correct
-  - 36:09 Apply the rule to the address block
-  - 36:29 Apply the rule to a person's title
-  - 36:38 Show the end of the letter written in both ways
-  - 36:54 State that both endings are correct
-  - 37:00 Summarise: with the mark and without it are both acceptable
-  - 37:18 Name the two styles: open and closed punctuation
-  - 37:28 The key point: keep one style through the letter
-
-*Rules on the boards*
-
-- 37:00 Writing the comma or the full stop in these four places is correct. Leaving it out is also correct.
-- 37:28 Choose one style and use it in the whole letter.
-
-#### 37:48 Common mistakes (`pages-15-16`, deck)
-
-- 37:48 **Punctuating the first paragraph**
-  - 37:48 Put the printed sentence on the board and say what the first paragraph must do
-  - 38:03 Gloss the hard general phrase in the printed sentence
-  - 38:18 Give the situation behind the letter and name the problem area
-  - 38:39 Define the grammar term and find the clause in the sentence
-  - 39:13 Show why this clause takes commas: it is non-defining
-  - 39:36 Give the corrected sentence with commas at both ends
-  - 40:02 Draw the clause and test taking it out
-  - 40:42 Warn that not every who/which clause takes commas
-  - 41:05 Transfer the point to the student's own writing
-- 41:16 **Small numbers and hyphens**
-  - 41:16 Put the printed sentence on the board and open the small-numbers point
-  - 41:35 First mistake: the digit
-  - 41:44 Second mistake: the hyphen and the singular noun
-  - 42:08 Give the corrected sentence
-  - 42:17 The hyphen is obligatory, and where these phrases appear
-  - 42:34 Second example of the same pattern
+- 35:12 **Optional commas and full stops in an OET letter**
+  - 35:12 Show the four places where the mark is optional, and say why
+  - 35:29 Gloss the general word 'optional'
+  - 35:47 Show the greeting written in both ways
+  - 35:59 State that both greetings are correct
+  - 36:15 Apply the rule to the address block
+  - 36:34 Apply the rule to a person's title
+  - 36:44 Show the end of the letter written in both ways
+  - 37:00 State that both endings are correct
+  - 37:06 Summarise: with the mark and without it are both acceptable
+  - 37:24 Name the two styles: open and closed punctuation
+  - 37:34 The key point: keep one style through the letter
 
 *Rules on the boards*
 
-- 40:42 Not every clause with who or which takes commas. A clause that tells us which person we mean has no commas.
-- 41:05 Correct punctuation makes your letter clear for the reader.
+- 37:06 Writing the comma or the full stop in these four places is correct. Leaving it out is also correct.
+- 37:34 Choose one style and use it in the whole letter.
+
+#### 37:54 Common mistakes (`pages-15-16`, deck)
+
+- 37:54 **Punctuating the first paragraph**
+  - 37:54 Put the printed sentence on the board and say what the first paragraph must do
+  - 38:09 Gloss the hard general phrase in the printed sentence
+  - 38:24 Give the situation behind the letter and name the problem area
+  - 38:45 Define the grammar term and find the clause in the sentence
+  - 39:19 Show why this clause takes commas: it is non-defining
+  - 39:42 Give the corrected sentence with commas at both ends
+  - 40:08 Draw the clause and test taking it out
+  - 40:48 Warn that not every who/which clause takes commas
+  - 41:11 Transfer the point to the student's own writing
+- 41:22 **Small numbers and hyphens**
+  - 41:22 Put the printed sentence on the board and open the small-numbers point
+  - 41:41 First mistake: the digit
+  - 41:49 Second mistake: the hyphen and the singular noun
+  - 42:14 Give the corrected sentence
+  - 42:23 The hyphen is obligatory, and where these phrases appear
+  - 42:40 Second example of the same pattern
+
+*Rules on the boards*
+
+- 40:48 Not every clause with who or which takes commas. A clause that tells us which person we mean has no commas.
+- 41:11 Correct punctuation makes your letter clear for the reader.
 
 *Warnings (common mistakes)*
 
-- 42:17 You must use the hyphen here. Leaving it out is a punctuation mistake.
+- 42:23 You must use the hyphen here. Leaving it out is a punctuation mistake.
 
 *Wrong sentences corrected*
 
-- 37:48 I am writing to refer the above-mentioned patient who has worsening osteoarthritis for a possible knee-joint replacement.
-- 41:16 The patient presented with a 2 weeks history of migraines.
+- 37:54 I am writing to refer the above-mentioned patient who has worsening osteoarthritis for a possible knee-joint replacement.
+- 41:22 The patient presented with a 2 weeks history of migraines.
 
-*Terms*: Relative clause (Grammar, 38:39); Non-defining clause (Grammar, 39:13); Small numbers (Rule, 41:35)
+*Terms*: Relative clause (Grammar, 38:45); Non-defining clause (Grammar, 39:19); Small numbers (Rule, 41:41)
 
-#### 42:50 Full stops and sentence boundaries (`added-01`, authored)
+#### 42:56 Full stops and sentence boundaries (`added-01`, authored)
 
-- 42:50 **Punctuation: ending sentences, run-ons and comma splices**
-  - 42:50 Fixed rule for the whole board: where a sentence ends
-  - 42:59 What a complete sentence has, with a right example from a letter
-  - 43:24 Why this matters in a letter
-  - 43:33 Run-on sentence: term and wrong example
-  - 44:10 Gloss the hard general word in that example
-  - 44:24 Comma splice: term and wrong example
-  - 44:51 Fix 1: a full stop
-  - 45:08 Fix 2: a comma and a joining word
-  - 45:24 Fix 3: a semi-colon
-  - 45:49 Practice item
-  - 46:12 Answer to the practice item
-  - 46:30 Other correct answers to the practice item
+- 42:56 **Punctuation: ending sentences, run-ons and comma splices**
+  - 42:56 Fixed rule for the whole board: where a sentence ends
+  - 43:05 What a complete sentence has, with a right example from a letter
+  - 43:35 Why this matters in a letter
+  - 43:44 Run-on sentence: term and wrong example
+  - 44:20 Gloss the hard general word in that example
+  - 44:35 Comma splice: term and wrong example
+  - 45:01 Fix 1: a full stop
+  - 45:18 Fix 2: a comma and a joining word
+  - 45:35 Fix 3: a semi-colon
+  - 46:00 Practice item
+  - 46:23 Answer to the practice item
+  - 46:41 Other correct answers to the practice item
 
 *Rules on the boards*
 
-- 43:24 Short, clear sentences help the reader of your letter.
+- 43:35 Short, clear sentences help the reader of your letter.
 
 *Wrong sentences corrected*
 
-- 43:42 Eye drops were administered the patient was told to return several days later.
-- 44:31 Her pain has improved, she can now walk without a stick.
-- 45:52 The wound is healing well it should be checked again in one week.
+- 43:52 Eye drops were administered the patient was told to return several days later.
+- 44:41 Her pain has improved, she can now walk without a stick.
+- 46:03 The wound is healing well it should be checked again in one week.
 
-*Terms*: Sentence (Form, 42:59); Run-on sentence (New term, 43:33); Comma splice (New term, 44:24)
+*Terms*: Sentence (Form, 43:05); Run-on sentence (New term, 43:44); Comma splice (New term, 44:35)
 
-#### 46:59 Semicolons and colons (`added-02`, authored)
+#### 47:10 Semicolons and colons (`added-02`, authored)
 
-- 46:59 **Colons and semi-colons in letters**
-  - 46:59 Set the board's rule and define the colon
-  - 47:28 Right example: colon before a list
-  - 47:59 Wrong example: no complete sentence before the colon
-  - 48:20 Right example: colon before an explanation
-  - 48:45 Gloss the hard general word in the example
-  - 48:58 Define the semi-colon and show two linked sentences
-  - 49:36 Semi-colon before however and therefore
-  - 49:58 Semi-colons inside a list whose items have commas
-  - 50:35 Practice item
-  - 50:55 Answer to the practice item
-  - 51:09 Rule to remember
+- 47:10 **Colons and semi-colons in letters**
+  - 47:10 Set the board's rule and define the colon
+  - 47:38 Right example: colon before a list
+  - 48:10 Wrong example: no complete sentence before the colon
+  - 48:30 Right example: colon before an explanation
+  - 48:55 Gloss the hard general word in the example
+  - 49:08 Define the semi-colon and show two linked sentences
+  - 49:47 Semi-colon before however and therefore
+  - 50:12 Semi-colons inside a list whose items have commas
+  - 50:49 Practice item
+  - 51:09 Answer to the practice item
+  - 51:23 Rule to remember
 
 *Rules on the boards*
 
-- 51:09 A colon needs a complete sentence before it. Between two sentences, a semi-colon needs a complete sentence on both sides.
+- 51:23 A colon needs a complete sentence before it. Between two sentences, a semi-colon needs a complete sentence on both sides.
 
 *Wrong sentences corrected*
 
-- 47:59 The patient reported: fever, cough, and sore throat.
-- 50:40 She has two allergies penicillin and latex.
+- 48:10 The patient reported: fever, cough, and sore throat.
+- 50:54 She has two allergies penicillin and latex.
 
-*Terms*: Colon (:) (Punctuation mark, 47:10); Semi-colon (;) (Punctuation mark, 48:58)
+*Terms*: Colon (:) (Punctuation mark, 47:21); Semi-colon (;) (Punctuation mark, 49:08)
 
-#### 51:28 Apostrophes (`added-03`, authored)
+#### 51:42 Apostrophes (`added-03`, authored)
 
-- 51:28 **Apostrophes and full forms in a letter**
-  - 51:28 Set the board's one rule and introduce the apostrophe
-  - 51:45 Show where the apostrophe goes: one patient or more than one
-  - 52:04 One patient, in a letter sentence
-  - 52:20 More than one patient, in a letter sentence
-  - 52:39 No apostrophe in a simple plural
-  - 53:00 State the plural rule and the -en plural
-  - 53:24 Introduce contractions and the full-form rule for letters
-  - 53:44 Wrong and right, with contractions in a letter sentence
-  - 54:05 The full forms to write instead of the short ones
-  - 54:35 Its and it's
-  - 54:59 The rule to keep for letters
-  - 55:07 Practice item
-  - 55:35 Answer to the practice item
+- 51:42 **Apostrophes and full forms in a letter**
+  - 51:42 Set the board's one rule and introduce the apostrophe
+  - 51:58 Show where the apostrophe goes: one patient or more than one
+  - 52:18 One patient, in a letter sentence
+  - 52:33 More than one patient, in a letter sentence
+  - 52:53 No apostrophe in a simple plural
+  - 53:14 State the plural rule and the -en plural
+  - 53:40 Introduce contractions and the full-form rule for letters
+  - 54:00 Wrong and right, with contractions in a letter sentence
+  - 54:22 The full forms to write instead of the short ones
+  - 54:54 Its and it's
+  - 55:18 The rule to keep for letters
+  - 55:26 Practice item
+  - 55:53 Answer to the practice item
 
 *Rules on the boards*
 
-- 53:00 A plural with no belonging has no apostrophe.
-- 54:59 In a letter, write "it is" in full.
+- 53:14 A plural with no belonging has no apostrophe.
+- 55:18 In a letter, write "it is" in full.
 
 *Wrong sentences corrected*
 
-- 52:39 The patient's were discharged.
-- 53:44 She's been unwell and doesn't eat much.
-- 55:11 The patients mother says shes worried.
+- 52:53 The patient's were discharged.
+- 54:00 She's been unwell and doesn't eat much.
+- 55:29 The patients mother says shes worried.
 
-*Terms*: Apostrophe (Punctuation mark, 51:37); Contraction (Grammar word, 53:24)
+*Terms*: Apostrophe (Punctuation mark, 51:50); Contraction (Grammar word, 53:40)
 
-#### 55:56 Hyphens and numbers (`added-04`, authored)
+#### 56:15 Hyphens and numbers (`added-04`, authored)
 
-- 55:56 **Hyphens and numbers in a letter**
-  - 55:56 Open the board with the core rule and name the mark
-  - 56:27 Show the wrong form of a number plus noun before a noun
-  - 56:47 Give the correct form and the rule
-  - 57:04 Digits follow the same rule
-  - 57:18 Contrast before the noun and after the noun
-  - 57:44 Two describing words before a noun
-  - 57:58 With no noun after them, no hyphen
-  - 58:15 Follow-up as a noun
-  - 58:27 Gloss the general phrase follow-up
-  - 58:39 Follow up as a verb: the wrong form
-  - 58:50 Follow up as a verb: the correct form
-  - 59:01 Small numbers in words
-  - 59:14 Digits with a unit of measurement
-  - 59:23 Practice item
-  - 59:46 Answer to the practice item
+- 56:15 **Hyphens and numbers in a letter**
+  - 56:15 Open the board with the core rule and name the mark
+  - 56:46 Show the wrong form of a number plus noun before a noun
+  - 57:06 Give the correct form and the rule
+  - 57:23 Digits follow the same rule
+  - 57:36 Contrast before the noun and after the noun
+  - 58:01 Two describing words before a noun
+  - 58:16 With no noun after them, no hyphen
+  - 58:33 Follow-up as a noun
+  - 58:45 Gloss the general phrase follow-up
+  - 58:57 Follow up as a verb: the wrong form
+  - 59:08 Follow up as a verb: the correct form
+  - 59:19 Small numbers in words
+  - 59:32 Digits with a unit of measurement
+  - 59:41 Practice item
+  - 60:04 Answer to the practice item
 
 *Wrong sentences corrected*
 
-- 56:27 She has a two weeks history of headache.
-- 58:39 I will follow-up her blood results.
-- 59:27 He has a 3 month history of back pain and needs a follow up appointment.
+- 56:46 She has a two weeks history of headache.
+- 58:57 I will follow-up her blood results.
+- 59:45 He has a 3 month history of back pain and needs a follow up appointment.
 
-*Terms*: Hyphen (Punctuation mark, 56:08)
+*Terms*: Hyphen (Punctuation mark, 56:26)
 
-#### 60:13 Capital letters (`added-05`, authored)
+#### 60:31 Capital letters (`added-05`, authored)
 
-- 60:13 **Capital letters in a medical letter**
-  - 60:13 Open the board with the rule and why it matters
-  - 60:26 Sentences and the word I (b4)
-  - 60:47 Titles before a name against job words alone (b3)
-  - 61:18 The wrong version of the job-word example (b3)
-  - 61:38 The correct versions with and without a name (b3)
-  - 61:57 Brand names against generic names (b1)
-  - 62:02 Gloss of the general word "brand"
-  - 62:30 The wrong drug-name example (b1)
-  - 62:41 Correct generic names in a list (b1)
-  - 62:53 A correct brand-name example (b1)
-  - 63:07 Days and months against seasons (b2)
-  - 63:18 A correct date example (b2)
-  - 63:41 A correct season example (b2)
-  - 63:50 Practice item (b5)
-  - 64:11 Practice answer (b5)
-  - 64:35 Closing rule to remember
+- 60:31 **Capital letters in a medical letter**
+  - 60:31 Open the board with the rule and why it matters
+  - 60:43 Sentences and the word I (b4)
+  - 61:05 Titles before a name against job words alone (b3)
+  - 61:38 The wrong version of the job-word example (b3)
+  - 61:57 The correct versions with and without a name (b3)
+  - 62:19 Brand names against generic names (b1)
+  - 62:24 Gloss of the general word "brand"
+  - 62:52 The wrong drug-name example (b1)
+  - 63:03 Correct generic names in a list (b1)
+  - 63:15 A correct brand-name example (b1)
+  - 63:29 Days and months against seasons (b2)
+  - 63:41 A correct date example (b2)
+  - 64:04 A correct season example (b2)
+  - 64:12 Practice item (b5)
+  - 64:34 Practice answer (b5)
+  - 64:58 Closing rule to remember
 
 *Rules on the boards*
 
-- 64:35 Use capital letters for sentences, the word "I", days, months, and titles with names. Use small letters for job words, seasons, and generic drug names.
+- 64:58 Use capital letters for sentences, the word "I", days, months, and titles with names. Inside a sentence, use small letters for job words, seasons, and generic drug names.
 
 *Wrong sentences corrected*
 
-- 61:18 She was seen by a Cardiologist.
-- 62:30 She takes Paracetamol.
-- 63:54 On monday, dr. patel prescribed Paracetamol.
+- 61:38 She was seen by a Cardiologist.
+- 62:52 She takes Paracetamol.
+- 64:16 On monday, dr. patel prescribed Paracetamol.
 
-#### 64:56 Brackets, quotation marks, slashes and dashes (`added-06`, authored)
+#### 65:21 Brackets, quotation marks, slashes and dashes (`added-06`, authored)
 
-- 64:56 **Other punctuation in letters**
-  - 64:56 Set the board's one fixed rule
-  - 65:07 Brackets hold extra information: dose example
-  - 65:22 Brackets for a short form
-  - 65:39 Quotation marks for the patient's own words
-  - 65:55 Gloss the general word 'exact'
-  - 66:10 Where a slash is correct, and where it is not
-  - 66:26 The corrected form inside a sentence
-  - 66:42 Dash and hyphen do different jobs
-  - 66:59 Brackets or commas can do the dash's job
-  - 67:16 e.g. means for example
-  - 67:30 i.e. means that is
-  - 67:48 No exclamation mark in a letter
-  - 68:02 The same sentence with a full stop
-  - 68:18 Write 'and', not '&'
-  - 68:32 Practice item
-  - 68:58 Answer to the practice item
-
-*Wrong sentences corrected*
-
-- 66:22 Headache/nausea
-- 67:54 Her symptoms have improved a lot!
-- 68:18 Mr. & Mrs. Brown
-- 68:36 She has pain & swelling in her left knee!
-
-*Terms*: e.g. (Short form, 67:16); i.e. (Short form, 67:30)
-
-#### 69:17 Dates, times and units (`added-07`, authored)
-
-- 69:17 **Dates, times and units in a letter**
-  - 69:17 Board rule, then the shape of a date
-  - 69:41 A correct date in a medical letter, and the comma after it
-  - 70:10 The rejected date form
-  - 70:27 Times in digits
-  - 70:43 Gloss the general word 'digits'
-  - 71:00 One style for times in the whole letter
-  - 71:11 Numbers with units
-  - 71:34 Small numbers: the rejected form
-  - 71:38 Small numbers: the correct form
-  - 71:50 Units take no plural s: the rejected form
-  - 72:04 Units take no plural s: the correct form in a sentence
-  - 72:16 Practice item
-  - 72:37 Practice answer
+- 65:21 **Other punctuation in letters**
+  - 65:21 Set the board's one fixed rule
+  - 65:31 Brackets hold extra information: dose example
+  - 65:46 Brackets for a short form
+  - 66:03 Quotation marks for the patient's own words
+  - 66:20 Gloss the general word 'exact'
+  - 66:34 Where a slash is correct, and where it is not
+  - 66:50 The corrected form inside a sentence
+  - 67:06 Dash and hyphen do different jobs
+  - 67:23 Brackets or commas can do the dash's job
+  - 67:40 e.g. means for example
+  - 67:54 i.e. means that is
+  - 68:12 No exclamation mark in a letter
+  - 68:26 The same sentence with a full stop
+  - 68:42 Write 'and', not '&'
+  - 68:56 Practice item
+  - 69:22 Answer to the practice item
 
 *Wrong sentences corrected*
 
-- 70:10 May 12th, 2024
-- 71:34 Two mg
-- 71:55 5 mgs
-- 72:19 On March 3rd, her temperature was thirty eight point five degrees.
+- 66:47 Headache/nausea
+- 68:19 Her symptoms have improved a lot!
+- 68:42 Mr. & Mrs. Brown
+- 69:00 She has pain & swelling in her left knee!
 
-#### 73:12 Case-note abbreviations (`added-08`, authored)
+*Terms*: e.g. (Short form, 67:40); i.e. (Short form, 67:54)
 
-- 73:12 **Case-note short forms in a letter**
-  - 73:12 Fix the board's rule and say why full words are needed
-  - 73:26 Show the four short forms and their full words
-  - 73:46 Reject the note form in a letter
-  - 74:01 Give the correct sentence and say what makes it correct
-  - 74:11 Second wrong example from the notes
-  - 74:23 The correct version of the history sentence
-  - 74:34 Marks and arrows in notes are not letter English
-  - 74:51 The arrow becomes words
-  - 75:00 Well-known abbreviations may stay short
-  - 75:23 A less common short form needs the full words first
-  - 75:38 Example of full words with the short form in brackets
-  - 76:00 Practice item
-  - 76:16 Answer to the practice item
+#### 69:41 Dates, times and units (`added-07`, authored)
+
+- 69:41 **Dates, times and units in a letter**
+  - 69:41 Board rule, then the shape of a date
+  - 70:06 A correct date in a medical letter, and the comma after it
+  - 70:34 The rejected date form
+  - 70:51 Times in digits
+  - 71:07 Gloss the general word 'digits'
+  - 71:24 One style for times in the whole letter
+  - 71:35 Numbers with units
+  - 71:58 Small numbers: the rejected form
+  - 72:02 Small numbers: the correct form
+  - 72:15 Units take no plural s: the rejected form
+  - 72:28 Units take no plural s: the correct form in a sentence
+  - 72:40 Practice item
+  - 73:02 Practice answer
 
 *Wrong sentences corrected*
 
-- 73:46 Pt c/o SOB.
-- 74:11 Hx of asthma.
-- 74:34 BP ↑
-- 76:00 Pt c/o SOB. Hx asthma.
+- 70:34 May 12th, 2024
+- 71:58 Two mg
+- 72:19 5 mgs
+- 72:43 On March 3rd, her temperature was thirty eight point five degrees.
 
-*Terms*: Brackets (Punctuation, 75:30)
+#### 73:36 Case-note abbreviations (`added-08`, authored)
 
-#### 76:41 Final practice (`added-09`, authored)
+- 73:36 **Case-note short forms in a letter**
+  - 73:36 Fix the board's rule and say why full words are needed
+  - 73:50 Show the four short forms and their full words
+  - 74:10 Reject the note form in a letter
+  - 74:25 Give the correct sentence and say what makes it correct
+  - 74:36 Second wrong example from the notes
+  - 74:48 The correct version of the history sentence
+  - 74:58 Marks and arrows in notes are not letter English
+  - 75:15 The arrow becomes words
+  - 75:25 Well-known abbreviations may stay short
+  - 75:48 A less common short form needs the full words first
+  - 76:02 Example of full words with the short form in brackets
+  - 76:24 Practice item
+  - 76:40 Answer to the practice item
 
-- 76:41 **Punctuating case notes into a letter paragraph**
-  - 76:41 Show the case notes and set the task
-  - 77:04 Wrong version of the first sentence: note forms kept in the letter
-  - 77:49 Step 1: the patient and the admission
-  - 78:35 Wrong version of the history sentence
-  - 79:00 Step 2: the history
-  - 79:22 Step 3: the medication
-  - 79:56 Step 4: the diagnosis, with the semi-colon named
-  - 80:28 Step 4: abbreviations that stay
-  - 80:42 Step 5: the discharge and the follow-up
-  - 81:08 Step 5: follow-up as a noun
-  - 81:18 Step 5: reading 2/52
-  - 81:28 The whole paragraph as the answer
-  - 82:18 The checking rule to take away
+*Wrong sentences corrected*
+
+- 74:10 Pt c/o SOB.
+- 74:36 Hx of asthma.
+- 74:58 BP ↑
+- 76:24 Pt c/o SOB. Hx asthma.
+
+*Terms*: Brackets (Punctuation, 75:55)
+
+#### 77:05 Final practice (`added-09`, authored)
+
+- 77:05 **Punctuating case notes into a letter paragraph**
+  - 77:05 Show the case notes and set the task
+  - 77:28 Wrong version of the first sentence: note forms kept in the letter
+  - 78:13 Step 1: the patient and the admission
+  - 78:59 Wrong version of the history sentence
+  - 79:25 Step 2: the history
+  - 79:46 Step 3: the medication
+  - 80:21 Step 4: the diagnosis, with the semi-colon named
+  - 80:53 Step 4: abbreviations that stay
+  - 81:06 Step 5: the discharge and the follow-up
+  - 81:34 Step 5: follow-up as a noun
+  - 81:44 Step 5: reading 2/52
+  - 81:54 The whole paragraph as the answer
+  - 82:44 The checking rule to take away
 
 *Rules on the boards*
 
-- 82:18 Check full stops, commas, hyphens, capital letters and short forms in every letter you write. Correct punctuation makes your letter clear for the reader.
+- 82:44 Check full stops, commas, hyphens, capital letters and short forms in every letter you write. Correct punctuation makes your letter clear for the reader.
 
 *Wrong sentences corrected*
 
-- 77:04 Mrs. Anna Clarke, 67 year old woman, was admitted on 14/03/2024 c/o chest pain & SOB.
-- 78:35 She has a Hx of Hypertension and Type 2 Diabetes.
+- 77:28 Mrs. Anna Clarke, 67 year old woman, was admitted on 14/03/2024 c/o chest pain & SOB.
+- 78:59 She has a Hx of Hypertension and Type 2 Diabetes.
 
-*Terms*: Semi-colon (Punctuation mark, 80:06); Follow-up (Form, 81:08)
+*Terms*: Semi-colon (Punctuation mark, 80:30); Follow-up (Form, 81:34)
 
 ### Vocabulary
 
@@ -2767,17 +2767,17 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 - 9:40 non-compliance
 - 9:55 aggravated
-- 20:03 administered
+- 20:04 administered
 - 22:43 underwent
-- 28:20 Snatched
-- 32:36 slightly
-- 35:23 optional
-- 38:03 above-mentioned
-- 48:45 delayed
-- 58:27 Follow-up
-- 62:02 brand name
-- 65:55 exact
-- 70:43 digits
+- 28:21 Snatched
+- 32:37 slightly
+- 35:29 optional
+- 38:09 above-mentioned
+- 48:55 delayed
+- 58:45 Follow-up
+- 62:24 brand name
+- 66:20 exact
+- 71:07 digits
 
 ### Practice material
 
@@ -2794,8 +2794,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 10:25 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Due to, despite, as well as" (in `page-6_t1.s14.u2`)
 - 11:55 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `page-6_t1.s19.u3`)
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Introduction" at 0:04
-- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 28:14, about section `added-05`
-- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 28:14, about section `added-03`
+- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 28:16, about section `added-05`
+- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 28:16, about section `added-03`
 - continues from Grammar for OET: Complex sentences (`grammar-05-complex-compound`): Punctuation teaches the comma in complex and compound sentences.
 
 
@@ -2803,8 +2803,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 8. Grammar for OET: Paraphrasing
 
-- Lesson ID and folder: `grammar-08-paraphrasing` (folder `grammar-08-paraphrasing`); course grammar, lesson 8; length 54:11; bundle format 1.12
-- Status: approved by siavash, 2026-10-01 08:06
+- Lesson ID and folder: `grammar-08-paraphrasing` (folder `grammar-08-paraphrasing`); course grammar, lesson 8; length 54:16; bundle format 1.12
+- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:43
 - Description: Learn eight steps to turn case notes into clear, correct sentences for your OET letter.
 - Original session: folder `source`: `source/video.mp4`, 83:44 long, partial hash `2962a94a3786c811`; deck `source/slides.pdf`, 11 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -2876,9 +2876,9 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 13:43 Second worked example: a note expanded into a sentence
   - 13:59 What was added in the second example, and abbreviations
   - 14:12 Abbreviations written in full
-  - 14:34 Case notes are a timeline: a dated past event
-  - 14:54 Case notes are a timeline: something that continues up to now
-  - 15:13 Pointer to the tense lesson
+  - 14:35 Case notes are a timeline: a dated past event
+  - 14:55 Case notes are a timeline: something that continues up to now
+  - 15:14 Pointer to the tense lesson
 
 *Rules on the boards*
 
@@ -2890,187 +2890,187 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 10:12 The patient done a surgery.
 - 11:02 Mr X underwent right total hip replacement after sustaining fracture of right neck of femur.
 
-*Terms*: Expand (Key word, 9:08); Subject (Grammar word, 9:53); Undergo (Verb, 10:24); Articles (Grammar word, 11:22); Sustain a fracture (Phrase, 13:21); Present perfect (Tense, 15:04)
+*Terms*: Expand (Key word, 9:08); Subject (Grammar word, 9:53); Undergo (Verb, 10:24); Articles (Grammar word, 11:22); Sustain a fracture (Phrase, 13:21); Present perfect (Tense, 15:05)
 
 #### 15:24 Omit (`page-6`, deck)
 
 - 15:24 **Omit: the Mary Roden case notes**
   - 15:24 introduce the three columns and technique 2
   - 15:40 case notes hold everything, the letter does not
-  - 15:56 read the task first, then choose the notes
-  - 16:16 the question this step asks
+  - 15:57 read the task first, then choose the notes
+  - 16:17 the question this step asks
   - 16:30 what extra information costs
   - 17:12 what the smoking line really tells us
   - 17:27 gloss the word occasionally
-  - 17:40 what the Wrong column is
+  - 17:41 what the Wrong column is
   - 18:07 caveat, no task is given here
   - 18:31 marital status is kept
-  - 18:49 keep the job, cut the job detail
-  - 19:07 keep the children, cut their birth years
-  - 19:24 the word respectively
-  - 19:45 smoking and alcohol history are kept
-  - 20:02 the missing detail is her age (first typed part)
-  - 20:28 how the age phrase is written
-  - 20:47 the same form with a time period
-  - 21:01 the job phrase is cut down (second typed part)
-  - 21:11 the order of the words before the noun
-  - 21:28 teenage replaces the ages (third typed part)
-  - 21:40 a better time reference for stopping smoking (fourth typed part)
-  - 21:53 social drinker (fifth typed part)
-  - 22:09 compare the length of the two versions
-  - 22:25 the letter's word count
-  - 22:40 what padding does
-  - 23:05 the result of omitting
+  - 18:50 keep the job, cut the job detail
+  - 19:08 keep the children, cut their birth years
+  - 19:26 the word respectively
+  - 19:47 smoking and alcohol history are kept
+  - 20:04 the missing detail is her age (first typed part)
+  - 20:30 how the age phrase is written
+  - 20:49 the same form with a time period
+  - 21:03 the job phrase is cut down (second typed part)
+  - 21:13 the order of the words before the noun
+  - 21:30 teenage replaces the ages (third typed part)
+  - 21:42 a better time reference for stopping smoking (fourth typed part)
+  - 21:55 social drinker (fifth typed part)
+  - 22:11 compare the length of the two versions
+  - 22:27 the letter's word count
+  - 22:42 what padding does
+  - 23:07 the result of omitting
 
 *Rules on the boards*
 
-- 22:25 An OET letter is 180 to 200 words. Do not add extra words to reach it: the information you must give will fill it.
+- 22:27 An OET letter is 180 to 200 words. Do not add extra words to reach it: the information you must give will fill it.
 
 *Warnings (common mistakes)*
 
 - 16:30 Extra information slows the reader down and makes it harder to find the key points. It also costs you marks.
-- 22:40 Extra words can push you over 200 words and hide the key points.
+- 22:42 Extra words can push you over 200 words and hide the key points.
 
-*Terms*: Omit (Technique 2, 15:28); a fifty-year-old teacher (Form, 20:28); a social drinker (New phrase, 21:53)
+*Terms*: Omit (Technique 2, 15:28); a fifty-year-old teacher (Form, 20:30); a social drinker (New phrase, 21:55)
 
-#### 23:26 Combine (`page-7`, deck)
+#### 23:28 Combine (`page-7`, deck)
 
-- 23:26 **Combine: Mr Edmond case notes**
-  - 23:26 step 3 of the procedure is to combine related notes
-  - 23:42 one longer sentence instead of a line of short ones
-  - 23:56 the scenario behind the case notes
-  - 24:09 who the letter goes to and what it must say
-  - 24:22 the same writing skills in every profession
-  - 24:50 reading the case-note column
-  - 25:02 what non-compliant means
-  - 25:22 gloss of the hard word 'resents'
-  - 25:41 quotation marks in a case note
-  - 25:56 what unmotivated means
-  - 26:08 gloss of 'intermittently'
-  - 26:25 what 'double doses sometimes' means
-  - 26:51 why the middle column is judged weak
-  - 27:12 cutting the detail about the GP
-  - 27:24 42 words against the length of the letter
-  - 27:39 state the fact instead of reporting his words
-  - 27:49 three sentences follow one idea
-  - 28:09 a name takes a capital letter
-  - 28:43 present simple for the medication he takes now
-  - 28:51 the two facts contrast
-  - 29:08 however as the linking word
-  - 29:19 present perfect for a state that continues
-  - 29:36 the preposition after compliant
-  - 29:47 joining with and instead of a full stop
-  - 29:59 the reasons are not relevant
-  - 30:15 what the receiving centre must be told
-  - 30:21 the facts written as nouns
-  - 30:38 gloss of 'occasional'
-  - 30:57 the result of combining
-  - 31:03 what to keep and what to cut
-  - 31:19 the gain in length
-  - 31:30 the rule to remember
-  - 31:43 the two joining words used here
+- 23:28 **Combine: Mr Edmond case notes**
+  - 23:28 step 3 of the procedure is to combine related notes
+  - 23:44 one longer sentence instead of a line of short ones
+  - 23:58 the scenario behind the case notes
+  - 24:11 who the letter goes to and what it must say
+  - 24:24 the same writing skills in every profession
+  - 24:52 reading the case-note column
+  - 25:04 what non-compliant means
+  - 25:24 gloss of the hard word 'resents'
+  - 25:43 quotation marks in a case note
+  - 25:58 what unmotivated means
+  - 26:10 gloss of 'intermittently'
+  - 26:27 what 'double doses sometimes' means
+  - 26:53 why the middle column is judged weak
+  - 27:14 cutting the detail about the GP
+  - 27:26 42 words against the length of the letter
+  - 27:41 state the fact instead of reporting his words
+  - 27:51 three sentences follow one idea
+  - 28:11 a name takes a capital letter
+  - 28:45 present simple for the medication he takes now
+  - 28:53 the two facts contrast
+  - 29:10 however as the linking word
+  - 29:21 present perfect for a state that continues
+  - 29:38 the preposition after compliant
+  - 29:49 joining with and instead of a full stop
+  - 30:01 the reasons are not relevant
+  - 30:17 what the receiving centre must be told
+  - 30:23 the facts written as nouns
+  - 30:40 gloss of 'occasional'
+  - 30:59 the result of combining
+  - 31:05 what to keep and what to cut
+  - 31:21 the gain in length
+  - 31:32 the rule to remember
+  - 31:45 the two joining words used here
 
 *Rules on the boards*
 
-- 31:30 Facts that follow one idea belong in one sentence. Combine them with compound and complex sentences.
+- 31:32 Facts that follow one idea belong in one sentence. Combine them with compound and complex sentences.
 
 *Warnings (common mistakes)*
 
-- 26:51 This paragraph is not incorrect English. But a whole letter written like this makes a grade B very hard to get.
+- 26:53 This paragraph is not incorrect English. But a whole letter written like this makes a grade B very hard to get.
 
-*Terms*: Combine (Step, 23:30); Non-compliant (Case note word, 25:02); Unmotivated (Case note word, 25:56); However (Linking word, 29:08); Compliant with (Form, 29:36)
+*Terms*: Combine (Step, 23:32); Non-compliant (Case note word, 25:04); Unmotivated (Case note word, 25:58); However (Linking word, 29:10); Compliant with (Form, 29:38)
 
-#### 32:09 Rearrange (`page-8`, deck)
+#### 32:11 Rearrange (`page-8`, deck)
 
-- 32:09 **Case notes rearranged into a letter**
-  - 32:09 the notes are a set of events in time
-  - 32:29 the tense follows the time
-  - 32:44 the order of the notes is the writer's choice
-  - 33:00 the task and the patient
-  - 33:17 the three events drawn on a time line
-  - 34:16 the date becomes today
-  - 34:26 simple past for her visit
-  - 34:45 gloss of intermittent
-  - 35:04 the pain score
-  - 35:13 the pain continues to now
-  - 35:43 the form for how long a problem has lasted
-  - 35:55 the word that joins the other symptoms
-  - 36:09 three lines become one sentence
-  - 36:26 what to leave out
-  - 36:46 gloss of pop
-  - 36:57 simple past for the incident
-  - 37:24 how when joins the two clauses
-  - 37:54 the time word while
-  - 38:06 past perfect for the earlier period
-  - 38:27 the form for the time before onset
-  - 38:40 closing summary of the whole rewrite
-
-*Rules on the boards*
-
-- 38:40 Paraphrase the notes, keep what is relevant, drop what is not, and put the events in a clear order. With correct grammar, strong words and longer sentences, a writing moves from level C up to level B or level A.
-
-*Terms*: 3/10 (Case notes, 35:04); A two-week history of (Form, 35:43); Concomitant (New word, 35:55); While (Time words, 37:54); Prior to onset (Form, 38:27)
-
-#### 39:09 Synonyms (`pages-09-10`, deck)
-
-- 39:09 **Dental case notes: synonyms for conditions and symptoms**
-  - 39:09 the case notes and the question behind the task
-  - 39:32 what a synonym is
-  - 39:45 which words stay and which change
-  - 40:05 one word changed for another
-  - 40:14 the task line and the abbreviations
-  - 40:40 how we will work through the notes
-  - 40:58 the first visit becomes 'was first advised'
-  - 41:24 what DO stands for
-  - 41:36 60% possibility becomes 'might'
-  - 41:59 what 'wishes to delay' means
-  - 42:12 reluctant
-  - 42:38 the reason for the delay
-  - 42:54 what financial constraints means, and a second wording
-  - 43:19 'complains: pain' becomes 'painful'
-  - 43:45 the word 'scheduled'
-  - 44:09 'gone away' becomes asymptomatic
-  - 44:27 the prefix a-
-  - 45:00 linking the two sentences
-  - 45:23 the changes we made in these notes
-  - 45:51 build a store of synonyms before the exam
-  - 46:08 dates become time expressions
-- 46:38 **Pharmacy case notes: patient-friendly synonyms**
-  - 46:38 the style of this letter
-  - 46:51 what patient friendly language means
-  - 47:07 the reader decides the words
-  - 47:23 whose case notes these are
-  - 47:49 abbreviations the patient cannot read
-  - 48:02 how the prescription is reported
-  - 48:40 prn written in plain words
-  - 48:58 max 4 hrly written in plain words
-  - 49:19 what to do when no synonym comes to mind
-  - 49:46 the abbreviations in this line
-  - 49:53 abbreviations belong to each profession
-  - 50:13 why the second medication is given
-  - 50:32 tds written out for the patient
-  - 50:54 keep one word, change the other
-  - 51:09 the word 'cramps'
-  - 51:26 the side effects in the letter
-  - 51:51 what impaired alertness means
-  - 52:08 the warning in the letter
-  - 52:26 how the warning opens
-  - 52:50 leave out what is too technical
-  - 53:00 patient-friendly words for the terms in these notes
-  - 53:25 the rule for choosing the words
-  - 53:48 the paraphrasing techniques together
+- 32:11 **Case notes rearranged into a letter**
+  - 32:11 the notes are a set of events in time
+  - 32:31 the tense follows the time
+  - 32:46 the order of the notes is the writer's choice
+  - 33:02 the task and the patient
+  - 33:19 the three events drawn on a time line
+  - 34:18 the date becomes today
+  - 34:28 simple past for her visit
+  - 34:47 gloss of intermittent
+  - 35:06 the pain score
+  - 35:15 the pain continues to now
+  - 35:45 the form for how long a problem has lasted
+  - 35:57 the word that joins the other symptoms
+  - 36:11 three lines become one sentence
+  - 36:28 what to leave out
+  - 36:48 gloss of pop
+  - 36:59 simple past for the incident
+  - 37:26 how when joins the two clauses
+  - 37:56 the time word while
+  - 38:08 past perfect for the earlier period
+  - 38:29 the form for the time before onset
+  - 38:42 closing summary of the whole rewrite
 
 *Rules on the boards*
 
-- 45:51 Learn your synonyms before the exam. 'Asymptomatic' works in any letter when the patient has no symptoms.
-- 49:19 When you cannot find a synonym, say the meaning in your own simplest words, then write that sentence down.
-- 53:25 The reader decides your words. In a letter to a patient, change any medical wording the patient would not understand for an everyday word.
+- 38:42 Paraphrase the notes, keep what is relevant, drop what is not, and put the events in a clear order. With correct grammar, strong words and longer sentences, a writing moves from level C up to level B or level A.
 
-*Terms*: Synonym (New word, 39:32); DO tunnel (Abbreviation, 41:24); Reluctant (New word, 42:16); Financial constraints (New words, 42:54); Asymptomatic (New word, 44:27); Subsequently (Linking word, 45:06); Initially (Time words, 46:24); Patient friendly language (Style, 46:51); Present perfect passive (Form, 48:16); prn and tds (Abbreviations, 49:46); Counteract (New word, 50:17); Impaired alertness (New words, 51:51)
+*Terms*: 3/10 (Case notes, 35:06); A two-week history of (Form, 35:45); Concomitant (New word, 35:57); While (Time words, 37:56); Prior to onset (Form, 38:29)
+
+#### 39:11 Synonyms (`pages-09-10`, deck)
+
+- 39:11 **Dental case notes: synonyms for conditions and symptoms**
+  - 39:11 the case notes and the question behind the task
+  - 39:34 what a synonym is
+  - 39:47 which words stay and which change
+  - 40:07 one word changed for another
+  - 40:16 the task line and the abbreviations
+  - 40:42 how we will work through the notes
+  - 41:00 the first visit becomes 'was first advised'
+  - 41:26 what DO stands for
+  - 41:38 60% possibility becomes 'might'
+  - 42:01 what 'wishes to delay' means
+  - 42:14 reluctant
+  - 42:40 the reason for the delay
+  - 42:56 what financial constraints means, and a second wording
+  - 43:22 'complains: pain' becomes 'painful'
+  - 43:47 the word 'scheduled'
+  - 44:11 'gone away' becomes asymptomatic
+  - 44:29 the prefix a-
+  - 45:04 linking the two sentences
+  - 45:28 the changes we made in these notes
+  - 45:56 build a store of synonyms before the exam
+  - 46:13 dates become time expressions
+- 46:44 **Pharmacy case notes: patient-friendly synonyms**
+  - 46:44 the style of this letter
+  - 46:57 what patient friendly language means
+  - 47:12 the reader decides the words
+  - 47:29 whose case notes these are
+  - 47:54 abbreviations the patient cannot read
+  - 48:08 how the prescription is reported
+  - 48:45 prn written in plain words
+  - 49:04 max 4 hrly written in plain words
+  - 49:25 what to do when no synonym comes to mind
+  - 49:52 the abbreviations in this line
+  - 49:58 abbreviations belong to each profession
+  - 50:18 why the second medication is given
+  - 50:38 tds written out for the patient
+  - 51:00 keep one word, change the other
+  - 51:15 the word 'cramps'
+  - 51:31 the side effects in the letter
+  - 51:56 what impaired alertness means
+  - 52:13 the warning in the letter
+  - 52:32 how the warning opens
+  - 52:55 leave out what is too technical
+  - 53:05 patient-friendly words for the terms in these notes
+  - 53:30 the rule for choosing the words
+  - 53:54 the paraphrasing techniques together
+
+*Rules on the boards*
+
+- 45:56 Learn your synonyms before the exam. 'Asymptomatic' works in any letter when the patient has no symptoms.
+- 49:25 When you cannot find a synonym, say the meaning in your own simplest words, then write that sentence down.
+- 53:30 The reader decides your words. In a letter to a patient, change any medical wording the patient would not understand for an everyday word.
+
+*Terms*: Synonym (New word, 39:34); DO tunnel (Abbreviation, 41:26); Reluctant (New word, 42:18); Financial constraints (New words, 42:56); Asymptomatic (New word, 44:29); Subsequently (Linking word, 45:10); Initially (Time words, 46:29); Patient friendly language (Style, 46:57); Present perfect passive (Form, 48:22); prn and tds (Abbreviations, 49:52); Counteract (New word, 50:22); Impaired alertness (New words, 51:56)
 
 ### OET facts
 
-- 22:22 (`writing-letter-length`) An OET letter is 180 to 200 words.
+- 22:24 (`writing-letter-length`) An OET letter is 180 to 200 words.
 
 ### Vocabulary
 
@@ -3080,23 +3080,23 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 5:55 Synonym
 - 13:21 Sustain a fracture
 - 17:27 occasionally
-- 19:24 respectively
-- 21:53 a social drinker
-- 25:02 Non-compliant
-- 25:22 Resents
-- 25:56 Unmotivated
-- 26:08 Intermittently
-- 30:38 Occasional
-- 34:45 Intermittent
-- 35:55 Concomitant
-- 36:46 Pop
-- 42:16 Reluctant
-- 42:54 Financial constraints
-- 43:45 Scheduled
-- 44:27 Asymptomatic
-- 50:17 Counteract
-- 51:09 Cramps
-- 51:51 Impaired alertness
+- 19:26 respectively
+- 21:55 a social drinker
+- 25:04 Non-compliant
+- 25:24 Resents
+- 25:58 Unmotivated
+- 26:10 Intermittently
+- 30:40 Occasional
+- 34:47 Intermittent
+- 35:57 Concomitant
+- 36:48 Pop
+- 42:18 Reluctant
+- 42:56 Financial constraints
+- 43:47 Scheduled
+- 44:29 Asymptomatic
+- 50:22 Counteract
+- 51:15 Cramps
+- 51:56 Impaired alertness
 
 ### Links to other lessons
 
@@ -3105,10 +3105,10 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 5:42 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`) (in `page-4_t1.s14.u2`)
 - 7:47 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`) (in `page-4_t1.s22.u3`)
 - 11:27 refers to Grammar for OET: Articles (`grammar-04-articles`) (in `page-5_t1.s8.u2`)
-- 15:13 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `page-5_t1.s21.u1`)
-- 28:14 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Capital letters" (in `page-7_t1.s18.u2`)
-- 28:14 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Apostrophes" (in `page-7_t1.s18.u2`)
-- 38:14 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-8_t1.s19.u2`)
+- 15:14 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `page-5_t1.s21.u1`)
+- 28:16 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Capital letters" (in `page-7_t1.s18.u2`)
+- 28:16 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Apostrophes" (in `page-7_t1.s18.u2`)
+- 38:16 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-8_t1.s19.u2`)
 - referred to by OET Writing: Overview (`writing-01-overview`), "Steps towards successful writing" at 3:22, about section `page-4`
 - referred to by OET Writing: Overview (`writing-01-overview`), "The case notes" at 11:58, about section `page-6`
 
@@ -3119,16 +3119,16 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | Vocabulary for OET: Word Forms and Sentence Structure | `vocabulary-01-word-forms` | 79:01 | 8 | 2026-10-01 08:06 (siavash) |
-| 2 | Vocabulary for OET: Verb + Noun Collocations | `vocabulary-02-collocations` | 68:33 | 13 | 2026-10-01 08:06 (siavash) |
-| 3 | Vocabulary for OET: Adjective + Noun Collocations | `vocabulary-03-collocations-2` | 75:57 | 10 | 2026-10-01 08:06 (siavash) |
+| 1 | Vocabulary for OET: Word Forms and Sentence Structure | `vocabulary-01-word-forms` | 79:27 | 8 | 2026-10-26 13:45 (chat (owner's delegation, errata 2026-10-26)) |
+| 2 | Vocabulary for OET: Verb + Noun Collocations | `vocabulary-02-collocations` | 68:45 | 13 | 2026-10-26 14:27 (chat (owner's delegation, errata 2026-10-26)) |
+| 3 | Vocabulary for OET: Adjective + Noun Collocations | `vocabulary-03-collocations-2` | 76:00 | 10 | 2026-10-26 14:27 (chat (owner's delegation, errata 2026-10-26)) |
 
 <a id="vocabulary-01-word-forms"></a>
 
 ## 1. Vocabulary for OET: Word Forms and Sentence Structure
 
-- Lesson ID and folder: `vocabulary-01-word-forms` (folder `vocabulary-01-word-forms`); course vocabulary, lesson 1; length 79:01; bundle format 1.12
-- Status: approved by siavash, 2026-10-01 08:06
+- Lesson ID and folder: `vocabulary-01-word-forms` (folder `vocabulary-01-word-forms`); course vocabulary, lesson 1; length 79:27; bundle format 1.12
+- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:45
 - Description: Learn to choose the right form of a word, and to join short sentences into clear ones, in your OET writing.
 - Original session: folder `source`: `source/video.mp4`, 103:52 long, partial hash `f58701e6ddc4ac40`; deck `source/slides.pdf`, 11 pages
   - Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).
@@ -3153,73 +3153,73 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 3:48 **Item 1: hypertension and diabetes**
   - 3:48 Give the answer to item 1 with its reason
   - 4:05 Word class of the pair, and the form students often get wrong
-  - 4:19 Where each form goes in a sentence
-  - 4:34 The same idea said the other way round, with 'is'
-  - 4:42 State the parallel rule for 'and'
-  - 4:56 A second pair that works the same way
-- 5:08 **Item 2: urinary incontinence**
-  - 5:08 Give the answer to item 2 with its reason
-  - 5:28 Word class of the pair, with the adjective in a sentence
-  - 5:39 Meaning of 'incontinent' in medicine and in general English
-  - 5:52 No single rule for the endings
-  - 6:10 The subject is not repeated in the second part
-- 6:30 **Item 3: lonely and isolated**
-  - 6:30 Give the answer to item 3 with its reason
-  - 6:48 Gloss the key word loneliness
-  - 7:05 The same word said to the patient
-  - 7:12 Word class of the pair
-  - 7:19 The reporting verb 'stated'
-  - 7:28 The word 'isolated' and how it is formed
-  - 7:38 The phrase 'at times'
-- 7:50 **Item 4: headaches and lethargy**
-  - 7:50 Give the answer to item 4 with its reason
-  - 8:07 Gloss the key word lethargic
-  - 8:22 The same word said to the patient
-  - 8:29 Word class of the pair, with both sentence patterns
-  - 8:37 Lethargy and drowsiness
-  - 8:49 Ache and pain
-- 9:08 **Item 5: swollen and inflamed**
-  - 9:08 Give the answer to item 5 with its reason
-  - 9:28 Word class of the pair
-  - 9:41 Spelling warning
-- 9:49 **Item 6: upset and anxious or tearful**
-  - 9:49 Give the first answer to item 6 with its reason
-  - 10:07 Word class of anxious and anxiety
-  - 10:18 The second accepted answer
-  - 10:28 Gloss the key word tearful
-  - 10:43 The same word said to the patient
-  - 10:54 Two words spelled 'tear', and the word class of the pair
-- 11:16 **Item 7: guilt and anxiety**
-  - 11:16 Give the answer to item 7 with its reason
-  - 11:36 Two words in the sentence
-- 11:48 **Item 8: grazed and badly bruised**
-  - 11:48 Give the answer to item 8 with its reason
-  - 12:07 The two forms of the bruise pair
-  - 12:20 The word 'grazed'
-  - 12:25 'A fall' as a noun
-  - 12:31 The -ed pattern in this box
-- 12:45 **Item 9: change and uncertainty**
-  - 12:45 Give the answer to item 9 with its reason
-  - 13:04 Word class of the pair, with the adjective in a sentence
-  - 13:15 Two useful phrases in the sentence
-- 13:27 **Item 10: epigastric pain and weight loss**
-  - 13:27 Give the answer to item 10 with its reason
-  - 13:41 Word class of the pair
-  - 13:49 The phrase 'epigastric pain'
-- 13:58 **Item 11: withdrawn and anxious, agitated and excitable**
-  - 13:58 Give both answers to item 11 with the reason
-  - 14:27 Why 'excite' does not fit
-  - 14:38 Gloss the key word excitable
-  - 14:53 The same word said to the patient
-  - 15:00 Withdrawn and agitated are opposite states
-  - 15:21 Endings that often show the word class
-  - 15:50 The -ic pattern for conditions
+  - 4:18 Where each form goes in a sentence
+  - 4:37 The same idea said the other way round, with 'is'
+  - 4:45 State the parallel rule for 'and'
+  - 4:59 A second pair that works the same way
+- 5:11 **Item 2: urinary incontinence**
+  - 5:11 Give the answer to item 2 with its reason
+  - 5:31 Word class of the pair, with the adjective in a sentence
+  - 5:42 Meaning of 'incontinent' in medicine and in general English
+  - 5:54 No single rule for the endings
+  - 6:13 The subject is not repeated in the second part
+- 6:33 **Item 3: lonely and isolated**
+  - 6:33 Give the answer to item 3 with its reason
+  - 6:51 Gloss the key word loneliness
+  - 7:08 The same word said to the patient
+  - 7:15 Word class of the pair
+  - 7:21 The reporting verb 'stated'
+  - 7:31 The word 'isolated' and how it is formed
+  - 7:41 The phrase 'at times'
+- 7:53 **Item 4: headaches and lethargy**
+  - 7:53 Give the answer to item 4 with its reason
+  - 8:10 Gloss the key word lethargic
+  - 8:25 The same word said to the patient
+  - 8:31 Word class of the pair, with both sentence patterns
+  - 8:40 Lethargy and drowsiness
+  - 8:52 Ache and pain
+- 9:11 **Item 5: swollen and inflamed**
+  - 9:11 Give the answer to item 5 with its reason
+  - 9:31 Word class of the pair
+  - 9:43 Spelling warning
+- 9:52 **Item 6: upset and anxious or tearful**
+  - 9:52 Give the first answer to item 6 with its reason
+  - 10:10 Word class of anxious and anxiety
+  - 10:21 The second accepted answer
+  - 10:31 Gloss the key word tearful
+  - 10:46 The same word said to the patient
+  - 10:57 Two words spelled 'tear', and the word class of the pair
+- 11:19 **Item 7: guilt and anxiety**
+  - 11:19 Give the answer to item 7 with its reason
+  - 11:39 Two words in the sentence
+- 11:51 **Item 8: grazed and badly bruised**
+  - 11:51 Give the answer to item 8 with its reason
+  - 12:10 The two forms of the bruise pair
+  - 12:23 The word 'grazed'
+  - 12:28 'A fall' as a noun
+  - 12:34 The -ed pattern in this box
+- 12:48 **Item 9: change and uncertainty**
+  - 12:48 Give the answer to item 9 with its reason
+  - 13:06 Word class of the pair, with the adjective in a sentence
+  - 13:18 Two useful phrases in the sentence
+- 13:29 **Item 10: epigastric pain and weight loss**
+  - 13:29 Give the answer to item 10 with its reason
+  - 13:44 Word class of the pair
+  - 13:52 The phrase 'epigastric pain'
+- 14:01 **Item 11: withdrawn and anxious, agitated and excitable**
+  - 14:01 Give both answers to item 11 with the reason
+  - 14:29 Why 'excite' does not fit
+  - 14:41 Gloss the key word excitable
+  - 14:55 The same word said to the patient
+  - 15:03 Withdrawn and agitated are opposite states
+  - 15:23 Endings that often show the word class
+  - 15:53 The -ic pattern for conditions
 
 *Rules on the boards*
 
-- 4:42 When 'and' joins two words like these, they are usually the same kind of word: two nouns, or two adjectives.
-- 9:41 Inflamed is spelled with one m. Inflammation has two.
-- 12:31 Many of these words take -ed and become adjectives: inflame becomes inflamed, bruise becomes bruised, graze becomes grazed.
+- 4:45 When 'and' joins two words like these, they are usually the same kind of word: two nouns, or two adjectives.
+- 9:43 Inflamed is spelled with one m. Inflammation has two.
+- 12:34 Many of these words take -ed and become adjectives: inflame becomes inflamed, bruise becomes bruised, graze becomes grazed.
 
 *Wrong sentences corrected*
 
@@ -3235,463 +3235,463 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 3:24 He is suffering from epigastric pain and weight ______.
 - 3:24 The patient's mood was very changeable, sometimes withdrawn and ______, but at other times agitated and ______.
 - 3:48 He has a family history of hypertension and ______.
-- 4:15 The patient has diabetic.
-- 5:08 She has poor short-term memory and in addition, has urinary ______.
-- 6:30 She stated that she felt ______ and isolated at times.
-- 7:50 He has been experiencing headaches and ______.
-- 9:08 On examination, her joints were swollen and ______.
-- 9:49 The patient was clearly upset and rather ______ this morning
-- 11:16 He confessed to having strong feelings of guilt and ______.
-- 11:48 She suffered a fall at home in which her knee was grazed and her arm was ______.
-- 12:45 He has always found it difficult to cope with change and ______.
-- 13:27 He is suffering from epigastric pain and weight ______.
-- 13:58 The patient's mood was very changeable, sometimes withdrawn and ______, but at other times agitated and ______.
+- 4:14 The patient has diabetic.
+- 5:11 She has poor short-term memory and in addition, has urinary ______.
+- 6:33 She stated that she felt ______ and isolated at times.
+- 7:53 He has been experiencing headaches and ______.
+- 9:11 On examination, her joints were swollen and ______.
+- 9:52 The patient was clearly upset and rather ______ this morning
+- 11:19 He confessed to having strong feelings of guilt and ______.
+- 11:51 She suffered a fall at home in which her knee was grazed and her arm was ______.
+- 12:48 He has always found it difficult to cope with change and ______.
+- 13:29 He is suffering from epigastric pain and weight ______.
+- 14:01 The patient's mood was very changeable, sometimes withdrawn and ______, but at other times agitated and ______.
 
-*Terms*: diabetic / diabetes (Word forms, 4:05); incontinent / incontinence (Word forms, 5:28); lonely / loneliness (Word family, 7:12); stated (New word, 7:19); isolated (New word, 7:28); at times (New phrase, 7:38); lethargy / lethargic (Word family, 8:29); inflame / inflamed / inflammation (Word family, 9:28); anxious / anxiety (Word forms, 10:07); tear / tearful (Word forms, 11:08); confessed (New word, 11:36); guilt (New word, 11:40); grazed (New word, 12:20); a fall (New phrase, 12:25); uncertain / uncertainty (Word forms, 13:04); find it difficult (New phrase, 13:15); cope with (New phrase, 13:20); lose / loss (Word forms, 13:41); epigastric pain (New phrase, 13:49); Noun endings (Word endings, 15:21); Adjective endings (Word endings, 15:36)
+*Terms*: diabetic / diabetes (Word forms, 4:05); incontinent / incontinence (Word forms, 5:31); lonely / loneliness (Word family, 7:15); stated (New word, 7:21); isolated (New word, 7:31); at times (New phrase, 7:41); lethargy / lethargic (Word family, 8:31); inflame / inflamed / inflammation (Word family, 9:31); anxious / anxiety (Word forms, 10:10); tear / tearful (Word forms, 11:11); confessed (New word, 11:39); guilt (New word, 11:43); grazed (New word, 12:23); a fall (New phrase, 12:28); uncertain / uncertainty (Word forms, 13:06); find it difficult (New phrase, 13:18); cope with (New phrase, 13:22); lose / loss (Word forms, 13:44); epigastric pain (New phrase, 13:52); Noun endings (Word endings, 15:23); Adjective endings (Word endings, 15:39)
 
-#### 16:06 Medical terms: vocabulary and word form (`page-5`, deck)
+#### 16:09 Medical terms: vocabulary and word form (`page-5`, deck)
 
-- 16:06 **exercise introduction, items 1 to 4**
-  - 16:06 Show the task and the first four exercise sentences
-- 16:54 **exercise introduction, items 5 to 8**
-  - 16:54 Show the remaining four exercise sentences
-- 17:41 **Item 1: nauseous or nausea**
-  - 17:41 Keep item 1 on the board and name the word class of each word
-  - 18:04 Give the answer and the reason for item 1
-- 18:20 **Item 2: jaundice or jaundiced**
-  - 18:20 Keep item 2 on the board and give the patient-friendly meaning
-  - 18:50 Give the answer and the reason for item 2
-- 19:22 **Item 3: occasionally and the two medical nouns**
-  - 19:22 Keep item 3 on the board and give the patient-friendly meanings
-  - 19:48 Show that both terms after "no" are nouns
-  - 20:07 Find the fault at the start of item 3
-  - 20:19 Give the answer and the reason for item 3
-- 20:32 **Item 4: abdominal masses and epigastric tenderness**
-  - 20:32 Keep item 4 on the board and name the first fault
-  - 20:54 Show the wrong and right way to describe a mass
-  - 21:14 Contrast the two word orders for tender and tenderness
-  - 21:33 Give the answer and the reason for item 4
-  - 21:55 Add the word family for tender and the point about one spelling
-- 22:14 **Item 5: physiotherapy or physiotherapist**
-  - 22:14 Keep item 5 on the board and contrast the two words
-  - 22:28 Give the answer and the reason for item 5
-  - 22:49 Show the same pattern with another practitioner
-- 23:00 **Item 6: psychiatric evaluation is required**
-  - 23:00 Keep item 6 on the board and contrast psychiatrist with psychiatric
-  - 23:15 Show the rejected combination and the verb form
-  - 23:34 Give the answer and the reason for item 6
-  - 23:57 Add the word family for require
-- 24:07 **Item 7: a decreased appetite**
-  - 24:07 Keep item 7 on the board and show where the verb is
-  - 24:26 Give the answer and the reason for item 7
-  - 24:40 Add the word family for decrease
-- 24:49 **Item 8: pain, warmth, redness and swelling**
-  - 24:49 Keep item 8 on the board and show what must follow "complaining of"
-  - 25:10 Show the noun for each adjective in the list
-  - 25:28 Give the answer and the reason for item 8
-  - 25:45 Add the word family for swell
-  - 25:55 Close the exercise with the rule to remember
+- 16:09 **exercise introduction, items 1 to 4**
+  - 16:09 Show the task and the first four exercise sentences
+- 16:57 **exercise introduction, items 5 to 8**
+  - 16:57 Show the remaining four exercise sentences
+- 17:44 **Item 1: nauseous or nausea**
+  - 17:44 Keep item 1 on the board and name the word class of each word
+  - 18:06 Give the answer and the reason for item 1
+- 18:24 **Item 2: jaundice or jaundiced**
+  - 18:24 Keep item 2 on the board and give the patient-friendly meaning
+  - 18:54 Give the answer and the reason for item 2
+- 19:26 **Item 3: occasionally and the two medical nouns**
+  - 19:26 Keep item 3 on the board and give the patient-friendly meanings
+  - 19:52 Show that both terms after "no" are nouns
+  - 20:11 Find the fault at the start of item 3
+  - 20:22 Give the answer and the reason for item 3
+- 20:40 **Item 4: abdominal masses and epigastric tenderness**
+  - 20:40 Keep item 4 on the board and name the first fault
+  - 21:02 Show the wrong and right way to describe a mass
+  - 21:21 Contrast the two word orders for tender and tenderness
+  - 21:40 Give the answer and the reason for item 4
+  - 22:03 Add the word family for tender and the point about one spelling
+- 22:21 **Item 5: physiotherapy or physiotherapist**
+  - 22:21 Keep item 5 on the board and contrast the two words
+  - 22:35 Give the answer and the reason for item 5
+  - 23:00 Show the same pattern with another practitioner
+- 23:12 **Item 6: psychiatric evaluation is required**
+  - 23:12 Keep item 6 on the board and contrast psychiatrist with psychiatric
+  - 23:28 Show the rejected combination and the verb form
+  - 23:51 Give the answer and the reason for item 6
+  - 24:14 Add the word family for require
+- 24:24 **Item 7: a decreased appetite**
+  - 24:24 Keep item 7 on the board and show where the verb is
+  - 24:44 Give the answer and the reason for item 7
+  - 24:57 Add the word family for decrease
+- 25:06 **Item 8: pain, warmth, redness and swelling**
+  - 25:06 Keep item 8 on the board and show what must follow "complaining of"
+  - 25:27 Show the noun for each adjective in the list
+  - 25:45 Give the answer and the reason for item 8
+  - 26:02 Add the word family for swell
+  - 26:13 Close the exercise with the rule to remember
 
 *Rules on the boards*
 
-- 25:55 Using a noun where an adjective is needed, or an adjective where a noun is needed, is one of the most frequent mistakes in OET writing.
+- 26:13 Using a noun where an adjective is needed, or an adjective where a noun is needed, is one of the most frequent mistakes in OET writing.
 
 *Wrong sentences corrected*
 
-- 16:06 He has not experienced any nauseous or vomiting.
-- 16:06 When I examined him today, he appeared both anaemic and jaundice.
-- 16:06 He reported occasionally vomiting but no haematemesis or melaena.
-- 16:06 Although there were no abdomen or rectal masses, there was marked epigastric tender.
-- 16:54 I have referred the patient to a physiotherapy.
-- 16:54 A psychiatrist evaluation is require.
-- 16:54 Mr Dawe had a decrease appetite and nausea.
-- 16:54 On 19/4/2022, she presented to my clinic complaining of painful, warm, red and swelling in her right breast.
-- 17:41 He has not experienced any nauseous or vomiting.
-- 18:20 When I examined him today, he appeared both anaemic and jaundice.
-- 19:22 He reported occasionally vomiting but no haematemesis or melaena.
-- 20:32 Although there were no abdomen or rectal masses, there was marked epigastric tender.
-- 20:54 Abdomen mass
-- 21:26 Tenderness stomach
-- 22:14 I have referred the patient to a physiotherapy.
-- 23:00 A psychiatrist evaluation is require.
-- 23:15 Psychiatrist evaluation
-- 24:07 Mr Dawe had a decrease appetite and nausea.
-- 24:49 On 19/4/2022, she presented to my clinic complaining of painful, warm, red and swelling in her right breast.
+- 16:09 He has not experienced any nauseous or vomiting.
+- 16:09 When I examined him today, he appeared both anaemic and jaundice.
+- 16:09 He reported occasionally vomiting but no haematemesis or melaena.
+- 16:09 Although there were no abdomen or rectal masses, there was marked epigastric tender.
+- 16:57 I have referred the patient to a physiotherapy.
+- 16:57 A psychiatrist evaluation is require.
+- 16:57 Mr Dawe had a decrease appetite and nausea.
+- 16:57 On 19/4/2022, she presented to my clinic complaining of painful, warm, red and swelling in her right breast.
+- 17:44 He has not experienced any nauseous or vomiting.
+- 18:24 When I examined him today, he appeared both anaemic and jaundice.
+- 19:26 He reported occasionally vomiting but no haematemesis or melaena.
+- 20:40 Although there were no abdomen or rectal masses, there was marked epigastric tender.
+- 21:02 Abdomen mass
+- 21:33 Tenderness stomach
+- 22:21 I have referred the patient to a physiotherapy.
+- 23:12 A psychiatrist evaluation is require.
+- 23:28 Psychiatrist evaluation
+- 24:24 Mr Dawe had a decrease appetite and nausea.
+- 25:06 On 19/4/2022, she presented to my clinic complaining of painful, warm, red and swelling in her right breast.
 
-*Terms*: jaundiced (In plain words, 18:27); jaundice, jaundiced (Word class, 18:35); haematemesis (In plain words, 19:29); melaena (In plain words, 19:34); melaena, melaenic (Word class, 19:48); tender, tenderness (Word family, 21:55); passive (Grammar word, 23:25); require, required, requirement (Word family, 23:57); decrease, decreased (Word family, 24:40); pain, warmth, redness (Noun forms, 25:10); swell, swollen, swelling (Word family, 25:45)
+*Terms*: jaundiced (In plain words, 18:30); jaundice, jaundiced (Word class, 18:39); haematemesis (In plain words, 19:32); melaena (In plain words, 19:38); melaena, melaenic (Word class, 19:52); tender, tenderness (Word family, 22:03); passive (Grammar word, 23:40); require, required, requirement (Word family, 24:14); decrease, decreased (Word family, 24:57); pain, warmth, redness (Noun forms, 25:27); swell, swollen, swelling (Word family, 26:02)
 
-#### 26:15 Adjectives and nouns (`page-6`, deck)
+#### 26:32 Adjectives and nouns (`page-6`, deck)
 
-- 26:15 **Word forms table: adjectives, nouns and model sentences**
-  - 26:15 introduce the task
-  - 26:43 why the word form matters
-  - 27:08 gloss the adjective deaf
-  - 27:31 deaf said to a patient
-  - 27:47 the phrase acute deafness
-  - 27:57 word family for deaf
-  - 28:15 gloss the adjective blind
-  - 28:36 blind said to a patient
-  - 28:42 from case notes to a letter sentence
-  - 29:07 the weak version without the noun
-  - 29:31 word family for blind
-  - 29:47 dilate is a verb
-  - 30:03 gloss the adjective dilated
-  - 30:23 dilated said to a patient
-  - 30:29 the slot decides the form
-  - 30:58 appeared to be in place of were
-  - 31:19 digest is a verb
-  - 31:35 gloss the noun indigestion
-  - 31:56 indigestion said to a patient
-  - 32:02 word family for digest
-  - 32:21 following in place of after
-  - 32:43 gloss the adjective constipated
-  - 33:04 constipated said to a patient
-  - 33:09 the history phrase
-  - 33:26 word family for constipated
-  - 33:43 gloss the adjective psychotic
-  - 34:10 psychotic said to a patient
-  - 34:16 the noun after 'is' in the side-effect pattern
-  - 34:34 word family for psychotic
-  - 34:50 gloss the adjective depressed
-  - 35:09 depressed said to a patient
-  - 35:14 is + adjective and has + noun
-  - 35:38 gloss the adjective anxious
-  - 35:56 anxious said to a patient
-  - 36:02 is + adjective and has + noun
-  - 36:19 the rule for the whole table
+- 26:32 **Word forms table: adjectives, nouns and model sentences**
+  - 26:32 introduce the task
+  - 27:00 why the word form matters
+  - 27:26 gloss the adjective deaf
+  - 27:48 deaf said to a patient
+  - 28:04 the phrase acute deafness
+  - 28:15 word family for deaf
+  - 28:33 gloss the adjective blind
+  - 28:53 blind said to a patient
+  - 28:59 from case notes to a letter sentence
+  - 29:24 the weak version without the noun
+  - 29:48 word family for blind
+  - 30:04 dilate is a verb
+  - 30:20 gloss the adjective dilated
+  - 30:41 dilated said to a patient
+  - 30:46 the slot decides the form
+  - 31:15 appeared to be in place of were
+  - 31:36 digest is a verb
+  - 31:52 gloss the noun indigestion
+  - 32:13 indigestion said to a patient
+  - 32:19 word family for digest
+  - 32:38 following in place of after
+  - 33:01 gloss the adjective constipated
+  - 33:21 constipated said to a patient
+  - 33:27 the history phrase
+  - 33:43 word family for constipated
+  - 34:00 gloss the adjective psychotic
+  - 34:27 psychotic said to a patient
+  - 34:33 the noun after 'is' in the side-effect pattern
+  - 34:51 word family for psychotic
+  - 35:07 gloss the adjective depressed
+  - 35:26 depressed said to a patient
+  - 35:31 is + adjective and has + noun
+  - 35:55 gloss the adjective anxious
+  - 36:13 anxious said to a patient
+  - 36:19 is + adjective and has + noun
+  - 36:36 the rule for the whole table
 
 *Rules on the boards*
 
-- 26:43 When you paraphrase case notes in a letter, you often have to change the form of the word.
-- 36:19 Look at the slot in the sentence. Some slots need the adjective, others need the noun.
+- 27:00 When you paraphrase case notes in a letter, you often have to change the form of the word.
+- 36:36 Look at the slot in the sentence. Some slots need the adjective, others need the noun.
 
 *Wrong sentences corrected*
 
-- 29:07 His father and sister is blind.
+- 29:24 His father and sister is blind.
 
-*Terms*: acute deafness (Phrase, 27:47); deaf (adjective), deafness (noun) (Word family, 27:57); blind (adjective), blindness (noun) (Word family, 29:31); digest (verb), digestive (adjective), digestion (noun), indigestion (noun) (Word family, 32:02); a three-day history of constipation (Phrase, 33:09); constipated (adjective), constipation (noun) (Word family, 33:26); psychotic (adjective), psychosis (noun) (Word family, 34:34)
+*Terms*: acute deafness (Phrase, 28:04); deaf (adjective), deafness (noun) (Word family, 28:15); blind (adjective), blindness (noun) (Word family, 29:48); digest (verb), digestive (adjective), digestion (noun), indigestion (noun) (Word family, 32:19); a three-day history of constipation (Phrase, 33:27); constipated (adjective), constipation (noun) (Word family, 33:43); psychotic (adjective), psychosis (noun) (Word family, 34:51)
 
-#### 36:49 Joining sentences with relative pronouns (`page-7`, deck)
+#### 37:06 Joining sentences with relative pronouns (`page-7`, deck)
 
-- 36:49 **activity instruction and items 1 to 3**
-  - 36:49 Show the task and the first three pairs of sentences
-- 37:57 **items 4 to 6**
-  - 37:57 Show the last three pairs of sentences
-- 38:33 **Item 1: who, and the comma**
-  - 38:33 Define the tool the activity practises
-  - 38:53 Name the second part of the joined sentence
-  - 39:09 Give the answer to item 1 with one short reason
-  - 39:28 Show that the clause can be taken out
-  - 39:59 Contrast the two kinds of relative clause and the comma rule
-  - 40:17 Show a defining clause in a letter introduction
-  - 40:36 List the relative pronouns and what each refers to
-- 40:49 **Item 2: which, and deleting the pronoun**
-  - 40:49 Short notes on the first two words of item 2
-  - 41:08 Short notes on the other two words of item 2
-  - 41:26 Give the answer to item 2 with one short reason
-  - 41:38 Reject the form that keeps 'it'
-  - 41:52 Explain the comma in item 2
-- 42:11 **Item 3: whose, and no comma**
-  - 42:11 Teach the key word deteriorating
-  - 42:44 Second example, talking to a patient
-  - 42:50 Word family for deteriorate
-  - 43:00 Point at the possessive word that starts sentence two
-  - 43:12 Give the answer to item 3 with one short reason
-  - 43:29 Show that this clause cannot be taken out
-  - 44:00 State the comma rule for defining clauses
-  - 44:08 Warn about the comma in a letter introduction
-- 44:26 **Item 4: which for a whole idea, and suffer from**
-  - 44:26 Short notes on the words in item 4
-  - 44:50 Give the answer to item 4 with one short reason
-  - 45:04 Contrast suffer from and suffer
-  - 45:24 Show the two rejected forms with from
-  - 45:44 Give the correct one-off form and say why
-- 45:56 **Item 5: which for a whole idea again**
-  - 45:56 Separate the two near words in item 5
-  - 46:15 Show the verb and noun forms of faint
-  - 46:28 Give the answer to item 5 with one short reason
-  - 46:39 State the deletion rule for the whole activity
-- 46:50 **Item 6: whose again, and counselling**
-  - 46:50 Teach the key word counselling
-  - 47:19 Second example, talking to a patient
-  - 47:25 Word family for counsel
-  - 47:34 Give the answer to item 6 with one short reason
+- 37:06 **activity instruction and items 1 to 3**
+  - 37:06 Show the task and the first three pairs of sentences
+- 38:14 **items 4 to 6**
+  - 38:14 Show the last three pairs of sentences
+- 38:50 **Item 1: who, and the comma**
+  - 38:50 Define the tool the activity practises
+  - 39:10 Name the second part of the joined sentence
+  - 39:27 Give the answer to item 1 with one short reason
+  - 39:45 Show that the clause can be taken out
+  - 40:17 Contrast the two kinds of relative clause and the comma rule
+  - 40:35 Show a defining clause in a letter introduction
+  - 40:53 List the relative pronouns and what each refers to
+- 41:07 **Item 2: which, and deleting the pronoun**
+  - 41:07 Short notes on the first two words of item 2
+  - 41:26 Short notes on the other two words of item 2
+  - 41:43 Give the answer to item 2 with one short reason
+  - 41:55 Reject the form that keeps 'it'
+  - 42:09 Explain the comma in item 2
+- 42:28 **Item 3: whose, and no comma**
+  - 42:28 Teach the key word deteriorating
+  - 43:01 Second example, talking to a patient
+  - 43:07 Word family for deteriorate
+  - 43:18 Point at the possessive word that starts sentence two
+  - 43:29 Give the answer to item 3 with one short reason
+  - 43:46 Show that this clause cannot be taken out
+  - 44:18 State the comma rule for defining clauses
+  - 44:27 Warn about the comma in a letter introduction
+- 44:51 **Item 4: which for a whole idea, and suffer from**
+  - 44:51 Short notes on the words in item 4
+  - 45:15 Give the answer to item 4 with one short reason
+  - 45:30 Contrast suffer from and suffer
+  - 45:50 Show the two rejected forms with from
+  - 46:09 Give the correct one-off form and say why
+- 46:21 **Item 5: which for a whole idea again**
+  - 46:21 Separate the two near words in item 5
+  - 46:41 Show the verb and noun forms of faint
+  - 46:54 Give the answer to item 5 with one short reason
+  - 47:05 State the deletion rule for the whole activity
+- 47:15 **Item 6: whose again, and counselling**
+  - 47:15 Teach the key word counselling
+  - 47:44 Second example, talking to a patient
+  - 47:50 Word family for counsel
+  - 48:00 Give the answer to item 6 with one short reason
 
 *Rules on the boards*
 
-- 42:04 Extra information is separated with a comma.
-- 44:00 A defining relative clause takes no comma.
-- 46:39 When you use a relative pronoun, delete the word it replaces: she, it or this.
+- 42:21 Extra information is separated with a comma.
+- 44:18 A defining relative clause takes no comma.
+- 47:05 When you use a relative pronoun, delete the word it replaces: she, it or this.
 
 *Warnings (common mistakes)*
 
-- 44:08 In the introduction of a referral letter the relative clause is usually defining. A comma there is a grammar error.
+- 44:27 Look at the words before who or whose. After a description with 'a' (a 55-year-old bus driver whose …), no comma. Straight after the patient's name (Ms Wilson, who …), a comma.
 
 *Wrong sentences corrected*
 
-- 36:49 He lives with his 80-year-old mother. She suffers from dementia.
-- 36:49 She tried a herbal remedy. She obtained it over the counter from a Chinese shop.
-- 36:49 Ms Wilson is a 55-year-old bus driver. Her eyesight may be deteriorating.
-- 37:57 He suffered a severe blow to the head. This caused him to lose consciousness.
-- 37:57 He reported no feelings of faintness or dizziness. I found this surprising.
-- 37:57 I spent some time counselling Mr Aksoy. His mother died last week.
-- 38:33 He lives with his 80-year-old mother. She suffers from dementia.
-- 40:49 She tried a herbal remedy. She obtained it over the counter from a Chinese shop.
-- 41:38 Which she obtained it over the counter from a Chinese shop.
-- 42:11 Ms Wilson is a 55-year-old bus driver. Her eyesight may be deteriorating.
-- 44:26 He suffered a severe blow to the head. This caused him to lose consciousness.
-- 45:24 He suffered from a severe blow to the head.
-- 45:32 He suffered from a leg fracture.
-- 45:56 He reported no feelings of faintness or dizziness. I found this surprising.
-- 46:50 I spent some time counselling Mr Aksoy. His mother died last week.
+- 37:06 He lives with his 80-year-old mother. She suffers from dementia.
+- 37:06 She tried a herbal remedy. She obtained it over the counter from a Chinese shop.
+- 37:06 Ms Wilson is a 55-year-old bus driver. Her eyesight may be deteriorating.
+- 38:14 He suffered a severe blow to the head. This caused him to lose consciousness.
+- 38:14 He reported no feelings of faintness or dizziness. I found this surprising.
+- 38:14 I spent some time counselling Mr Aksoy. His mother died last week.
+- 38:50 He lives with his 80-year-old mother. She suffers from dementia.
+- 41:07 She tried a herbal remedy. She obtained it over the counter from a Chinese shop.
+- 41:55 Which she obtained it over the counter from a Chinese shop.
+- 42:28 Ms Wilson is a 55-year-old bus driver. Her eyesight may be deteriorating.
+- 44:51 He suffered a severe blow to the head. This caused him to lose consciousness.
+- 45:50 He suffered from a severe blow to the head.
+- 45:57 He suffered from a leg fracture.
+- 46:21 He reported no feelings of faintness or dizziness. I found this surprising.
+- 47:15 I spent some time counselling Mr Aksoy. His mother died last week.
 
-*Terms*: Relative pronoun (New term, 38:42); Relative clause (New term, 38:53); Who, which, whose, where (Relative pronouns, 40:36); Herbal (New word, 40:57); Remedy (New word, 41:01); Obtain (New word, 41:08); Over the counter (New phrase, 41:12); Deteriorate (Word family, 42:50); Her, his, their (Possessive words, 43:00); Blow (New word, 44:32); Lose consciousness (New phrase, 44:35); Faint (Word family, 46:15); Counsel (Word family, 47:25)
+*Terms*: Relative pronoun (New term, 38:59); Relative clause (New term, 39:10); Who, which, whose, where (Relative pronouns, 40:53); Herbal (New word, 41:15); Remedy (New word, 41:18); Obtain (New word, 41:26); Over the counter (New phrase, 41:29); Deteriorate (Word family, 43:07); Her, his, their (Possessive words, 43:18); Blow (New word, 44:58); Lose consciousness (New phrase, 45:01); Faint (Word family, 46:41); Counsel (Word family, 47:50)
 
-#### 47:56 Relative clauses with prepositions (`page-8`, deck)
+#### 48:21 Relative clauses with prepositions (`page-8`, deck)
 
-- 47:56 **instruction, example and items 1 to 3**
-  - 47:56 Show the task and the first half of the set
-- 49:01 **items 4 to 6**
-  - 49:01 Show the second half of the set
-- 49:38 **Item 1: from which**
-  - 49:38 Frame the task and warn about the missing preposition
-  - 49:54 Define the grammar words needed here
-  - 50:14 English paraphrase of the pair, replacing the first-language check
-  - 50:21 Show the usual wrong version and name the fault
-  - 50:50 Give the correct answer and the comma
-  - 51:05 Name the form
-  - 51:16 Show how the two clauses join
-- 51:44 **Item 2: for which**
-  - 51:44 Show why this pattern matters in case notes
-  - 51:58 A second example of the same pattern from the past medical history
-  - 52:10 Show the wrong version students write
-  - 52:25 Give the correct answer
-  - 52:43 Name the family of forms
-  - 52:59 Key word: laxative
-  - 53:16 The same key word said to a patient
-- 53:22 **Item 3: instead of which**
-  - 53:22 English paraphrase of the pair, replacing the first-language check
-  - 53:37 Give the answer and the punctuation
-  - 53:55 Name the form
-  - 54:02 Show what 'which' stands for
-- 54:26 **Item 4: neither of which**
-  - 54:26 Give the answer
-  - 54:49 Name the form and the comma
-  - 54:59 What the relative pronoun stands for
-  - 55:22 Key word: herbal remedy
-  - 55:39 The same key word said to a patient
-- 55:46 **Item 5: by which time**
-  - 55:46 Give the answer
-  - 56:00 Show the change of words
-  - 56:14 What 'this time' refers to
-  - 56:27 Hard general word: worsened
-  - 56:40 The same word said to a patient
-- 56:46 **Item 6: one of which**
-  - 56:46 Give the answer
-  - 56:59 Why 'them' becomes 'which'
-  - 57:19 Key word: mole
-  - 57:37 The same key word said to a patient
-  - 57:41 Close the set with the rule about the preposition
+- 48:21 **instruction, example and items 1 to 3**
+  - 48:21 Show the task and the first half of the set
+- 49:26 **items 4 to 6**
+  - 49:26 Show the second half of the set
+- 50:03 **Item 1: from which**
+  - 50:03 Frame the task and warn about the missing preposition
+  - 50:19 Define the grammar words needed here
+  - 50:39 English paraphrase of the pair, replacing the first-language check
+  - 50:46 Show the usual wrong version and name the fault
+  - 51:15 Give the correct answer and the comma
+  - 51:31 Name the form
+  - 51:42 Show how the two clauses join
+- 52:09 **Item 2: for which**
+  - 52:09 Show why this pattern matters in case notes
+  - 52:24 A second example of the same pattern from the past medical history
+  - 52:35 Show the wrong version students write
+  - 52:51 Give the correct answer
+  - 53:09 Name the family of forms
+  - 53:24 Key word: laxative
+  - 53:41 The same key word said to a patient
+- 53:48 **Item 3: instead of which**
+  - 53:48 English paraphrase of the pair, replacing the first-language check
+  - 54:02 Give the answer and the punctuation
+  - 54:21 Name the form
+  - 54:28 Show what 'which' stands for
+- 54:52 **Item 4: neither of which**
+  - 54:52 Give the answer
+  - 55:14 Name the form and the comma
+  - 55:24 What the relative pronoun stands for
+  - 55:48 Key word: herbal remedy
+  - 56:05 The same key word said to a patient
+- 56:11 **Item 5: by which time**
+  - 56:11 Give the answer
+  - 56:26 Show the change of words
+  - 56:40 What 'this time' refers to
+  - 56:52 Hard general word: worsened
+  - 57:06 The same word said to a patient
+- 57:12 **Item 6: one of which**
+  - 57:12 Give the answer
+  - 57:25 Why 'them' becomes 'which'
+  - 57:45 Key word: mole
+  - 58:02 The same key word said to a patient
+  - 58:07 Close the set with the rule about the preposition
 
 *Rules on the boards*
 
-- 55:06 When the two sentences join with 'which', the word it replaces ('them', 'this') is dropped.
-- 57:41 Do not leave the preposition out when you join the sentences. Here we used 'from', 'for' and 'by'.
+- 55:32 When the two sentences join with 'which', the word it replaces ('them', 'this') is dropped.
+- 58:07 Do not leave the preposition out when you join the sentences. Here we used 'from', 'for' and 'by'.
 
 *Warnings (common mistakes)*
 
-- 49:44 Most learners leave the preposition out. The sentence is then wrong, and the meaning is not clear.
+- 50:09 Most learners leave the preposition out. The sentence is then wrong, and the meaning is not clear.
 
 *Wrong sentences corrected*
 
-- 47:56 He suffered a stroke last January. He has still not fully recovered from it.
-- 47:56 She occasionally suffers from constipation. She takes a mild laxative for this.
-- 47:56 He was advised to rest the ankle for two weeks. Instead of this, he went on a walking holiday.
-- 49:01 She tried two different herbal remedies. Neither of them had any effect.
-- 49:01 He presented again on 23 January. By this time his condition had worsened.
-- 49:01 He has two moles on his left arm. One of them appears to have changed shape.
-- 49:38 He suffered a stroke last January. He has still not fully recovered from it.
-- 50:21 He suffered a stroke last January, which he has still not fully recovered from it.
-- 51:44 She occasionally suffers from constipation. She takes a mild laxative for this.
-- 52:10 She occasionally suffers from constipation which she takes a mild laxative for this.
-- 53:22 He was advised to rest the ankle for two weeks. Instead of this, he went on a walking holiday.
-- 54:26 She tried two different herbal remedies. Neither of them had any effect.
-- 55:46 He presented again on 23 January. By this time his condition had worsened.
-- 56:46 He has two moles on his left arm. One of them appears to have changed shape.
+- 48:21 He suffered a stroke last January. He has still not fully recovered from it.
+- 48:21 She occasionally suffers from constipation. She takes a mild laxative for this.
+- 48:21 He was advised to rest the ankle for two weeks. Instead of this, he went on a walking holiday.
+- 49:26 She tried two different herbal remedies. Neither of them had any effect.
+- 49:26 He presented again on 23 January. By this time his condition had worsened.
+- 49:26 He has two moles on his left arm. One of them appears to have changed shape.
+- 50:03 He suffered a stroke last January. He has still not fully recovered from it.
+- 50:46 He suffered a stroke last January, which he has still not fully recovered from it.
+- 52:09 She occasionally suffers from constipation. She takes a mild laxative for this.
+- 52:35 She occasionally suffers from constipation which she takes a mild laxative for this.
+- 53:48 He was advised to rest the ankle for two weeks. Instead of this, he went on a walking holiday.
+- 54:52 She tried two different herbal remedies. Neither of them had any effect.
+- 56:11 He presented again on 23 January. By this time his condition had worsened.
+- 57:12 He has two moles on his left arm. One of them appears to have changed shape.
 
-*Terms*: relative pronoun (Grammar word, 49:54); from which (Form, 51:05); from which, for which, in which (Forms, 52:43); instead of which (Form, 53:55); neither of which (Form, 54:49); one of which (Form, 57:08)
+*Terms*: relative pronoun (Grammar word, 50:19); from which (Form, 51:31); from which, for which, in which (Forms, 53:09); instead of which (Form, 54:21); neither of which (Form, 55:14); one of which (Form, 57:33)
 
-#### 58:01 Avoid a series of short sentences (`page-9`, deck)
+#### 58:27 Avoid a series of short sentences (`page-9`, deck)
 
-- 58:01 **Extract rewritten with relative clauses**
-  - 58:01 the task on this extract
-  - 58:29 only join ideas that belong together
-  - 59:08 'who' joins sentences 1 and 2
-  - 59:16 defining relative clause takes no comma
-  - 59:37 the defining clause drawn
-  - 60:10 'This' becomes 'which'
-  - 60:19 non-defining relative clause takes a comma
-  - 60:36 'which' or 'for which'?
-  - 60:56 where 'also' goes
-  - 61:14 do not repeat 'for this'
-  - 61:25 suffer or suffer from
-  - 61:42 examples with suffer from
-  - 61:53 joining both conditions in one sentence
-  - 62:14 the word 'respectively'
-  - 62:31 keep the two conditions apart
-  - 62:46 the word 'fortnight'
-  - 63:00 fortnight when speaking to a patient
-  - 63:05 the phrase 'a number of episodes'
-  - 63:20 the word 'discomfort'
-  - 63:33 the prefix dis-
-  - 64:13 'These' becomes ', which'
-  - 64:42 the phrasal verb 'came on'
-  - 64:55 'come on' in speaking, and its past form
-  - 65:02 the phrase 'physical exertion'
-  - 65:16 the phrase 'due to'
-  - 65:29 leave the 'However' sentence apart
-  - 65:53 joining the murmur sentences
-  - 66:16 joining the ECG sentences
-  - 66:29 the passive instead of 'I ordered'
-  - 66:55 the word 'subsequent'
-  - 67:19 subsequent and subsequently
-  - 67:33 the last sentence stays as it is
-  - 67:46 the rule for joining
-  - 67:58 other joining words
-  - 68:12 examples with 'and' and 'but'
-  - 68:26 examples with 'so' and 'because'
-  - 68:44 an example with 'although'
+- 58:27 **Extract rewritten with relative clauses**
+  - 58:27 the task on this extract
+  - 58:54 only join ideas that belong together
+  - 59:34 'who' joins sentences 1 and 2
+  - 59:42 defining relative clause takes no comma
+  - 60:03 the defining clause drawn
+  - 60:36 'This' becomes 'which'
+  - 60:45 non-defining relative clause takes a comma
+  - 61:01 'which' or 'for which'?
+  - 61:22 where 'also' goes
+  - 61:39 do not repeat 'for this'
+  - 61:51 suffer or suffer from
+  - 62:08 examples with suffer from
+  - 62:19 joining both conditions in one sentence
+  - 62:40 the word 'respectively'
+  - 62:56 keep the two conditions apart
+  - 63:11 the word 'fortnight'
+  - 63:25 fortnight when speaking to a patient
+  - 63:31 the phrase 'a number of episodes'
+  - 63:46 the word 'discomfort'
+  - 63:59 the prefix dis-
+  - 64:39 'These' becomes ', which'
+  - 65:08 the phrasal verb 'came on'
+  - 65:21 'come on' in speaking, and its past form
+  - 65:28 the phrase 'physical exertion'
+  - 65:42 the phrase 'due to'
+  - 65:55 leave the 'However' sentence apart
+  - 66:19 joining the murmur sentences
+  - 66:41 joining the ECG sentences
+  - 66:55 the passive instead of 'I ordered'
+  - 67:21 the word 'subsequent'
+  - 67:45 subsequent and subsequently
+  - 67:59 the last sentence stays as it is
+  - 68:12 the rule for joining
+  - 68:23 other joining words
+  - 68:38 examples with 'and' and 'but'
+  - 68:52 examples with 'so' and 'because'
+  - 69:10 an example with 'although'
 
 *Rules on the boards*
 
-- 62:31 Hypertension and indigestion are different conditions, so here it is better to keep two sentences.
-- 65:29 The next sentence begins with 'However', so we leave these two sentences apart.
-- 67:46 Join sentences only where it helps the reader. Where it does not, use a full stop and start a new sentence.
+- 62:56 Hypertension and indigestion are different conditions, so here it is better to keep two sentences.
+- 65:55 The next sentence begins with 'However', so we leave these two sentences apart.
+- 68:12 Join sentences only where it helps the reader. Where it does not, use a full stop and start a new sentence.
 
 *Warnings (common mistakes)*
 
-- 58:29 Join two sentences only when the ideas are related. Sport and a medical history do not belong in one sentence.
+- 58:54 Join two sentences only when the ideas are related. Sport and a medical history do not belong in one sentence.
 
 *Wrong sentences corrected*
 
-- 61:14 He also occasionally suffers from indigestion, for which he takes Gaviscon for this.
+- 61:39 He also occasionally suffers from indigestion, for which he takes Gaviscon for this.
 
-*Terms*: who (Relative pronoun, 59:08); defining relative clause (New term, 59:16); which (Relative pronoun, 60:10); non-defining relative clause (New term, 60:19); occasional, occasionally (Word family, 62:05); dis- (Prefix, 63:33); come on, came on (Word form, 64:58); passive (New term, 66:29); subsequent, subsequently (Word family, 67:19); and, but, so, because, although (Joining words, 67:58)
+*Terms*: who (Relative pronoun, 59:34); defining relative clause (New term, 59:42); which (Relative pronoun, 60:36); non-defining relative clause (New term, 60:45); occasional, occasionally (Word family, 62:31); dis- (Prefix, 63:59); come on, came on (Word form, 65:24); passive (New term, 66:55); subsequent, subsequently (Word family, 67:45); and, but, so, because, although (Joining words, 68:23)
 
-#### 68:58 Avoid sentences that are too long (`page-10`, deck)
+#### 69:24 Avoid sentences that are too long (`page-10`, deck)
 
-- 68:58 **instruction and extracts 1 and 3**
-  - 68:58 Show the task and the first two long extracts
-- 69:47 **extract 5**
-  - 69:47 Show the last extract of the set
-- 70:15 **Extract 1: Mr Edwardson**
-  - 70:15 Name the problem
-  - 70:48 Gloss a hard general word from the extract
-  - 71:02 Show that the two parts joined by 'and' are both complete
-  - 71:44 First new sentence
-  - 71:57 Second new sentence
-  - 72:13 Third new sentence
-  - 72:24 State the result of the split
-  - 72:30 A simple test for a sentence that is too long
-- 72:46 **Extract 3: Mr Kozak**
-  - 72:46 Open the second long extract
-  - 73:09 Teach the word 'apparently'
-  - 73:20 Find the topic boundary
-  - 73:27 Compare two places for the full stop
-  - 73:43 First new sentence of extract 3
-  - 74:04 Show the second fault in the extract
-  - 74:18 Define the grammar term
-  - 74:27 State the rule about two relative pronouns
-  - 74:40 Key word: compliance
-  - 74:55 Second example of the key word, said to a patient
-  - 75:03 Word family of the key word
-  - 75:19 Collocations with compliance
-  - 75:38 The rewritten second sentence
-- 76:01 **Extract 5: Mrs Hardy**
-  - 76:01 See that the extract is one sentence
-  - 76:37 Show why full stops do not help here
-  - 76:53 Name the real fault
-  - 77:10 Gloss a hard general word from the extract
-  - 77:21 Apply the relevance test
-  - 77:34 Decide what to keep and what to cut
-  - 77:57 The first rewritten sentence
-  - 78:13 The second sentence
-  - 78:23 A second accepted version of that sentence
-  - 78:42 Close the point
+- 69:24 **instruction and extracts 1 and 3**
+  - 69:24 Show the task and the first two long extracts
+- 70:13 **extract 5**
+  - 70:13 Show the last extract of the set
+- 70:41 **Extract 1: Mr Edwardson**
+  - 70:41 Name the problem
+  - 71:14 Gloss a hard general word from the extract
+  - 71:27 Show that the two parts joined by 'and' are both complete
+  - 72:10 First new sentence
+  - 72:23 Second new sentence
+  - 72:39 Third new sentence
+  - 72:50 State the result of the split
+  - 72:56 A simple test for a sentence that is too long
+- 73:13 **Extract 3: Mr Kozak**
+  - 73:13 Open the second long extract
+  - 73:36 Teach the word 'apparently'
+  - 73:48 Find the topic boundary
+  - 73:54 Compare two places for the full stop
+  - 74:10 First new sentence of extract 3
+  - 74:32 Show the second fault in the extract
+  - 74:45 Define the grammar term
+  - 74:54 State the rule about two relative pronouns
+  - 75:07 Key word: compliance
+  - 75:21 Second example of the key word, said to a patient
+  - 75:29 Word family of the key word
+  - 75:45 Collocations with compliance
+  - 76:04 The rewritten second sentence
+- 76:27 **Extract 5: Mrs Hardy**
+  - 76:27 See that the extract is one sentence
+  - 77:03 Show why full stops do not help here
+  - 77:19 Name the real fault
+  - 77:37 Gloss a hard general word from the extract
+  - 77:47 Apply the relevance test
+  - 78:00 Decide what to keep and what to cut
+  - 78:23 The first rewritten sentence
+  - 78:40 The second sentence
+  - 78:49 A second accepted version of that sentence
+  - 79:08 Close the point
 
 *Rules on the boards*
 
-- 72:30 If a sentence has more than two ideas, or more than about 25 words, split it. Each new sentence needs its own subject and verb.
+- 72:56 If a sentence is hard to follow, often because it has several ideas or more than about 25 words, split it. Each new sentence needs its own subject and verb.
 
 *Warnings (common mistakes)*
 
-- 74:27 Avoid a chain of relative clauses in one sentence. Change the sentence so you can delete the second one.
-- 76:53 The fault here is too much information. Length is not always the problem: unnecessary detail is.
+- 74:54 Avoid a chain of relative clauses in one sentence. Change the sentence so you can delete the second one.
+- 77:19 The fault here is too much information. Length is not always the problem: unnecessary detail is.
 
 *Wrong sentences corrected*
 
-- 68:58 Mr Edwardson is a 29-year-old man who is single and works as a railway engineer and he was adopted at birth, so he has no knowledge of the medical history of his birth family, which means that his only past medical history is of certain childhood infections, none of which are unusual.
-- 68:58 Mr Kozak has a history of excessive alcohol intake, which apparently started after the death of his mother, and it increases when he is anxious and has twice been diagnosed with depression for which he was prescribed citalopram, which he admits he never took regularly.
-- 69:47 The ambulance team found Mrs Hardy, who was conscious but confused, after lying on the bedroom floor in her nightdress, at approximately 1.30pm after a call from her neighbour, Mr Bowen, who had become concerned that her curtains were still closed for some time without receiving an answer, and Mr Bowen also rang the patient's son, who arrived just before the ambulance and accompanied her to the hospital.
-- 70:15 Mr Edwardson is a 29-year-old man who is single and works as a railway engineer and he was adopted at birth, so he has no knowledge of the medical history of his birth family, which means that his only past medical history is of certain childhood infections, none of which are unusual.
-- 72:46 Mr Kozak has a history of excessive alcohol intake, which apparently started after the death of his mother, and it increases when he is anxious and has twice been diagnosed with depression for which he was prescribed citalopram, which he admits he never took regularly.
-- 74:04 For which he was prescribed citalopram, which he admits he never took regularly.
-- 76:01 The ambulance team found Mrs Hardy, who was conscious but confused, after lying on the bedroom floor in her nightdress, at approximately 1.30pm after a call from her neighbour, Mr Bowen, who had become concerned that her curtains were still closed for some time without receiving an answer, and Mr Bowen also rang the patient's son, who arrived just before the ambulance and accompanied her to the hospital.
+- 69:24 Mr Edwardson is a 29-year-old man who is single and works as a railway engineer and he was adopted at birth, so he has no knowledge of the medical history of his birth family, which means that his only past medical history is of certain childhood infections, none of which are unusual.
+- 69:24 Mr Kozak has a history of excessive alcohol intake, which apparently started after the death of his mother, and it increases when he is anxious and has twice been diagnosed with depression for which he was prescribed citalopram, which he admits he never took regularly.
+- 70:13 The ambulance team found Mrs Hardy, who was conscious but confused, after lying on the bedroom floor in her nightdress, at approximately 1.30pm after a call from her neighbour, Mr Bowen, who had become concerned that her curtains were still closed for some time without receiving an answer, and Mr Bowen also rang the patient's son, who arrived just before the ambulance and accompanied her to the hospital.
+- 70:41 Mr Edwardson is a 29-year-old man who is single and works as a railway engineer and he was adopted at birth, so he has no knowledge of the medical history of his birth family, which means that his only past medical history is of certain childhood infections, none of which are unusual.
+- 73:13 Mr Kozak has a history of excessive alcohol intake, which apparently started after the death of his mother, and it increases when he is anxious and has twice been diagnosed with depression for which he was prescribed citalopram, which he admits he never took regularly.
+- 74:32 For which he was prescribed citalopram, which he admits he never took regularly.
+- 76:27 The ambulance team found Mrs Hardy, who was conscious but confused, after lying on the bedroom floor in her nightdress, at approximately 1.30pm after a call from her neighbour, Mr Bowen, who had become concerned that her curtains were still closed for some time without receiving an answer, and Mr Bowen also rang the patient's son, who arrived just before the ambulance and accompanied her to the hospital.
 
-*Terms*: Relative pronoun (Grammar word, 74:18); comply (verb), compliance (noun), non-compliance (noun) (Word family, 75:03); good compliance, poor compliance, with poor compliance (Collocations, 75:19)
+*Terms*: Relative pronoun (Grammar word, 74:45); comply (verb), compliance (noun), non-compliance (noun) (Word family, 75:29); good compliance, poor compliance, with poor compliance (Collocations, 75:45)
 
 ### Vocabulary
 
 First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
 
-- 6:48 loneliness
-- 7:19 stated
-- 7:28 isolated
-- 7:38 at times
-- 8:07 lethargic
-- 10:28 tearful
-- 11:36 confessed
-- 11:40 guilt
-- 12:20 grazed
-- 12:25 a fall
-- 13:15 find it difficult
-- 13:20 cope with
-- 13:49 epigastric pain
-- 14:38 excitable
-- 27:08 deaf
-- 27:47 acute deafness
-- 28:15 blind
-- 30:03 dilated
-- 31:35 indigestion
-- 32:43 constipated
-- 33:09 a three-day history of constipation
-- 33:43 psychotic
-- 34:50 depressed
-- 35:38 anxious
-- 40:57 Herbal
-- 41:01 Remedy
-- 41:08 Obtain
-- 41:12 Over the counter
-- 42:20 deteriorating
-- 44:32 Blow
-- 44:35 Lose consciousness
-- 46:58 counselling
-- 52:59 laxative
-- 55:22 herbal remedy
-- 56:27 worsened
-- 57:19 moles
-- 62:14 respectively
-- 62:46 fortnight
-- 63:05 a number of episodes
-- 63:20 discomfort
-- 64:42 came on
-- 65:02 physical exertion
-- 65:16 due to
-- 66:55 subsequent
-- 70:48 adopted
-- 73:09 apparently
-- 74:40 compliance
-- 77:10 accompanied
+- 6:51 loneliness
+- 7:21 stated
+- 7:31 isolated
+- 7:41 at times
+- 8:10 lethargic
+- 10:31 tearful
+- 11:39 confessed
+- 11:43 guilt
+- 12:23 grazed
+- 12:28 a fall
+- 13:18 find it difficult
+- 13:22 cope with
+- 13:52 epigastric pain
+- 14:41 excitable
+- 27:26 deaf
+- 28:04 acute deafness
+- 28:33 blind
+- 30:20 dilated
+- 31:52 indigestion
+- 33:01 constipated
+- 33:27 a three-day history of constipation
+- 34:00 psychotic
+- 35:07 depressed
+- 35:55 anxious
+- 41:15 Herbal
+- 41:18 Remedy
+- 41:26 Obtain
+- 41:29 Over the counter
+- 42:37 deteriorating
+- 44:58 Blow
+- 45:01 Lose consciousness
+- 47:23 counselling
+- 53:24 laxative
+- 55:48 herbal remedy
+- 56:52 worsened
+- 57:45 moles
+- 62:40 respectively
+- 63:11 fortnight
+- 63:31 a number of episodes
+- 63:46 discomfort
+- 65:08 came on
+- 65:28 physical exertion
+- 65:42 due to
+- 67:21 subsequent
+- 71:14 adopted
+- 73:36 apparently
+- 75:07 compliance
+- 77:37 accompanied
 
 ### Practice material
 
@@ -3703,12 +3703,12 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ### Links to other lessons
 
-- 8:59 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `page-4_t7.s3.u2`)
-- 23:48 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `page-5_t8.s2.u3`)
-- 26:58 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`) (in `page-6_t1.s2.u3`)
-- 36:49 refers to Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`) (in `page-7_t1.s1.u1`)
-- 37:16 refers to Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Defining and non-defining" (in `page-7_t1.s1.u4`)
-- 68:50 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`) (in `page-9_t1.s37.u2`)
+- 9:02 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `page-4_t7.s3.u2`)
+- 24:06 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `page-5_t8.s2.u3`)
+- 27:15 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`) (in `page-6_t1.s2.u3`)
+- 37:06 refers to Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`) (in `page-7_t1.s1.u1`)
+- 37:33 refers to Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Defining and non-defining" (in `page-7_t1.s1.u4`)
+- 69:16 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`) (in `page-9_t1.s37.u2`)
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Introduction" at 0:07
 
 
@@ -3716,8 +3716,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 2. Vocabulary for OET: Verb + Noun Collocations
 
-- Lesson ID and folder: `vocabulary-02-collocations` (folder `vocabulary-02-collocations`); course vocabulary, lesson 2; length 68:33; bundle format 1.12
-- Status: approved by siavash, 2026-10-01 08:06
+- Lesson ID and folder: `vocabulary-02-collocations` (folder `vocabulary-02-collocations`); course vocabulary, lesson 2; length 68:45; bundle format 1.12
+- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 14:27
 - Description: Learn verbs and nouns that go together, for your OET letters and for talking to patients.
 - Original session: folder `source`: `source/video.mp4`, 47:39 long, partial hash `f79f384eddc3c859`; deck `source/slides.pdf`, 16 pages
   - Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).
@@ -3780,336 +3780,336 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 8:16 Second example of the first pair, spoken to a patient
   - 8:29 Other nouns that go with 'perform'
   - 8:43 Gloss the second pair
-  - 9:06 Second example of the second pair, spoken to a patient
-  - 9:17 Gloss the third pair
-  - 9:43 Second example of the third pair, spoken to a patient
-  - 9:52 Close with the shape of the pattern
+  - 9:07 Second example of the second pair, spoken to a patient
+  - 9:22 Gloss the third pair
+  - 9:48 Second example of the third pair, spoken to a patient
+  - 9:56 Close with the shape of the pattern
 
 *Rules on the boards*
 
-- 9:52 The first part is the verb. The second part is the noun.
+- 9:56 The first part is the verb. The second part is the noun.
 
 *Terms*: Verb (Part one, 6:15); Give, monitor, prescribe (Verbs, 6:27); Noun (Part two, 7:01); Medication, treatment, test, surgery (Nouns, 7:13); Perform an operation, perform a test, perform an examination (Collocations, 8:29)
 
-#### 10:05 Key points to remember (`page-6`, deck)
+#### 10:08 Key points to remember (`page-6`, deck)
 
-- 10:05 **fixed pairs, administer and give, context and setting, learning by practice and resources**
-  - 10:05 Introduce the fixed pair and the wrong version
-  - 10:40 Full gloss moment for the key collocation
-  - 10:58 Second example, spoken to a patient
-  - 11:10 Four more verb and noun pairs in one box
-  - 11:32 The corrected slide point about administer and give
-  - 11:58 Full gloss moment for administer
-  - 12:15 Words for a letter and words for a patient
-  - 12:43 Full gloss moment for take a history
-  - 12:56 The same idea said to the patient
-  - 13:16 The setting decides the verb, with the slide's two examples
-  - 13:46 Full gloss moment for underwent
-  - 13:59 The forms of undergo
-  - 14:10 The register contrast, rebuilt in English
-  - 14:35 One more spoken question with had
-  - 14:56 Where to meet collocations
-  - 15:21 What to do with what you hear
-  - 15:42 Collect the pairs you meet
+- 10:08 **fixed pairs, administer and give, context and setting, learning by practice and resources**
+  - 10:08 Introduce the fixed pair and the wrong version
+  - 10:44 Full gloss moment for the key collocation
+  - 11:02 Second example, spoken to a patient
+  - 11:14 Four more verb and noun pairs in one box
+  - 11:36 The corrected slide point about administer and give
+  - 12:02 Full gloss moment for administer
+  - 12:18 Words for a letter and words for a patient
+  - 12:47 Full gloss moment for take a history
+  - 13:00 The same idea said to the patient
+  - 13:20 The setting decides the verb, with the slide's two examples
+  - 13:50 Full gloss moment for underwent
+  - 14:03 The forms of undergo
+  - 14:14 The register contrast, rebuilt in English
+  - 14:38 One more spoken question with had
+  - 15:00 Where to meet collocations
+  - 15:25 What to do with what you hear
+  - 15:46 Collect the pairs you meet
 
 *Wrong sentences corrected*
 
-- 10:05 Make a break.
+- 10:08 Make a break.
 
-*Terms*: Take a blood sample, make an appointment, carry out an examination, refer a patient (More pairs, 11:10); undergo, underwent, undergone (Word family, 13:59); Writing samples, speaking samples, readings, listening transcripts, podcasts (Where to look, 15:02)
+*Terms*: Take a blood sample, make an appointment, carry out an examination, refer a patient (More pairs, 11:14); undergo, underwent, undergone (Word family, 14:03); Writing samples, speaking samples, readings, listening transcripts, podcasts (Where to look, 15:05)
 
-#### 16:00 Administer (`page-7`, deck)
+#### 16:03 Administer (`page-7`, deck)
 
-- 16:00 **the verb administer and its nouns, fluids, formal and patient-friendly, oxygen, formal and patient-friendly, the blood transfusion example**
-  - 16:00 name the verb this part of the slide teaches
-  - 16:00 the slide's fluids pair
-  - 16:00 the slide's last formal example
-  - 16:05 The key word: administer, with a medical letter example
-  - 16:22 The same verb in a sentence said to a patient
-  - 16:31 The nouns that go with administer, as one list
-  - 16:58 Administer and give: the two verbs for the same action
-  - 17:09 How the slide pairs its examples
-  - 17:39 What comes first in the formal sentence
-  - 17:59 Gloss the hard word 'stabilise'
-  - 18:12 Which noun to use with a patient
-  - 18:26 Gloss 'drip'
-  - 18:37 The phrase 'through a drip'
-  - 18:54 Gloss 'hydrated'
-  - 19:08 the slide's oxygen pair
-  - 19:21 Who is named in each formal sentence
-  - 19:37 'Some' with oxygen and blood
-  - 19:49 The two patterns for administer and give
-  - 20:02 Saying the purpose simply
-  - 20:25 Why this noun needs 'a'
-  - 20:34 What comes first in this sentence
-  - 20:45 The phrase 'replace the lost blood'
-  - 21:01 The same idea said to the patient
+- 16:03 **the verb administer and its nouns, fluids, formal and patient-friendly, oxygen, formal and patient-friendly, the blood transfusion example**
+  - 16:03 name the verb this part of the slide teaches
+  - 16:03 the slide's fluids pair
+  - 16:03 the slide's last formal example
+  - 16:09 The key word: administer, with a medical letter example
+  - 16:25 The same verb in a sentence said to a patient
+  - 16:34 The nouns that go with administer, as one list
+  - 17:01 Administer and give: the two verbs for the same action
+  - 17:13 How the slide pairs its examples
+  - 17:42 What comes first in the formal sentence
+  - 18:02 Gloss the hard word 'stabilise'
+  - 18:15 Which noun to use with a patient
+  - 18:29 Gloss 'drip'
+  - 18:40 The phrase 'through a drip'
+  - 18:57 Gloss 'hydrated'
+  - 19:12 the slide's oxygen pair
+  - 19:24 Who is named in each formal sentence
+  - 19:40 'Some' with oxygen and blood
+  - 19:52 The two patterns for administer and give
+  - 20:05 Saying the purpose simply
+  - 20:28 Why this noun needs 'a'
+  - 20:37 What comes first in this sentence
+  - 20:48 The phrase 'replace the lost blood'
+  - 21:04 The same idea said to the patient
 
-*Terms*: Medication, fluids, oxygen, blood, an injection (Nouns, 16:31); Through a drip (Phrase to learn, 18:37); Some oxygen, some blood (Word to learn, 19:37); Administer something to the patient. Give the patient something. (Patterns, 19:49); A blood transfusion (Word to learn, 20:25); Replace the lost blood (Phrase to learn, 20:45)
+*Terms*: Medication, fluids, oxygen, blood, an injection (Nouns, 16:34); Through a drip (Phrase to learn, 18:40); Some oxygen, some blood (Word to learn, 19:40); Administer something to the patient. Give the patient something. (Patterns, 19:52); A blood transfusion (Word to learn, 20:28); Replace the lost blood (Phrase to learn, 20:48)
 
-#### 21:19 Provide (`page-8`, deck)
+#### 21:22 Provide (`page-8`, deck)
 
-- 21:19 **the verb provide and its nouns, provide treatment and provide assistance, provide support and provide information**
-  - 21:19 the verb's nouns from the slide
-  - 21:19 The slide's first two example sentences
-  - 21:19 The slide's last two example sentences
-  - 21:57 Full gloss moment for the key word 'provide', with a writing example
-  - 22:18 Second example of the key word, said to a patient
-  - 22:34 The one widening note allowed: the patterns of 'provide'
-  - 22:58 The second pattern in an example
-  - 23:25 Find the noun and its verb in the first sentence
-  - 23:39 The words in between are extra information
-  - 23:51 The shorter sentence still makes sense
-  - 24:07 The rule to keep from the first sentence
-  - 24:38 Assistance and assistant side by side
-  - 24:51 Warn about the common writing mistake
-  - 25:04 Provide works in writing and in speaking
-  - 25:14 A spoken example with the correct pattern
-  - 25:41 A second verb inside the support sentence
-  - 25:51 What the 'to help' pattern means
-  - 26:00 Warn against using 'due to' here
-  - 26:20 The 'I’m here to...' opener for speaking
-  - 26:37 One more example of the opener with provide information
+- 21:22 **the verb provide and its nouns, provide treatment and provide assistance, provide support and provide information**
+  - 21:22 the verb's nouns from the slide
+  - 21:22 The slide's first two example sentences
+  - 21:22 The slide's last two example sentences
+  - 22:00 Full gloss moment for the key word 'provide', with a writing example
+  - 22:21 Second example of the key word, said to a patient
+  - 22:37 The one widening note allowed: the patterns of 'provide'
+  - 23:01 The second pattern in an example
+  - 23:28 Find the noun and its verb in the first sentence
+  - 23:42 The words in between are extra information
+  - 23:55 The shorter sentence still makes sense
+  - 24:10 The rule to keep from the first sentence
+  - 24:41 Assistance and assistant side by side
+  - 24:55 Warn about the common writing mistake
+  - 25:08 Provide works in writing and in speaking
+  - 25:17 A spoken example with the correct pattern
+  - 25:45 A second verb inside the support sentence
+  - 25:54 What the 'to help' pattern means
+  - 26:03 Warn against using 'due to' here
+  - 26:23 The 'I’m here to...' opener for speaking
+  - 26:40 One more example of the opener with provide information
 
 *Warnings (common mistakes)*
 
-- 24:07 A verb and its noun do not always come one after the other. If the noun is in the sentence, its verb can be further away.
-- 24:51 Do not write 'assistant' when you mean 'assistance'. Many students mix these two words up in their writing.
-- 26:00 Do not use 'due to' here. It makes the sentence wrong and the structure difficult.
+- 24:10 A verb and its noun do not always come one after the other. If the noun is in the sentence, its verb can be further away.
+- 24:55 Do not write 'assistant' when you mean 'assistance'. Many students mix these two words up in their writing.
+- 26:03 Do not use 'due to' here. It makes the sentence wrong and the structure difficult.
 
-*Terms*: Treatment, assistance, support, information, advice (Nouns, 21:19); Provide something for someone (Patterns, 22:34); To help the patient walk again (Useful pattern, 25:51)
+*Terms*: Treatment, assistance, support, information, advice (Nouns, 21:22); Provide something for someone (Patterns, 22:37); To help the patient walk again (Useful pattern, 25:54)
 
-#### 26:54 Monitor (`page-9`, deck)
+#### 26:57 Monitor (`page-9`, deck)
 
-- 26:54 **the two medical examples with monitor, the two patient-friendly examples**
-  - 26:54 Show the slide's two medical example sentences
-  - 26:54 Show the slide's two patient-friendly example sentences
-  - 27:21 Gloss the key verb monitor
-  - 27:37 A second example of monitor, said to a patient
-  - 27:50 The nouns that go with monitor
-  - 28:10 The possessive in the first sentence
-  - 28:27 The form of the verb in both letter sentences
-  - 28:36 The noun in the second sentence is progress
-  - 28:49 To ensure gives the reason for monitoring
-  - 29:18 Monitor with condition and blood pressure when talking to a patient
-  - 29:39 Gloss the idiom keep an eye on
-  - 29:53 Use the idiom to calm a worried patient
-  - 30:15 To make sure and to ensure both give the reason
-  - 30:54 Check in the last sentence
-  - 31:06 Two words inside the last sentence
-  - 31:24 The form after by
-
-*Rules on the boards*
-
-- 28:10 In writing, keep the possessive: the patient’s blood pressure.
-
-*Terms*: Symptoms, condition, blood pressure, progress, heart rate (Nouns, 27:50); Should be monitored (Form, 28:27); To ensure (Purpose, 28:49); Improves, over time (Meaning, 31:06); By monitoring your symptoms (Form, 31:24)
-
-#### 31:44 Perform (`page-10`, deck)
-
-- 31:44 **the verb perform and its nouns, the medical letter examples, the patient-friendly examples**
-  - 31:44 Show the key verb and the nouns it goes with
-  - 31:44 Show the two formal example sentences
-  - 31:44 Show the two patient-friendly sentences
-  - 32:18 Gloss the key word, with a letter example
-  - 32:36 A second example, said to a patient
-  - 32:51 Near-synonyms: perform, carry out, conduct
-  - 33:34 Surgery and operation: the article point
-  - 34:40 The form 'was performed' and the missing article
-  - 35:13 What 'repair' means with injuries
-  - 35:43 The collocation 'assess health'
-  - 36:28 Which verb to choose in a letter and with a patient
-  - 36:46 A second correct version of the scan sentence
-  - 37:03 Gloss the word 'issue'
-  - 37:16 Issue and problem
-
-*Wrong sentences corrected*
-
-- 33:17 Conduct an operation.
-- 33:34 I had a surgery.
-
-*Terms*: Perform surgery, a procedure, an examination, a test or a scan (Nouns, 31:44); Passive (Grammar term, 34:40); Repair (Collocations, 35:13); Assess (Collocations, 35:43)
-
-#### 37:31 Prescribe (`page-11`, deck)
-
-- 37:31 **the verb prescribe and its nouns, the medical letter examples, the patient-friendly examples**
-  - 37:31 the verb and the list of nouns it goes with
-  - 37:31 the slide's two formal sentences
-  - 37:31 the slide's two patient-friendly sentences
-  - 38:14 Full gloss moment for the key word, with a letter example
-  - 38:35 Speaking example for prescribe, and where the verb is used
-  - 38:48 Prescribe rest: who does the prescribing
-  - 38:56 One widening note: the word family
-  - 39:17 What makes these two model sentences work
-  - 39:32 The form of the verb after 'to'
-  - 39:58 The phrase 'a course of'
-  - 40:18 The purpose phrase 'to manage'
-  - 40:50 What these two sentences are for
-  - 40:56 Gloss the hard general word in the printed sentence
-  - 41:09 No 'a' or 'an' before painkillers
-  - 41:22 'Some' can be left out
-  - 41:32 'To help with' as a way of giving the reason
-  - 41:50 'Rest' in this sentence, and one more example
-  - 42:07 Doctor and patient: two ways to talk about rest
-
-*Wrong sentences corrected*
-
-- 41:17 A painkillers
-
-*Terms*: Medication, antibiotics, painkillers, treatment, rest (Nouns, 37:45); Prescribe (verb), prescription (noun) (Word family, 38:56); To treat the infection (Pattern, 39:32); A course of (Phrase, 39:58); To help with… (Phrase, 41:32)
-
-#### 42:23 Treat (`page-12`, deck)
-
-- 42:23 **treat in the two medical examples, treat in the patient-friendly examples**
-  - 42:23 the slide's two medical examples of 'treat'
-  - 42:23 the slide's two patient-friendly examples of 'treat'
-  - 42:58 Key word moment: the meaning of 'treat' with a letter-style example
-  - 43:13 Speaking example with the key word
-  - 43:24 The nouns that go with 'treat', in one box
-  - 43:54 'Pain' with and without 'a'
-  - 44:30 'Ache' as a second word for pain
-  - 44:43 The words 'a course of antibiotics'
-  - 45:01 The passive form in the first example
-  - 45:43 Gloss the hard general word 'prevent'
-  - 45:56 The pattern after 'prevent', with an extra example
-  - 46:30 Word family of the key word
-
-*Terms*: Treat an infection, a condition, an injury, a wound, pain (Nouns, 43:24); ache (Word, 44:30); a course of antibiotics (Words, 44:43); passive (Grammar word, 45:01); prevent it from getting worse (Pattern, 45:56); treat (verb), treatment (noun), treatable (adjective) (Word family, 46:30)
-
-#### 46:59 Schedule (`page-13`, deck)
-
-- 46:59 **the verb schedule and its nouns, the examples from medical writing, the patient-friendly examples**
-  - 46:59 the nouns that go with the verb.
-  - 46:59 the three written examples on this page.
-  - 47:40 Key word: the verb 'schedule' glossed, with a letter example.
-  - 47:57 Second example: the same verb said to a patient.
-  - 48:06 How the word is said in British and American English.
-  - 48:22 Near-synonyms of the key verb.
-  - 48:52 The possessive in the first sentence.
-  - 48:58 The meaning of 'has been scheduled'.
-  - 49:03 Define the grammar word 'passive' the first time it appears.
-  - 49:12 The passive verbs in these three sentences.
-  - 49:36 The 'by' phrase names who did it.
-  - 49:51 The same pattern in a letter request.
-  - 50:15 Why the tests were scheduled.
-  - 50:22 Gloss the hard general word 'assess'.
-  - 50:35 Appointment and follow-up are countable nouns.
-  - 50:51 The preposition used here after 'scheduled'.
-  - 50:59 With a date, two prepositions are possible.
-  - 51:16 the two examples for talking to a patient.
-  - 51:30 What the two purpose phrases mean.
-  - 51:43 One purpose phrase can replace the other.
-  - 51:51 'A follow-up' works as a noun on its own.
-  - 52:08 One more example with 'a follow-up'.
-  - 52:18 Word family for 'recovering'.
-
-*Terms*: Surgery, appointment, scan, follow-up, test (Nouns, 47:03); Schedule, arrange, book (Near-synonyms, 48:22); Passive (Grammar word, 49:03); A follow-up (Word use, 51:51); Recover, recovery (Word family, 52:18)
-
-#### 52:44 Order (`page-14`, deck)
-
-- 52:44 **order with an X-ray, order with a blood test**
-  - 52:44 the slide's two X-ray sentences, and what they show
-  - 52:44 the slide's two blood test sentences
-  - 53:29 Full gloss moment for the key word 'order'
-  - 53:46 Speaking example of the key word, said to a patient
-  - 54:00 The nouns that go with 'order', as one short list
-  - 54:13 Two small points the slide's formal sentence shows
-  - 54:26 The preposition here is 'in', but it changes with the noun
-  - 54:45 What can come before the body part
-  - 55:21 The passive form in the first sentence
-  - 55:36 Gloss the hard word 'investigate'
-  - 55:52 'Investigate' and 'check' do the same job in the sentence
-  - 56:20 The reassurance phrase in the patient-friendly version
-  - 56:50 Another verb used with tests in letters
-
-*Terms*: Tests, medication, an X-ray, a scan, an examination (Nouns, 54:00); To ensure everything is okay (Phrase, 56:20)
-
-#### 57:09 Practice: complete the sentences (`page-15`, deck)
-
-- 57:09 **instruction and items 1 to 5**
-  - 57:09 Show the first half of the gap-fill set
-- 58:01 **items 6 to 10**
-  - 58:01 Show the second half of the gap-fill set
-- 58:43 **Item 1: monitor blood pressure**
-  - 58:43 Give the answer and the reason
-  - 59:05 Gloss the hard word 'throughout' in English
-  - 59:18 Point out the base and past forms in the verb list
-  - 59:39 State the form needed after 'will' here
-- 59:47 **Item 2: assess symptoms**
-  - 59:47 Gloss the key word 'assess' before the answer
-  - 60:08 Give the answer and the form reason
-  - 60:27 Speaking example with the key word
-  - 60:37 Gloss the hard word 'determine'
-- 60:49 **Item 3: prescribe antibiotics**
-  - 60:49 Give the intended answer
-  - 61:09 Show the second acceptable answer
-  - 61:22 Contrast the two verbs
-  - 61:35 Speaking example with 'prescribe'
-- 61:42 **Item 4: perform surgery**
-  - 61:42 Give the answer and the form reason
-  - 62:07 Show the verbs that go with surgery
-  - 62:17 Reject 'conduct' with surgery
-  - 62:31 Surgery with no word in front of it
-  - 62:45 Operation needs a word in front of it
-- 63:06 **Item 5: conduct a scan**
-  - 63:06 Give the answer and the reason
-  - 63:23 Explain why 'performed' cannot fill this gap
-  - 63:34 Collect the verbs that mean to do a scan
-  - 63:44 Gloss the key phrase 'carry out'
-- 63:57 **Item 6: administer pain relief**
-  - 63:57 Give the answer and the reason
-  - 64:14 Gloss 'pain relief' in English
-  - 64:36 Collect 'administer' collocations
-  - 64:48 Speaking example with the key word
-- 64:55 **Item 7: administer an injection**
-  - 64:55 Give the answer and the form reason
-  - 65:16 Gloss 'reduce' in English
-- 65:28 **Item 8: provide assistance**
-  - 65:28 Give the answer and the reason
-  - 65:49 Gloss the key word 'assistance'
-  - 66:07 Collect 'provide' collocations
-  - 66:18 Speaking example with the key words
-- 66:24 **Item 9: monitor a condition**
-  - 66:24 Give the answer and the reason
-  - 66:44 Gloss the key word 'monitor'
-  - 67:03 Collect 'monitor' collocations
-  - 67:15 Gloss 'improve'
-- 67:28 **Item 10: discuss test results**
-  - 67:28 Gloss the key word 'discuss' before the answer
-  - 67:48 Give the answer and the reason
-  - 68:02 Explain the phrase 'during the consultation'
-  - 68:09 Speaking example with the key word
-  - 68:18 Close with the main idea of the exercise
+- 26:57 **the two medical examples with monitor, the two patient-friendly examples**
+  - 26:57 Show the slide's two medical example sentences
+  - 26:57 Show the slide's two patient-friendly example sentences
+  - 27:24 Gloss the key verb monitor
+  - 27:40 A second example of monitor, said to a patient
+  - 27:53 The nouns that go with monitor
+  - 28:13 The possessive in the first sentence
+  - 28:30 The form of the verb in both letter sentences
+  - 28:39 The noun in the second sentence is progress
+  - 28:52 To ensure gives the reason for monitoring
+  - 29:21 Monitor with condition and blood pressure when talking to a patient
+  - 29:42 Gloss the idiom keep an eye on
+  - 29:56 Use the idiom to calm a worried patient
+  - 30:18 To make sure and to ensure both give the reason
+  - 30:57 Check in the last sentence
+  - 31:09 Two words inside the last sentence
+  - 31:28 The form after by
 
 *Rules on the boards*
 
-- 68:18 For each noun, learn the verb or verbs that go with it. Another verb may not give the right meaning.
+- 28:13 In writing, keep the possessive: the patient’s blood pressure.
+
+*Terms*: Symptoms, condition, blood pressure, progress, heart rate (Nouns, 27:53); Should be monitored (Form, 28:30); To ensure (Purpose, 28:52); Improves, over time (Meaning, 31:09); By monitoring your symptoms (Form, 31:28)
+
+#### 31:48 Perform (`page-10`, deck)
+
+- 31:48 **the verb perform and its nouns, the medical letter examples, the patient-friendly examples**
+  - 31:48 Show the key verb and the nouns it goes with
+  - 31:48 Show the two formal example sentences
+  - 31:48 Show the two patient-friendly sentences
+  - 32:21 Gloss the key word, with a letter example
+  - 32:39 A second example, said to a patient
+  - 32:54 Near-synonyms: perform, carry out, conduct
+  - 33:37 Surgery and operation: the article point
+  - 34:43 The form 'was performed' and the missing article
+  - 35:17 What 'repair' means with injuries
+  - 35:47 The collocation 'assess health'
+  - 36:31 Which verb to choose in a letter and with a patient
+  - 36:49 A second correct version of the scan sentence
+  - 37:07 Gloss the word 'issue'
+  - 37:19 Issue and problem
 
 *Wrong sentences corrected*
 
-- 57:09 The nurse will __________ the patient’s blood pressure throughout the night.
-- 57:09 The doctor __________ the patient’s symptoms to determine the best treatment.
-- 57:09 We will __________ antibiotics to fight the infection.
-- 57:09 The surgeon __________ emergency surgery to repair the patient’s injuries.
-- 57:09 The team will __________ a scan to look for any internal bleeding.
-- 58:01 The nurse __________ pain relief to make the patient more comfortable.
-- 58:01 I will __________ an injection to reduce your symptoms.
-- 58:01 The physiotherapist __________ assistance to help the patient walk again.
-- 58:01 We will __________ your condition over the next few days to see if it improves.
-- 58:01 The doctor __________ the test results during the consultation.
-- 58:43 The nurse will __________ the patient’s blood pressure throughout the night.
-- 59:47 The doctor __________ the patient’s symptoms to determine the best treatment.
-- 60:49 We will __________ antibiotics to fight the infection.
-- 61:42 The surgeon __________ emergency surgery to repair the patient’s injuries.
-- 62:17 Conduct emergency surgery.
-- 63:06 The team will __________ a scan to look for any internal bleeding.
-- 63:57 The nurse __________ pain relief to make the patient more comfortable.
-- 64:55 I will __________ an injection to reduce your symptoms.
-- 65:28 The physiotherapist __________ assistance to help the patient walk again.
-- 66:24 We will __________ your condition over the next few days to see if it improves.
-- 67:28 The doctor __________ the test results during the consultation.
+- 33:20 Conduct an operation.
+- 33:37 I had a surgery.
 
-*Terms*: Monitor, assessed, prescribe, performed, conduct, administered, administer, provided, monitor, discussed (Verbs, 59:18); Conduct a scan, perform a scan, carry out a scan (Collocations, 63:34); Administer pain relief, administer medication, administer an injection (Collocations, 64:36); Provide assistance, provide support, provide care (Collocations, 66:07); Monitor blood pressure, monitor a patient, monitor a condition (Collocations, 67:03); During the consultation (Phrase, 68:02)
+*Terms*: Perform surgery, a procedure, an examination, a test or a scan (Nouns, 31:48); Passive (Grammar term, 34:43); Repair (Collocations, 35:17); Assess (Collocations, 35:47)
+
+#### 37:34 Prescribe (`page-11`, deck)
+
+- 37:34 **the verb prescribe and its nouns, the medical letter examples, the patient-friendly examples**
+  - 37:34 the verb and the list of nouns it goes with
+  - 37:34 the slide's two formal sentences
+  - 37:34 the slide's two patient-friendly sentences
+  - 38:17 Full gloss moment for the key word, with a letter example
+  - 38:41 Speaking example for prescribe, and where the verb is used
+  - 38:54 Prescribe rest: who does the prescribing
+  - 39:03 One widening note: the word family
+  - 39:24 What makes these two model sentences work
+  - 39:39 The form of the verb after 'to'
+  - 40:04 The phrase 'a course of'
+  - 40:24 The purpose phrase 'to manage'
+  - 40:56 What these two sentences are for
+  - 41:02 Gloss the hard general word in the printed sentence
+  - 41:16 No 'a' or 'an' before painkillers
+  - 41:28 'Some' can be left out
+  - 41:38 'To help with' as a way of giving the reason
+  - 41:56 'Rest' in this sentence, and one more example
+  - 42:14 Doctor and patient: two ways to talk about rest
+
+*Wrong sentences corrected*
+
+- 41:24 A painkillers
+
+*Terms*: Medication, antibiotics, painkillers, treatment, rest (Nouns, 37:48); Prescribe (verb), prescription (noun) (Word family, 39:03); To treat the infection (Pattern, 39:39); A course of (Phrase, 40:04); To help with… (Phrase, 41:38)
+
+#### 42:30 Treat (`page-12`, deck)
+
+- 42:30 **treat in the two medical examples, treat in the patient-friendly examples**
+  - 42:30 the slide's two medical examples of 'treat'
+  - 42:30 the slide's two patient-friendly examples of 'treat'
+  - 43:04 Key word moment: the meaning of 'treat' with a letter-style example
+  - 43:20 Speaking example with the key word
+  - 43:31 The nouns that go with 'treat', in one box
+  - 44:00 'Pain' with and without 'a'
+  - 44:36 'Ache' as a second word for pain
+  - 44:49 The words 'a course of antibiotics'
+  - 45:07 The passive form in the first example
+  - 45:49 Gloss the hard general word 'prevent'
+  - 46:02 The pattern after 'prevent', with an extra example
+  - 46:39 Word family of the key word
+
+*Terms*: Treat an infection, a condition, an injury, a wound, pain (Nouns, 43:31); ache (Word, 44:36); a course of antibiotics (Words, 44:49); passive (Grammar word, 45:07); prevent it from getting worse (Pattern, 46:02); treat (verb), treatment (noun), treatable (adjective) (Word family, 46:39)
+
+#### 47:08 Schedule (`page-13`, deck)
+
+- 47:08 **the verb schedule and its nouns, the examples from medical writing, the patient-friendly examples**
+  - 47:08 the nouns that go with the verb.
+  - 47:08 the three written examples on this page.
+  - 47:50 Key word: the verb 'schedule' glossed, with a letter example.
+  - 48:06 Second example: the same verb said to a patient.
+  - 48:16 How the word is said in British and American English.
+  - 48:32 Near-synonyms of the key verb.
+  - 49:01 The possessive in the first sentence.
+  - 49:07 The meaning of 'has been scheduled'.
+  - 49:12 Define the grammar word 'passive' the first time it appears.
+  - 49:21 The passive verbs in these three sentences.
+  - 49:45 The 'by' phrase names who did it.
+  - 50:00 The same pattern in a letter request.
+  - 50:24 Why the tests were scheduled.
+  - 50:31 Gloss the hard general word 'assess'.
+  - 50:44 Appointment and follow-up are countable nouns.
+  - 51:00 The preposition used here after 'scheduled'.
+  - 51:08 With a date, two prepositions are possible.
+  - 51:25 the two examples for talking to a patient.
+  - 51:39 What the two purpose phrases mean.
+  - 51:52 One purpose phrase can replace the other.
+  - 52:00 'A follow-up' works as a noun on its own.
+  - 52:17 One more example with 'a follow-up'.
+  - 52:27 Word family for 'recovering'.
+
+*Terms*: Surgery, appointment, scan, follow-up, test (Nouns, 47:12); Schedule, arrange, book (Near-synonyms, 48:32); Passive (Grammar word, 49:12); A follow-up (Word use, 52:00); Recover, recovery (Word family, 52:27)
+
+#### 52:53 Order (`page-14`, deck)
+
+- 52:53 **order with an X-ray, order with a blood test**
+  - 52:53 the slide's two X-ray sentences, and what they show
+  - 52:53 the slide's two blood test sentences
+  - 53:39 Full gloss moment for the key word 'order'
+  - 53:55 Speaking example of the key word, said to a patient
+  - 54:09 The nouns that go with 'order', as one short list
+  - 54:22 Two small points the slide's formal sentence shows
+  - 54:36 The preposition here is 'in', but it changes with the noun
+  - 54:55 What can come before the body part
+  - 55:31 The passive form in the first sentence
+  - 55:46 Gloss the hard word 'investigate'
+  - 56:01 'Investigate' and 'check' do the same job in the sentence
+  - 56:30 The reassurance phrase in the patient-friendly version
+  - 56:59 Another verb used with tests in letters
+
+*Terms*: Tests, medication, an X-ray, a scan, an examination (Nouns, 54:09); To ensure everything is okay (Phrase, 56:30)
+
+#### 57:18 Practice: complete the sentences (`page-15`, deck)
+
+- 57:18 **instruction and items 1 to 5**
+  - 57:18 Show the first half of the gap-fill set
+- 58:10 **items 6 to 10**
+  - 58:10 Show the second half of the gap-fill set
+- 58:53 **Item 1: monitor blood pressure**
+  - 58:53 Give the answer and the reason
+  - 59:15 Gloss the hard word 'throughout' in English
+  - 59:28 Point out the base and past forms in the verb list
+  - 59:49 State the form needed after 'will' here
+- 59:57 **Item 2: assess symptoms**
+  - 59:57 Gloss the key word 'assess' before the answer
+  - 60:18 Give the answer and the form reason
+  - 60:38 Speaking example with the key word
+  - 60:47 Gloss the hard word 'determine'
+- 60:59 **Item 3: prescribe antibiotics**
+  - 60:59 Give the intended answer
+  - 61:19 Show the second acceptable answer
+  - 61:32 Contrast the two verbs
+  - 61:45 Speaking example with 'prescribe'
+- 61:53 **Item 4: perform surgery**
+  - 61:53 Give the answer and the form reason
+  - 62:17 Show the verbs that go with surgery
+  - 62:27 Reject 'conduct' with surgery
+  - 62:41 Surgery with no word in front of it
+  - 62:55 Operation needs a word in front of it
+- 63:17 **Item 5: conduct a scan**
+  - 63:17 Give the answer and the reason
+  - 63:33 Explain why 'performed' cannot fill this gap
+  - 63:44 Collect the verbs that mean to do a scan
+  - 63:54 Gloss the key phrase 'carry out'
+- 64:07 **Item 6: administer pain relief**
+  - 64:07 Give the answer and the reason
+  - 64:24 Gloss 'pain relief' in English
+  - 64:46 Collect 'administer' collocations
+  - 64:58 Speaking example with the key word
+- 65:05 **Item 7: administer an injection**
+  - 65:05 Give the answer and the form reason
+  - 65:27 Gloss 'reduce' in English
+- 65:40 **Item 8: provide assistance**
+  - 65:40 Give the answer and the reason
+  - 66:00 Gloss the key word 'assistance'
+  - 66:19 Collect 'provide' collocations
+  - 66:30 Speaking example with the key words
+- 66:36 **Item 9: monitor a condition**
+  - 66:36 Give the answer and the reason
+  - 66:56 Gloss the key word 'monitor'
+  - 67:15 Collect 'monitor' collocations
+  - 67:27 Gloss 'improve'
+- 67:40 **Item 10: discuss test results**
+  - 67:40 Gloss the key word 'discuss' before the answer
+  - 68:00 Give the answer and the reason
+  - 68:14 Explain the phrase 'during the consultation'
+  - 68:21 Speaking example with the key word
+  - 68:30 Close with the main idea of the exercise
+
+*Rules on the boards*
+
+- 68:30 For each noun, learn the verb or verbs that go with it. Another verb may not give the right meaning.
+
+*Wrong sentences corrected*
+
+- 57:18 The nurse will __________ the patient’s blood pressure throughout the night.
+- 57:18 The doctor __________ the patient’s symptoms to determine the best treatment.
+- 57:18 We will __________ antibiotics to fight the infection.
+- 57:18 The surgeon __________ emergency surgery to repair the patient’s injuries.
+- 57:18 The team will __________ a scan to look for any internal bleeding.
+- 58:10 The nurse __________ pain relief to make the patient more comfortable.
+- 58:10 The nurse will __________ an injection to reduce the patient's symptoms.
+- 58:10 The physiotherapist __________ assistance to help the patient walk again.
+- 58:10 We will __________ your condition over the next few days to see if it improves.
+- 58:10 The doctor __________ the test results during the consultation.
+- 58:53 The nurse will __________ the patient’s blood pressure throughout the night.
+- 59:57 The doctor __________ the patient’s symptoms to determine the best treatment.
+- 60:59 We will __________ antibiotics to fight the infection.
+- 61:53 The surgeon __________ emergency surgery to repair the patient’s injuries.
+- 62:27 Conduct emergency surgery.
+- 63:17 The team will __________ a scan to look for any internal bleeding.
+- 64:07 The nurse __________ pain relief to make the patient more comfortable.
+- 65:05 The nurse will __________ an injection to reduce the patient's symptoms.
+- 65:40 The physiotherapist __________ assistance to help the patient walk again.
+- 66:36 We will __________ your condition over the next few days to see if it improves.
+- 67:40 The doctor __________ the test results during the consultation.
+
+*Terms*: Monitor, assessed, prescribe, performed, conduct, administered, administer, provided, monitor, discussed (Verbs, 59:28); Conduct a scan, perform a scan, carry out a scan (Collocations, 63:44); Administer pain relief, administer medication, administer an injection (Collocations, 64:46); Provide assistance, provide support, provide care (Collocations, 66:19); Monitor blood pressure, monitor a patient, monitor a condition (Collocations, 67:15); During the consultation (Phrase, 68:14)
 
 ### Vocabulary
 
@@ -4121,44 +4121,44 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 5:09 administer
 - 7:54 perform surgery
 - 8:43 administer medication
-- 9:17 record patient history
-- 10:40 take a break
-- 11:58 administered
-- 12:43 took a history
-- 13:46 underwent
-- 17:59 Stabilise
-- 18:26 Drip
-- 18:37 Through a drip
-- 18:54 Hydrated
-- 19:37 Some oxygen, some blood
-- 20:25 A blood transfusion
-- 20:45 Replace the lost blood
-- 21:57 provide
-- 27:21 monitor
-- 29:39 keep an eye on
-- 32:18 Perform
-- 37:03 Issue
-- 38:14 prescribe
-- 39:58 A course of
-- 40:56 discomfort
-- 41:32 To help with…
-- 42:58 treat
-- 44:30 ache
-- 45:43 prevent
-- 47:40 schedule
-- 50:22 assess
-- 53:29 order
-- 55:36 investigate
-- 56:20 To ensure everything is okay
-- 59:05 throughout
-- 60:37 determine
-- 63:44 carry out
-- 64:14 pain relief
-- 65:16 reduce
-- 65:49 assistance
-- 67:15 improve
-- 67:36 discuss
-- 68:02 During the consultation
+- 9:22 record patient history
+- 10:44 take a break
+- 12:02 administered
+- 12:47 took a history
+- 13:50 underwent
+- 18:02 Stabilise
+- 18:29 Drip
+- 18:40 Through a drip
+- 18:57 Hydrated
+- 19:40 Some oxygen, some blood
+- 20:28 A blood transfusion
+- 20:48 Replace the lost blood
+- 22:00 provide
+- 27:24 monitor
+- 29:42 keep an eye on
+- 32:21 Perform
+- 37:07 Issue
+- 38:17 prescribe
+- 40:04 A course of
+- 41:02 discomfort
+- 41:38 To help with…
+- 43:04 treat
+- 44:36 ache
+- 45:49 prevent
+- 47:50 schedule
+- 50:31 assess
+- 53:39 order
+- 55:46 investigate
+- 56:30 To ensure everything is okay
+- 59:15 throughout
+- 60:47 determine
+- 63:54 carry out
+- 64:24 pain relief
+- 65:27 reduce
+- 66:00 assistance
+- 67:27 improve
+- 67:48 discuss
+- 68:14 During the consultation
 
 ### Practice material
 
@@ -4167,10 +4167,10 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ### Links to other lessons
 
 - 0:07 refers to Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`) (in `page-3_t1.s1.u2`)
-- 14:47 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-6_t1.s10.u3`)
-- 42:00 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `page-11_t1.s20.u3`)
-- 45:11 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `page-12_t1.s8.u3`)
-- 49:29 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `page-13_t1.s7.u4`)
+- 14:51 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-6_t1.s10.u3`)
+- 42:06 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `page-11_t1.s20.u3`)
+- 45:17 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `page-12_t1.s8.u3`)
+- 49:39 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `page-13_t1.s7.u4`)
 - referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Introduction" at 0:11
 - continues in Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`): Adjective + noun collocations follow the verb + noun collocations taught here.
 
@@ -4179,8 +4179,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 3. Vocabulary for OET: Adjective + Noun Collocations
 
-- Lesson ID and folder: `vocabulary-03-collocations-2` (folder `vocabulary-03-collocations-2`); course vocabulary, lesson 3; length 75:57; bundle format 1.12
-- Status: approved by siavash, 2026-10-01 08:06
+- Lesson ID and folder: `vocabulary-03-collocations-2` (folder `vocabulary-03-collocations-2`); course vocabulary, lesson 3; length 76:00; bundle format 1.12
+- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 14:27
 - Description: Learn adjectives and nouns that go together, and clear ways to describe pain, for your OET letters and for talking to patients.
 - Original session: folder `source`: `source/video.mp4`, 45:34 long, partial hash `b1576043dc5fe7aa`; deck `source/slides.pdf`, 15 pages
   - Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).
@@ -4266,91 +4266,91 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 12:29 gloss dull pain
   - 12:59 second example, talking to a patient
   - 13:04 near-synonym, aching pain
-  - 13:30 one more pain word patients use
-  - 13:41 gloss constant pain
-  - 14:08 second example, talking to a patient
-  - 14:15 gloss chronic pain
-  - 14:49 second example, talking to a patient
-  - 14:58 constant and chronic are not the same
-  - 15:27 gloss excruciating pain
-  - 15:55 second example, talking to a patient
-  - 16:02 excruciating is stronger than severe
-  - 16:29 strength words
-  - 16:48 gloss nagging pain
-  - 17:15 the verb behind the adjective
-  - 17:29 second example, talking to a patient
-  - 17:39 gloss the word slight
-  - 18:04 countability of pain
-  - 18:22 gloss sharp pain
-  - 18:50 second example, talking to a patient
-  - 18:58 two more sharp-type pain words
-  - 19:17 closing note for the whole set
+  - 13:32 one more pain word patients use
+  - 13:43 gloss constant pain
+  - 14:10 second example, talking to a patient
+  - 14:17 gloss chronic pain
+  - 14:51 second example, talking to a patient
+  - 15:00 constant and chronic are not the same
+  - 15:29 gloss excruciating pain
+  - 15:57 second example, talking to a patient
+  - 16:04 excruciating is stronger than severe
+  - 16:31 strength words
+  - 16:50 gloss nagging pain
+  - 17:17 the verb behind the adjective
+  - 17:31 second example, talking to a patient
+  - 17:41 gloss the word slight
+  - 18:06 countability of pain
+  - 18:24 gloss sharp pain
+  - 18:52 second example, talking to a patient
+  - 19:00 two more sharp-type pain words
+  - 19:19 closing note for the whole set
 
 *Rules on the boards*
 
-- 19:17 You do not need the exact dictionary definition of each type of pain. Know roughly what each one means.
+- 19:19 You do not need the exact dictionary definition of each type of pain. Know roughly what each one means.
 
-*Terms*: a steady continuous beat (Words in the definition, 12:12); burning pain (More pain words, 13:30); mild, moderate, severe (Strength words, 16:29); nag (verb), nagging (adjective) (Word family, 17:15); a slight but continuous pain (Grammar note, 18:04); stabbing pain, shooting pain (More pain words, 18:58)
+*Terms*: a steady continuous beat (Words in the definition, 12:12); burning pain (More pain words, 13:32); mild, moderate, severe (Strength words, 16:31); nag (verb), nagging (adjective) (Word family, 17:17); a slight but continuous pain (Grammar note, 18:06); stabbing pain, shooting pain (More pain words, 19:00)
 
-#### 19:31 Practice: conditions and types of pain (`page-9`, deck)
+#### 19:33 Practice: conditions and types of pain (`page-9`, deck)
 
-- 19:31 **the task, throbbing pain and dull pain, constant pain and chronic pain, excruciating, nagging and sharp pain**
-  - 19:31 Set the practice task and name the first two pain types
-  - 19:31 Name the last three pain types
-  - 19:47 Gloss the key collocation 'throbbing pain'
-  - 20:09 Speaking example and a written example with 'throbbing pain'
-  - 20:25 The model patient sentence and the tense behind it
-  - 20:59 Draw the time of the throbbing-pain sentence
-  - 21:28 Add what makes the pain worse
-  - 21:39 Gloss the key phrase 'get worse'
-  - 21:52 Speaking example with 'get worse' and the grammar word for it
-  - 22:04 Gloss the key collocation 'dull pain'
+- 19:33 **the task, throbbing pain and dull pain, constant pain and chronic pain, excruciating, nagging and sharp pain**
+  - 19:33 Set the practice task and name the first two pain types
+  - 19:33 Name the last three pain types
+  - 19:49 Gloss the key collocation 'throbbing pain'
+  - 20:11 Speaking example and a written example with 'throbbing pain'
+  - 20:27 The model patient sentence and the tense behind it
+  - 21:01 Draw the time of the throbbing-pain sentence
+  - 21:31 Add what makes the pain worse
+  - 21:41 Gloss the key phrase 'get worse'
+  - 21:54 Speaking example with 'get worse' and the grammar word for it
+  - 22:06 Gloss the key collocation 'dull pain'
   - 22:24 Speaking example with 'dull pain'
   - 22:40 The model patient sentence for dull pain
-  - 23:01 Why 'a dull pain' takes 'a'
+  - 23:02 Why 'a dull pain' takes 'a'
   - 23:09 Choosing the word the patient uses
   - 23:21 Describe how bad the dull pain is
   - 23:38 Gloss the key word 'uncomfortable'
   - 23:54 How to say 'uncomfortable' and how a clinician uses it
   - 24:12 Word family around 'comfortable'
-  - 24:22 Gloss the key phrase 'go away'
-  - 24:35 Speaking example with 'go away'
-  - 24:44 Name the second part of the practice
-  - 24:55 Gloss the key collocation 'constant pain'
-  - 25:09 Speaking example with 'constant'
+  - 24:23 Gloss the key phrase 'go away'
+  - 24:36 Speaking example with 'go away'
+  - 24:45 Name the second part of the practice
+  - 24:56 Gloss the key collocation 'constant pain'
+  - 25:10 Speaking example with 'constant'
   - 25:18 The model patient sentence for constant pain
-  - 25:38 Gloss the key phrase 'deal with'
-  - 25:49 The preposition 'with' is always needed
-  - 26:07 The second use of 'deal with': handle a problem
-  - 26:18 'Deal with' used about illness
-  - 26:30 Gloss the key collocation 'chronic pain'
-  - 26:50 Adjectives that pair with 'pain'
-  - 27:02 Say that treatment has not helped
+  - 25:39 Gloss the key phrase 'deal with'
+  - 25:50 The preposition 'with' is always needed
+  - 26:08 The second use of 'deal with': handle a problem
+  - 26:19 'Deal with' used about illness
+  - 26:31 Gloss the key collocation 'chronic pain'
+  - 26:51 Adjectives that pair with 'pain'
+  - 27:03 Say that treatment has not helped
   - 27:12 Gloss the key verb 'ease'
   - 27:29 The form 'eased' after 'has', and a speaking example
-  - 27:45 A longer sentence with 'ease' and its two uses
+  - 27:46 A longer sentence with 'ease' and its two uses
   - 28:00 Recap the useful expressions from these examples
   - 28:23 Gloss the key collocation 'excruciating pain'
-  - 28:42 Speaking example with 'excruciating'
-  - 28:50 The model patient sentence and the past form 'woke up'
-  - 29:10 The preposition with a body part
+  - 28:43 Speaking example with 'excruciating'
+  - 28:51 The model patient sentence and the past form 'woke up'
+  - 29:11 The preposition with a body part
   - 29:16 Warn about small prepositions
-  - 29:27 Make the description stronger with 'so ... that'
-  - 29:42 Teach 'even' as an intensifier
-  - 29:54 Gloss the key collocation 'nagging pain'
-  - 30:13 Speaking example with 'nagging pain'
-  - 30:22 The model sentence for nagging pain, in the right tense
+  - 29:28 Make the description stronger with 'so ... that'
+  - 29:43 Teach 'even' as an intensifier
+  - 29:55 Gloss the key collocation 'nagging pain'
+  - 30:14 Speaking example with 'nagging pain'
+  - 30:23 The model sentence for nagging pain, in the right tense
   - 30:42 Gloss the key verb 'bother'
-  - 30:54 Speaking example with 'bother'
+  - 30:55 Speaking example with 'bother'
   - 31:01 Describe how strong the nagging pain is
-  - 31:17 Gloss the key verb 'carry'
-  - 31:29 Gloss the key collocation 'sharp pain'
-  - 31:46 The model sentence for sharp pain and its onset
-  - 32:09 Gloss the key word 'workout'
-  - 32:21 Speaking example with 'sharp pain'
-  - 32:31 Questions that use these collocations in a history
-  - 32:40 One more history question, with the reason for using them
-  - 32:52 Not every adjective goes with 'pain'
+  - 31:18 Gloss the key verb 'carry'
+  - 31:30 Gloss the key collocation 'sharp pain'
+  - 31:47 The model sentence for sharp pain and its onset
+  - 32:10 Gloss the key word 'workout'
+  - 32:22 Speaking example with 'sharp pain'
+  - 32:32 Questions that use these collocations in a history
+  - 32:41 One more history question, with the reason for using them
+  - 32:53 Not every adjective goes with 'pain'
   - 32:58 The rule to take away
 
 *Rules on the boards*
@@ -4363,236 +4363,236 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 *Wrong sentences corrected*
 
-- 29:10 On my stomach.
-- 32:56 Big pain.
+- 29:11 On my stomach.
+- 32:57 Big pain.
 
-*Terms*: present perfect continuous (Form, 20:40); get + adjective (Pattern, 21:57); pain (Collocations, 22:28); a (indefinite article) (Grammar word, 23:01); uncomfortable (Saying the word, 23:54); comfort, comfortable, uncomfortable (Word family, 24:12); deal with (Form, 25:49); pain (Collocations, 26:50); has not eased (Form, 27:29); woke up (Form, 29:02); so ... that (Form, 29:32); even (New word, 29:42)
+*Terms*: present perfect continuous (Form, 20:42); get + adjective (Pattern, 21:59); pain (Collocations, 22:29); a (indefinite article) (Grammar word, 23:02); uncomfortable (Saying the word, 23:54); comfort, comfortable, uncomfortable (Word family, 24:12); deal with (Form, 25:50); pain (Collocations, 26:51); has not eased (Form, 27:29); woke up (Form, 29:03); so ... that (Form, 29:32); even (New word, 29:43)
 
-#### 33:23 Common descriptions (`page-10`, deck)
+#### 33:24 Common descriptions (`page-10`, deck)
 
-- 33:23 **mild reaction and temporary discomfort, normal response, unusual symptom and serious concern**
-  - 33:23 Put the two printed sentences on the board and frame what these phrases are for
-  - 33:23 The printed sentence for this collocation
-  - 33:23 The two printed sentences and where they are used
-  - 33:52 Key word: mild reaction
-  - 34:10 Speaking example with mild reaction
-  - 34:23 The opposite of mild on the same scale
+- 33:24 **mild reaction and temporary discomfort, normal response, unusual symptom and serious concern**
+  - 33:24 Put the two printed sentences on the board and frame what these phrases are for
+  - 33:24 The printed sentence for this collocation
+  - 33:24 The two printed sentences and where they are used
+  - 33:53 Key word: mild reaction
+  - 34:11 Speaking example with mild reaction
+  - 34:24 The opposite of mild on the same scale
   - 34:47 The frame 'You may have ...' explained in English
-  - 35:05 Key word: sore
-  - 35:26 How a patient uses 'sore'
-  - 35:37 A small amount of soreness
+  - 35:06 Key word: sore
+  - 35:27 How a patient uses 'sore'
+  - 35:38 A small amount of soreness
   - 35:47 Word class of sore and soreness
-  - 36:01 Key word: discomfort
-  - 36:18 Sore or discomfort: the difference in English
+  - 36:02 Key word: discomfort
+  - 36:19 Sore or discomfort: the difference in English
   - 36:38 Patient voice: not sore, but uncomfortable
-  - 37:00 Second patient example with discomfort
-  - 37:11 Key word: temporary
-  - 37:27 The collocation temporary discomfort
-  - 37:47 Speaking example with temporary discomfort
-  - 38:21 Key word: normal response
-  - 38:38 Word family of response
-  - 38:45 What 'response' means with a medicine
-  - 39:10 Key word: settle
+  - 37:01 Second patient example with discomfort
+  - 37:12 Key word: temporary
+  - 37:28 The collocation temporary discomfort
+  - 37:48 Speaking example with temporary discomfort
+  - 38:22 Key word: normal response
+  - 38:39 Word family of response
+  - 38:46 What 'response' means with a medicine
+  - 39:11 Key word: settle
   - 39:25 Settle with pain, said to the patient
-  - 39:36 Settle with a time
+  - 39:37 Settle with a time
   - 39:51 Settle without treatment
-  - 40:02 Settle with down
-  - 40:11 One more speaking example with settle
+  - 40:03 Settle with down
+  - 40:12 One more speaking example with settle
   - 40:44 Key word: unusual symptom
-  - 41:01 Speaking example with unusual symptom
+  - 41:02 Speaking example with unusual symptom
   - 41:21 Key word: notice
-  - 41:37 Key word: serious concern
-  - 41:52 The two words inside the collocation, and a speaking example
-  - 42:13 Hard general word in the printed sentence
-  - 42:30 Key word: worsen
+  - 41:38 Key word: serious concern
+  - 41:53 The two words inside the collocation, and a speaking example
+  - 42:14 Hard general word in the printed sentence
+  - 42:31 Key word: worsen
   - 42:51 Where the ending goes: worsen or get worse
   - 43:09 Worsen in a clinical sentence
-  - 43:21 Get worse in a clinical sentence
+  - 43:22 Get worse in a clinical sentence
   - 43:34 One more speaking example with get worse
 
-*Terms*: You may have ... (Phrase, 34:47); sore, soreness (Word family, 35:47); uncomfortable, discomfort (Word family, 36:44); temporary discomfort (Collocation, 37:27); respond, response (Word family, 38:38); settle down (Word form, 40:02)
+*Terms*: You may have ... (Phrase, 34:47); sore, soreness (Word family, 35:47); uncomfortable, discomfort (Word family, 36:45); temporary discomfort (Collocation, 37:28); respond, response (Word family, 38:39); settle down (Word form, 40:03)
 
-#### 43:52 Giving reassurance (`page-11`, deck)
+#### 43:53 Giving reassurance (`page-11`, deck)
 
-- 43:52 **Good chance and low risk, Full support and quick check, Clear explanation**
+- 43:53 **Good chance and low risk, Full support and quick check, Clear explanation**
   - 43:52 Show the first two model sentences and name what they are for
-  - 43:52 Show the next two model sentences
-  - 43:52 Show the last model sentence
+  - 43:53 Show the next two model sentences
+  - 43:53 Show the last model sentence
   - 44:10 Gloss the key collocation 'a good chance'
-  - 44:29 Second example of 'a good chance', said to a patient
-  - 44:52 The optional 'that' after 'chance'
-  - 45:15 Gloss the verb pattern 'respond well to the treatment'
-  - 45:31 Second example of the verb pattern, said to a patient
-  - 46:04 Gloss the key collocation 'a low risk'
+  - 44:30 Second example of 'a good chance', said to a patient
+  - 44:53 The optional 'that' after 'chance'
+  - 45:16 Gloss the verb pattern 'respond well to the treatment'
+  - 45:32 Second example of the verb pattern, said to a patient
+  - 46:05 Gloss the key collocation 'a low risk'
   - 46:19 Second example of 'a low risk', said to a patient
-  - 46:44 The two meanings of 'carry'
+  - 46:45 The two meanings of 'carry'
   - 47:08 Widen the vocabulary around 'risk'
-  - 47:33 Gloss the key collocation 'full support'
-  - 47:49 Second example of 'full support', said to a patient
-  - 48:13 Gloss 'throughout'
+  - 47:34 Gloss the key collocation 'full support'
+  - 47:50 Second example of 'full support', said to a patient
+  - 48:14 Gloss 'throughout'
   - 48:25 Contrast 'during' and 'throughout'
-  - 48:43 The fever example with 'during'
-  - 49:05 The fever example with 'throughout'
-  - 49:38 Gloss the key collocation 'a quick check'
-  - 49:53 Second example of 'a quick check', said to a patient, and the verb that goes with it
-  - 50:16 Gloss 'properly' from the purpose clause
-  - 50:45 Gloss the key collocation 'a clear explanation'
-  - 51:01 Second example of the phrase, said to a patient
-  - 51:28 The phrase takes different endings
-  - 51:52 When to use the whole phrase
-  - 52:05 Word family and collocations of 'explanation'
+  - 48:44 The fever example with 'during'
+  - 49:09 The fever example with 'throughout'
+  - 49:41 Gloss the key collocation 'a quick check'
+  - 49:56 Second example of 'a quick check', said to a patient, and the verb that goes with it
+  - 50:18 Gloss 'properly' from the purpose clause
+  - 50:48 Gloss the key collocation 'a clear explanation'
+  - 51:04 Second example of the phrase, said to a patient
+  - 51:31 The phrase takes different endings
+  - 51:55 When to use the whole phrase
+  - 52:07 Word family and collocations of 'explanation'
 
-*Terms*: There is a good chance (that) … (Form, 44:52); risk (Collocations, 47:08); do a quick check (Form, 50:02); explain, explanation (Word family, 52:05); explanation (Collocations, 52:19)
+*Terms*: There is a good chance (that) … (Form, 44:53); risk (Collocations, 47:08); do a quick check (Form, 50:05); explain, explanation (Word family, 52:07); explanation (Collocations, 52:22)
 
-#### 52:38 Instructions and advice (`page-12`, deck)
+#### 52:41 Instructions and advice (`page-12`, deck)
 
-- 52:38 **regular check-up and simple exercise, balanced diet and daily routine**
-  - 52:38 Put the slide's first two model sentences on the board and frame the task
-  - 52:38 Put the slide's other two model sentences on the board
-  - 53:09 Define the word collocation the first time it is used here
-  - 53:24 Key word moment: gloss regular check-up
-  - 53:46 Second example of regular check-up, said to a patient
-  - 54:00 Widen the vocabulary around check-up
-  - 54:15 Key word moment: gloss the phrasal verb come in
-  - 54:28 Show the two uses of come in side by side
-  - 54:57 Come in used to ask a patient to attend again
-  - 55:09 Came in used to report a patient's attendance to a colleague
-  - 55:27 Key word moment: gloss simple exercise
-  - 55:44 Second example of simple exercise, said to a patient
-  - 55:58 Gloss the verb strengthen from the model sentence
-  - 56:18 Word families for strengthen and daily
-  - 57:07 Key word moment: gloss balanced diet
-  - 57:28 Second example of balanced diet, said to a patient
-  - 57:40 Contrast a good diet with a balanced diet for precision
-  - 58:03 Key word moment: gloss maintain
-  - 58:20 The form after try to, with one more example
-  - 58:53 Key word moment: gloss daily routine
-  - 59:09 Second example of daily routine, said to a patient
-  - 59:25 The pattern it helps to, with one more example
-  - 59:50 Key word moment: gloss include
-  - 60:03 Show what is included and where
-  - 60:20 Closing study habit for collocations
-
-*Rules on the boards*
-
-- 60:20 Most sentences you read contain one or two collocations. Write them down and review them often. After a few reviews you will start to use them in your own sentences.
-
-*Terms*: collocation (New word, 53:09); check-up (Collocations, 54:00); strong, strengthen, strength (Word family, 56:18); day, daily (Word family, 56:32); try to + simple verb (Form, 58:20); It helps to ... (Pattern, 59:25)
-
-#### 60:38 Collocations in a letter (`page-13`, deck)
-
-- 60:38 **Letter extract: adjective and noun collocations**
-  - 60:38 show the letter and set the task
-  - 60:59 name the key term
-  - 61:16 list the pairs in the first paragraph
-  - 61:32 gloss persistent cough
-  - 61:48 persistent cough with the patient
-  - 62:00 gloss throbbing headaches
-  - 62:15 gloss heavy cold
-  - 62:28 the pair is fixed
-  - 62:39 gloss muscular aches
-  - 62:55 gloss itchy rash
-  - 63:12 itchy rash with the patient
-  - 63:20 gloss serious disease
-  - 63:36 list the pairs in the second paragraph
-  - 63:49 gloss high temperature
-  - 64:04 high temperature with the patient
-  - 64:13 high temperature is a fixed pair
-  - 64:23 gloss lethargic
-  - 64:38 gloss heavy smoker
-  - 64:54 heavy smoker with the patient
-  - 65:00 heavy smoker is a fixed pair
-  - 65:08 more nouns that go with heavy
-  - 65:21 gloss with regard to
-  - 65:37 list the pairs in the third paragraph
-  - 65:50 gloss current condition
-  - 66:05 gloss balanced diet
-  - 66:19 balanced diet with the patient
-  - 66:29 word family for balanced
-  - 66:43 adjective and noun, or noun and noun
-  - 67:11 the rule to remember
+- 52:41 **regular check-up and simple exercise, balanced diet and daily routine**
+  - 52:41 Put the slide's first two model sentences on the board and frame the task
+  - 52:41 Put the slide's other two model sentences on the board
+  - 53:12 Define the word collocation the first time it is used here
+  - 53:27 Key word moment: gloss regular check-up
+  - 53:49 Second example of regular check-up, said to a patient
+  - 54:03 Widen the vocabulary around check-up
+  - 54:18 Key word moment: gloss the phrasal verb come in
+  - 54:31 Show the two uses of come in side by side
+  - 55:00 Come in used to ask a patient to attend again
+  - 55:12 Came in used to report a patient's attendance to a colleague
+  - 55:30 Key word moment: gloss simple exercise
+  - 55:46 Second example of simple exercise, said to a patient
+  - 56:01 Gloss the verb strengthen from the model sentence
+  - 56:21 Word families for strengthen and daily
+  - 57:10 Key word moment: gloss balanced diet
+  - 57:31 Second example of balanced diet, said to a patient
+  - 57:43 Contrast a good diet with a balanced diet for precision
+  - 58:06 Key word moment: gloss maintain
+  - 58:23 The form after try to, with one more example
+  - 58:56 Key word moment: gloss daily routine
+  - 59:12 Second example of daily routine, said to a patient
+  - 59:28 The pattern it helps to, with one more example
+  - 59:53 Key word moment: gloss include
+  - 60:06 Show what is included and where
+  - 60:23 Closing study habit for collocations
 
 *Rules on the boards*
 
-- 67:11 Learn the adjective and the noun together. Change one word and the pair sounds wrong.
+- 60:23 Most sentences you read contain one or two collocations. Write them down and review them often. After a few reviews you will start to use them in your own sentences.
+
+*Terms*: collocation (New word, 53:12); check-up (Collocations, 54:03); strong, strengthen, strength (Word family, 56:21); day, daily (Word family, 56:35); try to + simple verb (Form, 58:23); It helps to ... (Pattern, 59:28)
+
+#### 60:41 Collocations in a letter (`page-13`, deck)
+
+- 60:41 **Letter extract: adjective and noun collocations**
+  - 60:41 show the letter and set the task
+  - 61:02 name the key term
+  - 61:18 list the pairs in the first paragraph
+  - 61:35 gloss persistent cough
+  - 61:51 persistent cough with the patient
+  - 62:03 gloss throbbing headaches
+  - 62:18 gloss heavy cold
+  - 62:31 the pair is fixed
+  - 62:42 gloss muscular aches
+  - 62:58 gloss itchy rash
+  - 63:15 itchy rash with the patient
+  - 63:23 gloss serious disease
+  - 63:39 list the pairs in the second paragraph
+  - 63:52 gloss high temperature
+  - 64:07 high temperature with the patient
+  - 64:16 high temperature is a fixed pair
+  - 64:26 gloss lethargic
+  - 64:41 gloss heavy smoker
+  - 64:57 heavy smoker with the patient
+  - 65:03 heavy smoker is a fixed pair
+  - 65:10 more nouns that go with heavy
+  - 65:24 gloss with regard to
+  - 65:40 list the pairs in the third paragraph
+  - 65:53 gloss current condition
+  - 66:08 gloss balanced diet
+  - 66:22 balanced diet with the patient
+  - 66:32 word family for balanced
+  - 66:46 adjective and noun, or noun and noun
+  - 67:14 the rule to remember
+
+*Rules on the boards*
+
+- 67:14 Learn the adjective and the noun together. Change one word and the pair sounds wrong.
 
 *Wrong sentences corrected*
 
-- 62:33 A big cold
-- 64:18 A big temperature
-- 65:05 A big smoker
+- 62:36 A big cold
+- 64:21 A big temperature
+- 65:08 A big smoker
 
-*Terms*: Collocation (New word, 60:59); Heavy (Collocations, 65:08); Balance (Word family, 66:29)
+*Terms*: Collocation (New word, 61:02); Heavy (Collocations, 65:10); Balance (Word family, 66:32)
 
-#### 67:24 Practice: complete the sentences (`page-14`, deck)
+#### 67:27 Practice: complete the sentences (`page-14`, deck)
 
-- 67:24 **instruction and sentences 1 to 4**
-  - 67:24 Show the task and the first four gapped sentences
-- 68:10 **sentences 5 to 8**
-  - 68:10 Show the last four gapped sentences
-- 68:51 **Item 1: chronic pain**
-  - 68:51 Show the sentence under discussion and give the answer
-  - 69:09 Gloss the key word chronic
-  - 69:24 Second example, said to a patient
-  - 69:35 The second accepted answer
-  - 69:45 Widen the vocabulary: collocations with chronic
-- 69:53 **Item 2: persistent cough**
-  - 69:53 Show the sentence under discussion and give the answer
-  - 70:12 Gloss the key word persistent
-  - 70:27 Second example, said to a patient
-  - 70:35 Widen the vocabulary: word family
-- 70:48 **Item 3: exercise regime**
-  - 70:48 Show the sentence under discussion and give the answer
-  - 71:03 Gloss the hard general word 'implement' from the printed sentence
-  - 71:17 Gloss the key collocation exercise regime
-  - 71:35 Point out that this pair is noun plus noun
-  - 71:54 Second example, said to a patient
-- 72:02 **Item 4: sharp pain**
-  - 72:02 Show the sentence under discussion and give the answer
-  - 72:20 Gloss the key word sharp
-  - 72:36 Second example, said to a patient
-  - 72:42 Widen the vocabulary: near-synonym contrast
-- 72:58 **Item 5: a heavy cold**
-  - 72:58 Show the sentence under discussion and give the answer
-  - 73:10 Gloss the key collocation heavy cold
-  - 73:28 Reject the wrong adjective with this noun
-  - 73:36 Second example, said to a patient
-- 73:42 **Item 6: a heavy smoker**
-  - 73:42 Show the sentence under discussion and give the answer
-  - 73:53 Widen the vocabulary: other nouns after heavy
-  - 74:01 Second example, said to a patient
-- 74:09 **Item 7: constant pain**
-  - 74:09 Show the sentence under discussion and give the answer
-  - 74:25 Gloss the key word constant
-  - 74:41 Second example, said to a patient
-  - 74:48 Widen the vocabulary: chronic and constant side by side
-- 75:07 **Item 8: an itchy rash**
-  - 75:07 Show the sentence under discussion and give the answer
-  - 75:20 Gloss the key word itchy
-  - 75:35 The article before this adjective
-  - 75:42 Second example, said to a patient
+- 67:27 **instruction and sentences 1 to 4**
+  - 67:27 Show the task and the first four gapped sentences
+- 68:13 **sentences 5 to 8**
+  - 68:13 Show the last four gapped sentences
+- 68:54 **Item 1: chronic pain**
+  - 68:54 Show the sentence under discussion and give the answer
+  - 69:12 Gloss the key word chronic
+  - 69:27 Second example, said to a patient
+  - 69:38 The second accepted answer
+  - 69:48 Widen the vocabulary: collocations with chronic
+- 69:56 **Item 2: persistent cough**
+  - 69:56 Show the sentence under discussion and give the answer
+  - 70:14 Gloss the key word persistent
+  - 70:30 Second example, said to a patient
+  - 70:38 Widen the vocabulary: word family
+- 70:51 **Item 3: exercise regime**
+  - 70:51 Show the sentence under discussion and give the answer
+  - 71:06 Gloss the hard general word 'implement' from the printed sentence
+  - 71:20 Gloss the key collocation exercise regime
+  - 71:38 Point out that this pair is noun plus noun
+  - 71:57 Second example, said to a patient
+- 72:05 **Item 4: sharp pain**
+  - 72:05 Show the sentence under discussion and give the answer
+  - 72:23 Gloss the key word sharp
+  - 72:39 Second example, said to a patient
+  - 72:45 Widen the vocabulary: near-synonym contrast
+- 73:01 **Item 5: a heavy cold**
+  - 73:01 Show the sentence under discussion and give the answer
+  - 73:13 Gloss the key collocation heavy cold
+  - 73:31 Reject the wrong adjective with this noun
+  - 73:38 Second example, said to a patient
+- 73:45 **Item 6: a heavy smoker**
+  - 73:45 Show the sentence under discussion and give the answer
+  - 73:55 Widen the vocabulary: other nouns after heavy
+  - 74:04 Second example, said to a patient
+- 74:12 **Item 7: constant pain**
+  - 74:12 Show the sentence under discussion and give the answer
+  - 74:28 Gloss the key word constant
+  - 74:44 Second example, said to a patient
+  - 74:51 Widen the vocabulary: chronic and constant side by side
+- 75:10 **Item 8: an itchy rash**
+  - 75:10 Show the sentence under discussion and give the answer
+  - 75:23 Gloss the key word itchy
+  - 75:38 The article before this adjective
+  - 75:45 Second example, said to a patient
 
 *Wrong sentences corrected*
 
-- 67:24 I have ______ pain in my lower back. It's been there for years.
-- 67:24 The patient presented complaining of a ______ cough which she had had for 5 weeks.
-- 67:24 You'll need to implement an ______ regime in order to get back to full fitness.
-- 67:24 I felt a sudden ______ pain in my right side. It came on quickly and was very severe.
-- 68:10 He thought he had the flu, but in fact it was just a very ______ cold.
-- 68:10 She is a ______ smoker and smokes about 20 cigarettes a day.
-- 68:10 Mr Gates has a ______ pain in his shoulder which never goes away.
-- 68:10 He has an ______ rash which has spread to his forearms and hands.
-- 68:51 I have ______ pain in my lower back. It's been there for years.
-- 69:53 The patient presented complaining of a ______ cough which she had had for 5 weeks.
-- 70:48 You'll need to implement an ______ regime in order to get back to full fitness.
-- 72:02 I felt a sudden ______ pain in my right side. It came on quickly and was very severe.
-- 72:58 He thought he had the flu, but in fact it was just a very ______ cold.
-- 73:28 A big cold.
-- 73:42 She is a ______ smoker and smokes about 20 cigarettes a day.
-- 74:09 Mr Gates has a ______ pain in his shoulder which never goes away.
-- 75:07 He has an ______ rash which has spread to his forearms and hands.
+- 67:27 I have ______ pain in my lower back. It's been there for years.
+- 67:27 The patient presented complaining of a ______ cough which she had had for 5 weeks.
+- 67:27 You'll need to implement an ______ regime in order to get back to full fitness.
+- 67:27 I felt a sudden ______ pain in my right side. It came on quickly and was very severe.
+- 68:13 He thought he had the flu, but in fact it was just a very ______ cold.
+- 68:13 She is a ______ smoker and smokes about 20 cigarettes a day.
+- 68:13 Mr Gates has a ______ pain in his shoulder which never goes away.
+- 68:13 He has an ______ rash which has spread to his forearms and hands.
+- 68:54 I have ______ pain in my lower back. It's been there for years.
+- 69:56 The patient presented complaining of a ______ cough which she had had for 5 weeks.
+- 70:51 You'll need to implement an ______ regime in order to get back to full fitness.
+- 72:05 I felt a sudden ______ pain in my right side. It came on quickly and was very severe.
+- 73:01 He thought he had the flu, but in fact it was just a very ______ cold.
+- 73:31 A big cold.
+- 73:45 She is a ______ smoker and smokes about 20 cigarettes a day.
+- 74:12 Mr Gates has a ______ pain in his shoulder which never goes away.
+- 75:10 He has an ______ rash which has spread to his forearms and hands.
 
-*Terms*: Chronic (Collocations, 69:45); Persistent (Word family, 70:35); Exercise regime (Form, 71:35); Heavy (Collocations, 73:53); An itchy rash (Form, 75:35)
+*Terms*: Chronic (Collocations, 69:48); Persistent (Word family, 70:38); Exercise regime (Form, 71:38); Heavy (Collocations, 73:55); An itchy rash (Form, 75:38)
 
 ### Vocabulary
 
@@ -4604,69 +4604,69 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 9:24 Intensive care
 - 11:10 throbbing pain
 - 12:29 dull pain
-- 13:41 constant pain
-- 14:15 chronic pain
-- 15:27 excruciating pain
-- 16:48 nagging pain
-- 17:39 slight
-- 18:22 sharp pain
-- 21:39 get worse
+- 13:43 constant pain
+- 14:17 chronic pain
+- 15:29 excruciating pain
+- 16:50 nagging pain
+- 17:41 slight
+- 18:24 sharp pain
+- 21:41 get worse
 - 23:38 uncomfortable
-- 24:22 go away
-- 25:38 deal with
+- 24:23 go away
+- 25:39 deal with
 - 27:12 ease
-- 29:42 even
+- 29:43 even
 - 30:42 bother
-- 31:17 carry
-- 32:09 workout
-- 33:52 mild reaction
+- 31:18 carry
+- 32:10 workout
+- 33:53 mild reaction
 - 34:47 You may have ...
-- 35:05 sore
-- 36:01 discomfort
-- 37:11 temporary
-- 38:21 normal response
-- 39:10 settle
+- 35:06 sore
+- 36:02 discomfort
+- 37:12 temporary
+- 38:22 normal response
+- 39:11 settle
 - 40:44 unusual symptom
 - 41:21 notice
-- 41:37 serious concern
-- 42:13 hesitate
-- 42:30 worsen
+- 41:38 serious concern
+- 42:14 hesitate
+- 42:31 worsen
 - 44:10 a good chance
-- 45:15 respond well to the treatment
-- 46:04 a low risk
-- 47:33 full support
-- 48:13 throughout
-- 49:38 a quick check
-- 50:16 properly
-- 50:45 a clear explanation
-- 53:09 collocation
-- 53:24 a regular check-up
-- 54:15 come in
-- 55:27 a simple exercise
-- 55:58 strengthen
-- 57:07 a balanced diet
-- 58:03 maintain
-- 58:53 daily routine
-- 59:50 include
-- 61:32 Persistent cough
-- 62:00 Throbbing headaches
-- 62:15 Heavy cold
-- 62:39 Muscular aches
-- 62:55 Itchy rash
-- 63:20 Serious disease
-- 63:49 High temperature
-- 64:23 Lethargic
-- 64:38 Heavy smoker
-- 65:21 With regard to
-- 65:50 Current condition
-- 66:05 Balanced diet
-- 69:09 Chronic
-- 70:12 Persistent
-- 71:03 Implement
-- 71:17 Exercise regime
-- 72:20 Sharp
-- 74:25 Constant
-- 75:20 Itchy
+- 45:16 respond well to the treatment
+- 46:05 a low risk
+- 47:34 full support
+- 48:14 throughout
+- 49:41 a quick check
+- 50:18 properly
+- 50:48 a clear explanation
+- 53:12 collocation
+- 53:27 a regular check-up
+- 54:18 come in
+- 55:30 a simple exercise
+- 56:01 strengthen
+- 57:10 a balanced diet
+- 58:06 maintain
+- 58:56 daily routine
+- 59:53 include
+- 61:35 Persistent cough
+- 62:03 Throbbing headaches
+- 62:18 Heavy cold
+- 62:42 Muscular aches
+- 62:58 Itchy rash
+- 63:23 Serious disease
+- 63:52 High temperature
+- 64:26 Lethargic
+- 64:41 Heavy smoker
+- 65:24 With regard to
+- 65:53 Current condition
+- 66:08 Balanced diet
+- 69:12 Chronic
+- 70:14 Persistent
+- 71:06 Implement
+- 71:20 Exercise regime
+- 72:23 Sharp
+- 74:28 Constant
+- 75:23 Itchy
 
 ### Practice material
 
@@ -4675,8 +4675,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ### Links to other lessons
 
 - 0:11 refers to Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`) (in `page-3_t1.s1.u2`)
-- 18:14 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `page-8_t1.s24.u3`)
-- 20:52 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect continuous tenses" (in `page-9_t1.s2.u6`)
+- 18:16 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `page-8_t1.s24.u3`)
+- 20:54 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect continuous tenses" (in `page-9_t1.s2.u6`)
 - continues from Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`): Adjective + noun collocations follow the verb + noun collocations taught here.
 
 
@@ -8015,126 +8015,126 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 Each topic or term, then each lesson that teaches it and the first moment there.
 
-- **a (indefinite article)**: `vocabulary-03-collocations-2` 23:01
-- **a fifty-year-old teacher**: `grammar-08-paraphrasing` 20:28
+- **a (indefinite article)**: `vocabulary-03-collocations-2` 23:02
+- **a fifty-year-old teacher**: `grammar-08-paraphrasing` 20:30
 - **A needle in a haystack**: `reading-02-part-a` 1:48
 - **A or an**: `grammar-04-articles` 9:45
 - **A quick review of the method**: `reading-05-part-c-2` 1:23; `listening-05-part-c-2` 1:10
 - **A sample letter**: `writing-01-overview` 14:04
 - **A target score for Part B**: `listening-03-part-b` 11:46
 - **A target score for Part C**: `listening-04-part-c` 9:16
-- **A two-week history of**: `grammar-08-paraphrasing` 35:43
+- **A two-week history of**: `grammar-08-paraphrasing` 35:45
 - **a-**: `grammar-03-nominalization` 9:26
-- **Active**: `grammar-01-verb-tenses` 79:37
-- **active and passive**: `grammar-01-verb-tenses` 77:47; `grammar-02-verb-use` 30:23
-- **Active voice**: `grammar-02-verb-use` 31:27
+- **Active**: `grammar-01-verb-tenses` 79:38
+- **active and passive**: `grammar-01-verb-tenses` 77:47; `grammar-02-verb-use` 30:28
+- **Active voice**: `grammar-02-verb-use` 31:31
 - **Active vs passive**: `grammar-01-verb-tenses` 77:47
 - **adjective + noun collocations**: `vocabulary-03-collocations-2` 2:00
 - **Adjective and noun**: `vocabulary-03-collocations-2` 5:51
 - **Adjective and noun collocation**: `vocabulary-03-collocations-2` 2:22
-- **Adjective endings**: `vocabulary-01-word-forms` 15:36
-- **Adjectives and nouns**: `vocabulary-01-word-forms` 26:15
-- **Administer**: `vocabulary-02-collocations` 16:00
-- **Although**: `grammar-05-complex-compound` 10:45
-- **An itchy rash**: `vocabulary-03-collocations-2` 75:35
-- **Apostrophe**: `grammar-07-punctuation` 51:37
-- **Apostrophes**: `grammar-07-punctuation` 51:28
+- **Adjective endings**: `vocabulary-01-word-forms` 15:39
+- **Adjectives and nouns**: `vocabulary-01-word-forms` 26:32
+- **Administer**: `vocabulary-02-collocations` 16:03
+- **Although**: `grammar-05-complex-compound` 10:50
+- **An itchy rash**: `vocabulary-03-collocations-2` 75:38
+- **Apostrophe**: `grammar-07-punctuation` 51:50
+- **Apostrophes**: `grammar-07-punctuation` 51:42
 - **Appositive structure**: `grammar-06-clause` 11:52
-- **article**: `grammar-02-verb-use` 51:31
+- **article**: `grammar-02-verb-use` 51:42
 - **Articles**: `grammar-04-articles` 2:00; `grammar-08-paraphrasing` 11:22
-- **Avoid a series of short sentences**: `vocabulary-01-word-forms` 58:01
-- **Avoid sentences that are too long**: `vocabulary-01-word-forms` 68:58
-- **Be verb plus past participle**: `grammar-01-verb-tenses` 81:54
+- **Avoid a series of short sentences**: `vocabulary-01-word-forms` 58:27
+- **Avoid sentences that are too long**: `vocabulary-01-word-forms` 69:24
+- **Be verb plus past participle**: `grammar-01-verb-tenses` 81:55
 - **been**: `grammar-01-verb-tenses` 14:41
 - **Before he quit**: `grammar-01-verb-tenses` 45:34
 - **Before you listen**: `listening-03-part-b` 5:03
 - **Before you listen: ninety seconds**: `listening-04-part-c` 5:21
-- **Brackets**: `grammar-07-punctuation` 75:30
-- **Brackets, quotation marks, slashes and dashes**: `grammar-07-punctuation` 64:56
-- **By monitoring your symptoms**: `vocabulary-02-collocations` 31:24
-- **c/o**: `grammar-03-nominalization` 15:22
-- **Capital letters**: `grammar-07-punctuation` 60:13
-- **Case notes**: `grammar-01-verb-tenses` 106:13
+- **Brackets**: `grammar-07-punctuation` 75:55
+- **Brackets, quotation marks, slashes and dashes**: `grammar-07-punctuation` 65:21
+- **By monitoring your symptoms**: `vocabulary-02-collocations` 31:28
+- **c/o**: `grammar-03-nominalization` 15:24
+- **Capital letters**: `grammar-07-punctuation` 60:31
+- **Case notes**: `grammar-01-verb-tenses` 106:11
 - **Case notes and the Writing Task**: `writing-01-overview` 13:47
-- **Case notes: error correction**: `grammar-01-verb-tenses` 106:03
-- **Case-note abbreviations**: `grammar-07-punctuation` 73:12
+- **Case notes: error correction**: `grammar-01-verb-tenses` 106:02
+- **Case-note abbreviations**: `grammar-07-punctuation` 73:36
 - **Choosing the right word form**: `vocabulary-01-word-forms` 2:25
 - **choosing the tense**: `grammar-02-verb-use` 8:36
 - **Chunking**: `reading-02-part-a` 18:43
 - **Clause**: `grammar-05-complex-compound` 3:57
 - **Closing sentence**: `writing-01-overview` 16:58
 - **Collocation**: `vocabulary-02-collocations` 1:35
-- **Collocations in a letter**: `vocabulary-03-collocations-2` 60:38
-- **Colon (:)**: `grammar-07-punctuation` 47:10
-- **Combine**: `grammar-08-paraphrasing` 23:26
-- **Comma splice**: `grammar-07-punctuation` 19:55
+- **Collocations in a letter**: `vocabulary-03-collocations-2` 60:41
+- **Colon (:)**: `grammar-07-punctuation` 47:21
+- **Combine**: `grammar-08-paraphrasing` 23:28
+- **Comma splice**: `grammar-07-punctuation` 19:56
 - **commas**: `grammar-07-punctuation` 2:35
 - **Commas: overview**: `grammar-07-punctuation` 2:35
-- **Common descriptions**: `vocabulary-03-collocations-2` 33:23
-- **Common mistakes**: `grammar-07-punctuation` 37:48
+- **Common descriptions**: `vocabulary-03-collocations-2` 33:24
+- **Common mistakes**: `grammar-07-punctuation` 37:54
 - **complex sentence**: `grammar-05-complex-compound` 2:13; `grammar-07-punctuation` 5:44; `grammar-08-paraphrasing` 7:40
 - **Complex sentences**: `grammar-07-punctuation` 5:39
-- **Compliant with**: `grammar-08-paraphrasing` 29:36
-- **Compound or complex?**: `grammar-05-complex-compound` 20:39
-- **Compound sentence**: `grammar-01-verb-tenses` 111:42; `grammar-05-complex-compound` 20:39; `grammar-08-paraphrasing` 7:33
+- **Compliant with**: `grammar-08-paraphrasing` 29:38
+- **Compound or complex?**: `grammar-05-complex-compound` 20:47
+- **Compound sentence**: `grammar-01-verb-tenses` 111:41; `grammar-05-complex-compound` 20:47; `grammar-08-paraphrasing` 7:33
 - **Compound sentences**: `grammar-07-punctuation` 13:27
 - **Comprehension**: `reading-04-part-c` 2:05
-- **Conditional clause**: `grammar-05-complex-compound` 33:10
-- **Conjunction**: `grammar-05-complex-compound` 7:55
+- **Conditional clause**: `grammar-05-complex-compound` 33:22
+- **Conjunction**: `grammar-05-complex-compound` 8:00
 - **Conjunctive adverb**: `grammar-07-punctuation` 18:09
 - **Connectives**: `grammar-02-verb-use` 22:00
 - **Continuous**: `grammar-01-verb-tenses` 2:45
 - **Continuous tense**: `grammar-01-verb-tenses` 26:28
 - **continuous tenses**: `grammar-01-verb-tenses` 25:49
-- **Contraction**: `grammar-07-punctuation` 53:24
+- **Contraction**: `grammar-07-punctuation` 53:40
 - **Contrast**: `listening-04-part-c` 8:29
-- **Coordinating conjunction**: `grammar-05-complex-compound` 20:59
+- **Coordinating conjunction**: `grammar-05-complex-compound` 21:08
 - **Core skills**: `reading-03-part-b` 7:47
-- **Correct the sentences**: `grammar-05-complex-compound` 46:22
+- **Correct the sentences**: `grammar-05-complex-compound` 46:43
 - **Countable and uncountable nouns**: `grammar-04-articles` 8:20
 - **Countable noun**: `grammar-02-verb-use` 13:31; `grammar-04-articles` 15:21
 - **Countable nouns: non-specific**: `grammar-04-articles` 14:55
 - **Critical thinking**: `reading-04-part-c` 8:39
-- **Dangling participle**: `grammar-06-clause` 32:44
-- **Dates, times and units**: `grammar-07-punctuation` 69:17
-- **deal with**: `vocabulary-03-collocations-2` 25:49
+- **Dangling participle**: `grammar-06-clause` 32:54
+- **Dates, times and units**: `grammar-07-punctuation` 69:41
+- **deal with**: `vocabulary-03-collocations-2` 25:50
 - **Decision**: `grammar-01-verb-tenses` 24:42
 - **Defining and non-defining**: `grammar-06-clause` 9:39
 - **defining and non-defining relative clauses**: `grammar-06-clause` 9:39
-- **defining relative clause**: `vocabulary-01-word-forms` 59:16
-- **Denominalisation**: `grammar-03-nominalization` 45:27
+- **defining relative clause**: `vocabulary-01-word-forms` 59:42
+- **Denominalisation**: `grammar-03-nominalization` 45:38
 - **Dependent clause**: `grammar-05-complex-compound` 4:34; `grammar-07-punctuation` 6:45
-- **dis-**: `vocabulary-01-word-forms` 63:33
-- **do a quick check**: `vocabulary-03-collocations-2` 50:02
-- **DO tunnel**: `grammar-08-paraphrasing` 41:24
+- **dis-**: `vocabulary-01-word-forms` 63:59
+- **do a quick check**: `vocabulary-03-collocations-2` 50:05
+- **DO tunnel**: `grammar-08-paraphrasing` 41:26
 - **Dos and don'ts**: `reading-02-part-a` 49:21
-- **Due to**: `grammar-05-complex-compound` 10:52; `grammar-07-punctuation` 10:13
-- **Due to, despite, as well as**: `grammar-05-complex-compound` 39:01
-- **e.g**: `grammar-07-punctuation` 67:16
+- **Due to**: `grammar-05-complex-compound` 10:58; `grammar-07-punctuation` 10:13
+- **Due to, despite, as well as**: `grammar-05-complex-compound` 39:17
+- **e.g**: `grammar-07-punctuation` 67:40
 - **Emphasis**: `listening-04-part-c` 8:56
-- **Exercise regime**: `vocabulary-03-collocations-2` 71:35
+- **Exercise regime**: `vocabulary-03-collocations-2` 71:38
 - **Expand**: `grammar-08-paraphrasing` 2:39
-- **Expressing reason with 'given'**: `grammar-06-clause` 45:35
-- **FANBOYS**: `grammar-05-complex-compound` 21:08; `grammar-07-punctuation` 13:55
+- **Expressing reason with 'given'**: `grammar-06-clause` 45:45
+- **FANBOYS**: `grammar-05-complex-compound` 21:16; `grammar-07-punctuation` 13:55
 - **Fast reading**: `reading-01-overview` 13:36
-- **Final practice**: `grammar-07-punctuation` 76:41
-- **Follow-up**: `grammar-07-punctuation` 81:08
+- **Final practice**: `grammar-07-punctuation` 77:05
+- **Follow-up**: `grammar-07-punctuation` 81:34
 - **For and since**: `grammar-01-verb-tenses` 36:24
-- **Formal time-related expressions**: `grammar-03-nominalization` 36:20
+- **Formal time-related expressions**: `grammar-03-nominalization` 36:27
 - **Four steps towards success**: `reading-01-overview` 15:14
-- **From case notes to a sentence**: `grammar-05-complex-compound` 8:46
-- **From case notes to one word**: `grammar-04-articles` 55:46
+- **From case notes to a sentence**: `grammar-05-complex-compound` 8:51
+- **From case notes to one word**: `grammar-04-articles` 55:47
 - **From what you hear to the notes**: `listening-02-part-a` 12:25
-- **from which**: `vocabulary-01-word-forms` 51:05
-- **Full stops and sentence boundaries**: `grammar-07-punctuation` 42:50
+- **from which**: `vocabulary-01-word-forms` 51:31
+- **Full stops and sentence boundaries**: `grammar-07-punctuation` 42:56
 - **future perfect**: `grammar-01-verb-tenses` 39:01
 - **future simple**: `grammar-01-verb-tenses` 18:47
-- **Gap fill**: `grammar-05-complex-compound` 28:24
-- **Gap fill: articles**: `grammar-04-articles` 52:50
-- **Gerund**: `grammar-05-complex-compound` 39:36
+- **Gap fill**: `grammar-05-complex-compound` 28:32
+- **Gap fill: articles**: `grammar-04-articles` 52:51
+- **Gerund**: `grammar-05-complex-compound` 39:52
 - **Gist**: `reading-03-part-b` 2:13
-- **given that**: `grammar-06-clause` 47:11
-- **Giving reassurance**: `vocabulary-03-collocations-2` 43:52
+- **given that**: `grammar-06-clause` 47:22
+- **Giving reassurance**: `vocabulary-03-collocations-2` 43:53
 - **Had smoked**: `grammar-01-verb-tenses` 49:09
 - **Has been scheduled**: `grammar-01-verb-tenses` 89:24
 - **has not eased**: `vocabulary-03-collocations-2` 27:29
@@ -8150,147 +8150,147 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **How to improve your listening**: `listening-01-overview` 10:12
 - **How to practise**: `listening-02-part-a` 14:12
 - **How verb + noun collocations are formed**: `vocabulary-02-collocations` 6:10
-- **However**: `grammar-08-paraphrasing` 29:08
-- **HTN**: `grammar-02-verb-use` 17:54
-- **Hyphen**: `grammar-07-punctuation` 56:08
-- **Hyphens and numbers**: `grammar-07-punctuation` 55:56
-- **i.e**: `grammar-07-punctuation` 67:30
+- **However**: `grammar-08-paraphrasing` 29:10
+- **HTN**: `grammar-02-verb-use` 17:55
+- **Hyphen**: `grammar-07-punctuation` 56:26
+- **Hyphens and numbers**: `grammar-07-punctuation` 56:15
+- **i.e**: `grammar-07-punctuation` 67:54
 - **ICU**: `vocabulary-03-collocations-2` 9:50
 - **Indefinite article**: `grammar-04-articles` 9:10
 - **Independent clause**: `grammar-05-complex-compound` 4:15; `grammar-07-punctuation` 7:00
 - **Infinitive**: `grammar-01-verb-tenses` 6:43
-- **Initially**: `grammar-08-paraphrasing` 46:24
-- **instead of which**: `vocabulary-01-word-forms` 53:55
-- **Instructions and advice**: `vocabulary-03-collocations-2` 52:38
+- **Initially**: `grammar-08-paraphrasing` 46:29
+- **instead of which**: `vocabulary-01-word-forms` 54:21
+- **Instructions and advice**: `vocabulary-03-collocations-2` 52:41
 - **interview**: `listening-05-part-c-2` 4:40
 - **Introductory phrase**: `grammar-07-punctuation` 21:06
-- **Introductory phrases**: `grammar-07-punctuation` 21:01
-- **Joining sentences with relative pronouns**: `vocabulary-01-word-forms` 36:49
-- **Key points to remember**: `vocabulary-02-collocations` 10:05
+- **Introductory phrases**: `grammar-07-punctuation` 21:02
+- **Joining sentences with relative pronouns**: `vocabulary-01-word-forms` 37:06
+- **Key points to remember**: `vocabulary-02-collocations` 10:08
 - **Key words**: `reading-03-part-b` 10:13
 - **Linking words**: `listening-05-part-c-2` 2:52
-- **Lists and series**: `grammar-07-punctuation` 24:25
+- **Lists and series**: `grammar-07-punctuation` 24:26
 - **Main clause**: `reading-04-part-c` 18:06
-- **Main clause (independent clause)**: `grammar-07-punctuation` 21:47
+- **Main clause (independent clause)**: `grammar-07-punctuation` 21:48
 - **Main point or detail?**: `listening-03-part-b` 3:46
-- **May have been triggered**: `grammar-01-verb-tenses` 116:35
-- **Medical terms: vocabulary and word form**: `vocabulary-01-word-forms` 16:06
-- **Monitor**: `vocabulary-02-collocations` 26:54
+- **May have been triggered**: `grammar-01-verb-tenses` 116:34
+- **Medical terms: vocabulary and word form**: `vocabulary-01-word-forms` 16:09
+- **Monitor**: `vocabulary-02-collocations` 26:57
 - **Multiple choice**: `reading-01-overview` 7:48; `listening-01-overview` 3:38
 - **Multiple choice (3 options)**: `reading-03-part-b` 6:29
-- **neither of which**: `vocabulary-01-word-forms` 54:49
-- **Nominalisation**: `grammar-03-nominalization` 1:57; `grammar-04-articles` 48:46; `grammar-08-paraphrasing` 5:29
-- **Non-defining clause**: `grammar-07-punctuation` 31:36
-- **non-defining relative clause**: `vocabulary-01-word-forms` 60:19
-- **Non-physical complaints**: `grammar-03-nominalization` 18:57
+- **neither of which**: `vocabulary-01-word-forms` 55:14
+- **Nominalisation**: `grammar-03-nominalization` 1:57; `grammar-04-articles` 48:47; `grammar-08-paraphrasing` 5:29
+- **Non-defining clause**: `grammar-07-punctuation` 31:37
+- **non-defining relative clause**: `vocabulary-01-word-forms` 60:45
+- **Non-physical complaints**: `grammar-03-nominalization` 18:58
 - **Non-specific**: `grammar-04-articles` 15:38
-- **Noun endings**: `vocabulary-01-word-forms` 15:21
+- **Noun endings**: `vocabulary-01-word-forms` 15:23
 - **Object**: `grammar-01-verb-tenses` 79:33
-- **Occasionally**: `grammar-01-verb-tenses` 72:06
+- **Occasionally**: `grammar-01-verb-tenses` 72:05
 - **Omit**: `grammar-08-paraphrasing` 6:18
-- **one of which**: `vocabulary-01-word-forms` 57:08
+- **one of which**: `vocabulary-01-word-forms` 57:33
 - **One test for every profession**: `writing-01-overview` 1:31
 - **opinion signals**: `reading-04-part-c` 12:37
-- **Order**: `vocabulary-02-collocations` 52:44
+- **Order**: `vocabulary-02-collocations` 52:53
 - **Paraphrase bridge**: `reading-05-part-c-2` 2:14
 - **paraphrasing**: `grammar-08-paraphrasing` 1:45
 - **Paraphrasing in eight steps**: `grammar-08-paraphrasing` 1:45
 - **Part B: short healthcare workplace texts**: `reading-03-part-b` 4:24
 - **Part C: breakdown**: `reading-04-part-c` 5:53
-- **Participle clause**: `grammar-06-clause` 28:59
-- **Participle clauses**: `grammar-06-clause` 28:57
+- **Participle clause**: `grammar-06-clause` 29:06
+- **Participle clauses**: `grammar-06-clause` 29:03
 - **Parts of an OET letter**: `writing-01-overview` 14:12
-- **Passive**: `grammar-01-verb-tenses` 46:59; `grammar-02-verb-use` 6:16; `grammar-03-nominalization` 5:49; `grammar-05-complex-compound` 22:43; `grammar-06-clause` 36:03; `grammar-07-punctuation` 11:41; `grammar-08-paraphrasing` 4:59; `vocabulary-01-word-forms` 23:25; `vocabulary-02-collocations` 34:40
+- **Passive**: `grammar-01-verb-tenses` 46:59; `grammar-02-verb-use` 6:16; `grammar-03-nominalization` 5:49; `grammar-05-complex-compound` 22:51; `grammar-06-clause` 36:14; `grammar-07-punctuation` 11:41; `grammar-08-paraphrasing` 4:59; `vocabulary-01-word-forms` 23:40; `vocabulary-02-collocations` 34:43
 - **passive forms**: `grammar-01-verb-tenses` 90:23
 - **Passive forms of the verb tenses**: `grammar-01-verb-tenses` 90:23
-- **Passive voice**: `grammar-02-verb-use` 31:45
-- **Passive vs active**: `grammar-02-verb-use` 30:23
-- **Passive vs active form: error correction**: `grammar-01-verb-tenses` 97:10
-- **Past participle**: `grammar-01-verb-tenses` 10:49; `grammar-06-clause` 25:45
+- **Passive voice**: `grammar-02-verb-use` 31:49
+- **Passive vs active**: `grammar-02-verb-use` 30:28
+- **Passive vs active form: error correction**: `grammar-01-verb-tenses` 97:09
+- **Past participle**: `grammar-01-verb-tenses` 10:49; `grammar-06-clause` 25:49
 - **Past perfect**: `grammar-01-verb-tenses` 22:32
 - **past simple**: `grammar-01-verb-tenses` 18:47
-- **Patient friendly language**: `grammar-08-paraphrasing` 46:51
+- **Patient friendly language**: `grammar-08-paraphrasing` 46:57
 - **Perfect**: `grammar-01-verb-tenses` 3:05
 - **Perfect continuous**: `grammar-01-verb-tenses` 3:24
 - **perfect continuous tenses**: `grammar-01-verb-tenses` 40:51
-- **Perfect participle**: `grammar-06-clause` 28:57
+- **Perfect participle**: `grammar-06-clause` 29:03
 - **Perfect tenses**: `grammar-01-verb-tenses` 34:03
 - **Perfect tenses on a timeline**: `grammar-01-verb-tenses` 48:32
-- **Perform**: `vocabulary-02-collocations` 31:44
+- **Perform**: `vocabulary-02-collocations` 31:48
 - **Peripheral vision**: `reading-02-part-a` 18:23
 - **Physical symptoms**: `grammar-03-nominalization` 8:23
 - **Podcasts and talks**: `listening-01-overview` 13:08
 - **Prediction**: `grammar-01-verb-tenses` 23:56
-- **Prescribe**: `vocabulary-02-collocations` 37:31
-- **Present participle**: `grammar-06-clause` 28:57
-- **present perfect**: `grammar-01-verb-tenses` 35:30; `grammar-02-verb-use` 10:49; `grammar-08-paraphrasing` 15:04
-- **present perfect continuous**: `vocabulary-03-collocations-2` 20:40
-- **present perfect passive**: `grammar-02-verb-use` 50:50; `grammar-08-paraphrasing` 48:16
+- **Prescribe**: `vocabulary-02-collocations` 37:34
+- **Present participle**: `grammar-06-clause` 29:03
+- **present perfect**: `grammar-01-verb-tenses` 35:30; `grammar-02-verb-use` 10:49; `grammar-08-paraphrasing` 15:05
+- **present perfect continuous**: `vocabulary-03-collocations-2` 20:42
+- **present perfect passive**: `grammar-02-verb-use` 51:01; `grammar-08-paraphrasing` 48:22
 - **present simple**: `grammar-01-verb-tenses` 18:47
-- **Prior to onset**: `grammar-08-paraphrasing` 38:27
-- **prn and tds**: `grammar-08-paraphrasing` 49:46
-- **Provide**: `vocabulary-02-collocations` 21:19
-- **Punctuation in OET letters**: `grammar-07-punctuation` 35:06
+- **Prior to onset**: `grammar-08-paraphrasing` 38:29
+- **prn and tds**: `grammar-08-paraphrasing` 49:52
+- **Provide**: `vocabulary-02-collocations` 21:22
+- **Punctuation in OET letters**: `grammar-07-punctuation` 35:12
 - **QTA**: `reading-04-part-c` 19:34
 - **Reading Part B: strategies**: `reading-03-part-b` 7:47
 - **Reading Part C: the meaning behind the words**: `reading-04-part-c` 1:40
 - **Reading skills**: `reading-01-overview` 8:44
 - **Reading test format**: `reading-01-overview` 5:48
 - **Reading test overview**: `reading-01-overview` 3:33
-- **Rearrange**: `grammar-08-paraphrasing` 32:09
+- **Rearrange**: `grammar-08-paraphrasing` 32:11
 - **Reduced relative clause**: `grammar-06-clause` 17:10
 - **Reduced relative clauses**: `grammar-06-clause` 17:10
 - **Regular verb**: `grammar-01-verb-tenses` 5:44
-- **Relative clause**: `grammar-05-complex-compound` 16:48; `grammar-06-clause` 2:00; `grammar-07-punctuation` 38:39; `vocabulary-01-word-forms` 38:53
+- **Relative clause**: `grammar-05-complex-compound` 16:54; `grammar-06-clause` 2:00; `grammar-07-punctuation` 38:45; `vocabulary-01-word-forms` 39:10
 - **Relative clauses**: `grammar-06-clause` 2:00
-- **Relative clauses with prepositions**: `vocabulary-01-word-forms` 47:56
-- **Relative pronoun**: `grammar-06-clause` 17:33; `vocabulary-01-word-forms` 38:42
-- **relative pronouns**: `vocabulary-01-word-forms` 36:49
-- **ROM**: `grammar-01-verb-tenses` 117:28
-- **Run-on sentence**: `grammar-07-punctuation` 43:33
+- **Relative clauses with prepositions**: `vocabulary-01-word-forms` 48:21
+- **Relative pronoun**: `grammar-06-clause` 17:33; `vocabulary-01-word-forms` 38:59
+- **relative pronouns**: `vocabulary-01-word-forms` 37:06
+- **ROM**: `grammar-01-verb-tenses` 117:33
+- **Run-on sentence**: `grammar-07-punctuation` 43:44
 - **Scanning**: `reading-02-part-a` 20:43
-- **Schedule**: `vocabulary-02-collocations` 46:59
+- **Schedule**: `vocabulary-02-collocations` 47:08
 - **Scoring the Reading test**: `reading-01-overview` 12:44
 - **Seldom**: `grammar-01-verb-tenses` 71:58
-- **Semi-colon**: `grammar-07-punctuation` 80:06
-- **Semi-colon (;)**: `grammar-07-punctuation` 18:18
-- **Semicolons and colons**: `grammar-07-punctuation` 46:59
-- **Sentence**: `grammar-07-punctuation` 42:59
+- **Semi-colon**: `grammar-07-punctuation` 80:30
+- **Semi-colon (;)**: `grammar-07-punctuation` 18:19
+- **Semicolons and colons**: `grammar-07-punctuation` 47:10
+- **Sentence**: `grammar-07-punctuation` 43:05
 - **Sentence completion**: `reading-01-overview` 7:04; `reading-02-part-a` 50:30
-- **Should be monitored**: `vocabulary-02-collocations` 28:27
+- **Should be monitored**: `vocabulary-02-collocations` 28:30
 - **Signal word**: `grammar-01-verb-tenses` 70:44
 - **Signal words and verb tenses**: `grammar-01-verb-tenses` 70:44
 - **signposts**: `listening-04-part-c` 6:39; `listening-05-part-c-2` 2:40
 - **Signposts and tempting options**: `listening-04-part-c` 6:39
 - **Skim**: `reading-02-part-a` 17:42
 - **Skimming**: `reading-02-part-a` 12:17
-- **Small numbers**: `grammar-07-punctuation` 41:35
+- **Small numbers**: `grammar-07-punctuation` 41:41
 - **so ... that**: `vocabulary-03-collocations-2` 29:32
 - **So far**: `grammar-01-verb-tenses` 75:43
-- **Specific noun**: `grammar-04-articles` 30:22
+- **Specific noun**: `grammar-04-articles` 30:21
 - **Specific nouns**: `grammar-04-articles` 29:38
-- **Spot the correct sentence**: `grammar-04-articles` 42:41
-- **Stat dose**: `grammar-04-articles` 58:34
+- **Spot the correct sentence**: `grammar-04-articles` 42:42
+- **Stat dose**: `grammar-04-articles` 58:35
 - **stative verb**: `grammar-01-verb-tenses` 67:52
 - **Steps towards successful writing**: `writing-01-overview` 3:01
 - **Strategies for Part A**: `listening-02-part-a` 2:25
-- **Subject**: `grammar-01-verb-tenses` 79:27; `grammar-02-verb-use` 36:47; `grammar-08-paraphrasing` 9:53
+- **Subject**: `grammar-01-verb-tenses` 79:28; `grammar-02-verb-use` 36:52; `grammar-08-paraphrasing` 9:53
 - **Subject and verb**: `grammar-01-verb-tenses` 5:15
-- **Subordinate clause**: `grammar-05-complex-compound` 7:36
-- **Subordinating conjunction**: `grammar-05-complex-compound` 24:42
-- **Subordinating conjunctions**: `grammar-05-complex-compound` 13:30
-- **Subsequently**: `grammar-08-paraphrasing` 45:06
-- **suggestive of**: `grammar-03-nominalization` 11:16
-- **Swollen**: `grammar-05-complex-compound` 48:29
-- **symptomatic**: `grammar-03-nominalization` 9:09
-- **Synonyms**: `grammar-08-paraphrasing` 39:09
+- **Subordinate clause**: `grammar-05-complex-compound` 7:41
+- **Subordinating conjunction**: `grammar-05-complex-compound` 24:50
+- **Subordinating conjunctions**: `grammar-05-complex-compound` 13:35
+- **Subsequently**: `grammar-08-paraphrasing` 45:10
+- **suggestive of**: `grammar-03-nominalization` 11:18
+- **Swollen**: `grammar-05-complex-compound` 48:51
+- **symptomatic**: `grammar-03-nominalization` 9:08
+- **Synonyms**: `grammar-08-paraphrasing` 39:11
 - **Target score**: `reading-02-part-a` 53:08; `reading-03-part-b` 55:50; `reading-04-part-c` 3:50
 - **Tempting wrong options**: `listening-03-part-b` 9:21
 - **The -ing form**: `grammar-01-verb-tenses` 8:00
 - **The -ing form (present participle)**: `grammar-06-clause` 20:28
 - **The case notes**: `writing-01-overview` 9:46
 - **The Listening test**: `listening-01-overview` 1:12
-- **The other day**: `grammar-01-verb-tenses` 74:37
+- **The other day**: `grammar-01-verb-tenses` 74:36
 - **The Part A format**: `listening-02-part-a` 1:11
 - **The Part B format**: `listening-03-part-b` 1:25
 - **The Part C format**: `listening-04-part-c` 1:27
@@ -8307,9 +8307,9 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Time marker**: `grammar-01-verb-tenses` 31:43; `grammar-02-verb-use` 4:01
 - **Time markers**: `grammar-01-verb-tenses` 12:55
 - **Top tips**: `reading-02-part-a` 17:27
-- **Treat**: `vocabulary-02-collocations` 42:23
-- **Treatment**: `grammar-03-nominalization` 28:03
-- **try to + simple verb**: `vocabulary-03-collocations-2` 58:20
+- **Treat**: `vocabulary-02-collocations` 42:30
+- **Treatment**: `grammar-03-nominalization` 28:09
+- **try to + simple verb**: `vocabulary-03-collocations-2` 58:23
 - **Types of pain**: `vocabulary-03-collocations-2` 10:30
 - **Uncountable nouns: non-specific**: `grammar-04-articles` 21:46
 - **undergo (past: underwent)**: `grammar-04-articles` 23:23
@@ -8324,7 +8324,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Verb tense: error correction**: `grammar-01-verb-tenses` 60:18
 - **Verb tenses**: `grammar-01-verb-tenses` 2:07
 - **Verb tenses: a quick review**: `grammar-02-verb-use` 2:22
-- **Verb use: active or passive**: `grammar-02-verb-use` 34:48
+- **Verb use: active or passive**: `grammar-02-verb-use` 34:52
 - **Verb use: choosing the tense**: `grammar-02-verb-use` 8:36
 - **Vocabulary warm-up: patient history**: `listening-02-part-a` 8:09
 - **What each part tests**: `listening-01-overview` 7:24
@@ -8335,13 +8335,13 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **What Part B tests**: `reading-03-part-b` 1:38
 - **What Part C tests**: `listening-04-part-c` 3:47
 - **What you hear in Part C**: `listening-04-part-c` 2:29
-- **which**: `vocabulary-01-word-forms` 60:10
-- **While**: `grammar-08-paraphrasing` 37:54
+- **which**: `vocabulary-01-word-forms` 60:36
+- **While**: `grammar-08-paraphrasing` 37:56
 - **While you listen: signal words**: `listening-03-part-b` 6:58; `listening-04-part-c` 8:00
-- **who**: `vocabulary-01-word-forms` 59:08
+- **who**: `vocabulary-01-word-forms` 59:34
 - **Who speaks, and a target score**: `listening-02-part-a` 15:40
 - **Will have smoked**: `grammar-01-verb-tenses` 51:40
-- **woke up**: `vocabulary-03-collocations-2` 29:02
+- **woke up**: `vocabulary-03-collocations-2` 29:03
 - **Word bank**: `reading-03-part-b` 57:12
 - **Word count of the letter body**: `writing-01-overview` 8:38
 - **word forms**: `vocabulary-01-word-forms` 2:25
