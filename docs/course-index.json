@@ -48693,8 +48693,11 @@
    "length_s": 1782.618,
    "length": "29:42",
    "bundle_format": "1.22",
-   "status": "built",
-   "approval": null,
+   "status": "approved",
+   "approval": {
+    "by": "Siavash",
+    "on": "2026-10-26 23:34"
+   },
    "source": {
     "folder": "source",
     "recording": "source/video.mp4",
