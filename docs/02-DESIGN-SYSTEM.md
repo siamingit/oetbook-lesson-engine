@@ -11,7 +11,8 @@ This document covers the teaching surface only. Product brand, name,
 domain and logo are not decided and **never appear on lesson screens**.
 
 **Two looks** (owner, 2026-10-26; docs/adr/042-style-c-and-motion.md). Writing 2 and every
-lesson built after it are drawn in **style C, "soft notebook"** (§1a) with its motion (§8g); a
+lesson built after it are drawn in **style C, "soft notebook"** (§1a) with its board layouts (§7j)
+and its motion (§8g), as revised at the owner's review of Writing 2 the same day; a
 lesson is in style C when its `sections.json` says so (`lesson.style` "c"), and a lesson config
 made from 2026-10-26 on is written with it. The 22 lessons published before it keep the look
 they were built in, which the rest of this document describes where style C does not change it;
@@ -31,8 +32,8 @@ are given.
   an AI chat); they are the page's, not the lesson's, and never draw inside
   the frame. Clarified 2026-09-24 (docs/00-PRODUCT.md §1,
   docs/04-LESSON-BUNDLE.md).
-- Background: **the frame ground**: lilac `#f3f0fb` in style C (§1a); white in the lessons built
-  before it.
+- Background: **white**, the header and the board too, in every lesson (style C's lilac ground
+  was dropped at the owner's review of 2026-10-26, §1a, to match the site).
 - Mood: **clinical and precise, and visually rich**. Calm, uncluttered,
   never playful. Colour, badges, cards and timelines are used freely,
   and **colour always carries meaning**: nothing on a board is
@@ -42,39 +43,65 @@ are given.
 ### 1a. Style C, "soft notebook"
 
 The owner's choice of 2026-10-26 (issue #46; ADR 042), for the contents board and every teaching
-board of Writing 2 and every lesson after it. Warm and varied, like the handouts on the site, never
-playful. Pixel values are at a 720 px frame; the stylesheet sets them as shares of the frame (§4):
-16 px is 2.2% of its height, 20 px 2.8%, 24 px 3.3%, 44 px 6.1%. The values live in
-`spike/scripts/style_c.py` (`CSS`), appended to the lesson's own `blocks.css`.
+board of Writing 2 and every lesson after it, **revised the same day after his review of Writing 2**
+(ADR 042, amendment of 2026-10-26 (2)): a white ground, the handouts' colours by meaning, the marker
+behind the words, a lift with a soft neutral shadow and no outline, and board layouts drawn from his
+own slides (§7j). Warm and varied, like the handouts on the site, never playful. Pixel values are at a
+720 px frame; the stylesheet sets them as shares of the frame (§4): 6 px is 0.8% of its height, 16 px
+2.2%, 20 px 2.8%, 24 px 3.3%, 44 px 6.1%. The values live in `spike/scripts/style_c.py` (`CSS`, and the
+colours `RIGHT`, `WRONG`, `GLOSS`, `MARK`, `CRITERIA`), appended to the lesson's own `blocks.css`.
 
 | Role | Value |
 |---|---|
-| Frame ground | `#f3f0fb`, soft lilac: the header band and the board |
+| Ground | **white**: the frame, the header band, the board and the controls (no lilac ground, to match the site's theme). Cards and rows are told apart by their soft tints and their spacing |
 | Ink | `#1c1733`; muted `#4a4466` / `#6b6585`; faint `#a49fbc` |
-| Panels and cards | white `#ffffff`, radius 16 to 24 px (rows 16, cards 20, big panels 24), **no borders, no left-border cards** |
-| Marker highlight (key words) | `linear-gradient(transparent 55%, #ffd27a 55%)`: a band under the words; teal `#b8ece4` and blue `#c8dcfa` markers when a sentence has several parts that a table below names (not used yet: they need a mark of their own) |
-| Number badge | a 44 px rounded square (radius 12), a soft tint with its ink, in turn: teal `#d7f0ec`/`#0f766e`, red `#fde5e0`/`#b83b28`, violet `#ece6fb`/`#5b3fc4`, amber `#ffe9c7`/`#8a5300`, blue `#e2eefb`/`#1d5fb4`; the contents board's numbers, a cross or a tick on a sentence, a callout's sign |
-| Column labels | 14 px, bold, letter-spaced capitals; Wrong in `#b83b28`, Accurate or right in `#0f766e` (the label's words decide: `style_c.TONE_WORDS`), and that column's text in the same ink |
-| Wrong text | `#b83b28` on `#fde5e0`; struck through in `#b83b28` as it is named (§8g) |
-| Right text | `#0f766e` on `#d7f0ec` |
-| Gloss, "Meaning", "Word" | a dark card `#1c1733`, white text, an amber chip `#ffd27a` ("Word" on a gloss; the term itself on a definition pill) |
-| Small chips | `#ece6fb` / `#5b3fc4`, radius 10: a note's tag ("The criterion") |
+| Notes | a soft neutral tint `#f3f4f7`, radius 16 to 24 px (rows 16, cards 20, big panels 24), **no borders, no left-border cards** |
+| The board's own sentences (a slide's sentence, a fixed sentence, a letter, case notes) | paper `#f8f4ec` |
+| A table | a **solid header row** in the colour of its section's criterion (ink `#3d3a52` in a section that is not a criterion), **white words** in sentence case; **tinted body rows** in that colour's soft tint |
+| Right or keep | olive `#556b00` on `#eef3d2`, with a tick ✓ (the handouts' "modal" tone) |
+| Wrong or leave out | red `#b42318` on `#fdecea`, with a cross ✕ (the site's danger); struck through in `#b42318` as it is named (§8g) |
+| A word card, "Meaning", "Word", the key word | the handouts' gloss amber: `#8a5300` on `#fdf0d5`; a small "Word" chip in `#8a5300` with white words |
+| Marker highlight (key words) | a light amber band `#ffe19c` behind the lower 38% of the line, `linear-gradient(transparent 62%, #ffe19c 62%)`, multiplied with the words so the letters stay as dark as they are (§8) |
+| The six criteria | each its own colour and its monogram in a circle, as on the owner's slides (table below) |
+| Number badge | a 44 px circle: on the contents board a criterion's number in its colour with white words, the others in ink on white; a cross or a tick in the red or the olive |
+| Small chips | a note's tag on `#e6e5ee` in muted ink; the criterion's tag on white in the criterion's colour |
 | Type | IBM Plex Sans (the site's font), 400 to 700: titles and badges 700, terms and labels 600 or 700, text 400 |
-| Shadow | only on the active element (a lifted row or block, §8g): `0 10px 30px rgba(91,63,196,0.18)`, with a lilac outline `#c9bdf5` |
+| Lift | only on the active element (a row, a tile, a card or a block being taught, §8g): a soft neutral shadow `0 6px 20px rgba(20,32,31,0.12)` and a very small scale (0.4% for a full-width row, 1 to 2% for a tile, card or contents item), inside the table's or the board's edges; **no outline**. A lifted row lifts as one row: its cells keep their own tints, nothing is repainted |
 
-**Colour still carries meaning** (§5): teal = right or keep, red = wrong or leave out, amber = the
-key word or the request, blue = the problem, violet = a label. A cross or a tick still goes with
-every wrong or right sentence (colour is never the only signal). A callout's warning takes the red
-badge, a key rule the amber one.
+**The six criteria's colours** (used the same way everywhere in a lesson: the criterion's card, its
+section's tables and tints, its contents item, its tile; the monogram is the non-colour signal):
+
+| Criterion | Monogram | Ink / soft tint | From |
+|---|---|---|---|
+| Purpose | P | `#1d5fb4` / `#e2eefb` | the handouts' blue ("past") |
+| Content | C | `#be185d` / `#fce7f1` | the site's rose |
+| Conciseness and Clarity | C&C | `#0f766e` / `#d7f0ec` | the handouts' teal ("teach") |
+| Genre and Style | G&S | `#9d1f8f` / `#fbe7f6` | the handouts' magenta ("prog") |
+| Organisation and Layout | O&L | `#0e4a55` / `#dcecef` | the site's band teal |
+| Language | L | `#5b3fc4` / `#ece6fb` | the handouts' violet ("test") |
+
+Chosen by measured difference (CIEDE2000), as the word classes were (§7c): the six that differ most
+from each other (15.7 or more) and at least 20 from right, wrong and the gloss amber. The handouts'
+"practice" red (4.1 from wrong), "pf" brown (8.5 from the gloss amber) and the site's success green
+(15.1 from the olive of right) are not used. A section is a criterion's when its title is the
+criterion's name (`style_c.CRITERIA`); a term box labelled "The criterion" in it is drawn as the
+criterion's card.
+
+**Colour still carries meaning** (§5): olive = right or keep, red = wrong or leave out, amber = a
+word card or the key word, and each criterion its own colour. A cross or a tick still goes with every
+wrong or right sentence (colour is never the only signal). A callout's warning takes the red badge, a
+key rule the amber one.
+
+**Right no longer collides** (the open item of ADR 042, settled at the owner's review): the olive of
+right is 26.8 from the adjective's word-class teal, 26.2 from the "up to now" tense teal and 21.3 from
+its accent (§7c asks 20). What remains: the teal of Conciseness and Clarity is 1.8 from the adjective
+teal and 17.2 from the "up to now" teal, so the structural check fails a lesson that draws the
+criteria's colours together with an adjective or adverb word mark or tense colours.
 
 **What stays**: the 16:9 frame, its bands and margins; one board per topic, several per section; the
 section title alone in the header; the board style's kinds of content (§7c) and their flows; every
 size as a share of the frame, with its floors; nothing moves a word, every block fits, nothing over
 anything (§8a, §8b, §8d).
-
-**Open** (ADR 042): style C's teal of right is 1.8 (CIEDE2000) from the adjective's word-class teal
-and 17.2 from the tense teal of "up to now" (§7c asks 20). Until the owner chooses other colours, the
-structural check fails a style C lesson that draws an adjective or adverb word mark or tense colours.
 
 ### Vertical division
 
@@ -302,9 +329,10 @@ headers, never on error or answer rows, and **only in a tense lesson**
 - **Two weights only:** regular and medium. Never heavy. Style C: 400 to 700 (§1a).
 - **Sentence case** everywhere. Every block, and every side of a
   comparison, starts with a capital.
-- Style C: a table's column labels are letter-spaced capitals, drawn so by the stylesheet; their
-  words stay in sentence case in the data, and the overflow check checks the words only (ADR 042).
-  Every other label stays in sentence case.
+- Style C: a table's column labels were letter-spaced capitals until the owner's review of
+  2026-10-26; since then they are white words in sentence case on the solid header row (§1a), as
+  every other label. The overflow check still checks their words only where a stylesheet draws them
+  in capitals (ADR 042).
 - Small labels are in sentence case, never in capitals (2026-09-25; §7c). A
   label written in capitals is put in sentence case when parsed (acronyms
   kept), the screens audit fails one that is not, and the overflow check fails
@@ -985,6 +1013,55 @@ form in the reading time.
   round button beside the speaker button, white with a blue edge and three bars,
   that plays the sentence of the recording the word is said in (never by itself).
 
+### 7j. Board layouts (style C)
+
+Decided by the owner at his review of Writing 2 on 2026-10-26 (ADR 042, amendment (2)): the boards
+are laid out with the imagination of his own decks, a visual in place of a plain table wherever the
+content allows. **For each board, look at the matching slide of the lesson's own deck and carry its
+visual idea over** in style C (never its decoration, never official OET content). Use a table only
+where a table really is the clearest form; then it is drawn as the handouts draw one (§1a: a solid
+header row in the section's colour, white words, tinted rows).
+
+A layout is presentation only: it never changes a block's words, their order, an id, a cue, a state
+or the narration (§7c, "Presentation only"). It is named per block in the lesson's
+`analysis/sections.json`, `block_layouts` (`{"<bundle block id>": "<layout>"}`, the bundle's block ids,
+as `boards_fit` names boards), and drawn by `style_c.layout_html` as classes and attributes on the
+block's html (`lay lay-<layout>`, `data-crit`, `data-label`, `data-bin`, empty decorative elements),
+styled by the lesson's `blocks.css`. Nothing is added that a reader or a mark could count as a word:
+labels and monograms are attributes the stylesheet draws, dots and lanes are empty elements hidden
+from screen readers. The builder refuses a layout on a block that cannot take it, and a change of
+words (checked). Only the rows and the cells of a table are laid out, never an element that holds
+text directly (a marked phrase would become an item of its own and move, §8a). The table's hooks
+(`data-row`, `data-col`, `data-typed`), its spotlight, its typing, its zoom and its fit work as on any
+table board.
+
+| Layout | For | What the learner sees | First used (Writing 2, the slide it follows) |
+|---|---|---|---|
+| `tiles` | a table of a few items of one kind, each a name and a line | tiles in a grid of three (two for four), each in its own colour with its monogram where it is a criterion; the tile being taught lifts, the others fade | The six criteria (slide 4: six coloured circles) |
+| `scores` | a table of scores: a name, out of how many, how many needed | a scorecard a row, side by side: its points as a bar of dots, those needed filled, and the two numbers large with their labels; "the other five" carries the five criteria's colours | How your letter is scored (slide 5: the yellow card "2/3 for Purpose, 5/7 for all other criteria") |
+| `cards` | a short table read as parallel parts | the rows as cards side by side; a two-column table's first cell is the card's heading, further cells carry their column's label; "Yes" and "No" in a column "In the letter?" as a tick or cross chip | The opening's three parts (slide 6); one note, two readers (slide 9) |
+| `steps` | a two-column table in order: steps, or times | cards left to right joined by arrows; a step's number as a round badge | What you read first (slide 9); the verbs' times, in hospital, today, next (slide 14) |
+| `flow` | a letter's parts or a paragraph plan, top to bottom | the parts one under the other on paper, each named in its margin, a chevron from one to the next | The opening, the next paragraph, the last (slide 7: the chevron down) |
+| `bins` | notes sorted into keep, keep briefly or leave out | three lanes beside each note, Keep, Keep briefly and Leave out; each note's answer is typed into its lane (the lane's room is there from the start, empty, so nothing gives the answer away) | Medical history (slide 13: ticks and crosses beside the lines) |
+| `fix` | a note, a wrong version, the right one | a row a case: the note, the wrong sentence on red with a cross, an arrow, the right one on green with a tick, typed in | Discharge plan, wrong, accurate (slide 11) |
+| `change` | from one form to another | the first form, an arrow, the second | Abbreviations, case notes to letter (slide 17) |
+| `stack` | the parts of a letter, one of them singled out | the parts stacked, the one that counts larger and in the section's colour | What is counted (slide 12: the letter beside "180–200 words") |
+| `notes` | a short list of case notes | a case-notes card on paper, its heading as a tab, a dot a line | Social background (slide 15) |
+| `letter` | a whole letter by its parts | the letter on paper, each part's name in its margin; the zoom brings the line being taught to body size | The whole letter (slide 18) |
+| `checklist` | what is checked and the word for it | tiles, the word for it large in the section's colour | Language: meaning clear, vocabulary precise (slide 19) |
+| `vs` | a comparison of two options (not a change) | the two side by side, numbered 1 and 2 | Two openings (his try-it) |
+
+**The criterion's card.** In a lesson about the OET Writing criteria, each section named after a
+criterion takes the criterion's colour on all its blocks, and its term box "The criterion" is drawn as
+the owner's slides draw a criterion: the monogram in a circle of the criterion's colour beside a pill
+in its tint, the criterion's words in its colour.
+
+Considered and not used in Writing 2: **a letter with notes beside the lines it discusses, with
+arrows** (the owner's example). Notes on a table board go under the table (rule 12, ADR 020); putting
+them beside it needs a new rule of the bundle and of the site's player, and it would narrow the letter,
+which on a phone is already smaller than body size. The zoom brings the line being discussed to body
+size instead, and the spotlight shows which line a note is about.
+
 ## 8. Marks
 
 Clean and re-authored. Never copies of the instructor's ink.
@@ -1005,9 +1082,16 @@ Clean and re-authored. Never copies of the instructor's ink.
 A mark appears shortly **before** the word it belongs to, so the student
 sees it and then hears about it.
 
-**Style C** (ADR 042): a highlight is the marker band of §1a (`#ffd27a` under the lower 42% of the
-line), swept in from left to right over 0.3 s; a strike is `#b83b28`, drawn from left to right over
-0.25 s as the wrong phrase is named (§8g). The other marks keep their blue.
+**Style C** (ADR 042, revised at the owner's review of 2026-10-26): a highlight is the marker band of
+§1a, a light amber `#ffe19c` behind the lower 38% of the line, swept in from left to right over 0.3 s;
+a strike is `#b42318`, drawn from left to right over 0.25 s as the wrong phrase is named (§8g). The
+other marks keep their blue. **The band is drawn behind the letters, never over them**: it is
+multiplied with what is under it, so a letter stays as dark as it is and only its ground takes the
+amber, on any card and in a lifted row. A multiply reaches the words only when nothing between the
+band and the frame makes a group of its own (a positioned element with a z-index, an opacity under 1,
+a transform, a filter): the band of 2026-10-26 sat in a marks layer with a z-index, so it was laid flat
+over the lower part of the glyphs, and the owner saw the words covered. `check_marks.py` fails a style
+C highlight whose band is not multiplied, is in such a group, or is taller than 40% of its line.
 
 ### The pointer follows reading
 
@@ -1250,7 +1334,7 @@ shows the correct state at once.
 |---|---|---|
 | Soft appear | a new block fades in and rises 1.2% of the frame (0.3 s) | its reveal; `blocks.css` |
 | Fade | on a table board, the rows other than the one being taught at half strength | the spotlight (rule 11); `blocks.css` |
-| Lift | the element being discussed grows a little (1.5% for a table row, 2% for a block), takes the shadow and the lilac outline, and settles back when the narration moves on (0.25 s) | a table row: the spotlight; a block: the state's `effects` (bundle 1.22, rule 54) |
+| Lift | the element being discussed takes a soft neutral shadow and grows a very little (0.4% for a full-width row, 1% for a block, 1.5% for a tile or a card, 2% for a contents item), inside the table's or the board's edges, with no outline, and settles back when the narration moves on (0.25 s); a row lifts as one row, its cells keep their tints (owner's review, 2026-10-26) | a table row: the spotlight; a block: the state's `effects` (bundle 1.22, rule 54) |
 | Zoom | the view zooms onto a line of a document while the narration is on it, and back out (0.35 s), at the scale that sets the line at body size, never above 2.2, only as far as every note shown stays in view | the state's `effects` (rule 55) |
 | Strike drawn | a strike is drawn across the wrong phrase from left to right as it is named (0.25 s) | the strike's time (rule 53) |
 | Marker sweep | a highlight sweeps in from left to right (0.3 s) | the highlight's time (rule 53) |
@@ -1299,7 +1383,8 @@ the effects with data (`style_c.effects`), deterministically:
   illustrations, photographs, background images. Style C's marker band and the shadow of the
   active element (§1a) carry meaning: where to look
 - Colours other than the four content colours, the four family colours
-  and the board style's colours (§7c), and in style C its own (§1a)
+  and the board style's colours (§7c), and in style C its own (§1a: the handouts' tones by meaning,
+  the six criteria's colours)
 - Type smaller than the stated proportions
 - Board shorthand. "One moment + since 2010 = clash" is a note to
   oneself, not prose an elementary student reads.

@@ -1,4 +1,5 @@
-"""Style C, "soft notebook": the lesson look the owner chose on 2026-10-26 (ADR 042).
+"""Style C, "soft notebook": the lesson look the owner chose on 2026-10-26 (ADR 042),
+revised after his review of the same day (ADR 042, amendment of 2026-10-26).
 
 A lesson is in style C when its `analysis/sections.json` says so (`lesson.style`
 "c", set by `build_sections.py --style c`). Nothing else turns it on, so every
@@ -11,10 +12,13 @@ What this module holds:
   Every rule keys on the classes and attributes the block html carries and the
   ones every player already sets (`.on`, `.spot`, `tr.focus`, `td.active`,
   `.v-right`, `data-layer` / `data-oa-layer`), plus one class a 1.22 player sets
-  from the bundle (`fx-lift`, rule 54). The site plays the static look with no
-  change of its own.
+  from the bundle (`fx-lift`, rule 54). The site plays the static look, the
+  layouts included, with no change of its own.
 - `tone_html`: a table's column label takes the colour of what it means (Wrong in
-  red, Accurate or Right in teal), as a `data-tone` attribute on its `<th>`.
+  red, Accurate or Right in green), as a `data-tone` attribute on its `<th>`.
+- `layout_html`: the board layouts (docs/02-DESIGN-SYSTEM.md §7j) and the six
+  criteria's colours, as classes and attributes on the block html, with nothing
+  added that a reader or a mark could count as a word.
 - `effects`: when a block is lifted and when the view zooms onto a line of a
   document, from the bundle's own times (docs/02-DESIGN-SYSTEM.md §8g, "Where
   each effect is used"); written into each state as `effects` (bundle 1.22).
@@ -24,6 +28,7 @@ What this module holds:
 
 import base64
 import hashlib
+import html as _html
 import json
 import os
 import re
@@ -55,152 +60,408 @@ def style_of(lesson) -> str | None:
 
 
 # ---------------------------------------------------------------------------
-# The look (issue #46; docs/02-DESIGN-SYSTEM.md §1a). Sizes are shares of the
-# frame's height, as everywhere (§4): the issue's pixels are at a 720 px frame,
-# so 16 px is 2.2cqh, 20 px 2.8cqh, 24 px 3.3cqh, 44 px 6.1cqh, 12 px 1.7cqh,
-# 10 px 1.4cqh. Body text keeps its 3.2% and its floors (§3, §8b).
+# Colour, by meaning (docs/02-DESIGN-SYSTEM.md §1a; the owner's review of
+# 2026-10-26: the handouts' tones). Each pair is the ink and its soft tint.
 # ---------------------------------------------------------------------------
-CSS = """
-/* --- Style C, "soft notebook" (ADR 042; docs/02-DESIGN-SYSTEM.md §1a) --- */
-.frame{--sc-ground:#f3f0fb;--sc-ink:#1c1733;--sc-muted:#4a4466;--sc-muted2:#6b6585;--sc-faint:#a49fbc;
-  --sc-line:#eeeaf7;--sc-amber:#ffd27a;--sc-mk-teal:#b8ece4;--sc-mk-blue:#c8dcfa;
-  --sc-wrong:#b83b28;--sc-wrong-bg:#fde5e0;--sc-right:#0f766e;--sc-right-bg:#d7f0ec;
-  --sc-violet:#5b3fc4;--sc-violet-bg:#ece6fb;--sc-amber-ink:#8a5300;--sc-amber-bg:#ffe9c7;
-  --sc-blue:#1d5fb4;--sc-blue-bg:#e2eefb;--sc-lilac:#c9bdf5;
-  --sc-shadow:0 1.4cqh 4.2cqh rgba(91,63,196,.18);
-  background:var(--sc-ground);color:var(--sc-ink);border-color:#e4def5;
+# right or keep: the handouts' olive green ("modal"), 26.8 (CIEDE2000) from the
+# adjective's word-class teal and 26.2 and 21.3 from the "up to now" tense teals,
+# so it no longer collides with either (the open item of ADR 042)
+RIGHT = ("#556b00", "#eef3d2")
+WRONG = ("#b42318", "#fdecea")           # wrong or leave out: the site's danger
+GLOSS = ("#8a5300", "#fdf0d5")           # a word card, the key word: the handouts' gloss amber
+MARK = "#ffe19c"                          # the marker band, a lighter amber
+# The six OET Writing criteria, each with its own colour and its monogram, as on
+# the owner's slides (a circle with P, C, C&C, G&S, O&L or L). Four are the
+# handouts' tones, two the site's own (its rose and its band teal): the six that
+# differ most from each other (15.7 or more) and at least 20 from right, wrong
+# and the gloss amber.
+CRITERIA = {
+    "Purpose": ("purpose", "P", "#1d5fb4", "#e2eefb"),                    # the handouts' blue ("past")
+    "Content": ("content", "C", "#be185d", "#fce7f1"),                    # the site's rose
+    "Conciseness and Clarity": ("cc", "C&C", "#0f766e", "#d7f0ec"),       # the handouts' teal ("teach")
+    "Genre and Style": ("gs", "G&S", "#9d1f8f", "#fbe7f6"),               # the handouts' magenta ("prog")
+    "Organisation and Layout": ("ol", "O&L", "#0e4a55", "#dcecef"),       # the site's band teal
+    "Language": ("lang", "L", "#5b3fc4", "#ece6fb"),                      # the handouts' violet ("test")
+}
+CRIT_KEY = {name: k for name, (k, *_rest) in CRITERIA.items()}
+CRIT_MONO = {k: m for _n, (k, m, *_r) in CRITERIA.items()}
+CRITERION_LABEL = "The criterion"        # a term box naming its section's criterion
+
+
+def _crit_css() -> str:
+    roots = "".join(f"--k-{k}:{ink};--ks-{k}:{soft};" for k, _m, ink, soft in CRITERIA.values())
+    sets = "\n".join(f'[data-crit="{k}"]{{--k:var(--k-{k});--ks:var(--ks-{k})}}'
+                     for k, *_r in CRITERIA.values())
+    return ".frame{" + roots + "}\n" + sets + "\n"
+
+
+# ---------------------------------------------------------------------------
+# The look (docs/02-DESIGN-SYSTEM.md §1a). Sizes are shares of the frame's
+# height, as everywhere (§4): pixels at a 720 px frame, so 6 px is .8cqh, 16 px
+# 2.2cqh, 20 px 2.8cqh, 24 px 3.3cqh, 44 px 6.1cqh. Body text keeps its 3.2% and
+# its floors (§3, §8b). Rules that hold text never become flex or grid
+# containers of that text (a marked phrase would become an item of its own and
+# move, §8a): only rows (`tr`) and their cells are laid out.
+# ---------------------------------------------------------------------------
+CSS = r"""
+/* --- Style C, "soft notebook" (ADR 042 and its amendment of 2026-10-26;
+   docs/02-DESIGN-SYSTEM.md §1a, §7j) --- */
+.frame{--sc-ink:#1c1733;--sc-muted:#4a4466;--sc-muted2:#6b6585;--sc-faint:#a49fbc;
+  --sc-paper:#f8f4ec;--sc-note:#f3f4f7;--sc-line:#e7e5ee;--sc-mark:""" + MARK + r""";
+  --sc-right:""" + RIGHT[0] + r""";--sc-right-bg:""" + RIGHT[1] + r""";
+  --sc-wrong:""" + WRONG[0] + r""";--sc-wrong-bg:""" + WRONG[1] + r""";
+  --sc-gloss:""" + GLOSS[0] + r""";--sc-gloss-bg:""" + GLOSS[1] + r""";
+  --sc-active:#fff0c4;
+  --sc-shadow:0 .8cqh 2.8cqh rgba(20,32,31,.12);
+  --k:#3d3a52;--ks:#efeef4;
+  background:#fff;color:var(--sc-ink);border-color:#e4e3ea;
   font-family:var(--font-plex,"IBM Plex Sans"),system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-.hdr{background:var(--sc-ground);border-bottom:0;font-weight:700;color:var(--sc-ink)}
-.body{background:var(--sc-ground)}
-.ctl{background:var(--sc-ground);border-top:0;color:var(--sc-muted)}
-.ctl .bar{background:#e4def5}
+""" + _crit_css() + r"""
+.hdr{background:#fff;border-bottom:0;font-weight:700;color:var(--sc-ink)}
+.body{background:#fff}
+.ctl{background:#fff;border-top:0;color:var(--sc-muted)}
+.ctl .bar{background:var(--sc-line)}
 #cam{box-sizing:border-box}
-/* notes and slide sentences: white cards on the ground, no borders, no left bars */
-.plain.role-note,.plain.beside{background:#fff;border:0;border-radius:2.8cqh;padding:1.6cqh 2.4cqw}
-.plain.role-slide{background:#fff;border:0;color:var(--sc-ink);border-radius:3.3cqh;padding:2.2cqh 2.8cqw;
-  font-weight:400;line-height:1.5}
+/* notes on a soft neutral tint; the board's own sentences (its fixed layer, a
+   slide's sentence) on paper; no borders, no left bars */
+.plain.role-note,.plain.beside{background:var(--sc-note);border:0;border-radius:2.8cqh;padding:1.6cqh 2.4cqw}
+.plain.role-slide{background:var(--sc-paper);border:0;
+  color:var(--sc-ink);border-radius:3.3cqh;padding:2.2cqh 2.8cqw;font-weight:400;line-height:1.5}
+.plain.role-note[data-layer="fixed"],.plain.role-note[data-oa-layer="fixed"]{background:var(--sc-paper)}
 .ltitle{font-weight:700;color:var(--sc-ink);letter-spacing:-.005em}
 /* a wrong and a right sentence: the tint and ink of their meaning, the cross or
-   tick kept in a soft square (colour is never the only signal, §5) */
+   tick in a solid round badge (colour is never the only signal, §5) */
 .row{border-left:0;border-radius:2.2cqh;align-items:center}
 .err{background:var(--sc-wrong-bg);color:var(--sc-wrong)}
 .ans{background:var(--sc-right-bg);color:var(--sc-right)}
-.row .verdict{width:4.6cqh;height:4.6cqh;border-radius:1.3cqh;background:#fff;font-weight:700;font-size:2.6cqh}
-.err .verdict{background:#fff;color:var(--sc-wrong)} .ans .verdict{background:#fff;color:var(--sc-right)}
-.row.result{background:#fff;border:0;color:var(--sc-ink);border-radius:2.8cqh}
-.row.result .verdict{background:var(--sc-right-bg);color:var(--sc-right)}
-/* callouts: a white card with a soft badge; a warning in the red of "leave out",
+.row .verdict{width:4.6cqh;height:4.6cqh;border-radius:50%;font-weight:700;font-size:2.5cqh;color:#fff}
+.err .verdict{background:var(--sc-wrong)} .ans .verdict{background:var(--sc-right)}
+.row.result{background:var(--sc-right-bg);border:0;color:var(--sc-ink);border-radius:2.8cqh}
+.row.result .verdict{background:var(--sc-right);color:#fff}
+/* callouts: a note card with a soft badge; a warning in the red of "leave out",
    a key rule in the amber of the key point */
-.callout{background:#fff;border-left:0;border-radius:2.8cqh;color:var(--sc-ink)}
-.callout.warning,.callout.key_rule{background:#fff;color:var(--sc-ink)}
-.badge-c{width:4.6cqh;height:4.6cqh;border-radius:1.3cqh;font-weight:700}
+.callout{background:var(--sc-note);border-left:0;border-radius:2.8cqh;color:var(--sc-ink)}
+.callout.warning,.callout.key_rule{background:var(--sc-note);color:var(--sc-ink)}
+.badge-c{width:4.6cqh;height:4.6cqh;border-radius:50%;font-weight:700}
 .warning .badge-c{background:var(--sc-wrong-bg);color:var(--sc-wrong)}
-.key_rule .badge-c{background:var(--sc-amber-bg);color:var(--sc-amber-ink)}
-/* the definition, "Meaning" and "Word": a dark card, white text, an amber chip */
-.defpill{background:var(--sc-ink);color:#fff;border-radius:2.8cqh;padding:1.3cqh 2.2cqw 1.3cqh 1.3cqh;
-  font-size:2.9cqh;gap:1.6cqw}
-.defpill .defterm{background:var(--sc-amber);color:var(--sc-ink);font-weight:700;border-radius:1.4cqh;
-  padding:.5cqh 1.4cqw}
-.gl{background:var(--sc-ink);color:#fff;border-left:0;border-radius:2.8cqh}
-.gl-txt::before{content:"Word";display:inline-block;background:var(--sc-amber);color:var(--sc-ink);
+.key_rule .badge-c{background:var(--sc-gloss-bg);color:var(--sc-gloss)}
+/* a word card, "Meaning", "Word": the handouts' gloss amber, a small chip */
+.defpill{background:var(--sc-gloss-bg);color:var(--sc-ink);border-radius:2.8cqh;
+  padding:1.3cqh 2.2cqw 1.3cqh 1.3cqh;font-size:2.9cqh;gap:1.6cqw}
+.defpill .defterm{background:var(--sc-gloss);color:#fff;font-weight:700;border-radius:1.4cqh;padding:.5cqh 1.4cqw}
+.gl{background:var(--sc-gloss-bg);color:var(--sc-ink);border-left:0;border-radius:2.8cqh}
+.gl-txt::before{content:"Word";display:inline-block;background:var(--sc-gloss);color:#fff;
   font-size:1.9cqh;line-height:1.3;font-weight:700;border-radius:1.4cqh;padding:.3cqh 1cqw;margin-bottom:.8cqh}
-.gl-w{font-weight:700}
-.gl-m::before,.gl-x::before{color:var(--sc-faint)}
+.gl-w{font-weight:700;color:var(--sc-gloss)}
+.gl-m::before,.gl-x::before{color:#a7783a}
 .gl-pic{background:#fff;border-radius:2cqh;padding:.8cqh;box-sizing:border-box}
-/* a term with its tag: a white card, the tag a small violet chip in sentence case */
-.term.tnote,.term.role-note{background:#fff;border-left:0;border-radius:2.8cqh;color:var(--sc-ink)}
-.term .lbl,.term.tnote .lbl{display:inline-block;background:var(--sc-violet-bg);color:var(--sc-violet);
+/* a term with its tag: a note card, the tag a small neutral chip */
+.term.tnote,.term.role-note{background:var(--sc-note);border-left:0;border-radius:2.8cqh;color:var(--sc-ink)}
+.term .lbl,.term.tnote .lbl{display:inline-block;background:#e6e5ee;color:var(--sc-muted);
   font-size:1.9cqh;line-height:1.3;font-weight:700;letter-spacing:.01em;border-radius:1.4cqh;padding:.3cqh 1cqw;
   margin-bottom:.6cqh}
 .term .t{font-weight:600}
+/* the criterion of the section (a term box "The criterion"): its own colour and
+   its monogram in a circle, as on the owner's slides */
+.defpill.crit{background:var(--ks);padding-left:8.4cqh;min-height:6.2cqh;box-sizing:border-box}
+.defpill.crit .defterm{background:none;color:var(--k);padding:0;border-radius:0}
+.term.crit{background:var(--ks);padding-left:9.4cqh;padding-top:1.2cqh;padding-bottom:1.2cqh;
+  min-height:8cqh;box-sizing:border-box}
+.term.crit .lbl{background:#fff;color:var(--k);margin:0 1cqw .2cqh 0;vertical-align:.15em}
+.term.crit .t{display:inline;color:var(--k);font-weight:700}
+.crit::before{content:attr(data-mono);position:absolute;left:1.3cqh;top:50%;width:5.8cqh;height:5.8cqh;
+  margin-top:-2.9cqh;border-radius:50%;background:var(--k);color:#fff;font-weight:700;font-size:2.6cqh;
+  line-height:5.8cqh;text-align:center;letter-spacing:-.02em}
+.term.crit::before{left:1.8cqh;width:6.2cqh;height:6.2cqh;margin-top:-3.1cqh;line-height:6.2cqh}
+.crit[data-mono-len="3"]::before{font-size:1.9cqh}
 /* change cards */
-.chg{background:#fff;border:0;border-radius:2.8cqh}
+.chg{background:var(--sc-note);border:0;border-radius:2.8cqh}
 .chg .chg-cap{color:var(--sc-muted2);font-weight:600}
+/* the badge is placed in its card; a side note keeps the place the player gives it */
+.crit:not(.beside){position:relative}
 .chg-arrow path{stroke:var(--sc-faint)}
-/* a small table written while teaching: a white card, its column labels in
-   letter-spaced capitals (§6 as amended by ADR 042) */
-.tbl:not(.core){background:#fff;border-radius:2.8cqh;overflow:hidden;padding:.6cqh 0}
-.tbl:not(.core) th{background:transparent;color:var(--sc-muted2);font-size:2.1cqh;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;padding:.8cqh 2cqw}
-.tbl:not(.core) td{border-bottom:0;border-top:1px solid var(--sc-line)}
-/* a slide's table, the board's core: column labels above white row cards on the
-   ground; the spotlight lifts the row being taught and fades the others to half
-   (rule 11 in style C: §7, Tables) */
-.tbl.core,.tbl.core.role-slide{background:transparent;border:0;border-radius:0;overflow:visible}
-.tbl.core table{border-collapse:separate;border-spacing:0 .8cqh}
-.tbl.core th,.tbl.core.role-slide th{background:transparent;color:var(--sc-muted2);border:0;
-  font-size:2.1cqh;line-height:1.25;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  padding:.2cqh 1.6cqw 0;vertical-align:bottom}
-.tbl th[data-tone="wrong"],.tbl.core.role-slide th[data-tone="wrong"]{color:var(--sc-wrong)}
-.tbl th[data-tone="right"],.tbl.core.role-slide th[data-tone="right"]{color:var(--sc-right)}
-.tbl.core td[data-tone="wrong"]{color:var(--sc-wrong)}
-.tbl.core td[data-tone="right"],.tbl.core td[data-tone="right"] .tw{color:var(--sc-right)}
-.tbl.core td{background:#fff;border:0;padding:1cqh 1.6cqw}
-.tbl.core td:first-child{border-radius:2.2cqh 0 0 2.2cqh} .tbl.core td:last-child{border-radius:0 2.2cqh 2.2cqh 0}
-.tbl.core td:only-child{border-radius:2.2cqh}
-.tbl.core tbody tr{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease}
+/* a table: a solid header row in the colour of its section's criterion (ink
+   elsewhere), white words in sentence case, tinted body rows */
+.tbl:not(.core){background:transparent;border-radius:2.2cqh;overflow:hidden;padding:0}
+.tbl:not(.core) table{border-collapse:separate;border-spacing:0}
+.tbl th,.tbl.core th,.tbl.core.role-slide th{background:var(--k);color:#fff;border:0;font-weight:600;
+  text-transform:none;letter-spacing:0;padding:1cqh 1.6cqw;vertical-align:bottom}
+.tbl td,.tbl.core td{background:var(--ks);border:0;border-top:max(1px,.25cqh) solid #fff;padding:1cqh 1.6cqw}
+.tbl th:first-child{border-top-left-radius:2.2cqh} .tbl th:last-child{border-top-right-radius:2.2cqh}
+.tbl tbody tr:last-child td:first-child{border-bottom-left-radius:2.2cqh}
+.tbl tbody tr:last-child td:last-child{border-bottom-right-radius:2.2cqh}
+.tbl th[data-tone="wrong"]::before,.tbl th[data-tone="right"]::before{display:inline-block;width:2.6cqh;
+  height:2.6cqh;margin-right:.8cqw;border-radius:50%;background:#fff;font-size:1.7cqh;line-height:2.6cqh;
+  text-align:center;font-weight:700;vertical-align:.1em}
+.tbl th[data-tone="wrong"]::before{content:"\2715";color:var(--sc-wrong)}
+.tbl th[data-tone="right"]::before{content:"\2713";color:var(--sc-right)}
+.tbl td[data-tone="wrong"]{background:var(--sc-wrong-bg);color:var(--sc-wrong)}
+.tbl td[data-tone="right"],.tbl td[data-tone="right"] .tw{background:var(--sc-right-bg);color:var(--sc-right)}
+/* a slide's table, the board's core: the spotlight fades the rows not being
+   taught to half and lifts the row being taught as one row, with a soft neutral
+   shadow and a very small scale, inside the table's edges (rule 11 in style C) */
+.tbl.core,.tbl.core.role-slide{background:transparent;border:0;border-radius:0;overflow:visible;
+  padding:.6cqh .8cqw}
+.tbl.core table{border-collapse:separate;border-spacing:0}
+.tbl.core tbody tr{transition:transform .25s cubic-bezier(.2,.7,.2,1),filter .25s ease,box-shadow .25s ease,opacity .25s ease}
 .tbl.core.spot tbody tr:not(.focus) td{opacity:.5}
-.tbl.core.spot tbody tr.focus{position:relative;z-index:1;box-shadow:var(--sc-shadow);
-  transform:scale(calc(1 + .015 * var(--sc-motion, 1)))}
-.tbl.core.spot tbody tr.focus td{box-shadow:inset 0 .35cqh 0 var(--sc-lilac),inset 0 -.35cqh 0 var(--sc-lilac)}
-.tbl.core.spot tbody tr.focus td:first-child{box-shadow:inset .35cqh .35cqh 0 var(--sc-lilac),inset 0 -.35cqh 0 var(--sc-lilac)}
-.tbl.core.spot tbody tr.focus td:last-child{box-shadow:inset -.35cqh .35cqh 0 var(--sc-lilac),inset 0 -.35cqh 0 var(--sc-lilac)}
-.tbl.core.spot tbody tr.focus td:only-child{box-shadow:inset 0 0 0 .35cqh var(--sc-lilac)}
-.tbl.core.spot tbody tr.focus td[data-tone="wrong"]{background:var(--sc-wrong-bg)}
-.tbl.core td.active,.tbl.core.spot tbody tr.focus td.active{background:#fff4dc;box-shadow:inset 0 0 0 .3cqh var(--sc-amber)}
-.tbl.core .tw{color:var(--sc-blue)}
+.tbl.core.spot tbody tr.focus{position:relative;z-index:1;filter:drop-shadow(0 .6cqh 1.2cqh rgba(20,32,31,.14));
+  transform:scale(calc(1 + .004 * var(--sc-motion, 1)))}
+.tbl.core td.active,.tbl.core.spot tbody tr.focus td.active{background:var(--sc-active);box-shadow:none}
+.tbl.core .tw{color:var(--sc-ink)}
 .tbl.core td.v-wrong{opacity:.45;color:var(--sc-wrong)}
 .tbl.core td.v-right{background:var(--sc-right-bg)}
-.tbl.core td.v-right::after{background:var(--sc-right);border-radius:.9cqh}
-/* the contents board: every part on one board, in two columns of white rows
+.tbl.core td.v-right::after{background:var(--sc-right);border-radius:50%}
+/* the contents board: every part on one board, in two columns of tinted rows
    beside the board's picture (design system §2, a short list fits on one
-   board); each number a soft square in one of five tints, in turn */
+   board); a criterion's number in its own colour */
 #cam:has(> .blk.citem){padding-left:24cqh;column-gap:1.6cqw;row-gap:1.3cqh}
 #cam:has(> .blk.citem) > .blk.pic{position:absolute;left:0;top:0;margin:0}
-#cam > .blk.citem{flex:0 0 calc(50% - .8cqw);box-sizing:border-box;background:#fff;border-radius:2.2cqh;
+#cam > .blk.citem{flex:0 0 calc(50% - .8cqw);box-sizing:border-box;background:var(--ks);border-radius:2.2cqh;
   padding:1.3cqh 1.4cqw;align-items:center;gap:1.4cqw;line-height:1.3}
-.citem .cnum{width:6.1cqh;height:6.1cqh;border-radius:1.7cqh;font-size:2.6cqh;font-weight:700;margin-top:0;
-  background:var(--sc-violet-bg);color:var(--sc-violet)}
-.citem .cnum[data-n="2"],.citem .cnum[data-n="7"],.citem .cnum[data-n="12"]{background:var(--sc-amber-bg);color:var(--sc-amber-ink)}
-.citem .cnum[data-n="3"],.citem .cnum[data-n="8"],.citem .cnum[data-n="13"]{background:var(--sc-right-bg);color:var(--sc-right)}
-.citem .cnum[data-n="4"],.citem .cnum[data-n="9"],.citem .cnum[data-n="14"]{background:var(--sc-wrong-bg);color:var(--sc-wrong)}
-.citem .cnum[data-n="5"],.citem .cnum[data-n="10"],.citem .cnum[data-n="15"]{background:var(--sc-blue-bg);color:var(--sc-blue)}
+.citem .cnum{width:6.1cqh;height:6.1cqh;border-radius:50%;font-size:2.6cqh;font-weight:700;margin-top:0;
+  background:#fff;color:var(--k)}
+.citem[data-crit] .cnum{background:var(--k);color:#fff}
 .citem .ct{font-weight:600;font-size:3cqh}
 .citem .cs{font-size:2.2cqh;color:var(--sc-muted2)}
 .citem .cs:empty{display:none}
-/* motion (§8g): a new block fades in and rises a little; a lifted block grows
-   a little and takes the shadow and a lilac outline (rule 54, the class
-   fx-lift a 1.22 player sets from the bundle). Every motion is 150 to 400 ms,
-   eased, never bouncy; none under reduced motion. --sc-motion is 0 only in the
+
+/* ---- Board layouts (docs/02-DESIGN-SYSTEM.md §7j): a table read as tiles,
+   scorecards, cards, steps, a flow, bins, a fix, a stack, case notes, changes,
+   a checklist or a letter; a comparison as two options side by side. Only the
+   rows and cells are laid out; the words, their order and every hook
+   (data-row, data-col, data-typed) are the table's own. ---- */
+.tbl.lay table,.tbl.lay thead,.tbl.lay tbody{display:block;width:100%}
+.tbl.lay colgroup{display:none}
+.tbl.lay tr{display:block}
+.tbl.lay td{display:block;border:0;border-radius:0;background:none;padding:0}
+.tbl.lay thead tr{display:block}
+.tbl.core.lay.spot tbody tr:not(.focus) td{opacity:1}
+.tbl.core.lay.spot tbody tr:not(.focus){opacity:.5}
+.tbl.core.lay.spot tbody tr.focus{filter:none;box-shadow:var(--sc-shadow);
+  transform:translateY(calc(-.3cqh * var(--sc-motion, 1))) scale(calc(1 + .004 * var(--sc-motion, 1)))}
+/* a tile, a card or a scorecard has room around it: it grows a little more */
+.tbl.core.lay.spot:is(.lay-tiles,.lay-checklist,.lay-scores,.lay-cards,.lay-steps) tbody tr.focus{
+  transform:translateY(calc(-.3cqh * var(--sc-motion, 1))) scale(calc(1 + .015 * var(--sc-motion, 1)))}
+.tbl.lay td.active,.tbl.core.lay.spot tbody tr.focus td.active{background:var(--sc-active);
+  box-shadow:0 0 0 .7cqh var(--sc-active);border-radius:.6cqh}
+.tbl.lay th:first-child,.tbl.lay th:last-child,.tbl.lay tbody tr:last-child td:first-child,
+.tbl.lay tbody tr:last-child td:last-child{border-radius:0}
+.tbl.lay td::before{display:block}
+/* a caption from the column's label (an attribute, never a word) */
+.tbl.lay td[data-label]::before{content:attr(data-label);font-size:2.1cqh;line-height:1.3;font-weight:600;
+  color:var(--sc-muted2);margin-bottom:.4cqh}
+/* tiles: the six criteria, each its own colour and monogram */
+.tbl.lay.lay-tiles thead,.tbl.lay.lay-checklist thead{display:none}
+.tbl.lay.lay-tiles tbody,.tbl.lay.lay-checklist tbody{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.8cqh 1.4cqw}
+.tbl.lay.lay-tiles.n2 tbody,.tbl.lay.lay-checklist.n2 tbody,.tbl.lay.lay-tiles.n4 tbody{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tbl.lay.lay-tiles tr{background:var(--ks);border-radius:2.8cqh;padding:1.8cqh 1.6cqw 2cqh;position:relative}
+.tbl.lay.lay-tiles td[data-col="0"],.tbl.lay.lay-tiles td:first-child{position:relative;padding-left:7.6cqh;
+  min-height:6.2cqh;font-weight:700;color:var(--k);padding-top:1.1cqh;box-sizing:border-box}
+.tbl.lay.lay-tiles td:first-child::after{content:attr(data-mono);position:absolute;left:0;top:0;width:6.2cqh;
+  height:6.2cqh;border-radius:50%;background:var(--k);color:#fff;font-size:2.6cqh;line-height:6.2cqh;
+  text-align:center;font-weight:700}
+.tbl.lay.lay-tiles td[data-mono-len="3"]::after{font-size:1.9cqh}
+.tbl.lay.lay-tiles td:nth-child(2){margin-top:1cqh;color:var(--sc-ink)}
+.tbl.lay.lay-tiles td::before{content:none}
+/* a checklist: what is checked, then the word for it, large */
+.tbl.lay.lay-checklist tr{background:var(--ks);border-radius:2.8cqh;padding:1.6cqh 1.8cqw}
+.tbl.lay.lay-checklist td:first-child{font-weight:600;color:var(--sc-muted)}
+.tbl.lay.lay-checklist td:nth-child(2){font-size:calc(var(--tf, 3.2cqh) * 1.35);line-height:1.2;font-weight:700;color:var(--k)}
+.tbl.lay.lay-checklist td::before{content:none}
+/* scorecards: one card a row, side by side; its points as a bar of dots, those
+   needed for grade B filled */
+.tbl.lay.lay-scores thead{display:none}
+.tbl.lay.lay-scores tbody{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.8cqh 1.8cqw}
+.tbl.lay.lay-scores tr{display:grid;grid-template-columns:1fr 1fr;column-gap:1.6cqw;row-gap:1.4cqh;
+  background:var(--ks);border-radius:2.8cqh;padding:2cqh 2cqw}
+.tbl.lay.lay-scores td:first-child{grid-column:1 / -1;font-weight:700;color:var(--k)}
+.tbl.lay.lay-scores td:nth-child(n+2){font-size:calc(var(--tf, 3.2cqh) * 1.9);line-height:1.1;font-weight:700;color:var(--k)}
+.tbl.lay.lay-scores td:nth-child(n+2)::before{font-size:2.1cqh;font-weight:600;color:var(--sc-muted2);margin-bottom:.6cqh}
+.tbl .pts{display:flex;flex-wrap:wrap;gap:1cqh;margin-top:1.4cqh}
+.tbl .pts i{display:block;width:3.6cqh;height:3.6cqh;border-radius:50%;box-sizing:border-box;
+  border:.45cqh solid var(--k);background:#fff}
+.tbl .pts i.on{background:var(--k)}
+.tbl .kset{display:flex;gap:.8cqh;margin-top:1cqh}
+.tbl .kset i{display:block;width:2.6cqh;height:2.6cqh;border-radius:.8cqh;background:var(--k)}
+/* cards: the rows side by side; a two-column table's first cell is the card's
+   heading, further cells carry their column's label */
+.tbl.lay.lay-cards thead,.tbl.lay.lay-steps thead{display:none}
+.tbl.lay.lay-cards tbody,.tbl.lay.lay-steps tbody{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.6cqh 1.6cqw}
+.tbl.lay.lay-cards.n2 tbody,.tbl.lay.lay-steps.n2 tbody{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tbl.lay.lay-cards.n4 tbody,.tbl.lay.lay-steps.n4 tbody{grid-template-columns:repeat(4,minmax(0,1fr))}
+.tbl.lay.lay-cards tr,.tbl.lay.lay-steps tr{background:var(--ks);border-radius:2.4cqh;padding:1.6cqh 1.6cqw;position:relative}
+.tbl.lay.lay-cards td:first-child,.tbl.lay.lay-steps td:first-child{font-weight:700;color:var(--k);margin-bottom:.6cqh}
+.tbl.lay.lay-cards td:first-child::before,.tbl.lay.lay-steps td:first-child::before{content:none}
+.tbl.lay.lay-cards td+td{margin-top:.8cqh}
+.tbl.lay.lay-cards td[data-tone]{display:inline-block;font-weight:700;border-radius:1.4cqh;padding:.2cqh 1.2cqw .2cqh .9cqw}
+.tbl.lay.lay-cards td[data-tone]::before{content:none}
+.tbl.lay.lay-cards td[data-tone="right"]{background:var(--sc-right-bg);color:var(--sc-right)}
+.tbl.lay.lay-cards td[data-tone="wrong"]{background:var(--sc-wrong-bg);color:var(--sc-wrong)}
+.tbl.lay.lay-cards td[data-tone].active,.tbl.core.lay.spot.lay-cards tbody tr.focus td[data-tone].active{
+  box-shadow:0 0 0 .5cqh var(--sc-active)}
+.tbl.lay.lay-cards td[data-tone="right"].active{background:var(--sc-right-bg)}
+.tbl.lay.lay-cards td[data-tone="wrong"].active{background:var(--sc-wrong-bg)}
+.tbl.lay.lay-cards td[data-tone="right"]::after{content:" \2713"} .tbl.lay.lay-cards td[data-tone="wrong"]::after{content:" \2715"}
+/* steps: cards joined by arrows, in order */
+.tbl.lay.lay-steps tbody{column-gap:4.6cqh}
+.tbl.lay.lay-steps tr:not(:last-child)::after{content:"";position:absolute;top:50%;right:-3.6cqh;margin-top:-1.3cqh;
+  border-top:1.3cqh solid transparent;border-bottom:1.3cqh solid transparent;border-left:2.2cqh solid var(--k)}
+.tbl.lay.lay-steps td.num{display:inline-block;width:4.6cqh;height:4.6cqh;border-radius:50%;background:var(--k);
+  color:#fff;text-align:center;line-height:4.6cqh;margin-right:1cqw;vertical-align:middle}
+.tbl.lay.lay-steps td.num+td{display:inline;font-weight:600}
+.tbl.lay.lay-steps td+td{color:var(--sc-ink);font-weight:400}
+.tbl.lay.lay-steps td+td::before{content:none}
+/* a flow: a letter's parts or steps one under the other, each with its label as
+   a tab, a chevron from one to the next */
+.tbl.lay.lay-flow thead{display:none}
+.tbl.lay.lay-flow tbody{display:flex;flex-direction:column;gap:1cqh}
+.tbl.lay.lay-flow tr{display:grid;grid-template-columns:16% minmax(0,1fr);column-gap:1.4cqw;
+  background:var(--sc-paper);border-radius:2.2cqh;padding:.8cqh 1.6cqw .8cqh 1cqw;position:relative}
+.tbl.lay.lay-flow td:first-child{align-self:start;justify-self:start;background:var(--ks);color:var(--k);font-weight:700;
+  border-radius:1.2cqh;padding:.1cqh .9cqw}
+.tbl.lay.lay-flow tr:not(:last-child)::after{content:"";position:absolute;left:calc(1cqw + 3.4cqh);bottom:.6cqh;
+  border-left:1.5cqh solid transparent;border-right:1.5cqh solid transparent;border-top:2cqh solid var(--k)}
+.tbl.lay.lay-flow td:first-child::before,.tbl.lay.lay-flow td+td::before{content:none}
+/* bins: keep, keep briefly or leave out; each case note's answer is typed into
+   its lane */
+.tbl.lay.lay-bins thead tr,.tbl.lay.lay-bins tbody tr{display:grid;grid-template-columns:40% 20% 20% 20%;column-gap:0}
+.tbl.lay.lay-bins tbody{display:flex;flex-direction:column;gap:1cqh}
+.tbl.lay.lay-bins th{background:none;color:var(--sc-muted2);padding:.4cqh 1.6cqw;font-size:2.2cqh;border-radius:0}
+.tbl.lay.lay-bins th+th{grid-column:2 / 5;text-align:center}
+.tbl.lay.lay-bins th .lanes{display:grid;grid-template-columns:1fr 1fr 1fr;margin-top:.6cqh}
+.tbl.lay.lay-bins th .lanes i{display:block;font-style:normal;font-weight:700;font-size:2.4cqh;color:var(--sc-right)}
+.tbl.lay.lay-bins th .lanes i::before{content:attr(data-l)}
+.tbl.lay.lay-bins th .lanes i:last-child{color:var(--sc-wrong)}
+.tbl.lay.lay-bins tbody tr{border-radius:2.2cqh;overflow:hidden;
+  background:linear-gradient(90deg,var(--sc-paper) 0 40%,var(--sc-right-bg) 40% 60%,#f6f9e8 60% 80%,var(--sc-wrong-bg) 80%)}
+.tbl.lay.lay-bins td{padding:1.1cqh 1.6cqw}
+.tbl.lay.lay-bins td::before{content:none}
+.tbl.lay.lay-bins td[data-bin]{text-align:center;font-weight:700}
+.tbl.lay.lay-bins td[data-bin="keep"]{grid-column:2;color:var(--sc-right)}
+.tbl.lay.lay-bins td[data-bin="brief"]{grid-column:3;color:var(--sc-right)}
+.tbl.lay.lay-bins td[data-bin="out"]{grid-column:4;color:var(--sc-wrong)}
+.tbl.lay.lay-bins td[data-bin] .tw{color:inherit}
+/* a fix: the case note, the wrong sentence, an arrow, the right one */
+.tbl.lay.lay-fix table{display:table;border-collapse:separate;border-spacing:0 .7cqh}
+.tbl.lay.lay-fix thead{display:table-header-group} .tbl.lay.lay-fix tbody{display:table-row-group}
+.tbl.lay.lay-fix tr,.tbl.lay.lay-fix thead tr{display:table-row} .tbl.lay.lay-fix td{display:table-cell}
+.tbl.lay.lay-fix colgroup{display:table-column-group}
+.tbl.lay.lay-fix th{font-size:2.4cqh;padding:.6cqh 1.4cqw}
+.tbl.lay.lay-fix th:first-child{border-radius:2.2cqh 0 0 2.2cqh} .tbl.lay.lay-fix th:last-child{border-radius:0 2.2cqh 2.2cqh 0}
+.tbl.lay.lay-fix td{padding:.8cqh 1.4cqw;background:var(--ks);vertical-align:middle}
+.tbl.lay.lay-fix td[data-tone="wrong"]{background:var(--sc-wrong-bg)}
+.tbl.lay.lay-fix td[data-tone="right"]{background:var(--sc-right-bg)}
+.tbl.lay.lay-fix td:first-child{border-radius:2.2cqh 0 0 2.2cqh;font-weight:600;color:var(--k)}
+.tbl.lay.lay-fix td:last-child{border-radius:0 2.2cqh 2.2cqh 0}
+.tbl.lay.lay-fix td[data-tone="wrong"]{position:relative}
+.tbl.lay.lay-fix td[data-tone="wrong"]::after{content:"";position:absolute;right:-.9cqh;top:50%;margin-top:-1.1cqh;
+  z-index:1;border-top:1.1cqh solid transparent;border-bottom:1.1cqh solid transparent;
+  border-left:1.6cqh solid var(--sc-right)}
+.tbl.lay.lay-fix td::before{content:none}
+.tbl.core.lay.lay-fix.spot tbody tr.focus{filter:drop-shadow(0 .6cqh 1.2cqh rgba(20,32,31,.14));box-shadow:none;
+  transform:scale(calc(1 + .004 * var(--sc-motion, 1)))}
+/* changes: from the case notes to the letter, an arrow between */
+.tbl.lay.lay-change table{display:table;border-collapse:separate;border-spacing:0 .7cqh}
+.tbl.lay.lay-change thead{display:table-header-group} .tbl.lay.lay-change tbody{display:table-row-group}
+.tbl.lay.lay-change tr,.tbl.lay.lay-change thead tr{display:table-row} .tbl.lay.lay-change td{display:table-cell}
+.tbl.lay.lay-change colgroup{display:table-column-group}
+.tbl.lay.lay-change th{background:none;color:var(--k);font-size:2.2cqh;padding:0 1.6cqw}
+.tbl.lay.lay-change td{padding:.8cqh 1.4cqw;background:var(--ks);vertical-align:middle}
+.tbl.lay.lay-change td:first-child{border-radius:2.2cqh 0 0 2.2cqh;font-weight:700;color:var(--k);position:relative;
+  padding-right:4cqh}
+.tbl.lay.lay-change td:first-child::after{content:"";position:absolute;right:1.2cqh;top:50%;margin-top:-1.2cqh;
+  border-top:1.2cqh solid transparent;border-bottom:1.2cqh solid transparent;border-left:1.8cqh solid var(--k)}
+.tbl.lay.lay-change td:last-child{border-radius:0 2.2cqh 2.2cqh 0;background:#fff;box-shadow:inset 0 0 0 .35cqh var(--ks)}
+.tbl.lay.lay-change td::before{content:none}
+/* a stack: the parts of a letter top to bottom, the counted part taller */
+.tbl.lay.lay-stack thead{display:none}
+.tbl.lay.lay-stack tbody{display:flex;flex-direction:column;gap:1cqh}
+.tbl.lay.lay-stack tr{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:2cqw;
+  background:var(--sc-note);border-radius:2.2cqh;padding:1cqh 1.8cqw}
+.tbl.lay.lay-stack tr[data-yes]{background:var(--ks);padding-top:2.6cqh;padding-bottom:2.6cqh}
+.tbl.lay.lay-stack td::before{content:none}
+.tbl.lay.lay-stack td+td{font-weight:700;border-radius:1.4cqh;padding:.3cqh 1.4cqw;background:#fff;color:var(--sc-muted2)}
+.tbl.lay.lay-stack tr[data-yes] td+td{background:var(--k);color:#fff}
+.tbl.lay.lay-stack td+td.active,.tbl.core.lay.spot.lay-stack tbody tr.focus td+td.active{background:#fff;
+  box-shadow:0 0 0 .5cqh var(--sc-active);border-radius:1.4cqh}
+.tbl.lay.lay-stack tr[data-yes] td+td.active,.tbl.core.lay.spot.lay-stack tbody tr[data-yes].focus td+td.active{
+  background:var(--k)}
+/* case notes: a card on paper, its heading as a tab, a line a note */
+.tbl.lay.lay-notes{background:var(--sc-paper);padding:1.4cqh 2cqw 1.6cqh;border-radius:2.4cqh}
+.tbl.lay.lay-notes th{display:inline-block;background:var(--ks);color:var(--k);font-size:2.2cqh;padding:.2cqh 1cqw;
+  border-radius:1.2cqh;margin-bottom:.6cqh}
+.tbl.lay.lay-notes td{position:relative;padding:.25cqh 0 .25cqh 2.6cqh}
+.tbl.lay.lay-notes td::before{content:"";position:absolute;left:.4cqh;top:50%;width:1cqh;height:1cqh;margin-top:-.5cqh;
+  border-radius:50%;background:var(--k)}
+/* a letter: the whole letter on paper, each part's name a tab in its margin */
+.tbl.lay.lay-letter{background:var(--sc-paper);border-radius:2.4cqh;padding:1.2cqh 1.4cqw}
+.tbl.lay.lay-letter table{display:table;border-collapse:separate;border-spacing:0 .5cqh}
+.tbl.lay.lay-letter thead{display:table-header-group} .tbl.lay.lay-letter tbody{display:table-row-group}
+.tbl.lay.lay-letter tr,.tbl.lay.lay-letter thead tr{display:table-row} .tbl.lay.lay-letter td{display:table-cell}
+.tbl.lay.lay-letter colgroup{display:table-column-group}
+.tbl.lay.lay-letter th{background:none;color:var(--sc-muted2);padding:0 1.2cqw .4cqh}
+.tbl.lay.lay-letter td{padding:.6cqh 1.2cqw;background:none}
+.tbl.lay.lay-letter td:first-child{color:var(--k);font-weight:600}
+.tbl.lay.lay-letter td::before{content:none}
+.tbl.core.lay.lay-letter.spot tbody tr.focus{filter:drop-shadow(0 .5cqh 1cqh rgba(20,32,31,.14));box-shadow:none;
+  transform:scale(calc(1 + .004 * var(--sc-motion, 1)))}
+.tbl.core.lay.lay-letter.spot tbody tr.focus td{background:#fff}
+.tbl.core.lay.lay-letter.spot tbody tr.focus td:first-child{border-radius:1.4cqh 0 0 1.4cqh}
+.tbl.core.lay.lay-letter.spot tbody tr.focus td:last-child{border-radius:0 1.4cqh 1.4cqh 0}
+/* two options side by side (a comparison that is not a change), numbered */
+.chg.lay-vs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.2cqh 1.6cqw;align-items:stretch;
+  background:none;padding-left:0;padding-right:0}
+.chg.lay-vs .chg-cap{grid-column:1 / -1}
+.chg.lay-vs .chg-arrow{display:none}
+.chg.lay-vs .chg-from,.chg.lay-vs .chg-to{position:relative;display:block;background:var(--ks);border-radius:2.4cqh;
+  padding:1.3cqh 1.6cqw 1.3cqh 6.2cqh;font-weight:500}
+.chg.lay-vs .chg-from::before,.chg.lay-vs .chg-to::before{position:absolute;left:1.4cqh;top:1.3cqh;width:3.8cqh;
+  height:3.8cqh;border-radius:50%;background:var(--k);color:#fff;font-weight:700;font-size:2.2cqh;
+  line-height:3.8cqh;text-align:center}
+.chg.lay-vs .chg-from::before{content:"1"} .chg.lay-vs .chg-to::before{content:"2"}
+
+/* motion (§8g): a new block fades in and rises a little; a lifted block grows a
+   very little and takes the soft neutral shadow (rule 54, the class fx-lift a
+   1.22 player sets from the bundle). Every motion is 150 to 400 ms, eased,
+   never bouncy; none under reduced motion. --sc-motion is 0 only in the
    engine's measuring checks, which measure the board at rest. */
 @keyframes sc-rise{from{opacity:0;transform:translateY(1.2cqh)}to{opacity:1;transform:none}}
 .blk.on:not([data-layer="fixed"]):not([data-oa-layer="fixed"]){animation:sc-rise .3s cubic-bezier(.2,.7,.2,1) backwards}
 .blk{transition:opacity .25s ease,transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease !important}
-.blk.fx-lift{position:relative;z-index:2;transform:scale(calc(1 + .02 * var(--sc-motion, 1)));
-  box-shadow:var(--sc-shadow);outline:.4cqh solid var(--sc-lilac);outline-offset:0}
+.blk.fx-lift{z-index:2;transform:scale(calc(1 + .01 * var(--sc-motion, 1)));
+  box-shadow:var(--sc-shadow)}
+.blk.fx-lift:not(.beside){position:relative}
+.citem.fx-lift{transform:scale(calc(1 + .02 * var(--sc-motion, 1)))}
+.chg.lay-vs.fx-lift{box-shadow:none}
+.chg.lay-vs.fx-lift .chg-from,.chg.lay-vs.fx-lift .chg-to{box-shadow:var(--sc-shadow)}
 @media (prefers-reduced-motion: reduce){
   .blk.on:not([data-layer="fixed"]):not([data-oa-layer="fixed"]){animation:none}
   .blk{transition:opacity .25s ease !important}
-  .blk.fx-lift,.tbl.core.spot tbody tr.focus{transform:none}
+  .blk.fx-lift,.tbl.core.spot tbody tr.focus,.tbl.core.lay.spot tbody tr.focus{transform:none}
   .tbl.core tbody tr{transition:none}
 }
 """
 
-# A column label's meaning, by its words (sentence case in the data; drawn in
-# capitals). Only labels that say right or wrong take a colour (§5).
+# A column label's meaning, by its words (sentence case in the data). Only labels
+# that say right or wrong take a colour (§5).
 TONE_WORDS = {"wrong": ("wrong", "wrong version", "not accurate", "inaccurate", "leave out", "avoid"),
               "right": ("accurate", "right", "correct", "right version", "correct version", "better",
                         "keep")}
+# a cell's own words in a column that says whether a note goes into the letter
+IN_LETTER = ("in the letter?", "in the letter")
+CELL_TONES = {"yes": "right", "keep": "right", "keep, briefly": "right", "keep briefly": "right",
+              "no": "wrong", "leave out": "wrong"}
 TH = re.compile(r"<th>([^<]*)</th>")
 TD = re.compile(r'<td data-col="(\d+)"')
 
 
 def tone_html(html: str) -> str:
     """A table's column labels that say wrong or right take `data-tone`, so the
-    stylesheet draws them in red or teal (issue #46: "Wrong in #b83b28, Accurate /
-    right in #0f766e"); on a core table each cell of that column takes it too
-    (its `data-col`), so the wrong sentences are in the red of "wrong" and the
-    right ones in the teal of "right". No word changes."""
+    stylesheet draws them in red or green with a cross or a tick; on a core table
+    each cell of that column takes it too (its `data-col`), so the wrong
+    sentences are in the red of "wrong" and the right ones in the green of
+    "right". No word changes."""
     if "<th>" not in html:
         return html
     tones = {}
@@ -219,6 +480,194 @@ def tone_html(html: str) -> str:
     if tones:
         html = TD.sub(lambda m: (m.group(0) + f' data-tone="{tones[int(m.group(1))]}"')
                       if int(m.group(1)) in tones else m.group(0), html)
+    return html
+
+
+# ---------------------------------------------------------------------------
+# Board layouts (docs/02-DESIGN-SYSTEM.md §7j): named per block in the lesson's
+# sections.json (`block_layouts`, by bundle block id), drawn by the stylesheet
+# from a class on the block (`lay lay-<name>`) and attributes on its rows and
+# cells. Nothing is added that is a word: labels and monograms are attributes the
+# stylesheet draws, dots and lanes are empty elements, hidden from readers.
+# ---------------------------------------------------------------------------
+LAYOUTS = {
+    # name: (block types, core table only, columns allowed or None)
+    "tiles": (("table",), False, None),
+    "checklist": (("table",), False, (2,)),
+    "scores": (("table",), True, (3,)),
+    "cards": (("table",), False, None),
+    "steps": (("table",), False, (2,)),
+    "flow": (("table",), True, (2,)),
+    "bins": (("table",), True, (2,)),
+    "fix": (("table",), True, (3,)),
+    "change": (("table",), False, (2,)),
+    "stack": (("table",), False, (2,)),
+    "notes": (("table",), False, (1,)),
+    "letter": (("table",), True, (2,)),
+    "vs": (("comparison",), False, None),
+}
+BINS = {"keep": "keep", "keep, briefly": "brief", "keep briefly": "brief", "leave out": "out"}
+BIN_LANES = (("keep", "Keep"), ("brief", "Keep briefly"), ("out", "Leave out"))
+TAGS = re.compile(r"<[^>]+>")
+
+
+def check_layout(bid: str, b: dict, layout: str) -> str | None:
+    """Why a block cannot take a layout, or None when it can."""
+    if layout not in LAYOUTS:
+        return f"{layout!r} is not a layout ({', '.join(LAYOUTS)})"
+    types, core, cols = LAYOUTS[layout]
+    if b.get("type") not in types:
+        return f"{bid} is a {b.get('type')}; the layout {layout!r} is for {', '.join(types)}"
+    if core and not b.get("core"):
+        return f"the layout {layout!r} is for a board's own table, and {bid} is a table written while teaching"
+    if b.get("doc") or b.get("map"):
+        return f"{bid} is a document or a map, drawn as a page"
+    ncol = len(b.get("header") or (b.get("rows") or [[]])[0])
+    if cols and ncol not in cols:
+        return f"the layout {layout!r} is for a table of {' or '.join(map(str, cols))} columns; {bid} has {ncol}"
+    if layout == "bins":
+        bad = [r for r in b.get("rows") or [] if r[1].strip().lower() not in BINS]
+        if bad:
+            return f"bins: a row's answer is not one of {', '.join(BINS)}: {bad[0][1]!r}"
+    if layout == "scores":
+        if any(not (r[1].strip().isdigit() and r[2].strip().isdigit()) for r in b.get("rows") or []):
+            return "scores: each row's second and third cells are numbers (scored out of, needed)"
+    return None
+
+
+def _text(html: str) -> str:
+    return _html.unescape(TAGS.sub("", html))
+
+
+def _add_root(html: str, classes: str = "", attrs: str = "") -> str:
+    """Classes and attributes on the block's own element (its first tag)."""
+    m = re.match(r'<div class="([^"]*)"', html)
+    if not m:
+        return html
+    cls = m.group(1) + ((" " + classes) if classes else "")
+    return '<div class="' + cls + '"' + attrs + html[m.end():]
+
+
+def _crit_attr(key: str) -> str:
+    mono = CRIT_MONO[key]
+    return f' data-crit="{key}" data-mono="{_html.escape(mono)}"' + (
+        f' data-mono-len="{len(mono)}"' if len(mono) >= 3 else "")
+
+
+def _rows_split(body: str) -> list[str]:
+    return re.findall(r"<tr[^>]*>.*?</tr>", body, re.S)
+
+
+def _cells(tr: str) -> list[str]:
+    return re.findall(r"<td[^>]*>.*?</td>", tr, re.S)
+
+
+def _table_html(b: dict, html: str, layout: str) -> str:
+    header = b.get("header") or []
+    rows = b.get("rows") or []
+    core = bool(b.get("core"))
+    # each cell its column's label, for the layouts that show one above it
+    labelled = layout in ("scores",) or (layout == "cards" and len(header) >= 3)
+
+    def cell_attrs(c: int, txt: str) -> str:
+        out = ""
+        if labelled and c >= 1 and c < len(header):
+            out += f' data-label="{_html.escape(header[c], quote=True)}"'
+        return out
+
+    head_m = re.search(r"<thead>.*?</thead>", html, re.S)
+    body_m = re.search(r"<tbody>(.*?)</tbody>", html, re.S)
+    if not body_m:
+        return html
+    trs = _rows_split(body_m.group(1))
+    if len(trs) != len(rows):
+        return html
+    named = {CRIT_KEY.get(r[0].strip()) for r in rows} - {None}
+    new_trs = []
+    for r, (tr, row) in enumerate(zip(trs, rows)):
+        tds = _cells(tr)
+        open_tr = re.match(r"<tr[^>]*", tr).group(0)
+        key = CRIT_KEY.get(row[0].strip()) if row else None
+        if key and layout in ("tiles", "scores", "checklist", "letter"):
+            open_tr += _crit_attr(key)
+        if layout == "stack" and len(row) > 1 and row[1].strip().lower() == "yes":
+            open_tr += ' data-yes=""'
+        new_tds = []
+        for c, (td, txt) in enumerate(zip(tds, row)):
+            m = re.match(r"<td([^>]*)>(.*)</td>$", td, re.S)
+            attrs, inner = m.group(1), m.group(2)
+            attrs += cell_attrs(c, txt)
+            if layout == "tiles" and c == 0 and key:
+                attrs += f' data-mono="{_html.escape(CRIT_MONO[key])}"' + (
+                    ' data-mono-len="3"' if len(CRIT_MONO[key]) >= 3 else "")
+            if layout == "steps" and c == 0 and txt.strip().isdigit():
+                attrs = ' class="num"' + attrs
+            if layout == "bins" and c == 1:
+                attrs += f' data-bin="{BINS[txt.strip().lower()]}"'
+            if layout in ("cards", "stack") and c >= 1 and header and \
+                    header[c].strip().lower() in IN_LETTER and txt.strip().lower() in CELL_TONES:
+                attrs += f' data-tone="{CELL_TONES[txt.strip().lower()]}"'
+            if layout == "scores" and c == 0:
+                total, need = int(row[1]), int(row[2])
+                inner += ('<span class="pts" aria-hidden="true">' + '<i class="on"></i>' * need
+                          + "<i></i>" * max(0, total - need) + "</span>")
+                if not key:
+                    # "each of the other five": the criteria the other rows do not name
+                    others = [k for k, *_r in CRITERIA.values() if k not in named]
+                    if others and len(others) < len(CRITERIA):
+                        inner = inner.replace('<span class="pts"', '<span class="kset" aria-hidden="true">'
+                                              + "".join(f'<i data-crit="{k}"></i>' for k in others)
+                                              + '</span><span class="pts"', 1)
+            new_tds.append(f"<td{attrs}>{inner}</td>")
+        new_trs.append(open_tr + ">" + "".join(new_tds) + "</tr>")
+    html = html[:body_m.start(1)] + "".join(new_trs) + html[body_m.end(1):]
+    if layout == "bins" and head_m:
+        lanes = ('<span class="lanes" aria-hidden="true">'
+                 + "".join(f'<i data-l="{_html.escape(lab)}"></i>' for _k, lab in BIN_LANES) + "</span>")
+        ths = list(re.finditer(r"<th[^>]*>(.*?)</th>", html, re.S))
+        if len(ths) >= 2:
+            t = ths[1]
+            html = html[:t.end(1)] + lanes + html[t.end(1):]
+    n = len(rows)
+    size = " n2" if n in (2,) or (layout in ("tiles", "checklist") and n == 4) else " n4" if n == 4 else ""
+    return _add_root(html, "lay lay-" + layout + size)
+
+
+def layout_html(b: dict, html: str, section_title: str | None, layout: str | None = None) -> str:
+    """A style C block's html with its layout and its criterion's colour:
+
+    - every block of a section named after one of the six criteria takes that
+      criterion (`data-crit`), so its tables, its criterion card and its tints
+      are in that criterion's colour;
+    - a term box "The criterion" becomes the criterion's card: its colour and its
+      monogram (`crit`, `data-mono`);
+    - a contents item named after a criterion takes the criterion's colour;
+    - a block with a `layout` (sections.json `block_layouts`) takes `lay
+      lay-<layout>` and the attributes that layout reads.
+
+    The block's words, their order and its hooks never change (checked)."""
+    before = _text(html)
+    crit = CRIT_KEY.get((section_title or "").strip())
+    t = b.get("type")
+    if t == "picture":
+        return html
+    if t == "contents_item" and CRIT_KEY.get((b.get("text") or "").strip()):
+        html = _add_root(html, attrs=_crit_attr(CRIT_KEY[b["text"].strip()]))
+    elif crit:
+        if t == "term_box" and (b.get("label") or "").strip() == CRITERION_LABEL:
+            html = _add_root(html, "crit", _crit_attr(crit))
+        else:
+            html = _add_root(html, attrs=f' data-crit="{crit}"')
+    if layout:
+        why = check_layout(b.get("id", "?"), b, layout)
+        if why:
+            raise SystemExit("REFUSED: sections.json block_layouts: " + why)
+        if t == "table":
+            html = _table_html(b, html, layout)
+        else:
+            html = _add_root(html, "lay-" + layout)
+    if _text(html) != before:
+        raise SystemExit(f"REFUSED: the layout of {b.get('id')} would change its words")
     return html
 
 
@@ -245,8 +694,8 @@ def _r(x: float) -> float:
 def effects(boards: list[dict], blocks: dict) -> None:
     """Write each state's `effects` (bundle 1.22), in time order:
 
-    lift  a block grows a little, with the shadow and the lilac outline, from
-          `time` to `until` (rule 54):
+    lift  a block grows a very little, with the soft shadow, from `time` to
+          `until` (rule 54):
           - each item of the contents board, from when it is named (its reveal)
             until the next is named; the last until the end of what is said with
             it, at most to its state's end;

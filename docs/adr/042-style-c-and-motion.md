@@ -1,7 +1,8 @@
 # 042 — Style C, "soft notebook": the lesson look from Writing 2 on, short lists on one board, and motion (bundle 1.22)
 
 Date: 2026-10-26
-Status: **Accepted**: the owner's decision of 2026-10-26, given in chat and recorded as
+Status: **Accepted**, amended the same day after the owner's review of Writing 2 (amendment (2), at
+the end). The owner's decision of 2026-10-26, given in chat and recorded as
 siamingit/oetbook-lesson-engine issue #46 (the design reference: tokens, effects and three reference
 boards). How it is carried (the per-lesson style, the bundle format, which board states take which
 effect, the checks) was decided by the agent under the brief "make style C the lesson look, add motion
@@ -119,3 +120,114 @@ effects, and rebuild Writing 2 in it" (ADR 005); the owner may reverse any of it
 - To reverse for one lesson: remove `lesson.style` from its `sections.json` and rebuild its boards, fit and
   player (free); it returns to its earlier look and format. To reverse the default for new lessons: a new
   ADR.
+
+## Amendment — 2026-10-26 (2): the owner's review of Writing 2
+
+Status: **Accepted**: the owner's decisions, given in chat on 2026-10-26 after he looked at Writing 2
+in style C (the brief "revise style C after the owner's review, and rebuild Writing 2"). How each is
+carried was decided by the agent under that brief (ADR 005); the owner may reverse any of it. This
+amendment replaces decision 2's colours, its marker, its shadow and its outline, decision 4's lift
+look, and the open item of the consequences; everything else above stands.
+
+### Context
+
+- The owner finds style C better overall. On screenshots of "The six criteria" and "How your letter is
+  scored" he marked five problems:
+  1. the marker highlight is too thick and covers the words;
+  2. the background must be white, to match the site's theme;
+  3. no purple or pink outline on lifted or active boxes: the lifted "Purpose" row reached past the
+     table's left and right edges, and only its first cell was tinted;
+  4. more colours, taken from the handouts' palette by meaning, and the clash of right with the
+     word-class and tense colours settled;
+  5. more creative board layouts, like his own Persian decks: a visual in place of a plain table where
+     the content allows, each board following the matching slide of the lesson's own deck.
+- The cause of 1: the band was multiplied (`mix-blend-mode`) inside the player's marks layer, and that
+  layer has a z-index. A positioned element with a z-index is a group of its own (a stacking context),
+  so the band blended with nothing under it and was laid flat, `#ffd27a`, over the lower 42% of the
+  glyphs. The site's player draws its marks the same way (`.oa-marks`, z-index 6).
+
+### Options considered
+
+- **The marker.** As the phrase wrapper's own background, under its words (a change of method for the
+  site, which draws every mark in an overlay); or the overlay kept, with nothing between the band and
+  the frame making a group of its own, so the multiply reaches the words (chosen: one rule in each
+  player; each mark keeps its place above the side notes by its own z-index).
+- **Right or keep.** The site's success green `#1f6b3a`: 16.0 (CIEDE2000) from the adjective's
+  word-class teal and 8.1 from the "up to now" tense accent, no better than the teal it replaces. The
+  handouts' olive ("modal") `#556b00`: 26.8 from the adjective teal, 26.2 from the "up to now" teal and
+  21.3 from its accent (chosen; the design system asks 20).
+- **The six criteria's colours.** The handouts' ten tones and the site's own, the six that differ most
+  from each other and at least 20 from right, wrong and the gloss amber (chosen: the handouts' blue,
+  teal, magenta and violet, the site's rose and its band teal; 15.7 or more between any two). Left out:
+  the handouts' "practice" red (4.1 from wrong), "pf" brown (8.5 from the gloss amber), the site's
+  success green (15.1 from the olive of right). Each criterion also carries its monogram, so colour is
+  never the only signal.
+- **The layouts.** New block types (a new schema and a new renderer on the site); or the same blocks
+  and data, laid out by the lesson's own `blocks.css` from classes and attributes on the block's html
+  (chosen: no bundle field, nothing for the site's player, which draws the html the bundle gives and
+  styles it with the lesson's stylesheet). Named per block in the lesson's `sections.json`,
+  `block_layouts`, as boards are in `boards_fit` (ADR 041).
+- **A letter with notes and arrows beside its lines** (the owner's example). Notes on a table board go
+  under the table (rule 12, ADR 020): beside it needs a new rule of the bundle and of the site's player,
+  and a narrower letter, which on a phone is already under body size. Not used: the zoom brings the
+  line discussed to body size and the spotlight shows which line a note is about
+  (docs/02-DESIGN-SYSTEM.md §7j).
+
+### Decision
+
+1. **The marker** is a light amber band `#ffe19c` behind the lower 38% of the line
+   (`linear-gradient(transparent 62%, #ffe19c 62%)`), multiplied with what is under it, so the letters
+   stay as dark as they are. The reference player's marks layer forms no group of its own in style C.
+   `check_marks.py` fails a style C highlight whose band is not multiplied, sits inside a group, or is
+   taller than 40% of its line.
+2. **White**: the frame, the header, the board and the controls. Notes on a soft neutral tint
+   `#f3f4f7`; the board's own sentences (a slide's sentence, a fixed sentence) on paper `#f8f4ec`.
+3. **The lift** has no outline: a soft neutral shadow, `0 6px 20px rgba(20,32,31,0.12)` at a 720 px
+   frame, and a very small scale (0.4% for a full-width row, 1% for a block, 1.5% for a tile or a card,
+   2% for a contents item), inside the table's or the board's edges. A lifted row lifts as one row: its
+   shadow is the row's, its cells keep their own tints, nothing is repainted. The active cell keeps a
+   soft amber (rule 11).
+4. **Colour by meaning** (docs/02-DESIGN-SYSTEM.md §1a): right or keep olive `#556b00` on `#eef3d2`
+   with a tick; wrong or leave out red `#b42318` on `#fdecea` with a cross; a word card, "Meaning",
+   "Word" and the key word in the gloss amber `#8a5300` on `#fdf0d5` (no dark card); a table with a solid
+   header row in its section's colour and white words in sentence case (no capitals), its body rows in
+   that colour's tint. The six criteria, each its colour and its monogram, used the same way everywhere
+   in a lesson (the criterion's card, its section's tables and tints, its contents item, its tile):
+
+   | Criterion | Monogram | Ink / tint | From |
+   |---|---|---|---|
+   | Purpose | P | `#1d5fb4` / `#e2eefb` | the handouts' blue ("past") |
+   | Content | C | `#be185d` / `#fce7f1` | the site's rose |
+   | Conciseness and Clarity | C&C | `#0f766e` / `#d7f0ec` | the handouts' teal ("teach") |
+   | Genre and Style | G&S | `#9d1f8f` / `#fbe7f6` | the handouts' magenta ("prog") |
+   | Organisation and Layout | O&L | `#0e4a55` / `#dcecef` | the site's band teal |
+   | Language | L | `#5b3fc4` / `#ece6fb` | the handouts' violet ("test") |
+
+   A section is a criterion's when its title is the criterion's name; its term box "The criterion" is
+   drawn as the criterion's card: the monogram in a circle beside a pill in the criterion's tint, as on
+   the owner's slides.
+5. **Board layouts** (docs/02-DESIGN-SYSTEM.md §7j): tiles, scorecards, cards, steps, a flow, bins, a
+   fix, changes, a stack, case notes, a letter, a checklist, two options side by side; for each board,
+   the matching slide of the lesson's deck is looked at and its visual idea carried over. A layout never
+   changes a word, its order, an id, a cue or a state (`style_c.layout_html` refuses one that would).
+6. **Bundle format 1.22 is amended, not raised**: no 1.22 lesson is published and the site has not yet
+   built 1.22. Rule 53: the marker's colour and height, and that its multiply must reach the words; the
+   strike `#b42318`. Rule 54: the lift's look, in `blocks.css`, with no outline. No field is added or
+   removed; the site need not set a frame ground. The changelog §9b and the text for the site say so;
+   the site is told on its issue #173.
+7. **Checks.** Besides `check_marks.py` (1): the structural check's colour rule is narrowed. Right is no
+   longer teal, so a style C lesson may draw tense colours and adjective or adverb word marks; a lesson
+   that draws the criteria's colours may not, since the teal of Conciseness and Clarity is 1.8 from the
+   adjective teal and 17.2 from the "up to now" teal.
+
+### Consequences
+
+- Writing 2 is rebuilt with all of the above (block layouts on 15 blocks of 14 boards). No narration,
+  audio, id or time changed. The fit is better than before: three pictures that had to be cleared stay,
+  one board needs no tightening, two tables are set larger (The six criteria at 3.2% of the frame, the
+  Purpose letter at 3.0%). Because the Purpose letter is now set near body size, its seven zooms are no
+  longer needed (the zoom is for a document at 2.8% or less, decision 4).
+- The 22 published lessons are unchanged: proven by the render comparison before and after the change (docs/03-RUNBOOK.md, "Changing shared code"; `render_compare.py` snapshots `before-sc2` on the code of main at 5ba130a and `after-sc2` on this change, 2026-10-26): **22 of 22 identical**, 662 data files byte for byte (bundles, texts, stylesheets, timelines, fits) and 150,072 moments at the phone and laptop frames drawn identically, with no board timing difference.
+- To reverse a layout for one board: remove its block from `block_layouts` and rebuild the player
+  (free); the table is drawn as the handouts draw a table. The colours, the marker and the lift are
+  `style_c.py`'s, and only a lesson in style C takes them.

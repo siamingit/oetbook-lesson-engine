@@ -301,13 +301,20 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
 
 /* Style C (bundle 1.22, ADR 042): the look is the lesson's blocks.css; these
    are the looks of what the player draws, and its motion (rules 53 to 55). A
-   highlight is a marker band under the words, in the amber of the key word; a
-   strike is drawn in the red of "wrong"; both are drawn in from left to right
-   (positionMarks). A note that goes, by an erase or a clear, fades and shrinks;
-   a cleared note's room closes up as it goes, instead of jumping. */
-.frame.style-c #marks .m-highlight { background: linear-gradient(transparent 58%, #ffd27a 58%);
+   highlight is a marker band under the words, in a light amber, the lower 38%
+   of the line; a strike is drawn in the red of "wrong"; both are drawn in from
+   left to right (positionMarks). The band is multiplied with what is under it,
+   so the letters stay as dark as they are and only their ground takes the
+   amber: the marks' layer forms no stacking context of its own in style C (a
+   layer with a z-index is a group of its own, and its band was laid flat over
+   the glyphs, 2026-10-26); each mark keeps its place above the side notes by
+   its own z-index. A note that goes, by an erase or a clear, fades and
+   shrinks; a cleared note's room closes up as it goes, instead of jumping. */
+.frame.style-c #marks { z-index: auto; }
+.frame.style-c #marks > div { z-index: 6; }
+.frame.style-c #marks .m-highlight { background: linear-gradient(transparent 62%, #ffe19c 62%);
                                      mix-blend-mode: multiply; border-radius: .2cqh; }
-.frame.style-c #marks .m-strike { background: #b83b28; }
+.frame.style-c #marks .m-strike { background: #b42318; }
 @keyframes sc-out { from { max-height: var(--sc-h); }
                     to { opacity: 0; transform: scale(.96); max-height: 0; padding-top: 0; padding-bottom: 0;
                          margin-bottom: -2.5cqh; } }

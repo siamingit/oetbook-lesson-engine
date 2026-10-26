@@ -632,6 +632,10 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             html_b = resolve_images(block_html(nb), out_dir, L)
             if style_c.style_of(L):
                 html_b = style_c.tone_html(html_b)          # 1.22: column labels by meaning (ADR 042)
+                # the board layouts and the criteria's colours (ADR 042, amendment
+                # of 2026-10-26): classes and attributes on the block's html only
+                html_b = style_c.layout_html(nb, html_b, sec["title"],
+                                             (info.get("block_layouts") or {}).get(nb["id"]))
             if nb.get("image"):                      # 1.11: the file, relative to the bundle's folder
                 nb["image"] = {**nb["image"], "file": resolve_images(
                     IMAGE_TOKEN + "/" + nb["image"]["file"], out_dir, L)}
@@ -947,6 +951,13 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     style = style_c.style_of(L)
     if style:
         style_c.effects(boards_out, blocks_all)
+    # the board layouts a lesson names (sections.json `block_layouts`, by bundle
+    # block id): only in style C, and only blocks of the lesson
+    for bid in info.get("block_layouts") or {}:
+        if not style:
+            raise SystemExit("REFUSED: sections.json block_layouts in a lesson that is not in style C")
+        if bid not in blocks_all and not only:
+            raise SystemExit(f"REFUSED: sections.json block_layouts names {bid!r}, not a block of the lesson")
     newer = max([v for v in (declared_format(info),
                              FIT_FORMAT_VERSION if any(bd.get("fit") for bd in boards_out) else None,
                              style_c.FORMAT_VERSION if style else None) if v],

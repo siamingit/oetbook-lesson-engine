@@ -11,6 +11,11 @@ For every mark cue, at each width:
   wrapped      reported if the mark breaks across lines (its fragments are
                each drawn complete by box-decoration-break: clone, but a
                wrapped circle still reads as two rings)
+  under        style C (ADR 042, amendment of 2026-10-26): FAIL if a highlight's
+               marker band is not multiplied with the words under it (its
+               blend is not multiply, or an element between it and the frame
+               makes a group of its own, so the band is laid flat over the
+               letters), or if it is taller than 40% of its line
   not found    FAIL if the phrase could not be located in its block (for
                example a phrase that crosses a tense-tag boundary)
 
@@ -50,6 +55,19 @@ HARNESS = r"""
   window.__lockWidth = __WIDTH__;
   fit();
   const out = [];
+  // style C: the marker band is drawn in whole (its sweep is from the clock) and
+  // must be multiplied with the words: nothing between it and the frame may make
+  // a group of its own (a stacking context), or the band covers the letters
+  const STYLEC = frame.classList.contains("style-c");
+  if (STYLEC) fxClock = 1e9;
+  function grouped(el) {
+    for (let e = el.parentElement; e && e !== frame; e = e.parentElement) {
+      const cs = getComputedStyle(e);
+      if ((cs.position !== "static" && cs.zIndex !== "auto") || +cs.opacity < 1 || cs.transform !== "none"
+          || cs.filter !== "none" || cs.isolation === "isolate" || cs.mixBlendMode !== "normal") return true;
+    }
+    return false;
+  }
   function rectsTouch(a, b) {
     // Only a neighbour on the same line can touch: a fragment of a wrapped mark
     // and the last word of the line above share a strip of their glyph boxes
@@ -108,6 +126,14 @@ HARNESS = r"""
         const box = span.getBoundingClientRect();
         const cs = getComputedStyle(span);
         rec.overlap = neighbourRects(w.spans).some(n => drawn.some(f => rectsTouch(f, n)));
+        if (STYLEC && c.type === "highlight" && span.dataset.mk !== undefined) {
+          const bands = [...document.querySelectorAll('#marks [data-mk="' + span.dataset.mk + '"]')];
+          rec.under = bands.length > 0 && bands.every(b => {
+            const cs = getComputedStyle(b), r = b.getBoundingClientRect();
+            const band = (cs.backgroundImage.match(/(\d+(?:\.\d+)?)%/) || [])[1];
+            return cs.mixBlendMode === "multiply" && !grouped(b) && band !== undefined && 100 - +band <= 40.5;
+          });
+        }
         rec.width = Math.round(box.width);
         out.push(rec);
       }
@@ -163,6 +189,8 @@ def main() -> None:
                 failures.append(f"{where}: phrase not found in block {m['block']}")
             elif m["overlap"]:
                 failures.append(f"{where}: touches a neighbouring word")
+            elif m.get("under") is False:
+                failures.append(f"{where}: the marker band is not drawn under the words (ADR 042)")
             elif m["fragments"] > 1:
                 wrapped.append(f"{where}: breaks across {m['fragments']} lines")
         print(f"{name} ({res['frame']}px frame): {len(res['marks'])} mark fragments checked")

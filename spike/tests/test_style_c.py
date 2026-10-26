@@ -66,6 +66,86 @@ class Tones(unittest.TestCase):
         self.assertEqual(style_c.tone_html(plain), plain)
 
 
+class Layouts(unittest.TestCase):
+    """The board layouts and the criteria's colours (ADR 042, amendment of
+    2026-10-26): classes and attributes only, never a word added or moved."""
+
+    def core(self, header, rows, typed=()):
+        import write_screens
+        b = {"id": "p_k01", "type": "table", "core": True, "header": header, "rows": rows,
+             "typed": list(typed), "font": 3.2}
+        return b, write_screens.block_html(b)
+
+    def words(self, h):
+        import re
+        return re.sub(r"<[^>]+>", " ", h).split()
+
+    def test_tiles_take_each_criterions_colour_and_monogram(self):
+        b, h = self.core(["Criterion", "What it asks"], [["Purpose", "Why."], ["Genre and Style", "How."]])
+        out = style_c.layout_html(b, h, "The six criteria", "tiles")
+        self.assertIn("lay lay-tiles", out)
+        self.assertIn('data-row="0" data-crit="purpose" data-mono="P"', out)
+        self.assertIn('data-crit="gs" data-mono="G&amp;S" data-mono-len="3"', out)
+        self.assertEqual(self.words(out), self.words(h))
+
+    def test_scores_draw_points_as_empty_elements(self):
+        b, h = self.core(["Criterion", "Scored out of", "For grade B, at least"],
+                         [["Purpose", "3", "2"], ["Each of the other five criteria", "7", "5"]])
+        out = style_c.layout_html(b, h, "How your letter is scored", "scores")
+        self.assertEqual(out.count('<i class="on"></i>'), 7)
+        self.assertEqual(out.count("<i></i>"), 3)
+        self.assertEqual(out.count('<i data-crit="'), 5)          # the other five criteria
+        self.assertIn('data-label="Scored out of"', out)
+        self.assertEqual(self.words(out), self.words(h))
+
+    def test_bins_place_each_answer_in_its_lane(self):
+        rows = [["2011 – wrist", "Leave out"], ["2016 – hypertension", "Keep, briefly"]]
+        b, h = self.core(["Case note", "In the letter"], rows,
+                         [{"row": 0, "col": 1, "start": 0, "text": "Leave out"},
+                          {"row": 1, "col": 1, "start": 0, "text": "Keep, briefly"}])
+        out = style_c.layout_html(b, h, "Conciseness and Clarity", "bins")
+        self.assertIn('data-bin="out"', out)
+        self.assertIn('data-bin="brief"', out)
+        self.assertIn('data-l="Keep briefly"', out)
+        self.assertIn('data-typed="0"', out)
+        self.assertEqual(self.words(out), self.words(h))
+
+    def test_a_layout_for_the_wrong_block_is_refused(self):
+        b, h = self.core(["A", "B"], [["x", "y"]])
+        with self.assertRaises(SystemExit):
+            style_c.layout_html(b, h, None, "scores")             # three columns of numbers
+        with self.assertRaises(SystemExit):
+            style_c.layout_html(b, h, None, "vs")                 # a comparison's
+        with self.assertRaises(SystemExit):
+            style_c.layout_html(b, h, None, "nothing")
+
+    def test_the_criterion_card_and_the_section_colour(self):
+        term = {"id": "p_k02", "type": "term_box", "label": "The criterion", "term": "Immediately apparent",
+                "explanation": "At once.", "style": "pill"}
+        import write_screens
+        h = write_screens.block_html(term)
+        out = style_c.layout_html(term, h, "Purpose")
+        self.assertIn('crit" data-crit="purpose" data-mono="P"', out)
+        note = {"id": "p_k03", "type": "plain", "text": "A note."}
+        self.assertIn('data-crit="purpose"', style_c.layout_html(note, write_screens.block_html(note), "Purpose"))
+        self.assertNotIn("data-crit", style_c.layout_html(note, write_screens.block_html(note), "Closing"))
+
+    def test_right_no_longer_collides(self):
+        from board_style import colour_distance, WORD_COLOURS, TENSE_COLOURS
+        self.assertGreaterEqual(colour_distance(style_c.RIGHT[0], WORD_COLOURS["adjective"]), 20)
+        for header, accent in TENSE_COLOURS.values():
+            self.assertGreaterEqual(colour_distance(style_c.RIGHT[0], header), 20)
+            self.assertGreaterEqual(colour_distance(style_c.RIGHT[0], accent), 20)
+        inks = [ink for _k, _m, ink, _s in style_c.CRITERIA.values()]
+        for ink in inks:
+            for meaning in (style_c.RIGHT[0], style_c.WRONG[0], style_c.GLOSS[0]):
+                self.assertGreaterEqual(colour_distance(ink, meaning), 19.95)
+
+    def test_no_lilac(self):
+        for lilac in ("#f3f0fb", "#c9bdf5", "rgba(91,63,196"):
+            self.assertNotIn(lilac, style_c.CSS)
+
+
 def bundle():
     blocks = {"c1": {"type": "contents_item"}, "c2": {"type": "contents_item"},
               "s1": {"type": "error_row"}, "s2": {"type": "error_row"},
