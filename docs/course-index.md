@@ -2,7 +2,7 @@
 
 What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.1; decision: `docs/adr/038-public-course-index.md`.
 
-22 lessons, 209 sections, 487 board topics, 3821 teaching points, 226 rules and 61 warnings, 470 terms, 123 OET facts, 30 methods, 512 vocabulary items (189 from the word bank), 62 practice questions and note forms, 75 links to other lessons, 332 topics in the topic index.
+23 lessons, 219 sections, 506 board topics, 3942 teaching points, 239 rules and 62 warnings, 481 terms, 145 OET facts, 35 methods, 515 vocabulary items (189 from the word bank), 62 practice questions and note forms, 83 links to other lessons, 345 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -10,7 +10,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 - Vocabulary: [Vocabulary for OET: Word Forms and Sentence Structure](#vocabulary-01-word-forms), [Vocabulary for OET: Verb + Noun Collocations](#vocabulary-02-collocations), [Vocabulary for OET: Adjective + Noun Collocations](#vocabulary-03-collocations-2)
 - Reading: [Reading for OET: Overview](#reading-01-overview), [Reading for OET: Part A](#reading-02-part-a), [Reading for OET: Part B](#reading-03-part-b), [Reading Part C (1)](#reading-04-part-c), [Reading Part C (2): More Practice](#reading-05-part-c-2)
 - Listening: [OET Listening: Overview](#listening-01-overview), [OET Listening: Part A](#listening-02-part-a), [OET Listening: Part B](#listening-03-part-b), [OET Listening: Part C (1)](#listening-04-part-c), [OET Listening: Part C (2)](#listening-05-part-c-2)
-- Writing: [OET Writing: Overview](#writing-01-overview)
+- Writing: [OET Writing: Overview](#writing-01-overview), [OET Writing: Assessment Criteria](#writing-02-assessment-criteria)
 
 ---
 
@@ -761,6 +761,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Schedule" at 49:39, about section `page-16`
 - referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Practice: conditions and types of pain" at 20:54, about section `page-10`
 - referred to by OET Writing: Overview (`writing-01-overview`), "Steps towards successful writing" at 3:22
+- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Conciseness and Clarity" at 20:36, about section `page-11`
+- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:15
 - continues in Grammar for OET: Verb Use (`grammar-02-verb-use`): Verb Use practises choosing the tense, and the active or the passive, taught here.
 
 
@@ -2007,6 +2009,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 10:25, about section `pages-11-12`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 7:47
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Avoid a series of short sentences" at 69:16
+- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:31
 - continues in Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`): Relative and participle clauses build on the clauses and joining words taught here.
 - continues in Grammar for OET: Punctuation (`grammar-07-punctuation`): Punctuation teaches the comma in complex and compound sentences.
 
@@ -2796,6 +2799,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Introduction" at 0:04
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 28:16, about section `added-05`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 28:16, about section `added-03`
+- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Genre and Style" at 24:42, about section `added-08`
+- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:49, about section `page-5`
 - continues from Grammar for OET: Complex sentences (`grammar-05-complex-compound`): Punctuation teaches the comma in complex and compound sentences.
 
 
@@ -3111,6 +3116,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 38:16 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-8_t1.s19.u2`)
 - referred to by OET Writing: Overview (`writing-01-overview`), "Steps towards successful writing" at 3:22, about section `page-4`
 - referred to by OET Writing: Overview (`writing-01-overview`), "The case notes" at 11:58, about section `page-6`
+- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Conciseness and Clarity" at 19:47, about section `page-8`
+- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 27:40, about section `pages-09-10`
 
 
 ---
@@ -7836,6 +7843,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
 | 1 | OET Writing: Overview | `writing-01-overview` | 19:05 | 7 | 2026-10-26 00:07 (Siavash) |
+| 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 29:42 | 10 | not yet |
 
 <a id="writing-01-overview"></a>
 
@@ -8007,6 +8015,297 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 3:22 refers to Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" (in `page-5_t1.s2.u3`)
 - 3:22 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `page-5_t1.s2.u3`)
 - 11:58 refers to Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Omit" (in `page-8_t1.s5.u4`)
+- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Introduction" at 0:05
+
+
+<a id="writing-02-assessment-criteria"></a>
+
+## 2. OET Writing: Assessment Criteria
+
+- Lesson ID and folder: `writing-02-assessment-criteria` (folder `writing-02-assessment-criteria`); course writing, lesson 2; length 29:42; bundle format 1.21
+- Status: built, final gate not approved
+- Description: Learn the six criteria OET uses to assess your letter, how each one is scored, and what each one asks you to do when you write.
+- Original session: folder `source`: `source/video.mp4`, 48:38 long, partial hash `c14729b6930ac321`; deck `source/slides.pdf`, 21 pages
+  - Writing Session 2 of the Persian Writing course, «جلسه رایتینگ: معیار های ارزیابی» (Writing: the assessment criteria); its official OET sample and the photo of OET's criteria table are replaced by our sample oa-ws-med-0002 (and short parts of oa-ws-nur-0001, oa-ws-nur-0002, oa-ws-med-0003) at oetacademy-exercises 5320d19, and an own-words criteria table (ADR 040).
+
+### Sections
+
+#### 0:00 Introduction (`page-3`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 0:51 **Contents board**
+  - 0:51 each category, revealed as it is named
+
+*Wrong sentences corrected*
+
+- 0:16 I am writing about Mrs Lisa Holden, who was admitted to our ward on 14 October.
+
+#### 1:24 The six criteria (`page-4`, deck)
+
+- 1:24 **The six criteria in a few words**
+  - 1:24 six criteria
+  - 1:38 the word criteria
+  - 1:52 two assessors
+  - 2:04 purpose
+  - 2:18 content
+  - 2:38 conciseness and clarity
+  - 3:04 genre and style
+  - 3:21 organisation and layout
+  - 3:35 language
+  - 3:45 OET's own document
+
+#### 4:01 How your letter is scored (`page-5`, deck)
+
+- 4:01 **How the letter is scored**
+  - 4:01 the score
+  - 4:05 levels
+  - 4:21 the OET score
+  - 4:27 grade B
+  - 4:47 purpose
+  - 4:54 each of the other five
+  - 5:28 the grade B rule
+  - 5:38 language is one of six
+
+*Rules on the boards*
+
+- 5:28 For grade B, you need at least 2 out of 3 for Purpose and at least 5 out of 7 for each of the other five criteria.
+
+#### 5:57 Purpose (`pages-06-07-08`, deck)
+
+- 5:57 **Immediately apparent: the opening**
+  - 5:57 Fixed: the opening of a discharge letter
+  - 6:02 Imagine you are the reader
+  - 6:24 OET's words
+  - 7:12 What the opening tells the reader
+  - 7:37 The word withheld
+- 7:49 **Sufficiently expanded: the rest of the letter**
+  - 7:49 the opening, the next paragraph, the last paragraph
+  - 7:52 OET's words
+  - 8:07 the opening says it briefly
+  - 8:14 my method
+  - 8:26 what the next paragraph adds
+  - 8:44 OET's definition
+  - 8:53 what the last paragraph adds
+  - 9:13 the purpose all through the letter
+  - 9:29 the score
+- 9:37 **Try it: which opening?**
+  - 9:37 Fixed: two openings
+  - 10:08 The answer
+  - 10:14 Why the first is weak
+
+*Rules on the boards*
+
+- 6:02 Do not learn the criteria word for word. Understand them: imagine you are the reader.
+- 8:14 My advice: expand the purpose straight after, in the next paragraph.
+- 8:44 OET: state the purpose clearly at the start, then expand it with more detail at the end of the letter.
+- 10:08 The second opening: the reader knows at once why you are writing and what the problem is.
+
+*Terms*: Immediately apparent (The criterion, 6:24); Sufficiently expanded (The criterion, 7:52)
+
+#### 10:31 Content (`pages-09-10-11`, deck)
+
+- 10:31 **The reader: read the task first**
+  - 10:31 Fixed: the Writing Task
+  - 10:36 OET's words
+  - 10:46 Read the task first
+  - 11:26 Who am I writing to?
+  - 11:30 This reader
+  - 11:50 The same kind of note, two letters
+  - 12:12 The reader and the task decide
+- 12:25 **What is needed to continue care**
+  - 12:25 OET's words
+  - 12:25 Fixed: the last paragraph
+  - 12:34 Key information
+  - 12:39 What you want from the reader
+  - 13:03 No fixed structure
+  - 13:23 A few sentences you can learn
+  - 13:39 Every profession
+- 13:59 **Accurate: as the case notes say it**
+  - 13:59 accurate
+  - 14:03 OET's words
+  - 14:33 the place
+  - 14:50 withheld is not stopped
+  - 15:08 better is not normal
+  - 15:30 how far she agrees
+  - 15:39 check every line
+
+*Rules on the boards*
+
+- 11:26 Ask yourself: who am I writing to, and what will they do?
+- 13:03 My advice: do not memorise one structure for every letter. Each letter follows its own case notes.
+
+*Warnings (common mistakes)*
+
+- 15:39 Check the place, the numbers and every word of status against the case notes.
+
+*Terms*: Appropriate to the intended reader (The criterion, 10:36); What is needed to continue care (The criterion, 12:25); Accurately represents the case notes (The criterion, 14:03)
+
+#### 15:53 Conciseness and Clarity (`pages-12-13-14`, deck)
+
+- 15:53 **The length of the letter**
+  - 15:53 what is counted
+  - 16:00 OET's words
+  - 16:11 the task is made for it
+  - 16:29 not counted
+  - 16:35 a guide
+  - 16:41 my advice
+  - 16:47 much longer, much shorter
+  - 16:56 what matters
+  - 17:06 an example
+  - 17:24 not counted
+- 17:28 **Summarise: keep, keep briefly, leave out**
+  - 17:28 the history in the case notes
+  - 17:33 the word summarise
+  - 18:05 old and unrelated
+  - 18:14 briefly
+  - 18:34 looks related
+  - 18:47 briefly
+  - 18:58 looks related
+  - 19:16 gather related notes
+- 19:52 **Clear: each fact in its time**
+  - 19:52 Fixed: a paragraph of the letter
+  - 19:54 OET's words
+  - 20:08 The verbs and their time
+  - 20:29 The tense puts each fact in its time
+
+*Rules on the boards*
+
+- 16:41 My advice: ten or twelve words more or fewer do no harm.
+- 20:29 The tense tells the reader what happened, what is true now and what comes next.
+
+*Terms*: Appropriate to the case and reader (The criterion, 16:00); Presented clearly (The criterion, 19:54)
+
+#### 20:49 Genre and Style (`pages-15-16-17`, deck)
+
+- 20:49 **Clinical and factual**
+  - 20:49 Fixed: a wrong sentence
+  - 20:56 The social background
+  - 21:07 OET's words
+  - 21:39 Problem 1
+  - 21:46 Problem 2
+  - 21:54 Problem 3
+  - 22:00 My rule on fortunately
+  - 22:17 For this reader
+- 22:37 **Right for the reader: knowledge and polite requests**
+  - 22:37 Fixed: two wrong openings
+  - 22:56 OET's words
+  - 23:06 The first opening
+  - 23:16 The second opening: orders
+  - 23:22 Polite requests in our letter
+  - 23:42 My rule on firstly
+- 23:53 **Technical terms and abbreviations**
+  - 23:52 OET's words
+  - 23:53 abbreviations for a GP
+  - 24:23 abbreviate for the reader
+  - 24:28 well-known abbreviations
+  - 24:38 technical terms
+
+*Rules on the boards*
+
+- 22:00 My advice: use "fortunately" or "unfortunately" at most once in a letter, and never about a patient's habits.
+- 23:42 My advice: never use "firstly", "secondly" or "finally" in your letter. Give each point in its own sentence.
+
+*Wrong sentences corrected*
+
+- 20:49 You might be interested to know that Mrs Holden works at a school. She drinks quite a lot, which is a major concern, but luckily she doesn't smoke.
+- 22:37 Dear district nurse, here is a very technical description of Mrs Dawson's blood tests!
+- 22:37 Dear specialist, let me tell you what's what. Firstly, do this. Secondly, I think you should do that.
+
+*Terms*: Clinical and factual (The criterion, 21:07); Right for the reader's discipline and knowledge (The criterion, 22:56); Technical terms, abbreviations and polite language (The criterion, 23:52)
+
+#### 24:52 Organisation and Layout (`page-18`, deck)
+
+- 24:52 **The letter, part by part**
+  - 24:52 the whole letter
+  - 24:59 OET's words
+  - 25:12 copy the address
+  - 25:21 the date
+  - 25:28 the Re line
+  - 25:33 the purpose first
+  - 25:40 then the story in order
+  - 25:53 one topic, key information first
+  - 26:10 not the order of the case notes
+  - 26:17 the requests last
+  - 26:27 the sign-off
+  - 26:31 learn the layout once
+
+*Rules on the boards*
+
+- 25:53 One topic in each paragraph. Put the most important information first.
+- 26:31 My advice: learn a clear layout once, and use it in every letter.
+
+*Terms*: Appropriate, logical and clear (The criterion, 24:59)
+
+#### 26:46 Language (`page-19`, deck)
+
+- 26:46 **Language**
+  - 26:46 what OET looks for
+  - 26:54 meaning
+  - 27:01 precise words
+  - 27:17 your own words
+  - 27:29 keep the medical words
+  - 27:50 tense changes meaning
+  - 28:22 not too long
+  - 28:42 spelling
+  - 28:52 punctuation
+
+#### 29:02 Closing (`added-01`, closing)
+
+- 29:02 **Closing**
+  - 29:02 Recap
+
+### OET facts
+
+- 0:32 (`writing-six-criteria`) Six criteria assess the letter, the same for every profession (writing-facts 8).
+- 1:53 (`writing-two-assessors`) Two assessors mark the letter (writing-facts 10).
+- 3:27 (`writing-language`) Language: grammar, vocabulary, spelling, punctuation and sentence structure that make the meaning clear (writing-facts 23).
+- 4:19 (`writing-score-scale`) Each sub-test is scored from 0 to 500 (writing-facts 12).
+- 4:27 (`writing-grade-b`) Grade B is a score of 350 to 440 (writing-facts 12).
+- 4:32 (`writing-ielts`) OET's own table compares grade B with IELTS 7.0 to 7.5 (writing-facts 13).
+- 5:02 (`writing-criteria-scores`) Purpose is scored out of 3; each of the other five criteria is scored out of 7, on its own (writing-facts 9).
+- 5:27 (`writing-grade-b-profile`) For grade B, you need at least 2 out of 3 for Purpose and at least 5 out of 7 for each of the other five criteria (writing-facts 11).
+- 8:42 (`writing-purpose`) Purpose: the reader sees at once why you are writing; the purpose is stated clearly at the start and expanded with more detail at the end of the letter (writing-facts 18, 30).
+- 12:25 (`writing-content`) Content: what this reader needs to continue care, with nothing important missing and the case notes represented accurately (writing-facts 19).
+- 16:00 (`writing-conciseness`) Conciseness and Clarity: only the information the reader needs, and the case summarised and presented clearly (writing-facts 20).
+- 16:32 (`writing-body-counted`) Only the body of the letter, its paragraphs, is counted (writing-facts 16).
+- 16:32 (`writing-word-guide`) 180 to 200 words is a guide for the body, not a strict limit, with no automatic penalty (writing-facts 14).
+- 16:48 (`writing-length-signals`) Much longer usually means something the reader does not need; much shorter usually means something important is missing (writing-facts 15).
+- 21:07 (`writing-style`) The style is clinical and factual, with polite language and no personal feelings (writing-facts 21).
+- 24:28 (`writing-abbreviations`) Abbreviate for the reader and do not overdo it; abbreviations better known than their full form, such as MRI, BMI, CT and ECG, can be used (writing-facts 21, 38).
+- 25:09 (`writing-address`) Copy the reader's name and address from the task (writing-facts 24).
+- 25:25 (`writing-re-line`) The Re line gives the patient's full name and date of birth (writing-facts 26).
+- 25:53 (`writing-organisation`) Organisation: one topic per paragraph, the most important information first; simply following the order of the case notes is a weakness (writing-facts 22, 40).
+- 26:23 (`writing-sign-off`) Sign with a job title, not your own name (writing-facts 25). *(a job title, such as Doctor)*
+- 26:39 (`writing-no-fixed-layout`) There is no one required layout for the letter (writing-facts 24).
+- 28:40 (`writing-spelling`) Spelling does not need to be perfect for grade B (writing-facts 43).
+
+### Exam methods and strategies
+
+- 8:13 **Expanding the purpose (the teacher's method)**: Say briefly in the opening why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.
+- 10:44 **Read the paper in this order**: The setting first, then the Writing Task, then the case notes line by line; ask who the reader is and what they will do.
+- 16:41 **The teacher's word-count advice**: Ten or twelve words more or fewer do no harm; what matters is that the reader gets everything they need, nothing they do not, and less important points briefly.
+- 17:45 **Keep, keep briefly or leave out**: For each note, ask what this reader will do with it: lines that only look related are left out; lines that explain the problem are kept briefly.
+- 23:43 **The teacher's advice on style**: Never firstly, secondly or finally in the letter; fortunately or unfortunately at most once, and never about a patient's habits.
+
+### Vocabulary
+
+First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
+
+- 1:38 criteria
+- 7:37 withheld
+- 17:33 summarise
+
+### Links to other lessons
+
+- 0:05 refers to OET Writing: Overview (`writing-01-overview`) (in `page-3_t1.s1.u2`)
+- 19:47 refers to Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Rearrange" (in `pages-12-13-14_t2.s8.u5`)
+- 20:36 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Perfect tenses on a timeline" (in `pages-12-13-14_t3.s2.u2`)
+- 24:42 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Case-note abbreviations" (in `pages-15-16-17_t3.s2.u3`)
+- 27:40 refers to Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Synonyms" (in `page-19_t1.s5.u2`)
+- 28:15 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `page-19_t1.s6.u5`)
+- 28:31 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`) (in `page-19_t1.s7.u2`)
+- 28:49 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Commas: overview" (in `page-19_t1.s9.u1`)
 
 
 ---
@@ -8025,6 +8324,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **A target score for Part C**: `listening-04-part-c` 9:16
 - **A two-week history of**: `grammar-08-paraphrasing` 35:45
 - **a-**: `grammar-03-nominalization` 9:26
+- **Abbreviations in the letter**: `writing-02-assessment-criteria` 24:23
+- **Accuracy to the case notes**: `writing-02-assessment-criteria` 14:03
 - **Active**: `grammar-01-verb-tenses` 79:38
 - **active and passive**: `grammar-01-verb-tenses` 77:47; `grammar-02-verb-use` 30:28
 - **Active voice**: `grammar-02-verb-use` 31:31
@@ -8079,10 +8380,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Compound sentence**: `grammar-01-verb-tenses` 111:41; `grammar-05-complex-compound` 20:47; `grammar-08-paraphrasing` 7:33
 - **Compound sentences**: `grammar-07-punctuation` 13:27
 - **Comprehension**: `reading-04-part-c` 2:05
+- **Conciseness and Clarity**: `writing-02-assessment-criteria` 15:53
 - **Conditional clause**: `grammar-05-complex-compound` 33:22
 - **Conjunction**: `grammar-05-complex-compound` 8:00
 - **Conjunctive adverb**: `grammar-07-punctuation` 18:09
 - **Connectives**: `grammar-02-verb-use` 22:00
+- **Content**: `writing-02-assessment-criteria` 10:31
 - **Continuous**: `grammar-01-verb-tenses` 2:45
 - **Continuous tense**: `grammar-01-verb-tenses` 26:28
 - **continuous tenses**: `grammar-01-verb-tenses` 25:49
@@ -8131,10 +8434,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **future simple**: `grammar-01-verb-tenses` 18:47
 - **Gap fill**: `grammar-05-complex-compound` 28:32
 - **Gap fill: articles**: `grammar-04-articles` 52:51
+- **Genre and Style**: `writing-02-assessment-criteria` 20:49
 - **Gerund**: `grammar-05-complex-compound` 39:52
 - **Gist**: `reading-03-part-b` 2:13
 - **given that**: `grammar-06-clause` 47:22
 - **Giving reassurance**: `vocabulary-03-collocations-2` 43:53
+- **Grade B in OET Writing**: `writing-02-assessment-criteria` 5:27
 - **Had smoked**: `grammar-01-verb-tenses` 49:09
 - **Has been scheduled**: `grammar-01-verb-tenses` 89:24
 - **has not eased**: `vocabulary-03-collocations-2` 27:29
@@ -8150,6 +8455,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **How to improve your listening**: `listening-01-overview` 10:12
 - **How to practise**: `listening-02-part-a` 14:12
 - **How verb + noun collocations are formed**: `vocabulary-02-collocations` 6:10
+- **How your letter is scored**: `writing-02-assessment-criteria` 4:01
 - **However**: `grammar-08-paraphrasing` 29:10
 - **HTN**: `grammar-02-verb-use` 17:55
 - **Hyphen**: `grammar-07-punctuation` 56:26
@@ -8168,6 +8474,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Joining sentences with relative pronouns**: `vocabulary-01-word-forms` 37:06
 - **Key points to remember**: `vocabulary-02-collocations` 10:08
 - **Key words**: `reading-03-part-b` 10:13
+- **Language**: `writing-02-assessment-criteria` 26:46
 - **Linking words**: `listening-05-part-c-2` 2:52
 - **Lists and series**: `grammar-07-punctuation` 24:26
 - **Main clause**: `reading-04-part-c` 18:06
@@ -8192,6 +8499,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **One test for every profession**: `writing-01-overview` 1:31
 - **opinion signals**: `reading-04-part-c` 12:37
 - **Order**: `vocabulary-02-collocations` 52:53
+- **Organisation and Layout**: `writing-02-assessment-criteria` 24:52
 - **Paraphrase bridge**: `reading-05-part-c-2` 2:14
 - **paraphrasing**: `grammar-08-paraphrasing` 1:45
 - **Paraphrasing in eight steps**: `grammar-08-paraphrasing` 1:45
@@ -8231,6 +8539,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **prn and tds**: `grammar-08-paraphrasing` 49:52
 - **Provide**: `vocabulary-02-collocations` 21:22
 - **Punctuation in OET letters**: `grammar-07-punctuation` 35:12
+- **Purpose**: `writing-02-assessment-criteria` 5:57
 - **QTA**: `reading-04-part-c` 19:34
 - **Reading Part B: strategies**: `reading-03-part-b` 7:47
 - **Reading Part C: the meaning behind the words**: `reading-04-part-c` 1:40
@@ -8286,6 +8595,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Synonyms**: `grammar-08-paraphrasing` 39:11
 - **Target score**: `reading-02-part-a` 53:08; `reading-03-part-b` 55:50; `reading-04-part-c` 3:50
 - **Tempting wrong options**: `listening-03-part-b` 9:21
+- **Tense in the letter**: `writing-02-assessment-criteria` 20:30
 - **The -ing form**: `grammar-01-verb-tenses` 8:00
 - **The -ing form (present participle)**: `grammar-06-clause` 20:28
 - **The case notes**: `writing-01-overview` 9:46
@@ -8299,6 +8609,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The QAT method**: `reading-03-part-b` 11:23
 - **The QTA method**: `reading-04-part-c` 19:31
 - **The Reading test**: `reading-01-overview` 1:29
+- **The six assessment criteria**: `writing-02-assessment-criteria` 1:27
+- **The six criteria**: `writing-02-assessment-criteria` 1:24
 - **The six questions, then the whole interview**: `listening-05-part-c-2` 4:40
 - **The six questions, then the whole talk**: `listening-04-part-c` 9:36
 - **The Writing test**: `writing-01-overview` 5:18

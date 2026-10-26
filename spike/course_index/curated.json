@@ -33,7 +33,17 @@
   "writing-style": "The style is clinical and factual, with polite language and no personal feelings (writing-facts 21).",
   "writing-address": "Copy the reader's name and address from the task (writing-facts 24).",
   "writing-re-line": "The Re line gives the patient's full name and date of birth (writing-facts 26).",
-  "writing-sign-off": "Sign with a job title, not your own name (writing-facts 25)."
+  "writing-sign-off": "Sign with a job title, not your own name (writing-facts 25).",
+  "writing-criteria-scores": "Purpose is scored out of 3; each of the other five criteria is scored out of 7, on its own (writing-facts 9).",
+  "writing-grade-b-profile": "For grade B, you need at least 2 out of 3 for Purpose and at least 5 out of 7 for each of the other five criteria (writing-facts 11).",
+  "writing-purpose": "Purpose: the reader sees at once why you are writing; the purpose is stated clearly at the start and expanded with more detail at the end of the letter (writing-facts 18, 30).",
+  "writing-content": "Content: what this reader needs to continue care, with nothing important missing and the case notes represented accurately (writing-facts 19).",
+  "writing-conciseness": "Conciseness and Clarity: only the information the reader needs, and the case summarised and presented clearly (writing-facts 20).",
+  "writing-organisation": "Organisation: one topic per paragraph, the most important information first; simply following the order of the case notes is a weakness (writing-facts 22, 40).",
+  "writing-language": "Language: grammar, vocabulary, spelling, punctuation and sentence structure that make the meaning clear (writing-facts 23).",
+  "writing-abbreviations": "Abbreviate for the reader and do not overdo it; abbreviations better known than their full form, such as MRI, BMI, CT and ECG, can be used (writing-facts 21, 38).",
+  "writing-no-fixed-layout": "There is no one required layout for the letter (writing-facts 24).",
+  "writing-spelling": "Spelling does not need to be perfect for grade B (writing-facts 43)."
  },
  "lessons": {
   "grammar-01-verb-tenses": {
@@ -408,6 +418,48 @@
     {"topic": "Case notes and the Writing Task", "at": "page-8_t1.s10.u1"},
     {"topic": "Word count of the letter body", "at": "pages-06-07_t2.s9.u2"},
     {"topic": "Closing sentence", "at": "page-9_t1.s11.u2"}
+   ]
+  },
+  "writing-02-assessment-criteria": {
+   "session": "Writing Session 2 of the Persian Writing course, «جلسه رایتینگ: معیار های ارزیابی» (Writing: the assessment criteria); its official OET sample and the photo of OET's criteria table are replaced by our sample oa-ws-med-0002 (and short parts of oa-ws-nur-0001, oa-ws-nur-0002, oa-ws-med-0003) at oetacademy-exercises 5320d19, and an own-words criteria table (ADR 040).",
+   "facts": [
+    {"fact": "writing-six-criteria", "at": "page-3_t1.s1.u6"},
+    {"fact": "writing-two-assessors", "at": "page-4_t1.s3.u1"},
+    {"fact": "writing-score-scale", "at": "page-5_t1.s3.u1"},
+    {"fact": "writing-grade-b", "at": "page-5_t1.s4.u1"},
+    {"fact": "writing-ielts", "at": "page-5_t1.s4.u2"},
+    {"fact": "writing-criteria-scores", "at": "page-5_t1.s6.u2"},
+    {"fact": "writing-grade-b-profile", "at": "page-5_t1.s7.u1"},
+    {"fact": "writing-purpose", "at": "pages-06-07-08_t2.s6.u1"},
+    {"fact": "writing-content", "at": "pages-09-10-11_t2.s1.u1"},
+    {"fact": "writing-conciseness", "at": "pages-12-13-14_t1.s2.u1"},
+    {"fact": "writing-body-counted", "at": "pages-12-13-14_t1.s5.u1"},
+    {"fact": "writing-word-guide", "at": "pages-12-13-14_t1.s5.u1"},
+    {"fact": "writing-length-signals", "at": "pages-12-13-14_t1.s7.u1"},
+    {"fact": "writing-style", "at": "pages-15-16-17_t1.s1.u3"},
+    {"fact": "writing-abbreviations", "at": "pages-15-16-17_t3.s2.u1"},
+    {"fact": "writing-address", "at": "page-18_t1.s3.u1"},
+    {"fact": "writing-re-line", "at": "page-18_t1.s5.u1"},
+    {"fact": "writing-organisation", "at": "page-18_t1.s8.u2"},
+    {"fact": "writing-sign-off", "at": "page-18_t1.s11.u1", "note": "a job title, such as Doctor"},
+    {"fact": "writing-no-fixed-layout", "at": "page-18_t1.s12.u2"},
+    {"fact": "writing-language", "at": "page-4_t1.s9.u1"},
+    {"fact": "writing-spelling", "at": "page-19_t1.s8.u1"}
+   ],
+   "methods": [
+    {"name": "Read the paper in this order", "text": "The setting first, then the Writing Task, then the case notes line by line; ask who the reader is and what they will do.", "at": "pages-09-10-11_t1.s1.u3"},
+    {"name": "Expanding the purpose (the teacher's method)", "text": "Say briefly in the opening why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.", "at": "pages-06-07-08_t2.s4.u1"},
+    {"name": "Keep, keep briefly or leave out", "text": "For each note, ask what this reader will do with it: lines that only look related are left out; lines that explain the problem are kept briefly.", "at": "pages-12-13-14_t2.s2.u3"},
+    {"name": "The teacher's word-count advice", "text": "Ten or twelve words more or fewer do no harm; what matters is that the reader gets everything they need, nothing they do not, and less important points briefly.", "at": "pages-12-13-14_t1.s6.u1"},
+    {"name": "The teacher's advice on style", "text": "Never firstly, secondly or finally in the letter; fortunately or unfortunately at most once, and never about a patient's habits.", "at": "pages-15-16-17_t2.s3.u1"}
+   ],
+   "continues_in": [],
+   "topics": [
+    {"topic": "The six assessment criteria", "at": "page-4_t1.s1.u2"},
+    {"topic": "Grade B in OET Writing", "at": "page-5_t1.s7.u1"},
+    {"topic": "Accuracy to the case notes", "at": "pages-09-10-11_t3.s2.u1"},
+    {"topic": "Abbreviations in the letter", "at": "pages-15-16-17_t3.s1.u4"},
+    {"topic": "Tense in the letter", "at": "pages-12-13-14_t3.s2.u1"}
    ]
   }
  }
