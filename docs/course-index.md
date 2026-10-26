@@ -8022,7 +8022,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 2. OET Writing: Assessment Criteria
 
-- Lesson ID and folder: `writing-02-assessment-criteria` (folder `writing-02-assessment-criteria`); course writing, lesson 2; length 29:42; bundle format 1.21
+- Lesson ID and folder: `writing-02-assessment-criteria` (folder `writing-02-assessment-criteria`); course writing, lesson 2; length 29:42; bundle format 1.22
 - Status: built, final gate not approved
 - Description: Learn the six criteria OET uses to assess your letter, how each one is scored, and what each one asks you to do when you write.
 - Original session: folder `source`: `source/video.mp4`, 48:38 long, partial hash `c14729b6930ac321`; deck `source/slides.pdf`, 21 pages

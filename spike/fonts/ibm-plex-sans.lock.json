@@ -1,0 +1,62 @@
+{
+ "purpose": "IBM Plex Sans for the reference player of a style C lesson (ADR 042): the files style_c.py embeds in player.html. Downloaded once into %LOCALAPPDATA%/oet-fonts/ by `style_c.py --fetch-fonts`, each checked against its SHA-256; never committed (binary). The site serves its own copy of the same family (oetacademy-web ADR-0030).",
+ "family": "IBM Plex Sans",
+ "licence": "SIL Open Font License 1.1",
+ "package": "@fontsource/ibm-plex-sans",
+ "version": "5.2.5",
+ "base_url": "https://cdn.jsdelivr.net/npm/@fontsource/ibm-plex-sans@5.2.5/files/",
+ "unicode_range": {
+  "latin": "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD",
+  "latin-ext": "U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF"
+ },
+ "files": [
+  {
+   "name": "ibm-plex-sans-latin-400-normal.woff2",
+   "subset": "latin",
+   "weight": 400,
+   "sha256": "3b646991d30055a93a4ecc499713d4347953a74a947ecab435ab72070cbdab0e"
+  },
+  {
+   "name": "ibm-plex-sans-latin-ext-400-normal.woff2",
+   "subset": "latin-ext",
+   "weight": 400,
+   "sha256": "c93d2a12aaa280f68b9ab7b726ff8dfedda67c99ef9abed047c1847a1cc6d583"
+  },
+  {
+   "name": "ibm-plex-sans-latin-500-normal.woff2",
+   "subset": "latin",
+   "weight": 500,
+   "sha256": "0717336fb31fcdcde4b8deb3675bb4a0f7f6d484864afcd6751ac29975962203"
+  },
+  {
+   "name": "ibm-plex-sans-latin-ext-500-normal.woff2",
+   "subset": "latin-ext",
+   "weight": 500,
+   "sha256": "2846035d85100f84c79393f80f1442d4ee720129ab8b3ffa8969aae281db8c6c"
+  },
+  {
+   "name": "ibm-plex-sans-latin-600-normal.woff2",
+   "subset": "latin",
+   "weight": 600,
+   "sha256": "8960851d691c054ed38e259bdcf1a6190d157b4203ed5bb32c632a863fb8ec2f"
+  },
+  {
+   "name": "ibm-plex-sans-latin-ext-600-normal.woff2",
+   "subset": "latin-ext",
+   "weight": 600,
+   "sha256": "b25dfd4f979e442ae1e25cd0894463434cf01ba21ac1a35d39f4a82bd4cc060e"
+  },
+  {
+   "name": "ibm-plex-sans-latin-700-normal.woff2",
+   "subset": "latin",
+   "weight": 700,
+   "sha256": "42e7b0c143c19df9d99fd896e76b48f846edf0902d200bc29796b34d12c33aa7"
+  },
+  {
+   "name": "ibm-plex-sans-latin-ext-700-normal.woff2",
+   "subset": "latin-ext",
+   "weight": 700,
+   "sha256": "92f0392bd74fa3955bfa92f6ec747e7246d3567b6f46b32ddbaf271104836ab8"
+  }
+ ]
+}

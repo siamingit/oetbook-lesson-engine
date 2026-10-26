@@ -298,6 +298,29 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
 #cam.lboard.lread > .blk:not(.lform), #cam.lboard.lread .lpanel { display: none; }
 #cam.lboard.lread > .blk.lform { width: 100%; }
 #cam.lboard.lread .lform .lt-win { height: auto; }
+
+/* Style C (bundle 1.22, ADR 042): the look is the lesson's blocks.css; these
+   are the looks of what the player draws, and its motion (rules 53 to 55). A
+   highlight is a marker band under the words, in the amber of the key word; a
+   strike is drawn in the red of "wrong"; both are drawn in from left to right
+   (positionMarks). A note that goes, by an erase or a clear, fades and shrinks;
+   a cleared note's room closes up as it goes, instead of jumping. */
+.frame.style-c #marks .m-highlight { background: linear-gradient(transparent 58%, #ffd27a 58%);
+                                     mix-blend-mode: multiply; border-radius: .2cqh; }
+.frame.style-c #marks .m-strike { background: #b83b28; }
+@keyframes sc-out { from { max-height: var(--sc-h); }
+                    to { opacity: 0; transform: scale(.96); max-height: 0; padding-top: 0; padding-bottom: 0;
+                         margin-bottom: -2.5cqh; } }
+@keyframes sc-out-tight { from { max-height: var(--sc-h); }
+                          to { opacity: 0; transform: scale(.96); max-height: 0; padding-top: 0; padding-bottom: 0;
+                               margin-bottom: -1.2cqh; } }
+@keyframes sc-erase { to { opacity: 0; transform: scale(.96); } }
+@media (prefers-reduced-motion: no-preference) {
+  .frame.style-c #cam.glide { transition-duration: .35s; }
+  .frame.style-c .blk.sc-out { overflow: hidden; animation: sc-out .25s ease-in forwards; }
+  .frame.style-c #cam.tight .blk.sc-out { animation-name: sc-out-tight; }
+  .frame.style-c .blk.sc-erase { animation: sc-erase .25s ease-in forwards; }
+}
 </style>
 </head>
 <body>
@@ -381,6 +404,12 @@ for (const bd of boards) for (const s of bd.states) for (const u of s.utterances
 
 // ---- Layout: fit the frame to the viewport ----
 const frame = document.getElementById("frame");
+// 1.22 (ADR 042): a lesson in style C. Its look is in its own blocks.css; the
+// player adds the marks' looks and the motion of rules 53 to 55.
+const STYLE_C = !!(BUNDLE.lesson && BUNDLE.lesson.style === "c");
+if (STYLE_C) frame.classList.add("style-c");
+let fxClock = 0;                  // the lesson time being drawn, for the effects
+const SC_OUT = 0.25;              // s: a note going by an erase or a clear (rule 53)
 // 1.18: a lesson with recordings of its practice set (utterances of kind "exam")
 const HAS_EXAM = utterances.some(u => u.kind === "exam");
 if (SILENT && HAS_EXAM)
@@ -877,7 +906,7 @@ function applyMarks(s, t, erased) {
     if (!w) continue;
     if (c.type === "point") pointSpan = w.first;
     else { w.first.dataset.mk = drawnMarkList.length;
-           drawnMarkList.push({ type: c.type, spans: w.spans, with: c.with || "" }); }
+           drawnMarkList.push({ type: c.type, spans: w.spans, with: c.with || "", time: c.time }); }
   }
 }
 
@@ -1020,6 +1049,12 @@ function positionMarks() {
     let first = null;
     const [pv, nx] = m.type === "circle" ? neighbourEdges(m) : [null, null];
     const sameLine = (a, cr) => a && Math.min(a.bottom, cr.bottom) - Math.max(a.top, cr.top) > 0.5 * cr.height;
+    // 1.22, style C (rule 53): a highlight or a strike is drawn in from left to
+    // right, line after line, over its first 0.3 s (0.25 s for a strike),
+    // measured from the lesson's clock, so a seek shows it whole
+    const sweep = STYLE_C && (m.type === "highlight" || m.type === "strike") && !reducedMotion.matches
+      ? Math.max(0, Math.min(1, (fxClock - m.time) / (m.type === "strike" ? 0.25 : 0.3))) : 1;
+    const drawn = [];
     for (const sp of m.spans) {
       if (!sp.isConnected) continue;
       const clip = lensClip(sp);
@@ -1035,13 +1070,20 @@ function positionMarks() {
             if (sameLine(nx, cr)) x1 = Math.min(x1, nx.left - f.left - 1);
             b.x = Math.min(x0, r.left); b.w = Math.max(x1, r.right) - b.x;
           }
-          const d = document.createElement("div");
-          d.dataset.mk = mi;
-          d.className = b.cls;
-          d.style.cssText = "left:" + b.x + "px;top:" + b.y + "px;width:" + b.w + "px;height:" + b.h + "px";
-          marksEl.appendChild(d);
+          drawn.push(b);
         }
       }
+    }
+    let left = sweep < 1 ? sweep * drawn.reduce((a, b) => a + b.w, 0) : Infinity;
+    for (const b of drawn) {
+      const w = sweep < 1 ? Math.min(b.w, left) : b.w;
+      if (sweep < 1 && w <= 0) break;
+      left -= w;
+      const d = document.createElement("div");
+      d.dataset.mk = mi;
+      d.className = b.cls;
+      d.style.cssText = "left:" + b.x + "px;top:" + b.y + "px;width:" + w + "px;height:" + b.h + "px";
+      marksEl.appendChild(d);
     }
     if (SIG_LABELS[m.type] && first) {
       // the label, above the first line of the phrase, in the line gap kept for it
@@ -2030,8 +2072,63 @@ function applyForm(bd, s, at, jumped) {
 
 // The camera: onto the active cell (or the row), with the row's visible side
 // notes, when the table's text on screen is under 14px; otherwise still.
+// 1.22, style C (rule 55): the zoom effect in force now, the latest one, if any.
+// None under reduced motion: the board stays as rules 13 and 52 show it.
+function zoomEffect() {
+  if (!STYLE_C || reducedMotion.matches || !drawnState || drawnErased) return null;
+  let z = null;
+  for (const e of drawnState.effects || []) if (e.type === "zoom" && e.time <= fxClock && fxClock < e.until) z = e;
+  return z;
+}
+// The view onto a document's line: the words of `text` in the row's cell (or the
+// whole cell, or row), and every side note shown, at the scale that sets the
+// line's text at body size (3.2% of the frame), never above 2.2 and only as far
+// as they all stay in view; "" where that is no zoom at all.
+function zoomView(e, notes) {
+  const el = blockEls.get(e.block);
+  const tr = el && el.querySelector('tbody tr[data-row="' + e.row + '"]');
+  const cell = tr && (e.col !== null && e.col !== undefined ? tr.children[e.col] : tr);
+  if (!cell) return "";
+  const C = camEl.getBoundingClientRect();
+  const ct = getComputedStyle(camEl).transform;
+  const s0 = ct && ct !== "none" ? new DOMMatrix(ct).a : 1;
+  const unit = q => ({ x: (q.left - C.left) / s0, y: (q.top - C.top) / s0, w: q.width / s0, h: q.height / s0 });
+  const range = document.createRange();
+  let found = false;
+  if (e.text) {
+    const walker = document.createTreeWalker(cell, NodeFilter.SHOW_TEXT);
+    const nodes = []; let all = "", n;
+    while ((n = walker.nextNode())) { nodes.push([n, all.length]); all += n.data; }
+    const i = all.indexOf(e.text);
+    if (i >= 0) {
+      const at = k => { for (let j = nodes.length - 1; j >= 0; j--) if (nodes[j][1] <= k) return [nodes[j][0], k - nodes[j][1]]; };
+      const a = at(i), b = at(i + e.text.length - 1);
+      range.setStart(a[0], a[1]); range.setEnd(b[0], b[1] + 1);
+      found = true;
+    }
+  }
+  if (!found) range.selectNodeContents(cell);
+  const rects = [...range.getClientRects()].filter(q => q.width > 0 && q.height > 0).map(unit);
+  if (!rects.length) return "";
+  const join = (r, q) => { const x = Math.min(r.x, q.x), y = Math.min(r.y, q.y);
+    return { x, y, w: Math.max(r.x + r.w, q.x + q.w) - x, h: Math.max(r.y + r.h, q.y + q.h) - y }; };
+  let r = rects.reduce(join);
+  for (const nd of notes) r = join(r, visIn(nd));
+  const W = camEl.offsetWidth, H = camEl.offsetHeight;
+  const px = parseFloat(getComputedStyle(cell).fontSize) * zoomOf(cell);
+  const sc = Math.max(1, Math.min(frame.offsetHeight * 0.032 / px, 2.2, W * 0.92 / r.w, H * 0.8 / r.h));
+  if (sc < 1.03) return "";
+  const tx = Math.min(0, Math.max(W - W * sc, W / 2 - (r.x + r.w / 2) * sc));
+  const ty = Math.min(0, Math.max(H - H * sc, H / 2 - (r.y + r.h / 2) * sc));
+  return "translate(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px) scale(" + sc.toFixed(3) + ")";
+}
 function camera(bd, focus, notes, jumped) {
   let tf = "";
+  // 1.22, style C (rule 55): a document's line zoomed while the narration is on
+  // it, in place of rule 13's zoom and on a board shown whole too
+  const zfx = zoomEffect();
+  if (zfx) tf = zoomView(zfx, notes);
+  if (tf) focus = null;
   // in the board's units: a block the guard set smaller has its offsets in its own
   const oi = visIn;
   if (isMapBoard(bd) || bd.lens) focus = null;     // the lens zooms (the map's, 1.14; a Part B text's, 1.15), not the camera
@@ -2102,6 +2199,18 @@ function clearedAt(s, t) {
   const out = new Set();
   for (const c of (s && s.clears) || []) if (t >= c.time) for (const id of c.blocks) out.add(id);
   return out;
+}
+// 1.22, style C: when a working block is cleared in its state
+function clearTime(s, id) {
+  for (const c of (s && s.clears) || []) if (c.blocks.includes(id)) return c.time;
+  return -Infinity;
+}
+// 1.22, style C (rule 54): the blocks lifted now, by the state's `effects`; the
+// look is the lesson's blocks.css (`fx-lift`)
+function applyLift(s, t) {
+  const up = new Set();
+  for (const e of (s && s.effects) || []) if (e.type === "lift" && e.time <= t && t < e.until) up.add(e.block);
+  for (const [id, el] of blockEls) el.classList.toggle("fx-lift", up.has(id));
 }
 
 // The guard for every other board (maintainer, 2026-10-11): the fit measured the
@@ -2298,7 +2407,14 @@ function renderFrame(t) {
   // moment at once, with no replay of the drawing.
   const jumped = lastRenderT === null || Math.abs(t - lastRenderT) > 0.75;
   lastRenderT = t;
-  drawBoard(bd, s, erased);
+  fxClock = t;
+  // 1.22, style C (rule 53): a note that goes, by an erase or a clear, fades and
+  // shrinks over SC_OUT first; never under reduced motion, nor in a measuring
+  // harness, which measures the board as it is after
+  const motion = STYLE_C && !reducedMotion.matches && !window.__lockWidth && !guarding;
+  const leaving = motion && erased && t < s.erase.time + SC_OUT;
+  drawBoard(bd, s, erased && !leaving);
+  if (leaving) for (const [, el] of blockEls) if (el.dataset.layer === "working") el.classList.add("sc-erase");
   // 1.15: on a Part B question board the text is covered (type tag only, its
   // room kept) while the question, the options and try-it-first are taught
   if (bd.table) {
@@ -2312,7 +2428,13 @@ function renderFrame(t) {
       const at = revealAt.get(s.id + "|" + id);
       if (el && el.dataset.layer === "working") {
         el.classList.toggle("on", at !== undefined && t >= at);
-        el.classList.toggle("cleared", gone.has(id));
+        // 1.22, style C: a cleared note shrinks and its room closes up, then it is gone
+        const going = motion && gone.has(id) && t < clearTime(s, id) + SC_OUT;
+        el.classList.toggle("cleared", gone.has(id) && !going);
+        if (going && !el.classList.contains("sc-out")) {
+          el.style.setProperty("--sc-h", el.offsetHeight + "px");
+          el.classList.add("sc-out");
+        } else if (!going && el.classList.contains("sc-out")) el.classList.remove("sc-out");
       }
     }
   }
@@ -2320,6 +2442,7 @@ function renderFrame(t) {
     const el = blockEls.get(id);
     if (el) el.classList.toggle("on", t >= at);
   }
+  if (STYLE_C) applyLift(s && !erased ? s : null, t);
   // 1.17: the options' room, from their state; set before the marks, whose
   // redraw holds each kept block at its place
   optRoom(bd, s);

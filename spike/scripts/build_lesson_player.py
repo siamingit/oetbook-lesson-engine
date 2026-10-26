@@ -50,6 +50,7 @@ from build_board_bundle import block_tokens, norm, reading_runs   # noqa: E402
 from build_board_timeline import lay_timeline                     # noqa: E402
 from write_narration import spoken                                # noqa: E402
 import board_style                                                # noqa: E402
+import style_c                                                    # noqa: E402
 from write_screens import (FRAME_CSS, frame_css, has_map, TAG_LABELS, block_html, resolve_images, IMAGE_TOKEN,     # noqa: E402
                            block_text_runs, is_exercise_board, has_part_b, has_part_c, has_parts, AUDIO_TOKEN,
                            EXAM_TOKEN)
@@ -133,8 +134,12 @@ SPLIT_DEFAULT = 55
 # lesson's sections.json (`boards_fit`); and a lesson whose sections.json declares
 # a newer format (`lesson.bundle_format`) is written in it. Either way the lesson
 # is written in 1.21; every other lesson keeps its format, byte for byte.
-NEWEST_FORMAT_VERSION = "1.21"
+FIT_FORMAT_VERSION = "1.21"
 FIT_VALUES = ("whole",)
+# 1.22 (ADR 042): a lesson in style C (its sections.json's `lesson.style`):
+# `lesson.style` and each state's `effects` (rules 53 to 55); every other lesson
+# keeps its format, byte for byte
+NEWEST_FORMAT_VERSION = "1.22"
 
 
 def vkey(v: str) -> tuple[int, ...]:
@@ -187,9 +192,10 @@ def declared_format(info: dict) -> str | None:
     """The newer format a lesson's sections.json declares (`lesson.bundle_format`;
     ADR 041), checked against the formats this builder writes."""
     v = (info.get("lesson") or {}).get("bundle_format")
-    if v and (not isinstance(v, str) or vkey(v) > vkey(NEWEST_FORMAT_VERSION)):
-        raise SystemExit(f"REFUSED: sections.json lesson.bundle_format {v!r} is not a format this builder "
-                         f"writes (newest {NEWEST_FORMAT_VERSION})")
+    if v and (not isinstance(v, str) or vkey(v) > vkey(FIT_FORMAT_VERSION)):
+        raise SystemExit(f"REFUSED: sections.json lesson.bundle_format {v!r} is not a format a lesson "
+                         f"declares (newest {FIT_FORMAT_VERSION}; {NEWEST_FORMAT_VERSION} is a lesson in "
+                         "style C, build_sections.py --style c)")
     return v
 
 
@@ -624,6 +630,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             if nb["id"] in (fit.get("pics") or {}):
                 nb["size"] = fit["pics"][nb["id"]]       # 1.12: smaller, so the board fits (ADR 021)
             html_b = resolve_images(block_html(nb), out_dir, L)
+            if style_c.style_of(L):
+                html_b = style_c.tone_html(html_b)          # 1.22: column labels by meaning (ADR 042)
             if nb.get("image"):                      # 1.11: the file, relative to the bundle's folder
                 nb["image"] = {**nb["image"], "file": resolve_images(
                     IMAGE_TOKEN + "/" + nb["image"]["file"], out_dir, L)}
@@ -935,8 +943,13 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     # 1.21 (ADR 041): the boards shown whole, and the format they and the
     # lesson's own declaration call for
     board_fits(info, boards_out, blocks_all, sample=bool(only))
+    # 1.22 (ADR 042): a lesson in style C, and when its effects play
+    style = style_c.style_of(L)
+    if style:
+        style_c.effects(boards_out, blocks_all)
     newer = max([v for v in (declared_format(info),
-                             NEWEST_FORMAT_VERSION if any(bd.get("fit") for bd in boards_out) else None) if v],
+                             FIT_FORMAT_VERSION if any(bd.get("fit") for bd in boards_out) else None,
+                             style_c.FORMAT_VERSION if style else None) if v],
                 key=vkey, default=None)
 
 
@@ -966,6 +979,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
               "categories": [{"id": cid, "title": title,
                               "sections": [s["id"] for s in sections_out if s["category"] == cid]}
                              for title, cid in cat_ids.items()]}
+    if style:
+        lesson["style"] = style             # 1.22: the lesson's look (ADR 042)
 
     first = next(iter(audio_index.values()))
     meta = {"silent": silent, **gaps, "wpm": wpm if silent else None,
@@ -992,7 +1007,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     template = (REPO_ROOT / "spike" / "scripts" / "board_player_template.html").read_text(encoding="utf-8")
     title = ("SILENT PREVIEW - " if silent else "") + info["lesson"]["title"]
     html = (template.replace("__TITLE__", title)
-            .replace("/*__FRAME_CSS__*/", frame_css(L))
+            .replace("/*__FRAME_CSS__*/", (style_c.font_css() if style else "") + frame_css(L))
             .replace("__BUNDLE_JSON__", json.dumps(bundle, ensure_ascii=False).replace("</", "<\\/")))
     (out_dir / "player.html").write_text(html, encoding="utf-8")
 

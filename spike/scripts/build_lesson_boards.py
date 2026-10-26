@@ -21,6 +21,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+# the most parts a contents board lists on one board, two columns of six (ADR 042)
+CONTENTS_MAX = 12
+
 # a block's provenance, as the bundle carries it (AGENTS.md §9; docs/04-LESSON-BUNDLE.md §5)
 PROVENANCES = ("source-derived", "adapted", "corrected", "authored", "maintainer")
 
@@ -149,6 +152,14 @@ def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
             if s["height"] > 0.84:
                 findings.append({"severity": "fail", "where": s["id"],
                                  "what": f"board height {s['height']:.0%} exceeds the content band"})
+    # a short list fits on one board (ADR 042): in style C the contents board
+    # lists every part on one board, in two columns, never cleared to make room;
+    # more than CONTENTS_MAX parts cannot, and the lesson's parts must be grouped
+    import style_c
+    if style_c.style_of(lesson) == "c" and len(items) > CONTENTS_MAX:
+        findings.append({"severity": "fail", "where": "t2",
+                         "what": f"{len(items)} contents items: more than {CONTENTS_MAX} do not fit on one "
+                                 "board in two columns (ADR 042); group the sections into categories"})
     screens = {"lesson_title": sec["lesson"], "lesson": lesson.name, "page": page, "pages": [page],
                "section": {"title": "Introduction", "pages": [page], "intro": True},
                "model": None, "raw_id": None,

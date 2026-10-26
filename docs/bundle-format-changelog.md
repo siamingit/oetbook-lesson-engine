@@ -1,7 +1,7 @@
-# Lesson bundle format changelog: 1.12 to 1.21
+# Lesson bundle format changelog: 1.12 to 1.22
 
 For the oetacademy-web team, before the site accepts bundle formats 1.13 to 1.20.
-Written 2026-10-22; format 1.21 added 2026-10-23 (§9a). It is complete on its own: it does not assume access to the
+Written 2026-10-22; format 1.21 added 2026-10-23 (§9a); format 1.22 added 2026-10-26 (§9b). It is complete on its own: it does not assume access to the
 engine's repository. The 1.12 contract the site already implements is the
 engine's "Player rendering rules: bundle format 1.12" (rules 1 to 28, sent
 2026-10-01) and "Lesson bundle 1.12: what changed since 1.11"; this page lists
@@ -34,6 +34,11 @@ rebuilt at 1.21 with nothing visible changed. Unlike 1.13 to 1.20, a lesson is 1
 only where it uses the field or was rebuilt by the clean-up; every other lesson keeps
 its version.
 
+Format 1.22 (2026-10-26, §9b) is the look the owner chose for Writing 2 and every lesson after it,
+style C, with motion: one optional lesson field, `style`, and one optional state field, `effects` (a
+block lifted, a document's line zoomed), and rules 53 to 55; the look itself is in the lesson's own
+`blocks.css`. A lesson is 1.22 only when it is in style C; the published lessons keep their versions.
+
 **Releases.** From 1.21 on, each format version is released as a git tag of the
 engine's repository, `bundle-format-v<version>` (`bundle-format-v1.21`), on the commit
 that merges it. Formats 1.0 to 1.20 have no tag.
@@ -49,6 +54,7 @@ that merges it. Formats 1.0 to 1.20 have no tag.
 | 1.19 | 2026-10-13 | The Listening board (`listen`): a transcript box that follows the recording by word times; the question column follows the recording | **Required** | No lesson is 1.19. Features: L2–L5 |
 | 1.20 | 2026-10-14 | The vocabulary panel under the transcript, the whole note form during the reading time, no hyphenation | **Required** | L2–L5. Label only, no feature used: L1 |
 | 1.21 | 2026-10-23 | A board shown whole, never zoomed (`fit`); the clean-up of §12's data | **Required** (`fit`, rule 52) | G6 (`fit`). Rebuilt by the clean-up, no new feature used: R5, L2, L4, L5 |
+| 1.22 | 2026-10-26 | Style C and its motion: the lesson's `style`, a state's `effects` (lift, zoom), marks drawn in, notes that shrink as they go | **Required** (rules 53 to 55) | None approved yet: Writing 2 (W2), at its final gate |
 
 ## 1. How to read this page
 
@@ -990,6 +996,166 @@ it; every other lesson keeps its version until it is rebuilt.
 Nothing else changes for the other published lessons (R1 to R4, L1, L3): their v1
 packages stay as they are.
 
+## 9b. Format 1.22 — style C, "soft notebook", and its motion
+
+2026-10-26 (engine ADR 042), released as the tag `bundle-format-v1.22` of the engine's repository. The
+owner chose a new look for the lessons, style C, for Writing 2 and every lesson built after it, with
+motion effects; the 22 published lessons keep their look and their format. A lesson is 1.22 only when
+it is in style C.
+
+### What is in `blocks.css` (no new data, plays on today's player)
+
+A style C lesson's `blocks.css` is the 1.21 stylesheet followed by style C's rules. They key only on
+the classes and attributes a player already sets or the block `html` already carries:
+
+- the look: the header band and the board (`.hdr`, `.body`) on the ground `#f3f0fb`; white cards with
+  no borders; dark gloss and definition cards; soft number badges; column labels in letter-spaced
+  capitals; type `var(--font-plex, "IBM Plex Sans")`, 400 to 700 (the site's `--font-plex` is IBM Plex
+  Sans);
+- the column labels' meaning: a table's `th` whose words say wrong or right, and that column's `td`
+  cells on a core table, carry `data-tone="wrong"` or `data-tone="right"` in the block `html` (red
+  `#b83b28`, teal `#0f766e`);
+- **soft appear**: `.blk.on` that is not a fixed block (`[data-layer]` / `[data-oa-layer]` not
+  `fixed`) runs a 0.3 s animation, opacity 0 and 1.2% of the frame lower to its place
+  (`animation-fill-mode: backwards`);
+- **the spotlight in style C** (rule 11): rows not in focus at opacity 0.5 (not 0.3); the row in focus
+  (`.tbl.core.spot tbody tr.focus`) lifted: `transform: scale(1.015)`, a shadow
+  `0 1.4cqh 4.2cqh rgba(91,63,196,.18)`, a lilac ring `#c9bdf5` (inset shadows on its cells), over
+  0.25 s;
+- **the lift's look** (rule 54): `.blk.fx-lift` scaled 1.02, the same shadow, `outline: .4cqh solid
+  #c9bdf5`, `z-index: 2`;
+- `.blk` takes `transition: opacity .25s ease, transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s
+  ease !important`, so it wins over the player's unlayered `.blk { transition: opacity .25s }`;
+- `@media (prefers-reduced-motion: reduce)`: no soft appear, no scale, transitions of opacity only.
+
+Everything a lift or the spotlight scales uses `scale(calc(1 + k * var(--sc-motion, 1)))`; the
+engine's measuring checks set `--sc-motion: 0` to measure the board at rest. A player need not set it.
+
+### Added: `lesson.style`
+
+| Field | Type | Values | Meaning | When absent |
+|---|---|---|---|---|
+| `lesson.style` | string, optional | `"c"` (the only value) | The lesson is drawn in style C: rules 53 to 55 | the lesson's look is its `blocks.css` alone, as before |
+
+### Added: `boards[].states[].effects`
+
+On every state of a 1.22 lesson (an empty list when the state has none), in time order. Absent in every
+other lesson.
+
+| Field | Type | Meaning |
+|---|---|---|
+| `type` | `"lift"` or `"zoom"` | rule 54 or rule 55 |
+| `block` | block id | a block of the board: the block lifted; for a zoom, the board's `table` |
+| `time`, `until` | seconds | from when to when, inside the state (`start` ≤ `time` < `until` ≤ `until` of the state) |
+| `row` | integer | a zoom: the table's body row (from 0) |
+| `col` | integer or null | a zoom: the cell's column (from 0), or null for the whole row |
+| `text` | string or null | a zoom: the words to zoom onto, as they occur in that cell, or null for the whole cell |
+
+```json
+{"id": "page-2_t2.s1", "working": ["page-2_k12", "page-2_k03", "page-2_k04", "…"],
+ "effects": [{"type": "lift", "block": "page-2_k03", "time": 41.204, "until": 44.910},
+             {"type": "lift", "block": "page-2_k04", "time": 44.910, "until": 48.022}],
+ "…": "…"}
+{"id": "page-9_t1.s4", "row": 1,
+ "effects": [{"type": "zoom", "block": "page-9_k01", "row": 1, "col": 1, "text": "12 March 2026",
+              "time": 610.402, "until": 614.118}],
+ "…": "…"}
+```
+
+### Rule 53, style C
+
+In a lesson whose `lesson.style` is `"c"`, the look is the lesson's `blocks.css`, keyed on the classes
+rules 4, 11 and 18 already set and on `fx-lift` (rule 54). The renderer draws what it draws itself in
+style C's looks and motion:
+
+- a `highlight` mark is a marker band, `#ffd27a`, under the lower 42% of each line box of its phrase
+  (`linear-gradient(transparent 58%, #ffd27a 58%)`, `mix-blend-mode: multiply`); a `strike` is
+  `#b83b28`; the other marks as before;
+- a `highlight` is drawn in from left to right over 0.3 s from its `time`, a `strike` over 0.25 s,
+  line after line: the share drawn is `(t - time) / duration` of the phrase's total width (the sum of
+  its line fragments), computed from the lesson's clock, so a seek shows the mark whole. (The site
+  rebuilds its mark boxes every frame, so a CSS animation on them would restart; the width must come
+  from the clock, as the engine's reference player does.)
+- from an erase's `time`, the working blocks fade out and shrink to 96% over 0.25 s, then go; a block a
+  clear names does the same, and its height and the gap after it close to nothing over those 0.25 s,
+  so the blocks after it rise into its room instead of jumping (reference: the block keeps its place
+  until `time + 0.25`, with `max-height` from its own height to 0, padding to 0 and
+  `margin-bottom: -<the board's row gap>`);
+- the camera glides over 0.35 s, eased (rules 13 and 55).
+
+Under `prefers-reduced-motion` none of it moves: marks appear whole, blocks go at once. At rest the
+board is exactly as without the motion, and no word moves inside its block (rule 19).
+
+### Rule 54, a lift
+
+While a state is current and not erased, from a `lift` entry's `time` to its `until`, the element of
+`block` carries the class `fx-lift`; the lesson's `blocks.css` draws it. The renderer only sets and
+clears the class (a seek sets it at once). Never on a fixed block's position: the lift is a transform
+about its centre.
+
+### Rule 55, a zoom
+
+While a state is current and not erased, and not under `prefers-reduced-motion`, from a `zoom` entry's
+`time` to its `until`, the view (the board's camera, as rule 13's) zooms onto the words `text` as they
+occur in the cell (`row`, `col`) of the board's table `block` (the whole cell where `text` is null or
+not found; the whole row where `col` is null), with every side note shown (rule 12):
+
+- scale: the one that sets that cell's text at 3.2% of the frame's height on screen, never above 2.2,
+  and no larger than keeps those words and the notes within 92% of the board's width and 80% of its
+  height; below 1.03, no zoom;
+- position: centred on them as far as the board's edges allow; the view never shows past the board's
+  left, right, top or bottom (`translate(tx, ty) scale(s)` with transform origin at the board's top
+  left, `tx` clamped to `[W - W*s, 0]` and `ty` to `[H - H*s, 0]`);
+- it takes the place of rule 13 for that time, and applies on a board with `fit` `"whole"` too (rule
+  52 holds outside it);
+- the view glides in, from one entry to the next, and back out over 0.35 s.
+
+Reference: `zoomView` in the engine's `spike/scripts/board_player_template.html`.
+
+### Where the engine uses the effects
+
+Lifts: each contents item while it is named; each of two or more fixed sentences or cards on a board
+while it is read. Zooms: a document's line (a letter, case notes) set at 2.8% of the frame or less, or
+on a board shown whole, from a mark the narration draws on it until the narration moves on to a note.
+The table row in focus is lifted by `blocks.css` on the spotlight, with no data.
+
+### Can a site that knows only 1.21 read 1.22?
+
+- **The JSON is additive**: one optional lesson field and one optional state field.
+- **The contract refuses it**: `format_version` enumerations, as for 1.21.
+- **Played by a 1.21 player** (if the version check were relaxed): the look, the soft appear and the
+  spotlight's lift and fade show (they are `blocks.css`); no block is lifted, nothing zooms, the marks
+  keep their 1.21 looks and appear whole, and notes go at once. The lesson is readable but not as the
+  owner chose it.
+
+### What the site must do
+
+1. **Contracts** (a new release): add `"1.22"` to `format_version` in `lesson-bundle.schema.json` and
+   `lesson-text.schema.json` and to the manifest's `lesson.bundle_format_version`; `lesson.style`
+   optional `{"enum": ["c"]}`; a state's `effects` optional, an array of `{type, block, time, until,
+   row?, col?, text?}` with `type` `{"enum": ["lift", "zoom"]}`. Suggested rules for 1.22 or later: a
+   lesson with `style` has `effects` on every state and the other way round; `effects` in time order;
+   `block` on its board; a zoom's `block` the board's `table` and `row` one of its rows; `time` <
+   `until`, both inside the state.
+2. **Serving** (`packages/lesson-player/src/section/cut.ts`): pass `lesson.style` and each state's
+   `effects` to the browser (the cut copies fields by name).
+3. **Player**: accept 1.22 (`PLAYABLE_BUNDLE_FORMATS`); rules 53, 54 and 55. In a style C lesson, let
+   the frame take the ground `#f3f0fb` behind the header, board and controls (its `.frame
+   { background: #fff }` is unlayered and wins over the lesson's), if the site's own chrome allows.
+4. **Reduced motion**: the site's global rule already cuts transitions to 0.01 ms; the player must also
+   skip the marks' draw-in, the notes' going and the zoom in JavaScript.
+5. **Tell the engine** the contracts release's tag and its zip's SHA-256: the engine pins it (a new
+   amendment of its ADR 039), and only then packages and publishes Writing 2.
+6. **Field index** (§13): `1.22 bundle.lesson.style`, `= "c"`, and the `effects` paths and values.
+
+### The packages that follow, once the site accepts 1.22
+
+| Lesson | Package version | Why |
+|---|---|---|
+| W2 `writing-02-assessment-criteria` | 1 | first package, after the owner's final approval |
+
+Nothing else changes for the published lessons: their packages stay as they are.
+
 ## 10. Player changes with no format version
 
 These apply to every format, 1.12 included, so they also concern the eleven
@@ -1308,4 +1474,18 @@ completeness.
 # 1.21
 1.21 bundle.boards[].fit
 1.21 bundle.boards[].fit = "whole"
+# 1.22
+1.22 bundle.lesson.style
+1.22 bundle.lesson.style = "c"
+1.22 bundle.boards[].states[].effects
+1.22 bundle.boards[].states[].effects[]
+1.22 bundle.boards[].states[].effects[].type
+1.22 bundle.boards[].states[].effects[].type = "lift"
+1.22 bundle.boards[].states[].effects[].type = "zoom"
+1.22 bundle.boards[].states[].effects[].block
+1.22 bundle.boards[].states[].effects[].time
+1.22 bundle.boards[].states[].effects[].until
+1.22 bundle.boards[].states[].effects[].row
+1.22 bundle.boards[].states[].effects[].col
+1.22 bundle.boards[].states[].effects[].text
 ```

@@ -78,7 +78,7 @@ HARNESS = r"""
   window.__lockWidth = __WIDTH__;
   window.__noGuard = true;            // 1.16: the fit measures the board itself, not the player's guard
   const style = document.createElement("style");
-  style.textContent = "*{transition:none!important;animation:none!important}"
+  style.textContent = "*{transition:none!important;animation:none!important}.frame{--sc-motion:0}.frame .blk{transition:none!important}"
     + (__FONT__ ? ".frame,.frame *{font-family:" + __FONT__ + "!important}" : "");
   document.head.appendChild(style);
   fit();

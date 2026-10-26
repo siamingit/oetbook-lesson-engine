@@ -3764,12 +3764,16 @@ def has_map(lesson) -> bool:
 def frame_css(lesson) -> str:
     """The blocks' stylesheet for a lesson: FRAME_CSS, plus the Reading blocks'
     rules for a Reading lesson only (ADR 026), plus the map's for a lesson with
-    a map (bundle 1.14)."""
+    a map (bundle 1.14), plus style C's for a lesson in style C (ADR 042)."""
     import lesson_type
+    import style_c
     part_c = has_part_c(lesson)          # 1.17: Part C draws Part B's question and gloss too
     return (FRAME_CSS + (READING_CSS if lesson and lesson_type.has(Path(lesson), "practice_set") else "")
             + (MAP_CSS if has_map(lesson) else "") + (PART_B_CSS if has_part_b(lesson) or part_c else "")
-            + (PART_C_CSS if part_c else "") + (LISTENING_CSS if has_listening_set(lesson) else ""))
+            + (PART_C_CSS if part_c else "") + (LISTENING_CSS if has_listening_set(lesson) else "")
+            # style C (ADR 042): the look of a lesson whose sections.json says so,
+            # last so it wins; every other lesson's stylesheet is unchanged
+            + (style_c.CSS if style_c.style_of(lesson) == "c" else ""))
 
 
 PAGE_CSS = """

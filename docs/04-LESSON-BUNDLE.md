@@ -4,7 +4,7 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.21 for a lesson with a board shown whole or one that declares it (ADR 041), 1.20 for a Listening lesson, 1.17 for a Reading Part C lesson, 1.16 for a Reading Part B lesson, 1.14 for a Reading lesson with a map of its texts, 1.13 for another Reading lesson, 1.12 for every other lesson. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.22 for a lesson in style C (ADR 042), 1.21 for a lesson with a board shown whole or one that declares it (ADR 041), 1.20 for a Listening lesson, 1.17 for a Reading Part C lesson, 1.16 for a Reading Part B lesson, 1.14 for a Reading lesson with a map of its texts, 1.13 for another Reading lesson, 1.12 for every other lesson. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
 2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
 table boards, on 2026-09-25 (docs/adr/007-table-boards.md); 1.3, the board style
@@ -26,11 +26,12 @@ transcripts and note forms, on 2026-10-13 (docs/adr/029-listening-lessons.md); 1
 the Listening board, the same day (docs/adr/030-listening-board-layout.md); 1.20, its
 vocabulary panel and the whole note form in the reading time, on 2026-10-14
 (docs/adr/031-listening-vocabulary-panel.md); 1.21, a board shown whole and the
-approved bundles' stray data cleaned up, on 2026-10-23 (docs/adr/041-bundle-format-1-21.md). A
+approved bundles' stray data cleaned up, on 2026-10-23 (docs/adr/041-bundle-format-1-21.md); 1.22, style C
+and its motion, on 2026-10-26 (docs/adr/042-style-c-and-motion.md). A
 lesson is written in 1.13 only when it is a Reading lesson, and in 1.20 only when it
 is a Listening lesson; in 1.21 only when it has a board shown whole, or its
-`sections.json` declares 1.21 (`lesson.bundle_format`); every other lesson stays 1.12,
-byte for byte, until rebuilt.
+`sections.json` declares 1.21 (`lesson.bundle_format`); in 1.22 only when it is in style C
+(`sections.json` `lesson.style` "c"); every other lesson stays 1.12, byte for byte, until rebuilt.
 A change to it is a new format version (§3), recorded in a new ADR.
 
 | Version | Date | Change |
@@ -54,6 +55,7 @@ A change to it is a new format version (§3), recorded in a new ADR.
 | 1.17 | 2026-10-08 | a Reading Part C lesson only (ADR 026, the Part C question method amendment of 2026-10-08): a state's `view` on a Part C question board (the text as a map or the paragraph read, whole); the block type `scale` (an attitude scale; its `items` kinds `marker`, `out`, `key`); a question's `options_later` (its first part, kind `options`, shows the options) and `target`; a doc part's `bold`; a `vocab_table` kind `recap_grouped` with `groups`; the mark cue types `sig_opinion`, `sig_hedge`, `sig_judge`, `sig_main`, `sig_aside`; rules 37 to 40; `blocks.css` adds the Part C rules. Additive: a 1.16 renderer draws the text whole, the options from the start and no signal marks |
 | 1.16 | 2026-10-08 | a Reading Part B lesson only (ADR 026, 2026-10-08 amendment): a question board in two columns, the extract whole, replacing 1.15's lens: a board's `split`; a state's `overlay` (glosses drawn over the question column), a gloss's going as a `clears` entry; the board's `focus` with no row until the whole extract has shown; `lens` and `lens_from` no longer written; rule 36 (rule 35 is 1.15 only); `blocks.css` adds the whole extract's spotlight. Minor: a 1.15 renderer finds no `lens` and draws the board as a table board, every block in one flow |
 | 1.21 | 2026-10-23 | a board's `fit`: `"whole"`, the board shown whole on every device, never zoomed or panned (rule 52; rule 13 changed), from the lesson's `sections.json` `boards_fit`; a lesson with one, or whose `sections.json` declares `lesson.bundle_format` 1.21, is written in 1.21 (ADR 041). The builder's clean-up, in every bundle written from 2026-10-23: a block's `provenance` always one of its values (an agent's lesson description is `authored`), a `heard` always `{file, start, end}` with `file` relative to the bundle's folder, no build field `_tokens`. Additive: a 1.20 renderer ignores `fit` and zooms the board like any table board |
+| 1.22 | 2026-10-26 | a lesson in style C only (ADR 042): the lesson's `style` ("c"); each state's `effects` (`lift`, `zoom`, in time order); rules 53 to 55; the lesson's `blocks.css` carries style C's look, and its table html marks a column label that says wrong or right (`th` and that column's `td` take `data-tone`). Additive: a 1.21 renderer draws the look from `blocks.css` and the spotlight's lift and fade, with no lift of a block, no zoom, marks in their 1.21 looks and notes that go at once |
 | 1.20 | 2026-10-14 | a Listening lesson only (ADR 031, amending ADR 030): a board's `listen.panel` (the vocabulary panel under the transcript's box: its type, the most items it shows, and its items) and, on a Part A board, `listen.reading` (the note form whole while the reading time plays); a gloss's `panel` and its `synonym` line; the transcript not hyphenated, 62% of the width, at 3.1%; rules 49 to 51. Additive: a 1.19 renderer draws a panel item as a note beside the questions and ignores `listen.reading` |
 | 1.19 | 2026-10-13 | a Listening lesson only (ADR 030, amending ADR 029): a board's `listen` (a Listening board: the transcript in a box of fixed size that follows a recording by its word times, the question column by its sections); a transcript's and a note form's html carry their window (`lt-win`, `lt-scr`; a transcript's marker `lt-mk` and caret `lt-caret`); no covered transcript, no `view` and no `focus` on a transcript; rules 46 to 48, which replace rule 44. Additive: a 1.18 renderer draws the transcript whole in its column and ignores `listen` |
 | 1.18 | 2026-10-13 | a Listening lesson only (ADR 029): an utterance of `kind` "exam", a recording of the practice set's own audio in the lesson's clock (`exam`, `provenance` "release", `text` null, its span `clip_in`/`clip_out` in the release's file); the cue type `play` that starts it; a pause's `reading_time`; a doc's `text_type` `transcript` (parts `turn` with `speaker`, `para`) and `form` (a Part A note form, its gaps typed parts); a gloss's `heard`; rules 42 to 45; `blocks.css` adds the Listening rules. Additive: a 1.17 renderer plays a recording as an utterance (rules 1, 17), draws a transcript and a form as documents, a form's gaps as typed gaps (rule 10), shows no recording state and no second button |
@@ -186,7 +188,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.12"`; `"1.13"` for a Reading lesson; `"1.14"` for a lesson with a map of its texts; `"1.16"` for a Reading Part B lesson (`"1.15"` for one built before 2026-10-08); `"1.17"` for a Reading Part C lesson; `"1.20"` for a Listening lesson (`"1.19"` for one built before ADR 031, `"1.18"` before ADR 030); `"1.21"` for a lesson with a board shown whole (`fit`) or whose `sections.json` declares 1.21 (ADR 041) |
+| `format_version` | string | `"1.12"`; `"1.13"` for a Reading lesson; `"1.14"` for a lesson with a map of its texts; `"1.16"` for a Reading Part B lesson (`"1.15"` for one built before 2026-10-08); `"1.17"` for a Reading Part C lesson; `"1.20"` for a Listening lesson (`"1.19"` for one built before ADR 031, `"1.18"` before ADR 030); `"1.21"` for a lesson with a board shown whole (`fit`) or whose `sections.json` declares 1.21 (ADR 041); `"1.22"` for a lesson in style C (ADR 042) |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -205,6 +207,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | `description` | one line in the maintainer's own words (docs/00-PRODUCT.md §2a); may be null |
 | `tense_colours` | 1.5. True in a lesson about tenses: only then do tense labels, timelines, category cards and table headers carry tense family colours; otherwise every block's `html` draws them neutral (docs/02-DESIGN-SYSTEM.md §7c) |
 | `categories` | `[{id, title, sections: [section id, …]}]`, in the order of the deck's contents slide, exactly as the contents board shows them. Empty for a deck with no contents slide. The introduction is in no category |
+| `style` | 1.22. `"c"`: the lesson is drawn in style C, "soft notebook" (docs/02-DESIGN-SYSTEM.md §1a, §8g; ADR 042), rules 53 to 55. Absent in every lesson that is not |
 
 ### `sections[]`
 
@@ -345,6 +348,7 @@ two things must hold, because cues and the reading pointer depend on them:
 | `zoom` | 1.14. On a map board: null (the four texts small; with `doc`, the others dimmed), `"doc"` (that text alone, at a document's size) or `"row"` (the state's `row` of that text set larger, in the middle of the map's frame). Absent on other boards |
 | `clears` | 1.8. `[{time, blocks}]` in time order: from `time`, the working `blocks` are cleared (not drawn) for the rest of the state, so the note revealed at `time` fits the board (ADR 011). 1.16: also a gloss in the state's `overlay`, at the moment before anything of the question under it is read or marked. Never a pinned block. Empty when nothing is cleared |
 | `reveal` | `{id: time}` for every working block and every part of a working diagram |
+| `effects` | 1.22, a lesson in style C: `[{type, block, time, until, …}]` in time order (an empty list when none): `lift` (`block` lifted from `time` to `until`, rule 54) and `zoom` (`block` the board's table, `row`, `col` (or null), `text` (the phrase, or null): the view on that line from `time` to `until`, rule 55). Absent in every other lesson |
 | `utterances` | what is said in this state, in order |
 
 ### `utterances[]`
@@ -720,6 +724,34 @@ These are the only rules. Every time and target they use is in the bundle.
     any table board; only the device's guard and the camera differ. A board with
     no `fit` is drawn as before.
 
+53. **Style C** (1.22): in a lesson whose `lesson.style` is `"c"`, the look is the lesson's
+    `blocks.css`, keyed on the classes rules 4, 11 and 18 already set and on `fx-lift` (rule 54). The
+    renderer draws what it draws itself in style C's looks and motion (docs/02-DESIGN-SYSTEM.md §8g):
+    a `highlight` is a marker band, `#ffd27a`, under the lower 42% of each line box of its phrase
+    (`linear-gradient(transparent 58%, #ffd27a 58%)`, multiplied over the text), and a `strike` is
+    `#b83b28`; a `highlight` is drawn in from left to right over 0.3 s from its `time`, a `strike` over
+    0.25 s, line after line, the share drawn `(t - time) / duration` of the phrase's total width, from
+    the lesson's clock (a seek shows them whole); from an erase's `time` the working blocks fade out and
+    shrink to 96% over 0.25 s and then go; a block a clear names does the same, its height and the gap
+    after it closing to nothing over those 0.25 s, so what follows it rises into its room instead of
+    jumping; the camera glides over 0.35 s (rules 13 and 55). Under `prefers-reduced-motion` none of
+    it moves: marks appear whole, blocks go at once. At rest the board is exactly as without the
+    motion, and no word moves inside its block (rule 19).
+54. **A lift** (1.22): while a state is current and not erased, from an `effects` entry's `time` to
+    its `until`, a `lift` entry's `block` carries the class `fx-lift`; `blocks.css` draws it (style C:
+    the block scaled to 102% about its centre, the shadow, a lilac outline, over 0.25 s; under reduced
+    motion the outline and shadow only). The renderer only sets and clears the class.
+55. **A zoom** (1.22): while a state is current and not erased, and not under
+    `prefers-reduced-motion`, from a `zoom` entry's `time` to its `until`, the view zooms onto the
+    words `text` as they occur in the cell (`row`, `col`) of the board's table `block` (the whole cell
+    where `text` is null or not found; the whole row where `col` is null), with every side note shown
+    (rule 12): at the scale that sets the cell's text at 3.2% of the frame's height on screen, never
+    above 2.2, and no larger than keeps those words and notes within 92% of the board's width and 80%
+    of its height, centred on them as far as the board's edges allow (the view never shows past the
+    board's edges). Below a scale of 1.03 there is no zoom. It takes the place of rule 13 for that
+    time and applies on a board with `fit` "whole" too (rule 52 holds outside it). The view glides in,
+    from one entry to the next, and back out over 0.35 s.
+
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and
 reduced motion. A seek shows the correct state at once, with no replay.
@@ -733,7 +765,7 @@ no cues and no provenance.
 
 | Field | Meaning |
 |---|---|
-| `format`, `format_version` | `"oetbook-lesson-text"`, and the same `format_version` as the lesson's `bundle.json` (`"1.12"` to `"1.21"`, §5) |
+| `format`, `format_version` | `"oetbook-lesson-text"`, and the same `format_version` as the lesson's `bundle.json` (`"1.12"` to `"1.22"`, §5) |
 | `lesson` | the same object as `bundle.json`'s `lesson` |
 | `sections[]` | `{id, title, category, start, end, narration_text, board_text, boards}` |
 | `sections[].narration_text` | everything said in the section, one paragraph per board |
@@ -765,7 +797,9 @@ The stylesheet the blocks' `html` is written against: block types, colours,
 family colours, diagrams and tense chips, all sized in container units of the
 16:9 frame (docs/02-DESIGN-SYSTEM.md §4). It also holds the reference frame's
 own layout (`.frame`, `.hdr`, `.body`); the website keeps the block rules and may
-replace those. It is the lesson's own: from 1.13 a lesson's stylesheet is the
+replace those. 1.22: a style C lesson's stylesheet ends with style C's rules (ADR 042), which paint
+the header band and the board (`.hdr`, `.body`) in the frame's ground and ask for the font
+`var(--font-plex, "IBM Plex Sans")`. It is the lesson's own: from 1.13 a lesson's stylesheet is the
 1.12 stylesheet followed by the sections its features need (Reading, the map, Part
 B, Part C, Listening), so two lessons of one format version can have different
 stylesheets. The website uses each lesson's `blocks.css`, never one shared copy.
