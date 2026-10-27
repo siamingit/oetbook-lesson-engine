@@ -371,3 +371,60 @@ separate review step for every course is a step the owner no longer wants.
 - No owner step stands between a lesson's final approval and its publication, other than the final approval
   itself.
 - To reverse: a new amendment; the owner's decision.
+
+## Amendment — 2026-10-27: contracts 1.12.0 pinned (bundle format 1.22)
+
+Status: **Accepted**: the chat's brief of 2026-10-27, "Pin the site's contracts 1.12.0 (bundle format 1.22)
+and publish the 23 style C lessons", on the owner's decisions of the same day. It replaces the pin of the
+amendment of 2026-10-26, decision 1, and nothing else; the taxonomy per course (v3 for Writing, v2 for every
+other course) is unchanged.
+
+### Context
+
+Writing 2 (ADR 042) and the 22 restyled lessons (ADR 043) are bundle format 1.22, which contracts 1.10.0
+refuse. The site did oetacademy-web issue #173 (closed 2026-10-27 18:31 UTC): it released contracts that
+accept 1.22 with every amendment of the engine's changelog §9b, the cell spotlight (`boards[].focus[].cells`)
+included (oetacademy-web #182), and its player plays 1.22 in production since 2026-10-27 18:30 UTC (#183).
+The site's chat adds that a zoom with `col` null on a table as wide as the board gives no zoom on its player,
+because of rule 55's 92% width limit (checked for Writing 1 and 2 in this brief; the result is in their
+decision logs).
+
+### Decision
+
+1. **Contracts pinned: `contracts-v1.12.0`**, asset `oetacademy-contracts-1.12.0.zip`, SHA-256
+   `1d587ebd7e54d9a15bff18346a97b51e9c2188b25ec04afd411b17295413006d`. Checked on 2026-10-27: the zip
+   downloaded with `gh` from the release (tag on oetacademy-web commit 2f8232b, published 2026-10-27 17:23
+   UTC) has exactly that hash, the hash the site's chat gave and the release's own asset digest. The lock is
+   `spike/publish/contracts.lock.json`; the zip stays outside git, as before.
+2. **What 1.12.0 changes** (its CHANGELOG; 1.11.0, between them, adds Writing and Speaking sets to the
+   exercises' release package only and changes nothing a lesson package uses):
+   - `"1.22"` accepted in `format_version` of `bundle.json` and `text.json` and in the manifest's
+     `lesson.bundle_format_version`;
+   - `lesson.style` (`"c"` only) in `bundle.json` and `text.json`; a state's `effects` (`{type, block, time,
+     until, row?, col?, text?}`, `type` `lift` or `zoom`, `row` required on a zoom); a focus entry's `cells`
+     (at least one `[row, col]`);
+   - three rules for 1.22, ported into the engine's check (`lesson_package.check_style` and `check_text`)
+     with the site's codes, from its code at the tag (`checkStyle` in `packages/shared/src/contracts/lesson.ts`):
+     `LP-STYLE` (a lesson with `style` has `effects` on every state, a state has `effects` only in such a
+     lesson, and `style` in either file only from 1.22), `LP-EFFECTS` (only from 1.22; in time order; each on
+     a block of its board, its fixed, pinned, working and overlay blocks or its table; a zoom on the board's
+     table, its `row` a body row and its `col`, when not null, a column of that row; `time` < `until`, both
+     inside the state), `LP-CELLS` (only from 1.22, only on an entry with a row, every cell inside the
+     board's table). Each reason broken is its own finding, as the site reports it.
+   - Unchanged: the session section tag list, taxonomy v2 and v3, the professions (their bytes are those of
+     1.10.0), and every rule for formats 1.8 to 1.21.
+3. **Every earlier package still validates exactly as before.** All 37 package folders in the library
+   (formats 1.12, 1.13, 1.14, 1.16, 1.17, 1.20 and 1.21: every published version of the 22 lessons and the
+   versions built beside them) were checked with the engine's check at main and contracts 1.10.0, and with
+   this change and contracts 1.12.0: the same findings, line for line, in all 37. No package of format 1.8
+   to 1.11, 1.15, 1.18 or 1.19 exists to check; the schemas' and the code's rules for them are unchanged.
+4. **Packages that follow**: Writing 2 as package version 1 and the 22 restyled lessons as the next package
+   version of each, all at 1.22 (ADR 042, ADR 043 and its amendment (4)). The site takes the 22 new versions
+   live at once, each replacing the current version in its courses, and Writing 2 goes live as a session in
+   no course yet (the site's chat on #173).
+
+### Consequences
+
+- A 1.22 lesson can be packaged; the runbook's sentence that it waits for the pin is now history.
+- The tests that name the pinned version name 1.12.0; `spike/tests/test_style_c.py` tests the three rules.
+- To reverse: a new amendment pinning another release; the lock and this record change together.

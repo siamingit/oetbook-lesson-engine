@@ -17,7 +17,8 @@ The check is the three schemas (jsonschema, draft 2020-12, every schema register
 nothing fetched) and then the rules the schemas cannot express, as the site's validator states
 them (oetacademy-web packages/shared/src/contracts/lesson.ts at contracts 1.8.0, and the three
 rules contracts 1.9.0 add for bundle 1.21: `LP-FIT`, `LP-PROVENANCE`, `LP-HEARD`; from 1.10.0 a
-manifest names taxonomy v2 or v3, its keys checked against the version it names), with its codes
+manifest names taxonomy v2 or v3, its keys checked against the version it names; and the three
+contracts 1.12.0 add for bundle 1.22: `LP-STYLE`, `LP-EFFECTS`, `LP-CELLS`), with its codes
 (`LP-...`), plus one of the engine's own: no file reference in the package points outside it
 (`PUB-OUTSIDE`). The site validates again at import and refuses a package with any error.
 """
@@ -487,6 +488,8 @@ def check_image(path: Path, p: str, f: Findings) -> None:
 
 
 def check_text(t: dict, b: dict, f: Findings) -> None:
+    if "style" in t["lesson"] and version_tuple(t["format_version"]) < (1, 22):
+        f.error("LP-STYLE", "text.json", "lesson.style is a field of format 1.22 and later")
     if t["lesson"]["id"] != b["lesson"]["id"]:
         f.error("LP-TEXT-MISMATCH", "text.json", "lesson id differs from bundle.json")
     key = [(s["id"], s["title"], s["start"], s["end"]) for s in t["sections"]]
@@ -719,6 +722,69 @@ def check_fit(bundle: dict, f: Findings) -> None:
             f.error("LP-FIT", "bundle.json", "fit in a bundle before format 1.21", x["id"])
 
 
+def table_cell(table: dict | None, row: int, col: int | None) -> bool:
+    """A body cell of a table block: its row exists and, where the row lists its cells, the column."""
+    rows = (table or {}).get("rows") or []
+    if row >= len(rows):
+        return False
+    return col is None or not isinstance(rows[row], list) or col < len(rows[row])
+
+
+def check_style(bundle: dict, f: Findings) -> None:
+    """LP-STYLE, LP-EFFECTS, LP-CELLS (contracts 1.12.0, bundle 1.22; the site's `checkStyle`): a
+    lesson in style C has `effects` on every state and only then; each effect lies inside its state,
+    in time order, on a block of its board, a zoom on the board's table and a row of it; a focus
+    entry's `cells` only with a row and inside the board's table. Before 1.22 none of the three
+    fields is allowed. Each rule broken is its own finding, as the site reports it."""
+    where = "bundle.json"
+    at122 = version_tuple(bundle["format_version"]) >= (1, 22)
+    style = "style" in bundle["lesson"]
+    if style and not at122:
+        f.error("LP-STYLE", where, "lesson.style is a field of bundle format 1.22 and later", "lesson")
+    for x in bundle["boards"]:
+        table = bundle["blocks"].get(x["table"]) if x.get("table") else None
+        own = set(x.get("fixed") or []) | set(x.get("pinned") or {}) | ({x["table"]} if x.get("table") else set())
+        own |= {i for s in x["states"] for i in (s.get("working") or []) + (s.get("overlay") or [])}
+        for s in x["states"]:
+            effects = s.get("effects")
+            if effects is None:
+                if style and at122:
+                    f.error("LP-STYLE", where, "a style C lesson has effects on every state", s["id"])
+                continue
+            if not at122:
+                f.error("LP-EFFECTS", where, "effects is a field of bundle format 1.22 and later", s["id"])
+                continue
+            if not style:
+                f.error("LP-STYLE", where, "a state has effects only in a style C lesson", s["id"])
+            last = float("-inf")
+            for i, e in enumerate(effects):
+                at = f"{s['id']} effects[{i}]"
+                if e["time"] + TIME_TOLERANCE_S < last:
+                    f.error("LP-EFFECTS", where, "effects are in time order", at)
+                last = max(last, e["time"])
+                if not e["time"] < e["until"] or e["time"] + TIME_TOLERANCE_S < s["start"] \
+                        or e["until"] > s["until"] + TIME_TOLERANCE_S:
+                    f.error("LP-EFFECTS", where, "an effect starts before it ends, both inside its state "
+                            "(start <= time < until <= until)", at)
+                if e["block"] not in own:
+                    f.error("LP-EFFECTS", where, "an effect names a block of its board", at)
+                if e["type"] == "zoom":
+                    if not x.get("table") or e["block"] != x["table"]:
+                        f.error("LP-EFFECTS", where, "a zoom's block is the board's table", at)
+                    elif e.get("row") is None or not table_cell(table, e["row"], e.get("col")):
+                        f.error("LP-EFFECTS", where, "a zoom names a row (and column) of the table", at)
+        for i, entry in enumerate(x.get("focus") or []):
+            if "cells" not in entry:
+                continue
+            at = f"{x['id']} focus[{i}]"
+            if not at122:
+                f.error("LP-CELLS", where, "cells is a field of bundle format 1.22 and later", at)
+            elif entry.get("row") is None:
+                f.error("LP-CELLS", where, "cells only on a focus entry with a row", at)
+            elif not table or any(not table_cell(table, r, c) for r, c in entry["cells"]):
+                f.error("LP-CELLS", where, "every cell lies inside the board's table", at)
+
+
 def check_inside(bundle: dict, css: str, folder: Path, f: Findings) -> None:
     """PUB-OUTSIDE (the engine's own): every reference resolves to a file inside the package."""
     for at, p in references(bundle, css):
@@ -755,6 +821,7 @@ def validate_package(folder: Path, contracts: Contracts) -> Findings:
             check_text(t, b, f)
         check_inside(b, css_path.read_text(encoding="utf-8") if css_path.is_file() else "", folder, f)
         check_fit(b, f)
+        check_style(b, f)
     if m:
         check_manifest(m, folder, contracts, f)
         if b:
