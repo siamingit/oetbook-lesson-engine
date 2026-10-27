@@ -408,15 +408,16 @@ def cell_focus(bd: dict, table: dict) -> list[dict]:
     def arrows_of(s):
         return sorted((c for u in s["utterances"] for c in u["cues"] if c in arrows), key=lambda c: c["time"])
 
-    times = sorted({f["time"] for f in focus} | {round(c["time"], 3) for c in arrows})
+    # every entry of the row spotlight, in its order (two may share a time), and
+    # one more at each arrow's time, with the entry then in force
+    ev = sorted([(x["time"], 0, n, x) for n, x in enumerate(focus)]
+                + [(round(c["time"], 3), 1, n, None) for n, c in enumerate(arrows)],
+                key=lambda e: (e[0], e[1], e[2]))
     out: list[dict] = []
-    for t in times:
-        f = None
-        for x in focus:
-            if x["time"] <= t + 1e-6:
-                f = x
-            else:
-                break
+    f = None
+    for t, kind, _n, x in ev:
+        if kind == 0:
+            f = x
         if f is None:
             continue
         e = {"time": round(t, 3), "row": f["row"], "col": f["col"]}

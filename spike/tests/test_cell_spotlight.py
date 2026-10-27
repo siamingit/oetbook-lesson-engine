@@ -40,6 +40,13 @@ class CellSpotlight(unittest.TestCase):
         # the meaning beside the word is never lit
         self.assertFalse(any([0, 1] in e.get("cells", []) for e in f))
 
+    def test_every_entry_of_the_row_spotlight_kept_two_at_one_time_included(self):
+        b = board()
+        b["focus"].insert(2, {"time": 2.0, "row": 0, "col": 0})      # a cue at the state's start
+        f = blp.cell_focus(b, TABLE)
+        self.assertEqual([(e["time"], e["row"], e["col"]) for e in f],
+                         [(e["time"], e["row"], e["col"]) for e in b["focus"]])
+
     def test_a_table_whose_rows_pair_keeps_its_row_spotlight(self):
         b = board(to_row=0)                 # the arrow stays in its row
         self.assertEqual(blp.cell_focus(b, TABLE), b["focus"])
