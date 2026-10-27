@@ -1024,6 +1024,25 @@ any site had built 1.22, so the format keeps its number. What changed from the f
   player.
 - No field is added or removed.
 
+**Amended 2026-10-27, when the 22 published lessons were restyled** (engine ADR 043), still before any
+site had built 1.22, so the format keeps its number:
+
+- **A contents item's sections** (rule 53): an item that lists two or more sections of its category has
+  `class="cs parts"` and each section in a `<span class="cp">`; no word changes, the " · " between them
+  stays in the text and is drawn at no size. A mark on a section (the narration names them one by one)
+  lies inside its `cp`.
+- **Where the engine writes a zoom**: only on a Writing lesson's documents (a letter, case notes). The
+  rule is unchanged; a lesson of another type simply has no zoom entries.
+- **The stylesheet** (nothing for the player): a document's paragraphs (`.tbl.core.doc`: a Reading text,
+  a Listening transcript) on paper with no rule between them, its active paragraph on paper too (a
+  keyword pair's `match1`–`match3` band, multiplied with what is under it, keeps its colour); a header
+  cell in a tense family's colour (`th.fam-past`, `fam-now`, ...) keeps it; typed text in a table with no
+  layout is set without kerning or ligatures, so the typed and untyped halves of a cell add up to its
+  line.
+- **The 22 lessons published before Writing 2 are now 1.22** (style C, phase 1: no board layouts yet).
+  They are packaged, as new package versions, once the site accepts 1.22.
+- No field is added or removed.
+
 ### What is in `blocks.css` (no new data, plays on today's player)
 
 A style C lesson's `blocks.css` is the 1.21 stylesheet followed by style C's rules. They key only on
@@ -1046,6 +1065,8 @@ the classes and attributes a player already sets or the block `html` already car
   `data-mono`, `data-yes`, `data-l`, `n2`/`n4`, `num`, empty `<i>` and `<span aria-hidden="true">`);
   only a table's rows and cells are laid out, its hooks (`data-row`, `data-col`, `data-typed`) stay, no
   word is added, and the renderer draws the `html` as given;
+- **a contents item's sections** (2026-10-27): `cs parts` and a `<span class="cp">` per section, set one
+  under the other under the category's heading;
 - **soft appear**: `.blk.on` that is not a fixed block (`[data-layer]` / `[data-oa-layer]` not
   `fixed`) runs a 0.3 s animation, opacity 0 and 1.2% of the frame lower to its place
   (`animation-fill-mode: backwards`);

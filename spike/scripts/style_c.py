@@ -187,6 +187,11 @@ CSS = r"""
 .tbl th,.tbl.core th,.tbl.core.role-slide th{background:var(--k);color:#fff;border:0;font-weight:600;
   text-transform:none;letter-spacing:0;padding:1cqh 1.6cqw;vertical-align:bottom}
 .tbl td,.tbl.core td{background:var(--ks);border:0;border-top:max(1px,.25cqh) solid #fff;padding:1cqh 1.6cqw}
+/* a header cell in a tense family's colour keeps it: the summary table's past,
+   present and future (design system §5a, §7 Tables; ADR 043) */
+.tbl th:is(.fam-past,.fam-past_to_now,.fam-now,.fam-future),
+.tbl.core th:is(.fam-past,.fam-past_to_now,.fam-now,.fam-future),
+.tbl.core.role-slide th:is(.fam-past,.fam-past_to_now,.fam-now,.fam-future){background:var(--f);color:var(--f-on)}
 .tbl th:first-child{border-top-left-radius:2.2cqh} .tbl th:last-child{border-top-right-radius:2.2cqh}
 .tbl tbody tr:last-child td:first-child{border-bottom-left-radius:2.2cqh}
 .tbl tbody tr:last-child td:last-child{border-bottom-right-radius:2.2cqh}
@@ -208,14 +213,49 @@ CSS = r"""
 .tbl.core.spot tbody tr.focus{position:relative;z-index:1;filter:drop-shadow(0 .6cqh 1.2cqh rgba(20,32,31,.14));
   transform:scale(calc(1 + .004 * var(--sc-motion, 1)))}
 .tbl.core td.active,.tbl.core.spot tbody tr.focus td.active{background:var(--sc-active);box-shadow:none}
+/* a document (a Reading text, a Listening transcript; `doc`) is a page on paper,
+   its paragraphs with no rule between them, so a transcript's lines stay on
+   their grid; the paragraph being taught keeps the paper (the spotlight and the
+   lift show it), so a keyword pair's colour, multiplied with what is under it,
+   is the same on the text as on its question (ADR 043) */
+.tbl.core.doc td{background:var(--sc-paper);border-top:0}
+/* and keeps its page's measure: no room added around it or in its title row,
+   so its text takes no more lines than before, and the Reading and Listening
+   boards keep the sizes their fit and guard found (§7g, §7h) */
+.tbl.core.doc.role-slide{padding:0}
+.tbl.core.doc.role-slide th{padding:.9cqh 1.4cqw}
+.tbl.core.doc td.active,.tbl.core.doc.spot tbody tr.focus td.active{background:var(--sc-paper)}
 .tbl.core .tw{color:var(--sc-ink)}
+/* typed text keeps its width while it is typed (§8a, ADR 043): the player splits
+   it into a typed and an untyped half, and kerning or a ligature across that
+   split would change the line's width by a fraction of a pixel, enough to wrap a
+   word in IBM Plex. Set without either, the halves add up to the whole. A table
+   with a layout (§7j) is checked with its layout */
+.tbl.core:not(.lay) .tw{font-kerning:none;font-variant-ligatures:none}
+/* the clause diagram's comma after a dependent clause is drawn in weight 500
+   when the clauses are joined; IBM Plex's 500 face has its own line metrics,
+   so the comma has that weight from the start, unseen (§8a, ADR 043) */
+.cl-piece.dep.first .cl-text::after{font-weight:500}
+/* a word longer than its narrow column (a wider device font, §8b) breaks inside
+   its cell rather than running out of the table; at the lesson's own font no
+   word is that long (ADR 043) */
+.tbl.core:not(.lay) td{overflow-wrap:break-word}
+/* a question board's column (Reading Part B and C, Listening) is narrow: its
+   notes keep a narrow side padding, so they take no more lines than before
+   (§7g, §7h; ADR 043) */
+#cam:is(.qboard,.lboard) > .blk:is(.plain.role-note,.plain.beside,.callout,.term.tnote,.term.role-note){
+  padding:1.1cqh 1cqw}
+/* there a word card is told by its amber and its word, without the "Word" chip
+   on a line of its own */
+#cam:is(.qboard,.lboard) .gl-txt::before{content:none}
 .tbl.core td.v-wrong{opacity:.45;color:var(--sc-wrong)}
 .tbl.core td.v-right{background:var(--sc-right-bg)}
 .tbl.core td.v-right::after{background:var(--sc-right);border-radius:50%}
 /* the contents board: every part on one board, in two columns of tinted rows
    beside the board's picture (design system §2, a short list fits on one
    board); a criterion's number in its own colour */
-#cam:has(> .blk.citem){padding-left:24cqh;column-gap:1.6cqw;row-gap:1.3cqh}
+#cam:has(> .blk.citem){column-gap:1.6cqw;row-gap:1.3cqh}
+#cam:has(> .blk.citem):has(> .blk.pic){padding-left:24cqh}
 #cam:has(> .blk.citem) > .blk.pic{position:absolute;left:0;top:0;margin:0}
 #cam > .blk.citem{flex:0 0 calc(50% - .8cqw);box-sizing:border-box;background:var(--ks);border-radius:2.2cqh;
   padding:1.3cqh 1.4cqw;align-items:center;gap:1.4cqw;line-height:1.3}
@@ -225,6 +265,15 @@ CSS = r"""
 .citem .ct{font-weight:600;font-size:3cqh}
 .citem .cs{font-size:2.2cqh;color:var(--sc-muted2)}
 .citem .cs:empty{display:none}
+/* a category's sections, each on its own line under the category's heading
+   (ADR 043): the parts the narration names, all on the one board. The "·"
+   between them stays in the words and is drawn at no size */
+#cam > .blk.citem:has(> div > .cs.parts){align-items:flex-start}
+.citem .cs.parts{font-size:0;line-height:0;margin-top:.6cqh}
+.citem .cs.parts .cp{display:block;position:relative;font-size:2.3cqh;line-height:1.3;color:var(--sc-muted);
+  padding:.25cqh 0 .25cqh 2.2cqh}
+.citem .cs.parts .cp::before{content:"";position:absolute;left:.3cqh;top:calc(.25cqh + .65em - .45cqh);
+  width:.9cqh;height:.9cqh;border-radius:50%;background:var(--k);opacity:.55}
 
 /* ---- Board layouts (docs/02-DESIGN-SYSTEM.md §7j): a table read as tiles,
    scorecards, cards, steps, a flow, bins, a fix, a stack, case notes, changes,
@@ -633,6 +682,25 @@ def _table_html(b: dict, html: str, layout: str) -> str:
     return _add_root(html, "lay lay-" + layout + size)
 
 
+CONTENTS_SEP = " · "          # between a category's sections (build_lesson_boards.py)
+CS = re.compile(r'<div class="cs">(.*?)</div>', re.S)
+
+
+def contents_parts(html: str) -> str:
+    """A contents item that lists two or more sections under its category: each
+    section wrapped in its own `cp` span, so the stylesheet sets them one under
+    the other (ADR 043). The words and the separators between them stay exactly
+    as they are; an item with one section or none is unchanged."""
+    m = CS.search(html)
+    if not m or CONTENTS_SEP not in m.group(1):
+        return html
+    parts = m.group(1).split(CONTENTS_SEP)
+    if any(not p.strip() for p in parts):
+        return html
+    inner = CONTENTS_SEP.join(f'<span class="cp">{p}</span>' for p in parts)
+    return html[:m.start()] + '<div class="cs parts">' + inner + "</div>" + html[m.end():]
+
+
 def layout_html(b: dict, html: str, section_title: str | None, layout: str | None = None) -> str:
     """A style C block's html with its layout and its criterion's colour:
 
@@ -651,8 +719,10 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
     t = b.get("type")
     if t == "picture":
         return html
-    if t == "contents_item" and CRIT_KEY.get((b.get("text") or "").strip()):
-        html = _add_root(html, attrs=_crit_attr(CRIT_KEY[b["text"].strip()]))
+    if t == "contents_item":
+        if CRIT_KEY.get((b.get("text") or "").strip()):
+            html = _add_root(html, attrs=_crit_attr(CRIT_KEY[b["text"].strip()]))
+        html = contents_parts(html)
     elif crit:
         if t == "term_box" and (b.get("label") or "").strip() == CRITERION_LABEL:
             html = _add_root(html, "crit", _crit_attr(crit))
@@ -691,7 +761,21 @@ def _r(x: float) -> float:
     return round(x + 0.0, 3)
 
 
-def effects(boards: list[dict], blocks: dict) -> None:
+# The lesson types whose tables are documents, a letter or case notes, which the
+# zoom is for (ADR 042 decision 4; ADR 043): Writing's. In any other lesson a
+# table keeps rule 13's auto zoom, Grammar 6's board shown whole keeps the owner's
+# "no zoom" (ADR 011 amendment of 2026-10-12), and a Reading or Listening text
+# keeps its own lens, map, covering and transcript (ADR 026, ADR 030).
+ZOOM_TYPES = ("writing",)
+
+
+def zooms(lesson) -> bool:
+    """Whether the lesson's documents take the style C zoom (ZOOM_TYPES)."""
+    import lesson_type
+    return lesson_type.of(lesson) in ZOOM_TYPES
+
+
+def effects(boards: list[dict], blocks: dict, zoom: bool = True) -> None:
     """Write each state's `effects` (bundle 1.22), in time order:
 
     lift  a block grows a very little, with the soft shadow, from `time` to
@@ -708,13 +792,14 @@ def effects(boards: list[dict], blocks: dict) -> None:
           2.8 or less, or a board shown whole), from a mark the narration draws on
           that line until it moves on to a note (the next block revealed) or the
           sentence ends (0.4 s held), and back out; a later mark on the table
-          takes the view on from there (rule 55).
+          takes the view on from there (rule 55). Only where `zoom` is true: a
+          lesson whose tables are documents (`zooms`, ADR 043).
     """
     for bd in boards:
         fixed_txt = [i for i in bd["fixed"] if blocks[i]["type"] not in ("table", "picture", "lesson_title")]
         tbl = bd.get("table")
         doc = None
-        if tbl and not bd.get("split") and not bd.get("listen") and not blocks[tbl].get("map"):
+        if zoom and tbl and not bd.get("split") and not bd.get("listen") and not blocks[tbl].get("map"):
             f = blocks[tbl].get("font")
             if bd.get("fit") == "whole" or (f is not None and f <= ZOOM_SMALL):
                 doc = tbl
@@ -728,6 +813,12 @@ def effects(boards: list[dict], blocks: dict) -> None:
                     until = items[n + 1][0]
                 else:
                     ends = [u["end"] for u in s["utterances"] if u["start"] <= at + 1e-6 <= u["end"] + 0.5]
+                    # a category whose sections the narration names one by one
+                    # (a mark on each, after its reveal): until the last is named
+                    # (ADR 043)
+                    ends += [u["end"] for u in s["utterances"]
+                             if any(c.get("block") == w and c["type"] not in ("reveal", "pause")
+                                    and c["time"] > at + 1e-6 for c in u["cues"])]
                     until = min(s["until"], (max(ends) if ends else at + 2.0) + LIFT_HOLD)
                 if until - at >= LIFT_MIN:
                     fx.append({"type": "lift", "block": w, "time": _r(at), "until": _r(until)})
