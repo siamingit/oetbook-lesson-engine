@@ -1065,11 +1065,34 @@ table board.
 | `checklist` | what is checked and the word for it | tiles, the word for it large in the section's colour | Language: meaning clear, vocabulary precise (slide 19) |
 | `vs` | a comparison of two options (not a change) | the two side by side, numbered 1 and 2 | Two openings (his try-it) |
 | `pair` | a table of four columns that is two lists of one kind side by side (a name and its examples, twice) | two tables with a gap between, each its own header; a row is still taught as one row, across both (ADR 043 amendment (3)) | Grammar 4's countable and uncountable nouns (slide 6: two tables side by side) |
+| `paper` | a Writing paper, or a piece of it: two columns (the paper's label, its lines); or the paper beside the letter: three (the label, the lines, the part of the letter they feed) (ADR 045) | two columns: a sheet of the paper, as in the exam: white, a hairline edge, a soft shadow, the labels bold in their own column, the date line bold, the Writing Task box grey. Three: each row a piece of that sheet, an arrow, the part of the letter on the letter's cream; never zoomed, so both stay in view | Writing 3: the guided look at the paper, the map board (slide 5) and every board that quotes a paper |
 
-The forms and the layout added in phase 2 (a `fix` of two columns, a `letter` of one, `pair`) are drawn by
-rules appended to the stylesheet of a lesson that uses them only (`style_c.LAYOUT_CSS`), as the cell
-spotlight's are, so no other lesson's stylesheet changes; each form is told by its columns, so the
-block's html carries nothing new.
+The forms and the layouts added in phase 2 and after (a `fix` of two columns, a `letter` of one, `pair`,
+`paper`) are drawn by rules appended to the stylesheet of a lesson that uses them only
+(`style_c.LAYOUT_CSS`), as the cell spotlight's are, so no other lesson's stylesheet changes; each form is
+told by its columns, so the block's html carries nothing new.
+
+**The paper** (owner, 2026-10-27; ADR 045). A Writing lesson shows the paper wherever a board draws on it,
+and always in this one look, so the learner knows it at once:
+
+- **A guided look first.** Before a lesson takes a letter apart from a paper the learner has not seen, an
+  authored section (ADR 018) walks through that paper once, whole, in its order and at a readable size:
+  the date line, the setting, the patient details, the case notes and their sections, the discharge plan,
+  the Writing Task box at the end, each lit by the spotlight as the teacher names it. Where the paper does
+  not fit the frame, it is paged by its own parts (declared splits, §2: as many as its size needs).
+- **Then the paper beside the letter.** Every board that says a part of the letter comes from the paper
+  shows that piece of the paper (layout `paper`, three columns) beside the part of the letter it feeds,
+  paired in time with the narration; a piece the narration names while teaching is a sheet in the working
+  layer (two columns). Real text only, read from the sample's paper, never retyped. A line from inside a
+  section carries its section's label; a heading over its first label ("PATIENT DETAILS:" over "Name:")
+  sets the lines beside the labels they belong to; a row with no part of the letter is a piece of the paper
+  alone.
+- **Nothing named that is not on screen.** The narration never names a part of the paper, or points to a
+  part of a letter, that is not on the board at that moment: a board that names one shows it, or does not
+  name it (ADR 045 decision 5).
+- The label column is as wide as its longest label; the paper's lines and the letter share the rest
+  evenly. A sheet is zoomed as any Writing document (ADR 043 decision 7); the paper beside the letter is
+  never zoomed, since a zoom onto one cell would take its pair out of view.
 
 **The criterion's card.** In a lesson about the OET Writing criteria, each section named after a
 criterion takes the criterion's colour on all its blocks, and its term box "The criterion" is drawn as
