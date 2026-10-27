@@ -1267,7 +1267,7 @@ A 1.21 player, or one that ignores `cells`, dims by row as before: the lesson pl
    skip the marks' draw-in, the notes' going and the zoom in JavaScript.
 5. **Tell the engine** the contracts release's tag and its zip's SHA-256: the engine pins it (a new
    amendment of its ADR 039), and only then packages and publishes Writing 2.
-6. **Field index** (§13): `1.22 bundle.lesson.style`, `= "c"`, and the `effects` paths and values.
+6. **Field index** (§13): `1.22 bundle.lesson.style` and `1.22 text.lesson.style`, `= "c"`, and the `effects` paths and values.
 
 ### The packages that follow, once the site accepts 1.22
 
@@ -1598,6 +1598,8 @@ completeness.
 # 1.22
 1.22 bundle.lesson.style
 1.22 bundle.lesson.style = "c"
+1.22 text.lesson.style
+1.22 text.lesson.style = "c"
 1.22 bundle.boards[].states[].effects
 1.22 bundle.boards[].states[].effects[]
 1.22 bundle.boards[].states[].effects[].type

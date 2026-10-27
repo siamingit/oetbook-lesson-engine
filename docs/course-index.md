@@ -18,21 +18,21 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 118:56 | 14 | 2026-10-26 13:13 (chat (owner's delegation, errata 2026-10-26)) |
-| 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 52:20 | 5 | 2026-10-26 13:19 (chat (owner's delegation, errata 2026-10-26)) |
-| 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 52:33 | 7 | 2026-10-26 13:29 (chat (owner's delegation, errata 2026-10-26)) |
-| 4 | Grammar for OET: Articles | `grammar-04-articles` | 59:31 | 9 | 2026-10-26 13:29 (chat (owner's delegation, errata 2026-10-26)) |
-| 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 56:31 | 8 | 2026-10-26 13:40 (chat (owner's delegation, errata 2026-10-26)) |
-| 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 51:03 | 6 | 2026-10-26 13:40 (chat (owner's delegation, errata 2026-10-26)) |
-| 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 83:00 | 18 | 2026-10-26 13:40 (chat (owner's delegation, errata 2026-10-26)) |
-| 8 | Grammar for OET: Paraphrasing | `grammar-08-paraphrasing` | 54:16 | 7 | 2026-10-26 13:43 (chat (owner's delegation, errata 2026-10-26)) |
+| 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 118:56 | 14 | 2026-10-27 09:37 (siavash) |
+| 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 52:20 | 5 | 2026-10-27 09:37 (siavash) |
+| 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 52:33 | 7 | 2026-10-27 09:37 (siavash) |
+| 4 | Grammar for OET: Articles | `grammar-04-articles` | 59:31 | 9 | 2026-10-27 09:37 (siavash) |
+| 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 56:31 | 8 | 2026-10-27 09:37 (siavash) |
+| 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 51:03 | 6 | 2026-10-27 09:37 (siavash) |
+| 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 83:00 | 18 | 2026-10-27 09:37 (siavash) |
+| 8 | Grammar for OET: Paraphrasing | `grammar-08-paraphrasing` | 54:16 | 7 | 2026-10-27 09:37 (siavash) |
 
 <a id="grammar-01-verb-tenses"></a>
 
 ## 1. Grammar for OET: Verb Tenses
 
 - Lesson ID and folder: `grammar-01-verb-tenses` (folder `grammar-01-verb-tenses`); course grammar, lesson 1; length 118:56; bundle format 1.22
-- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:13
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn the verb tenses, when to use each one, and how to use them in your OET writing.
 - Original session: folder `source`: `source/video.mp4`, 125:10 long, partial hash `8fd03776aa09bf2b`; deck `source/slides.pdf`, 19 pages
   - The Grammar 1 (Verb Tenses) session, in its newer recording, made after the deck was corrected; an older recording exists and is not the source (docs/01-METHODOLOGY.md §1, §8).
@@ -771,7 +771,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 2. Grammar for OET: Verb Use
 
 - Lesson ID and folder: `grammar-02-verb-use` (folder `grammar-02-verb-use`); course grammar, lesson 2; length 52:20; bundle format 1.22
-- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:19
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn how to choose the right tense and the right voice when you turn case notes into sentences for your OET letter.
 - Original session: folder `source`: `source/video.mp4`, 75:02 long, partial hash `678ddc1608d757d6`; deck `source/slides.pdf`, 10 pages
   - The Grammar 2 (Verb Use) session, recorded at 1284 x 720 (docs/01-METHODOLOGY.md §1).
@@ -1092,7 +1092,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 3. Grammar for OET: Nominalisation
 
 - Lesson ID and folder: `grammar-03-nominalization` (folder `grammar-03-nominalization`); course grammar, lesson 3; length 52:33; bundle format 1.22
-- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:29
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn how to turn verbs and adjectives into nouns to write formal sentences from case notes, and how to turn nouns back into verbs.
 - Original session: folder `source`: `source/video.mp4`, 73:11 long, partial hash `4f8496a9f96ff0dc`; deck `source/slides.pdf`, 12 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -1388,7 +1388,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 4. Grammar for OET: Articles
 
 - Lesson ID and folder: `grammar-04-articles` (folder `grammar-04-articles`); course grammar, lesson 4; length 59:31; bundle format 1.22
-- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:29
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn when to use a, an, the or no article, and how to use articles correctly in your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 54:32 long, partial hash `39acd9b8365dc034`; deck `source/slides.pdf`, 16 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -1702,7 +1702,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 5. Grammar for OET: Complex sentences
 
 - Lesson ID and folder: `grammar-05-complex-compound` (folder `grammar-05-complex-compound`); course grammar, lesson 5; length 56:31; bundle format 1.22
-- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:40
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn how to join two ideas in one complex sentence, with the right linking word and comma, for your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 65:06 long, partial hash `49e48848f0038580`; deck `source/slides.pdf`, 14 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -2019,7 +2019,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 6. Grammar for OET: Relative Clauses and Participle Clauses
 
 - Lesson ID and folder: `grammar-06-clause` (folder `grammar-06-clause`); course grammar, lesson 6; length 51:03; bundle format 1.22
-- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:40
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn to add information with relative clauses, make them shorter, and join case notes with participle clauses in your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 79:14 long, partial hash `6ef7636e4afb83cb`; deck `source/slides.pdf`, 12 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -2276,7 +2276,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 7. Grammar for OET: Punctuation
 
 - Lesson ID and folder: `grammar-07-punctuation` (folder `grammar-07-punctuation`); course grammar, lesson 7; length 83:00; bundle format 1.22
-- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:40
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn to punctuate your OET letters: where to put commas, and how to use full stops, semicolons, colons, apostrophes, hyphens, capital letters, numbers and short forms correctly.
 - Original session: folder `source`: `source/video.mp4`, 33:26 long, partial hash `297821a41d0a0437`; deck `source/slides.pdf`, 18 pages
   - The recording teaches commas only; the second part (sections added-01 to added-09) is authored, with no recording (ADR 018).
@@ -2809,7 +2809,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 8. Grammar for OET: Paraphrasing
 
 - Lesson ID and folder: `grammar-08-paraphrasing` (folder `grammar-08-paraphrasing`); course grammar, lesson 8; length 54:16; bundle format 1.22
-- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:43
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn eight steps to turn case notes into clear, correct sentences for your OET letter.
 - Original session: folder `source`: `source/video.mp4`, 83:44 long, partial hash `2962a94a3786c811`; deck `source/slides.pdf`, 11 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -3126,16 +3126,16 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | Vocabulary for OET: Word Forms and Sentence Structure | `vocabulary-01-word-forms` | 79:27 | 8 | 2026-10-26 13:45 (chat (owner's delegation, errata 2026-10-26)) |
-| 2 | Vocabulary for OET: Verb + Noun Collocations | `vocabulary-02-collocations` | 68:45 | 13 | 2026-10-26 14:27 (chat (owner's delegation, errata 2026-10-26)) |
-| 3 | Vocabulary for OET: Adjective + Noun Collocations | `vocabulary-03-collocations-2` | 76:00 | 10 | 2026-10-26 14:27 (chat (owner's delegation, errata 2026-10-26)) |
+| 1 | Vocabulary for OET: Word Forms and Sentence Structure | `vocabulary-01-word-forms` | 79:27 | 8 | 2026-10-27 09:37 (siavash) |
+| 2 | Vocabulary for OET: Verb + Noun Collocations | `vocabulary-02-collocations` | 68:45 | 13 | 2026-10-27 09:37 (siavash) |
+| 3 | Vocabulary for OET: Adjective + Noun Collocations | `vocabulary-03-collocations-2` | 76:00 | 10 | 2026-10-27 09:37 (siavash) |
 
 <a id="vocabulary-01-word-forms"></a>
 
 ## 1. Vocabulary for OET: Word Forms and Sentence Structure
 
 - Lesson ID and folder: `vocabulary-01-word-forms` (folder `vocabulary-01-word-forms`); course vocabulary, lesson 1; length 79:27; bundle format 1.22
-- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 13:45
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn to choose the right form of a word, and to join short sentences into clear ones, in your OET writing.
 - Original session: folder `source`: `source/video.mp4`, 103:52 long, partial hash `f58701e6ddc4ac40`; deck `source/slides.pdf`, 11 pages
   - Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).
@@ -3724,7 +3724,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 2. Vocabulary for OET: Verb + Noun Collocations
 
 - Lesson ID and folder: `vocabulary-02-collocations` (folder `vocabulary-02-collocations`); course vocabulary, lesson 2; length 68:45; bundle format 1.22
-- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 14:27
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn verbs and nouns that go together, for your OET letters and for talking to patients.
 - Original session: folder `source`: `source/video.mp4`, 47:39 long, partial hash `f79f384eddc3c859`; deck `source/slides.pdf`, 16 pages
   - Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).
@@ -4187,7 +4187,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 3. Vocabulary for OET: Adjective + Noun Collocations
 
 - Lesson ID and folder: `vocabulary-03-collocations-2` (folder `vocabulary-03-collocations-2`); course vocabulary, lesson 3; length 76:00; bundle format 1.22
-- Status: approved by chat (owner's delegation, errata 2026-10-26), 2026-10-26 14:27
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn adjectives and nouns that go together, and clear ways to describe pain, for your OET letters and for talking to patients.
 - Original session: folder `source`: `source/video.mp4`, 45:34 long, partial hash `b1576043dc5fe7aa`; deck `source/slides.pdf`, 15 pages
   - Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).
@@ -4693,18 +4693,18 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | Reading for OET: Overview | `reading-01-overview` | 19:04 | 7 | 2026-10-06 19:13 (maintainer (in chat 2026-10-06)) |
-| 2 | Reading for OET: Part A | `reading-02-part-a` | 62:05 | 10 | 2026-10-06 19:13 (maintainer (in chat 2026-10-06)) |
-| 3 | Reading for OET: Part B | `reading-03-part-b` | 58:03 | 10 | 2026-10-07 23:25 (maintainer (in chat 2026-10-07)) |
-| 4 | Reading Part C (1) | `reading-04-part-c` | 93:47 | 9 | 2026-10-11 21:11 (siavash) |
-| 5 | Reading Part C (2): More Practice | `reading-05-part-c-2` | 87:09 | 4 | 2026-10-11 21:11 (siavash) |
+| 1 | Reading for OET: Overview | `reading-01-overview` | 19:04 | 7 | 2026-10-27 09:37 (siavash) |
+| 2 | Reading for OET: Part A | `reading-02-part-a` | 62:05 | 10 | 2026-10-27 09:37 (siavash) |
+| 3 | Reading for OET: Part B | `reading-03-part-b` | 58:03 | 10 | 2026-10-27 09:37 (siavash) |
+| 4 | Reading Part C (1) | `reading-04-part-c` | 93:47 | 9 | 2026-10-27 09:37 (siavash) |
+| 5 | Reading Part C (2): More Practice | `reading-05-part-c-2` | 87:09 | 4 | 2026-10-27 09:37 (siavash) |
 
 <a id="reading-01-overview"></a>
 
 ## 1. Reading for OET: Overview
 
 - Lesson ID and folder: `reading-01-overview` (folder `reading-01-overview`); course reading, lesson 1; length 19:04; bundle format 1.22
-- Status: approved by maintainer (in chat 2026-10-06), 2026-10-06 19:13
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn how the OET Reading test works: its three parts, the time for each, how it is scored, and the skills each part tests.
 - Original session: folder `source`: `source/video.mp4`, 15:23 long, partial hash `14722b55fd687040`; deck `source/slides.pdf`, 10 pages
   - The Reading overview session, the first of the four recorded Reading sessions (ADR 026).
@@ -4872,7 +4872,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 2. Reading for OET: Part A
 
 - Lesson ID and folder: `reading-02-part-a` (folder `reading-02-part-a`); course reading, lesson 2; length 62:05; bundle format 1.22
-- Status: approved by maintainer (in chat 2026-10-06), 2026-10-06 19:13
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn to skim and scan the four texts of Reading Part A, manage your 15 minutes, and write each answer exactly as it appears in the text.
 - Original session: folder `source`: `source/video.mp4`, 82:30 long, partial hash `af5824d824459389`; deck `source/slides.pdf`, 12 pages
   - The Reading Part A session. The instructor solved an official OET sample set, which is excluded; the lesson applies his method to the practice set oa-set-ra-0001 (ADR 026).
@@ -5306,7 +5306,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 3. Reading for OET: Part B
 
 - Lesson ID and folder: `reading-03-part-b` (folder `reading-03-part-b`); course reading, lesson 3; length 58:03; bundle format 1.22
-- Status: approved by maintainer (in chat 2026-10-07), 2026-10-07 23:25
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn what Part B tests, read each question and its three options before the text with the QAT method, and learn the words you need for six workplace texts.
 - Original session: folder `source`: `source/video.mp4`, 81:59 long, partial hash `ad87055e3211aedc`; deck `source/slides.pdf`, 15 pages
   - The Reading Part B session. The instructor taught on official OET sample texts, which are excluded; the lesson applies his method to the practice set oa-set-rb-0001 (ADR 026).
@@ -5647,7 +5647,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 4. Reading Part C (1)
 
 - Lesson ID and folder: `reading-04-part-c` (folder `reading-04-part-c`); course reading, lesson 4; length 93:47; bundle format 1.22
-- Status: approved by siavash, 2026-10-11 21:11
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: How to read the two long Part C texts for the writer's meaning and opinion, and how to solve each question with the QTA method.
 - Original session: folder `source`: `source/video.mp4`, 70:48 long, partial hash `82473fa2c482c498`; deck `source/slides.pdf`, 15 pages; the same recording as `reading-05-part-c-2`
   - The Reading Part C session, split at the start of Text 2: this lesson teaches Text 1, and reading-05-part-c-2 is built from the rest (ADR 026 amendment of 2026-10-08).
@@ -6083,7 +6083,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 5. Reading Part C (2): More Practice
 
 - Lesson ID and folder: `reading-05-part-c-2` (folder `reading-05-part-c-2`); course reading, lesson 5; length 87:09; bundle format 1.22
-- Status: approved by siavash, 2026-10-11 21:11
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: A quick review of the QTA method and the opinion signals, then a second long Part C text worked through question by question.
 - Original session: folder `source`: `source/video.mp4`, 70:48 long, partial hash `82473fa2c482c498`; deck `source/slides.pdf`, 15 pages; the same recording as `reading-04-part-c`
   - Built from the Reading Part C session (a byte copy of reading-04-part-c's source): it teaches the session's Text 2, deck pages 13 to 15 (ADR 026 amendment of 2026-10-08).
@@ -6426,18 +6426,18 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | OET Listening: Overview | `listening-01-overview` | 14:27 | 6 | 2026-10-17 11:58 (Siavash) |
-| 2 | OET Listening: Part A | `listening-02-part-a` | 55:12 | 11 | 2026-10-14 19:20 (siavash) |
-| 3 | OET Listening: Part B | `listening-03-part-b` | 72:46 | 14 | 2026-10-16 07:31 (Siavash) |
-| 4 | OET Listening: Part C (1) | `listening-04-part-c` | 66:37 | 16 | 2026-10-17 11:54 (Siavash) |
-| 5 | OET Listening: Part C (2) | `listening-05-part-c-2` | 64:52 | 10 | 2026-10-21 22:01 (Siavash) |
+| 1 | OET Listening: Overview | `listening-01-overview` | 14:27 | 6 | 2026-10-27 09:37 (siavash) |
+| 2 | OET Listening: Part A | `listening-02-part-a` | 55:12 | 11 | 2026-10-27 09:37 (siavash) |
+| 3 | OET Listening: Part B | `listening-03-part-b` | 72:46 | 14 | 2026-10-27 09:37 (siavash) |
+| 4 | OET Listening: Part C (1) | `listening-04-part-c` | 66:37 | 16 | 2026-10-27 09:37 (siavash) |
+| 5 | OET Listening: Part C (2) | `listening-05-part-c-2` | 64:52 | 10 | 2026-10-27 09:37 (siavash) |
 
 <a id="listening-01-overview"></a>
 
 ## 1. OET Listening: Overview
 
 - Lesson ID and folder: `listening-01-overview` (folder `listening-01-overview`); course listening, lesson 1; length 14:27; bundle format 1.22
-- Status: approved by Siavash, 2026-10-17 11:58
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn how the OET Listening test works: its three parts, the questions and timing of each, what each part asks you to listen for, and how to practise.
 - Original session: folder `source`: `source/video.mp4`, 14:29 long, partial hash `ba505aab83cac54d`; deck `source/slides.pdf`, 9 pages
   - The Listening overview session, the first of the four recorded Listening sessions (ADR 029).
@@ -6588,7 +6588,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 2. OET Listening: Part A
 
 - Lesson ID and folder: `listening-02-part-a` (folder `listening-02-part-a`); course listening, lesson 2; length 55:12; bundle format 1.22
-- Status: approved by siavash, 2026-10-14 19:20
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn how Listening Part A works, predict the kind of word each gap needs, follow what the patient says, and practise on two full consultations.
 - Original session: folder `source`: `source/video.mp4`, 81:34 long, partial hash `5e2efa78ad8e72f2`; deck `source/slides.pdf`, 18 pages
   - The Listening Part A session. The instructor played third-party exam audio, which is excluded; the lesson practises on oa-set-la-0001 of sample-tests-v2 (ADR 029).
@@ -6830,7 +6830,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 3. OET Listening: Part B
 
 - Lesson ID and folder: `listening-03-part-b` (folder `listening-03-part-b`); course listening, lesson 3; length 72:46; bundle format 1.22
-- Status: approved by Siavash, 2026-10-16 07:31
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn how Listening Part B works, read the question and its options before you listen, follow the signal words, rule out tempting wrong options, and practise on six short recordings from the workplace.
 - Original session: folder `source`: `source/video.mp4`, 90:15 long, partial hash `a26284d67e42d005`; deck `source/slides.pdf`, 16 pages
   - The Listening Part B session. It taught on a third-party Part B recording and official sample questions, which are excluded; the lesson practises on oa-set-lb-0001 (ADR 029, ADR 035).
@@ -7183,7 +7183,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 4. OET Listening: Part C (1)
 
 - Lesson ID and folder: `listening-04-part-c` (folder `listening-04-part-c`); course listening, lesson 4; length 66:37; bundle format 1.22
-- Status: approved by Siavash, 2026-10-17 11:54
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn how Listening Part C works, use the 90 seconds to read the questions, follow a long talk part by part with its signposts, rule out tempting options, and practise on a presentation about patients who come back to the emergency department again and again.
 - Original session: folder `source`: `source/video.mp4`, 85:52 long, partial hash `716e6a30c3fad891`; deck `source/slides.pdf`, 19 pages; the same recording as `listening-05-part-c-2`
   - The Listening Part C session. This lesson is Part C (1), the method and the presentation (oa-set-lc-0001, extract 2); the interview is taught in listening-05-part-c-2 (ADR 029 decision 7).
@@ -7532,7 +7532,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 5. OET Listening: Part C (2)
 
 - Lesson ID and folder: `listening-05-part-c-2` (folder `listening-05-part-c-2`); course listening, lesson 5; length 64:52; bundle format 1.22
-- Status: approved by Siavash, 2026-10-21 22:01
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: A quick review of the Part C method, then a whole Part C interview, question by question: how the interviewer's questions show where each part begins, and how to rule out the wrong options that look right.
 - Original session: folder `source`: `source/video.mp4`, 85:52 long, partial hash `716e6a30c3fad891`; deck `source/slides.pdf`, 19 pages; the same recording as `listening-04-part-c`
   - Built from the Listening Part C session (a byte copy of listening-04-part-c's source), but every section is authored: the session never teaches the interview (oa-set-lc-0001, extract 1; ADR 037).
@@ -7842,7 +7842,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | OET Writing: Overview | `writing-01-overview` | 19:05 | 7 | 2026-10-26 00:07 (Siavash) |
+| 1 | OET Writing: Overview | `writing-01-overview` | 19:05 | 7 | 2026-10-27 09:37 (siavash) |
 | 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 29:42 | 10 | 2026-10-26 23:34 (Siavash) |
 
 <a id="writing-01-overview"></a>
@@ -7850,7 +7850,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 1. OET Writing: Overview
 
 - Lesson ID and folder: `writing-01-overview` (folder `writing-01-overview`); course writing, lesson 1; length 19:05; bundle format 1.22
-- Status: approved by Siavash, 2026-10-26 00:07
+- Status: approved by siavash, 2026-10-27 09:37
 - Description: Meet the OET Writing test: the one letter you write, the time you have, how it is scored, how to read the case notes and the task, and the parts of a good letter.
 - Original session: folder `source`: `source/video.mp4`, 26:24 long, partial hash `62ec09d19c942acf`; deck `source/slides.pdf`, 10 pages
   - Writing Session 1 of the Persian Writing course, «جلسه رایتینگ: مقدمه‌ای بر رایتینگ» (Writing: an introduction), the first of the recorded Writing sessions; its official OET sample is replaced by our sample oa-ws-med-0001 at oetacademy-exercises 5320d19 (ADR 040).
