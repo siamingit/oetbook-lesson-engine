@@ -207,3 +207,64 @@ approval is not changed: the restyled version's approval is his.
     Writing 2 and in Grammar 4's "Specific nouns". Fixing it in the shared rules would change Writing 2,
     which this trial leaves as it is; the two-column form has the fix in its own rules. For the owner, with
     the next change that may touch Writing 2.
+
+## Amendment — 2026-10-27 (4): phase 2 stops at Grammar 4; the 23 style C lessons are published
+
+Status: **Accepted**: the owner's decisions of 2026-10-27, given in chat and passed in the brief "Pin the site's
+contracts 1.12.0 (bundle format 1.22) and publish the 23 style C lessons". How each is carried was decided by the
+agent under that brief (ADR 005). It **supersedes** this record's consequence "Phase 2 (`block_layouts`, lesson
+by lesson) follows in later sessions" and the context's plan for phase 2 in the other lessons.
+
+### Context
+
+- The phase 2 trial on Grammar 4 (amendment (3); report issue #54) put board layouts on 6 of its 14 boards. It
+  estimated about 14.75 hours of work for the other 21 lessons, plus about 45 minutes for each batch of new
+  layouts.
+- The site released contracts that accept bundle 1.22 (`contracts-v1.12.0`, pinned by ADR 039's amendment of
+  2026-10-27), and its player plays 1.22 in production since 2026-10-27 18:30 UTC (oetacademy-web #173, closed).
+
+### Decision (owner, 2026-10-27)
+
+23. **Phase 2 is not done for the other 21 lessons.** The gain was too small for the time. They are published
+    with their phase 1 look. Board layouts (runbook step 11b) stay the rule for lessons built in style C from
+    now on (ADR 042 amendment (2), decision 5); only the restyle of the published lessons stops at phase 1.
+24. **Grammar 4 keeps its phase 2 trial layouts.** They change no teaching content, no section and no id
+    (`restyle_proof.py` passed), so the chat approves that version on the owner's behalf under this ADR
+    (decision 4). Its final gate is recorded with `build_lesson.py <L> --approve final --by siavash`. The
+    approval it replaces (siavash, 2026-10-27 09:37) is first kept unchanged in `gates.json` under
+    `final_before_layouts_2026_10_27`, with `superseded` and `why`. Its `decisions.md` says that the chat
+    approved the phase 2 trial version on the owner's behalf under this ADR, on 2026-10-27.
+25. **All 23 style C lessons are published now**: Writing 2 as package version 1, and the 22 restyled lessons
+    each as its next package version, at bundle 1.22. The site takes the 22 new versions live at once, each
+    replacing the current version in its courses. Writing 2 goes live as a session in no course yet.
+
+### How it is carried (agent, under the brief; ADR 005)
+
+- **The section tags of Reading 1–5, Listening 1–5 and Writing 1.** Each of these 11 lessons is covered by its
+  course's approval (Reading and Listening, siavash, 2026-10-23; Writing, siavash, 2026-10-26). Under ADR 039's
+  amendment of 2026-10-26 (2), that approval covers only lessons whose final gate came on or before its date,
+  and the restyle recorded their final gates again on 2026-10-27 (decision 4). Without a further step the
+  release would refuse them. Their tags are unchanged: every section's `teaches` is exactly that of the
+  lesson's released package. So each lesson's own tag approval was recorded with its final approval, as
+  runbook step 18b says (`publish_lesson.py <L> --approve-tags --by "chat (owner's delegation)"`). The course
+  approvals are not changed. Grammar, Vocabulary (approved per lesson with the errata of 2026-10-26) and
+  Writing 2 (approved with its final gate) already had their own.
+- **The zooms of Writing 1 and 2 against the site's player.** The site's player gives no zoom for a `zoom`
+  whose `col` is null on a table as wide as the board (rule 55's 92% width limit; its last comment on #173).
+  Every zoom of both lessons was measured in the reference player at three frames (40 entries). None has `col`
+  null, and every phrase is found in its cell, so none zooms in the reference player but not on the site.
+  Nothing was changed. In Writing 1, 5 of the 30 entries give no zoom in either player at any frame, because
+  the side note shown with the line makes the view too wide or too tall for a scale of 1.03. One more zooms
+  only at the phone frames, 1.03 at the phone, on the threshold. These are logged in the lesson's decision log
+  for the owner; making them zoom would mean changing rule 55 or leaving a note out of the view.
+- **Decision 22** (the square bottom corners of a three-column `fix`'s last row, in Writing 2 and Grammar 4) is
+  published as it is; it stays for the next change that may touch Writing 2.
+
+### Consequences
+
+- The 23 lessons are released in `siamingit/oetacademy-sessions`, each with its release recorded in its
+  `analysis/publish.json`. The course indexes are rebuilt.
+- Grammar 4 is the only published lesson with board layouts.
+- To reverse decision 23 or 25: a new amendment; the decisions are the owner's. To return Grammar 4 to its
+  phase 1 look: `C:\OET\lessons\_restyle-review\phase2-trial\grammar-04-before\restore_phase1.sh`, its final
+  gate recorded again, and a new package version.

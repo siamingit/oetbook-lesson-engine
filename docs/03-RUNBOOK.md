@@ -362,7 +362,8 @@ backups are kept in `spike/out/render-compare/_stale/` and never restored.
 ### Restyling a published lesson (ADR 043)
 
 The 22 lessons published before Writing 2 were moved to style C on 2026-10-27 (phase 1, the general
-look; phase 2, the board layouts of step 11b, follows lesson by lesson). A restyle runs no paid stage
+look; phase 2, the board layouts of step 11b, was tried on Grammar 4 only: the owner stopped it there,
+ADR 043 amendment (4)). A restyle runs no paid stage
 and changes no narration, audio, timing, id or teaching content; it is proved lesson by lesson:
 
 ```
@@ -381,7 +382,8 @@ change: a silent preview older than its narration ("Known items") is compared wi
 decision goes into the lesson's `decisions.md`. The restyled version's final approval is the chat's, on
 the owner's behalf ("At each gate and step", final).
 
-**Phase 2, the board layouts** (step 11b; ADR 043 amendment (3)), lesson by lesson: snapshot the lesson as
+**Phase 2, the board layouts** (step 11b; ADR 043 amendment (3)): done on Grammar 4 only; the owner decided
+on 2026-10-27 not to do it for the other 21 (ADR 043 amendment (4)). Should a published lesson take layouts later, snapshot the lesson as
 it is, name its `block_layouts` in `sections.json` (each board beside its slide, logged board by board),
 then the same free stages without `--style` (already set), step 17's checks and `compare` against that
 snapshot (it allows `block_layouts` and the layouts' classes, nothing else new). A new layout or form is a
