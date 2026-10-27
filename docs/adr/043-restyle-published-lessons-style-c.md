@@ -124,6 +124,37 @@ reverse any of them.
     the line) to the highlights drawn; a highlight whose phrase is not shown at that moment draws no band
     and covers nothing (82 of Reading 4's, the same before and after).
 
+## Amendment — 2026-10-27 (2): the last contents item lifted; matching tables spotlit by cell
+
+Status: **Accepted**: the chat's brief of 2026-10-27, after it read the report (issue #51) and accepted
+phase 1 on the owner's behalf; the second fix is the owner's report of the same day. How each is carried
+was decided by the agent under the brief (ADR 005).
+
+16. **The last contents item is lifted while it is named** (the first item under "Found" below, now
+    decided). Its lift ends at the end of the sentence whose cues hold its reveal (else, as before, the
+    sentence its reveal falls in), plus the hold, and later marks on it as decision 6 says. Rebuilt:
+    Grammar 1 and 2, Vocabulary 2, Writing 1, Reading 1 and 5, Listening 1 and 3, and Writing 2 (its
+    "Closing"; the chat permitted it: no narration, audio, id, time or teaching content changes, and
+    Writing 2 also takes the rules this ADR appended to style C's shared stylesheet). Writing 2 keeps its
+    final approval of 2026-10-26; the rebuild is approved by the chat on the owner's behalf under this ADR.
+17. **A table whose rows do not pair their cells is spotlit by cell** (rule 11, amended; bundle 1.22
+    amended, not raised). The owner found on Reading Part C (2), board `pages-13-14-15_t1` at 6:01, that
+    the spotlight lit the word's row (its wrong meaning beside it) and dimmed the right meaning its arrow
+    reached: a teaching error, in the published 1.21 version too. The rule, for every lesson now and
+    later: where the narration draws an arrow from a cell of a board's table to a cell of another row
+    (detected from the bundle's own cues, `build_lesson_player.cross_arrows`), each `focus` entry lists
+    the cells lit, `cells`: the word's cell, every cell its arrows have reached by then (from the arrow's
+    time, never before) and the cell being read; every other cell is dimmed. Found in 39 boards of six
+    lessons (Reading 3, 4 and 5, Listening 3, 4 and 5); no other kind of board marks a row the spotlight
+    is not on. **The site's player must change**: it sets `cellspot` and `lit` from `cells`
+    (docs/integration/1.22-changelog-for-site.md, "Amended 2026-10-27 (2)"); the look is in the lesson's
+    `blocks.css`, appended only in a lesson that has such a table (`style_c.CELL_CSS`), so every other
+    lesson's stylesheet is unchanged. `check_board_page.py` checks every `cells`.
+18. **The proof** (`restyle_proof.py`) allows a focus entry's `cells`, and an entry repeating the row and
+    cell before it, as the spotlight by cell, and a state's effects rewritten; everything else as before.
+19. **Final approvals** (decision 4): recorded on 2026-10-27 for the 22 restyled lessons, after both
+    fixes passed, by the chat on the owner's behalf.
+
 ## Found while carrying this, not decided here
 
 - **The last contents item is often not lifted** (`style_c.effects`, ADR 042 decision 4). When an item's

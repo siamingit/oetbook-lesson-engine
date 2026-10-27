@@ -307,6 +307,26 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
     v122 = tuple(int(x) for x in bundle["format_version"].split(".")) >= (1, 22)
     if style is not None and (style != "c" or not v122):
         problems.append(f"lesson.style {style!r}: not a style of format {bundle['format_version']}")
+    # 1.22 (ADR 043 decision 17): the spotlight by cell, only on a table whose
+    # rows do not pair their cells, every cell one of the table's, never on an
+    # entry with no row
+    from build_lesson_player import cross_arrows
+    for bd in bundle["boards"]:
+        cf = [f for f in bd.get("focus") or [] if "cells" in f]
+        if not cf:
+            continue
+        t = blocks.get(bd.get("table") or "")
+        if not v122 or not t:
+            problems.append(f"{bd['id']}: a spotlight by cell outside a 1.22 table board")
+            continue
+        if not cross_arrows(bd, t["id"]):
+            problems.append(f"{bd['id']}: a spotlight by cell on a table whose rows pair their cells")
+        ncol = len(t.get("header") or t["rows"][0])
+        for f in cf:
+            if f["row"] is None or not f["cells"] or any(
+                    not (0 <= r < len(t["rows"]) and 0 <= c < ncol) for r, c in f["cells"]):
+                problems.append(f"{bd['id']}: focus at {f['time']}s lists cells {f['cells']} "
+                                "that are not cells of its table, or has no row")
     for bd in bundle["boards"]:
         on_board = set(bd["fixed"]) | {w for s in bd["states"] for w in s["working"]}
         for s in bd["states"]:

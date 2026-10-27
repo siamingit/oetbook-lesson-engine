@@ -17,7 +17,7 @@ restyle may change (ADR 043): `lesson.style` in sections.json; the look
 elements style C adds to a block's html, `ATTRS` and `CLASS_TOKENS` below); the bundle's
 `effects`, its format version and `lesson.style`; and the fit (fit.json, a
 table's `font`, a picture's `size`, a state's `clears` and `overlay`, a board's `tight`, a
-question board's `split`).
+question board's `split`); and a table's spotlight by cell (a focus entry's `cells`).
 Everything else must be identical: narration text, cues, every audio file and
 its timing, board and state times, ids, section titles and order, the words on
 every board and their order, glosses, images and practice items. Deterministic,
@@ -234,7 +234,11 @@ def check_bundle(a: dict, b: dict, p: Proof, where: str) -> None:
         p.fail(f"{where}: board ids or their order changed")
         return
     for x, y in zip(da, db):
-        diff_keys(x, y, f"{where} board {x['id']}", {"states", "tight", "split"}, p, "board")
+        diff_keys(x, y, f"{where} board {x['id']}", {"states", "tight", "split", "focus"}, p, "board")
+        if norm_focus(x.get("focus")) != norm_focus(y.get("focus")):
+            p.fail(f"{where} board {x['id']}: board field 'focus' changed beyond the spotlight by cell")
+        elif x.get("focus") != y.get("focus"):
+            p.allow(f"{where}: a table spotlit by cell (1.22)")
         if x.get("tight") != y.get("tight"):
             p.allow(f"{where}: a board's tightness (the fit)")
         if x.get("split") != y.get("split"):
@@ -252,9 +256,9 @@ def check_bundle(a: dict, b: dict, p: Proof, where: str) -> None:
             fx = t.get("effects")
             if fx is None:
                 p.fail(f"{where} state {s['id']}: no effects in a style C bundle")
-            elif s.get("effects") not in (None, fx):
-                p.fail(f"{where} state {s['id']}: effects that were there changed")
             else:
+                if s.get("effects") not in (None, fx):
+                    p.allow(f"{where}: a state's effects rewritten")
                 for e in fx:
                     p.allow(f"{where}: effect {e['type']}")
 
@@ -278,11 +282,33 @@ def strip(x, keys: tuple):
     return x
 
 
+def norm_focus(focus: list | None) -> list:
+    """A board's spotlight as rule 11 states it without the cells (1.22, ADR 043
+    decision 17): `cells` taken away, and an entry that only repeats the row and
+    cell before it (one added where an arrow's target lights) dropped."""
+    out = []
+    for f in focus or []:
+        g = {k: v for k, v in f.items() if k != "cells"}
+        if out and (out[-1]["row"], out[-1]["col"]) == (g["row"], g["col"]):
+            continue
+        out.append(g)
+    return out
+
+
+def with_norm_focus(x):
+    if isinstance(x, dict):
+        return {k: (norm_focus(v) if k == "focus" else with_norm_focus(v)) for k, v in x.items()}
+    if isinstance(x, list):
+        return [with_norm_focus(v) for v in x]
+    return x
+
+
 def check_timeline(a: dict, b: dict, p: Proof, where: str) -> None:
     """A timeline mirrors the bundle's boards and states: identical but for each
     state's `effects` (added), and what the fit writes: a state's `clears` and
     `overlay`, a board's `tight` and a question board's `split`."""
     FIT = ("effects", "clears", "tight", "split", "overlay")
+    a, b = with_norm_focus(a), with_norm_focus(b)
     if strip(a, FIT) != strip(b, FIT):
         p.fail(f"{where}: changed beyond the effects and the fit")
     elif strip(a, ("effects",)) != strip(b, ("effects",)):

@@ -1246,13 +1246,20 @@ function applyFocus(bd, t) {
   let f = null;
   for (const x of bd.focus) if (x.time <= t) f = x; else break;
   const row = f ? f.row : null, col = f ? f.col : null;
-  const key = row + "," + col;
+  // 1.22 (ADR 043): a table whose rows do not pair their cells is spotlit by
+  // cell: `cells` lists the cells lit, and no row is in focus
+  const cells = f && f.cells ? f.cells : null;
+  const key = row + "," + col + (cells ? "|" + cells.map(c => c.join(".")).join(" ") : "");
   if (el.dataset.focus !== key) {
     el.dataset.focus = key;
     el.classList.toggle("spot", row !== null);
-    for (const tr of el.querySelectorAll("tbody tr")) tr.classList.toggle("focus", +tr.dataset.row === row);
-    for (const td of el.querySelectorAll("td"))
-      td.classList.toggle("active", col !== null && +td.parentElement.dataset.row === row && +td.dataset.col === col);
+    el.classList.toggle("cellspot", !!cells);
+    for (const tr of el.querySelectorAll("tbody tr")) tr.classList.toggle("focus", !cells && +tr.dataset.row === row);
+    for (const td of el.querySelectorAll("td")) {
+      const r = +td.parentElement.dataset.row, k = +td.dataset.col;
+      td.classList.toggle("active", col !== null && r === row && k === col);
+      td.classList.toggle("lit", !!cells && cells.some(c => c[0] === r && c[1] === k));
+    }
   }
   return row === null ? null : { row, col, el };
 }

@@ -451,7 +451,14 @@ These are the only rules. Every time and target they use is in the bundle.
     and its answer is typed onto that line.
 11. **The spotlight** (1.2) on a table board is the latest `focus` entry whose
     `time` ≤ `t`: rows other than `row` are dimmed and the cell (`row`, `col`)
-    is highlighted; with `row` null nothing is dimmed.
+    is highlighted; with `row` null nothing is dimmed. **By cell** (1.22, amended
+    2026-10-27, ADR 043 decision 17): an entry with `cells` (a list of `[row, col]`)
+    puts no row in focus; every cell but those listed is dimmed (the one beside a
+    lit cell included), the listed cells are at full strength and highlighted, and
+    (`row`, `col`) is highlighted as before. The engine writes `cells` only on a
+    table whose rows do not pair their cells (an arrow of the narration runs from a
+    cell to a cell of another row: a word and its meaning, shuffled). The renderer
+    sets `cellspot` on the table and `lit` on each cell listed, and no `tr.focus`.
 12. **A side note** (1.2), a working block with `beside`, is shown by rule 4 and
     drawn under the table (and under anything else in the board's flow), in the
     order its state lists the notes, never over the table or any text (1.12;

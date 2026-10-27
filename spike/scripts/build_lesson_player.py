@@ -370,6 +370,75 @@ def whole_first(focus: list[dict], shown: float, until: float) -> list[dict]:
             if not n or (f["row"], f["col"]) != (out[n - 1]["row"], out[n - 1]["col"])]
 
 
+def cross_arrows(bd: dict, tid: str) -> list[dict]:
+    """The arrows the narration draws from a cell of the board's table to a cell
+    of another row: the table's rows do not pair their cells (a word and its
+    meaning, the meanings shuffled)."""
+    return [c for s in bd["states"] for u in s["utterances"] for c in u["cues"]
+            if c["type"] == "arrow" and c.get("block") == tid and (c.get("to_block") or tid) == tid
+            and c.get("row") is not None and c.get("to_row") is not None and c["row"] != c["to_row"]]
+
+
+def cell_focus(bd: dict, table: dict) -> list[dict]:
+    """1.22 (ADR 043 decision 17; rule 11): on a table whose rows do not pair
+    their cells, the spotlight is by cell, not by row. Each `focus` entry with a
+    row also lists the cells lit, `cells` ([row, col] pairs, in order): the
+    cell an arrow of the state starts from (the word being taught), each cell
+    its arrows have reached by then, and the cell being read or marked. Every
+    other cell is dimmed, the one beside the word included. An entry is added
+    at each arrow's time, so its target lights as the arrow is drawn, never
+    before. Row and col stay as rule 11 states them (the highlighted cell; a
+    renderer that does not know `cells` dims by row, as before). Other tables:
+    unchanged."""
+    tid = table["id"]
+    arrows = cross_arrows(bd, tid)
+    focus = bd.get("focus") or []
+    if not arrows or not focus:
+        return focus
+    ncol = len(table.get("header") or (table.get("rows") or [[]])[0])
+    states = bd["states"]
+
+    def state_at(t):
+        # a cue can come a little before its state's recorded start (its word is
+        # said just before the sentence's start): the latest state starting
+        # within a second
+        hit = [s for s in states if s["start"] - 1.0 <= t < s["until"]]
+        return hit[-1] if hit else None
+
+    def arrows_of(s):
+        return sorted((c for u in s["utterances"] for c in u["cues"] if c in arrows), key=lambda c: c["time"])
+
+    # every entry of the row spotlight, in its order (two may share a time), and
+    # one more at each arrow's time, with the entry then in force
+    ev = sorted([(x["time"], 0, n, x) for n, x in enumerate(focus)]
+                + [(round(c["time"], 3), 1, n, None) for n, c in enumerate(arrows)],
+                key=lambda e: (e[0], e[1], e[2]))
+    out: list[dict] = []
+    f = None
+    for t, kind, _n, x in ev:
+        if kind == 0:
+            f = x
+        if f is None:
+            continue
+        e = {"time": round(t, 3), "row": f["row"], "col": f["col"]}
+        if f["row"] is not None:
+            s = state_at(t)
+            mine = arrows_of(s) if s else []
+            cells = []
+            if mine:
+                cells.append((mine[0]["row"], mine[0]["col"]))
+                cells += [(c["to_row"], c["to_col"]) for c in mine if c["time"] <= t + 1e-6]
+            if f["col"] is not None:
+                cells.append((f["row"], f["col"]))
+            if not cells:
+                cells = [(f["row"], k) for k in range(ncol)]
+            e["cells"] = [list(c) for c in sorted(set(cells))]
+        if out and all(out[-1].get(k) == e.get(k) for k in ("row", "col", "cells")):
+            continue
+        out.append(e)
+    return out
+
+
 def diagram_parts(b: dict) -> list[str]:
     """Part ids of a diagram block, as its html names them (data-part)."""
     if not has_parts(b):
@@ -871,6 +940,10 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             if first and first["utterances"]:
                 bd["focus"] = whole_first(bd["focus"], first["start"],
                                           round(max(first["start"] + 3.0, first["utterances"][0]["end"]), 3))
+        if bd["table"] and style_c.style_of(L):
+            # 1.22 (ADR 043 decision 17): a table whose rows do not pair their
+            # cells is spotlit by cell
+            bd["focus"] = cell_focus(bd, blocks_all[bd["table"]])
         bd["verdicts"] = table_verdicts(bd, blocks_all[bd["table"]]) if bd["table"] else []
         # 1.3: a pinned block stays from its reveal to the board's end; a
         # word mark colours a changing word by its word class from the moment
@@ -1005,7 +1078,11 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
               "boards": boards_out, "events": events}
     (out_dir / "bundle.json").write_text(json.dumps(bundle, ensure_ascii=False, indent=1),
                                          encoding="utf-8")
-    (out_dir / "blocks.css").write_text(frame_css(L).strip() +"\n", encoding="utf-8")
+    # 1.22 (ADR 043 decision 17): the cell spotlight's rules, in the stylesheet of a
+    # lesson that has one only, so every other lesson's stylesheet stays as it is
+    css = frame_css(L) + (style_c.CELL_CSS if any(f.get("cells") for bd in boards_out
+                                                  for f in bd.get("focus") or []) else "")
+    (out_dir / "blocks.css").write_text(css.strip() +"\n", encoding="utf-8")
     (out_dir / "text.json").write_text(
         json.dumps(text_export(lesson, sections_out, boards_out, blocks_all, with_map, part_b, part_c, listening,
                                newer),
@@ -1018,7 +1095,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     template = (REPO_ROOT / "spike" / "scripts" / "board_player_template.html").read_text(encoding="utf-8")
     title = ("SILENT PREVIEW - " if silent else "") + info["lesson"]["title"]
     html = (template.replace("__TITLE__", title)
-            .replace("/*__FRAME_CSS__*/", (style_c.font_css() if style else "") + frame_css(L))
+            .replace("/*__FRAME_CSS__*/", (style_c.font_css() if style else "") + css)
             .replace("__BUNDLE_JSON__", json.dumps(bundle, ensure_ascii=False).replace("</", "<\\/")))
     (out_dir / "player.html").write_text(html, encoding="utf-8")
 

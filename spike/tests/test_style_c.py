@@ -212,6 +212,17 @@ class Effects(unittest.TestCase):
         (other / "analysis" / "sections.json").write_text(json.dumps(info), encoding="utf-8")
         self.assertFalse(style_c.zooms(other))
 
+    def test_the_last_item_lifted_when_its_reveal_falls_in_the_last_sentences_tail(self):
+        # ADR 043 decision 16: its first word said just before its sentence's
+        # recorded start, inside the 0.5 s after the previous sentence ends
+        boards, blocks = bundle()
+        s = boards[0]["states"][0]
+        s["utterances"] = [{"start": 0.5, "end": 3.7, "cues": [], "reading": []},
+                           {"start": 4.2, "end": 6.0, "reading": [],
+                            "cues": [{"type": "reveal", "block": "c2", "time": 4.0}]}]
+        style_c.effects(boards, blocks)
+        self.assertEqual(s["effects"][-1], {"type": "lift", "block": "c2", "time": 4.0, "until": 6.6})
+
     def test_the_last_category_lifted_while_its_sections_are_named(self):
         # ADR 043: a category whose sections the narration names one by one stays
         # lifted until the last is named, not only through its reveal

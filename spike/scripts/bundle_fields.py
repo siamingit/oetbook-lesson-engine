@@ -88,22 +88,27 @@ def collect(lessons: list[Path]):
     types = defaultdict(dict)
     vwhere = defaultdict(lambda: defaultdict(list))
     for d in lessons:
-        folder = d / "generated" / "lesson-player"
-        bundle = json.loads((folder / "bundle.json").read_text(encoding="utf-8"))
-        ver = bundle["format_version"]
-        for name, root in (("bundle", bundle),
-                           ("text", json.loads((folder / "text.json").read_text(encoding="utf-8")))):
-            paths, values = defaultdict(set), defaultdict(set)
-            walk(root, name, paths, values)
-            for p, ts in paths.items():
-                where[p][ver].append(d.name)
-                for t in ts:
-                    old = types[p].get(t)
-                    if old is None or vkey(ver) < vkey(old):
-                        types[p][t] = ver
-            for p, vs in values.items():
-                for v in vs:
-                    vwhere[(p, v)][ver].append(d.name)
+        # the lesson's player, and every package version published from it: the
+        # approved bundles of a format a lesson has since left (the 22 lessons
+        # restyled to 1.22, ADR 043) stay the baseline
+        folders = [d / "generated" / "lesson-player"] + sorted(
+            f for f in (d / "generated" / "package").glob(d.name + "-v*") if (f / "bundle.json").exists())
+        for folder in folders:
+            bundle = json.loads((folder / "bundle.json").read_text(encoding="utf-8"))
+            ver = bundle["format_version"]
+            for name, root in (("bundle", bundle),
+                               ("text", json.loads((folder / "text.json").read_text(encoding="utf-8")))):
+                paths, values = defaultdict(set), defaultdict(set)
+                walk(root, name, paths, values)
+                for p, ts in paths.items():
+                    where[p][ver].append(d.name)
+                    for t in ts:
+                        old = types[p].get(t)
+                        if old is None or vkey(ver) < vkey(old):
+                            types[p][t] = ver
+                for p, vs in values.items():
+                    for v in vs:
+                        vwhere[(p, v)][ver].append(d.name)
     return where, types, vwhere
 
 
