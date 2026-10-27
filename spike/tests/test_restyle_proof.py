@@ -180,6 +180,25 @@ class Proof(unittest.TestCase):
         write(self.L / "analysis/sections.json", s)
         self.assertCaught("changed beyond lesson.style")
 
+    def test_board_layouts_pass(self):
+        # phase 2 (ADR 043 amendment (3)): block_layouts named, the table's html
+        # taking the layout's classes only
+        s = json.loads((self.L / "analysis/sections.json").read_text(encoding="utf-8"))
+        s["block_layouts"] = {"k2": "fix"}
+        write(self.L / "analysis/sections.json", s)
+        self.edit_bundle(lambda b: b["blocks"]["k2"].update(html=b["blocks"]["k2"]["html"].replace(
+            'class="blk tbl core"', 'class="blk tbl core lay lay-fix"')))
+        r = self.result()
+        self.assertTrue(r["ok"], r["failures"])
+        self.assertIn("sections.json block_layouts", r["allowed"])
+
+    def test_board_layouts_beside_another_change_caught(self):
+        s = json.loads((self.L / "analysis/sections.json").read_text(encoding="utf-8"))
+        s["block_layouts"] = {"k2": "fix"}
+        s["boards_fit"] = {"t2": "whole"}
+        write(self.L / "analysis/sections.json", s)
+        self.assertCaught("changed beyond lesson.style: boards_fit")
+
     def test_timeline_caught(self):
         p = self.L / "generated/lesson-player/timeline.json"
         t = json.loads(p.read_text(encoding="utf-8"))

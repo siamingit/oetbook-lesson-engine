@@ -562,11 +562,12 @@ LAYOUTS = {
     "steps": (("table",), False, (2,)),
     "flow": (("table",), True, (2,)),
     "bins": (("table",), True, (2,)),
-    "fix": (("table",), True, (3,)),
+    "fix": (("table",), True, (2, 3)),
     "change": (("table",), False, (2,)),
     "stack": (("table",), False, (2,)),
     "notes": (("table",), False, (1,)),
-    "letter": (("table",), True, (2,)),
+    "letter": (("table",), True, (1, 2)),
+    "pair": (("table",), False, (4,)),
     "vs": (("comparison",), False, None),
 }
 BINS = {"keep": "keep", "keep, briefly": "brief", "keep briefly": "brief", "leave out": "out"}
@@ -694,6 +695,92 @@ def _table_html(b: dict, html: str, layout: str) -> str:
     n = len(rows)
     size = " n2" if n in (2,) or (layout in ("tiles", "checklist") and n == 4) else " n4" if n == 4 else ""
     return _add_root(html, "lay lay-" + layout + size)
+
+
+# The layouts and forms added in phase 2 (ADR 043 amendment (3)): their rules go
+# into the stylesheet of a lesson that uses them only (as CELL_CSS), so every
+# other lesson's stylesheet stays as it is. Each form is told by its columns
+# (`:has`), so the block's html carries nothing new.
+FIX2 = ".tbl.lay.lay-fix:has(thead th:nth-child(2):last-child)"
+LETTER1 = ".tbl.lay.lay-letter:has(thead th:only-child)"
+LAYOUT_CSS = {
+    "fix2": r"""
+/* a fix of two columns, the wrong sentence and the right one (no case note):
+   the wrong one on red with its cross, an arrow, the right one on green with its
+   tick, typed in (§7j) */
+""" + FIX2 + r""" td:first-child{font-weight:400;color:var(--sc-wrong)}
+""" + FIX2 + r""" td:last-child{padding-left:2.2cqw}
+""" + FIX2 + r""" tbody tr:last-child td:first-child{border-radius:2.2cqh 0 0 2.2cqh}
+""" + FIX2 + r""" tbody tr:last-child td:last-child{border-radius:0 2.2cqh 2.2cqh 0}
+""" + FIX2 + r""" .tw{font-kerning:none;font-variant-ligatures:none;background:none}
+""" + FIX2 + r""" td{overflow-wrap:break-word}
+""" + FIX2 + r""" thead th+th{box-shadow:-1px 0 0 var(--k)}
+""",
+    "letter1": r"""
+/* a letter of one column, a text with gaps (§7 Tables): the whole letter on
+   paper, its greeting at the top, a paragraph a row, its closing last; the
+   paragraph being taught a white sheet lifted on the paper (§7j) */
+""" + LETTER1 + r"""{padding:1.6cqh 2cqw}
+""" + LETTER1 + r""" th{color:var(--sc-ink);font-weight:600;font-size:inherit;padding:0 1.2cqw .6cqh;text-align:left}
+""" + LETTER1 + r""" td:first-child{color:var(--sc-ink);font-weight:400}
+.tbl.core""" + LETTER1[4:] + r""".spot tbody tr.focus td:first-child{border-radius:1.4cqh}
+""" + LETTER1 + r""" .tw{font-kerning:none;font-variant-ligatures:none}
+""" + LETTER1 + r""" td{overflow-wrap:break-word}
+""",
+    "pair": r"""
+/* a pair: a table of four columns, two lists of one kind side by side (the
+   countable nouns and the uncountable), drawn as two tables with a gap between,
+   as on the slide; a row is still taught as one row (§7j) */
+.tbl.lay.lay-pair table{display:table;width:100%;border-collapse:separate;border-spacing:0}
+.tbl.lay.lay-pair thead{display:table-header-group} .tbl.lay.lay-pair tbody{display:table-row-group}
+.tbl.lay.lay-pair tr,.tbl.lay.lay-pair thead tr{display:table-row}
+.tbl.lay.lay-pair td{display:table-cell;background:var(--ks);border-top:max(1px,.25cqh) solid #fff;
+  padding:1cqh 1.6cqw;overflow-wrap:break-word}
+.tbl.lay.lay-pair colgroup{display:table-column-group}
+.tbl.lay.lay-pair td::before{content:none}
+.tbl.lay.lay-pair td:is([data-col="0"],[data-col="2"]){font-weight:600}
+/* the gap is taken from the first list's wider column, so no narrow column
+   loses room (the table's columns are fixed) */
+.tbl.lay.lay-pair :is(th:nth-child(2),td[data-col="1"]){border-right:3cqw solid transparent;background-clip:padding-box}
+.tbl.lay.lay-pair th:nth-child(1){border-top-left-radius:2.2cqh}
+.tbl.lay.lay-pair th:nth-child(2){border-top-right-radius:calc(3cqw + 2.2cqh) 2.2cqh}
+.tbl.lay.lay-pair th:nth-child(3){border-top-left-radius:2.2cqh}
+.tbl.lay.lay-pair th:nth-child(4){border-top-right-radius:2.2cqh}
+.tbl.lay.lay-pair tbody tr:last-child td[data-col="0"],
+.tbl.core.lay.lay-pair.spot tbody tr.focus:last-child td.active[data-col="0"]{border-radius:0 0 0 2.2cqh}
+.tbl.lay.lay-pair tbody tr:last-child td[data-col="1"],
+.tbl.core.lay.lay-pair.spot tbody tr.focus:last-child td.active[data-col="1"]{
+  border-radius:0 0 calc(3cqw + 2.2cqh) 0 / 0 0 2.2cqh 0}
+.tbl.lay.lay-pair tbody tr:last-child td[data-col="2"],
+.tbl.core.lay.lay-pair.spot tbody tr.focus:last-child td.active[data-col="2"]{border-radius:0 0 0 2.2cqh}
+.tbl.lay.lay-pair tbody tr:last-child td[data-col="3"],
+.tbl.core.lay.lay-pair.spot tbody tr.focus:last-child td.active[data-col="3"]{border-radius:0 0 2.2cqh 0}
+.tbl.lay.lay-pair td.active,.tbl.core.lay.lay-pair.spot tbody tr.focus td.active{box-shadow:none;border-radius:0;
+  background-clip:padding-box}
+.tbl.core.lay.lay-pair.spot tbody tr.focus{filter:drop-shadow(0 .6cqh 1.2cqh rgba(20,32,31,.14));box-shadow:none;
+  transform:scale(calc(1 + .004 * var(--sc-motion, 1)))}
+""",
+}
+ROOT_CLASS = re.compile(r'^<div class="([^"]*)"')
+
+
+def layout_css(blocks: dict) -> str:
+    """The rules of the phase 2 layouts and forms a lesson's blocks use (ADR 043
+    amendment (3)), in a fixed order; "" for a lesson that uses none."""
+    used = set()
+    for b in blocks.values():
+        m = ROOT_CLASS.match(b.get("html") or "")
+        cls = set(m.group(1).split()) if m else set()
+        if "lay" not in cls:
+            continue
+        ncol = len(b.get("header") or (b.get("rows") or [[]])[0])
+        if "lay-fix" in cls and ncol == 2:
+            used.add("fix2")
+        if "lay-letter" in cls and ncol == 1:
+            used.add("letter1")
+        if "lay-pair" in cls:
+            used.add("pair")
+    return "".join(LAYOUT_CSS[k] for k in LAYOUT_CSS if k in used)
 
 
 CONTENTS_SEP = " · "          # between a category's sections (build_lesson_boards.py)

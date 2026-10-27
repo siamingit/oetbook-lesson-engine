@@ -381,6 +381,13 @@ change: a silent preview older than its narration ("Known items") is compared wi
 decision goes into the lesson's `decisions.md`. The restyled version's final approval is the chat's, on
 the owner's behalf ("At each gate and step", final).
 
+**Phase 2, the board layouts** (step 11b; ADR 043 amendment (3)), lesson by lesson: snapshot the lesson as
+it is, name its `block_layouts` in `sections.json` (each board beside its slide, logged board by board),
+then the same free stages without `--style` (already set), step 17's checks and `compare` against that
+snapshot (it allows `block_layouts` and the layouts' classes, nothing else new). A new layout or form is a
+change to shared code ("Changing shared code"); its rules go only into the stylesheet of a lesson that uses
+it, so every other lesson stays identical.
+
 ### Checks on every pull request (CI)
 
 Maintainer, 2026-10-06. `.github/workflows/checks.yml` runs on every pull

@@ -181,3 +181,29 @@ was decided by the agent under the brief (ADR 005).
 - To reverse for one lesson: remove `lesson.style` (and `style_by`) from its `sections.json` and rebuild
   its boards, fit, silent preview and player (free); it returns to its earlier look and format, byte for
   byte as the snapshot of this phase shows.
+
+## Amendment — 2026-10-27 (3): phase 2, a trial on Grammar 4
+
+Status: **Accepted**: the chat's brief of 2026-10-27, "Restyle phase 2, trial on one lesson: the creative
+board layouts for grammar-04-articles", to be worked through on the agent's own decisions (ADR 005). The
+owner looks at the result and decides whether the other 21 published lessons follow. Grammar 4's final
+approval is not changed: the restyled version's approval is his.
+
+20. **The proof allows the board layouts.** `restyle_proof.py compare` allows `sections.json`
+    `block_layouts` (a map of block id to layout name) beside `lesson.style`, and nothing else new there;
+    the bundle is read in depth as before (every block's words and their order, every id, time, cue and
+    state), so a layout that moved a word still fails. Phase 2 compares against a snapshot taken just
+    before the layouts are named.
+21. **One new layout and two new forms** (design system §7j), from Grammar 4's slides: `pair`, a table of
+    four columns that is two lists side by side, drawn as two tables with a gap (slide 6); a `fix` of two
+    columns, the wrong sentence and the right one with no case note (slides 7 and 8); a `letter` of one
+    column, a text with gaps, its greeting at the top (slide 15). Their rules are appended only to the
+    stylesheet of a lesson that uses them (`style_c.LAYOUT_CSS`, as `CELL_CSS`), and each form is told by
+    its columns (`:has`), so the html carries no new class or attribute, bundle 1.22 is unchanged (rule 53
+    already names `lay-<layout>`) and the site has nothing to do. Every other lesson, Writing 2 included,
+    is unchanged (the render comparison).
+22. **Found, not changed**: in the shared stylesheet the last row of a `fix` of three columns has square
+    bottom corners (`.tbl.lay tbody tr:last-child td:last-child` outranks the layout's own radius), in
+    Writing 2 and in Grammar 4's "Specific nouns". Fixing it in the shared rules would change Writing 2,
+    which this trial leaves as it is; the two-column form has the fix in its own rules. For the owner, with
+    the next change that may touch Writing 2.
