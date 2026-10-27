@@ -1057,13 +1057,19 @@ table board.
 | `steps` | a two-column table in order: steps, or times | cards left to right joined by arrows; a step's number as a round badge | What you read first (slide 9); the verbs' times, in hospital, today, next (slide 14) |
 | `flow` | a letter's parts or a paragraph plan, top to bottom | the parts one under the other on paper, each named in its margin, a chevron from one to the next | The opening, the next paragraph, the last (slide 7: the chevron down) |
 | `bins` | notes sorted into keep, keep briefly or leave out | three lanes beside each note, Keep, Keep briefly and Leave out; each note's answer is typed into its lane (the lane's room is there from the start, empty, so nothing gives the answer away) | Medical history (slide 13: ticks and crosses beside the lines) |
-| `fix` | a note, a wrong version, the right one | a row a case: the note, the wrong sentence on red with a cross, an arrow, the right one on green with a tick, typed in | Discharge plan, wrong, accurate (slide 11) |
+| `fix` | a note, a wrong version, the right one; or only a wrong version and the right one (two columns, ADR 043 amendment (3)) | a row a case: the note, the wrong sentence on red with a cross, an arrow, the right one on green with a tick, typed in | Discharge plan, wrong, accurate (slide 11); two columns: Grammar 4's "Wrong, Right" (slides 7 and 8) |
 | `change` | from one form to another | the first form, an arrow, the second | Abbreviations, case notes to letter (slide 17) |
 | `stack` | the parts of a letter, one of them singled out | the parts stacked, the one that counts larger and in the section's colour | What is counted (slide 12: the letter beside "180–200 words") |
 | `notes` | a short list of case notes | a case-notes card on paper, its heading as a tab, a dot a line | Social background (slide 15) |
-| `letter` | a whole letter by its parts | the letter on paper, each part's name in its margin; the zoom brings the line being taught to body size | The whole letter (slide 18) |
+| `letter` | a whole letter by its parts; or a text with gaps, a table of one column (§7 Tables, ADR 043 amendment (3)) | the letter on paper, each part's name in its margin; the zoom brings the line being taught to body size (a Writing lesson's, ADR 043 decision 7). Of one column: its greeting at the top, a paragraph a row, its closing last, the paragraph being taught a white sheet on the paper | The whole letter (slide 18); one column: Grammar 4's gap fill (slide 15) |
 | `checklist` | what is checked and the word for it | tiles, the word for it large in the section's colour | Language: meaning clear, vocabulary precise (slide 19) |
 | `vs` | a comparison of two options (not a change) | the two side by side, numbered 1 and 2 | Two openings (his try-it) |
+| `pair` | a table of four columns that is two lists of one kind side by side (a name and its examples, twice) | two tables with a gap between, each its own header; a row is still taught as one row, across both (ADR 043 amendment (3)) | Grammar 4's countable and uncountable nouns (slide 6: two tables side by side) |
+
+The forms and the layout added in phase 2 (a `fix` of two columns, a `letter` of one, `pair`) are drawn by
+rules appended to the stylesheet of a lesson that uses them only (`style_c.LAYOUT_CSS`), as the cell
+spotlight's are, so no other lesson's stylesheet changes; each form is told by its columns, so the
+block's html carries nothing new.
 
 **The criterion's card.** In a lesson about the OET Writing criteria, each section named after a
 criterion takes the criterion's colour on all its blocks, and its term box "The criterion" is drawn as

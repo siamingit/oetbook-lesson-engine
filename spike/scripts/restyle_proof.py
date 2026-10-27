@@ -186,8 +186,15 @@ def check_sections(a: dict, b: dict, p: Proof) -> None:
             lb.pop(k, None)
     if la != lb:
         p.fail("sections.json: lesson changed beyond style")
-    ra = {k: v for k, v in a.items() if k != "lesson"}
-    rb = {k: v for k, v in b.items() if k != "lesson"}
+    # phase 2 (ADR 043 amendment (3)): the board layouts, by block id; the builder
+    # refuses a layout that would change a word, and the bundle is read below
+    ya, yb = a.get("block_layouts") or {}, b.get("block_layouts") or {}
+    if not isinstance(yb, dict) or not all(isinstance(v, str) for v in yb.values()):
+        p.fail("sections.json: block_layouts is not a map of block id to layout name")
+    elif ya != yb:
+        p.allow("sections.json block_layouts", len(set(ya.items()) ^ set(yb.items())))
+    ra = {k: v for k, v in a.items() if k not in ("lesson", "block_layouts")}
+    rb = {k: v for k, v in b.items() if k not in ("lesson", "block_layouts")}
     if ra != rb:
         p.fail("sections.json: changed beyond lesson.style: "
                + ", ".join(k for k in sorted(set(ra) | set(rb)) if ra.get(k) != rb.get(k)))

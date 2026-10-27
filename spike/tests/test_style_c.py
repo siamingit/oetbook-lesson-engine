@@ -145,6 +145,33 @@ class Layouts(unittest.TestCase):
         for lilac in ("#f3f0fb", "#c9bdf5", "rgba(91,63,196"):
             self.assertNotIn(lilac, style_c.CSS)
 
+    def test_phase_2_forms_and_their_rules_only_where_used(self):
+        # ADR 043 amendment (3): a fix of two columns, a letter of one, a pair of
+        # lists; their rules in the stylesheet of a lesson that uses them only
+        fix, hf = self.core(["Wrong", "Right"], [["x y", "x a y."]], [{"row": 0, "col": 1, "start": 0, "text": "x a y."}])
+        letter, hl = self.core(["Dear Doctor,"], [["I am writing ____ about."], ["Yours faithfully,"]])
+        pair, hp = self.core(["Countable", "Examples", "Uncountable", "Examples"], [["Tests", "MRI", "Gases", "Oxygen"]])
+        out = {}
+        for b, h, lay in ((fix, hf, "fix"), (letter, hl, "letter"), (pair, hp, "pair")):
+            o = style_c.layout_html(b, h, "Articles", lay)
+            self.assertIn("lay lay-" + lay, o)
+            self.assertEqual(self.words(o), self.words(h))
+            out[lay] = {**b, "html": o}
+        self.assertEqual(style_c.layout_css({}), "")
+        self.assertEqual(style_c.layout_css({"f": out["fix"]}), style_c.LAYOUT_CSS["fix2"])
+        self.assertEqual(style_c.layout_css({"l": out["letter"], "p": out["pair"]}),
+                         style_c.LAYOUT_CSS["letter1"] + style_c.LAYOUT_CSS["pair"])
+        # Writing 2's forms (a fix of three columns, a letter of two) take none
+        fix3, h3 = self.core(["Case note", "Wrong", "Accurate"], [["n", "w", "r"]])
+        let2, h2 = self.core(["Part", "The letter"], [["Date", "21 October"]])
+        self.assertEqual(style_c.layout_css({
+            "a": {**fix3, "html": style_c.layout_html(fix3, h3, "Content", "fix")},
+            "b": {**let2, "html": style_c.layout_html(let2, h2, None, "letter")}}), "")
+        with self.assertRaises(SystemExit):           # a pair is a table of four columns
+            style_c.layout_html(fix, hf, None, "pair")
+        for k in style_c.LAYOUT_CSS.values():          # never in the shared stylesheet
+            self.assertNotIn(k.strip(), style_c.CSS)
+
 
 def bundle():
     blocks = {"c1": {"type": "contents_item"}, "c2": {"type": "contents_item"},

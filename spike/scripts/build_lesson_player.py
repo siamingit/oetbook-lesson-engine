@@ -1082,6 +1082,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     # lesson that has one only, so every other lesson's stylesheet stays as it is
     css = frame_css(L) + (style_c.CELL_CSS if any(f.get("cells") for bd in boards_out
                                                   for f in bd.get("focus") or []) else "")
+    # and the phase 2 layouts' rules (ADR 043 amendment (3)), likewise only where used
+    css += style_c.layout_css(blocks_all) if style else ""
     (out_dir / "blocks.css").write_text(css.strip() +"\n", encoding="utf-8")
     (out_dir / "text.json").write_text(
         json.dumps(text_export(lesson, sections_out, boards_out, blocks_all, with_map, part_b, part_c, listening,
