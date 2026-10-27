@@ -568,8 +568,15 @@ LAYOUTS = {
     "notes": (("table",), False, (1,)),
     "letter": (("table",), True, (1, 2)),
     "pair": (("table",), False, (4,)),
+    "paper": (("table",), False, (2, 3)),
     "vs": (("comparison",), False, None),
 }
+# The paper (ADR 045): the line every Writing paper opens its notes with (fact
+# 44), set in bold on the paper, and the labels of its Writing Task box
+PAPER_TODAY = "Assume that today's date is"
+PAPER_TASK = ("writing task", "in your answer")
+PAPER_SKIP_MAX = 4
+PAPER_BESIDE = 'data-paper="beside"'
 BINS = {"keep": "keep", "keep, briefly": "brief", "keep briefly": "brief", "leave out": "out"}
 BIN_LANES = (("keep", "Keep"), ("brief", "Keep briefly"), ("out", "Leave out"))
 TAGS = re.compile(r"<[^>]+>")
@@ -648,6 +655,7 @@ def _table_html(b: dict, html: str, layout: str) -> str:
         return html
     named = {CRIT_KEY.get(r[0].strip()) for r in rows} - {None}
     new_trs = []
+    in_task = False
     for r, (tr, row) in enumerate(zip(trs, rows)):
         tds = _cells(tr)
         open_tr = re.match(r"<tr[^>]*", tr).group(0)
@@ -656,6 +664,15 @@ def _table_html(b: dict, html: str, layout: str) -> str:
             open_tr += _crit_attr(key)
         if layout == "stack" and len(row) > 1 and row[1].strip().lower() == "yes":
             open_tr += ' data-yes=""'
+        skip = 0
+        if layout == "paper" and len(row) > 1:
+            # a row with no label goes on in the box of the row above it
+            in_task = _paper_task(row) or (in_task and not row[0].strip())
+            open_tr += _paper_row_attrs(row, in_task)
+            # a label of more lines than its lines (a heading over its first
+            # label, "PATIENT DETAILS:" over "Name:") sets the lines beside the
+            # labels they belong to
+            skip = min(PAPER_SKIP_MAX, max(0, row[0].count(" / ") - row[1].count(" / ")))
         new_tds = []
         for c, (td, txt) in enumerate(zip(tds, row)):
             m = re.match(r"<td([^>]*)>(.*)</td>$", td, re.S)
@@ -668,6 +685,8 @@ def _table_html(b: dict, html: str, layout: str) -> str:
                 attrs = ' class="num"' + attrs
             if layout == "bins" and c == 1:
                 attrs += f' data-bin="{BINS[txt.strip().lower()]}"'
+            if skip and c >= 1:
+                attrs += f' data-skip="{skip}"'
             if layout in ("cards", "stack") and c >= 1 and header and \
                     header[c].strip().lower() in IN_LETTER and txt.strip().lower() in CELL_TONES:
                 attrs += f' data-tone="{CELL_TONES[txt.strip().lower()]}"'
@@ -694,7 +713,29 @@ def _table_html(b: dict, html: str, layout: str) -> str:
             html = html[:t.end(1)] + lanes + html[t.end(1):]
     n = len(rows)
     size = " n2" if n in (2,) or (layout in ("tiles", "checklist") and n == 4) else " n4" if n == 4 else ""
+    if layout == "paper":
+        # a sheet of the paper (its label and its lines), or each row a piece of
+        # it beside the part of the letter it feeds (a third column)
+        form = "beside" if len(header or (rows or [[]])[0]) == 3 else "sheet"
+        return _add_root(html, "lay lay-paper", " " + PAPER_BESIDE if form == "beside" else ' data-paper="sheet"')
     return _add_root(html, "lay lay-" + layout + size)
+
+
+def _paper_task(row: list[str]) -> bool:
+    return row[0].strip().lower().startswith(PAPER_TASK)
+
+
+def _paper_row_attrs(row: list[str], in_task: bool) -> str:
+    """A row of the paper: its date line set in bold as the paper sets it, a row
+    of its Writing Task box, a row with no part of the letter beside it."""
+    out = ""
+    if row[1].strip().startswith(PAPER_TODAY):
+        out += ' data-today=""'
+    if in_task:
+        out += ' data-task=""'
+    if len(row) == 3 and not row[2].strip():
+        out += ' data-solo=""'
+    return out
 
 
 # The layouts and forms added in phase 2 (ADR 043 amendment (3)): their rules go
@@ -760,6 +801,71 @@ LAYOUT_CSS = {
 .tbl.core.lay.lay-pair.spot tbody tr.focus{filter:drop-shadow(0 .6cqh 1.2cqh rgba(20,32,31,.14));box-shadow:none;
   transform:scale(calc(1 + .004 * var(--sc-motion, 1)))}
 """,
+    "paper": r"""
+/* the paper (ADR 045; §7j): a Writing paper as the learner meets it in the
+   exam, one look wherever a lesson quotes it. White, a hairline edge, a soft
+   shadow; the paper's labels in their own column in bold, its lines beside
+   them, its date line in bold and its Writing Task box grey, as on the paper.
+   Of two columns a sheet of the paper; of three, each row a piece of that sheet,
+   an arrow, and the part of the letter it feeds on the letter's cream */
+.tbl.lay.lay-paper table{display:table;width:100%;border-collapse:separate;border-spacing:0;table-layout:auto}
+.tbl.lay.lay-paper thead{display:table-header-group} .tbl.lay.lay-paper tbody{display:table-row-group}
+.tbl.lay.lay-paper tr,.tbl.lay.lay-paper thead tr{display:table-row}
+.tbl.lay.lay-paper td,.tbl.lay.lay-paper th{display:table-cell}
+.tbl.lay.lay-paper colgroup{display:table-column-group}
+.tbl.lay.lay-paper td::before{content:none}
+.tbl.lay.lay-paper td{vertical-align:top;line-height:1.35;overflow-wrap:break-word;color:var(--sc-ink)}
+.tbl.lay.lay-paper td:first-child{font-weight:700;white-space:nowrap}
+/* a label is one line beside its line, so the column takes the longest label
+   (the table sized by its content); a heading alone on its row may wrap */
+.tbl.lay.lay-paper td:first-child:has(+ td:empty){white-space:normal}
+.tbl.lay.lay-paper tr[data-today] td:nth-child(2){font-weight:700}
+.tbl.lay.lay-paper td[data-skip]::before{content:"";display:block}
+.tbl.lay.lay-paper td[data-skip="1"]::before{height:1.35em} .tbl.lay.lay-paper td[data-skip="2"]::before{height:2.7em}
+.tbl.lay.lay-paper td[data-skip="3"]::before{height:4.05em} .tbl.lay.lay-paper td[data-skip="4"]::before{height:5.4em}
+.tbl.lay.lay-paper .tw{font-kerning:none;font-variant-ligatures:none}
+.tbl.lay.lay-paper th{background:none;color:var(--sc-muted2);font-size:2.1cqh;line-height:1.3;font-weight:600;
+  padding:0 .9cqw .7cqh;text-align:left;white-space:nowrap;vertical-align:bottom;border-radius:0}
+/* a sheet */
+.tbl.lay.lay-paper[data-paper="sheet"]{background:#fff;border:max(1px,.14cqh) solid #d7d4e0;border-radius:.7cqh;
+  box-shadow:0 .5cqh 1.8cqh rgba(20,32,31,.10);padding:1.2cqh 1.4cqw 1.4cqh}
+.tbl.lay.lay-paper[data-paper="sheet"] td{padding:.55cqh .9cqw;border-top:max(1px,.12cqh) solid #ecebf1;border-radius:0}
+.tbl.lay.lay-paper[data-paper="sheet"] tbody tr:first-child td{border-top:0}
+.tbl.lay.lay-paper[data-paper="sheet"] tr[data-task] td{background:#f1f1f6;border-top-color:#f1f1f6}
+.tbl.lay.lay-paper[data-paper="sheet"] tr:not([data-task]) + tr[data-task] td{border-top:max(1px,.14cqh) solid #c9c6d4}
+/* each row a piece of the sheet, an arrow, the part of the letter */
+.tbl.lay.lay-paper[data-paper="beside"] table{border-spacing:0 .8cqh}
+.tbl.lay.lay-paper[data-paper="beside"] td{padding:.6cqh .9cqw}
+/* the label column as wide as its longest label; the paper's lines and the
+   letter share the rest evenly, so neither is squeezed */
+.tbl.lay.lay-paper[data-paper="beside"] col{width:auto!important}
+.tbl.lay.lay-paper[data-paper="beside"] td:first-child{width:1%}
+.tbl.lay.lay-paper[data-paper="beside"] td:nth-child(2),.tbl.lay.lay-paper[data-paper="beside"] td:nth-child(3){width:50%}
+.tbl.lay.lay-paper[data-paper="beside"] td:is(:first-child,:nth-child(2)){background:#fff;
+  border-top:max(1px,.14cqh) solid #d7d4e0;border-bottom:max(1px,.14cqh) solid #d7d4e0;
+  box-shadow:0 .5cqh .9cqh -.4cqh rgba(20,32,31,.16)}
+.tbl.lay.lay-paper[data-paper="beside"] td:first-child{border-left:max(1px,.14cqh) solid #d7d4e0;
+  border-radius:.7cqh 0 0 .7cqh}
+.tbl.lay.lay-paper[data-paper="beside"] td:nth-child(2){border-right:max(1px,.14cqh) solid #d7d4e0;
+  border-radius:0 .7cqh .7cqh 0;position:relative}
+.tbl.lay.lay-paper[data-paper="beside"] tr[data-task] td:is(:first-child,:nth-child(2)){background:#f1f1f6}
+.tbl.lay.lay-paper[data-paper="beside"] td:nth-child(2)::after{content:"";position:absolute;right:-2.6cqh;top:50%;
+  margin-top:-1.1cqh;border-top:1.1cqh solid transparent;border-bottom:1.1cqh solid transparent;
+  border-left:1.6cqh solid var(--k)}
+.tbl.lay.lay-paper[data-paper="beside"] td:nth-child(3){background:var(--sc-paper);border-left:3.6cqh solid transparent;
+  background-clip:padding-box;border-radius:5cqh 1.4cqh 1.4cqh 5cqh / 1.4cqh;padding-left:1.2cqw}
+.tbl.lay.lay-paper[data-paper="beside"] th:nth-child(3){padding-left:calc(3.6cqh + 1.2cqw)}
+.tbl.lay.lay-paper[data-paper="beside"] tr[data-solo] td:nth-child(2)::after{content:none}
+.tbl.lay.lay-paper[data-paper="beside"] tr[data-solo] td:nth-child(3){background:none}
+/* the part being named lit, the others at half; a sheet's lit as with a marker */
+.tbl.core.lay.lay-paper.spot tbody tr.focus{filter:drop-shadow(0 .5cqh 1cqh rgba(20,32,31,.14));box-shadow:none;
+  transform:scale(calc(1 + .004 * var(--sc-motion, 1)))}
+.tbl.core.lay.lay-paper[data-paper="sheet"].spot tbody tr.focus td{background:var(--sc-active)}
+.tbl.lay.lay-paper td.active,.tbl.core.lay.lay-paper.spot tbody tr.focus td.active{background:var(--sc-active);
+  box-shadow:none}
+.tbl.core.lay.lay-paper[data-paper="beside"].spot tbody tr.focus td:nth-child(3).active{background:var(--sc-active);
+  background-clip:padding-box}
+""",
 }
 ROOT_CLASS = re.compile(r'^<div class="([^"]*)"')
 
@@ -780,6 +886,8 @@ def layout_css(blocks: dict) -> str:
             used.add("letter1")
         if "lay-pair" in cls:
             used.add("pair")
+        if "lay-paper" in cls:
+            used.add("paper")
     return "".join(LAYOUT_CSS[k] for k in LAYOUT_CSS if k in used)
 
 
@@ -900,7 +1008,11 @@ def effects(boards: list[dict], blocks: dict, zoom: bool = True) -> None:
         fixed_txt = [i for i in bd["fixed"] if blocks[i]["type"] not in ("table", "picture", "lesson_title")]
         tbl = bd.get("table")
         doc = None
-        if zoom and tbl and not bd.get("split") and not bd.get("listen") and not blocks[tbl].get("map"):
+        # the paper beside the letter (ADR 045) is never zoomed: a zoom onto one
+        # cell would take the piece of the paper or the part of the letter it
+        # feeds out of view, and the two are shown to be seen together
+        if zoom and tbl and not bd.get("split") and not bd.get("listen") and not blocks[tbl].get("map") \
+                and PAPER_BESIDE not in (blocks[tbl].get("html") or ""):
             f = blocks[tbl].get("font")
             if bd.get("fit") == "whole" or (f is not None and f <= ZOOM_SMALL):
                 doc = tbl

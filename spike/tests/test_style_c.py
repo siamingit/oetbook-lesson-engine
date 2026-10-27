@@ -173,6 +173,37 @@ class Layouts(unittest.TestCase):
         for k in style_c.LAYOUT_CSS.values():          # never in the shared stylesheet
             self.assertNotIn(k.strip(), style_c.CSS)
 
+    def test_the_paper_a_sheet_and_beside_the_letter(self):
+        # ADR 045: a sheet of a Writing paper (label, lines), and pieces of it
+        # beside the letter (label, lines, letter); no word changes
+        sheet, hs = self.core(["A paper", ""], [
+            ["Notes:", "Assume that today's date is 1 May 2026."],
+            ["HEADING: / Name: / Born:", "Mr A / 1 Jan 1950"],
+            ["Writing Task:", "Write a letter."]])
+        o = style_c.layout_html(sheet, hs, None, "paper")
+        self.assertIn('lay lay-paper" data-paper="sheet"', o)
+        self.assertIn('data-row="0" data-today=""', o)
+        self.assertIn('data-row="2" data-task=""', o)
+        self.assertIn('<td data-col="1" data-skip="1">', o)
+        self.assertEqual(self.words(o), self.words(hs))
+        beside, hb = self.core(["A paper", "", "The letter"], [
+            ["Plan:", "Letter re:", ""], ["", "visit 1 May", "Please visit on 1 May."]],
+            [{"row": 1, "col": 2, "start": 0, "text": "Please visit on 1 May."}])
+        o2 = style_c.layout_html(beside, hb, None, "paper")
+        self.assertIn('data-paper="beside"', o2)
+        self.assertIn('data-row="0" data-solo=""', o2)
+        self.assertNotIn('data-row="1" data-solo', o2)
+        self.assertEqual(self.words(o2), self.words(hb))
+        # a piece written while teaching (not the board's own table) takes it too
+        import write_screens
+        note = {"id": "p_k05", "type": "table", "header": ["A paper", ""], "rows": [["Plan:", "visit 1 May"]]}
+        o3 = style_c.layout_html(note, write_screens.block_html(note), None, "paper")
+        self.assertIn('data-paper="sheet"', o3)
+        with self.assertRaises(SystemExit):           # a paper has two or three columns
+            style_c.layout_html(*self.core(["One"], [["x"]]), None, "paper")
+        self.assertEqual(style_c.layout_css({"s": {**sheet, "html": o}}), style_c.LAYOUT_CSS["paper"])
+        self.assertNotIn(style_c.LAYOUT_CSS["paper"].strip(), style_c.CSS)
+
 
 def bundle():
     blocks = {"c1": {"type": "contents_item"}, "c2": {"type": "contents_item"},
@@ -225,6 +256,18 @@ class Effects(unittest.TestCase):
         boards[2].pop("fit")
         style_c.effects(boards, blocks)
         self.assertEqual(boards[2]["states"][0]["effects"], [])
+
+    def test_no_zoom_on_the_paper_beside_the_letter(self):
+        # ADR 045: a zoom onto one cell would take the piece of the paper or the
+        # part of the letter out of view; a sheet of the paper is still zoomed
+        boards, blocks = bundle()
+        blocks["doc"]["html"] = '<div class="blk tbl core lay lay-paper" data-paper="beside">'
+        style_c.effects(boards, blocks)
+        self.assertEqual(boards[2]["states"][0]["effects"], [])
+        boards, blocks = bundle()
+        blocks["doc"]["html"] = '<div class="blk tbl core lay lay-paper" data-paper="sheet">'
+        style_c.effects(boards, blocks)
+        self.assertEqual([e["type"] for e in boards[2]["states"][0]["effects"]], ["zoom"])
 
     def test_no_zoom_where_the_tables_are_not_documents(self):
         # ADR 043: the zoom is for a Writing lesson's letter or case notes; a
