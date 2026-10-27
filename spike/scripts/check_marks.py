@@ -126,7 +126,9 @@ HARNESS = r"""
         const box = span.getBoundingClientRect();
         const cs = getComputedStyle(span);
         rec.overlap = neighbourRects(w.spans).some(n => drawn.some(f => rectsTouch(f, n)));
-        if (STYLEC && c.type === "highlight" && span.dataset.mk !== undefined) {
+        // (a highlight whose phrase is not shown at that moment draws no band and
+        // covers nothing: the rule is for the bands drawn, ADR 043)
+        if (STYLEC && c.type === "highlight" && span.dataset.mk !== undefined && frags.length) {
           const bands = [...document.querySelectorAll('#marks [data-mk="' + span.dataset.mk + '"]')];
           rec.under = bands.length > 0 && bands.every(b => {
             const cs = getComputedStyle(b), r = b.getBoundingClientRect();

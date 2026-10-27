@@ -198,6 +198,46 @@ class Effects(unittest.TestCase):
         style_c.effects(boards, blocks)
         self.assertEqual(boards[2]["states"][0]["effects"], [])
 
+    def test_no_zoom_where_the_tables_are_not_documents(self):
+        # ADR 043: the zoom is for a Writing lesson's letter or case notes; a
+        # Grammar table keeps rule 13's auto zoom, a Reading text its own lens
+        boards, blocks = bundle()
+        style_c.effects(boards, blocks, zoom=False)
+        self.assertEqual(boards[2]["states"][0]["effects"], [])
+        self.assertEqual(len(boards[0]["states"][0]["effects"]), 2)    # the lifts stay
+        self.assertTrue(style_c.zooms(lesson()))                       # a writing lesson
+        other = lesson()
+        info = json.loads((other / "analysis" / "sections.json").read_text(encoding="utf-8"))
+        info["lesson"]["type"] = "grammar"
+        (other / "analysis" / "sections.json").write_text(json.dumps(info), encoding="utf-8")
+        self.assertFalse(style_c.zooms(other))
+
+    def test_the_last_category_lifted_while_its_sections_are_named(self):
+        # ADR 043: a category whose sections the narration names one by one stays
+        # lifted until the last is named, not only through its reveal
+        boards, blocks = bundle()
+        s = boards[0]["states"][0]
+        s["utterances"].append({"start": 6.4, "end": 8.5, "reading": [],
+                                "cues": [{"type": "underline", "block": "c2", "text": "x", "time": 7.0}]})
+        style_c.effects(boards, blocks)
+        self.assertEqual(s["effects"][-1], {"type": "lift", "block": "c2", "time": 4.0, "until": 9.1})
+
+
+class ContentsParts(unittest.TestCase):
+    ITEM = ('<div class="blk citem" data-id="k1"><span class="cnum" data-n="1"></span><div><div class="ct">'
+            'Commas</div><div class="cs">Overview · Lists and series · Practice</div></div></div>')
+
+    def test_each_section_on_its_own_line_no_word_changes(self):
+        h = style_c.layout_html({"type": "contents_item", "text": "Commas"}, self.ITEM, None)
+        self.assertIn('<div class="cs parts"><span class="cp">Overview</span> · <span class="cp">Lists and '
+                      'series</span> · <span class="cp">Practice</span></div>', h)
+        self.assertEqual(style_c._text(h), style_c._text(self.ITEM))
+
+    def test_one_section_or_none_unchanged(self):
+        for cs in ("", "Overview"):
+            item = self.ITEM.replace("Overview · Lists and series · Practice", cs)
+            self.assertEqual(style_c.layout_html({"type": "contents_item", "text": "Commas"}, item, None), item)
+
 
 if __name__ == "__main__":
     unittest.main()

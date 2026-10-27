@@ -1,0 +1,152 @@
+# 043 — The 22 published lessons move to style C: phase 1, the general look
+
+Date: 2026-10-27
+Status: **Accepted**: the owner's decision of 2026-10-26, given in chat and passed in the brief "Restyle
+the 22 published lessons in style C, phase 1 (the general look)". It **supersedes the part of
+[ADR 042](042-style-c-and-motion.md) that keeps the 22 published lessons in their earlier look** (decision
+1's "the 22 published lessons have none, and their `blocks.css`, bundles and players stay byte for byte as
+they are", and the consequence "Restyling the 22 published lessons is the owner's later decision"). How it
+is carried, and the rule changes below, were decided by the agent under that brief (ADR 005); the owner may
+reverse any of them.
+
+## Context
+
+- ADR 042 made style C the look of Writing 2 and of every lesson after it, and left the 22 published
+  lessons (Grammar 1–8, Vocabulary 1–3, Writing 1, Reading 1–5, Listening 1–5) in their look, as the
+  owner's later decision.
+- On 2026-10-26 the owner decided: all 22 move to style C, in two phases. **Phase 1**, the general look,
+  for all 22 at once: `lesson.style` "c", the colours, the white ground, the marker, the lift, the motion
+  effects (design system §8g) and the contents on one board, as ADR 042 and its amendment (2) give them.
+  **Phase 2**, the creative per-board layouts of runbook step 11b (`block_layouts`, each board beside the
+  matching slide of the owner's deck, design system §7j), lesson by lesson in later sessions, Grammar and
+  Vocabulary first, Reading and Listening last.
+- Grammar and Vocabulary are live as package version 3, with the 72 errata corrections of issue #43; each
+  lesson folder holds that state (its `text.json` is byte for byte the released v3 package's).
+- The restyled lessons are bundle format 1.22, which the site accepts only once oetacademy-web issue #173
+  is done and the engine pins contracts that accept it (ADR 042, Consequences). The versions on the site
+  stay as they are until then.
+
+## Options considered
+
+- **All 22 at once, or lesson by lesson.** At once for the look (one code change, one proof, one review);
+  lesson by lesson for the layouts (phase 2), which need each deck looked at (the owner's order).
+- **How to prove a restyle changed only the look.** The render comparison of "Changing shared code" proves
+  a code change moves no lesson; it cannot prove a lesson that is meant to change changed only as allowed.
+  A per-lesson proof that reads the lesson's data before and after (chosen: `restyle_proof.py`, below).
+- **The approval.** The owner's final gate for each of 22 lessons (his time, for a change that alters no
+  teaching); or the chat on his behalf, as for the errata (ADR 005 amendment of 2026-10-26) (chosen, his
+  decision).
+
+## Decision
+
+1. **The 22 published lessons are restyled in style C, phase 1.** Each gets `lesson.style` "c"
+   (`build_sections.py <L> --style c`) and is rebuilt by the free stages only: the title and contents
+   boards, the fit (silent preview and player), the silent preview, the lesson player, the screens preview.
+   No paid stage runs and no model is called. No `block_layouts` are set: they are phase 2.
+2. **What a restyle may change, and nothing else**: `sections.json` `lesson.style`; the look
+   (`blocks.css`, the players, the classes, attributes and elements style C adds to a block's html, which
+   hold no new words); the bundle's `effects`, its `lesson.style` and its format (1.22); and the fit (a
+   table's text size, a picture's size, a state's `clears`, a board's tightness). **Never**: narration text,
+   audio files and their timing, cue times, board and state times, lesson, section, block and state ids,
+   section titles, the order of sections and boards, any teaching content (the words on the boards and
+   their order, glosses, images, practice items and their numbering); `source/` stays read-only.
+3. **The proof**, for every restyled lesson: `spike/scripts/restyle_proof.py snapshot` before the restyle
+   (the SHA-256 of every file of the lesson but its recording, and a copy of its data files), `compare`
+   after it. It fails on any file changed that a restyle may not change, and reads the data in depth:
+   `sections.json` only `lesson.style`; the bundle's and the timeline's every board, state, utterance, cue
+   and block identical but for the effects, the format, the fit and the html's style C additions (the
+   html's words compared exactly, the html compared with those additions taken away); `text.json` only its
+   format version; `audio_index.json` identical; every screens and narration file identical (the
+   introduction's screens only gain the lesson config's `style`); the decision log only appended to. Where
+   a lesson's silent preview was older than its narration (docs/03-RUNBOOK.md, "Known items"), the restyled
+   preview is compared with its re-render by the code before the change (the render comparison's "before"
+   snapshot), since the restyle re-renders it from the current narration too. Tested in
+   `spike/tests/test_restyle_proof.py`.
+4. **The approval** (owner, 2026-10-26). A restyled version changes no teaching content, no section and no
+   id, so its final approval is given by **the chat on the owner's behalf**, as for errata corrections (ADR
+   005 amendment of 2026-10-26). When the chat approves after reading the agent's report, the agent records
+   each lesson's final gate with `build_lesson.py <L> --approve final --by siavash` and writes in its
+   `decisions.md` that the chat approved it on the owner's behalf under this ADR. As in the errata
+   amendment, the approval it replaces is first kept in `analysis/gates.json` under
+   `final_before_restyle_2026_10_27`, its `by` and `on` exactly as they were, with `superseded` and `why`.
+   Until then the restyled version's final approval is pending. The section tags do not change, and their
+   recorded approvals stand.
+
+### Rule changes (decided by the agent under the brief; each logged in every lesson it touches)
+
+5. **A contents item lists its category's sections one under the other** (changes ADR 042 decision 3's
+   drawing, not its rule). The contents board's items are the deck's categories, each with its sections
+   (`build_lesson_boards.py`; the board's "parts" ADR 042 counts are these items: 5, 2, 3, 3 and 3 in the
+   five lessons whose narration names 13 to 17 sections). In style C each section of an item that lists
+   two or more is wrapped in a `<span class="cp">` inside `<div class="cs parts">`; the words and the
+   " · " between them stay exactly as they are (the separator is drawn at no size), and `blocks.css` sets
+   the sections one under the other under the category's heading, in two columns of items, on one board,
+   never cleared. Bundle 1.22's rule 53 lists `cp` and `parts` among the html a style C block may carry
+   (amended, not raised: no 1.22 lesson is published).
+6. **The last category stays lifted while its sections are named.** A contents item is lifted from its
+   reveal until the next is named (ADR 042 decision 4); the last until the end of what is said with it,
+   which now includes every later utterance with a mark on the item (its sections named one by one).
+7. **The zoom is for the documents of a Writing lesson** (narrows ADR 042 decision 4 and design system
+   §8g, "a document set well under body size"): `style_c.ZOOM_TYPES`, the letters and case notes the owner
+   named. In every other lesson a table keeps rule 13's auto zoom, Grammar 6's board shown whole keeps the
+   owner's "no camera zoom" (ADR 011 amendment of 2026-10-12), and a Reading or Listening text keeps its
+   own lens, map, covering and transcript box (ADR 026, ADR 030): where a style C zoom and an existing
+   Reading lens or zoom would act on the same moment, the Reading behaviour is kept, always. Writing 1's
+   case notes and model letter (shown whole, ADR 041) take the zoom, as Writing 2's letter does.
+8. **A document is a page on paper** (design system §1a, "the board's own sentences … a letter, case
+   notes: paper"): a Reading text or a Listening transcript (`doc`) has its paragraphs on paper `#f8f4ec`
+   with no rule between them (so a transcript's lines stay on their grid), and the paragraph being taught
+   keeps the paper, shown by the spotlight and the lift. In style C a keyword pair's colour (`match1` to
+   `match3`) is multiplied with what is under it, so on the soft amber of an active cell it would no longer
+   be the colour of its other half on the question.
+9. **Tense colours stay** (design system §5a, §7 Tables): a table's header cell in a tense family's colour
+   keeps it in style C (Grammar 1's summary table: past, present, future).
+10. **No word moves while a board is drawn** (§8a): in a table with no layout, typed text is set without
+    kerning or ligatures, so the player's split into a typed and an untyped half adds up to the whole line
+    (Grammar 3's layout check found a word that wrapped mid-typing in IBM Plex); a table with a layout
+    (§7j) is checked with its layout (phase 2). The clause diagram's comma after a dependent clause has
+    its weight 500 from the start, unseen, since IBM Plex's 500 face has its own line metrics (Grammar 7's
+    lines dropped 1 px when the clauses were joined).
+11. **A contents board with no picture** uses the whole board: the room for the picture is kept only when
+    the board has one.
+12. **A document keeps its page's measure** (§7g, §7h): style C adds no padding around a Reading text or
+    a Listening transcript, nor to its title row, so its text takes no more lines than before and the
+    question board's fit and guard keep the sizes they found (Reading 5's Part C board `t14` overflowed
+    with Verdana at the small phone until this).
+13. **A question board's column is narrow** (Reading Part B and C, Listening): its notes keep a small
+    padding (1.1% of the frame's height, 1% of its width), and a word card there has no "Word" chip on a
+    line of its own (the card's amber and its word say what it is; Listening 3's board `page-14_t2`
+    overflowed at the small phone until this).
+14. **A word longer than its narrow column** breaks inside its cell (`overflow-wrap: break-word`) rather
+    than running out of the table; at the lesson's own font no word is that long (Reading 3's Synonym
+    column with Verdana).
+15. **The marks check** applies style C's marker rule (the band multiplied with the words, under 40% of
+    the line) to the highlights drawn; a highlight whose phrase is not shown at that moment draws no band
+    and covers nothing (82 of Reading 4's, the same before and after).
+
+## Found while carrying this, not decided here
+
+- **The last contents item is often not lifted** (`style_c.effects`, ADR 042 decision 4). When an item's
+  reveal falls in the half second after the previous sentence ends (its first word is said just before
+  its sentence's recorded start), the code reads it as said with that sentence and lifts it for under
+  0.8 s, which is dropped. Writing 2's "Closing" is one; so is the last item in most of the 22 lessons
+  (decision 6 covers those whose sections are named after it). The fix (the end of the sentence whose cues
+  hold the item's reveal) would change Writing 2, which this phase must leave as it is: for the owner or
+  the chat, with Writing 2's next rebuild.
+- **The site must be told** of the amendment of 1.22 (decision 5, the `cp` spans; the 22 lessons' new
+  package versions): docs/integration/1.22-changelog-for-site.md is updated; the comment on oetacademy-web
+  issue #173 is for the chat to send.
+
+## Consequences
+
+- The 22 lessons are bundle format 1.22. They are not packaged or published in this phase: their versions
+  on the site stay as they are until oetacademy-web #173 is done and the engine pins contracts that accept
+  1.22 (a new amendment of ADR 039); they are then published as new package versions, which the site holds
+  for acceptance.
+- Writing 2 is unchanged (the render comparison, below), and every rule above that would change it was
+  scoped so it does not.
+- The public course index records each lesson's bundle format; it is rebuilt (ADR 038).
+- Phase 2 (`block_layouts`, lesson by lesson) follows in later sessions, with the same proof.
+- To reverse for one lesson: remove `lesson.style` (and `style_by`) from its `sections.json` and rebuild
+  its boards, fit, silent preview and player (free); it returns to its earlier look and format, byte for
+  byte as the snapshot of this phase shows.

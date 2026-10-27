@@ -43,7 +43,8 @@ are given.
 ### 1a. Style C, "soft notebook"
 
 The owner's choice of 2026-10-26 (issue #46; ADR 042), for the contents board and every teaching
-board of Writing 2 and every lesson after it, **revised the same day after his review of Writing 2**
+board of Writing 2 and every lesson after it, and, from 2026-10-27, of the 22 lessons published before
+it (ADR 043: phase 1, the general look; the per-board layouts of §7j follow lesson by lesson), **revised the same day after his review of Writing 2**
 (ADR 042, amendment of 2026-10-26 (2)): a white ground, the handouts' colours by meaning, the marker
 behind the words, a lift with a soft neutral shadow and no outline, and board layouts drawn from his
 own slides (§7j). Warm and varied, like the handouts on the site, never playful. Pixel values are at a
@@ -57,7 +58,9 @@ colours `RIGHT`, `WRONG`, `GLOSS`, `MARK`, `CRITERIA`), appended to the lesson's
 | Ink | `#1c1733`; muted `#4a4466` / `#6b6585`; faint `#a49fbc` |
 | Notes | a soft neutral tint `#f3f4f7`, radius 16 to 24 px (rows 16, cards 20, big panels 24), **no borders, no left-border cards** |
 | The board's own sentences (a slide's sentence, a fixed sentence, a letter, case notes) | paper `#f8f4ec` |
+| A document (a Reading text, a Listening transcript) | a page on paper `#f8f4ec`, its paragraphs with no rule between them, with no room added around it (its text takes no more lines than before; on a question board the column's notes keep a small padding and a word card no "Word" chip); the paragraph being taught keeps the paper and is shown by the spotlight and the lift, so a keyword pair's colour is the same on the text as on its question (ADR 043) |
 | A table | a **solid header row** in the colour of its section's criterion (ink `#3d3a52` in a section that is not a criterion), **white words** in sentence case; **tinted body rows** in that colour's soft tint |
+| A tense family's colour | kept: a table's header cell in a tense family's colour (Grammar 1's summary table) keeps it (§5a; ADR 043) |
 | Right or keep | olive `#556b00` on `#eef3d2`, with a tick ✓ (the handouts' "modal" tone) |
 | Wrong or leave out | red `#b42318` on `#fdecea`, with a cross ✕ (the site's danger); struck through in `#b42318` as it is named (§8g) |
 | A word card, "Meaning", "Word", the key word | the handouts' gloss amber: `#8a5300` on `#fdf0d5`; a small "Word" chip in `#8a5300` with white words |
@@ -201,8 +204,10 @@ brought, so the main content does not change.
 
 **A short list fits on one board** (owner, 2026-10-26; ADR 042). A list of up to about ten items,
 such as a lesson's contents (up to 12 parts), is on one board, in two columns if needed, and is never
-cleared to make room. In style C the contents board is two columns of white rows beside the board's
-picture. The screens stage (`build_lesson_boards.py`) fails a style C lesson with more than 12 parts
+cleared to make room. In style C the contents board is two columns of tinted rows beside the board's
+picture (the whole board where it has none); an item that lists two or more of its category's sections
+sets them one under the other under the category's heading (ADR 043: the sections the narration names,
+13 to 17 in five lessons, all on the one board). The screens stage (`build_lesson_boards.py`) fails a style C lesson with more than 12 parts
 (group its sections into categories); the structural check (`check_board_page.py`) fails a style C
 lesson whose contents items are cleared, and warns on a lesson built before.
 
@@ -1345,12 +1350,12 @@ the effects with data (`style_c.effects`), deterministically:
 
 - **Every board**: soft appear for its notes; shrink for notes that go. A fixed block never moves.
 - **The contents board**: each item soft-appears and is **lifted while it is named**, from its reveal
-  until the next is named (the last until the end of what is said with it). At the end every item is
-  at rest.
+  until the next is named (the last until the end of what is said with it, its sections named one by
+  one included, ADR 043). At the end every item is at rest.
 - **A table board** (case notes, a letter, a criteria table): the row being taught is **lifted**, the
   others **faded**; at each row's end the whole table shows again (§7, Tables).
-- **A document set well under body size** (its text 2.8% or less, or a board shown whole): the
-  **zoom**, from a mark the narration draws on a line until it moves on to a note or its sentence
+- **A document set well under body size** (its text 2.8% or less, or a board shown whole), in a
+  Writing lesson (a letter, case notes; ADR 043): the **zoom**, from a mark the narration draws on a line until it moves on to a note or its sentence
   ends; a later mark takes the view on. Where the line is as wide as the board, or a note shown would
   leave the view, the zoom is as small as it must be, or none.
 - **A board with two or more fixed sentences or cards** (two openings side by side, an opening and
@@ -1358,6 +1363,9 @@ the effects with data (`style_c.effects`), deterministically:
 - **Wrong phrases**: the **strike is drawn** as each is named. **Key words**: the **marker sweeps**
   in.
 - Never: on a picture, on a gloss's parts (they are written in, as before), or two lifts at once.
+- **Not the style C zoom** (ADR 043): a Grammar or Vocabulary table keeps rule 13's auto zoom (Grammar
+  6's board shown whole keeps no zoom, the owner's 2026-10-12 exception); a Reading text keeps its lens,
+  map and covering, a Listening transcript its box (ADR 026, ADR 030).
 
 ## 9. Controls
 

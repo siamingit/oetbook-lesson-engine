@@ -228,7 +228,7 @@ marked **step** (ADR 005). Costs are Grammar 1's.
 | 5 | Transcription | `transcribe.py <L>`, then `make_transcript.py <L>/analysis` | audio, keyterms | `scribe_v2_response.json`, `transcript.txt` | $0.56 |
 | 6 | Slide timeline | `build_slide_timeline.py <L>`, `--stage2`, then `--score-max 0.035 --margin-min 0.04 --margin-min-stage2 0.05` | video, deck | `analysis/slides/slide_timeline.json` | free |
 | 7 | Annotations | `extract_annotations.py <L>` | video, deck, timeline | `analysis/annotations/annotation_events.json` | free |
-| 8 | Sections | `build_sections.py <L>` (already built by the preflight); `--set PAGE "TITLE"`, `--description "..."`, `--diagram-pages 5,11`, `--categories FILE`, and in a deck with no contents slide `--title-page PAGE`, at the source gate; `--intro-range 0 SECONDS` before understanding (deck with no contents slide); `--intro-board FILE` before the title board is built: the title board's own blocks (ADR 014; the runner stops at the screens stage until they are set); `--tense-lesson yes|no` at the source gate (the runner stops until it is set); `--style c`, the lesson's look (ADR 042: a config made from 2026-10-26 on is written in style C; an older lesson has no style and keeps its look) | deck, `deck_defects.json` | `analysis/sections.json` | free |
+| 8 | Sections | `build_sections.py <L>` (already built by the preflight); `--set PAGE "TITLE"`, `--description "..."`, `--diagram-pages 5,11`, `--categories FILE`, and in a deck with no contents slide `--title-page PAGE`, at the source gate; `--intro-range 0 SECONDS` before understanding (deck with no contents slide); `--intro-board FILE` before the title board is built: the title board's own blocks (ADR 014; the runner stops at the screens stage until they are set); `--tense-lesson yes|no` at the source gate (the runner stops until it is set); `--style c`, the lesson's look (ADR 042: a config made from 2026-10-26 on is written in style C; the 22 lessons published before were restyled on 2026-10-27, ADR 043, "Restyling a published lesson" below) | deck, `deck_defects.json` | `analysis/sections.json` | free |
 | 9 | Understanding | `run_batch_stage.py <L> --stage understanding --direct` (one page: `extract_understanding.py <L> --page N --call`) for the introduction's page and every section's pages. In a deck with no contents slide the runner first stops until `--intro-range` is set: the introduction's source is the recording's opening, and where it ends is read from the transcript | transcript, timeline, annotations, deck; the course index's other lessons, to resolve the teacher's references to them (ADR 006) | `analysis/understanding/page-N/understanding.json`, with `cross_references` | $0.38 a page |
 | 9b | Length budget | the runner's `length budget` step (ADR 023; numbers ADR 024): `build_sections.py <L> --length-target natural` writes the lesson's natural length as its target (unless the maintainer set `--length-target MINUTES`, for a shorter lesson) and prints it beside each section's source teaching minutes; then `length_budget.py <L>` shares the target out per section. The agent may change one section's share with `length_budget.py <L> --set TAG --minutes M --reason TEXT` (logged in `decisions.md`). Screens and narration are given the section's budget; their audits warn when a section is off it, and the narration gate lists every warning beside the silent preview's length against the target. Skipped for a lesson whose screens and narration all pass | understanding, `sections.json` | `sections.json` `lesson.length_target_min`, `analysis/length_budget.json` | free |
 | 10 | Screens | `run_batch_stage.py <L> --stage screens --direct` (one section: `write_screens.py <L> --pages ... --call`) | understanding, deck text, `deck_defects.json`, ledgers, `length_budget.json` | `analysis/screens/<section>/screens.json` | about $0.60 a section |
@@ -358,6 +358,28 @@ ran. There is no `backup` or `restore`. A leftover `backup/`, a leftover copy in
 `work/` or a snapshot of the same name stops it before anything is copied; old
 backups are kept in `spike/out/render-compare/_stale/` and never restored.
 `spike/tests/test_render_compare.py` fails if it writes under the lessons.
+
+### Restyling a published lesson (ADR 043)
+
+The 22 lessons published before Writing 2 were moved to style C on 2026-10-27 (phase 1, the general
+look; phase 2, the board layouts of step 11b, follows lesson by lesson). A restyle runs no paid stage
+and changes no narration, audio, timing, id or teaching content; it is proved lesson by lesson:
+
+```
+.venv/Scripts/python spike/scripts/restyle_proof.py snapshot <L> <before>   (before anything changes)
+.venv/Scripts/python spike/scripts/build_sections.py <L> --style c --by "..."
+build_lesson_boards.py <L>; fit_boards.py <L> --silent; build_silent_preview.py <L>;
+fit_boards.py <L>; build_lesson_player.py <L>; build_lesson_preview.py <L>
+(step 17's checks on the player and the silent preview's, at every frame)
+.venv/Scripts/python spike/scripts/restyle_proof.py compare <before> <L> --rendered <render_compare snapshot>/<L>
+```
+
+`compare` fails on any change a restyle may not make (ADR 043 decision 2): it reads `sections.json`, the
+bundle, the timeline, the text and the audio index in depth, and every other file of the lesson by its
+SHA-256. `--rendered` names the lesson's folder in a render_compare snapshot taken on the code before the
+change: a silent preview older than its narration ("Known items") is compared with its re-render. Each
+decision goes into the lesson's `decisions.md`. The restyled version's final approval is the chat's, on
+the owner's behalf ("At each gate and step", final).
 
 ### Checks on every pull request (CI)
 
@@ -588,6 +610,12 @@ with the current release audio; once #37 lands, they are moved to the practice
 rendition the same way and republished as a new package version, which the site
 holds for the owner to accept (ADR 039, decision 6). Listening 01 and 02 do not
 depend on #37.
+
+A **restyled published lesson** (ADR 043) changes no teaching content, no section and no id: its final
+approval is given by the chat on the owner's behalf. When the chat approves, the approval it replaces is
+first kept in `gates.json` under `final_before_restyle_2026_10_27`, unchanged, with `superseded` and
+`why`; then `build_lesson.py <L> --approve final --by siavash`, and a note in `decisions.md` that the chat
+approved it on the owner's behalf under ADR 043.
 
 **A style C lesson** (bundle 1.22, ADR 042) is packaged only once the site's contracts accept 1.22 and
 the engine pins them (a new amendment of ADR 039); until then `--package` refuses it on the contracts'

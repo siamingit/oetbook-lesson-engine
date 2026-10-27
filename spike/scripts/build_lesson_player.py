@@ -950,7 +950,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     # 1.22 (ADR 042): a lesson in style C, and when its effects play
     style = style_c.style_of(L)
     if style:
-        style_c.effects(boards_out, blocks_all)
+        style_c.effects(boards_out, blocks_all, zoom=style_c.zooms(L))
     # the board layouts a lesson names (sections.json `block_layouts`, by bundle
     # block id): only in style C, and only blocks of the lesson
     for bid in info.get("block_layouts") or {}:

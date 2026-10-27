@@ -746,7 +746,11 @@ These are the only rules. Every time and target they use is in the bundle.
     the attributes `data-crit`, `data-mono`, `data-mono-len`, `data-label`, `data-bin`, `data-yes`,
     `data-l`, and empty `<i>` and `<span aria-hidden="true">` elements; they are for `blocks.css`
     alone, hold no words (rule 8 counts none of them) and leave every hook of §4 as it is. The
-    renderer draws the `html` as given; it has nothing else to do for a layout.
+    renderer draws the `html` as given; it has nothing else to do for a layout. A contents item that
+    lists two or more sections of its category (amended 2026-10-27, ADR 043) has its `cs` element's
+    class `cs parts` and each section wrapped in `<span class="cp">`, the words and the " · " between
+    them unchanged (the stylesheet sets the sections one under the other and the separator at no
+    size); a mark on a section lies inside its `cp`.
 54. **A lift** (1.22): while a state is current and not erased, from an `effects` entry's `time` to
     its `until`, a `lift` entry's `block` carries the class `fx-lift`; `blocks.css` draws it (style C,
     since the owner's review of 2026-10-26: a soft neutral shadow and a very small scale about its

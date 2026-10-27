@@ -2,7 +2,8 @@
 
 Date: 2026-10-26
 Status: **Accepted**, amended the same day after the owner's review of Writing 2 (amendment (2), at
-the end). The owner's decision of 2026-10-26, given in chat and recorded as
+the end). **Partly superseded by [ADR 043](043-restyle-published-lessons-style-c.md)** (2026-10-27): the
+22 published lessons are restyled in style C, and the zoom of decision 4 is for Writing's documents. The owner's decision of 2026-10-26, given in chat and recorded as
 siamingit/oetbook-lesson-engine issue #46 (the design reference: tokens, effects and three reference
 boards). How it is carried (the per-lesson style, the bundle format, which board states take which
 effect, the checks) was decided by the agent under the brief "make style C the lesson look, add motion
