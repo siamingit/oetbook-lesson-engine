@@ -5,6 +5,8 @@ Status: **Accepted** by the owner in chat, 2026-10-23, in the brief for the anal
 Sessions 4–7 ("Record these decisions (already made; do not ask again)"). The decisions are the
 owner's; how they are recorded and cross-referenced was chosen by the agent under that brief.
 No Writing lesson is built yet; no engine, player or bundle change follows from this record.
+**Amended by [ADR 044](044-writing-letter-date-no-exam-date-fallback.md)** (2026-10-27): decision 3's
+"if the notes give no date, the exam date" is removed by the owner; it is not taught in any form.
 
 ## Context
 
