@@ -21,7 +21,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 | 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 118:56 | 14 | 2026-10-27 09:37 (siavash) |
 | 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 52:20 | 5 | 2026-10-27 09:37 (siavash) |
 | 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 52:33 | 7 | 2026-10-27 09:37 (siavash) |
-| 4 | Grammar for OET: Articles | `grammar-04-articles` | 59:31 | 9 | 2026-10-27 09:37 (siavash) |
+| 4 | Grammar for OET: Articles | `grammar-04-articles` | 59:31 | 9 | 2026-10-27 19:07 (siavash) |
 | 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 56:31 | 8 | 2026-10-27 09:37 (siavash) |
 | 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 51:03 | 6 | 2026-10-27 09:37 (siavash) |
 | 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 83:00 | 18 | 2026-10-27 09:37 (siavash) |
@@ -1388,7 +1388,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 4. Grammar for OET: Articles
 
 - Lesson ID and folder: `grammar-04-articles` (folder `grammar-04-articles`); course grammar, lesson 4; length 59:31; bundle format 1.22
-- Status: approved by siavash, 2026-10-27 09:37
+- Status: approved by siavash, 2026-10-27 19:07
 - Description: Learn when to use a, an, the or no article, and how to use articles correctly in your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 54:32 long, partial hash `39acd9b8365dc034`; deck `source/slides.pdf`, 16 pages
   - The docs record nothing more about this session than its recording and deck.
