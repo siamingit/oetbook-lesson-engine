@@ -2,7 +2,7 @@
 
 Status: **Verified by the agent on 2026-10-23**, on oet.com and in OET's own documents linked
 from it, before any Writing lesson is built. Facts 30–43 and the Sessions 4–6 rows were added
-the same day, after the analysis of Sessions 4–6 (ADR 040). Every exam fact the Writing lessons state, with
+the same day (fact 44 and the exam-date rows on 2026-10-27, ADR 044), after the analysis of Sessions 4–6 (ADR 040). Every exam fact the Writing lessons state, with
 where it is on oet.com. Modelled on [docs/listening-facts.md](listening-facts.md). The owner
 has not yet ruled on how each fact is worded in a lesson; where a session's wording is wrong,
 the correct wording below is a proposal for him to confirm.
@@ -33,6 +33,7 @@ material, not the public website, so nothing below rests on it.
 | RS | https://oet.com/test/results-and-scoring, and its table image "Results table with IELTS benchmarking", https://cdn-aus.aglty.io/oet/upload/OET%20Results%20Benchmarking%20IELTS_A4_Digital.jpg |
 | NMC | https://oet.com/en-us/post/nmc-amends-oet-writing-to-c (dated 13 Nov 2023) |
 | OL | https://oet.com/post/writing-guide-organisation-and-layout |
+| DT | https://oet.com/post/writing-the-date-in-the-right-place-on-your-letter (read 2026-10-27) |
 | WG | *The ultimate guide to the OET Writing sub-test*, https://cdn-aus.aglty.io/oet/pdf-files/OET%20Ultimate%20Writing%20Guide.pdf (linked from OL as the Guide's PDF; 30 pages; page numbers as printed) |
 
 ## The facts
@@ -82,6 +83,7 @@ material, not the public website, so nothing below rests on it.
 | 41 | Layout details: the date usually below the address, top left (before the address is also acceptable); a blank line between paragraphs, no indent; British or American spelling, used consistently; block capitals allowed on paper if consistent, not recommended on computer | LQ: "The date is typically placed below the address at the top left corner of the letter"; "the date before the address"; "at least one blank line between each paragraph"; "no need to indent the first line"; "Both British and American spellings are accepted, but consistency is key"; "not recommended for the computer-based test due to readability issues" | VERIFIED; OET's advice (adds to fact 28) |
 | 42 | Paper and computer: pen or pencil; handwriting is not assessed but must be readable; cross out rather than erase; only the lined pages are assessed, so plan on the blank page; on computer, plan at the top of the text box and delete it before submitting | WG p27: "either pen or pencil"; "Your handwriting is not assessed but it does need to be clear enough"; "cross out any mistakes"; "Only the answer written on the lined paper in the answer booklet will be assessed"; LQ: "the top of the text box"; "delete any planning from the top of the text box before submitting" | VERIFIED |
 | 43 | Spelling need not be perfect for grade B; grammar matters but not more than the other criteria | WG p27: "you won't need to be perfect to achieve a B"; "Accurate grammar is important but not more important than any of the other criteria" | VERIFIED |
+| 44 | The letter's date is the date the paper gives at the start ("Assume that today's date is …"), never a date from the notes; it goes above or below the reader's address, written in full ("2 October 2021", not "2/10/21") | DT: "The date for your letter will usually be given at the start of the writing test, like this: Assume that today's date is ...."; "Use that date."; "The position of the date can be either above the recipient's address or below the address."; "In formal letters, it is normal for the date at the start to be written in full form e.g. 2 October 2021 rather than 2/10/21" | VERIFIED on 2026-10-27; OET's advice. "Never a date from the notes" is the owner's teaching (Session 3, 08:40–09:58) and follows from "Use that date". Taught as ADR 044 decision 2 |
 
 ## The owner's rule on word count
 
@@ -105,7 +107,7 @@ formality or register (docs/01-METHODOLOGY.md §17b): "I advise you not to …",
 |---|---|---|
 | Never "firstly, secondly, thirdly, finally" in the letter | 2, 36:30–36:53; 5, 16:24–17:30 | |
 | "Fortunately / unfortunately" at most once, and only when the condition has worsened | 2, 34:23–35:09; 5, 09:15–10:45; 6, 18:55–19:30 | never about a habit: that half is fact 21 and fact 37 |
-| If the notes give no date, use the date of the exam | 3, 09:28–10:31 | every OET and our notes give a date; said briefly |
+| ~~If the notes give no date, use the date of the exam~~ | 3, 09:28–10:31 | **Dropped by the owner, 2026-10-27 (ADR 044)**: not taught in any form; the date is the one the paper gives (fact 44) |
 | Emphasis phrases ("please note", "my main concern is") at most once | 5, 09:03–09:08 | |
 | Few linking words: if the link is obvious, use none; time words carry the flow | 5, 24:15–24:50, 31:41–33:15; 6, 22:47–24:00 | |
 | Do not start a sentence with *besides*, *actually*, *meanwhile*, *on the other hand*, *it is important to note*, *then*, *also*, *moreover*; put *also* and *then* before the main verb or after the first auxiliary | 5, 14:57–23:13; 6, 10:53–17:10 | his options: nothing, "in the interim", "but", "however", "please note" |
@@ -141,7 +143,7 @@ writing-02-assessment-criteria, 3 = writing-03-letter-structure.
 | Sign as "Doctor" and "write your own name, Doctor X" | 1, 24:35–24:40 | **Wrong**: sign with a job title, not your name (fact 25); in session 2 (42:13) he says the role, not the name, which is right | Fact 25 |
 | The Re line can give the age (the official Nursing sample does) or the date of birth | 3, 14:17–15:30 | **Both are seen**; OET's advice is name and date of birth (fact 26); our samples all use the date of birth | Fact 26 |
 | "Dear Sir or Madam" when the reader's name and sex are not known; "Yours faithfully" mentioned | 3, 12:46–14:17, 08:01 | **Correct** as OET's advice (fact 27); the pairing with "Yours faithfully" is not stated in the session | Fact 27, with the pairing |
-| If the case notes give no date, write the date of your exam | 3, 09:28–10:31 | **Not stated officially**; every case note OET and our samples show gives "Assume that today's date is …" | "Use the date the case notes give as today's date." The exam-day fallback is taught briefly as the owner's advice (ruled 2026-10-23, ADR 040 decision 3) |
+| If the case notes give no date, write the date of your exam | 3, 09:28–10:31 | **Not stated officially**; every case note OET and our samples show gives "Assume that today's date is …", and OET's own article says to use that date (fact 44) | **Not taught in any form** (the owner, 2026-10-27, ADR 044, which amends ADR 040 decision 3): "The letter's date is the date the paper gives at the top, never a date from the notes." |
 | The case-note booklet is one or two pages, rarely three with tables or graphs | 1, 07:30–07:48 | **Not stated officially**; H says "case notes and/or relevant documents" | Not taught |
 | Never use "firstly, secondly, finally" in an OET letter, unlike IELTS | 2, 36:30–36:53 | **Not stated officially** (a register claim, docs/01-METHODOLOGY.md §17b) | Taught as the owner's advice, never as an OET rule (ruled 2026-10-23, ADR 040 decision 3); OET's own advice is only "no personal feelings and judgements" and polite language (fact 21) |
 | "Fortunately" or "unfortunately" at most once in a letter | 2, 34:23–35:09 | **Not stated officially** | Taught as the owner's advice (ADR 040 decision 3), next to fact 21 (no feelings or judgements) |
