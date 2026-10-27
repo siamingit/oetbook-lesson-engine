@@ -85,6 +85,9 @@ def restyle(L: Path) -> None:
         st = b["boards"][0]["states"][0]
         st["effects"] = [{"type": "lift", "block": "k1", "time": 0.5, "until": 3.6}]
         st["clears"] = [{"time": 2.0, "blocks": ["k2"]}]
+        b["boards"][0]["tight"] = 1
+        b["boards"][0]["split"] = 52            # a question board's columns, from the fit
+        st["overlay"] = ["k2"]
         write(L / d / "bundle.json", b)
         t = json.loads((L / d / "text.json").read_text(encoding="utf-8"))
         t["format_version"] = "1.22"

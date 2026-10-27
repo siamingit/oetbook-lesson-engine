@@ -14,9 +14,10 @@ proof reads in depth. It writes only into <before_dir>.
 `compare` fails unless the lesson differs from the snapshot only in what a
 restyle may change (ADR 043): `lesson.style` in sections.json; the look
 (`blocks.css`, the players, the classes, attributes and empty or wrapping
-elements style C adds to a block's html, `style_c.HTML_ALLOWED`); the bundle's
+elements style C adds to a block's html, `ATTRS` and `CLASS_TOKENS` below); the bundle's
 `effects`, its format version and `lesson.style`; and the fit (fit.json, a
-table's `font`, a picture's `size`, a state's `clears`, a board's `tight`).
+table's `font`, a picture's `size`, a state's `clears` and `overlay`, a board's `tight`, a
+question board's `split`).
 Everything else must be identical: narration text, cues, every audio file and
 its timing, board and state times, ids, section titles and order, the words on
 every board and their order, glosses, images and practice items. Deterministic,
@@ -69,6 +70,7 @@ CLASS_RE = re.compile(r'class="([^"]*)"')
 EMPTY_DECOR = re.compile(r'<span class="(?:pts|kset|lanes)" aria-hidden="true">(?:<i[^>]*></i>)*</span>')
 CP_RE = re.compile(r'<span class="cp">(.*?)</span>', re.S)
 FIT_TF = re.compile(r"--tf:[0-9.]+cqh")
+FIT_PH = re.compile(r'\sstyle="--ph:[0-9.]+cqh"')     # a picture set smaller by the fit
 
 
 def sha(p: Path) -> str:
@@ -145,7 +147,7 @@ def norm_html(h: str) -> str:
         toks = [t for t in m.group(1).split() if not CLASS_TOKENS.match(t)]
         return 'class="' + " ".join(toks) + '"'
     h = CLASS_RE.sub(cls, h)
-    return FIT_TF.sub("--tf:*", h)
+    return FIT_PH.sub("", FIT_TF.sub("--tf:*", h))
 
 
 TAGS = re.compile(r"<[^>]+>")
@@ -232,17 +234,21 @@ def check_bundle(a: dict, b: dict, p: Proof, where: str) -> None:
         p.fail(f"{where}: board ids or their order changed")
         return
     for x, y in zip(da, db):
-        diff_keys(x, y, f"{where} board {x['id']}", {"states", "tight"}, p, "board")
+        diff_keys(x, y, f"{where} board {x['id']}", {"states", "tight", "split"}, p, "board")
         if x.get("tight") != y.get("tight"):
             p.allow(f"{where}: a board's tightness (the fit)")
+        if x.get("split") != y.get("split"):
+            p.allow(f"{where}: a question board's column split (the fit)")
         sa, sb = x.get("states") or [], y.get("states") or []
         if [s["id"] for s in sa] != [s["id"] for s in sb]:
             p.fail(f"{where} board {x['id']}: state ids or their order changed")
             continue
         for s, t in zip(sa, sb):
-            diff_keys(s, t, f"{where} state {s['id']}", {"effects", "clears"}, p, "state")
+            diff_keys(s, t, f"{where} state {s['id']}", {"effects", "clears", "overlay"}, p, "state")
             if (s.get("clears") or []) != (t.get("clears") or []):
                 p.allow(f"{where}: a state's clears (the fit)")
+            if s.get("overlay") != t.get("overlay"):
+                p.allow(f"{where}: a gloss over the question column (the fit)")
             fx = t.get("effects")
             if fx is None:
                 p.fail(f"{where} state {s['id']}: no effects in a style C bundle")
@@ -274,11 +280,13 @@ def strip(x, keys: tuple):
 
 def check_timeline(a: dict, b: dict, p: Proof, where: str) -> None:
     """A timeline mirrors the bundle's boards and states: identical but for each
-    state's `effects` (added) and `clears` (the fit)."""
-    if strip(a, ("effects", "clears")) != strip(b, ("effects", "clears")):
+    state's `effects` (added), and what the fit writes: a state's `clears` and
+    `overlay`, a board's `tight` and a question board's `split`."""
+    FIT = ("effects", "clears", "tight", "split", "overlay")
+    if strip(a, FIT) != strip(b, FIT):
         p.fail(f"{where}: changed beyond the effects and the fit")
     elif strip(a, ("effects",)) != strip(b, ("effects",)):
-        p.allow(f"{where}: a state's clears (the fit)")
+        p.allow(f"{where}: a state's clears or a board's tightness (the fit)")
 
 
 def check_intro_screens(a: dict, b: dict, p: Proof, where: str) -> None:
