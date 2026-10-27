@@ -53,7 +53,8 @@
    "title": "Writing",
    "lessons": [
     "writing-01-overview",
-    "writing-02-assessment-criteria"
+    "writing-02-assessment-criteria",
+    "writing-03-letter-structure"
    ]
   }
  ],
@@ -16408,6 +16409,14 @@
       "utterance": "page-19_t1.s9.u1",
       "start_s": 1729.862,
       "start": "28:49"
+     },
+     {
+      "lesson": "writing-03-letter-structure",
+      "section": "page-8",
+      "to_section": "page-14",
+      "utterance": "page-8_t1.s4.u1",
+      "start_s": 634.183,
+      "start": "10:34"
      }
     ],
     "continues_in": [],
@@ -50436,6 +50445,1118 @@
       "start": "28:49"
      }
     ],
+    "referred_to_by": [
+     {
+      "lesson": "writing-03-letter-structure",
+      "section": "page-3",
+      "to_section": "page-18",
+      "utterance": "page-3_t1.s1.u2",
+      "start_s": 7.09,
+      "start": "0:07"
+     },
+     {
+      "lesson": "writing-03-letter-structure",
+      "section": "pages-04-05",
+      "to_section": "pages-06-07-08",
+      "utterance": "pages-04-05_t1.s7.u3",
+      "start_s": 191.329,
+      "start": "3:11"
+     },
+     {
+      "lesson": "writing-03-letter-structure",
+      "section": "pages-04-05",
+      "to_section": "pages-09-10-11",
+      "utterance": "pages-04-05_t2.s4.u2",
+      "start_s": 306.124,
+      "start": "5:06"
+     }
+    ],
+    "continues_in": [],
+    "continues_from": []
+   }
+  },
+  {
+   "id": "writing-03-letter-structure",
+   "folder": "writing-03-letter-structure",
+   "title": "OET Writing: Letter Structure",
+   "description": "Learn the parts of a letter, from the address and the date to the request and the sign-off, and where each part comes from in the case notes.",
+   "course": "writing",
+   "order": 3,
+   "length_s": 1324.56,
+   "length": "22:04",
+   "bundle_format": "1.22",
+   "status": "built",
+   "approval": null,
+   "source": {
+    "folder": "source",
+    "recording": "source/video.mp4",
+    "recording_duration_s": 1504.5,
+    "recording_partial_hash": "e5d98490267c5abe",
+    "deck": "source/slides.pdf",
+    "deck_pages": 12,
+    "same_recording_as": [],
+    "note": "Writing Session 3 of the Persian Writing course, «جلسه رایتینگ: ساختار نامه» (Writing: letter structure); its official OET sample (letter and case notes) is replaced by our samples oa-ws-nur-0001 (main), oa-ws-med-0002 (the dates) and oa-ws-nur-0003 (the address, greeting and Re line) at oetacademy-exercises 5320d19 (ADR 040). The teacher's exam-date rule is dropped by the owner (ADR 044)."
+   },
+   "categories": [],
+   "sections": [
+    {
+     "id": "page-3",
+     "title": "Introduction",
+     "kind": "intro",
+     "pages": [
+      3
+     ],
+     "category": null,
+     "start_s": 0.0,
+     "start": "0:00",
+     "end_s": 91.722,
+     "topics": [
+      {
+       "board": "page-3_t1",
+       "title": "Title board",
+       "start_s": 0.0,
+       "start": "0:00",
+       "points": [
+        {
+         "text": "the lesson title, then what the lesson is about",
+         "block": "page-3_k14",
+         "start_s": 0.0,
+         "start": "0:00"
+        }
+       ]
+      },
+      {
+       "board": "page-3_t2",
+       "title": "Contents board",
+       "start_s": 61.46,
+       "start": "1:01",
+       "points": [
+        {
+         "text": "each category, revealed as it is named",
+         "block": "page-3_k15",
+         "start_s": 61.46,
+         "start": "1:01"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-3_t1.s1.u2",
+       "lesson": "writing-02-assessment-criteria",
+       "section": "page-18",
+       "provenance": "source-derived",
+       "start_s": 7.09,
+       "start": "0:07"
+      }
+     ]
+    },
+    {
+     "id": "pages-04-05",
+     "title": "The parts of a letter",
+     "kind": "deck",
+     "pages": [
+      4,
+      5
+     ],
+     "category": null,
+     "start_s": 91.722,
+     "start": "1:31",
+     "end_s": 349.434,
+     "topics": [
+      {
+       "board": "pages-04-05_t1",
+       "title": "A letter, part by part",
+       "start_s": 91.722,
+       "start": "1:31",
+       "points": [
+        {
+         "text": "the whole letter",
+         "block": "pages-04-05_k21",
+         "start_s": 91.722,
+         "start": "1:31"
+        },
+        {
+         "text": "a nurse's discharge letter",
+         "block": "pages-04-05_k02",
+         "start_s": 109.338,
+         "start": "1:49"
+        },
+        {
+         "text": "the reader's address",
+         "block": "pages-04-05_k03",
+         "start_s": 125.878,
+         "start": "2:05"
+        },
+        {
+         "text": "the date",
+         "block": "pages-04-05_k04",
+         "start_s": 134.388,
+         "start": "2:14"
+        },
+        {
+         "text": "the greeting and the Re line",
+         "block": "pages-04-05_k05",
+         "start_s": 148.428,
+         "start": "2:28"
+        },
+        {
+         "text": "a common, clear layout",
+         "block": "pages-04-05_k06",
+         "start_s": 153.95,
+         "start": "2:33"
+        },
+        {
+         "text": "the purpose",
+         "block": "pages-04-05_k08",
+         "start_s": 174.068,
+         "start": "2:54"
+        },
+        {
+         "text": "the purpose expanded",
+         "block": "pages-04-05_k09",
+         "start_s": 201.148,
+         "start": "3:21"
+        },
+        {
+         "text": "one more topic",
+         "block": "pages-04-05_k10",
+         "start_s": 207.505,
+         "start": "3:27"
+        },
+        {
+         "text": "the request",
+         "block": "pages-04-05_k11",
+         "start_s": 222.279,
+         "start": "3:42"
+        },
+        {
+         "text": "signing off",
+         "block": "pages-04-05_k12",
+         "start_s": 236.198,
+         "start": "3:56"
+        },
+        {
+         "text": "fixed and flexible",
+         "block": "pages-04-05_k13",
+         "start_s": 243.789,
+         "start": "4:03"
+        }
+       ]
+      },
+      {
+       "board": "pages-04-05_t2",
+       "title": "Where each part comes from",
+       "start_s": 260.172,
+       "start": "4:20",
+       "points": [
+        {
+         "text": "from the paper to the letter",
+         "block": "pages-04-05_k22",
+         "start_s": 260.172,
+         "start": "4:20"
+        },
+        {
+         "text": "every part comes from the paper",
+         "block": "pages-04-05_k15",
+         "start_s": 265.749,
+         "start": "4:25"
+        },
+        {
+         "text": "the date",
+         "block": "pages-04-05_k16",
+         "start_s": 294.704,
+         "start": "4:54"
+        },
+        {
+         "text": "the Writing Task",
+         "block": "pages-04-05_k17",
+         "start_s": 305.893,
+         "start": "5:05"
+        },
+        {
+         "text": "the patient details",
+         "block": "pages-04-05_k18",
+         "start_s": 320.413,
+         "start": "5:20"
+        },
+        {
+         "text": "the case notes",
+         "block": "pages-04-05_k19",
+         "start_s": 328.82,
+         "start": "5:28"
+        },
+        {
+         "text": "the discharge plan",
+         "block": "pages-04-05_k20",
+         "start_s": 337.026,
+         "start": "5:37"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "pages-04-05_k07",
+       "kind": "rule",
+       "text": "My advice: learn this top part once, and use it in every letter.",
+       "start_s": 161.024,
+       "start": "2:41"
+      },
+      {
+       "block": "pages-04-05_k11",
+       "kind": "warning",
+       "text": "The request: what you ask the reader to do. Never leave it out.",
+       "start_s": 222.279,
+       "start": "3:42"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "pages-04-05_t1.s7.u3",
+       "lesson": "writing-02-assessment-criteria",
+       "section": "pages-06-07-08",
+       "provenance": "source-derived",
+       "start_s": 191.329,
+       "start": "3:11"
+      },
+      {
+       "utterance": "pages-04-05_t2.s4.u2",
+       "lesson": "writing-02-assessment-criteria",
+       "section": "pages-09-10-11",
+       "provenance": "adapted",
+       "start_s": 306.124,
+       "start": "5:06"
+      }
+     ]
+    },
+    {
+     "id": "page-6",
+     "title": "The date",
+     "kind": "deck",
+     "pages": [
+      6
+     ],
+     "category": null,
+     "start_s": 349.434,
+     "start": "5:49",
+     "end_s": 497.771,
+     "topics": [
+      {
+       "board": "page-6_t1",
+       "title": "Which date goes at the top?",
+       "start_s": 349.434,
+       "start": "5:49",
+       "points": [
+        {
+         "text": "dates in Mrs Holden's paper",
+         "block": "page-6_k11",
+         "start_s": 349.434,
+         "start": "5:49"
+        },
+        {
+         "text": "many dates, one at the top",
+         "block": "page-6_k02",
+         "start_s": 355.013,
+         "start": "5:55"
+        },
+        {
+         "text": "the date the paper gives",
+         "block": "page-6_k04",
+         "start_s": 383.187,
+         "start": "6:23"
+        },
+        {
+         "text": "written in full",
+         "block": "page-6_k05",
+         "start_s": 398.724,
+         "start": "6:38"
+        },
+        {
+         "text": "not the admission date",
+         "block": "page-6_k06",
+         "start_s": 413.264,
+         "start": "6:53"
+        },
+        {
+         "text": "when the discharge date is today",
+         "block": "page-6_k07",
+         "start_s": 434.009,
+         "start": "7:14"
+        },
+        {
+         "text": "dates in the plan",
+         "block": "page-6_k08",
+         "start_s": 463.981,
+         "start": "7:43"
+        },
+        {
+         "text": "above or below the address",
+         "block": "page-6_k09",
+         "start_s": 481.118,
+         "start": "8:01"
+        },
+        {
+         "text": "the rule",
+         "block": "page-6_k10",
+         "start_s": 488.172,
+         "start": "8:08"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-6_k10",
+       "kind": "rule",
+       "text": "The date at the top is the date the paper gives, never a date from the notes.",
+       "start_s": 488.172,
+       "start": "8:08"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "page-7",
+     "title": "The address",
+     "kind": "deck",
+     "pages": [
+      7
+     ],
+     "category": null,
+     "start_s": 497.771,
+     "start": "8:17",
+     "end_s": 607.373,
+     "topics": [
+      {
+       "board": "page-7_t1",
+       "title": "Set out the address",
+       "start_s": 497.771,
+       "start": "8:17",
+       "points": [
+        {
+         "text": "the address in the Writing Task",
+         "block": "page-7_k11",
+         "start_s": 497.771,
+         "start": "8:17"
+        },
+        {
+         "text": "the Writing Task",
+         "block": "page-7_k02",
+         "start_s": 503.633,
+         "start": "8:23"
+        },
+        {
+         "text": "the person first",
+         "block": "page-7_k04",
+         "start_s": 527.918,
+         "start": "8:47"
+        },
+        {
+         "text": "the job title",
+         "block": "page-7_k05",
+         "start_s": 535.969,
+         "start": "8:55"
+        },
+        {
+         "text": "the department",
+         "block": "page-7_k06",
+         "start_s": 543.122,
+         "start": "9:03"
+        },
+        {
+         "text": "the hospital",
+         "block": "page-7_k07",
+         "start_s": 553.109,
+         "start": "9:13"
+        },
+        {
+         "text": "the street",
+         "block": "page-7_k08",
+         "start_s": 562.079,
+         "start": "9:22"
+        },
+        {
+         "text": "the town",
+         "block": "page-7_k09",
+         "start_s": 567.969,
+         "start": "9:27"
+        },
+        {
+         "text": "copy it exactly",
+         "block": "page-7_k10",
+         "start_s": 581.986,
+         "start": "9:41"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-7_k10",
+       "kind": "rule",
+       "text": "Copy the address exactly as the task gives it: the same words, the same order, the same capital letters.",
+       "start_s": 581.986,
+       "start": "9:41"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "page-8",
+     "title": "Greeting and Re line",
+     "kind": "deck",
+     "pages": [
+      8
+     ],
+     "category": null,
+     "start_s": 607.373,
+     "start": "10:07",
+     "end_s": 764.799,
+     "topics": [
+      {
+       "board": "page-8_t1",
+       "title": "Greeting and Re line",
+       "start_s": 607.373,
+       "start": "10:07",
+       "points": [
+        {
+         "text": "from the paper to the letter",
+         "block": "page-8_k13",
+         "start_s": 607.373,
+         "start": "10:07"
+        },
+        {
+         "text": "from the paper",
+         "block": "page-8_k02",
+         "start_s": 614.192,
+         "start": "10:14"
+        },
+        {
+         "text": "title and surname",
+         "block": "page-8_k03",
+         "start_s": 626.708,
+         "start": "10:26"
+        },
+        {
+         "text": "a comma or not",
+         "block": "page-8_k04",
+         "start_s": 633.848,
+         "start": "10:33"
+        },
+        {
+         "text": "your turn",
+         "block": "page-8_k05",
+         "start_s": 653.286,
+         "start": "10:53"
+        },
+        {
+         "text": "no name in the task",
+         "block": "page-8_k06",
+         "start_s": 664.703,
+         "start": "11:04"
+        },
+        {
+         "text": "the word Re",
+         "block": "page-8_k07",
+         "start_s": 681.022,
+         "start": "11:21"
+        },
+        {
+         "text": "your turn",
+         "block": "page-8_k08",
+         "start_s": 693.19,
+         "start": "11:33"
+        },
+        {
+         "text": "name and date of birth",
+         "block": "page-8_k09",
+         "start_s": 709.276,
+         "start": "11:49"
+        },
+        {
+         "text": "why the date of birth",
+         "block": "page-8_k10",
+         "start_s": 715.496,
+         "start": "11:55"
+        },
+        {
+         "text": "what is wrong?",
+         "block": "page-8_k11",
+         "start_s": 734.456,
+         "start": "12:14"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [
+      {
+       "block": "page-8_k07",
+       "label": "The word",
+       "term": "Re",
+       "start_s": 681.022,
+       "start": "11:21"
+      }
+     ],
+     "wrong_examples": [
+      {
+       "block": "page-8_k11",
+       "text": "Dear Joanne Pellow",
+       "start_s": 734.456,
+       "start": "12:14"
+      },
+      {
+       "block": "page-8_k12",
+       "text": "Re: Mrs Dawson",
+       "start_s": 736.373,
+       "start": "12:16"
+      }
+     ],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-8_t1.s4.u1",
+       "lesson": "grammar-07-punctuation",
+       "section": "page-14",
+       "provenance": "adapted",
+       "start_s": 634.183,
+       "start": "10:34"
+      }
+     ]
+    },
+    {
+     "id": "page-9",
+     "title": "The body",
+     "kind": "deck",
+     "pages": [
+      9
+     ],
+     "category": null,
+     "start_s": 764.799,
+     "start": "12:44",
+     "end_s": 1014.011,
+     "topics": [
+      {
+       "board": "page-9_t1",
+       "title": "The body",
+       "start_s": 764.799,
+       "start": "12:44",
+       "points": [
+        {
+         "text": "the body of the letter",
+         "block": "page-9_k14",
+         "start_s": 764.799,
+         "start": "12:44"
+        },
+        {
+         "text": "what you do in the body",
+         "block": "page-9_k02",
+         "start_s": 772.019,
+         "start": "12:52"
+        },
+        {
+         "text": "why you are writing",
+         "block": "page-9_k03",
+         "start_s": 800.564,
+         "start": "13:20"
+        },
+        {
+         "text": "the word housebound",
+         "block": "page-9_k04",
+         "start_s": 810.197,
+         "start": "13:30"
+        },
+        {
+         "text": "the purpose fits the task",
+         "block": "page-9_k05",
+         "start_s": 827.347,
+         "start": "13:47"
+        },
+        {
+         "text": "my method",
+         "block": "page-9_k07",
+         "start_s": 864.264,
+         "start": "14:24"
+        },
+        {
+         "text": "what it adds",
+         "block": "page-9_k08",
+         "start_s": 897.486,
+         "start": "14:57"
+        },
+        {
+         "text": "one topic",
+         "block": "page-9_k09",
+         "start_s": 923.906,
+         "start": "15:23"
+        },
+        {
+         "text": "how many paragraphs",
+         "block": "page-9_k10",
+         "start_s": 933.12,
+         "start": "15:33"
+        },
+        {
+         "text": "which paragraph? 1",
+         "block": "page-9_k11",
+         "start_s": 949.667,
+         "start": "15:49"
+        },
+        {
+         "text": "which paragraph? 2",
+         "block": "page-9_k12",
+         "start_s": 971.071,
+         "start": "16:11"
+        },
+        {
+         "text": "which paragraph? 3",
+         "block": "page-9_k13",
+         "start_s": 988.951,
+         "start": "16:28"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-9_k06",
+       "kind": "rule",
+       "text": "OET: state the purpose clearly at the start, then expand it with more detail at the end of the letter.",
+       "start_s": 851.389,
+       "start": "14:11"
+      },
+      {
+       "block": "page-9_k07",
+       "kind": "rule",
+       "text": "My advice: expand the purpose straight after, in the next paragraph.",
+       "start_s": 864.264,
+       "start": "14:24"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "page-10",
+     "title": "The request",
+     "kind": "deck",
+     "pages": [
+      10
+     ],
+     "category": null,
+     "start_s": 1014.011,
+     "start": "16:54",
+     "end_s": 1181.733,
+     "topics": [
+      {
+       "board": "page-10_t1",
+       "title": "From the plan to the request",
+       "start_s": 1014.011,
+       "start": "16:54",
+       "points": [
+        {
+         "text": "the discharge plan",
+         "block": "page-10_k13",
+         "start_s": 1014.011,
+         "start": "16:54"
+        },
+        {
+         "text": "do not forget it",
+         "block": "page-10_k02",
+         "start_s": 1020.666,
+         "start": "17:00"
+        },
+        {
+         "text": "your turn",
+         "block": "page-10_k04",
+         "start_s": 1045.663,
+         "start": "17:25"
+        },
+        {
+         "text": "the date and what to do if",
+         "block": "page-10_k05",
+         "start_s": 1069.993,
+         "start": "17:49"
+        },
+        {
+         "text": "already taught",
+         "block": "page-10_k06",
+         "start_s": 1085.298,
+         "start": "18:05"
+        },
+        {
+         "text": "your turn",
+         "block": "page-10_k07",
+         "start_s": 1100.344,
+         "start": "18:20"
+        },
+        {
+         "text": "her own words",
+         "block": "page-10_k08",
+         "start_s": 1124.528,
+         "start": "18:44"
+        },
+        {
+         "text": "when",
+         "block": "page-10_k09",
+         "start_s": 1144.272,
+         "start": "19:04"
+        },
+        {
+         "text": "polite requests",
+         "block": "page-10_k10",
+         "start_s": 1150.522,
+         "start": "19:10"
+        },
+        {
+         "text": "why it matters",
+         "block": "page-10_k11",
+         "start_s": 1160.146,
+         "start": "19:20"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-10_k02",
+       "kind": "warning",
+       "text": "The request ends the body. Do not forget it.",
+       "start_s": 1020.666,
+       "start": "17:00"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-10_t1.s10.u1",
+       "lesson": "writing-02-assessment-criteria",
+       "section": "pages-09-10-11",
+       "provenance": "corrected",
+       "start_s": 1160.483,
+       "start": "19:20"
+      }
+     ]
+    },
+    {
+     "id": "page-11",
+     "title": "Signing off",
+     "kind": "deck",
+     "pages": [
+      11
+     ],
+     "category": null,
+     "start_s": 1181.733,
+     "start": "19:41",
+     "end_s": 1275.064,
+     "topics": [
+      {
+       "board": "page-11_t1",
+       "title": "Signing off",
+       "start_s": 1181.733,
+       "start": "19:41",
+       "points": [
+        {
+         "text": "the end of the letter",
+         "block": "page-11_k08",
+         "start_s": 1181.733,
+         "start": "19:41"
+        },
+        {
+         "text": "three short lines",
+         "block": "page-11_k02",
+         "start_s": 1185.363,
+         "start": "19:45"
+        },
+        {
+         "text": "two closing sentences",
+         "block": "page-11_k03",
+         "start_s": 1201.303,
+         "start": "20:01"
+        },
+        {
+         "text": "learn one or two",
+         "block": "page-11_k04",
+         "start_s": 1206.01,
+         "start": "20:06"
+        },
+        {
+         "text": "sincerely or faithfully",
+         "block": "page-11_k05",
+         "start_s": 1217.711,
+         "start": "20:17"
+        },
+        {
+         "text": "the job title",
+         "block": "page-11_k06",
+         "start_s": 1236.468,
+         "start": "20:36"
+        },
+        {
+         "text": "your turn",
+         "block": "page-11_k07",
+         "start_s": 1241.588,
+         "start": "20:41"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-11_k04",
+       "kind": "rule",
+       "text": "My advice: learn one or two closing sentences, and use them in your letters.",
+       "start_s": 1206.01,
+       "start": "20:06"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-01",
+     "title": "Closing",
+     "kind": "closing",
+     "pages": [],
+     "category": null,
+     "start_s": 1275.064,
+     "start": "21:15",
+     "end_s": 1324.56,
+     "topics": [
+      {
+       "board": "added-01_t1",
+       "title": "Closing",
+       "start_s": 1275.064,
+       "start": "21:15",
+       "points": [
+        {
+         "text": "Recap",
+         "block": "added-01_k04",
+         "start_s": 1275.064,
+         "start": "21:15"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    }
+   ],
+   "facts": [
+    {
+     "fact": "writing-no-fixed-layout",
+     "text": "There is no one required layout for the letter (writing-facts 24).",
+     "note": null,
+     "section": "pages-04-05",
+     "board": "pages-04-05_t1",
+     "utterance": "pages-04-05_t1.s6.u1",
+     "start_s": 154.299,
+     "start": "2:34"
+    },
+    {
+     "fact": "writing-letter-date",
+     "text": "The letter's date is the date the paper gives at the start (\"Assume that today's date is ...\"), never a date from the notes; above or below the reader's address, written in full (writing-facts 44).",
+     "note": null,
+     "section": "page-6",
+     "board": "page-6_t1",
+     "utterance": "page-6_t1.s3.u2",
+     "start_s": 379.944,
+     "start": "6:19"
+    },
+    {
+     "fact": "writing-address",
+     "text": "Copy the reader's name and address from the task (writing-facts 24).",
+     "note": null,
+     "section": "page-7",
+     "board": "page-7_t1",
+     "utterance": "page-7_t1.s9.u1",
+     "start_s": 582.299,
+     "start": "9:42"
+    },
+    {
+     "fact": "writing-unnamed-reader",
+     "text": "\"Yours faithfully\" goes with \"Dear Sir or Madam\" when the reader's name is not known (writing-facts 27).",
+     "note": null,
+     "section": "page-8",
+     "board": "page-8_t1",
+     "utterance": "page-8_t1.s6.u1",
+     "start_s": 665.013,
+     "start": "11:05"
+    },
+    {
+     "fact": "writing-re-line",
+     "text": "The Re line gives the patient's full name and date of birth (writing-facts 26).",
+     "note": null,
+     "section": "page-8",
+     "board": "page-8_t1",
+     "utterance": "page-8_t1.s9.u1",
+     "start_s": 709.506,
+     "start": "11:49"
+    },
+    {
+     "fact": "writing-purpose",
+     "text": "Purpose: the reader sees at once why you are writing; the purpose is stated clearly at the start and expanded with more detail at the end of the letter (writing-facts 18, 30).",
+     "note": null,
+     "section": "page-9",
+     "board": "page-9_t1",
+     "utterance": "page-9_t1.s5.u3",
+     "start_s": 851.729,
+     "start": "14:11"
+    },
+    {
+     "fact": "writing-paragraphs",
+     "text": "One topic in each paragraph; there is no fixed number of paragraphs (writing-facts 40).",
+     "note": null,
+     "section": "page-9",
+     "board": "page-9_t1",
+     "utterance": "page-9_t1.s9.u1",
+     "start_s": 933.467,
+     "start": "15:33"
+    },
+    {
+     "fact": "writing-content",
+     "text": "Content: what this reader needs to continue care, with nothing important missing and the case notes represented accurately (writing-facts 19).",
+     "note": null,
+     "section": "page-10",
+     "board": "page-10_t1",
+     "utterance": "page-10_t1.s10.u1",
+     "start_s": 1160.483,
+     "start": "19:20"
+    },
+    {
+     "fact": "writing-closing-sentence",
+     "text": "A closing sentence commonly thanks the reader or offers contact; \"Thank you for ...\" and \"Please do not hesitate to contact me if you have any questions\" are both acceptable, neither required (writing-facts 39; ADR 040 decision 5).",
+     "note": null,
+     "section": "page-11",
+     "board": "page-11_t1",
+     "utterance": "page-11_t1.s3.u2",
+     "start_s": 1201.653,
+     "start": "20:01"
+    },
+    {
+     "fact": "writing-sign-off",
+     "text": "Sign with a job title, not your own name (writing-facts 25).",
+     "note": "a job title, such as Nurse",
+     "section": "page-11",
+     "board": "page-11_t1",
+     "utterance": "page-11_t1.s6.u1",
+     "start_s": 1234.553,
+     "start": "20:34"
+    }
+   ],
+   "methods": [
+    {
+     "name": "Where each part comes from",
+     "text": "The date from the date line at the top of the paper; the reader's name, address and the purpose from the Writing Task; the Re line from the patient details; the body from the notes; the request from the plan.",
+     "section": "pages-04-05",
+     "board": "pages-04-05_t2",
+     "utterance": "pages-04-05_t2.s2.u1",
+     "start_s": 266.052,
+     "start": "4:26"
+    },
+    {
+     "name": "Setting out the address",
+     "text": "Copy it from the Writing Task exactly, one part on each line, from the person to the town, keeping every capital letter.",
+     "section": "page-7",
+     "board": "page-7_t1",
+     "utterance": "page-7_t1.s9.u1",
+     "start_s": 582.299,
+     "start": "9:42"
+    },
+    {
+     "name": "Expanding the purpose (the teacher's method)",
+     "text": "Say briefly at the start why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.",
+     "section": "page-9",
+     "board": "page-9_t1",
+     "utterance": "page-9_t1.s6.u1",
+     "start_s": 862.339,
+     "start": "14:22"
+    },
+    {
+     "name": "From the plan to the request",
+     "text": "Turn each line of the plan into a polite request, keeping its date, what to do and when; report what the patient said at its exact degree.",
+     "section": "page-10",
+     "board": "page-10_t1",
+     "utterance": "page-10_t1.s4.u2",
+     "start_s": 1070.333,
+     "start": "17:50"
+    }
+   ],
+   "vocabulary": [
+    {
+     "word": "housebound",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "page-9",
+     "block": "page-9_k04",
+     "start_s": 810.197,
+     "start": "13:30"
+    }
+   ],
+   "withheld": {
+    "listening_panel_words": 0,
+    "lines_naming_an_answer": 0
+   },
+   "practice_set": null,
+   "deck_exercises": [],
+   "links": {
+    "refers_to": [
+     {
+      "lesson": "writing-02-assessment-criteria",
+      "section": "page-18",
+      "from_section": "page-3",
+      "utterance": "page-3_t1.s1.u2",
+      "start_s": 7.09,
+      "start": "0:07"
+     },
+     {
+      "lesson": "writing-02-assessment-criteria",
+      "section": "pages-06-07-08",
+      "from_section": "pages-04-05",
+      "utterance": "pages-04-05_t1.s7.u3",
+      "start_s": 191.329,
+      "start": "3:11"
+     },
+     {
+      "lesson": "writing-02-assessment-criteria",
+      "section": "pages-09-10-11",
+      "from_section": "pages-04-05",
+      "utterance": "pages-04-05_t2.s4.u2",
+      "start_s": 306.124,
+      "start": "5:06"
+     },
+     {
+      "lesson": "grammar-07-punctuation",
+      "section": "page-14",
+      "from_section": "page-8",
+      "utterance": "page-8_t1.s4.u1",
+      "start_s": 634.183,
+      "start": "10:34"
+     }
+    ],
     "referred_to_by": [],
     "continues_in": [],
     "continues_from": []
@@ -52155,6 +53276,19 @@
      "start_s": 327.297,
      "start": "5:27",
      "source": "curated"
+    }
+   ]
+  },
+  {
+   "topic": "Greeting and Re line",
+   "key": "greeting and re line",
+   "entries": [
+    {
+     "lesson": "writing-03-letter-structure",
+     "section": "page-8",
+     "start_s": 607.373,
+     "start": "10:07",
+     "source": "section"
     }
    ]
   },
@@ -53983,6 +55117,19 @@
    ]
   },
   {
+   "topic": "Signing off",
+   "key": "signing off",
+   "entries": [
+    {
+     "lesson": "writing-03-letter-structure",
+     "section": "page-11",
+     "start_s": 1181.733,
+     "start": "19:41",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "signposts",
    "key": "signposts",
    "entries": [
@@ -54395,6 +55542,32 @@
    ]
   },
   {
+   "topic": "The address",
+   "key": "the address",
+   "entries": [
+    {
+     "lesson": "writing-03-letter-structure",
+     "section": "page-7",
+     "start_s": 497.771,
+     "start": "8:17",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "The body",
+   "key": "the body",
+   "entries": [
+    {
+     "lesson": "writing-03-letter-structure",
+     "section": "page-9",
+     "start_s": 764.799,
+     "start": "12:44",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "The case notes",
    "key": "the case notes",
    "entries": [
@@ -54404,6 +55577,32 @@
      "start_s": 586.922,
      "start": "9:46",
      "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "The date",
+   "key": "the date",
+   "entries": [
+    {
+     "lesson": "writing-03-letter-structure",
+     "section": "page-6",
+     "start_s": 349.434,
+     "start": "5:49",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "The date at the top of the letter",
+   "key": "the date at the top of the letter",
+   "entries": [
+    {
+     "lesson": "writing-03-letter-structure",
+     "section": "page-6",
+     "start_s": 488.511,
+     "start": "8:08",
+     "source": "curated"
     }
    ]
   },
@@ -54473,6 +55672,19 @@
    ]
   },
   {
+   "topic": "The parts of a letter",
+   "key": "the parts of a letter",
+   "entries": [
+    {
+     "lesson": "writing-03-letter-structure",
+     "section": "pages-04-05",
+     "start_s": 91.722,
+     "start": "1:31",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "the passive",
    "key": "the passive",
    "entries": [
@@ -54534,6 +55746,32 @@
      "start_s": 89.66,
      "start": "1:29",
      "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "The request",
+   "key": "the request",
+   "entries": [
+    {
+     "lesson": "writing-03-letter-structure",
+     "section": "page-10",
+     "start_s": 1014.011,
+     "start": "16:54",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "The request at the end of the letter",
+   "key": "the request at the end of the letter",
+   "entries": [
+    {
+     "lesson": "writing-03-letter-structure",
+     "section": "page-10",
+     "start_s": 1021.001,
+     "start": "17:01",
+     "source": "curated"
     }
    ]
   },
@@ -55203,21 +56441,21 @@
   }
  ],
  "totals": {
-  "lessons": 23,
-  "sections": 219,
-  "topics": 506,
-  "teaching_points": 3942,
-  "rules": 239,
-  "warnings": 62,
-  "terms": 481,
-  "wrong_examples": 274,
-  "facts": 145,
-  "methods": 35,
-  "vocabulary": 515,
+  "lessons": 24,
+  "sections": 228,
+  "topics": 517,
+  "teaching_points": 4022,
+  "rules": 245,
+  "warnings": 64,
+  "terms": 482,
+  "wrong_examples": 276,
+  "facts": 155,
+  "methods": 39,
+  "vocabulary": 516,
   "vocabulary_word_bank": 189,
   "practice_items": 62,
-  "references": 83,
-  "topic_index": 345,
+  "references": 87,
+  "topic_index": 354,
   "withheld_panel_words": 139,
   "withheld_answer_lines": 9
  }
