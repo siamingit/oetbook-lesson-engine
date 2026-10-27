@@ -491,6 +491,15 @@ row on that board:
   strength and the other rows are dimmed. The cell being discussed gets
   the glass highlight (amber, translucent), moving through the row as
   the teaching does: notes, then formal expression, then sentence.
+  **A table whose rows do not pair their cells is spotlit by cell**
+  (owner's report, 2026-10-27; ADR 043 decision 17; bundle rule 11): a
+  matching table, its words in one column and their meanings shuffled in
+  the other, taught by an arrow from each word to its meaning in another
+  row. When a word is taught, its cell and the cell its arrow reaches (from
+  the moment the arrow is drawn) are lit and highlighted, and every other
+  cell, the meaning beside the word included, is dimmed: a row is never
+  lit as a pair it is not. Detected from the lesson's data (an arrow from a
+  cell to a cell of another row), for every lesson.
 - **Answers are typed live into empty cells**, character by character
   in time with the narration (§8, typed text), in the blue of teacher
   emphasis. Every cell's final size is reserved from the start, so the

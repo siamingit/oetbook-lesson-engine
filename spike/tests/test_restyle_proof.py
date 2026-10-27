@@ -26,7 +26,9 @@ def bundle(fmt="1.21"):
             "lesson": {"id": "x", "title": "T"}, "sections": [{"id": "page-3", "title": "Introduction"}],
             "blocks": {"k1": {"id": "k1", "type": "contents_item", "text": "Commas", "html": ITEM},
                        "k2": {"id": "k2", "type": "table", "font": 2.0, "html": TABLE}},
-            "boards": [{"id": "t2", "start": 0.0, "until": 9.0, "tight": 0, "states": [
+            "boards": [{"id": "t2", "start": 0.0, "until": 9.0, "tight": 0,
+                        "focus": [{"time": 0.0, "row": None, "col": None}, {"time": 1.0, "row": 0, "col": 0}],
+                        "states": [
                 {"id": "t2.s1", "start": 0.0, "until": 9.0, "working": ["k1", "k2"], "reveal": {"k1": 0.5},
                  "clears": [], "utterances": [copy.deepcopy(UTT)]}]}]}
 
@@ -192,6 +194,20 @@ class Proof(unittest.TestCase):
     def test_no_effects_caught(self):
         self.edit_bundle(lambda b: b["boards"][0]["states"][0].pop("effects"))
         self.assertCaught("no effects in a style C bundle")
+
+    def test_a_spotlight_by_cell_passes(self):
+        # 1.22 (ADR 043 decision 17): cells added, and an entry repeating the row
+        # and cell where an arrow's target lights
+        self.edit_bundle(lambda b: b["boards"][0].update(focus=[
+            {"time": 0.0, "row": None, "col": None}, {"time": 1.0, "row": 0, "col": 0, "cells": [[0, 0]]},
+            {"time": 1.5, "row": 0, "col": 0, "cells": [[0, 0], [0, 1]]}]))
+        r = self.result()
+        self.assertTrue(r["ok"], r["failures"])
+
+    def test_a_spotlight_row_change_caught(self):
+        self.edit_bundle(lambda b: b["boards"][0].update(focus=[
+            {"time": 0.0, "row": None, "col": None}, {"time": 1.0, "row": 0, "col": 1}]))
+        self.assertCaught("'focus' changed beyond the spotlight by cell")
 
     def test_a_stale_silent_preview_compared_with_its_re_render(self):
         # the lesson's silent preview older than its narration: the restyled one

@@ -492,6 +492,20 @@ CSS = r"""
 }
 """
 
+# The spotlight by cell (rule 11, 1.22; ADR 043 decision 17), appended to the
+# stylesheet of a lesson that has a table whose rows do not pair their cells (a
+# word and its meaning, shuffled; build_lesson_player.cell_focus), and only
+# there. A player sets `cellspot` on the table and `lit` on each cell the focus
+# entry's `cells` lists, and no row `focus`.
+CELL_CSS = r"""
+/* the spotlight by cell (rule 11; ADR 043): the cells lit (the word being
+   taught and the meaning its arrow reaches) at full strength, in the soft amber
+   of the cell being taught; every other cell, the one beside the word included,
+   at half */
+.tbl.core.spot.cellspot tbody tr td{opacity:.5}
+.tbl.core.spot.cellspot tbody tr td.lit{opacity:1;background:var(--sc-active,#fff0c4)}
+"""
+
 # A column label's meaning, by its words (sentence case in the data). Only labels
 # that say right or wrong take a colour (§5).
 TONE_WORDS = {"wrong": ("wrong", "wrong version", "not accurate", "inaccurate", "leave out", "avoid"),
@@ -812,7 +826,13 @@ def effects(boards: list[dict], blocks: dict, zoom: bool = True) -> None:
                 if n + 1 < len(items):
                     until = items[n + 1][0]
                 else:
-                    ends = [u["end"] for u in s["utterances"] if u["start"] <= at + 1e-6 <= u["end"] + 0.5]
+                    # the sentence that names it: the one whose cues hold its
+                    # reveal (its first word can be said a little before the
+                    # sentence's recorded start, inside the last one's tail;
+                    # ADR 043 decision 16); else the sentence it falls in
+                    ends = [u["end"] for u in s["utterances"]
+                            if any(c["type"] == "reveal" and c.get("block") == w for c in u["cues"])] \
+                        or [u["end"] for u in s["utterances"] if u["start"] <= at + 1e-6 <= u["end"] + 0.5]
                     # a category whose sections the narration names one by one
                     # (a mark on each, after its reveal): until the last is named
                     # (ADR 043)
