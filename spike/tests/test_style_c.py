@@ -10,6 +10,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import build_lesson_player as blp   # noqa: E402
+import lesson_package as lp         # noqa: E402
 import style_c                      # noqa: E402
 
 
@@ -275,6 +276,74 @@ class ContentsParts(unittest.TestCase):
         for cs in ("", "Overview"):
             item = self.ITEM.replace("Overview · Lists and series · Practice", cs)
             self.assertEqual(style_c.layout_html({"type": "contents_item", "text": "Commas"}, item, None), item)
+
+
+class PackageCheck(unittest.TestCase):
+    """LP-STYLE, LP-EFFECTS and LP-CELLS, ported from the site's validator at contracts 1.12.0."""
+
+    def bundle(self, version="1.22", style=True):
+        b = {"format_version": version, "lesson": {"id": "writing-99-example"},
+             "blocks": {"t": {"id": "t", "type": "table", "rows": [["a", "b"], ["c", "d"]]},
+                        "k": {"id": "k", "type": "note"}},
+             "boards": [{"id": "x_t1", "table": "t", "fixed": [], "pinned": {},
+                         "focus": [{"time": 1.0, "row": None, "col": None},
+                                   {"time": 2.0, "row": 0, "col": 0, "cells": [[0, 0], [1, 1]]}],
+                         "states": [{"id": "x_t1.s1", "start": 1.0, "until": 9.0, "working": ["k"],
+                                     "effects": [{"type": "lift", "block": "k", "time": 2.0, "until": 3.0},
+                                                 {"type": "zoom", "block": "t", "row": 1, "col": None,
+                                                  "text": None, "time": 4.0, "until": 9.0}]}]}]}
+        if style:
+            b["lesson"]["style"] = "c"
+        return b
+
+    def codes(self, b):
+        f = lp.Findings()
+        lp.check_style(b, f)
+        return f.codes("error")
+
+    def test_a_good_1_22_bundle(self):
+        self.assertEqual(self.codes(self.bundle()), [])
+
+    def test_style_and_effects_go_together(self):
+        b = self.bundle()
+        del b["boards"][0]["states"][0]["effects"]
+        self.assertEqual(self.codes(b), ["LP-STYLE"])
+        self.assertEqual(self.codes(self.bundle(style=False)), ["LP-STYLE"])
+
+    def test_before_1_22_none_of_the_fields(self):
+        self.assertEqual(self.codes(self.bundle("1.21")), ["LP-CELLS", "LP-EFFECTS", "LP-STYLE"])
+        b = self.bundle("1.21", style=False)
+        del b["boards"][0]["states"][0]["effects"]
+        del b["boards"][0]["focus"][1]["cells"]
+        self.assertEqual(self.codes(b), [])
+
+    def test_effects(self):
+        for change in (lambda e: e[1].update(time=1.5),            # out of order
+                       lambda e: e[0].update(until=2.0),           # ends as it starts
+                       lambda e: e[1].update(until=9.5),           # past the state
+                       lambda e: e[0].update(block="elsewhere"),   # not a block of the board
+                       lambda e: e[1].update(block="k"),           # a zoom not on the table
+                       lambda e: e[1].update(row=2),               # no such row
+                       lambda e: e[1].update(col=2)):              # no such column
+            b = self.bundle()
+            change(b["boards"][0]["states"][0]["effects"])
+            self.assertEqual(self.codes(b), ["LP-EFFECTS"])
+
+    def test_cells(self):
+        for entry in ({"time": 2.0, "row": None, "col": None, "cells": [[0, 0]]},
+                      {"time": 2.0, "row": 0, "col": 0, "cells": [[0, 0], [2, 0]]},
+                      {"time": 2.0, "row": 0, "col": 0, "cells": [[0, 2]]}):
+            b = self.bundle()
+            b["boards"][0]["focus"][1] = entry
+            self.assertEqual(self.codes(b), ["LP-CELLS"], entry)
+
+    def test_text_style_only_from_1_22(self):
+        b = self.bundle()
+        for version, want in (("1.22", []), ("1.21", ["LP-STYLE"])):
+            f = lp.Findings()
+            lp.check_text({"format_version": version, "lesson": {"id": b["lesson"]["id"], "style": "c"},
+                           "sections": []}, {"lesson": b["lesson"], "sections": []}, f)
+            self.assertEqual(f.codes("error"), want)
 
 
 if __name__ == "__main__":

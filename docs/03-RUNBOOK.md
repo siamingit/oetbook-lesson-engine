@@ -624,9 +624,9 @@ first kept in `gates.json` under `final_before_restyle_2026_10_27`, unchanged, w
 `why`; then `build_lesson.py <L> --approve final --by siavash`, and a note in `decisions.md` that the chat
 approved it on the owner's behalf under ADR 043.
 
-**A style C lesson** (bundle 1.22, ADR 042) is packaged only once the site's contracts accept 1.22 and
-the engine pins them (a new amendment of ADR 039); until then `--package` refuses it on the contracts'
-format check, and the lesson waits, approved or not (oetacademy-web issue #173, ADR 042).
+**A style C lesson** (bundle 1.22, ADR 042) is packaged like any other: contracts 1.12.0, pinned on
+2026-10-27 (ADR 039 amendment of that date), accept 1.22 and check its `style`, `effects` and `cells`
+(`LP-STYLE`, `LP-EFFECTS`, `LP-CELLS`); the site's player plays it (oetacademy-web issue #173).
 
 **After the final gate: publishing** (ADR 039). An approved lesson is published
 as a package of the site's contract (oetacademy-web ADR-0034, ENGINE-GAPS G1 to
