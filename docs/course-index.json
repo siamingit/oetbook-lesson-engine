@@ -50493,8 +50493,11 @@
    "length_s": 1612.105,
    "length": "26:52",
    "bundle_format": "1.22",
-   "status": "built",
-   "approval": null,
+   "status": "approved",
+   "approval": {
+    "by": "Siavash",
+    "on": "2026-10-28 02:22"
+   },
    "source": {
     "folder": "source",
     "recording": "source/video.mp4",
