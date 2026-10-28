@@ -200,7 +200,9 @@ brought, so the main content does not change.
   **by meaning** (past / present / future), never by beat. **A table is
   never split** (§7, Tables; 2026-09-25): it stays whole on one board and
   is read with row focus and auto zoom. Grammar 1's split tense table was
-  built before this rule and is kept as accepted.
+  built before this rule and is kept as accepted. **One exception** (ADR 045 amendment (1)): a table
+  that cannot be read whole at body size may be divided by its rows over a declared split, each part a
+  table alone; the split is judged at body size and stands only where the table is oversized there.
 
 **A short list fits on one board** (owner, 2026-10-26; ADR 042). A list of up to about ten items,
 such as a lesson's contents (up to 12 parts), is on one board, in two columns if needed, and is never
@@ -1092,7 +1094,9 @@ and always in this one look, so the learner knows it at once:
   name it (ADR 045 decision 5).
 - The label column is as wide as its longest label; the paper's lines and the letter share the rest
   evenly. A sheet is zoomed as any Writing document (ADR 043 decision 7); the paper beside the letter is
-  never zoomed, since a zoom onto one cell would take its pair out of view.
+  never zoomed, since a zoom onto one cell would take its pair out of view. Each such board is a board shown whole
+  (`boards_fit` "whole", rule 52), so no device's camera zooms it either (ADR 045 amendment (1)). Where its
+  pairs are too many to be read on one board, its table is divided by its rows over a declared split (§2).
 
 **The criterion's card.** In a lesson about the OET Writing criteria, each section named after a
 criterion takes the criterion's colour on all its blocks, and its term box "The criterion" is drawn as
