@@ -47,7 +47,9 @@
   "writing-letter-date": "The letter's date is the date the paper gives at the start (\"Assume that today's date is ...\"), never a date from the notes; above or below the reader's address, written in full (writing-facts 44).",
   "writing-unnamed-reader": "\"Yours faithfully\" goes with \"Dear Sir or Madam\" when the reader's name is not known (writing-facts 27).",
   "writing-closing-sentence": "A closing sentence commonly thanks the reader or offers contact; \"Thank you for ...\" and \"Please do not hesitate to contact me if you have any questions\" are both acceptable, neither required (writing-facts 39; ADR 040 decision 5).",
-  "writing-paragraphs": "One topic in each paragraph; there is no fixed number of paragraphs (writing-facts 40)."
+  "writing-paragraphs": "One topic in each paragraph; there is no fixed number of paragraphs (writing-facts 40).",
+  "writing-fit-the-case": "Full marks for Purpose need writing fitted to the case, not learnt phrases (writing-facts 33).",
+  "writing-opening-verbs": "\"I am writing to refer\" does not fit every letter: other verbs fit other tasks (writing-facts 32)."
  },
  "lessons": {
   "grammar-01-verb-tenses": {
@@ -493,6 +495,28 @@
     {"topic": "Greeting and Re line", "at": "page-8_t1.s3.u2"},
     {"topic": "The request at the end of the letter", "at": "page-10_t1.s2.u1"},
     {"topic": "Signing off", "at": "page-11_t1.s2.u1"}
+   ]
+  },
+  "writing-04-introduction": {
+   "session": "Writing Session 4 of the Persian Writing course, «نحوه نگارش Introduction» (Writing: introduction); every example on its slides is of unknown origin and is replaced by the openings of our six samples (oa-ws-med-0001 to -0003, oa-ws-nur-0001 to -0003) at oetacademy-exercises 5320d19 (ADR 040). The letter to a patient's relative (slides 15-16) and the pharmacy aside are dropped; the teacher's \"Dear Doctor\" for an unnamed reader is replaced by \"Dear Sir or Madam ... Yours faithfully\" (ADR 040 decision 7).",
+   "facts": [
+    {"fact": "writing-unnamed-reader", "at": "pages-04-05_t2.s5.u1"},
+    {"fact": "writing-re-line", "at": "pages-04-05_t2.s8.u1"},
+    {"fact": "writing-fit-the-case", "at": "page-6_t1.s3.u2"},
+    {"fact": "writing-purpose", "at": "pages-12-13_t1.s4.u1"},
+    {"fact": "writing-opening-verbs", "at": "page-18_t1.s2.u1"}
+   ],
+   "methods": [
+    {"name": "One clear opening sentence (the teacher's method)", "text": "Put the patient, the problem and what you ask in one clear sentence, two at most, and fit it to each case.", "at": "page-6_t1.s3.u1"},
+    {"name": "Expanding the purpose (the teacher's method)", "text": "Say briefly in the opening what you ask; expand it straight after, in the next paragraph; give each request in full at the end, never the same sentence twice.", "at": "pages-12-13_t1.s5.u1"},
+    {"name": "Personal details in the opening (the teacher's method)", "text": "A personal detail, such as the patient's job, goes into the opening only if this reader needs it.", "at": "pages-12-13_t2.s7.u1"},
+    {"name": "Time words counted from today (the teacher's method)", "text": "Turn the paper's dates into words counted from the letter's date: today, this morning, since yesterday.", "at": "page-14_t2.s2.u1"},
+    {"name": "Five questions to plan the opening (the teacher's method)", "text": "Who, what, when, where and why, answered from the paper; one sentence or two.", "at": "page-17_t1.s2.u1"}
+   ],
+   "continues_in": [],
+   "topics": [
+    {"topic": "Greeting and Re line", "at": "pages-04-05_t2.s1.u1"},
+    {"topic": "The patient's age in the opening", "at": "pages-07-08_t3.s1.u1"}
    ]
   }
  }

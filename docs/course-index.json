@@ -54,7 +54,8 @@
    "lessons": [
     "writing-01-overview",
     "writing-02-assessment-criteria",
-    "writing-03-letter-structure"
+    "writing-03-letter-structure",
+    "writing-04-introduction"
    ]
   }
  ],
@@ -10077,6 +10078,22 @@
       "utterance": "page-8_t1.s24.u3",
       "start_s": 1096.466,
       "start": "18:16"
+     },
+     {
+      "lesson": "writing-04-introduction",
+      "section": "pages-07-08",
+      "to_section": "pages-11-12",
+      "utterance": "pages-07-08_t3.s1.u3",
+      "start_s": 748.189,
+      "start": "12:28"
+     },
+     {
+      "lesson": "writing-04-introduction",
+      "section": "pages-07-08",
+      "to_section": "page-6",
+      "utterance": "pages-07-08_t3.s4.u1",
+      "start_s": 788.141,
+      "start": "13:08"
      }
     ],
     "continues_in": [],
@@ -13441,6 +13458,30 @@
       "utterance": "page-7_t1.s1.u4",
       "start_s": 2253.89,
       "start": "37:33"
+     },
+     {
+      "lesson": "writing-04-introduction",
+      "section": "page-6",
+      "to_section": "pages-04-05",
+      "utterance": "page-6_t1.s5.u2",
+      "start_s": 405.156,
+      "start": "6:45"
+     },
+     {
+      "lesson": "writing-04-introduction",
+      "section": "page-6",
+      "to_section": "page-6",
+      "utterance": "page-6_t1.s5.u2",
+      "start_s": 405.156,
+      "start": "6:45"
+     },
+     {
+      "lesson": "writing-04-introduction",
+      "section": "pages-07-08",
+      "to_section": "pages-07-08",
+      "utterance": "pages-07-08_t2.s7.u2",
+      "start_s": 706.421,
+      "start": "11:46"
      }
     ],
     "continues_in": [],
@@ -16417,6 +16458,22 @@
       "utterance": "page-8_t1.s4.u1",
       "start_s": 918.298,
       "start": "15:18"
+     },
+     {
+      "lesson": "writing-04-introduction",
+      "section": "pages-04-05",
+      "to_section": "page-14",
+      "utterance": "pages-04-05_t2.s6.u1",
+      "start_s": 276.512,
+      "start": "4:36"
+     },
+     {
+      "lesson": "writing-04-introduction",
+      "section": "pages-07-08",
+      "to_section": "added-04",
+      "utterance": "pages-07-08_t3.s1.u3",
+      "start_s": 748.189,
+      "start": "12:28"
      }
     ],
     "continues_in": [],
@@ -22447,6 +22504,22 @@
       "utterance": "page-3_t1.s1.u2",
       "start_s": 7.72,
       "start": "0:07"
+     },
+     {
+      "lesson": "writing-04-introduction",
+      "section": "page-6",
+      "to_section": "page-7",
+      "utterance": "page-6_t1.s8.u2",
+      "start_s": 458.106,
+      "start": "7:38"
+     },
+     {
+      "lesson": "writing-04-introduction",
+      "section": "pages-09-10-11",
+      "to_section": "page-4",
+      "utterance": "pages-09-10-11_t2.s7.u2",
+      "start_s": 994.773,
+      "start": "16:34"
      }
     ],
     "continues_in": [],
@@ -50477,6 +50550,14 @@
       "utterance": "pages-04-05_t1.s7.u3",
       "start_s": 424.785,
       "start": "7:04"
+     },
+     {
+      "lesson": "writing-04-introduction",
+      "section": "pages-12-13",
+      "to_section": "pages-06-07-08",
+      "utterance": "pages-12-13_t1.s2.u1",
+      "start_s": 1093.393,
+      "start": "18:13"
      }
     ],
     "continues_in": [],
@@ -51824,6 +51905,1603 @@
       "start": "15:18"
      }
     ],
+    "referred_to_by": [
+     {
+      "lesson": "writing-04-introduction",
+      "section": "page-3",
+      "to_section": "page-9",
+      "utterance": "page-3_t1.s1.u2",
+      "start_s": 6.202,
+      "start": "0:06"
+     },
+     {
+      "lesson": "writing-04-introduction",
+      "section": "pages-04-05",
+      "to_section": "page-8",
+      "utterance": "pages-04-05_t2.s1.u1",
+      "start_s": 216.178,
+      "start": "3:36"
+     }
+    ],
+    "continues_in": [],
+    "continues_from": []
+   }
+  },
+  {
+   "id": "writing-04-introduction",
+   "folder": "writing-04-introduction",
+   "title": "OET Writing: The Opening Paragraph",
+   "description": "Learn to write the opening of an OET letter: one clear sentence that says who the patient is, what the main problem is and what you ask, with the grammar it needs.",
+   "course": "writing",
+   "order": 4,
+   "length_s": 1755.796,
+   "length": "29:15",
+   "bundle_format": "1.22",
+   "status": "built",
+   "approval": null,
+   "source": {
+    "folder": "source",
+    "recording": "source/video.mp4",
+    "recording_duration_s": 5227.3,
+    "recording_partial_hash": "1995ee2fa868b983",
+    "deck": "source/slides.pdf",
+    "deck_pages": 19,
+    "same_recording_as": [],
+    "note": "Writing Session 4 of the Persian Writing course, «نحوه نگارش Introduction» (Writing: introduction); every example on its slides is of unknown origin and is replaced by the openings of our six samples (oa-ws-med-0001 to -0003, oa-ws-nur-0001 to -0003) at oetacademy-exercises 5320d19 (ADR 040). The letter to a patient's relative (slides 15-16) and the pharmacy aside are dropped; the teacher's \"Dear Doctor\" for an unnamed reader is replaced by \"Dear Sir or Madam ... Yours faithfully\" (ADR 040 decision 7)."
+   },
+   "categories": [],
+   "sections": [
+    {
+     "id": "page-3",
+     "title": "Introduction",
+     "kind": "intro",
+     "pages": [
+      3
+     ],
+     "category": null,
+     "start_s": 0.0,
+     "start": "0:00",
+     "end_s": 104.112,
+     "topics": [
+      {
+       "board": "page-3_t1",
+       "title": "Title board",
+       "start_s": 0.0,
+       "start": "0:00",
+       "points": [
+        {
+         "text": "the lesson title, then what the lesson is about",
+         "block": "page-3_k15",
+         "start_s": 0.0,
+         "start": "0:00"
+        }
+       ]
+      },
+      {
+       "board": "page-3_t2",
+       "title": "Contents board",
+       "start_s": 55.712,
+       "start": "0:55",
+       "points": [
+        {
+         "text": "each category, revealed as it is named",
+         "block": "page-3_k16",
+         "start_s": 55.712,
+         "start": "0:55"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-3_t1.s1.u2",
+       "lesson": "writing-03-letter-structure",
+       "section": "page-9",
+       "provenance": "source-derived",
+       "start_s": 6.202,
+       "start": "0:06"
+      }
+     ]
+    },
+    {
+     "id": "pages-04-05",
+     "title": "The opening paragraph",
+     "kind": "deck",
+     "pages": [
+      4,
+      5
+     ],
+     "category": null,
+     "start_s": 104.112,
+     "start": "1:44",
+     "end_s": 324.122,
+     "topics": [
+      {
+       "board": "pages-04-05_t1",
+       "title": "The jobs of an opening",
+       "start_s": 104.112,
+       "start": "1:44",
+       "points": [
+        {
+         "text": "the letter about Mrs Ashworth",
+         "block": "pages-04-05_k19",
+         "start_s": 104.112,
+         "start": "1:44"
+        },
+        {
+         "text": "try it",
+         "block": "pages-04-05_k03",
+         "start_s": 134.904,
+         "start": "2:14"
+        },
+        {
+         "text": "who the patient is",
+         "block": "pages-04-05_k04",
+         "start_s": 150.858,
+         "start": "2:30"
+        },
+        {
+         "text": "the main problem",
+         "block": "pages-04-05_k05",
+         "start_s": 158.834,
+         "start": "2:38"
+        },
+        {
+         "text": "why you are writing",
+         "block": "pages-04-05_k06",
+         "start_s": 164.912,
+         "start": "2:44"
+        },
+        {
+         "text": "details that matter",
+         "block": "pages-04-05_k07",
+         "start_s": 176.883,
+         "start": "2:56"
+        },
+        {
+         "text": "the right words",
+         "block": "pages-04-05_k08",
+         "start_s": 195.467,
+         "start": "3:15"
+        },
+        {
+         "text": "practise it",
+         "block": "pages-04-05_k09",
+         "start_s": 205.888,
+         "start": "3:25"
+        }
+       ]
+      },
+      {
+       "board": "pages-04-05_t2",
+       "title": "Greeting and Re line, from the paper",
+       "start_s": 216.178,
+       "start": "3:36",
+       "points": [
+        {
+         "text": "from the paper to the letter",
+         "block": "pages-04-05_k20",
+         "start_s": 216.178,
+         "start": "3:36"
+        },
+        {
+         "text": "before the opening",
+         "block": "pages-04-05_k11",
+         "start_s": 229.187,
+         "start": "3:49"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-04-05_k12",
+         "start_s": 242.83,
+         "start": "4:02"
+        },
+        {
+         "text": "title and surname",
+         "block": "pages-04-05_k13",
+         "start_s": 253.074,
+         "start": "4:13"
+        },
+        {
+         "text": "no name",
+         "block": "pages-04-05_k14",
+         "start_s": 260.012,
+         "start": "4:20"
+        },
+        {
+         "text": "a comma",
+         "block": "pages-04-05_k15",
+         "start_s": 276.197,
+         "start": "4:36"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-04-05_k16",
+         "start_s": 295.337,
+         "start": "4:55"
+        },
+        {
+         "text": "name and date of birth",
+         "block": "pages-04-05_k17",
+         "start_s": 311.127,
+         "start": "5:11"
+        },
+        {
+         "text": "no sentences",
+         "block": "pages-04-05_k18",
+         "start_s": 314.734,
+         "start": "5:14"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "pages-04-05_k09",
+       "kind": "rule",
+       "text": "My advice: practise openings. A few tries, and they become easy.",
+       "start_s": 205.888,
+       "start": "3:25"
+      },
+      {
+       "block": "pages-04-05_k18",
+       "kind": "rule",
+       "text": "My advice: only the name and the date of birth here. No sentences.",
+       "start_s": 314.734,
+       "start": "5:14"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "pages-04-05_t2.s1.u1",
+       "lesson": "writing-03-letter-structure",
+       "section": "page-8",
+       "provenance": "source-derived",
+       "start_s": 216.178,
+       "start": "3:36"
+      },
+      {
+       "utterance": "pages-04-05_t2.s6.u1",
+       "lesson": "grammar-07-punctuation",
+       "section": "page-14",
+       "provenance": "adapted",
+       "start_s": 276.512,
+       "start": "4:36"
+      }
+     ]
+    },
+    {
+     "id": "page-6",
+     "title": "Relative clauses",
+     "kind": "deck",
+     "pages": [
+      6
+     ],
+     "category": null,
+     "start_s": 324.122,
+     "start": "5:24",
+     "end_s": 504.036,
+     "topics": [
+      {
+       "board": "page-6_t1",
+       "title": "Three short sentences, one opening",
+       "start_s": 324.122,
+       "start": "5:24",
+       "points": [
+        {
+         "text": "one sentence",
+         "block": "page-6_k11",
+         "start_s": 324.122,
+         "start": "5:24"
+        },
+        {
+         "text": "the first full sentence",
+         "block": "page-6_k02",
+         "start_s": 332.682,
+         "start": "5:32"
+        },
+        {
+         "text": "my advice",
+         "block": "page-6_k03",
+         "start_s": 339.022,
+         "start": "5:39"
+        },
+        {
+         "text": "your turn",
+         "block": "page-6_k05",
+         "start_s": 376.306,
+         "start": "6:16"
+        },
+        {
+         "text": "the word whose",
+         "block": "page-6_k06",
+         "start_s": 404.82,
+         "start": "6:44"
+        },
+        {
+         "text": "no new sentence",
+         "block": "page-6_k07",
+         "start_s": 421.29,
+         "start": "7:01"
+        },
+        {
+         "text": "your turn",
+         "block": "page-6_k08",
+         "start_s": 438.265,
+         "start": "7:18"
+        },
+        {
+         "text": "who",
+         "block": "page-6_k09",
+         "start_s": 454.327,
+         "start": "7:34"
+        },
+        {
+         "text": "the commas",
+         "block": "page-6_k10",
+         "start_s": 476.809,
+         "start": "7:56"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-6_k03",
+       "kind": "rule",
+       "text": "My advice: put the patient, the problem and what you ask in one clear sentence. Two at most.",
+       "start_s": 339.022,
+       "start": "5:39"
+      }
+     ],
+     "terms": [
+      {
+       "block": "page-6_k06",
+       "label": "Grammar",
+       "term": "Relative clause",
+       "start_s": 404.82,
+       "start": "6:44"
+      }
+     ],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-6_t1.s5.u2",
+       "lesson": "grammar-06-clause",
+       "section": "pages-04-05",
+       "provenance": "adapted",
+       "start_s": 405.156,
+       "start": "6:45"
+      },
+      {
+       "utterance": "page-6_t1.s5.u2",
+       "lesson": "grammar-06-clause",
+       "section": "page-6",
+       "provenance": "adapted",
+       "start_s": 405.156,
+       "start": "6:45"
+      },
+      {
+       "utterance": "page-6_t1.s8.u2",
+       "lesson": "vocabulary-01-word-forms",
+       "section": "page-7",
+       "provenance": "adapted",
+       "start_s": 458.106,
+       "start": "7:38"
+      },
+      {
+       "utterance": "page-6_t1.s9.u3",
+       "lesson": "grammar-06-clause",
+       "section": "page-6",
+       "provenance": "adapted",
+       "start_s": 488.306,
+       "start": "8:08"
+      }
+     ]
+    },
+    {
+     "id": "pages-07-08",
+     "title": "Appositives and ages",
+     "kind": "deck",
+     "pages": [
+      7,
+      8
+     ],
+     "category": null,
+     "start_s": 504.036,
+     "start": "8:24",
+     "end_s": 837.509,
+     "topics": [
+      {
+       "board": "pages-07-08_t1",
+       "title": "Mrs Pritchard's opening",
+       "start_s": 504.036,
+       "start": "8:24",
+       "points": [
+        {
+         "text": "one sentence",
+         "block": "pages-07-08_k24",
+         "start_s": 504.036,
+         "start": "8:24"
+        },
+        {
+         "text": "the word",
+         "block": "pages-07-08_k02",
+         "start_s": 511.596,
+         "start": "8:31"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-07-08_k03",
+         "start_s": 545.016,
+         "start": "9:05"
+        },
+        {
+         "text": "the appositive",
+         "block": "pages-07-08_k04",
+         "start_s": 574.5,
+         "start": "9:34"
+        },
+        {
+         "text": "two commas",
+         "block": "pages-07-08_k05",
+         "start_s": 581.741,
+         "start": "9:41"
+        }
+       ]
+      },
+      {
+       "board": "pages-07-08_t2",
+       "title": "Two more openings",
+       "start_s": 598.271,
+       "start": "9:58",
+       "points": [
+        {
+         "text": "two more",
+         "block": "pages-07-08_k25",
+         "start_s": 598.271,
+         "start": "9:58"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-07-08_k07",
+         "start_s": 614.226,
+         "start": "10:14"
+        },
+        {
+         "text": "her job",
+         "block": "pages-07-08_k08",
+         "start_s": 634.421,
+         "start": "10:34"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-07-08_k09",
+         "start_s": 649.175,
+         "start": "10:49"
+        },
+        {
+         "text": "no who is",
+         "block": "pages-07-08_k10",
+         "start_s": 679.17,
+         "start": "11:19"
+        },
+        {
+         "text": "the shape",
+         "block": "pages-07-08_k11",
+         "start_s": 686.621,
+         "start": "11:26"
+        },
+        {
+         "text": "after",
+         "block": "pages-07-08_k12",
+         "start_s": 696.631,
+         "start": "11:36"
+        },
+        {
+         "text": "learn the shape",
+         "block": "pages-07-08_k13",
+         "start_s": 717.195,
+         "start": "11:57"
+        }
+       ]
+      },
+      {
+       "board": "pages-07-08_t3",
+       "title": "The age before a noun",
+       "start_s": 726.781,
+       "start": "12:06",
+       "points": [
+        {
+         "text": "wrong and right",
+         "block": "pages-07-08_k26",
+         "start_s": 726.781,
+         "start": "12:06"
+        },
+        {
+         "text": "three rules",
+         "block": "pages-07-08_k15",
+         "start_s": 733.341,
+         "start": "12:13"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-07-08_k17",
+         "start_s": 768.469,
+         "start": "12:48"
+        },
+        {
+         "text": "the age",
+         "block": "pages-07-08_k18",
+         "start_s": 780.109,
+         "start": "13:00"
+        },
+        {
+         "text": "advice",
+         "block": "pages-07-08_k19",
+         "start_s": 787.799,
+         "start": "13:07"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-07-08_k20",
+         "start_s": 798.82,
+         "start": "13:18"
+        },
+        {
+         "text": "an",
+         "block": "pages-07-08_k21",
+         "start_s": 810.787,
+         "start": "13:30"
+        },
+        {
+         "text": "a fracture",
+         "block": "pages-07-08_k22",
+         "start_s": 817.562,
+         "start": "13:37"
+        },
+        {
+         "text": "aged 73",
+         "block": "pages-07-08_k23",
+         "start_s": 828.259,
+         "start": "13:48"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "pages-07-08_k13",
+       "kind": "rule",
+       "text": "My advice: learn this shape. Then fit it to each patient.",
+       "start_s": 717.195,
+       "start": "11:57"
+      }
+     ],
+     "terms": [
+      {
+       "block": "pages-07-08_k02",
+       "label": "Grammar",
+       "term": "Appositive",
+       "start_s": 511.596,
+       "start": "8:31"
+      }
+     ],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "pages-07-08_t1.s2.u1",
+       "lesson": "grammar-06-clause",
+       "section": "page-6",
+       "provenance": "adapted",
+       "start_s": 511.936,
+       "start": "8:31"
+      },
+      {
+       "utterance": "pages-07-08_t2.s7.u2",
+       "lesson": "grammar-06-clause",
+       "section": "pages-07-08",
+       "provenance": "adapted",
+       "start_s": 706.421,
+       "start": "11:46"
+      },
+      {
+       "utterance": "pages-07-08_t3.s1.u3",
+       "lesson": "grammar-04-articles",
+       "section": "pages-11-12",
+       "provenance": "adapted",
+       "start_s": 748.189,
+       "start": "12:28"
+      },
+      {
+       "utterance": "pages-07-08_t3.s1.u3",
+       "lesson": "grammar-07-punctuation",
+       "section": "added-04",
+       "provenance": "adapted",
+       "start_s": 748.189,
+       "start": "12:28"
+      },
+      {
+       "utterance": "pages-07-08_t3.s4.u1",
+       "lesson": "grammar-04-articles",
+       "section": "page-6",
+       "provenance": "adapted",
+       "start_s": 788.141,
+       "start": "13:08"
+      }
+     ]
+    },
+    {
+     "id": "pages-09-10-11",
+     "title": "Spot the errors",
+     "kind": "deck",
+     "pages": [
+      9,
+      10,
+      11
+     ],
+     "category": null,
+     "start_s": 837.509,
+     "start": "13:57",
+     "end_s": 1088.473,
+     "topics": [
+      {
+       "board": "pages-09-10-11_t1",
+       "title": "Openings 1 and 2",
+       "start_s": 837.509,
+       "start": "13:57",
+       "points": [
+        {
+         "text": "wrong and right",
+         "block": "pages-09-10-11_k22",
+         "start_s": 837.509,
+         "start": "13:57"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-09-10-11_k02",
+         "start_s": 861.186,
+         "start": "14:21"
+        },
+        {
+         "text": "the name",
+         "block": "pages-09-10-11_k03",
+         "start_s": 872.089,
+         "start": "14:32"
+        },
+        {
+         "text": "the greeting too",
+         "block": "pages-09-10-11_k04",
+         "start_s": 880.271,
+         "start": "14:40"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-09-10-11_k05",
+         "start_s": 896.758,
+         "start": "14:56"
+        },
+        {
+         "text": "a or an",
+         "block": "pages-09-10-11_k06",
+         "start_s": 908.244,
+         "start": "15:08"
+        },
+        {
+         "text": "the commas",
+         "block": "pages-09-10-11_k07",
+         "start_s": 913.541,
+         "start": "15:13"
+        }
+       ]
+      },
+      {
+       "board": "pages-09-10-11_t2",
+       "title": "Openings 3 and 4",
+       "start_s": 922.471,
+       "start": "15:22",
+       "points": [
+        {
+         "text": "wrong and right",
+         "block": "pages-09-10-11_k23",
+         "start_s": 922.471,
+         "start": "15:22"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-09-10-11_k09",
+         "start_s": 933.369,
+         "start": "15:33"
+        },
+        {
+         "text": "is being discharged",
+         "block": "pages-09-10-11_k10",
+         "start_s": 945.873,
+         "start": "15:45"
+        },
+        {
+         "text": "after",
+         "block": "pages-09-10-11_k11",
+         "start_s": 954.361,
+         "start": "15:54"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-09-10-11_k12",
+         "start_s": 971.619,
+         "start": "16:11"
+        },
+        {
+         "text": "the name",
+         "block": "pages-09-10-11_k13",
+         "start_s": 983.07,
+         "start": "16:23"
+        },
+        {
+         "text": "a noun",
+         "block": "pages-09-10-11_k14",
+         "start_s": 988.223,
+         "start": "16:28"
+        }
+       ]
+      },
+      {
+       "board": "pages-09-10-11_t3",
+       "title": "Openings 5 and 6",
+       "start_s": 1002.683,
+       "start": "16:42",
+       "points": [
+        {
+         "text": "wrong and right",
+         "block": "pages-09-10-11_k24",
+         "start_s": 1002.683,
+         "start": "16:42"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-09-10-11_k16",
+         "start_s": 1014.212,
+         "start": "16:54"
+        },
+        {
+         "text": "the commas",
+         "block": "pages-09-10-11_k17",
+         "start_s": 1025.452,
+         "start": "17:05"
+        },
+        {
+         "text": "take it out",
+         "block": "pages-09-10-11_k18",
+         "start_s": 1030.73,
+         "start": "17:10"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-09-10-11_k19",
+         "start_s": 1051.69,
+         "start": "17:31"
+        },
+        {
+         "text": "a noun",
+         "block": "pages-09-10-11_k20",
+         "start_s": 1062.908,
+         "start": "17:42"
+        },
+        {
+         "text": "after your",
+         "block": "pages-09-10-11_k21",
+         "start_s": 1068.392,
+         "start": "17:48"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "pages-09-10-11_t2.s7.u2",
+       "lesson": "vocabulary-01-word-forms",
+       "section": "page-4",
+       "provenance": "adapted",
+       "start_s": 994.773,
+       "start": "16:34"
+      }
+     ]
+    },
+    {
+     "id": "pages-12-13",
+     "title": "Purpose",
+     "kind": "deck",
+     "pages": [
+      12,
+      13
+     ],
+     "category": null,
+     "start_s": 1088.473,
+     "start": "18:08",
+     "end_s": 1260.366,
+     "topics": [
+      {
+       "board": "pages-12-13_t1",
+       "title": "What Purpose asks",
+       "start_s": 1088.473,
+       "start": "18:08",
+       "points": [
+        {
+         "text": "the two parts",
+         "block": "pages-12-13_k20",
+         "start_s": 1088.473,
+         "start": "18:08"
+        },
+        {
+         "text": "the criterion",
+         "block": "pages-12-13_k02",
+         "start_s": 1093.073,
+         "start": "18:13"
+        },
+        {
+         "text": "at once",
+         "block": "pages-12-13_k03",
+         "start_s": 1102.217,
+         "start": "18:22"
+        },
+        {
+         "text": "OET's definition",
+         "block": "pages-12-13_k04",
+         "start_s": 1110.821,
+         "start": "18:30"
+        },
+        {
+         "text": "my method",
+         "block": "pages-12-13_k05",
+         "start_s": 1121.053,
+         "start": "18:41"
+        },
+        {
+         "text": "briefly, then in full",
+         "block": "pages-12-13_k06",
+         "start_s": 1134.274,
+         "start": "18:54"
+        }
+       ]
+      },
+      {
+       "board": "pages-12-13_t2",
+       "title": "What goes into the opening",
+       "start_s": 1143.63,
+       "start": "19:03",
+       "points": [
+        {
+         "text": "from the paper to the opening",
+         "block": "pages-12-13_k21",
+         "start_s": 1143.63,
+         "start": "19:03"
+        },
+        {
+         "text": "the reader",
+         "block": "pages-12-13_k08",
+         "start_s": 1152.841,
+         "start": "19:12"
+        },
+        {
+         "text": "her job",
+         "block": "pages-12-13_k10",
+         "start_s": 1174.161,
+         "start": "19:34"
+        },
+        {
+         "text": "her family",
+         "block": "pages-12-13_k11",
+         "start_s": 1183.822,
+         "start": "19:43"
+        },
+        {
+         "text": "her hobbies",
+         "block": "pages-12-13_k12",
+         "start_s": 1190.275,
+         "start": "19:50"
+        },
+        {
+         "text": "family history",
+         "block": "pages-12-13_k13",
+         "start_s": 1197.707,
+         "start": "19:57"
+        },
+        {
+         "text": "my advice",
+         "block": "pages-12-13_k14",
+         "start_s": 1203.122,
+         "start": "20:03"
+        },
+        {
+         "text": "a job is not always needed",
+         "block": "pages-12-13_k15",
+         "start_s": 1210.062,
+         "start": "20:10"
+        },
+        {
+         "text": "the same requests",
+         "block": "pages-12-13_k16",
+         "start_s": 1220.569,
+         "start": "20:20"
+        },
+        {
+         "text": "say it briefly",
+         "block": "pages-12-13_k17",
+         "start_s": 1241.742,
+         "start": "20:41"
+        },
+        {
+         "text": "the detail at the end",
+         "block": "pages-12-13_k18",
+         "start_s": 1245.392,
+         "start": "20:45"
+        },
+        {
+         "text": "not twice",
+         "block": "pages-12-13_k19",
+         "start_s": 1250.472,
+         "start": "20:50"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "pages-12-13_k04",
+       "kind": "rule",
+       "text": "OET: state the purpose clearly at the start. Then expand it with more detail at the end of the letter.",
+       "start_s": 1110.821,
+       "start": "18:30"
+      },
+      {
+       "block": "pages-12-13_k05",
+       "kind": "rule",
+       "text": "My advice: start to expand it straight after, in the next paragraph.",
+       "start_s": 1121.053,
+       "start": "18:41"
+      },
+      {
+       "block": "pages-12-13_k14",
+       "kind": "rule",
+       "text": "My advice: a personal detail goes into the opening only if this reader needs it.",
+       "start_s": 1203.122,
+       "start": "20:03"
+      },
+      {
+       "block": "pages-12-13_k19",
+       "kind": "rule",
+       "text": "My advice: do not write the same request sentence twice.",
+       "start_s": 1250.472,
+       "start": "20:50"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "pages-12-13_t1.s2.u1",
+       "lesson": "writing-02-assessment-criteria",
+       "section": "pages-06-07-08",
+       "provenance": "source-derived",
+       "start_s": 1093.393,
+       "start": "18:13"
+      }
+     ]
+    },
+    {
+     "id": "page-14",
+     "title": "From the plan",
+     "kind": "deck",
+     "pages": [
+      14
+     ],
+     "category": null,
+     "start_s": 1260.366,
+     "start": "21:00",
+     "end_s": 1407.84,
+     "topics": [
+      {
+       "board": "page-14_t1",
+       "title": "What the opening takes from the paper",
+       "start_s": 1260.366,
+       "start": "21:00",
+       "points": [
+        {
+         "text": "the paper beside the opening",
+         "block": "page-14_k14",
+         "start_s": 1260.366,
+         "start": "21:00"
+        },
+        {
+         "text": "a transfer",
+         "block": "page-14_k02",
+         "start_s": 1268.426,
+         "start": "21:08"
+        },
+        {
+         "text": "where she lives",
+         "block": "page-14_k03",
+         "start_s": 1293.866,
+         "start": "21:33"
+        },
+        {
+         "text": "from the plan",
+         "block": "page-14_k04",
+         "start_s": 1308.906,
+         "start": "21:48"
+        },
+        {
+         "text": "the second request",
+         "block": "page-14_k05",
+         "start_s": 1321.814,
+         "start": "22:01"
+        }
+       ]
+      },
+      {
+       "board": "page-14_t2",
+       "title": "Today, and the right verb",
+       "start_s": 1328.866,
+       "start": "22:08",
+       "points": [
+        {
+         "text": "dates and times",
+         "block": "page-14_k15",
+         "start_s": 1328.866,
+         "start": "22:08"
+        },
+        {
+         "text": "count from today",
+         "block": "page-14_k07",
+         "start_s": 1336.556,
+         "start": "22:16"
+        },
+        {
+         "text": "this morning",
+         "block": "page-14_k08",
+         "start_s": 1358.648,
+         "start": "22:38"
+        },
+        {
+         "text": "since yesterday",
+         "block": "page-14_k09",
+         "start_s": 1370.674,
+         "start": "22:50"
+        },
+        {
+         "text": "today",
+         "block": "page-14_k10",
+         "start_s": 1381.092,
+         "start": "23:01"
+        },
+        {
+         "text": "underwent",
+         "block": "page-14_k11",
+         "start_s": 1384.07,
+         "start": "23:04"
+        },
+        {
+         "text": "is being discharged",
+         "block": "page-14_k13",
+         "start_s": 1398.35,
+         "start": "23:18"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-14_k07",
+       "kind": "rule",
+       "text": "My advice: count from today's date. Write today, this morning, since yesterday.",
+       "start_s": 1336.556,
+       "start": "22:16"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "page-17",
+     "title": "Five questions",
+     "kind": "deck",
+     "pages": [
+      17
+     ],
+     "category": null,
+     "start_s": 1407.84,
+     "start": "23:27",
+     "end_s": 1527.578,
+     "topics": [
+      {
+       "board": "page-17_t1",
+       "title": "Who",
+       "start_s": 1407.84,
+       "start": "23:27",
+       "points": [
+        {
+         "text": "the paper beside the opening",
+         "block": "page-17_k12",
+         "start_s": 1407.84,
+         "start": "23:27"
+        },
+        {
+         "text": "five questions",
+         "block": "page-17_k02",
+         "start_s": 1416.19,
+         "start": "23:36"
+        },
+        {
+         "text": "who",
+         "block": "page-17_k04",
+         "start_s": 1444.755,
+         "start": "24:04"
+        },
+        {
+         "text": "who, part 2",
+         "block": "page-17_k05",
+         "start_s": 1459.378,
+         "start": "24:19"
+        }
+       ]
+      },
+      {
+       "board": "page-17_t2",
+       "title": "What, when, where and why",
+       "start_s": 1464.67,
+       "start": "24:24",
+       "points": [
+        {
+         "text": "the paper beside the opening",
+         "block": "page-17_k13",
+         "start_s": 1464.67,
+         "start": "24:24"
+        },
+        {
+         "text": "what",
+         "block": "page-17_k07",
+         "start_s": 1475.826,
+         "start": "24:35"
+        },
+        {
+         "text": "when",
+         "block": "page-17_k08",
+         "start_s": 1486.957,
+         "start": "24:46"
+        },
+        {
+         "text": "why",
+         "block": "page-17_k09",
+         "start_s": 1505.394,
+         "start": "25:05"
+        },
+        {
+         "text": "where",
+         "block": "page-17_k10",
+         "start_s": 1509.408,
+         "start": "25:09"
+        },
+        {
+         "text": "two sentences",
+         "block": "page-17_k11",
+         "start_s": 1517.921,
+         "start": "25:17"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-17_k02",
+       "kind": "rule",
+       "text": "My advice: plan the opening with five questions. Who? What? When? Where? Why?",
+       "start_s": 1416.19,
+       "start": "23:36"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "page-18",
+     "title": "Opening frames",
+     "kind": "deck",
+     "pages": [
+      18
+     ],
+     "category": null,
+     "start_s": 1527.578,
+     "start": "25:27",
+     "end_s": 1705.901,
+     "topics": [
+      {
+       "board": "page-18_t1",
+       "title": "Opening frames",
+       "start_s": 1527.578,
+       "start": "25:27",
+       "points": [
+        {
+         "text": "frames",
+         "block": "page-18_k18",
+         "start_s": 1527.578,
+         "start": "25:27"
+        },
+        {
+         "text": "other verbs",
+         "block": "page-18_k02",
+         "start_s": 1534.708,
+         "start": "25:34"
+        },
+        {
+         "text": "refer",
+         "block": "page-18_k03",
+         "start_s": 1548.806,
+         "start": "25:48"
+        },
+        {
+         "text": "introduce",
+         "block": "page-18_k04",
+         "start_s": 1561.167,
+         "start": "26:01"
+        },
+        {
+         "text": "seeing",
+         "block": "page-18_k05",
+         "start_s": 1569.397,
+         "start": "26:09"
+        },
+        {
+         "text": "update",
+         "block": "page-18_k06",
+         "start_s": 1576.562,
+         "start": "26:16"
+        },
+        {
+         "text": "with regard to",
+         "block": "page-18_k07",
+         "start_s": 1586.308,
+         "start": "26:26"
+        },
+        {
+         "text": "request",
+         "block": "page-18_k08",
+         "start_s": 1597.901,
+         "start": "26:37"
+        },
+        {
+         "text": "in response",
+         "block": "page-18_k09",
+         "start_s": 1608.291,
+         "start": "26:48"
+        },
+        {
+         "text": "accepting",
+         "block": "page-18_k10",
+         "start_s": 1617.71,
+         "start": "26:57"
+        },
+        {
+         "text": "quick check 1",
+         "block": "page-18_k11",
+         "start_s": 1623.191,
+         "start": "27:03"
+        },
+        {
+         "text": "quick check 2",
+         "block": "page-18_k12",
+         "start_s": 1636.89,
+         "start": "27:16"
+        }
+       ]
+      },
+      {
+       "board": "page-18_t2",
+       "title": "How our six letters open",
+       "start_s": 1650.731,
+       "start": "27:30",
+       "points": [
+        {
+         "text": "six openings",
+         "block": "page-18_k19",
+         "start_s": 1650.731,
+         "start": "27:30"
+        },
+        {
+         "text": "two ways",
+         "block": "page-18_k14",
+         "start_s": 1656.061,
+         "start": "27:36"
+        },
+        {
+         "text": "your turn",
+         "block": "page-18_k15",
+         "start_s": 1670.545,
+         "start": "27:50"
+        },
+        {
+         "text": "the answer",
+         "block": "page-18_k16",
+         "start_s": 1683.44,
+         "start": "28:03"
+        },
+        {
+         "text": "fit it",
+         "block": "page-18_k17",
+         "start_s": 1694.361,
+         "start": "28:14"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-18_k17",
+       "kind": "rule",
+       "text": "Learn the frames. Then fit each one to the case.",
+       "start_s": 1694.361,
+       "start": "28:14"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-01",
+     "title": "Closing",
+     "kind": "closing",
+     "pages": [],
+     "category": null,
+     "start_s": 1705.901,
+     "start": "28:25",
+     "end_s": 1755.796,
+     "topics": [
+      {
+       "board": "added-01_t1",
+       "title": "Closing",
+       "start_s": 1705.901,
+       "start": "28:25",
+       "points": [
+        {
+         "text": "Recap",
+         "block": "added-01_k04",
+         "start_s": 1705.901,
+         "start": "28:25"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    }
+   ],
+   "facts": [
+    {
+     "fact": "writing-unnamed-reader",
+     "text": "\"Yours faithfully\" goes with \"Dear Sir or Madam\" when the reader's name is not known (writing-facts 27).",
+     "note": null,
+     "section": "pages-04-05",
+     "board": "pages-04-05_t2",
+     "utterance": "pages-04-05_t2.s5.u1",
+     "start_s": 260.332,
+     "start": "4:20"
+    },
+    {
+     "fact": "writing-re-line",
+     "text": "The Re line gives the patient's full name and date of birth (writing-facts 26).",
+     "note": null,
+     "section": "pages-04-05",
+     "board": "pages-04-05_t2",
+     "utterance": "pages-04-05_t2.s8.u1",
+     "start_s": 304.232,
+     "start": "5:04"
+    },
+    {
+     "fact": "writing-fit-the-case",
+     "text": "Full marks for Purpose need writing fitted to the case, not learnt phrases (writing-facts 33).",
+     "note": null,
+     "section": "page-6",
+     "board": "page-6_t1",
+     "utterance": "page-6_t1.s3.u2",
+     "start_s": 347.605,
+     "start": "5:47"
+    },
+    {
+     "fact": "writing-purpose",
+     "text": "Purpose: the reader sees at once why you are writing; the purpose is stated clearly at the start and expanded with more detail at the end of the letter (writing-facts 18, 30).",
+     "note": null,
+     "section": "pages-12-13",
+     "board": "pages-12-13_t1",
+     "utterance": "pages-12-13_t1.s4.u1",
+     "start_s": 1108.693,
+     "start": "18:28"
+    },
+    {
+     "fact": "writing-opening-verbs",
+     "text": "\"I am writing to refer\" does not fit every letter: other verbs fit other tasks (writing-facts 32).",
+     "note": null,
+     "section": "page-18",
+     "board": "page-18_t1",
+     "utterance": "page-18_t1.s2.u1",
+     "start_s": 1535.048,
+     "start": "25:35"
+    }
+   ],
+   "methods": [
+    {
+     "name": "One clear opening sentence (the teacher's method)",
+     "text": "Put the patient, the problem and what you ask in one clear sentence, two at most, and fit it to each case.",
+     "section": "page-6",
+     "board": "page-6_t1",
+     "utterance": "page-6_t1.s3.u1",
+     "start_s": 339.372,
+     "start": "5:39"
+    },
+    {
+     "name": "Expanding the purpose (the teacher's method)",
+     "text": "Say briefly in the opening what you ask; expand it straight after, in the next paragraph; give each request in full at the end, never the same sentence twice.",
+     "section": "pages-12-13",
+     "board": "pages-12-13_t1",
+     "utterance": "pages-12-13_t1.s5.u1",
+     "start_s": 1121.403,
+     "start": "18:41"
+    },
+    {
+     "name": "Personal details in the opening (the teacher's method)",
+     "text": "A personal detail, such as the patient's job, goes into the opening only if this reader needs it.",
+     "section": "pages-12-13",
+     "board": "pages-12-13_t2",
+     "utterance": "pages-12-13_t2.s7.u1",
+     "start_s": 1203.462,
+     "start": "20:03"
+    },
+    {
+     "name": "Time words counted from today (the teacher's method)",
+     "text": "Turn the paper's dates into words counted from the letter's date: today, this morning, since yesterday.",
+     "section": "page-14",
+     "board": "page-14_t2",
+     "utterance": "page-14_t2.s2.u1",
+     "start_s": 1336.906,
+     "start": "22:16"
+    },
+    {
+     "name": "Five questions to plan the opening (the teacher's method)",
+     "text": "Who, what, when, where and why, answered from the paper; one sentence or two.",
+     "section": "page-17",
+     "board": "page-17_t1",
+     "utterance": "page-17_t1.s2.u1",
+     "start_s": 1416.51,
+     "start": "23:36"
+    }
+   ],
+   "vocabulary": [],
+   "withheld": {
+    "listening_panel_words": 0,
+    "lines_naming_an_answer": 0
+   },
+   "practice_set": null,
+   "deck_exercises": [],
+   "links": {
+    "refers_to": [
+     {
+      "lesson": "writing-03-letter-structure",
+      "section": "page-9",
+      "from_section": "page-3",
+      "utterance": "page-3_t1.s1.u2",
+      "start_s": 6.202,
+      "start": "0:06"
+     },
+     {
+      "lesson": "writing-03-letter-structure",
+      "section": "page-8",
+      "from_section": "pages-04-05",
+      "utterance": "pages-04-05_t2.s1.u1",
+      "start_s": 216.178,
+      "start": "3:36"
+     },
+     {
+      "lesson": "grammar-07-punctuation",
+      "section": "page-14",
+      "from_section": "pages-04-05",
+      "utterance": "pages-04-05_t2.s6.u1",
+      "start_s": 276.512,
+      "start": "4:36"
+     },
+     {
+      "lesson": "grammar-06-clause",
+      "section": "pages-04-05",
+      "from_section": "page-6",
+      "utterance": "page-6_t1.s5.u2",
+      "start_s": 405.156,
+      "start": "6:45"
+     },
+     {
+      "lesson": "grammar-06-clause",
+      "section": "page-6",
+      "from_section": "page-6",
+      "utterance": "page-6_t1.s5.u2",
+      "start_s": 405.156,
+      "start": "6:45"
+     },
+     {
+      "lesson": "vocabulary-01-word-forms",
+      "section": "page-7",
+      "from_section": "page-6",
+      "utterance": "page-6_t1.s8.u2",
+      "start_s": 458.106,
+      "start": "7:38"
+     },
+     {
+      "lesson": "grammar-06-clause",
+      "section": "pages-07-08",
+      "from_section": "pages-07-08",
+      "utterance": "pages-07-08_t2.s7.u2",
+      "start_s": 706.421,
+      "start": "11:46"
+     },
+     {
+      "lesson": "grammar-04-articles",
+      "section": "pages-11-12",
+      "from_section": "pages-07-08",
+      "utterance": "pages-07-08_t3.s1.u3",
+      "start_s": 748.189,
+      "start": "12:28"
+     },
+     {
+      "lesson": "grammar-07-punctuation",
+      "section": "added-04",
+      "from_section": "pages-07-08",
+      "utterance": "pages-07-08_t3.s1.u3",
+      "start_s": 748.189,
+      "start": "12:28"
+     },
+     {
+      "lesson": "grammar-04-articles",
+      "section": "page-6",
+      "from_section": "pages-07-08",
+      "utterance": "pages-07-08_t3.s4.u1",
+      "start_s": 788.141,
+      "start": "13:08"
+     },
+     {
+      "lesson": "vocabulary-01-word-forms",
+      "section": "page-4",
+      "from_section": "pages-09-10-11",
+      "utterance": "pages-09-10-11_t2.s7.u2",
+      "start_s": 994.773,
+      "start": "16:34"
+     },
+     {
+      "lesson": "writing-02-assessment-criteria",
+      "section": "pages-06-07-08",
+      "from_section": "pages-12-13",
+      "utterance": "pages-12-13_t1.s2.u1",
+      "start_s": 1093.393,
+      "start": "18:13"
+     }
+    ],
     "referred_to_by": [],
     "continues_in": [],
     "continues_from": []
@@ -52184,6 +53862,19 @@
    ]
   },
   {
+   "topic": "Appositive",
+   "key": "appositive",
+   "entries": [
+    {
+     "lesson": "writing-04-introduction",
+     "section": "pages-07-08",
+     "start_s": 511.596,
+     "start": "8:31",
+     "source": "term"
+    }
+   ]
+  },
+  {
    "topic": "Appositive structure",
    "key": "appositive structure",
    "entries": [
@@ -52193,6 +53884,19 @@
      "start_s": 712.724,
      "start": "11:52",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Appositives and ages",
+   "key": "appositives and ages",
+   "entries": [
+    {
+     "lesson": "writing-04-introduction",
+     "section": "pages-07-08",
+     "start_s": 504.036,
+     "start": "8:24",
+     "source": "section"
     }
    ]
   },
@@ -53300,6 +55004,19 @@
    ]
   },
   {
+   "topic": "Five questions",
+   "key": "five questions",
+   "entries": [
+    {
+     "lesson": "writing-04-introduction",
+     "section": "page-17",
+     "start_s": 1407.84,
+     "start": "23:27",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Follow-up",
    "key": "follow-up",
    "entries": [
@@ -53374,6 +55091,19 @@
      "start_s": 3347.047,
      "start": "55:47",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "From the plan",
+   "key": "from the plan",
+   "entries": [
+    {
+     "lesson": "writing-04-introduction",
+     "section": "page-14",
+     "start_s": 1260.366,
+     "start": "21:00",
+     "source": "section"
     }
    ]
   },
@@ -53556,6 +55286,13 @@
      "start_s": 890.478,
      "start": "14:50",
      "source": "section"
+    },
+    {
+     "lesson": "writing-04-introduction",
+     "section": "pages-04-05",
+     "start_s": 216.178,
+     "start": "3:36",
+     "source": "curated"
     }
    ]
   },
@@ -54329,6 +56066,19 @@
    ]
   },
   {
+   "topic": "Opening frames",
+   "key": "opening frames",
+   "entries": [
+    {
+     "lesson": "writing-04-introduction",
+     "section": "page-18",
+     "start_s": 1527.578,
+     "start": "25:27",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "opinion signals",
    "key": "opinion signals",
    "entries": [
@@ -54968,6 +56718,13 @@
      "start_s": 357.237,
      "start": "5:57",
      "source": "section"
+    },
+    {
+     "lesson": "writing-04-introduction",
+     "section": "pages-12-13",
+     "start_s": 1088.473,
+     "start": "18:08",
+     "source": "section"
     }
    ]
   },
@@ -55132,6 +56889,13 @@
      "start_s": 2350.856,
      "start": "39:10",
      "source": "term"
+    },
+    {
+     "lesson": "writing-04-introduction",
+     "section": "page-6",
+     "start_s": 404.82,
+     "start": "6:44",
+     "source": "term"
     }
    ]
   },
@@ -55144,6 +56908,13 @@
      "section": "pages-04-05",
      "start_s": 120.11,
      "start": "2:00",
+     "source": "section"
+    },
+    {
+     "lesson": "writing-04-introduction",
+     "section": "page-6",
+     "start_s": 324.122,
+     "start": "5:24",
      "source": "section"
     }
    ]
@@ -55534,6 +57305,19 @@
    ]
   },
   {
+   "topic": "Spot the errors",
+   "key": "spot the errors",
+   "entries": [
+    {
+     "lesson": "writing-04-introduction",
+     "section": "pages-09-10-11",
+     "start_s": 837.509,
+     "start": "13:57",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Stat dose",
    "key": "stat dose",
    "entries": [
@@ -55887,6 +57671,19 @@
    ]
   },
   {
+   "topic": "The opening paragraph",
+   "key": "the opening paragraph",
+   "entries": [
+    {
+     "lesson": "writing-04-introduction",
+     "section": "pages-04-05",
+     "start_s": 104.112,
+     "start": "1:44",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "The other day",
    "key": "the other day",
    "entries": [
@@ -55961,6 +57758,19 @@
      "start_s": 3715.647,
      "start": "61:55",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "The patient's age in the opening",
+   "key": "the patients age in the opening",
+   "entries": [
+    {
+     "lesson": "writing-04-introduction",
+     "section": "pages-07-08",
+     "start_s": 726.781,
+     "start": "12:06",
+     "source": "curated"
     }
    ]
   },
@@ -56721,21 +58531,21 @@
   }
  ],
  "totals": {
-  "lessons": 24,
-  "sections": 229,
-  "topics": 525,
-  "teaching_points": 4047,
-  "rules": 246,
+  "lessons": 25,
+  "sections": 239,
+  "topics": 545,
+  "teaching_points": 4176,
+  "rules": 257,
   "warnings": 64,
-  "terms": 482,
+  "terms": 484,
   "wrong_examples": 276,
-  "facts": 155,
-  "methods": 39,
+  "facts": 160,
+  "methods": 44,
   "vocabulary": 516,
   "vocabulary_word_bank": 189,
   "practice_items": 62,
-  "references": 88,
-  "topic_index": 355,
+  "references": 100,
+  "topic_index": 363,
   "withheld_panel_words": 139,
   "withheld_answer_lines": 9
  }

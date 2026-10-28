@@ -2,7 +2,7 @@
 
 What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.1; decision: `docs/adr/038-public-course-index.md`.
 
-24 lessons, 229 sections, 525 board topics, 4047 teaching points, 246 rules and 64 warnings, 482 terms, 155 OET facts, 39 methods, 516 vocabulary items (189 from the word bank), 62 practice questions and note forms, 88 links to other lessons, 355 topics in the topic index.
+25 lessons, 239 sections, 545 board topics, 4176 teaching points, 257 rules and 64 warnings, 484 terms, 160 OET facts, 44 methods, 516 vocabulary items (189 from the word bank), 62 practice questions and note forms, 100 links to other lessons, 363 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -10,7 +10,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 - Vocabulary: [Vocabulary for OET: Word Forms and Sentence Structure](#vocabulary-01-word-forms), [Vocabulary for OET: Verb + Noun Collocations](#vocabulary-02-collocations), [Vocabulary for OET: Adjective + Noun Collocations](#vocabulary-03-collocations-2)
 - Reading: [Reading for OET: Overview](#reading-01-overview), [Reading for OET: Part A](#reading-02-part-a), [Reading for OET: Part B](#reading-03-part-b), [Reading Part C (1)](#reading-04-part-c), [Reading Part C (2): More Practice](#reading-05-part-c-2)
 - Listening: [OET Listening: Overview](#listening-01-overview), [OET Listening: Part A](#listening-02-part-a), [OET Listening: Part B](#listening-03-part-b), [OET Listening: Part C (1)](#listening-04-part-c), [OET Listening: Part C (2)](#listening-05-part-c-2)
-- Writing: [OET Writing: Overview](#writing-01-overview), [OET Writing: Assessment Criteria](#writing-02-assessment-criteria), [OET Writing: Letter Structure](#writing-03-letter-structure)
+- Writing: [OET Writing: Overview](#writing-01-overview), [OET Writing: Assessment Criteria](#writing-02-assessment-criteria), [OET Writing: Letter Structure](#writing-03-letter-structure), [OET Writing: The Opening Paragraph](#writing-04-introduction)
 
 ---
 
@@ -1695,6 +1695,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Choosing the right word form" at 9:02, about section `page-6`
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Prescribe" at 42:06, about section `page-6`
 - referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Types of pain" at 18:16, about section `page-6`
+- referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 12:28, about section `pages-11-12`
+- referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 13:08, about section `page-6`
 
 
 <a id="grammar-05-complex-compound"></a>
@@ -2268,6 +2270,9 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Introduction" at 0:18
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Joining sentences with relative pronouns" at 37:06
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Joining sentences with relative pronouns" at 37:33, about section `page-6`
+- referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Relative clauses" at 6:45, about section `pages-04-05`
+- referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Relative clauses" at 6:45, about section `page-6`
+- referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 11:46, about section `pages-07-08`
 - continues from Grammar for OET: Complex sentences (`grammar-05-complex-compound`): Relative and participle clauses build on the clauses and joining words taught here.
 
 
@@ -2802,6 +2807,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Genre and Style" at 24:42, about section `added-08`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:49, about section `page-5`
 - referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "Greeting and Re line" at 15:18, about section `page-14`
+- referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "The opening paragraph" at 4:36, about section `page-14`
+- referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 12:28, about section `added-04`
 - continues from Grammar for OET: Complex sentences (`grammar-05-complex-compound`): Punctuation teaches the comma in complex and compound sentences.
 
 
@@ -3718,6 +3725,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 37:33 refers to Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Defining and non-defining" (in `page-7_t1.s1.u4`)
 - 69:16 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`) (in `page-9_t1.s37.u2`)
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Introduction" at 0:07
+- referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Relative clauses" at 7:38, about section `page-7`
+- referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Spot the errors" at 16:34, about section `page-4`
 
 
 <a id="vocabulary-02-collocations"></a>
@@ -7846,6 +7855,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | 1 | OET Writing: Overview | `writing-01-overview` | 19:05 | 7 | 2026-10-27 09:37 (siavash) |
 | 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 29:42 | 10 | 2026-10-26 23:34 (Siavash) |
 | 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 26:52 | 10 | 2026-10-28 02:22 (Siavash) |
+| 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 29:15 | 10 | not yet |
 
 <a id="writing-01-overview"></a>
 
@@ -8312,6 +8322,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "Introduction" at 0:07, about section `page-18`
 - referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "The Writing paper" at 4:43, about section `pages-09-10-11`
 - referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "The parts of a letter" at 7:04, about section `pages-06-07-08`
+- referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Purpose" at 18:13, about section `pages-06-07-08`
 
 
 <a id="writing-03-letter-structure"></a>
@@ -8553,6 +8564,267 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 4:43 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Content" (in `added-02_t7.s2.u1`)
 - 7:04 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Purpose" (in `pages-04-05_t1.s7.u3`)
 - 15:18 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Punctuation in OET letters" (in `page-8_t1.s4.u1`)
+- referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Introduction" at 0:06, about section `page-9`
+- referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "The opening paragraph" at 3:36, about section `page-8`
+
+
+<a id="writing-04-introduction"></a>
+
+## 4. OET Writing: The Opening Paragraph
+
+- Lesson ID and folder: `writing-04-introduction` (folder `writing-04-introduction`); course writing, lesson 4; length 29:15; bundle format 1.22
+- Status: built, final gate not approved
+- Description: Learn to write the opening of an OET letter: one clear sentence that says who the patient is, what the main problem is and what you ask, with the grammar it needs.
+- Original session: folder `source`: `source/video.mp4`, 87:07 long, partial hash `1995ee2fa868b983`; deck `source/slides.pdf`, 19 pages
+  - Writing Session 4 of the Persian Writing course, «نحوه نگارش Introduction» (Writing: introduction); every example on its slides is of unknown origin and is replaced by the openings of our six samples (oa-ws-med-0001 to -0003, oa-ws-nur-0001 to -0003) at oetacademy-exercises 5320d19 (ADR 040). The letter to a patient's relative (slides 15-16) and the pharmacy aside are dropped; the teacher's "Dear Doctor" for an unnamed reader is replaced by "Dear Sir or Madam ... Yours faithfully" (ADR 040 decision 7).
+
+### Sections
+
+#### 0:00 Introduction (`page-3`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 0:55 **Contents board**
+  - 0:55 each category, revealed as it is named
+
+#### 1:44 The opening paragraph (`pages-04-05`, deck)
+
+- 1:44 **The jobs of an opening**
+  - 1:44 the letter about Mrs Ashworth
+  - 2:14 try it
+  - 2:30 who the patient is
+  - 2:38 the main problem
+  - 2:44 why you are writing
+  - 2:56 details that matter
+  - 3:15 the right words
+  - 3:25 practise it
+- 3:36 **Greeting and Re line, from the paper**
+  - 3:36 from the paper to the letter
+  - 3:49 before the opening
+  - 4:02 your turn
+  - 4:13 title and surname
+  - 4:20 no name
+  - 4:36 a comma
+  - 4:55 your turn
+  - 5:11 name and date of birth
+  - 5:14 no sentences
+
+*Rules on the boards*
+
+- 3:25 My advice: practise openings. A few tries, and they become easy.
+- 5:14 My advice: only the name and the date of birth here. No sentences.
+
+#### 5:24 Relative clauses (`page-6`, deck)
+
+- 5:24 **Three short sentences, one opening**
+  - 5:24 one sentence
+  - 5:32 the first full sentence
+  - 5:39 my advice
+  - 6:16 your turn
+  - 6:44 the word whose
+  - 7:01 no new sentence
+  - 7:18 your turn
+  - 7:34 who
+  - 7:56 the commas
+
+*Rules on the boards*
+
+- 5:39 My advice: put the patient, the problem and what you ask in one clear sentence. Two at most.
+
+*Terms*: Relative clause (Grammar, 6:44)
+
+#### 8:24 Appositives and ages (`pages-07-08`, deck)
+
+- 8:24 **Mrs Pritchard's opening**
+  - 8:24 one sentence
+  - 8:31 the word
+  - 9:05 your turn
+  - 9:34 the appositive
+  - 9:41 two commas
+- 9:58 **Two more openings**
+  - 9:58 two more
+  - 10:14 your turn
+  - 10:34 her job
+  - 10:49 your turn
+  - 11:19 no who is
+  - 11:26 the shape
+  - 11:36 after
+  - 11:57 learn the shape
+- 12:06 **The age before a noun**
+  - 12:06 wrong and right
+  - 12:13 three rules
+  - 12:48 your turn
+  - 13:00 the age
+  - 13:07 advice
+  - 13:18 your turn
+  - 13:30 an
+  - 13:37 a fracture
+  - 13:48 aged 73
+
+*Rules on the boards*
+
+- 11:57 My advice: learn this shape. Then fit it to each patient.
+
+*Terms*: Appositive (Grammar, 8:31)
+
+#### 13:57 Spot the errors (`pages-09-10-11`, deck)
+
+- 13:57 **Openings 1 and 2**
+  - 13:57 wrong and right
+  - 14:21 your turn
+  - 14:32 the name
+  - 14:40 the greeting too
+  - 14:56 your turn
+  - 15:08 a or an
+  - 15:13 the commas
+- 15:22 **Openings 3 and 4**
+  - 15:22 wrong and right
+  - 15:33 your turn
+  - 15:45 is being discharged
+  - 15:54 after
+  - 16:11 your turn
+  - 16:23 the name
+  - 16:28 a noun
+- 16:42 **Openings 5 and 6**
+  - 16:42 wrong and right
+  - 16:54 your turn
+  - 17:05 the commas
+  - 17:10 take it out
+  - 17:31 your turn
+  - 17:42 a noun
+  - 17:48 after your
+
+#### 18:08 Purpose (`pages-12-13`, deck)
+
+- 18:08 **What Purpose asks**
+  - 18:08 the two parts
+  - 18:13 the criterion
+  - 18:22 at once
+  - 18:30 OET's definition
+  - 18:41 my method
+  - 18:54 briefly, then in full
+- 19:03 **What goes into the opening**
+  - 19:03 from the paper to the opening
+  - 19:12 the reader
+  - 19:34 her job
+  - 19:43 her family
+  - 19:50 her hobbies
+  - 19:57 family history
+  - 20:03 my advice
+  - 20:10 a job is not always needed
+  - 20:20 the same requests
+  - 20:41 say it briefly
+  - 20:45 the detail at the end
+  - 20:50 not twice
+
+*Rules on the boards*
+
+- 18:30 OET: state the purpose clearly at the start. Then expand it with more detail at the end of the letter.
+- 18:41 My advice: start to expand it straight after, in the next paragraph.
+- 20:03 My advice: a personal detail goes into the opening only if this reader needs it.
+- 20:50 My advice: do not write the same request sentence twice.
+
+#### 21:00 From the plan (`page-14`, deck)
+
+- 21:00 **What the opening takes from the paper**
+  - 21:00 the paper beside the opening
+  - 21:08 a transfer
+  - 21:33 where she lives
+  - 21:48 from the plan
+  - 22:01 the second request
+- 22:08 **Today, and the right verb**
+  - 22:08 dates and times
+  - 22:16 count from today
+  - 22:38 this morning
+  - 22:50 since yesterday
+  - 23:01 today
+  - 23:04 underwent
+  - 23:18 is being discharged
+
+*Rules on the boards*
+
+- 22:16 My advice: count from today's date. Write today, this morning, since yesterday.
+
+#### 23:27 Five questions (`page-17`, deck)
+
+- 23:27 **Who**
+  - 23:27 the paper beside the opening
+  - 23:36 five questions
+  - 24:04 who
+  - 24:19 who, part 2
+- 24:24 **What, when, where and why**
+  - 24:24 the paper beside the opening
+  - 24:35 what
+  - 24:46 when
+  - 25:05 why
+  - 25:09 where
+  - 25:17 two sentences
+
+*Rules on the boards*
+
+- 23:36 My advice: plan the opening with five questions. Who? What? When? Where? Why?
+
+#### 25:27 Opening frames (`page-18`, deck)
+
+- 25:27 **Opening frames**
+  - 25:27 frames
+  - 25:34 other verbs
+  - 25:48 refer
+  - 26:01 introduce
+  - 26:09 seeing
+  - 26:16 update
+  - 26:26 with regard to
+  - 26:37 request
+  - 26:48 in response
+  - 26:57 accepting
+  - 27:03 quick check 1
+  - 27:16 quick check 2
+- 27:30 **How our six letters open**
+  - 27:30 six openings
+  - 27:36 two ways
+  - 27:50 your turn
+  - 28:03 the answer
+  - 28:14 fit it
+
+*Rules on the boards*
+
+- 28:14 Learn the frames. Then fit each one to the case.
+
+#### 28:25 Closing (`added-01`, closing)
+
+- 28:25 **Closing**
+  - 28:25 Recap
+
+### OET facts
+
+- 4:20 (`writing-unnamed-reader`) "Yours faithfully" goes with "Dear Sir or Madam" when the reader's name is not known (writing-facts 27).
+- 5:04 (`writing-re-line`) The Re line gives the patient's full name and date of birth (writing-facts 26).
+- 5:47 (`writing-fit-the-case`) Full marks for Purpose need writing fitted to the case, not learnt phrases (writing-facts 33).
+- 18:28 (`writing-purpose`) Purpose: the reader sees at once why you are writing; the purpose is stated clearly at the start and expanded with more detail at the end of the letter (writing-facts 18, 30).
+- 25:35 (`writing-opening-verbs`) "I am writing to refer" does not fit every letter: other verbs fit other tasks (writing-facts 32).
+
+### Exam methods and strategies
+
+- 5:39 **One clear opening sentence (the teacher's method)**: Put the patient, the problem and what you ask in one clear sentence, two at most, and fit it to each case.
+- 18:41 **Expanding the purpose (the teacher's method)**: Say briefly in the opening what you ask; expand it straight after, in the next paragraph; give each request in full at the end, never the same sentence twice.
+- 20:03 **Personal details in the opening (the teacher's method)**: A personal detail, such as the patient's job, goes into the opening only if this reader needs it.
+- 22:16 **Time words counted from today (the teacher's method)**: Turn the paper's dates into words counted from the letter's date: today, this morning, since yesterday.
+- 23:36 **Five questions to plan the opening (the teacher's method)**: Who, what, when, where and why, answered from the paper; one sentence or two.
+
+### Links to other lessons
+
+- 0:06 refers to OET Writing: Letter Structure (`writing-03-letter-structure`), "The body" (in `page-3_t1.s1.u2`)
+- 3:36 refers to OET Writing: Letter Structure (`writing-03-letter-structure`), "Greeting and Re line" (in `pages-04-05_t2.s1.u1`)
+- 4:36 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Punctuation in OET letters" (in `pages-04-05_t2.s6.u1`)
+- 6:45 refers to Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Relative clauses" (in `page-6_t1.s5.u2`)
+- 6:45 refers to Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Defining and non-defining" (in `page-6_t1.s5.u2`)
+- 7:38 refers to Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Joining sentences with relative pronouns" (in `page-6_t1.s8.u2`)
+- 11:46 refers to Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Reduced relative clauses" (in `pages-07-08_t2.s7.u2`)
+- 12:28 refers to Grammar for OET: Articles (`grammar-04-articles`), "A or an?" (in `pages-07-08_t3.s1.u3`)
+- 12:28 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Hyphens and numbers" (in `pages-07-08_t3.s1.u3`)
+- 13:08 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `pages-07-08_t3.s4.u1`)
+- 16:34 refers to Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Choosing the right word form" (in `pages-09-10-11_t2.s7.u2`)
+- 18:13 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Purpose" (in `pages-12-13_t1.s2.u1`)
 
 
 ---
@@ -8587,7 +8859,9 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **An itchy rash**: `vocabulary-03-collocations-2` 75:38
 - **Apostrophe**: `grammar-07-punctuation` 51:50
 - **Apostrophes**: `grammar-07-punctuation` 51:42
+- **Appositive**: `writing-04-introduction` 8:31
 - **Appositive structure**: `grammar-06-clause` 11:52
+- **Appositives and ages**: `writing-04-introduction` 8:24
 - **article**: `grammar-02-verb-use` 51:42
 - **Articles**: `grammar-04-articles` 2:00; `grammar-08-paraphrasing` 11:22
 - **Avoid a series of short sentences**: `vocabulary-01-word-forms` 58:27
@@ -8668,12 +8942,14 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **FANBOYS**: `grammar-05-complex-compound` 21:16; `grammar-07-punctuation` 13:55
 - **Fast reading**: `reading-01-overview` 13:36
 - **Final practice**: `grammar-07-punctuation` 77:05
+- **Five questions**: `writing-04-introduction` 23:27
 - **Follow-up**: `grammar-07-punctuation` 81:34
 - **For and since**: `grammar-01-verb-tenses` 36:24
 - **Formal time-related expressions**: `grammar-03-nominalization` 36:27
 - **Four steps towards success**: `reading-01-overview` 15:14
 - **From case notes to a sentence**: `grammar-05-complex-compound` 8:51
 - **From case notes to one word**: `grammar-04-articles` 55:47
+- **From the plan**: `writing-04-introduction` 21:00
 - **From what you hear to the notes**: `listening-02-part-a` 12:25
 - **from which**: `vocabulary-01-word-forms` 51:31
 - **Full stops and sentence boundaries**: `grammar-07-punctuation` 42:56
@@ -8687,7 +8963,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **given that**: `grammar-06-clause` 47:22
 - **Giving reassurance**: `vocabulary-03-collocations-2` 43:53
 - **Grade B in OET Writing**: `writing-02-assessment-criteria` 5:27
-- **Greeting and Re line**: `writing-03-letter-structure` 14:50
+- **Greeting and Re line**: `writing-03-letter-structure` 14:50; `writing-04-introduction` 3:36
 - **Had smoked**: `grammar-01-verb-tenses` 49:09
 - **Has been scheduled**: `grammar-01-verb-tenses` 89:24
 - **has not eased**: `vocabulary-03-collocations-2` 27:29
@@ -8745,6 +9021,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Omit**: `grammar-08-paraphrasing` 6:18
 - **one of which**: `vocabulary-01-word-forms` 57:33
 - **One test for every profession**: `writing-01-overview` 1:31
+- **Opening frames**: `writing-04-introduction` 25:27
 - **opinion signals**: `reading-04-part-c` 12:37
 - **Order**: `vocabulary-02-collocations` 52:53
 - **Organisation and Layout**: `writing-02-assessment-criteria` 24:52
@@ -8787,7 +9064,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **prn and tds**: `grammar-08-paraphrasing` 49:52
 - **Provide**: `vocabulary-02-collocations` 21:22
 - **Punctuation in OET letters**: `grammar-07-punctuation` 35:12
-- **Purpose**: `writing-02-assessment-criteria` 5:57
+- **Purpose**: `writing-02-assessment-criteria` 5:57; `writing-04-introduction` 18:08
 - **QTA**: `reading-04-part-c` 19:34
 - **Reading Part B: strategies**: `reading-03-part-b` 7:47
 - **Reading Part C: the meaning behind the words**: `reading-04-part-c` 1:40
@@ -8798,8 +9075,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Reduced relative clause**: `grammar-06-clause` 17:10
 - **Reduced relative clauses**: `grammar-06-clause` 17:10
 - **Regular verb**: `grammar-01-verb-tenses` 5:44
-- **Relative clause**: `grammar-05-complex-compound` 16:54; `grammar-06-clause` 2:00; `grammar-07-punctuation` 38:45; `vocabulary-01-word-forms` 39:10
-- **Relative clauses**: `grammar-06-clause` 2:00
+- **Relative clause**: `grammar-05-complex-compound` 16:54; `grammar-06-clause` 2:00; `grammar-07-punctuation` 38:45; `vocabulary-01-word-forms` 39:10; `writing-04-introduction` 6:44
+- **Relative clauses**: `grammar-06-clause` 2:00; `writing-04-introduction` 5:24
 - **Relative clauses with prepositions**: `vocabulary-01-word-forms` 48:21
 - **Relative pronoun**: `grammar-06-clause` 17:33; `vocabulary-01-word-forms` 38:59
 - **relative pronouns**: `vocabulary-01-word-forms` 37:06
@@ -8828,6 +9105,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Specific noun**: `grammar-04-articles` 30:21
 - **Specific nouns**: `grammar-04-articles` 29:38
 - **Spot the correct sentence**: `grammar-04-articles` 42:42
+- **Spot the errors**: `writing-04-introduction` 13:57
 - **Stat dose**: `grammar-04-articles` 58:35
 - **stative verb**: `grammar-01-verb-tenses` 67:52
 - **Steps towards successful writing**: `writing-01-overview` 3:01
@@ -8853,12 +9131,14 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The date**: `writing-03-letter-structure` 10:20
 - **The date at the top of the letter**: `writing-03-letter-structure` 12:46
 - **The Listening test**: `listening-01-overview` 1:12
+- **The opening paragraph**: `writing-04-introduction` 1:44
 - **The other day**: `grammar-01-verb-tenses` 74:36
 - **The Part A format**: `listening-02-part-a` 1:11
 - **The Part B format**: `listening-03-part-b` 1:25
 - **The Part C format**: `listening-04-part-c` 1:27
 - **The parts of a letter**: `writing-03-letter-structure` 5:25
 - **the passive**: `grammar-01-verb-tenses` 61:55
+- **The patient's age in the opening**: `writing-04-introduction` 12:06
 - **The perfect forms**: `grammar-01-verb-tenses` 48:35
 - **The QAT method**: `reading-03-part-b` 11:23
 - **The QTA method**: `reading-04-part-c` 19:31
