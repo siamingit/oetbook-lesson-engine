@@ -2,7 +2,7 @@
 
 What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.1; decision: `docs/adr/038-public-course-index.md`.
 
-24 lessons, 229 sections, 524 board topics, 4047 teaching points, 246 rules and 64 warnings, 482 terms, 155 OET facts, 39 methods, 516 vocabulary items (189 from the word bank), 62 practice questions and note forms, 88 links to other lessons, 355 topics in the topic index.
+24 lessons, 229 sections, 525 board topics, 4047 teaching points, 246 rules and 64 warnings, 482 terms, 155 OET facts, 39 methods, 516 vocabulary items (189 from the word bank), 62 practice questions and note forms, 88 links to other lessons, 355 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -2801,7 +2801,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 28:16, about section `added-03`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Genre and Style" at 24:42, about section `added-08`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:49, about section `page-5`
-- referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "Greeting and Re line" at 15:17, about section `page-14`
+- referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "Greeting and Re line" at 15:18, about section `page-14`
 - continues from Grammar for OET: Complex sentences (`grammar-05-complex-compound`): Punctuation teaches the comma in complex and compound sentences.
 
 
@@ -7845,7 +7845,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 |---|---|---|---|---|---|
 | 1 | OET Writing: Overview | `writing-01-overview` | 19:05 | 7 | 2026-10-27 09:37 (siavash) |
 | 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 29:42 | 10 | 2026-10-26 23:34 (Siavash) |
-| 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 26:51 | 10 | not yet |
+| 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 26:52 | 10 | not yet |
 
 <a id="writing-01-overview"></a>
 
@@ -8318,7 +8318,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 3. OET Writing: Letter Structure
 
-- Lesson ID and folder: `writing-03-letter-structure` (folder `writing-03-letter-structure`); course writing, lesson 3; length 26:51; bundle format 1.22
+- Lesson ID and folder: `writing-03-letter-structure` (folder `writing-03-letter-structure`); course writing, lesson 3; length 26:52; bundle format 1.22
 - Status: built, final gate not approved
 - Description: Learn the parts of a letter, from the address and the date to the request and the sign-off, and where each part comes from in the paper.
 - Original session: folder `source`: `source/video.mp4`, 25:04 long, partial hash `e5d98490267c5abe`; deck `source/slides.pdf`, 12 pages
@@ -8387,13 +8387,14 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 7:35 the request
   - 7:49 signing off
   - 7:57 fixed and flexible
-- 8:13 **Where each part comes from**
+- 8:13 **Where the top of the letter comes from**
   - 8:13 from the paper to the letter
   - 8:19 every part comes from the paper
   - 8:50 the date
   - 9:12 the Writing Task
   - 9:26 the patient details
-  - 9:52 the case notes
+- 9:32 **Where the body comes from**
+  - 9:32 the case notes
   - 10:08 the discharge plan
 
 *Rules on the boards*
@@ -8409,45 +8410,45 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 10:20 **Which date goes at the top?**
   - 10:20 dates in Mrs Holden's paper
   - 10:27 many dates, one at the top
-  - 10:55 the date the paper gives
+  - 10:56 the date the paper gives
   - 11:11 written in full
   - 11:27 not the admission date
   - 11:50 when the discharge date is today
   - 12:21 dates in the plan
-  - 12:38 above or below the address
-  - 12:45 the rule
+  - 12:39 above or below the address
+  - 12:46 the rule
 
 *Rules on the boards*
 
-- 12:45 The date at the top is the date in the date line, never any other date in the notes.
+- 12:46 The date at the top is the date in the date line, never any other date in the notes.
 
 #### 12:55 The address (`page-7`, deck)
 
 - 12:55 **Set out the address**
   - 12:55 the address in the Writing Task
-  - 13:16 your turn
-  - 13:30 the person first
-  - 13:38 the job title
-  - 13:45 the department
-  - 13:55 the hospital
-  - 14:04 the street
-  - 14:10 the town
-  - 14:24 copy it exactly
+  - 13:17 your turn
+  - 13:31 the person first
+  - 13:39 the job title
+  - 13:46 the department
+  - 13:56 the hospital
+  - 14:05 the street
+  - 14:11 the town
+  - 14:25 copy it exactly
 
 *Rules on the boards*
 
-- 14:24 Copy the address exactly as the task gives it: the same words, the same order, the same capital letters.
+- 14:25 Copy the address exactly as the task gives it: the same words, the same order, the same capital letters.
 
 #### 14:50 Greeting and Re line (`page-8`, deck)
 
 - 14:50 **Greeting and Re line**
   - 14:50 from the paper to the letter
-  - 14:56 from the paper
+  - 14:57 from the paper
   - 15:10 title and surname
   - 15:17 a comma or not
   - 15:38 your turn
   - 15:49 no name in the task
-  - 16:05 the word Re
+  - 16:06 the word Re
   - 16:18 your turn
   - 16:34 name and date of birth
   - 16:40 why the date of birth
@@ -8458,27 +8459,27 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 16:59 Dear Joanne Pellow
 - 17:01 Re: Mrs Dawson
 
-*Terms*: Re (The word, 16:05)
+*Terms*: Re (The word, 16:06)
 
 #### 17:29 The body (`page-9`, deck)
 
 - 17:29 **The body**
   - 17:29 the body of the letter
-  - 17:36 what you do in the body
+  - 17:37 what you do in the body
   - 18:05 why you are writing
-  - 18:14 the word housebound
-  - 18:31 the purpose fits the letter
+  - 18:15 the word housebound
+  - 18:32 the purpose fits the letter
   - 19:05 my method
-  - 19:37 what it adds
+  - 19:38 what it adds
   - 20:04 one topic
   - 20:13 how many paragraphs
   - 20:32 which paragraph? 1
-  - 20:57 which paragraph? 2
-  - 21:17 which paragraph? 3
+  - 20:58 which paragraph? 2
+  - 21:18 which paragraph? 3
 
 *Rules on the boards*
 
-- 18:52 OET: state the purpose clearly at the start, then expand it with more detail at the end of the letter.
+- 18:53 OET: state the purpose clearly at the start, then expand it with more detail at the end of the letter.
 - 19:05 My advice: expand the purpose straight after, in the next paragraph.
 
 #### 21:43 The request (`page-10`, deck)
@@ -8487,10 +8488,10 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 21:43 the discharge plan
   - 21:49 do not forget it
   - 22:15 your turn
-  - 22:39 the date and what to do if
-  - 22:54 already taught
-  - 23:09 your turn
-  - 23:33 her own words
+  - 22:40 the date and what to do if
+  - 22:55 already taught
+  - 23:10 your turn
+  - 23:34 her own words
   - 23:53 when
   - 23:59 polite requests
   - 24:09 why it matters
@@ -8505,14 +8506,14 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 24:30 the end of the letter
   - 24:34 three short lines
   - 24:50 two closing sentences
-  - 24:54 learn one or two
+  - 24:55 learn one or two
   - 25:06 sincerely or faithfully
   - 25:25 the job title
   - 25:30 your turn
 
 *Rules on the boards*
 
-- 24:54 My advice: learn one or two closing sentences, and use them in your letters.
+- 24:55 My advice: learn one or two closing sentences, and use them in your letters.
 
 #### 26:04 Closing (`added-01`, closing)
 
@@ -8522,12 +8523,12 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ### OET facts
 
 - 6:27 (`writing-no-fixed-layout`) There is no one required layout for the letter (writing-facts 24).
-- 10:52 (`writing-letter-date`) The letter's date is the date the paper gives at the start ("Assume that today's date is ..."), never a date from the notes; above or below the reader's address, written in full (writing-facts 44).
+- 10:53 (`writing-letter-date`) The letter's date is the date the paper gives at the start ("Assume that today's date is ..."), never a date from the notes; above or below the reader's address, written in full (writing-facts 44).
 - 14:25 (`writing-address`) Copy the reader's name and address from the task (writing-facts 24).
-- 15:49 (`writing-unnamed-reader`) "Yours faithfully" goes with "Dear Sir or Madam" when the reader's name is not known (writing-facts 27).
+- 15:50 (`writing-unnamed-reader`) "Yours faithfully" goes with "Dear Sir or Madam" when the reader's name is not known (writing-facts 27).
 - 16:34 (`writing-re-line`) The Re line gives the patient's full name and date of birth (writing-facts 26).
 - 18:53 (`writing-purpose`) Purpose: the reader sees at once why you are writing; the purpose is stated clearly at the start and expanded with more detail at the end of the letter (writing-facts 18, 30).
-- 20:13 (`writing-paragraphs`) One topic in each paragraph; there is no fixed number of paragraphs (writing-facts 40).
+- 20:14 (`writing-paragraphs`) One topic in each paragraph; there is no fixed number of paragraphs (writing-facts 40).
 - 24:09 (`writing-content`) Content: what this reader needs to continue care, with nothing important missing and the case notes represented accurately (writing-facts 19).
 - 24:50 (`writing-closing-sentence`) A closing sentence commonly thanks the reader or offers contact; "Thank you for ..." and "Please do not hesitate to contact me if you have any questions" are both acceptable, neither required (writing-facts 39; ADR 040 decision 5).
 - 25:23 (`writing-sign-off`) Sign with a job title, not your own name (writing-facts 25). *(a job title, such as Nurse)*
@@ -8536,14 +8537,14 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 - 8:19 **Where each part comes from**: The date from the date line at the top of the paper; the reader's name, address and the purpose from the Writing Task; the Re line from the patient details; the body from the notes; the request from the plan.
 - 14:25 **Setting out the address**: Copy it from the Writing Task exactly, one part on each line, from the person to the town, keeping every capital letter.
-- 19:03 **Expanding the purpose (the teacher's method)**: Say briefly at the start why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.
+- 19:04 **Expanding the purpose (the teacher's method)**: Say briefly at the start why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.
 - 22:40 **From the plan to the request**: Turn each line of the plan into a polite request, keeping its date, what to do and when; report what the patient said at its exact degree.
 
 ### Vocabulary
 
 First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
 
-- 18:14 housebound
+- 18:15 housebound
 
 ### Links to other lessons
 
@@ -8551,7 +8552,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 1:51 refers to OET Writing: Overview (`writing-01-overview`), "The case notes" (in `added-02_t1.s1.u3`)
 - 4:43 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Content" (in `added-02_t7.s2.u1`)
 - 7:04 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Purpose" (in `pages-04-05_t1.s7.u3`)
-- 15:17 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Punctuation in OET letters" (in `page-8_t1.s4.u1`)
+- 15:18 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Punctuation in OET letters" (in `page-8_t1.s4.u1`)
 
 
 ---
