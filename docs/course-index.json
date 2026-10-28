@@ -16415,8 +16415,8 @@
       "section": "page-8",
       "to_section": "page-14",
       "utterance": "page-8_t1.s4.u1",
-      "start_s": 917.998,
-      "start": "15:17"
+      "start_s": 918.298,
+      "start": "15:18"
      }
     ],
     "continues_in": [],
@@ -50490,8 +50490,8 @@
    "description": "Learn the parts of a letter, from the address and the date to the request and the sign-off, and where each part comes from in the paper.",
    "course": "writing",
    "order": 3,
-   "length_s": 1611.805,
-   "length": "26:51",
+   "length_s": 1612.105,
+   "length": "26:52",
    "bundle_format": "1.22",
    "status": "built",
    "approval": null,
@@ -50822,7 +50822,7 @@
      "category": null,
      "start_s": 325.391,
      "start": "5:25",
-     "end_s": 620.546,
+     "end_s": 620.846,
      "topics": [
       {
        "board": "pages-04-05_t1",
@@ -50832,7 +50832,7 @@
        "points": [
         {
          "text": "the whole letter",
-         "block": "pages-04-05_k21",
+         "block": "pages-04-05_k22",
          "start_s": 325.391,
          "start": "5:25"
         },
@@ -50906,13 +50906,13 @@
       },
       {
        "board": "pages-04-05_t2",
-       "title": "Where each part comes from",
+       "title": "Where the top of the letter comes from",
        "start_s": 493.628,
        "start": "8:13",
        "points": [
         {
          "text": "from the paper to the letter",
-         "block": "pages-04-05_k22",
+         "block": "pages-04-05_k23",
          "start_s": 493.628,
          "start": "8:13"
         },
@@ -50939,17 +50939,25 @@
          "block": "pages-04-05_k18",
          "start_s": 566.066,
          "start": "9:26"
-        },
+        }
+       ]
+      },
+      {
+       "board": "pages-04-05_t3",
+       "title": "Where the body comes from",
+       "start_s": 572.676,
+       "start": "9:32",
+       "points": [
         {
          "text": "the case notes",
-         "block": "pages-04-05_k19",
-         "start_s": 592.544,
-         "start": "9:52"
+         "block": "pages-04-05_k24",
+         "start_s": 572.676,
+         "start": "9:32"
         },
         {
          "text": "the discharge plan",
-         "block": "pages-04-05_k20",
-         "start_s": 608.487,
+         "block": "pages-04-05_k21",
+         "start_s": 608.787,
          "start": "10:08"
         }
        ]
@@ -50993,69 +51001,69 @@
       6
      ],
      "category": null,
-     "start_s": 620.546,
+     "start_s": 620.846,
      "start": "10:20",
-     "end_s": 775.411,
+     "end_s": 775.711,
      "topics": [
       {
        "board": "page-6_t1",
        "title": "Which date goes at the top?",
-       "start_s": 620.546,
+       "start_s": 620.846,
        "start": "10:20",
        "points": [
         {
          "text": "dates in Mrs Holden's paper",
          "block": "page-6_k12",
-         "start_s": 620.546,
+         "start_s": 620.846,
          "start": "10:20"
         },
         {
          "text": "many dates, one at the top",
          "block": "page-6_k02",
-         "start_s": 627.065,
+         "start_s": 627.365,
          "start": "10:27"
         },
         {
          "text": "the date the paper gives",
          "block": "page-6_k04",
-         "start_s": 655.711,
-         "start": "10:55"
+         "start_s": 656.011,
+         "start": "10:56"
         },
         {
          "text": "written in full",
          "block": "page-6_k05",
-         "start_s": 671.146,
+         "start_s": 671.446,
          "start": "11:11"
         },
         {
          "text": "not the admission date",
          "block": "page-6_k06",
-         "start_s": 687.176,
+         "start_s": 687.476,
          "start": "11:27"
         },
         {
          "text": "when the discharge date is today",
          "block": "page-6_k07",
-         "start_s": 710.337,
+         "start_s": 710.637,
          "start": "11:50"
         },
         {
          "text": "dates in the plan",
          "block": "page-6_k09",
-         "start_s": 741.521,
+         "start_s": 741.821,
          "start": "12:21"
         },
         {
          "text": "above or below the address",
          "block": "page-6_k10",
-         "start_s": 758.788,
-         "start": "12:38"
+         "start_s": 759.088,
+         "start": "12:39"
         },
         {
          "text": "the rule",
          "block": "page-6_k11",
-         "start_s": 765.867,
-         "start": "12:45"
+         "start_s": 766.167,
+         "start": "12:46"
         }
        ]
       }
@@ -51065,8 +51073,8 @@
        "block": "page-6_k11",
        "kind": "rule",
        "text": "The date at the top is the date in the date line, never any other date in the notes.",
-       "start_s": 765.867,
-       "start": "12:45"
+       "start_s": 766.167,
+       "start": "12:46"
       }
      ],
      "terms": [],
@@ -51082,69 +51090,69 @@
       7
      ],
      "category": null,
-     "start_s": 775.411,
+     "start_s": 775.711,
      "start": "12:55",
-     "end_s": 890.178,
+     "end_s": 890.478,
      "topics": [
       {
        "board": "page-7_t1",
        "title": "Set out the address",
-       "start_s": 775.411,
+       "start_s": 775.711,
        "start": "12:55",
        "points": [
         {
          "text": "the address in the Writing Task",
          "block": "page-7_k10",
-         "start_s": 775.411,
+         "start_s": 775.711,
          "start": "12:55"
         },
         {
          "text": "your turn",
          "block": "page-7_k02",
-         "start_s": 796.716,
-         "start": "13:16"
+         "start_s": 797.016,
+         "start": "13:17"
         },
         {
          "text": "the person first",
          "block": "page-7_k03",
-         "start_s": 810.723,
-         "start": "13:30"
+         "start_s": 811.023,
+         "start": "13:31"
         },
         {
          "text": "the job title",
          "block": "page-7_k04",
-         "start_s": 818.774,
-         "start": "13:38"
+         "start_s": 819.074,
+         "start": "13:39"
         },
         {
          "text": "the department",
          "block": "page-7_k05",
-         "start_s": 825.927,
-         "start": "13:45"
+         "start_s": 826.227,
+         "start": "13:46"
         },
         {
          "text": "the hospital",
          "block": "page-7_k06",
-         "start_s": 835.914,
-         "start": "13:55"
+         "start_s": 836.214,
+         "start": "13:56"
         },
         {
          "text": "the street",
          "block": "page-7_k07",
-         "start_s": 844.884,
-         "start": "14:04"
+         "start_s": 845.184,
+         "start": "14:05"
         },
         {
          "text": "the town",
          "block": "page-7_k08",
-         "start_s": 850.774,
-         "start": "14:10"
+         "start_s": 851.074,
+         "start": "14:11"
         },
         {
          "text": "copy it exactly",
          "block": "page-7_k09",
-         "start_s": 864.791,
-         "start": "14:24"
+         "start_s": 865.091,
+         "start": "14:25"
         }
        ]
       }
@@ -51154,8 +51162,8 @@
        "block": "page-7_k09",
        "kind": "rule",
        "text": "Copy the address exactly as the task gives it: the same words, the same order, the same capital letters.",
-       "start_s": 864.791,
-       "start": "14:24"
+       "start_s": 865.091,
+       "start": "14:25"
       }
      ],
      "terms": [],
@@ -51171,80 +51179,80 @@
       8
      ],
      "category": null,
-     "start_s": 890.178,
+     "start_s": 890.478,
      "start": "14:50",
-     "end_s": 1049.641,
+     "end_s": 1049.941,
      "topics": [
       {
        "board": "page-8_t1",
        "title": "Greeting and Re line",
-       "start_s": 890.178,
+       "start_s": 890.478,
        "start": "14:50",
        "points": [
         {
          "text": "from the paper to the letter",
          "block": "page-8_k13",
-         "start_s": 890.178,
+         "start_s": 890.478,
          "start": "14:50"
         },
         {
          "text": "from the paper",
          "block": "page-8_k02",
-         "start_s": 896.997,
-         "start": "14:56"
+         "start_s": 897.297,
+         "start": "14:57"
         },
         {
          "text": "title and surname",
          "block": "page-8_k03",
-         "start_s": 910.523,
+         "start_s": 910.823,
          "start": "15:10"
         },
         {
          "text": "a comma or not",
          "block": "page-8_k04",
-         "start_s": 917.663,
+         "start_s": 917.963,
          "start": "15:17"
         },
         {
          "text": "your turn",
          "block": "page-8_k05",
-         "start_s": 938.131,
+         "start_s": 938.431,
          "start": "15:38"
         },
         {
          "text": "no name in the task",
          "block": "page-8_k06",
-         "start_s": 949.545,
+         "start_s": 949.845,
          "start": "15:49"
         },
         {
          "text": "the word Re",
          "block": "page-8_k07",
-         "start_s": 965.864,
-         "start": "16:05"
+         "start_s": 966.164,
+         "start": "16:06"
         },
         {
          "text": "your turn",
          "block": "page-8_k08",
-         "start_s": 978.032,
+         "start_s": 978.332,
          "start": "16:18"
         },
         {
          "text": "name and date of birth",
          "block": "page-8_k09",
-         "start_s": 994.118,
+         "start_s": 994.418,
          "start": "16:34"
         },
         {
          "text": "why the date of birth",
          "block": "page-8_k10",
-         "start_s": 1000.338,
+         "start_s": 1000.638,
          "start": "16:40"
         },
         {
          "text": "what is wrong?",
          "block": "page-8_k11",
-         "start_s": 1019.298,
+         "start_s": 1019.598,
          "start": "16:59"
         }
        ]
@@ -51256,21 +51264,21 @@
        "block": "page-8_k07",
        "label": "The word",
        "term": "Re",
-       "start_s": 965.864,
-       "start": "16:05"
+       "start_s": 966.164,
+       "start": "16:06"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-8_k11",
        "text": "Dear Joanne Pellow",
-       "start_s": 1019.298,
+       "start_s": 1019.598,
        "start": "16:59"
       },
       {
        "block": "page-8_k12",
        "text": "Re: Mrs Dawson",
-       "start_s": 1021.215,
+       "start_s": 1021.515,
        "start": "17:01"
       }
      ],
@@ -51281,8 +51289,8 @@
        "lesson": "grammar-07-punctuation",
        "section": "page-14",
        "provenance": "adapted",
-       "start_s": 917.998,
-       "start": "15:17"
+       "start_s": 918.298,
+       "start": "15:18"
       }
      ]
     },
@@ -51294,87 +51302,87 @@
       9
      ],
      "category": null,
-     "start_s": 1049.641,
+     "start_s": 1049.941,
      "start": "17:29",
-     "end_s": 1303.016,
+     "end_s": 1303.316,
      "topics": [
       {
        "board": "page-9_t1",
        "title": "The body",
-       "start_s": 1049.641,
+       "start_s": 1049.941,
        "start": "17:29",
        "points": [
         {
          "text": "the body of the letter",
          "block": "page-9_k15",
-         "start_s": 1049.641,
+         "start_s": 1049.941,
          "start": "17:29"
         },
         {
          "text": "what you do in the body",
          "block": "page-9_k02",
-         "start_s": 1056.761,
-         "start": "17:36"
+         "start_s": 1057.061,
+         "start": "17:37"
         },
         {
          "text": "why you are writing",
          "block": "page-9_k03",
-         "start_s": 1085.266,
+         "start_s": 1085.566,
          "start": "18:05"
         },
         {
          "text": "the word housebound",
          "block": "page-9_k04",
-         "start_s": 1094.899,
-         "start": "18:14"
+         "start_s": 1095.199,
+         "start": "18:15"
         },
         {
          "text": "the purpose fits the letter",
          "block": "page-9_k05",
-         "start_s": 1111.95,
-         "start": "18:31"
+         "start_s": 1112.25,
+         "start": "18:32"
         },
         {
          "text": "my method",
          "block": "page-9_k07",
-         "start_s": 1145.696,
+         "start_s": 1145.996,
          "start": "19:05"
         },
         {
          "text": "what it adds",
          "block": "page-9_k08",
-         "start_s": 1177.941,
-         "start": "19:37"
+         "start_s": 1178.241,
+         "start": "19:38"
         },
         {
          "text": "one topic",
          "block": "page-9_k09",
-         "start_s": 1204.361,
+         "start_s": 1204.661,
          "start": "20:04"
         },
         {
          "text": "how many paragraphs",
          "block": "page-9_k10",
-         "start_s": 1213.575,
+         "start_s": 1213.875,
          "start": "20:13"
         },
         {
          "text": "which paragraph? 1",
          "block": "page-9_k11",
-         "start_s": 1232.262,
+         "start_s": 1232.562,
          "start": "20:32"
         },
         {
          "text": "which paragraph? 2",
          "block": "page-9_k13",
-         "start_s": 1257.966,
-         "start": "20:57"
+         "start_s": 1258.266,
+         "start": "20:58"
         },
         {
          "text": "which paragraph? 3",
          "block": "page-9_k14",
-         "start_s": 1277.865,
-         "start": "21:17"
+         "start_s": 1278.165,
+         "start": "21:18"
         }
        ]
       }
@@ -51384,14 +51392,14 @@
        "block": "page-9_k06",
        "kind": "rule",
        "text": "OET: state the purpose clearly at the start, then expand it with more detail at the end of the letter.",
-       "start_s": 1132.821,
-       "start": "18:52"
+       "start_s": 1133.121,
+       "start": "18:53"
       },
       {
        "block": "page-9_k07",
        "kind": "rule",
        "text": "My advice: expand the purpose straight after, in the next paragraph.",
-       "start_s": 1145.696,
+       "start_s": 1145.996,
        "start": "19:05"
       }
      ],
@@ -51408,74 +51416,74 @@
       10
      ],
      "category": null,
-     "start_s": 1303.016,
+     "start_s": 1303.316,
      "start": "21:43",
-     "end_s": 1470.688,
+     "end_s": 1470.988,
      "topics": [
       {
        "board": "page-10_t1",
        "title": "From the plan to the request",
-       "start_s": 1303.016,
+       "start_s": 1303.316,
        "start": "21:43",
        "points": [
         {
          "text": "the discharge plan",
          "block": "page-10_k13",
-         "start_s": 1303.016,
+         "start_s": 1303.316,
          "start": "21:43"
         },
         {
          "text": "do not forget it",
          "block": "page-10_k02",
-         "start_s": 1309.671,
+         "start_s": 1309.971,
          "start": "21:49"
         },
         {
          "text": "your turn",
          "block": "page-10_k04",
-         "start_s": 1335.638,
+         "start_s": 1335.938,
          "start": "22:15"
         },
         {
          "text": "the date and what to do if",
          "block": "page-10_k05",
-         "start_s": 1359.968,
-         "start": "22:39"
+         "start_s": 1360.268,
+         "start": "22:40"
         },
         {
          "text": "already taught",
          "block": "page-10_k06",
-         "start_s": 1374.763,
-         "start": "22:54"
+         "start_s": 1375.063,
+         "start": "22:55"
         },
         {
          "text": "your turn",
          "block": "page-10_k07",
-         "start_s": 1389.809,
-         "start": "23:09"
+         "start_s": 1390.109,
+         "start": "23:10"
         },
         {
          "text": "her own words",
          "block": "page-10_k08",
-         "start_s": 1413.993,
-         "start": "23:33"
+         "start_s": 1414.293,
+         "start": "23:34"
         },
         {
          "text": "when",
          "block": "page-10_k09",
-         "start_s": 1433.227,
+         "start_s": 1433.527,
          "start": "23:53"
         },
         {
          "text": "polite requests",
          "block": "page-10_k10",
-         "start_s": 1439.477,
+         "start_s": 1439.777,
          "start": "23:59"
         },
         {
          "text": "why it matters",
          "block": "page-10_k11",
-         "start_s": 1449.101,
+         "start_s": 1449.401,
          "start": "24:09"
         }
        ]
@@ -51486,7 +51494,7 @@
        "block": "page-10_k02",
        "kind": "warning",
        "text": "The request ends the body. Do not forget it.",
-       "start_s": 1309.671,
+       "start_s": 1309.971,
        "start": "21:49"
       }
      ],
@@ -51499,7 +51507,7 @@
        "lesson": "writing-02-assessment-criteria",
        "section": "pages-09-10-11",
        "provenance": "corrected",
-       "start_s": 1449.438,
+       "start_s": 1449.738,
        "start": "24:09"
       }
      ]
@@ -51512,56 +51520,56 @@
       11
      ],
      "category": null,
-     "start_s": 1470.688,
+     "start_s": 1470.988,
      "start": "24:30",
-     "end_s": 1564.379,
+     "end_s": 1564.679,
      "topics": [
       {
        "board": "page-11_t1",
        "title": "Signing off",
-       "start_s": 1470.688,
+       "start_s": 1470.988,
        "start": "24:30",
        "points": [
         {
          "text": "the end of the letter",
          "block": "page-11_k09",
-         "start_s": 1470.688,
+         "start_s": 1470.988,
          "start": "24:30"
         },
         {
          "text": "three short lines",
          "block": "page-11_k02",
-         "start_s": 1474.318,
+         "start_s": 1474.618,
          "start": "24:34"
         },
         {
          "text": "two closing sentences",
          "block": "page-11_k03",
-         "start_s": 1490.258,
+         "start_s": 1490.558,
          "start": "24:50"
         },
         {
          "text": "learn one or two",
          "block": "page-11_k04",
-         "start_s": 1494.965,
-         "start": "24:54"
+         "start_s": 1495.265,
+         "start": "24:55"
         },
         {
          "text": "sincerely or faithfully",
          "block": "page-11_k05",
-         "start_s": 1506.666,
+         "start_s": 1506.966,
          "start": "25:06"
         },
         {
          "text": "the job title",
          "block": "page-11_k06",
-         "start_s": 1525.423,
+         "start_s": 1525.723,
          "start": "25:25"
         },
         {
          "text": "your turn",
          "block": "page-11_k07",
-         "start_s": 1530.543,
+         "start_s": 1530.843,
          "start": "25:30"
         }
        ]
@@ -51572,8 +51580,8 @@
        "block": "page-11_k04",
        "kind": "rule",
        "text": "My advice: learn one or two closing sentences, and use them in your letters.",
-       "start_s": 1494.965,
-       "start": "24:54"
+       "start_s": 1495.265,
+       "start": "24:55"
       }
      ],
      "terms": [],
@@ -51587,20 +51595,20 @@
      "kind": "closing",
      "pages": [],
      "category": null,
-     "start_s": 1564.379,
+     "start_s": 1564.679,
      "start": "26:04",
-     "end_s": 1611.805,
+     "end_s": 1612.105,
      "topics": [
       {
        "board": "added-01_t1",
        "title": "Closing",
-       "start_s": 1564.379,
+       "start_s": 1564.679,
        "start": "26:04",
        "points": [
         {
          "text": "Recap",
          "block": "added-01_k04",
-         "start_s": 1564.379,
+         "start_s": 1564.679,
          "start": "26:04"
         }
        ]
@@ -51631,8 +51639,8 @@
      "section": "page-6",
      "board": "page-6_t1",
      "utterance": "page-6_t1.s3.u2",
-     "start_s": 652.946,
-     "start": "10:52"
+     "start_s": 653.246,
+     "start": "10:53"
     },
     {
      "fact": "writing-address",
@@ -51641,7 +51649,7 @@
      "section": "page-7",
      "board": "page-7_t1",
      "utterance": "page-7_t1.s9.u1",
-     "start_s": 865.104,
+     "start_s": 865.404,
      "start": "14:25"
     },
     {
@@ -51651,8 +51659,8 @@
      "section": "page-8",
      "board": "page-8_t1",
      "utterance": "page-8_t1.s6.u1",
-     "start_s": 949.855,
-     "start": "15:49"
+     "start_s": 950.155,
+     "start": "15:50"
     },
     {
      "fact": "writing-re-line",
@@ -51661,7 +51669,7 @@
      "section": "page-8",
      "board": "page-8_t1",
      "utterance": "page-8_t1.s9.u1",
-     "start_s": 994.348,
+     "start_s": 994.648,
      "start": "16:34"
     },
     {
@@ -51671,7 +51679,7 @@
      "section": "page-9",
      "board": "page-9_t1",
      "utterance": "page-9_t1.s5.u3",
-     "start_s": 1133.161,
+     "start_s": 1133.461,
      "start": "18:53"
     },
     {
@@ -51681,8 +51689,8 @@
      "section": "page-9",
      "board": "page-9_t1",
      "utterance": "page-9_t1.s9.u1",
-     "start_s": 1213.922,
-     "start": "20:13"
+     "start_s": 1214.222,
+     "start": "20:14"
     },
     {
      "fact": "writing-content",
@@ -51691,7 +51699,7 @@
      "section": "page-10",
      "board": "page-10_t1",
      "utterance": "page-10_t1.s10.u1",
-     "start_s": 1449.438,
+     "start_s": 1449.738,
      "start": "24:09"
     },
     {
@@ -51701,7 +51709,7 @@
      "section": "page-11",
      "board": "page-11_t1",
      "utterance": "page-11_t1.s3.u2",
-     "start_s": 1490.608,
+     "start_s": 1490.908,
      "start": "24:50"
     },
     {
@@ -51711,7 +51719,7 @@
      "section": "page-11",
      "board": "page-11_t1",
      "utterance": "page-11_t1.s6.u1",
-     "start_s": 1523.508,
+     "start_s": 1523.808,
      "start": "25:23"
     }
    ],
@@ -51731,7 +51739,7 @@
      "section": "page-7",
      "board": "page-7_t1",
      "utterance": "page-7_t1.s9.u1",
-     "start_s": 865.104,
+     "start_s": 865.404,
      "start": "14:25"
     },
     {
@@ -51740,8 +51748,8 @@
      "section": "page-9",
      "board": "page-9_t1",
      "utterance": "page-9_t1.s6.u1",
-     "start_s": 1143.771,
-     "start": "19:03"
+     "start_s": 1144.071,
+     "start": "19:04"
     },
     {
      "name": "From the plan to the request",
@@ -51749,7 +51757,7 @@
      "section": "page-10",
      "board": "page-10_t1",
      "utterance": "page-10_t1.s4.u2",
-     "start_s": 1360.308,
+     "start_s": 1360.608,
      "start": "22:40"
     }
    ],
@@ -51760,8 +51768,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k04",
-     "start_s": 1094.899,
-     "start": "18:14"
+     "start_s": 1095.199,
+     "start": "18:15"
     }
    ],
    "withheld": {
@@ -51809,8 +51817,8 @@
       "section": "page-14",
       "from_section": "page-8",
       "utterance": "page-8_t1.s4.u1",
-      "start_s": 917.998,
-      "start": "15:17"
+      "start_s": 918.298,
+      "start": "15:18"
      }
     ],
     "referred_to_by": [],
@@ -53542,7 +53550,7 @@
     {
      "lesson": "writing-03-letter-structure",
      "section": "page-8",
-     "start_s": 890.178,
+     "start_s": 890.478,
      "start": "14:50",
      "source": "section"
     }
@@ -55379,7 +55387,7 @@
     {
      "lesson": "writing-03-letter-structure",
      "section": "page-11",
-     "start_s": 1470.688,
+     "start_s": 1470.988,
      "start": "24:30",
      "source": "section"
     }
@@ -55804,7 +55812,7 @@
     {
      "lesson": "writing-03-letter-structure",
      "section": "page-7",
-     "start_s": 775.411,
+     "start_s": 775.711,
      "start": "12:55",
      "source": "section"
     }
@@ -55817,7 +55825,7 @@
     {
      "lesson": "writing-03-letter-structure",
      "section": "page-9",
-     "start_s": 1049.641,
+     "start_s": 1049.941,
      "start": "17:29",
      "source": "section"
     }
@@ -55843,7 +55851,7 @@
     {
      "lesson": "writing-03-letter-structure",
      "section": "page-6",
-     "start_s": 620.546,
+     "start_s": 620.846,
      "start": "10:20",
      "source": "section"
     }
@@ -55856,7 +55864,7 @@
     {
      "lesson": "writing-03-letter-structure",
      "section": "page-6",
-     "start_s": 766.181,
+     "start_s": 766.481,
      "start": "12:46",
      "source": "curated"
     }
@@ -56012,7 +56020,7 @@
     {
      "lesson": "writing-03-letter-structure",
      "section": "page-10",
-     "start_s": 1303.016,
+     "start_s": 1303.316,
      "start": "21:43",
      "source": "section"
     }
@@ -56025,7 +56033,7 @@
     {
      "lesson": "writing-03-letter-structure",
      "section": "page-10",
-     "start_s": 1310.006,
+     "start_s": 1310.306,
      "start": "21:50",
      "source": "curated"
     }
@@ -56712,7 +56720,7 @@
  "totals": {
   "lessons": 24,
   "sections": 229,
-  "topics": 524,
+  "topics": 525,
   "teaching_points": 4047,
   "rules": 246,
   "warnings": 64,

@@ -2120,6 +2120,17 @@ def fixed_union(parts: list[dict]) -> tuple[list[str], set[str]]:
     return union, dupes
 
 
+def table_rows_split(parts: list[dict]) -> bool:
+    """A split whose every part's fixed layer is one table and nothing else (a
+    table divided by its rows; ADR 045 amendment (1))."""
+    for t in parts:
+        anchors = [b for h in t["thoughts"] for b in h["blocks"] if b["anchor"]]
+        if len(anchors) != 1 or anchors[0]["type"] != "table" or anchors[0].get("map") \
+                or anchors[0].get("doc"):
+            return False
+    return True
+
+
 def merge_unjustified_splits(topics: list[dict], blocks: dict, pages: list[int]) -> list[dict]:
     """The rule: a slide is one board unless its fixed content cannot fit the
     frame. When the model splits a slide whose parts' fixed layers fit together,
@@ -2144,6 +2155,12 @@ def merge_unjustified_splits(topics: list[dict], blocks: dict, pages: list[int])
         # the merged board. Otherwise a merge doubles the fixed layer.
         union, dupes = fixed_union(parts)
         fixed_total = stack_height(union, blocks)
+        if table_rows_split(parts):
+            # a table divided by its rows, each part a table alone (ADR 045
+            # amendment (1)): judged at the size a table is read at, body size,
+            # as fit_table first sets it, not by its count of rows; a table
+            # that cannot be read whole at that size keeps its parts
+            fixed_total = sum(table_height(blocks[i], TABLE_TEXT) for i in union) + GAP * (len(union) - 1)
         # Merge only when the merged fixed layer would still leave room for
         # notes, the same limit the audit holds a fixed layer to; a union
         # bigger than that is genuinely oversized and the split stands.
