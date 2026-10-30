@@ -18,9 +18,13 @@ nothing fetched) and then the rules the schemas cannot express, as the site's va
 them (oetacademy-web packages/shared/src/contracts/lesson.ts at contracts 1.8.0, and the three
 rules contracts 1.9.0 add for bundle 1.21: `LP-FIT`, `LP-PROVENANCE`, `LP-HEARD`; from 1.10.0 a
 manifest names taxonomy v2 or v3, its keys checked against the version it names; and the three
-contracts 1.12.0 add for bundle 1.22: `LP-STYLE`, `LP-EFFECTS`, `LP-CELLS`), with its codes
-(`LP-...`), plus one of the engine's own: no file reference in the package points outside it
-(`PUB-OUTSIDE`). The site validates again at import and refuses a package with any error.
+contracts 1.12.0 add for bundle 1.22: `LP-STYLE`, `LP-EFFECTS`, `LP-CELLS`; and of the rules
+contracts 1.13.0 add for bundle 1.23, the practice points' place and IDs: `LP-PRACTICE` (in part),
+`LP-ID-BLOCK`, `LP-FIXTURE`), with its codes (`LP-...`), plus one of the engine's own: no file
+reference in the package points outside it (`PUB-OUTSIDE`). The site validates again at import and
+refuses a package with any error; a 1.23 package is also run through the site's own validator
+(`pnpm contracts:validate lesson <folder> --refuse-fixtures`, docs/03-RUNBOOK.md step 18b), which
+checks the practice items in full.
 """
 
 import argparse
@@ -785,6 +789,44 @@ def check_style(bundle: dict, f: Findings) -> None:
                 f.error("LP-CELLS", where, "every cell lies inside the board's table", at)
 
 
+PRACTICE_ID = re.compile(r"^oa-[a-z]+-([0-9]{6})(-[oc][0-9]+)?$")
+
+
+def check_practice(bundle: dict, f: Findings) -> None:
+    """LP-PRACTICE (its first half: practice points only from 1.23), LP-ID-BLOCK and LP-FIXTURE
+    (contracts 1.13.0): every ID of a practice item (the item, its parts, options and self-check
+    points) is in the lesson engine's block, 900000-989999; a fixture ID (990000-999999) is refused,
+    as the site refuses it in production. The rest of the practice rules are the site's validator's."""
+    where = "bundle.json"
+    at123 = version_tuple(bundle["format_version"]) >= (1, 23)
+
+    def ids(obj):
+        if isinstance(obj, dict):
+            for k, v in obj.items():
+                if k in ("item_id", "gap_id", "option_id", "point_id") and isinstance(v, str):
+                    yield v
+                else:
+                    yield from ids(v)
+        elif isinstance(obj, list):
+            for v in obj:
+                yield from ids(v)
+
+    for bd in bundle.get("boards", []):
+        for s in bd.get("states", []):
+            cues = [c for u in s.get("utterances", []) for c in u.get("cues", [])]
+            if not at123 and (s.get("practice") or any("practice" in c for c in cues)):
+                f.error("LP-PRACTICE", where, "practice is a field of bundle format 1.23 and later", s["id"])
+            for p in s.get("practice") or []:
+                for i in ids(p.get("items")):
+                    m = PRACTICE_ID.match(i)
+                    n = int(m[1]) if m else -1
+                    if 990000 <= n <= 999999:
+                        f.error("LP-FIXTURE", where, "a practice item has a fixture ID (refused in production)", i)
+                    elif not 900000 <= n <= 989999:
+                        f.error("LP-ID-BLOCK", where, "a practice item's ID is outside the engine's block "
+                                "(900000-989999)", i)
+
+
 def check_inside(bundle: dict, css: str, folder: Path, f: Findings) -> None:
     """PUB-OUTSIDE (the engine's own): every reference resolves to a file inside the package."""
     for at, p in references(bundle, css):
@@ -822,6 +864,7 @@ def validate_package(folder: Path, contracts: Contracts) -> Findings:
         check_inside(b, css_path.read_text(encoding="utf-8") if css_path.is_file() else "", folder, f)
         check_fit(b, f)
         check_style(b, f)
+        check_practice(b, f)
     if m:
         check_manifest(m, folder, contracts, f)
         if b:

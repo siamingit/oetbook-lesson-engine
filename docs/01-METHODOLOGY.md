@@ -1278,8 +1278,8 @@ say "since 2013" and "since May 2018".
 Owner, 2026-10-29, after Writing 4: "learners don't learn to write this way". A Writing lesson teaches a sentence the
 way his own sessions do (Session 4: `_writing-analysis/ANALYSIS.md` §2.4, §3.7): the rule, the simple facts, "pause the
 video and try", his model typed, the grammar named in it, a second item faster. The learner writes in the middle of the
-lesson, in practice points (ADR 046; bundle 1.23, proposed). This section is the method; it is a proposal for the
-owner's review of the Writing 4 prototype, and the figures below are to be confirmed there.
+lesson, in practice points (ADR 046; bundle 1.23). This section is the method. The owner tried the Writing 4 prototype
+on 2026-10-30 and approved it with these figures (ADR 046 amendment (1)).
 
 ### One sentence, piece by piece
 
@@ -1293,7 +1293,7 @@ at a time. At each piece the learner writes or chooses it first; then the teache
 | what matters | the notes | chooses the detail this reader needs (a choice) | types it; says why the others stay out |
 | what you ask | the plan, the task | chooses or types the words (a word bank) | types them |
 | why now | the latest notes | puts the last piece in order (an ordering) | types it; names "since" with a time |
-| the whole sentence | every line it uses | writes it whole, then ticks a self-check list beside the model | reads the model, point by point |
+| the whole sentence | every line it uses | writes it whole, then ticks the points of a `selfcheck` beside the model | reads the model, point by point |
 
 ### How many, and how much teaching between them
 
@@ -1318,5 +1318,6 @@ at a time. At each piece the learner writes or chooses it first; then the teache
 - Typed parts use `oet-typed-form-v1` where the form is taught; every contraction and British or American spelling is an
   accepted form. The listed wrong answers are the errors the owner's sessions correct (no hyphens, no article, "years",
   a title with a first name, the wrong frame), each with one short reason.
-- Every item and part has a permanent ID and `practises` tags; the self-check list's points carry tags too, so the study
-  plan can use what the learner ticks (ADR 046 decisions 6, 7).
+- Every item and part has a permanent ID from the engine's block, issued by the registry (`practice_points.issue`, inside the lesson's own range, ADR 046
+  amendment (1)), and `practises` tags of the taxonomy version the manifest names; a `selfcheck`'s points carry tags
+  too. Nothing the learner answers is stored (the owner's decision).

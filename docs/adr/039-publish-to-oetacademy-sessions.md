@@ -428,3 +428,37 @@ decision logs).
 - A 1.22 lesson can be packaged; the runbook's sentence that it waits for the pin is now history.
 - The tests that name the pinned version name 1.12.0; `spike/tests/test_style_c.py` tests the three rules.
 - To reverse: a new amendment pinning another release; the lock and this record change together.
+
+## Amendment — 2026-10-30: contracts 1.13.0 pinned (bundle format 1.23)
+
+### Context
+
+The site accepted bundle format 1.23, practice points (engine ADR 046 and its amendment (1); oetacademy-web #201, #200,
+its ADR-0038), in contracts `contracts-v1.13.0` (PR #202), and its player plays 1.23 since PR #203 (merged 2026-10-30).
+The site asked the engine to pin the release: `oetacademy-contracts-1.13.0.zip`, SHA-256
+`73e9089cbf9aa2f50f5ccf51568476eea57b7eb37d7c5b624ca8ccb457957531`.
+
+### Decision
+
+1. **The lock** (`spike/publish/contracts.lock.json`) names `contracts-v1.13.0` and that SHA-256; the zip downloaded with
+   `gh` had that hash.
+2. **What 1.13.0 adds** (its README, "Bundle formats 1.13 to 1.23", "Marking schemes", "Self-check"): `"1.23"` in
+   `format_version` and the manifest's `bundle_format_version`; a state's `practice` and a pause cue's `practice`; the
+   items are the handout schema's `$defs/item` (non-exam profile) with `selfcheck`; the marking scheme
+   `oet-typed-form-v1` and its test vectors; the rules `LP-PRACTICE`, `LP-PRACTICE-HTML`, `LP-PRACTICE-ITEM`,
+   `LP-PRACTICE-CHECK`, `LP-ID-BLOCK`, `LP-FIXTURE` and the item rules with the prefix `LP-` (`LP-HASH`,
+   `LP-MARKING-SCHEME`, `LP-TOPIC-UNKNOWN`, `LP-SELFCHECK-POINT` and the others). Unchanged: the session section tag
+   list, taxonomy v2 and v3 (the same SHA-256 as 1.12.0), the professions, and every rule for formats 1.8 to 1.22.
+3. **The engine's check** ports `LP-ID-BLOCK`, `LP-FIXTURE` (a package is production: a fixture ID is an error) and the
+   first half of `LP-PRACTICE` (practice only from 1.23) as `lesson_package.check_practice`. The rest of the 1.23 rules
+   are checked by **the site's own validator at the pinned tag**, run on every 1.23 package before its release:
+   `pnpm contracts:validate lesson <package folder> --refuse-fixtures` from a clone of oetacademy-web at
+   `contracts-v1.13.0` (its `packages/shared`, node 24), 0 errors required.
+4. **Every earlier package still validates exactly as before**: all 61 package folders in the library checked with the
+   engine's check at main and contracts 1.12.0, and with this change and contracts 1.13.0: the same findings, line for
+   line, in all 61.
+
+### Consequences
+
+- A 1.23 lesson can be packaged once its final gate is recorded. The tests that name the pinned version name 1.13.0.
+- To reverse: a new amendment pinning another release; the lock and this record change together.

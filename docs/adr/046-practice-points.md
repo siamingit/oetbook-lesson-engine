@@ -1,4 +1,4 @@
-# 046 — Practice points: the learner writes in the middle of a lesson (bundle format 1.23, proposed)
+# 046 — Practice points: the learner writes in the middle of a lesson (bundle format 1.23)
 
 Date: 2026-10-29
 Status: **Accepted for the engine and its preview player; bundle format 1.23 proposed to the site.** The owner's plan
@@ -105,3 +105,70 @@ has tried the prototype. A change after the site's answer is an amendment of thi
   method is written for Writing first); Writing 4 rebuilt as a whole (after the owner has tried the prototype and the site
   has answered).
 - To reverse: a new ADR; a lesson without `analysis/practice.json` is as before.
+
+## Amendment (1), 2026-10-30: the owner's try and the site's answer; format 1.23 released
+
+### Context
+
+- **The owner tried the prototype** on 2026-10-30 and approved it ("wonderful"): the pop-up, the word-by-word method and
+  the method figures of docs/01-METHODOLOGY.md §25 (about one practice point per piece of a sentence, 20 to 60 seconds of
+  teaching between points). Recorded on engine issue #67 and oetacademy-web #201.
+- **The site accepted the contract** (oetacademy-web #201 and #200, 2026-10-30; its ADR-0038, ADR-0031 Amendment 1,
+  ADR-0032 Amendment 2): bundle format 1.23 as written, rules 56 and 57; contracts `contracts-v1.13.0` (PR #202); the
+  site's player plays 1.23 (PR #203, merged 2026-10-30 12:54 UTC: "You may publish sessions at 1.23").
+- The site's decisions, which change this ADR:
+  1. **Nothing is stored** (the owner's decision): no attempts, no `item_responses`, no scores, no mastery or study-plan
+     input, no statistics, no flag queue; the items are not registered in the site's `content_ids`. Marking happens in
+     the learner's browser. "Again" (an answered point reached again) lasts one page load.
+  2. **The engine's ID block is 900000-989999, in every skill** (`oa-<skill>-NNNNNN`), for items, parts, options and
+     self-check points. Permanent and unique within a bundle and across all the engine's bundles; the site checks only
+     within one bundle, so uniqueness across bundles is the engine's to keep. Fixture IDs (990000-999999) are refused in
+     production (`LP-FIXTURE`); an ID outside the block is refused (`LP-ID-BLOCK`).
+  3. **`oet-typed-form-v1` is accepted** as decision 3 proposed it, with the site's test vectors
+     (`test-vectors/oet-typed-form-v1.json`): one final mark only is dropped ("a 47-year-old.." stays wrong).
+  4. **`selfcheck` is accepted** (#200): `$defs/selfcheckItem` in the non-exam profile; the interim `check` stays valid
+     in 1.23, and the site asks the engine to move to `selfcheck`.
+  5. No container and no attempt mode are needed while nothing is stored.
+
+### Decision
+
+1. **Format 1.23 is released** (no longer "proposed"): docs/04-LESSON-BUNDLE.md and the changelog's §9c are its
+   specification as the site accepted it. The tag `bundle-format-v1.23` is made on the merge commit of this change.
+2. **IDs (replaces decision 6).** Every item and part ID is issued by the engine's registry, `spike/practice/ids.json`
+   (format `oetbook-practice-ids` version 1, in the repository): one entry per ID, `{id, lesson, point, slot, issued}`.
+   Each lesson has its own range of the block, assigned by the owner and set once with `practice_points.reserve`
+   (Writing 4 900000-900999, Grammar 1 950000-950999, Grammar 2 951000-951999; ranges never overlap and never change).
+   `practice_points.issue(lesson, point, slot)` returns the ID already issued for that slot or the next number of the
+   lesson's own range, so a lesson's generator can be re-run without moving an ID and never reaches into another
+   lesson's range; a lesson with no range is refused. Entries are never removed: a dropped point
+   keeps its IDs, which are never issued again; an ID never moves to another lesson or point. Numbers are unique across
+   skills. The builder refuses an ID outside the block or not issued for that lesson and point, so a fixture ID can no
+   longer be built. Option and self-check point IDs are `<item id>-o<n>` and `<item id>-c<n>` (not registered: they
+   belong to their item).
+3. **A whole sentence is a `selfcheck` item (replaces decision 4's interim form).** The builder refuses a point's
+   `check`; the reference player renders `selfcheck` (the sentence box; after Check the learner's sentence beside the
+   model, the points as tick boxes, the feedback key). It keeps rendering a `check` it is given, since the format allows
+   it. The reference player and the builder also take **`errorspot`** (ADR-0032; decision 2 named it): the learner taps
+   the wrong word and types the right words, for finding and fixing a mistake in a wrong version of an opening.
+4. **Nothing is recorded (replaces decision 7).** The bundle has no attempt or recording field (it never had one); the
+   reference player no longer keeps attempts (`window.__practiceAttempts` is gone), only the page's memory of what was
+   answered, for "Again". Decision 5's place for AI marking is the `selfcheck`'s reserved `scoring.method` `"ai"` (the
+   site refuses it until a marking model exists).
+5. **`oet-typed-form-v1`**: the reference player follows the site's definition (one final mark dropped) and passes all 27
+   of the site's vectors (`spike/tests/test_typed_form_vectors.py`, run against the pinned zip).
+6. **Contracts 1.13.0 are pinned** (ADR 039 amendment of 2026-10-30). Before release, a 1.23 package is also checked with
+   the site's own validator at the pinned tag, `pnpm contracts:validate lesson <package folder> --refuse-fixtures`: 0
+   errors (docs/03-RUNBOOK.md step 18b). The engine's own check ports `LP-ID-BLOCK`, `LP-FIXTURE` and the first half of
+   `LP-PRACTICE`; the site's validator checks the items in full.
+7. **The method of docs/01-METHODOLOGY.md §25 is confirmed** by the owner's try: it is the method, no longer a proposal.
+
+### Consequences
+
+- Code: `practice_points.py` (the block, the registry, `selfcheck` and `errorspot`, the interim `check` refused), the
+  reference player (`selfcheck`, `errorspot`, no attempt log, one final mark), `lesson_package.py` (`check_practice`), the lock; tests
+  `test_practice_points` and `test_typed_form_vectors`.
+- The prototype in `C:\OET\lessons\_practice-points-prototype` (fixture IDs, the interim `check`) cannot be rebuilt with
+  this code; it stays as it is, a record of the owner's try. Writing 4 is rebuilt whole with practice points next.
+- Proof: render_compare before and after on every built lesson, and restyle_proof on every published lesson (ADR 043's
+  standing rule), recorded in the pull request.
+- To reverse: a new amendment; IDs issued stay issued.
