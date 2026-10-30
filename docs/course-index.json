@@ -67,14 +67,11 @@
    "description": "Learn the verb tenses, when to use each one, and how to use them in your OET writing.",
    "course": "grammar",
    "order": 1,
-   "length_s": 7136.995,
-   "length": "118:56",
-   "bundle_format": "1.22",
-   "status": "approved",
-   "approval": {
-    "by": "siavash",
-    "on": "2026-10-27 09:37"
-   },
+   "length_s": 7744.561,
+   "length": "129:04",
+   "bundle_format": "1.23",
+   "status": "built",
+   "approval": null,
    "source": {
     "folder": "source",
     "recording": "source/video.mp4",
@@ -189,7 +186,7 @@
      "category": "c1",
      "start_s": 127.51,
      "start": "2:07",
-     "end_s": 1127.485,
+     "end_s": 1216.12,
      "topics": [
       {
        "board": "pages-05-06_t2",
@@ -296,328 +293,328 @@
         {
          "text": "Reject the third-person -s after 'will'",
          "block": "pages-05-06_k31",
-         "start_s": 415.07,
-         "start": "6:55"
+         "start_s": 435.34,
+         "start": "7:15"
         },
         {
          "text": "The three simple formulas in words",
          "block": "pages-05-06_k33",
-         "start_s": 435.469,
-         "start": "7:15"
+         "start_s": 455.739,
+         "start": "7:35"
         },
         {
          "text": "the three continuous examples",
          "block": "pages-05-06_k34",
-         "start_s": 449.431,
-         "start": "7:29"
+         "start_s": 469.701,
+         "start": "7:49"
         },
         {
          "text": "Meaning of the past continuous",
          "block": "pages-05-06_k37",
-         "start_s": 466.55,
-         "start": "7:46"
+         "start_s": 486.82,
+         "start": "8:06"
         },
         {
          "text": "Role of the time clause",
          "block": "pages-05-06_k38",
-         "start_s": 474.267,
-         "start": "7:54"
+         "start_s": 494.537,
+         "start": "8:14"
         },
         {
          "text": "The -ing form never changes",
          "block": "pages-05-06_k39",
-         "start_s": 480.89,
-         "start": "8:00"
+         "start_s": 501.16,
+         "start": "8:21"
         },
         {
          "text": "The helper sets the time",
          "block": "pages-05-06_k40",
-         "start_s": 493.812,
-         "start": "8:13"
+         "start_s": 514.082,
+         "start": "8:34"
         },
         {
          "text": "Was or were, by person",
          "block": "pages-05-06_k41",
-         "start_s": 501.602,
-         "start": "8:21"
+         "start_s": 521.872,
+         "start": "8:41"
         },
         {
          "text": "Block the 'you was' error",
          "block": "pages-05-06_k42",
-         "start_s": 512.922,
-         "start": "8:32"
+         "start_s": 533.192,
+         "start": "8:53"
         },
         {
          "text": "Show the correct form",
          "block": "pages-05-06_k44",
-         "start_s": 523.525,
-         "start": "8:43"
+         "start_s": 543.795,
+         "start": "9:03"
         },
         {
          "text": "Correct the future continuous example",
          "block": "pages-05-06_k46",
-         "start_s": 534.378,
-         "start": "8:54"
+         "start_s": 554.648,
+         "start": "9:14"
         },
         {
          "text": "The three continuous formulas in words",
          "block": "pages-05-06_k47",
-         "start_s": 539.453,
-         "start": "8:59"
+         "start_s": 559.723,
+         "start": "9:19"
         },
         {
          "text": "the two perfect examples",
          "block": "pages-05-06_k48",
-         "start_s": 556.671,
-         "start": "9:16"
+         "start_s": 576.941,
+         "start": "9:36"
         },
         {
          "text": "State the meaning of the perfect correctly",
          "block": "pages-05-06_k50",
-         "start_s": 569.593,
-         "start": "9:29"
+         "start_s": 589.863,
+         "start": "9:49"
         },
         {
          "text": "Show a perfect form that is still true now",
          "block": "pages-05-06_k51",
-         "start_s": 586.87,
-         "start": "9:46"
+         "start_s": 607.14,
+         "start": "10:07"
         },
         {
          "text": "Where each perfect form reaches",
          "block": "pages-05-06_k53",
-         "start_s": 601.799,
-         "start": "10:01"
+         "start_s": 622.069,
+         "start": "10:22"
         },
         {
          "text": "Draw the later point of time",
          "block": "pages-05-06_k54",
-         "start_s": 610.567,
-         "start": "10:10"
+         "start_s": 630.837,
+         "start": "10:30"
         },
         {
          "text": "Rule for choosing past or present perfect",
          "block": "pages-05-06_k55",
-         "start_s": 629.848,
-         "start": "10:29"
+         "start_s": 650.118,
+         "start": "10:50"
         },
         {
          "text": "Paraphrase the past perfect example in English",
          "block": "pages-05-06_k56",
-         "start_s": 642.661,
-         "start": "10:42"
+         "start_s": 662.931,
+         "start": "11:02"
         },
         {
          "text": "Define the past participle",
          "block": "pages-05-06_k57",
-         "start_s": 649.698,
-         "start": "10:49"
+         "start_s": 669.968,
+         "start": "11:09"
         },
         {
          "text": "Regular verbs hide the difference",
          "block": "pages-05-06_k58",
-         "start_s": 661.091,
-         "start": "11:01"
+         "start_s": 681.361,
+         "start": "11:21"
         },
         {
          "text": "Only some irregular verbs show the difference",
          "block": "pages-05-06_k59",
-         "start_s": 668.797,
-         "start": "11:08"
+         "start_s": 689.067,
+         "start": "11:29"
         },
         {
          "text": "Reject the simple past after 'had'",
          "block": "pages-05-06_k60",
-         "start_s": 682.26,
-         "start": "11:22"
+         "start_s": 702.53,
+         "start": "11:42"
         },
         {
          "text": "Show the correct perfect with an irregular verb",
          "block": "pages-05-06_k62",
-         "start_s": 693.354,
-         "start": "11:33"
+         "start_s": 713.624,
+         "start": "11:53"
         },
         {
          "text": "Choose has or have by person",
          "block": "pages-05-06_k64",
-         "start_s": 703.357,
-         "start": "11:43"
+         "start_s": 723.627,
+         "start": "12:03"
         },
         {
          "text": "The helper in the past and the future perfect",
          "block": "pages-05-06_k65",
-         "start_s": 713.927,
-         "start": "11:53"
+         "start_s": 734.197,
+         "start": "12:14"
         },
         {
          "text": "Reject 'will has'",
          "block": "pages-05-06_k66",
-         "start_s": 720.301,
-         "start": "12:00"
+         "start_s": 740.571,
+         "start": "12:20"
         },
         {
          "text": "The perfect formula in words",
          "block": "pages-05-06_k68",
-         "start_s": 736.015,
-         "start": "12:16"
+         "start_s": 756.285,
+         "start": "12:36"
         },
         {
          "text": "Two tenses can carry the same message",
          "block": "pages-05-06_k69",
-         "start_s": 749.062,
-         "start": "12:29"
+         "start_s": 769.332,
+         "start": "12:49"
         },
         {
          "text": "Limit: no present perfect with a fixed past point",
          "block": "pages-05-06_k71",
-         "start_s": 763.528,
-         "start": "12:43"
+         "start_s": 783.798,
+         "start": "13:03"
         },
         {
          "text": "Time markers and focus",
          "block": "pages-05-06_k72",
-         "start_s": 775.625,
-         "start": "12:55"
+         "start_s": 795.895,
+         "start": "13:15"
         },
         {
          "text": "What the perfect puts the focus on",
          "block": "pages-05-06_k73",
-         "start_s": 788.503,
-         "start": "13:08"
+         "start_s": 808.773,
+         "start": "13:28"
         },
         {
          "text": "the two perfect continuous examples",
          "block": "pages-05-06_k74",
-         "start_s": 809.783,
-         "start": "13:29"
+         "start_s": 853.968,
+         "start": "14:13"
         },
         {
          "text": "Which future forms to learn here",
          "block": "pages-05-06_k76",
-         "start_s": 824.945,
-         "start": "13:44"
+         "start_s": 869.13,
+         "start": "14:29"
         },
         {
          "text": "What the perfect continuous combines",
          "block": "pages-05-06_k77",
-         "start_s": 835.223,
-         "start": "13:55"
+         "start_s": 879.408,
+         "start": "14:39"
         },
         {
          "text": "Read the past perfect continuous example",
          "block": "pages-05-06_k78",
-         "start_s": 843.954,
-         "start": "14:03"
+         "start_s": 888.139,
+         "start": "14:48"
         },
         {
          "text": "Draw the period and the later point",
          "block": "pages-05-06_k79",
-         "start_s": 852.704,
-         "start": "14:12"
+         "start_s": 896.889,
+         "start": "14:56"
         },
         {
          "text": "Separate what each part adds",
          "block": "pages-05-06_k80",
-         "start_s": 872.385,
-         "start": "14:32"
+         "start_s": 916.57,
+         "start": "15:16"
         },
         {
          "text": "Introduce 'been'",
          "block": "pages-05-06_k81",
-         "start_s": 881.155,
-         "start": "14:41"
+         "start_s": 925.34,
+         "start": "15:25"
         },
         {
          "text": "Choose has or have by person",
          "block": "pages-05-06_k82",
-         "start_s": 893.596,
-         "start": "14:53"
+         "start_s": 937.781,
+         "start": "15:37"
         },
         {
          "text": "The perfect continuous formula in words",
          "block": "pages-05-06_k83",
-         "start_s": 905.845,
-         "start": "15:05"
+         "start_s": 950.03,
+         "start": "15:50"
         }
        ]
       },
       {
        "board": "pages-05-06_t1",
        "title": "Time line: past, present and future",
-       "start_s": 925.446,
-       "start": "15:25",
+       "start_s": 987.631,
+       "start": "16:27",
        "points": [
         {
          "text": "Frame the lesson: time decides the tense",
          "block": "pages-05-06_k02",
-         "start_s": 925.112,
-         "start": "15:25"
+         "start_s": 987.297,
+         "start": "16:27"
         },
         {
          "text": "the diagram",
          "block": "pages-05-06_k01",
-         "start_s": 925.446,
-         "start": "15:25"
+         "start_s": 987.631,
+         "start": "16:27"
         },
         {
          "text": "Simple past for a finished past event",
          "block": "pages-05-06_k03",
-         "start_s": 947.136,
-         "start": "15:47"
+         "start_s": 1009.321,
+         "start": "16:49"
         },
         {
          "text": "Typical case-note events that take the simple past",
          "block": "pages-05-06_k04",
-         "start_s": 956.452,
-         "start": "15:56"
+         "start_s": 1018.637,
+         "start": "16:58"
         },
         {
          "text": "Teach the clinical verb 'experience'",
          "block": "pages-05-06_k05",
-         "start_s": 970.065,
-         "start": "16:10"
+         "start_s": 1032.25,
+         "start": "17:12"
         },
         {
          "text": "Show the common partners of 'experience'",
          "block": "pages-05-06_k06",
-         "start_s": 992.376,
-         "start": "16:32"
+         "start_s": 1054.561,
+         "start": "17:34"
         },
         {
          "text": "Present perfect for a condition that continues up to now",
          "block": "pages-05-06_k07",
-         "start_s": 1033.951,
-         "start": "17:13"
+         "start_s": 1096.136,
+         "start": "18:16"
         },
         {
          "text": "Contrast a closed past event with one that continues",
          "block": "pages-05-06_k08",
-         "start_s": 1044.482,
-         "start": "17:24"
+         "start_s": 1106.667,
+         "start": "18:26"
         },
         {
          "text": "Set the aim of the diagram",
          "block": "pages-05-06_k09",
-         "start_s": 1055.772,
-         "start": "17:35"
+         "start_s": 1117.957,
+         "start": "18:37"
         },
         {
          "text": "Present simple for a standing fact about the patient",
          "block": "pages-05-06_k10",
-         "start_s": 1077.112,
-         "start": "17:57"
+         "start_s": 1139.297,
+         "start": "18:59"
         },
         {
          "text": "Where future time appears in OET writing",
          "block": "pages-05-06_k11",
-         "start_s": 1093.747,
-         "start": "18:13"
+         "start_s": 1155.932,
+         "start": "19:15"
         },
         {
          "text": "Recap the three main choices",
          "block": "pages-05-06_k12",
-         "start_s": 1104.31,
-         "start": "18:24"
+         "start_s": 1166.495,
+         "start": "19:26"
         }
        ]
       }
@@ -627,22 +624,22 @@
        "block": "pages-05-06_k50",
        "kind": "rule",
        "text": "A perfect form connects an action or a state to a later point in time: up to now, or up to a point in the past. It does not mean the action is finished.",
-       "start_s": 569.593,
-       "start": "9:29"
+       "start_s": 589.863,
+       "start": "9:49"
       },
       {
        "block": "pages-05-06_k71",
        "kind": "warning",
        "text": "'Before admission' is a fixed point in the past. For this sentence choose the simple past or the past perfect, not the present perfect.",
-       "start_s": 763.528,
-       "start": "12:43"
+       "start_s": 783.798,
+       "start": "13:03"
       },
       {
        "block": "pages-05-06_k12",
        "kind": "rule",
        "text": "Finished in the past: simple past. Started in the past and still true now: present perfect. A fact about now: present simple.",
-       "start_s": 1104.31,
-       "start": "18:24"
+       "start_s": 1166.495,
+       "start": "19:26"
       }
      ],
      "terms": [
@@ -699,69 +696,69 @@
        "block": "pages-05-06_k39",
        "label": "Form",
        "term": "The -ing form",
-       "start_s": 480.89,
-       "start": "8:00"
+       "start_s": 501.16,
+       "start": "8:21"
       },
       {
        "block": "pages-05-06_k57",
        "label": "New term",
        "term": "Past participle",
-       "start_s": 649.698,
-       "start": "10:49"
+       "start_s": 669.968,
+       "start": "11:09"
       },
       {
        "block": "pages-05-06_k72",
        "label": "Time words",
        "term": "Time markers",
-       "start_s": 775.625,
-       "start": "12:55"
+       "start_s": 795.895,
+       "start": "13:15"
       },
       {
        "block": "pages-05-06_k77",
        "label": "Form",
        "term": "Perfect continuous",
-       "start_s": 835.223,
-       "start": "13:55"
+       "start_s": 879.408,
+       "start": "14:39"
       },
       {
        "block": "pages-05-06_k81",
        "label": "Form",
        "term": "been",
-       "start_s": 881.155,
-       "start": "14:41"
+       "start_s": 925.34,
+       "start": "15:25"
       },
       {
        "block": "pages-05-06_k05",
        "label": "New word",
        "term": "experience",
-       "start_s": 970.065,
-       "start": "16:10"
+       "start_s": 1032.25,
+       "start": "17:12"
       }
      ],
      "wrong_examples": [
       {
        "block": "pages-05-06_k31",
        "text": "The patient will smokes tomorrow.",
-       "start_s": 415.07,
-       "start": "6:55"
+       "start_s": 435.34,
+       "start": "7:15"
       },
       {
        "block": "pages-05-06_k42",
        "text": "You was smoking.",
-       "start_s": 512.922,
-       "start": "8:32"
+       "start_s": 533.192,
+       "start": "8:53"
       },
       {
        "block": "pages-05-06_k60",
        "text": "Had wrote.",
-       "start_s": 682.26,
-       "start": "11:22"
+       "start_s": 702.53,
+       "start": "11:42"
       },
       {
        "block": "pages-05-06_k66",
        "text": "The patient will has.",
-       "start_s": 720.301,
-       "start": "12:00"
+       "start_s": 740.571,
+       "start": "12:20"
       }
      ],
      "practice": [],
@@ -775,129 +772,129 @@
       7
      ],
      "category": "c1",
-     "start_s": 1127.485,
-     "start": "18:47",
-     "end_s": 1549.083,
+     "start_s": 1216.12,
+     "start": "20:16",
+     "end_s": 1678.868,
      "topics": [
       {
        "board": "page-7_t1",
        "title": "present simple column, past simple column, future simple column",
-       "start_s": 1127.485,
-       "start": "18:47",
+       "start_s": 1216.12,
+       "start": "20:16",
        "points": [
         {
          "text": "Fix the present-simple model sentence on the board and frame why tense choice matters",
          "block": "page-7_k01",
-         "start_s": 1127.485,
-         "start": "18:47"
+         "start_s": 1216.12,
+         "start": "20:16"
         },
         {
          "text": "Fix the past-simple model sentence and state its use",
          "block": "page-7_k16",
-         "start_s": 1127.485,
-         "start": "18:47"
+         "start_s": 1216.12,
+         "start": "20:16"
         },
         {
          "text": "Fix the future-simple model sentence and state its use",
          "block": "page-7_k23",
-         "start_s": 1127.485,
-         "start": "18:47"
+         "start_s": 1216.12,
+         "start": "20:16"
         },
         {
          "text": "Present simple for a habit",
          "block": "page-7_k04",
-         "start_s": 1175.692,
-         "start": "19:35"
+         "start_s": 1264.327,
+         "start": "21:04"
         },
         {
          "text": "Present simple for a general truth",
          "block": "page-7_k06",
-         "start_s": 1195.814,
-         "start": "19:55"
+         "start_s": 1284.449,
+         "start": "21:24"
         },
         {
          "text": "Present simple for a fact about the patient",
          "block": "page-7_k08",
-         "start_s": 1210.994,
-         "start": "20:10"
+         "start_s": 1299.629,
+         "start": "21:39"
         },
         {
          "text": "Show the correct two-word time phrase against the one-word adjective",
          "block": "page-7_k10",
-         "start_s": 1229.692,
-         "start": "20:29"
+         "start_s": 1318.327,
+         "start": "21:58"
         },
         {
          "text": "Present simple used for a future event at a set time",
          "block": "page-7_k11",
-         "start_s": 1259.476,
-         "start": "20:59"
+         "start_s": 1348.111,
+         "start": "22:28"
         },
         {
          "text": "Draw the set future time of the scheduled event",
          "block": "page-7_k13",
-         "start_s": 1278.605,
-         "start": "21:18"
+         "start_s": 1367.24,
+         "start": "22:47"
         },
         {
          "text": "Both forms are possible for a fixed plan",
          "block": "page-7_k14",
-         "start_s": 1298.285,
-         "start": "21:38"
+         "start_s": 1386.92,
+         "start": "23:06"
         },
         {
          "text": "Draw the finished past action",
          "block": "page-7_k18",
-         "start_s": 1334.934,
-         "start": "22:14"
+         "start_s": 1442.909,
+         "start": "24:02"
         },
         {
          "text": "Introduce the past perfect with a proper earlier reference point",
          "block": "page-7_k19",
-         "start_s": 1352.688,
-         "start": "22:32"
+         "start_s": 1460.663,
+         "start": "24:20"
         },
         {
          "text": "Reject the past perfect with only 'yesterday'",
          "block": "page-7_k21",
-         "start_s": 1385.292,
-         "start": "23:05"
+         "start_s": 1515.077,
+         "start": "25:15"
         },
         {
          "text": "Draw the action still to come",
          "block": "page-7_k25",
-         "start_s": 1423.491,
-         "start": "23:43"
+         "start_s": 1553.276,
+         "start": "25:53"
         },
         {
          "text": "Future simple for a prediction",
          "block": "page-7_k26",
-         "start_s": 1436.242,
-         "start": "23:56"
+         "start_s": 1566.027,
+         "start": "26:06"
         },
         {
          "text": "Future simple for a decision",
          "block": "page-7_k28",
-         "start_s": 1482.653,
-         "start": "24:42"
+         "start_s": 1612.438,
+         "start": "26:52"
         },
         {
          "text": "Reject 'will' after 'I wish'",
          "block": "page-7_k29",
-         "start_s": 1494.311,
-         "start": "24:54"
+         "start_s": 1624.096,
+         "start": "27:04"
         },
         {
          "text": "Give the correct hope pattern with 'will'",
          "block": "page-7_k31",
-         "start_s": 1508.181,
-         "start": "25:08"
+         "start_s": 1637.966,
+         "start": "27:17"
         },
         {
          "text": "Sum up the uses of will",
          "block": "page-7_k33",
-         "start_s": 1531.829,
-         "start": "25:31"
+         "start_s": 1661.614,
+         "start": "27:41"
         }
        ]
       }
@@ -907,29 +904,29 @@
        "block": "page-7_k03",
        "kind": "rule",
        "text": "You choose the verb tense. Choose the tense that matches the meaning you want.",
-       "start_s": 1153.165,
-       "start": "19:13"
+       "start_s": 1241.8,
+       "start": "20:41"
       },
       {
        "block": "page-7_k15",
        "kind": "rule",
        "text": "For a plan at a set time, you can use the present simple instead of 'will'.",
-       "start_s": 1307.055,
-       "start": "21:47"
+       "start_s": 1395.69,
+       "start": "23:15"
       },
       {
        "block": "page-7_k22",
        "kind": "rule",
        "text": "With one time in the past and nothing earlier, use the past simple.",
-       "start_s": 1397.402,
-       "start": "23:17"
+       "start_s": 1527.187,
+       "start": "25:27"
       },
       {
        "block": "page-7_k33",
        "kind": "rule",
        "text": "Use 'will' for a prediction, for a decision you make now, and after 'I hope'.",
-       "start_s": 1531.829,
-       "start": "25:31"
+       "start_s": 1661.614,
+       "start": "27:41"
       }
      ],
      "terms": [
@@ -937,36 +934,36 @@
        "block": "page-7_k19",
        "label": "Form",
        "term": "Past perfect",
-       "start_s": 1352.688,
-       "start": "22:32"
+       "start_s": 1460.663,
+       "start": "24:20"
       },
       {
        "block": "page-7_k26",
        "label": "Usage",
        "term": "Prediction",
-       "start_s": 1436.242,
-       "start": "23:56"
+       "start_s": 1566.027,
+       "start": "26:06"
       },
       {
        "block": "page-7_k28",
        "label": "Usage",
        "term": "Decision",
-       "start_s": 1482.653,
-       "start": "24:42"
+       "start_s": 1612.438,
+       "start": "26:52"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-7_k21",
        "text": "The patient had smoked yesterday.",
-       "start_s": 1385.292,
-       "start": "23:05"
+       "start_s": 1515.077,
+       "start": "25:15"
       },
       {
        "block": "page-7_k29",
        "text": "I wish you will get well tomorrow morning.",
-       "start_s": 1494.311,
-       "start": "24:54"
+       "start_s": 1624.096,
+       "start": "27:04"
       }
      ],
      "practice": [],
@@ -980,147 +977,147 @@
       8
      ],
      "category": "c1",
-     "start_s": 1549.083,
-     "start": "25:49",
-     "end_s": 2043.829,
+     "start_s": 1678.868,
+     "start": "27:58",
+     "end_s": 2219.714,
      "topics": [
       {
        "board": "page-8_t1",
        "title": "the three model sentences, the present column, the past column, the future column",
-       "start_s": 1549.083,
-       "start": "25:49",
+       "start_s": 1678.868,
+       "start": "27:58",
        "points": [
         {
          "text": "Set up the board: the same action shown in three tenses",
          "block": "page-8_k01",
-         "start_s": 1549.083,
-         "start": "25:49"
+         "start_s": 1678.868,
+         "start": "27:58"
         },
         {
          "text": "Define the term continuous tense in English",
          "block": "page-8_k05",
-         "start_s": 1588.843,
-         "start": "26:28"
+         "start_s": 1718.628,
+         "start": "28:38"
         },
         {
          "text": "State the maintainer's framing: in progress at a point, only the point moves",
          "block": "page-8_k06",
-         "start_s": 1602.312,
-         "start": "26:42"
+         "start_s": 1732.097,
+         "start": "28:52"
         },
         {
          "text": "Draw the three points on one axis",
          "block": "page-8_k07",
-         "start_s": 1614.383,
-         "start": "26:54"
+         "start_s": 1744.168,
+         "start": "29:04"
         },
         {
          "text": "Name the three points in words",
          "block": "page-8_k08",
-         "start_s": 1643.703,
-         "start": "27:23"
+         "start_s": 1773.488,
+         "start": "29:33"
         },
         {
          "text": "First use: a temporary action begun before now and not finished",
          "block": "page-8_k10",
-         "start_s": 1655.46,
-         "start": "27:35"
+         "start_s": 1785.245,
+         "start": "29:45"
         },
         {
          "text": "Draw the present continuous on a timeline",
          "block": "page-8_k11",
-         "start_s": 1670.662,
-         "start": "27:50"
+         "start_s": 1800.447,
+         "start": "30:00"
         },
         {
          "text": "Second use: a habit the patient still has",
          "block": "page-8_k12",
-         "start_s": 1696.974,
-         "start": "28:16"
+         "start_s": 1826.759,
+         "start": "30:26"
         },
         {
          "text": "Show when this habit use is needed",
          "block": "page-8_k14",
-         "start_s": 1726.13,
-         "start": "28:46"
+         "start_s": 1855.915,
+         "start": "30:55"
         },
         {
          "text": "Contrast present continuous with present simple in English",
          "block": "page-8_k15",
-         "start_s": 1745.739,
-         "start": "29:05"
+         "start_s": 1875.524,
+         "start": "31:15"
         },
         {
          "text": "The present continuous does not need a time marker",
          "block": "page-8_k17",
-         "start_s": 1778.616,
-         "start": "29:38"
+         "start_s": 1908.401,
+         "start": "31:48"
         },
         {
          "text": "Explain the action as in progress at the moment of admission",
          "block": "page-8_k19",
-         "start_s": 1795.244,
-         "start": "29:55"
+         "start_s": 1925.029,
+         "start": "32:05"
         },
         {
          "text": "Draw the past continuous on a timeline",
          "block": "page-8_k20",
-         "start_s": 1813.158,
-         "start": "30:13"
+         "start_s": 1942.943,
+         "start": "32:22"
         },
         {
          "text": "Second past use: a habit that kept going over a past period",
          "block": "page-8_k21",
-         "start_s": 1839.394,
-         "start": "30:39"
+         "start_s": 1969.179,
+         "start": "32:49"
         },
         {
          "text": "Separate the two past continuous uses",
          "block": "page-8_k23",
-         "start_s": 1867.489,
-         "start": "31:07"
+         "start_s": 1997.274,
+         "start": "33:17"
         },
         {
          "text": "Define the term time marker",
          "block": "page-8_k24",
-         "start_s": 1903.97,
-         "start": "31:43"
+         "start_s": 2060.095,
+         "start": "34:20"
         },
         {
          "text": "Show how the time marker completes the sentence",
          "block": "page-8_k25",
-         "start_s": 1913.783,
-         "start": "31:53"
+         "start_s": 2069.908,
+         "start": "34:29"
         },
         {
          "text": "Separate correct grammar from complete meaning",
          "block": "page-8_k26",
-         "start_s": 1934.46,
-         "start": "32:14"
+         "start_s": 2090.585,
+         "start": "34:50"
         },
         {
          "text": "State the future continuous use, with the printed line corrected",
          "block": "page-8_k28",
-         "start_s": 1951.547,
-         "start": "32:31"
+         "start_s": 2107.672,
+         "start": "35:07"
         },
         {
          "text": "Draw the future continuous on a timeline",
          "block": "page-8_k29",
-         "start_s": 1971.01,
-         "start": "32:51"
+         "start_s": 2127.135,
+         "start": "35:27"
         },
         {
          "text": "Show the future sentence also needs a time marker",
          "block": "page-8_k30",
-         "start_s": 1995.94,
-         "start": "33:15"
+         "start_s": 2152.065,
+         "start": "35:52"
         },
         {
          "text": "Close with the rule on when a time marker is needed",
          "block": "page-8_k31",
-         "start_s": 2022.203,
-         "start": "33:42"
+         "start_s": 2178.328,
+         "start": "36:18"
         }
        ]
       }
@@ -1130,29 +1127,29 @@
        "block": "page-8_k06",
        "kind": "rule",
        "text": "In all three sentences the action is in progress at a point in time. Only the point moves.",
-       "start_s": 1602.312,
-       "start": "26:42"
+       "start_s": 1732.097,
+       "start": "28:52"
       },
       {
        "block": "page-8_k17",
        "kind": "rule",
        "text": "The present continuous does not need a time marker: the tense already tells us the time is now. Add 'right now' only to stress this exact moment.",
-       "start_s": 1778.616,
-       "start": "29:38"
+       "start_s": 1908.401,
+       "start": "31:48"
       },
       {
        "block": "page-8_k26",
        "kind": "rule",
        "text": "The patient was smoking is not wrong grammar, but the meaning is not complete. The time marker completes it.",
-       "start_s": 1934.46,
-       "start": "32:14"
+       "start_s": 2090.585,
+       "start": "34:50"
       },
       {
        "block": "page-8_k31",
        "kind": "rule",
        "text": "The past continuous and the future continuous need a time marker. The present continuous does not.",
-       "start_s": 2022.203,
-       "start": "33:42"
+       "start_s": 2178.328,
+       "start": "36:18"
       }
      ],
      "terms": [
@@ -1160,22 +1157,22 @@
        "block": "page-8_k05",
        "label": "New term",
        "term": "Continuous tense",
-       "start_s": 1588.843,
-       "start": "26:28"
+       "start_s": 1718.628,
+       "start": "28:38"
       },
       {
        "block": "page-8_k12",
        "label": "New word",
        "term": "Persistent",
-       "start_s": 1696.974,
-       "start": "28:16"
+       "start_s": 1826.759,
+       "start": "30:26"
       },
       {
        "block": "page-8_k24",
        "label": "Time words",
        "term": "Time marker",
-       "start_s": 1903.97,
-       "start": "31:43"
+       "start_s": 2060.095,
+       "start": "34:20"
       }
      ],
      "wrong_examples": [],
@@ -1190,179 +1187,179 @@
       9
      ],
      "category": "c1",
-     "start_s": 2043.829,
-     "start": "34:03",
-     "end_s": 2451.347,
+     "start_s": 2219.714,
+     "start": "36:59",
+     "end_s": 2674.963,
      "topics": [
       {
        "board": "page-9_t1",
        "title": "what a perfect tense does",
-       "start_s": 2043.829,
-       "start": "34:03",
+       "start_s": 2219.714,
+       "start": "36:59",
        "points": [
         {
          "text": "Name the perfect tenses and give the core idea: a link to a later point.",
          "block": "page-9_k01",
-         "start_s": 2043.829,
-         "start": "34:03"
+         "start_s": 2219.714,
+         "start": "36:59"
         },
         {
          "text": "Show with an example that a perfect sentence is not one unbroken action.",
          "block": "page-9_k03",
-         "start_s": 2065.999,
-         "start": "34:25"
+         "start_s": 2241.884,
+         "start": "37:21"
         },
         {
          "text": "Correct the idea that a perfect form always means finished.",
          "block": "page-9_k05",
-         "start_s": 2096.465,
-         "start": "34:56"
+         "start_s": 2272.35,
+         "start": "37:52"
         },
         {
          "text": "Keep the continuous and the perfect apart.",
          "block": "page-9_k07",
-         "start_s": 2114.445,
-         "start": "35:14"
+         "start_s": 2290.33,
+         "start": "38:10"
         }
        ]
       },
       {
        "board": "page-9_t2",
        "title": "present perfect column",
-       "start_s": 2130.846,
-       "start": "35:30",
+       "start_s": 2306.731,
+       "start": "38:26",
        "points": [
         {
          "text": "Read the present-perfect example and give the result-now meaning.",
          "block": "page-9_k08",
-         "start_s": 2130.846,
-         "start": "35:30"
+         "start_s": 2306.731,
+         "start": "38:26"
         },
         {
          "text": "Draw the unspecified past action linked to now.",
          "block": "page-9_k10",
-         "start_s": 2154.11,
-         "start": "35:54"
+         "start_s": 2329.995,
+         "start": "38:49"
         },
         {
          "text": "Give the second use of the present perfect and the two time words.",
          "block": "page-9_k11",
-         "start_s": 2170.393,
-         "start": "36:10"
+         "start_s": 2346.278,
+         "start": "39:06"
         },
         {
          "text": "Clinical example with 'for'.",
          "block": "page-9_k13",
-         "start_s": 2196.553,
-         "start": "36:36"
+         "start_s": 2372.438,
+         "start": "39:32"
         },
         {
          "text": "Clinical example with 'since'.",
          "block": "page-9_k15",
-         "start_s": 2215.434,
-         "start": "36:55"
+         "start_s": 2391.319,
+         "start": "39:51"
         },
         {
          "text": "Define a time marker and say when to use one.",
          "block": "page-9_k17",
-         "start_s": 2233.162,
-         "start": "37:13"
+         "start_s": 2409.047,
+         "start": "40:09"
         },
         {
          "text": "Tie the time marker to the tense.",
          "block": "page-9_k19",
-         "start_s": 2255.821,
-         "start": "37:35"
+         "start_s": 2431.706,
+         "start": "40:31"
         }
        ]
       },
       {
        "board": "page-9_t3",
        "title": "past perfect column",
-       "start_s": 2271.254,
-       "start": "37:51",
+       "start_s": 2470.369,
+       "start": "41:10",
        "points": [
         {
          "text": "Read the past-perfect example and state its use.",
          "block": "page-9_k20",
-         "start_s": 2271.254,
-         "start": "37:51"
+         "start_s": 2470.369,
+         "start": "41:10"
         },
         {
          "text": "Draw the two past points.",
          "block": "page-9_k22",
-         "start_s": 2297.802,
-         "start": "38:17"
+         "start_s": 2496.917,
+         "start": "41:36"
         },
         {
          "text": "Say what the sentence is about: the result at the past point.",
          "block": "page-9_k23",
-         "start_s": 2315.389,
-         "start": "38:35"
+         "start_s": 2514.504,
+         "start": "41:54"
         },
         {
          "text": "Compare the later point in the two perfect forms.",
          "block": "page-9_k24",
-         "start_s": 2323.179,
-         "start": "38:43"
+         "start_s": 2522.294,
+         "start": "42:02"
         }
        ]
       },
       {
        "board": "page-9_t4",
        "title": "future perfect column",
-       "start_s": 2341.144,
-       "start": "39:01",
+       "start_s": 2540.259,
+       "start": "42:20",
        "points": [
         {
          "text": "Read the future-perfect example and state its use.",
          "block": "page-9_k25",
-         "start_s": 2341.144,
-         "start": "39:01"
+         "start_s": 2540.259,
+         "start": "42:20"
         },
         {
          "text": "Draw the future point.",
          "block": "page-9_k27",
-         "start_s": 2363.76,
-         "start": "39:23"
+         "start_s": 2562.875,
+         "start": "42:42"
         },
         {
          "text": "Keep the time marker even though the grammar allows dropping it.",
          "block": "page-9_k28",
-         "start_s": 2378.644,
-         "start": "39:38"
+         "start_s": 2577.759,
+         "start": "42:57"
         }
        ]
       },
       {
        "board": "page-9_t5",
        "title": "choosing between the three perfect tenses",
-       "start_s": 2392.438,
-       "start": "39:52",
+       "start_s": 2591.553,
+       "start": "43:11",
        "points": [
         {
          "text": "State the rule that selects the tense, and show the present perfect case.",
          "block": "page-9_k29",
-         "start_s": 2392.438,
-         "start": "39:52"
+         "start_s": 2591.553,
+         "start": "43:11"
         },
         {
          "text": "The past perfect case.",
          "block": "page-9_k31",
-         "start_s": 2407.408,
-         "start": "40:07"
+         "start_s": 2606.523,
+         "start": "43:26"
         },
         {
          "text": "The future perfect case.",
          "block": "page-9_k32",
-         "start_s": 2414.799,
-         "start": "40:14"
+         "start_s": 2613.914,
+         "start": "43:33"
         },
         {
          "text": "Closing rule of thumb.",
          "block": "page-9_k33",
-         "start_s": 2435.477,
-         "start": "40:35"
+         "start_s": 2634.592,
+         "start": "43:54"
         }
        ]
       }
@@ -1372,29 +1369,29 @@
        "block": "page-9_k06",
        "kind": "rule",
        "text": "A perfect form does not by itself tell you the action is finished.",
-       "start_s": 2107.136,
-       "start": "35:07"
+       "start_s": 2283.021,
+       "start": "38:03"
       },
       {
        "block": "page-9_k19",
        "kind": "rule",
        "text": "When you use a time marker, your tense must match it. 'For' and 'since' often go with the present perfect. They also go with the past perfect.",
-       "start_s": 2255.821,
-       "start": "37:35"
+       "start_s": 2431.706,
+       "start": "40:31"
       },
       {
        "block": "page-9_k28",
        "kind": "rule",
        "text": "Without 'before discharge tomorrow' the sentence is still grammatical, but the meaning is not complete. Keep the time marker.",
-       "start_s": 2378.644,
-       "start": "39:38"
+       "start_s": 2577.759,
+       "start": "42:57"
       },
       {
        "block": "page-9_k33",
        "kind": "rule",
        "text": "Choose the tense from the meaning you want and from the time markers in the sentence.",
-       "start_s": 2435.477,
-       "start": "40:35"
+       "start_s": 2634.592,
+       "start": "43:54"
       }
      ],
      "terms": [
@@ -1402,22 +1399,22 @@
        "block": "page-9_k01",
        "label": "Grammar term",
        "term": "Perfect tenses",
-       "start_s": 2043.829,
-       "start": "34:03"
+       "start_s": 2219.714,
+       "start": "36:59"
       },
       {
        "block": "page-9_k12",
        "label": "Time words",
        "term": "For and since",
-       "start_s": 2184.163,
-       "start": "36:24"
+       "start_s": 2360.048,
+       "start": "39:20"
       },
       {
        "block": "page-9_k17",
        "label": "Grammar term",
        "term": "Time marker",
-       "start_s": 2233.162,
-       "start": "37:13"
+       "start_s": 2409.047,
+       "start": "40:09"
       }
      ],
      "wrong_examples": [],
@@ -1432,129 +1429,129 @@
       10
      ],
      "category": "c1",
-     "start_s": 2451.347,
-     "start": "40:51",
-     "end_s": 2912.275,
+     "start_s": 2674.963,
+     "start": "44:34",
+     "end_s": 3182.161,
      "topics": [
       {
        "board": "page-10_t1",
        "title": "heading and the form of the perfect continuous, present perfect continuous row, past perfect continuous row, future perfect continuous row",
-       "start_s": 2451.347,
-       "start": "40:51",
+       "start_s": 2674.963,
+       "start": "44:34",
        "points": [
         {
          "text": "Define the perfect continuous as a blend of two forms",
          "block": "page-10_k01",
-         "start_s": 2451.347,
-         "start": "40:51"
+         "start_s": 2674.963,
+         "start": "44:34"
         },
         {
          "text": "State the usage of the past perfect continuous",
          "block": "page-10_k13",
-         "start_s": 2451.347,
-         "start": "40:51"
+         "start_s": 2674.963,
+         "start": "44:34"
         },
         {
          "text": "Show the future form on the corrected example",
          "block": "page-10_k22",
-         "start_s": 2451.347,
-         "start": "40:51"
+         "start_s": 2674.963,
+         "start": "44:34"
         },
         {
          "text": "Show which part of the form carries which meaning",
          "block": "page-10_k04",
-         "start_s": 2484.783,
-         "start": "41:24"
+         "start_s": 2708.399,
+         "start": "45:08"
         },
         {
          "text": "Same pattern in past and future time",
          "block": "page-10_k06",
-         "start_s": 2517.143,
-         "start": "41:57"
+         "start_s": 2740.759,
+         "start": "45:40"
         },
         {
          "text": "State the corrected usage: the action runs up to now",
          "block": "page-10_k08",
-         "start_s": 2546.334,
-         "start": "42:26"
+         "start_s": 2769.95,
+         "start": "46:09"
         },
         {
          "text": "Draw the three years running up to now",
          "block": "page-10_k10",
-         "start_s": 2597.525,
-         "start": "43:17"
+         "start_s": 2821.141,
+         "start": "47:01"
         },
         {
          "text": "English replacement for the first-language gloss of the example",
          "block": "page-10_k11",
-         "start_s": 2611.307,
-         "start": "43:31"
+         "start_s": 2834.923,
+         "start": "47:14"
         },
         {
          "text": "Name the emphasis of the form",
          "block": "page-10_k12",
-         "start_s": 2629.567,
-         "start": "43:49"
+         "start_s": 2853.183,
+         "start": "47:33"
         },
         {
          "text": "Correct what a perfect form means",
          "block": "page-10_k15",
-         "start_s": 2673.855,
-         "start": "44:33"
+         "start_s": 2919.531,
+         "start": "48:39"
         },
         {
          "text": "Counter-example showing a perfect form that is not finished",
          "block": "page-10_k16",
-         "start_s": 2690.777,
-         "start": "44:50"
+         "start_s": 2936.453,
+         "start": "48:56"
         },
         {
          "text": "English replacement for the first-language gloss of the past example",
          "block": "page-10_k18",
-         "start_s": 2717.506,
-         "start": "45:17"
+         "start_s": 2963.182,
+         "start": "49:23"
         },
         {
          "text": "Show how an added time phrase fixes the end point",
          "block": "page-10_k19",
-         "start_s": 2734.229,
-         "start": "45:34"
+         "start_s": 2979.905,
+         "start": "49:39"
         },
         {
          "text": "Draw the three years ending at the moment he quit",
          "block": "page-10_k21",
-         "start_s": 2755.281,
-         "start": "45:55"
+         "start_s": 3000.957,
+         "start": "50:00"
         },
         {
          "text": "Reject the printed ending and say why",
          "block": "page-10_k24",
-         "start_s": 2799.862,
-         "start": "46:39"
+         "start_s": 3045.538,
+         "start": "50:45"
         },
         {
          "text": "Define the grammar term used in the correction",
          "block": "page-10_k26",
-         "start_s": 2819.319,
-         "start": "46:59"
+         "start_s": 3064.995,
+         "start": "51:04"
         },
         {
          "text": "State the usage of the future perfect continuous",
          "block": "page-10_k27",
-         "start_s": 2837.68,
-         "start": "47:17"
+         "start_s": 3083.356,
+         "start": "51:23"
         },
         {
          "text": "Draw the duration running up to the future point",
          "block": "page-10_k28",
-         "start_s": 2856.097,
-         "start": "47:36"
+         "start_s": 3101.773,
+         "start": "51:41"
         },
         {
          "text": "What the sentence does and does not tell us",
          "block": "page-10_k29",
-         "start_s": 2887.732,
-         "start": "48:07"
+         "start_s": 3133.408,
+         "start": "52:13"
         }
        ]
       }
@@ -1564,15 +1561,15 @@
        "block": "page-10_k09",
        "kind": "rule",
        "text": "The present perfect continuous runs up to now. There is no later action here.",
-       "start_s": 2582.307,
-       "start": "43:02"
+       "start_s": 2805.923,
+       "start": "46:45"
       },
       {
        "block": "page-10_k15",
        "kind": "rule",
        "text": "A perfect form links an action to a later point in time. It does not mean the action is finished.",
-       "start_s": 2673.855,
-       "start": "44:33"
+       "start_s": 2919.531,
+       "start": "48:39"
       }
      ],
      "terms": [
@@ -1580,37 +1577,37 @@
        "block": "page-10_k01",
        "label": "Form",
        "term": "Perfect continuous",
-       "start_s": 2451.347,
-       "start": "40:51"
+       "start_s": 2674.963,
+       "start": "44:34"
       },
       {
        "block": "page-10_k05",
        "label": "Form",
        "term": "Been",
-       "start_s": 2504.051,
-       "start": "41:44"
+       "start_s": 2727.667,
+       "start": "45:27"
       },
       {
        "block": "page-10_k19",
        "label": "Time words",
        "term": "Before he quit",
-       "start_s": 2734.229,
-       "start": "45:34"
+       "start_s": 2979.905,
+       "start": "49:39"
       },
       {
        "block": "page-10_k26",
        "label": "Grammar term",
        "term": "Passive",
-       "start_s": 2819.319,
-       "start": "46:59"
+       "start_s": 3064.995,
+       "start": "51:04"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-10_k24",
        "text": "When he discharge",
-       "start_s": 2799.862,
-       "start": "46:39"
+       "start_s": 3045.538,
+       "start": "50:45"
       }
      ],
      "practice": [],
@@ -1624,103 +1621,103 @@
       11
      ],
      "category": "c1",
-     "start_s": 2912.275,
-     "start": "48:32",
-     "end_s": 3182.627,
+     "start_s": 3182.161,
+     "start": "53:02",
+     "end_s": 3452.513,
      "topics": [
       {
        "board": "page-11_t1",
        "title": "past perfect on the time line",
-       "start_s": 2912.275,
-       "start": "48:32",
+       "start_s": 3182.161,
+       "start": "53:02",
        "points": [
         {
          "text": "the past perfect example sentence and its diagram",
          "block": "page-11_k01",
-         "start_s": 2912.275,
-         "start": "48:32"
+         "start_s": 3182.161,
+         "start": "53:02"
         },
         {
          "text": "Name the three perfect forms as one family",
          "block": "page-11_k03",
-         "start_s": 2915.686,
-         "start": "48:35"
+         "start_s": 3185.572,
+         "start": "53:05"
         },
         {
          "text": "Define the past perfect form shown in the sentence",
          "block": "page-11_k04",
-         "start_s": 2949.364,
-         "start": "49:09"
+         "start_s": 3219.25,
+         "start": "53:39"
         },
         {
          "text": "State what the diagram shows about the reference point",
          "block": "page-11_k05",
-         "start_s": 2985.663,
-         "start": "49:45"
+         "start_s": 3255.549,
+         "start": "54:15"
         }
        ]
       },
       {
        "board": "page-11_t2",
        "title": "present perfect on the time line",
-       "start_s": 3001.775,
-       "start": "50:01",
+       "start_s": 3271.661,
+       "start": "54:31",
        "points": [
         {
          "text": "the present perfect example sentence and its diagram",
          "block": "page-11_k06",
-         "start_s": 3001.775,
-         "start": "50:01"
+         "start_s": 3271.661,
+         "start": "54:31"
         },
         {
          "text": "Define the present perfect form shown in the sentence",
          "block": "page-11_k08",
-         "start_s": 3006.988,
-         "start": "50:06"
+         "start_s": 3276.874,
+         "start": "54:36"
         },
         {
          "text": "Point at the last cigarette on the diagram",
          "block": "page-11_k09",
-         "start_s": 3051.431,
-         "start": "50:51"
+         "start_s": 3321.317,
+         "start": "55:21"
         },
         {
          "text": "Contrast the two past reference points",
          "block": "page-11_k10",
-         "start_s": 3067.714,
-         "start": "51:07"
+         "start_s": 3337.6,
+         "start": "55:37"
         }
        ]
       },
       {
        "board": "page-11_t3",
        "title": "future perfect on the time line",
-       "start_s": 3093.722,
-       "start": "51:33",
+       "start_s": 3363.608,
+       "start": "56:03",
        "points": [
         {
          "text": "the future perfect example sentence and its diagram",
          "block": "page-11_k11",
-         "start_s": 3093.722,
-         "start": "51:33"
+         "start_s": 3363.608,
+         "start": "56:03"
         },
         {
          "text": "Define the future perfect form shown in the sentence",
          "block": "page-11_k13",
-         "start_s": 3100.482,
-         "start": "51:40"
+         "start_s": 3370.368,
+         "start": "56:10"
         },
         {
          "text": "Show that the start of the action is open",
          "block": "page-11_k14",
-         "start_s": 3132.262,
-         "start": "52:12"
+         "start_s": 3402.148,
+         "start": "56:42"
         },
         {
          "text": "Fix the completion point in the student's mind",
          "block": "page-11_k15",
-         "start_s": 3157.45,
-         "start": "52:37"
+         "start_s": 3427.336,
+         "start": "57:07"
         }
        ]
       }
@@ -1730,8 +1727,8 @@
        "block": "page-11_k15",
        "kind": "rule",
        "text": "By the time the patient is discharged tomorrow, they will have smoked all their cigarettes.",
-       "start_s": 3157.45,
-       "start": "52:37"
+       "start_s": 3427.336,
+       "start": "57:07"
       }
      ],
      "terms": [
@@ -1739,29 +1736,29 @@
        "block": "page-11_k03",
        "label": "Form",
        "term": "The perfect forms",
-       "start_s": 2915.686,
-       "start": "48:35"
+       "start_s": 3185.572,
+       "start": "53:05"
       },
       {
        "block": "page-11_k04",
        "label": "Form",
        "term": "Had smoked",
-       "start_s": 2949.364,
-       "start": "49:09"
+       "start_s": 3219.25,
+       "start": "53:39"
       },
       {
        "block": "page-11_k08",
        "label": "Form",
        "term": "Has smoked",
-       "start_s": 3006.988,
-       "start": "50:06"
+       "start_s": 3276.874,
+       "start": "54:36"
       },
       {
        "block": "page-11_k13",
        "label": "Form",
        "term": "Will have smoked",
-       "start_s": 3100.482,
-       "start": "51:40"
+       "start_s": 3370.368,
+       "start": "56:10"
       }
      ],
      "wrong_examples": [],
@@ -1776,207 +1773,207 @@
       12
      ],
      "category": "c2",
-     "start_s": 3182.627,
-     "start": "53:02",
-     "end_s": 3618.012,
+     "start_s": 3452.513,
+     "start": "57:32",
+     "end_s": 3934.468,
      "topics": [
       {
        "board": "page-12_t1",
        "title": "the set of time markers",
-       "start_s": 3182.627,
-       "start": "53:02",
+       "start_s": 3452.513,
+       "start": "57:32",
        "points": [
         {
          "text": "Introduce the term and the six words the board will cover",
          "block": "page-12_k01",
-         "start_s": 3182.627,
-         "start": "53:02"
+         "start_s": 3452.513,
+         "start": "57:32"
         }
        ]
       },
       {
        "board": "page-12_t2",
        "title": "for and since with the present perfect",
-       "start_s": 3205.519,
-       "start": "53:25",
+       "start_s": 3475.405,
+       "start": "57:55",
        "points": [
         {
          "text": "Show the two model sentences and name the tense",
          "block": "page-12_k03",
-         "start_s": 3205.519,
-         "start": "53:25"
+         "start_s": 3475.405,
+         "start": "57:55"
         },
         {
          "text": "Contrast what each marker tells the reader",
          "block": "page-12_k06",
-         "start_s": 3235.631,
-         "start": "53:55"
+         "start_s": 3505.517,
+         "start": "58:25"
         },
         {
          "text": "Draw the period that runs up to now",
          "block": "page-12_k07",
-         "start_s": 3260.07,
-         "start": "54:20"
+         "start_s": 3529.956,
+         "start": "58:49"
         },
         {
          "text": "Fix the pair in one rule",
          "block": "page-12_k08",
-         "start_s": 3275.913,
-         "start": "54:35"
+         "start_s": 3545.799,
+         "start": "59:05"
         }
        ]
       },
       {
        "board": "page-12_t3",
        "title": "for with the simple past",
-       "start_s": 3286.321,
-       "start": "54:46",
+       "start_s": 3556.207,
+       "start": "59:16",
        "points": [
         {
          "text": "Show 'for' in a simple past sentence",
          "block": "page-12_k09",
-         "start_s": 3286.321,
-         "start": "54:46"
+         "start_s": 3556.207,
+         "start": "59:16"
         },
         {
          "text": "Show that the past period needs an end point, and gloss the phrase",
          "block": "page-12_k11",
-         "start_s": 3304.911,
-         "start": "55:04"
+         "start_s": 3574.797,
+         "start": "59:34"
         },
         {
          "text": "Contrast the finished period with the period that reaches now",
          "block": "page-12_k13",
-         "start_s": 3321.17,
-         "start": "55:21"
+         "start_s": 3591.056,
+         "start": "59:51"
         },
         {
          "text": "Draw the closed past period",
          "block": "page-12_k14",
-         "start_s": 3347.945,
-         "start": "55:47"
+         "start_s": 3617.831,
+         "start": "60:17"
         },
         {
          "text": "State the rule that decides the tense",
          "block": "page-12_k15",
-         "start_s": 3366.601,
-         "start": "56:06"
+         "start_s": 3636.487,
+         "start": "60:36"
         }
        ]
       },
       {
        "board": "page-12_t4",
        "title": "since, not from",
-       "start_s": 3380.281,
-       "start": "56:20",
+       "start_s": 3672.767,
+       "start": "61:12",
        "points": [
         {
          "text": "Show the printed wrong example",
          "block": "page-12_k16",
-         "start_s": 3380.281,
-         "start": "56:20"
+         "start_s": 3672.767,
+         "start": "61:12"
         },
         {
          "text": "Give the correct sentence and the rule behind it",
          "block": "page-12_k18",
-         "start_s": 3399.388,
-         "start": "56:39"
+         "start_s": 3691.874,
+         "start": "61:31"
         },
         {
          "text": "Warn about the common slip, without the first-language explanation",
          "block": "page-12_k20",
-         "start_s": 3428.938,
-         "start": "57:08"
+         "start_s": 3721.424,
+         "start": "62:01"
         }
        ]
       },
       {
        "board": "page-12_t5",
        "title": "ago with the simple past",
-       "start_s": 3447.521,
-       "start": "57:27",
+       "start_s": 3763.977,
+       "start": "62:43",
        "points": [
         {
          "text": "Show the model sentence with 'ago'",
          "block": "page-12_k22",
-         "start_s": 3447.521,
-         "start": "57:27"
+         "start_s": 3763.977,
+         "start": "62:43"
         },
         {
          "text": "Draw the point counted back from now",
          "block": "page-12_k24",
-         "start_s": 3460.553,
-         "start": "57:40"
+         "start_s": 3777.009,
+         "start": "62:57"
         },
         {
          "text": "State the tense rule for 'ago'",
          "block": "page-12_k25",
-         "start_s": 3470.181,
-         "start": "57:50"
+         "start_s": 3786.637,
+         "start": "63:06"
         }
        ]
       },
       {
        "board": "page-12_t6",
        "title": "in and on with dates in the simple past",
-       "start_s": 3484.851,
-       "start": "58:04",
+       "start_s": 3801.307,
+       "start": "63:21",
        "points": [
         {
          "text": "Show the two dated sentences and name the tense",
          "block": "page-12_k26",
-         "start_s": 3484.851,
-         "start": "58:04"
+         "start_s": 3801.307,
+         "start": "63:21"
         },
         {
          "text": "Define the passive, met here for the first time",
          "block": "page-12_k29",
-         "start_s": 3515.361,
-         "start": "58:35"
+         "start_s": 3831.817,
+         "start": "63:51"
         },
         {
          "text": "Stop students reading the passive as a different tense",
          "block": "page-12_k30",
-         "start_s": 3530.401,
-         "start": "58:50"
+         "start_s": 3846.857,
+         "start": "64:06"
         },
         {
          "text": "Point forward to the choice of preposition",
          "block": "page-12_k31",
-         "start_s": 3542.353,
-         "start": "59:02"
+         "start_s": 3858.809,
+         "start": "64:18"
         }
        ]
       },
       {
        "board": "page-12_t7",
        "title": "choosing in, on or at",
-       "start_s": 3561.132,
-       "start": "59:21",
+       "start_s": 3877.588,
+       "start": "64:37",
        "points": [
         {
          "text": "Set out the three prepositions in a small table",
          "block": "page-12_k32",
-         "start_s": 3561.132,
-         "start": "59:21"
+         "start_s": 3877.588,
+         "start": "64:37"
         },
         {
          "text": "Contrast a date with a clock time",
          "block": "page-12_k33",
-         "start_s": 3574.622,
-         "start": "59:34"
+         "start_s": 3891.078,
+         "start": "64:51"
         },
         {
          "text": "Warn against 'at' with a year or a month",
          "block": "page-12_k34",
-         "start_s": 3589.31,
-         "start": "59:49"
+         "start_s": 3905.766,
+         "start": "65:05"
         },
         {
          "text": "Close with the four jobs of the time markers",
          "block": "page-12_k35",
-         "start_s": 3599.122,
-         "start": "59:59"
+         "start_s": 3915.578,
+         "start": "65:15"
         }
        ]
       }
@@ -1986,36 +1983,36 @@
        "block": "page-12_k08",
        "kind": "rule",
        "text": "'For' gives the length of the period. 'Since' gives the point when it started.",
-       "start_s": 3275.913,
-       "start": "54:35"
+       "start_s": 3545.799,
+       "start": "59:05"
       },
       {
        "block": "page-12_k15",
        "kind": "rule",
        "text": "The end of the period decides the tense. A finished period takes the simple past. A period up to now takes the present perfect.",
-       "start_s": 3366.601,
-       "start": "56:06"
+       "start_s": 3636.487,
+       "start": "60:36"
       },
       {
        "block": "page-12_k20",
        "kind": "warning",
        "text": "Writing 'from 2010' with the present perfect is a mistake. Write 'since 2010'.",
-       "start_s": 3428.938,
-       "start": "57:08"
+       "start_s": 3721.424,
+       "start": "62:01"
       },
       {
        "block": "page-12_k25",
        "kind": "rule",
        "text": "Use the simple past with 'ago'.",
-       "start_s": 3470.181,
-       "start": "57:50"
+       "start_s": 3786.637,
+       "start": "63:06"
       },
       {
        "block": "page-12_k34",
        "kind": "warning",
        "text": "Do not use 'at' with a year or a month. We say 'in 2004', not 'at 2004'.",
-       "start_s": 3589.31,
-       "start": "59:49"
+       "start_s": 3905.766,
+       "start": "65:05"
       }
      ],
      "terms": [
@@ -2023,30 +2020,30 @@
        "block": "page-12_k01",
        "label": "New term",
        "term": "Time markers",
-       "start_s": 3182.627,
-       "start": "53:02"
+       "start_s": 3452.513,
+       "start": "57:32"
       },
       {
        "block": "page-12_k12",
        "label": "New phrase",
        "term": "Receive treatment",
-       "start_s": 3314.721,
-       "start": "55:14"
+       "start_s": 3584.607,
+       "start": "59:44"
       },
       {
        "block": "page-12_k29",
        "label": "New term",
        "term": "Passive",
-       "start_s": 3515.361,
-       "start": "58:35"
+       "start_s": 3831.817,
+       "start": "63:51"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-12_k16",
        "text": "The patient has had hypertension from 2010",
-       "start_s": 3380.281,
-       "start": "56:20"
+       "start_s": 3672.767,
+       "start": "61:12"
       }
      ],
      "practice": [],
@@ -2060,245 +2057,245 @@
       13
      ],
      "category": "c2",
-     "start_s": 3618.012,
-     "start": "60:18",
-     "end_s": 4244.201,
+     "start_s": 3934.468,
+     "start": "65:34",
+     "end_s": 4604.604,
      "topics": [
       {
        "board": "page-13_t1",
        "title": "Find the fault in each sentence",
-       "start_s": 3618.012,
-       "start": "60:18",
+       "start_s": 3934.468,
+       "start": "65:34",
        "points": [
         {
          "text": "Set the task and show the whole set of exercise sentences",
          "block": "page-13_k01",
-         "start_s": 3618.012,
-         "start": "60:18"
+         "start_s": 3934.468,
+         "start": "65:34"
         },
         {
          "text": "Invite the student to try all four before the answers",
          "block": "page-13_k06",
-         "start_s": 3657.689,
-         "start": "60:57"
+         "start_s": 3974.145,
+         "start": "66:14"
         }
        ]
       },
       {
        "board": "page-13_t2",
        "title": "'Since 2010' and a one-moment verb",
-       "start_s": 3692.211,
-       "start": "61:32",
+       "start_s": 4008.667,
+       "start": "66:48",
        "points": [
         {
          "text": "Show the clash between the past verb and the time marker",
          "block": "page-13_k07",
-         "start_s": 3692.211,
-         "start": "61:32"
+         "start_s": 4008.667,
+         "start": "66:48"
         },
         {
          "text": "Define the passive and name the tense under it",
          "block": "page-13_k09",
-         "start_s": 3715.647,
-         "start": "61:55"
+         "start_s": 4032.103,
+         "start": "67:12"
         },
         {
          "text": "Show the active form to prove the tense is simple past",
          "block": "page-13_k11",
-         "start_s": 3735.444,
-         "start": "62:15"
+         "start_s": 4051.9,
+         "start": "67:31"
         },
         {
          "text": "First repair: change the time marker",
          "block": "page-13_k13",
-         "start_s": 3752.064,
-         "start": "62:32"
+         "start_s": 4068.52,
+         "start": "67:48"
         },
         {
          "text": "Second repair: keep 'since 2010' and change the verb",
          "block": "page-13_k15",
-         "start_s": 3776.884,
-         "start": "62:56"
+         "start_s": 4093.34,
+         "start": "68:13"
         },
         {
          "text": "Draw the two time references",
          "block": "page-13_k17",
-         "start_s": 3788.504,
-         "start": "63:08"
+         "start_s": 4104.96,
+         "start": "68:24"
         },
         {
          "text": "Reject 'The patient has diagnosed' on the grounds of who does the action",
          "block": "page-13_k18",
-         "start_s": 3808.526,
-         "start": "63:28"
+         "start_s": 4124.982,
+         "start": "68:44"
         },
         {
          "text": "Put the two voices side by side",
          "block": "page-13_k20",
-         "start_s": 3817.396,
-         "start": "63:37"
+         "start_s": 4133.852,
+         "start": "68:53"
         },
         {
          "text": "Generalise: check the meaning and the verb when choosing a time marker",
          "block": "page-13_k21",
-         "start_s": 3833.685,
-         "start": "63:53"
+         "start_s": 4150.141,
+         "start": "69:10"
         },
         {
          "text": "Show that the same verb is fine in a perfect form without the stretching time marker",
          "block": "page-13_k23",
-         "start_s": 3856.372,
-         "start": "64:16"
+         "start_s": 4172.828,
+         "start": "69:32"
         }
        ]
       },
       {
        "board": "page-13_t3",
        "title": "'For the past 25 years' and the tense that fits",
-       "start_s": 3871.096,
-       "start": "64:31",
+       "start_s": 4187.552,
+       "start": "69:47",
        "points": [
         {
          "text": "Show the clash in sentence 2",
          "block": "page-13_k25",
-         "start_s": 3871.096,
-         "start": "64:31"
+         "start_s": 4187.552,
+         "start": "69:47"
         },
         {
          "text": "Give the corrected answer for sentence 2",
          "block": "page-13_k27",
-         "start_s": 3902.746,
-         "start": "65:02"
+         "start_s": 4219.202,
+         "start": "70:19"
         },
         {
          "text": "Draw the open period",
          "block": "page-13_k29",
-         "start_s": 3917.586,
-         "start": "65:17"
+         "start_s": 4234.042,
+         "start": "70:34"
         },
         {
          "text": "Contrast a closed period with an open one",
          "block": "page-13_k30",
-         "start_s": 3927.736,
-         "start": "65:27"
+         "start_s": 4244.192,
+         "start": "70:44"
         },
         {
          "text": "Give the second accepted answer",
          "block": "page-13_k32",
-         "start_s": 3962.647,
-         "start": "66:02"
+         "start_s": 4279.103,
+         "start": "71:19"
         }
        ]
       },
       {
        "board": "page-13_t4",
        "title": "An exact date and the verb 'undergo'",
-       "start_s": 3974.946,
-       "start": "66:14",
+       "start_s": 4312.819,
+       "start": "71:52",
        "points": [
         {
          "text": "Show sentence 3 and name the time marker",
          "block": "page-13_k34",
-         "start_s": 3974.946,
-         "start": "66:14"
+         "start_s": 4312.819,
+         "start": "71:52"
         },
         {
          "text": "Teach 'undergo' and who does the operation",
          "block": "page-13_k36",
-         "start_s": 3991.722,
-         "start": "66:31"
+         "start_s": 4329.595,
+         "start": "72:09"
         },
         {
          "text": "Reject 'do' for an operation",
          "block": "page-13_k38",
-         "start_s": 4012.246,
-         "start": "66:52"
+         "start_s": 4350.119,
+         "start": "72:30"
         },
         {
          "text": "Give the corrected sentence and the rule behind it",
          "block": "page-13_k40",
-         "start_s": 4023.104,
-         "start": "67:03"
+         "start_s": 4360.977,
+         "start": "72:40"
         },
         {
          "text": "Draw the finished point in the past",
          "block": "page-13_k42",
-         "start_s": 4042.732,
-         "start": "67:22"
+         "start_s": 4380.605,
+         "start": "73:00"
         }
        ]
       },
       {
        "board": "page-13_t5",
        "title": "'Have' as a state verb",
-       "start_s": 4055.792,
-       "start": "67:35",
+       "start_s": 4416.195,
+       "start": "73:36",
        "points": [
         {
          "text": "Show sentence 4 and say what is already right",
          "block": "page-13_k43",
-         "start_s": 4055.792,
-         "start": "67:35"
+         "start_s": 4416.195,
+         "start": "73:36"
         },
         {
          "text": "Locate the fault in the verb and define the term",
          "block": "page-13_k45",
-         "start_s": 4065.932,
-         "start": "67:45"
+         "start_s": 4426.335,
+         "start": "73:46"
         },
         {
          "text": "Say what the continuous form is and what 'have' still does",
          "block": "page-13_k47",
-         "start_s": 4081.747,
-         "start": "68:01"
+         "start_s": 4442.15,
+         "start": "74:02"
         },
         {
          "text": "Qualify the rule: 'have' is stative only when it means possessing",
          "block": "page-13_k49",
-         "start_s": 4098.126,
-         "start": "68:18"
+         "start_s": 4458.529,
+         "start": "74:18"
         },
         {
          "text": "Give the corrected sentence for item 4",
          "block": "page-13_k51",
-         "start_s": 4125.013,
-         "start": "68:45"
+         "start_s": 4485.416,
+         "start": "74:45"
         },
         {
          "text": "Name the form of the present perfect and where it is used",
          "block": "page-13_k53",
-         "start_s": 4135.147,
-         "start": "68:55"
+         "start_s": 4495.55,
+         "start": "74:55"
         },
         {
          "text": "Draw the period and give the letter-style example",
          "block": "page-13_k55",
-         "start_s": 4157.149,
-         "start": "69:17"
+         "start_s": 4517.552,
+         "start": "75:17"
         },
         {
          "text": "Give the second accepted answer and say what changed",
          "block": "page-13_k57",
-         "start_s": 4169.04,
-         "start": "69:29"
+         "start_s": 4529.443,
+         "start": "75:29"
         },
         {
          "text": "Show when 'suffer from' is used",
          "block": "page-13_k59",
-         "start_s": 4189.17,
-         "start": "69:49"
+         "start_s": 4549.573,
+         "start": "75:49"
         },
         {
          "text": "Give the wording to use for a long-term condition in the letter",
          "block": "page-13_k61",
-         "start_s": 4213.417,
-         "start": "70:13"
+         "start_s": 4573.82,
+         "start": "76:13"
         },
         {
          "text": "Attach 'presents with' to a symptom",
          "block": "page-13_k63",
-         "start_s": 4228.443,
-         "start": "70:28"
+         "start_s": 4588.846,
+         "start": "76:28"
         }
        ]
       }
@@ -2308,8 +2305,8 @@
        "block": "page-13_k22",
        "kind": "rule",
        "text": "When you choose a time marker, look at the meaning of the sentence and at the verb you are using.",
-       "start_s": 3848.696,
-       "start": "64:08"
+       "start_s": 4165.152,
+       "start": "69:25"
       }
      ],
      "terms": [
@@ -2317,91 +2314,91 @@
        "block": "page-13_k09",
        "label": "New form",
        "term": "the passive",
-       "start_s": 3715.647,
-       "start": "61:55"
+       "start_s": 4032.103,
+       "start": "67:12"
       },
       {
        "block": "page-13_k36",
        "label": "New word",
        "term": "undergo / underwent",
-       "start_s": 3991.722,
-       "start": "66:31"
+       "start_s": 4329.595,
+       "start": "72:09"
       },
       {
        "block": "page-13_k46",
        "label": "New term",
        "term": "stative verb",
-       "start_s": 4072.349,
-       "start": "67:52"
+       "start_s": 4432.752,
+       "start": "73:52"
       },
       {
        "block": "page-13_k53",
        "label": "Form",
        "term": "present perfect",
-       "start_s": 4135.147,
-       "start": "68:55"
+       "start_s": 4495.55,
+       "start": "74:55"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-13_k02",
        "text": "The patient was diagnosed with hypothyroidism since 2010",
-       "start_s": 3618.012,
-       "start": "60:18"
+       "start_s": 3934.468,
+       "start": "65:34"
       },
       {
        "block": "page-13_k03",
        "text": "He is smoking 2 packs of cigarettes a day for the past 25 years.",
-       "start_s": 3618.012,
-       "start": "60:18"
+       "start_s": 3934.468,
+       "start": "65:34"
       },
       {
        "block": "page-13_k04",
        "text": "She has underwent triple coronary bypass surgery on 10/08/2014",
-       "start_s": 3618.012,
-       "start": "60:18"
+       "start_s": 3934.468,
+       "start": "65:34"
       },
       {
        "block": "page-13_k05",
        "text": "Paul has been having cystic fibrosis since birth",
-       "start_s": 3618.012,
-       "start": "60:18"
+       "start_s": 3934.468,
+       "start": "65:34"
       },
       {
        "block": "page-13_k07",
        "text": "The patient was diagnosed with hypothyroidism since 2010",
-       "start_s": 3692.211,
-       "start": "61:32"
+       "start_s": 4008.667,
+       "start": "66:48"
       },
       {
        "block": "page-13_k18",
        "text": "The patient has diagnosed.",
-       "start_s": 3808.526,
-       "start": "63:28"
+       "start_s": 4124.982,
+       "start": "68:44"
       },
       {
        "block": "page-13_k25",
        "text": "He is smoking 2 packs of cigarettes a day for the past 25 years.",
-       "start_s": 3871.096,
-       "start": "64:31"
+       "start_s": 4187.552,
+       "start": "69:47"
       },
       {
        "block": "page-13_k34",
        "text": "She has underwent triple coronary bypass surgery on 10/08/2014",
-       "start_s": 3974.946,
-       "start": "66:14"
+       "start_s": 4312.819,
+       "start": "71:52"
       },
       {
        "block": "page-13_k38",
        "text": "She has done triple coronary bypass.",
-       "start_s": 4012.246,
-       "start": "66:52"
+       "start_s": 4350.119,
+       "start": "72:30"
       },
       {
        "block": "page-13_k43",
        "text": "Paul has been having cystic fibrosis since birth",
-       "start_s": 4055.792,
-       "start": "67:35"
+       "start_s": 4416.195,
+       "start": "73:36"
       }
      ],
      "practice": [],
@@ -2415,253 +2412,253 @@
       14
      ],
      "category": "c3",
-     "start_s": 4244.201,
-     "start": "70:44",
-     "end_s": 4667.765,
+     "start_s": 4604.604,
+     "start": "76:44",
+     "end_s": 5066.468,
      "topics": [
       {
        "board": "page-14_t1",
        "title": "what signal words are",
-       "start_s": 4244.201,
-       "start": "70:44",
+       "start_s": 4604.604,
+       "start": "76:44",
        "points": [
         {
          "text": "Define the term and set up the table's purpose",
          "block": "page-14_k01",
-         "start_s": 4244.201,
-         "start": "70:44"
+         "start_s": 4604.604,
+         "start": "76:44"
         },
         {
          "text": "Warn that the pairing is a tendency, not a rule",
          "block": "page-14_k03",
-         "start_s": 4267.807,
-         "start": "71:07"
+         "start_s": 4628.21,
+         "start": "77:08"
         }
        ]
       },
       {
        "board": "page-14_t2",
        "title": "present simple row",
-       "start_s": 4299.762,
-       "start": "71:39",
+       "start_s": 4660.165,
+       "start": "77:40",
        "points": [
         {
          "text": "Show the present simple row of the table",
          "block": "page-14_k05",
-         "start_s": 4299.762,
-         "start": "71:39"
+         "start_s": 4660.165,
+         "start": "77:40"
         },
         {
          "text": "Explain 'seldom' in English",
          "block": "page-14_k06",
-         "start_s": 4318.562,
-         "start": "71:58"
+         "start_s": 4678.965,
+         "start": "77:58"
         },
         {
          "text": "Teach 'occasionally' and the preposition with 'occasion'",
          "block": "page-14_k07",
-         "start_s": 4325.839,
-         "start": "72:05"
+         "start_s": 4686.242,
+         "start": "78:06"
         },
         {
          "text": "Clinical example with 'on some occasions'",
          "block": "page-14_k09",
-         "start_s": 4347.836,
-         "start": "72:27"
+         "start_s": 4708.239,
+         "start": "78:28"
         },
         {
          "text": "Show 'usually' in a clinical sentence",
          "block": "page-14_k11",
-         "start_s": 4377.628,
-         "start": "72:57"
+         "start_s": 4738.031,
+         "start": "78:58"
         }
        ]
       },
       {
        "board": "page-14_t3",
        "title": "present continuous row",
-       "start_s": 4395.676,
-       "start": "73:15",
+       "start_s": 4756.079,
+       "start": "79:16",
        "points": [
         {
          "text": "Show the present continuous row of the table",
          "block": "page-14_k13",
-         "start_s": 4395.676,
-         "start": "73:15"
+         "start_s": 4756.079,
+         "start": "79:16"
         },
         {
          "text": "State why these words take the present continuous",
          "block": "page-14_k14",
-         "start_s": 4404.156,
-         "start": "73:24"
+         "start_s": 4764.559,
+         "start": "79:24"
         },
         {
          "text": "Clinical model sentence",
          "block": "page-14_k15",
-         "start_s": 4426.72,
-         "start": "73:46"
+         "start_s": 4787.123,
+         "start": "79:47"
         },
         {
          "text": "Draw the time reference of 'at the moment'",
          "block": "page-14_k17",
-         "start_s": 4448.065,
-         "start": "74:08"
+         "start_s": 4808.468,
+         "start": "80:08"
         }
        ]
       },
       {
        "board": "page-14_t4",
        "title": "past simple row",
-       "start_s": 4467.694,
-       "start": "74:27",
+       "start_s": 4848.547,
+       "start": "80:48",
        "points": [
         {
          "text": "Show the past simple row of the table",
          "block": "page-14_k18",
-         "start_s": 4467.694,
-         "start": "74:27"
+         "start_s": 4848.547,
+         "start": "80:48"
         },
         {
          "text": "Define 'the other day'",
          "block": "page-14_k19",
-         "start_s": 4476.904,
-         "start": "74:36"
+         "start_s": 4857.757,
+         "start": "80:57"
         },
         {
          "text": "State the tense choice",
          "block": "page-14_k20",
-         "start_s": 4483.274,
-         "start": "74:43"
+         "start_s": 4864.127,
+         "start": "81:04"
         },
         {
          "text": "Draw the finished past time",
          "block": "page-14_k21",
-         "start_s": 4493.255,
-         "start": "74:53"
+         "start_s": 4874.108,
+         "start": "81:14"
         }
        ]
       },
       {
        "board": "page-14_t5",
        "title": "past continuous row",
-       "start_s": 4512.335,
-       "start": "75:12",
+       "start_s": 4893.188,
+       "start": "81:33",
        "points": [
         {
          "text": "Show the past continuous row of the table",
          "block": "page-14_k22",
-         "start_s": 4512.335,
-         "start": "75:12"
+         "start_s": 4893.188,
+         "start": "81:33"
         },
         {
          "text": "Say what these words do and what to take from them here",
          "block": "page-14_k23",
-         "start_s": 4515.535,
-         "start": "75:15"
+         "start_s": 4896.388,
+         "start": "81:36"
         }
        ]
       },
       {
        "board": "page-14_t6",
        "title": "present perfect simple row",
-       "start_s": 4534.835,
-       "start": "75:34",
+       "start_s": 4915.688,
+       "start": "81:55",
        "points": [
         {
          "text": "Show the present perfect simple row of the table",
          "block": "page-14_k25",
-         "start_s": 4534.835,
-         "start": "75:34"
+         "start_s": 4915.688,
+         "start": "81:55"
         },
         {
          "text": "Define 'so far'",
          "block": "page-14_k26",
-         "start_s": 4543.664,
-         "start": "75:43"
+         "start_s": 4924.517,
+         "start": "82:04"
         },
         {
          "text": "Draw the past-up-to-now time reference",
          "block": "page-14_k27",
-         "start_s": 4550.434,
-         "start": "75:50"
+         "start_s": 4931.287,
+         "start": "82:11"
         }
        ]
       },
       {
        "board": "page-14_t7",
        "title": "present perfect continuous row",
-       "start_s": 4566.165,
-       "start": "76:06",
+       "start_s": 4964.868,
+       "start": "82:44",
        "points": [
         {
          "text": "Show the present perfect continuous row of the table",
          "block": "page-14_k28",
-         "start_s": 4566.165,
-         "start": "76:06"
+         "start_s": 4964.868,
+         "start": "82:44"
         },
         {
          "text": "State what these words show",
          "block": "page-14_k29",
-         "start_s": 4572.35,
-         "start": "76:12"
+         "start_s": 4971.053,
+         "start": "82:51"
         },
         {
          "text": "Draw the duration up to now",
          "block": "page-14_k30",
-         "start_s": 4582.355,
-         "start": "76:22"
+         "start_s": 4981.058,
+         "start": "83:01"
         }
        ]
       },
       {
        "board": "page-14_t8",
        "title": "past perfect simple row",
-       "start_s": 4596.255,
-       "start": "76:36",
+       "start_s": 4994.958,
+       "start": "83:14",
        "points": [
         {
          "text": "Show the past perfect simple row of the table",
          "block": "page-14_k31",
-         "start_s": 4596.255,
-         "start": "76:36"
+         "start_s": 4994.958,
+         "start": "83:14"
         },
         {
          "text": "Make the once / when point clear",
          "block": "page-14_k32",
-         "start_s": 4603.105,
-         "start": "76:43"
+         "start_s": 5001.808,
+         "start": "83:21"
         }
        ]
       },
       {
        "board": "page-14_t9",
        "title": "past perfect continuous row and closing advice",
-       "start_s": 4616.655,
-       "start": "76:56",
+       "start_s": 5015.358,
+       "start": "83:35",
        "points": [
         {
          "text": "Show the past perfect continuous row of the table",
          "block": "page-14_k33",
-         "start_s": 4616.655,
-         "start": "76:56"
+         "start_s": 5015.358,
+         "start": "83:35"
         },
         {
          "text": "Show that for and since serve two tenses",
          "block": "page-14_k34",
-         "start_s": 4626.223,
-         "start": "77:06"
+         "start_s": 5024.926,
+         "start": "83:44"
         },
         {
          "text": "Take the pressure off memorising the table",
          "block": "page-14_k35",
-         "start_s": 4648.543,
-         "start": "77:28"
+         "start_s": 5047.246,
+         "start": "84:07"
         },
         {
          "text": "Why signal words matter in writing",
          "block": "page-14_k36",
-         "start_s": 4655.738,
-         "start": "77:35"
+         "start_s": 5054.441,
+         "start": "84:14"
         }
        ]
       }
@@ -2671,22 +2668,22 @@
        "block": "page-14_k03",
        "kind": "rule",
        "text": "This is a tendency, not a rule. The word \"always\" does not force you to use the present simple.",
-       "start_s": 4267.807,
-       "start": "71:07"
+       "start_s": 4628.21,
+       "start": "77:08"
       },
       {
        "block": "page-14_k24",
        "kind": "rule",
        "text": "They are often signals for the past continuous, but the tense comes from the meaning, not from the time word.",
-       "start_s": 4519.825,
-       "start": "75:19"
+       "start_s": 4900.678,
+       "start": "81:40"
       },
       {
        "block": "page-14_k36",
        "kind": "rule",
        "text": "When you write a patient's history, put the time into your sentences. Then the reader can follow when each thing happened.",
-       "start_s": 4655.738,
-       "start": "77:35"
+       "start_s": 5054.441,
+       "start": "84:14"
       }
      ],
      "terms": [
@@ -2694,36 +2691,36 @@
        "block": "page-14_k01",
        "label": "New term",
        "term": "Signal word",
-       "start_s": 4244.201,
-       "start": "70:44"
+       "start_s": 4604.604,
+       "start": "76:44"
       },
       {
        "block": "page-14_k06",
        "label": "Signal word",
        "term": "Seldom",
-       "start_s": 4318.562,
-       "start": "71:58"
+       "start_s": 4678.965,
+       "start": "77:58"
       },
       {
        "block": "page-14_k07",
        "label": "Signal word",
        "term": "Occasionally",
-       "start_s": 4325.839,
-       "start": "72:05"
+       "start_s": 4686.242,
+       "start": "78:06"
       },
       {
        "block": "page-14_k19",
        "label": "Signal word",
        "term": "The other day",
-       "start_s": 4476.904,
-       "start": "74:36"
+       "start_s": 4857.757,
+       "start": "80:57"
       },
       {
        "block": "page-14_k26",
        "label": "Signal word",
        "term": "So far",
-       "start_s": 4543.664,
-       "start": "75:43"
+       "start_s": 4924.517,
+       "start": "82:04"
       }
      ],
      "wrong_examples": [],
@@ -2738,333 +2735,333 @@
       15
      ],
      "category": "c4",
-     "start_s": 4667.765,
-     "start": "77:47",
-     "end_s": 5423.764,
+     "start_s": 5066.468,
+     "start": "84:26",
+     "end_s": 5890.287,
      "topics": [
       {
        "board": "page-15_t1",
        "title": "what the active and the passive do",
-       "start_s": 4667.765,
-       "start": "77:47",
+       "start_s": 5066.468,
+       "start": "84:26",
        "points": [
         {
          "text": "Set up the two forms and define the grammar term 'passive'",
          "block": "page-15_k01",
-         "start_s": 4667.765,
-         "start": "77:47"
+         "start_s": 5066.468,
+         "start": "84:26"
         },
         {
          "text": "First reason letters use the passive: no doer in the notes",
          "block": "page-15_k03",
-         "start_s": 4707.417,
-         "start": "78:27"
+         "start_s": 5106.12,
+         "start": "85:06"
         },
         {
          "text": "Second reason: the writer does not repeat 'I'",
          "block": "page-15_k05",
-         "start_s": 4738.313,
-         "start": "78:58"
+         "start_s": 5137.016,
+         "start": "85:37"
         }
        ]
       },
       {
        "board": "page-15_t2",
        "title": "the aspirin example, from active to passive",
-       "start_s": 4757.032,
-       "start": "79:17",
+       "start_s": 5155.735,
+       "start": "85:55",
        "points": [
         {
          "text": "Name the parts of the active sentence",
          "block": "page-15_k07",
-         "start_s": 4757.032,
-         "start": "79:17"
+         "start_s": 5155.735,
+         "start": "85:55"
         },
         {
          "text": "Define 'active' and note that an object is not always needed",
          "block": "page-15_k10",
-         "start_s": 4778.201,
-         "start": "79:38"
+         "start_s": 5176.904,
+         "start": "86:16"
         },
         {
          "text": "Show which part can move and which part stays with the verb",
          "block": "page-15_k12",
-         "start_s": 4792.206,
-         "start": "79:52"
+         "start_s": 5190.909,
+         "start": "86:30"
         },
         {
          "text": "Build the passive in English by dropping the doer and fronting the object",
          "block": "page-15_k13",
-         "start_s": 4812.723,
-         "start": "80:12"
+         "start_s": 5211.426,
+         "start": "86:51"
         },
         {
          "text": "State the rule for the change",
          "block": "page-15_k15",
-         "start_s": 4830.165,
-         "start": "80:30"
+         "start_s": 5228.868,
+         "start": "87:08"
         }
        ]
       },
       {
        "board": "page-15_t3",
        "title": "two passive forms and where the focus falls",
-       "start_s": 4845.741,
-       "start": "80:45",
+       "start_s": 5244.444,
+       "start": "87:24",
        "points": [
         {
          "text": "Show both passive forms and state that both are correct",
          "block": "page-15_k16",
-         "start_s": 4845.741,
-         "start": "80:45"
+         "start_s": 5244.444,
+         "start": "87:24"
         },
         {
          "text": "Explain the focus difference in English, through the front position",
          "block": "page-15_k19",
-         "start_s": 4858.213,
-         "start": "80:58"
+         "start_s": 5256.916,
+         "start": "87:36"
         },
         {
          "text": "Set up the context for choosing the form that fits",
          "block": "page-15_k20",
-         "start_s": 4875.254,
-         "start": "81:15"
+         "start_s": 5273.957,
+         "start": "87:53"
         },
         {
          "text": "Choose the form whose focus matches the context",
          "block": "page-15_k21",
-         "start_s": 4893.513,
-         "start": "81:33"
+         "start_s": 5292.216,
+         "start": "88:12"
         }
        ]
       },
       {
        "board": "page-15_t4",
        "title": "the form of the passive verb",
-       "start_s": 4915.019,
-       "start": "81:55",
+       "start_s": 5338.902,
+       "start": "88:58",
        "points": [
         {
          "text": "Give the form and define 'past participle'",
          "block": "page-15_k23",
-         "start_s": 4915.019,
-         "start": "81:55"
+         "start_s": 5338.902,
+         "start": "88:58"
         },
         {
          "text": "Show that the tense does not change",
          "block": "page-15_k25",
-         "start_s": 4948.834,
-         "start": "82:28"
+         "start_s": 5372.717,
+         "start": "89:32"
         },
         {
          "text": "Regular and irregular past participles",
          "block": "page-15_k26",
-         "start_s": 4976.183,
-         "start": "82:56"
+         "start_s": 5400.066,
+         "start": "90:00"
         },
         {
          "text": "Warn against reading the participle -ed as a past tense -ed",
          "block": "page-15_k28",
-         "start_s": 5002.812,
-         "start": "83:22"
+         "start_s": 5426.695,
+         "start": "90:26"
         },
         {
          "text": "The be verb carries the tense: past",
          "block": "page-15_k29",
-         "start_s": 5016.903,
-         "start": "83:36"
+         "start_s": 5440.786,
+         "start": "90:40"
         },
         {
          "text": "The be verb carries the tense: present",
          "block": "page-15_k31",
-         "start_s": 5032.071,
-         "start": "83:52"
+         "start_s": 5455.954,
+         "start": "90:55"
         },
         {
          "text": "The be verb carries the tense: future",
          "block": "page-15_k33",
-         "start_s": 5042.971,
-         "start": "84:02"
+         "start_s": 5466.854,
+         "start": "91:06"
         }
        ]
       },
       {
        "board": "page-15_t5",
        "title": "row 1, took and was given",
-       "start_s": 5063.343,
-       "start": "84:23",
+       "start_s": 5510.786,
+       "start": "91:50",
        "points": [
         {
          "text": "Show why 'take' cannot carry the passive meaning",
          "block": "page-15_k35",
-         "start_s": 5063.343,
-         "start": "84:23"
+         "start_s": 5510.786,
+         "start": "91:50"
         },
         {
          "text": "Give the passive with the new verb and name its parts",
          "block": "page-15_k38",
-         "start_s": 5086.813,
-         "start": "84:46"
+         "start_s": 5534.256,
+         "start": "92:14"
         },
         {
          "text": "Contrast the meaning of the active and the passive",
          "block": "page-15_k40",
-         "start_s": 5099.725,
-         "start": "84:59"
+         "start_s": 5547.168,
+         "start": "92:27"
         },
         {
          "text": "Turn the sentence round so the focus is on the medicine",
          "block": "page-15_k41",
-         "start_s": 5124.282,
-         "start": "85:24"
+         "start_s": 5571.725,
+         "start": "92:51"
         }
        ]
       },
       {
        "board": "page-15_t6",
        "title": "row 2, had arthritis and was diagnosed",
-       "start_s": 5136.155,
-       "start": "85:36",
+       "start_s": 5583.598,
+       "start": "93:03",
        "points": [
         {
          "text": "Show that 'have' cannot be made passive",
          "block": "page-15_k43",
-         "start_s": 5136.155,
-         "start": "85:36"
+         "start_s": 5583.598,
+         "start": "93:03"
         },
         {
          "text": "Change the verb and identify who diagnoses",
          "block": "page-15_k46",
-         "start_s": 5156.918,
-         "start": "85:56"
+         "start_s": 5604.361,
+         "start": "93:24"
         },
         {
          "text": "Give the passive with the patient first",
          "block": "page-15_k48",
-         "start_s": 5179.577,
-         "start": "86:19"
+         "start_s": 5627.02,
+         "start": "93:47"
         },
         {
          "text": "Give the form with the condition first",
          "block": "page-15_k50",
-         "start_s": 5194.939,
-         "start": "86:34"
+         "start_s": 5642.382,
+         "start": "94:02"
         },
         {
          "text": "Show where the word 'with' belongs",
          "block": "page-15_k52",
-         "start_s": 5204.5,
-         "start": "86:44"
+         "start_s": 5651.943,
+         "start": "94:11"
         },
         {
          "text": "Reassure about what the exam asks for",
          "block": "page-15_k54",
-         "start_s": 5231.529,
-         "start": "87:11"
+         "start_s": 5678.972,
+         "start": "94:38"
         }
        ]
       },
       {
        "board": "page-15_t7",
        "title": "row 3, the appointment in the present simple",
-       "start_s": 5243.341,
-       "start": "87:23",
+       "start_s": 5690.784,
+       "start": "94:50",
        "points": [
         {
          "text": "Explain the present simple in a sentence about tomorrow",
          "block": "page-15_k55",
-         "start_s": 5243.341,
-         "start": "87:23"
+         "start_s": 5690.784,
+         "start": "94:50"
         },
         {
          "text": "Draw the time: the appointment exists now, the visit is tomorrow",
          "block": "page-15_k57",
-         "start_s": 5265.531,
-         "start": "87:45"
+         "start_s": 5712.974,
+         "start": "95:12"
         },
         {
          "text": "Show that the will-form is also correct and why we choose the present simple",
          "block": "page-15_k58",
-         "start_s": 5275.539,
-         "start": "87:55"
+         "start_s": 5722.982,
+         "start": "95:22"
         }
        ]
       },
       {
        "board": "page-15_t8",
        "title": "row 3 passive, will be seen",
-       "start_s": 5296.149,
-       "start": "88:16",
+       "start_s": 5743.592,
+       "start": "95:43",
        "points": [
         {
          "text": "Explain why the passive here is future",
          "block": "page-15_k60",
-         "start_s": 5296.149,
-         "start": "88:16"
+         "start_s": 5743.592,
+         "start": "95:43"
         },
         {
          "text": "Name the participle and the doer",
          "block": "page-15_k62",
-         "start_s": 5310.743,
-         "start": "88:30"
+         "start_s": 5758.186,
+         "start": "95:58"
         }
        ]
       },
       {
        "board": "page-15_t9",
        "title": "row 3, focus on the appointment and the verb schedule",
-       "start_s": 5323.923,
-       "start": "88:43",
+       "start_s": 5771.366,
+       "start": "96:11",
        "points": [
         {
          "text": "Teach the verb 'schedule' in English",
          "block": "page-15_k64",
-         "start_s": 5323.923,
-         "start": "88:43"
+         "start_s": 5771.366,
+         "start": "96:11"
         },
         {
          "text": "Show the active and passive present perfect side by side",
          "block": "page-15_k66",
-         "start_s": 5344.353,
-         "start": "89:04"
+         "start_s": 5791.796,
+         "start": "96:31"
         },
         {
          "text": "Name the three parts of the present perfect passive",
          "block": "page-15_k67",
-         "start_s": 5364.997,
-         "start": "89:24"
+         "start_s": 5812.44,
+         "start": "96:52"
         }
        ]
       },
       {
        "board": "page-15_t10",
        "title": "the tenses used most in a letter",
-       "start_s": 5382.37,
-       "start": "89:42",
+       "start_s": 5848.893,
+       "start": "97:28",
        "points": [
         {
          "text": "Frame what a letter reports and name the first tense",
          "block": "page-15_k69",
-         "start_s": 5382.37,
-         "start": "89:42"
+         "start_s": 5848.893,
+         "start": "97:28"
         },
         {
          "text": "Name the second tense",
          "block": "page-15_k71",
-         "start_s": 5393.349,
-         "start": "89:53"
+         "start_s": 5859.872,
+         "start": "97:39"
         },
         {
          "text": "Draw the present perfect time reference",
          "block": "page-15_k72",
-         "start_s": 5400.39,
-         "start": "90:00"
+         "start_s": 5866.913,
+         "start": "97:46"
         },
         {
          "text": "State the rule to remember and reassure about the forms",
          "block": "page-15_k73",
-         "start_s": 5408.944,
-         "start": "90:08"
+         "start_s": 5875.467,
+         "start": "97:55"
         }
        ]
       }
@@ -3074,22 +3071,22 @@
        "block": "page-15_k15",
        "kind": "rule",
        "text": "In the passive the object moves to the front. The doer is often left out; you can add it with 'by'. The verb changes form too.",
-       "start_s": 4830.165,
-       "start": "80:30"
+       "start_s": 5228.868,
+       "start": "87:08"
       },
       {
        "block": "page-15_k28",
        "kind": "rule",
        "text": "The -ed on a past participle is not the past tense -ed. In every passive the main verb is a past participle.",
-       "start_s": 5002.812,
-       "start": "83:22"
+       "start_s": 5426.695,
+       "start": "90:26"
       },
       {
        "block": "page-15_k73",
        "kind": "rule",
        "text": "Most sentences in a letter use the simple past or the present perfect.",
-       "start_s": 5408.944,
-       "start": "90:08"
+       "start_s": 5875.467,
+       "start": "97:55"
       }
      ],
      "terms": [
@@ -3097,65 +3094,65 @@
        "block": "page-15_k02",
        "label": "Grammar term",
        "term": "Passive",
-       "start_s": 4696.025,
-       "start": "78:16"
+       "start_s": 5094.728,
+       "start": "84:54"
       },
       {
        "block": "page-15_k08",
        "label": "Grammar term",
        "term": "Subject",
-       "start_s": 4768.011,
-       "start": "79:28"
+       "start_s": 5166.714,
+       "start": "86:06"
       },
       {
        "block": "page-15_k09",
        "label": "Grammar term",
        "term": "Object",
-       "start_s": 4773.41,
-       "start": "79:33"
+       "start_s": 5172.113,
+       "start": "86:12"
       },
       {
        "block": "page-15_k10",
        "label": "Grammar term",
        "term": "Active",
-       "start_s": 4778.201,
-       "start": "79:38"
+       "start_s": 5176.904,
+       "start": "86:16"
       },
       {
        "block": "page-15_k23",
        "label": "Form",
        "term": "Be verb plus past participle",
-       "start_s": 4915.019,
-       "start": "81:55"
+       "start_s": 5338.902,
+       "start": "88:58"
       },
       {
        "block": "page-15_k24",
        "label": "Grammar term",
        "term": "Past participle",
-       "start_s": 4932.858,
-       "start": "82:12"
+       "start_s": 5356.741,
+       "start": "89:16"
       },
       {
        "block": "page-15_k65",
        "label": "New word",
        "term": "Schedule",
-       "start_s": 5330.63,
-       "start": "88:50"
+       "start_s": 5778.073,
+       "start": "96:18"
       },
       {
        "block": "page-15_k67",
        "label": "Form",
        "term": "Has been scheduled",
-       "start_s": 5364.997,
-       "start": "89:24"
+       "start_s": 5812.44,
+       "start": "96:52"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-15_k45",
        "text": "Arthritis was had by the patient.",
-       "start_s": 5150.786,
-       "start": "85:50"
+       "start_s": 5598.229,
+       "start": "93:18"
       }
      ],
      "practice": [],
@@ -3169,193 +3166,193 @@
       16
      ],
      "category": "c4",
-     "start_s": 5423.764,
-     "start": "90:23",
-     "end_s": 5829.495,
+     "start_s": 5890.287,
+     "start": "98:10",
+     "end_s": 6338.358,
      "topics": [
       {
        "board": "page-16_t1",
        "title": "what the table shows and the four groups",
-       "start_s": 5423.764,
-       "start": "90:23",
+       "start_s": 5890.287,
+       "start": "98:10",
        "points": [
         {
          "text": "Set up the board: one sentence in the passive across all 12 tenses, grouped in four families of form",
          "block": "page-16_k01",
-         "start_s": 5423.764,
-         "start": "90:23"
+         "start_s": 5890.287,
+         "start": "98:10"
         },
         {
          "text": "Define the grammar term 'passive' the first time it appears",
          "block": "page-16_k03",
-         "start_s": 5441.707,
-         "start": "90:41"
+         "start_s": 5908.23,
+         "start": "98:28"
         },
         {
          "text": "Give the study priority for the whole table",
          "block": "page-16_k04",
-         "start_s": 5470.594,
-         "start": "91:10"
+         "start_s": 5937.117,
+         "start": "98:57"
         },
         {
          "text": "Fix the priority as a rule to remember",
          "block": "page-16_k05",
-         "start_s": 5483.059,
-         "start": "91:23"
+         "start_s": 5949.582,
+         "start": "99:09"
         }
        ]
       },
       {
        "board": "page-16_t2",
        "title": "the simple passive forms",
-       "start_s": 5505.023,
-       "start": "91:45",
+       "start_s": 5971.546,
+       "start": "99:31",
        "points": [
         {
          "text": "the three simple passive rows of the table",
          "block": "page-16_k06",
-         "start_s": 5505.023,
-         "start": "91:45"
+         "start_s": 5971.546,
+         "start": "99:31"
         },
         {
          "text": "Define past participle, the part of the passive that never changes",
          "block": "page-16_k10",
-         "start_s": 5539.41,
-         "start": "92:19"
+         "start_s": 6005.933,
+         "start": "100:05"
         },
         {
          "text": "State what actually changes between the three rows",
          "block": "page-16_k11",
-         "start_s": 5558.052,
-         "start": "92:38"
+         "start_s": 6024.575,
+         "start": "100:24"
         },
         {
          "text": "Note the plural subject change",
          "block": "page-16_k12",
-         "start_s": 5573.903,
-         "start": "92:53"
+         "start_s": 6040.426,
+         "start": "100:40"
         },
         {
          "text": "Replace the first-language glosses with an English time reference for the three forms",
          "block": "page-16_k13",
-         "start_s": 5591.005,
-         "start": "93:11"
+         "start_s": 6057.528,
+         "start": "100:57"
         }
        ]
       },
       {
        "board": "page-16_t3",
        "title": "the continuous passive forms",
-       "start_s": 5613.576,
-       "start": "93:33",
+       "start_s": 6080.099,
+       "start": "101:20",
        "points": [
         {
          "text": "the two continuous passive rows",
          "block": "page-16_k14",
-         "start_s": 5613.576,
-         "start": "93:33"
+         "start_s": 6080.099,
+         "start": "101:20"
         },
         {
          "text": "State how the continuous passive is built",
          "block": "page-16_k17",
-         "start_s": 5633.674,
-         "start": "93:53"
+         "start_s": 6100.197,
+         "start": "101:40"
         },
         {
          "text": "Contrast the simple and continuous passive to show what 'being' adds",
          "block": "page-16_k18",
-         "start_s": 5649.973,
-         "start": "94:09"
+         "start_s": 6116.496,
+         "start": "101:56"
         }
        ]
       },
       {
        "board": "page-16_t4",
        "title": "the perfect passive forms",
-       "start_s": 5666.653,
-       "start": "94:26",
+       "start_s": 6133.176,
+       "start": "102:13",
        "points": [
         {
          "text": "the two useful perfect passive rows",
          "block": "page-16_k19",
-         "start_s": 5666.653,
-         "start": "94:26"
+         "start_s": 6133.176,
+         "start": "102:13"
         },
         {
          "text": "State how the perfect passive is built",
          "block": "page-16_k22",
-         "start_s": 5687.394,
-         "start": "94:47"
+         "start_s": 6153.917,
+         "start": "102:33"
         },
         {
          "text": "Mark these two forms as worth learning",
          "block": "page-16_k23",
-         "start_s": 5698.923,
-         "start": "94:58"
+         "start_s": 6165.446,
+         "start": "102:45"
         },
         {
          "text": "Set the future perfect passive aside",
          "block": "page-16_k24",
-         "start_s": 5707.053,
-         "start": "95:07"
+         "start_s": 6173.576,
+         "start": "102:53"
         }
        ]
       },
       {
        "board": "page-16_t5",
        "title": "the passive forms we do not use",
-       "start_s": 5722.344,
-       "start": "95:22",
+       "start_s": 6188.867,
+       "start": "103:08",
        "points": [
         {
          "text": "the rejected rows of the table",
          "block": "page-16_k25",
-         "start_s": 5722.344,
-         "start": "95:22"
+         "start_s": 6188.867,
+         "start": "103:08"
         },
         {
          "text": "Explain in English why these forms are rejected (replaces the first-language argument)",
          "block": "page-16_k29",
-         "start_s": 5744.154,
-         "start": "95:44"
+         "start_s": 6210.677,
+         "start": "103:30"
         },
         {
          "text": "Close the point with the rule to remember",
          "block": "page-16_k30",
-         "start_s": 5755.584,
-         "start": "95:55"
+         "start_s": 6222.107,
+         "start": "103:42"
         }
        ]
       },
       {
        "board": "page-16_t6",
        "title": "the priority list from the table",
-       "start_s": 5768.004,
-       "start": "96:08",
+       "start_s": 6257.027,
+       "start": "104:17",
        "points": [
         {
          "text": "the five priority forms of the table",
          "block": "page-16_k31",
-         "start_s": 5768.004,
-         "start": "96:08"
+         "start_s": 6257.027,
+         "start": "104:17"
         },
         {
          "text": "State why the simple forms come first",
          "block": "page-16_k33",
-         "start_s": 5789.485,
-         "start": "96:29"
+         "start_s": 6278.508,
+         "start": "104:38"
         },
         {
          "text": "Say where the future form is needed",
          "block": "page-16_k34",
-         "start_s": 5798.205,
-         "start": "96:38"
+         "start_s": 6287.228,
+         "start": "104:47"
         },
         {
          "text": "Close with the study rule for the whole table",
          "block": "page-16_k35",
-         "start_s": 5812.314,
-         "start": "96:52"
+         "start_s": 6301.337,
+         "start": "105:01"
         }
        ]
       }
@@ -3365,22 +3362,22 @@
        "block": "page-16_k05",
        "kind": "rule",
        "text": "Learn the simple forms well.",
-       "start_s": 5483.059,
-       "start": "91:23"
+       "start_s": 5949.582,
+       "start": "99:09"
       },
       {
        "block": "page-16_k30",
        "kind": "rule",
        "text": "You do not need these forms. Learn the simple and perfect passives instead.",
-       "start_s": 5755.584,
-       "start": "95:55"
+       "start_s": 6222.107,
+       "start": "103:42"
       },
       {
        "block": "page-16_k35",
        "kind": "rule",
        "text": "Practise these five forms until you can use them easily.",
-       "start_s": 5812.314,
-       "start": "96:52"
+       "start_s": 6301.337,
+       "start": "105:01"
       }
      ],
      "terms": [
@@ -3388,35 +3385,35 @@
        "block": "page-16_k03",
        "label": "Grammar term",
        "term": "Passive",
-       "start_s": 5441.707,
-       "start": "90:41"
+       "start_s": 5908.23,
+       "start": "98:28"
       },
       {
        "block": "page-16_k10",
        "label": "Grammar term",
        "term": "Past participle",
-       "start_s": 5539.41,
-       "start": "92:19"
+       "start_s": 6005.933,
+       "start": "100:05"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-16_k26",
        "text": "OxyContin will be being given to control the pain.",
-       "start_s": 5722.344,
-       "start": "95:22"
+       "start_s": 6188.867,
+       "start": "103:08"
       },
       {
        "block": "page-16_k27",
        "text": "OxyContin had been being given to control the pain.",
-       "start_s": 5722.344,
-       "start": "95:22"
+       "start_s": 6188.867,
+       "start": "103:08"
       },
       {
        "block": "page-16_k28",
        "text": "OxyContin has been being given to control the pain.",
-       "start_s": 5722.344,
-       "start": "95:22"
+       "start_s": 6188.867,
+       "start": "103:08"
       }
      ],
      "practice": [],
@@ -3430,203 +3427,203 @@
       17
      ],
      "category": "c4",
-     "start_s": 5829.495,
-     "start": "97:09",
-     "end_s": 6362.28,
+     "start_s": 6338.358,
+     "start": "105:38",
+     "end_s": 6893.793,
      "topics": [
       {
        "board": "page-17_t1",
        "title": "Introduction: the four sentences",
-       "start_s": 5829.495,
-       "start": "97:09",
+       "start_s": 6338.358,
+       "start": "105:38",
        "points": [
         {
          "text": "Set the task and show the whole set of faulty sentences",
          "block": "page-17_k01",
-         "start_s": 5829.495,
-         "start": "97:09"
+         "start_s": 6338.358,
+         "start": "105:38"
         },
         {
          "text": "Say what to take from the set",
          "block": "page-17_k06",
-         "start_s": 5869.226,
-         "start": "97:49"
+         "start_s": 6378.089,
+         "start": "106:18"
         },
         {
          "text": "State the page topic with the deck's title typo corrected",
          "block": "page-17_k07",
-         "start_s": 5881.356,
-         "start": "98:01"
+         "start_s": 6390.219,
+         "start": "106:30"
         }
        ]
       },
       {
        "board": "page-17_t2",
        "title": "Item 1: Mylanta prescribed",
-       "start_s": 5903.123,
-       "start": "98:23",
+       "start_s": 6411.986,
+       "start": "106:51",
        "points": [
         {
          "text": "Show that the first part of the sentence is already correct",
          "block": "page-17_k08",
-         "start_s": 5906.532,
-         "start": "98:26"
+         "start_s": 6415.395,
+         "start": "106:55"
         },
         {
          "text": "Show that the date sits in past time, so the simple past fits",
          "block": "page-17_k10",
-         "start_s": 5933.224,
-         "start": "98:53"
+         "start_s": 6442.087,
+         "start": "107:22"
         },
         {
          "text": "Teach the verb 'administer' and its pattern",
          "block": "page-17_k11",
-         "start_s": 5946.7,
-         "start": "99:06"
+         "start_s": 6455.563,
+         "start": "107:35"
         },
         {
          "text": "Contrast active and passive with the same verb",
          "block": "page-17_k12",
-         "start_s": 5964.629,
-         "start": "99:24"
+         "start_s": 6473.492,
+         "start": "107:53"
         },
         {
          "text": "Define the grammar term 'passive'",
          "block": "page-17_k13",
-         "start_s": 5995.793,
-         "start": "99:55"
+         "start_s": 6504.656,
+         "start": "108:24"
         },
         {
          "text": "Locate the fault in the second part",
          "block": "page-17_k14",
-         "start_s": 6007.5,
-         "start": "100:07"
+         "start_s": 6516.363,
+         "start": "108:36"
         },
         {
          "text": "Give the corrected sentence and say what the passive changes",
          "block": "page-17_k16",
-         "start_s": 6033.64,
-         "start": "100:33"
+         "start_s": 6542.503,
+         "start": "109:02"
         }
        ]
       },
       {
        "board": "page-17_t3",
        "title": "Item 2: was presented",
-       "start_s": 6069.763,
-       "start": "101:09",
+       "start_s": 6601.276,
+       "start": "110:01",
        "points": [
         {
          "text": "Keep the faulty sentence on the board",
          "block": "page-17_k18",
-         "start_s": 6069.763,
-         "start": "101:09"
+         "start_s": 6601.276,
+         "start": "110:01"
         },
         {
          "text": "Test the form by asking who does the action, and give the answer",
          "block": "page-17_k20",
-         "start_s": 6088.391,
-         "start": "101:28"
+         "start_s": 6619.904,
+         "start": "110:19"
         },
         {
          "text": "Give the model sentence for a writing task",
          "block": "page-17_k22",
-         "start_s": 6112.923,
-         "start": "101:52"
+         "start_s": 6644.436,
+         "start": "110:44"
         },
         {
          "text": "Teach 'attend' as a second verb with the correct pattern",
          "block": "page-17_k24",
-         "start_s": 6132.379,
-         "start": "102:12"
+         "start_s": 6663.892,
+         "start": "111:03"
         },
         {
          "text": "State the decision test",
          "block": "page-17_k26",
-         "start_s": 6141.86,
-         "start": "102:21"
+         "start_s": 6673.373,
+         "start": "111:13"
         },
         {
          "text": "Show that the same action can be written in both forms",
          "block": "page-17_k27",
-         "start_s": 6153.614,
-         "start": "102:33"
+         "start_s": 6685.127,
+         "start": "111:25"
         },
         {
          "text": "Give the rule for choosing the passive",
          "block": "page-17_k28",
-         "start_s": 6177.473,
-         "start": "102:57"
+         "start_s": 6708.986,
+         "start": "111:48"
         }
        ]
       },
       {
        "board": "page-17_t4",
        "title": "Item 3: a liver scan",
-       "start_s": 6196.073,
-       "start": "103:16",
+       "start_s": 6727.586,
+       "start": "112:07",
        "points": [
         {
          "text": "Keep the faulty sentence on the board and teach 'confirm'",
          "block": "page-17_k29",
-         "start_s": 6196.073,
-         "start": "103:16"
+         "start_s": 6727.586,
+         "start": "112:07"
         },
         {
          "text": "Give the corrected sentence and say why it is active",
          "block": "page-17_k31",
-         "start_s": 6220.853,
-         "start": "103:40"
+         "start_s": 6752.366,
+         "start": "112:32"
         },
         {
          "text": "Teach 'reveal' as a second verb for findings",
          "block": "page-17_k33",
-         "start_s": 6234.733,
-         "start": "103:54"
+         "start_s": 6766.246,
+         "start": "112:46"
         },
         {
          "text": "Give a second example with a test as the subject",
          "block": "page-17_k35",
-         "start_s": 6250.039,
-         "start": "104:10"
+         "start_s": 6781.552,
+         "start": "113:01"
         }
        ]
       },
       {
        "board": "page-17_t5",
        "title": "Item 4: admitted to hospital",
-       "start_s": 6268.229,
-       "start": "104:28",
+       "start_s": 6799.742,
+       "start": "113:19",
        "points": [
         {
          "text": "Keep the faulty sentence on the board and teach 'admit'",
          "block": "page-17_k37",
-         "start_s": 6268.229,
-         "start": "104:28"
+         "start_s": 6799.742,
+         "start": "113:19"
         },
         {
          "text": "Explain what the printed sentence says",
          "block": "page-17_k39",
-         "start_s": 6280.946,
-         "start": "104:40"
+         "start_s": 6812.459,
+         "start": "113:32"
         },
         {
          "text": "Give the corrected sentence",
          "block": "page-17_k40",
-         "start_s": 6289.979,
-         "start": "104:49"
+         "start_s": 6821.492,
+         "start": "113:41"
         },
         {
          "text": "Show that the active is also correct, and why we choose the passive",
          "block": "page-17_k42",
-         "start_s": 6307.37,
-         "start": "105:07"
+         "start_s": 6838.883,
+         "start": "113:58"
         },
         {
          "text": "Close with the contrast between the two verbs and the rule",
          "block": "page-17_k44",
-         "start_s": 6332.77,
-         "start": "105:32"
+         "start_s": 6864.283,
+         "start": "114:24"
         }
        ]
       }
@@ -3636,15 +3633,15 @@
        "block": "page-17_k28",
        "kind": "rule",
        "text": "We choose the passive when the doer is not known, or is obvious, or is not the point.",
-       "start_s": 6177.473,
-       "start": "102:57"
+       "start_s": 6708.986,
+       "start": "111:48"
       },
       {
        "block": "page-17_k45",
        "kind": "rule",
        "text": "Look at the meaning of the verb and its subject. That shows you which form to use.",
-       "start_s": 6349.33,
-       "start": "105:49"
+       "start_s": 6880.843,
+       "start": "114:40"
       }
      ],
      "terms": [
@@ -3652,93 +3649,93 @@
        "block": "page-17_k11",
        "label": "New word",
        "term": "Administer",
-       "start_s": 5946.7,
-       "start": "99:06"
+       "start_s": 6455.563,
+       "start": "107:35"
       },
       {
        "block": "page-17_k13",
        "label": "Grammar term",
        "term": "Passive",
-       "start_s": 5995.793,
-       "start": "99:55"
+       "start_s": 6504.656,
+       "start": "108:24"
       },
       {
        "block": "page-17_k19",
        "label": "New word",
        "term": "Present",
-       "start_s": 6082.563,
-       "start": "101:22"
+       "start_s": 6614.076,
+       "start": "110:14"
       },
       {
        "block": "page-17_k30",
        "label": "New word",
        "term": "Confirm",
-       "start_s": 6208.003,
-       "start": "103:28"
+       "start_s": 6739.516,
+       "start": "112:19"
       },
       {
        "block": "page-17_k33",
        "label": "New word",
        "term": "Reveal",
-       "start_s": 6234.733,
-       "start": "103:54"
+       "start_s": 6766.246,
+       "start": "112:46"
       },
       {
        "block": "page-17_k38",
        "label": "New word",
        "term": "Admit",
-       "start_s": 6276.629,
-       "start": "104:36"
+       "start_s": 6808.142,
+       "start": "113:28"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-17_k02",
        "text": "The patient had the flu vaccination on 16/05/2014 and an antacid prescribed",
-       "start_s": 5829.495,
-       "start": "97:09"
+       "start_s": 6338.358,
+       "start": "105:38"
       },
       {
        "block": "page-17_k03",
        "text": "The patient was presented to hospital on 12/03/2016",
-       "start_s": 5829.495,
-       "start": "97:09"
+       "start_s": 6338.358,
+       "start": "105:38"
       },
       {
        "block": "page-17_k04",
        "text": "A liver scan was confirmed a 10 cm liver abscess",
-       "start_s": 5829.495,
-       "start": "97:09"
+       "start_s": 6338.358,
+       "start": "105:38"
       },
       {
        "block": "page-17_k05",
        "text": "The patient admitted to hospital yesterday",
-       "start_s": 5829.495,
-       "start": "97:09"
+       "start_s": 6338.358,
+       "start": "105:38"
       },
       {
        "block": "page-17_k15",
        "text": "And an antacid prescribed",
-       "start_s": 6016.213,
-       "start": "100:16"
+       "start_s": 6525.076,
+       "start": "108:45"
       },
       {
        "block": "page-17_k18",
        "text": "The patient was presented to hospital on 12/03/2016",
-       "start_s": 6069.763,
-       "start": "101:09"
+       "start_s": 6601.276,
+       "start": "110:01"
       },
       {
        "block": "page-17_k29",
        "text": "A liver scan was confirmed a 10 cm liver abscess",
-       "start_s": 6196.073,
-       "start": "103:16"
+       "start_s": 6727.586,
+       "start": "112:07"
       },
       {
        "block": "page-17_k37",
        "text": "The patient admitted to hospital yesterday",
-       "start_s": 6268.229,
-       "start": "104:28"
+       "start_s": 6799.742,
+       "start": "113:19"
       }
      ],
      "practice": [],
@@ -3752,305 +3749,305 @@
       18
      ],
      "category": "c5",
-     "start_s": 6362.28,
-     "start": "106:02",
-     "end_s": 7136.995,
+     "start_s": 6893.793,
+     "start": "114:53",
+     "end_s": 7744.561,
      "topics": [
       {
        "board": "page-18_t1",
        "title": "Case notes: the four items to correct",
-       "start_s": 6362.28,
-       "start": "106:02",
+       "start_s": 6893.793,
+       "start": "114:53",
        "points": [
         {
          "text": "Set the task and show the whole set of exercise sentences",
          "block": "page-18_k01",
-         "start_s": 6362.28,
-         "start": "106:02"
+         "start_s": 6893.793,
+         "start": "114:53"
         },
         {
          "text": "Define case notes",
          "block": "page-18_k06",
-         "start_s": 6371.685,
-         "start": "106:11"
+         "start_s": 6903.198,
+         "start": "115:03"
         },
         {
          "text": "Contrast a note with a full sentence",
          "block": "page-18_k07",
-         "start_s": 6389.831,
-         "start": "106:29"
+         "start_s": 6921.344,
+         "start": "115:21"
         },
         {
          "text": "State what paraphrasing a case note means",
          "block": "page-18_k08",
-         "start_s": 6416.049,
-         "start": "106:56"
+         "start_s": 6973.563,
+         "start": "116:13"
         }
        ]
       },
       {
        "board": "page-18_t2",
        "title": "Item 1: diagnosed with COPD since 2002",
-       "start_s": 6445.131,
-       "start": "107:25",
+       "start_s": 7002.645,
+       "start": "116:42",
        "points": [
         {
          "text": "Fix the sentence under discussion on the board, with tense tags",
          "block": "page-18_k09",
-         "start_s": 6445.131,
-         "start": "107:25"
+         "start_s": 7002.645,
+         "start": "116:42"
         },
         {
          "text": "Teach the opening phrase for the medical history paragraph",
          "block": "page-18_k10",
-         "start_s": 6452.761,
-         "start": "107:32"
+         "start_s": 7010.275,
+         "start": "116:50"
         },
         {
          "text": "Define the grammar term 'passive' at first appearance",
          "block": "page-18_k11",
-         "start_s": 6465.001,
-         "start": "107:45"
+         "start_s": 7022.515,
+         "start": "117:02"
         },
         {
          "text": "Name the form and the time marker in the faulty sentence",
          "block": "page-18_k12",
-         "start_s": 6477.131,
-         "start": "107:57"
+         "start_s": 7034.645,
+         "start": "117:14"
         },
         {
          "text": "Show in English why the diagnosis cannot run from 2002 until now",
          "block": "page-18_k13",
-         "start_s": 6505.851,
-         "start": "108:25"
+         "start_s": 7063.365,
+         "start": "117:43"
         },
         {
          "text": "Draw the moment of diagnosis against the lasting condition",
          "block": "page-18_k14",
-         "start_s": 6532.076,
-         "start": "108:52"
+         "start_s": 7089.59,
+         "start": "118:09"
         },
         {
          "text": "First correct answer: simple past passive with a point in time",
          "block": "page-18_k15",
-         "start_s": 6554.269,
-         "start": "109:14"
+         "start_s": 7111.783,
+         "start": "118:31"
         },
         {
          "text": "Second correct answer: change the verb and keep 'since'",
          "block": "page-18_k17",
-         "start_s": 6601.783,
-         "start": "110:01"
+         "start_s": 7159.297,
+         "start": "119:19"
         },
         {
          "text": "Name the two perfect forms correctly",
          "block": "page-18_k19",
-         "start_s": 6623.958,
-         "start": "110:23"
+         "start_s": 7181.472,
+         "start": "119:41"
         },
         {
          "text": "Teach the pattern 'suffer from'",
          "block": "page-18_k20",
-         "start_s": 6649.619,
-         "start": "110:49"
+         "start_s": 7207.133,
+         "start": "120:07"
         },
         {
          "text": "Generalise the rule about one-moment verbs",
          "block": "page-18_k21",
-         "start_s": 6658.919,
-         "start": "110:58"
+         "start_s": 7216.433,
+         "start": "120:16"
         }
        ]
       },
       {
        "board": "page-18_t3",
        "title": "Item 2: poor appetite and 5 kg weight loss",
-       "start_s": 6684.799,
-       "start": "111:24",
+       "start_s": 7268.795,
+       "start": "121:08",
        "points": [
         {
          "text": "Fix the sentence under discussion on the board, with tense tags",
          "block": "page-18_k22",
-         "start_s": 6684.799,
-         "start": "111:24"
+         "start_s": 7268.795,
+         "start": "121:08"
         },
         {
          "text": "Gloss the clinical phrase",
          "block": "page-18_k23",
-         "start_s": 6691.359,
-         "start": "111:31"
+         "start_s": 7275.355,
+         "start": "121:15"
         },
         {
          "text": "Explain the two-clause structure and the dropped subject",
          "block": "page-18_k24",
-         "start_s": 6701.599,
-         "start": "111:41"
+         "start_s": 7285.595,
+         "start": "121:25"
         },
         {
          "text": "Name the second verb form and check the voice",
          "block": "page-18_k26",
-         "start_s": 6731.289,
-         "start": "112:11"
+         "start_s": 7315.285,
+         "start": "121:55"
         },
         {
          "text": "Show in English that the meaning is wrong",
          "block": "page-18_k28",
-         "start_s": 6752.759,
-         "start": "112:32"
+         "start_s": 7336.755,
+         "start": "122:16"
         },
         {
          "text": "First correct answer",
          "block": "page-18_k29",
-         "start_s": 6777.096,
-         "start": "112:57"
+         "start_s": 7361.092,
+         "start": "122:41"
         },
         {
          "text": "Second correct answer",
          "block": "page-18_k31",
-         "start_s": 6795.893,
-         "start": "113:15"
+         "start_s": 7379.889,
+         "start": "122:59"
         },
         {
          "text": "Show when the continuous form is correct",
          "block": "page-18_k33",
-         "start_s": 6811.66,
-         "start": "113:31"
+         "start_s": 7395.656,
+         "start": "123:15"
         },
         {
          "text": "Draw the finished loss against the continuing loss",
          "block": "page-18_k35",
-         "start_s": 6821.555,
-         "start": "113:41"
+         "start_s": 7405.551,
+         "start": "123:25"
         },
         {
          "text": "Close item 2",
          "block": "page-18_k36",
-         "start_s": 6840.755,
-         "start": "114:00"
+         "start_s": 7424.751,
+         "start": "123:44"
         }
        ]
       },
       {
        "board": "page-18_t4",
        "title": "Item 3: the seizure and hyperventilation",
-       "start_s": 6856.325,
-       "start": "114:16",
+       "start_s": 7440.321,
+       "start": "124:00",
        "points": [
         {
          "text": "Fix the sentence under discussion on the board, with the tense clash tagged",
          "block": "page-18_k37",
-         "start_s": 6856.325,
-         "start": "114:16"
+         "start_s": 7440.321,
+         "start": "124:00"
         },
         {
          "text": "Explain the question mark in the notes",
          "block": "page-18_k38",
-         "start_s": 6865.343,
-         "start": "114:25"
+         "start_s": 7449.339,
+         "start": "124:09"
         },
         {
          "text": "Gloss the two key words",
          "block": "page-18_k39",
-         "start_s": 6875.507,
-         "start": "114:35"
+         "start_s": 7459.503,
+         "start": "124:19"
         },
         {
          "text": "Model active and passive with a simple example",
          "block": "page-18_k41",
-         "start_s": 6907.674,
-         "start": "115:07"
+         "start_s": 7491.67,
+         "start": "124:51"
         },
         {
          "text": "Show that the tense of a passive sentence sits in the 'be' verb",
          "block": "page-18_k43",
-         "start_s": 6925.485,
-         "start": "115:25"
+         "start_s": 7509.481,
+         "start": "125:09"
         },
         {
          "text": "Analyse the subject and the agent in item 3",
          "block": "page-18_k45",
-         "start_s": 6948.979,
-         "start": "115:48"
+         "start_s": 7532.975,
+         "start": "125:32"
         },
         {
          "text": "Name the fault",
          "block": "page-18_k47",
-         "start_s": 6962.999,
-         "start": "116:02"
+         "start_s": 7546.995,
+         "start": "125:46"
         },
         {
          "text": "Give the correct answer",
          "block": "page-18_k48",
-         "start_s": 6981.751,
-         "start": "116:21"
+         "start_s": 7565.747,
+         "start": "126:05"
         },
         {
          "text": "Name the form correctly",
          "block": "page-18_k50",
-         "start_s": 6994.677,
-         "start": "116:34"
+         "start_s": 7578.673,
+         "start": "126:18"
         },
         {
          "text": "Explain why the verb after a modal has no ending",
          "block": "page-18_k51",
-         "start_s": 7008.23,
-         "start": "116:48"
+         "start_s": 7592.226,
+         "start": "126:32"
         }
        ]
       },
       {
        "board": "page-18_t5",
        "title": "Item 4: the dated physiotherapy visit",
-       "start_s": 7029.979,
-       "start": "117:09",
+       "start_s": 7637.545,
+       "start": "127:17",
        "points": [
         {
          "text": "Fix the sentence under discussion on the board, with the tense clash tagged",
          "block": "page-18_k53",
-         "start_s": 7029.979,
-         "start": "117:09"
+         "start_s": 7637.545,
+         "start": "127:17"
         },
         {
          "text": "Give the rule about dates in case notes",
          "block": "page-18_k54",
-         "start_s": 7040.279,
-         "start": "117:20"
+         "start_s": 7647.845,
+         "start": "127:27"
         },
         {
          "text": "Gloss the abbreviation in the note",
          "block": "page-18_k55",
-         "start_s": 7053.164,
-         "start": "117:33"
+         "start_s": 7660.73,
+         "start": "127:40"
         },
         {
          "text": "Show the simple subject-verb structure",
          "block": "page-18_k56",
-         "start_s": 7063.545,
-         "start": "117:43"
+         "start_s": 7671.111,
+         "start": "127:51"
         },
         {
          "text": "Show why the verb must be passive",
          "block": "page-18_k58",
-         "start_s": 7077.475,
-         "start": "117:57"
+         "start_s": 7685.041,
+         "start": "128:05"
         },
         {
          "text": "Correct the first clause",
          "block": "page-18_k59",
-         "start_s": 7089.005,
-         "start": "118:09"
+         "start_s": 7696.571,
+         "start": "128:16"
         },
         {
          "text": "Correct the second clause",
          "block": "page-18_k61",
-         "start_s": 7111.724,
-         "start": "118:31"
+         "start_s": 7719.29,
+         "start": "128:39"
         },
         {
          "text": "Keep both verbs in the same time",
          "block": "page-18_k63",
-         "start_s": 7121.305,
-         "start": "118:41"
+         "start_s": 7728.871,
+         "start": "128:48"
         }
        ]
       }
@@ -4060,29 +4057,29 @@
        "block": "page-18_k08",
        "kind": "rule",
        "text": "In the letter you cannot write in note form. Add a verb, choose the right tense, and add a subject where you need one.",
-       "start_s": 6416.049,
-       "start": "106:56"
+       "start_s": 6973.563,
+       "start": "116:13"
       },
       {
        "block": "page-18_k21",
        "kind": "rule",
        "text": "Verbs like 'diagnose' happen at one time and finish. Use the simple past with them.",
-       "start_s": 6658.919,
-       "start": "110:58"
+       "start_s": 7216.433,
+       "start": "120:16"
       },
       {
        "block": "page-18_k54",
        "kind": "rule",
        "text": "A date that marks one finished time, like this one, takes a past tense. With 'since' and a date, use the present perfect.",
-       "start_s": 7040.279,
-       "start": "117:20"
+       "start_s": 7647.845,
+       "start": "127:27"
       },
       {
        "block": "page-18_k63",
        "kind": "rule",
        "text": "Both parts of the sentence talk about the same past date, so both verbs are in the past.",
-       "start_s": 7121.305,
-       "start": "118:41"
+       "start_s": 7728.871,
+       "start": "128:48"
       }
      ],
      "terms": [
@@ -4090,127 +4087,127 @@
        "block": "page-18_k06",
        "label": "New term",
        "term": "Case notes",
-       "start_s": 6371.685,
-       "start": "106:11"
+       "start_s": 6903.198,
+       "start": "115:03"
       },
       {
        "block": "page-18_k10",
        "label": "Useful phrase",
        "term": "Regarding her medical history, ...",
-       "start_s": 6452.761,
-       "start": "107:32"
+       "start_s": 7010.275,
+       "start": "116:50"
       },
       {
        "block": "page-18_k11",
        "label": "Grammar term",
        "term": "Passive",
-       "start_s": 6465.001,
-       "start": "107:45"
+       "start_s": 7022.515,
+       "start": "117:02"
       },
       {
        "block": "page-18_k20",
        "label": "Pattern",
        "term": "Suffer from",
-       "start_s": 6649.619,
-       "start": "110:49"
+       "start_s": 7207.133,
+       "start": "120:07"
       },
       {
        "block": "page-18_k23",
        "label": "New words",
        "term": "Poor appetite",
-       "start_s": 6691.359,
-       "start": "111:31"
+       "start_s": 7275.355,
+       "start": "121:15"
       },
       {
        "block": "page-18_k24",
        "label": "Grammar term",
        "term": "Compound sentence",
-       "start_s": 6701.599,
-       "start": "111:41"
+       "start_s": 7285.595,
+       "start": "121:25"
       },
       {
        "block": "page-18_k39",
        "label": "New word",
        "term": "Trigger",
-       "start_s": 6875.507,
-       "start": "114:35"
+       "start_s": 7459.503,
+       "start": "124:19"
       },
       {
        "block": "page-18_k40",
        "label": "New word",
        "term": "Hyperventilation",
-       "start_s": 6878.926,
-       "start": "114:38"
+       "start_s": 7462.922,
+       "start": "124:22"
       },
       {
        "block": "page-18_k50",
        "label": "Form",
        "term": "May have been triggered",
-       "start_s": 6994.677,
-       "start": "116:34"
+       "start_s": 7578.673,
+       "start": "126:18"
       },
       {
        "block": "page-18_k55",
        "label": "Abbreviation",
        "term": "ROM",
-       "start_s": 7053.164,
-       "start": "117:33"
+       "start_s": 7660.73,
+       "start": "127:40"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-18_k02",
        "text": "Regarding her medical history, she has been diagnosed with COPD since 2002.",
-       "start_s": 6362.28,
-       "start": "106:02"
+       "start_s": 6893.793,
+       "start": "114:53"
       },
       {
        "block": "page-18_k03",
        "text": "She also has a poor appetite and has been losing 5kg after the operation.",
-       "start_s": 6362.28,
-       "start": "106:02"
+       "start_s": 6893.793,
+       "start": "114:53"
       },
       {
        "block": "page-18_k04",
        "text": "Noah had an episode of petit mal epileptic seizure, which may be triggered by hyperventilation during the dental procedure.",
-       "start_s": 6362.28,
-       "start": "106:02"
+       "start_s": 6893.793,
+       "start": "114:53"
       },
       {
        "block": "page-18_k05",
        "text": "On 20/06/2015, her trunk joint range of motion reduced and the range is similar to the first visit.",
-       "start_s": 6362.28,
-       "start": "106:02"
+       "start_s": 6893.793,
+       "start": "114:53"
       },
       {
        "block": "page-18_k09",
        "text": "Regarding her medical history, she has been diagnosed with COPD since 2002.",
-       "start_s": 6445.131,
-       "start": "107:25"
+       "start_s": 7002.645,
+       "start": "116:42"
       },
       {
        "block": "page-18_k22",
        "text": "She also has a poor appetite and has been losing 5kg after the operation.",
-       "start_s": 6684.799,
-       "start": "111:24"
+       "start_s": 7268.795,
+       "start": "121:08"
       },
       {
        "block": "page-18_k37",
        "text": "Noah had an episode of petit mal epileptic seizure, which may be triggered by hyperventilation during the dental procedure.",
-       "start_s": 6856.325,
-       "start": "114:16"
+       "start_s": 7440.321,
+       "start": "124:00"
       },
       {
        "block": "page-18_k51",
        "text": "May is triggered",
-       "start_s": 7008.23,
-       "start": "116:48"
+       "start_s": 7592.226,
+       "start": "126:32"
       },
       {
        "block": "page-18_k53",
        "text": "On 20/06/2015, her trunk joint range of motion reduced and the range is similar to the first visit.",
-       "start_s": 7029.979,
-       "start": "117:09"
+       "start_s": 7637.545,
+       "start": "127:17"
       }
      ],
      "practice": [],
@@ -4237,8 +4234,8 @@
      "lexicon": null,
      "section": "pages-05-06",
      "block": "pages-05-06_k05",
-     "start_s": 970.065,
-     "start": "16:10"
+     "start_s": 1032.25,
+     "start": "17:12"
     },
     {
      "word": "predict",
@@ -4246,8 +4243,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k34",
-     "start_s": 1447.735,
-     "start": "24:07"
+     "start_s": 1577.52,
+     "start": "26:17"
     },
     {
      "word": "Persistent",
@@ -4255,8 +4252,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k12",
-     "start_s": 1696.974,
-     "start": "28:16"
+     "start_s": 1826.759,
+     "start": "30:26"
     },
     {
      "word": "Receive treatment",
@@ -4264,8 +4261,8 @@
      "lexicon": null,
      "section": "page-12",
      "block": "page-12_k12",
-     "start_s": 3314.721,
-     "start": "55:14"
+     "start_s": 3584.607,
+     "start": "59:44"
     },
     {
      "word": "underwent",
@@ -4273,8 +4270,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k65",
-     "start_s": 3666.354,
-     "start": "61:06"
+     "start_s": 3982.81,
+     "start": "66:22"
     },
     {
      "word": "undergo / underwent",
@@ -4282,8 +4279,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k36",
-     "start_s": 3991.722,
-     "start": "66:31"
+     "start_s": 4329.595,
+     "start": "72:09"
     },
     {
      "word": "Schedule",
@@ -4291,8 +4288,8 @@
      "lexicon": null,
      "section": "page-15",
      "block": "page-15_k65",
-     "start_s": 5330.63,
-     "start": "88:50"
+     "start_s": 5778.073,
+     "start": "96:18"
     },
     {
      "word": "Administer",
@@ -4300,8 +4297,8 @@
      "lexicon": null,
      "section": "page-17",
      "block": "page-17_k11",
-     "start_s": 5946.7,
-     "start": "99:06"
+     "start_s": 6455.563,
+     "start": "107:35"
     },
     {
      "word": "Present",
@@ -4309,8 +4306,8 @@
      "lexicon": null,
      "section": "page-17",
      "block": "page-17_k19",
-     "start_s": 6082.563,
-     "start": "101:22"
+     "start_s": 6614.076,
+     "start": "110:14"
     },
     {
      "word": "Confirm",
@@ -4318,8 +4315,8 @@
      "lexicon": null,
      "section": "page-17",
      "block": "page-17_k30",
-     "start_s": 6208.003,
-     "start": "103:28"
+     "start_s": 6739.516,
+     "start": "112:19"
     },
     {
      "word": "Reveal",
@@ -4327,8 +4324,8 @@
      "lexicon": null,
      "section": "page-17",
      "block": "page-17_k33",
-     "start_s": 6234.733,
-     "start": "103:54"
+     "start_s": 6766.246,
+     "start": "112:46"
     },
     {
      "word": "Admit",
@@ -4336,8 +4333,8 @@
      "lexicon": null,
      "section": "page-17",
      "block": "page-17_k38",
-     "start_s": 6276.629,
-     "start": "104:36"
+     "start_s": 6808.142,
+     "start": "113:28"
     },
     {
      "word": "Regarding her medical history, ...",
@@ -4345,8 +4342,8 @@
      "lexicon": null,
      "section": "page-18",
      "block": "page-18_k10",
-     "start_s": 6452.761,
-     "start": "107:32"
+     "start_s": 7010.275,
+     "start": "116:50"
     },
     {
      "word": "regarding",
@@ -4354,8 +4351,8 @@
      "lexicon": null,
      "section": "page-18",
      "block": "page-18_k64",
-     "start_s": 6581.454,
-     "start": "109:41"
+     "start_s": 7138.968,
+     "start": "118:58"
     },
     {
      "word": "Poor appetite",
@@ -4363,8 +4360,8 @@
      "lexicon": null,
      "section": "page-18",
      "block": "page-18_k23",
-     "start_s": 6691.359,
-     "start": "111:31"
+     "start_s": 7275.355,
+     "start": "121:15"
     },
     {
      "word": "Trigger",
@@ -4372,8 +4369,8 @@
      "lexicon": null,
      "section": "page-18",
      "block": "page-18_k39",
-     "start_s": 6875.507,
-     "start": "114:35"
+     "start_s": 7459.503,
+     "start": "124:19"
     },
     {
      "word": "Hyperventilation",
@@ -4381,8 +4378,8 @@
      "lexicon": null,
      "section": "page-18",
      "block": "page-18_k40",
-     "start_s": 6878.926,
-     "start": "114:38"
+     "start_s": 7462.922,
+     "start": "124:22"
     },
     {
      "word": "triggered",
@@ -4390,8 +4387,8 @@
      "lexicon": null,
      "section": "page-18",
      "block": "page-18_k65",
-     "start_s": 6884.949,
-     "start": "114:44"
+     "start_s": 7468.945,
+     "start": "124:28"
     }
    ],
    "withheld": {
@@ -53679,8 +53676,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-15",
-     "start_s": 4778.201,
-     "start": "79:38",
+     "start_s": 5176.904,
+     "start": "86:16",
      "source": "term"
     }
    ]
@@ -53692,8 +53689,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-15",
-     "start_s": 4667.765,
-     "start": "77:47",
+     "start_s": 5066.468,
+     "start": "84:26",
      "source": "curated"
     },
     {
@@ -53725,8 +53722,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-15",
-     "start_s": 4667.765,
-     "start": "77:47",
+     "start_s": 5066.468,
+     "start": "84:26",
      "source": "section"
     }
    ]
@@ -53966,8 +53963,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-15",
-     "start_s": 4915.019,
-     "start": "81:55",
+     "start_s": 5338.902,
+     "start": "88:58",
      "source": "term"
     }
    ]
@@ -53979,8 +53976,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "pages-05-06",
-     "start_s": 881.155,
-     "start": "14:41",
+     "start_s": 925.34,
+     "start": "15:25",
      "source": "term"
     }
    ]
@@ -53992,8 +53989,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-10",
-     "start_s": 2734.229,
-     "start": "45:34",
+     "start_s": 2979.905,
+     "start": "49:39",
      "source": "term"
     }
    ]
@@ -54096,8 +54093,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-18",
-     "start_s": 6371.685,
-     "start": "106:11",
+     "start_s": 6903.198,
+     "start": "115:03",
      "source": "term"
     }
    ]
@@ -54122,8 +54119,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-18",
-     "start_s": 6362.28,
-     "start": "106:02",
+     "start_s": 6893.793,
+     "start": "114:53",
      "source": "section"
     }
    ]
@@ -54396,8 +54393,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-18",
-     "start_s": 6701.599,
-     "start": "111:41",
+     "start_s": 7285.595,
+     "start": "121:25",
      "source": "term"
     },
     {
@@ -54540,8 +54537,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-8",
-     "start_s": 1588.843,
-     "start": "26:28",
+     "start_s": 1718.628,
+     "start": "28:38",
      "source": "term"
     }
    ]
@@ -54553,8 +54550,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-8",
-     "start_s": 1549.083,
-     "start": "25:49",
+     "start_s": 1678.868,
+     "start": "27:58",
      "source": "curated"
     }
    ]
@@ -54729,8 +54726,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-7",
-     "start_s": 1482.653,
-     "start": "24:42",
+     "start_s": 1612.438,
+     "start": "26:52",
      "source": "term"
     }
    ]
@@ -55036,8 +55033,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-9",
-     "start_s": 2184.163,
-     "start": "36:24",
+     "start_s": 2360.048,
+     "start": "39:20",
      "source": "term"
     }
    ]
@@ -55153,8 +55150,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-9",
-     "start_s": 2341.144,
-     "start": "39:01",
+     "start_s": 2540.259,
+     "start": "42:20",
      "source": "curated"
     }
    ]
@@ -55166,8 +55163,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-7",
-     "start_s": 1127.485,
-     "start": "18:47",
+     "start_s": 1216.12,
+     "start": "20:16",
      "source": "curated"
     }
    ]
@@ -55303,8 +55300,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-11",
-     "start_s": 2949.364,
-     "start": "49:09",
+     "start_s": 3219.25,
+     "start": "53:39",
      "source": "term"
     }
    ]
@@ -55316,8 +55313,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-15",
-     "start_s": 5364.997,
-     "start": "89:24",
+     "start_s": 5812.44,
+     "start": "96:52",
      "source": "term"
     }
    ]
@@ -55342,8 +55339,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-11",
-     "start_s": 3006.988,
-     "start": "50:06",
+     "start_s": 3276.874,
+     "start": "54:36",
      "source": "term"
     }
    ]
@@ -55830,8 +55827,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-18",
-     "start_s": 6994.677,
-     "start": "116:34",
+     "start_s": 7578.673,
+     "start": "126:18",
      "source": "term"
     }
    ]
@@ -56007,8 +56004,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-15",
-     "start_s": 4773.41,
-     "start": "79:33",
+     "start_s": 5172.113,
+     "start": "86:12",
      "source": "term"
     }
    ]
@@ -56020,8 +56017,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-14",
-     "start_s": 4325.839,
-     "start": "72:05",
+     "start_s": 4686.242,
+     "start": "78:06",
      "source": "term"
     }
    ]
@@ -56228,8 +56225,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-10",
-     "start_s": 2819.319,
-     "start": "46:59",
+     "start_s": 3064.995,
+     "start": "51:04",
      "source": "term"
     },
     {
@@ -56297,8 +56294,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-16",
-     "start_s": 5423.764,
-     "start": "90:23",
+     "start_s": 5890.287,
+     "start": "98:10",
      "source": "curated"
     }
    ]
@@ -56310,8 +56307,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-16",
-     "start_s": 5423.764,
-     "start": "90:23",
+     "start_s": 5890.287,
+     "start": "98:10",
      "source": "section"
     }
    ]
@@ -56349,8 +56346,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-17",
-     "start_s": 5829.495,
-     "start": "97:09",
+     "start_s": 6338.358,
+     "start": "105:38",
      "source": "section"
     }
    ]
@@ -56362,8 +56359,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "pages-05-06",
-     "start_s": 649.698,
-     "start": "10:49",
+     "start_s": 669.968,
+     "start": "11:09",
      "source": "term"
     },
     {
@@ -56382,8 +56379,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-7",
-     "start_s": 1352.688,
-     "start": "22:32",
+     "start_s": 1460.663,
+     "start": "24:20",
      "source": "term"
     }
    ]
@@ -56395,8 +56392,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-7",
-     "start_s": 1127.485,
-     "start": "18:47",
+     "start_s": 1216.12,
+     "start": "20:16",
      "source": "curated"
     }
    ]
@@ -56447,8 +56444,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-10",
-     "start_s": 2451.347,
-     "start": "40:51",
+     "start_s": 2674.963,
+     "start": "44:34",
      "source": "curated"
     }
    ]
@@ -56473,8 +56470,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-9",
-     "start_s": 2043.829,
-     "start": "34:03",
+     "start_s": 2219.714,
+     "start": "36:59",
      "source": "term"
     }
    ]
@@ -56486,8 +56483,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-11",
-     "start_s": 2912.275,
-     "start": "48:32",
+     "start_s": 3182.161,
+     "start": "53:02",
      "source": "section"
     }
    ]
@@ -56551,8 +56548,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-7",
-     "start_s": 1436.242,
-     "start": "23:56",
+     "start_s": 1566.027,
+     "start": "26:06",
      "source": "term"
     }
    ]
@@ -56590,8 +56587,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-9",
-     "start_s": 2130.846,
-     "start": "35:30",
+     "start_s": 2306.731,
+     "start": "38:26",
      "source": "curated"
     },
     {
@@ -56650,8 +56647,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-7",
-     "start_s": 1127.485,
-     "start": "18:47",
+     "start_s": 1216.12,
+     "start": "20:16",
      "source": "curated"
     }
    ]
@@ -56972,8 +56969,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-18",
-     "start_s": 7053.164,
-     "start": "117:33",
+     "start_s": 7660.73,
+     "start": "127:40",
      "source": "term"
     }
    ]
@@ -57037,8 +57034,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-14",
-     "start_s": 4318.562,
-     "start": "71:58",
+     "start_s": 4678.965,
+     "start": "77:58",
      "source": "term"
     }
    ]
@@ -57135,8 +57132,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-14",
-     "start_s": 4244.201,
-     "start": "70:44",
+     "start_s": 4604.604,
+     "start": "76:44",
      "source": "term"
     }
    ]
@@ -57148,8 +57145,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-14",
-     "start_s": 4244.201,
-     "start": "70:44",
+     "start_s": 4604.604,
+     "start": "76:44",
      "source": "section"
     }
    ]
@@ -57259,8 +57256,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-14",
-     "start_s": 4543.664,
-     "start": "75:43",
+     "start_s": 4924.517,
+     "start": "82:04",
      "source": "term"
     }
    ]
@@ -57337,8 +57334,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-13",
-     "start_s": 4072.349,
-     "start": "67:52",
+     "start_s": 4432.752,
+     "start": "73:52",
      "source": "term"
     }
    ]
@@ -57376,8 +57373,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-15",
-     "start_s": 4768.011,
-     "start": "79:28",
+     "start_s": 5166.714,
+     "start": "86:06",
      "source": "term"
     },
     {
@@ -57573,8 +57570,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "pages-05-06",
-     "start_s": 480.89,
-     "start": "8:00",
+     "start_s": 501.16,
+     "start": "8:21",
      "source": "term"
     }
    ]
@@ -57690,8 +57687,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-14",
-     "start_s": 4476.904,
-     "start": "74:36",
+     "start_s": 4857.757,
+     "start": "80:57",
      "source": "term"
     }
    ]
@@ -57755,8 +57752,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-13",
-     "start_s": 3715.647,
-     "start": "61:55",
+     "start_s": 4032.103,
+     "start": "67:12",
      "source": "term"
     }
    ]
@@ -57781,8 +57778,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-11",
-     "start_s": 2915.686,
-     "start": "48:35",
+     "start_s": 3185.572,
+     "start": "53:05",
      "source": "term"
     }
    ]
@@ -57963,8 +57960,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-8",
-     "start_s": 1903.97,
-     "start": "31:43",
+     "start_s": 2060.095,
+     "start": "34:20",
      "source": "term"
     },
     {
@@ -57983,8 +57980,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "pages-05-06",
-     "start_s": 775.625,
-     "start": "12:55",
+     "start_s": 795.895,
+     "start": "13:15",
      "source": "term"
     }
    ]
@@ -58100,8 +58097,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-8",
-     "start_s": 1549.083,
-     "start": "25:49",
+     "start_s": 1678.868,
+     "start": "27:58",
      "source": "section"
     }
    ]
@@ -58113,8 +58110,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-10",
-     "start_s": 2451.347,
-     "start": "40:51",
+     "start_s": 2674.963,
+     "start": "44:34",
      "source": "section"
     }
    ]
@@ -58126,8 +58123,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-9",
-     "start_s": 2043.829,
-     "start": "34:03",
+     "start_s": 2219.714,
+     "start": "36:59",
      "source": "section"
     }
    ]
@@ -58139,8 +58136,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-7",
-     "start_s": 1127.485,
-     "start": "18:47",
+     "start_s": 1216.12,
+     "start": "20:16",
      "source": "section"
     }
    ]
@@ -58191,8 +58188,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-13",
-     "start_s": 3618.012,
-     "start": "60:18",
+     "start_s": 3934.468,
+     "start": "65:34",
      "source": "section"
     }
    ]
@@ -58445,8 +58442,8 @@
     {
      "lesson": "grammar-01-verb-tenses",
      "section": "page-11",
-     "start_s": 3100.482,
-     "start": "51:40",
+     "start_s": 3370.368,
+     "start": "56:10",
      "source": "term"
     }
    ]
