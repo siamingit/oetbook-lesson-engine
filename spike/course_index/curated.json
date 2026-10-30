@@ -500,18 +500,18 @@
   "writing-04-introduction": {
    "session": "Writing Session 4 of the Persian Writing course, «نحوه نگارش Introduction» (Writing: introduction); every example on its slides is of unknown origin and is replaced by the openings of our six samples (oa-ws-med-0001 to -0003, oa-ws-nur-0001 to -0003) at oetacademy-exercises 5320d19 (ADR 040). The letter to a patient's relative (slides 15-16) and the pharmacy aside are dropped; the teacher's \"Dear Doctor\" for an unnamed reader is replaced by \"Dear Sir or Madam ... Yours faithfully\" (ADR 040 decision 7).",
    "facts": [
-    {"fact": "writing-unnamed-reader", "at": "pages-04-05_t2.s5.u1"},
-    {"fact": "writing-re-line", "at": "pages-04-05_t2.s8.u1"},
-    {"fact": "writing-fit-the-case", "at": "page-6_t1.s3.u2"},
+    {"fact": "writing-unnamed-reader", "at": "pages-04-05_t2.s4.u1"},
+    {"fact": "writing-re-line", "at": "pages-04-05_t2.s6.u2"},
+    {"fact": "writing-fit-the-case", "at": "page-6_t1.s3.u1"},
     {"fact": "writing-purpose", "at": "pages-12-13_t1.s4.u1"},
     {"fact": "writing-opening-verbs", "at": "page-18_t1.s2.u1"}
    ],
    "methods": [
-    {"name": "One clear opening sentence (the teacher's method)", "text": "Put the patient, the problem and what you ask in one clear sentence, two at most, and fit it to each case.", "at": "page-6_t1.s3.u1"},
+    {"name": "One clear opening sentence (the teacher's method)", "text": "Put the patient, the problem and what you ask in one clear sentence, two at most, and fit it to each case.", "at": "page-6_t1.s2.u2"},
     {"name": "Expanding the purpose (the teacher's method)", "text": "Say briefly in the opening what you ask; expand it straight after, in the next paragraph; give each request in full at the end, never the same sentence twice.", "at": "pages-12-13_t1.s5.u1"},
-    {"name": "Personal details in the opening (the teacher's method)", "text": "A personal detail, such as the patient's job, goes into the opening only if this reader needs it.", "at": "pages-12-13_t2.s7.u1"},
-    {"name": "Time words counted from today (the teacher's method)", "text": "Turn the paper's dates into words counted from the letter's date: today, this morning, since yesterday.", "at": "page-14_t2.s2.u1"},
-    {"name": "Five questions to plan the opening (the teacher's method)", "text": "Who, what, when, where and why, answered from the paper; one sentence or two.", "at": "page-17_t1.s2.u1"}
+    {"name": "Personal details in the opening (the teacher's method)", "text": "A personal detail, such as the patient's job, goes into the opening only if this reader needs it.", "at": "pages-12-13_t2.s5.u1"},
+    {"name": "Time words counted from today (the teacher's method)", "text": "Turn the paper's dates into words counted from the letter's date: today, this morning, since yesterday.", "at": "page-14_t3.s2.u1"},
+    {"name": "Five questions to plan the opening (the teacher's method)", "text": "Who, what, when, where and why, answered from the paper; one sentence or two.", "at": "page-17_t1.s1.u2"}
    ],
    "continues_in": [],
    "topics": [

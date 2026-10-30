@@ -1,0 +1,458 @@
+{
+ "format": "oetbook-practice-ids",
+ "version": 1,
+ "about": "Every practice item and part ID the lesson engine has issued (ADR 046 amendment of 2026-10-30): the engine's block is 900000-989999 in every skill (oetacademy-web ADR-0031 Amendment 1). Each lesson has its own range of the block (`ranges`, set by practice_points.reserve, as the owner assigns them); every ID a lesson uses is issued inside it. Append only: an ID is never reused and never moves to another lesson or point. Written by practice_points.issue.",
+ "block": [
+  900000,
+  989999
+ ],
+ "ranges": {
+  "writing-04-introduction": [
+   900000,
+   900999
+  ]
+ },
+ "ids": [
+  {
+   "id": "oa-writing-900000",
+   "lesson": "writing-04-introduction",
+   "point": "jobs",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900001",
+   "lesson": "writing-04-introduction",
+   "point": "greeting",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900002",
+   "lesson": "writing-04-introduction",
+   "point": "re-line",
+   "slot": "name",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900003",
+   "lesson": "writing-04-introduction",
+   "point": "re-line",
+   "slot": "next",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900004",
+   "lesson": "writing-04-introduction",
+   "point": "req-frame",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900005",
+   "lesson": "writing-04-introduction",
+   "point": "req-what",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900006",
+   "lesson": "writing-04-introduction",
+   "point": "req-what",
+   "slot": "urgent",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900007",
+   "lesson": "writing-04-introduction",
+   "point": "req-what",
+   "slot": "anticoagulation",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900008",
+   "lesson": "writing-04-introduction",
+   "point": "talbot-who",
+   "slot": "name",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900009",
+   "lesson": "writing-04-introduction",
+   "point": "talbot-who",
+   "slot": "age",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900010",
+   "lesson": "writing-04-introduction",
+   "point": "whose",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900011",
+   "lesson": "writing-04-introduction",
+   "point": "carer-who",
+   "slot": "word",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900012",
+   "lesson": "writing-04-introduction",
+   "point": "talbot-whole",
+   "slot": "sentence",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900013",
+   "lesson": "writing-04-introduction",
+   "point": "pritchard-who",
+   "slot": "name",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900014",
+   "lesson": "writing-04-introduction",
+   "point": "pritchard-who",
+   "slot": "age",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900015",
+   "lesson": "writing-04-introduction",
+   "point": "pritchard-who",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900016",
+   "lesson": "writing-04-introduction",
+   "point": "pritchard-noun",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900017",
+   "lesson": "writing-04-introduction",
+   "point": "barnes-app",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900018",
+   "lesson": "writing-04-introduction",
+   "point": "age-fix",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900019",
+   "lesson": "writing-04-introduction",
+   "point": "fracture",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900020",
+   "lesson": "writing-04-introduction",
+   "point": "spot-ashworth",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900021",
+   "lesson": "writing-04-introduction",
+   "point": "spot-talbot",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900022",
+   "lesson": "writing-04-introduction",
+   "point": "spot-holden",
+   "slot": "verb",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900023",
+   "lesson": "writing-04-introduction",
+   "point": "spot-holden",
+   "slot": "after",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900024",
+   "lesson": "writing-04-introduction",
+   "point": "spot-dawson",
+   "slot": "name",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900025",
+   "lesson": "writing-04-introduction",
+   "point": "spot-dawson",
+   "slot": "noun",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900026",
+   "lesson": "writing-04-introduction",
+   "point": "spot-barnes",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900027",
+   "lesson": "writing-04-introduction",
+   "point": "spot-pritchard",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900028",
+   "lesson": "writing-04-introduction",
+   "point": "barnes-details",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900029",
+   "lesson": "writing-04-introduction",
+   "point": "barnes-frame",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900030",
+   "lesson": "writing-04-introduction",
+   "point": "barnes-ask",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900031",
+   "lesson": "writing-04-introduction",
+   "point": "barnes-ask",
+   "slot": "assessment",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900032",
+   "lesson": "writing-04-introduction",
+   "point": "barnes-ask",
+   "slot": "advice",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900033",
+   "lesson": "writing-04-introduction",
+   "point": "barnes-why",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900034",
+   "lesson": "writing-04-introduction",
+   "point": "barnes-whole",
+   "slot": "sentence",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900035",
+   "lesson": "writing-04-introduction",
+   "point": "pritchard-ask",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900036",
+   "lesson": "writing-04-introduction",
+   "point": "pritchard-ask",
+   "slot": "assessment",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900037",
+   "lesson": "writing-04-introduction",
+   "point": "pritchard-ask",
+   "slot": "fracture",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900038",
+   "lesson": "writing-04-introduction",
+   "point": "pritchard-and",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900039",
+   "lesson": "writing-04-introduction",
+   "point": "pritchard-whole",
+   "slot": "sentence",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900040",
+   "lesson": "writing-04-introduction",
+   "point": "six-ten",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900041",
+   "lesson": "writing-04-introduction",
+   "point": "underwent",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900042",
+   "lesson": "writing-04-introduction",
+   "point": "frame",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900043",
+   "lesson": "writing-04-introduction",
+   "point": "who",
+   "slot": "name",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900044",
+   "lesson": "writing-04-introduction",
+   "point": "who",
+   "slot": "age",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900045",
+   "lesson": "writing-04-introduction",
+   "point": "who",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900046",
+   "lesson": "writing-04-introduction",
+   "point": "detail",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900047",
+   "lesson": "writing-04-introduction",
+   "point": "request",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900048",
+   "lesson": "writing-04-introduction",
+   "point": "request",
+   "slot": "urgent",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900049",
+   "lesson": "writing-04-introduction",
+   "point": "request",
+   "slot": "management",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900050",
+   "lesson": "writing-04-introduction",
+   "point": "urgent",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900051",
+   "lesson": "writing-04-introduction",
+   "point": "whole",
+   "slot": "sentence",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900052",
+   "lesson": "writing-04-introduction",
+   "point": "frames-match",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900053",
+   "lesson": "writing-04-introduction",
+   "point": "frames-match",
+   "slot": "seeing",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900054",
+   "lesson": "writing-04-introduction",
+   "point": "frames-match",
+   "slot": "accepting",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900055",
+   "lesson": "writing-04-introduction",
+   "point": "frames-match",
+   "slot": "response",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900056",
+   "lesson": "writing-04-introduction",
+   "point": "frames-match",
+   "slot": "update",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900057",
+   "lesson": "writing-04-introduction",
+   "point": "dawson-start",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900058",
+   "lesson": "writing-04-introduction",
+   "point": "dawson-after",
+   "slot": "noun",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900059",
+   "lesson": "writing-04-introduction",
+   "point": "dawson-ask",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900060",
+   "lesson": "writing-04-introduction",
+   "point": "dawson-ask",
+   "slot": "grateful",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900061",
+   "lesson": "writing-04-introduction",
+   "point": "dawson-ask",
+   "slot": "could",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-writing-900062",
+   "lesson": "writing-04-introduction",
+   "point": "dawson-whole",
+   "slot": "sentence",
+   "issued": "2026-10-30"
+  }
+ ]
+}
