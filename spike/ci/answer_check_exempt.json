@@ -43,6 +43,7 @@
   {"item": "oa-listening-000228", "form": "accepted[0]", "why": "a Part A gap of oa-set-la-0006 (no lesson teaches the set): a condition in a case-notes example sentence of a Grammar lesson, which the public course index lists", "by": "agent 2026-10-22"},
   {"item": "oa-listening-000239", "form": "accepted[3]", "why": "a Part A gap of oa-set-la-0006 (no lesson teaches the set): a Python keyword argument of print() and a function name in the scripts", "by": "agent 2026-10-22"},
   {"item": "oa-listening-000240", "form": "accepted[1]", "why": "a Part A gap of oa-set-la-0006 (no lesson teaches the set): a body part in a Grammar lesson's case-notes sentence (public course index) and in write_narration.py's list of body parts", "by": "agent 2026-10-22"},
-  {"item": "oa-listening-000241", "form": "accepted[2]", "why": "a Part A gap of oa-set-la-0006 (no lesson teaches the set): an everyday adjective and noun ('a ... voice', '... photos', 'a ... of phrases') in the product doc, ADRs 002, 013, 015 and the public course index", "by": "agent 2026-10-22"}
+  {"item": "oa-listening-000241", "form": "accepted[2]", "why": "a Part A gap of oa-set-la-0006 (no lesson teaches the set): an everyday adjective and noun ('a ... voice', '... photos', 'a ... of phrases') in the product doc, ADRs 002, 013, 015 and the public course index", "by": "agent 2026-10-22"},
+  {"item": "oa-listening-000198", "form": "accepted[0]", "why": "a generic word of the reference player's own code: the practice-point pop-up (ADR 046) sets an option button's ARIA role and state with it (board_player_template.html); a code token, never about the practice set", "by": "agent 2026-10-30"}
  ]
 }

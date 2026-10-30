@@ -328,6 +328,82 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
   .frame.style-c #cam.tight .blk.sc-out { animation-name: sc-out-tight; }
   .frame.style-c .blk.sc-erase { animation: sc-erase .25s ease-in forwards; }
 }
+
+/* 1.23 (ADR 046): a practice point's pop-up (rules 56, 57). It is the
+   renderer's, outside the frame, and exists only while a lesson with practice
+   points opens one: no other lesson draws any of it. Laptop: a card over the
+   dimmed board; phone: the whole screen, the paper above the answer. */
+body.pp-open .frame, body.pp-open #review { filter: saturate(.5) brightness(.6); transition: filter .25s ease; }
+.pp-layer { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center;
+            background: rgba(20, 32, 31, .38); padding: 24px; box-sizing: border-box; }
+.pp-card { background: #fff; color: #1f2a29; width: min(980px, 100%); max-height: 100%; overflow-y: auto;
+           border-radius: 14px; box-shadow: 0 18px 60px rgba(20, 32, 31, .35); box-sizing: border-box;
+           font: 17px/1.5 var(--font-plex, "IBM Plex Sans"), system-ui, "Segoe UI", Roboto, Arial, sans-serif; }
+.pp-head { padding: 18px 24px 6px; }
+.pp-tag { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+          color: #0b5e57; background: #e3f2ef; border-radius: 999px; padding: 3px 10px; }
+.pp-task { margin: 10px 0 0; font-size: 20px; font-weight: 600; line-height: 1.35; }
+.pp-body { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 22px; padding: 14px 24px 22px; }
+.pp-sheet { background: #fff; border: 1px solid #dcd9d0; box-shadow: 0 2px 10px rgba(20, 32, 31, .08);
+            padding: 10px 14px; align-self: start; font-size: 15px; line-height: 1.45; }
+.pp-sheet .cap { font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: #6b6860;
+                 margin-bottom: 6px; }
+.pp-sheet table { border-collapse: collapse; width: 100%; }
+.pp-sheet td { vertical-align: top; padding: 4px 0; border-top: 1px solid #ecebe6; }
+.pp-sheet tr:first-child td { border-top: none; }
+.pp-sheet td.l { font-weight: 700; padding-right: 10px; white-space: nowrap; width: 1%; }
+.pp-sheet tr.h td.l { white-space: normal; }
+.pp-sheet .ln { display: block; }
+.pp-work { min-width: 0; }
+.pp-item { margin-bottom: 16px; }
+.pp-item .pr { margin: 0 0 8px; }
+.pp-line { margin: 6px 0; line-height: 2.1; }
+.pp-in { font: inherit; font-size: 17px; padding: 6px 8px; min-height: 44px; box-sizing: border-box; border: 1.5px solid #8f8b80;
+         border-radius: 8px; background: #fffdf6; color: #1f2a29; width: min(16em, 100%); max-width: 100%; }
+.pp-in:focus { outline: 3px solid #0b5e57; outline-offset: 1px; }
+textarea.pp-in { display: block; width: 100%; min-height: 110px; resize: vertical; line-height: 1.5; }
+.pp-opts { display: flex; flex-direction: column; gap: 8px; }
+.pp-btn, .pp-chip, .pp-slot { font: inherit; font-size: 16px; min-height: 44px; border-radius: 10px; cursor: pointer;
+                              border: 1.5px solid #b9b5aa; background: #fff; color: #1f2a29; padding: 8px 12px; text-align: left; }
+.pp-btn[aria-checked="true"], .pp-chip.sel, .pp-slot.sel { border-color: #0b5e57; background: #e3f2ef; box-shadow: inset 0 0 0 1px #0b5e57; }
+.pp-bank, .pp-pool { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+.pp-chip:disabled { opacity: .35; cursor: default; }
+.pp-slot { min-width: 7em; text-align: center; border-style: dashed; vertical-align: middle; }
+.pp-slot.full { border-style: solid; background: #fffdf6; }
+.pp-built { display: flex; flex-wrap: wrap; gap: 6px; min-height: 48px; padding: 6px; border: 1.5px dashed #b9b5aa;
+            border-radius: 10px; align-items: center; }
+.pp-built:empty::before { content: attr(data-empty); color: #8f8b80; font-size: 15px; padding: 0 6px; }
+.pp-fb { margin: 8px 0 0; padding: 8px 12px; border-radius: 8px; font-size: 15.5px; line-height: 1.45; }
+.pp-fb.ok { background: #eef3e0; color: #3f5000; }
+.pp-fb.no { background: #fbeceb; color: #8c1b12; }
+.pp-fb .mk { font-weight: 700; margin-right: 6px; }
+.pp-fb .ans { display: block; font-weight: 600; color: #1f2a29; }
+.pp-model { margin: 10px 0; display: grid; grid-template-columns: 1fr; gap: 8px; }
+.pp-model .box { border-radius: 8px; padding: 8px 12px; font-size: 15.5px; }
+.pp-model .yours { background: #f4f3ef; }
+.pp-model .ours { background: #eef3e0; }
+.pp-model .lab { display: block; font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: #6b6860; }
+.pp-list { list-style: none; margin: 6px 0 0; padding: 0; }
+.pp-list label { display: flex; gap: 10px; align-items: flex-start; min-height: 44px; padding: 6px 4px; cursor: pointer; font-size: 15.5px; }
+.pp-list input { width: 22px; height: 22px; margin: 2px 0 0; flex: none; accent-color: #556b00; }
+.pp-actions { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; margin-top: 8px; }
+.pp-go { font: inherit; font-size: 17px; font-weight: 600; min-height: 48px; min-width: 120px; border-radius: 10px; cursor: pointer;
+         padding: 8px 18px; border: none; background: #0b5e57; color: #fff; }
+.pp-go:disabled { background: #c9c6bd; color: #6b6860; cursor: default; }
+.pp-go.alt { background: #fff; color: #0b5e57; box-shadow: inset 0 0 0 1.5px #0b5e57; }
+.pp-go.alt:disabled { box-shadow: inset 0 0 0 1.5px #c9c6bd; background: #fff; }
+.pp-hint { font-size: 14px; color: #6b6860; margin: 4px 0 0; }
+@media (max-width: 759px) {
+  .pp-layer { padding: 0; align-items: stretch; }
+  .pp-card { width: 100%; max-height: none; height: 100%; border-radius: 0; font-size: 16px; }
+  .pp-head { padding: 14px 16px 4px; }
+  .pp-task { font-size: 18px; }
+  .pp-body { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 10px 16px 18px; }
+  .pp-sheet td.l { white-space: normal; width: 34%; }
+  .pp-actions { position: sticky; bottom: 0; background: #fff; padding: 10px 0 4px; margin: 0; }
+  .pp-go { flex: 1; }
+}
+@media (prefers-reduced-motion: reduce) { body.pp-open .frame, body.pp-open #review { transition: none; } }
 </style>
 </head>
 <body>
@@ -2806,6 +2882,7 @@ scrubber.addEventListener("input", () => seek(parseFloat(scrubber.value)));
 function fmtTime(s) { s = Math.max(0, s); const m = Math.floor(s / 60), sec = Math.floor(s % 60); return m + ":" + String(sec).padStart(2, "0"); }
 
 function tick() {
+  const t0 = state.globalTime;
   if (state.playing && SILENT) {
     const prev = state.globalTime;
     state.globalTime = Math.min(totalDuration, (performance.now() - silentClock0) / 1000);
@@ -2824,8 +2901,323 @@ function tick() {
     }
     renderFrame(state.globalTime);
   }
+  if (PRACTICE.length) practiceTick(t0);
   requestAnimationFrame(tick);
 }
+
+// ---- 1.23 (ADR 046): practice points (rules 56, 57) ----
+// A state's `practice` entries: when the clock, playing, reaches a point's
+// `time`, the lesson stops there, the board is dimmed and a pop-up opens over
+// it: the task, the piece of the paper and the items, in the site's item
+// contract. Check marks the answer (deterministic: the item's key or its
+// accepted forms under its marking scheme) and shows the right answer and a
+// short reason; Continue, enabled once every part is answered, closes it and
+// the lesson goes on from `resume`. A seek never opens one. Each answer is kept
+// as an attempt per scored unit (window.__practiceAttempts: the reference
+// player stores nothing). A lesson without practice points has none of this.
+const PRACTICE = [];
+for (const bd of boards) for (const s of bd.states) for (const p of (s.practice || [])) PRACTICE.push(p);
+PRACTICE.sort((a, b) => a.time - b.time);
+const ppDone = new Map();                 // point id -> what was answered, so a replay shows it
+window.__practiceAttempts = [];
+let ppOpen = null;
+function ppEsc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]); }
+// the site's inline text: **bold** and ~~struck~~ only (ADR-0031 §6)
+function ppInline(s) { return ppEsc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/~~(.+?)~~/g, "<s>$1</s>"); }
+function ppEl(tag, cls, html) { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+// Marking schemes. oet-typed-v1 is the site's (its normalisation, ported); oet-typed-form-v1 is
+// proposed with ADR 046 for writing practice, where the form is what is taught: it keeps hyphens,
+// articles and every word, and only ignores case, curly quotes, extra spaces and a final mark.
+const PP_NUM = { one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", ten: "10",
+                 eleven: "11", twelve: "12", twenty: "20", thirty: "30", forty: "40", fifty: "50", hundred: "100" };
+function ppNorm(s, scheme) {
+  s = String(s).toLowerCase().replace(/[‘’ʼ]/g, "'").replace(/[–—]/g, "-");
+  if (scheme === "oet-typed-form-v1")
+    return s.replace(/\s+/g, " ").trim().replace(/[.,;:!]+$/, "").trim();
+  s = s.replace(/ae/g, "e").replace(/[-/]/g, " ").replace(/[^a-z0-9%' ]/g, " ");
+  let w = s.split(" ").filter(Boolean).map(x => PP_NUM[x] || x);
+  if (w.length > 1 && ["a", "an", "the"].includes(w[0])) w = w.slice(1);
+  return w.join(" ");
+}
+function ppExpand(form) {                 // round brackets: optional words, both ways
+  const m = /\(([^()]*)\)/.exec(form);
+  if (!m) return [form.replace(/\s+/g, " ").trim()];
+  const a = form.slice(0, m.index), b = form.slice(m.index + m[0].length);
+  return [...ppExpand(a + m[1] + b), ...ppExpand(a + b)];
+}
+function ppTyped(unit, given) {
+  const sc = unit.scoring.marking_scheme, g = ppNorm(given, sc);
+  const right = g !== "" && unit.scoring.accepted.some(f => ppExpand(f).some(x => ppNorm(x, sc) === g));
+  let why = null;
+  if (!right) for (const w of unit.feedback.wrong_answers) if (ppExpand(w.answer).some(x => ppNorm(x, sc) === g)) { why = w; break; }
+  return { right, why, key: unit.scoring.accepted[0], reason: unit.feedback.key };
+}
+function ppFeedback(r) {
+  const fb = ppEl("div", "pp-fb " + (r.right ? "ok" : "no"));
+  fb.setAttribute("role", "status");
+  fb.innerHTML = (r.right ? '<span class="mk">&#10003; Right.</span>' : '<span class="mk">&#10007; Not quite.</span>')
+    + (r.right ? "" : (r.why ? ppInline(r.why.why_wrong) + " " : "")
+       + '<span class="ans">Answer: ' + ppInline(r.key) + "</span>")
+    + ppInline(r.reason);
+  return fb;
+}
+// One renderer per item type: el, ready(), check() -> [{unit, answer, right}], show(), restore(saved)
+function ppText(it, onChange) {
+  const el = ppEl("div", "pp-item");
+  const big = it.response && it.response.size === "sentence";
+  let inp;
+  if (big) {
+    el.appendChild(ppEl("p", "pr", ppInline(it.prompt)));
+    inp = ppEl("textarea", "pp-in");
+    inp.rows = 3;
+    el.appendChild(inp);
+  } else {
+    const line = ppEl("p", "pp-line");
+    const parts = it.prompt.split("____");
+    line.innerHTML = ppInline(parts[0]);
+    inp = ppEl("input", "pp-in"); inp.type = "text";
+    line.appendChild(inp);
+    if (parts.length > 1) line.insertAdjacentHTML("beforeend", ppInline(parts.slice(1).join("____")));
+    el.appendChild(line);
+  }
+  Object.assign(inp, { autocomplete: "off", spellcheck: false });
+  inp.setAttribute("autocapitalize", "off");
+  inp.setAttribute("aria-label", it.prompt.replace(/\*\*/g, ""));
+  inp.addEventListener("input", onChange);
+  let res = null;
+  return { el, first: inp, ready: () => inp.value.trim() !== "",
+    check: () => { res = ppTyped(it, inp.value); inp.disabled = true;
+                   return [{ unit: it.item_id, version: it.version, answer: { text: inp.value }, right: res.right }]; },
+    show: (withCheck) => { if (!withCheck) el.appendChild(ppFeedback(res)); },
+    restore: s => { inp.value = s[0].answer.text; } };
+}
+function ppGapfill(it, onChange) {
+  const el = ppEl("div", "pp-item");
+  if (it.title) el.appendChild(ppEl("p", "pr", ppInline(it.title)));
+  const ins = [], rows = [];
+  for (const g of it.gaps) {
+    const line = ppEl("p", "pp-line");
+    const parts = g.prompt.split("____");
+    line.innerHTML = ppInline(parts[0]);
+    const inp = ppEl("input", "pp-in"); inp.type = "text";
+    Object.assign(inp, { autocomplete: "off", spellcheck: false });
+    inp.setAttribute("autocapitalize", "off");
+    inp.setAttribute("aria-label", "Gap " + g.number + ": " + g.prompt.replace(/\*\*/g, ""));
+    inp.addEventListener("input", onChange);
+    line.appendChild(inp);
+    line.insertAdjacentHTML("beforeend", ppInline(parts.slice(1).join("____")));
+    const wrap = ppEl("div"); wrap.appendChild(line); el.appendChild(wrap);
+    ins.push(inp); rows.push(wrap);
+  }
+  let res = [];
+  return { el, first: ins[0], ready: () => ins.every(i => i.value.trim() !== ""),
+    check: () => { res = it.gaps.map((g, i) => ppTyped(g, ins[i].value)); ins.forEach(i => { i.disabled = true; });
+                   return it.gaps.map((g, i) => ({ unit: g.gap_id, version: it.version, answer: { text: ins[i].value }, right: res[i].right })); },
+    show: () => rows.forEach((w, i) => w.appendChild(ppFeedback(res[i]))),
+    restore: s => s.forEach((x, i) => { ins[i].value = x.answer.text; }) };
+}
+function ppOptionText(it, id) { const o = it.options.find(x => x.option_id === id); return o ? o.text : id; }
+function ppChoice(it, onChange) {
+  const el = ppEl("div", "pp-item");
+  el.appendChild(ppEl("p", "pr", ppInline(it.stem)));
+  const box = ppEl("div", "pp-opts"); box.setAttribute("role", "radiogroup");
+  let chosen = null; const btns = [];
+  for (const id of it.display_order) {
+    const b = ppEl("button", "pp-btn", ppInline(ppOptionText(it, id)));
+    b.type = "button"; b.setAttribute("role", "radio"); b.setAttribute("aria-checked", "false");
+    b.addEventListener("click", () => { chosen = id; btns.forEach(x => x.setAttribute("aria-checked", String(x === b))); onChange(); });
+    btns.push(b); box.appendChild(b);
+  }
+  el.appendChild(box);
+  let right = false;
+  return { el, first: btns[0], ready: () => chosen !== null,
+    check: () => { right = chosen === it.scoring.key_option_id; btns.forEach(b => { b.disabled = true; });
+                   return [{ unit: it.item_id, version: it.version, answer: { option_id: chosen }, right }]; },
+    show: () => { const w = it.feedback.options[chosen];
+                  el.appendChild(ppFeedback({ right, why: w || null, key: ppOptionText(it, it.scoring.key_option_id), reason: it.feedback.key })); },
+    restore: s => { chosen = s[0].answer.option_id; btns.forEach((b, i) => b.setAttribute("aria-checked", String(it.display_order[i] === chosen))); } };
+}
+function ppWordbank(it, onChange) {
+  const el = ppEl("div", "pp-item");
+  if (it.title) el.appendChild(ppEl("p", "pr", ppInline(it.title)));
+  const bank = ppEl("div", "pp-bank"); bank.setAttribute("aria-label", "Words");
+  const placed = it.gaps.map(() => null); const slots = []; const chips = new Map(); const rows = [];
+  let active = 0;
+  const sync = () => {
+    slots.forEach((s, i) => { s.textContent = placed[i] ? ppOptionText(it, placed[i]) : "tap a word";
+                              s.classList.toggle("full", !!placed[i]); s.classList.toggle("sel", i === active); });
+    if (!it.reuse_options) for (const [id, c] of chips) c.disabled = placed.includes(id) || c.dataset.locked === "1";
+    onChange();
+  };
+  it.gaps.forEach((g, i) => {
+    const line = ppEl("p", "pp-line");
+    const parts = g.prompt.split("____");
+    line.innerHTML = ppInline(parts[0]);
+    const s = ppEl("button", "pp-slot"); s.type = "button"; s.setAttribute("aria-label", "Gap " + g.number);
+    s.addEventListener("click", () => { if (placed[i]) placed[i] = null; active = i; sync(); });
+    line.appendChild(s); line.insertAdjacentHTML("beforeend", ppInline(parts.slice(1).join("____")));
+    const wrap = ppEl("div"); wrap.appendChild(line); rows.push(wrap); slots.push(s);
+  });
+  for (const id of it.display_order) {
+    const c = ppEl("button", "pp-chip", ppInline(ppOptionText(it, id))); c.type = "button";
+    c.addEventListener("click", () => {
+      let i = placed[active] == null ? active : placed.findIndex(x => x == null);
+      if (i < 0) i = active;
+      placed[i] = id;
+      const nxt = placed.findIndex(x => x == null); active = nxt < 0 ? i : nxt; sync();
+    });
+    chips.set(id, c); bank.appendChild(c);
+  }
+  el.appendChild(bank); rows.forEach(r => el.appendChild(r));
+  sync();
+  let res = [];
+  return { el, first: [...chips.values()][0], ready: () => placed.every(Boolean),
+    check: () => { res = it.gaps.map((g, i) => ({ right: placed[i] === g.scoring.key_option_id, why: g.feedback.options[placed[i]] || null,
+                                                  key: ppOptionText(it, g.scoring.key_option_id), reason: g.feedback.key }));
+                   [...slots, ...chips.values()].forEach(b => { b.disabled = true; b.dataset.locked = "1"; }); active = -1;
+                   slots.forEach(s => s.classList.remove("sel"));
+                   return it.gaps.map((g, i) => ({ unit: g.gap_id, version: it.version, answer: { option_id: placed[i] }, right: res[i].right })); },
+    show: () => rows.forEach((w, i) => w.appendChild(ppFeedback(res[i]))),
+    restore: s => { s.forEach((x, i) => { placed[i] = x.answer.option_id; }); sync(); } };
+}
+function ppOrdering(it, onChange) {
+  const el = ppEl("div", "pp-item");
+  el.appendChild(ppEl("p", "pr", ppInline(it.stem)));
+  const built = ppEl("div", "pp-built"); built.dataset.empty = "Tap the pieces in order";
+  const pool = ppEl("div", "pp-pool");
+  const order = []; const chips = new Map();
+  const sync = () => {
+    built.innerHTML = "";
+    for (const id of order) {
+      const b = ppEl("button", "pp-chip sel", ppInline(ppOptionText(it, id))); b.type = "button";
+      b.setAttribute("aria-label", ppOptionText(it, id) + ", placed; tap to take it back");
+      b.addEventListener("click", () => { if (lock) return; order.splice(order.indexOf(id), 1); sync(); });
+      b.disabled = lock; built.appendChild(b);
+    }
+    for (const [id, c] of chips) c.disabled = lock || order.includes(id);
+    onChange();
+  };
+  let lock = false;
+  for (const id of it.display_order) {
+    const c = ppEl("button", "pp-chip", ppInline(ppOptionText(it, id))); c.type = "button";
+    c.addEventListener("click", () => { order.push(id); sync(); });
+    chips.set(id, c); pool.appendChild(c);
+  }
+  el.appendChild(built); el.appendChild(pool);
+  let score = 0;
+  const same = (a, b) => a.length === b.length && a.every((x, i) => x === b[i]);
+  return { el, first: [...chips.values()][0], ready: () => order.length === it.options.length,
+    check: () => {
+      const acc = it.scoring.accepted_orders;
+      if (it.scoring.method === "adjacent-pairs") {
+        score = Math.max(...acc.map(a => { let k = 0; for (let i = 0; i + 1 < order.length; i++) { const j = a.indexOf(order[i]); if (a[j + 1] === order[i + 1]) k++; } return k / (order.length - 1); }));
+      } else score = acc.some(a => same(a, order)) ? 1 : 0;
+      lock = true; sync();
+      return [{ unit: it.item_id, version: it.version, answer: { order: order.slice() }, right: score === 1, score }]; },
+    show: () => { const w = it.feedback.wrong_orders.find(x => same(x.order, order));
+                  el.appendChild(ppFeedback({ right: score === 1, why: w || null,
+                                              key: it.scoring.accepted_orders[0].map(id => ppOptionText(it, id)).join(" "), reason: it.feedback.key })); },
+    restore: s => { order.splice(0, order.length, ...s[0].answer.order); sync(); } };
+}
+const PP_TYPES = { text: ppText, gapfill: ppGapfill, choice: ppChoice, wordbank: ppWordbank, ordering: ppOrdering };
+// a sentence's self-check list (ADR 046): the learner's sentence beside the model, the key points ticked
+function ppCheckList(p, given, saved) {
+  const box = ppEl("div", "pp-item");
+  const m = ppEl("div", "pp-model");
+  m.innerHTML = '<div class="box yours"><span class="lab">Your sentence</span>' + ppEsc(given) + "</div>"
+    + '<div class="box ours"><span class="lab">The model</span>' + ppInline(p.check.model) + "</div>";
+  box.appendChild(m);
+  box.appendChild(ppEl("p", "pr", "<b>Tick what you got.</b>"));
+  const ul = ppEl("ul", "pp-list");
+  const ticks = [];
+  for (const pt of p.check.points) {
+    const li = ppEl("li"); const lab = ppEl("label"); const cb = ppEl("input"); cb.type = "checkbox";
+    cb.checked = !!(saved && saved.includes(pt.id));
+    cb.addEventListener("change", () => { const d = ppDone.get(p.id); if (d) d.ticked = ticks.filter(t => t.cb.checked).map(t => t.id); });
+    lab.appendChild(cb); lab.insertAdjacentHTML("beforeend", "<span>" + ppInline(pt.text) + "</span>");
+    li.appendChild(lab); ul.appendChild(li); ticks.push({ id: pt.id, cb });
+  }
+  box.appendChild(ul);
+  return box;
+}
+function ppSheet(ex) {
+  const s = ppEl("section", "pp-sheet"); s.setAttribute("aria-label", ex.title || "From the paper");
+  s.appendChild(ppEl("div", "cap", ppEsc(ex.title || "From the paper")));
+  const tb = ppEl("table");
+  for (const r of ex.rows) {
+    const tr = ppEl("tr", r.lines.length ? "" : "h");
+    tr.innerHTML = '<td class="l">' + ppEsc(r.label || "") + "</td><td>" + r.lines.map(l => '<span class="ln">' + ppEsc(l) + "</span>").join("") + "</td>";
+    tb.appendChild(tr);
+  }
+  s.appendChild(tb);
+  return s;
+}
+function openPractice(p) {
+  const done = ppDone.get(p.id);
+  const layer = ppEl("div", "pp-layer"); layer.id = "ppLayer";
+  const card = ppEl("div", "pp-card");
+  card.setAttribute("role", "dialog"); card.setAttribute("aria-modal", "true"); card.setAttribute("aria-labelledby", "ppTask");
+  const head = ppEl("div", "pp-head", '<span class="pp-tag">Your turn</span>');
+  const task = ppEl("p", "pp-task", ppInline(p.task)); task.id = "ppTask"; head.appendChild(task);
+  const body = ppEl("div", "pp-body");
+  body.appendChild(ppSheet(p.excerpt));
+  const work = ppEl("section", "pp-work"); work.setAttribute("aria-label", "Your answer");
+  const actions = ppEl("div", "pp-actions");
+  const checkBtn = ppEl("button", "pp-go alt", "Check"); checkBtn.type = "button";
+  const contBtn = ppEl("button", "pp-go", "Continue"); contBtn.type = "button"; contBtn.disabled = true;
+  const hint = ppEl("p", "pp-hint", "Answer first, then Check. There is no second try.");
+  let views = [];               // a widget may report a change while it is being built
+  views = p.items.map(it => PP_TYPES[it.type](it, () => {
+    checkBtn.disabled = !(views.length === p.items.length && views.every(v => v.ready())); }));
+  views.forEach(v => work.appendChild(v.el));
+  const sentence = p.check ? p.items.findIndex(it => it.type === "text" && it.response && it.response.size === "sentence") : -1;
+  const reveal = (rec) => {
+    views.forEach((v, i) => v.show(i === sentence));
+    if (sentence >= 0) work.insertBefore(ppCheckList(p, rec[sentence][0].answer.text, ppDone.get(p.id).ticked), actions);
+    checkBtn.disabled = true; checkBtn.hidden = true; contBtn.disabled = false; hint.remove(); contBtn.focus();
+  };
+  checkBtn.addEventListener("click", () => {
+    if (!views.every(v => v.ready())) return;
+    const rec = views.map(v => v.check());
+    ppDone.set(p.id, { rec, ticked: [] });
+    const at = new Date().toISOString();
+    rec.forEach((units, i) => units.forEach(u => window.__practiceAttempts.push({
+      practice_point: p.id, item: p.items[i].item_id, unit: u.unit, unit_version: u.version, answer: u.answer,
+      auto_score: i === sentence && !u.right ? null : (u.score != null ? u.score : (u.right ? 1 : 0)),
+      auto_result: i === sentence && !u.right ? "pending" : (u.right ? "correct" : (u.score > 0 ? "partial" : "wrong")), at })));
+    reveal(rec);
+  });
+  contBtn.addEventListener("click", () => {
+    const d = ppDone.get(p.id);
+    if (p.check && d && !d.logged) {     // the self-check list: what the learner ticked, as said
+      d.logged = true;
+      window.__practiceAttempts.push({ practice_point: p.id, check: d.ticked.slice(), at: new Date().toISOString() });
+    }
+    closePractice(p);
+  });
+  actions.appendChild(checkBtn); actions.appendChild(contBtn);
+  work.appendChild(actions); work.appendChild(hint);
+  body.appendChild(work);
+  card.appendChild(head); card.appendChild(body); layer.appendChild(card);
+  document.body.appendChild(layer); document.body.classList.add("pp-open");
+  ppOpen = { p, layer };
+  if (done) { views.forEach((v, i) => { v.restore(done.rec[i]); v.check(); }); reveal(done.rec); }
+  else { checkBtn.disabled = true; (views[0].first || checkBtn).focus(); }
+}
+function closePractice(p) {
+  if (!ppOpen) return;
+  ppOpen.layer.remove(); document.body.classList.remove("pp-open"); ppOpen = null;
+  seek(p.resume); play();
+}
+// rule 56: reached in play, never by a seek
+function practiceTick(t0) {
+  if (ppOpen || !state.playing) return;
+  const t = state.globalTime;
+  const p = PRACTICE.find(x => t0 < x.time - 1e-6 && t >= x.time - 1e-3);
+  if (!p) return;
+  pause(); seek(p.time); openPractice(p);
+}
+window.__openPractice = id => { const p = PRACTICE.find(x => x.id === id); if (p) { pause(); seek(p.time); openPractice(p); } };
 
 if (window.__measureCopy) {
   window.__boards = boards;          // the copy that measures ahead draws nothing on its own
