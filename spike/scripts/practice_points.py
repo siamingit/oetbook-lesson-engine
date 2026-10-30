@@ -20,32 +20,46 @@ does not know practice points plays exactly that. `attach` refuses a point whose
 is not there.
 
 The audio never depends on what the learner typed: nothing here changes a clip or a time.
+
+IDs (ADR 046 amendment of 2026-10-30; the site's ADR-0031 Amendment 1). The engine's block is
+900000-989999, in every skill. Every item and part ID the engine uses is issued by `issue` and kept
+in the registry `spike/practice/ids.json` (in the repository): one entry per ID, naming the lesson,
+the point and the slot it was issued for. An ID is issued once, never reused, and never moves to
+another lesson or point; a point that is dropped keeps its entries. `attach` refuses an ID that is
+outside the block or that the registry did not issue for that lesson and point, so a fixture ID
+(990000-999999, which the site refuses in production) can no longer be built.
 """
 from __future__ import annotations
 
+import datetime
 import hashlib
 import json
 import re
 from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+REGISTRY = REPO / "spike" / "practice" / "ids.json"
+REGISTRY_FORMAT = "oetbook-practice-ids"
 
 FORMAT_VERSION = "1.23"            # bundle format of a lesson with practice points (ADR 046)
 FILE_FORMAT = "oetbook-practice-points"
 PAUSE_PREFIX = "practice: "
 KEY_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,39}$")
 ITEM_ID_RE = re.compile(r"^oa-(reading|listening|grammar|vocabulary|writing|speaking)-[0-9]{6}$")
-# the site's ID blocks (ADR-0031 §2): 990000-999999 are examples and fixtures, never published.
-# The engine has no block of its own yet (asked of the site, ADR 046); until it has one, only
-# fixture IDs are written, so nothing here can reach a learner by mistake.
-FIXTURE_LOW = 990000
+# the site's ID blocks (ADR-0031 Amendment 1): the lesson engine's is 900000-989999 in every skill;
+# 990000-999999 are examples and fixtures, refused in production (LP-FIXTURE).
+BLOCK_LOW, BLOCK_HIGH = 900000, 989999
+SLOT_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,39}$")
 PAUSE_MIN, PAUSE_MAX = 3.0, 10.0   # s: the fallback's pause (every pause is 0.5 to 10, §5)
-TYPES = {"choice", "text", "gapfill", "wordbank", "ordering"}   # approved: ADR-0031 §3, ADR-0032
-SCHEMES = {"oet-typed-v1", "oet-typed-form-v1"}                 # the second proposed (ADR 046)
+TYPES = {"choice", "text", "gapfill", "wordbank", "ordering",   # approved: ADR-0031 §3, ADR-0032
+         "selfcheck", "errorspot"}                              # selfcheck: contracts 1.13.0 (site #200)
+SCHEMES = {"oet-typed-v1", "oet-typed-form-v1"}                 # both accepted, contracts 1.13.0
 ROOT_CAUSES = {"word-match", "mentioned-not-asked", "partial", "overgeneralisation", "reversal",
                "wrong-referent", "world-knowledge", "speaker-confusion", "unaccepted-proposal",
                "sound-alike", "wrong-text", "form-change", "spelling", "too-much", "wrong-form",
                "wrong-rule"}
 HASH_EXCLUDE = {"version", "content_hash", "status", "withdrawal", "tags", "admin"}
-CHECK_MARKING = ("self",)          # a sentence's self-check list; "ai" is kept for later (ADR 046)
+SELFCHECK_MAX_WORDS = 40
 
 
 def path(L: Path) -> Path:
@@ -65,6 +79,101 @@ def load(L: Path) -> dict | None:
         if not KEY_RE.match(k):
             raise SystemExit(f"REFUSED: practice point key {k!r}: lower case, digits and hyphens")
     return pts
+
+
+# ---------------------------------------------------------------- the ID registry
+
+def registry() -> dict:
+    if not REGISTRY.exists():
+        return {"format": REGISTRY_FORMAT, "version": 1,
+                "about": "Every practice item and part ID the lesson engine has issued (ADR 046 amendment of "
+                         "2026-10-30): the engine's block is 900000-989999 in every skill (oetacademy-web "
+                         "ADR-0031 Amendment 1). Each lesson has its own range of the block (`ranges`, set by "
+                         "practice_points.reserve, as the owner assigns them); every ID a lesson uses is issued inside "
+                         "it. Append only: an ID is never reused and never moves to another lesson or point. Written "
+                         "by practice_points.issue.",
+                "block": [BLOCK_LOW, BLOCK_HIGH], "ranges": {}, "ids": []}
+    d = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    if d.get("format") != REGISTRY_FORMAT or d.get("version") != 1:
+        raise SystemExit(f"REFUSED: {REGISTRY} is not {REGISTRY_FORMAT} version 1")
+    check_registry(d)
+    return d
+
+
+def check_registry(d: dict) -> None:
+    """Every lesson's range inside the block, no two overlapping; every entry inside its lesson's range,
+    its number unique across skills, its slot named once."""
+    ranges = d.get("ranges") or {}
+    spans = sorted((lo, hi, les) for les, (lo, hi) in ranges.items())
+    for i, (lo, hi, les) in enumerate(spans):
+        if not BLOCK_LOW <= lo <= hi <= BLOCK_HIGH:
+            raise SystemExit(f"REFUSED: the ID range of {les} is outside the engine's block")
+        if i and lo <= spans[i - 1][1]:
+            raise SystemExit(f"REFUSED: the ID ranges of {spans[i - 1][2]} and {les} overlap")
+    nums, slots = set(), set()
+    for e in d["ids"]:
+        n = int(e["id"][-6:])
+        if not ITEM_ID_RE.match(e["id"]) or not BLOCK_LOW <= n <= BLOCK_HIGH:
+            raise SystemExit(f"REFUSED: registry entry {e['id']} is outside the engine's block")
+        lo, hi = ranges.get(e["lesson"], (None, None))
+        if lo is None or not lo <= n <= hi:
+            raise SystemExit(f"REFUSED: registry entry {e['id']} is outside the range of {e['lesson']}")
+        if n in nums:
+            raise SystemExit(f"REFUSED: registry number {n} issued twice")
+        k = (e["lesson"], e["point"], e["slot"])
+        if k in slots:
+            raise SystemExit(f"REFUSED: registry slot {k} issued twice")
+        nums.add(n)
+        slots.add(k)
+
+
+def _write(d: dict) -> None:
+    check_registry(d)
+    REGISTRY.parent.mkdir(parents=True, exist_ok=True)
+    REGISTRY.write_text(json.dumps(d, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+
+
+def reserve(lesson: str, low: int, high: int) -> None:
+    """Gives `lesson` its range of the block (the owner assigns them: Writing 4 900000-900999, Grammar 1
+    950000-950999, Grammar 2 951000-951999). A range once set never changes."""
+    d = registry()
+    ranges = d.setdefault("ranges", {})
+    if lesson in ranges:
+        if ranges[lesson] != [low, high]:
+            raise SystemExit(f"REFUSED: {lesson} already has the range {ranges[lesson]}")
+        return
+    ranges[lesson] = [low, high]
+    _write(d)
+
+
+def issue(lesson: str, point: str, slot: str, skill: str = "writing") -> str:
+    """The ID of `slot` (an item or a part, named by the lesson's own words) of practice point
+    `point` of `lesson`: the one already issued, or the next number of the lesson's own range after
+    the highest it has issued, recorded."""
+    if not KEY_RE.match(point) or not SLOT_RE.match(slot):
+        raise SystemExit(f"REFUSED: practice ID slot {point!r} {slot!r}: lower case, digits and hyphens")
+    d = registry()
+    for e in d["ids"]:
+        if (e["lesson"], e["point"], e["slot"]) == (lesson, point, slot):
+            if not e["id"].startswith(f"oa-{skill}-"):
+                raise SystemExit(f"REFUSED: {e['id']} was issued for another skill")
+            return e["id"]
+    if lesson not in (d.get("ranges") or {}):
+        raise SystemExit(f"REFUSED: {lesson} has no ID range in {REGISTRY.name} (practice_points.reserve)")
+    lo, hi = d["ranges"][lesson]
+    n = max([lo - 1] + [int(e["id"][-6:]) for e in d["ids"] if e["lesson"] == lesson]) + 1
+    if n > hi:
+        raise SystemExit(f"REFUSED: the ID range of {lesson} is used up")
+    new = f"oa-{skill}-{n:06d}"
+    d["ids"].append({"id": new, "lesson": lesson, "point": point, "slot": slot,
+                     "issued": datetime.date.today().isoformat()})
+    _write(d)
+    return new
+
+
+def issued(lesson: str) -> dict[str, str]:
+    """ID -> point, for every ID the registry issued for `lesson`."""
+    return {e["id"]: e["point"] for e in registry()["ids"] if e["lesson"] == lesson}
 
 
 # ---------------------------------------------------------------- content hash (the factory's rule)
@@ -112,10 +221,12 @@ def _units(item: dict) -> list[dict]:
     return item.get("gaps") if item["type"] in ("gapfill", "wordbank") else [item]
 
 
-def check_item(item: dict, where: str, seen: set[str]) -> None:
+def check_item(item: dict, where: str, seen: set[str], ids_issued: dict[str, str] | None = None,
+               point: str | None = None) -> None:
     """The rules of the site's item contract that a mistake here would break (the site's own
-    validator is the authority, ADR-0027 Amendment 2): ids in the fixture block, unique; the
-    approved types; a key among the item's options; a typed unit's scheme and feedback; tags."""
+    validator is the authority, ADR-0027 Amendment 2): ids in the engine's block, issued by the
+    registry for this lesson and point, unique; the approved types; a key among the item's
+    options; a typed unit's scheme and feedback; a self-check's model and points; tags."""
     def bad(msg):
         raise SystemExit(f"REFUSED: practice item {where}: {msg}")
     t = item.get("type")
@@ -125,11 +236,19 @@ def check_item(item: dict, where: str, seen: set[str]) -> None:
     for i in ids:
         if not ITEM_ID_RE.match(i):
             bad(f"id {i!r} is not an item id")
-        if int(i[-6:]) < FIXTURE_LOW:
-            bad(f"id {i!r} is outside the fixture block: the engine has no block of its own yet (ADR 046)")
+        if not BLOCK_LOW <= int(i[-6:]) <= BLOCK_HIGH:
+            bad(f"id {i!r} is outside the engine's block ({BLOCK_LOW}-{BLOCK_HIGH})")
+        if ids_issued is not None and ids_issued.get(i) != point:
+            bad(f"id {i!r} was not issued for this lesson's point {point!r} (spike/practice/ids.json)")
         if i in seen:
             bad(f"id {i!r} is used twice")
         seen.add(i)
+    if t == "selfcheck":
+        _check_selfcheck(item, bad)
+        return
+    if t == "errorspot":
+        _check_errorspot(item, bad)
+        return
     opts = {o["option_id"] for o in item.get("options") or []}
     for o in opts:
         if not o.startswith(item["item_id"] + "-o"):
@@ -161,15 +280,47 @@ def check_item(item: dict, where: str, seen: set[str]) -> None:
             bad("an accepted order is not a permutation of the options, or the start is one")
 
 
-def check_check(chk: dict, where: str) -> None:
-    """A sentence's self-check list (ADR 046): the model, its points, each with its id and tags."""
-    if chk.get("marking") not in CHECK_MARKING:
-        raise SystemExit(f"REFUSED: practice point {where}: check marking {chk.get('marking')!r}")
-    if not chk.get("model") or not chk.get("points"):
-        raise SystemExit(f"REFUSED: practice point {where}: a check needs a model and its points")
-    ids = [p["id"] for p in chk["points"]]
-    if len(set(ids)) != len(ids) or any(not (p.get("practises")) for p in chk["points"]):
-        raise SystemExit(f"REFUSED: practice point {where}: check points need unique ids and tags")
+def _check_errorspot(item: dict, bad) -> None:
+    """`errorspot` (ADR-0032): one error span of at most 4 words in a sentence of at most 40; each listed
+    wrong tap outside it, once; a correction typed under a known scheme, its wrong corrections listed."""
+    words = item["sentence"].split(" ")
+    sp = item["scoring"]["error_words"]
+    if len(words) > 40 or "  " in item["sentence"]:
+        bad("an errorspot sentence has at most 40 words, single spaces (ERRORSPOT-SENTENCE)")
+    if not 1 <= sp["first"] <= sp["last"] <= len(words) or sp["last"] - sp["first"] >= 4:
+        bad("the error span lies inside the sentence and is at most 4 words (ERRORSPOT-SPAN)")
+    taps = [w["word"] for w in item["feedback"].get("wrong_words") or []]
+    if len(set(taps)) != len(taps) or any(not 1 <= n <= len(words) or sp["first"] <= n <= sp["last"] for n in taps):
+        bad("each wrong tap is listed once, inside the sentence and outside the span (ERRORSPOT-WRONG-WORD)")
+    corr = item.get("correction")
+    if bool(corr) != ("wrong_corrections" in item["feedback"]):
+        bad("wrong_corrections is given exactly when the item has a correction (ERRORSPOT-CORRECTION)")
+    if corr and (corr["scoring"].get("marking_scheme") not in SCHEMES or not corr["scoring"].get("accepted")):
+        bad("a correction is typed: accepted forms under a known marking scheme")
+    if not (item.get("tags") or {}).get("practises"):
+        bad("an errorspot needs practises tags")
+
+
+def _check_selfcheck(item: dict, bad) -> None:
+    """`selfcheck` (contracts 1.13.0, site #200): a sentence box, the model and 2 to 10 points."""
+    if "____" in item["prompt"]:
+        bad("a self-check's prompt has no ____ (SENTENCE-PROMPT)")
+    r = item["response"]
+    if r.get("size") != "sentence" or not 1 <= r.get("max_words", 0) <= SELFCHECK_MAX_WORDS:
+        bad(f"a self-check's response is a sentence box of at most {SELFCHECK_MAX_WORDS} words")
+    if len(item["model"].split()) > r["max_words"]:
+        bad("the model is longer than max_words (MAX-WORDS)")
+    pts = item["points"]
+    if not 2 <= len(pts) <= 10:
+        bad("a self-check has 2 to 10 points")
+    ids = [p["point_id"] for p in pts]
+    if len(set(ids)) != len(ids) or any(not re.fullmatch(re.escape(item["item_id"]) + r"-c[1-9][0-9]*", i)
+                                        for i in ids):
+        bad("self-check point ids are <item id>-c<n>, once each (SELFCHECK-POINT)")
+    if any(not (p.get("tags") or {}).get("practises") for p in pts) or not (item.get("tags") or {}).get("practises"):
+        bad("a self-check and each of its points need practises tags")
+    if item["scoring"] != {"method": "self-check"} or not item["feedback"].get("key"):
+        bad("a self-check's scoring is {method: self-check}, with a feedback key")
 
 
 # ---------------------------------------------------------------- attaching the points to the timeline
@@ -188,6 +339,7 @@ def attach(L: Path, boards: list[dict], sample: bool = False) -> bool:
     if pts is None:
         return False
     used, seen_ids = set(), set()
+    ids_issued = issued(L.name)
     for bd in boards:
         utts = [u for s in bd["states"] for u in s["utterances"]]
         for s in bd["states"]:
@@ -212,15 +364,15 @@ def attach(L: Path, boards: list[dict], sample: bool = False) -> bool:
                     pid = f"{bd['section']}_pp-{key}"
                     items = [hashed(it) for it in p["items"]]
                     for n, it in enumerate(items, 1):
-                        check_item(it, f"{key} #{n}", seen_ids)
+                        check_item(it, f"{key} #{n}", seen_ids, ids_issued, key)
                     if not 1 <= len(items) <= 3:
                         raise SystemExit(f"REFUSED: practice point {key!r}: 1 to 3 items (a handout's practice step)")
                     point = {"id": pid, "time": c["time"], "resume": c["time_end"],
                              "utterance": u["id"], "cue": c["id"], "task": p["task"],
                              "excerpt": p["excerpt"], "items": items}
-                    if p.get("check"):
-                        check_check(p["check"], key)
-                        point["check"] = p["check"]
+                    if p.get("check"):         # valid in 1.23, but a whole sentence is a selfcheck item
+                        raise SystemExit(f"REFUSED: practice point {key!r}: the interim check is retired; "
+                                         "write the sentence as a selfcheck item (ADR 046 amendment (1))")
                     s.setdefault("practice", []).append(point)
                     c["practice"] = pid
     missing = sorted(set(pts) - used)

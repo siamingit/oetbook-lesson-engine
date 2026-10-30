@@ -373,6 +373,10 @@ textarea.pp-in { display: block; width: 100%; min-height: 110px; resize: vertica
 .pp-built { display: flex; flex-wrap: wrap; gap: 6px; min-height: 48px; padding: 6px; border: 1.5px dashed #b9b5aa;
             border-radius: 10px; align-items: center; }
 .pp-built:empty::before { content: attr(data-empty); color: #8f8b80; font-size: 15px; padding: 0 6px; }
+.pp-words { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.pp-words .pp-chip { padding: 6px 9px; }
+.pp-words .pp-chip:disabled { opacity: 1; cursor: default; color: #1f2a29; }
+.pp-words .pp-chip.span { border-color: #8c1b12; box-shadow: inset 0 0 0 1px #8c1b12; background: #fbeceb; }
 .pp-fb { margin: 8px 0 0; padding: 8px 12px; border-radius: 8px; font-size: 15.5px; line-height: 1.45; }
 .pp-fb.ok { background: #eef3e0; color: #3f5000; }
 .pp-fb.no { background: #fbeceb; color: #8c1b12; }
@@ -2912,28 +2916,28 @@ function tick() {
 // contract. Check marks the answer (deterministic: the item's key or its
 // accepted forms under its marking scheme) and shows the right answer and a
 // short reason; Continue, enabled once every part is answered, closes it and
-// the lesson goes on from `resume`. A seek never opens one. Each answer is kept
-// as an attempt per scored unit (window.__practiceAttempts: the reference
-// player stores nothing). A lesson without practice points has none of this.
+// the lesson goes on from `resume`. A seek never opens one. Nothing the learner
+// does is stored (the owner's decision, site #201): an answered point reached
+// again in the same page shows the answers given (ppDone, the page's memory
+// only). A lesson without practice points has none of this.
 const PRACTICE = [];
 for (const bd of boards) for (const s of bd.states) for (const p of (s.practice || [])) PRACTICE.push(p);
 PRACTICE.sort((a, b) => a.time - b.time);
 const ppDone = new Map();                 // point id -> what was answered, so a replay shows it
-window.__practiceAttempts = [];
 let ppOpen = null;
 function ppEsc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]); }
 // the site's inline text: **bold** and ~~struck~~ only (ADR-0031 §6)
 function ppInline(s) { return ppEsc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/~~(.+?)~~/g, "<s>$1</s>"); }
 function ppEl(tag, cls, html) { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
-// Marking schemes. oet-typed-v1 is the site's (its normalisation, ported); oet-typed-form-v1 is
-// proposed with ADR 046 for writing practice, where the form is what is taught: it keeps hyphens,
+// Marking schemes. oet-typed-v1 is the site's (its normalisation, ported); oet-typed-form-v1
+// (contracts 1.13.0) is for writing practice, where the form is what is taught: it keeps hyphens,
 // articles and every word, and only ignores case, curly quotes, extra spaces and a final mark.
 const PP_NUM = { one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", ten: "10",
                  eleven: "11", twelve: "12", twenty: "20", thirty: "30", forty: "40", fifty: "50", hundred: "100" };
 function ppNorm(s, scheme) {
   s = String(s).toLowerCase().replace(/[‘’ʼ]/g, "'").replace(/[–—]/g, "-");
-  if (scheme === "oet-typed-form-v1")
-    return s.replace(/\s+/g, " ").trim().replace(/[.,;:!]+$/, "").trim();
+  if (scheme === "oet-typed-form-v1")       // one final mark only (the site's test vectors)
+    return s.replace(/\s+/g, " ").trim().replace(/[.,;:!]$/, "").trim();
   s = s.replace(/ae/g, "e").replace(/[-/]/g, " ").replace(/[^a-z0-9%' ]/g, " ");
   let w = s.split(" ").filter(Boolean).map(x => PP_NUM[x] || x);
   if (w.length > 1 && ["a", "an", "the"].includes(w[0])) w = w.slice(1);
@@ -3119,27 +3123,88 @@ function ppOrdering(it, onChange) {
                                               key: it.scoring.accepted_orders[0].map(id => ppOptionText(it, id)).join(" "), reason: it.feedback.key })); },
     restore: s => { order.splice(0, order.length, ...s[0].answer.order); sync(); } };
 }
-const PP_TYPES = { text: ppText, gapfill: ppGapfill, choice: ppChoice, wordbank: ppWordbank, ordering: ppOrdering };
-// a sentence's self-check list (ADR 046): the learner's sentence beside the model, the key points ticked
-function ppCheckList(p, given, saved) {
+// a sentence's self-check list: the learner's sentence beside the model, the key points ticked.
+// `points` are [{id, text}]; the ticks are kept in the page's memory under `key` (ppDone).
+function ppCheckList(pid, key, model, points, given) {
   const box = ppEl("div", "pp-item");
   const m = ppEl("div", "pp-model");
   m.innerHTML = '<div class="box yours"><span class="lab">Your sentence</span>' + ppEsc(given) + "</div>"
-    + '<div class="box ours"><span class="lab">The model</span>' + ppInline(p.check.model) + "</div>";
+    + '<div class="box ours"><span class="lab">The model</span>' + ppInline(model) + "</div>";
   box.appendChild(m);
   box.appendChild(ppEl("p", "pr", "<b>Tick what you got.</b>"));
   const ul = ppEl("ul", "pp-list");
+  const d = ppDone.get(pid), saved = (d && d.ticked[key]) || [];
   const ticks = [];
-  for (const pt of p.check.points) {
+  for (const pt of points) {
     const li = ppEl("li"); const lab = ppEl("label"); const cb = ppEl("input"); cb.type = "checkbox";
-    cb.checked = !!(saved && saved.includes(pt.id));
-    cb.addEventListener("change", () => { const d = ppDone.get(p.id); if (d) d.ticked = ticks.filter(t => t.cb.checked).map(t => t.id); });
+    cb.checked = saved.includes(pt.id);
+    cb.addEventListener("change", () => { const dd = ppDone.get(pid); if (dd) dd.ticked[key] = ticks.filter(t => t.cb.checked).map(t => t.id); });
     lab.appendChild(cb); lab.insertAdjacentHTML("beforeend", "<span>" + ppInline(pt.text) + "</span>");
     li.appendChild(lab); ul.appendChild(li); ticks.push({ id: pt.id, cb });
   }
   box.appendChild(ul);
   return box;
 }
+// selfcheck (contracts 1.13.0): a sentence box; after Check, the sentence beside the model and
+// the points as tick boxes. Never marked: the learner ticks what they got.
+function ppSelfcheck(it, onChange, pid) {
+  const el = ppEl("div", "pp-item");
+  el.appendChild(ppEl("p", "pr", ppInline(it.prompt)));
+  const inp = ppEl("textarea", "pp-in"); inp.rows = 3;
+  Object.assign(inp, { autocomplete: "off", spellcheck: false });
+  inp.setAttribute("autocapitalize", "off");
+  inp.setAttribute("aria-label", it.prompt.replace(/\*\*/g, ""));
+  inp.addEventListener("input", onChange);
+  el.appendChild(inp);
+  return { el, first: inp, ready: () => inp.value.trim() !== "",
+    check: () => { inp.disabled = true; return [{ unit: it.item_id, answer: { text: inp.value } }]; },
+    show: () => { el.appendChild(ppCheckList(pid, it.item_id, it.model,
+                                             it.points.map(x => ({ id: x.point_id, text: x.text })), inp.value));
+                  el.appendChild(ppEl("p", "pp-hint", ppInline(it.feedback.key))); },
+    restore: s => { inp.value = s[0].answer.text; } };
+}
+// errorspot (ADR-0032): tap the wrong word; with a correction, type the right words. Score 1 for a
+// word inside the span with an accepted correction, 0.5 inside the span with a wrong one, 0 outside.
+function ppErrorspot(it, onChange) {
+  const el = ppEl("div", "pp-item");
+  if (it.prompt) el.appendChild(ppEl("p", "pr", ppInline(it.prompt)));
+  const words = it.sentence.split(" ");
+  const box = ppEl("div", "pp-words"); box.setAttribute("role", "radiogroup"); box.setAttribute("aria-label", "Tap the wrong word");
+  let chosen = null, inp = null; const btns = [];
+  words.forEach((w, i) => {
+    const b = ppEl("button", "pp-chip", ppEsc(w)); b.type = "button"; b.setAttribute("role", "radio"); b.setAttribute("aria-checked", "false");
+    b.addEventListener("click", () => { chosen = i + 1; btns.forEach((x, k) => { x.classList.toggle("sel", k === i); x.setAttribute("aria-checked", String(k === i)); }); onChange(); });
+    btns.push(b); box.appendChild(b);
+  });
+  el.appendChild(box);
+  if (it.correction) {
+    const line = ppEl("p", "pp-line", "Type the right words: ");
+    inp = ppEl("input", "pp-in"); inp.type = "text";
+    Object.assign(inp, { autocomplete: "off", spellcheck: false });
+    inp.setAttribute("autocapitalize", "off"); inp.setAttribute("aria-label", "The right words");
+    inp.addEventListener("input", onChange);
+    line.appendChild(inp); el.appendChild(line);
+  }
+  const span = it.scoring.error_words, inSpan = n => n >= span.first && n <= span.last;
+  const spanText = words.slice(span.first - 1, span.last).join(" ");
+  let score = 0, fb = null;
+  return { el, first: btns[0], ready: () => chosen !== null && (!inp || inp.value.trim() !== ""),
+    check: () => {
+      let why = null;
+      const unit = it.correction && { scoring: it.correction.scoring, feedback: { key: "", wrong_answers: it.feedback.wrong_corrections || [] } };
+      if (!inSpan(chosen)) { score = 0; why = (it.feedback.wrong_words || []).find(x => x.word === chosen) || null; }
+      else if (!unit) score = 1;
+      else { const r = ppTyped(unit, inp.value); score = r.right ? 1 : 0.5; why = r.why; }
+      btns.forEach((b, k) => { b.disabled = true; b.classList.toggle("span", inSpan(k + 1)); });
+      if (inp) inp.disabled = true;
+      fb = { right: score === 1, why, reason: it.feedback.key,
+             key: unit ? spanText + " → " + it.correction.scoring.accepted[0] : spanText };
+      return [{ unit: it.item_id, answer: inp ? { word: chosen, text: inp.value } : { word: chosen }, right: score === 1, score }]; },
+    show: () => el.appendChild(ppFeedback(fb)),
+    restore: s => { chosen = s[0].answer.word; btns.forEach((b, k) => b.classList.toggle("sel", k + 1 === chosen)); if (inp) inp.value = s[0].answer.text; } };
+}
+const PP_TYPES = { text: ppText, gapfill: ppGapfill, choice: ppChoice, wordbank: ppWordbank, ordering: ppOrdering,
+                   selfcheck: ppSelfcheck, errorspot: ppErrorspot };
 function ppSheet(ex) {
   const s = ppEl("section", "pp-sheet"); s.setAttribute("aria-label", ex.title || "From the paper");
   s.appendChild(ppEl("div", "cap", ppEsc(ex.title || "From the paper")));
@@ -3168,33 +3233,21 @@ function openPractice(p) {
   const hint = ppEl("p", "pp-hint", "Answer first, then Check. There is no second try.");
   let views = [];               // a widget may report a change while it is being built
   views = p.items.map(it => PP_TYPES[it.type](it, () => {
-    checkBtn.disabled = !(views.length === p.items.length && views.every(v => v.ready())); }));
+    checkBtn.disabled = !(views.length === p.items.length && views.every(v => v.ready())); }, p.id));
   views.forEach(v => work.appendChild(v.el));
   const sentence = p.check ? p.items.findIndex(it => it.type === "text" && it.response && it.response.size === "sentence") : -1;
   const reveal = (rec) => {
     views.forEach((v, i) => v.show(i === sentence));
-    if (sentence >= 0) work.insertBefore(ppCheckList(p, rec[sentence][0].answer.text, ppDone.get(p.id).ticked), actions);
+    if (sentence >= 0) work.insertBefore(ppCheckList(p.id, "check", p.check.model, p.check.points, rec[sentence][0].answer.text), actions);
     checkBtn.disabled = true; checkBtn.hidden = true; contBtn.disabled = false; hint.remove(); contBtn.focus();
   };
   checkBtn.addEventListener("click", () => {
     if (!views.every(v => v.ready())) return;
     const rec = views.map(v => v.check());
-    ppDone.set(p.id, { rec, ticked: [] });
-    const at = new Date().toISOString();
-    rec.forEach((units, i) => units.forEach(u => window.__practiceAttempts.push({
-      practice_point: p.id, item: p.items[i].item_id, unit: u.unit, unit_version: u.version, answer: u.answer,
-      auto_score: i === sentence && !u.right ? null : (u.score != null ? u.score : (u.right ? 1 : 0)),
-      auto_result: i === sentence && !u.right ? "pending" : (u.right ? "correct" : (u.score > 0 ? "partial" : "wrong")), at })));
+    ppDone.set(p.id, { rec, ticked: {} });
     reveal(rec);
   });
-  contBtn.addEventListener("click", () => {
-    const d = ppDone.get(p.id);
-    if (p.check && d && !d.logged) {     // the self-check list: what the learner ticked, as said
-      d.logged = true;
-      window.__practiceAttempts.push({ practice_point: p.id, check: d.ticked.slice(), at: new Date().toISOString() });
-    }
-    closePractice(p);
-  });
+  contBtn.addEventListener("click", () => closePractice(p));
   actions.appendChild(checkBtn); actions.appendChild(contBtn);
   work.appendChild(actions); work.appendChild(hint);
   body.appendChild(work);

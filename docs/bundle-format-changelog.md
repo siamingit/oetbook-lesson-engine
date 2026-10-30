@@ -1,7 +1,7 @@
 # Lesson bundle format changelog: 1.12 to 1.23
 
 For the oetacademy-web team, before the site accepts bundle formats 1.13 to 1.20.
-Written 2026-10-22; format 1.21 added 2026-10-23 (§9a); format 1.22 added 2026-10-26 (§9b); format 1.23 proposed 2026-10-29 (§9c). It is complete on its own: it does not assume access to the
+Written 2026-10-22; format 1.21 added 2026-10-23 (§9a); format 1.22 added 2026-10-26 (§9b); format 1.23 proposed 2026-10-29 and accepted 2026-10-30 (§9c). It is complete on its own: it does not assume access to the
 engine's repository. The 1.12 contract the site already implements is the
 engine's "Player rendering rules: bundle format 1.12" (rules 1 to 28, sent
 2026-10-01) and "Lesson bundle 1.12: what changed since 1.11"; this page lists
@@ -39,7 +39,7 @@ style C, with motion: one optional lesson field, `style`, and one optional state
 block lifted, a document's line zoomed), and rules 53 to 55; the look itself is in the lesson's own
 `blocks.css`. A lesson is 1.22 only when it is in style C; the published lessons keep their versions.
 
-Format 1.23 (2026-10-29, §9c, **proposed**) adds practice points: the learner answers the site's own items in a pop-up
+Format 1.23 (2026-10-29, accepted by the site 2026-10-30 in contracts 1.13.0; §9c) adds practice points: the learner answers the site's own items in a pop-up
 in the middle of a lesson; a player that does not know them plays the pause and the answer. Not released until the site
 has answered the engine's issue.
 
@@ -59,7 +59,7 @@ that merges it. Formats 1.0 to 1.20 have no tag.
 | 1.20 | 2026-10-14 | The vocabulary panel under the transcript, the whole note form during the reading time, no hyphenation | **Required** | L2–L5. Label only, no feature used: L1 |
 | 1.21 | 2026-10-23 | A board shown whole, never zoomed (`fit`); the clean-up of §12's data | **Required** (`fit`, rule 52) | G6 (`fit`). Rebuilt by the clean-up, no new feature used: R5, L2, L4, L5 |
 | 1.22 | 2026-10-26 | Style C and its motion: the lesson's `style`, a state's `effects` (lift, zoom), marks drawn in, notes that shrink as they go | **Required** (rules 53 to 55) | None approved yet: Writing 2 (W2), at its final gate |
-| 1.23 | 2026-10-29 (proposed) | Practice points: the lesson stops, a pop-up over the dimmed board holds the task, the paper and the site's own items; the fallback is the pause and the answer (`practice` on a state and on a pause cue) | **Optional** (a 1.22 player plays the fallback, rule 57); proposed, not released | None: a prototype of Writing 4's "Five questions" only |
+| 1.23 | 2026-10-29; accepted 2026-10-30 | Practice points: the lesson stops, a pop-up over the dimmed board holds the task, the paper and the site's own items; the fallback is the pause and the answer (`practice` on a state and on a pause cue) | **Optional** (a 1.22 player plays the fallback, rule 57); proposed, not released | None: a prototype of Writing 4's "Five questions" only |
 
 ## 1. How to read this page
 
@@ -1282,11 +1282,12 @@ A 1.21 player, or one that ignores `cells`, dims by row as before: the lesson pl
 
 Nothing else changes for the published lessons: their packages stay as they are.
 
-## 9c. Format 1.23 (proposed) — practice points
+## 9c. Format 1.23 — practice points
 
-2026-10-29 (engine ADR 046). **Proposed, not released**: no lesson is published in 1.23 until the site has answered the
-engine's issue (oetacademy-web #201) and the owner has tried the prototype; the tag
-`bundle-format-v1.23` is made on the commit that releases it. The owner's plan: the lesson player gains **practice
+2026-10-29 (engine ADR 046). **Accepted on 2026-10-30** (engine ADR 046 amendment (1)): the owner tried the prototype and
+approved it; the site accepted the format in contracts 1.13.0 (oetacademy-web #201, #200, its ADR-0038) and its player
+plays it (#203). The site's answers below replace what this section first proposed; the tag `bundle-format-v1.23` is on
+the commit that released it. The owner's plan: the lesson player gains **practice
 points**, the learner answers in the middle of a lesson, and Writing 4 is rebuilt with them (then Writing 1-3).
 
 A practice point is a moment of the lesson's clock. The teacher voices a task; a player that knows practice points stops
@@ -1356,25 +1357,32 @@ hyphen and article kept. Contractions and British and American spellings are lis
 
 ### IDs, attempts, the place for AI marking
 
-- **IDs:** permanent IDs of the shared registry (ADR-0031 §2, §4), `oa-writing-NNNNNN`. The engine asks the site for an
-  ID block of its own. Until it has one, the engine writes **fixture IDs only (990000-999999)**, which the importers
-  refuse in production.
-- **Attempts:** one per scored unit when Check is pressed, as a handout's practice step (ADR-0031 §5): mode `practice`,
-  feedback released at once, the answer final; the self-check list's ticks with the sentence. Not a test score.
-- **AI marking (not built):** the learner's sentence is stored; `check.marking` `"ai"` is kept for the owner's
-  Writing-correction model, and the typed scheme's `ai_grading` line is the other place it plugs in.
+- **IDs:** permanent IDs, `oa-<skill>-NNNNNN`, from **the engine's block, 900000-989999, in every skill** (the site's
+  ADR-0031 Amendment 1): items, parts, options and self-check points, unique within a bundle and across all the engine's
+  bundles. The engine issues them from its registry (`spike/practice/ids.json`) and never reuses or moves one. Fixture IDs
+  (990000-999999) are refused in production (`LP-FIXTURE`); an ID outside the block is refused (`LP-ID-BLOCK`).
+- **Nothing is stored** (the owner's decision, 2026-10-30): no attempts, no answers, no scores; marking happens in the
+  learner's browser; "Again" lasts one page load. (The first proposal recorded an attempt per scored unit; the site
+  declined it.)
+- **A whole sentence** is a `selfcheck` item (accepted on #200, contracts 1.13.0): its `model` and 2 to 10 `points`
+  (`<item id>-c<n>`, each with its own `tags`) shown after Check; never marked. The interim `check` stays valid in 1.23;
+  the engine no longer writes it. **AI marking (not built):** `selfcheck`'s `scoring.method` `"ai"` is reserved for the
+  owner's Writing-correction model and refused until it exists.
+- **`oet-typed-form-v1`** is accepted as proposed, with the site's test vectors (`test-vectors/oet-typed-form-v1.json`):
+  **one** final mark is dropped ("a 47-year-old.." is wrong).
 
 ### Can a site that knows only 1.22 read 1.23?
 
 Yes. The fields are additive and optional; a 1.22 player plays the fallback (rule 57). The site's contracts need
-`"1.23"` in `format_version` and the manifest, `practice` on a state and `practice` on a cue; the engine packages no 1.23 lesson until the
-site's contracts accept it and the engine has pinned them (ADR 039).
+`"1.23"` in `format_version` and the manifest, `practice` on a state and `practice` on a cue: contracts 1.13.0 accept
+them, and the engine pins that release (ADR 039 amendment of 2026-10-30).
 
-### What the site is asked
+### What the site answered (2026-10-30)
 
-On oetacademy-web #201: review the fields and rules, say what the site needs,
-and decide the engine's ID block, the container for a lesson's items, the attempt mode, the scheme `oet-typed-form-v1`
-and the type `selfcheck` (#200).
+On oetacademy-web #201 and #200: the format and rules 56 and 57 accepted; the engine's ID block 900000-989999; no
+container and no attempt mode (nothing is stored); `oet-typed-form-v1` and `selfcheck` accepted; contracts 1.13.0
+(rules `LP-PRACTICE`, `LP-PRACTICE-HTML`, `LP-PRACTICE-ITEM`, `LP-PRACTICE-CHECK`, `LP-ID-BLOCK`, `LP-FIXTURE` and the
+item rules with the prefix `LP-`); its player hosts the pop-up since #203.
 
 ## 10. Player changes with no format version
 
