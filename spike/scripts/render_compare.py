@@ -39,6 +39,7 @@ import json
 import os
 import re
 import shutil
+import stat
 import subprocess
 import sys
 from pathlib import Path
@@ -235,6 +236,15 @@ def sections(L: Path) -> list[dict]:
     return ([intro] if intro else []) + secs
 
 
+def _writable_retry(func, path, exc) -> None:
+    """shutil.rmtree's error handler: a read-only file or folder of a copy under WORK
+    is made writable and removed again; anything else is raised."""
+    if not isinstance(exc, PermissionError) or not under(Path(path), WORK):
+        raise exc
+    os.chmod(path, stat.S_IWRITE)
+    func(path)
+
+
 def snapshot(name: str, only: list[str]) -> None:
     found = stale(name)
     if found:
@@ -247,7 +257,9 @@ def snapshot(name: str, only: list[str]) -> None:
         for L in built(work):
             render_one(L, dest, work)
     finally:
-        shutil.rmtree(guard(WORK / name))
+        # the copies keep a source's read-only flag (Writing 4's samples are read only):
+        # clear it on a copy that will not delete, so the copy goes and the guard below runs
+        shutil.rmtree(guard(WORK / name), onexc=_writable_retry)
     after = manifest()
     changed = sorted(k for k in set(before) | set(after) if before.get(k) != after.get(k))
     if changed:

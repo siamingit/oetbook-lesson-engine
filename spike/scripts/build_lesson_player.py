@@ -51,6 +51,7 @@ from build_board_timeline import lay_timeline                     # noqa: E402
 from write_narration import spoken                                # noqa: E402
 import board_style                                                # noqa: E402
 import style_c                                                    # noqa: E402
+import practice_points                                            # noqa: E402
 from write_screens import (FRAME_CSS, frame_css, has_map, TAG_LABELS, block_html, resolve_images, IMAGE_TOKEN,     # noqa: E402
                            block_text_runs, is_exercise_board, has_part_b, has_part_c, has_parts, AUDIO_TOKEN,
                            EXAM_TOKEN)
@@ -139,7 +140,9 @@ FIT_VALUES = ("whole",)
 # 1.22 (ADR 042): a lesson in style C (its sections.json's `lesson.style`):
 # `lesson.style` and each state's `effects` (rules 53 to 55); every other lesson
 # keeps its format, byte for byte
-NEWEST_FORMAT_VERSION = "1.22"
+# 1.23 (ADR 046): a lesson with practice points (its analysis/practice.json):
+# a state's `practice` and a pause cue's `practice` (rules 56 and 57)
+NEWEST_FORMAT_VERSION = "1.23"
 
 
 def vkey(v: str) -> tuple[int, ...]:
@@ -194,8 +197,9 @@ def declared_format(info: dict) -> str | None:
     v = (info.get("lesson") or {}).get("bundle_format")
     if v and (not isinstance(v, str) or vkey(v) > vkey(FIT_FORMAT_VERSION)):
         raise SystemExit(f"REFUSED: sections.json lesson.bundle_format {v!r} is not a format a lesson "
-                         f"declares (newest {FIT_FORMAT_VERSION}; {NEWEST_FORMAT_VERSION} is a lesson in "
-                         "style C, build_sections.py --style c)")
+                         f"declares (newest {FIT_FORMAT_VERSION}; {style_c.FORMAT_VERSION} is a lesson in "
+                         "style C, build_sections.py --style c, and "
+                         f"{practice_points.FORMAT_VERSION} one with analysis/practice.json)")
     return v
 
 
@@ -1031,9 +1035,13 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             raise SystemExit("REFUSED: sections.json block_layouts in a lesson that is not in style C")
         if bid not in blocks_all and not only:
             raise SystemExit(f"REFUSED: sections.json block_layouts names {bid!r}, not a block of the lesson")
+    # 1.23 (ADR 046): practice points, from the lesson's analysis/practice.json, on
+    # the pauses that name them; a lesson without the file is built as before
+    with_practice = practice_points.attach(L, boards_out, sample=bool(only))
     newer = max([v for v in (declared_format(info),
                              FIT_FORMAT_VERSION if any(bd.get("fit") for bd in boards_out) else None,
-                             style_c.FORMAT_VERSION if style else None) if v],
+                             style_c.FORMAT_VERSION if style else None,
+                             practice_points.FORMAT_VERSION if with_practice else None) if v],
                 key=vkey, default=None)
 
 

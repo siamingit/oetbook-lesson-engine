@@ -4,7 +4,7 @@ What the pipeline hands to the website for each lesson, file by file and field
 by field. Written 2026-09-24, before the website exists, so that the lessons
 built now never need rebuilding for it.
 
-**Format version 1.22 for a lesson in style C (ADR 042), 1.21 for a lesson with a board shown whole or one that declares it (ADR 041), 1.20 for a Listening lesson, 1.17 for a Reading Part C lesson, 1.16 for a Reading Part B lesson, 1.14 for a Reading lesson with a map of its texts, 1.13 for another Reading lesson, 1.12 for every other lesson. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
+**Format version 1.23 (proposed, ADR 046; not released) for a lesson with practice points, 1.22 for a lesson in style C (ADR 042), 1.21 for a lesson with a board shown whole or one that declares it (ADR 041), 1.20 for a Listening lesson, 1.17 for a Reading Part C lesson, 1.16 for a Reading Part B lesson, 1.14 for a Reading lesson with a map of its texts, 1.13 for another Reading lesson, 1.12 for every other lesson. Status: Accepted** by the maintainer: 1.0 on 2026-09-24
 (docs/adr/004-lesson-bundle-contract.md); 1.1, references to other lessons, on
 2026-09-25 (docs/adr/006-cross-lesson-references-and-course-index.md); 1.2,
 table boards, on 2026-09-25 (docs/adr/007-table-boards.md); 1.3, the board style
@@ -27,11 +27,12 @@ the Listening board, the same day (docs/adr/030-listening-board-layout.md); 1.20
 vocabulary panel and the whole note form in the reading time, on 2026-10-14
 (docs/adr/031-listening-vocabulary-panel.md); 1.21, a board shown whole and the
 approved bundles' stray data cleaned up, on 2026-10-23 (docs/adr/041-bundle-format-1-21.md); 1.22, style C
-and its motion, on 2026-10-26 (docs/adr/042-style-c-and-motion.md). A
+and its motion, on 2026-10-26 (docs/adr/042-style-c-and-motion.md); 1.23, practice points, proposed on
+2026-10-29 (docs/adr/046-practice-points.md). A
 lesson is written in 1.13 only when it is a Reading lesson, and in 1.20 only when it
 is a Listening lesson; in 1.21 only when it has a board shown whole, or its
 `sections.json` declares 1.21 (`lesson.bundle_format`); in 1.22 only when it is in style C
-(`sections.json` `lesson.style` "c"); every other lesson stays 1.12, byte for byte, until rebuilt.
+(`sections.json` `lesson.style` "c"); in 1.23 only when it has practice points (`analysis/practice.json`); every other lesson stays 1.12, byte for byte, until rebuilt.
 A change to it is a new format version (§3), recorded in a new ADR.
 
 | Version | Date | Change |
@@ -56,6 +57,7 @@ A change to it is a new format version (§3), recorded in a new ADR.
 | 1.16 | 2026-10-08 | a Reading Part B lesson only (ADR 026, 2026-10-08 amendment): a question board in two columns, the extract whole, replacing 1.15's lens: a board's `split`; a state's `overlay` (glosses drawn over the question column), a gloss's going as a `clears` entry; the board's `focus` with no row until the whole extract has shown; `lens` and `lens_from` no longer written; rule 36 (rule 35 is 1.15 only); `blocks.css` adds the whole extract's spotlight. Minor: a 1.15 renderer finds no `lens` and draws the board as a table board, every block in one flow |
 | 1.21 | 2026-10-23 | a board's `fit`: `"whole"`, the board shown whole on every device, never zoomed or panned (rule 52; rule 13 changed), from the lesson's `sections.json` `boards_fit`; a lesson with one, or whose `sections.json` declares `lesson.bundle_format` 1.21, is written in 1.21 (ADR 041). The builder's clean-up, in every bundle written from 2026-10-23: a block's `provenance` always one of its values (an agent's lesson description is `authored`), a `heard` always `{file, start, end}` with `file` relative to the bundle's folder, no build field `_tokens`. Additive: a 1.20 renderer ignores `fit` and zooms the board like any table board |
 | 1.22 | 2026-10-26 | a lesson in style C only (ADR 042): the lesson's `style` ("c"); each state's `effects` (`lift`, `zoom`, in time order); rules 53 to 55; the lesson's `blocks.css` carries style C's look, and its table html marks a column label that says wrong or right (`th` and that column's `td` take `data-tone`). Additive: a 1.21 renderer draws the look from `blocks.css` and the spotlight's lift and fade, with no lift of a block, no zoom, marks in their 1.21 looks and notes that go at once |
+| 1.23 | 2026-10-29 (proposed) | a lesson with practice points only (ADR 046): a state's `practice` (its practice points: the moment the lesson stops, where it resumes, the task, the paper excerpt, one to three items in the site's item contract, a sentence's self-check list) and a pause cue's `practice`; rules 56 and 57. Additive: a 1.22 renderer plays each point's pause and the answer after it (the fallback, rule 57) |
 | 1.20 | 2026-10-14 | a Listening lesson only (ADR 031, amending ADR 030): a board's `listen.panel` (the vocabulary panel under the transcript's box: its type, the most items it shows, and its items) and, on a Part A board, `listen.reading` (the note form whole while the reading time plays); a gloss's `panel` and its `synonym` line; the transcript not hyphenated, 62% of the width, at 3.1%; rules 49 to 51. Additive: a 1.19 renderer draws a panel item as a note beside the questions and ignores `listen.reading` |
 | 1.19 | 2026-10-13 | a Listening lesson only (ADR 030, amending ADR 029): a board's `listen` (a Listening board: the transcript in a box of fixed size that follows a recording by its word times, the question column by its sections); a transcript's and a note form's html carry their window (`lt-win`, `lt-scr`; a transcript's marker `lt-mk` and caret `lt-caret`); no covered transcript, no `view` and no `focus` on a transcript; rules 46 to 48, which replace rule 44. Additive: a 1.18 renderer draws the transcript whole in its column and ignores `listen` |
 | 1.18 | 2026-10-13 | a Listening lesson only (ADR 029): an utterance of `kind` "exam", a recording of the practice set's own audio in the lesson's clock (`exam`, `provenance` "release", `text` null, its span `clip_in`/`clip_out` in the release's file); the cue type `play` that starts it; a pause's `reading_time`; a doc's `text_type` `transcript` (parts `turn` with `speaker`, `para`) and `form` (a Part A note form, its gaps typed parts); a gloss's `heard`; rules 42 to 45; `blocks.css` adds the Listening rules. Additive: a 1.17 renderer plays a recording as an utterance (rules 1, 17), draws a transcript and a form as documents, a form's gaps as typed gaps (rule 10), shows no recording state and no second button |
@@ -188,7 +190,7 @@ Times are seconds from the start of the lesson, rounded to milliseconds.
 | Field | Type | Meaning |
 |---|---|---|
 | `format` | string | `"oetbook-lesson-bundle"` |
-| `format_version` | string | `"1.12"`; `"1.13"` for a Reading lesson; `"1.14"` for a lesson with a map of its texts; `"1.16"` for a Reading Part B lesson (`"1.15"` for one built before 2026-10-08); `"1.17"` for a Reading Part C lesson; `"1.20"` for a Listening lesson (`"1.19"` for one built before ADR 031, `"1.18"` before ADR 030); `"1.21"` for a lesson with a board shown whole (`fit`) or whose `sections.json` declares 1.21 (ADR 041); `"1.22"` for a lesson in style C (ADR 042) |
+| `format_version` | string | `"1.12"`; `"1.13"` for a Reading lesson; `"1.14"` for a lesson with a map of its texts; `"1.16"` for a Reading Part B lesson (`"1.15"` for one built before 2026-10-08); `"1.17"` for a Reading Part C lesson; `"1.20"` for a Listening lesson (`"1.19"` for one built before ADR 031, `"1.18"` before ADR 030); `"1.21"` for a lesson with a board shown whole (`fit`) or whose `sections.json` declares 1.21 (ADR 041); `"1.22"` for a lesson in style C (ADR 042); `"1.23"` for a lesson with practice points (ADR 046, proposed) |
 | `lesson` | object | the lesson (below) |
 | `sections` | array | the sections in lesson order, the introduction first |
 | `meta` | object | how the timeline was built |
@@ -349,6 +351,7 @@ two things must hold, because cues and the reading pointer depend on them:
 | `clears` | 1.8. `[{time, blocks}]` in time order: from `time`, the working `blocks` are cleared (not drawn) for the rest of the state, so the note revealed at `time` fits the board (ADR 011). 1.16: also a gloss in the state's `overlay`, at the moment before anything of the question under it is read or marked. Never a pinned block. Empty when nothing is cleared |
 | `reveal` | `{id: time}` for every working block and every part of a working diagram |
 | `effects` | 1.22, a lesson in style C: `[{type, block, time, until, …}]` in time order (an empty list when none): `lift` (`block` lifted from `time` to `until`, rule 54) and `zoom` (`block` the board's table, `row`, `col` (or null), `text` (the phrase, or null): the view on that line from `time` to `until`, rule 55). Absent in every other lesson |
+| `practice` | 1.23, a lesson with practice points (ADR 046): the practice points of this state, in time order, each `{id, time, resume, utterance, cue, task, excerpt, items, check}` (below); absent on a state with none |
 | `utterances` | what is said in this state, in order |
 
 ### `utterances[]`
@@ -399,9 +402,27 @@ with the bundle.
 | `to_block`, `to_text` | an arrow's end |
 | `with` | a replace mark's correction |
 | `seconds` | a pause's length |
+| `practice` | 1.23. A pause that is a practice point: the point's id (its state's `practice`); the pause's `text` is "practice: KEY" |
 | `reading_time` | 1.18. A pause that is the exam's reading time, in a Listening lesson: up to 95 seconds (every other pause 0.5 to 10) |
 | `with` (play) | 1.18. A `play` cue's span; its `text` the extract's stimulus ID; its `time` and `time_end` the recording's start and end |
 | `word_index`, `anchor_word` | the spoken word the cue sits on; informational |
+
+### `practice[]` (1.23, proposed)
+
+A practice point (ADR 046): a moment where a player that knows them stops the lesson and opens a pop-up over the
+dimmed board, in which the learner answers the point's items (rule 56); a player that does not plays its pause and the
+answer after it (rule 57).
+
+| Field | Meaning |
+|---|---|
+| `id` | `<section>_pp-<key>`, the key the lesson's `analysis/practice.json` gives the point: permanent while the point exists |
+| `time` | the lesson stops here: its pause cue's `time`, the end of the utterance that voices the task |
+| `resume` | after Continue the lesson plays on from here: the pause's `time_end` |
+| `utterance`, `cue` | the utterance and the pause cue it is |
+| `task` | the task as written in the pop-up (plain text with the site's inline `**bold**`); the narration has just voiced it |
+| `excerpt` | the piece of the paper the learner writes from (ADR 045): `{sample, pin, title, rows: [{label, lines}]}`, the paper's own labels and lines, in its order; a row with no lines is a heading |
+| `items` | one to three items in the site's item contract, non-exam profile (oetacademy-web ADR-0031 §3, ADR-0032): `choice`, `text` (`response.size` `short` or `sentence`), `gapfill`, `wordbank`, `ordering`; each with its permanent `item_id` (and `gap_id`s), `tags.practises`, `version` and `content_hash`. A typed unit names its `marking_scheme`: `oet-typed-v1` or the proposed `oet-typed-form-v1` (hyphens, articles and every word kept; case, curly apostrophes, extra spaces and a final mark ignored) |
+| `check` | optional, with a `text` item of size `sentence`: the self-check list, `{marking, model, points: [{id, text, practises}]}`; `marking` `"self"` (the learner ticks the points they got; `"ai"` is kept for a later marking model); `model` the model sentence |
 
 ### `events[]`
 
@@ -773,6 +794,20 @@ These are the only rules. Every time and target they use is in the bundle.
     board's edges). Below a scale of 1.03 there is no zoom. It takes the place of rule 13 for that
     time and applies on a board with `fit` "whole" too (rule 52 holds outside it). The view glides in,
     from one entry to the next, and back out over 0.35 s.
+56. **A practice point** (1.23, proposed; ADR 046): while the lesson plays (never by a seek) and the clock reaches a point's
+    `time`, the renderer stops the lesson there and opens a pop-up over it, the board behind dimmed and paused: the
+    `task`, the `excerpt` drawn as a piece of the paper (label column, lines), and the `items`, tap first, with no sideways
+    scroll. Laptop: a card over the board, the paper beside the answer; phone: the whole screen, the paper above the
+    answer. Check is enabled when every part has an answer; it marks each scored unit by the item's own rule (a choice or
+    a bank gap by its key, an ordering by its accepted orders, a typed unit by its accepted forms under its marking
+    scheme), shows the right answer and the short reason (the item's feedback: a listed wrong answer's `why_wrong`, else
+    its `key`), and records one attempt per unit; there is no second try. With a `check`, the learner's sentence is shown
+    beside `model` and the learner ticks the `points` they got. Continue, enabled after Check, closes the pop-up and the
+    lesson plays on from `resume`. Reaching the point again shows the answers given, with Continue at once. Nothing the
+    learner does changes a clip, a time or what is said.
+57. **The fallback** (1.23): a practice point is also an ordinary pause (rule 9) of 3 to 10 seconds; the board shows the
+    task while it lasts, and the next utterances show the answer (a reveal or a typing cue) and say it. A renderer that does
+    not know practice points ignores `practice` and plays the lesson as it is: the task, the pause, the answer.
 
 How things move is the renderer's, within docs/02-DESIGN-SYSTEM.md: how a
 diagram part is drawn in motion (§7a), mark styles (§8), the frame's layout, and
@@ -787,7 +822,7 @@ no cues and no provenance.
 
 | Field | Meaning |
 |---|---|
-| `format`, `format_version` | `"oetbook-lesson-text"`, and the same `format_version` as the lesson's `bundle.json` (`"1.12"` to `"1.22"`, §5) |
+| `format`, `format_version` | `"oetbook-lesson-text"`, and the same `format_version` as the lesson's `bundle.json` (`"1.12"` to `"1.23"`, §5) |
 | `lesson` | the same object as `bundle.json`'s `lesson` |
 | `sections[]` | `{id, title, category, start, end, narration_text, board_text, boards}` |
 | `sections[].narration_text` | everything said in the section, one paragraph per board |
@@ -872,7 +907,9 @@ released in `siamingit/oetacademy-sessions` by `spike/scripts/publish_lesson.py`
 - **Branding, the brand and the domain:** not decided (docs/00-PRODUCT.md §7), and
   never inside the lesson frame.
 - **Exercises:** a later product (docs/00-PRODUCT.md §8). A later minor version
-  can add them beside the boards without changing anything here.
+  can add them beside the boards without changing anything here. 1.23 (proposed, ADR 046) carries a lesson's own
+  practice points (`practice[]`, §5), in the site's item contract; the learner's answers are the site's (§9, the
+  student's state).
 
 ---
 
