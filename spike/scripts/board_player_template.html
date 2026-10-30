@@ -2857,15 +2857,16 @@ function updatePlayButton() {
   playPauseBtn.innerHTML = state.playing ? "&#10074;&#10074;" : "&#9654;";
   playPauseBtn.setAttribute("aria-label", state.playing ? "Pause" : "Play");
 }
+let ppSeen = null;                        // practiceTick's last clock in play (rule 56); a seek clears it
 function seek(t) {
   t = Math.max(0, Math.min(totalDuration, t));
   if (SILENT) {
     if (HAS_EXAM) audioEl.pause();
-    state.globalTime = t; silentClock0 = performance.now() - t * 1000;
+    state.globalTime = t; silentClock0 = performance.now() - t * 1000; ppSeen = null;
     renderFrame(t); return;
   }
   clearGapTimer(); if (tailTimer) { clearTimeout(tailTimer); tailTimer = null; }
-  audioEl.pause(); state.globalTime = t;
+  audioEl.pause(); state.globalTime = t; ppSeen = null;
   const inside = indexAt(t);
   if (inside !== -1) { state.index = inside; state.inGap = false; loadUtterance(inside, t - utterances[inside].start); playWhenReady(); }
   else {
@@ -2886,7 +2887,6 @@ scrubber.addEventListener("input", () => seek(parseFloat(scrubber.value)));
 function fmtTime(s) { s = Math.max(0, s); const m = Math.floor(s / 60), sec = Math.floor(s % 60); return m + ":" + String(sec).padStart(2, "0"); }
 
 function tick() {
-  const t0 = state.globalTime;
   if (state.playing && SILENT) {
     const prev = state.globalTime;
     state.globalTime = Math.min(totalDuration, (performance.now() - silentClock0) / 1000);
@@ -2905,7 +2905,7 @@ function tick() {
     }
     renderFrame(state.globalTime);
   }
-  if (PRACTICE.length) practiceTick(t0);
+  if (PRACTICE.length) practiceTick();
   requestAnimationFrame(tick);
 }
 
@@ -3262,11 +3262,15 @@ function closePractice(p) {
   ppOpen.layer.remove(); document.body.classList.remove("pp-open"); ppOpen = null;
   seek(p.resume); play();
 }
-// rule 56: reached in play, never by a seek
-function practiceTick(t0) {
-  if (ppOpen || !state.playing) return;
-  const t = state.globalTime;
-  const p = PRACTICE.find(x => t0 < x.time - 1e-6 && t >= x.time - 1e-3);
+// rule 56: reached in play, never by a seek. The clock as this last saw it in play (null after a
+// seek or a pause): a clip's "ended" event moves the clock to a point's time outside tick(), so
+// the time at the start of a tick may already be the point's (found on Grammar 2, PR #68).
+function practiceTick() {
+  if (ppOpen || !state.playing) { ppSeen = null; return; }
+  const from = ppSeen, t = state.globalTime;
+  ppSeen = t;
+  if (from === null) return;
+  const p = PRACTICE.find(x => from < x.time - 1e-6 && t >= x.time - 1e-3);
   if (!p) return;
   pause(); seek(p.time); openPractice(p);
 }
