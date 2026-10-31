@@ -1572,6 +1572,14 @@ BLOCK_DEFAULTS = {"type": None, "text": None, "label": None, "term": None, "expl
                   "exercise_item": None, "anchor": False, "from_beats": [], "note": ""}
 
 
+def counted_notes(ids: list[str], blocks: dict[str, dict]) -> list[str]:
+    """The notes a board's note limits count (MAX_NOTES, MAX_SIDE_NOTES). A practice
+    point's task line and answer, added blocks marked with the point's key
+    (`practice_point`, ADR 046 amendment (3)), are not counted: they show only for
+    the point, and the fit clears earlier notes when they appear."""
+    return [i for i in ids if not blocks[i].get("practice_point")]
+
+
 def add_blocks(out_dir: Path, topics: list[dict], blocks: dict[str, dict]) -> list[dict]:
     """Blocks added to a section after it was written (overrides.json `add`;
     maintainer 2026-09-27, glossing lessons built before the gloss rule): each
@@ -2324,7 +2332,7 @@ def lay_out(topics: list[dict], blocks: dict, section_title: str,
             """Within the working budget (the normal erase threshold, which the
             approved page 13 build was laid out with); `limit` is raised to the
             content band only for the one-note-per-state fallback."""
-            if len(working) > MAX_NOTES:
+            if len(counted_notes(working, blocks)) > MAX_NOTES:
                 return False
             on_board = [blocks[i] for i in fixed + working]
             if sum(1 for b in on_board if b["type"] == "timeline") > MAX_TIMELINES_PER_STATE:
@@ -3138,8 +3146,9 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                 fail(h["id"], "a thought on a table board names no row: its purpose starts "
                               "'Row N: ' or 'Table: '")
             notes = [b for b in h["blocks"] if b["id"] not in bd["fixed"]]
-            if len(notes) > MAX_SIDE_NOTES:
-                fail(h["id"], f"{len(notes)} side notes in one thought; at most "
+            n = len(counted_notes([b["id"] for b in notes], blocks))
+            if n > MAX_SIDE_NOTES:
+                fail(h["id"], f"{n} side notes in one thought; at most "
                               f"{MAX_SIDE_NOTES} beside a row")
             for b in notes:
                 if b["type"] not in ("term_box", "gloss", "plain", "callout", "comparison"):
@@ -3261,14 +3270,28 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             if "answer_row" in kinds and not ({"plain", "term_box"} & set(kinds)):
                 warn(s["id"], "answer rows with no plain or term block explaining them")
 
+    # 10a. a practice point's blocks (ADR 046 amendment (3)): added blocks only, at
+    # most two for a point (its task line and its answer)
+    marked: dict[str, list[str]] = {}
+    for b in blocks.values():
+        if b.get("practice_point"):
+            marked.setdefault(str(b["practice_point"]), []).append(b["id"])
+            if not b.get("added"):
+                fail(b["id"], "`practice_point` on a block that is not added (overrides.json `add`)")
+    for key, ids in marked.items():
+        if len(ids) > 2:
+            fail(ids[2], f"practice point {key!r} marks {len(ids)} blocks {ids}; at most two "
+                         "(its task line and its answer)")
+
     # 10. density: a thought must fit an empty working layer, so every state
     # that the layout could not keep within the limit is a thought too big
     for bd in out["boards"]:
         if bd.get("table"):
             continue                 # side notes are drawn over the table: 7c
         for s in bd["states"]:
-            if s["notes"] > MAX_NOTES:
-                fail(s["id"], f"{s['notes']} working notes at once, limit {MAX_NOTES}: "
+            n = len(counted_notes(s["working"], blocks))
+            if n > MAX_NOTES:
+                fail(s["id"], f"{n} working notes at once, limit {MAX_NOTES}: "
                               "a thought is too big for the board")
             if HARD_LIMIT < s["height"] <= TIGHT_LIMIT:
                 # ADR 011: a board still too full after clearing is made tight

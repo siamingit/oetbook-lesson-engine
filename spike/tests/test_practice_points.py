@@ -186,3 +186,29 @@ class PracticePoints(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PracticePointNotes(unittest.TestCase):
+    """ADR 046 amendment (3): a practice point's task line and answer (added blocks marked
+    `practice_point`) are not counted against the board's note limits."""
+
+    def board(self, marked: bool):
+        import write_screens as ws
+        notes = [{**ws.BLOCK_DEFAULTS, "type": "plain", "text": f"Note {n}."} for n in range(4)]
+        extra = [{**ws.BLOCK_DEFAULTS, "type": "plain", "text": t, "added": True,
+                  **({"practice_point": "key"} if marked else {})} for t in ("Your turn.", "Answer.")]
+        topics = [{"title": "T", "thoughts": [{"purpose": "p", "blocks": notes},
+                                               {"purpose": "q", "blocks": extra}]}]
+        blocks = ws.assign_ids(topics)
+        return ws, blocks, ws.lay_out(topics, blocks, "S")
+
+    def test_marked_blocks_are_not_counted(self):
+        ws, blocks, boards = self.board(marked=True)
+        self.assertEqual(ws.counted_notes(list(blocks), blocks), ["k01", "k02", "k03", "k04"])
+        self.assertEqual(len(boards[0]["states"]), 1)
+        self.assertEqual(boards[0]["states"][0]["working"], ["k01", "k02", "k03", "k04", "k05", "k06"])
+
+    def test_unmarked_blocks_are_counted(self):
+        ws, blocks, boards = self.board(marked=False)
+        self.assertEqual(len(ws.counted_notes(list(blocks), blocks)), 6)
+        self.assertEqual(len(boards[0]["states"]), 2)
