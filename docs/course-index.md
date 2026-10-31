@@ -2,7 +2,7 @@
 
 What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.1; decision: `docs/adr/038-public-course-index.md`.
 
-25 lessons, 239 sections, 552 board topics, 4178 teaching points, 257 rules and 64 warnings, 484 terms, 160 OET facts, 44 methods, 516 vocabulary items (189 from the word bank), 62 practice questions and note forms, 99 links to other lessons, 364 topics in the topic index.
+25 lessons, 239 sections, 552 board topics, 4178 teaching points, 257 rules and 64 warnings, 484 terms, 160 OET facts, 44 methods, 516 vocabulary items (189 from the word bank), 62 practice questions and note forms, 99 links to other lessons, 363 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -24,7 +24,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 | 4 | Grammar for OET: Articles | `grammar-04-articles` | 67:59 | 9 | 2026-10-31 13:00 (Siavash) |
 | 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 66:38 | 8 | 2026-10-31 12:46 (Siavash) |
 | 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 59:04 | 6 | 2026-10-31 13:24 (Siavash) |
-| 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 95:45 | 18 | 2026-10-27 09:37 (siavash) |
+| 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 99:20 | 18 | 2026-10-27 09:37 (siavash) |
 | 8 | Grammar for OET: Paraphrasing | `grammar-08-paraphrasing` | 63:39 | 7 | 2026-10-31 16:42 (Siavash) |
 
 <a id="grammar-01-verb-tenses"></a>
@@ -751,7 +751,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Reduced relative clauses" at 21:15, about section `page-10`
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 41:50, about section `page-16`
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 46:50
-- referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 11:55, about section `page-15`
+- referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 11:57, about section `page-15`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 5:08, about section `page-15`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Expand" at 16:29
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Rearrange" at 44:02, about section `page-9`
@@ -2005,10 +2005,10 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Introduction" at 0:10
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 43:42, about section `pages-11-12`
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 47:32, about section `pages-04-05`
-- referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Commas: overview" at 3:38
-- referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 5:44, about section `pages-04-05`
-- referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 6:11, about section `pages-08-09`
-- referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 10:25, about section `pages-11-12`
+- referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Commas: overview" at 3:35
+- referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 5:42, about section `pages-04-05`
+- referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 6:08, about section `pages-08-09`
+- referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 10:27, about section `pages-11-12`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 7:48
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Avoid a series of short sentences" at 80:26
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:31
@@ -2280,7 +2280,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 7. Grammar for OET: Punctuation
 
-- Lesson ID and folder: `grammar-07-punctuation` (folder `grammar-07-punctuation`); course grammar, lesson 7; length 95:45; bundle format 1.23
+- Lesson ID and folder: `grammar-07-punctuation` (folder `grammar-07-punctuation`); course grammar, lesson 7; length 99:20; bundle format 1.23
 - Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn to punctuate your OET letters: where to put commas, and how to use full stops, semicolons, colons, apostrophes, hyphens, capital letters, numbers and short forms correctly.
 - Original session: folder `source`: `source/video.mp4`, 33:26 long, partial hash `297821a41d0a0437`; deck `source/slides.pdf`, 18 pages
@@ -2293,499 +2293,498 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 - 0:00 **Title board**
   - 0:00 the lesson title, then what the lesson is about
-- 1:26 **Contents board**
-  - 1:27 each category, revealed as it is named
+- 1:23 **Contents board**
+  - 1:24 each category, revealed as it is named
 
-#### 2:35 Commas: overview (`page-5`, deck)
+#### 2:32 Commas: overview (`page-5`, deck)
 
-- 2:35 **The four places a comma is needed**
-  - 2:35 the slide's list of the four places where a comma is needed, revealed one by one
-  - 2:54 Name the first place and define the term
-  - 3:11 Name the second place and define the term
-  - 3:30 Promise the detail on the parts of each sentence type and the comma position
-  - 3:48 Why these two sentence types matter in the letter
-  - 4:07 Third place: where introductory and transitional phrases appear
-  - 4:37 The rule for those phrases
-  - 4:54 Fourth place: what counts as a list
-  - 5:02 A worked example of a list of symptoms
-  - 5:19 Close: correct punctuation and what comes next
-
-*Rules on the boards*
-
-- 3:48 Using compound and complex sentences shows a range of sentence types in your letter.
-- 4:37 Separate an introductory or transitional phrase from the rest of the sentence with a comma.
-- 5:19 Correct punctuation makes your letter clear for the reader. We will work through all four of these places.
-
-#### 5:39 Complex sentences (`page-6`, deck)
-
-- 5:39 **Complex sentences and the comma**
-  - 5:39 Open: name the structure the board is about
-  - 5:55 Separate complex from compound before the comma rules
-  - 6:20 Say which sentences these comma rules cover
-  - 6:45 Define the dependent clause
-  - 7:00 Define the independent clause
-  - 7:20 Example 1: read each part alone and label it
-  - 7:39 Example 1 takes no comma
-  - 7:50 Example 2: show form 2 as clause pieces
-  - 8:25 State the comma rule for form 2
-  - 8:42 What the comma does for the reader
-  - 8:56 Reading aloud shows where the comma goes
-  - 9:22 A clinical sentence in form 2
-  - 9:40 Gloss: non-compliance
-  - 9:55 Gloss: aggravated
-  - 10:13 What 'due to' is followed by
-  - 10:37 The wrong preposition learners write
-  - 10:43 The correct preposition
-  - 10:53 Test the two parts of the clinical sentence
-  - 11:19 The same idea written in form 1
-  - 11:41 Aside: the verb form in that sentence is passive
-  - 12:10 Where this pattern is used in the letter
-  - 12:14 Closing sentence in form 1
-  - 12:30 The same closing in form 2
-  - 12:53 Advice for the closing of the letter
-  - 13:03 The rule to remember
+- 2:32 **The four places a comma is needed**
+  - 2:32 the slide's list of the four places where a comma is needed, revealed one by one
+  - 2:51 Name the first place and define the term
+  - 3:08 Name the second place and define the term
+  - 3:27 Promise the detail on the parts of each sentence type and the comma position
+  - 3:45 Why these two sentence types matter in the letter
+  - 4:04 Third place: where introductory and transitional phrases appear
+  - 4:34 The rule for those phrases
+  - 4:51 Fourth place: what counts as a list
+  - 4:59 A worked example of a list of symptoms
+  - 5:16 Close: correct punctuation and what comes next
 
 *Rules on the boards*
 
-- 13:03 In a complex sentence, when the dependent clause comes first, put a comma after it, before the independent clause.
+- 3:45 Using compound and complex sentences shows a range of sentence types in your letter.
+- 4:34 Separate an introductory or transitional phrase from the rest of the sentence with a comma.
+- 5:16 Correct punctuation makes your letter clear for the reader. We will work through all four of these places.
+
+#### 5:36 Complex sentences (`page-6`, deck)
+
+- 5:36 **Complex sentences and the comma**
+  - 5:36 Open: name the structure the board is about
+  - 5:52 Separate complex from compound before the comma rules
+  - 6:17 Say which sentences these comma rules cover
+  - 6:42 Define the dependent clause
+  - 6:58 Define the independent clause
+  - 7:17 Example 1: read each part alone and label it
+  - 7:36 Example 1 takes no comma
+  - 7:47 Example 2: show form 2 as clause pieces
+  - 8:22 State the comma rule for form 2
+  - 8:40 What the comma does for the reader
+  - 8:55 Reading aloud shows where the comma goes
+  - 9:24 A clinical sentence in form 2
+  - 9:42 Gloss: non-compliance
+  - 9:57 Gloss: aggravated
+  - 10:15 What 'due to' is followed by
+  - 10:39 The wrong preposition learners write
+  - 10:45 The correct preposition
+  - 10:54 Test the two parts of the clinical sentence
+  - 11:21 The same idea written in form 1
+  - 11:43 Aside: the verb form in that sentence is passive
+  - 12:11 Where this pattern is used in the letter
+  - 12:16 Closing sentence in form 1
+  - 12:32 The same closing in form 2
+  - 12:54 Advice for the closing of the letter
+  - 13:04 The rule to remember
+
+*Rules on the boards*
+
+- 13:04 In a complex sentence, when the dependent clause comes first, put a comma after it, before the independent clause.
 
 *Wrong sentences corrected*
 
-- 10:37 Non-compliance to medication
+- 10:39 Non-compliance to medication
 
-*Terms*: Complex sentence (Grammar term, 5:44); Dependent clause (Grammar term, 6:45); Independent clause (Grammar term, 7:00); Due to (Form, 10:13); Passive (Grammar term, 11:41)
+*Terms*: Complex sentence (Grammar term, 5:41); Dependent clause (Grammar term, 6:42); Independent clause (Grammar term, 6:58); Due to (Form, 10:15); Passive (Grammar term, 11:43)
 
-#### 14:29 Compound sentences (`pages-07-08-09`, deck)
+#### 14:30 Compound sentences (`pages-07-08-09`, deck)
 
-- 14:29 **Compound sentences: comma and FANBOYS**
-  - 14:29 Reveal the definition and the slide example, and define 'independent clause'
-  - 14:57 Name the seven joining words
-  - 15:30 Use the joining word as the test for compound or complex
-  - 16:09 Draw the example as two complete pieces joined by 'so'
-  - 16:47 Where the comma goes, and the rule to remember
-  - 17:15 Show the reordered version and what changes with 'because'
-  - 17:40 Why join clauses instead of writing two sentences
-  - 18:06 The typed example: one clause with two verbs takes no comma
-  - 18:31 Contrast one clause and two clauses
-- 20:01 **Semi-colon and conjunctive adverb**
-  - 20:01 Reveal the second pattern and its example, and name the conjunctive adverb
-  - 20:28 Show the semi-colon itself and where the two marks go
-  - 20:57 Hear the two pauses when reading aloud
-  - 21:13 Both clauses here are independent
-  - 21:29 A way to write the same idea without a semi-colon
-- 21:44 **Common error: a comma with no joining word**
-  - 21:44 Reveal the faulty sentence and name the error
-  - 22:13 Gloss a hard general word from the printed sentence
-  - 22:31 Show that each part is a complete sentence with nothing joining them
-  - 22:48 The repair with a FANBOYS word
+- 14:30 **Compound sentences: comma and FANBOYS**
+  - 14:30 Reveal the definition and the slide example, and define 'independent clause'
+  - 14:58 Name the seven joining words
+  - 15:31 Use the joining word as the test for compound or complex
+  - 16:11 Draw the example as two complete pieces joined by 'so'
+  - 16:49 Where the comma goes, and the rule to remember
+  - 17:17 Show the reordered version and what changes with 'because'
+  - 17:42 Why join clauses instead of writing two sentences
+  - 18:09 The typed example: one clause with two verbs takes no comma
+  - 18:34 Contrast one clause and two clauses
+- 20:04 **Semi-colon and conjunctive adverb**
+  - 20:04 Reveal the second pattern and its example, and name the conjunctive adverb
+  - 20:31 Show the semi-colon itself and where the two marks go
+  - 21:01 Hear the two pauses when reading aloud
+  - 21:17 Both clauses here are independent
+  - 21:34 A way to write the same idea without a semi-colon
+- 21:49 **Common error: a comma with no joining word**
+  - 21:49 Reveal the faulty sentence and name the error
+  - 22:18 Gloss a hard general word from the printed sentence
+  - 22:36 Show that each part is a complete sentence with nothing joining them
+  - 22:53 The repair with a FANBOYS word
 
 *Rules on the boards*
 
-- 17:01 To join two independent clauses with a comma, you also need a FANBOYS word. A comma alone is not enough.
-- 21:03 Each pause is one punctuation mark: the semi-colon, then the comma.
-- 23:01 When a comma joins two independent clauses, check that a FANBOYS word is there too.
+- 17:03 To join two independent clauses with a comma, you also need a FANBOYS word. A comma alone is not enough.
+- 21:07 Here, each pause is one punctuation mark: the semicolon, then the comma.
+- 23:06 When a comma joins two independent clauses, check that a FANBOYS word is there too.
 
 *Wrong sentences corrected*
 
-- 21:44 Eye drops were administered, the patient was told to return several days later.
+- 21:49 Eye drops were administered, the patient was told to return several days later.
 
-*Terms*: Independent clause (Grammar word, 14:45); FANBOYS (Joining words, 14:57); Complex sentence (Grammar word, 15:38); Conjunctive adverb (Grammar word, 20:18); Semi-colon (;) (Punctuation mark, 20:28); Comma splice (Grammar word, 22:06)
+*Terms*: Independent clause (Grammar word, 14:46); FANBOYS (Joining words, 14:58); Complex sentence (Grammar word, 15:39); Conjunctive adverb (Grammar word, 20:21); Semicolon (;) (Punctuation mark, 20:31); Comma splice (Grammar word, 22:11)
 
-#### 23:11 Introductory phrases (`page-10`, deck)
+#### 23:16 Introductory phrases (`page-10`, deck)
 
-- 23:11 **what an introductory phrase is and the comma pattern, the three example sentences**
-  - 23:11 Show the pattern the whole board is about
-  - 23:11 Show the three examples and split the first one
-  - 23:38 State what the comma does, and define the second part
-  - 24:53 Gloss a hard general word from example 1
-  - 25:19 Split the second example into phrase and main clause
-  - 25:41 Split the third example into phrase and main clause
-  - 25:49 Generalise the rule across all three examples
-  - 26:18 Close with the rule to remember
-
-*Rules on the boards*
-
-- 25:49 The part after the comma is a main clause: it works as a complete sentence on its own. The part in front of the comma is the introductory phrase.
-- 26:18 When a sentence starts with an introductory phrase, put a comma after it.
-
-*Terms*: Introductory phrase (New term, 23:16); Main clause (independent clause) (Grammar term, 23:57)
-
-#### 27:35 Lists and series (`pages-11-12`, deck)
-
-- 27:35 **Commas in a list of items**
-  - 27:35 Show the model list sentence and state the basic rule
-  - 27:52 Name the three items and show that they are the same kind of thing
-  - 28:30 Give the list pattern in words and the rule about the last comma
-  - 29:03 Show that both versions of the final item are correct
-- 29:40 **Commas in a series of phrases**
-  - 29:40 Show the two model sentences and state that list items can be phrases
-  - 29:57 Break the first sentence into its four phrases
-  - 30:07 Explain the first two phrases in simple English
-  - 30:28 Note the verb form in the third phrase
-  - 30:36 Count the commas in the series
-  - 30:45 Show that the pattern is the same as a list of single words
-  - 31:22 Second sentence: every phrase has a verb
-  - 31:30 Gloss a hard general word from the second sentence
-  - 31:51 A medical series of actions with the same punctuation
+- 23:16 **what an introductory phrase is and the comma pattern, the three example sentences**
+  - 23:16 Show the pattern the whole board is about
+  - 23:16 Show the three examples and split the first one
+  - 23:43 State what the comma does, and define the second part
+  - 25:00 Gloss a hard general word from example 1
+  - 25:26 Split the second example into phrase and main clause
+  - 25:52 Split the third example into phrase and main clause
+  - 26:00 Generalise the rule across all three examples
+  - 26:30 Close with the rule to remember
 
 *Rules on the boards*
 
-- 28:39 Before the final "and" or "or", the comma is optional in British English. Use it or leave it out, but be consistent in the whole letter.
+- 26:00 The part after the comma is a main clause: it works as a complete sentence on its own. The part in front of the comma is the introductory phrase.
+- 26:30 After a long introductory phrase or clause, put a comma. After a short one, like 'On 14 October', the comma is optional.
 
-*Terms*: Slid (Verb form, 30:28)
+*Terms*: Introductory phrase (New term, 23:21); Main clause (independent clause) (Grammar term, 24:05)
 
-#### 33:25 Practice (`page-13`, deck)
+#### 27:56 Lists and series (`pages-11-12`, deck)
 
-- 33:25 **Practice paragraph: adding punctuation**
-  - 33:25 the task and the unpunctuated practice paragraph
-  - 33:49 Sentence 1: the answer and why there is no comma
-  - 34:23 Sentence 1: clause diagram showing one subject with two verbs
-  - 34:52 Sentence 2: the answer and the comma after the introductory phrase
-  - 35:13 Sentence 2: the 'which' clause adds extra information, so it takes a comma
-  - 35:50 Sentence 2: define the grammar term
-  - 36:15 Sentence 3: the answer and the comma after the dependent clause
-  - 36:50 Gloss the general word 'slightly'
-  - 37:03 Sentence 3: clause diagram of the dependent clause joining the main clause
-  - 37:40 Sentence 3: no comma before 'and is making'
-  - 38:02 Sentence 4: the answer with a semi-colon and a comma
-  - 38:26 Sentence 4: the form that is wrong
-  - 38:48 Sentence 4: define the grammar term
-  - 39:05 Count the punctuation the paragraph needs
-  - 39:20 Why punctuation matters
+- 27:56 **Commas in a list of items**
+  - 27:56 Show the model list sentence and state the basic rule
+  - 28:13 Name the three items and show that they are the same kind of thing
+  - 28:50 Give the list pattern in words and the rule about the last comma
+  - 29:23 Show that both versions of the final item are correct
+- 30:00 **Commas in a series of phrases**
+  - 30:00 Show the two model sentences and state that list items can be phrases
+  - 30:17 Break the first sentence into its four phrases
+  - 30:27 Explain the first two phrases in simple English
+  - 30:48 Note the verb form in the third phrase
+  - 30:57 Count the commas in the series
+  - 31:05 Show that the pattern is the same as a list of single words
+  - 31:42 Second sentence: every phrase has a verb
+  - 31:51 Gloss a hard general word from the second sentence
+  - 32:12 A medical series of actions with the same punctuation
 
 *Rules on the boards*
 
-- 37:40 When two verbs share one subject, do not put a comma before 'and'. Here 'she' has lost weight and is making good progress.
-- 39:20 Correct punctuation makes your letter clear for the reader.
+- 29:00 Before the final "and" or "or", the comma is optional in British English. Use it or leave it out, but be consistent in the whole letter.
+
+*Terms*: Slid (Verb form, 30:48)
+
+#### 33:45 Practice (`page-13`, deck)
+
+- 33:45 **Practice paragraph: adding punctuation**
+  - 33:45 the task and the unpunctuated practice paragraph
+  - 34:09 Sentence 1: the answer and why there is no comma
+  - 34:43 Sentence 1: clause diagram showing one subject with two verbs
+  - 35:12 Sentence 2: the answer and the comma after the introductory phrase
+  - 35:33 Sentence 2: the 'which' clause adds extra information, so it takes a comma
+  - 36:11 Sentence 2: define the grammar term
+  - 36:35 Sentence 3: the answer and the comma after the dependent clause
+  - 37:10 Gloss the general word 'slightly'
+  - 37:24 Sentence 3: clause diagram of the dependent clause joining the main clause
+  - 38:00 Sentence 3: no comma before 'and is making'
+  - 38:22 Sentence 4: the answer with a semi-colon and a comma
+  - 38:47 Sentence 4: the form that is wrong
+  - 39:09 Sentence 4: define the grammar term
+  - 39:25 Count the punctuation the paragraph needs
+  - 39:40 Why punctuation matters
+
+*Rules on the boards*
+
+- 38:00 When two verbs share one subject, do not put a comma before 'and'. Here 'she' has lost weight and is making good progress.
+- 39:40 Correct punctuation makes your letter clear for the reader.
 
 *Wrong sentences corrected*
 
-- 33:25 The patient has an allergy to latex and is currently taking Xanax for anxiety. Last year she had surgery on her left knee which has fully healed now. Although she is slightly overweight she has lost weight over the past six months and is making good progress. She takes regular exercise however she drinks at the weekend.
-- 38:26 She takes regular exercise, however she drinks at the weekend.
+- 33:45 The patient has an allergy to latex and is currently taking Xanax for anxiety. Last year she had surgery on her left knee which has fully healed now. Although she is slightly overweight she has lost weight over the past six months and is making good progress. She takes regular exercise however she drinks at the weekend.
+- 38:47 She takes regular exercise, however she drinks at the weekend.
 
-*Terms*: Non-defining clause (Grammar term, 35:50); Comma splice (Grammar term, 38:48)
+*Terms*: Non-defining clause (Grammar term, 36:11); Comma splice (Grammar term, 39:09)
 
-#### 39:26 Punctuation in OET letters (`page-14`, deck)
+#### 39:46 Punctuation in OET letters (`page-14`, deck)
 
-- 39:26 **Optional commas and full stops in an OET letter**
-  - 39:26 Show the four places where the mark is optional, and say why
-  - 39:43 Gloss the general word 'optional'
-  - 40:00 Show the greeting written in both ways
-  - 40:13 State that both greetings are correct
-  - 40:28 Apply the rule to the address block
-  - 40:48 Apply the rule to a person's title
-  - 40:57 Show the end of the letter written in both ways
-  - 41:13 State that both endings are correct
-  - 41:19 Summarise: with the mark and without it are both acceptable
-  - 41:37 Name the two styles: open and closed punctuation
-  - 41:47 The key point: keep one style through the letter
-
-*Rules on the boards*
-
-- 41:19 Writing the comma or the full stop in these four places is correct. Leaving it out is also correct.
-- 41:47 Choose one style and use it in the whole letter.
-
-#### 43:10 Common mistakes (`pages-15-16`, deck)
-
-- 43:10 **Punctuating the first paragraph**
-  - 43:09 Put the printed sentence on the board and say what the first paragraph must do
-  - 43:25 Gloss the hard general phrase in the printed sentence
-  - 43:39 Give the situation behind the letter and name the problem area
-  - 44:00 Define the grammar term and find the clause in the sentence
-  - 44:35 Show why this clause takes commas: it is non-defining
-  - 44:58 Give the corrected sentence with commas at both ends
-  - 45:23 Draw the clause and test taking it out
-  - 46:04 Warn that not every who/which clause takes commas
-  - 46:26 Transfer the point to the student's own writing
-- 47:44 **Small numbers and hyphens**
-  - 47:44 Put the printed sentence on the board and open the small-numbers point
-  - 48:03 First mistake: the digit
-  - 48:11 Second mistake: the hyphen and the singular noun
-  - 48:36 Give the corrected sentence
-  - 48:45 The hyphen is obligatory, and where these phrases appear
-  - 49:02 Second example of the same pattern
+- 39:46 **Optional commas and full stops in an OET letter**
+  - 39:46 Show the four places where the mark is optional, and say why
+  - 40:03 Gloss the general word 'optional'
+  - 40:20 Show the greeting written in both ways
+  - 40:31 State that both greetings are correct
+  - 40:45 Apply the rule to the address block
+  - 41:05 Apply the rule to a person's title
+  - 41:14 Show the end of the letter written in both ways
+  - 41:30 State that both endings are correct
+  - 41:36 Summarise: with the mark and without it are both acceptable
+  - 41:54 Name the two styles: open and closed punctuation
+  - 42:04 The key point: keep one style through the letter
 
 *Rules on the boards*
 
-- 46:04 Not every clause with who or which takes commas. A clause that tells us which person we mean has no commas.
-- 46:26 Correct punctuation makes your letter clear for the reader.
+- 41:36 Writing the comma or the full stop in these four places is correct. Leaving it out is also correct.
+- 42:04 Choose one style and use it in the whole letter.
+
+#### 43:20 Common mistakes (`pages-15-16`, deck)
+
+- 43:20 **Punctuating the first paragraph**
+  - 43:20 Put the printed sentence on the board and say what the first paragraph must do
+  - 43:35 Gloss the hard general phrase in the printed sentence
+  - 43:50 Give the situation behind the letter and name the problem area
+  - 44:11 Define the grammar term and find the clause in the sentence
+  - 44:45 Show why this clause takes commas: it is non-defining
+  - 45:08 Give the corrected sentence with commas at both ends
+  - 45:33 Draw the clause and test taking it out
+  - 46:14 Warn that not every who/which clause takes commas
+  - 46:37 Transfer the point to the student's own writing
+- 47:55 **Small numbers and hyphens**
+  - 47:54 Put the printed sentence on the board and open the small-numbers point
+  - 48:14 First mistake: the digit
+  - 48:23 Second mistake: the hyphen and the singular noun
+  - 48:48 Give the corrected sentence
+  - 48:57 The hyphen is obligatory, and where these phrases appear
+  - 49:14 Second example of the same pattern
+
+*Rules on the boards*
+
+- 46:14 Not every clause with who or which takes commas. A clause that tells us which person we mean has no commas.
+- 46:37 Correct punctuation makes your letter clear for the reader.
 
 *Warnings (common mistakes)*
 
-- 48:45 You must use the hyphen here. Leaving it out is a punctuation mistake.
+- 48:57 You must use the hyphen here. Leaving it out is a punctuation mistake.
 
 *Wrong sentences corrected*
 
-- 43:10 I am writing to refer the above-mentioned patient who has worsening osteoarthritis for a possible knee-joint replacement.
-- 47:44 The patient presented with a 2 weeks history of migraines.
+- 43:20 I am writing to refer the above-mentioned patient who has worsening osteoarthritis for a possible knee-joint replacement.
+- 47:55 The patient presented with a 2 weeks history of migraines.
 
-*Terms*: Relative clause (Grammar, 44:00); Non-defining clause (Grammar, 44:35); Small numbers (Rule, 48:03)
+*Terms*: Relative clause (Grammar, 44:11); Non-defining clause (Grammar, 44:45); Small numbers (Advice, 48:14)
 
-#### 49:18 Full stops and sentence boundaries (`added-01`, authored)
+#### 49:30 Full stops and sentence boundaries (`added-01`, authored)
 
-- 49:18 **Punctuation: ending sentences, run-ons and comma splices**
-  - 49:18 Fixed rule for the whole board: where a sentence ends
-  - 49:27 What a complete sentence has, with a right example from a letter
-  - 49:57 Why this matters in a letter
-  - 50:06 Run-on sentence: term and wrong example
-  - 50:42 Gloss the hard general word in that example
-  - 50:57 Comma splice: term and wrong example
-  - 51:23 Fix 1: a full stop
-  - 51:40 Fix 2: a comma and a joining word
-  - 51:57 Fix 3: a semi-colon
-  - 52:22 Practice item
-  - 52:45 Answer to the practice item
-  - 53:03 Other correct answers to the practice item
+- 49:30 **Punctuation: ending sentences, run-ons and comma splices**
+  - 49:30 Fixed rule for the whole board: where a sentence ends
+  - 49:39 What a complete sentence has, with a right example from a letter
+  - 50:09 Why this matters in a letter
+  - 50:17 Run-on sentence: term and wrong example
+  - 50:54 Gloss the hard general word in that example
+  - 51:09 Comma splice: term and wrong example
+  - 51:35 Fix 1: a full stop
+  - 51:52 Fix 2: a comma and a joining word
+  - 52:09 Fix 3: a semi-colon
+  - 52:33 Practice item
+  - 52:57 Answer to the practice item
+  - 53:15 Other correct answers to the practice item
 
 *Rules on the boards*
 
-- 49:57 Short, clear sentences help the reader of your letter.
+- 50:09 Short, clear sentences help the reader of your letter.
 
 *Wrong sentences corrected*
 
-- 50:14 Eye drops were administered the patient was told to return several days later.
-- 51:03 Her pain has improved, she can now walk without a stick.
-- 52:25 The wound is healing well it should be checked again in one week.
+- 50:26 Eye drops were administered the patient was told to return several days later.
+- 51:15 Her pain has improved, she can now walk without a stick.
+- 52:37 The wound is healing well it should be checked again in one week.
 
-*Terms*: Sentence (Form, 49:27); Run-on sentence (New term, 50:06); Comma splice (New term, 50:57)
+*Terms*: Sentence (Form, 49:39); Run-on sentence (New term, 50:17); Comma splice (New term, 51:09)
 
-#### 54:36 Semicolons and colons (`added-02`, authored)
+#### 54:48 Semicolons and colons (`added-02`, authored)
 
-- 54:36 **Colons and semi-colons in letters**
-  - 54:36 Set the board's rule and define the colon
-  - 55:04 Right example: colon before a list
-  - 55:36 Wrong example: no complete sentence before the colon
-  - 55:56 Right example: colon before an explanation
-  - 56:21 Gloss the hard general word in the example
-  - 56:35 Define the semi-colon and show two linked sentences
-  - 57:13 Semi-colon before however and therefore
-  - 57:38 Semi-colons inside a list whose items have commas
-  - 58:15 Practice item
-  - 58:35 Answer to the practice item
-  - 58:49 Rule to remember
+- 54:48 **Colons and semi-colons in letters**
+  - 54:48 Set the board's rule and define the colon
+  - 55:16 Right example: colon before a list
+  - 55:48 Wrong example: no complete sentence before the colon
+  - 56:08 Right example: colon before an explanation
+  - 56:33 Gloss the hard general word in the example
+  - 56:47 Define the semi-colon and show two linked sentences
+  - 57:25 Semi-colon before however and therefore
+  - 57:50 Semi-colons inside a list whose items have commas
+  - 58:27 Practice item
+  - 58:47 Answer to the practice item
+  - 59:01 Rule to remember
 
 *Rules on the boards*
 
-- 58:49 A colon needs a complete sentence before it. Between two sentences, a semi-colon needs a complete sentence on both sides.
+- 59:01 Inside a sentence, a colon needs a complete sentence before it. A heading or the 'Re:' line can take a colon after a single word. A semicolon needs a complete sentence on both sides.
 
 *Wrong sentences corrected*
 
-- 55:36 The patient reported: fever, cough, and sore throat.
-- 58:20 She has two allergies penicillin and latex.
+- 55:48 The patient reported: fever, cough, and sore throat.
+- 58:32 She has two allergies penicillin and latex.
 
-*Terms*: Colon (:) (Punctuation mark, 54:47); Semi-colon (;) (Punctuation mark, 56:35)
+*Terms*: Colon (:) (Punctuation mark, 54:59); Semicolon (;) (Punctuation mark, 56:47)
 
-#### 60:16 Apostrophes (`added-03`, authored)
+#### 60:34 Apostrophes (`added-03`, authored)
 
-- 60:16 **Apostrophes and full forms in a letter**
-  - 60:16 Set the board's one rule and introduce the apostrophe
-  - 60:33 Show where the apostrophe goes: one patient or more than one
-  - 60:52 One patient, in a letter sentence
-  - 61:08 More than one patient, in a letter sentence
-  - 61:27 No apostrophe in a simple plural
-  - 61:48 State the plural rule and the -en plural
-  - 62:14 Introduce contractions and the full-form rule for letters
-  - 62:35 Wrong and right, with contractions in a letter sentence
-  - 62:56 The full forms to write instead of the short ones
-  - 64:34 Its and it's
-  - 64:58 The rule to keep for letters
-  - 65:06 Practice item
-  - 65:33 Answer to the practice item
+- 60:34 **Apostrophes and full forms in a letter**
+  - 60:34 Set the board's one rule and introduce the apostrophe
+  - 60:50 Show where the apostrophe goes: one patient or more than one
+  - 61:10 One patient, in a letter sentence
+  - 61:25 More than one patient, in a letter sentence
+  - 61:45 No apostrophe in a simple plural
+  - 62:06 State the plural rule and the -en plural
+  - 62:32 Introduce contractions and the full-form rule for letters
+  - 62:52 Wrong and right, with contractions in a letter sentence
+  - 63:13 The full forms to write instead of the short ones
+  - 64:51 Its and it's
+  - 65:15 The rule to keep for letters
+  - 65:23 Practice item
+  - 65:50 Answer to the practice item
 
 *Rules on the boards*
 
-- 61:48 A plural with no belonging has no apostrophe.
-- 64:58 In a letter, write "it is" in full.
+- 62:06 A plural with no belonging has no apostrophe.
+- 65:15 In a letter, write "it is" in full.
 
 *Wrong sentences corrected*
 
-- 61:27 The patient's were discharged.
-- 62:35 She's been unwell and doesn't eat much.
-- 65:09 The patients mother says shes worried.
+- 61:45 The patient's were discharged.
+- 62:52 She's been unwell and doesn't eat much.
+- 65:26 The patients mother says shes worried.
 
-*Terms*: Apostrophe (Punctuation mark, 60:25); Contraction (Grammar word, 62:14)
+*Terms*: Apostrophe (Punctuation mark, 60:42); Contraction (Grammar word, 62:32)
 
-#### 65:54 Hyphens and numbers (`added-04`, authored)
+#### 66:12 Hyphens and numbers (`added-04`, authored)
 
-- 65:54 **Hyphens and numbers in a letter**
-  - 65:54 Open the board with the core rule and name the mark
-  - 66:26 Show the wrong form of a number plus noun before a noun
-  - 66:46 Give the correct form and the rule
-  - 67:02 Digits follow the same rule
-  - 67:16 Contrast before the noun and after the noun
-  - 67:41 Two describing words before a noun
-  - 67:56 With no noun after them, no hyphen
-  - 68:13 Follow-up as a noun
-  - 68:25 Gloss the general phrase follow-up
-  - 68:37 Follow up as a verb: the wrong form
-  - 68:48 Follow up as a verb: the correct form
-  - 68:59 Small numbers in words
-  - 69:12 Digits with a unit of measurement
-  - 69:21 Practice item
-  - 69:44 Answer to the practice item
+- 66:12 **Hyphens and numbers in a letter**
+  - 66:12 Open the board with the core rule and name the mark
+  - 66:43 Show the wrong form of a number plus noun before a noun
+  - 67:03 Give the correct form and the rule
+  - 67:20 Digits follow the same rule
+  - 67:33 Contrast before the noun and after the noun
+  - 67:58 Two describing words before a noun
+  - 68:13 With no noun after them, no hyphen
+  - 68:30 Follow-up as a noun
+  - 68:42 Gloss the general phrase follow-up
+  - 68:54 Follow up as a verb: the wrong form
+  - 69:05 Follow up as a verb: the correct form
+  - 69:16 Small numbers in words
+  - 69:30 Digits with a unit of measurement
+  - 69:39 Practice item
+  - 70:01 Answer to the practice item
 
 *Wrong sentences corrected*
 
-- 66:26 She has a two weeks history of headache.
-- 68:37 I will follow-up her blood results.
-- 69:25 He has a 3 month history of back pain and needs a follow up appointment.
+- 66:43 She has a two weeks history of headache.
+- 68:54 I will follow-up her blood results.
+- 69:43 He has a 3 month history of back pain and needs a follow up appointment.
 
-*Terms*: Hyphen (Punctuation mark, 66:06)
+*Terms*: Hyphen (Punctuation mark, 66:23)
 
-#### 71:08 Capital letters (`added-05`, authored)
+#### 71:26 Capital letters (`added-05`, authored)
 
-- 71:08 **Capital letters in a medical letter**
-  - 71:08 Open the board with the rule and why it matters
-  - 71:20 Sentences and the word I (b4)
-  - 71:42 Titles before a name against job words alone (b3)
-  - 72:15 The wrong version of the job-word example (b3)
-  - 72:34 The correct versions with and without a name (b3)
-  - 72:56 Brand names against generic names (b1)
-  - 73:01 Gloss of the general word "brand"
-  - 73:29 The wrong drug-name example (b1)
-  - 73:40 Correct generic names in a list (b1)
-  - 73:52 A correct brand-name example (b1)
-  - 74:06 Days and months against seasons (b2)
-  - 74:18 A correct date example (b2)
-  - 74:41 A correct season example (b2)
-  - 74:49 Practice item (b5)
-  - 75:11 Practice answer (b5)
-  - 75:35 Closing rule to remember
+- 71:26 **Capital letters in a medical letter**
+  - 71:26 Open the board with the rule and why it matters
+  - 71:38 Sentences and the word I (b4)
+  - 72:00 Titles before a name against job words alone (b3)
+  - 72:33 The wrong version of the job-word example (b3)
+  - 72:52 The correct versions with and without a name (b3)
+  - 73:14 Brand names against generic names (b1)
+  - 73:19 Gloss of the general word "brand"
+  - 73:47 The wrong drug-name example (b1)
+  - 73:58 Correct generic names in a list (b1)
+  - 74:10 A correct brand-name example (b1)
+  - 74:24 Days and months against seasons (b2)
+  - 74:36 A correct date example (b2)
+  - 74:59 A correct season example (b2)
+  - 75:07 Practice item (b5)
+  - 75:29 Practice answer (b5)
+  - 75:53 Closing rule to remember
 
 *Rules on the boards*
 
-- 75:35 Use capital letters for sentences, the word "I", days, months, and titles with names. Inside a sentence, use small letters for job words, seasons, and generic drug names.
+- 75:53 Use capital letters for sentences, the word "I", days, months, and titles with names. Inside a sentence, use small letters for job words, seasons, and generic drug names.
 
 *Wrong sentences corrected*
 
-- 72:15 She was seen by a Cardiologist.
-- 73:29 She takes Paracetamol.
-- 74:53 On monday, dr. patel prescribed Paracetamol.
+- 72:33 She was seen by a Cardiologist.
+- 73:47 She takes Paracetamol.
+- 75:11 On monday, dr patel prescribed Paracetamol.
 
-#### 75:58 Brackets, quotation marks, slashes and dashes (`added-06`, authored)
+#### 77:19 Brackets, quotation marks, slashes and dashes (`added-06`, authored)
 
-- 75:58 **Other punctuation in letters**
-  - 75:58 Set the board's one fixed rule
-  - 76:08 Brackets hold extra information: dose example
-  - 76:23 Brackets for a short form
-  - 76:40 Quotation marks for the patient's own words
-  - 76:57 Gloss the general word 'exact'
-  - 77:11 Where a slash is correct, and where it is not
-  - 77:28 The corrected form inside a sentence
-  - 77:43 Dash and hyphen do different jobs
-  - 78:00 Brackets or commas can do the dash's job
-  - 78:17 e.g. means for example
-  - 78:31 i.e. means that is
-  - 78:49 No exclamation mark in a letter
-  - 79:03 The same sentence with a full stop
-  - 79:19 Write 'and', not '&'
-  - 79:34 Practice item
-  - 79:59 Answer to the practice item
-
-*Wrong sentences corrected*
-
-- 77:24 Headache/nausea
-- 78:56 Her symptoms have improved a lot!
-- 79:19 Mr. & Mrs. Brown
-- 79:37 She has pain & swelling in her left knee!
-
-*Terms*: e.g. (Short form, 78:17); i.e. (Short form, 78:31)
-
-#### 81:14 Dates, times and units (`added-07`, authored)
-
-- 81:14 **Dates, times and units in a letter**
-  - 81:14 Board rule, then the shape of a date
-  - 81:38 A correct date in a medical letter, and the comma after it
-  - 82:06 The rejected date form
-  - 82:23 Times in digits
-  - 82:39 Gloss the general word 'digits'
-  - 82:56 One style for times in the whole letter
-  - 83:07 Numbers with units
-  - 83:30 Small numbers: the rejected form
-  - 83:34 Small numbers: the correct form
-  - 83:47 Units take no plural s: the rejected form
-  - 84:00 Units take no plural s: the correct form in a sentence
-  - 84:12 Practice item
-  - 84:34 Practice answer
+- 77:19 **Other punctuation in letters**
+  - 77:19 Set the board's one fixed rule
+  - 77:30 Brackets hold extra information: dose example
+  - 77:45 Brackets for a short form
+  - 78:02 Quotation marks for the patient's own words
+  - 78:18 Gloss the general word 'exact'
+  - 78:33 Where a slash is correct, and where it is not
+  - 78:49 The corrected form inside a sentence
+  - 79:05 Dash and hyphen do different jobs
+  - 79:22 Brackets or commas can do the dash's job
+  - 79:39 e.g. means for example
+  - 79:53 i.e. means that is
+  - 80:11 No exclamation mark in a letter
+  - 80:25 The same sentence with a full stop
+  - 80:41 Write 'and', not '&'
+  - 80:55 Practice item
+  - 81:21 Answer to the practice item
 
 *Wrong sentences corrected*
 
-- 82:06 May 12th, 2024
-- 83:30 Two mg
-- 83:51 5 mgs
-- 84:15 On March 3rd, her temperature was thirty eight point five degrees.
+- 78:45 Headache/nausea
+- 80:17 Her symptoms have improved a lot!
+- 80:41 Mr & Mrs Brown
+- 80:59 She has pain & swelling in her left knee!
 
-#### 85:08 Case-note abbreviations (`added-08`, authored)
+*Terms*: e.g. (Short form, 79:39); i.e. (Short form, 79:53)
 
-- 85:08 **Case-note short forms in a letter**
-  - 85:08 Fix the board's rule and say why full words are needed
-  - 85:22 Show the four short forms and their full words
-  - 85:42 Reject the note form in a letter
-  - 85:57 Give the correct sentence and say what makes it correct
-  - 86:08 Second wrong example from the notes
-  - 86:20 The correct version of the history sentence
-  - 86:30 Marks and arrows in notes are not letter English
-  - 86:47 The arrow becomes words
-  - 86:57 Well-known abbreviations may stay short
-  - 87:20 A less common short form needs the full words first
-  - 87:34 Example of full words with the short form in brackets
-  - 87:56 Practice item
-  - 88:12 Answer to the practice item
+#### 82:36 Dates, times and units (`added-07`, authored)
+
+- 82:36 **Dates, times and units in a letter**
+  - 82:36 Board rule, then the shape of a date
+  - 83:00 A correct date in a medical letter, and the comma after it
+  - 83:30 The rejected date form
+  - 83:52 Times in digits
+  - 84:08 Gloss the general word 'digits'
+  - 84:25 One style for times in the whole letter
+  - 84:36 Numbers with units
+  - 84:58 Small numbers: the rejected form
+  - 85:03 Small numbers: the correct form
+  - 85:15 Units take no plural s: the rejected form
+  - 85:29 Units take no plural s: the correct form in a sentence
+  - 85:40 Practice item
+  - 86:03 Practice answer
 
 *Wrong sentences corrected*
 
-- 85:42 Pt c/o SOB.
-- 86:08 Hx of asthma.
-- 86:30 BP ↑
-- 87:56 Pt c/o SOB. Hx asthma.
+- 84:58 Two mg
+- 85:20 5 mgs
+- 85:44 On March 3rd, her temperature was thirty eight point five degrees.
 
-*Terms*: Brackets (Punctuation, 87:27)
+#### 87:44 Case-note abbreviations (`added-08`, authored)
 
-#### 88:37 Final practice (`added-09`, authored)
+- 87:44 **Case-note short forms in a letter**
+  - 87:44 Fix the board's rule and say why full words are needed
+  - 87:58 Show the four short forms and their full words
+  - 88:17 Reject the note form in a letter
+  - 88:32 Give the correct sentence and say what makes it correct
+  - 88:43 Second wrong example from the notes
+  - 88:55 The correct version of the history sentence
+  - 89:06 Marks and arrows in notes are not letter English
+  - 89:23 The arrow becomes words
+  - 89:32 Well-known abbreviations may stay short
+  - 89:55 A less common short form needs the full words first
+  - 90:10 Example of full words with the short form in brackets
+  - 90:32 Practice item
+  - 90:47 Answer to the practice item
 
-- 88:37 **Punctuating case notes into a letter paragraph**
-  - 88:37 Show the case notes and set the task
-  - 89:00 Wrong version of the first sentence: note forms kept in the letter
-  - 89:46 Step 1: the patient and the admission
-  - 90:32 Wrong version of the history sentence
-  - 90:57 Step 2: the history
-  - 91:18 Step 3: the medication
-  - 91:53 Step 4: the diagnosis, with the semi-colon named
-  - 92:25 Step 4: abbreviations that stay
-  - 92:39 Step 5: the discharge and the follow-up
-  - 93:06 Step 5: follow-up as a noun
-  - 93:16 Step 5: reading 2/52
-  - 93:26 The whole paragraph as the answer
-  - 95:29 The checking rule to take away
+*Wrong sentences corrected*
+
+- 88:17 Pt c/o SOB.
+- 88:43 Hx of asthma.
+- 89:06 BP ↑
+- 90:32 Pt c/o SOB. Hx asthma.
+
+*Terms*: Brackets (Punctuation, 90:02)
+
+#### 92:07 Final practice (`added-09`, authored)
+
+- 92:07 **Punctuating case notes into a letter paragraph**
+  - 92:07 Show the case notes and set the task
+  - 92:30 Wrong version of the first sentence: note forms kept in the letter
+  - 93:19 Step 1: the patient and the admission
+  - 94:05 Wrong version of the history sentence
+  - 94:30 Step 2: the history
+  - 94:52 Step 3: the medication
+  - 95:26 Step 4: the diagnosis, with the semi-colon named
+  - 95:58 Step 4: abbreviations that stay
+  - 96:12 Step 5: the discharge and the follow-up
+  - 96:39 Step 5: follow-up as a noun
+  - 96:49 Step 5: reading 2/52
+  - 97:01 The whole paragraph as the answer
+  - 99:04 The checking rule to take away
 
 *Rules on the boards*
 
-- 95:29 Check full stops, commas, hyphens, capital letters and short forms in every letter you write. Correct punctuation makes your letter clear for the reader.
+- 99:04 Check full stops, commas, hyphens, capital letters and short forms in every letter you write. Correct punctuation makes your letter clear for the reader.
 
 *Wrong sentences corrected*
 
-- 89:00 Mrs. Anna Clarke, 67 year old woman, was admitted on 14/03/2024 c/o chest pain & SOB.
-- 90:32 She has a Hx of Hypertension and Type 2 Diabetes.
+- 92:30 Mrs Anna Clarke, 67 year old woman, was admitted on 14/03/2024 c/o chest pain & SOB.
+- 94:05 She has a Hx of Hypertension and Type 2 Diabetes.
 
-*Terms*: Semi-colon (Punctuation mark, 92:03); Follow-up (Form, 93:06)
+*Terms*: Semicolon (Punctuation mark, 95:36); Follow-up (Form, 96:39)
 
 ### Vocabulary
 
 First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
 
-- 9:40 non-compliance
-- 9:55 aggravated
-- 22:13 administered
-- 24:53 underwent
-- 31:30 Snatched
-- 36:50 slightly
-- 39:43 optional
-- 43:25 above-mentioned
-- 56:21 delayed
-- 68:25 Follow-up
-- 73:01 brand name
-- 76:57 exact
-- 82:39 digits
+- 9:42 non-compliance
+- 9:57 aggravated
+- 22:18 administered
+- 25:00 underwent
+- 31:51 Snatched
+- 37:10 slightly
+- 40:03 optional
+- 43:35 above-mentioned
+- 56:33 delayed
+- 68:42 Follow-up
+- 73:19 brand name
+- 78:18 exact
+- 84:08 digits
 
 ### Practice material
 
@@ -2796,11 +2795,11 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ### Links to other lessons
 
 - 0:18 refers to Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`) (in `page-3_t1.s1.u3`)
-- 3:38 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`) (in `page-5_t1.s2.u2`)
-- 5:44 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "What is a complex sentence?" (in `page-6_t1.s1.u2`)
-- 6:11 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Compound or complex?" (in `page-6_t1.s1.u4`)
-- 10:25 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Due to, despite, as well as" (in `page-6_t1.s14.u2`)
-- 11:55 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `page-6_t1.s19.u3`)
+- 3:35 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`) (in `page-5_t1.s2.u2`)
+- 5:42 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "What is a complex sentence?" (in `page-6_t1.s1.u2`)
+- 6:08 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Compound or complex?" (in `page-6_t1.s1.u4`)
+- 10:27 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Due to, despite, as well as" (in `page-6_t1.s14.u2`)
+- 11:57 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `page-6_t1.s19.u3`)
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Introduction" at 0:04
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 32:56, about section `added-05`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 32:56, about section `added-03`
@@ -8864,8 +8863,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Administer**: `vocabulary-02-collocations` 19:07
 - **Although**: `grammar-05-complex-compound` 11:48
 - **An itchy rash**: `vocabulary-03-collocations-2` 75:38
-- **Apostrophe**: `grammar-07-punctuation` 60:25
-- **Apostrophes**: `grammar-07-punctuation` 60:16
+- **Apostrophe**: `grammar-07-punctuation` 60:42
+- **Apostrophes**: `grammar-07-punctuation` 60:34
 - **Appositive**: `writing-04-introduction` 10:00
 - **Appositive structure**: `grammar-06-clause` 12:49
 - **Appositives and ages**: `writing-04-introduction` 9:51
@@ -8879,15 +8878,15 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Before he quit**: `grammar-01-verb-tenses` 49:39
 - **Before you listen**: `listening-03-part-b` 5:03
 - **Before you listen: ninety seconds**: `listening-04-part-c` 5:21
-- **Brackets**: `grammar-07-punctuation` 87:27
-- **Brackets, quotation marks, slashes and dashes**: `grammar-07-punctuation` 75:58
+- **Brackets**: `grammar-07-punctuation` 90:02
+- **Brackets, quotation marks, slashes and dashes**: `grammar-07-punctuation` 77:19
 - **By monitoring your symptoms**: `vocabulary-02-collocations` 36:31
 - **c/o**: `grammar-03-nominalization` 16:48
-- **Capital letters**: `grammar-07-punctuation` 71:08
+- **Capital letters**: `grammar-07-punctuation` 71:26
 - **Case notes**: `grammar-01-verb-tenses` 115:03
 - **Case notes and the Writing Task**: `writing-01-overview` 13:47
 - **Case notes: error correction**: `grammar-01-verb-tenses` 114:53
-- **Case-note abbreviations**: `grammar-07-punctuation` 85:08
+- **Case-note abbreviations**: `grammar-07-punctuation` 87:44
 - **Choosing the right word form**: `vocabulary-01-word-forms` 2:26
 - **choosing the tense**: `grammar-02-verb-use` 9:39
 - **Chunking**: `reading-02-part-a` 18:43
@@ -8895,30 +8894,30 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Closing sentence**: `writing-01-overview` 16:58
 - **Collocation**: `vocabulary-02-collocations` 1:35
 - **Collocations in a letter**: `vocabulary-03-collocations-2` 60:41
-- **Colon (:)**: `grammar-07-punctuation` 54:47
+- **Colon (:)**: `grammar-07-punctuation` 54:59
 - **Combine**: `grammar-08-paraphrasing` 28:08
-- **Comma splice**: `grammar-07-punctuation` 22:06
-- **commas**: `grammar-07-punctuation` 2:35
-- **Commas: overview**: `grammar-07-punctuation` 2:35
+- **Comma splice**: `grammar-07-punctuation` 22:11
+- **commas**: `grammar-07-punctuation` 2:32
+- **Commas: overview**: `grammar-07-punctuation` 2:32
 - **Common descriptions**: `vocabulary-03-collocations-2` 33:24
-- **Common mistakes**: `grammar-07-punctuation` 43:10
-- **complex sentence**: `grammar-05-complex-compound` 2:13; `grammar-07-punctuation` 5:44; `grammar-08-paraphrasing` 7:40
-- **Complex sentences**: `grammar-07-punctuation` 5:39
+- **Common mistakes**: `grammar-07-punctuation` 43:20
+- **complex sentence**: `grammar-05-complex-compound` 2:13; `grammar-07-punctuation` 5:41; `grammar-08-paraphrasing` 7:40
+- **Complex sentences**: `grammar-07-punctuation` 5:36
 - **Compliant with**: `grammar-08-paraphrasing` 34:17
 - **Compound or complex?**: `grammar-05-complex-compound` 23:54
 - **Compound sentence**: `grammar-01-verb-tenses` 121:25; `grammar-05-complex-compound` 23:54; `grammar-08-paraphrasing` 7:33
-- **Compound sentences**: `grammar-07-punctuation` 14:29
+- **Compound sentences**: `grammar-07-punctuation` 14:30
 - **Comprehension**: `reading-04-part-c` 2:05
 - **Conciseness and Clarity**: `writing-02-assessment-criteria` 15:53
 - **Conditional clause**: `grammar-05-complex-compound` 37:33
 - **Conjunction**: `grammar-05-complex-compound` 8:00
-- **Conjunctive adverb**: `grammar-07-punctuation` 20:18
+- **Conjunctive adverb**: `grammar-07-punctuation` 20:21
 - **Connectives**: `grammar-02-verb-use` 25:04
 - **Content**: `writing-02-assessment-criteria` 10:31
 - **Continuous**: `grammar-01-verb-tenses` 2:45
 - **Continuous tense**: `grammar-01-verb-tenses` 28:38
 - **continuous tenses**: `grammar-01-verb-tenses` 27:58
-- **Contraction**: `grammar-07-punctuation` 62:14
+- **Contraction**: `grammar-07-punctuation` 62:32
 - **Contrast**: `listening-04-part-c` 8:29
 - **Coordinating conjunction**: `grammar-05-complex-compound` 24:15
 - **Core skills**: `reading-03-part-b` 7:47
@@ -8928,30 +8927,30 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Countable nouns: non-specific**: `grammar-04-articles` 17:32
 - **Critical thinking**: `reading-04-part-c` 8:39
 - **Dangling participle**: `grammar-06-clause` 37:18
-- **Dates, times and units**: `grammar-07-punctuation` 81:14
+- **Dates, times and units**: `grammar-07-punctuation` 82:36
 - **deal with**: `vocabulary-03-collocations-2` 25:50
 - **Decision**: `grammar-01-verb-tenses` 26:52
 - **Defining and non-defining**: `grammar-06-clause` 10:36
 - **defining and non-defining relative clauses**: `grammar-06-clause` 10:36
 - **defining relative clause**: `vocabulary-01-word-forms` 69:53
 - **Denominalisation**: `grammar-03-nominalization` 51:34
-- **Dependent clause**: `grammar-05-complex-compound` 4:34; `grammar-07-punctuation` 6:45
+- **Dependent clause**: `grammar-05-complex-compound` 4:34; `grammar-07-punctuation` 6:42
 - **dis-**: `vocabulary-01-word-forms` 75:09
 - **do a quick check**: `vocabulary-03-collocations-2` 50:05
 - **DO tunnel**: `grammar-08-paraphrasing` 48:40
 - **Dos and don'ts**: `reading-02-part-a` 49:21
-- **Due to**: `grammar-05-complex-compound` 11:55; `grammar-07-punctuation` 10:13
+- **Due to**: `grammar-05-complex-compound` 11:55; `grammar-07-punctuation` 10:15
 - **Due to, despite, as well as**: `grammar-05-complex-compound` 45:35
-- **e.g**: `grammar-07-punctuation` 78:17
+- **e.g**: `grammar-07-punctuation` 79:39
 - **Emphasis**: `listening-04-part-c` 8:56
 - **Exercise regime**: `vocabulary-03-collocations-2` 71:38
 - **Expand**: `grammar-08-paraphrasing` 2:39
 - **Expressing reason with 'given'**: `grammar-06-clause` 52:37
-- **FANBOYS**: `grammar-05-complex-compound` 24:24; `grammar-07-punctuation` 14:57
+- **FANBOYS**: `grammar-05-complex-compound` 24:24; `grammar-07-punctuation` 14:58
 - **Fast reading**: `reading-01-overview` 13:36
-- **Final practice**: `grammar-07-punctuation` 88:37
+- **Final practice**: `grammar-07-punctuation` 92:07
 - **Five questions**: `writing-04-introduction` 23:01
-- **Follow-up**: `grammar-07-punctuation` 93:06
+- **Follow-up**: `grammar-07-punctuation` 96:39
 - **For and since**: `grammar-01-verb-tenses` 39:20
 - **Formal time-related expressions**: `grammar-03-nominalization` 40:51
 - **Four steps towards success**: `reading-01-overview` 15:14
@@ -8960,7 +8959,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **From the plan**: `writing-04-introduction` 20:05
 - **From what you hear to the notes**: `listening-02-part-a` 12:25
 - **from which**: `vocabulary-01-word-forms` 59:57
-- **Full stops and sentence boundaries**: `grammar-07-punctuation` 49:18
+- **Full stops and sentence boundaries**: `grammar-07-punctuation` 49:30
 - **future perfect**: `grammar-01-verb-tenses` 42:20
 - **future simple**: `grammar-01-verb-tenses` 20:16
 - **Gap fill**: `grammar-05-complex-compound` 32:43
@@ -8990,27 +8989,27 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **How your letter is scored**: `writing-02-assessment-criteria` 4:01
 - **However**: `grammar-08-paraphrasing` 33:49
 - **HTN**: `grammar-02-verb-use` 19:55
-- **Hyphen**: `grammar-07-punctuation` 66:06
-- **Hyphens and numbers**: `grammar-07-punctuation` 65:54
-- **i.e**: `grammar-07-punctuation` 78:31
+- **Hyphen**: `grammar-07-punctuation` 66:23
+- **Hyphens and numbers**: `grammar-07-punctuation` 66:12
+- **i.e**: `grammar-07-punctuation` 79:53
 - **ICU**: `vocabulary-03-collocations-2` 9:50
 - **Indefinite article**: `grammar-04-articles` 10:52
-- **Independent clause**: `grammar-05-complex-compound` 4:15; `grammar-07-punctuation` 7:00
+- **Independent clause**: `grammar-05-complex-compound` 4:15; `grammar-07-punctuation` 6:58
 - **Infinitive**: `grammar-01-verb-tenses` 6:43
 - **Initially**: `grammar-08-paraphrasing` 54:49
 - **instead of which**: `vocabulary-01-word-forms` 63:35
 - **Instructions and advice**: `vocabulary-03-collocations-2` 52:41
 - **interview**: `listening-05-part-c-2` 4:40
-- **Introductory phrase**: `grammar-07-punctuation` 23:16
-- **Introductory phrases**: `grammar-07-punctuation` 23:11
+- **Introductory phrase**: `grammar-07-punctuation` 23:21
+- **Introductory phrases**: `grammar-07-punctuation` 23:16
 - **Joining sentences with relative pronouns**: `vocabulary-01-word-forms` 43:30
 - **Key points to remember**: `vocabulary-02-collocations` 12:08
 - **Key words**: `reading-03-part-b` 10:13
 - **Language**: `writing-02-assessment-criteria` 26:46
 - **Linking words**: `listening-05-part-c-2` 2:52
-- **Lists and series**: `grammar-07-punctuation` 27:35
+- **Lists and series**: `grammar-07-punctuation` 27:56
 - **Main clause**: `reading-04-part-c` 18:06
-- **Main clause (independent clause)**: `grammar-07-punctuation` 23:57
+- **Main clause (independent clause)**: `grammar-07-punctuation` 24:05
 - **Main point or detail?**: `listening-03-part-b` 3:46
 - **May have been triggered**: `grammar-01-verb-tenses` 126:18
 - **Medical terms: vocabulary and word form**: `vocabulary-01-word-forms` 18:56
@@ -9019,7 +9018,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Multiple choice (3 options)**: `reading-03-part-b` 6:29
 - **neither of which**: `vocabulary-01-word-forms` 64:28
 - **Nominalisation**: `grammar-03-nominalization` 1:57; `grammar-04-articles` 55:27; `grammar-08-paraphrasing` 5:29
-- **Non-defining clause**: `grammar-07-punctuation` 35:50
+- **Non-defining clause**: `grammar-07-punctuation` 36:11
 - **non-defining relative clause**: `vocabulary-01-word-forms` 70:58
 - **Non-physical complaints**: `grammar-03-nominalization` 21:13
 - **Non-specific**: `grammar-04-articles` 18:15
@@ -9041,7 +9040,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Participle clause**: `grammar-06-clause` 33:21
 - **Participle clauses**: `grammar-06-clause` 33:19
 - **Parts of an OET letter**: `writing-01-overview` 14:12
-- **Passive**: `grammar-01-verb-tenses` 51:04; `grammar-02-verb-use` 6:16; `grammar-03-nominalization` 5:49; `grammar-05-complex-compound` 25:58; `grammar-07-punctuation` 11:41; `grammar-08-paraphrasing` 4:59; `vocabulary-01-word-forms` 27:22; `vocabulary-02-collocations` 40:56
+- **Passive**: `grammar-01-verb-tenses` 51:04; `grammar-02-verb-use` 6:16; `grammar-03-nominalization` 5:49; `grammar-05-complex-compound` 25:58; `grammar-07-punctuation` 11:43; `grammar-08-paraphrasing` 4:59; `vocabulary-01-word-forms` 27:22; `vocabulary-02-collocations` 40:56
 - **passive forms**: `grammar-01-verb-tenses` 98:10
 - **Passive forms of the verb tenses**: `grammar-01-verb-tenses` 98:10
 - **Passive voice**: `grammar-02-verb-use` 36:40
@@ -9071,7 +9070,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Prior to onset**: `grammar-08-paraphrasing` 44:15
 - **prn and tds**: `grammar-08-paraphrasing` 58:14
 - **Provide**: `vocabulary-02-collocations` 25:33
-- **Punctuation in OET letters**: `grammar-07-punctuation` 39:26
+- **Punctuation in OET letters**: `grammar-07-punctuation` 39:46
 - **Purpose**: `writing-02-assessment-criteria` 5:57; `writing-04-introduction` 16:32
 - **QTA**: `reading-04-part-c` 19:34
 - **Reading Part B: strategies**: `reading-03-part-b` 7:47
@@ -9083,21 +9082,21 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Reduced relative clause**: `grammar-06-clause` 19:08
 - **Reduced relative clauses**: `grammar-06-clause` 19:08
 - **Regular verb**: `grammar-01-verb-tenses` 5:44
-- **Relative clause**: `grammar-05-complex-compound` 19:03; `grammar-06-clause` 2:00; `grammar-07-punctuation` 44:00; `vocabulary-01-word-forms` 45:34; `writing-04-introduction` 7:30
+- **Relative clause**: `grammar-05-complex-compound` 19:03; `grammar-06-clause` 2:00; `grammar-07-punctuation` 44:11; `vocabulary-01-word-forms` 45:34; `writing-04-introduction` 7:30
 - **Relative clauses**: `grammar-06-clause` 2:00; `writing-04-introduction` 5:38
 - **Relative clauses with prepositions**: `vocabulary-01-word-forms` 56:47
 - **Relative pronoun**: `grammar-06-clause` 19:32; `vocabulary-01-word-forms` 45:23
 - **relative pronouns**: `vocabulary-01-word-forms` 43:30
 - **ROM**: `grammar-01-verb-tenses` 127:40
-- **Run-on sentence**: `grammar-07-punctuation` 50:06
+- **Run-on sentence**: `grammar-07-punctuation` 50:17
 - **Scanning**: `reading-02-part-a` 20:43
 - **Schedule**: `vocabulary-02-collocations` 56:10
 - **Scoring the Reading test**: `reading-01-overview` 12:44
 - **Seldom**: `grammar-01-verb-tenses` 77:58
-- **Semi-colon**: `grammar-07-punctuation` 92:03
-- **Semi-colon (;)**: `grammar-07-punctuation` 20:28
-- **Semicolons and colons**: `grammar-07-punctuation` 54:36
-- **Sentence**: `grammar-07-punctuation` 49:27
+- **Semicolon**: `grammar-07-punctuation` 95:36
+- **Semicolon (;)**: `grammar-07-punctuation` 20:31
+- **Semicolons and colons**: `grammar-07-punctuation` 54:48
+- **Sentence**: `grammar-07-punctuation` 49:39
 - **Sentence completion**: `reading-01-overview` 7:04; `reading-02-part-a` 50:30
 - **Should be monitored**: `vocabulary-02-collocations` 33:33
 - **Signal word**: `grammar-01-verb-tenses` 76:44
@@ -9107,7 +9106,6 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Signposts and tempting options**: `listening-04-part-c` 6:39
 - **Skim**: `reading-02-part-a` 17:42
 - **Skimming**: `reading-02-part-a` 12:17
-- **Small numbers**: `grammar-07-punctuation` 48:03
 - **so ... that**: `vocabulary-03-collocations-2` 29:32
 - **So far**: `grammar-01-verb-tenses` 82:04
 - **Specific noun**: `grammar-04-articles` 34:28
