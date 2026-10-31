@@ -210,3 +210,36 @@ has tried the prototype. A change after the site's answer is an amendment of thi
   registry's `about` names the `retired` field.
 - No change to the engine's or the player's code, the bundle format or the contracts.
 - To reverse: a new amendment; retired IDs stay retired.
+
+## Amendment (3), 2026-10-31: a point's two blocks are not counted against the board's note limits
+
+### Context
+
+- Grammar 7 (`grammar-07-punctuation`, draft.1, engine issue #96) left three sections without a practice point:
+  Capital letters; Dates, times and units; Case-note abbreviations. Every state of their boards already holds three or
+  four working notes. A point adds two (its task line and its answer). The screens audit refuses a state over four
+  notes (`MAX_NOTES`), and a table board's thought over two side notes (`MAX_SIDE_NOTES`), so the point could not join
+  the state its series ends in.
+- The owner (his decisions on Grammar 7, 2026-10-31) wants those sections to have points. He ruled that the engine is
+  changed now: a practice point's two blocks are exempt from the screens audit's note limit. The fit already clears
+  earlier notes when new ones appear (ADR 011), so the board stays inside its frame.
+
+### Decision
+
+1. **An added block may carry `practice_point`**: the key of the practice point it belongs to (`overrides.json`
+   `add`). It is a screens-plan field only. The bundle copies blocks field by field (`BLOCK_FIELDS`), and the field is
+   not one of them, so no bundle changes.
+2. **Such blocks are not counted** against `MAX_NOTES` (the layout's room for a thought and the density check) or
+   `MAX_SIDE_NOTES` (a table board's side notes) (`write_screens.counted_notes`). The density check keeps the state's
+   own count and subtracts only the marked blocks.
+3. **The audit checks the mark.** It must be on an added block, and at most two blocks carry one point's key.
+4. Nothing else changes: the height checks, the fit, the bundle format, the player and the contracts. A lesson
+   whose blocks carry no `practice_point` is laid out and audited exactly as before.
+
+### Consequences
+
+- Grammar 7 draft.2 marks every point's two blocks and adds points to the three sections.
+- Proof (ADR 043's standing rule): render_compare before (main) and after (this change) on every built lesson, and
+  restyle_proof on every published lesson against the after render. Both ran on one frozen copy of the library, because another session was writing to it. render_compare: 25 of 25 built lessons identical (every data file byte for byte, every drawn moment at phone and laptop, every board time). restyle_proof: 16 of the 25 published lessons pass. The 9 with practice points (Grammar 1-8, Writing 4) report only that their bundle is 1.23, not the restyle's 1.22, with 0 files changed. Unit tests:
+  `test_practice_points.PracticePointNotes`.
+- To reverse: a new amendment; remove the field from a lesson's adds.
