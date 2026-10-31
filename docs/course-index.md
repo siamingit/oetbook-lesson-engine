@@ -3135,7 +3135,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 |---|---|---|---|---|---|
 | 1 | Vocabulary for OET: Word Forms and Sentence Structure | `vocabulary-01-word-forms` | 93:45 | 8 | 2026-10-31 19:49 (Siavash) |
 | 2 | Vocabulary for OET: Verb + Noun Collocations | `vocabulary-02-collocations` | 81:17 | 13 | 2026-10-31 20:01 (Siavash) |
-| 3 | Vocabulary for OET: Adjective + Noun Collocations | `vocabulary-03-collocations-2` | 85:53 | 10 | not yet |
+| 3 | Vocabulary for OET: Adjective + Noun Collocations | `vocabulary-03-collocations-2` | 85:53 | 10 | 2026-10-31 20:19 (Siavash) |
 
 <a id="vocabulary-01-word-forms"></a>
 
@@ -4195,7 +4195,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 3. Vocabulary for OET: Adjective + Noun Collocations
 
 - Lesson ID and folder: `vocabulary-03-collocations-2` (folder `vocabulary-03-collocations-2`); course vocabulary, lesson 3; length 85:53; bundle format 1.23
-- Status: built, final gate not approved
+- Status: approved by Siavash, 2026-10-31 20:19
 - Description: Learn adjectives and nouns that go together, and clear ways to describe pain, for your OET letters and for talking to patients.
 - Original session: folder `source`: `source/video.mp4`, 45:34 long, partial hash `b1576043dc5fe7aa`; deck `source/slides.pdf`, 15 pages
   - Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).
