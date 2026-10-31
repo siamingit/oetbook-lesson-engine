@@ -2805,7 +2805,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 32:56, about section `added-03`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Genre and Style" at 24:42, about section `added-08`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:49, about section `page-5`
-- referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "Greeting and Re line" at 15:18, about section `page-14`
+- referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "Greeting and Re line" at 15:39, about section `page-14`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "The opening paragraph" at 4:36, about section `page-14`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 12:42, about section `added-04`
 - continues from Grammar for OET: Complex sentences (`grammar-05-complex-compound`): Punctuation teaches the comma in complex and compound sentences.
@@ -7851,7 +7851,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 |---|---|---|---|---|---|
 | 1 | OET Writing: Overview | `writing-01-overview` | 19:05 | 7 | 2026-10-27 09:37 (siavash) |
 | 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 29:42 | 10 | 2026-10-26 23:34 (Siavash) |
-| 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 26:52 | 10 | 2026-10-28 02:22 (Siavash) |
+| 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:04 | 10 | 2026-10-31 23:18 (siavash) |
 | 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-10-31 10:22 (Siavash) |
 
 <a id="writing-01-overview"></a>
@@ -8025,7 +8025,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 3:22 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `page-5_t1.s2.u3`)
 - 11:58 refers to Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Omit" (in `page-8_t1.s5.u4`)
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Introduction" at 0:05
-- referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "The Writing paper" at 1:51, about section `page-8`
+- referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "The Writing paper" at 1:52, about section `page-8`
 
 
 <a id="writing-02-assessment-criteria"></a>
@@ -8317,8 +8317,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 28:31 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`) (in `page-19_t1.s7.u2`)
 - 28:49 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Commas: overview" (in `page-19_t1.s9.u1`)
 - referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "Introduction" at 0:07, about section `page-18`
-- referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "The Writing paper" at 4:43, about section `pages-09-10-11`
-- referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "The parts of a letter" at 7:04, about section `pages-06-07-08`
+- referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "The Writing paper" at 4:44, about section `pages-09-10-11`
+- referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "The parts of a letter" at 7:05, about section `pages-06-07-08`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Purpose" at 16:38, about section `pages-06-07-08`
 
 
@@ -8326,8 +8326,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 3. OET Writing: Letter Structure
 
-- Lesson ID and folder: `writing-03-letter-structure` (folder `writing-03-letter-structure`); course writing, lesson 3; length 26:52; bundle format 1.22
-- Status: approved by Siavash, 2026-10-28 02:22
+- Lesson ID and folder: `writing-03-letter-structure` (folder `writing-03-letter-structure`); course writing, lesson 3; length 28:04; bundle format 1.23
+- Status: approved by siavash, 2026-10-31 23:18
 - Description: Learn the parts of a letter, from the address and the date to the request and the sign-off, and where each part comes from in the paper.
 - Original session: folder `source`: `source/video.mp4`, 25:04 long, partial hash `e5d98490267c5abe`; deck `source/slides.pdf`, 12 pages
   - Writing Session 3 of the Persian Writing course, «جلسه رایتینگ: ساختار نامه» (Writing: letter structure); its official OET sample (letter and case notes) is replaced by our samples oa-ws-nur-0001 (main), oa-ws-med-0002 (the dates) and oa-ws-nur-0003 (the address, greeting and Re line) at oetacademy-exercises 5320d19 (ADR 040). The teacher's exam-date rule is dropped by the owner (ADR 044).
@@ -8345,222 +8345,222 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 - 1:38 **The top of the paper**
   - 1:38 Mrs Dawson's paper, its top
-  - 2:02 the sub-test
-  - 2:09 the time
-  - 2:23 the date line
-  - 2:37 the setting
-- 2:43 **The patient details**
-  - 2:43 the patient details and her home
-  - 2:48 the patient details
-  - 3:05 social background
+  - 2:03 the sub-test
+  - 2:10 the time
+  - 2:24 the date line
+  - 2:38 the setting
+- 2:44 **The patient details**
+  - 2:44 the patient details and her home
+  - 2:49 the patient details
+  - 3:06 social background
 - 3:18 **The case notes**
-  - 3:17 the case notes, in sections
+  - 3:18 the case notes, in sections
   - 3:24 medical history
   - 3:29 medications
-  - 3:33 admission
-- 3:43 **Day by day**
-  - 3:42 her care, day by day
-  - 3:51 the heading
-  - 3:58 the first day
-- 4:01 **The last days**
-  - 4:01 her last days in hospital
+  - 3:34 admission
+- 3:44 **Day by day**
+  - 3:43 her care, day by day
+  - 3:52 the heading
+  - 3:59 the first day
+- 4:02 **The last days**
+  - 4:02 her last days in hospital
   - 4:10 today
-- 4:14 **The discharge plan**
+- 4:15 **The discharge plan**
   - 4:14 the discharge plan
-  - 4:18 after she goes home
-  - 4:33 the letter
-- 4:38 **The Writing Task**
-  - 4:38 the Writing Task
-  - 4:43 what to write
+  - 4:19 after she goes home
+  - 4:34 the letter
+- 4:39 **The Writing Task**
+  - 4:39 the Writing Task
+  - 4:44 what to write
   - 5:03 the address
   - 5:07 in your answer
-  - 5:18 every part
+  - 5:19 every part
 
 *Rules on the boards*
 
-- 4:43 Read the Writing Task first: it names your reader and what you ask.
+- 4:44 Read the Writing Task first: it names your reader and what you ask.
 
-#### 5:25 The parts of a letter (`pages-04-05`, deck)
+#### 5:26 The parts of a letter (`pages-04-05`, deck)
 
-- 5:25 **A letter, part by part**
-  - 5:25 the whole letter
+- 5:26 **A letter, part by part**
+  - 5:26 the whole letter
   - 5:44 a nurse's discharge letter
-  - 5:58 the reader's address
-  - 6:09 the date
-  - 6:21 the greeting and the Re line
-  - 6:27 a common, clear layout
-  - 6:47 the purpose
-  - 7:14 the purpose expanded
-  - 7:20 one more topic
-  - 7:35 the request
-  - 7:49 signing off
-  - 7:57 fixed and flexible
-- 8:13 **Where the top of the letter comes from**
-  - 8:13 from the paper to the letter
-  - 8:19 every part comes from the paper
-  - 8:50 the date
-  - 9:12 the Writing Task
+  - 5:59 the reader's address
+  - 6:10 the date
+  - 6:22 the greeting and the Re line
+  - 6:28 a common, clear layout
+  - 6:48 the purpose
+  - 7:15 the purpose expanded
+  - 7:21 one more topic
+  - 7:36 the request
+  - 7:50 signing off
+  - 7:58 fixed and flexible
+- 8:14 **Where the top of the letter comes from**
+  - 8:14 from the paper to the letter
+  - 8:20 every part comes from the paper
+  - 8:51 the date
+  - 9:13 the Writing Task
   - 9:26 the patient details
-- 9:32 **Where the body comes from**
-  - 9:32 the case notes
-  - 10:08 the discharge plan
+- 9:33 **Where the body comes from**
+  - 9:33 the case notes
+  - 10:09 the discharge plan
 
 *Rules on the boards*
 
-- 6:34 My advice: learn this top part once, and use it in every letter.
+- 6:35 My advice: learn this top part once, and use it in every letter.
 
 *Warnings (common mistakes)*
 
-- 7:35 The request: what you ask the reader to do. Never leave it out.
+- 7:36 The request: what you ask the reader to do. Never leave it out.
 
-#### 10:20 The date (`page-6`, deck)
+#### 10:21 The date (`page-6`, deck)
 
-- 10:20 **Which date goes at the top?**
-  - 10:20 dates in Mrs Holden's paper
-  - 10:27 many dates, one at the top
-  - 10:56 the date the paper gives
-  - 11:11 written in full
-  - 11:27 not the admission date
-  - 11:50 when the discharge date is today
-  - 12:21 dates in the plan
-  - 12:39 above or below the address
-  - 12:46 the rule
-
-*Rules on the boards*
-
-- 12:46 The date at the top is the date in the date line, never any other date in the notes.
-
-#### 12:55 The address (`page-7`, deck)
-
-- 12:55 **Set out the address**
-  - 12:55 the address in the Writing Task
-  - 13:17 your turn
-  - 13:31 the person first
-  - 13:39 the job title
-  - 13:46 the department
-  - 13:56 the hospital
-  - 14:05 the street
-  - 14:11 the town
-  - 14:25 copy it exactly
+- 10:21 **Which date goes at the top?**
+  - 10:21 dates in Mrs Holden's paper
+  - 10:28 many dates, one at the top
+  - 10:59 the date the paper gives
+  - 11:14 written in full
+  - 11:30 not the admission date
+  - 11:53 when the discharge date is today
+  - 12:26 dates in the plan
+  - 12:43 above or below the address
+  - 12:50 the rule
 
 *Rules on the boards*
 
-- 14:25 Copy the address exactly as the task gives it: the same words, the same order, the same capital letters.
+- 12:50 The date at the top is the date in the date line, never any other date in the notes.
 
-#### 14:50 Greeting and Re line (`page-8`, deck)
+#### 13:00 The address (`page-7`, deck)
 
-- 14:50 **Greeting and Re line**
-  - 14:50 from the paper to the letter
-  - 14:57 from the paper
-  - 15:10 title and surname
-  - 15:17 a comma or not
-  - 15:38 your turn
-  - 15:49 no name in the task
-  - 16:06 the word Re
-  - 16:18 your turn
-  - 16:34 name and date of birth
-  - 16:40 why the date of birth
-  - 16:59 what is wrong?
+- 13:00 **Set out the address**
+  - 13:00 the address in the Writing Task
+  - 13:21 your turn
+  - 13:39 the person first
+  - 13:53 the job title
+  - 14:00 the department
+  - 14:10 the hospital
+  - 14:19 the street
+  - 14:25 the town
+  - 14:39 copy it exactly
+
+*Rules on the boards*
+
+- 14:39 Copy the address exactly as the task gives it: the same words, the same order, the same capital letters.
+
+#### 15:11 Greeting and Re line (`page-8`, deck)
+
+- 15:11 **Greeting and Re line**
+  - 15:11 from the paper to the letter
+  - 15:18 from the paper
+  - 15:32 title and surname
+  - 15:39 a comma or not
+  - 15:59 your turn
+  - 16:31 no name in the task
+  - 16:47 the word Re
+  - 17:00 your turn
+  - 17:29 name and date of birth
+  - 17:35 why the date of birth
+  - 17:54 what is wrong?
 
 *Wrong sentences corrected*
 
-- 16:59 Dear Joanne Pellow
-- 17:01 Re: Mrs Dawson
+- 17:54 Dear Joanne Pellow
+- 17:56 Re: Mrs Dawson
 
-*Terms*: Re (The word, 16:06)
+*Terms*: Re (The word, 16:47)
 
-#### 17:29 The body (`page-9`, deck)
+#### 18:25 The body (`page-9`, deck)
 
-- 17:29 **The body**
-  - 17:29 the body of the letter
-  - 17:37 what you do in the body
-  - 18:05 why you are writing
-  - 18:15 the word housebound
-  - 18:32 the purpose fits the letter
-  - 19:05 my method
-  - 19:38 what it adds
-  - 20:04 one topic
-  - 20:13 how many paragraphs
-  - 20:32 which paragraph? 1
-  - 20:58 which paragraph? 2
-  - 21:18 which paragraph? 3
+- 18:25 **The body**
+  - 18:25 the body of the letter
+  - 18:32 what you do in the body
+  - 19:00 why you are writing
+  - 19:11 the word housebound
+  - 19:28 the purpose fits the letter
+  - 20:01 my method
+  - 20:34 what it adds
+  - 21:00 one topic
+  - 21:09 how many paragraphs
+  - 21:28 which paragraph? 1
+  - 21:54 which paragraph? 2
+  - 22:14 which paragraph? 3
 
 *Rules on the boards*
 
-- 18:53 OET: state the purpose clearly at the start, then expand it with more detail at the end of the letter.
-- 19:05 My advice: expand the purpose straight after, in the next paragraph.
+- 19:49 OET: state the purpose clearly at the start, then expand it with more detail at the end of the letter.
+- 20:01 My advice: expand the purpose straight after, in the next paragraph.
 
-#### 21:43 The request (`page-10`, deck)
+#### 22:39 The request (`page-10`, deck)
 
-- 21:43 **From the plan to the request**
-  - 21:43 the discharge plan
-  - 21:49 do not forget it
-  - 22:15 your turn
-  - 22:40 the date and what to do if
-  - 22:55 already taught
-  - 23:10 your turn
-  - 23:34 her own words
-  - 23:53 when
-  - 23:59 polite requests
-  - 24:09 why it matters
+- 22:39 **From the plan to the request**
+  - 22:39 the discharge plan
+  - 22:45 do not forget it
+  - 23:11 your turn
+  - 23:29 the date and what to do if
+  - 23:43 already taught
+  - 23:59 your turn
+  - 24:25 her own words
+  - 24:56 when
+  - 25:02 polite requests
+  - 25:12 why it matters
 
 *Warnings (common mistakes)*
 
-- 21:49 The request ends the body. Do not forget it.
+- 22:45 The request ends the body. Do not forget it.
 
-#### 24:30 Signing off (`page-11`, deck)
+#### 25:34 Signing off (`page-11`, deck)
 
-- 24:30 **Signing off**
-  - 24:30 the end of the letter
-  - 24:34 three short lines
-  - 24:50 two closing sentences
-  - 24:55 learn one or two
-  - 25:06 sincerely or faithfully
-  - 25:25 the job title
-  - 25:30 your turn
+- 25:34 **Signing off**
+  - 25:34 the end of the letter
+  - 25:37 three short lines
+  - 25:53 two closing sentences
+  - 25:58 learn one or two
+  - 26:10 sincerely or faithfully
+  - 26:19 the job title
+  - 26:24 your turn
 
 *Rules on the boards*
 
-- 24:55 My advice: learn one or two closing sentences, and use them in your letters.
+- 25:58 My advice: learn one or two closing sentences, and use them in your letters.
 
-#### 26:04 Closing (`added-01`, closing)
+#### 27:11 Closing (`added-01`, closing)
 
-- 26:04 **Closing**
-  - 26:04 Recap
+- 27:11 **Closing**
+  - 27:11 Recap
 
 ### OET facts
 
-- 6:27 (`writing-no-fixed-layout`) There is no one required layout for the letter (writing-facts 24).
-- 10:53 (`writing-letter-date`) The letter's date is the date the paper gives at the start ("Assume that today's date is ..."), never a date from the notes; above or below the reader's address, written in full (writing-facts 44).
-- 14:25 (`writing-address`) Copy the reader's name and address from the task (writing-facts 24).
-- 15:50 (`writing-unnamed-reader`) "Yours faithfully" goes with "Dear Sir or Madam" when the reader's name is not known (writing-facts 27).
-- 16:34 (`writing-re-line`) The Re line gives the patient's full name and date of birth (writing-facts 26).
-- 18:53 (`writing-purpose`) Purpose: the reader sees at once why you are writing; the purpose is stated clearly at the start and expanded with more detail at the end of the letter (writing-facts 18, 30).
-- 20:14 (`writing-paragraphs`) One topic in each paragraph; there is no fixed number of paragraphs (writing-facts 40).
-- 24:09 (`writing-content`) Content: what this reader needs to continue care, with nothing important missing and the case notes represented accurately (writing-facts 19).
-- 24:50 (`writing-closing-sentence`) A closing sentence commonly thanks the reader or offers contact; "Thank you for ..." and "Please do not hesitate to contact me if you have any questions" are both acceptable, neither required (writing-facts 39; ADR 040 decision 5).
-- 25:23 (`writing-sign-off`) Sign with a job title, not your own name (writing-facts 25). *(a job title, such as Nurse)*
+- 6:28 (`writing-no-fixed-layout`) There is no one required layout for the letter (writing-facts 24).
+- 10:56 (`writing-letter-date`) The letter's date is the date the paper gives at the start ("Assume that today's date is ..."), never a date from the notes; above or below the reader's address, written in full (writing-facts 44).
+- 14:39 (`writing-address`) Copy the reader's name and address from the task (writing-facts 24).
+- 16:31 (`writing-unnamed-reader`) "Yours faithfully" goes with "Dear Sir or Madam" when the reader's name is not known (writing-facts 27).
+- 17:29 (`writing-re-line`) The Re line gives the patient's full name and date of birth (writing-facts 26).
+- 19:49 (`writing-purpose`) Purpose: the reader sees at once why you are writing; the purpose is stated clearly at the start and expanded with more detail at the end of the letter (writing-facts 18, 30).
+- 21:10 (`writing-paragraphs`) One topic in each paragraph; there is no fixed number of paragraphs (writing-facts 40).
+- 25:12 (`writing-content`) Content: what this reader needs to continue care, with nothing important missing and the case notes represented accurately (writing-facts 19).
+- 25:54 (`writing-closing-sentence`) A closing sentence commonly thanks the reader or offers contact; "Thank you for ..." and "Please do not hesitate to contact me if you have any questions" are both acceptable, neither required (writing-facts 39; ADR 040 decision 5).
+- 26:17 (`writing-sign-off`) Sign with a job title, not your own name (writing-facts 25). *(a job title, such as Nurse)*
 
 ### Exam methods and strategies
 
-- 8:19 **Where each part comes from**: The date from the date line at the top of the paper; the reader's name, address and the purpose from the Writing Task; the Re line from the patient details; the body from the notes; the request from the plan.
-- 14:25 **Setting out the address**: Copy it from the Writing Task exactly, one part on each line, from the person to the town, keeping every capital letter.
-- 19:04 **Expanding the purpose (the teacher's method)**: Say briefly at the start why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.
-- 22:40 **From the plan to the request**: Turn each line of the plan into a polite request, keeping its date, what to do and when; report what the patient said at its exact degree.
+- 8:20 **Where each part comes from**: The date from the date line at the top of the paper; the reader's name, address and the purpose from the Writing Task; the Re line from the patient details; the body from the notes; the request from the plan.
+- 14:39 **Setting out the address**: Copy it from the Writing Task exactly, one part on each line, from the person to the town, keeping every capital letter.
+- 20:00 **Expanding the purpose (the teacher's method)**: Say briefly at the start why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.
+- 23:29 **From the plan to the request**: Turn each line of the plan into a polite request, keeping its date, what to do and when; report what the patient said at its exact degree.
 
 ### Vocabulary
 
 First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
 
-- 18:15 housebound
+- 19:11 housebound
 
 ### Links to other lessons
 
 - 0:07 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Organisation and Layout" (in `page-3_t1.s1.u2`)
-- 1:51 refers to OET Writing: Overview (`writing-01-overview`), "The case notes" (in `added-02_t1.s1.u3`)
-- 4:43 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Content" (in `added-02_t7.s2.u1`)
-- 7:04 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Purpose" (in `pages-04-05_t1.s7.u3`)
-- 15:18 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Punctuation in OET letters" (in `page-8_t1.s4.u1`)
+- 1:52 refers to OET Writing: Overview (`writing-01-overview`), "The case notes" (in `added-02_t1.s1.u3`)
+- 4:44 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Content" (in `added-02_t7.s2.u1`)
+- 7:05 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Purpose" (in `pages-04-05_t1.s7.u3`)
+- 15:39 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Punctuation in OET letters" (in `page-8_t1.s4.u1`)
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Introduction" at 0:06, about section `page-9`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "The opening paragraph" at 3:42, about section `page-8`
 
@@ -8969,7 +8969,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **given that**: `grammar-06-clause` 54:21
 - **Giving reassurance**: `vocabulary-03-collocations-2` 50:39
 - **Grade B in OET Writing**: `writing-02-assessment-criteria` 5:27
-- **Greeting and Re line**: `writing-03-letter-structure` 14:50; `writing-04-introduction` 3:42
+- **Greeting and Re line**: `writing-03-letter-structure` 15:11; `writing-04-introduction` 3:42
 - **Had smoked**: `grammar-01-verb-tenses` 53:39
 - **Has been scheduled**: `grammar-01-verb-tenses` 96:52
 - **has not eased**: `vocabulary-03-collocations-2` 31:49
@@ -9100,7 +9100,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Should be monitored**: `vocabulary-02-collocations` 33:33
 - **Signal word**: `grammar-01-verb-tenses` 76:44
 - **Signal words and verb tenses**: `grammar-01-verb-tenses` 76:44
-- **Signing off**: `writing-03-letter-structure` 24:30
+- **Signing off**: `writing-03-letter-structure` 25:34
 - **signposts**: `listening-04-part-c` 6:39; `listening-05-part-c-2` 2:40
 - **Signposts and tempting options**: `listening-04-part-c` 6:39
 - **Skim**: `reading-02-part-a` 17:42
@@ -9130,26 +9130,26 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Tense in the letter**: `writing-02-assessment-criteria` 20:30
 - **The -ing form**: `grammar-01-verb-tenses` 8:21
 - **The -ing form (present participle)**: `grammar-06-clause` 22:31
-- **The address**: `writing-03-letter-structure` 12:55
-- **The body**: `writing-03-letter-structure` 17:29
+- **The address**: `writing-03-letter-structure` 13:00
+- **The body**: `writing-03-letter-structure` 18:25
 - **The case notes**: `writing-01-overview` 9:46
-- **The date**: `writing-03-letter-structure` 10:20
-- **The date at the top of the letter**: `writing-03-letter-structure` 12:46
+- **The date**: `writing-03-letter-structure` 10:21
+- **The date at the top of the letter**: `writing-03-letter-structure` 12:51
 - **The Listening test**: `listening-01-overview` 1:12
 - **The opening paragraph**: `writing-04-introduction` 1:56
 - **The other day**: `grammar-01-verb-tenses` 80:57
 - **The Part A format**: `listening-02-part-a` 1:11
 - **The Part B format**: `listening-03-part-b` 1:25
 - **The Part C format**: `listening-04-part-c` 1:27
-- **The parts of a letter**: `writing-03-letter-structure` 5:25
+- **The parts of a letter**: `writing-03-letter-structure` 5:26
 - **the passive**: `grammar-01-verb-tenses` 67:12
 - **The patient's age in the opening**: `writing-04-introduction` 12:37
 - **The perfect forms**: `grammar-01-verb-tenses` 53:05
 - **The QAT method**: `reading-03-part-b` 11:23
 - **The QTA method**: `reading-04-part-c` 19:31
 - **The Reading test**: `reading-01-overview` 1:29
-- **The request**: `writing-03-letter-structure` 21:43
-- **The request at the end of the letter**: `writing-03-letter-structure` 21:50
+- **The request**: `writing-03-letter-structure` 22:39
+- **The request at the end of the letter**: `writing-03-letter-structure` 22:46
 - **The six assessment criteria**: `writing-02-assessment-criteria` 1:27
 - **The six criteria**: `writing-02-assessment-criteria` 1:24
 - **The six questions, then the whole interview**: `listening-05-part-c-2` 4:40
