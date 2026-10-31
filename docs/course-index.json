@@ -4596,8 +4596,8 @@
       "section": "page-9",
       "to_section": "page-10",
       "utterance": "page-9_t1.s2.u6",
-      "start_s": 1455.229,
-      "start": "24:15"
+      "start_s": 1454.757,
+      "start": "24:14"
      },
      {
       "lesson": "writing-01-overview",
@@ -10076,7 +10076,7 @@
       "section": "page-8",
       "to_section": "page-6",
       "utterance": "page-8_t1.s24.u3",
-      "start_s": 1229.569,
+      "start_s": 1229.097,
       "start": "20:29"
      },
      {
@@ -25579,8 +25579,8 @@
    "description": "Learn adjectives and nouns that go together, and clear ways to describe pain, for your OET letters and for talking to patients.",
    "course": "vocabulary",
    "order": 3,
-   "length_s": 5154.885,
-   "length": "85:54",
+   "length_s": 5153.2,
+   "length": "85:53",
    "bundle_format": "1.23",
    "status": "built",
    "approval": null,
@@ -25606,7 +25606,7 @@
      "category": null,
      "start_s": 0.0,
      "start": "0:00",
-     "end_s": 120.05,
+     "end_s": 119.93,
      "topics": [
       {
        "board": "page-3_t1",
@@ -25625,13 +25625,13 @@
       {
        "board": "page-3_t2",
        "title": "Contents board",
-       "start_s": 69.29,
+       "start_s": 69.17,
        "start": "1:09",
        "points": [
         {
          "text": "each category, revealed as it is named",
          "block": "page-3_k15",
-         "start_s": 69.29,
+         "start_s": 69.17,
          "start": "1:09"
         }
        ]
@@ -25660,111 +25660,111 @@
       5
      ],
      "category": null,
-     "start_s": 120.05,
-     "start": "2:00",
-     "end_s": 408.224,
+     "start_s": 119.93,
+     "start": "1:59",
+     "end_s": 409.26,
      "topics": [
       {
        "board": "page-5_t1",
        "title": "Adjective and noun collocations: definition and the two slide pairs",
-       "start_s": 120.05,
-       "start": "2:00",
+       "start_s": 119.93,
+       "start": "1:59",
        "points": [
         {
          "text": "Fix the definition on the board and place adjective collocations beside verb ones",
          "block": "page-5_k26",
-         "start_s": 120.05,
-         "start": "2:00"
+         "start_s": 119.93,
+         "start": "1:59"
         },
         {
          "text": "Name the pattern and say what it is for",
          "block": "page-5_k03",
-         "start_s": 142.456,
+         "start_s": 142.336,
          "start": "2:22"
         },
         {
          "text": "Why a stock of these phrases must be learned",
          "block": "page-5_k05",
-         "start_s": 159.55,
+         "start_s": 159.43,
          "start": "2:39"
         },
         {
          "text": "The pairing is fixed, not free",
          "block": "page-5_k06",
-         "start_s": 171.263,
+         "start_s": 171.143,
          "start": "2:51"
         },
         {
          "text": "First slide pair: the correct collocation",
          "block": "page-5_k07",
-         "start_s": 180.352,
+         "start_s": 180.232,
          "start": "3:00"
         },
         {
          "text": "First slide pair: the wrong collocation, with the rule about synonyms rebuilt in English",
          "block": "page-5_k09",
-         "start_s": 190.506,
+         "start_s": 190.386,
          "start": "3:10"
         },
         {
          "text": "Key word moment: gloss severe pain with a letter example",
          "block": "page-5_k11",
-         "start_s": 207.553,
+         "start_s": 207.433,
          "start": "3:27"
         },
         {
          "text": "Second example of severe pain, said to a patient",
          "block": "page-5_k12",
-         "start_s": 226.656,
+         "start_s": 226.536,
          "start": "3:46"
         },
         {
          "text": "Widen: other nouns that take severe",
          "block": "page-5_k13",
-         "start_s": 232.202,
+         "start_s": 232.082,
          "start": "3:52"
         },
         {
          "text": "Widen: severe against a simple opposite",
          "block": "page-5_k14",
-         "start_s": 245.463,
+         "start_s": 245.343,
          "start": "4:05"
         },
         {
          "text": "Second slide pair: the correct collocation",
          "block": "page-5_k15",
-         "start_s": 261.777,
+         "start_s": 261.657,
          "start": "4:21"
         },
         {
          "text": "Second slide pair: the wrong collocation",
          "block": "page-5_k17",
-         "start_s": 270.601,
+         "start_s": 270.481,
          "start": "4:30"
         },
         {
          "text": "Key word moment: gloss chronic disease with a letter example",
          "block": "page-5_k19",
-         "start_s": 285.02,
-         "start": "4:45"
+         "start_s": 286.366,
+         "start": "4:46"
         },
         {
          "text": "Second example of chronic disease, said to a patient",
          "block": "page-5_k20",
-         "start_s": 304.893,
-         "start": "5:04"
+         "start_s": 306.089,
+         "start": "5:06"
         },
         {
          "text": "Widen: other nouns that take chronic",
          "block": "page-5_k21",
-         "start_s": 311.707,
-         "start": "5:11"
+         "start_s": 312.743,
+         "start": "5:12"
         },
         {
          "text": "Close with the rule to remember",
          "block": "page-5_k22",
-         "start_s": 328.55,
-         "start": "5:28"
+         "start_s": 329.586,
+         "start": "5:29"
         }
        ]
       }
@@ -25774,8 +25774,8 @@
        "block": "page-5_k22",
        "kind": "rule",
        "text": "Learn the whole phrase, not the two words on their own. You cannot always swap the adjective for a word with a similar meaning.",
-       "start_s": 328.55,
-       "start": "5:28"
+       "start_s": 329.586,
+       "start": "5:29"
       }
      ],
      "terms": [
@@ -25783,35 +25783,35 @@
        "block": "page-5_k03",
        "label": "Form",
        "term": "Adjective and noun collocation",
-       "start_s": 142.456,
+       "start_s": 142.336,
        "start": "2:22"
       },
       {
        "block": "page-5_k13",
        "label": "Collocations",
        "term": "Severe",
-       "start_s": 232.202,
+       "start_s": 232.082,
        "start": "3:52"
       },
       {
        "block": "page-5_k21",
        "label": "Collocations",
        "term": "Chronic",
-       "start_s": 311.707,
-       "start": "5:11"
+       "start_s": 312.743,
+       "start": "5:12"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-5_k09",
        "text": "Big pain.",
-       "start_s": 190.506,
+       "start_s": 190.386,
        "start": "3:10"
       },
       {
        "block": "page-5_k17",
        "text": "Old disease.",
-       "start_s": 270.601,
+       "start_s": 270.481,
        "start": "4:30"
       }
      ],
@@ -25822,8 +25822,8 @@
        "lesson": "vocabulary-02-collocations",
        "section": null,
        "provenance": "source-derived",
-       "start_s": 128.04,
-       "start": "2:08"
+       "start_s": 127.92,
+       "start": "2:07"
       }
      ]
     },
@@ -25835,129 +25835,129 @@
       6
      ],
      "category": null,
-     "start_s": 408.224,
-     "start": "6:48",
-     "end_s": 763.93,
+     "start_s": 409.26,
+     "start": "6:49",
+     "end_s": 764.204,
      "topics": [
       {
        "board": "page-6_t1",
        "title": "How adjective and noun collocations are formed",
-       "start_s": 408.224,
-       "start": "6:48",
+       "start_s": 409.26,
+       "start": "6:49",
        "points": [
         {
          "text": "show the four pairs from the slide",
          "block": "page-6_k23",
-         "start_s": 408.224,
-         "start": "6:48"
+         "start_s": 409.26,
+         "start": "6:49"
         },
         {
          "text": "the collocation has two parts",
          "block": "page-6_k02",
-         "start_s": 413.72,
-         "start": "6:53"
+         "start_s": 414.756,
+         "start": "6:54"
         },
         {
          "text": "what the adjective does",
          "block": "page-6_k03",
-         "start_s": 437.964,
-         "start": "7:17"
+         "start_s": 439.0,
+         "start": "7:19"
         },
         {
          "text": "sample adjectives",
          "block": "page-6_k04",
-         "start_s": 453.094,
-         "start": "7:33"
+         "start_s": 454.13,
+         "start": "7:34"
         },
         {
          "text": "what the noun is",
          "block": "page-6_k05",
-         "start_s": 465.804,
-         "start": "7:45"
+         "start_s": 466.84,
+         "start": "7:46"
         },
         {
          "text": "why these two words go together",
          "block": "page-6_k06",
-         "start_s": 482.274,
-         "start": "8:02"
+         "start_s": 483.31,
+         "start": "8:03"
         },
         {
          "text": "meaning of severe pain",
          "block": "page-6_k07",
-         "start_s": 498.347,
-         "start": "8:18"
+         "start_s": 499.383,
+         "start": "8:19"
         },
         {
          "text": "severe pain said to a patient",
          "block": "page-6_k08",
-         "start_s": 515.508,
-         "start": "8:35"
+         "start_s": 516.544,
+         "start": "8:36"
         },
         {
          "text": "more nouns that go with severe",
          "block": "page-6_k09",
-         "start_s": 522.384,
-         "start": "8:42"
+         "start_s": 523.42,
+         "start": "8:43"
         },
         {
          "text": "meaning of chronic disease",
          "block": "page-6_k10",
-         "start_s": 538.81,
-         "start": "8:58"
+         "start_s": 539.846,
+         "start": "8:59"
         },
         {
          "text": "chronic disease said to a patient",
          "block": "page-6_k11",
-         "start_s": 556.722,
-         "start": "9:16"
+         "start_s": 557.758,
+         "start": "9:17"
         },
         {
          "text": "meaning of acute infection",
          "block": "page-6_k12",
-         "start_s": 565.883,
-         "start": "9:25"
+         "start_s": 566.919,
+         "start": "9:26"
         },
         {
          "text": "acute infection said to a patient",
          "block": "page-6_k13",
-         "start_s": 585.553,
-         "start": "9:45"
+         "start_s": 586.589,
+         "start": "9:46"
         },
         {
          "text": "acute and chronic compared",
          "block": "page-6_k14",
-         "start_s": 594.323,
-         "start": "9:54"
+         "start_s": 595.359,
+         "start": "9:55"
         },
         {
          "text": "where severe sits",
          "block": "page-6_k15",
-         "start_s": 613.524,
-         "start": "10:13"
+         "start_s": 614.56,
+         "start": "10:14"
         },
         {
          "text": "meaning of intensive care",
          "block": "page-6_k16",
-         "start_s": 625.952,
-         "start": "10:25"
+         "start_s": 626.988,
+         "start": "10:26"
         },
         {
          "text": "intensive care said to a family member",
          "block": "page-6_k17",
-         "start_s": 644.361,
-         "start": "10:44"
+         "start_s": 645.397,
+         "start": "10:45"
         },
         {
          "text": "the short form ICU",
          "block": "page-6_k18",
-         "start_s": 652.242,
-         "start": "10:52"
+         "start_s": 653.278,
+         "start": "10:53"
         },
         {
          "text": "intensive care is the fixed pair",
          "block": "page-6_k19",
-         "start_s": 668.076,
-         "start": "11:08"
+         "start_s": 669.112,
+         "start": "11:09"
         }
        ]
       }
@@ -25967,8 +25967,8 @@
        "block": "page-6_k19",
        "kind": "rule",
        "text": "We say intensive care. This pair of words is fixed, so keep the two words together.",
-       "start_s": 668.076,
-       "start": "11:08"
+       "start_s": 669.112,
+       "start": "11:09"
       }
      ],
      "terms": [
@@ -25976,36 +25976,36 @@
        "block": "page-6_k02",
        "label": "Form",
        "term": "Adjective and noun",
-       "start_s": 413.72,
-       "start": "6:53"
+       "start_s": 414.756,
+       "start": "6:54"
       },
       {
        "block": "page-6_k03",
        "label": "Adjective",
        "term": "Adjective",
-       "start_s": 437.964,
-       "start": "7:17"
+       "start_s": 439.0,
+       "start": "7:19"
       },
       {
        "block": "page-6_k05",
        "label": "Noun",
        "term": "Noun",
-       "start_s": 465.804,
-       "start": "7:45"
+       "start_s": 466.84,
+       "start": "7:46"
       },
       {
        "block": "page-6_k09",
        "label": "Collocations",
        "term": "Severe",
-       "start_s": 522.384,
-       "start": "8:42"
+       "start_s": 523.42,
+       "start": "8:43"
       },
       {
        "block": "page-6_k18",
        "label": "Short form",
        "term": "ICU",
-       "start_s": 652.242,
-       "start": "10:52"
+       "start_s": 653.278,
+       "start": "10:53"
       }
      ],
      "wrong_examples": [],
@@ -26020,182 +26020,182 @@
       8
      ],
      "category": null,
-     "start_s": 763.93,
-     "start": "12:43",
-     "end_s": 1374.883,
+     "start_s": 764.204,
+     "start": "12:44",
+     "end_s": 1374.411,
      "topics": [
       {
        "board": "page-8_t1",
        "title": "Types of pain: adjective and noun collocations",
-       "start_s": 763.93,
-       "start": "12:43",
+       "start_s": 764.204,
+       "start": "12:44",
        "points": [
         {
          "text": "introduce the matching task",
          "block": "page-8_k33",
-         "start_s": 763.93,
-         "start": "12:43"
+         "start_s": 764.204,
+         "start": "12:44"
         },
         {
          "text": "why these collocations matter",
          "block": "page-8_k03",
-         "start_s": 786.46,
+         "start_s": 786.734,
          "start": "13:06"
         },
         {
          "text": "gloss throbbing pain",
          "block": "page-8_k04",
-         "start_s": 804.511,
+         "start_s": 804.785,
          "start": "13:24"
         },
         {
          "text": "second example, talking to a patient",
          "block": "page-8_k05",
-         "start_s": 845.641,
+         "start_s": 845.915,
          "start": "14:05"
         },
         {
          "text": "typical cases from the source",
          "block": "page-8_k06",
-         "start_s": 851.552,
+         "start_s": 851.826,
          "start": "14:11"
         },
         {
          "text": "the words inside definition e",
          "block": "page-8_k07",
-         "start_s": 865.943,
-         "start": "14:25"
+         "start_s": 866.217,
+         "start": "14:26"
         },
         {
          "text": "gloss dull pain",
          "block": "page-8_k08",
-         "start_s": 883.643,
+         "start_s": 883.917,
          "start": "14:43"
         },
         {
          "text": "second example, talking to a patient",
          "block": "page-8_k09",
-         "start_s": 913.257,
+         "start_s": 913.531,
          "start": "15:13"
         },
         {
          "text": "near-synonym, aching pain",
          "block": "page-8_k10",
-         "start_s": 919.065,
+         "start_s": 919.339,
          "start": "15:19"
         },
         {
          "text": "one more pain word patients use",
          "block": "page-8_k11",
-         "start_s": 947.05,
+         "start_s": 947.324,
          "start": "15:47"
         },
         {
          "text": "gloss constant pain",
          "block": "page-8_k12",
-         "start_s": 958.107,
+         "start_s": 958.381,
          "start": "15:58"
         },
         {
          "text": "second example, talking to a patient",
          "block": "page-8_k13",
-         "start_s": 984.828,
-         "start": "16:24"
+         "start_s": 983.802,
+         "start": "16:23"
         },
         {
          "text": "gloss chronic pain",
          "block": "page-8_k14",
-         "start_s": 992.004,
-         "start": "16:32"
+         "start_s": 990.978,
+         "start": "16:30"
         },
         {
          "text": "second example, talking to a patient",
          "block": "page-8_k15",
-         "start_s": 1025.729,
-         "start": "17:05"
+         "start_s": 1024.636,
+         "start": "17:04"
         },
         {
          "text": "constant and chronic are not the same",
          "block": "page-8_k16",
-         "start_s": 1034.307,
-         "start": "17:14"
+         "start_s": 1032.591,
+         "start": "17:12"
         },
         {
          "text": "gloss excruciating pain",
          "block": "page-8_k17",
-         "start_s": 1064.145,
-         "start": "17:44"
+         "start_s": 1062.429,
+         "start": "17:42"
         },
         {
          "text": "second example, talking to a patient",
          "block": "page-8_k18",
-         "start_s": 1091.983,
-         "start": "18:11"
+         "start_s": 1090.267,
+         "start": "18:10"
         },
         {
          "text": "excruciating is stronger than severe",
          "block": "page-8_k19",
-         "start_s": 1099.015,
-         "start": "18:19"
+         "start_s": 1097.299,
+         "start": "18:17"
         },
         {
          "text": "strength words",
          "block": "page-8_k20",
-         "start_s": 1125.275,
-         "start": "18:45"
+         "start_s": 1123.559,
+         "start": "18:43"
         },
         {
          "text": "gloss nagging pain",
          "block": "page-8_k21",
-         "start_s": 1143.237,
-         "start": "19:03"
+         "start_s": 1141.521,
+         "start": "19:01"
         },
         {
          "text": "the verb behind the adjective",
          "block": "page-8_k22",
-         "start_s": 1170.681,
-         "start": "19:30"
+         "start_s": 1168.965,
+         "start": "19:28"
         },
         {
          "text": "second example, talking to a patient",
          "block": "page-8_k23",
-         "start_s": 1184.898,
-         "start": "19:44"
+         "start_s": 1183.182,
+         "start": "19:43"
         },
         {
          "text": "gloss the word slight",
          "block": "page-8_k24",
-         "start_s": 1194.882,
-         "start": "19:54"
+         "start_s": 1193.166,
+         "start": "19:53"
         },
         {
          "text": "countability of pain",
          "block": "page-8_k25",
-         "start_s": 1219.283,
-         "start": "20:19"
+         "start_s": 1217.567,
+         "start": "20:17"
         },
         {
          "text": "gloss sharp pain",
          "block": "page-8_k26",
-         "start_s": 1237.669,
+         "start_s": 1237.197,
          "start": "20:37"
         },
         {
          "text": "second example, talking to a patient",
          "block": "page-8_k27",
-         "start_s": 1265.437,
-         "start": "21:05"
+         "start_s": 1264.965,
+         "start": "21:04"
         },
         {
          "text": "two more sharp-type pain words",
          "block": "page-8_k28",
-         "start_s": 1273.318,
-         "start": "21:13"
+         "start_s": 1272.846,
+         "start": "21:12"
         },
         {
          "text": "closing note for the whole set",
          "block": "page-8_k29",
-         "start_s": 1292.525,
+         "start_s": 1292.053,
          "start": "21:32"
         }
        ]
@@ -26206,7 +26206,7 @@
        "block": "page-8_k29",
        "kind": "rule",
        "text": "You do not need the exact dictionary definition of each type of pain. Know roughly what each one means.",
-       "start_s": 1292.525,
+       "start_s": 1292.053,
        "start": "21:32"
       }
      ],
@@ -26215,43 +26215,43 @@
        "block": "page-8_k07",
        "label": "Words in the definition",
        "term": "a steady continuous beat",
-       "start_s": 865.943,
-       "start": "14:25"
+       "start_s": 866.217,
+       "start": "14:26"
       },
       {
        "block": "page-8_k11",
        "label": "More pain words",
        "term": "burning pain",
-       "start_s": 947.05,
+       "start_s": 947.324,
        "start": "15:47"
       },
       {
        "block": "page-8_k20",
        "label": "Strength words",
        "term": "mild, moderate, severe",
-       "start_s": 1125.275,
-       "start": "18:45"
+       "start_s": 1123.559,
+       "start": "18:43"
       },
       {
        "block": "page-8_k22",
        "label": "Word family",
        "term": "nag (verb), nagging (adjective)",
-       "start_s": 1170.681,
-       "start": "19:30"
+       "start_s": 1168.965,
+       "start": "19:28"
       },
       {
        "block": "page-8_k25",
        "label": "Grammar note",
        "term": "a slight but continuous pain",
-       "start_s": 1219.283,
-       "start": "20:19"
+       "start_s": 1217.567,
+       "start": "20:17"
       },
       {
        "block": "page-8_k28",
        "label": "More pain words",
        "term": "stabbing pain, shooting pain",
-       "start_s": 1273.318,
-       "start": "21:13"
+       "start_s": 1272.846,
+       "start": "21:12"
       }
      ],
      "wrong_examples": [],
@@ -26262,7 +26262,7 @@
        "lesson": "grammar-04-articles",
        "section": "page-6",
        "provenance": "authored",
-       "start_s": 1229.569,
+       "start_s": 1229.097,
        "start": "20:29"
       }
      ]
@@ -26275,357 +26275,357 @@
       9
      ],
      "category": null,
-     "start_s": 1374.883,
+     "start_s": 1374.411,
      "start": "22:54",
-     "end_s": 2324.375,
+     "end_s": 2327.572,
      "topics": [
       {
        "board": "page-9_t1",
        "title": "the task, throbbing pain and dull pain, constant pain and chronic pain, excruciating, nagging and sharp pain",
-       "start_s": 1374.883,
+       "start_s": 1374.411,
        "start": "22:54",
        "points": [
         {
          "text": "Set the practice task and name the first two pain types",
          "block": "page-9_k93",
-         "start_s": 1374.883,
+         "start_s": 1374.411,
          "start": "22:54"
         },
         {
          "text": "Name the last three pain types",
          "block": "page-9_k55",
-         "start_s": 1374.883,
+         "start_s": 1374.411,
          "start": "22:54"
         },
         {
          "text": "Gloss the key collocation 'throbbing pain'",
          "block": "page-9_k04",
-         "start_s": 1390.608,
+         "start_s": 1390.136,
          "start": "23:10"
         },
         {
          "text": "Speaking example and a written example with 'throbbing pain'",
          "block": "page-9_k05",
-         "start_s": 1412.707,
+         "start_s": 1412.235,
          "start": "23:32"
         },
         {
          "text": "The model patient sentence and the tense behind it",
          "block": "page-9_k07",
-         "start_s": 1428.905,
+         "start_s": 1428.433,
          "start": "23:48"
         },
         {
          "text": "Draw the time of the throbbing-pain sentence",
          "block": "page-9_k09",
-         "start_s": 1462.299,
-         "start": "24:22"
+         "start_s": 1461.827,
+         "start": "24:21"
         },
         {
          "text": "Add what makes the pain worse",
          "block": "page-9_k10",
-         "start_s": 1492.172,
-         "start": "24:52"
+         "start_s": 1491.7,
+         "start": "24:51"
         },
         {
          "text": "Gloss the key phrase 'get worse'",
          "block": "page-9_k12",
-         "start_s": 1502.354,
-         "start": "25:02"
+         "start_s": 1501.882,
+         "start": "25:01"
         },
         {
          "text": "Speaking example with 'get worse' and the grammar word for it",
          "block": "page-9_k13",
-         "start_s": 1516.065,
-         "start": "25:16"
+         "start_s": 1515.593,
+         "start": "25:15"
         },
         {
          "text": "Gloss the key collocation 'dull pain'",
          "block": "page-9_k15",
-         "start_s": 1527.211,
-         "start": "25:27"
+         "start_s": 1526.739,
+         "start": "25:26"
         },
         {
          "text": "Speaking example with 'dull pain'",
          "block": "page-9_k16",
-         "start_s": 1545.872,
+         "start_s": 1545.4,
          "start": "25:45"
         },
         {
          "text": "The model patient sentence for dull pain",
          "block": "page-9_k18",
-         "start_s": 1562.049,
-         "start": "26:02"
+         "start_s": 1561.577,
+         "start": "26:01"
         },
         {
          "text": "Why 'a dull pain' takes 'a'",
          "block": "page-9_k20",
-         "start_s": 1583.325,
-         "start": "26:23"
+         "start_s": 1582.784,
+         "start": "26:22"
         },
         {
          "text": "Choosing the word the patient uses",
          "block": "page-9_k21",
-         "start_s": 1590.764,
-         "start": "26:30"
+         "start_s": 1593.242,
+         "start": "26:33"
         },
         {
          "text": "Describe how bad the dull pain is",
          "block": "page-9_k22",
-         "start_s": 1602.954,
-         "start": "26:42"
+         "start_s": 1605.432,
+         "start": "26:45"
         },
         {
          "text": "Gloss the key word 'uncomfortable'",
          "block": "page-9_k24",
-         "start_s": 1620.095,
-         "start": "27:00"
+         "start_s": 1622.573,
+         "start": "27:02"
         },
         {
          "text": "How to say 'uncomfortable' and how a clinician uses it",
          "block": "page-9_k25",
-         "start_s": 1636.001,
-         "start": "27:16"
+         "start_s": 1638.479,
+         "start": "27:18"
         },
         {
          "text": "Word family around 'comfortable'",
          "block": "page-9_k27",
-         "start_s": 1654.183,
-         "start": "27:34"
+         "start_s": 1656.661,
+         "start": "27:36"
         },
         {
          "text": "Gloss the key phrase 'go away'",
          "block": "page-9_k28",
-         "start_s": 1664.806,
-         "start": "27:44"
+         "start_s": 1667.284,
+         "start": "27:47"
         },
         {
          "text": "Speaking example with 'go away'",
          "block": "page-9_k29",
-         "start_s": 1677.758,
-         "start": "27:57"
+         "start_s": 1680.236,
+         "start": "28:00"
         },
         {
          "text": "Name the second part of the practice",
          "block": "page-9_k31",
-         "start_s": 1686.91,
-         "start": "28:06"
+         "start_s": 1689.388,
+         "start": "28:09"
         },
         {
          "text": "Gloss the key collocation 'constant pain'",
          "block": "page-9_k33",
-         "start_s": 1697.369,
-         "start": "28:17"
+         "start_s": 1699.847,
+         "start": "28:19"
         },
         {
          "text": "Speaking example with 'constant'",
          "block": "page-9_k34",
-         "start_s": 1711.936,
-         "start": "28:31"
+         "start_s": 1714.414,
+         "start": "28:34"
         },
         {
          "text": "The model patient sentence for constant pain",
          "block": "page-9_k35",
-         "start_s": 1719.999,
-         "start": "28:39"
+         "start_s": 1722.477,
+         "start": "28:42"
         },
         {
          "text": "Gloss the key phrase 'deal with'",
          "block": "page-9_k37",
-         "start_s": 1740.491,
-         "start": "29:00"
+         "start_s": 1742.969,
+         "start": "29:02"
         },
         {
          "text": "The preposition 'with' is always needed",
          "block": "page-9_k38",
-         "start_s": 1752.061,
-         "start": "29:12"
+         "start_s": 1754.539,
+         "start": "29:14"
         },
         {
          "text": "The second use of 'deal with': handle a problem",
          "block": "page-9_k40",
-         "start_s": 1770.998,
-         "start": "29:30"
+         "start_s": 1773.476,
+         "start": "29:33"
         },
         {
          "text": "'Deal with' used about illness",
          "block": "page-9_k42",
-         "start_s": 1782.225,
-         "start": "29:42"
+         "start_s": 1784.703,
+         "start": "29:44"
         },
         {
          "text": "Gloss the key collocation 'chronic pain'",
          "block": "page-9_k44",
-         "start_s": 1794.005,
-         "start": "29:54"
+         "start_s": 1796.483,
+         "start": "29:56"
         },
         {
          "text": "Adjectives that pair with 'pain'",
          "block": "page-9_k45",
-         "start_s": 1814.127,
-         "start": "30:14"
+         "start_s": 1816.605,
+         "start": "30:16"
         },
         {
          "text": "Say that treatment has not helped",
          "block": "page-9_k46",
-         "start_s": 1880.917,
-         "start": "31:20"
+         "start_s": 1883.395,
+         "start": "31:23"
         },
         {
          "text": "Gloss the key verb 'ease'",
          "block": "page-9_k48",
-         "start_s": 1890.429,
-         "start": "31:30"
+         "start_s": 1892.907,
+         "start": "31:32"
         },
         {
          "text": "The form 'eased' after 'has', and a speaking example",
          "block": "page-9_k49",
-         "start_s": 1907.427,
-         "start": "31:47"
+         "start_s": 1909.905,
+         "start": "31:49"
         },
         {
          "text": "A longer sentence with 'ease' and its two uses",
          "block": "page-9_k51",
-         "start_s": 1923.906,
-         "start": "32:03"
+         "start_s": 1926.384,
+         "start": "32:06"
         },
         {
          "text": "Recap the useful expressions from these examples",
          "block": "page-9_k53",
-         "start_s": 1938.263,
-         "start": "32:18"
+         "start_s": 1940.741,
+         "start": "32:20"
         },
         {
          "text": "Gloss the key collocation 'excruciating pain'",
          "block": "page-9_k56",
-         "start_s": 1961.38,
-         "start": "32:41"
+         "start_s": 1963.858,
+         "start": "32:43"
         },
         {
          "text": "Speaking example with 'excruciating'",
          "block": "page-9_k57",
-         "start_s": 1980.842,
-         "start": "33:00"
+         "start_s": 1983.32,
+         "start": "33:03"
         },
         {
          "text": "The model patient sentence and the past form 'woke up'",
          "block": "page-9_k58",
-         "start_s": 1988.741,
-         "start": "33:08"
+         "start_s": 1991.219,
+         "start": "33:11"
         },
         {
          "text": "The preposition with a body part",
          "block": "page-9_k60",
-         "start_s": 2008.551,
-         "start": "33:28"
+         "start_s": 2011.029,
+         "start": "33:31"
         },
         {
          "text": "Warn about small prepositions",
          "block": "page-9_k62",
-         "start_s": 2014.348,
-         "start": "33:34"
+         "start_s": 2016.826,
+         "start": "33:36"
         },
         {
          "text": "Make the description stronger with 'so ... that'",
          "block": "page-9_k63",
-         "start_s": 2025.865,
-         "start": "33:45"
+         "start_s": 2028.343,
+         "start": "33:48"
         },
         {
          "text": "Teach 'even' as an intensifier",
          "block": "page-9_k65",
-         "start_s": 2040.682,
-         "start": "34:00"
+         "start_s": 2043.16,
+         "start": "34:03"
         },
         {
          "text": "Gloss the key collocation 'nagging pain'",
          "block": "page-9_k67",
-         "start_s": 2052.849,
-         "start": "34:12"
+         "start_s": 2055.327,
+         "start": "34:15"
         },
         {
          "text": "Speaking example with 'nagging pain'",
          "block": "page-9_k68",
-         "start_s": 2070.834,
-         "start": "34:30"
+         "start_s": 2073.312,
+         "start": "34:33"
         },
         {
          "text": "The model sentence for nagging pain, in the right tense",
          "block": "page-9_k69",
-         "start_s": 2079.248,
-         "start": "34:39"
+         "start_s": 2081.726,
+         "start": "34:41"
         },
         {
          "text": "Gloss the key verb 'bother'",
          "block": "page-9_k71",
-         "start_s": 2098.711,
-         "start": "34:58"
+         "start_s": 2101.189,
+         "start": "35:01"
         },
         {
          "text": "Speaking example with 'bother'",
          "block": "page-9_k72",
-         "start_s": 2111.189,
-         "start": "35:11"
+         "start_s": 2113.667,
+         "start": "35:13"
         },
         {
          "text": "Describe how strong the nagging pain is",
          "block": "page-9_k73",
-         "start_s": 2117.778,
-         "start": "35:17"
+         "start_s": 2120.382,
+         "start": "35:20"
         },
         {
          "text": "Gloss the key verb 'carry'",
          "block": "page-9_k75",
-         "start_s": 2134.465,
-         "start": "35:34"
+         "start_s": 2137.662,
+         "start": "35:37"
         },
         {
          "text": "Gloss the key collocation 'sharp pain'",
          "block": "page-9_k76",
-         "start_s": 2146.469,
-         "start": "35:46"
+         "start_s": 2149.666,
+         "start": "35:49"
         },
         {
          "text": "The model sentence for sharp pain and its onset",
          "block": "page-9_k77",
-         "start_s": 2163.477,
-         "start": "36:03"
+         "start_s": 2166.674,
+         "start": "36:06"
         },
         {
          "text": "Gloss the key word 'workout'",
          "block": "page-9_k79",
-         "start_s": 2186.072,
-         "start": "36:26"
+         "start_s": 2189.269,
+         "start": "36:29"
         },
         {
          "text": "Speaking example with 'sharp pain'",
          "block": "page-9_k80",
-         "start_s": 2198.445,
-         "start": "36:38"
+         "start_s": 2201.642,
+         "start": "36:41"
         },
         {
          "text": "Questions that use these collocations in a history",
          "block": "page-9_k81",
-         "start_s": 2272.206,
-         "start": "37:52"
+         "start_s": 2275.403,
+         "start": "37:55"
         },
         {
          "text": "One more history question, with the reason for using them",
          "block": "page-9_k83",
-         "start_s": 2280.962,
-         "start": "38:00"
+         "start_s": 2284.159,
+         "start": "38:04"
         },
         {
          "text": "Not every adjective goes with 'pain'",
          "block": "page-9_k85",
-         "start_s": 2293.603,
-         "start": "38:13"
+         "start_s": 2296.8,
+         "start": "38:16"
         },
         {
          "text": "The rule to take away",
          "block": "page-9_k87",
-         "start_s": 2298.765,
-         "start": "38:18"
+         "start_s": 2301.962,
+         "start": "38:21"
         }
        ]
       }
@@ -26635,15 +26635,15 @@
        "block": "page-9_k62",
        "kind": "warning",
        "text": "Students often get these small prepositions wrong. The pain is in a part of the body.",
-       "start_s": 2014.348,
-       "start": "33:34"
+       "start_s": 2016.826,
+       "start": "33:36"
       },
       {
        "block": "page-9_k87",
        "kind": "rule",
        "text": "A noun takes some adjectives and not others. Learn these pairs by heart so you can use them in Speaking and Writing.",
-       "start_s": 2298.765,
-       "start": "38:18"
+       "start_s": 2301.962,
+       "start": "38:21"
       }
      ],
      "terms": [
@@ -26651,99 +26651,99 @@
        "block": "page-9_k08",
        "label": "Form",
        "term": "present perfect continuous",
-       "start_s": 1443.516,
+       "start_s": 1443.044,
        "start": "24:03"
       },
       {
        "block": "page-9_k14",
        "label": "Pattern",
        "term": "get + adjective",
-       "start_s": 1520.311,
-       "start": "25:20"
+       "start_s": 1519.839,
+       "start": "25:19"
       },
       {
        "block": "page-9_k17",
        "label": "Collocations",
        "term": "pain",
-       "start_s": 1550.479,
+       "start_s": 1550.007,
        "start": "25:50"
       },
       {
        "block": "page-9_k20",
        "label": "Grammar word",
        "term": "a (indefinite article)",
-       "start_s": 1583.325,
-       "start": "26:23"
+       "start_s": 1582.784,
+       "start": "26:22"
       },
       {
        "block": "page-9_k25",
        "label": "Saying the word",
        "term": "uncomfortable",
-       "start_s": 1636.001,
-       "start": "27:16"
+       "start_s": 1638.479,
+       "start": "27:18"
       },
       {
        "block": "page-9_k27",
        "label": "Word family",
        "term": "comfort, comfortable, uncomfortable",
-       "start_s": 1654.183,
-       "start": "27:34"
+       "start_s": 1656.661,
+       "start": "27:36"
       },
       {
        "block": "page-9_k38",
        "label": "Form",
        "term": "deal with",
-       "start_s": 1752.061,
-       "start": "29:12"
+       "start_s": 1754.539,
+       "start": "29:14"
       },
       {
        "block": "page-9_k45",
        "label": "Collocations",
        "term": "pain",
-       "start_s": 1814.127,
-       "start": "30:14"
+       "start_s": 1816.605,
+       "start": "30:16"
       },
       {
        "block": "page-9_k49",
        "label": "Form",
        "term": "has not eased",
-       "start_s": 1907.427,
-       "start": "31:47"
+       "start_s": 1909.905,
+       "start": "31:49"
       },
       {
        "block": "page-9_k59",
        "label": "Form",
        "term": "woke up",
-       "start_s": 2000.598,
-       "start": "33:20"
+       "start_s": 2003.076,
+       "start": "33:23"
       },
       {
        "block": "page-9_k64",
        "label": "Form",
        "term": "so ... that",
-       "start_s": 2030.415,
-       "start": "33:50"
+       "start_s": 2032.893,
+       "start": "33:52"
       },
       {
        "block": "page-9_k65",
        "label": "New word",
        "term": "even",
-       "start_s": 2040.682,
-       "start": "34:00"
+       "start_s": 2043.16,
+       "start": "34:03"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-9_k60",
        "text": "On my stomach.",
-       "start_s": 2008.551,
-       "start": "33:28"
+       "start_s": 2011.029,
+       "start": "33:31"
       },
       {
        "block": "page-9_k86",
        "text": "Big pain.",
-       "start_s": 2296.988,
-       "start": "38:16"
+       "start_s": 2300.185,
+       "start": "38:20"
       }
      ],
      "practice": [],
@@ -26753,8 +26753,8 @@
        "lesson": "grammar-01-verb-tenses",
        "section": "page-10",
        "provenance": "authored",
-       "start_s": 1455.229,
-       "start": "24:15"
+       "start_s": 1454.757,
+       "start": "24:14"
       }
      ]
     },
@@ -26766,243 +26766,243 @@
       10
      ],
      "category": null,
-     "start_s": 2324.375,
-     "start": "38:44",
-     "end_s": 3036.743,
+     "start_s": 2327.572,
+     "start": "38:47",
+     "end_s": 3039.94,
      "topics": [
       {
        "board": "page-10_t1",
        "title": "mild reaction and temporary discomfort, normal response, unusual symptom and serious concern",
-       "start_s": 2324.375,
-       "start": "38:44",
+       "start_s": 2327.572,
+       "start": "38:47",
        "points": [
         {
          "text": "Put the two printed sentences on the board and frame what these phrases are for",
          "block": "page-10_k62",
-         "start_s": 2324.375,
-         "start": "38:44"
+         "start_s": 2327.572,
+         "start": "38:47"
         },
         {
          "text": "The printed sentence for this collocation",
          "block": "page-10_k26",
-         "start_s": 2324.375,
-         "start": "38:44"
+         "start_s": 2327.572,
+         "start": "38:47"
         },
         {
          "text": "The two printed sentences and where they are used",
          "block": "page-10_k41",
-         "start_s": 2324.375,
-         "start": "38:44"
+         "start_s": 2327.572,
+         "start": "38:47"
         },
         {
          "text": "Key word: mild reaction",
          "block": "page-10_k04",
-         "start_s": 2353.234,
-         "start": "39:13"
+         "start_s": 2356.431,
+         "start": "39:16"
         },
         {
          "text": "Speaking example with mild reaction",
          "block": "page-10_k05",
-         "start_s": 2370.972,
-         "start": "39:30"
+         "start_s": 2374.169,
+         "start": "39:34"
         },
         {
          "text": "The opposite of mild on the same scale",
          "block": "page-10_k07",
-         "start_s": 2384.612,
-         "start": "39:44"
+         "start_s": 2387.809,
+         "start": "39:47"
         },
         {
          "text": "The frame 'You may have ...' explained in English",
          "block": "page-10_k08",
-         "start_s": 2409.005,
-         "start": "40:09"
+         "start_s": 2412.202,
+         "start": "40:12"
         },
         {
          "text": "Key word: sore",
          "block": "page-10_k10",
-         "start_s": 2427.485,
-         "start": "40:27"
+         "start_s": 2430.682,
+         "start": "40:30"
         },
         {
          "text": "How a patient uses 'sore'",
          "block": "page-10_k11",
-         "start_s": 2448.232,
-         "start": "40:48"
+         "start_s": 2451.429,
+         "start": "40:51"
         },
         {
          "text": "A small amount of soreness",
          "block": "page-10_k13",
-         "start_s": 2459.555,
-         "start": "40:59"
+         "start_s": 2462.752,
+         "start": "41:02"
         },
         {
          "text": "Word class of sore and soreness",
          "block": "page-10_k15",
-         "start_s": 2468.936,
-         "start": "41:08"
+         "start_s": 2472.133,
+         "start": "41:12"
         },
         {
          "text": "Key word: discomfort",
          "block": "page-10_k16",
-         "start_s": 2483.856,
-         "start": "41:23"
+         "start_s": 2487.053,
+         "start": "41:27"
         },
         {
          "text": "Sore or discomfort: the difference in English",
          "block": "page-10_k17",
-         "start_s": 2500.86,
-         "start": "41:40"
+         "start_s": 2504.057,
+         "start": "41:44"
         },
         {
          "text": "Patient voice: not sore, but uncomfortable",
          "block": "page-10_k18",
-         "start_s": 2524.768,
-         "start": "42:04"
+         "start_s": 2527.965,
+         "start": "42:07"
         },
         {
          "text": "Second patient example with discomfort",
          "block": "page-10_k20",
-         "start_s": 2547.201,
-         "start": "42:27"
+         "start_s": 2550.398,
+         "start": "42:30"
         },
         {
          "text": "Key word: temporary",
          "block": "page-10_k21",
-         "start_s": 2558.441,
-         "start": "42:38"
+         "start_s": 2561.638,
+         "start": "42:41"
         },
         {
          "text": "The collocation temporary discomfort",
          "block": "page-10_k22",
-         "start_s": 2574.434,
-         "start": "42:54"
+         "start_s": 2577.631,
+         "start": "42:57"
         },
         {
          "text": "Speaking example with temporary discomfort",
          "block": "page-10_k24",
-         "start_s": 2593.989,
-         "start": "43:13"
+         "start_s": 2597.186,
+         "start": "43:17"
         },
         {
          "text": "Key word: normal response",
          "block": "page-10_k28",
-         "start_s": 2628.537,
-         "start": "43:48"
+         "start_s": 2631.734,
+         "start": "43:51"
         },
         {
          "text": "Word family of response",
          "block": "page-10_k29",
-         "start_s": 2645.258,
-         "start": "44:05"
+         "start_s": 2648.455,
+         "start": "44:08"
         },
         {
          "text": "What 'response' means with a medicine",
          "block": "page-10_k30",
-         "start_s": 2652.246,
-         "start": "44:12"
+         "start_s": 2655.443,
+         "start": "44:15"
         },
         {
          "text": "Key word: settle",
          "block": "page-10_k32",
-         "start_s": 2677.028,
-         "start": "44:37"
+         "start_s": 2680.225,
+         "start": "44:40"
         },
         {
          "text": "Settle with pain, said to the patient",
          "block": "page-10_k33",
-         "start_s": 2691.592,
-         "start": "44:51"
+         "start_s": 2694.789,
+         "start": "44:54"
         },
         {
          "text": "Settle with a time",
          "block": "page-10_k35",
-         "start_s": 2702.925,
-         "start": "45:02"
+         "start_s": 2706.122,
+         "start": "45:06"
         },
         {
          "text": "Settle without treatment",
          "block": "page-10_k37",
-         "start_s": 2717.847,
-         "start": "45:17"
+         "start_s": 2721.044,
+         "start": "45:21"
         },
         {
          "text": "Settle with down",
          "block": "page-10_k39",
-         "start_s": 2729.361,
-         "start": "45:29"
+         "start_s": 2732.558,
+         "start": "45:32"
         },
         {
          "text": "One more speaking example with settle",
          "block": "page-10_k40",
-         "start_s": 2738.485,
-         "start": "45:38"
+         "start_s": 2741.682,
+         "start": "45:41"
         },
         {
          "text": "Key word: unusual symptom",
          "block": "page-10_k44",
-         "start_s": 2770.609,
-         "start": "46:10"
+         "start_s": 2773.806,
+         "start": "46:13"
         },
         {
          "text": "Speaking example with unusual symptom",
          "block": "page-10_k45",
-         "start_s": 2788.166,
-         "start": "46:28"
+         "start_s": 2791.363,
+         "start": "46:31"
         },
         {
          "text": "Key word: notice",
          "block": "page-10_k47",
-         "start_s": 2807.673,
-         "start": "46:47"
+         "start_s": 2810.87,
+         "start": "46:50"
         },
         {
          "text": "Key word: serious concern",
          "block": "page-10_k48",
-         "start_s": 2824.412,
-         "start": "47:04"
+         "start_s": 2827.609,
+         "start": "47:07"
         },
         {
          "text": "The two words inside the collocation, and a speaking example",
          "block": "page-10_k49",
-         "start_s": 2839.173,
-         "start": "47:19"
+         "start_s": 2842.37,
+         "start": "47:22"
         },
         {
          "text": "Hard general word in the printed sentence",
          "block": "page-10_k51",
-         "start_s": 2860.229,
-         "start": "47:40"
+         "start_s": 2863.426,
+         "start": "47:43"
         },
         {
          "text": "Key word: worsen",
          "block": "page-10_k52",
-         "start_s": 2877.505,
-         "start": "47:57"
+         "start_s": 2880.702,
+         "start": "48:00"
         },
         {
          "text": "Where the ending goes: worsen or get worse",
          "block": "page-10_k53",
-         "start_s": 2897.759,
-         "start": "48:17"
+         "start_s": 2900.956,
+         "start": "48:20"
         },
         {
          "text": "Worsen in a clinical sentence",
          "block": "page-10_k54",
-         "start_s": 2915.742,
-         "start": "48:35"
+         "start_s": 2918.939,
+         "start": "48:38"
         },
         {
          "text": "Get worse in a clinical sentence",
          "block": "page-10_k56",
-         "start_s": 2928.0,
-         "start": "48:48"
+         "start_s": 2931.197,
+         "start": "48:51"
         },
         {
          "text": "One more speaking example with get worse",
          "block": "page-10_k58",
-         "start_s": 2940.843,
-         "start": "49:00"
+         "start_s": 2944.04,
+         "start": "49:04"
         }
        ]
       }
@@ -27013,43 +27013,43 @@
        "block": "page-10_k08",
        "label": "Phrase",
        "term": "You may have ...",
-       "start_s": 2409.005,
-       "start": "40:09"
+       "start_s": 2412.202,
+       "start": "40:12"
       },
       {
        "block": "page-10_k15",
        "label": "Word family",
        "term": "sore, soreness",
-       "start_s": 2468.936,
-       "start": "41:08"
+       "start_s": 2472.133,
+       "start": "41:12"
       },
       {
        "block": "page-10_k19",
        "label": "Word family",
        "term": "uncomfortable, discomfort",
-       "start_s": 2531.369,
-       "start": "42:11"
+       "start_s": 2534.566,
+       "start": "42:14"
       },
       {
        "block": "page-10_k22",
        "label": "Collocation",
        "term": "temporary discomfort",
-       "start_s": 2574.434,
-       "start": "42:54"
+       "start_s": 2577.631,
+       "start": "42:57"
       },
       {
        "block": "page-10_k29",
        "label": "Word family",
        "term": "respond, response",
-       "start_s": 2645.258,
-       "start": "44:05"
+       "start_s": 2648.455,
+       "start": "44:08"
       },
       {
        "block": "page-10_k39",
        "label": "Word form",
        "term": "settle down",
-       "start_s": 2729.361,
-       "start": "45:29"
+       "start_s": 2732.558,
+       "start": "45:32"
       }
      ],
      "wrong_examples": [],
@@ -27064,171 +27064,171 @@
       11
      ],
      "category": null,
-     "start_s": 3036.743,
-     "start": "50:36",
-     "end_s": 3626.471,
+     "start_s": 3039.94,
+     "start": "50:39",
+     "end_s": 3629.668,
      "topics": [
       {
        "board": "page-11_t1",
        "title": "Good chance and low risk, Full support and quick check, Clear explanation",
-       "start_s": 3036.743,
-       "start": "50:36",
+       "start_s": 3039.94,
+       "start": "50:39",
        "points": [
         {
          "text": "Show the first two model sentences and name what they are for",
          "block": "page-11_k03",
-         "start_s": 3036.393,
-         "start": "50:36"
+         "start_s": 3039.59,
+         "start": "50:39"
         },
         {
          "text": "Show the next two model sentences",
          "block": "page-11_k16",
-         "start_s": 3036.743,
-         "start": "50:36"
+         "start_s": 3039.94,
+         "start": "50:39"
         },
         {
          "text": "Show the last model sentence",
          "block": "page-11_k31",
-         "start_s": 3036.743,
-         "start": "50:36"
+         "start_s": 3039.94,
+         "start": "50:39"
         },
         {
          "text": "Gloss the key collocation 'a good chance'",
          "block": "page-11_k04",
-         "start_s": 3054.423,
-         "start": "50:54"
+         "start_s": 3057.62,
+         "start": "50:57"
         },
         {
          "text": "Second example of 'a good chance', said to a patient",
          "block": "page-11_k05",
-         "start_s": 3073.971,
-         "start": "51:13"
+         "start_s": 3077.168,
+         "start": "51:17"
         },
         {
          "text": "The optional 'that' after 'chance'",
          "block": "page-11_k07",
-         "start_s": 3097.145,
-         "start": "51:37"
+         "start_s": 3100.342,
+         "start": "51:40"
         },
         {
          "text": "Gloss the verb pattern 'respond well to the treatment'",
          "block": "page-11_k08",
-         "start_s": 3119.68,
-         "start": "51:59"
+         "start_s": 3122.877,
+         "start": "52:02"
         },
         {
          "text": "Second example of the verb pattern, said to a patient",
          "block": "page-11_k09",
-         "start_s": 3135.942,
-         "start": "52:15"
+         "start_s": 3139.139,
+         "start": "52:19"
         },
         {
          "text": "Gloss the key collocation 'a low risk'",
          "block": "page-11_k11",
-         "start_s": 3168.694,
-         "start": "52:48"
+         "start_s": 3171.891,
+         "start": "52:51"
         },
         {
          "text": "Second example of 'a low risk', said to a patient",
          "block": "page-11_k12",
-         "start_s": 3183.32,
-         "start": "53:03"
+         "start_s": 3186.517,
+         "start": "53:06"
         },
         {
          "text": "The two meanings of 'carry'",
          "block": "page-11_k14",
-         "start_s": 3208.652,
-         "start": "53:28"
+         "start_s": 3211.849,
+         "start": "53:31"
         },
         {
          "text": "Widen the vocabulary around 'risk'",
          "block": "page-11_k15",
-         "start_s": 3232.366,
-         "start": "53:52"
+         "start_s": 3235.563,
+         "start": "53:55"
         },
         {
          "text": "Gloss the key collocation 'full support'",
          "block": "page-11_k18",
-         "start_s": 3257.961,
-         "start": "54:17"
+         "start_s": 3261.158,
+         "start": "54:21"
         },
         {
          "text": "Second example of 'full support', said to a patient",
          "block": "page-11_k19",
-         "start_s": 3273.579,
-         "start": "54:33"
+         "start_s": 3276.776,
+         "start": "54:36"
         },
         {
          "text": "Gloss 'throughout'",
          "block": "page-11_k21",
-         "start_s": 3297.503,
-         "start": "54:57"
+         "start_s": 3300.7,
+         "start": "55:00"
         },
         {
          "text": "Contrast 'during' and 'throughout'",
          "block": "page-11_k22",
-         "start_s": 3309.355,
-         "start": "55:09"
+         "start_s": 3312.552,
+         "start": "55:12"
         },
         {
          "text": "The fever example with 'during'",
          "block": "page-11_k23",
-         "start_s": 3328.223,
-         "start": "55:28"
+         "start_s": 3331.42,
+         "start": "55:31"
         },
         {
          "text": "The fever example with 'throughout'",
          "block": "page-11_k25",
-         "start_s": 3352.757,
-         "start": "55:52"
+         "start_s": 3355.954,
+         "start": "55:55"
         },
         {
          "text": "Gloss the key collocation 'a quick check'",
          "block": "page-11_k27",
-         "start_s": 3385.438,
-         "start": "56:25"
+         "start_s": 3388.635,
+         "start": "56:28"
         },
         {
          "text": "Second example of 'a quick check', said to a patient, and the verb that goes with it",
          "block": "page-11_k28",
-         "start_s": 3400.017,
-         "start": "56:40"
+         "start_s": 3403.214,
+         "start": "56:43"
         },
         {
          "text": "Gloss 'properly' from the purpose clause",
          "block": "page-11_k30",
-         "start_s": 3422.486,
-         "start": "57:02"
+         "start_s": 3425.683,
+         "start": "57:05"
         },
         {
          "text": "Gloss the key collocation 'a clear explanation'",
          "block": "page-11_k32",
-         "start_s": 3451.972,
-         "start": "57:31"
+         "start_s": 3455.169,
+         "start": "57:35"
         },
         {
          "text": "Second example of the phrase, said to a patient",
          "block": "page-11_k33",
-         "start_s": 3468.033,
-         "start": "57:48"
+         "start_s": 3471.23,
+         "start": "57:51"
         },
         {
          "text": "The phrase takes different endings",
          "block": "page-11_k35",
-         "start_s": 3492.744,
-         "start": "58:12"
+         "start_s": 3495.941,
+         "start": "58:15"
         },
         {
          "text": "When to use the whole phrase",
          "block": "page-11_k37",
-         "start_s": 3515.994,
-         "start": "58:35"
+         "start_s": 3519.191,
+         "start": "58:39"
         },
         {
          "text": "Word family and collocations of 'explanation'",
          "block": "page-11_k38",
-         "start_s": 3528.924,
-         "start": "58:48"
+         "start_s": 3532.121,
+         "start": "58:52"
         }
        ]
       }
@@ -27239,36 +27239,36 @@
        "block": "page-11_k07",
        "label": "Form",
        "term": "There is a good chance (that) …",
-       "start_s": 3097.145,
-       "start": "51:37"
+       "start_s": 3100.342,
+       "start": "51:40"
       },
       {
        "block": "page-11_k15",
        "label": "Collocations",
        "term": "risk",
-       "start_s": 3232.366,
-       "start": "53:52"
+       "start_s": 3235.563,
+       "start": "53:55"
       },
       {
        "block": "page-11_k29",
        "label": "Form",
        "term": "do a quick check",
-       "start_s": 3408.798,
-       "start": "56:48"
+       "start_s": 3411.995,
+       "start": "56:51"
       },
       {
        "block": "page-11_k38",
        "label": "Word family",
        "term": "explain, explanation",
-       "start_s": 3528.924,
-       "start": "58:48"
+       "start_s": 3532.121,
+       "start": "58:52"
       },
       {
        "block": "page-11_k39",
        "label": "Collocations",
        "term": "explanation",
-       "start_s": 3543.584,
-       "start": "59:03"
+       "start_s": 3546.781,
+       "start": "59:06"
       }
      ],
      "wrong_examples": [],
@@ -27283,165 +27283,165 @@
       12
      ],
      "category": null,
-     "start_s": 3626.471,
-     "start": "60:26",
-     "end_s": 4167.485,
+     "start_s": 3629.668,
+     "start": "60:29",
+     "end_s": 4170.682,
      "topics": [
       {
        "board": "page-12_t1",
        "title": "regular check-up and simple exercise, balanced diet and daily routine",
-       "start_s": 3626.471,
-       "start": "60:26",
+       "start_s": 3629.668,
+       "start": "60:29",
        "points": [
         {
          "text": "Put the slide's first two model sentences on the board and frame the task",
          "block": "page-12_k43",
-         "start_s": 3626.471,
-         "start": "60:26"
+         "start_s": 3629.668,
+         "start": "60:29"
         },
         {
          "text": "Put the slide's other two model sentences on the board",
          "block": "page-12_k21",
-         "start_s": 3626.471,
-         "start": "60:26"
+         "start_s": 3629.668,
+         "start": "60:29"
         },
         {
          "text": "Define the word collocation the first time it is used here",
          "block": "page-12_k04",
-         "start_s": 3658.467,
-         "start": "60:58"
+         "start_s": 3661.664,
+         "start": "61:01"
         },
         {
          "text": "Key word moment: gloss regular check-up",
          "block": "page-12_k05",
-         "start_s": 3673.398,
-         "start": "61:13"
+         "start_s": 3676.595,
+         "start": "61:16"
         },
         {
          "text": "Second example of regular check-up, said to a patient",
          "block": "page-12_k06",
-         "start_s": 3697.118,
-         "start": "61:37"
+         "start_s": 3700.315,
+         "start": "61:40"
         },
         {
          "text": "Widen the vocabulary around check-up",
          "block": "page-12_k08",
-         "start_s": 3710.7,
-         "start": "61:50"
+         "start_s": 3713.897,
+         "start": "61:53"
         },
         {
          "text": "Key word moment: gloss the phrasal verb come in",
          "block": "page-12_k09",
-         "start_s": 3726.022,
-         "start": "62:06"
+         "start_s": 3729.219,
+         "start": "62:09"
         },
         {
          "text": "Show the two uses of come in side by side",
          "block": "page-12_k10",
-         "start_s": 3738.969,
-         "start": "62:18"
+         "start_s": 3742.166,
+         "start": "62:22"
         },
         {
          "text": "Come in used to ask a patient to attend again",
          "block": "page-12_k11",
-         "start_s": 3767.92,
-         "start": "62:47"
+         "start_s": 3771.117,
+         "start": "62:51"
         },
         {
          "text": "Came in used to report a patient's attendance to a colleague",
          "block": "page-12_k13",
-         "start_s": 3779.658,
-         "start": "62:59"
+         "start_s": 3782.855,
+         "start": "63:02"
         },
         {
          "text": "Key word moment: gloss simple exercise",
          "block": "page-12_k15",
-         "start_s": 3797.411,
-         "start": "63:17"
+         "start_s": 3800.608,
+         "start": "63:20"
         },
         {
          "text": "Second example of simple exercise, said to a patient",
          "block": "page-12_k16",
-         "start_s": 3814.319,
-         "start": "63:34"
+         "start_s": 3817.516,
+         "start": "63:37"
         },
         {
          "text": "Gloss the verb strengthen from the model sentence",
          "block": "page-12_k18",
-         "start_s": 3829.068,
-         "start": "63:49"
+         "start_s": 3832.265,
+         "start": "63:52"
         },
         {
          "text": "Word families for strengthen and daily",
          "block": "page-12_k19",
-         "start_s": 3849.06,
-         "start": "64:09"
+         "start_s": 3852.257,
+         "start": "64:12"
         },
         {
          "text": "Key word moment: gloss balanced diet",
          "block": "page-12_k24",
-         "start_s": 3898.151,
-         "start": "64:58"
+         "start_s": 3901.348,
+         "start": "65:01"
         },
         {
          "text": "Second example of balanced diet, said to a patient",
          "block": "page-12_k25",
-         "start_s": 3918.696,
-         "start": "65:18"
+         "start_s": 3921.893,
+         "start": "65:21"
         },
         {
          "text": "Contrast a good diet with a balanced diet for precision",
          "block": "page-12_k27",
-         "start_s": 3931.086,
-         "start": "65:31"
+         "start_s": 3934.283,
+         "start": "65:34"
         },
         {
          "text": "Key word moment: gloss maintain",
          "block": "page-12_k28",
-         "start_s": 3954.128,
-         "start": "65:54"
+         "start_s": 3957.325,
+         "start": "65:57"
         },
         {
          "text": "The form after try to, with one more example",
          "block": "page-12_k29",
-         "start_s": 3970.862,
-         "start": "66:10"
+         "start_s": 3974.059,
+         "start": "66:14"
         },
         {
          "text": "Key word moment: gloss daily routine",
          "block": "page-12_k31",
-         "start_s": 4003.683,
-         "start": "66:43"
+         "start_s": 4006.88,
+         "start": "66:46"
         },
         {
          "text": "Second example of daily routine, said to a patient",
          "block": "page-12_k32",
-         "start_s": 4020.247,
-         "start": "67:00"
+         "start_s": 4023.444,
+         "start": "67:03"
         },
         {
          "text": "The pattern it helps to, with one more example",
          "block": "page-12_k34",
-         "start_s": 4035.482,
-         "start": "67:15"
+         "start_s": 4038.679,
+         "start": "67:18"
         },
         {
          "text": "Key word moment: gloss include",
          "block": "page-12_k36",
-         "start_s": 4060.829,
-         "start": "67:40"
+         "start_s": 4064.026,
+         "start": "67:44"
         },
         {
          "text": "Show what is included and where",
          "block": "page-12_k37",
-         "start_s": 4073.36,
-         "start": "67:53"
+         "start_s": 4076.557,
+         "start": "67:56"
         },
         {
          "text": "Closing study habit for collocations",
          "block": "page-12_k39",
-         "start_s": 4090.387,
-         "start": "68:10"
+         "start_s": 4093.584,
+         "start": "68:13"
         }
        ]
       }
@@ -27451,8 +27451,8 @@
        "block": "page-12_k39",
        "kind": "rule",
        "text": "Most sentences you read contain one or two collocations. Write them down and review them often. After a few reviews you will start to use them in your own sentences.",
-       "start_s": 4090.387,
-       "start": "68:10"
+       "start_s": 4093.584,
+       "start": "68:13"
       }
      ],
      "terms": [
@@ -27460,43 +27460,43 @@
        "block": "page-12_k04",
        "label": "Key word",
        "term": "collocation",
-       "start_s": 3658.467,
-       "start": "60:58"
+       "start_s": 3661.664,
+       "start": "61:01"
       },
       {
        "block": "page-12_k08",
        "label": "Collocations",
        "term": "check-up",
-       "start_s": 3710.7,
-       "start": "61:50"
+       "start_s": 3713.897,
+       "start": "61:53"
       },
       {
        "block": "page-12_k19",
        "label": "Word family",
        "term": "strong, strengthen, strength",
-       "start_s": 3849.06,
-       "start": "64:09"
+       "start_s": 3852.257,
+       "start": "64:12"
       },
       {
        "block": "page-12_k20",
        "label": "Word family",
        "term": "day, daily",
-       "start_s": 3863.24,
-       "start": "64:23"
+       "start_s": 3866.437,
+       "start": "64:26"
       },
       {
        "block": "page-12_k29",
        "label": "Form",
        "term": "try to + simple verb",
-       "start_s": 3970.862,
-       "start": "66:10"
+       "start_s": 3974.059,
+       "start": "66:14"
       },
       {
        "block": "page-12_k34",
        "label": "Pattern",
        "term": "It helps to ...",
-       "start_s": 4035.482,
-       "start": "67:15"
+       "start_s": 4038.679,
+       "start": "67:18"
       }
      ],
      "wrong_examples": [],
@@ -27511,189 +27511,189 @@
       13
      ],
      "category": null,
-     "start_s": 4167.485,
-     "start": "69:27",
-     "end_s": 4576.965,
+     "start_s": 4170.682,
+     "start": "69:30",
+     "end_s": 4578.131,
      "topics": [
       {
        "board": "page-13_t1",
        "title": "Letter extract: adjective and noun collocations",
-       "start_s": 4167.485,
-       "start": "69:27",
+       "start_s": 4170.682,
+       "start": "69:30",
        "points": [
         {
          "text": "show the letter and set the task",
          "block": "page-13_k37",
-         "start_s": 4167.485,
-         "start": "69:27"
+         "start_s": 4170.682,
+         "start": "69:30"
         },
         {
          "text": "name the key term",
          "block": "page-13_k03",
-         "start_s": 4188.463,
-         "start": "69:48"
+         "start_s": 4191.66,
+         "start": "69:51"
         },
         {
          "text": "list the pairs in the first paragraph",
          "block": "page-13_k04",
-         "start_s": 4204.775,
-         "start": "70:04"
+         "start_s": 4207.972,
+         "start": "70:07"
         },
         {
          "text": "gloss persistent cough",
          "block": "page-13_k05",
-         "start_s": 4221.615,
-         "start": "70:21"
+         "start_s": 4224.812,
+         "start": "70:24"
         },
         {
          "text": "persistent cough with the patient",
          "block": "page-13_k06",
-         "start_s": 4237.255,
-         "start": "70:37"
+         "start_s": 4240.342,
+         "start": "70:40"
         },
         {
          "text": "gloss throbbing headaches",
          "block": "page-13_k08",
-         "start_s": 4249.315,
-         "start": "70:49"
+         "start_s": 4250.802,
+         "start": "70:50"
         },
         {
          "text": "gloss heavy cold",
          "block": "page-13_k09",
-         "start_s": 4264.675,
-         "start": "71:04"
+         "start_s": 4266.162,
+         "start": "71:06"
         },
         {
          "text": "the pair is fixed",
          "block": "page-13_k10",
-         "start_s": 4277.585,
-         "start": "71:17"
+         "start_s": 4279.101,
+         "start": "71:19"
         },
         {
          "text": "gloss muscular aches",
          "block": "page-13_k12",
-         "start_s": 4288.715,
-         "start": "71:28"
+         "start_s": 4290.652,
+         "start": "71:30"
         },
         {
          "text": "gloss itchy rash",
          "block": "page-13_k13",
-         "start_s": 4304.165,
-         "start": "71:44"
+         "start_s": 4306.102,
+         "start": "71:46"
         },
         {
          "text": "itchy rash with the patient",
          "block": "page-13_k14",
-         "start_s": 4321.677,
-         "start": "72:01"
+         "start_s": 4323.614,
+         "start": "72:03"
         },
         {
          "text": "gloss serious disease",
          "block": "page-13_k15",
-         "start_s": 4329.34,
-         "start": "72:09"
+         "start_s": 4331.277,
+         "start": "72:11"
         },
         {
          "text": "list the pairs in the second paragraph",
          "block": "page-13_k16",
-         "start_s": 4345.614,
-         "start": "72:25"
+         "start_s": 4347.551,
+         "start": "72:27"
         },
         {
          "text": "gloss high temperature",
          "block": "page-13_k17",
-         "start_s": 4358.315,
-         "start": "72:38"
+         "start_s": 4360.252,
+         "start": "72:40"
         },
         {
          "text": "high temperature with the patient",
          "block": "page-13_k18",
-         "start_s": 4373.675,
-         "start": "72:53"
+         "start_s": 4375.612,
+         "start": "72:55"
         },
         {
          "text": "high temperature is a fixed pair",
          "block": "page-13_k20",
-         "start_s": 4382.755,
-         "start": "73:02"
+         "start_s": 4384.702,
+         "start": "73:04"
         },
         {
          "text": "gloss lethargic",
          "block": "page-13_k22",
-         "start_s": 4392.475,
-         "start": "73:12"
+         "start_s": 4394.902,
+         "start": "73:14"
         },
         {
          "text": "gloss heavy smoker",
          "block": "page-13_k23",
-         "start_s": 4407.295,
-         "start": "73:27"
+         "start_s": 4409.722,
+         "start": "73:29"
         },
         {
          "text": "heavy smoker with the patient",
          "block": "page-13_k24",
-         "start_s": 4423.265,
-         "start": "73:43"
+         "start_s": 4425.291,
+         "start": "73:45"
         },
         {
          "text": "heavy smoker is a fixed pair",
          "block": "page-13_k25",
-         "start_s": 4429.533,
-         "start": "73:49"
+         "start_s": 4430.253,
+         "start": "73:50"
         },
         {
          "text": "more nouns that go with heavy",
          "block": "page-13_k27",
-         "start_s": 4437.075,
-         "start": "73:57"
+         "start_s": 4438.011,
+         "start": "73:58"
         },
         {
          "text": "gloss with regard to",
          "block": "page-13_k28",
-         "start_s": 4450.737,
-         "start": "74:10"
+         "start_s": 4451.673,
+         "start": "74:11"
         },
         {
          "text": "list the pairs in the third paragraph",
          "block": "page-13_k29",
-         "start_s": 4466.941,
-         "start": "74:26"
+         "start_s": 4467.877,
+         "start": "74:27"
         },
         {
          "text": "gloss current condition",
          "block": "page-13_k30",
-         "start_s": 4479.747,
-         "start": "74:39"
+         "start_s": 4480.683,
+         "start": "74:40"
         },
         {
          "text": "gloss balanced diet",
          "block": "page-13_k31",
-         "start_s": 4494.606,
-         "start": "74:54"
+         "start_s": 4495.542,
+         "start": "74:55"
         },
         {
          "text": "balanced diet with the patient",
          "block": "page-13_k32",
-         "start_s": 4508.415,
-         "start": "75:08"
+         "start_s": 4509.351,
+         "start": "75:09"
         },
         {
          "text": "word family for balanced",
          "block": "page-13_k34",
-         "start_s": 4518.575,
-         "start": "75:18"
+         "start_s": 4519.511,
+         "start": "75:19"
         },
         {
          "text": "adjective and noun, or noun and noun",
          "block": "page-13_k35",
-         "start_s": 4532.235,
-         "start": "75:32"
+         "start_s": 4533.161,
+         "start": "75:33"
         },
         {
          "text": "the rule to remember",
          "block": "page-13_k36",
-         "start_s": 4561.155,
-         "start": "76:01"
+         "start_s": 4562.321,
+         "start": "76:02"
         }
        ]
       }
@@ -27703,8 +27703,8 @@
        "block": "page-13_k36",
        "kind": "rule",
        "text": "Learn the two words of a pair together. A word with a similar meaning often sounds wrong: a heavy cold, not a big cold.",
-       "start_s": 4561.155,
-       "start": "76:01"
+       "start_s": 4562.321,
+       "start": "76:02"
       }
      ],
      "terms": [
@@ -27712,42 +27712,42 @@
        "block": "page-13_k03",
        "label": "Key word",
        "term": "Collocation",
-       "start_s": 4188.463,
-       "start": "69:48"
+       "start_s": 4191.66,
+       "start": "69:51"
       },
       {
        "block": "page-13_k27",
        "label": "Collocations",
        "term": "Heavy",
-       "start_s": 4437.075,
-       "start": "73:57"
+       "start_s": 4438.011,
+       "start": "73:58"
       },
       {
        "block": "page-13_k34",
        "label": "Word family",
        "term": "Balance",
-       "start_s": 4518.575,
-       "start": "75:18"
+       "start_s": 4519.511,
+       "start": "75:19"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-13_k11",
        "text": "A big cold",
-       "start_s": 4282.035,
-       "start": "71:22"
+       "start_s": 4283.972,
+       "start": "71:23"
       },
       {
        "block": "page-13_k21",
        "text": "A big temperature",
-       "start_s": 4387.785,
-       "start": "73:07"
+       "start_s": 4390.212,
+       "start": "73:10"
       },
       {
        "block": "page-13_k26",
        "text": "A big smoker",
-       "start_s": 4434.837,
-       "start": "73:54"
+       "start_s": 4435.773,
+       "start": "73:55"
       }
      ],
      "practice": [],
@@ -27761,297 +27761,297 @@
       14
      ],
      "category": null,
-     "start_s": 4576.965,
-     "start": "76:16",
-     "end_s": 5154.885,
+     "start_s": 4578.131,
+     "start": "76:18",
+     "end_s": 5153.2,
      "topics": [
       {
        "board": "page-14_t1",
        "title": "instruction and sentences 1 to 4",
-       "start_s": 4576.965,
-       "start": "76:16",
+       "start_s": 4578.131,
+       "start": "76:18",
        "points": [
         {
          "text": "Show the task and the first four gapped sentences",
          "block": "page-14_k74",
-         "start_s": 4576.965,
-         "start": "76:16"
+         "start_s": 4578.131,
+         "start": "76:18"
         }
        ]
       },
       {
        "board": "page-14_t2",
        "title": "sentences 5 to 8",
-       "start_s": 4622.835,
-       "start": "77:02",
+       "start_s": 4624.001,
+       "start": "77:04",
        "points": [
         {
          "text": "Show the last four gapped sentences",
          "block": "page-14_k75",
-         "start_s": 4622.835,
-         "start": "77:02"
+         "start_s": 4624.001,
+         "start": "77:04"
         }
        ]
       },
       {
        "board": "page-14_t3",
        "title": "Item 1: chronic pain",
-       "start_s": 4663.915,
-       "start": "77:43",
+       "start_s": 4665.081,
+       "start": "77:45",
        "points": [
         {
          "text": "Show the sentence under discussion and give the answer",
          "block": "page-14_k76",
-         "start_s": 4663.915,
-         "start": "77:43"
+         "start_s": 4665.081,
+         "start": "77:45"
         },
         {
          "text": "Gloss the key word chronic",
          "block": "page-14_k14",
-         "start_s": 4681.907,
-         "start": "78:01"
+         "start_s": 4683.073,
+         "start": "78:03"
         },
         {
          "text": "Second example, said to a patient",
          "block": "page-14_k15",
-         "start_s": 4697.292,
-         "start": "78:17"
+         "start_s": 4698.458,
+         "start": "78:18"
         },
         {
          "text": "The second accepted answer",
          "block": "page-14_k16",
-         "start_s": 4707.73,
-         "start": "78:27"
+         "start_s": 4708.896,
+         "start": "78:28"
         },
         {
          "text": "Widen the vocabulary: collocations with chronic",
          "block": "page-14_k18",
-         "start_s": 4718.242,
-         "start": "78:38"
+         "start_s": 4719.408,
+         "start": "78:39"
         }
        ]
       },
       {
        "board": "page-14_t4",
        "title": "Item 2: persistent cough",
-       "start_s": 4726.372,
-       "start": "78:46",
+       "start_s": 4727.538,
+       "start": "78:47",
        "points": [
         {
          "text": "Show the sentence under discussion and give the answer",
          "block": "page-14_k77",
-         "start_s": 4726.372,
-         "start": "78:46"
+         "start_s": 4727.538,
+         "start": "78:47"
         },
         {
          "text": "Gloss the key word persistent",
          "block": "page-14_k22",
-         "start_s": 4744.468,
-         "start": "79:04"
+         "start_s": 4745.634,
+         "start": "79:05"
         },
         {
          "text": "Second example, said to a patient",
          "block": "page-14_k23",
-         "start_s": 4759.645,
-         "start": "79:19"
+         "start_s": 4761.004,
+         "start": "79:21"
         },
         {
          "text": "Widen the vocabulary: word family",
          "block": "page-14_k24",
-         "start_s": 4767.971,
-         "start": "79:27"
+         "start_s": 4768.296,
+         "start": "79:28"
         }
        ]
       },
       {
        "board": "page-14_t5",
        "title": "Item 3: exercise regime",
-       "start_s": 4780.463,
+       "start_s": 4780.788,
        "start": "79:40",
        "points": [
         {
          "text": "Show the sentence under discussion and give the answer",
          "block": "page-14_k78",
-         "start_s": 4780.463,
+         "start_s": 4780.788,
          "start": "79:40"
         },
         {
          "text": "Gloss the hard general word 'implement' from the printed sentence",
          "block": "page-14_k28",
-         "start_s": 4795.638,
+         "start_s": 4795.963,
          "start": "79:55"
         },
         {
          "text": "Gloss the key collocation exercise regime",
          "block": "page-14_k29",
-         "start_s": 4809.323,
+         "start_s": 4809.648,
          "start": "80:09"
         },
         {
          "text": "Point out that this pair is noun plus noun",
          "block": "page-14_k30",
-         "start_s": 4827.599,
+         "start_s": 4827.924,
          "start": "80:27"
         },
         {
          "text": "Second example, said to a patient",
          "block": "page-14_k31",
-         "start_s": 4846.477,
-         "start": "80:46"
+         "start_s": 4847.332,
+         "start": "80:47"
         }
        ]
       },
       {
        "board": "page-14_t6",
        "title": "Item 4: sharp pain",
-       "start_s": 4854.225,
-       "start": "80:54",
+       "start_s": 4855.08,
+       "start": "80:55",
        "points": [
         {
          "text": "Show the sentence under discussion and give the answer",
          "block": "page-14_k79",
-         "start_s": 4854.225,
-         "start": "80:54"
+         "start_s": 4855.08,
+         "start": "80:55"
         },
         {
          "text": "Gloss the key word sharp",
          "block": "page-14_k35",
-         "start_s": 4872.627,
-         "start": "81:12"
+         "start_s": 4873.482,
+         "start": "81:13"
         },
         {
          "text": "Second example, said to a patient",
          "block": "page-14_k36",
-         "start_s": 4888.518,
-         "start": "81:28"
+         "start_s": 4889.373,
+         "start": "81:29"
         },
         {
          "text": "Widen the vocabulary: near-synonym contrast",
          "block": "page-14_k37",
-         "start_s": 4894.596,
-         "start": "81:34"
+         "start_s": 4895.451,
+         "start": "81:35"
         }
        ]
       },
       {
        "board": "page-14_t7",
        "title": "Item 5: a heavy cold",
-       "start_s": 4910.676,
-       "start": "81:50",
+       "start_s": 4911.531,
+       "start": "81:51",
        "points": [
         {
          "text": "Show the sentence under discussion and give the answer",
          "block": "page-14_k80",
-         "start_s": 4910.676,
-         "start": "81:50"
+         "start_s": 4911.531,
+         "start": "81:51"
         },
         {
          "text": "Gloss the key collocation heavy cold",
          "block": "page-14_k41",
-         "start_s": 4922.882,
-         "start": "82:02"
+         "start_s": 4923.737,
+         "start": "82:03"
         },
         {
          "text": "Reject the wrong adjective with this noun",
          "block": "page-14_k42",
-         "start_s": 4940.695,
-         "start": "82:20"
+         "start_s": 4941.55,
+         "start": "82:21"
         },
         {
          "text": "Second example, said to a patient",
          "block": "page-14_k44",
-         "start_s": 4947.993,
-         "start": "82:27"
+         "start_s": 4948.848,
+         "start": "82:28"
         }
        ]
       },
       {
        "board": "page-14_t8",
        "title": "Item 6: a heavy smoker",
-       "start_s": 4954.536,
-       "start": "82:34",
+       "start_s": 4955.391,
+       "start": "82:35",
        "points": [
         {
          "text": "Show the sentence under discussion and give the answer",
          "block": "page-14_k81",
-         "start_s": 4954.536,
-         "start": "82:34"
+         "start_s": 4955.391,
+         "start": "82:35"
         },
         {
          "text": "Widen the vocabulary: other nouns after heavy",
          "block": "page-14_k48",
-         "start_s": 4965.016,
+         "start_s": 4965.871,
          "start": "82:45"
         },
         {
          "text": "Second example, said to a patient",
          "block": "page-14_k49",
-         "start_s": 4973.243,
-         "start": "82:53"
+         "start_s": 4974.103,
+         "start": "82:54"
         }
        ]
       },
       {
        "board": "page-14_t9",
        "title": "Item 7: constant pain",
-       "start_s": 4981.036,
-       "start": "83:01",
+       "start_s": 4979.351,
+       "start": "82:59",
        "points": [
         {
          "text": "Show the sentence under discussion and give the answer",
          "block": "page-14_k82",
-         "start_s": 4981.036,
-         "start": "83:01"
+         "start_s": 4979.351,
+         "start": "82:59"
         },
         {
          "text": "Gloss the key word constant",
          "block": "page-14_k53",
-         "start_s": 4997.925,
-         "start": "83:17"
+         "start_s": 4996.24,
+         "start": "83:16"
         },
         {
          "text": "Second example, said to a patient",
          "block": "page-14_k54",
-         "start_s": 5013.819,
-         "start": "83:33"
+         "start_s": 5012.134,
+         "start": "83:32"
         },
         {
          "text": "Widen the vocabulary: chronic and constant side by side",
          "block": "page-14_k55",
-         "start_s": 5020.8,
-         "start": "83:40"
+         "start_s": 5019.115,
+         "start": "83:39"
         }
        ]
       },
       {
        "board": "page-14_t10",
        "title": "Item 8: an itchy rash",
-       "start_s": 5039.43,
-       "start": "83:59",
+       "start_s": 5037.745,
+       "start": "83:57",
        "points": [
         {
          "text": "Show the sentence under discussion and give the answer",
          "block": "page-14_k83",
-         "start_s": 5039.43,
-         "start": "83:59"
+         "start_s": 5037.745,
+         "start": "83:57"
         },
         {
          "text": "Gloss the key word itchy",
          "block": "page-14_k59",
-         "start_s": 5052.776,
-         "start": "84:12"
+         "start_s": 5051.091,
+         "start": "84:11"
         },
         {
          "text": "The article before this adjective",
          "block": "page-14_k60",
-         "start_s": 5067.842,
-         "start": "84:27"
+         "start_s": 5066.157,
+         "start": "84:26"
         },
         {
          "text": "Second example, said to a patient",
          "block": "page-14_k61",
-         "start_s": 5074.985,
-         "start": "84:34"
+         "start_s": 5073.3,
+         "start": "84:33"
         }
        ]
       }
@@ -28062,140 +28062,140 @@
        "block": "page-14_k18",
        "label": "Collocations",
        "term": "Chronic",
-       "start_s": 4718.242,
-       "start": "78:38"
+       "start_s": 4719.408,
+       "start": "78:39"
       },
       {
        "block": "page-14_k24",
        "label": "Word family",
        "term": "Persistent",
-       "start_s": 4767.971,
-       "start": "79:27"
+       "start_s": 4768.296,
+       "start": "79:28"
       },
       {
        "block": "page-14_k30",
        "label": "Form",
        "term": "Exercise regime",
-       "start_s": 4827.599,
+       "start_s": 4827.924,
        "start": "80:27"
       },
       {
        "block": "page-14_k48",
        "label": "Collocations",
        "term": "Heavy",
-       "start_s": 4965.016,
+       "start_s": 4965.871,
        "start": "82:45"
       },
       {
        "block": "page-14_k60",
        "label": "Form",
        "term": "An itchy rash",
-       "start_s": 5067.842,
-       "start": "84:27"
+       "start_s": 5066.157,
+       "start": "84:26"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-14_k02",
        "text": "I have ______ pain in my lower back. It's been there for years.",
-       "start_s": 4576.965,
-       "start": "76:16"
+       "start_s": 4578.131,
+       "start": "76:18"
       },
       {
        "block": "page-14_k03",
        "text": "The patient presented complaining of a ______ cough which she had had for 5 weeks.",
-       "start_s": 4576.965,
-       "start": "76:16"
+       "start_s": 4578.131,
+       "start": "76:18"
       },
       {
        "block": "page-14_k04",
        "text": "You'll need to implement an ______ regime in order to get back to full fitness.",
-       "start_s": 4576.965,
-       "start": "76:16"
+       "start_s": 4578.131,
+       "start": "76:18"
       },
       {
        "block": "page-14_k05",
        "text": "I felt a sudden ______ pain in my right side. It came on quickly and was very severe.",
-       "start_s": 4576.965,
-       "start": "76:16"
+       "start_s": 4578.131,
+       "start": "76:18"
       },
       {
        "block": "page-14_k07",
        "text": "He thought he had the flu, but in fact it was just a very ______ cold.",
-       "start_s": 4622.835,
-       "start": "77:02"
+       "start_s": 4624.001,
+       "start": "77:04"
       },
       {
        "block": "page-14_k08",
        "text": "She is a ______ smoker and smokes about 20 cigarettes a day.",
-       "start_s": 4622.835,
-       "start": "77:02"
+       "start_s": 4624.001,
+       "start": "77:04"
       },
       {
        "block": "page-14_k09",
        "text": "Mr Gates has a ______ pain in his shoulder which never goes away.",
-       "start_s": 4622.835,
-       "start": "77:02"
+       "start_s": 4624.001,
+       "start": "77:04"
       },
       {
        "block": "page-14_k10",
        "text": "He has an ______ rash which has spread to his forearms and hands.",
-       "start_s": 4622.835,
-       "start": "77:02"
+       "start_s": 4624.001,
+       "start": "77:04"
       },
       {
        "block": "page-14_k11",
        "text": "I have ______ pain in my lower back. It's been there for years.",
-       "start_s": 4663.915,
-       "start": "77:43"
+       "start_s": 4665.081,
+       "start": "77:45"
       },
       {
        "block": "page-14_k19",
        "text": "The patient presented complaining of a ______ cough which she had had for 5 weeks.",
-       "start_s": 4726.372,
-       "start": "78:46"
+       "start_s": 4727.538,
+       "start": "78:47"
       },
       {
        "block": "page-14_k25",
        "text": "You'll need to implement an ______ regime in order to get back to full fitness.",
-       "start_s": 4780.463,
+       "start_s": 4780.788,
        "start": "79:40"
       },
       {
        "block": "page-14_k32",
        "text": "I felt a sudden ______ pain in my right side. It came on quickly and was very severe.",
-       "start_s": 4854.225,
-       "start": "80:54"
+       "start_s": 4855.08,
+       "start": "80:55"
       },
       {
        "block": "page-14_k38",
        "text": "He thought he had the flu, but in fact it was just a very ______ cold.",
-       "start_s": 4910.676,
-       "start": "81:50"
+       "start_s": 4911.531,
+       "start": "81:51"
       },
       {
        "block": "page-14_k42",
        "text": "A big cold.",
-       "start_s": 4940.695,
-       "start": "82:20"
+       "start_s": 4941.55,
+       "start": "82:21"
       },
       {
        "block": "page-14_k45",
        "text": "She is a ______ smoker and smokes about 20 cigarettes a day.",
-       "start_s": 4954.536,
-       "start": "82:34"
+       "start_s": 4955.391,
+       "start": "82:35"
       },
       {
        "block": "page-14_k50",
        "text": "Mr Gates has a ______ pain in his shoulder which never goes away.",
-       "start_s": 4981.036,
-       "start": "83:01"
+       "start_s": 4979.351,
+       "start": "82:59"
       },
       {
        "block": "page-14_k56",
        "text": "He has an ______ rash which has spread to his forearms and hands.",
-       "start_s": 5039.43,
-       "start": "83:59"
+       "start_s": 5037.745,
+       "start": "83:57"
       }
      ],
      "practice": [],
@@ -28211,7 +28211,7 @@
      "lexicon": null,
      "section": "page-5",
      "block": "page-5_k11",
-     "start_s": 207.553,
+     "start_s": 207.433,
      "start": "3:27"
     },
     {
@@ -28220,8 +28220,8 @@
      "lexicon": null,
      "section": "page-5",
      "block": "page-5_k19",
-     "start_s": 285.02,
-     "start": "4:45"
+     "start_s": 286.366,
+     "start": "4:46"
     },
     {
      "word": "Acute infection",
@@ -28229,8 +28229,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k12",
-     "start_s": 565.883,
-     "start": "9:25"
+     "start_s": 566.919,
+     "start": "9:26"
     },
     {
      "word": "Intensive care",
@@ -28238,8 +28238,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k16",
-     "start_s": 625.952,
-     "start": "10:25"
+     "start_s": 626.988,
+     "start": "10:26"
     },
     {
      "word": "throbbing pain",
@@ -28247,7 +28247,7 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k04",
-     "start_s": 804.511,
+     "start_s": 804.785,
      "start": "13:24"
     },
     {
@@ -28256,7 +28256,7 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k08",
-     "start_s": 883.643,
+     "start_s": 883.917,
      "start": "14:43"
     },
     {
@@ -28265,7 +28265,7 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k12",
-     "start_s": 958.107,
+     "start_s": 958.381,
      "start": "15:58"
     },
     {
@@ -28274,8 +28274,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k14",
-     "start_s": 992.004,
-     "start": "16:32"
+     "start_s": 990.978,
+     "start": "16:30"
     },
     {
      "word": "excruciating pain",
@@ -28283,8 +28283,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k17",
-     "start_s": 1064.145,
-     "start": "17:44"
+     "start_s": 1062.429,
+     "start": "17:42"
     },
     {
      "word": "nagging pain",
@@ -28292,8 +28292,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k21",
-     "start_s": 1143.237,
-     "start": "19:03"
+     "start_s": 1141.521,
+     "start": "19:01"
     },
     {
      "word": "slight",
@@ -28301,8 +28301,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k24",
-     "start_s": 1194.882,
-     "start": "19:54"
+     "start_s": 1193.166,
+     "start": "19:53"
     },
     {
      "word": "sharp pain",
@@ -28310,7 +28310,7 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k26",
-     "start_s": 1237.669,
+     "start_s": 1237.197,
      "start": "20:37"
     },
     {
@@ -28319,8 +28319,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k12",
-     "start_s": 1502.354,
-     "start": "25:02"
+     "start_s": 1501.882,
+     "start": "25:01"
     },
     {
      "word": "uncomfortable",
@@ -28328,8 +28328,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k24",
-     "start_s": 1620.095,
-     "start": "27:00"
+     "start_s": 1622.573,
+     "start": "27:02"
     },
     {
      "word": "go away",
@@ -28337,8 +28337,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k28",
-     "start_s": 1664.806,
-     "start": "27:44"
+     "start_s": 1667.284,
+     "start": "27:47"
     },
     {
      "word": "deal with",
@@ -28346,8 +28346,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k37",
-     "start_s": 1740.491,
-     "start": "29:00"
+     "start_s": 1742.969,
+     "start": "29:02"
     },
     {
      "word": "ease",
@@ -28355,8 +28355,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k48",
-     "start_s": 1890.429,
-     "start": "31:30"
+     "start_s": 1892.907,
+     "start": "31:32"
     },
     {
      "word": "even",
@@ -28364,8 +28364,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k65",
-     "start_s": 2040.682,
-     "start": "34:00"
+     "start_s": 2043.16,
+     "start": "34:03"
     },
     {
      "word": "bother",
@@ -28373,8 +28373,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k71",
-     "start_s": 2098.711,
-     "start": "34:58"
+     "start_s": 2101.189,
+     "start": "35:01"
     },
     {
      "word": "carry",
@@ -28382,8 +28382,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k75",
-     "start_s": 2134.465,
-     "start": "35:34"
+     "start_s": 2137.662,
+     "start": "35:37"
     },
     {
      "word": "workout",
@@ -28391,8 +28391,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k79",
-     "start_s": 2186.072,
-     "start": "36:26"
+     "start_s": 2189.269,
+     "start": "36:29"
     },
     {
      "word": "mild reaction",
@@ -28400,8 +28400,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k04",
-     "start_s": 2353.234,
-     "start": "39:13"
+     "start_s": 2356.431,
+     "start": "39:16"
     },
     {
      "word": "You may have ...",
@@ -28409,8 +28409,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k08",
-     "start_s": 2409.005,
-     "start": "40:09"
+     "start_s": 2412.202,
+     "start": "40:12"
     },
     {
      "word": "sore",
@@ -28418,8 +28418,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k10",
-     "start_s": 2427.485,
-     "start": "40:27"
+     "start_s": 2430.682,
+     "start": "40:30"
     },
     {
      "word": "discomfort",
@@ -28427,8 +28427,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k16",
-     "start_s": 2483.856,
-     "start": "41:23"
+     "start_s": 2487.053,
+     "start": "41:27"
     },
     {
      "word": "temporary",
@@ -28436,8 +28436,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k21",
-     "start_s": 2558.441,
-     "start": "42:38"
+     "start_s": 2561.638,
+     "start": "42:41"
     },
     {
      "word": "normal response",
@@ -28445,8 +28445,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k28",
-     "start_s": 2628.537,
-     "start": "43:48"
+     "start_s": 2631.734,
+     "start": "43:51"
     },
     {
      "word": "settle",
@@ -28454,8 +28454,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k32",
-     "start_s": 2677.028,
-     "start": "44:37"
+     "start_s": 2680.225,
+     "start": "44:40"
     },
     {
      "word": "unusual symptom",
@@ -28463,8 +28463,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k44",
-     "start_s": 2770.609,
-     "start": "46:10"
+     "start_s": 2773.806,
+     "start": "46:13"
     },
     {
      "word": "notice",
@@ -28472,8 +28472,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k47",
-     "start_s": 2807.673,
-     "start": "46:47"
+     "start_s": 2810.87,
+     "start": "46:50"
     },
     {
      "word": "serious concern",
@@ -28481,8 +28481,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k48",
-     "start_s": 2824.412,
-     "start": "47:04"
+     "start_s": 2827.609,
+     "start": "47:07"
     },
     {
      "word": "hesitate",
@@ -28490,8 +28490,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k51",
-     "start_s": 2860.229,
-     "start": "47:40"
+     "start_s": 2863.426,
+     "start": "47:43"
     },
     {
      "word": "worsen",
@@ -28499,8 +28499,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k52",
-     "start_s": 2877.505,
-     "start": "47:57"
+     "start_s": 2880.702,
+     "start": "48:00"
     },
     {
      "word": "a good chance",
@@ -28508,8 +28508,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k04",
-     "start_s": 3054.423,
-     "start": "50:54"
+     "start_s": 3057.62,
+     "start": "50:57"
     },
     {
      "word": "respond well to the treatment",
@@ -28517,8 +28517,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k08",
-     "start_s": 3119.68,
-     "start": "51:59"
+     "start_s": 3122.877,
+     "start": "52:02"
     },
     {
      "word": "a low risk",
@@ -28526,8 +28526,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k11",
-     "start_s": 3168.694,
-     "start": "52:48"
+     "start_s": 3171.891,
+     "start": "52:51"
     },
     {
      "word": "full support",
@@ -28535,8 +28535,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k18",
-     "start_s": 3257.961,
-     "start": "54:17"
+     "start_s": 3261.158,
+     "start": "54:21"
     },
     {
      "word": "throughout",
@@ -28544,8 +28544,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k21",
-     "start_s": 3297.503,
-     "start": "54:57"
+     "start_s": 3300.7,
+     "start": "55:00"
     },
     {
      "word": "a quick check",
@@ -28553,8 +28553,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k27",
-     "start_s": 3385.438,
-     "start": "56:25"
+     "start_s": 3388.635,
+     "start": "56:28"
     },
     {
      "word": "properly",
@@ -28562,8 +28562,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k30",
-     "start_s": 3422.486,
-     "start": "57:02"
+     "start_s": 3425.683,
+     "start": "57:05"
     },
     {
      "word": "a clear explanation",
@@ -28571,8 +28571,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k32",
-     "start_s": 3451.972,
-     "start": "57:31"
+     "start_s": 3455.169,
+     "start": "57:35"
     },
     {
      "word": "a regular check-up",
@@ -28580,8 +28580,8 @@
      "lexicon": null,
      "section": "page-12",
      "block": "page-12_k05",
-     "start_s": 3673.398,
-     "start": "61:13"
+     "start_s": 3676.595,
+     "start": "61:16"
     },
     {
      "word": "come in",
@@ -28589,8 +28589,8 @@
      "lexicon": null,
      "section": "page-12",
      "block": "page-12_k09",
-     "start_s": 3726.022,
-     "start": "62:06"
+     "start_s": 3729.219,
+     "start": "62:09"
     },
     {
      "word": "a simple exercise",
@@ -28598,8 +28598,8 @@
      "lexicon": null,
      "section": "page-12",
      "block": "page-12_k15",
-     "start_s": 3797.411,
-     "start": "63:17"
+     "start_s": 3800.608,
+     "start": "63:20"
     },
     {
      "word": "strengthen",
@@ -28607,8 +28607,8 @@
      "lexicon": null,
      "section": "page-12",
      "block": "page-12_k18",
-     "start_s": 3829.068,
-     "start": "63:49"
+     "start_s": 3832.265,
+     "start": "63:52"
     },
     {
      "word": "a balanced diet",
@@ -28616,8 +28616,8 @@
      "lexicon": null,
      "section": "page-12",
      "block": "page-12_k24",
-     "start_s": 3898.151,
-     "start": "64:58"
+     "start_s": 3901.348,
+     "start": "65:01"
     },
     {
      "word": "maintain",
@@ -28625,8 +28625,8 @@
      "lexicon": null,
      "section": "page-12",
      "block": "page-12_k28",
-     "start_s": 3954.128,
-     "start": "65:54"
+     "start_s": 3957.325,
+     "start": "65:57"
     },
     {
      "word": "daily routine",
@@ -28634,8 +28634,8 @@
      "lexicon": null,
      "section": "page-12",
      "block": "page-12_k31",
-     "start_s": 4003.683,
-     "start": "66:43"
+     "start_s": 4006.88,
+     "start": "66:46"
     },
     {
      "word": "include",
@@ -28643,8 +28643,8 @@
      "lexicon": null,
      "section": "page-12",
      "block": "page-12_k36",
-     "start_s": 4060.829,
-     "start": "67:40"
+     "start_s": 4064.026,
+     "start": "67:44"
     },
     {
      "word": "Persistent cough",
@@ -28652,8 +28652,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k05",
-     "start_s": 4221.615,
-     "start": "70:21"
+     "start_s": 4224.812,
+     "start": "70:24"
     },
     {
      "word": "Throbbing headaches",
@@ -28661,8 +28661,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k08",
-     "start_s": 4249.315,
-     "start": "70:49"
+     "start_s": 4250.802,
+     "start": "70:50"
     },
     {
      "word": "Heavy cold",
@@ -28670,8 +28670,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k09",
-     "start_s": 4264.675,
-     "start": "71:04"
+     "start_s": 4266.162,
+     "start": "71:06"
     },
     {
      "word": "Muscular aches",
@@ -28679,8 +28679,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k12",
-     "start_s": 4288.715,
-     "start": "71:28"
+     "start_s": 4290.652,
+     "start": "71:30"
     },
     {
      "word": "Itchy rash",
@@ -28688,8 +28688,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k13",
-     "start_s": 4304.165,
-     "start": "71:44"
+     "start_s": 4306.102,
+     "start": "71:46"
     },
     {
      "word": "Serious disease",
@@ -28697,8 +28697,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k15",
-     "start_s": 4329.34,
-     "start": "72:09"
+     "start_s": 4331.277,
+     "start": "72:11"
     },
     {
      "word": "High temperature",
@@ -28706,8 +28706,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k17",
-     "start_s": 4358.315,
-     "start": "72:38"
+     "start_s": 4360.252,
+     "start": "72:40"
     },
     {
      "word": "Lethargic",
@@ -28715,8 +28715,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k22",
-     "start_s": 4392.475,
-     "start": "73:12"
+     "start_s": 4394.902,
+     "start": "73:14"
     },
     {
      "word": "Heavy smoker",
@@ -28724,8 +28724,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k23",
-     "start_s": 4407.295,
-     "start": "73:27"
+     "start_s": 4409.722,
+     "start": "73:29"
     },
     {
      "word": "With regard to",
@@ -28733,8 +28733,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k28",
-     "start_s": 4450.737,
-     "start": "74:10"
+     "start_s": 4451.673,
+     "start": "74:11"
     },
     {
      "word": "Current condition",
@@ -28742,8 +28742,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k30",
-     "start_s": 4479.747,
-     "start": "74:39"
+     "start_s": 4480.683,
+     "start": "74:40"
     },
     {
      "word": "Balanced diet",
@@ -28751,8 +28751,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k31",
-     "start_s": 4494.606,
-     "start": "74:54"
+     "start_s": 4495.542,
+     "start": "74:55"
     },
     {
      "word": "Chronic",
@@ -28760,8 +28760,8 @@
      "lexicon": null,
      "section": "page-14",
      "block": "page-14_k14",
-     "start_s": 4681.907,
-     "start": "78:01"
+     "start_s": 4683.073,
+     "start": "78:03"
     },
     {
      "word": "Persistent",
@@ -28769,8 +28769,8 @@
      "lexicon": null,
      "section": "page-14",
      "block": "page-14_k22",
-     "start_s": 4744.468,
-     "start": "79:04"
+     "start_s": 4745.634,
+     "start": "79:05"
     },
     {
      "word": "Implement",
@@ -28778,7 +28778,7 @@
      "lexicon": null,
      "section": "page-14",
      "block": "page-14_k28",
-     "start_s": 4795.638,
+     "start_s": 4795.963,
      "start": "79:55"
     },
     {
@@ -28787,7 +28787,7 @@
      "lexicon": null,
      "section": "page-14",
      "block": "page-14_k29",
-     "start_s": 4809.323,
+     "start_s": 4809.648,
      "start": "80:09"
     },
     {
@@ -28796,8 +28796,8 @@
      "lexicon": null,
      "section": "page-14",
      "block": "page-14_k35",
-     "start_s": 4872.627,
-     "start": "81:12"
+     "start_s": 4873.482,
+     "start": "81:13"
     },
     {
      "word": "Constant",
@@ -28805,8 +28805,8 @@
      "lexicon": null,
      "section": "page-14",
      "block": "page-14_k53",
-     "start_s": 4997.925,
-     "start": "83:17"
+     "start_s": 4996.24,
+     "start": "83:16"
     },
     {
      "word": "Itchy",
@@ -28814,8 +28814,8 @@
      "lexicon": null,
      "section": "page-14",
      "block": "page-14_k59",
-     "start_s": 5052.776,
-     "start": "84:12"
+     "start_s": 5051.091,
+     "start": "84:11"
     }
    ],
    "withheld": {
@@ -28853,7 +28853,7 @@
       "section": "page-6",
       "from_section": "page-8",
       "utterance": "page-8_t1.s24.u3",
-      "start_s": 1229.569,
+      "start_s": 1229.097,
       "start": "20:29"
      },
      {
@@ -28861,8 +28861,8 @@
       "section": "page-10",
       "from_section": "page-9",
       "utterance": "page-9_t1.s2.u6",
-      "start_s": 1455.229,
-      "start": "24:15"
+      "start_s": 1454.757,
+      "start": "24:14"
      }
     ],
     "referred_to_by": [],
@@ -53561,8 +53561,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-9",
-     "start_s": 1583.325,
-     "start": "26:23",
+     "start_s": 1582.784,
+     "start": "26:22",
      "source": "term"
     }
    ]
@@ -53783,8 +53783,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-5",
-     "start_s": 120.05,
-     "start": "2:00",
+     "start_s": 119.93,
+     "start": "1:59",
      "source": "curated"
     }
    ]
@@ -53796,8 +53796,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-6",
-     "start_s": 413.72,
-     "start": "6:53",
+     "start_s": 414.756,
+     "start": "6:54",
      "source": "term"
     }
    ]
@@ -53809,7 +53809,7 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-5",
-     "start_s": 142.456,
+     "start_s": 142.336,
      "start": "2:22",
      "source": "term"
     }
@@ -53874,8 +53874,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-14",
-     "start_s": 5067.842,
-     "start": "84:27",
+     "start_s": 5066.157,
+     "start": "84:26",
      "source": "term"
     }
    ]
@@ -54278,8 +54278,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-12",
-     "start_s": 3658.467,
-     "start": "60:58",
+     "start_s": 3661.664,
+     "start": "61:01",
      "source": "term"
     }
    ]
@@ -54291,8 +54291,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-13",
-     "start_s": 4167.485,
-     "start": "69:27",
+     "start_s": 4170.682,
+     "start": "69:30",
      "source": "section"
     }
    ]
@@ -54369,8 +54369,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-10",
-     "start_s": 2324.375,
-     "start": "38:44",
+     "start_s": 2327.572,
+     "start": "38:47",
      "source": "section"
     }
    ]
@@ -54781,8 +54781,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-9",
-     "start_s": 1752.061,
-     "start": "29:12",
+     "start_s": 1754.539,
+     "start": "29:14",
      "source": "term"
     }
    ]
@@ -54892,8 +54892,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-11",
-     "start_s": 3408.798,
-     "start": "56:48",
+     "start_s": 3411.995,
+     "start": "56:51",
      "source": "term"
     }
    ]
@@ -54990,7 +54990,7 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-14",
-     "start_s": 4827.599,
+     "start_s": 4827.924,
      "start": "80:27",
      "source": "term"
     }
@@ -55322,8 +55322,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-11",
-     "start_s": 3036.743,
-     "start": "50:36",
+     "start_s": 3039.94,
+     "start": "50:39",
      "source": "section"
     }
    ]
@@ -55394,8 +55394,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-9",
-     "start_s": 1907.427,
-     "start": "31:47",
+     "start_s": 1909.905,
+     "start": "31:49",
      "source": "term"
     }
    ]
@@ -55459,8 +55459,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-6",
-     "start_s": 408.224,
-     "start": "6:48",
+     "start_s": 409.26,
+     "start": "6:49",
      "source": "section"
     }
    ]
@@ -55641,8 +55641,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-6",
-     "start_s": 652.242,
-     "start": "10:52",
+     "start_s": 653.278,
+     "start": "10:53",
      "source": "term"
     }
    ]
@@ -55726,8 +55726,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-12",
-     "start_s": 3626.471,
-     "start": "60:26",
+     "start_s": 3629.668,
+     "start": "60:29",
      "source": "section"
     }
    ]
@@ -56675,7 +56675,7 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-9",
-     "start_s": 1443.516,
+     "start_s": 1443.044,
      "start": "24:03",
      "source": "term"
     }
@@ -57291,8 +57291,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-9",
-     "start_s": 2030.415,
-     "start": "33:50",
+     "start_s": 2032.893,
+     "start": "33:52",
      "source": "term"
     }
    ]
@@ -58080,8 +58080,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-12",
-     "start_s": 3970.862,
-     "start": "66:10",
+     "start_s": 3974.059,
+     "start": "66:14",
      "source": "term"
     }
    ]
@@ -58093,8 +58093,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-8",
-     "start_s": 763.93,
-     "start": "12:43",
+     "start_s": 764.204,
+     "start": "12:44",
      "source": "section"
     }
    ]
@@ -58353,8 +58353,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-5",
-     "start_s": 120.05,
-     "start": "2:00",
+     "start_s": 119.93,
+     "start": "1:59",
      "source": "section"
     }
    ]
@@ -58503,8 +58503,8 @@
     {
      "lesson": "vocabulary-03-collocations-2",
      "section": "page-9",
-     "start_s": 2000.598,
-     "start": "33:20",
+     "start_s": 2003.076,
+     "start": "33:23",
      "source": "term"
     }
    ]
