@@ -2,7 +2,7 @@
 
 What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.1; decision: `docs/adr/038-public-course-index.md`.
 
-25 lessons, 239 sections, 552 board topics, 4178 teaching points, 257 rules and 64 warnings, 484 terms, 160 OET facts, 44 methods, 516 vocabulary items (189 from the word bank), 62 practice questions and note forms, 99 links to other lessons, 363 topics in the topic index.
+25 lessons, 239 sections, 552 board topics, 4178 teaching points, 257 rules and 64 warnings, 484 terms, 160 OET facts, 44 methods, 516 vocabulary items (189 from the word bank), 62 practice questions and note forms, 99 links to other lessons, 364 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -23,7 +23,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 | 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 59:28 | 7 | 2026-10-31 12:13 (Siavash) |
 | 4 | Grammar for OET: Articles | `grammar-04-articles` | 67:59 | 9 | 2026-10-31 13:00 (Siavash) |
 | 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 66:38 | 8 | 2026-10-31 12:46 (Siavash) |
-| 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 57:44 | 6 | not yet |
+| 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 59:04 | 6 | not yet |
 | 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 83:00 | 18 | 2026-10-27 09:37 (siavash) |
 | 8 | Grammar for OET: Paraphrasing | `grammar-08-paraphrasing` | 54:16 | 7 | 2026-10-27 09:37 (siavash) |
 
@@ -748,9 +748,9 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Denominalisation" at 55:50, about section `page-16`
 - referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Compound or complex?" at 26:09, about section `page-15`
 - referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Gap fill" at 34:37, about section `page-9`
-- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Reduced relative clauses" at 21:03, about section `page-10`
-- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 40:54, about section `page-16`
-- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 45:43
+- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Reduced relative clauses" at 21:15, about section `page-10`
+- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 41:50, about section `page-16`
+- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 46:50
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 11:55, about section `page-15`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 5:08, about section `page-15`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Expand" at 15:14
@@ -2003,8 +2003,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 26:09 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `pages-08-09_t1.s6.u3`)
 - 34:37 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-10_t1.s4.u3`)
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Introduction" at 0:10
-- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 42:35, about section `pages-11-12`
-- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 46:25, about section `pages-04-05`
+- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 43:42, about section `pages-11-12`
+- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 47:32, about section `pages-04-05`
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Commas: overview" at 3:38
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 5:44, about section `pages-04-05`
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 6:11, about section `pages-08-09`
@@ -2020,7 +2020,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 6. Grammar for OET: Relative Clauses and Participle Clauses
 
-- Lesson ID and folder: `grammar-06-clause` (folder `grammar-06-clause`); course grammar, lesson 6; length 57:44; bundle format 1.23
+- Lesson ID and folder: `grammar-06-clause` (folder `grammar-06-clause`); course grammar, lesson 6; length 59:04; bundle format 1.23
 - Status: built, final gate not approved
 - Description: Learn to add information with relative clauses, make them shorter, and join case notes with participle clauses in your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 79:14 long, partial hash `6ef7636e4afb83cb`; deck `source/slides.pdf`, 12 pages
@@ -2045,228 +2045,228 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 4:16 **Relative pronouns and relative adverbs**
   - 4:16 the words that start a relative clause
   - 4:43 what each pronoun points back to
-  - 5:00 whom is the object form
-  - 5:22 whose shows possession
-  - 5:40 whose and who's are not the same
-  - 6:02 the full form in a letter
-  - 6:15 where that can be used
-  - 6:44 a relative pronoun is not a conjunction
-  - 7:22 what each relative adverb stands for
-  - 7:33 where for a place
-  - 7:44 when for a time
-  - 8:02 the who clause adds more about the patient
-  - 8:13 who for a person in a letter
-  - 8:26 the which clause adds extra information
-  - 8:52 the comma makes it non-defining
-  - 9:20 which for a thing in a letter
+  - 5:07 whom is the object form
+  - 5:29 whose shows possession
+  - 5:47 whose and who's are not the same
+  - 6:09 the full form in a letter
+  - 6:23 where that can be used
+  - 6:51 a relative pronoun is not a conjunction
+  - 7:29 what each relative adverb stands for
+  - 7:40 where for a place
+  - 7:51 when for a time
+  - 8:09 the who clause adds more about the patient
+  - 8:20 who for a person in a letter
+  - 8:33 the which clause adds extra information
+  - 9:00 the comma makes it non-defining
+  - 9:28 which for a thing in a letter
 
 *Rules on the boards*
 
-- 6:02 In a letter, write who is in full, not who's.
+- 6:09 In a letter, write who is in full, not who's.
 
 *Warnings (common mistakes)*
 
-- 6:23 Never use that after a comma, in a non-defining clause.
+- 6:31 Never use that after a comma, in a non-defining clause.
 
 *Terms*: Relative clause (New term, 2:00)
 
-#### 10:28 Defining and non-defining (`page-6`, deck)
+#### 10:36 Defining and non-defining (`page-6`, deck)
 
-- 10:28 **Relative clauses table**
-  - 10:28 introduce the term and what the table compares
-  - 11:03 the core contrast the four columns show
-  - 11:34 column 1, the test for a defining clause
-  - 12:18 column 1, take the defining clause out and see what is lost
-  - 12:42 column 2, name the appositive structure
-  - 12:55 column 2, the comma between the two nouns
-  - 13:08 column 2, why there is no comma before 'who'
-  - 13:26 column 2, where to use this form
-  - 13:39 column 3, the relative pronoun comes after the subject
-  - 13:54 column 3, why this clause takes commas
-  - 14:25 column 3, take the non-defining clause out
-  - 14:37 column 3, the two versions side by side
-  - 15:04 column 3, state the focus point and keep both non-defining
-  - 15:17 column 3, 'that' after a comma
-  - 15:53 column 4, the relative pronoun comes after the object
-  - 16:07 columns 2 and 4 compared
-  - 17:08 read the explanations and gloss a hard word
-  - 17:38 the takeaway test
-
-*Rules on the boards*
-
-- 11:34 A clause that tells us which person or thing we mean is defining. A defining clause takes no comma.
-- 17:38 Once the reader knows which patient you mean, more information about her is extra, so it takes commas.
-
-*Terms*: Relative clause (Grammar word, 10:40); Appositive structure (Form, 12:42)
-
-#### 19:01 Reduced relative clauses (`pages-07-08`, deck)
-
-- 19:01 **Reduced relative clauses: what and why**
-  - 19:01 Name the structure and say what 'reduced' means
-  - 19:18 Say which words are removed
-  - 19:39 Why we reduce a relative clause
-  - 19:50 Show one reduction as a change card
-- 20:21 **Case notes table: standard and reduced forms**
-  - 20:21 how the three columns work
-  - 20:46 choosing the verb tense
-  - 21:18 the extra information becomes a relative clause
-  - 21:46 the clinical verb radiate
-  - 22:00 the two steps of the reduction
-  - 22:19 name the -ing form
-  - 22:33 why the pronoun can go
-  - 23:11 paraphrasing the case note
-  - 23:20 tiredness becomes lethargy
-  - 23:34 which clause is reduced
-  - 23:41 the reduction
-  - 24:08 what 'which' points back to
-  - 24:50 the pronoun repeats the subject
-  - 25:00 the reduction
-  - 25:26 the rule so far
-  - 26:25 framing the radiology rows
-  - 26:41 the orderly
-  - 27:18 the phrasal verb
-  - 27:29 gloss a hard word
-  - 27:51 active verb and passive verb
-  - 28:22 name the past participle
-  - 28:38 the passive rule
-  - 28:56 when you cannot reduce
-  - 29:20 gloss a hard word
-  - 29:51 a time clause, not a relative clause
-  - 29:59 the repeated subject
-  - 30:08 passive verb again
-  - 30:40 the subject 'you' can go
-  - 30:46 X-ray as a verb
-  - 31:03 meaning of the sentence
+- 10:36 **Relative clauses table**
+  - 10:36 introduce the term and what the table compares
+  - 11:10 the core contrast the four columns show
+  - 11:41 column 1, the test for a defining clause
+  - 12:25 column 1, take the defining clause out and see what is lost
+  - 12:49 column 2, name the appositive structure
+  - 13:02 column 2, the comma between the two nouns
+  - 13:15 column 2, why there is no comma before 'who'
+  - 13:33 column 2, where to use this form
+  - 13:47 column 3, the relative pronoun comes after the subject
+  - 14:01 column 3, why this clause takes commas
+  - 14:33 column 3, take the non-defining clause out
+  - 14:44 column 3, the two versions side by side
+  - 15:11 column 3, state the focus point and keep both non-defining
+  - 15:24 column 3, 'that' after a comma
+  - 16:01 column 4, the relative pronoun comes after the object
+  - 16:15 columns 2 and 4 compared
+  - 17:16 read the explanations and gloss a hard word
+  - 17:45 the takeaway test
 
 *Rules on the boards*
 
-- 25:26 Remove the relative pronoun. If the verb is active, use its -ing form, but not for one finished action in the past.
-- 28:38 With a passive verb, remove the relative pronoun and 'was'. Keep the past participle.
+- 11:41 A clause that tells us which person or thing we mean is defining. A defining clause takes no comma.
+- 17:45 Once the reader knows which patient you mean, more information about her is extra, so it takes commas.
+
+*Terms*: Relative clause (Grammar word, 10:47); Appositive structure (Form, 12:49)
+
+#### 19:08 Reduced relative clauses (`pages-07-08`, deck)
+
+- 19:08 **Reduced relative clauses: what and why**
+  - 19:08 Name the structure and say what 'reduced' means
+  - 19:25 Say which words are removed
+  - 19:46 Why we reduce a relative clause
+  - 19:57 Show one reduction as a change card
+- 20:28 **Case notes table: standard and reduced forms**
+  - 20:28 how the three columns work
+  - 20:58 choosing the verb tense
+  - 21:30 the extra information becomes a relative clause
+  - 21:59 the clinical verb radiate
+  - 22:12 the two steps of the reduction
+  - 22:31 name the -ing form
+  - 22:45 why the pronoun can go
+  - 23:24 paraphrasing the case note
+  - 23:33 tiredness becomes lethargy
+  - 23:46 which clause is reduced
+  - 23:54 the reduction
+  - 24:20 what 'which' points back to
+  - 25:03 the pronoun repeats the subject
+  - 25:12 the reduction
+  - 25:40 the rule so far
+  - 26:39 framing the radiology rows
+  - 27:02 the orderly
+  - 27:39 the phrasal verb
+  - 27:50 gloss a hard word
+  - 28:12 active verb and passive verb
+  - 28:43 name the past participle
+  - 28:59 the passive rule
+  - 29:17 when you cannot reduce
+  - 29:41 gloss a hard word
+  - 30:12 a time clause, not a relative clause
+  - 30:21 the repeated subject
+  - 30:30 passive verb again
+  - 31:02 the subject 'you' can go
+  - 31:08 X-ray as a verb
+  - 31:28 meaning of the sentence
+
+*Rules on the boards*
+
+- 25:40 In a relative clause, remove the relative pronoun. If the verb is active, use its -ing form, but not for one finished action in the past.
+- 28:59 With a passive verb, remove the relative pronoun and 'was'. Keep the past participle.
 
 *Warnings (common mistakes)*
 
-- 28:56 Use the -ing form only when the relative pronoun is the subject. In 'the tablets which she takes', 'which' is the object: you can only leave it out: 'the tablets she takes'.
+- 29:17 Use the -ing form only when the relative pronoun is the subject. In 'the tablets which she takes', 'which' is the object: you can only leave it out: 'the tablets she takes'.
 
-*Terms*: Reduced relative clause (New term, 19:01); Relative pronoun (Form, 19:24); radiates (Word, 21:46); The -ing form (present participle) (Form, 22:19); called away (Phrase, 27:18); Past participle (Form, 28:22)
+*Terms*: Reduced relative clause (New term, 19:08); Relative pronoun (Form, 19:32); radiates (Word, 21:59); The -ing form (present participle) (Form, 22:31); called away (Phrase, 27:39); Past participle (Form, 28:43)
 
-#### 32:37 Participle clauses (`pages-09-10`, deck)
+#### 33:19 Participle clauses (`pages-09-10`, deck)
 
-- 32:37 **Participle clauses: forms and rules**
-  - 32:37 the three participle forms
-  - 32:40 Define the grammar term
-  - 33:20 Why participle clauses are used
-  - 33:36 Show the long form and the reduced form side by side
-  - 34:05 What a participle clause can express
-  - 34:25 Link each meaning to a familiar connector
-  - 34:48 State the same-subject rule
-  - 35:01 Diagram 1: one shared subject
-  - 35:39 Diagram 2: different subjects
-  - 36:28 Name the fault
-  - 36:43 The correct version of the wrong sentence
-  - 37:05 Participle clauses after conjunctions and prepositions
-  - 37:24 An example of the perfect participle
-- 38:47 **Case notes, standard sentence, participle clause**
-  - 38:47 what the three answer columns do
-  - 39:24 turn the two dates into a time expression
-  - 39:39 the function
-  - 39:52 check the subjects before reducing
-  - 40:08 name the form used
-  - 40:27 the same case note written a second way
-  - 41:07 the form that is wrong here
-  - 41:27 the rule for choosing the form
-  - 42:01 reading the case note
-  - 42:24 what follows 'due to'
-  - 42:57 what is deleted
-  - 43:23 the version that breaks the same-subject rule
-  - 43:57 hard words in the note and the sentence
-  - 44:47 find the real subject
-  - 45:05 the second subject matches
-  - 45:17 active, so the -ing form
-  - 45:39 active and passive are needed in every row
-  - 45:59 the meaning of the note
-  - 46:18 the standard sentence with 'although'
-  - 46:43 the three connectors that take an -ing form
-  - 47:08 a second acceptable answer
-  - 47:48 words in the case note
-  - 48:29 words in the standard sentence
-  - 48:46 the function
-  - 49:00 reducing the time clause
-  - 49:30 the version that breaks the same-subject rule
-  - 51:09 how much to reduce
-
-*Rules on the boards*
-
-- 45:39 You must see quickly whether the verb is active or passive. Review it in the lesson Verb Tenses.
-
-*Wrong sentences corrected*
-
-- 41:07 Concerning about lower back pain
-- 43:23 Due to being a recently qualified teacher, her professional voice use may have contributed to the dysphonia.
-- 49:30 Being keen to return to work, I suggested she practise affirmations and meditations when feeling anxious.
-
-*Terms*: Present participle (Form, 32:37); Past participle (Form, 32:37); Perfect participle (Form, 32:37); Participle clause (Grammar term, 32:40); Dangling participle (Grammar term, 36:28); Passive (Grammar term, 40:46)
-
-#### 51:25 Expressing reason with 'given' (`page-11`, deck)
-
-- 51:25 **Given: case notes table**
-  - 51:25 introduce the board and the word being studied
-  - 51:50 show the meaning inside the slide's own example
-  - 52:04 correct what 'given' expresses
-  - 52:19 where 'given' is used in the letter
-  - 52:42 what the two notes say
-  - 53:02 the form 'given that'
-  - 53:13 a second ending for the same sentence
-  - 53:38 the noun phrase version
-  - 54:05 the rule behind the two versions
-  - 54:25 see that the two notes are a contrast
-  - 54:35 reject 'given' here
-  - 54:51 the word for a contrast
-  - 55:26 read the case notes
-  - 55:50 condense the detail
-  - 56:05 what the sentence does
-  - 56:16 close with the use of 'given'
-  - 56:27 why the word is worth learning
+- 33:19 **Participle clauses: forms and rules**
+  - 33:19 the three participle forms
+  - 33:21 Define the grammar term
+  - 34:02 Why participle clauses are used
+  - 34:17 Show the long form and the reduced form side by side
+  - 34:52 What a participle clause can express
+  - 35:11 Link each meaning to a familiar connector
+  - 35:38 State the same-subject rule
+  - 35:51 Diagram 1: one shared subject
+  - 36:29 Diagram 2: different subjects
+  - 37:18 Name the fault
+  - 37:33 The correct version of the wrong sentence
+  - 37:55 Participle clauses after conjunctions and prepositions
+  - 38:12 An example of the perfect participle
+- 39:35 **Case notes, standard sentence, participle clause**
+  - 39:35 what the three answer columns do
+  - 40:12 turn the two dates into a time expression
+  - 40:27 the function
+  - 40:40 check the subjects before reducing
+  - 40:56 name the form used
+  - 41:18 the same case note written a second way
+  - 42:06 the form that is wrong here
+  - 42:27 the rule for choosing the form
+  - 43:08 reading the case note
+  - 43:30 what follows 'due to'
+  - 44:03 what is deleted
+  - 44:29 the version that breaks the same-subject rule
+  - 45:03 hard words in the note and the sentence
+  - 45:53 find the real subject
+  - 46:11 the second subject matches
+  - 46:24 active, so the -ing form
+  - 46:45 active and passive are needed in every row
+  - 47:06 the meaning of the note
+  - 47:24 the standard sentence with 'although'
+  - 47:50 the three connectors that take an -ing form
+  - 48:16 a second acceptable answer
+  - 49:00 words in the case note
+  - 49:41 words in the standard sentence
+  - 49:58 the function
+  - 50:11 reducing the time clause
+  - 50:42 the version that breaks the same-subject rule
+  - 52:20 how much to reduce
 
 *Rules on the boards*
 
-- 52:04 'Given' gives a reason. It does not give a condition.
-- 56:16 'Given' joins two case notes into one sentence. It is useful in the closing part of your letter.
+- 46:45 You must see quickly whether the verb is active or passive. Review it in the lesson Verb Tenses.
 
 *Wrong sentences corrected*
 
-- 54:35 Given his age, Mr X is in excellent physical condition.
+- 42:06 Concerning about lower back pain
+- 44:29 Due to being a recently qualified teacher, her professional voice use may have contributed to the dysphonia.
+- 50:42 Being keen to return to work, I suggested she practise affirmations and meditations when feeling anxious.
 
-*Terms*: given (New word, 51:43); given that (Form, 53:02); despite (Word for a contrast, 54:51)
+*Terms*: Present participle (Form, 33:19); Past participle (Form, 33:19); Perfect participle (Form, 33:19); Participle clause (Grammar term, 33:21); Dangling participle (Grammar term, 37:18); Be + -ed adjective (Grammar term, 41:38)
+
+#### 52:37 Expressing reason with 'given' (`page-11`, deck)
+
+- 52:37 **Given: case notes table**
+  - 52:37 introduce the board and the word being studied
+  - 53:02 show the meaning inside the slide's own example
+  - 53:16 correct what 'given' expresses
+  - 53:39 where 'given' is used in the letter
+  - 54:02 what the two notes say
+  - 54:21 the form 'given that'
+  - 54:32 a second ending for the same sentence
+  - 54:58 the noun phrase version
+  - 55:24 the rule behind the two versions
+  - 55:45 see that the two notes are a contrast
+  - 55:54 reject 'given' here
+  - 56:10 the word for a contrast
+  - 56:46 read the case notes
+  - 57:10 condense the detail
+  - 57:25 what the sentence does
+  - 57:36 close with the use of 'given'
+  - 57:46 why the word is worth learning
+
+*Rules on the boards*
+
+- 53:16 'Given' gives a reason. It can also give a condition that is already true: given that her kidney function is normal, the dose can stay the same.
+- 57:36 'Given' joins two case notes into one sentence. It is useful in the closing part of your letter.
+
+*Wrong sentences corrected*
+
+- 55:54 Given his age, Mr X is in excellent physical condition.
+
+*Terms*: given (New word, 52:54); given that (Form, 54:21); despite (Word for a contrast, 56:10)
 
 ### Vocabulary
 
 First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
 
-- 8:37 grazed
-- 9:03 cleansed
-- 17:08 Non-essential
-- 21:46 radiates
-- 26:41 orderly
-- 27:18 called away
-- 27:29 scheduled
-- 29:20 postponement
-- 43:57 friction
-- 44:20 detrimental
-- 47:48 coping strategies
-- 48:03 affirmations
-- 48:29 keen
-- 51:43 given
-- 53:20 capacity
-- 55:26 clumsy
+- 8:45 grazed
+- 9:10 cleansed
+- 17:16 Non-essential
+- 21:59 radiates
+- 27:02 orderly
+- 27:39 called away
+- 27:50 scheduled
+- 29:41 postponement
+- 45:03 friction
+- 45:26 detrimental
+- 49:00 coping strategies
+- 49:14 affirmations
+- 49:41 keen
+- 52:54 given
+- 54:39 capacity
+- 56:46 clumsy
 
 ### Links to other lessons
 
 - 0:10 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`) (in `page-3_t1.s1.u3`)
-- 21:03 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect continuous tenses" (in `pages-07-08_t2.s2.u4`)
-- 40:54 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `pages-09-10_t2.s6.u5`)
-- 42:35 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Due to, despite, as well as" (in `pages-09-10_t2.s10.u2`)
-- 45:43 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `pages-09-10_t2.s17.u2`)
-- 46:25 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "What is a complex sentence?" (in `pages-09-10_t2.s19.u3`)
+- 21:15 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect continuous tenses" (in `pages-07-08_t2.s2.u4`)
+- 41:50 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `pages-09-10_t2.s6.u5`)
+- 43:42 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Due to, despite, as well as" (in `pages-09-10_t2.s10.u2`)
+- 46:50 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `pages-09-10_t2.s17.u2`)
+- 47:32 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "What is a complex sentence?" (in `pages-09-10_t2.s19.u3`)
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Introduction" at 0:18
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Joining sentences with relative pronouns" at 37:06
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Joining sentences with relative pronouns" at 37:33, about section `page-6`
@@ -8867,12 +8867,13 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Apostrophe**: `grammar-07-punctuation` 51:50
 - **Apostrophes**: `grammar-07-punctuation` 51:42
 - **Appositive**: `writing-04-introduction` 10:00
-- **Appositive structure**: `grammar-06-clause` 12:42
+- **Appositive structure**: `grammar-06-clause` 12:49
 - **Appositives and ages**: `writing-04-introduction` 9:51
 - **article**: `grammar-02-verb-use` 62:02
 - **Articles**: `grammar-04-articles` 2:00; `grammar-08-paraphrasing` 11:22
 - **Avoid a series of short sentences**: `vocabulary-01-word-forms` 58:27
 - **Avoid sentences that are too long**: `vocabulary-01-word-forms` 69:24
+- **Be + -ed adjective**: `grammar-06-clause` 41:38
 - **Be verb plus past participle**: `grammar-01-verb-tenses` 88:58
 - **been**: `grammar-01-verb-tenses` 15:25
 - **Before he quit**: `grammar-01-verb-tenses` 49:39
@@ -8926,12 +8927,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Countable noun**: `grammar-02-verb-use` 15:31; `grammar-04-articles` 17:58
 - **Countable nouns: non-specific**: `grammar-04-articles` 17:32
 - **Critical thinking**: `reading-04-part-c` 8:39
-- **Dangling participle**: `grammar-06-clause` 36:28
+- **Dangling participle**: `grammar-06-clause` 37:18
 - **Dates, times and units**: `grammar-07-punctuation` 69:41
 - **deal with**: `vocabulary-03-collocations-2` 25:50
 - **Decision**: `grammar-01-verb-tenses` 26:52
-- **Defining and non-defining**: `grammar-06-clause` 10:28
-- **defining and non-defining relative clauses**: `grammar-06-clause` 10:28
+- **Defining and non-defining**: `grammar-06-clause` 10:36
+- **defining and non-defining relative clauses**: `grammar-06-clause` 10:36
 - **defining relative clause**: `vocabulary-01-word-forms` 59:42
 - **Denominalisation**: `grammar-03-nominalization` 51:34
 - **Dependent clause**: `grammar-05-complex-compound` 4:34; `grammar-07-punctuation` 6:45
@@ -8945,7 +8946,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Emphasis**: `listening-04-part-c` 8:56
 - **Exercise regime**: `vocabulary-03-collocations-2` 71:38
 - **Expand**: `grammar-08-paraphrasing` 2:39
-- **Expressing reason with 'given'**: `grammar-06-clause` 51:25
+- **Expressing reason with 'given'**: `grammar-06-clause` 52:37
 - **FANBOYS**: `grammar-05-complex-compound` 24:24; `grammar-07-punctuation` 13:55
 - **Fast reading**: `reading-01-overview` 13:36
 - **Final practice**: `grammar-07-punctuation` 77:05
@@ -8967,7 +8968,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Genre and Style**: `writing-02-assessment-criteria` 20:49
 - **Gerund**: `grammar-05-complex-compound` 46:10
 - **Gist**: `reading-03-part-b` 2:13
-- **given that**: `grammar-06-clause` 53:02
+- **given that**: `grammar-06-clause` 54:21
 - **Giving reassurance**: `vocabulary-03-collocations-2` 43:53
 - **Grade B in OET Writing**: `writing-02-assessment-criteria` 5:27
 - **Greeting and Re line**: `writing-03-letter-structure` 14:50; `writing-04-introduction` 3:42
@@ -9037,23 +9038,23 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Paraphrasing in eight steps**: `grammar-08-paraphrasing` 1:45
 - **Part B: short healthcare workplace texts**: `reading-03-part-b` 4:24
 - **Part C: breakdown**: `reading-04-part-c` 5:53
-- **Participle clause**: `grammar-06-clause` 32:40
-- **Participle clauses**: `grammar-06-clause` 32:37
+- **Participle clause**: `grammar-06-clause` 33:21
+- **Participle clauses**: `grammar-06-clause` 33:19
 - **Parts of an OET letter**: `writing-01-overview` 14:12
-- **Passive**: `grammar-01-verb-tenses` 51:04; `grammar-02-verb-use` 6:16; `grammar-03-nominalization` 5:49; `grammar-05-complex-compound` 25:58; `grammar-06-clause` 40:46; `grammar-07-punctuation` 11:41; `grammar-08-paraphrasing` 4:59; `vocabulary-01-word-forms` 23:40; `vocabulary-02-collocations` 34:43
+- **Passive**: `grammar-01-verb-tenses` 51:04; `grammar-02-verb-use` 6:16; `grammar-03-nominalization` 5:49; `grammar-05-complex-compound` 25:58; `grammar-07-punctuation` 11:41; `grammar-08-paraphrasing` 4:59; `vocabulary-01-word-forms` 23:40; `vocabulary-02-collocations` 34:43
 - **passive forms**: `grammar-01-verb-tenses` 98:10
 - **Passive forms of the verb tenses**: `grammar-01-verb-tenses` 98:10
 - **Passive voice**: `grammar-02-verb-use` 36:40
 - **Passive vs active**: `grammar-02-verb-use` 35:19
 - **Passive vs active form: error correction**: `grammar-01-verb-tenses` 105:38
-- **Past participle**: `grammar-01-verb-tenses` 11:09; `grammar-06-clause` 28:22
+- **Past participle**: `grammar-01-verb-tenses` 11:09; `grammar-06-clause` 28:43
 - **Past perfect**: `grammar-01-verb-tenses` 24:20
 - **past simple**: `grammar-01-verb-tenses` 20:16
 - **Patient friendly language**: `grammar-08-paraphrasing` 46:57
 - **Perfect**: `grammar-01-verb-tenses` 3:05
 - **Perfect continuous**: `grammar-01-verb-tenses` 3:24
 - **perfect continuous tenses**: `grammar-01-verb-tenses` 44:34
-- **Perfect participle**: `grammar-06-clause` 32:37
+- **Perfect participle**: `grammar-06-clause` 33:19
 - **Perfect tenses**: `grammar-01-verb-tenses` 36:59
 - **Perfect tenses on a timeline**: `grammar-01-verb-tenses` 53:02
 - **Perform**: `vocabulary-02-collocations` 31:48
@@ -9062,7 +9063,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Podcasts and talks**: `listening-01-overview` 13:08
 - **Prediction**: `grammar-01-verb-tenses` 26:06
 - **Prescribe**: `vocabulary-02-collocations` 37:34
-- **Present participle**: `grammar-06-clause` 32:37
+- **Present participle**: `grammar-06-clause` 33:19
 - **present perfect**: `grammar-01-verb-tenses` 38:26; `grammar-02-verb-use` 11:52; `grammar-08-paraphrasing` 15:05
 - **present perfect continuous**: `vocabulary-03-collocations-2` 20:42
 - **present perfect passive**: `grammar-02-verb-use` 60:30; `grammar-08-paraphrasing` 48:22
@@ -9079,13 +9080,13 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Reading test format**: `reading-01-overview` 5:48
 - **Reading test overview**: `reading-01-overview` 3:33
 - **Rearrange**: `grammar-08-paraphrasing` 32:11
-- **Reduced relative clause**: `grammar-06-clause` 19:01
-- **Reduced relative clauses**: `grammar-06-clause` 19:01
+- **Reduced relative clause**: `grammar-06-clause` 19:08
+- **Reduced relative clauses**: `grammar-06-clause` 19:08
 - **Regular verb**: `grammar-01-verb-tenses` 5:44
 - **Relative clause**: `grammar-05-complex-compound` 19:03; `grammar-06-clause` 2:00; `grammar-07-punctuation` 38:45; `vocabulary-01-word-forms` 39:10; `writing-04-introduction` 7:30
 - **Relative clauses**: `grammar-06-clause` 2:00; `writing-04-introduction` 5:38
 - **Relative clauses with prepositions**: `vocabulary-01-word-forms` 48:21
-- **Relative pronoun**: `grammar-06-clause` 19:24; `vocabulary-01-word-forms` 38:59
+- **Relative pronoun**: `grammar-06-clause` 19:32; `vocabulary-01-word-forms` 38:59
 - **relative pronouns**: `vocabulary-01-word-forms` 37:06
 - **ROM**: `grammar-01-verb-tenses` 127:40
 - **Run-on sentence**: `grammar-07-punctuation` 43:44
@@ -9131,7 +9132,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Tempting wrong options**: `listening-03-part-b` 9:21
 - **Tense in the letter**: `writing-02-assessment-criteria` 20:30
 - **The -ing form**: `grammar-01-verb-tenses` 8:21
-- **The -ing form (present participle)**: `grammar-06-clause` 22:19
+- **The -ing form (present participle)**: `grammar-06-clause` 22:31
 - **The address**: `writing-03-letter-structure` 12:55
 - **The body**: `writing-03-letter-structure` 17:29
 - **The case notes**: `writing-01-overview` 9:46
