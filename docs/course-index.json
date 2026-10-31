@@ -4492,16 +4492,16 @@
       "section": "pages-08-09",
       "to_section": "page-15",
       "utterance": "pages-08-09_t1.s6.u3",
-      "start_s": 1382.471,
-      "start": "23:02"
+      "start_s": 1569.996,
+      "start": "26:09"
      },
      {
       "lesson": "grammar-05-complex-compound",
       "section": "page-10",
       "to_section": "page-9",
       "utterance": "page-10_t1.s4.u3",
-      "start_s": 1825.764,
-      "start": "30:25"
+      "start_s": 2077.069,
+      "start": "34:37"
      },
      {
       "lesson": "grammar-06-clause",
@@ -10107,9 +10107,9 @@
    "description": "Learn how to join two ideas in one complex sentence, with the right linking word and comma, for your OET letters.",
    "course": "grammar",
    "order": 5,
-   "length_s": 3391.513,
-   "length": "56:31",
-   "bundle_format": "1.22",
+   "length_s": 3998.082,
+   "length": "66:38",
+   "bundle_format": "1.23",
    "status": "approved",
    "approval": {
     "by": "siavash",
@@ -10194,7 +10194,7 @@
      "category": null,
      "start_s": 133.541,
      "start": "2:13",
-     "end_s": 531.836,
+     "end_s": 589.41,
      "topics": [
       {
        "board": "pages-04-05_t1",
@@ -10375,99 +10375,99 @@
       6
      ],
      "category": null,
-     "start_s": 531.836,
-     "start": "8:51",
-     "end_s": 815.786,
+     "start_s": 589.41,
+     "start": "9:49",
+     "end_s": 944.781,
      "topics": [
       {
        "board": "page-6_t1",
        "title": "Case notes turned into one complex sentence",
-       "start_s": 531.836,
-       "start": "8:51",
+       "start_s": 589.41,
+       "start": "9:49",
        "points": [
         {
          "text": "Show the notes and the finished sentence, and frame the task",
          "block": "page-6_k01",
-         "start_s": 531.836,
-         "start": "8:51"
+         "start_s": 589.41,
+         "start": "9:49"
         },
         {
          "text": "Read the first notes: who the patient is",
          "block": "page-6_k04",
-         "start_s": 560.377,
-         "start": "9:20"
+         "start_s": 617.951,
+         "start": "10:17"
         },
         {
          "text": "Gloss the equipment word in the notes",
          "block": "page-6_k05",
-         "start_s": 577.371,
-         "start": "9:37"
+         "start_s": 634.945,
+         "start": "10:34"
         },
         {
          "text": "Read the last two notes: the family comment and the action taken",
          "block": "page-6_k06",
-         "start_s": 592.585,
-         "start": "9:52"
+         "start_s": 650.159,
+         "start": "10:50"
         },
         {
          "text": "Show the contrast hidden in the notes",
          "block": "page-6_k07",
-         "start_s": 604.447,
-         "start": "10:04"
+         "start_s": 662.021,
+         "start": "11:02"
         },
         {
          "text": "Why the contrast forces one joined sentence",
          "block": "page-6_k08",
-         "start_s": 619.869,
-         "start": "10:19"
+         "start_s": 677.443,
+         "start": "11:17"
         },
         {
          "text": "The word that marks the contrast",
          "block": "page-6_k09",
-         "start_s": 650.498,
-         "start": "10:50"
+         "start_s": 708.072,
+         "start": "11:48"
         },
         {
          "text": "The expression that gives the reason",
          "block": "page-6_k10",
-         "start_s": 658.073,
-         "start": "10:58"
+         "start_s": 715.647,
+         "start": "11:55"
         },
         {
          "text": "Test the 'due to' part on its own",
          "block": "page-6_k11",
-         "start_s": 691.09,
-         "start": "11:31"
+         "start_s": 748.664,
+         "start": "12:28"
         },
         {
          "text": "Correct the label: the 'due to' part is a phrase, not a clause",
          "block": "page-6_k12",
-         "start_s": 705.809,
-         "start": "11:45"
+         "start_s": 763.383,
+         "start": "12:43"
         },
         {
          "text": "Define dependent clause before the diagram",
          "block": "page-6_k13",
-         "start_s": 725.562,
-         "start": "12:05"
+         "start_s": 783.136,
+         "start": "13:03"
         },
         {
          "text": "Define independent clause before the diagram",
          "block": "page-6_k14",
-         "start_s": 732.176,
-         "start": "12:12"
+         "start_s": 789.75,
+         "start": "13:09"
         },
         {
          "text": "Draw the sentence as two clause pieces joined by 'Although'",
          "block": "page-6_k15",
-         "start_s": 753.406,
-         "start": "12:33"
+         "start_s": 810.98,
+         "start": "13:30"
         },
         {
          "text": "Sum up what the sentence is made of",
          "block": "page-6_k16",
-         "start_s": 797.371,
-         "start": "13:17"
+         "start_s": 854.945,
+         "start": "14:14"
         }
        ]
       }
@@ -10477,15 +10477,15 @@
        "block": "page-6_k08",
        "kind": "rule",
        "text": "When two notes contrast like this, join them in one sentence instead of listing them one by one.",
-       "start_s": 619.869,
-       "start": "10:19"
+       "start_s": 677.443,
+       "start": "11:17"
       },
       {
        "block": "page-6_k12",
        "kind": "rule",
        "text": "'Due to his high care needs' is not a clause. It has no subject and no verb. It is a phrase.",
-       "start_s": 705.809,
-       "start": "11:45"
+       "start_s": 763.383,
+       "start": "12:43"
       }
      ],
      "terms": [
@@ -10493,36 +10493,36 @@
        "block": "page-6_k05",
        "label": "New word",
        "term": "Hoist",
-       "start_s": 577.371,
-       "start": "9:37"
+       "start_s": 634.945,
+       "start": "10:34"
       },
       {
        "block": "page-6_k09",
        "label": "Joining word",
        "term": "Although",
-       "start_s": 650.498,
-       "start": "10:50"
+       "start_s": 708.072,
+       "start": "11:48"
       },
       {
        "block": "page-6_k10",
        "label": "Linking words",
        "term": "Due to",
-       "start_s": 658.073,
-       "start": "10:58"
+       "start_s": 715.647,
+       "start": "11:55"
       },
       {
        "block": "page-6_k13",
        "label": "Grammar",
        "term": "Dependent clause",
-       "start_s": 725.562,
-       "start": "12:05"
+       "start_s": 783.136,
+       "start": "13:03"
       },
       {
        "block": "page-6_k14",
        "label": "Grammar",
        "term": "Independent clause",
-       "start_s": 732.176,
-       "start": "12:12"
+       "start_s": 789.75,
+       "start": "13:09"
       }
      ],
      "wrong_examples": [],
@@ -10537,87 +10537,87 @@
       7
      ],
      "category": null,
-     "start_s": 815.786,
-     "start": "13:35",
-     "end_s": 1247.321,
+     "start_s": 944.781,
+     "start": "15:44",
+     "end_s": 1434.846,
      "topics": [
       {
        "board": "page-7_t1",
        "title": "The joining words",
-       "start_s": 815.786,
-       "start": "13:35",
+       "start_s": 944.781,
+       "start": "15:44",
        "points": [
         {
          "text": "Show the list of joining words and recall the two clauses of a complex sentence",
          "block": "page-7_k02",
-         "start_s": 815.446,
-         "start": "13:35"
+         "start_s": 944.441,
+         "start": "15:44"
         },
         {
          "text": "Show both orders as clause diagrams and teach order 1",
          "block": "page-7_k17",
-         "start_s": 815.786,
-         "start": "13:35"
+         "start_s": 944.781,
+         "start": "15:44"
         },
         {
          "text": "Name the glue and its two types",
          "block": "page-7_k04",
-         "start_s": 864.482,
-         "start": "14:24"
+         "start_s": 993.477,
+         "start": "16:33"
         },
         {
          "text": "Contrast subordinating and coordinating conjunctions",
          "block": "page-7_k06",
-         "start_s": 886.491,
-         "start": "14:46"
+         "start_s": 1015.486,
+         "start": "16:55"
         },
         {
          "text": "Memory aid: the subordinate clause and its conjunction",
          "block": "page-7_k08",
-         "start_s": 924.85,
-         "start": "15:24"
+         "start_s": 1053.845,
+         "start": "17:33"
         },
         {
          "text": "What each joining word shows",
          "block": "page-7_k10",
-         "start_s": 972.141,
-         "start": "16:12"
+         "start_s": 1101.136,
+         "start": "18:21"
         },
         {
          "text": "Who and which are relative pronouns",
          "block": "page-7_k11",
-         "start_s": 1008.826,
-         "start": "16:48"
+         "start_s": 1137.821,
+         "start": "18:57"
         },
         {
          "text": "Who for people, which for things, and the comma",
          "block": "page-7_k13",
-         "start_s": 1029.235,
-         "start": "17:09"
+         "start_s": 1158.23,
+         "start": "19:18"
         },
         {
          "text": "Worked example of the comma with which",
          "block": "page-7_k15",
-         "start_s": 1093.646,
-         "start": "18:13"
+         "start_s": 1222.641,
+         "start": "20:22"
         },
         {
          "text": "Explain order 1 and then show order 2",
          "block": "page-7_k20",
-         "start_s": 1173.634,
-         "start": "19:33"
+         "start_s": 1302.629,
+         "start": "21:42"
         },
         {
          "text": "Explain order 2 and its comma",
          "block": "page-7_k22",
-         "start_s": 1205.207,
-         "start": "20:05"
+         "start_s": 1334.202,
+         "start": "22:14"
         },
         {
          "text": "Warn against the missing comma",
          "block": "page-7_k23",
-         "start_s": 1227.485,
-         "start": "20:27"
+         "start_s": 1356.48,
+         "start": "22:36"
         }
        ]
       }
@@ -10627,22 +10627,22 @@
        "block": "page-7_k09",
        "kind": "rule",
        "text": "A subordinating conjunction starts the subordinate clause. That is the glue for complex sentences.",
-       "start_s": 945.601,
-       "start": "15:45"
+       "start_s": 1074.596,
+       "start": "17:54"
       },
       {
        "block": "page-7_k14",
        "kind": "rule",
        "text": "When who or which only adds extra information, put a comma before it, and another after that information if the sentence goes on.",
-       "start_s": 1044.206,
-       "start": "17:24"
+       "start_s": 1173.201,
+       "start": "19:33"
       },
       {
        "block": "page-7_k24",
        "kind": "rule",
        "text": "When the dependent clause comes first, put a comma after it. It shows the reader where the first clause ends.",
-       "start_s": 1235.58,
-       "start": "20:35"
+       "start_s": 1364.575,
+       "start": "22:44"
       }
      ],
      "terms": [
@@ -10650,30 +10650,30 @@
        "block": "page-7_k04",
        "label": "Term",
        "term": "Conjunction",
-       "start_s": 864.482,
-       "start": "14:24"
+       "start_s": 993.477,
+       "start": "16:33"
       },
       {
        "block": "page-7_k08",
        "label": "Term",
        "term": "Subordinate clause",
-       "start_s": 924.85,
-       "start": "15:24"
+       "start_s": 1053.845,
+       "start": "17:33"
       },
       {
        "block": "page-7_k12",
        "label": "Term",
        "term": "Relative clause",
-       "start_s": 1014.696,
-       "start": "16:54"
+       "start_s": 1143.691,
+       "start": "19:03"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-7_k23",
        "text": "After she started the new medication the patient felt better.",
-       "start_s": 1227.485,
-       "start": "20:27"
+       "start_s": 1356.48,
+       "start": "22:36"
       }
      ],
      "practice": [],
@@ -10688,155 +10688,155 @@
       9
      ],
      "category": null,
-     "start_s": 1247.321,
-     "start": "20:47",
-     "end_s": 1712.254,
+     "start_s": 1434.846,
+     "start": "23:54",
+     "end_s": 1963.559,
      "topics": [
       {
        "board": "pages-08-09_t1",
        "title": "Compound and complex sentence boxes",
-       "start_s": 1247.321,
-       "start": "20:47",
+       "start_s": 1434.846,
+       "start": "23:54",
        "points": [
         {
          "text": "Open the two boxes and name the joining word of a compound sentence",
          "block": "pages-08-09_k01",
-         "start_s": 1247.321,
-         "start": "20:47"
+         "start_s": 1434.846,
+         "start": "23:54"
         },
         {
          "text": "Teach the seven coordinating conjunctions through FANBOYS",
          "block": "pages-08-09_k04",
-         "start_s": 1276.871,
-         "start": "21:16"
+         "start_s": 1464.396,
+         "start": "24:24"
         },
         {
          "text": "State the FANBOYS test as the rule to remember",
          "block": "pages-08-09_k06",
-         "start_s": 1302.801,
-         "start": "21:42"
+         "start_s": 1490.326,
+         "start": "24:50"
         },
         {
          "text": "Both sentence types are built from two clauses",
          "block": "pages-08-09_k07",
-         "start_s": 1311.581,
-         "start": "21:51"
+         "start_s": 1499.106,
+         "start": "24:59"
         },
         {
          "text": "Define independent clause",
          "block": "pages-08-09_k09",
-         "start_s": 1325.281,
-         "start": "22:05"
+         "start_s": 1512.806,
+         "start": "25:12"
         },
         {
          "text": "Reject the active form in the second clause of the example",
          "block": "pages-08-09_k11",
-         "start_s": 1347.769,
-         "start": "22:27"
+         "start_s": 1535.294,
+         "start": "25:35"
         },
         {
          "text": "Give the finished compound example with the passive second clause",
          "block": "pages-08-09_k13",
-         "start_s": 1367.037,
-         "start": "22:47"
+         "start_s": 1554.562,
+         "start": "25:54"
         },
         {
          "text": "Draw the example as two independent pieces with 'and' between them",
          "block": "pages-08-09_k15",
-         "start_s": 1388.991,
-         "start": "23:08"
+         "start_s": 1576.516,
+         "start": "26:16"
         },
         {
          "text": "State what the diagram shows",
          "block": "pages-08-09_k16",
-         "start_s": 1424.07,
-         "start": "23:44"
+         "start_s": 1611.595,
+         "start": "26:51"
         },
         {
          "text": "Leave out the repeated subject in the second clause",
          "block": "pages-08-09_k17",
-         "start_s": 1437.287,
-         "start": "23:57"
+         "start_s": 1624.812,
+         "start": "27:04"
         },
         {
          "text": "Reject the comma splice",
          "block": "pages-08-09_k19",
-         "start_s": 1453.544,
-         "start": "24:13"
+         "start_s": 1641.069,
+         "start": "27:21"
         },
         {
          "text": "Give the correct version of the comma splice",
          "block": "pages-08-09_k21",
-         "start_s": 1473.389,
-         "start": "24:33"
+         "start_s": 1660.914,
+         "start": "27:40"
         },
         {
          "text": "Fill the Complex box: the joining word and the dependent clause",
          "block": "pages-08-09_k23",
-         "start_s": 1490.814,
-         "start": "24:50"
+         "start_s": 1678.339,
+         "start": "27:58"
         },
         {
          "text": "Draw the shape of a complex sentence",
          "block": "pages-08-09_k25",
-         "start_s": 1514.924,
-         "start": "25:14"
+         "start_s": 1702.449,
+         "start": "28:22"
         }
        ]
       },
       {
        "board": "pages-08-09_t2",
        "title": "Which joining word makes which sentence",
-       "start_s": 1558.806,
-       "start": "25:58",
+       "start_s": 1810.111,
+       "start": "30:10",
        "points": [
         {
          "text": "Set up the test printed on the slide and reject FANBOYS inside a complex sentence",
          "block": "pages-08-09_k26",
-         "start_s": 1558.806,
-         "start": "25:58"
+         "start_s": 1810.111,
+         "start": "30:10"
         },
         {
          "text": "Warn what the wrong joining word does to the sentence",
          "block": "pages-08-09_k29",
-         "start_s": 1575.806,
-         "start": "26:15"
+         "start_s": 1827.111,
+         "start": "30:27"
         },
         {
          "text": "Re-express the slide's 'glue' gloss in English and give the test",
          "block": "pages-08-09_k30",
-         "start_s": 1593.077,
-         "start": "26:33"
+         "start_s": 1844.382,
+         "start": "30:44"
         },
         {
          "text": "State the complement of the test: anything else is subordinating",
          "block": "pages-08-09_k32",
-         "start_s": 1609.887,
-         "start": "26:49"
+         "start_s": 1861.192,
+         "start": "31:01"
         },
         {
          "text": "Reject two joining words in one sentence: Although ... but ...",
          "block": "pages-08-09_k34",
-         "start_s": 1635.606,
-         "start": "27:15"
+         "start_s": 1886.911,
+         "start": "31:26"
         },
         {
          "text": "Give the correct version and the rule behind it",
          "block": "pages-08-09_k36",
-         "start_s": 1665.595,
-         "start": "27:45"
+         "start_s": 1916.9,
+         "start": "31:56"
         },
         {
          "text": "Same rule with Because ... so ...",
          "block": "pages-08-09_k38",
-         "start_s": 1681.675,
-         "start": "28:01"
+         "start_s": 1932.98,
+         "start": "32:12"
         },
         {
          "text": "Give the correct version of the Because sentence",
          "block": "pages-08-09_k40",
-         "start_s": 1696.297,
-         "start": "28:16"
+         "start_s": 1947.602,
+         "start": "32:27"
         }
        ]
       }
@@ -10846,22 +10846,22 @@
        "block": "pages-08-09_k06",
        "kind": "rule",
        "text": "When one of these seven words joins the two parts, the sentence is compound.",
-       "start_s": 1302.801,
-       "start": "21:42"
+       "start_s": 1490.326,
+       "start": "24:50"
       },
       {
        "block": "pages-08-09_k29",
        "kind": "warning",
        "text": "The wrong joining word can change the meaning of your sentence, or make it hard for the reader to understand. Then the sentence is wrong.",
-       "start_s": 1575.806,
-       "start": "26:15"
+       "start_s": 1827.111,
+       "start": "30:27"
       },
       {
        "block": "pages-08-09_k32",
        "kind": "rule",
        "text": "A subordinating conjunction, like because or although, makes a complex sentence.",
-       "start_s": 1609.887,
-       "start": "26:49"
+       "start_s": 1861.192,
+       "start": "31:01"
       }
      ],
      "terms": [
@@ -10869,83 +10869,83 @@
        "block": "pages-08-09_k03",
        "label": "Form",
        "term": "Coordinating conjunction",
-       "start_s": 1268.041,
-       "start": "21:08"
+       "start_s": 1455.566,
+       "start": "24:15"
       },
       {
        "block": "pages-08-09_k04",
        "label": "Memory word",
        "term": "FANBOYS",
-       "start_s": 1276.871,
-       "start": "21:16"
+       "start_s": 1464.396,
+       "start": "24:24"
       },
       {
        "block": "pages-08-09_k08",
        "label": "Term",
        "term": "Clause",
-       "start_s": 1317.451,
-       "start": "21:57"
+       "start_s": 1504.976,
+       "start": "25:04"
       },
       {
        "block": "pages-08-09_k09",
        "label": "Term",
        "term": "Independent clause",
-       "start_s": 1325.281,
-       "start": "22:05"
+       "start_s": 1512.806,
+       "start": "25:12"
       },
       {
        "block": "pages-08-09_k14",
        "label": "Term",
        "term": "Passive",
-       "start_s": 1371.194,
-       "start": "22:51"
+       "start_s": 1558.719,
+       "start": "25:58"
       },
       {
        "block": "pages-08-09_k23",
        "label": "Form",
        "term": "Subordinating conjunction",
-       "start_s": 1490.814,
-       "start": "24:50"
+       "start_s": 1678.339,
+       "start": "27:58"
       },
       {
        "block": "pages-08-09_k24",
        "label": "Term",
        "term": "Dependent clause",
-       "start_s": 1500.054,
-       "start": "25:00"
+       "start_s": 1687.579,
+       "start": "28:07"
       },
       {
        "block": "pages-08-09_k30",
        "label": "Term",
        "term": "Conjunction",
-       "start_s": 1593.077,
-       "start": "26:33"
+       "start_s": 1844.382,
+       "start": "30:44"
       }
      ],
      "wrong_examples": [
       {
        "block": "pages-08-09_k11",
        "text": "He examined immediately.",
-       "start_s": 1347.769,
-       "start": "22:27"
+       "start_s": 1535.294,
+       "start": "25:35"
       },
       {
        "block": "pages-08-09_k19",
        "text": "He presented yesterday, he was examined immediately.",
-       "start_s": 1453.544,
-       "start": "24:13"
+       "start_s": 1641.069,
+       "start": "27:21"
       },
       {
        "block": "pages-08-09_k34",
        "text": "Although her pain has reduced, but she insists on taking the medication.",
-       "start_s": 1635.606,
-       "start": "27:15"
+       "start_s": 1886.911,
+       "start": "31:26"
       },
       {
        "block": "pages-08-09_k38",
        "text": "Because the medication causes drowsiness, so do not drive.",
-       "start_s": 1681.675,
-       "start": "28:01"
+       "start_s": 1932.98,
+       "start": "32:12"
       }
      ],
      "practice": [],
@@ -10955,8 +10955,8 @@
        "lesson": "grammar-01-verb-tenses",
        "section": "page-15",
        "provenance": "authored",
-       "start_s": 1382.471,
-       "start": "23:02"
+       "start_s": 1569.996,
+       "start": "26:09"
       }
      ]
     },
@@ -10968,177 +10968,177 @@
       10
      ],
      "category": null,
-     "start_s": 1712.254,
-     "start": "28:32",
-     "end_s": 2357.465,
+     "start_s": 1963.559,
+     "start": "32:43",
+     "end_s": 2735.509,
      "topics": [
       {
        "board": "page-10_t1",
        "title": "Gap fill: choosing the right conjunction",
-       "start_s": 1712.254,
-       "start": "28:32",
+       "start_s": 1963.559,
+       "start": "32:43",
        "points": [
         {
          "text": "introduce the task",
          "block": "page-10_k01",
-         "start_s": 1712.254,
-         "start": "28:32"
+         "start_s": 1963.559,
+         "start": "32:43"
         },
         {
          "text": "how the word list works",
          "block": "page-10_k03",
-         "start_s": 1736.282,
-         "start": "28:56"
+         "start_s": 1987.587,
+         "start": "33:07"
         },
         {
          "text": "find the link between the two clauses",
          "block": "page-10_k04",
-         "start_s": 1773.654,
-         "start": "29:33"
+         "start_s": 2024.959,
+         "start": "33:44"
         },
         {
          "text": "the verb form rules one word out",
          "block": "page-10_k05",
-         "start_s": 1811.307,
-         "start": "30:11"
+         "start_s": 2062.612,
+         "start": "34:22"
         },
         {
          "text": "since against when",
          "block": "page-10_k06",
-         "start_s": 1835.754,
-         "start": "30:35"
+         "start_s": 2087.059,
+         "start": "34:47"
         },
         {
          "text": "name the relationship",
          "block": "page-10_k07",
-         "start_s": 1870.964,
-         "start": "31:10"
+         "start_s": 2122.269,
+         "start": "35:22"
         },
         {
          "text": "two words for contrast",
          "block": "page-10_k08",
-         "start_s": 1896.143,
-         "start": "31:36"
+         "start_s": 2147.448,
+         "start": "35:47"
         },
         {
          "text": "two accounts that do not agree",
          "block": "page-10_k09",
-         "start_s": 1922.747,
-         "start": "32:02"
+         "start_s": 2174.052,
+         "start": "36:14"
         },
         {
          "text": "while as a contrast word",
          "block": "page-10_k10",
-         "start_s": 1940.957,
-         "start": "32:20"
+         "start_s": 2192.262,
+         "start": "36:32"
         },
         {
          "text": "the second meaning of while",
          "block": "page-10_k11",
-         "start_s": 1961.944,
-         "start": "32:41"
+         "start_s": 2213.249,
+         "start": "36:53"
         },
         {
          "text": "a clause of condition",
          "block": "page-10_k13",
-         "start_s": 1994.105,
-         "start": "33:14"
+         "start_s": 2245.41,
+         "start": "37:25"
         },
         {
          "text": "gloss and use in letters",
          "block": "page-10_k15",
-         "start_s": 2014.531,
-         "start": "33:34"
+         "start_s": 2265.836,
+         "start": "37:45"
         },
         {
          "text": "two events in order",
          "block": "page-10_k17",
-         "start_s": 2049.775,
-         "start": "34:09"
+         "start_s": 2301.08,
+         "start": "38:21"
         },
         {
          "text": "a second condition",
          "block": "page-10_k18",
-         "start_s": 2070.329,
-         "start": "34:30"
+         "start_s": 2321.634,
+         "start": "38:41"
         },
         {
          "text": "one specific past occasion",
          "block": "page-10_k19",
-         "start_s": 2092.885,
-         "start": "34:52"
+         "start_s": 2344.19,
+         "start": "39:04"
         },
         {
          "text": "the two clauses of the sentence",
          "block": "page-10_k20",
-         "start_s": 2106.981,
-         "start": "35:06"
+         "start_s": 2358.286,
+         "start": "39:18"
         },
         {
          "text": "the comma rule for both word orders",
          "block": "page-10_k21",
-         "start_s": 2131.486,
-         "start": "35:31"
+         "start_s": 2382.791,
+         "start": "39:42"
         },
         {
          "text": "a clause of reason",
          "block": "page-10_k22",
-         "start_s": 2162.907,
-         "start": "36:02"
+         "start_s": 2414.212,
+         "start": "40:14"
         },
         {
          "text": "one action must come first",
          "block": "page-10_k23",
-         "start_s": 2179.977,
-         "start": "36:19"
+         "start_s": 2431.282,
+         "start": "40:31"
         },
         {
          "text": "the gap opens a relative clause",
          "block": "page-10_k24",
-         "start_s": 2213.724,
-         "start": "36:53"
+         "start_s": 2537.83,
+         "start": "42:17"
         },
         {
          "text": "which or who",
          "block": "page-10_k26",
-         "start_s": 2226.847,
-         "start": "37:06"
+         "start_s": 2550.953,
+         "start": "42:30"
         },
         {
          "text": "no extra pronoun after which or who",
          "block": "page-10_k27",
-         "start_s": 2243.172,
-         "start": "37:23"
+         "start_s": 2567.278,
+         "start": "42:47"
         },
         {
          "text": "why there is a comma before the gap",
          "block": "page-10_k29",
-         "start_s": 2266.391,
-         "start": "37:46"
+         "start_s": 2590.497,
+         "start": "43:10"
         },
         {
          "text": "who, and who it points back to",
          "block": "page-10_k30",
-         "start_s": 2285.496,
-         "start": "38:05"
+         "start_s": 2609.602,
+         "start": "43:29"
         },
         {
          "text": "why there is a comma before the gap",
          "block": "page-10_k31",
-         "start_s": 2300.761,
-         "start": "38:20"
+         "start_s": 2624.867,
+         "start": "43:44"
         },
         {
          "text": "writing the age modifier",
          "block": "page-10_k32",
-         "start_s": 2311.329,
-         "start": "38:31"
+         "start_s": 2635.435,
+         "start": "43:55"
         },
         {
          "text": "using these conjunctions in letter writing",
          "block": "page-10_k33",
-         "start_s": 2323.68,
-         "start": "38:43"
+         "start_s": 2701.724,
+         "start": "45:01"
         }
        ]
       }
@@ -11148,8 +11148,8 @@
        "block": "page-10_k33",
        "kind": "rule",
        "text": "Use these joining words to join your case notes into complex sentences. Choose the word by the link you need: time, contrast, reason, condition or extra information.",
-       "start_s": 2323.68,
-       "start": "38:43"
+       "start_s": 2701.724,
+       "start": "45:01"
       }
      ],
      "terms": [
@@ -11157,30 +11157,30 @@
        "block": "page-10_k14",
        "label": "Form",
        "term": "Conditional clause",
-       "start_s": 2002.19,
-       "start": "33:22"
+       "start_s": 2253.495,
+       "start": "37:33"
       },
       {
        "block": "page-10_k24",
        "label": "Form",
        "term": "Relative clause",
-       "start_s": 2213.724,
-       "start": "36:53"
+       "start_s": 2537.83,
+       "start": "42:17"
       },
       {
        "block": "page-10_k32",
        "label": "Form",
        "term": "16-year-old",
-       "start_s": 2311.329,
-       "start": "38:31"
+       "start_s": 2635.435,
+       "start": "43:55"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-10_k28",
        "text": "Pre-eclampsia, which it led to an emergency caesarean section.",
-       "start_s": 2248.345,
-       "start": "37:28"
+       "start_s": 2572.451,
+       "start": "42:52"
       }
      ],
      "practice": [],
@@ -11190,8 +11190,8 @@
        "lesson": "grammar-01-verb-tenses",
        "section": "page-9",
        "provenance": "source-derived",
-       "start_s": 1825.764,
-       "start": "30:25"
+       "start_s": 2077.069,
+       "start": "34:37"
       }
      ]
     },
@@ -11204,191 +11204,191 @@
       12
      ],
      "category": null,
-     "start_s": 2357.465,
-     "start": "39:17",
-     "end_s": 2803.654,
+     "start_s": 2735.509,
+     "start": "45:35",
+     "end_s": 3264.738,
      "topics": [
       {
        "board": "pages-11-12_t1",
        "title": "the rule and due to, despite, as well as",
-       "start_s": 2357.465,
-       "start": "39:17",
+       "start_s": 2735.509,
+       "start": "45:35",
        "points": [
         {
          "text": "Show the pattern these three words take, with the first model sentence",
          "block": "pages-11-12_k01",
-         "start_s": 2357.465,
-         "start": "39:17"
+         "start_s": 2735.509,
+         "start": "45:35"
         },
         {
          "text": "Show the model sentence and reject the clause version",
          "block": "pages-11-12_k13",
-         "start_s": 2357.465,
-         "start": "39:17"
+         "start_s": 2735.509,
+         "start": "45:35"
         },
         {
          "text": "Show the model sentence and its function",
          "block": "pages-11-12_k24",
-         "start_s": 2357.465,
-         "start": "39:17"
+         "start_s": 2735.509,
+         "start": "45:35"
         },
         {
          "text": "Define the grammar term 'clause'",
          "block": "pages-11-12_k04",
-         "start_s": 2383.547,
-         "start": "39:43"
+         "start_s": 2761.591,
+         "start": "46:01"
         },
         {
          "text": "Define 'gerund' in English, without the first-language grammar term",
          "block": "pages-11-12_k05",
-         "start_s": 2392.216,
-         "start": "39:52"
+         "start_s": 2770.26,
+         "start": "46:10"
         },
         {
          "text": "Analyse what follows 'due to' in the model sentence",
          "block": "pages-11-12_k06",
-         "start_s": 2415.451,
-         "start": "40:15"
+         "start_s": 2793.495,
+         "start": "46:33"
         },
         {
          "text": "Give the meaning of 'due to'",
          "block": "pages-11-12_k07",
-         "start_s": 2429.431,
-         "start": "40:29"
+         "start_s": 2807.475,
+         "start": "46:47"
         },
         {
          "text": "Show that 'due to' works best with a noun",
          "block": "pages-11-12_k08",
-         "start_s": 2439.314,
-         "start": "40:39"
+         "start_s": 2817.358,
+         "start": "46:57"
         },
         {
          "text": "Change card, part one: 'because' takes a clause",
          "block": "pages-11-12_k09",
-         "start_s": 2452.842,
-         "start": "40:52"
+         "start_s": 2830.886,
+         "start": "47:10"
         },
         {
          "text": "Change card, part two: 'because of' and 'due to' take a noun",
          "block": "pages-11-12_k11",
-         "start_s": 2468.846,
-         "start": "41:08"
+         "start_s": 2846.89,
+         "start": "47:26"
         },
         {
          "text": "Show how the clause turns into the gerund phrase",
          "block": "pages-11-12_k16",
-         "start_s": 2516.017,
-         "start": "41:56"
+         "start_s": 2894.061,
+         "start": "48:14"
         },
         {
          "text": "Give the meaning of 'despite'",
          "block": "pages-11-12_k17",
-         "start_s": 2523.918,
-         "start": "42:03"
+         "start_s": 2901.962,
+         "start": "48:21"
         },
         {
          "text": "Separate 'despite' from 'in spite of'",
          "block": "pages-11-12_k18",
-         "start_s": 2533.535,
-         "start": "42:13"
+         "start_s": 2911.579,
+         "start": "48:31"
         },
         {
          "text": "Show the form of 'despite' that does take a clause",
          "block": "pages-11-12_k20",
-         "start_s": 2548.352,
-         "start": "42:28"
+         "start_s": 2926.396,
+         "start": "48:46"
         },
         {
          "text": "Note the difference: although takes a dependent clause",
          "block": "pages-11-12_k22",
-         "start_s": 2562.825,
-         "start": "42:42"
+         "start_s": 2940.869,
+         "start": "49:00"
         },
         {
          "text": "Consolidate the two meanings",
          "block": "pages-11-12_k23",
-         "start_s": 2595.845,
-         "start": "43:15"
+         "start_s": 2973.889,
+         "start": "49:33"
         },
         {
          "text": "Show when to use it in OET writing",
          "block": "pages-11-12_k27",
-         "start_s": 2625.116,
-         "start": "43:45"
+         "start_s": 3003.16,
+         "start": "50:03"
         },
         {
          "text": "Teach the punctuation pattern shared by all three examples",
          "block": "pages-11-12_k28",
-         "start_s": 2639.416,
-         "start": "43:59"
+         "start_s": 3017.46,
+         "start": "50:17"
         },
         {
          "text": "Check the second halves and restate the rule",
          "block": "pages-11-12_k30",
-         "start_s": 2658.636,
-         "start": "44:18"
+         "start_s": 3036.68,
+         "start": "50:36"
         }
        ]
       },
       {
        "board": "pages-11-12_t4",
        "title": "Listing findings with as well as",
-       "start_s": 2679.499,
-       "start": "44:39",
+       "start_s": 3057.543,
+       "start": "50:57",
        "points": [
         {
          "text": "Show the two versions of the findings sentence",
          "block": "pages-11-12_k32",
-         "start_s": 2679.499,
-         "start": "44:39"
+         "start_s": 3057.543,
+         "start": "50:57"
         },
         {
          "text": "Start from the main clause",
          "block": "pages-11-12_k35",
-         "start_s": 2697.75,
-         "start": "44:57"
+         "start_s": 3075.794,
+         "start": "51:15"
         },
         {
          "text": "Reject 'has blood pressure'",
          "block": "pages-11-12_k36",
-         "start_s": 2715.853,
-         "start": "45:15"
+         "start_s": 3093.897,
+         "start": "51:33"
         },
         {
          "text": "Give the correct wording for raised pressure",
          "block": "pages-11-12_k37",
-         "start_s": 2720.423,
-         "start": "45:20"
+         "start_s": 3098.467,
+         "start": "51:38"
         },
         {
          "text": "Punctuating a list of findings",
          "block": "pages-11-12_k38",
-         "start_s": 2736.596,
-         "start": "45:36"
+         "start_s": 3114.64,
+         "start": "51:54"
         },
         {
          "text": "Point out the articles in the list",
          "block": "pages-11-12_k39",
-         "start_s": 2746.224,
-         "start": "45:46"
+         "start_s": 3124.268,
+         "start": "52:04"
         },
         {
          "text": "Why the writer chooses 'as well as'",
          "block": "pages-11-12_k40",
-         "start_s": 2760.273,
-         "start": "46:00"
+         "start_s": 3138.317,
+         "start": "52:18"
         },
         {
          "text": "Contrast the comma version with the 'and' version",
          "block": "pages-11-12_k41",
-         "start_s": 2764.433,
-         "start": "46:04"
+         "start_s": 3142.477,
+         "start": "52:22"
         },
         {
          "text": "State the rule for the item before 'as well as'",
          "block": "pages-11-12_k42",
-         "start_s": 2792.042,
-         "start": "46:32"
+         "start_s": 3170.086,
+         "start": "52:50"
         }
        ]
       }
@@ -11398,15 +11398,15 @@
        "block": "pages-11-12_k31",
        "kind": "rule",
        "text": "After due to, despite and as well as, use a noun or an -ing form, never a clause.",
-       "start_s": 2668.187,
-       "start": "44:28"
+       "start_s": 3046.231,
+       "start": "50:46"
       },
       {
        "block": "pages-11-12_k42",
        "kind": "rule",
        "text": "Before 'as well as', join the other items with 'and': then 'as well as' clearly adds the last finding.",
-       "start_s": 2792.042,
-       "start": "46:32"
+       "start_s": 3170.086,
+       "start": "52:50"
       }
      ],
      "terms": [
@@ -11414,36 +11414,36 @@
        "block": "pages-11-12_k04",
        "label": "Term",
        "term": "Clause",
-       "start_s": 2383.547,
-       "start": "39:43"
+       "start_s": 2761.591,
+       "start": "46:01"
       },
       {
        "block": "pages-11-12_k05",
        "label": "Form",
        "term": "Gerund",
-       "start_s": 2392.216,
-       "start": "39:52"
+       "start_s": 2770.26,
+       "start": "46:10"
       },
       {
        "block": "pages-11-12_k28",
        "label": "Term",
        "term": "Independent clause",
-       "start_s": 2639.416,
-       "start": "43:59"
+       "start_s": 3017.46,
+       "start": "50:17"
       }
      ],
      "wrong_examples": [
       {
        "block": "pages-11-12_k14",
        "text": "Despite he use a local anaesthetic",
-       "start_s": 2501.341,
-       "start": "41:41"
+       "start_s": 2879.385,
+       "start": "47:59"
       },
       {
        "block": "pages-11-12_k36",
        "text": "The patient has blood pressure.",
-       "start_s": 2715.853,
-       "start": "45:15"
+       "start_s": 3093.897,
+       "start": "51:33"
       }
      ],
      "practice": [],
@@ -11457,177 +11457,177 @@
       13
      ],
      "category": null,
-     "start_s": 2803.654,
-     "start": "46:43",
-     "end_s": 3391.513,
+     "start_s": 3264.738,
+     "start": "54:24",
+     "end_s": 3998.082,
      "topics": [
       {
        "board": "page-13_t1",
        "title": "Correct the sentences table",
-       "start_s": 2803.654,
-       "start": "46:43",
+       "start_s": 3264.738,
+       "start": "54:24",
        "points": [
         {
          "text": "what the class does with this table",
          "block": "page-13_k01",
-         "start_s": 2803.654,
-         "start": "46:43"
+         "start_s": 3264.738,
+         "start": "54:24"
         },
         {
          "text": "the meaning of intermittent pain",
          "block": "page-13_k03",
-         "start_s": 2843.272,
-         "start": "47:23"
+         "start_s": 3304.356,
+         "start": "55:04"
         },
         {
          "text": "the missing comma",
          "block": "page-13_k04",
-         "start_s": 2867.796,
-         "start": "47:47"
+         "start_s": 3328.88,
+         "start": "55:28"
         },
         {
          "text": "'of' never follows 'despite'",
          "block": "page-13_k05",
-         "start_s": 2884.446,
-         "start": "48:04"
+         "start_s": 3345.53,
+         "start": "55:45"
         },
         {
          "text": "the two correct forms",
          "block": "page-13_k06",
-         "start_s": 2897.218,
-         "start": "48:17"
+         "start_s": 3358.302,
+         "start": "55:58"
         },
         {
          "text": "adding the second problem with 'as well as'",
          "block": "page-13_k07",
-         "start_s": 2912.927,
-         "start": "48:32"
+         "start_s": 3374.011,
+         "start": "56:14"
         },
         {
          "text": "the forms of 'swell'",
          "block": "page-13_k08",
-         "start_s": 2931.271,
-         "start": "48:51"
+         "start_s": 3392.355,
+         "start": "56:32"
         },
         {
          "text": "the verbs used with treatment and medication",
          "block": "page-13_k09",
-         "start_s": 2944.376,
-         "start": "49:04"
+         "start_s": 3405.46,
+         "start": "56:45"
         },
         {
          "text": "the meaning of deteriorated",
          "block": "page-13_k10",
-         "start_s": 2975.86,
-         "start": "49:35"
+         "start_s": 3436.944,
+         "start": "57:16"
         },
         {
          "text": "the meaning of distance vision",
          "block": "page-13_k11",
-         "start_s": 3000.259,
-         "start": "50:00"
+         "start_s": 3461.343,
+         "start": "57:41"
         },
         {
          "text": "where 'Although' can stand",
          "block": "page-13_k12",
-         "start_s": 3023.581,
-         "start": "50:23"
+         "start_s": 3484.665,
+         "start": "58:04"
         },
         {
          "text": "the two clauses joined with 'Although'",
          "block": "page-13_k13",
-         "start_s": 3038.773,
-         "start": "50:38"
+         "start_s": 3499.857,
+         "start": "58:19"
         },
         {
          "text": "keeping the original order with 'However'",
          "block": "page-13_k14",
-         "start_s": 3075.718,
-         "start": "51:15"
+         "start_s": 3536.802,
+         "start": "58:56"
         },
         {
          "text": "why 'due to' cannot be used here",
          "block": "page-13_k15",
-         "start_s": 3110.121,
-         "start": "51:50"
+         "start_s": 3571.205,
+         "start": "59:31"
         },
         {
          "text": "the two ways to write the cause",
          "block": "page-13_k16",
-         "start_s": 3119.518,
-         "start": "51:59"
+         "start_s": 3580.602,
+         "start": "59:40"
         },
         {
          "text": "the meaning of passed away",
          "block": "page-13_k17",
-         "start_s": 3155.766,
-         "start": "52:35"
+         "start_s": 3616.85,
+         "start": "60:16"
         },
         {
          "text": "the only fault",
          "block": "page-13_k18",
-         "start_s": 3182.119,
-         "start": "53:02"
+         "start_s": 3643.203,
+         "start": "60:43"
         },
         {
          "text": "the comma goes between the clauses",
          "block": "page-13_k19",
-         "start_s": 3189.408,
-         "start": "53:09"
+         "start_s": 3650.492,
+         "start": "60:50"
         },
         {
          "text": "the rule to remember",
          "block": "page-13_k20",
-         "start_s": 3207.429,
-         "start": "53:27"
+         "start_s": 3668.513,
+         "start": "61:08"
         },
         {
          "text": "the same fault as row 3",
          "block": "page-13_k21",
-         "start_s": 3238.01,
-         "start": "53:58"
+         "start_s": 3771.007,
+         "start": "62:51"
         },
         {
          "text": "the two ways to fix it",
          "block": "page-13_k22",
-         "start_s": 3245.529,
-         "start": "54:05"
+         "start_s": 3778.526,
+         "start": "62:58"
         },
         {
          "text": "the meaning of shelter",
          "block": "page-13_k23",
-         "start_s": 3273.551,
-         "start": "54:33"
+         "start_s": 3806.548,
+         "start": "63:26"
         },
         {
          "text": "the meaning of reluctant",
          "block": "page-13_k24",
-         "start_s": 3304.982,
-         "start": "55:04"
+         "start_s": 3837.979,
+         "start": "63:57"
         },
         {
          "text": "where the fault is",
          "block": "page-13_k25",
-         "start_s": 3316.011,
-         "start": "55:16"
+         "start_s": 3849.008,
+         "start": "64:09"
         },
         {
          "text": "what a gerund is",
          "block": "page-13_k26",
-         "start_s": 3337.723,
-         "start": "55:37"
+         "start_s": 3870.72,
+         "start": "64:30"
         },
         {
          "text": "clause or gerund after 'as well as'",
          "block": "page-13_k27",
-         "start_s": 3342.943,
-         "start": "55:42"
+         "start_s": 3875.94,
+         "start": "64:35"
         },
         {
          "text": "the rule for these linking words",
          "block": "page-13_k28",
-         "start_s": 3371.013,
-         "start": "56:11"
+         "start_s": 3977.582,
+         "start": "66:17"
         }
        ]
       }
@@ -11637,15 +11637,15 @@
        "block": "page-13_k20",
        "kind": "rule",
        "text": "When the dependent clause comes first, the comma goes at the end of that clause, not after Although.",
-       "start_s": 3207.429,
-       "start": "53:27"
+       "start_s": 3668.513,
+       "start": "61:08"
       },
       {
        "block": "page-13_k28",
        "kind": "warning",
        "text": "Due to, despite and as well as are followed by a noun or a gerund, never by a clause.",
-       "start_s": 3371.013,
-       "start": "56:11"
+       "start_s": 3977.582,
+       "start": "66:17"
       }
      ],
      "terms": [
@@ -11653,23 +11653,23 @@
        "block": "page-13_k08",
        "label": "Form",
        "term": "Swollen",
-       "start_s": 2931.271,
-       "start": "48:51"
+       "start_s": 3392.355,
+       "start": "56:32"
       },
       {
        "block": "page-13_k26",
        "label": "Grammar term",
        "term": "Gerund",
-       "start_s": 3337.723,
-       "start": "55:37"
+       "start_s": 3870.72,
+       "start": "64:30"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-13_k05",
        "text": "Despite of the treatment",
-       "start_s": 2884.446,
-       "start": "48:04"
+       "start_s": 3345.53,
+       "start": "55:45"
       }
      ],
      "practice": [],
@@ -11694,8 +11694,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k05",
-     "start_s": 577.371,
-     "start": "9:37"
+     "start_s": 634.945,
+     "start": "10:34"
     },
     {
      "word": "Insists",
@@ -11703,8 +11703,8 @@
      "lexicon": null,
      "section": "pages-08-09",
      "block": "pages-08-09_k35",
-     "start_s": 1643.2,
-     "start": "27:23"
+     "start_s": 1894.505,
+     "start": "31:34"
     },
     {
      "word": "hesitate",
@@ -11712,8 +11712,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k15",
-     "start_s": 2014.531,
-     "start": "33:34"
+     "start_s": 2265.836,
+     "start": "37:45"
     },
     {
      "word": "Elevated",
@@ -11721,8 +11721,8 @@
      "lexicon": null,
      "section": "pages-11-12",
      "block": "pages-11-12_k34",
-     "start_s": 2685.42,
-     "start": "44:45"
+     "start_s": 3063.464,
+     "start": "51:03"
     },
     {
      "word": "Intermittent",
@@ -11730,8 +11730,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k03",
-     "start_s": 2843.272,
-     "start": "47:23"
+     "start_s": 3304.356,
+     "start": "55:04"
     },
     {
      "word": "Deteriorated",
@@ -11739,8 +11739,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k10",
-     "start_s": 2975.86,
-     "start": "49:35"
+     "start_s": 3436.944,
+     "start": "57:16"
     },
     {
      "word": "Distance vision",
@@ -11748,8 +11748,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k11",
-     "start_s": 3000.259,
-     "start": "50:00"
+     "start_s": 3461.343,
+     "start": "57:41"
     },
     {
      "word": "Passed away",
@@ -11757,8 +11757,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k17",
-     "start_s": 3155.766,
-     "start": "52:35"
+     "start_s": 3616.85,
+     "start": "60:16"
     },
     {
      "word": "Shelter",
@@ -11766,8 +11766,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k23",
-     "start_s": 3273.551,
-     "start": "54:33"
+     "start_s": 3806.548,
+     "start": "63:26"
     },
     {
      "word": "Reluctant",
@@ -11775,8 +11775,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k24",
-     "start_s": 3304.982,
-     "start": "55:04"
+     "start_s": 3837.979,
+     "start": "63:57"
     }
    ],
    "withheld": {
@@ -11800,16 +11800,16 @@
       "section": "page-15",
       "from_section": "pages-08-09",
       "utterance": "pages-08-09_t1.s6.u3",
-      "start_s": 1382.471,
-      "start": "23:02"
+      "start_s": 1569.996,
+      "start": "26:09"
      },
      {
       "lesson": "grammar-01-verb-tenses",
       "section": "page-9",
       "from_section": "page-10",
       "utterance": "page-10_t1.s4.u3",
-      "start_s": 1825.764,
-      "start": "30:25"
+      "start_s": 2077.069,
+      "start": "34:37"
      }
     ],
     "referred_to_by": [
@@ -53879,8 +53879,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "page-6",
-     "start_s": 650.498,
-     "start": "10:50",
+     "start_s": 708.072,
+     "start": "11:48",
      "source": "term"
     }
    ]
@@ -54446,8 +54446,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "pages-08-09",
-     "start_s": 1247.321,
-     "start": "20:47",
+     "start_s": 1434.846,
+     "start": "23:54",
      "source": "section"
     }
    ]
@@ -54466,8 +54466,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "pages-08-09",
-     "start_s": 1247.321,
-     "start": "20:47",
+     "start_s": 1434.846,
+     "start": "23:54",
      "source": "curated"
     },
     {
@@ -54525,8 +54525,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "page-10",
-     "start_s": 2002.19,
-     "start": "33:22",
+     "start_s": 2253.495,
+     "start": "37:33",
      "source": "term"
     }
    ]
@@ -54655,8 +54655,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "pages-08-09",
-     "start_s": 1268.041,
-     "start": "21:08",
+     "start_s": 1455.566,
+     "start": "24:15",
      "source": "term"
     }
    ]
@@ -54681,8 +54681,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "page-13",
-     "start_s": 2803.654,
-     "start": "46:43",
+     "start_s": 3264.738,
+     "start": "54:24",
      "source": "section"
     }
    ]
@@ -54929,8 +54929,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "page-6",
-     "start_s": 658.073,
-     "start": "10:58",
+     "start_s": 715.647,
+     "start": "11:55",
      "source": "term"
     },
     {
@@ -54949,8 +54949,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "pages-11-12",
-     "start_s": 2357.465,
-     "start": "39:17",
+     "start_s": 2735.509,
+     "start": "45:35",
      "source": "section"
     }
    ]
@@ -55027,8 +55027,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "pages-08-09",
-     "start_s": 1276.871,
-     "start": "21:16",
+     "start_s": 1464.396,
+     "start": "24:24",
      "source": "term"
     },
     {
@@ -55138,8 +55138,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "page-6",
-     "start_s": 531.836,
-     "start": "8:51",
+     "start_s": 589.41,
+     "start": "9:49",
      "source": "section"
     }
    ]
@@ -55242,8 +55242,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "page-10",
-     "start_s": 1712.254,
-     "start": "28:32",
+     "start_s": 1963.559,
+     "start": "32:43",
      "source": "section"
     }
    ]
@@ -55281,8 +55281,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "pages-11-12",
-     "start_s": 2392.216,
-     "start": "39:52",
+     "start_s": 2770.26,
+     "start": "46:10",
      "source": "term"
     }
    ]
@@ -56312,8 +56312,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "pages-08-09",
-     "start_s": 1371.194,
-     "start": "22:51",
+     "start_s": 1558.719,
+     "start": "25:58",
      "source": "term"
     },
     {
@@ -56928,8 +56928,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "page-7",
-     "start_s": 1014.696,
-     "start": "16:54",
+     "start_s": 1143.691,
+     "start": "19:03",
      "source": "term"
     },
     {
@@ -57492,8 +57492,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "pages-08-09",
-     "start_s": 1490.814,
-     "start": "24:50",
+     "start_s": 1678.339,
+     "start": "27:58",
      "source": "term"
     }
    ]
@@ -57505,8 +57505,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "page-7",
-     "start_s": 815.786,
-     "start": "13:35",
+     "start_s": 944.781,
+     "start": "15:44",
      "source": "section"
     }
    ]
@@ -57544,8 +57544,8 @@
     {
      "lesson": "grammar-05-complex-compound",
      "section": "page-13",
-     "start_s": 2931.271,
-     "start": "48:51",
+     "start_s": 3392.355,
+     "start": "56:32",
      "source": "term"
     }
    ]

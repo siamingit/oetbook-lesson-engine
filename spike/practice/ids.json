@@ -26,6 +26,10 @@
   "grammar-03-nominalization": [
    952000,
    952999
+  ],
+  "grammar-05-complex-compound": [
+   954000,
+   954999
   ]
  },
  "ids": [
@@ -1264,6 +1268,174 @@
    "id": "oa-grammar-952017",
    "lesson": "grammar-03-nominalization",
    "point": "noun-to-verb",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954000",
+   "lesson": "grammar-05-complex-compound",
+   "point": "stand-alone",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954001",
+   "lesson": "grammar-05-complex-compound",
+   "point": "stand-alone",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954002",
+   "lesson": "grammar-05-complex-compound",
+   "point": "notes-to-sentence",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954003",
+   "lesson": "grammar-05-complex-compound",
+   "point": "notes-to-sentence",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954004",
+   "lesson": "grammar-05-complex-compound",
+   "point": "comma-after",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954005",
+   "lesson": "grammar-05-complex-compound",
+   "point": "compound-complex",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954006",
+   "lesson": "grammar-05-complex-compound",
+   "point": "compound-complex",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954007",
+   "lesson": "grammar-05-complex-compound",
+   "point": "choose-conjunction",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954008",
+   "lesson": "grammar-05-complex-compound",
+   "point": "choose-conjunction",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954009",
+   "lesson": "grammar-05-complex-compound",
+   "point": "choose-conjunction",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954010",
+   "lesson": "grammar-05-complex-compound",
+   "point": "choose-conjunction",
+   "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954011",
+   "lesson": "grammar-05-complex-compound",
+   "point": "choose-conjunction",
+   "slot": "gap-4",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954012",
+   "lesson": "grammar-05-complex-compound",
+   "point": "who-which",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954013",
+   "lesson": "grammar-05-complex-compound",
+   "point": "who-which",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954014",
+   "lesson": "grammar-05-complex-compound",
+   "point": "who-which",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954015",
+   "lesson": "grammar-05-complex-compound",
+   "point": "due-to-despite",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954016",
+   "lesson": "grammar-05-complex-compound",
+   "point": "due-to-despite",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954017",
+   "lesson": "grammar-05-complex-compound",
+   "point": "due-to-despite",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954018",
+   "lesson": "grammar-05-complex-compound",
+   "point": "due-to-despite",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954019",
+   "lesson": "grammar-05-complex-compound",
+   "point": "due-to-despite",
+   "slot": "item-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954020",
+   "lesson": "grammar-05-complex-compound",
+   "point": "despite-although",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954021",
+   "lesson": "grammar-05-complex-compound",
+   "point": "despite-although",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954022",
+   "lesson": "grammar-05-complex-compound",
+   "point": "notes-to-one",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-954023",
+   "lesson": "grammar-05-complex-compound",
+   "point": "notes-to-one",
    "slot": "item-2",
    "issued": "2026-10-31"
   }
