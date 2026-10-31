@@ -333,12 +333,48 @@ def lesson_type_default(lesson: Path) -> str:
     return lesson_type.from_id(lesson)
 
 
+def no_source_config(lesson: Path, title: str, by: str, today: str) -> dict:
+    """The config of a lesson with no recorded source (ADR 047): no deck to
+    read, so no deck sections, no contents slide and no title slide. Its title
+    is the maintainer's; its introduction is authored, in the slot
+    paths.NO_SOURCE_INTRO_PAGE; every section is added with --add-section."""
+    import paths
+    return {"purpose": "Lesson structure of a lesson with no recorded source (ADR 047): no "
+                       "video, no deck and no transcript. Every section is authored (ADR 018), "
+                       "added with --add-section; the introduction is authored too.",
+            "lesson": {"title": title, "page": paths.NO_SOURCE_INTRO_PAGE,
+                       "type": lesson_type_default(lesson),
+                       "type_by": f"default, from the lesson id {today}",
+                       "source": "none", "source_by": f"{by} {today}",
+                       "status": "maintainer", "title_by": f"{by} {today}",
+                       "description": None, "style": "c", "style_by": f"default, ADR 042 {today}",
+                       "description_status": None},
+            "contents_page": None,
+            "intro": {"source": "authored: the lesson has no recording (ADR 047)"},
+            "diagram_pages": [],
+            "sections": []}
+
+
 def main() -> None:
     lesson = Path(sys.argv[1])
     out_path = lesson / "analysis" / "sections.json"
     previous = json.loads(out_path.read_text(encoding="utf-8")) if out_path.exists() else {}
     today = datetime.date.today().isoformat()
 
+    if "--no-source" in sys.argv:
+        # A lesson with no recorded source (ADR 047): made once, before anything
+        # else, for a lesson folder with no source/ at all
+        if previous:
+            raise SystemExit("REFUSED: --no-source makes a lesson's first config; this one exists")
+        if (lesson / "source").exists():
+            raise SystemExit(f"REFUSED: {lesson / 'source'} exists: a lesson with a source is built "
+                             "from its deck")
+        title = sys.argv[sys.argv.index("--no-source") + 1]
+        by = sys.argv[sys.argv.index("--by") + 1] if "--by" in sys.argv else "maintainer"
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        write(out_path, no_source_config(lesson, title, by, today))
+        print(f"lesson with no source (ADR 047): {title!r} ({by}); add its sections with --add-section")
+        return
     if "--intro-range" in sys.argv:
         # The introduction's source in a deck with no contents slide: the
         # recording from FROM to TO seconds, whatever slide is on screen.
@@ -627,6 +663,10 @@ def main() -> None:
                 return
         raise SystemExit(f"page {page} is in no section")
 
+    import paths
+    if paths.no_source(previous):
+        raise SystemExit("REFUSED: this lesson has no source (ADR 047), so there is no deck to read "
+                         "again; its sections are set with --add-section. Nothing written.")
     import pypdfium2 as pdfium
     doc = pdfium.PdfDocument(str(lesson / "source" / "slides.pdf"))
     reg_path = lesson / "analysis" / "deck_defects.json"

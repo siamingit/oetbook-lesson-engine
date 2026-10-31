@@ -254,6 +254,14 @@ def afford(L: Path, budget: float | None, estimate: float, what: str) -> None:
                    f"${budget:.2f}. Raise --budget to continue.")
 
 
+def no_source(L: Path) -> bool:
+    """A lesson with no recorded source (ADR 047): its config says so
+    (build_sections.py --no-source). Its source stages do not run; every
+    section and its introduction are authored."""
+    p = L / "analysis" / "sections.json"
+    return p.exists() and paths.no_source(json.loads(p.read_text(encoding="utf-8")))
+
+
 def sections(L: Path) -> tuple[dict, list[dict]]:
     info = json.loads((L / "analysis" / "sections.json").read_text(encoding="utf-8"))
     intro = paths.intro_section(info)
@@ -281,6 +289,12 @@ def stage_preflight(L, a):
     gate waits on it; the pack is rebuilt when the sections change."""
     pack = L / "analysis" / "preflight" / "preflight_pack.zip"
     sp = L / "analysis" / "sections.json"
+    if no_source(L):
+        return stage_preflight_no_source(L, sp)
+    if not (L / "source").exists() and not sp.exists():
+        raise Stop(f"no {L / 'source'}: a lesson with a recorded source needs source/video.mp4 and "
+                   "source/slides.pdf; a lesson with none starts with build_sections.py <L> "
+                   "--no-source \"TITLE\" --by NAME (ADR 047)")
     if not pack.exists() or (sp.exists() and sp.stat().st_mtime > pack.stat().st_mtime):
         print(run(L, [str(HERE / "preflight_pack.py"), str(L)], "preflight pack").strip())
     facts = json.loads((L / "analysis" / "preflight.json").read_text(encoding="utf-8"))
@@ -310,17 +324,44 @@ def stage_preflight(L, a):
                    "draws tense colours)")
 
 
+def stage_preflight_no_source(L: Path, sp: Path) -> None:
+    """A lesson with no source (ADR 047) has no pack to review: its source
+    gate is the maintainer's approval of the lesson's plan, recorded with
+    --approve source. The rest of the gate's settings are needed as for any
+    lesson."""
+    info = json.loads(sp.read_text(encoding="utf-8"))
+    if not info["sections"]:
+        raise Stop("a lesson with no source (ADR 047) has no sections yet: add each with "
+                   f"build_sections.py {L} --add-section N \"TITLE\" --by NAME")
+    if "source" not in gates(L):
+        raise Stop("GATE 'source': a lesson with no source (ADR 047) has no preflight pack; its "
+                   "source gate is the maintainer's approval of the lesson's plan. Record it with: "
+                   f".venv/Scripts/python spike/scripts/build_lesson.py {L} --approve source --by NAME")
+    if not info["lesson"].get("description"):
+        raise Stop(f"GATE 'source': set the lesson description (build_sections.py {L} --description)")
+    if info["lesson"].get("tense_lesson") is None:
+        raise Stop("GATE 'source': whether this lesson is about tenses is not set. Set it with "
+                   f"build_sections.py {L} --tense-lesson yes|no --by NAME (only a tense lesson "
+                   "draws tense colours)")
+
+
 def stage_audio(L, a):
+    if no_source(L):                # ADR 047: no recording, no transcript, no deck
+        return
     if not (L / "analysis" / "audio.mp3").exists():
         run(L, [str(HERE / "extract_audio.py"), str(L)], "extract audio")
 
 
 def stage_keyterm_candidates(L, a):
+    if no_source(L):                # ADR 047
+        return
     if not (L / "analysis" / "keyterms_candidates.json").exists():
         run(L, [str(HERE / "extract_keyterms.py"), str(L)], "keyterm candidates")
 
 
 def stage_keyterms(L, a):
+    if no_source(L):                # ADR 047
+        return
     curated = L / "analysis" / "keyterms_curated.txt"
     if not curated.exists():
         raise Stop(f"keyterms: write {curated} from keyterms_candidates.json (the agent curates "
@@ -335,6 +376,8 @@ def stage_keyterms(L, a):
 
 
 def stage_transcribe(L, a):
+    if no_source(L):                # ADR 047
+        return
     if not (L / "analysis" / "scribe_v2_response.json").exists():
         if a.budget is None:
             raise Stop("transcription (Scribe, about $0.30 per hour of video) is paid: run with "
@@ -345,6 +388,8 @@ def stage_transcribe(L, a):
 
 
 def stage_slides(L, a):
+    if no_source(L):                # ADR 047
+        return
     if (L / "analysis" / "slides" / "slide_timeline.json").exists():
         return
     st = str(HERE / "build_slide_timeline.py")
@@ -355,6 +400,8 @@ def stage_slides(L, a):
 
 
 def stage_annotations(L, a):
+    if no_source(L):                # ADR 047
+        return
     if not (L / "analysis" / "annotations" / "annotation_events.json").exists():
         run(L, [str(HERE / "extract_annotations.py"), str(L)], "annotations")
 
@@ -449,6 +496,13 @@ def stage_understanding(L, a):
                    f"it with build_sections.py {L} --intro-range 0 SECONDS")
     pages = sorted({p for s in secs for p in s["pages"]})
     todo = [p for p in pages if not (paths.understanding_dir(L, p) / "understanding.json").exists()]
+    if no_source(L):
+        # ADR 047: no recording to understand; every plan is the agent's (ADR 018)
+        if todo:
+            raise Stop("a lesson with no source (ADR 047) has no recording to understand: write the "
+                       "authored plan of each of these pages as analysis/understanding/page-N/"
+                       f"understanding.json (beats with no recording times, provenance authored): {todo}")
+        return
     # ADR 007: the deck's tables are transcribed, cell by cell, before the
     # understanding reads the pages (runbook step 1b); a deck with none has
     # the file with an empty `tables` list

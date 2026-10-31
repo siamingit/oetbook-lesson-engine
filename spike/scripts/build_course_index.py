@@ -301,7 +301,9 @@ def markdown(ix: dict) -> str:
                    if e.get("published") else "; not published"),
                 f"- Original recording: `{e['source']['recording']}`, "
                 f"{hms(e['source']['duration_s'])}; deck `{e['source']['deck']}`, "
-                f"{e['source']['deck_pages']} pages"]
+                f"{e['source']['deck_pages']} pages"
+                if e["source"]["recording"] or e["source"]["deck"] else
+                "- Original recording: none (a lesson with no recording and no deck, ADR 047)"]
         if e["description"]:
             out.append(f"- Description: {e['description']}")
         if e["categories"]:

@@ -728,10 +728,14 @@ def lesson_md(e: dict, where) -> list[str]:
         out.append(f"- Description: {md_text(e['description'])}")
     rec = (f"`{src['recording']}`, {mmss(src['recording_duration_s'])} long, partial hash "
            f"`{src['recording_partial_hash']}`" if src["recording"] else "no recording")
-    out.append(f"- Original session: folder `{src['folder']}`: {rec}; deck `{src['deck']}`, "
-               f"{src['deck_pages']} pages"
-               + (f"; the same recording as {', '.join('`' + i + '`' for i in src['same_recording_as'])}"
-                  if src["same_recording_as"] else ""))
+    if not src["recording"] and not src["deck"]:
+        # a lesson with no recorded source (ADR 047): authored, from no session
+        out.append("- Original session: none (a lesson with no recording and no deck, ADR 047)")
+    else:
+        out.append(f"- Original session: folder `{src['folder']}`: {rec}; deck `{src['deck']}`, "
+                   f"{src['deck_pages']} pages"
+                   + (f"; the same recording as {', '.join('`' + i + '`' for i in src['same_recording_as'])}"
+                      if src["same_recording_as"] else ""))
     out.append(f"  - {md_text(src['note'])}" if src["note"] else
                "  - The docs record nothing more about this session than its recording and deck.")
     if e["withheld"]["lines_naming_an_answer"]:
