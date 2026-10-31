@@ -894,6 +894,104 @@
    "point": "underwent",
    "slot": "item-2",
    "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-951013",
+   "lesson": "grammar-02-verb-use",
+   "point": "time-marker",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-951014",
+   "lesson": "grammar-02-verb-use",
+   "point": "time-marker",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-951015",
+   "lesson": "grammar-02-verb-use",
+   "point": "time-marker",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-951016",
+   "lesson": "grammar-02-verb-use",
+   "point": "time-marker",
+   "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-951017",
+   "lesson": "grammar-02-verb-use",
+   "point": "up-to-now",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-951018",
+   "lesson": "grammar-02-verb-use",
+   "point": "up-to-now",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-951019",
+   "lesson": "grammar-02-verb-use",
+   "point": "main-idea-first",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-951020",
+   "lesson": "grammar-02-verb-use",
+   "point": "main-idea-first",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-951021",
+   "lesson": "grammar-02-verb-use",
+   "point": "doer-named",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-951022",
+   "lesson": "grammar-02-verb-use",
+   "point": "doer-named",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-951023",
+   "lesson": "grammar-02-verb-use",
+   "point": "doer-named",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-951024",
+   "lesson": "grammar-02-verb-use",
+   "point": "was-diagnosed",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-951025",
+   "lesson": "grammar-02-verb-use",
+   "point": "was-diagnosed",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-951026",
+   "lesson": "grammar-02-verb-use",
+   "point": "same-tense",
+   "slot": "item",
+   "issued": "2026-10-31"
   }
  ]
 }

@@ -19,7 +19,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
 | 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 129:04 | 14 | 2026-10-31 10:33 (Siavash) |
-| 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 54:55 | 5 | not yet |
+| 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 62:40 | 5 | not yet |
 | 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 52:33 | 7 | 2026-10-27 09:37 (siavash) |
 | 4 | Grammar for OET: Articles | `grammar-04-articles` | 59:31 | 9 | 2026-10-27 19:07 (siavash) |
 | 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 56:31 | 8 | 2026-10-27 09:37 (siavash) |
@@ -740,8 +740,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ### Links to other lessons
 
 - referred to by Grammar for OET: Verb Use (`grammar-02-verb-use`), "Introduction" at 0:08
-- referred to by Grammar for OET: Verb Use (`grammar-02-verb-use`), "Verb use: active or passive" at 41:15, about section `page-16`
-- referred to by Grammar for OET: Verb Use (`grammar-02-verb-use`), "Verb use: active or passive" at 41:15, about section `pages-05-06`
+- referred to by Grammar for OET: Verb Use (`grammar-02-verb-use`), "Verb use: active or passive" at 45:27, about section `page-16`
+- referred to by Grammar for OET: Verb Use (`grammar-02-verb-use`), "Verb use: active or passive" at 45:27, about section `pages-05-06`
 - referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "What is nominalisation?" at 5:58, about section `page-15`
 - referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Non-physical complaints" at 23:20, about section `page-9`
 - referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Formal time-related expressions" at 36:57, about section `page-12`
@@ -770,7 +770,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 2. Grammar for OET: Verb Use
 
-- Lesson ID and folder: `grammar-02-verb-use` (folder `grammar-02-verb-use`); course grammar, lesson 2; length 54:55; bundle format 1.23
+- Lesson ID and folder: `grammar-02-verb-use` (folder `grammar-02-verb-use`); course grammar, lesson 2; length 62:40; bundle format 1.23
 - Status: built, final gate not approved
 - Description: Learn how to choose the right tense and the right voice when you turn case notes into sentences for your OET letter.
 - Original session: folder `source`: `source/video.mp4`, 75:02 long, partial hash `678ddc1608d757d6`; deck `source/slides.pdf`, 10 pages
@@ -808,270 +808,270 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 *Terms*: Verb tense (Form, 2:28); Time marker (Time words, 4:01); Passive (Form, 6:16); Paraphrasing (New word, 7:33)
 
-#### 8:36 Verb use: choosing the tense (`pages-05-06`, deck)
+#### 9:39 Verb use: choosing the tense (`pages-05-06`, deck)
 
-- 8:36 **exercise sentences 1 to 3**
-  - 8:36 Show the task and the first three sentences of the set.
-- 9:20 **exercise sentences 4 to 6**
-  - 9:20 Show the remaining three sentences of the same set.
-- 9:57 **Item 1: oral insulin commenced**
-  - 9:57 Fix the case note, the sentence and the preferred tense; teach the case-note verb commenced.
-  - 10:23 Teach the verb used for medication.
-  - 10:49 Define the present perfect the first time it is named.
-  - 11:07 Contrast a one-moment verb with a continuing action.
-  - 11:31 Give the simple past answer and say why it is correct.
-  - 11:56 Show the present perfect alternative, which needs a different verb.
-  - 12:11 Match the sentence to what the case note actually says.
-  - 12:30 Generalise the rule to a class of verbs.
-- 13:25 **Item 2: heart attack 2017**
-  - 13:25 Fix the item and say how many faults it has.
-  - 13:55 Fault 1: the tense.
-  - 14:01 Fault 2: the missing article.
-  - 14:13 Give the corrected sentence.
-  - 14:31 Warn that small omissions cost marks.
-- 14:39 **Item 3: arthritis 2013**
-  - 14:39 Fix the item and contrast a finished event with a continuing condition.
-  - 15:13 Draw the condition running from 2013 to now.
-  - 15:41 Contrast for and since.
-  - 15:52 Warn against from.
-  - 16:02 Give the present perfect answer.
-  - 16:19 Define the passive before using it.
-  - 16:29 Give the simple past answer with the passive.
-- 16:46 **Item 4: Warfarin therapy**
-  - 16:46 Fix the item and show that the tense is not the fault.
-  - 17:11 Name the real fault.
-  - 17:22 Give the corrected sentence using the case-note date.
-  - 17:37 Show the two ways of writing the sentence with commenced.
-  - 17:59 Give the passive answer and its preposition.
-- 18:18 **Item 5: hypertension 2010**
-  - 18:18 Fix the item and read the abbreviation.
-  - 18:48 Explain why since cannot follow was diagnosed.
-  - 18:58 Give the simple past answer.
-  - 19:10 Teach the preposition with dates.
-  - 19:29 Give the present perfect answer with a different verb.
-- 19:45 **Item 6: smoker for 25 to 30 years**
-  - 19:45 Fix the item and name the tense fault.
-  - 20:13 Draw the repeated action from the past up to now.
-  - 20:38 Give the answer in the same structure.
-  - 20:58 Show how to report the meaning of the data.
-- 21:47 **Introduction: exercise sentences 7 to 11**
-  - 21:47 Show the second set of sentences.
-- 22:44 **Item 7: ulcer since August 2017**
-  - 22:44 Fix the item and teach joining ideas.
-  - 23:20 Show what which does in this sentence.
-  - 23:46 Find the real verb in the second clause.
-  - 23:57 Give the corrected sentence.
-- 24:27 **Item 8: progress during hospitalization**
-  - 24:27 Fix the item and turn the two dates into one time phrase.
-  - 24:58 Teach the phrase during hospitalization.
-  - 25:06 Teach the describing word before progress.
-  - 25:31 Contrast a small change with a big one.
-  - 26:01 Separate significant from significance.
-  - 26:16 Show the correct sentence with significant.
-  - 26:26 Name the tense fault in the exercise sentence.
-  - 26:41 Give the corrected sentence and the rule for progression.
-  - 26:57 Warn about commas.
-  - 27:04 Give the study priority for tenses.
-- 27:25 **Item 9: over the past three weeks**
-  - 27:25 Fix the item and show that tense and punctuation are already right.
-  - 27:46 Show the repeated meaning.
-  - 27:57 Give the corrected sentence.
-- 28:08 **Item 10: blood pressure on examination**
-  - 28:08 Fix the item and say what an examination finding is.
-  - 28:35 State the rule for findings.
-  - 29:02 Give the corrected sentence.
-  - 29:19 Warn about abbreviations.
-  - 29:28 Give a second way to write the finding.
-- 29:42 **Item 11: limp and anxiety**
-  - 29:42 Fix the item and separate objective from subjective information.
-  - 30:15 Locate the verbs.
-  - 30:24 Contrast a changing finding with a lasting symptom.
-  - 30:45 Give the corrected sentence.
-  - 31:03 Note that the simple past is also possible.
-  - 31:12 State the closing rule.
+- 9:39 **exercise sentences 1 to 3**
+  - 9:39 Show the task and the first three sentences of the set.
+- 10:22 **exercise sentences 4 to 6**
+  - 10:22 Show the remaining three sentences of the same set.
+- 11:00 **Item 1: oral insulin commenced**
+  - 11:00 Fix the case note, the sentence and the preferred tense; teach the case-note verb commenced.
+  - 11:25 Teach the verb used for medication.
+  - 11:52 Define the present perfect the first time it is named.
+  - 12:09 Contrast a one-moment verb with a continuing action.
+  - 12:33 Give the simple past answer and say why it is correct.
+  - 12:59 Show the present perfect alternative, which needs a different verb.
+  - 13:13 Match the sentence to what the case note actually says.
+  - 13:33 Generalise the rule to a class of verbs.
+- 14:56 **Item 2: heart attack 2017**
+  - 14:56 Fix the item and say how many faults it has.
+  - 15:25 Fault 1: the tense.
+  - 15:31 Fault 2: the missing article.
+  - 15:44 Give the corrected sentence.
+  - 16:02 Warn that small omissions cost marks.
+- 16:09 **Item 3: arthritis 2013**
+  - 16:09 Fix the item and contrast a finished event with a continuing condition.
+  - 16:44 Draw the condition running from 2013 to now.
+  - 17:11 Contrast for and since.
+  - 17:22 Warn against from.
+  - 17:32 Give the present perfect answer.
+  - 17:50 Define the passive before using it.
+  - 18:00 Give the simple past answer with the passive.
+- 18:16 **Item 4: Warfarin therapy**
+  - 18:16 Fix the item and show that the tense is not the fault.
+  - 18:42 Name the real fault.
+  - 18:52 Give the corrected sentence using the case-note date.
+  - 19:08 Show the two ways of writing the sentence with commenced.
+  - 19:29 Give the passive answer and its preposition.
+- 19:49 **Item 5: hypertension 2010**
+  - 19:49 Fix the item and read the abbreviation.
+  - 20:19 Explain why since cannot follow was diagnosed.
+  - 20:29 Give the simple past answer.
+  - 20:41 Teach the preposition with dates.
+  - 21:00 Give the present perfect answer with a different verb.
+- 21:16 **Item 6: smoker for 25 to 30 years**
+  - 21:16 Fix the item and name the tense fault.
+  - 21:44 Draw the repeated action from the past up to now.
+  - 22:09 Give the answer in the same structure.
+  - 22:29 Show how to report the meaning of the data.
+- 23:50 **Introduction: exercise sentences 7 to 11**
+  - 23:50 Show the second set of sentences.
+- 24:47 **Item 7: ulcer since August 2017**
+  - 24:47 Fix the item and teach joining ideas.
+  - 25:23 Show what which does in this sentence.
+  - 25:49 Find the real verb in the second clause.
+  - 26:00 Give the corrected sentence.
+- 26:30 **Item 8: progress during hospitalization**
+  - 26:30 Fix the item and turn the two dates into one time phrase.
+  - 27:01 Teach the phrase during hospitalization.
+  - 27:09 Teach the describing word before progress.
+  - 27:34 Contrast a small change with a big one.
+  - 28:04 Separate significant from significance.
+  - 28:19 Show the correct sentence with significant.
+  - 28:29 Name the tense fault in the exercise sentence.
+  - 28:44 Give the corrected sentence and the rule for progression.
+  - 29:00 Warn about commas.
+  - 29:07 Give the study priority for tenses.
+- 29:28 **Item 9: over the past three weeks**
+  - 29:28 Fix the item and show that tense and punctuation are already right.
+  - 29:49 Show the repeated meaning.
+  - 30:00 Give the corrected sentence.
+- 31:02 **Item 10: blood pressure on examination**
+  - 31:02 Fix the item and say what an examination finding is.
+  - 31:30 State the rule for findings.
+  - 31:57 Give the corrected sentence.
+  - 32:13 Warn about abbreviations.
+  - 32:23 Give a second way to write the finding.
+- 32:37 **Item 11: limp and anxiety**
+  - 32:37 Fix the item and separate objective from subjective information.
+  - 33:10 Locate the verbs.
+  - 33:19 Contrast a changing finding with a lasting symptom.
+  - 33:40 Give the corrected sentence.
+  - 33:57 Note that the simple past is also possible.
+  - 34:07 State the closing rule.
 
 *Rules on the boards*
 
-- 12:30 Verbs like start, begin, initiate, commence and finish name one point in time. With a finished date, use the simple past.
-- 13:55 When in, on or at points to a date in the past, use the simple past.
-- 14:31 Small words are easy to forget when you write quickly. A missing a is marked as an error.
-- 17:11 6 months is a length of time. Since does not go with a length of time.
-- 28:35 Use the simple past for a finding taken on a particular date. There is no progression here.
-- 31:12 Unless the case notes say the symptom has gone, use the simple present for symptoms that have not changed.
+- 13:33 Verbs like start, begin, initiate, commence and finish name one point in time. With a finished date, use the simple past.
+- 15:25 When in, on or at points to a date in the past, use the simple past.
+- 16:02 Small words are easy to forget when you write quickly. A missing a is marked as an error.
+- 18:42 6 months is a length of time. Since does not go with a length of time.
+- 31:30 Use the simple past for a finding taken on a particular date. There is no progression here.
+- 34:07 Unless the case notes say the symptom has gone, use the simple present for symptoms that have not changed.
 
 *Warnings (common mistakes)*
 
-- 15:52 From is not a time word here. Do not write from 5 years or from 2013.
-- 26:57 Use a comma only where you are sure. A wrong comma counts as a grammar mistake.
-- 29:19 If you are not sure the reader will know a short form, write it in full: 'coronary artery disease', not 'CAD'.
+- 17:22 From is not a time word here. Do not write from 5 years or from 2013.
+- 29:00 Use a comma only where you are sure. A wrong comma counts as a grammar mistake.
+- 32:13 If you are not sure the reader will know a short form, write it in full: 'coronary artery disease', not 'CAD'.
 
 *Wrong sentences corrected*
 
-- 8:36 The patient has started taking oral insulin in November 2017
-- 8:36 The patient has heart attack in 2017.
-- 8:36 He has had arthritis from 5 years.
-- 9:20 The patient has been receiving warfarin therapy since 6 months.
-- 9:20 The patient was diagnosed with Hypertension since 2010
-- 9:20 He smokes 2 packs of cigarettes a day for the past 25 - 30 years.
-- 9:57 The patient has started taking oral insulin in November 2017
-- 13:25 The patient has heart attack in 2017.
-- 14:39 He has had arthritis from 5 years.
-- 16:46 The patient has been receiving warfarin therapy since 6 months.
-- 18:18 The patient was diagnosed with Hypertension since 2010
-- 19:45 He smokes 2 packs of cigarettes a day for the past 25 - 30 years.
-- 21:47 There is an ulcer on right lower lateral border of the tongue which is present for more than one year.
-- 21:47 During hospitalization the patient is making steady progress.
-- 21:47 Over the past three weeks, the patient progress has improved
-- 21:47 On the examination, the patient has a blood pressure of 140/90.
-- 21:47 The patient had limp and was anxious about his ability to work.
-- 22:44 There is an ulcer on right lower lateral border of the tongue which is present for more than one year.
-- 24:27 During hospitalization the patient is making steady progress.
-- 27:25 Over the past three weeks, the patient progress has improved
-- 28:08 On the examination, the patient has a blood pressure of 140/90.
-- 29:42 The patient had limp and was anxious about his ability to work.
+- 9:39 The patient has started taking oral insulin in November 2017
+- 9:39 The patient has heart attack in 2017.
+- 9:39 He has had arthritis from 5 years.
+- 10:22 The patient has been receiving warfarin therapy since 6 months.
+- 10:22 The patient was diagnosed with Hypertension since 2010
+- 10:22 He smokes 2 packs of cigarettes a day for the past 25 - 30 years.
+- 11:00 The patient has started taking oral insulin in November 2017
+- 14:56 The patient has heart attack in 2017.
+- 16:09 He has had arthritis from 5 years.
+- 18:16 The patient has been receiving warfarin therapy since 6 months.
+- 19:49 The patient was diagnosed with Hypertension since 2010
+- 21:16 He smokes 2 packs of cigarettes a day for the past 25 - 30 years.
+- 23:50 There is an ulcer on right lower lateral border of the tongue which is present for more than one year.
+- 23:50 During hospitalization the patient is making steady progress.
+- 23:50 Over the past three weeks, the patient progress has improved
+- 23:50 On the examination, the patient has a blood pressure of 140/90.
+- 23:50 The patient had limp and was anxious about his ability to work.
+- 24:47 There is an ulcer on right lower lateral border of the tongue which is present for more than one year.
+- 26:30 During hospitalization the patient is making steady progress.
+- 29:28 Over the past three weeks, the patient progress has improved
+- 31:02 On the examination, the patient has a blood pressure of 140/90.
+- 32:37 The patient had limp and was anxious about his ability to work.
 
-*Terms*: commenced (New word, 10:04); taking (Useful verb, 10:23); Present perfect (Form, 10:49); Countable noun (Grammar word, 14:01); Passive (Form, 16:19); HTN (Case-note short form, 18:25); Connectives (Joining words, 23:01); during hospitalization (Useful phrase, 24:58); steady progress (Word choice, 25:06); significant (Word choice, 26:01)
+*Terms*: commenced (New word, 11:06); taking (Useful verb, 11:25); Present perfect (Form, 11:52); Countable noun (Grammar word, 15:31); Passive (Form, 17:50); HTN (Case-note short form, 19:55); Connectives (Joining words, 25:04); during hospitalization (Useful phrase, 27:01); steady progress (Word choice, 27:09); significant (Word choice, 28:04)
 
-#### 31:58 Passive vs active (`page-7`, deck)
+#### 35:19 Passive vs active (`page-7`, deck)
 
-- 31:58 **active voice example, the two passive examples**
-  - 31:58 Show the slide's active example and frame the idea that one fact can be written in three ways
-  - 31:58 Show the two passive cards and read the patient-first one
-  - 33:02 Define the two grammar terms at first appearance
-  - 33:47 Work out the focus of the active sentence
-  - 34:02 State the rule for the active voice
-  - 34:49 Read the medicine-first passive
-  - 35:04 Contrast the two passive patterns side by side
-  - 35:37 Worked example of choosing the pattern in writing
-  - 36:02 State the rule for choosing between the three versions
-
-*Rules on the boards*
-
-- 34:02 In the active voice, the focus is on the person who does the action.
-- 36:02 In your writing, choose the version that puts your main idea first: the doctor, the patient or the medicine.
-
-*Terms*: Active voice (Grammar term, 33:02); Passive voice (Grammar term, 33:20)
-
-#### 36:23 Verb use: active or passive (`pages-08-09`, deck)
-
-- 36:23 **exercise set, appetite and general health rows**
-  - 36:23 Show the first part of the exercise set so the student can look for the fault
-- 37:12 **exercise set, mood, medication and pain rows**
-  - 37:12 Show the rest of the exercise set
-- 37:44 **Appetite row**
-  - 37:44 Fix the case note, the preferred form and the two wrong sentences on the board
-  - 38:08 Name the fault
-  - 38:14 Define active and passive in English terms
-  - 38:22 Define the grammar term 'subject'
-  - 38:42 Apply the rule to this row
-  - 39:01 Give the answer and say why it is correct
-  - 39:22 Contrast one-moment verbs with over-time verbs
-  - 40:00 Example of a one-moment verb
-  - 40:29 Example of an over-time verb
-- 40:44 **General health row**
-  - 40:44 Fix the case note, the preferred form and the two wrong sentences
-  - 41:02 Name the fault again
-  - 41:28 Teach the verb 'deteriorate'
-  - 41:36 Give the answer and say why it is correct
-  - 41:56 Show the present perfect continuous as a grammatical option
-- 42:45 **Mood row**
-  - 42:45 Fix the case note, the preferred form and the two wrong sentences
-  - 43:01 Show it is the same fault as the appetite row
-  - 43:25 Give the answer and say why it is correct
-  - 43:50 Add a time adverb to the answer
-- 44:05 **Medication row**
-  - 44:05 Fix the case note, the preferred form and the wrong sentence
-  - 44:14 Read the case-note abbreviations
-  - 44:19 Abbreviations in case notes and in the letter
-  - 45:01 Name the fault in the sentence
-  - 45:14 Give the answer and say why it is correct
-  - 45:31 Draw the medication period up to now
-  - 45:58 Contrast the continuing course with the finished course
-  - 46:21 Show what a real passive would look like
-- 46:35 **Reported pain row**
-  - 46:35 Fix the case note, the preferred form and the wrong sentence
-  - 46:49 Give the passive marker rule
-  - 46:57 Apply the rule to this sentence
-  - 47:06 Give the answer and say why it is correct
-  - 47:26 Separate the verb from the noun
-- 47:39 **Exercise set: colonoscopy, diabetes and home modification rows**
-  - 47:39 Show the three items of the second set
-- 48:48 **Colonoscopy row**
-  - 48:48 Fix the case note, the preferred form and the wrong sentence
-  - 49:07 Name the verb and the meaning problem
-  - 49:18 Show that changing the voice is not enough
-  - 49:30 Teach the verb undergo
-  - 49:39 Give the active answer
-  - 50:03 Give the passive answer
-  - 50:20 Give the rule to remember
-- 51:08 **Diabetes row**
-  - 51:08 Fix the case note, the preferred form and the wrong sentence
-  - 51:27 Teach the meaning of the verb
-  - 51:35 Name the fault
-  - 51:45 Repair 1: keep the active and name the doer
-  - 52:00 Repair 2: use the passive
-  - 52:25 Repair 3: change the verb to keep John as subject
-  - 52:44 Give the rule to remember
-- 52:55 **Home modification row**
-  - 52:55 Fix the case note, the preferred form and the wrong sentence
-  - 53:21 Show why the sentence needs the passive
-  - 53:28 Name the form used and the form needed
-  - 53:36 Teach the present perfect passive form
-  - 53:45 Give the answer and say why it is correct
-  - 54:10 Point out the missing article and define the term
-  - 54:26 Keep the two verbs in the same tense
+- 35:19 **active voice example, the two passive examples**
+  - 35:19 Show the slide's active example and frame the idea that one fact can be written in three ways
+  - 35:19 Show the two passive cards and read the patient-first one
+  - 36:23 Define the two grammar terms at first appearance
+  - 37:08 Work out the focus of the active sentence
+  - 37:23 State the rule for the active voice
+  - 38:10 Read the medicine-first passive
+  - 38:25 Contrast the two passive patterns side by side
+  - 38:58 Worked example of choosing the pattern in writing
+  - 39:23 State the rule for choosing between the three versions
 
 *Rules on the boards*
 
-- 46:49 'Was' and 'were' before a past participle are a sign of the passive.
-- 52:44 Before you choose the passive, think about the meaning of the verb: who does the action?
-- 54:26 Two completed actions reported together: use the same tense for both.
+- 37:23 In the active voice, the focus is on the person who does the action.
+- 39:23 In your writing, choose the version that puts your main idea first: the doctor, the patient or the medicine.
+
+*Terms*: Active voice (Grammar term, 36:23); Passive voice (Grammar term, 36:40)
+
+#### 40:35 Verb use: active or passive (`pages-08-09`, deck)
+
+- 40:35 **exercise set, appetite and general health rows**
+  - 40:35 Show the first part of the exercise set so the student can look for the fault
+- 41:24 **exercise set, mood, medication and pain rows**
+  - 41:24 Show the rest of the exercise set
+- 41:55 **Appetite row**
+  - 41:55 Fix the case note, the preferred form and the two wrong sentences on the board
+  - 42:20 Name the fault
+  - 42:26 Define active and passive in English terms
+  - 42:34 Define the grammar term 'subject'
+  - 42:54 Apply the rule to this row
+  - 43:13 Give the answer and say why it is correct
+  - 43:34 Contrast one-moment verbs with over-time verbs
+  - 44:12 Example of a one-moment verb
+  - 44:40 Example of an over-time verb
+- 44:56 **General health row**
+  - 44:56 Fix the case note, the preferred form and the two wrong sentences
+  - 45:14 Name the fault again
+  - 45:40 Teach the verb 'deteriorate'
+  - 45:48 Give the answer and say why it is correct
+  - 46:08 Show the present perfect continuous as a grammatical option
+- 46:27 **Mood row**
+  - 46:27 Fix the case note, the preferred form and the two wrong sentences
+  - 46:43 Show it is the same fault as the appetite row
+  - 47:07 Give the answer and say why it is correct
+  - 47:32 Add a time adverb to the answer
+- 48:35 **Medication row**
+  - 48:35 Fix the case note, the preferred form and the wrong sentence
+  - 48:43 Read the case-note abbreviations
+  - 48:48 Abbreviations in case notes and in the letter
+  - 49:30 Name the fault in the sentence
+  - 49:44 Give the answer and say why it is correct
+  - 50:01 Draw the medication period up to now
+  - 50:28 Contrast the continuing course with the finished course
+  - 50:50 Show what a real passive would look like
+- 51:05 **Reported pain row**
+  - 51:05 Fix the case note, the preferred form and the wrong sentence
+  - 51:19 Give the passive marker rule
+  - 51:27 Apply the rule to this sentence
+  - 51:35 Give the answer and say why it is correct
+  - 51:56 Separate the verb from the noun
+- 53:06 **Exercise set: colonoscopy, diabetes and home modification rows**
+  - 53:06 Show the three items of the second set
+- 54:15 **Colonoscopy row**
+  - 54:15 Fix the case note, the preferred form and the wrong sentence
+  - 54:34 Name the verb and the meaning problem
+  - 54:45 Show that changing the voice is not enough
+  - 54:57 Teach the verb undergo
+  - 55:06 Give the active answer
+  - 55:30 Give the passive answer
+  - 55:46 Give the rule to remember
+- 56:59 **Diabetes row**
+  - 56:59 Fix the case note, the preferred form and the wrong sentence
+  - 57:17 Teach the meaning of the verb
+  - 57:25 Name the fault
+  - 57:36 Repair 1: keep the active and name the doer
+  - 57:51 Repair 2: use the passive
+  - 58:15 Repair 3: change the verb to keep John as subject
+  - 58:34 Give the rule to remember
+- 59:48 **Home modification row**
+  - 59:48 Fix the case note, the preferred form and the wrong sentence
+  - 60:15 Show why the sentence needs the passive
+  - 60:21 Name the form used and the form needed
+  - 60:30 Teach the present perfect passive form
+  - 60:39 Give the answer and say why it is correct
+  - 61:55 Point out the missing article and define the term
+  - 62:10 Keep the two verbs in the same tense
+
+*Rules on the boards*
+
+- 51:19 'Was' and 'were' before a past participle are a sign of the passive.
+- 58:34 Before you choose the passive, think about the meaning of the verb: who does the action?
+- 62:10 Two completed actions reported together: use the same tense for both.
 
 *Warnings (common mistakes)*
 
-- 50:20 A patient does not do a procedure. Write 'underwent', not 'did' or 'had done'.
+- 55:46 A patient does not do a procedure. Write 'underwent', not 'did' or 'had done'.
 
 *Wrong sentences corrected*
 
-- 36:23 The patient's appetite has been increased.
-- 36:23 The patient's appetite is increased.
-- 36:23 The patient's health has been deteriorated.
-- 36:23 The patient's health was deteriorated
-- 37:12 The patient's mood has been improved.
-- 37:12 The patient's mood is improved.
-- 37:12 She has been taken OxyContin 5mg twice a day to control her pain.
-- 37:12 The patient was complained of pain in her both feet
-- 37:44 The patient's appetite has been increased.
-- 37:44 The patient's appetite is increased.
-- 40:44 The patient's health has been deteriorated.
-- 40:44 The patient's health was deteriorated
-- 42:45 The patient's mood has been improved.
-- 42:45 The patient's mood is improved.
-- 44:05 She has been taken OxyContin 5mg twice a day to control her pain.
-- 46:35 The patient was complained of pain in her both feet
-- 47:39 Patient had done a colonoscopy on 21/11/2018
-- 47:39 John has diagnosed with diabetes since 2012.
-- 47:39 Home modification have completed and GP appointment scheduled for 7/12/2018
-- 48:48 Patient had done a colonoscopy on 21/11/2018
-- 49:18 Patient did a colonoscopy.
-- 51:08 John has diagnosed with diabetes since 2012.
-- 52:55 Home modification have completed and GP appointment scheduled for 7/12/2018
+- 40:35 The patient's appetite has been increased.
+- 40:35 The patient's appetite is increased.
+- 40:35 The patient's health has been deteriorated.
+- 40:35 The patient's health was deteriorated
+- 41:24 The patient's mood has been improved.
+- 41:24 The patient's mood is improved.
+- 41:24 She has been taken OxyContin 5mg twice a day to control her pain.
+- 41:24 The patient was complained of pain in her both feet
+- 41:55 The patient's appetite has been increased.
+- 41:55 The patient's appetite is increased.
+- 44:56 The patient's health has been deteriorated.
+- 44:56 The patient's health was deteriorated
+- 46:27 The patient's mood has been improved.
+- 46:27 The patient's mood is improved.
+- 48:35 She has been taken OxyContin 5mg twice a day to control her pain.
+- 51:05 The patient was complained of pain in her both feet
+- 53:06 Patient had done a colonoscopy on 21/11/2018
+- 53:06 John has diagnosed with diabetes since 2012.
+- 53:06 Home modification have completed and GP appointment scheduled for 7/12/2018
+- 54:15 Patient had done a colonoscopy on 21/11/2018
+- 54:45 Patient did a colonoscopy.
+- 56:59 John has diagnosed with diabetes since 2012.
+- 59:48 Home modification have completed and GP appointment scheduled for 7/12/2018
 
-*Terms*: subject (Grammar term, 38:22); deteriorate (New word, 41:28); Med, b.d (Abbreviations, 44:14); complain / complaint (Word forms, 47:26); undergo / underwent (Verb, 49:30); diagnose (Verb, 51:27); present perfect passive (Form, 53:36); article (Grammar term, 54:18)
+*Terms*: subject (Grammar term, 42:34); deteriorate (New word, 45:40); Med, b.d (Abbreviations, 48:43); complain / complaint (Word forms, 51:56); undergo / underwent (Verb, 54:57); diagnose (Verb, 57:17); present perfect passive (Form, 60:30); article (Grammar term, 62:02)
 
 ### Vocabulary
 
 First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
 
 - 7:33 Paraphrasing
-- 10:04 commenced
-- 10:23 taking
-- 24:58 during hospitalization
-- 25:44 significant
-- 36:45 deteriorated
-- 41:28 deteriorate
-- 48:05 modification
-- 48:22 scheduled
+- 11:06 commenced
+- 11:25 taking
+- 27:01 during hospitalization
+- 27:47 significant
+- 40:57 deteriorated
+- 45:40 deteriorate
+- 53:32 modification
+- 53:49 scheduled
 
 ### Practice material
 
@@ -1081,8 +1081,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ### Links to other lessons
 
 - 0:08 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `page-3_t1.s1.u3`)
-- 41:15 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `pages-08-09_t4.s1.u5`)
-- 41:15 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Verb tenses" (in `pages-08-09_t4.s1.u5`)
+- 45:27 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `pages-08-09_t4.s1.u5`)
+- 45:27 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Verb tenses" (in `pages-08-09_t4.s1.u5`)
 - referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Introduction" at 0:16
 - continues from Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`): Verb Use practises choosing the tense, and the active or the passive, taught here.
 
@@ -8853,8 +8853,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Abbreviations in the letter**: `writing-02-assessment-criteria` 24:23
 - **Accuracy to the case notes**: `writing-02-assessment-criteria` 14:03
 - **Active**: `grammar-01-verb-tenses` 86:16
-- **active and passive**: `grammar-01-verb-tenses` 84:26; `grammar-02-verb-use` 31:58
-- **Active voice**: `grammar-02-verb-use` 33:02
+- **active and passive**: `grammar-01-verb-tenses` 84:26; `grammar-02-verb-use` 35:19
+- **Active voice**: `grammar-02-verb-use` 36:23
 - **Active vs passive**: `grammar-01-verb-tenses` 84:26
 - **adjective + noun collocations**: `vocabulary-03-collocations-2` 2:00
 - **Adjective and noun**: `vocabulary-03-collocations-2` 5:51
@@ -8869,7 +8869,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Appositive**: `writing-04-introduction` 10:00
 - **Appositive structure**: `grammar-06-clause` 11:52
 - **Appositives and ages**: `writing-04-introduction` 9:51
-- **article**: `grammar-02-verb-use` 54:18
+- **article**: `grammar-02-verb-use` 62:02
 - **Articles**: `grammar-04-articles` 2:00; `grammar-08-paraphrasing` 11:22
 - **Avoid a series of short sentences**: `vocabulary-01-word-forms` 58:27
 - **Avoid sentences that are too long**: `vocabulary-01-word-forms` 69:24
@@ -8888,7 +8888,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Case notes: error correction**: `grammar-01-verb-tenses` 114:53
 - **Case-note abbreviations**: `grammar-07-punctuation` 73:36
 - **Choosing the right word form**: `vocabulary-01-word-forms` 2:25
-- **choosing the tense**: `grammar-02-verb-use` 8:36
+- **choosing the tense**: `grammar-02-verb-use` 9:39
 - **Chunking**: `reading-02-part-a` 18:43
 - **Clause**: `grammar-05-complex-compound` 3:57
 - **Closing sentence**: `writing-01-overview` 16:58
@@ -8912,7 +8912,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Conditional clause**: `grammar-05-complex-compound` 33:22
 - **Conjunction**: `grammar-05-complex-compound` 8:00
 - **Conjunctive adverb**: `grammar-07-punctuation` 18:09
-- **Connectives**: `grammar-02-verb-use` 23:01
+- **Connectives**: `grammar-02-verb-use` 25:04
 - **Content**: `writing-02-assessment-criteria` 10:31
 - **Continuous**: `grammar-01-verb-tenses` 2:45
 - **Continuous tense**: `grammar-01-verb-tenses` 28:38
@@ -8923,7 +8923,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Core skills**: `reading-03-part-b` 7:47
 - **Correct the sentences**: `grammar-05-complex-compound` 46:43
 - **Countable and uncountable nouns**: `grammar-04-articles` 8:20
-- **Countable noun**: `grammar-02-verb-use` 14:01; `grammar-04-articles` 15:21
+- **Countable noun**: `grammar-02-verb-use` 15:31; `grammar-04-articles` 15:21
 - **Countable nouns: non-specific**: `grammar-04-articles` 14:55
 - **Critical thinking**: `reading-04-part-c` 8:39
 - **Dangling participle**: `grammar-06-clause` 32:54
@@ -8988,7 +8988,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **How verb + noun collocations are formed**: `vocabulary-02-collocations` 6:10
 - **How your letter is scored**: `writing-02-assessment-criteria` 4:01
 - **However**: `grammar-08-paraphrasing` 29:10
-- **HTN**: `grammar-02-verb-use` 18:25
+- **HTN**: `grammar-02-verb-use` 19:55
 - **Hyphen**: `grammar-07-punctuation` 56:26
 - **Hyphens and numbers**: `grammar-07-punctuation` 56:15
 - **i.e**: `grammar-07-punctuation` 67:54
@@ -9043,8 +9043,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Passive**: `grammar-01-verb-tenses` 51:04; `grammar-02-verb-use` 6:16; `grammar-03-nominalization` 5:49; `grammar-05-complex-compound` 22:51; `grammar-06-clause` 36:14; `grammar-07-punctuation` 11:41; `grammar-08-paraphrasing` 4:59; `vocabulary-01-word-forms` 23:40; `vocabulary-02-collocations` 34:43
 - **passive forms**: `grammar-01-verb-tenses` 98:10
 - **Passive forms of the verb tenses**: `grammar-01-verb-tenses` 98:10
-- **Passive voice**: `grammar-02-verb-use` 33:20
-- **Passive vs active**: `grammar-02-verb-use` 31:58
+- **Passive voice**: `grammar-02-verb-use` 36:40
+- **Passive vs active**: `grammar-02-verb-use` 35:19
 - **Passive vs active form: error correction**: `grammar-01-verb-tenses` 105:38
 - **Past participle**: `grammar-01-verb-tenses` 11:09; `grammar-06-clause` 25:49
 - **Past perfect**: `grammar-01-verb-tenses` 24:20
@@ -9063,9 +9063,9 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Prediction**: `grammar-01-verb-tenses` 26:06
 - **Prescribe**: `vocabulary-02-collocations` 37:34
 - **Present participle**: `grammar-06-clause` 29:03
-- **present perfect**: `grammar-01-verb-tenses` 38:26; `grammar-02-verb-use` 10:49; `grammar-08-paraphrasing` 15:05
+- **present perfect**: `grammar-01-verb-tenses` 38:26; `grammar-02-verb-use` 11:52; `grammar-08-paraphrasing` 15:05
 - **present perfect continuous**: `vocabulary-03-collocations-2` 20:42
-- **present perfect passive**: `grammar-02-verb-use` 53:36; `grammar-08-paraphrasing` 48:22
+- **present perfect passive**: `grammar-02-verb-use` 60:30; `grammar-08-paraphrasing` 48:22
 - **present simple**: `grammar-01-verb-tenses` 20:16
 - **Prior to onset**: `grammar-08-paraphrasing` 38:29
 - **prn and tds**: `grammar-08-paraphrasing` 49:52
@@ -9117,7 +9117,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **stative verb**: `grammar-01-verb-tenses` 73:52
 - **Steps towards successful writing**: `writing-01-overview` 3:01
 - **Strategies for Part A**: `listening-02-part-a` 2:25
-- **Subject**: `grammar-01-verb-tenses` 86:06; `grammar-02-verb-use` 38:22; `grammar-08-paraphrasing` 9:53
+- **Subject**: `grammar-01-verb-tenses` 86:06; `grammar-02-verb-use` 42:34; `grammar-08-paraphrasing` 9:53
 - **Subject and verb**: `grammar-01-verb-tenses` 5:15
 - **Subordinate clause**: `grammar-05-complex-compound` 7:41
 - **Subordinating conjunction**: `grammar-05-complex-compound` 24:50
@@ -9180,8 +9180,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Verb tense: error correction**: `grammar-01-verb-tenses` 65:34
 - **Verb tenses**: `grammar-01-verb-tenses` 2:07
 - **Verb tenses: a quick review**: `grammar-02-verb-use` 2:22
-- **Verb use: active or passive**: `grammar-02-verb-use` 36:23
-- **Verb use: choosing the tense**: `grammar-02-verb-use` 8:36
+- **Verb use: active or passive**: `grammar-02-verb-use` 40:35
+- **Verb use: choosing the tense**: `grammar-02-verb-use` 9:39
 - **Vocabulary warm-up: patient history**: `listening-02-part-a` 8:09
 - **What each part tests**: `listening-01-overview` 7:24
 - **What is a complex sentence?**: `grammar-05-complex-compound` 2:13
