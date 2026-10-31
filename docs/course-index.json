@@ -8379,16 +8379,16 @@
       "section": "pages-13-14",
       "to_section": "pages-04-05",
       "utterance": "pages-13-14_t2.s5.u2",
-      "start_s": 3320.427,
-      "start": "55:20"
+      "start_s": 3346.625,
+      "start": "55:46"
      },
      {
       "lesson": "grammar-04-articles",
       "section": "page-15",
       "to_section": "page-6",
       "utterance": "page-15_t1.s9.u3",
-      "start_s": 3793.376,
-      "start": "63:13"
+      "start_s": 3821.154,
+      "start": "63:41"
      },
      {
       "lesson": "grammar-08-paraphrasing",
@@ -8418,13 +8418,13 @@
    "description": "Learn when to use a, an, the or no article, and how to use articles correctly in your OET letters.",
    "course": "grammar",
    "order": 4,
-   "length_s": 3571.957,
-   "length": "59:31",
-   "bundle_format": "1.22",
+   "length_s": 4079.56,
+   "length": "67:59",
+   "bundle_format": "1.23",
    "status": "approved",
    "approval": {
-    "by": "siavash",
-    "on": "2026-10-27 19:07"
+    "by": "Siavash",
+    "on": "2026-10-31 13:00"
    },
    "source": {
     "folder": "source",
@@ -8505,7 +8505,7 @@
      "category": null,
      "start_s": 120.392,
      "start": "2:00",
-     "end_s": 500.591,
+     "end_s": 602.159,
      "topics": [
       {
        "board": "pages-04-05_t1",
@@ -8590,38 +8590,38 @@
         {
          "text": "Warn that questions 3 and 4 cause most mistakes",
          "block": "pages-04-05_k19",
-         "start_s": 337.071,
-         "start": "5:37"
+         "start_s": 390.499,
+         "start": "6:30"
         },
         {
          "text": "Define specific and non-specific",
          "block": "pages-04-05_k20",
-         "start_s": 347.096,
-         "start": "5:47"
+         "start_s": 400.524,
+         "start": "6:40"
         },
         {
          "text": "First mention takes a",
          "block": "pages-04-05_k21",
-         "start_s": 367.248,
-         "start": "6:07"
+         "start_s": 420.676,
+         "start": "7:00"
         },
         {
          "text": "Second mention takes the",
          "block": "pages-04-05_k23",
-         "start_s": 399.979,
-         "start": "6:39"
+         "start_s": 453.407,
+         "start": "7:33"
         },
         {
          "text": "State the a to the sequence",
          "block": "pages-04-05_k25",
-         "start_s": 422.18,
-         "start": "7:02"
+         "start_s": 475.608,
+         "start": "7:55"
         },
         {
          "text": "Answer question 5",
          "block": "pages-04-05_k26",
-         "start_s": 475.294,
-         "start": "7:55"
+         "start_s": 528.722,
+         "start": "8:48"
         }
        ]
       }
@@ -8645,15 +8645,15 @@
        "block": "pages-04-05_k19",
        "kind": "warning",
        "text": "Questions 3 and 4 cause most article mistakes.",
-       "start_s": 337.071,
-       "start": "5:37"
+       "start_s": 390.499,
+       "start": "6:30"
       },
       {
        "block": "pages-04-05_k25",
        "kind": "rule",
        "text": "With a singular countable noun, use a or an the first time, unless the reader knows which one. After that, use the.",
-       "start_s": 422.18,
-       "start": "7:02"
+       "start_s": 475.608,
+       "start": "7:55"
       }
      ],
      "terms": [
@@ -8677,129 +8677,129 @@
       6
      ],
      "category": null,
-     "start_s": 500.591,
-     "start": "8:20",
-     "end_s": 895.051,
+     "start_s": 602.159,
+     "start": "10:02",
+     "end_s": 1052.28,
      "topics": [
       {
        "board": "page-6_t1",
        "title": "Countable and uncountable nouns in case notes",
-       "start_s": 500.591,
-       "start": "8:20",
+       "start_s": 602.159,
+       "start": "10:02",
        "points": [
         {
          "text": "introduce the whole table and what it sorts",
          "block": "page-6_k01",
-         "start_s": 500.591,
-         "start": "8:20"
+         "start_s": 602.159,
+         "start": "10:02"
         },
         {
          "text": "define the two words that head the columns",
          "block": "page-6_k03",
-         "start_s": 525.831,
-         "start": "8:45"
+         "start_s": 627.399,
+         "start": "10:27"
         },
         {
          "text": "professions are countable and need an indefinite article",
          "block": "page-6_k04",
-         "start_s": 550.891,
-         "start": "9:10"
+         "start_s": 652.459,
+         "start": "10:52"
         },
         {
          "text": "choosing a or an by sound",
          "block": "page-6_k05",
-         "start_s": 585.475,
-         "start": "9:45"
+         "start_s": 687.043,
+         "start": "11:27"
         },
         {
          "text": "fluids are uncountable",
          "block": "page-6_k06",
-         "start_s": 615.005,
-         "start": "10:15"
+         "start_s": 716.573,
+         "start": "11:56"
         },
         {
          "text": "body parts are countable",
          "block": "page-6_k07",
-         "start_s": 629.651,
-         "start": "10:29"
+         "start_s": 731.219,
+         "start": "12:11"
         },
         {
          "text": "gases are uncountable",
          "block": "page-6_k08",
-         "start_s": 644.021,
-         "start": "10:44"
+         "start_s": 745.589,
+         "start": "12:25"
         },
         {
          "text": "injuries are countable",
          "block": "page-6_k09",
-         "start_s": 656.134,
-         "start": "10:56"
+         "start_s": 757.702,
+         "start": "12:37"
         },
         {
          "text": "particles are uncountable",
          "block": "page-6_k10",
-         "start_s": 669.435,
-         "start": "11:09"
+         "start_s": 771.003,
+         "start": "12:51"
         },
         {
          "text": "the common mistake with nouns that describe a person",
          "block": "page-6_k11",
-         "start_s": 687.668,
-         "start": "11:27"
+         "start_s": 789.456,
+         "start": "13:09"
         },
         {
          "text": "the correct form with 'a'",
          "block": "page-6_k12",
-         "start_s": 699.216,
-         "start": "11:39"
+         "start_s": 801.004,
+         "start": "13:21"
         },
         {
          "text": "names of diseases are usually uncountable",
          "block": "page-6_k14",
-         "start_s": 724.447,
-         "start": "12:04"
+         "start_s": 826.325,
+         "start": "13:46"
         },
         {
          "text": "the disease name and the word for the person",
          "block": "page-6_k15",
-         "start_s": 745.249,
-         "start": "12:25"
+         "start_s": 847.307,
+         "start": "14:07"
         },
         {
          "text": "gloss the category word, symptoms are countable",
          "block": "page-6_k16",
-         "start_s": 769.539,
-         "start": "12:49"
+         "start_s": 872.221,
+         "start": "14:32"
         },
         {
          "text": "information is uncountable",
          "block": "page-6_k18",
-         "start_s": 807.19,
-         "start": "13:27"
+         "start_s": 913.738,
+         "start": "15:13"
         },
         {
          "text": "what US means",
          "block": "page-6_k19",
-         "start_s": 834.401,
-         "start": "13:54"
+         "start_s": 941.025,
+         "start": "15:41"
         },
         {
          "text": "tests are countable",
          "block": "page-6_k20",
-         "start_s": 839.721,
-         "start": "13:59"
+         "start_s": 949.82,
+         "start": "15:49"
         },
         {
          "text": "activities are uncountable",
          "block": "page-6_k21",
-         "start_s": 860.881,
-         "start": "14:20"
+         "start_s": 970.98,
+         "start": "16:10"
         },
         {
          "text": "what to learn by heart from the whole table",
          "block": "page-6_k22",
-         "start_s": 869.554,
-         "start": "14:29"
+         "start_s": 979.653,
+         "start": "16:19"
         }
        ]
       }
@@ -8809,15 +8809,15 @@
        "block": "page-6_k18",
        "kind": "warning",
        "text": "'Information' is an uncountable word. We say 'information', never 'informations'.",
-       "start_s": 807.19,
-       "start": "13:27"
+       "start_s": 913.738,
+       "start": "15:13"
       },
       {
        "block": "page-6_k22",
        "kind": "rule",
        "text": "Learn these three by heart: the names of diseases, the symptoms, and the fluids of the body.",
-       "start_s": 869.554,
-       "start": "14:29"
+       "start_s": 979.653,
+       "start": "16:19"
       }
      ],
      "terms": [
@@ -8825,30 +8825,30 @@
        "block": "page-6_k04",
        "label": "Term",
        "term": "Indefinite article",
-       "start_s": 550.891,
-       "start": "9:10"
+       "start_s": 652.459,
+       "start": "10:52"
       },
       {
        "block": "page-6_k05",
        "label": "Form",
        "term": "A or an",
-       "start_s": 585.475,
-       "start": "9:45"
+       "start_s": 687.043,
+       "start": "11:27"
       },
       {
        "block": "page-6_k19",
        "label": "Short form",
        "term": "US",
-       "start_s": 834.401,
-       "start": "13:54"
+       "start_s": 941.025,
+       "start": "15:41"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-6_k11",
        "text": "The patient is smoker",
-       "start_s": 687.668,
-       "start": "11:27"
+       "start_s": 789.456,
+       "start": "13:09"
       }
      ],
      "practice": [],
@@ -8862,123 +8862,123 @@
       7
      ],
      "category": null,
-     "start_s": 895.051,
-     "start": "14:55",
-     "end_s": 1306.733,
+     "start_s": 1052.28,
+     "start": "17:32",
+     "end_s": 1507.832,
      "topics": [
       {
        "board": "page-7_t1",
        "title": "Wrong and right: a or an with singular countable nouns",
-       "start_s": 895.051,
-       "start": "14:55",
+       "start_s": 1052.28,
+       "start": "17:32",
        "points": [
         {
          "text": "introduce the task and the two columns",
          "block": "page-7_k01",
-         "start_s": 895.051,
-         "start": "14:55"
+         "start_s": 1052.28,
+         "start": "17:32"
         },
         {
          "text": "define countable noun",
          "block": "page-7_k03",
-         "start_s": 921.159,
-         "start": "15:21"
+         "start_s": 1078.388,
+         "start": "17:58"
         },
         {
          "text": "define non-specific",
          "block": "page-7_k04",
-         "start_s": 938.613,
-         "start": "15:38"
+         "start_s": 1095.842,
+         "start": "18:15"
         },
         {
          "text": "the rule being practised",
          "block": "page-7_k05",
-         "start_s": 958.081,
-         "start": "15:58"
+         "start_s": 1115.31,
+         "start": "18:35"
         },
         {
          "text": "find the head noun in the referral opening",
          "block": "page-7_k06",
-         "start_s": 993.05,
-         "start": "16:33"
+         "start_s": 1150.279,
+         "start": "19:10"
         },
         {
          "text": "the patient is new to the reader, so the article is a",
          "block": "page-7_k07",
-         "start_s": 1009.961,
-         "start": "16:49"
+         "start_s": 1167.19,
+         "start": "19:27"
         },
         {
          "text": "hyphens in the age phrase",
          "block": "page-7_k08",
-         "start_s": 1033.1,
-         "start": "17:13"
+         "start_s": 1190.329,
+         "start": "19:50"
         },
         {
          "text": "the noun that needs the article",
          "block": "page-7_k09",
-         "start_s": 1066.857,
-         "start": "17:46"
+         "start_s": 1224.086,
+         "start": "20:24"
         },
         {
          "text": "choosing a or an by sound",
          "block": "page-7_k10",
-         "start_s": 1088.781,
-         "start": "18:08"
+         "start_s": 1246.01,
+         "start": "20:46"
         },
         {
          "text": "plural countable nouns take no article",
          "block": "page-7_k11",
-         "start_s": 1126.546,
-         "start": "18:46"
+         "start_s": 1283.775,
+         "start": "21:23"
         },
         {
          "text": "the singular noun that needs a",
          "block": "page-7_k12",
-         "start_s": 1149.879,
-         "start": "19:09"
+         "start_s": 1307.108,
+         "start": "21:47"
         },
         {
          "text": "find the head noun in a long phrase",
          "block": "page-7_k13",
-         "start_s": 1176.922,
-         "start": "19:36"
+         "start_s": 1334.151,
+         "start": "22:14"
         },
         {
          "text": "where the article goes",
          "block": "page-7_k14",
-         "start_s": 1189.552,
-         "start": "19:49"
+         "start_s": 1346.781,
+         "start": "22:26"
         },
         {
          "text": "allergy is countable",
          "block": "page-7_k15",
-         "start_s": 1211.732,
-         "start": "20:11"
+         "start_s": 1368.961,
+         "start": "22:48"
         },
         {
          "text": "the common trap",
          "block": "page-7_k16",
-         "start_s": 1229.162,
-         "start": "20:29"
+         "start_s": 1386.391,
+         "start": "23:06"
         },
         {
          "text": "ache is countable too",
          "block": "page-7_k17",
-         "start_s": 1248.214,
-         "start": "20:48"
+         "start_s": 1405.443,
+         "start": "23:25"
         },
         {
          "text": "history is the head noun",
          "block": "page-7_k18",
-         "start_s": 1263.784,
-         "start": "21:03"
+         "start_s": 1421.013,
+         "start": "23:41"
         },
         {
          "text": "history takes an article",
          "block": "page-7_k19",
-         "start_s": 1274.205,
-         "start": "21:14"
+         "start_s": 1431.434,
+         "start": "23:51"
         }
        ]
       }
@@ -8988,36 +8988,36 @@
        "block": "page-7_k05",
        "kind": "rule",
        "text": "A countable noun that is singular and new to the reader needs a or an.",
-       "start_s": 958.081,
-       "start": "15:58"
+       "start_s": 1115.31,
+       "start": "18:35"
       },
       {
        "block": "page-7_k08",
        "kind": "warning",
        "text": "When the age comes before the noun, write hyphens: 15-year-old. Without them it is a writing error.",
-       "start_s": 1033.1,
-       "start": "17:13"
+       "start_s": 1190.329,
+       "start": "19:50"
       },
       {
        "block": "page-7_k10",
        "kind": "rule",
        "text": "Use \"an\" before a vowel sound: an abscess. Use \"a\" before a consonant sound. Follow the sound, not the letter.",
-       "start_s": 1088.781,
-       "start": "18:08"
+       "start_s": 1246.01,
+       "start": "20:46"
       },
       {
        "block": "page-7_k14",
        "kind": "rule",
        "text": "The article goes at the front of the whole phrase, before the describing words.",
-       "start_s": 1189.552,
-       "start": "19:49"
+       "start_s": 1346.781,
+       "start": "22:26"
       },
       {
        "block": "page-7_k16",
        "kind": "warning",
        "text": "Students often leave out the article with \"allergy\" and \"ache\".",
-       "start_s": 1229.162,
-       "start": "20:29"
+       "start_s": 1386.391,
+       "start": "23:06"
       }
      ],
      "terms": [
@@ -9025,15 +9025,15 @@
        "block": "page-7_k03",
        "label": "Term",
        "term": "Countable noun",
-       "start_s": 921.159,
-       "start": "15:21"
+       "start_s": 1078.388,
+       "start": "17:58"
       },
       {
        "block": "page-7_k04",
        "label": "Term",
        "term": "Non-specific",
-       "start_s": 938.613,
-       "start": "15:38"
+       "start_s": 1095.842,
+       "start": "18:15"
       }
      ],
      "wrong_examples": [],
@@ -9048,123 +9048,123 @@
       8
      ],
      "category": null,
-     "start_s": 1306.733,
-     "start": "21:46",
-     "end_s": 1778.013,
+     "start_s": 1507.832,
+     "start": "25:07",
+     "end_s": 2025.119,
      "topics": [
       {
        "board": "page-8_t1",
        "title": "Uncountable non-specific nouns: wrong and right table",
-       "start_s": 1306.733,
-       "start": "21:46",
+       "start_s": 1507.832,
+       "start": "25:07",
        "points": [
         {
          "text": "the rule behind every row",
          "block": "page-8_k01",
-         "start_s": 1306.733,
-         "start": "21:46"
+         "start_s": 1507.832,
+         "start": "25:07"
         },
         {
          "text": "uncountable nouns work like plural nouns",
          "block": "page-8_k03",
-         "start_s": 1352.729,
-         "start": "22:32"
+         "start_s": 1553.828,
+         "start": "25:53"
         },
         {
          "text": "why both printed versions are wrong",
          "block": "page-8_k04",
-         "start_s": 1386.001,
-         "start": "23:06"
+         "start_s": 1587.1,
+         "start": "26:27"
         },
         {
          "text": "the verb for having an operation",
          "block": "page-8_k05",
-         "start_s": 1403.483,
-         "start": "23:23"
+         "start_s": 1604.582,
+         "start": "26:44"
         },
         {
          "text": "the verb 'do' is rejected",
          "block": "page-8_k06",
-         "start_s": 1425.074,
-         "start": "23:45"
+         "start_s": 1626.173,
+         "start": "27:06"
         },
         {
          "text": "the article error itself",
          "block": "page-8_k08",
-         "start_s": 1450.745,
-         "start": "24:10"
+         "start_s": 1651.844,
+         "start": "27:31"
         },
         {
          "text": "uncountable 'surgery' against countable 'operation'",
          "block": "page-8_k09",
-         "start_s": 1472.638,
-         "start": "24:32"
+         "start_s": 1673.737,
+         "start": "27:53"
         },
         {
          "text": "the phrase for the end of a letter",
          "block": "page-8_k10",
-         "start_s": 1504.673,
-         "start": "25:04"
+         "start_s": 1705.772,
+         "start": "28:25"
         },
         {
          "text": "education and information are uncountable",
          "block": "page-8_k12",
-         "start_s": 1540.918,
-         "start": "25:40"
+         "start_s": 1742.017,
+         "start": "29:02"
         },
         {
          "text": "what 'accommodation' means and where you meet it",
          "block": "page-8_k14",
-         "start_s": 1563.569,
-         "start": "26:03"
+         "start_s": 1764.668,
+         "start": "29:24"
         },
         {
          "text": "uncountable 'accommodation' against countable housing words",
          "block": "page-8_k16",
-         "start_s": 1589.802,
-         "start": "26:29"
+         "start_s": 1790.901,
+         "start": "29:50"
         },
         {
          "text": "pain in general, or one particular pain",
          "block": "page-8_k17",
-         "start_s": 1623.557,
-         "start": "27:03"
+         "start_s": 1827.261,
+         "start": "30:27"
         },
         {
          "text": "a describing word makes one single pain",
          "block": "page-8_k18",
-         "start_s": 1652.407,
-         "start": "27:32"
+         "start_s": 1856.521,
+         "start": "30:56"
         },
         {
          "text": "'pain' against countable 'ache'",
          "block": "page-8_k20",
-         "start_s": 1664.31,
-         "start": "27:44"
+         "start_s": 1868.424,
+         "start": "31:08"
         },
         {
          "text": "'the pain' after a first mention",
          "block": "page-8_k21",
-         "start_s": 1685.944,
-         "start": "28:05"
+         "start_s": 1890.058,
+         "start": "31:30"
         },
         {
          "text": "the opening sentence pattern",
          "block": "page-8_k23",
-         "start_s": 1709.152,
-         "start": "28:29"
+         "start_s": 1913.266,
+         "start": "31:53"
         },
         {
          "text": "why 'the' must go",
          "block": "page-8_k24",
-         "start_s": 1725.789,
-         "start": "28:45"
+         "start_s": 1929.903,
+         "start": "32:09"
         },
         {
          "text": "the test for non-specific",
          "block": "page-8_k25",
-         "start_s": 1753.545,
-         "start": "29:13"
+         "start_s": 1956.269,
+         "start": "32:36"
         }
        ]
       }
@@ -9174,15 +9174,15 @@
        "block": "page-8_k02",
        "kind": "rule",
        "text": "An uncountable noun used in a general way takes no article: no 'a', no 'an' and no 'the'.",
-       "start_s": 1325.363,
-       "start": "22:05"
+       "start_s": 1526.462,
+       "start": "25:26"
       },
       {
        "block": "page-8_k25",
        "kind": "rule",
-       "text": "Ask yourself: have I written about this advice in an earlier sentence? Here it is the first mention, so it is non-specific and takes no article.",
-       "start_s": 1753.545,
-       "start": "29:13"
+       "text": "Ask yourself: have I written about this advice before, or is it clear which advice I mean? Here it is new and general, and it needs no article.",
+       "start_s": 1956.269,
+       "start": "32:36"
       }
      ],
      "terms": [
@@ -9190,22 +9190,22 @@
        "block": "page-8_k05",
        "label": "Form",
        "term": "undergo (past: underwent)",
-       "start_s": 1403.483,
-       "start": "23:23"
+       "start_s": 1604.582,
+       "start": "26:44"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-8_k06",
        "text": "The patient done a surgery.",
-       "start_s": 1425.074,
-       "start": "23:45"
+       "start_s": 1626.173,
+       "start": "27:06"
       },
       {
        "block": "page-8_k08",
        "text": "A surgery",
-       "start_s": 1450.745,
-       "start": "24:10"
+       "start_s": 1651.844,
+       "start": "27:31"
       }
      ],
      "practice": [],
@@ -9220,131 +9220,131 @@
       10
      ],
      "category": null,
-     "start_s": 1778.013,
-     "start": "29:38",
-     "end_s": 2263.858,
+     "start_s": 2025.119,
+     "start": "33:45",
+     "end_s": 2614.446,
      "topics": [
       {
        "board": "pages-09-10_t1",
        "title": "Specific nouns take 'the'",
-       "start_s": 1778.013,
-       "start": "29:38",
+       "start_s": 2025.119,
+       "start": "33:45",
        "points": [
         {
          "text": "the slide's two paths, countable and uncountable, both leading to 'the'",
          "block": "pages-09-10_k01",
-         "start_s": 1778.013,
-         "start": "29:38"
+         "start_s": 2025.119,
+         "start": "33:45"
         },
         {
          "text": "Recap the non-specific rule taught before",
          "block": "pages-09-10_k03",
-         "start_s": 1782.353,
-         "start": "29:42"
+         "start_s": 2029.459,
+         "start": "33:49"
         },
         {
          "text": "Define 'specific' and give the one rule of this board",
          "block": "pages-09-10_k04",
-         "start_s": 1821.695,
-         "start": "30:21"
+         "start_s": 2068.801,
+         "start": "34:28"
         },
         {
          "text": "Show first mention against second mention with the pain example",
          "block": "pages-09-10_k06",
-         "start_s": 1856.06,
-         "start": "30:56"
+         "start_s": 2103.166,
+         "start": "35:03"
         }
        ]
       },
       {
        "board": "pages-09-10_t2",
        "title": "Case notes table: wrong and right",
-       "start_s": 1891.347,
-       "start": "31:31",
+       "start_s": 2185.982,
+       "start": "36:25",
        "points": [
         {
          "text": "how to work through the five sentences",
          "block": "pages-09-10_k08",
-         "start_s": 1891.347,
-         "start": "31:31"
+         "start_s": 2185.982,
+         "start": "36:25"
         },
         {
          "text": "a named period of time takes 'the'",
          "block": "pages-09-10_k10",
-         "start_s": 1936.768,
-         "start": "32:16"
+         "start_s": 2231.403,
+         "start": "37:11"
         },
         {
          "text": "more time phrases that take 'the'",
          "block": "pages-09-10_k11",
-         "start_s": 1948.114,
-         "start": "32:28"
+         "start_s": 2242.749,
+         "start": "37:22"
         },
         {
          "text": "warn that this article is often left out",
          "block": "pages-09-10_k12",
-         "start_s": 1964.539,
-         "start": "32:44"
+         "start_s": 2259.733,
+         "start": "37:39"
         },
         {
          "text": "drug names take no article",
          "block": "pages-09-10_k13",
-         "start_s": 1987.221,
-         "start": "33:07"
+         "start_s": 2283.818,
+         "start": "38:03"
         },
         {
          "text": "the same rule for 12 years, plus a second correct version",
          "block": "pages-09-10_k15",
-         "start_s": 2018.698,
-         "start": "33:38"
+         "start_s": 2314.93,
+         "start": "38:34"
         },
         {
          "text": "words that describe a patient are countable",
          "block": "pages-09-10_k17",
-         "start_s": 2038.828,
-         "start": "33:58"
+         "start_s": 2340.412,
+         "start": "39:00"
         },
         {
          "text": "the body part is specific",
          "block": "pages-09-10_k18",
-         "start_s": 2070.848,
-         "start": "34:30"
+         "start_s": 2373.165,
+         "start": "39:33"
         },
         {
          "text": "two ways to mark it",
          "block": "pages-09-10_k19",
-         "start_s": 2082.027,
-         "start": "34:42"
+         "start_s": 2384.344,
+         "start": "39:44"
         },
         {
          "text": "'the above information' points back",
          "block": "pages-09-10_k21",
-         "start_s": 2116.317,
-         "start": "35:16"
+         "start_s": 2418.634,
+         "start": "40:18"
         },
         {
          "text": "'admission' with 'an' or with no article",
          "block": "pages-09-10_k22",
-         "start_s": 2133.062,
-         "start": "35:33"
+         "start_s": 2435.379,
+         "start": "40:35"
         },
         {
          "text": "read the referral sentence and find the phrase to fix",
          "block": "pages-09-10_k24",
-         "start_s": 2167.904,
-         "start": "36:07"
+         "start_s": 2470.221,
+         "start": "41:10"
         },
         {
          "text": "the noun phrase cannot stand alone",
          "block": "pages-09-10_k26",
-         "start_s": 2205.098,
-         "start": "36:45"
+         "start_s": 2507.415,
+         "start": "41:47"
         },
         {
          "text": "'the' or 'a', and what changes",
          "block": "pages-09-10_k27",
-         "start_s": 2224.433,
-         "start": "37:04"
+         "start_s": 2526.75,
+         "start": "42:06"
         }
        ]
       }
@@ -9354,22 +9354,22 @@
        "block": "pages-09-10_k05",
        "kind": "rule",
        "text": "A specific noun takes 'the'. It does not matter if it is countable or uncountable.",
-       "start_s": 1833.704,
-       "start": "30:33"
+       "start_s": 2080.81,
+       "start": "34:40"
       },
       {
        "block": "pages-09-10_k10",
        "kind": "rule",
        "text": "With 'previous' or 'last' and a number, use 'the': for the previous 5 years.",
-       "start_s": 1936.768,
-       "start": "32:16"
+       "start_s": 2231.403,
+       "start": "37:11"
       },
       {
        "block": "pages-09-10_k12",
        "kind": "warning",
-       "text": "Before a period of time, like 'the last 12 years' or 'the previous 5 years', we use 'the'. Many candidates leave it out.",
-       "start_s": 1964.539,
-       "start": "32:44"
+       "text": "With 'last' or 'previous' and a number, we use 'the': the last 12 years, the previous 5 years. Many candidates leave it out.",
+       "start_s": 2259.733,
+       "start": "37:39"
       }
      ],
      "terms": [
@@ -9377,16 +9377,16 @@
        "block": "pages-09-10_k04",
        "label": "Term",
        "term": "Specific noun",
-       "start_s": 1821.695,
-       "start": "30:21"
+       "start_s": 2068.801,
+       "start": "34:28"
       }
      ],
      "wrong_examples": [
       {
        "block": "pages-09-10_k14",
        "text": "She was on the Microgynon.",
-       "start_s": 1996.025,
-       "start": "33:16"
+       "start_s": 2292.622,
+       "start": "38:12"
       }
      ],
      "practice": [],
@@ -9401,101 +9401,101 @@
       12
      ],
      "category": null,
-     "start_s": 2263.858,
-     "start": "37:43",
-     "end_s": 2562.05,
+     "start_s": 2614.446,
+     "start": "43:34",
+     "end_s": 2962.227,
      "topics": [
       {
        "board": "pages-11-12_t1",
        "title": "A or an: which one?",
-       "start_s": 2263.858,
-       "start": "37:43",
+       "start_s": 2614.446,
+       "start": "43:34",
        "points": [
         {
          "text": "Set the rule: look at the word that follows the article",
          "block": "pages-11-12_k01",
-         "start_s": 2263.858,
-         "start": "37:43"
+         "start_s": 2614.446,
+         "start": "43:34"
         },
         {
          "text": "Name the vowel letters",
          "block": "pages-11-12_k03",
-         "start_s": 2289.721,
-         "start": "38:09"
+         "start_s": 2641.222,
+         "start": "44:01"
         },
         {
          "text": "Show 'an' with words that begin with a vowel sound",
          "block": "pages-11-12_k04",
-         "start_s": 2300.456,
-         "start": "38:20"
+         "start_s": 2655.689,
+         "start": "44:15"
         }
        ]
       },
       {
        "board": "pages-11-12_t2",
        "title": "One or two: choosing a or an by sound",
-       "start_s": 2322.181,
-       "start": "38:42",
+       "start_s": 2677.414,
+       "start": "44:37",
        "points": [
         {
          "text": "how the two columns work",
          "block": "pages-11-12_k05",
-         "start_s": 2322.181,
-         "start": "38:42"
+         "start_s": 2677.414,
+         "start": "44:37"
         },
         {
          "text": "the rule behind every row",
          "block": "pages-11-12_k07",
-         "start_s": 2347.203,
-         "start": "39:07"
+         "start_s": 2702.436,
+         "start": "45:02"
         },
         {
          "text": "'18-year-old' begins with a vowel sound",
          "block": "pages-11-12_k08",
-         "start_s": 2374.043,
-         "start": "39:34"
+         "start_s": 2729.276,
+         "start": "45:29"
         },
         {
          "text": "'83-year-old' works the same way",
          "block": "pages-11-12_k09",
-         "start_s": 2396.573,
-         "start": "39:56"
+         "start_s": 2751.806,
+         "start": "45:51"
         },
         {
          "text": "'17-year-old' begins with a consonant sound",
          "block": "pages-11-12_k10",
-         "start_s": 2421.624,
-         "start": "40:21"
+         "start_s": 2776.857,
+         "start": "46:16"
         },
         {
          "text": "contrast the two numbers",
          "block": "pages-11-12_k11",
-         "start_s": 2436.493,
-         "start": "40:36"
+         "start_s": 2791.726,
+         "start": "46:31"
         },
         {
          "text": "'university' is written with U but begins with a 'you' sound",
          "block": "pages-11-12_k12",
-         "start_s": 2467.768,
-         "start": "41:07"
+         "start_s": 2823.001,
+         "start": "47:03"
         },
         {
          "text": "'urine' behaves like 'university'",
          "block": "pages-11-12_k13",
-         "start_s": 2491.319,
-         "start": "41:31"
+         "start_s": 2846.552,
+         "start": "47:26"
         },
         {
          "text": "'MRI' is read letter by letter",
          "block": "pages-11-12_k14",
-         "start_s": 2517.611,
-         "start": "41:57"
+         "start_s": 2872.844,
+         "start": "47:52"
         },
         {
          "text": "the same pattern in other test names",
          "block": "pages-11-12_k15",
-         "start_s": 2534.138,
-         "start": "42:14"
+         "start_s": 2889.371,
+         "start": "48:09"
         }
        ]
       }
@@ -9505,17 +9505,17 @@
        "block": "pages-11-12_k07",
        "kind": "rule",
        "text": "The choice depends on the sound the word begins with, not on the first letter you see.",
-       "start_s": 2347.203,
-       "start": "39:07"
+       "start_s": 2702.436,
+       "start": "45:02"
       }
      ],
      "terms": [
       {
        "block": "pages-11-12_k03",
-       "label": "Vowels",
-       "term": "A, E, I, O, U",
-       "start_s": 2289.721,
-       "start": "38:09"
+       "label": "Sound, not letter",
+       "term": "Vowel sound: an. Consonant sound: a.",
+       "start_s": 2641.222,
+       "start": "44:01"
       }
      ],
      "wrong_examples": [],
@@ -9531,203 +9531,203 @@
       14
      ],
      "category": null,
-     "start_s": 2562.05,
-     "start": "42:42",
-     "end_s": 3171.62,
+     "start_s": 2962.227,
+     "start": "49:22",
+     "end_s": 3625.443,
      "topics": [
       {
        "board": "pages-13-14_t1",
        "title": "Choice table, page 13 sentences",
-       "start_s": 2562.05,
-       "start": "42:42",
+       "start_s": 2962.227,
+       "start": "49:22",
        "points": [
         {
          "text": "the three versions of each sentence",
          "block": "pages-13-14_k01",
-         "start_s": 2562.05,
-         "start": "42:42"
+         "start_s": 2962.227,
+         "start": "49:22"
         },
         {
          "text": "the term for the third column",
          "block": "pages-13-14_k03",
-         "start_s": 2589.991,
-         "start": "43:09"
+         "start_s": 2990.168,
+         "start": "49:50"
         },
         {
          "text": "what the student has to do",
          "block": "pages-13-14_k04",
-         "start_s": 2607.85,
-         "start": "43:27"
+         "start_s": 3008.027,
+         "start": "50:08"
         },
         {
          "text": "the word 'underwent'",
          "block": "pages-13-14_k05",
-         "start_s": 2643.835,
-         "start": "44:03"
+         "start_s": 3044.012,
+         "start": "50:44"
         },
         {
          "text": "why the indefinite version is right",
          "block": "pages-13-14_k06",
-         "start_s": 2658.792,
-         "start": "44:18"
+         "start_s": 3058.969,
+         "start": "50:58"
         },
         {
          "text": "operation and surgery take different articles",
          "block": "pages-13-14_k07",
-         "start_s": 2680.318,
-         "start": "44:40"
+         "start_s": 3080.495,
+         "start": "51:20"
         },
         {
          "text": "a part of the body is specific",
          "block": "pages-13-14_k08",
-         "start_s": 2706.029,
-         "start": "45:06"
+         "start_s": 3106.206,
+         "start": "51:46"
         },
         {
          "text": "a possessive works too",
          "block": "pages-13-14_k09",
-         "start_s": 2722.909,
-         "start": "45:22"
+         "start_s": 3123.086,
+         "start": "52:03"
         },
         {
          "text": "'ache' is countable",
          "block": "pages-13-14_k10",
-         "start_s": 2744.699,
-         "start": "45:44"
+         "start_s": 3144.876,
+         "start": "52:24"
         },
         {
          "text": "ache beside pain",
          "block": "pages-13-14_k11",
-         "start_s": 2759.123,
-         "start": "45:59"
+         "start_s": 3159.3,
+         "start": "52:39"
         },
         {
          "text": "when the definite version works",
          "block": "pages-13-14_k12",
-         "start_s": 2784.642,
-         "start": "46:24"
+         "start_s": 3184.819,
+         "start": "53:04"
         },
         {
          "text": "the zero version is wrong",
          "block": "pages-13-14_k13",
-         "start_s": 2799.682,
-         "start": "46:39"
+         "start_s": 3199.859,
+         "start": "53:19"
         },
         {
          "text": "diseases and articles",
          "block": "pages-13-14_k14",
-         "start_s": 2820.654,
-         "start": "47:00"
+         "start_s": 3220.831,
+         "start": "53:40"
         },
         {
          "text": "the limit of that rule",
          "block": "pages-13-14_k15",
-         "start_s": 2835.414,
-         "start": "47:15"
+         "start_s": 3235.591,
+         "start": "53:55"
         },
         {
          "text": "-ing activities",
          "block": "pages-13-14_k16",
-         "start_s": 2859.014,
-         "start": "47:39"
+         "start_s": 3259.191,
+         "start": "54:19"
         }
        ]
       },
       {
        "board": "pages-13-14_t2",
        "title": "Choice table, page 14 sentences",
-       "start_s": 2875.434,
-       "start": "47:55",
+       "start_s": 3275.611,
+       "start": "54:35",
        "points": [
         {
          "text": "five more sentences in three versions",
          "block": "pages-13-14_k17",
-         "start_s": 2875.434,
-         "start": "47:55"
+         "start_s": 3275.611,
+         "start": "54:35"
         },
         {
          "text": "two versions are out",
          "block": "pages-13-14_k19",
-         "start_s": 2904.118,
-         "start": "48:24"
+         "start_s": 3304.295,
+         "start": "55:04"
         },
         {
          "text": "why the definite version is right",
          "block": "pages-13-14_k20",
-         "start_s": 2915.158,
-         "start": "48:35"
+         "start_s": 3315.335,
+         "start": "55:15"
         },
         {
          "text": "the name for a noun made from a verb",
          "block": "pages-13-14_k21",
-         "start_s": 2927.247,
-         "start": "48:47"
+         "start_s": 3327.424,
+         "start": "55:27"
         },
         {
          "text": "where this is useful",
          "block": "pages-13-14_k22",
-         "start_s": 2940.608,
-         "start": "49:00"
+         "start_s": 3340.785,
+         "start": "55:40"
         },
         {
          "text": "one particular course of treatment",
          "block": "pages-13-14_k23",
-         "start_s": 2965.04,
-         "start": "49:25"
+         "start_s": 3365.217,
+         "start": "56:05"
         },
         {
          "text": "a second sentence to compare",
          "block": "pages-13-14_k24",
-         "start_s": 2992.678,
-         "start": "49:52"
+         "start_s": 3392.855,
+         "start": "56:32"
         },
         {
          "text": "what the two words mean and which article follows",
          "block": "pages-13-14_k25",
-         "start_s": 3006.558,
-         "start": "50:06"
+         "start_s": 3406.735,
+         "start": "56:46"
         },
         {
          "text": "why the other two versions are wrong",
          "block": "pages-13-14_k26",
-         "start_s": 3022.959,
-         "start": "50:22"
+         "start_s": 3423.136,
+         "start": "57:03"
         },
         {
          "text": "the rule to take away",
          "block": "pages-13-14_k27",
-         "start_s": 3040.049,
-         "start": "50:40"
+         "start_s": 3440.226,
+         "start": "57:20"
         },
         {
          "text": "the word 'ongoing'",
          "block": "pages-13-14_k28",
-         "start_s": 3070.366,
-         "start": "51:10"
+         "start_s": 3470.543,
+         "start": "57:50"
         },
         {
          "text": "'care' is uncountable",
          "block": "pages-13-14_k29",
-         "start_s": 3083.45,
-         "start": "51:23"
+         "start_s": 3483.627,
+         "start": "58:03"
         },
         {
          "text": "the care is non-specific",
          "block": "pages-13-14_k30",
-         "start_s": 3096.343,
-         "start": "51:36"
+         "start_s": 3496.52,
+         "start": "58:16"
         },
         {
          "text": "two reasons for no article",
          "block": "pages-13-14_k31",
-         "start_s": 3124.203,
-         "start": "52:04"
+         "start_s": 3524.38,
+         "start": "58:44"
         },
         {
          "text": "the indefinite version is also possible",
          "block": "pages-13-14_k32",
-         "start_s": 3140.588,
-         "start": "52:20"
+         "start_s": 3540.765,
+         "start": "59:00"
         }
        ]
       }
@@ -9737,8 +9737,8 @@
        "block": "pages-13-14_k27",
        "kind": "rule",
        "text": "Look at the word in front of the noun. Its meaning tells you if the noun is specific or not.",
-       "start_s": 3040.049,
-       "start": "50:40"
+       "start_s": 3440.226,
+       "start": "57:20"
       }
      ],
      "terms": [
@@ -9746,15 +9746,15 @@
        "block": "pages-13-14_k03",
        "label": "Grammar term",
        "term": "Zero article",
-       "start_s": 2589.991,
-       "start": "43:09"
+       "start_s": 2990.168,
+       "start": "49:50"
       },
       {
        "block": "pages-13-14_k21",
        "label": "Grammar term",
        "term": "Nominalisation",
-       "start_s": 2927.247,
-       "start": "48:47"
+       "start_s": 3327.424,
+       "start": "55:27"
       }
      ],
      "wrong_examples": [],
@@ -9765,8 +9765,8 @@
        "lesson": "grammar-03-nominalization",
        "section": "pages-04-05",
        "provenance": "source-derived",
-       "start_s": 2946.448,
-       "start": "49:06"
+       "start_s": 3346.625,
+       "start": "55:46"
       }
      ]
     },
@@ -9778,123 +9778,123 @@
       15
      ],
      "category": null,
-     "start_s": 3171.62,
-     "start": "52:51",
-     "end_s": 3571.957,
+     "start_s": 3625.443,
+     "start": "60:25",
+     "end_s": 4079.56,
      "topics": [
       {
        "board": "page-15_t1",
        "title": "Gap-fill letter: choosing the articles",
-       "start_s": 3171.62,
-       "start": "52:51",
+       "start_s": 3625.443,
+       "start": "60:25",
        "points": [
         {
          "text": "the task - 13 gaps in a referral letter, each needing a, an, the, or no article",
          "block": "page-15_k01",
-         "start_s": 3171.62,
-         "start": "52:51"
+         "start_s": 3625.443,
+         "start": "60:25"
         },
         {
          "text": "gap 1 - 'the first child'",
          "block": "page-15_k03",
-         "start_s": 3202.549,
-         "start": "53:22"
+         "start_s": 3656.372,
+         "start": "60:56"
         },
         {
          "text": "gap 2 - 'a family of 5'",
          "block": "page-15_k04",
-         "start_s": 3216.16,
-         "start": "53:36"
+         "start_s": 3669.983,
+         "start": "61:09"
         },
         {
          "text": "gaps 3 and 4 - first mention of a measurement",
          "block": "page-15_k05",
-         "start_s": 3238.139,
-         "start": "53:58"
+         "start_s": 3691.943,
+         "start": "61:31"
         },
         {
          "text": "what 'febrile' means, taught correctly",
          "block": "page-15_k06",
-         "start_s": 3257.86,
-         "start": "54:17"
+         "start_s": 3711.053,
+         "start": "61:51"
         },
         {
          "text": "gap 5 - 'over the next two days'",
          "block": "page-15_k07",
-         "start_s": 3271.471,
-         "start": "54:31"
+         "start_s": 3724.664,
+         "start": "62:04"
         },
         {
          "text": "gap 6 - 'the fever', already mentioned",
          "block": "page-15_k09",
-         "start_s": 3320.35,
-         "start": "55:20"
+         "start_s": 3773.543,
+         "start": "62:53"
         },
         {
          "text": "gap 6 - the possessive option",
          "block": "page-15_k10",
-         "start_s": 3331.219,
-         "start": "55:31"
+         "start_s": 3784.412,
+         "start": "63:04"
         },
         {
          "text": "naming the process of making a noun from a verb or adjective",
          "block": "page-15_k11",
-         "start_s": 3347.047,
-         "start": "55:47"
+         "start_s": 3800.24,
+         "start": "63:20"
         },
         {
          "text": "condensing a symptom list into one word",
          "block": "page-15_k12",
-         "start_s": 3384.501,
-         "start": "56:24"
+         "start_s": 3837.694,
+         "start": "63:57"
         },
         {
          "text": "gaps 7 and 8 - a new reading takes 'a' again",
          "block": "page-15_k13",
-         "start_s": 3419.873,
-         "start": "56:59"
+         "start_s": 3873.066,
+         "start": "64:33"
         },
         {
          "text": "warning - do not switch to 'the' for the second reading",
          "block": "page-15_k14",
-         "start_s": 3432.278,
-         "start": "57:12"
+         "start_s": 3885.471,
+         "start": "64:45"
         },
         {
          "text": "gap 9 - 'over the legs' or 'over her legs'",
          "block": "page-15_k15",
-         "start_s": 3449.494,
-         "start": "57:29"
+         "start_s": 3902.687,
+         "start": "65:02"
         },
         {
          "text": "gaps 10 and 11 - the blood result",
          "block": "page-15_k16",
-         "start_s": 3471.364,
-         "start": "57:51"
+         "start_s": 3924.557,
+         "start": "65:24"
         },
         {
          "text": "gap 12 - 'based on the above'",
          "block": "page-15_k17",
-         "start_s": 3488.351,
-         "start": "58:08"
+         "start_s": 3941.544,
+         "start": "65:41"
         },
         {
          "text": "gap 13 - 'as a stat dose'",
          "block": "page-15_k18",
-         "start_s": 3506.674,
-         "start": "58:26"
+         "start_s": 3959.867,
+         "start": "65:59"
         },
         {
          "text": "what a stat dose is",
          "block": "page-15_k19",
-         "start_s": 3515.195,
-         "start": "58:35"
+         "start_s": 3968.388,
+         "start": "66:08"
         },
         {
          "text": "close the letter and check the whole set of answers",
          "block": "page-15_k20",
-         "start_s": 3530.475,
-         "start": "58:50"
+         "start_s": 3983.668,
+         "start": "66:23"
         }
        ]
       }
@@ -9904,8 +9904,8 @@
        "block": "page-15_k14",
        "kind": "warning",
        "text": "Do not write 'the temperature of 40.2'. The word 'temperature' came earlier, but this reading is new, so we use 'a'.",
-       "start_s": 3432.278,
-       "start": "57:12"
+       "start_s": 3885.471,
+       "start": "64:45"
       }
      ],
      "terms": [
@@ -9913,15 +9913,15 @@
        "block": "page-15_k11",
        "label": "Term",
        "term": "From case notes to one word",
-       "start_s": 3347.047,
-       "start": "55:47"
+       "start_s": 3800.24,
+       "start": "63:20"
       },
       {
        "block": "page-15_k19",
        "label": "Term",
        "term": "Stat dose",
-       "start_s": 3515.195,
-       "start": "58:35"
+       "start_s": 3968.388,
+       "start": "66:08"
       }
      ],
      "wrong_examples": [],
@@ -9932,8 +9932,8 @@
        "lesson": "grammar-03-nominalization",
        "section": "page-6",
        "provenance": "adapted",
-       "start_s": 3367.961,
-       "start": "56:07"
+       "start_s": 3821.154,
+       "start": "63:41"
       }
      ]
     }
@@ -9947,8 +9947,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k17",
-     "start_s": 785.627,
-     "start": "13:05"
+     "start_s": 892.175,
+     "start": "14:52"
     },
     {
      "word": "appreciate",
@@ -9956,8 +9956,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k11",
-     "start_s": 1515.724,
-     "start": "25:15"
+     "start_s": 1716.823,
+     "start": "28:36"
     },
     {
      "word": "accommodation",
@@ -9965,8 +9965,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k14",
-     "start_s": 1563.569,
-     "start": "26:03"
+     "start_s": 1764.668,
+     "start": "29:24"
     },
     {
      "word": "surgery",
@@ -9974,8 +9974,8 @@
      "lexicon": null,
      "section": "pages-09-10",
      "block": "pages-09-10_k25",
-     "start_s": 2177.242,
-     "start": "36:17"
+     "start_s": 2479.559,
+     "start": "41:19"
     },
     {
      "word": "Underwent",
@@ -9983,8 +9983,8 @@
      "lexicon": null,
      "section": "pages-13-14",
      "block": "pages-13-14_k05",
-     "start_s": 2643.835,
-     "start": "44:03"
+     "start_s": 3044.012,
+     "start": "50:44"
     },
     {
      "word": "Ongoing",
@@ -9992,8 +9992,8 @@
      "lexicon": null,
      "section": "pages-13-14",
      "block": "pages-13-14_k28",
-     "start_s": 3070.366,
-     "start": "51:10"
+     "start_s": 3470.543,
+     "start": "57:50"
     },
     {
      "word": "Deteriorate",
@@ -10001,8 +10001,8 @@
      "lexicon": null,
      "section": "page-15",
      "block": "page-15_k08",
-     "start_s": 3299.522,
-     "start": "54:59"
+     "start_s": 3752.715,
+     "start": "62:32"
     }
    ],
    "withheld": {
@@ -10026,16 +10026,16 @@
       "section": "pages-04-05",
       "from_section": "pages-13-14",
       "utterance": "pages-13-14_t2.s5.u2",
-      "start_s": 2946.448,
-      "start": "49:06"
+      "start_s": 3346.625,
+      "start": "55:46"
      },
      {
       "lesson": "grammar-03-nominalization",
       "section": "page-6",
       "from_section": "page-15",
       "utterance": "page-15_t1.s9.u3",
-      "start_s": 3367.961,
-      "start": "56:07"
+      "start_s": 3821.154,
+      "start": "63:41"
      }
     ],
     "referred_to_by": [
@@ -53615,8 +53615,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "page-6",
-     "start_s": 585.475,
-     "start": "9:45",
+     "start_s": 687.043,
+     "start": "11:27",
      "source": "term"
     }
    ]
@@ -54691,8 +54691,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "page-6",
-     "start_s": 500.591,
-     "start": "8:20",
+     "start_s": 602.159,
+     "start": "10:02",
      "source": "section"
     }
    ]
@@ -54711,8 +54711,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "page-7",
-     "start_s": 921.159,
-     "start": "15:21",
+     "start_s": 1078.388,
+     "start": "17:58",
      "source": "term"
     }
    ]
@@ -54724,8 +54724,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "page-7",
-     "start_s": 895.051,
-     "start": "14:55",
+     "start_s": 1052.28,
+     "start": "17:32",
      "source": "section"
     }
    ]
@@ -55148,8 +55148,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "page-15",
-     "start_s": 3347.047,
-     "start": "55:47",
+     "start_s": 3800.24,
+     "start": "63:20",
      "source": "term"
     }
    ]
@@ -55252,8 +55252,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "page-15",
-     "start_s": 3171.62,
-     "start": "52:51",
+     "start_s": 3625.443,
+     "start": "60:25",
      "source": "section"
     }
    ]
@@ -55649,8 +55649,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "page-6",
-     "start_s": 550.891,
-     "start": "9:10",
+     "start_s": 652.459,
+     "start": "10:52",
      "source": "term"
     }
    ]
@@ -55982,8 +55982,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "pages-13-14",
-     "start_s": 2927.247,
-     "start": "48:47",
+     "start_s": 3327.424,
+     "start": "55:27",
      "source": "term"
     },
     {
@@ -56041,8 +56041,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "page-7",
-     "start_s": 938.613,
-     "start": "15:38",
+     "start_s": 1095.842,
+     "start": "18:15",
      "source": "term"
     }
    ]
@@ -57332,8 +57332,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "pages-09-10",
-     "start_s": 1821.695,
-     "start": "30:21",
+     "start_s": 2068.801,
+     "start": "34:28",
      "source": "term"
     }
    ]
@@ -57345,8 +57345,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "pages-09-10",
-     "start_s": 1778.013,
-     "start": "29:38",
+     "start_s": 2025.119,
+     "start": "33:45",
      "source": "section"
     }
    ]
@@ -57358,8 +57358,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "pages-13-14",
-     "start_s": 2562.05,
-     "start": "42:42",
+     "start_s": 2962.227,
+     "start": "49:22",
      "source": "section"
     }
    ]
@@ -57384,8 +57384,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "page-15",
-     "start_s": 3515.195,
-     "start": "58:35",
+     "start_s": 3968.388,
+     "start": "66:08",
      "source": "term"
     }
    ]
@@ -58121,8 +58121,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "page-8",
-     "start_s": 1306.733,
-     "start": "21:46",
+     "start_s": 1507.832,
+     "start": "25:07",
      "source": "section"
     }
    ]
@@ -58134,8 +58134,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "page-8",
-     "start_s": 1403.483,
-     "start": "23:23",
+     "start_s": 1604.582,
+     "start": "26:44",
      "source": "term"
     }
    ]
@@ -58147,8 +58147,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "page-6",
-     "start_s": 834.401,
-     "start": "13:54",
+     "start_s": 941.025,
+     "start": "15:41",
      "source": "term"
     }
    ]
@@ -58583,8 +58583,8 @@
     {
      "lesson": "grammar-04-articles",
      "section": "pages-13-14",
-     "start_s": 2589.991,
-     "start": "43:09",
+     "start_s": 2990.168,
+     "start": "49:50",
      "source": "term"
     }
    ]
