@@ -4,6 +4,8 @@ oetacademy-web ADR-0005, ADR-0034 §2 and Amendment 13, ENGINE-GAPS G1 to G7).
     .venv/Scripts/python spike/scripts/publish_lesson.py <L> --package
     .venv/Scripts/python spike/scripts/publish_lesson.py <L> --release --dry-run
     .venv/Scripts/python spike/scripts/publish_lesson.py <L> --release
+    .venv/Scripts/python spike/scripts/publish_lesson.py <L> --package --draft
+    .venv/Scripts/python spike/scripts/publish_lesson.py <L> --release --draft [--dry-run]
     .venv/Scripts/python spike/scripts/publish_lesson.py <L> --status      (also: the tags and reasons)
     .venv/Scripts/python spike/scripts/publish_lesson.py <L> --approve-tags --by NAME
     .venv/Scripts/python spike/scripts/publish_lesson.py <L> --tags-page
@@ -40,6 +42,15 @@ after checking it again, the approval of the lesson's tags, and the repository's
 It then checks the release on GitHub (its tag, published, and each asset's name, size and SHA-256
 equal to the local files) and only then records it in <L>/analysis/publish.json, the lesson's
 package versions and published section ids. --dry-run prints what it would create and changes nothing.
+
+--draft (ADR 039 amendment of 2026-10-31; oetacademy-web ADR-0039) sends a lesson waiting at the owner's
+final gate to the site as a draft, which the owner plays in the site's own player before he approves it:
+--package --draft builds the version it will be published as, <id>-v<n>-draft/ and <id>-v<n>-draft.zip,
+with lesson.approved {"by": "draft", "on": the build date} and no final gate or tag approval needed;
+--release --draft publishes it as a pre-release tagged <id>-v<n>-draft.<k> (k one above the lesson's
+drafts already there) with the same two assets, checks it on GitHub, then starts the site's drafts run
+(`gh workflow run content-pipeline.yml -R siamingit/oetacademy-web --ref main -f source=drafts`). A
+draft is never recorded in publish.json and never becomes the final: the final is a new --package.
 """
 
 import argparse
@@ -64,6 +75,8 @@ import lesson_package as lp                                       # noqa: E402
 import paths                                                      # noqa: E402
 
 SESSIONS_REPO = "siamingit/oetacademy-sessions"
+DRAFTS_RUN = ["workflow", "run", "content-pipeline.yml", "-R", "siamingit/oetacademy-web", "--ref", "main",
+              "-f", "source=drafts"]                   # the site's drafts-only run (its ADR-0039 §5)
 OWNER = "siavash"                     # lesson.approved.by for every approved lesson (ADR 039, decision 3)
 # Imported by hand on the site as package version 1 (ENGINE-GAPS G3): the engine starts them at 2.
 SITE_IMPORTED = {
@@ -122,6 +135,16 @@ def next_version(lesson: str, record: dict) -> int:
     if done:
         return max(done) + 1
     return 2 if lesson in SITE_IMPORTED else 1
+
+
+def package_name(lesson: str, version: int, draft: bool = False) -> str:
+    return f"{lesson}-v{version}" + ("-draft" if draft else "")
+
+
+def draft_approval() -> dict:
+    """A draft's lesson.approved: required by the manifest schema, never read by the site for a draft,
+    and refused there as a final (not the owner's), so a draft sent by mistake never goes live."""
+    return {"by": "draft", "on": datetime.date.today().isoformat()}
 
 
 def final_gate(L: Path) -> dict:
@@ -418,8 +441,9 @@ def check_zip(zpath: Path, folder: Path, f: lp.Findings) -> None:
         f.warning("PUB-ZIP-SIZE", "zip", "over 700 MB: tell the owner before publishing", f"{size} bytes")
 
 
-def build(L: Path, contracts: lp.Contracts, workers: int | None = None, log=print) -> dict:
-    """Writes the lesson's next package and its zip, or nothing if any check fails."""
+def build(L: Path, contracts: lp.Contracts, workers: int | None = None, log=print, draft: bool = False) -> dict:
+    """Writes the lesson's next package and its zip, or nothing if any check fails; a draft (ADR 039
+    amendment of 2026-10-31) has its own folder and zip and the draft's approval."""
     lesson = paths.lesson_id(L)
     player = L / "generated" / "lesson-player"
     bundle = read_json(player / "bundle.json")
@@ -427,15 +451,16 @@ def build(L: Path, contracts: lp.Contracts, workers: int | None = None, log=prin
         raise Refused(f"the bundle's lesson id {bundle['lesson']['id']} is not the folder's name {lesson}")
     if bundle["meta"].get("silent"):
         raise Refused("a silent preview is never published")
-    approved = final_gate(L)
+    approved = draft_approval() if draft else final_gate(L)
     record = load_record(L)
     version = next_version(lesson, record)
+    name = package_name(lesson, version, draft)
     tags, tags_approved = lesson_tags(L, bundle, contracts)
     retired = retirements(L, record, [s["id"] for s in bundle["sections"]], version)
 
     out = package_dir(L)
     out.mkdir(parents=True, exist_ok=True)
-    stage = out / f".staging-{lesson}-v{version}"
+    stage = out / f".staging-{name}"
     if stage.exists():
         shutil.rmtree(stage)
     (stage / "audio").mkdir(parents=True)
@@ -451,7 +476,7 @@ def build(L: Path, contracts: lp.Contracts, workers: int | None = None, log=prin
             return {"lesson": lesson, "unchanged_since": last}
         if not f.ok:
             raise Refused("the package fails its checks and was not written:\n" + "\n".join(f.lines()))
-        final, zpath = out / f"{lesson}-v{version}", out / f"{lesson}-v{version}.zip"
+        final, zpath = out / name, out / f"{name}.zip"
         write_zip(stage, zpath)
         check_zip(zpath, stage, f)
         if not f.ok:
@@ -472,7 +497,7 @@ def build(L: Path, contracts: lp.Contracts, workers: int | None = None, log=prin
         "files": len(files), "folder_bytes": sum(p.stat().st_size for p in files),
         "tags_approved": tags_approved,
         "validation": {"errors": f.codes("error"), "warnings": f.codes("warning"), "lines": f.lines()}})
-    write_json(out / f"{lesson}-v{version}.report.json", report)
+    write_json(out / f"{name}.report.json", report)
     return report
 
 
@@ -663,14 +688,21 @@ def remote_versions(lesson: str) -> dict[int, str]:
     return found
 
 
-def release(L: Path, dry_run: bool, log=print) -> dict:
+def remote_drafts(lesson: str) -> list[int]:
+    """The draft numbers of the lesson's drafts in the sessions repository, of any version."""
+    out = json.loads(gh("release", "list", "--repo", SESSIONS_REPO, "--limit", "1000", "--json", "tagName"))
+    pattern = re.escape(lesson) + r"-v\d+-draft\.(\d+)"
+    return sorted(int(m.group(1)) for r in out if (m := re.fullmatch(pattern, r["tagName"])))
+
+
+def release(L: Path, dry_run: bool, log=print, draft: bool = False) -> dict:
     lesson = paths.lesson_id(L)
     record = load_record(L)
     version = next_version(lesson, record)
-    tag = f"{lesson}-v{version}"
-    folder, zpath = package_dir(L) / tag, package_dir(L) / f"{tag}.zip"
+    name = package_name(lesson, version, draft)
+    folder, zpath = package_dir(L) / name, package_dir(L) / f"{name}.zip"
     if not folder.is_dir() or not zpath.is_file():
-        raise Refused(f"package version {version} is not built: run --package first")
+        raise Refused(f"package version {version} is not built: run --package{' --draft' if draft else ''} first")
     contracts = lp.load()
     f = lp.validate_package(folder, contracts)
     check_zip(zpath, folder, f)
@@ -678,11 +710,13 @@ def release(L: Path, dry_run: bool, log=print) -> dict:
         raise Refused("the package fails its checks:\n" + "\n".join(f.lines()))
     manifest = read_json(folder / "manifest.json")
     bundle = read_json(L / "generated" / "lesson-player" / "bundle.json")
-    if manifest["lesson"]["approved"] != final_gate(L):
+    if draft and manifest["lesson"]["approved"]["by"] != draft_approval()["by"]:
+        raise Refused("the manifest's approval is not a draft's")
+    if not draft and manifest["lesson"]["approved"] != final_gate(L):
         raise Refused("the manifest's approval is not the lesson's final gate")
     tags, tags_approved = lesson_tags(L, bundle, contracts)
     blockers = []
-    if not tags_approved:
+    if not tags_approved and not draft:
         blockers.append(f"the section tags of {lesson} are not approved: record it with its final approval "
                         f"(--approve-tags; {tags_path(L)})")
     if any(s["teaches"] != tags[s["id"]] for s in manifest["sections"]):
@@ -695,12 +729,15 @@ def release(L: Path, dry_run: bool, log=print) -> dict:
     if set(remote) != recorded:
         raise Refused(f"{SESSIONS_REPO} holds versions {sorted(remote)} of {lesson}, the record "
                       f"{record_path(L)} says {sorted(recorded)}: stop and reconcile by hand")
+    tag = f"{name}.{max(remote_drafts(lesson), default=0) + 1}" if draft else name
     notes = (f"{manifest['lesson']['title']}: package version {version}, bundle format "
              f"{manifest['lesson']['bundle_format_version']}, contracts {manifest['contracts_version']}. "
-             f"Final approval: {manifest['lesson']['approved']['by']}, {manifest['lesson']['approved']['on']}.")
+             + (f"Draft for the owner's review in the site's player (not approved), built "
+                f"{manifest['lesson']['approved']['on']}." if draft else
+                f"Final approval: {manifest['lesson']['approved']['by']}, {manifest['lesson']['approved']['on']}."))
     cmd = ["release", "create", tag, str(folder / "manifest.json"), str(zpath), "--repo", SESSIONS_REPO,
-           "--title", tag, "--notes", notes, "--target", "main", "--latest=false"]
-    plan = {"repository": SESSIONS_REPO, "tag": tag, "draft": False, "prerelease": False,
+           "--title", tag, "--notes", notes, "--target", "main", "--latest=false"] + (["--prerelease"] if draft else [])
+    plan = {"repository": SESSIONS_REPO, "tag": tag, "draft": False, "prerelease": draft,
             "assets": [{"name": "manifest.json", "bytes": (folder / "manifest.json").stat().st_size,
                         "sha256": lp.sha256_file(folder / "manifest.json")},
                        {"name": zpath.name, "bytes": zpath.stat().st_size, "sha256": lp.sha256_file(zpath)}],
@@ -719,9 +756,20 @@ def release(L: Path, dry_run: bool, log=print) -> dict:
                          "tagName,assets,isDraft,isPrerelease,publishedAt,url"))
     got = sorted((a["name"], a["size"], a.get("digest")) for a in view["assets"])
     planned = sorted((a["name"], a["bytes"], f"sha256:{a['sha256']}") for a in plan["assets"])
-    if view["tagName"] != tag or got != planned or view["isDraft"] or view["isPrerelease"]:
-        raise Refused(f"the release {tag} was created but is not as planned (tag, draft, or assets' names, "
-                      f"sizes and SHA-256): {view}; tell the owner, never edit it")
+    if view["tagName"] != tag or got != planned or view["isDraft"] or view["isPrerelease"] != draft:
+        raise Refused(f"the release {tag} was created but is not as planned (tag, draft, pre-release, or assets' "
+                      f"names, sizes and SHA-256): {view}; tell the owner, never edit it")
+    if draft:
+        plan["url"] = view["url"]
+        try:
+            gh(*DRAFTS_RUN)
+            plan["drafts_run"] = "started"
+        except subprocess.CalledProcessError as e:
+            plan["drafts_run"] = f"refused: {(e.stderr or e.stdout or '').strip()}"
+        log(f"draft sent {view['url']}; the site's drafts run: {plan['drafts_run']}")
+        if plan["drafts_run"] != "started":
+            log("tell the owner: the site's six-hourly check picks the draft up anyway")
+        return plan
     if manifest["lesson"]["approved"]["on"] > view["publishedAt"][:10]:
         raise Refused(f"the approval date is after the release's {view['publishedAt']}; tell the owner")
     record["releases"].append({
@@ -883,13 +931,17 @@ def main() -> None:
     mode.add_argument("--approve-tags", action="store_true")
     mode.add_argument("--tags-page", action="store_true", help="write the owner's review page of the tags")
     ap.add_argument("--dry-run", action="store_true", help="--release: print what it would create")
+    ap.add_argument("--draft", action="store_true",
+                    help="--package, --release: a draft for the owner's review in the site's player")
     ap.add_argument("--by", help="--approve-tags: who approved (\"chat (owner's delegation)\" with a final approval)")
     ap.add_argument("--workers", type=int)
     a = ap.parse_args()
     L = a.lesson.resolve()
+    if a.draft and not (a.package or a.release):
+        ap.error("--draft goes with --package or --release")
     try:
         if a.package:
-            r = build(L, lp.load(), a.workers)
+            r = build(L, lp.load(), a.workers, draft=a.draft)
             if "unchanged_since" not in r:
                 print(f"{r['lesson']} v{r['package_version']}: {r['zip_bytes'] / 1e6:.1f} MB zip, {r['files']} files, "
                       f"media {r['media_by_kind']}; worst narration start {r['worst_start_ms']} ms, length "
@@ -897,7 +949,7 @@ def main() -> None:
                 print("\n".join(r["validation"]["lines"]) or "  no findings")
                 print(f"PASS: {r['zip']}")
         elif a.release:
-            release(L, a.dry_run)
+            release(L, a.dry_run, draft=a.draft)
         elif a.approve_tags:
             if not a.by:
                 ap.error("--approve-tags needs --by")
