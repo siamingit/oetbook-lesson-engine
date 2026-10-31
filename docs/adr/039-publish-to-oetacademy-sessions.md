@@ -462,3 +462,54 @@ The site asked the engine to pin the release: `oetacademy-contracts-1.13.0.zip`,
 
 - A 1.23 lesson can be packaged once its final gate is recorded. The tests that name the pinned version name 1.13.0.
 - To reverse: a new amendment pinning another release; the lock and this record change together.
+
+## Amendment — 2026-10-31: drafts, reviewed in the site's player before the final gate
+
+### Context
+
+The owner reviewed each lesson before his final approval in the engine's own preview player, a separate copy of the
+site's that had fallen behind it (no Try again on practice points, no markers on the progress bar, no Samin). The site
+built an admin-only preview of a session in its real learner player, fed by drafts on the existing publishing channel
+(oetacademy-web ADR-0039, accepted 2026-10-30; its requests to the engine amend ADR-0034's requests 2 and 3). The owner's
+brief of 2026-10-31 asked the engine to use it, starting with Writing 4.
+
+### Decision (owner, 2026-10-31)
+
+1. **A draft is a pre-release** in `siamingit/oetacademy-sessions`, tagged `<lesson id>-v<package_version>-draft.<n>`:
+   the version the lesson will be published as (one above the live version; a lesson not yet live, version 1), and `n`
+   one above the lesson's drafts already there (1, 2, 3 …). The same two assets as a final release, `manifest.json` and
+   the zip. The package is a normal one, checked against the pinned contracts and, from bundle 1.23, by the site's own
+   validator (0 errors), with **`lesson.approved` `{"by": "draft", "on": "<build date>"}`**: the site never reads it for
+   a draft, and refuses it as a final (not the owner's), so a draft sent by mistake as a final never goes live. No
+   contract change.
+2. **Right after the draft is published** the engine starts the site's drafts run:
+   `gh workflow run content-pipeline.yml -R siamingit/oetacademy-web --ref main -f source=drafts`. If it is refused, the
+   report says so; the site's six-hourly check picks the draft up anyway. The owner plays it at
+   `https://app.oetacademy.uk/admin/session-drafts` (admins only; learners never see drafts).
+3. **Every lesson that stops at the owner's final gate is also sent as a draft**, unless the brief says otherwise
+   (runbook step 18a). A change after his review is a new draft, never an edited release.
+4. **The final release is unchanged**: a new build with `lesson.approved` `{"by": "siavash", "on": "<date of the final
+   gate>"}`, published as a normal release tagged `<lesson id>-v<package_version>` (step 18b). A draft is never edited or
+   promoted into a final. The site clears a lesson's draft when its final is imported; old draft releases may be deleted
+   after the final is published. Final releases are still never edited or deleted.
+5. **The engine's preview player no longer has to match the site's.** The owner reviews drafts in the site's player,
+   which adds the progress bar's markers, Try again and Show answer, and Samin. The engine's player stays the engine's
+   own check of a build (step 17: the fit, the marks, the layout); a difference from the site's player is no longer a
+   defect to fix in the engine.
+
+### How it is carried (agent, under the brief; ADR 005)
+
+- `publish_lesson.py --package --draft` builds the draft beside the finals, as `<id>-v<n>-draft/` and
+  `<id>-v<n>-draft.zip` (a folder of its own, so a draft never takes the final's name); it needs no final gate and no
+  tag approval. `--release --draft [--dry-run]` publishes it with `--prerelease`, checks on GitHub that it is a
+  pre-release with exactly the two assets (names, sizes, SHA-256), then starts the drafts run and says whether it was
+  accepted. A draft is not recorded in `analysis/publish.json`, which lists final releases only; the drafts are the
+  sessions repository's pre-releases. The tests cover the draft's package, its tag number and the refused run.
+- The first draft: `writing-04-introduction-v1-draft.1` (Writing 4, practice points, bundle 1.23, contracts 1.13.0),
+  2026-10-31; report in engine issue #72. The site's notes for the engine: docs/integration/site-drafts.md.
+
+### Consequences
+
+- The owner sees each lesson exactly as learners will, a few minutes after it is sent, before he approves it.
+- Fixes for differences between the engine's preview player and the site's are no longer made in the engine.
+- To reverse: a new amendment; the site's drafts stay a separate channel that a final release never touches.

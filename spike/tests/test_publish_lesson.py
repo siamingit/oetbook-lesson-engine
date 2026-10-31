@@ -3,7 +3,7 @@ passes the pinned contracts; it is byte for byte the same when built again; a pa
 check is not written; content names never collide; no reference leaves the package; the narration's
 timing is checked against its masters (and a file whose priming is not trimmed fails); an exam
 file's source comes from the release data only; versions and retired sections (G5); the release's
-dry run creates nothing.
+dry run creates nothing; a draft (ADR 039 amendment of 2026-10-31) is its own package and a pre-release.
 
 The made-up lesson is the contracts' own example lesson (examples/lesson/grammar-99-example),
 turned back into the engine's local form (WAV masters in section folders, ../ paths) and given an
@@ -306,6 +306,58 @@ class Refusals(unittest.TestCase):
                 pub.release(self.L, dry_run=False, log=quiet)
         record = json.loads(pub.record_path(self.L).read_text(encoding="utf-8"))
         self.assertEqual([r["tag"] for r in record["releases"]], [tag])
+
+    def test_a_draft_needs_no_final_gate_and_is_its_own_package(self):
+        (self.L / "analysis" / "gates.json").write_text("{}", encoding="utf-8")
+        r = pub.build(self.L, CONTRACTS, workers=2, log=quiet, draft=True)
+        self.assertEqual(r["validation"]["errors"], [])
+        self.assertEqual(Path(r["folder"]).name, f"{LESSON}-v1-draft")
+        self.assertEqual(Path(r["zip"]).name, f"{LESSON}-v1-draft.zip")
+        manifest = json.loads((Path(r["folder"]) / "manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(manifest["lesson"]["approved"], pub.draft_approval())
+        self.assertEqual(manifest["lesson"]["package_version"], 1)
+        self.assertFalse((pub.package_dir(self.L) / f"{LESSON}-v1").exists())
+        with self.assertRaises(pub.Refused):                     # never released as a final
+            pub.release(self.L, dry_run=True, log=quiet)
+
+    def test_a_draft_is_a_prerelease_numbered_after_the_lessons_drafts(self):
+        r = pub.build(self.L, CONTRACTS, workers=2, log=quiet, draft=True)   # tags not approved: no matter
+        folder, zpath = Path(r["folder"]), Path(r["zip"])
+        assets = [{"name": p.name, "size": p.stat().st_size, "digest": f"sha256:{lp.sha256_file(p)}"}
+                  for p in (folder / "manifest.json", zpath)]
+        tag = f"{LESSON}-v1-draft.3"
+        calls = []
+
+        def fake_gh(view, run_refused=False):
+            def run(*args):
+                calls.append(args)
+                if args[:2] == ("release", "list"):
+                    return json.dumps([{"tagName": f"{LESSON}-v1-draft.1"}, {"tagName": f"{LESSON}-v1-draft.2"},
+                                       {"tagName": "other-lesson-v1-draft.7"}])
+                if args[:2] == ("release", "view"):
+                    return json.dumps(view)
+                if args[:2] == ("workflow", "run") and run_refused:
+                    raise subprocess.CalledProcessError(1, "gh", stderr="HTTP 403")
+                return ""
+            return run
+        good = {"tagName": tag, "assets": assets, "isDraft": False, "isPrerelease": True,
+                "publishedAt": "2026-10-31T10:00:00Z", "url": "https://example.invalid/" + tag}
+        with mock.patch.object(pub.lp, "load", lambda: CONTRACTS):
+            with mock.patch.object(pub, "gh", fake_gh(good)):
+                plan = pub.release(self.L, dry_run=True, log=quiet, draft=True)
+                self.assertEqual((plan["tag"], plan["prerelease"], plan["blockers"]), (tag, True, []))
+                self.assertIn("--prerelease", plan["command"])
+                self.assertFalse(any(c[:2] in (("release", "create"), ("workflow", "run")) for c in calls))
+            with mock.patch.object(pub, "gh", fake_gh(dict(good, isPrerelease=False))):
+                with self.assertRaises(pub.Refused):
+                    pub.release(self.L, dry_run=False, log=quiet, draft=True)
+            with mock.patch.object(pub, "gh", fake_gh(good)):
+                self.assertEqual(pub.release(self.L, dry_run=False, log=quiet, draft=True)["drafts_run"], "started")
+            self.assertIn(tuple(pub.DRAFTS_RUN), calls)
+            with mock.patch.object(pub, "gh", fake_gh(good, run_refused=True)):
+                self.assertEqual(pub.release(self.L, dry_run=False, log=quiet, draft=True)["drafts_run"],
+                                 "refused: HTTP 403")
+        self.assertFalse(pub.record_path(self.L).exists())       # a draft is never recorded
 
 
 class Checks(unittest.TestCase):
