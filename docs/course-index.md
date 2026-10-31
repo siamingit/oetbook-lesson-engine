@@ -18,7 +18,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 129:04 | 14 | not yet |
+| 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 129:04 | 14 | 2026-10-31 10:33 (Siavash) |
 | 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 54:55 | 5 | not yet |
 | 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 52:33 | 7 | 2026-10-27 09:37 (siavash) |
 | 4 | Grammar for OET: Articles | `grammar-04-articles` | 59:31 | 9 | 2026-10-27 19:07 (siavash) |
@@ -32,7 +32,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 ## 1. Grammar for OET: Verb Tenses
 
 - Lesson ID and folder: `grammar-01-verb-tenses` (folder `grammar-01-verb-tenses`); course grammar, lesson 1; length 129:04; bundle format 1.23
-- Status: built, final gate not approved
+- Status: approved by Siavash, 2026-10-31 10:33
 - Description: Learn the verb tenses, when to use each one, and how to use them in your OET writing.
 - Original session: folder `source`: `source/video.mp4`, 125:10 long, partial hash `8fd03776aa09bf2b`; deck `source/slides.pdf`, 19 pages
   - The Grammar 1 (Verb Tenses) session, in its newer recording, made after the deck was corrected; an older recording exists and is not the source (docs/01-METHODOLOGY.md §1, §8).
