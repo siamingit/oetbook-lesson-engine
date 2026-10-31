@@ -4580,16 +4580,16 @@
       "section": "page-12",
       "to_section": "page-15",
       "utterance": "page-12_t1.s8.u3",
-      "start_s": 3203.752,
-      "start": "53:23"
+      "start_s": 3210.279,
+      "start": "53:30"
      },
      {
       "lesson": "vocabulary-02-collocations",
       "section": "page-13",
       "to_section": "page-16",
       "utterance": "page-13_t1.s7.u4",
-      "start_s": 3520.724,
-      "start": "58:40"
+      "start_s": 3528.881,
+      "start": "58:48"
      },
      {
       "lesson": "vocabulary-03-collocations-2",
@@ -10068,8 +10068,8 @@
       "section": "page-11",
       "to_section": "page-6",
       "utterance": "page-11_t1.s20.u3",
-      "start_s": 2956.786,
-      "start": "49:16"
+      "start_s": 2961.4,
+      "start": "49:21"
      },
      {
       "lesson": "vocabulary-03-collocations-2",
@@ -22519,13 +22519,13 @@
    "description": "Learn verbs and nouns that go together, for your OET letters and for talking to patients.",
    "course": "vocabulary",
    "order": 2,
-   "length_s": 4863.378,
-   "length": "81:03",
+   "length_s": 4877.905,
+   "length": "81:17",
    "bundle_format": "1.23",
    "status": "approved",
    "approval": {
-    "by": "siavash",
-    "on": "2026-10-27 09:37"
+    "by": "Siavash",
+    "on": "2026-10-31 20:01"
    },
    "source": {
     "folder": "source",
@@ -23554,7 +23554,7 @@
      "category": "c2",
      "start_s": 1921.429,
      "start": "32:01",
-     "end_s": 2279.94,
+     "end_s": 2279.38,
      "topics": [
       {
        "board": "page-9_t1",
@@ -23643,19 +23643,19 @@
         {
          "text": "Check in the last sentence",
          "block": "page-9_k22",
-         "start_s": 2160.87,
+         "start_s": 2160.31,
          "start": "36:00"
         },
         {
          "text": "Two words inside the last sentence",
          "block": "page-9_k24",
-         "start_s": 2172.97,
+         "start_s": 2172.41,
          "start": "36:12"
         },
         {
          "text": "The form after by",
          "block": "page-9_k25",
-         "start_s": 2191.73,
+         "start_s": 2191.17,
          "start": "36:31"
         }
        ]
@@ -23696,14 +23696,14 @@
        "block": "page-9_k24",
        "label": "Meaning",
        "term": "Improves, over time",
-       "start_s": 2172.97,
+       "start_s": 2172.41,
        "start": "36:12"
       },
       {
        "block": "page-9_k25",
        "label": "Form",
        "term": "By monitoring your symptoms",
-       "start_s": 2191.73,
+       "start_s": 2191.17,
        "start": "36:31"
       }
      ],
@@ -23719,98 +23719,98 @@
       10
      ],
      "category": "c2",
-     "start_s": 2279.94,
+     "start_s": 2279.38,
      "start": "37:59",
-     "end_s": 2683.957,
+     "end_s": 2683.397,
      "topics": [
       {
        "board": "page-10_t1",
        "title": "the verb perform and its nouns, the medical letter examples, the patient-friendly examples",
-       "start_s": 2279.94,
+       "start_s": 2279.38,
        "start": "37:59",
        "points": [
         {
          "text": "Show the key verb and the nouns it goes with",
          "block": "page-10_k29",
-         "start_s": 2279.94,
+         "start_s": 2279.38,
          "start": "37:59"
         },
         {
          "text": "Show the two formal example sentences",
          "block": "page-10_k09",
-         "start_s": 2279.94,
+         "start_s": 2279.38,
          "start": "37:59"
         },
         {
          "text": "Show the two patient-friendly sentences",
          "block": "page-10_k18",
-         "start_s": 2279.94,
+         "start_s": 2279.38,
          "start": "37:59"
         },
         {
          "text": "Gloss the key word, with a letter example",
          "block": "page-10_k02",
-         "start_s": 2313.622,
+         "start_s": 2313.062,
          "start": "38:33"
         },
         {
          "text": "A second example, said to a patient",
          "block": "page-10_k03",
-         "start_s": 2331.878,
+         "start_s": 2331.318,
          "start": "38:51"
         },
         {
          "text": "Near-synonyms: perform, carry out, conduct",
          "block": "page-10_k05",
-         "start_s": 2346.882,
+         "start_s": 2346.322,
          "start": "39:06"
         },
         {
          "text": "Surgery and operation: the article point",
          "block": "page-10_k07",
-         "start_s": 2390.63,
+         "start_s": 2390.07,
          "start": "39:50"
         },
         {
          "text": "The form 'was performed' and the missing article",
          "block": "page-10_k12",
-         "start_s": 2456.179,
-         "start": "40:56"
+         "start_s": 2455.619,
+         "start": "40:55"
         },
         {
          "text": "What 'repair' means with injuries",
          "block": "page-10_k14",
-         "start_s": 2489.867,
+         "start_s": 2489.307,
          "start": "41:29"
         },
         {
          "text": "The collocation 'assess health'",
          "block": "page-10_k16",
-         "start_s": 2519.87,
+         "start_s": 2519.31,
          "start": "41:59"
         },
         {
          "text": "Which verb to choose in a letter and with a patient",
          "block": "page-10_k21",
-         "start_s": 2564.233,
-         "start": "42:44"
+         "start_s": 2563.673,
+         "start": "42:43"
         },
         {
          "text": "A second correct version of the scan sentence",
          "block": "page-10_k22",
-         "start_s": 2581.904,
+         "start_s": 2581.344,
          "start": "43:01"
         },
         {
          "text": "Gloss the word 'issue'",
          "block": "page-10_k24",
-         "start_s": 2599.666,
+         "start_s": 2599.106,
          "start": "43:19"
         },
         {
          "text": "Issue and problem",
          "block": "page-10_k25",
-         "start_s": 2611.957,
+         "start_s": 2611.397,
          "start": "43:31"
         }
        ]
@@ -23822,28 +23822,28 @@
        "block": "page-10_k01",
        "label": "Nouns",
        "term": "Perform surgery, a procedure, an examination, a test or a scan",
-       "start_s": 2279.94,
+       "start_s": 2279.38,
        "start": "37:59"
       },
       {
        "block": "page-10_k12",
        "label": "Grammar term",
        "term": "Passive",
-       "start_s": 2456.179,
-       "start": "40:56"
+       "start_s": 2455.619,
+       "start": "40:55"
       },
       {
        "block": "page-10_k14",
        "label": "Collocations",
        "term": "Repair",
-       "start_s": 2489.867,
+       "start_s": 2489.307,
        "start": "41:29"
       },
       {
        "block": "page-10_k16",
        "label": "Collocations",
        "term": "Assess",
-       "start_s": 2519.87,
+       "start_s": 2519.31,
        "start": "41:59"
       }
      ],
@@ -23851,13 +23851,13 @@
       {
        "block": "page-10_k06",
        "text": "Conduct an operation.",
-       "start_s": 2373.014,
-       "start": "39:33"
+       "start_s": 2372.454,
+       "start": "39:32"
       },
       {
        "block": "page-10_k07",
        "text": "I had a surgery.",
-       "start_s": 2390.63,
+       "start_s": 2390.07,
        "start": "39:50"
       }
      ],
@@ -23872,123 +23872,123 @@
       11
      ],
      "category": "c2",
-     "start_s": 2683.957,
+     "start_s": 2683.397,
      "start": "44:43",
-     "end_s": 3038.33,
+     "end_s": 3042.874,
      "topics": [
       {
        "board": "page-11_t1",
        "title": "the verb prescribe and its nouns, the medical letter examples, the patient-friendly examples",
-       "start_s": 2683.957,
+       "start_s": 2683.397,
        "start": "44:43",
        "points": [
         {
          "text": "the verb and the list of nouns it goes with",
          "block": "page-11_k34",
-         "start_s": 2683.957,
+         "start_s": 2683.397,
          "start": "44:43"
         },
         {
          "text": "the slide's two formal sentences",
          "block": "page-11_k09",
-         "start_s": 2683.957,
+         "start_s": 2683.397,
          "start": "44:43"
         },
         {
          "text": "the slide's two patient-friendly sentences",
          "block": "page-11_k18",
-         "start_s": 2683.957,
+         "start_s": 2683.397,
          "start": "44:43"
         },
         {
          "text": "Full gloss moment for the key word, with a letter example",
          "block": "page-11_k03",
-         "start_s": 2727.05,
-         "start": "45:27"
+         "start_s": 2726.49,
+         "start": "45:26"
         },
         {
          "text": "Speaking example for prescribe, and where the verb is used",
          "block": "page-11_k04",
-         "start_s": 2750.951,
+         "start_s": 2750.391,
          "start": "45:50"
         },
         {
          "text": "Prescribe rest: who does the prescribing",
          "block": "page-11_k06",
-         "start_s": 2764.045,
-         "start": "46:04"
+         "start_s": 2763.485,
+         "start": "46:03"
         },
         {
          "text": "One widening note: the word family",
          "block": "page-11_k08",
-         "start_s": 2772.387,
-         "start": "46:12"
+         "start_s": 2776.761,
+         "start": "46:16"
         },
         {
          "text": "What makes these two model sentences work",
          "block": "page-11_k11",
-         "start_s": 2793.321,
-         "start": "46:33"
+         "start_s": 2797.695,
+         "start": "46:37"
         },
         {
          "text": "The form of the verb after 'to'",
          "block": "page-11_k12",
-         "start_s": 2808.356,
-         "start": "46:48"
+         "start_s": 2812.73,
+         "start": "46:52"
         },
         {
          "text": "The phrase 'a course of'",
          "block": "page-11_k14",
-         "start_s": 2834.416,
-         "start": "47:14"
+         "start_s": 2838.79,
+         "start": "47:18"
         },
         {
          "text": "The purpose phrase 'to manage'",
          "block": "page-11_k16",
-         "start_s": 2854.205,
-         "start": "47:34"
+         "start_s": 2858.579,
+         "start": "47:38"
         },
         {
          "text": "What these two sentences are for",
          "block": "page-11_k20",
-         "start_s": 2886.531,
-         "start": "48:06"
+         "start_s": 2890.995,
+         "start": "48:10"
         },
         {
          "text": "Gloss the hard general word in the printed sentence",
          "block": "page-11_k21",
-         "start_s": 2892.502,
-         "start": "48:12"
+         "start_s": 2896.966,
+         "start": "48:16"
         },
         {
          "text": "No 'a' or 'an' before painkillers",
          "block": "page-11_k22",
-         "start_s": 2905.995,
-         "start": "48:25"
+         "start_s": 2910.459,
+         "start": "48:30"
         },
         {
          "text": "'Some' can be left out",
          "block": "page-11_k24",
-         "start_s": 2918.672,
-         "start": "48:38"
+         "start_s": 2923.136,
+         "start": "48:43"
         },
         {
          "text": "'To help with' as a way of giving the reason",
          "block": "page-11_k26",
-         "start_s": 2928.195,
-         "start": "48:48"
+         "start_s": 2932.659,
+         "start": "48:52"
         },
         {
          "text": "'Rest' in this sentence, and one more example",
          "block": "page-11_k28",
-         "start_s": 2946.526,
-         "start": "49:06"
+         "start_s": 2950.99,
+         "start": "49:10"
         },
         {
          "text": "Doctor and patient: two ways to talk about rest",
          "block": "page-11_k30",
-         "start_s": 2963.861,
-         "start": "49:23"
+         "start_s": 2968.475,
+         "start": "49:28"
         }
        ]
       }
@@ -23999,44 +23999,44 @@
        "block": "page-11_k02",
        "label": "Nouns",
        "term": "Medication, antibiotics, painkillers, treatment, rest",
-       "start_s": 2697.457,
-       "start": "44:57"
+       "start_s": 2696.897,
+       "start": "44:56"
       },
       {
        "block": "page-11_k08",
        "label": "Word family",
        "term": "Prescribe (verb), prescription (noun)",
-       "start_s": 2772.387,
-       "start": "46:12"
+       "start_s": 2776.761,
+       "start": "46:16"
       },
       {
        "block": "page-11_k12",
        "label": "Pattern",
        "term": "To treat the infection",
-       "start_s": 2808.356,
-       "start": "46:48"
+       "start_s": 2812.73,
+       "start": "46:52"
       },
       {
        "block": "page-11_k14",
        "label": "Phrase",
        "term": "A course of",
-       "start_s": 2834.416,
-       "start": "47:14"
+       "start_s": 2838.79,
+       "start": "47:18"
       },
       {
        "block": "page-11_k26",
        "label": "Phrase",
        "term": "To help with…",
-       "start_s": 2928.195,
-       "start": "48:48"
+       "start_s": 2932.659,
+       "start": "48:52"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-11_k23",
        "text": "A painkillers",
-       "start_s": 2914.012,
-       "start": "48:34"
+       "start_s": 2918.476,
+       "start": "48:38"
       }
      ],
      "practice": [],
@@ -24046,8 +24046,8 @@
        "lesson": "grammar-04-articles",
        "section": "page-6",
        "provenance": "authored",
-       "start_s": 2956.786,
-       "start": "49:16"
+       "start_s": 2961.4,
+       "start": "49:21"
       }
      ]
     },
@@ -24059,87 +24059,87 @@
       12
      ],
      "category": "c2",
-     "start_s": 3038.33,
-     "start": "50:38",
-     "end_s": 3370.388,
+     "start_s": 3042.874,
+     "start": "50:42",
+     "end_s": 3376.915,
      "topics": [
       {
        "board": "page-12_t1",
        "title": "treat in the two medical examples, treat in the patient-friendly examples",
-       "start_s": 3038.33,
-       "start": "50:38",
+       "start_s": 3042.874,
+       "start": "50:42",
        "points": [
         {
          "text": "the slide's two medical examples of 'treat'",
          "block": "page-12_k23",
-         "start_s": 3038.33,
-         "start": "50:38"
+         "start_s": 3042.874,
+         "start": "50:42"
         },
         {
          "text": "the slide's two patient-friendly examples of 'treat'",
          "block": "page-12_k13",
-         "start_s": 3038.33,
-         "start": "50:38"
+         "start_s": 3042.874,
+         "start": "50:42"
         },
         {
          "text": "Key word moment: the meaning of 'treat' with a letter-style example",
          "block": "page-12_k04",
-         "start_s": 3072.967,
-         "start": "51:12"
+         "start_s": 3077.511,
+         "start": "51:17"
         },
         {
          "text": "Speaking example with the key word",
          "block": "page-12_k05",
-         "start_s": 3088.177,
-         "start": "51:28"
+         "start_s": 3092.721,
+         "start": "51:32"
         },
         {
          "text": "The nouns that go with 'treat', in one box",
          "block": "page-12_k07",
-         "start_s": 3099.22,
-         "start": "51:39"
+         "start_s": 3103.764,
+         "start": "51:43"
         },
         {
          "text": "'Pain' with and without 'a'",
          "block": "page-12_k08",
-         "start_s": 3128.76,
-         "start": "52:08"
+         "start_s": 3133.304,
+         "start": "52:13"
         },
         {
          "text": "'Ache' as a second word for pain",
          "block": "page-12_k10",
-         "start_s": 3162.42,
-         "start": "52:42"
+         "start_s": 3166.964,
+         "start": "52:46"
         },
         {
          "text": "The words 'a course of antibiotics'",
          "block": "page-12_k11",
-         "start_s": 3175.781,
-         "start": "52:55"
+         "start_s": 3179.396,
+         "start": "52:59"
         },
         {
          "text": "The passive form in the first example",
          "block": "page-12_k12",
-         "start_s": 3193.691,
-         "start": "53:13"
+         "start_s": 3200.218,
+         "start": "53:20"
         },
         {
          "text": "Gloss the hard general word 'prevent'",
          "block": "page-12_k16",
-         "start_s": 3235.544,
-         "start": "53:55"
+         "start_s": 3242.071,
+         "start": "54:02"
         },
         {
          "text": "The pattern after 'prevent', with an extra example",
          "block": "page-12_k17",
-         "start_s": 3248.422,
-         "start": "54:08"
+         "start_s": 3254.949,
+         "start": "54:14"
         },
         {
          "text": "Word family of the key word",
          "block": "page-12_k19",
-         "start_s": 3285.732,
-         "start": "54:45"
+         "start_s": 3292.259,
+         "start": "54:52"
         }
        ]
       }
@@ -24150,43 +24150,43 @@
        "block": "page-12_k07",
        "label": "Nouns",
        "term": "Treat an infection, a condition, an injury, a wound, pain",
-       "start_s": 3099.22,
-       "start": "51:39"
+       "start_s": 3103.764,
+       "start": "51:43"
       },
       {
        "block": "page-12_k10",
        "label": "Word",
        "term": "ache",
-       "start_s": 3162.42,
-       "start": "52:42"
+       "start_s": 3166.964,
+       "start": "52:46"
       },
       {
        "block": "page-12_k11",
        "label": "Words",
        "term": "a course of antibiotics",
-       "start_s": 3175.781,
-       "start": "52:55"
+       "start_s": 3179.396,
+       "start": "52:59"
       },
       {
        "block": "page-12_k12",
        "label": "Grammar word",
        "term": "passive",
-       "start_s": 3193.691,
-       "start": "53:13"
+       "start_s": 3200.218,
+       "start": "53:20"
       },
       {
        "block": "page-12_k17",
        "label": "Pattern",
        "term": "prevent it from getting worse",
-       "start_s": 3248.422,
-       "start": "54:08"
+       "start_s": 3254.949,
+       "start": "54:14"
       },
       {
        "block": "page-12_k19",
        "label": "Word family",
        "term": "treat (verb), treatment (noun), treatable (adjective)",
-       "start_s": 3285.732,
-       "start": "54:45"
+       "start_s": 3292.259,
+       "start": "54:52"
       }
      ],
      "wrong_examples": [],
@@ -24197,8 +24197,8 @@
        "lesson": "grammar-01-verb-tenses",
        "section": "page-15",
        "provenance": "authored",
-       "start_s": 3203.752,
-       "start": "53:23"
+       "start_s": 3210.279,
+       "start": "53:30"
       }
      ]
     },
@@ -24210,153 +24210,153 @@
       13
      ],
      "category": "c2",
-     "start_s": 3370.388,
-     "start": "56:10",
-     "end_s": 3773.037,
+     "start_s": 3376.915,
+     "start": "56:16",
+     "end_s": 3782.4,
      "topics": [
       {
        "board": "page-13_t1",
        "title": "the verb schedule and its nouns, the examples from medical writing, the patient-friendly examples",
-       "start_s": 3370.388,
-       "start": "56:10",
+       "start_s": 3376.915,
+       "start": "56:16",
        "points": [
         {
          "text": "the nouns that go with the verb.",
          "block": "page-13_k34",
-         "start_s": 3370.388,
-         "start": "56:10"
+         "start_s": 3376.915,
+         "start": "56:16"
         },
         {
          "text": "the three written examples on this page.",
          "block": "page-13_k07",
-         "start_s": 3370.388,
-         "start": "56:10"
+         "start_s": 3376.915,
+         "start": "56:16"
         },
         {
          "text": "Key word: the verb 'schedule' glossed, with a letter example.",
          "block": "page-13_k02",
-         "start_s": 3411.816,
-         "start": "56:51"
+         "start_s": 3418.343,
+         "start": "56:58"
         },
         {
          "text": "Second example: the same verb said to a patient.",
          "block": "page-13_k03",
-         "start_s": 3428.528,
-         "start": "57:08"
+         "start_s": 3435.055,
+         "start": "57:15"
         },
         {
          "text": "How the word is said in British and American English.",
          "block": "page-13_k05",
-         "start_s": 3437.87,
-         "start": "57:17"
+         "start_s": 3444.397,
+         "start": "57:24"
         },
         {
          "text": "Near-synonyms of the key verb.",
          "block": "page-13_k06",
-         "start_s": 3453.83,
-         "start": "57:33"
+         "start_s": 3461.987,
+         "start": "57:41"
         },
         {
          "text": "The possessive in the first sentence.",
          "block": "page-13_k10",
-         "start_s": 3483.589,
-         "start": "58:03"
+         "start_s": 3491.746,
+         "start": "58:11"
         },
         {
          "text": "The meaning of 'has been scheduled'.",
          "block": "page-13_k11",
-         "start_s": 3489.149,
-         "start": "58:09"
+         "start_s": 3497.306,
+         "start": "58:17"
         },
         {
          "text": "Define the grammar word 'passive' the first time it appears.",
          "block": "page-13_k12",
-         "start_s": 3494.359,
-         "start": "58:14"
+         "start_s": 3502.516,
+         "start": "58:22"
         },
         {
          "text": "The passive verbs in these three sentences.",
          "block": "page-13_k13",
-         "start_s": 3503.251,
-         "start": "58:23"
+         "start_s": 3511.408,
+         "start": "58:31"
         },
         {
          "text": "The 'by' phrase names who did it.",
          "block": "page-13_k14",
-         "start_s": 3527.084,
-         "start": "58:47"
+         "start_s": 3535.241,
+         "start": "58:55"
         },
         {
          "text": "The same pattern in a letter request.",
          "block": "page-13_k15",
-         "start_s": 3542.004,
-         "start": "59:02"
+         "start_s": 3550.161,
+         "start": "59:10"
         },
         {
          "text": "Why the tests were scheduled.",
          "block": "page-13_k17",
-         "start_s": 3565.899,
-         "start": "59:25"
+         "start_s": 3574.056,
+         "start": "59:34"
         },
         {
          "text": "Gloss the hard general word 'assess'.",
          "block": "page-13_k18",
-         "start_s": 3572.319,
-         "start": "59:32"
+         "start_s": 3580.476,
+         "start": "59:40"
         },
         {
          "text": "Appointment and follow-up are countable nouns.",
          "block": "page-13_k19",
-         "start_s": 3585.659,
-         "start": "59:45"
+         "start_s": 3593.816,
+         "start": "59:53"
         },
         {
          "text": "The preposition used here after 'scheduled'.",
          "block": "page-13_k20",
-         "start_s": 3601.956,
-         "start": "60:01"
+         "start_s": 3610.113,
+         "start": "60:10"
         },
         {
          "text": "With a date, two prepositions are possible.",
          "block": "page-13_k21",
-         "start_s": 3609.289,
-         "start": "60:09"
+         "start_s": 3617.446,
+         "start": "60:17"
         },
         {
          "text": "the two examples for talking to a patient.",
          "block": "page-13_k23",
-         "start_s": 3626.322,
-         "start": "60:26"
+         "start_s": 3635.685,
+         "start": "60:35"
         },
         {
          "text": "What the two purpose phrases mean.",
          "block": "page-13_k25",
-         "start_s": 3640.704,
-         "start": "60:40"
+         "start_s": 3650.067,
+         "start": "60:50"
         },
         {
          "text": "One purpose phrase can replace the other.",
          "block": "page-13_k26",
-         "start_s": 3653.88,
-         "start": "60:53"
+         "start_s": 3663.243,
+         "start": "61:03"
         },
         {
          "text": "'A follow-up' works as a noun on its own.",
          "block": "page-13_k27",
-         "start_s": 3661.96,
-         "start": "61:01"
+         "start_s": 3671.323,
+         "start": "61:11"
         },
         {
          "text": "One more example with 'a follow-up'.",
          "block": "page-13_k28",
-         "start_s": 3678.684,
-         "start": "61:18"
+         "start_s": 3688.047,
+         "start": "61:28"
         },
         {
          "text": "Word family for 'recovering'.",
          "block": "page-13_k30",
-         "start_s": 3688.426,
-         "start": "61:28"
+         "start_s": 3697.789,
+         "start": "61:37"
         }
        ]
       }
@@ -24367,36 +24367,36 @@
        "block": "page-13_k01",
        "label": "Nouns",
        "term": "Surgery, appointment, scan, follow-up, test",
-       "start_s": 3374.297,
-       "start": "56:14"
+       "start_s": 3380.824,
+       "start": "56:20"
       },
       {
        "block": "page-13_k06",
        "label": "Near-synonyms",
        "term": "Schedule, arrange, book",
-       "start_s": 3453.83,
-       "start": "57:33"
+       "start_s": 3461.987,
+       "start": "57:41"
       },
       {
        "block": "page-13_k12",
        "label": "Grammar word",
        "term": "Passive",
-       "start_s": 3494.359,
-       "start": "58:14"
+       "start_s": 3502.516,
+       "start": "58:22"
       },
       {
        "block": "page-13_k27",
        "label": "Word use",
        "term": "A follow-up",
-       "start_s": 3661.96,
-       "start": "61:01"
+       "start_s": 3671.323,
+       "start": "61:11"
       },
       {
        "block": "page-13_k30",
        "label": "Word family",
        "term": "Recover, recovery",
-       "start_s": 3688.426,
-       "start": "61:28"
+       "start_s": 3697.789,
+       "start": "61:37"
       }
      ],
      "wrong_examples": [],
@@ -24407,8 +24407,8 @@
        "lesson": "grammar-01-verb-tenses",
        "section": "page-16",
        "provenance": "authored",
-       "start_s": 3520.724,
-       "start": "58:40"
+       "start_s": 3528.881,
+       "start": "58:48"
       }
      ]
     },
@@ -24420,93 +24420,93 @@
       14
      ],
      "category": "c2",
-     "start_s": 3773.037,
-     "start": "62:53",
-     "end_s": 4100.934,
+     "start_s": 3782.4,
+     "start": "63:02",
+     "end_s": 4109.297,
      "topics": [
       {
        "board": "page-14_t1",
        "title": "order with an X-ray, order with a blood test",
-       "start_s": 3773.037,
-       "start": "62:53",
+       "start_s": 3782.4,
+       "start": "63:02",
        "points": [
         {
          "text": "the slide's two X-ray sentences, and what they show",
          "block": "page-14_k24",
-         "start_s": 3773.037,
-         "start": "62:53"
+         "start_s": 3782.4,
+         "start": "63:02"
         },
         {
          "text": "the slide's two blood test sentences",
          "block": "page-14_k12",
-         "start_s": 3773.037,
-         "start": "62:53"
+         "start_s": 3782.4,
+         "start": "63:02"
         },
         {
          "text": "Full gloss moment for the key word 'order'",
          "block": "page-14_k04",
-         "start_s": 3818.851,
-         "start": "63:38"
+         "start_s": 3828.214,
+         "start": "63:48"
         },
         {
          "text": "Speaking example of the key word, said to a patient",
          "block": "page-14_k05",
-         "start_s": 3835.299,
-         "start": "63:55"
+         "start_s": 3844.662,
+         "start": "64:04"
         },
         {
          "text": "The nouns that go with 'order', as one short list",
          "block": "page-14_k07",
-         "start_s": 3849.365,
-         "start": "64:09"
+         "start_s": 3858.632,
+         "start": "64:18"
         },
         {
          "text": "Two small points the slide's formal sentence shows",
          "block": "page-14_k08",
-         "start_s": 3862.498,
-         "start": "64:22"
+         "start_s": 3868.821,
+         "start": "64:28"
         },
         {
          "text": "The preposition here is 'in', but it changes with the noun",
          "block": "page-14_k10",
-         "start_s": 3875.948,
-         "start": "64:35"
+         "start_s": 3882.271,
+         "start": "64:42"
         },
         {
          "text": "What can come before the body part",
          "block": "page-14_k11",
-         "start_s": 3894.95,
-         "start": "64:54"
+         "start_s": 3901.273,
+         "start": "65:01"
         },
         {
          "text": "The passive form in the first sentence",
          "block": "page-14_k15",
-         "start_s": 3930.938,
-         "start": "65:30"
+         "start_s": 3937.261,
+         "start": "65:37"
         },
         {
          "text": "Gloss the hard word 'investigate'",
          "block": "page-14_k16",
-         "start_s": 3945.968,
-         "start": "65:45"
+         "start_s": 3952.291,
+         "start": "65:52"
         },
         {
          "text": "'Investigate' and 'check' do the same job in the sentence",
          "block": "page-14_k17",
-         "start_s": 3961.489,
-         "start": "66:01"
+         "start_s": 3967.812,
+         "start": "66:07"
         },
         {
          "text": "The reassurance phrase in the patient-friendly version",
          "block": "page-14_k18",
-         "start_s": 3989.85,
-         "start": "66:29"
+         "start_s": 3996.173,
+         "start": "66:36"
         },
         {
          "text": "Another verb used with tests in letters",
          "block": "page-14_k19",
-         "start_s": 4019.308,
-         "start": "66:59"
+         "start_s": 4027.671,
+         "start": "67:07"
         }
        ]
       }
@@ -24516,16 +24516,16 @@
       {
        "block": "page-14_k07",
        "label": "Nouns",
-       "term": "Tests, medication, an X-ray, a scan, an examination",
-       "start_s": 3849.365,
-       "start": "64:09"
+       "term": "Tests, an X-ray, a scan, blood tests",
+       "start_s": 3858.632,
+       "start": "64:18"
       },
       {
        "block": "page-14_k18",
        "label": "Phrase",
        "term": "To ensure everything is okay",
-       "start_s": 3989.85,
-       "start": "66:29"
+       "start_s": 3996.173,
+       "start": "66:36"
       }
      ],
      "wrong_examples": [],
@@ -24540,355 +24540,355 @@
       15
      ],
      "category": "c3",
-     "start_s": 4100.934,
-     "start": "68:20",
-     "end_s": 4863.378,
+     "start_s": 4109.297,
+     "start": "68:29",
+     "end_s": 4877.905,
      "topics": [
       {
        "board": "page-15_t1",
        "title": "instruction and items 1 to 5",
-       "start_s": 4100.934,
-       "start": "68:20",
+       "start_s": 4109.297,
+       "start": "68:29",
        "points": [
         {
          "text": "Show the first half of the gap-fill set",
          "block": "page-15_k93",
-         "start_s": 4100.934,
-         "start": "68:20"
+         "start_s": 4109.297,
+         "start": "68:29"
         }
        ]
       },
       {
        "board": "page-15_t2",
        "title": "items 6 to 10",
-       "start_s": 4152.895,
-       "start": "69:12",
+       "start_s": 4161.258,
+       "start": "69:21",
        "points": [
         {
          "text": "Show the second half of the gap-fill set",
          "block": "page-15_k94",
-         "start_s": 4152.895,
-         "start": "69:12"
+         "start_s": 4161.258,
+         "start": "69:21"
         }
        ]
       },
       {
        "board": "page-15_t3",
        "title": "Item 1: monitor blood pressure",
-       "start_s": 4195.827,
-       "start": "69:55",
+       "start_s": 4204.19,
+       "start": "70:04",
        "points": [
         {
          "text": "Give the answer and the reason",
          "block": "page-15_k95",
-         "start_s": 4195.827,
-         "start": "69:55"
+         "start_s": 4204.19,
+         "start": "70:04"
         },
         {
          "text": "Gloss the hard word 'throughout' in English",
          "block": "page-15_k16",
-         "start_s": 4217.366,
-         "start": "70:17"
+         "start_s": 4225.729,
+         "start": "70:25"
         },
         {
          "text": "Point out the base and past forms in the verb list",
          "block": "page-15_k17",
-         "start_s": 4230.663,
-         "start": "70:30"
+         "start_s": 4239.026,
+         "start": "70:39"
         },
         {
          "text": "State the form needed after 'will' here",
          "block": "page-15_k18",
-         "start_s": 4255.057,
-         "start": "70:55"
+         "start_s": 4263.42,
+         "start": "71:03"
         }
        ]
       },
       {
        "board": "page-15_t4",
        "title": "Item 2: assess symptoms",
-       "start_s": 4263.327,
-       "start": "71:03",
+       "start_s": 4271.69,
+       "start": "71:11",
        "points": [
         {
          "text": "Gloss the key word 'assess' before the answer",
          "block": "page-15_k96",
-         "start_s": 4263.327,
-         "start": "71:03"
+         "start_s": 4271.69,
+         "start": "71:11"
         },
         {
          "text": "Give the answer and the form reason",
          "block": "page-15_k21",
-         "start_s": 4284.232,
-         "start": "71:24"
+         "start_s": 4292.595,
+         "start": "71:32"
         },
         {
          "text": "Speaking example with the key word",
          "block": "page-15_k23",
-         "start_s": 4303.826,
-         "start": "71:43"
+         "start_s": 4312.189,
+         "start": "71:52"
         },
         {
          "text": "Gloss the hard word 'determine'",
          "block": "page-15_k24",
-         "start_s": 4313.063,
-         "start": "71:53"
+         "start_s": 4321.426,
+         "start": "72:01"
         }
        ]
       },
       {
        "board": "page-15_t5",
        "title": "Item 3: prescribe antibiotics",
-       "start_s": 4325.357,
-       "start": "72:05",
+       "start_s": 4333.72,
+       "start": "72:13",
        "points": [
         {
          "text": "Give the intended answer",
          "block": "page-15_k97",
-         "start_s": 4325.357,
-         "start": "72:05"
+         "start_s": 4333.72,
+         "start": "72:13"
         },
         {
          "text": "Show the second acceptable answer",
          "block": "page-15_k28",
-         "start_s": 4345.313,
-         "start": "72:25"
+         "start_s": 4353.676,
+         "start": "72:33"
         },
         {
          "text": "Contrast the two verbs",
          "block": "page-15_k30",
-         "start_s": 4357.945,
-         "start": "72:37"
+         "start_s": 4366.308,
+         "start": "72:46"
         },
         {
          "text": "Speaking example with 'prescribe'",
          "block": "page-15_k31",
-         "start_s": 4371.518,
-         "start": "72:51"
+         "start_s": 4379.881,
+         "start": "72:59"
         }
        ]
       },
       {
        "board": "page-15_t6",
        "title": "Item 4: perform surgery",
-       "start_s": 4378.859,
-       "start": "72:58",
+       "start_s": 4387.222,
+       "start": "73:07",
        "points": [
         {
          "text": "Give the answer and the form reason",
          "block": "page-15_k98",
-         "start_s": 4378.859,
-         "start": "72:58"
+         "start_s": 4387.222,
+         "start": "73:07"
         },
         {
          "text": "Show the verbs that go with surgery",
          "block": "page-15_k35",
-         "start_s": 4403.214,
-         "start": "73:23"
+         "start_s": 4411.577,
+         "start": "73:31"
         },
         {
          "text": "Reject 'conduct' with surgery",
          "block": "page-15_k37",
-         "start_s": 4413.449,
-         "start": "73:33"
+         "start_s": 4421.812,
+         "start": "73:41"
         },
         {
          "text": "Surgery with no word in front of it",
          "block": "page-15_k39",
-         "start_s": 4427.416,
-         "start": "73:47"
+         "start_s": 4435.779,
+         "start": "73:55"
         },
         {
          "text": "Operation needs a word in front of it",
          "block": "page-15_k41",
-         "start_s": 4441.428,
-         "start": "74:01"
+         "start_s": 4449.791,
+         "start": "74:09"
         }
        ]
       },
       {
        "board": "page-15_t7",
        "title": "Item 5: conduct a scan",
-       "start_s": 4462.751,
-       "start": "74:22",
+       "start_s": 4471.114,
+       "start": "74:31",
        "points": [
         {
          "text": "Give the answer and the reason",
          "block": "page-15_k99",
-         "start_s": 4462.751,
-         "start": "74:22"
+         "start_s": 4471.114,
+         "start": "74:31"
         },
         {
          "text": "Explain why 'performed' cannot fill this gap",
          "block": "page-15_k46",
-         "start_s": 4479.239,
-         "start": "74:39"
+         "start_s": 4493.766,
+         "start": "74:53"
         },
         {
          "text": "Collect the verbs that mean to do a scan",
          "block": "page-15_k47",
-         "start_s": 4490.461,
-         "start": "74:50"
+         "start_s": 4504.988,
+         "start": "75:04"
         },
         {
          "text": "Gloss the key phrase 'carry out'",
          "block": "page-15_k48",
-         "start_s": 4500.615,
-         "start": "75:00"
+         "start_s": 4515.142,
+         "start": "75:15"
         }
        ]
       },
       {
        "board": "page-15_t8",
        "title": "Item 6: administer pain relief",
-       "start_s": 4514.002,
-       "start": "75:14",
+       "start_s": 4528.529,
+       "start": "75:28",
        "points": [
         {
          "text": "Give the answer and the reason",
          "block": "page-15_k100",
-         "start_s": 4514.002,
-         "start": "75:14"
+         "start_s": 4528.529,
+         "start": "75:28"
         },
         {
          "text": "Gloss 'pain relief' in English",
          "block": "page-15_k52",
-         "start_s": 4531.478,
-         "start": "75:31"
+         "start_s": 4546.005,
+         "start": "75:46"
         },
         {
          "text": "Collect 'administer' collocations",
          "block": "page-15_k53",
-         "start_s": 4553.167,
-         "start": "75:53"
+         "start_s": 4567.694,
+         "start": "76:07"
         },
         {
          "text": "Speaking example with the key word",
          "block": "page-15_k54",
-         "start_s": 4565.058,
-         "start": "76:05"
+         "start_s": 4579.585,
+         "start": "76:19"
         }
        ]
       },
       {
        "board": "page-15_t9",
        "title": "Item 7: administer an injection",
-       "start_s": 4572.263,
-       "start": "76:12",
+       "start_s": 4586.79,
+       "start": "76:26",
        "points": [
         {
          "text": "Give the answer and the form reason",
          "block": "page-15_k101",
-         "start_s": 4572.263,
-         "start": "76:12"
+         "start_s": 4586.79,
+         "start": "76:26"
         },
         {
          "text": "Gloss 'reduce' in English",
          "block": "page-15_k58",
-         "start_s": 4594.551,
-         "start": "76:34"
+         "start_s": 4609.078,
+         "start": "76:49"
         }
        ]
       },
       {
        "board": "page-15_t10",
        "title": "Item 8: provide assistance",
-       "start_s": 4606.893,
-       "start": "76:46",
+       "start_s": 4621.42,
+       "start": "77:01",
        "points": [
         {
          "text": "Give the answer and the reason",
          "block": "page-15_k102",
-         "start_s": 4606.893,
-         "start": "76:46"
+         "start_s": 4621.42,
+         "start": "77:01"
         },
         {
          "text": "Gloss the key word 'assistance'",
          "block": "page-15_k62",
-         "start_s": 4627.554,
-         "start": "77:07"
+         "start_s": 4642.081,
+         "start": "77:22"
         },
         {
          "text": "Collect 'provide' collocations",
          "block": "page-15_k63",
-         "start_s": 4645.941,
-         "start": "77:25"
+         "start_s": 4660.468,
+         "start": "77:40"
         },
         {
          "text": "Speaking example with the key words",
          "block": "page-15_k64",
-         "start_s": 4656.692,
-         "start": "77:36"
+         "start_s": 4671.219,
+         "start": "77:51"
         }
        ]
       },
       {
        "board": "page-15_t11",
        "title": "Item 9: monitor a condition",
-       "start_s": 4663.043,
-       "start": "77:43",
+       "start_s": 4677.57,
+       "start": "77:57",
        "points": [
         {
          "text": "Give the answer and the reason",
          "block": "page-15_k103",
-         "start_s": 4663.043,
-         "start": "77:43"
+         "start_s": 4677.57,
+         "start": "77:57"
         },
         {
          "text": "Gloss the key word 'monitor'",
          "block": "page-15_k68",
-         "start_s": 4682.843,
-         "start": "78:02"
+         "start_s": 4697.37,
+         "start": "78:17"
         },
         {
          "text": "Collect 'monitor' collocations",
          "block": "page-15_k69",
-         "start_s": 4701.638,
-         "start": "78:21"
+         "start_s": 4716.165,
+         "start": "78:36"
         },
         {
          "text": "Gloss 'improve'",
          "block": "page-15_k70",
-         "start_s": 4713.62,
-         "start": "78:33"
+         "start_s": 4728.147,
+         "start": "78:48"
         }
        ]
       },
       {
        "board": "page-15_t12",
        "title": "Item 10: discuss test results",
-       "start_s": 4798.487,
-       "start": "79:58",
+       "start_s": 4813.014,
+       "start": "80:13",
        "points": [
         {
          "text": "Gloss the key word 'discuss' before the answer",
          "block": "page-15_k104",
-         "start_s": 4798.487,
-         "start": "79:58"
+         "start_s": 4813.014,
+         "start": "80:13"
         },
         {
          "text": "Give the answer and the reason",
          "block": "page-15_k73",
-         "start_s": 4818.427,
-         "start": "80:18"
+         "start_s": 4832.954,
+         "start": "80:32"
         },
         {
          "text": "Explain the phrase 'during the consultation'",
          "block": "page-15_k75",
-         "start_s": 4832.177,
-         "start": "80:32"
+         "start_s": 4846.704,
+         "start": "80:46"
         },
         {
          "text": "Speaking example with the key word",
          "block": "page-15_k76",
-         "start_s": 4839.506,
-         "start": "80:39"
+         "start_s": 4854.033,
+         "start": "80:54"
         },
         {
          "text": "Close with the main idea of the exercise",
          "block": "page-15_k77",
-         "start_s": 4848.083,
-         "start": "80:48"
+         "start_s": 4862.61,
+         "start": "81:02"
         }
        ]
       }
@@ -24898,8 +24898,8 @@
        "block": "page-15_k77",
        "kind": "rule",
        "text": "For each noun, learn the verb or verbs that go with it. Another verb may not give the right meaning.",
-       "start_s": 4848.083,
-       "start": "80:48"
+       "start_s": 4862.61,
+       "start": "81:02"
       }
      ],
      "terms": [
@@ -24907,171 +24907,171 @@
        "block": "page-15_k17",
        "label": "Verbs",
        "term": "Monitor, assessed, prescribe, performed, conduct, administered, administer, provided, monitor, discussed",
-       "start_s": 4230.663,
-       "start": "70:30"
+       "start_s": 4239.026,
+       "start": "70:39"
       },
       {
        "block": "page-15_k47",
        "label": "Collocations",
        "term": "Conduct a scan, perform a scan, carry out a scan",
-       "start_s": 4490.461,
-       "start": "74:50"
+       "start_s": 4504.988,
+       "start": "75:04"
       },
       {
        "block": "page-15_k53",
        "label": "Collocations",
        "term": "Administer pain relief, administer medication, administer an injection",
-       "start_s": 4553.167,
-       "start": "75:53"
+       "start_s": 4567.694,
+       "start": "76:07"
       },
       {
        "block": "page-15_k63",
        "label": "Collocations",
        "term": "Provide assistance, provide support, provide care",
-       "start_s": 4645.941,
-       "start": "77:25"
+       "start_s": 4660.468,
+       "start": "77:40"
       },
       {
        "block": "page-15_k69",
        "label": "Collocations",
        "term": "Monitor blood pressure, monitor a patient, monitor a condition",
-       "start_s": 4701.638,
-       "start": "78:21"
+       "start_s": 4716.165,
+       "start": "78:36"
       },
       {
        "block": "page-15_k75",
        "label": "Phrase",
        "term": "During the consultation",
-       "start_s": 4832.177,
-       "start": "80:32"
+       "start_s": 4846.704,
+       "start": "80:46"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-15_k02",
        "text": "The nurse will __________ the patient’s blood pressure throughout the night.",
-       "start_s": 4100.934,
-       "start": "68:20"
+       "start_s": 4109.297,
+       "start": "68:29"
       },
       {
        "block": "page-15_k03",
        "text": "The doctor __________ the patient’s symptoms to determine the best treatment.",
-       "start_s": 4100.934,
-       "start": "68:20"
+       "start_s": 4109.297,
+       "start": "68:29"
       },
       {
        "block": "page-15_k04",
        "text": "We will __________ antibiotics to fight the infection.",
-       "start_s": 4100.934,
-       "start": "68:20"
+       "start_s": 4109.297,
+       "start": "68:29"
       },
       {
        "block": "page-15_k05",
        "text": "The surgeon __________ emergency surgery to repair the patient’s injuries.",
-       "start_s": 4100.934,
-       "start": "68:20"
+       "start_s": 4109.297,
+       "start": "68:29"
       },
       {
        "block": "page-15_k06",
        "text": "The team will __________ a scan to look for any internal bleeding.",
-       "start_s": 4100.934,
-       "start": "68:20"
+       "start_s": 4109.297,
+       "start": "68:29"
       },
       {
        "block": "page-15_k08",
        "text": "The nurse __________ pain relief to make the patient more comfortable.",
-       "start_s": 4152.895,
-       "start": "69:12"
+       "start_s": 4161.258,
+       "start": "69:21"
       },
       {
        "block": "page-15_k09",
        "text": "The nurse will __________ an injection to reduce the patient's symptoms.",
-       "start_s": 4152.895,
-       "start": "69:12"
+       "start_s": 4161.258,
+       "start": "69:21"
       },
       {
        "block": "page-15_k10",
        "text": "The physiotherapist __________ assistance to help the patient walk again.",
-       "start_s": 4152.895,
-       "start": "69:12"
+       "start_s": 4161.258,
+       "start": "69:21"
       },
       {
        "block": "page-15_k11",
        "text": "We will __________ your condition over the next few days to see if it improves.",
-       "start_s": 4152.895,
-       "start": "69:12"
+       "start_s": 4161.258,
+       "start": "69:21"
       },
       {
        "block": "page-15_k12",
        "text": "The doctor __________ the test results during the consultation.",
-       "start_s": 4152.895,
-       "start": "69:12"
+       "start_s": 4161.258,
+       "start": "69:21"
       },
       {
        "block": "page-15_k13",
        "text": "The nurse will __________ the patient’s blood pressure throughout the night.",
-       "start_s": 4195.827,
-       "start": "69:55"
+       "start_s": 4204.19,
+       "start": "70:04"
       },
       {
        "block": "page-15_k19",
        "text": "The doctor __________ the patient’s symptoms to determine the best treatment.",
-       "start_s": 4263.327,
-       "start": "71:03"
+       "start_s": 4271.69,
+       "start": "71:11"
       },
       {
        "block": "page-15_k25",
        "text": "We will __________ antibiotics to fight the infection.",
-       "start_s": 4325.357,
-       "start": "72:05"
+       "start_s": 4333.72,
+       "start": "72:13"
       },
       {
        "block": "page-15_k32",
        "text": "The surgeon __________ emergency surgery to repair the patient’s injuries.",
-       "start_s": 4378.859,
-       "start": "72:58"
+       "start_s": 4387.222,
+       "start": "73:07"
       },
       {
        "block": "page-15_k37",
        "text": "Conduct emergency surgery.",
-       "start_s": 4413.449,
-       "start": "73:33"
+       "start_s": 4421.812,
+       "start": "73:41"
       },
       {
        "block": "page-15_k43",
        "text": "The team will __________ a scan to look for any internal bleeding.",
-       "start_s": 4462.751,
-       "start": "74:22"
+       "start_s": 4471.114,
+       "start": "74:31"
       },
       {
        "block": "page-15_k49",
        "text": "The nurse __________ pain relief to make the patient more comfortable.",
-       "start_s": 4514.002,
-       "start": "75:14"
+       "start_s": 4528.529,
+       "start": "75:28"
       },
       {
        "block": "page-15_k55",
        "text": "The nurse will __________ an injection to reduce the patient's symptoms.",
-       "start_s": 4572.263,
-       "start": "76:12"
+       "start_s": 4586.79,
+       "start": "76:26"
       },
       {
        "block": "page-15_k59",
        "text": "The physiotherapist __________ assistance to help the patient walk again.",
-       "start_s": 4606.893,
-       "start": "76:46"
+       "start_s": 4621.42,
+       "start": "77:01"
       },
       {
        "block": "page-15_k65",
        "text": "We will __________ your condition over the next few days to see if it improves.",
-       "start_s": 4663.043,
-       "start": "77:43"
+       "start_s": 4677.57,
+       "start": "77:57"
       },
       {
        "block": "page-15_k71",
        "text": "The doctor __________ the test results during the consultation.",
-       "start_s": 4798.487,
-       "start": "79:58"
+       "start_s": 4813.014,
+       "start": "80:13"
       }
      ],
      "practice": [],
@@ -25081,8 +25081,8 @@
        "lesson": "grammar-04-articles",
        "section": "page-6",
        "provenance": "authored",
-       "start_s": 4454.601,
-       "start": "74:14"
+       "start_s": 4462.964,
+       "start": "74:22"
       }
      ]
     }
@@ -25285,7 +25285,7 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k02",
-     "start_s": 2313.622,
+     "start_s": 2313.062,
      "start": "38:33"
     },
     {
@@ -25294,7 +25294,7 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k24",
-     "start_s": 2599.666,
+     "start_s": 2599.106,
      "start": "43:19"
     },
     {
@@ -25303,8 +25303,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k03",
-     "start_s": 2727.05,
-     "start": "45:27"
+     "start_s": 2726.49,
+     "start": "45:26"
     },
     {
      "word": "A course of",
@@ -25312,8 +25312,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k14",
-     "start_s": 2834.416,
-     "start": "47:14"
+     "start_s": 2838.79,
+     "start": "47:18"
     },
     {
      "word": "discomfort",
@@ -25321,8 +25321,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k21",
-     "start_s": 2892.502,
-     "start": "48:12"
+     "start_s": 2896.966,
+     "start": "48:16"
     },
     {
      "word": "To help with…",
@@ -25330,8 +25330,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k26",
-     "start_s": 2928.195,
-     "start": "48:48"
+     "start_s": 2932.659,
+     "start": "48:52"
     },
     {
      "word": "treat",
@@ -25339,8 +25339,8 @@
      "lexicon": null,
      "section": "page-12",
      "block": "page-12_k04",
-     "start_s": 3072.967,
-     "start": "51:12"
+     "start_s": 3077.511,
+     "start": "51:17"
     },
     {
      "word": "ache",
@@ -25348,8 +25348,8 @@
      "lexicon": null,
      "section": "page-12",
      "block": "page-12_k10",
-     "start_s": 3162.42,
-     "start": "52:42"
+     "start_s": 3166.964,
+     "start": "52:46"
     },
     {
      "word": "prevent",
@@ -25357,8 +25357,8 @@
      "lexicon": null,
      "section": "page-12",
      "block": "page-12_k16",
-     "start_s": 3235.544,
-     "start": "53:55"
+     "start_s": 3242.071,
+     "start": "54:02"
     },
     {
      "word": "schedule",
@@ -25366,8 +25366,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k02",
-     "start_s": 3411.816,
-     "start": "56:51"
+     "start_s": 3418.343,
+     "start": "56:58"
     },
     {
      "word": "assess",
@@ -25375,8 +25375,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k18",
-     "start_s": 3572.319,
-     "start": "59:32"
+     "start_s": 3580.476,
+     "start": "59:40"
     },
     {
      "word": "order",
@@ -25384,8 +25384,8 @@
      "lexicon": null,
      "section": "page-14",
      "block": "page-14_k04",
-     "start_s": 3818.851,
-     "start": "63:38"
+     "start_s": 3828.214,
+     "start": "63:48"
     },
     {
      "word": "investigate",
@@ -25393,8 +25393,8 @@
      "lexicon": null,
      "section": "page-14",
      "block": "page-14_k16",
-     "start_s": 3945.968,
-     "start": "65:45"
+     "start_s": 3952.291,
+     "start": "65:52"
     },
     {
      "word": "To ensure everything is okay",
@@ -25402,8 +25402,8 @@
      "lexicon": null,
      "section": "page-14",
      "block": "page-14_k18",
-     "start_s": 3989.85,
-     "start": "66:29"
+     "start_s": 3996.173,
+     "start": "66:36"
     },
     {
      "word": "throughout",
@@ -25411,8 +25411,8 @@
      "lexicon": null,
      "section": "page-15",
      "block": "page-15_k16",
-     "start_s": 4217.366,
-     "start": "70:17"
+     "start_s": 4225.729,
+     "start": "70:25"
     },
     {
      "word": "determine",
@@ -25420,8 +25420,8 @@
      "lexicon": null,
      "section": "page-15",
      "block": "page-15_k24",
-     "start_s": 4313.063,
-     "start": "71:53"
+     "start_s": 4321.426,
+     "start": "72:01"
     },
     {
      "word": "carry out",
@@ -25429,8 +25429,8 @@
      "lexicon": null,
      "section": "page-15",
      "block": "page-15_k48",
-     "start_s": 4500.615,
-     "start": "75:00"
+     "start_s": 4515.142,
+     "start": "75:15"
     },
     {
      "word": "pain relief",
@@ -25438,8 +25438,8 @@
      "lexicon": null,
      "section": "page-15",
      "block": "page-15_k52",
-     "start_s": 4531.478,
-     "start": "75:31"
+     "start_s": 4546.005,
+     "start": "75:46"
     },
     {
      "word": "reduce",
@@ -25447,8 +25447,8 @@
      "lexicon": null,
      "section": "page-15",
      "block": "page-15_k58",
-     "start_s": 4594.551,
-     "start": "76:34"
+     "start_s": 4609.078,
+     "start": "76:49"
     },
     {
      "word": "assistance",
@@ -25456,8 +25456,8 @@
      "lexicon": null,
      "section": "page-15",
      "block": "page-15_k62",
-     "start_s": 4627.554,
-     "start": "77:07"
+     "start_s": 4642.081,
+     "start": "77:22"
     },
     {
      "word": "improve",
@@ -25465,8 +25465,8 @@
      "lexicon": null,
      "section": "page-15",
      "block": "page-15_k70",
-     "start_s": 4713.62,
-     "start": "78:33"
+     "start_s": 4728.147,
+     "start": "78:48"
     },
     {
      "word": "discuss",
@@ -25474,8 +25474,8 @@
      "lexicon": null,
      "section": "page-15",
      "block": "page-15_k72",
-     "start_s": 4806.123,
-     "start": "80:06"
+     "start_s": 4820.65,
+     "start": "80:20"
     },
     {
      "word": "During the consultation",
@@ -25483,8 +25483,8 @@
      "lexicon": null,
      "section": "page-15",
      "block": "page-15_k75",
-     "start_s": 4832.177,
-     "start": "80:32"
+     "start_s": 4846.704,
+     "start": "80:46"
     }
    ],
    "withheld": {
@@ -25532,24 +25532,24 @@
       "section": "page-6",
       "from_section": "page-11",
       "utterance": "page-11_t1.s20.u3",
-      "start_s": 2956.786,
-      "start": "49:16"
+      "start_s": 2961.4,
+      "start": "49:21"
      },
      {
       "lesson": "grammar-01-verb-tenses",
       "section": "page-15",
       "from_section": "page-12",
       "utterance": "page-12_t1.s8.u3",
-      "start_s": 3203.752,
-      "start": "53:23"
+      "start_s": 3210.279,
+      "start": "53:30"
      },
      {
       "lesson": "grammar-01-verb-tenses",
       "section": "page-16",
       "from_section": "page-13",
       "utterance": "page-13_t1.s7.u4",
-      "start_s": 3520.724,
-      "start": "58:40"
+      "start_s": 3528.881,
+      "start": "58:48"
      }
     ],
     "referred_to_by": [
@@ -54115,7 +54115,7 @@
     {
      "lesson": "vocabulary-02-collocations",
      "section": "page-9",
-     "start_s": 2191.73,
+     "start_s": 2191.17,
      "start": "36:31",
      "source": "term"
     }
@@ -56163,8 +56163,8 @@
     {
      "lesson": "vocabulary-02-collocations",
      "section": "page-14",
-     "start_s": 3773.037,
-     "start": "62:53",
+     "start_s": 3782.4,
+     "start": "63:02",
      "source": "section"
     }
    ]
@@ -56342,8 +56342,8 @@
     {
      "lesson": "vocabulary-02-collocations",
      "section": "page-10",
-     "start_s": 2456.179,
-     "start": "40:56",
+     "start_s": 2455.619,
+     "start": "40:55",
      "source": "term"
     }
    ]
@@ -56557,7 +56557,7 @@
     {
      "lesson": "vocabulary-02-collocations",
      "section": "page-10",
-     "start_s": 2279.94,
+     "start_s": 2279.38,
      "start": "37:59",
      "source": "section"
     }
@@ -56622,7 +56622,7 @@
     {
      "lesson": "vocabulary-02-collocations",
      "section": "page-11",
-     "start_s": 2683.957,
+     "start_s": 2683.397,
      "start": "44:43",
      "source": "section"
     }
@@ -57069,8 +57069,8 @@
     {
      "lesson": "vocabulary-02-collocations",
      "section": "page-13",
-     "start_s": 3370.388,
-     "start": "56:10",
+     "start_s": 3376.915,
+     "start": "56:16",
      "source": "section"
     }
    ]
@@ -58054,8 +58054,8 @@
     {
      "lesson": "vocabulary-02-collocations",
      "section": "page-12",
-     "start_s": 3038.33,
-     "start": "50:38",
+     "start_s": 3042.874,
+     "start": "50:42",
      "source": "section"
     }
    ]
