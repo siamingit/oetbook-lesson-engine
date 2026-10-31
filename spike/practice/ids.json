@@ -30,6 +30,10 @@
   "grammar-05-complex-compound": [
    954000,
    954999
+  ],
+  "grammar-06-clause": [
+   955000,
+   955999
   ]
  },
  "ids": [
@@ -1437,6 +1441,118 @@
    "lesson": "grammar-05-complex-compound",
    "point": "notes-to-one",
    "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-955000",
+   "lesson": "grammar-06-clause",
+   "point": "relative-word",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-955001",
+   "lesson": "grammar-06-clause",
+   "point": "relative-word",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-955002",
+   "lesson": "grammar-06-clause",
+   "point": "relative-word",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-955003",
+   "lesson": "grammar-06-clause",
+   "point": "relative-word",
+   "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-955004",
+   "lesson": "grammar-06-clause",
+   "point": "comma-or-not",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-955005",
+   "lesson": "grammar-06-clause",
+   "point": "comma-or-not",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-955006",
+   "lesson": "grammar-06-clause",
+   "point": "reduce-active",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-955007",
+   "lesson": "grammar-06-clause",
+   "point": "active-or-passive",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-955008",
+   "lesson": "grammar-06-clause",
+   "point": "active-or-passive",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-955009",
+   "lesson": "grammar-06-clause",
+   "point": "active-or-passive",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-955010",
+   "lesson": "grammar-06-clause",
+   "point": "build-participle",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-955011",
+   "lesson": "grammar-06-clause",
+   "point": "build-participle",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-955012",
+   "lesson": "grammar-06-clause",
+   "point": "build-participle",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-955013",
+   "lesson": "grammar-06-clause",
+   "point": "same-subject",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-955014",
+   "lesson": "grammar-06-clause",
+   "point": "same-subject",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-955015",
+   "lesson": "grammar-06-clause",
+   "point": "given-sentence",
+   "slot": "item",
    "issued": "2026-10-31"
   }
  ]
