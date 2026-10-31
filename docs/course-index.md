@@ -24,7 +24,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 | 4 | Grammar for OET: Articles | `grammar-04-articles` | 67:59 | 9 | 2026-10-31 13:00 (Siavash) |
 | 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 66:38 | 8 | 2026-10-31 12:46 (Siavash) |
 | 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 59:04 | 6 | 2026-10-31 13:24 (Siavash) |
-| 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 99:20 | 18 | 2026-10-27 09:37 (siavash) |
+| 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 99:20 | 18 | 2026-10-31 19:34 (Siavash) |
 | 8 | Grammar for OET: Paraphrasing | `grammar-08-paraphrasing` | 63:39 | 7 | 2026-10-31 16:42 (Siavash) |
 
 <a id="grammar-01-verb-tenses"></a>
@@ -2281,7 +2281,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 7. Grammar for OET: Punctuation
 
 - Lesson ID and folder: `grammar-07-punctuation` (folder `grammar-07-punctuation`); course grammar, lesson 7; length 99:20; bundle format 1.23
-- Status: approved by siavash, 2026-10-27 09:37
+- Status: approved by Siavash, 2026-10-31 19:34
 - Description: Learn to punctuate your OET letters: where to put commas, and how to use full stops, semicolons, colons, apostrophes, hyphens, capital letters, numbers and short forms correctly.
 - Original session: folder `source`: `source/video.mp4`, 33:26 long, partial hash `297821a41d0a0437`; deck `source/slides.pdf`, 18 pages
   - The recording teaches commas only; the second part (sections added-01 to added-09) is authored, with no recording (ADR 018).
