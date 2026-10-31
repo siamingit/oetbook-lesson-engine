@@ -4564,8 +4564,8 @@
       "section": "page-5",
       "to_section": "page-15",
       "utterance": "page-5_t8.s2.u3",
-      "start_s": 1446.303,
-      "start": "24:06"
+      "start_s": 1668.528,
+      "start": "27:48"
      },
      {
       "lesson": "vocabulary-02-collocations",
@@ -8403,8 +8403,8 @@
       "section": "page-6",
       "to_section": null,
       "utterance": "page-6_t1.s2.u3",
-      "start_s": 1635.826,
-      "start": "27:15"
+      "start_s": 1913.941,
+      "start": "31:53"
      }
     ],
     "continues_in": [],
@@ -10060,8 +10060,8 @@
       "section": "page-4",
       "to_section": "page-6",
       "utterance": "page-4_t7.s3.u2",
-      "start_s": 542.311,
-      "start": "9:02"
+      "start_s": 597.954,
+      "start": "9:57"
      },
      {
       "lesson": "vocabulary-02-collocations",
@@ -11882,8 +11882,8 @@
       "section": "page-9",
       "to_section": null,
       "utterance": "page-9_t1.s37.u2",
-      "start_s": 4156.565,
-      "start": "69:16"
+      "start_s": 4826.175,
+      "start": "80:26"
      },
      {
       "lesson": "writing-02-assessment-criteria",
@@ -13448,16 +13448,16 @@
       "section": "page-7",
       "to_section": null,
       "utterance": "page-7_t1.s1.u1",
-      "start_s": 2226.497,
-      "start": "37:06"
+      "start_s": 2610.413,
+      "start": "43:30"
      },
      {
       "lesson": "vocabulary-01-word-forms",
       "section": "page-7",
       "to_section": "page-6",
       "utterance": "page-7_t1.s1.u4",
-      "start_s": 2253.89,
-      "start": "37:33"
+      "start_s": 2637.806,
+      "start": "43:57"
      },
      {
       "lesson": "writing-04-introduction",
@@ -18578,9 +18578,9 @@
    "description": "Learn to choose the right form of a word, and to join short sentences into clear ones, in your OET writing.",
    "course": "vocabulary",
    "order": 1,
-   "length_s": 4767.882,
-   "length": "79:27",
-   "bundle_format": "1.22",
+   "length_s": 5617.104,
+   "length": "93:37",
+   "bundle_format": "1.23",
    "status": "approved",
    "approval": {
     "by": "siavash",
@@ -18608,7 +18608,7 @@
      "category": null,
      "start_s": 0.0,
      "start": "0:00",
-     "end_s": 145.821,
+     "end_s": 146.191,
      "topics": [
       {
        "board": "page-3_t1",
@@ -18627,13 +18627,13 @@
       {
        "board": "page-3_t2",
        "title": "Contents board",
-       "start_s": 79.251,
+       "start_s": 79.621,
        "start": "1:19",
        "points": [
         {
          "text": "each category, revealed as it is named",
          "block": "page-3_k13",
-         "start_s": 79.251,
+         "start_s": 79.621,
          "start": "1:19"
         }
        ]
@@ -18653,34 +18653,34 @@
       4
      ],
      "category": null,
-     "start_s": 145.821,
-     "start": "2:25",
-     "end_s": 969.192,
+     "start_s": 146.191,
+     "start": "2:26",
+     "end_s": 1136.757,
      "topics": [
       {
        "board": "page-4_t1",
        "title": "items 1 to 4",
-       "start_s": 145.821,
-       "start": "2:25",
+       "start_s": 146.191,
+       "start": "2:26",
        "points": [
         {
          "text": "Show the word box and the first four gap sentences",
-         "block": "page-4_k113",
-         "start_s": 145.821,
-         "start": "2:25"
+         "block": "page-4_k133",
+         "start_s": 146.191,
+         "start": "2:26"
         }
        ]
       },
       {
        "board": "page-4_t2",
        "title": "items 5 to 8",
-       "start_s": 180.041,
+       "start_s": 180.411,
        "start": "3:00",
        "points": [
         {
          "text": "Show the word box and the next four gap sentences",
-         "block": "page-4_k114",
-         "start_s": 180.041,
+         "block": "page-4_k134",
+         "start_s": 180.411,
          "start": "3:00"
         }
        ]
@@ -18688,13 +18688,13 @@
       {
        "board": "page-4_t3",
        "title": "items 9 to 11",
-       "start_s": 204.211,
+       "start_s": 204.581,
        "start": "3:24",
        "points": [
         {
          "text": "Show the word box and the last three gap sentences",
-         "block": "page-4_k115",
-         "start_s": 204.211,
+         "block": "page-4_k135",
+         "start_s": 204.581,
          "start": "3:24"
         }
        ]
@@ -18702,406 +18702,406 @@
       {
        "board": "page-4_t4",
        "title": "Item 1: hypertension and diabetes",
-       "start_s": 228.541,
-       "start": "3:48",
+       "start_s": 229.621,
+       "start": "3:49",
        "points": [
         {
          "text": "Give the answer to item 1 with its reason",
-         "block": "page-4_k116",
-         "start_s": 228.541,
-         "start": "3:48"
+         "block": "page-4_k136",
+         "start_s": 229.621,
+         "start": "3:49"
         },
         {
          "text": "Word class of the pair, and the form students often get wrong",
          "block": "page-4_k21",
-         "start_s": 245.929,
-         "start": "4:05"
+         "start_s": 247.009,
+         "start": "4:07"
         },
         {
          "text": "Where each form goes in a sentence",
          "block": "page-4_k23",
-         "start_s": 258.712,
-         "start": "4:18"
+         "start_s": 259.792,
+         "start": "4:19"
         },
         {
          "text": "The same idea said the other way round, with 'is'",
          "block": "page-4_k24",
-         "start_s": 277.442,
-         "start": "4:37"
+         "start_s": 278.522,
+         "start": "4:38"
         },
         {
          "text": "State the parallel rule for 'and'",
          "block": "page-4_k26",
-         "start_s": 285.482,
-         "start": "4:45"
+         "start_s": 286.562,
+         "start": "4:46"
         },
         {
          "text": "A second pair that works the same way",
          "block": "page-4_k27",
-         "start_s": 299.349,
-         "start": "4:59"
+         "start_s": 300.429,
+         "start": "5:00"
         }
        ]
       },
       {
        "board": "page-4_t5",
        "title": "Item 2: urinary incontinence",
-       "start_s": 311.379,
-       "start": "5:11",
+       "start_s": 367.022,
+       "start": "6:07",
        "points": [
         {
          "text": "Give the answer to item 2 with its reason",
-         "block": "page-4_k117",
-         "start_s": 311.379,
-         "start": "5:11"
+         "block": "page-4_k137",
+         "start_s": 367.022,
+         "start": "6:07"
         },
         {
          "text": "Word class of the pair, with the adjective in a sentence",
          "block": "page-4_k31",
-         "start_s": 331.519,
-         "start": "5:31"
+         "start_s": 387.162,
+         "start": "6:27"
         },
         {
          "text": "Meaning of 'incontinent' in medicine and in general English",
          "block": "page-4_k33",
-         "start_s": 342.63,
-         "start": "5:42"
+         "start_s": 398.273,
+         "start": "6:38"
         },
         {
          "text": "No single rule for the endings",
          "block": "page-4_k34",
-         "start_s": 354.839,
-         "start": "5:54"
+         "start_s": 410.482,
+         "start": "6:50"
         },
         {
          "text": "The subject is not repeated in the second part",
          "block": "page-4_k36",
-         "start_s": 373.2,
-         "start": "6:13"
+         "start_s": 428.843,
+         "start": "7:08"
         }
        ]
       },
       {
        "board": "page-4_t6",
        "title": "Item 3: lonely and isolated",
-       "start_s": 393.069,
-       "start": "6:33",
+       "start_s": 448.712,
+       "start": "7:28",
        "points": [
         {
          "text": "Give the answer to item 3 with its reason",
-         "block": "page-4_k118",
-         "start_s": 393.069,
-         "start": "6:33"
+         "block": "page-4_k138",
+         "start_s": 448.712,
+         "start": "7:28"
         },
         {
          "text": "Gloss the key word loneliness",
          "block": "page-4_k41",
-         "start_s": 411.358,
-         "start": "6:51"
+         "start_s": 467.001,
+         "start": "7:47"
         },
         {
          "text": "The same word said to the patient",
          "block": "page-4_k42",
-         "start_s": 428.393,
-         "start": "7:08"
+         "start_s": 484.036,
+         "start": "8:04"
         },
         {
          "text": "Word class of the pair",
          "block": "page-4_k44",
-         "start_s": 435.229,
-         "start": "7:15"
+         "start_s": 490.872,
+         "start": "8:10"
         },
         {
          "text": "The reporting verb 'stated'",
          "block": "page-4_k45",
-         "start_s": 441.96,
-         "start": "7:21"
+         "start_s": 497.603,
+         "start": "8:17"
         },
         {
          "text": "The word 'isolated' and how it is formed",
          "block": "page-4_k47",
-         "start_s": 451.093,
-         "start": "7:31"
+         "start_s": 506.736,
+         "start": "8:26"
         },
         {
          "text": "The phrase 'at times'",
          "block": "page-4_k48",
-         "start_s": 461.61,
-         "start": "7:41"
+         "start_s": 517.253,
+         "start": "8:37"
         }
        ]
       },
       {
        "board": "page-4_t7",
        "title": "Item 4: headaches and lethargy",
-       "start_s": 473.38,
-       "start": "7:53",
+       "start_s": 529.023,
+       "start": "8:49",
        "points": [
         {
          "text": "Give the answer to item 4 with its reason",
-         "block": "page-4_k119",
-         "start_s": 473.38,
-         "start": "7:53"
+         "block": "page-4_k139",
+         "start_s": 529.023,
+         "start": "8:49"
         },
         {
          "text": "Gloss the key word lethargic",
          "block": "page-4_k52",
-         "start_s": 490.289,
-         "start": "8:10"
+         "start_s": 545.932,
+         "start": "9:05"
         },
         {
          "text": "The same word said to the patient",
          "block": "page-4_k53",
-         "start_s": 505.561,
-         "start": "8:25"
+         "start_s": 561.204,
+         "start": "9:21"
         },
         {
          "text": "Word class of the pair, with both sentence patterns",
          "block": "page-4_k55",
-         "start_s": 511.71,
-         "start": "8:31"
+         "start_s": 567.353,
+         "start": "9:27"
         },
         {
          "text": "Lethargy and drowsiness",
          "block": "page-4_k56",
-         "start_s": 520.531,
-         "start": "8:40"
+         "start_s": 576.174,
+         "start": "9:36"
         },
         {
          "text": "Ache and pain",
          "block": "page-4_k57",
-         "start_s": 532.086,
-         "start": "8:52"
+         "start_s": 587.729,
+         "start": "9:47"
         }
        ]
       },
       {
        "board": "page-4_t8",
        "title": "Item 5: swollen and inflamed",
-       "start_s": 551.261,
-       "start": "9:11",
+       "start_s": 660.814,
+       "start": "11:00",
        "points": [
         {
          "text": "Give the answer to item 5 with its reason",
-         "block": "page-4_k120",
-         "start_s": 551.261,
-         "start": "9:11"
+         "block": "page-4_k140",
+         "start_s": 660.814,
+         "start": "11:00"
         },
         {
          "text": "Word class of the pair",
          "block": "page-4_k61",
-         "start_s": 571.061,
-         "start": "9:31"
+         "start_s": 680.614,
+         "start": "11:20"
         },
         {
          "text": "Spelling warning",
          "block": "page-4_k63",
-         "start_s": 583.811,
-         "start": "9:43"
+         "start_s": 693.664,
+         "start": "11:33"
         }
        ]
       },
       {
        "board": "page-4_t9",
        "title": "Item 6: upset and anxious or tearful",
-       "start_s": 592.141,
-       "start": "9:52",
+       "start_s": 701.994,
+       "start": "11:41",
        "points": [
         {
          "text": "Give the first answer to item 6 with its reason",
-         "block": "page-4_k121",
-         "start_s": 592.141,
-         "start": "9:52"
+         "block": "page-4_k141",
+         "start_s": 701.994,
+         "start": "11:41"
         },
         {
          "text": "Word class of anxious and anxiety",
          "block": "page-4_k67",
-         "start_s": 610.323,
-         "start": "10:10"
+         "start_s": 720.174,
+         "start": "12:00"
         },
         {
          "text": "The second accepted answer",
          "block": "page-4_k68",
-         "start_s": 621.649,
-         "start": "10:21"
+         "start_s": 730.917,
+         "start": "12:10"
         },
         {
          "text": "Gloss the key word tearful",
          "block": "page-4_k70",
-         "start_s": 631.641,
-         "start": "10:31"
+         "start_s": 740.909,
+         "start": "12:20"
         },
         {
          "text": "The same word said to the patient",
          "block": "page-4_k71",
-         "start_s": 646.153,
-         "start": "10:46"
+         "start_s": 755.421,
+         "start": "12:35"
         },
         {
          "text": "Two words spelled 'tear', and the word class of the pair",
          "block": "page-4_k73",
-         "start_s": 657.621,
-         "start": "10:57"
+         "start_s": 766.889,
+         "start": "12:46"
         }
        ]
       },
       {
        "board": "page-4_t10",
        "title": "Item 7: guilt and anxiety",
-       "start_s": 679.302,
-       "start": "11:19",
+       "start_s": 788.57,
+       "start": "13:08",
        "points": [
         {
          "text": "Give the answer to item 7 with its reason",
-         "block": "page-4_k122",
-         "start_s": 679.302,
-         "start": "11:19"
+         "block": "page-4_k142",
+         "start_s": 788.57,
+         "start": "13:08"
         },
         {
          "text": "Two words in the sentence",
          "block": "page-4_k78",
-         "start_s": 699.402,
-         "start": "11:39"
+         "start_s": 808.67,
+         "start": "13:28"
         }
        ]
       },
       {
        "board": "page-4_t11",
        "title": "Item 8: grazed and badly bruised",
-       "start_s": 711.052,
-       "start": "11:51",
+       "start_s": 820.32,
+       "start": "13:40",
        "points": [
         {
          "text": "Give the answer to item 8 with its reason",
-         "block": "page-4_k123",
-         "start_s": 711.052,
-         "start": "11:51"
+         "block": "page-4_k143",
+         "start_s": 820.32,
+         "start": "13:40"
         },
         {
          "text": "The two forms of the bruise pair",
          "block": "page-4_k83",
-         "start_s": 730.021,
-         "start": "12:10"
+         "start_s": 839.289,
+         "start": "13:59"
         },
         {
          "text": "The word 'grazed'",
          "block": "page-4_k84",
-         "start_s": 743.431,
-         "start": "12:23"
+         "start_s": 852.699,
+         "start": "14:12"
         },
         {
          "text": "'A fall' as a noun",
          "block": "page-4_k85",
-         "start_s": 748.392,
-         "start": "12:28"
+         "start_s": 857.698,
+         "start": "14:17"
         },
         {
          "text": "The -ed pattern in this box",
          "block": "page-4_k86",
-         "start_s": 754.572,
-         "start": "12:34"
+         "start_s": 865.35,
+         "start": "14:25"
         }
        ]
       },
       {
        "board": "page-4_t12",
        "title": "Item 9: change and uncertainty",
-       "start_s": 768.342,
-       "start": "12:48",
+       "start_s": 879.12,
+       "start": "14:39",
        "points": [
         {
          "text": "Give the answer to item 9 with its reason",
-         "block": "page-4_k124",
-         "start_s": 768.342,
-         "start": "12:48"
+         "block": "page-4_k144",
+         "start_s": 879.12,
+         "start": "14:39"
         },
         {
          "text": "Word class of the pair, with the adjective in a sentence",
          "block": "page-4_k90",
-         "start_s": 786.959,
-         "start": "13:06"
+         "start_s": 897.737,
+         "start": "14:57"
         },
         {
          "text": "Two useful phrases in the sentence",
          "block": "page-4_k92",
-         "start_s": 798.592,
-         "start": "13:18"
+         "start_s": 909.37,
+         "start": "15:09"
         }
        ]
       },
       {
        "board": "page-4_t13",
        "title": "Item 10: epigastric pain and weight loss",
-       "start_s": 809.952,
-       "start": "13:29",
+       "start_s": 920.73,
+       "start": "15:20",
        "points": [
         {
          "text": "Give the answer to item 10 with its reason",
-         "block": "page-4_k125",
-         "start_s": 809.952,
-         "start": "13:29"
+         "block": "page-4_k145",
+         "start_s": 920.73,
+         "start": "15:20"
         },
         {
          "text": "Word class of the pair",
          "block": "page-4_k97",
-         "start_s": 824.612,
-         "start": "13:44"
+         "start_s": 935.39,
+         "start": "15:35"
         },
         {
          "text": "The phrase 'epigastric pain'",
          "block": "page-4_k98",
-         "start_s": 832.334,
-         "start": "13:52"
+         "start_s": 943.112,
+         "start": "15:43"
         }
        ]
       },
       {
        "board": "page-4_t14",
        "title": "Item 11: withdrawn and anxious, agitated and excitable",
-       "start_s": 841.232,
-       "start": "14:01",
+       "start_s": 1008.797,
+       "start": "16:48",
        "points": [
         {
          "text": "Give both answers to item 11 with the reason",
-         "block": "page-4_k126",
-         "start_s": 841.232,
-         "start": "14:01"
+         "block": "page-4_k146",
+         "start_s": 1008.797,
+         "start": "16:48"
         },
         {
          "text": "Why 'excite' does not fit",
          "block": "page-4_k102",
-         "start_s": 869.852,
-         "start": "14:29"
+         "start_s": 1037.417,
+         "start": "17:17"
         },
         {
          "text": "Gloss the key word excitable",
          "block": "page-4_k104",
-         "start_s": 881.192,
-         "start": "14:41"
+         "start_s": 1048.757,
+         "start": "17:28"
         },
         {
          "text": "The same word said to the patient",
          "block": "page-4_k105",
-         "start_s": 895.793,
-         "start": "14:55"
+         "start_s": 1063.358,
+         "start": "17:43"
         },
         {
          "text": "Withdrawn and agitated are opposite states",
          "block": "page-4_k107",
-         "start_s": 903.052,
-         "start": "15:03"
+         "start_s": 1070.617,
+         "start": "17:50"
         },
         {
          "text": "Endings that often show the word class",
          "block": "page-4_k109",
-         "start_s": 923.671,
-         "start": "15:23"
+         "start_s": 1091.236,
+         "start": "18:11"
         },
         {
          "text": "The -ic pattern for conditions",
          "block": "page-4_k111",
-         "start_s": 953.372,
-         "start": "15:53"
+         "start_s": 1120.937,
+         "start": "18:40"
         }
        ]
       }
@@ -19111,22 +19111,22 @@
        "block": "page-4_k26",
        "kind": "rule",
        "text": "When 'and' joins two words like these, they are usually the same kind of word: two nouns, or two adjectives.",
-       "start_s": 285.482,
-       "start": "4:45"
+       "start_s": 286.562,
+       "start": "4:46"
       },
       {
        "block": "page-4_k63",
        "kind": "rule",
        "text": "Inflamed is spelled with one m. Inflammation has two.",
-       "start_s": 583.811,
-       "start": "9:43"
+       "start_s": 693.664,
+       "start": "11:33"
       },
       {
        "block": "page-4_k86",
        "kind": "rule",
        "text": "Many of these words take -ed and become adjectives: inflame becomes inflamed, bruise becomes bruised, graze becomes grazed.",
-       "start_s": 754.572,
-       "start": "12:34"
+       "start_s": 865.35,
+       "start": "14:25"
       }
      ],
      "terms": [
@@ -19134,288 +19134,288 @@
        "block": "page-4_k21",
        "label": "Word forms",
        "term": "diabetic / diabetes",
-       "start_s": 245.929,
-       "start": "4:05"
+       "start_s": 247.009,
+       "start": "4:07"
       },
       {
        "block": "page-4_k31",
        "label": "Word forms",
        "term": "incontinent / incontinence",
-       "start_s": 331.519,
-       "start": "5:31"
+       "start_s": 387.162,
+       "start": "6:27"
       },
       {
        "block": "page-4_k44",
        "label": "Word family",
        "term": "lonely / loneliness",
-       "start_s": 435.229,
-       "start": "7:15"
+       "start_s": 490.872,
+       "start": "8:10"
       },
       {
        "block": "page-4_k45",
        "label": "New word",
        "term": "stated",
-       "start_s": 441.96,
-       "start": "7:21"
+       "start_s": 497.603,
+       "start": "8:17"
       },
       {
        "block": "page-4_k47",
        "label": "New word",
        "term": "isolated",
-       "start_s": 451.093,
-       "start": "7:31"
+       "start_s": 506.736,
+       "start": "8:26"
       },
       {
        "block": "page-4_k48",
        "label": "New phrase",
        "term": "at times",
-       "start_s": 461.61,
-       "start": "7:41"
+       "start_s": 517.253,
+       "start": "8:37"
       },
       {
        "block": "page-4_k55",
        "label": "Word family",
        "term": "lethargy / lethargic",
-       "start_s": 511.71,
-       "start": "8:31"
+       "start_s": 567.353,
+       "start": "9:27"
       },
       {
        "block": "page-4_k61",
        "label": "Word family",
        "term": "inflame / inflamed / inflammation",
-       "start_s": 571.061,
-       "start": "9:31"
+       "start_s": 680.614,
+       "start": "11:20"
       },
       {
        "block": "page-4_k67",
        "label": "Word forms",
        "term": "anxious / anxiety",
-       "start_s": 610.323,
-       "start": "10:10"
+       "start_s": 720.174,
+       "start": "12:00"
       },
       {
        "block": "page-4_k74",
        "label": "Word forms",
        "term": "tear / tearful",
-       "start_s": 671.611,
-       "start": "11:11"
+       "start_s": 780.879,
+       "start": "13:00"
       },
       {
        "block": "page-4_k78",
        "label": "New word",
        "term": "confessed",
-       "start_s": 699.402,
-       "start": "11:39"
+       "start_s": 808.67,
+       "start": "13:28"
       },
       {
        "block": "page-4_k79",
        "label": "New word",
        "term": "guilt",
-       "start_s": 703.562,
-       "start": "11:43"
+       "start_s": 812.83,
+       "start": "13:32"
       },
       {
        "block": "page-4_k84",
        "label": "New word",
        "term": "grazed",
-       "start_s": 743.431,
-       "start": "12:23"
+       "start_s": 852.699,
+       "start": "14:12"
       },
       {
        "block": "page-4_k85",
        "label": "New phrase",
        "term": "a fall",
-       "start_s": 748.392,
-       "start": "12:28"
+       "start_s": 857.698,
+       "start": "14:17"
       },
       {
        "block": "page-4_k90",
        "label": "Word forms",
        "term": "uncertain / uncertainty",
-       "start_s": 786.959,
-       "start": "13:06"
+       "start_s": 897.737,
+       "start": "14:57"
       },
       {
        "block": "page-4_k92",
        "label": "New phrase",
        "term": "find it difficult",
-       "start_s": 798.592,
-       "start": "13:18"
+       "start_s": 909.37,
+       "start": "15:09"
       },
       {
        "block": "page-4_k93",
        "label": "New phrase",
        "term": "cope with",
-       "start_s": 802.913,
-       "start": "13:22"
+       "start_s": 913.691,
+       "start": "15:13"
       },
       {
        "block": "page-4_k97",
        "label": "Word forms",
        "term": "lose / loss",
-       "start_s": 824.612,
-       "start": "13:44"
+       "start_s": 935.39,
+       "start": "15:35"
       },
       {
        "block": "page-4_k98",
        "label": "New phrase",
        "term": "epigastric pain",
-       "start_s": 832.334,
-       "start": "13:52"
+       "start_s": 943.112,
+       "start": "15:43"
       },
       {
        "block": "page-4_k109",
        "label": "Word endings",
        "term": "Noun endings",
-       "start_s": 923.671,
-       "start": "15:23"
+       "start_s": 1091.236,
+       "start": "18:11"
       },
       {
        "block": "page-4_k110",
        "label": "Word endings",
        "term": "Adjective endings",
-       "start_s": 939.461,
-       "start": "15:39"
+       "start_s": 1107.026,
+       "start": "18:27"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-4_k03",
        "text": "He has a family history of hypertension and ______.",
-       "start_s": 145.821,
-       "start": "2:25"
+       "start_s": 146.191,
+       "start": "2:26"
       },
       {
        "block": "page-4_k04",
        "text": "She has poor short-term memory and in addition, has urinary ______.",
-       "start_s": 145.821,
-       "start": "2:25"
+       "start_s": 146.191,
+       "start": "2:26"
       },
       {
        "block": "page-4_k05",
        "text": "She stated that she felt ______ and isolated at times.",
-       "start_s": 145.821,
-       "start": "2:25"
+       "start_s": 146.191,
+       "start": "2:26"
       },
       {
        "block": "page-4_k06",
        "text": "He has been experiencing headaches and ______.",
-       "start_s": 145.821,
-       "start": "2:25"
+       "start_s": 146.191,
+       "start": "2:26"
       },
       {
        "block": "page-4_k09",
        "text": "On examination, her joints were swollen and ______.",
-       "start_s": 180.041,
+       "start_s": 180.411,
        "start": "3:00"
       },
       {
        "block": "page-4_k10",
        "text": "The patient was clearly upset and rather ______ this morning",
-       "start_s": 180.041,
+       "start_s": 180.411,
        "start": "3:00"
       },
       {
        "block": "page-4_k11",
        "text": "He confessed to having strong feelings of guilt and ______.",
-       "start_s": 180.041,
+       "start_s": 180.411,
        "start": "3:00"
       },
       {
        "block": "page-4_k12",
        "text": "She suffered a fall at home in which her knee was grazed and her arm was ______.",
-       "start_s": 180.041,
+       "start_s": 180.411,
        "start": "3:00"
       },
       {
        "block": "page-4_k15",
        "text": "He has always found it difficult to cope with change and ______.",
-       "start_s": 204.211,
+       "start_s": 204.581,
        "start": "3:24"
       },
       {
        "block": "page-4_k16",
        "text": "He is suffering from epigastric pain and weight ______.",
-       "start_s": 204.211,
+       "start_s": 204.581,
        "start": "3:24"
       },
       {
        "block": "page-4_k17",
        "text": "The patient's mood was very changeable, sometimes withdrawn and ______, but at other times agitated and ______.",
-       "start_s": 204.211,
+       "start_s": 204.581,
        "start": "3:24"
       },
       {
        "block": "page-4_k18",
        "text": "He has a family history of hypertension and ______.",
-       "start_s": 228.541,
-       "start": "3:48"
+       "start_s": 229.621,
+       "start": "3:49"
       },
       {
        "block": "page-4_k22",
        "text": "The patient has diabetic.",
-       "start_s": 254.621,
-       "start": "4:14"
+       "start_s": 255.701,
+       "start": "4:15"
       },
       {
        "block": "page-4_k28",
        "text": "She has poor short-term memory and in addition, has urinary ______.",
-       "start_s": 311.379,
-       "start": "5:11"
+       "start_s": 367.022,
+       "start": "6:07"
       },
       {
        "block": "page-4_k38",
        "text": "She stated that she felt ______ and isolated at times.",
-       "start_s": 393.069,
-       "start": "6:33"
+       "start_s": 448.712,
+       "start": "7:28"
       },
       {
        "block": "page-4_k49",
        "text": "He has been experiencing headaches and ______.",
-       "start_s": 473.38,
-       "start": "7:53"
+       "start_s": 529.023,
+       "start": "8:49"
       },
       {
        "block": "page-4_k58",
        "text": "On examination, her joints were swollen and ______.",
-       "start_s": 551.261,
-       "start": "9:11"
+       "start_s": 660.814,
+       "start": "11:00"
       },
       {
        "block": "page-4_k64",
        "text": "The patient was clearly upset and rather ______ this morning",
-       "start_s": 592.141,
-       "start": "9:52"
+       "start_s": 701.994,
+       "start": "11:41"
       },
       {
        "block": "page-4_k75",
        "text": "He confessed to having strong feelings of guilt and ______.",
-       "start_s": 679.302,
-       "start": "11:19"
+       "start_s": 788.57,
+       "start": "13:08"
       },
       {
        "block": "page-4_k80",
        "text": "She suffered a fall at home in which her knee was grazed and her arm was ______.",
-       "start_s": 711.052,
-       "start": "11:51"
+       "start_s": 820.32,
+       "start": "13:40"
       },
       {
        "block": "page-4_k87",
        "text": "He has always found it difficult to cope with change and ______.",
-       "start_s": 768.342,
-       "start": "12:48"
+       "start_s": 879.12,
+       "start": "14:39"
       },
       {
        "block": "page-4_k94",
        "text": "He is suffering from epigastric pain and weight ______.",
-       "start_s": 809.952,
-       "start": "13:29"
+       "start_s": 920.73,
+       "start": "15:20"
       },
       {
        "block": "page-4_k99",
        "text": "The patient's mood was very changeable, sometimes withdrawn and ______, but at other times agitated and ______.",
-       "start_s": 841.232,
-       "start": "14:01"
+       "start_s": 1008.797,
+       "start": "16:48"
       }
      ],
      "practice": [],
@@ -19425,8 +19425,8 @@
        "lesson": "grammar-04-articles",
        "section": "page-6",
        "provenance": "authored",
-       "start_s": 542.311,
-       "start": "9:02"
+       "start_s": 597.954,
+       "start": "9:57"
       }
      ]
     },
@@ -19438,267 +19438,267 @@
       5
      ],
      "category": null,
-     "start_s": 969.192,
-     "start": "16:09",
-     "end_s": 1592.426,
+     "start_s": 1136.757,
+     "start": "18:56",
+     "end_s": 1870.541,
      "topics": [
       {
        "board": "page-5_t1",
        "title": "exercise introduction, items 1 to 4",
-       "start_s": 969.192,
-       "start": "16:09",
+       "start_s": 1136.757,
+       "start": "18:56",
        "points": [
         {
          "text": "Show the task and the first four exercise sentences",
-         "block": "page-5_k62",
-         "start_s": 969.192,
-         "start": "16:09"
+         "block": "page-5_k76",
+         "start_s": 1136.757,
+         "start": "18:56"
         }
        ]
       },
       {
        "board": "page-5_t2",
        "title": "exercise introduction, items 5 to 8",
-       "start_s": 1017.157,
-       "start": "16:57",
+       "start_s": 1184.722,
+       "start": "19:44",
        "points": [
         {
          "text": "Show the remaining four exercise sentences",
-         "block": "page-5_k63",
-         "start_s": 1017.157,
-         "start": "16:57"
+         "block": "page-5_k77",
+         "start_s": 1184.722,
+         "start": "19:44"
         }
        ]
       },
       {
        "board": "page-5_t3",
        "title": "Item 1: nauseous or nausea",
-       "start_s": 1064.527,
-       "start": "17:44",
+       "start_s": 1232.092,
+       "start": "20:32",
        "points": [
         {
          "text": "Keep item 1 on the board and name the word class of each word",
-         "block": "page-5_k64",
-         "start_s": 1064.527,
-         "start": "17:44"
+         "block": "page-5_k78",
+         "start_s": 1232.092,
+         "start": "20:32"
         },
         {
          "text": "Give the answer and the reason for item 1",
          "block": "page-5_k13",
-         "start_s": 1086.727,
-         "start": "18:06"
+         "start_s": 1254.292,
+         "start": "20:54"
         }
        ]
       },
       {
        "board": "page-5_t4",
        "title": "Item 2: jaundice or jaundiced",
-       "start_s": 1104.147,
-       "start": "18:24",
+       "start_s": 1271.712,
+       "start": "21:11",
        "points": [
         {
          "text": "Keep item 2 on the board and give the patient-friendly meaning",
-         "block": "page-5_k65",
-         "start_s": 1104.147,
-         "start": "18:24"
+         "block": "page-5_k79",
+         "start_s": 1271.712,
+         "start": "21:11"
         },
         {
          "text": "Give the answer and the reason for item 2",
          "block": "page-5_k18",
-         "start_s": 1134.235,
-         "start": "18:54"
+         "start_s": 1301.8,
+         "start": "21:41"
         }
        ]
       },
       {
        "board": "page-5_t5",
        "title": "Item 3: occasionally and the two medical nouns",
-       "start_s": 1166.53,
-       "start": "19:26",
+       "start_s": 1334.095,
+       "start": "22:14",
        "points": [
         {
          "text": "Keep item 3 on the board and give the patient-friendly meanings",
-         "block": "page-5_k66",
-         "start_s": 1166.53,
-         "start": "19:26"
+         "block": "page-5_k80",
+         "start_s": 1334.095,
+         "start": "22:14"
         },
         {
          "text": "Show that both terms after \"no\" are nouns",
          "block": "page-5_k23",
-         "start_s": 1192.332,
-         "start": "19:52"
+         "start_s": 1359.897,
+         "start": "22:39"
         },
         {
          "text": "Find the fault at the start of item 3",
          "block": "page-5_k24",
-         "start_s": 1211.06,
-         "start": "20:11"
+         "start_s": 1378.625,
+         "start": "22:58"
         },
         {
          "text": "Give the answer and the reason for item 3",
          "block": "page-5_k25",
-         "start_s": 1222.918,
-         "start": "20:22"
+         "start_s": 1390.483,
+         "start": "23:10"
         }
        ]
       },
       {
        "board": "page-5_t6",
        "title": "Item 4: abdominal masses and epigastric tenderness",
-       "start_s": 1240.26,
-       "start": "20:40",
+       "start_s": 1407.825,
+       "start": "23:27",
        "points": [
         {
          "text": "Keep item 4 on the board and name the first fault",
-         "block": "page-5_k67",
-         "start_s": 1240.26,
-         "start": "20:40"
+         "block": "page-5_k81",
+         "start_s": 1407.825,
+         "start": "23:27"
         },
         {
          "text": "Show the wrong and right way to describe a mass",
          "block": "page-5_k29",
-         "start_s": 1262.261,
-         "start": "21:02"
+         "start_s": 1429.826,
+         "start": "23:49"
         },
         {
          "text": "Contrast the two word orders for tender and tenderness",
          "block": "page-5_k31",
-         "start_s": 1281.817,
-         "start": "21:21"
+         "start_s": 1449.382,
+         "start": "24:09"
         },
         {
          "text": "Give the answer and the reason for item 4",
          "block": "page-5_k33",
-         "start_s": 1300.849,
-         "start": "21:40"
+         "start_s": 1468.414,
+         "start": "24:28"
         },
         {
          "text": "Add the word family for tender and the point about one spelling",
          "block": "page-5_k35",
-         "start_s": 1323.062,
-         "start": "22:03"
+         "start_s": 1490.627,
+         "start": "24:50"
         }
        ]
       },
       {
        "board": "page-5_t7",
        "title": "Item 5: physiotherapy or physiotherapist",
-       "start_s": 1341.982,
-       "start": "22:21",
+       "start_s": 1564.207,
+       "start": "26:04",
        "points": [
         {
          "text": "Keep item 5 on the board and contrast the two words",
-         "block": "page-5_k68",
-         "start_s": 1341.982,
-         "start": "22:21"
+         "block": "page-5_k82",
+         "start_s": 1564.207,
+         "start": "26:04"
         },
         {
          "text": "Give the answer and the reason for item 5",
          "block": "page-5_k39",
-         "start_s": 1355.722,
-         "start": "22:35"
+         "start_s": 1577.947,
+         "start": "26:17"
         },
         {
          "text": "Show the same pattern with another practitioner",
          "block": "page-5_k41",
-         "start_s": 1380.992,
-         "start": "23:00"
+         "start_s": 1603.217,
+         "start": "26:43"
         }
        ]
       },
       {
        "board": "page-5_t8",
        "title": "Item 6: psychiatric evaluation is required",
-       "start_s": 1392.942,
-       "start": "23:12",
+       "start_s": 1615.167,
+       "start": "26:55",
        "points": [
         {
          "text": "Keep item 6 on the board and contrast psychiatrist with psychiatric",
-         "block": "page-5_k69",
-         "start_s": 1392.942,
-         "start": "23:12"
+         "block": "page-5_k83",
+         "start_s": 1615.167,
+         "start": "26:55"
         },
         {
          "text": "Show the rejected combination and the verb form",
          "block": "page-5_k44",
-         "start_s": 1408.092,
-         "start": "23:28"
+         "start_s": 1630.317,
+         "start": "27:10"
         },
         {
          "text": "Give the answer and the reason for item 6",
          "block": "page-5_k46",
-         "start_s": 1431.892,
-         "start": "23:51"
+         "start_s": 1654.117,
+         "start": "27:34"
         },
         {
          "text": "Add the word family for require",
          "block": "page-5_k48",
-         "start_s": 1454.412,
-         "start": "24:14"
+         "start_s": 1676.637,
+         "start": "27:56"
         }
        ]
       },
       {
        "board": "page-5_t9",
        "title": "Item 7: a decreased appetite",
-       "start_s": 1464.483,
-       "start": "24:24",
+       "start_s": 1686.708,
+       "start": "28:06",
        "points": [
         {
          "text": "Keep item 7 on the board and show where the verb is",
-         "block": "page-5_k70",
-         "start_s": 1464.483,
-         "start": "24:24"
+         "block": "page-5_k84",
+         "start_s": 1686.708,
+         "start": "28:06"
         },
         {
          "text": "Give the answer and the reason for item 7",
          "block": "page-5_k51",
-         "start_s": 1484.232,
-         "start": "24:44"
+         "start_s": 1706.457,
+         "start": "28:26"
         },
         {
          "text": "Add the word family for decrease",
          "block": "page-5_k53",
-         "start_s": 1497.529,
-         "start": "24:57"
+         "start_s": 1719.754,
+         "start": "28:39"
         }
        ]
       },
       {
        "board": "page-5_t10",
        "title": "Item 8: pain, warmth, redness and swelling",
-       "start_s": 1506.396,
-       "start": "25:06",
+       "start_s": 1728.621,
+       "start": "28:48",
        "points": [
         {
          "text": "Keep item 8 on the board and show what must follow \"complaining of\"",
-         "block": "page-5_k71",
-         "start_s": 1506.396,
-         "start": "25:06"
+         "block": "page-5_k85",
+         "start_s": 1728.621,
+         "start": "28:48"
         },
         {
          "text": "Show the noun for each adjective in the list",
          "block": "page-5_k56",
-         "start_s": 1527.726,
-         "start": "25:27"
+         "start_s": 1749.951,
+         "start": "29:09"
         },
         {
          "text": "Give the answer and the reason for item 8",
          "block": "page-5_k58",
-         "start_s": 1545.702,
-         "start": "25:45"
+         "start_s": 1767.927,
+         "start": "29:27"
         },
         {
          "text": "Add the word family for swell",
          "block": "page-5_k60",
-         "start_s": 1562.684,
-         "start": "26:02"
+         "start_s": 1784.909,
+         "start": "29:44"
         },
         {
          "text": "Close the exercise with the rule to remember",
          "block": "page-5_k61",
-         "start_s": 1573.339,
-         "start": "26:13"
+         "start_s": 1795.564,
+         "start": "29:55"
         }
        ]
       }
@@ -19708,8 +19708,8 @@
        "block": "page-5_k61",
        "kind": "rule",
        "text": "Using a noun where an adjective is needed, or an adjective where a noun is needed, is one of the most frequent mistakes in OET writing.",
-       "start_s": 1573.339,
-       "start": "26:13"
+       "start_s": 1795.564,
+       "start": "29:55"
       }
      ],
      "terms": [
@@ -19717,194 +19717,194 @@
        "block": "page-5_k16",
        "label": "In plain words",
        "term": "jaundiced",
-       "start_s": 1110.967,
-       "start": "18:30"
+       "start_s": 1278.532,
+       "start": "21:18"
       },
       {
        "block": "page-5_k17",
        "label": "Word class",
        "term": "jaundice, jaundiced",
-       "start_s": 1119.162,
-       "start": "18:39"
+       "start_s": 1286.727,
+       "start": "21:26"
       },
       {
        "block": "page-5_k21",
        "label": "In plain words",
        "term": "haematemesis",
-       "start_s": 1172.829,
-       "start": "19:32"
+       "start_s": 1340.394,
+       "start": "22:20"
       },
       {
        "block": "page-5_k22",
        "label": "In plain words",
        "term": "melaena",
-       "start_s": 1178.249,
-       "start": "19:38"
+       "start_s": 1345.814,
+       "start": "22:25"
       },
       {
        "block": "page-5_k23",
        "label": "Word class",
        "term": "melaena, melaenic",
-       "start_s": 1192.332,
-       "start": "19:52"
+       "start_s": 1359.897,
+       "start": "22:39"
       },
       {
        "block": "page-5_k35",
        "label": "Word family",
        "term": "tender, tenderness",
-       "start_s": 1323.062,
-       "start": "22:03"
+       "start_s": 1490.627,
+       "start": "24:50"
       },
       {
        "block": "page-5_k45",
        "label": "Grammar word",
        "term": "passive",
-       "start_s": 1420.002,
-       "start": "23:40"
+       "start_s": 1642.227,
+       "start": "27:22"
       },
       {
        "block": "page-5_k48",
        "label": "Word family",
        "term": "require, required, requirement",
-       "start_s": 1454.412,
-       "start": "24:14"
+       "start_s": 1676.637,
+       "start": "27:56"
       },
       {
        "block": "page-5_k53",
        "label": "Word family",
        "term": "decrease, decreased",
-       "start_s": 1497.529,
-       "start": "24:57"
+       "start_s": 1719.754,
+       "start": "28:39"
       },
       {
        "block": "page-5_k56",
        "label": "Noun forms",
        "term": "pain, warmth, redness",
-       "start_s": 1527.726,
-       "start": "25:27"
+       "start_s": 1749.951,
+       "start": "29:09"
       },
       {
        "block": "page-5_k60",
        "label": "Word family",
        "term": "swell, swollen, swelling",
-       "start_s": 1562.684,
-       "start": "26:02"
+       "start_s": 1784.909,
+       "start": "29:44"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-5_k02",
        "text": "He has not experienced any nauseous or vomiting.",
-       "start_s": 969.192,
-       "start": "16:09"
+       "start_s": 1136.757,
+       "start": "18:56"
       },
       {
        "block": "page-5_k03",
        "text": "When I examined him today, he appeared both anaemic and jaundice.",
-       "start_s": 969.192,
-       "start": "16:09"
+       "start_s": 1136.757,
+       "start": "18:56"
       },
       {
        "block": "page-5_k04",
        "text": "He reported occasionally vomiting but no haematemesis or melaena.",
-       "start_s": 969.192,
-       "start": "16:09"
+       "start_s": 1136.757,
+       "start": "18:56"
       },
       {
        "block": "page-5_k05",
        "text": "Although there were no abdomen or rectal masses, there was marked epigastric tender.",
-       "start_s": 969.192,
-       "start": "16:09"
+       "start_s": 1136.757,
+       "start": "18:56"
       },
       {
        "block": "page-5_k07",
        "text": "I have referred the patient to a physiotherapy.",
-       "start_s": 1017.157,
-       "start": "16:57"
+       "start_s": 1184.722,
+       "start": "19:44"
       },
       {
        "block": "page-5_k08",
        "text": "A psychiatrist evaluation is require.",
-       "start_s": 1017.157,
-       "start": "16:57"
+       "start_s": 1184.722,
+       "start": "19:44"
       },
       {
        "block": "page-5_k09",
        "text": "Mr Dawe had a decrease appetite and nausea.",
-       "start_s": 1017.157,
-       "start": "16:57"
+       "start_s": 1184.722,
+       "start": "19:44"
       },
       {
        "block": "page-5_k10",
        "text": "On 19/4/2022, she presented to my clinic complaining of painful, warm, red and swelling in her right breast.",
-       "start_s": 1017.157,
-       "start": "16:57"
+       "start_s": 1184.722,
+       "start": "19:44"
       },
       {
        "block": "page-5_k11",
        "text": "He has not experienced any nauseous or vomiting.",
-       "start_s": 1064.527,
-       "start": "17:44"
+       "start_s": 1232.092,
+       "start": "20:32"
       },
       {
        "block": "page-5_k15",
        "text": "When I examined him today, he appeared both anaemic and jaundice.",
-       "start_s": 1104.147,
-       "start": "18:24"
+       "start_s": 1271.712,
+       "start": "21:11"
       },
       {
        "block": "page-5_k20",
        "text": "He reported occasionally vomiting but no haematemesis or melaena.",
-       "start_s": 1166.53,
-       "start": "19:26"
+       "start_s": 1334.095,
+       "start": "22:14"
       },
       {
        "block": "page-5_k27",
        "text": "Although there were no abdomen or rectal masses, there was marked epigastric tender.",
-       "start_s": 1240.26,
-       "start": "20:40"
+       "start_s": 1407.825,
+       "start": "23:27"
       },
       {
        "block": "page-5_k29",
        "text": "Abdomen mass",
-       "start_s": 1262.261,
-       "start": "21:02"
+       "start_s": 1429.826,
+       "start": "23:49"
       },
       {
        "block": "page-5_k32",
        "text": "Tenderness stomach",
-       "start_s": 1293.988,
-       "start": "21:33"
+       "start_s": 1461.553,
+       "start": "24:21"
       },
       {
        "block": "page-5_k37",
        "text": "I have referred the patient to a physiotherapy.",
-       "start_s": 1341.982,
-       "start": "22:21"
+       "start_s": 1564.207,
+       "start": "26:04"
       },
       {
        "block": "page-5_k42",
        "text": "A psychiatrist evaluation is require.",
-       "start_s": 1392.942,
-       "start": "23:12"
+       "start_s": 1615.167,
+       "start": "26:55"
       },
       {
        "block": "page-5_k44",
        "text": "Psychiatrist evaluation",
-       "start_s": 1408.092,
-       "start": "23:28"
+       "start_s": 1630.317,
+       "start": "27:10"
       },
       {
        "block": "page-5_k49",
        "text": "Mr Dawe had a decrease appetite and nausea.",
-       "start_s": 1464.483,
-       "start": "24:24"
+       "start_s": 1686.708,
+       "start": "28:06"
       },
       {
        "block": "page-5_k54",
        "text": "On 19/4/2022, she presented to my clinic complaining of painful, warm, red and swelling in her right breast.",
-       "start_s": 1506.396,
-       "start": "25:06"
+       "start_s": 1728.621,
+       "start": "28:48"
       }
      ],
      "practice": [],
@@ -19914,8 +19914,8 @@
        "lesson": "grammar-01-verb-tenses",
        "section": "page-15",
        "provenance": "authored",
-       "start_s": 1446.303,
-       "start": "24:06"
+       "start_s": 1668.528,
+       "start": "27:48"
       }
      ]
     },
@@ -19927,231 +19927,231 @@
       6
      ],
      "category": null,
-     "start_s": 1592.426,
-     "start": "26:32",
-     "end_s": 2226.497,
+     "start_s": 1870.541,
+     "start": "31:10",
+     "end_s": 2610.413,
      "topics": [
       {
        "board": "page-6_t1",
        "title": "Word forms table: adjectives, nouns and model sentences",
-       "start_s": 1592.426,
-       "start": "26:32",
+       "start_s": 1870.541,
+       "start": "31:10",
        "points": [
         {
          "text": "introduce the task",
-         "block": "page-6_k39",
-         "start_s": 1592.426,
-         "start": "26:32"
+         "block": "page-6_k44",
+         "start_s": 1870.541,
+         "start": "31:10"
         },
         {
          "text": "why the word form matters",
          "block": "page-6_k03",
-         "start_s": 1620.7,
-         "start": "27:00"
+         "start_s": 1898.815,
+         "start": "31:38"
         },
         {
          "text": "gloss the adjective deaf",
          "block": "page-6_k04",
-         "start_s": 1646.127,
-         "start": "27:26"
+         "start_s": 1924.242,
+         "start": "32:04"
         },
         {
          "text": "deaf said to a patient",
          "block": "page-6_k05",
-         "start_s": 1668.391,
-         "start": "27:48"
+         "start_s": 1946.506,
+         "start": "32:26"
         },
         {
          "text": "the phrase acute deafness",
          "block": "page-6_k06",
-         "start_s": 1684.496,
-         "start": "28:04"
+         "start_s": 1962.611,
+         "start": "32:42"
         },
         {
          "text": "word family for deaf",
          "block": "page-6_k07",
-         "start_s": 1695.157,
-         "start": "28:15"
+         "start_s": 1973.272,
+         "start": "32:53"
         },
         {
          "text": "gloss the adjective blind",
          "block": "page-6_k08",
-         "start_s": 1713.082,
-         "start": "28:33"
+         "start_s": 1991.197,
+         "start": "33:11"
         },
         {
          "text": "blind said to a patient",
          "block": "page-6_k09",
-         "start_s": 1733.874,
-         "start": "28:53"
+         "start_s": 2011.989,
+         "start": "33:31"
         },
         {
          "text": "from case notes to a letter sentence",
          "block": "page-6_k10",
-         "start_s": 1739.598,
-         "start": "28:59"
+         "start_s": 2017.713,
+         "start": "33:37"
         },
         {
          "text": "the weak version without the noun",
          "block": "page-6_k11",
-         "start_s": 1764.536,
-         "start": "29:24"
+         "start_s": 2042.651,
+         "start": "34:02"
         },
         {
          "text": "word family for blind",
          "block": "page-6_k13",
-         "start_s": 1788.626,
-         "start": "29:48"
+         "start_s": 2066.741,
+         "start": "34:26"
         },
         {
          "text": "dilate is a verb",
          "block": "page-6_k14",
-         "start_s": 1804.687,
-         "start": "30:04"
+         "start_s": 2082.802,
+         "start": "34:42"
         },
         {
          "text": "gloss the adjective dilated",
          "block": "page-6_k15",
-         "start_s": 1820.629,
-         "start": "30:20"
+         "start_s": 2098.744,
+         "start": "34:58"
         },
         {
          "text": "dilated said to a patient",
          "block": "page-6_k16",
-         "start_s": 1841.066,
-         "start": "30:41"
+         "start_s": 2119.181,
+         "start": "35:19"
         },
         {
          "text": "the slot decides the form",
          "block": "page-6_k17",
-         "start_s": 1846.949,
-         "start": "30:46"
+         "start_s": 2125.064,
+         "start": "35:25"
         },
         {
          "text": "appeared to be in place of were",
          "block": "page-6_k18",
-         "start_s": 1875.848,
-         "start": "31:15"
+         "start_s": 2153.963,
+         "start": "35:53"
         },
         {
          "text": "digest is a verb",
          "block": "page-6_k19",
-         "start_s": 1896.686,
-         "start": "31:36"
+         "start_s": 2174.801,
+         "start": "36:14"
         },
         {
          "text": "gloss the noun indigestion",
          "block": "page-6_k20",
-         "start_s": 1912.867,
-         "start": "31:52"
+         "start_s": 2190.982,
+         "start": "36:30"
         },
         {
          "text": "indigestion said to a patient",
          "block": "page-6_k21",
-         "start_s": 1933.449,
-         "start": "32:13"
+         "start_s": 2211.564,
+         "start": "36:51"
         },
         {
          "text": "word family for digest",
          "block": "page-6_k22",
-         "start_s": 1939.678,
-         "start": "32:19"
+         "start_s": 2217.793,
+         "start": "36:57"
         },
         {
          "text": "following in place of after",
          "block": "page-6_k23",
-         "start_s": 1958.443,
-         "start": "32:38"
+         "start_s": 2236.558,
+         "start": "37:16"
         },
         {
          "text": "gloss the adjective constipated",
          "block": "page-6_k24",
-         "start_s": 1981.155,
-         "start": "33:01"
+         "start_s": 2316.1,
+         "start": "38:36"
         },
         {
          "text": "constipated said to a patient",
          "block": "page-6_k25",
-         "start_s": 2001.659,
-         "start": "33:21"
+         "start_s": 2336.604,
+         "start": "38:56"
         },
         {
          "text": "the history phrase",
          "block": "page-6_k26",
-         "start_s": 2007.085,
-         "start": "33:27"
+         "start_s": 2342.03,
+         "start": "39:02"
         },
         {
          "text": "word family for constipated",
          "block": "page-6_k27",
-         "start_s": 2023.865,
-         "start": "33:43"
+         "start_s": 2358.81,
+         "start": "39:18"
         },
         {
          "text": "gloss the adjective psychotic",
          "block": "page-6_k28",
-         "start_s": 2040.987,
-         "start": "34:00"
+         "start_s": 2375.932,
+         "start": "39:35"
         },
         {
          "text": "psychotic said to a patient",
          "block": "page-6_k29",
-         "start_s": 2067.4,
-         "start": "34:27"
+         "start_s": 2402.345,
+         "start": "40:02"
         },
         {
          "text": "the noun after 'is' in the side-effect pattern",
          "block": "page-6_k30",
-         "start_s": 2073.907,
-         "start": "34:33"
+         "start_s": 2408.852,
+         "start": "40:08"
         },
         {
          "text": "word family for psychotic",
          "block": "page-6_k31",
-         "start_s": 2091.406,
-         "start": "34:51"
+         "start_s": 2426.351,
+         "start": "40:26"
         },
         {
          "text": "gloss the adjective depressed",
          "block": "page-6_k32",
-         "start_s": 2107.477,
-         "start": "35:07"
+         "start_s": 2442.422,
+         "start": "40:42"
         },
         {
          "text": "depressed said to a patient",
          "block": "page-6_k33",
-         "start_s": 2126.439,
-         "start": "35:26"
+         "start_s": 2461.384,
+         "start": "41:01"
         },
         {
          "text": "is + adjective and has + noun",
          "block": "page-6_k34",
-         "start_s": 2131.688,
-         "start": "35:31"
+         "start_s": 2466.633,
+         "start": "41:06"
         },
         {
          "text": "gloss the adjective anxious",
          "block": "page-6_k35",
-         "start_s": 2155.68,
-         "start": "35:55"
+         "start_s": 2490.625,
+         "start": "41:30"
         },
         {
          "text": "anxious said to a patient",
          "block": "page-6_k36",
-         "start_s": 2173.913,
-         "start": "36:13"
+         "start_s": 2508.858,
+         "start": "41:48"
         },
         {
          "text": "is + adjective and has + noun",
          "block": "page-6_k37",
-         "start_s": 2179.5,
-         "start": "36:19"
+         "start_s": 2514.445,
+         "start": "41:54"
         },
         {
          "text": "the rule for the whole table",
          "block": "page-6_k38",
-         "start_s": 2196.868,
-         "start": "36:36"
+         "start_s": 2531.813,
+         "start": "42:11"
         }
        ]
       }
@@ -20161,15 +20161,15 @@
        "block": "page-6_k03",
        "kind": "rule",
        "text": "When you paraphrase case notes in a letter, you often have to change the form of the word.",
-       "start_s": 1620.7,
-       "start": "27:00"
+       "start_s": 1898.815,
+       "start": "31:38"
       },
       {
        "block": "page-6_k38",
        "kind": "rule",
        "text": "Look at the slot in the sentence. Some slots need the adjective, others need the noun.",
-       "start_s": 2196.868,
-       "start": "36:36"
+       "start_s": 2531.813,
+       "start": "42:11"
       }
      ],
      "terms": [
@@ -20177,58 +20177,58 @@
        "block": "page-6_k06",
        "label": "Phrase",
        "term": "acute deafness",
-       "start_s": 1684.496,
-       "start": "28:04"
+       "start_s": 1962.611,
+       "start": "32:42"
       },
       {
        "block": "page-6_k07",
        "label": "Word family",
        "term": "deaf (adjective), deafness (noun)",
-       "start_s": 1695.157,
-       "start": "28:15"
+       "start_s": 1973.272,
+       "start": "32:53"
       },
       {
        "block": "page-6_k13",
        "label": "Word family",
        "term": "blind (adjective), blindness (noun)",
-       "start_s": 1788.626,
-       "start": "29:48"
+       "start_s": 2066.741,
+       "start": "34:26"
       },
       {
        "block": "page-6_k22",
        "label": "Word family",
        "term": "digest (verb), digestive (adjective), digestion (noun), indigestion (noun)",
-       "start_s": 1939.678,
-       "start": "32:19"
+       "start_s": 2217.793,
+       "start": "36:57"
       },
       {
        "block": "page-6_k26",
        "label": "Phrase",
        "term": "a three-day history of constipation",
-       "start_s": 2007.085,
-       "start": "33:27"
+       "start_s": 2342.03,
+       "start": "39:02"
       },
       {
        "block": "page-6_k27",
        "label": "Word family",
        "term": "constipated (adjective), constipation (noun)",
-       "start_s": 2023.865,
-       "start": "33:43"
+       "start_s": 2358.81,
+       "start": "39:18"
       },
       {
        "block": "page-6_k31",
        "label": "Word family",
        "term": "psychotic (adjective), psychosis (noun)",
-       "start_s": 2091.406,
-       "start": "34:51"
+       "start_s": 2426.351,
+       "start": "40:26"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-6_k11",
        "text": "His father and sister is blind.",
-       "start_s": 1764.536,
-       "start": "29:24"
+       "start_s": 2042.651,
+       "start": "34:02"
       }
      ],
      "practice": [],
@@ -20238,8 +20238,8 @@
        "lesson": "grammar-03-nominalization",
        "section": null,
        "provenance": "authored",
-       "start_s": 1635.826,
-       "start": "27:15"
+       "start_s": 1913.941,
+       "start": "31:53"
       }
      ]
     },
@@ -20251,281 +20251,281 @@
       7
      ],
      "category": null,
-     "start_s": 2226.497,
-     "start": "37:06",
-     "end_s": 2901.591,
+     "start_s": 2610.413,
+     "start": "43:30",
+     "end_s": 3407.867,
      "topics": [
       {
        "board": "page-7_t1",
        "title": "activity instruction and items 1 to 3",
-       "start_s": 2226.497,
-       "start": "37:06",
+       "start_s": 2610.413,
+       "start": "43:30",
        "points": [
         {
          "text": "Show the task and the first three pairs of sentences",
-         "block": "page-7_k63",
-         "start_s": 2226.497,
-         "start": "37:06"
+         "block": "page-7_k75",
+         "start_s": 2610.413,
+         "start": "43:30"
         }
        ]
       },
       {
        "board": "page-7_t2",
        "title": "items 4 to 6",
-       "start_s": 2294.7,
-       "start": "38:14",
+       "start_s": 2678.616,
+       "start": "44:38",
        "points": [
         {
          "text": "Show the last three pairs of sentences",
-         "block": "page-7_k64",
-         "start_s": 2294.7,
-         "start": "38:14"
+         "block": "page-7_k76",
+         "start_s": 2678.616,
+         "start": "44:38"
         }
        ]
       },
       {
        "board": "page-7_t3",
        "title": "Item 1: who, and the comma",
-       "start_s": 2330.626,
-       "start": "38:50",
+       "start_s": 2714.232,
+       "start": "45:14",
        "points": [
         {
          "text": "Define the tool the activity practises",
-         "block": "page-7_k65",
-         "start_s": 2330.626,
-         "start": "38:50"
+         "block": "page-7_k77",
+         "start_s": 2714.232,
+         "start": "45:14"
         },
         {
          "text": "Name the second part of the joined sentence",
          "block": "page-7_k11",
-         "start_s": 2350.856,
-         "start": "39:10"
+         "start_s": 2734.462,
+         "start": "45:34"
         },
         {
          "text": "Give the answer to item 1 with one short reason",
          "block": "page-7_k12",
-         "start_s": 2367.19,
-         "start": "39:27"
+         "start_s": 2750.796,
+         "start": "45:50"
         },
         {
          "text": "Show that the clause can be taken out",
          "block": "page-7_k14",
-         "start_s": 2385.897,
-         "start": "39:45"
+         "start_s": 2769.503,
+         "start": "46:09"
         },
         {
          "text": "Contrast the two kinds of relative clause and the comma rule",
          "block": "page-7_k15",
-         "start_s": 2417.052,
-         "start": "40:17"
+         "start_s": 2800.138,
+         "start": "46:40"
         },
         {
          "text": "Show a defining clause in a letter introduction",
          "block": "page-7_k16",
-         "start_s": 2435.196,
-         "start": "40:35"
+         "start_s": 2818.282,
+         "start": "46:58"
         },
         {
          "text": "List the relative pronouns and what each refers to",
          "block": "page-7_k18",
-         "start_s": 2453.876,
-         "start": "40:53"
+         "start_s": 2836.962,
+         "start": "47:16"
         }
        ]
       },
       {
        "board": "page-7_t4",
        "title": "Item 2: which, and deleting the pronoun",
-       "start_s": 2467.266,
-       "start": "41:07",
+       "start_s": 2850.352,
+       "start": "47:30",
        "points": [
         {
          "text": "Short notes on the first two words of item 2",
-         "block": "page-7_k66",
-         "start_s": 2467.266,
-         "start": "41:07"
+         "block": "page-7_k78",
+         "start_s": 2850.352,
+         "start": "47:30"
         },
         {
          "text": "Short notes on the other two words of item 2",
          "block": "page-7_k22",
-         "start_s": 2486.346,
-         "start": "41:26"
+         "start_s": 2869.432,
+         "start": "47:49"
         },
         {
          "text": "Give the answer to item 2 with one short reason",
          "block": "page-7_k24",
-         "start_s": 2503.485,
-         "start": "41:43"
+         "start_s": 2886.571,
+         "start": "48:06"
         },
         {
          "text": "Reject the form that keeps 'it'",
          "block": "page-7_k26",
-         "start_s": 2515.757,
-         "start": "41:55"
+         "start_s": 2898.843,
+         "start": "48:18"
         },
         {
          "text": "Explain the comma in item 2",
          "block": "page-7_k28",
-         "start_s": 2529.963,
-         "start": "42:09"
+         "start_s": 2913.049,
+         "start": "48:33"
         }
        ]
       },
       {
        "board": "page-7_t5",
        "title": "Item 3: whose, and no comma",
-       "start_s": 2548.623,
-       "start": "42:28",
+       "start_s": 2931.709,
+       "start": "48:51",
        "points": [
         {
          "text": "Teach the key word deteriorating",
-         "block": "page-7_k67",
-         "start_s": 2548.623,
-         "start": "42:28"
+         "block": "page-7_k79",
+         "start_s": 2931.709,
+         "start": "48:51"
         },
         {
          "text": "Second example, talking to a patient",
          "block": "page-7_k32",
-         "start_s": 2581.602,
-         "start": "43:01"
+         "start_s": 2964.688,
+         "start": "49:24"
         },
         {
          "text": "Word family for deteriorate",
          "block": "page-7_k33",
-         "start_s": 2587.967,
-         "start": "43:07"
+         "start_s": 2971.259,
+         "start": "49:31"
         },
         {
          "text": "Point at the possessive word that starts sentence two",
          "block": "page-7_k34",
-         "start_s": 2598.147,
-         "start": "43:18"
+         "start_s": 2985.143,
+         "start": "49:45"
         },
         {
          "text": "Give the answer to item 3 with one short reason",
          "block": "page-7_k35",
-         "start_s": 2609.553,
-         "start": "43:29"
+         "start_s": 2996.549,
+         "start": "49:56"
         },
         {
          "text": "Show that this clause cannot be taken out",
          "block": "page-7_k37",
-         "start_s": 2626.615,
-         "start": "43:46"
+         "start_s": 3013.611,
+         "start": "50:13"
         },
         {
          "text": "State the comma rule for defining clauses",
          "block": "page-7_k38",
-         "start_s": 2658.597,
-         "start": "44:18"
+         "start_s": 3045.593,
+         "start": "50:45"
         },
         {
          "text": "Warn about the comma in a letter introduction",
          "block": "page-7_k39",
-         "start_s": 2667.334,
-         "start": "44:27"
+         "start_s": 3054.33,
+         "start": "50:54"
         }
        ]
       },
       {
        "board": "page-7_t6",
        "title": "Item 4: which for a whole idea, and suffer from",
-       "start_s": 2691.409,
-       "start": "44:51",
+       "start_s": 3142.085,
+       "start": "52:22",
        "points": [
         {
          "text": "Short notes on the words in item 4",
-         "block": "page-7_k68",
-         "start_s": 2691.409,
-         "start": "44:51"
+         "block": "page-7_k80",
+         "start_s": 3142.085,
+         "start": "52:22"
         },
         {
          "text": "Give the answer to item 4 with one short reason",
          "block": "page-7_k43",
-         "start_s": 2715.938,
-         "start": "45:15"
+         "start_s": 3166.614,
+         "start": "52:46"
         },
         {
          "text": "Contrast suffer from and suffer",
          "block": "page-7_k45",
-         "start_s": 2730.3,
-         "start": "45:30"
+         "start_s": 3180.976,
+         "start": "53:00"
         },
         {
          "text": "Show the two rejected forms with from",
          "block": "page-7_k46",
-         "start_s": 2750.046,
-         "start": "45:50"
+         "start_s": 3200.722,
+         "start": "53:20"
         },
         {
          "text": "Give the correct one-off form and say why",
          "block": "page-7_k48",
-         "start_s": 2769.919,
-         "start": "46:09"
+         "start_s": 3220.595,
+         "start": "53:40"
         }
        ]
       },
       {
        "board": "page-7_t7",
        "title": "Item 5: which for a whole idea again",
-       "start_s": 2781.415,
-       "start": "46:21",
+       "start_s": 3232.091,
+       "start": "53:52",
        "points": [
         {
          "text": "Separate the two near words in item 5",
-         "block": "page-7_k69",
-         "start_s": 2781.415,
-         "start": "46:21"
+         "block": "page-7_k81",
+         "start_s": 3232.091,
+         "start": "53:52"
         },
         {
          "text": "Show the verb and noun forms of faint",
          "block": "page-7_k52",
-         "start_s": 2801.373,
-         "start": "46:41"
+         "start_s": 3252.049,
+         "start": "54:12"
         },
         {
          "text": "Give the answer to item 5 with one short reason",
          "block": "page-7_k54",
-         "start_s": 2814.367,
-         "start": "46:54"
+         "start_s": 3265.043,
+         "start": "54:25"
         },
         {
          "text": "State the deletion rule for the whole activity",
          "block": "page-7_k56",
-         "start_s": 2825.291,
-         "start": "47:05"
+         "start_s": 3275.967,
+         "start": "54:35"
         }
        ]
       },
       {
        "board": "page-7_t8",
        "title": "Item 6: whose again, and counselling",
-       "start_s": 2835.855,
-       "start": "47:15",
+       "start_s": 3286.531,
+       "start": "54:46",
        "points": [
         {
          "text": "Teach the key word counselling",
-         "block": "page-7_k70",
-         "start_s": 2835.855,
-         "start": "47:15"
+         "block": "page-7_k82",
+         "start_s": 3286.531,
+         "start": "54:46"
         },
         {
          "text": "Second example, talking to a patient",
          "block": "page-7_k59",
-         "start_s": 2864.392,
-         "start": "47:44"
+         "start_s": 3315.068,
+         "start": "55:15"
         },
         {
          "text": "Word family for counsel",
          "block": "page-7_k60",
-         "start_s": 2870.524,
-         "start": "47:50"
+         "start_s": 3321.2,
+         "start": "55:21"
         },
         {
          "text": "Give the answer to item 6 with one short reason",
          "block": "page-7_k61",
-         "start_s": 2880.07,
-         "start": "48:00"
+         "start_s": 3330.746,
+         "start": "55:30"
         }
        ]
       }
@@ -20535,29 +20535,29 @@
        "block": "page-7_k29",
        "kind": "rule",
        "text": "Extra information is separated with a comma.",
-       "start_s": 2541.432,
-       "start": "42:21"
+       "start_s": 2924.518,
+       "start": "48:44"
       },
       {
        "block": "page-7_k38",
        "kind": "rule",
        "text": "A defining relative clause takes no comma.",
-       "start_s": 2658.597,
-       "start": "44:18"
+       "start_s": 3045.593,
+       "start": "50:45"
       },
       {
        "block": "page-7_k39",
        "kind": "warning",
        "text": "Look at the words before who or whose. After a description with 'a' (a 55-year-old bus driver whose …), no comma. Straight after the patient's name (Ms Wilson, who …), a comma.",
-       "start_s": 2667.334,
-       "start": "44:27"
+       "start_s": 3054.33,
+       "start": "50:54"
       },
       {
        "block": "page-7_k56",
        "kind": "rule",
        "text": "When you use a relative pronoun, delete the word it replaces: she, it or this.",
-       "start_s": 2825.291,
-       "start": "47:05"
+       "start_s": 3275.967,
+       "start": "54:35"
       }
      ],
      "terms": [
@@ -20565,184 +20565,184 @@
        "block": "page-7_k10",
        "label": "New term",
        "term": "Relative pronoun",
-       "start_s": 2339.476,
-       "start": "38:59"
+       "start_s": 2723.082,
+       "start": "45:23"
       },
       {
        "block": "page-7_k11",
        "label": "New term",
        "term": "Relative clause",
-       "start_s": 2350.856,
-       "start": "39:10"
+       "start_s": 2734.462,
+       "start": "45:34"
       },
       {
        "block": "page-7_k18",
        "label": "Relative pronouns",
        "term": "Who, which, whose, where",
-       "start_s": 2453.876,
-       "start": "40:53"
+       "start_s": 2836.962,
+       "start": "47:16"
       },
       {
        "block": "page-7_k20",
        "label": "New word",
        "term": "Herbal",
-       "start_s": 2475.275,
-       "start": "41:15"
+       "start_s": 2858.361,
+       "start": "47:38"
       },
       {
        "block": "page-7_k21",
        "label": "New word",
        "term": "Remedy",
-       "start_s": 2478.706,
-       "start": "41:18"
+       "start_s": 2861.792,
+       "start": "47:41"
       },
       {
        "block": "page-7_k22",
        "label": "New word",
        "term": "Obtain",
-       "start_s": 2486.346,
-       "start": "41:26"
+       "start_s": 2869.432,
+       "start": "47:49"
       },
       {
        "block": "page-7_k23",
        "label": "New phrase",
        "term": "Over the counter",
-       "start_s": 2489.44,
-       "start": "41:29"
+       "start_s": 2872.526,
+       "start": "47:52"
       },
       {
        "block": "page-7_k33",
        "label": "Word family",
        "term": "Deteriorate",
-       "start_s": 2587.967,
-       "start": "43:07"
+       "start_s": 2971.259,
+       "start": "49:31"
       },
       {
        "block": "page-7_k34",
        "label": "Possessive words",
        "term": "Her, his, their",
-       "start_s": 2598.147,
-       "start": "43:18"
+       "start_s": 2985.143,
+       "start": "49:45"
       },
       {
        "block": "page-7_k41",
        "label": "New word",
        "term": "Blow",
-       "start_s": 2698.219,
-       "start": "44:58"
+       "start_s": 3148.895,
+       "start": "52:28"
       },
       {
        "block": "page-7_k42",
        "label": "New phrase",
        "term": "Lose consciousness",
-       "start_s": 2701.329,
-       "start": "45:01"
+       "start_s": 3152.005,
+       "start": "52:32"
       },
       {
        "block": "page-7_k52",
        "label": "Word family",
        "term": "Faint",
-       "start_s": 2801.373,
-       "start": "46:41"
+       "start_s": 3252.049,
+       "start": "54:12"
       },
       {
        "block": "page-7_k60",
        "label": "Word family",
        "term": "Counsel",
-       "start_s": 2870.524,
-       "start": "47:50"
+       "start_s": 3321.2,
+       "start": "55:21"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-7_k02",
        "text": "He lives with his 80-year-old mother. She suffers from dementia.",
-       "start_s": 2226.497,
-       "start": "37:06"
+       "start_s": 2610.413,
+       "start": "43:30"
       },
       {
        "block": "page-7_k03",
        "text": "She tried a herbal remedy. She obtained it over the counter from a Chinese shop.",
-       "start_s": 2226.497,
-       "start": "37:06"
+       "start_s": 2610.413,
+       "start": "43:30"
       },
       {
        "block": "page-7_k04",
        "text": "Ms Wilson is a 55-year-old bus driver. Her eyesight may be deteriorating.",
-       "start_s": 2226.497,
-       "start": "37:06"
+       "start_s": 2610.413,
+       "start": "43:30"
       },
       {
        "block": "page-7_k06",
        "text": "He suffered a severe blow to the head. This caused him to lose consciousness.",
-       "start_s": 2294.7,
-       "start": "38:14"
+       "start_s": 2678.616,
+       "start": "44:38"
       },
       {
        "block": "page-7_k07",
        "text": "He reported no feelings of faintness or dizziness. I found this surprising.",
-       "start_s": 2294.7,
-       "start": "38:14"
+       "start_s": 2678.616,
+       "start": "44:38"
       },
       {
        "block": "page-7_k08",
        "text": "I spent some time counselling Mr Aksoy. His mother died last week.",
-       "start_s": 2294.7,
-       "start": "38:14"
+       "start_s": 2678.616,
+       "start": "44:38"
       },
       {
        "block": "page-7_k09",
        "text": "He lives with his 80-year-old mother. She suffers from dementia.",
-       "start_s": 2330.626,
-       "start": "38:50"
+       "start_s": 2714.232,
+       "start": "45:14"
       },
       {
        "block": "page-7_k19",
        "text": "She tried a herbal remedy. She obtained it over the counter from a Chinese shop.",
-       "start_s": 2467.266,
-       "start": "41:07"
+       "start_s": 2850.352,
+       "start": "47:30"
       },
       {
        "block": "page-7_k26",
        "text": "Which she obtained it over the counter from a Chinese shop.",
-       "start_s": 2515.757,
-       "start": "41:55"
+       "start_s": 2898.843,
+       "start": "48:18"
       },
       {
        "block": "page-7_k30",
        "text": "Ms Wilson is a 55-year-old bus driver. Her eyesight may be deteriorating.",
-       "start_s": 2548.623,
-       "start": "42:28"
+       "start_s": 2931.709,
+       "start": "48:51"
       },
       {
        "block": "page-7_k40",
        "text": "He suffered a severe blow to the head. This caused him to lose consciousness.",
-       "start_s": 2691.409,
-       "start": "44:51"
+       "start_s": 3142.085,
+       "start": "52:22"
       },
       {
        "block": "page-7_k46",
        "text": "He suffered from a severe blow to the head.",
-       "start_s": 2750.046,
-       "start": "45:50"
+       "start_s": 3200.722,
+       "start": "53:20"
       },
       {
        "block": "page-7_k47",
        "text": "He suffered from a leg fracture.",
-       "start_s": 2757.693,
-       "start": "45:57"
+       "start_s": 3208.369,
+       "start": "53:28"
       },
       {
        "block": "page-7_k50",
        "text": "He reported no feelings of faintness or dizziness. I found this surprising.",
-       "start_s": 2781.415,
-       "start": "46:21"
+       "start_s": 3232.091,
+       "start": "53:52"
       },
       {
        "block": "page-7_k57",
        "text": "I spent some time counselling Mr Aksoy. His mother died last week.",
-       "start_s": 2835.855,
-       "start": "47:15"
+       "start_s": 3286.531,
+       "start": "54:46"
       }
      ],
      "practice": [],
@@ -20752,16 +20752,16 @@
        "lesson": "grammar-06-clause",
        "section": null,
        "provenance": "adapted",
-       "start_s": 2226.497,
-       "start": "37:06"
+       "start_s": 2610.413,
+       "start": "43:30"
       },
       {
        "utterance": "page-7_t1.s1.u4",
        "lesson": "grammar-06-clause",
        "section": "page-6",
        "provenance": "source-derived",
-       "start_s": 2253.89,
-       "start": "37:33"
+       "start_s": 2637.806,
+       "start": "43:57"
       }
      ]
     },
@@ -20773,281 +20773,281 @@
       8
      ],
      "category": null,
-     "start_s": 2901.591,
-     "start": "48:21",
-     "end_s": 3507.312,
+     "start_s": 3407.867,
+     "start": "56:47",
+     "end_s": 4119.661,
      "topics": [
       {
        "board": "page-8_t1",
        "title": "instruction, example and items 1 to 3",
-       "start_s": 2901.591,
-       "start": "48:21",
+       "start_s": 3407.867,
+       "start": "56:47",
        "points": [
         {
          "text": "Show the task and the first half of the set",
-         "block": "page-8_k59",
-         "start_s": 2901.591,
-         "start": "48:21"
+         "block": "page-8_k71",
+         "start_s": 3407.867,
+         "start": "56:47"
         }
        ]
       },
       {
        "board": "page-8_t2",
        "title": "items 4 to 6",
-       "start_s": 2966.708,
-       "start": "49:26",
+       "start_s": 3472.984,
+       "start": "57:52",
        "points": [
         {
          "text": "Show the second half of the set",
-         "block": "page-8_k60",
-         "start_s": 2966.708,
-         "start": "49:26"
+         "block": "page-8_k72",
+         "start_s": 3472.984,
+         "start": "57:52"
         }
        ]
       },
       {
        "board": "page-8_t3",
        "title": "Item 1: from which",
-       "start_s": 3003.392,
-       "start": "50:03",
+       "start_s": 3509.668,
+       "start": "58:29",
        "points": [
         {
          "text": "Frame the task and warn about the missing preposition",
-         "block": "page-8_k61",
-         "start_s": 3003.392,
-         "start": "50:03"
+         "block": "page-8_k73",
+         "start_s": 3509.668,
+         "start": "58:29"
         },
         {
          "text": "Define the grammar words needed here",
          "block": "page-8_k12",
-         "start_s": 3019.921,
-         "start": "50:19"
+         "start_s": 3526.197,
+         "start": "58:46"
         },
         {
          "text": "English paraphrase of the pair, replacing the first-language check",
          "block": "page-8_k14",
-         "start_s": 3039.672,
-         "start": "50:39"
+         "start_s": 3545.948,
+         "start": "59:05"
         },
         {
          "text": "Show the usual wrong version and name the fault",
          "block": "page-8_k15",
-         "start_s": 3046.855,
-         "start": "50:46"
+         "start_s": 3553.122,
+         "start": "59:13"
         },
         {
          "text": "Give the correct answer and the comma",
          "block": "page-8_k17",
-         "start_s": 3075.704,
-         "start": "51:15"
+         "start_s": 3581.83,
+         "start": "59:41"
         },
         {
          "text": "Name the form",
          "block": "page-8_k19",
-         "start_s": 3091.147,
-         "start": "51:31"
+         "start_s": 3597.273,
+         "start": "59:57"
         },
         {
          "text": "Show how the two clauses join",
          "block": "page-8_k20",
-         "start_s": 3102.78,
-         "start": "51:42"
+         "start_s": 3608.906,
+         "start": "60:08"
         }
        ]
       },
       {
        "board": "page-8_t4",
        "title": "Item 2: for which",
-       "start_s": 3129.93,
-       "start": "52:09",
+       "start_s": 3684.207,
+       "start": "61:24",
        "points": [
         {
          "text": "Show why this pattern matters in case notes",
-         "block": "page-8_k62",
-         "start_s": 3129.93,
-         "start": "52:09"
+         "block": "page-8_k74",
+         "start_s": 3684.207,
+         "start": "61:24"
         },
         {
          "text": "A second example of the same pattern from the past medical history",
          "block": "page-8_k23",
-         "start_s": 3144.32,
-         "start": "52:24"
+         "start_s": 3698.597,
+         "start": "61:38"
         },
         {
          "text": "Show the wrong version students write",
          "block": "page-8_k25",
-         "start_s": 3155.9,
-         "start": "52:35"
+         "start_s": 3710.177,
+         "start": "61:50"
         },
         {
          "text": "Give the correct answer",
          "block": "page-8_k27",
-         "start_s": 3171.647,
-         "start": "52:51"
+         "start_s": 3725.924,
+         "start": "62:05"
         },
         {
          "text": "Name the family of forms",
          "block": "page-8_k29",
-         "start_s": 3189.54,
-         "start": "53:09"
+         "start_s": 3743.817,
+         "start": "62:23"
         },
         {
          "text": "Key word: laxative",
          "block": "page-8_k30",
-         "start_s": 3204.857,
-         "start": "53:24"
+         "start_s": 3759.134,
+         "start": "62:39"
         },
         {
          "text": "The same key word said to a patient",
          "block": "page-8_k31",
-         "start_s": 3221.965,
-         "start": "53:41"
+         "start_s": 3776.242,
+         "start": "62:56"
         }
        ]
       },
       {
        "board": "page-8_t5",
        "title": "Item 3: instead of which",
-       "start_s": 3228.3,
-       "start": "53:48",
+       "start_s": 3782.577,
+       "start": "63:02",
        "points": [
         {
          "text": "English paraphrase of the pair, replacing the first-language check",
-         "block": "page-8_k63",
-         "start_s": 3228.3,
-         "start": "53:48"
+         "block": "page-8_k75",
+         "start_s": 3782.577,
+         "start": "63:02"
         },
         {
          "text": "Give the answer and the punctuation",
          "block": "page-8_k34",
-         "start_s": 3242.958,
-         "start": "54:02"
+         "start_s": 3797.235,
+         "start": "63:17"
         },
         {
          "text": "Name the form",
          "block": "page-8_k36",
-         "start_s": 3261.031,
-         "start": "54:21"
+         "start_s": 3815.308,
+         "start": "63:35"
         },
         {
          "text": "Show what 'which' stands for",
          "block": "page-8_k37",
-         "start_s": 3268.291,
-         "start": "54:28"
+         "start_s": 3822.568,
+         "start": "63:42"
         }
        ]
       },
       {
        "board": "page-8_t6",
        "title": "Item 4: neither of which",
-       "start_s": 3292.441,
-       "start": "54:52",
+       "start_s": 3845.878,
+       "start": "64:05",
        "points": [
         {
          "text": "Give the answer",
-         "block": "page-8_k64",
-         "start_s": 3292.441,
-         "start": "54:52"
+         "block": "page-8_k76",
+         "start_s": 3845.878,
+         "start": "64:05"
         },
         {
          "text": "Name the form and the comma",
          "block": "page-8_k41",
-         "start_s": 3314.832,
-         "start": "55:14"
+         "start_s": 3868.269,
+         "start": "64:28"
         },
         {
          "text": "What the relative pronoun stands for",
          "block": "page-8_k42",
-         "start_s": 3324.867,
-         "start": "55:24"
+         "start_s": 3878.189,
+         "start": "64:38"
         },
         {
          "text": "Key word: herbal remedy",
          "block": "page-8_k44",
-         "start_s": 3348.038,
-         "start": "55:48"
+         "start_s": 3901.697,
+         "start": "65:01"
         },
         {
          "text": "The same key word said to a patient",
          "block": "page-8_k45",
-         "start_s": 3365.803,
-         "start": "56:05"
+         "start_s": 3919.352,
+         "start": "65:19"
         }
        ]
       },
       {
        "board": "page-8_t7",
        "title": "Item 5: by which time",
-       "start_s": 3371.947,
-       "start": "56:11",
+       "start_s": 3925.706,
+       "start": "65:25",
        "points": [
         {
          "text": "Give the answer",
-         "block": "page-8_k65",
-         "start_s": 3371.947,
-         "start": "56:11"
+         "block": "page-8_k77",
+         "start_s": 3925.706,
+         "start": "65:25"
         },
         {
          "text": "Show the change of words",
          "block": "page-8_k48",
-         "start_s": 3386.287,
-         "start": "56:26"
+         "start_s": 3940.046,
+         "start": "65:40"
         },
         {
          "text": "What 'this time' refers to",
          "block": "page-8_k49",
-         "start_s": 3400.107,
-         "start": "56:40"
+         "start_s": 3953.866,
+         "start": "65:53"
         },
         {
          "text": "Hard general word: worsened",
          "block": "page-8_k50",
-         "start_s": 3412.893,
-         "start": "56:52"
+         "start_s": 3966.652,
+         "start": "66:06"
         },
         {
          "text": "The same word said to a patient",
          "block": "page-8_k51",
-         "start_s": 3426.425,
-         "start": "57:06"
+         "start_s": 3980.184,
+         "start": "66:20"
         }
        ]
       },
       {
        "board": "page-8_t8",
        "title": "Item 6: one of which",
-       "start_s": 3432.599,
-       "start": "57:12",
+       "start_s": 4040.048,
+       "start": "67:20",
        "points": [
         {
          "text": "Give the answer",
-         "block": "page-8_k66",
-         "start_s": 3432.599,
-         "start": "57:12"
+         "block": "page-8_k78",
+         "start_s": 4040.048,
+         "start": "67:20"
         },
         {
          "text": "Why 'them' becomes 'which'",
          "block": "page-8_k54",
-         "start_s": 3445.685,
-         "start": "57:25"
+         "start_s": 4053.134,
+         "start": "67:33"
         },
         {
          "text": "Key word: mole",
          "block": "page-8_k56",
-         "start_s": 3465.317,
-         "start": "57:45"
+         "start_s": 4072.766,
+         "start": "67:52"
         },
         {
          "text": "The same key word said to a patient",
          "block": "page-8_k57",
-         "start_s": 3482.962,
-         "start": "58:02"
+         "start_s": 4090.411,
+         "start": "68:10"
         },
         {
          "text": "Close the set with the rule about the preposition",
          "block": "page-8_k58",
-         "start_s": 3487.57,
-         "start": "58:07"
+         "start_s": 4095.019,
+         "start": "68:15"
         }
        ]
       }
@@ -21057,22 +21057,22 @@
        "block": "page-8_k11",
        "kind": "warning",
        "text": "Most learners leave the preposition out. The sentence is then wrong, and the meaning is not clear.",
-       "start_s": 3009.839,
-       "start": "50:09"
+       "start_s": 3516.115,
+       "start": "58:36"
       },
       {
        "block": "page-8_k43",
        "kind": "rule",
        "text": "When the two sentences join with 'which', the word it replaces ('them', 'this') is dropped.",
-       "start_s": 3332.792,
-       "start": "55:32"
+       "start_s": 3886.451,
+       "start": "64:46"
       },
       {
        "block": "page-8_k58",
        "kind": "rule",
        "text": "Do not leave the preposition out when you join the sentences. Here we used 'from', 'for' and 'by'.",
-       "start_s": 3487.57,
-       "start": "58:07"
+       "start_s": 4095.019,
+       "start": "68:15"
       }
      ],
      "terms": [
@@ -21080,129 +21080,129 @@
        "block": "page-8_k12",
        "label": "Grammar word",
        "term": "relative pronoun",
-       "start_s": 3019.921,
-       "start": "50:19"
+       "start_s": 3526.197,
+       "start": "58:46"
       },
       {
        "block": "page-8_k19",
        "label": "Form",
        "term": "from which",
-       "start_s": 3091.147,
-       "start": "51:31"
+       "start_s": 3597.273,
+       "start": "59:57"
       },
       {
        "block": "page-8_k29",
        "label": "Forms",
        "term": "from which, for which, in which",
-       "start_s": 3189.54,
-       "start": "53:09"
+       "start_s": 3743.817,
+       "start": "62:23"
       },
       {
        "block": "page-8_k36",
        "label": "Form",
        "term": "instead of which",
-       "start_s": 3261.031,
-       "start": "54:21"
+       "start_s": 3815.308,
+       "start": "63:35"
       },
       {
        "block": "page-8_k41",
        "label": "Form",
        "term": "neither of which",
-       "start_s": 3314.832,
-       "start": "55:14"
+       "start_s": 3868.269,
+       "start": "64:28"
       },
       {
        "block": "page-8_k55",
        "label": "Form",
        "term": "one of which",
-       "start_s": 3453.949,
-       "start": "57:33"
+       "start_s": 4061.398,
+       "start": "67:41"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-8_k03",
        "text": "He suffered a stroke last January. He has still not fully recovered from it.",
-       "start_s": 2901.591,
-       "start": "48:21"
+       "start_s": 3407.867,
+       "start": "56:47"
       },
       {
        "block": "page-8_k04",
        "text": "She occasionally suffers from constipation. She takes a mild laxative for this.",
-       "start_s": 2901.591,
-       "start": "48:21"
+       "start_s": 3407.867,
+       "start": "56:47"
       },
       {
        "block": "page-8_k05",
        "text": "He was advised to rest the ankle for two weeks. Instead of this, he went on a walking holiday.",
-       "start_s": 2901.591,
-       "start": "48:21"
+       "start_s": 3407.867,
+       "start": "56:47"
       },
       {
        "block": "page-8_k07",
        "text": "She tried two different herbal remedies. Neither of them had any effect.",
-       "start_s": 2966.708,
-       "start": "49:26"
+       "start_s": 3472.984,
+       "start": "57:52"
       },
       {
        "block": "page-8_k08",
        "text": "He presented again on 23 January. By this time his condition had worsened.",
-       "start_s": 2966.708,
-       "start": "49:26"
+       "start_s": 3472.984,
+       "start": "57:52"
       },
       {
        "block": "page-8_k09",
        "text": "He has two moles on his left arm. One of them appears to have changed shape.",
-       "start_s": 2966.708,
-       "start": "49:26"
+       "start_s": 3472.984,
+       "start": "57:52"
       },
       {
        "block": "page-8_k10",
        "text": "He suffered a stroke last January. He has still not fully recovered from it.",
-       "start_s": 3003.392,
-       "start": "50:03"
+       "start_s": 3509.668,
+       "start": "58:29"
       },
       {
        "block": "page-8_k15",
        "text": "He suffered a stroke last January, which he has still not fully recovered from it.",
-       "start_s": 3046.855,
-       "start": "50:46"
+       "start_s": 3553.122,
+       "start": "59:13"
       },
       {
        "block": "page-8_k21",
        "text": "She occasionally suffers from constipation. She takes a mild laxative for this.",
-       "start_s": 3129.93,
-       "start": "52:09"
+       "start_s": 3684.207,
+       "start": "61:24"
       },
       {
        "block": "page-8_k25",
        "text": "She occasionally suffers from constipation which she takes a mild laxative for this.",
-       "start_s": 3155.9,
-       "start": "52:35"
+       "start_s": 3710.177,
+       "start": "61:50"
       },
       {
        "block": "page-8_k32",
        "text": "He was advised to rest the ankle for two weeks. Instead of this, he went on a walking holiday.",
-       "start_s": 3228.3,
-       "start": "53:48"
+       "start_s": 3782.577,
+       "start": "63:02"
       },
       {
        "block": "page-8_k39",
        "text": "She tried two different herbal remedies. Neither of them had any effect.",
-       "start_s": 3292.441,
-       "start": "54:52"
+       "start_s": 3845.878,
+       "start": "64:05"
       },
       {
        "block": "page-8_k46",
        "text": "He presented again on 23 January. By this time his condition had worsened.",
-       "start_s": 3371.947,
-       "start": "56:11"
+       "start_s": 3925.706,
+       "start": "65:25"
       },
       {
        "block": "page-8_k52",
        "text": "He has two moles on his left arm. One of them appears to have changed shape.",
-       "start_s": 3432.599,
-       "start": "57:12"
+       "start_s": 4040.048,
+       "start": "67:20"
       }
      ],
      "practice": [],
@@ -21212,8 +21212,8 @@
        "lesson": "grammar-06-clause",
        "section": null,
        "provenance": "adapted",
-       "start_s": 3029.172,
-       "start": "50:29"
+       "start_s": 3535.448,
+       "start": "58:55"
       }
      ]
     },
@@ -21225,237 +21225,237 @@
       9
      ],
      "category": null,
-     "start_s": 3507.312,
-     "start": "58:27",
-     "end_s": 4164.295,
+     "start_s": 4119.661,
+     "start": "68:39",
+     "end_s": 4884.193,
      "topics": [
       {
        "board": "page-9_t1",
        "title": "Extract rewritten with relative clauses",
-       "start_s": 3507.312,
-       "start": "58:27",
+       "start_s": 4119.661,
+       "start": "68:39",
        "points": [
         {
          "text": "the task on this extract",
-         "block": "page-9_k53",
-         "start_s": 3507.312,
-         "start": "58:27"
+         "block": "page-9_k58",
+         "start_s": 4119.661,
+         "start": "68:39"
         },
         {
          "text": "only join ideas that belong together",
          "block": "page-9_k03",
-         "start_s": 3534.892,
-         "start": "58:54"
+         "start_s": 4146.181,
+         "start": "69:06"
         },
         {
          "text": "'who' joins sentences 1 and 2",
          "block": "page-9_k04",
-         "start_s": 3574.556,
-         "start": "59:34"
+         "start_s": 4185.845,
+         "start": "69:45"
         },
         {
          "text": "defining relative clause takes no comma",
          "block": "page-9_k05",
-         "start_s": 3582.047,
-         "start": "59:42"
+         "start_s": 4193.336,
+         "start": "69:53"
         },
         {
          "text": "the defining clause drawn",
          "block": "page-9_k07",
-         "start_s": 3603.696,
-         "start": "60:03"
+         "start_s": 4214.985,
+         "start": "70:14"
         },
         {
          "text": "'This' becomes 'which'",
          "block": "page-9_k08",
-         "start_s": 3636.765,
-         "start": "60:36"
+         "start_s": 4249.548,
+         "start": "70:49"
         },
         {
          "text": "non-defining relative clause takes a comma",
          "block": "page-9_k10",
-         "start_s": 3645.226,
-         "start": "60:45"
+         "start_s": 4258.009,
+         "start": "70:58"
         },
         {
          "text": "'which' or 'for which'?",
          "block": "page-9_k11",
-         "start_s": 3661.871,
-         "start": "61:01"
+         "start_s": 4274.654,
+         "start": "71:14"
         },
         {
          "text": "where 'also' goes",
          "block": "page-9_k13",
-         "start_s": 3682.559,
-         "start": "61:22"
+         "start_s": 4295.342,
+         "start": "71:35"
         },
         {
          "text": "do not repeat 'for this'",
          "block": "page-9_k15",
-         "start_s": 3699.843,
-         "start": "61:39"
+         "start_s": 4312.626,
+         "start": "71:52"
         },
         {
          "text": "suffer or suffer from",
          "block": "page-9_k17",
-         "start_s": 3711.637,
-         "start": "61:51"
+         "start_s": 4324.42,
+         "start": "72:04"
         },
         {
          "text": "examples with suffer from",
          "block": "page-9_k18",
-         "start_s": 3728.276,
-         "start": "62:08"
+         "start_s": 4341.059,
+         "start": "72:21"
         },
         {
          "text": "joining both conditions in one sentence",
          "block": "page-9_k20",
-         "start_s": 3739.61,
-         "start": "62:19"
+         "start_s": 4352.393,
+         "start": "72:32"
         },
         {
          "text": "the word 'respectively'",
          "block": "page-9_k22",
-         "start_s": 3760.038,
-         "start": "62:40"
+         "start_s": 4372.821,
+         "start": "72:52"
         },
         {
          "text": "keep the two conditions apart",
          "block": "page-9_k23",
-         "start_s": 3776.89,
-         "start": "62:56"
+         "start_s": 4389.673,
+         "start": "73:09"
         },
         {
          "text": "the word 'fortnight'",
          "block": "page-9_k24",
-         "start_s": 3791.834,
-         "start": "63:11"
+         "start_s": 4461.613,
+         "start": "74:21"
         },
         {
          "text": "fortnight when speaking to a patient",
          "block": "page-9_k25",
-         "start_s": 3805.894,
-         "start": "63:25"
+         "start_s": 4475.673,
+         "start": "74:35"
         },
         {
          "text": "the phrase 'a number of episodes'",
          "block": "page-9_k26",
-         "start_s": 3811.56,
-         "start": "63:31"
+         "start_s": 4481.339,
+         "start": "74:41"
         },
         {
          "text": "the word 'discomfort'",
          "block": "page-9_k27",
-         "start_s": 3826.13,
-         "start": "63:46"
+         "start_s": 4495.909,
+         "start": "74:55"
         },
         {
          "text": "the prefix dis-",
          "block": "page-9_k28",
-         "start_s": 3839.504,
-         "start": "63:59"
+         "start_s": 4509.283,
+         "start": "75:09"
         },
         {
          "text": "'These' becomes ', which'",
          "block": "page-9_k30",
-         "start_s": 3879.54,
-         "start": "64:39"
+         "start_s": 4549.319,
+         "start": "75:49"
         },
         {
          "text": "the phrasal verb 'came on'",
          "block": "page-9_k31",
-         "start_s": 3908.208,
-         "start": "65:08"
+         "start_s": 4578.328,
+         "start": "76:18"
         },
         {
          "text": "'come on' in speaking, and its past form",
          "block": "page-9_k32",
-         "start_s": 3921.215,
-         "start": "65:21"
+         "start_s": 4591.335,
+         "start": "76:31"
         },
         {
          "text": "the phrase 'physical exertion'",
          "block": "page-9_k34",
-         "start_s": 3928.55,
-         "start": "65:28"
+         "start_s": 4598.67,
+         "start": "76:38"
         },
         {
          "text": "the phrase 'due to'",
          "block": "page-9_k35",
-         "start_s": 3942.29,
-         "start": "65:42"
+         "start_s": 4612.41,
+         "start": "76:52"
         },
         {
          "text": "leave the 'However' sentence apart",
          "block": "page-9_k36",
-         "start_s": 3955.13,
-         "start": "65:55"
+         "start_s": 4625.25,
+         "start": "77:05"
         },
         {
          "text": "joining the murmur sentences",
          "block": "page-9_k37",
-         "start_s": 3979.35,
-         "start": "66:19"
+         "start_s": 4649.47,
+         "start": "77:29"
         },
         {
          "text": "joining the ECG sentences",
          "block": "page-9_k38",
-         "start_s": 4001.96,
-         "start": "66:41"
+         "start_s": 4672.08,
+         "start": "77:52"
         },
         {
          "text": "the passive instead of 'I ordered'",
          "block": "page-9_k39",
-         "start_s": 4015.511,
-         "start": "66:55"
+         "start_s": 4685.591,
+         "start": "78:05"
         },
         {
          "text": "the word 'subsequent'",
          "block": "page-9_k41",
-         "start_s": 4041.711,
-         "start": "67:21"
+         "start_s": 4711.321,
+         "start": "78:31"
         },
         {
          "text": "subsequent and subsequently",
          "block": "page-9_k42",
-         "start_s": 4065.371,
-         "start": "67:45"
+         "start_s": 4734.981,
+         "start": "78:54"
         },
         {
          "text": "the last sentence stays as it is",
          "block": "page-9_k44",
-         "start_s": 4079.331,
-         "start": "67:59"
+         "start_s": 4748.941,
+         "start": "79:08"
         },
         {
          "text": "the rule for joining",
          "block": "page-9_k45",
-         "start_s": 4092.601,
-         "start": "68:12"
+         "start_s": 4762.211,
+         "start": "79:22"
         },
         {
          "text": "other joining words",
          "block": "page-9_k46",
-         "start_s": 4103.971,
-         "start": "68:23"
+         "start_s": 4773.581,
+         "start": "79:33"
         },
         {
          "text": "examples with 'and' and 'but'",
          "block": "page-9_k47",
-         "start_s": 4118.197,
-         "start": "68:38"
+         "start_s": 4787.807,
+         "start": "79:47"
         },
         {
          "text": "examples with 'so' and 'because'",
          "block": "page-9_k49",
-         "start_s": 4132.581,
-         "start": "68:52"
+         "start_s": 4802.191,
+         "start": "80:02"
         },
         {
          "text": "an example with 'although'",
          "block": "page-9_k51",
-         "start_s": 4150.213,
-         "start": "69:10"
+         "start_s": 4819.823,
+         "start": "80:19"
         }
        ]
       }
@@ -21465,29 +21465,29 @@
        "block": "page-9_k03",
        "kind": "warning",
        "text": "Join two sentences only when the ideas are related. Sport and a medical history do not belong in one sentence.",
-       "start_s": 3534.892,
-       "start": "58:54"
+       "start_s": 4146.181,
+       "start": "69:06"
       },
       {
        "block": "page-9_k23",
        "kind": "rule",
        "text": "Hypertension and indigestion are different conditions, so here it is better to keep two sentences.",
-       "start_s": 3776.89,
-       "start": "62:56"
+       "start_s": 4389.673,
+       "start": "73:09"
       },
       {
        "block": "page-9_k36",
        "kind": "rule",
        "text": "The next sentence begins with 'However', so we leave these two sentences apart.",
-       "start_s": 3955.13,
-       "start": "65:55"
+       "start_s": 4625.25,
+       "start": "77:05"
       },
       {
        "block": "page-9_k45",
        "kind": "rule",
        "text": "Join sentences only where it helps the reader. Where it does not, use a full stop and start a new sentence.",
-       "start_s": 4092.601,
-       "start": "68:12"
+       "start_s": 4762.211,
+       "start": "79:22"
       }
      ],
      "terms": [
@@ -21495,79 +21495,79 @@
        "block": "page-9_k04",
        "label": "Relative pronoun",
        "term": "who",
-       "start_s": 3574.556,
-       "start": "59:34"
+       "start_s": 4185.845,
+       "start": "69:45"
       },
       {
        "block": "page-9_k05",
        "label": "New term",
        "term": "defining relative clause",
-       "start_s": 3582.047,
-       "start": "59:42"
+       "start_s": 4193.336,
+       "start": "69:53"
       },
       {
        "block": "page-9_k08",
        "label": "Relative pronoun",
        "term": "which",
-       "start_s": 3636.765,
-       "start": "60:36"
+       "start_s": 4249.548,
+       "start": "70:49"
       },
       {
        "block": "page-9_k10",
        "label": "New term",
        "term": "non-defining relative clause",
-       "start_s": 3645.226,
-       "start": "60:45"
+       "start_s": 4258.009,
+       "start": "70:58"
       },
       {
        "block": "page-9_k21",
        "label": "Word family",
        "term": "occasional, occasionally",
-       "start_s": 3751.285,
-       "start": "62:31"
+       "start_s": 4364.068,
+       "start": "72:44"
       },
       {
        "block": "page-9_k28",
        "label": "Prefix",
        "term": "dis-",
-       "start_s": 3839.504,
-       "start": "63:59"
+       "start_s": 4509.283,
+       "start": "75:09"
       },
       {
        "block": "page-9_k33",
        "label": "Word form",
        "term": "come on, came on",
-       "start_s": 3924.439,
-       "start": "65:24"
+       "start_s": 4594.559,
+       "start": "76:34"
       },
       {
        "block": "page-9_k39",
        "label": "New term",
        "term": "passive",
-       "start_s": 4015.511,
-       "start": "66:55"
+       "start_s": 4685.591,
+       "start": "78:05"
       },
       {
        "block": "page-9_k42",
        "label": "Word family",
        "term": "subsequent, subsequently",
-       "start_s": 4065.371,
-       "start": "67:45"
+       "start_s": 4734.981,
+       "start": "78:54"
       },
       {
        "block": "page-9_k46",
        "label": "Joining words",
        "term": "and, but, so, because, although",
-       "start_s": 4103.971,
-       "start": "68:23"
+       "start_s": 4773.581,
+       "start": "79:33"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-9_k15",
        "text": "He also occasionally suffers from indigestion, for which he takes Gaviscon for this.",
-       "start_s": 3699.843,
-       "start": "61:39"
+       "start_s": 4312.626,
+       "start": "71:52"
       }
      ],
      "practice": [],
@@ -21577,24 +21577,24 @@
        "lesson": "grammar-06-clause",
        "section": "page-6",
        "provenance": "source-derived",
-       "start_s": 3592.076,
-       "start": "59:52"
+       "start_s": 4203.365,
+       "start": "70:03"
       },
       {
        "utterance": "page-9_t1.s29.u2",
        "lesson": "grammar-01-verb-tenses",
        "section": "page-15",
        "provenance": "source-derived",
-       "start_s": 4026.101,
-       "start": "67:06"
+       "start_s": 4696.281,
+       "start": "78:16"
       },
       {
        "utterance": "page-9_t1.s37.u2",
        "lesson": "grammar-05-complex-compound",
        "section": null,
        "provenance": "authored",
-       "start_s": 4156.565,
-       "start": "69:16"
+       "start_s": 4826.175,
+       "start": "80:26"
       }
      ]
     },
@@ -21606,245 +21606,245 @@
       10
      ],
      "category": null,
-     "start_s": 4164.295,
-     "start": "69:24",
-     "end_s": 4767.882,
+     "start_s": 4884.193,
+     "start": "81:24",
+     "end_s": 5617.104,
      "topics": [
       {
        "board": "page-10_t1",
        "title": "instruction and extracts 1 and 3",
-       "start_s": 4164.295,
-       "start": "69:24",
+       "start_s": 4884.193,
+       "start": "81:24",
        "points": [
         {
          "text": "Show the task and the first two long extracts",
-         "block": "page-10_k47",
-         "start_s": 4164.295,
-         "start": "69:24"
+         "block": "page-10_k56",
+         "start_s": 4884.193,
+         "start": "81:24"
         }
        ]
       },
       {
        "board": "page-10_t2",
        "title": "extract 5",
-       "start_s": 4213.247,
-       "start": "70:13",
+       "start_s": 4933.072,
+       "start": "82:13",
        "points": [
         {
          "text": "Show the last extract of the set",
-         "block": "page-10_k48",
-         "start_s": 4213.247,
-         "start": "70:13"
+         "block": "page-10_k57",
+         "start_s": 4933.072,
+         "start": "82:13"
         }
        ]
       },
       {
        "board": "page-10_t3",
        "title": "Extract 1: Mr Edwardson",
-       "start_s": 4241.542,
-       "start": "70:41",
+       "start_s": 4961.367,
+       "start": "82:41",
        "points": [
         {
          "text": "Name the problem",
-         "block": "page-10_k49",
-         "start_s": 4241.542,
-         "start": "70:41"
+         "block": "page-10_k58",
+         "start_s": 4961.367,
+         "start": "82:41"
         },
         {
          "text": "Gloss a hard general word from the extract",
          "block": "page-10_k07",
-         "start_s": 4274.205,
-         "start": "71:14"
+         "start_s": 4994.03,
+         "start": "83:14"
         },
         {
          "text": "Show that the two parts joined by 'and' are both complete",
          "block": "page-10_k08",
-         "start_s": 4287.963,
-         "start": "71:27"
+         "start_s": 5007.788,
+         "start": "83:27"
         },
         {
          "text": "First new sentence",
          "block": "page-10_k09",
-         "start_s": 4330.614,
-         "start": "72:10"
+         "start_s": 5050.439,
+         "start": "84:10"
         },
         {
          "text": "Second new sentence",
          "block": "page-10_k11",
-         "start_s": 4343.735,
-         "start": "72:23"
+         "start_s": 5063.56,
+         "start": "84:23"
         },
         {
          "text": "Third new sentence",
          "block": "page-10_k13",
-         "start_s": 4359.466,
-         "start": "72:39"
+         "start_s": 5079.291,
+         "start": "84:39"
         },
         {
          "text": "State the result of the split",
          "block": "page-10_k15",
-         "start_s": 4370.186,
-         "start": "72:50"
+         "start_s": 5090.011,
+         "start": "84:50"
         },
         {
          "text": "A simple test for a sentence that is too long",
          "block": "page-10_k16",
-         "start_s": 4376.316,
-         "start": "72:56"
+         "start_s": 5096.141,
+         "start": "84:56"
         }
        ]
       },
       {
        "board": "page-10_t4",
        "title": "Extract 3: Mr Kozak",
-       "start_s": 4393.896,
-       "start": "73:13",
+       "start_s": 5113.721,
+       "start": "85:13",
        "points": [
         {
          "text": "Open the second long extract",
-         "block": "page-10_k50",
-         "start_s": 4393.896,
-         "start": "73:13"
+         "block": "page-10_k59",
+         "start_s": 5113.721,
+         "start": "85:13"
         },
         {
          "text": "Teach the word 'apparently'",
          "block": "page-10_k19",
-         "start_s": 4416.431,
-         "start": "73:36"
+         "start_s": 5136.256,
+         "start": "85:36"
         },
         {
          "text": "Find the topic boundary",
          "block": "page-10_k20",
-         "start_s": 4428.106,
-         "start": "73:48"
+         "start_s": 5147.931,
+         "start": "85:47"
         },
         {
          "text": "Compare two places for the full stop",
          "block": "page-10_k21",
-         "start_s": 4434.772,
-         "start": "73:54"
+         "start_s": 5154.597,
+         "start": "85:54"
         },
         {
          "text": "First new sentence of extract 3",
          "block": "page-10_k22",
-         "start_s": 4450.279,
-         "start": "74:10"
+         "start_s": 5170.104,
+         "start": "86:10"
         },
         {
          "text": "Show the second fault in the extract",
          "block": "page-10_k24",
-         "start_s": 4472.136,
-         "start": "74:32"
+         "start_s": 5191.961,
+         "start": "86:31"
         },
         {
          "text": "Define the grammar term",
          "block": "page-10_k25",
-         "start_s": 4485.747,
-         "start": "74:45"
+         "start_s": 5205.707,
+         "start": "86:45"
         },
         {
          "text": "State the rule about two relative pronouns",
          "block": "page-10_k26",
-         "start_s": 4494.937,
-         "start": "74:54"
+         "start_s": 5214.897,
+         "start": "86:54"
         },
         {
          "text": "Key word: compliance",
          "block": "page-10_k27",
-         "start_s": 4507.42,
-         "start": "75:07"
+         "start_s": 5227.38,
+         "start": "87:07"
         },
         {
          "text": "Second example of the key word, said to a patient",
          "block": "page-10_k28",
-         "start_s": 4521.964,
-         "start": "75:21"
+         "start_s": 5241.924,
+         "start": "87:21"
         },
         {
          "text": "Word family of the key word",
          "block": "page-10_k29",
-         "start_s": 4529.948,
-         "start": "75:29"
+         "start_s": 5249.908,
+         "start": "87:29"
         },
         {
          "text": "Collocations with compliance",
          "block": "page-10_k30",
-         "start_s": 4545.796,
-         "start": "75:45"
+         "start_s": 5265.756,
+         "start": "87:45"
         },
         {
          "text": "The rewritten second sentence",
          "block": "page-10_k31",
-         "start_s": 4564.628,
-         "start": "76:04"
+         "start_s": 5284.588,
+         "start": "88:04"
         }
        ]
       },
       {
        "board": "page-10_t5",
        "title": "Extract 5: Mrs Hardy",
-       "start_s": 4587.667,
-       "start": "76:27",
+       "start_s": 5379.837,
+       "start": "89:39",
        "points": [
         {
          "text": "See that the extract is one sentence",
-         "block": "page-10_k51",
-         "start_s": 4587.667,
-         "start": "76:27"
+         "block": "page-10_k60",
+         "start_s": 5379.837,
+         "start": "89:39"
         },
         {
          "text": "Show why full stops do not help here",
          "block": "page-10_k35",
-         "start_s": 4623.691,
-         "start": "77:03"
+         "start_s": 5415.861,
+         "start": "90:15"
         },
         {
          "text": "Name the real fault",
          "block": "page-10_k36",
-         "start_s": 4639.935,
-         "start": "77:19"
+         "start_s": 5432.105,
+         "start": "90:32"
         },
         {
          "text": "Gloss a hard general word from the extract",
          "block": "page-10_k37",
-         "start_s": 4657.049,
-         "start": "77:37"
+         "start_s": 5449.219,
+         "start": "90:49"
         },
         {
          "text": "Apply the relevance test",
          "block": "page-10_k38",
-         "start_s": 4667.675,
-         "start": "77:47"
+         "start_s": 5459.845,
+         "start": "90:59"
         },
         {
          "text": "Decide what to keep and what to cut",
          "block": "page-10_k39",
-         "start_s": 4680.357,
-         "start": "78:00"
+         "start_s": 5472.527,
+         "start": "91:12"
         },
         {
          "text": "The first rewritten sentence",
          "block": "page-10_k40",
-         "start_s": 4703.722,
-         "start": "78:23"
+         "start_s": 5495.892,
+         "start": "91:35"
         },
         {
          "text": "The second sentence",
          "block": "page-10_k42",
-         "start_s": 4720.072,
-         "start": "78:40"
+         "start_s": 5512.242,
+         "start": "91:52"
         },
         {
          "text": "A second accepted version of that sentence",
          "block": "page-10_k44",
-         "start_s": 4729.492,
-         "start": "78:49"
+         "start_s": 5521.662,
+         "start": "92:01"
         },
         {
          "text": "Close the point",
          "block": "page-10_k46",
-         "start_s": 4748.721,
-         "start": "79:08"
+         "start_s": 5540.891,
+         "start": "92:20"
         }
        ]
       }
@@ -21854,22 +21854,22 @@
        "block": "page-10_k16",
        "kind": "rule",
        "text": "If a sentence is hard to follow, often because it has several ideas or more than about 25 words, split it. Each new sentence needs its own subject and verb.",
-       "start_s": 4376.316,
-       "start": "72:56"
+       "start_s": 5096.141,
+       "start": "84:56"
       },
       {
        "block": "page-10_k26",
        "kind": "warning",
        "text": "Avoid a chain of relative clauses in one sentence. Change the sentence so you can delete the second one.",
-       "start_s": 4494.937,
-       "start": "74:54"
+       "start_s": 5214.897,
+       "start": "86:54"
       },
       {
        "block": "page-10_k36",
        "kind": "warning",
        "text": "The fault here is too much information. Length is not always the problem: unnecessary detail is.",
-       "start_s": 4639.935,
-       "start": "77:19"
+       "start_s": 5432.105,
+       "start": "90:32"
       }
      ],
      "terms": [
@@ -21877,66 +21877,66 @@
        "block": "page-10_k25",
        "label": "Grammar word",
        "term": "Relative pronoun",
-       "start_s": 4485.747,
-       "start": "74:45"
+       "start_s": 5205.707,
+       "start": "86:45"
       },
       {
        "block": "page-10_k29",
        "label": "Word family",
        "term": "comply (verb), compliance (noun), non-compliance (noun)",
-       "start_s": 4529.948,
-       "start": "75:29"
+       "start_s": 5249.908,
+       "start": "87:29"
       },
       {
        "block": "page-10_k30",
        "label": "Collocations",
        "term": "good compliance, poor compliance, with poor compliance",
-       "start_s": 4545.796,
-       "start": "75:45"
+       "start_s": 5265.756,
+       "start": "87:45"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-10_k02",
        "text": "Mr Edwardson is a 29-year-old man who is single and works as a railway engineer and he was adopted at birth, so he has no knowledge of the medical history of his birth family, which means that his only past medical history is of certain childhood infections, none of which are unusual.",
-       "start_s": 4164.295,
-       "start": "69:24"
+       "start_s": 4884.193,
+       "start": "81:24"
       },
       {
        "block": "page-10_k03",
        "text": "Mr Kozak has a history of excessive alcohol intake, which apparently started after the death of his mother, and it increases when he is anxious and has twice been diagnosed with depression for which he was prescribed citalopram, which he admits he never took regularly.",
-       "start_s": 4164.295,
-       "start": "69:24"
+       "start_s": 4884.193,
+       "start": "81:24"
       },
       {
        "block": "page-10_k04",
        "text": "The ambulance team found Mrs Hardy, who was conscious but confused, after lying on the bedroom floor in her nightdress, at approximately 1.30pm after a call from her neighbour, Mr Bowen, who had become concerned that her curtains were still closed for some time without receiving an answer, and Mr Bowen also rang the patient's son, who arrived just before the ambulance and accompanied her to the hospital.",
-       "start_s": 4213.247,
-       "start": "70:13"
+       "start_s": 4933.072,
+       "start": "82:13"
       },
       {
        "block": "page-10_k05",
        "text": "Mr Edwardson is a 29-year-old man who is single and works as a railway engineer and he was adopted at birth, so he has no knowledge of the medical history of his birth family, which means that his only past medical history is of certain childhood infections, none of which are unusual.",
-       "start_s": 4241.542,
-       "start": "70:41"
+       "start_s": 4961.367,
+       "start": "82:41"
       },
       {
        "block": "page-10_k17",
        "text": "Mr Kozak has a history of excessive alcohol intake, which apparently started after the death of his mother, and it increases when he is anxious and has twice been diagnosed with depression for which he was prescribed citalopram, which he admits he never took regularly.",
-       "start_s": 4393.896,
-       "start": "73:13"
+       "start_s": 5113.721,
+       "start": "85:13"
       },
       {
        "block": "page-10_k24",
        "text": "For which he was prescribed citalopram, which he admits he never took regularly.",
-       "start_s": 4472.136,
-       "start": "74:32"
+       "start_s": 5191.961,
+       "start": "86:31"
       },
       {
        "block": "page-10_k33",
        "text": "The ambulance team found Mrs Hardy, who was conscious but confused, after lying on the bedroom floor in her nightdress, at approximately 1.30pm after a call from her neighbour, Mr Bowen, who had become concerned that her curtains were still closed for some time without receiving an answer, and Mr Bowen also rang the patient's son, who arrived just before the ambulance and accompanied her to the hospital.",
-       "start_s": 4587.667,
-       "start": "76:27"
+       "start_s": 5379.837,
+       "start": "89:39"
       }
      ],
      "practice": [],
@@ -21952,8 +21952,8 @@
      "lexicon": null,
      "section": "page-4",
      "block": "page-4_k41",
-     "start_s": 411.358,
-     "start": "6:51"
+     "start_s": 467.001,
+     "start": "7:47"
     },
     {
      "word": "stated",
@@ -21961,8 +21961,8 @@
      "lexicon": null,
      "section": "page-4",
      "block": "page-4_k45",
-     "start_s": 441.96,
-     "start": "7:21"
+     "start_s": 497.603,
+     "start": "8:17"
     },
     {
      "word": "isolated",
@@ -21970,8 +21970,8 @@
      "lexicon": null,
      "section": "page-4",
      "block": "page-4_k47",
-     "start_s": 451.093,
-     "start": "7:31"
+     "start_s": 506.736,
+     "start": "8:26"
     },
     {
      "word": "at times",
@@ -21979,8 +21979,8 @@
      "lexicon": null,
      "section": "page-4",
      "block": "page-4_k48",
-     "start_s": 461.61,
-     "start": "7:41"
+     "start_s": 517.253,
+     "start": "8:37"
     },
     {
      "word": "lethargic",
@@ -21988,8 +21988,8 @@
      "lexicon": null,
      "section": "page-4",
      "block": "page-4_k52",
-     "start_s": 490.289,
-     "start": "8:10"
+     "start_s": 545.932,
+     "start": "9:05"
     },
     {
      "word": "tearful",
@@ -21997,8 +21997,8 @@
      "lexicon": null,
      "section": "page-4",
      "block": "page-4_k70",
-     "start_s": 631.641,
-     "start": "10:31"
+     "start_s": 740.909,
+     "start": "12:20"
     },
     {
      "word": "confessed",
@@ -22006,8 +22006,8 @@
      "lexicon": null,
      "section": "page-4",
      "block": "page-4_k78",
-     "start_s": 699.402,
-     "start": "11:39"
+     "start_s": 808.67,
+     "start": "13:28"
     },
     {
      "word": "guilt",
@@ -22015,8 +22015,8 @@
      "lexicon": null,
      "section": "page-4",
      "block": "page-4_k79",
-     "start_s": 703.562,
-     "start": "11:43"
+     "start_s": 812.83,
+     "start": "13:32"
     },
     {
      "word": "grazed",
@@ -22024,8 +22024,8 @@
      "lexicon": null,
      "section": "page-4",
      "block": "page-4_k84",
-     "start_s": 743.431,
-     "start": "12:23"
+     "start_s": 852.699,
+     "start": "14:12"
     },
     {
      "word": "a fall",
@@ -22033,8 +22033,8 @@
      "lexicon": null,
      "section": "page-4",
      "block": "page-4_k85",
-     "start_s": 748.392,
-     "start": "12:28"
+     "start_s": 857.698,
+     "start": "14:17"
     },
     {
      "word": "find it difficult",
@@ -22042,8 +22042,8 @@
      "lexicon": null,
      "section": "page-4",
      "block": "page-4_k92",
-     "start_s": 798.592,
-     "start": "13:18"
+     "start_s": 909.37,
+     "start": "15:09"
     },
     {
      "word": "cope with",
@@ -22051,8 +22051,8 @@
      "lexicon": null,
      "section": "page-4",
      "block": "page-4_k93",
-     "start_s": 802.913,
-     "start": "13:22"
+     "start_s": 913.691,
+     "start": "15:13"
     },
     {
      "word": "epigastric pain",
@@ -22060,8 +22060,8 @@
      "lexicon": null,
      "section": "page-4",
      "block": "page-4_k98",
-     "start_s": 832.334,
-     "start": "13:52"
+     "start_s": 943.112,
+     "start": "15:43"
     },
     {
      "word": "excitable",
@@ -22069,8 +22069,8 @@
      "lexicon": null,
      "section": "page-4",
      "block": "page-4_k104",
-     "start_s": 881.192,
-     "start": "14:41"
+     "start_s": 1048.757,
+     "start": "17:28"
     },
     {
      "word": "deaf",
@@ -22078,8 +22078,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k04",
-     "start_s": 1646.127,
-     "start": "27:26"
+     "start_s": 1924.242,
+     "start": "32:04"
     },
     {
      "word": "acute deafness",
@@ -22087,8 +22087,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k06",
-     "start_s": 1684.496,
-     "start": "28:04"
+     "start_s": 1962.611,
+     "start": "32:42"
     },
     {
      "word": "blind",
@@ -22096,8 +22096,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k08",
-     "start_s": 1713.082,
-     "start": "28:33"
+     "start_s": 1991.197,
+     "start": "33:11"
     },
     {
      "word": "dilated",
@@ -22105,8 +22105,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k15",
-     "start_s": 1820.629,
-     "start": "30:20"
+     "start_s": 2098.744,
+     "start": "34:58"
     },
     {
      "word": "indigestion",
@@ -22114,8 +22114,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k20",
-     "start_s": 1912.867,
-     "start": "31:52"
+     "start_s": 2190.982,
+     "start": "36:30"
     },
     {
      "word": "constipated",
@@ -22123,8 +22123,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k24",
-     "start_s": 1981.155,
-     "start": "33:01"
+     "start_s": 2316.1,
+     "start": "38:36"
     },
     {
      "word": "a three-day history of constipation",
@@ -22132,8 +22132,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k26",
-     "start_s": 2007.085,
-     "start": "33:27"
+     "start_s": 2342.03,
+     "start": "39:02"
     },
     {
      "word": "psychotic",
@@ -22141,8 +22141,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k28",
-     "start_s": 2040.987,
-     "start": "34:00"
+     "start_s": 2375.932,
+     "start": "39:35"
     },
     {
      "word": "depressed",
@@ -22150,8 +22150,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k32",
-     "start_s": 2107.477,
-     "start": "35:07"
+     "start_s": 2442.422,
+     "start": "40:42"
     },
     {
      "word": "anxious",
@@ -22159,8 +22159,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k35",
-     "start_s": 2155.68,
-     "start": "35:55"
+     "start_s": 2490.625,
+     "start": "41:30"
     },
     {
      "word": "Herbal",
@@ -22168,8 +22168,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k20",
-     "start_s": 2475.275,
-     "start": "41:15"
+     "start_s": 2858.361,
+     "start": "47:38"
     },
     {
      "word": "Remedy",
@@ -22177,8 +22177,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k21",
-     "start_s": 2478.706,
-     "start": "41:18"
+     "start_s": 2861.792,
+     "start": "47:41"
     },
     {
      "word": "Obtain",
@@ -22186,8 +22186,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k22",
-     "start_s": 2486.346,
-     "start": "41:26"
+     "start_s": 2869.432,
+     "start": "47:49"
     },
     {
      "word": "Over the counter",
@@ -22195,8 +22195,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k23",
-     "start_s": 2489.44,
-     "start": "41:29"
+     "start_s": 2872.526,
+     "start": "47:52"
     },
     {
      "word": "deteriorating",
@@ -22204,8 +22204,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k31",
-     "start_s": 2557.903,
-     "start": "42:37"
+     "start_s": 2940.989,
+     "start": "49:00"
     },
     {
      "word": "Blow",
@@ -22213,8 +22213,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k41",
-     "start_s": 2698.219,
-     "start": "44:58"
+     "start_s": 3148.895,
+     "start": "52:28"
     },
     {
      "word": "Lose consciousness",
@@ -22222,8 +22222,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k42",
-     "start_s": 2701.329,
-     "start": "45:01"
+     "start_s": 3152.005,
+     "start": "52:32"
     },
     {
      "word": "counselling",
@@ -22231,8 +22231,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k58",
-     "start_s": 2843.695,
-     "start": "47:23"
+     "start_s": 3294.371,
+     "start": "54:54"
     },
     {
      "word": "laxative",
@@ -22240,8 +22240,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k30",
-     "start_s": 3204.857,
-     "start": "53:24"
+     "start_s": 3759.134,
+     "start": "62:39"
     },
     {
      "word": "herbal remedy",
@@ -22249,8 +22249,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k44",
-     "start_s": 3348.038,
-     "start": "55:48"
+     "start_s": 3901.697,
+     "start": "65:01"
     },
     {
      "word": "worsened",
@@ -22258,8 +22258,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k50",
-     "start_s": 3412.893,
-     "start": "56:52"
+     "start_s": 3966.652,
+     "start": "66:06"
     },
     {
      "word": "moles",
@@ -22267,8 +22267,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k56",
-     "start_s": 3465.317,
-     "start": "57:45"
+     "start_s": 4072.766,
+     "start": "67:52"
     },
     {
      "word": "respectively",
@@ -22276,8 +22276,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k22",
-     "start_s": 3760.038,
-     "start": "62:40"
+     "start_s": 4372.821,
+     "start": "72:52"
     },
     {
      "word": "fortnight",
@@ -22285,8 +22285,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k24",
-     "start_s": 3791.834,
-     "start": "63:11"
+     "start_s": 4461.613,
+     "start": "74:21"
     },
     {
      "word": "a number of episodes",
@@ -22294,8 +22294,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k26",
-     "start_s": 3811.56,
-     "start": "63:31"
+     "start_s": 4481.339,
+     "start": "74:41"
     },
     {
      "word": "discomfort",
@@ -22303,8 +22303,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k27",
-     "start_s": 3826.13,
-     "start": "63:46"
+     "start_s": 4495.909,
+     "start": "74:55"
     },
     {
      "word": "came on",
@@ -22312,8 +22312,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k31",
-     "start_s": 3908.208,
-     "start": "65:08"
+     "start_s": 4578.328,
+     "start": "76:18"
     },
     {
      "word": "physical exertion",
@@ -22321,8 +22321,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k34",
-     "start_s": 3928.55,
-     "start": "65:28"
+     "start_s": 4598.67,
+     "start": "76:38"
     },
     {
      "word": "due to",
@@ -22330,8 +22330,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k35",
-     "start_s": 3942.29,
-     "start": "65:42"
+     "start_s": 4612.41,
+     "start": "76:52"
     },
     {
      "word": "subsequent",
@@ -22339,8 +22339,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k41",
-     "start_s": 4041.711,
-     "start": "67:21"
+     "start_s": 4711.321,
+     "start": "78:31"
     },
     {
      "word": "adopted",
@@ -22348,8 +22348,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k07",
-     "start_s": 4274.205,
-     "start": "71:14"
+     "start_s": 4994.03,
+     "start": "83:14"
     },
     {
      "word": "apparently",
@@ -22357,8 +22357,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k19",
-     "start_s": 4416.431,
-     "start": "73:36"
+     "start_s": 5136.256,
+     "start": "85:36"
     },
     {
      "word": "compliance",
@@ -22366,8 +22366,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k27",
-     "start_s": 4507.42,
-     "start": "75:07"
+     "start_s": 5227.38,
+     "start": "87:07"
     },
     {
      "word": "accompanied",
@@ -22375,8 +22375,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k37",
-     "start_s": 4657.049,
-     "start": "77:37"
+     "start_s": 5449.219,
+     "start": "90:49"
     }
    ],
    "withheld": {
@@ -22452,48 +22452,48 @@
       "section": "page-6",
       "from_section": "page-4",
       "utterance": "page-4_t7.s3.u2",
-      "start_s": 542.311,
-      "start": "9:02"
+      "start_s": 597.954,
+      "start": "9:57"
      },
      {
       "lesson": "grammar-01-verb-tenses",
       "section": "page-15",
       "from_section": "page-5",
       "utterance": "page-5_t8.s2.u3",
-      "start_s": 1446.303,
-      "start": "24:06"
+      "start_s": 1668.528,
+      "start": "27:48"
      },
      {
       "lesson": "grammar-03-nominalization",
       "section": null,
       "from_section": "page-6",
       "utterance": "page-6_t1.s2.u3",
-      "start_s": 1635.826,
-      "start": "27:15"
+      "start_s": 1913.941,
+      "start": "31:53"
      },
      {
       "lesson": "grammar-06-clause",
       "section": null,
       "from_section": "page-7",
       "utterance": "page-7_t1.s1.u1",
-      "start_s": 2226.497,
-      "start": "37:06"
+      "start_s": 2610.413,
+      "start": "43:30"
      },
      {
       "lesson": "grammar-06-clause",
       "section": "page-6",
       "from_section": "page-7",
       "utterance": "page-7_t1.s1.u4",
-      "start_s": 2253.89,
-      "start": "37:33"
+      "start_s": 2637.806,
+      "start": "43:57"
      },
      {
       "lesson": "grammar-05-complex-compound",
       "section": null,
       "from_section": "page-9",
       "utterance": "page-9_t1.s37.u2",
-      "start_s": 4156.565,
-      "start": "69:16"
+      "start_s": 4826.175,
+      "start": "80:26"
      }
     ],
     "referred_to_by": [
@@ -53840,8 +53840,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-4",
-     "start_s": 939.461,
-     "start": "15:39",
+     "start_s": 1107.026,
+     "start": "18:27",
      "source": "term"
     }
    ]
@@ -53853,8 +53853,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-6",
-     "start_s": 1592.426,
-     "start": "26:32",
+     "start_s": 1870.541,
+     "start": "31:10",
      "source": "section"
     }
    ]
@@ -54003,8 +54003,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-9",
-     "start_s": 3507.312,
-     "start": "58:27",
+     "start_s": 4119.661,
+     "start": "68:39",
      "source": "section"
     }
    ]
@@ -54016,8 +54016,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-10",
-     "start_s": 4164.295,
-     "start": "69:24",
+     "start_s": 4884.193,
+     "start": "81:24",
      "source": "section"
     }
    ]
@@ -54224,8 +54224,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-4",
-     "start_s": 145.821,
-     "start": "2:25",
+     "start_s": 146.191,
+     "start": "2:26",
      "source": "section"
     }
    ]
@@ -54844,8 +54844,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-9",
-     "start_s": 3582.047,
-     "start": "59:42",
+     "start_s": 4193.336,
+     "start": "69:53",
      "source": "term"
     }
    ]
@@ -54890,8 +54890,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-9",
-     "start_s": 3839.504,
-     "start": "63:59",
+     "start_s": 4509.283,
+     "start": "75:09",
      "source": "term"
     }
    ]
@@ -55203,8 +55203,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-8",
-     "start_s": 3091.147,
-     "start": "51:31",
+     "start_s": 3597.273,
+     "start": "59:57",
      "source": "term"
     }
    ]
@@ -55724,8 +55724,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-8",
-     "start_s": 3261.031,
-     "start": "54:21",
+     "start_s": 3815.308,
+     "start": "63:35",
      "source": "term"
     }
    ]
@@ -55789,8 +55789,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-7",
-     "start_s": 2226.497,
-     "start": "37:06",
+     "start_s": 2610.413,
+     "start": "43:30",
      "source": "section"
     }
    ]
@@ -55919,8 +55919,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-5",
-     "start_s": 969.192,
-     "start": "16:09",
+     "start_s": 1136.757,
+     "start": "18:56",
      "source": "section"
     }
    ]
@@ -55978,8 +55978,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-8",
-     "start_s": 3314.832,
-     "start": "55:14",
+     "start_s": 3868.269,
+     "start": "64:28",
      "source": "term"
     }
    ]
@@ -56031,8 +56031,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-9",
-     "start_s": 3645.226,
-     "start": "60:45",
+     "start_s": 4258.009,
+     "start": "70:58",
      "source": "term"
     }
    ]
@@ -56070,8 +56070,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-4",
-     "start_s": 923.671,
-     "start": "15:23",
+     "start_s": 1091.236,
+     "start": "18:11",
      "source": "term"
     }
    ]
@@ -56122,8 +56122,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-8",
-     "start_s": 3453.949,
-     "start": "57:33",
+     "start_s": 4061.398,
+     "start": "67:41",
      "source": "term"
     }
    ]
@@ -56346,8 +56346,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-5",
-     "start_s": 1420.002,
-     "start": "23:40",
+     "start_s": 1642.227,
+     "start": "27:22",
      "source": "term"
     },
     {
@@ -56955,8 +56955,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-7",
-     "start_s": 2350.856,
-     "start": "39:10",
+     "start_s": 2734.462,
+     "start": "45:34",
      "source": "term"
     },
     {
@@ -56995,8 +56995,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-8",
-     "start_s": 2901.591,
-     "start": "48:21",
+     "start_s": 3407.867,
+     "start": "56:47",
      "source": "section"
     }
    ]
@@ -57015,8 +57015,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-7",
-     "start_s": 2339.476,
-     "start": "38:59",
+     "start_s": 2723.082,
+     "start": "45:23",
      "source": "term"
     }
    ]
@@ -57028,8 +57028,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-7",
-     "start_s": 2226.497,
-     "start": "37:06",
+     "start_s": 2610.413,
+     "start": "43:30",
      "source": "curated"
     }
    ]
@@ -58442,8 +58442,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-9",
-     "start_s": 3636.765,
-     "start": "60:36",
+     "start_s": 4249.548,
+     "start": "70:49",
      "source": "term"
     }
    ]
@@ -58488,8 +58488,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-9",
-     "start_s": 3574.556,
-     "start": "59:34",
+     "start_s": 4185.845,
+     "start": "69:45",
      "source": "term"
     }
    ]
@@ -58566,8 +58566,8 @@
     {
      "lesson": "vocabulary-01-word-forms",
      "section": "page-4",
-     "start_s": 145.821,
-     "start": "2:25",
+     "start_s": 146.191,
+     "start": "2:26",
      "source": "curated"
     }
    ]
