@@ -38,6 +38,10 @@
   "grammar-07-punctuation": [
    956000,
    956999
+  ],
+  "grammar-08-paraphrasing": [
+   957000,
+   957999
   ]
  },
  "ids": [
@@ -1759,6 +1763,153 @@
    "id": "oa-grammar-956028",
    "lesson": "grammar-07-punctuation",
    "point": "whole-sentence",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957000",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "recheck",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957001",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "recheck",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957002",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "expand",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957003",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "year-old",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957004",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "year-old",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957005",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "year-old",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957006",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "omit",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957007",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "omit",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957008",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "combine",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957009",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "combine",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957010",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "combine",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957011",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "combine",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957012",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "rearrange",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957013",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "rearrange",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957014",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "synonyms",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957015",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "synonyms",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957016",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "synonyms",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957017",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "synonyms",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957018",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "synonyms",
+   "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957019",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "patient-words",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-957020",
+   "lesson": "grammar-08-paraphrasing",
+   "point": "patient-words",
    "slot": "item-2",
    "issued": "2026-10-31"
   }
