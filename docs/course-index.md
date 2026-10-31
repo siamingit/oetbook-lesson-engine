@@ -19,7 +19,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
 | 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 129:04 | 14 | 2026-10-31 10:33 (Siavash) |
-| 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 62:40 | 5 | not yet |
+| 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 62:40 | 5 | 2026-10-31 11:25 (siavash) |
 | 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 52:33 | 7 | 2026-10-27 09:37 (siavash) |
 | 4 | Grammar for OET: Articles | `grammar-04-articles` | 59:31 | 9 | 2026-10-27 19:07 (siavash) |
 | 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 56:31 | 8 | 2026-10-27 09:37 (siavash) |
@@ -771,7 +771,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 2. Grammar for OET: Verb Use
 
 - Lesson ID and folder: `grammar-02-verb-use` (folder `grammar-02-verb-use`); course grammar, lesson 2; length 62:40; bundle format 1.23
-- Status: built, final gate not approved
+- Status: approved by siavash, 2026-10-31 11:25
 - Description: Learn how to choose the right tense and the right voice when you turn case notes into sentences for your OET letter.
 - Original session: folder `source`: `source/video.mp4`, 75:02 long, partial hash `678ddc1608d757d6`; deck `source/slides.pdf`, 10 pages
   - The Grammar 2 (Verb Use) session, recorded at 1284 x 720 (docs/01-METHODOLOGY.md §1).
