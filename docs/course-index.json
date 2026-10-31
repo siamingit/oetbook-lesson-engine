@@ -4548,16 +4548,16 @@
       "section": "page-5",
       "to_section": null,
       "utterance": "page-5_t1.s21.u1",
-      "start_s": 914.328,
-      "start": "15:14"
+      "start_s": 981.322,
+      "start": "16:21"
      },
      {
       "lesson": "grammar-08-paraphrasing",
       "section": "page-8",
       "to_section": "page-9",
       "utterance": "page-8_t1.s19.u2",
-      "start_s": 2296.765,
-      "start": "38:16"
+      "start_s": 2622.321,
+      "start": "43:42"
      },
      {
       "lesson": "vocabulary-01-word-forms",
@@ -10052,8 +10052,8 @@
       "section": "page-5",
       "to_section": null,
       "utterance": "page-5_t1.s8.u2",
-      "start_s": 687.658,
-      "start": "11:27"
+      "start_s": 754.652,
+      "start": "12:34"
      },
      {
       "lesson": "vocabulary-01-word-forms",
@@ -16424,16 +16424,16 @@
       "section": "page-7",
       "to_section": "added-05",
       "utterance": "page-7_t1.s18.u2",
-      "start_s": 1696.551,
-      "start": "28:16"
+      "start_s": 1957.577,
+      "start": "32:37"
      },
      {
       "lesson": "grammar-08-paraphrasing",
       "section": "page-7",
       "to_section": "added-03",
       "utterance": "page-7_t1.s18.u2",
-      "start_s": 1696.551,
-      "start": "28:16"
+      "start_s": 1957.577,
+      "start": "32:37"
      },
      {
       "lesson": "writing-02-assessment-criteria",
@@ -16493,9 +16493,9 @@
    "description": "Learn eight steps to turn case notes into clear, correct sentences for your OET letter.",
    "course": "grammar",
    "order": 8,
-   "length_s": 3256.912,
-   "length": "54:16",
-   "bundle_format": "1.22",
+   "length_s": 3788.94,
+   "length": "63:08",
+   "bundle_format": "1.23",
    "status": "approved",
    "approval": {
     "by": "siavash",
@@ -16579,7 +16579,7 @@
      "category": null,
      "start_s": 105.591,
      "start": "1:45",
-     "end_s": 538.656,
+     "end_s": 605.65,
      "topics": [
       {
        "board": "page-4_t1",
@@ -16589,7 +16589,7 @@
        "points": [
         {
          "text": "introduce the table and the word paraphrasing",
-         "block": "page-4_k31",
+         "block": "page-4_k34",
          "start_s": 105.591,
          "start": "1:45"
         },
@@ -16850,147 +16850,147 @@
       5
      ],
      "category": null,
-     "start_s": 538.656,
-     "start": "8:58",
-     "end_s": 924.818,
+     "start_s": 605.65,
+     "start": "10:05",
+     "end_s": 1058.994,
      "topics": [
       {
        "board": "page-5_t1",
        "title": "Expanding a case note into one sentence",
-       "start_s": 538.656,
-       "start": "8:58",
+       "start_s": 605.65,
+       "start": "10:05",
        "points": [
         {
          "text": "the case note and the task, plus the meaning of 'expand'",
-         "block": "page-5_k42",
-         "start_s": 538.656,
-         "start": "8:58"
+         "block": "page-5_k45",
+         "start_s": 605.65,
+         "start": "10:05"
         },
         {
          "text": "What case notes leave out, and what a complete sentence needs",
          "block": "page-5_k05",
-         "start_s": 557.561,
-         "start": "9:17"
+         "start_s": 624.555,
+         "start": "10:24"
         },
         {
          "text": "Read the two notes and see the link between them",
          "block": "page-5_k07",
-         "start_s": 576.159,
-         "start": "9:36"
+         "start_s": 643.153,
+         "start": "10:43"
         },
         {
          "text": "Add the subject the note does not give",
          "block": "page-5_k09",
-         "start_s": 593.553,
-         "start": "9:53"
+         "start_s": 660.547,
+         "start": "11:00"
         },
         {
          "text": "Reject 'done' for an operation",
          "block": "page-5_k11",
-         "start_s": 612.523,
-         "start": "10:12"
+         "start_s": 679.517,
+         "start": "11:19"
         },
         {
          "text": "The verb for surgery, in the right tense",
          "block": "page-5_k13",
-         "start_s": 624.969,
-         "start": "10:24"
+         "start_s": 691.963,
+         "start": "11:31"
         },
         {
          "text": "Join the second note with a linking word",
          "block": "page-5_k15",
-         "start_s": 648.803,
-         "start": "10:48"
+         "start_s": 715.797,
+         "start": "11:55"
         },
         {
          "text": "The draft sentence still has faults: find them",
          "block": "page-5_k17",
-         "start_s": 662.325,
-         "start": "11:02"
+         "start_s": 729.319,
+         "start": "12:09"
         },
         {
          "text": "Articles are missing because notes leave them out",
          "block": "page-5_k19",
-         "start_s": 682.328,
-         "start": "11:22"
+         "start_s": 749.322,
+         "start": "12:29"
         },
         {
          "text": "Put the article back before the operation",
          "block": "page-5_k21",
-         "start_s": 699.485,
-         "start": "11:39"
+         "start_s": 766.479,
+         "start": "12:46"
         },
         {
          "text": "The same check on the second noun",
          "block": "page-5_k23",
-         "start_s": 715.193,
-         "start": "11:55"
+         "start_s": 782.187,
+         "start": "13:02"
         },
         {
          "text": "Why the second article is 'the'",
          "block": "page-5_k24",
-         "start_s": 728.322,
-         "start": "12:08"
+         "start_s": 795.316,
+         "start": "13:15"
         },
         {
          "text": "The finished sentence",
          "block": "page-5_k26",
-         "start_s": 742.349,
-         "start": "12:22"
+         "start_s": 809.343,
+         "start": "13:29"
         },
         {
          "text": "Recap: the four kinds of word we added",
          "block": "page-5_k28",
-         "start_s": 766.375,
-         "start": "12:46"
+         "start_s": 833.369,
+         "start": "13:53"
         },
         {
          "text": "One sentence, not two",
          "block": "page-5_k29",
-         "start_s": 791.646,
-         "start": "13:11"
+         "start_s": 858.64,
+         "start": "14:18"
         },
         {
          "text": "The phrase 'sustain a fracture', taught directly in English",
          "block": "page-5_k30",
-         "start_s": 801.944,
-         "start": "13:21"
+         "start_s": 868.938,
+         "start": "14:28"
         },
         {
          "text": "Second worked example: a note expanded into a sentence",
          "block": "page-5_k32",
-         "start_s": 823.135,
-         "start": "13:43"
+         "start_s": 890.129,
+         "start": "14:50"
         },
         {
          "text": "What was added in the second example, and abbreviations",
          "block": "page-5_k34",
-         "start_s": 839.654,
-         "start": "13:59"
+         "start_s": 906.648,
+         "start": "15:06"
         },
         {
          "text": "Abbreviations written in full",
          "block": "page-5_k36",
-         "start_s": 852.613,
-         "start": "14:12"
+         "start_s": 919.607,
+         "start": "15:19"
         },
         {
          "text": "Case notes are a timeline: a dated past event",
          "block": "page-5_k37",
-         "start_s": 875.033,
-         "start": "14:35"
+         "start_s": 942.027,
+         "start": "15:42"
         },
         {
          "text": "Case notes are a timeline: something that continues up to now",
          "block": "page-5_k39",
-         "start_s": 895.154,
-         "start": "14:55"
+         "start_s": 962.148,
+         "start": "16:02"
         },
         {
          "text": "Pointer to the tense lesson",
          "block": "page-5_k41",
-         "start_s": 914.096,
-         "start": "15:14"
+         "start_s": 981.09,
+         "start": "16:21"
         }
        ]
       }
@@ -17000,15 +17000,15 @@
        "block": "page-5_k06",
        "kind": "rule",
        "text": "Your sentence must be complete in grammar and in meaning.",
-       "start_s": 566.939,
-       "start": "9:26"
+       "start_s": 633.933,
+       "start": "10:33"
       },
       {
        "block": "page-5_k20",
        "kind": "rule",
        "text": "Case notes leave out a, an and the. Check the articles when you write your own sentence.",
-       "start_s": 687.308,
-       "start": "11:27"
+       "start_s": 754.302,
+       "start": "12:34"
       }
      ],
      "terms": [
@@ -17016,57 +17016,57 @@
        "block": "page-5_k04",
        "label": "Key word",
        "term": "Expand",
-       "start_s": 548.431,
-       "start": "9:08"
+       "start_s": 615.425,
+       "start": "10:15"
       },
       {
        "block": "page-5_k09",
        "label": "Grammar word",
        "term": "Subject",
-       "start_s": 593.553,
-       "start": "9:53"
+       "start_s": 660.547,
+       "start": "11:00"
       },
       {
        "block": "page-5_k13",
        "label": "Verb",
        "term": "Undergo",
-       "start_s": 624.969,
-       "start": "10:24"
+       "start_s": 691.963,
+       "start": "11:31"
       },
       {
        "block": "page-5_k19",
        "label": "Grammar word",
        "term": "Articles",
-       "start_s": 682.328,
-       "start": "11:22"
+       "start_s": 749.322,
+       "start": "12:29"
       },
       {
        "block": "page-5_k30",
        "label": "Phrase",
        "term": "Sustain a fracture",
-       "start_s": 801.944,
-       "start": "13:21"
+       "start_s": 868.938,
+       "start": "14:28"
       },
       {
        "block": "page-5_k40",
        "label": "Tense",
        "term": "Present perfect",
-       "start_s": 905.058,
-       "start": "15:05"
+       "start_s": 972.052,
+       "start": "16:12"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-5_k11",
        "text": "The patient done a surgery.",
-       "start_s": 612.523,
-       "start": "10:12"
+       "start_s": 679.517,
+       "start": "11:19"
       },
       {
        "block": "page-5_k17",
        "text": "Mr X underwent right total hip replacement after sustaining fracture of right neck of femur.",
-       "start_s": 662.325,
-       "start": "11:02"
+       "start_s": 729.319,
+       "start": "12:09"
       }
      ],
      "practice": [],
@@ -17076,16 +17076,16 @@
        "lesson": "grammar-04-articles",
        "section": null,
        "provenance": "source-derived",
-       "start_s": 687.658,
-       "start": "11:27"
+       "start_s": 754.652,
+       "start": "12:34"
       },
       {
        "utterance": "page-5_t1.s21.u1",
        "lesson": "grammar-01-verb-tenses",
        "section": null,
        "provenance": "authored",
-       "start_s": 914.328,
-       "start": "15:14"
+       "start_s": 981.322,
+       "start": "16:21"
       }
      ]
     },
@@ -17097,171 +17097,171 @@
       6
      ],
      "category": null,
-     "start_s": 924.818,
-     "start": "15:24",
-     "end_s": 1408.546,
+     "start_s": 1058.994,
+     "start": "17:38",
+     "end_s": 1669.572,
      "topics": [
       {
        "board": "page-6_t1",
        "title": "Omit: the Mary Roden case notes",
-       "start_s": 924.818,
-       "start": "15:24",
+       "start_s": 1058.994,
+       "start": "17:38",
        "points": [
         {
          "text": "introduce the three columns and technique 2",
-         "block": "page-6_k28",
-         "start_s": 924.818,
-         "start": "15:24"
+         "block": "page-6_k33",
+         "start_s": 1058.994,
+         "start": "17:38"
         },
         {
          "text": "case notes hold everything, the letter does not",
          "block": "page-6_k03",
-         "start_s": 940.851,
-         "start": "15:40"
+         "start_s": 1075.027,
+         "start": "17:55"
         },
         {
          "text": "read the task first, then choose the notes",
          "block": "page-6_k04",
-         "start_s": 957.153,
-         "start": "15:57"
+         "start_s": 1091.329,
+         "start": "18:11"
         },
         {
          "text": "the question this step asks",
          "block": "page-6_k05",
-         "start_s": 977.239,
-         "start": "16:17"
+         "start_s": 1111.415,
+         "start": "18:31"
         },
         {
          "text": "what extra information costs",
          "block": "page-6_k06",
-         "start_s": 990.709,
-         "start": "16:30"
+         "start_s": 1124.885,
+         "start": "18:44"
         },
         {
          "text": "what the smoking line really tells us",
          "block": "page-6_k07",
-         "start_s": 1032.56,
-         "start": "17:12"
+         "start_s": 1166.736,
+         "start": "19:26"
         },
         {
          "text": "gloss the word occasionally",
          "block": "page-6_k08",
-         "start_s": 1047.748,
-         "start": "17:27"
+         "start_s": 1181.924,
+         "start": "19:41"
         },
         {
          "text": "what the Wrong column is",
          "block": "page-6_k09",
-         "start_s": 1061.2,
-         "start": "17:41"
+         "start_s": 1195.376,
+         "start": "19:55"
         },
         {
          "text": "caveat, no task is given here",
          "block": "page-6_k10",
-         "start_s": 1087.48,
-         "start": "18:07"
+         "start_s": 1221.656,
+         "start": "20:21"
         },
         {
          "text": "marital status is kept",
          "block": "page-6_k11",
-         "start_s": 1111.982,
-         "start": "18:31"
+         "start_s": 1246.158,
+         "start": "20:46"
         },
         {
          "text": "keep the job, cut the job detail",
          "block": "page-6_k12",
-         "start_s": 1130.244,
-         "start": "18:50"
+         "start_s": 1264.42,
+         "start": "21:04"
         },
         {
          "text": "keep the children, cut their birth years",
          "block": "page-6_k13",
-         "start_s": 1148.872,
-         "start": "19:08"
+         "start_s": 1283.048,
+         "start": "21:23"
         },
         {
          "text": "the word respectively",
          "block": "page-6_k14",
-         "start_s": 1166.425,
-         "start": "19:26"
+         "start_s": 1300.601,
+         "start": "21:40"
         },
         {
          "text": "smoking and alcohol history are kept",
          "block": "page-6_k15",
-         "start_s": 1187.058,
-         "start": "19:47"
+         "start_s": 1321.234,
+         "start": "22:01"
         },
         {
          "text": "the missing detail is her age (first typed part)",
          "block": "page-6_k16",
-         "start_s": 1204.704,
-         "start": "20:04"
+         "start_s": 1338.88,
+         "start": "22:18"
         },
         {
          "text": "how the age phrase is written",
          "block": "page-6_k17",
-         "start_s": 1230.986,
-         "start": "20:30"
+         "start_s": 1365.162,
+         "start": "22:45"
         },
         {
          "text": "the same form with a time period",
          "block": "page-6_k18",
-         "start_s": 1249.779,
-         "start": "20:49"
+         "start_s": 1383.955,
+         "start": "23:03"
         },
         {
          "text": "the job phrase is cut down (second typed part)",
          "block": "page-6_k19",
-         "start_s": 1263.598,
-         "start": "21:03"
+         "start_s": 1450.344,
+         "start": "24:10"
         },
         {
          "text": "the order of the words before the noun",
          "block": "page-6_k20",
-         "start_s": 1273.999,
-         "start": "21:13"
+         "start_s": 1460.745,
+         "start": "24:20"
         },
         {
          "text": "teenage replaces the ages (third typed part)",
          "block": "page-6_k21",
-         "start_s": 1290.103,
-         "start": "21:30"
+         "start_s": 1476.849,
+         "start": "24:36"
         },
         {
          "text": "a better time reference for stopping smoking (fourth typed part)",
          "block": "page-6_k22",
-         "start_s": 1302.199,
-         "start": "21:42"
+         "start_s": 1488.945,
+         "start": "24:48"
         },
         {
          "text": "social drinker (fifth typed part)",
          "block": "page-6_k23",
-         "start_s": 1315.273,
-         "start": "21:55"
+         "start_s": 1502.019,
+         "start": "25:02"
         },
         {
          "text": "compare the length of the two versions",
          "block": "page-6_k24",
-         "start_s": 1331.803,
-         "start": "22:11"
+         "start_s": 1518.549,
+         "start": "25:18"
         },
         {
          "text": "the letter's word count",
          "block": "page-6_k25",
-         "start_s": 1347.532,
-         "start": "22:27"
+         "start_s": 1534.278,
+         "start": "25:34"
         },
         {
          "text": "what padding does",
          "block": "page-6_k26",
-         "start_s": 1362.477,
-         "start": "22:42"
+         "start_s": 1549.223,
+         "start": "25:49"
         },
         {
          "text": "the result of omitting",
          "block": "page-6_k27",
-         "start_s": 1387.456,
-         "start": "23:07"
+         "start_s": 1574.202,
+         "start": "26:14"
         }
        ]
       }
@@ -17271,22 +17271,22 @@
        "block": "page-6_k06",
        "kind": "warning",
        "text": "Extra information slows the reader down and makes it harder to find the key points. It also costs you marks.",
-       "start_s": 990.709,
-       "start": "16:30"
+       "start_s": 1124.885,
+       "start": "18:44"
       },
       {
        "block": "page-6_k25",
        "kind": "rule",
        "text": "An OET letter is 180 to 200 words. Do not add extra words to reach it: the information you must give will fill it.",
-       "start_s": 1347.532,
-       "start": "22:27"
+       "start_s": 1534.278,
+       "start": "25:34"
       },
       {
        "block": "page-6_k26",
        "kind": "warning",
        "text": "Extra words can push you over 200 words and hide the key points.",
-       "start_s": 1362.477,
-       "start": "22:42"
+       "start_s": 1549.223,
+       "start": "25:49"
       }
      ],
      "terms": [
@@ -17294,22 +17294,22 @@
        "block": "page-6_k02",
        "label": "Technique 2",
        "term": "Omit",
-       "start_s": 928.861,
-       "start": "15:28"
+       "start_s": 1063.037,
+       "start": "17:43"
       },
       {
        "block": "page-6_k17",
        "label": "Form",
        "term": "a fifty-year-old teacher",
-       "start_s": 1230.986,
-       "start": "20:30"
+       "start_s": 1365.162,
+       "start": "22:45"
       },
       {
        "block": "page-6_k23",
        "label": "New phrase",
        "term": "a social drinker",
-       "start_s": 1315.273,
-       "start": "21:55"
+       "start_s": 1502.019,
+       "start": "25:02"
       }
      ],
      "wrong_examples": [],
@@ -17324,213 +17324,213 @@
       7
      ],
      "category": null,
-     "start_s": 1408.546,
-     "start": "23:28",
-     "end_s": 1931.824,
+     "start_s": 1669.572,
+     "start": "27:49",
+     "end_s": 2257.38,
      "topics": [
       {
        "board": "page-7_t1",
        "title": "Combine: Mr Edmond case notes",
-       "start_s": 1408.546,
-       "start": "23:28",
+       "start_s": 1669.572,
+       "start": "27:49",
        "points": [
         {
          "text": "step 3 of the procedure is to combine related notes",
-         "block": "page-7_k35",
-         "start_s": 1408.546,
-         "start": "23:28"
+         "block": "page-7_k38",
+         "start_s": 1669.572,
+         "start": "27:49"
         },
         {
          "text": "one longer sentence instead of a line of short ones",
          "block": "page-7_k03",
-         "start_s": 1424.426,
-         "start": "23:44"
+         "start_s": 1685.452,
+         "start": "28:05"
         },
         {
          "text": "the scenario behind the case notes",
          "block": "page-7_k04",
-         "start_s": 1438.575,
-         "start": "23:58"
+         "start_s": 1699.601,
+         "start": "28:19"
         },
         {
          "text": "who the letter goes to and what it must say",
          "block": "page-7_k05",
-         "start_s": 1451.927,
-         "start": "24:11"
+         "start_s": 1712.953,
+         "start": "28:32"
         },
         {
          "text": "the same writing skills in every profession",
          "block": "page-7_k06",
-         "start_s": 1464.018,
-         "start": "24:24"
+         "start_s": 1725.044,
+         "start": "28:45"
         },
         {
          "text": "reading the case-note column",
          "block": "page-7_k07",
-         "start_s": 1492.035,
-         "start": "24:52"
+         "start_s": 1753.061,
+         "start": "29:13"
         },
         {
          "text": "what non-compliant means",
          "block": "page-7_k08",
-         "start_s": 1504.112,
-         "start": "25:04"
+         "start_s": 1765.138,
+         "start": "29:25"
         },
         {
          "text": "gloss of the hard word 'resents'",
          "block": "page-7_k09",
-         "start_s": 1524.568,
-         "start": "25:24"
+         "start_s": 1785.594,
+         "start": "29:45"
         },
         {
          "text": "quotation marks in a case note",
          "block": "page-7_k10",
-         "start_s": 1543.679,
-         "start": "25:43"
+         "start_s": 1804.705,
+         "start": "30:04"
         },
         {
          "text": "what unmotivated means",
          "block": "page-7_k11",
-         "start_s": 1558.719,
-         "start": "25:58"
+         "start_s": 1819.745,
+         "start": "30:19"
         },
         {
          "text": "gloss of 'intermittently'",
          "block": "page-7_k12",
-         "start_s": 1570.203,
-         "start": "26:10"
+         "start_s": 1831.229,
+         "start": "30:31"
         },
         {
          "text": "what 'double doses sometimes' means",
          "block": "page-7_k13",
-         "start_s": 1587.87,
-         "start": "26:27"
+         "start_s": 1848.896,
+         "start": "30:48"
         },
         {
          "text": "why the middle column is judged weak",
          "block": "page-7_k14",
-         "start_s": 1613.974,
-         "start": "26:53"
+         "start_s": 1875.0,
+         "start": "31:15"
         },
         {
          "text": "cutting the detail about the GP",
          "block": "page-7_k15",
-         "start_s": 1634.043,
-         "start": "27:14"
+         "start_s": 1895.069,
+         "start": "31:35"
         },
         {
          "text": "42 words against the length of the letter",
          "block": "page-7_k16",
-         "start_s": 1646.95,
-         "start": "27:26"
+         "start_s": 1907.976,
+         "start": "31:47"
         },
         {
          "text": "state the fact instead of reporting his words",
          "block": "page-7_k17",
-         "start_s": 1661.927,
-         "start": "27:41"
+         "start_s": 1922.953,
+         "start": "32:02"
         },
         {
          "text": "three sentences follow one idea",
          "block": "page-7_k18",
-         "start_s": 1671.52,
-         "start": "27:51"
+         "start_s": 1932.546,
+         "start": "32:12"
         },
         {
          "text": "a name takes a capital letter",
          "block": "page-7_k19",
-         "start_s": 1691.584,
-         "start": "28:11"
+         "start_s": 1952.61,
+         "start": "32:32"
         },
         {
          "text": "present simple for the medication he takes now",
          "block": "page-7_k20",
-         "start_s": 1725.196,
-         "start": "28:45"
+         "start_s": 1986.222,
+         "start": "33:06"
         },
         {
          "text": "the two facts contrast",
          "block": "page-7_k21",
-         "start_s": 1733.851,
-         "start": "28:53"
+         "start_s": 1994.877,
+         "start": "33:14"
         },
         {
          "text": "however as the linking word",
          "block": "page-7_k22",
-         "start_s": 1750.361,
-         "start": "29:10"
+         "start_s": 2011.387,
+         "start": "33:31"
         },
         {
          "text": "present perfect for a state that continues",
          "block": "page-7_k23",
-         "start_s": 1761.561,
-         "start": "29:21"
+         "start_s": 2022.587,
+         "start": "33:42"
         },
         {
          "text": "the preposition after compliant",
          "block": "page-7_k24",
-         "start_s": 1778.008,
-         "start": "29:38"
+         "start_s": 2039.034,
+         "start": "33:59"
         },
         {
          "text": "joining with and instead of a full stop",
          "block": "page-7_k25",
-         "start_s": 1789.311,
-         "start": "29:49"
+         "start_s": 2050.337,
+         "start": "34:10"
         },
         {
          "text": "the reasons are not relevant",
          "block": "page-7_k26",
-         "start_s": 1801.201,
-         "start": "30:01"
+         "start_s": 2062.227,
+         "start": "34:22"
         },
         {
          "text": "what the receiving centre must be told",
          "block": "page-7_k27",
-         "start_s": 1817.661,
-         "start": "30:17"
+         "start_s": 2078.687,
+         "start": "34:38"
         },
         {
          "text": "the facts written as nouns",
          "block": "page-7_k28",
-         "start_s": 1823.031,
-         "start": "30:23"
+         "start_s": 2084.057,
+         "start": "34:44"
         },
         {
          "text": "gloss of 'occasional'",
          "block": "page-7_k29",
-         "start_s": 1840.929,
-         "start": "30:40"
+         "start_s": 2101.955,
+         "start": "35:01"
         },
         {
          "text": "the result of combining",
          "block": "page-7_k30",
-         "start_s": 1859.241,
-         "start": "30:59"
+         "start_s": 2120.267,
+         "start": "35:20"
         },
         {
          "text": "what to keep and what to cut",
          "block": "page-7_k31",
-         "start_s": 1865.301,
-         "start": "31:05"
+         "start_s": 2126.327,
+         "start": "35:26"
         },
         {
          "text": "the gain in length",
          "block": "page-7_k32",
-         "start_s": 1881.5,
-         "start": "31:21"
+         "start_s": 2142.526,
+         "start": "35:42"
         },
         {
          "text": "the rule to remember",
          "block": "page-7_k33",
-         "start_s": 1892.881,
-         "start": "31:32"
+         "start_s": 2153.907,
+         "start": "35:53"
         },
         {
          "text": "the two joining words used here",
          "block": "page-7_k34",
-         "start_s": 1905.804,
-         "start": "31:45"
+         "start_s": 2166.83,
+         "start": "36:06"
         }
        ]
       }
@@ -17540,15 +17540,15 @@
        "block": "page-7_k14",
        "kind": "warning",
        "text": "This paragraph is not incorrect English. But a whole letter written like this makes a grade B very hard to get.",
-       "start_s": 1613.974,
-       "start": "26:53"
+       "start_s": 1875.0,
+       "start": "31:15"
       },
       {
        "block": "page-7_k33",
        "kind": "rule",
        "text": "Facts that follow one idea belong in one sentence. Combine them with compound and complex sentences.",
-       "start_s": 1892.881,
-       "start": "31:32"
+       "start_s": 2153.907,
+       "start": "35:53"
       }
      ],
      "terms": [
@@ -17556,36 +17556,36 @@
        "block": "page-7_k02",
        "label": "Step",
        "term": "Combine",
-       "start_s": 1412.342,
-       "start": "23:32"
+       "start_s": 1673.368,
+       "start": "27:53"
       },
       {
        "block": "page-7_k08",
        "label": "Case note word",
        "term": "Non-compliant",
-       "start_s": 1504.112,
-       "start": "25:04"
+       "start_s": 1765.138,
+       "start": "29:25"
       },
       {
        "block": "page-7_k11",
        "label": "Case note word",
        "term": "Unmotivated",
-       "start_s": 1558.719,
-       "start": "25:58"
+       "start_s": 1819.745,
+       "start": "30:19"
       },
       {
        "block": "page-7_k22",
        "label": "Linking word",
        "term": "However",
-       "start_s": 1750.361,
-       "start": "29:10"
+       "start_s": 2011.387,
+       "start": "33:31"
       },
       {
        "block": "page-7_k24",
        "label": "Form",
        "term": "Compliant with",
-       "start_s": 1778.008,
-       "start": "29:38"
+       "start_s": 2039.034,
+       "start": "33:59"
       }
      ],
      "wrong_examples": [],
@@ -17596,24 +17596,24 @@
        "lesson": "grammar-07-punctuation",
        "section": "added-05",
        "provenance": "adapted",
-       "start_s": 1696.551,
-       "start": "28:16"
+       "start_s": 1957.577,
+       "start": "32:37"
       },
       {
        "utterance": "page-7_t1.s18.u2",
        "lesson": "grammar-07-punctuation",
        "section": "added-03",
        "provenance": "adapted",
-       "start_s": 1696.551,
-       "start": "28:16"
+       "start_s": 1957.577,
+       "start": "32:37"
       },
       {
        "utterance": "page-7_t1.s27.u2",
        "lesson": "grammar-03-nominalization",
        "section": null,
        "provenance": "authored",
-       "start_s": 1831.871,
-       "start": "30:31"
+       "start_s": 2092.897,
+       "start": "34:52"
       }
      ]
     },
@@ -17625,141 +17625,141 @@
       8
      ],
      "category": null,
-     "start_s": 1931.824,
-     "start": "32:11",
-     "end_s": 2351.215,
+     "start_s": 2257.38,
+     "start": "37:37",
+     "end_s": 2758.259,
      "topics": [
       {
        "board": "page-8_t1",
        "title": "Case notes rearranged into a letter",
-       "start_s": 1931.824,
-       "start": "32:11",
+       "start_s": 2257.38,
+       "start": "37:37",
        "points": [
         {
          "text": "the notes are a set of events in time",
-         "block": "page-8_k23",
-         "start_s": 1931.824,
-         "start": "32:11"
+         "block": "page-8_k26",
+         "start_s": 2257.38,
+         "start": "37:37"
         },
         {
          "text": "the tense follows the time",
          "block": "page-8_k03",
-         "start_s": 1951.734,
-         "start": "32:31"
+         "start_s": 2277.29,
+         "start": "37:57"
         },
         {
          "text": "the order of the notes is the writer's choice",
          "block": "page-8_k04",
-         "start_s": 1966.894,
-         "start": "32:46"
+         "start_s": 2292.45,
+         "start": "38:12"
         },
         {
          "text": "the task and the patient",
          "block": "page-8_k05",
-         "start_s": 1982.689,
-         "start": "33:02"
+         "start_s": 2308.245,
+         "start": "38:28"
         },
         {
          "text": "the three events drawn on a time line",
          "block": "page-8_k06",
-         "start_s": 1999.546,
-         "start": "33:19"
+         "start_s": 2325.102,
+         "start": "38:45"
         },
         {
          "text": "the date becomes today",
          "block": "page-8_k07",
-         "start_s": 2058.383,
-         "start": "34:18"
+         "start_s": 2383.939,
+         "start": "39:43"
         },
         {
          "text": "simple past for her visit",
          "block": "page-8_k08",
-         "start_s": 2068.773,
-         "start": "34:28"
+         "start_s": 2394.329,
+         "start": "39:54"
         },
         {
          "text": "gloss of intermittent",
          "block": "page-8_k09",
-         "start_s": 2087.981,
-         "start": "34:47"
+         "start_s": 2413.537,
+         "start": "40:13"
         },
         {
          "text": "the pain score",
          "block": "page-8_k10",
-         "start_s": 2106.871,
-         "start": "35:06"
+         "start_s": 2432.427,
+         "start": "40:32"
         },
         {
          "text": "the pain continues to now",
          "block": "page-8_k11",
-         "start_s": 2115.114,
-         "start": "35:15"
+         "start_s": 2440.67,
+         "start": "40:40"
         },
         {
          "text": "the form for how long a problem has lasted",
          "block": "page-8_k12",
-         "start_s": 2145.055,
-         "start": "35:45"
+         "start_s": 2470.611,
+         "start": "41:10"
         },
         {
          "text": "the word that joins the other symptoms",
          "block": "page-8_k13",
-         "start_s": 2157.135,
-         "start": "35:57"
+         "start_s": 2482.691,
+         "start": "41:22"
         },
         {
          "text": "three lines become one sentence",
          "block": "page-8_k14",
-         "start_s": 2171.473,
-         "start": "36:11"
+         "start_s": 2497.029,
+         "start": "41:37"
         },
         {
          "text": "what to leave out",
          "block": "page-8_k15",
-         "start_s": 2188.085,
-         "start": "36:28"
+         "start_s": 2513.641,
+         "start": "41:53"
         },
         {
          "text": "gloss of pop",
          "block": "page-8_k16",
-         "start_s": 2208.482,
-         "start": "36:48"
+         "start_s": 2534.038,
+         "start": "42:14"
         },
         {
          "text": "simple past for the incident",
          "block": "page-8_k17",
-         "start_s": 2219.615,
-         "start": "36:59"
+         "start_s": 2545.171,
+         "start": "42:25"
         },
         {
          "text": "how when joins the two clauses",
          "block": "page-8_k18",
-         "start_s": 2246.392,
-         "start": "37:26"
+         "start_s": 2571.948,
+         "start": "42:51"
         },
         {
          "text": "the time word while",
          "block": "page-8_k19",
-         "start_s": 2276.464,
-         "start": "37:56"
+         "start_s": 2602.02,
+         "start": "43:22"
         },
         {
          "text": "past perfect for the earlier period",
          "block": "page-8_k20",
-         "start_s": 2288.125,
-         "start": "38:08"
+         "start_s": 2613.681,
+         "start": "43:33"
         },
         {
          "text": "the form for the time before onset",
          "block": "page-8_k21",
-         "start_s": 2309.173,
-         "start": "38:29"
+         "start_s": 2634.729,
+         "start": "43:54"
         },
         {
          "text": "closing summary of the whole rewrite",
          "block": "page-8_k22",
-         "start_s": 2322.775,
-         "start": "38:42"
+         "start_s": 2648.331,
+         "start": "44:08"
         }
        ]
       }
@@ -17769,8 +17769,8 @@
        "block": "page-8_k22",
        "kind": "rule",
        "text": "Paraphrase the notes, keep what is relevant, drop what is not, and put the events in a clear order. With correct grammar, strong words and longer sentences, a writing moves from level C up to level B or level A.",
-       "start_s": 2322.775,
-       "start": "38:42"
+       "start_s": 2648.331,
+       "start": "44:08"
       }
      ],
      "terms": [
@@ -17778,36 +17778,36 @@
        "block": "page-8_k10",
        "label": "Case notes",
        "term": "3/10",
-       "start_s": 2106.871,
-       "start": "35:06"
+       "start_s": 2432.427,
+       "start": "40:32"
       },
       {
        "block": "page-8_k12",
        "label": "Form",
        "term": "A two-week history of",
-       "start_s": 2145.055,
-       "start": "35:45"
+       "start_s": 2470.611,
+       "start": "41:10"
       },
       {
        "block": "page-8_k13",
        "label": "New word",
        "term": "Concomitant",
-       "start_s": 2157.135,
-       "start": "35:57"
+       "start_s": 2482.691,
+       "start": "41:22"
       },
       {
        "block": "page-8_k19",
        "label": "Time words",
        "term": "While",
-       "start_s": 2276.464,
-       "start": "37:56"
+       "start_s": 2602.02,
+       "start": "43:22"
       },
       {
        "block": "page-8_k21",
        "label": "Form",
        "term": "Prior to onset",
-       "start_s": 2309.173,
-       "start": "38:29"
+       "start_s": 2634.729,
+       "start": "43:54"
       }
      ],
      "wrong_examples": [],
@@ -17818,8 +17818,8 @@
        "lesson": "grammar-01-verb-tenses",
        "section": "page-9",
        "provenance": "source-derived",
-       "start_s": 2296.765,
-       "start": "38:16"
+       "start_s": 2622.321,
+       "start": "43:42"
       }
      ]
     },
@@ -17832,287 +17832,287 @@
       10
      ],
      "category": null,
-     "start_s": 2351.215,
-     "start": "39:11",
-     "end_s": 3256.912,
+     "start_s": 2758.259,
+     "start": "45:58",
+     "end_s": 3788.94,
      "topics": [
       {
        "board": "pages-09-10_t1",
        "title": "Dental case notes: synonyms for conditions and symptoms",
-       "start_s": 2351.215,
-       "start": "39:11",
+       "start_s": 2758.259,
+       "start": "45:58",
        "points": [
         {
          "text": "the case notes and the question behind the task",
-         "block": "pages-09-10_k67",
-         "start_s": 2351.215,
-         "start": "39:11"
+         "block": "pages-09-10_k73",
+         "start_s": 2758.259,
+         "start": "45:58"
         },
         {
          "text": "what a synonym is",
          "block": "pages-09-10_k03",
-         "start_s": 2374.628,
-         "start": "39:34"
+         "start_s": 2781.672,
+         "start": "46:21"
         },
         {
          "text": "which words stay and which change",
          "block": "pages-09-10_k04",
-         "start_s": 2387.199,
-         "start": "39:47"
+         "start_s": 2794.243,
+         "start": "46:34"
         },
         {
          "text": "one word changed for another",
          "block": "pages-09-10_k05",
-         "start_s": 2407.11,
-         "start": "40:07"
+         "start_s": 2814.154,
+         "start": "46:54"
         },
         {
          "text": "the task line and the abbreviations",
          "block": "pages-09-10_k06",
-         "start_s": 2416.446,
-         "start": "40:16"
+         "start_s": 2823.49,
+         "start": "47:03"
         },
         {
          "text": "how we will work through the notes",
          "block": "pages-09-10_k08",
-         "start_s": 2442.354,
-         "start": "40:42"
+         "start_s": 2849.398,
+         "start": "47:29"
         },
         {
          "text": "the first visit becomes 'was first advised'",
          "block": "pages-09-10_k09",
-         "start_s": 2460.744,
-         "start": "41:00"
+         "start_s": 2867.788,
+         "start": "47:47"
         },
         {
          "text": "what DO stands for",
          "block": "pages-09-10_k11",
-         "start_s": 2486.234,
-         "start": "41:26"
+         "start_s": 2893.278,
+         "start": "48:13"
         },
         {
          "text": "60% possibility becomes 'might'",
          "block": "pages-09-10_k12",
-         "start_s": 2498.144,
-         "start": "41:38"
+         "start_s": 2905.188,
+         "start": "48:25"
         },
         {
          "text": "what 'wishes to delay' means",
          "block": "pages-09-10_k14",
-         "start_s": 2521.086,
-         "start": "42:01"
+         "start_s": 2928.13,
+         "start": "48:48"
         },
         {
          "text": "reluctant",
          "block": "pages-09-10_k16",
-         "start_s": 2534.883,
-         "start": "42:14"
+         "start_s": 2941.927,
+         "start": "49:01"
         },
         {
          "text": "the reason for the delay",
          "block": "pages-09-10_k18",
-         "start_s": 2560.003,
-         "start": "42:40"
+         "start_s": 2967.047,
+         "start": "49:27"
         },
         {
          "text": "what financial constraints means, and a second wording",
          "block": "pages-09-10_k20",
-         "start_s": 2576.566,
-         "start": "42:56"
+         "start_s": 2983.61,
+         "start": "49:43"
         },
         {
          "text": "'complains: pain' becomes 'painful'",
          "block": "pages-09-10_k22",
-         "start_s": 2602.069,
-         "start": "43:22"
+         "start_s": 3009.113,
+         "start": "50:09"
         },
         {
          "text": "the word 'scheduled'",
          "block": "pages-09-10_k24",
-         "start_s": 2627.554,
-         "start": "43:47"
+         "start_s": 3034.598,
+         "start": "50:34"
         },
         {
          "text": "'gone away' becomes asymptomatic",
          "block": "pages-09-10_k25",
-         "start_s": 2651.988,
-         "start": "44:11"
+         "start_s": 3059.032,
+         "start": "50:59"
         },
         {
          "text": "the prefix a-",
          "block": "pages-09-10_k27",
-         "start_s": 2669.965,
-         "start": "44:29"
+         "start_s": 3077.009,
+         "start": "51:17"
         },
         {
          "text": "linking the two sentences",
          "block": "pages-09-10_k29",
-         "start_s": 2704.295,
-         "start": "45:04"
+         "start_s": 3111.339,
+         "start": "51:51"
         },
         {
          "text": "the changes we made in these notes",
          "block": "pages-09-10_k31",
-         "start_s": 2728.726,
-         "start": "45:28"
+         "start_s": 3135.77,
+         "start": "52:15"
         },
         {
          "text": "build a store of synonyms before the exam",
          "block": "pages-09-10_k32",
-         "start_s": 2756.513,
-         "start": "45:56"
+         "start_s": 3163.557,
+         "start": "52:43"
         },
         {
          "text": "dates become time expressions",
          "block": "pages-09-10_k33",
-         "start_s": 2773.706,
-         "start": "46:13"
+         "start_s": 3245.454,
+         "start": "54:05"
         }
        ]
       },
       {
        "board": "pages-09-10_t2",
        "title": "Pharmacy case notes: patient-friendly synonyms",
-       "start_s": 2804.296,
-       "start": "46:44",
+       "start_s": 3276.044,
+       "start": "54:36",
        "points": [
         {
          "text": "the style of this letter",
-         "block": "pages-09-10_k68",
-         "start_s": 2804.296,
-         "start": "46:44"
+         "block": "pages-09-10_k74",
+         "start_s": 3276.044,
+         "start": "54:36"
         },
         {
          "text": "what patient friendly language means",
          "block": "pages-09-10_k37",
-         "start_s": 2817.222,
-         "start": "46:57"
+         "start_s": 3288.97,
+         "start": "54:48"
         },
         {
          "text": "the reader decides the words",
          "block": "pages-09-10_k38",
-         "start_s": 2832.632,
-         "start": "47:12"
+         "start_s": 3304.38,
+         "start": "55:04"
         },
         {
          "text": "whose case notes these are",
          "block": "pages-09-10_k39",
-         "start_s": 2849.315,
-         "start": "47:29"
+         "start_s": 3321.063,
+         "start": "55:21"
         },
         {
          "text": "abbreviations the patient cannot read",
          "block": "pages-09-10_k40",
-         "start_s": 2874.588,
-         "start": "47:54"
+         "start_s": 3346.336,
+         "start": "55:46"
         },
         {
          "text": "how the prescription is reported",
          "block": "pages-09-10_k41",
-         "start_s": 2888.014,
-         "start": "48:08"
+         "start_s": 3359.762,
+         "start": "55:59"
         },
         {
          "text": "prn written in plain words",
          "block": "pages-09-10_k43",
-         "start_s": 2925.632,
-         "start": "48:45"
+         "start_s": 3397.38,
+         "start": "56:37"
         },
         {
          "text": "max 4 hrly written in plain words",
          "block": "pages-09-10_k45",
-         "start_s": 2944.449,
-         "start": "49:04"
+         "start_s": 3416.197,
+         "start": "56:56"
         },
         {
          "text": "what to do when no synonym comes to mind",
          "block": "pages-09-10_k47",
-         "start_s": 2965.365,
-         "start": "49:25"
+         "start_s": 3437.113,
+         "start": "57:17"
         },
         {
          "text": "the abbreviations in this line",
          "block": "pages-09-10_k48",
-         "start_s": 2992.027,
-         "start": "49:52"
+         "start_s": 3463.775,
+         "start": "57:43"
         },
         {
          "text": "abbreviations belong to each profession",
          "block": "pages-09-10_k49",
-         "start_s": 2998.731,
-         "start": "49:58"
+         "start_s": 3470.479,
+         "start": "57:50"
         },
         {
          "text": "why the second medication is given",
          "block": "pages-09-10_k50",
-         "start_s": 3018.767,
-         "start": "50:18"
+         "start_s": 3490.515,
+         "start": "58:10"
         },
         {
          "text": "tds written out for the patient",
          "block": "pages-09-10_k52",
-         "start_s": 3038.46,
-         "start": "50:38"
+         "start_s": 3510.208,
+         "start": "58:30"
         },
         {
          "text": "keep one word, change the other",
          "block": "pages-09-10_k54",
-         "start_s": 3060.085,
-         "start": "51:00"
+         "start_s": 3531.833,
+         "start": "58:51"
         },
         {
          "text": "the word 'cramps'",
          "block": "pages-09-10_k55",
-         "start_s": 3075.168,
-         "start": "51:15"
+         "start_s": 3546.916,
+         "start": "59:06"
         },
         {
          "text": "the side effects in the letter",
          "block": "pages-09-10_k56",
-         "start_s": 3091.823,
-         "start": "51:31"
+         "start_s": 3563.571,
+         "start": "59:23"
         },
         {
          "text": "what impaired alertness means",
          "block": "pages-09-10_k58",
-         "start_s": 3116.862,
-         "start": "51:56"
+         "start_s": 3588.61,
+         "start": "59:48"
         },
         {
          "text": "the warning in the letter",
          "block": "pages-09-10_k59",
-         "start_s": 3133.955,
-         "start": "52:13"
+         "start_s": 3605.703,
+         "start": "60:05"
         },
         {
          "text": "how the warning opens",
          "block": "pages-09-10_k61",
-         "start_s": 3152.251,
-         "start": "52:32"
+         "start_s": 3623.999,
+         "start": "60:23"
         },
         {
          "text": "leave out what is too technical",
          "block": "pages-09-10_k63",
-         "start_s": 3175.792,
-         "start": "52:55"
+         "start_s": 3647.54,
+         "start": "60:47"
         },
         {
          "text": "patient-friendly words for the terms in these notes",
          "block": "pages-09-10_k64",
-         "start_s": 3185.532,
-         "start": "53:05"
+         "start_s": 3657.28,
+         "start": "60:57"
         },
         {
          "text": "the rule for choosing the words",
          "block": "pages-09-10_k65",
-         "start_s": 3210.501,
-         "start": "53:30"
+         "start_s": 3682.249,
+         "start": "61:22"
         },
         {
          "text": "the paraphrasing techniques together",
          "block": "pages-09-10_k66",
-         "start_s": 3234.141,
-         "start": "53:54"
+         "start_s": 3766.169,
+         "start": "62:46"
         }
        ]
       }
@@ -18122,22 +18122,22 @@
        "block": "pages-09-10_k32",
        "kind": "rule",
        "text": "Learn your synonyms before the exam. 'Asymptomatic' works in any letter when the patient has no symptoms.",
-       "start_s": 2756.513,
-       "start": "45:56"
+       "start_s": 3163.557,
+       "start": "52:43"
       },
       {
        "block": "pages-09-10_k47",
        "kind": "rule",
        "text": "When you cannot find a synonym, say the meaning in your own simplest words, then write that sentence down.",
-       "start_s": 2965.365,
-       "start": "49:25"
+       "start_s": 3437.113,
+       "start": "57:17"
       },
       {
        "block": "pages-09-10_k65",
        "kind": "rule",
        "text": "The reader decides your words. In a letter to a patient, change any medical wording the patient would not understand for an everyday word.",
-       "start_s": 3210.501,
-       "start": "53:30"
+       "start_s": 3682.249,
+       "start": "61:22"
       }
      ],
      "terms": [
@@ -18145,85 +18145,85 @@
        "block": "pages-09-10_k03",
        "label": "New word",
        "term": "Synonym",
-       "start_s": 2374.628,
-       "start": "39:34"
+       "start_s": 2781.672,
+       "start": "46:21"
       },
       {
        "block": "pages-09-10_k11",
        "label": "Abbreviation",
        "term": "DO tunnel",
-       "start_s": 2486.234,
-       "start": "41:26"
+       "start_s": 2893.278,
+       "start": "48:13"
       },
       {
        "block": "pages-09-10_k17",
        "label": "New word",
        "term": "Reluctant",
-       "start_s": 2538.236,
-       "start": "42:18"
+       "start_s": 2945.28,
+       "start": "49:05"
       },
       {
        "block": "pages-09-10_k20",
        "label": "New words",
        "term": "Financial constraints",
-       "start_s": 2576.566,
-       "start": "42:56"
+       "start_s": 2983.61,
+       "start": "49:43"
       },
       {
        "block": "pages-09-10_k27",
        "label": "New word",
        "term": "Asymptomatic",
-       "start_s": 2669.965,
-       "start": "44:29"
+       "start_s": 3077.009,
+       "start": "51:17"
       },
       {
        "block": "pages-09-10_k30",
        "label": "Linking word",
        "term": "Subsequently",
-       "start_s": 2710.013,
-       "start": "45:10"
+       "start_s": 3117.057,
+       "start": "51:57"
       },
       {
        "block": "pages-09-10_k34",
        "label": "Time words",
        "term": "Initially",
-       "start_s": 2789.934,
-       "start": "46:29"
+       "start_s": 3261.682,
+       "start": "54:21"
       },
       {
        "block": "pages-09-10_k37",
        "label": "Style",
        "term": "Patient friendly language",
-       "start_s": 2817.222,
-       "start": "46:57"
+       "start_s": 3288.97,
+       "start": "54:48"
       },
       {
        "block": "pages-09-10_k42",
        "label": "Form",
        "term": "Present perfect passive",
-       "start_s": 2902.386,
-       "start": "48:22"
+       "start_s": 3374.134,
+       "start": "56:14"
       },
       {
        "block": "pages-09-10_k48",
        "label": "Abbreviations",
        "term": "prn and tds",
-       "start_s": 2992.027,
-       "start": "49:52"
+       "start_s": 3463.775,
+       "start": "57:43"
       },
       {
        "block": "pages-09-10_k51",
        "label": "New word",
        "term": "Counteract",
-       "start_s": 3022.858,
-       "start": "50:22"
+       "start_s": 3494.606,
+       "start": "58:14"
       },
       {
        "block": "pages-09-10_k58",
        "label": "New words",
        "term": "Impaired alertness",
-       "start_s": 3116.862,
-       "start": "51:56"
+       "start_s": 3588.61,
+       "start": "59:48"
       }
      ],
      "wrong_examples": [],
@@ -18234,16 +18234,16 @@
        "lesson": "grammar-03-nominalization",
        "section": null,
        "provenance": "source-derived",
-       "start_s": 2674.116,
-       "start": "44:34"
+       "start_s": 3081.16,
+       "start": "51:21"
       },
       {
        "utterance": "pages-09-10_t2.s6.u5",
        "lesson": "grammar-01-verb-tenses",
        "section": "page-15",
        "provenance": "source-derived",
-       "start_s": 2914.827,
-       "start": "48:34"
+       "start_s": 3386.575,
+       "start": "56:26"
       }
      ]
     }
@@ -18256,8 +18256,8 @@
      "section": "page-6",
      "board": "page-6_t1",
      "utterance": "page-6_t1.s24.u1",
-     "start_s": 1344.424,
-     "start": "22:24"
+     "start_s": 1531.17,
+     "start": "25:31"
     }
    ],
    "methods": [],
@@ -18286,8 +18286,8 @@
      "lexicon": null,
      "section": "page-5",
      "block": "page-5_k30",
-     "start_s": 801.944,
-     "start": "13:21"
+     "start_s": 868.938,
+     "start": "14:28"
     },
     {
      "word": "occasionally",
@@ -18295,8 +18295,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k08",
-     "start_s": 1047.748,
-     "start": "17:27"
+     "start_s": 1181.924,
+     "start": "19:41"
     },
     {
      "word": "respectively",
@@ -18304,8 +18304,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k14",
-     "start_s": 1166.425,
-     "start": "19:26"
+     "start_s": 1300.601,
+     "start": "21:40"
     },
     {
      "word": "a social drinker",
@@ -18313,8 +18313,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k23",
-     "start_s": 1315.273,
-     "start": "21:55"
+     "start_s": 1502.019,
+     "start": "25:02"
     },
     {
      "word": "Non-compliant",
@@ -18322,8 +18322,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k08",
-     "start_s": 1504.112,
-     "start": "25:04"
+     "start_s": 1765.138,
+     "start": "29:25"
     },
     {
      "word": "Resents",
@@ -18331,8 +18331,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k09",
-     "start_s": 1524.568,
-     "start": "25:24"
+     "start_s": 1785.594,
+     "start": "29:45"
     },
     {
      "word": "Unmotivated",
@@ -18340,8 +18340,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k11",
-     "start_s": 1558.719,
-     "start": "25:58"
+     "start_s": 1819.745,
+     "start": "30:19"
     },
     {
      "word": "Intermittently",
@@ -18349,8 +18349,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k12",
-     "start_s": 1570.203,
-     "start": "26:10"
+     "start_s": 1831.229,
+     "start": "30:31"
     },
     {
      "word": "Occasional",
@@ -18358,8 +18358,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k29",
-     "start_s": 1840.929,
-     "start": "30:40"
+     "start_s": 2101.955,
+     "start": "35:01"
     },
     {
      "word": "Intermittent",
@@ -18367,8 +18367,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k09",
-     "start_s": 2087.981,
-     "start": "34:47"
+     "start_s": 2413.537,
+     "start": "40:13"
     },
     {
      "word": "Concomitant",
@@ -18376,8 +18376,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k13",
-     "start_s": 2157.135,
-     "start": "35:57"
+     "start_s": 2482.691,
+     "start": "41:22"
     },
     {
      "word": "Pop",
@@ -18385,8 +18385,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k16",
-     "start_s": 2208.482,
-     "start": "36:48"
+     "start_s": 2534.038,
+     "start": "42:14"
     },
     {
      "word": "Reluctant",
@@ -18394,8 +18394,8 @@
      "lexicon": null,
      "section": "pages-09-10",
      "block": "pages-09-10_k17",
-     "start_s": 2538.236,
-     "start": "42:18"
+     "start_s": 2945.28,
+     "start": "49:05"
     },
     {
      "word": "Financial constraints",
@@ -18403,8 +18403,8 @@
      "lexicon": null,
      "section": "pages-09-10",
      "block": "pages-09-10_k20",
-     "start_s": 2576.566,
-     "start": "42:56"
+     "start_s": 2983.61,
+     "start": "49:43"
     },
     {
      "word": "Scheduled",
@@ -18412,8 +18412,8 @@
      "lexicon": null,
      "section": "pages-09-10",
      "block": "pages-09-10_k24",
-     "start_s": 2627.554,
-     "start": "43:47"
+     "start_s": 3034.598,
+     "start": "50:34"
     },
     {
      "word": "Asymptomatic",
@@ -18421,8 +18421,8 @@
      "lexicon": null,
      "section": "pages-09-10",
      "block": "pages-09-10_k27",
-     "start_s": 2669.965,
-     "start": "44:29"
+     "start_s": 3077.009,
+     "start": "51:17"
     },
     {
      "word": "Counteract",
@@ -18430,8 +18430,8 @@
      "lexicon": null,
      "section": "pages-09-10",
      "block": "pages-09-10_k51",
-     "start_s": 3022.858,
-     "start": "50:22"
+     "start_s": 3494.606,
+     "start": "58:14"
     },
     {
      "word": "Cramps",
@@ -18439,8 +18439,8 @@
      "lexicon": null,
      "section": "pages-09-10",
      "block": "pages-09-10_k55",
-     "start_s": 3075.168,
-     "start": "51:15"
+     "start_s": 3546.916,
+     "start": "59:06"
     },
     {
      "word": "Impaired alertness",
@@ -18448,8 +18448,8 @@
      "lexicon": null,
      "section": "pages-09-10",
      "block": "pages-09-10_k58",
-     "start_s": 3116.862,
-     "start": "51:56"
+     "start_s": 3588.61,
+     "start": "59:48"
     }
    ],
    "withheld": {
@@ -18497,40 +18497,40 @@
       "section": null,
       "from_section": "page-5",
       "utterance": "page-5_t1.s8.u2",
-      "start_s": 687.658,
-      "start": "11:27"
+      "start_s": 754.652,
+      "start": "12:34"
      },
      {
       "lesson": "grammar-01-verb-tenses",
       "section": null,
       "from_section": "page-5",
       "utterance": "page-5_t1.s21.u1",
-      "start_s": 914.328,
-      "start": "15:14"
+      "start_s": 981.322,
+      "start": "16:21"
      },
      {
       "lesson": "grammar-07-punctuation",
       "section": "added-05",
       "from_section": "page-7",
       "utterance": "page-7_t1.s18.u2",
-      "start_s": 1696.551,
-      "start": "28:16"
+      "start_s": 1957.577,
+      "start": "32:37"
      },
      {
       "lesson": "grammar-07-punctuation",
       "section": "added-03",
       "from_section": "page-7",
       "utterance": "page-7_t1.s18.u2",
-      "start_s": 1696.551,
-      "start": "28:16"
+      "start_s": 1957.577,
+      "start": "32:37"
      },
      {
       "lesson": "grammar-01-verb-tenses",
       "section": "page-9",
       "from_section": "page-8",
       "utterance": "page-8_t1.s19.u2",
-      "start_s": 2296.765,
-      "start": "38:16"
+      "start_s": 2622.321,
+      "start": "43:42"
      }
     ],
     "referred_to_by": [
@@ -53592,8 +53592,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "page-6",
-     "start_s": 1230.986,
-     "start": "20:30",
+     "start_s": 1365.162,
+     "start": "22:45",
      "source": "term"
     }
    ]
@@ -53690,8 +53690,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "page-8",
-     "start_s": 2145.055,
-     "start": "35:45",
+     "start_s": 2470.611,
+     "start": "41:10",
      "source": "term"
     }
    ]
@@ -53990,8 +53990,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "page-5",
-     "start_s": 682.328,
-     "start": "11:22",
+     "start_s": 749.322,
+     "start": "12:29",
      "source": "term"
     }
    ]
@@ -54328,8 +54328,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "page-7",
-     "start_s": 1408.546,
-     "start": "23:28",
+     "start_s": 1669.572,
+     "start": "27:49",
      "source": "section"
     }
    ]
@@ -54446,8 +54446,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "page-7",
-     "start_s": 1778.008,
-     "start": "29:38",
+     "start_s": 2039.034,
+     "start": "33:59",
      "source": "term"
     }
    ]
@@ -54916,8 +54916,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "pages-09-10",
-     "start_s": 2486.234,
-     "start": "41:26",
+     "start_s": 2893.278,
+     "start": "48:13",
      "source": "term"
     }
    ]
@@ -55587,8 +55587,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "page-7",
-     "start_s": 1750.361,
-     "start": "29:10",
+     "start_s": 2011.387,
+     "start": "33:31",
      "source": "term"
     }
    ]
@@ -55711,8 +55711,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "pages-09-10",
-     "start_s": 2789.934,
-     "start": "46:29",
+     "start_s": 3261.682,
+     "start": "54:21",
      "source": "term"
     }
    ]
@@ -56477,8 +56477,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "pages-09-10",
-     "start_s": 2817.222,
-     "start": "46:57",
+     "start_s": 3288.97,
+     "start": "54:48",
      "source": "term"
     }
    ]
@@ -56673,8 +56673,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "page-5",
-     "start_s": 905.058,
-     "start": "15:05",
+     "start_s": 972.052,
+     "start": "16:12",
      "source": "term"
     }
    ]
@@ -56706,8 +56706,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "pages-09-10",
-     "start_s": 2902.386,
-     "start": "48:22",
+     "start_s": 3374.134,
+     "start": "56:14",
      "source": "term"
     }
    ]
@@ -56732,8 +56732,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "page-8",
-     "start_s": 2309.173,
-     "start": "38:29",
+     "start_s": 2634.729,
+     "start": "43:54",
      "source": "term"
     }
    ]
@@ -56745,8 +56745,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "pages-09-10",
-     "start_s": 2992.027,
-     "start": "49:52",
+     "start_s": 3463.775,
+     "start": "57:43",
      "source": "term"
     }
    ]
@@ -56882,8 +56882,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "page-8",
-     "start_s": 1931.824,
-     "start": "32:11",
+     "start_s": 2257.38,
+     "start": "37:37",
      "source": "section"
     }
    ]
@@ -57459,8 +57459,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "page-5",
-     "start_s": 593.553,
-     "start": "9:53",
+     "start_s": 660.547,
+     "start": "11:00",
      "source": "term"
     }
    ]
@@ -57524,8 +57524,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "pages-09-10",
-     "start_s": 2710.013,
-     "start": "45:10",
+     "start_s": 3117.057,
+     "start": "51:57",
      "source": "term"
     }
    ]
@@ -57576,8 +57576,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "pages-09-10",
-     "start_s": 2351.215,
-     "start": "39:11",
+     "start_s": 2758.259,
+     "start": "45:58",
      "source": "section"
     }
    ]
@@ -58455,8 +58455,8 @@
     {
      "lesson": "grammar-08-paraphrasing",
      "section": "page-8",
-     "start_s": 2276.464,
-     "start": "37:56",
+     "start_s": 2602.02,
+     "start": "43:22",
      "source": "term"
     }
    ]
