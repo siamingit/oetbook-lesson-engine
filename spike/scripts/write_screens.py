@@ -3289,7 +3289,9 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
         if bd.get("table"):
             continue                 # side notes are drawn over the table: 7c
         for s in bd["states"]:
-            n = len(counted_notes(s["working"], blocks))
+            # the state's own count (a board picture placed after the plan is not in it),
+            # less a practice point's blocks
+            n = s["notes"] - (len(s["working"]) - len(counted_notes(s["working"], blocks)))
             if n > MAX_NOTES:
                 fail(s["id"], f"{n} working notes at once, limit {MAX_NOTES}: "
                               "a thought is too big for the board")
