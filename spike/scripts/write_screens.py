@@ -3273,15 +3273,15 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
     # 10a. a practice point's blocks (ADR 046 amendment (3)): added blocks only, at
     # most two for a point (its task line and its answer)
     marked: dict[str, list[str]] = {}
-    for b in blocks.values():
-        if b.get("practice_point"):
-            marked.setdefault(str(b["practice_point"]), []).append(b["id"])
-            if not b.get("added"):
-                fail(b["id"], "`practice_point` on a block that is not added (overrides.json `add`)")
-    for key, ids in marked.items():
-        if len(ids) > 2:
-            fail(ids[2], f"practice point {key!r} marks {len(ids)} blocks {ids}; at most two "
-                         "(its task line and its answer)")
+    for blk in blocks.values():
+        if blk.get("practice_point"):
+            marked.setdefault(str(blk["practice_point"]), []).append(blk["id"])
+            if not blk.get("added"):
+                fail(blk["id"], "`practice_point` on a block that is not added (overrides.json `add`)")
+    for key, pp_ids in marked.items():
+        if len(pp_ids) > 2:
+            fail(pp_ids[2], f"practice point {key!r} marks {len(pp_ids)} blocks {pp_ids}; at most two "
+                            "(its task line and its answer)")
 
     # 10. density: a thought must fit an empty working layer, so every state
     # that the layout could not keep within the limit is a thought too big
