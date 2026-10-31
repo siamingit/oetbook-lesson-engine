@@ -54,6 +54,10 @@
   "vocabulary-03-collocations-2": [
    960000,
    960999
+  ],
+  "writing-03-letter-structure": [
+   903000,
+   903999
   ]
  },
  "ids": [
@@ -2808,6 +2812,118 @@
    "lesson": "vocabulary-03-collocations-2",
    "point": "letter-sentence",
    "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-903000",
+   "lesson": "writing-03-letter-structure",
+   "point": "date",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-903001",
+   "lesson": "writing-03-letter-structure",
+   "point": "address",
+   "slot": "line-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-903002",
+   "lesson": "writing-03-letter-structure",
+   "point": "address",
+   "slot": "line-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-903003",
+   "lesson": "writing-03-letter-structure",
+   "point": "address",
+   "slot": "line-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-903004",
+   "lesson": "writing-03-letter-structure",
+   "point": "address",
+   "slot": "line-4",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-903005",
+   "lesson": "writing-03-letter-structure",
+   "point": "address",
+   "slot": "line-5",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-903006",
+   "lesson": "writing-03-letter-structure",
+   "point": "address",
+   "slot": "line-6",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-903007",
+   "lesson": "writing-03-letter-structure",
+   "point": "address",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-903008",
+   "lesson": "writing-03-letter-structure",
+   "point": "greeting",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-903009",
+   "lesson": "writing-03-letter-structure",
+   "point": "re-line",
+   "slot": "name",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-903010",
+   "lesson": "writing-03-letter-structure",
+   "point": "re-line",
+   "slot": "dob",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-903011",
+   "lesson": "writing-03-letter-structure",
+   "point": "re-line",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-903012",
+   "lesson": "writing-03-letter-structure",
+   "point": "request",
+   "slot": "sentence",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-903013",
+   "lesson": "writing-03-letter-structure",
+   "point": "sign-off",
+   "slot": "close",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-903014",
+   "lesson": "writing-03-letter-structure",
+   "point": "sign-off",
+   "slot": "role",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-903015",
+   "lesson": "writing-03-letter-structure",
+   "point": "sign-off",
+   "slot": "faithfully",
    "issued": "2026-10-31"
   }
  ]
