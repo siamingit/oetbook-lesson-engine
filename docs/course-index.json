@@ -4444,16 +4444,16 @@
       "section": "pages-08-09",
       "to_section": "page-16",
       "utterance": "pages-08-09_t4.s1.u5",
-      "start_s": 2475.482,
-      "start": "41:15"
+      "start_s": 2727.357,
+      "start": "45:27"
      },
      {
       "lesson": "grammar-02-verb-use",
       "section": "pages-08-09",
       "to_section": "pages-05-06",
       "utterance": "pages-08-09_t4.s1.u5",
-      "start_s": 2475.482,
-      "start": "41:15"
+      "start_s": 2727.357,
+      "start": "45:27"
      },
      {
       "lesson": "grammar-03-nominalization",
@@ -4641,8 +4641,8 @@
    "description": "Learn how to choose the right tense and the right voice when you turn case notes into sentences for your OET letter.",
    "course": "grammar",
    "order": 2,
-   "length_s": 3295.806,
-   "length": "54:55",
+   "length_s": 3760.428,
+   "length": "62:40",
    "bundle_format": "1.23",
    "status": "built",
    "approval": null,
@@ -4724,7 +4724,7 @@
      "category": null,
      "start_s": 142.551,
      "start": "2:22",
-     "end_s": 516.584,
+     "end_s": 579.044,
      "topics": [
       {
        "board": "page-4_t1",
@@ -4865,509 +4865,509 @@
       6
      ],
      "category": null,
-     "start_s": 516.584,
-     "start": "8:36",
-     "end_s": 1918.918,
+     "start_s": 579.044,
+     "start": "9:39",
+     "end_s": 2119.783,
      "topics": [
       {
        "board": "pages-05-06_t1",
        "title": "exercise sentences 1 to 3",
-       "start_s": 516.584,
-       "start": "8:36",
+       "start_s": 579.044,
+       "start": "9:39",
        "points": [
         {
          "text": "Show the task and the first three sentences of the set.",
          "block": "pages-05-06_k01",
-         "start_s": 516.584,
-         "start": "8:36"
+         "start_s": 579.044,
+         "start": "9:39"
         }
        ]
       },
       {
        "board": "pages-05-06_t2",
        "title": "exercise sentences 4 to 6",
-       "start_s": 560.184,
-       "start": "9:20",
+       "start_s": 622.644,
+       "start": "10:22",
        "points": [
         {
          "text": "Show the remaining three sentences of the same set.",
          "block": "pages-05-06_k05",
-         "start_s": 560.184,
-         "start": "9:20"
+         "start_s": 622.644,
+         "start": "10:22"
         }
        ]
       },
       {
        "board": "pages-05-06_t3",
        "title": "Item 1: oral insulin commenced",
-       "start_s": 597.774,
-       "start": "9:57",
+       "start_s": 660.234,
+       "start": "11:00",
        "points": [
         {
          "text": "Fix the case note, the sentence and the preferred tense; teach the case-note verb commenced.",
          "block": "pages-05-06_k09",
-         "start_s": 597.774,
-         "start": "9:57"
+         "start_s": 660.234,
+         "start": "11:00"
         },
         {
          "text": "Teach the verb used for medication.",
          "block": "pages-05-06_k13",
-         "start_s": 623.352,
-         "start": "10:23"
+         "start_s": 685.812,
+         "start": "11:25"
         },
         {
          "text": "Define the present perfect the first time it is named.",
          "block": "pages-05-06_k14",
-         "start_s": 649.892,
-         "start": "10:49"
+         "start_s": 712.352,
+         "start": "11:52"
         },
         {
          "text": "Contrast a one-moment verb with a continuing action.",
          "block": "pages-05-06_k15",
-         "start_s": 667.524,
-         "start": "11:07"
+         "start_s": 729.984,
+         "start": "12:09"
         },
         {
          "text": "Give the simple past answer and say why it is correct.",
          "block": "pages-05-06_k16",
-         "start_s": 691.186,
-         "start": "11:31"
+         "start_s": 753.646,
+         "start": "12:33"
         },
         {
          "text": "Show the present perfect alternative, which needs a different verb.",
          "block": "pages-05-06_k18",
-         "start_s": 716.945,
-         "start": "11:56"
+         "start_s": 779.405,
+         "start": "12:59"
         },
         {
          "text": "Match the sentence to what the case note actually says.",
          "block": "pages-05-06_k20",
-         "start_s": 731.109,
-         "start": "12:11"
+         "start_s": 793.569,
+         "start": "13:13"
         },
         {
          "text": "Generalise the rule to a class of verbs.",
          "block": "pages-05-06_k21",
-         "start_s": 750.577,
-         "start": "12:30"
+         "start_s": 813.037,
+         "start": "13:33"
         }
        ]
       },
       {
        "board": "pages-05-06_t4",
        "title": "Item 2: heart attack 2017",
-       "start_s": 805.988,
-       "start": "13:25",
+       "start_s": 896.688,
+       "start": "14:56",
        "points": [
         {
          "text": "Fix the item and say how many faults it has.",
          "block": "pages-05-06_k22",
-         "start_s": 805.988,
-         "start": "13:25"
+         "start_s": 896.688,
+         "start": "14:56"
         },
         {
          "text": "Fault 1: the tense.",
          "block": "pages-05-06_k26",
-         "start_s": 835.198,
-         "start": "13:55"
+         "start_s": 925.898,
+         "start": "15:25"
         },
         {
          "text": "Fault 2: the missing article.",
          "block": "pages-05-06_k27",
-         "start_s": 841.238,
-         "start": "14:01"
+         "start_s": 931.938,
+         "start": "15:31"
         },
         {
          "text": "Give the corrected sentence.",
          "block": "pages-05-06_k28",
-         "start_s": 853.975,
-         "start": "14:13"
+         "start_s": 944.675,
+         "start": "15:44"
         },
         {
          "text": "Warn that small omissions cost marks.",
          "block": "pages-05-06_k30",
-         "start_s": 871.302,
-         "start": "14:31"
+         "start_s": 962.002,
+         "start": "16:02"
         }
        ]
       },
       {
        "board": "pages-05-06_t5",
        "title": "Item 3: arthritis 2013",
-       "start_s": 879.033,
-       "start": "14:39",
+       "start_s": 969.733,
+       "start": "16:09",
        "points": [
         {
          "text": "Fix the item and contrast a finished event with a continuing condition.",
          "block": "pages-05-06_k31",
-         "start_s": 879.033,
-         "start": "14:39"
+         "start_s": 969.733,
+         "start": "16:09"
         },
         {
          "text": "Draw the condition running from 2013 to now.",
          "block": "pages-05-06_k35",
-         "start_s": 913.614,
-         "start": "15:13"
+         "start_s": 1004.314,
+         "start": "16:44"
         },
         {
          "text": "Contrast for and since.",
          "block": "pages-05-06_k36",
-         "start_s": 941.254,
-         "start": "15:41"
+         "start_s": 1031.954,
+         "start": "17:11"
         },
         {
          "text": "Warn against from.",
          "block": "pages-05-06_k37",
-         "start_s": 952.034,
-         "start": "15:52"
+         "start_s": 1042.734,
+         "start": "17:22"
         },
         {
          "text": "Give the present perfect answer.",
          "block": "pages-05-06_k38",
-         "start_s": 962.234,
-         "start": "16:02"
+         "start_s": 1052.934,
+         "start": "17:32"
         },
         {
          "text": "Define the passive before using it.",
          "block": "pages-05-06_k40",
-         "start_s": 979.861,
-         "start": "16:19"
+         "start_s": 1070.561,
+         "start": "17:50"
         },
         {
          "text": "Give the simple past answer with the passive.",
          "block": "pages-05-06_k41",
-         "start_s": 989.874,
-         "start": "16:29"
+         "start_s": 1080.574,
+         "start": "18:00"
         }
        ]
       },
       {
        "board": "pages-05-06_t6",
        "title": "Item 4: Warfarin therapy",
-       "start_s": 1006.196,
-       "start": "16:46",
+       "start_s": 1096.896,
+       "start": "18:16",
        "points": [
         {
          "text": "Fix the item and show that the tense is not the fault.",
          "block": "pages-05-06_k43",
-         "start_s": 1006.196,
-         "start": "16:46"
+         "start_s": 1096.896,
+         "start": "18:16"
         },
         {
          "text": "Name the real fault.",
          "block": "pages-05-06_k47",
-         "start_s": 1031.423,
-         "start": "17:11"
+         "start_s": 1122.123,
+         "start": "18:42"
         },
         {
          "text": "Give the corrected sentence using the case-note date.",
          "block": "pages-05-06_k48",
-         "start_s": 1042.055,
-         "start": "17:22"
+         "start_s": 1132.755,
+         "start": "18:52"
         },
         {
          "text": "Show the two ways of writing the sentence with commenced.",
          "block": "pages-05-06_k50",
-         "start_s": 1057.483,
-         "start": "17:37"
+         "start_s": 1148.183,
+         "start": "19:08"
         },
         {
          "text": "Give the passive answer and its preposition.",
          "block": "pages-05-06_k51",
-         "start_s": 1079.203,
-         "start": "17:59"
+         "start_s": 1169.903,
+         "start": "19:29"
         }
        ]
       },
       {
        "board": "pages-05-06_t7",
        "title": "Item 5: hypertension 2010",
-       "start_s": 1098.443,
-       "start": "18:18",
+       "start_s": 1189.143,
+       "start": "19:49",
        "points": [
         {
          "text": "Fix the item and read the abbreviation.",
          "block": "pages-05-06_k53",
-         "start_s": 1098.443,
-         "start": "18:18"
+         "start_s": 1189.143,
+         "start": "19:49"
         },
         {
          "text": "Explain why since cannot follow was diagnosed.",
          "block": "pages-05-06_k57",
-         "start_s": 1128.647,
-         "start": "18:48"
+         "start_s": 1219.347,
+         "start": "20:19"
         },
         {
          "text": "Give the simple past answer.",
          "block": "pages-05-06_k58",
-         "start_s": 1138.416,
-         "start": "18:58"
+         "start_s": 1229.116,
+         "start": "20:29"
         },
         {
          "text": "Teach the preposition with dates.",
          "block": "pages-05-06_k60",
-         "start_s": 1150.637,
-         "start": "19:10"
+         "start_s": 1241.337,
+         "start": "20:41"
         },
         {
          "text": "Give the present perfect answer with a different verb.",
          "block": "pages-05-06_k61",
-         "start_s": 1169.497,
-         "start": "19:29"
+         "start_s": 1260.197,
+         "start": "21:00"
         }
        ]
       },
       {
        "board": "pages-05-06_t8",
        "title": "Item 6: smoker for 25 to 30 years",
-       "start_s": 1185.977,
-       "start": "19:45",
+       "start_s": 1276.677,
+       "start": "21:16",
        "points": [
         {
          "text": "Fix the item and name the tense fault.",
          "block": "pages-05-06_k63",
-         "start_s": 1185.977,
-         "start": "19:45"
+         "start_s": 1276.677,
+         "start": "21:16"
         },
         {
          "text": "Draw the repeated action from the past up to now.",
          "block": "pages-05-06_k67",
-         "start_s": 1213.777,
-         "start": "20:13"
+         "start_s": 1304.477,
+         "start": "21:44"
         },
         {
          "text": "Give the answer in the same structure.",
          "block": "pages-05-06_k68",
-         "start_s": 1238.859,
-         "start": "20:38"
+         "start_s": 1329.559,
+         "start": "22:09"
         },
         {
          "text": "Show how to report the meaning of the data.",
          "block": "pages-05-06_k70",
-         "start_s": 1258.673,
-         "start": "20:58"
+         "start_s": 1349.373,
+         "start": "22:29"
         }
        ]
       },
       {
        "board": "pages-05-06_t9",
        "title": "Introduction: exercise sentences 7 to 11",
-       "start_s": 1307.552,
-       "start": "21:47",
+       "start_s": 1430.557,
+       "start": "23:50",
        "points": [
         {
          "text": "Show the second set of sentences.",
          "block": "pages-05-06_k72",
-         "start_s": 1307.552,
-         "start": "21:47"
+         "start_s": 1430.557,
+         "start": "23:50"
         }
        ]
       },
       {
        "board": "pages-05-06_t10",
        "title": "Item 7: ulcer since August 2017",
-       "start_s": 1364.442,
-       "start": "22:44",
+       "start_s": 1487.447,
+       "start": "24:47",
        "points": [
         {
          "text": "Fix the item and teach joining ideas.",
          "block": "pages-05-06_k78",
-         "start_s": 1364.442,
-         "start": "22:44"
+         "start_s": 1487.447,
+         "start": "24:47"
         },
         {
          "text": "Show what which does in this sentence.",
          "block": "pages-05-06_k82",
-         "start_s": 1400.422,
-         "start": "23:20"
+         "start_s": 1523.427,
+         "start": "25:23"
         },
         {
          "text": "Find the real verb in the second clause.",
          "block": "pages-05-06_k83",
-         "start_s": 1426.151,
-         "start": "23:46"
+         "start_s": 1549.156,
+         "start": "25:49"
         },
         {
          "text": "Give the corrected sentence.",
          "block": "pages-05-06_k84",
-         "start_s": 1437.342,
-         "start": "23:57"
+         "start_s": 1560.347,
+         "start": "26:00"
         }
        ]
       },
       {
        "board": "pages-05-06_t11",
        "title": "Item 8: progress during hospitalization",
-       "start_s": 1467.296,
-       "start": "24:27",
+       "start_s": 1590.301,
+       "start": "26:30",
        "points": [
         {
          "text": "Fix the item and turn the two dates into one time phrase.",
          "block": "pages-05-06_k86",
-         "start_s": 1467.296,
-         "start": "24:27"
+         "start_s": 1590.301,
+         "start": "26:30"
         },
         {
          "text": "Teach the phrase during hospitalization.",
          "block": "pages-05-06_k90",
-         "start_s": 1498.06,
-         "start": "24:58"
+         "start_s": 1621.065,
+         "start": "27:01"
         },
         {
          "text": "Teach the describing word before progress.",
          "block": "pages-05-06_k91",
-         "start_s": 1506.402,
-         "start": "25:06"
+         "start_s": 1629.407,
+         "start": "27:09"
         },
         {
          "text": "Contrast a small change with a big one.",
          "block": "pages-05-06_k92",
-         "start_s": 1531.841,
-         "start": "25:31"
+         "start_s": 1654.846,
+         "start": "27:34"
         },
         {
          "text": "Separate significant from significance.",
          "block": "pages-05-06_k93",
-         "start_s": 1561.032,
-         "start": "26:01"
+         "start_s": 1684.037,
+         "start": "28:04"
         },
         {
          "text": "Show the correct sentence with significant.",
          "block": "pages-05-06_k94",
-         "start_s": 1576.112,
-         "start": "26:16"
+         "start_s": 1699.117,
+         "start": "28:19"
         },
         {
          "text": "Name the tense fault in the exercise sentence.",
          "block": "pages-05-06_k96",
-         "start_s": 1586.822,
-         "start": "26:26"
+         "start_s": 1709.827,
+         "start": "28:29"
         },
         {
          "text": "Give the corrected sentence and the rule for progression.",
          "block": "pages-05-06_k97",
-         "start_s": 1601.72,
-         "start": "26:41"
+         "start_s": 1724.725,
+         "start": "28:44"
         },
         {
          "text": "Warn about commas.",
          "block": "pages-05-06_k99",
-         "start_s": 1617.123,
-         "start": "26:57"
+         "start_s": 1740.128,
+         "start": "29:00"
         },
         {
          "text": "Give the study priority for tenses.",
          "block": "pages-05-06_k100",
-         "start_s": 1624.662,
-         "start": "27:04"
+         "start_s": 1747.667,
+         "start": "29:07"
         }
        ]
       },
       {
        "board": "pages-05-06_t12",
        "title": "Item 9: over the past three weeks",
-       "start_s": 1645.343,
-       "start": "27:25",
+       "start_s": 1768.348,
+       "start": "29:28",
        "points": [
         {
          "text": "Fix the item and show that tense and punctuation are already right.",
          "block": "pages-05-06_k101",
-         "start_s": 1645.343,
-         "start": "27:25"
+         "start_s": 1768.348,
+         "start": "29:28"
         },
         {
          "text": "Show the repeated meaning.",
          "block": "pages-05-06_k105",
-         "start_s": 1666.657,
-         "start": "27:46"
+         "start_s": 1789.662,
+         "start": "29:49"
         },
         {
          "text": "Give the corrected sentence.",
          "block": "pages-05-06_k106",
-         "start_s": 1677.334,
-         "start": "27:57"
+         "start_s": 1800.339,
+         "start": "30:00"
         }
        ]
       },
       {
        "board": "pages-05-06_t13",
        "title": "Item 10: blood pressure on examination",
-       "start_s": 1688.149,
-       "start": "28:08",
+       "start_s": 1862.904,
+       "start": "31:02",
        "points": [
         {
          "text": "Fix the item and say what an examination finding is.",
          "block": "pages-05-06_k108",
-         "start_s": 1688.149,
-         "start": "28:08"
+         "start_s": 1862.904,
+         "start": "31:02"
         },
         {
          "text": "State the rule for findings.",
          "block": "pages-05-06_k112",
-         "start_s": 1715.399,
-         "start": "28:35"
+         "start_s": 1890.154,
+         "start": "31:30"
         },
         {
          "text": "Give the corrected sentence.",
          "block": "pages-05-06_k113",
-         "start_s": 1742.339,
-         "start": "29:02"
+         "start_s": 1917.094,
+         "start": "31:57"
         },
         {
          "text": "Warn about abbreviations.",
          "block": "pages-05-06_k115",
-         "start_s": 1759.239,
-         "start": "29:19"
+         "start_s": 1933.994,
+         "start": "32:13"
         },
         {
          "text": "Give a second way to write the finding.",
          "block": "pages-05-06_k116",
-         "start_s": 1768.559,
-         "start": "29:28"
+         "start_s": 1943.314,
+         "start": "32:23"
         }
        ]
       },
       {
        "board": "pages-05-06_t14",
        "title": "Item 11: limp and anxiety",
-       "start_s": 1782.519,
-       "start": "29:42",
+       "start_s": 1957.274,
+       "start": "32:37",
        "points": [
         {
          "text": "Fix the item and separate objective from subjective information.",
          "block": "pages-05-06_k118",
-         "start_s": 1782.519,
-         "start": "29:42"
+         "start_s": 1957.274,
+         "start": "32:37"
         },
         {
          "text": "Locate the verbs.",
          "block": "pages-05-06_k122",
-         "start_s": 1815.27,
-         "start": "30:15"
+         "start_s": 1990.025,
+         "start": "33:10"
         },
         {
          "text": "Contrast a changing finding with a lasting symptom.",
          "block": "pages-05-06_k123",
-         "start_s": 1824.3,
-         "start": "30:24"
+         "start_s": 1999.055,
+         "start": "33:19"
         },
         {
          "text": "Give the corrected sentence.",
          "block": "pages-05-06_k124",
-         "start_s": 1845.366,
-         "start": "30:45"
+         "start_s": 2020.121,
+         "start": "33:40"
         },
         {
          "text": "Note that the simple past is also possible.",
          "block": "pages-05-06_k126",
-         "start_s": 1863.158,
-         "start": "31:03"
+         "start_s": 2037.913,
+         "start": "33:57"
         },
         {
          "text": "State the closing rule.",
          "block": "pages-05-06_k127",
-         "start_s": 1872.268,
-         "start": "31:12"
+         "start_s": 2047.023,
+         "start": "34:07"
         }
        ]
       }
@@ -5377,64 +5377,64 @@
        "block": "pages-05-06_k21",
        "kind": "rule",
        "text": "Verbs like start, begin, initiate, commence and finish name one point in time. With a finished date, use the simple past.",
-       "start_s": 750.577,
-       "start": "12:30"
+       "start_s": 813.037,
+       "start": "13:33"
       },
       {
        "block": "pages-05-06_k26",
        "kind": "rule",
        "text": "When in, on or at points to a date in the past, use the simple past.",
-       "start_s": 835.198,
-       "start": "13:55"
+       "start_s": 925.898,
+       "start": "15:25"
       },
       {
        "block": "pages-05-06_k30",
        "kind": "rule",
        "text": "Small words are easy to forget when you write quickly. A missing a is marked as an error.",
-       "start_s": 871.302,
-       "start": "14:31"
+       "start_s": 962.002,
+       "start": "16:02"
       },
       {
        "block": "pages-05-06_k37",
        "kind": "warning",
        "text": "From is not a time word here. Do not write from 5 years or from 2013.",
-       "start_s": 952.034,
-       "start": "15:52"
+       "start_s": 1042.734,
+       "start": "17:22"
       },
       {
        "block": "pages-05-06_k47",
        "kind": "rule",
        "text": "6 months is a length of time. Since does not go with a length of time.",
-       "start_s": 1031.423,
-       "start": "17:11"
+       "start_s": 1122.123,
+       "start": "18:42"
       },
       {
        "block": "pages-05-06_k99",
        "kind": "warning",
        "text": "Use a comma only where you are sure. A wrong comma counts as a grammar mistake.",
-       "start_s": 1617.123,
-       "start": "26:57"
+       "start_s": 1740.128,
+       "start": "29:00"
       },
       {
        "block": "pages-05-06_k112",
        "kind": "rule",
        "text": "Use the simple past for a finding taken on a particular date. There is no progression here.",
-       "start_s": 1715.399,
-       "start": "28:35"
+       "start_s": 1890.154,
+       "start": "31:30"
       },
       {
        "block": "pages-05-06_k115",
        "kind": "warning",
        "text": "If you are not sure the reader will know a short form, write it in full: 'coronary artery disease', not 'CAD'.",
-       "start_s": 1759.239,
-       "start": "29:19"
+       "start_s": 1933.994,
+       "start": "32:13"
       },
       {
        "block": "pages-05-06_k127",
        "kind": "rule",
        "text": "Unless the case notes say the symptom has gone, use the simple present for symptoms that have not changed.",
-       "start_s": 1872.268,
-       "start": "31:12"
+       "start_s": 2047.023,
+       "start": "34:07"
       }
      ],
      "terms": [
@@ -5442,205 +5442,205 @@
        "block": "pages-05-06_k12",
        "label": "New word",
        "term": "commenced",
-       "start_s": 604.444,
-       "start": "10:04"
+       "start_s": 666.904,
+       "start": "11:06"
       },
       {
        "block": "pages-05-06_k13",
        "label": "Useful verb",
        "term": "taking",
-       "start_s": 623.352,
-       "start": "10:23"
+       "start_s": 685.812,
+       "start": "11:25"
       },
       {
        "block": "pages-05-06_k14",
        "label": "Form",
        "term": "Present perfect",
-       "start_s": 649.892,
-       "start": "10:49"
+       "start_s": 712.352,
+       "start": "11:52"
       },
       {
        "block": "pages-05-06_k27",
        "label": "Grammar word",
        "term": "Countable noun",
-       "start_s": 841.238,
-       "start": "14:01"
+       "start_s": 931.938,
+       "start": "15:31"
       },
       {
        "block": "pages-05-06_k40",
        "label": "Form",
        "term": "Passive",
-       "start_s": 979.861,
-       "start": "16:19"
+       "start_s": 1070.561,
+       "start": "17:50"
       },
       {
        "block": "pages-05-06_k56",
        "label": "Case-note short form",
        "term": "HTN",
-       "start_s": 1105.123,
-       "start": "18:25"
+       "start_s": 1195.823,
+       "start": "19:55"
       },
       {
        "block": "pages-05-06_k81",
        "label": "Joining words",
        "term": "Connectives",
-       "start_s": 1381.192,
-       "start": "23:01"
+       "start_s": 1504.197,
+       "start": "25:04"
       },
       {
        "block": "pages-05-06_k90",
        "label": "Useful phrase",
        "term": "during hospitalization",
-       "start_s": 1498.06,
-       "start": "24:58"
+       "start_s": 1621.065,
+       "start": "27:01"
       },
       {
        "block": "pages-05-06_k91",
        "label": "Word choice",
        "term": "steady progress",
-       "start_s": 1506.402,
-       "start": "25:06"
+       "start_s": 1629.407,
+       "start": "27:09"
       },
       {
        "block": "pages-05-06_k93",
        "label": "Word choice",
        "term": "significant",
-       "start_s": 1561.032,
-       "start": "26:01"
+       "start_s": 1684.037,
+       "start": "28:04"
       }
      ],
      "wrong_examples": [
       {
        "block": "pages-05-06_k02",
        "text": "The patient has started taking oral insulin in November 2017",
-       "start_s": 516.584,
-       "start": "8:36"
+       "start_s": 579.044,
+       "start": "9:39"
       },
       {
        "block": "pages-05-06_k03",
        "text": "The patient has heart attack in 2017.",
-       "start_s": 516.584,
-       "start": "8:36"
+       "start_s": 579.044,
+       "start": "9:39"
       },
       {
        "block": "pages-05-06_k04",
        "text": "He has had arthritis from 5 years.",
-       "start_s": 516.584,
-       "start": "8:36"
+       "start_s": 579.044,
+       "start": "9:39"
       },
       {
        "block": "pages-05-06_k06",
        "text": "The patient has been receiving warfarin therapy since 6 months.",
-       "start_s": 560.184,
-       "start": "9:20"
+       "start_s": 622.644,
+       "start": "10:22"
       },
       {
        "block": "pages-05-06_k07",
        "text": "The patient was diagnosed with Hypertension since 2010",
-       "start_s": 560.184,
-       "start": "9:20"
+       "start_s": 622.644,
+       "start": "10:22"
       },
       {
        "block": "pages-05-06_k08",
        "text": "He smokes 2 packs of cigarettes a day for the past 25 - 30 years.",
-       "start_s": 560.184,
-       "start": "9:20"
+       "start_s": 622.644,
+       "start": "10:22"
       },
       {
        "block": "pages-05-06_k10",
        "text": "The patient has started taking oral insulin in November 2017",
-       "start_s": 597.774,
-       "start": "9:57"
+       "start_s": 660.234,
+       "start": "11:00"
       },
       {
        "block": "pages-05-06_k23",
        "text": "The patient has heart attack in 2017.",
-       "start_s": 805.988,
-       "start": "13:25"
+       "start_s": 896.688,
+       "start": "14:56"
       },
       {
        "block": "pages-05-06_k32",
        "text": "He has had arthritis from 5 years.",
-       "start_s": 879.033,
-       "start": "14:39"
+       "start_s": 969.733,
+       "start": "16:09"
       },
       {
        "block": "pages-05-06_k44",
        "text": "The patient has been receiving warfarin therapy since 6 months.",
-       "start_s": 1006.196,
-       "start": "16:46"
+       "start_s": 1096.896,
+       "start": "18:16"
       },
       {
        "block": "pages-05-06_k54",
        "text": "The patient was diagnosed with Hypertension since 2010",
-       "start_s": 1098.443,
-       "start": "18:18"
+       "start_s": 1189.143,
+       "start": "19:49"
       },
       {
        "block": "pages-05-06_k64",
        "text": "He smokes 2 packs of cigarettes a day for the past 25 - 30 years.",
-       "start_s": 1185.977,
-       "start": "19:45"
+       "start_s": 1276.677,
+       "start": "21:16"
       },
       {
        "block": "pages-05-06_k73",
        "text": "There is an ulcer on right lower lateral border of the tongue which is present for more than one year.",
-       "start_s": 1307.552,
-       "start": "21:47"
+       "start_s": 1430.557,
+       "start": "23:50"
       },
       {
        "block": "pages-05-06_k74",
        "text": "During hospitalization the patient is making steady progress.",
-       "start_s": 1307.552,
-       "start": "21:47"
+       "start_s": 1430.557,
+       "start": "23:50"
       },
       {
        "block": "pages-05-06_k75",
        "text": "Over the past three weeks, the patient progress has improved",
-       "start_s": 1307.552,
-       "start": "21:47"
+       "start_s": 1430.557,
+       "start": "23:50"
       },
       {
        "block": "pages-05-06_k76",
        "text": "On the examination, the patient has a blood pressure of 140/90.",
-       "start_s": 1307.552,
-       "start": "21:47"
+       "start_s": 1430.557,
+       "start": "23:50"
       },
       {
        "block": "pages-05-06_k77",
        "text": "The patient had limp and was anxious about his ability to work.",
-       "start_s": 1307.552,
-       "start": "21:47"
+       "start_s": 1430.557,
+       "start": "23:50"
       },
       {
        "block": "pages-05-06_k79",
        "text": "There is an ulcer on right lower lateral border of the tongue which is present for more than one year.",
-       "start_s": 1364.442,
-       "start": "22:44"
+       "start_s": 1487.447,
+       "start": "24:47"
       },
       {
        "block": "pages-05-06_k87",
        "text": "During hospitalization the patient is making steady progress.",
-       "start_s": 1467.296,
-       "start": "24:27"
+       "start_s": 1590.301,
+       "start": "26:30"
       },
       {
        "block": "pages-05-06_k102",
        "text": "Over the past three weeks, the patient progress has improved",
-       "start_s": 1645.343,
-       "start": "27:25"
+       "start_s": 1768.348,
+       "start": "29:28"
       },
       {
        "block": "pages-05-06_k109",
        "text": "On the examination, the patient has a blood pressure of 140/90.",
-       "start_s": 1688.149,
-       "start": "28:08"
+       "start_s": 1862.904,
+       "start": "31:02"
       },
       {
        "block": "pages-05-06_k119",
        "text": "The patient had limp and was anxious about his ability to work.",
-       "start_s": 1782.519,
-       "start": "29:42"
+       "start_s": 1957.274,
+       "start": "32:37"
       }
      ],
      "practice": [],
@@ -5654,69 +5654,69 @@
       7
      ],
      "category": null,
-     "start_s": 1918.918,
-     "start": "31:58",
-     "end_s": 2183.312,
+     "start_s": 2119.783,
+     "start": "35:19",
+     "end_s": 2435.187,
      "topics": [
       {
        "board": "page-7_t1",
        "title": "active voice example, the two passive examples",
-       "start_s": 1918.918,
-       "start": "31:58",
+       "start_s": 2119.783,
+       "start": "35:19",
        "points": [
         {
          "text": "Show the slide's active example and frame the idea that one fact can be written in three ways",
          "block": "page-7_k01",
-         "start_s": 1918.918,
-         "start": "31:58"
+         "start_s": 2119.783,
+         "start": "35:19"
         },
         {
          "text": "Show the two passive cards and read the patient-first one",
          "block": "page-7_k09",
-         "start_s": 1918.918,
-         "start": "31:58"
+         "start_s": 2119.783,
+         "start": "35:19"
         },
         {
          "text": "Define the two grammar terms at first appearance",
          "block": "page-7_k04",
-         "start_s": 1982.378,
-         "start": "33:02"
+         "start_s": 2183.243,
+         "start": "36:23"
         },
         {
          "text": "Work out the focus of the active sentence",
          "block": "page-7_k06",
-         "start_s": 2027.395,
-         "start": "33:47"
+         "start_s": 2228.26,
+         "start": "37:08"
         },
         {
          "text": "State the rule for the active voice",
          "block": "page-7_k08",
-         "start_s": 2042.876,
-         "start": "34:02"
+         "start_s": 2243.741,
+         "start": "37:23"
         },
         {
          "text": "Read the medicine-first passive",
          "block": "page-7_k12",
-         "start_s": 2089.192,
-         "start": "34:49"
+         "start_s": 2290.057,
+         "start": "38:10"
         },
         {
          "text": "Contrast the two passive patterns side by side",
          "block": "page-7_k13",
-         "start_s": 2104.639,
-         "start": "35:04"
+         "start_s": 2305.504,
+         "start": "38:25"
         },
         {
          "text": "Worked example of choosing the pattern in writing",
          "block": "page-7_k14",
-         "start_s": 2137.57,
-         "start": "35:37"
+         "start_s": 2338.435,
+         "start": "38:58"
         },
         {
          "text": "State the rule for choosing between the three versions",
          "block": "page-7_k16",
-         "start_s": 2162.231,
-         "start": "36:02"
+         "start_s": 2363.096,
+         "start": "39:23"
         }
        ]
       }
@@ -5726,15 +5726,15 @@
        "block": "page-7_k08",
        "kind": "rule",
        "text": "In the active voice, the focus is on the person who does the action.",
-       "start_s": 2042.876,
-       "start": "34:02"
+       "start_s": 2243.741,
+       "start": "37:23"
       },
       {
        "block": "page-7_k16",
        "kind": "rule",
        "text": "In your writing, choose the version that puts your main idea first: the doctor, the patient or the medicine.",
-       "start_s": 2162.231,
-       "start": "36:02"
+       "start_s": 2363.096,
+       "start": "39:23"
       }
      ],
      "terms": [
@@ -5742,15 +5742,15 @@
        "block": "page-7_k04",
        "label": "Grammar term",
        "term": "Active voice",
-       "start_s": 1982.378,
-       "start": "33:02"
+       "start_s": 2183.243,
+       "start": "36:23"
       },
       {
        "block": "page-7_k05",
        "label": "Grammar term",
        "term": "Passive voice",
-       "start_s": 2000.017,
-       "start": "33:20"
+       "start_s": 2200.882,
+       "start": "36:40"
       }
      ],
      "wrong_examples": [],
@@ -5766,425 +5766,425 @@
       9
      ],
      "category": null,
-     "start_s": 2183.312,
-     "start": "36:23",
-     "end_s": 3295.806,
+     "start_s": 2435.187,
+     "start": "40:35",
+     "end_s": 3760.428,
      "topics": [
       {
        "board": "pages-08-09_t1",
        "title": "exercise set, appetite and general health rows",
-       "start_s": 2183.312,
-       "start": "36:23",
+       "start_s": 2435.187,
+       "start": "40:35",
        "points": [
         {
          "text": "Show the first part of the exercise set so the student can look for the fault",
          "block": "pages-08-09_k01",
-         "start_s": 2183.312,
-         "start": "36:23"
+         "start_s": 2435.187,
+         "start": "40:35"
         }
        ]
       },
       {
        "board": "pages-08-09_t2",
        "title": "exercise set, mood, medication and pain rows",
-       "start_s": 2232.848,
-       "start": "37:12",
+       "start_s": 2484.723,
+       "start": "41:24",
        "points": [
         {
          "text": "Show the rest of the exercise set",
          "block": "pages-08-09_k06",
-         "start_s": 2232.848,
-         "start": "37:12"
+         "start_s": 2484.723,
+         "start": "41:24"
         }
        ]
       },
       {
        "board": "pages-08-09_t3",
        "title": "Appetite row",
-       "start_s": 2264.045,
-       "start": "37:44",
+       "start_s": 2515.92,
+       "start": "41:55",
        "points": [
         {
          "text": "Fix the case note, the preferred form and the two wrong sentences on the board",
          "block": "pages-08-09_k11",
-         "start_s": 2264.045,
-         "start": "37:44"
+         "start_s": 2515.92,
+         "start": "41:55"
         },
         {
          "text": "Name the fault",
          "block": "pages-08-09_k14",
-         "start_s": 2288.519,
-         "start": "38:08"
+         "start_s": 2540.394,
+         "start": "42:20"
         },
         {
          "text": "Define active and passive in English terms",
          "block": "pages-08-09_k15",
-         "start_s": 2294.525,
-         "start": "38:14"
+         "start_s": 2546.4,
+         "start": "42:26"
         },
         {
          "text": "Define the grammar term 'subject'",
          "block": "pages-08-09_k16",
-         "start_s": 2302.945,
-         "start": "38:22"
+         "start_s": 2554.82,
+         "start": "42:34"
         },
         {
          "text": "Apply the rule to this row",
          "block": "pages-08-09_k17",
-         "start_s": 2322.635,
-         "start": "38:42"
+         "start_s": 2574.51,
+         "start": "42:54"
         },
         {
          "text": "Give the answer and say why it is correct",
          "block": "pages-08-09_k18",
-         "start_s": 2341.853,
-         "start": "39:01"
+         "start_s": 2593.728,
+         "start": "43:13"
         },
         {
          "text": "Contrast one-moment verbs with over-time verbs",
          "block": "pages-08-09_k20",
-         "start_s": 2362.634,
-         "start": "39:22"
+         "start_s": 2614.509,
+         "start": "43:34"
         },
         {
          "text": "Example of a one-moment verb",
          "block": "pages-08-09_k21",
-         "start_s": 2400.614,
-         "start": "40:00"
+         "start_s": 2652.489,
+         "start": "44:12"
         },
         {
          "text": "Example of an over-time verb",
          "block": "pages-08-09_k23",
-         "start_s": 2429.08,
-         "start": "40:29"
+         "start_s": 2680.955,
+         "start": "44:40"
         }
        ]
       },
       {
        "board": "pages-08-09_t4",
        "title": "General health row",
-       "start_s": 2444.502,
-       "start": "40:44",
+       "start_s": 2696.377,
+       "start": "44:56",
        "points": [
         {
          "text": "Fix the case note, the preferred form and the two wrong sentences",
          "block": "pages-08-09_k25",
-         "start_s": 2444.502,
-         "start": "40:44"
+         "start_s": 2696.377,
+         "start": "44:56"
         },
         {
          "text": "Name the fault again",
          "block": "pages-08-09_k28",
-         "start_s": 2462.802,
-         "start": "41:02"
+         "start_s": 2714.677,
+         "start": "45:14"
         },
         {
          "text": "Teach the verb 'deteriorate'",
          "block": "pages-08-09_k29",
-         "start_s": 2488.241,
-         "start": "41:28"
+         "start_s": 2740.116,
+         "start": "45:40"
         },
         {
          "text": "Give the answer and say why it is correct",
          "block": "pages-08-09_k30",
-         "start_s": 2496.327,
-         "start": "41:36"
+         "start_s": 2748.202,
+         "start": "45:48"
         },
         {
          "text": "Show the present perfect continuous as a grammatical option",
          "block": "pages-08-09_k32",
-         "start_s": 2516.4,
-         "start": "41:56"
+         "start_s": 2768.275,
+         "start": "46:08"
         }
        ]
       },
       {
        "board": "pages-08-09_t5",
        "title": "Mood row",
-       "start_s": 2565.756,
-       "start": "42:45",
+       "start_s": 2787.631,
+       "start": "46:27",
        "points": [
         {
          "text": "Fix the case note, the preferred form and the two wrong sentences",
          "block": "pages-08-09_k34",
-         "start_s": 2565.756,
-         "start": "42:45"
+         "start_s": 2787.631,
+         "start": "46:27"
         },
         {
          "text": "Show it is the same fault as the appetite row",
          "block": "pages-08-09_k37",
-         "start_s": 2581.436,
-         "start": "43:01"
+         "start_s": 2803.311,
+         "start": "46:43"
         },
         {
          "text": "Give the answer and say why it is correct",
          "block": "pages-08-09_k39",
-         "start_s": 2605.202,
-         "start": "43:25"
+         "start_s": 2827.077,
+         "start": "47:07"
         },
         {
          "text": "Add a time adverb to the answer",
          "block": "pages-08-09_k41",
-         "start_s": 2630.692,
-         "start": "43:50"
+         "start_s": 2852.567,
+         "start": "47:32"
         }
        ]
       },
       {
        "board": "pages-08-09_t6",
        "title": "Medication row",
-       "start_s": 2645.374,
-       "start": "44:05",
+       "start_s": 2915.079,
+       "start": "48:35",
        "points": [
         {
          "text": "Fix the case note, the preferred form and the wrong sentence",
          "block": "pages-08-09_k43",
-         "start_s": 2645.374,
-         "start": "44:05"
+         "start_s": 2915.079,
+         "start": "48:35"
         },
         {
          "text": "Read the case-note abbreviations",
          "block": "pages-08-09_k45",
-         "start_s": 2654.183,
-         "start": "44:14"
+         "start_s": 2923.888,
+         "start": "48:43"
         },
         {
          "text": "Abbreviations in case notes and in the letter",
          "block": "pages-08-09_k46",
-         "start_s": 2659.274,
-         "start": "44:19"
+         "start_s": 2928.979,
+         "start": "48:48"
         },
         {
          "text": "Name the fault in the sentence",
          "block": "pages-08-09_k48",
-         "start_s": 2701.152,
-         "start": "45:01"
+         "start_s": 2970.857,
+         "start": "49:30"
         },
         {
          "text": "Give the answer and say why it is correct",
          "block": "pages-08-09_k50",
-         "start_s": 2714.451,
-         "start": "45:14"
+         "start_s": 2984.156,
+         "start": "49:44"
         },
         {
          "text": "Draw the medication period up to now",
          "block": "pages-08-09_k52",
-         "start_s": 2731.848,
-         "start": "45:31"
+         "start_s": 3001.553,
+         "start": "50:01"
         },
         {
          "text": "Contrast the continuing course with the finished course",
          "block": "pages-08-09_k53",
-         "start_s": 2758.37,
-         "start": "45:58"
+         "start_s": 3028.075,
+         "start": "50:28"
         },
         {
          "text": "Show what a real passive would look like",
          "block": "pages-08-09_k54",
-         "start_s": 2781.135,
-         "start": "46:21"
+         "start_s": 3050.84,
+         "start": "50:50"
         }
        ]
       },
       {
        "board": "pages-08-09_t7",
        "title": "Reported pain row",
-       "start_s": 2795.388,
-       "start": "46:35",
+       "start_s": 3065.093,
+       "start": "51:05",
        "points": [
         {
          "text": "Fix the case note, the preferred form and the wrong sentence",
          "block": "pages-08-09_k55",
-         "start_s": 2795.388,
-         "start": "46:35"
+         "start_s": 3065.093,
+         "start": "51:05"
         },
         {
          "text": "Give the passive marker rule",
          "block": "pages-08-09_k57",
-         "start_s": 2809.508,
-         "start": "46:49"
+         "start_s": 3079.213,
+         "start": "51:19"
         },
         {
          "text": "Apply the rule to this sentence",
          "block": "pages-08-09_k58",
-         "start_s": 2817.531,
-         "start": "46:57"
+         "start_s": 3087.236,
+         "start": "51:27"
         },
         {
          "text": "Give the answer and say why it is correct",
          "block": "pages-08-09_k59",
-         "start_s": 2826.017,
-         "start": "47:06"
+         "start_s": 3095.722,
+         "start": "51:35"
         },
         {
          "text": "Separate the verb from the noun",
          "block": "pages-08-09_k61",
-         "start_s": 2846.731,
-         "start": "47:26"
+         "start_s": 3116.436,
+         "start": "51:56"
         }
        ]
       },
       {
        "board": "pages-08-09_t8",
        "title": "Exercise set: colonoscopy, diabetes and home modification rows",
-       "start_s": 2859.242,
-       "start": "47:39",
+       "start_s": 3186.127,
+       "start": "53:06",
        "points": [
         {
          "text": "Show the three items of the second set",
          "block": "pages-08-09_k62",
-         "start_s": 2859.242,
-         "start": "47:39"
+         "start_s": 3186.127,
+         "start": "53:06"
         }
        ]
       },
       {
        "board": "pages-08-09_t9",
        "title": "Colonoscopy row",
-       "start_s": 2928.694,
-       "start": "48:48",
+       "start_s": 3255.579,
+       "start": "54:15",
        "points": [
         {
          "text": "Fix the case note, the preferred form and the wrong sentence",
          "block": "pages-08-09_k66",
-         "start_s": 2928.694,
-         "start": "48:48"
+         "start_s": 3255.579,
+         "start": "54:15"
         },
         {
          "text": "Name the verb and the meaning problem",
          "block": "pages-08-09_k68",
-         "start_s": 2947.89,
-         "start": "49:07"
+         "start_s": 3274.775,
+         "start": "54:34"
         },
         {
          "text": "Show that changing the voice is not enough",
          "block": "pages-08-09_k69",
-         "start_s": 2958.291,
-         "start": "49:18"
+         "start_s": 3285.176,
+         "start": "54:45"
         },
         {
          "text": "Teach the verb undergo",
          "block": "pages-08-09_k71",
-         "start_s": 2970.318,
-         "start": "49:30"
+         "start_s": 3297.203,
+         "start": "54:57"
         },
         {
          "text": "Give the active answer",
          "block": "pages-08-09_k72",
-         "start_s": 2979.381,
-         "start": "49:39"
+         "start_s": 3306.266,
+         "start": "55:06"
         },
         {
          "text": "Give the passive answer",
          "block": "pages-08-09_k74",
-         "start_s": 3003.596,
-         "start": "50:03"
+         "start_s": 3330.481,
+         "start": "55:30"
         },
         {
          "text": "Give the rule to remember",
          "block": "pages-08-09_k76",
-         "start_s": 3020.074,
-         "start": "50:20"
+         "start_s": 3346.959,
+         "start": "55:46"
         }
        ]
       },
       {
        "board": "pages-08-09_t10",
        "title": "Diabetes row",
-       "start_s": 3068.834,
-       "start": "51:08",
+       "start_s": 3419.039,
+       "start": "56:59",
        "points": [
         {
          "text": "Fix the case note, the preferred form and the wrong sentence",
          "block": "pages-08-09_k77",
-         "start_s": 3068.834,
-         "start": "51:08"
+         "start_s": 3419.039,
+         "start": "56:59"
         },
         {
          "text": "Teach the meaning of the verb",
          "block": "pages-08-09_k79",
-         "start_s": 3087.636,
-         "start": "51:27"
+         "start_s": 3437.841,
+         "start": "57:17"
         },
         {
          "text": "Name the fault",
          "block": "pages-08-09_k80",
-         "start_s": 3095.444,
-         "start": "51:35"
+         "start_s": 3445.649,
+         "start": "57:25"
         },
         {
          "text": "Repair 1: keep the active and name the doer",
          "block": "pages-08-09_k81",
-         "start_s": 3105.936,
-         "start": "51:45"
+         "start_s": 3456.141,
+         "start": "57:36"
         },
         {
          "text": "Repair 2: use the passive",
          "block": "pages-08-09_k83",
-         "start_s": 3120.989,
-         "start": "52:00"
+         "start_s": 3471.194,
+         "start": "57:51"
         },
         {
          "text": "Repair 3: change the verb to keep John as subject",
          "block": "pages-08-09_k85",
-         "start_s": 3145.212,
-         "start": "52:25"
+         "start_s": 3495.417,
+         "start": "58:15"
         },
         {
          "text": "Give the rule to remember",
          "block": "pages-08-09_k87",
-         "start_s": 3164.579,
-         "start": "52:44"
+         "start_s": 3514.784,
+         "start": "58:34"
         }
        ]
       },
       {
        "board": "pages-08-09_t11",
        "title": "Home modification row",
-       "start_s": 3175.164,
-       "start": "52:55",
+       "start_s": 3588.579,
+       "start": "59:48",
        "points": [
         {
          "text": "Fix the case note, the preferred form and the wrong sentence",
          "block": "pages-08-09_k88",
-         "start_s": 3175.164,
-         "start": "52:55"
+         "start_s": 3588.579,
+         "start": "59:48"
         },
         {
          "text": "Show why the sentence needs the passive",
          "block": "pages-08-09_k91",
-         "start_s": 3201.626,
-         "start": "53:21"
+         "start_s": 3615.041,
+         "start": "60:15"
         },
         {
          "text": "Name the form used and the form needed",
          "block": "pages-08-09_k92",
-         "start_s": 3208.023,
-         "start": "53:28"
+         "start_s": 3621.438,
+         "start": "60:21"
         },
         {
          "text": "Teach the present perfect passive form",
          "block": "pages-08-09_k93",
-         "start_s": 3216.68,
-         "start": "53:36"
+         "start_s": 3630.095,
+         "start": "60:30"
         },
         {
          "text": "Give the answer and say why it is correct",
          "block": "pages-08-09_k94",
-         "start_s": 3225.961,
-         "start": "53:45"
+         "start_s": 3639.376,
+         "start": "60:39"
         },
         {
          "text": "Point out the missing article and define the term",
          "block": "pages-08-09_k96",
-         "start_s": 3250.931,
-         "start": "54:10"
+         "start_s": 3715.553,
+         "start": "61:55"
         },
         {
          "text": "Keep the two verbs in the same tense",
          "block": "pages-08-09_k98",
-         "start_s": 3266.16,
-         "start": "54:26"
+         "start_s": 3730.782,
+         "start": "62:10"
         }
        ]
       }
@@ -6194,29 +6194,29 @@
        "block": "pages-08-09_k57",
        "kind": "rule",
        "text": "'Was' and 'were' before a past participle are a sign of the passive.",
-       "start_s": 2809.508,
-       "start": "46:49"
+       "start_s": 3079.213,
+       "start": "51:19"
       },
       {
        "block": "pages-08-09_k76",
        "kind": "warning",
        "text": "A patient does not do a procedure. Write 'underwent', not 'did' or 'had done'.",
-       "start_s": 3020.074,
-       "start": "50:20"
+       "start_s": 3346.959,
+       "start": "55:46"
       },
       {
        "block": "pages-08-09_k87",
        "kind": "rule",
        "text": "Before you choose the passive, think about the meaning of the verb: who does the action?",
-       "start_s": 3164.579,
-       "start": "52:44"
+       "start_s": 3514.784,
+       "start": "58:34"
       },
       {
        "block": "pages-08-09_k98",
        "kind": "rule",
        "text": "Two completed actions reported together: use the same tense for both.",
-       "start_s": 3266.16,
-       "start": "54:26"
+       "start_s": 3730.782,
+       "start": "62:10"
       }
      ],
      "terms": [
@@ -6224,197 +6224,197 @@
        "block": "pages-08-09_k16",
        "label": "Grammar term",
        "term": "subject",
-       "start_s": 2302.945,
-       "start": "38:22"
+       "start_s": 2554.82,
+       "start": "42:34"
       },
       {
        "block": "pages-08-09_k29",
        "label": "New word",
        "term": "deteriorate",
-       "start_s": 2488.241,
-       "start": "41:28"
+       "start_s": 2740.116,
+       "start": "45:40"
       },
       {
        "block": "pages-08-09_k45",
        "label": "Abbreviations",
        "term": "Med, b.d",
-       "start_s": 2654.183,
-       "start": "44:14"
+       "start_s": 2923.888,
+       "start": "48:43"
       },
       {
        "block": "pages-08-09_k61",
        "label": "Word forms",
        "term": "complain / complaint",
-       "start_s": 2846.731,
-       "start": "47:26"
+       "start_s": 3116.436,
+       "start": "51:56"
       },
       {
        "block": "pages-08-09_k71",
        "label": "Verb",
        "term": "undergo / underwent",
-       "start_s": 2970.318,
-       "start": "49:30"
+       "start_s": 3297.203,
+       "start": "54:57"
       },
       {
        "block": "pages-08-09_k79",
        "label": "Verb",
        "term": "diagnose",
-       "start_s": 3087.636,
-       "start": "51:27"
+       "start_s": 3437.841,
+       "start": "57:17"
       },
       {
        "block": "pages-08-09_k93",
        "label": "Form",
        "term": "present perfect passive",
-       "start_s": 3216.68,
-       "start": "53:36"
+       "start_s": 3630.095,
+       "start": "60:30"
       },
       {
        "block": "pages-08-09_k97",
        "label": "Grammar term",
        "term": "article",
-       "start_s": 3258.036,
-       "start": "54:18"
+       "start_s": 3722.658,
+       "start": "62:02"
       }
      ],
      "wrong_examples": [
       {
        "block": "pages-08-09_k02",
        "text": "The patient's appetite has been increased.",
-       "start_s": 2183.312,
-       "start": "36:23"
+       "start_s": 2435.187,
+       "start": "40:35"
       },
       {
        "block": "pages-08-09_k03",
        "text": "The patient's appetite is increased.",
-       "start_s": 2183.312,
-       "start": "36:23"
+       "start_s": 2435.187,
+       "start": "40:35"
       },
       {
        "block": "pages-08-09_k04",
        "text": "The patient's health has been deteriorated.",
-       "start_s": 2183.312,
-       "start": "36:23"
+       "start_s": 2435.187,
+       "start": "40:35"
       },
       {
        "block": "pages-08-09_k05",
        "text": "The patient's health was deteriorated",
-       "start_s": 2183.312,
-       "start": "36:23"
+       "start_s": 2435.187,
+       "start": "40:35"
       },
       {
        "block": "pages-08-09_k07",
        "text": "The patient's mood has been improved.",
-       "start_s": 2232.848,
-       "start": "37:12"
+       "start_s": 2484.723,
+       "start": "41:24"
       },
       {
        "block": "pages-08-09_k08",
        "text": "The patient's mood is improved.",
-       "start_s": 2232.848,
-       "start": "37:12"
+       "start_s": 2484.723,
+       "start": "41:24"
       },
       {
        "block": "pages-08-09_k09",
        "text": "She has been taken OxyContin 5mg twice a day to control her pain.",
-       "start_s": 2232.848,
-       "start": "37:12"
+       "start_s": 2484.723,
+       "start": "41:24"
       },
       {
        "block": "pages-08-09_k10",
        "text": "The patient was complained of pain in her both feet",
-       "start_s": 2232.848,
-       "start": "37:12"
+       "start_s": 2484.723,
+       "start": "41:24"
       },
       {
        "block": "pages-08-09_k12",
        "text": "The patient's appetite has been increased.",
-       "start_s": 2264.045,
-       "start": "37:44"
+       "start_s": 2515.92,
+       "start": "41:55"
       },
       {
        "block": "pages-08-09_k13",
        "text": "The patient's appetite is increased.",
-       "start_s": 2264.045,
-       "start": "37:44"
+       "start_s": 2515.92,
+       "start": "41:55"
       },
       {
        "block": "pages-08-09_k26",
        "text": "The patient's health has been deteriorated.",
-       "start_s": 2444.502,
-       "start": "40:44"
+       "start_s": 2696.377,
+       "start": "44:56"
       },
       {
        "block": "pages-08-09_k27",
        "text": "The patient's health was deteriorated",
-       "start_s": 2444.502,
-       "start": "40:44"
+       "start_s": 2696.377,
+       "start": "44:56"
       },
       {
        "block": "pages-08-09_k35",
        "text": "The patient's mood has been improved.",
-       "start_s": 2565.756,
-       "start": "42:45"
+       "start_s": 2787.631,
+       "start": "46:27"
       },
       {
        "block": "pages-08-09_k36",
        "text": "The patient's mood is improved.",
-       "start_s": 2565.756,
-       "start": "42:45"
+       "start_s": 2787.631,
+       "start": "46:27"
       },
       {
        "block": "pages-08-09_k44",
        "text": "She has been taken OxyContin 5mg twice a day to control her pain.",
-       "start_s": 2645.374,
-       "start": "44:05"
+       "start_s": 2915.079,
+       "start": "48:35"
       },
       {
        "block": "pages-08-09_k56",
        "text": "The patient was complained of pain in her both feet",
-       "start_s": 2795.388,
-       "start": "46:35"
+       "start_s": 3065.093,
+       "start": "51:05"
       },
       {
        "block": "pages-08-09_k63",
        "text": "Patient had done a colonoscopy on 21/11/2018",
-       "start_s": 2859.242,
-       "start": "47:39"
+       "start_s": 3186.127,
+       "start": "53:06"
       },
       {
        "block": "pages-08-09_k64",
        "text": "John has diagnosed with diabetes since 2012.",
-       "start_s": 2859.242,
-       "start": "47:39"
+       "start_s": 3186.127,
+       "start": "53:06"
       },
       {
        "block": "pages-08-09_k65",
        "text": "Home modification have completed and GP appointment scheduled for 7/12/2018",
-       "start_s": 2859.242,
-       "start": "47:39"
+       "start_s": 3186.127,
+       "start": "53:06"
       },
       {
        "block": "pages-08-09_k67",
        "text": "Patient had done a colonoscopy on 21/11/2018",
-       "start_s": 2928.694,
-       "start": "48:48"
+       "start_s": 3255.579,
+       "start": "54:15"
       },
       {
        "block": "pages-08-09_k69",
        "text": "Patient did a colonoscopy.",
-       "start_s": 2958.291,
-       "start": "49:18"
+       "start_s": 3285.176,
+       "start": "54:45"
       },
       {
        "block": "pages-08-09_k78",
        "text": "John has diagnosed with diabetes since 2012.",
-       "start_s": 3068.834,
-       "start": "51:08"
+       "start_s": 3419.039,
+       "start": "56:59"
       },
       {
        "block": "pages-08-09_k89",
        "text": "Home modification have completed and GP appointment scheduled for 7/12/2018",
-       "start_s": 3175.164,
-       "start": "52:55"
+       "start_s": 3588.579,
+       "start": "59:48"
       }
      ],
      "practice": [],
@@ -6424,16 +6424,16 @@
        "lesson": "grammar-01-verb-tenses",
        "section": "page-16",
        "provenance": "source-derived",
-       "start_s": 2475.482,
-       "start": "41:15"
+       "start_s": 2727.357,
+       "start": "45:27"
       },
       {
        "utterance": "pages-08-09_t4.s1.u5",
        "lesson": "grammar-01-verb-tenses",
        "section": "pages-05-06",
        "provenance": "source-derived",
-       "start_s": 2475.482,
-       "start": "41:15"
+       "start_s": 2727.357,
+       "start": "45:27"
       }
      ]
     }
@@ -6456,8 +6456,8 @@
      "lexicon": null,
      "section": "pages-05-06",
      "block": "pages-05-06_k12",
-     "start_s": 604.444,
-     "start": "10:04"
+     "start_s": 666.904,
+     "start": "11:06"
     },
     {
      "word": "taking",
@@ -6465,8 +6465,8 @@
      "lexicon": null,
      "section": "pages-05-06",
      "block": "pages-05-06_k13",
-     "start_s": 623.352,
-     "start": "10:23"
+     "start_s": 685.812,
+     "start": "11:25"
     },
     {
      "word": "during hospitalization",
@@ -6474,8 +6474,8 @@
      "lexicon": null,
      "section": "pages-05-06",
      "block": "pages-05-06_k90",
-     "start_s": 1498.06,
-     "start": "24:58"
+     "start_s": 1621.065,
+     "start": "27:01"
     },
     {
      "word": "significant",
@@ -6483,8 +6483,8 @@
      "lexicon": null,
      "section": "pages-05-06",
      "block": "pages-05-06_k129",
-     "start_s": 1544.262,
-     "start": "25:44"
+     "start_s": 1667.267,
+     "start": "27:47"
     },
     {
      "word": "deteriorated",
@@ -6492,8 +6492,8 @@
      "lexicon": null,
      "section": "pages-08-09",
      "block": "pages-08-09_k100",
-     "start_s": 2205.204,
-     "start": "36:45"
+     "start_s": 2457.079,
+     "start": "40:57"
     },
     {
      "word": "deteriorate",
@@ -6501,8 +6501,8 @@
      "lexicon": null,
      "section": "pages-08-09",
      "block": "pages-08-09_k29",
-     "start_s": 2488.241,
-     "start": "41:28"
+     "start_s": 2740.116,
+     "start": "45:40"
     },
     {
      "word": "modification",
@@ -6510,8 +6510,8 @@
      "lexicon": null,
      "section": "pages-08-09",
      "block": "pages-08-09_k101",
-     "start_s": 2885.842,
-     "start": "48:05"
+     "start_s": 3212.727,
+     "start": "53:32"
     },
     {
      "word": "scheduled",
@@ -6519,8 +6519,8 @@
      "lexicon": null,
      "section": "pages-08-09",
      "block": "pages-08-09_k102",
-     "start_s": 2902.812,
-     "start": "48:22"
+     "start_s": 3229.697,
+     "start": "53:49"
     }
    ],
    "withheld": {
@@ -6577,16 +6577,16 @@
       "section": "page-16",
       "from_section": "pages-08-09",
       "utterance": "pages-08-09_t4.s1.u5",
-      "start_s": 2475.482,
-      "start": "41:15"
+      "start_s": 2727.357,
+      "start": "45:27"
      },
      {
       "lesson": "grammar-01-verb-tenses",
       "section": "pages-05-06",
       "from_section": "pages-08-09",
       "utterance": "pages-08-09_t4.s1.u5",
-      "start_s": 2475.482,
-      "start": "41:15"
+      "start_s": 2727.357,
+      "start": "45:27"
      }
     ],
     "referred_to_by": [
@@ -53759,8 +53759,8 @@
     {
      "lesson": "grammar-02-verb-use",
      "section": "page-7",
-     "start_s": 1918.918,
-     "start": "31:58",
+     "start_s": 2119.783,
+     "start": "35:19",
      "source": "curated"
     }
    ]
@@ -53772,8 +53772,8 @@
     {
      "lesson": "grammar-02-verb-use",
      "section": "page-7",
-     "start_s": 1982.378,
-     "start": "33:02",
+     "start_s": 2183.243,
+     "start": "36:23",
      "source": "term"
     }
    ]
@@ -53967,8 +53967,8 @@
     {
      "lesson": "grammar-02-verb-use",
      "section": "pages-08-09",
-     "start_s": 3258.036,
-     "start": "54:18",
+     "start_s": 3722.658,
+     "start": "62:02",
      "source": "term"
     }
    ]
@@ -54221,8 +54221,8 @@
     {
      "lesson": "grammar-02-verb-use",
      "section": "pages-05-06",
-     "start_s": 516.584,
-     "start": "8:36",
+     "start_s": 579.044,
+     "start": "9:39",
      "source": "curated"
     }
    ]
@@ -54561,8 +54561,8 @@
     {
      "lesson": "grammar-02-verb-use",
      "section": "pages-05-06",
-     "start_s": 1381.192,
-     "start": "23:01",
+     "start_s": 1504.197,
+     "start": "25:04",
      "source": "term"
     }
    ]
@@ -54704,8 +54704,8 @@
     {
      "lesson": "grammar-02-verb-use",
      "section": "pages-05-06",
-     "start_s": 841.238,
-     "start": "14:01",
+     "start_s": 931.938,
+     "start": "15:31",
      "source": "term"
     },
     {
@@ -55584,8 +55584,8 @@
     {
      "lesson": "grammar-02-verb-use",
      "section": "pages-05-06",
-     "start_s": 1105.123,
-     "start": "18:25",
+     "start_s": 1195.823,
+     "start": "19:55",
      "source": "term"
     }
    ]
@@ -56383,8 +56383,8 @@
     {
      "lesson": "grammar-02-verb-use",
      "section": "page-7",
-     "start_s": 2000.017,
-     "start": "33:20",
+     "start_s": 2200.882,
+     "start": "36:40",
      "source": "term"
     }
    ]
@@ -56396,8 +56396,8 @@
     {
      "lesson": "grammar-02-verb-use",
      "section": "page-7",
-     "start_s": 1918.918,
-     "start": "31:58",
+     "start_s": 2119.783,
+     "start": "35:19",
      "source": "section"
     }
    ]
@@ -56657,8 +56657,8 @@
     {
      "lesson": "grammar-02-verb-use",
      "section": "pages-05-06",
-     "start_s": 649.892,
-     "start": "10:49",
+     "start_s": 712.352,
+     "start": "11:52",
      "source": "term"
     },
     {
@@ -56690,8 +56690,8 @@
     {
      "lesson": "grammar-02-verb-use",
      "section": "pages-08-09",
-     "start_s": 3216.68,
-     "start": "53:36",
+     "start_s": 3630.095,
+     "start": "60:30",
      "source": "term"
     },
     {
@@ -57443,8 +57443,8 @@
     {
      "lesson": "grammar-02-verb-use",
      "section": "pages-08-09",
-     "start_s": 2302.945,
-     "start": "38:22",
+     "start_s": 2554.82,
+     "start": "42:34",
      "source": "term"
     },
     {
@@ -58290,8 +58290,8 @@
     {
      "lesson": "grammar-02-verb-use",
      "section": "pages-08-09",
-     "start_s": 2183.312,
-     "start": "36:23",
+     "start_s": 2435.187,
+     "start": "40:35",
      "source": "section"
     }
    ]
@@ -58303,8 +58303,8 @@
     {
      "lesson": "grammar-02-verb-use",
      "section": "pages-05-06",
-     "start_s": 516.584,
-     "start": "8:36",
+     "start_s": 579.044,
+     "start": "9:39",
      "source": "section"
     }
    ]
