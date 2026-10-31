@@ -51923,8 +51923,11 @@
    "length_s": 1932.864,
    "length": "32:12",
    "bundle_format": "1.23",
-   "status": "built",
-   "approval": null,
+   "status": "approved",
+   "approval": {
+    "by": "Siavash",
+    "on": "2026-10-31 10:22"
+   },
    "source": {
     "folder": "source",
     "recording": "source/video.mp4",
