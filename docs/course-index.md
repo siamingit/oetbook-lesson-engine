@@ -25,7 +25,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 | 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 66:38 | 8 | 2026-10-31 12:46 (Siavash) |
 | 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 59:04 | 6 | 2026-10-31 13:24 (Siavash) |
 | 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 95:45 | 18 | 2026-10-27 09:37 (siavash) |
-| 8 | Grammar for OET: Paraphrasing | `grammar-08-paraphrasing` | 63:30 | 7 | 2026-10-27 09:37 (siavash) |
+| 8 | Grammar for OET: Paraphrasing | `grammar-08-paraphrasing` | 63:39 | 7 | 2026-10-31 16:42 (Siavash) |
 
 <a id="grammar-01-verb-tenses"></a>
 
@@ -753,8 +753,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 46:50
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 11:55, about section `page-15`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 5:08, about section `page-15`
-- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Expand" at 16:21
-- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Rearrange" at 43:53, about section `page-9`
+- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Expand" at 16:29
+- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Rearrange" at 44:02, about section `page-9`
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Medical terms: vocabulary and word form" at 24:06, about section `page-15`
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Key points to remember" at 14:51, about section `page-9`
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Treat" at 45:17, about section `page-15`
@@ -2802,8 +2802,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 10:25 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Due to, despite, as well as" (in `page-6_t1.s14.u2`)
 - 11:55 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `page-6_t1.s19.u3`)
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Introduction" at 0:04
-- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 32:48, about section `added-05`
-- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 32:48, about section `added-03`
+- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 32:56, about section `added-05`
+- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 32:56, about section `added-03`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Genre and Style" at 24:42, about section `added-08`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:49, about section `page-5`
 - referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "Greeting and Re line" at 15:18, about section `page-14`
@@ -2816,8 +2816,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 8. Grammar for OET: Paraphrasing
 
-- Lesson ID and folder: `grammar-08-paraphrasing` (folder `grammar-08-paraphrasing`); course grammar, lesson 8; length 63:30; bundle format 1.23
-- Status: approved by siavash, 2026-10-27 09:37
+- Lesson ID and folder: `grammar-08-paraphrasing` (folder `grammar-08-paraphrasing`); course grammar, lesson 8; length 63:39; bundle format 1.23
+- Status: approved by Siavash, 2026-10-31 16:42
 - Description: Learn eight steps to turn case notes into clear, correct sentences for your OET letter.
 - Original session: folder `source`: `source/video.mp4`, 83:44 long, partial hash `2962a94a3786c811`; deck `source/slides.pdf`, 11 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -2888,10 +2888,10 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 14:29 The phrase 'sustain a fracture', taught directly in English
   - 14:50 Second worked example: a note expanded into a sentence
   - 15:06 What was added in the second example, and abbreviations
-  - 15:19 Abbreviations written in full
-  - 15:42 Case notes are a timeline: a dated past event
-  - 16:02 Case notes are a timeline: something that continues up to now
-  - 16:21 Pointer to the tense lesson
+  - 15:27 Abbreviations written in full
+  - 15:50 Case notes are a timeline: a dated past event
+  - 16:10 Case notes are a timeline: something that continues up to now
+  - 16:29 Pointer to the tense lesson
 
 *Rules on the boards*
 
@@ -2903,187 +2903,187 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 11:19 The patient done a surgery.
 - 12:09 Mr X underwent right total hip replacement after sustaining fracture of right neck of femur.
 
-*Terms*: Expand (Key word, 10:15); Subject (Grammar word, 11:00); Undergo (Verb, 11:32); Articles (Grammar word, 12:29); Sustain a fracture (Phrase, 14:29); Present perfect (Tense, 16:12)
+*Terms*: Expand (Key word, 10:15); Subject (Grammar word, 11:00); Undergo (Verb, 11:32); Articles (Grammar word, 12:29); Sustain a fracture (Phrase, 14:29); Present perfect (Tense, 16:20)
 
-#### 17:38 Omit (`page-6`, deck)
+#### 17:47 Omit (`page-6`, deck)
 
-- 17:38 **Omit: the Mary Roden case notes**
-  - 17:38 introduce the three columns and technique 2
-  - 17:55 case notes hold everything, the letter does not
-  - 18:11 read the task first, then choose the notes
-  - 18:31 the question this step asks
-  - 18:44 what extra information costs
-  - 19:26 what the smoking line really tells us
-  - 19:41 gloss the word occasionally
-  - 19:55 what the Wrong column is
-  - 20:21 caveat, no task is given here
-  - 20:46 marital status is kept
-  - 21:04 keep the job, cut the job detail
-  - 21:23 keep the children, cut their birth years
-  - 21:40 the word respectively
-  - 22:01 smoking and alcohol history are kept
-  - 22:19 the missing detail is her age (first typed part)
-  - 22:52 how the age phrase is written
-  - 23:10 the same form with a time period
-  - 24:16 the job phrase is cut down (second typed part)
-  - 24:27 the order of the words before the noun
-  - 24:46 teenage replaces the ages (third typed part)
-  - 24:58 a better time reference for stopping smoking (fourth typed part)
-  - 25:14 social drinker (fifth typed part)
-  - 25:31 compare the length of the two versions
-  - 25:47 the letter's word count
-  - 26:02 what padding does
-  - 26:25 the result of omitting
+- 17:47 **Omit: the Mary Roden case notes**
+  - 17:47 introduce the three columns and technique 2
+  - 18:03 case notes hold everything, the letter does not
+  - 18:19 read the task first, then choose the notes
+  - 18:39 the question this step asks
+  - 18:53 what extra information costs
+  - 19:34 what the smoking line really tells us
+  - 19:50 gloss the word occasionally
+  - 20:03 what the Wrong column is
+  - 20:29 caveat, no task is given here
+  - 20:54 marital status is kept
+  - 21:12 keep the job, cut the job detail
+  - 21:31 keep the children, cut their birth years
+  - 21:48 the word respectively
+  - 22:09 smoking and alcohol history are kept
+  - 22:27 the missing detail is her age (first typed part)
+  - 23:00 how the age phrase is written
+  - 23:18 the same form with a time period
+  - 24:24 the job phrase is cut down (second typed part)
+  - 24:35 the order of the words before the noun
+  - 24:54 teenage replaces the ages (third typed part)
+  - 25:07 a better time reference for stopping smoking (fourth typed part)
+  - 25:22 social drinker (fifth typed part)
+  - 25:39 compare the length of the two versions
+  - 25:55 the letter's word count
+  - 26:10 what padding does
+  - 26:34 the result of omitting
 
 *Rules on the boards*
 
-- 25:47 An OET letter is 180 to 200 words. Do not add extra words to reach it: the information you must give will fill it.
+- 25:55 An OET letter is 180 to 200 words. Do not add extra words to reach it: the information you must give will fill it.
 
 *Warnings (common mistakes)*
 
-- 18:44 Extra information slows the reader down and makes it harder to find the key points. It also costs you marks.
-- 26:02 Extra words can push you over 200 words and hide the key points.
+- 18:53 Extra information slows the reader down and makes it harder to find the key points. It also costs you marks.
+- 26:10 Extra words can push you over 200 words and hide the key points.
 
-*Terms*: Omit (Technique 2, 17:43); a fifty-year-old teacher (Form, 22:52); a social drinker (New phrase, 25:14)
+*Terms*: Omit (Technique 2, 17:51); a fifty-year-old teacher (Form, 23:00); a social drinker (New phrase, 25:22)
 
-#### 28:00 Combine (`page-7`, deck)
+#### 28:08 Combine (`page-7`, deck)
 
-- 28:00 **Combine: Mr Edmond case notes**
-  - 28:00 step 3 of the procedure is to combine related notes
-  - 28:16 one longer sentence instead of a line of short ones
-  - 28:30 the scenario behind the case notes
-  - 28:43 who the letter goes to and what it must say
-  - 28:55 the same writing skills in every profession
-  - 29:23 reading the case-note column
-  - 29:35 what non-compliant means
-  - 29:56 gloss of the hard word 'resents'
-  - 30:15 quotation marks in a case note
-  - 30:30 what unmotivated means
-  - 30:41 gloss of 'intermittently'
-  - 30:59 what 'double doses sometimes' means
-  - 31:25 why the middle column is judged weak
-  - 31:45 cutting the detail about the GP
-  - 31:58 42 words against the length of the letter
-  - 32:13 state the fact instead of reporting his words
-  - 32:23 three sentences follow one idea
-  - 32:43 a name takes a capital letter
-  - 33:16 present simple for the medication he takes now
-  - 33:24 the two facts contrast
-  - 33:40 however as the linking word
-  - 33:51 present perfect for a state that continues
-  - 34:08 the preposition after compliant
-  - 34:19 joining with and instead of a full stop
-  - 34:31 the reasons are not relevant
-  - 34:47 what the receiving centre must be told
-  - 34:53 the facts written as nouns
-  - 35:11 gloss of 'occasional'
-  - 35:28 the result of combining
-  - 35:34 what to keep and what to cut
-  - 35:51 the gain in length
-  - 36:02 the rule to remember
-  - 36:15 the two joining words used here
+- 28:08 **Combine: Mr Edmond case notes**
+  - 28:08 step 3 of the procedure is to combine related notes
+  - 28:24 one longer sentence instead of a line of short ones
+  - 28:38 the scenario behind the case notes
+  - 28:51 who the letter goes to and what it must say
+  - 29:03 the same writing skills in every profession
+  - 29:32 reading the case-note column
+  - 29:44 what non-compliant means
+  - 30:04 gloss of the hard word 'resents'
+  - 30:23 quotation marks in a case note
+  - 30:38 what unmotivated means
+  - 30:50 gloss of 'intermittently'
+  - 31:07 what 'double doses sometimes' means
+  - 31:33 why the middle column is judged weak
+  - 31:54 cutting the detail about the GP
+  - 32:06 42 words against the length of the letter
+  - 32:21 state the fact instead of reporting his words
+  - 32:31 three sentences follow one idea
+  - 32:51 a name takes a capital letter
+  - 33:24 present simple for the medication he takes now
+  - 33:33 the two facts contrast
+  - 33:49 however as the linking word
+  - 34:00 present perfect for a state that continues
+  - 34:17 the preposition after compliant
+  - 34:28 joining with and instead of a full stop
+  - 34:40 the reasons are not relevant
+  - 34:56 what the receiving centre must be told
+  - 35:02 the facts written as nouns
+  - 35:20 gloss of 'occasional'
+  - 35:37 the result of combining
+  - 35:44 what to keep and what to cut
+  - 36:00 the gain in length
+  - 36:11 the rule to remember
+  - 36:24 the two joining words used here
 
 *Rules on the boards*
 
-- 36:02 Facts that follow one idea belong in one sentence. Combine them with compound and complex sentences.
+- 36:11 Facts that follow one idea belong in one sentence. Combine them with compound and complex sentences.
 
 *Warnings (common mistakes)*
 
-- 31:25 This paragraph is not incorrect English. But a whole letter written like this makes a grade B very hard to get.
+- 31:33 This paragraph is not incorrect English. But a whole letter written like this makes a grade B very hard to get.
 
-*Terms*: Combine (Step, 28:04); Non-compliant (Case note word, 29:35); Unmotivated (Case note word, 30:30); However (Linking word, 33:40); Compliant with (Form, 34:08)
+*Terms*: Combine (Step, 28:12); Non-compliant (Case note word, 29:44); Unmotivated (Case note word, 30:38); However (Linking word, 33:49); Compliant with (Form, 34:17)
 
-#### 37:46 Rearrange (`page-8`, deck)
+#### 37:55 Rearrange (`page-8`, deck)
 
-- 37:46 **Case notes rearranged into a letter**
-  - 37:46 the notes are a set of events in time
-  - 38:08 the tense follows the time
-  - 38:23 the order of the notes is the writer's choice
-  - 38:39 the task and the patient
-  - 38:56 the three events drawn on a time line
-  - 39:55 the date becomes today
-  - 40:05 simple past for her visit
-  - 40:24 gloss of intermittent
-  - 40:43 the pain score
-  - 40:52 the pain continues to now
-  - 41:21 the form for how long a problem has lasted
-  - 41:34 the word that joins the other symptoms
-  - 41:48 three lines become one sentence
-  - 42:05 what to leave out
-  - 42:25 gloss of pop
-  - 42:36 simple past for the incident
-  - 43:03 how when joins the two clauses
-  - 43:33 the time word while
-  - 43:45 past perfect for the earlier period
-  - 44:06 the form for the time before onset
-  - 44:19 closing summary of the whole rewrite
-
-*Rules on the boards*
-
-- 44:19 Paraphrase the notes, keep what is relevant, drop what is not, and put the events in a clear order. With correct grammar, accurate vocabulary and clear sentences, a letter can move from grade C to grade B or A.
-
-*Terms*: 3/10 (Case notes, 40:43); A two-week history of (Form, 41:21); Concomitant (New word, 41:34); While (Time words, 43:33); Prior to onset (Form, 44:06)
-
-#### 46:09 Synonyms (`pages-09-10`, deck)
-
-- 46:09 **Dental case notes: synonyms for conditions and symptoms**
-  - 46:09 the case notes and the question behind the task
-  - 46:33 what a synonym is
-  - 46:45 which words stay and which change
-  - 47:11 one word changed for another
-  - 47:21 the task line and the abbreviations
-  - 47:47 how we will work through the notes
-  - 48:05 the first visit becomes 'was first advised'
-  - 48:31 what DO stands for
-  - 48:42 60% possibility becomes 'might'
-  - 49:05 what 'wishes to delay' means
-  - 49:19 reluctant
-  - 49:44 the reason for the delay
-  - 50:01 what financial constraints means, and a second wording
-  - 50:26 'complains: pain' becomes 'painful'
-  - 50:52 the word 'scheduled'
-  - 51:16 'gone away' becomes asymptomatic
-  - 51:34 the prefix a-
-  - 52:09 linking the two sentences
-  - 52:33 the changes we made in these notes
-  - 53:01 build a store of synonyms before the exam
-  - 54:23 dates become time expressions
-- 54:54 **Pharmacy case notes: patient-friendly synonyms**
-  - 54:54 the style of this letter
-  - 55:07 what patient friendly language means
-  - 55:22 the reader decides the words
-  - 55:39 whose case notes these are
-  - 56:04 abbreviations the patient cannot read
-  - 56:18 how the prescription is reported
-  - 56:55 prn written in plain words
-  - 57:14 max 4 hrly written in plain words
-  - 57:35 what to do when no synonym comes to mind
-  - 58:05 the abbreviations in this line
-  - 58:12 abbreviations belong to each profession
-  - 58:32 why the second medication is given
-  - 58:51 tds written out for the patient
-  - 59:13 keep one word, change the other
-  - 59:28 the word 'cramps'
-  - 59:45 the side effects in the letter
-  - 60:10 what impaired alertness means
-  - 60:27 the warning in the letter
-  - 60:45 how the warning opens
-  - 61:09 leave out what is too technical
-  - 61:19 patient-friendly words for the terms in these notes
-  - 61:43 the rule for choosing the words
-  - 63:07 the paraphrasing techniques together
+- 37:55 **Case notes rearranged into a letter**
+  - 37:55 the notes are a set of events in time
+  - 38:17 the tense follows the time
+  - 38:32 the order of the notes is the writer's choice
+  - 38:48 the task and the patient
+  - 39:05 the three events drawn on a time line
+  - 40:04 the date becomes today
+  - 40:14 simple past for her visit
+  - 40:33 gloss of intermittent
+  - 40:52 the pain score
+  - 41:01 the pain continues to now
+  - 41:31 the form for how long a problem has lasted
+  - 41:43 the word that joins the other symptoms
+  - 41:57 three lines become one sentence
+  - 42:14 what to leave out
+  - 42:34 gloss of pop
+  - 42:45 simple past for the incident
+  - 43:12 how when joins the two clauses
+  - 43:42 the time word while
+  - 43:54 past perfect for the earlier period
+  - 44:15 the form for the time before onset
+  - 44:28 closing summary of the whole rewrite
 
 *Rules on the boards*
 
-- 53:01 Learn your synonyms before the exam. 'Asymptomatic' works in a letter to a health professional, not in a letter to a patient.
-- 57:35 When you cannot find a synonym, say the meaning in your own simplest words, then write that sentence down.
-- 61:43 The reader decides your words. In a letter to a patient, change any medical wording the patient would not understand for an everyday word.
+- 44:28 Paraphrase the notes, keep what is relevant, drop what is not, and put the events in a clear order. With correct grammar, accurate vocabulary and clear sentences, a letter can move from grade C to grade B or A.
 
-*Terms*: Synonym (New word, 46:33); DO tunnel (Abbreviation, 48:31); Reluctant (New word, 49:23); Financial constraints (New words, 50:01); Asymptomatic (New word, 51:34); Subsequently (Linking word, 52:14); Initially (Time words, 54:40); Patient friendly language (Style, 55:07); Present perfect passive (Form, 56:32); prn and tds (Abbreviations, 58:05); Counteract (New word, 58:36); Impaired alertness (New words, 60:10)
+*Terms*: 3/10 (Case notes, 40:52); A two-week history of (Form, 41:31); Concomitant (New word, 41:43); While (Time words, 43:42); Prior to onset (Form, 44:15)
+
+#### 46:18 Synonyms (`pages-09-10`, deck)
+
+- 46:18 **Dental case notes: synonyms for conditions and symptoms**
+  - 46:18 the case notes and the question behind the task
+  - 46:42 what a synonym is
+  - 46:54 which words stay and which change
+  - 47:21 one word changed for another
+  - 47:30 the task line and the abbreviations
+  - 47:56 how we will work through the notes
+  - 48:14 the first visit becomes 'was first advised'
+  - 48:40 what DO stands for
+  - 48:52 60% possibility becomes 'might'
+  - 49:14 what 'wishes to delay' means
+  - 49:28 reluctant
+  - 49:53 the reason for the delay
+  - 50:10 what financial constraints means, and a second wording
+  - 50:35 'complains: pain' becomes 'painful'
+  - 51:01 the word 'scheduled'
+  - 51:25 'gone away' becomes asymptomatic
+  - 51:43 the prefix a-
+  - 52:18 linking the two sentences
+  - 52:42 the changes we made in these notes
+  - 53:10 build a store of synonyms before the exam
+  - 54:33 dates become time expressions
+- 55:03 **Pharmacy case notes: patient-friendly synonyms**
+  - 55:03 the style of this letter
+  - 55:16 what patient friendly language means
+  - 55:31 the reader decides the words
+  - 55:48 whose case notes these are
+  - 56:13 abbreviations the patient cannot read
+  - 56:27 how the prescription is reported
+  - 57:04 prn written in plain words
+  - 57:23 max 4 hrly written in plain words
+  - 57:44 what to do when no synonym comes to mind
+  - 58:14 the abbreviations in this line
+  - 58:21 abbreviations belong to each profession
+  - 58:41 why the second medication is given
+  - 59:01 tds written out for the patient
+  - 59:22 keep one word, change the other
+  - 59:37 the word 'cramps'
+  - 59:54 the side effects in the letter
+  - 60:19 what impaired alertness means
+  - 60:36 the warning in the letter
+  - 60:54 how the warning opens
+  - 61:18 leave out what is too technical
+  - 61:28 patient-friendly words for the terms in these notes
+  - 61:53 the rule for choosing the words
+  - 63:16 the paraphrasing techniques together
+
+*Rules on the boards*
+
+- 53:10 Learn your synonyms before the exam. 'Asymptomatic' works in a letter to a health professional, not in a letter to a patient.
+- 57:44 When you cannot find a synonym, say the meaning in your own simplest words, then write that sentence down.
+- 61:53 The reader decides your words. In a letter to a patient, change any medical wording the patient would not understand for an everyday word.
+
+*Terms*: Synonym (New word, 46:42); DO tunnel (Abbreviation, 48:40); Reluctant (New word, 49:32); Financial constraints (New words, 50:10); Asymptomatic (New word, 51:43); Subsequently (Linking word, 52:23); Initially (Time words, 54:49); Patient friendly language (Style, 55:16); Present perfect passive (Form, 56:41); prn and tds (Abbreviations, 58:14); Counteract (New word, 58:45); Impaired alertness (New words, 60:19)
 
 ### OET facts
 
-- 25:43 (`writing-letter-length`) An OET letter is 180 to 200 words.
+- 25:52 (`writing-letter-length`) An OET letter is 180 to 200 words.
 
 ### Vocabulary
 
@@ -3092,24 +3092,24 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 1:52 Paraphrasing
 - 5:55 Synonym
 - 14:29 Sustain a fracture
-- 19:41 occasionally
-- 21:40 respectively
-- 25:14 a social drinker
-- 29:35 Non-compliant
-- 29:56 Resents
-- 30:30 Unmotivated
-- 30:41 Intermittently
-- 35:11 Occasional
-- 40:24 Intermittent
-- 41:34 Concomitant
-- 42:25 Pop
-- 49:23 Reluctant
-- 50:01 Financial constraints
-- 50:52 Scheduled
-- 51:34 Asymptomatic
-- 58:36 Counteract
-- 59:28 Cramps
-- 60:10 Impaired alertness
+- 19:50 occasionally
+- 21:48 respectively
+- 25:22 a social drinker
+- 29:44 Non-compliant
+- 30:04 Resents
+- 30:38 Unmotivated
+- 30:50 Intermittently
+- 35:20 Occasional
+- 40:33 Intermittent
+- 41:43 Concomitant
+- 42:34 Pop
+- 49:32 Reluctant
+- 50:10 Financial constraints
+- 51:01 Scheduled
+- 51:43 Asymptomatic
+- 58:45 Counteract
+- 59:37 Cramps
+- 60:19 Impaired alertness
 
 ### Links to other lessons
 
@@ -3118,10 +3118,10 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 5:43 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`) (in `page-4_t1.s14.u2`)
 - 7:48 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`) (in `page-4_t1.s22.u3`)
 - 12:34 refers to Grammar for OET: Articles (`grammar-04-articles`) (in `page-5_t1.s8.u2`)
-- 16:21 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `page-5_t1.s21.u1`)
-- 32:48 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Capital letters" (in `page-7_t1.s18.u2`)
-- 32:48 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Apostrophes" (in `page-7_t1.s18.u2`)
-- 43:53 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-8_t1.s19.u2`)
+- 16:29 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `page-5_t1.s21.u1`)
+- 32:56 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Capital letters" (in `page-7_t1.s18.u2`)
+- 32:56 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Apostrophes" (in `page-7_t1.s18.u2`)
+- 44:02 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-8_t1.s19.u2`)
 - referred to by OET Writing: Overview (`writing-01-overview`), "Steps towards successful writing" at 3:22, about section `page-4`
 - referred to by OET Writing: Overview (`writing-01-overview`), "The case notes" at 11:58, about section `page-6`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Conciseness and Clarity" at 19:47, about section `page-8`
@@ -8841,14 +8841,14 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 Each topic or term, then each lesson that teaches it and the first moment there.
 
 - **a (indefinite article)**: `vocabulary-03-collocations-2` 23:02
-- **a fifty-year-old teacher**: `grammar-08-paraphrasing` 22:52
+- **a fifty-year-old teacher**: `grammar-08-paraphrasing` 23:00
 - **A needle in a haystack**: `reading-02-part-a` 1:48
 - **A or an**: `grammar-04-articles` 11:27
 - **A quick review of the method**: `reading-05-part-c-2` 1:23; `listening-05-part-c-2` 1:10
 - **A sample letter**: `writing-01-overview` 14:04
 - **A target score for Part B**: `listening-03-part-b` 11:46
 - **A target score for Part C**: `listening-04-part-c` 9:16
-- **A two-week history of**: `grammar-08-paraphrasing` 41:21
+- **A two-week history of**: `grammar-08-paraphrasing` 41:31
 - **a-**: `grammar-03-nominalization` 10:11
 - **Abbreviations in the letter**: `writing-02-assessment-criteria` 24:23
 - **Accuracy to the case notes**: `writing-02-assessment-criteria` 14:03
@@ -8896,7 +8896,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Collocation**: `vocabulary-02-collocations` 1:35
 - **Collocations in a letter**: `vocabulary-03-collocations-2` 60:41
 - **Colon (:)**: `grammar-07-punctuation` 54:47
-- **Combine**: `grammar-08-paraphrasing` 28:00
+- **Combine**: `grammar-08-paraphrasing` 28:08
 - **Comma splice**: `grammar-07-punctuation` 22:06
 - **commas**: `grammar-07-punctuation` 2:35
 - **Commas: overview**: `grammar-07-punctuation` 2:35
@@ -8904,7 +8904,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Common mistakes**: `grammar-07-punctuation` 43:10
 - **complex sentence**: `grammar-05-complex-compound` 2:13; `grammar-07-punctuation` 5:44; `grammar-08-paraphrasing` 7:40
 - **Complex sentences**: `grammar-07-punctuation` 5:39
-- **Compliant with**: `grammar-08-paraphrasing` 34:08
+- **Compliant with**: `grammar-08-paraphrasing` 34:17
 - **Compound or complex?**: `grammar-05-complex-compound` 23:54
 - **Compound sentence**: `grammar-01-verb-tenses` 121:25; `grammar-05-complex-compound` 23:54; `grammar-08-paraphrasing` 7:33
 - **Compound sentences**: `grammar-07-punctuation` 14:29
@@ -8938,7 +8938,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Dependent clause**: `grammar-05-complex-compound` 4:34; `grammar-07-punctuation` 6:45
 - **dis-**: `vocabulary-01-word-forms` 63:59
 - **do a quick check**: `vocabulary-03-collocations-2` 50:05
-- **DO tunnel**: `grammar-08-paraphrasing` 48:31
+- **DO tunnel**: `grammar-08-paraphrasing` 48:40
 - **Dos and don'ts**: `reading-02-part-a` 49:21
 - **Due to**: `grammar-05-complex-compound` 11:55; `grammar-07-punctuation` 10:13
 - **Due to, despite, as well as**: `grammar-05-complex-compound` 45:35
@@ -8988,7 +8988,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **How to practise**: `listening-02-part-a` 14:12
 - **How verb + noun collocations are formed**: `vocabulary-02-collocations` 6:10
 - **How your letter is scored**: `writing-02-assessment-criteria` 4:01
-- **However**: `grammar-08-paraphrasing` 33:40
+- **However**: `grammar-08-paraphrasing` 33:49
 - **HTN**: `grammar-02-verb-use` 19:55
 - **Hyphen**: `grammar-07-punctuation` 66:06
 - **Hyphens and numbers**: `grammar-07-punctuation` 65:54
@@ -8997,7 +8997,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Indefinite article**: `grammar-04-articles` 10:52
 - **Independent clause**: `grammar-05-complex-compound` 4:15; `grammar-07-punctuation` 7:00
 - **Infinitive**: `grammar-01-verb-tenses` 6:43
-- **Initially**: `grammar-08-paraphrasing` 54:40
+- **Initially**: `grammar-08-paraphrasing` 54:49
 - **instead of which**: `vocabulary-01-word-forms` 54:21
 - **Instructions and advice**: `vocabulary-03-collocations-2` 52:41
 - **interview**: `listening-05-part-c-2` 4:40
@@ -9050,7 +9050,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Past participle**: `grammar-01-verb-tenses` 11:09; `grammar-06-clause` 28:43
 - **Past perfect**: `grammar-01-verb-tenses` 24:20
 - **past simple**: `grammar-01-verb-tenses` 20:16
-- **Patient friendly language**: `grammar-08-paraphrasing` 55:07
+- **Patient friendly language**: `grammar-08-paraphrasing` 55:16
 - **Perfect**: `grammar-01-verb-tenses` 3:05
 - **Perfect continuous**: `grammar-01-verb-tenses` 3:24
 - **perfect continuous tenses**: `grammar-01-verb-tenses` 44:34
@@ -9064,12 +9064,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Prediction**: `grammar-01-verb-tenses` 26:06
 - **Prescribe**: `vocabulary-02-collocations` 37:34
 - **Present participle**: `grammar-06-clause` 33:19
-- **present perfect**: `grammar-01-verb-tenses` 38:26; `grammar-02-verb-use` 11:52; `grammar-08-paraphrasing` 16:12
+- **present perfect**: `grammar-01-verb-tenses` 38:26; `grammar-02-verb-use` 11:52; `grammar-08-paraphrasing` 16:20
 - **present perfect continuous**: `vocabulary-03-collocations-2` 20:42
-- **present perfect passive**: `grammar-02-verb-use` 60:30; `grammar-08-paraphrasing` 56:32
+- **present perfect passive**: `grammar-02-verb-use` 60:30; `grammar-08-paraphrasing` 56:41
 - **present simple**: `grammar-01-verb-tenses` 20:16
-- **Prior to onset**: `grammar-08-paraphrasing` 44:06
-- **prn and tds**: `grammar-08-paraphrasing` 58:05
+- **Prior to onset**: `grammar-08-paraphrasing` 44:15
+- **prn and tds**: `grammar-08-paraphrasing` 58:14
 - **Provide**: `vocabulary-02-collocations` 21:22
 - **Punctuation in OET letters**: `grammar-07-punctuation` 39:26
 - **Purpose**: `writing-02-assessment-criteria` 5:57; `writing-04-introduction` 16:32
@@ -9079,7 +9079,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Reading skills**: `reading-01-overview` 8:44
 - **Reading test format**: `reading-01-overview` 5:48
 - **Reading test overview**: `reading-01-overview` 3:33
-- **Rearrange**: `grammar-08-paraphrasing` 37:46
+- **Rearrange**: `grammar-08-paraphrasing` 37:55
 - **Reduced relative clause**: `grammar-06-clause` 19:08
 - **Reduced relative clauses**: `grammar-06-clause` 19:08
 - **Regular verb**: `grammar-01-verb-tenses` 5:44
@@ -9123,11 +9123,11 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Subordinate clause**: `grammar-05-complex-compound` 7:41
 - **Subordinating conjunction**: `grammar-05-complex-compound` 27:58
 - **Subordinating conjunctions**: `grammar-05-complex-compound` 15:44
-- **Subsequently**: `grammar-08-paraphrasing` 52:14
+- **Subsequently**: `grammar-08-paraphrasing` 52:23
 - **suggestive of**: `grammar-03-nominalization` 12:02
 - **Swollen**: `grammar-05-complex-compound` 56:32
 - **symptomatic**: `grammar-03-nominalization` 9:53
-- **Synonyms**: `grammar-08-paraphrasing` 46:09
+- **Synonyms**: `grammar-08-paraphrasing` 46:18
 - **Target score**: `reading-02-part-a` 53:08; `reading-03-part-b` 55:50; `reading-04-part-c` 3:50
 - **Tempting wrong options**: `listening-03-part-b` 9:21
 - **Tense in the letter**: `writing-02-assessment-criteria` 20:30
@@ -9193,7 +9193,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **What Part C tests**: `listening-04-part-c` 3:47
 - **What you hear in Part C**: `listening-04-part-c` 2:29
 - **which**: `vocabulary-01-word-forms` 60:36
-- **While**: `grammar-08-paraphrasing` 43:33
+- **While**: `grammar-08-paraphrasing` 43:42
 - **While you listen: signal words**: `listening-03-part-b` 6:58; `listening-04-part-c` 8:00
 - **who**: `vocabulary-01-word-forms` 59:34
 - **Who speaks, and a target score**: `listening-02-part-a` 15:40
