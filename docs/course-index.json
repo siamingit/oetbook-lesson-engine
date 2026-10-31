@@ -4468,24 +4468,24 @@
       "section": "page-7",
       "to_section": "page-9",
       "utterance": "page-7_t1.s10.u3",
-      "start_s": 1400.621,
-      "start": "23:20"
+      "start_s": 1535.246,
+      "start": "25:35"
      },
      {
       "lesson": "grammar-03-nominalization",
       "section": "page-9",
       "to_section": "page-12",
       "utterance": "page-9_t1.s2.u2",
-      "start_s": 2217.99,
-      "start": "36:57"
+      "start_s": 2482.756,
+      "start": "41:22"
      },
      {
       "lesson": "grammar-03-nominalization",
       "section": "page-11",
       "to_section": "page-16",
       "utterance": "page-11_t1.s12.u4",
-      "start_s": 2994.359,
-      "start": "49:54"
+      "start_s": 3350.687,
+      "start": "55:50"
      },
      {
       "lesson": "grammar-05-complex-compound",
@@ -6619,14 +6619,11 @@
    "description": "Learn how to turn verbs and adjectives into nouns to write formal sentences from case notes, and how to turn nouns back into verbs.",
    "course": "grammar",
    "order": 3,
-   "length_s": 3153.667,
-   "length": "52:33",
-   "bundle_format": "1.22",
-   "status": "approved",
-   "approval": {
-    "by": "siavash",
-    "on": "2026-10-27 09:37"
-   },
+   "length_s": 3568.075,
+   "length": "59:28",
+   "bundle_format": "1.23",
+   "status": "built",
+   "approval": null,
    "source": {
     "folder": "source",
     "recording": "source/video.mp4",
@@ -6706,7 +6703,7 @@
      "category": null,
      "start_s": 117.021,
      "start": "1:57",
-     "end_s": 503.131,
+     "end_s": 547.391,
      "topics": [
       {
        "board": "pages-04-05_t1",
@@ -6898,219 +6895,219 @@
       6
      ],
      "category": null,
-     "start_s": 503.131,
-     "start": "8:23",
-     "end_s": 1138.63,
+     "start_s": 547.391,
+     "start": "9:07",
+     "end_s": 1273.255,
      "topics": [
       {
        "board": "page-6_t1",
        "title": "Physical symptoms case-note table",
-       "start_s": 503.131,
-       "start": "8:23",
+       "start_s": 547.391,
+       "start": "9:07",
        "points": [
         {
          "text": "frame what the table does",
          "block": "page-6_k01",
-         "start_s": 503.131,
-         "start": "8:23"
+         "start_s": 547.391,
+         "start": "9:07"
         },
         {
          "text": "meaning of symptomatic",
          "block": "page-6_k03",
-         "start_s": 548.945,
-         "start": "9:08"
+         "start_s": 593.205,
+         "start": "9:53"
         },
         {
          "text": "the a- prefix",
          "block": "page-6_k04",
-         "start_s": 566.746,
-         "start": "9:26"
+         "start_s": 611.006,
+         "start": "10:11"
         },
         {
          "text": "one word instead of a list",
          "block": "page-6_k05",
-         "start_s": 578.806,
-         "start": "9:38"
+         "start_s": 623.066,
+         "start": "10:23"
         },
         {
          "text": "febrile and afebrile",
          "block": "page-6_k06",
-         "start_s": 606.808,
-         "start": "10:06"
+         "start_s": 651.068,
+         "start": "10:51"
         },
         {
          "text": "the writing rule",
          "block": "page-6_k07",
-         "start_s": 628.754,
-         "start": "10:28"
+         "start_s": 673.014,
+         "start": "11:13"
         },
         {
          "text": "silent p",
          "block": "page-6_k08",
-         "start_s": 654.283,
-         "start": "10:54"
+         "start_s": 698.543,
+         "start": "11:38"
         },
         {
          "text": "verb to adjective",
          "block": "page-6_k09",
-         "start_s": 664.495,
-         "start": "11:04"
+         "start_s": 708.755,
+         "start": "11:48"
         },
         {
          "text": "the preposition",
          "block": "page-6_k10",
-         "start_s": 678.413,
-         "start": "11:18"
+         "start_s": 722.673,
+         "start": "12:02"
         },
         {
          "text": "subjective and objective",
          "block": "page-6_k11",
-         "start_s": 709.636,
-         "start": "11:49"
+         "start_s": 753.896,
+         "start": "12:33"
         },
         {
          "text": "mild and severe",
          "block": "page-6_k12",
-         "start_s": 737.132,
-         "start": "12:17"
+         "start_s": 781.392,
+         "start": "13:01"
         },
         {
          "text": "the acute trap",
          "block": "page-6_k13",
-         "start_s": 751.174,
-         "start": "12:31"
+         "start_s": 795.434,
+         "start": "13:15"
         },
         {
          "text": "adjective to noun",
          "block": "page-6_k14",
-         "start_s": 767.303,
-         "start": "12:47"
+         "start_s": 811.563,
+         "start": "13:31"
         },
         {
          "text": "opener for subjective notes",
          "block": "page-6_k15",
-         "start_s": 781.569,
-         "start": "13:01"
+         "start_s": 825.829,
+         "start": "13:45"
         },
         {
          "text": "hot and cold means temperature",
          "block": "page-6_k16",
-         "start_s": 792.923,
-         "start": "13:12"
+         "start_s": 837.183,
+         "start": "13:57"
         },
         {
          "text": "verb to noun",
          "block": "page-6_k17",
-         "start_s": 820.402,
-         "start": "13:40"
+         "start_s": 864.662,
+         "start": "14:24"
         },
         {
          "text": "adverb to adjective",
          "block": "page-6_k18",
-         "start_s": 828.34,
-         "start": "13:48"
+         "start_s": 872.6,
+         "start": "14:32"
         },
         {
          "text": "the earlier words were adjectives",
          "block": "page-6_k19",
-         "start_s": 846.171,
-         "start": "14:06"
+         "start_s": 929.976,
+         "start": "15:29"
         },
         {
          "text": "preposition with a full date",
          "block": "page-6_k20",
-         "start_s": 868.528,
-         "start": "14:28"
+         "start_s": 952.333,
+         "start": "15:52"
         },
         {
          "text": "technique for finding the missing verb",
          "block": "page-6_k21",
-         "start_s": 876.53,
-         "start": "14:36"
+         "start_s": 960.335,
+         "start": "16:00"
         },
         {
          "text": "an action was carried out",
          "block": "page-6_k22",
-         "start_s": 895.339,
-         "start": "14:55"
+         "start_s": 979.144,
+         "start": "16:19"
         },
         {
          "text": "the abbreviation c/o",
          "block": "page-6_k23",
-         "start_s": 924.508,
-         "start": "15:24"
+         "start_s": 1008.313,
+         "start": "16:48"
         },
         {
          "text": "learn the abbreviations",
          "block": "page-6_k24",
-         "start_s": 931.329,
-         "start": "15:31"
+         "start_s": 1015.134,
+         "start": "16:55"
         },
         {
          "text": "bilateral and chronic",
          "block": "page-6_k25",
-         "start_s": 944.004,
-         "start": "15:44"
+         "start_s": 1027.809,
+         "start": "17:07"
         },
         {
          "text": "same subjective opener with the name",
          "block": "page-6_k26",
-         "start_s": 955.586,
-         "start": "15:55"
+         "start_s": 1039.391,
+         "start": "17:19"
         },
         {
          "text": "the verb for laterality",
          "block": "page-6_k27",
-         "start_s": 972.793,
-         "start": "16:12"
+         "start_s": 1056.598,
+         "start": "17:36"
         },
         {
          "text": "join the clauses",
          "block": "page-6_k28",
-         "start_s": 991.695,
-         "start": "16:31"
+         "start_s": 1075.5,
+         "start": "17:55"
         },
         {
          "text": "gloss for the alternative clause",
          "block": "page-6_k29",
-         "start_s": 1012.104,
-         "start": "16:52"
+         "start_s": 1095.909,
+         "start": "18:15"
         },
         {
          "text": "what breaking wind means",
          "block": "page-6_k30",
-         "start_s": 1040.988,
-         "start": "17:20"
+         "start_s": 1124.793,
+         "start": "18:44"
         },
         {
          "text": "patient words become the medical term",
          "block": "page-6_k31",
-         "start_s": 1057.841,
-         "start": "17:37"
+         "start_s": 1141.646,
+         "start": "19:01"
         },
         {
          "text": "the exact duration",
          "block": "page-6_k32",
-         "start_s": 1072.523,
-         "start": "17:52"
+         "start_s": 1156.328,
+         "start": "19:16"
         },
         {
          "text": "the time word option",
          "block": "page-6_k33",
-         "start_s": 1085.243,
-         "start": "18:05"
+         "start_s": 1169.048,
+         "start": "19:29"
         },
         {
          "text": "varying the reporting verb",
          "block": "page-6_k34",
-         "start_s": 1100.259,
-         "start": "18:20"
+         "start_s": 1184.064,
+         "start": "19:44"
         },
         {
          "text": "dropping 'that'",
          "block": "page-6_k35",
-         "start_s": 1115.875,
-         "start": "18:35"
+         "start_s": 1199.68,
+         "start": "19:59"
         }
        ]
       }
@@ -7120,29 +7117,29 @@
        "block": "page-6_k07",
        "kind": "rule",
        "text": "In writing, do not spell out \"no fever, normal temperature, no cough\". Use one word.",
-       "start_s": 628.754,
-       "start": "10:28"
+       "start_s": 673.014,
+       "start": "11:13"
       },
       {
        "block": "page-6_k13",
        "kind": "warning",
        "text": "Do not use \"acute\" to mean severe. \"Acute\" is the opposite of \"chronic\".",
-       "start_s": 751.174,
-       "start": "12:31"
+       "start_s": 795.434,
+       "start": "13:15"
       },
       {
        "block": "page-6_k20",
        "kind": "rule",
        "text": "With a full date — day, month and year — use \"on\".",
-       "start_s": 868.528,
-       "start": "14:28"
+       "start_s": 952.333,
+       "start": "15:52"
       },
       {
        "block": "page-6_k28",
        "kind": "rule",
        "text": "Join the two parts with a joining word such as \"with\". Do not stop and start short separate sentences.",
-       "start_s": 991.695,
-       "start": "16:31"
+       "start_s": 1075.5,
+       "start": "17:55"
       }
      ],
      "terms": [
@@ -7150,36 +7147,36 @@
        "block": "page-6_k03",
        "label": "Form",
        "term": "symptomatic",
-       "start_s": 548.945,
-       "start": "9:08"
+       "start_s": 593.205,
+       "start": "9:53"
       },
       {
        "block": "page-6_k04",
        "label": "Prefix",
        "term": "a-",
-       "start_s": 566.746,
-       "start": "9:26"
+       "start_s": 611.006,
+       "start": "10:11"
       },
       {
        "block": "page-6_k08",
        "label": "Pronunciation",
        "term": "pseudo-",
-       "start_s": 654.283,
-       "start": "10:54"
+       "start_s": 698.543,
+       "start": "11:38"
       },
       {
        "block": "page-6_k10",
        "label": "Form",
        "term": "suggestive of",
-       "start_s": 678.413,
-       "start": "11:18"
+       "start_s": 722.673,
+       "start": "12:02"
       },
       {
        "block": "page-6_k23",
        "label": "Abbreviation",
        "term": "c/o",
-       "start_s": 924.508,
-       "start": "15:24"
+       "start_s": 1008.313,
+       "start": "16:48"
       }
      ],
      "wrong_examples": [],
@@ -7194,159 +7191,159 @@
       7
      ],
      "category": null,
-     "start_s": 1138.63,
-     "start": "18:58",
-     "end_s": 1689.443,
+     "start_s": 1273.255,
+     "start": "21:13",
+     "end_s": 1863.988,
      "topics": [
       {
        "board": "page-7_t1",
        "title": "Non-physical complaints table",
-       "start_s": 1138.63,
-       "start": "18:58",
+       "start_s": 1273.255,
+       "start": "21:13",
        "points": [
         {
          "text": "introduce the three-column task for non-physical complaints",
          "block": "page-7_k01",
-         "start_s": 1138.63,
-         "start": "18:58"
+         "start_s": 1273.255,
+         "start": "21:13"
         },
         {
          "text": "the arrow in the notes shows a result",
          "block": "page-7_k03",
-         "start_s": 1174.376,
-         "start": "19:34"
+         "start_s": 1309.001,
+         "start": "21:49"
         },
         {
          "text": "words that carry the result",
          "block": "page-7_k05",
-         "start_s": 1210.806,
-         "start": "20:10"
+         "start_s": 1345.431,
+         "start": "22:25"
         },
         {
          "text": "paraphrase the note wording",
          "block": "page-7_k06",
-         "start_s": 1223.483,
-         "start": "20:23"
+         "start_s": 1358.108,
+         "start": "22:38"
         },
         {
          "text": "nominalise the result",
          "block": "page-7_k08",
-         "start_s": 1253.71,
-         "start": "20:53"
+         "start_s": 1388.335,
+         "start": "23:08"
         },
         {
          "text": "more than one wording works",
          "block": "page-7_k09",
-         "start_s": 1287.259,
-         "start": "21:27"
+         "start_s": 1421.884,
+         "start": "23:41"
         },
         {
          "text": "what the notes say about Nathan",
          "block": "page-7_k10",
-         "start_s": 1320.76,
-         "start": "22:00"
+         "start_s": 1455.385,
+         "start": "24:15"
         },
         {
          "text": "name the technique",
          "block": "page-7_k11",
-         "start_s": 1335.7,
-         "start": "22:15"
+         "start_s": 1470.325,
+         "start": "24:30"
         },
         {
          "text": "open the sentence with a contrast word",
          "block": "page-7_k12",
-         "start_s": 1363.831,
-         "start": "22:43"
+         "start_s": 1498.456,
+         "start": "24:58"
         },
         {
          "text": "tense for the change in anxiety",
          "block": "page-7_k13",
-         "start_s": 1384.701,
-         "start": "23:04"
+         "start_s": 1519.326,
+         "start": "25:19"
         },
         {
          "text": "choose another word for 'little'",
          "block": "page-7_k14",
-         "start_s": 1407.37,
-         "start": "23:27"
+         "start_s": 1541.995,
+         "start": "25:41"
         },
         {
          "text": "joining two opposite facts",
          "block": "page-7_k15",
-         "start_s": 1424.31,
-         "start": "23:44"
+         "start_s": 1558.935,
+         "start": "25:58"
         },
         {
          "text": "nominalise 'disturbed'",
          "block": "page-7_k16",
-         "start_s": 1453.52,
-         "start": "24:13"
+         "start_s": 1588.145,
+         "start": "26:28"
         },
         {
          "text": "use synonyms, not the note words",
          "block": "page-7_k17",
-         "start_s": 1463.224,
-         "start": "24:23"
+         "start_s": 1597.849,
+         "start": "26:37"
         },
         {
          "text": "another word for 'pain'",
          "block": "page-7_k19",
-         "start_s": 1482.28,
-         "start": "24:42"
+         "start_s": 1616.905,
+         "start": "26:56"
         },
         {
          "text": "write the short time span",
          "block": "page-7_k20",
-         "start_s": 1494.161,
-         "start": "24:54"
+         "start_s": 1628.786,
+         "start": "27:08"
         },
         {
          "text": "why 'a recent history'",
          "block": "page-7_k21",
-         "start_s": 1507.535,
-         "start": "25:07"
+         "start_s": 1642.16,
+         "start": "27:22"
         },
         {
          "text": "phrases with 'history'",
          "block": "page-7_k22",
-         "start_s": 1550.549,
-         "start": "25:50"
+         "start_s": 1685.174,
+         "start": "28:05"
         },
         {
          "text": "more phrases with 'history'",
          "block": "page-7_k23",
-         "start_s": 1579.202,
-         "start": "26:19"
+         "start_s": 1713.827,
+         "start": "28:33"
         },
         {
          "text": "a subjective note",
          "block": "page-7_k24",
-         "start_s": 1609.292,
-         "start": "26:49"
+         "start_s": 1743.917,
+         "start": "29:03"
         },
         {
          "text": "from drinking to consumption",
          "block": "page-7_k25",
-         "start_s": 1614.342,
-         "start": "26:54"
+         "start_s": 1748.967,
+         "start": "29:08"
         },
         {
          "text": "'reported' shows the patient said it",
          "block": "page-7_k27",
-         "start_s": 1644.77,
-         "start": "27:24"
+         "start_s": 1779.395,
+         "start": "29:39"
         },
         {
          "text": "'more' becomes a noun",
          "block": "page-7_k28",
-         "start_s": 1656.523,
-         "start": "27:36"
+         "start_s": 1791.148,
+         "start": "29:51"
         },
         {
          "text": "a way to find your own wording",
          "block": "page-7_k29",
-         "start_s": 1669.233,
-         "start": "27:49"
+         "start_s": 1803.858,
+         "start": "30:03"
         }
        ]
       }
@@ -7356,29 +7353,29 @@
        "block": "page-7_k05",
        "kind": "rule",
        "text": "Show the result with words such as due to, resulted in or consequently.",
-       "start_s": 1210.806,
-       "start": "20:10"
+       "start_s": 1345.431,
+       "start": "22:25"
       },
       {
        "block": "page-7_k15",
        "kind": "rule",
        "text": "When two facts contrast, you can join them in one sentence with while or although.",
-       "start_s": 1424.31,
-       "start": "23:44"
+       "start_s": 1558.935,
+       "start": "25:58"
       },
       {
        "block": "page-7_k17",
        "kind": "rule",
        "text": "Do not copy the case notes word for word. Use words with the same meaning.",
-       "start_s": 1463.224,
-       "start": "24:23"
+       "start_s": 1597.849,
+       "start": "26:37"
       },
       {
        "block": "page-7_k29",
        "kind": "rule",
        "text": "First say the note to yourself in simple English words. Then write it again with a noun.",
-       "start_s": 1669.233,
-       "start": "27:49"
+       "start_s": 1803.858,
+       "start": "30:03"
       }
      ],
      "terms": [
@@ -7386,15 +7383,15 @@
        "block": "page-7_k11",
        "label": "Grammar",
        "term": "Nominalisation",
-       "start_s": 1335.7,
-       "start": "22:15"
+       "start_s": 1470.325,
+       "start": "24:30"
       },
       {
        "block": "page-7_k16",
        "label": "Word form",
        "term": "Disturbance",
-       "start_s": 1453.52,
-       "start": "24:13"
+       "start_s": 1588.145,
+       "start": "26:28"
       }
      ],
      "wrong_examples": [],
@@ -7405,8 +7402,8 @@
        "lesson": "grammar-01-verb-tenses",
        "section": "page-9",
        "provenance": "authored",
-       "start_s": 1400.621,
-       "start": "23:20"
+       "start_s": 1535.246,
+       "start": "25:35"
       }
      ]
     },
@@ -7418,129 +7415,129 @@
       8
      ],
      "category": null,
-     "start_s": 1689.443,
-     "start": "28:09",
-     "end_s": 2187.06,
+     "start_s": 1863.988,
+     "start": "31:03",
+     "end_s": 2451.826,
      "topics": [
       {
        "board": "page-8_t1",
        "title": "Nominalising the case-note table",
-       "start_s": 1689.443,
-       "start": "28:09",
+       "start_s": 1863.988,
+       "start": "31:03",
        "points": [
         {
          "text": "how the three columns work",
          "block": "page-8_k01",
-         "start_s": 1689.443,
-         "start": "28:09"
+         "start_s": 1863.988,
+         "start": "31:03"
         },
         {
          "text": "the term for the whole task",
          "block": "page-8_k03",
-         "start_s": 1716.434,
-         "start": "28:36"
+         "start_s": 1890.979,
+         "start": "31:30"
         },
         {
          "text": "read the shorthand first",
          "block": "page-8_k04",
-         "start_s": 1739.101,
-         "start": "28:59"
+         "start_s": 1913.646,
+         "start": "31:53"
         },
         {
          "text": "the noun 'intake'",
          "block": "page-8_k05",
-         "start_s": 1760.052,
-         "start": "29:20"
+         "start_s": 1934.597,
+         "start": "32:14"
         },
         {
          "text": "'gargle' has one form for verb and noun",
          "block": "page-8_k07",
-         "start_s": 1787.152,
-         "start": "29:47"
+         "start_s": 1961.697,
+         "start": "32:41"
         },
         {
          "text": "why the sentence is passive",
          "block": "page-8_k08",
-         "start_s": 1817.492,
-         "start": "30:17"
+         "start_s": 1992.037,
+         "start": "33:12"
         },
         {
          "text": "a ready opener for treatment information",
          "block": "page-8_k10",
-         "start_s": 1848.501,
-         "start": "30:48"
+         "start_s": 2023.046,
+         "start": "33:43"
         },
         {
          "text": "what the plan note asks for",
          "block": "page-8_k11",
-         "start_s": 1867.122,
-         "start": "31:07"
+         "start_s": 2041.667,
+         "start": "34:01"
         },
         {
          "text": "the noun needs a verb with it",
          "block": "page-8_k13",
-         "start_s": 1886.071,
-         "start": "31:26"
+         "start_s": 2060.616,
+         "start": "34:20"
         },
         {
          "text": "the preposition after the noun",
          "block": "page-8_k14",
-         "start_s": 1908.922,
-         "start": "31:48"
+         "start_s": 2083.467,
+         "start": "34:43"
         },
         {
          "text": "the second, impersonal sentence",
          "block": "page-8_k15",
-         "start_s": 1936.726,
-         "start": "32:16"
+         "start_s": 2153.392,
+         "start": "35:53"
         },
         {
          "text": "what the note means",
          "block": "page-8_k17",
-         "start_s": 1971.133,
-         "start": "32:51"
+         "start_s": 2187.799,
+         "start": "36:27"
         },
         {
          "text": "the meaning of 'adhere to'",
          "block": "page-8_k19",
-         "start_s": 1997.899,
-         "start": "33:17"
+         "start_s": 2214.565,
+         "start": "36:54"
         },
         {
          "text": "joining the two ideas with 'due to'",
          "block": "page-8_k20",
-         "start_s": 2022.165,
-         "start": "33:42"
+         "start_s": 2238.831,
+         "start": "37:18"
         },
         {
          "text": "the second version of the cause",
          "block": "page-8_k21",
-         "start_s": 2048.474,
-         "start": "34:08"
+         "start_s": 2265.14,
+         "start": "37:45"
         },
         {
          "text": "read the examination note",
          "block": "page-8_k22",
-         "start_s": 2079.31,
-         "start": "34:39"
+         "start_s": 2295.976,
+         "start": "38:15"
         },
         {
          "text": "the two nouns",
          "block": "page-8_k23",
-         "start_s": 2093.34,
-         "start": "34:53"
+         "start_s": 2310.006,
+         "start": "38:30"
         },
         {
          "text": "an adjective carries the negative idea",
          "block": "page-8_k25",
-         "start_s": 2122.03,
-         "start": "35:22"
+         "start_s": 2338.696,
+         "start": "38:58"
         },
         {
          "text": "the full sentence pattern",
          "block": "page-8_k27",
-         "start_s": 2151.874,
-         "start": "35:51"
+         "start_s": 2368.54,
+         "start": "39:28"
         }
        ]
       }
@@ -7551,43 +7548,43 @@
        "block": "page-8_k03",
        "label": "Form",
        "term": "Nominalisation",
-       "start_s": 1716.434,
-       "start": "28:36"
+       "start_s": 1890.979,
+       "start": "31:30"
       },
       {
        "block": "page-8_k05",
        "label": "Noun",
        "term": "Intake",
-       "start_s": 1760.052,
-       "start": "29:20"
+       "start_s": 1934.597,
+       "start": "32:14"
       },
       {
        "block": "page-8_k08",
        "label": "Form",
        "term": "Passive",
-       "start_s": 1817.492,
-       "start": "30:17"
+       "start_s": 1992.037,
+       "start": "33:12"
       },
       {
        "block": "page-8_k10",
        "label": "Phrase",
        "term": "In terms of treatment",
-       "start_s": 1848.501,
-       "start": "30:48"
+       "start_s": 2023.046,
+       "start": "33:43"
       },
       {
        "block": "page-8_k14",
        "label": "Phrase",
        "term": "An assessment of",
-       "start_s": 1908.922,
-       "start": "31:48"
+       "start_s": 2083.467,
+       "start": "34:43"
       },
       {
        "block": "page-8_k16",
        "label": "Phrase",
        "term": "Prior to",
-       "start_s": 1949.232,
-       "start": "32:29"
+       "start_s": 2165.898,
+       "start": "36:05"
       }
      ],
      "wrong_examples": [],
@@ -7598,8 +7595,8 @@
        "lesson": "grammar-01-verb-tenses",
        "section": "page-15",
        "provenance": "authored",
-       "start_s": 1829.082,
-       "start": "30:29"
+       "start_s": 2003.627,
+       "start": "33:23"
       }
      ]
     },
@@ -7611,225 +7608,225 @@
       9
      ],
      "category": null,
-     "start_s": 2187.06,
-     "start": "36:27",
-     "end_s": 2738.085,
+     "start_s": 2451.826,
+     "start": "40:51",
+     "end_s": 3094.413,
      "topics": [
       {
        "board": "page-9_t1",
        "title": "Formal time expressions table",
-       "start_s": 2187.06,
-       "start": "36:27",
+       "start_s": 2451.826,
+       "start": "40:51",
        "points": [
         {
          "text": "the case note is a timeline of the patient's history",
          "block": "page-9_k01",
-         "start_s": 2187.06,
-         "start": "36:27"
+         "start_s": 2451.826,
+         "start": "40:51"
         },
         {
          "text": "the time words decide the tense",
          "block": "page-9_k03",
-         "start_s": 2213.869,
-         "start": "36:53"
+         "start_s": 2478.635,
+         "start": "41:18"
         },
         {
          "text": "what the exercise does with each note",
          "block": "page-9_k04",
-         "start_s": 2230.536,
-         "start": "37:10"
+         "start_s": 2495.302,
+         "start": "41:35"
         },
         {
          "text": "what the note means",
          "block": "page-9_k05",
-         "start_s": 2245.773,
-         "start": "37:25"
+         "start_s": 2510.539,
+         "start": "41:50"
         },
         {
          "text": "the noun occasion",
          "block": "page-9_k06",
-         "start_s": 2258.492,
-         "start": "37:38"
+         "start_s": 2523.258,
+         "start": "42:03"
         },
         {
          "text": "verbs for a patient coming to the clinic",
          "block": "page-9_k07",
-         "start_s": 2281.828,
-         "start": "38:01"
+         "start_s": 2546.594,
+         "start": "42:26"
         },
         {
          "text": "other sentences that work",
          "block": "page-9_k08",
-         "start_s": 2303.493,
-         "start": "38:23"
+         "start_s": 2568.259,
+         "start": "42:48"
         },
         {
          "text": "attend a place, attend to a person",
          "block": "page-9_k09",
-         "start_s": 2318.172,
-         "start": "38:38"
+         "start_s": 2582.938,
+         "start": "43:02"
         },
         {
          "text": "what attend to means",
          "block": "page-9_k10",
-         "start_s": 2336.509,
-         "start": "38:56"
+         "start_s": 2601.275,
+         "start": "43:21"
         },
         {
          "text": "do not add 'to' for a clinic visit",
          "block": "page-9_k11",
-         "start_s": 2348.266,
-         "start": "39:08"
+         "start_s": 2613.032,
+         "start": "43:33"
         },
         {
          "text": "the preposition after 'presented'",
          "block": "page-9_k12",
-         "start_s": 2365.033,
-         "start": "39:25"
+         "start_s": 2629.799,
+         "start": "43:49"
         },
         {
          "text": "verbs to learn for the writing task",
          "block": "page-9_k13",
-         "start_s": 2384.414,
-         "start": "39:44"
+         "start_s": 2649.18,
+         "start": "44:09"
         },
         {
          "text": "the colon shows subjective information",
          "block": "page-9_k14",
-         "start_s": 2406.815,
-         "start": "40:06"
+         "start_s": 2717.153,
+         "start": "45:17"
         },
         {
          "text": "sometimes becomes at times",
          "block": "page-9_k15",
-         "start_s": 2422.117,
-         "start": "40:22"
+         "start_s": 2732.455,
+         "start": "45:32"
         },
         {
          "text": "the noun confusion",
          "block": "page-9_k16",
-         "start_s": 2433.262,
-         "start": "40:33"
+         "start_s": 2743.6,
+         "start": "45:43"
         },
         {
          "text": "the reporting verb for a subjective note",
          "block": "page-9_k17",
-         "start_s": 2443.324,
-         "start": "40:43"
+         "start_s": 2753.662,
+         "start": "45:53"
         },
         {
          "text": "experience in present simple",
          "block": "page-9_k18",
-         "start_s": 2456.594,
-         "start": "40:56"
+         "start_s": 2766.932,
+         "start": "46:06"
         },
         {
          "text": "paraphrase, do not copy",
          "block": "page-9_k19",
-         "start_s": 2477.284,
-         "start": "41:17"
+         "start_s": 2787.622,
+         "start": "46:27"
         },
         {
          "text": "advice and advise",
          "block": "page-9_k20",
-         "start_s": 2503.918,
-         "start": "41:43"
+         "start_s": 2814.256,
+         "start": "46:54"
         },
         {
          "text": "the two words sound different",
          "block": "page-9_k21",
-         "start_s": 2512.592,
-         "start": "41:52"
+         "start_s": 2822.93,
+         "start": "47:02"
         },
         {
          "text": "the wrong letter costs a mark",
          "block": "page-9_k22",
-         "start_s": 2522.092,
-         "start": "42:02"
+         "start_s": 2832.43,
+         "start": "47:12"
         },
         {
          "text": "every day becomes on a daily basis",
          "block": "page-9_k23",
-         "start_s": 2537.702,
-         "start": "42:17"
+         "start_s": 2848.04,
+         "start": "47:28"
         },
         {
          "text": "no agent, so the sentence is passive",
          "block": "page-9_k24",
-         "start_s": 2548.053,
-         "start": "42:28"
+         "start_s": 2858.391,
+         "start": "47:38"
         },
         {
          "text": "what passive means",
          "block": "page-9_k25",
-         "start_s": 2561.308,
-         "start": "42:41"
+         "start_s": 2871.646,
+         "start": "47:51"
         },
         {
          "text": "advised is the verb here",
          "block": "page-9_k26",
-         "start_s": 2574.58,
-         "start": "42:54"
+         "start_s": 2884.918,
+         "start": "48:04"
         },
         {
          "text": "normally becomes under normal circumstances",
          "block": "page-9_k27",
-         "start_s": 2593.39,
-         "start": "43:13"
+         "start_s": 2903.728,
+         "start": "48:23"
         },
         {
          "text": "gloss of the word fairly",
          "block": "page-9_k28",
-         "start_s": 2607.613,
-         "start": "43:27"
+         "start_s": 2917.951,
+         "start": "48:37"
         },
         {
          "text": "fairly becomes relatively",
          "block": "page-9_k29",
-         "start_s": 2619.809,
-         "start": "43:39"
+         "start_s": 2930.147,
+         "start": "48:50"
         },
         {
          "text": "comma after the opening phrase",
          "block": "page-9_k30",
-         "start_s": 2628.025,
-         "start": "43:48"
+         "start_s": 2938.363,
+         "start": "48:58"
         },
         {
          "text": "a comma in the wrong place costs a mark",
          "block": "page-9_k31",
-         "start_s": 2643.172,
-         "start": "44:03"
+         "start_s": 2953.51,
+         "start": "49:13"
         },
         {
          "text": "the two words that changed",
          "block": "page-9_k32",
-         "start_s": 2656.702,
-         "start": "44:16"
+         "start_s": 2967.04,
+         "start": "49:27"
         },
         {
          "text": "the noun onset",
          "block": "page-9_k33",
-         "start_s": 2679.902,
-         "start": "44:39"
+         "start_s": 2990.24,
+         "start": "49:50"
         },
         {
          "text": "onset in real case notes",
          "block": "page-9_k34",
-         "start_s": 2684.243,
-         "start": "44:44"
+         "start_s": 2994.581,
+         "start": "49:54"
         },
         {
          "text": "verb becomes noun",
          "block": "page-9_k35",
-         "start_s": 2700.164,
-         "start": "45:00"
+         "start_s": 3010.502,
+         "start": "50:10"
         },
         {
          "text": "use this sentence in the letter",
          "block": "page-9_k36",
-         "start_s": 2723.365,
-         "start": "45:23"
+         "start_s": 3033.703,
+         "start": "50:33"
         }
        ]
       }
@@ -7839,29 +7836,29 @@
        "block": "page-9_k11",
        "kind": "warning",
        "text": "For a patient coming to the clinic, do not add 'to'. 'Attended to' is wrong here.",
-       "start_s": 2348.266,
-       "start": "39:08"
+       "start_s": 2613.032,
+       "start": "43:33"
       },
       {
        "block": "page-9_k19",
        "kind": "rule",
        "text": "Do not copy the case note into your letter. Change the words and use your own vocabulary.",
-       "start_s": 2477.284,
-       "start": "41:17"
+       "start_s": 2787.622,
+       "start": "46:27"
       },
       {
        "block": "page-9_k22",
        "kind": "warning",
        "text": "Writing 'advice' for the verb, or 'advise' for the noun, is counted as an error.",
-       "start_s": 2522.092,
-       "start": "42:02"
+       "start_s": 2832.43,
+       "start": "47:12"
       },
       {
        "block": "page-9_k31",
        "kind": "warning",
        "text": "A comma in the wrong place is a mistake too, and it can cost you marks.",
-       "start_s": 2643.172,
-       "start": "44:03"
+       "start_s": 2953.51,
+       "start": "49:13"
       }
      ],
      "terms": [
@@ -7869,50 +7866,50 @@
        "block": "page-9_k06",
        "label": "New word",
        "term": "Occasion",
-       "start_s": 2258.492,
-       "start": "37:38"
+       "start_s": 2523.258,
+       "start": "42:03"
       },
       {
        "block": "page-9_k07",
        "label": "Verbs",
        "term": "Attend, present, visit",
-       "start_s": 2281.828,
-       "start": "38:01"
+       "start_s": 2546.594,
+       "start": "42:26"
       },
       {
        "block": "page-9_k10",
        "label": "Phrase",
        "term": "Attend to",
-       "start_s": 2336.509,
-       "start": "38:56"
+       "start_s": 2601.275,
+       "start": "43:21"
       },
       {
        "block": "page-9_k16",
        "label": "Noun",
        "term": "Confusion",
-       "start_s": 2433.262,
-       "start": "40:33"
+       "start_s": 2743.6,
+       "start": "45:43"
       },
       {
        "block": "page-9_k25",
        "label": "Grammar",
        "term": "Passive",
-       "start_s": 2561.308,
-       "start": "42:41"
+       "start_s": 2871.646,
+       "start": "47:51"
       },
       {
        "block": "page-9_k27",
        "label": "Phrase",
        "term": "Under normal circumstances",
-       "start_s": 2593.39,
-       "start": "43:13"
+       "start_s": 2903.728,
+       "start": "48:23"
       },
       {
        "block": "page-9_k33",
        "label": "Noun",
        "term": "Onset",
-       "start_s": 2679.902,
-       "start": "44:39"
+       "start_s": 2990.24,
+       "start": "49:50"
       }
      ],
      "wrong_examples": [],
@@ -7923,8 +7920,8 @@
        "lesson": "grammar-01-verb-tenses",
        "section": "page-12",
        "provenance": "authored",
-       "start_s": 2217.99,
-       "start": "36:57"
+       "start_s": 2482.756,
+       "start": "41:22"
       }
      ]
     },
@@ -7936,141 +7933,141 @@
       11
      ],
      "category": null,
-     "start_s": 2738.085,
-     "start": "45:38",
-     "end_s": 3153.667,
+     "start_s": 3094.413,
+     "start": "51:34",
+     "end_s": 3568.075,
      "topics": [
       {
        "board": "page-11_t1",
        "title": "Denominalisation case-note table",
-       "start_s": 2738.085,
-       "start": "45:38",
+       "start_s": 3094.413,
+       "start": "51:34",
        "points": [
         {
          "text": "the two directions - nominalisation and denominalisation",
          "block": "page-11_k01",
-         "start_s": 2738.085,
-         "start": "45:38"
+         "start_s": 3094.413,
+         "start": "51:34"
         },
         {
          "text": "why this technique is useful for case notes",
          "block": "page-11_k03",
-         "start_s": 2762.608,
-         "start": "46:02"
+         "start_s": 3118.936,
+         "start": "51:58"
         },
         {
          "text": "pull the verb out of the noun",
          "block": "page-11_k04",
-         "start_s": 2794.087,
-         "start": "46:34"
+         "start_s": 3150.415,
+         "start": "52:30"
         },
         {
          "text": "gloss the verb resolve",
          "block": "page-11_k05",
-         "start_s": 2809.073,
-         "start": "46:49"
+         "start_s": 3165.401,
+         "start": "52:45"
         },
         {
          "text": "the note has no verb for the diet",
          "block": "page-11_k06",
-         "start_s": 2827.932,
-         "start": "47:07"
+         "start_s": 3184.26,
+         "start": "53:04"
         },
         {
          "text": "the noun form is not wrong - the aim is to change the note",
          "block": "page-11_k07",
-         "start_s": 2851.041,
-         "start": "47:31"
+         "start_s": 3207.369,
+         "start": "53:27"
         },
         {
          "text": "the obvious verb is not always the one you want",
          "block": "page-11_k08",
-         "start_s": 2874.372,
-         "start": "47:54"
+         "start_s": 3230.7,
+         "start": "53:50"
         },
         {
          "text": "the version to avoid",
          "block": "page-11_k09",
-         "start_s": 2891.568,
-         "start": "48:11"
+         "start_s": 3247.896,
+         "start": "54:07"
         },
         {
          "text": "check the verb, look for a synonym",
          "block": "page-11_k10",
-         "start_s": 2912.511,
-         "start": "48:32"
+         "start_s": 3268.839,
+         "start": "54:28"
         },
         {
          "text": "gloss combing",
          "block": "page-11_k11",
-         "start_s": 2938.971,
-         "start": "48:58"
+         "start_s": 3295.299,
+         "start": "54:55"
         },
         {
          "text": "gloss eradicate and link it to the noun",
          "block": "page-11_k12",
-         "start_s": 2952.574,
-         "start": "49:12"
+         "start_s": 3308.902,
+         "start": "55:08"
         },
         {
          "text": "define the passive",
          "block": "page-11_k13",
-         "start_s": 2975.433,
-         "start": "49:35"
+         "start_s": 3331.761,
+         "start": "55:31"
         },
         {
          "text": "active and passive versions of the same sentence",
          "block": "page-11_k14",
-         "start_s": 3000.601,
-         "start": "50:00"
+         "start_s": 3356.929,
+         "start": "55:56"
         },
         {
          "text": "removal gives remove",
          "block": "page-11_k15",
-         "start_s": 3024.982,
-         "start": "50:24"
+         "start_s": 3381.31,
+         "start": "56:21"
         },
         {
          "text": "rewrite 'necessary' at the start of the sentence",
          "block": "page-11_k16",
-         "start_s": 3033.122,
-         "start": "50:33"
+         "start_s": 3389.45,
+         "start": "56:29"
         },
         {
          "text": "the instrument phrase",
          "block": "page-11_k17",
-         "start_s": 3049.65,
-         "start": "50:49"
+         "start_s": 3405.978,
+         "start": "56:45"
         },
         {
          "text": "a or the with lice comb",
          "block": "page-11_k18",
-         "start_s": 3072.217,
-         "start": "51:12"
+         "start_s": 3428.545,
+         "start": "57:08"
         },
         {
          "text": "two nouns, two verbs",
          "block": "page-11_k19",
-         "start_s": 3093.772,
-         "start": "51:33"
+         "start_s": 3450.1,
+         "start": "57:30"
         },
         {
          "text": "gloss commence",
          "block": "page-11_k20",
-         "start_s": 3106.868,
-         "start": "51:46"
+         "start_s": 3463.196,
+         "start": "57:43"
         },
         {
          "text": "where this kind of note is used",
          "block": "page-11_k21",
-         "start_s": 3126.205,
-         "start": "52:06"
+         "start_s": 3482.533,
+         "start": "58:02"
         },
         {
          "text": "the request form in the model sentence",
          "block": "page-11_k22",
-         "start_s": 3132.425,
-         "start": "52:12"
+         "start_s": 3488.753,
+         "start": "58:08"
         }
        ]
       }
@@ -8080,15 +8077,15 @@
        "block": "page-11_k07",
        "kind": "rule",
        "text": "'Until the resolution of symptoms' is not wrong. The aim is to change the note, not to copy it into your letter.",
-       "start_s": 2851.041,
-       "start": "47:31"
+       "start_s": 3207.369,
+       "start": "53:27"
       },
       {
        "block": "page-11_k10",
        "kind": "rule",
        "text": "Check the verb you make from the noun. If it does not fit the sentence, look for a synonym.",
-       "start_s": 2912.511,
-       "start": "48:32"
+       "start_s": 3268.839,
+       "start": "54:28"
       }
      ],
      "terms": [
@@ -8096,16 +8093,16 @@
        "block": "page-11_k13",
        "label": "Form",
        "term": "Passive",
-       "start_s": 2975.433,
-       "start": "49:35"
+       "start_s": 3331.761,
+       "start": "55:31"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-11_k09",
        "text": "The biopsy results finds...",
-       "start_s": 2891.568,
-       "start": "48:11"
+       "start_s": 3247.896,
+       "start": "54:07"
       }
      ],
      "practice": [],
@@ -8115,8 +8112,8 @@
        "lesson": "grammar-01-verb-tenses",
        "section": "page-16",
        "provenance": "authored",
-       "start_s": 2994.359,
-       "start": "49:54"
+       "start_s": 3350.687,
+       "start": "55:50"
       }
      ]
     }
@@ -8129,8 +8126,8 @@
      "section": "page-7",
      "board": "page-7_t1",
      "utterance": "page-7_t1.s14.u2",
-     "start_s": 1469.281,
-     "start": "24:29"
+     "start_s": 1603.906,
+     "start": "26:43"
     }
    ],
    "methods": [],
@@ -8159,8 +8156,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k29",
-     "start_s": 1012.104,
-     "start": "16:52"
+     "start_s": 1095.909,
+     "start": "18:15"
     },
     {
      "word": "breaking wind",
@@ -8168,8 +8165,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k30",
-     "start_s": 1040.988,
-     "start": "17:20"
+     "start_s": 1124.793,
+     "start": "18:44"
     },
     {
      "word": "Illumination",
@@ -8177,8 +8174,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k04",
-     "start_s": 1188.079,
-     "start": "19:48"
+     "start_s": 1322.704,
+     "start": "22:02"
     },
     {
      "word": "Inadequate",
@@ -8186,8 +8183,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k07",
-     "start_s": 1236.972,
-     "start": "20:36"
+     "start_s": 1371.597,
+     "start": "22:51"
     },
     {
      "word": "Consume",
@@ -8195,8 +8192,8 @@
      "lexicon": null,
      "section": "page-7",
      "block": "page-7_k26",
-     "start_s": 1623.066,
-     "start": "27:03"
+     "start_s": 1757.691,
+     "start": "29:17"
     },
     {
      "word": "In terms of treatment",
@@ -8204,8 +8201,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k10",
-     "start_s": 1848.501,
-     "start": "30:48"
+     "start_s": 2023.046,
+     "start": "33:43"
     },
     {
      "word": "An assessment of",
@@ -8213,8 +8210,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k14",
-     "start_s": 1908.922,
-     "start": "31:48"
+     "start_s": 2083.467,
+     "start": "34:43"
     },
     {
      "word": "Prior to",
@@ -8222,8 +8219,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k16",
-     "start_s": 1949.232,
-     "start": "32:29"
+     "start_s": 2165.898,
+     "start": "36:05"
     },
     {
      "word": "Adhere to",
@@ -8231,8 +8228,8 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k19",
-     "start_s": 1997.899,
-     "start": "33:17"
+     "start_s": 2214.565,
+     "start": "36:54"
     },
     {
      "word": "Occasion",
@@ -8240,8 +8237,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k06",
-     "start_s": 2258.492,
-     "start": "37:38"
+     "start_s": 2523.258,
+     "start": "42:03"
     },
     {
      "word": "Attend to",
@@ -8249,8 +8246,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k10",
-     "start_s": 2336.509,
-     "start": "38:56"
+     "start_s": 2601.275,
+     "start": "43:21"
     },
     {
      "word": "Under normal circumstances",
@@ -8258,8 +8255,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k27",
-     "start_s": 2593.39,
-     "start": "43:13"
+     "start_s": 2903.728,
+     "start": "48:23"
     },
     {
      "word": "fairly",
@@ -8267,8 +8264,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k28",
-     "start_s": 2607.613,
-     "start": "43:27"
+     "start_s": 2917.951,
+     "start": "48:37"
     },
     {
      "word": "resolve",
@@ -8276,8 +8273,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k05",
-     "start_s": 2809.073,
-     "start": "46:49"
+     "start_s": 3165.401,
+     "start": "52:45"
     },
     {
      "word": "combing",
@@ -8285,8 +8282,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k11",
-     "start_s": 2938.971,
-     "start": "48:58"
+     "start_s": 3295.299,
+     "start": "54:55"
     },
     {
      "word": "eradicate",
@@ -8294,8 +8291,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k12",
-     "start_s": 2952.574,
-     "start": "49:12"
+     "start_s": 3308.902,
+     "start": "55:08"
     },
     {
      "word": "lice comb",
@@ -8303,8 +8300,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k17",
-     "start_s": 3049.65,
-     "start": "50:49"
+     "start_s": 3405.978,
+     "start": "56:45"
     },
     {
      "word": "commence",
@@ -8312,8 +8309,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k20",
-     "start_s": 3106.868,
-     "start": "51:46"
+     "start_s": 3463.196,
+     "start": "57:43"
     }
    ],
    "withheld": {
@@ -8345,24 +8342,24 @@
       "section": "page-9",
       "from_section": "page-7",
       "utterance": "page-7_t1.s10.u3",
-      "start_s": 1400.621,
-      "start": "23:20"
+      "start_s": 1535.246,
+      "start": "25:35"
      },
      {
       "lesson": "grammar-01-verb-tenses",
       "section": "page-12",
       "from_section": "page-9",
       "utterance": "page-9_t1.s2.u2",
-      "start_s": 2217.99,
-      "start": "36:57"
+      "start_s": 2482.756,
+      "start": "41:22"
      },
      {
       "lesson": "grammar-01-verb-tenses",
       "section": "page-16",
       "from_section": "page-11",
       "utterance": "page-11_t1.s12.u4",
-      "start_s": 2994.359,
-      "start": "49:54"
+      "start_s": 3350.687,
+      "start": "55:50"
      }
     ],
     "referred_to_by": [
@@ -8379,16 +8376,16 @@
       "section": "pages-13-14",
       "to_section": "pages-04-05",
       "utterance": "pages-13-14_t2.s5.u2",
-      "start_s": 2946.448,
-      "start": "49:06"
+      "start_s": 3320.427,
+      "start": "55:20"
      },
      {
       "lesson": "grammar-04-articles",
       "section": "page-15",
       "to_section": "page-6",
       "utterance": "page-15_t1.s9.u3",
-      "start_s": 3367.961,
-      "start": "56:07"
+      "start_s": 3793.376,
+      "start": "63:13"
      },
      {
       "lesson": "grammar-08-paraphrasing",
@@ -53703,8 +53700,8 @@
     {
      "lesson": "grammar-03-nominalization",
      "section": "page-6",
-     "start_s": 566.746,
-     "start": "9:26",
+     "start_s": 611.006,
+     "start": "10:11",
      "source": "term"
     }
    ]
@@ -54133,8 +54130,8 @@
     {
      "lesson": "grammar-03-nominalization",
      "section": "page-6",
-     "start_s": 924.508,
-     "start": "15:24",
+     "start_s": 1008.313,
+     "start": "16:48",
      "source": "term"
     }
    ]
@@ -54844,8 +54841,8 @@
     {
      "lesson": "grammar-03-nominalization",
      "section": "page-11",
-     "start_s": 2738.085,
-     "start": "45:38",
+     "start_s": 3094.413,
+     "start": "51:34",
      "source": "section"
     }
    ]
@@ -55112,8 +55109,8 @@
     {
      "lesson": "grammar-03-nominalization",
      "section": "page-9",
-     "start_s": 2187.06,
-     "start": "36:27",
+     "start_s": 2451.826,
+     "start": "40:51",
      "source": "section"
     }
    ]
@@ -56031,8 +56028,8 @@
     {
      "lesson": "grammar-03-nominalization",
      "section": "page-7",
-     "start_s": 1138.63,
-     "start": "18:58",
+     "start_s": 1273.255,
+     "start": "21:13",
      "source": "section"
     }
    ]
@@ -56588,8 +56585,8 @@
     {
      "lesson": "grammar-03-nominalization",
      "section": "page-6",
-     "start_s": 503.131,
-     "start": "8:23",
+     "start_s": 547.391,
+     "start": "9:07",
      "source": "section"
     }
    ]
@@ -57531,8 +57528,8 @@
     {
      "lesson": "grammar-03-nominalization",
      "section": "page-6",
-     "start_s": 678.413,
-     "start": "11:18",
+     "start_s": 722.673,
+     "start": "12:02",
      "source": "term"
     }
    ]
@@ -57557,8 +57554,8 @@
     {
      "lesson": "grammar-03-nominalization",
      "section": "page-6",
-     "start_s": 548.945,
-     "start": "9:08",
+     "start_s": 593.205,
+     "start": "9:53",
      "source": "term"
     }
    ]
@@ -58085,8 +58082,8 @@
     {
      "lesson": "grammar-03-nominalization",
      "section": "page-8",
-     "start_s": 1689.443,
-     "start": "28:09",
+     "start_s": 1863.988,
+     "start": "31:03",
      "source": "section"
     }
    ]

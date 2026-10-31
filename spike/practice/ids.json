@@ -22,6 +22,10 @@
   "grammar-04-articles": [
    953000,
    953999
+  ],
+  "grammar-03-nominalization": [
+   952000,
+   952999
   ]
  },
  "ids": [
@@ -1135,6 +1139,132 @@
    "lesson": "grammar-04-articles",
    "point": "fix-the-letter",
    "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952000",
+   "lesson": "grammar-03-nominalization",
+   "point": "verb-to-noun",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952001",
+   "lesson": "grammar-03-nominalization",
+   "point": "verb-to-noun",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952002",
+   "lesson": "grammar-03-nominalization",
+   "point": "word-in-front",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952003",
+   "lesson": "grammar-03-nominalization",
+   "point": "note-to-sentence",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952004",
+   "lesson": "grammar-03-nominalization",
+   "point": "noun-form-fix",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952005",
+   "lesson": "grammar-03-nominalization",
+   "point": "noun-needs-verb",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952006",
+   "lesson": "grammar-03-nominalization",
+   "point": "due-to-noun",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952007",
+   "lesson": "grammar-03-nominalization",
+   "point": "due-to-noun",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952008",
+   "lesson": "grammar-03-nominalization",
+   "point": "due-to-noun",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952009",
+   "lesson": "grammar-03-nominalization",
+   "point": "attended",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952010",
+   "lesson": "grammar-03-nominalization",
+   "point": "time-words",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952011",
+   "lesson": "grammar-03-nominalization",
+   "point": "time-words",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952012",
+   "lesson": "grammar-03-nominalization",
+   "point": "time-words",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952013",
+   "lesson": "grammar-03-nominalization",
+   "point": "time-words",
+   "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952014",
+   "lesson": "grammar-03-nominalization",
+   "point": "noun-to-verb",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952015",
+   "lesson": "grammar-03-nominalization",
+   "point": "noun-to-verb",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952016",
+   "lesson": "grammar-03-nominalization",
+   "point": "noun-to-verb",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-952017",
+   "lesson": "grammar-03-nominalization",
+   "point": "noun-to-verb",
+   "slot": "item-2",
    "issued": "2026-10-31"
   }
  ]
