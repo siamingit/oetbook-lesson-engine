@@ -46,6 +46,10 @@
   "vocabulary-01-word-forms": [
    958000,
    958999
+  ],
+  "vocabulary-02-collocations": [
+   959000,
+   959999
   ]
  },
  "ids": [
@@ -2237,6 +2241,279 @@
    "lesson": "vocabulary-01-word-forms",
    "point": "cut-detail",
    "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959000",
+   "lesson": "vocabulary-02-collocations",
+   "point": "take-give",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959001",
+   "lesson": "vocabulary-02-collocations",
+   "point": "take-give",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959002",
+   "lesson": "vocabulary-02-collocations",
+   "point": "take-give",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959003",
+   "lesson": "vocabulary-02-collocations",
+   "point": "take-give",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959004",
+   "lesson": "vocabulary-02-collocations",
+   "point": "three-pairs",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959005",
+   "lesson": "vocabulary-02-collocations",
+   "point": "three-pairs",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959006",
+   "lesson": "vocabulary-02-collocations",
+   "point": "three-pairs",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959007",
+   "lesson": "vocabulary-02-collocations",
+   "point": "three-pairs",
+   "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959008",
+   "lesson": "vocabulary-02-collocations",
+   "point": "pairs-patients",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959009",
+   "lesson": "vocabulary-02-collocations",
+   "point": "pairs-patients",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959010",
+   "lesson": "vocabulary-02-collocations",
+   "point": "pairs-patients",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959011",
+   "lesson": "vocabulary-02-collocations",
+   "point": "pairs-patients",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959012",
+   "lesson": "vocabulary-02-collocations",
+   "point": "administer",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959013",
+   "lesson": "vocabulary-02-collocations",
+   "point": "administer",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959014",
+   "lesson": "vocabulary-02-collocations",
+   "point": "administer",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959015",
+   "lesson": "vocabulary-02-collocations",
+   "point": "administer",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959016",
+   "lesson": "vocabulary-02-collocations",
+   "point": "provide",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959017",
+   "lesson": "vocabulary-02-collocations",
+   "point": "provide",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959018",
+   "lesson": "vocabulary-02-collocations",
+   "point": "monitor",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959019",
+   "lesson": "vocabulary-02-collocations",
+   "point": "monitor",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959020",
+   "lesson": "vocabulary-02-collocations",
+   "point": "monitor",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959021",
+   "lesson": "vocabulary-02-collocations",
+   "point": "monitor",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959022",
+   "lesson": "vocabulary-02-collocations",
+   "point": "perform",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959023",
+   "lesson": "vocabulary-02-collocations",
+   "point": "perform",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959024",
+   "lesson": "vocabulary-02-collocations",
+   "point": "prescribe",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959025",
+   "lesson": "vocabulary-02-collocations",
+   "point": "treat",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959026",
+   "lesson": "vocabulary-02-collocations",
+   "point": "treat",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959027",
+   "lesson": "vocabulary-02-collocations",
+   "point": "schedule",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959028",
+   "lesson": "vocabulary-02-collocations",
+   "point": "schedule",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959029",
+   "lesson": "vocabulary-02-collocations",
+   "point": "schedule",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959030",
+   "lesson": "vocabulary-02-collocations",
+   "point": "order",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959031",
+   "lesson": "vocabulary-02-collocations",
+   "point": "order",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959032",
+   "lesson": "vocabulary-02-collocations",
+   "point": "order",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959033",
+   "lesson": "vocabulary-02-collocations",
+   "point": "order",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959034",
+   "lesson": "vocabulary-02-collocations",
+   "point": "final",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959035",
+   "lesson": "vocabulary-02-collocations",
+   "point": "final",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959036",
+   "lesson": "vocabulary-02-collocations",
+   "point": "final",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959037",
+   "lesson": "vocabulary-02-collocations",
+   "point": "final",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-959038",
+   "lesson": "vocabulary-02-collocations",
+   "point": "final",
+   "slot": "gap-3",
    "issued": "2026-10-31"
   }
  ]

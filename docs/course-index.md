@@ -756,9 +756,9 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Expand" at 16:29
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Rearrange" at 44:02, about section `page-9`
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Medical terms: vocabulary and word form" at 27:48, about section `page-15`
-- referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Key points to remember" at 14:51, about section `page-9`
-- referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Treat" at 45:17, about section `page-15`
-- referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Schedule" at 49:39, about section `page-16`
+- referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Key points to remember" at 16:51, about section `page-9`
+- referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Treat" at 53:23, about section `page-15`
+- referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Schedule" at 58:40, about section `page-16`
 - referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Practice: conditions and types of pain" at 20:54, about section `page-10`
 - referred to by OET Writing: Overview (`writing-01-overview`), "Steps towards successful writing" at 3:22
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Conciseness and Clarity" at 20:36, about section `page-11`
@@ -1693,7 +1693,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Introduction" at 0:09
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Expand" at 12:34
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Choosing the right word form" at 9:57, about section `page-6`
-- referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Prescribe" at 42:06, about section `page-6`
+- referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Prescribe" at 49:16, about section `page-6`
 - referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Types of pain" at 18:16, about section `page-6`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 10:31, about section `pages-11-12`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 13:26, about section `page-6`
@@ -3135,7 +3135,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
 | 1 | Vocabulary for OET: Word Forms and Sentence Structure | `vocabulary-01-word-forms` | 93:37 | 8 | 2026-10-27 09:37 (siavash) |
-| 2 | Vocabulary for OET: Verb + Noun Collocations | `vocabulary-02-collocations` | 68:45 | 13 | 2026-10-27 09:37 (siavash) |
+| 2 | Vocabulary for OET: Verb + Noun Collocations | `vocabulary-02-collocations` | 81:03 | 13 | 2026-10-27 09:37 (siavash) |
 | 3 | Vocabulary for OET: Adjective + Noun Collocations | `vocabulary-03-collocations-2` | 76:00 | 10 | 2026-10-27 09:37 (siavash) |
 
 <a id="vocabulary-01-word-forms"></a>
@@ -3732,7 +3732,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 2. Vocabulary for OET: Verb + Noun Collocations
 
-- Lesson ID and folder: `vocabulary-02-collocations` (folder `vocabulary-02-collocations`); course vocabulary, lesson 2; length 68:45; bundle format 1.22
+- Lesson ID and folder: `vocabulary-02-collocations` (folder `vocabulary-02-collocations`); course vocabulary, lesson 2; length 81:03; bundle format 1.23
 - Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn verbs and nouns that go together, for your OET letters and for talking to patients.
 - Original session: folder `source`: `source/video.mp4`, 47:39 long, partial hash `f79f384eddc3c859`; deck `source/slides.pdf`, 16 pages
@@ -3784,348 +3784,348 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 *Terms*: Collocation (Key term, 1:35); Verb + noun collocation (Key term, 1:49); Advice (Collocations, 3:58); Advise and advice (Word family, 4:13)
 
-#### 6:10 How verb + noun collocations are formed (`page-5`, deck)
+#### 7:11 How verb + noun collocations are formed (`page-5`, deck)
 
-- 6:10 **the two parts of the pattern, the three example pairs**
-  - 6:10 Name the two parts, then teach part one: the verb
-  - 6:10 State how verbs and nouns combine in a collocation
-  - 6:27 The slide's verb examples, plus one sentence using one of them
-  - 7:01 Teach part two: the noun
-  - 7:13 The slide's noun examples, plus one sentence said to a patient
-  - 7:54 Gloss the first pair
-  - 8:16 Second example of the first pair, spoken to a patient
-  - 8:29 Other nouns that go with 'perform'
-  - 8:43 Gloss the second pair
-  - 9:07 Second example of the second pair, spoken to a patient
-  - 9:22 Gloss the third pair
-  - 9:48 Second example of the third pair, spoken to a patient
-  - 9:56 Close with the shape of the pattern
+- 7:11 **the two parts of the pattern, the three example pairs**
+  - 7:11 Name the two parts, then teach part one: the verb
+  - 7:11 State how verbs and nouns combine in a collocation
+  - 7:29 The slide's verb examples, plus one sentence using one of them
+  - 8:03 Teach part two: the noun
+  - 8:15 The slide's noun examples, plus one sentence said to a patient
+  - 8:56 Gloss the first pair
+  - 9:18 Second example of the first pair, spoken to a patient
+  - 9:31 Other nouns that go with 'perform'
+  - 9:46 Gloss the second pair
+  - 10:10 Second example of the second pair, spoken to a patient
+  - 10:25 Gloss the third pair
+  - 10:51 Second example of the third pair, spoken to a patient
+  - 10:58 Close with the shape of the pattern
 
 *Rules on the boards*
 
-- 9:56 The first part is the verb. The second part is the noun.
+- 10:58 The first part is the verb. The second part is the noun.
 
-*Terms*: Verb (Part one, 6:15); Give, monitor, prescribe (Verbs, 6:27); Noun (Part two, 7:01); Medication, treatment, test, surgery (Nouns, 7:13); Perform an operation, perform a test, perform an examination (Collocations, 8:29)
+*Terms*: Verb (Part one, 7:17); Give, monitor, prescribe (Verbs, 7:29); Noun (Part two, 8:03); Medication, treatment, test, surgery (Nouns, 8:15); Perform an operation, perform a test, perform an examination (Collocations, 9:31)
 
-#### 10:08 Key points to remember (`page-6`, deck)
+#### 12:08 Key points to remember (`page-6`, deck)
 
-- 10:08 **fixed pairs, administer and give, context and setting, learning by practice and resources**
-  - 10:08 Introduce the fixed pair and the wrong version
-  - 10:44 Full gloss moment for the key collocation
-  - 11:02 Second example, spoken to a patient
-  - 11:14 Four more verb and noun pairs in one box
-  - 11:36 The corrected slide point about administer and give
-  - 12:02 Full gloss moment for administer
-  - 12:18 Words for a letter and words for a patient
-  - 12:47 Full gloss moment for take a history
-  - 13:00 The same idea said to the patient
-  - 13:20 The setting decides the verb, with the slide's two examples
-  - 13:50 Full gloss moment for underwent
-  - 14:03 The forms of undergo
-  - 14:14 The register contrast, rebuilt in English
-  - 14:38 One more spoken question with had
-  - 15:00 Where to meet collocations
-  - 15:25 What to do with what you hear
-  - 15:46 Collect the pairs you meet
+- 12:08 **fixed pairs, administer and give, context and setting, learning by practice and resources**
+  - 12:08 Introduce the fixed pair and the wrong version
+  - 12:44 Full gloss moment for the key collocation
+  - 13:02 Second example, spoken to a patient
+  - 13:14 Four more verb and noun pairs in one box
+  - 13:36 The corrected slide point about administer and give
+  - 14:02 Full gloss moment for administer
+  - 14:19 Words for a letter and words for a patient
+  - 14:47 Full gloss moment for take a history
+  - 15:00 The same idea said to the patient
+  - 15:20 The setting decides the verb, with the slide's two examples
+  - 15:50 Full gloss moment for underwent
+  - 16:03 The forms of undergo
+  - 16:14 The register contrast, rebuilt in English
+  - 16:39 One more spoken question with had
+  - 18:01 Where to meet collocations
+  - 18:26 What to do with what you hear
+  - 18:50 Collect the pairs you meet
 
 *Wrong sentences corrected*
 
-- 10:08 Make a break.
+- 12:08 Make a break.
 
-*Terms*: Take a blood sample, make an appointment, carry out an examination, refer a patient (More pairs, 11:14); undergo, underwent, undergone (Word family, 14:03); Writing samples, speaking samples, readings, listening transcripts, podcasts (Where to look, 15:05)
+*Terms*: Take a blood sample, make an appointment, carry out an examination, refer a patient (More pairs, 13:14); undergo, underwent, undergone (Word family, 16:03); Writing samples, speaking samples, readings, listening transcripts, podcasts (Where to look, 18:06)
 
-#### 16:03 Administer (`page-7`, deck)
+#### 19:07 Administer (`page-7`, deck)
 
-- 16:03 **the verb administer and its nouns, fluids, formal and patient-friendly, oxygen, formal and patient-friendly, the blood transfusion example**
-  - 16:03 name the verb this part of the slide teaches
-  - 16:03 the slide's fluids pair
-  - 16:03 the slide's last formal example
-  - 16:09 The key word: administer, with a medical letter example
-  - 16:25 The same verb in a sentence said to a patient
-  - 16:34 The nouns that go with administer, as one list
-  - 17:01 Administer and give: the two verbs for the same action
-  - 17:13 How the slide pairs its examples
-  - 17:42 What comes first in the formal sentence
-  - 18:02 Gloss the hard word 'stabilise'
-  - 18:15 Which noun to use with a patient
-  - 18:29 Gloss 'drip'
-  - 18:40 The phrase 'through a drip'
-  - 18:57 Gloss 'hydrated'
-  - 19:12 the slide's oxygen pair
-  - 19:24 Who is named in each formal sentence
-  - 19:40 'Some' with oxygen and blood
-  - 19:52 The two patterns for administer and give
-  - 20:05 Saying the purpose simply
-  - 20:28 Why this noun needs 'a'
-  - 20:37 What comes first in this sentence
-  - 20:48 The phrase 'replace the lost blood'
-  - 21:04 The same idea said to the patient
+- 19:07 **the verb administer and its nouns, fluids, formal and patient-friendly, oxygen, formal and patient-friendly, the blood transfusion example**
+  - 19:07 name the verb this part of the slide teaches
+  - 19:07 the slide's fluids pair
+  - 19:07 the slide's last formal example
+  - 19:13 The key word: administer, with a medical letter example
+  - 19:29 The same verb in a sentence said to a patient
+  - 19:38 The nouns that go with administer, as one list
+  - 20:05 Administer and give: the two verbs for the same action
+  - 20:17 How the slide pairs its examples
+  - 20:46 What comes first in the formal sentence
+  - 21:06 Gloss the hard word 'stabilise'
+  - 21:19 Which noun to use with a patient
+  - 21:33 Gloss 'drip'
+  - 21:44 The phrase 'through a drip'
+  - 22:01 Gloss 'hydrated'
+  - 22:16 the slide's oxygen pair
+  - 22:28 Who is named in each formal sentence
+  - 22:44 'Some' with oxygen and blood
+  - 22:56 The two patterns for administer and give
+  - 23:09 Saying the purpose simply
+  - 23:32 Why this noun needs 'a'
+  - 23:41 What comes first in this sentence
+  - 23:52 The phrase 'replace the lost blood'
+  - 24:08 The same idea said to the patient
 
-*Terms*: Medication, fluids, oxygen, blood, an injection (Nouns, 16:34); Through a drip (Phrase to learn, 18:40); Some oxygen, some blood (Word to learn, 19:40); Administer something to the patient. Give the patient something. (Patterns, 19:52); A blood transfusion (Word to learn, 20:28); Replace the lost blood (Phrase to learn, 20:48)
+*Terms*: Medication, fluids, oxygen, blood, an injection (Nouns, 19:38); Through a drip (Phrase to learn, 21:44); Some oxygen, some blood (Word to learn, 22:44); Administer something to the patient. Give the patient something. (Patterns, 22:56); A blood transfusion (Word to learn, 23:32); Replace the lost blood (Phrase to learn, 23:52)
 
-#### 21:22 Provide (`page-8`, deck)
+#### 25:33 Provide (`page-8`, deck)
 
-- 21:22 **the verb provide and its nouns, provide treatment and provide assistance, provide support and provide information**
-  - 21:22 the verb's nouns from the slide
-  - 21:22 The slide's first two example sentences
-  - 21:22 The slide's last two example sentences
-  - 22:00 Full gloss moment for the key word 'provide', with a writing example
-  - 22:21 Second example of the key word, said to a patient
-  - 22:37 The one widening note allowed: the patterns of 'provide'
-  - 23:01 The second pattern in an example
-  - 23:28 Find the noun and its verb in the first sentence
-  - 23:42 The words in between are extra information
-  - 23:55 The shorter sentence still makes sense
-  - 24:10 The rule to keep from the first sentence
-  - 24:41 Assistance and assistant side by side
-  - 24:55 Warn about the common writing mistake
-  - 25:08 Provide works in writing and in speaking
-  - 25:17 A spoken example with the correct pattern
-  - 25:45 A second verb inside the support sentence
-  - 25:54 What the 'to help' pattern means
-  - 26:03 Warn against using 'due to' here
-  - 26:23 The 'I’m here to...' opener for speaking
-  - 26:40 One more example of the opener with provide information
+- 25:33 **the verb provide and its nouns, provide treatment and provide assistance, provide support and provide information**
+  - 25:33 the verb's nouns from the slide
+  - 25:33 The slide's first two example sentences
+  - 25:33 The slide's last two example sentences
+  - 26:11 Full gloss moment for the key word 'provide', with a writing example
+  - 26:31 Second example of the key word, said to a patient
+  - 26:48 The one widening note allowed: the patterns of 'provide'
+  - 27:12 The second pattern in an example
+  - 27:39 Find the noun and its verb in the first sentence
+  - 27:53 The words in between are extra information
+  - 28:05 The shorter sentence still makes sense
+  - 28:21 The rule to keep from the first sentence
+  - 28:52 Assistance and assistant side by side
+  - 29:05 Warn about the common writing mistake
+  - 29:18 Provide works in writing and in speaking
+  - 29:28 A spoken example with the correct pattern
+  - 29:55 A second verb inside the support sentence
+  - 30:05 What the 'to help' pattern means
+  - 30:14 Warn against using 'due to' here
+  - 30:33 The 'I’m here to...' opener for speaking
+  - 30:50 One more example of the opener with provide information
 
 *Warnings (common mistakes)*
 
-- 24:10 A verb and its noun do not always come one after the other. If the noun is in the sentence, its verb can be further away.
-- 24:55 Do not write 'assistant' when you mean 'assistance'. Many students mix these two words up in their writing.
-- 26:03 Do not use 'due to' here. It makes the sentence wrong and the structure difficult.
+- 28:21 A verb and its noun do not always come one after the other. If the noun is in the sentence, its verb can be further away.
+- 29:05 Do not write 'assistant' when you mean 'assistance'. Many students mix these two words up in their writing.
+- 30:14 Do not use 'due to' here. It makes the sentence wrong and the structure difficult.
 
-*Terms*: Treatment, assistance, support, information, advice (Nouns, 21:22); Provide something for someone (Patterns, 22:37); To help the patient walk again (Useful pattern, 25:54)
+*Terms*: Treatment, assistance, support, information, advice (Nouns, 25:33); Provide something for someone (Patterns, 26:48); To help the patient walk again (Useful pattern, 30:05)
 
-#### 26:57 Monitor (`page-9`, deck)
+#### 32:01 Monitor (`page-9`, deck)
 
-- 26:57 **the two medical examples with monitor, the two patient-friendly examples**
-  - 26:57 Show the slide's two medical example sentences
-  - 26:57 Show the slide's two patient-friendly example sentences
-  - 27:24 Gloss the key verb monitor
-  - 27:40 A second example of monitor, said to a patient
-  - 27:53 The nouns that go with monitor
-  - 28:13 The possessive in the first sentence
-  - 28:30 The form of the verb in both letter sentences
-  - 28:39 The noun in the second sentence is progress
-  - 28:52 To ensure gives the reason for monitoring
-  - 29:21 Monitor with condition and blood pressure when talking to a patient
-  - 29:42 Gloss the idiom keep an eye on
-  - 29:56 Use the idiom to calm a worried patient
-  - 30:18 To make sure and to ensure both give the reason
-  - 30:57 Check in the last sentence
-  - 31:09 Two words inside the last sentence
-  - 31:28 The form after by
-
-*Rules on the boards*
-
-- 28:13 In writing, keep the possessive: the patient’s blood pressure.
-
-*Terms*: Symptoms, condition, blood pressure, progress, heart rate (Nouns, 27:53); Should be monitored (Form, 28:30); To ensure (Purpose, 28:52); Improves, over time (Meaning, 31:09); By monitoring your symptoms (Form, 31:28)
-
-#### 31:48 Perform (`page-10`, deck)
-
-- 31:48 **the verb perform and its nouns, the medical letter examples, the patient-friendly examples**
-  - 31:48 Show the key verb and the nouns it goes with
-  - 31:48 Show the two formal example sentences
-  - 31:48 Show the two patient-friendly sentences
-  - 32:21 Gloss the key word, with a letter example
-  - 32:39 A second example, said to a patient
-  - 32:54 Near-synonyms: perform, carry out, conduct
-  - 33:37 Surgery and operation: the article point
-  - 34:43 The form 'was performed' and the missing article
-  - 35:17 What 'repair' means with injuries
-  - 35:47 The collocation 'assess health'
-  - 36:31 Which verb to choose in a letter and with a patient
-  - 36:49 A second correct version of the scan sentence
-  - 37:07 Gloss the word 'issue'
-  - 37:19 Issue and problem
-
-*Wrong sentences corrected*
-
-- 33:20 Conduct an operation.
-- 33:37 I had a surgery.
-
-*Terms*: Perform surgery, a procedure, an examination, a test or a scan (Nouns, 31:48); Passive (Grammar term, 34:43); Repair (Collocations, 35:17); Assess (Collocations, 35:47)
-
-#### 37:34 Prescribe (`page-11`, deck)
-
-- 37:34 **the verb prescribe and its nouns, the medical letter examples, the patient-friendly examples**
-  - 37:34 the verb and the list of nouns it goes with
-  - 37:34 the slide's two formal sentences
-  - 37:34 the slide's two patient-friendly sentences
-  - 38:17 Full gloss moment for the key word, with a letter example
-  - 38:41 Speaking example for prescribe, and where the verb is used
-  - 38:54 Prescribe rest: who does the prescribing
-  - 39:03 One widening note: the word family
-  - 39:24 What makes these two model sentences work
-  - 39:39 The form of the verb after 'to'
-  - 40:04 The phrase 'a course of'
-  - 40:24 The purpose phrase 'to manage'
-  - 40:56 What these two sentences are for
-  - 41:02 Gloss the hard general word in the printed sentence
-  - 41:16 No 'a' or 'an' before painkillers
-  - 41:28 'Some' can be left out
-  - 41:38 'To help with' as a way of giving the reason
-  - 41:56 'Rest' in this sentence, and one more example
-  - 42:14 Doctor and patient: two ways to talk about rest
-
-*Wrong sentences corrected*
-
-- 41:24 A painkillers
-
-*Terms*: Medication, antibiotics, painkillers, treatment, rest (Nouns, 37:48); Prescribe (verb), prescription (noun) (Word family, 39:03); To treat the infection (Pattern, 39:39); A course of (Phrase, 40:04); To help with… (Phrase, 41:38)
-
-#### 42:30 Treat (`page-12`, deck)
-
-- 42:30 **treat in the two medical examples, treat in the patient-friendly examples**
-  - 42:30 the slide's two medical examples of 'treat'
-  - 42:30 the slide's two patient-friendly examples of 'treat'
-  - 43:04 Key word moment: the meaning of 'treat' with a letter-style example
-  - 43:20 Speaking example with the key word
-  - 43:31 The nouns that go with 'treat', in one box
-  - 44:00 'Pain' with and without 'a'
-  - 44:36 'Ache' as a second word for pain
-  - 44:49 The words 'a course of antibiotics'
-  - 45:07 The passive form in the first example
-  - 45:49 Gloss the hard general word 'prevent'
-  - 46:02 The pattern after 'prevent', with an extra example
-  - 46:39 Word family of the key word
-
-*Terms*: Treat an infection, a condition, an injury, a wound, pain (Nouns, 43:31); ache (Word, 44:36); a course of antibiotics (Words, 44:49); passive (Grammar word, 45:07); prevent it from getting worse (Pattern, 46:02); treat (verb), treatment (noun), treatable (adjective) (Word family, 46:39)
-
-#### 47:08 Schedule (`page-13`, deck)
-
-- 47:08 **the verb schedule and its nouns, the examples from medical writing, the patient-friendly examples**
-  - 47:08 the nouns that go with the verb.
-  - 47:08 the three written examples on this page.
-  - 47:50 Key word: the verb 'schedule' glossed, with a letter example.
-  - 48:06 Second example: the same verb said to a patient.
-  - 48:16 How the word is said in British and American English.
-  - 48:32 Near-synonyms of the key verb.
-  - 49:01 The possessive in the first sentence.
-  - 49:07 The meaning of 'has been scheduled'.
-  - 49:12 Define the grammar word 'passive' the first time it appears.
-  - 49:21 The passive verbs in these three sentences.
-  - 49:45 The 'by' phrase names who did it.
-  - 50:00 The same pattern in a letter request.
-  - 50:24 Why the tests were scheduled.
-  - 50:31 Gloss the hard general word 'assess'.
-  - 50:44 Appointment and follow-up are countable nouns.
-  - 51:00 The preposition used here after 'scheduled'.
-  - 51:08 With a date, two prepositions are possible.
-  - 51:25 the two examples for talking to a patient.
-  - 51:39 What the two purpose phrases mean.
-  - 51:52 One purpose phrase can replace the other.
-  - 52:00 'A follow-up' works as a noun on its own.
-  - 52:17 One more example with 'a follow-up'.
-  - 52:27 Word family for 'recovering'.
-
-*Terms*: Surgery, appointment, scan, follow-up, test (Nouns, 47:12); Schedule, arrange, book (Near-synonyms, 48:32); Passive (Grammar word, 49:12); A follow-up (Word use, 52:00); Recover, recovery (Word family, 52:27)
-
-#### 52:53 Order (`page-14`, deck)
-
-- 52:53 **order with an X-ray, order with a blood test**
-  - 52:53 the slide's two X-ray sentences, and what they show
-  - 52:53 the slide's two blood test sentences
-  - 53:39 Full gloss moment for the key word 'order'
-  - 53:55 Speaking example of the key word, said to a patient
-  - 54:09 The nouns that go with 'order', as one short list
-  - 54:22 Two small points the slide's formal sentence shows
-  - 54:36 The preposition here is 'in', but it changes with the noun
-  - 54:55 What can come before the body part
-  - 55:31 The passive form in the first sentence
-  - 55:46 Gloss the hard word 'investigate'
-  - 56:01 'Investigate' and 'check' do the same job in the sentence
-  - 56:30 The reassurance phrase in the patient-friendly version
-  - 56:59 Another verb used with tests in letters
-
-*Terms*: Tests, medication, an X-ray, a scan, an examination (Nouns, 54:09); To ensure everything is okay (Phrase, 56:30)
-
-#### 57:18 Practice: complete the sentences (`page-15`, deck)
-
-- 57:18 **instruction and items 1 to 5**
-  - 57:18 Show the first half of the gap-fill set
-- 58:10 **items 6 to 10**
-  - 58:10 Show the second half of the gap-fill set
-- 58:53 **Item 1: monitor blood pressure**
-  - 58:53 Give the answer and the reason
-  - 59:15 Gloss the hard word 'throughout' in English
-  - 59:28 Point out the base and past forms in the verb list
-  - 59:49 State the form needed after 'will' here
-- 59:57 **Item 2: assess symptoms**
-  - 59:57 Gloss the key word 'assess' before the answer
-  - 60:18 Give the answer and the form reason
-  - 60:38 Speaking example with the key word
-  - 60:47 Gloss the hard word 'determine'
-- 60:59 **Item 3: prescribe antibiotics**
-  - 60:59 Give the intended answer
-  - 61:19 Show the second acceptable answer
-  - 61:32 Contrast the two verbs
-  - 61:45 Speaking example with 'prescribe'
-- 61:53 **Item 4: perform surgery**
-  - 61:53 Give the answer and the form reason
-  - 62:17 Show the verbs that go with surgery
-  - 62:27 Reject 'conduct' with surgery
-  - 62:41 Surgery with no word in front of it
-  - 62:55 Operation needs a word in front of it
-- 63:17 **Item 5: conduct a scan**
-  - 63:17 Give the answer and the reason
-  - 63:33 Explain why 'performed' cannot fill this gap
-  - 63:44 Collect the verbs that mean to do a scan
-  - 63:54 Gloss the key phrase 'carry out'
-- 64:07 **Item 6: administer pain relief**
-  - 64:07 Give the answer and the reason
-  - 64:24 Gloss 'pain relief' in English
-  - 64:46 Collect 'administer' collocations
-  - 64:58 Speaking example with the key word
-- 65:05 **Item 7: administer an injection**
-  - 65:05 Give the answer and the form reason
-  - 65:27 Gloss 'reduce' in English
-- 65:40 **Item 8: provide assistance**
-  - 65:40 Give the answer and the reason
-  - 66:00 Gloss the key word 'assistance'
-  - 66:19 Collect 'provide' collocations
-  - 66:30 Speaking example with the key words
-- 66:36 **Item 9: monitor a condition**
-  - 66:36 Give the answer and the reason
-  - 66:56 Gloss the key word 'monitor'
-  - 67:15 Collect 'monitor' collocations
-  - 67:27 Gloss 'improve'
-- 67:40 **Item 10: discuss test results**
-  - 67:40 Gloss the key word 'discuss' before the answer
-  - 68:00 Give the answer and the reason
-  - 68:14 Explain the phrase 'during the consultation'
-  - 68:21 Speaking example with the key word
-  - 68:30 Close with the main idea of the exercise
+- 32:01 **the two medical examples with monitor, the two patient-friendly examples**
+  - 32:01 Show the slide's two medical example sentences
+  - 32:01 Show the slide's two patient-friendly example sentences
+  - 32:28 Gloss the key verb monitor
+  - 32:44 A second example of monitor, said to a patient
+  - 32:57 The nouns that go with monitor
+  - 33:17 The possessive in the first sentence
+  - 33:33 The form of the verb in both letter sentences
+  - 33:43 The noun in the second sentence is progress
+  - 33:56 To ensure gives the reason for monitoring
+  - 34:24 Monitor with condition and blood pressure when talking to a patient
+  - 34:46 Gloss the idiom keep an eye on
+  - 35:00 Use the idiom to calm a worried patient
+  - 35:22 To make sure and to ensure both give the reason
+  - 36:00 Check in the last sentence
+  - 36:12 Two words inside the last sentence
+  - 36:31 The form after by
 
 *Rules on the boards*
 
-- 68:30 For each noun, learn the verb or verbs that go with it. Another verb may not give the right meaning.
+- 33:17 In writing, keep the possessive: the patient’s blood pressure.
+
+*Terms*: Symptoms, condition, blood pressure, progress, heart rate (Nouns, 32:57); Should be monitored (Form, 33:33); To ensure (Purpose, 33:56); Improves, over time (Meaning, 36:12); By monitoring your symptoms (Form, 36:31)
+
+#### 37:59 Perform (`page-10`, deck)
+
+- 37:59 **the verb perform and its nouns, the medical letter examples, the patient-friendly examples**
+  - 37:59 Show the key verb and the nouns it goes with
+  - 37:59 Show the two formal example sentences
+  - 37:59 Show the two patient-friendly sentences
+  - 38:33 Gloss the key word, with a letter example
+  - 38:51 A second example, said to a patient
+  - 39:06 Near-synonyms: perform, carry out, conduct
+  - 39:50 Surgery and operation: the article point
+  - 40:56 The form 'was performed' and the missing article
+  - 41:29 What 'repair' means with injuries
+  - 41:59 The collocation 'assess health'
+  - 42:44 Which verb to choose in a letter and with a patient
+  - 43:01 A second correct version of the scan sentence
+  - 43:19 Gloss the word 'issue'
+  - 43:31 Issue and problem
 
 *Wrong sentences corrected*
 
-- 57:18 The nurse will __________ the patient’s blood pressure throughout the night.
-- 57:18 The doctor __________ the patient’s symptoms to determine the best treatment.
-- 57:18 We will __________ antibiotics to fight the infection.
-- 57:18 The surgeon __________ emergency surgery to repair the patient’s injuries.
-- 57:18 The team will __________ a scan to look for any internal bleeding.
-- 58:10 The nurse __________ pain relief to make the patient more comfortable.
-- 58:10 The nurse will __________ an injection to reduce the patient's symptoms.
-- 58:10 The physiotherapist __________ assistance to help the patient walk again.
-- 58:10 We will __________ your condition over the next few days to see if it improves.
-- 58:10 The doctor __________ the test results during the consultation.
-- 58:53 The nurse will __________ the patient’s blood pressure throughout the night.
-- 59:57 The doctor __________ the patient’s symptoms to determine the best treatment.
-- 60:59 We will __________ antibiotics to fight the infection.
-- 61:53 The surgeon __________ emergency surgery to repair the patient’s injuries.
-- 62:27 Conduct emergency surgery.
-- 63:17 The team will __________ a scan to look for any internal bleeding.
-- 64:07 The nurse __________ pain relief to make the patient more comfortable.
-- 65:05 The nurse will __________ an injection to reduce the patient's symptoms.
-- 65:40 The physiotherapist __________ assistance to help the patient walk again.
-- 66:36 We will __________ your condition over the next few days to see if it improves.
-- 67:40 The doctor __________ the test results during the consultation.
+- 39:33 Conduct an operation.
+- 39:50 I had a surgery.
 
-*Terms*: Monitor, assessed, prescribe, performed, conduct, administered, administer, provided, monitor, discussed (Verbs, 59:28); Conduct a scan, perform a scan, carry out a scan (Collocations, 63:44); Administer pain relief, administer medication, administer an injection (Collocations, 64:46); Provide assistance, provide support, provide care (Collocations, 66:19); Monitor blood pressure, monitor a patient, monitor a condition (Collocations, 67:15); During the consultation (Phrase, 68:14)
+*Terms*: Perform surgery, a procedure, an examination, a test or a scan (Nouns, 37:59); Passive (Grammar term, 40:56); Repair (Collocations, 41:29); Assess (Collocations, 41:59)
+
+#### 44:43 Prescribe (`page-11`, deck)
+
+- 44:43 **the verb prescribe and its nouns, the medical letter examples, the patient-friendly examples**
+  - 44:43 the verb and the list of nouns it goes with
+  - 44:43 the slide's two formal sentences
+  - 44:43 the slide's two patient-friendly sentences
+  - 45:27 Full gloss moment for the key word, with a letter example
+  - 45:50 Speaking example for prescribe, and where the verb is used
+  - 46:04 Prescribe rest: who does the prescribing
+  - 46:12 One widening note: the word family
+  - 46:33 What makes these two model sentences work
+  - 46:48 The form of the verb after 'to'
+  - 47:14 The phrase 'a course of'
+  - 47:34 The purpose phrase 'to manage'
+  - 48:06 What these two sentences are for
+  - 48:12 Gloss the hard general word in the printed sentence
+  - 48:25 No 'a' or 'an' before painkillers
+  - 48:38 'Some' can be left out
+  - 48:48 'To help with' as a way of giving the reason
+  - 49:06 'Rest' in this sentence, and one more example
+  - 49:23 Doctor and patient: two ways to talk about rest
+
+*Wrong sentences corrected*
+
+- 48:34 A painkillers
+
+*Terms*: Medication, antibiotics, painkillers, treatment, rest (Nouns, 44:57); Prescribe (verb), prescription (noun) (Word family, 46:12); To treat the infection (Pattern, 46:48); A course of (Phrase, 47:14); To help with… (Phrase, 48:48)
+
+#### 50:38 Treat (`page-12`, deck)
+
+- 50:38 **treat in the two medical examples, treat in the patient-friendly examples**
+  - 50:38 the slide's two medical examples of 'treat'
+  - 50:38 the slide's two patient-friendly examples of 'treat'
+  - 51:12 Key word moment: the meaning of 'treat' with a letter-style example
+  - 51:28 Speaking example with the key word
+  - 51:39 The nouns that go with 'treat', in one box
+  - 52:08 'Pain' with and without 'a'
+  - 52:42 'Ache' as a second word for pain
+  - 52:55 The words 'a course of antibiotics'
+  - 53:13 The passive form in the first example
+  - 53:55 Gloss the hard general word 'prevent'
+  - 54:08 The pattern after 'prevent', with an extra example
+  - 54:45 Word family of the key word
+
+*Terms*: Treat an infection, a condition, an injury, a wound, pain (Nouns, 51:39); ache (Word, 52:42); a course of antibiotics (Words, 52:55); passive (Grammar word, 53:13); prevent it from getting worse (Pattern, 54:08); treat (verb), treatment (noun), treatable (adjective) (Word family, 54:45)
+
+#### 56:10 Schedule (`page-13`, deck)
+
+- 56:10 **the verb schedule and its nouns, the examples from medical writing, the patient-friendly examples**
+  - 56:10 the nouns that go with the verb.
+  - 56:10 the three written examples on this page.
+  - 56:51 Key word: the verb 'schedule' glossed, with a letter example.
+  - 57:08 Second example: the same verb said to a patient.
+  - 57:17 How the word is said in British and American English.
+  - 57:33 Near-synonyms of the key verb.
+  - 58:03 The possessive in the first sentence.
+  - 58:09 The meaning of 'has been scheduled'.
+  - 58:14 Define the grammar word 'passive' the first time it appears.
+  - 58:23 The passive verbs in these three sentences.
+  - 58:47 The 'by' phrase names who did it.
+  - 59:02 The same pattern in a letter request.
+  - 59:25 Why the tests were scheduled.
+  - 59:32 Gloss the hard general word 'assess'.
+  - 59:45 Appointment and follow-up are countable nouns.
+  - 60:01 The preposition used here after 'scheduled'.
+  - 60:09 With a date, two prepositions are possible.
+  - 60:26 the two examples for talking to a patient.
+  - 60:40 What the two purpose phrases mean.
+  - 60:53 One purpose phrase can replace the other.
+  - 61:01 'A follow-up' works as a noun on its own.
+  - 61:18 One more example with 'a follow-up'.
+  - 61:28 Word family for 'recovering'.
+
+*Terms*: Surgery, appointment, scan, follow-up, test (Nouns, 56:14); Schedule, arrange, book (Near-synonyms, 57:33); Passive (Grammar word, 58:14); A follow-up (Word use, 61:01); Recover, recovery (Word family, 61:28)
+
+#### 62:53 Order (`page-14`, deck)
+
+- 62:53 **order with an X-ray, order with a blood test**
+  - 62:53 the slide's two X-ray sentences, and what they show
+  - 62:53 the slide's two blood test sentences
+  - 63:38 Full gloss moment for the key word 'order'
+  - 63:55 Speaking example of the key word, said to a patient
+  - 64:09 The nouns that go with 'order', as one short list
+  - 64:22 Two small points the slide's formal sentence shows
+  - 64:35 The preposition here is 'in', but it changes with the noun
+  - 64:54 What can come before the body part
+  - 65:30 The passive form in the first sentence
+  - 65:45 Gloss the hard word 'investigate'
+  - 66:01 'Investigate' and 'check' do the same job in the sentence
+  - 66:29 The reassurance phrase in the patient-friendly version
+  - 66:59 Another verb used with tests in letters
+
+*Terms*: Tests, medication, an X-ray, a scan, an examination (Nouns, 64:09); To ensure everything is okay (Phrase, 66:29)
+
+#### 68:20 Practice: complete the sentences (`page-15`, deck)
+
+- 68:20 **instruction and items 1 to 5**
+  - 68:20 Show the first half of the gap-fill set
+- 69:12 **items 6 to 10**
+  - 69:12 Show the second half of the gap-fill set
+- 69:55 **Item 1: monitor blood pressure**
+  - 69:55 Give the answer and the reason
+  - 70:17 Gloss the hard word 'throughout' in English
+  - 70:30 Point out the base and past forms in the verb list
+  - 70:55 State the form needed after 'will' here
+- 71:03 **Item 2: assess symptoms**
+  - 71:03 Gloss the key word 'assess' before the answer
+  - 71:24 Give the answer and the form reason
+  - 71:43 Speaking example with the key word
+  - 71:53 Gloss the hard word 'determine'
+- 72:05 **Item 3: prescribe antibiotics**
+  - 72:05 Give the intended answer
+  - 72:25 Show the second acceptable answer
+  - 72:37 Contrast the two verbs
+  - 72:51 Speaking example with 'prescribe'
+- 72:58 **Item 4: perform surgery**
+  - 72:58 Give the answer and the form reason
+  - 73:23 Show the verbs that go with surgery
+  - 73:33 Reject 'conduct' with surgery
+  - 73:47 Surgery with no word in front of it
+  - 74:01 Operation needs a word in front of it
+- 74:22 **Item 5: conduct a scan**
+  - 74:22 Give the answer and the reason
+  - 74:39 Explain why 'performed' cannot fill this gap
+  - 74:50 Collect the verbs that mean to do a scan
+  - 75:00 Gloss the key phrase 'carry out'
+- 75:14 **Item 6: administer pain relief**
+  - 75:14 Give the answer and the reason
+  - 75:31 Gloss 'pain relief' in English
+  - 75:53 Collect 'administer' collocations
+  - 76:05 Speaking example with the key word
+- 76:12 **Item 7: administer an injection**
+  - 76:12 Give the answer and the form reason
+  - 76:34 Gloss 'reduce' in English
+- 76:46 **Item 8: provide assistance**
+  - 76:46 Give the answer and the reason
+  - 77:07 Gloss the key word 'assistance'
+  - 77:25 Collect 'provide' collocations
+  - 77:36 Speaking example with the key words
+- 77:43 **Item 9: monitor a condition**
+  - 77:43 Give the answer and the reason
+  - 78:02 Gloss the key word 'monitor'
+  - 78:21 Collect 'monitor' collocations
+  - 78:33 Gloss 'improve'
+- 79:58 **Item 10: discuss test results**
+  - 79:58 Gloss the key word 'discuss' before the answer
+  - 80:18 Give the answer and the reason
+  - 80:32 Explain the phrase 'during the consultation'
+  - 80:39 Speaking example with the key word
+  - 80:48 Close with the main idea of the exercise
+
+*Rules on the boards*
+
+- 80:48 For each noun, learn the verb or verbs that go with it. Another verb may not give the right meaning.
+
+*Wrong sentences corrected*
+
+- 68:20 The nurse will __________ the patient’s blood pressure throughout the night.
+- 68:20 The doctor __________ the patient’s symptoms to determine the best treatment.
+- 68:20 We will __________ antibiotics to fight the infection.
+- 68:20 The surgeon __________ emergency surgery to repair the patient’s injuries.
+- 68:20 The team will __________ a scan to look for any internal bleeding.
+- 69:12 The nurse __________ pain relief to make the patient more comfortable.
+- 69:12 The nurse will __________ an injection to reduce the patient's symptoms.
+- 69:12 The physiotherapist __________ assistance to help the patient walk again.
+- 69:12 We will __________ your condition over the next few days to see if it improves.
+- 69:12 The doctor __________ the test results during the consultation.
+- 69:55 The nurse will __________ the patient’s blood pressure throughout the night.
+- 71:03 The doctor __________ the patient’s symptoms to determine the best treatment.
+- 72:05 We will __________ antibiotics to fight the infection.
+- 72:58 The surgeon __________ emergency surgery to repair the patient’s injuries.
+- 73:33 Conduct emergency surgery.
+- 74:22 The team will __________ a scan to look for any internal bleeding.
+- 75:14 The nurse __________ pain relief to make the patient more comfortable.
+- 76:12 The nurse will __________ an injection to reduce the patient's symptoms.
+- 76:46 The physiotherapist __________ assistance to help the patient walk again.
+- 77:43 We will __________ your condition over the next few days to see if it improves.
+- 79:58 The doctor __________ the test results during the consultation.
+
+*Terms*: Monitor, assessed, prescribe, performed, conduct, administered, administer, provided, monitor, discussed (Verbs, 70:30); Conduct a scan, perform a scan, carry out a scan (Collocations, 74:50); Administer pain relief, administer medication, administer an injection (Collocations, 75:53); Provide assistance, provide support, provide care (Collocations, 77:25); Monitor blood pressure, monitor a patient, monitor a condition (Collocations, 78:21); During the consultation (Phrase, 80:32)
 
 ### Vocabulary
 
@@ -4135,46 +4135,46 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 3:34 give advice
 - 4:32 take medicine
 - 5:09 administer
-- 7:54 perform surgery
-- 8:43 administer medication
-- 9:22 record patient history
-- 10:44 take a break
-- 12:02 administered
-- 12:47 took a history
-- 13:50 underwent
-- 18:02 Stabilise
-- 18:29 Drip
-- 18:40 Through a drip
-- 18:57 Hydrated
-- 19:40 Some oxygen, some blood
-- 20:28 A blood transfusion
-- 20:48 Replace the lost blood
-- 22:00 provide
-- 27:24 monitor
-- 29:42 keep an eye on
-- 32:21 Perform
-- 37:07 Issue
-- 38:17 prescribe
-- 40:04 A course of
-- 41:02 discomfort
-- 41:38 To help with…
-- 43:04 treat
-- 44:36 ache
-- 45:49 prevent
-- 47:50 schedule
-- 50:31 assess
-- 53:39 order
-- 55:46 investigate
-- 56:30 To ensure everything is okay
-- 59:15 throughout
-- 60:47 determine
-- 63:54 carry out
-- 64:24 pain relief
-- 65:27 reduce
-- 66:00 assistance
-- 67:27 improve
-- 67:48 discuss
-- 68:14 During the consultation
+- 8:56 perform surgery
+- 9:46 administer medication
+- 10:25 record patient history
+- 12:44 take a break
+- 14:02 administered
+- 14:47 took a history
+- 15:50 underwent
+- 21:06 Stabilise
+- 21:33 Drip
+- 21:44 Through a drip
+- 22:01 Hydrated
+- 22:44 Some oxygen, some blood
+- 23:32 A blood transfusion
+- 23:52 Replace the lost blood
+- 26:11 provide
+- 32:28 monitor
+- 34:46 keep an eye on
+- 38:33 Perform
+- 43:19 Issue
+- 45:27 prescribe
+- 47:14 A course of
+- 48:12 discomfort
+- 48:48 To help with…
+- 51:12 treat
+- 52:42 ache
+- 53:55 prevent
+- 56:51 schedule
+- 59:32 assess
+- 63:38 order
+- 65:45 investigate
+- 66:29 To ensure everything is okay
+- 70:17 throughout
+- 71:53 determine
+- 75:00 carry out
+- 75:31 pain relief
+- 76:34 reduce
+- 77:07 assistance
+- 78:33 improve
+- 80:06 discuss
+- 80:32 During the consultation
 
 ### Practice material
 
@@ -4183,10 +4183,10 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ### Links to other lessons
 
 - 0:07 refers to Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`) (in `page-3_t1.s1.u2`)
-- 14:51 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-6_t1.s10.u3`)
-- 42:06 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `page-11_t1.s20.u3`)
-- 45:17 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `page-12_t1.s8.u3`)
-- 49:39 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `page-13_t1.s7.u4`)
+- 16:51 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-6_t1.s10.u3`)
+- 49:16 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `page-11_t1.s20.u3`)
+- 53:23 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `page-12_t1.s8.u3`)
+- 58:40 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `page-13_t1.s7.u4`)
 - referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Introduction" at 0:11
 - continues in Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`): Adjective + noun collocations follow the verb + noun collocations taught here.
 
@@ -8861,7 +8861,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Adjective and noun collocation**: `vocabulary-03-collocations-2` 2:22
 - **Adjective endings**: `vocabulary-01-word-forms` 18:27
 - **Adjectives and nouns**: `vocabulary-01-word-forms` 31:10
-- **Administer**: `vocabulary-02-collocations` 16:03
+- **Administer**: `vocabulary-02-collocations` 19:07
 - **Although**: `grammar-05-complex-compound` 11:48
 - **An itchy rash**: `vocabulary-03-collocations-2` 75:38
 - **Apostrophe**: `grammar-07-punctuation` 60:25
@@ -8881,7 +8881,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Before you listen: ninety seconds**: `listening-04-part-c` 5:21
 - **Brackets**: `grammar-07-punctuation` 87:27
 - **Brackets, quotation marks, slashes and dashes**: `grammar-07-punctuation` 75:58
-- **By monitoring your symptoms**: `vocabulary-02-collocations` 31:28
+- **By monitoring your symptoms**: `vocabulary-02-collocations` 36:31
 - **c/o**: `grammar-03-nominalization` 16:48
 - **Capital letters**: `grammar-07-punctuation` 71:08
 - **Case notes**: `grammar-01-verb-tenses` 115:03
@@ -8986,7 +8986,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **How to identify opinions**: `reading-04-part-c` 12:37
 - **How to improve your listening**: `listening-01-overview` 10:12
 - **How to practise**: `listening-02-part-a` 14:12
-- **How verb + noun collocations are formed**: `vocabulary-02-collocations` 6:10
+- **How verb + noun collocations are formed**: `vocabulary-02-collocations` 7:11
 - **How your letter is scored**: `writing-02-assessment-criteria` 4:01
 - **However**: `grammar-08-paraphrasing` 33:49
 - **HTN**: `grammar-02-verb-use` 19:55
@@ -9004,7 +9004,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Introductory phrase**: `grammar-07-punctuation` 23:16
 - **Introductory phrases**: `grammar-07-punctuation` 23:11
 - **Joining sentences with relative pronouns**: `vocabulary-01-word-forms` 43:30
-- **Key points to remember**: `vocabulary-02-collocations` 10:08
+- **Key points to remember**: `vocabulary-02-collocations` 12:08
 - **Key words**: `reading-03-part-b` 10:13
 - **Language**: `writing-02-assessment-criteria` 26:46
 - **Linking words**: `listening-05-part-c-2` 2:52
@@ -9014,7 +9014,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Main point or detail?**: `listening-03-part-b` 3:46
 - **May have been triggered**: `grammar-01-verb-tenses` 126:18
 - **Medical terms: vocabulary and word form**: `vocabulary-01-word-forms` 18:56
-- **Monitor**: `vocabulary-02-collocations` 26:57
+- **Monitor**: `vocabulary-02-collocations` 32:01
 - **Multiple choice**: `reading-01-overview` 7:48; `listening-01-overview` 3:38
 - **Multiple choice (3 options)**: `reading-03-part-b` 6:29
 - **neither of which**: `vocabulary-01-word-forms` 64:28
@@ -9031,7 +9031,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **One test for every profession**: `writing-01-overview` 1:31
 - **Opening frames**: `writing-04-introduction` 26:52
 - **opinion signals**: `reading-04-part-c` 12:37
-- **Order**: `vocabulary-02-collocations` 52:53
+- **Order**: `vocabulary-02-collocations` 62:53
 - **Organisation and Layout**: `writing-02-assessment-criteria` 24:52
 - **Paraphrase bridge**: `reading-05-part-c-2` 2:14
 - **paraphrasing**: `grammar-08-paraphrasing` 1:45
@@ -9041,7 +9041,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Participle clause**: `grammar-06-clause` 33:21
 - **Participle clauses**: `grammar-06-clause` 33:19
 - **Parts of an OET letter**: `writing-01-overview` 14:12
-- **Passive**: `grammar-01-verb-tenses` 51:04; `grammar-02-verb-use` 6:16; `grammar-03-nominalization` 5:49; `grammar-05-complex-compound` 25:58; `grammar-07-punctuation` 11:41; `grammar-08-paraphrasing` 4:59; `vocabulary-01-word-forms` 27:22; `vocabulary-02-collocations` 34:43
+- **Passive**: `grammar-01-verb-tenses` 51:04; `grammar-02-verb-use` 6:16; `grammar-03-nominalization` 5:49; `grammar-05-complex-compound` 25:58; `grammar-07-punctuation` 11:41; `grammar-08-paraphrasing` 4:59; `vocabulary-01-word-forms` 27:22; `vocabulary-02-collocations` 40:56
 - **passive forms**: `grammar-01-verb-tenses` 98:10
 - **Passive forms of the verb tenses**: `grammar-01-verb-tenses` 98:10
 - **Passive voice**: `grammar-02-verb-use` 36:40
@@ -9057,12 +9057,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Perfect participle**: `grammar-06-clause` 33:19
 - **Perfect tenses**: `grammar-01-verb-tenses` 36:59
 - **Perfect tenses on a timeline**: `grammar-01-verb-tenses` 53:02
-- **Perform**: `vocabulary-02-collocations` 31:48
+- **Perform**: `vocabulary-02-collocations` 37:59
 - **Peripheral vision**: `reading-02-part-a` 18:23
 - **Physical symptoms**: `grammar-03-nominalization` 9:07
 - **Podcasts and talks**: `listening-01-overview` 13:08
 - **Prediction**: `grammar-01-verb-tenses` 26:06
-- **Prescribe**: `vocabulary-02-collocations` 37:34
+- **Prescribe**: `vocabulary-02-collocations` 44:43
 - **Present participle**: `grammar-06-clause` 33:19
 - **present perfect**: `grammar-01-verb-tenses` 38:26; `grammar-02-verb-use` 11:52; `grammar-08-paraphrasing` 16:20
 - **present perfect continuous**: `vocabulary-03-collocations-2` 20:42
@@ -9070,7 +9070,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **present simple**: `grammar-01-verb-tenses` 20:16
 - **Prior to onset**: `grammar-08-paraphrasing` 44:15
 - **prn and tds**: `grammar-08-paraphrasing` 58:14
-- **Provide**: `vocabulary-02-collocations` 21:22
+- **Provide**: `vocabulary-02-collocations` 25:33
 - **Punctuation in OET letters**: `grammar-07-punctuation` 39:26
 - **Purpose**: `writing-02-assessment-criteria` 5:57; `writing-04-introduction` 16:32
 - **QTA**: `reading-04-part-c` 19:34
@@ -9091,7 +9091,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **ROM**: `grammar-01-verb-tenses` 127:40
 - **Run-on sentence**: `grammar-07-punctuation` 50:06
 - **Scanning**: `reading-02-part-a` 20:43
-- **Schedule**: `vocabulary-02-collocations` 47:08
+- **Schedule**: `vocabulary-02-collocations` 56:10
 - **Scoring the Reading test**: `reading-01-overview` 12:44
 - **Seldom**: `grammar-01-verb-tenses` 77:58
 - **Semi-colon**: `grammar-07-punctuation` 92:03
@@ -9099,7 +9099,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Semicolons and colons**: `grammar-07-punctuation` 54:36
 - **Sentence**: `grammar-07-punctuation` 49:27
 - **Sentence completion**: `reading-01-overview` 7:04; `reading-02-part-a` 50:30
-- **Should be monitored**: `vocabulary-02-collocations` 28:30
+- **Should be monitored**: `vocabulary-02-collocations` 33:33
 - **Signal word**: `grammar-01-verb-tenses` 76:44
 - **Signal words and verb tenses**: `grammar-01-verb-tenses` 76:44
 - **Signing off**: `writing-03-letter-structure` 24:30
@@ -9164,7 +9164,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Time marker**: `grammar-01-verb-tenses` 34:20; `grammar-02-verb-use` 4:01
 - **Time markers**: `grammar-01-verb-tenses` 13:15
 - **Top tips**: `reading-02-part-a` 17:27
-- **Treat**: `vocabulary-02-collocations` 42:30
+- **Treat**: `vocabulary-02-collocations` 50:38
 - **Treatment**: `grammar-03-nominalization` 31:03
 - **try to + simple verb**: `vocabulary-03-collocations-2` 58:23
 - **Types of pain**: `vocabulary-03-collocations-2` 10:30
