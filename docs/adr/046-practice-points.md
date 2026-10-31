@@ -172,3 +172,41 @@ has tried the prototype. A change after the site's answer is an amendment of thi
 - Proof: render_compare before and after on every built lesson, and restyle_proof on every published lesson (ADR 043's
   standing rule), recorded in the pull request.
 - To reverse: a new amendment; IDs issued stay issued.
+
+## Amendment (2), 2026-10-31: how many points: one of a series, and never instead of teaching
+
+### Context
+
+- The owner played Writing 4's first draft (`writing-04-introduction-v1-draft.1`, 41 points) in the site's player on
+  2026-10-31 (engine issue #72): "far too many: every topic it opens, it gives a practice." The markers crowd the
+  progress bar. He expected about a half to a third of them, with no fixed number and no fixed spacing: "it depends
+  entirely on the lesson's topic and its points." He does not choose them one by one.
+- Two more rules from him: where the lesson works through several items of the same kind, only one is practice,
+  usually the last, after the learner has seen the method on the others; and a point never replaces teaching: after it
+  the lesson gives the whole explanation it would give without it (the reason, the rule, the common mistake), even when
+  the learner was right.
+
+### Decision
+
+1. **The method figures of amendment (1) are replaced** (about one point per piece of a sentence, 20 to 60 seconds of
+   teaching between points, one every two to four minutes). The rule is docs/01-METHODOLOGY.md §25, "How many: one of a
+   series", for every lesson with practice points: no fixed count or spacing, the agent's judgement by topic; one of a
+   series, usually the last; a point never replaces teaching; at least one whole-sentence self-check where a sentence is
+   built in full. Every decision is logged point by point in the lesson's decision log.
+2. **An item that stops being a point** is taught again: the teacher builds it on screen with its explanation; its task
+   line, pop-up and pause are taken out. The narration after a kept point is the full teaching, the same for every
+   learner (decision 8 and rule 57 unchanged: the answer is shown and said in the next utterance or the one after).
+3. **Retired IDs.** The registry stays append only: an ID whose point a lesson no longer has keeps its row in
+   `spike/practice/ids.json`, which gains the field `retired` (the date it was retired); a retired ID is never issued or
+   used again, and a new item takes a new number of the lesson's range. Nothing else in the format changes (still
+   `oetbook-practice-ids` version 1; the engine's code does not read the field; a lesson's generator refuses a retired ID).
+4. **Writing 4** is the first lesson under the rule: 10 of its 41 points kept (its decision log, 2026-10-31), 48 of its
+   63 IDs retired, sent as `writing-04-introduction-v1-draft.2`. **Grammar 1 and Grammar 2 are not changed now**: the
+   owner is reviewing their drafts, and the rule is applied to them after his review.
+
+### Consequences
+
+- docs/01-METHODOLOGY.md §25 rewritten (the rule; "Writing a point" gains the full teaching and the taught item); the
+  registry's `about` names the `retired` field.
+- No change to the engine's or the player's code, the bundle format or the contracts.
+- To reverse: a new amendment; retired IDs stay retired.

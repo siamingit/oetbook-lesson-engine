@@ -1279,14 +1279,18 @@ Owner, 2026-10-29, after Writing 4: "learners don't learn to write this way". A 
 way his own sessions do (Session 4: `_writing-analysis/ANALYSIS.md` §2.4, §3.7): the rule, the simple facts, "pause the
 video and try", his model typed, the grammar named in it, a second item faster. The learner writes in the middle of the
 lesson, in practice points (ADR 046; bundle 1.23). This section is the method. The owner tried the Writing 4 prototype
-on 2026-10-30 and approved it with these figures (ADR 046 amendment (1)).
+on 2026-10-30 and approved it (ADR 046 amendment (1)). After playing Writing 4's first draft in the site's player
+(2026-10-31) he replaced the figures for how many points there are with the rule below ("How many: one of a series"),
+for every lesson with practice points (ADR 046 amendment (2)).
 
 ### One sentence, piece by piece
 
 A sentence the lesson teaches (an opening, a request, a closing) is built in its own order, from the paper, one piece
-at a time. At each piece the learner writes or chooses it first; then the teacher shows it. An invented example:
+at a time. The teacher builds each piece on screen and says why; a piece is the learner's (a practice point, written or
+chosen first, then shown) only where the rule below picks it. An invented example, with the type each piece takes when
+it is the learner's:
 
-| Piece | The paper | The learner (practice point) | The teacher, after Continue |
+| Piece | The paper | If it is the learner's (practice point) | The teacher (after Continue, or on his own) |
 |---|---|---|---|
 | the frame | the plan: "refer to clinic" | types "I am writing to refer" (a short typed part) | types it in the letter, says why: the plan says refer |
 | who | name, date of birth | types the title and name, then "a 16-year-old" (two gaps) | types "Mr Tom Hale, a 16-year-old student"; names the hyphens, the article, year with no s |
@@ -1295,16 +1299,30 @@ at a time. At each piece the learner writes or chooses it first; then the teache
 | why now | the latest notes | puts the last piece in order (an ordering) | types it; names "since" with a time |
 | the whole sentence | every line it uses | writes it whole, then ticks the points of a `selfcheck` beside the model | reads the model, point by point |
 
-### How many, and how much teaching between them
+### How many: one of a series (owner, 2026-10-31)
 
-- **One point per piece**: four to six for a sentence built whole, ending with the whole sentence and its self-check
-  list. Each sentence built has at least one short typed part and the whole sentence.
-- **Teaching between two points: about 20 to 60 seconds** (one to three utterances): the question it answers, the line of
-  the paper pointed to, the grammar named; then the task. Never two points with no answer and no teaching between them.
-  The prototype ("Five questions", Writing 4) has six points in 4:10, one every 37 seconds on average.
-- **In a whole Writing lesson**: wherever the owner's session says "pause and try", or builds a sentence live, there is a
-  point; about one every two to four minutes over the lesson as a whole (a 30-minute lesson: about 8 to 15), more where
-  a sentence is built, none in a short overview or a closing.
+The owner, after playing Writing 4's first draft (41 points): "far too many: every topic it opens, it gives a practice."
+This rule replaces the figures of 2026-10-30 (one point per piece of a sentence, 20 to 60 seconds of teaching between
+points, one every two to four minutes). It holds for every lesson with practice points, in every course.
+
+- **No fixed count and no fixed spacing.** How many points a lesson has depends on its topic and its teaching points,
+  judged by the agent section by section; the owner does not choose them one by one. Every decision is logged, point by
+  point, with its reason, in the lesson's `analysis/decisions.md`.
+- **One of a series, not each one.** Where the lesson works through several items of the same kind (three or four
+  sentences to correct, several notes to turn into sentences, several examples to paraphrase, several openings built the
+  same way, the same piece of a sentence in several openings), only one of them is a practice point, usually the last,
+  after the learner has seen the method on the others. The rest are taught as before: the teacher builds them on screen.
+- **The tests.** A point is kept only where the first or the second answer is yes: Is it the last item of a series the
+  learner has just watched being built? Is it a new skill the learner can do now and needs to do before going on? And:
+  would the lesson lose anything if the teacher built this item himself? If not, it is taught.
+- **A point never replaces teaching.** After every point the narration gives the explanation the lesson would give
+  without it: why the answer is right, the rule behind it, and the common mistake, even when the learner was right. It is
+  the full teaching, the same for every learner; a correct answer is never a reason to shorten it.
+- **At least one whole sentence.** Where a lesson builds an opening (or any sentence) in full, at least one is written
+  whole by the learner and checked against the model (a `selfcheck`).
+- **Writing 4** (the first lesson under this rule): the owner expected about a half to a third of its first build's 41
+  points; the content decided 10 (decisions.md, 2026-10-31). Grammar 1 and Grammar 2 keep their points until the owner
+  has reviewed their drafts; the rule is applied to them after that review.
 - **Vary the types**, taking the one that tests the piece: a form (hyphens, an article, a frame) is typed; a selection of
   details is a choice; a phrase from a fixed set is a word bank; a word order is an ordering; a whole sentence is written
   and checked against the model. Only the site's approved types (ADR 046 decision 2).
@@ -1313,7 +1331,10 @@ at a time. At each piece the learner writes or chooses it first; then the teache
 
 - The task is voiced, starting "Your turn:", in the same words as the board's task line and the pop-up's task. The
   narration's pause is "practice: KEY", 7 to 10 seconds (the fallback, rule 57); the next utterance shows the answer and
-  says it, the same for every learner. The narration never reacts to an answer.
+  says it, and the narration goes on with the full teaching of the item (the reason, the rule, the common mistake), the
+  same for every learner. The narration never reacts to an answer.
+- An item taught instead (not a point) has no task line, no pop-up and no pause: the teacher builds it on screen with its
+  explanation. A point taken out of a built lesson keeps its IDs in the registry, marked `retired`, never reused.
 - The excerpt is the paper's own lines (ADR 045), only those the piece needs; the whole sentence's has every line it uses.
 - Typed parts use `oet-typed-form-v1` where the form is taught; every contraction and British or American spelling is an
   accepted form. The listed wrong answers are the errors the owner's sessions correct (no hyphens, no article, "years",
