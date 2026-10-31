@@ -21,7 +21,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 | 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 129:04 | 14 | 2026-10-31 10:33 (Siavash) |
 | 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 62:40 | 5 | 2026-10-31 11:25 (siavash) |
 | 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 59:28 | 7 | 2026-10-31 12:13 (Siavash) |
-| 4 | Grammar for OET: Articles | `grammar-04-articles` | 59:31 | 9 | 2026-10-27 19:07 (siavash) |
+| 4 | Grammar for OET: Articles | `grammar-04-articles` | 67:59 | 9 | 2026-10-31 13:00 (Siavash) |
 | 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 66:38 | 8 | 2026-10-31 12:46 (Siavash) |
 | 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 57:44 | 6 | not yet |
 | 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 83:00 | 18 | 2026-10-27 09:37 (siavash) |
@@ -1377,8 +1377,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 41:22 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Time markers" (in `page-9_t1.s2.u2`)
 - 55:50 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `page-11_t1.s12.u4`)
 - referred to by Grammar for OET: Articles (`grammar-04-articles`), "Introduction" at 0:16
-- referred to by Grammar for OET: Articles (`grammar-04-articles`), "Spot the correct sentence" at 55:20, about section `pages-04-05`
-- referred to by Grammar for OET: Articles (`grammar-04-articles`), "Gap fill: articles" at 63:13, about section `page-6`
+- referred to by Grammar for OET: Articles (`grammar-04-articles`), "Spot the correct sentence" at 55:46, about section `pages-04-05`
+- referred to by Grammar for OET: Articles (`grammar-04-articles`), "Gap fill: articles" at 63:41, about section `page-6`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 5:42
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Adjectives and nouns" at 27:15
 
@@ -1387,8 +1387,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 4. Grammar for OET: Articles
 
-- Lesson ID and folder: `grammar-04-articles` (folder `grammar-04-articles`); course grammar, lesson 4; length 59:31; bundle format 1.22
-- Status: approved by siavash, 2026-10-27 19:07
+- Lesson ID and folder: `grammar-04-articles` (folder `grammar-04-articles`); course grammar, lesson 4; length 67:59; bundle format 1.23
+- Status: approved by Siavash, 2026-10-31 13:00
 - Description: Learn when to use a, an, the or no article, and how to use articles correctly in your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 54:32 long, partial hash `39acd9b8365dc034`; deck `source/slides.pdf`, 16 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -1417,279 +1417,279 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 3:51 Answer question 1
   - 4:17 Answer question 2
   - 4:38 Show that the sound decides, not the spelling
-  - 5:37 Warn that questions 3 and 4 cause most mistakes
-  - 5:47 Define specific and non-specific
-  - 6:07 First mention takes a
-  - 6:39 Second mention takes the
-  - 7:02 State the a to the sequence
-  - 7:55 Answer question 5
+  - 6:30 Warn that questions 3 and 4 cause most mistakes
+  - 6:40 Define specific and non-specific
+  - 7:00 First mention takes a
+  - 7:33 Second mention takes the
+  - 7:55 State the a to the sequence
+  - 8:48 Answer question 5
 
 *Rules on the boards*
 
 - 3:23 Listen to the first sound of the word, not the first letter.
-- 7:02 With a singular countable noun, use a or an the first time, unless the reader knows which one. After that, use the.
+- 7:55 With a singular countable noun, use a or an the first time, unless the reader knows which one. After that, use the.
 
 *Warnings (common mistakes)*
 
 - 2:15 Many candidates make mistakes with articles in OET Writing, and grammar mistakes can lower your score.
-- 5:37 Questions 3 and 4 cause most article mistakes.
+- 6:30 Questions 3 and 4 cause most article mistakes.
 
 *Terms*: A, an, the (Articles, 2:00)
 
-#### 8:20 Countable and uncountable nouns (`page-6`, deck)
+#### 10:02 Countable and uncountable nouns (`page-6`, deck)
 
-- 8:20 **Countable and uncountable nouns in case notes**
-  - 8:20 introduce the whole table and what it sorts
-  - 8:45 define the two words that head the columns
-  - 9:10 professions are countable and need an indefinite article
-  - 9:45 choosing a or an by sound
-  - 10:15 fluids are uncountable
-  - 10:29 body parts are countable
-  - 10:44 gases are uncountable
-  - 10:56 injuries are countable
-  - 11:09 particles are uncountable
-  - 11:27 the common mistake with nouns that describe a person
-  - 11:39 the correct form with 'a'
-  - 12:04 names of diseases are usually uncountable
-  - 12:25 the disease name and the word for the person
-  - 12:49 gloss the category word, symptoms are countable
-  - 13:27 information is uncountable
-  - 13:54 what US means
-  - 13:59 tests are countable
-  - 14:20 activities are uncountable
-  - 14:29 what to learn by heart from the whole table
+- 10:02 **Countable and uncountable nouns in case notes**
+  - 10:02 introduce the whole table and what it sorts
+  - 10:27 define the two words that head the columns
+  - 10:52 professions are countable and need an indefinite article
+  - 11:27 choosing a or an by sound
+  - 11:56 fluids are uncountable
+  - 12:11 body parts are countable
+  - 12:25 gases are uncountable
+  - 12:37 injuries are countable
+  - 12:51 particles are uncountable
+  - 13:09 the common mistake with nouns that describe a person
+  - 13:21 the correct form with 'a'
+  - 13:46 names of diseases are usually uncountable
+  - 14:07 the disease name and the word for the person
+  - 14:32 gloss the category word, symptoms are countable
+  - 15:13 information is uncountable
+  - 15:41 what US means
+  - 15:49 tests are countable
+  - 16:10 activities are uncountable
+  - 16:19 what to learn by heart from the whole table
 
 *Rules on the boards*
 
-- 14:29 Learn these three by heart: the names of diseases, the symptoms, and the fluids of the body.
+- 16:19 Learn these three by heart: the names of diseases, the symptoms, and the fluids of the body.
 
 *Warnings (common mistakes)*
 
-- 13:27 'Information' is an uncountable word. We say 'information', never 'informations'.
+- 15:13 'Information' is an uncountable word. We say 'information', never 'informations'.
 
 *Wrong sentences corrected*
 
-- 11:27 The patient is smoker
+- 13:09 The patient is smoker
 
-*Terms*: Indefinite article (Term, 9:10); A or an (Form, 9:45); US (Short form, 13:54)
+*Terms*: Indefinite article (Term, 10:52); A or an (Form, 11:27); US (Short form, 15:41)
 
-#### 14:55 Countable nouns: non-specific (`page-7`, deck)
+#### 17:32 Countable nouns: non-specific (`page-7`, deck)
 
-- 14:55 **Wrong and right: a or an with singular countable nouns**
-  - 14:55 introduce the task and the two columns
-  - 15:21 define countable noun
-  - 15:38 define non-specific
-  - 15:58 the rule being practised
-  - 16:33 find the head noun in the referral opening
-  - 16:49 the patient is new to the reader, so the article is a
-  - 17:13 hyphens in the age phrase
-  - 17:46 the noun that needs the article
-  - 18:08 choosing a or an by sound
-  - 18:46 plural countable nouns take no article
-  - 19:09 the singular noun that needs a
-  - 19:36 find the head noun in a long phrase
-  - 19:49 where the article goes
-  - 20:11 allergy is countable
-  - 20:29 the common trap
-  - 20:48 ache is countable too
-  - 21:03 history is the head noun
-  - 21:14 history takes an article
+- 17:32 **Wrong and right: a or an with singular countable nouns**
+  - 17:32 introduce the task and the two columns
+  - 17:58 define countable noun
+  - 18:15 define non-specific
+  - 18:35 the rule being practised
+  - 19:10 find the head noun in the referral opening
+  - 19:27 the patient is new to the reader, so the article is a
+  - 19:50 hyphens in the age phrase
+  - 20:24 the noun that needs the article
+  - 20:46 choosing a or an by sound
+  - 21:23 plural countable nouns take no article
+  - 21:47 the singular noun that needs a
+  - 22:14 find the head noun in a long phrase
+  - 22:26 where the article goes
+  - 22:48 allergy is countable
+  - 23:06 the common trap
+  - 23:25 ache is countable too
+  - 23:41 history is the head noun
+  - 23:51 history takes an article
 
 *Rules on the boards*
 
-- 15:58 A countable noun that is singular and new to the reader needs a or an.
-- 18:08 Use "an" before a vowel sound: an abscess. Use "a" before a consonant sound. Follow the sound, not the letter.
-- 19:49 The article goes at the front of the whole phrase, before the describing words.
+- 18:35 A countable noun that is singular and new to the reader needs a or an.
+- 20:46 Use "an" before a vowel sound: an abscess. Use "a" before a consonant sound. Follow the sound, not the letter.
+- 22:26 The article goes at the front of the whole phrase, before the describing words.
 
 *Warnings (common mistakes)*
 
-- 17:13 When the age comes before the noun, write hyphens: 15-year-old. Without them it is a writing error.
-- 20:29 Students often leave out the article with "allergy" and "ache".
+- 19:50 When the age comes before the noun, write hyphens: 15-year-old. Without them it is a writing error.
+- 23:06 Students often leave out the article with "allergy" and "ache".
 
-*Terms*: Countable noun (Term, 15:21); Non-specific (Term, 15:38)
+*Terms*: Countable noun (Term, 17:58); Non-specific (Term, 18:15)
 
-#### 21:46 Uncountable nouns: non-specific (`page-8`, deck)
+#### 25:07 Uncountable nouns: non-specific (`page-8`, deck)
 
-- 21:46 **Uncountable non-specific nouns: wrong and right table**
-  - 21:46 the rule behind every row
-  - 22:32 uncountable nouns work like plural nouns
-  - 23:06 why both printed versions are wrong
-  - 23:23 the verb for having an operation
-  - 23:45 the verb 'do' is rejected
-  - 24:10 the article error itself
-  - 24:32 uncountable 'surgery' against countable 'operation'
-  - 25:04 the phrase for the end of a letter
-  - 25:40 education and information are uncountable
-  - 26:03 what 'accommodation' means and where you meet it
-  - 26:29 uncountable 'accommodation' against countable housing words
-  - 27:03 pain in general, or one particular pain
-  - 27:32 a describing word makes one single pain
-  - 27:44 'pain' against countable 'ache'
-  - 28:05 'the pain' after a first mention
-  - 28:29 the opening sentence pattern
-  - 28:45 why 'the' must go
-  - 29:13 the test for non-specific
+- 25:07 **Uncountable non-specific nouns: wrong and right table**
+  - 25:07 the rule behind every row
+  - 25:53 uncountable nouns work like plural nouns
+  - 26:27 why both printed versions are wrong
+  - 26:44 the verb for having an operation
+  - 27:06 the verb 'do' is rejected
+  - 27:31 the article error itself
+  - 27:53 uncountable 'surgery' against countable 'operation'
+  - 28:25 the phrase for the end of a letter
+  - 29:02 education and information are uncountable
+  - 29:24 what 'accommodation' means and where you meet it
+  - 29:50 uncountable 'accommodation' against countable housing words
+  - 30:27 pain in general, or one particular pain
+  - 30:56 a describing word makes one single pain
+  - 31:08 'pain' against countable 'ache'
+  - 31:30 'the pain' after a first mention
+  - 31:53 the opening sentence pattern
+  - 32:09 why 'the' must go
+  - 32:36 the test for non-specific
 
 *Rules on the boards*
 
-- 22:05 An uncountable noun used in a general way takes no article: no 'a', no 'an' and no 'the'.
-- 29:13 Ask yourself: have I written about this advice in an earlier sentence? Here it is the first mention, so it is non-specific and takes no article.
+- 25:26 An uncountable noun used in a general way takes no article: no 'a', no 'an' and no 'the'.
+- 32:36 Ask yourself: have I written about this advice before, or is it clear which advice I mean? Here it is new and general, and it needs no article.
 
 *Wrong sentences corrected*
 
-- 23:45 The patient done a surgery.
-- 24:10 A surgery
+- 27:06 The patient done a surgery.
+- 27:31 A surgery
 
-*Terms*: undergo (past: underwent) (Form, 23:23)
+*Terms*: undergo (past: underwent) (Form, 26:44)
 
-#### 29:38 Specific nouns (`pages-09-10`, deck)
+#### 33:45 Specific nouns (`pages-09-10`, deck)
 
-- 29:38 **Specific nouns take 'the'**
-  - 29:38 the slide's two paths, countable and uncountable, both leading to 'the'
-  - 29:42 Recap the non-specific rule taught before
-  - 30:21 Define 'specific' and give the one rule of this board
-  - 30:56 Show first mention against second mention with the pain example
-- 31:31 **Case notes table: wrong and right**
-  - 31:31 how to work through the five sentences
-  - 32:16 a named period of time takes 'the'
-  - 32:28 more time phrases that take 'the'
-  - 32:44 warn that this article is often left out
-  - 33:07 drug names take no article
-  - 33:38 the same rule for 12 years, plus a second correct version
-  - 33:58 words that describe a patient are countable
-  - 34:30 the body part is specific
-  - 34:42 two ways to mark it
-  - 35:16 'the above information' points back
-  - 35:33 'admission' with 'an' or with no article
-  - 36:07 read the referral sentence and find the phrase to fix
-  - 36:45 the noun phrase cannot stand alone
-  - 37:04 'the' or 'a', and what changes
+- 33:45 **Specific nouns take 'the'**
+  - 33:45 the slide's two paths, countable and uncountable, both leading to 'the'
+  - 33:49 Recap the non-specific rule taught before
+  - 34:28 Define 'specific' and give the one rule of this board
+  - 35:03 Show first mention against second mention with the pain example
+- 36:25 **Case notes table: wrong and right**
+  - 36:25 how to work through the five sentences
+  - 37:11 a named period of time takes 'the'
+  - 37:22 more time phrases that take 'the'
+  - 37:39 warn that this article is often left out
+  - 38:03 drug names take no article
+  - 38:34 the same rule for 12 years, plus a second correct version
+  - 39:00 words that describe a patient are countable
+  - 39:33 the body part is specific
+  - 39:44 two ways to mark it
+  - 40:18 'the above information' points back
+  - 40:35 'admission' with 'an' or with no article
+  - 41:10 read the referral sentence and find the phrase to fix
+  - 41:47 the noun phrase cannot stand alone
+  - 42:06 'the' or 'a', and what changes
 
 *Rules on the boards*
 
-- 30:33 A specific noun takes 'the'. It does not matter if it is countable or uncountable.
-- 32:16 With 'previous' or 'last' and a number, use 'the': for the previous 5 years.
+- 34:40 A specific noun takes 'the'. It does not matter if it is countable or uncountable.
+- 37:11 With 'previous' or 'last' and a number, use 'the': for the previous 5 years.
 
 *Warnings (common mistakes)*
 
-- 32:44 Before a period of time, like 'the last 12 years' or 'the previous 5 years', we use 'the'. Many candidates leave it out.
+- 37:39 With 'last' or 'previous' and a number, we use 'the': the last 12 years, the previous 5 years. Many candidates leave it out.
 
 *Wrong sentences corrected*
 
-- 33:16 She was on the Microgynon.
+- 38:12 She was on the Microgynon.
 
-*Terms*: Specific noun (Term, 30:21)
+*Terms*: Specific noun (Term, 34:28)
 
-#### 37:43 A or an? (`pages-11-12`, deck)
+#### 43:34 A or an? (`pages-11-12`, deck)
 
-- 37:43 **A or an: which one?**
-  - 37:43 Set the rule: look at the word that follows the article
-  - 38:09 Name the vowel letters
-  - 38:20 Show 'an' with words that begin with a vowel sound
-- 38:42 **One or two: choosing a or an by sound**
-  - 38:42 how the two columns work
-  - 39:07 the rule behind every row
-  - 39:34 '18-year-old' begins with a vowel sound
-  - 39:56 '83-year-old' works the same way
-  - 40:21 '17-year-old' begins with a consonant sound
-  - 40:36 contrast the two numbers
-  - 41:07 'university' is written with U but begins with a 'you' sound
-  - 41:31 'urine' behaves like 'university'
-  - 41:57 'MRI' is read letter by letter
-  - 42:14 the same pattern in other test names
-
-*Rules on the boards*
-
-- 39:07 The choice depends on the sound the word begins with, not on the first letter you see.
-
-*Terms*: A, E, I, O, U (Vowels, 38:09)
-
-#### 42:42 Spot the correct sentence (`pages-13-14`, deck)
-
-- 42:42 **Choice table, page 13 sentences**
-  - 42:42 the three versions of each sentence
-  - 43:09 the term for the third column
-  - 43:27 what the student has to do
-  - 44:03 the word 'underwent'
-  - 44:18 why the indefinite version is right
-  - 44:40 operation and surgery take different articles
-  - 45:06 a part of the body is specific
-  - 45:22 a possessive works too
-  - 45:44 'ache' is countable
-  - 45:59 ache beside pain
-  - 46:24 when the definite version works
-  - 46:39 the zero version is wrong
-  - 47:00 diseases and articles
-  - 47:15 the limit of that rule
-  - 47:39 -ing activities
-- 47:55 **Choice table, page 14 sentences**
-  - 47:55 five more sentences in three versions
-  - 48:24 two versions are out
-  - 48:35 why the definite version is right
-  - 48:47 the name for a noun made from a verb
-  - 49:00 where this is useful
-  - 49:25 one particular course of treatment
-  - 49:52 a second sentence to compare
-  - 50:06 what the two words mean and which article follows
-  - 50:22 why the other two versions are wrong
-  - 50:40 the rule to take away
-  - 51:10 the word 'ongoing'
-  - 51:23 'care' is uncountable
-  - 51:36 the care is non-specific
-  - 52:04 two reasons for no article
-  - 52:20 the indefinite version is also possible
+- 43:34 **A or an: which one?**
+  - 43:34 Set the rule: look at the word that follows the article
+  - 44:01 Name the vowel letters
+  - 44:15 Show 'an' with words that begin with a vowel sound
+- 44:37 **One or two: choosing a or an by sound**
+  - 44:37 how the two columns work
+  - 45:02 the rule behind every row
+  - 45:29 '18-year-old' begins with a vowel sound
+  - 45:51 '83-year-old' works the same way
+  - 46:16 '17-year-old' begins with a consonant sound
+  - 46:31 contrast the two numbers
+  - 47:03 'university' is written with U but begins with a 'you' sound
+  - 47:26 'urine' behaves like 'university'
+  - 47:52 'MRI' is read letter by letter
+  - 48:09 the same pattern in other test names
 
 *Rules on the boards*
 
-- 50:40 Look at the word in front of the noun. Its meaning tells you if the noun is specific or not.
+- 45:02 The choice depends on the sound the word begins with, not on the first letter you see.
 
-*Terms*: Zero article (Grammar term, 43:09); Nominalisation (Grammar term, 48:47)
+*Terms*: Vowel sound: an. Consonant sound: a. (Sound, not letter, 44:01)
 
-#### 52:51 Gap fill: articles (`page-15`, deck)
+#### 49:22 Spot the correct sentence (`pages-13-14`, deck)
 
-- 52:51 **Gap-fill letter: choosing the articles**
-  - 52:51 the task - 13 gaps in a referral letter, each needing a, an, the, or no article
-  - 53:22 gap 1 - 'the first child'
-  - 53:36 gap 2 - 'a family of 5'
-  - 53:58 gaps 3 and 4 - first mention of a measurement
-  - 54:17 what 'febrile' means, taught correctly
-  - 54:31 gap 5 - 'over the next two days'
-  - 55:20 gap 6 - 'the fever', already mentioned
-  - 55:31 gap 6 - the possessive option
-  - 55:47 naming the process of making a noun from a verb or adjective
-  - 56:24 condensing a symptom list into one word
-  - 56:59 gaps 7 and 8 - a new reading takes 'a' again
-  - 57:12 warning - do not switch to 'the' for the second reading
-  - 57:29 gap 9 - 'over the legs' or 'over her legs'
-  - 57:51 gaps 10 and 11 - the blood result
-  - 58:08 gap 12 - 'based on the above'
-  - 58:26 gap 13 - 'as a stat dose'
-  - 58:35 what a stat dose is
-  - 58:50 close the letter and check the whole set of answers
+- 49:22 **Choice table, page 13 sentences**
+  - 49:22 the three versions of each sentence
+  - 49:50 the term for the third column
+  - 50:08 what the student has to do
+  - 50:44 the word 'underwent'
+  - 50:58 why the indefinite version is right
+  - 51:20 operation and surgery take different articles
+  - 51:46 a part of the body is specific
+  - 52:03 a possessive works too
+  - 52:24 'ache' is countable
+  - 52:39 ache beside pain
+  - 53:04 when the definite version works
+  - 53:19 the zero version is wrong
+  - 53:40 diseases and articles
+  - 53:55 the limit of that rule
+  - 54:19 -ing activities
+- 54:35 **Choice table, page 14 sentences**
+  - 54:35 five more sentences in three versions
+  - 55:04 two versions are out
+  - 55:15 why the definite version is right
+  - 55:27 the name for a noun made from a verb
+  - 55:40 where this is useful
+  - 56:05 one particular course of treatment
+  - 56:32 a second sentence to compare
+  - 56:46 what the two words mean and which article follows
+  - 57:03 why the other two versions are wrong
+  - 57:20 the rule to take away
+  - 57:50 the word 'ongoing'
+  - 58:03 'care' is uncountable
+  - 58:16 the care is non-specific
+  - 58:44 two reasons for no article
+  - 59:00 the indefinite version is also possible
+
+*Rules on the boards*
+
+- 57:20 Look at the word in front of the noun. Its meaning tells you if the noun is specific or not.
+
+*Terms*: Zero article (Grammar term, 49:50); Nominalisation (Grammar term, 55:27)
+
+#### 60:25 Gap fill: articles (`page-15`, deck)
+
+- 60:25 **Gap-fill letter: choosing the articles**
+  - 60:25 the task - 13 gaps in a referral letter, each needing a, an, the, or no article
+  - 60:56 gap 1 - 'the first child'
+  - 61:09 gap 2 - 'a family of 5'
+  - 61:31 gaps 3 and 4 - first mention of a measurement
+  - 61:51 what 'febrile' means, taught correctly
+  - 62:04 gap 5 - 'over the next two days'
+  - 62:53 gap 6 - 'the fever', already mentioned
+  - 63:04 gap 6 - the possessive option
+  - 63:20 naming the process of making a noun from a verb or adjective
+  - 63:57 condensing a symptom list into one word
+  - 64:33 gaps 7 and 8 - a new reading takes 'a' again
+  - 64:45 warning - do not switch to 'the' for the second reading
+  - 65:02 gap 9 - 'over the legs' or 'over her legs'
+  - 65:24 gaps 10 and 11 - the blood result
+  - 65:41 gap 12 - 'based on the above'
+  - 65:59 gap 13 - 'as a stat dose'
+  - 66:08 what a stat dose is
+  - 66:23 close the letter and check the whole set of answers
 
 *Warnings (common mistakes)*
 
-- 57:12 Do not write 'the temperature of 40.2'. The word 'temperature' came earlier, but this reading is new, so we use 'a'.
+- 64:45 Do not write 'the temperature of 40.2'. The word 'temperature' came earlier, but this reading is new, so we use 'a'.
 
-*Terms*: From case notes to one word (Term, 55:47); Stat dose (Term, 58:35)
+*Terms*: From case notes to one word (Term, 63:20); Stat dose (Term, 66:08)
 
 ### Vocabulary
 
 First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
 
-- 13:05 Abstractions
-- 25:15 appreciate
-- 26:03 accommodation
-- 36:17 surgery
-- 44:03 Underwent
-- 51:10 Ongoing
-- 54:59 Deteriorate
+- 14:52 Abstractions
+- 28:36 appreciate
+- 29:24 accommodation
+- 41:19 surgery
+- 50:44 Underwent
+- 57:50 Ongoing
+- 62:32 Deteriorate
 
 ### Links to other lessons
 
 - 0:16 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`) (in `page-3_t1.s1.u4`)
-- 49:06 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`), "What is nominalisation?" (in `pages-13-14_t2.s5.u2`)
-- 56:07 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Physical symptoms" (in `page-15_t1.s9.u3`)
+- 55:46 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`), "What is nominalisation?" (in `pages-13-14_t2.s5.u2`)
+- 63:41 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Physical symptoms" (in `page-15_t1.s9.u3`)
 - referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Introduction" at 0:09
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Expand" at 11:27
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Choosing the right word form" at 9:02, about section `page-6`
@@ -8843,7 +8843,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **a (indefinite article)**: `vocabulary-03-collocations-2` 23:02
 - **a fifty-year-old teacher**: `grammar-08-paraphrasing` 20:30
 - **A needle in a haystack**: `reading-02-part-a` 1:48
-- **A or an**: `grammar-04-articles` 9:45
+- **A or an**: `grammar-04-articles` 11:27
 - **A quick review of the method**: `reading-05-part-c-2` 1:23; `listening-05-part-c-2` 1:10
 - **A sample letter**: `writing-01-overview` 14:04
 - **A target score for Part B**: `listening-03-part-b` 11:46
@@ -8922,9 +8922,9 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Coordinating conjunction**: `grammar-05-complex-compound` 24:15
 - **Core skills**: `reading-03-part-b` 7:47
 - **Correct the sentences**: `grammar-05-complex-compound` 54:24
-- **Countable and uncountable nouns**: `grammar-04-articles` 8:20
-- **Countable noun**: `grammar-02-verb-use` 15:31; `grammar-04-articles` 15:21
-- **Countable nouns: non-specific**: `grammar-04-articles` 14:55
+- **Countable and uncountable nouns**: `grammar-04-articles` 10:02
+- **Countable noun**: `grammar-02-verb-use` 15:31; `grammar-04-articles` 17:58
+- **Countable nouns: non-specific**: `grammar-04-articles` 17:32
 - **Critical thinking**: `reading-04-part-c` 8:39
 - **Dangling participle**: `grammar-06-clause` 36:28
 - **Dates, times and units**: `grammar-07-punctuation` 69:41
@@ -8955,7 +8955,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Formal time-related expressions**: `grammar-03-nominalization` 40:51
 - **Four steps towards success**: `reading-01-overview` 15:14
 - **From case notes to a sentence**: `grammar-05-complex-compound` 9:49
-- **From case notes to one word**: `grammar-04-articles` 55:47
+- **From case notes to one word**: `grammar-04-articles` 63:20
 - **From the plan**: `writing-04-introduction` 20:05
 - **From what you hear to the notes**: `listening-02-part-a` 12:25
 - **from which**: `vocabulary-01-word-forms` 51:31
@@ -8963,7 +8963,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **future perfect**: `grammar-01-verb-tenses` 42:20
 - **future simple**: `grammar-01-verb-tenses` 20:16
 - **Gap fill**: `grammar-05-complex-compound` 32:43
-- **Gap fill: articles**: `grammar-04-articles` 52:51
+- **Gap fill: articles**: `grammar-04-articles` 60:25
 - **Genre and Style**: `writing-02-assessment-criteria` 20:49
 - **Gerund**: `grammar-05-complex-compound` 46:10
 - **Gist**: `reading-03-part-b` 2:13
@@ -8993,7 +8993,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Hyphens and numbers**: `grammar-07-punctuation` 56:15
 - **i.e**: `grammar-07-punctuation` 67:54
 - **ICU**: `vocabulary-03-collocations-2` 9:50
-- **Indefinite article**: `grammar-04-articles` 9:10
+- **Indefinite article**: `grammar-04-articles` 10:52
 - **Independent clause**: `grammar-05-complex-compound` 4:15; `grammar-07-punctuation` 7:00
 - **Infinitive**: `grammar-01-verb-tenses` 6:43
 - **Initially**: `grammar-08-paraphrasing` 46:29
@@ -9017,11 +9017,11 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Multiple choice**: `reading-01-overview` 7:48; `listening-01-overview` 3:38
 - **Multiple choice (3 options)**: `reading-03-part-b` 6:29
 - **neither of which**: `vocabulary-01-word-forms` 55:14
-- **Nominalisation**: `grammar-03-nominalization` 1:57; `grammar-04-articles` 48:47; `grammar-08-paraphrasing` 5:29
+- **Nominalisation**: `grammar-03-nominalization` 1:57; `grammar-04-articles` 55:27; `grammar-08-paraphrasing` 5:29
 - **Non-defining clause**: `grammar-07-punctuation` 31:37
 - **non-defining relative clause**: `vocabulary-01-word-forms` 60:45
 - **Non-physical complaints**: `grammar-03-nominalization` 21:13
-- **Non-specific**: `grammar-04-articles` 15:38
+- **Non-specific**: `grammar-04-articles` 18:15
 - **Noun endings**: `vocabulary-01-word-forms` 15:23
 - **Object**: `grammar-01-verb-tenses` 86:12
 - **Occasionally**: `grammar-01-verb-tenses` 78:06
@@ -9109,11 +9109,11 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Small numbers**: `grammar-07-punctuation` 41:41
 - **so ... that**: `vocabulary-03-collocations-2` 29:32
 - **So far**: `grammar-01-verb-tenses` 82:04
-- **Specific noun**: `grammar-04-articles` 30:21
-- **Specific nouns**: `grammar-04-articles` 29:38
-- **Spot the correct sentence**: `grammar-04-articles` 42:42
+- **Specific noun**: `grammar-04-articles` 34:28
+- **Specific nouns**: `grammar-04-articles` 33:45
+- **Spot the correct sentence**: `grammar-04-articles` 49:22
 - **Spot the errors**: `writing-04-introduction` 13:46
-- **Stat dose**: `grammar-04-articles` 58:35
+- **Stat dose**: `grammar-04-articles` 66:08
 - **stative verb**: `grammar-01-verb-tenses` 73:52
 - **Steps towards successful writing**: `writing-01-overview` 3:01
 - **Strategies for Part A**: `listening-02-part-a` 2:25
@@ -9167,9 +9167,9 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Treatment**: `grammar-03-nominalization` 31:03
 - **try to + simple verb**: `vocabulary-03-collocations-2` 58:23
 - **Types of pain**: `vocabulary-03-collocations-2` 10:30
-- **Uncountable nouns: non-specific**: `grammar-04-articles` 21:46
-- **undergo (past: underwent)**: `grammar-04-articles` 23:23
-- **US**: `grammar-04-articles` 13:54
+- **Uncountable nouns: non-specific**: `grammar-04-articles` 25:07
+- **undergo (past: underwent)**: `grammar-04-articles` 26:44
+- **US**: `grammar-04-articles` 15:41
 - **Usage: continuous tenses**: `grammar-01-verb-tenses` 27:58
 - **Usage: perfect continuous tenses**: `grammar-01-verb-tenses` 44:34
 - **Usage: perfect tenses**: `grammar-01-verb-tenses` 36:59
@@ -9202,4 +9202,4 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Word count of the letter body**: `writing-01-overview` 8:38
 - **word forms**: `vocabulary-01-word-forms` 2:25
 - **Word meaning**: `reading-02-part-a` 56:52
-- **Zero article**: `grammar-04-articles` 43:09
+- **Zero article**: `grammar-04-articles` 49:50
