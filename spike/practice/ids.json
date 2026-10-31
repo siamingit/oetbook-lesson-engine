@@ -14,6 +14,10 @@
   "grammar-01-verb-tenses": [
    950000,
    950999
+  ],
+  "grammar-02-verb-use": [
+   951000,
+   951999
   ]
  },
  "ids": [
@@ -757,6 +761,90 @@
    "lesson": "grammar-01-verb-tenses",
    "point": "may-have-been",
    "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-951001",
+   "lesson": "grammar-02-verb-use",
+   "point": "one-moment",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-951002",
+   "lesson": "grammar-02-verb-use",
+   "point": "one-moment",
+   "slot": "gap-1",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-951003",
+   "lesson": "grammar-02-verb-use",
+   "point": "one-moment",
+   "slot": "gap-2",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-951004",
+   "lesson": "grammar-02-verb-use",
+   "point": "since-for-in",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-951005",
+   "lesson": "grammar-02-verb-use",
+   "point": "since-for-in",
+   "slot": "gap-1",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-951006",
+   "lesson": "grammar-02-verb-use",
+   "point": "since-for-in",
+   "slot": "gap-2",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-951007",
+   "lesson": "grammar-02-verb-use",
+   "point": "since-for-in",
+   "slot": "gap-3",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-951008",
+   "lesson": "grammar-02-verb-use",
+   "point": "finding-symptom",
+   "slot": "item-1",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-951009",
+   "lesson": "grammar-02-verb-use",
+   "point": "finding-symptom",
+   "slot": "item-2",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-951010",
+   "lesson": "grammar-02-verb-use",
+   "point": "change-active",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-951011",
+   "lesson": "grammar-02-verb-use",
+   "point": "underwent",
+   "slot": "item-1",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-951012",
+   "lesson": "grammar-02-verb-use",
+   "point": "underwent",
+   "slot": "item-2",
    "issued": "2026-10-30"
   }
  ]
