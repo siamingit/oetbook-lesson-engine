@@ -22,7 +22,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 | 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 62:40 | 5 | 2026-10-31 11:25 (siavash) |
 | 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 59:28 | 7 | 2026-10-31 12:13 (Siavash) |
 | 4 | Grammar for OET: Articles | `grammar-04-articles` | 59:31 | 9 | 2026-10-27 19:07 (siavash) |
-| 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 56:31 | 8 | 2026-10-27 09:37 (siavash) |
+| 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 66:38 | 8 | 2026-10-27 09:37 (siavash) |
 | 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 51:03 | 6 | 2026-10-27 09:37 (siavash) |
 | 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 83:00 | 18 | 2026-10-27 09:37 (siavash) |
 | 8 | Grammar for OET: Paraphrasing | `grammar-08-paraphrasing` | 54:16 | 7 | 2026-10-27 09:37 (siavash) |
@@ -746,8 +746,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Non-physical complaints" at 25:35, about section `page-9`
 - referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Formal time-related expressions" at 41:22, about section `page-12`
 - referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Denominalisation" at 55:50, about section `page-16`
-- referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Compound or complex?" at 23:02, about section `page-15`
-- referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Gap fill" at 30:25, about section `page-9`
+- referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Compound or complex?" at 26:09, about section `page-15`
+- referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Gap fill" at 34:37, about section `page-9`
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Reduced relative clauses" at 19:12, about section `page-10`
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 36:22, about section `page-16`
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 41:11
@@ -1703,7 +1703,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 5. Grammar for OET: Complex sentences
 
-- Lesson ID and folder: `grammar-05-complex-compound` (folder `grammar-05-complex-compound`); course grammar, lesson 5; length 56:31; bundle format 1.22
+- Lesson ID and folder: `grammar-05-complex-compound` (folder `grammar-05-complex-compound`); course grammar, lesson 5; length 66:38; bundle format 1.23
 - Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn how to join two ideas in one complex sentence, with the right linking word and comma, for your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 65:06 long, partial hash `49e48848f0038580`; deck `source/slides.pdf`, 14 pages
@@ -1752,256 +1752,256 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 *Terms*: Clause (Grammar term, 3:57); Independent clause (Grammar term, 4:15); Dependent clause (Grammar term, 4:34); Subordinate clause (Grammar term, 7:41); Conjunction (Grammar term, 8:00)
 
-#### 8:51 From case notes to a sentence (`page-6`, deck)
+#### 9:49 From case notes to a sentence (`page-6`, deck)
 
-- 8:51 **Case notes turned into one complex sentence**
-  - 8:51 Show the notes and the finished sentence, and frame the task
-  - 9:20 Read the first notes: who the patient is
-  - 9:37 Gloss the equipment word in the notes
-  - 9:52 Read the last two notes: the family comment and the action taken
-  - 10:04 Show the contrast hidden in the notes
-  - 10:19 Why the contrast forces one joined sentence
-  - 10:50 The word that marks the contrast
-  - 10:58 The expression that gives the reason
-  - 11:31 Test the 'due to' part on its own
-  - 11:45 Correct the label: the 'due to' part is a phrase, not a clause
-  - 12:05 Define dependent clause before the diagram
-  - 12:12 Define independent clause before the diagram
-  - 12:33 Draw the sentence as two clause pieces joined by 'Although'
-  - 13:17 Sum up what the sentence is made of
-
-*Rules on the boards*
-
-- 10:19 When two notes contrast like this, join them in one sentence instead of listing them one by one.
-- 11:45 'Due to his high care needs' is not a clause. It has no subject and no verb. It is a phrase.
-
-*Terms*: Hoist (New word, 9:37); Although (Joining word, 10:50); Due to (Linking words, 10:58); Dependent clause (Grammar, 12:05); Independent clause (Grammar, 12:12)
-
-#### 13:35 Subordinating conjunctions (`page-7`, deck)
-
-- 13:35 **The joining words**
-  - 13:35 Show the list of joining words and recall the two clauses of a complex sentence
-  - 13:35 Show both orders as clause diagrams and teach order 1
-  - 14:24 Name the glue and its two types
-  - 14:46 Contrast subordinating and coordinating conjunctions
-  - 15:24 Memory aid: the subordinate clause and its conjunction
-  - 16:12 What each joining word shows
-  - 16:48 Who and which are relative pronouns
-  - 17:09 Who for people, which for things, and the comma
-  - 18:13 Worked example of the comma with which
-  - 19:33 Explain order 1 and then show order 2
-  - 20:05 Explain order 2 and its comma
-  - 20:27 Warn against the missing comma
+- 9:49 **Case notes turned into one complex sentence**
+  - 9:49 Show the notes and the finished sentence, and frame the task
+  - 10:17 Read the first notes: who the patient is
+  - 10:34 Gloss the equipment word in the notes
+  - 10:50 Read the last two notes: the family comment and the action taken
+  - 11:02 Show the contrast hidden in the notes
+  - 11:17 Why the contrast forces one joined sentence
+  - 11:48 The word that marks the contrast
+  - 11:55 The expression that gives the reason
+  - 12:28 Test the 'due to' part on its own
+  - 12:43 Correct the label: the 'due to' part is a phrase, not a clause
+  - 13:03 Define dependent clause before the diagram
+  - 13:09 Define independent clause before the diagram
+  - 13:30 Draw the sentence as two clause pieces joined by 'Although'
+  - 14:14 Sum up what the sentence is made of
 
 *Rules on the boards*
 
-- 15:45 A subordinating conjunction starts the subordinate clause. That is the glue for complex sentences.
-- 17:24 When who or which only adds extra information, put a comma before it, and another after that information if the sentence goes on.
-- 20:35 When the dependent clause comes first, put a comma after it. It shows the reader where the first clause ends.
+- 11:17 When two notes contrast like this, join them in one sentence instead of listing them one by one.
+- 12:43 'Due to his high care needs' is not a clause. It has no subject and no verb. It is a phrase.
+
+*Terms*: Hoist (New word, 10:34); Although (Joining word, 11:48); Due to (Linking words, 11:55); Dependent clause (Grammar, 13:03); Independent clause (Grammar, 13:09)
+
+#### 15:44 Subordinating conjunctions (`page-7`, deck)
+
+- 15:44 **The joining words**
+  - 15:44 Show the list of joining words and recall the two clauses of a complex sentence
+  - 15:44 Show both orders as clause diagrams and teach order 1
+  - 16:33 Name the glue and its two types
+  - 16:55 Contrast subordinating and coordinating conjunctions
+  - 17:33 Memory aid: the subordinate clause and its conjunction
+  - 18:21 What each joining word shows
+  - 18:57 Who and which are relative pronouns
+  - 19:18 Who for people, which for things, and the comma
+  - 20:22 Worked example of the comma with which
+  - 21:42 Explain order 1 and then show order 2
+  - 22:14 Explain order 2 and its comma
+  - 22:36 Warn against the missing comma
+
+*Rules on the boards*
+
+- 17:54 A subordinating conjunction starts the subordinate clause. That is the glue for complex sentences.
+- 19:33 When who or which only adds extra information, put a comma before it, and another after that information if the sentence goes on.
+- 22:44 When the dependent clause comes first, put a comma after it. It shows the reader where the first clause ends.
 
 *Wrong sentences corrected*
 
-- 20:27 After she started the new medication the patient felt better.
+- 22:36 After she started the new medication the patient felt better.
 
-*Terms*: Conjunction (Term, 14:24); Subordinate clause (Term, 15:24); Relative clause (Term, 16:54)
+*Terms*: Conjunction (Term, 16:33); Subordinate clause (Term, 17:33); Relative clause (Term, 19:03)
 
-#### 20:47 Compound or complex? (`pages-08-09`, deck)
+#### 23:54 Compound or complex? (`pages-08-09`, deck)
 
-- 20:47 **Compound and complex sentence boxes**
-  - 20:47 Open the two boxes and name the joining word of a compound sentence
-  - 21:16 Teach the seven coordinating conjunctions through FANBOYS
-  - 21:42 State the FANBOYS test as the rule to remember
-  - 21:51 Both sentence types are built from two clauses
-  - 22:05 Define independent clause
-  - 22:27 Reject the active form in the second clause of the example
-  - 22:47 Give the finished compound example with the passive second clause
-  - 23:08 Draw the example as two independent pieces with 'and' between them
-  - 23:44 State what the diagram shows
-  - 23:57 Leave out the repeated subject in the second clause
-  - 24:13 Reject the comma splice
-  - 24:33 Give the correct version of the comma splice
-  - 24:50 Fill the Complex box: the joining word and the dependent clause
-  - 25:14 Draw the shape of a complex sentence
-- 25:58 **Which joining word makes which sentence**
-  - 25:58 Set up the test printed on the slide and reject FANBOYS inside a complex sentence
-  - 26:15 Warn what the wrong joining word does to the sentence
-  - 26:33 Re-express the slide's 'glue' gloss in English and give the test
-  - 26:49 State the complement of the test: anything else is subordinating
-  - 27:15 Reject two joining words in one sentence: Although ... but ...
-  - 27:45 Give the correct version and the rule behind it
-  - 28:01 Same rule with Because ... so ...
-  - 28:16 Give the correct version of the Because sentence
+- 23:54 **Compound and complex sentence boxes**
+  - 23:54 Open the two boxes and name the joining word of a compound sentence
+  - 24:24 Teach the seven coordinating conjunctions through FANBOYS
+  - 24:50 State the FANBOYS test as the rule to remember
+  - 24:59 Both sentence types are built from two clauses
+  - 25:12 Define independent clause
+  - 25:35 Reject the active form in the second clause of the example
+  - 25:54 Give the finished compound example with the passive second clause
+  - 26:16 Draw the example as two independent pieces with 'and' between them
+  - 26:51 State what the diagram shows
+  - 27:04 Leave out the repeated subject in the second clause
+  - 27:21 Reject the comma splice
+  - 27:40 Give the correct version of the comma splice
+  - 27:58 Fill the Complex box: the joining word and the dependent clause
+  - 28:22 Draw the shape of a complex sentence
+- 30:10 **Which joining word makes which sentence**
+  - 30:10 Set up the test printed on the slide and reject FANBOYS inside a complex sentence
+  - 30:27 Warn what the wrong joining word does to the sentence
+  - 30:44 Re-express the slide's 'glue' gloss in English and give the test
+  - 31:01 State the complement of the test: anything else is subordinating
+  - 31:26 Reject two joining words in one sentence: Although ... but ...
+  - 31:56 Give the correct version and the rule behind it
+  - 32:12 Same rule with Because ... so ...
+  - 32:27 Give the correct version of the Because sentence
 
 *Rules on the boards*
 
-- 21:42 When one of these seven words joins the two parts, the sentence is compound.
-- 26:49 A subordinating conjunction, like because or although, makes a complex sentence.
+- 24:50 When one of these seven words joins the two parts, the sentence is compound.
+- 31:01 A subordinating conjunction, like because or although, makes a complex sentence.
 
 *Warnings (common mistakes)*
 
-- 26:15 The wrong joining word can change the meaning of your sentence, or make it hard for the reader to understand. Then the sentence is wrong.
+- 30:27 The wrong joining word can change the meaning of your sentence, or make it hard for the reader to understand. Then the sentence is wrong.
 
 *Wrong sentences corrected*
 
-- 22:27 He examined immediately.
-- 24:13 He presented yesterday, he was examined immediately.
-- 27:15 Although her pain has reduced, but she insists on taking the medication.
-- 28:01 Because the medication causes drowsiness, so do not drive.
+- 25:35 He examined immediately.
+- 27:21 He presented yesterday, he was examined immediately.
+- 31:26 Although her pain has reduced, but she insists on taking the medication.
+- 32:12 Because the medication causes drowsiness, so do not drive.
 
-*Terms*: Coordinating conjunction (Form, 21:08); FANBOYS (Memory word, 21:16); Clause (Term, 21:57); Independent clause (Term, 22:05); Passive (Term, 22:51); Subordinating conjunction (Form, 24:50); Dependent clause (Term, 25:00); Conjunction (Term, 26:33)
+*Terms*: Coordinating conjunction (Form, 24:15); FANBOYS (Memory word, 24:24); Clause (Term, 25:04); Independent clause (Term, 25:12); Passive (Term, 25:58); Subordinating conjunction (Form, 27:58); Dependent clause (Term, 28:07); Conjunction (Term, 30:44)
 
-#### 28:32 Gap fill (`page-10`, deck)
+#### 32:43 Gap fill (`page-10`, deck)
 
-- 28:32 **Gap fill: choosing the right conjunction**
-  - 28:32 introduce the task
-  - 28:56 how the word list works
-  - 29:33 find the link between the two clauses
-  - 30:11 the verb form rules one word out
-  - 30:35 since against when
-  - 31:10 name the relationship
-  - 31:36 two words for contrast
-  - 32:02 two accounts that do not agree
-  - 32:20 while as a contrast word
-  - 32:41 the second meaning of while
-  - 33:14 a clause of condition
-  - 33:34 gloss and use in letters
-  - 34:09 two events in order
-  - 34:30 a second condition
-  - 34:52 one specific past occasion
-  - 35:06 the two clauses of the sentence
-  - 35:31 the comma rule for both word orders
-  - 36:02 a clause of reason
-  - 36:19 one action must come first
-  - 36:53 the gap opens a relative clause
-  - 37:06 which or who
-  - 37:23 no extra pronoun after which or who
-  - 37:46 why there is a comma before the gap
-  - 38:05 who, and who it points back to
-  - 38:20 why there is a comma before the gap
-  - 38:31 writing the age modifier
-  - 38:43 using these conjunctions in letter writing
+- 32:43 **Gap fill: choosing the right conjunction**
+  - 32:43 introduce the task
+  - 33:07 how the word list works
+  - 33:44 find the link between the two clauses
+  - 34:22 the verb form rules one word out
+  - 34:47 since against when
+  - 35:22 name the relationship
+  - 35:47 two words for contrast
+  - 36:14 two accounts that do not agree
+  - 36:32 while as a contrast word
+  - 36:53 the second meaning of while
+  - 37:25 a clause of condition
+  - 37:45 gloss and use in letters
+  - 38:21 two events in order
+  - 38:41 a second condition
+  - 39:04 one specific past occasion
+  - 39:18 the two clauses of the sentence
+  - 39:42 the comma rule for both word orders
+  - 40:14 a clause of reason
+  - 40:31 one action must come first
+  - 42:17 the gap opens a relative clause
+  - 42:30 which or who
+  - 42:47 no extra pronoun after which or who
+  - 43:10 why there is a comma before the gap
+  - 43:29 who, and who it points back to
+  - 43:44 why there is a comma before the gap
+  - 43:55 writing the age modifier
+  - 45:01 using these conjunctions in letter writing
 
 *Rules on the boards*
 
-- 38:43 Use these joining words to join your case notes into complex sentences. Choose the word by the link you need: time, contrast, reason, condition or extra information.
+- 45:01 Use these joining words to join your case notes into complex sentences. Choose the word by the link you need: time, contrast, reason, condition or extra information.
 
 *Wrong sentences corrected*
 
-- 37:28 Pre-eclampsia, which it led to an emergency caesarean section.
+- 42:52 Pre-eclampsia, which it led to an emergency caesarean section.
 
-*Terms*: Conditional clause (Form, 33:22); Relative clause (Form, 36:53); 16-year-old (Form, 38:31)
+*Terms*: Conditional clause (Form, 37:33); Relative clause (Form, 42:17); 16-year-old (Form, 43:55)
 
-#### 39:17 Due to, despite, as well as (`pages-11-12`, deck)
+#### 45:35 Due to, despite, as well as (`pages-11-12`, deck)
 
-- 39:17 **the rule and due to, despite, as well as**
-  - 39:17 Show the pattern these three words take, with the first model sentence
-  - 39:17 Show the model sentence and reject the clause version
-  - 39:17 Show the model sentence and its function
-  - 39:43 Define the grammar term 'clause'
-  - 39:52 Define 'gerund' in English, without the first-language grammar term
-  - 40:15 Analyse what follows 'due to' in the model sentence
-  - 40:29 Give the meaning of 'due to'
-  - 40:39 Show that 'due to' works best with a noun
-  - 40:52 Change card, part one: 'because' takes a clause
-  - 41:08 Change card, part two: 'because of' and 'due to' take a noun
-  - 41:56 Show how the clause turns into the gerund phrase
-  - 42:03 Give the meaning of 'despite'
-  - 42:13 Separate 'despite' from 'in spite of'
-  - 42:28 Show the form of 'despite' that does take a clause
-  - 42:42 Note the difference: although takes a dependent clause
-  - 43:15 Consolidate the two meanings
-  - 43:45 Show when to use it in OET writing
-  - 43:59 Teach the punctuation pattern shared by all three examples
-  - 44:18 Check the second halves and restate the rule
-- 44:39 **Listing findings with as well as**
-  - 44:39 Show the two versions of the findings sentence
-  - 44:57 Start from the main clause
-  - 45:15 Reject 'has blood pressure'
-  - 45:20 Give the correct wording for raised pressure
-  - 45:36 Punctuating a list of findings
-  - 45:46 Point out the articles in the list
-  - 46:00 Why the writer chooses 'as well as'
-  - 46:04 Contrast the comma version with the 'and' version
-  - 46:32 State the rule for the item before 'as well as'
+- 45:35 **the rule and due to, despite, as well as**
+  - 45:35 Show the pattern these three words take, with the first model sentence
+  - 45:35 Show the model sentence and reject the clause version
+  - 45:35 Show the model sentence and its function
+  - 46:01 Define the grammar term 'clause'
+  - 46:10 Define 'gerund' in English, without the first-language grammar term
+  - 46:33 Analyse what follows 'due to' in the model sentence
+  - 46:47 Give the meaning of 'due to'
+  - 46:57 Show that 'due to' works best with a noun
+  - 47:10 Change card, part one: 'because' takes a clause
+  - 47:26 Change card, part two: 'because of' and 'due to' take a noun
+  - 48:14 Show how the clause turns into the gerund phrase
+  - 48:21 Give the meaning of 'despite'
+  - 48:31 Separate 'despite' from 'in spite of'
+  - 48:46 Show the form of 'despite' that does take a clause
+  - 49:00 Note the difference: although takes a dependent clause
+  - 49:33 Consolidate the two meanings
+  - 50:03 Show when to use it in OET writing
+  - 50:17 Teach the punctuation pattern shared by all three examples
+  - 50:36 Check the second halves and restate the rule
+- 50:57 **Listing findings with as well as**
+  - 50:57 Show the two versions of the findings sentence
+  - 51:15 Start from the main clause
+  - 51:33 Reject 'has blood pressure'
+  - 51:38 Give the correct wording for raised pressure
+  - 51:54 Punctuating a list of findings
+  - 52:04 Point out the articles in the list
+  - 52:18 Why the writer chooses 'as well as'
+  - 52:22 Contrast the comma version with the 'and' version
+  - 52:50 State the rule for the item before 'as well as'
 
 *Rules on the boards*
 
-- 44:28 After due to, despite and as well as, use a noun or an -ing form, never a clause.
-- 46:32 Before 'as well as', join the other items with 'and': then 'as well as' clearly adds the last finding.
+- 50:46 After due to, despite and as well as, use a noun or an -ing form, never a clause.
+- 52:50 Before 'as well as', join the other items with 'and': then 'as well as' clearly adds the last finding.
 
 *Wrong sentences corrected*
 
-- 41:41 Despite he use a local anaesthetic
-- 45:15 The patient has blood pressure.
+- 47:59 Despite he use a local anaesthetic
+- 51:33 The patient has blood pressure.
 
-*Terms*: Clause (Term, 39:43); Gerund (Form, 39:52); Independent clause (Term, 43:59)
+*Terms*: Clause (Term, 46:01); Gerund (Form, 46:10); Independent clause (Term, 50:17)
 
-#### 46:43 Correct the sentences (`page-13`, deck)
+#### 54:24 Correct the sentences (`page-13`, deck)
 
-- 46:43 **Correct the sentences table**
-  - 46:43 what the class does with this table
-  - 47:23 the meaning of intermittent pain
-  - 47:47 the missing comma
-  - 48:04 'of' never follows 'despite'
-  - 48:17 the two correct forms
-  - 48:32 adding the second problem with 'as well as'
-  - 48:51 the forms of 'swell'
-  - 49:04 the verbs used with treatment and medication
-  - 49:35 the meaning of deteriorated
-  - 50:00 the meaning of distance vision
-  - 50:23 where 'Although' can stand
-  - 50:38 the two clauses joined with 'Although'
-  - 51:15 keeping the original order with 'However'
-  - 51:50 why 'due to' cannot be used here
-  - 51:59 the two ways to write the cause
-  - 52:35 the meaning of passed away
-  - 53:02 the only fault
-  - 53:09 the comma goes between the clauses
-  - 53:27 the rule to remember
-  - 53:58 the same fault as row 3
-  - 54:05 the two ways to fix it
-  - 54:33 the meaning of shelter
-  - 55:04 the meaning of reluctant
-  - 55:16 where the fault is
-  - 55:37 what a gerund is
-  - 55:42 clause or gerund after 'as well as'
-  - 56:11 the rule for these linking words
+- 54:24 **Correct the sentences table**
+  - 54:24 what the class does with this table
+  - 55:04 the meaning of intermittent pain
+  - 55:28 the missing comma
+  - 55:45 'of' never follows 'despite'
+  - 55:58 the two correct forms
+  - 56:14 adding the second problem with 'as well as'
+  - 56:32 the forms of 'swell'
+  - 56:45 the verbs used with treatment and medication
+  - 57:16 the meaning of deteriorated
+  - 57:41 the meaning of distance vision
+  - 58:04 where 'Although' can stand
+  - 58:19 the two clauses joined with 'Although'
+  - 58:56 keeping the original order with 'However'
+  - 59:31 why 'due to' cannot be used here
+  - 59:40 the two ways to write the cause
+  - 60:16 the meaning of passed away
+  - 60:43 the only fault
+  - 60:50 the comma goes between the clauses
+  - 61:08 the rule to remember
+  - 62:51 the same fault as row 3
+  - 62:58 the two ways to fix it
+  - 63:26 the meaning of shelter
+  - 63:57 the meaning of reluctant
+  - 64:09 where the fault is
+  - 64:30 what a gerund is
+  - 64:35 clause or gerund after 'as well as'
+  - 66:17 the rule for these linking words
 
 *Rules on the boards*
 
-- 53:27 When the dependent clause comes first, the comma goes at the end of that clause, not after Although.
+- 61:08 When the dependent clause comes first, the comma goes at the end of that clause, not after Although.
 
 *Warnings (common mistakes)*
 
-- 56:11 Due to, despite and as well as are followed by a noun or a gerund, never by a clause.
+- 66:17 Due to, despite and as well as are followed by a noun or a gerund, never by a clause.
 
 *Wrong sentences corrected*
 
-- 48:04 Despite of the treatment
+- 55:45 Despite of the treatment
 
-*Terms*: Swollen (Form, 48:51); Gerund (Grammar term, 55:37)
+*Terms*: Swollen (Form, 56:32); Gerund (Grammar term, 64:30)
 
 ### Vocabulary
 
 First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
 
 - 5:24 Discontinued
-- 9:37 Hoist
-- 27:23 Insists
-- 33:34 hesitate
-- 44:45 Elevated
-- 47:23 Intermittent
-- 49:35 Deteriorated
-- 50:00 Distance vision
-- 52:35 Passed away
-- 54:33 Shelter
-- 55:04 Reluctant
+- 10:34 Hoist
+- 31:34 Insists
+- 37:45 hesitate
+- 51:03 Elevated
+- 55:04 Intermittent
+- 57:16 Deteriorated
+- 57:41 Distance vision
+- 60:16 Passed away
+- 63:26 Shelter
+- 63:57 Reluctant
 
 ### Links to other lessons
 
 - 0:09 refers to Grammar for OET: Articles (`grammar-04-articles`) (in `page-3_t1.s1.u2`)
-- 23:02 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `pages-08-09_t1.s6.u3`)
-- 30:25 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-10_t1.s4.u3`)
+- 26:09 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `pages-08-09_t1.s6.u3`)
+- 34:37 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-10_t1.s4.u3`)
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Introduction" at 0:10
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 38:03, about section `pages-11-12`
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 41:53, about section `pages-04-05`
@@ -8862,7 +8862,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Adjective endings**: `vocabulary-01-word-forms` 15:39
 - **Adjectives and nouns**: `vocabulary-01-word-forms` 26:32
 - **Administer**: `vocabulary-02-collocations` 16:03
-- **Although**: `grammar-05-complex-compound` 10:50
+- **Although**: `grammar-05-complex-compound` 11:48
 - **An itchy rash**: `vocabulary-03-collocations-2` 75:38
 - **Apostrophe**: `grammar-07-punctuation` 51:50
 - **Apostrophes**: `grammar-07-punctuation` 51:42
@@ -8904,12 +8904,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **complex sentence**: `grammar-05-complex-compound` 2:13; `grammar-07-punctuation` 5:44; `grammar-08-paraphrasing` 7:40
 - **Complex sentences**: `grammar-07-punctuation` 5:39
 - **Compliant with**: `grammar-08-paraphrasing` 29:38
-- **Compound or complex?**: `grammar-05-complex-compound` 20:47
-- **Compound sentence**: `grammar-01-verb-tenses` 121:25; `grammar-05-complex-compound` 20:47; `grammar-08-paraphrasing` 7:33
+- **Compound or complex?**: `grammar-05-complex-compound` 23:54
+- **Compound sentence**: `grammar-01-verb-tenses` 121:25; `grammar-05-complex-compound` 23:54; `grammar-08-paraphrasing` 7:33
 - **Compound sentences**: `grammar-07-punctuation` 13:27
 - **Comprehension**: `reading-04-part-c` 2:05
 - **Conciseness and Clarity**: `writing-02-assessment-criteria` 15:53
-- **Conditional clause**: `grammar-05-complex-compound` 33:22
+- **Conditional clause**: `grammar-05-complex-compound` 37:33
 - **Conjunction**: `grammar-05-complex-compound` 8:00
 - **Conjunctive adverb**: `grammar-07-punctuation` 18:09
 - **Connectives**: `grammar-02-verb-use` 25:04
@@ -8919,9 +8919,9 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **continuous tenses**: `grammar-01-verb-tenses` 27:58
 - **Contraction**: `grammar-07-punctuation` 53:40
 - **Contrast**: `listening-04-part-c` 8:29
-- **Coordinating conjunction**: `grammar-05-complex-compound` 21:08
+- **Coordinating conjunction**: `grammar-05-complex-compound` 24:15
 - **Core skills**: `reading-03-part-b` 7:47
-- **Correct the sentences**: `grammar-05-complex-compound` 46:43
+- **Correct the sentences**: `grammar-05-complex-compound` 54:24
 - **Countable and uncountable nouns**: `grammar-04-articles` 8:20
 - **Countable noun**: `grammar-02-verb-use` 15:31; `grammar-04-articles` 15:21
 - **Countable nouns: non-specific**: `grammar-04-articles` 14:55
@@ -8939,14 +8939,14 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **do a quick check**: `vocabulary-03-collocations-2` 50:05
 - **DO tunnel**: `grammar-08-paraphrasing` 41:26
 - **Dos and don'ts**: `reading-02-part-a` 49:21
-- **Due to**: `grammar-05-complex-compound` 10:58; `grammar-07-punctuation` 10:13
-- **Due to, despite, as well as**: `grammar-05-complex-compound` 39:17
+- **Due to**: `grammar-05-complex-compound` 11:55; `grammar-07-punctuation` 10:13
+- **Due to, despite, as well as**: `grammar-05-complex-compound` 45:35
 - **e.g**: `grammar-07-punctuation` 67:40
 - **Emphasis**: `listening-04-part-c` 8:56
 - **Exercise regime**: `vocabulary-03-collocations-2` 71:38
 - **Expand**: `grammar-08-paraphrasing` 2:39
 - **Expressing reason with 'given'**: `grammar-06-clause` 45:45
-- **FANBOYS**: `grammar-05-complex-compound` 21:16; `grammar-07-punctuation` 13:55
+- **FANBOYS**: `grammar-05-complex-compound` 24:24; `grammar-07-punctuation` 13:55
 - **Fast reading**: `reading-01-overview` 13:36
 - **Final practice**: `grammar-07-punctuation` 77:05
 - **Five questions**: `writing-04-introduction` 23:01
@@ -8954,7 +8954,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **For and since**: `grammar-01-verb-tenses` 39:20
 - **Formal time-related expressions**: `grammar-03-nominalization` 40:51
 - **Four steps towards success**: `reading-01-overview` 15:14
-- **From case notes to a sentence**: `grammar-05-complex-compound` 8:51
+- **From case notes to a sentence**: `grammar-05-complex-compound` 9:49
 - **From case notes to one word**: `grammar-04-articles` 55:47
 - **From the plan**: `writing-04-introduction` 20:05
 - **From what you hear to the notes**: `listening-02-part-a` 12:25
@@ -8962,10 +8962,10 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Full stops and sentence boundaries**: `grammar-07-punctuation` 42:56
 - **future perfect**: `grammar-01-verb-tenses` 42:20
 - **future simple**: `grammar-01-verb-tenses` 20:16
-- **Gap fill**: `grammar-05-complex-compound` 28:32
+- **Gap fill**: `grammar-05-complex-compound` 32:43
 - **Gap fill: articles**: `grammar-04-articles` 52:51
 - **Genre and Style**: `writing-02-assessment-criteria` 20:49
-- **Gerund**: `grammar-05-complex-compound` 39:52
+- **Gerund**: `grammar-05-complex-compound` 46:10
 - **Gist**: `reading-03-part-b` 2:13
 - **given that**: `grammar-06-clause` 47:22
 - **Giving reassurance**: `vocabulary-03-collocations-2` 43:53
@@ -9040,7 +9040,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Participle clause**: `grammar-06-clause` 29:06
 - **Participle clauses**: `grammar-06-clause` 29:03
 - **Parts of an OET letter**: `writing-01-overview` 14:12
-- **Passive**: `grammar-01-verb-tenses` 51:04; `grammar-02-verb-use` 6:16; `grammar-03-nominalization` 5:49; `grammar-05-complex-compound` 22:51; `grammar-06-clause` 36:14; `grammar-07-punctuation` 11:41; `grammar-08-paraphrasing` 4:59; `vocabulary-01-word-forms` 23:40; `vocabulary-02-collocations` 34:43
+- **Passive**: `grammar-01-verb-tenses` 51:04; `grammar-02-verb-use` 6:16; `grammar-03-nominalization` 5:49; `grammar-05-complex-compound` 25:58; `grammar-06-clause` 36:14; `grammar-07-punctuation` 11:41; `grammar-08-paraphrasing` 4:59; `vocabulary-01-word-forms` 23:40; `vocabulary-02-collocations` 34:43
 - **passive forms**: `grammar-01-verb-tenses` 98:10
 - **Passive forms of the verb tenses**: `grammar-01-verb-tenses` 98:10
 - **Passive voice**: `grammar-02-verb-use` 36:40
@@ -9082,7 +9082,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Reduced relative clause**: `grammar-06-clause` 17:10
 - **Reduced relative clauses**: `grammar-06-clause` 17:10
 - **Regular verb**: `grammar-01-verb-tenses` 5:44
-- **Relative clause**: `grammar-05-complex-compound` 16:54; `grammar-06-clause` 2:00; `grammar-07-punctuation` 38:45; `vocabulary-01-word-forms` 39:10; `writing-04-introduction` 7:30
+- **Relative clause**: `grammar-05-complex-compound` 19:03; `grammar-06-clause` 2:00; `grammar-07-punctuation` 38:45; `vocabulary-01-word-forms` 39:10; `writing-04-introduction` 7:30
 - **Relative clauses**: `grammar-06-clause` 2:00; `writing-04-introduction` 5:38
 - **Relative clauses with prepositions**: `vocabulary-01-word-forms` 48:21
 - **Relative pronoun**: `grammar-06-clause` 17:33; `vocabulary-01-word-forms` 38:59
@@ -9120,11 +9120,11 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Subject**: `grammar-01-verb-tenses` 86:06; `grammar-02-verb-use` 42:34; `grammar-08-paraphrasing` 9:53
 - **Subject and verb**: `grammar-01-verb-tenses` 5:15
 - **Subordinate clause**: `grammar-05-complex-compound` 7:41
-- **Subordinating conjunction**: `grammar-05-complex-compound` 24:50
-- **Subordinating conjunctions**: `grammar-05-complex-compound` 13:35
+- **Subordinating conjunction**: `grammar-05-complex-compound` 27:58
+- **Subordinating conjunctions**: `grammar-05-complex-compound` 15:44
 - **Subsequently**: `grammar-08-paraphrasing` 45:10
 - **suggestive of**: `grammar-03-nominalization` 12:02
-- **Swollen**: `grammar-05-complex-compound` 48:51
+- **Swollen**: `grammar-05-complex-compound` 56:32
 - **symptomatic**: `grammar-03-nominalization` 9:53
 - **Synonyms**: `grammar-08-paraphrasing` 39:11
 - **Target score**: `reading-02-part-a` 53:08; `reading-03-part-b` 55:50; `reading-04-part-c` 3:50
