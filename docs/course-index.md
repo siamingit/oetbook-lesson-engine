@@ -2,7 +2,7 @@
 
 What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.1; decision: `docs/adr/038-public-course-index.md`.
 
-25 lessons, 239 sections, 552 board topics, 4178 teaching points, 257 rules and 64 warnings, 484 terms, 160 OET facts, 44 methods, 516 vocabulary items (189 from the word bank), 62 practice questions and note forms, 99 links to other lessons, 363 topics in the topic index.
+25 lessons, 239 sections, 552 board topics, 4178 teaching points, 257 rules and 64 warnings, 484 terms, 160 OET facts, 44 methods, 515 vocabulary items (189 from the word bank), 62 practice questions and note forms, 99 links to other lessons, 363 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -759,7 +759,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Key points to remember" at 16:51, about section `page-9`
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Treat" at 53:23, about section `page-15`
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Schedule" at 58:40, about section `page-16`
-- referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Practice: conditions and types of pain" at 20:54, about section `page-10`
+- referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Practice: conditions and types of pain" at 24:15, about section `page-10`
 - referred to by OET Writing: Overview (`writing-01-overview`), "Steps towards successful writing" at 3:22
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Conciseness and Clarity" at 20:36, about section `page-11`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:15
@@ -1694,7 +1694,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Expand" at 12:34
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Choosing the right word form" at 9:57, about section `page-6`
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Prescribe" at 49:16, about section `page-6`
-- referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Types of pain" at 18:16, about section `page-6`
+- referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Types of pain" at 20:29, about section `page-6`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 10:31, about section `pages-11-12`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 13:26, about section `page-6`
 
@@ -3135,7 +3135,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 |---|---|---|---|---|---|
 | 1 | Vocabulary for OET: Word Forms and Sentence Structure | `vocabulary-01-word-forms` | 93:37 | 8 | 2026-10-27 09:37 (siavash) |
 | 2 | Vocabulary for OET: Verb + Noun Collocations | `vocabulary-02-collocations` | 81:03 | 13 | 2026-10-27 09:37 (siavash) |
-| 3 | Vocabulary for OET: Adjective + Noun Collocations | `vocabulary-03-collocations-2` | 76:00 | 10 | 2026-10-27 09:37 (siavash) |
+| 3 | Vocabulary for OET: Adjective + Noun Collocations | `vocabulary-03-collocations-2` | 85:54 | 10 | not yet |
 
 <a id="vocabulary-01-word-forms"></a>
 
@@ -4194,8 +4194,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 3. Vocabulary for OET: Adjective + Noun Collocations
 
-- Lesson ID and folder: `vocabulary-03-collocations-2` (folder `vocabulary-03-collocations-2`); course vocabulary, lesson 3; length 76:00; bundle format 1.22
-- Status: approved by siavash, 2026-10-27 09:37
+- Lesson ID and folder: `vocabulary-03-collocations-2` (folder `vocabulary-03-collocations-2`); course vocabulary, lesson 3; length 85:54; bundle format 1.23
+- Status: built, final gate not approved
 - Description: Learn adjectives and nouns that go together, and clear ways to describe pain, for your OET letters and for talking to patients.
 - Original session: folder `source`: `source/video.mp4`, 45:34 long, partial hash `b1576043dc5fe7aa`; deck `source/slides.pdf`, 15 pages
   - Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).
@@ -4224,7 +4224,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 4:05 Widen: severe against a simple opposite
   - 4:21 Second slide pair: the correct collocation
   - 4:30 Second slide pair: the wrong collocation
-  - 4:44 Key word moment: gloss chronic disease with a letter example
+  - 4:45 Key word moment: gloss chronic disease with a letter example
   - 5:04 Second example of chronic disease, said to a patient
   - 5:11 Widen: other nouns that take chronic
   - 5:28 Close with the rule to remember
@@ -4240,448 +4240,447 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 *Terms*: Adjective and noun collocation (Form, 2:22); Severe (Collocations, 3:52); Chronic (Collocations, 5:11)
 
-#### 5:46 How adjective + noun collocations are formed (`page-6`, deck)
+#### 6:48 How adjective + noun collocations are formed (`page-6`, deck)
 
-- 5:46 **How adjective and noun collocations are formed**
-  - 5:46 show the four pairs from the slide
-  - 5:51 the collocation has two parts
-  - 6:16 what the adjective does
-  - 6:31 sample adjectives
-  - 6:43 what the noun is
-  - 7:00 why these two words go together
-  - 7:16 meaning of severe pain
-  - 7:33 severe pain said to a patient
-  - 7:40 more nouns that go with severe
-  - 7:56 meaning of chronic disease
-  - 8:14 chronic disease said to a patient
-  - 8:24 meaning of acute infection
-  - 8:43 acute infection said to a patient
-  - 8:52 acute and chronic compared
-  - 9:11 where severe sits
-  - 9:24 meaning of intensive care
-  - 9:42 intensive care said to a family member
-  - 9:50 the short form ICU
-  - 10:06 intensive care is the fixed pair
-
-*Rules on the boards*
-
-- 10:06 We say intensive care. This pair of words is fixed, so keep the two words together.
-
-*Terms*: Adjective and noun (Form, 5:51); Adjective (Adjective, 6:16); Noun (Noun, 6:43); Severe (Collocations, 7:40); ICU (Short form, 9:50)
-
-#### 10:30 Types of pain (`page-8`, deck)
-
-- 10:30 **Types of pain: adjective and noun collocations**
-  - 10:30 introduce the matching task
-  - 10:52 why these collocations matter
-  - 11:10 gloss throbbing pain
-  - 11:51 second example, talking to a patient
-  - 11:57 typical cases from the source
-  - 12:12 the words inside definition e
-  - 12:29 gloss dull pain
-  - 12:59 second example, talking to a patient
-  - 13:04 near-synonym, aching pain
-  - 13:32 one more pain word patients use
-  - 13:43 gloss constant pain
-  - 14:10 second example, talking to a patient
-  - 14:17 gloss chronic pain
-  - 14:51 second example, talking to a patient
-  - 15:00 constant and chronic are not the same
-  - 15:29 gloss excruciating pain
-  - 15:57 second example, talking to a patient
-  - 16:04 excruciating is stronger than severe
-  - 16:31 strength words
-  - 16:50 gloss nagging pain
-  - 17:17 the verb behind the adjective
-  - 17:31 second example, talking to a patient
-  - 17:41 gloss the word slight
-  - 18:06 countability of pain
-  - 18:24 gloss sharp pain
-  - 18:52 second example, talking to a patient
-  - 19:00 two more sharp-type pain words
-  - 19:19 closing note for the whole set
+- 6:48 **How adjective and noun collocations are formed**
+  - 6:48 show the four pairs from the slide
+  - 6:53 the collocation has two parts
+  - 7:17 what the adjective does
+  - 7:33 sample adjectives
+  - 7:45 what the noun is
+  - 8:02 why these two words go together
+  - 8:18 meaning of severe pain
+  - 8:35 severe pain said to a patient
+  - 8:42 more nouns that go with severe
+  - 8:58 meaning of chronic disease
+  - 9:16 chronic disease said to a patient
+  - 9:25 meaning of acute infection
+  - 9:45 acute infection said to a patient
+  - 9:54 acute and chronic compared
+  - 10:13 where severe sits
+  - 10:25 meaning of intensive care
+  - 10:44 intensive care said to a family member
+  - 10:52 the short form ICU
+  - 11:08 intensive care is the fixed pair
 
 *Rules on the boards*
 
-- 19:19 You do not need the exact dictionary definition of each type of pain. Know roughly what each one means.
+- 11:08 We say intensive care. This pair of words is fixed, so keep the two words together.
 
-*Terms*: a steady continuous beat (Words in the definition, 12:12); burning pain (More pain words, 13:32); mild, moderate, severe (Strength words, 16:31); nag (verb), nagging (adjective) (Word family, 17:17); a slight but continuous pain (Grammar note, 18:06); stabbing pain, shooting pain (More pain words, 19:00)
+*Terms*: Adjective and noun (Form, 6:53); Adjective (Adjective, 7:17); Noun (Noun, 7:45); Severe (Collocations, 8:42); ICU (Short form, 10:52)
 
-#### 19:33 Practice: conditions and types of pain (`page-9`, deck)
+#### 12:43 Types of pain (`page-8`, deck)
 
-- 19:33 **the task, throbbing pain and dull pain, constant pain and chronic pain, excruciating, nagging and sharp pain**
-  - 19:33 Set the practice task and name the first two pain types
-  - 19:33 Name the last three pain types
-  - 19:49 Gloss the key collocation 'throbbing pain'
-  - 20:11 Speaking example and a written example with 'throbbing pain'
-  - 20:27 The model patient sentence and the tense behind it
-  - 21:01 Draw the time of the throbbing-pain sentence
-  - 21:31 Add what makes the pain worse
-  - 21:41 Gloss the key phrase 'get worse'
-  - 21:54 Speaking example with 'get worse' and the grammar word for it
-  - 22:06 Gloss the key collocation 'dull pain'
-  - 22:24 Speaking example with 'dull pain'
-  - 22:40 The model patient sentence for dull pain
-  - 23:02 Why 'a dull pain' takes 'a'
-  - 23:09 Choosing the word the patient uses
-  - 23:21 Describe how bad the dull pain is
-  - 23:38 Gloss the key word 'uncomfortable'
-  - 23:54 How to say 'uncomfortable' and how a clinician uses it
-  - 24:12 Word family around 'comfortable'
-  - 24:23 Gloss the key phrase 'go away'
-  - 24:36 Speaking example with 'go away'
-  - 24:45 Name the second part of the practice
-  - 24:56 Gloss the key collocation 'constant pain'
-  - 25:10 Speaking example with 'constant'
-  - 25:18 The model patient sentence for constant pain
-  - 25:39 Gloss the key phrase 'deal with'
-  - 25:50 The preposition 'with' is always needed
-  - 26:08 The second use of 'deal with': handle a problem
-  - 26:19 'Deal with' used about illness
-  - 26:31 Gloss the key collocation 'chronic pain'
-  - 26:51 Adjectives that pair with 'pain'
-  - 27:03 Say that treatment has not helped
-  - 27:12 Gloss the key verb 'ease'
-  - 27:29 The form 'eased' after 'has', and a speaking example
-  - 27:46 A longer sentence with 'ease' and its two uses
-  - 28:00 Recap the useful expressions from these examples
-  - 28:23 Gloss the key collocation 'excruciating pain'
-  - 28:43 Speaking example with 'excruciating'
-  - 28:51 The model patient sentence and the past form 'woke up'
-  - 29:11 The preposition with a body part
-  - 29:16 Warn about small prepositions
-  - 29:28 Make the description stronger with 'so ... that'
-  - 29:43 Teach 'even' as an intensifier
-  - 29:55 Gloss the key collocation 'nagging pain'
-  - 30:14 Speaking example with 'nagging pain'
-  - 30:23 The model sentence for nagging pain, in the right tense
-  - 30:42 Gloss the key verb 'bother'
-  - 30:55 Speaking example with 'bother'
-  - 31:01 Describe how strong the nagging pain is
-  - 31:18 Gloss the key verb 'carry'
-  - 31:30 Gloss the key collocation 'sharp pain'
-  - 31:47 The model sentence for sharp pain and its onset
-  - 32:10 Gloss the key word 'workout'
-  - 32:22 Speaking example with 'sharp pain'
-  - 32:32 Questions that use these collocations in a history
-  - 32:41 One more history question, with the reason for using them
-  - 32:53 Not every adjective goes with 'pain'
-  - 32:58 The rule to take away
+- 12:43 **Types of pain: adjective and noun collocations**
+  - 12:43 introduce the matching task
+  - 13:06 why these collocations matter
+  - 13:24 gloss throbbing pain
+  - 14:05 second example, talking to a patient
+  - 14:11 typical cases from the source
+  - 14:25 the words inside definition e
+  - 14:43 gloss dull pain
+  - 15:13 second example, talking to a patient
+  - 15:19 near-synonym, aching pain
+  - 15:47 one more pain word patients use
+  - 15:58 gloss constant pain
+  - 16:24 second example, talking to a patient
+  - 16:32 gloss chronic pain
+  - 17:05 second example, talking to a patient
+  - 17:14 constant and chronic are not the same
+  - 17:44 gloss excruciating pain
+  - 18:11 second example, talking to a patient
+  - 18:19 excruciating is stronger than severe
+  - 18:45 strength words
+  - 19:03 gloss nagging pain
+  - 19:30 the verb behind the adjective
+  - 19:44 second example, talking to a patient
+  - 19:54 gloss the word slight
+  - 20:19 countability of pain
+  - 20:37 gloss sharp pain
+  - 21:05 second example, talking to a patient
+  - 21:13 two more sharp-type pain words
+  - 21:32 closing note for the whole set
 
 *Rules on the boards*
 
-- 32:58 A noun takes some adjectives and not others. Learn these pairs by heart so you can use them in Speaking and Writing.
+- 21:32 You do not need the exact dictionary definition of each type of pain. Know roughly what each one means.
+
+*Terms*: a steady continuous beat (Words in the definition, 14:25); burning pain (More pain words, 15:47); mild, moderate, severe (Strength words, 18:45); nag (verb), nagging (adjective) (Word family, 19:30); a slight but continuous pain (Grammar note, 20:19); stabbing pain, shooting pain (More pain words, 21:13)
+
+#### 22:54 Practice: conditions and types of pain (`page-9`, deck)
+
+- 22:54 **the task, throbbing pain and dull pain, constant pain and chronic pain, excruciating, nagging and sharp pain**
+  - 22:54 Set the practice task and name the first two pain types
+  - 22:54 Name the last three pain types
+  - 23:10 Gloss the key collocation 'throbbing pain'
+  - 23:32 Speaking example and a written example with 'throbbing pain'
+  - 23:48 The model patient sentence and the tense behind it
+  - 24:22 Draw the time of the throbbing-pain sentence
+  - 24:52 Add what makes the pain worse
+  - 25:02 Gloss the key phrase 'get worse'
+  - 25:16 Speaking example with 'get worse' and the grammar word for it
+  - 25:27 Gloss the key collocation 'dull pain'
+  - 25:45 Speaking example with 'dull pain'
+  - 26:02 The model patient sentence for dull pain
+  - 26:23 Why 'a dull pain' takes 'a'
+  - 26:30 Choosing the word the patient uses
+  - 26:42 Describe how bad the dull pain is
+  - 27:00 Gloss the key word 'uncomfortable'
+  - 27:16 How to say 'uncomfortable' and how a clinician uses it
+  - 27:34 Word family around 'comfortable'
+  - 27:44 Gloss the key phrase 'go away'
+  - 27:57 Speaking example with 'go away'
+  - 28:06 Name the second part of the practice
+  - 28:17 Gloss the key collocation 'constant pain'
+  - 28:31 Speaking example with 'constant'
+  - 28:39 The model patient sentence for constant pain
+  - 29:00 Gloss the key phrase 'deal with'
+  - 29:12 The preposition 'with' is always needed
+  - 29:30 The second use of 'deal with': handle a problem
+  - 29:42 'Deal with' used about illness
+  - 29:54 Gloss the key collocation 'chronic pain'
+  - 30:14 Adjectives that pair with 'pain'
+  - 31:20 Say that treatment has not helped
+  - 31:30 Gloss the key verb 'ease'
+  - 31:47 The form 'eased' after 'has', and a speaking example
+  - 32:03 A longer sentence with 'ease' and its two uses
+  - 32:18 Recap the useful expressions from these examples
+  - 32:41 Gloss the key collocation 'excruciating pain'
+  - 33:00 Speaking example with 'excruciating'
+  - 33:08 The model patient sentence and the past form 'woke up'
+  - 33:28 The preposition with a body part
+  - 33:34 Warn about small prepositions
+  - 33:45 Make the description stronger with 'so ... that'
+  - 34:00 Teach 'even' as an intensifier
+  - 34:12 Gloss the key collocation 'nagging pain'
+  - 34:30 Speaking example with 'nagging pain'
+  - 34:39 The model sentence for nagging pain, in the right tense
+  - 34:58 Gloss the key verb 'bother'
+  - 35:11 Speaking example with 'bother'
+  - 35:17 Describe how strong the nagging pain is
+  - 35:34 Gloss the key verb 'carry'
+  - 35:46 Gloss the key collocation 'sharp pain'
+  - 36:03 The model sentence for sharp pain and its onset
+  - 36:26 Gloss the key word 'workout'
+  - 36:38 Speaking example with 'sharp pain'
+  - 37:52 Questions that use these collocations in a history
+  - 38:00 One more history question, with the reason for using them
+  - 38:13 Not every adjective goes with 'pain'
+  - 38:18 The rule to take away
+
+*Rules on the boards*
+
+- 38:18 A noun takes some adjectives and not others. Learn these pairs by heart so you can use them in Speaking and Writing.
 
 *Warnings (common mistakes)*
 
-- 29:16 Students often get these small prepositions wrong. The pain is in a part of the body.
+- 33:34 Students often get these small prepositions wrong. The pain is in a part of the body.
 
 *Wrong sentences corrected*
 
-- 29:11 On my stomach.
-- 32:57 Big pain.
+- 33:28 On my stomach.
+- 38:16 Big pain.
 
-*Terms*: present perfect continuous (Form, 20:42); get + adjective (Pattern, 21:59); pain (Collocations, 22:29); a (indefinite article) (Grammar word, 23:02); uncomfortable (Saying the word, 23:54); comfort, comfortable, uncomfortable (Word family, 24:12); deal with (Form, 25:50); pain (Collocations, 26:51); has not eased (Form, 27:29); woke up (Form, 29:03); so ... that (Form, 29:32); even (New word, 29:43)
+*Terms*: present perfect continuous (Form, 24:03); get + adjective (Pattern, 25:20); pain (Collocations, 25:50); a (indefinite article) (Grammar word, 26:23); uncomfortable (Saying the word, 27:16); comfort, comfortable, uncomfortable (Word family, 27:34); deal with (Form, 29:12); pain (Collocations, 30:14); has not eased (Form, 31:47); woke up (Form, 33:20); so ... that (Form, 33:50); even (New word, 34:00)
 
-#### 33:24 Common descriptions (`page-10`, deck)
+#### 38:44 Common descriptions (`page-10`, deck)
 
-- 33:24 **mild reaction and temporary discomfort, normal response, unusual symptom and serious concern**
-  - 33:24 Put the two printed sentences on the board and frame what these phrases are for
-  - 33:24 The printed sentence for this collocation
-  - 33:24 The two printed sentences and where they are used
-  - 33:53 Key word: mild reaction
-  - 34:11 Speaking example with mild reaction
-  - 34:24 The opposite of mild on the same scale
-  - 34:47 The frame 'You may have ...' explained in English
-  - 35:06 Key word: sore
-  - 35:27 How a patient uses 'sore'
-  - 35:38 A small amount of soreness
-  - 35:47 Word class of sore and soreness
-  - 36:02 Key word: discomfort
-  - 36:19 Sore or discomfort: the difference in English
-  - 36:38 Patient voice: not sore, but uncomfortable
-  - 37:01 Second patient example with discomfort
-  - 37:12 Key word: temporary
-  - 37:28 The collocation temporary discomfort
-  - 37:48 Speaking example with temporary discomfort
-  - 38:22 Key word: normal response
-  - 38:39 Word family of response
-  - 38:46 What 'response' means with a medicine
-  - 39:11 Key word: settle
-  - 39:25 Settle with pain, said to the patient
-  - 39:37 Settle with a time
-  - 39:51 Settle without treatment
-  - 40:03 Settle with down
-  - 40:12 One more speaking example with settle
-  - 40:44 Key word: unusual symptom
-  - 41:02 Speaking example with unusual symptom
-  - 41:21 Key word: notice
-  - 41:38 Key word: serious concern
-  - 41:53 The two words inside the collocation, and a speaking example
-  - 42:14 Hard general word in the printed sentence
-  - 42:31 Key word: worsen
-  - 42:51 Where the ending goes: worsen or get worse
-  - 43:09 Worsen in a clinical sentence
-  - 43:22 Get worse in a clinical sentence
-  - 43:34 One more speaking example with get worse
+- 38:44 **mild reaction and temporary discomfort, normal response, unusual symptom and serious concern**
+  - 38:44 Put the two printed sentences on the board and frame what these phrases are for
+  - 38:44 The printed sentence for this collocation
+  - 38:44 The two printed sentences and where they are used
+  - 39:13 Key word: mild reaction
+  - 39:30 Speaking example with mild reaction
+  - 39:44 The opposite of mild on the same scale
+  - 40:09 The frame 'You may have ...' explained in English
+  - 40:27 Key word: sore
+  - 40:48 How a patient uses 'sore'
+  - 40:59 A small amount of soreness
+  - 41:08 Word class of sore and soreness
+  - 41:23 Key word: discomfort
+  - 41:40 Sore or discomfort: the difference in English
+  - 42:04 Patient voice: not sore, but uncomfortable
+  - 42:27 Second patient example with discomfort
+  - 42:38 Key word: temporary
+  - 42:54 The collocation temporary discomfort
+  - 43:13 Speaking example with temporary discomfort
+  - 43:48 Key word: normal response
+  - 44:05 Word family of response
+  - 44:12 What 'response' means with a medicine
+  - 44:37 Key word: settle
+  - 44:51 Settle with pain, said to the patient
+  - 45:02 Settle with a time
+  - 45:17 Settle without treatment
+  - 45:29 Settle with down
+  - 45:38 One more speaking example with settle
+  - 46:10 Key word: unusual symptom
+  - 46:28 Speaking example with unusual symptom
+  - 46:47 Key word: notice
+  - 47:04 Key word: serious concern
+  - 47:19 The two words inside the collocation, and a speaking example
+  - 47:40 Hard general word in the printed sentence
+  - 47:57 Key word: worsen
+  - 48:17 Where the ending goes: worsen or get worse
+  - 48:35 Worsen in a clinical sentence
+  - 48:48 Get worse in a clinical sentence
+  - 49:00 One more speaking example with get worse
 
-*Terms*: You may have ... (Phrase, 34:47); sore, soreness (Word family, 35:47); uncomfortable, discomfort (Word family, 36:45); temporary discomfort (Collocation, 37:28); respond, response (Word family, 38:39); settle down (Word form, 40:03)
+*Terms*: You may have ... (Phrase, 40:09); sore, soreness (Word family, 41:08); uncomfortable, discomfort (Word family, 42:11); temporary discomfort (Collocation, 42:54); respond, response (Word family, 44:05); settle down (Word form, 45:29)
 
-#### 43:53 Giving reassurance (`page-11`, deck)
+#### 50:36 Giving reassurance (`page-11`, deck)
 
-- 43:53 **Good chance and low risk, Full support and quick check, Clear explanation**
-  - 43:52 Show the first two model sentences and name what they are for
-  - 43:53 Show the next two model sentences
-  - 43:53 Show the last model sentence
-  - 44:10 Gloss the key collocation 'a good chance'
-  - 44:30 Second example of 'a good chance', said to a patient
-  - 44:53 The optional 'that' after 'chance'
-  - 45:16 Gloss the verb pattern 'respond well to the treatment'
-  - 45:32 Second example of the verb pattern, said to a patient
-  - 46:05 Gloss the key collocation 'a low risk'
-  - 46:19 Second example of 'a low risk', said to a patient
-  - 46:45 The two meanings of 'carry'
-  - 47:08 Widen the vocabulary around 'risk'
-  - 47:34 Gloss the key collocation 'full support'
-  - 47:50 Second example of 'full support', said to a patient
-  - 48:14 Gloss 'throughout'
-  - 48:25 Contrast 'during' and 'throughout'
-  - 48:44 The fever example with 'during'
-  - 49:09 The fever example with 'throughout'
-  - 49:41 Gloss the key collocation 'a quick check'
-  - 49:56 Second example of 'a quick check', said to a patient, and the verb that goes with it
-  - 50:18 Gloss 'properly' from the purpose clause
-  - 50:48 Gloss the key collocation 'a clear explanation'
-  - 51:04 Second example of the phrase, said to a patient
-  - 51:31 The phrase takes different endings
-  - 51:55 When to use the whole phrase
-  - 52:07 Word family and collocations of 'explanation'
+- 50:36 **Good chance and low risk, Full support and quick check, Clear explanation**
+  - 50:36 Show the first two model sentences and name what they are for
+  - 50:36 Show the next two model sentences
+  - 50:36 Show the last model sentence
+  - 50:54 Gloss the key collocation 'a good chance'
+  - 51:13 Second example of 'a good chance', said to a patient
+  - 51:37 The optional 'that' after 'chance'
+  - 51:59 Gloss the verb pattern 'respond well to the treatment'
+  - 52:15 Second example of the verb pattern, said to a patient
+  - 52:48 Gloss the key collocation 'a low risk'
+  - 53:03 Second example of 'a low risk', said to a patient
+  - 53:28 The two meanings of 'carry'
+  - 53:52 Widen the vocabulary around 'risk'
+  - 54:17 Gloss the key collocation 'full support'
+  - 54:33 Second example of 'full support', said to a patient
+  - 54:57 Gloss 'throughout'
+  - 55:09 Contrast 'during' and 'throughout'
+  - 55:28 The fever example with 'during'
+  - 55:52 The fever example with 'throughout'
+  - 56:25 Gloss the key collocation 'a quick check'
+  - 56:40 Second example of 'a quick check', said to a patient, and the verb that goes with it
+  - 57:02 Gloss 'properly' from the purpose clause
+  - 57:31 Gloss the key collocation 'a clear explanation'
+  - 57:48 Second example of the phrase, said to a patient
+  - 58:12 The phrase takes different endings
+  - 58:35 When to use the whole phrase
+  - 58:48 Word family and collocations of 'explanation'
 
-*Terms*: There is a good chance (that) … (Form, 44:53); risk (Collocations, 47:08); do a quick check (Form, 50:05); explain, explanation (Word family, 52:07); explanation (Collocations, 52:22)
+*Terms*: There is a good chance (that) … (Form, 51:37); risk (Collocations, 53:52); do a quick check (Form, 56:48); explain, explanation (Word family, 58:48); explanation (Collocations, 59:03)
 
-#### 52:41 Instructions and advice (`page-12`, deck)
+#### 60:26 Instructions and advice (`page-12`, deck)
 
-- 52:41 **regular check-up and simple exercise, balanced diet and daily routine**
-  - 52:41 Put the slide's first two model sentences on the board and frame the task
-  - 52:41 Put the slide's other two model sentences on the board
-  - 53:12 Define the word collocation the first time it is used here
-  - 53:27 Key word moment: gloss regular check-up
-  - 53:49 Second example of regular check-up, said to a patient
-  - 54:03 Widen the vocabulary around check-up
-  - 54:18 Key word moment: gloss the phrasal verb come in
-  - 54:31 Show the two uses of come in side by side
-  - 55:00 Come in used to ask a patient to attend again
-  - 55:12 Came in used to report a patient's attendance to a colleague
-  - 55:30 Key word moment: gloss simple exercise
-  - 55:46 Second example of simple exercise, said to a patient
-  - 56:01 Gloss the verb strengthen from the model sentence
-  - 56:21 Word families for strengthen and daily
-  - 57:10 Key word moment: gloss balanced diet
-  - 57:31 Second example of balanced diet, said to a patient
-  - 57:43 Contrast a good diet with a balanced diet for precision
-  - 58:06 Key word moment: gloss maintain
-  - 58:23 The form after try to, with one more example
-  - 58:56 Key word moment: gloss daily routine
-  - 59:12 Second example of daily routine, said to a patient
-  - 59:28 The pattern it helps to, with one more example
-  - 59:53 Key word moment: gloss include
-  - 60:06 Show what is included and where
-  - 60:23 Closing study habit for collocations
+- 60:26 **regular check-up and simple exercise, balanced diet and daily routine**
+  - 60:26 Put the slide's first two model sentences on the board and frame the task
+  - 60:26 Put the slide's other two model sentences on the board
+  - 60:58 Define the word collocation the first time it is used here
+  - 61:13 Key word moment: gloss regular check-up
+  - 61:37 Second example of regular check-up, said to a patient
+  - 61:50 Widen the vocabulary around check-up
+  - 62:06 Key word moment: gloss the phrasal verb come in
+  - 62:18 Show the two uses of come in side by side
+  - 62:47 Come in used to ask a patient to attend again
+  - 62:59 Came in used to report a patient's attendance to a colleague
+  - 63:17 Key word moment: gloss simple exercise
+  - 63:34 Second example of simple exercise, said to a patient
+  - 63:49 Gloss the verb strengthen from the model sentence
+  - 64:09 Word families for strengthen and daily
+  - 64:58 Key word moment: gloss balanced diet
+  - 65:18 Second example of balanced diet, said to a patient
+  - 65:31 Contrast a good diet with a balanced diet for precision
+  - 65:54 Key word moment: gloss maintain
+  - 66:10 The form after try to, with one more example
+  - 66:43 Key word moment: gloss daily routine
+  - 67:00 Second example of daily routine, said to a patient
+  - 67:15 The pattern it helps to, with one more example
+  - 67:40 Key word moment: gloss include
+  - 67:53 Show what is included and where
+  - 68:10 Closing study habit for collocations
 
 *Rules on the boards*
 
-- 60:23 Most sentences you read contain one or two collocations. Write them down and review them often. After a few reviews you will start to use them in your own sentences.
+- 68:10 Most sentences you read contain one or two collocations. Write them down and review them often. After a few reviews you will start to use them in your own sentences.
 
-*Terms*: collocation (New word, 53:12); check-up (Collocations, 54:03); strong, strengthen, strength (Word family, 56:21); day, daily (Word family, 56:35); try to + simple verb (Form, 58:23); It helps to ... (Pattern, 59:28)
+*Terms*: collocation (Key word, 60:58); check-up (Collocations, 61:50); strong, strengthen, strength (Word family, 64:09); day, daily (Word family, 64:23); try to + simple verb (Form, 66:10); It helps to ... (Pattern, 67:15)
 
-#### 60:41 Collocations in a letter (`page-13`, deck)
+#### 69:27 Collocations in a letter (`page-13`, deck)
 
-- 60:41 **Letter extract: adjective and noun collocations**
-  - 60:41 show the letter and set the task
-  - 61:02 name the key term
-  - 61:18 list the pairs in the first paragraph
-  - 61:35 gloss persistent cough
-  - 61:51 persistent cough with the patient
-  - 62:03 gloss throbbing headaches
-  - 62:18 gloss heavy cold
-  - 62:31 the pair is fixed
-  - 62:42 gloss muscular aches
-  - 62:58 gloss itchy rash
-  - 63:15 itchy rash with the patient
-  - 63:23 gloss serious disease
-  - 63:39 list the pairs in the second paragraph
-  - 63:52 gloss high temperature
-  - 64:07 high temperature with the patient
-  - 64:16 high temperature is a fixed pair
-  - 64:26 gloss lethargic
-  - 64:41 gloss heavy smoker
-  - 64:57 heavy smoker with the patient
-  - 65:03 heavy smoker is a fixed pair
-  - 65:10 more nouns that go with heavy
-  - 65:24 gloss with regard to
-  - 65:40 list the pairs in the third paragraph
-  - 65:53 gloss current condition
-  - 66:08 gloss balanced diet
-  - 66:22 balanced diet with the patient
-  - 66:32 word family for balanced
-  - 66:46 adjective and noun, or noun and noun
-  - 67:14 the rule to remember
+- 69:27 **Letter extract: adjective and noun collocations**
+  - 69:27 show the letter and set the task
+  - 69:48 name the key term
+  - 70:04 list the pairs in the first paragraph
+  - 70:21 gloss persistent cough
+  - 70:37 persistent cough with the patient
+  - 70:49 gloss throbbing headaches
+  - 71:04 gloss heavy cold
+  - 71:17 the pair is fixed
+  - 71:28 gloss muscular aches
+  - 71:44 gloss itchy rash
+  - 72:01 itchy rash with the patient
+  - 72:09 gloss serious disease
+  - 72:25 list the pairs in the second paragraph
+  - 72:38 gloss high temperature
+  - 72:53 high temperature with the patient
+  - 73:02 high temperature is a fixed pair
+  - 73:12 gloss lethargic
+  - 73:27 gloss heavy smoker
+  - 73:43 heavy smoker with the patient
+  - 73:49 heavy smoker is a fixed pair
+  - 73:57 more nouns that go with heavy
+  - 74:10 gloss with regard to
+  - 74:26 list the pairs in the third paragraph
+  - 74:39 gloss current condition
+  - 74:54 gloss balanced diet
+  - 75:08 balanced diet with the patient
+  - 75:18 word family for balanced
+  - 75:32 adjective and noun, or noun and noun
+  - 76:01 the rule to remember
 
 *Rules on the boards*
 
-- 67:14 Learn the adjective and the noun together. Change one word and the pair sounds wrong.
+- 76:01 Learn the two words of a pair together. A word with a similar meaning often sounds wrong: a heavy cold, not a big cold.
 
 *Wrong sentences corrected*
 
-- 62:36 A big cold
-- 64:21 A big temperature
-- 65:08 A big smoker
+- 71:22 A big cold
+- 73:07 A big temperature
+- 73:54 A big smoker
 
-*Terms*: Collocation (New word, 61:02); Heavy (Collocations, 65:10); Balance (Word family, 66:32)
+*Terms*: Collocation (Key word, 69:48); Heavy (Collocations, 73:57); Balance (Word family, 75:18)
 
-#### 67:27 Practice: complete the sentences (`page-14`, deck)
+#### 76:16 Practice: complete the sentences (`page-14`, deck)
 
-- 67:27 **instruction and sentences 1 to 4**
-  - 67:27 Show the task and the first four gapped sentences
-- 68:13 **sentences 5 to 8**
-  - 68:13 Show the last four gapped sentences
-- 68:54 **Item 1: chronic pain**
-  - 68:54 Show the sentence under discussion and give the answer
-  - 69:12 Gloss the key word chronic
-  - 69:27 Second example, said to a patient
-  - 69:38 The second accepted answer
-  - 69:48 Widen the vocabulary: collocations with chronic
-- 69:56 **Item 2: persistent cough**
-  - 69:56 Show the sentence under discussion and give the answer
-  - 70:14 Gloss the key word persistent
-  - 70:30 Second example, said to a patient
-  - 70:38 Widen the vocabulary: word family
-- 70:51 **Item 3: exercise regime**
-  - 70:51 Show the sentence under discussion and give the answer
-  - 71:06 Gloss the hard general word 'implement' from the printed sentence
-  - 71:20 Gloss the key collocation exercise regime
-  - 71:38 Point out that this pair is noun plus noun
-  - 71:57 Second example, said to a patient
-- 72:05 **Item 4: sharp pain**
-  - 72:05 Show the sentence under discussion and give the answer
-  - 72:23 Gloss the key word sharp
-  - 72:39 Second example, said to a patient
-  - 72:45 Widen the vocabulary: near-synonym contrast
-- 73:01 **Item 5: a heavy cold**
-  - 73:01 Show the sentence under discussion and give the answer
-  - 73:13 Gloss the key collocation heavy cold
-  - 73:31 Reject the wrong adjective with this noun
-  - 73:38 Second example, said to a patient
-- 73:45 **Item 6: a heavy smoker**
-  - 73:45 Show the sentence under discussion and give the answer
-  - 73:55 Widen the vocabulary: other nouns after heavy
-  - 74:04 Second example, said to a patient
-- 74:12 **Item 7: constant pain**
-  - 74:12 Show the sentence under discussion and give the answer
-  - 74:28 Gloss the key word constant
-  - 74:44 Second example, said to a patient
-  - 74:51 Widen the vocabulary: chronic and constant side by side
-- 75:10 **Item 8: an itchy rash**
-  - 75:10 Show the sentence under discussion and give the answer
-  - 75:23 Gloss the key word itchy
-  - 75:38 The article before this adjective
-  - 75:45 Second example, said to a patient
+- 76:16 **instruction and sentences 1 to 4**
+  - 76:16 Show the task and the first four gapped sentences
+- 77:02 **sentences 5 to 8**
+  - 77:02 Show the last four gapped sentences
+- 77:43 **Item 1: chronic pain**
+  - 77:43 Show the sentence under discussion and give the answer
+  - 78:01 Gloss the key word chronic
+  - 78:17 Second example, said to a patient
+  - 78:27 The second accepted answer
+  - 78:38 Widen the vocabulary: collocations with chronic
+- 78:46 **Item 2: persistent cough**
+  - 78:46 Show the sentence under discussion and give the answer
+  - 79:04 Gloss the key word persistent
+  - 79:19 Second example, said to a patient
+  - 79:27 Widen the vocabulary: word family
+- 79:40 **Item 3: exercise regime**
+  - 79:40 Show the sentence under discussion and give the answer
+  - 79:55 Gloss the hard general word 'implement' from the printed sentence
+  - 80:09 Gloss the key collocation exercise regime
+  - 80:27 Point out that this pair is noun plus noun
+  - 80:46 Second example, said to a patient
+- 80:54 **Item 4: sharp pain**
+  - 80:54 Show the sentence under discussion and give the answer
+  - 81:12 Gloss the key word sharp
+  - 81:28 Second example, said to a patient
+  - 81:34 Widen the vocabulary: near-synonym contrast
+- 81:50 **Item 5: a heavy cold**
+  - 81:50 Show the sentence under discussion and give the answer
+  - 82:02 Gloss the key collocation heavy cold
+  - 82:20 Reject the wrong adjective with this noun
+  - 82:27 Second example, said to a patient
+- 82:34 **Item 6: a heavy smoker**
+  - 82:34 Show the sentence under discussion and give the answer
+  - 82:45 Widen the vocabulary: other nouns after heavy
+  - 82:53 Second example, said to a patient
+- 83:01 **Item 7: constant pain**
+  - 83:01 Show the sentence under discussion and give the answer
+  - 83:17 Gloss the key word constant
+  - 83:33 Second example, said to a patient
+  - 83:40 Widen the vocabulary: chronic and constant side by side
+- 83:59 **Item 8: an itchy rash**
+  - 83:59 Show the sentence under discussion and give the answer
+  - 84:12 Gloss the key word itchy
+  - 84:27 The article before this adjective
+  - 84:34 Second example, said to a patient
 
 *Wrong sentences corrected*
 
-- 67:27 I have ______ pain in my lower back. It's been there for years.
-- 67:27 The patient presented complaining of a ______ cough which she had had for 5 weeks.
-- 67:27 You'll need to implement an ______ regime in order to get back to full fitness.
-- 67:27 I felt a sudden ______ pain in my right side. It came on quickly and was very severe.
-- 68:13 He thought he had the flu, but in fact it was just a very ______ cold.
-- 68:13 She is a ______ smoker and smokes about 20 cigarettes a day.
-- 68:13 Mr Gates has a ______ pain in his shoulder which never goes away.
-- 68:13 He has an ______ rash which has spread to his forearms and hands.
-- 68:54 I have ______ pain in my lower back. It's been there for years.
-- 69:56 The patient presented complaining of a ______ cough which she had had for 5 weeks.
-- 70:51 You'll need to implement an ______ regime in order to get back to full fitness.
-- 72:05 I felt a sudden ______ pain in my right side. It came on quickly and was very severe.
-- 73:01 He thought he had the flu, but in fact it was just a very ______ cold.
-- 73:31 A big cold.
-- 73:45 She is a ______ smoker and smokes about 20 cigarettes a day.
-- 74:12 Mr Gates has a ______ pain in his shoulder which never goes away.
-- 75:10 He has an ______ rash which has spread to his forearms and hands.
+- 76:16 I have ______ pain in my lower back. It's been there for years.
+- 76:16 The patient presented complaining of a ______ cough which she had had for 5 weeks.
+- 76:16 You'll need to implement an ______ regime in order to get back to full fitness.
+- 76:16 I felt a sudden ______ pain in my right side. It came on quickly and was very severe.
+- 77:02 He thought he had the flu, but in fact it was just a very ______ cold.
+- 77:02 She is a ______ smoker and smokes about 20 cigarettes a day.
+- 77:02 Mr Gates has a ______ pain in his shoulder which never goes away.
+- 77:02 He has an ______ rash which has spread to his forearms and hands.
+- 77:43 I have ______ pain in my lower back. It's been there for years.
+- 78:46 The patient presented complaining of a ______ cough which she had had for 5 weeks.
+- 79:40 You'll need to implement an ______ regime in order to get back to full fitness.
+- 80:54 I felt a sudden ______ pain in my right side. It came on quickly and was very severe.
+- 81:50 He thought he had the flu, but in fact it was just a very ______ cold.
+- 82:20 A big cold.
+- 82:34 She is a ______ smoker and smokes about 20 cigarettes a day.
+- 83:01 Mr Gates has a ______ pain in his shoulder which never goes away.
+- 83:59 He has an ______ rash which has spread to his forearms and hands.
 
-*Terms*: Chronic (Collocations, 69:48); Persistent (Word family, 70:38); Exercise regime (Form, 71:38); Heavy (Collocations, 73:55); An itchy rash (Form, 75:38)
+*Terms*: Chronic (Collocations, 78:38); Persistent (Word family, 79:27); Exercise regime (Form, 80:27); Heavy (Collocations, 82:45); An itchy rash (Form, 84:27)
 
 ### Vocabulary
 
 First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
 
 - 3:27 severe pain
-- 4:44 chronic disease
-- 8:24 Acute infection
-- 9:24 Intensive care
-- 11:10 throbbing pain
-- 12:29 dull pain
-- 13:43 constant pain
-- 14:17 chronic pain
-- 15:29 excruciating pain
-- 16:50 nagging pain
-- 17:41 slight
-- 18:24 sharp pain
-- 21:41 get worse
-- 23:38 uncomfortable
-- 24:23 go away
-- 25:39 deal with
-- 27:12 ease
-- 29:43 even
-- 30:42 bother
-- 31:18 carry
-- 32:10 workout
-- 33:53 mild reaction
-- 34:47 You may have ...
-- 35:06 sore
-- 36:02 discomfort
-- 37:12 temporary
-- 38:22 normal response
-- 39:11 settle
-- 40:44 unusual symptom
-- 41:21 notice
-- 41:38 serious concern
-- 42:14 hesitate
-- 42:31 worsen
-- 44:10 a good chance
-- 45:16 respond well to the treatment
-- 46:05 a low risk
-- 47:34 full support
-- 48:14 throughout
-- 49:41 a quick check
-- 50:18 properly
-- 50:48 a clear explanation
-- 53:12 collocation
-- 53:27 a regular check-up
-- 54:18 come in
-- 55:30 a simple exercise
-- 56:01 strengthen
-- 57:10 a balanced diet
-- 58:06 maintain
-- 58:56 daily routine
-- 59:53 include
-- 61:35 Persistent cough
-- 62:03 Throbbing headaches
-- 62:18 Heavy cold
-- 62:42 Muscular aches
-- 62:58 Itchy rash
-- 63:23 Serious disease
-- 63:52 High temperature
-- 64:26 Lethargic
-- 64:41 Heavy smoker
-- 65:24 With regard to
-- 65:53 Current condition
-- 66:08 Balanced diet
-- 69:12 Chronic
-- 70:14 Persistent
-- 71:06 Implement
-- 71:20 Exercise regime
-- 72:23 Sharp
-- 74:28 Constant
-- 75:23 Itchy
+- 4:45 chronic disease
+- 9:25 Acute infection
+- 10:25 Intensive care
+- 13:24 throbbing pain
+- 14:43 dull pain
+- 15:58 constant pain
+- 16:32 chronic pain
+- 17:44 excruciating pain
+- 19:03 nagging pain
+- 19:54 slight
+- 20:37 sharp pain
+- 25:02 get worse
+- 27:00 uncomfortable
+- 27:44 go away
+- 29:00 deal with
+- 31:30 ease
+- 34:00 even
+- 34:58 bother
+- 35:34 carry
+- 36:26 workout
+- 39:13 mild reaction
+- 40:09 You may have ...
+- 40:27 sore
+- 41:23 discomfort
+- 42:38 temporary
+- 43:48 normal response
+- 44:37 settle
+- 46:10 unusual symptom
+- 46:47 notice
+- 47:04 serious concern
+- 47:40 hesitate
+- 47:57 worsen
+- 50:54 a good chance
+- 51:59 respond well to the treatment
+- 52:48 a low risk
+- 54:17 full support
+- 54:57 throughout
+- 56:25 a quick check
+- 57:02 properly
+- 57:31 a clear explanation
+- 61:13 a regular check-up
+- 62:06 come in
+- 63:17 a simple exercise
+- 63:49 strengthen
+- 64:58 a balanced diet
+- 65:54 maintain
+- 66:43 daily routine
+- 67:40 include
+- 70:21 Persistent cough
+- 70:49 Throbbing headaches
+- 71:04 Heavy cold
+- 71:28 Muscular aches
+- 71:44 Itchy rash
+- 72:09 Serious disease
+- 72:38 High temperature
+- 73:12 Lethargic
+- 73:27 Heavy smoker
+- 74:10 With regard to
+- 74:39 Current condition
+- 74:54 Balanced diet
+- 78:01 Chronic
+- 79:04 Persistent
+- 79:55 Implement
+- 80:09 Exercise regime
+- 81:12 Sharp
+- 83:17 Constant
+- 84:12 Itchy
 
 ### Practice material
 
@@ -4690,8 +4689,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ### Links to other lessons
 
 - 0:11 refers to Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`) (in `page-3_t1.s1.u2`)
-- 18:16 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `page-8_t1.s24.u3`)
-- 20:54 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect continuous tenses" (in `page-9_t1.s2.u6`)
+- 20:29 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `page-8_t1.s24.u3`)
+- 24:15 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect continuous tenses" (in `page-9_t1.s2.u6`)
 - continues from Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`): Adjective + noun collocations follow the verb + noun collocations taught here.
 
 
@@ -8839,7 +8838,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 Each topic or term, then each lesson that teaches it and the first moment there.
 
-- **a (indefinite article)**: `vocabulary-03-collocations-2` 23:02
+- **a (indefinite article)**: `vocabulary-03-collocations-2` 26:23
 - **a fifty-year-old teacher**: `grammar-08-paraphrasing` 23:00
 - **A needle in a haystack**: `reading-02-part-a` 1:48
 - **A or an**: `grammar-04-articles` 11:27
@@ -8856,13 +8855,13 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Active voice**: `grammar-02-verb-use` 36:23
 - **Active vs passive**: `grammar-01-verb-tenses` 84:26
 - **adjective + noun collocations**: `vocabulary-03-collocations-2` 2:00
-- **Adjective and noun**: `vocabulary-03-collocations-2` 5:51
+- **Adjective and noun**: `vocabulary-03-collocations-2` 6:53
 - **Adjective and noun collocation**: `vocabulary-03-collocations-2` 2:22
 - **Adjective endings**: `vocabulary-01-word-forms` 18:27
 - **Adjectives and nouns**: `vocabulary-01-word-forms` 31:10
 - **Administer**: `vocabulary-02-collocations` 19:07
 - **Although**: `grammar-05-complex-compound` 11:48
-- **An itchy rash**: `vocabulary-03-collocations-2` 75:38
+- **An itchy rash**: `vocabulary-03-collocations-2` 84:27
 - **Apostrophe**: `grammar-07-punctuation` 60:42
 - **Apostrophes**: `grammar-07-punctuation` 60:34
 - **Appositive**: `writing-04-introduction` 10:00
@@ -8892,14 +8891,14 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Chunking**: `reading-02-part-a` 18:43
 - **Clause**: `grammar-05-complex-compound` 3:57
 - **Closing sentence**: `writing-01-overview` 16:58
-- **Collocation**: `vocabulary-02-collocations` 1:35
-- **Collocations in a letter**: `vocabulary-03-collocations-2` 60:41
+- **Collocation**: `vocabulary-02-collocations` 1:35; `vocabulary-03-collocations-2` 60:58
+- **Collocations in a letter**: `vocabulary-03-collocations-2` 69:27
 - **Colon (:)**: `grammar-07-punctuation` 54:59
 - **Combine**: `grammar-08-paraphrasing` 28:08
 - **Comma splice**: `grammar-07-punctuation` 22:11
 - **commas**: `grammar-07-punctuation` 2:32
 - **Commas: overview**: `grammar-07-punctuation` 2:32
-- **Common descriptions**: `vocabulary-03-collocations-2` 33:24
+- **Common descriptions**: `vocabulary-03-collocations-2` 38:44
 - **Common mistakes**: `grammar-07-punctuation` 43:20
 - **complex sentence**: `grammar-05-complex-compound` 2:13; `grammar-07-punctuation` 5:41; `grammar-08-paraphrasing` 7:40
 - **Complex sentences**: `grammar-07-punctuation` 5:36
@@ -8928,7 +8927,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Critical thinking**: `reading-04-part-c` 8:39
 - **Dangling participle**: `grammar-06-clause` 37:18
 - **Dates, times and units**: `grammar-07-punctuation` 82:36
-- **deal with**: `vocabulary-03-collocations-2` 25:50
+- **deal with**: `vocabulary-03-collocations-2` 29:12
 - **Decision**: `grammar-01-verb-tenses` 26:52
 - **Defining and non-defining**: `grammar-06-clause` 10:36
 - **defining and non-defining relative clauses**: `grammar-06-clause` 10:36
@@ -8936,14 +8935,14 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Denominalisation**: `grammar-03-nominalization` 51:34
 - **Dependent clause**: `grammar-05-complex-compound` 4:34; `grammar-07-punctuation` 6:42
 - **dis-**: `vocabulary-01-word-forms` 75:09
-- **do a quick check**: `vocabulary-03-collocations-2` 50:05
+- **do a quick check**: `vocabulary-03-collocations-2` 56:48
 - **DO tunnel**: `grammar-08-paraphrasing` 48:40
 - **Dos and don'ts**: `reading-02-part-a` 49:21
 - **Due to**: `grammar-05-complex-compound` 11:55; `grammar-07-punctuation` 10:15
 - **Due to, despite, as well as**: `grammar-05-complex-compound` 45:35
 - **e.g**: `grammar-07-punctuation` 79:39
 - **Emphasis**: `listening-04-part-c` 8:56
-- **Exercise regime**: `vocabulary-03-collocations-2` 71:38
+- **Exercise regime**: `vocabulary-03-collocations-2` 80:27
 - **Expand**: `grammar-08-paraphrasing` 2:39
 - **Expressing reason with 'given'**: `grammar-06-clause` 52:37
 - **FANBOYS**: `grammar-05-complex-compound` 24:24; `grammar-07-punctuation` 14:58
@@ -8968,17 +8967,17 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Gerund**: `grammar-05-complex-compound` 46:10
 - **Gist**: `reading-03-part-b` 2:13
 - **given that**: `grammar-06-clause` 54:21
-- **Giving reassurance**: `vocabulary-03-collocations-2` 43:53
+- **Giving reassurance**: `vocabulary-03-collocations-2` 50:36
 - **Grade B in OET Writing**: `writing-02-assessment-criteria` 5:27
 - **Greeting and Re line**: `writing-03-letter-structure` 14:50; `writing-04-introduction` 3:42
 - **Had smoked**: `grammar-01-verb-tenses` 53:39
 - **Has been scheduled**: `grammar-01-verb-tenses` 96:52
-- **has not eased**: `vocabulary-03-collocations-2` 27:29
+- **has not eased**: `vocabulary-03-collocations-2` 31:47
 - **Has smoked**: `grammar-01-verb-tenses` 54:36
 - **hedging**: `reading-04-part-c` 12:37
 - **Hedging word**: `reading-04-part-c` 14:44
 - **Helping verb**: `grammar-01-verb-tenses` 3:47
-- **How adjective + noun collocations are formed**: `vocabulary-03-collocations-2` 5:46
+- **How adjective + noun collocations are formed**: `vocabulary-03-collocations-2` 6:48
 - **How Part A is built**: `reading-02-part-a` 4:19
 - **How Part A is marked**: `listening-02-part-a` 6:23
 - **How the test runs**: `listening-01-overview` 5:51
@@ -8992,13 +8991,13 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Hyphen**: `grammar-07-punctuation` 66:23
 - **Hyphens and numbers**: `grammar-07-punctuation` 66:12
 - **i.e**: `grammar-07-punctuation` 79:53
-- **ICU**: `vocabulary-03-collocations-2` 9:50
+- **ICU**: `vocabulary-03-collocations-2` 10:52
 - **Indefinite article**: `grammar-04-articles` 10:52
 - **Independent clause**: `grammar-05-complex-compound` 4:15; `grammar-07-punctuation` 6:58
 - **Infinitive**: `grammar-01-verb-tenses` 6:43
 - **Initially**: `grammar-08-paraphrasing` 54:49
 - **instead of which**: `vocabulary-01-word-forms` 63:35
-- **Instructions and advice**: `vocabulary-03-collocations-2` 52:41
+- **Instructions and advice**: `vocabulary-03-collocations-2` 60:26
 - **interview**: `listening-05-part-c-2` 4:40
 - **Introductory phrase**: `grammar-07-punctuation` 23:21
 - **Introductory phrases**: `grammar-07-punctuation` 23:16
@@ -9064,7 +9063,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Prescribe**: `vocabulary-02-collocations` 44:43
 - **Present participle**: `grammar-06-clause` 33:19
 - **present perfect**: `grammar-01-verb-tenses` 38:26; `grammar-02-verb-use` 11:52; `grammar-08-paraphrasing` 16:20
-- **present perfect continuous**: `vocabulary-03-collocations-2` 20:42
+- **present perfect continuous**: `vocabulary-03-collocations-2` 24:03
 - **present perfect passive**: `grammar-02-verb-use` 60:30; `grammar-08-paraphrasing` 56:41
 - **present simple**: `grammar-01-verb-tenses` 20:16
 - **Prior to onset**: `grammar-08-paraphrasing` 44:15
@@ -9106,7 +9105,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Signposts and tempting options**: `listening-04-part-c` 6:39
 - **Skim**: `reading-02-part-a` 17:42
 - **Skimming**: `reading-02-part-a` 12:17
-- **so ... that**: `vocabulary-03-collocations-2` 29:32
+- **so ... that**: `vocabulary-03-collocations-2` 33:50
 - **So far**: `grammar-01-verb-tenses` 82:04
 - **Specific noun**: `grammar-04-articles` 34:28
 - **Specific nouns**: `grammar-04-articles` 33:45
@@ -9164,8 +9163,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Top tips**: `reading-02-part-a` 17:27
 - **Treat**: `vocabulary-02-collocations` 50:38
 - **Treatment**: `grammar-03-nominalization` 31:03
-- **try to + simple verb**: `vocabulary-03-collocations-2` 58:23
-- **Types of pain**: `vocabulary-03-collocations-2` 10:30
+- **try to + simple verb**: `vocabulary-03-collocations-2` 66:10
+- **Types of pain**: `vocabulary-03-collocations-2` 12:43
 - **Uncountable nouns: non-specific**: `grammar-04-articles` 25:07
 - **undergo (past: underwent)**: `grammar-04-articles` 26:44
 - **US**: `grammar-04-articles` 15:41
@@ -9196,7 +9195,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **who**: `vocabulary-01-word-forms` 69:45
 - **Who speaks, and a target score**: `listening-02-part-a` 15:40
 - **Will have smoked**: `grammar-01-verb-tenses` 56:10
-- **woke up**: `vocabulary-03-collocations-2` 29:03
+- **woke up**: `vocabulary-03-collocations-2` 33:20
 - **Word bank**: `reading-03-part-b` 57:12
 - **Word count of the letter body**: `writing-01-overview` 8:38
 - **word forms**: `vocabulary-01-word-forms` 2:26

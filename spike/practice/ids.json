@@ -50,6 +50,10 @@
   "vocabulary-02-collocations": [
    959000,
    959999
+  ],
+  "vocabulary-03-collocations-2": [
+   960000,
+   960999
   ]
  },
  "ids": [
@@ -2514,6 +2518,296 @@
    "lesson": "vocabulary-02-collocations",
    "point": "final",
    "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960000",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "wrong-adjective",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960001",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "wrong-adjective",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960002",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "wrong-adjective",
+   "slot": "item-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960003",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "time-or-strength",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960004",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "time-or-strength",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960005",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "time-or-strength",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960006",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "time-or-strength",
+   "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960007",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "time-or-strength",
+   "slot": "gap-4",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960008",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "pain-words",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960009",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "pain-words",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960010",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "pain-words",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960011",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "pain-words",
+   "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960012",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "pain-words",
+   "slot": "gap-4",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960013",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "constant-chronic",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960014",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "constant-chronic",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960015",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "pain-verbs",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960016",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "pain-verbs",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960017",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "pain-verbs",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960018",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "pain-verbs",
+   "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960019",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "word-class",
+   "slot": "item",
+   "issued": "2026-10-31",
+   "retired": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960020",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "word-class",
+   "slot": "gap-1",
+   "issued": "2026-10-31",
+   "retired": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960021",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "word-class",
+   "slot": "gap-2",
+   "issued": "2026-10-31",
+   "retired": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960022",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "reactions",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960023",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "reactions",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960024",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "reactions",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960025",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "reactions",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960026",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "reactions",
+   "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960027",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "reactions",
+   "slot": "gap-4",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960028",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "reactions",
+   "slot": "gap-5",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960029",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "reactions",
+   "slot": "gap-6",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960030",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "reassurance",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960031",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "reassurance",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960032",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "reassurance",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960033",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "reassurance",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960034",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "reassurance",
+   "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960035",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "advice",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960036",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "advice",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960037",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "advice",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960038",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "advice",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960039",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "advice",
+   "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-960040",
+   "lesson": "vocabulary-03-collocations-2",
+   "point": "letter-sentence",
+   "slot": "item",
    "issued": "2026-10-31"
   }
  ]
