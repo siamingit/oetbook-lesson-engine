@@ -10,6 +10,10 @@
   "writing-04-introduction": [
    900000,
    900999
+  ],
+  "grammar-01-verb-tenses": [
+   950000,
+   950999
   ]
  },
  "ids": [
@@ -452,6 +456,307 @@
    "lesson": "writing-04-introduction",
    "point": "dawson-whole",
    "slot": "sentence",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950000",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "will-plain-verb",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950001",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "past-participle",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950002",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "past-participle",
+   "slot": "gap-1",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950003",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "past-participle",
+   "slot": "gap-2",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950004",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "been-ing",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950005",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "notes-to-tense",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950006",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "notes-to-tense",
+   "slot": "item-2",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950007",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "timetable",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950008",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "earlier-action",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950009",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "in-progress",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950010",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "in-progress",
+   "slot": "gap-1",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950011",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "in-progress",
+   "slot": "gap-2",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950012",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "needs-time-marker",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950013",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "for-since",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950014",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "for-since",
+   "slot": "gap-1",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950015",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "for-since",
+   "slot": "gap-2",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950016",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "later-point",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950017",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "has-been-waiting",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950018",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "which-continuous",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950019",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "which-continuous",
+   "slot": "gap-1",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950020",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "which-continuous",
+   "slot": "gap-2",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950021",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "from-since",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950022",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "finished-period",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950023",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "open-period",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950024",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "underwent",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950025",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "at-the-moment",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950026",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "not-yet",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950027",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "make-passive",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950028",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "be-verb-tense",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950029",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "be-verb-tense",
+   "slot": "gap-1",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950030",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "be-verb-tense",
+   "slot": "gap-2",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950031",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "be-verb-tense",
+   "slot": "gap-3",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950032",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "has-been-booked",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950033",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "being-been",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950034",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "being-been",
+   "slot": "gap-1",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950035",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "being-been",
+   "slot": "gap-2",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950036",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "passive-order",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950037",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "medicine-passive",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950038",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "presented-admitted",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950039",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "presented-admitted",
+   "slot": "gap-1",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950040",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "presented-admitted",
+   "slot": "gap-2",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950041",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "note-to-sentence",
+   "slot": "item",
+   "issued": "2026-10-30"
+  },
+  {
+   "id": "oa-grammar-950042",
+   "lesson": "grammar-01-verb-tenses",
+   "point": "may-have-been",
+   "slot": "item",
    "issued": "2026-10-30"
   }
  ]

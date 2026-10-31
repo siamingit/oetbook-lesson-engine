@@ -18,7 +18,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 118:56 | 14 | 2026-10-27 09:37 (siavash) |
+| 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 129:04 | 14 | not yet |
 | 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 52:20 | 5 | 2026-10-27 09:37 (siavash) |
 | 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 52:33 | 7 | 2026-10-27 09:37 (siavash) |
 | 4 | Grammar for OET: Articles | `grammar-04-articles` | 59:31 | 9 | 2026-10-27 19:07 (siavash) |
@@ -31,8 +31,8 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 
 ## 1. Grammar for OET: Verb Tenses
 
-- Lesson ID and folder: `grammar-01-verb-tenses` (folder `grammar-01-verb-tenses`); course grammar, lesson 1; length 118:56; bundle format 1.22
-- Status: approved by siavash, 2026-10-27 09:37
+- Lesson ID and folder: `grammar-01-verb-tenses` (folder `grammar-01-verb-tenses`); course grammar, lesson 1; length 129:04; bundle format 1.23
+- Status: built, final gate not approved
 - Description: Learn the verb tenses, when to use each one, and how to use them in your OET writing.
 - Original session: folder `source`: `source/video.mp4`, 125:10 long, partial hash `8fd03776aa09bf2b`; deck `source/slides.pdf`, 19 pages
   - The Grammar 1 (Verb Tenses) session, in its newer recording, made after the deck was corrected; an older recording exists and is not the source (docs/01-METHODOLOGY.md §1, §8).
@@ -66,643 +66,643 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
   - 6:12 More irregular verbs to memorise
   - 6:27 Meaning of the simple past and the simple present
   - 6:43 Define the infinitive used after 'will'
-  - 6:55 Reject the third-person -s after 'will'
-  - 7:15 The three simple formulas in words
-  - 7:29 the three continuous examples
-  - 7:46 Meaning of the past continuous
-  - 7:54 Role of the time clause
-  - 8:00 The -ing form never changes
-  - 8:13 The helper sets the time
-  - 8:21 Was or were, by person
-  - 8:32 Block the 'you was' error
-  - 8:43 Show the correct form
-  - 8:54 Correct the future continuous example
-  - 8:59 The three continuous formulas in words
-  - 9:16 the two perfect examples
-  - 9:29 State the meaning of the perfect correctly
-  - 9:46 Show a perfect form that is still true now
-  - 10:01 Where each perfect form reaches
-  - 10:10 Draw the later point of time
-  - 10:29 Rule for choosing past or present perfect
-  - 10:42 Paraphrase the past perfect example in English
-  - 10:49 Define the past participle
-  - 11:01 Regular verbs hide the difference
-  - 11:08 Only some irregular verbs show the difference
-  - 11:22 Reject the simple past after 'had'
-  - 11:33 Show the correct perfect with an irregular verb
-  - 11:43 Choose has or have by person
-  - 11:53 The helper in the past and the future perfect
-  - 12:00 Reject 'will has'
-  - 12:16 The perfect formula in words
-  - 12:29 Two tenses can carry the same message
-  - 12:43 Limit: no present perfect with a fixed past point
-  - 12:55 Time markers and focus
-  - 13:08 What the perfect puts the focus on
-  - 13:29 the two perfect continuous examples
-  - 13:44 Which future forms to learn here
-  - 13:55 What the perfect continuous combines
-  - 14:03 Read the past perfect continuous example
-  - 14:12 Draw the period and the later point
-  - 14:32 Separate what each part adds
-  - 14:41 Introduce 'been'
-  - 14:53 Choose has or have by person
-  - 15:05 The perfect continuous formula in words
-- 15:25 **Time line: past, present and future**
-  - 15:25 Frame the lesson: time decides the tense
-  - 15:25 the diagram
-  - 15:47 Simple past for a finished past event
-  - 15:56 Typical case-note events that take the simple past
-  - 16:10 Teach the clinical verb 'experience'
-  - 16:32 Show the common partners of 'experience'
-  - 17:13 Present perfect for a condition that continues up to now
-  - 17:24 Contrast a closed past event with one that continues
-  - 17:35 Set the aim of the diagram
-  - 17:57 Present simple for a standing fact about the patient
-  - 18:13 Where future time appears in OET writing
-  - 18:24 Recap the three main choices
+  - 7:15 Reject the third-person -s after 'will'
+  - 7:35 The three simple formulas in words
+  - 7:49 the three continuous examples
+  - 8:06 Meaning of the past continuous
+  - 8:14 Role of the time clause
+  - 8:21 The -ing form never changes
+  - 8:34 The helper sets the time
+  - 8:41 Was or were, by person
+  - 8:53 Block the 'you was' error
+  - 9:03 Show the correct form
+  - 9:14 Correct the future continuous example
+  - 9:19 The three continuous formulas in words
+  - 9:36 the two perfect examples
+  - 9:49 State the meaning of the perfect correctly
+  - 10:07 Show a perfect form that is still true now
+  - 10:22 Where each perfect form reaches
+  - 10:30 Draw the later point of time
+  - 10:50 Rule for choosing past or present perfect
+  - 11:02 Paraphrase the past perfect example in English
+  - 11:09 Define the past participle
+  - 11:21 Regular verbs hide the difference
+  - 11:29 Only some irregular verbs show the difference
+  - 11:42 Reject the simple past after 'had'
+  - 11:53 Show the correct perfect with an irregular verb
+  - 12:03 Choose has or have by person
+  - 12:14 The helper in the past and the future perfect
+  - 12:20 Reject 'will has'
+  - 12:36 The perfect formula in words
+  - 12:49 Two tenses can carry the same message
+  - 13:03 Limit: no present perfect with a fixed past point
+  - 13:15 Time markers and focus
+  - 13:28 What the perfect puts the focus on
+  - 14:13 the two perfect continuous examples
+  - 14:29 Which future forms to learn here
+  - 14:39 What the perfect continuous combines
+  - 14:48 Read the past perfect continuous example
+  - 14:56 Draw the period and the later point
+  - 15:16 Separate what each part adds
+  - 15:25 Introduce 'been'
+  - 15:37 Choose has or have by person
+  - 15:50 The perfect continuous formula in words
+- 16:27 **Time line: past, present and future**
+  - 16:27 Frame the lesson: time decides the tense
+  - 16:27 the diagram
+  - 16:49 Simple past for a finished past event
+  - 16:58 Typical case-note events that take the simple past
+  - 17:12 Teach the clinical verb 'experience'
+  - 17:34 Show the common partners of 'experience'
+  - 18:16 Present perfect for a condition that continues up to now
+  - 18:26 Contrast a closed past event with one that continues
+  - 18:37 Set the aim of the diagram
+  - 18:59 Present simple for a standing fact about the patient
+  - 19:15 Where future time appears in OET writing
+  - 19:26 Recap the three main choices
 
 *Rules on the boards*
 
-- 9:29 A perfect form connects an action or a state to a later point in time: up to now, or up to a point in the past. It does not mean the action is finished.
-- 18:24 Finished in the past: simple past. Started in the past and still true now: present perfect. A fact about now: present simple.
+- 9:49 A perfect form connects an action or a state to a later point in time: up to now, or up to a point in the past. It does not mean the action is finished.
+- 19:26 Finished in the past: simple past. Started in the past and still true now: present perfect. A fact about now: present simple.
 
 *Warnings (common mistakes)*
 
-- 12:43 'Before admission' is a fixed point in the past. For this sentence choose the simple past or the past perfect, not the present perfect.
+- 13:03 'Before admission' is a fixed point in the past. For this sentence choose the simple past or the past perfect, not the present perfect.
 
 *Wrong sentences corrected*
 
-- 6:55 The patient will smokes tomorrow.
-- 8:32 You was smoking.
-- 11:22 Had wrote.
-- 12:00 The patient will has.
+- 7:15 The patient will smokes tomorrow.
+- 8:53 You was smoking.
+- 11:42 Had wrote.
+- 12:20 The patient will has.
 
-*Terms*: Continuous (Form, 2:45); Perfect (Form, 3:05); Perfect continuous (Form, 3:24); Helping verb (New term, 3:47); Subject and verb (New term, 5:15); Regular verb (New term, 5:44); Infinitive (New term, 6:43); The -ing form (Form, 8:00); Past participle (New term, 10:49); Time markers (Time words, 12:55); Perfect continuous (Form, 13:55); been (Form, 14:41); experience (New word, 16:10)
+*Terms*: Continuous (Form, 2:45); Perfect (Form, 3:05); Perfect continuous (Form, 3:24); Helping verb (New term, 3:47); Subject and verb (New term, 5:15); Regular verb (New term, 5:44); Infinitive (New term, 6:43); The -ing form (Form, 8:21); Past participle (New term, 11:09); Time markers (Time words, 13:15); Perfect continuous (Form, 14:39); been (Form, 15:25); experience (New word, 17:12)
 
-#### 18:47 Usage: simple tenses (`page-7`, deck)
+#### 20:16 Usage: simple tenses (`page-7`, deck)
 
-- 18:47 **present simple column, past simple column, future simple column**
-  - 18:47 Fix the present-simple model sentence on the board and frame why tense choice matters
-  - 18:47 Fix the past-simple model sentence and state its use
-  - 18:47 Fix the future-simple model sentence and state its use
-  - 19:35 Present simple for a habit
-  - 19:55 Present simple for a general truth
-  - 20:10 Present simple for a fact about the patient
-  - 20:29 Show the correct two-word time phrase against the one-word adjective
-  - 20:59 Present simple used for a future event at a set time
-  - 21:18 Draw the set future time of the scheduled event
-  - 21:38 Both forms are possible for a fixed plan
-  - 22:14 Draw the finished past action
-  - 22:32 Introduce the past perfect with a proper earlier reference point
-  - 23:05 Reject the past perfect with only 'yesterday'
-  - 23:43 Draw the action still to come
-  - 23:56 Future simple for a prediction
-  - 24:42 Future simple for a decision
-  - 24:54 Reject 'will' after 'I wish'
-  - 25:08 Give the correct hope pattern with 'will'
-  - 25:31 Sum up the uses of will
+- 20:16 **present simple column, past simple column, future simple column**
+  - 20:16 Fix the present-simple model sentence on the board and frame why tense choice matters
+  - 20:16 Fix the past-simple model sentence and state its use
+  - 20:16 Fix the future-simple model sentence and state its use
+  - 21:04 Present simple for a habit
+  - 21:24 Present simple for a general truth
+  - 21:39 Present simple for a fact about the patient
+  - 21:58 Show the correct two-word time phrase against the one-word adjective
+  - 22:28 Present simple used for a future event at a set time
+  - 22:47 Draw the set future time of the scheduled event
+  - 23:06 Both forms are possible for a fixed plan
+  - 24:02 Draw the finished past action
+  - 24:20 Introduce the past perfect with a proper earlier reference point
+  - 25:15 Reject the past perfect with only 'yesterday'
+  - 25:53 Draw the action still to come
+  - 26:06 Future simple for a prediction
+  - 26:52 Future simple for a decision
+  - 27:04 Reject 'will' after 'I wish'
+  - 27:17 Give the correct hope pattern with 'will'
+  - 27:41 Sum up the uses of will
 
 *Rules on the boards*
 
-- 19:13 You choose the verb tense. Choose the tense that matches the meaning you want.
-- 21:47 For a plan at a set time, you can use the present simple instead of 'will'.
-- 23:17 With one time in the past and nothing earlier, use the past simple.
-- 25:31 Use 'will' for a prediction, for a decision you make now, and after 'I hope'.
+- 20:41 You choose the verb tense. Choose the tense that matches the meaning you want.
+- 23:15 For a plan at a set time, you can use the present simple instead of 'will'.
+- 25:27 With one time in the past and nothing earlier, use the past simple.
+- 27:41 Use 'will' for a prediction, for a decision you make now, and after 'I hope'.
 
 *Wrong sentences corrected*
 
-- 23:05 The patient had smoked yesterday.
-- 24:54 I wish you will get well tomorrow morning.
+- 25:15 The patient had smoked yesterday.
+- 27:04 I wish you will get well tomorrow morning.
 
-*Terms*: Past perfect (Form, 22:32); Prediction (Usage, 23:56); Decision (Usage, 24:42)
+*Terms*: Past perfect (Form, 24:20); Prediction (Usage, 26:06); Decision (Usage, 26:52)
 
-#### 25:49 Usage: continuous tenses (`page-8`, deck)
+#### 27:58 Usage: continuous tenses (`page-8`, deck)
 
-- 25:49 **the three model sentences, the present column, the past column, the future column**
-  - 25:49 Set up the board: the same action shown in three tenses
-  - 26:28 Define the term continuous tense in English
-  - 26:42 State the maintainer's framing: in progress at a point, only the point moves
-  - 26:54 Draw the three points on one axis
-  - 27:23 Name the three points in words
-  - 27:35 First use: a temporary action begun before now and not finished
-  - 27:50 Draw the present continuous on a timeline
-  - 28:16 Second use: a habit the patient still has
-  - 28:46 Show when this habit use is needed
-  - 29:05 Contrast present continuous with present simple in English
-  - 29:38 The present continuous does not need a time marker
-  - 29:55 Explain the action as in progress at the moment of admission
-  - 30:13 Draw the past continuous on a timeline
-  - 30:39 Second past use: a habit that kept going over a past period
-  - 31:07 Separate the two past continuous uses
-  - 31:43 Define the term time marker
-  - 31:53 Show how the time marker completes the sentence
-  - 32:14 Separate correct grammar from complete meaning
-  - 32:31 State the future continuous use, with the printed line corrected
-  - 32:51 Draw the future continuous on a timeline
-  - 33:15 Show the future sentence also needs a time marker
-  - 33:42 Close with the rule on when a time marker is needed
-
-*Rules on the boards*
-
-- 26:42 In all three sentences the action is in progress at a point in time. Only the point moves.
-- 29:38 The present continuous does not need a time marker: the tense already tells us the time is now. Add 'right now' only to stress this exact moment.
-- 32:14 The patient was smoking is not wrong grammar, but the meaning is not complete. The time marker completes it.
-- 33:42 The past continuous and the future continuous need a time marker. The present continuous does not.
-
-*Terms*: Continuous tense (New term, 26:28); Persistent (New word, 28:16); Time marker (Time words, 31:43)
-
-#### 34:03 Usage: perfect tenses (`page-9`, deck)
-
-- 34:03 **what a perfect tense does**
-  - 34:03 Name the perfect tenses and give the core idea: a link to a later point.
-  - 34:25 Show with an example that a perfect sentence is not one unbroken action.
-  - 34:56 Correct the idea that a perfect form always means finished.
-  - 35:14 Keep the continuous and the perfect apart.
-- 35:30 **present perfect column**
-  - 35:30 Read the present-perfect example and give the result-now meaning.
-  - 35:54 Draw the unspecified past action linked to now.
-  - 36:10 Give the second use of the present perfect and the two time words.
-  - 36:36 Clinical example with 'for'.
-  - 36:55 Clinical example with 'since'.
-  - 37:13 Define a time marker and say when to use one.
-  - 37:35 Tie the time marker to the tense.
-- 37:51 **past perfect column**
-  - 37:51 Read the past-perfect example and state its use.
-  - 38:17 Draw the two past points.
-  - 38:35 Say what the sentence is about: the result at the past point.
-  - 38:43 Compare the later point in the two perfect forms.
-- 39:01 **future perfect column**
-  - 39:01 Read the future-perfect example and state its use.
-  - 39:23 Draw the future point.
-  - 39:38 Keep the time marker even though the grammar allows dropping it.
-- 39:52 **choosing between the three perfect tenses**
-  - 39:52 State the rule that selects the tense, and show the present perfect case.
-  - 40:07 The past perfect case.
-  - 40:14 The future perfect case.
-  - 40:35 Closing rule of thumb.
+- 27:58 **the three model sentences, the present column, the past column, the future column**
+  - 27:58 Set up the board: the same action shown in three tenses
+  - 28:38 Define the term continuous tense in English
+  - 28:52 State the maintainer's framing: in progress at a point, only the point moves
+  - 29:04 Draw the three points on one axis
+  - 29:33 Name the three points in words
+  - 29:45 First use: a temporary action begun before now and not finished
+  - 30:00 Draw the present continuous on a timeline
+  - 30:26 Second use: a habit the patient still has
+  - 30:55 Show when this habit use is needed
+  - 31:15 Contrast present continuous with present simple in English
+  - 31:48 The present continuous does not need a time marker
+  - 32:05 Explain the action as in progress at the moment of admission
+  - 32:22 Draw the past continuous on a timeline
+  - 32:49 Second past use: a habit that kept going over a past period
+  - 33:17 Separate the two past continuous uses
+  - 34:20 Define the term time marker
+  - 34:29 Show how the time marker completes the sentence
+  - 34:50 Separate correct grammar from complete meaning
+  - 35:07 State the future continuous use, with the printed line corrected
+  - 35:27 Draw the future continuous on a timeline
+  - 35:52 Show the future sentence also needs a time marker
+  - 36:18 Close with the rule on when a time marker is needed
 
 *Rules on the boards*
 
-- 35:07 A perfect form does not by itself tell you the action is finished.
-- 37:35 When you use a time marker, your tense must match it. 'For' and 'since' often go with the present perfect. They also go with the past perfect.
-- 39:38 Without 'before discharge tomorrow' the sentence is still grammatical, but the meaning is not complete. Keep the time marker.
-- 40:35 Choose the tense from the meaning you want and from the time markers in the sentence.
+- 28:52 In all three sentences the action is in progress at a point in time. Only the point moves.
+- 31:48 The present continuous does not need a time marker: the tense already tells us the time is now. Add 'right now' only to stress this exact moment.
+- 34:50 The patient was smoking is not wrong grammar, but the meaning is not complete. The time marker completes it.
+- 36:18 The past continuous and the future continuous need a time marker. The present continuous does not.
 
-*Terms*: Perfect tenses (Grammar term, 34:03); For and since (Time words, 36:24); Time marker (Grammar term, 37:13)
+*Terms*: Continuous tense (New term, 28:38); Persistent (New word, 30:26); Time marker (Time words, 34:20)
 
-#### 40:51 Usage: perfect continuous tenses (`page-10`, deck)
+#### 36:59 Usage: perfect tenses (`page-9`, deck)
 
-- 40:51 **heading and the form of the perfect continuous, present perfect continuous row, past perfect continuous row, future perfect continuous row**
-  - 40:51 Define the perfect continuous as a blend of two forms
-  - 40:51 State the usage of the past perfect continuous
-  - 40:51 Show the future form on the corrected example
-  - 41:24 Show which part of the form carries which meaning
-  - 41:57 Same pattern in past and future time
-  - 42:26 State the corrected usage: the action runs up to now
-  - 43:17 Draw the three years running up to now
-  - 43:31 English replacement for the first-language gloss of the example
-  - 43:49 Name the emphasis of the form
-  - 44:33 Correct what a perfect form means
-  - 44:50 Counter-example showing a perfect form that is not finished
-  - 45:17 English replacement for the first-language gloss of the past example
-  - 45:34 Show how an added time phrase fixes the end point
-  - 45:55 Draw the three years ending at the moment he quit
-  - 46:39 Reject the printed ending and say why
-  - 46:59 Define the grammar term used in the correction
-  - 47:17 State the usage of the future perfect continuous
-  - 47:36 Draw the duration running up to the future point
-  - 48:07 What the sentence does and does not tell us
+- 36:59 **what a perfect tense does**
+  - 36:59 Name the perfect tenses and give the core idea: a link to a later point.
+  - 37:21 Show with an example that a perfect sentence is not one unbroken action.
+  - 37:52 Correct the idea that a perfect form always means finished.
+  - 38:10 Keep the continuous and the perfect apart.
+- 38:26 **present perfect column**
+  - 38:26 Read the present-perfect example and give the result-now meaning.
+  - 38:49 Draw the unspecified past action linked to now.
+  - 39:06 Give the second use of the present perfect and the two time words.
+  - 39:32 Clinical example with 'for'.
+  - 39:51 Clinical example with 'since'.
+  - 40:09 Define a time marker and say when to use one.
+  - 40:31 Tie the time marker to the tense.
+- 41:10 **past perfect column**
+  - 41:10 Read the past-perfect example and state its use.
+  - 41:36 Draw the two past points.
+  - 41:54 Say what the sentence is about: the result at the past point.
+  - 42:02 Compare the later point in the two perfect forms.
+- 42:20 **future perfect column**
+  - 42:20 Read the future-perfect example and state its use.
+  - 42:42 Draw the future point.
+  - 42:57 Keep the time marker even though the grammar allows dropping it.
+- 43:11 **choosing between the three perfect tenses**
+  - 43:11 State the rule that selects the tense, and show the present perfect case.
+  - 43:26 The past perfect case.
+  - 43:33 The future perfect case.
+  - 43:54 Closing rule of thumb.
 
 *Rules on the boards*
 
-- 43:02 The present perfect continuous runs up to now. There is no later action here.
-- 44:33 A perfect form links an action to a later point in time. It does not mean the action is finished.
+- 38:03 A perfect form does not by itself tell you the action is finished.
+- 40:31 When you use a time marker, your tense must match it. 'For' and 'since' often go with the present perfect. They also go with the past perfect.
+- 42:57 Without 'before discharge tomorrow' the sentence is still grammatical, but the meaning is not complete. Keep the time marker.
+- 43:54 Choose the tense from the meaning you want and from the time markers in the sentence.
+
+*Terms*: Perfect tenses (Grammar term, 36:59); For and since (Time words, 39:20); Time marker (Grammar term, 40:09)
+
+#### 44:34 Usage: perfect continuous tenses (`page-10`, deck)
+
+- 44:34 **heading and the form of the perfect continuous, present perfect continuous row, past perfect continuous row, future perfect continuous row**
+  - 44:34 Define the perfect continuous as a blend of two forms
+  - 44:34 State the usage of the past perfect continuous
+  - 44:34 Show the future form on the corrected example
+  - 45:08 Show which part of the form carries which meaning
+  - 45:40 Same pattern in past and future time
+  - 46:09 State the corrected usage: the action runs up to now
+  - 47:01 Draw the three years running up to now
+  - 47:14 English replacement for the first-language gloss of the example
+  - 47:33 Name the emphasis of the form
+  - 48:39 Correct what a perfect form means
+  - 48:56 Counter-example showing a perfect form that is not finished
+  - 49:23 English replacement for the first-language gloss of the past example
+  - 49:39 Show how an added time phrase fixes the end point
+  - 50:00 Draw the three years ending at the moment he quit
+  - 50:45 Reject the printed ending and say why
+  - 51:04 Define the grammar term used in the correction
+  - 51:23 State the usage of the future perfect continuous
+  - 51:41 Draw the duration running up to the future point
+  - 52:13 What the sentence does and does not tell us
+
+*Rules on the boards*
+
+- 46:45 The present perfect continuous runs up to now. There is no later action here.
+- 48:39 A perfect form links an action to a later point in time. It does not mean the action is finished.
 
 *Wrong sentences corrected*
 
-- 46:39 When he discharge
+- 50:45 When he discharge
 
-*Terms*: Perfect continuous (Form, 40:51); Been (Form, 41:44); Before he quit (Time words, 45:34); Passive (Grammar term, 46:59)
+*Terms*: Perfect continuous (Form, 44:34); Been (Form, 45:27); Before he quit (Time words, 49:39); Passive (Grammar term, 51:04)
 
-#### 48:32 Perfect tenses on a timeline (`page-11`, deck)
+#### 53:02 Perfect tenses on a timeline (`page-11`, deck)
 
-- 48:32 **past perfect on the time line**
-  - 48:32 the past perfect example sentence and its diagram
-  - 48:35 Name the three perfect forms as one family
-  - 49:09 Define the past perfect form shown in the sentence
-  - 49:45 State what the diagram shows about the reference point
-- 50:01 **present perfect on the time line**
-  - 50:01 the present perfect example sentence and its diagram
-  - 50:06 Define the present perfect form shown in the sentence
-  - 50:51 Point at the last cigarette on the diagram
-  - 51:07 Contrast the two past reference points
-- 51:33 **future perfect on the time line**
-  - 51:33 the future perfect example sentence and its diagram
-  - 51:40 Define the future perfect form shown in the sentence
-  - 52:12 Show that the start of the action is open
-  - 52:37 Fix the completion point in the student's mind
-
-*Rules on the boards*
-
-- 52:37 By the time the patient is discharged tomorrow, they will have smoked all their cigarettes.
-
-*Terms*: The perfect forms (Form, 48:35); Had smoked (Form, 49:09); Has smoked (Form, 50:06); Will have smoked (Form, 51:40)
-
-#### 53:02 Time markers (`page-12`, deck)
-
-- 53:02 **the set of time markers**
-  - 53:02 Introduce the term and the six words the board will cover
-- 53:25 **for and since with the present perfect**
-  - 53:25 Show the two model sentences and name the tense
-  - 53:55 Contrast what each marker tells the reader
-  - 54:20 Draw the period that runs up to now
-  - 54:35 Fix the pair in one rule
-- 54:46 **for with the simple past**
-  - 54:46 Show 'for' in a simple past sentence
-  - 55:04 Show that the past period needs an end point, and gloss the phrase
-  - 55:21 Contrast the finished period with the period that reaches now
-  - 55:47 Draw the closed past period
-  - 56:06 State the rule that decides the tense
-- 56:20 **since, not from**
-  - 56:20 Show the printed wrong example
-  - 56:39 Give the correct sentence and the rule behind it
-  - 57:08 Warn about the common slip, without the first-language explanation
-- 57:27 **ago with the simple past**
-  - 57:27 Show the model sentence with 'ago'
-  - 57:40 Draw the point counted back from now
-  - 57:50 State the tense rule for 'ago'
-- 58:04 **in and on with dates in the simple past**
-  - 58:04 Show the two dated sentences and name the tense
-  - 58:35 Define the passive, met here for the first time
-  - 58:50 Stop students reading the passive as a different tense
-  - 59:02 Point forward to the choice of preposition
-- 59:21 **choosing in, on or at**
-  - 59:21 Set out the three prepositions in a small table
-  - 59:34 Contrast a date with a clock time
-  - 59:49 Warn against 'at' with a year or a month
-  - 59:59 Close with the four jobs of the time markers
+- 53:02 **past perfect on the time line**
+  - 53:02 the past perfect example sentence and its diagram
+  - 53:05 Name the three perfect forms as one family
+  - 53:39 Define the past perfect form shown in the sentence
+  - 54:15 State what the diagram shows about the reference point
+- 54:31 **present perfect on the time line**
+  - 54:31 the present perfect example sentence and its diagram
+  - 54:36 Define the present perfect form shown in the sentence
+  - 55:21 Point at the last cigarette on the diagram
+  - 55:37 Contrast the two past reference points
+- 56:03 **future perfect on the time line**
+  - 56:03 the future perfect example sentence and its diagram
+  - 56:10 Define the future perfect form shown in the sentence
+  - 56:42 Show that the start of the action is open
+  - 57:07 Fix the completion point in the student's mind
 
 *Rules on the boards*
 
-- 54:35 'For' gives the length of the period. 'Since' gives the point when it started.
-- 56:06 The end of the period decides the tense. A finished period takes the simple past. A period up to now takes the present perfect.
-- 57:50 Use the simple past with 'ago'.
+- 57:07 By the time the patient is discharged tomorrow, they will have smoked all their cigarettes.
+
+*Terms*: The perfect forms (Form, 53:05); Had smoked (Form, 53:39); Has smoked (Form, 54:36); Will have smoked (Form, 56:10)
+
+#### 57:32 Time markers (`page-12`, deck)
+
+- 57:32 **the set of time markers**
+  - 57:32 Introduce the term and the six words the board will cover
+- 57:55 **for and since with the present perfect**
+  - 57:55 Show the two model sentences and name the tense
+  - 58:25 Contrast what each marker tells the reader
+  - 58:49 Draw the period that runs up to now
+  - 59:05 Fix the pair in one rule
+- 59:16 **for with the simple past**
+  - 59:16 Show 'for' in a simple past sentence
+  - 59:34 Show that the past period needs an end point, and gloss the phrase
+  - 59:51 Contrast the finished period with the period that reaches now
+  - 60:17 Draw the closed past period
+  - 60:36 State the rule that decides the tense
+- 61:12 **since, not from**
+  - 61:12 Show the printed wrong example
+  - 61:31 Give the correct sentence and the rule behind it
+  - 62:01 Warn about the common slip, without the first-language explanation
+- 62:43 **ago with the simple past**
+  - 62:43 Show the model sentence with 'ago'
+  - 62:57 Draw the point counted back from now
+  - 63:06 State the tense rule for 'ago'
+- 63:21 **in and on with dates in the simple past**
+  - 63:21 Show the two dated sentences and name the tense
+  - 63:51 Define the passive, met here for the first time
+  - 64:06 Stop students reading the passive as a different tense
+  - 64:18 Point forward to the choice of preposition
+- 64:37 **choosing in, on or at**
+  - 64:37 Set out the three prepositions in a small table
+  - 64:51 Contrast a date with a clock time
+  - 65:05 Warn against 'at' with a year or a month
+  - 65:15 Close with the four jobs of the time markers
+
+*Rules on the boards*
+
+- 59:05 'For' gives the length of the period. 'Since' gives the point when it started.
+- 60:36 The end of the period decides the tense. A finished period takes the simple past. A period up to now takes the present perfect.
+- 63:06 Use the simple past with 'ago'.
 
 *Warnings (common mistakes)*
 
-- 57:08 Writing 'from 2010' with the present perfect is a mistake. Write 'since 2010'.
-- 59:49 Do not use 'at' with a year or a month. We say 'in 2004', not 'at 2004'.
+- 62:01 Writing 'from 2010' with the present perfect is a mistake. Write 'since 2010'.
+- 65:05 Do not use 'at' with a year or a month. We say 'in 2004', not 'at 2004'.
 
 *Wrong sentences corrected*
 
-- 56:20 The patient has had hypertension from 2010
+- 61:12 The patient has had hypertension from 2010
 
-*Terms*: Time markers (New term, 53:02); Receive treatment (New phrase, 55:14); Passive (New term, 58:35)
+*Terms*: Time markers (New term, 57:32); Receive treatment (New phrase, 59:44); Passive (New term, 63:51)
 
-#### 60:18 Verb tense: error correction (`page-13`, deck)
+#### 65:34 Verb tense: error correction (`page-13`, deck)
 
-- 60:18 **Find the fault in each sentence**
-  - 60:18 Set the task and show the whole set of exercise sentences
-  - 60:57 Invite the student to try all four before the answers
-- 61:32 **'Since 2010' and a one-moment verb**
-  - 61:32 Show the clash between the past verb and the time marker
-  - 61:55 Define the passive and name the tense under it
-  - 62:15 Show the active form to prove the tense is simple past
-  - 62:32 First repair: change the time marker
-  - 62:56 Second repair: keep 'since 2010' and change the verb
-  - 63:08 Draw the two time references
-  - 63:28 Reject 'The patient has diagnosed' on the grounds of who does the action
-  - 63:37 Put the two voices side by side
-  - 63:53 Generalise: check the meaning and the verb when choosing a time marker
-  - 64:16 Show that the same verb is fine in a perfect form without the stretching time marker
-- 64:31 **'For the past 25 years' and the tense that fits**
-  - 64:31 Show the clash in sentence 2
-  - 65:02 Give the corrected answer for sentence 2
-  - 65:17 Draw the open period
-  - 65:27 Contrast a closed period with an open one
-  - 66:02 Give the second accepted answer
-- 66:14 **An exact date and the verb 'undergo'**
-  - 66:14 Show sentence 3 and name the time marker
-  - 66:31 Teach 'undergo' and who does the operation
-  - 66:52 Reject 'do' for an operation
-  - 67:03 Give the corrected sentence and the rule behind it
-  - 67:22 Draw the finished point in the past
-- 67:35 **'Have' as a state verb**
-  - 67:35 Show sentence 4 and say what is already right
-  - 67:45 Locate the fault in the verb and define the term
-  - 68:01 Say what the continuous form is and what 'have' still does
-  - 68:18 Qualify the rule: 'have' is stative only when it means possessing
-  - 68:45 Give the corrected sentence for item 4
-  - 68:55 Name the form of the present perfect and where it is used
-  - 69:17 Draw the period and give the letter-style example
-  - 69:29 Give the second accepted answer and say what changed
-  - 69:49 Show when 'suffer from' is used
-  - 70:13 Give the wording to use for a long-term condition in the letter
-  - 70:28 Attach 'presents with' to a symptom
+- 65:34 **Find the fault in each sentence**
+  - 65:34 Set the task and show the whole set of exercise sentences
+  - 66:14 Invite the student to try all four before the answers
+- 66:48 **'Since 2010' and a one-moment verb**
+  - 66:48 Show the clash between the past verb and the time marker
+  - 67:12 Define the passive and name the tense under it
+  - 67:31 Show the active form to prove the tense is simple past
+  - 67:48 First repair: change the time marker
+  - 68:13 Second repair: keep 'since 2010' and change the verb
+  - 68:24 Draw the two time references
+  - 68:44 Reject 'The patient has diagnosed' on the grounds of who does the action
+  - 68:53 Put the two voices side by side
+  - 69:10 Generalise: check the meaning and the verb when choosing a time marker
+  - 69:32 Show that the same verb is fine in a perfect form without the stretching time marker
+- 69:47 **'For the past 25 years' and the tense that fits**
+  - 69:47 Show the clash in sentence 2
+  - 70:19 Give the corrected answer for sentence 2
+  - 70:34 Draw the open period
+  - 70:44 Contrast a closed period with an open one
+  - 71:19 Give the second accepted answer
+- 71:52 **An exact date and the verb 'undergo'**
+  - 71:52 Show sentence 3 and name the time marker
+  - 72:09 Teach 'undergo' and who does the operation
+  - 72:30 Reject 'do' for an operation
+  - 72:40 Give the corrected sentence and the rule behind it
+  - 73:00 Draw the finished point in the past
+- 73:36 **'Have' as a state verb**
+  - 73:36 Show sentence 4 and say what is already right
+  - 73:46 Locate the fault in the verb and define the term
+  - 74:02 Say what the continuous form is and what 'have' still does
+  - 74:18 Qualify the rule: 'have' is stative only when it means possessing
+  - 74:45 Give the corrected sentence for item 4
+  - 74:55 Name the form of the present perfect and where it is used
+  - 75:17 Draw the period and give the letter-style example
+  - 75:29 Give the second accepted answer and say what changed
+  - 75:49 Show when 'suffer from' is used
+  - 76:13 Give the wording to use for a long-term condition in the letter
+  - 76:28 Attach 'presents with' to a symptom
 
 *Rules on the boards*
 
-- 64:08 When you choose a time marker, look at the meaning of the sentence and at the verb you are using.
+- 69:25 When you choose a time marker, look at the meaning of the sentence and at the verb you are using.
 
 *Wrong sentences corrected*
 
-- 60:18 The patient was diagnosed with hypothyroidism since 2010
-- 60:18 He is smoking 2 packs of cigarettes a day for the past 25 years.
-- 60:18 She has underwent triple coronary bypass surgery on 10/08/2014
-- 60:18 Paul has been having cystic fibrosis since birth
-- 61:32 The patient was diagnosed with hypothyroidism since 2010
-- 63:28 The patient has diagnosed.
-- 64:31 He is smoking 2 packs of cigarettes a day for the past 25 years.
-- 66:14 She has underwent triple coronary bypass surgery on 10/08/2014
-- 66:52 She has done triple coronary bypass.
-- 67:35 Paul has been having cystic fibrosis since birth
+- 65:34 The patient was diagnosed with hypothyroidism since 2010
+- 65:34 He is smoking 2 packs of cigarettes a day for the past 25 years.
+- 65:34 She has underwent triple coronary bypass surgery on 10/08/2014
+- 65:34 Paul has been having cystic fibrosis since birth
+- 66:48 The patient was diagnosed with hypothyroidism since 2010
+- 68:44 The patient has diagnosed.
+- 69:47 He is smoking 2 packs of cigarettes a day for the past 25 years.
+- 71:52 She has underwent triple coronary bypass surgery on 10/08/2014
+- 72:30 She has done triple coronary bypass.
+- 73:36 Paul has been having cystic fibrosis since birth
 
-*Terms*: the passive (New form, 61:55); undergo / underwent (New word, 66:31); stative verb (New term, 67:52); present perfect (Form, 68:55)
+*Terms*: the passive (New form, 67:12); undergo / underwent (New word, 72:09); stative verb (New term, 73:52); present perfect (Form, 74:55)
 
-#### 70:44 Signal words and verb tenses (`page-14`, deck)
+#### 76:44 Signal words and verb tenses (`page-14`, deck)
 
-- 70:44 **what signal words are**
-  - 70:44 Define the term and set up the table's purpose
-  - 71:07 Warn that the pairing is a tendency, not a rule
-- 71:39 **present simple row**
-  - 71:39 Show the present simple row of the table
-  - 71:58 Explain 'seldom' in English
-  - 72:05 Teach 'occasionally' and the preposition with 'occasion'
-  - 72:27 Clinical example with 'on some occasions'
-  - 72:57 Show 'usually' in a clinical sentence
-- 73:15 **present continuous row**
-  - 73:15 Show the present continuous row of the table
-  - 73:24 State why these words take the present continuous
-  - 73:46 Clinical model sentence
-  - 74:08 Draw the time reference of 'at the moment'
-- 74:27 **past simple row**
-  - 74:27 Show the past simple row of the table
-  - 74:36 Define 'the other day'
-  - 74:43 State the tense choice
-  - 74:53 Draw the finished past time
-- 75:12 **past continuous row**
-  - 75:12 Show the past continuous row of the table
-  - 75:15 Say what these words do and what to take from them here
-- 75:34 **present perfect simple row**
-  - 75:34 Show the present perfect simple row of the table
-  - 75:43 Define 'so far'
-  - 75:50 Draw the past-up-to-now time reference
-- 76:06 **present perfect continuous row**
-  - 76:06 Show the present perfect continuous row of the table
-  - 76:12 State what these words show
-  - 76:22 Draw the duration up to now
-- 76:36 **past perfect simple row**
-  - 76:36 Show the past perfect simple row of the table
-  - 76:43 Make the once / when point clear
-- 76:56 **past perfect continuous row and closing advice**
-  - 76:56 Show the past perfect continuous row of the table
-  - 77:06 Show that for and since serve two tenses
-  - 77:28 Take the pressure off memorising the table
-  - 77:35 Why signal words matter in writing
-
-*Rules on the boards*
-
-- 71:07 This is a tendency, not a rule. The word "always" does not force you to use the present simple.
-- 75:19 They are often signals for the past continuous, but the tense comes from the meaning, not from the time word.
-- 77:35 When you write a patient's history, put the time into your sentences. Then the reader can follow when each thing happened.
-
-*Terms*: Signal word (New term, 70:44); Seldom (Signal word, 71:58); Occasionally (Signal word, 72:05); The other day (Signal word, 74:36); So far (Signal word, 75:43)
-
-#### 77:47 Active vs passive (`page-15`, deck)
-
-- 77:47 **what the active and the passive do**
-  - 77:47 Set up the two forms and define the grammar term 'passive'
-  - 78:27 First reason letters use the passive: no doer in the notes
-  - 78:58 Second reason: the writer does not repeat 'I'
-- 79:17 **the aspirin example, from active to passive**
-  - 79:17 Name the parts of the active sentence
-  - 79:38 Define 'active' and note that an object is not always needed
-  - 79:52 Show which part can move and which part stays with the verb
-  - 80:12 Build the passive in English by dropping the doer and fronting the object
-  - 80:30 State the rule for the change
-- 80:45 **two passive forms and where the focus falls**
-  - 80:45 Show both passive forms and state that both are correct
-  - 80:58 Explain the focus difference in English, through the front position
-  - 81:15 Set up the context for choosing the form that fits
-  - 81:33 Choose the form whose focus matches the context
-- 81:55 **the form of the passive verb**
-  - 81:55 Give the form and define 'past participle'
-  - 82:28 Show that the tense does not change
-  - 82:56 Regular and irregular past participles
-  - 83:22 Warn against reading the participle -ed as a past tense -ed
-  - 83:36 The be verb carries the tense: past
-  - 83:52 The be verb carries the tense: present
-  - 84:02 The be verb carries the tense: future
-- 84:23 **row 1, took and was given**
-  - 84:23 Show why 'take' cannot carry the passive meaning
-  - 84:46 Give the passive with the new verb and name its parts
-  - 84:59 Contrast the meaning of the active and the passive
-  - 85:24 Turn the sentence round so the focus is on the medicine
-- 85:36 **row 2, had arthritis and was diagnosed**
-  - 85:36 Show that 'have' cannot be made passive
-  - 85:56 Change the verb and identify who diagnoses
-  - 86:19 Give the passive with the patient first
-  - 86:34 Give the form with the condition first
-  - 86:44 Show where the word 'with' belongs
-  - 87:11 Reassure about what the exam asks for
-- 87:23 **row 3, the appointment in the present simple**
-  - 87:23 Explain the present simple in a sentence about tomorrow
-  - 87:45 Draw the time: the appointment exists now, the visit is tomorrow
-  - 87:55 Show that the will-form is also correct and why we choose the present simple
-- 88:16 **row 3 passive, will be seen**
-  - 88:16 Explain why the passive here is future
-  - 88:30 Name the participle and the doer
-- 88:43 **row 3, focus on the appointment and the verb schedule**
-  - 88:43 Teach the verb 'schedule' in English
-  - 89:04 Show the active and passive present perfect side by side
-  - 89:24 Name the three parts of the present perfect passive
-- 89:42 **the tenses used most in a letter**
-  - 89:42 Frame what a letter reports and name the first tense
-  - 89:53 Name the second tense
-  - 90:00 Draw the present perfect time reference
-  - 90:08 State the rule to remember and reassure about the forms
+- 76:44 **what signal words are**
+  - 76:44 Define the term and set up the table's purpose
+  - 77:08 Warn that the pairing is a tendency, not a rule
+- 77:40 **present simple row**
+  - 77:40 Show the present simple row of the table
+  - 77:58 Explain 'seldom' in English
+  - 78:06 Teach 'occasionally' and the preposition with 'occasion'
+  - 78:28 Clinical example with 'on some occasions'
+  - 78:58 Show 'usually' in a clinical sentence
+- 79:16 **present continuous row**
+  - 79:16 Show the present continuous row of the table
+  - 79:24 State why these words take the present continuous
+  - 79:47 Clinical model sentence
+  - 80:08 Draw the time reference of 'at the moment'
+- 80:48 **past simple row**
+  - 80:48 Show the past simple row of the table
+  - 80:57 Define 'the other day'
+  - 81:04 State the tense choice
+  - 81:14 Draw the finished past time
+- 81:33 **past continuous row**
+  - 81:33 Show the past continuous row of the table
+  - 81:36 Say what these words do and what to take from them here
+- 81:55 **present perfect simple row**
+  - 81:55 Show the present perfect simple row of the table
+  - 82:04 Define 'so far'
+  - 82:11 Draw the past-up-to-now time reference
+- 82:44 **present perfect continuous row**
+  - 82:44 Show the present perfect continuous row of the table
+  - 82:51 State what these words show
+  - 83:01 Draw the duration up to now
+- 83:14 **past perfect simple row**
+  - 83:14 Show the past perfect simple row of the table
+  - 83:21 Make the once / when point clear
+- 83:35 **past perfect continuous row and closing advice**
+  - 83:35 Show the past perfect continuous row of the table
+  - 83:44 Show that for and since serve two tenses
+  - 84:07 Take the pressure off memorising the table
+  - 84:14 Why signal words matter in writing
 
 *Rules on the boards*
 
-- 80:30 In the passive the object moves to the front. The doer is often left out; you can add it with 'by'. The verb changes form too.
-- 83:22 The -ed on a past participle is not the past tense -ed. In every passive the main verb is a past participle.
-- 90:08 Most sentences in a letter use the simple past or the present perfect.
+- 77:08 This is a tendency, not a rule. The word "always" does not force you to use the present simple.
+- 81:40 They are often signals for the past continuous, but the tense comes from the meaning, not from the time word.
+- 84:14 When you write a patient's history, put the time into your sentences. Then the reader can follow when each thing happened.
+
+*Terms*: Signal word (New term, 76:44); Seldom (Signal word, 77:58); Occasionally (Signal word, 78:06); The other day (Signal word, 80:57); So far (Signal word, 82:04)
+
+#### 84:26 Active vs passive (`page-15`, deck)
+
+- 84:26 **what the active and the passive do**
+  - 84:26 Set up the two forms and define the grammar term 'passive'
+  - 85:06 First reason letters use the passive: no doer in the notes
+  - 85:37 Second reason: the writer does not repeat 'I'
+- 85:55 **the aspirin example, from active to passive**
+  - 85:55 Name the parts of the active sentence
+  - 86:16 Define 'active' and note that an object is not always needed
+  - 86:30 Show which part can move and which part stays with the verb
+  - 86:51 Build the passive in English by dropping the doer and fronting the object
+  - 87:08 State the rule for the change
+- 87:24 **two passive forms and where the focus falls**
+  - 87:24 Show both passive forms and state that both are correct
+  - 87:36 Explain the focus difference in English, through the front position
+  - 87:53 Set up the context for choosing the form that fits
+  - 88:12 Choose the form whose focus matches the context
+- 88:58 **the form of the passive verb**
+  - 88:58 Give the form and define 'past participle'
+  - 89:32 Show that the tense does not change
+  - 90:00 Regular and irregular past participles
+  - 90:26 Warn against reading the participle -ed as a past tense -ed
+  - 90:40 The be verb carries the tense: past
+  - 90:55 The be verb carries the tense: present
+  - 91:06 The be verb carries the tense: future
+- 91:50 **row 1, took and was given**
+  - 91:50 Show why 'take' cannot carry the passive meaning
+  - 92:14 Give the passive with the new verb and name its parts
+  - 92:27 Contrast the meaning of the active and the passive
+  - 92:51 Turn the sentence round so the focus is on the medicine
+- 93:03 **row 2, had arthritis and was diagnosed**
+  - 93:03 Show that 'have' cannot be made passive
+  - 93:24 Change the verb and identify who diagnoses
+  - 93:47 Give the passive with the patient first
+  - 94:02 Give the form with the condition first
+  - 94:11 Show where the word 'with' belongs
+  - 94:38 Reassure about what the exam asks for
+- 94:50 **row 3, the appointment in the present simple**
+  - 94:50 Explain the present simple in a sentence about tomorrow
+  - 95:12 Draw the time: the appointment exists now, the visit is tomorrow
+  - 95:22 Show that the will-form is also correct and why we choose the present simple
+- 95:43 **row 3 passive, will be seen**
+  - 95:43 Explain why the passive here is future
+  - 95:58 Name the participle and the doer
+- 96:11 **row 3, focus on the appointment and the verb schedule**
+  - 96:11 Teach the verb 'schedule' in English
+  - 96:31 Show the active and passive present perfect side by side
+  - 96:52 Name the three parts of the present perfect passive
+- 97:28 **the tenses used most in a letter**
+  - 97:28 Frame what a letter reports and name the first tense
+  - 97:39 Name the second tense
+  - 97:46 Draw the present perfect time reference
+  - 97:55 State the rule to remember and reassure about the forms
+
+*Rules on the boards*
+
+- 87:08 In the passive the object moves to the front. The doer is often left out; you can add it with 'by'. The verb changes form too.
+- 90:26 The -ed on a past participle is not the past tense -ed. In every passive the main verb is a past participle.
+- 97:55 Most sentences in a letter use the simple past or the present perfect.
 
 *Wrong sentences corrected*
 
-- 85:50 Arthritis was had by the patient.
+- 93:18 Arthritis was had by the patient.
 
-*Terms*: Passive (Grammar term, 78:16); Subject (Grammar term, 79:28); Object (Grammar term, 79:33); Active (Grammar term, 79:38); Be verb plus past participle (Form, 81:55); Past participle (Grammar term, 82:12); Schedule (New word, 88:50); Has been scheduled (Form, 89:24)
+*Terms*: Passive (Grammar term, 84:54); Subject (Grammar term, 86:06); Object (Grammar term, 86:12); Active (Grammar term, 86:16); Be verb plus past participle (Form, 88:58); Past participle (Grammar term, 89:16); Schedule (New word, 96:18); Has been scheduled (Form, 96:52)
 
-#### 90:23 Passive forms of the verb tenses (`page-16`, deck)
+#### 98:10 Passive forms of the verb tenses (`page-16`, deck)
 
-- 90:23 **what the table shows and the four groups**
-  - 90:23 Set up the board: one sentence in the passive across all 12 tenses, grouped in four families of form
-  - 90:41 Define the grammar term 'passive' the first time it appears
-  - 91:10 Give the study priority for the whole table
-  - 91:23 Fix the priority as a rule to remember
-- 91:45 **the simple passive forms**
-  - 91:45 the three simple passive rows of the table
-  - 92:19 Define past participle, the part of the passive that never changes
-  - 92:38 State what actually changes between the three rows
-  - 92:53 Note the plural subject change
-  - 93:11 Replace the first-language glosses with an English time reference for the three forms
-- 93:33 **the continuous passive forms**
-  - 93:33 the two continuous passive rows
-  - 93:53 State how the continuous passive is built
-  - 94:09 Contrast the simple and continuous passive to show what 'being' adds
-- 94:26 **the perfect passive forms**
-  - 94:26 the two useful perfect passive rows
-  - 94:47 State how the perfect passive is built
-  - 94:58 Mark these two forms as worth learning
-  - 95:07 Set the future perfect passive aside
-- 95:22 **the passive forms we do not use**
-  - 95:22 the rejected rows of the table
-  - 95:44 Explain in English why these forms are rejected (replaces the first-language argument)
-  - 95:55 Close the point with the rule to remember
-- 96:08 **the priority list from the table**
-  - 96:08 the five priority forms of the table
-  - 96:29 State why the simple forms come first
-  - 96:38 Say where the future form is needed
-  - 96:52 Close with the study rule for the whole table
-
-*Rules on the boards*
-
-- 91:23 Learn the simple forms well.
-- 95:55 You do not need these forms. Learn the simple and perfect passives instead.
-- 96:52 Practise these five forms until you can use them easily.
-
-*Wrong sentences corrected*
-
-- 95:22 OxyContin will be being given to control the pain.
-- 95:22 OxyContin had been being given to control the pain.
-- 95:22 OxyContin has been being given to control the pain.
-
-*Terms*: Passive (Grammar term, 90:41); Past participle (Grammar term, 92:19)
-
-#### 97:09 Passive vs active form: error correction (`page-17`, deck)
-
-- 97:09 **Introduction: the four sentences**
-  - 97:09 Set the task and show the whole set of faulty sentences
-  - 97:49 Say what to take from the set
-  - 98:01 State the page topic with the deck's title typo corrected
-- 98:23 **Item 1: Mylanta prescribed**
-  - 98:26 Show that the first part of the sentence is already correct
-  - 98:53 Show that the date sits in past time, so the simple past fits
-  - 99:06 Teach the verb 'administer' and its pattern
-  - 99:24 Contrast active and passive with the same verb
-  - 99:55 Define the grammar term 'passive'
-  - 100:07 Locate the fault in the second part
-  - 100:33 Give the corrected sentence and say what the passive changes
-- 101:09 **Item 2: was presented**
-  - 101:09 Keep the faulty sentence on the board
-  - 101:28 Test the form by asking who does the action, and give the answer
-  - 101:52 Give the model sentence for a writing task
-  - 102:12 Teach 'attend' as a second verb with the correct pattern
-  - 102:21 State the decision test
-  - 102:33 Show that the same action can be written in both forms
-  - 102:57 Give the rule for choosing the passive
-- 103:16 **Item 3: a liver scan**
-  - 103:16 Keep the faulty sentence on the board and teach 'confirm'
-  - 103:40 Give the corrected sentence and say why it is active
-  - 103:54 Teach 'reveal' as a second verb for findings
-  - 104:10 Give a second example with a test as the subject
-- 104:28 **Item 4: admitted to hospital**
-  - 104:28 Keep the faulty sentence on the board and teach 'admit'
-  - 104:40 Explain what the printed sentence says
-  - 104:49 Give the corrected sentence
-  - 105:07 Show that the active is also correct, and why we choose the passive
-  - 105:32 Close with the contrast between the two verbs and the rule
+- 98:10 **what the table shows and the four groups**
+  - 98:10 Set up the board: one sentence in the passive across all 12 tenses, grouped in four families of form
+  - 98:28 Define the grammar term 'passive' the first time it appears
+  - 98:57 Give the study priority for the whole table
+  - 99:09 Fix the priority as a rule to remember
+- 99:31 **the simple passive forms**
+  - 99:31 the three simple passive rows of the table
+  - 100:05 Define past participle, the part of the passive that never changes
+  - 100:24 State what actually changes between the three rows
+  - 100:40 Note the plural subject change
+  - 100:57 Replace the first-language glosses with an English time reference for the three forms
+- 101:20 **the continuous passive forms**
+  - 101:20 the two continuous passive rows
+  - 101:40 State how the continuous passive is built
+  - 101:56 Contrast the simple and continuous passive to show what 'being' adds
+- 102:13 **the perfect passive forms**
+  - 102:13 the two useful perfect passive rows
+  - 102:33 State how the perfect passive is built
+  - 102:45 Mark these two forms as worth learning
+  - 102:53 Set the future perfect passive aside
+- 103:08 **the passive forms we do not use**
+  - 103:08 the rejected rows of the table
+  - 103:30 Explain in English why these forms are rejected (replaces the first-language argument)
+  - 103:42 Close the point with the rule to remember
+- 104:17 **the priority list from the table**
+  - 104:17 the five priority forms of the table
+  - 104:38 State why the simple forms come first
+  - 104:47 Say where the future form is needed
+  - 105:01 Close with the study rule for the whole table
 
 *Rules on the boards*
 
-- 102:57 We choose the passive when the doer is not known, or is obvious, or is not the point.
-- 105:49 Look at the meaning of the verb and its subject. That shows you which form to use.
+- 99:09 Learn the simple forms well.
+- 103:42 You do not need these forms. Learn the simple and perfect passives instead.
+- 105:01 Practise these five forms until you can use them easily.
 
 *Wrong sentences corrected*
 
-- 97:09 The patient had the flu vaccination on 16/05/2014 and an antacid prescribed
-- 97:09 The patient was presented to hospital on 12/03/2016
-- 97:09 A liver scan was confirmed a 10 cm liver abscess
-- 97:09 The patient admitted to hospital yesterday
-- 100:16 And an antacid prescribed
-- 101:09 The patient was presented to hospital on 12/03/2016
-- 103:16 A liver scan was confirmed a 10 cm liver abscess
-- 104:28 The patient admitted to hospital yesterday
+- 103:08 OxyContin will be being given to control the pain.
+- 103:08 OxyContin had been being given to control the pain.
+- 103:08 OxyContin has been being given to control the pain.
 
-*Terms*: Administer (New word, 99:06); Passive (Grammar term, 99:55); Present (New word, 101:22); Confirm (New word, 103:28); Reveal (New word, 103:54); Admit (New word, 104:36)
+*Terms*: Passive (Grammar term, 98:28); Past participle (Grammar term, 100:05)
 
-#### 106:02 Case notes: error correction (`page-18`, deck)
+#### 105:38 Passive vs active form: error correction (`page-17`, deck)
 
-- 106:02 **Case notes: the four items to correct**
-  - 106:02 Set the task and show the whole set of exercise sentences
-  - 106:11 Define case notes
-  - 106:29 Contrast a note with a full sentence
-  - 106:56 State what paraphrasing a case note means
-- 107:25 **Item 1: diagnosed with COPD since 2002**
-  - 107:25 Fix the sentence under discussion on the board, with tense tags
-  - 107:32 Teach the opening phrase for the medical history paragraph
-  - 107:45 Define the grammar term 'passive' at first appearance
-  - 107:57 Name the form and the time marker in the faulty sentence
-  - 108:25 Show in English why the diagnosis cannot run from 2002 until now
-  - 108:52 Draw the moment of diagnosis against the lasting condition
-  - 109:14 First correct answer: simple past passive with a point in time
-  - 110:01 Second correct answer: change the verb and keep 'since'
-  - 110:23 Name the two perfect forms correctly
-  - 110:49 Teach the pattern 'suffer from'
-  - 110:58 Generalise the rule about one-moment verbs
-- 111:24 **Item 2: poor appetite and 5 kg weight loss**
-  - 111:24 Fix the sentence under discussion on the board, with tense tags
-  - 111:31 Gloss the clinical phrase
-  - 111:41 Explain the two-clause structure and the dropped subject
-  - 112:11 Name the second verb form and check the voice
-  - 112:32 Show in English that the meaning is wrong
-  - 112:57 First correct answer
-  - 113:15 Second correct answer
-  - 113:31 Show when the continuous form is correct
-  - 113:41 Draw the finished loss against the continuing loss
-  - 114:00 Close item 2
-- 114:16 **Item 3: the seizure and hyperventilation**
-  - 114:16 Fix the sentence under discussion on the board, with the tense clash tagged
-  - 114:25 Explain the question mark in the notes
-  - 114:35 Gloss the two key words
-  - 115:07 Model active and passive with a simple example
-  - 115:25 Show that the tense of a passive sentence sits in the 'be' verb
-  - 115:48 Analyse the subject and the agent in item 3
-  - 116:02 Name the fault
-  - 116:21 Give the correct answer
-  - 116:34 Name the form correctly
-  - 116:48 Explain why the verb after a modal has no ending
-- 117:09 **Item 4: the dated physiotherapy visit**
-  - 117:09 Fix the sentence under discussion on the board, with the tense clash tagged
-  - 117:20 Give the rule about dates in case notes
-  - 117:33 Gloss the abbreviation in the note
-  - 117:43 Show the simple subject-verb structure
-  - 117:57 Show why the verb must be passive
-  - 118:09 Correct the first clause
-  - 118:31 Correct the second clause
-  - 118:41 Keep both verbs in the same time
+- 105:38 **Introduction: the four sentences**
+  - 105:38 Set the task and show the whole set of faulty sentences
+  - 106:18 Say what to take from the set
+  - 106:30 State the page topic with the deck's title typo corrected
+- 106:51 **Item 1: Mylanta prescribed**
+  - 106:55 Show that the first part of the sentence is already correct
+  - 107:22 Show that the date sits in past time, so the simple past fits
+  - 107:35 Teach the verb 'administer' and its pattern
+  - 107:53 Contrast active and passive with the same verb
+  - 108:24 Define the grammar term 'passive'
+  - 108:36 Locate the fault in the second part
+  - 109:02 Give the corrected sentence and say what the passive changes
+- 110:01 **Item 2: was presented**
+  - 110:01 Keep the faulty sentence on the board
+  - 110:19 Test the form by asking who does the action, and give the answer
+  - 110:44 Give the model sentence for a writing task
+  - 111:03 Teach 'attend' as a second verb with the correct pattern
+  - 111:13 State the decision test
+  - 111:25 Show that the same action can be written in both forms
+  - 111:48 Give the rule for choosing the passive
+- 112:07 **Item 3: a liver scan**
+  - 112:07 Keep the faulty sentence on the board and teach 'confirm'
+  - 112:32 Give the corrected sentence and say why it is active
+  - 112:46 Teach 'reveal' as a second verb for findings
+  - 113:01 Give a second example with a test as the subject
+- 113:19 **Item 4: admitted to hospital**
+  - 113:19 Keep the faulty sentence on the board and teach 'admit'
+  - 113:32 Explain what the printed sentence says
+  - 113:41 Give the corrected sentence
+  - 113:58 Show that the active is also correct, and why we choose the passive
+  - 114:24 Close with the contrast between the two verbs and the rule
 
 *Rules on the boards*
 
-- 106:56 In the letter you cannot write in note form. Add a verb, choose the right tense, and add a subject where you need one.
-- 110:58 Verbs like 'diagnose' happen at one time and finish. Use the simple past with them.
-- 117:20 A date that marks one finished time, like this one, takes a past tense. With 'since' and a date, use the present perfect.
-- 118:41 Both parts of the sentence talk about the same past date, so both verbs are in the past.
+- 111:48 We choose the passive when the doer is not known, or is obvious, or is not the point.
+- 114:40 Look at the meaning of the verb and its subject. That shows you which form to use.
 
 *Wrong sentences corrected*
 
-- 106:02 Regarding her medical history, she has been diagnosed with COPD since 2002.
-- 106:02 She also has a poor appetite and has been losing 5kg after the operation.
-- 106:02 Noah had an episode of petit mal epileptic seizure, which may be triggered by hyperventilation during the dental procedure.
-- 106:02 On 20/06/2015, her trunk joint range of motion reduced and the range is similar to the first visit.
-- 107:25 Regarding her medical history, she has been diagnosed with COPD since 2002.
-- 111:24 She also has a poor appetite and has been losing 5kg after the operation.
-- 114:16 Noah had an episode of petit mal epileptic seizure, which may be triggered by hyperventilation during the dental procedure.
-- 116:48 May is triggered
-- 117:09 On 20/06/2015, her trunk joint range of motion reduced and the range is similar to the first visit.
+- 105:38 The patient had the flu vaccination on 16/05/2014 and an antacid prescribed
+- 105:38 The patient was presented to hospital on 12/03/2016
+- 105:38 A liver scan was confirmed a 10 cm liver abscess
+- 105:38 The patient admitted to hospital yesterday
+- 108:45 And an antacid prescribed
+- 110:01 The patient was presented to hospital on 12/03/2016
+- 112:07 A liver scan was confirmed a 10 cm liver abscess
+- 113:19 The patient admitted to hospital yesterday
 
-*Terms*: Case notes (New term, 106:11); Regarding her medical history, ... (Useful phrase, 107:32); Passive (Grammar term, 107:45); Suffer from (Pattern, 110:49); Poor appetite (New words, 111:31); Compound sentence (Grammar term, 111:41); Trigger (New word, 114:35); Hyperventilation (New word, 114:38); May have been triggered (Form, 116:34); ROM (Abbreviation, 117:33)
+*Terms*: Administer (New word, 107:35); Passive (Grammar term, 108:24); Present (New word, 110:14); Confirm (New word, 112:19); Reveal (New word, 112:46); Admit (New word, 113:28)
+
+#### 114:53 Case notes: error correction (`page-18`, deck)
+
+- 114:53 **Case notes: the four items to correct**
+  - 114:53 Set the task and show the whole set of exercise sentences
+  - 115:03 Define case notes
+  - 115:21 Contrast a note with a full sentence
+  - 116:13 State what paraphrasing a case note means
+- 116:42 **Item 1: diagnosed with COPD since 2002**
+  - 116:42 Fix the sentence under discussion on the board, with tense tags
+  - 116:50 Teach the opening phrase for the medical history paragraph
+  - 117:02 Define the grammar term 'passive' at first appearance
+  - 117:14 Name the form and the time marker in the faulty sentence
+  - 117:43 Show in English why the diagnosis cannot run from 2002 until now
+  - 118:09 Draw the moment of diagnosis against the lasting condition
+  - 118:31 First correct answer: simple past passive with a point in time
+  - 119:19 Second correct answer: change the verb and keep 'since'
+  - 119:41 Name the two perfect forms correctly
+  - 120:07 Teach the pattern 'suffer from'
+  - 120:16 Generalise the rule about one-moment verbs
+- 121:08 **Item 2: poor appetite and 5 kg weight loss**
+  - 121:08 Fix the sentence under discussion on the board, with tense tags
+  - 121:15 Gloss the clinical phrase
+  - 121:25 Explain the two-clause structure and the dropped subject
+  - 121:55 Name the second verb form and check the voice
+  - 122:16 Show in English that the meaning is wrong
+  - 122:41 First correct answer
+  - 122:59 Second correct answer
+  - 123:15 Show when the continuous form is correct
+  - 123:25 Draw the finished loss against the continuing loss
+  - 123:44 Close item 2
+- 124:00 **Item 3: the seizure and hyperventilation**
+  - 124:00 Fix the sentence under discussion on the board, with the tense clash tagged
+  - 124:09 Explain the question mark in the notes
+  - 124:19 Gloss the two key words
+  - 124:51 Model active and passive with a simple example
+  - 125:09 Show that the tense of a passive sentence sits in the 'be' verb
+  - 125:32 Analyse the subject and the agent in item 3
+  - 125:46 Name the fault
+  - 126:05 Give the correct answer
+  - 126:18 Name the form correctly
+  - 126:32 Explain why the verb after a modal has no ending
+- 127:17 **Item 4: the dated physiotherapy visit**
+  - 127:17 Fix the sentence under discussion on the board, with the tense clash tagged
+  - 127:27 Give the rule about dates in case notes
+  - 127:40 Gloss the abbreviation in the note
+  - 127:51 Show the simple subject-verb structure
+  - 128:05 Show why the verb must be passive
+  - 128:16 Correct the first clause
+  - 128:39 Correct the second clause
+  - 128:48 Keep both verbs in the same time
+
+*Rules on the boards*
+
+- 116:13 In the letter you cannot write in note form. Add a verb, choose the right tense, and add a subject where you need one.
+- 120:16 Verbs like 'diagnose' happen at one time and finish. Use the simple past with them.
+- 127:27 A date that marks one finished time, like this one, takes a past tense. With 'since' and a date, use the present perfect.
+- 128:48 Both parts of the sentence talk about the same past date, so both verbs are in the past.
+
+*Wrong sentences corrected*
+
+- 114:53 Regarding her medical history, she has been diagnosed with COPD since 2002.
+- 114:53 She also has a poor appetite and has been losing 5kg after the operation.
+- 114:53 Noah had an episode of petit mal epileptic seizure, which may be triggered by hyperventilation during the dental procedure.
+- 114:53 On 20/06/2015, her trunk joint range of motion reduced and the range is similar to the first visit.
+- 116:42 Regarding her medical history, she has been diagnosed with COPD since 2002.
+- 121:08 She also has a poor appetite and has been losing 5kg after the operation.
+- 124:00 Noah had an episode of petit mal epileptic seizure, which may be triggered by hyperventilation during the dental procedure.
+- 126:32 May is triggered
+- 127:17 On 20/06/2015, her trunk joint range of motion reduced and the range is similar to the first visit.
+
+*Terms*: Case notes (New term, 115:03); Regarding her medical history, ... (Useful phrase, 116:50); Passive (Grammar term, 117:02); Suffer from (Pattern, 120:07); Poor appetite (New words, 121:15); Compound sentence (Grammar term, 121:25); Trigger (New word, 124:19); Hyperventilation (New word, 124:22); May have been triggered (Form, 126:18); ROM (Abbreviation, 127:40)
 
 ### OET facts
 
@@ -712,24 +712,24 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 
 First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
 
-- 16:10 experience
-- 24:07 predict
-- 28:16 Persistent
-- 55:14 Receive treatment
-- 61:06 underwent
-- 66:31 undergo / underwent
-- 88:50 Schedule
-- 99:06 Administer
-- 101:22 Present
-- 103:28 Confirm
-- 103:54 Reveal
-- 104:36 Admit
-- 107:32 Regarding her medical history, ...
-- 109:41 regarding
-- 111:31 Poor appetite
-- 114:35 Trigger
-- 114:38 Hyperventilation
-- 114:44 triggered
+- 17:12 experience
+- 26:17 predict
+- 30:26 Persistent
+- 59:44 Receive treatment
+- 66:22 underwent
+- 72:09 undergo / underwent
+- 96:18 Schedule
+- 107:35 Administer
+- 110:14 Present
+- 112:19 Confirm
+- 112:46 Reveal
+- 113:28 Admit
+- 116:50 Regarding her medical history, ...
+- 118:58 regarding
+- 121:15 Poor appetite
+- 124:19 Trigger
+- 124:22 Hyperventilation
+- 124:28 triggered
 
 ### Practice material
 
@@ -8845,10 +8845,10 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **a-**: `grammar-03-nominalization` 9:26
 - **Abbreviations in the letter**: `writing-02-assessment-criteria` 24:23
 - **Accuracy to the case notes**: `writing-02-assessment-criteria` 14:03
-- **Active**: `grammar-01-verb-tenses` 79:38
-- **active and passive**: `grammar-01-verb-tenses` 77:47; `grammar-02-verb-use` 30:28
+- **Active**: `grammar-01-verb-tenses` 86:16
+- **active and passive**: `grammar-01-verb-tenses` 84:26; `grammar-02-verb-use` 30:28
 - **Active voice**: `grammar-02-verb-use` 31:31
-- **Active vs passive**: `grammar-01-verb-tenses` 77:47
+- **Active vs passive**: `grammar-01-verb-tenses` 84:26
 - **adjective + noun collocations**: `vocabulary-03-collocations-2` 2:00
 - **Adjective and noun**: `vocabulary-03-collocations-2` 5:51
 - **Adjective and noun collocation**: `vocabulary-03-collocations-2` 2:22
@@ -8866,9 +8866,9 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Articles**: `grammar-04-articles` 2:00; `grammar-08-paraphrasing` 11:22
 - **Avoid a series of short sentences**: `vocabulary-01-word-forms` 58:27
 - **Avoid sentences that are too long**: `vocabulary-01-word-forms` 69:24
-- **Be verb plus past participle**: `grammar-01-verb-tenses` 81:55
-- **been**: `grammar-01-verb-tenses` 14:41
-- **Before he quit**: `grammar-01-verb-tenses` 45:34
+- **Be verb plus past participle**: `grammar-01-verb-tenses` 88:58
+- **been**: `grammar-01-verb-tenses` 15:25
+- **Before he quit**: `grammar-01-verb-tenses` 49:39
 - **Before you listen**: `listening-03-part-b` 5:03
 - **Before you listen: ninety seconds**: `listening-04-part-c` 5:21
 - **Brackets**: `grammar-07-punctuation` 75:55
@@ -8876,9 +8876,9 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **By monitoring your symptoms**: `vocabulary-02-collocations` 31:28
 - **c/o**: `grammar-03-nominalization` 15:24
 - **Capital letters**: `grammar-07-punctuation` 60:31
-- **Case notes**: `grammar-01-verb-tenses` 106:11
+- **Case notes**: `grammar-01-verb-tenses` 115:03
 - **Case notes and the Writing Task**: `writing-01-overview` 13:47
-- **Case notes: error correction**: `grammar-01-verb-tenses` 106:02
+- **Case notes: error correction**: `grammar-01-verb-tenses` 114:53
 - **Case-note abbreviations**: `grammar-07-punctuation` 73:36
 - **Choosing the right word form**: `vocabulary-01-word-forms` 2:25
 - **choosing the tense**: `grammar-02-verb-use` 8:36
@@ -8898,7 +8898,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Complex sentences**: `grammar-07-punctuation` 5:39
 - **Compliant with**: `grammar-08-paraphrasing` 29:38
 - **Compound or complex?**: `grammar-05-complex-compound` 20:47
-- **Compound sentence**: `grammar-01-verb-tenses` 111:41; `grammar-05-complex-compound` 20:47; `grammar-08-paraphrasing` 7:33
+- **Compound sentence**: `grammar-01-verb-tenses` 121:25; `grammar-05-complex-compound` 20:47; `grammar-08-paraphrasing` 7:33
 - **Compound sentences**: `grammar-07-punctuation` 13:27
 - **Comprehension**: `reading-04-part-c` 2:05
 - **Conciseness and Clarity**: `writing-02-assessment-criteria` 15:53
@@ -8908,8 +8908,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Connectives**: `grammar-02-verb-use` 22:00
 - **Content**: `writing-02-assessment-criteria` 10:31
 - **Continuous**: `grammar-01-verb-tenses` 2:45
-- **Continuous tense**: `grammar-01-verb-tenses` 26:28
-- **continuous tenses**: `grammar-01-verb-tenses` 25:49
+- **Continuous tense**: `grammar-01-verb-tenses` 28:38
+- **continuous tenses**: `grammar-01-verb-tenses` 27:58
 - **Contraction**: `grammar-07-punctuation` 53:40
 - **Contrast**: `listening-04-part-c` 8:29
 - **Coordinating conjunction**: `grammar-05-complex-compound` 21:08
@@ -8922,7 +8922,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Dangling participle**: `grammar-06-clause` 32:54
 - **Dates, times and units**: `grammar-07-punctuation` 69:41
 - **deal with**: `vocabulary-03-collocations-2` 25:50
-- **Decision**: `grammar-01-verb-tenses` 24:42
+- **Decision**: `grammar-01-verb-tenses` 26:52
 - **Defining and non-defining**: `grammar-06-clause` 9:39
 - **defining and non-defining relative clauses**: `grammar-06-clause` 9:39
 - **defining relative clause**: `vocabulary-01-word-forms` 59:42
@@ -8944,7 +8944,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Final practice**: `grammar-07-punctuation` 77:05
 - **Five questions**: `writing-04-introduction` 23:27
 - **Follow-up**: `grammar-07-punctuation` 81:34
-- **For and since**: `grammar-01-verb-tenses` 36:24
+- **For and since**: `grammar-01-verb-tenses` 39:20
 - **Formal time-related expressions**: `grammar-03-nominalization` 36:27
 - **Four steps towards success**: `reading-01-overview` 15:14
 - **From case notes to a sentence**: `grammar-05-complex-compound` 8:51
@@ -8953,8 +8953,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **From what you hear to the notes**: `listening-02-part-a` 12:25
 - **from which**: `vocabulary-01-word-forms` 51:31
 - **Full stops and sentence boundaries**: `grammar-07-punctuation` 42:56
-- **future perfect**: `grammar-01-verb-tenses` 39:01
-- **future simple**: `grammar-01-verb-tenses` 18:47
+- **future perfect**: `grammar-01-verb-tenses` 42:20
+- **future simple**: `grammar-01-verb-tenses` 20:16
 - **Gap fill**: `grammar-05-complex-compound` 28:32
 - **Gap fill: articles**: `grammar-04-articles` 52:51
 - **Genre and Style**: `writing-02-assessment-criteria` 20:49
@@ -8964,10 +8964,10 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Giving reassurance**: `vocabulary-03-collocations-2` 43:53
 - **Grade B in OET Writing**: `writing-02-assessment-criteria` 5:27
 - **Greeting and Re line**: `writing-03-letter-structure` 14:50; `writing-04-introduction` 3:36
-- **Had smoked**: `grammar-01-verb-tenses` 49:09
-- **Has been scheduled**: `grammar-01-verb-tenses` 89:24
+- **Had smoked**: `grammar-01-verb-tenses` 53:39
+- **Has been scheduled**: `grammar-01-verb-tenses` 96:52
 - **has not eased**: `vocabulary-03-collocations-2` 27:29
-- **Has smoked**: `grammar-01-verb-tenses` 50:06
+- **Has smoked**: `grammar-01-verb-tenses` 54:36
 - **hedging**: `reading-04-part-c` 12:37
 - **Hedging word**: `reading-04-part-c` 14:44
 - **Helping verb**: `grammar-01-verb-tenses` 3:47
@@ -9004,7 +9004,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Main clause**: `reading-04-part-c` 18:06
 - **Main clause (independent clause)**: `grammar-07-punctuation` 21:48
 - **Main point or detail?**: `listening-03-part-b` 3:46
-- **May have been triggered**: `grammar-01-verb-tenses` 116:34
+- **May have been triggered**: `grammar-01-verb-tenses` 126:18
 - **Medical terms: vocabulary and word form**: `vocabulary-01-word-forms` 16:09
 - **Monitor**: `vocabulary-02-collocations` 26:57
 - **Multiple choice**: `reading-01-overview` 7:48; `listening-01-overview` 3:38
@@ -9016,8 +9016,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Non-physical complaints**: `grammar-03-nominalization` 18:58
 - **Non-specific**: `grammar-04-articles` 15:38
 - **Noun endings**: `vocabulary-01-word-forms` 15:23
-- **Object**: `grammar-01-verb-tenses` 79:33
-- **Occasionally**: `grammar-01-verb-tenses` 72:05
+- **Object**: `grammar-01-verb-tenses` 86:12
+- **Occasionally**: `grammar-01-verb-tenses` 78:06
 - **Omit**: `grammar-08-paraphrasing` 6:18
 - **one of which**: `vocabulary-01-word-forms` 57:33
 - **One test for every profession**: `writing-01-overview` 1:31
@@ -9033,33 +9033,33 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Participle clause**: `grammar-06-clause` 29:06
 - **Participle clauses**: `grammar-06-clause` 29:03
 - **Parts of an OET letter**: `writing-01-overview` 14:12
-- **Passive**: `grammar-01-verb-tenses` 46:59; `grammar-02-verb-use` 6:16; `grammar-03-nominalization` 5:49; `grammar-05-complex-compound` 22:51; `grammar-06-clause` 36:14; `grammar-07-punctuation` 11:41; `grammar-08-paraphrasing` 4:59; `vocabulary-01-word-forms` 23:40; `vocabulary-02-collocations` 34:43
-- **passive forms**: `grammar-01-verb-tenses` 90:23
-- **Passive forms of the verb tenses**: `grammar-01-verb-tenses` 90:23
+- **Passive**: `grammar-01-verb-tenses` 51:04; `grammar-02-verb-use` 6:16; `grammar-03-nominalization` 5:49; `grammar-05-complex-compound` 22:51; `grammar-06-clause` 36:14; `grammar-07-punctuation` 11:41; `grammar-08-paraphrasing` 4:59; `vocabulary-01-word-forms` 23:40; `vocabulary-02-collocations` 34:43
+- **passive forms**: `grammar-01-verb-tenses` 98:10
+- **Passive forms of the verb tenses**: `grammar-01-verb-tenses` 98:10
 - **Passive voice**: `grammar-02-verb-use` 31:49
 - **Passive vs active**: `grammar-02-verb-use` 30:28
-- **Passive vs active form: error correction**: `grammar-01-verb-tenses` 97:09
-- **Past participle**: `grammar-01-verb-tenses` 10:49; `grammar-06-clause` 25:49
-- **Past perfect**: `grammar-01-verb-tenses` 22:32
-- **past simple**: `grammar-01-verb-tenses` 18:47
+- **Passive vs active form: error correction**: `grammar-01-verb-tenses` 105:38
+- **Past participle**: `grammar-01-verb-tenses` 11:09; `grammar-06-clause` 25:49
+- **Past perfect**: `grammar-01-verb-tenses` 24:20
+- **past simple**: `grammar-01-verb-tenses` 20:16
 - **Patient friendly language**: `grammar-08-paraphrasing` 46:57
 - **Perfect**: `grammar-01-verb-tenses` 3:05
 - **Perfect continuous**: `grammar-01-verb-tenses` 3:24
-- **perfect continuous tenses**: `grammar-01-verb-tenses` 40:51
+- **perfect continuous tenses**: `grammar-01-verb-tenses` 44:34
 - **Perfect participle**: `grammar-06-clause` 29:03
-- **Perfect tenses**: `grammar-01-verb-tenses` 34:03
-- **Perfect tenses on a timeline**: `grammar-01-verb-tenses` 48:32
+- **Perfect tenses**: `grammar-01-verb-tenses` 36:59
+- **Perfect tenses on a timeline**: `grammar-01-verb-tenses` 53:02
 - **Perform**: `vocabulary-02-collocations` 31:48
 - **Peripheral vision**: `reading-02-part-a` 18:23
 - **Physical symptoms**: `grammar-03-nominalization` 8:23
 - **Podcasts and talks**: `listening-01-overview` 13:08
-- **Prediction**: `grammar-01-verb-tenses` 23:56
+- **Prediction**: `grammar-01-verb-tenses` 26:06
 - **Prescribe**: `vocabulary-02-collocations` 37:34
 - **Present participle**: `grammar-06-clause` 29:03
-- **present perfect**: `grammar-01-verb-tenses` 35:30; `grammar-02-verb-use` 10:49; `grammar-08-paraphrasing` 15:05
+- **present perfect**: `grammar-01-verb-tenses` 38:26; `grammar-02-verb-use` 10:49; `grammar-08-paraphrasing` 15:05
 - **present perfect continuous**: `vocabulary-03-collocations-2` 20:42
 - **present perfect passive**: `grammar-02-verb-use` 51:01; `grammar-08-paraphrasing` 48:22
-- **present simple**: `grammar-01-verb-tenses` 18:47
+- **present simple**: `grammar-01-verb-tenses` 20:16
 - **Prior to onset**: `grammar-08-paraphrasing` 38:29
 - **prn and tds**: `grammar-08-paraphrasing` 49:52
 - **Provide**: `vocabulary-02-collocations` 21:22
@@ -9080,20 +9080,20 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Relative clauses with prepositions**: `vocabulary-01-word-forms` 48:21
 - **Relative pronoun**: `grammar-06-clause` 17:33; `vocabulary-01-word-forms` 38:59
 - **relative pronouns**: `vocabulary-01-word-forms` 37:06
-- **ROM**: `grammar-01-verb-tenses` 117:33
+- **ROM**: `grammar-01-verb-tenses` 127:40
 - **Run-on sentence**: `grammar-07-punctuation` 43:44
 - **Scanning**: `reading-02-part-a` 20:43
 - **Schedule**: `vocabulary-02-collocations` 47:08
 - **Scoring the Reading test**: `reading-01-overview` 12:44
-- **Seldom**: `grammar-01-verb-tenses` 71:58
+- **Seldom**: `grammar-01-verb-tenses` 77:58
 - **Semi-colon**: `grammar-07-punctuation` 80:30
 - **Semi-colon (;)**: `grammar-07-punctuation` 18:19
 - **Semicolons and colons**: `grammar-07-punctuation` 47:10
 - **Sentence**: `grammar-07-punctuation` 43:05
 - **Sentence completion**: `reading-01-overview` 7:04; `reading-02-part-a` 50:30
 - **Should be monitored**: `vocabulary-02-collocations` 28:30
-- **Signal word**: `grammar-01-verb-tenses` 70:44
-- **Signal words and verb tenses**: `grammar-01-verb-tenses` 70:44
+- **Signal word**: `grammar-01-verb-tenses` 76:44
+- **Signal words and verb tenses**: `grammar-01-verb-tenses` 76:44
 - **Signing off**: `writing-03-letter-structure` 24:30
 - **signposts**: `listening-04-part-c` 6:39; `listening-05-part-c-2` 2:40
 - **Signposts and tempting options**: `listening-04-part-c` 6:39
@@ -9101,16 +9101,16 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Skimming**: `reading-02-part-a` 12:17
 - **Small numbers**: `grammar-07-punctuation` 41:41
 - **so ... that**: `vocabulary-03-collocations-2` 29:32
-- **So far**: `grammar-01-verb-tenses` 75:43
+- **So far**: `grammar-01-verb-tenses` 82:04
 - **Specific noun**: `grammar-04-articles` 30:21
 - **Specific nouns**: `grammar-04-articles` 29:38
 - **Spot the correct sentence**: `grammar-04-articles` 42:42
 - **Spot the errors**: `writing-04-introduction` 13:57
 - **Stat dose**: `grammar-04-articles` 58:35
-- **stative verb**: `grammar-01-verb-tenses` 67:52
+- **stative verb**: `grammar-01-verb-tenses` 73:52
 - **Steps towards successful writing**: `writing-01-overview` 3:01
 - **Strategies for Part A**: `listening-02-part-a` 2:25
-- **Subject**: `grammar-01-verb-tenses` 79:28; `grammar-02-verb-use` 36:52; `grammar-08-paraphrasing` 9:53
+- **Subject**: `grammar-01-verb-tenses` 86:06; `grammar-02-verb-use` 36:52; `grammar-08-paraphrasing` 9:53
 - **Subject and verb**: `grammar-01-verb-tenses` 5:15
 - **Subordinate clause**: `grammar-05-complex-compound` 7:41
 - **Subordinating conjunction**: `grammar-05-complex-compound` 24:50
@@ -9123,7 +9123,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Target score**: `reading-02-part-a` 53:08; `reading-03-part-b` 55:50; `reading-04-part-c` 3:50
 - **Tempting wrong options**: `listening-03-part-b` 9:21
 - **Tense in the letter**: `writing-02-assessment-criteria` 20:30
-- **The -ing form**: `grammar-01-verb-tenses` 8:00
+- **The -ing form**: `grammar-01-verb-tenses` 8:21
 - **The -ing form (present participle)**: `grammar-06-clause` 20:28
 - **The address**: `writing-03-letter-structure` 12:55
 - **The body**: `writing-03-letter-structure` 17:29
@@ -9132,14 +9132,14 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The date at the top of the letter**: `writing-03-letter-structure` 12:46
 - **The Listening test**: `listening-01-overview` 1:12
 - **The opening paragraph**: `writing-04-introduction` 1:44
-- **The other day**: `grammar-01-verb-tenses` 74:36
+- **The other day**: `grammar-01-verb-tenses` 80:57
 - **The Part A format**: `listening-02-part-a` 1:11
 - **The Part B format**: `listening-03-part-b` 1:25
 - **The Part C format**: `listening-04-part-c` 1:27
 - **The parts of a letter**: `writing-03-letter-structure` 5:25
-- **the passive**: `grammar-01-verb-tenses` 61:55
+- **the passive**: `grammar-01-verb-tenses` 67:12
 - **The patient's age in the opening**: `writing-04-introduction` 12:06
-- **The perfect forms**: `grammar-01-verb-tenses` 48:35
+- **The perfect forms**: `grammar-01-verb-tenses` 53:05
 - **The QAT method**: `reading-03-part-b` 11:23
 - **The QTA method**: `reading-04-part-c` 19:31
 - **The Reading test**: `reading-01-overview` 1:29
@@ -9153,8 +9153,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The Writing test**: `writing-01-overview` 5:18
 - **Time**: `listening-04-part-c` 8:41
 - **Time management in Part A**: `reading-02-part-a` 7:53
-- **Time marker**: `grammar-01-verb-tenses` 31:43; `grammar-02-verb-use` 4:01
-- **Time markers**: `grammar-01-verb-tenses` 12:55
+- **Time marker**: `grammar-01-verb-tenses` 34:20; `grammar-02-verb-use` 4:01
+- **Time markers**: `grammar-01-verb-tenses` 13:15
 - **Top tips**: `reading-02-part-a` 17:27
 - **Treat**: `vocabulary-02-collocations` 42:30
 - **Treatment**: `grammar-03-nominalization` 28:09
@@ -9163,14 +9163,14 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Uncountable nouns: non-specific**: `grammar-04-articles` 21:46
 - **undergo (past: underwent)**: `grammar-04-articles` 23:23
 - **US**: `grammar-04-articles` 13:54
-- **Usage: continuous tenses**: `grammar-01-verb-tenses` 25:49
-- **Usage: perfect continuous tenses**: `grammar-01-verb-tenses` 40:51
-- **Usage: perfect tenses**: `grammar-01-verb-tenses` 34:03
-- **Usage: simple tenses**: `grammar-01-verb-tenses` 18:47
+- **Usage: continuous tenses**: `grammar-01-verb-tenses` 27:58
+- **Usage: perfect continuous tenses**: `grammar-01-verb-tenses` 44:34
+- **Usage: perfect tenses**: `grammar-01-verb-tenses` 36:59
+- **Usage: simple tenses**: `grammar-01-verb-tenses` 20:16
 - **Verb + noun collocation**: `vocabulary-02-collocations` 1:49
 - **verb + noun collocations**: `vocabulary-02-collocations` 1:31
 - **Verb tense**: `grammar-02-verb-use` 2:28
-- **Verb tense: error correction**: `grammar-01-verb-tenses` 60:18
+- **Verb tense: error correction**: `grammar-01-verb-tenses` 65:34
 - **Verb tenses**: `grammar-01-verb-tenses` 2:07
 - **Verb tenses: a quick review**: `grammar-02-verb-use` 2:22
 - **Verb use: active or passive**: `grammar-02-verb-use` 34:52
@@ -9189,7 +9189,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **While you listen: signal words**: `listening-03-part-b` 6:58; `listening-04-part-c` 8:00
 - **who**: `vocabulary-01-word-forms` 59:34
 - **Who speaks, and a target score**: `listening-02-part-a` 15:40
-- **Will have smoked**: `grammar-01-verb-tenses` 51:40
+- **Will have smoked**: `grammar-01-verb-tenses` 56:10
 - **woke up**: `vocabulary-03-collocations-2` 29:03
 - **Word bank**: `reading-03-part-b` 57:12
 - **Word count of the letter body**: `writing-01-overview` 8:38
