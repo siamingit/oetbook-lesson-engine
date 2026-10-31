@@ -13501,9 +13501,9 @@
    "description": "Learn to punctuate your OET letters: where to put commas, and how to use full stops, semicolons, colons, apostrophes, hyphens, capital letters, numbers and short forms correctly.",
    "course": "grammar",
    "order": 7,
-   "length_s": 4980.684,
-   "length": "83:00",
-   "bundle_format": "1.22",
+   "length_s": 5745.595,
+   "length": "95:45",
+   "bundle_format": "1.23",
    "status": "approved",
    "approval": {
     "by": "siavash",
@@ -13735,7 +13735,7 @@
      "category": "c1",
      "start_s": 339.827,
      "start": "5:39",
-     "end_s": 807.589,
+     "end_s": 869.339,
      "topics": [
       {
        "board": "page-6_t1",
@@ -13996,139 +13996,139 @@
       9
      ],
      "category": "c1",
-     "start_s": 807.589,
-     "start": "13:27",
-     "end_s": 1262.472,
+     "start_s": 869.339,
+     "start": "14:29",
+     "end_s": 1391.692,
      "topics": [
       {
        "board": "pages-07-08-09_t1",
        "title": "Compound sentences: comma and FANBOYS",
-       "start_s": 807.589,
-       "start": "13:27",
+       "start_s": 869.339,
+       "start": "14:29",
        "points": [
         {
          "text": "Reveal the definition and the slide example, and define 'independent clause'",
          "block": "pages-07-08-09_k01",
-         "start_s": 807.589,
-         "start": "13:27"
+         "start_s": 869.339,
+         "start": "14:29"
         },
         {
          "text": "Name the seven joining words",
          "block": "pages-07-08-09_k04",
-         "start_s": 835.459,
-         "start": "13:55"
+         "start_s": 897.209,
+         "start": "14:57"
         },
         {
          "text": "Use the joining word as the test for compound or complex",
          "block": "pages-07-08-09_k06",
-         "start_s": 868.513,
-         "start": "14:28"
+         "start_s": 930.263,
+         "start": "15:30"
         },
         {
          "text": "Draw the example as two complete pieces joined by 'so'",
          "block": "pages-07-08-09_k08",
-         "start_s": 908.011,
-         "start": "15:08"
+         "start_s": 969.761,
+         "start": "16:09"
         },
         {
          "text": "Where the comma goes, and the rule to remember",
          "block": "pages-07-08-09_k09",
-         "start_s": 945.726,
-         "start": "15:45"
+         "start_s": 1007.476,
+         "start": "16:47"
         },
         {
          "text": "Show the reordered version and what changes with 'because'",
          "block": "pages-07-08-09_k11",
-         "start_s": 974.047,
-         "start": "16:14"
+         "start_s": 1035.797,
+         "start": "17:15"
         },
         {
          "text": "Why join clauses instead of writing two sentences",
          "block": "pages-07-08-09_k13",
-         "start_s": 998.354,
-         "start": "16:38"
+         "start_s": 1060.104,
+         "start": "17:40"
         },
         {
          "text": "The typed example: one clause with two verbs takes no comma",
          "block": "pages-07-08-09_k15",
-         "start_s": 1024.517,
-         "start": "17:04"
+         "start_s": 1086.267,
+         "start": "18:06"
         },
         {
          "text": "Contrast one clause and two clauses",
          "block": "pages-07-08-09_k17",
-         "start_s": 1050.122,
-         "start": "17:30"
+         "start_s": 1111.872,
+         "start": "18:31"
         }
        ]
       },
       {
        "board": "pages-07-08-09_t2",
        "title": "Semi-colon and conjunctive adverb",
-       "start_s": 1072.352,
-       "start": "17:52",
+       "start_s": 1201.572,
+       "start": "20:01",
        "points": [
         {
          "text": "Reveal the second pattern and its example, and name the conjunctive adverb",
          "block": "pages-07-08-09_k18",
-         "start_s": 1072.352,
-         "start": "17:52"
+         "start_s": 1201.572,
+         "start": "20:01"
         },
         {
          "text": "Show the semi-colon itself and where the two marks go",
          "block": "pages-07-08-09_k21",
-         "start_s": 1099.482,
-         "start": "18:19"
+         "start_s": 1228.702,
+         "start": "20:28"
         },
         {
          "text": "Hear the two pauses when reading aloud",
          "block": "pages-07-08-09_k23",
-         "start_s": 1128.528,
-         "start": "18:48"
+         "start_s": 1257.748,
+         "start": "20:57"
         },
         {
          "text": "Both clauses here are independent",
          "block": "pages-07-08-09_k25",
-         "start_s": 1144.102,
-         "start": "19:04"
+         "start_s": 1273.322,
+         "start": "21:13"
         },
         {
          "text": "A way to write the same idea without a semi-colon",
          "block": "pages-07-08-09_k26",
-         "start_s": 1159.911,
-         "start": "19:19"
+         "start_s": 1289.131,
+         "start": "21:29"
         }
        ]
       },
       {
        "board": "pages-07-08-09_t3",
        "title": "Common error: a comma with no joining word",
-       "start_s": 1174.992,
-       "start": "19:34",
+       "start_s": 1304.212,
+       "start": "21:44",
        "points": [
         {
          "text": "Reveal the faulty sentence and name the error",
          "block": "pages-07-08-09_k28",
-         "start_s": 1174.992,
-         "start": "19:34"
+         "start_s": 1304.212,
+         "start": "21:44"
         },
         {
          "text": "Gloss a hard general word from the printed sentence",
          "block": "pages-07-08-09_k31",
-         "start_s": 1204.466,
-         "start": "20:04"
+         "start_s": 1333.686,
+         "start": "22:13"
         },
         {
          "text": "Show that each part is a complete sentence with nothing joining them",
          "block": "pages-07-08-09_k32",
-         "start_s": 1222.146,
-         "start": "20:22"
+         "start_s": 1351.366,
+         "start": "22:31"
         },
         {
          "text": "The repair with a FANBOYS word",
          "block": "pages-07-08-09_k33",
-         "start_s": 1239.187,
-         "start": "20:39"
+         "start_s": 1368.407,
+         "start": "22:48"
         }
        ]
       }
@@ -14138,22 +14138,22 @@
        "block": "pages-07-08-09_k10",
        "kind": "rule",
        "text": "To join two independent clauses with a comma, you also need a FANBOYS word. A comma alone is not enough.",
-       "start_s": 959.639,
-       "start": "15:59"
+       "start_s": 1021.389,
+       "start": "17:01"
       },
       {
        "block": "pages-07-08-09_k24",
        "kind": "rule",
        "text": "Each pause is one punctuation mark: the semi-colon, then the comma.",
-       "start_s": 1134.442,
-       "start": "18:54"
+       "start_s": 1263.662,
+       "start": "21:03"
       },
       {
        "block": "pages-07-08-09_k42",
        "kind": "rule",
        "text": "When a comma joins two independent clauses, check that a FANBOYS word is there too.",
-       "start_s": 1252.379,
-       "start": "20:52"
+       "start_s": 1381.599,
+       "start": "23:01"
       }
      ],
      "terms": [
@@ -14161,51 +14161,51 @@
        "block": "pages-07-08-09_k03",
        "label": "Grammar word",
        "term": "Independent clause",
-       "start_s": 823.619,
-       "start": "13:43"
+       "start_s": 885.369,
+       "start": "14:45"
       },
       {
        "block": "pages-07-08-09_k04",
        "label": "Joining words",
        "term": "FANBOYS",
-       "start_s": 835.459,
-       "start": "13:55"
+       "start_s": 897.209,
+       "start": "14:57"
       },
       {
        "block": "pages-07-08-09_k07",
        "label": "Grammar word",
        "term": "Complex sentence",
-       "start_s": 876.539,
-       "start": "14:36"
+       "start_s": 938.289,
+       "start": "15:38"
       },
       {
        "block": "pages-07-08-09_k20",
        "label": "Grammar word",
        "term": "Conjunctive adverb",
-       "start_s": 1089.612,
-       "start": "18:09"
+       "start_s": 1218.832,
+       "start": "20:18"
       },
       {
        "block": "pages-07-08-09_k21",
        "label": "Punctuation mark",
        "term": "Semi-colon (;)",
-       "start_s": 1099.482,
-       "start": "18:19"
+       "start_s": 1228.702,
+       "start": "20:28"
       },
       {
        "block": "pages-07-08-09_k30",
        "label": "Grammar word",
        "term": "Comma splice",
-       "start_s": 1196.831,
-       "start": "19:56"
+       "start_s": 1326.051,
+       "start": "22:06"
       }
      ],
      "wrong_examples": [
       {
        "block": "pages-07-08-09_k29",
        "text": "Eye drops were administered, the patient was told to return several days later.",
-       "start_s": 1174.992,
-       "start": "19:34"
+       "start_s": 1304.212,
+       "start": "21:44"
       }
      ],
      "practice": [],
@@ -14215,8 +14215,8 @@
        "lesson": "grammar-05-complex-compound",
        "section": null,
        "provenance": "authored",
-       "start_s": 898.309,
-       "start": "14:58"
+       "start_s": 960.059,
+       "start": "16:00"
       }
      ]
     },
@@ -14228,63 +14228,63 @@
       10
      ],
      "category": "c1",
-     "start_s": 1262.472,
-     "start": "21:02",
-     "end_s": 1466.167,
+     "start_s": 1391.692,
+     "start": "23:11",
+     "end_s": 1655.683,
      "topics": [
       {
        "board": "page-10_t1",
        "title": "what an introductory phrase is and the comma pattern, the three example sentences",
-       "start_s": 1262.472,
-       "start": "21:02",
+       "start_s": 1391.692,
+       "start": "23:11",
        "points": [
         {
          "text": "Show the pattern the whole board is about",
          "block": "page-10_k01",
-         "start_s": 1262.472,
-         "start": "21:02"
+         "start_s": 1391.692,
+         "start": "23:11"
         },
         {
          "text": "Show the three examples and split the first one",
          "block": "page-10_k05",
-         "start_s": 1262.472,
-         "start": "21:02"
+         "start_s": 1391.692,
+         "start": "23:11"
         },
         {
          "text": "State what the comma does, and define the second part",
          "block": "page-10_k03",
-         "start_s": 1289.127,
-         "start": "21:29"
+         "start_s": 1418.347,
+         "start": "23:38"
         },
         {
          "text": "Gloss a hard general word from example 1",
          "block": "page-10_k09",
-         "start_s": 1363.945,
-         "start": "22:43"
+         "start_s": 1493.165,
+         "start": "24:53"
         },
         {
          "text": "Split the second example into phrase and main clause",
          "block": "page-10_k10",
-         "start_s": 1390.062,
-         "start": "23:10"
+         "start_s": 1519.282,
+         "start": "25:19"
         },
         {
          "text": "Split the third example into phrase and main clause",
          "block": "page-10_k11",
-         "start_s": 1412.223,
-         "start": "23:32"
+         "start_s": 1541.443,
+         "start": "25:41"
         },
         {
          "text": "Generalise the rule across all three examples",
          "block": "page-10_k12",
-         "start_s": 1420.053,
-         "start": "23:40"
+         "start_s": 1549.273,
+         "start": "25:49"
         },
         {
          "text": "Close with the rule to remember",
          "block": "page-10_k13",
-         "start_s": 1449.709,
-         "start": "24:09"
+         "start_s": 1578.929,
+         "start": "26:18"
         }
        ]
       }
@@ -14294,15 +14294,15 @@
        "block": "page-10_k12",
        "kind": "rule",
        "text": "The part after the comma is a main clause: it works as a complete sentence on its own. The part in front of the comma is the introductory phrase.",
-       "start_s": 1420.053,
-       "start": "23:40"
+       "start_s": 1549.273,
+       "start": "25:49"
       },
       {
        "block": "page-10_k13",
        "kind": "rule",
        "text": "When a sentence starts with an introductory phrase, put a comma after it.",
-       "start_s": 1449.709,
-       "start": "24:09"
+       "start_s": 1578.929,
+       "start": "26:18"
       }
      ],
      "terms": [
@@ -14310,15 +14310,15 @@
        "block": "page-10_k02",
        "label": "New term",
        "term": "Introductory phrase",
-       "start_s": 1266.913,
-       "start": "21:06"
+       "start_s": 1396.133,
+       "start": "23:16"
       },
       {
        "block": "page-10_k04",
        "label": "Grammar term",
        "term": "Main clause (independent clause)",
-       "start_s": 1308.713,
-       "start": "21:48"
+       "start_s": 1437.933,
+       "start": "23:57"
       }
      ],
      "wrong_examples": [],
@@ -14334,101 +14334,101 @@
       12
      ],
      "category": "c1",
-     "start_s": 1466.167,
-     "start": "24:26",
-     "end_s": 1751.674,
+     "start_s": 1655.683,
+     "start": "27:35",
+     "end_s": 2005.037,
      "topics": [
       {
        "board": "pages-11-12_t1",
        "title": "Commas in a list of items",
-       "start_s": 1466.167,
-       "start": "24:26",
+       "start_s": 1655.683,
+       "start": "27:35",
        "points": [
         {
          "text": "Show the model list sentence and state the basic rule",
          "block": "pages-11-12_k01",
-         "start_s": 1466.167,
-         "start": "24:26"
+         "start_s": 1655.683,
+         "start": "27:35"
         },
         {
          "text": "Name the three items and show that they are the same kind of thing",
          "block": "pages-11-12_k03",
-         "start_s": 1483.476,
-         "start": "24:43"
+         "start_s": 1672.992,
+         "start": "27:52"
         },
         {
          "text": "Give the list pattern in words and the rule about the last comma",
          "block": "pages-11-12_k05",
-         "start_s": 1520.556,
-         "start": "25:20"
+         "start_s": 1710.072,
+         "start": "28:30"
         },
         {
          "text": "Show that both versions of the final item are correct",
          "block": "pages-11-12_k07",
-         "start_s": 1553.866,
-         "start": "25:53"
+         "start_s": 1743.382,
+         "start": "29:03"
         }
        ]
       },
       {
        "board": "pages-11-12_t2",
        "title": "Commas in a series of phrases",
-       "start_s": 1591.011,
-       "start": "26:31",
+       "start_s": 1780.527,
+       "start": "29:40",
        "points": [
         {
          "text": "Show the two model sentences and state that list items can be phrases",
          "block": "pages-11-12_k12",
-         "start_s": 1591.011,
-         "start": "26:31"
+         "start_s": 1780.527,
+         "start": "29:40"
         },
         {
          "text": "Break the first sentence into its four phrases",
          "block": "pages-11-12_k15",
-         "start_s": 1607.621,
-         "start": "26:47"
+         "start_s": 1797.137,
+         "start": "29:57"
         },
         {
          "text": "Explain the first two phrases in simple English",
          "block": "pages-11-12_k16",
-         "start_s": 1617.839,
-         "start": "26:57"
+         "start_s": 1807.355,
+         "start": "30:07"
         },
         {
          "text": "Note the verb form in the third phrase",
          "block": "pages-11-12_k17",
-         "start_s": 1638.761,
-         "start": "27:18"
+         "start_s": 1828.277,
+         "start": "30:28"
         },
         {
          "text": "Count the commas in the series",
          "block": "pages-11-12_k18",
-         "start_s": 1647.388,
-         "start": "27:27"
+         "start_s": 1836.904,
+         "start": "30:36"
         },
         {
          "text": "Show that the pattern is the same as a list of single words",
          "block": "pages-11-12_k19",
-         "start_s": 1655.501,
-         "start": "27:35"
+         "start_s": 1845.017,
+         "start": "30:45"
         },
         {
          "text": "Second sentence: every phrase has a verb",
          "block": "pages-11-12_k20",
-         "start_s": 1692.946,
-         "start": "28:12"
+         "start_s": 1882.462,
+         "start": "31:22"
         },
         {
          "text": "Gloss a hard general word from the second sentence",
          "block": "pages-11-12_k21",
-         "start_s": 1701.336,
-         "start": "28:21"
+         "start_s": 1890.852,
+         "start": "31:30"
         },
         {
          "text": "A medical series of actions with the same punctuation",
          "block": "pages-11-12_k22",
-         "start_s": 1722.177,
-         "start": "28:42"
+         "start_s": 1911.693,
+         "start": "31:51"
         }
        ]
       }
@@ -14438,8 +14438,8 @@
        "block": "pages-11-12_k06",
        "kind": "rule",
        "text": "Before the final \"and\" or \"or\", the comma is optional in British English. Use it or leave it out, but be consistent in the whole letter.",
-       "start_s": 1530.416,
-       "start": "25:30"
+       "start_s": 1719.932,
+       "start": "28:39"
       }
      ],
      "terms": [
@@ -14447,8 +14447,8 @@
        "block": "pages-11-12_k17",
        "label": "Verb form",
        "term": "Slid",
-       "start_s": 1638.761,
-       "start": "27:18"
+       "start_s": 1828.277,
+       "start": "30:28"
       }
      ],
      "wrong_examples": [],
@@ -14463,105 +14463,105 @@
       13
      ],
      "category": "c1",
-     "start_s": 1751.674,
-     "start": "29:11",
-     "end_s": 2112.804,
+     "start_s": 2005.037,
+     "start": "33:25",
+     "end_s": 2366.167,
      "topics": [
       {
        "board": "page-13_t1",
        "title": "Practice paragraph: adding punctuation",
-       "start_s": 1751.674,
-       "start": "29:11",
+       "start_s": 2005.037,
+       "start": "33:25",
        "points": [
         {
          "text": "the task and the unpunctuated practice paragraph",
          "block": "page-13_k01",
-         "start_s": 1751.674,
-         "start": "29:11"
+         "start_s": 2005.037,
+         "start": "33:25"
         },
         {
          "text": "Sentence 1: the answer and why there is no comma",
          "block": "page-13_k03",
-         "start_s": 1776.115,
-         "start": "29:36"
+         "start_s": 2029.478,
+         "start": "33:49"
         },
         {
          "text": "Sentence 1: clause diagram showing one subject with two verbs",
          "block": "page-13_k05",
-         "start_s": 1809.929,
-         "start": "30:09"
+         "start_s": 2063.292,
+         "start": "34:23"
         },
         {
          "text": "Sentence 2: the answer and the comma after the introductory phrase",
          "block": "page-13_k06",
-         "start_s": 1839.165,
-         "start": "30:39"
+         "start_s": 2092.528,
+         "start": "34:52"
         },
         {
          "text": "Sentence 2: the 'which' clause adds extra information, so it takes a comma",
          "block": "page-13_k08",
-         "start_s": 1859.929,
-         "start": "30:59"
+         "start_s": 2113.292,
+         "start": "35:13"
         },
         {
          "text": "Sentence 2: define the grammar term",
          "block": "page-13_k09",
-         "start_s": 1897.494,
-         "start": "31:37"
+         "start_s": 2150.857,
+         "start": "35:50"
         },
         {
          "text": "Sentence 3: the answer and the comma after the dependent clause",
          "block": "page-13_k10",
-         "start_s": 1922.38,
-         "start": "32:02"
+         "start_s": 2175.743,
+         "start": "36:15"
         },
         {
          "text": "Gloss the general word 'slightly'",
          "block": "page-13_k12",
-         "start_s": 1957.229,
-         "start": "32:37"
+         "start_s": 2210.592,
+         "start": "36:50"
         },
         {
          "text": "Sentence 3: clause diagram of the dependent clause joining the main clause",
          "block": "page-13_k13",
-         "start_s": 1970.55,
-         "start": "32:50"
+         "start_s": 2223.913,
+         "start": "37:03"
         },
         {
          "text": "Sentence 3: no comma before 'and is making'",
          "block": "page-13_k14",
-         "start_s": 2006.865,
-         "start": "33:26"
+         "start_s": 2260.228,
+         "start": "37:40"
         },
         {
          "text": "Sentence 4: the answer with a semi-colon and a comma",
          "block": "page-13_k15",
-         "start_s": 2029.387,
-         "start": "33:49"
+         "start_s": 2282.75,
+         "start": "38:02"
         },
         {
          "text": "Sentence 4: the form that is wrong",
          "block": "page-13_k17",
-         "start_s": 2053.526,
-         "start": "34:13"
+         "start_s": 2306.889,
+         "start": "38:26"
         },
         {
          "text": "Sentence 4: define the grammar term",
          "block": "page-13_k18",
-         "start_s": 2075.536,
-         "start": "34:35"
+         "start_s": 2328.899,
+         "start": "38:48"
         },
         {
          "text": "Count the punctuation the paragraph needs",
          "block": "page-13_k19",
-         "start_s": 2092.069,
-         "start": "34:52"
+         "start_s": 2345.432,
+         "start": "39:05"
         },
         {
          "text": "Why punctuation matters",
          "block": "page-13_k20",
-         "start_s": 2107.394,
-         "start": "35:07"
+         "start_s": 2360.757,
+         "start": "39:20"
         }
        ]
       }
@@ -14571,15 +14571,15 @@
        "block": "page-13_k14",
        "kind": "rule",
        "text": "When two verbs share one subject, do not put a comma before 'and'. Here 'she' has lost weight and is making good progress.",
-       "start_s": 2006.865,
-       "start": "33:26"
+       "start_s": 2260.228,
+       "start": "37:40"
       },
       {
        "block": "page-13_k20",
        "kind": "rule",
        "text": "Correct punctuation makes your letter clear for the reader.",
-       "start_s": 2107.394,
-       "start": "35:07"
+       "start_s": 2360.757,
+       "start": "39:20"
       }
      ],
      "terms": [
@@ -14587,29 +14587,29 @@
        "block": "page-13_k09",
        "label": "Grammar term",
        "term": "Non-defining clause",
-       "start_s": 1897.494,
-       "start": "31:37"
+       "start_s": 2150.857,
+       "start": "35:50"
       },
       {
        "block": "page-13_k18",
        "label": "Grammar term",
        "term": "Comma splice",
-       "start_s": 2075.536,
-       "start": "34:35"
+       "start_s": 2328.899,
+       "start": "38:48"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-13_k02",
        "text": "The patient has an allergy to latex and is currently taking Xanax for anxiety. Last year she had surgery on her left knee which has fully healed now. Although she is slightly overweight she has lost weight over the past six months and is making good progress. She takes regular exercise however she drinks at the weekend.",
-       "start_s": 1751.674,
-       "start": "29:11"
+       "start_s": 2005.037,
+       "start": "33:25"
       },
       {
        "block": "page-13_k17",
        "text": "She takes regular exercise, however she drinks at the weekend.",
-       "start_s": 2053.526,
-       "start": "34:13"
+       "start_s": 2306.889,
+       "start": "38:26"
       }
      ],
      "practice": [],
@@ -14619,16 +14619,16 @@
        "lesson": "grammar-06-clause",
        "section": null,
        "provenance": "adapted",
-       "start_s": 1910.314,
-       "start": "31:50"
+       "start_s": 2163.677,
+       "start": "36:03"
       },
       {
        "utterance": "page-13_t1.s5.u4",
        "lesson": "grammar-05-complex-compound",
        "section": null,
        "provenance": "source-derived",
-       "start_s": 1940.244,
-       "start": "32:20"
+       "start_s": 2193.607,
+       "start": "36:33"
       }
      ]
     },
@@ -14640,81 +14640,81 @@
       14
      ],
      "category": "c1",
-     "start_s": 2112.804,
-     "start": "35:12",
-     "end_s": 2274.573,
+     "start_s": 2366.167,
+     "start": "39:26",
+     "end_s": 2590.08,
      "topics": [
       {
        "board": "page-14_t1",
        "title": "Optional commas and full stops in an OET letter",
-       "start_s": 2112.804,
-       "start": "35:12",
+       "start_s": 2366.167,
+       "start": "39:26",
        "points": [
         {
          "text": "Show the four places where the mark is optional, and say why",
          "block": "page-14_k01",
-         "start_s": 2112.804,
-         "start": "35:12"
+         "start_s": 2366.167,
+         "start": "39:26"
         },
         {
          "text": "Gloss the general word 'optional'",
          "block": "page-14_k06",
-         "start_s": 2129.671,
-         "start": "35:29"
+         "start_s": 2383.034,
+         "start": "39:43"
         },
         {
          "text": "Show the greeting written in both ways",
          "block": "page-14_k07",
-         "start_s": 2147.2,
-         "start": "35:47"
+         "start_s": 2400.563,
+         "start": "40:00"
         },
         {
          "text": "State that both greetings are correct",
          "block": "page-14_k08",
-         "start_s": 2159.644,
-         "start": "35:59"
+         "start_s": 2413.007,
+         "start": "40:13"
         },
         {
          "text": "Apply the rule to the address block",
          "block": "page-14_k09",
-         "start_s": 2175.243,
-         "start": "36:15"
+         "start_s": 2428.606,
+         "start": "40:28"
         },
         {
          "text": "Apply the rule to a person's title",
          "block": "page-14_k10",
-         "start_s": 2194.96,
-         "start": "36:34"
+         "start_s": 2448.323,
+         "start": "40:48"
         },
         {
          "text": "Show the end of the letter written in both ways",
          "block": "page-14_k11",
-         "start_s": 2204.01,
-         "start": "36:44"
+         "start_s": 2457.373,
+         "start": "40:57"
         },
         {
          "text": "State that both endings are correct",
          "block": "page-14_k12",
-         "start_s": 2220.363,
-         "start": "37:00"
+         "start_s": 2473.726,
+         "start": "41:13"
         },
         {
          "text": "Summarise: with the mark and without it are both acceptable",
          "block": "page-14_k13",
-         "start_s": 2226.142,
-         "start": "37:06"
+         "start_s": 2479.505,
+         "start": "41:19"
         },
         {
          "text": "Name the two styles: open and closed punctuation",
          "block": "page-14_k14",
-         "start_s": 2244.31,
-         "start": "37:24"
+         "start_s": 2497.673,
+         "start": "41:37"
         },
         {
          "text": "The key point: keep one style through the letter",
          "block": "page-14_k15",
-         "start_s": 2254.583,
-         "start": "37:34"
+         "start_s": 2507.946,
+         "start": "41:47"
         }
        ]
       }
@@ -14724,15 +14724,15 @@
        "block": "page-14_k13",
        "kind": "rule",
        "text": "Writing the comma or the full stop in these four places is correct. Leaving it out is also correct.",
-       "start_s": 2226.142,
-       "start": "37:06"
+       "start_s": 2479.505,
+       "start": "41:19"
       },
       {
        "block": "page-14_k15",
        "kind": "rule",
        "text": "Choose one style and use it in the whole letter.",
-       "start_s": 2254.583,
-       "start": "37:34"
+       "start_s": 2507.946,
+       "start": "41:47"
       }
      ],
      "terms": [],
@@ -14749,113 +14749,113 @@
       16
      ],
      "category": "c1",
-     "start_s": 2274.573,
-     "start": "37:54",
-     "end_s": 2576.291,
+     "start_s": 2590.08,
+     "start": "43:10",
+     "end_s": 2958.255,
      "topics": [
       {
        "board": "pages-15-16_t1",
        "title": "Punctuating the first paragraph",
-       "start_s": 2274.573,
-       "start": "37:54",
+       "start_s": 2590.08,
+       "start": "43:10",
        "points": [
         {
          "text": "Put the printed sentence on the board and say what the first paragraph must do",
          "block": "pages-15-16_k03",
-         "start_s": 2274.243,
-         "start": "37:54"
+         "start_s": 2589.75,
+         "start": "43:09"
         },
         {
          "text": "Gloss the hard general phrase in the printed sentence",
          "block": "pages-15-16_k04",
-         "start_s": 2289.851,
-         "start": "38:09"
+         "start_s": 2605.358,
+         "start": "43:25"
         },
         {
          "text": "Give the situation behind the letter and name the problem area",
          "block": "pages-15-16_k05",
-         "start_s": 2304.331,
-         "start": "38:24"
+         "start_s": 2619.838,
+         "start": "43:39"
         },
         {
          "text": "Define the grammar term and find the clause in the sentence",
          "block": "pages-15-16_k07",
-         "start_s": 2325.153,
-         "start": "38:45"
+         "start_s": 2640.66,
+         "start": "44:00"
         },
         {
          "text": "Show why this clause takes commas: it is non-defining",
          "block": "pages-15-16_k09",
-         "start_s": 2359.71,
-         "start": "39:19"
+         "start_s": 2675.217,
+         "start": "44:35"
         },
         {
          "text": "Give the corrected sentence with commas at both ends",
          "block": "pages-15-16_k11",
-         "start_s": 2382.733,
-         "start": "39:42"
+         "start_s": 2698.24,
+         "start": "44:58"
         },
         {
          "text": "Draw the clause and test taking it out",
          "block": "pages-15-16_k13",
-         "start_s": 2408.113,
-         "start": "40:08"
+         "start_s": 2723.62,
+         "start": "45:23"
         },
         {
          "text": "Warn that not every who/which clause takes commas",
          "block": "pages-15-16_k14",
-         "start_s": 2448.843,
-         "start": "40:48"
+         "start_s": 2764.35,
+         "start": "46:04"
         },
         {
          "text": "Transfer the point to the student's own writing",
          "block": "pages-15-16_k16",
-         "start_s": 2471.352,
-         "start": "41:11"
+         "start_s": 2786.859,
+         "start": "46:26"
         }
        ]
       },
       {
        "board": "pages-15-16_t2",
        "title": "Small numbers and hyphens",
-       "start_s": 2482.523,
-       "start": "41:22",
+       "start_s": 2864.487,
+       "start": "47:44",
        "points": [
         {
          "text": "Put the printed sentence on the board and open the small-numbers point",
          "block": "pages-15-16_k32",
-         "start_s": 2482.203,
-         "start": "41:22"
+         "start_s": 2864.167,
+         "start": "47:44"
         },
         {
          "text": "First mistake: the digit",
          "block": "pages-15-16_k33",
-         "start_s": 2501.209,
-         "start": "41:41"
+         "start_s": 2883.173,
+         "start": "48:03"
         },
         {
          "text": "Second mistake: the hyphen and the singular noun",
          "block": "pages-15-16_k35",
-         "start_s": 2509.933,
-         "start": "41:49"
+         "start_s": 2891.897,
+         "start": "48:11"
         },
         {
          "text": "Give the corrected sentence",
          "block": "pages-15-16_k37",
-         "start_s": 2534.073,
-         "start": "42:14"
+         "start_s": 2916.037,
+         "start": "48:36"
         },
         {
          "text": "The hyphen is obligatory, and where these phrases appear",
          "block": "pages-15-16_k39",
-         "start_s": 2543.783,
-         "start": "42:23"
+         "start_s": 2925.747,
+         "start": "48:45"
         },
         {
          "text": "Second example of the same pattern",
          "block": "pages-15-16_k41",
-         "start_s": 2560.358,
-         "start": "42:40"
+         "start_s": 2942.322,
+         "start": "49:02"
         }
        ]
       }
@@ -14865,22 +14865,22 @@
        "block": "pages-15-16_k14",
        "kind": "rule",
        "text": "Not every clause with who or which takes commas. A clause that tells us which person we mean has no commas.",
-       "start_s": 2448.843,
-       "start": "40:48"
+       "start_s": 2764.35,
+       "start": "46:04"
       },
       {
        "block": "pages-15-16_k16",
        "kind": "rule",
        "text": "Correct punctuation makes your letter clear for the reader.",
-       "start_s": 2471.352,
-       "start": "41:11"
+       "start_s": 2786.859,
+       "start": "46:26"
       },
       {
        "block": "pages-15-16_k39",
        "kind": "warning",
        "text": "You must use the hyphen here. Leaving it out is a punctuation mistake.",
-       "start_s": 2543.783,
-       "start": "42:23"
+       "start_s": 2925.747,
+       "start": "48:45"
       }
      ],
      "terms": [
@@ -14888,36 +14888,36 @@
        "block": "pages-15-16_k07",
        "label": "Grammar",
        "term": "Relative clause",
-       "start_s": 2325.153,
-       "start": "38:45"
+       "start_s": 2640.66,
+       "start": "44:00"
       },
       {
        "block": "pages-15-16_k09",
        "label": "Grammar",
        "term": "Non-defining clause",
-       "start_s": 2359.71,
-       "start": "39:19"
+       "start_s": 2675.217,
+       "start": "44:35"
       },
       {
        "block": "pages-15-16_k33",
        "label": "Rule",
        "term": "Small numbers",
-       "start_s": 2501.209,
-       "start": "41:41"
+       "start_s": 2883.173,
+       "start": "48:03"
       }
      ],
      "wrong_examples": [
       {
        "block": "pages-15-16_k02",
        "text": "I am writing to refer the above-mentioned patient who has worsening osteoarthritis for a possible knee-joint replacement.",
-       "start_s": 2274.573,
-       "start": "37:54"
+       "start_s": 2590.08,
+       "start": "43:10"
       },
       {
        "block": "pages-15-16_k31",
        "text": "The patient presented with a 2 weeks history of migraines.",
-       "start_s": 2482.523,
-       "start": "41:22"
+       "start_s": 2864.487,
+       "start": "47:44"
       }
      ],
      "practice": [],
@@ -14927,8 +14927,8 @@
        "lesson": "grammar-06-clause",
        "section": null,
        "provenance": "source-derived",
-       "start_s": 2461.653,
-       "start": "41:01"
+       "start_s": 2777.16,
+       "start": "46:17"
       }
      ]
     },
@@ -14938,87 +14938,87 @@
      "kind": "authored",
      "pages": [],
      "category": "c2",
-     "start_s": 2576.291,
-     "start": "42:56",
-     "end_s": 2830.119,
+     "start_s": 2958.255,
+     "start": "49:18",
+     "end_s": 3276.456,
      "topics": [
       {
        "board": "added-01_t1",
        "title": "Punctuation: ending sentences, run-ons and comma splices",
-       "start_s": 2576.291,
-       "start": "42:56",
+       "start_s": 2958.255,
+       "start": "49:18",
        "points": [
         {
          "text": "Fixed rule for the whole board: where a sentence ends",
          "block": "added-01_k01",
-         "start_s": 2576.291,
-         "start": "42:56"
+         "start_s": 2958.255,
+         "start": "49:18"
         },
         {
          "text": "What a complete sentence has, with a right example from a letter",
          "block": "added-01_k02",
-         "start_s": 2585.812,
-         "start": "43:05"
+         "start_s": 2967.776,
+         "start": "49:27"
         },
         {
          "text": "Why this matters in a letter",
          "block": "added-01_k04",
-         "start_s": 2615.164,
-         "start": "43:35"
+         "start_s": 2997.128,
+         "start": "49:57"
         },
         {
          "text": "Run-on sentence: term and wrong example",
          "block": "added-01_k05",
-         "start_s": 2624.047,
-         "start": "43:44"
+         "start_s": 3006.011,
+         "start": "50:06"
         },
         {
          "text": "Gloss the hard general word in that example",
          "block": "added-01_k07",
-         "start_s": 2660.957,
-         "start": "44:20"
+         "start_s": 3042.921,
+         "start": "50:42"
         },
         {
          "text": "Comma splice: term and wrong example",
          "block": "added-01_k08",
-         "start_s": 2675.129,
-         "start": "44:35"
+         "start_s": 3057.093,
+         "start": "50:57"
         },
         {
          "text": "Fix 1: a full stop",
          "block": "added-01_k10",
-         "start_s": 2701.63,
-         "start": "45:01"
+         "start_s": 3083.594,
+         "start": "51:23"
         },
         {
          "text": "Fix 2: a comma and a joining word",
          "block": "added-01_k12",
-         "start_s": 2718.564,
-         "start": "45:18"
+         "start_s": 3100.528,
+         "start": "51:40"
         },
         {
          "text": "Fix 3: a semi-colon",
          "block": "added-01_k14",
-         "start_s": 2735.206,
-         "start": "45:35"
+         "start_s": 3117.17,
+         "start": "51:57"
         },
         {
          "text": "Practice item",
          "block": "added-01_k16",
-         "start_s": 2760.041,
-         "start": "46:00"
+         "start_s": 3142.005,
+         "start": "52:22"
         },
         {
          "text": "Answer to the practice item",
          "block": "added-01_k18",
-         "start_s": 2783.338,
-         "start": "46:23"
+         "start_s": 3165.302,
+         "start": "52:45"
         },
         {
          "text": "Other correct answers to the practice item",
          "block": "added-01_k20",
-         "start_s": 2801.519,
-         "start": "46:41"
+         "start_s": 3183.483,
+         "start": "53:03"
         }
        ]
       }
@@ -15028,8 +15028,8 @@
        "block": "added-01_k04",
        "kind": "rule",
        "text": "Short, clear sentences help the reader of your letter.",
-       "start_s": 2615.164,
-       "start": "43:35"
+       "start_s": 2997.128,
+       "start": "49:57"
       }
      ],
      "terms": [
@@ -15037,42 +15037,42 @@
        "block": "added-01_k02",
        "label": "Form",
        "term": "Sentence",
-       "start_s": 2585.812,
-       "start": "43:05"
+       "start_s": 2967.776,
+       "start": "49:27"
       },
       {
        "block": "added-01_k05",
        "label": "New term",
        "term": "Run-on sentence",
-       "start_s": 2624.047,
-       "start": "43:44"
+       "start_s": 3006.011,
+       "start": "50:06"
       },
       {
        "block": "added-01_k08",
        "label": "New term",
        "term": "Comma splice",
-       "start_s": 2675.129,
-       "start": "44:35"
+       "start_s": 3057.093,
+       "start": "50:57"
       }
      ],
      "wrong_examples": [
       {
        "block": "added-01_k06",
        "text": "Eye drops were administered the patient was told to return several days later.",
-       "start_s": 2632.556,
-       "start": "43:52"
+       "start_s": 3014.52,
+       "start": "50:14"
       },
       {
        "block": "added-01_k09",
        "text": "Her pain has improved, she can now walk without a stick.",
-       "start_s": 2681.975,
-       "start": "44:41"
+       "start_s": 3063.939,
+       "start": "51:03"
       },
       {
        "block": "added-01_k17",
        "text": "The wound is healing well it should be checked again in one week.",
-       "start_s": 2763.279,
-       "start": "46:03"
+       "start_s": 3145.243,
+       "start": "52:25"
       }
      ],
      "practice": [],
@@ -15084,81 +15084,81 @@
      "kind": "authored",
      "pages": [],
      "category": "c2",
-     "start_s": 2830.119,
-     "start": "47:10",
-     "end_s": 3102.296,
+     "start_s": 3276.456,
+     "start": "54:36",
+     "end_s": 3616.955,
      "topics": [
       {
        "board": "added-02_t1",
        "title": "Colons and semi-colons in letters",
-       "start_s": 2830.119,
-       "start": "47:10",
+       "start_s": 3276.456,
+       "start": "54:36",
        "points": [
         {
          "text": "Set the board's rule and define the colon",
          "block": "added-02_k01",
-         "start_s": 2830.119,
-         "start": "47:10"
+         "start_s": 3276.456,
+         "start": "54:36"
         },
         {
          "text": "Right example: colon before a list",
          "block": "added-02_k03",
-         "start_s": 2858.62,
-         "start": "47:38"
+         "start_s": 3304.957,
+         "start": "55:04"
         },
         {
          "text": "Wrong example: no complete sentence before the colon",
          "block": "added-02_k05",
-         "start_s": 2890.18,
-         "start": "48:10"
+         "start_s": 3336.517,
+         "start": "55:36"
         },
         {
          "text": "Right example: colon before an explanation",
          "block": "added-02_k07",
-         "start_s": 2910.65,
-         "start": "48:30"
+         "start_s": 3356.987,
+         "start": "55:56"
         },
         {
          "text": "Gloss the hard general word in the example",
          "block": "added-02_k09",
-         "start_s": 2935.651,
-         "start": "48:55"
+         "start_s": 3381.988,
+         "start": "56:21"
         },
         {
          "text": "Define the semi-colon and show two linked sentences",
          "block": "added-02_k10",
-         "start_s": 2948.906,
-         "start": "49:08"
+         "start_s": 3395.243,
+         "start": "56:35"
         },
         {
          "text": "Semi-colon before however and therefore",
          "block": "added-02_k12",
-         "start_s": 2987.495,
-         "start": "49:47"
+         "start_s": 3433.832,
+         "start": "57:13"
         },
         {
          "text": "Semi-colons inside a list whose items have commas",
          "block": "added-02_k14",
-         "start_s": 3012.155,
-         "start": "50:12"
+         "start_s": 3458.492,
+         "start": "57:38"
         },
         {
          "text": "Practice item",
          "block": "added-02_k16",
-         "start_s": 3049.253,
-         "start": "50:49"
+         "start_s": 3495.59,
+         "start": "58:15"
         },
         {
          "text": "Answer to the practice item",
          "block": "added-02_k18",
-         "start_s": 3069.226,
-         "start": "51:09"
+         "start_s": 3515.563,
+         "start": "58:35"
         },
         {
          "text": "Rule to remember",
          "block": "added-02_k20",
-         "start_s": 3083.386,
-         "start": "51:23"
+         "start_s": 3529.723,
+         "start": "58:49"
         }
        ]
       }
@@ -15168,8 +15168,8 @@
        "block": "added-02_k20",
        "kind": "rule",
        "text": "A colon needs a complete sentence before it. Between two sentences, a semi-colon needs a complete sentence on both sides.",
-       "start_s": 3083.386,
-       "start": "51:23"
+       "start_s": 3529.723,
+       "start": "58:49"
       }
      ],
      "terms": [
@@ -15177,29 +15177,29 @@
        "block": "added-02_k02",
        "label": "Punctuation mark",
        "term": "Colon (:)",
-       "start_s": 2841.349,
-       "start": "47:21"
+       "start_s": 3287.686,
+       "start": "54:47"
       },
       {
        "block": "added-02_k10",
        "label": "Punctuation mark",
        "term": "Semi-colon (;)",
-       "start_s": 2948.906,
-       "start": "49:08"
+       "start_s": 3395.243,
+       "start": "56:35"
       }
      ],
      "wrong_examples": [
       {
        "block": "added-02_k05",
        "text": "The patient reported: fever, cough, and sore throat.",
-       "start_s": 2890.18,
-       "start": "48:10"
+       "start_s": 3336.517,
+       "start": "55:36"
       },
       {
        "block": "added-02_k17",
        "text": "She has two allergies penicillin and latex.",
-       "start_s": 3054.446,
-       "start": "50:54"
+       "start_s": 3500.783,
+       "start": "58:20"
       }
      ],
      "practice": [],
@@ -15211,93 +15211,93 @@
      "kind": "authored",
      "pages": [],
      "category": "c2",
-     "start_s": 3102.296,
-     "start": "51:42",
-     "end_s": 3375.036,
+     "start_s": 3616.955,
+     "start": "60:16",
+     "end_s": 3954.961,
      "topics": [
       {
        "board": "added-03_t1",
        "title": "Apostrophes and full forms in a letter",
-       "start_s": 3102.296,
-       "start": "51:42",
+       "start_s": 3616.955,
+       "start": "60:16",
        "points": [
         {
          "text": "Set the board's one rule and introduce the apostrophe",
          "block": "added-03_k01",
-         "start_s": 3102.296,
-         "start": "51:42"
+         "start_s": 3616.955,
+         "start": "60:16"
         },
         {
          "text": "Show where the apostrophe goes: one patient or more than one",
          "block": "added-03_k03",
-         "start_s": 3118.766,
-         "start": "51:58"
+         "start_s": 3633.425,
+         "start": "60:33"
         },
         {
          "text": "One patient, in a letter sentence",
          "block": "added-03_k04",
-         "start_s": 3138.253,
-         "start": "52:18"
+         "start_s": 3652.912,
+         "start": "60:52"
         },
         {
          "text": "More than one patient, in a letter sentence",
          "block": "added-03_k06",
-         "start_s": 3153.844,
-         "start": "52:33"
+         "start_s": 3668.503,
+         "start": "61:08"
         },
         {
          "text": "No apostrophe in a simple plural",
          "block": "added-03_k08",
-         "start_s": 3173.31,
-         "start": "52:53"
+         "start_s": 3687.969,
+         "start": "61:27"
         },
         {
          "text": "State the plural rule and the -en plural",
          "block": "added-03_k10",
-         "start_s": 3194.268,
-         "start": "53:14"
+         "start_s": 3708.927,
+         "start": "61:48"
         },
         {
          "text": "Introduce contractions and the full-form rule for letters",
          "block": "added-03_k12",
-         "start_s": 3220.251,
-         "start": "53:40"
+         "start_s": 3734.91,
+         "start": "62:14"
         },
         {
          "text": "Wrong and right, with contractions in a letter sentence",
          "block": "added-03_k14",
-         "start_s": 3240.606,
-         "start": "54:00"
+         "start_s": 3755.265,
+         "start": "62:35"
         },
         {
          "text": "The full forms to write instead of the short ones",
          "block": "added-03_k16",
-         "start_s": 3262.073,
-         "start": "54:22"
+         "start_s": 3776.732,
+         "start": "62:56"
         },
         {
          "text": "Its and it's",
          "block": "added-03_k17",
-         "start_s": 3294.52,
-         "start": "54:54"
+         "start_s": 3874.445,
+         "start": "64:34"
         },
         {
          "text": "The rule to keep for letters",
          "block": "added-03_k19",
-         "start_s": 3318.193,
-         "start": "55:18"
+         "start_s": 3898.118,
+         "start": "64:58"
         },
         {
          "text": "Practice item",
          "block": "added-03_k20",
-         "start_s": 3326.225,
-         "start": "55:26"
+         "start_s": 3906.15,
+         "start": "65:06"
         },
         {
          "text": "Answer to the practice item",
          "block": "added-03_k22",
-         "start_s": 3353.779,
-         "start": "55:53"
+         "start_s": 3933.704,
+         "start": "65:33"
         }
        ]
       }
@@ -15307,15 +15307,15 @@
        "block": "added-03_k10",
        "kind": "rule",
        "text": "A plural with no belonging has no apostrophe.",
-       "start_s": 3194.268,
-       "start": "53:14"
+       "start_s": 3708.927,
+       "start": "61:48"
       },
       {
        "block": "added-03_k19",
        "kind": "rule",
        "text": "In a letter, write \"it is\" in full.",
-       "start_s": 3318.193,
-       "start": "55:18"
+       "start_s": 3898.118,
+       "start": "64:58"
       }
      ],
      "terms": [
@@ -15323,35 +15323,35 @@
        "block": "added-03_k02",
        "label": "Punctuation mark",
        "term": "Apostrophe",
-       "start_s": 3110.836,
-       "start": "51:50"
+       "start_s": 3625.495,
+       "start": "60:25"
       },
       {
        "block": "added-03_k12",
        "label": "Grammar word",
        "term": "Contraction",
-       "start_s": 3220.251,
-       "start": "53:40"
+       "start_s": 3734.91,
+       "start": "62:14"
       }
      ],
      "wrong_examples": [
       {
        "block": "added-03_k08",
        "text": "The patient's were discharged.",
-       "start_s": 3173.31,
-       "start": "52:53"
+       "start_s": 3687.969,
+       "start": "61:27"
       },
       {
        "block": "added-03_k14",
        "text": "She's been unwell and doesn't eat much.",
-       "start_s": 3240.606,
-       "start": "54:00"
+       "start_s": 3755.265,
+       "start": "62:35"
       },
       {
        "block": "added-03_k21",
        "text": "The patients mother says shes worried.",
-       "start_s": 3329.696,
-       "start": "55:29"
+       "start_s": 3909.621,
+       "start": "65:09"
       }
      ],
      "practice": [],
@@ -15363,105 +15363,105 @@
      "kind": "authored",
      "pages": [],
      "category": "c2",
-     "start_s": 3375.036,
-     "start": "56:15",
-     "end_s": 3631.277,
+     "start_s": 3954.961,
+     "start": "65:54",
+     "end_s": 4268.354,
      "topics": [
       {
        "board": "added-04_t1",
        "title": "Hyphens and numbers in a letter",
-       "start_s": 3375.036,
-       "start": "56:15",
+       "start_s": 3954.961,
+       "start": "65:54",
        "points": [
         {
          "text": "Open the board with the core rule and name the mark",
          "block": "added-04_k01",
-         "start_s": 3375.036,
-         "start": "56:15"
+         "start_s": 3954.961,
+         "start": "65:54"
         },
         {
          "text": "Show the wrong form of a number plus noun before a noun",
          "block": "added-04_k04",
-         "start_s": 3406.388,
-         "start": "56:46"
+         "start_s": 3986.313,
+         "start": "66:26"
         },
         {
          "text": "Give the correct form and the rule",
          "block": "added-04_k06",
-         "start_s": 3426.396,
-         "start": "57:06"
+         "start_s": 4006.321,
+         "start": "66:46"
         },
         {
          "text": "Digits follow the same rule",
          "block": "added-04_k08",
-         "start_s": 3443.068,
-         "start": "57:23"
+         "start_s": 4022.993,
+         "start": "67:02"
         },
         {
          "text": "Contrast before the noun and after the noun",
          "block": "added-04_k10",
-         "start_s": 3456.927,
-         "start": "57:36"
+         "start_s": 4036.852,
+         "start": "67:16"
         },
         {
          "text": "Two describing words before a noun",
          "block": "added-04_k12",
-         "start_s": 3481.798,
-         "start": "58:01"
+         "start_s": 4061.723,
+         "start": "67:41"
         },
         {
          "text": "With no noun after them, no hyphen",
          "block": "added-04_k14",
-         "start_s": 3496.383,
-         "start": "58:16"
+         "start_s": 4076.308,
+         "start": "67:56"
         },
         {
          "text": "Follow-up as a noun",
          "block": "added-04_k16",
-         "start_s": 3513.649,
-         "start": "58:33"
+         "start_s": 4093.574,
+         "start": "68:13"
         },
         {
          "text": "Gloss the general phrase follow-up",
          "block": "added-04_k18",
-         "start_s": 3525.881,
-         "start": "58:45"
+         "start_s": 4105.806,
+         "start": "68:25"
         },
         {
          "text": "Follow up as a verb: the wrong form",
          "block": "added-04_k19",
-         "start_s": 3537.596,
-         "start": "58:57"
+         "start_s": 4117.521,
+         "start": "68:37"
         },
         {
          "text": "Follow up as a verb: the correct form",
          "block": "added-04_k21",
-         "start_s": 3548.325,
-         "start": "59:08"
+         "start_s": 4128.25,
+         "start": "68:48"
         },
         {
          "text": "Small numbers in words",
          "block": "added-04_k23",
-         "start_s": 3559.229,
-         "start": "59:19"
+         "start_s": 4139.154,
+         "start": "68:59"
         },
         {
          "text": "Digits with a unit of measurement",
          "block": "added-04_k25",
-         "start_s": 3572.752,
-         "start": "59:32"
+         "start_s": 4152.677,
+         "start": "69:12"
         },
         {
          "text": "Practice item",
          "block": "added-04_k27",
-         "start_s": 3581.739,
-         "start": "59:41"
+         "start_s": 4161.664,
+         "start": "69:21"
         },
         {
          "text": "Answer to the practice item",
          "block": "added-04_k29",
-         "start_s": 3604.122,
-         "start": "60:04"
+         "start_s": 4184.047,
+         "start": "69:44"
         }
        ]
       }
@@ -15472,28 +15472,28 @@
        "block": "added-04_k02",
        "label": "Punctuation mark",
        "term": "Hyphen",
-       "start_s": 3386.796,
-       "start": "56:26"
+       "start_s": 3966.721,
+       "start": "66:06"
       }
      ],
      "wrong_examples": [
       {
        "block": "added-04_k04",
        "text": "She has a two weeks history of headache.",
-       "start_s": 3406.388,
-       "start": "56:46"
+       "start_s": 3986.313,
+       "start": "66:26"
       },
       {
        "block": "added-04_k19",
        "text": "I will follow-up her blood results.",
-       "start_s": 3537.596,
-       "start": "58:57"
+       "start_s": 4117.521,
+       "start": "68:37"
       },
       {
        "block": "added-04_k28",
        "text": "He has a 3 month history of back pain and needs a follow up appointment.",
-       "start_s": 3585.321,
-       "start": "59:45"
+       "start_s": 4165.246,
+       "start": "69:25"
       }
      ],
      "practice": [],
@@ -15505,111 +15505,111 @@
      "kind": "authored",
      "pages": [],
      "category": "c2",
-     "start_s": 3631.277,
-     "start": "60:31",
-     "end_s": 3921.171,
+     "start_s": 4268.354,
+     "start": "71:08",
+     "end_s": 4558.248,
      "topics": [
       {
        "board": "added-05_t1",
        "title": "Capital letters in a medical letter",
-       "start_s": 3631.277,
-       "start": "60:31",
+       "start_s": 4268.354,
+       "start": "71:08",
        "points": [
         {
          "text": "Open the board with the rule and why it matters",
          "block": "added-05_k01",
-         "start_s": 3631.277,
-         "start": "60:31"
+         "start_s": 4268.354,
+         "start": "71:08"
         },
         {
          "text": "Sentences and the word I (b4)",
          "block": "added-05_k03",
-         "start_s": 3643.922,
-         "start": "60:43"
+         "start_s": 4280.999,
+         "start": "71:20"
         },
         {
          "text": "Titles before a name against job words alone (b3)",
          "block": "added-05_k05",
-         "start_s": 3665.477,
-         "start": "61:05"
+         "start_s": 4302.554,
+         "start": "71:42"
         },
         {
          "text": "The wrong version of the job-word example (b3)",
          "block": "added-05_k06",
-         "start_s": 3698.236,
-         "start": "61:38"
+         "start_s": 4335.313,
+         "start": "72:15"
         },
         {
          "text": "The correct versions with and without a name (b3)",
          "block": "added-05_k08",
-         "start_s": 3717.914,
-         "start": "61:57"
+         "start_s": 4354.991,
+         "start": "72:34"
         },
         {
          "text": "Brand names against generic names (b1)",
          "block": "added-05_k10",
-         "start_s": 3739.737,
-         "start": "62:19"
+         "start_s": 4376.814,
+         "start": "72:56"
         },
         {
          "text": "Gloss of the general word \"brand\"",
          "block": "added-05_k11",
-         "start_s": 3744.605,
-         "start": "62:24"
+         "start_s": 4381.682,
+         "start": "73:01"
         },
         {
          "text": "The wrong drug-name example (b1)",
          "block": "added-05_k12",
-         "start_s": 3772.854,
-         "start": "62:52"
+         "start_s": 4409.931,
+         "start": "73:29"
         },
         {
          "text": "Correct generic names in a list (b1)",
          "block": "added-05_k14",
-         "start_s": 3783.462,
-         "start": "63:03"
+         "start_s": 4420.539,
+         "start": "73:40"
         },
         {
          "text": "A correct brand-name example (b1)",
          "block": "added-05_k16",
-         "start_s": 3795.71,
-         "start": "63:15"
+         "start_s": 4432.787,
+         "start": "73:52"
         },
         {
          "text": "Days and months against seasons (b2)",
          "block": "added-05_k18",
-         "start_s": 3809.537,
-         "start": "63:29"
+         "start_s": 4446.614,
+         "start": "74:06"
         },
         {
          "text": "A correct date example (b2)",
          "block": "added-05_k19",
-         "start_s": 3821.228,
-         "start": "63:41"
+         "start_s": 4458.305,
+         "start": "74:18"
         },
         {
          "text": "A correct season example (b2)",
          "block": "added-05_k21",
-         "start_s": 3844.223,
-         "start": "64:04"
+         "start_s": 4481.3,
+         "start": "74:41"
         },
         {
          "text": "Practice item (b5)",
          "block": "added-05_k23",
-         "start_s": 3852.74,
-         "start": "64:12"
+         "start_s": 4489.817,
+         "start": "74:49"
         },
         {
          "text": "Practice answer (b5)",
          "block": "added-05_k25",
-         "start_s": 3874.166,
-         "start": "64:34"
+         "start_s": 4511.243,
+         "start": "75:11"
         },
         {
          "text": "Closing rule to remember",
          "block": "added-05_k27",
-         "start_s": 3898.235,
-         "start": "64:58"
+         "start_s": 4535.312,
+         "start": "75:35"
         }
        ]
       }
@@ -15619,8 +15619,8 @@
        "block": "added-05_k27",
        "kind": "rule",
        "text": "Use capital letters for sentences, the word \"I\", days, months, and titles with names. Inside a sentence, use small letters for job words, seasons, and generic drug names.",
-       "start_s": 3898.235,
-       "start": "64:58"
+       "start_s": 4535.312,
+       "start": "75:35"
       }
      ],
      "terms": [],
@@ -15628,20 +15628,20 @@
       {
        "block": "added-05_k06",
        "text": "She was seen by a Cardiologist.",
-       "start_s": 3698.236,
-       "start": "61:38"
+       "start_s": 4335.313,
+       "start": "72:15"
       },
       {
        "block": "added-05_k12",
        "text": "She takes Paracetamol.",
-       "start_s": 3772.854,
-       "start": "62:52"
+       "start_s": 4409.931,
+       "start": "73:29"
       },
       {
        "block": "added-05_k24",
        "text": "On monday, dr. patel prescribed Paracetamol.",
-       "start_s": 3856.797,
-       "start": "64:16"
+       "start_s": 4493.874,
+       "start": "74:53"
       }
      ],
      "practice": [],
@@ -15653,111 +15653,111 @@
      "kind": "authored",
      "pages": [],
      "category": "c2",
-     "start_s": 3921.171,
-     "start": "65:21",
-     "end_s": 4181.984,
+     "start_s": 4558.248,
+     "start": "75:58",
+     "end_s": 4874.091,
      "topics": [
       {
        "board": "added-06_t1",
        "title": "Other punctuation in letters",
-       "start_s": 3921.171,
-       "start": "65:21",
+       "start_s": 4558.248,
+       "start": "75:58",
        "points": [
         {
          "text": "Set the board's one fixed rule",
          "block": "added-06_k01",
-         "start_s": 3921.171,
-         "start": "65:21"
+         "start_s": 4558.248,
+         "start": "75:58"
         },
         {
          "text": "Brackets hold extra information: dose example",
          "block": "added-06_k02",
-         "start_s": 3931.618,
-         "start": "65:31"
+         "start_s": 4568.695,
+         "start": "76:08"
         },
         {
          "text": "Brackets for a short form",
          "block": "added-06_k04",
-         "start_s": 3946.411,
-         "start": "65:46"
+         "start_s": 4583.488,
+         "start": "76:23"
         },
         {
          "text": "Quotation marks for the patient's own words",
          "block": "added-06_k06",
-         "start_s": 3963.898,
-         "start": "66:03"
+         "start_s": 4600.975,
+         "start": "76:40"
         },
         {
          "text": "Gloss the general word 'exact'",
          "block": "added-06_k08",
-         "start_s": 3980.125,
-         "start": "66:20"
+         "start_s": 4617.202,
+         "start": "76:57"
         },
         {
          "text": "Where a slash is correct, and where it is not",
          "block": "added-06_k09",
-         "start_s": 3994.872,
-         "start": "66:34"
+         "start_s": 4631.949,
+         "start": "77:11"
         },
         {
          "text": "The corrected form inside a sentence",
          "block": "added-06_k11",
-         "start_s": 4010.945,
-         "start": "66:50"
+         "start_s": 4648.022,
+         "start": "77:28"
         },
         {
          "text": "Dash and hyphen do different jobs",
          "block": "added-06_k13",
-         "start_s": 4026.544,
-         "start": "67:06"
+         "start_s": 4663.621,
+         "start": "77:43"
         },
         {
          "text": "Brackets or commas can do the dash's job",
          "block": "added-06_k14",
-         "start_s": 4043.439,
-         "start": "67:23"
+         "start_s": 4680.516,
+         "start": "78:00"
         },
         {
          "text": "e.g. means for example",
          "block": "added-06_k16",
-         "start_s": 4060.423,
-         "start": "67:40"
+         "start_s": 4697.5,
+         "start": "78:17"
         },
         {
          "text": "i.e. means that is",
          "block": "added-06_k18",
-         "start_s": 4074.296,
-         "start": "67:54"
+         "start_s": 4711.373,
+         "start": "78:31"
         },
         {
          "text": "No exclamation mark in a letter",
          "block": "added-06_k20",
-         "start_s": 4092.281,
-         "start": "68:12"
+         "start_s": 4729.358,
+         "start": "78:49"
         },
         {
          "text": "The same sentence with a full stop",
          "block": "added-06_k22",
-         "start_s": 4106.245,
-         "start": "68:26"
+         "start_s": 4743.322,
+         "start": "79:03"
         },
         {
          "text": "Write 'and', not '&'",
          "block": "added-06_k24",
-         "start_s": 4122.536,
-         "start": "68:42"
+         "start_s": 4759.613,
+         "start": "79:19"
         },
         {
          "text": "Practice item",
          "block": "added-06_k26",
-         "start_s": 4136.951,
-         "start": "68:56"
+         "start_s": 4774.028,
+         "start": "79:34"
         },
         {
          "text": "Answer to the practice item",
          "block": "added-06_k28",
-         "start_s": 4162.483,
-         "start": "69:22"
+         "start_s": 4799.56,
+         "start": "79:59"
         }
        ]
       }
@@ -15768,41 +15768,41 @@
        "block": "added-06_k16",
        "label": "Short form",
        "term": "e.g.",
-       "start_s": 4060.423,
-       "start": "67:40"
+       "start_s": 4697.5,
+       "start": "78:17"
       },
       {
        "block": "added-06_k18",
        "label": "Short form",
        "term": "i.e.",
-       "start_s": 4074.296,
-       "start": "67:54"
+       "start_s": 4711.373,
+       "start": "78:31"
       }
      ],
      "wrong_examples": [
       {
        "block": "added-06_k10",
        "text": "Headache/nausea",
-       "start_s": 4007.164,
-       "start": "66:47"
+       "start_s": 4644.241,
+       "start": "77:24"
       },
       {
        "block": "added-06_k21",
        "text": "Her symptoms have improved a lot!",
-       "start_s": 4099.066,
-       "start": "68:19"
+       "start_s": 4736.143,
+       "start": "78:56"
       },
       {
        "block": "added-06_k24",
        "text": "Mr. & Mrs. Brown",
-       "start_s": 4122.536,
-       "start": "68:42"
+       "start_s": 4759.613,
+       "start": "79:19"
       },
       {
        "block": "added-06_k27",
        "text": "She has pain & swelling in her left knee!",
-       "start_s": 4140.798,
-       "start": "69:00"
+       "start_s": 4777.875,
+       "start": "79:37"
       }
      ],
      "practice": [],
@@ -15814,93 +15814,93 @@
      "kind": "authored",
      "pages": [],
      "category": "c2",
-     "start_s": 4181.984,
-     "start": "69:41",
-     "end_s": 4416.698,
+     "start_s": 4874.091,
+     "start": "81:14",
+     "end_s": 5108.805,
      "topics": [
       {
        "board": "added-07_t1",
        "title": "Dates, times and units in a letter",
-       "start_s": 4181.984,
-       "start": "69:41",
+       "start_s": 4874.091,
+       "start": "81:14",
        "points": [
         {
          "text": "Board rule, then the shape of a date",
          "block": "added-07_k01",
-         "start_s": 4181.984,
-         "start": "69:41"
+         "start_s": 4874.091,
+         "start": "81:14"
         },
         {
          "text": "A correct date in a medical letter, and the comma after it",
          "block": "added-07_k03",
-         "start_s": 4206.124,
-         "start": "70:06"
+         "start_s": 4898.231,
+         "start": "81:38"
         },
         {
          "text": "The rejected date form",
          "block": "added-07_k05",
-         "start_s": 4234.324,
-         "start": "70:34"
+         "start_s": 4926.431,
+         "start": "82:06"
         },
         {
          "text": "Times in digits",
          "block": "added-07_k07",
-         "start_s": 4251.422,
-         "start": "70:51"
+         "start_s": 4943.529,
+         "start": "82:23"
         },
         {
          "text": "Gloss the general word 'digits'",
          "block": "added-07_k09",
-         "start_s": 4267.662,
-         "start": "71:07"
+         "start_s": 4959.769,
+         "start": "82:39"
         },
         {
          "text": "One style for times in the whole letter",
          "block": "added-07_k10",
-         "start_s": 4284.321,
-         "start": "71:24"
+         "start_s": 4976.428,
+         "start": "82:56"
         },
         {
          "text": "Numbers with units",
          "block": "added-07_k11",
-         "start_s": 4295.359,
-         "start": "71:35"
+         "start_s": 4987.466,
+         "start": "83:07"
         },
         {
          "text": "Small numbers: the rejected form",
          "block": "added-07_k13",
-         "start_s": 4318.25,
-         "start": "71:58"
+         "start_s": 5010.357,
+         "start": "83:30"
         },
         {
          "text": "Small numbers: the correct form",
          "block": "added-07_k14",
-         "start_s": 4322.414,
-         "start": "72:02"
+         "start_s": 5014.521,
+         "start": "83:34"
         },
         {
          "text": "Units take no plural s: the rejected form",
          "block": "added-07_k16",
-         "start_s": 4335.227,
-         "start": "72:15"
+         "start_s": 5027.334,
+         "start": "83:47"
         },
         {
          "text": "Units take no plural s: the correct form in a sentence",
          "block": "added-07_k18",
-         "start_s": 4348.677,
-         "start": "72:28"
+         "start_s": 5040.784,
+         "start": "84:00"
         },
         {
          "text": "Practice item",
          "block": "added-07_k20",
-         "start_s": 4360.243,
-         "start": "72:40"
+         "start_s": 5052.35,
+         "start": "84:12"
         },
         {
          "text": "Practice answer",
          "block": "added-07_k22",
-         "start_s": 4382.138,
-         "start": "73:02"
+         "start_s": 5074.245,
+         "start": "84:34"
         }
        ]
       }
@@ -15911,26 +15911,26 @@
       {
        "block": "added-07_k05",
        "text": "May 12th, 2024",
-       "start_s": 4234.324,
-       "start": "70:34"
+       "start_s": 4926.431,
+       "start": "82:06"
       },
       {
        "block": "added-07_k13",
        "text": "Two mg",
-       "start_s": 4318.25,
-       "start": "71:58"
+       "start_s": 5010.357,
+       "start": "83:30"
       },
       {
        "block": "added-07_k17",
        "text": "5 mgs",
-       "start_s": 4339.39,
-       "start": "72:19"
+       "start_s": 5031.497,
+       "start": "83:51"
       },
       {
        "block": "added-07_k21",
        "text": "On March 3rd, her temperature was thirty eight point five degrees.",
-       "start_s": 4363.457,
-       "start": "72:43"
+       "start_s": 5055.564,
+       "start": "84:15"
       }
      ],
      "practice": [],
@@ -15942,93 +15942,93 @@
      "kind": "authored",
      "pages": [],
      "category": "c2",
-     "start_s": 4416.698,
-     "start": "73:36",
-     "end_s": 4625.38,
+     "start_s": 5108.805,
+     "start": "85:08",
+     "end_s": 5317.487,
      "topics": [
       {
        "board": "added-08_t1",
        "title": "Case-note short forms in a letter",
-       "start_s": 4416.698,
-       "start": "73:36",
+       "start_s": 5108.805,
+       "start": "85:08",
        "points": [
         {
          "text": "Fix the board's rule and say why full words are needed",
          "block": "added-08_k01",
-         "start_s": 4416.698,
-         "start": "73:36"
+         "start_s": 5108.805,
+         "start": "85:08"
         },
         {
          "text": "Show the four short forms and their full words",
          "block": "added-08_k03",
-         "start_s": 4430.718,
-         "start": "73:50"
+         "start_s": 5122.825,
+         "start": "85:22"
         },
         {
          "text": "Reject the note form in a letter",
          "block": "added-08_k04",
-         "start_s": 4450.247,
-         "start": "74:10"
+         "start_s": 5142.354,
+         "start": "85:42"
         },
         {
          "text": "Give the correct sentence and say what makes it correct",
          "block": "added-08_k06",
-         "start_s": 4465.361,
-         "start": "74:25"
+         "start_s": 5157.468,
+         "start": "85:57"
         },
         {
          "text": "Second wrong example from the notes",
          "block": "added-08_k08",
-         "start_s": 4476.195,
-         "start": "74:36"
+         "start_s": 5168.302,
+         "start": "86:08"
         },
         {
          "text": "The correct version of the history sentence",
          "block": "added-08_k10",
-         "start_s": 4488.066,
-         "start": "74:48"
+         "start_s": 5180.173,
+         "start": "86:20"
         },
         {
          "text": "Marks and arrows in notes are not letter English",
          "block": "added-08_k12",
-         "start_s": 4498.821,
-         "start": "74:58"
+         "start_s": 5190.928,
+         "start": "86:30"
         },
         {
          "text": "The arrow becomes words",
          "block": "added-08_k14",
-         "start_s": 4515.723,
-         "start": "75:15"
+         "start_s": 5207.83,
+         "start": "86:47"
         },
         {
          "text": "Well-known abbreviations may stay short",
          "block": "added-08_k16",
-         "start_s": 4525.192,
-         "start": "75:25"
+         "start_s": 5217.299,
+         "start": "86:57"
         },
         {
          "text": "A less common short form needs the full words first",
          "block": "added-08_k18",
-         "start_s": 4548.161,
-         "start": "75:48"
+         "start_s": 5240.268,
+         "start": "87:20"
         },
         {
          "text": "Example of full words with the short form in brackets",
          "block": "added-08_k20",
-         "start_s": 4562.618,
-         "start": "76:02"
+         "start_s": 5254.725,
+         "start": "87:34"
         },
         {
          "text": "Practice item",
          "block": "added-08_k22",
-         "start_s": 4584.846,
-         "start": "76:24"
+         "start_s": 5276.953,
+         "start": "87:56"
         },
         {
          "text": "Answer to the practice item",
          "block": "added-08_k24",
-         "start_s": 4600.572,
-         "start": "76:40"
+         "start_s": 5292.679,
+         "start": "88:12"
         }
        ]
       }
@@ -16039,34 +16039,34 @@
        "block": "added-08_k19",
        "label": "Punctuation",
        "term": "Brackets",
-       "start_s": 4555.029,
-       "start": "75:55"
+       "start_s": 5247.136,
+       "start": "87:27"
       }
      ],
      "wrong_examples": [
       {
        "block": "added-08_k04",
        "text": "Pt c/o SOB.",
-       "start_s": 4450.247,
-       "start": "74:10"
+       "start_s": 5142.354,
+       "start": "85:42"
       },
       {
        "block": "added-08_k08",
        "text": "Hx of asthma.",
-       "start_s": 4476.195,
-       "start": "74:36"
+       "start_s": 5168.302,
+       "start": "86:08"
       },
       {
        "block": "added-08_k12",
        "text": "BP ↑",
-       "start_s": 4498.821,
-       "start": "74:58"
+       "start_s": 5190.928,
+       "start": "86:30"
       },
       {
        "block": "added-08_k22",
        "text": "Pt c/o SOB. Hx asthma.",
-       "start_s": 4584.846,
-       "start": "76:24"
+       "start_s": 5276.953,
+       "start": "87:56"
       }
      ],
      "practice": [],
@@ -16078,93 +16078,93 @@
      "kind": "authored",
      "pages": [],
      "category": "c2",
-     "start_s": 4625.38,
-     "start": "77:05",
-     "end_s": 4980.684,
+     "start_s": 5317.487,
+     "start": "88:37",
+     "end_s": 5745.595,
      "topics": [
       {
        "board": "added-09_t1",
        "title": "Punctuating case notes into a letter paragraph",
-       "start_s": 4625.38,
-       "start": "77:05",
+       "start_s": 5317.487,
+       "start": "88:37",
        "points": [
         {
          "text": "Show the case notes and set the task",
          "block": "added-09_k01",
-         "start_s": 4625.38,
-         "start": "77:05"
+         "start_s": 5317.487,
+         "start": "88:37"
         },
         {
          "text": "Wrong version of the first sentence: note forms kept in the letter",
          "block": "added-09_k03",
-         "start_s": 4648.826,
-         "start": "77:28"
+         "start_s": 5340.933,
+         "start": "89:00"
         },
         {
          "text": "Step 1: the patient and the admission",
          "block": "added-09_k05",
-         "start_s": 4693.967,
-         "start": "78:13"
+         "start_s": 5386.074,
+         "start": "89:46"
         },
         {
          "text": "Wrong version of the history sentence",
          "block": "added-09_k07",
-         "start_s": 4739.897,
-         "start": "78:59"
+         "start_s": 5432.004,
+         "start": "90:32"
         },
         {
          "text": "Step 2: the history",
          "block": "added-09_k08",
-         "start_s": 4765.168,
-         "start": "79:25"
+         "start_s": 5457.275,
+         "start": "90:57"
         },
         {
          "text": "Step 3: the medication",
          "block": "added-09_k10",
-         "start_s": 4786.742,
-         "start": "79:46"
+         "start_s": 5478.849,
+         "start": "91:18"
         },
         {
          "text": "Step 4: the diagnosis, with the semi-colon named",
          "block": "added-09_k12",
-         "start_s": 4821.423,
-         "start": "80:21"
+         "start_s": 5513.53,
+         "start": "91:53"
         },
         {
          "text": "Step 4: abbreviations that stay",
          "block": "added-09_k14",
-         "start_s": 4853.635,
-         "start": "80:53"
+         "start_s": 5545.742,
+         "start": "92:25"
         },
         {
          "text": "Step 5: the discharge and the follow-up",
          "block": "added-09_k15",
-         "start_s": 4866.961,
-         "start": "81:06"
+         "start_s": 5559.068,
+         "start": "92:39"
         },
         {
          "text": "Step 5: follow-up as a noun",
          "block": "added-09_k17",
-         "start_s": 4894.144,
-         "start": "81:34"
+         "start_s": 5586.251,
+         "start": "93:06"
         },
         {
          "text": "Step 5: reading 2/52",
          "block": "added-09_k18",
-         "start_s": 4904.333,
-         "start": "81:44"
+         "start_s": 5596.44,
+         "start": "93:16"
         },
         {
          "text": "The whole paragraph as the answer",
          "block": "added-09_k19",
-         "start_s": 4914.674,
-         "start": "81:54"
+         "start_s": 5606.781,
+         "start": "93:26"
         },
         {
          "text": "The checking rule to take away",
          "block": "added-09_k20",
-         "start_s": 4964.669,
-         "start": "82:44"
+         "start_s": 5729.58,
+         "start": "95:29"
         }
        ]
       }
@@ -16174,8 +16174,8 @@
        "block": "added-09_k20",
        "kind": "rule",
        "text": "Check full stops, commas, hyphens, capital letters and short forms in every letter you write. Correct punctuation makes your letter clear for the reader.",
-       "start_s": 4964.669,
-       "start": "82:44"
+       "start_s": 5729.58,
+       "start": "95:29"
       }
      ],
      "terms": [
@@ -16183,29 +16183,29 @@
        "block": "added-09_k13",
        "label": "Punctuation mark",
        "term": "Semi-colon",
-       "start_s": 4830.964,
-       "start": "80:30"
+       "start_s": 5523.071,
+       "start": "92:03"
       },
       {
        "block": "added-09_k17",
        "label": "Form",
        "term": "Follow-up",
-       "start_s": 4894.144,
-       "start": "81:34"
+       "start_s": 5586.251,
+       "start": "93:06"
       }
      ],
      "wrong_examples": [
       {
        "block": "added-09_k03",
        "text": "Mrs. Anna Clarke, 67 year old woman, was admitted on 14/03/2024 c/o chest pain & SOB.",
-       "start_s": 4648.826,
-       "start": "77:28"
+       "start_s": 5340.933,
+       "start": "89:00"
       },
       {
        "block": "added-09_k07",
        "text": "She has a Hx of Hypertension and Type 2 Diabetes.",
-       "start_s": 4739.897,
-       "start": "78:59"
+       "start_s": 5432.004,
+       "start": "90:32"
       }
      ],
      "practice": [],
@@ -16239,8 +16239,8 @@
      "lexicon": null,
      "section": "pages-07-08-09",
      "block": "pages-07-08-09_k31",
-     "start_s": 1204.466,
-     "start": "20:04"
+     "start_s": 1333.686,
+     "start": "22:13"
     },
     {
      "word": "underwent",
@@ -16248,8 +16248,8 @@
      "lexicon": null,
      "section": "page-10",
      "block": "page-10_k09",
-     "start_s": 1363.945,
-     "start": "22:43"
+     "start_s": 1493.165,
+     "start": "24:53"
     },
     {
      "word": "Snatched",
@@ -16257,8 +16257,8 @@
      "lexicon": null,
      "section": "pages-11-12",
      "block": "pages-11-12_k21",
-     "start_s": 1701.336,
-     "start": "28:21"
+     "start_s": 1890.852,
+     "start": "31:30"
     },
     {
      "word": "slightly",
@@ -16266,8 +16266,8 @@
      "lexicon": null,
      "section": "page-13",
      "block": "page-13_k12",
-     "start_s": 1957.229,
-     "start": "32:37"
+     "start_s": 2210.592,
+     "start": "36:50"
     },
     {
      "word": "optional",
@@ -16275,8 +16275,8 @@
      "lexicon": null,
      "section": "page-14",
      "block": "page-14_k06",
-     "start_s": 2129.671,
-     "start": "35:29"
+     "start_s": 2383.034,
+     "start": "39:43"
     },
     {
      "word": "above-mentioned",
@@ -16284,8 +16284,8 @@
      "lexicon": null,
      "section": "pages-15-16",
      "block": "pages-15-16_k04",
-     "start_s": 2289.851,
-     "start": "38:09"
+     "start_s": 2605.358,
+     "start": "43:25"
     },
     {
      "word": "delayed",
@@ -16293,8 +16293,8 @@
      "lexicon": null,
      "section": "added-02",
      "block": "added-02_k09",
-     "start_s": 2935.651,
-     "start": "48:55"
+     "start_s": 3381.988,
+     "start": "56:21"
     },
     {
      "word": "Follow-up",
@@ -16302,8 +16302,8 @@
      "lexicon": null,
      "section": "added-04",
      "block": "added-04_k18",
-     "start_s": 3525.881,
-     "start": "58:45"
+     "start_s": 4105.806,
+     "start": "68:25"
     },
     {
      "word": "brand name",
@@ -16311,8 +16311,8 @@
      "lexicon": null,
      "section": "added-05",
      "block": "added-05_k11",
-     "start_s": 3744.605,
-     "start": "62:24"
+     "start_s": 4381.682,
+     "start": "73:01"
     },
     {
      "word": "exact",
@@ -16320,8 +16320,8 @@
      "lexicon": null,
      "section": "added-06",
      "block": "added-06_k08",
-     "start_s": 3980.125,
-     "start": "66:20"
+     "start_s": 4617.202,
+     "start": "76:57"
     },
     {
      "word": "digits",
@@ -16329,8 +16329,8 @@
      "lexicon": null,
      "section": "added-07",
      "block": "added-07_k09",
-     "start_s": 4267.662,
-     "start": "71:07"
+     "start_s": 4959.769,
+     "start": "82:39"
     }
    ],
    "withheld": {
@@ -53905,8 +53905,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-03",
-     "start_s": 3110.836,
-     "start": "51:50",
+     "start_s": 3625.495,
+     "start": "60:25",
      "source": "term"
     }
    ]
@@ -53918,8 +53918,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-03",
-     "start_s": 3102.296,
-     "start": "51:42",
+     "start_s": 3616.955,
+     "start": "60:16",
      "source": "section"
     }
    ]
@@ -54107,8 +54107,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-08",
-     "start_s": 4555.029,
-     "start": "75:55",
+     "start_s": 5247.136,
+     "start": "87:27",
      "source": "term"
     }
    ]
@@ -54120,8 +54120,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-06",
-     "start_s": 3921.171,
-     "start": "65:21",
+     "start_s": 4558.248,
+     "start": "75:58",
      "source": "section"
     }
    ]
@@ -54159,8 +54159,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-05",
-     "start_s": 3631.277,
-     "start": "60:31",
+     "start_s": 4268.354,
+     "start": "71:08",
      "source": "section"
     }
    ]
@@ -54211,8 +54211,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-08",
-     "start_s": 4416.698,
-     "start": "73:36",
+     "start_s": 5108.805,
+     "start": "85:08",
      "source": "section"
     }
    ]
@@ -54315,8 +54315,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-02",
-     "start_s": 2841.349,
-     "start": "47:21",
+     "start_s": 3287.686,
+     "start": "54:47",
      "source": "term"
     }
    ]
@@ -54341,8 +54341,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "pages-07-08-09",
-     "start_s": 1196.831,
-     "start": "19:56",
+     "start_s": 1326.051,
+     "start": "22:06",
      "source": "term"
     }
    ]
@@ -54393,8 +54393,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "pages-15-16",
-     "start_s": 2274.573,
-     "start": "37:54",
+     "start_s": 2590.08,
+     "start": "43:10",
      "source": "section"
     }
    ]
@@ -54499,8 +54499,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "pages-07-08-09",
-     "start_s": 807.589,
-     "start": "13:27",
+     "start_s": 869.339,
+     "start": "14:29",
      "source": "section"
     }
    ]
@@ -54564,8 +54564,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "pages-07-08-09",
-     "start_s": 1089.612,
-     "start": "18:09",
+     "start_s": 1218.832,
+     "start": "20:18",
      "source": "term"
     }
    ]
@@ -54642,8 +54642,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-03",
-     "start_s": 3220.251,
-     "start": "53:40",
+     "start_s": 3734.91,
+     "start": "62:14",
      "source": "term"
     }
    ]
@@ -54779,8 +54779,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-07",
-     "start_s": 4181.984,
-     "start": "69:41",
+     "start_s": 4874.091,
+     "start": "81:14",
      "source": "section"
     }
    ]
@@ -54975,8 +54975,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-06",
-     "start_s": 4060.423,
-     "start": "67:40",
+     "start_s": 4697.5,
+     "start": "78:17",
      "source": "term"
     }
    ]
@@ -55047,8 +55047,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "pages-07-08-09",
-     "start_s": 835.459,
-     "start": "13:55",
+     "start_s": 897.209,
+     "start": "14:57",
      "source": "term"
     }
    ]
@@ -55073,8 +55073,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-09",
-     "start_s": 4625.38,
-     "start": "77:05",
+     "start_s": 5317.487,
+     "start": "88:37",
      "source": "section"
     }
    ]
@@ -55099,8 +55099,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-09",
-     "start_s": 4894.144,
-     "start": "81:34",
+     "start_s": 5586.251,
+     "start": "93:06",
      "source": "term"
     }
    ]
@@ -55216,8 +55216,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-01",
-     "start_s": 2576.291,
-     "start": "42:56",
+     "start_s": 2958.255,
+     "start": "49:18",
      "source": "section"
     }
    ]
@@ -55613,8 +55613,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-04",
-     "start_s": 3386.796,
-     "start": "56:26",
+     "start_s": 3966.721,
+     "start": "66:06",
      "source": "term"
     }
    ]
@@ -55626,8 +55626,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-04",
-     "start_s": 3375.036,
-     "start": "56:15",
+     "start_s": 3954.961,
+     "start": "65:54",
      "source": "section"
     }
    ]
@@ -55639,8 +55639,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-06",
-     "start_s": 4074.296,
-     "start": "67:54",
+     "start_s": 4711.373,
+     "start": "78:31",
      "source": "term"
     }
    ]
@@ -55763,8 +55763,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "page-10",
-     "start_s": 1266.913,
-     "start": "21:06",
+     "start_s": 1396.133,
+     "start": "23:16",
      "source": "term"
     }
    ]
@@ -55776,8 +55776,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "page-10",
-     "start_s": 1262.472,
-     "start": "21:02",
+     "start_s": 1391.692,
+     "start": "23:11",
      "source": "section"
     }
    ]
@@ -55854,8 +55854,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "pages-11-12",
-     "start_s": 1466.167,
-     "start": "24:26",
+     "start_s": 1655.683,
+     "start": "27:35",
      "source": "section"
     }
    ]
@@ -55880,8 +55880,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "page-10",
-     "start_s": 1308.713,
-     "start": "21:48",
+     "start_s": 1437.933,
+     "start": "23:57",
      "source": "term"
     }
    ]
@@ -56018,8 +56018,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "page-13",
-     "start_s": 1897.494,
-     "start": "31:37",
+     "start_s": 2150.857,
+     "start": "35:50",
      "source": "term"
     }
    ]
@@ -56771,8 +56771,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "page-14",
-     "start_s": 2112.804,
-     "start": "35:12",
+     "start_s": 2366.167,
+     "start": "39:26",
      "source": "section"
     }
    ]
@@ -56948,8 +56948,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "pages-15-16",
-     "start_s": 2325.153,
-     "start": "38:45",
+     "start_s": 2640.66,
+     "start": "44:00",
      "source": "term"
     },
     {
@@ -57054,8 +57054,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-01",
-     "start_s": 2624.047,
-     "start": "43:44",
+     "start_s": 3006.011,
+     "start": "50:06",
      "source": "term"
     }
    ]
@@ -57119,8 +57119,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-09",
-     "start_s": 4830.964,
-     "start": "80:30",
+     "start_s": 5523.071,
+     "start": "92:03",
      "source": "term"
     }
    ]
@@ -57132,8 +57132,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "pages-07-08-09",
-     "start_s": 1099.482,
-     "start": "18:19",
+     "start_s": 1228.702,
+     "start": "20:28",
      "source": "term"
     }
    ]
@@ -57145,8 +57145,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-02",
-     "start_s": 2830.119,
-     "start": "47:10",
+     "start_s": 3276.456,
+     "start": "54:36",
      "source": "section"
     }
    ]
@@ -57158,8 +57158,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "added-01",
-     "start_s": 2585.812,
-     "start": "43:05",
+     "start_s": 2967.776,
+     "start": "49:27",
      "source": "term"
     }
    ]
@@ -57302,8 +57302,8 @@
     {
      "lesson": "grammar-07-punctuation",
      "section": "pages-15-16",
-     "start_s": 2501.209,
-     "start": "41:41",
+     "start_s": 2883.173,
+     "start": "48:03",
      "source": "term"
     }
    ]
