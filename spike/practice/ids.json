@@ -18,6 +18,10 @@
   "grammar-02-verb-use": [
    951000,
    951999
+  ],
+  "grammar-04-articles": [
+   953000,
+   953999
   ]
  },
  "ids": [
@@ -990,6 +994,146 @@
    "id": "oa-grammar-951026",
    "lesson": "grammar-02-verb-use",
    "point": "same-tense",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953000",
+   "lesson": "grammar-04-articles",
+   "point": "a-or-an-sound",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953001",
+   "lesson": "grammar-04-articles",
+   "point": "a-or-an-sound",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953002",
+   "lesson": "grammar-04-articles",
+   "point": "a-or-an-sound",
+   "slot": "item-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953003",
+   "lesson": "grammar-04-articles",
+   "point": "first-then-the",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953004",
+   "lesson": "grammar-04-articles",
+   "point": "first-then-the",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953005",
+   "lesson": "grammar-04-articles",
+   "point": "first-then-the",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953006",
+   "lesson": "grammar-04-articles",
+   "point": "countable-or-not",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953007",
+   "lesson": "grammar-04-articles",
+   "point": "countable-or-not",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953008",
+   "lesson": "grammar-04-articles",
+   "point": "countable-or-not",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953009",
+   "lesson": "grammar-04-articles",
+   "point": "countable-or-not",
+   "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953010",
+   "lesson": "grammar-04-articles",
+   "point": "article-at-the-front",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953011",
+   "lesson": "grammar-04-articles",
+   "point": "uncountable-no-a",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953012",
+   "lesson": "grammar-04-articles",
+   "point": "oxygen-then-the",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953013",
+   "lesson": "grammar-04-articles",
+   "point": "oxygen-then-the",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953014",
+   "lesson": "grammar-04-articles",
+   "point": "note-to-sentence",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953015",
+   "lesson": "grammar-04-articles",
+   "point": "age-phrase",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953016",
+   "lesson": "grammar-04-articles",
+   "point": "spot-the-right-one",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953017",
+   "lesson": "grammar-04-articles",
+   "point": "spot-the-right-one",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953018",
+   "lesson": "grammar-04-articles",
+   "point": "spot-the-right-one",
+   "slot": "item-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-grammar-953019",
+   "lesson": "grammar-04-articles",
+   "point": "fix-the-letter",
    "slot": "item",
    "issued": "2026-10-31"
   }
