@@ -4508,24 +4508,24 @@
       "section": "pages-07-08",
       "to_section": "page-10",
       "utterance": "pages-07-08_t2.s2.u4",
-      "start_s": 1263.182,
-      "start": "21:03"
+      "start_s": 1275.691,
+      "start": "21:15"
      },
      {
       "lesson": "grammar-06-clause",
       "section": "pages-09-10",
       "to_section": "page-16",
       "utterance": "pages-09-10_t2.s6.u5",
-      "start_s": 2454.418,
-      "start": "40:54"
+      "start_s": 2510.704,
+      "start": "41:50"
      },
      {
       "lesson": "grammar-06-clause",
       "section": "pages-09-10",
       "to_section": null,
       "utterance": "pages-09-10_t2.s17.u2",
-      "start_s": 2743.931,
-      "start": "45:43"
+      "start_s": 2810.361,
+      "start": "46:50"
      },
      {
       "lesson": "grammar-07-punctuation",
@@ -11826,16 +11826,16 @@
       "section": "pages-09-10",
       "to_section": "pages-11-12",
       "utterance": "pages-09-10_t2.s10.u2",
-      "start_s": 2555.632,
-      "start": "42:35"
+      "start_s": 2622.062,
+      "start": "43:42"
      },
      {
       "lesson": "grammar-06-clause",
       "section": "pages-09-10",
       "to_section": "pages-04-05",
       "utterance": "pages-09-10_t2.s19.u3",
-      "start_s": 2785.591,
-      "start": "46:25"
+      "start_s": 2852.021,
+      "start": "47:32"
      },
      {
       "lesson": "grammar-07-punctuation",
@@ -11916,8 +11916,8 @@
    "description": "Learn to add information with relative clauses, make them shorter, and join case notes with participle clauses in your OET letters.",
    "course": "grammar",
    "order": 6,
-   "length_s": 3464.725,
-   "length": "57:44",
+   "length_s": 3544.485,
+   "length": "59:04",
    "bundle_format": "1.23",
    "status": "built",
    "approval": null,
@@ -12000,7 +12000,7 @@
      "category": null,
      "start_s": 120.11,
      "start": "2:00",
-     "end_s": 628.843,
+     "end_s": 636.202,
      "topics": [
       {
        "board": "pages-04-05_t1",
@@ -12049,92 +12049,92 @@
         {
          "text": "what each pronoun points back to",
          "block": "pages-04-05_k11",
-         "start_s": 283.705,
+         "start_s": 283.95,
          "start": "4:43"
         },
         {
          "text": "whom is the object form",
          "block": "pages-04-05_k12",
-         "start_s": 300.014,
-         "start": "5:00"
+         "start_s": 307.373,
+         "start": "5:07"
         },
         {
          "text": "whose shows possession",
          "block": "pages-04-05_k14",
-         "start_s": 322.482,
-         "start": "5:22"
+         "start_s": 329.841,
+         "start": "5:29"
         },
         {
          "text": "whose and who's are not the same",
          "block": "pages-04-05_k16",
-         "start_s": 340.49,
-         "start": "5:40"
+         "start_s": 347.849,
+         "start": "5:47"
         },
         {
          "text": "the full form in a letter",
          "block": "pages-04-05_k18",
-         "start_s": 362.406,
-         "start": "6:02"
+         "start_s": 369.765,
+         "start": "6:09"
         },
         {
          "text": "where that can be used",
          "block": "pages-04-05_k19",
-         "start_s": 375.816,
-         "start": "6:15"
+         "start_s": 383.175,
+         "start": "6:23"
         },
         {
          "text": "a relative pronoun is not a conjunction",
          "block": "pages-04-05_k21",
-         "start_s": 404.34,
-         "start": "6:44"
+         "start_s": 411.699,
+         "start": "6:51"
         },
         {
          "text": "what each relative adverb stands for",
          "block": "pages-04-05_k23",
-         "start_s": 442.29,
-         "start": "7:22"
+         "start_s": 449.649,
+         "start": "7:29"
         },
         {
          "text": "where for a place",
          "block": "pages-04-05_k24",
-         "start_s": 453.085,
-         "start": "7:33"
+         "start_s": 460.444,
+         "start": "7:40"
         },
         {
          "text": "when for a time",
          "block": "pages-04-05_k26",
-         "start_s": 464.384,
-         "start": "7:44"
+         "start_s": 471.743,
+         "start": "7:51"
         },
         {
          "text": "the who clause adds more about the patient",
          "block": "pages-04-05_k28",
-         "start_s": 482.598,
-         "start": "8:02"
+         "start_s": 489.957,
+         "start": "8:09"
         },
         {
          "text": "who for a person in a letter",
          "block": "pages-04-05_k29",
-         "start_s": 493.082,
-         "start": "8:13"
+         "start_s": 500.441,
+         "start": "8:20"
         },
         {
          "text": "the which clause adds extra information",
          "block": "pages-04-05_k30",
-         "start_s": 506.456,
-         "start": "8:26"
+         "start_s": 513.815,
+         "start": "8:33"
         },
         {
          "text": "the comma makes it non-defining",
          "block": "pages-04-05_k32",
-         "start_s": 532.757,
-         "start": "8:52"
+         "start_s": 540.116,
+         "start": "9:00"
         },
         {
          "text": "which for a thing in a letter",
          "block": "pages-04-05_k34",
-         "start_s": 560.975,
-         "start": "9:20"
+         "start_s": 568.334,
+         "start": "9:28"
         }
        ]
       }
@@ -12144,15 +12144,15 @@
        "block": "pages-04-05_k18",
        "kind": "rule",
        "text": "In a letter, write who is in full, not who's.",
-       "start_s": 362.406,
-       "start": "6:02"
+       "start_s": 369.765,
+       "start": "6:09"
       },
       {
        "block": "pages-04-05_k20",
        "kind": "warning",
        "text": "Never use that after a comma, in a non-defining clause.",
-       "start_s": 383.792,
-       "start": "6:23"
+       "start_s": 391.151,
+       "start": "6:31"
       }
      ],
      "terms": [
@@ -12172,8 +12172,8 @@
        "lesson": "grammar-05-complex-compound",
        "section": null,
        "provenance": "corrected",
-       "start_s": 397.952,
-       "start": "6:37"
+       "start_s": 405.311,
+       "start": "6:45"
       }
      ]
     },
@@ -12185,123 +12185,123 @@
       6
      ],
      "category": null,
-     "start_s": 628.843,
-     "start": "10:28",
-     "end_s": 1141.6,
+     "start_s": 636.202,
+     "start": "10:36",
+     "end_s": 1148.959,
      "topics": [
       {
        "board": "page-6_t1",
        "title": "Relative clauses table",
-       "start_s": 628.843,
-       "start": "10:28",
+       "start_s": 636.202,
+       "start": "10:36",
        "points": [
         {
          "text": "introduce the term and what the table compares",
          "block": "page-6_k01",
-         "start_s": 628.843,
-         "start": "10:28"
+         "start_s": 636.202,
+         "start": "10:36"
         },
         {
          "text": "the core contrast the four columns show",
          "block": "page-6_k03",
-         "start_s": 663.303,
-         "start": "11:03"
+         "start_s": 670.662,
+         "start": "11:10"
         },
         {
          "text": "column 1, the test for a defining clause",
          "block": "page-6_k04",
-         "start_s": 694.339,
-         "start": "11:34"
+         "start_s": 701.698,
+         "start": "11:41"
         },
         {
          "text": "column 1, take the defining clause out and see what is lost",
          "block": "page-6_k05",
-         "start_s": 738.023,
-         "start": "12:18"
+         "start_s": 745.382,
+         "start": "12:25"
         },
         {
          "text": "column 2, name the appositive structure",
          "block": "page-6_k06",
-         "start_s": 762.395,
-         "start": "12:42"
+         "start_s": 769.754,
+         "start": "12:49"
         },
         {
          "text": "column 2, the comma between the two nouns",
          "block": "page-6_k07",
-         "start_s": 775.567,
-         "start": "12:55"
+         "start_s": 782.926,
+         "start": "13:02"
         },
         {
          "text": "column 2, why there is no comma before 'who'",
          "block": "page-6_k08",
-         "start_s": 788.046,
-         "start": "13:08"
+         "start_s": 795.405,
+         "start": "13:15"
         },
         {
          "text": "column 2, where to use this form",
          "block": "page-6_k09",
-         "start_s": 806.467,
-         "start": "13:26"
+         "start_s": 813.826,
+         "start": "13:33"
         },
         {
          "text": "column 3, the relative pronoun comes after the subject",
          "block": "page-6_k10",
-         "start_s": 819.847,
-         "start": "13:39"
+         "start_s": 827.206,
+         "start": "13:47"
         },
         {
          "text": "column 3, why this clause takes commas",
          "block": "page-6_k11",
-         "start_s": 834.081,
-         "start": "13:54"
+         "start_s": 841.44,
+         "start": "14:01"
         },
         {
          "text": "column 3, take the non-defining clause out",
          "block": "page-6_k12",
-         "start_s": 865.821,
-         "start": "14:25"
+         "start_s": 873.18,
+         "start": "14:33"
         },
         {
          "text": "column 3, the two versions side by side",
          "block": "page-6_k13",
-         "start_s": 877.301,
-         "start": "14:37"
+         "start_s": 884.66,
+         "start": "14:44"
         },
         {
          "text": "column 3, state the focus point and keep both non-defining",
          "block": "page-6_k14",
-         "start_s": 904.041,
-         "start": "15:04"
+         "start_s": 911.4,
+         "start": "15:11"
         },
         {
          "text": "column 3, 'that' after a comma",
          "block": "page-6_k15",
-         "start_s": 917.585,
-         "start": "15:17"
+         "start_s": 924.944,
+         "start": "15:24"
         },
         {
          "text": "column 4, the relative pronoun comes after the object",
          "block": "page-6_k17",
-         "start_s": 953.861,
-         "start": "15:53"
+         "start_s": 961.22,
+         "start": "16:01"
         },
         {
          "text": "columns 2 and 4 compared",
          "block": "page-6_k18",
-         "start_s": 967.706,
-         "start": "16:07"
+         "start_s": 975.065,
+         "start": "16:15"
         },
         {
          "text": "read the explanations and gloss a hard word",
          "block": "page-6_k19",
-         "start_s": 1028.724,
-         "start": "17:08"
+         "start_s": 1036.083,
+         "start": "17:16"
         },
         {
          "text": "the takeaway test",
          "block": "page-6_k20",
-         "start_s": 1058.325,
-         "start": "17:38"
+         "start_s": 1065.684,
+         "start": "17:45"
         }
        ]
       }
@@ -12311,15 +12311,15 @@
        "block": "page-6_k04",
        "kind": "rule",
        "text": "A clause that tells us which person or thing we mean is defining. A defining clause takes no comma.",
-       "start_s": 694.339,
-       "start": "11:34"
+       "start_s": 701.698,
+       "start": "11:41"
       },
       {
        "block": "page-6_k20",
        "kind": "rule",
        "text": "Once the reader knows which patient you mean, more information about her is extra, so it takes commas.",
-       "start_s": 1058.325,
-       "start": "17:38"
+       "start_s": 1065.684,
+       "start": "17:45"
       }
      ],
      "terms": [
@@ -12327,15 +12327,15 @@
        "block": "page-6_k02",
        "label": "Grammar word",
        "term": "Relative clause",
-       "start_s": 640.543,
-       "start": "10:40"
+       "start_s": 647.902,
+       "start": "10:47"
       },
       {
        "block": "page-6_k06",
        "label": "Form",
        "term": "Appositive structure",
-       "start_s": 762.395,
-       "start": "12:42"
+       "start_s": 769.754,
+       "start": "12:49"
       }
      ],
      "wrong_examples": [],
@@ -12351,227 +12351,227 @@
       8
      ],
      "category": null,
-     "start_s": 1141.6,
-     "start": "19:01",
-     "end_s": 1957.904,
+     "start_s": 1148.959,
+     "start": "19:08",
+     "end_s": 1999.59,
      "topics": [
       {
        "board": "pages-07-08_t1",
        "title": "Reduced relative clauses: what and why",
-       "start_s": 1141.6,
-       "start": "19:01",
+       "start_s": 1148.959,
+       "start": "19:08",
        "points": [
         {
          "text": "Name the structure and say what 'reduced' means",
          "block": "pages-07-08_k01",
-         "start_s": 1141.6,
-         "start": "19:01"
+         "start_s": 1148.959,
+         "start": "19:08"
         },
         {
          "text": "Say which words are removed",
          "block": "pages-07-08_k03",
-         "start_s": 1158.217,
-         "start": "19:18"
+         "start_s": 1165.576,
+         "start": "19:25"
         },
         {
          "text": "Why we reduce a relative clause",
          "block": "pages-07-08_k05",
-         "start_s": 1179.228,
-         "start": "19:39"
+         "start_s": 1186.587,
+         "start": "19:46"
         },
         {
          "text": "Show one reduction as a change card",
          "block": "pages-07-08_k07",
-         "start_s": 1190.328,
-         "start": "19:50"
+         "start_s": 1197.687,
+         "start": "19:57"
         }
        ]
       },
       {
        "board": "pages-07-08_t2",
        "title": "Case notes table: standard and reduced forms",
-       "start_s": 1221.482,
-       "start": "20:21",
+       "start_s": 1228.841,
+       "start": "20:28",
        "points": [
         {
          "text": "how the three columns work",
          "block": "pages-07-08_k10",
-         "start_s": 1221.148,
-         "start": "20:21"
+         "start_s": 1228.503,
+         "start": "20:28"
         },
         {
          "text": "choosing the verb tense",
          "block": "pages-07-08_k11",
-         "start_s": 1246.441,
-         "start": "20:46"
+         "start_s": 1258.95,
+         "start": "20:58"
         },
         {
          "text": "the extra information becomes a relative clause",
          "block": "pages-07-08_k12",
-         "start_s": 1278.244,
-         "start": "21:18"
+         "start_s": 1290.753,
+         "start": "21:30"
         },
         {
          "text": "the clinical verb radiate",
          "block": "pages-07-08_k13",
-         "start_s": 1306.605,
-         "start": "21:46"
+         "start_s": 1319.114,
+         "start": "21:59"
         },
         {
          "text": "the two steps of the reduction",
          "block": "pages-07-08_k14",
-         "start_s": 1320.01,
-         "start": "22:00"
+         "start_s": 1332.519,
+         "start": "22:12"
         },
         {
          "text": "name the -ing form",
          "block": "pages-07-08_k15",
-         "start_s": 1339.339,
-         "start": "22:19"
+         "start_s": 1351.848,
+         "start": "22:31"
         },
         {
          "text": "why the pronoun can go",
          "block": "pages-07-08_k16",
-         "start_s": 1353.443,
-         "start": "22:33"
+         "start_s": 1365.952,
+         "start": "22:45"
         },
         {
          "text": "paraphrasing the case note",
          "block": "pages-07-08_k17",
-         "start_s": 1391.895,
-         "start": "23:11"
+         "start_s": 1404.404,
+         "start": "23:24"
         },
         {
          "text": "tiredness becomes lethargy",
          "block": "pages-07-08_k18",
-         "start_s": 1400.958,
-         "start": "23:20"
+         "start_s": 1413.467,
+         "start": "23:33"
         },
         {
          "text": "which clause is reduced",
          "block": "pages-07-08_k19",
-         "start_s": 1414.111,
-         "start": "23:34"
+         "start_s": 1426.62,
+         "start": "23:46"
         },
         {
          "text": "the reduction",
          "block": "pages-07-08_k20",
-         "start_s": 1421.507,
-         "start": "23:41"
+         "start_s": 1434.016,
+         "start": "23:54"
         },
         {
          "text": "what 'which' points back to",
          "block": "pages-07-08_k21",
-         "start_s": 1448.432,
-         "start": "24:08"
+         "start_s": 1460.941,
+         "start": "24:20"
         },
         {
          "text": "the pronoun repeats the subject",
          "block": "pages-07-08_k22",
-         "start_s": 1490.904,
-         "start": "24:50"
+         "start_s": 1503.413,
+         "start": "25:03"
         },
         {
          "text": "the reduction",
          "block": "pages-07-08_k23",
-         "start_s": 1500.305,
-         "start": "25:00"
+         "start_s": 1512.814,
+         "start": "25:12"
         },
         {
          "text": "the rule so far",
          "block": "pages-07-08_k24",
-         "start_s": 1526.682,
-         "start": "25:26"
+         "start_s": 1540.801,
+         "start": "25:40"
         },
         {
          "text": "framing the radiology rows",
          "block": "pages-07-08_k25",
-         "start_s": 1585.125,
-         "start": "26:25"
+         "start_s": 1599.455,
+         "start": "26:39"
         },
         {
          "text": "the orderly",
          "block": "pages-07-08_k26",
-         "start_s": 1601.958,
-         "start": "26:41"
+         "start_s": 1622.948,
+         "start": "27:02"
         },
         {
          "text": "the phrasal verb",
          "block": "pages-07-08_k27",
-         "start_s": 1638.806,
-         "start": "27:18"
+         "start_s": 1659.796,
+         "start": "27:39"
         },
         {
          "text": "gloss a hard word",
          "block": "pages-07-08_k28",
-         "start_s": 1649.629,
-         "start": "27:29"
+         "start_s": 1670.619,
+         "start": "27:50"
         },
         {
          "text": "active verb and passive verb",
          "block": "pages-07-08_k29",
-         "start_s": 1671.439,
-         "start": "27:51"
+         "start_s": 1692.429,
+         "start": "28:12"
         },
         {
          "text": "name the past participle",
          "block": "pages-07-08_k30",
-         "start_s": 1702.168,
-         "start": "28:22"
+         "start_s": 1723.158,
+         "start": "28:43"
         },
         {
          "text": "the passive rule",
          "block": "pages-07-08_k31",
-         "start_s": 1718.869,
-         "start": "28:38"
+         "start_s": 1739.859,
+         "start": "28:59"
         },
         {
          "text": "when you cannot reduce",
          "block": "pages-07-08_k32",
-         "start_s": 1736.099,
-         "start": "28:56"
+         "start_s": 1757.089,
+         "start": "29:17"
         },
         {
          "text": "gloss a hard word",
          "block": "pages-07-08_k33",
-         "start_s": 1760.749,
-         "start": "29:20"
+         "start_s": 1781.739,
+         "start": "29:41"
         },
         {
          "text": "a time clause, not a relative clause",
          "block": "pages-07-08_k34",
-         "start_s": 1791.07,
-         "start": "29:51"
+         "start_s": 1812.06,
+         "start": "30:12"
         },
         {
          "text": "the repeated subject",
          "block": "pages-07-08_k35",
-         "start_s": 1799.56,
-         "start": "29:59"
+         "start_s": 1821.686,
+         "start": "30:21"
         },
         {
          "text": "passive verb again",
          "block": "pages-07-08_k36",
-         "start_s": 1808.723,
-         "start": "30:08"
+         "start_s": 1830.849,
+         "start": "30:30"
         },
         {
          "text": "the subject 'you' can go",
          "block": "pages-07-08_k37",
-         "start_s": 1840.705,
-         "start": "30:40"
+         "start_s": 1862.831,
+         "start": "31:02"
         },
         {
          "text": "X-ray as a verb",
          "block": "pages-07-08_k38",
-         "start_s": 1846.602,
-         "start": "30:46"
+         "start_s": 1868.757,
+         "start": "31:08"
         },
         {
          "text": "meaning of the sentence",
          "block": "pages-07-08_k39",
-         "start_s": 1863.803,
-         "start": "31:03"
+         "start_s": 1888.819,
+         "start": "31:28"
         }
        ]
       }
@@ -12580,23 +12580,23 @@
       {
        "block": "pages-07-08_k24",
        "kind": "rule",
-       "text": "Remove the relative pronoun. If the verb is active, use its -ing form, but not for one finished action in the past.",
-       "start_s": 1526.682,
-       "start": "25:26"
+       "text": "In a relative clause, remove the relative pronoun. If the verb is active, use its -ing form, but not for one finished action in the past.",
+       "start_s": 1540.801,
+       "start": "25:40"
       },
       {
        "block": "pages-07-08_k31",
        "kind": "rule",
        "text": "With a passive verb, remove the relative pronoun and 'was'. Keep the past participle.",
-       "start_s": 1718.869,
-       "start": "28:38"
+       "start_s": 1739.859,
+       "start": "28:59"
       },
       {
        "block": "pages-07-08_k32",
        "kind": "warning",
        "text": "Use the -ing form only when the relative pronoun is the subject. In 'the tablets which she takes', 'which' is the object: you can only leave it out: 'the tablets she takes'.",
-       "start_s": 1736.099,
-       "start": "28:56"
+       "start_s": 1757.089,
+       "start": "29:17"
       }
      ],
      "terms": [
@@ -12604,43 +12604,43 @@
        "block": "pages-07-08_k01",
        "label": "New term",
        "term": "Reduced relative clause",
-       "start_s": 1141.6,
-       "start": "19:01"
+       "start_s": 1148.959,
+       "start": "19:08"
       },
       {
        "block": "pages-07-08_k04",
        "label": "Form",
        "term": "Relative pronoun",
-       "start_s": 1164.82,
-       "start": "19:24"
+       "start_s": 1172.179,
+       "start": "19:32"
       },
       {
        "block": "pages-07-08_k13",
        "label": "Word",
        "term": "radiates",
-       "start_s": 1306.605,
-       "start": "21:46"
+       "start_s": 1319.114,
+       "start": "21:59"
       },
       {
        "block": "pages-07-08_k15",
        "label": "Form",
        "term": "The -ing form (present participle)",
-       "start_s": 1339.339,
-       "start": "22:19"
+       "start_s": 1351.848,
+       "start": "22:31"
       },
       {
        "block": "pages-07-08_k27",
        "label": "Phrase",
        "term": "called away",
-       "start_s": 1638.806,
-       "start": "27:18"
+       "start_s": 1659.796,
+       "start": "27:39"
       },
       {
        "block": "pages-07-08_k30",
        "label": "Form",
        "term": "Past participle",
-       "start_s": 1702.168,
-       "start": "28:22"
+       "start_s": 1723.158,
+       "start": "28:43"
       }
      ],
      "wrong_examples": [],
@@ -12651,8 +12651,8 @@
        "lesson": "grammar-01-verb-tenses",
        "section": "page-10",
        "provenance": "source-derived",
-       "start_s": 1263.182,
-       "start": "21:03"
+       "start_s": 1275.691,
+       "start": "21:15"
       }
      ]
     },
@@ -12665,263 +12665,263 @@
       10
      ],
      "category": null,
-     "start_s": 1957.904,
-     "start": "32:37",
-     "end_s": 3085.76,
+     "start_s": 1999.59,
+     "start": "33:19",
+     "end_s": 3157.55,
      "topics": [
       {
        "board": "pages-09-10_t1",
        "title": "Participle clauses: forms and rules",
-       "start_s": 1957.904,
-       "start": "32:37",
+       "start_s": 1999.59,
+       "start": "33:19",
        "points": [
         {
          "text": "the three participle forms",
          "block": "pages-09-10_k01",
-         "start_s": 1957.904,
-         "start": "32:37"
+         "start_s": 1999.59,
+         "start": "33:19"
         },
         {
          "text": "Define the grammar term",
          "block": "pages-09-10_k04",
-         "start_s": 1960.017,
-         "start": "32:40"
+         "start_s": 2001.703,
+         "start": "33:21"
         },
         {
          "text": "Why participle clauses are used",
          "block": "pages-09-10_k05",
-         "start_s": 2000.419,
-         "start": "33:20"
+         "start_s": 2042.105,
+         "start": "34:02"
         },
         {
          "text": "Show the long form and the reduced form side by side",
          "block": "pages-09-10_k06",
-         "start_s": 2016.279,
-         "start": "33:36"
+         "start_s": 2057.965,
+         "start": "34:17"
         },
         {
          "text": "What a participle clause can express",
          "block": "pages-09-10_k07",
-         "start_s": 2045.651,
-         "start": "34:05"
+         "start_s": 2092.423,
+         "start": "34:52"
         },
         {
          "text": "Link each meaning to a familiar connector",
          "block": "pages-09-10_k08",
-         "start_s": 2065.131,
-         "start": "34:25"
+         "start_s": 2111.903,
+         "start": "35:11"
         },
         {
          "text": "State the same-subject rule",
          "block": "pages-09-10_k09",
-         "start_s": 2088.755,
-         "start": "34:48"
+         "start_s": 2138.637,
+         "start": "35:38"
         },
         {
          "text": "Diagram 1: one shared subject",
          "block": "pages-09-10_k10",
-         "start_s": 2101.609,
-         "start": "35:01"
+         "start_s": 2151.491,
+         "start": "35:51"
         },
         {
          "text": "Diagram 2: different subjects",
          "block": "pages-09-10_k11",
-         "start_s": 2139.141,
-         "start": "35:39"
+         "start_s": 2189.023,
+         "start": "36:29"
         },
         {
          "text": "Name the fault",
          "block": "pages-09-10_k12",
-         "start_s": 2188.712,
-         "start": "36:28"
+         "start_s": 2238.594,
+         "start": "37:18"
         },
         {
          "text": "The correct version of the wrong sentence",
          "block": "pages-09-10_k13",
-         "start_s": 2203.336,
-         "start": "36:43"
+         "start_s": 2253.218,
+         "start": "37:33"
         },
         {
          "text": "Participle clauses after conjunctions and prepositions",
          "block": "pages-09-10_k15",
-         "start_s": 2225.82,
-         "start": "37:05"
+         "start_s": 2275.748,
+         "start": "37:55"
         },
         {
          "text": "An example of the perfect participle",
          "block": "pages-09-10_k16",
-         "start_s": 2244.922,
-         "start": "37:24"
+         "start_s": 2292.994,
+         "start": "38:12"
         }
        ]
       },
       {
        "board": "pages-09-10_t2",
        "title": "Case notes, standard sentence, participle clause",
-       "start_s": 2327.865,
-       "start": "38:47",
+       "start_s": 2375.937,
+       "start": "39:35",
        "points": [
         {
          "text": "what the three answer columns do",
          "block": "pages-09-10_k18",
-         "start_s": 2327.865,
-         "start": "38:47"
+         "start_s": 2375.937,
+         "start": "39:35"
         },
         {
          "text": "turn the two dates into a time expression",
          "block": "pages-09-10_k20",
-         "start_s": 2364.687,
-         "start": "39:24"
+         "start_s": 2412.759,
+         "start": "40:12"
         },
         {
          "text": "the function",
          "block": "pages-09-10_k21",
-         "start_s": 2379.407,
-         "start": "39:39"
+         "start_s": 2427.479,
+         "start": "40:27"
         },
         {
          "text": "check the subjects before reducing",
          "block": "pages-09-10_k22",
-         "start_s": 2392.516,
-         "start": "39:52"
+         "start_s": 2440.588,
+         "start": "40:40"
         },
         {
          "text": "name the form used",
          "block": "pages-09-10_k23",
-         "start_s": 2408.117,
-         "start": "40:08"
+         "start_s": 2456.189,
+         "start": "40:56"
         },
         {
          "text": "the same case note written a second way",
          "block": "pages-09-10_k24",
-         "start_s": 2427.328,
-         "start": "40:27"
+         "start_s": 2478.844,
+         "start": "41:18"
         },
         {
          "text": "the form that is wrong here",
          "block": "pages-09-10_k26",
-         "start_s": 2467.251,
-         "start": "41:07"
+         "start_s": 2526.892,
+         "start": "42:06"
         },
         {
          "text": "the rule for choosing the form",
          "block": "pages-09-10_k28",
-         "start_s": 2487.77,
-         "start": "41:27"
+         "start_s": 2547.17,
+         "start": "42:27"
         },
         {
          "text": "reading the case note",
          "block": "pages-09-10_k29",
-         "start_s": 2521.847,
-         "start": "42:01"
+         "start_s": 2588.277,
+         "start": "43:08"
         },
         {
          "text": "what follows 'due to'",
          "block": "pages-09-10_k31",
-         "start_s": 2544.112,
-         "start": "42:24"
+         "start_s": 2610.542,
+         "start": "43:30"
         },
         {
          "text": "what is deleted",
          "block": "pages-09-10_k32",
-         "start_s": 2577.512,
-         "start": "42:57"
+         "start_s": 2643.942,
+         "start": "44:03"
         },
         {
          "text": "the version that breaks the same-subject rule",
          "block": "pages-09-10_k33",
-         "start_s": 2603.168,
-         "start": "43:23"
+         "start_s": 2669.598,
+         "start": "44:29"
         },
         {
          "text": "hard words in the note and the sentence",
          "block": "pages-09-10_k35",
-         "start_s": 2637.077,
-         "start": "43:57"
+         "start_s": 2703.507,
+         "start": "45:03"
         },
         {
          "text": "find the real subject",
          "block": "pages-09-10_k37",
-         "start_s": 2687.52,
-         "start": "44:47"
+         "start_s": 2753.95,
+         "start": "45:53"
         },
         {
          "text": "the second subject matches",
          "block": "pages-09-10_k38",
-         "start_s": 2705.195,
-         "start": "45:05"
+         "start_s": 2771.625,
+         "start": "46:11"
         },
         {
          "text": "active, so the -ing form",
          "block": "pages-09-10_k39",
-         "start_s": 2717.999,
-         "start": "45:17"
+         "start_s": 2784.429,
+         "start": "46:24"
         },
         {
          "text": "active and passive are needed in every row",
          "block": "pages-09-10_k41",
-         "start_s": 2739.021,
-         "start": "45:39"
+         "start_s": 2805.451,
+         "start": "46:45"
         },
         {
          "text": "the meaning of the note",
          "block": "pages-09-10_k42",
-         "start_s": 2759.95,
-         "start": "45:59"
+         "start_s": 2826.38,
+         "start": "47:06"
         },
         {
          "text": "the standard sentence with 'although'",
          "block": "pages-09-10_k43",
-         "start_s": 2778.141,
-         "start": "46:18"
+         "start_s": 2844.571,
+         "start": "47:24"
         },
         {
          "text": "the three connectors that take an -ing form",
          "block": "pages-09-10_k45",
-         "start_s": 2803.731,
-         "start": "46:43"
+         "start_s": 2870.161,
+         "start": "47:50"
         },
         {
          "text": "a second acceptable answer",
          "block": "pages-09-10_k46",
-         "start_s": 2828.386,
-         "start": "47:08"
+         "start_s": 2896.684,
+         "start": "48:16"
         },
         {
          "text": "words in the case note",
          "block": "pages-09-10_k48",
-         "start_s": 2868.886,
-         "start": "47:48"
+         "start_s": 2940.676,
+         "start": "49:00"
         },
         {
          "text": "words in the standard sentence",
          "block": "pages-09-10_k50",
-         "start_s": 2909.707,
-         "start": "48:29"
+         "start_s": 2981.497,
+         "start": "49:41"
         },
         {
          "text": "the function",
          "block": "pages-09-10_k52",
-         "start_s": 2926.807,
-         "start": "48:46"
+         "start_s": 2998.597,
+         "start": "49:58"
         },
         {
          "text": "reducing the time clause",
          "block": "pages-09-10_k53",
-         "start_s": 2940.159,
-         "start": "49:00"
+         "start_s": 3011.949,
+         "start": "50:11"
         },
         {
          "text": "the version that breaks the same-subject rule",
          "block": "pages-09-10_k54",
-         "start_s": 2970.512,
-         "start": "49:30"
+         "start_s": 3042.302,
+         "start": "50:42"
         },
         {
          "text": "how much to reduce",
          "block": "pages-09-10_k56",
-         "start_s": 3069.0,
-         "start": "51:09"
+         "start_s": 3140.79,
+         "start": "52:20"
         }
        ]
       }
@@ -12931,8 +12931,8 @@
        "block": "pages-09-10_k41",
        "kind": "rule",
        "text": "You must see quickly whether the verb is active or passive. Review it in the lesson Verb Tenses.",
-       "start_s": 2739.021,
-       "start": "45:39"
+       "start_s": 2805.451,
+       "start": "46:45"
       }
      ],
      "terms": [
@@ -12940,63 +12940,63 @@
        "block": "pages-09-10_k01",
        "label": "Form",
        "term": "Present participle",
-       "start_s": 1957.904,
-       "start": "32:37"
+       "start_s": 1999.59,
+       "start": "33:19"
       },
       {
        "block": "pages-09-10_k02",
        "label": "Form",
        "term": "Past participle",
-       "start_s": 1957.904,
-       "start": "32:37"
+       "start_s": 1999.59,
+       "start": "33:19"
       },
       {
        "block": "pages-09-10_k03",
        "label": "Form",
        "term": "Perfect participle",
-       "start_s": 1957.904,
-       "start": "32:37"
+       "start_s": 1999.59,
+       "start": "33:19"
       },
       {
        "block": "pages-09-10_k04",
        "label": "Grammar term",
        "term": "Participle clause",
-       "start_s": 1960.017,
-       "start": "32:40"
+       "start_s": 2001.703,
+       "start": "33:21"
       },
       {
        "block": "pages-09-10_k12",
        "label": "Grammar term",
        "term": "Dangling participle",
-       "start_s": 2188.712,
-       "start": "36:28"
+       "start_s": 2238.594,
+       "start": "37:18"
       },
       {
        "block": "pages-09-10_k25",
        "label": "Grammar term",
-       "term": "Passive",
-       "start_s": 2446.582,
-       "start": "40:46"
+       "term": "Be + -ed adjective",
+       "start_s": 2498.094,
+       "start": "41:38"
       }
      ],
      "wrong_examples": [
       {
        "block": "pages-09-10_k26",
        "text": "Concerning about lower back pain",
-       "start_s": 2467.251,
-       "start": "41:07"
+       "start_s": 2526.892,
+       "start": "42:06"
       },
       {
        "block": "pages-09-10_k33",
        "text": "Due to being a recently qualified teacher, her professional voice use may have contributed to the dysphonia.",
-       "start_s": 2603.168,
-       "start": "43:23"
+       "start_s": 2669.598,
+       "start": "44:29"
       },
       {
        "block": "pages-09-10_k54",
        "text": "Being keen to return to work, I suggested she practise affirmations and meditations when feeling anxious.",
-       "start_s": 2970.512,
-       "start": "49:30"
+       "start_s": 3042.302,
+       "start": "50:42"
       }
      ],
      "practice": [],
@@ -13006,40 +13006,40 @@
        "lesson": "grammar-01-verb-tenses",
        "section": "page-16",
        "provenance": "source-derived",
-       "start_s": 2454.418,
-       "start": "40:54"
+       "start_s": 2510.704,
+       "start": "41:50"
       },
       {
        "utterance": "pages-09-10_t2.s10.u2",
        "lesson": "grammar-05-complex-compound",
        "section": "pages-11-12",
        "provenance": "source-derived",
-       "start_s": 2555.632,
-       "start": "42:35"
+       "start_s": 2622.062,
+       "start": "43:42"
       },
       {
        "utterance": "pages-09-10_t2.s17.u2",
        "lesson": "grammar-01-verb-tenses",
        "section": null,
        "provenance": "adapted",
-       "start_s": 2743.931,
-       "start": "45:43"
+       "start_s": 2810.361,
+       "start": "46:50"
       },
       {
        "utterance": "pages-09-10_t2.s19.u3",
        "lesson": "grammar-05-complex-compound",
        "section": "pages-04-05",
        "provenance": "source-derived",
-       "start_s": 2785.591,
-       "start": "46:25"
+       "start_s": 2852.021,
+       "start": "47:32"
       },
       {
        "utterance": "pages-09-10_t2.s20.u2",
        "lesson": "grammar-05-complex-compound",
        "section": "pages-11-12",
        "provenance": "source-derived",
-       "start_s": 2812.031,
-       "start": "46:52"
+       "start_s": 2878.461,
+       "start": "47:58"
       }
      ]
     },
@@ -13051,117 +13051,117 @@
       11
      ],
      "category": null,
-     "start_s": 3085.76,
-     "start": "51:25",
-     "end_s": 3464.725,
+     "start_s": 3157.55,
+     "start": "52:37",
+     "end_s": 3544.485,
      "topics": [
       {
        "board": "page-11_t1",
        "title": "Given: case notes table",
-       "start_s": 3085.76,
-       "start": "51:25",
+       "start_s": 3157.55,
+       "start": "52:37",
        "points": [
         {
          "text": "introduce the board and the word being studied",
          "block": "page-11_k01",
-         "start_s": 3085.76,
-         "start": "51:25"
+         "start_s": 3157.55,
+         "start": "52:37"
         },
         {
          "text": "show the meaning inside the slide's own example",
          "block": "page-11_k03",
-         "start_s": 3110.86,
-         "start": "51:50"
+         "start_s": 3182.65,
+         "start": "53:02"
         },
         {
          "text": "correct what 'given' expresses",
          "block": "page-11_k04",
-         "start_s": 3124.422,
-         "start": "52:04"
+         "start_s": 3196.182,
+         "start": "53:16"
         },
         {
          "text": "where 'given' is used in the letter",
          "block": "page-11_k05",
-         "start_s": 3139.802,
-         "start": "52:19"
+         "start_s": 3219.562,
+         "start": "53:39"
         },
         {
          "text": "what the two notes say",
          "block": "page-11_k06",
-         "start_s": 3162.742,
-         "start": "52:42"
+         "start_s": 3242.502,
+         "start": "54:02"
         },
         {
          "text": "the form 'given that'",
          "block": "page-11_k07",
-         "start_s": 3182.061,
-         "start": "53:02"
+         "start_s": 3261.821,
+         "start": "54:21"
         },
         {
          "text": "a second ending for the same sentence",
          "block": "page-11_k08",
-         "start_s": 3193.2,
-         "start": "53:13"
+         "start_s": 3272.96,
+         "start": "54:32"
         },
         {
          "text": "the noun phrase version",
          "block": "page-11_k10",
-         "start_s": 3218.49,
-         "start": "53:38"
+         "start_s": 3298.25,
+         "start": "54:58"
         },
         {
          "text": "the rule behind the two versions",
          "block": "page-11_k11",
-         "start_s": 3245.121,
-         "start": "54:05"
+         "start_s": 3324.881,
+         "start": "55:24"
         },
         {
          "text": "see that the two notes are a contrast",
          "block": "page-11_k12",
-         "start_s": 3265.811,
-         "start": "54:25"
+         "start_s": 3345.571,
+         "start": "55:45"
         },
         {
          "text": "reject 'given' here",
          "block": "page-11_k13",
-         "start_s": 3275.225,
-         "start": "54:35"
+         "start_s": 3354.985,
+         "start": "55:54"
         },
         {
          "text": "the word for a contrast",
          "block": "page-11_k15",
-         "start_s": 3291.113,
-         "start": "54:51"
+         "start_s": 3370.873,
+         "start": "56:10"
         },
         {
          "text": "read the case notes",
          "block": "page-11_k16",
-         "start_s": 3326.5,
-         "start": "55:26"
+         "start_s": 3406.26,
+         "start": "56:46"
         },
         {
          "text": "condense the detail",
          "block": "page-11_k17",
-         "start_s": 3350.344,
-         "start": "55:50"
+         "start_s": 3430.104,
+         "start": "57:10"
         },
         {
          "text": "what the sentence does",
          "block": "page-11_k18",
-         "start_s": 3365.634,
-         "start": "56:05"
+         "start_s": 3445.394,
+         "start": "57:25"
         },
         {
          "text": "close with the use of 'given'",
          "block": "page-11_k19",
-         "start_s": 3376.834,
-         "start": "56:16"
+         "start_s": 3456.594,
+         "start": "57:36"
         },
         {
          "text": "why the word is worth learning",
          "block": "page-11_k20",
-         "start_s": 3387.014,
-         "start": "56:27"
+         "start_s": 3466.774,
+         "start": "57:46"
         }
        ]
       }
@@ -13170,16 +13170,16 @@
       {
        "block": "page-11_k04",
        "kind": "rule",
-       "text": "'Given' gives a reason. It does not give a condition.",
-       "start_s": 3124.422,
-       "start": "52:04"
+       "text": "'Given' gives a reason. It can also give a condition that is already true: given that her kidney function is normal, the dose can stay the same.",
+       "start_s": 3196.182,
+       "start": "53:16"
       },
       {
        "block": "page-11_k19",
        "kind": "rule",
        "text": "'Given' joins two case notes into one sentence. It is useful in the closing part of your letter.",
-       "start_s": 3376.834,
-       "start": "56:16"
+       "start_s": 3456.594,
+       "start": "57:36"
       }
      ],
      "terms": [
@@ -13187,30 +13187,30 @@
        "block": "page-11_k02",
        "label": "New word",
        "term": "given",
-       "start_s": 3103.02,
-       "start": "51:43"
+       "start_s": 3174.81,
+       "start": "52:54"
       },
       {
        "block": "page-11_k07",
        "label": "Form",
        "term": "given that",
-       "start_s": 3182.061,
-       "start": "53:02"
+       "start_s": 3261.821,
+       "start": "54:21"
       },
       {
        "block": "page-11_k15",
        "label": "Word for a contrast",
        "term": "despite",
-       "start_s": 3291.113,
-       "start": "54:51"
+       "start_s": 3370.873,
+       "start": "56:10"
       }
      ],
      "wrong_examples": [
       {
        "block": "page-11_k13",
        "text": "Given his age, Mr X is in excellent physical condition.",
-       "start_s": 3275.225,
-       "start": "54:35"
+       "start_s": 3354.985,
+       "start": "55:54"
       }
      ],
      "practice": [],
@@ -13220,8 +13220,8 @@
        "lesson": "grammar-05-complex-compound",
        "section": "pages-11-12",
        "provenance": "adapted",
-       "start_s": 3299.363,
-       "start": "54:59"
+       "start_s": 3379.123,
+       "start": "56:19"
       }
      ]
     }
@@ -13235,8 +13235,8 @@
      "lexicon": null,
      "section": "pages-04-05",
      "block": "pages-04-05_k31",
-     "start_s": 517.835,
-     "start": "8:37"
+     "start_s": 525.194,
+     "start": "8:45"
     },
     {
      "word": "cleansed",
@@ -13244,8 +13244,8 @@
      "lexicon": null,
      "section": "pages-04-05",
      "block": "pages-04-05_k33",
-     "start_s": 543.103,
-     "start": "9:03"
+     "start_s": 550.462,
+     "start": "9:10"
     },
     {
      "word": "Non-essential",
@@ -13253,8 +13253,8 @@
      "lexicon": null,
      "section": "page-6",
      "block": "page-6_k19",
-     "start_s": 1028.724,
-     "start": "17:08"
+     "start_s": 1036.083,
+     "start": "17:16"
     },
     {
      "word": "radiates",
@@ -13262,8 +13262,8 @@
      "lexicon": null,
      "section": "pages-07-08",
      "block": "pages-07-08_k13",
-     "start_s": 1306.605,
-     "start": "21:46"
+     "start_s": 1319.114,
+     "start": "21:59"
     },
     {
      "word": "orderly",
@@ -13271,8 +13271,8 @@
      "lexicon": null,
      "section": "pages-07-08",
      "block": "pages-07-08_k26",
-     "start_s": 1601.958,
-     "start": "26:41"
+     "start_s": 1622.948,
+     "start": "27:02"
     },
     {
      "word": "called away",
@@ -13280,8 +13280,8 @@
      "lexicon": null,
      "section": "pages-07-08",
      "block": "pages-07-08_k27",
-     "start_s": 1638.806,
-     "start": "27:18"
+     "start_s": 1659.796,
+     "start": "27:39"
     },
     {
      "word": "scheduled",
@@ -13289,8 +13289,8 @@
      "lexicon": null,
      "section": "pages-07-08",
      "block": "pages-07-08_k28",
-     "start_s": 1649.629,
-     "start": "27:29"
+     "start_s": 1670.619,
+     "start": "27:50"
     },
     {
      "word": "postponement",
@@ -13298,8 +13298,8 @@
      "lexicon": null,
      "section": "pages-07-08",
      "block": "pages-07-08_k33",
-     "start_s": 1760.749,
-     "start": "29:20"
+     "start_s": 1781.739,
+     "start": "29:41"
     },
     {
      "word": "friction",
@@ -13307,8 +13307,8 @@
      "lexicon": null,
      "section": "pages-09-10",
      "block": "pages-09-10_k35",
-     "start_s": 2637.077,
-     "start": "43:57"
+     "start_s": 2703.507,
+     "start": "45:03"
     },
     {
      "word": "detrimental",
@@ -13316,8 +13316,8 @@
      "lexicon": null,
      "section": "pages-09-10",
      "block": "pages-09-10_k36",
-     "start_s": 2660.563,
-     "start": "44:20"
+     "start_s": 2726.993,
+     "start": "45:26"
     },
     {
      "word": "coping strategies",
@@ -13325,8 +13325,8 @@
      "lexicon": null,
      "section": "pages-09-10",
      "block": "pages-09-10_k48",
-     "start_s": 2868.886,
-     "start": "47:48"
+     "start_s": 2940.676,
+     "start": "49:00"
     },
     {
      "word": "affirmations",
@@ -13334,8 +13334,8 @@
      "lexicon": null,
      "section": "pages-09-10",
      "block": "pages-09-10_k49",
-     "start_s": 2883.1,
-     "start": "48:03"
+     "start_s": 2954.89,
+     "start": "49:14"
     },
     {
      "word": "keen",
@@ -13343,8 +13343,8 @@
      "lexicon": null,
      "section": "pages-09-10",
      "block": "pages-09-10_k50",
-     "start_s": 2909.707,
-     "start": "48:29"
+     "start_s": 2981.497,
+     "start": "49:41"
     },
     {
      "word": "given",
@@ -13352,8 +13352,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k02",
-     "start_s": 3103.02,
-     "start": "51:43"
+     "start_s": 3174.81,
+     "start": "52:54"
     },
     {
      "word": "capacity",
@@ -13361,8 +13361,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k09",
-     "start_s": 3200.188,
-     "start": "53:20"
+     "start_s": 3279.948,
+     "start": "54:39"
     },
     {
      "word": "clumsy",
@@ -13370,8 +13370,8 @@
      "lexicon": null,
      "section": "page-11",
      "block": "page-11_k16",
-     "start_s": 3326.5,
-     "start": "55:26"
+     "start_s": 3406.26,
+     "start": "56:46"
     }
    ],
    "withheld": {
@@ -13395,40 +13395,40 @@
       "section": "page-10",
       "from_section": "pages-07-08",
       "utterance": "pages-07-08_t2.s2.u4",
-      "start_s": 1263.182,
-      "start": "21:03"
+      "start_s": 1275.691,
+      "start": "21:15"
      },
      {
       "lesson": "grammar-01-verb-tenses",
       "section": "page-16",
       "from_section": "pages-09-10",
       "utterance": "pages-09-10_t2.s6.u5",
-      "start_s": 2454.418,
-      "start": "40:54"
+      "start_s": 2510.704,
+      "start": "41:50"
      },
      {
       "lesson": "grammar-05-complex-compound",
       "section": "pages-11-12",
       "from_section": "pages-09-10",
       "utterance": "pages-09-10_t2.s10.u2",
-      "start_s": 2555.632,
-      "start": "42:35"
+      "start_s": 2622.062,
+      "start": "43:42"
      },
      {
       "lesson": "grammar-01-verb-tenses",
       "section": null,
       "from_section": "pages-09-10",
       "utterance": "pages-09-10_t2.s17.u2",
-      "start_s": 2743.931,
-      "start": "45:43"
+      "start_s": 2810.361,
+      "start": "46:50"
      },
      {
       "lesson": "grammar-05-complex-compound",
       "section": "pages-04-05",
       "from_section": "pages-09-10",
       "utterance": "pages-09-10_t2.s19.u3",
-      "start_s": 2785.591,
-      "start": "46:25"
+      "start_s": 2852.021,
+      "start": "47:32"
      }
     ],
     "referred_to_by": [
@@ -53941,8 +53941,8 @@
     {
      "lesson": "grammar-06-clause",
      "section": "page-6",
-     "start_s": 762.395,
-     "start": "12:42",
+     "start_s": 769.754,
+     "start": "12:49",
      "source": "term"
     }
    ]
@@ -54016,6 +54016,19 @@
      "start_s": 4164.295,
      "start": "69:24",
      "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Be + -ed adjective",
+   "key": "be + -ed adjective",
+   "entries": [
+    {
+     "lesson": "grammar-06-clause",
+     "section": "pages-09-10",
+     "start_s": 2498.094,
+     "start": "41:38",
+     "source": "term"
     }
    ]
   },
@@ -54750,8 +54763,8 @@
     {
      "lesson": "grammar-06-clause",
      "section": "pages-09-10",
-     "start_s": 2188.712,
-     "start": "36:28",
+     "start_s": 2238.594,
+     "start": "37:18",
      "source": "term"
     }
    ]
@@ -54802,8 +54815,8 @@
     {
      "lesson": "grammar-06-clause",
      "section": "page-6",
-     "start_s": 628.843,
-     "start": "10:28",
+     "start_s": 636.202,
+     "start": "10:36",
      "source": "section"
     }
    ]
@@ -54815,8 +54828,8 @@
     {
      "lesson": "grammar-06-clause",
      "section": "page-6",
-     "start_s": 628.843,
-     "start": "10:28",
+     "start_s": 636.202,
+     "start": "10:36",
      "source": "curated"
     }
    ]
@@ -55011,8 +55024,8 @@
     {
      "lesson": "grammar-06-clause",
      "section": "page-11",
-     "start_s": 3085.76,
-     "start": "51:25",
+     "start_s": 3157.55,
+     "start": "52:37",
      "source": "section"
     }
    ]
@@ -55304,8 +55317,8 @@
     {
      "lesson": "grammar-06-clause",
      "section": "page-11",
-     "start_s": 3182.061,
-     "start": "53:02",
+     "start_s": 3261.821,
+     "start": "54:21",
      "source": "term"
     }
    ]
@@ -56249,8 +56262,8 @@
     {
      "lesson": "grammar-06-clause",
      "section": "pages-09-10",
-     "start_s": 1960.017,
-     "start": "32:40",
+     "start_s": 2001.703,
+     "start": "33:21",
      "source": "term"
     }
    ]
@@ -56262,8 +56275,8 @@
     {
      "lesson": "grammar-06-clause",
      "section": "pages-09-10",
-     "start_s": 1957.904,
-     "start": "32:37",
+     "start_s": 1999.59,
+     "start": "33:19",
      "source": "section"
     }
    ]
@@ -56311,13 +56324,6 @@
      "section": "pages-08-09",
      "start_s": 1558.719,
      "start": "25:58",
-     "source": "term"
-    },
-    {
-     "lesson": "grammar-06-clause",
-     "section": "pages-09-10",
-     "start_s": 2446.582,
-     "start": "40:46",
      "source": "term"
     },
     {
@@ -56429,8 +56435,8 @@
     {
      "lesson": "grammar-06-clause",
      "section": "pages-07-08",
-     "start_s": 1702.168,
-     "start": "28:22",
+     "start_s": 1723.158,
+     "start": "28:43",
      "source": "term"
     }
    ]
@@ -56520,8 +56526,8 @@
     {
      "lesson": "grammar-06-clause",
      "section": "pages-09-10",
-     "start_s": 1957.904,
-     "start": "32:37",
+     "start_s": 1999.59,
+     "start": "33:19",
      "source": "term"
     }
    ]
@@ -56637,8 +56643,8 @@
     {
      "lesson": "grammar-06-clause",
      "section": "pages-09-10",
-     "start_s": 1957.904,
-     "start": "32:37",
+     "start_s": 1999.59,
+     "start": "33:19",
      "source": "term"
     }
    ]
@@ -56886,8 +56892,8 @@
     {
      "lesson": "grammar-06-clause",
      "section": "pages-07-08",
-     "start_s": 1141.6,
-     "start": "19:01",
+     "start_s": 1148.959,
+     "start": "19:08",
      "source": "term"
     }
    ]
@@ -56899,8 +56905,8 @@
     {
      "lesson": "grammar-06-clause",
      "section": "pages-07-08",
-     "start_s": 1141.6,
-     "start": "19:01",
+     "start_s": 1148.959,
+     "start": "19:08",
      "source": "section"
     }
    ]
@@ -56999,8 +57005,8 @@
     {
      "lesson": "grammar-06-clause",
      "section": "pages-07-08",
-     "start_s": 1164.82,
-     "start": "19:24",
+     "start_s": 1172.179,
+     "start": "19:32",
      "source": "term"
     },
     {
@@ -57646,8 +57652,8 @@
     {
      "lesson": "grammar-06-clause",
      "section": "pages-07-08",
-     "start_s": 1339.339,
-     "start": "22:19",
+     "start_s": 1351.848,
+     "start": "22:31",
      "source": "term"
     }
    ]
@@ -58605,7 +58611,7 @@
   "vocabulary_word_bank": 189,
   "practice_items": 62,
   "references": 99,
-  "topic_index": 363,
+  "topic_index": 364,
   "withheld_panel_words": 139,
   "withheld_answer_lines": 9
  }
