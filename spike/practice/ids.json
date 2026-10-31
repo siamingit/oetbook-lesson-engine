@@ -42,6 +42,10 @@
   "grammar-08-paraphrasing": [
    957000,
    957999
+  ],
+  "vocabulary-01-word-forms": [
+   958000,
+   958999
   ]
  },
  "ids": [
@@ -1981,6 +1985,258 @@
    "lesson": "grammar-07-punctuation",
    "point": "case-notes",
    "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958000",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "is-has",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958001",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "is-has",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958002",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "and-form",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958003",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "and-form",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958004",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "and-form",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958005",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "one-family",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958006",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "one-family",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958007",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "one-family",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958008",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "spot-adjective",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958009",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "spot-adjective",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958010",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "spot-noun",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958011",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "spot-noun",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958012",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "three-forms",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958013",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "three-forms",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958014",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "notes-to-noun",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958015",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "notes-to-noun",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958016",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "notes-to-noun",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958017",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "comma",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958018",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "comma",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958019",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "who-which-whose",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958020",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "who-which-whose",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958021",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "who-which-whose",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958022",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "who-which-whose",
+   "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958023",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "from-which",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958024",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "prep-which",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958025",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "prep-which",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958026",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "prep-which",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958027",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "prep-which",
+   "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958028",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "join-which",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958029",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "joining-words",
+   "slot": "item",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958030",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "joining-words",
+   "slot": "gap-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958031",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "joining-words",
+   "slot": "gap-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958032",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "joining-words",
+   "slot": "gap-3",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958033",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "full-stop",
+   "slot": "item-1",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958034",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "full-stop",
+   "slot": "item-2",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-vocabulary-958035",
+   "lesson": "vocabulary-01-word-forms",
+   "point": "cut-detail",
+   "slot": "item-1",
    "issued": "2026-10-31"
   }
  ]

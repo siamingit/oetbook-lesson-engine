@@ -755,7 +755,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 5:08, about section `page-15`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Expand" at 16:29
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Rearrange" at 44:02, about section `page-9`
-- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Medical terms: vocabulary and word form" at 24:06, about section `page-15`
+- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Medical terms: vocabulary and word form" at 27:48, about section `page-15`
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Key points to remember" at 14:51, about section `page-9`
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Treat" at 45:17, about section `page-15`
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Schedule" at 49:39, about section `page-16`
@@ -1380,7 +1380,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Articles (`grammar-04-articles`), "Spot the correct sentence" at 55:46, about section `pages-04-05`
 - referred to by Grammar for OET: Articles (`grammar-04-articles`), "Gap fill: articles" at 63:41, about section `page-6`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 5:43
-- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Adjectives and nouns" at 27:15
+- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Adjectives and nouns" at 31:53
 
 
 <a id="grammar-04-articles"></a>
@@ -1692,7 +1692,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 63:41 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Physical symptoms" (in `page-15_t1.s9.u3`)
 - referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Introduction" at 0:09
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Expand" at 12:34
-- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Choosing the right word form" at 9:02, about section `page-6`
+- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Choosing the right word form" at 9:57, about section `page-6`
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Prescribe" at 42:06, about section `page-6`
 - referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Types of pain" at 18:16, about section `page-6`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 10:31, about section `pages-11-12`
@@ -2010,7 +2010,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 6:11, about section `pages-08-09`
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 10:25, about section `pages-11-12`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 7:48
-- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Avoid a series of short sentences" at 69:16
+- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Avoid a series of short sentences" at 80:26
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:31
 - continues in Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`): Relative and participle clauses build on the clauses and joining words taught here.
 - continues in Grammar for OET: Punctuation (`grammar-07-punctuation`): Punctuation teaches the comma in complex and compound sentences.
@@ -2268,8 +2268,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 46:50 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `pages-09-10_t2.s17.u2`)
 - 47:32 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "What is a complex sentence?" (in `pages-09-10_t2.s19.u3`)
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Introduction" at 0:18
-- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Joining sentences with relative pronouns" at 37:06
-- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Joining sentences with relative pronouns" at 37:33, about section `page-6`
+- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Joining sentences with relative pronouns" at 43:30
+- referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Joining sentences with relative pronouns" at 43:57, about section `page-6`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Relative clauses" at 7:26, about section `pages-04-05`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Relative clauses" at 8:33, about section `page-6`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 12:14, about section `pages-07-08`
@@ -3134,7 +3134,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | Vocabulary for OET: Word Forms and Sentence Structure | `vocabulary-01-word-forms` | 79:27 | 8 | 2026-10-27 09:37 (siavash) |
+| 1 | Vocabulary for OET: Word Forms and Sentence Structure | `vocabulary-01-word-forms` | 93:37 | 8 | 2026-10-27 09:37 (siavash) |
 | 2 | Vocabulary for OET: Verb + Noun Collocations | `vocabulary-02-collocations` | 68:45 | 13 | 2026-10-27 09:37 (siavash) |
 | 3 | Vocabulary for OET: Adjective + Noun Collocations | `vocabulary-03-collocations-2` | 76:00 | 10 | 2026-10-27 09:37 (siavash) |
 
@@ -3142,7 +3142,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 1. Vocabulary for OET: Word Forms and Sentence Structure
 
-- Lesson ID and folder: `vocabulary-01-word-forms` (folder `vocabulary-01-word-forms`); course vocabulary, lesson 1; length 79:27; bundle format 1.22
+- Lesson ID and folder: `vocabulary-01-word-forms` (folder `vocabulary-01-word-forms`); course vocabulary, lesson 1; length 93:37; bundle format 1.23
 - Status: approved by siavash, 2026-10-27 09:37
 - Description: Learn to choose the right form of a word, and to join short sentences into clear ones, in your OET writing.
 - Original session: folder `source`: `source/video.mp4`, 103:52 long, partial hash `f58701e6ddc4ac40`; deck `source/slides.pdf`, 11 pages
@@ -3157,91 +3157,91 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 1:19 **Contents board**
   - 1:19 each category, revealed as it is named
 
-#### 2:25 Choosing the right word form (`page-4`, deck)
+#### 2:26 Choosing the right word form (`page-4`, deck)
 
-- 2:25 **items 1 to 4**
-  - 2:25 Show the word box and the first four gap sentences
+- 2:26 **items 1 to 4**
+  - 2:26 Show the word box and the first four gap sentences
 - 3:00 **items 5 to 8**
   - 3:00 Show the word box and the next four gap sentences
 - 3:24 **items 9 to 11**
   - 3:24 Show the word box and the last three gap sentences
-- 3:48 **Item 1: hypertension and diabetes**
-  - 3:48 Give the answer to item 1 with its reason
-  - 4:05 Word class of the pair, and the form students often get wrong
-  - 4:18 Where each form goes in a sentence
-  - 4:37 The same idea said the other way round, with 'is'
-  - 4:45 State the parallel rule for 'and'
-  - 4:59 A second pair that works the same way
-- 5:11 **Item 2: urinary incontinence**
-  - 5:11 Give the answer to item 2 with its reason
-  - 5:31 Word class of the pair, with the adjective in a sentence
-  - 5:42 Meaning of 'incontinent' in medicine and in general English
-  - 5:54 No single rule for the endings
-  - 6:13 The subject is not repeated in the second part
-- 6:33 **Item 3: lonely and isolated**
-  - 6:33 Give the answer to item 3 with its reason
-  - 6:51 Gloss the key word loneliness
-  - 7:08 The same word said to the patient
-  - 7:15 Word class of the pair
-  - 7:21 The reporting verb 'stated'
-  - 7:31 The word 'isolated' and how it is formed
-  - 7:41 The phrase 'at times'
-- 7:53 **Item 4: headaches and lethargy**
-  - 7:53 Give the answer to item 4 with its reason
-  - 8:10 Gloss the key word lethargic
-  - 8:25 The same word said to the patient
-  - 8:31 Word class of the pair, with both sentence patterns
-  - 8:40 Lethargy and drowsiness
-  - 8:52 Ache and pain
-- 9:11 **Item 5: swollen and inflamed**
-  - 9:11 Give the answer to item 5 with its reason
-  - 9:31 Word class of the pair
-  - 9:43 Spelling warning
-- 9:52 **Item 6: upset and anxious or tearful**
-  - 9:52 Give the first answer to item 6 with its reason
-  - 10:10 Word class of anxious and anxiety
-  - 10:21 The second accepted answer
-  - 10:31 Gloss the key word tearful
-  - 10:46 The same word said to the patient
-  - 10:57 Two words spelled 'tear', and the word class of the pair
-- 11:19 **Item 7: guilt and anxiety**
-  - 11:19 Give the answer to item 7 with its reason
-  - 11:39 Two words in the sentence
-- 11:51 **Item 8: grazed and badly bruised**
-  - 11:51 Give the answer to item 8 with its reason
-  - 12:10 The two forms of the bruise pair
-  - 12:23 The word 'grazed'
-  - 12:28 'A fall' as a noun
-  - 12:34 The -ed pattern in this box
-- 12:48 **Item 9: change and uncertainty**
-  - 12:48 Give the answer to item 9 with its reason
-  - 13:06 Word class of the pair, with the adjective in a sentence
-  - 13:18 Two useful phrases in the sentence
-- 13:29 **Item 10: epigastric pain and weight loss**
-  - 13:29 Give the answer to item 10 with its reason
-  - 13:44 Word class of the pair
-  - 13:52 The phrase 'epigastric pain'
-- 14:01 **Item 11: withdrawn and anxious, agitated and excitable**
-  - 14:01 Give both answers to item 11 with the reason
-  - 14:29 Why 'excite' does not fit
-  - 14:41 Gloss the key word excitable
-  - 14:55 The same word said to the patient
-  - 15:03 Withdrawn and agitated are opposite states
-  - 15:23 Endings that often show the word class
-  - 15:53 The -ic pattern for conditions
+- 3:49 **Item 1: hypertension and diabetes**
+  - 3:49 Give the answer to item 1 with its reason
+  - 4:07 Word class of the pair, and the form students often get wrong
+  - 4:19 Where each form goes in a sentence
+  - 4:38 The same idea said the other way round, with 'is'
+  - 4:46 State the parallel rule for 'and'
+  - 5:00 A second pair that works the same way
+- 6:07 **Item 2: urinary incontinence**
+  - 6:07 Give the answer to item 2 with its reason
+  - 6:27 Word class of the pair, with the adjective in a sentence
+  - 6:38 Meaning of 'incontinent' in medicine and in general English
+  - 6:50 No single rule for the endings
+  - 7:08 The subject is not repeated in the second part
+- 7:28 **Item 3: lonely and isolated**
+  - 7:28 Give the answer to item 3 with its reason
+  - 7:47 Gloss the key word loneliness
+  - 8:04 The same word said to the patient
+  - 8:10 Word class of the pair
+  - 8:17 The reporting verb 'stated'
+  - 8:26 The word 'isolated' and how it is formed
+  - 8:37 The phrase 'at times'
+- 8:49 **Item 4: headaches and lethargy**
+  - 8:49 Give the answer to item 4 with its reason
+  - 9:05 Gloss the key word lethargic
+  - 9:21 The same word said to the patient
+  - 9:27 Word class of the pair, with both sentence patterns
+  - 9:36 Lethargy and drowsiness
+  - 9:47 Ache and pain
+- 11:00 **Item 5: swollen and inflamed**
+  - 11:00 Give the answer to item 5 with its reason
+  - 11:20 Word class of the pair
+  - 11:33 Spelling warning
+- 11:41 **Item 6: upset and anxious or tearful**
+  - 11:41 Give the first answer to item 6 with its reason
+  - 12:00 Word class of anxious and anxiety
+  - 12:10 The second accepted answer
+  - 12:20 Gloss the key word tearful
+  - 12:35 The same word said to the patient
+  - 12:46 Two words spelled 'tear', and the word class of the pair
+- 13:08 **Item 7: guilt and anxiety**
+  - 13:08 Give the answer to item 7 with its reason
+  - 13:28 Two words in the sentence
+- 13:40 **Item 8: grazed and badly bruised**
+  - 13:40 Give the answer to item 8 with its reason
+  - 13:59 The two forms of the bruise pair
+  - 14:12 The word 'grazed'
+  - 14:17 'A fall' as a noun
+  - 14:25 The -ed pattern in this box
+- 14:39 **Item 9: change and uncertainty**
+  - 14:39 Give the answer to item 9 with its reason
+  - 14:57 Word class of the pair, with the adjective in a sentence
+  - 15:09 Two useful phrases in the sentence
+- 15:20 **Item 10: epigastric pain and weight loss**
+  - 15:20 Give the answer to item 10 with its reason
+  - 15:35 Word class of the pair
+  - 15:43 The phrase 'epigastric pain'
+- 16:48 **Item 11: withdrawn and anxious, agitated and excitable**
+  - 16:48 Give both answers to item 11 with the reason
+  - 17:17 Why 'excite' does not fit
+  - 17:28 Gloss the key word excitable
+  - 17:43 The same word said to the patient
+  - 17:50 Withdrawn and agitated are opposite states
+  - 18:11 Endings that often show the word class
+  - 18:40 The -ic pattern for conditions
 
 *Rules on the boards*
 
-- 4:45 When 'and' joins two words like these, they are usually the same kind of word: two nouns, or two adjectives.
-- 9:43 Inflamed is spelled with one m. Inflammation has two.
-- 12:34 Many of these words take -ed and become adjectives: inflame becomes inflamed, bruise becomes bruised, graze becomes grazed.
+- 4:46 When 'and' joins two words like these, they are usually the same kind of word: two nouns, or two adjectives.
+- 11:33 Inflamed is spelled with one m. Inflammation has two.
+- 14:25 Many of these words take -ed and become adjectives: inflame becomes inflamed, bruise becomes bruised, graze becomes grazed.
 
 *Wrong sentences corrected*
 
-- 2:25 He has a family history of hypertension and ______.
-- 2:25 She has poor short-term memory and in addition, has urinary ______.
-- 2:25 She stated that she felt ______ and isolated at times.
-- 2:25 He has been experiencing headaches and ______.
+- 2:26 He has a family history of hypertension and ______.
+- 2:26 She has poor short-term memory and in addition, has urinary ______.
+- 2:26 She stated that she felt ______ and isolated at times.
+- 2:26 He has been experiencing headaches and ______.
 - 3:00 On examination, her joints were swollen and ______.
 - 3:00 The patient was clearly upset and rather ______ this morning
 - 3:00 He confessed to having strong feelings of guilt and ______.
@@ -3249,464 +3249,464 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 3:24 He has always found it difficult to cope with change and ______.
 - 3:24 He is suffering from epigastric pain and weight ______.
 - 3:24 The patient's mood was very changeable, sometimes withdrawn and ______, but at other times agitated and ______.
-- 3:48 He has a family history of hypertension and ______.
-- 4:14 The patient has diabetic.
-- 5:11 She has poor short-term memory and in addition, has urinary ______.
-- 6:33 She stated that she felt ______ and isolated at times.
-- 7:53 He has been experiencing headaches and ______.
-- 9:11 On examination, her joints were swollen and ______.
-- 9:52 The patient was clearly upset and rather ______ this morning
-- 11:19 He confessed to having strong feelings of guilt and ______.
-- 11:51 She suffered a fall at home in which her knee was grazed and her arm was ______.
-- 12:48 He has always found it difficult to cope with change and ______.
-- 13:29 He is suffering from epigastric pain and weight ______.
-- 14:01 The patient's mood was very changeable, sometimes withdrawn and ______, but at other times agitated and ______.
+- 3:49 He has a family history of hypertension and ______.
+- 4:15 The patient has diabetic.
+- 6:07 She has poor short-term memory and in addition, has urinary ______.
+- 7:28 She stated that she felt ______ and isolated at times.
+- 8:49 He has been experiencing headaches and ______.
+- 11:00 On examination, her joints were swollen and ______.
+- 11:41 The patient was clearly upset and rather ______ this morning
+- 13:08 He confessed to having strong feelings of guilt and ______.
+- 13:40 She suffered a fall at home in which her knee was grazed and her arm was ______.
+- 14:39 He has always found it difficult to cope with change and ______.
+- 15:20 He is suffering from epigastric pain and weight ______.
+- 16:48 The patient's mood was very changeable, sometimes withdrawn and ______, but at other times agitated and ______.
 
-*Terms*: diabetic / diabetes (Word forms, 4:05); incontinent / incontinence (Word forms, 5:31); lonely / loneliness (Word family, 7:15); stated (New word, 7:21); isolated (New word, 7:31); at times (New phrase, 7:41); lethargy / lethargic (Word family, 8:31); inflame / inflamed / inflammation (Word family, 9:31); anxious / anxiety (Word forms, 10:10); tear / tearful (Word forms, 11:11); confessed (New word, 11:39); guilt (New word, 11:43); grazed (New word, 12:23); a fall (New phrase, 12:28); uncertain / uncertainty (Word forms, 13:06); find it difficult (New phrase, 13:18); cope with (New phrase, 13:22); lose / loss (Word forms, 13:44); epigastric pain (New phrase, 13:52); Noun endings (Word endings, 15:23); Adjective endings (Word endings, 15:39)
+*Terms*: diabetic / diabetes (Word forms, 4:07); incontinent / incontinence (Word forms, 6:27); lonely / loneliness (Word family, 8:10); stated (New word, 8:17); isolated (New word, 8:26); at times (New phrase, 8:37); lethargy / lethargic (Word family, 9:27); inflame / inflamed / inflammation (Word family, 11:20); anxious / anxiety (Word forms, 12:00); tear / tearful (Word forms, 13:00); confessed (New word, 13:28); guilt (New word, 13:32); grazed (New word, 14:12); a fall (New phrase, 14:17); uncertain / uncertainty (Word forms, 14:57); find it difficult (New phrase, 15:09); cope with (New phrase, 15:13); lose / loss (Word forms, 15:35); epigastric pain (New phrase, 15:43); Noun endings (Word endings, 18:11); Adjective endings (Word endings, 18:27)
 
-#### 16:09 Medical terms: vocabulary and word form (`page-5`, deck)
+#### 18:56 Medical terms: vocabulary and word form (`page-5`, deck)
 
-- 16:09 **exercise introduction, items 1 to 4**
-  - 16:09 Show the task and the first four exercise sentences
-- 16:57 **exercise introduction, items 5 to 8**
-  - 16:57 Show the remaining four exercise sentences
-- 17:44 **Item 1: nauseous or nausea**
-  - 17:44 Keep item 1 on the board and name the word class of each word
-  - 18:06 Give the answer and the reason for item 1
-- 18:24 **Item 2: jaundice or jaundiced**
-  - 18:24 Keep item 2 on the board and give the patient-friendly meaning
-  - 18:54 Give the answer and the reason for item 2
-- 19:26 **Item 3: occasionally and the two medical nouns**
-  - 19:26 Keep item 3 on the board and give the patient-friendly meanings
-  - 19:52 Show that both terms after "no" are nouns
-  - 20:11 Find the fault at the start of item 3
-  - 20:22 Give the answer and the reason for item 3
-- 20:40 **Item 4: abdominal masses and epigastric tenderness**
-  - 20:40 Keep item 4 on the board and name the first fault
-  - 21:02 Show the wrong and right way to describe a mass
-  - 21:21 Contrast the two word orders for tender and tenderness
-  - 21:40 Give the answer and the reason for item 4
-  - 22:03 Add the word family for tender and the point about one spelling
-- 22:21 **Item 5: physiotherapy or physiotherapist**
-  - 22:21 Keep item 5 on the board and contrast the two words
-  - 22:35 Give the answer and the reason for item 5
-  - 23:00 Show the same pattern with another practitioner
-- 23:12 **Item 6: psychiatric evaluation is required**
-  - 23:12 Keep item 6 on the board and contrast psychiatrist with psychiatric
-  - 23:28 Show the rejected combination and the verb form
-  - 23:51 Give the answer and the reason for item 6
-  - 24:14 Add the word family for require
-- 24:24 **Item 7: a decreased appetite**
-  - 24:24 Keep item 7 on the board and show where the verb is
-  - 24:44 Give the answer and the reason for item 7
-  - 24:57 Add the word family for decrease
-- 25:06 **Item 8: pain, warmth, redness and swelling**
-  - 25:06 Keep item 8 on the board and show what must follow "complaining of"
-  - 25:27 Show the noun for each adjective in the list
-  - 25:45 Give the answer and the reason for item 8
-  - 26:02 Add the word family for swell
-  - 26:13 Close the exercise with the rule to remember
+- 18:56 **exercise introduction, items 1 to 4**
+  - 18:56 Show the task and the first four exercise sentences
+- 19:44 **exercise introduction, items 5 to 8**
+  - 19:44 Show the remaining four exercise sentences
+- 20:32 **Item 1: nauseous or nausea**
+  - 20:32 Keep item 1 on the board and name the word class of each word
+  - 20:54 Give the answer and the reason for item 1
+- 21:11 **Item 2: jaundice or jaundiced**
+  - 21:11 Keep item 2 on the board and give the patient-friendly meaning
+  - 21:41 Give the answer and the reason for item 2
+- 22:14 **Item 3: occasionally and the two medical nouns**
+  - 22:14 Keep item 3 on the board and give the patient-friendly meanings
+  - 22:39 Show that both terms after "no" are nouns
+  - 22:58 Find the fault at the start of item 3
+  - 23:10 Give the answer and the reason for item 3
+- 23:27 **Item 4: abdominal masses and epigastric tenderness**
+  - 23:27 Keep item 4 on the board and name the first fault
+  - 23:49 Show the wrong and right way to describe a mass
+  - 24:09 Contrast the two word orders for tender and tenderness
+  - 24:28 Give the answer and the reason for item 4
+  - 24:50 Add the word family for tender and the point about one spelling
+- 26:04 **Item 5: physiotherapy or physiotherapist**
+  - 26:04 Keep item 5 on the board and contrast the two words
+  - 26:17 Give the answer and the reason for item 5
+  - 26:43 Show the same pattern with another practitioner
+- 26:55 **Item 6: psychiatric evaluation is required**
+  - 26:55 Keep item 6 on the board and contrast psychiatrist with psychiatric
+  - 27:10 Show the rejected combination and the verb form
+  - 27:34 Give the answer and the reason for item 6
+  - 27:56 Add the word family for require
+- 28:06 **Item 7: a decreased appetite**
+  - 28:06 Keep item 7 on the board and show where the verb is
+  - 28:26 Give the answer and the reason for item 7
+  - 28:39 Add the word family for decrease
+- 28:48 **Item 8: pain, warmth, redness and swelling**
+  - 28:48 Keep item 8 on the board and show what must follow "complaining of"
+  - 29:09 Show the noun for each adjective in the list
+  - 29:27 Give the answer and the reason for item 8
+  - 29:44 Add the word family for swell
+  - 29:55 Close the exercise with the rule to remember
 
 *Rules on the boards*
 
-- 26:13 Using a noun where an adjective is needed, or an adjective where a noun is needed, is one of the most frequent mistakes in OET writing.
+- 29:55 Using a noun where an adjective is needed, or an adjective where a noun is needed, is one of the most frequent mistakes in OET writing.
 
 *Wrong sentences corrected*
 
-- 16:09 He has not experienced any nauseous or vomiting.
-- 16:09 When I examined him today, he appeared both anaemic and jaundice.
-- 16:09 He reported occasionally vomiting but no haematemesis or melaena.
-- 16:09 Although there were no abdomen or rectal masses, there was marked epigastric tender.
-- 16:57 I have referred the patient to a physiotherapy.
-- 16:57 A psychiatrist evaluation is require.
-- 16:57 Mr Dawe had a decrease appetite and nausea.
-- 16:57 On 19/4/2022, she presented to my clinic complaining of painful, warm, red and swelling in her right breast.
-- 17:44 He has not experienced any nauseous or vomiting.
-- 18:24 When I examined him today, he appeared both anaemic and jaundice.
-- 19:26 He reported occasionally vomiting but no haematemesis or melaena.
-- 20:40 Although there were no abdomen or rectal masses, there was marked epigastric tender.
-- 21:02 Abdomen mass
-- 21:33 Tenderness stomach
-- 22:21 I have referred the patient to a physiotherapy.
-- 23:12 A psychiatrist evaluation is require.
-- 23:28 Psychiatrist evaluation
-- 24:24 Mr Dawe had a decrease appetite and nausea.
-- 25:06 On 19/4/2022, she presented to my clinic complaining of painful, warm, red and swelling in her right breast.
+- 18:56 He has not experienced any nauseous or vomiting.
+- 18:56 When I examined him today, he appeared both anaemic and jaundice.
+- 18:56 He reported occasionally vomiting but no haematemesis or melaena.
+- 18:56 Although there were no abdomen or rectal masses, there was marked epigastric tender.
+- 19:44 I have referred the patient to a physiotherapy.
+- 19:44 A psychiatrist evaluation is require.
+- 19:44 Mr Dawe had a decrease appetite and nausea.
+- 19:44 On 19/4/2022, she presented to my clinic complaining of painful, warm, red and swelling in her right breast.
+- 20:32 He has not experienced any nauseous or vomiting.
+- 21:11 When I examined him today, he appeared both anaemic and jaundice.
+- 22:14 He reported occasionally vomiting but no haematemesis or melaena.
+- 23:27 Although there were no abdomen or rectal masses, there was marked epigastric tender.
+- 23:49 Abdomen mass
+- 24:21 Tenderness stomach
+- 26:04 I have referred the patient to a physiotherapy.
+- 26:55 A psychiatrist evaluation is require.
+- 27:10 Psychiatrist evaluation
+- 28:06 Mr Dawe had a decrease appetite and nausea.
+- 28:48 On 19/4/2022, she presented to my clinic complaining of painful, warm, red and swelling in her right breast.
 
-*Terms*: jaundiced (In plain words, 18:30); jaundice, jaundiced (Word class, 18:39); haematemesis (In plain words, 19:32); melaena (In plain words, 19:38); melaena, melaenic (Word class, 19:52); tender, tenderness (Word family, 22:03); passive (Grammar word, 23:40); require, required, requirement (Word family, 24:14); decrease, decreased (Word family, 24:57); pain, warmth, redness (Noun forms, 25:27); swell, swollen, swelling (Word family, 26:02)
+*Terms*: jaundiced (In plain words, 21:18); jaundice, jaundiced (Word class, 21:26); haematemesis (In plain words, 22:20); melaena (In plain words, 22:25); melaena, melaenic (Word class, 22:39); tender, tenderness (Word family, 24:50); passive (Grammar word, 27:22); require, required, requirement (Word family, 27:56); decrease, decreased (Word family, 28:39); pain, warmth, redness (Noun forms, 29:09); swell, swollen, swelling (Word family, 29:44)
 
-#### 26:32 Adjectives and nouns (`page-6`, deck)
+#### 31:10 Adjectives and nouns (`page-6`, deck)
 
-- 26:32 **Word forms table: adjectives, nouns and model sentences**
-  - 26:32 introduce the task
-  - 27:00 why the word form matters
-  - 27:26 gloss the adjective deaf
-  - 27:48 deaf said to a patient
-  - 28:04 the phrase acute deafness
-  - 28:15 word family for deaf
-  - 28:33 gloss the adjective blind
-  - 28:53 blind said to a patient
-  - 28:59 from case notes to a letter sentence
-  - 29:24 the weak version without the noun
-  - 29:48 word family for blind
-  - 30:04 dilate is a verb
-  - 30:20 gloss the adjective dilated
-  - 30:41 dilated said to a patient
-  - 30:46 the slot decides the form
-  - 31:15 appeared to be in place of were
-  - 31:36 digest is a verb
-  - 31:52 gloss the noun indigestion
-  - 32:13 indigestion said to a patient
-  - 32:19 word family for digest
-  - 32:38 following in place of after
-  - 33:01 gloss the adjective constipated
-  - 33:21 constipated said to a patient
-  - 33:27 the history phrase
-  - 33:43 word family for constipated
-  - 34:00 gloss the adjective psychotic
-  - 34:27 psychotic said to a patient
-  - 34:33 the noun after 'is' in the side-effect pattern
-  - 34:51 word family for psychotic
-  - 35:07 gloss the adjective depressed
-  - 35:26 depressed said to a patient
-  - 35:31 is + adjective and has + noun
-  - 35:55 gloss the adjective anxious
-  - 36:13 anxious said to a patient
-  - 36:19 is + adjective and has + noun
-  - 36:36 the rule for the whole table
+- 31:10 **Word forms table: adjectives, nouns and model sentences**
+  - 31:10 introduce the task
+  - 31:38 why the word form matters
+  - 32:04 gloss the adjective deaf
+  - 32:26 deaf said to a patient
+  - 32:42 the phrase acute deafness
+  - 32:53 word family for deaf
+  - 33:11 gloss the adjective blind
+  - 33:31 blind said to a patient
+  - 33:37 from case notes to a letter sentence
+  - 34:02 the weak version without the noun
+  - 34:26 word family for blind
+  - 34:42 dilate is a verb
+  - 34:58 gloss the adjective dilated
+  - 35:19 dilated said to a patient
+  - 35:25 the slot decides the form
+  - 35:53 appeared to be in place of were
+  - 36:14 digest is a verb
+  - 36:30 gloss the noun indigestion
+  - 36:51 indigestion said to a patient
+  - 36:57 word family for digest
+  - 37:16 following in place of after
+  - 38:36 gloss the adjective constipated
+  - 38:56 constipated said to a patient
+  - 39:02 the history phrase
+  - 39:18 word family for constipated
+  - 39:35 gloss the adjective psychotic
+  - 40:02 psychotic said to a patient
+  - 40:08 the noun after 'is' in the side-effect pattern
+  - 40:26 word family for psychotic
+  - 40:42 gloss the adjective depressed
+  - 41:01 depressed said to a patient
+  - 41:06 is + adjective and has + noun
+  - 41:30 gloss the adjective anxious
+  - 41:48 anxious said to a patient
+  - 41:54 is + adjective and has + noun
+  - 42:11 the rule for the whole table
 
 *Rules on the boards*
 
-- 27:00 When you paraphrase case notes in a letter, you often have to change the form of the word.
-- 36:36 Look at the slot in the sentence. Some slots need the adjective, others need the noun.
+- 31:38 When you paraphrase case notes in a letter, you often have to change the form of the word.
+- 42:11 Look at the slot in the sentence. Some slots need the adjective, others need the noun.
 
 *Wrong sentences corrected*
 
-- 29:24 His father and sister is blind.
+- 34:02 His father and sister is blind.
 
-*Terms*: acute deafness (Phrase, 28:04); deaf (adjective), deafness (noun) (Word family, 28:15); blind (adjective), blindness (noun) (Word family, 29:48); digest (verb), digestive (adjective), digestion (noun), indigestion (noun) (Word family, 32:19); a three-day history of constipation (Phrase, 33:27); constipated (adjective), constipation (noun) (Word family, 33:43); psychotic (adjective), psychosis (noun) (Word family, 34:51)
+*Terms*: acute deafness (Phrase, 32:42); deaf (adjective), deafness (noun) (Word family, 32:53); blind (adjective), blindness (noun) (Word family, 34:26); digest (verb), digestive (adjective), digestion (noun), indigestion (noun) (Word family, 36:57); a three-day history of constipation (Phrase, 39:02); constipated (adjective), constipation (noun) (Word family, 39:18); psychotic (adjective), psychosis (noun) (Word family, 40:26)
 
-#### 37:06 Joining sentences with relative pronouns (`page-7`, deck)
+#### 43:30 Joining sentences with relative pronouns (`page-7`, deck)
 
-- 37:06 **activity instruction and items 1 to 3**
-  - 37:06 Show the task and the first three pairs of sentences
-- 38:14 **items 4 to 6**
-  - 38:14 Show the last three pairs of sentences
-- 38:50 **Item 1: who, and the comma**
-  - 38:50 Define the tool the activity practises
-  - 39:10 Name the second part of the joined sentence
-  - 39:27 Give the answer to item 1 with one short reason
-  - 39:45 Show that the clause can be taken out
-  - 40:17 Contrast the two kinds of relative clause and the comma rule
-  - 40:35 Show a defining clause in a letter introduction
-  - 40:53 List the relative pronouns and what each refers to
-- 41:07 **Item 2: which, and deleting the pronoun**
-  - 41:07 Short notes on the first two words of item 2
-  - 41:26 Short notes on the other two words of item 2
-  - 41:43 Give the answer to item 2 with one short reason
-  - 41:55 Reject the form that keeps 'it'
-  - 42:09 Explain the comma in item 2
-- 42:28 **Item 3: whose, and no comma**
-  - 42:28 Teach the key word deteriorating
-  - 43:01 Second example, talking to a patient
-  - 43:07 Word family for deteriorate
-  - 43:18 Point at the possessive word that starts sentence two
-  - 43:29 Give the answer to item 3 with one short reason
-  - 43:46 Show that this clause cannot be taken out
-  - 44:18 State the comma rule for defining clauses
-  - 44:27 Warn about the comma in a letter introduction
-- 44:51 **Item 4: which for a whole idea, and suffer from**
-  - 44:51 Short notes on the words in item 4
-  - 45:15 Give the answer to item 4 with one short reason
-  - 45:30 Contrast suffer from and suffer
-  - 45:50 Show the two rejected forms with from
-  - 46:09 Give the correct one-off form and say why
-- 46:21 **Item 5: which for a whole idea again**
-  - 46:21 Separate the two near words in item 5
-  - 46:41 Show the verb and noun forms of faint
-  - 46:54 Give the answer to item 5 with one short reason
-  - 47:05 State the deletion rule for the whole activity
-- 47:15 **Item 6: whose again, and counselling**
-  - 47:15 Teach the key word counselling
-  - 47:44 Second example, talking to a patient
-  - 47:50 Word family for counsel
-  - 48:00 Give the answer to item 6 with one short reason
+- 43:30 **activity instruction and items 1 to 3**
+  - 43:30 Show the task and the first three pairs of sentences
+- 44:38 **items 4 to 6**
+  - 44:38 Show the last three pairs of sentences
+- 45:14 **Item 1: who, and the comma**
+  - 45:14 Define the tool the activity practises
+  - 45:34 Name the second part of the joined sentence
+  - 45:50 Give the answer to item 1 with one short reason
+  - 46:09 Show that the clause can be taken out
+  - 46:40 Contrast the two kinds of relative clause and the comma rule
+  - 46:58 Show a defining clause in a letter introduction
+  - 47:16 List the relative pronouns and what each refers to
+- 47:30 **Item 2: which, and deleting the pronoun**
+  - 47:30 Short notes on the first two words of item 2
+  - 47:49 Short notes on the other two words of item 2
+  - 48:06 Give the answer to item 2 with one short reason
+  - 48:18 Reject the form that keeps 'it'
+  - 48:33 Explain the comma in item 2
+- 48:51 **Item 3: whose, and no comma**
+  - 48:51 Teach the key word deteriorating
+  - 49:24 Second example, talking to a patient
+  - 49:31 Word family for deteriorate
+  - 49:45 Point at the possessive word that starts sentence two
+  - 49:56 Give the answer to item 3 with one short reason
+  - 50:13 Show that this clause cannot be taken out
+  - 50:45 State the comma rule for defining clauses
+  - 50:54 Warn about the comma in a letter introduction
+- 52:22 **Item 4: which for a whole idea, and suffer from**
+  - 52:22 Short notes on the words in item 4
+  - 52:46 Give the answer to item 4 with one short reason
+  - 53:00 Contrast suffer from and suffer
+  - 53:20 Show the two rejected forms with from
+  - 53:40 Give the correct one-off form and say why
+- 53:52 **Item 5: which for a whole idea again**
+  - 53:52 Separate the two near words in item 5
+  - 54:12 Show the verb and noun forms of faint
+  - 54:25 Give the answer to item 5 with one short reason
+  - 54:35 State the deletion rule for the whole activity
+- 54:46 **Item 6: whose again, and counselling**
+  - 54:46 Teach the key word counselling
+  - 55:15 Second example, talking to a patient
+  - 55:21 Word family for counsel
+  - 55:30 Give the answer to item 6 with one short reason
 
 *Rules on the boards*
 
-- 42:21 Extra information is separated with a comma.
-- 44:18 A defining relative clause takes no comma.
-- 47:05 When you use a relative pronoun, delete the word it replaces: she, it or this.
+- 48:44 Extra information is separated with a comma.
+- 50:45 A defining relative clause takes no comma.
+- 54:35 When you use a relative pronoun, delete the word it replaces: she, it or this.
 
 *Warnings (common mistakes)*
 
-- 44:27 Look at the words before who or whose. After a description with 'a' (a 55-year-old bus driver whose …), no comma. Straight after the patient's name (Ms Wilson, who …), a comma.
+- 50:54 Look at the words before who or whose. After a description with 'a' (a 55-year-old bus driver whose …), no comma. Straight after the patient's name (Ms Wilson, who …), a comma.
 
 *Wrong sentences corrected*
 
-- 37:06 He lives with his 80-year-old mother. She suffers from dementia.
-- 37:06 She tried a herbal remedy. She obtained it over the counter from a Chinese shop.
-- 37:06 Ms Wilson is a 55-year-old bus driver. Her eyesight may be deteriorating.
-- 38:14 He suffered a severe blow to the head. This caused him to lose consciousness.
-- 38:14 He reported no feelings of faintness or dizziness. I found this surprising.
-- 38:14 I spent some time counselling Mr Aksoy. His mother died last week.
-- 38:50 He lives with his 80-year-old mother. She suffers from dementia.
-- 41:07 She tried a herbal remedy. She obtained it over the counter from a Chinese shop.
-- 41:55 Which she obtained it over the counter from a Chinese shop.
-- 42:28 Ms Wilson is a 55-year-old bus driver. Her eyesight may be deteriorating.
-- 44:51 He suffered a severe blow to the head. This caused him to lose consciousness.
-- 45:50 He suffered from a severe blow to the head.
-- 45:57 He suffered from a leg fracture.
-- 46:21 He reported no feelings of faintness or dizziness. I found this surprising.
-- 47:15 I spent some time counselling Mr Aksoy. His mother died last week.
+- 43:30 He lives with his 80-year-old mother. She suffers from dementia.
+- 43:30 She tried a herbal remedy. She obtained it over the counter from a Chinese shop.
+- 43:30 Ms Wilson is a 55-year-old bus driver. Her eyesight may be deteriorating.
+- 44:38 He suffered a severe blow to the head. This caused him to lose consciousness.
+- 44:38 He reported no feelings of faintness or dizziness. I found this surprising.
+- 44:38 I spent some time counselling Mr Aksoy. His mother died last week.
+- 45:14 He lives with his 80-year-old mother. She suffers from dementia.
+- 47:30 She tried a herbal remedy. She obtained it over the counter from a Chinese shop.
+- 48:18 Which she obtained it over the counter from a Chinese shop.
+- 48:51 Ms Wilson is a 55-year-old bus driver. Her eyesight may be deteriorating.
+- 52:22 He suffered a severe blow to the head. This caused him to lose consciousness.
+- 53:20 He suffered from a severe blow to the head.
+- 53:28 He suffered from a leg fracture.
+- 53:52 He reported no feelings of faintness or dizziness. I found this surprising.
+- 54:46 I spent some time counselling Mr Aksoy. His mother died last week.
 
-*Terms*: Relative pronoun (New term, 38:59); Relative clause (New term, 39:10); Who, which, whose, where (Relative pronouns, 40:53); Herbal (New word, 41:15); Remedy (New word, 41:18); Obtain (New word, 41:26); Over the counter (New phrase, 41:29); Deteriorate (Word family, 43:07); Her, his, their (Possessive words, 43:18); Blow (New word, 44:58); Lose consciousness (New phrase, 45:01); Faint (Word family, 46:41); Counsel (Word family, 47:50)
+*Terms*: Relative pronoun (New term, 45:23); Relative clause (New term, 45:34); Who, which, whose, where (Relative pronouns, 47:16); Herbal (New word, 47:38); Remedy (New word, 47:41); Obtain (New word, 47:49); Over the counter (New phrase, 47:52); Deteriorate (Word family, 49:31); Her, his, their (Possessive words, 49:45); Blow (New word, 52:28); Lose consciousness (New phrase, 52:32); Faint (Word family, 54:12); Counsel (Word family, 55:21)
 
-#### 48:21 Relative clauses with prepositions (`page-8`, deck)
+#### 56:47 Relative clauses with prepositions (`page-8`, deck)
 
-- 48:21 **instruction, example and items 1 to 3**
-  - 48:21 Show the task and the first half of the set
-- 49:26 **items 4 to 6**
-  - 49:26 Show the second half of the set
-- 50:03 **Item 1: from which**
-  - 50:03 Frame the task and warn about the missing preposition
-  - 50:19 Define the grammar words needed here
-  - 50:39 English paraphrase of the pair, replacing the first-language check
-  - 50:46 Show the usual wrong version and name the fault
-  - 51:15 Give the correct answer and the comma
-  - 51:31 Name the form
-  - 51:42 Show how the two clauses join
-- 52:09 **Item 2: for which**
-  - 52:09 Show why this pattern matters in case notes
-  - 52:24 A second example of the same pattern from the past medical history
-  - 52:35 Show the wrong version students write
-  - 52:51 Give the correct answer
-  - 53:09 Name the family of forms
-  - 53:24 Key word: laxative
-  - 53:41 The same key word said to a patient
-- 53:48 **Item 3: instead of which**
-  - 53:48 English paraphrase of the pair, replacing the first-language check
-  - 54:02 Give the answer and the punctuation
-  - 54:21 Name the form
-  - 54:28 Show what 'which' stands for
-- 54:52 **Item 4: neither of which**
-  - 54:52 Give the answer
-  - 55:14 Name the form and the comma
-  - 55:24 What the relative pronoun stands for
-  - 55:48 Key word: herbal remedy
-  - 56:05 The same key word said to a patient
-- 56:11 **Item 5: by which time**
-  - 56:11 Give the answer
-  - 56:26 Show the change of words
-  - 56:40 What 'this time' refers to
-  - 56:52 Hard general word: worsened
-  - 57:06 The same word said to a patient
-- 57:12 **Item 6: one of which**
-  - 57:12 Give the answer
-  - 57:25 Why 'them' becomes 'which'
-  - 57:45 Key word: mole
-  - 58:02 The same key word said to a patient
-  - 58:07 Close the set with the rule about the preposition
+- 56:47 **instruction, example and items 1 to 3**
+  - 56:47 Show the task and the first half of the set
+- 57:52 **items 4 to 6**
+  - 57:52 Show the second half of the set
+- 58:29 **Item 1: from which**
+  - 58:29 Frame the task and warn about the missing preposition
+  - 58:46 Define the grammar words needed here
+  - 59:05 English paraphrase of the pair, replacing the first-language check
+  - 59:13 Show the usual wrong version and name the fault
+  - 59:41 Give the correct answer and the comma
+  - 59:57 Name the form
+  - 60:08 Show how the two clauses join
+- 61:24 **Item 2: for which**
+  - 61:24 Show why this pattern matters in case notes
+  - 61:38 A second example of the same pattern from the past medical history
+  - 61:50 Show the wrong version students write
+  - 62:05 Give the correct answer
+  - 62:23 Name the family of forms
+  - 62:39 Key word: laxative
+  - 62:56 The same key word said to a patient
+- 63:02 **Item 3: instead of which**
+  - 63:02 English paraphrase of the pair, replacing the first-language check
+  - 63:17 Give the answer and the punctuation
+  - 63:35 Name the form
+  - 63:42 Show what 'which' stands for
+- 64:05 **Item 4: neither of which**
+  - 64:05 Give the answer
+  - 64:28 Name the form and the comma
+  - 64:38 What the relative pronoun stands for
+  - 65:01 Key word: herbal remedy
+  - 65:19 The same key word said to a patient
+- 65:25 **Item 5: by which time**
+  - 65:25 Give the answer
+  - 65:40 Show the change of words
+  - 65:53 What 'this time' refers to
+  - 66:06 Hard general word: worsened
+  - 66:20 The same word said to a patient
+- 67:20 **Item 6: one of which**
+  - 67:20 Give the answer
+  - 67:33 Why 'them' becomes 'which'
+  - 67:52 Key word: mole
+  - 68:10 The same key word said to a patient
+  - 68:15 Close the set with the rule about the preposition
 
 *Rules on the boards*
 
-- 55:32 When the two sentences join with 'which', the word it replaces ('them', 'this') is dropped.
-- 58:07 Do not leave the preposition out when you join the sentences. Here we used 'from', 'for' and 'by'.
+- 64:46 When the two sentences join with 'which', the word it replaces ('them', 'this') is dropped.
+- 68:15 Do not leave the preposition out when you join the sentences. Here we used 'from', 'for' and 'by'.
 
 *Warnings (common mistakes)*
 
-- 50:09 Most learners leave the preposition out. The sentence is then wrong, and the meaning is not clear.
+- 58:36 Most learners leave the preposition out. The sentence is then wrong, and the meaning is not clear.
 
 *Wrong sentences corrected*
 
-- 48:21 He suffered a stroke last January. He has still not fully recovered from it.
-- 48:21 She occasionally suffers from constipation. She takes a mild laxative for this.
-- 48:21 He was advised to rest the ankle for two weeks. Instead of this, he went on a walking holiday.
-- 49:26 She tried two different herbal remedies. Neither of them had any effect.
-- 49:26 He presented again on 23 January. By this time his condition had worsened.
-- 49:26 He has two moles on his left arm. One of them appears to have changed shape.
-- 50:03 He suffered a stroke last January. He has still not fully recovered from it.
-- 50:46 He suffered a stroke last January, which he has still not fully recovered from it.
-- 52:09 She occasionally suffers from constipation. She takes a mild laxative for this.
-- 52:35 She occasionally suffers from constipation which she takes a mild laxative for this.
-- 53:48 He was advised to rest the ankle for two weeks. Instead of this, he went on a walking holiday.
-- 54:52 She tried two different herbal remedies. Neither of them had any effect.
-- 56:11 He presented again on 23 January. By this time his condition had worsened.
-- 57:12 He has two moles on his left arm. One of them appears to have changed shape.
+- 56:47 He suffered a stroke last January. He has still not fully recovered from it.
+- 56:47 She occasionally suffers from constipation. She takes a mild laxative for this.
+- 56:47 He was advised to rest the ankle for two weeks. Instead of this, he went on a walking holiday.
+- 57:52 She tried two different herbal remedies. Neither of them had any effect.
+- 57:52 He presented again on 23 January. By this time his condition had worsened.
+- 57:52 He has two moles on his left arm. One of them appears to have changed shape.
+- 58:29 He suffered a stroke last January. He has still not fully recovered from it.
+- 59:13 He suffered a stroke last January, which he has still not fully recovered from it.
+- 61:24 She occasionally suffers from constipation. She takes a mild laxative for this.
+- 61:50 She occasionally suffers from constipation which she takes a mild laxative for this.
+- 63:02 He was advised to rest the ankle for two weeks. Instead of this, he went on a walking holiday.
+- 64:05 She tried two different herbal remedies. Neither of them had any effect.
+- 65:25 He presented again on 23 January. By this time his condition had worsened.
+- 67:20 He has two moles on his left arm. One of them appears to have changed shape.
 
-*Terms*: relative pronoun (Grammar word, 50:19); from which (Form, 51:31); from which, for which, in which (Forms, 53:09); instead of which (Form, 54:21); neither of which (Form, 55:14); one of which (Form, 57:33)
+*Terms*: relative pronoun (Grammar word, 58:46); from which (Form, 59:57); from which, for which, in which (Forms, 62:23); instead of which (Form, 63:35); neither of which (Form, 64:28); one of which (Form, 67:41)
 
-#### 58:27 Avoid a series of short sentences (`page-9`, deck)
+#### 68:39 Avoid a series of short sentences (`page-9`, deck)
 
-- 58:27 **Extract rewritten with relative clauses**
-  - 58:27 the task on this extract
-  - 58:54 only join ideas that belong together
-  - 59:34 'who' joins sentences 1 and 2
-  - 59:42 defining relative clause takes no comma
-  - 60:03 the defining clause drawn
-  - 60:36 'This' becomes 'which'
-  - 60:45 non-defining relative clause takes a comma
-  - 61:01 'which' or 'for which'?
-  - 61:22 where 'also' goes
-  - 61:39 do not repeat 'for this'
-  - 61:51 suffer or suffer from
-  - 62:08 examples with suffer from
-  - 62:19 joining both conditions in one sentence
-  - 62:40 the word 'respectively'
-  - 62:56 keep the two conditions apart
-  - 63:11 the word 'fortnight'
-  - 63:25 fortnight when speaking to a patient
-  - 63:31 the phrase 'a number of episodes'
-  - 63:46 the word 'discomfort'
-  - 63:59 the prefix dis-
-  - 64:39 'These' becomes ', which'
-  - 65:08 the phrasal verb 'came on'
-  - 65:21 'come on' in speaking, and its past form
-  - 65:28 the phrase 'physical exertion'
-  - 65:42 the phrase 'due to'
-  - 65:55 leave the 'However' sentence apart
-  - 66:19 joining the murmur sentences
-  - 66:41 joining the ECG sentences
-  - 66:55 the passive instead of 'I ordered'
-  - 67:21 the word 'subsequent'
-  - 67:45 subsequent and subsequently
-  - 67:59 the last sentence stays as it is
-  - 68:12 the rule for joining
-  - 68:23 other joining words
-  - 68:38 examples with 'and' and 'but'
-  - 68:52 examples with 'so' and 'because'
-  - 69:10 an example with 'although'
+- 68:39 **Extract rewritten with relative clauses**
+  - 68:39 the task on this extract
+  - 69:06 only join ideas that belong together
+  - 69:45 'who' joins sentences 1 and 2
+  - 69:53 defining relative clause takes no comma
+  - 70:14 the defining clause drawn
+  - 70:49 'This' becomes 'which'
+  - 70:58 non-defining relative clause takes a comma
+  - 71:14 'which' or 'for which'?
+  - 71:35 where 'also' goes
+  - 71:52 do not repeat 'for this'
+  - 72:04 suffer or suffer from
+  - 72:21 examples with suffer from
+  - 72:32 joining both conditions in one sentence
+  - 72:52 the word 'respectively'
+  - 73:09 keep the two conditions apart
+  - 74:21 the word 'fortnight'
+  - 74:35 fortnight when speaking to a patient
+  - 74:41 the phrase 'a number of episodes'
+  - 74:55 the word 'discomfort'
+  - 75:09 the prefix dis-
+  - 75:49 'These' becomes ', which'
+  - 76:18 the phrasal verb 'came on'
+  - 76:31 'come on' in speaking, and its past form
+  - 76:38 the phrase 'physical exertion'
+  - 76:52 the phrase 'due to'
+  - 77:05 leave the 'However' sentence apart
+  - 77:29 joining the murmur sentences
+  - 77:52 joining the ECG sentences
+  - 78:05 the passive instead of 'I ordered'
+  - 78:31 the word 'subsequent'
+  - 78:54 subsequent and subsequently
+  - 79:08 the last sentence stays as it is
+  - 79:22 the rule for joining
+  - 79:33 other joining words
+  - 79:47 examples with 'and' and 'but'
+  - 80:02 examples with 'so' and 'because'
+  - 80:19 an example with 'although'
 
 *Rules on the boards*
 
-- 62:56 Hypertension and indigestion are different conditions, so here it is better to keep two sentences.
-- 65:55 The next sentence begins with 'However', so we leave these two sentences apart.
-- 68:12 Join sentences only where it helps the reader. Where it does not, use a full stop and start a new sentence.
+- 73:09 Hypertension and indigestion are different conditions, so here it is better to keep two sentences.
+- 77:05 The next sentence begins with 'However', so we leave these two sentences apart.
+- 79:22 Join sentences only where it helps the reader. Where it does not, use a full stop and start a new sentence.
 
 *Warnings (common mistakes)*
 
-- 58:54 Join two sentences only when the ideas are related. Sport and a medical history do not belong in one sentence.
+- 69:06 Join two sentences only when the ideas are related. Sport and a medical history do not belong in one sentence.
 
 *Wrong sentences corrected*
 
-- 61:39 He also occasionally suffers from indigestion, for which he takes Gaviscon for this.
+- 71:52 He also occasionally suffers from indigestion, for which he takes Gaviscon for this.
 
-*Terms*: who (Relative pronoun, 59:34); defining relative clause (New term, 59:42); which (Relative pronoun, 60:36); non-defining relative clause (New term, 60:45); occasional, occasionally (Word family, 62:31); dis- (Prefix, 63:59); come on, came on (Word form, 65:24); passive (New term, 66:55); subsequent, subsequently (Word family, 67:45); and, but, so, because, although (Joining words, 68:23)
+*Terms*: who (Relative pronoun, 69:45); defining relative clause (New term, 69:53); which (Relative pronoun, 70:49); non-defining relative clause (New term, 70:58); occasional, occasionally (Word family, 72:44); dis- (Prefix, 75:09); come on, came on (Word form, 76:34); passive (New term, 78:05); subsequent, subsequently (Word family, 78:54); and, but, so, because, although (Joining words, 79:33)
 
-#### 69:24 Avoid sentences that are too long (`page-10`, deck)
+#### 81:24 Avoid sentences that are too long (`page-10`, deck)
 
-- 69:24 **instruction and extracts 1 and 3**
-  - 69:24 Show the task and the first two long extracts
-- 70:13 **extract 5**
-  - 70:13 Show the last extract of the set
-- 70:41 **Extract 1: Mr Edwardson**
-  - 70:41 Name the problem
-  - 71:14 Gloss a hard general word from the extract
-  - 71:27 Show that the two parts joined by 'and' are both complete
-  - 72:10 First new sentence
-  - 72:23 Second new sentence
-  - 72:39 Third new sentence
-  - 72:50 State the result of the split
-  - 72:56 A simple test for a sentence that is too long
-- 73:13 **Extract 3: Mr Kozak**
-  - 73:13 Open the second long extract
-  - 73:36 Teach the word 'apparently'
-  - 73:48 Find the topic boundary
-  - 73:54 Compare two places for the full stop
-  - 74:10 First new sentence of extract 3
-  - 74:32 Show the second fault in the extract
-  - 74:45 Define the grammar term
-  - 74:54 State the rule about two relative pronouns
-  - 75:07 Key word: compliance
-  - 75:21 Second example of the key word, said to a patient
-  - 75:29 Word family of the key word
-  - 75:45 Collocations with compliance
-  - 76:04 The rewritten second sentence
-- 76:27 **Extract 5: Mrs Hardy**
-  - 76:27 See that the extract is one sentence
-  - 77:03 Show why full stops do not help here
-  - 77:19 Name the real fault
-  - 77:37 Gloss a hard general word from the extract
-  - 77:47 Apply the relevance test
-  - 78:00 Decide what to keep and what to cut
-  - 78:23 The first rewritten sentence
-  - 78:40 The second sentence
-  - 78:49 A second accepted version of that sentence
-  - 79:08 Close the point
+- 81:24 **instruction and extracts 1 and 3**
+  - 81:24 Show the task and the first two long extracts
+- 82:13 **extract 5**
+  - 82:13 Show the last extract of the set
+- 82:41 **Extract 1: Mr Edwardson**
+  - 82:41 Name the problem
+  - 83:14 Gloss a hard general word from the extract
+  - 83:27 Show that the two parts joined by 'and' are both complete
+  - 84:10 First new sentence
+  - 84:23 Second new sentence
+  - 84:39 Third new sentence
+  - 84:50 State the result of the split
+  - 84:56 A simple test for a sentence that is too long
+- 85:13 **Extract 3: Mr Kozak**
+  - 85:13 Open the second long extract
+  - 85:36 Teach the word 'apparently'
+  - 85:47 Find the topic boundary
+  - 85:54 Compare two places for the full stop
+  - 86:10 First new sentence of extract 3
+  - 86:31 Show the second fault in the extract
+  - 86:45 Define the grammar term
+  - 86:54 State the rule about two relative pronouns
+  - 87:07 Key word: compliance
+  - 87:21 Second example of the key word, said to a patient
+  - 87:29 Word family of the key word
+  - 87:45 Collocations with compliance
+  - 88:04 The rewritten second sentence
+- 89:39 **Extract 5: Mrs Hardy**
+  - 89:39 See that the extract is one sentence
+  - 90:15 Show why full stops do not help here
+  - 90:32 Name the real fault
+  - 90:49 Gloss a hard general word from the extract
+  - 90:59 Apply the relevance test
+  - 91:12 Decide what to keep and what to cut
+  - 91:35 The first rewritten sentence
+  - 91:52 The second sentence
+  - 92:01 A second accepted version of that sentence
+  - 92:20 Close the point
 
 *Rules on the boards*
 
-- 72:56 If a sentence is hard to follow, often because it has several ideas or more than about 25 words, split it. Each new sentence needs its own subject and verb.
+- 84:56 If a sentence is hard to follow, often because it has several ideas or more than about 25 words, split it. Each new sentence needs its own subject and verb.
 
 *Warnings (common mistakes)*
 
-- 74:54 Avoid a chain of relative clauses in one sentence. Change the sentence so you can delete the second one.
-- 77:19 The fault here is too much information. Length is not always the problem: unnecessary detail is.
+- 86:54 Avoid a chain of relative clauses in one sentence. Change the sentence so you can delete the second one.
+- 90:32 The fault here is too much information. Length is not always the problem: unnecessary detail is.
 
 *Wrong sentences corrected*
 
-- 69:24 Mr Edwardson is a 29-year-old man who is single and works as a railway engineer and he was adopted at birth, so he has no knowledge of the medical history of his birth family, which means that his only past medical history is of certain childhood infections, none of which are unusual.
-- 69:24 Mr Kozak has a history of excessive alcohol intake, which apparently started after the death of his mother, and it increases when he is anxious and has twice been diagnosed with depression for which he was prescribed citalopram, which he admits he never took regularly.
-- 70:13 The ambulance team found Mrs Hardy, who was conscious but confused, after lying on the bedroom floor in her nightdress, at approximately 1.30pm after a call from her neighbour, Mr Bowen, who had become concerned that her curtains were still closed for some time without receiving an answer, and Mr Bowen also rang the patient's son, who arrived just before the ambulance and accompanied her to the hospital.
-- 70:41 Mr Edwardson is a 29-year-old man who is single and works as a railway engineer and he was adopted at birth, so he has no knowledge of the medical history of his birth family, which means that his only past medical history is of certain childhood infections, none of which are unusual.
-- 73:13 Mr Kozak has a history of excessive alcohol intake, which apparently started after the death of his mother, and it increases when he is anxious and has twice been diagnosed with depression for which he was prescribed citalopram, which he admits he never took regularly.
-- 74:32 For which he was prescribed citalopram, which he admits he never took regularly.
-- 76:27 The ambulance team found Mrs Hardy, who was conscious but confused, after lying on the bedroom floor in her nightdress, at approximately 1.30pm after a call from her neighbour, Mr Bowen, who had become concerned that her curtains were still closed for some time without receiving an answer, and Mr Bowen also rang the patient's son, who arrived just before the ambulance and accompanied her to the hospital.
+- 81:24 Mr Edwardson is a 29-year-old man who is single and works as a railway engineer and he was adopted at birth, so he has no knowledge of the medical history of his birth family, which means that his only past medical history is of certain childhood infections, none of which are unusual.
+- 81:24 Mr Kozak has a history of excessive alcohol intake, which apparently started after the death of his mother, and it increases when he is anxious and has twice been diagnosed with depression for which he was prescribed citalopram, which he admits he never took regularly.
+- 82:13 The ambulance team found Mrs Hardy, who was conscious but confused, after lying on the bedroom floor in her nightdress, at approximately 1.30pm after a call from her neighbour, Mr Bowen, who had become concerned that her curtains were still closed for some time without receiving an answer, and Mr Bowen also rang the patient's son, who arrived just before the ambulance and accompanied her to the hospital.
+- 82:41 Mr Edwardson is a 29-year-old man who is single and works as a railway engineer and he was adopted at birth, so he has no knowledge of the medical history of his birth family, which means that his only past medical history is of certain childhood infections, none of which are unusual.
+- 85:13 Mr Kozak has a history of excessive alcohol intake, which apparently started after the death of his mother, and it increases when he is anxious and has twice been diagnosed with depression for which he was prescribed citalopram, which he admits he never took regularly.
+- 86:31 For which he was prescribed citalopram, which he admits he never took regularly.
+- 89:39 The ambulance team found Mrs Hardy, who was conscious but confused, after lying on the bedroom floor in her nightdress, at approximately 1.30pm after a call from her neighbour, Mr Bowen, who had become concerned that her curtains were still closed for some time without receiving an answer, and Mr Bowen also rang the patient's son, who arrived just before the ambulance and accompanied her to the hospital.
 
-*Terms*: Relative pronoun (Grammar word, 74:45); comply (verb), compliance (noun), non-compliance (noun) (Word family, 75:29); good compliance, poor compliance, with poor compliance (Collocations, 75:45)
+*Terms*: Relative pronoun (Grammar word, 86:45); comply (verb), compliance (noun), non-compliance (noun) (Word family, 87:29); good compliance, poor compliance, with poor compliance (Collocations, 87:45)
 
 ### Vocabulary
 
 First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
 
-- 6:51 loneliness
-- 7:21 stated
-- 7:31 isolated
-- 7:41 at times
-- 8:10 lethargic
-- 10:31 tearful
-- 11:39 confessed
-- 11:43 guilt
-- 12:23 grazed
-- 12:28 a fall
-- 13:18 find it difficult
-- 13:22 cope with
-- 13:52 epigastric pain
-- 14:41 excitable
-- 27:26 deaf
-- 28:04 acute deafness
-- 28:33 blind
-- 30:20 dilated
-- 31:52 indigestion
-- 33:01 constipated
-- 33:27 a three-day history of constipation
-- 34:00 psychotic
-- 35:07 depressed
-- 35:55 anxious
-- 41:15 Herbal
-- 41:18 Remedy
-- 41:26 Obtain
-- 41:29 Over the counter
-- 42:37 deteriorating
-- 44:58 Blow
-- 45:01 Lose consciousness
-- 47:23 counselling
-- 53:24 laxative
-- 55:48 herbal remedy
-- 56:52 worsened
-- 57:45 moles
-- 62:40 respectively
-- 63:11 fortnight
-- 63:31 a number of episodes
-- 63:46 discomfort
-- 65:08 came on
-- 65:28 physical exertion
-- 65:42 due to
-- 67:21 subsequent
-- 71:14 adopted
-- 73:36 apparently
-- 75:07 compliance
-- 77:37 accompanied
+- 7:47 loneliness
+- 8:17 stated
+- 8:26 isolated
+- 8:37 at times
+- 9:05 lethargic
+- 12:20 tearful
+- 13:28 confessed
+- 13:32 guilt
+- 14:12 grazed
+- 14:17 a fall
+- 15:09 find it difficult
+- 15:13 cope with
+- 15:43 epigastric pain
+- 17:28 excitable
+- 32:04 deaf
+- 32:42 acute deafness
+- 33:11 blind
+- 34:58 dilated
+- 36:30 indigestion
+- 38:36 constipated
+- 39:02 a three-day history of constipation
+- 39:35 psychotic
+- 40:42 depressed
+- 41:30 anxious
+- 47:38 Herbal
+- 47:41 Remedy
+- 47:49 Obtain
+- 47:52 Over the counter
+- 49:00 deteriorating
+- 52:28 Blow
+- 52:32 Lose consciousness
+- 54:54 counselling
+- 62:39 laxative
+- 65:01 herbal remedy
+- 66:06 worsened
+- 67:52 moles
+- 72:52 respectively
+- 74:21 fortnight
+- 74:41 a number of episodes
+- 74:55 discomfort
+- 76:18 came on
+- 76:38 physical exertion
+- 76:52 due to
+- 78:31 subsequent
+- 83:14 adopted
+- 85:36 apparently
+- 87:07 compliance
+- 90:49 accompanied
 
 ### Practice material
 
@@ -3718,12 +3718,12 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ### Links to other lessons
 
-- 9:02 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `page-4_t7.s3.u2`)
-- 24:06 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `page-5_t8.s2.u3`)
-- 27:15 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`) (in `page-6_t1.s2.u3`)
-- 37:06 refers to Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`) (in `page-7_t1.s1.u1`)
-- 37:33 refers to Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Defining and non-defining" (in `page-7_t1.s1.u4`)
-- 69:16 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`) (in `page-9_t1.s37.u2`)
+- 9:57 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `page-4_t7.s3.u2`)
+- 27:48 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `page-5_t8.s2.u3`)
+- 31:53 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`) (in `page-6_t1.s2.u3`)
+- 43:30 refers to Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`) (in `page-7_t1.s1.u1`)
+- 43:57 refers to Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Defining and non-defining" (in `page-7_t1.s1.u4`)
+- 80:26 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`) (in `page-9_t1.s37.u2`)
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Introduction" at 0:07
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Spot the errors" at 15:14, about section `page-4`
 
@@ -8859,8 +8859,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **adjective + noun collocations**: `vocabulary-03-collocations-2` 2:00
 - **Adjective and noun**: `vocabulary-03-collocations-2` 5:51
 - **Adjective and noun collocation**: `vocabulary-03-collocations-2` 2:22
-- **Adjective endings**: `vocabulary-01-word-forms` 15:39
-- **Adjectives and nouns**: `vocabulary-01-word-forms` 26:32
+- **Adjective endings**: `vocabulary-01-word-forms` 18:27
+- **Adjectives and nouns**: `vocabulary-01-word-forms` 31:10
 - **Administer**: `vocabulary-02-collocations` 16:03
 - **Although**: `grammar-05-complex-compound` 11:48
 - **An itchy rash**: `vocabulary-03-collocations-2` 75:38
@@ -8871,8 +8871,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Appositives and ages**: `writing-04-introduction` 9:51
 - **article**: `grammar-02-verb-use` 62:02
 - **Articles**: `grammar-04-articles` 2:00; `grammar-08-paraphrasing` 12:29
-- **Avoid a series of short sentences**: `vocabulary-01-word-forms` 58:27
-- **Avoid sentences that are too long**: `vocabulary-01-word-forms` 69:24
+- **Avoid a series of short sentences**: `vocabulary-01-word-forms` 68:39
+- **Avoid sentences that are too long**: `vocabulary-01-word-forms` 81:24
 - **Be + -ed adjective**: `grammar-06-clause` 41:38
 - **Be verb plus past participle**: `grammar-01-verb-tenses` 88:58
 - **been**: `grammar-01-verb-tenses` 15:25
@@ -8888,7 +8888,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Case notes and the Writing Task**: `writing-01-overview` 13:47
 - **Case notes: error correction**: `grammar-01-verb-tenses` 114:53
 - **Case-note abbreviations**: `grammar-07-punctuation` 85:08
-- **Choosing the right word form**: `vocabulary-01-word-forms` 2:25
+- **Choosing the right word form**: `vocabulary-01-word-forms` 2:26
 - **choosing the tense**: `grammar-02-verb-use` 9:39
 - **Chunking**: `reading-02-part-a` 18:43
 - **Clause**: `grammar-05-complex-compound` 3:57
@@ -8933,10 +8933,10 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Decision**: `grammar-01-verb-tenses` 26:52
 - **Defining and non-defining**: `grammar-06-clause` 10:36
 - **defining and non-defining relative clauses**: `grammar-06-clause` 10:36
-- **defining relative clause**: `vocabulary-01-word-forms` 59:42
+- **defining relative clause**: `vocabulary-01-word-forms` 69:53
 - **Denominalisation**: `grammar-03-nominalization` 51:34
 - **Dependent clause**: `grammar-05-complex-compound` 4:34; `grammar-07-punctuation` 6:45
-- **dis-**: `vocabulary-01-word-forms` 63:59
+- **dis-**: `vocabulary-01-word-forms` 75:09
 - **do a quick check**: `vocabulary-03-collocations-2` 50:05
 - **DO tunnel**: `grammar-08-paraphrasing` 48:40
 - **Dos and don'ts**: `reading-02-part-a` 49:21
@@ -8959,7 +8959,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **From case notes to one word**: `grammar-04-articles` 63:20
 - **From the plan**: `writing-04-introduction` 20:05
 - **From what you hear to the notes**: `listening-02-part-a` 12:25
-- **from which**: `vocabulary-01-word-forms` 51:31
+- **from which**: `vocabulary-01-word-forms` 59:57
 - **Full stops and sentence boundaries**: `grammar-07-punctuation` 49:18
 - **future perfect**: `grammar-01-verb-tenses` 42:20
 - **future simple**: `grammar-01-verb-tenses` 20:16
@@ -8998,12 +8998,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Independent clause**: `grammar-05-complex-compound` 4:15; `grammar-07-punctuation` 7:00
 - **Infinitive**: `grammar-01-verb-tenses` 6:43
 - **Initially**: `grammar-08-paraphrasing` 54:49
-- **instead of which**: `vocabulary-01-word-forms` 54:21
+- **instead of which**: `vocabulary-01-word-forms` 63:35
 - **Instructions and advice**: `vocabulary-03-collocations-2` 52:41
 - **interview**: `listening-05-part-c-2` 4:40
 - **Introductory phrase**: `grammar-07-punctuation` 23:16
 - **Introductory phrases**: `grammar-07-punctuation` 23:11
-- **Joining sentences with relative pronouns**: `vocabulary-01-word-forms` 37:06
+- **Joining sentences with relative pronouns**: `vocabulary-01-word-forms` 43:30
 - **Key points to remember**: `vocabulary-02-collocations` 10:08
 - **Key words**: `reading-03-part-b` 10:13
 - **Language**: `writing-02-assessment-criteria` 26:46
@@ -9013,21 +9013,21 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Main clause (independent clause)**: `grammar-07-punctuation` 23:57
 - **Main point or detail?**: `listening-03-part-b` 3:46
 - **May have been triggered**: `grammar-01-verb-tenses` 126:18
-- **Medical terms: vocabulary and word form**: `vocabulary-01-word-forms` 16:09
+- **Medical terms: vocabulary and word form**: `vocabulary-01-word-forms` 18:56
 - **Monitor**: `vocabulary-02-collocations` 26:57
 - **Multiple choice**: `reading-01-overview` 7:48; `listening-01-overview` 3:38
 - **Multiple choice (3 options)**: `reading-03-part-b` 6:29
-- **neither of which**: `vocabulary-01-word-forms` 55:14
+- **neither of which**: `vocabulary-01-word-forms` 64:28
 - **Nominalisation**: `grammar-03-nominalization` 1:57; `grammar-04-articles` 55:27; `grammar-08-paraphrasing` 5:29
 - **Non-defining clause**: `grammar-07-punctuation` 35:50
-- **non-defining relative clause**: `vocabulary-01-word-forms` 60:45
+- **non-defining relative clause**: `vocabulary-01-word-forms` 70:58
 - **Non-physical complaints**: `grammar-03-nominalization` 21:13
 - **Non-specific**: `grammar-04-articles` 18:15
-- **Noun endings**: `vocabulary-01-word-forms` 15:23
+- **Noun endings**: `vocabulary-01-word-forms` 18:11
 - **Object**: `grammar-01-verb-tenses` 86:12
 - **Occasionally**: `grammar-01-verb-tenses` 78:06
 - **Omit**: `grammar-08-paraphrasing` 6:18
-- **one of which**: `vocabulary-01-word-forms` 57:33
+- **one of which**: `vocabulary-01-word-forms` 67:41
 - **One test for every profession**: `writing-01-overview` 1:31
 - **Opening frames**: `writing-04-introduction` 26:52
 - **opinion signals**: `reading-04-part-c` 12:37
@@ -9041,7 +9041,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Participle clause**: `grammar-06-clause` 33:21
 - **Participle clauses**: `grammar-06-clause` 33:19
 - **Parts of an OET letter**: `writing-01-overview` 14:12
-- **Passive**: `grammar-01-verb-tenses` 51:04; `grammar-02-verb-use` 6:16; `grammar-03-nominalization` 5:49; `grammar-05-complex-compound` 25:58; `grammar-07-punctuation` 11:41; `grammar-08-paraphrasing` 4:59; `vocabulary-01-word-forms` 23:40; `vocabulary-02-collocations` 34:43
+- **Passive**: `grammar-01-verb-tenses` 51:04; `grammar-02-verb-use` 6:16; `grammar-03-nominalization` 5:49; `grammar-05-complex-compound` 25:58; `grammar-07-punctuation` 11:41; `grammar-08-paraphrasing` 4:59; `vocabulary-01-word-forms` 27:22; `vocabulary-02-collocations` 34:43
 - **passive forms**: `grammar-01-verb-tenses` 98:10
 - **Passive forms of the verb tenses**: `grammar-01-verb-tenses` 98:10
 - **Passive voice**: `grammar-02-verb-use` 36:40
@@ -9083,11 +9083,11 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Reduced relative clause**: `grammar-06-clause` 19:08
 - **Reduced relative clauses**: `grammar-06-clause` 19:08
 - **Regular verb**: `grammar-01-verb-tenses` 5:44
-- **Relative clause**: `grammar-05-complex-compound` 19:03; `grammar-06-clause` 2:00; `grammar-07-punctuation` 44:00; `vocabulary-01-word-forms` 39:10; `writing-04-introduction` 7:30
+- **Relative clause**: `grammar-05-complex-compound` 19:03; `grammar-06-clause` 2:00; `grammar-07-punctuation` 44:00; `vocabulary-01-word-forms` 45:34; `writing-04-introduction` 7:30
 - **Relative clauses**: `grammar-06-clause` 2:00; `writing-04-introduction` 5:38
-- **Relative clauses with prepositions**: `vocabulary-01-word-forms` 48:21
-- **Relative pronoun**: `grammar-06-clause` 19:32; `vocabulary-01-word-forms` 38:59
-- **relative pronouns**: `vocabulary-01-word-forms` 37:06
+- **Relative clauses with prepositions**: `vocabulary-01-word-forms` 56:47
+- **Relative pronoun**: `grammar-06-clause` 19:32; `vocabulary-01-word-forms` 45:23
+- **relative pronouns**: `vocabulary-01-word-forms` 43:30
 - **ROM**: `grammar-01-verb-tenses` 127:40
 - **Run-on sentence**: `grammar-07-punctuation` 50:06
 - **Scanning**: `reading-02-part-a` 20:43
@@ -9192,15 +9192,15 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **What Part B tests**: `reading-03-part-b` 1:38
 - **What Part C tests**: `listening-04-part-c` 3:47
 - **What you hear in Part C**: `listening-04-part-c` 2:29
-- **which**: `vocabulary-01-word-forms` 60:36
+- **which**: `vocabulary-01-word-forms` 70:49
 - **While**: `grammar-08-paraphrasing` 43:42
 - **While you listen: signal words**: `listening-03-part-b` 6:58; `listening-04-part-c` 8:00
-- **who**: `vocabulary-01-word-forms` 59:34
+- **who**: `vocabulary-01-word-forms` 69:45
 - **Who speaks, and a target score**: `listening-02-part-a` 15:40
 - **Will have smoked**: `grammar-01-verb-tenses` 56:10
 - **woke up**: `vocabulary-03-collocations-2` 29:03
 - **Word bank**: `reading-03-part-b` 57:12
 - **Word count of the letter body**: `writing-01-overview` 8:38
-- **word forms**: `vocabulary-01-word-forms` 2:25
+- **word forms**: `vocabulary-01-word-forms` 2:26
 - **Word meaning**: `reading-02-part-a` 56:52
 - **Zero article**: `grammar-04-articles` 49:50
