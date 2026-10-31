@@ -20,7 +20,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 |---|---|---|---|---|---|
 | 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 129:04 | 14 | 2026-10-31 10:33 (Siavash) |
 | 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 62:40 | 5 | 2026-10-31 11:25 (siavash) |
-| 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 52:33 | 7 | 2026-10-27 09:37 (siavash) |
+| 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 59:28 | 7 | not yet |
 | 4 | Grammar for OET: Articles | `grammar-04-articles` | 59:31 | 9 | 2026-10-27 19:07 (siavash) |
 | 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 56:31 | 8 | 2026-10-27 09:37 (siavash) |
 | 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 51:03 | 6 | 2026-10-27 09:37 (siavash) |
@@ -743,9 +743,9 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Verb Use (`grammar-02-verb-use`), "Verb use: active or passive" at 45:27, about section `page-16`
 - referred to by Grammar for OET: Verb Use (`grammar-02-verb-use`), "Verb use: active or passive" at 45:27, about section `pages-05-06`
 - referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "What is nominalisation?" at 5:58, about section `page-15`
-- referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Non-physical complaints" at 23:20, about section `page-9`
-- referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Formal time-related expressions" at 36:57, about section `page-12`
-- referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Denominalisation" at 49:54, about section `page-16`
+- referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Non-physical complaints" at 25:35, about section `page-9`
+- referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Formal time-related expressions" at 41:22, about section `page-12`
+- referred to by Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Denominalisation" at 55:50, about section `page-16`
 - referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Compound or complex?" at 23:02, about section `page-15`
 - referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Gap fill" at 30:25, about section `page-9`
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Reduced relative clauses" at 19:12, about section `page-10`
@@ -1091,8 +1091,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 3. Grammar for OET: Nominalisation
 
-- Lesson ID and folder: `grammar-03-nominalization` (folder `grammar-03-nominalization`); course grammar, lesson 3; length 52:33; bundle format 1.22
-- Status: approved by siavash, 2026-10-27 09:37
+- Lesson ID and folder: `grammar-03-nominalization` (folder `grammar-03-nominalization`); course grammar, lesson 3; length 59:28; bundle format 1.23
+- Status: built, final gate not approved
 - Description: Learn how to turn verbs and adjectives into nouns to write formal sentences from case notes, and how to turn nouns back into verbs.
 - Original session: folder `source`: `source/video.mp4`, 73:11 long, partial hash `4f8496a9f96ff0dc`; deck `source/slides.pdf`, 12 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -1141,208 +1141,208 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 *Terms*: Nominalisation (New term, 1:58); Passive (Grammar term, 5:49)
 
-#### 8:23 Physical symptoms (`page-6`, deck)
+#### 9:07 Physical symptoms (`page-6`, deck)
 
-- 8:23 **Physical symptoms case-note table**
-  - 8:23 frame what the table does
-  - 9:08 meaning of symptomatic
-  - 9:26 the a- prefix
-  - 9:38 one word instead of a list
-  - 10:06 febrile and afebrile
-  - 10:28 the writing rule
-  - 10:54 silent p
-  - 11:04 verb to adjective
-  - 11:18 the preposition
-  - 11:49 subjective and objective
-  - 12:17 mild and severe
-  - 12:31 the acute trap
-  - 12:47 adjective to noun
-  - 13:01 opener for subjective notes
-  - 13:12 hot and cold means temperature
-  - 13:40 verb to noun
-  - 13:48 adverb to adjective
-  - 14:06 the earlier words were adjectives
-  - 14:28 preposition with a full date
-  - 14:36 technique for finding the missing verb
-  - 14:55 an action was carried out
-  - 15:24 the abbreviation c/o
-  - 15:31 learn the abbreviations
-  - 15:44 bilateral and chronic
-  - 15:55 same subjective opener with the name
-  - 16:12 the verb for laterality
-  - 16:31 join the clauses
-  - 16:52 gloss for the alternative clause
-  - 17:20 what breaking wind means
-  - 17:37 patient words become the medical term
-  - 17:52 the exact duration
-  - 18:05 the time word option
-  - 18:20 varying the reporting verb
-  - 18:35 dropping 'that'
+- 9:07 **Physical symptoms case-note table**
+  - 9:07 frame what the table does
+  - 9:53 meaning of symptomatic
+  - 10:11 the a- prefix
+  - 10:23 one word instead of a list
+  - 10:51 febrile and afebrile
+  - 11:13 the writing rule
+  - 11:38 silent p
+  - 11:48 verb to adjective
+  - 12:02 the preposition
+  - 12:33 subjective and objective
+  - 13:01 mild and severe
+  - 13:15 the acute trap
+  - 13:31 adjective to noun
+  - 13:45 opener for subjective notes
+  - 13:57 hot and cold means temperature
+  - 14:24 verb to noun
+  - 14:32 adverb to adjective
+  - 15:29 the earlier words were adjectives
+  - 15:52 preposition with a full date
+  - 16:00 technique for finding the missing verb
+  - 16:19 an action was carried out
+  - 16:48 the abbreviation c/o
+  - 16:55 learn the abbreviations
+  - 17:07 bilateral and chronic
+  - 17:19 same subjective opener with the name
+  - 17:36 the verb for laterality
+  - 17:55 join the clauses
+  - 18:15 gloss for the alternative clause
+  - 18:44 what breaking wind means
+  - 19:01 patient words become the medical term
+  - 19:16 the exact duration
+  - 19:29 the time word option
+  - 19:44 varying the reporting verb
+  - 19:59 dropping 'that'
 
 *Rules on the boards*
 
-- 10:28 In writing, do not spell out "no fever, normal temperature, no cough". Use one word.
-- 14:28 With a full date — day, month and year — use "on".
-- 16:31 Join the two parts with a joining word such as "with". Do not stop and start short separate sentences.
+- 11:13 In writing, do not spell out "no fever, normal temperature, no cough". Use one word.
+- 15:52 With a full date — day, month and year — use "on".
+- 17:55 Join the two parts with a joining word such as "with". Do not stop and start short separate sentences.
 
 *Warnings (common mistakes)*
 
-- 12:31 Do not use "acute" to mean severe. "Acute" is the opposite of "chronic".
+- 13:15 Do not use "acute" to mean severe. "Acute" is the opposite of "chronic".
 
-*Terms*: symptomatic (Form, 9:08); a- (Prefix, 9:26); pseudo- (Pronunciation, 10:54); suggestive of (Form, 11:18); c/o (Abbreviation, 15:24)
+*Terms*: symptomatic (Form, 9:53); a- (Prefix, 10:11); pseudo- (Pronunciation, 11:38); suggestive of (Form, 12:02); c/o (Abbreviation, 16:48)
 
-#### 18:58 Non-physical complaints (`page-7`, deck)
+#### 21:13 Non-physical complaints (`page-7`, deck)
 
-- 18:58 **Non-physical complaints table**
-  - 18:58 introduce the three-column task for non-physical complaints
-  - 19:34 the arrow in the notes shows a result
-  - 20:10 words that carry the result
-  - 20:23 paraphrase the note wording
-  - 20:53 nominalise the result
-  - 21:27 more than one wording works
-  - 22:00 what the notes say about Nathan
-  - 22:15 name the technique
-  - 22:43 open the sentence with a contrast word
-  - 23:04 tense for the change in anxiety
-  - 23:27 choose another word for 'little'
-  - 23:44 joining two opposite facts
-  - 24:13 nominalise 'disturbed'
-  - 24:23 use synonyms, not the note words
-  - 24:42 another word for 'pain'
-  - 24:54 write the short time span
-  - 25:07 why 'a recent history'
-  - 25:50 phrases with 'history'
-  - 26:19 more phrases with 'history'
-  - 26:49 a subjective note
-  - 26:54 from drinking to consumption
-  - 27:24 'reported' shows the patient said it
-  - 27:36 'more' becomes a noun
-  - 27:49 a way to find your own wording
-
-*Rules on the boards*
-
-- 20:10 Show the result with words such as due to, resulted in or consequently.
-- 23:44 When two facts contrast, you can join them in one sentence with while or although.
-- 24:23 Do not copy the case notes word for word. Use words with the same meaning.
-- 27:49 First say the note to yourself in simple English words. Then write it again with a noun.
-
-*Terms*: Nominalisation (Grammar, 22:15); Disturbance (Word form, 24:13)
-
-#### 28:09 Treatment (`page-8`, deck)
-
-- 28:09 **Nominalising the case-note table**
-  - 28:09 how the three columns work
-  - 28:36 the term for the whole task
-  - 28:59 read the shorthand first
-  - 29:20 the noun 'intake'
-  - 29:47 'gargle' has one form for verb and noun
-  - 30:17 why the sentence is passive
-  - 30:48 a ready opener for treatment information
-  - 31:07 what the plan note asks for
-  - 31:26 the noun needs a verb with it
-  - 31:48 the preposition after the noun
-  - 32:16 the second, impersonal sentence
-  - 32:51 what the note means
-  - 33:17 the meaning of 'adhere to'
-  - 33:42 joining the two ideas with 'due to'
-  - 34:08 the second version of the cause
-  - 34:39 read the examination note
-  - 34:53 the two nouns
-  - 35:22 an adjective carries the negative idea
-  - 35:51 the full sentence pattern
-
-*Terms*: Nominalisation (Form, 28:36); Intake (Noun, 29:20); Passive (Form, 30:17); In terms of treatment (Phrase, 30:48); An assessment of (Phrase, 31:48); Prior to (Phrase, 32:29)
-
-#### 36:27 Formal time-related expressions (`page-9`, deck)
-
-- 36:27 **Formal time expressions table**
-  - 36:27 the case note is a timeline of the patient's history
-  - 36:53 the time words decide the tense
-  - 37:10 what the exercise does with each note
-  - 37:25 what the note means
-  - 37:38 the noun occasion
-  - 38:01 verbs for a patient coming to the clinic
-  - 38:23 other sentences that work
-  - 38:38 attend a place, attend to a person
-  - 38:56 what attend to means
-  - 39:08 do not add 'to' for a clinic visit
-  - 39:25 the preposition after 'presented'
-  - 39:44 verbs to learn for the writing task
-  - 40:06 the colon shows subjective information
-  - 40:22 sometimes becomes at times
-  - 40:33 the noun confusion
-  - 40:43 the reporting verb for a subjective note
-  - 40:56 experience in present simple
-  - 41:17 paraphrase, do not copy
-  - 41:43 advice and advise
-  - 41:52 the two words sound different
-  - 42:02 the wrong letter costs a mark
-  - 42:17 every day becomes on a daily basis
-  - 42:28 no agent, so the sentence is passive
-  - 42:41 what passive means
-  - 42:54 advised is the verb here
-  - 43:13 normally becomes under normal circumstances
-  - 43:27 gloss of the word fairly
-  - 43:39 fairly becomes relatively
-  - 43:48 comma after the opening phrase
-  - 44:03 a comma in the wrong place costs a mark
-  - 44:16 the two words that changed
-  - 44:39 the noun onset
-  - 44:44 onset in real case notes
-  - 45:00 verb becomes noun
-  - 45:23 use this sentence in the letter
+- 21:13 **Non-physical complaints table**
+  - 21:13 introduce the three-column task for non-physical complaints
+  - 21:49 the arrow in the notes shows a result
+  - 22:25 words that carry the result
+  - 22:38 paraphrase the note wording
+  - 23:08 nominalise the result
+  - 23:41 more than one wording works
+  - 24:15 what the notes say about Nathan
+  - 24:30 name the technique
+  - 24:58 open the sentence with a contrast word
+  - 25:19 tense for the change in anxiety
+  - 25:41 choose another word for 'little'
+  - 25:58 joining two opposite facts
+  - 26:28 nominalise 'disturbed'
+  - 26:37 use synonyms, not the note words
+  - 26:56 another word for 'pain'
+  - 27:08 write the short time span
+  - 27:22 why 'a recent history'
+  - 28:05 phrases with 'history'
+  - 28:33 more phrases with 'history'
+  - 29:03 a subjective note
+  - 29:08 from drinking to consumption
+  - 29:39 'reported' shows the patient said it
+  - 29:51 'more' becomes a noun
+  - 30:03 a way to find your own wording
 
 *Rules on the boards*
 
-- 41:17 Do not copy the case note into your letter. Change the words and use your own vocabulary.
+- 22:25 Show the result with words such as due to, resulted in or consequently.
+- 25:58 When two facts contrast, you can join them in one sentence with while or although.
+- 26:37 Do not copy the case notes word for word. Use words with the same meaning.
+- 30:03 First say the note to yourself in simple English words. Then write it again with a noun.
+
+*Terms*: Nominalisation (Grammar, 24:30); Disturbance (Word form, 26:28)
+
+#### 31:03 Treatment (`page-8`, deck)
+
+- 31:03 **Nominalising the case-note table**
+  - 31:03 how the three columns work
+  - 31:30 the term for the whole task
+  - 31:53 read the shorthand first
+  - 32:14 the noun 'intake'
+  - 32:41 'gargle' has one form for verb and noun
+  - 33:12 why the sentence is passive
+  - 33:43 a ready opener for treatment information
+  - 34:01 what the plan note asks for
+  - 34:20 the noun needs a verb with it
+  - 34:43 the preposition after the noun
+  - 35:53 the second, impersonal sentence
+  - 36:27 what the note means
+  - 36:54 the meaning of 'adhere to'
+  - 37:18 joining the two ideas with 'due to'
+  - 37:45 the second version of the cause
+  - 38:15 read the examination note
+  - 38:30 the two nouns
+  - 38:58 an adjective carries the negative idea
+  - 39:28 the full sentence pattern
+
+*Terms*: Nominalisation (Form, 31:30); Intake (Noun, 32:14); Passive (Form, 33:12); In terms of treatment (Phrase, 33:43); An assessment of (Phrase, 34:43); Prior to (Phrase, 36:05)
+
+#### 40:51 Formal time-related expressions (`page-9`, deck)
+
+- 40:51 **Formal time expressions table**
+  - 40:51 the case note is a timeline of the patient's history
+  - 41:18 the time words decide the tense
+  - 41:35 what the exercise does with each note
+  - 41:50 what the note means
+  - 42:03 the noun occasion
+  - 42:26 verbs for a patient coming to the clinic
+  - 42:48 other sentences that work
+  - 43:02 attend a place, attend to a person
+  - 43:21 what attend to means
+  - 43:33 do not add 'to' for a clinic visit
+  - 43:49 the preposition after 'presented'
+  - 44:09 verbs to learn for the writing task
+  - 45:17 the colon shows subjective information
+  - 45:32 sometimes becomes at times
+  - 45:43 the noun confusion
+  - 45:53 the reporting verb for a subjective note
+  - 46:06 experience in present simple
+  - 46:27 paraphrase, do not copy
+  - 46:54 advice and advise
+  - 47:02 the two words sound different
+  - 47:12 the wrong letter costs a mark
+  - 47:28 every day becomes on a daily basis
+  - 47:38 no agent, so the sentence is passive
+  - 47:51 what passive means
+  - 48:04 advised is the verb here
+  - 48:23 normally becomes under normal circumstances
+  - 48:37 gloss of the word fairly
+  - 48:50 fairly becomes relatively
+  - 48:58 comma after the opening phrase
+  - 49:13 a comma in the wrong place costs a mark
+  - 49:27 the two words that changed
+  - 49:50 the noun onset
+  - 49:54 onset in real case notes
+  - 50:10 verb becomes noun
+  - 50:33 use this sentence in the letter
+
+*Rules on the boards*
+
+- 46:27 Do not copy the case note into your letter. Change the words and use your own vocabulary.
 
 *Warnings (common mistakes)*
 
-- 39:08 For a patient coming to the clinic, do not add 'to'. 'Attended to' is wrong here.
-- 42:02 Writing 'advice' for the verb, or 'advise' for the noun, is counted as an error.
-- 44:03 A comma in the wrong place is a mistake too, and it can cost you marks.
+- 43:33 For a patient coming to the clinic, do not add 'to'. 'Attended to' is wrong here.
+- 47:12 Writing 'advice' for the verb, or 'advise' for the noun, is counted as an error.
+- 49:13 A comma in the wrong place is a mistake too, and it can cost you marks.
 
-*Terms*: Occasion (New word, 37:38); Attend, present, visit (Verbs, 38:01); Attend to (Phrase, 38:56); Confusion (Noun, 40:33); Passive (Grammar, 42:41); Under normal circumstances (Phrase, 43:13); Onset (Noun, 44:39)
+*Terms*: Occasion (New word, 42:03); Attend, present, visit (Verbs, 42:26); Attend to (Phrase, 43:21); Confusion (Noun, 45:43); Passive (Grammar, 47:51); Under normal circumstances (Phrase, 48:23); Onset (Noun, 49:50)
 
-#### 45:38 Denominalisation (`page-11`, deck)
+#### 51:34 Denominalisation (`page-11`, deck)
 
-- 45:38 **Denominalisation case-note table**
-  - 45:38 the two directions - nominalisation and denominalisation
-  - 46:02 why this technique is useful for case notes
-  - 46:34 pull the verb out of the noun
-  - 46:49 gloss the verb resolve
-  - 47:07 the note has no verb for the diet
-  - 47:31 the noun form is not wrong - the aim is to change the note
-  - 47:54 the obvious verb is not always the one you want
-  - 48:11 the version to avoid
-  - 48:32 check the verb, look for a synonym
-  - 48:58 gloss combing
-  - 49:12 gloss eradicate and link it to the noun
-  - 49:35 define the passive
-  - 50:00 active and passive versions of the same sentence
-  - 50:24 removal gives remove
-  - 50:33 rewrite 'necessary' at the start of the sentence
-  - 50:49 the instrument phrase
-  - 51:12 a or the with lice comb
-  - 51:33 two nouns, two verbs
-  - 51:46 gloss commence
-  - 52:06 where this kind of note is used
-  - 52:12 the request form in the model sentence
+- 51:34 **Denominalisation case-note table**
+  - 51:34 the two directions - nominalisation and denominalisation
+  - 51:58 why this technique is useful for case notes
+  - 52:30 pull the verb out of the noun
+  - 52:45 gloss the verb resolve
+  - 53:04 the note has no verb for the diet
+  - 53:27 the noun form is not wrong - the aim is to change the note
+  - 53:50 the obvious verb is not always the one you want
+  - 54:07 the version to avoid
+  - 54:28 check the verb, look for a synonym
+  - 54:55 gloss combing
+  - 55:08 gloss eradicate and link it to the noun
+  - 55:31 define the passive
+  - 55:56 active and passive versions of the same sentence
+  - 56:21 removal gives remove
+  - 56:29 rewrite 'necessary' at the start of the sentence
+  - 56:45 the instrument phrase
+  - 57:08 a or the with lice comb
+  - 57:30 two nouns, two verbs
+  - 57:43 gloss commence
+  - 58:02 where this kind of note is used
+  - 58:08 the request form in the model sentence
 
 *Rules on the boards*
 
-- 47:31 'Until the resolution of symptoms' is not wrong. The aim is to change the note, not to copy it into your letter.
-- 48:32 Check the verb you make from the noun. If it does not fit the sentence, look for a synonym.
+- 53:27 'Until the resolution of symptoms' is not wrong. The aim is to change the note, not to copy it into your letter.
+- 54:28 Check the verb you make from the noun. If it does not fit the sentence, look for a synonym.
 
 *Wrong sentences corrected*
 
-- 48:11 The biopsy results finds...
+- 54:07 The biopsy results finds...
 
-*Terms*: Passive (Form, 49:35)
+*Terms*: Passive (Form, 55:31)
 
 ### OET facts
 
-- 24:29 (`writing-vocabulary-range`) Assessors look at the range of vocabulary in the letter.
+- 26:43 (`writing-vocabulary-range`) Assessors look at the range of vocabulary in the letter.
 
 ### Vocabulary
 
@@ -1350,35 +1350,35 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 - 4:04 Excessive
 - 4:20 Intake
-- 16:52 more pronounced
-- 17:20 breaking wind
-- 19:48 Illumination
-- 20:36 Inadequate
-- 27:03 Consume
-- 30:48 In terms of treatment
-- 31:48 An assessment of
-- 32:29 Prior to
-- 33:17 Adhere to
-- 37:38 Occasion
-- 38:56 Attend to
-- 43:13 Under normal circumstances
-- 43:27 fairly
-- 46:49 resolve
-- 48:58 combing
-- 49:12 eradicate
-- 50:49 lice comb
-- 51:46 commence
+- 18:15 more pronounced
+- 18:44 breaking wind
+- 22:02 Illumination
+- 22:51 Inadequate
+- 29:17 Consume
+- 33:43 In terms of treatment
+- 34:43 An assessment of
+- 36:05 Prior to
+- 36:54 Adhere to
+- 42:03 Occasion
+- 43:21 Attend to
+- 48:23 Under normal circumstances
+- 48:37 fairly
+- 52:45 resolve
+- 54:55 combing
+- 55:08 eradicate
+- 56:45 lice comb
+- 57:43 commence
 
 ### Links to other lessons
 
 - 0:16 refers to Grammar for OET: Verb Use (`grammar-02-verb-use`) (in `page-3_t1.s1.u4`)
 - 5:58 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Active vs passive" (in `pages-04-05_t5.s3.u3`)
-- 23:20 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-7_t1.s10.u3`)
-- 36:57 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Time markers" (in `page-9_t1.s2.u2`)
-- 49:54 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `page-11_t1.s12.u4`)
+- 25:35 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-7_t1.s10.u3`)
+- 41:22 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Time markers" (in `page-9_t1.s2.u2`)
+- 55:50 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `page-11_t1.s12.u4`)
 - referred to by Grammar for OET: Articles (`grammar-04-articles`), "Introduction" at 0:16
-- referred to by Grammar for OET: Articles (`grammar-04-articles`), "Spot the correct sentence" at 49:06, about section `pages-04-05`
-- referred to by Grammar for OET: Articles (`grammar-04-articles`), "Gap fill: articles" at 56:07, about section `page-6`
+- referred to by Grammar for OET: Articles (`grammar-04-articles`), "Spot the correct sentence" at 55:20, about section `pages-04-05`
+- referred to by Grammar for OET: Articles (`grammar-04-articles`), "Gap fill: articles" at 63:13, about section `page-6`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 5:42
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Adjectives and nouns" at 27:15
 
@@ -8849,7 +8849,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **A target score for Part B**: `listening-03-part-b` 11:46
 - **A target score for Part C**: `listening-04-part-c` 9:16
 - **A two-week history of**: `grammar-08-paraphrasing` 35:45
-- **a-**: `grammar-03-nominalization` 9:26
+- **a-**: `grammar-03-nominalization` 10:11
 - **Abbreviations in the letter**: `writing-02-assessment-criteria` 24:23
 - **Accuracy to the case notes**: `writing-02-assessment-criteria` 14:03
 - **Active**: `grammar-01-verb-tenses` 86:16
@@ -8881,7 +8881,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Brackets**: `grammar-07-punctuation` 75:55
 - **Brackets, quotation marks, slashes and dashes**: `grammar-07-punctuation` 65:21
 - **By monitoring your symptoms**: `vocabulary-02-collocations` 31:28
-- **c/o**: `grammar-03-nominalization` 15:24
+- **c/o**: `grammar-03-nominalization` 16:48
 - **Capital letters**: `grammar-07-punctuation` 60:31
 - **Case notes**: `grammar-01-verb-tenses` 115:03
 - **Case notes and the Writing Task**: `writing-01-overview` 13:47
@@ -8933,7 +8933,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Defining and non-defining**: `grammar-06-clause` 9:39
 - **defining and non-defining relative clauses**: `grammar-06-clause` 9:39
 - **defining relative clause**: `vocabulary-01-word-forms` 59:42
-- **Denominalisation**: `grammar-03-nominalization` 45:38
+- **Denominalisation**: `grammar-03-nominalization` 51:34
 - **Dependent clause**: `grammar-05-complex-compound` 4:34; `grammar-07-punctuation` 6:45
 - **dis-**: `vocabulary-01-word-forms` 63:59
 - **do a quick check**: `vocabulary-03-collocations-2` 50:05
@@ -8952,7 +8952,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Five questions**: `writing-04-introduction` 23:01
 - **Follow-up**: `grammar-07-punctuation` 81:34
 - **For and since**: `grammar-01-verb-tenses` 39:20
-- **Formal time-related expressions**: `grammar-03-nominalization` 36:27
+- **Formal time-related expressions**: `grammar-03-nominalization` 40:51
 - **Four steps towards success**: `reading-01-overview` 15:14
 - **From case notes to a sentence**: `grammar-05-complex-compound` 8:51
 - **From case notes to one word**: `grammar-04-articles` 55:47
@@ -9020,7 +9020,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Nominalisation**: `grammar-03-nominalization` 1:57; `grammar-04-articles` 48:47; `grammar-08-paraphrasing` 5:29
 - **Non-defining clause**: `grammar-07-punctuation` 31:37
 - **non-defining relative clause**: `vocabulary-01-word-forms` 60:45
-- **Non-physical complaints**: `grammar-03-nominalization` 18:58
+- **Non-physical complaints**: `grammar-03-nominalization` 21:13
 - **Non-specific**: `grammar-04-articles` 15:38
 - **Noun endings**: `vocabulary-01-word-forms` 15:23
 - **Object**: `grammar-01-verb-tenses` 86:12
@@ -9058,7 +9058,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Perfect tenses on a timeline**: `grammar-01-verb-tenses` 53:02
 - **Perform**: `vocabulary-02-collocations` 31:48
 - **Peripheral vision**: `reading-02-part-a` 18:23
-- **Physical symptoms**: `grammar-03-nominalization` 8:23
+- **Physical symptoms**: `grammar-03-nominalization` 9:07
 - **Podcasts and talks**: `listening-01-overview` 13:08
 - **Prediction**: `grammar-01-verb-tenses` 26:06
 - **Prescribe**: `vocabulary-02-collocations` 37:34
@@ -9123,9 +9123,9 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Subordinating conjunction**: `grammar-05-complex-compound` 24:50
 - **Subordinating conjunctions**: `grammar-05-complex-compound` 13:35
 - **Subsequently**: `grammar-08-paraphrasing` 45:10
-- **suggestive of**: `grammar-03-nominalization` 11:18
+- **suggestive of**: `grammar-03-nominalization` 12:02
 - **Swollen**: `grammar-05-complex-compound` 48:51
-- **symptomatic**: `grammar-03-nominalization` 9:08
+- **symptomatic**: `grammar-03-nominalization` 9:53
 - **Synonyms**: `grammar-08-paraphrasing` 39:11
 - **Target score**: `reading-02-part-a` 53:08; `reading-03-part-b` 55:50; `reading-04-part-c` 3:50
 - **Tempting wrong options**: `listening-03-part-b` 9:21
@@ -9164,7 +9164,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Time markers**: `grammar-01-verb-tenses` 13:15
 - **Top tips**: `reading-02-part-a` 17:27
 - **Treat**: `vocabulary-02-collocations` 42:30
-- **Treatment**: `grammar-03-nominalization` 28:09
+- **Treatment**: `grammar-03-nominalization` 31:03
 - **try to + simple verb**: `vocabulary-03-collocations-2` 58:23
 - **Types of pain**: `vocabulary-03-collocations-2` 10:30
 - **Uncountable nouns: non-specific**: `grammar-04-articles` 21:46
