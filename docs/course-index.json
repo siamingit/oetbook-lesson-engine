@@ -56,6 +56,7 @@
     "writing-02-assessment-criteria",
     "writing-03-letter-structure",
     "writing-04-introduction",
+    "writing-05-information-flow",
     "writing-06-word-order",
     "writing-07-organisation",
     "writing-08-reading-the-task"
@@ -4625,6 +4626,14 @@
       "utterance": "page-19_t1.s6.u5",
       "start_s": 1695.592,
       "start": "28:15"
+     },
+     {
+      "lesson": "writing-05-information-flow",
+      "section": "page-7",
+      "to_section": "page-11",
+      "utterance": "page-7_t1.s5.u2",
+      "start_s": 1164.655,
+      "start": "19:24"
      },
      {
       "lesson": "writing-06-word-order",
@@ -11905,6 +11914,14 @@
       "start": "28:31"
      },
      {
+      "lesson": "writing-05-information-flow",
+      "section": "page-4",
+      "to_section": "pages-11-12",
+      "utterance": "page-4_t1.s4.u1",
+      "start_s": 242.906,
+      "start": "4:02"
+     },
+     {
       "lesson": "writing-06-word-order",
       "section": "pages-10-11",
       "to_section": "page-7",
@@ -16489,6 +16506,14 @@
       "start": "12:42"
      },
      {
+      "lesson": "writing-05-information-flow",
+      "section": "page-10",
+      "to_section": "added-08",
+      "utterance": "page-10_t1.s2.u1",
+      "start_s": 1771.782,
+      "start": "29:31"
+     },
+     {
       "lesson": "writing-06-word-order",
       "section": "pages-06-07",
       "to_section": "page-10",
@@ -18594,6 +18619,14 @@
       "utterance": "page-19_t1.s5.u2",
       "start_s": 1660.942,
       "start": "27:40"
+     },
+     {
+      "lesson": "writing-05-information-flow",
+      "section": "page-10",
+      "to_section": "pages-09-10",
+      "utterance": "page-10_t1.s3.u1",
+      "start_s": 1803.092,
+      "start": "30:03"
      },
      {
       "lesson": "writing-06-word-order",
@@ -43811,6 +43844,14 @@
       "utterance": "page-9_t1.s1.u4",
       "start_s": 503.242,
       "start": "8:23"
+     },
+     {
+      "lesson": "writing-05-information-flow",
+      "section": "page-4",
+      "to_section": "page-7",
+      "utterance": "page-4_t1.s11.u2",
+      "start_s": 426.856,
+      "start": "7:06"
      }
     ],
     "continues_in": [
@@ -51999,6 +52040,14 @@
       "start": "3:42"
      },
      {
+      "lesson": "writing-05-information-flow",
+      "section": "page-4",
+      "to_section": "pages-04-05",
+      "utterance": "page-4_t2.s1.u1",
+      "start_s": 438.826,
+      "start": "7:18"
+     },
+     {
       "lesson": "writing-07-organisation",
       "section": "pages-04-05-06",
       "to_section": "pages-04-05",
@@ -53691,6 +53740,30 @@
     ],
     "referred_to_by": [
      {
+      "lesson": "writing-05-information-flow",
+      "section": "page-3",
+      "to_section": "pages-04-05",
+      "utterance": "page-3_t1.s1.u2",
+      "start_s": 6.77,
+      "start": "0:06"
+     },
+     {
+      "lesson": "writing-05-information-flow",
+      "section": "page-6",
+      "to_section": "page-17",
+      "utterance": "page-6_t1.s1.u1",
+      "start_s": 800.104,
+      "start": "13:20"
+     },
+     {
+      "lesson": "writing-05-information-flow",
+      "section": "pages-08-09",
+      "to_section": "pages-12-13",
+      "utterance": "pages-08-09_t1.s1.u1",
+      "start_s": 1293.125,
+      "start": "21:33"
+     },
+     {
       "lesson": "writing-06-word-order",
       "section": "pages-04-05",
       "to_section": "pages-04-05",
@@ -53715,6 +53788,1491 @@
       "source": "closing"
      }
     ]
+   }
+  },
+  {
+   "id": "writing-05-information-flow",
+   "folder": "writing-05-information-flow",
+   "title": "OET Writing: Information Flow",
+   "description": "Learn to keep the flow of information clear in an OET letter, with the time words that order a history and decide its tenses, the few linking words a letter needs and the ones to avoid, and the way a dated case note becomes a clear sentence, up to the request.",
+   "course": "writing",
+   "order": 5,
+   "length_s": 2252.27,
+   "length": "37:32",
+   "bundle_format": "1.23",
+   "status": "built",
+   "approval": null,
+   "source": {
+    "folder": "source",
+    "recording": "source/video.mp4",
+    "recording_duration_s": 4328.3,
+    "recording_partial_hash": "5ba59af7698de6e3",
+    "deck": "source/slides.pdf",
+    "deck_pages": 12,
+    "same_recording_as": [],
+    "note": "Session 5 of the Persian Writing course, «OET Writing: Signal words and information flow» (72:08, 12 slides): the nine families of signal words, the words to avoid, a paragraph with a linking word on every sentence put right, time and tense on the timeline of a case, the four-column method (the note, the time reference, the tense, the sentence) worked through the official OET Nursing sample, and the request with modal verbs. The sixth lesson of the general Writing course (ADR 047). The official sample and the Mr Jones paragraph are never reused: every teaching point is rebuilt on our samples oa-ws-nur-0001, oa-ws-nur-0002, oa-ws-med-0003, oa-ws-med-0001, oa-ws-nur-0003 and oa-ws-med-0002 at oetacademy-exercises 5320d19 (ADR 040)."
+   },
+   "categories": [],
+   "sections": [
+    {
+     "id": "page-3",
+     "title": "Introduction",
+     "kind": "intro",
+     "pages": [
+      3
+     ],
+     "category": null,
+     "start_s": 0.0,
+     "start": "0:00",
+     "end_s": 123.245,
+     "topics": [
+      {
+       "board": "page-3_t1",
+       "title": "Title board",
+       "start_s": 0.0,
+       "start": "0:00",
+       "points": [
+        {
+         "text": "the lesson title, then what the lesson is about",
+         "block": "page-3_k14",
+         "start_s": 0.0,
+         "start": "0:00"
+        }
+       ]
+      },
+      {
+       "board": "page-3_t2",
+       "title": "Contents board",
+       "start_s": 78.395,
+       "start": "1:18",
+       "points": [
+        {
+         "text": "each category, revealed as it is named",
+         "block": "page-3_k15",
+         "start_s": 78.395,
+         "start": "1:18"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-3_t1.s1.u2",
+       "lesson": "writing-04-introduction",
+       "section": "pages-04-05",
+       "provenance": "authored",
+       "start_s": 6.77,
+       "start": "0:06"
+      }
+     ]
+    },
+    {
+     "id": "page-4",
+     "title": "Signal words",
+     "kind": "deck",
+     "pages": [
+      4
+     ],
+     "category": null,
+     "start_s": 123.245,
+     "start": "2:03",
+     "end_s": 599.934,
+     "topics": [
+      {
+       "board": "page-4_t1",
+       "title": "nine families",
+       "start_s": 123.245,
+       "start": "2:03",
+       "points": [
+        {
+         "text": "the families",
+         "block": "page-4_k27",
+         "start_s": 123.245,
+         "start": "2:03"
+        },
+        {
+         "text": "time",
+         "block": "page-4_k03",
+         "start_s": 197.838,
+         "start": "3:17"
+        },
+        {
+         "text": "place",
+         "block": "page-4_k05",
+         "start_s": 232.608,
+         "start": "3:52"
+        },
+        {
+         "text": "reason",
+         "block": "page-4_k06",
+         "start_s": 247.772,
+         "start": "4:07"
+        },
+        {
+         "text": "contrast",
+         "block": "page-4_k07",
+         "start_s": 267.575,
+         "start": "4:27"
+        },
+        {
+         "text": "result",
+         "block": "page-4_k08",
+         "start_s": 292.435,
+         "start": "4:52"
+        },
+        {
+         "text": "emphasis",
+         "block": "page-4_k09",
+         "start_s": 308.192,
+         "start": "5:08"
+        },
+        {
+         "text": "empathy",
+         "block": "page-4_k10",
+         "start_s": 319.367,
+         "start": "5:19"
+        },
+        {
+         "text": "subject",
+         "block": "page-4_k12",
+         "start_s": 353.834,
+         "start": "5:53"
+        },
+        {
+         "text": "advice",
+         "block": "page-4_k13",
+         "start_s": 381.795,
+         "start": "6:21"
+        },
+        {
+         "text": "in our six letters",
+         "block": "page-4_k15",
+         "start_s": 404.059,
+         "start": "6:44"
+        }
+       ]
+      },
+      {
+       "board": "page-4_t2",
+       "title": "Mrs Dawson's letter: time, place and reason",
+       "start_s": 438.826,
+       "start": "7:18",
+       "points": [
+        {
+         "text": "the paper beside the letter",
+         "block": "page-4_k18",
+         "start_s": 438.486,
+         "start": "7:18"
+        },
+        {
+         "text": "a time word",
+         "block": "page-4_k19",
+         "start_s": 470.315,
+         "start": "7:50"
+        },
+        {
+         "text": "a date the reader needs",
+         "block": "page-4_k20",
+         "start_s": 487.938,
+         "start": "8:07"
+        },
+        {
+         "text": "place and reason",
+         "block": "page-4_k21",
+         "start_s": 506.147,
+         "start": "8:26"
+        }
+       ]
+      },
+      {
+       "board": "page-4_t3",
+       "title": "Mrs Dawson's letter: contrast and result",
+       "start_s": 520.87,
+       "start": "8:40",
+       "points": [
+        {
+         "text": "the paper beside the letter",
+         "block": "page-4_k23",
+         "start_s": 520.52,
+         "start": "8:40"
+        },
+        {
+         "text": "a contrast",
+         "block": "page-4_k24",
+         "start_s": 540.1,
+         "start": "9:00"
+        },
+        {
+         "text": "your turn",
+         "block": "page-4_k25",
+         "start_s": 554.14,
+         "start": "9:14"
+        },
+        {
+         "text": "the answer",
+         "block": "page-4_k26",
+         "start_s": 577.804,
+         "start": "9:37"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-4_k15",
+       "kind": "rule",
+       "text": "In our six letters: therefore, however, moreover, in addition, besides, unfortunately, please note: none. A time word: in every letter.",
+       "start_s": 404.059,
+       "start": "6:44"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-4_t1.s4.u1",
+       "lesson": "grammar-05-complex-compound",
+       "section": "pages-11-12",
+       "provenance": "source-derived",
+       "start_s": 242.906,
+       "start": "4:02"
+      },
+      {
+       "utterance": "page-4_t1.s5.u1",
+       "lesson": "grammar-05-complex-compound",
+       "section": "pages-11-12",
+       "provenance": "source-derived",
+       "start_s": 261.456,
+       "start": "4:21"
+      },
+      {
+       "utterance": "page-4_t1.s11.u2",
+       "lesson": "listening-03-part-b",
+       "section": "page-7",
+       "provenance": "source-derived",
+       "start_s": 426.856,
+       "start": "7:06"
+      },
+      {
+       "utterance": "page-4_t2.s1.u1",
+       "lesson": "writing-03-letter-structure",
+       "section": "pages-04-05",
+       "provenance": "authored",
+       "start_s": 438.826,
+       "start": "7:18"
+      }
+     ]
+    },
+    {
+     "id": "page-5",
+     "title": "Words to avoid",
+     "kind": "deck",
+     "pages": [
+      5
+     ],
+     "category": null,
+     "start_s": 599.934,
+     "start": "9:59",
+     "end_s": 800.104,
+     "topics": [
+      {
+       "board": "page-5_t1",
+       "title": "my avoid-list",
+       "start_s": 599.934,
+       "start": "9:59",
+       "points": [
+        {
+         "text": "the list",
+         "block": "page-5_k02",
+         "start_s": 599.609,
+         "start": "9:59"
+        },
+        {
+         "text": "besides",
+         "block": "page-5_k03",
+         "start_s": 616.171,
+         "start": "10:16"
+        },
+        {
+         "text": "actually",
+         "block": "page-5_k04",
+         "start_s": 624.824,
+         "start": "10:24"
+        },
+        {
+         "text": "firstly",
+         "block": "page-5_k05",
+         "start_s": 633.404,
+         "start": "10:33"
+        },
+        {
+         "text": "on the other hand",
+         "block": "page-5_k06",
+         "start_s": 645.28,
+         "start": "10:45"
+        },
+        {
+         "text": "meanwhile",
+         "block": "page-5_k07",
+         "start_s": 652.235,
+         "start": "10:52"
+        },
+        {
+         "text": "it is important to note",
+         "block": "page-5_k09",
+         "start_s": 674.867,
+         "start": "11:14"
+        },
+        {
+         "text": "moreover",
+         "block": "page-5_k10",
+         "start_s": 693.131,
+         "start": "11:33"
+        },
+        {
+         "text": "then, also",
+         "block": "page-5_k11",
+         "start_s": 709.374,
+         "start": "11:49"
+        }
+       ]
+      },
+      {
+       "board": "page-5_t2",
+       "title": "your turn: also",
+       "start_s": 735.514,
+       "start": "12:15",
+       "points": [
+        {
+         "text": "Mr Talbot's plan beside his letter",
+         "block": "page-5_k14",
+         "start_s": 735.192,
+         "start": "12:15"
+        },
+        {
+         "text": "your turn",
+         "block": "page-5_k15",
+         "start_s": 752.567,
+         "start": "12:32"
+        },
+        {
+         "text": "the answer",
+         "block": "page-5_k16",
+         "start_s": 773.416,
+         "start": "12:53"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-5_k02",
+       "kind": "rule",
+       "text": "My advice: leave these words out of your letter, or move them.",
+       "start_s": 599.609,
+       "start": "9:59"
+      }
+     ],
+     "terms": [
+      {
+       "block": "page-5_k07",
+       "label": "The phrase",
+       "term": "in the interim",
+       "start_s": 652.235,
+       "start": "10:52"
+      }
+     ],
+     "wrong_examples": [
+      {
+       "block": "page-5_k14",
+       "text": "Also, I would appreciate your decision on the antibiotic.",
+       "start_s": 735.192,
+       "start": "12:15"
+      }
+     ],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "page-6",
+     "title": "Too many linking words",
+     "kind": "deck",
+     "pages": [
+      6
+     ],
+     "category": null,
+     "start_s": 800.104,
+     "start": "13:20",
+     "end_s": 1074.825,
+     "topics": [
+      {
+       "board": "page-6_t1",
+       "title": "Mrs Ashworth's paper: eight lines",
+       "start_s": 800.104,
+       "start": "13:20",
+       "points": [
+        {
+         "text": "the lines",
+         "block": "page-6_k02",
+         "start_s": 799.774,
+         "start": "13:19"
+        },
+        {
+         "text": "today",
+         "block": "page-6_k03",
+         "start_s": 819.425,
+         "start": "13:39"
+        },
+        {
+         "text": "the cause",
+         "block": "page-6_k04",
+         "start_s": 833.961,
+         "start": "13:53"
+        },
+        {
+         "text": "August",
+         "block": "page-6_k05",
+         "start_s": 844.074,
+         "start": "14:04"
+        },
+        {
+         "text": "a week later",
+         "block": "page-6_k06",
+         "start_s": 851.914,
+         "start": "14:11"
+        }
+       ]
+      },
+      {
+       "board": "page-6_t2",
+       "title": "wrong and right",
+       "start_s": 860.524,
+       "start": "14:20",
+       "points": [
+        {
+         "text": "the paragraph, over-linked, put right",
+         "block": "page-6_k08",
+         "start_s": 860.221,
+         "start": "14:20"
+        },
+        {
+         "text": "initially",
+         "block": "page-6_k09",
+         "start_s": 919.337,
+         "start": "15:19"
+        },
+        {
+         "text": "in addition",
+         "block": "page-6_k10",
+         "start_s": 940.334,
+         "start": "15:40"
+        },
+        {
+         "text": "also",
+         "block": "page-6_k11",
+         "start_s": 955.87,
+         "start": "15:55"
+        },
+        {
+         "text": "moreover",
+         "block": "page-6_k12",
+         "start_s": 968.318,
+         "start": "16:08"
+        },
+        {
+         "text": "your turn",
+         "block": "page-6_k13",
+         "start_s": 988.743,
+         "start": "16:28"
+        },
+        {
+         "text": "the answer",
+         "block": "page-6_k14",
+         "start_s": 1018.671,
+         "start": "16:58"
+        },
+        {
+         "text": "the lesson",
+         "block": "page-6_k15",
+         "start_s": 1050.074,
+         "start": "17:30"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-6_k15",
+       "kind": "rule",
+       "text": "My advice: if the link between two sentences is obvious, use no linking word.",
+       "start_s": 1050.074,
+       "start": "17:30"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-6_t1.s1.u1",
+       "lesson": "writing-04-introduction",
+       "section": "page-17",
+       "provenance": "authored",
+       "start_s": 800.104,
+       "start": "13:20"
+      }
+     ]
+    },
+    {
+     "id": "page-7",
+     "title": "Time and tense",
+     "kind": "deck",
+     "pages": [
+      7
+     ],
+     "category": null,
+     "start_s": 1074.825,
+     "start": "17:54",
+     "end_s": 1293.125,
+     "topics": [
+      {
+       "board": "page-7_t1",
+       "title": "the timeline and its tenses",
+       "start_s": 1074.825,
+       "start": "17:54",
+       "points": [
+        {
+         "text": "the timeline",
+         "block": "page-7_k02",
+         "start_s": 1074.594,
+         "start": "17:54"
+        },
+        {
+         "text": "tips 1 and 2",
+         "block": "page-7_k03",
+         "start_s": 1084.535,
+         "start": "18:04"
+        },
+        {
+         "text": "tip 3",
+         "block": "page-7_k05",
+         "start_s": 1107.956,
+         "start": "18:27"
+        },
+        {
+         "text": "the start",
+         "block": "page-7_k06",
+         "start_s": 1132.678,
+         "start": "18:52"
+        },
+        {
+         "text": "the progression",
+         "block": "page-7_k07",
+         "start_s": 1157.742,
+         "start": "19:17"
+        },
+        {
+         "text": "now",
+         "block": "page-7_k09",
+         "start_s": 1191.631,
+         "start": "19:51"
+        },
+        {
+         "text": "next",
+         "block": "page-7_k10",
+         "start_s": 1203.661,
+         "start": "20:03"
+        }
+       ]
+      },
+      {
+       "board": "page-7_t2",
+       "title": "your turn: since yesterday",
+       "start_s": 1213.065,
+       "start": "20:13",
+       "points": [
+        {
+         "text": "Mrs Ashworth's paper beside her opening",
+         "block": "page-7_k12",
+         "start_s": 1212.725,
+         "start": "20:12"
+        },
+        {
+         "text": "your turn",
+         "block": "page-7_k13",
+         "start_s": 1231.462,
+         "start": "20:31"
+        },
+        {
+         "text": "the answer",
+         "block": "page-7_k14",
+         "start_s": 1249.84,
+         "start": "20:49"
+        },
+        {
+         "text": "now",
+         "block": "page-7_k15",
+         "start_s": 1276.032,
+         "start": "21:16"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-7_k02",
+       "kind": "rule",
+       "text": "The time word decides the tense.",
+       "start_s": 1074.594,
+       "start": "17:54"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [
+      {
+       "block": "page-7_k12",
+       "text": "She became drowsier since yesterday and her speech is slurred.",
+       "start_s": 1212.725,
+       "start": "20:12"
+      }
+     ],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-7_t1.s5.u2",
+       "lesson": "grammar-01-verb-tenses",
+       "section": "page-11",
+       "provenance": "adapted",
+       "start_s": 1164.655,
+       "start": "19:24"
+      }
+     ]
+    },
+    {
+     "id": "pages-08-09",
+     "title": "From notes to sentences",
+     "kind": "deck",
+     "pages": [
+      8,
+      9
+     ],
+     "category": null,
+     "start_s": 1293.125,
+     "start": "21:33",
+     "end_s": 1767.602,
+     "topics": [
+      {
+       "board": "pages-08-09_t1",
+       "title": "Mrs Barnes's paper: the setting and the start",
+       "start_s": 1293.125,
+       "start": "21:33",
+       "points": [
+        {
+         "text": "the paper",
+         "block": "pages-08-09_k02",
+         "start_s": 1292.775,
+         "start": "21:32"
+        },
+        {
+         "text": "the start",
+         "block": "pages-08-09_k03",
+         "start_s": 1322.69,
+         "start": "22:02"
+        },
+        {
+         "text": "March",
+         "block": "pages-08-09_k04",
+         "start_s": 1329.598,
+         "start": "22:09"
+        }
+       ]
+      },
+      {
+       "board": "pages-08-09_t2",
+       "title": "Mrs Barnes's paper: the progression",
+       "start_s": 1338.001,
+       "start": "22:18",
+       "points": [
+        {
+         "text": "the paper",
+         "block": "pages-08-09_k06",
+         "start_s": 1337.651,
+         "start": "22:17"
+        },
+        {
+         "text": "May",
+         "block": "pages-08-09_k07",
+         "start_s": 1349.313,
+         "start": "22:29"
+        },
+        {
+         "text": "July",
+         "block": "pages-08-09_k08",
+         "start_s": 1364.323,
+         "start": "22:44"
+        }
+       ]
+      },
+      {
+       "board": "pages-08-09_t3",
+       "title": "Mrs Barnes's paper: today, the visit",
+       "start_s": 1374.913,
+       "start": "22:54",
+       "points": [
+        {
+         "text": "the paper",
+         "block": "pages-08-09_k10",
+         "start_s": 1374.593,
+         "start": "22:54"
+        },
+        {
+         "text": "a second course",
+         "block": "pages-08-09_k11",
+         "start_s": 1387.273,
+         "start": "23:07"
+        },
+        {
+         "text": "a pattern",
+         "block": "pages-08-09_k12",
+         "start_s": 1400.903,
+         "start": "23:20"
+        }
+       ]
+      },
+      {
+       "board": "pages-08-09_t4",
+       "title": "Mrs Barnes's paper: today's findings, and the plan",
+       "start_s": 1412.853,
+       "start": "23:32",
+       "points": [
+        {
+         "text": "the paper",
+         "block": "pages-08-09_k14",
+         "start_s": 1412.543,
+         "start": "23:32"
+        },
+        {
+         "text": "the referral",
+         "block": "pages-08-09_k15",
+         "start_s": 1444.823,
+         "start": "24:04"
+        }
+       ]
+      },
+      {
+       "board": "pages-08-09_t5",
+       "title": "her history as a timeline",
+       "start_s": 1450.153,
+       "start": "24:10",
+       "points": [
+        {
+         "text": "the timeline",
+         "block": "pages-08-09_k17",
+         "start_s": 1449.803,
+         "start": "24:09"
+        },
+        {
+         "text": "the start",
+         "block": "pages-08-09_k18",
+         "start_s": 1465.272,
+         "start": "24:25"
+        },
+        {
+         "text": "the progression",
+         "block": "pages-08-09_k19",
+         "start_s": 1482.852,
+         "start": "24:42"
+        },
+        {
+         "text": "now",
+         "block": "pages-08-09_k20",
+         "start_s": 1494.24,
+         "start": "24:54"
+        },
+        {
+         "text": "next",
+         "block": "pages-08-09_k21",
+         "start_s": 1499.644,
+         "start": "24:59"
+        }
+       ]
+      },
+      {
+       "board": "pages-08-09_t6",
+       "title": "rows 1 and 2: the start, and March",
+       "start_s": 1507.682,
+       "start": "25:07",
+       "points": [
+        {
+         "text": "the notes beside the sentences",
+         "block": "pages-08-09_k23",
+         "start_s": 1507.361,
+         "start": "25:07"
+        },
+        {
+         "text": "the time reference",
+         "block": "pages-08-09_k24",
+         "start_s": 1523.68,
+         "start": "25:23"
+        },
+        {
+         "text": "the tense and the sentence",
+         "block": "pages-08-09_k25",
+         "start_s": 1534.542,
+         "start": "25:34"
+        },
+        {
+         "text": "the drug's name",
+         "block": "pages-08-09_k27",
+         "start_s": 1559.362,
+         "start": "25:59"
+        },
+        {
+         "text": "the time reference",
+         "block": "pages-08-09_k28",
+         "start_s": 1573.686,
+         "start": "26:13"
+        },
+        {
+         "text": "the tense and the sentence",
+         "block": "pages-08-09_k29",
+         "start_s": 1580.58,
+         "start": "26:20"
+        }
+       ]
+      },
+      {
+       "board": "pages-08-09_t7",
+       "title": "rows 3 and 4: May to July, and three weeks ago",
+       "start_s": 1603.281,
+       "start": "26:43",
+       "points": [
+        {
+         "text": "the notes beside the sentences",
+         "block": "pages-08-09_k32",
+         "start_s": 1602.931,
+         "start": "26:42"
+        },
+        {
+         "text": "the time reference",
+         "block": "pages-08-09_k33",
+         "start_s": 1616.816,
+         "start": "26:56"
+        },
+        {
+         "text": "the tense and the sentence",
+         "block": "pages-08-09_k34",
+         "start_s": 1629.28,
+         "start": "27:09"
+        },
+        {
+         "text": "July",
+         "block": "pages-08-09_k36",
+         "start_s": 1658.832,
+         "start": "27:38"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-08-09_k37",
+         "start_s": 1673.496,
+         "start": "27:53"
+        },
+        {
+         "text": "the answer",
+         "block": "pages-08-09_k38",
+         "start_s": 1692.91,
+         "start": "28:12"
+        },
+        {
+         "text": "despite",
+         "block": "pages-08-09_k40",
+         "start_s": 1750.677,
+         "start": "29:10"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "pages-08-09_k23",
+       "kind": "rule",
+       "text": "For each entry: the time reference, the tense, then the sentence.",
+       "start_s": 1507.361,
+       "start": "25:07"
+      },
+      {
+       "block": "pages-08-09_k39",
+       "kind": "rule",
+       "text": "My advice: count a recent event from today. Keep the exact date where the reader needs it: a change of treatment, a test due, a last dose.",
+       "start_s": 1716.552,
+       "start": "28:36"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "pages-08-09_t1.s1.u1",
+       "lesson": "writing-04-introduction",
+       "section": "pages-12-13",
+       "provenance": "authored",
+       "start_s": 1293.125,
+       "start": "21:33"
+      }
+     ]
+    },
+    {
+     "id": "page-10",
+     "title": "Now, and the request",
+     "kind": "deck",
+     "pages": [
+      10
+     ],
+     "category": null,
+     "start_s": 1767.602,
+     "start": "29:27",
+     "end_s": 2047.16,
+     "topics": [
+      {
+       "board": "page-10_t1",
+       "title": "today's entry",
+       "start_s": 1767.602,
+       "start": "29:27",
+       "points": [
+        {
+         "text": "the note beside the sentence",
+         "block": "page-10_k02",
+         "start_s": 1767.272,
+         "start": "29:27"
+        },
+        {
+         "text": "the tense",
+         "block": "page-10_k03",
+         "start_s": 1776.948,
+         "start": "29:36"
+        },
+        {
+         "text": "the note's word",
+         "block": "page-10_k05",
+         "start_s": 1802.752,
+         "start": "30:02"
+        },
+        {
+         "text": "a pattern in time",
+         "block": "page-10_k07",
+         "start_s": 1833.679,
+         "start": "30:33"
+        },
+        {
+         "text": "her own words",
+         "block": "page-10_k08",
+         "start_s": 1852.244,
+         "start": "30:52"
+        }
+       ]
+      },
+      {
+       "board": "page-10_t2",
+       "title": "three requests",
+       "start_s": 1868.832,
+       "start": "31:08",
+       "points": [
+        {
+         "text": "three letters",
+         "block": "page-10_k10",
+         "start_s": 1868.501,
+         "start": "31:08"
+        },
+        {
+         "text": "the frame",
+         "block": "page-10_k11",
+         "start_s": 1883.893,
+         "start": "31:23"
+        },
+        {
+         "text": "a noun after for",
+         "block": "page-10_k12",
+         "start_s": 1898.761,
+         "start": "31:38"
+        },
+        {
+         "text": "a passive",
+         "block": "page-10_k13",
+         "start_s": 1912.453,
+         "start": "31:52"
+        },
+        {
+         "text": "two actions",
+         "block": "page-10_k14",
+         "start_s": 1929.745,
+         "start": "32:09"
+        },
+        {
+         "text": "learn the frames",
+         "block": "page-10_k16",
+         "start_s": 1946.882,
+         "start": "32:26"
+        }
+       ]
+      },
+      {
+       "board": "page-10_t3",
+       "title": "Mrs Barnes's request",
+       "start_s": 1961.09,
+       "start": "32:41",
+       "points": [
+        {
+         "text": "the plan beside the request",
+         "block": "page-10_k18",
+         "start_s": 1960.76,
+         "start": "32:40"
+        },
+        {
+         "text": "your turn",
+         "block": "page-10_k19",
+         "start_s": 1972.019,
+         "start": "32:52"
+        },
+        {
+         "text": "the answer",
+         "block": "page-10_k20",
+         "start_s": 1996.544,
+         "start": "33:16"
+        },
+        {
+         "text": "the second request",
+         "block": "page-10_k21",
+         "start_s": 2028.989,
+         "start": "33:48"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-10_k05",
+       "kind": "rule",
+       "text": "My advice: a synonym only when you are sure it means the same. Otherwise borrow the note's word.",
+       "start_s": 1802.752,
+       "start": "30:02"
+      },
+      {
+       "block": "page-10_k10",
+       "kind": "rule",
+       "text": "Would and could ask; they do not tell.",
+       "start_s": 1868.501,
+       "start": "31:08"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-10_t1.s2.u1",
+       "lesson": "grammar-07-punctuation",
+       "section": "added-08",
+       "provenance": "source-derived",
+       "start_s": 1771.782,
+       "start": "29:31"
+      },
+      {
+       "utterance": "page-10_t1.s3.u1",
+       "lesson": "grammar-08-paraphrasing",
+       "section": "pages-09-10",
+       "provenance": "source-derived",
+       "start_s": 1803.092,
+       "start": "30:03"
+      }
+     ]
+    },
+    {
+     "id": "page-11",
+     "title": "The flow of a whole letter",
+     "kind": "deck",
+     "pages": [
+      11
+     ],
+     "category": null,
+     "start_s": 2047.16,
+     "start": "34:07",
+     "end_s": 2201.66,
+     "topics": [
+      {
+       "board": "page-11_t1",
+       "title": "Mrs Barnes's letter",
+       "start_s": 2047.16,
+       "start": "34:07",
+       "points": [
+        {
+         "text": "the whole letter",
+         "block": "page-11_k02",
+         "start_s": 2046.81,
+         "start": "34:06"
+        },
+        {
+         "text": "the opening",
+         "block": "page-11_k03",
+         "start_s": 2056.356,
+         "start": "34:16"
+        },
+        {
+         "text": "now",
+         "block": "page-11_k04",
+         "start_s": 2067.341,
+         "start": "34:27"
+        },
+        {
+         "text": "the history",
+         "block": "page-11_k05",
+         "start_s": 2087.794,
+         "start": "34:47"
+        },
+        {
+         "text": "the requests",
+         "block": "page-11_k07",
+         "start_s": 2120.286,
+         "start": "35:20"
+        }
+       ]
+      },
+      {
+       "board": "page-11_t2",
+       "title": "the linking words, counted",
+       "start_s": 2135.035,
+       "start": "35:35",
+       "points": [
+        {
+         "text": "the count",
+         "block": "page-11_k09",
+         "start_s": 2134.698,
+         "start": "35:34"
+        },
+        {
+         "text": "none",
+         "block": "page-11_k10",
+         "start_s": 2151.215,
+         "start": "35:51"
+        },
+        {
+         "text": "once each",
+         "block": "page-11_k12",
+         "start_s": 2172.319,
+         "start": "36:12"
+        },
+        {
+         "text": "the time words",
+         "block": "page-11_k13",
+         "start_s": 2192.597,
+         "start": "36:32"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-11_k09",
+       "kind": "rule",
+       "text": "My advice: build the flow with the notes' time words. Other linking words once or twice at most.",
+       "start_s": 2134.698,
+       "start": "35:34"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-11_t1.s4.u2",
+       "lesson": "writing-07-organisation",
+       "section": "pages-13-14-15-16",
+       "provenance": "adapted",
+       "start_s": 2098.543,
+       "start": "34:58"
+      }
+     ]
+    },
+    {
+     "id": "added-01",
+     "title": "Closing",
+     "kind": "closing",
+     "pages": [],
+     "category": null,
+     "start_s": 2201.66,
+     "start": "36:41",
+     "end_s": 2252.27,
+     "topics": [
+      {
+       "board": "added-01_t1",
+       "title": "Closing",
+       "start_s": 2201.66,
+       "start": "36:41",
+       "points": [
+        {
+         "text": "Recap",
+         "block": "added-01_k04",
+         "start_s": 2201.66,
+         "start": "36:41"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "added-01_t1.s1.u3",
+       "lesson": "writing-07-organisation",
+       "section": "pages-13-14-15-16",
+       "provenance": "authored",
+       "start_s": 2240.38,
+       "start": "37:20"
+      }
+     ]
+    }
+   ],
+   "facts": [
+    {
+     "fact": "writing-style",
+     "text": "The style is clinical and factual, with polite language and no personal feelings (writing-facts 21).",
+     "note": null,
+     "section": "page-4",
+     "board": "page-4_t1",
+     "utterance": "page-4_t1.s8.u3",
+     "start_s": 331.106,
+     "start": "5:31"
+    },
+    {
+     "fact": "writing-paraphrase-accuracy",
+     "text": "Paraphrasing can make the letter inaccurate: a word that does not match the note's meaning, or a tense that changes the timeframe (writing-facts 35).",
+     "note": null,
+     "section": "page-10",
+     "board": "page-10_t1",
+     "utterance": "page-10_t1.s3.u1",
+     "start_s": 1803.092,
+     "start": "30:03"
+    },
+    {
+     "fact": "writing-fit-the-case",
+     "text": "Full marks for Purpose need writing fitted to the case, not learnt phrases (writing-facts 33).",
+     "note": null,
+     "section": "page-10",
+     "board": "page-10_t2",
+     "utterance": "page-10_t2.s6.u1",
+     "start_s": 1947.232,
+     "start": "32:27"
+    },
+    {
+     "fact": "writing-organisation",
+     "text": "Organisation: one topic per paragraph, the most important information first; simply following the order of the case notes is a weakness (writing-facts 22, 40).",
+     "note": null,
+     "section": "page-11",
+     "board": "page-11_t1",
+     "utterance": "page-11_t1.s4.u2",
+     "start_s": 2098.543,
+     "start": "34:58"
+    }
+   ],
+   "methods": [
+    {
+     "name": "Words to avoid (the teacher's method)",
+     "text": "Not besides, actually, firstly ... finally, on the other hand, meanwhile or it is important to note at the start of a sentence; then and also in the middle.",
+     "section": "page-5",
+     "board": "page-5_t1",
+     "utterance": "page-5_t1.s1.u1",
+     "start_s": 599.934,
+     "start": "9:59"
+    },
+    {
+     "name": "Few linking words (the teacher's method)",
+     "text": "If the link between two sentences is obvious, use no linking word; emphasis and empathy words at most once in a letter.",
+     "section": "page-6",
+     "board": "page-6_t2",
+     "utterance": "page-6_t2.s8.u1",
+     "start_s": 1050.415,
+     "start": "17:30"
+    },
+    {
+     "name": "The time word decides the tense",
+     "text": "A date or a year in the past: past simple; since a point in time, up to now: present perfect; what is true today: present; what is planned: will.",
+     "section": "page-7",
+     "board": "page-7_t1",
+     "utterance": "page-7_t1.s1.u1",
+     "start_s": 1074.825,
+     "start": "17:54"
+    },
+    {
+     "name": "From notes to sentences (the teacher's method)",
+     "text": "For each dated entry: the time reference, the tense, then one short sentence, in the order of the notes.",
+     "section": "pages-08-09",
+     "board": "pages-08-09_t6",
+     "utterance": "pages-08-09_t6.s1.u1",
+     "start_s": 1507.682,
+     "start": "25:07"
+    },
+    {
+     "name": "Dates: count from today, or keep (the teacher's method)",
+     "text": "Count a recent event from today (three weeks ago); keep the exact date where the reader needs it; the month or year alone for older history.",
+     "section": "pages-08-09",
+     "board": "pages-08-09_t7",
+     "utterance": "pages-08-09_t7.s6.u2",
+     "start_s": 1716.892,
+     "start": "28:36"
+    },
+    {
+     "name": "A synonym only when sure (the teacher's method)",
+     "text": "Use a synonym only when you are sure it means the same; otherwise borrow the note's word.",
+     "section": "page-10",
+     "board": "page-10_t1",
+     "utterance": "page-10_t1.s3.u1",
+     "start_s": 1803.092,
+     "start": "30:03"
+    },
+    {
+     "name": "Requests with would and could (the teacher's method)",
+     "text": "Frames with would and could (I would be grateful if ..., I would appreciate ...), a passive where who does it does not matter, and please with what you ask.",
+     "section": "page-10",
+     "board": "page-10_t2",
+     "utterance": "page-10_t2.s1.u1",
+     "start_s": 1868.832,
+     "start": "31:08"
+    },
+    {
+     "name": "Build the flow with the notes' time words (the teacher's method)",
+     "text": "The time words carry the history; other linking words once or twice in a letter at most.",
+     "section": "page-11",
+     "board": "page-11_t2",
+     "utterance": "page-11_t2.s1.u1",
+     "start_s": 2135.035,
+     "start": "35:35"
+    }
+   ],
+   "vocabulary": [
+    {
+     "word": "flow",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "page-4",
+     "block": "page-4_k02",
+     "start_s": 142.195,
+     "start": "2:22"
+    },
+    {
+     "word": "judgement",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "page-4",
+     "block": "page-4_k11",
+     "start_s": 328.904,
+     "start": "5:28"
+    }
+   ],
+   "withheld": {
+    "listening_panel_words": 0,
+    "lines_naming_an_answer": 0
+   },
+   "practice_set": null,
+   "deck_exercises": [],
+   "links": {
+    "refers_to": [
+     {
+      "lesson": "writing-04-introduction",
+      "section": "pages-04-05",
+      "from_section": "page-3",
+      "utterance": "page-3_t1.s1.u2",
+      "start_s": 6.77,
+      "start": "0:06"
+     },
+     {
+      "lesson": "grammar-05-complex-compound",
+      "section": "pages-11-12",
+      "from_section": "page-4",
+      "utterance": "page-4_t1.s4.u1",
+      "start_s": 242.906,
+      "start": "4:02"
+     },
+     {
+      "lesson": "listening-03-part-b",
+      "section": "page-7",
+      "from_section": "page-4",
+      "utterance": "page-4_t1.s11.u2",
+      "start_s": 426.856,
+      "start": "7:06"
+     },
+     {
+      "lesson": "writing-03-letter-structure",
+      "section": "pages-04-05",
+      "from_section": "page-4",
+      "utterance": "page-4_t2.s1.u1",
+      "start_s": 438.826,
+      "start": "7:18"
+     },
+     {
+      "lesson": "writing-04-introduction",
+      "section": "page-17",
+      "from_section": "page-6",
+      "utterance": "page-6_t1.s1.u1",
+      "start_s": 800.104,
+      "start": "13:20"
+     },
+     {
+      "lesson": "grammar-01-verb-tenses",
+      "section": "page-11",
+      "from_section": "page-7",
+      "utterance": "page-7_t1.s5.u2",
+      "start_s": 1164.655,
+      "start": "19:24"
+     },
+     {
+      "lesson": "writing-04-introduction",
+      "section": "pages-12-13",
+      "from_section": "pages-08-09",
+      "utterance": "pages-08-09_t1.s1.u1",
+      "start_s": 1293.125,
+      "start": "21:33"
+     },
+     {
+      "lesson": "grammar-07-punctuation",
+      "section": "added-08",
+      "from_section": "page-10",
+      "utterance": "page-10_t1.s2.u1",
+      "start_s": 1771.782,
+      "start": "29:31"
+     },
+     {
+      "lesson": "grammar-08-paraphrasing",
+      "section": "pages-09-10",
+      "from_section": "page-10",
+      "utterance": "page-10_t1.s3.u1",
+      "start_s": 1803.092,
+      "start": "30:03"
+     },
+     {
+      "lesson": "writing-07-organisation",
+      "section": "pages-13-14-15-16",
+      "from_section": "page-11",
+      "utterance": "page-11_t1.s4.u2",
+      "start_s": 2098.543,
+      "start": "34:58"
+     }
+    ],
+    "referred_to_by": [],
+    "continues_in": [
+     {
+      "lesson": "writing-07-organisation",
+      "why": "the closing names it as the next lesson",
+      "source": "closing"
+     }
+    ],
+    "continues_from": []
    }
   },
   {
@@ -56237,6 +57795,14 @@
     ],
     "referred_to_by": [
      {
+      "lesson": "writing-05-information-flow",
+      "section": "page-11",
+      "to_section": "pages-13-14-15-16",
+      "utterance": "page-11_t1.s4.u2",
+      "start_s": 2098.543,
+      "start": "34:58"
+     },
+     {
       "lesson": "writing-06-word-order",
       "section": "page-3",
       "to_section": "added-01",
@@ -56246,7 +57812,13 @@
      }
     ],
     "continues_in": [],
-    "continues_from": []
+    "continues_from": [
+     {
+      "lesson": "writing-05-information-flow",
+      "why": "the closing names it as the next lesson",
+      "source": "closing"
+     }
+    ]
    }
   },
   {
@@ -59191,6 +60763,32 @@
    ]
   },
   {
+   "topic": "From case notes to sentences",
+   "key": "from case notes to sentences",
+   "entries": [
+    {
+     "lesson": "writing-05-information-flow",
+     "section": "pages-08-09",
+     "start_s": 1507.682,
+     "start": "25:07",
+     "source": "curated"
+    }
+   ]
+  },
+  {
+   "topic": "From notes to sentences",
+   "key": "from notes to sentences",
+   "entries": [
+    {
+     "lesson": "writing-05-information-flow",
+     "section": "pages-08-09",
+     "start_s": 1293.125,
+     "start": "21:33",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "From the plan",
    "key": "from the plan",
    "entries": [
@@ -59901,6 +61499,19 @@
    ]
   },
   {
+   "topic": "Linking words in a letter",
+   "key": "linking words in a letter",
+   "entries": [
+    {
+     "lesson": "writing-05-information-flow",
+     "section": "page-6",
+     "start_s": 860.524,
+     "start": "14:20",
+     "source": "curated"
+    }
+   ]
+  },
+  {
    "topic": "Lists and series",
    "key": "lists and series",
    "entries": [
@@ -60126,6 +61737,19 @@
      "start_s": 1093.593,
      "start": "18:13",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Now, and the request",
+   "key": "now, and the request",
+   "entries": [
+    {
+     "lesson": "writing-05-information-flow",
+     "section": "page-10",
+     "start_s": 1767.602,
+     "start": "29:27",
+     "source": "section"
     }
    ]
   },
@@ -61392,6 +63016,13 @@
    "key": "signal words",
    "entries": [
     {
+     "lesson": "writing-05-information-flow",
+     "section": "page-4",
+     "start_s": 123.245,
+     "start": "2:03",
+     "source": "section"
+    },
+    {
      "lesson": "writing-06-word-order",
      "section": "pages-12-13",
      "start_s": 1114.025,
@@ -61813,6 +63444,19 @@
    ]
   },
   {
+   "topic": "Tense from the time word",
+   "key": "tense from the time word",
+   "entries": [
+    {
+     "lesson": "writing-05-information-flow",
+     "section": "page-7",
+     "start_s": 1074.825,
+     "start": "17:54",
+     "source": "curated"
+    }
+   ]
+  },
+  {
    "topic": "Tense in the letter",
    "key": "tense in the letter",
    "entries": [
@@ -61938,6 +63582,19 @@
      "section": "added-01",
      "start_s": 79.751,
      "start": "1:19",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "The flow of a whole letter",
+   "key": "the flow of a whole letter",
+   "entries": [
+    {
+     "lesson": "writing-05-information-flow",
+     "section": "page-11",
+     "start_s": 2047.16,
+     "start": "34:07",
      "source": "section"
     }
    ]
@@ -62168,6 +63825,13 @@
    "key": "the request paragraph",
    "entries": [
     {
+     "lesson": "writing-05-information-flow",
+     "section": "page-10",
+     "start_s": 1868.832,
+     "start": "31:08",
+     "source": "curated"
+    },
+    {
      "lesson": "writing-07-organisation",
      "section": "added-02",
      "start_s": 1283.627,
@@ -62307,6 +63971,19 @@
    ]
   },
   {
+   "topic": "Time and tense",
+   "key": "time and tense",
+   "entries": [
+    {
+     "lesson": "writing-05-information-flow",
+     "section": "page-7",
+     "start_s": 1074.825,
+     "start": "17:54",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Time management in Part A",
    "key": "time management in part a",
    "entries": [
@@ -62349,6 +64026,32 @@
      "start_s": 795.895,
      "start": "13:15",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Time references",
+   "key": "time references",
+   "entries": [
+    {
+     "lesson": "writing-05-information-flow",
+     "section": "pages-08-09",
+     "start_s": 1507.682,
+     "start": "25:07",
+     "source": "curated"
+    }
+   ]
+  },
+  {
+   "topic": "Too many linking words",
+   "key": "too many linking words",
+   "entries": [
+    {
+     "lesson": "writing-05-information-flow",
+     "section": "page-6",
+     "start_s": 800.104,
+     "start": "13:20",
+     "source": "section"
     }
    ]
   },
@@ -62906,6 +64609,19 @@
    ]
   },
   {
+   "topic": "Words to avoid",
+   "key": "words to avoid",
+   "entries": [
+    {
+     "lesson": "writing-05-information-flow",
+     "section": "page-5",
+     "start_s": 599.934,
+     "start": "9:59",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Your turn: a doctor's notes",
    "key": "your turn: a doctors notes",
    "entries": [
@@ -62933,21 +64649,21 @@
   }
  ],
  "totals": {
-  "lessons": 28,
-  "sections": 264,
-  "topics": 608,
-  "teaching_points": 4454,
-  "rules": 276,
+  "lessons": 29,
+  "sections": 273,
+  "topics": 632,
+  "teaching_points": 4565,
+  "rules": 285,
   "warnings": 66,
-  "terms": 487,
-  "wrong_examples": 277,
-  "facts": 176,
-  "methods": 66,
-  "vocabulary": 521,
+  "terms": 488,
+  "wrong_examples": 279,
+  "facts": 180,
+  "methods": 74,
+  "vocabulary": 523,
   "vocabulary_word_bank": 189,
   "practice_items": 62,
-  "references": 121,
-  "topic_index": 393,
+  "references": 131,
+  "topic_index": 403,
   "withheld_panel_words": 139,
   "withheld_answer_lines": 9
  }

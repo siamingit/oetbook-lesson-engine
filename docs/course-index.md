@@ -2,7 +2,7 @@
 
 What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.1; decision: `docs/adr/038-public-course-index.md`.
 
-28 lessons, 264 sections, 608 board topics, 4454 teaching points, 276 rules and 66 warnings, 487 terms, 176 OET facts, 66 methods, 521 vocabulary items (189 from the word bank), 62 practice questions and note forms, 121 links to other lessons, 393 topics in the topic index.
+29 lessons, 273 sections, 632 board topics, 4565 teaching points, 285 rules and 66 warnings, 488 terms, 180 OET facts, 74 methods, 523 vocabulary items (189 from the word bank), 62 practice questions and note forms, 131 links to other lessons, 403 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -10,7 +10,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 - Vocabulary: [Vocabulary for OET: Word Forms and Sentence Structure](#vocabulary-01-word-forms), [Vocabulary for OET: Verb + Noun Collocations](#vocabulary-02-collocations), [Vocabulary for OET: Adjective + Noun Collocations](#vocabulary-03-collocations-2)
 - Reading: [Reading for OET: Overview](#reading-01-overview), [Reading for OET: Part A](#reading-02-part-a), [Reading for OET: Part B](#reading-03-part-b), [Reading Part C (1)](#reading-04-part-c), [Reading Part C (2): More Practice](#reading-05-part-c-2)
 - Listening: [OET Listening: Overview](#listening-01-overview), [OET Listening: Part A](#listening-02-part-a), [OET Listening: Part B](#listening-03-part-b), [OET Listening: Part C (1)](#listening-04-part-c), [OET Listening: Part C (2)](#listening-05-part-c-2)
-- Writing: [OET Writing: Overview](#writing-01-overview), [OET Writing: Assessment Criteria](#writing-02-assessment-criteria), [OET Writing: Letter Structure](#writing-03-letter-structure), [OET Writing: The Opening Paragraph](#writing-04-introduction), [OET Writing: Word Order](#writing-06-word-order), [OET Writing: Organising the Letter](#writing-07-organisation), [OET Writing: Reading the Task and the Case Notes](#writing-08-reading-the-task)
+- Writing: [OET Writing: Overview](#writing-01-overview), [OET Writing: Assessment Criteria](#writing-02-assessment-criteria), [OET Writing: Letter Structure](#writing-03-letter-structure), [OET Writing: The Opening Paragraph](#writing-04-introduction), [OET Writing: Information Flow](#writing-05-information-flow), [OET Writing: Word Order](#writing-06-word-order), [OET Writing: Organising the Letter](#writing-07-organisation), [OET Writing: Reading the Task and the Case Notes](#writing-08-reading-the-task)
 
 ---
 
@@ -763,6 +763,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by OET Writing: Overview (`writing-01-overview`), "Steps towards successful writing" at 3:22
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Conciseness and Clarity" at 20:36, about section `page-11`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:15
+- referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Time and tense" at 19:24, about section `page-11`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "Three errors to avoid" at 9:41, about section `page-14`
 - continues in Grammar for OET: Verb Use (`grammar-02-verb-use`): Verb Use practises choosing the tense, and the active or the passive, taught here.
 
@@ -2013,6 +2014,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 7:48
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Avoid a series of short sentences" at 80:31
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:31
+- referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Signal words" at 4:02, about section `pages-11-12`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "A paragraph corrected" at 17:00, about section `page-7`
 - continues in Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`): Relative and participle clauses build on the clauses and joining words taught here.
 - continues in Grammar for OET: Punctuation (`grammar-07-punctuation`): Punctuation teaches the comma in complex and compound sentences.
@@ -2810,6 +2812,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "Greeting and Re line" at 15:39, about section `page-14`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "The opening paragraph" at 4:36, about section `page-14`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 12:42, about section `added-04`
+- referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Now, and the request" at 29:31, about section `added-08`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "The verb and its object; the time first" at 7:07, about section `page-10`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "A paragraph corrected" at 15:56, about section `added-02`
 - continues from Grammar for OET: Complex sentences (`grammar-05-complex-compound`): Punctuation teaches the comma in complex and compound sentences.
@@ -3129,6 +3132,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by OET Writing: Overview (`writing-01-overview`), "The case notes" at 11:58, about section `page-6`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Conciseness and Clarity" at 19:47, about section `page-8`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 27:40, about section `pages-09-10`
+- referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Now, and the request" at 30:03, about section `pages-09-10`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "The verb and its object; the time first" at 6:07, about section `page-8`
 
 
@@ -7188,6 +7192,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 72:28 refers to OET Listening: Part C (1) (`listening-04-part-c`) (in `added-01_t1.s1.u4`)
 - referred to by OET Listening: Part C (1) (`listening-04-part-c`), "Introduction" at 0:17
 - referred to by OET Listening: Part C (1) (`listening-04-part-c`), "While you listen: signal words" at 8:23, about section `page-7`
+- referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Signal words" at 7:06, about section `page-7`
 - continues in OET Listening: Part C (1) (`listening-04-part-c`): the closing names it as the next lesson
 - continues from OET Listening: Overview (`listening-01-overview`): Part B in full.
 - continues from OET Listening: Part A (`listening-02-part-a`): the closing names it as the next lesson
@@ -7861,6 +7866,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 29:42 | 10 | 2026-10-26 23:34 (Siavash) |
 | 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:04 | 10 | 2026-10-31 23:18 (siavash) |
 | 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-11-01 00:09 (siavash) |
+| 5 | OET Writing: Information Flow | `writing-05-information-flow` | 37:32 | 9 | not yet |
 | 6 | OET Writing: Word Order | `writing-06-word-order` | 23:59 | 9 | not yet |
 | 7 | OET Writing: Organising the Letter | `writing-07-organisation` | 27:09 | 8 | 2026-11-01 10:08 (siavash) |
 | 8 | OET Writing: Reading the Task and the Case Notes | `writing-08-reading-the-task` | 23:18 | 8 | 2026-11-01 01:39 (siavash) |
@@ -8578,6 +8584,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 15:39 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Punctuation in OET letters" (in `page-8_t1.s4.u1`)
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Introduction" at 0:06, about section `page-9`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "The opening paragraph" at 3:42, about section `page-8`
+- referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Signal words" at 7:18, about section `pages-04-05`
 - referred to by OET Writing: Organising the Letter (`writing-07-organisation`), "Organisation and Layout" at 1:43, about section `pages-04-05`
 - referred to by OET Writing: Organising the Letter (`writing-07-organisation`), "The ISBAR approach" at 5:51, about section `page-10`
 - referred to by OET Writing: Organising the Letter (`writing-07-organisation`), "The request and closing paragraph" at 26:22, about section `page-11`
@@ -8850,9 +8857,266 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 13:26 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `pages-07-08_t3.s4.u2`)
 - 15:14 refers to Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Choosing the right word form" (in `pages-09-10-11_t2.s5.u1`)
 - 16:38 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Purpose" (in `pages-12-13_t1.s2.u1`)
+- referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Introduction" at 0:06, about section `pages-04-05`
+- referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Too many linking words" at 13:20, about section `page-17`
+- referred to by OET Writing: Information Flow (`writing-05-information-flow`), "From notes to sentences" at 21:33, about section `pages-12-13`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "Who, what, where, when, why" at 3:23, about section `pages-04-05`
 - referred to by OET Writing: Organising the Letter (`writing-07-organisation`), "The ISBAR approach" at 6:30, about section `pages-12-13`
 - continues from OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`): the closing names it as the next lesson
+
+
+<a id="writing-05-information-flow"></a>
+
+## 5. OET Writing: Information Flow
+
+- Lesson ID and folder: `writing-05-information-flow` (folder `writing-05-information-flow`); course writing, lesson 5; length 37:32; bundle format 1.23
+- Status: built, final gate not approved
+- Description: Learn to keep the flow of information clear in an OET letter, with the time words that order a history and decide its tenses, the few linking words a letter needs and the ones to avoid, and the way a dated case note becomes a clear sentence, up to the request.
+- Original session: folder `source`: `source/video.mp4`, 72:08 long, partial hash `5ba59af7698de6e3`; deck `source/slides.pdf`, 12 pages
+  - Session 5 of the Persian Writing course, «OET Writing: Signal words and information flow» (72:08, 12 slides): the nine families of signal words, the words to avoid, a paragraph with a linking word on every sentence put right, time and tense on the timeline of a case, the four-column method (the note, the time reference, the tense, the sentence) worked through the official OET Nursing sample, and the request with modal verbs. The sixth lesson of the general Writing course (ADR 047). The official sample and the Mr Jones paragraph are never reused: every teaching point is rebuilt on our samples oa-ws-nur-0001, oa-ws-nur-0002, oa-ws-med-0003, oa-ws-med-0001, oa-ws-nur-0003 and oa-ws-med-0002 at oetacademy-exercises 5320d19 (ADR 040).
+
+### Sections
+
+#### 0:00 Introduction (`page-3`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 1:18 **Contents board**
+  - 1:18 each category, revealed as it is named
+
+#### 2:03 Signal words (`page-4`, deck)
+
+- 2:03 **nine families**
+  - 2:03 the families
+  - 3:17 time
+  - 3:52 place
+  - 4:07 reason
+  - 4:27 contrast
+  - 4:52 result
+  - 5:08 emphasis
+  - 5:19 empathy
+  - 5:53 subject
+  - 6:21 advice
+  - 6:44 in our six letters
+- 7:18 **Mrs Dawson's letter: time, place and reason**
+  - 7:18 the paper beside the letter
+  - 7:50 a time word
+  - 8:07 a date the reader needs
+  - 8:26 place and reason
+- 8:40 **Mrs Dawson's letter: contrast and result**
+  - 8:40 the paper beside the letter
+  - 9:00 a contrast
+  - 9:14 your turn
+  - 9:37 the answer
+
+*Rules on the boards*
+
+- 6:44 In our six letters: therefore, however, moreover, in addition, besides, unfortunately, please note: none. A time word: in every letter.
+
+#### 9:59 Words to avoid (`page-5`, deck)
+
+- 9:59 **my avoid-list**
+  - 9:59 the list
+  - 10:16 besides
+  - 10:24 actually
+  - 10:33 firstly
+  - 10:45 on the other hand
+  - 10:52 meanwhile
+  - 11:14 it is important to note
+  - 11:33 moreover
+  - 11:49 then, also
+- 12:15 **your turn: also**
+  - 12:15 Mr Talbot's plan beside his letter
+  - 12:32 your turn
+  - 12:53 the answer
+
+*Rules on the boards*
+
+- 9:59 My advice: leave these words out of your letter, or move them.
+
+*Wrong sentences corrected*
+
+- 12:15 Also, I would appreciate your decision on the antibiotic.
+
+*Terms*: in the interim (The phrase, 10:52)
+
+#### 13:20 Too many linking words (`page-6`, deck)
+
+- 13:20 **Mrs Ashworth's paper: eight lines**
+  - 13:19 the lines
+  - 13:39 today
+  - 13:53 the cause
+  - 14:04 August
+  - 14:11 a week later
+- 14:20 **wrong and right**
+  - 14:20 the paragraph, over-linked, put right
+  - 15:19 initially
+  - 15:40 in addition
+  - 15:55 also
+  - 16:08 moreover
+  - 16:28 your turn
+  - 16:58 the answer
+  - 17:30 the lesson
+
+*Rules on the boards*
+
+- 17:30 My advice: if the link between two sentences is obvious, use no linking word.
+
+#### 17:54 Time and tense (`page-7`, deck)
+
+- 17:54 **the timeline and its tenses**
+  - 17:54 the timeline
+  - 18:04 tips 1 and 2
+  - 18:27 tip 3
+  - 18:52 the start
+  - 19:17 the progression
+  - 19:51 now
+  - 20:03 next
+- 20:13 **your turn: since yesterday**
+  - 20:12 Mrs Ashworth's paper beside her opening
+  - 20:31 your turn
+  - 20:49 the answer
+  - 21:16 now
+
+*Rules on the boards*
+
+- 17:54 The time word decides the tense.
+
+*Wrong sentences corrected*
+
+- 20:12 She became drowsier since yesterday and her speech is slurred.
+
+#### 21:33 From notes to sentences (`pages-08-09`, deck)
+
+- 21:33 **Mrs Barnes's paper: the setting and the start**
+  - 21:32 the paper
+  - 22:02 the start
+  - 22:09 March
+- 22:18 **Mrs Barnes's paper: the progression**
+  - 22:17 the paper
+  - 22:29 May
+  - 22:44 July
+- 22:54 **Mrs Barnes's paper: today, the visit**
+  - 22:54 the paper
+  - 23:07 a second course
+  - 23:20 a pattern
+- 23:32 **Mrs Barnes's paper: today's findings, and the plan**
+  - 23:32 the paper
+  - 24:04 the referral
+- 24:10 **her history as a timeline**
+  - 24:09 the timeline
+  - 24:25 the start
+  - 24:42 the progression
+  - 24:54 now
+  - 24:59 next
+- 25:07 **rows 1 and 2: the start, and March**
+  - 25:07 the notes beside the sentences
+  - 25:23 the time reference
+  - 25:34 the tense and the sentence
+  - 25:59 the drug's name
+  - 26:13 the time reference
+  - 26:20 the tense and the sentence
+- 26:43 **rows 3 and 4: May to July, and three weeks ago**
+  - 26:42 the notes beside the sentences
+  - 26:56 the time reference
+  - 27:09 the tense and the sentence
+  - 27:38 July
+  - 27:53 your turn
+  - 28:12 the answer
+  - 29:10 despite
+
+*Rules on the boards*
+
+- 25:07 For each entry: the time reference, the tense, then the sentence.
+- 28:36 My advice: count a recent event from today. Keep the exact date where the reader needs it: a change of treatment, a test due, a last dose.
+
+#### 29:27 Now, and the request (`page-10`, deck)
+
+- 29:27 **today's entry**
+  - 29:27 the note beside the sentence
+  - 29:36 the tense
+  - 30:02 the note's word
+  - 30:33 a pattern in time
+  - 30:52 her own words
+- 31:08 **three requests**
+  - 31:08 three letters
+  - 31:23 the frame
+  - 31:38 a noun after for
+  - 31:52 a passive
+  - 32:09 two actions
+  - 32:26 learn the frames
+- 32:41 **Mrs Barnes's request**
+  - 32:40 the plan beside the request
+  - 32:52 your turn
+  - 33:16 the answer
+  - 33:48 the second request
+
+*Rules on the boards*
+
+- 30:02 My advice: a synonym only when you are sure it means the same. Otherwise borrow the note's word.
+- 31:08 Would and could ask; they do not tell.
+
+#### 34:07 The flow of a whole letter (`page-11`, deck)
+
+- 34:07 **Mrs Barnes's letter**
+  - 34:06 the whole letter
+  - 34:16 the opening
+  - 34:27 now
+  - 34:47 the history
+  - 35:20 the requests
+- 35:35 **the linking words, counted**
+  - 35:34 the count
+  - 35:51 none
+  - 36:12 once each
+  - 36:32 the time words
+
+*Rules on the boards*
+
+- 35:34 My advice: build the flow with the notes' time words. Other linking words once or twice at most.
+
+#### 36:41 Closing (`added-01`, closing)
+
+- 36:41 **Closing**
+  - 36:41 Recap
+
+### OET facts
+
+- 5:31 (`writing-style`) The style is clinical and factual, with polite language and no personal feelings (writing-facts 21).
+- 30:03 (`writing-paraphrase-accuracy`) Paraphrasing can make the letter inaccurate: a word that does not match the note's meaning, or a tense that changes the timeframe (writing-facts 35).
+- 32:27 (`writing-fit-the-case`) Full marks for Purpose need writing fitted to the case, not learnt phrases (writing-facts 33).
+- 34:58 (`writing-organisation`) Organisation: one topic per paragraph, the most important information first; simply following the order of the case notes is a weakness (writing-facts 22, 40).
+
+### Exam methods and strategies
+
+- 9:59 **Words to avoid (the teacher's method)**: Not besides, actually, firstly ... finally, on the other hand, meanwhile or it is important to note at the start of a sentence; then and also in the middle.
+- 17:30 **Few linking words (the teacher's method)**: If the link between two sentences is obvious, use no linking word; emphasis and empathy words at most once in a letter.
+- 17:54 **The time word decides the tense**: A date or a year in the past: past simple; since a point in time, up to now: present perfect; what is true today: present; what is planned: will.
+- 25:07 **From notes to sentences (the teacher's method)**: For each dated entry: the time reference, the tense, then one short sentence, in the order of the notes.
+- 28:36 **Dates: count from today, or keep (the teacher's method)**: Count a recent event from today (three weeks ago); keep the exact date where the reader needs it; the month or year alone for older history.
+- 30:03 **A synonym only when sure (the teacher's method)**: Use a synonym only when you are sure it means the same; otherwise borrow the note's word.
+- 31:08 **Requests with would and could (the teacher's method)**: Frames with would and could (I would be grateful if ..., I would appreciate ...), a passive where who does it does not matter, and please with what you ask.
+- 35:35 **Build the flow with the notes' time words (the teacher's method)**: The time words carry the history; other linking words once or twice in a letter at most.
+
+### Vocabulary
+
+First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
+
+- 2:22 flow
+- 5:28 judgement
+
+### Links to other lessons
+
+- 0:06 refers to OET Writing: The Opening Paragraph (`writing-04-introduction`), "The opening paragraph" (in `page-3_t1.s1.u2`)
+- 4:02 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Due to, despite, as well as" (in `page-4_t1.s4.u1`)
+- 7:06 refers to OET Listening: Part B (`listening-03-part-b`), "While you listen: signal words" (in `page-4_t1.s11.u2`)
+- 7:18 refers to OET Writing: Letter Structure (`writing-03-letter-structure`), "The parts of a letter" (in `page-4_t2.s1.u1`)
+- 13:20 refers to OET Writing: The Opening Paragraph (`writing-04-introduction`), "Five questions" (in `page-6_t1.s1.u1`)
+- 19:24 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Perfect tenses on a timeline" (in `page-7_t1.s5.u2`)
+- 21:33 refers to OET Writing: The Opening Paragraph (`writing-04-introduction`), "Purpose" (in `pages-08-09_t1.s1.u1`)
+- 29:31 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Case-note abbreviations" (in `page-10_t1.s2.u1`)
+- 30:03 refers to Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Synonyms" (in `page-10_t1.s3.u1`)
+- 34:58 refers to OET Writing: Organising the Letter (`writing-07-organisation`), "Chronological or thematic" (in `page-11_t1.s4.u2`)
+- continues in OET Writing: Organising the Letter (`writing-07-organisation`): the closing names it as the next lesson
 
 
 <a id="writing-06-word-order"></a>
@@ -9282,7 +9546,9 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 5:51 refers to OET Writing: Letter Structure (`writing-03-letter-structure`), "The request" (in `pages-07-08-09_t2.s1.u2`)
 - 6:30 refers to OET Writing: The Opening Paragraph (`writing-04-introduction`), "Purpose" (in `pages-07-08-09_t2.s1.u4`)
 - 26:22 refers to OET Writing: Letter Structure (`writing-03-letter-structure`), "Signing off" (in `added-02_t3.s6.u2`)
+- referred to by OET Writing: Information Flow (`writing-05-information-flow`), "The flow of a whole letter" at 34:58, about section `pages-13-14-15-16`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "Introduction" at 0:05, about section `added-01`
+- continues from OET Writing: Information Flow (`writing-05-information-flow`): the closing names it as the next lesson
 
 
 <a id="writing-08-reading-the-task"></a>
@@ -9631,6 +9897,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Four steps towards success**: `reading-01-overview` 15:14
 - **From case notes to a sentence**: `grammar-05-complex-compound` 9:49
 - **From case notes to one word**: `grammar-04-articles` 63:20
+- **From case notes to sentences**: `writing-05-information-flow` 25:07
+- **From notes to sentences**: `writing-05-information-flow` 21:33
 - **From the plan**: `writing-04-introduction` 20:05
 - **From what you hear to the notes**: `listening-02-part-a` 12:25
 - **from which**: `vocabulary-01-word-forms` 60:01
@@ -9684,6 +9952,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Key words**: `reading-03-part-b` 10:13
 - **Language**: `writing-02-assessment-criteria` 26:46
 - **Linking words**: `listening-05-part-c-2` 2:52
+- **Linking words in a letter**: `writing-05-information-flow` 14:20
 - **Lists and series**: `grammar-07-punctuation` 27:56
 - **Main clause**: `reading-04-part-c` 18:06
 - **Main clause (independent clause)**: `grammar-07-punctuation` 24:05
@@ -9700,6 +9969,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Non-physical complaints**: `grammar-03-nominalization` 21:13
 - **Non-specific**: `grammar-04-articles` 18:15
 - **Noun endings**: `vocabulary-01-word-forms` 18:13
+- **Now, and the request**: `writing-05-information-flow` 29:27
 - **Object**: `grammar-01-verb-tenses` 86:12
 - **Occasionally**: `grammar-01-verb-tenses` 78:06
 - **Omit**: `grammar-08-paraphrasing` 6:18
@@ -9786,7 +10056,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Sentence completion**: `reading-01-overview` 7:04; `reading-02-part-a` 50:30
 - **Should be monitored**: `vocabulary-02-collocations` 33:33
 - **Signal word**: `grammar-01-verb-tenses` 76:44
-- **Signal words**: `writing-06-word-order` 18:34
+- **Signal words**: `writing-05-information-flow` 2:03; `writing-06-word-order` 18:34
 - **Signal words and verb tenses**: `grammar-01-verb-tenses` 76:44
 - **Signal words: the start or the end**: `writing-06-word-order` 18:34
 - **Signing off**: `writing-03-letter-structure` 25:34
@@ -9816,6 +10086,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Synonyms**: `grammar-08-paraphrasing` 46:18
 - **Target score**: `reading-02-part-a` 53:08; `reading-03-part-b` 55:50; `reading-04-part-c` 3:50
 - **Tempting wrong options**: `listening-03-part-b` 9:21
+- **Tense from the time word**: `writing-05-information-flow` 17:54
 - **Tense in the letter**: `writing-02-assessment-criteria` 20:30
 - **The -ing form**: `grammar-01-verb-tenses` 8:21
 - **The -ing form (present participle)**: `grammar-06-clause` 22:31
@@ -9826,6 +10097,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The date**: `writing-03-letter-structure` 10:21
 - **The date at the top of the letter**: `writing-03-letter-structure` 12:51
 - **The five minutes**: `writing-08-reading-the-task` 1:19
+- **The flow of a whole letter**: `writing-05-information-flow` 34:07
 - **The ISBAR approach**: `writing-07-organisation` 4:00
 - **The Listening test**: `listening-01-overview` 1:12
 - **The opening paragraph**: `writing-04-introduction` 1:56
@@ -9843,7 +10115,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The request**: `writing-03-letter-structure` 22:39
 - **The request and closing paragraph**: `writing-07-organisation` 21:23
 - **The request at the end of the letter**: `writing-03-letter-structure` 22:46
-- **The request paragraph**: `writing-07-organisation` 21:23
+- **The request paragraph**: `writing-05-information-flow` 31:08; `writing-07-organisation` 21:23
 - **The six assessment criteria**: `writing-02-assessment-criteria` 1:27
 - **The six criteria**: `writing-02-assessment-criteria` 1:24
 - **The six questions, then the whole interview**: `listening-05-part-c-2` 4:40
@@ -9854,9 +10126,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Three errors to avoid**: `writing-06-word-order` 7:43
 - **Three letters, three shapes**: `writing-07-organisation` 8:18
 - **Time**: `listening-04-part-c` 8:41
+- **Time and tense**: `writing-05-information-flow` 17:54
 - **Time management in Part A**: `reading-02-part-a` 7:53
 - **Time marker**: `grammar-01-verb-tenses` 34:20; `grammar-02-verb-use` 4:01
 - **Time markers**: `grammar-01-verb-tenses` 13:15
+- **Time references**: `writing-05-information-flow` 25:07
+- **Too many linking words**: `writing-05-information-flow` 13:20
 - **Top tips**: `reading-02-part-a` 17:27
 - **Treat**: `vocabulary-02-collocations` 50:42
 - **Treatment**: `grammar-03-nominalization` 31:03
@@ -9899,5 +10174,6 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **word forms**: `vocabulary-01-word-forms` 2:26
 - **Word meaning**: `reading-02-part-a` 56:52
 - **Word order**: `writing-06-word-order` 3:09
+- **Words to avoid**: `writing-05-information-flow` 9:59
 - **Your turn: a doctor's notes**: `writing-08-reading-the-task` 21:04
 - **Zero article**: `grammar-04-articles` 49:50

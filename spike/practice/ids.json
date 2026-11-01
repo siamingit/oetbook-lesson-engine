@@ -70,6 +70,10 @@
   "writing-06-word-order": [
    906000,
    906999
+  ],
+  "writing-05-information-flow": [
+   905000,
+   905999
   ]
  },
  "ids": [
@@ -3118,6 +3122,48 @@
    "lesson": "writing-06-word-order",
    "point": "letter-gaps",
    "slot": "gap-reason",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-905000",
+   "lesson": "writing-05-information-flow",
+   "point": "so-result",
+   "slot": "word",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-905001",
+   "lesson": "writing-05-information-flow",
+   "point": "also-middle",
+   "slot": "sentence",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-905002",
+   "lesson": "writing-05-information-flow",
+   "point": "two-into-one",
+   "slot": "sentence",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-905003",
+   "lesson": "writing-05-information-flow",
+   "point": "since-tense",
+   "slot": "verb",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-905004",
+   "lesson": "writing-05-information-flow",
+   "point": "three-weeks-ago",
+   "slot": "time",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-905005",
+   "lesson": "writing-05-information-flow",
+   "point": "request-frame",
+   "slot": "sentence",
    "issued": "2026-11-01"
   }
  ]
