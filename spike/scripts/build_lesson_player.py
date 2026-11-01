@@ -175,7 +175,7 @@ def board_fits(info: dict, boards: list[dict], blocks_all: dict, sample: bool = 
     zoom (rule 13) can be named: not a question board, a Listening board or a map
     board, which never zoom. A name that is not such a board stops the build; a
     sample build (`--sections`) skips the boards it does not hold. Returns the
-    boards named in `boards_nozoom` (ADR 048): each a board shown whole, on which
+    boards named in `boards_nozoom` (ADR 049): each a board shown whole, on which
     the style C zoom (rule 55) is not written either, so it stays whole at every
     moment on every device."""
     by_id = {bd["id"]: bd for bd in boards}
@@ -1055,7 +1055,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             raise SystemExit("REFUSED: sections.json block_layouts in a lesson that is not in style C")
         if bid not in blocks_all and not only:
             raise SystemExit(f"REFUSED: sections.json block_layouts names {bid!r}, not a block of the lesson")
-    # the words a layout sets in its accent colour (sections.json `block_accents`, ADR 048): a block with a
+    # the words a layout sets in its accent colour (sections.json `block_accents`, ADR 049): a block with a
     # layout that draws them; each a list of phrases (checked on the block's html by style_c.layout_html)
     for bid, phrases in (info.get("block_accents") or {}).items():
         if not style:

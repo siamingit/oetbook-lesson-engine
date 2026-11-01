@@ -1128,7 +1128,7 @@ def effects(boards: list[dict], blocks: dict, zoom: bool = True, nozoom=()) -> N
           sentence ends (0.4 s held), and back out; a later mark on the table
           takes the view on from there (rule 55). Only where `zoom` is true: a
           lesson whose tables are documents (`zooms`, ADR 043), and never on a
-          board in `nozoom` (sections.json `boards_nozoom`, ADR 048): a board
+          board in `nozoom` (sections.json `boards_nozoom`, ADR 049): a board
           shown whole that stays whole at every moment; its spotlight and its
           marks alone show the line being taught.
     """

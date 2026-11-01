@@ -1,4 +1,4 @@
-# 048 — A board marked no-zoom; the `acronym` and `skeleton` layouts; `block_accents`
+# 049 — A board marked no-zoom; the `acronym` and `skeleton` layouts; `block_accents`
 
 Date: 2026-11-01
 Status: **Accepted**: the owner's authorisation of 2026-11-01, in chat, after the agent's stop report on his

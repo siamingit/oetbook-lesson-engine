@@ -205,7 +205,7 @@ class Layouts(unittest.TestCase):
         self.assertNotIn(style_c.LAYOUT_CSS["paper"].strip(), style_c.CSS)
 
     def test_an_acronym_letter_and_name_in_their_own_spans(self):
-        # ADR 048: "I: Introduce and identify" drawn as the letter large in its own
+        # ADR 049: "I: Introduce and identify" drawn as the letter large in its own
         # column and the name beside it; the colon stays in the words, at no size
         b, h = self.core(["Part", "The letter"], [["I: Introduce and identify", "I am writing."],
                                                     ["S: Situation", "Bruises appeared."]])
@@ -219,7 +219,7 @@ class Layouts(unittest.TestCase):
             style_c.layout_html(*self.core(["Part", "The letter"], [["Introduce", "x"]]), None, "acronym")
 
     def test_a_skeleton_dashes_ends_and_accents(self):
-        # ADR 048: two letters side by side; an empty paragraph with text below it
+        # ADR 049: two letters side by side; an empty paragraph with text below it
         # is dashed lines, the last paragraph written out is the request expanded,
         # the purpose words (block_accents) are wrapped once; no word changes
         b, h = self.core(["Mr A's letter", "Mrs B's letter"], [
@@ -310,7 +310,7 @@ class Effects(unittest.TestCase):
         self.assertEqual([e["type"] for e in boards[2]["states"][0]["effects"]], ["zoom"])
 
     def test_no_zoom_on_a_board_marked_no_zoom(self):
-        # ADR 048: a board shown whole that the lesson marks no-zoom keeps its
+        # ADR 049: a board shown whole that the lesson marks no-zoom keeps its
         # spotlight and marks and takes no zoom; every other board as before
         boards, blocks = bundle()
         style_c.effects(boards, blocks, nozoom={"x_t3"})
