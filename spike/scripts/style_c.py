@@ -634,6 +634,9 @@ T_TRIO = (4, 0, 3, 1, 2)
 PARTS_FLOW_CHARS = 700
 HAND_WORDS = 15
 HAND_TYPES = ("plain", "callout", "category_card")
+# ADR 050 amendment (3), rule 7: a contents title longer than this, of five words or fewer, cannot keep a line of three
+# words at the contents' size in its column; it is set on one line (`ct-one`), the set one step smaller
+CONTENTS_LINE_CHARS = 28
 # a comparison's head: the words up to the first colon, when that is a short lead
 COMPARE_HEAD = re.compile(r"^([^:<]{3,90}:)( )(.+)$", re.S)
 WORD = re.compile(r"[A-Za-z0-9À-ɏ]+(?:['’.\-/&][A-Za-z0-9À-ɏ]+)*")
@@ -1557,12 +1560,136 @@ LAYOUT_CSS.update({
 .tbl.core.lay.lay-compare.spot tbody tr.focus{box-shadow:none;transform:none}
 """,
 })
+# The owner's two Writing 7 layouts in the teal look (ADR 050 amendment (3)): his ISBAR letters and his letter
+# skeletons keep their design and take the look's colours, pills and sheets. Appended after the layouts' own rules,
+# and only to a lesson in the teal look that uses them (`layout_css(..., look)`), so no other stylesheet changes.
+LAYOUT_CSS.update({
+    "acronym_teal": r"""
+/* the ISBAR parts in the teal look: each part a white band; its letter large and bold on a solid rounded tile in
+   its colour, in turn (amber, blue, lilac, coral, teal: pattern 2's colours), the part's name bold beside it; the
+   heads as pills */
+.frame .tbl.lay.lay-acronym tbody{gap:1.1cqh}
+.frame .tbl.lay.lay-acronym thead tr{margin-bottom:.8cqh}
+.frame .tbl.lay.lay-acronym thead tr th:nth-child(n){justify-self:start;background:var(--t-teal);color:#fff;
+  border-radius:999px;padding:.5cqh 1.4cqw;font-size:var(--t-label);line-height:1.25;font-weight:700;letter-spacing:0;
+  text-transform:none}
+.frame .tbl.lay.lay-acronym thead tr th:last-child{background:var(--t-amber);color:var(--t-ink-d)}
+.frame .tbl.lay.lay-acronym th[data-tone]::before{display:none}
+.frame .tbl.lay.lay-acronym tbody tr{background:#fff;border-radius:2.4cqh;box-shadow:0 .4cqh 1.6cqh rgba(11,60,59,.07)}
+.frame .tbl.lay.lay-acronym td{color:var(--t-ink)}
+.frame .tbl.lay.lay-acronym td:first-child{grid-template-columns:auto minmax(0,1fr);column-gap:1.3cqw}
+.frame .tbl.lay.lay-acronym .ac-l{display:grid;place-content:center;width:1.45em;height:1.45em;border-radius:.3em;
+  font-size:calc(max(var(--tf,3.2cqh),var(--t-run)) * 1.75);line-height:1;font-weight:800;background:var(--t-amber);
+  color:var(--t-ink-d)}
+.frame .tbl.lay.lay-acronym tbody tr:nth-child(5n+2) .ac-l{background:var(--t-blue)}
+.frame .tbl.lay.lay-acronym tbody tr:nth-child(5n+3) .ac-l{background:var(--t-lilac)}
+.frame .tbl.lay.lay-acronym tbody tr:nth-child(5n+4) .ac-l{background:var(--t-coral)}
+.frame .tbl.lay.lay-acronym tbody tr:nth-child(5n) .ac-l{background:var(--t-teal);color:#fff}
+.frame .tbl.lay.lay-acronym .ac-n{color:var(--t-ink);text-wrap:balance}
+.frame .tbl.lay.lay-acronym td.active,.frame .tbl.core.lay.lay-acronym.spot tbody tr.focus td.active{
+  background-color:var(--sc-active)}
+""",
+    "skeleton_teal": r"""
+/* the two letter skeletons in the teal look (pattern 11's two framed sheets, pattern 5's grey lines): each letter a
+   white sheet framed in its colour (teal, then coral), its name a pill above it; a paragraph not written out is the
+   grey lines of a letter's parts; the purpose words and the request expanded keep the Purpose colour */
+.frame .tbl.lay.lay-skeleton thead th:nth-child(n){color:#fff;font-size:var(--t-label);line-height:1.25;font-weight:700;
+  padding:.55cqh 1.6cqw;text-align:left;vertical-align:bottom;border-bottom:1.2cqh solid transparent;
+  background:var(--t-teal);border-radius:0;clip-path:inset(0 0 1.2cqh 0 round 999px)}
+/* the first head's cell carries the gap between the sheets (a transparent border): the pill is cut inside it */
+.frame .tbl.lay.lay-skeleton thead th:first-child{clip-path:inset(0 3cqw 1.2cqh 0 round 999px)}
+.frame .tbl.lay.lay-skeleton thead th:last-child{background:var(--t-coral);color:var(--t-ink-d)}
+.frame .tbl.lay.lay-skeleton td{background-color:#fff;color:var(--t-ink);line-height:1.3;padding:.5cqh 1.6cqw;
+  box-shadow:inset max(2px,.36cqh) 0 0 var(--t-teal),inset calc(-1 * max(2px,.36cqh)) 0 0 var(--t-teal)}
+.frame .tbl.lay.lay-skeleton td[data-col="1"]{box-shadow:inset max(2px,.36cqh) 0 0 var(--t-coral),
+  inset calc(-1 * max(2px,.36cqh)) 0 0 var(--t-coral)}
+.frame .tbl.lay.lay-skeleton tbody tr:first-child td{padding-top:1.6cqh;
+  box-shadow:inset max(2px,.36cqh) 0 0 var(--t-teal),inset calc(-1 * max(2px,.36cqh)) 0 0 var(--t-teal),
+  inset 0 max(2px,.36cqh) 0 var(--t-teal)}
+.frame .tbl.lay.lay-skeleton tbody tr:first-child td[data-col="1"]{
+  box-shadow:inset max(2px,.36cqh) 0 0 var(--t-coral),inset calc(-1 * max(2px,.36cqh)) 0 0 var(--t-coral),
+  inset 0 max(2px,.36cqh) 0 var(--t-coral)}
+.frame .tbl.lay.lay-skeleton tbody tr:last-child td:not([data-after]){padding-bottom:1.6cqh;
+  box-shadow:inset max(2px,.36cqh) 0 0 var(--t-teal),inset calc(-1 * max(2px,.36cqh)) 0 0 var(--t-teal),
+  inset 0 calc(-1 * max(2px,.36cqh)) 0 var(--t-teal)}
+.frame .tbl.lay.lay-skeleton tbody tr:last-child td[data-col="1"]:not([data-after]){
+  box-shadow:inset max(2px,.36cqh) 0 0 var(--t-coral),inset calc(-1 * max(2px,.36cqh)) 0 0 var(--t-coral),
+  inset 0 calc(-1 * max(2px,.36cqh)) 0 var(--t-coral)}
+.frame .tbl.lay.lay-skeleton td[data-after]{background:none;box-shadow:none}
+.frame .tbl.lay.lay-skeleton td[data-dash]{background:#fff padding-box}
+.frame .tbl.lay.lay-skeleton td[data-dash]::before{height:2.6em;background:
+  repeating-linear-gradient(180deg,transparent 0 .5em,var(--t-teal-s) .5em 1.05em,transparent 1.05em 1.3em)}
+.frame .tbl.lay.lay-skeleton .acc{font-weight:700}
+.frame .tbl.lay.lay-skeleton td[data-end]{color:var(--k-purpose)}
+.frame .tbl.lay.lay-skeleton td.active,.frame .tbl.core.lay.lay-skeleton.spot tbody tr.focus td.active{
+  background-color:var(--sc-active)}
+.frame .tbl.core.lay.lay-skeleton.spot tbody tr.focus{filter:none;transform:none}
+""",
+})
+
+# ADR 050 amendment (3): the path and the timeline at the look's minimum sizes and using the board (rules 1 and 4);
+# appended to their own rules, which reach only a lesson that uses them
+LAYOUT_CSS["path"] += r"""
+/* readable and using the board (ADR 050 amendment (3)): larger circles on a taller curve, the step at 3.6% and the
+   note in the hand at 3.9% (30 px over 1.3: rule 1); five steps or more keep the first geometry */
+.frame .tbl.lay.lay-path .t-curve{height:36cqh}
+.frame .tbl.lay.lay-path tr::before{width:16cqh;height:16cqh;line-height:16cqh;font-size:6cqh;margin-top:19cqh}
+.frame .tbl.lay.lay-path tr:nth-child(even)::before{margin-top:2cqh}
+.frame .tbl.lay.lay-path td:first-child{margin-top:2.2cqh;font-size:3.6cqh;line-height:1.22;text-wrap:balance}
+.frame .tbl.lay.lay-path td:nth-child(2){margin-top:1.2cqh;font-size:3.9cqh}
+.frame .tbl.lay.lay-path:not([data-n="1"],[data-n="2"],[data-n="3"],[data-n="4"]) .t-curve{height:30cqh}
+.frame .tbl.lay.lay-path:not([data-n="1"],[data-n="2"],[data-n="3"],[data-n="4"]) tr::before{width:13cqh;height:13cqh;
+  line-height:13cqh;font-size:5cqh;margin-top:15.5cqh}
+.frame .tbl.lay.lay-path:not([data-n="1"],[data-n="2"],[data-n="3"],[data-n="4"]) tr:nth-child(even)::before{margin-top:1.5cqh}
+.frame .tbl.lay.lay-path:not([data-n="1"],[data-n="2"],[data-n="3"],[data-n="4"]) td:first-child{font-size:3.2cqh}
+.frame .tbl.lay.lay-path:not([data-n="1"],[data-n="2"],[data-n="3"],[data-n="4"]) td:nth-child(2){font-size:3.8cqh}
+"""
+LAYOUT_CSS["timeline"] += r"""
+/* readable and using the board (ADR 050 amendment (3)): a marker longer than a number ("15 to 21 October") is a pill,
+   never clipped; a lit marker keeps its colour, ringed; four markers or more read down the board, each on a teal
+   line beside its words (the pattern set vertically, as the contents path is) */
+.frame .tbl.lay.lay-timeline tbody tr td:first-child{width:auto;min-width:13cqh;padding:0 2cqw;border-radius:999px;
+  box-sizing:border-box}
+.frame .tbl.lay.lay-timeline td:nth-child(2){font-size:3.6cqh;line-height:1.22}
+.frame .tbl.lay.lay-timeline td:nth-child(3){font-size:3.9cqh}
+.frame .tbl.lay.lay-timeline td:first-child.active,.frame .tbl.core.lay.lay-timeline.spot tbody tr.focus td:first-child.active{
+  background:var(--c);box-shadow:0 0 0 .8cqh var(--sc-active)}
+.frame .tbl.lay.lay-timeline:not([data-n="1"],[data-n="2"],[data-n="3"]) tbody{display:flex;flex-direction:column;
+  padding:1cqh 0}
+.frame .tbl.lay.lay-timeline:not([data-n="1"],[data-n="2"],[data-n="3"]) tr{display:grid;
+  grid-template-columns:30cqw minmax(0,1fr);column-gap:2.6cqw;align-items:center;text-align:left;padding:1.4cqh 0}
+.frame .tbl.lay.lay-timeline:not([data-n="1"],[data-n="2"],[data-n="3"]) tr::after,
+.frame .tbl.lay.lay-timeline:not([data-n="1"],[data-n="2"],[data-n="3"]) tr:last-child::after{content:"";position:absolute;
+  left:calc(15cqw - .45cqh);top:0;bottom:0;width:.9cqh;height:auto;margin:0;background:var(--t-teal);z-index:0}
+.frame .tbl.lay.lay-timeline:not([data-n="1"],[data-n="2"],[data-n="3"]) tr:first-child::after{top:50%}
+.frame .tbl.lay.lay-timeline:not([data-n="1"],[data-n="2"],[data-n="3"]) tr:last-child::after{bottom:50%}
+.frame .tbl.lay.lay-timeline:not([data-n="1"],[data-n="2"],[data-n="3"]) tbody tr td:first-child{grid-column:1;
+  justify-self:center;height:10cqh;line-height:10cqh;min-width:10cqh;font-size:3.6cqh}
+.frame .tbl.lay.lay-timeline:not([data-n="1"],[data-n="2"],[data-n="3"]) td:nth-child(2){grid-column:2;margin-top:0}
+.frame .tbl.lay.lay-timeline:not([data-n="1"],[data-n="2"],[data-n="3"]) td:nth-child(3){grid-column:2;margin-top:.4cqh}
+"""
+LAYOUT_CSS["contents_one"] = r"""
+/* a contents board with a title that must keep to one line (rule 7): every title one step smaller, so the set keeps
+   one size and that title its line (ADR 050 amendment (3)) */
+.frame #cam:has(> .blk.citem.ct-one) .citem .ct{font-size:3.5cqh}
+.frame #cam:has(> .blk.citem.ct-one) > .blk.citem{gap:1.4cqw;--t-cr:5cqh}
+.frame #cam:has(> .blk.citem.ct-one) .citem .cnum{width:10cqh;height:10cqh;font-size:4.6cqh}
+"""
+LAYOUT_CSS["crit_teal"] = r"""
+/* the criterion's card in the teal look: its monogram at the label size or more (ADR 050 amendment (3), rule 1) */
+.frame .term.crit{padding-left:11.8cqh;min-height:11cqh}
+.frame .term.crit::before{left:1.8cqh;width:8.4cqh;height:8.4cqh;margin-top:-4.2cqh;line-height:8.4cqh;font-size:3.2cqh}
+.frame .term.crit[data-mono-len="3"]::before{font-size:2.5cqh}
+"""
+
 ROOT_CLASS = re.compile(r'^<div class="([^"]*)"')
 
 
-def layout_css(blocks: dict) -> str:
+def layout_css(blocks: dict, look: str | None = None) -> str:
     """The rules of the phase 2 layouts and forms a lesson's blocks use (ADR 043
-    amendment (3)), in a fixed order; "" for a lesson that uses none."""
+    amendment (3)), in a fixed order; "" for a lesson that uses none. In the teal
+    look, the owner's two Writing 7 layouts take their teal rules too (ADR 050
+    amendment (3))."""
     used = set()
     for b in blocks.values():
         m = ROOT_CLASS.match(b.get("html") or "")
@@ -1592,6 +1719,13 @@ def layout_css(blocks: dict) -> str:
         for k in ADR050_LAYOUTS:
             if "lay-" + k in cls:
                 used.update(("tset", k))
+    if look == "teal":
+        used |= {k + "_teal" for k in ("acronym", "skeleton") if k in used}
+        if any("crit" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split())
+               and b.get("type") == "term_box" for b in blocks.values()):
+            used.add("crit_teal")
+    if any("ct-one" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split()) for b in blocks.values()):
+        used.add("contents_one")
     return "".join(LAYOUT_CSS[k] for k in LAYOUT_CSS if k in used)
 
 
@@ -1673,6 +1807,9 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
         if CRIT_KEY.get((b.get("text") or "").strip()):
             html = _add_root(html, attrs=_crit_attr(CRIT_KEY[b["text"].strip()]))
         html = contents_parts(html)
+        title = (b.get("text") or "").strip()
+        if look == "teal" and len(title) > CONTENTS_LINE_CHARS and len(title.split()) <= 5:
+            html = _add_root(html, "ct-one")
     elif crit:
         if t == "term_box" and (b.get("label") or "").strip() == CRITERION_LABEL:
             html = _add_root(html, "crit", _crit_attr(crit))
