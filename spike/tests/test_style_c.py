@@ -637,3 +637,16 @@ class TealLook(unittest.TestCase):
         self.assertIn(".frame .tbl.lay.lay-path td:nth-child(2){margin-top:1.2cqh;font-size:3.9cqh}",
                       style_c.LAYOUT_CSS["path"])
         self.assertIn("td:first-child.active", style_c.LAYOUT_CSS["timeline"])
+
+    def test_a_long_letter_beside_its_paper(self):
+        """ADR 050 amendment (3): in the teal look, a letter of more than 330 characters beside its paper is set at
+        3.3% (`paper-long`), its rules only where used; a shorter one, or any outside the look, is as before."""
+        def beside(letter):
+            b = ADR048Layouts._table(self, ["", "A paper", "Her letter"], [["Plan:", "GP: review", letter]], True)
+            return b, style_c.layout_html(b, b["html"], None, "paper", None, "teal")
+        b, out = beside("Please review her medicines. " * 12)
+        self.assertIn("paper-long", out)
+        self.assertEqual(style_c.layout_css({"p": {**b, "html": out}}, "teal"),
+                         style_c.LAYOUT_CSS["paper"] + style_c.LAYOUT_CSS["paper_long"])
+        self.assertNotIn("paper-long", beside("Please review her medicines.")[1])
+        self.assertNotIn("paper-long", style_c.layout_html(b, b["html"], None, "paper"))

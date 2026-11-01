@@ -637,6 +637,10 @@ HAND_TYPES = ("plain", "callout", "category_card")
 # ADR 050 amendment (3), rule 7: a contents title longer than this, of five words or fewer, cannot keep a line of three
 # words at the contents' size in its column; it is set on one line (`ct-one`), the set one step smaller
 CONTENTS_LINE_CHARS = 28
+# a letter longer than this beside its paper (the paper's third column) is set at 3.3% of the frame in the teal look,
+# not the look's 3.9%, so the paper, the letter and the board's note fit on the site's player at full size (rule 1
+# holds: 29.7 px)
+PAPER_LONG_CHARS = 330
 # a comparison's head: the words up to the first colon, when that is a short lead
 COMPARE_HEAD = re.compile(r"^([^:<]{3,90}:)( )(.+)$", re.S)
 WORD = re.compile(r"[A-Za-z0-9À-ɏ]+(?:['’.\-/&][A-Za-z0-9À-ɏ]+)*")
@@ -1603,13 +1607,13 @@ LAYOUT_CSS.update({
   box-shadow:inset max(2px,.36cqh) 0 0 var(--t-teal),inset calc(-1 * max(2px,.36cqh)) 0 0 var(--t-teal)}
 .frame .tbl.lay.lay-skeleton td[data-col="1"]{box-shadow:inset max(2px,.36cqh) 0 0 var(--t-coral),
   inset calc(-1 * max(2px,.36cqh)) 0 0 var(--t-coral)}
-.frame .tbl.lay.lay-skeleton tbody tr:first-child td{padding-top:1.6cqh;
+.frame .tbl.lay.lay-skeleton tbody tr:first-child td{padding-top:1.1cqh;
   box-shadow:inset max(2px,.36cqh) 0 0 var(--t-teal),inset calc(-1 * max(2px,.36cqh)) 0 0 var(--t-teal),
   inset 0 max(2px,.36cqh) 0 var(--t-teal)}
 .frame .tbl.lay.lay-skeleton tbody tr:first-child td[data-col="1"]{
   box-shadow:inset max(2px,.36cqh) 0 0 var(--t-coral),inset calc(-1 * max(2px,.36cqh)) 0 0 var(--t-coral),
   inset 0 max(2px,.36cqh) 0 var(--t-coral)}
-.frame .tbl.lay.lay-skeleton tbody tr:last-child td:not([data-after]){padding-bottom:1.6cqh;
+.frame .tbl.lay.lay-skeleton tbody tr:last-child td:not([data-after]){padding-bottom:1.1cqh;
   box-shadow:inset max(2px,.36cqh) 0 0 var(--t-teal),inset calc(-1 * max(2px,.36cqh)) 0 0 var(--t-teal),
   inset 0 calc(-1 * max(2px,.36cqh)) 0 var(--t-teal)}
 .frame .tbl.lay.lay-skeleton tbody tr:last-child td[data-col="1"]:not([data-after]){
@@ -1617,8 +1621,8 @@ LAYOUT_CSS.update({
   inset 0 calc(-1 * max(2px,.36cqh)) 0 var(--t-coral)}
 .frame .tbl.lay.lay-skeleton td[data-after]{background:none;box-shadow:none}
 .frame .tbl.lay.lay-skeleton td[data-dash]{background:#fff padding-box}
-.frame .tbl.lay.lay-skeleton td[data-dash]::before{height:2.6em;background:
-  repeating-linear-gradient(180deg,transparent 0 .5em,var(--t-teal-s) .5em 1.05em,transparent 1.05em 1.3em)}
+.frame .tbl.lay.lay-skeleton td[data-dash]::before{height:2.2em;background:
+  repeating-linear-gradient(180deg,transparent 0 .4em,var(--t-teal-s) .4em .9em,transparent .9em 1.1em)}
 .frame .tbl.lay.lay-skeleton .acc{font-weight:700}
 .frame .tbl.lay.lay-skeleton td[data-end]{color:var(--k-purpose)}
 .frame .tbl.lay.lay-skeleton td.active,.frame .tbl.core.lay.lay-skeleton.spot tbody tr.focus td.active{
@@ -1675,6 +1679,11 @@ LAYOUT_CSS["contents_one"] = r"""
 .frame #cam:has(> .blk.citem.ct-one) > .blk.citem{gap:1.4cqw;--t-cr:5cqh}
 .frame #cam:has(> .blk.citem.ct-one) .citem .cnum{width:10cqh;height:10cqh;font-size:4.6cqh}
 """
+LAYOUT_CSS["paper_long"] = r"""
+/* a long letter beside its paper in the teal look (ADR 050 amendment (3)): the paper and the letter at 3.3% of the
+   frame, so they and the board's note fit at full size on the site's player too */
+.frame .tbl.lay.lay-paper.paper-long table{font-size:max(var(--tf,2.6cqh),3.3cqh)}
+"""
 LAYOUT_CSS["crit_teal"] = r"""
 /* the criterion's card in the teal look: its monogram at the label size or more (ADR 050 amendment (3), rule 1) */
 .frame .term.crit{padding-left:11.8cqh;min-height:11cqh}
@@ -1726,6 +1735,8 @@ def layout_css(blocks: dict, look: str | None = None) -> str:
             used.add("crit_teal")
     if any("ct-one" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split()) for b in blocks.values()):
         used.add("contents_one")
+    if any("paper-long" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split()) for b in blocks.values()):
+        used.add("paper_long")
     return "".join(LAYOUT_CSS[k] for k in LAYOUT_CSS if k in used)
 
 
@@ -1836,6 +1847,9 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
             raise SystemExit(f"REFUSED: sections.json block_accents: {b.get('id')} has the layout {layout!r}, which "
                              f"draws no accent ({', '.join(ACCENT_LAYOUTS)})")
         html = accent_html(b, html, accents)
+    if look == "teal" and layout == "paper" and len(b.get("header") or []) == 3 and \
+            sum(len(_text(r[2])) for r in b.get("rows") or [] if len(r) == 3) > PAPER_LONG_CHARS:
+        html = _add_root(html, "paper-long")
     if look == "teal" and t in HAND_TYPES and \
             len(WORD.findall(str(b.get("text") or ""))) > HAND_WORDS:
         html = _add_root(html, "t-print")
