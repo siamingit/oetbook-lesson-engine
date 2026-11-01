@@ -55285,8 +55285,11 @@
    "length_s": 1439.309,
    "length": "23:59",
    "bundle_format": "1.23",
-   "status": "built",
-   "approval": null,
+   "status": "approved",
+   "approval": {
+    "by": "siavash",
+    "on": "2026-11-01 19:35"
+   },
    "source": {
     "folder": "source",
     "recording": "source/video.mp4",

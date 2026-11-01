@@ -7867,7 +7867,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:04 | 10 | 2026-10-31 23:18 (siavash) |
 | 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-11-01 00:09 (siavash) |
 | 5 | OET Writing: Information Flow | `writing-05-information-flow` | 37:32 | 9 | not yet |
-| 6 | OET Writing: Word Order | `writing-06-word-order` | 23:59 | 9 | not yet |
+| 6 | OET Writing: Word Order | `writing-06-word-order` | 23:59 | 9 | 2026-11-01 19:35 (siavash) |
 | 7 | OET Writing: Organising the Letter | `writing-07-organisation` | 27:36 | 8 | 2026-11-01 10:08 (siavash) |
 | 8 | OET Writing: Reading the Task and the Case Notes | `writing-08-reading-the-task` | 23:18 | 8 | 2026-11-01 01:39 (siavash) |
 
@@ -9124,7 +9124,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 6. OET Writing: Word Order
 
 - Lesson ID and folder: `writing-06-word-order` (folder `writing-06-word-order`); course writing, lesson 6; length 23:59; bundle format 1.23
-- Status: built, final gate not approved
+- Status: approved by siavash, 2026-11-01 19:35
 - Description: Learn the order of words in a letter sentence: who, what, where, when, why; the verb and its object together; a time phrase first with a comma; where also, then and frequency adverbs go; a paragraph and a letter corrected.
 - Original session: folder `source`: `source/video.mp4`, 52:48 long, partial hash `e580eb78f48235f0`; deck `source/slides.pdf`, 17 pages
   - Session 6 of the Persian Writing course, «Word Orders» (52:48, 17 slides in the Vocabulary template): the order subject, verb, object, place, time, reason (who, what, where, when, why); the verb and its object together; a time phrase first with a comma; also and then in the middle position; adverbial phrases and signal words at the start of a sentence; a learner's paragraph corrected line by line; a letter with gaps. The last lesson of the general Writing course (ADR 047 decision 1). Every example on the deck is the teacher's own sentence of unknown origin, a learner's paragraph (third-party) or a practice letter of unknown origin, and every point is rebuilt on our samples oa-ws-nur-0002, oa-ws-med-0002, oa-ws-nur-0001, oa-ws-med-0003, oa-ws-med-0001 and oa-ws-nur-0003 at oetacademy-exercises 5320d19 (ADR 040).
