@@ -1134,7 +1134,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     template = (REPO_ROOT / "spike" / "scripts" / "board_player_template.html").read_text(encoding="utf-8")
     title = ("SILENT PREVIEW - " if silent else "") + info["lesson"]["title"]
     html = (template.replace("__TITLE__", title)
-            .replace("/*__FRAME_CSS__*/", (style_c.font_css() if style else "") + css)
+            .replace("/*__FRAME_CSS__*/", (style_c.font_css(style_c.look_of(L)) if style else "") + css)
             .replace("__BUNDLE_JSON__", json.dumps(bundle, ensure_ascii=False).replace("</", "<\\/")))
     (out_dir / "player.html").write_text(html, encoding="utf-8")
 

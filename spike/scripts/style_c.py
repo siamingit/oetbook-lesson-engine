@@ -59,6 +59,34 @@ def style_of(lesson) -> str | None:
     return v
 
 
+# The look a style C lesson takes (ADR 050): `lesson.look` in its sections.json.
+# "teal", the owner's Canva patterns of 2026-11-01, is the base of every lesson
+# built or redesigned from then on; a lesson with no look keeps style C's own,
+# byte for byte. The bundle does not change: the look is the lesson's stylesheet.
+LOOKS = ("teal",)
+
+
+def look_of(lesson) -> str | None:
+    """The lesson's look: `lesson.look` in its sections.json (a style C lesson
+    only), or None."""
+    if not lesson:
+        return None
+    p = Path(lesson) / "analysis" / "sections.json"
+    if not p.exists():
+        return None
+    try:
+        v = (json.loads(p.read_text(encoding="utf-8")).get("lesson") or {}).get("look")
+    except (ValueError, OSError):
+        return None
+    if v is None:
+        return None
+    if v not in LOOKS:
+        raise SystemExit(f"REFUSED: sections.json lesson.look {v!r} is not a look ({', '.join(LOOKS)})")
+    if style_of(lesson) != "c":
+        raise SystemExit("REFUSED: sections.json lesson.look in a lesson that is not in style C")
+    return v
+
+
 # ---------------------------------------------------------------------------
 # Colour, by meaning (docs/02-DESIGN-SYSTEM.md §1a; the owner's review of
 # 2026-10-26: the handouts' tones). Each pair is the ink and its soft tint.
@@ -579,7 +607,30 @@ LAYOUTS = {
     "front": (("table",), False, (3,)),       # the kind, the phrase that opens the sentence, the rest
     "sides": (("table",), False, (3,)),       # one case, its two versions side by side
     "chips": (("table",), False, None),       # short phrases as chips in a row (a word bank), row by row
+    # ADR 050 (the teal look): the owner's eleven Canva patterns, each a layout
+    "wrongright": (("table",), False, (2,)),            # 1  the wrong sentence, a curved arrow, the right one
+    "coded": (("table",), False, None),                 # 2  a sentence as coloured parts, each with its label
+    "opener": (("table",), False, (3,)),                # 2  the kind, the opening phrase in colour, the rest
+    "timeline": (("table",), False, (2, 3)),            # 3  rounded markers on a line
+    "columns": (("table",), False, (2, 3, 4)),          # 4  rounded columns under coloured heads
+    "parts": (("table",), False, (2,)),                 # 5  a letter, its parts named in pills beside it
+    "badges": (("table", "category_card"), False, (1, 2)),  # 6  key points as round badges, a note under each
+    "ruled": (("table",), False, (1, 2)),               # 7  a paragraph on ruled paper, in a learner's hand
+    "beforeafter": (("table",), False, (2,)),           # 8  before and after, the words of each counted
+    "choices": (("table",), False, None),               # 9  short phrases as coloured choice pills
+    "path": (("table",), False, (1, 2)),                # 10 numbered steps on a curved path
+    "compare": (("comparison", "table"), False, (2,)),  # 11 two things side by side, each framed, its head a pill
 }
+# The teal look's layouts (ADR 050), their rules appended only where used
+ADR050_LAYOUTS = ("wrongright", "coded", "opener", "timeline", "columns", "parts", "badges", "ruled",
+                  "beforeafter", "choices", "path", "compare")
+# a row's colour, in turn (ADR 050): amber, blue, lilac, coral, teal
+T_ROW_COLOURS = ("opener", "timeline", "parts", "badges", "path")
+# three of a kind (badges on cards) take teal, amber and coral first, as on the owner's slides
+T_TRIO = (4, 0, 3, 1, 2)
+# a comparison's head: the words up to the first colon, when that is a short lead
+COMPARE_HEAD = re.compile(r"^([^:<]{3,90}:)( )(.+)$", re.S)
+WORD = re.compile(r"[A-Za-z0-9À-ɏ]+(?:['’.\-/&][A-Za-z0-9À-ɏ]+)*")
 # a `place` layout's letter column names the part's place after a colon ("Her letter: the request")
 PLACE_NAMES = ("opening", "body", "request", "closing")
 # The paper (ADR 045): the line every Writing paper opens its notes with (fact
@@ -609,7 +660,7 @@ def check_layout(bid: str, b: dict, layout: str) -> str | None:
     if b.get("doc") or b.get("map"):
         return f"{bid} is a document or a map, drawn as a page"
     ncol = len(b.get("header") or (b.get("rows") or [[]])[0])
-    if cols and ncol not in cols:
+    if cols and b.get("type") == "table" and ncol not in cols:
         return f"the layout {layout!r} is for a table of {' or '.join(map(str, cols))} columns; {bid} has {ncol}"
     if layout == "bins":
         bad = [r for r in b.get("rows") or [] if r[1].strip().lower() not in BINS]
@@ -660,12 +711,17 @@ def _table_html(b: dict, html: str, layout: str) -> str:
     rows = b.get("rows") or []
     core = bool(b.get("core"))
     # each cell its column's label, for the layouts that show one above it
-    labelled = layout in ("scores", "pieces") or (layout == "cards" and len(header) >= 3)
+    labelled = layout in ("scores", "pieces", "coded") or (layout == "cards" and len(header) >= 3) or \
+        (layout == "choices" and header and all(h.strip() for h in header))
 
     def cell_attrs(c: int, txt: str) -> str:
         out = ""
-        if labelled and (c >= 1 or layout == "pieces") and c < len(header) and header[c].strip():
+        if labelled and (c >= 1 or layout in ("pieces", "coded", "choices")) and c < len(header) and header[c].strip():
             out += f' data-label="{_html.escape(header[c], quote=True)}"'
+        if layout == "coded":
+            out += f' data-c="{c % 5}"'
+        if layout == "beforeafter":
+            out += f' data-count="{len(WORD.findall(_text(txt)))}"'
         return out
 
     head_m = re.search(r"<thead>.*?</thead>", html, re.S)
@@ -689,6 +745,8 @@ def _table_html(b: dict, html: str, layout: str) -> str:
             open_tr += _crit_attr(key)
         if layout == "stack" and len(row) > 1 and row[1].strip().lower() == "yes":
             open_tr += ' data-yes=""'
+        if layout in T_ROW_COLOURS:
+            open_tr += f' data-c="{r % 5}"'
         skip = 0
         if layout == "paper" and len(row) > 1:
             # a row with no label goes on in the box of the row above it
@@ -726,6 +784,10 @@ def _table_html(b: dict, html: str, layout: str) -> str:
                     attrs += ' data-end=""'             # the letter's last paragraph written out: the request expanded
                 elif not txt.strip() and r > last_txt[c]:
                     attrs += ' data-after=""'           # past the letter's end: its sheet has ended
+            if layout == "choices":
+                attrs += f' data-c="{(r * len(row) + c) % 5}"'
+            if layout == "parts" and c == 1 and not txt.strip():
+                attrs += ' data-dash=""'                # a part not written out: grey lines, never a word
             if layout in ("cards", "stack") and c >= 1 and header and \
                     header[c].strip().lower() in IN_LETTER and txt.strip().lower() in CELL_TONES:
                 attrs += f' data-tone="{CELL_TONES[txt.strip().lower()]}"'
@@ -766,7 +828,45 @@ def _table_html(b: dict, html: str, layout: str) -> str:
         if place not in PLACE_NAMES:
             place = "body"
         return _add_root(html, "lay lay-paper lay-place", f" {PAPER_BESIDE} data-place=\"{place}\"")
+    if layout in ADR050_LAYOUTS:
+        html = _add_root(html, "lay lay-" + layout + size, _teal_root_attrs(layout, header, rows))
+        if layout == "path":
+            i = html.index(">") + 1
+            html = html[:i] + path_curve(n) + html[i:]
+        return html
     return _add_root(html, "lay lay-" + layout + size)
+
+
+def _teal_root_attrs(layout: str, header: list, rows: list) -> str:
+    """The attributes a teal layout's table takes on its own element (ADR 050): how many columns,
+    which column is narrow (a column of short labels or places), whether a bank is named by its
+    first header cell only; and, for a path, the curve its steps sit on (an empty drawing)."""
+    ncol = len(header or (rows or [[]])[0])
+    out = f' data-cols="{ncol}" data-n="{len(rows)}"'
+    if layout == "columns" and ncol >= 2:
+        longest = [max([len(_text(r[c]).strip()) for r in rows] + [len(_text(header[c]).strip()) if header else 0])
+                   for c in range(ncol)]
+        if longest[0] <= 16 and max(longest[1:]) > 30:
+            out += ' data-cw="first"'
+        elif longest[-1] <= 40 and max(longest[:-1]) > 50:
+            out += ' data-cw="last"'
+    if layout == "choices" and header and not all(h.strip() for h in header) and header[0].strip():
+        out += ' data-titled=""'
+    return out
+
+
+def path_curve(n: int) -> str:
+    """The curve a path's steps sit on (ADR 050, the owner's pattern 10): an empty drawing, the
+    steps' centres alternately low and high in a box 1000 by 300, joined by smooth curves."""
+    if n < 1:
+        return ""
+    pts = [((i + 0.5) * 1000 / n, 220 if i % 2 == 0 else 80) for i in range(n)]
+    d = f"M{pts[0][0]:.0f} {pts[0][1]}"
+    for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
+        h = (x1 - x0) / 2
+        d += f" C{x0 + h:.0f} {y0} {x1 - h:.0f} {y1} {x1:.0f} {y1}"
+    return ('<svg class="t-curve" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" '
+            f'focusable="false"><path d="{d}"/></svg>')
 
 
 def _paper_task(row: list[str]) -> bool:
@@ -1095,6 +1195,328 @@ LAYOUT_CSS.update({
 """,
 })
 ADR048_LAYOUTS = ("pieces", "place", "tags", "front", "sides", "chips")
+
+# The teal look's patterns (ADR 050; docs/02-DESIGN-SYSTEM.md §7k): the owner's Canva patterns 1 to 11 of
+# 2026-11-01. Rounded shapes, circles and pills, colour that names a part, no hard shadow; each appended only
+# to the stylesheet of a lesson that uses it. Every colour falls back to the teal look's own, so a pattern
+# drawn in a lesson without the look still reads. The words, their order and every hook stay the table's.
+_T = ("--t-teal:#0b6e6d;--t-ink:#173d3c;--t-amber:#e2a72e;--t-coral:#e57063;--t-blue:#9ecfd8;"
+      "--t-lilac:#b8a6d6;--t-teal-s:#e5f0ef;--t-amber-s:#fbf0d5;--t-coral-s:#fce7e3;--t-blue-s:#e1f1f4;"
+      "--t-lilac-s:#eee8f6;--t-pen:#cf3f3f")
+LAYOUT_CSS.update({
+    "tset": r"""
+/* the teal look's colours in turn (ADR 050): amber, blue, lilac, coral, teal, each with its soft tint and
+   the ink that reads on it; the look's own values where the lesson has no look */
+.lay,.lay-compare,.lay-badges{""" + _T + r"""}
+.frame :is(.lay,.lay-badges) [data-c="0"],.frame .lay-badges[data-c="0"]{--c:var(--t-amber);--cs:var(--t-amber-s);--con:var(--t-ink)}
+.frame :is(.lay,.lay-badges) [data-c="1"],.frame .lay-badges[data-c="1"]{--c:var(--t-blue);--cs:var(--t-blue-s);--con:var(--t-ink)}
+.frame :is(.lay,.lay-badges) [data-c="2"],.frame .lay-badges[data-c="2"]{--c:var(--t-lilac);--cs:var(--t-lilac-s);--con:var(--t-ink)}
+.frame :is(.lay,.lay-badges) [data-c="3"],.frame .lay-badges[data-c="3"]{--c:var(--t-coral);--cs:var(--t-coral-s);--con:var(--t-ink)}
+.frame :is(.lay,.lay-badges) [data-c="4"],.frame .lay-badges[data-c="4"]{--c:var(--t-teal);--cs:var(--t-teal-s);--con:#fff}
+/* typed words keep their width while they are typed (§8a) */
+.tbl.lay:is(.lay-wrongright,.lay-coded,.lay-opener,.lay-timeline,.lay-columns,.lay-parts,.lay-badges,.lay-ruled,
+  .lay-beforeafter,.lay-choices,.lay-path,.lay-compare) .tw{font-kerning:none;font-variant-ligatures:none}
+.tbl.lay:is(.lay-wrongright,.lay-coded,.lay-opener,.lay-timeline,.lay-columns,.lay-parts,.lay-badges,.lay-ruled,
+  .lay-beforeafter,.lay-choices,.lay-path,.lay-compare) td{overflow-wrap:break-word}
+/* the pieces of a teal pattern enter in reading order as the board opens (§8g, ADR 050): a row, a pill or a
+   step after another, 70 ms apart, each in 0.4 s; never under reduced motion, never in a measuring check */
+@keyframes t-in{from{opacity:0;transform:translateY(1.6cqh)}to{opacity:1;transform:none}}
+@keyframes t-pop{from{opacity:0;transform:scale(.86)}to{opacity:1;transform:none}}
+.tbl.lay:is(.lay-wrongright,.lay-opener,.lay-timeline,.lay-columns,.lay-parts,.lay-badges,.lay-ruled,
+  .lay-beforeafter,.lay-path) tbody tr{animation:t-in .4s cubic-bezier(.2,.7,.2,1) backwards}
+.tbl.lay:is(.lay-coded,.lay-choices) td{animation:t-pop .4s cubic-bezier(.2,.7,.2,1) backwards}
+.tbl.lay tbody tr:nth-child(2),.tbl.lay:is(.lay-coded,.lay-choices) td:nth-child(2){animation-delay:.07s}
+.tbl.lay tbody tr:nth-child(3),.tbl.lay:is(.lay-coded,.lay-choices) td:nth-child(3){animation-delay:.14s}
+.tbl.lay tbody tr:nth-child(4),.tbl.lay:is(.lay-coded,.lay-choices) td:nth-child(4){animation-delay:.21s}
+.tbl.lay tbody tr:nth-child(5),.tbl.lay:is(.lay-coded,.lay-choices) td:nth-child(5){animation-delay:.28s}
+.tbl.lay tbody tr:nth-child(6),.tbl.lay:is(.lay-coded,.lay-choices) td:nth-child(6){animation-delay:.35s}
+.tbl.lay tbody tr:nth-child(n+7){animation-delay:.42s}
+.tbl.lay.lay-choices tr:nth-child(2) td{animation-delay:.18s} .tbl.lay.lay-choices tr:nth-child(n+3) td{animation-delay:.32s}
+@media (prefers-reduced-motion: reduce){.tbl.lay tbody tr,.tbl.lay td{animation:none}}
+""",
+    "wrongright": r"""
+/* 1. wrong and right (ADR 050): a row a pair; the wrong sentence in plain ink, a curved arrow in the
+   teacher's red pen, the right sentence in bold teal. The narration's pen circles mark the error */
+.tbl.lay.lay-wrongright table{display:block}
+.tbl.lay.lay-wrongright thead tr,.tbl.lay.lay-wrongright tbody tr{display:grid;
+  grid-template-columns:minmax(0,1fr) 7.5cqw minmax(0,1.08fr);align-items:center}
+.tbl.lay.lay-wrongright th{background:none;color:var(--t-pen);font-size:2.2cqh;line-height:1.3;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;padding:0 0 .8cqh;border-radius:0;text-align:left}
+.tbl.lay.lay-wrongright th:first-child{grid-column:1} .tbl.lay.lay-wrongright th:last-child{grid-column:3;color:var(--t-teal)}
+.tbl.lay.lay-wrongright th[data-tone]::before{display:none}
+.tbl.lay.lay-wrongright tbody{display:flex;flex-direction:column}
+.tbl.lay.lay-wrongright tbody tr{padding:1.5cqh 0;border-top:max(1px,.16cqh) solid #e2e8e6}
+.tbl.lay.lay-wrongright tbody tr:first-child{border-top:0;padding-top:.4cqh}
+.tbl.lay.lay-wrongright td,.tbl.lay.lay-wrongright td[data-tone]{background:none;padding:.4cqh .6cqw;border-radius:1cqh}
+.tbl.lay.lay-wrongright td:first-child{grid-column:1;color:var(--t-ink)}
+.tbl.lay.lay-wrongright td:last-child{grid-column:3;position:relative;color:var(--t-teal);font-weight:700}
+.tbl.lay.lay-wrongright td:last-child .tw{color:var(--t-teal)}
+/* the curved arrow: a quarter of an ellipse from the wrong down and round to the right, its head */
+.tbl.lay.lay-wrongright td:last-child::before{content:"";display:block;position:absolute;left:-6.6cqw;top:50%;
+  width:4.8cqw;height:4.2cqh;margin-top:-4.4cqh;box-sizing:border-box;border:max(2px,.42cqh) solid transparent;
+  border-left-color:var(--t-pen);border-bottom-color:var(--t-pen);border-bottom-left-radius:100%;pointer-events:none}
+.tbl.lay.lay-wrongright td:last-child::after{content:"";position:absolute;left:-2.2cqw;top:50%;margin-top:-1.2cqh;
+  border-top:1cqh solid transparent;border-bottom:1cqh solid transparent;border-left:1.5cqh solid var(--t-pen)}
+.tbl.lay.lay-wrongright td.active,.tbl.core.lay.lay-wrongright.spot tbody tr.focus td.active{background:var(--sc-active);
+  box-shadow:none}
+.tbl.core.lay.lay-wrongright.spot tbody tr.focus{box-shadow:none;transform:none}
+""",
+    "coded": r"""
+/* 2. a sentence as coloured parts (ADR 050): each part a rounded tile in its colour, its label a pill of the
+   same colour above it, read left to right as the sentence is; a part is typed in as the narration reaches it */
+.tbl.lay.lay-coded table{display:block}
+.tbl.lay.lay-coded thead{display:none}
+.tbl.lay.lay-coded tbody{display:flex;flex-direction:column;gap:2.4cqh}
+.tbl.lay.lay-coded tr{display:flex;flex-wrap:nowrap;gap:1.6cqh 1.2cqw;align-items:stretch}
+.tbl.lay.lay-coded tbody tr td:nth-child(n){position:relative;flex:1 1 auto;min-width:10cqw;overflow-wrap:normal;max-width:100%;margin-top:5.4cqh;
+  background:var(--c);color:var(--con);border-radius:2.8cqh;padding:2.4cqh 1.8cqw;font-weight:700;
+  font-size:calc(var(--tf,3.2cqh) * 1.12);line-height:1.25;text-align:center;box-sizing:border-box;min-height:11cqh}
+.tbl.lay.lay-coded td .tw{color:inherit}
+.tbl.lay.lay-coded td[data-label]::before{content:attr(data-label);display:block;position:absolute;left:0;right:0;
+  top:-5.4cqh;margin:0 auto;width:max-content;max-width:100%;box-sizing:border-box;background:var(--c);color:var(--con);
+  font-size:2.2cqh;line-height:1.2;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;
+  padding:.9cqh 1.6cqw;white-space:nowrap}
+.tbl.lay.lay-coded td.active,.tbl.core.lay.lay-coded.spot tbody tr.focus td.active{background:var(--c);
+  box-shadow:0 0 0 .6cqh var(--sc-active)}
+.tbl.core.lay.lay-coded.spot tbody tr.focus{box-shadow:none;transform:none}
+""",
+    "opener": r"""
+/* 2. a phrase first (ADR 050): each sentence its kind as a small pill, the phrase that opens it in a tile of
+   that colour, then the rest of the sentence in plain ink; the colour names the kind */
+.tbl.lay.lay-opener table{display:block}
+.tbl.lay.lay-opener thead{display:none}
+.tbl.lay.lay-opener tbody{display:flex;flex-direction:column;gap:1.8cqh}
+.tbl.lay.lay-opener tr{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:1.4cqw;row-gap:.7cqh;
+  align-items:center}
+.tbl.lay.lay-opener tbody tr td:first-child{grid-column:1;grid-row:1;justify-self:start;background:var(--c);color:var(--con);
+  font-size:2.1cqh;line-height:1.2;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;
+  padding:.7cqh 1.4cqw}
+.tbl.lay.lay-opener tbody tr td:nth-child(2){grid-column:1;grid-row:2;align-self:stretch;background:var(--cs);color:var(--t-ink);
+  font-weight:700;border-radius:2.2cqh;padding:1.1cqh 1.4cqw;max-width:36cqw;box-shadow:inset .8cqh 0 0 var(--c)}
+.tbl.lay.lay-opener td:nth-child(3){grid-column:2;grid-row:2;color:var(--t-ink)}
+.tbl.lay.lay-opener td.active,.tbl.core.lay.lay-opener.spot tbody tr.focus td.active{background:var(--sc-active);
+  box-shadow:none}
+.tbl.core.lay.lay-opener.spot tbody tr.focus{box-shadow:none;transform:none}
+""",
+    "timeline": r"""
+/* 3. a timeline (ADR 050): each row a round marker on a teal line, in its colour, its words under it and a
+   handwritten note under those; read left to right in time order */
+.tbl.lay.lay-timeline table{display:block}
+.tbl.lay.lay-timeline thead{display:none}
+.tbl.lay.lay-timeline tbody{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);column-gap:2cqw}
+.tbl.lay.lay-timeline tr{display:flex;flex-direction:column;align-items:center;position:relative;text-align:center}
+.tbl.lay.lay-timeline tr:not(:last-child)::after{content:"";position:absolute;left:50%;top:6.5cqh;width:calc(100% + 2cqw);
+  height:max(2px,.9cqh);margin-top:-.45cqh;background:var(--t-teal);z-index:0}
+.tbl.lay.lay-timeline tbody tr td:first-child{position:relative;z-index:1;width:13cqh;height:13cqh;border-radius:50%;
+  background:var(--c);color:var(--con);font-weight:800;font-size:3.4cqh;line-height:13cqh;white-space:nowrap;
+  overflow:hidden;padding:0}
+.tbl.lay.lay-timeline td:nth-child(2){margin-top:2.4cqh;font-weight:800;font-size:3cqh;color:var(--t-ink)}
+.tbl.lay.lay-timeline td:nth-child(3){margin-top:1cqh;font-family:var(--t-hand,cursive);font-size:3.4cqh;line-height:1.15;
+  color:var(--t-ink2,#536866)}
+.tbl.core.lay.lay-timeline.spot tbody tr.focus{box-shadow:none;transform:none}
+""",
+    "columns": r"""
+/* 4. rounded columns (ADR 050): each column's head a solid pill (teal, amber, coral, blue), its cells soft
+   pills of the same colour under it; a row is still taught as one row */
+.tbl.lay.lay-columns table{display:block}
+.tbl.lay.lay-columns thead tr,.tbl.lay.lay-columns tbody tr{display:grid;column-gap:1.6cqw;align-items:stretch;
+  grid-template-columns:repeat(var(--cn,2),minmax(0,1fr))}
+.tbl.lay.lay-columns[data-cols="3"]{--cn:3} .tbl.lay.lay-columns[data-cols="4"]{--cn:4}
+.tbl.lay.lay-columns[data-cols="2"][data-cw="first"] tr{grid-template-columns:24% minmax(0,1fr)}
+.tbl.lay.lay-columns[data-cols="2"][data-cw="last"] tr{grid-template-columns:minmax(0,1fr) 30%}
+.tbl.lay.lay-columns[data-cols="3"][data-cw="first"] tr{grid-template-columns:15% minmax(0,1fr) minmax(0,1fr)}
+.tbl.lay.lay-columns[data-cols="3"][data-cw="last"] tr{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 22%}
+.tbl.lay.lay-columns[data-cols="4"][data-cw="first"] tr{grid-template-columns:13% repeat(3,minmax(0,1fr))}
+.tbl.lay.lay-columns[data-cols="4"][data-cw="last"] tr{grid-template-columns:repeat(3,minmax(0,1fr)) 18%}
+.tbl.lay.lay-columns thead tr{margin-bottom:1.4cqh}
+.tbl.lay.lay-columns thead tr th:nth-child(n){border-radius:999px;padding:1.3cqh 1.4cqw;text-align:center;font-weight:800;font-size:2.4cqh;
+  line-height:1.2;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--t-teal)}
+.tbl.lay.lay-columns th:nth-child(2){background:var(--t-amber);color:var(--t-ink)}
+.tbl.lay.lay-columns th:nth-child(3){background:var(--t-coral);color:var(--t-ink)}
+.tbl.lay.lay-columns th:nth-child(4){background:var(--t-blue);color:var(--t-ink)}
+.tbl.lay.lay-columns th[data-tone]::before{display:none}
+.tbl.lay.lay-columns tbody{display:flex;flex-direction:column;gap:1.3cqh}
+.tbl.lay.lay-columns tbody tr td:nth-child(n){border-radius:2.6cqh;padding:1.3cqh 1.6cqw;color:var(--t-ink);background:var(--t-teal-s);
+  align-self:stretch}
+.tbl.lay.lay-columns td:nth-child(2){background:var(--t-amber-s)} .tbl.lay.lay-columns td:nth-child(3){background:var(--t-coral-s)}
+.tbl.lay.lay-columns td:nth-child(4){background:var(--t-blue-s)}
+.tbl.lay.lay-columns td[data-tone]{color:var(--t-ink)}
+.tbl.lay.lay-columns[data-cw="first"] td:first-child,.tbl.lay.lay-columns[data-cw="last"] td:last-child{font-weight:700;
+  text-align:center;align-content:center}
+.tbl.lay.lay-columns td.active,.tbl.core.lay.lay-columns.spot tbody tr.focus td.active{background:var(--sc-active);
+  box-shadow:none}
+.tbl.core.lay.lay-columns.spot tbody tr.focus{box-shadow:none;transform:scale(calc(1 + .004 * var(--sc-motion, 1)))}
+""",
+    "parts": r"""
+/* 5. a letter and its parts (ADR 050): the letter one white sheet with a teal edge, each part's name a pill in
+   its colour beside its paragraph, a line from the pill to the sheet; a part not written out is grey lines */
+.tbl.lay.lay-parts table{display:block}
+.tbl.lay.lay-parts thead tr,.tbl.lay.lay-parts tbody tr{display:grid;grid-template-columns:18% minmax(0,1fr);column-gap:2.4cqw}
+.tbl.lay.lay-parts th{background:none;color:var(--sc-muted2,#5d7270);font-size:2.2cqh;line-height:1.3;font-weight:700;
+  padding:0 2cqw .8cqh;text-align:left;border-radius:0}
+.tbl.lay.lay-parts th:first-child{text-align:right;padding-right:0}
+.tbl.lay.lay-parts tbody tr td:first-child{align-self:center;justify-self:end;position:relative;background:var(--c);color:var(--con);
+  font-weight:700;font-size:2.4cqh;line-height:1.2;border-radius:999px;padding:.9cqh 1.6cqw;text-align:center}
+.tbl.lay.lay-parts td:first-child::after{content:"";display:block;position:absolute;left:100%;top:50%;width:2.4cqw;
+  height:max(2px,.32cqh);margin-top:max(-1px,-.16cqh);background:var(--t-teal)}
+.tbl.lay.lay-parts td:last-child{background:#fff;border-left:max(2px,.36cqh) solid var(--t-teal);
+  border-right:max(2px,.36cqh) solid var(--t-teal);padding:.9cqh 1.6cqw;line-height:1.34;color:var(--t-ink)}
+.tbl.lay.lay-parts tbody tr:first-child td:last-child{border-top:max(2px,.36cqh) solid var(--t-teal);
+  border-radius:1.6cqh 1.6cqh 0 0;padding-top:1.8cqh}
+.tbl.lay.lay-parts tbody tr:last-child td:last-child{border-bottom:max(2px,.36cqh) solid var(--t-teal);
+  border-radius:0 0 1.6cqh 1.6cqh;padding-bottom:1.8cqh}
+.tbl.lay.lay-parts td[data-dash]::before{content:"";display:block;height:2.6em;background:
+  repeating-linear-gradient(180deg,transparent 0 .55em,var(--t-teal-s) .55em 1.05em,transparent 1.05em 1.3em)}
+.tbl.lay.lay-parts td.active,.tbl.core.lay.lay-parts.spot tbody tr.focus td.active{box-shadow:none}
+.tbl.lay.lay-parts td:last-child.active,.tbl.core.lay.lay-parts.spot tbody tr.focus td:last-child.active{
+  background:var(--sc-active)}
+.tbl.core.lay.lay-parts.spot tbody tr.focus{box-shadow:none;transform:none}
+""",
+    "badges": r"""
+/* 6. key points as round badges (ADR 050): each a solid circle in its colour holding the point, a handwritten
+   note under it; on a recap board the cards stand side by side */
+.tbl.lay.lay-badges table{display:block}
+.tbl.lay.lay-badges thead{display:none}
+.tbl.lay.lay-badges tbody{display:flex;flex-wrap:wrap;justify-content:center;gap:2.6cqh 4cqw}
+.tbl.lay.lay-badges tr{display:flex;flex-direction:column;align-items:center;flex:0 1 28%;text-align:center}
+.tbl.lay.lay-badges tbody tr td:first-child{display:grid;place-content:center;width:25cqh;height:25cqh;border-radius:50%;
+  background:var(--c);color:var(--con);font-weight:800;font-size:3.4cqh;line-height:1.2;padding:2.6cqh;box-sizing:border-box}
+.tbl.lay.lay-badges td:nth-child(2){margin-top:2.2cqh;font-family:var(--t-hand,cursive);font-size:3.9cqh;line-height:1.15;
+  color:var(--t-pen)}
+.tbl.core.lay.lay-badges.spot tbody tr.focus{box-shadow:none;transform:none}
+#cam:has(> .card.lay-badges){justify-content:center;align-content:center;column-gap:4cqw}
+#cam > .card.lay-badges{flex:0 1 30%;background:none;border:0;overflow:visible;padding:0;display:flex;
+  flex-direction:column;align-items:center;text-align:center}
+.card.lay-badges .cardhd{display:grid;place-content:center;width:24cqh;height:24cqh;border-radius:50%;
+  background:var(--c);color:var(--con);font-size:3.5cqh;line-height:1.15;font-weight:800;letter-spacing:0;
+  text-transform:none;padding:2.4cqh;box-sizing:border-box}
+.card.lay-badges .cardbd{display:block;padding:2.2cqh 0 0;font-family:var(--t-hand,cursive);font-size:4cqh;line-height:1.15;
+  font-weight:500;color:var(--t-ink)}
+#cam > .card.lay-badges.on:not([data-layer="fixed"]):not([data-oa-layer="fixed"]){animation-name:t-pop}
+""",
+    "ruled": r"""
+/* 7. a paragraph on ruled paper (ADR 050): a white sheet with blue rules and a red margin, the lines in a
+   learner's hand, their numbers in the margin; the narration's pen marks the errors, a sticky note advises */
+.tbl.lay.lay-ruled{background:#fff;border-radius:1.6cqh;padding:2.2cqh 2.4cqw 2.6cqh;
+  box-shadow:0 .6cqh 2.2cqh rgba(11,60,59,.08)}
+.tbl.lay.lay-ruled table{display:table;width:100%;border-collapse:collapse;table-layout:fixed}
+.tbl.lay.lay-ruled thead{display:table-header-group} .tbl.lay.lay-ruled tbody{display:table-row-group}
+.tbl.lay.lay-ruled tr,.tbl.lay.lay-ruled thead tr{display:table-row} .tbl.lay.lay-ruled td,.tbl.lay.lay-ruled th{display:table-cell}
+.tbl.lay.lay-ruled colgroup{display:table-column-group}
+.tbl.lay.lay-ruled[data-cols="2"] col:first-child{width:7%!important} .tbl.lay.lay-ruled[data-cols="2"] col:last-child{width:93%!important}
+.tbl.lay.lay-ruled th{background:none;color:var(--sc-muted2,#5d7270);font-size:2.2cqh;line-height:1.3;font-weight:700;
+  text-align:left;padding:0 1.2cqw 1.4cqh;border-radius:0;vertical-align:bottom}
+.tbl.lay.lay-ruled td{background:none;vertical-align:top;color:var(--t-ink);font-family:var(--t-hand,cursive);
+  font-size:calc(var(--tf,3.2cqh) * 1.3);line-height:1.42;font-weight:500;padding:0 1.2cqw;
+  background-image:repeating-linear-gradient(180deg,transparent 0 calc(1.42em - max(1px,.18cqh)),
+    var(--t-rule,#c9e2e8) calc(1.42em - max(1px,.18cqh)) 1.42em);background-origin:content-box;background-clip:content-box}
+.tbl.lay.lay-ruled[data-cols="2"] td:first-child{font-family:inherit;font-size:calc(var(--tf,3.2cqh) * .8);
+  line-height:calc(var(--tf,3.2cqh) * 1.3 * 1.42);color:var(--sc-muted2,#5d7270);text-align:right;padding-right:1.4cqw;
+  border-right:max(1px,.2cqh) solid #f1b5ae;background-image:none}
+.tbl.lay.lay-ruled td.active,.tbl.core.lay.lay-ruled.spot tbody tr.focus td.active{background-color:var(--sc-active);
+  box-shadow:none}
+.tbl.core.lay.lay-ruled.spot tbody tr.focus{filter:none;box-shadow:none;transform:none}
+""",
+    "beforeafter": r"""
+/* 8. before and after (ADR 050): two panels side by side, the before on coral, the after on teal, their heads
+   in capitals; each sentence with its word count in a circle of the panel's colour, so the saving is seen */
+.tbl.lay.lay-beforeafter table{display:block}
+.tbl.lay.lay-beforeafter thead tr,.tbl.lay.lay-beforeafter tbody tr{display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:3cqw}
+.tbl.lay.lay-beforeafter th{background:var(--t-coral-s);color:#b8352a;font-size:3.1cqh;line-height:1.2;font-weight:800;
+  letter-spacing:.08em;text-transform:uppercase;padding:2.2cqh 2.2cqw 1.2cqh;border-radius:2.8cqh 2.8cqh 0 0;text-align:left}
+.tbl.lay.lay-beforeafter th:last-child{background:var(--t-teal-s);color:var(--t-teal)}
+.tbl.lay.lay-beforeafter th[data-tone]::before{display:none}
+.tbl.lay.lay-beforeafter td,.tbl.lay.lay-beforeafter td[data-tone]{position:relative;background:var(--t-coral-s);
+  color:var(--t-ink);padding:1.2cqh 2cqw 1.2cqh calc(2cqw + 10.4cqh);min-height:10.8cqh;border-radius:0;
+  border-top:max(1px,.3cqh) solid #fff}
+.tbl.lay.lay-beforeafter td:last-child,.tbl.lay.lay-beforeafter td:last-child[data-tone]{background:var(--t-teal-s)}
+.tbl.lay.lay-beforeafter td .tw{color:var(--t-ink)}
+.tbl.lay.lay-beforeafter tbody tr:last-child td{border-radius:0 0 2.8cqh 2.8cqh;padding-bottom:2.4cqh}
+.tbl.lay.lay-beforeafter td[data-count]::before{content:attr(data-count) "\A words";white-space:pre;display:block;
+  position:absolute;left:2cqw;top:1.2cqh;width:8.8cqh;height:8.8cqh;border-radius:50%;background:var(--t-coral);
+  color:#fff;font-weight:800;font-size:2.1cqh;line-height:1.15;text-align:center;padding-top:2.2cqh;box-sizing:border-box;
+  margin:0}
+.tbl.lay.lay-beforeafter td:last-child[data-count]::before{background:var(--t-teal)}
+.tbl.lay.lay-beforeafter td.active,.tbl.core.lay.lay-beforeafter.spot tbody tr.focus td.active{
+  background-color:var(--sc-active);box-shadow:none}
+.tbl.core.lay.lay-beforeafter.spot tbody tr.focus{box-shadow:none;transform:none}
+""",
+    "choices": r"""
+/* 9. choice pills (ADR 050): short phrases as solid pills, each in its colour; their labels above them when
+   every column has one, or the bank's name above them all */
+.tbl.lay.lay-choices table{display:block}
+.tbl.lay.lay-choices thead{display:none}
+.tbl.lay.lay-choices[data-titled] thead{display:block}
+.tbl.lay.lay-choices[data-titled] th+th{display:none}
+.tbl.lay.lay-choices th{background:none;color:var(--t-pen);font-family:var(--t-hand,cursive);font-size:3.6cqh;
+  line-height:1.15;font-weight:700;text-transform:none;letter-spacing:0;padding:0 .4cqw 1.2cqh;text-align:left;border-radius:0}
+.tbl.lay.lay-choices tbody{display:flex;flex-wrap:wrap;gap:1.8cqh 1.4cqw;align-items:flex-end}
+.tbl.lay.lay-choices tr{display:contents}
+.tbl.lay.lay-choices tbody tr td:nth-child(n){position:relative;background:var(--c);color:var(--con);font-weight:700;border-radius:999px;
+  padding:1.3cqh 2.4cqw;text-align:center}
+.tbl.lay.lay-choices td[data-label]{margin-top:4cqh}
+.tbl.lay.lay-choices td[data-label]::before{content:attr(data-label);display:block;position:absolute;left:0;right:0;
+  top:-3.6cqh;margin:0;font-size:2.1cqh;line-height:1.2;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--sc-muted2,#5d7270);white-space:nowrap;text-align:center}
+.tbl.lay.lay-choices td.active,.tbl.core.lay.lay-choices.spot tbody tr.focus td.active{background:var(--c);
+  box-shadow:0 0 0 .6cqh var(--sc-active)}
+""",
+    "path": r"""
+/* 10. steps on a curved path (ADR 050): each row a numbered circle in its colour, alternately low and high on
+   a teal curve (an empty drawing), its name under it in bold and a handwritten note */
+.tbl.lay.lay-path{position:relative}
+.tbl.lay.lay-path .t-curve{position:absolute;left:0;top:0;width:100%;height:30cqh;overflow:visible;pointer-events:none}
+.tbl.lay.lay-path .t-curve path{fill:none;stroke:var(--t-teal);stroke-width:.7;stroke-linecap:round}
+.tbl.lay.lay-path table{display:block;position:relative}
+.tbl.lay.lay-path thead{display:none}
+.tbl.lay.lay-path tbody{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);column-gap:1.6cqw;
+  counter-reset:t-step}
+.tbl.lay.lay-path tr{display:flex;flex-direction:column;align-items:center;text-align:center;counter-increment:t-step}
+.tbl.lay.lay-path tr::before{content:counter(t-step);display:block;width:13cqh;height:13cqh;border-radius:50%;
+  background:var(--c);color:var(--con);font-weight:800;font-size:5cqh;line-height:13cqh;text-align:center;
+  margin-top:15.5cqh;flex:none}
+.tbl.lay.lay-path tr:nth-child(even)::before{margin-top:1.5cqh}
+.tbl.lay.lay-path td:first-child{margin-top:1.8cqh;font-weight:800;font-size:3cqh;line-height:1.2;color:var(--t-ink)}
+.tbl.lay.lay-path td:nth-child(2){margin-top:1cqh;font-family:var(--t-hand,cursive);font-size:3.4cqh;line-height:1.15;
+  color:var(--t-pen)}
+.tbl.core.lay.lay-path.spot tbody tr.focus{box-shadow:none;transform:none}
+""",
+    "compare": r"""
+/* 11. two things compared side by side (ADR 050): each framed in its colour, teal and coral, with rounded
+   corners; its head (a comparison's words up to the first colon, or a table's column label) a solid pill, the
+   rest under it */
+.chg.lay-compare{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.4cqh 2.6cqw;align-items:stretch;
+  background:none;padding:.8cqh 0 0;border:0;box-shadow:none}
+.chg.lay-compare:is([data-layer="fixed"],[data-oa-layer="fixed"]){font-size:4.2cqh;line-height:1.35}
+.chg.lay-compare:is([data-layer="fixed"],[data-oa-layer="fixed"]) :is(.chg-from,.chg-to){padding:2.4cqh 2.4cqw 3cqh}
+.chg.lay-compare .chg-cap{grid-column:1 / -1;font-family:var(--t-hand,cursive);font-size:3.8cqh;line-height:1.3;
+  font-weight:700;color:var(--t-pen)}
+.chg.lay-compare .chg-arrow{display:none}
+.chg.lay-compare .chg-from,.chg.lay-compare .chg-to{display:block;background:#fff;color:var(--t-ink);
+  border:max(2px,.4cqh) solid var(--t-teal);border-radius:2.8cqh;padding:1.8cqh 2cqw 2.2cqh;font-weight:400}
+.chg.lay-compare .chg-to{border-color:var(--t-coral)}
+.chg.lay-compare .cmp-h{display:block;background:var(--t-teal-s);color:var(--t-teal);font-weight:700;border-radius:999px;
+  padding:.9cqh 1.6cqw;margin-bottom:1.6cqh;text-align:center;line-height:1.25}
+.chg.lay-compare .chg-to .cmp-h{background:var(--t-coral-s);color:#a8392c}
+.chg.lay-compare.fx-lift{box-shadow:none}
+.chg.lay-compare.fx-lift :is(.chg-from,.chg-to){box-shadow:var(--sc-shadow)}
+.tbl.lay.lay-compare table{display:block}
+.tbl.lay.lay-compare thead tr,.tbl.lay.lay-compare tbody tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  column-gap:2.6cqw}
+.tbl.lay.lay-compare thead tr th:nth-child(n){background:var(--t-teal);color:#fff;border-radius:999px;padding:1.2cqh 1.6cqw;text-align:center;
+  font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin:0 1.6cqw 1.4cqh}
+.tbl.lay.lay-compare th:last-child{background:var(--t-coral);color:var(--t-ink)}
+.tbl.lay.lay-compare th[data-tone]::before{display:none}
+.tbl.lay.lay-compare tbody{display:flex;flex-direction:column;gap:1.1cqh}
+.tbl.lay.lay-compare tbody tr td:nth-child(n){background:var(--t-teal-s);color:var(--t-ink);border-radius:999px;padding:1.1cqh 1.8cqw;
+  text-align:center;font-weight:600}
+.tbl.lay.lay-compare td:last-child{background:var(--t-coral-s)}
+.tbl.lay.lay-compare td.active,.tbl.core.lay.lay-compare.spot tbody tr.focus td.active{background:var(--sc-active);
+  box-shadow:none}
+.tbl.core.lay.lay-compare.spot tbody tr.focus{box-shadow:none;transform:none}
+""",
+})
 ROOT_CLASS = re.compile(r'^<div class="([^"]*)"')
 
 
@@ -1123,7 +1545,28 @@ def layout_css(blocks: dict) -> str:
         for k in ADR048_LAYOUTS:
             if "lay-" + k in cls:
                 used.add(k)
+    # the teal look's layouts (ADR 050): a comparison or a recap card carries its layout as a class with no `lay`
+    for b in blocks.values():
+        m = ROOT_CLASS.match(b.get("html") or "")
+        cls = set(m.group(1).split()) if m else set()
+        for k in ADR050_LAYOUTS:
+            if "lay-" + k in cls:
+                used.update(("tset", k))
     return "".join(LAYOUT_CSS[k] for k in LAYOUT_CSS if k in used)
+
+
+def compare_heads(html: str) -> str:
+    """A comparison drawn as two framed things side by side (ADR 050, the owner's pattern 11): the
+    words of each side up to its first colon, when they are a short lead, wrapped in a span `cmp-h`
+    (drawn as the side's pill head) and the rest in `cmp-b`. The words and the space between stay."""
+    def one(m):
+        inner = m.group(2)
+        hm = COMPARE_HEAD.match(inner)
+        if not hm:
+            return m.group(0)
+        return (m.group(1) + '<span class="cmp-h">' + hm.group(1) + "</span>" + hm.group(2)
+                + '<span class="cmp-b">' + hm.group(3) + "</span>" + m.group(3))
+    return re.sub(r'(<span class="chg-(?:from|to)">)(.*?)(</span>)', one, html, flags=re.S)
 
 
 CONTENTS_SEP = " · "          # between a category's sections (build_lesson_boards.py)
@@ -1198,6 +1641,14 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
             raise SystemExit("REFUSED: sections.json block_layouts: " + why)
         if t == "table":
             html = _table_html(b, html, layout)
+        elif layout == "compare":
+            html = _add_root(compare_heads(html), "lay-compare")
+        elif layout == "badges":
+            # a recap's cards as round badges (ADR 050), each its colour in turn, by its place among the
+            # section's blocks (its id ends in its number: "_k02" is the second)
+            km = re.search(r"_k(\d+)$", b.get("id") or "")
+            i = int(km.group(1)) - 1 if km else 0
+            html = _add_root(html, "lay-badges", f' data-c="{T_TRIO[i % 5]}"')
         else:
             html = _add_root(html, "lay-" + layout)
     if accents:
@@ -1349,20 +1800,109 @@ def effects(boards: list[dict], blocks: dict, zoom: bool = True, nozoom=()) -> N
 
 
 # ---------------------------------------------------------------------------
-# IBM Plex Sans for the reference player (player.html only; never in the bundle).
+# The teal look (ADR 050; docs/02-DESIGN-SYSTEM.md §1b): the owner's Canva patterns of 2026-11-01. Appended
+# after style C's own rules (and the layouts') to the stylesheet of a lesson whose sections.json names it, so
+# every other lesson's stylesheet is unchanged. Teal with warm accents on a warm white ground; rounded shapes;
+# the teacher's notes in a hand, his advice on sticky notes, his marks in red pen; the contents board a path.
 # ---------------------------------------------------------------------------
-def font_dir() -> Path:
-    lock = json.loads(FONT_LOCK.read_text(encoding="utf-8"))
+TEAL = {"teal": "#0b6e6d", "ink": "#173d3c", "ground": "#faf8f4", "amber": "#e2a72e", "coral": "#e57063",
+        "blue": "#9ecfd8", "lilac": "#b8a6d6", "pen": "#cf3f3f", "sticky": "#f7e27f"}
+HAND = 1.3          # the hand's size against body text: Caveat's x-height is about 0.4 em, IBM Plex's 0.52
+LOOK_CSS = {"teal": r"""
+/* --- The teal look (ADR 050; docs/02-DESIGN-SYSTEM.md §1b): teal with soft warm accents, light and airy;
+   rounded shapes, no hard shadows; the teacher's hand for his notes, sticky notes for his advice, red pen for
+   his marks. Style C's rules, effects and bundle stay; these come after them. --- */
+.frame{--t-teal:""" + TEAL["teal"] + r""";--t-teal-d:#095a59;--t-ink:""" + TEAL["ink"] + r""";--t-ink2:#536866;
+  --t-ground:""" + TEAL["ground"] + r""";--t-amber:""" + TEAL["amber"] + r""";--t-coral:""" + TEAL["coral"] + r""";
+  --t-blue:""" + TEAL["blue"] + r""";--t-lilac:""" + TEAL["lilac"] + r""";
+  --t-teal-s:#e5f0ef;--t-amber-s:#fbf0d5;--t-coral-s:#fce7e3;--t-blue-s:#e1f1f4;--t-lilac-s:#eee8f6;
+  --t-pen:""" + TEAL["pen"] + r""";--t-sticky:""" + TEAL["sticky"] + r""";--t-rule:#c9e2e8;
+  --t-hand:var(--font-hand,"Caveat"),"Segoe Print","Bradley Hand","Chalkboard SE",cursive;
+  --sc-ink:var(--t-ink);--sc-muted:var(--t-ink2);--sc-muted2:#5d7270;--sc-faint:#9fb3b1;--sc-paper:#fff;
+  --sc-note:var(--t-teal-s);--sc-line:#e2e8e6;--sc-right:var(--t-teal);--sc-right-bg:var(--t-teal-s);
+  --sc-wrong:#b8352a;--sc-wrong-bg:var(--t-coral-s);--sc-gloss:#9a6406;--sc-gloss-bg:var(--t-amber-s);
+  --sc-active:#fdefc6;--sc-shadow:0 .8cqh 2.6cqh rgba(11,60,59,.12);--k:var(--t-teal);--ks:var(--t-teal-s);
+  background:var(--t-ground);color:var(--t-ink);border-color:#e6e2d8}
+.hdr,.body,.ctl{background:var(--t-ground)}
+.hdr{font-weight:800;color:var(--t-ink);letter-spacing:-.012em}
+.ltitle{font-size:9cqh;line-height:1.05;font-weight:800;color:var(--t-ink);letter-spacing:-.025em}
+/* the teacher's notes, written while he teaches, in his hand: no card, his ink, a size that reads as body
+   text does (§3); the board's own sentences stay in print */
+.plain.role-note:not([data-layer="fixed"]):not([data-oa-layer="fixed"]){background:none;border:0;
+  padding:.4cqh .6cqw;font-family:var(--t-hand);font-size:calc(3.2cqh * """ + str(HAND) + r""");line-height:1.18;
+  font-weight:500;color:var(--t-ink)}
+.plain.role-slide,.plain.role-note[data-layer="fixed"],.plain.role-note[data-oa-layer="fixed"]{background:#fff;
+  box-shadow:0 .4cqh 1.6cqh rgba(11,60,59,.07)}
+/* his advice on a sticky note: yellow, soft corners, a very small tilt, his hand */
+.callout,.callout.warning,.callout.key_rule{background:var(--t-sticky);color:var(--t-ink);border:0;
+  border-radius:.6cqh 2.6cqh 2.6cqh 2.6cqh;rotate:-.6deg;box-shadow:0 .7cqh 1.6cqh -.4cqh rgba(80,64,0,.22);
+  font-family:var(--t-hand);font-size:calc(3.2cqh * """ + str(HAND) + r""");line-height:1.15;font-weight:500}
+.callout .badge-c,.key_rule .badge-c,.warning .badge-c{background:var(--t-ink);color:var(--t-sticky);
+  font-family:var(--font-plex,"IBM Plex Sans"),system-ui,sans-serif;font-size:2.4cqh;width:4cqh;height:4cqh}
+/* a grammar term: a white card ringed in lilac, its tag a lilac pill */
+.term.tnote,.term.role-note{background:#fff;box-shadow:inset 0 0 0 max(1px,.32cqh) var(--t-lilac-s);border-radius:2.6cqh}
+.term .lbl,.term.tnote .lbl{background:var(--t-lilac);color:var(--t-ink);border-radius:999px;padding:.3cqh 1.2cqw}
+/* a word card: amber */
+.gl{background:var(--t-amber-s);border-radius:2.6cqh} .gl-txt::before{background:var(--t-amber);color:var(--t-ink);border-radius:999px}
+.gl-w{color:#7a4f00}
+/* a wrong sentence: white, ringed in coral, its mark a coral badge; a right one teal */
+.row.err{background:#fff;color:var(--t-ink);box-shadow:inset 0 0 0 max(1px,.32cqh) var(--t-coral-s);border-radius:999px}
+.err .verdict{background:var(--t-coral);color:#fff}
+.row.ans,.row.result{background:var(--t-teal-s);color:var(--t-teal)} .ans .verdict,.row.result .verdict{background:var(--t-teal)}
+/* a comparison and a change card: white, rounded */
+.chg{background:#fff;box-shadow:0 .4cqh 1.6cqh rgba(11,60,59,.07);border-radius:2.6cqh}
+/* the contents board: a path of numbered circles, each in its colour in turn, one under the other, joined by
+   a teal line (the owner's pattern 10, set vertically) */
+#cam > .blk.citem{flex:0 0 100%;background:none;padding:.2cqh 1cqw;position:relative;gap:2cqw}
+#cam:has(> .blk.citem){row-gap:1.2cqh}
+.citem .cnum{position:relative;z-index:1;width:6.8cqh;height:6.8cqh;font-size:3cqh;font-weight:800;
+  background:var(--c,var(--t-teal));color:var(--con,#fff)}
+.citem .ct{font-weight:700;font-size:3.7cqh;color:var(--t-ink)}
+#cam > .blk.citem:not(:last-child)::after{content:"";position:absolute;left:calc(1cqw + 3.4cqh - .3cqh);top:50%;
+  width:.6cqh;height:calc(100% + 1.2cqh);background:var(--t-teal);z-index:0}
+#cam > .blk.citem:nth-child(5n+1){--c:var(--t-amber);--con:var(--t-ink)}
+#cam > .blk.citem:nth-child(5n+2){--c:var(--t-blue);--con:var(--t-ink)}
+#cam > .blk.citem:nth-child(5n+3){--c:var(--t-lilac);--con:var(--t-ink)}
+#cam > .blk.citem:nth-child(5n+4){--c:var(--t-coral);--con:var(--t-ink)}
+#cam > .blk.citem:nth-child(5n){--c:var(--t-teal);--con:#fff}
+.citem.fx-lift{box-shadow:none;transform:translateX(calc(.6cqw * var(--sc-motion, 1)))}
+/* the teacher's red pen (§8): a circle is his ring, an underline and a strike his line; the marker stays */
+:is(#marks,.oa-marks) .m-circle{border:max(2px,.42cqh) solid var(--t-pen)!important;border-radius:50%!important;
+  box-shadow:0 0 0 max(1px,.08cqh) rgba(207,63,63,.25)!important}
+:is(#marks,.oa-marks) .m-line,:is(#marks,.oa-marks) .m-tick{background:var(--t-pen)!important;border-radius:999px!important}
+:is(#marks,.oa-marks) .m-strike{background:var(--t-pen)!important;border-radius:999px!important}
+/* a fixed block enters as its board opens (§8g, ADR 050); the teal layouts' pieces enter in reading order */
+@keyframes t-enter{from{opacity:0;transform:translateY(1.6cqh)}to{opacity:1;transform:none}}
+.blk:is([data-layer="fixed"],[data-oa-layer="fixed"]):not(.lay){animation:t-enter .45s cubic-bezier(.2,.7,.2,1) backwards}
+@media (prefers-reduced-motion: reduce){.blk:is([data-layer="fixed"],[data-oa-layer="fixed"]){animation:none}}
+"""}
+
+
+def look_css(lesson) -> str:
+    """The look's rules for a lesson whose sections.json names one (ADR 050); "" for any other."""
+    look = look_of(lesson)
+    return LOOK_CSS[look] if look else ""
+
+
+# ---------------------------------------------------------------------------
+# IBM Plex Sans for the reference player (player.html only; never in the bundle),
+# and the teal look's hand, Caveat (ADR 050), the same way.
+# ---------------------------------------------------------------------------
+HAND_LOCK = REPO / "spike" / "fonts" / "caveat.lock.json"
+
+
+def font_dir(lock_path: Path = FONT_LOCK) -> Path:
+    lock = json.loads(lock_path.read_text(encoding="utf-8"))
     base = Path(os.environ.get("LOCALAPPDATA") or Path.home()) / "oet-fonts"
     return base / f"{lock['package'].split('/')[-1]}-{lock['version']}"
 
 
-def fetch_fonts() -> Path:
+def fetch_fonts(lock_path: Path = FONT_LOCK) -> Path:
     """Download the pinned font files into the local cache, each checked against
     the lock's SHA-256; a file that does not match is refused and removed."""
     import urllib.request
-    lock = json.loads(FONT_LOCK.read_text(encoding="utf-8"))
-    d = font_dir()
+    lock = json.loads(lock_path.read_text(encoding="utf-8"))
+    d = font_dir(lock_path)
     d.mkdir(parents=True, exist_ok=True)
     for f in lock["files"]:
         p = d / f["name"]
@@ -1376,13 +1916,9 @@ def fetch_fonts() -> Path:
     return d
 
 
-def font_css() -> str:
-    """@font-face rules for IBM Plex Sans 400 to 700, latin and latin-ext, the
-    files embedded as data: URLs (a file:// page cannot load a font beside it).
-    Refused when a file is missing or does not match its pinned hash: run
-    `style_c.py --fetch-fonts` once."""
-    lock = json.loads(FONT_LOCK.read_text(encoding="utf-8"))
-    d = font_dir()
+def _faces(lock_path: Path) -> list[str]:
+    lock = json.loads(lock_path.read_text(encoding="utf-8"))
+    d = font_dir(lock_path)
     out = []
     for f in lock["files"]:
         p = d / f["name"]
@@ -1391,15 +1927,28 @@ def font_css() -> str:
         data = p.read_bytes()
         if hashlib.sha256(data).hexdigest() != f["sha256"]:
             raise SystemExit(f"REFUSED: {p} does not match the lock's SHA-256")
-        out.append("@font-face{font-family:\"IBM Plex Sans\";font-style:normal;font-display:block;"
+        out.append(f"@font-face{{font-family:\"{lock['family']}\";font-style:normal;font-display:block;"
                    f"font-weight:{f['weight']};unicode-range:{lock['unicode_range'][f['subset']]};"
                    f"src:url(data:font/woff2;base64,{base64.b64encode(data).decode()}) format(\"woff2\")}}")
-    return "/* IBM Plex Sans (SIL OFL 1.1), the reference player's copy (ADR 042) */\n" + "\n".join(out) + "\n"
+    return out
+
+
+def font_css(look: str | None = None) -> str:
+    """@font-face rules for IBM Plex Sans 400 to 700, latin and latin-ext, the
+    files embedded as data: URLs (a file:// page cannot load a font beside it);
+    for a lesson in the teal look, Caveat 500 and 700 too (its teacher's hand).
+    Refused when a file is missing or does not match its pinned hash: run
+    `style_c.py --fetch-fonts` once."""
+    out = "/* IBM Plex Sans (SIL OFL 1.1), the reference player's copy (ADR 042) */\n" + "\n".join(_faces(FONT_LOCK)) + "\n"
+    if look == "teal":
+        out += "/* Caveat (SIL OFL 1.1), the teal look's hand, the reference player's copy (ADR 050) */\n" \
+               + "\n".join(_faces(HAND_LOCK)) + "\n"
+    return out
 
 
 if __name__ == "__main__":
     import sys
     if sys.argv[1:] == ["--fetch-fonts"]:
-        print(f"fonts in {fetch_fonts()}")
+        print(f"fonts in {fetch_fonts()} and {fetch_fonts(HAND_LOCK)}")
     else:
         raise SystemExit("usage: style_c.py --fetch-fonts")

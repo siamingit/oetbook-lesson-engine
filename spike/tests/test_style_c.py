@@ -483,3 +483,96 @@ class ADR048Layouts(unittest.TestCase):
         self.assertIn("lay-pieces", style_c.layout_html(b, b["html"], None, "pieces"))
         self.assertIsNotNone(style_c.check_layout("x", self._table(["a", "b"], [["1", "2"]]), "place"))
 
+
+
+def teal_lesson(look="teal", style="c") -> Path:
+    d = lesson(style)
+    p = d / "analysis" / "sections.json"
+    info = json.loads(p.read_text(encoding="utf-8"))
+    info["lesson"]["look"] = look
+    p.write_text(json.dumps(info), encoding="utf-8")
+    return d
+
+
+class TealLook(unittest.TestCase):
+    """ADR 050: the teal look is the lesson's stylesheet, only where sections.json names it; its eleven patterns
+    are layouts whose rules are appended only to a lesson that uses them, and no word of a block changes."""
+
+    def _table(self, header, rows, core=True):
+        return ADR048Layouts._table(self, header, rows, core)
+
+    def test_only_a_style_c_lesson_that_names_it(self):
+        import write_screens
+        self.assertIsNone(style_c.look_of(lesson("c")))
+        self.assertEqual(style_c.look_of(teal_lesson()), "teal")
+        with self.assertRaises(SystemExit):
+            style_c.look_of(teal_lesson("pink"))
+        with self.assertRaises(SystemExit):
+            style_c.look_of(teal_lesson(style=None))
+        self.assertEqual(style_c.look_css(lesson("c")), "")
+        css = write_screens.frame_css(teal_lesson())
+        self.assertTrue(css.endswith(style_c.CSS + style_c.LOOK_CSS["teal"]))
+        self.assertIn("--t-teal:#0b6e6d", css)
+
+    def test_the_eleven_patterns(self):
+        cases = {
+            "wrongright": (["As written", "Put right"], [["Also she came.", "She also came."]]),
+            "coded": (["Who", "What", "When"], [["I", "saw him", "today"]]),
+            "opener": (["Kind", "The phrase first", "Then the sentence"], [["Time", "On Monday,", "she came."]]),
+            "timeline": (["Date", "Event", "Note"], [["8", "Admitted", "bed"], ["9", "Angiogram", "scan"]]),
+            "columns": (["Kind", "At the start", "At the end"], [["Date", "On Monday, she came in at last.",
+                                                                  "She came in on Monday at last."]]),
+            "parts": (["Part", "The letter"], [["The opening", "I am writing to refer her."], ["The request", ""]]),
+            "badges": (["Tip", "Note"], [["Be clear", "One idea at a time."]]),
+            "ruled": (["Line", "The paragraph"], [["1", "She was seen."], ["2", "Also she came."]]),
+            "beforeafter": (["Before", "After"], [["I am writing this letter to refer her.", "I am referring her."]]),
+            "choices": (["The bank", ""], [["also", "then"], ["often", "later"]]),
+            "path": (["Step", "Note"], [["Read", "Who reads it?"], ["Plan", "Choose."], ["Write", "Go."]]),
+            "compare": (["Referral", "Discharge"], [["Reason", "Admission"]]),
+        }
+        self.assertEqual(set(cases), set(style_c.ADR050_LAYOUTS))
+        for lay, (header, rows) in cases.items():
+            b = self._table(header, rows)
+            out = style_c.layout_html(b, b["html"], None, lay)
+            self.assertIn("lay-" + lay, out, lay)
+            self.assertEqual(style_c._text(out), style_c._text(b["html"]), lay)
+            css = style_c.layout_css({"x": {**b, "html": out}})
+            self.assertIn(style_c.LAYOUT_CSS[lay], css, lay)
+            self.assertIn(style_c.LAYOUT_CSS["tset"], css, lay)
+            self.assertEqual(style_c.layout_css({"x": b}), "", lay)
+
+    def test_what_each_pattern_reads(self):
+        lay = lambda header, rows, name: style_c.layout_html(*(lambda b: (b, b["html"]))(self._table(header, rows)),  # noqa: E731
+                                                              None, name)
+        out = lay(["Before", "After"], [["One two three four.", "One two."]], "beforeafter")
+        self.assertIn('data-count="4"', out)
+        self.assertIn('data-count="2"', out)
+        out = lay(["Who", "What"], [["I", "saw him"]], "coded")
+        self.assertIn('data-label="Who" data-c="0"', out)
+        self.assertIn('data-c="1"', out)
+        self.assertIn("data-titled", lay(["The bank", ""], [["a", "b"]], "choices"))
+        self.assertNotIn("data-titled", lay(["Who, what", "Why"], [["a", "b"]], "choices"))
+        self.assertIn('data-cw="first"', lay(["Kind", "At the start", "At the end"],
+                                             [["Date", "On Monday, she came in at last.", "x"]], "columns"))
+        out = lay(["Step", "Note"], [["a", "b"], ["c", "d"], ["e", "f"]], "path")
+        self.assertIn('<svg class="t-curve"', out)
+        self.assertIn('d="M167 220 C333 220 333 80 500 80 C667 80 667 220 833 220"', out)
+        self.assertIn('data-dash=""', lay(["Part", "Letter"], [["Opening", "Dear Dr X"], ["Body", ""]], "parts"))
+        self.assertIsNotNone(style_c.check_layout("x", self._table(["a", "b", "c"], [["1", "2", "3"]]), "wrongright"))
+
+    def test_a_comparison_its_heads_and_recap_cards(self):
+        html = ('<div class="blk role-example chg stacked" data-id="x"><span class="chg-cap">Two places</span>'
+                '<span class="chg-from">At the start, with a comma: On examination, she was well.</span>'
+                '<svg class="chg-arrow" viewBox="0 0 30 14" aria-hidden="true"><path d="M2 7 H26"/></svg>'
+                '<span class="chg-to">No colon here at all</span></div>')
+        b = {"id": "x", "type": "comparison", "html": html}
+        out = style_c.layout_html(b, html, None, "compare")
+        self.assertIn('<span class="cmp-h">At the start, with a comma:</span> <span class="cmp-b">On examination',
+                      out)
+        self.assertIn('<span class="chg-to">No colon here at all</span>', out)
+        self.assertEqual(style_c._text(out), style_c._text(html))
+        self.assertIn(style_c.LAYOUT_CSS["compare"], style_c.layout_css({"x": {**b, "html": out}}))
+        card = '<div class="blk role-note card fam-none" data-id="s_k02"><div class="cardhd">A</div></div>'
+        out = style_c.layout_html({"id": "s_k02", "type": "category_card"}, card, None, "badges")
+        self.assertIn('lay-badges" data-c="0"', out)
+        self.assertIn(style_c.LAYOUT_CSS["badges"], style_c.layout_css({"s_k02": {"html": out}}))
