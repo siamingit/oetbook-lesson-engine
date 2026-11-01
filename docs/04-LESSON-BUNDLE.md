@@ -793,7 +793,10 @@ These are the only rules. Every time and target they use is in the bundle.
     of its height, centred on them as far as the board's edges allow (the view never shows past the
     board's edges). Below a scale of 1.03 there is no zoom. It takes the place of rule 13 for that
     time and applies on a board with `fit` "whole" too (rule 52 holds outside it). The view glides in,
-    from one entry to the next, and back out over 0.35 s.
+    from one entry to the next, and back out over 0.35 s. The builder writes no `zoom` entry for a board the
+    lesson marks no-zoom (its `sections.json` `boards_nozoom`, each a board with `fit` "whole"; ADR 048):
+    such a board stays whole at every moment on every device, its spotlight (rule 11) and its marks alone
+    showing the line being taught.
 56. **A practice point** (1.23; ADR 046): while the lesson plays (never by a seek) and the clock reaches a point's
     `time`, the renderer stops the lesson there and opens a pop-up over it, the board behind dimmed and paused: the
     `task`, the `excerpt` drawn as a piece of the paper (label column, lines), and the `items`, tap first, with no sideways

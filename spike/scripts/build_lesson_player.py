@@ -169,12 +169,15 @@ def format_version(lesson_id: str, with_map: bool = False, part_b: bool = False,
     return newer if newer and vkey(newer) > vkey(v) else v
 
 
-def board_fits(info: dict, boards: list[dict], blocks_all: dict, sample: bool = False) -> None:
+def board_fits(info: dict, boards: list[dict], blocks_all: dict, sample: bool = False) -> set[str]:
     """1.21 (ADR 041): each board the lesson's sections.json names in `boards_fit`
     takes its `fit` ("whole": rule 52). Only a table board on which the camera may
     zoom (rule 13) can be named: not a question board, a Listening board or a map
     board, which never zoom. A name that is not such a board stops the build; a
-    sample build (`--sections`) skips the boards it does not hold."""
+    sample build (`--sections`) skips the boards it does not hold. Returns the
+    boards named in `boards_nozoom` (ADR 048): each a board shown whole, on which
+    the style C zoom (rule 55) is not written either, so it stays whole at every
+    moment on every device."""
     by_id = {bd["id"]: bd for bd in boards}
     for bid, how in (info.get("boards_fit") or {}).items():
         bd = by_id.get(bid)
@@ -189,6 +192,19 @@ def board_fits(info: dict, boards: list[dict], blocks_all: dict, sample: bool = 
             raise SystemExit(f"REFUSED: sections.json boards_fit names {bid!r}, which is not a table board "
                              "the camera may zoom (rule 13)")
         bd["fit"] = how
+    nozoom = info.get("boards_nozoom") or []
+    if not isinstance(nozoom, list) or any(not isinstance(x, str) for x in nozoom):
+        raise SystemExit("REFUSED: sections.json boards_nozoom is a list of board ids")
+    for bid in nozoom:
+        bd = by_id.get(bid)
+        if bd is None:
+            if sample:
+                continue
+            raise SystemExit(f"REFUSED: sections.json boards_nozoom names {bid!r}, not a board of the lesson")
+        if bd.get("fit") != "whole":
+            raise SystemExit(f"REFUSED: sections.json boards_nozoom names {bid!r}: a no-zoom board is a board shown "
+                             "whole; name it in boards_fit as \"whole\" too")
+    return set(nozoom)
 
 
 def declared_format(info: dict) -> str | None:
@@ -708,7 +724,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                 # the board layouts and the criteria's colours (ADR 042, amendment
                 # of 2026-10-26): classes and attributes on the block's html only
                 html_b = style_c.layout_html(nb, html_b, sec["title"],
-                                             (info.get("block_layouts") or {}).get(nb["id"]))
+                                             (info.get("block_layouts") or {}).get(nb["id"]),
+                                             (info.get("block_accents") or {}).get(nb["id"]))
             if nb.get("image"):                      # 1.11: the file, relative to the bundle's folder
                 nb["image"] = {**nb["image"], "file": resolve_images(
                     IMAGE_TOKEN + "/" + nb["image"]["file"], out_dir, L)}
@@ -1023,11 +1040,14 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
         bd["wordmarks"] = sorted(wm, key=lambda x: x["time"])
     # 1.21 (ADR 041): the boards shown whole, and the format they and the
     # lesson's own declaration call for
-    board_fits(info, boards_out, blocks_all, sample=bool(only))
+    nozoom = board_fits(info, boards_out, blocks_all, sample=bool(only))
     # 1.22 (ADR 042): a lesson in style C, and when its effects play
     style = style_c.style_of(L)
     if style:
-        style_c.effects(boards_out, blocks_all, zoom=style_c.zooms(L))
+        style_c.effects(boards_out, blocks_all, zoom=style_c.zooms(L), nozoom=nozoom)
+    elif nozoom:
+        raise SystemExit("REFUSED: sections.json boards_nozoom in a lesson that is not in style C (a board shown "
+                         "whole is enough there, rule 52)")
     # the board layouts a lesson names (sections.json `block_layouts`, by bundle
     # block id): only in style C, and only blocks of the lesson
     for bid in info.get("block_layouts") or {}:
@@ -1035,6 +1055,15 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             raise SystemExit("REFUSED: sections.json block_layouts in a lesson that is not in style C")
         if bid not in blocks_all and not only:
             raise SystemExit(f"REFUSED: sections.json block_layouts names {bid!r}, not a block of the lesson")
+    # the words a layout sets in its accent colour (sections.json `block_accents`, ADR 048): a block with a
+    # layout that draws them; each a list of phrases (checked on the block's html by style_c.layout_html)
+    for bid, phrases in (info.get("block_accents") or {}).items():
+        if not style:
+            raise SystemExit("REFUSED: sections.json block_accents in a lesson that is not in style C")
+        if bid not in blocks_all and not only:
+            raise SystemExit(f"REFUSED: sections.json block_accents names {bid!r}, not a block of the lesson")
+        if not isinstance(phrases, list) or not phrases or any(not isinstance(p, str) or not p.strip() for p in phrases):
+            raise SystemExit(f"REFUSED: sections.json block_accents {bid!r}: a list of phrases is needed")
     # 1.23 (ADR 046): practice points, from the lesson's analysis/practice.json, on
     # the pauses that name them; a lesson without the file is built as before
     with_practice = practice_points.attach(L, boards_out, sample=bool(only))

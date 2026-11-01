@@ -570,6 +570,8 @@ LAYOUTS = {
     "pair": (("table",), False, (4,)),
     "paper": (("table",), False, (2, 3)),
     "vs": (("comparison",), False, None),
+    "acronym": (("table",), False, (2,)),
+    "skeleton": (("table",), False, (2,)),
 }
 # The paper (ADR 045): the line every Writing paper opens its notes with (fact
 # 44), set in bold on the paper, and the labels of its Writing Task box
@@ -577,6 +579,10 @@ PAPER_TODAY = "Assume that today's date is"
 PAPER_TASK = ("writing task", "in your answer")
 PAPER_SKIP_MAX = 4
 PAPER_BESIDE = 'data-paper="beside"'
+# an acronym's row opens with its letter, a colon and the part's name ("I: Introduce and identify")
+ACRONYM_CELL = re.compile(r"^[A-Z]: \S")
+# the layouts that draw `block_accents` (the words set in the layout's accent colour)
+ACCENT_LAYOUTS = ("skeleton",)
 BINS = {"keep": "keep", "keep, briefly": "brief", "keep briefly": "brief", "leave out": "out"}
 BIN_LANES = (("keep", "Keep"), ("brief", "Keep briefly"), ("out", "Leave out"))
 TAGS = re.compile(r"<[^>]+>")
@@ -603,6 +609,13 @@ def check_layout(bid: str, b: dict, layout: str) -> str | None:
     if layout == "scores":
         if any(not (r[1].strip().isdigit() and r[2].strip().isdigit()) for r in b.get("rows") or []):
             return "scores: each row's second and third cells are numbers (scored out of, needed)"
+    if layout == "acronym":
+        bad = [r for r in b.get("rows") or [] if not ACRONYM_CELL.match(r[0].strip())]
+        if bad:
+            return f"acronym: a row's first cell is a letter, a colon and the part's name ('I: Introduce'): {bad[0][0]!r}"
+    if layout == "skeleton":
+        if any(not (b.get("rows") or [[""]])[0][c].strip() for c in (0, 1)):
+            return "skeleton: each letter opens with a paragraph written out (its first row)"
     return None
 
 
@@ -654,6 +667,9 @@ def _table_html(b: dict, html: str, layout: str) -> str:
     if len(trs) != len(rows):
         return html
     named = {CRIT_KEY.get(r[0].strip()) for r in rows} - {None}
+    # a skeleton: in each column (a letter), the last paragraph written out
+    last_txt = [max([r for r, row in enumerate(rows) if row[c].strip()] or [-1]) for c in range(len(rows[0]) if rows else 0)] \
+        if layout == "skeleton" else []
     new_trs = []
     in_task = False
     for r, (tr, row) in enumerate(zip(trs, rows)):
@@ -687,6 +703,18 @@ def _table_html(b: dict, html: str, layout: str) -> str:
                 attrs += f' data-bin="{BINS[txt.strip().lower()]}"'
             if skip and c >= 1:
                 attrs += f' data-skip="{skip}"'
+            if layout == "acronym" and c == 0:
+                # the letter, the colon (drawn at no size) and the part's name, each in its own span: the words,
+                # their order and the colon stay exactly as they are
+                am = re.match(r"^([A-Z])(: )(.*)$", inner, re.S)
+                if am:
+                    inner = ('<span class="ac-l">' + am.group(1) + '</span><span class="ac-s">' + am.group(2)
+                             + '</span><span class="ac-n">' + am.group(3) + "</span>")
+            if layout == "skeleton":
+                if not txt.strip() and r < last_txt[c]:
+                    attrs += ' data-dash=""'            # a paragraph not written out: dashed lines
+                elif txt.strip() and r == last_txt[c] and r > 0:
+                    attrs += ' data-end=""'             # the letter's last paragraph written out: the request expanded
             if layout in ("cards", "stack") and c >= 1 and header and \
                     header[c].strip().lower() in IN_LETTER and txt.strip().lower() in CELL_TONES:
                 attrs += f' data-tone="{CELL_TONES[txt.strip().lower()]}"'
@@ -866,6 +894,67 @@ LAYOUT_CSS = {
 .tbl.core.lay.lay-paper[data-paper="beside"].spot tbody tr.focus td:nth-child(3).active{background:var(--sc-active);
   background-clip:padding-box}
 """,
+    "acronym": r"""
+/* an acronym's parts (ISBAR; §7j): a row a part, on a tinted band; its letter large, bold and in the key-word
+   amber in its own narrow column, the part's name in bold beside it, the colon between them drawn at no size
+   (it stays in the words); the part's text in the row. The spotlight lifts the row being taught and fades the
+   others; the marker marks its words */
+.tbl.lay.lay-acronym tbody{display:flex;flex-direction:column;gap:.8cqh}
+.tbl.lay.lay-acronym thead tr,.tbl.lay.lay-acronym tbody tr{display:grid;grid-template-columns:31% minmax(0,1fr);column-gap:0}
+.tbl.lay.lay-acronym thead tr{margin-bottom:.4cqh}
+.tbl.lay.lay-acronym th:first-child{border-radius:2.2cqh 0 0 2.2cqh} .tbl.lay.lay-acronym th:last-child{border-radius:0 2.2cqh 2.2cqh 0}
+.tbl.lay.lay-acronym tbody tr{background:var(--ks);border-radius:2.2cqh}
+.tbl.lay.lay-acronym td{padding:1cqh 1.6cqw;overflow-wrap:break-word;color:var(--sc-ink);align-self:center}
+.tbl.lay.lay-acronym td::before{content:none}
+.tbl.lay.lay-acronym td:first-child{display:grid;grid-template-columns:calc(var(--tf,3.2cqh) * 2.1) minmax(0,1fr);
+  column-gap:1.2cqw;align-items:center;padding-right:.6cqw}
+.tbl.lay.lay-acronym .ac-l{grid-area:1 / 1;font-size:calc(var(--tf,3.2cqh) * 2.1);line-height:1;font-weight:800;
+  color:var(--sc-gloss);text-align:center;letter-spacing:-.02em}
+.tbl.lay.lay-acronym .ac-s{grid-area:1 / 2;font-size:0;line-height:0}
+.tbl.lay.lay-acronym .ac-n{grid-area:1 / 2;font-weight:700;line-height:1.2}
+.tbl.lay.lay-acronym .tw{font-kerning:none;font-variant-ligatures:none}
+.tbl.lay.lay-acronym td.active,.tbl.core.lay.lay-acronym.spot tbody tr.focus td.active{background:var(--sc-active);
+  box-shadow:none;border-radius:0 2.2cqh 2.2cqh 0}
+.tbl.lay.lay-acronym td:first-child.active,.tbl.core.lay.lay-acronym.spot tbody tr.focus td:first-child.active{
+  border-radius:2.2cqh 0 0 2.2cqh}
+""",
+    "skeleton": r"""
+/* letter skeletons (§7j): two letters side by side, each a sheet on the letter's cream, a paragraph a row.
+   A paragraph the lesson reads is written out: the opening, with its purpose words (`block_accents`) in the
+   Purpose colour; the last paragraph written out of each letter (the request expanded) in that colour. A
+   paragraph not written out is three short dashed lines, drawn by the stylesheet, never a word */
+.tbl.lay.lay-skeleton table{display:table;width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}
+.tbl.lay.lay-skeleton thead{display:table-header-group} .tbl.lay.lay-skeleton tbody{display:table-row-group}
+.tbl.lay.lay-skeleton tr,.tbl.lay.lay-skeleton thead tr{display:table-row}
+.tbl.lay.lay-skeleton td,.tbl.lay.lay-skeleton th{display:table-cell}
+.tbl.lay.lay-skeleton colgroup{display:table-column-group}
+.tbl.lay.lay-skeleton col{width:50%!important}
+.tbl.lay.lay-skeleton th{background:none;color:var(--sc-muted2);font-size:2.2cqh;line-height:1.3;font-weight:600;
+  padding:0 1.6cqw .6cqh;text-align:left;vertical-align:bottom;border-radius:0}
+.tbl.lay.lay-skeleton td{background:var(--sc-paper);vertical-align:top;padding:.6cqh 1.6cqw;line-height:1.4;
+  color:var(--sc-ink);overflow-wrap:break-word;border-top:0;border-radius:0}
+.tbl.lay.lay-skeleton td::before{content:none}
+/* the gap between the sheets is taken from the first (the columns are fixed) */
+.tbl.lay.lay-skeleton :is(th:first-child,td:first-child){border-right:3cqw solid transparent;background-clip:padding-box}
+.tbl.lay.lay-skeleton tbody tr:first-child td{padding-top:1.5cqh;border-radius:1.4cqh 1.4cqh 0 0}
+.tbl.lay.lay-skeleton tbody tr:last-child td{padding-bottom:1.5cqh;border-radius:0 0 1.4cqh 1.4cqh}
+.tbl.lay.lay-skeleton .tw{font-kerning:none;font-variant-ligatures:none}
+/* a paragraph not written out: two dashed lines and a shorter third */
+.tbl.lay.lay-skeleton td[data-dash]::before{content:"";display:block;height:2em;
+  background-image:repeating-linear-gradient(90deg,var(--sc-faint) 0 .9cqw,transparent .9cqw 1.5cqw),
+    repeating-linear-gradient(90deg,var(--sc-faint) 0 .9cqw,transparent .9cqw 1.5cqw);
+  background-size:100% .26cqh,100% .26cqh;background-position:0 .7em,0 1.6em;background-repeat:no-repeat}
+.tbl.lay.lay-skeleton td[data-dash]::after{content:"";display:block;width:58%;height:.26cqh;margin:.5em 0 .4em;
+  background:repeating-linear-gradient(90deg,var(--sc-faint) 0 .9cqw,transparent .9cqw 1.5cqw)}
+/* the purpose words, and the request expanded at the end */
+.tbl.lay.lay-skeleton .acc{color:var(--k-purpose);font-weight:600}
+.tbl.lay.lay-skeleton td[data-end]{color:var(--k-purpose)}
+/* the paragraph being taught lit, the others at half */
+.tbl.core.lay.lay-skeleton.spot tbody tr.focus{filter:drop-shadow(0 .5cqh 1cqh rgba(20,32,31,.14));box-shadow:none;
+  transform:scale(calc(1 + .004 * var(--sc-motion, 1)))}
+.tbl.lay.lay-skeleton td.active,.tbl.core.lay.lay-skeleton.spot tbody tr.focus td.active{background:var(--sc-active);
+  box-shadow:none;background-clip:padding-box}
+""",
 }
 ROOT_CLASS = re.compile(r'^<div class="([^"]*)"')
 
@@ -888,6 +977,10 @@ def layout_css(blocks: dict) -> str:
             used.add("pair")
         if "lay-paper" in cls:
             used.add("paper")
+        if "lay-acronym" in cls:
+            used.add("acronym")
+        if "lay-skeleton" in cls:
+            used.add("skeleton")
     return "".join(LAYOUT_CSS[k] for k in LAYOUT_CSS if k in used)
 
 
@@ -910,7 +1003,25 @@ def contents_parts(html: str) -> str:
     return html[:m.start()] + '<div class="cs parts">' + inner + "</div>" + html[m.end():]
 
 
-def layout_html(b: dict, html: str, section_title: str | None, layout: str | None = None) -> str:
+def accent_html(b: dict, html: str, phrases: list[str]) -> str:
+    """The words a layout sets in its accent colour (sections.json `block_accents`,
+    by bundle block id: a skeleton's purpose words): each phrase, found once in the
+    block's html as it stands, wrapped in a span `acc`. A phrase found no times or
+    more than once, or split by a tag, stops the build."""
+    for p in phrases:
+        needle = _html.escape(str(p), quote=False)
+        hits = [m.start() for m in re.finditer(re.escape(needle), html)
+                if html.rfind("<", 0, m.start()) <= html.rfind(">", 0, m.start())]
+        if len(hits) != 1:
+            raise SystemExit(f"REFUSED: sections.json block_accents: {p!r} is found {len(hits)} time(s) in the words "
+                             f"of {b.get('id')}; once is needed")
+        i = hits[0]
+        html = html[:i] + '<span class="acc">' + needle + "</span>" + html[i + len(needle):]
+    return html
+
+
+def layout_html(b: dict, html: str, section_title: str | None, layout: str | None = None,
+                accents: list[str] | None = None) -> str:
     """A style C block's html with its layout and its criterion's colour:
 
     - every block of a section named after one of the six criteria takes that
@@ -920,7 +1031,9 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
       monogram (`crit`, `data-mono`);
     - a contents item named after a criterion takes the criterion's colour;
     - a block with a `layout` (sections.json `block_layouts`) takes `lay
-      lay-<layout>` and the attributes that layout reads.
+      lay-<layout>` and the attributes that layout reads;
+    - its `accents` (sections.json `block_accents`), on a layout that draws them
+      (ACCENT_LAYOUTS), each wrapped in a span `acc`.
 
     The block's words, their order and its hooks never change (checked)."""
     before = _text(html)
@@ -945,6 +1058,11 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
             html = _table_html(b, html, layout)
         else:
             html = _add_root(html, "lay-" + layout)
+    if accents:
+        if layout not in ACCENT_LAYOUTS:
+            raise SystemExit(f"REFUSED: sections.json block_accents: {b.get('id')} has the layout {layout!r}, which "
+                             f"draws no accent ({', '.join(ACCENT_LAYOUTS)})")
+        html = accent_html(b, html, accents)
     if _text(html) != before:
         raise SystemExit(f"REFUSED: the layout of {b.get('id')} would change its words")
     return html
@@ -984,7 +1102,7 @@ def zooms(lesson) -> bool:
     return lesson_type.of(lesson) in ZOOM_TYPES
 
 
-def effects(boards: list[dict], blocks: dict, zoom: bool = True) -> None:
+def effects(boards: list[dict], blocks: dict, zoom: bool = True, nozoom=()) -> None:
     """Write each state's `effects` (bundle 1.22), in time order:
 
     lift  a block grows a very little, with the soft shadow, from `time` to
@@ -1002,7 +1120,10 @@ def effects(boards: list[dict], blocks: dict, zoom: bool = True) -> None:
           that line until it moves on to a note (the next block revealed) or the
           sentence ends (0.4 s held), and back out; a later mark on the table
           takes the view on from there (rule 55). Only where `zoom` is true: a
-          lesson whose tables are documents (`zooms`, ADR 043).
+          lesson whose tables are documents (`zooms`, ADR 043), and never on a
+          board in `nozoom` (sections.json `boards_nozoom`, ADR 048): a board
+          shown whole that stays whole at every moment; its spotlight and its
+          marks alone show the line being taught.
     """
     for bd in boards:
         fixed_txt = [i for i in bd["fixed"] if blocks[i]["type"] not in ("table", "picture", "lesson_title")]
@@ -1011,8 +1132,8 @@ def effects(boards: list[dict], blocks: dict, zoom: bool = True) -> None:
         # the paper beside the letter (ADR 045) is never zoomed: a zoom onto one
         # cell would take the piece of the paper or the part of the letter it
         # feeds out of view, and the two are shown to be seen together
-        if zoom and tbl and not bd.get("split") and not bd.get("listen") and not blocks[tbl].get("map") \
-                and PAPER_BESIDE not in (blocks[tbl].get("html") or ""):
+        if zoom and tbl and bd.get("id") not in nozoom and not bd.get("split") and not bd.get("listen") \
+                and not blocks[tbl].get("map") and PAPER_BESIDE not in (blocks[tbl].get("html") or ""):
             f = blocks[tbl].get("font")
             if bd.get("fit") == "whole" or (f is not None and f <= ZOOM_SMALL):
                 doc = tbl
