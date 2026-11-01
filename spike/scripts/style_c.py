@@ -572,7 +572,16 @@ LAYOUTS = {
     "vs": (("comparison",), False, None),
     "acronym": (("table",), False, (2,)),
     "skeleton": (("table",), False, (2,)),
+    # ADR 048 (the Word Order redesign, 2026-11-01): forms drawn for what a board teaches
+    "pieces": (("table",), False, None),      # a sentence as its pieces in a row, each under its label
+    "place": (("table",), False, (3,)),       # the paper beside the part's place on a letter of dashed lines
+    "tags": (("table",), False, (2,)),        # a sentence on paper, the note on it as a tag at its end
+    "front": (("table",), False, (3,)),       # the kind, the phrase that opens the sentence, the rest
+    "sides": (("table",), False, (3,)),       # one case, its two versions side by side
+    "chips": (("table",), False, None),       # short phrases as chips in a row (a word bank), row by row
 }
+# a `place` layout's letter column names the part's place after a colon ("Her letter: the request")
+PLACE_NAMES = ("opening", "body", "request", "closing")
 # The paper (ADR 045): the line every Writing paper opens its notes with (fact
 # 44), set in bold on the paper, and the labels of its Writing Task box
 PAPER_TODAY = "Assume that today's date is"
@@ -651,11 +660,11 @@ def _table_html(b: dict, html: str, layout: str) -> str:
     rows = b.get("rows") or []
     core = bool(b.get("core"))
     # each cell its column's label, for the layouts that show one above it
-    labelled = layout in ("scores",) or (layout == "cards" and len(header) >= 3)
+    labelled = layout in ("scores", "pieces") or (layout == "cards" and len(header) >= 3)
 
     def cell_attrs(c: int, txt: str) -> str:
         out = ""
-        if labelled and c >= 1 and c < len(header):
+        if labelled and (c >= 1 or layout == "pieces") and c < len(header) and header[c].strip():
             out += f' data-label="{_html.escape(header[c], quote=True)}"'
         return out
 
@@ -748,6 +757,15 @@ def _table_html(b: dict, html: str, layout: str) -> str:
         # it beside the part of the letter it feeds (a third column)
         form = "beside" if len(header or (rows or [[]])[0]) == 3 else "sheet"
         return _add_root(html, "lay lay-paper", " " + PAPER_BESIDE if form == "beside" else ' data-paper="sheet"')
+    if layout == "place":
+        # the paper beside the letter (ADR 045), the part of the letter drawn in
+        # its place on a small letter of dashed lines (the owner's Request slide,
+        # ADR 048): the place is named after a colon in the letter column's label
+        tail = header[2].rsplit(":", 1)[-1].strip().lower().split() if len(header) == 3 and ":" in header[2] else []
+        place = tail[-1] if tail else "body"          # "Her letter: the request" names the request
+        if place not in PLACE_NAMES:
+            place = "body"
+        return _add_root(html, "lay lay-paper lay-place", f" {PAPER_BESIDE} data-place=\"{place}\"")
     return _add_root(html, "lay lay-" + layout + size)
 
 
@@ -963,6 +981,120 @@ LAYOUT_CSS = {
   box-shadow:none;background-clip:padding-box}
 """,
 }
+LAYOUT_CSS.update({
+    "pieces": r"""
+/* pieces (ADR 048): a sentence as its pieces in a row, each a chip under its
+   label (who, what, where, when, why), read left to right as the sentence is;
+   the labels are the header's words, drawn above the chips */
+.tbl.lay.lay-pieces thead{display:none}
+.tbl.lay.lay-pieces tbody{display:flex;flex-direction:column;gap:1.6cqh}
+.tbl.lay.lay-pieces tr{display:flex;flex-wrap:wrap;gap:1cqh 1cqw;align-items:flex-start;padding:0}
+.tbl.lay.lay-pieces td{display:block;position:relative;max-width:100%;margin-top:3.1cqh;background:var(--ks);
+  color:var(--sc-ink);border-radius:1.8cqh;padding:1cqh 1.6cqw;overflow-wrap:break-word;
+  font-size:calc(var(--tf, 3.2cqh) * 1.12);line-height:1.3;min-width:6cqw;min-height:1.3em;box-sizing:border-box}
+.tbl.lay.lay-pieces td::before{content:none}
+.tbl.lay.lay-pieces td[data-label]::before{content:attr(data-label);display:block;position:absolute;left:1cqw;
+  top:-2.9cqh;margin:0;font-size:2.3cqh;line-height:1.2;font-weight:700;letter-spacing:.04em;color:var(--k);
+  white-space:nowrap}
+.tbl.lay.lay-pieces td.active,.tbl.core.lay.lay-pieces.spot tbody tr.focus td.active{background:var(--sc-active);
+  box-shadow:none;border-radius:1.6cqh}
+.tbl.core.lay.lay-pieces.spot tbody tr.focus{box-shadow:none;transform:none}
+""",
+    "place": r"""
+/* the paper beside the part's place (ADR 048, the owner's Request slide): the
+   part of the letter on a small white letter whose other lines are dashes, in
+   its place (data-place: opening, body, request, closing) */
+.tbl.lay.lay-place[data-paper="beside"] td:nth-child(3){background:#fff;border:max(1px,.14cqh) solid #d7d4e0;
+  border-left:3.6cqh solid transparent;background-clip:padding-box;border-radius:.7cqh;
+  box-shadow:0 .5cqh .9cqh -.4cqh rgba(20,32,31,.16);padding:1cqh 1.4cqw 1.2cqh}
+.tbl.lay.lay-place td:nth-child(3)::before,.tbl.lay.lay-place td:nth-child(3)::after{content:"";display:block;
+  background:repeating-linear-gradient(90deg,#c9c6d4 0 1.1cqw,transparent 1.1cqw 1.8cqw);
+  -webkit-mask:repeating-linear-gradient(180deg,#000 0 .26cqh,transparent .26cqh 2.3cqh);
+  mask:repeating-linear-gradient(180deg,#000 0 .26cqh,transparent .26cqh 2.3cqh)}
+.tbl.lay.lay-place td:nth-child(3)::before{margin-bottom:1cqh;width:60%}
+.tbl.lay.lay-place td:nth-child(3)::after{margin-top:1cqh}
+.tbl.lay.lay-place[data-place="opening"] td:nth-child(3)::before{height:4.6cqh;width:38%}
+.tbl.lay.lay-place[data-place="opening"] td:nth-child(3)::after{height:11.5cqh}
+.tbl.lay.lay-place[data-place="body"] td:nth-child(3)::before{height:6.9cqh}
+.tbl.lay.lay-place[data-place="body"] td:nth-child(3)::after{height:6.9cqh}
+.tbl.lay.lay-place[data-place="request"] td:nth-child(3)::before{height:11.5cqh;width:100%}
+.tbl.lay.lay-place[data-place="request"] td:nth-child(3)::after{height:4.6cqh;width:30%}
+.tbl.lay.lay-place[data-place="closing"] td:nth-child(3)::before{height:13.8cqh;width:100%}
+.tbl.lay.lay-place[data-place="closing"] td:nth-child(3)::after{content:none}
+.tbl.lay.lay-place tr[data-solo] td:nth-child(3){background:none;border:0;box-shadow:none}
+.tbl.lay.lay-place tr[data-solo] td:nth-child(3)::before,.tbl.lay.lay-place tr[data-solo] td:nth-child(3)::after{content:none}
+.tbl.core.lay.lay-place.spot tbody tr.focus td:nth-child(3).active{background:var(--sc-active);background-clip:padding-box}
+""",
+    "tags": r"""
+/* tags (ADR 048): a sentence on paper, the note on it (where a word sits) as a
+   tag in the section's colour at its end */
+.tbl.lay.lay-tags thead{display:none}
+.tbl.lay.lay-tags tbody{display:flex;flex-direction:column;gap:1cqh}
+.tbl.lay.lay-tags tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,32%);align-items:center;column-gap:1.4cqw;
+  background:var(--sc-paper);border-radius:2.2cqh;padding:1cqh 1.6cqw}
+.tbl.lay.lay-tags td::before{content:none}
+.tbl.lay.lay-tags td:first-child{color:var(--sc-ink);overflow-wrap:break-word}
+.tbl.lay.lay-tags td+td{justify-self:end;font-weight:700;color:var(--k);background:var(--ks);border-radius:1.4cqh;
+  padding:.5cqh 1.2cqw;text-align:center;overflow-wrap:break-word}
+.tbl.lay.lay-tags td.active,.tbl.core.lay.lay-tags.spot tbody tr.focus td.active{background:var(--sc-active);box-shadow:none}
+.tbl.core.lay.lay-tags.spot tbody tr.focus{filter:drop-shadow(0 .5cqh 1cqh rgba(20,32,31,.14));box-shadow:none;
+  transform:scale(calc(1 + .004 * var(--sc-motion, 1)))}
+""",
+    "front": r"""
+/* a phrase first (ADR 048): the kind as a chip, the phrase that opens the
+   sentence bold in the section's colour with its comma, then the rest of the
+   sentence, so the two parts of the sentence are seen */
+.tbl.lay.lay-front thead{display:none}
+.tbl.lay.lay-front tbody{display:flex;flex-direction:column;gap:1cqh}
+.tbl.lay.lay-front tr{display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:baseline;column-gap:1cqw;
+  background:var(--sc-paper);border-radius:2.2cqh;padding:1cqh 1.6cqw}
+.tbl.lay.lay-front td::before{content:none}
+.tbl.lay.lay-front td:first-child{background:var(--ks);color:var(--k);font-weight:700;border-radius:1.2cqh;
+  padding:.2cqh 1cqw;font-size:2.4cqh;align-self:center;white-space:nowrap}
+.tbl.lay.lay-front td:nth-child(2){font-weight:700;color:var(--k);max-width:42cqw;overflow-wrap:break-word}
+.tbl.lay.lay-front td:nth-child(3){color:var(--sc-ink);overflow-wrap:break-word}
+.tbl.lay.lay-front td.active,.tbl.core.lay.lay-front.spot tbody tr.focus td.active{background:var(--sc-active);
+  box-shadow:0 0 0 .5cqh var(--sc-active);border-radius:.8cqh}
+.tbl.core.lay.lay-front.spot tbody tr.focus{filter:drop-shadow(0 .5cqh 1cqh rgba(20,32,31,.14));box-shadow:none;
+  transform:scale(calc(1 + .004 * var(--sc-motion, 1)))}
+""",
+    "sides": r"""
+/* two places (ADR 048): one case, its two versions side by side under the
+   column labels (at the start with a comma, at the end with none) */
+.tbl.lay.lay-sides thead{display:block}
+.tbl.lay.lay-sides thead tr,.tbl.lay.lay-sides tbody tr{display:grid;grid-template-columns:13% minmax(0,1fr) minmax(0,1fr);
+  column-gap:1.2cqw;align-items:start}
+.tbl.lay.lay-sides th{background:none;color:var(--sc-muted2);font-size:2.1cqh;line-height:1.3;font-weight:600;
+  padding:0 1.2cqw .4cqh;text-align:left;border-radius:0}
+.tbl.lay.lay-sides th:first-child{visibility:hidden}
+.tbl.lay.lay-sides tbody{display:flex;flex-direction:column;gap:1cqh}
+.tbl.lay.lay-sides tbody tr{background:var(--sc-note);border-radius:2.2cqh;padding:1cqh 1.2cqw}
+.tbl.lay.lay-sides td::before{content:none}
+.tbl.lay.lay-sides td:first-child{justify-self:start;background:var(--ks);color:var(--k);font-weight:700;
+  border-radius:1.2cqh;padding:.1cqh .9cqw;font-size:2.2cqh}
+.tbl.lay.lay-sides td+td{background:var(--sc-paper);border-radius:1.6cqh;padding:.8cqh 1.2cqw;color:var(--sc-ink);
+  overflow-wrap:break-word}
+.tbl.lay.lay-sides td:nth-child(3){background:#fff;box-shadow:inset 0 0 0 max(1px,.25cqh) var(--ks)}
+.tbl.lay.lay-sides td.active,.tbl.core.lay.lay-sides.spot tbody tr.focus td.active{background:var(--sc-active);box-shadow:none}
+.tbl.core.lay.lay-sides.spot tbody tr.focus{filter:drop-shadow(0 .5cqh 1cqh rgba(20,32,31,.14));box-shadow:none;
+  transform:scale(calc(1 + .004 * var(--sc-motion, 1)))}
+""",
+    "chips": r"""
+/* chips (ADR 048): a table of short phrases as chips in a row (a word bank),
+   row by row, its first header cell the bank's name */
+.tbl.lay.lay-chips thead{display:block}
+.tbl.lay.lay-chips th+th{display:none}
+.tbl.lay.lay-chips th{background:none;color:var(--sc-muted2);font-size:2.1cqh;line-height:1.3;font-weight:600;
+  padding:0 .4cqw .6cqh;text-align:left;border-radius:0}
+.tbl.lay.lay-chips tbody{display:flex;flex-wrap:wrap;gap:1cqh 1cqw}
+.tbl.lay.lay-chips tr{display:contents}
+.tbl.lay.lay-chips td::before{content:none}
+.tbl.lay.lay-chips td{background:var(--ks);color:var(--k);font-weight:600;border-radius:1.6cqh;padding:.7cqh 1.4cqw}
+.tbl.lay.lay-chips td.active,.tbl.core.lay.lay-chips.spot tbody tr.focus td.active{background:var(--sc-active);box-shadow:none}
+.tbl.core.lay.lay-chips.spot tbody tr.focus{box-shadow:none;transform:none}
+""",
+})
+ADR048_LAYOUTS = ("pieces", "place", "tags", "front", "sides", "chips")
 ROOT_CLASS = re.compile(r'^<div class="([^"]*)"')
 
 
@@ -988,6 +1120,9 @@ def layout_css(blocks: dict) -> str:
             used.add("acronym")
         if "lay-skeleton" in cls:
             used.add("skeleton")
+        for k in ADR048_LAYOUTS:
+            if "lay-" + k in cls:
+                used.add(k)
     return "".join(LAYOUT_CSS[k] for k in LAYOUT_CSS if k in used)
 
 
