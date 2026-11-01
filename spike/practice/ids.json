@@ -62,6 +62,10 @@
   "writing-08-reading-the-task": [
    908000,
    908999
+  ],
+  "writing-07-organisation": [
+   907000,
+   907999
   ]
  },
  "ids": [
@@ -2992,6 +2996,41 @@
    "point": "ashworth-lines",
    "slot": "fit-note",
    "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-907000",
+   "lesson": "writing-07-organisation",
+   "point": "isbar-part",
+   "slot": "part",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-907001",
+   "lesson": "writing-07-organisation",
+   "point": "talbot-line",
+   "slot": "paragraph",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-907002",
+   "lesson": "writing-07-organisation",
+   "point": "pritchard-order",
+   "slot": "order",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-907003",
+   "lesson": "writing-07-organisation",
+   "point": "holden-request",
+   "slot": "sentence",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-907004",
+   "lesson": "writing-07-organisation",
+   "point": "closing-sentence",
+   "slot": "sentence",
+   "issued": "2026-11-01"
   }
  ]
 }

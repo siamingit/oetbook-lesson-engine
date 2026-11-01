@@ -2,7 +2,7 @@
 
 What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.1; decision: `docs/adr/038-public-course-index.md`.
 
-26 lessons, 247 sections, 569 board topics, 4282 teaching points, 264 rules and 64 warnings, 484 terms, 166 OET facts, 50 methods, 518 vocabulary items (189 from the word bank), 62 practice questions and note forms, 104 links to other lessons, 371 topics in the topic index.
+27 lessons, 255 sections, 592 board topics, 4387 teaching points, 270 rules and 65 warnings, 485 terms, 174 OET facts, 58 methods, 520 vocabulary items (189 from the word bank), 62 practice questions and note forms, 110 links to other lessons, 380 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -10,7 +10,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 - Vocabulary: [Vocabulary for OET: Word Forms and Sentence Structure](#vocabulary-01-word-forms), [Vocabulary for OET: Verb + Noun Collocations](#vocabulary-02-collocations), [Vocabulary for OET: Adjective + Noun Collocations](#vocabulary-03-collocations-2)
 - Reading: [Reading for OET: Overview](#reading-01-overview), [Reading for OET: Part A](#reading-02-part-a), [Reading for OET: Part B](#reading-03-part-b), [Reading Part C (1)](#reading-04-part-c), [Reading Part C (2): More Practice](#reading-05-part-c-2)
 - Listening: [OET Listening: Overview](#listening-01-overview), [OET Listening: Part A](#listening-02-part-a), [OET Listening: Part B](#listening-03-part-b), [OET Listening: Part C (1)](#listening-04-part-c), [OET Listening: Part C (2)](#listening-05-part-c-2)
-- Writing: [OET Writing: Overview](#writing-01-overview), [OET Writing: Assessment Criteria](#writing-02-assessment-criteria), [OET Writing: Letter Structure](#writing-03-letter-structure), [OET Writing: The Opening Paragraph](#writing-04-introduction), [OET Writing: Reading the Task and the Case Notes](#writing-08-reading-the-task)
+- Writing: [OET Writing: Overview](#writing-01-overview), [OET Writing: Assessment Criteria](#writing-02-assessment-criteria), [OET Writing: Letter Structure](#writing-03-letter-structure), [OET Writing: The Opening Paragraph](#writing-04-introduction), [OET Writing: Organising the Letter](#writing-07-organisation), [OET Writing: Reading the Task and the Case Notes](#writing-08-reading-the-task)
 
 ---
 
@@ -7853,6 +7853,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 29:42 | 10 | 2026-10-26 23:34 (Siavash) |
 | 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:04 | 10 | 2026-10-31 23:18 (siavash) |
 | 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-11-01 00:09 (siavash) |
+| 7 | OET Writing: Organising the Letter | `writing-07-organisation` | 27:12 | 8 | not yet |
 | 8 | OET Writing: Reading the Task and the Case Notes | `writing-08-reading-the-task` | 23:18 | 8 | 2026-11-01 01:39 (siavash) |
 
 <a id="writing-01-overview"></a>
@@ -8323,6 +8324,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "The Writing paper" at 4:44, about section `pages-09-10-11`
 - referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "The parts of a letter" at 7:05, about section `pages-06-07-08`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Purpose" at 16:38, about section `pages-06-07-08`
+- referred to by OET Writing: Organising the Letter (`writing-07-organisation`), "Organisation and Layout" at 1:27, about section `page-18`
 - referred to by OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`), "Reading the Writing Task" at 6:03, about section `pages-09-10-11`
 
 
@@ -8567,6 +8569,9 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 15:39 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Punctuation in OET letters" (in `page-8_t1.s4.u1`)
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Introduction" at 0:06, about section `page-9`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "The opening paragraph" at 3:42, about section `page-8`
+- referred to by OET Writing: Organising the Letter (`writing-07-organisation`), "Organisation and Layout" at 1:44, about section `pages-04-05`
+- referred to by OET Writing: Organising the Letter (`writing-07-organisation`), "The ISBAR approach" at 5:53, about section `page-10`
+- referred to by OET Writing: Organising the Letter (`writing-07-organisation`), "The request and closing paragraph" at 26:25, about section `page-11`
 - referred to by OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`), "Introduction" at 0:03, about section `pages-04-05`
 - referred to by OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`), "The five minutes" at 1:25, about section `added-02`
 
@@ -8836,7 +8841,241 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 13:26 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `pages-07-08_t3.s4.u2`)
 - 15:14 refers to Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Choosing the right word form" (in `pages-09-10-11_t2.s5.u1`)
 - 16:38 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Purpose" (in `pages-12-13_t1.s2.u1`)
+- referred to by OET Writing: Organising the Letter (`writing-07-organisation`), "The ISBAR approach" at 6:32, about section `pages-12-13`
 - continues from OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`): the closing names it as the next lesson
+
+
+<a id="writing-07-organisation"></a>
+
+## 7. OET Writing: Organising the Letter
+
+- Lesson ID and folder: `writing-07-organisation` (folder `writing-07-organisation`); course writing, lesson 7; length 27:12; bundle format 1.23
+- Status: built, final gate not approved
+- Description: Learn to organise the body of an OET letter: the ISBAR parts, paragraphs in time order or by theme, a quick plan of what goes in each paragraph, and the request and closing paragraph.
+- Original session: folder `source`: `source/video.mp4`, 28:50 long, partial hash `7739eb8d9c3f6385`; deck `source/slides.pdf`, 17 pages
+  - Session 7 of the Persian Writing course, «Writing: How to Structure a letter» (28:50, 17 slides): Organisation and Layout recalled, no perfect template, the ISBAR approach, three letters read by their paragraphs, chronological or thematic order with the same letter both ways. The seventh lesson of the general Writing course (ADR 047), which also teaches two parts the recorded sessions never taught, planning the paragraphs and the request and closing paragraph, from the owner's recorded Nursing and Medicine Writing sessions. Every letter on the deck is of unknown or official origin and is rebuilt on our samples oa-ws-nur-0002, oa-ws-med-0003, oa-ws-med-0002, oa-ws-nur-0001 and oa-ws-nur-0003 at oetacademy-exercises 5320d19 (ADR 040).
+
+### Sections
+
+#### 0:00 Introduction (`page-3`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 0:52 **Contents board**
+  - 0:52 each category, revealed as it is named
+
+#### 1:27 Organisation and Layout (`pages-04-05-06`, deck)
+
+- 1:27 **The criterion, recalled**
+  - 1:27 the criterion
+  - 1:57 layout
+  - 2:14 organisation
+- 2:40 **No perfect template**
+  - 2:40 The warning
+  - 2:47 The word
+  - 3:01 OET's own words
+- 3:19 **Decide the order after the content**
+  - 3:19 three steps
+  - 3:31 the lines
+  - 3:38 the order
+  - 3:52 the paragraphs
+
+*Rules on the boards*
+
+- 3:38 My advice: think before you write. What goes first? What goes together? What goes apart?
+
+*Warnings (common mistakes)*
+
+- 2:40 My advice: there is no perfect template. Fit the order to the case.
+
+*Terms*: Organisation and Layout (The criterion, 1:35)
+
+#### 4:00 The ISBAR approach (`pages-07-08-09`, deck)
+
+- 4:00 **ISBAR on Mr Talbot's letter**
+  - 4:00 the five parts
+  - 4:34 introduce and identify
+  - 4:56 situation
+  - 5:09 background
+  - 5:26 assessment
+  - 5:45 request
+- 5:50 **Where the request goes**
+  - 5:50 Two cases
+  - 5:56 Several requests
+  - 6:15 One short request
+  - 6:31 OET's words
+- 6:43 **The body: situation, background, assessment**
+  - 6:43 the body
+  - 6:57 the situation
+  - 7:05 background with the situation
+  - 7:41 your turn
+  - 8:01 the answer
+
+*Rules on the boards*
+
+- 6:31 OET: say the purpose early, and expand it at the end.
+
+#### 8:21 Three letters, three shapes (`pages-10-11-12`, deck)
+
+- 8:21 **Letter 1: Mrs Dawson, the classic shape**
+  - 8:21 the classic shape
+  - 8:37 the opening
+  - 8:45 the situation now
+  - 9:22 her home
+  - 9:42 the requests
+- 9:45 **letter 2, Mrs Ashworth: the cause, today's lines**
+  - 9:45 lines from four headings
+  - 10:10 the assessment line
+  - 10:23 since 9 October
+  - 10:33 two days without fluids
+- 10:40 **letter 2, Mrs Ashworth: the cause, the earlier lines**
+  - 10:40 two earlier entries
+  - 10:55 the lithium she kept taking
+  - 11:14 the dose change
+  - 11:25 the normal level
+- 11:45 **Letter 3: Mrs Holden, in time order**
+  - 11:45 several dated entries
+  - 12:03 the opening
+  - 12:15 the admission
+  - 12:33 treatment, and today
+  - 12:39 the advice
+  - 12:44 the requests
+
+*Rules on the boards*
+
+- 11:34 Put lines together when the reader needs them together, whatever heading they came from.
+
+#### 12:53 Chronological or thematic (`pages-13-14-15-16`, deck)
+
+- 12:53 **Two ways**
+  - 12:53 The two ways
+  - 13:07 The word
+  - 13:19 OET's own advice
+- 13:31 **Chronologically: Mrs Holden's letter**
+  - 13:31 around time
+  - 13:42 the first event
+  - 13:50 what was done
+  - 13:56 the advice
+  - 14:01 up to the requests
+- 14:10 **Thematically: Mrs Dawson's letter**
+  - 14:10 by theme
+  - 14:19 the most important
+  - 14:33 the requests
+  - 14:36 only one time
+- 14:54 **The same letter both ways: Mrs Ashworth**
+  - 14:54 an urgent referral
+  - 15:02 the opening
+  - 15:19 today first
+  - 15:35 then the lead-up
+  - 15:43 the requests
+  - 15:55 the other way, first
+  - 16:06 the other way, second
+  - 16:18 both are right
+
+*Rules on the boards*
+
+- 16:18 My advice: both orders are right. Your analysis decides; there is no fixed format.
+
+#### 16:34 Planning the paragraphs (`added-01`, authored)
+
+- 16:34 **a five-line plan**
+  - 16:34 the plan
+  - 16:50 the opening
+  - 16:58 the situation now
+  - 17:05 what was done
+  - 17:12 the background
+  - 17:21 the requests
+  - 17:24 where to write it
+- 17:44 **Mr Talbot's lines, sorted**
+  - 17:44 the lines, sorted
+  - 18:02 the opening
+  - 18:17 today's findings
+  - 18:29 the cause
+  - 18:46 your turn
+  - 19:19 the answer
+  - 19:44 the requests
+- 19:51 **the order for an urgent letter**
+  - 19:51 Mrs Pritchard's paragraphs
+  - 20:17 your turn
+  - 20:39 the opening
+  - 20:46 this morning
+  - 20:57 her medicines
+  - 21:06 the background
+  - 21:14 the requests
+
+*Rules on the boards*
+
+- 16:39 My advice: before the body, write a five-line plan.
+
+#### 21:26 The request and closing paragraph (`added-02`, authored)
+
+- 21:26 **one request for each line of the plan**
+  - 21:26 Mr Talbot's plan and his requests
+  - 22:12 the first request
+  - 22:33 the second
+  - 22:51 the third
+  - 23:01 the order, and the tone
+- 23:23 **a date, a condition, and the patient's agreement**
+  - 23:23 Mrs Holden's plan and her requests
+  - 23:42 your turn
+  - 24:09 the answer
+  - 24:40 a condition
+  - 24:54 after the restart
+  - 24:59 the agreement
+- 25:20 **the closing sentence**
+  - 25:20 three letters, three closing sentences
+  - 25:33 a referral
+  - 25:42 a request for help
+  - 25:49 your turn
+  - 26:05 the answer
+  - 26:16 the other closing
+
+*Rules on the boards*
+
+- 21:35 My advice: one request for each action named in the task and the plan. Nothing more than the plan asks.
+
+#### 26:35 Closing (`added-03`, closing)
+
+- 26:35 **Closing**
+  - 26:35 Recap
+
+### OET facts
+
+- 1:35 (`writing-organisation`) Organisation: one topic per paragraph, the most important information first; simply following the order of the case notes is a weakness (writing-facts 22, 40).
+- 2:14 (`writing-criteria-scores`) Purpose is scored out of 3; each of the other five criteria is scored out of 7, on its own (writing-facts 9).
+- 3:01 (`writing-no-fixed-layout`) There is no one required layout for the letter (writing-facts 24).
+- 3:01 (`writing-paragraphs`) One topic in each paragraph; there is no fixed number of paragraphs (writing-facts 40).
+- 6:32 (`writing-purpose`) Purpose: the reader sees at once why you are writing; the purpose is stated clearly at the start and expanded with more detail at the end of the letter (writing-facts 18, 30).
+- 11:34 (`writing-selection-mistakes`) Three common mistakes in selecting: information the reader does not need, too much history, and similar information not grouped (writing-facts 36).
+- 26:16 (`writing-closing-sentence`) A closing sentence commonly thanks the reader or offers contact; "Thank you for ..." and "Please do not hesitate to contact me if you have any questions" are both acceptable, neither required (writing-facts 39; ADR 040 decision 5).
+- 26:25 (`writing-body-counted`) Only the body of the letter, its paragraphs, is counted (writing-facts 16).
+
+### Exam methods and strategies
+
+- 2:40 **No perfect template (the teacher's method)**: There is no perfect template: fit the order of the letter to the case.
+- 3:36 **Think before you write (the teacher's method)**: After choosing the lines, decide the order: what goes first, what goes together, what goes apart.
+- 4:00 **The ISBAR approach (the teacher's method)**: Five parts in order: introduce and identify, situation, background, assessment, request.
+- 5:53 **Where the request goes**: Several requests: why you write in the opening, the requests at the end; one short request: in the opening too, expanded at the end.
+- 12:53 **Chronologically or thematically**: Order the body around time, from the first event up to today, or by theme with the most important first; in an urgent letter, what has just happened comes first.
+- 16:19 **Both orders can be right (the teacher's method)**: Your analysis decides which order serves the reader; there is no fixed format.
+- 16:34 **A five-line plan (the teacher's method)**: Before the body: the opening; the situation now; what was done, and the cause; the background; the requests. Sort the kept lines under them and choose the order for the reader.
+- 21:26 **One request for each action (the teacher's method)**: One request for each action the task and the plan name, nothing the plan does not ask; each tied to its finding, with its deadline or condition; the most urgent first.
+
+### Vocabulary
+
+First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
+
+- 2:47 template
+- 13:07 theme
+
+### Links to other lessons
+
+- 0:03 refers to OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`), "Recent visits and the plan" (in `page-3_t1.s1.u2`)
+- 1:27 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Organisation and Layout" (in `pages-04-05-06_t1.s1.u1`)
+- 1:44 refers to OET Writing: Letter Structure (`writing-03-letter-structure`), "The parts of a letter" (in `pages-04-05-06_t1.s2.u1`)
+- 5:53 refers to OET Writing: Letter Structure (`writing-03-letter-structure`), "The request" (in `pages-07-08-09_t2.s1.u2`)
+- 6:32 refers to OET Writing: The Opening Paragraph (`writing-04-introduction`), "Purpose" (in `pages-07-08-09_t2.s1.u4`)
+- 26:25 refers to OET Writing: Letter Structure (`writing-03-letter-structure`), "Signing off" (in `added-02_t3.s6.u2`)
 
 
 <a id="writing-08-reading-the-task"></a>
@@ -9051,6 +9290,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 1:25 refers to OET Writing: Letter Structure (`writing-03-letter-structure`), "The Writing paper" (in `added-01_t1.s1.u2`)
 - 2:21 refers to OET Writing: Overview (`writing-01-overview`), "The Writing test" (in `added-01_t1.s5.u1`)
 - 6:03 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Content" (in `added-02_t2.s3.u1`)
+- referred to by OET Writing: Organising the Letter (`writing-07-organisation`), "Introduction" at 0:03, about section `added-04`
 - continues in OET Writing: The Opening Paragraph (`writing-04-introduction`): the closing names it as the next lesson
 
 
@@ -9110,6 +9350,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Case-note abbreviations**: `grammar-07-punctuation` 87:44
 - **Choosing the right word form**: `vocabulary-01-word-forms` 2:26
 - **choosing the tense**: `grammar-02-verb-use` 9:39
+- **Chronological or thematic**: `writing-07-organisation` 12:53
 - **Chunking**: `reading-02-part-a` 18:43
 - **Clause**: `grammar-05-complex-compound` 3:57
 - **Closing sentence**: `writing-01-overview` 16:58
@@ -9254,7 +9495,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Opening frames**: `writing-04-introduction` 26:52
 - **opinion signals**: `reading-04-part-c` 12:37
 - **Order**: `vocabulary-02-collocations` 63:02
-- **Organisation and Layout**: `writing-02-assessment-criteria` 24:52
+- **Ordering the paragraphs**: `writing-07-organisation` 12:53
+- **Organisation and Layout**: `writing-02-assessment-criteria` 24:52; `writing-07-organisation` 1:27
 - **Paraphrase bridge**: `reading-05-part-c-2` 2:14
 - **paraphrasing**: `grammar-08-paraphrasing` 1:45
 - **Paraphrasing in eight steps**: `grammar-08-paraphrasing` 1:45
@@ -9282,6 +9524,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Perform**: `vocabulary-02-collocations` 37:59
 - **Peripheral vision**: `reading-02-part-a` 18:23
 - **Physical symptoms**: `grammar-03-nominalization` 9:07
+- **Planning a letter**: `writing-07-organisation` 16:34
+- **Planning the paragraphs**: `writing-07-organisation` 16:34
 - **Podcasts and talks**: `listening-01-overview` 13:08
 - **Prediction**: `grammar-01-verb-tenses` 26:06
 - **Prescribe**: `vocabulary-02-collocations` 44:43
@@ -9361,9 +9605,11 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The address**: `writing-03-letter-structure` 13:00
 - **The body**: `writing-03-letter-structure` 18:25
 - **The case notes**: `writing-01-overview` 9:46
+- **The closing sentence**: `writing-07-organisation` 25:20
 - **The date**: `writing-03-letter-structure` 10:21
 - **The date at the top of the letter**: `writing-03-letter-structure` 12:51
 - **The five minutes**: `writing-08-reading-the-task` 1:19
+- **The ISBAR approach**: `writing-07-organisation` 4:00
 - **The Listening test**: `listening-01-overview` 1:12
 - **The opening paragraph**: `writing-04-introduction` 1:56
 - **The other day**: `grammar-01-verb-tenses` 80:57
@@ -9378,13 +9624,16 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The QTA method**: `reading-04-part-c` 19:31
 - **The Reading test**: `reading-01-overview` 1:29
 - **The request**: `writing-03-letter-structure` 22:39
+- **The request and closing paragraph**: `writing-07-organisation` 21:26
 - **The request at the end of the letter**: `writing-03-letter-structure` 22:46
+- **The request paragraph**: `writing-07-organisation` 21:26
 - **The six assessment criteria**: `writing-02-assessment-criteria` 1:27
 - **The six criteria**: `writing-02-assessment-criteria` 1:24
 - **The six questions, then the whole interview**: `listening-05-part-c-2` 4:40
 - **The six questions, then the whole talk**: `listening-04-part-c` 9:36
 - **The Writing paper**: `writing-03-letter-structure` 1:38
 - **The Writing test**: `writing-01-overview` 5:18
+- **Three letters, three shapes**: `writing-07-organisation` 8:21
 - **Time**: `listening-04-part-c` 8:41
 - **Time management in Part A**: `reading-02-part-a` 7:53
 - **Time marker**: `grammar-01-verb-tenses` 34:20; `grammar-02-verb-use` 4:01
