@@ -53612,8 +53612,11 @@
    "length_s": 1398.531,
    "length": "23:18",
    "bundle_format": "1.23",
-   "status": "built",
-   "approval": null,
+   "status": "approved",
+   "approval": {
+    "by": "siavash",
+    "on": "2026-11-01 01:39"
+   },
    "source": {
     "folder": "source",
     "recording": null,
