@@ -549,112 +549,6 @@
     {"topic": "Keeping a note brief", "at": "added-05_t1.s1.u2"}
    ]
   },
-  "writing-07-organisation": {
-   "session": "Session 7 of the Persian Writing course, «Writing: How to Structure a letter» (28:50, 17 slides): Organisation and Layout recalled, no perfect template, the ISBAR approach, three letters read by their paragraphs, chronological or thematic order with the same letter both ways. The seventh lesson of the general Writing course (ADR 047), which also teaches two parts the recorded sessions never taught, planning the paragraphs and the request and closing paragraph, from the owner's recorded Nursing and Medicine Writing sessions. Every letter on the deck is of unknown or official origin and is rebuilt on our samples oa-ws-nur-0002, oa-ws-med-0003, oa-ws-med-0002, oa-ws-nur-0001 and oa-ws-nur-0003 at oetacademy-exercises 5320d19 (ADR 040).",
-   "facts": [
-    {
-     "fact": "writing-organisation",
-     "at": "pages-04-05-06_t1.s1.u2"
-    },
-    {
-     "fact": "writing-criteria-scores",
-     "at": "pages-04-05-06_t1.s3.u2"
-    },
-    {
-     "fact": "writing-no-fixed-layout",
-     "at": "pages-04-05-06_t2.s1.u4"
-    },
-    {
-     "fact": "writing-paragraphs",
-     "at": "pages-04-05-06_t2.s1.u4"
-    },
-    {
-     "fact": "writing-purpose",
-     "at": "pages-07-08-09_t2.s1.u4"
-    },
-    {
-     "fact": "writing-selection-mistakes",
-     "at": "pages-10-11-12_t3.s4.u2"
-    },
-    {
-     "fact": "writing-closing-sentence",
-     "at": "added-02_t3.s6.u1"
-    },
-    {
-     "fact": "writing-body-counted",
-     "at": "added-02_t3.s6.u2"
-    }
-   ],
-   "methods": [
-    {
-     "name": "No perfect template (the teacher's method)",
-     "text": "There is no perfect template: fit the order of the letter to the case.",
-     "at": "pages-04-05-06_t2.s1.u1"
-    },
-    {
-     "name": "Think before you write (the teacher's method)",
-     "text": "After choosing the lines, decide the order: what goes first, what goes together, what goes apart.",
-     "at": "pages-04-05-06_t3.s3.u1"
-    },
-    {
-     "name": "The ISBAR approach (the teacher's method)",
-     "text": "Five parts in order: introduce and identify, situation, background, assessment, request.",
-     "at": "pages-07-08-09_t1.s1.u1"
-    },
-    {
-     "name": "Where the request goes",
-     "text": "Several requests: why you write in the opening, the requests at the end; one short request: in the opening too, expanded at the end.",
-     "at": "pages-07-08-09_t2.s1.u2"
-    },
-    {
-     "name": "Chronologically or thematically",
-     "text": "Order the body around time, from the first event up to today, or by theme with the most important first; in an urgent letter, what has just happened comes first.",
-     "at": "pages-13-14-15-16_t1.s1.u1"
-    },
-    {
-     "name": "Both orders can be right (the teacher's method)",
-     "text": "Your analysis decides which order serves the reader; there is no fixed format.",
-     "at": "pages-13-14-15-16_t4.s8.u1"
-    },
-    {
-     "name": "A five-line plan (the teacher's method)",
-     "text": "Before the body: the opening; the situation now; what was done, and the cause; the background; the requests. Sort the kept lines under them and choose the order for the reader.",
-     "at": "added-01_t1.s1.u1"
-    },
-    {
-     "name": "One request for each action (the teacher's method)",
-     "text": "One request for each action the task and the plan name, nothing the plan does not ask; each tied to its finding, with its deadline or condition; the most urgent first.",
-     "at": "added-02_t1.s1.u1"
-    }
-   ],
-   "continues_in": [],
-   "topics": [
-    {
-     "topic": "Organisation and Layout",
-     "at": "pages-04-05-06_t1.s1.u1"
-    },
-    {
-     "topic": "The ISBAR approach",
-     "at": "pages-07-08-09_t1.s1.u1"
-    },
-    {
-     "topic": "Ordering the paragraphs",
-     "at": "pages-13-14-15-16_t1.s1.u1"
-    },
-    {
-     "topic": "Planning a letter",
-     "at": "added-01_t1.s1.u1"
-    },
-    {
-     "topic": "The request paragraph",
-     "at": "added-02_t1.s1.u1"
-    },
-    {
-     "topic": "The closing sentence",
-     "at": "added-02_t3.s1.u1"
-    }
-   ]
-  },
   "writing-06-word-order": {
    "session": "Session 6 of the Persian Writing course, «Word Orders» (52:48, 17 slides in the Vocabulary template): the order subject, verb, object, place, time, reason (who, what, where, when, why); the verb and its object together; a time phrase first with a comma; also and then in the middle position; adverbial phrases and signal words at the start of a sentence; a learner's paragraph corrected line by line; a letter with gaps. The last lesson of the general Writing course (ADR 047 decision 1). Every example on the deck is the teacher's own sentence of unknown origin, a learner's paragraph (third-party) or a practice letter of unknown origin, and every point is rebuilt on our samples oa-ws-nur-0002, oa-ws-med-0002, oa-ws-nur-0001, oa-ws-med-0003, oa-ws-med-0001 and oa-ws-nur-0003 at oetacademy-exercises 5320d19 (ADR 040).",
    "facts": [
@@ -820,6 +714,112 @@
     {
      "topic": "The request paragraph",
      "at": "page-10_t2.s1.u1"
+    }
+   ]
+  },
+  "writing-07-organisation": {
+   "session": "Session 7 of the Persian Writing course, «Writing: How to Structure a letter» (28:50, 17 slides): Organisation and Layout recalled, no perfect template, the ISBAR approach, three letters read by their paragraphs, chronological or thematic order with the same letter both ways. The seventh lesson of the general Writing course (ADR 047), which also teaches two parts the recorded sessions never taught, planning the paragraphs and the request and closing paragraph, from the owner's recorded Nursing and Medicine Writing sessions. Every letter on the deck is of unknown or official origin and is rebuilt on our samples oa-ws-nur-0002, oa-ws-med-0003, oa-ws-med-0002, oa-ws-nur-0001 and oa-ws-nur-0003 at oetacademy-exercises 5320d19 (ADR 040).",
+   "facts": [
+    {
+     "fact": "writing-organisation",
+     "at": "pages-04-05-06_t1.s1.u2"
+    },
+    {
+     "fact": "writing-criteria-scores",
+     "at": "pages-04-05-06_t1.s3.u2"
+    },
+    {
+     "fact": "writing-no-fixed-layout",
+     "at": "pages-04-05-06_t2.s1.u4"
+    },
+    {
+     "fact": "writing-paragraphs",
+     "at": "pages-04-05-06_t2.s1.u4"
+    },
+    {
+     "fact": "writing-purpose",
+     "at": "pages-07-08-09_t2.s5.u1"
+    },
+    {
+     "fact": "writing-selection-mistakes",
+     "at": "pages-10-11-12_t3.s4.u2"
+    },
+    {
+     "fact": "writing-closing-sentence",
+     "at": "added-02_t3.s6.u1"
+    },
+    {
+     "fact": "writing-body-counted",
+     "at": "added-02_t3.s6.u2"
+    }
+   ],
+   "methods": [
+    {
+     "name": "No perfect template (the teacher's method)",
+     "text": "There is no perfect template: fit the order of the letter to the case.",
+     "at": "pages-04-05-06_t2.s1.u1"
+    },
+    {
+     "name": "Think before you write (the teacher's method)",
+     "text": "After choosing the lines, decide the order: what goes first, what goes together, what goes apart.",
+     "at": "pages-04-05-06_t3.s3.u1"
+    },
+    {
+     "name": "The ISBAR approach (the teacher's method)",
+     "text": "Five parts in order: introduce and identify, situation, background, assessment, request.",
+     "at": "pages-07-08-09_t1.s1.u1"
+    },
+    {
+     "name": "Where the request goes",
+     "text": "Several requests: why you write in the opening, the requests at the end; one short request: in the opening too, expanded at the end.",
+     "at": "pages-07-08-09_t2.s2.u1"
+    },
+    {
+     "name": "Chronologically or thematically",
+     "text": "Order the body around time, from the first event up to today, or by theme with the most important first; in an urgent letter, what has just happened comes first.",
+     "at": "pages-13-14-15-16_t1.s1.u1"
+    },
+    {
+     "name": "Both orders can be right (the teacher's method)",
+     "text": "Your analysis decides which order serves the reader; there is no fixed format.",
+     "at": "pages-13-14-15-16_t4.s8.u1"
+    },
+    {
+     "name": "A five-line plan (the teacher's method)",
+     "text": "Before the body: the opening; the situation now; what was done, and the cause; the background; the requests. Sort the kept lines under them and choose the order for the reader.",
+     "at": "added-01_t1.s1.u1"
+    },
+    {
+     "name": "One request for each action (the teacher's method)",
+     "text": "One request for each action the task and the plan name, nothing the plan does not ask; each tied to its finding, with its deadline or condition; the most urgent first.",
+     "at": "added-02_t1.s1.u1"
+    }
+   ],
+   "continues_in": [],
+   "topics": [
+    {
+     "topic": "Organisation and Layout",
+     "at": "pages-04-05-06_t1.s1.u1"
+    },
+    {
+     "topic": "The ISBAR approach",
+     "at": "pages-07-08-09_t1.s1.u1"
+    },
+    {
+     "topic": "Ordering the paragraphs",
+     "at": "pages-13-14-15-16_t1.s1.u1"
+    },
+    {
+     "topic": "Planning a letter",
+     "at": "added-01_t1.s1.u1"
+    },
+    {
+     "topic": "The request paragraph",
+     "at": "added-02_t1.s1.u1"
+    },
+    {
+     "topic": "The closing sentence",
+     "at": "added-02_t3.s1.u1"
     }
    ]
   }
