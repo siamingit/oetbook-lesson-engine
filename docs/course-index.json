@@ -55,7 +55,8 @@
     "writing-01-overview",
     "writing-02-assessment-criteria",
     "writing-03-letter-structure",
-    "writing-04-introduction"
+    "writing-04-introduction",
+    "writing-08-reading-the-task"
    ]
   }
  ],
@@ -48744,6 +48745,22 @@
       "utterance": "added-02_t1.s1.u3",
       "start_s": 112.211,
       "start": "1:52"
+     },
+     {
+      "lesson": "writing-08-reading-the-task",
+      "section": "added-01",
+      "to_section": "page-8",
+      "utterance": "added-01_t1.s1.u2",
+      "start_s": 85.331,
+      "start": "1:25"
+     },
+     {
+      "lesson": "writing-08-reading-the-task",
+      "section": "added-01",
+      "to_section": "pages-06-07",
+      "utterance": "added-01_t1.s5.u1",
+      "start_s": 141.081,
+      "start": "2:21"
      }
     ],
     "continues_in": [],
@@ -50535,6 +50552,14 @@
       "utterance": "pages-12-13_t1.s2.u1",
       "start_s": 998.473,
       "start": "16:38"
+     },
+     {
+      "lesson": "writing-08-reading-the-task",
+      "section": "added-02",
+      "to_section": "pages-09-10-11",
+      "utterance": "added-02_t2.s3.u1",
+      "start_s": 363.638,
+      "start": "6:03"
      }
     ],
     "continues_in": [],
@@ -51898,6 +51923,22 @@
       "utterance": "pages-04-05_t2.s1.u1",
       "start_s": 222.159,
       "start": "3:42"
+     },
+     {
+      "lesson": "writing-08-reading-the-task",
+      "section": "page-100",
+      "to_section": "pages-04-05",
+      "utterance": "page-100_t1.s1.u2",
+      "start_s": 3.99,
+      "start": "0:03"
+     },
+     {
+      "lesson": "writing-08-reading-the-task",
+      "section": "added-01",
+      "to_section": "added-02",
+      "utterance": "added-01_t1.s1.u2",
+      "start_s": 85.331,
+      "start": "1:25"
      }
     ],
     "continues_in": [],
@@ -53552,6 +53593,1248 @@
     ],
     "referred_to_by": [],
     "continues_in": [],
+    "continues_from": [
+     {
+      "lesson": "writing-08-reading-the-task",
+      "why": "the closing names it as the next lesson",
+      "source": "closing"
+     }
+    ]
+   }
+  },
+  {
+   "id": "writing-08-reading-the-task",
+   "folder": "writing-08-reading-the-task",
+   "title": "OET Writing: Reading the Task and the Case Notes",
+   "description": "Learn to read the Writing Task first, then the case notes with your reader in mind, and decide what goes into your letter: what to keep, what to keep briefly and what to leave out.",
+   "course": "writing",
+   "order": 8,
+   "length_s": 1398.531,
+   "length": "23:18",
+   "bundle_format": "1.23",
+   "status": "built",
+   "approval": null,
+   "source": {
+    "folder": "source",
+    "recording": null,
+    "recording_duration_s": null,
+    "recording_partial_hash": null,
+    "deck": null,
+    "deck_pages": null,
+    "same_recording_as": [],
+    "note": "No recorded session: an authored lesson (ADR 047), the first authored session of the general Writing course and the fourth in its order. It follows the owner's method in his recorded Nursing and Medicine Writing sessions and his handout on planning a letter; its samples are oa-ws-nur-0002 (main), oa-ws-med-0002 and oa-ws-med-0003 at oetacademy-exercises 5320d19 (ADR 040)."
+   },
+   "categories": [],
+   "sections": [
+    {
+     "id": "page-100",
+     "title": "Introduction",
+     "kind": "intro",
+     "pages": [
+      100
+     ],
+     "category": null,
+     "start_s": 0.0,
+     "start": "0:00",
+     "end_s": 79.751,
+     "topics": [
+      {
+       "board": "page-100_t1",
+       "title": "Title board",
+       "start_s": 0.0,
+       "start": "0:00",
+       "points": [
+        {
+         "text": "the lesson title, then what the lesson is about",
+         "block": "page-100_k13",
+         "start_s": 0.0,
+         "start": "0:00"
+        }
+       ]
+      },
+      {
+       "board": "page-100_t2",
+       "title": "Contents board",
+       "start_s": 48.041,
+       "start": "0:48",
+       "points": [
+        {
+         "text": "each category, revealed as it is named",
+         "block": "page-100_k14",
+         "start_s": 48.041,
+         "start": "0:48"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-100_t1.s1.u2",
+       "lesson": "writing-03-letter-structure",
+       "section": "pages-04-05",
+       "provenance": "authored",
+       "start_s": 3.99,
+       "start": "0:03"
+      }
+     ]
+    },
+    {
+     "id": "added-01",
+     "title": "The five minutes",
+     "kind": "authored",
+     "pages": [],
+     "category": null,
+     "start_s": 79.751,
+     "start": "1:19",
+     "end_s": 192.161,
+     "topics": [
+      {
+       "board": "added-01_t1",
+       "title": "Mr Talbot's paper, in three parts",
+       "start_s": 79.751,
+       "start": "1:19",
+       "points": [
+        {
+         "text": "Mr Talbot's paper",
+         "block": "added-01_k10",
+         "start_s": 79.751,
+         "start": "1:19"
+        },
+        {
+         "text": "the setting",
+         "block": "added-01_k03",
+         "start_s": 101.041,
+         "start": "1:41"
+        },
+        {
+         "text": "the case notes",
+         "block": "added-01_k04",
+         "start_s": 120.647,
+         "start": "2:00"
+        },
+        {
+         "text": "the Writing Task",
+         "block": "added-01_k05",
+         "start_s": 133.979,
+         "start": "2:13"
+        },
+        {
+         "text": "reading only",
+         "block": "added-01_k06",
+         "start_s": 140.737,
+         "start": "2:20"
+        },
+        {
+         "text": "OET's advice",
+         "block": "added-01_k08",
+         "start_s": 157.948,
+         "start": "2:37"
+        },
+        {
+         "text": "the task first",
+         "block": "added-01_k09",
+         "start_s": 175.459,
+         "start": "2:55"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-01_k08",
+       "kind": "rule",
+       "text": "OET's advice: first find who you are writing to, and what you ask them to do.",
+       "start_s": 157.948,
+       "start": "2:37"
+      },
+      {
+       "block": "added-01_k09",
+       "kind": "rule",
+       "text": "My advice: read the setting, then the Writing Task, then the case notes.",
+       "start_s": 175.459,
+       "start": "2:55"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "added-01_t1.s1.u2",
+       "lesson": "writing-01-overview",
+       "section": "page-8",
+       "provenance": "authored",
+       "start_s": 85.331,
+       "start": "1:25"
+      },
+      {
+       "utterance": "added-01_t1.s1.u2",
+       "lesson": "writing-03-letter-structure",
+       "section": "added-02",
+       "provenance": "authored",
+       "start_s": 85.331,
+       "start": "1:25"
+      },
+      {
+       "utterance": "added-01_t1.s5.u1",
+       "lesson": "writing-01-overview",
+       "section": "pages-06-07",
+       "provenance": "authored",
+       "start_s": 141.081,
+       "start": "2:21"
+      }
+     ]
+    },
+    {
+     "id": "added-02",
+     "title": "Reading the Writing Task",
+     "kind": "authored",
+     "pages": [],
+     "category": null,
+     "start_s": 192.161,
+     "start": "3:12",
+     "end_s": 461.56,
+     "topics": [
+      {
+       "board": "added-02_t1",
+       "title": "Mr Talbot's task, five questions",
+       "start_s": 192.161,
+       "start": "3:12",
+       "points": [
+        {
+         "text": "Mr Talbot's setting and task",
+         "block": "added-02_k23",
+         "start_s": 192.161,
+         "start": "3:12"
+        },
+        {
+         "text": "who am I",
+         "block": "added-02_k03",
+         "start_s": 208.285,
+         "start": "3:28"
+        },
+        {
+         "text": "who is my reader",
+         "block": "added-02_k04",
+         "start_s": 220.647,
+         "start": "3:40"
+        },
+        {
+         "text": "does my reader know him",
+         "block": "added-02_k06",
+         "start_s": 262.054,
+         "start": "4:22"
+        },
+        {
+         "text": "what do I ask",
+         "block": "added-02_k07",
+         "start_s": 278.251,
+         "start": "4:38"
+        },
+        {
+         "text": "the plan says it too",
+         "block": "added-02_k08",
+         "start_s": 295.787,
+         "start": "4:55"
+        },
+        {
+         "text": "how urgent is it",
+         "block": "added-02_k09",
+         "start_s": 316.726,
+         "start": "5:16"
+        },
+        {
+         "text": "five questions",
+         "block": "added-02_k10",
+         "start_s": 328.468,
+         "start": "5:28"
+        }
+       ]
+      },
+      {
+       "board": "added-02_t2",
+       "title": "Mrs Holden's task",
+       "start_s": 345.358,
+       "start": "5:45",
+       "points": [
+        {
+         "text": "Mrs Holden's setting and task",
+         "block": "added-02_k24",
+         "start_s": 345.358,
+         "start": "5:45"
+        },
+        {
+         "text": "who and to whom",
+         "block": "added-02_k13",
+         "start_s": 357.543,
+         "start": "5:57"
+        },
+        {
+         "text": "a reader who knows her",
+         "block": "added-02_k14",
+         "start_s": 365.174,
+         "start": "6:05"
+        },
+        {
+         "text": "what you ask",
+         "block": "added-02_k15",
+         "start_s": 374.987,
+         "start": "6:14"
+        },
+        {
+         "text": "how urgent",
+         "block": "added-02_k16",
+         "start_s": 385.179,
+         "start": "6:25"
+        },
+        {
+         "text": "what is new",
+         "block": "added-02_k17",
+         "start_s": 389.148,
+         "start": "6:29"
+        }
+       ]
+      },
+      {
+       "board": "added-02_t3",
+       "title": "practice, Mrs Ashworth's task",
+       "start_s": 400.2,
+       "start": "6:40",
+       "points": [
+        {
+         "text": "Mrs Ashworth's setting and task",
+         "block": "added-02_k25",
+         "start_s": 400.2,
+         "start": "6:40"
+        },
+        {
+         "text": "the reader",
+         "block": "added-02_k20",
+         "start_s": 422.816,
+         "start": "7:02"
+        },
+        {
+         "text": "the request",
+         "block": "added-02_k21",
+         "start_s": 434.819,
+         "start": "7:14"
+        },
+        {
+         "text": "urgent",
+         "block": "added-02_k22",
+         "start_s": 445.171,
+         "start": "7:25"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-02_k10",
+       "kind": "rule",
+       "text": "My advice: before the notes, answer five questions. Who am I? Who is my reader? Does my reader know the patient? What do I ask? How urgent is it?",
+       "start_s": 328.468,
+       "start": "5:28"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "added-02_t2.s3.u1",
+       "lesson": "writing-02-assessment-criteria",
+       "section": "pages-09-10-11",
+       "provenance": "authored",
+       "start_s": 363.638,
+       "start": "6:03"
+      }
+     ]
+    },
+    {
+     "id": "added-03",
+     "title": "Reading the notes for your reader",
+     "kind": "authored",
+     "pages": [],
+     "category": null,
+     "start_s": 461.56,
+     "start": "7:41",
+     "end_s": 756.595,
+     "topics": [
+      {
+       "board": "added-03_t1",
+       "title": "patient details and social background",
+       "start_s": 461.56,
+       "start": "7:41",
+       "points": [
+        {
+         "text": "his details and his home",
+         "block": "added-03_k29",
+         "start_s": 461.56,
+         "start": "7:41"
+        },
+        {
+         "text": "three answers",
+         "block": "added-03_k03",
+         "start_s": 478.67,
+         "start": "7:58"
+        },
+        {
+         "text": "address",
+         "block": "added-03_k04",
+         "start_s": 500.171,
+         "start": "8:20"
+        },
+        {
+         "text": "next of kin",
+         "block": "added-03_k05",
+         "start_s": 507.1,
+         "start": "8:27"
+        },
+        {
+         "text": "his wife",
+         "block": "added-03_k06",
+         "start_s": 514.244,
+         "start": "8:34"
+        },
+        {
+         "text": "housebound",
+         "block": "added-03_k08",
+         "start_s": 522.656,
+         "start": "8:42"
+        },
+        {
+         "text": "his old job",
+         "block": "added-03_k09",
+         "start_s": 547.518,
+         "start": "9:07"
+        },
+        {
+         "text": "family visits",
+         "block": "added-03_k10",
+         "start_s": 558.335,
+         "start": "9:18"
+        },
+        {
+         "text": "smoking",
+         "block": "added-03_k11",
+         "start_s": 566.547,
+         "start": "9:26"
+        },
+        {
+         "text": "alcohol",
+         "block": "added-03_k12",
+         "start_s": 573.593,
+         "start": "9:33"
+        },
+        {
+         "text": "why you are writing",
+         "block": "added-03_k13",
+         "start_s": 582.927,
+         "start": "9:42"
+        }
+       ]
+      },
+      {
+       "board": "added-03_t2",
+       "title": "medical history",
+       "start_s": 595.183,
+       "start": "9:55",
+       "points": [
+        {
+         "text": "his medical history",
+         "block": "added-03_k30",
+         "start_s": 595.183,
+         "start": "9:55"
+        },
+        {
+         "text": "atrial fibrillation",
+         "block": "added-03_k15",
+         "start_s": 607.378,
+         "start": "10:07"
+        },
+        {
+         "text": "his knees",
+         "block": "added-03_k16",
+         "start_s": 619.51,
+         "start": "10:19"
+        },
+        {
+         "text": "the hip",
+         "block": "added-03_k17",
+         "start_s": 626.934,
+         "start": "10:26"
+        },
+        {
+         "text": "the appendix",
+         "block": "added-03_k18",
+         "start_s": 635.648,
+         "start": "10:35"
+        },
+        {
+         "text": "the allergy",
+         "block": "added-03_k19",
+         "start_s": 641.241,
+         "start": "10:41"
+        },
+        {
+         "text": "your turn",
+         "block": "added-03_k20",
+         "start_s": 659.583,
+         "start": "10:59"
+        },
+        {
+         "text": "the answer",
+         "block": "added-03_k21",
+         "start_s": 670.176,
+         "start": "11:10"
+        }
+       ]
+      },
+      {
+       "board": "added-03_t3",
+       "title": "medicines",
+       "start_s": 694.285,
+       "start": "11:34",
+       "points": [
+        {
+         "text": "his medicines",
+         "block": "added-03_k31",
+         "start_s": 694.285,
+         "start": "11:34"
+        },
+        {
+         "text": "warfarin",
+         "block": "added-03_k23",
+         "start_s": 702.413,
+         "start": "11:42"
+        },
+        {
+         "text": "the target range",
+         "block": "added-03_k24",
+         "start_s": 719.038,
+         "start": "11:59"
+        },
+        {
+         "text": "the four-weekly check",
+         "block": "added-03_k25",
+         "start_s": 729.214,
+         "start": "12:09"
+        },
+        {
+         "text": "bisoprolol",
+         "block": "added-03_k26",
+         "start_s": 737.001,
+         "start": "12:17"
+        },
+        {
+         "text": "ramipril",
+         "block": "added-03_k27",
+         "start_s": 742.955,
+         "start": "12:22"
+        },
+        {
+         "text": "finasteride",
+         "block": "added-03_k28",
+         "start_s": 750.076,
+         "start": "12:30"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-03_k02",
+       "kind": "rule",
+       "text": "For every line, ask: does my reader need this to do what I ask?",
+       "start_s": 471.377,
+       "start": "7:51"
+      },
+      {
+       "block": "added-03_k13",
+       "kind": "rule",
+       "text": "My advice: keep asking yourself why you are writing.",
+       "start_s": 582.927,
+       "start": "9:42"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "added-03_t2.s6.u1",
+       "lesson": "writing-02-assessment-criteria",
+       "section": "pages-09-10-11",
+       "provenance": "authored",
+       "start_s": 639.383,
+       "start": "10:39"
+      }
+     ]
+    },
+    {
+     "id": "added-04",
+     "title": "Recent visits and the plan",
+     "kind": "authored",
+     "pages": [],
+     "category": null,
+     "start_s": 756.595,
+     "start": "12:36",
+     "end_s": 1084.385,
+     "topics": [
+      {
+       "board": "added-04_t1",
+       "title": "the visits before today",
+       "start_s": 756.595,
+       "start": "12:36",
+       "points": [
+        {
+         "text": "the visits before today",
+         "block": "added-04_k33",
+         "start_s": 756.595,
+         "start": "12:36"
+        },
+        {
+         "text": "INR in September",
+         "block": "added-04_k02",
+         "start_s": 771.783,
+         "start": "12:51"
+        },
+        {
+         "text": "the skin tear",
+         "block": "added-04_k03",
+         "start_s": 780.323,
+         "start": "13:00"
+        },
+        {
+         "text": "healed",
+         "block": "added-04_k04",
+         "start_s": 785.988,
+         "start": "13:05"
+        },
+        {
+         "text": "the chest infection",
+         "block": "added-04_k05",
+         "start_s": 796.148,
+         "start": "13:16"
+        },
+        {
+         "text": "clarithromycin",
+         "block": "added-04_k06",
+         "start_s": 807.762,
+         "start": "13:27"
+        }
+       ]
+      },
+      {
+       "board": "added-04_t2",
+       "title": "today, what you found",
+       "start_s": 814.275,
+       "start": "13:34",
+       "points": [
+        {
+         "text": "today, what you found",
+         "block": "added-04_k34",
+         "start_s": 814.275,
+         "start": "13:34"
+        },
+        {
+         "text": "new bruises",
+         "block": "added-04_k08",
+         "start_s": 827.268,
+         "start": "13:47"
+        },
+        {
+         "text": "where, and how big",
+         "block": "added-04_k09",
+         "start_s": 838.359,
+         "start": "13:58"
+        },
+        {
+         "text": "the gums",
+         "block": "added-04_k10",
+         "start_s": 845.538,
+         "start": "14:05"
+        },
+        {
+         "text": "no other bleeding",
+         "block": "added-04_k11",
+         "start_s": 854.435,
+         "start": "14:14"
+        },
+        {
+         "text": "the observations",
+         "block": "added-04_k12",
+         "start_s": 867.371,
+         "start": "14:27"
+        },
+        {
+         "text": "weight",
+         "block": "added-04_k13",
+         "start_s": 875.571,
+         "start": "14:35"
+        },
+        {
+         "text": "pressure areas",
+         "block": "added-04_k14",
+         "start_s": 883.841,
+         "start": "14:43"
+        },
+        {
+         "text": "the cough",
+         "block": "added-04_k15",
+         "start_s": 890.566,
+         "start": "14:50"
+        }
+       ]
+      },
+      {
+       "board": "added-04_t3",
+       "title": "today, results and advice",
+       "start_s": 898.022,
+       "start": "14:58",
+       "points": [
+        {
+         "text": "today, results and advice",
+         "block": "added-04_k35",
+         "start_s": 898.022,
+         "start": "14:58"
+        },
+        {
+         "text": "INR 6.4",
+         "block": "added-04_k17",
+         "start_s": 907.531,
+         "start": "15:07"
+        },
+        {
+         "text": "the doses",
+         "block": "added-04_k18",
+         "start_s": 918.246,
+         "start": "15:18"
+        },
+        {
+         "text": "nothing else changed",
+         "block": "added-04_k19",
+         "start_s": 927.236,
+         "start": "15:27"
+        },
+        {
+         "text": "the likely cause",
+         "block": "added-04_k20",
+         "start_s": 939.437,
+         "start": "15:39"
+        },
+        {
+         "text": "what he said",
+         "block": "added-04_k22",
+         "start_s": 951.788,
+         "start": "15:51"
+        },
+        {
+         "text": "tonight's dose",
+         "block": "added-04_k23",
+         "start_s": 979.277,
+         "start": "16:19"
+        },
+        {
+         "text": "when to call 999",
+         "block": "added-04_k24",
+         "start_s": 990.383,
+         "start": "16:30"
+        }
+       ]
+      },
+      {
+       "board": "added-04_t4",
+       "title": "the plan",
+       "start_s": 996.485,
+       "start": "16:36",
+       "points": [
+        {
+         "text": "the plan",
+         "block": "added-04_k36",
+         "start_s": 996.485,
+         "start": "16:36"
+        },
+        {
+         "text": "the letter",
+         "block": "added-04_k26",
+         "start_s": 1004.269,
+         "start": "16:44"
+        },
+        {
+         "text": "the first request",
+         "block": "added-04_k27",
+         "start_s": 1016.401,
+         "start": "16:56"
+        },
+        {
+         "text": "the second request",
+         "block": "added-04_k28",
+         "start_s": 1025.062,
+         "start": "17:05"
+        },
+        {
+         "text": "the third request",
+         "block": "added-04_k29",
+         "start_s": 1033.497,
+         "start": "17:13"
+        },
+        {
+         "text": "your turn",
+         "block": "added-04_k30",
+         "start_s": 1043.379,
+         "start": "17:23"
+        },
+        {
+         "text": "the answer",
+         "block": "added-04_k31",
+         "start_s": 1054.515,
+         "start": "17:34"
+        },
+        {
+         "text": "not for this reader",
+         "block": "added-04_k32",
+         "start_s": 1068.251,
+         "start": "17:48"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-04_k32",
+       "kind": "rule",
+       "text": "My advice: a line in the plan is not always for your reader.",
+       "start_s": 1068.251,
+       "start": "17:48"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-05",
+     "title": "How much to keep",
+     "kind": "authored",
+     "pages": [],
+     "category": null,
+     "start_s": 1084.385,
+     "start": "18:04",
+     "end_s": 1264.289,
+     "topics": [
+      {
+       "board": "added-05_t1",
+       "title": "numbers and the part you need",
+       "start_s": 1084.385,
+       "start": "18:04",
+       "points": [
+        {
+         "text": "three lines and the letter",
+         "block": "added-05_k14",
+         "start_s": 1084.385,
+         "start": "18:04"
+        },
+        {
+         "text": "exact numbers",
+         "block": "added-05_k03",
+         "start_s": 1108.652,
+         "start": "18:28"
+        },
+        {
+         "text": "dose and dates",
+         "block": "added-05_k04",
+         "start_s": 1124.934,
+         "start": "18:44"
+        },
+        {
+         "text": "only what is needed",
+         "block": "added-05_k05",
+         "start_s": 1138.753,
+         "start": "18:58"
+        }
+       ]
+      },
+      {
+       "board": "added-05_t2",
+       "title": "one clause, and the question mark",
+       "start_s": 1145.895,
+       "start": "19:05",
+       "points": [
+        {
+         "text": "three more lines",
+         "block": "added-05_k15",
+         "start_s": 1145.895,
+         "start": "19:05"
+        },
+        {
+         "text": "the negatives",
+         "block": "added-05_k07",
+         "start_s": 1155.316,
+         "start": "19:15"
+        },
+        {
+         "text": "normal findings",
+         "block": "added-05_k08",
+         "start_s": 1166.086,
+         "start": "19:26"
+        },
+        {
+         "text": "the question mark",
+         "block": "added-05_k09",
+         "start_s": 1181.405,
+         "start": "19:41"
+        },
+        {
+         "text": "your turn",
+         "block": "added-05_k10",
+         "start_s": 1198.856,
+         "start": "19:58"
+        },
+        {
+         "text": "the answer",
+         "block": "added-05_k11",
+         "start_s": 1215.959,
+         "start": "20:15"
+        },
+        {
+         "text": "my advice on length",
+         "block": "added-05_k12",
+         "start_s": 1236.177,
+         "start": "20:36"
+        },
+        {
+         "text": "OET's three mistakes",
+         "block": "added-05_k13",
+         "start_s": 1247.067,
+         "start": "20:47"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-05_k12",
+       "kind": "rule",
+       "text": "My advice: put in what is needed, leave out what is not, and say less important points briefly.",
+       "start_s": 1236.177,
+       "start": "20:36"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-06",
+     "title": "Your turn: a doctor's notes",
+     "kind": "authored",
+     "pages": [],
+     "category": null,
+     "start_s": 1264.289,
+     "start": "21:04",
+     "end_s": 1362.86,
+     "topics": [
+      {
+       "board": "added-06_t1",
+       "title": "Practice: five lines of Mrs Ashworth's notes",
+       "start_s": 1264.289,
+       "start": "21:04",
+       "points": [
+        {
+         "text": "five lines of her notes",
+         "block": "added-06_k09",
+         "start_s": 1264.289,
+         "start": "21:04"
+        },
+        {
+         "text": "your turn",
+         "block": "added-06_k03",
+         "start_s": 1279.127,
+         "start": "21:19"
+        },
+        {
+         "text": "the fit note",
+         "block": "added-06_k04",
+         "start_s": 1300.446,
+         "start": "21:40"
+        },
+        {
+         "text": "the higher dose",
+         "block": "added-06_k05",
+         "start_s": 1311.657,
+         "start": "21:51"
+        },
+        {
+         "text": "the last dose",
+         "block": "added-06_k06",
+         "start_s": 1329.115,
+         "start": "22:09"
+        },
+        {
+         "text": "the next level",
+         "block": "added-06_k07",
+         "start_s": 1345.847,
+         "start": "22:25"
+        },
+        {
+         "text": "the flu vaccine",
+         "block": "added-06_k08",
+         "start_s": 1354.252,
+         "start": "22:34"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-07",
+     "title": "Closing",
+     "kind": "closing",
+     "pages": [],
+     "category": null,
+     "start_s": 1362.86,
+     "start": "22:42",
+     "end_s": 1398.531,
+     "topics": [
+      {
+       "board": "added-07_t1",
+       "title": "Closing",
+       "start_s": 1362.86,
+       "start": "22:42",
+       "points": [
+        {
+         "text": "Recap",
+         "block": "added-07_k04",
+         "start_s": 1362.86,
+         "start": "22:42"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    }
+   ],
+   "facts": [
+    {
+     "fact": "writing-reading-only",
+     "text": "The 5 minutes of reading time are for reading only: no writing, underlining or circling (writing-facts 5).",
+     "note": null,
+     "section": "added-01",
+     "board": "added-01_t1",
+     "utterance": "added-01_t1.s5.u1",
+     "start_s": 141.081,
+     "start": "2:21"
+    },
+    {
+     "fact": "writing-reading-time-advice",
+     "text": "OET's advice for the reading time: first find who you are writing to and what you ask them to do; then ask of each note whether the reader needs it, and how important it is (writing-facts 7).",
+     "note": null,
+     "section": "added-01",
+     "board": "added-01_t1",
+     "utterance": "added-01_t1.s6.u1",
+     "start_s": 156.951,
+     "start": "2:36"
+    },
+    {
+     "fact": "writing-reader-relationship",
+     "text": "To choose the content, ask whether the reader already knows the patient, and which part of the patient's care the reader will be involved with (writing-facts 34).",
+     "note": null,
+     "section": "added-02",
+     "board": "added-02_t1",
+     "utterance": "added-02_t1.s4.u1",
+     "start_s": 258.671,
+     "start": "4:18"
+    },
+    {
+     "fact": "writing-purpose-in-task",
+     "text": "The Writing Task usually states the purpose; if not, the last section of the case notes, just above the task, gives it (writing-facts 31).",
+     "note": null,
+     "section": "added-02",
+     "board": "added-02_t1",
+     "utterance": "added-02_t1.s6.u1",
+     "start_s": 294.401,
+     "start": "4:54"
+    },
+    {
+     "fact": "writing-paraphrase-accuracy",
+     "text": "Paraphrasing can make the letter inaccurate: a word that does not match the note's meaning, or a tense that changes the timeframe (writing-facts 35).",
+     "note": null,
+     "section": "added-05",
+     "board": "added-05_t2",
+     "utterance": "added-05_t2.s4.u2",
+     "start_s": 1181.745,
+     "start": "19:41"
+    },
+    {
+     "fact": "writing-selection-mistakes",
+     "text": "Three common mistakes in selecting: information the reader does not need, too much history, and similar information not grouped (writing-facts 36).",
+     "note": null,
+     "section": "added-05",
+     "board": "added-05_t2",
+     "utterance": "added-05_t2.s8.u1",
+     "start_s": 1247.399,
+     "start": "20:47"
+    }
+   ],
+   "methods": [
+    {
+     "name": "Read the paper in this order (the teacher's method)",
+     "text": "The setting, then the Writing Task, then the case notes, so that every line of the notes is read with the reader in mind.",
+     "section": "added-01",
+     "board": "added-01_t1",
+     "utterance": "added-01_t1.s7.u1",
+     "start_s": 172.671,
+     "start": "2:52"
+    },
+    {
+     "name": "Five questions before the notes (the teacher's method)",
+     "text": "Who am I? Who is my reader? Does my reader know the patient? What do I ask? How urgent is it?",
+     "section": "added-02",
+     "board": "added-02_t1",
+     "utterance": "added-02_t1.s8.u1",
+     "start_s": 328.798,
+     "start": "5:28"
+    },
+    {
+     "name": "Keep, keep briefly or leave out",
+     "text": "For every line of the notes, ask whether the reader needs it to do what you ask: all of it, a little of it, or none of it.",
+     "section": "added-03",
+     "board": "added-03_t1",
+     "utterance": "added-03_t1.s2.u1",
+     "start_s": 479.01,
+     "start": "7:59"
+    },
+    {
+     "name": "A line in the plan is not always for your reader (the teacher's method)",
+     "text": "Read the plan's lines like every other line: a routine task for someone else is left out.",
+     "section": "added-04",
+     "board": "added-04_t4",
+     "utterance": "added-04_t4.s8.u1",
+     "start_s": 1068.595,
+     "start": "17:48"
+    },
+    {
+     "name": "Five ways to keep a line short",
+     "text": "The numbers that matter exact; only the part the reader needs; the negatives in one clause; stable findings in one clause; the doubt of a queried note kept.",
+     "section": "added-05",
+     "board": "added-05_t1",
+     "utterance": "added-05_t1.s1.u2",
+     "start_s": 1096.255,
+     "start": "18:16"
+    },
+    {
+     "name": "The teacher's word-count advice",
+     "text": "Put in what is needed, leave out what is not, and say less important points briefly.",
+     "section": "added-05",
+     "board": "added-05_t2",
+     "utterance": "added-05_t2.s7.u1",
+     "start_s": 1236.527,
+     "start": "20:36"
+    }
+   ],
+   "vocabulary": [
+    {
+     "word": "duty",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-02",
+     "block": "added-02_k05",
+     "start_s": 225.026,
+     "start": "3:45"
+    },
+    {
+     "word": "housebound",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-03",
+     "block": "added-03_k08",
+     "start_s": 522.656,
+     "start": "8:42"
+    },
+    {
+     "word": "reluctant",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-04",
+     "block": "added-04_k22",
+     "start_s": 951.788,
+     "start": "15:51"
+    }
+   ],
+   "withheld": {
+    "listening_panel_words": 0,
+    "lines_naming_an_answer": 0
+   },
+   "practice_set": null,
+   "deck_exercises": [],
+   "links": {
+    "refers_to": [
+     {
+      "lesson": "writing-03-letter-structure",
+      "section": "pages-04-05",
+      "from_section": "page-100",
+      "utterance": "page-100_t1.s1.u2",
+      "start_s": 3.99,
+      "start": "0:03"
+     },
+     {
+      "lesson": "writing-01-overview",
+      "section": "page-8",
+      "from_section": "added-01",
+      "utterance": "added-01_t1.s1.u2",
+      "start_s": 85.331,
+      "start": "1:25"
+     },
+     {
+      "lesson": "writing-03-letter-structure",
+      "section": "added-02",
+      "from_section": "added-01",
+      "utterance": "added-01_t1.s1.u2",
+      "start_s": 85.331,
+      "start": "1:25"
+     },
+     {
+      "lesson": "writing-01-overview",
+      "section": "pages-06-07",
+      "from_section": "added-01",
+      "utterance": "added-01_t1.s5.u1",
+      "start_s": 141.081,
+      "start": "2:21"
+     },
+     {
+      "lesson": "writing-02-assessment-criteria",
+      "section": "pages-09-10-11",
+      "from_section": "added-02",
+      "utterance": "added-02_t2.s3.u1",
+      "start_s": 363.638,
+      "start": "6:03"
+     }
+    ],
+    "referred_to_by": [],
+    "continues_in": [
+     {
+      "lesson": "writing-04-introduction",
+      "why": "the closing names it as the next lesson",
+      "source": "closing"
+     }
+    ],
     "continues_from": []
    }
   }
@@ -55469,6 +56752,19 @@
    ]
   },
   {
+   "topic": "How much to keep",
+   "key": "how much to keep",
+   "entries": [
+    {
+     "lesson": "writing-08-reading-the-task",
+     "section": "added-05",
+     "start_s": 1084.385,
+     "start": "18:04",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "How Part A is built",
    "key": "how part a is built",
    "entries": [
@@ -55784,6 +57080,19 @@
      "start_s": 2614.25,
      "start": "43:34",
      "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Keeping a note brief",
+   "key": "keeping a note brief",
+   "entries": [
+    {
+     "lesson": "writing-08-reading-the-task",
+     "section": "added-05",
+     "start_s": 1096.255,
+     "start": "18:16",
+     "source": "curated"
     }
    ]
   },
@@ -56868,6 +58177,32 @@
    ]
   },
   {
+   "topic": "Reading the notes for your reader",
+   "key": "reading the notes for your reader",
+   "entries": [
+    {
+     "lesson": "writing-08-reading-the-task",
+     "section": "added-03",
+     "start_s": 461.56,
+     "start": "7:41",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Reading the Writing Task",
+   "key": "reading the writing task",
+   "entries": [
+    {
+     "lesson": "writing-08-reading-the-task",
+     "section": "added-02",
+     "start_s": 192.161,
+     "start": "3:12",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Rearrange",
    "key": "rearrange",
    "entries": [
@@ -56876,6 +58211,19 @@
      "section": "page-8",
      "start_s": 2275.111,
      "start": "37:55",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Recent visits and the plan",
+   "key": "recent visits and the plan",
+   "entries": [
+    {
+     "lesson": "writing-08-reading-the-task",
+     "section": "added-04",
+     "start_s": 756.595,
+     "start": "12:36",
      "source": "section"
     }
    ]
@@ -57101,6 +58449,19 @@
      "start_s": 4678.965,
      "start": "77:58",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Selecting relevant case notes",
+   "key": "selecting relevant case notes",
+   "entries": [
+    {
+     "lesson": "writing-08-reading-the-task",
+     "section": "added-03",
+     "start_s": 471.71,
+     "start": "7:51",
+     "source": "curated"
     }
    ]
   },
@@ -57702,6 +59063,19 @@
      "start_s": 771.051,
      "start": "12:51",
      "source": "curated"
+    }
+   ]
+  },
+  {
+   "topic": "The five minutes",
+   "key": "the five minutes",
+   "entries": [
+    {
+     "lesson": "writing-08-reading-the-task",
+     "section": "added-01",
+     "start_s": 79.751,
+     "start": "1:19",
+     "source": "section"
     }
    ]
   },
@@ -58565,6 +59939,19 @@
    ]
   },
   {
+   "topic": "Your turn: a doctor's notes",
+   "key": "your turn: a doctors notes",
+   "entries": [
+    {
+     "lesson": "writing-08-reading-the-task",
+     "section": "added-06",
+     "start_s": 1264.289,
+     "start": "21:04",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Zero article",
    "key": "zero article",
    "entries": [
@@ -58579,21 +59966,21 @@
   }
  ],
  "totals": {
-  "lessons": 25,
-  "sections": 239,
-  "topics": 552,
-  "teaching_points": 4178,
-  "rules": 257,
+  "lessons": 26,
+  "sections": 247,
+  "topics": 569,
+  "teaching_points": 4282,
+  "rules": 264,
   "warnings": 64,
   "terms": 484,
   "wrong_examples": 275,
-  "facts": 160,
-  "methods": 44,
-  "vocabulary": 515,
+  "facts": 166,
+  "methods": 50,
+  "vocabulary": 518,
   "vocabulary_word_bank": 189,
   "practice_items": 62,
-  "references": 99,
-  "topic_index": 363,
+  "references": 104,
+  "topic_index": 371,
   "withheld_panel_words": 139,
   "withheld_answer_lines": 9
  }

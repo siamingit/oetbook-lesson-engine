@@ -539,7 +539,7 @@
     {"name": "Five questions before the notes (the teacher's method)", "text": "Who am I? Who is my reader? Does my reader know the patient? What do I ask? How urgent is it?", "at": "added-02_t1.s8.u1"},
     {"name": "Keep, keep briefly or leave out", "text": "For every line of the notes, ask whether the reader needs it to do what you ask: all of it, a little of it, or none of it.", "at": "added-03_t1.s2.u1"},
     {"name": "A line in the plan is not always for your reader (the teacher's method)", "text": "Read the plan's lines like every other line: a routine task for someone else is left out.", "at": "added-04_t4.s8.u1"},
-    {"name": "Five ways to keep a line short", "text": "The numbers that matter exact; only the part the reader needs; the negatives in one clause; normal findings in one clause; the question mark kept.", "at": "added-05_t1.s1.u2"},
+    {"name": "Five ways to keep a line short", "text": "The numbers that matter exact; only the part the reader needs; the negatives in one clause; stable findings in one clause; the doubt of a queried note kept.", "at": "added-05_t1.s1.u2"},
     {"name": "The teacher's word-count advice", "text": "Put in what is needed, leave out what is not, and say less important points briefly.", "at": "added-05_t2.s7.u1"}
    ],
    "continues_in": [],
