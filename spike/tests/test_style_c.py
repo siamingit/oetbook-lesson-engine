@@ -230,7 +230,7 @@ class Layouts(unittest.TestCase):
         self.assertIn('<td data-col="0" data-dash=""></td><td data-col="1" data-dash=""></td>', o)
         self.assertIn('<tr data-row="2"><td data-col="0" data-dash=""></td><td data-col="1" data-end="">', o)
         self.assertIn('<tr data-row="3"><td data-col="0" data-end="">Please advise', o)
-        self.assertIn('<td data-col="1"></td></tr></tbody>', o)          # a letter that ended: nothing drawn
+        self.assertIn('<td data-col="1" data-after=""></td></tr></tbody>', o)   # past a letter's end: its sheet has ended
         self.assertIn('I am writing <span class="acc">to ask for care</span>.', o)
         self.assertIn('please <span class="acc">go on with her care</span>.', o)
         self.assertEqual(style_c._text(o), style_c._text(h))

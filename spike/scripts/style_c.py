@@ -715,6 +715,8 @@ def _table_html(b: dict, html: str, layout: str) -> str:
                     attrs += ' data-dash=""'            # a paragraph not written out: dashed lines
                 elif txt.strip() and r == last_txt[c] and r > 0:
                     attrs += ' data-end=""'             # the letter's last paragraph written out: the request expanded
+                elif not txt.strip() and r > last_txt[c]:
+                    attrs += ' data-after=""'           # past the letter's end: its sheet has ended
             if layout in ("cards", "stack") and c >= 1 and header and \
                     header[c].strip().lower() in IN_LETTER and txt.strip().lower() in CELL_TONES:
                 attrs += f' data-tone="{CELL_TONES[txt.strip().lower()]}"'
@@ -900,7 +902,7 @@ LAYOUT_CSS = {
    (it stays in the words); the part's text in the row. The spotlight lifts the row being taught and fades the
    others; the marker marks its words */
 .tbl.lay.lay-acronym tbody{display:flex;flex-direction:column;gap:.8cqh}
-.tbl.lay.lay-acronym thead tr,.tbl.lay.lay-acronym tbody tr{display:grid;grid-template-columns:31% minmax(0,1fr);column-gap:0}
+.tbl.lay.lay-acronym thead tr,.tbl.lay.lay-acronym tbody tr{display:grid;grid-template-columns:28% minmax(0,1fr);column-gap:0}
 .tbl.lay.lay-acronym thead tr{margin-bottom:.4cqh}
 .tbl.lay.lay-acronym th:first-child{border-radius:2.2cqh 0 0 2.2cqh} .tbl.lay.lay-acronym th:last-child{border-radius:0 2.2cqh 2.2cqh 0}
 .tbl.lay.lay-acronym tbody tr{background:var(--ks);border-radius:2.2cqh}
@@ -939,13 +941,18 @@ LAYOUT_CSS = {
 .tbl.lay.lay-skeleton tbody tr:first-child td{padding-top:1.5cqh;border-radius:1.4cqh 1.4cqh 0 0}
 .tbl.lay.lay-skeleton tbody tr:last-child td{padding-bottom:1.5cqh;border-radius:0 0 1.4cqh 1.4cqh}
 .tbl.lay.lay-skeleton .tw{font-kerning:none;font-variant-ligatures:none}
-/* a paragraph not written out: two dashed lines and a shorter third */
-.tbl.lay.lay-skeleton td[data-dash]::before{content:"";display:block;height:2em;
-  background-image:repeating-linear-gradient(90deg,var(--sc-faint) 0 .9cqw,transparent .9cqw 1.5cqw),
-    repeating-linear-gradient(90deg,var(--sc-faint) 0 .9cqw,transparent .9cqw 1.5cqw);
-  background-size:100% .26cqh,100% .26cqh;background-position:0 .7em,0 1.6em;background-repeat:no-repeat}
-.tbl.lay.lay-skeleton td[data-dash]::after{content:"";display:block;width:58%;height:.26cqh;margin:.5em 0 .4em;
-  background:repeating-linear-gradient(90deg,var(--sc-faint) 0 .9cqw,transparent .9cqw 1.5cqw)}
+/* a paragraph not written out: dashed lines over the whole of its cell (at least two), so a paragraph beside
+   a long one is as long: thin lines down the cell, cut into dashes by stripes of the paper over them */
+.tbl.lay.lay-skeleton td[data-dash]{background:
+  repeating-linear-gradient(90deg,transparent 0 .9cqw,var(--sc-paper) .9cqw 1.5cqw) content-box,
+  repeating-linear-gradient(180deg,transparent 0 .6em,var(--sc-faint) .6em calc(.6em + .26cqh),transparent calc(.6em + .26cqh) 1.35em) content-box,
+  var(--sc-paper) padding-box}
+.tbl.lay.lay-skeleton td[data-dash]::before{content:"";display:block;height:2.7em}
+/* past a letter's end its sheet has ended: the cell above it closes the sheet */
+.tbl.lay.lay-skeleton td[data-after]{background:none}
+.tbl.lay.lay-skeleton tbody tr:has(+ tr td[data-col="0"][data-after]) td[data-col="0"],
+.tbl.lay.lay-skeleton tbody tr:has(+ tr td[data-col="1"][data-after]) td[data-col="1"]{padding-bottom:1.5cqh;
+  border-radius:0 0 1.4cqh 1.4cqh}
 /* the purpose words, and the request expanded at the end */
 .tbl.lay.lay-skeleton .acc{color:var(--k-purpose);font-weight:600}
 .tbl.lay.lay-skeleton td[data-end]{color:var(--k-purpose)}
