@@ -49,7 +49,12 @@
   "writing-closing-sentence": "A closing sentence commonly thanks the reader or offers contact; \"Thank you for ...\" and \"Please do not hesitate to contact me if you have any questions\" are both acceptable, neither required (writing-facts 39; ADR 040 decision 5).",
   "writing-paragraphs": "One topic in each paragraph; there is no fixed number of paragraphs (writing-facts 40).",
   "writing-fit-the-case": "Full marks for Purpose need writing fitted to the case, not learnt phrases (writing-facts 33).",
-  "writing-opening-verbs": "\"I am writing to refer\" does not fit every letter: other verbs fit other tasks (writing-facts 32)."
+  "writing-opening-verbs": "\"I am writing to refer\" does not fit every letter: other verbs fit other tasks (writing-facts 32).",
+  "writing-reading-time-advice": "OET's advice for the reading time: first find who you are writing to and what you ask them to do; then ask of each note whether the reader needs it, and how important it is (writing-facts 7).",
+  "writing-purpose-in-task": "The Writing Task usually states the purpose; if not, the last section of the case notes, just above the task, gives it (writing-facts 31).",
+  "writing-reader-relationship": "To choose the content, ask whether the reader already knows the patient, and which part of the patient's care the reader will be involved with (writing-facts 34).",
+  "writing-paraphrase-accuracy": "Paraphrasing can make the letter inaccurate: a word that does not match the note's meaning, or a tense that changes the timeframe (writing-facts 35).",
+  "writing-selection-mistakes": "Three common mistakes in selecting: information the reader does not need, too much history, and similar information not grouped (writing-facts 36)."
  },
  "lessons": {
   "grammar-01-verb-tenses": {
@@ -517,6 +522,31 @@
    "topics": [
     {"topic": "Greeting and Re line", "at": "pages-04-05_t2.s1.u1"},
     {"topic": "The patient's age in the opening", "at": "pages-07-08_t3.s1.u1"}
+   ]
+  },
+  "writing-08-reading-the-task": {
+   "session": "No recorded session: an authored lesson (ADR 047), the first authored session of the general Writing course and the fourth in its order. It follows the owner's method in his recorded Nursing and Medicine Writing sessions and his handout on planning a letter; its samples are oa-ws-nur-0002 (main), oa-ws-med-0002 and oa-ws-med-0003 at oetacademy-exercises 5320d19 (ADR 040).",
+   "facts": [
+    {"fact": "writing-reading-only", "at": "added-01_t1.s5.u1"},
+    {"fact": "writing-reading-time-advice", "at": "added-01_t1.s6.u1"},
+    {"fact": "writing-reader-relationship", "at": "added-02_t1.s4.u1"},
+    {"fact": "writing-purpose-in-task", "at": "added-02_t1.s6.u1"},
+    {"fact": "writing-paraphrase-accuracy", "at": "added-05_t2.s4.u2"},
+    {"fact": "writing-selection-mistakes", "at": "added-05_t2.s8.u1"}
+   ],
+   "methods": [
+    {"name": "Read the paper in this order (the teacher's method)", "text": "The setting, then the Writing Task, then the case notes, so that every line of the notes is read with the reader in mind.", "at": "added-01_t1.s7.u1"},
+    {"name": "Five questions before the notes (the teacher's method)", "text": "Who am I? Who is my reader? Does my reader know the patient? What do I ask? How urgent is it?", "at": "added-02_t1.s8.u1"},
+    {"name": "Keep, keep briefly or leave out", "text": "For every line of the notes, ask whether the reader needs it to do what you ask: all of it, a little of it, or none of it.", "at": "added-03_t1.s2.u1"},
+    {"name": "A line in the plan is not always for your reader (the teacher's method)", "text": "Read the plan's lines like every other line: a routine task for someone else is left out.", "at": "added-04_t4.s8.u1"},
+    {"name": "Five ways to keep a line short", "text": "The numbers that matter exact; only the part the reader needs; the negatives in one clause; stable findings in one clause; the doubt of a queried note kept.", "at": "added-05_t1.s1.u2"},
+    {"name": "The teacher's word-count advice", "text": "Put in what is needed, leave out what is not, and say less important points briefly.", "at": "added-05_t2.s7.u1"}
+   ],
+   "continues_in": [],
+   "topics": [
+    {"topic": "Reading the Writing Task", "at": "added-02_t1.s1.u1"},
+    {"topic": "Selecting relevant case notes", "at": "added-03_t1.s1.u2"},
+    {"topic": "Keeping a note brief", "at": "added-05_t1.s1.u2"}
    ]
   }
  }

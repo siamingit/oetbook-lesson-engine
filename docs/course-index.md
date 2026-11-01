@@ -2,7 +2,7 @@
 
 What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.1; decision: `docs/adr/038-public-course-index.md`.
 
-25 lessons, 239 sections, 552 board topics, 4178 teaching points, 257 rules and 64 warnings, 484 terms, 160 OET facts, 44 methods, 515 vocabulary items (189 from the word bank), 62 practice questions and note forms, 99 links to other lessons, 363 topics in the topic index.
+26 lessons, 247 sections, 569 board topics, 4282 teaching points, 264 rules and 64 warnings, 484 terms, 166 OET facts, 50 methods, 518 vocabulary items (189 from the word bank), 62 practice questions and note forms, 104 links to other lessons, 371 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -10,7 +10,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 - Vocabulary: [Vocabulary for OET: Word Forms and Sentence Structure](#vocabulary-01-word-forms), [Vocabulary for OET: Verb + Noun Collocations](#vocabulary-02-collocations), [Vocabulary for OET: Adjective + Noun Collocations](#vocabulary-03-collocations-2)
 - Reading: [Reading for OET: Overview](#reading-01-overview), [Reading for OET: Part A](#reading-02-part-a), [Reading for OET: Part B](#reading-03-part-b), [Reading Part C (1)](#reading-04-part-c), [Reading Part C (2): More Practice](#reading-05-part-c-2)
 - Listening: [OET Listening: Overview](#listening-01-overview), [OET Listening: Part A](#listening-02-part-a), [OET Listening: Part B](#listening-03-part-b), [OET Listening: Part C (1)](#listening-04-part-c), [OET Listening: Part C (2)](#listening-05-part-c-2)
-- Writing: [OET Writing: Overview](#writing-01-overview), [OET Writing: Assessment Criteria](#writing-02-assessment-criteria), [OET Writing: Letter Structure](#writing-03-letter-structure), [OET Writing: The Opening Paragraph](#writing-04-introduction)
+- Writing: [OET Writing: Overview](#writing-01-overview), [OET Writing: Assessment Criteria](#writing-02-assessment-criteria), [OET Writing: Letter Structure](#writing-03-letter-structure), [OET Writing: The Opening Paragraph](#writing-04-introduction), [OET Writing: Reading the Task and the Case Notes](#writing-08-reading-the-task)
 
 ---
 
@@ -7853,6 +7853,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 29:42 | 10 | 2026-10-26 23:34 (Siavash) |
 | 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:04 | 10 | 2026-10-31 23:18 (siavash) |
 | 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-11-01 00:09 (siavash) |
+| 8 | OET Writing: Reading the Task and the Case Notes | `writing-08-reading-the-task` | 23:18 | 8 | not yet |
 
 <a id="writing-01-overview"></a>
 
@@ -8026,6 +8027,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 11:58 refers to Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Omit" (in `page-8_t1.s5.u4`)
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Introduction" at 0:05
 - referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "The Writing paper" at 1:52, about section `page-8`
+- referred to by OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`), "The five minutes" at 1:25, about section `page-8`
+- referred to by OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`), "The five minutes" at 2:21, about section `pages-06-07`
 
 
 <a id="writing-02-assessment-criteria"></a>
@@ -8320,6 +8323,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "The Writing paper" at 4:44, about section `pages-09-10-11`
 - referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "The parts of a letter" at 7:05, about section `pages-06-07-08`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Purpose" at 16:38, about section `pages-06-07-08`
+- referred to by OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`), "Reading the Writing Task" at 6:03, about section `pages-09-10-11`
 
 
 <a id="writing-03-letter-structure"></a>
@@ -8563,6 +8567,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 15:39 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Punctuation in OET letters" (in `page-8_t1.s4.u1`)
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Introduction" at 0:06, about section `page-9`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "The opening paragraph" at 3:42, about section `page-8`
+- referred to by OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`), "Introduction" at 0:03, about section `pages-04-05`
+- referred to by OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`), "The five minutes" at 1:25, about section `added-02`
 
 
 <a id="writing-04-introduction"></a>
@@ -8830,6 +8836,222 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 13:26 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `pages-07-08_t3.s4.u2`)
 - 15:14 refers to Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Choosing the right word form" (in `pages-09-10-11_t2.s5.u1`)
 - 16:38 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Purpose" (in `pages-12-13_t1.s2.u1`)
+- continues from OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`): the closing names it as the next lesson
+
+
+<a id="writing-08-reading-the-task"></a>
+
+## 8. OET Writing: Reading the Task and the Case Notes
+
+- Lesson ID and folder: `writing-08-reading-the-task` (folder `writing-08-reading-the-task`); course writing, lesson 8; length 23:18; bundle format 1.23
+- Status: built, final gate not approved
+- Description: Learn to read the Writing Task first, then the case notes with your reader in mind, and decide what goes into your letter: what to keep, what to keep briefly and what to leave out.
+- Original session: none (a lesson with no recording and no deck, ADR 047)
+  - No recorded session: an authored lesson (ADR 047), the first authored session of the general Writing course and the fourth in its order. It follows the owner's method in his recorded Nursing and Medicine Writing sessions and his handout on planning a letter; its samples are oa-ws-nur-0002 (main), oa-ws-med-0002 and oa-ws-med-0003 at oetacademy-exercises 5320d19 (ADR 040).
+
+### Sections
+
+#### 0:00 Introduction (`page-100`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 0:48 **Contents board**
+  - 0:48 each category, revealed as it is named
+
+#### 1:19 The five minutes (`added-01`, authored)
+
+- 1:19 **Mr Talbot's paper, in three parts**
+  - 1:19 Mr Talbot's paper
+  - 1:41 the setting
+  - 2:00 the case notes
+  - 2:13 the Writing Task
+  - 2:20 reading only
+  - 2:37 OET's advice
+  - 2:55 the task first
+
+*Rules on the boards*
+
+- 2:37 OET's advice: first find who you are writing to, and what you ask them to do.
+- 2:55 My advice: read the setting, then the Writing Task, then the case notes.
+
+#### 3:12 Reading the Writing Task (`added-02`, authored)
+
+- 3:12 **Mr Talbot's task, five questions**
+  - 3:12 Mr Talbot's setting and task
+  - 3:28 who am I
+  - 3:40 who is my reader
+  - 4:22 does my reader know him
+  - 4:38 what do I ask
+  - 4:55 the plan says it too
+  - 5:16 how urgent is it
+  - 5:28 five questions
+- 5:45 **Mrs Holden's task**
+  - 5:45 Mrs Holden's setting and task
+  - 5:57 who and to whom
+  - 6:05 a reader who knows her
+  - 6:14 what you ask
+  - 6:25 how urgent
+  - 6:29 what is new
+- 6:40 **practice, Mrs Ashworth's task**
+  - 6:40 Mrs Ashworth's setting and task
+  - 7:02 the reader
+  - 7:14 the request
+  - 7:25 urgent
+
+*Rules on the boards*
+
+- 5:28 My advice: before the notes, answer five questions. Who am I? Who is my reader? Does my reader know the patient? What do I ask? How urgent is it?
+
+#### 7:41 Reading the notes for your reader (`added-03`, authored)
+
+- 7:41 **patient details and social background**
+  - 7:41 his details and his home
+  - 7:58 three answers
+  - 8:20 address
+  - 8:27 next of kin
+  - 8:34 his wife
+  - 8:42 housebound
+  - 9:07 his old job
+  - 9:18 family visits
+  - 9:26 smoking
+  - 9:33 alcohol
+  - 9:42 why you are writing
+- 9:55 **medical history**
+  - 9:55 his medical history
+  - 10:07 atrial fibrillation
+  - 10:19 his knees
+  - 10:26 the hip
+  - 10:35 the appendix
+  - 10:41 the allergy
+  - 10:59 your turn
+  - 11:10 the answer
+- 11:34 **medicines**
+  - 11:34 his medicines
+  - 11:42 warfarin
+  - 11:59 the target range
+  - 12:09 the four-weekly check
+  - 12:17 bisoprolol
+  - 12:22 ramipril
+  - 12:30 finasteride
+
+*Rules on the boards*
+
+- 7:51 For every line, ask: does my reader need this to do what I ask?
+- 9:42 My advice: keep asking yourself why you are writing.
+
+#### 12:36 Recent visits and the plan (`added-04`, authored)
+
+- 12:36 **the visits before today**
+  - 12:36 the visits before today
+  - 12:51 INR in September
+  - 13:00 the skin tear
+  - 13:05 healed
+  - 13:16 the chest infection
+  - 13:27 clarithromycin
+- 13:34 **today, what you found**
+  - 13:34 today, what you found
+  - 13:47 new bruises
+  - 13:58 where, and how big
+  - 14:05 the gums
+  - 14:14 no other bleeding
+  - 14:27 the observations
+  - 14:35 weight
+  - 14:43 pressure areas
+  - 14:50 the cough
+- 14:58 **today, results and advice**
+  - 14:58 today, results and advice
+  - 15:07 INR 6.4
+  - 15:18 the doses
+  - 15:27 nothing else changed
+  - 15:39 the likely cause
+  - 15:51 what he said
+  - 16:19 tonight's dose
+  - 16:30 when to call 999
+- 16:36 **the plan**
+  - 16:36 the plan
+  - 16:44 the letter
+  - 16:56 the first request
+  - 17:05 the second request
+  - 17:13 the third request
+  - 17:23 your turn
+  - 17:34 the answer
+  - 17:48 not for this reader
+
+*Rules on the boards*
+
+- 17:48 My advice: a line in the plan is not always for your reader.
+
+#### 18:04 How much to keep (`added-05`, authored)
+
+- 18:04 **numbers and the part you need**
+  - 18:04 three lines and the letter
+  - 18:28 exact numbers
+  - 18:44 dose and dates
+  - 18:58 only what is needed
+- 19:05 **one clause, and the question mark**
+  - 19:05 three more lines
+  - 19:15 the negatives
+  - 19:26 normal findings
+  - 19:41 the question mark
+  - 19:58 your turn
+  - 20:15 the answer
+  - 20:36 my advice on length
+  - 20:47 OET's three mistakes
+
+*Rules on the boards*
+
+- 20:36 My advice: put in what is needed, leave out what is not, and say less important points briefly.
+
+#### 21:04 Your turn: a doctor's notes (`added-06`, authored)
+
+- 21:04 **Practice: five lines of Mrs Ashworth's notes**
+  - 21:04 five lines of her notes
+  - 21:19 your turn
+  - 21:40 the fit note
+  - 21:51 the higher dose
+  - 22:09 the last dose
+  - 22:25 the next level
+  - 22:34 the flu vaccine
+
+#### 22:42 Closing (`added-07`, closing)
+
+- 22:42 **Closing**
+  - 22:42 Recap
+
+### OET facts
+
+- 2:21 (`writing-reading-only`) The 5 minutes of reading time are for reading only: no writing, underlining or circling (writing-facts 5).
+- 2:36 (`writing-reading-time-advice`) OET's advice for the reading time: first find who you are writing to and what you ask them to do; then ask of each note whether the reader needs it, and how important it is (writing-facts 7).
+- 4:18 (`writing-reader-relationship`) To choose the content, ask whether the reader already knows the patient, and which part of the patient's care the reader will be involved with (writing-facts 34).
+- 4:54 (`writing-purpose-in-task`) The Writing Task usually states the purpose; if not, the last section of the case notes, just above the task, gives it (writing-facts 31).
+- 19:41 (`writing-paraphrase-accuracy`) Paraphrasing can make the letter inaccurate: a word that does not match the note's meaning, or a tense that changes the timeframe (writing-facts 35).
+- 20:47 (`writing-selection-mistakes`) Three common mistakes in selecting: information the reader does not need, too much history, and similar information not grouped (writing-facts 36).
+
+### Exam methods and strategies
+
+- 2:52 **Read the paper in this order (the teacher's method)**: The setting, then the Writing Task, then the case notes, so that every line of the notes is read with the reader in mind.
+- 5:28 **Five questions before the notes (the teacher's method)**: Who am I? Who is my reader? Does my reader know the patient? What do I ask? How urgent is it?
+- 7:59 **Keep, keep briefly or leave out**: For every line of the notes, ask whether the reader needs it to do what you ask: all of it, a little of it, or none of it.
+- 17:48 **A line in the plan is not always for your reader (the teacher's method)**: Read the plan's lines like every other line: a routine task for someone else is left out.
+- 18:16 **Five ways to keep a line short**: The numbers that matter exact; only the part the reader needs; the negatives in one clause; stable findings in one clause; the doubt of a queried note kept.
+- 20:36 **The teacher's word-count advice**: Put in what is needed, leave out what is not, and say less important points briefly.
+
+### Vocabulary
+
+First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
+
+- 3:45 duty
+- 8:42 housebound
+- 15:51 reluctant
+
+### Links to other lessons
+
+- 0:03 refers to OET Writing: Letter Structure (`writing-03-letter-structure`), "The parts of a letter" (in `page-100_t1.s1.u2`)
+- 1:25 refers to OET Writing: Overview (`writing-01-overview`), "The case notes" (in `added-01_t1.s1.u2`)
+- 1:25 refers to OET Writing: Letter Structure (`writing-03-letter-structure`), "The Writing paper" (in `added-01_t1.s1.u2`)
+- 2:21 refers to OET Writing: Overview (`writing-01-overview`), "The Writing test" (in `added-01_t1.s5.u1`)
+- 6:03 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Content" (in `added-02_t2.s3.u1`)
+- continues in OET Writing: The Opening Paragraph (`writing-04-introduction`): the closing names it as the next lesson
 
 
 ---
@@ -8978,6 +9200,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Hedging word**: `reading-04-part-c` 14:44
 - **Helping verb**: `grammar-01-verb-tenses` 3:47
 - **How adjective + noun collocations are formed**: `vocabulary-03-collocations-2` 6:49
+- **How much to keep**: `writing-08-reading-the-task` 18:04
 - **How Part A is built**: `reading-02-part-a` 4:19
 - **How Part A is marked**: `listening-02-part-a` 6:23
 - **How the test runs**: `listening-01-overview` 5:51
@@ -9002,6 +9225,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Introductory phrase**: `grammar-07-punctuation` 23:21
 - **Introductory phrases**: `grammar-07-punctuation` 23:16
 - **Joining sentences with relative pronouns**: `vocabulary-01-word-forms` 43:34
+- **Keeping a note brief**: `writing-08-reading-the-task` 18:16
 - **Key points to remember**: `vocabulary-02-collocations` 12:08
 - **Key words**: `reading-03-part-b` 10:13
 - **Language**: `writing-02-assessment-criteria` 26:46
@@ -9077,7 +9301,10 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Reading skills**: `reading-01-overview` 8:44
 - **Reading test format**: `reading-01-overview` 5:48
 - **Reading test overview**: `reading-01-overview` 3:33
+- **Reading the notes for your reader**: `writing-08-reading-the-task` 7:41
+- **Reading the Writing Task**: `writing-08-reading-the-task` 3:12
 - **Rearrange**: `grammar-08-paraphrasing` 37:55
+- **Recent visits and the plan**: `writing-08-reading-the-task` 12:36
 - **Reduced relative clause**: `grammar-06-clause` 19:08
 - **Reduced relative clauses**: `grammar-06-clause` 19:08
 - **Regular verb**: `grammar-01-verb-tenses` 5:44
@@ -9092,6 +9319,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Schedule**: `vocabulary-02-collocations` 56:16
 - **Scoring the Reading test**: `reading-01-overview` 12:44
 - **Seldom**: `grammar-01-verb-tenses` 77:58
+- **Selecting relevant case notes**: `writing-08-reading-the-task` 7:51
 - **Semicolon**: `grammar-07-punctuation` 95:36
 - **Semicolon (;)**: `grammar-07-punctuation` 20:31
 - **Semicolons and colons**: `grammar-07-punctuation` 54:48
@@ -9135,6 +9363,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The case notes**: `writing-01-overview` 9:46
 - **The date**: `writing-03-letter-structure` 10:21
 - **The date at the top of the letter**: `writing-03-letter-structure` 12:51
+- **The five minutes**: `writing-08-reading-the-task` 1:19
 - **The Listening test**: `listening-01-overview` 1:12
 - **The opening paragraph**: `writing-04-introduction` 1:56
 - **The other day**: `grammar-01-verb-tenses` 80:57
@@ -9200,4 +9429,5 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Word count of the letter body**: `writing-01-overview` 8:38
 - **word forms**: `vocabulary-01-word-forms` 2:26
 - **Word meaning**: `reading-02-part-a` 56:52
+- **Your turn: a doctor's notes**: `writing-08-reading-the-task` 21:04
 - **Zero article**: `grammar-04-articles` 49:50
