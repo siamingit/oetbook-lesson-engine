@@ -7853,7 +7853,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 29:42 | 10 | 2026-10-26 23:34 (Siavash) |
 | 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:04 | 10 | 2026-10-31 23:18 (siavash) |
 | 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-11-01 00:09 (siavash) |
-| 8 | OET Writing: Reading the Task and the Case Notes | `writing-08-reading-the-task` | 23:18 | 8 | not yet |
+| 8 | OET Writing: Reading the Task and the Case Notes | `writing-08-reading-the-task` | 23:18 | 8 | 2026-11-01 01:39 (siavash) |
 
 <a id="writing-01-overview"></a>
 
@@ -8844,7 +8844,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 8. OET Writing: Reading the Task and the Case Notes
 
 - Lesson ID and folder: `writing-08-reading-the-task` (folder `writing-08-reading-the-task`); course writing, lesson 8; length 23:18; bundle format 1.23
-- Status: built, final gate not approved
+- Status: approved by siavash, 2026-11-01 01:39
 - Description: Learn to read the Writing Task first, then the case notes with your reader in mind, and decide what goes into your letter: what to keep, what to keep briefly and what to leave out.
 - Original session: none (a lesson with no recording and no deck, ADR 047)
   - No recorded session: an authored lesson (ADR 047), the first authored session of the general Writing course and the fourth in its order. It follows the owner's method in his recorded Nursing and Medicine Writing sessions and his handout on planning a letter; its samples are oa-ws-nur-0002 (main), oa-ws-med-0002 and oa-ws-med-0003 at oetacademy-exercises 5320d19 (ADR 040).
