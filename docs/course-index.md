@@ -7868,7 +7868,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-11-01 00:09 (siavash) |
 | 5 | OET Writing: Information Flow | `writing-05-information-flow` | 37:32 | 9 | not yet |
 | 6 | OET Writing: Word Order | `writing-06-word-order` | 23:59 | 9 | 2026-11-01 19:35 (siavash) |
-| 7 | OET Writing: Organising the Letter | `writing-07-organisation` | 27:36 | 8 | 2026-11-01 10:08 (siavash) |
+| 7 | OET Writing: Organising the Letter | `writing-07-organisation` | 27:39 | 8 | 2026-11-01 10:08 (siavash) |
 | 8 | OET Writing: Reading the Task and the Case Notes | `writing-08-reading-the-task` | 23:18 | 8 | 2026-11-01 01:39 (siavash) |
 
 <a id="writing-01-overview"></a>
@@ -9316,7 +9316,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 7. OET Writing: Organising the Letter
 
-- Lesson ID and folder: `writing-07-organisation` (folder `writing-07-organisation`); course writing, lesson 7; length 27:36; bundle format 1.23
+- Lesson ID and folder: `writing-07-organisation` (folder `writing-07-organisation`); course writing, lesson 7; length 27:39; bundle format 1.23
 - Status: approved by siavash, 2026-11-01 10:08
 - Description: Learn to organise the body of an OET letter: the ISBAR parts, paragraphs in time order or by theme, a quick plan of what goes in each paragraph, and the request and closing paragraph.
 - Original session: folder `source`: `source/video.mp4`, 28:50 long, partial hash `7739eb8d9c3f6385`; deck `source/slides.pdf`, 17 pages
@@ -9329,7 +9329,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 0:00 **Title board**
   - 0:00 the lesson title, then what the lesson is about
 - 0:51 **Contents board**
-  - 0:51 each category, revealed as it is named
+  - 0:52 each category, revealed as it is named
 
 #### 1:26 Organisation and Layout (`pages-04-05-06`, deck)
 
@@ -9500,12 +9500,12 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 *Rules on the boards*
 
-- 22:00 My advice: one request for each action named in the task and the plan. Nothing more than the plan asks.
+- 22:00 My advice: one request for each action in the task and the plan.
 
 #### 27:00 Closing (`added-03`, closing)
 
 - 27:00 **Closing**
-  - 27:00 Recap
+  - 27:03 Recap
 
 ### OET facts
 
