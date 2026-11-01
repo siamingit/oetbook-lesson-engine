@@ -52059,17 +52059,17 @@
       "lesson": "writing-07-organisation",
       "section": "pages-07-08-09",
       "to_section": "page-10",
-      "utterance": "pages-07-08-09_t2.s1.u2",
-      "start_s": 351.771,
-      "start": "5:51"
+      "utterance": "pages-07-08-09_t2.s2.u1",
+      "start_s": 362.093,
+      "start": "6:02"
      },
      {
       "lesson": "writing-07-organisation",
       "section": "added-02",
       "to_section": "page-11",
       "utterance": "added-02_t3.s6.u2",
-      "start_s": 1582.314,
-      "start": "26:22"
+      "start_s": 1609.962,
+      "start": "26:49"
      },
      {
       "lesson": "writing-08-reading-the-task",
@@ -53775,9 +53775,9 @@
       "lesson": "writing-07-organisation",
       "section": "pages-07-08-09",
       "to_section": "pages-12-13",
-      "utterance": "pages-07-08-09_t2.s1.u4",
-      "start_s": 390.595,
-      "start": "6:30"
+      "utterance": "pages-07-08-09_t2.s5.u1",
+      "start_s": 418.243,
+      "start": "6:58"
      }
     ],
     "continues_in": [],
@@ -56405,8 +56405,8 @@
    "description": "Learn to organise the body of an OET letter: the ISBAR parts, paragraphs in time order or by theme, a quick plan of what goes in each paragraph, and the request and closing paragraph.",
    "course": "writing",
    "order": 7,
-   "length_s": 1629.282,
-   "length": "27:09",
+   "length_s": 1656.93,
+   "length": "27:36",
    "bundle_format": "1.23",
    "status": "approved",
    "approval": {
@@ -56646,7 +56646,7 @@
      "category": null,
      "start_s": 240.003,
      "start": "4:00",
-     "end_s": 498.357,
+     "end_s": 526.005,
      "topics": [
       {
        "board": "pages-07-08-09_t1",
@@ -56656,7 +56656,7 @@
        "points": [
         {
          "text": "the five parts",
-         "block": "pages-07-08-09_k19",
+         "block": "pages-07-08-09_k21",
          "start_s": 240.003,
          "start": "4:00"
         },
@@ -56699,77 +56699,83 @@
        "start": "5:48",
        "points": [
         {
-         "text": "Two cases",
-         "block": "pages-07-08-09_k20",
+         "text": "two letters as skeletons",
+         "block": "pages-07-08-09_k22",
          "start_s": 348.531,
          "start": "5:48"
         },
         {
-         "text": "Several requests",
-         "block": "pages-07-08-09_k09",
-         "start_s": 354.581,
-         "start": "5:54"
+         "text": "the openings",
+         "block": "pages-07-08-09_k10",
+         "start_s": 380.155,
+         "start": "6:20"
         },
         {
-         "text": "One short request",
-         "block": "pages-07-08-09_k10",
-         "start_s": 374.095,
-         "start": "6:14"
+         "text": "Mrs Dawson's end",
+         "block": "pages-07-08-09_k11",
+         "start_s": 396.561,
+         "start": "6:36"
+        },
+        {
+         "text": "Mr Talbot's end",
+         "block": "pages-07-08-09_k12",
+         "start_s": 414.129,
+         "start": "6:54"
         },
         {
          "text": "OET's words",
-         "block": "pages-07-08-09_k11",
-         "start_s": 390.255,
-         "start": "6:30"
+         "block": "pages-07-08-09_k13",
+         "start_s": 417.903,
+         "start": "6:57"
         }
        ]
       },
       {
        "board": "pages-07-08-09_t3",
        "title": "The body: situation, background, assessment",
-       "start_s": 402.195,
-       "start": "6:42",
+       "start_s": 429.843,
+       "start": "7:09",
        "points": [
         {
          "text": "the body",
-         "block": "pages-07-08-09_k21",
-         "start_s": 402.195,
-         "start": "6:42"
+         "block": "pages-07-08-09_k23",
+         "start_s": 429.843,
+         "start": "7:09"
         },
         {
          "text": "the situation",
-         "block": "pages-07-08-09_k14",
-         "start_s": 415.983,
-         "start": "6:55"
+         "block": "pages-07-08-09_k16",
+         "start_s": 443.631,
+         "start": "7:23"
         },
         {
          "text": "background with the situation",
-         "block": "pages-07-08-09_k15",
-         "start_s": 423.682,
-         "start": "7:03"
+         "block": "pages-07-08-09_k17",
+         "start_s": 451.33,
+         "start": "7:31"
         },
         {
          "text": "your turn",
-         "block": "pages-07-08-09_k17",
-         "start_s": 459.901,
-         "start": "7:39"
+         "block": "pages-07-08-09_k19",
+         "start_s": 487.549,
+         "start": "8:07"
         },
         {
          "text": "the answer",
-         "block": "pages-07-08-09_k18",
-         "start_s": 478.815,
-         "start": "7:58"
+         "block": "pages-07-08-09_k20",
+         "start_s": 506.463,
+         "start": "8:26"
         }
        ]
       }
      ],
      "rules": [
       {
-       "block": "pages-07-08-09_k11",
+       "block": "pages-07-08-09_k13",
        "kind": "rule",
        "text": "OET: say the purpose early, and expand it at the end.",
-       "start_s": 390.255,
-       "start": "6:30"
+       "start_s": 417.903,
+       "start": "6:57"
       }
      ],
      "terms": [],
@@ -56785,20 +56791,20 @@
        "start": "4:00"
       },
       {
-       "utterance": "pages-07-08-09_t2.s1.u2",
+       "utterance": "pages-07-08-09_t2.s2.u1",
        "lesson": "writing-03-letter-structure",
        "section": "page-10",
        "provenance": "source-derived",
-       "start_s": 351.771,
-       "start": "5:51"
+       "start_s": 362.093,
+       "start": "6:02"
       },
       {
-       "utterance": "pages-07-08-09_t2.s1.u4",
+       "utterance": "pages-07-08-09_t2.s5.u1",
        "lesson": "writing-04-introduction",
        "section": "pages-12-13",
        "provenance": "adapted",
-       "start_s": 390.595,
-       "start": "6:30"
+       "start_s": 418.243,
+       "start": "6:58"
       }
      ]
     },
@@ -56812,153 +56818,153 @@
       12
      ],
      "category": null,
-     "start_s": 498.357,
-     "start": "8:18",
-     "end_s": 770.242,
+     "start_s": 526.005,
+     "start": "8:46",
+     "end_s": 797.89,
      "topics": [
       {
        "board": "pages-10-11-12_t1",
        "title": "Letter 1: Mrs Dawson, the classic shape",
-       "start_s": 498.357,
-       "start": "8:18",
+       "start_s": 526.005,
+       "start": "8:46",
        "points": [
         {
          "text": "the classic shape",
          "block": "pages-10-11-12_k27",
-         "start_s": 498.357,
-         "start": "8:18"
+         "start_s": 526.005,
+         "start": "8:46"
         },
         {
          "text": "the opening",
          "block": "pages-10-11-12_k03",
-         "start_s": 514.461,
-         "start": "8:34"
+         "start_s": 542.109,
+         "start": "9:02"
         },
         {
          "text": "the situation now",
          "block": "pages-10-11-12_k04",
-         "start_s": 522.809,
-         "start": "8:42"
+         "start_s": 550.457,
+         "start": "9:10"
         },
         {
          "text": "her home",
          "block": "pages-10-11-12_k06",
-         "start_s": 560.099,
-         "start": "9:20"
+         "start_s": 587.747,
+         "start": "9:47"
         },
         {
          "text": "the requests",
          "block": "pages-10-11-12_k08",
-         "start_s": 580.084,
-         "start": "9:40"
+         "start_s": 607.732,
+         "start": "10:07"
         }
        ]
       },
       {
        "board": "pages-10-11-12_t2",
        "title": "letter 2, Mrs Ashworth: the cause, today's lines",
-       "start_s": 583.097,
-       "start": "9:43",
+       "start_s": 610.745,
+       "start": "10:10",
        "points": [
         {
          "text": "lines from four headings",
          "block": "pages-10-11-12_k28",
-         "start_s": 583.097,
-         "start": "9:43"
+         "start_s": 610.745,
+         "start": "10:10"
         },
         {
          "text": "the assessment line",
          "block": "pages-10-11-12_k11",
-         "start_s": 607.323,
-         "start": "10:07"
+         "start_s": 634.971,
+         "start": "10:34"
         },
         {
          "text": "since 9 October",
          "block": "pages-10-11-12_k12",
-         "start_s": 620.776,
-         "start": "10:20"
+         "start_s": 648.424,
+         "start": "10:48"
         },
         {
          "text": "two days without fluids",
          "block": "pages-10-11-12_k13",
-         "start_s": 630.699,
-         "start": "10:30"
+         "start_s": 658.347,
+         "start": "10:58"
         }
        ]
       },
       {
        "board": "pages-10-11-12_t3",
        "title": "letter 2, Mrs Ashworth: the cause, the earlier lines",
-       "start_s": 637.552,
-       "start": "10:37",
+       "start_s": 665.2,
+       "start": "11:05",
        "points": [
         {
          "text": "two earlier entries",
          "block": "pages-10-11-12_k15",
-         "start_s": 637.222,
-         "start": "10:37"
+         "start_s": 664.87,
+         "start": "11:04"
         },
         {
          "text": "the lithium she kept taking",
          "block": "pages-10-11-12_k16",
-         "start_s": 652.578,
-         "start": "10:52"
+         "start_s": 680.226,
+         "start": "11:20"
         },
         {
          "text": "the dose change",
          "block": "pages-10-11-12_k17",
-         "start_s": 671.303,
-         "start": "11:11"
+         "start_s": 698.951,
+         "start": "11:38"
         },
         {
          "text": "the normal level",
          "block": "pages-10-11-12_k18",
-         "start_s": 683.085,
-         "start": "11:23"
+         "start_s": 710.733,
+         "start": "11:50"
         }
        ]
       },
       {
        "board": "pages-10-11-12_t4",
        "title": "Letter 3: Mrs Holden, in time order",
-       "start_s": 702.442,
-       "start": "11:42",
+       "start_s": 730.09,
+       "start": "12:10",
        "points": [
         {
          "text": "several dated entries",
          "block": "pages-10-11-12_k30",
-         "start_s": 702.442,
-         "start": "11:42"
+         "start_s": 730.09,
+         "start": "12:10"
         },
         {
          "text": "the opening",
          "block": "pages-10-11-12_k22",
-         "start_s": 720.595,
-         "start": "12:00"
+         "start_s": 748.243,
+         "start": "12:28"
         },
         {
          "text": "the admission",
          "block": "pages-10-11-12_k23",
-         "start_s": 732.467,
-         "start": "12:12"
+         "start_s": 760.115,
+         "start": "12:40"
         },
         {
          "text": "treatment, and today",
          "block": "pages-10-11-12_k24",
-         "start_s": 751.164,
-         "start": "12:31"
+         "start_s": 778.812,
+         "start": "12:58"
         },
         {
          "text": "the advice",
          "block": "pages-10-11-12_k25",
-         "start_s": 757.067,
-         "start": "12:37"
+         "start_s": 784.715,
+         "start": "13:04"
         },
         {
          "text": "the requests",
          "block": "pages-10-11-12_k26",
-         "start_s": 761.966,
-         "start": "12:41"
+         "start_s": 789.614,
+         "start": "13:09"
         }
        ]
       }
@@ -56968,8 +56974,8 @@
        "block": "pages-10-11-12_k19",
        "kind": "rule",
        "text": "Put lines together when the reader needs them together, whatever heading they came from.",
-       "start_s": 691.35,
-       "start": "11:31"
+       "start_s": 718.998,
+       "start": "11:58"
       }
      ],
      "terms": [],
@@ -56981,8 +56987,8 @@
        "lesson": "writing-03-letter-structure",
        "section": "pages-04-05",
        "provenance": "source-derived",
-       "start_s": 498.357,
-       "start": "8:18"
+       "start_s": 526.005,
+       "start": "8:46"
       }
      ]
     },
@@ -56997,159 +57003,159 @@
       16
      ],
      "category": null,
-     "start_s": 770.242,
-     "start": "12:50",
-     "end_s": 991.572,
+     "start_s": 797.89,
+     "start": "13:17",
+     "end_s": 1019.22,
      "topics": [
       {
        "board": "pages-13-14-15-16_t1",
        "title": "Two ways",
-       "start_s": 770.242,
-       "start": "12:50",
+       "start_s": 797.89,
+       "start": "13:17",
        "points": [
         {
          "text": "The two ways",
          "block": "pages-13-14-15-16_k25",
-         "start_s": 770.242,
-         "start": "12:50"
+         "start_s": 797.89,
+         "start": "13:17"
         },
         {
          "text": "The word",
          "block": "pages-13-14-15-16_k02",
-         "start_s": 784.574,
-         "start": "13:04"
+         "start_s": 812.222,
+         "start": "13:32"
         },
         {
          "text": "OET's own advice",
          "block": "pages-13-14-15-16_k03",
-         "start_s": 797.142,
-         "start": "13:17"
+         "start_s": 824.79,
+         "start": "13:44"
         }
        ]
       },
       {
        "board": "pages-13-14-15-16_t2",
        "title": "Chronologically: Mrs Holden's letter",
-       "start_s": 808.612,
-       "start": "13:28",
+       "start_s": 836.26,
+       "start": "13:56",
        "points": [
         {
          "text": "around time",
          "block": "pages-13-14-15-16_k26",
-         "start_s": 808.612,
-         "start": "13:28"
+         "start_s": 836.26,
+         "start": "13:56"
         },
         {
          "text": "the first event",
          "block": "pages-13-14-15-16_k06",
-         "start_s": 819.971,
-         "start": "13:39"
+         "start_s": 847.619,
+         "start": "14:07"
         },
         {
          "text": "what was done",
          "block": "pages-13-14-15-16_k07",
-         "start_s": 827.765,
-         "start": "13:47"
+         "start_s": 855.413,
+         "start": "14:15"
         },
         {
          "text": "the advice",
          "block": "pages-13-14-15-16_k08",
-         "start_s": 833.652,
-         "start": "13:53"
+         "start_s": 861.3,
+         "start": "14:21"
         },
         {
          "text": "up to the requests",
          "block": "pages-13-14-15-16_k09",
-         "start_s": 839.064,
-         "start": "13:59"
+         "start_s": 866.712,
+         "start": "14:26"
         }
        ]
       },
       {
        "board": "pages-13-14-15-16_t3",
        "title": "Thematically: Mrs Dawson's letter",
-       "start_s": 847.882,
-       "start": "14:07",
+       "start_s": 875.53,
+       "start": "14:35",
        "points": [
         {
          "text": "by theme",
          "block": "pages-13-14-15-16_k27",
-         "start_s": 847.882,
-         "start": "14:07"
+         "start_s": 875.53,
+         "start": "14:35"
         },
         {
          "text": "the most important",
          "block": "pages-13-14-15-16_k12",
-         "start_s": 857.013,
-         "start": "14:17"
+         "start_s": 884.661,
+         "start": "14:44"
         },
         {
          "text": "the requests",
          "block": "pages-13-14-15-16_k13",
-         "start_s": 870.303,
-         "start": "14:30"
+         "start_s": 897.951,
+         "start": "14:57"
         },
         {
          "text": "only one time",
          "block": "pages-13-14-15-16_k14",
-         "start_s": 873.855,
-         "start": "14:33"
+         "start_s": 901.503,
+         "start": "15:01"
         }
        ]
       },
       {
        "board": "pages-13-14-15-16_t4",
        "title": "The same letter both ways: Mrs Ashworth",
-       "start_s": 892.023,
-       "start": "14:52",
+       "start_s": 919.671,
+       "start": "15:19",
        "points": [
         {
          "text": "an urgent referral",
          "block": "pages-13-14-15-16_k28",
-         "start_s": 892.023,
-         "start": "14:52"
+         "start_s": 919.671,
+         "start": "15:19"
         },
         {
          "text": "the opening",
          "block": "pages-13-14-15-16_k18",
-         "start_s": 899.458,
-         "start": "14:59"
+         "start_s": 927.106,
+         "start": "15:27"
         },
         {
          "text": "today first",
          "block": "pages-13-14-15-16_k19",
-         "start_s": 916.79,
-         "start": "15:16"
+         "start_s": 944.438,
+         "start": "15:44"
         },
         {
          "text": "then the lead-up",
          "block": "pages-13-14-15-16_k20",
-         "start_s": 933.151,
-         "start": "15:33"
+         "start_s": 960.799,
+         "start": "16:00"
         },
         {
          "text": "the requests",
          "block": "pages-13-14-15-16_k21",
-         "start_s": 940.297,
-         "start": "15:40"
+         "start_s": 967.945,
+         "start": "16:07"
         },
         {
          "text": "the other way, first",
          "block": "pages-13-14-15-16_k22",
-         "start_s": 952.62,
-         "start": "15:52"
+         "start_s": 980.268,
+         "start": "16:20"
         },
         {
          "text": "the other way, second",
          "block": "pages-13-14-15-16_k23",
-         "start_s": 963.942,
-         "start": "16:03"
+         "start_s": 991.59,
+         "start": "16:31"
         },
         {
          "text": "both are right",
          "block": "pages-13-14-15-16_k24",
-         "start_s": 975.867,
-         "start": "16:15"
+         "start_s": 1003.515,
+         "start": "16:43"
         }
        ]
       }
@@ -57159,8 +57165,8 @@
        "block": "pages-13-14-15-16_k24",
        "kind": "rule",
        "text": "My advice: both orders are right. Your analysis decides; there is no fixed format.",
-       "start_s": 975.867,
-       "start": "16:15"
+       "start_s": 1003.515,
+       "start": "16:43"
       }
      ],
      "terms": [],
@@ -57174,157 +57180,157 @@
      "kind": "authored",
      "pages": [],
      "category": null,
-     "start_s": 991.572,
-     "start": "16:31",
-     "end_s": 1283.627,
+     "start_s": 1019.22,
+     "start": "16:59",
+     "end_s": 1311.275,
      "topics": [
       {
        "board": "added-01_t1",
        "title": "a five-line plan",
-       "start_s": 991.572,
-       "start": "16:31",
+       "start_s": 1019.22,
+       "start": "16:59",
        "points": [
         {
          "text": "the plan",
          "block": "added-01_k26",
-         "start_s": 991.572,
-         "start": "16:31"
+         "start_s": 1019.22,
+         "start": "16:59"
         },
         {
          "text": "the opening",
          "block": "added-01_k03",
-         "start_s": 1008.084,
-         "start": "16:48"
+         "start_s": 1035.732,
+         "start": "17:15"
         },
         {
          "text": "the situation now",
          "block": "added-01_k04",
-         "start_s": 1015.632,
-         "start": "16:55"
+         "start_s": 1043.28,
+         "start": "17:23"
         },
         {
          "text": "what was done",
          "block": "added-01_k05",
-         "start_s": 1022.403,
-         "start": "17:02"
+         "start_s": 1050.051,
+         "start": "17:30"
         },
         {
          "text": "the background",
          "block": "added-01_k06",
-         "start_s": 1029.594,
-         "start": "17:09"
+         "start_s": 1057.242,
+         "start": "17:37"
         },
         {
          "text": "the requests",
          "block": "added-01_k07",
-         "start_s": 1039.105,
-         "start": "17:19"
+         "start_s": 1066.753,
+         "start": "17:46"
         },
         {
          "text": "where to write it",
          "block": "added-01_k08",
-         "start_s": 1041.946,
-         "start": "17:21"
+         "start_s": 1069.594,
+         "start": "17:49"
         }
        ]
       },
       {
        "board": "added-01_t2",
        "title": "Mr Talbot's lines, sorted",
-       "start_s": 1061.632,
-       "start": "17:41",
+       "start_s": 1089.28,
+       "start": "18:09",
        "points": [
         {
          "text": "the lines, sorted",
          "block": "added-01_k27",
-         "start_s": 1061.632,
-         "start": "17:41"
+         "start_s": 1089.28,
+         "start": "18:09"
         },
         {
          "text": "the opening",
          "block": "added-01_k12",
-         "start_s": 1080.14,
-         "start": "18:00"
+         "start_s": 1107.788,
+         "start": "18:27"
         },
         {
          "text": "today's findings",
          "block": "added-01_k13",
-         "start_s": 1095.178,
-         "start": "18:15"
+         "start_s": 1122.826,
+         "start": "18:42"
         },
         {
          "text": "the cause",
          "block": "added-01_k14",
-         "start_s": 1106.611,
-         "start": "18:26"
+         "start_s": 1134.259,
+         "start": "18:54"
         },
         {
          "text": "your turn",
          "block": "added-01_k15",
-         "start_s": 1123.302,
-         "start": "18:43"
+         "start_s": 1150.95,
+         "start": "19:10"
         },
         {
          "text": "the answer",
          "block": "added-01_k16",
-         "start_s": 1157.131,
-         "start": "19:17"
+         "start_s": 1184.779,
+         "start": "19:44"
         },
         {
          "text": "the requests",
          "block": "added-01_k17",
-         "start_s": 1181.691,
-         "start": "19:41"
+         "start_s": 1209.339,
+         "start": "20:09"
         }
        ]
       },
       {
        "board": "added-01_t3",
        "title": "the order for an urgent letter",
-       "start_s": 1189.172,
-       "start": "19:49",
+       "start_s": 1216.82,
+       "start": "20:16",
        "points": [
         {
          "text": "Mrs Pritchard's paragraphs",
          "block": "added-01_k19",
-         "start_s": 1188.845,
-         "start": "19:48"
+         "start_s": 1216.493,
+         "start": "20:16"
         },
         {
          "text": "your turn",
          "block": "added-01_k20",
-         "start_s": 1214.884,
-         "start": "20:14"
+         "start_s": 1242.532,
+         "start": "20:42"
         },
         {
          "text": "the opening",
          "block": "added-01_k21",
-         "start_s": 1236.249,
-         "start": "20:36"
+         "start_s": 1263.897,
+         "start": "21:03"
         },
         {
          "text": "this morning",
          "block": "added-01_k22",
-         "start_s": 1243.763,
-         "start": "20:43"
+         "start_s": 1271.411,
+         "start": "21:11"
         },
         {
          "text": "her medicines",
          "block": "added-01_k23",
-         "start_s": 1254.386,
-         "start": "20:54"
+         "start_s": 1282.034,
+         "start": "21:22"
         },
         {
          "text": "the background",
          "block": "added-01_k24",
-         "start_s": 1264.162,
-         "start": "21:04"
+         "start_s": 1291.81,
+         "start": "21:31"
         },
         {
          "text": "the requests",
          "block": "added-01_k25",
-         "start_s": 1271.609,
-         "start": "21:11"
+         "start_s": 1299.257,
+         "start": "21:39"
         }
        ]
       }
@@ -57334,8 +57340,8 @@
        "block": "added-01_k02",
        "kind": "rule",
        "text": "My advice: before the body, write a five-line plan.",
-       "start_s": 996.679,
-       "start": "16:36"
+       "start_s": 1024.327,
+       "start": "17:04"
       }
      ],
      "terms": [],
@@ -57347,16 +57353,16 @@
        "lesson": "writing-04-introduction",
        "section": "pages-12-13",
        "provenance": "authored",
-       "start_s": 1006.092,
-       "start": "16:46"
+       "start_s": 1033.74,
+       "start": "17:13"
       },
       {
        "utterance": "added-01_t2.s1.u1",
        "lesson": "writing-08-reading-the-task",
        "section": "added-04",
        "provenance": "authored",
-       "start_s": 1061.632,
-       "start": "17:41"
+       "start_s": 1089.28,
+       "start": "18:09"
       }
      ]
     },
@@ -57366,133 +57372,133 @@
      "kind": "authored",
      "pages": [],
      "category": null,
-     "start_s": 1283.627,
-     "start": "21:23",
-     "end_s": 1592.384,
+     "start_s": 1311.275,
+     "start": "21:51",
+     "end_s": 1620.032,
      "topics": [
       {
        "board": "added-02_t1",
        "title": "one request for each line of the plan",
-       "start_s": 1283.627,
-       "start": "21:23",
+       "start_s": 1311.275,
+       "start": "21:51",
        "points": [
         {
          "text": "Mr Talbot's plan and his requests",
          "block": "added-02_k23",
-         "start_s": 1283.627,
-         "start": "21:23"
+         "start_s": 1311.275,
+         "start": "21:51"
         },
         {
          "text": "the first request",
          "block": "added-02_k03",
-         "start_s": 1330.137,
-         "start": "22:10"
+         "start_s": 1357.785,
+         "start": "22:37"
         },
         {
          "text": "the second",
          "block": "added-02_k04",
-         "start_s": 1350.903,
-         "start": "22:30"
+         "start_s": 1378.551,
+         "start": "22:58"
         },
         {
          "text": "the third",
          "block": "added-02_k05",
-         "start_s": 1368.656,
-         "start": "22:48"
+         "start_s": 1396.304,
+         "start": "23:16"
         },
         {
          "text": "the order, and the tone",
          "block": "added-02_k06",
-         "start_s": 1378.907,
-         "start": "22:58"
+         "start_s": 1406.555,
+         "start": "23:26"
         }
        ]
       },
       {
        "board": "added-02_t2",
        "title": "a date, a condition, and the patient's agreement",
-       "start_s": 1400.587,
-       "start": "23:20",
+       "start_s": 1428.235,
+       "start": "23:48",
        "points": [
         {
          "text": "Mrs Holden's plan and her requests",
          "block": "added-02_k09",
-         "start_s": 1400.266,
-         "start": "23:20"
+         "start_s": 1427.914,
+         "start": "23:47"
         },
         {
          "text": "your turn",
          "block": "added-02_k10",
-         "start_s": 1419.869,
-         "start": "23:39"
+         "start_s": 1447.517,
+         "start": "24:07"
         },
         {
          "text": "the answer",
          "block": "added-02_k11",
-         "start_s": 1446.728,
-         "start": "24:06"
+         "start_s": 1474.376,
+         "start": "24:34"
         },
         {
          "text": "a condition",
          "block": "added-02_k12",
-         "start_s": 1477.241,
-         "start": "24:37"
+         "start_s": 1504.889,
+         "start": "25:04"
         },
         {
          "text": "after the restart",
          "block": "added-02_k13",
-         "start_s": 1491.597,
-         "start": "24:51"
+         "start_s": 1519.245,
+         "start": "25:19"
         },
         {
          "text": "the agreement",
          "block": "added-02_k14",
-         "start_s": 1496.527,
-         "start": "24:56"
+         "start_s": 1524.175,
+         "start": "25:24"
         }
        ]
       },
       {
        "board": "added-02_t3",
        "title": "the closing sentence",
-       "start_s": 1517.581,
-       "start": "25:17",
+       "start_s": 1545.229,
+       "start": "25:45",
        "points": [
         {
          "text": "three letters, three closing sentences",
          "block": "added-02_k16",
-         "start_s": 1517.29,
-         "start": "25:17"
+         "start_s": 1544.938,
+         "start": "25:44"
         },
         {
          "text": "a referral",
          "block": "added-02_k17",
-         "start_s": 1531.12,
-         "start": "25:31"
+         "start_s": 1558.768,
+         "start": "25:58"
         },
         {
          "text": "a request for help",
          "block": "added-02_k18",
-         "start_s": 1539.589,
-         "start": "25:39"
+         "start_s": 1567.237,
+         "start": "26:07"
         },
         {
          "text": "your turn",
          "block": "added-02_k19",
-         "start_s": 1546.675,
-         "start": "25:46"
+         "start_s": 1574.323,
+         "start": "26:14"
         },
         {
          "text": "the answer",
          "block": "added-02_k20",
-         "start_s": 1562.281,
-         "start": "26:02"
+         "start_s": 1589.929,
+         "start": "26:29"
         },
         {
          "text": "the other closing",
          "block": "added-02_k21",
-         "start_s": 1573.553,
-         "start": "26:13"
+         "start_s": 1601.201,
+         "start": "26:41"
         }
        ]
       }
@@ -57502,8 +57508,8 @@
        "block": "added-02_k02",
        "kind": "rule",
        "text": "My advice: one request for each action named in the task and the plan. Nothing more than the plan asks.",
-       "start_s": 1292.563,
-       "start": "21:32"
+       "start_s": 1320.211,
+       "start": "22:00"
       }
      ],
      "terms": [],
@@ -57515,16 +57521,16 @@
        "lesson": "writing-08-reading-the-task",
        "section": "added-04",
        "provenance": "authored",
-       "start_s": 1283.627,
-       "start": "21:23"
+       "start_s": 1311.275,
+       "start": "21:51"
       },
       {
        "utterance": "added-02_t3.s6.u2",
        "lesson": "writing-03-letter-structure",
        "section": "page-11",
        "provenance": "authored",
-       "start_s": 1582.314,
-       "start": "26:22"
+       "start_s": 1609.962,
+       "start": "26:49"
       }
      ]
     },
@@ -57534,21 +57540,21 @@
      "kind": "closing",
      "pages": [],
      "category": null,
-     "start_s": 1592.384,
-     "start": "26:32",
-     "end_s": 1629.282,
+     "start_s": 1620.032,
+     "start": "27:00",
+     "end_s": 1656.93,
      "topics": [
       {
        "board": "added-03_t1",
        "title": "Closing",
-       "start_s": 1592.384,
-       "start": "26:32",
+       "start_s": 1620.032,
+       "start": "27:00",
        "points": [
         {
          "text": "Recap",
          "block": "added-03_k04",
-         "start_s": 1592.384,
-         "start": "26:32"
+         "start_s": 1620.032,
+         "start": "27:00"
         }
        ]
       }
@@ -57607,9 +57613,9 @@
      "note": null,
      "section": "pages-07-08-09",
      "board": "pages-07-08-09_t2",
-     "utterance": "pages-07-08-09_t2.s1.u4",
-     "start_s": 390.595,
-     "start": "6:30"
+     "utterance": "pages-07-08-09_t2.s5.u1",
+     "start_s": 418.243,
+     "start": "6:58"
     },
     {
      "fact": "writing-selection-mistakes",
@@ -57618,8 +57624,8 @@
      "section": "pages-10-11-12",
      "board": "pages-10-11-12_t3",
      "utterance": "pages-10-11-12_t3.s4.u2",
-     "start_s": 691.682,
-     "start": "11:31"
+     "start_s": 719.33,
+     "start": "11:59"
     },
     {
      "fact": "writing-closing-sentence",
@@ -57628,8 +57634,8 @@
      "section": "added-02",
      "board": "added-02_t3",
      "utterance": "added-02_t3.s6.u1",
-     "start_s": 1573.784,
-     "start": "26:13"
+     "start_s": 1601.432,
+     "start": "26:41"
     },
     {
      "fact": "writing-body-counted",
@@ -57638,8 +57644,8 @@
      "section": "added-02",
      "board": "added-02_t3",
      "utterance": "added-02_t3.s6.u2",
-     "start_s": 1582.314,
-     "start": "26:22"
+     "start_s": 1609.962,
+     "start": "26:49"
     }
    ],
    "methods": [
@@ -57675,9 +57681,9 @@
      "text": "Several requests: why you write in the opening, the requests at the end; one short request: in the opening too, expanded at the end.",
      "section": "pages-07-08-09",
      "board": "pages-07-08-09_t2",
-     "utterance": "pages-07-08-09_t2.s1.u2",
-     "start_s": 351.771,
-     "start": "5:51"
+     "utterance": "pages-07-08-09_t2.s2.u1",
+     "start_s": 362.093,
+     "start": "6:02"
     },
     {
      "name": "Chronologically or thematically",
@@ -57685,8 +57691,8 @@
      "section": "pages-13-14-15-16",
      "board": "pages-13-14-15-16_t1",
      "utterance": "pages-13-14-15-16_t1.s1.u1",
-     "start_s": 770.242,
-     "start": "12:50"
+     "start_s": 797.89,
+     "start": "13:17"
     },
     {
      "name": "Both orders can be right (the teacher's method)",
@@ -57694,8 +57700,8 @@
      "section": "pages-13-14-15-16",
      "board": "pages-13-14-15-16_t4",
      "utterance": "pages-13-14-15-16_t4.s8.u1",
-     "start_s": 976.212,
-     "start": "16:16"
+     "start_s": 1003.86,
+     "start": "16:43"
     },
     {
      "name": "A five-line plan (the teacher's method)",
@@ -57703,8 +57709,8 @@
      "section": "added-01",
      "board": "added-01_t1",
      "utterance": "added-01_t1.s1.u1",
-     "start_s": 991.572,
-     "start": "16:31"
+     "start_s": 1019.22,
+     "start": "16:59"
     },
     {
      "name": "One request for each action (the teacher's method)",
@@ -57712,8 +57718,8 @@
      "section": "added-02",
      "board": "added-02_t1",
      "utterance": "added-02_t1.s1.u1",
-     "start_s": 1283.627,
-     "start": "21:23"
+     "start_s": 1311.275,
+     "start": "21:51"
     }
    ],
    "vocabulary": [
@@ -57732,8 +57738,8 @@
      "lexicon": null,
      "section": "pages-13-14-15-16",
      "block": "pages-13-14-15-16_k02",
-     "start_s": 784.574,
-     "start": "13:04"
+     "start_s": 812.222,
+     "start": "13:32"
     }
    ],
    "withheld": {
@@ -57772,25 +57778,25 @@
       "lesson": "writing-03-letter-structure",
       "section": "page-10",
       "from_section": "pages-07-08-09",
-      "utterance": "pages-07-08-09_t2.s1.u2",
-      "start_s": 351.771,
-      "start": "5:51"
+      "utterance": "pages-07-08-09_t2.s2.u1",
+      "start_s": 362.093,
+      "start": "6:02"
      },
      {
       "lesson": "writing-04-introduction",
       "section": "pages-12-13",
       "from_section": "pages-07-08-09",
-      "utterance": "pages-07-08-09_t2.s1.u4",
-      "start_s": 390.595,
-      "start": "6:30"
+      "utterance": "pages-07-08-09_t2.s5.u1",
+      "start_s": 418.243,
+      "start": "6:58"
      },
      {
       "lesson": "writing-03-letter-structure",
       "section": "page-11",
       "from_section": "added-02",
       "utterance": "added-02_t3.s6.u2",
-      "start_s": 1582.314,
-      "start": "26:22"
+      "start_s": 1609.962,
+      "start": "26:49"
      }
     ],
     "referred_to_by": [
@@ -59796,8 +59802,8 @@
     {
      "lesson": "writing-07-organisation",
      "section": "pages-13-14-15-16",
-     "start_s": 770.242,
-     "start": "12:50",
+     "start_s": 797.89,
+     "start": "13:17",
      "source": "section"
     }
    ]
@@ -61864,8 +61870,8 @@
     {
      "lesson": "writing-07-organisation",
      "section": "pages-13-14-15-16",
-     "start_s": 770.242,
-     "start": "12:50",
+     "start_s": 797.89,
+     "start": "13:17",
      "source": "curated"
     }
    ]
@@ -62330,8 +62336,8 @@
     {
      "lesson": "writing-07-organisation",
      "section": "added-01",
-     "start_s": 991.572,
-     "start": "16:31",
+     "start_s": 1019.22,
+     "start": "16:59",
      "source": "curated"
     }
    ]
@@ -62343,8 +62349,8 @@
     {
      "lesson": "writing-07-organisation",
      "section": "added-01",
-     "start_s": 991.572,
-     "start": "16:31",
+     "start_s": 1019.22,
+     "start": "16:59",
      "source": "section"
     }
    ]
@@ -63541,8 +63547,8 @@
     {
      "lesson": "writing-07-organisation",
      "section": "added-02",
-     "start_s": 1517.581,
-     "start": "25:17",
+     "start_s": 1545.229,
+     "start": "25:45",
      "source": "curated"
     }
    ]
@@ -63801,8 +63807,8 @@
     {
      "lesson": "writing-07-organisation",
      "section": "added-02",
-     "start_s": 1283.627,
-     "start": "21:23",
+     "start_s": 1311.275,
+     "start": "21:51",
      "source": "section"
     }
    ]
@@ -63834,8 +63840,8 @@
     {
      "lesson": "writing-07-organisation",
      "section": "added-02",
-     "start_s": 1283.627,
-     "start": "21:23",
+     "start_s": 1311.275,
+     "start": "21:51",
      "source": "curated"
     }
    ]
@@ -63951,8 +63957,8 @@
     {
      "lesson": "writing-07-organisation",
      "section": "pages-10-11-12",
-     "start_s": 498.357,
-     "start": "8:18",
+     "start_s": 526.005,
+     "start": "8:46",
      "source": "section"
     }
    ]
@@ -64652,7 +64658,7 @@
   "lessons": 29,
   "sections": 273,
   "topics": 632,
-  "teaching_points": 4565,
+  "teaching_points": 4566,
   "rules": 285,
   "warnings": 66,
   "terms": 488,
