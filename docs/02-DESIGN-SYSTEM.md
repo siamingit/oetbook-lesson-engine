@@ -1038,6 +1038,13 @@ visual idea over** in style C (never its decoration, never official OET content)
 where a table really is the clearest form; then it is drawn as the handouts draw one (§1a: a solid
 header row in the section's colour, white words, tinted rows).
 
+**From 2026-11-01 the layout of every board is a creative design decision** (ADR 048,
+docs/adr/048-creative-board-design.md): the session designs each board for the one thing it teaches, no two boards
+in a row alike, a plain table or text block only where nothing teaches the point better (the reason logged), the
+owner's own slides the starting point to match or better, and a scored critique of the lesson's contact sheet
+before voicing. The rows below are the forms the engine draws today; a form a lesson needs and the engine cannot
+draw is added here, in `style_c.LAYOUT_CSS`, in its own pull request with the render proof (ADR 048 decision 8).
+
 A layout is presentation only: it never changes a block's words, their order, an id, a cue, a state
 or the narration (§7c, "Presentation only"). It is named per block in the lesson's
 `analysis/sections.json`, `block_layouts` (`{"<bundle block id>": "<layout>"}`, the bundle's block ids,
