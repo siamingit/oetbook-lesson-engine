@@ -56,6 +56,7 @@
     "writing-02-assessment-criteria",
     "writing-03-letter-structure",
     "writing-04-introduction",
+    "writing-06-word-order",
     "writing-07-organisation",
     "writing-08-reading-the-task"
    ]
@@ -4624,6 +4625,14 @@
       "utterance": "page-19_t1.s6.u5",
       "start_s": 1695.592,
       "start": "28:15"
+     },
+     {
+      "lesson": "writing-06-word-order",
+      "section": "page-8",
+      "to_section": "page-14",
+      "utterance": "page-8_t2.s2.u2",
+      "start_s": 581.104,
+      "start": "9:41"
      }
     ],
     "continues_in": [
@@ -11894,6 +11903,14 @@
       "utterance": "page-19_t1.s7.u2",
       "start_s": 1711.452,
       "start": "28:31"
+     },
+     {
+      "lesson": "writing-06-word-order",
+      "section": "pages-10-11",
+      "to_section": "page-7",
+      "utterance": "pages-10-11_t3.s4.u1",
+      "start_s": 1020.885,
+      "start": "17:00"
      }
     ],
     "continues_in": [
@@ -16470,6 +16487,22 @@
       "utterance": "pages-07-08_t3.s2.u1",
       "start_s": 762.585,
       "start": "12:42"
+     },
+     {
+      "lesson": "writing-06-word-order",
+      "section": "pages-06-07",
+      "to_section": "page-10",
+      "utterance": "pages-06-07_t2.s4.u1",
+      "start_s": 427.498,
+      "start": "7:07"
+     },
+     {
+      "lesson": "writing-06-word-order",
+      "section": "pages-10-11",
+      "to_section": "added-02",
+      "utterance": "pages-10-11_t2.s4.u2",
+      "start_s": 956.146,
+      "start": "15:56"
      }
     ],
     "continues_in": [],
@@ -18561,6 +18594,14 @@
       "utterance": "page-19_t1.s5.u2",
       "start_s": 1660.942,
       "start": "27:40"
+     },
+     {
+      "lesson": "writing-06-word-order",
+      "section": "pages-06-07",
+      "to_section": "page-8",
+      "utterance": "pages-06-07_t2.s1.u2",
+      "start_s": 367.748,
+      "start": "6:07"
      }
     ],
     "continues_in": [],
@@ -22508,6 +22549,30 @@
       "utterance": "pages-09-10-11_t2.s5.u1",
       "start_s": 914.773,
       "start": "15:14"
+     },
+     {
+      "lesson": "writing-06-word-order",
+      "section": "pages-10-11",
+      "to_section": "page-6",
+      "utterance": "pages-10-11_t3.s5.u2",
+      "start_s": 1086.535,
+      "start": "18:06"
+     },
+     {
+      "lesson": "writing-06-word-order",
+      "section": "pages-10-11",
+      "to_section": "page-8",
+      "utterance": "pages-10-11_t3.s5.u2",
+      "start_s": 1086.535,
+      "start": "18:06"
+     },
+     {
+      "lesson": "writing-06-word-order",
+      "section": "pages-10-11",
+      "to_section": "page-4",
+      "utterance": "pages-10-11_t3.s5.u2",
+      "start_s": 1086.535,
+      "start": "18:06"
      }
     ],
     "continues_in": [],
@@ -53626,6 +53691,14 @@
     ],
     "referred_to_by": [
      {
+      "lesson": "writing-06-word-order",
+      "section": "pages-04-05",
+      "to_section": "pages-04-05",
+      "utterance": "pages-04-05_t2.s1.u2",
+      "start_s": 203.883,
+      "start": "3:23"
+     },
+     {
       "lesson": "writing-07-organisation",
       "section": "pages-07-08-09",
       "to_section": "pages-12-13",
@@ -53642,6 +53715,1129 @@
       "source": "closing"
      }
     ]
+   }
+  },
+  {
+   "id": "writing-06-word-order",
+   "folder": "writing-06-word-order",
+   "title": "OET Writing: Word Order",
+   "description": "Learn the order of words in a letter sentence: who, what, where, when, why; the verb and its object together; a time phrase first with a comma; where also, then and frequency adverbs go; a paragraph and a letter corrected.",
+   "course": "writing",
+   "order": 6,
+   "length_s": 1439.309,
+   "length": "23:59",
+   "bundle_format": "1.23",
+   "status": "built",
+   "approval": null,
+   "source": {
+    "folder": "source",
+    "recording": "source/video.mp4",
+    "recording_duration_s": 3168.2,
+    "recording_partial_hash": "e580eb78f48235f0",
+    "deck": "source/slides.pdf",
+    "deck_pages": 17,
+    "same_recording_as": [],
+    "note": "Session 6 of the Persian Writing course, «Word Orders» (52:48, 17 slides in the Vocabulary template): the order subject, verb, object, place, time, reason (who, what, where, when, why); the verb and its object together; a time phrase first with a comma; also and then in the middle position; adverbial phrases and signal words at the start of a sentence; a learner's paragraph corrected line by line; a letter with gaps. The last lesson of the general Writing course (ADR 047 decision 1). Every example on the deck is the teacher's own sentence of unknown origin, a learner's paragraph (third-party) or a practice letter of unknown origin, and every point is rebuilt on our samples oa-ws-nur-0002, oa-ws-med-0002, oa-ws-nur-0001, oa-ws-med-0003, oa-ws-med-0001 and oa-ws-nur-0003 at oetacademy-exercises 5320d19 (ADR 040)."
+   },
+   "categories": [],
+   "sections": [
+    {
+     "id": "page-3",
+     "title": "Introduction",
+     "kind": "intro",
+     "pages": [
+      3
+     ],
+     "category": null,
+     "start_s": 0.0,
+     "start": "0:00",
+     "end_s": 112.762,
+     "topics": [
+      {
+       "board": "page-3_t1",
+       "title": "Title board",
+       "start_s": 0.0,
+       "start": "0:00",
+       "points": [
+        {
+         "text": "the lesson title, then what the lesson is about",
+         "block": "page-3_k14",
+         "start_s": 0.0,
+         "start": "0:00"
+        }
+       ]
+      },
+      {
+       "board": "page-3_t2",
+       "title": "Contents board",
+       "start_s": 71.55,
+       "start": "1:11",
+       "points": [
+        {
+         "text": "each category, revealed as it is named",
+         "block": "page-3_k15",
+         "start_s": 71.55,
+         "start": "1:11"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-3_t1.s1.u2",
+       "lesson": "writing-07-organisation",
+       "section": "added-01",
+       "provenance": "authored",
+       "start_s": 5.33,
+       "start": "0:05"
+      }
+     ]
+    },
+    {
+     "id": "pages-04-05",
+     "title": "Who, what, where, when, why",
+     "kind": "deck",
+     "pages": [
+      4,
+      5
+     ],
+     "category": null,
+     "start_s": 112.762,
+     "start": "1:52",
+     "end_s": 306.498,
+     "topics": [
+      {
+       "board": "pages-04-05_t1",
+       "title": "A sentence in the wrong order",
+       "start_s": 112.762,
+       "start": "1:52",
+       "points": [
+        {
+         "text": "the paper's own sentence",
+         "block": "pages-04-05_k17",
+         "start_s": 112.762,
+         "start": "1:52"
+        },
+        {
+         "text": "the date the paper gives",
+         "block": "pages-04-05_k03",
+         "start_s": 135.695,
+         "start": "2:15"
+        },
+        {
+         "text": "the same words, in the wrong order",
+         "block": "pages-04-05_k04",
+         "start_s": 149.388,
+         "start": "2:29"
+        },
+        {
+         "text": "the pieces named",
+         "block": "pages-04-05_k06",
+         "start_s": 166.882,
+         "start": "2:46"
+        }
+       ]
+      },
+      {
+       "board": "pages-04-05_t2",
+       "title": "The five pieces, in order",
+       "start_s": 189.723,
+       "start": "3:09",
+       "points": [
+        {
+         "text": "who, what, where, when, why",
+         "block": "pages-04-05_k18",
+         "start_s": 189.723,
+         "start": "3:09"
+        },
+        {
+         "text": "who",
+         "block": "pages-04-05_k09",
+         "start_s": 218.582,
+         "start": "3:38"
+        },
+        {
+         "text": "what",
+         "block": "pages-04-05_k10",
+         "start_s": 225.203,
+         "start": "3:45"
+        },
+        {
+         "text": "where",
+         "block": "pages-04-05_k11",
+         "start_s": 231.129,
+         "start": "3:51"
+        },
+        {
+         "text": "when",
+         "block": "pages-04-05_k12",
+         "start_s": 236.319,
+         "start": "3:56"
+        },
+        {
+         "text": "why",
+         "block": "pages-04-05_k13",
+         "start_s": 242.066,
+         "start": "4:02"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-04-05_k14",
+         "start_s": 253.901,
+         "start": "4:13"
+        },
+        {
+         "text": "the answer",
+         "block": "pages-04-05_k15",
+         "start_s": 273.663,
+         "start": "4:33"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "pages-04-05_k08",
+       "kind": "rule",
+       "text": "My advice: who, what, where, when, why. Place, then time, then reason.",
+       "start_s": 193.712,
+       "start": "3:13"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [
+      {
+       "block": "pages-04-05_k04",
+       "text": "I visited for his routine warfarin check today at home Mr Graham Talbot.",
+       "start_s": 149.388,
+       "start": "2:29"
+      }
+     ],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "pages-04-05_t1.s1.u1",
+       "lesson": "writing-08-reading-the-task",
+       "section": "added-03",
+       "provenance": "source-derived",
+       "start_s": 112.762,
+       "start": "1:52"
+      },
+      {
+       "utterance": "pages-04-05_t2.s1.u2",
+       "lesson": "writing-04-introduction",
+       "section": "pages-04-05",
+       "provenance": "adapted",
+       "start_s": 203.883,
+       "start": "3:23"
+      }
+     ]
+    },
+    {
+     "id": "pages-06-07",
+     "title": "The verb and its object; the time first",
+     "kind": "deck",
+     "pages": [
+      6,
+      7
+     ],
+     "category": null,
+     "start_s": 306.498,
+     "start": "5:06",
+     "end_s": 463.218,
+     "topics": [
+      {
+       "board": "pages-06-07_t1",
+       "title": "The verb and its object together",
+       "start_s": 306.498,
+       "start": "5:06",
+       "points": [
+        {
+         "text": "the request from the plan",
+         "block": "pages-06-07_k11",
+         "start_s": 306.498,
+         "start": "5:06"
+        },
+        {
+         "text": "nothing between the verb and its object",
+         "block": "pages-06-07_k03",
+         "start_s": 331.494,
+         "start": "5:31"
+        }
+       ]
+      },
+      {
+       "board": "pages-06-07_t2",
+       "title": "The time first",
+       "start_s": 349.008,
+       "start": "5:49",
+       "points": [
+        {
+         "text": "Mrs Dawson's plan and her letter",
+         "block": "pages-06-07_k12",
+         "start_s": 349.008,
+         "start": "5:49"
+        },
+        {
+         "text": "a time clause first",
+         "block": "pages-06-07_k07",
+         "start_s": 386.151,
+         "start": "6:26"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-06-07_k09",
+         "start_s": 406.396,
+         "start": "6:46"
+        },
+        {
+         "text": "the answer",
+         "block": "pages-06-07_k10",
+         "start_s": 438.21,
+         "start": "7:18"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "pages-06-07_k04",
+       "kind": "rule",
+       "text": "Keep the verb and its object together. Place, time and reason come after them.",
+       "start_s": 338.302,
+       "start": "5:38"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [
+      {
+       "block": "pages-06-07_k02",
+       "text": "Please check on 28 October her BP and urea and electrolytes.",
+       "start_s": 314.386,
+       "start": "5:14"
+      }
+     ],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "pages-06-07_t2.s1.u2",
+       "lesson": "grammar-08-paraphrasing",
+       "section": "page-8",
+       "provenance": "adapted",
+       "start_s": 367.748,
+       "start": "6:07"
+      },
+      {
+       "utterance": "pages-06-07_t2.s4.u1",
+       "lesson": "grammar-07-punctuation",
+       "section": "page-10",
+       "provenance": "adapted",
+       "start_s": 427.498,
+       "start": "7:07"
+      }
+     ]
+    },
+    {
+     "id": "page-8",
+     "title": "Three errors to avoid",
+     "kind": "deck",
+     "pages": [
+      8
+     ],
+     "category": null,
+     "start_s": 463.218,
+     "start": "7:43",
+     "end_s": 682.606,
+     "topics": [
+      {
+       "board": "page-8_t1",
+       "title": "place before time; the time inside a joined sentence",
+       "start_s": 463.218,
+       "start": "7:43",
+       "points": [
+        {
+         "text": "discharged home today",
+         "block": "page-8_k14",
+         "start_s": 463.218,
+         "start": "7:43"
+        },
+        {
+         "text": "the time inside a joined sentence",
+         "block": "page-8_k03",
+         "start_s": 488.347,
+         "start": "8:08"
+        },
+        {
+         "text": "is being discharged",
+         "block": "page-8_k05",
+         "start_s": 519.783,
+         "start": "8:39"
+        }
+       ]
+      },
+      {
+       "board": "page-8_t2",
+       "title": "also, then and often, in the middle",
+       "start_s": 541.254,
+       "start": "9:01",
+       "points": [
+        {
+         "text": "where the adverb goes",
+         "block": "page-8_k15",
+         "start_s": 541.254,
+         "start": "9:01"
+        },
+        {
+         "text": "after would",
+         "block": "page-8_k08",
+         "start_s": 569.723,
+         "start": "9:29"
+        },
+        {
+         "text": "after is",
+         "block": "page-8_k10",
+         "start_s": 603.312,
+         "start": "10:03"
+        },
+        {
+         "text": "at the end",
+         "block": "page-8_k11",
+         "start_s": 618.586,
+         "start": "10:18"
+        },
+        {
+         "text": "your turn",
+         "block": "page-8_k12",
+         "start_s": 638.664,
+         "start": "10:38"
+        },
+        {
+         "text": "the answer",
+         "block": "page-8_k13",
+         "start_s": 664.176,
+         "start": "11:04"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-8_k04",
+       "kind": "rule",
+       "text": "My advice: put a time first only at the start of a sentence. Inside a joined sentence, keep it in its place.",
+       "start_s": 501.608,
+       "start": "8:21"
+      },
+      {
+       "block": "page-8_k08",
+       "kind": "rule",
+       "text": "My advice: also, then and a frequency adverb go after the first helping verb, or after be; with no helping verb, before the main verb.",
+       "start_s": 569.723,
+       "start": "9:29"
+      }
+     ],
+     "terms": [
+      {
+       "block": "page-8_k07",
+       "label": "Grammar term",
+       "term": "helping verb",
+       "start_s": 550.108,
+       "start": "9:10"
+      }
+     ],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-8_t2.s2.u2",
+       "lesson": "grammar-01-verb-tenses",
+       "section": "page-14",
+       "provenance": "source-derived",
+       "start_s": 581.104,
+       "start": "9:41"
+      }
+     ]
+    },
+    {
+     "id": "page-9",
+     "title": "Phrases at the start of a sentence",
+     "kind": "deck",
+     "pages": [
+      9
+     ],
+     "category": null,
+     "start_s": 682.606,
+     "start": "11:22",
+     "end_s": 797.466,
+     "topics": [
+      {
+       "board": "page-9_t1",
+       "title": "Phrases that start a sentence",
+       "start_s": 682.606,
+       "start": "11:22",
+       "points": [
+        {
+         "text": "three phrases at the start",
+         "block": "page-9_k09",
+         "start_s": 682.606,
+         "start": "11:22"
+        },
+        {
+         "text": "a time",
+         "block": "page-9_k03",
+         "start_s": 703.035,
+         "start": "11:43"
+        },
+        {
+         "text": "a context",
+         "block": "page-9_k04",
+         "start_s": 720.638,
+         "start": "12:00"
+        },
+        {
+         "text": "a reason",
+         "block": "page-9_k05",
+         "start_s": 737.287,
+         "start": "12:17"
+        },
+        {
+         "text": "a contrast",
+         "block": "page-9_k07",
+         "start_s": 774.222,
+         "start": "12:54"
+        },
+        {
+         "text": "only after a full stop",
+         "block": "page-9_k08",
+         "start_s": 780.53,
+         "start": "13:00"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "page-9_k06",
+       "kind": "warning",
+       "text": "My advice: Please note and Unfortunately at most once in a letter, and never about a habit.",
+       "start_s": 747.419,
+       "start": "12:27"
+      },
+      {
+       "block": "page-9_k08",
+       "kind": "rule",
+       "text": "My advice: a phrase goes first at the start of a sentence, after a full stop. Inside a joined sentence, keep place, time and reason in their places.",
+       "start_s": 780.53,
+       "start": "13:00"
+      }
+     ],
+     "terms": [
+      {
+       "block": "page-9_k02",
+       "label": "Grammar term",
+       "term": "phrase",
+       "start_s": 687.335,
+       "start": "11:27"
+      }
+     ],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-9_t1.s2.u1",
+       "lesson": "grammar-07-punctuation",
+       "section": "page-10",
+       "provenance": "source-derived",
+       "start_s": 697.046,
+       "start": "11:37"
+      }
+     ]
+    },
+    {
+     "id": "pages-10-11",
+     "title": "A paragraph corrected",
+     "kind": "deck",
+     "pages": [
+      10,
+      11
+     ],
+     "category": null,
+     "start_s": 797.466,
+     "start": "13:17",
+     "end_s": 1114.025,
+     "topics": [
+      {
+       "board": "pages-10-11_t1",
+       "title": "A paragraph with five small errors",
+       "start_s": 797.466,
+       "start": "13:17",
+       "points": [
+        {
+         "text": "the paragraph, read whole",
+         "block": "pages-10-11_k20",
+         "start_s": 797.466,
+         "start": "13:17"
+        },
+        {
+         "text": "a correct line",
+         "block": "pages-10-11_k03",
+         "start_s": 824.956,
+         "start": "13:44"
+        },
+        {
+         "text": "two adverbs",
+         "block": "pages-10-11_k04",
+         "start_s": 834.835,
+         "start": "13:54"
+        },
+        {
+         "text": "a list",
+         "block": "pages-10-11_k05",
+         "start_s": 855.936,
+         "start": "14:15"
+        },
+        {
+         "text": "a signal word",
+         "block": "pages-10-11_k06",
+         "start_s": 862.278,
+         "start": "14:22"
+        },
+        {
+         "text": "a contrast",
+         "block": "pages-10-11_k07",
+         "start_s": 884.746,
+         "start": "14:44"
+        }
+       ]
+      },
+      {
+       "board": "pages-10-11_t2",
+       "title": "lines 1 to 3, put right",
+       "start_s": 893.806,
+       "start": "14:53",
+       "points": [
+        {
+         "text": "as written, and put right",
+         "block": "pages-10-11_k21",
+         "start_s": 893.806,
+         "start": "14:53"
+        },
+        {
+         "text": "right as it is",
+         "block": "pages-10-11_k09",
+         "start_s": 902.112,
+         "start": "15:02"
+        },
+        {
+         "text": "the adverbs",
+         "block": "pages-10-11_k10",
+         "start_s": 914.955,
+         "start": "15:14"
+        },
+        {
+         "text": "the list",
+         "block": "pages-10-11_k12",
+         "start_s": 948.408,
+         "start": "15:48"
+        }
+       ]
+      },
+      {
+       "board": "pages-10-11_t3",
+       "title": "lines 4 and 5, put right",
+       "start_s": 972.906,
+       "start": "16:12",
+       "points": [
+        {
+         "text": "as written, and put right",
+         "block": "pages-10-11_k22",
+         "start_s": 972.906,
+         "start": "16:12"
+        },
+        {
+         "text": "no signal word",
+         "block": "pages-10-11_k15",
+         "start_s": 984.595,
+         "start": "16:24"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-10-11_k16",
+         "start_s": 996.98,
+         "start": "16:36"
+        },
+        {
+         "text": "however, while, despite",
+         "block": "pages-10-11_k17",
+         "start_s": 1026.647,
+         "start": "17:06"
+        },
+        {
+         "text": "but",
+         "block": "pages-10-11_k18",
+         "start_s": 1068.565,
+         "start": "17:48"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "pages-10-11_k06",
+       "kind": "rule",
+       "text": "My advice: where the link between two sentences is obvious, no signal word.",
+       "start_s": 862.278,
+       "start": "14:22"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "pages-10-11_t2.s4.u2",
+       "lesson": "grammar-07-punctuation",
+       "section": "added-02",
+       "provenance": "source-derived",
+       "start_s": 956.146,
+       "start": "15:56"
+      },
+      {
+       "utterance": "pages-10-11_t3.s4.u1",
+       "lesson": "grammar-05-complex-compound",
+       "section": "page-7",
+       "provenance": "source-derived",
+       "start_s": 1020.885,
+       "start": "17:00"
+      },
+      {
+       "utterance": "pages-10-11_t3.s5.u2",
+       "lesson": "vocabulary-01-word-forms",
+       "section": "page-6",
+       "provenance": "source-derived",
+       "start_s": 1086.535,
+       "start": "18:06"
+      },
+      {
+       "utterance": "pages-10-11_t3.s5.u2",
+       "lesson": "vocabulary-01-word-forms",
+       "section": "page-8",
+       "provenance": "source-derived",
+       "start_s": 1086.535,
+       "start": "18:06"
+      },
+      {
+       "utterance": "pages-10-11_t3.s5.u2",
+       "lesson": "vocabulary-01-word-forms",
+       "section": "page-4",
+       "provenance": "source-derived",
+       "start_s": 1086.535,
+       "start": "18:06"
+      }
+     ]
+    },
+    {
+     "id": "pages-12-13",
+     "title": "Signal words: the start or the end",
+     "kind": "deck",
+     "pages": [
+      12,
+      13
+     ],
+     "category": null,
+     "start_s": 1114.025,
+     "start": "18:34",
+     "end_s": 1251.667,
+     "topics": [
+      {
+       "board": "pages-12-13_t1",
+       "title": "Where a signal word goes",
+       "start_s": 1114.025,
+       "start": "18:34",
+       "points": [
+        {
+         "text": "The two places",
+         "block": "pages-12-13_k09",
+         "start_s": 1114.025,
+         "start": "18:34"
+        },
+        {
+         "text": "The families",
+         "block": "pages-12-13_k02",
+         "start_s": 1137.015,
+         "start": "18:57"
+        }
+       ]
+      },
+      {
+       "board": "pages-12-13_t2",
+       "title": "At the start, or at the end",
+       "start_s": 1146.575,
+       "start": "19:06",
+       "points": [
+        {
+         "text": "four sentences, two places",
+         "block": "pages-12-13_k10",
+         "start_s": 1146.575,
+         "start": "19:06"
+        },
+        {
+         "text": "context",
+         "block": "pages-12-13_k04",
+         "start_s": 1162.779,
+         "start": "19:22"
+        },
+        {
+         "text": "a date, both ways",
+         "block": "pages-12-13_k05",
+         "start_s": 1182.057,
+         "start": "19:42"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-12-13_k06",
+         "start_s": 1191.655,
+         "start": "19:51"
+        },
+        {
+         "text": "frequency",
+         "block": "pages-12-13_k07",
+         "start_s": 1218.061,
+         "start": "20:18"
+        },
+        {
+         "text": "contrast",
+         "block": "pages-12-13_k08",
+         "start_s": 1245.592,
+         "start": "20:45"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "page-16",
+     "title": "A letter with gaps",
+     "kind": "deck",
+     "pages": [
+      16
+     ],
+     "category": null,
+     "start_s": 1251.667,
+     "start": "20:51",
+     "end_s": 1397.439,
+     "topics": [
+      {
+       "board": "page-16_t1",
+       "title": "Mrs Pritchard's letter, with six gaps",
+       "start_s": 1251.667,
+       "start": "20:51",
+       "points": [
+        {
+         "text": "the letter",
+         "block": "page-16_k11",
+         "start_s": 1251.667,
+         "start": "20:51"
+        },
+        {
+         "text": "the opening",
+         "block": "page-16_k03",
+         "start_s": 1271.104,
+         "start": "21:11"
+        },
+        {
+         "text": "a time, a reason, a contrast",
+         "block": "page-16_k04",
+         "start_s": 1290.347,
+         "start": "21:30"
+        },
+        {
+         "text": "your turn",
+         "block": "page-16_k06",
+         "start_s": 1321.212,
+         "start": "22:01"
+        },
+        {
+         "text": "despite",
+         "block": "page-16_k07",
+         "start_s": 1342.22,
+         "start": "22:22"
+        },
+        {
+         "text": "her medicines",
+         "block": "page-16_k08",
+         "start_s": 1351.797,
+         "start": "22:31"
+        },
+        {
+         "text": "normally, and a date at the end",
+         "block": "page-16_k09",
+         "start_s": 1371.379,
+         "start": "22:51"
+        },
+        {
+         "text": "a reason first",
+         "block": "page-16_k10",
+         "start_s": 1386.068,
+         "start": "23:06"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-01",
+     "title": "Closing",
+     "kind": "closing",
+     "pages": [],
+     "category": null,
+     "start_s": 1397.439,
+     "start": "23:17",
+     "end_s": 1439.309,
+     "topics": [
+      {
+       "board": "added-01_t1",
+       "title": "Closing",
+       "start_s": 1397.439,
+       "start": "23:17",
+       "points": [
+        {
+         "text": "Recap",
+         "block": "added-01_k04",
+         "start_s": 1397.439,
+         "start": "23:17"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    }
+   ],
+   "facts": [
+    {
+     "fact": "writing-letter-date",
+     "text": "The letter's date is the date the paper gives at the start (\"Assume that today's date is ...\"), never a date from the notes; above or below the reader's address, written in full (writing-facts 44).",
+     "note": null,
+     "section": "pages-04-05",
+     "board": "pages-04-05_t1",
+     "utterance": "pages-04-05_t1.s2.u1",
+     "start_s": 131.242,
+     "start": "2:11"
+    },
+    {
+     "fact": "writing-style",
+     "text": "The style is clinical and factual, with polite language and no personal feelings (writing-facts 21).",
+     "note": null,
+     "section": "page-9",
+     "board": "page-9_t1",
+     "utterance": "page-9_t1.s4.u2",
+     "start_s": 740.806,
+     "start": "12:20"
+    }
+   ],
+   "methods": [
+    {
+     "name": "Who, what, where, when, why (the teacher's method)",
+     "text": "A sentence is subject, verb, object; place, time and reason follow in that order.",
+     "section": "pages-04-05",
+     "board": "pages-04-05_t2",
+     "utterance": "pages-04-05_t2.s1.u1",
+     "start_s": 189.723,
+     "start": "3:09"
+    },
+    {
+     "name": "The verb and its object together (the teacher's method)",
+     "text": "Nothing goes between a verb and its object; place, time and reason come after them.",
+     "section": "pages-06-07",
+     "board": "pages-06-07_t1",
+     "utterance": "pages-06-07_t1.s2.u2",
+     "start_s": 338.648,
+     "start": "5:38"
+    },
+    {
+     "name": "The time first",
+     "text": "A time phrase or clause can start a sentence, with a comma, so the reader follows the dates; inside a joined sentence it keeps its place.",
+     "section": "pages-06-07",
+     "board": "pages-06-07_t2",
+     "utterance": "pages-06-07_t2.s2.u2",
+     "start_s": 389.928,
+     "start": "6:29"
+    },
+    {
+     "name": "Also, then and frequency adverbs (the teacher's method)",
+     "text": "After the first helping verb (would also, has also been, is then); with no helping verb, before the main verb; never between the verb and its object.",
+     "section": "page-8",
+     "board": "page-8_t2",
+     "utterance": "page-8_t2.s2.u1",
+     "start_s": 560.524,
+     "start": "9:20"
+    },
+    {
+     "name": "A phrase first only after a full stop (the teacher's method)",
+     "text": "Time, context, reason and contrast phrases start a sentence with a comma, only after a full stop; emphasis and mood words at most once, never about a habit.",
+     "section": "page-9",
+     "board": "page-9_t1",
+     "utterance": "page-9_t1.s6.u1",
+     "start_s": 780.776,
+     "start": "13:00"
+    },
+    {
+     "name": "No signal word where the link is obvious (the teacher's method)",
+     "text": "Where the link between two sentences is obvious, no signal word; a signal word is not a show of level.",
+     "section": "pages-10-11",
+     "board": "pages-10-11_t1",
+     "utterance": "pages-10-11_t1.s5.u1",
+     "start_s": 859.946,
+     "start": "14:19"
+    },
+    {
+     "name": "However for a full contrast; while or despite inside one sentence (the teacher's method)",
+     "text": "However starts a new sentence for a full contrast; while and despite carry a partial contrast inside one sentence; but joins two halves of one sentence.",
+     "section": "pages-10-11",
+     "board": "pages-10-11_t3",
+     "utterance": "pages-10-11_t3.s4.u1",
+     "start_s": 1020.885,
+     "start": "17:00"
+    },
+    {
+     "name": "A signal word at the start or at the end",
+     "text": "At the start of a sentence with a comma after it, or at the end with none; in the middle, place, time, reason.",
+     "section": "pages-12-13",
+     "board": "pages-12-13_t2",
+     "utterance": "pages-12-13_t2.s1.u1",
+     "start_s": 1146.575,
+     "start": "19:06"
+    }
+   ],
+   "vocabulary": [
+    {
+     "word": "unwitnessed",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "page-16",
+     "block": "page-16_k05",
+     "start_s": 1301.924,
+     "start": "21:41"
+    }
+   ],
+   "withheld": {
+    "listening_panel_words": 0,
+    "lines_naming_an_answer": 0
+   },
+   "practice_set": null,
+   "deck_exercises": [],
+   "links": {
+    "refers_to": [
+     {
+      "lesson": "writing-07-organisation",
+      "section": "added-01",
+      "from_section": "page-3",
+      "utterance": "page-3_t1.s1.u2",
+      "start_s": 5.33,
+      "start": "0:05"
+     },
+     {
+      "lesson": "writing-08-reading-the-task",
+      "section": "added-03",
+      "from_section": "pages-04-05",
+      "utterance": "pages-04-05_t1.s1.u1",
+      "start_s": 112.762,
+      "start": "1:52"
+     },
+     {
+      "lesson": "writing-04-introduction",
+      "section": "pages-04-05",
+      "from_section": "pages-04-05",
+      "utterance": "pages-04-05_t2.s1.u2",
+      "start_s": 203.883,
+      "start": "3:23"
+     },
+     {
+      "lesson": "grammar-08-paraphrasing",
+      "section": "page-8",
+      "from_section": "pages-06-07",
+      "utterance": "pages-06-07_t2.s1.u2",
+      "start_s": 367.748,
+      "start": "6:07"
+     },
+     {
+      "lesson": "grammar-07-punctuation",
+      "section": "page-10",
+      "from_section": "pages-06-07",
+      "utterance": "pages-06-07_t2.s4.u1",
+      "start_s": 427.498,
+      "start": "7:07"
+     },
+     {
+      "lesson": "grammar-01-verb-tenses",
+      "section": "page-14",
+      "from_section": "page-8",
+      "utterance": "page-8_t2.s2.u2",
+      "start_s": 581.104,
+      "start": "9:41"
+     },
+     {
+      "lesson": "grammar-07-punctuation",
+      "section": "added-02",
+      "from_section": "pages-10-11",
+      "utterance": "pages-10-11_t2.s4.u2",
+      "start_s": 956.146,
+      "start": "15:56"
+     },
+     {
+      "lesson": "grammar-05-complex-compound",
+      "section": "page-7",
+      "from_section": "pages-10-11",
+      "utterance": "pages-10-11_t3.s4.u1",
+      "start_s": 1020.885,
+      "start": "17:00"
+     },
+     {
+      "lesson": "vocabulary-01-word-forms",
+      "section": "page-6",
+      "from_section": "pages-10-11",
+      "utterance": "pages-10-11_t3.s5.u2",
+      "start_s": 1086.535,
+      "start": "18:06"
+     },
+     {
+      "lesson": "vocabulary-01-word-forms",
+      "section": "page-8",
+      "from_section": "pages-10-11",
+      "utterance": "pages-10-11_t3.s5.u2",
+      "start_s": 1086.535,
+      "start": "18:06"
+     },
+     {
+      "lesson": "vocabulary-01-word-forms",
+      "section": "page-4",
+      "from_section": "pages-10-11",
+      "utterance": "pages-10-11_t3.s5.u2",
+      "start_s": 1086.535,
+      "start": "18:06"
+     }
+    ],
+    "referred_to_by": [],
+    "continues_in": [],
+    "continues_from": []
    }
   },
   {
@@ -55039,7 +56235,16 @@
       "start": "26:22"
      }
     ],
-    "referred_to_by": [],
+    "referred_to_by": [
+     {
+      "lesson": "writing-06-word-order",
+      "section": "page-3",
+      "to_section": "added-01",
+      "utterance": "page-3_t1.s1.u2",
+      "start_s": 5.33,
+      "start": "0:05"
+     }
+    ],
     "continues_in": [],
     "continues_from": []
    }
@@ -56274,6 +57479,14 @@
     ],
     "referred_to_by": [
      {
+      "lesson": "writing-06-word-order",
+      "section": "pages-04-05",
+      "to_section": "added-03",
+      "utterance": "pages-04-05_t1.s1.u1",
+      "start_s": 112.762,
+      "start": "1:52"
+     },
+     {
       "lesson": "writing-07-organisation",
       "section": "page-3",
       "to_section": "added-04",
@@ -56321,6 +57534,19 @@
    ]
   },
   {
+   "topic": "A letter with gaps",
+   "key": "a letter with gaps",
+   "entries": [
+    {
+     "lesson": "writing-06-word-order",
+     "section": "page-16",
+     "start_s": 1251.667,
+     "start": "20:51",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "A needle in a haystack",
    "key": "a needle in a haystack",
    "entries": [
@@ -56343,6 +57569,19 @@
      "start_s": 687.043,
      "start": "11:27",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "A paragraph corrected",
+   "key": "a paragraph corrected",
+   "entries": [
+    {
+     "lesson": "writing-06-word-order",
+     "section": "pages-10-11",
+     "start_s": 797.466,
+     "start": "13:17",
+     "source": "section"
     }
    ]
   },
@@ -56591,6 +57830,19 @@
      "start_s": 1147.725,
      "start": "19:07",
      "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Adverbial phrases",
+   "key": "adverbial phrases",
+   "entries": [
+    {
+     "lesson": "writing-06-word-order",
+     "section": "page-9",
+     "start_s": 682.606,
+     "start": "11:22",
+     "source": "curated"
     }
    ]
   },
@@ -57404,6 +58656,19 @@
    ]
   },
   {
+   "topic": "Contrast: however, while, despite, but",
+   "key": "contrast: however, while, despite, but",
+   "entries": [
+    {
+     "lesson": "writing-06-word-order",
+     "section": "pages-10-11",
+     "start_s": 1020.885,
+     "start": "17:00",
+     "source": "curated"
+    }
+   ]
+  },
+  {
    "topic": "Coordinating conjunction",
    "key": "coordinating conjunction",
    "entries": [
@@ -57439,6 +58704,19 @@
      "start_s": 3264.738,
      "start": "54:24",
      "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Correcting a paragraph",
+   "key": "correcting a paragraph",
+   "entries": [
+    {
+     "lesson": "writing-06-word-order",
+     "section": "pages-10-11",
+     "start_s": 797.466,
+     "start": "13:17",
+     "source": "curated"
     }
    ]
   },
@@ -58201,6 +59479,13 @@
      "section": "pages-05-06",
      "start_s": 227.51,
      "start": "3:47",
+     "source": "term"
+    },
+    {
+     "lesson": "writing-06-word-order",
+     "section": "page-8",
+     "start_s": 550.108,
+     "start": "9:10",
      "source": "term"
     }
    ]
@@ -59376,6 +60661,32 @@
    ]
   },
   {
+   "topic": "phrase",
+   "key": "phrase",
+   "entries": [
+    {
+     "lesson": "writing-06-word-order",
+     "section": "page-9",
+     "start_s": 687.335,
+     "start": "11:27",
+     "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Phrases at the start of a sentence",
+   "key": "phrases at the start of a sentence",
+   "entries": [
+    {
+     "lesson": "writing-06-word-order",
+     "section": "page-9",
+     "start_s": 682.606,
+     "start": "11:22",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Physical symptoms",
    "key": "physical symptoms",
    "entries": [
@@ -60077,6 +61388,19 @@
    ]
   },
   {
+   "topic": "Signal words",
+   "key": "signal words",
+   "entries": [
+    {
+     "lesson": "writing-06-word-order",
+     "section": "pages-12-13",
+     "start_s": 1114.025,
+     "start": "18:34",
+     "source": "curated"
+    }
+   ]
+  },
+  {
    "topic": "Signal words and verb tenses",
    "key": "signal words and verb tenses",
    "entries": [
@@ -60085,6 +61409,19 @@
      "section": "page-14",
      "start_s": 4604.604,
      "start": "76:44",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Signal words: the start or the end",
+   "key": "signal words: the start or the end",
+   "entries": [
+    {
+     "lesson": "writing-06-word-order",
+     "section": "pages-12-13",
+     "start_s": 1114.025,
+     "start": "18:34",
      "source": "section"
     }
    ]
@@ -60892,6 +62229,19 @@
    ]
   },
   {
+   "topic": "The verb and its object; the time first",
+   "key": "the verb and its object; the time first",
+   "entries": [
+    {
+     "lesson": "writing-06-word-order",
+     "section": "pages-06-07",
+     "start_s": 306.498,
+     "start": "5:06",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "The Writing paper",
    "key": "the writing paper",
    "entries": [
@@ -60913,6 +62263,19 @@
      "section": "pages-06-07",
      "start_s": 318.001,
      "start": "5:18",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Three errors to avoid",
+   "key": "three errors to avoid",
+   "entries": [
+    {
+     "lesson": "writing-06-word-order",
+     "section": "page-8",
+     "start_s": 463.218,
+     "start": "7:43",
      "source": "section"
     }
    ]
@@ -61439,6 +62802,19 @@
    ]
   },
   {
+   "topic": "Who, what, where, when, why",
+   "key": "who, what, where, when, why",
+   "entries": [
+    {
+     "lesson": "writing-06-word-order",
+     "section": "pages-04-05",
+     "start_s": 112.762,
+     "start": "1:52",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Will have smoked",
    "key": "will have smoked",
    "entries": [
@@ -61517,6 +62893,19 @@
    ]
   },
   {
+   "topic": "Word order",
+   "key": "word order",
+   "entries": [
+    {
+     "lesson": "writing-06-word-order",
+     "section": "pages-04-05",
+     "start_s": 189.723,
+     "start": "3:09",
+     "source": "curated"
+    }
+   ]
+  },
+  {
    "topic": "Your turn: a doctor's notes",
    "key": "your turn: a doctors notes",
    "entries": [
@@ -61544,21 +62933,21 @@
   }
  ],
  "totals": {
-  "lessons": 27,
-  "sections": 255,
-  "topics": 592,
-  "teaching_points": 4387,
-  "rules": 270,
-  "warnings": 65,
-  "terms": 485,
-  "wrong_examples": 275,
-  "facts": 174,
-  "methods": 58,
-  "vocabulary": 520,
+  "lessons": 28,
+  "sections": 264,
+  "topics": 608,
+  "teaching_points": 4454,
+  "rules": 276,
+  "warnings": 66,
+  "terms": 487,
+  "wrong_examples": 277,
+  "facts": 176,
+  "methods": 66,
+  "vocabulary": 521,
   "vocabulary_word_bank": 189,
   "practice_items": 62,
-  "references": 110,
-  "topic_index": 380,
+  "references": 121,
+  "topic_index": 393,
   "withheld_panel_words": 139,
   "withheld_answer_lines": 9
  }
