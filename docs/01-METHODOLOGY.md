@@ -904,6 +904,16 @@ fixed layer, and written items are its working layer. There is no second
 region to lay out.
 ---
 
+### The layout of a board is a design decision (ADR 048)
+
+Owner, 2026-11-01, after the first Writing drafts: the boards' design was simple, repetitive and tiring, and
+worse with each lesson. The screen-content stage still authors the words (above); how a board is laid out is
+no longer a template filled in at step 11b but a design decision taken for what the board teaches, with the
+design skills in `.claude/skills/`, checked by a scored critique of a contact sheet before the lesson is voiced,
+and recorded board by board. Style C stays the base; a layout stays presentation only, so a voiced lesson can be
+redesigned with its narration and audio unchanged. The rules are docs/adr/048-creative-board-design.md; the
+step is docs/03-RUNBOOK.md 11b; the layouts the engine draws are docs/02-DESIGN-SYSTEM.md §7j.
+
 ## 19. Artefacts are per page, per lesson, and shared across neither
 
 **Every artefact belongs to exactly one page of exactly one lesson. Nothing
