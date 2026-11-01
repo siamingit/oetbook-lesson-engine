@@ -1155,6 +1155,20 @@ the silent preview and the player):
    narration marks with the pen's circle or line, never the marker's band.
 7. **Headings**: never one or two words alone on a line (`text-wrap: balance`, and room enough).
 
+**On the site's player too** (ADR 050 amendment (2)): every board is checked on the site's own player
+(`check_site_player.py`, runbook step 18c), which measures a board while it enters, does not serve the hand yet, and
+keeps its own rules above the lesson's. So: a piece enters by growing inside its box, never from outside it; the hand
+takes the line height of the face that draws it; nothing is drawn outside its block (a line between items lives inside
+the items); no rule relies on changing what the site's `player.css` sets (`#cam`'s display, direction, wrapping and
+gaps; a tight board's table padding).
+
+**One face per set of equals** (the owner, 2026-11-01): items side by side as equals (recap cards, columns, pills,
+steps) share face, size and weight: print for the set when any item is longer than a short note.
+
+**Headings and labels in coloured rounded boxes** (the owner, 2026-11-01): the title in a teal band, the title
+board's opening lines each in its own box, the paper's labels as solid pills, row labels on a soft tint, WRONG/RIGHT
+and AS WRITTEN/PUT RIGHT as solid pills or panels, comparison heads as boxes, the board's title in a soft band.
+
 Pattern 11 as a table (`compare`, two columns): two cards, each its place's head, its example sentences one under
 another with the words in that place ringed in the pen (`block_accents`), its last row the rule in the hand.
 

@@ -1228,10 +1228,10 @@ LAYOUT_CSS.update({
   .lay-beforeafter,.lay-choices,.lay-path,.lay-compare) td{overflow-wrap:break-word}
 /* the pieces of a teal pattern enter in reading order as the board opens (§8g, ADR 050): a row, a pill or a
    step after another, 70 ms apart, each in 0.4 s; never under reduced motion, never in a measuring check */
-@keyframes t-in{from{opacity:0;transform:translateY(1.6cqh)}to{opacity:1;transform:none}}
+@keyframes t-in{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
 @keyframes t-pop{from{opacity:0;transform:scale(.86)}to{opacity:1;transform:none}}
 .tbl.lay:is(.lay-wrongright,.lay-opener,.lay-timeline,.lay-columns,.lay-parts,.lay-badges,.lay-ruled,
-  .lay-beforeafter,.lay-path) tbody tr{animation:t-in .4s cubic-bezier(.2,.7,.2,1) backwards}
+  .lay-beforeafter,.lay-path) tbody tr{animation:t-in .4s cubic-bezier(.2,.7,.2,1) backwards;transform-origin:50% 0}
 .tbl.lay:is(.lay-coded,.lay-choices) td{animation:t-pop .4s cubic-bezier(.2,.7,.2,1) backwards}
 .tbl.lay tbody tr:nth-child(2),.tbl.lay:is(.lay-coded,.lay-choices) td:nth-child(2){animation-delay:.07s}
 .tbl.lay tbody tr:nth-child(3),.tbl.lay:is(.lay-coded,.lay-choices) td:nth-child(3){animation-delay:.14s}
@@ -1319,7 +1319,7 @@ LAYOUT_CSS.update({
   background:var(--c);color:var(--con);font-weight:800;font-size:3.4cqh;line-height:13cqh;white-space:nowrap;
   overflow:hidden;padding:0}
 .tbl.lay.lay-timeline td:nth-child(2){margin-top:2.4cqh;font-weight:800;font-size:3cqh;color:var(--t-ink)}
-.tbl.lay.lay-timeline td:nth-child(3){margin-top:1cqh;font-family:var(--t-hand,cursive);font-size:3.4cqh;line-height:1.15;
+.tbl.lay.lay-timeline td:nth-child(3){margin-top:1cqh;font-family:var(--t-hand,cursive);font-size:3.4cqh;line-height:normal;
   color:var(--t-ink2,#536866)}
 .tbl.core.lay.lay-timeline.spot tbody tr.focus{box-shadow:none;transform:none}
 """,
@@ -1379,7 +1379,7 @@ LAYOUT_CSS.update({
    columns of one sheet, in reading order; each part's name a pill at the start of its paragraph */
 .tbl.lay.lay-parts[data-flow="2"]{position:relative;background:#fff;border:max(2px,.36cqh) solid var(--t-teal);
   border-radius:1.8cqh;padding:0 1.3cqw;margin-top:1.4cqh}
-.tbl.lay.lay-parts[data-flow="2"] table{padding:2.2cqh 0 .5cqh}
+.tbl.lay.lay-parts[data-flow="2"] table{padding:2cqh 0 .3cqh}
 .tbl.lay.lay-parts[data-flow="2"] thead tr{display:block}
 .tbl.lay.lay-parts[data-flow="2"] th:first-child{display:none}
 .tbl.lay.lay-parts[data-flow="2"] th:last-child{display:block;position:absolute;left:1.6cqw;top:-1.6cqh;padding:.3cqh 1.2cqw;
@@ -1407,7 +1407,7 @@ LAYOUT_CSS.update({
 .tbl.lay.lay-badges tr{display:flex;flex-direction:column;align-items:center;flex:0 1 28%;text-align:center}
 .tbl.lay.lay-badges tbody tr td:first-child{display:grid;place-content:center;width:25cqh;height:25cqh;border-radius:50%;
   background:var(--c);color:var(--con);font-weight:800;font-size:3.4cqh;line-height:1.2;padding:2.6cqh;box-sizing:border-box}
-.tbl.lay.lay-badges td:nth-child(2){margin-top:2.2cqh;font-family:var(--t-hand,cursive);font-size:3.9cqh;line-height:1.15;
+.tbl.lay.lay-badges td:nth-child(2){margin-top:2.2cqh;font-family:var(--t-hand,cursive);font-size:3.9cqh;line-height:normal;
   color:var(--t-pen)}
 .tbl.core.lay.lay-badges.spot tbody tr.focus{box-shadow:none;transform:none}
 #cam:has(> .card.lay-badges){justify-content:center;align-content:center;column-gap:4cqw}
@@ -1416,7 +1416,7 @@ LAYOUT_CSS.update({
 .card.lay-badges .cardhd{display:grid;place-content:center;width:24cqh;height:24cqh;border-radius:50%;
   background:var(--c);color:var(--con);font-size:3.5cqh;line-height:1.15;font-weight:800;letter-spacing:0;
   text-transform:none;padding:2.4cqh;box-sizing:border-box}
-.card.lay-badges .cardbd{display:block;padding:2.2cqh 0 0;font-family:var(--t-hand,cursive);font-size:4cqh;line-height:1.15;
+.card.lay-badges .cardbd{display:block;padding:2.2cqh 0 0;font-family:var(--t-hand,cursive);font-size:4cqh;line-height:normal;
   font-weight:500;color:var(--t-ink)}
 #cam > .card.lay-badges.on:not([data-layer="fixed"]):not([data-oa-layer="fixed"]){animation-name:t-pop}
 """,
@@ -1455,7 +1455,7 @@ LAYOUT_CSS.update({
 .tbl.lay.lay-beforeafter th:last-child{background:var(--t-teal-s);color:var(--t-teal)}
 .tbl.lay.lay-beforeafter th[data-tone]::before{display:none}
 .tbl.lay.lay-beforeafter td,.tbl.lay.lay-beforeafter td[data-tone]{position:relative;background:var(--t-coral-s);
-  color:var(--t-ink);padding:1.6cqh 2cqw 1.6cqh calc(2.4cqw + 13.6cqh);min-height:15.6cqh;border-radius:0;
+  color:var(--t-ink);padding:1.4cqh 2cqw 1.4cqh calc(2.4cqw + 13.6cqh);min-height:15cqh;border-radius:0;
   border-top:max(1px,.3cqh) solid #fff}
 .tbl.lay.lay-beforeafter td:last-child,.tbl.lay.lay-beforeafter td:last-child[data-tone]{background:var(--t-teal-s)}
 .tbl.lay.lay-beforeafter td .tw{color:var(--t-ink)}
@@ -1481,7 +1481,7 @@ LAYOUT_CSS.update({
 .tbl.lay.lay-choices[data-titled] thead{display:block}
 .tbl.lay.lay-choices[data-titled] th+th{display:none}
 .tbl.lay.lay-choices th{background:none;color:var(--t-pen);font-family:var(--t-hand,cursive);font-size:3.6cqh;
-  line-height:1.15;font-weight:700;text-transform:none;letter-spacing:0;padding:0 .4cqw 1.2cqh;text-align:left;border-radius:0}
+  line-height:normal;font-weight:700;text-transform:none;letter-spacing:0;padding:0 .4cqw 1.2cqh;text-align:left;border-radius:0}
 .tbl.lay.lay-choices tbody{display:flex;flex-wrap:wrap;gap:1.8cqh 1.4cqw;align-items:flex-end}
 .tbl.lay.lay-choices tr{display:contents}
 .tbl.lay.lay-choices tbody tr td:nth-child(n){position:relative;background:var(--c);color:var(--con);font-weight:700;border-radius:999px;
@@ -1509,7 +1509,7 @@ LAYOUT_CSS.update({
   margin-top:15.5cqh;flex:none}
 .tbl.lay.lay-path tr:nth-child(even)::before{margin-top:1.5cqh}
 .tbl.lay.lay-path td:first-child{margin-top:1.8cqh;font-weight:800;font-size:3cqh;line-height:1.2;color:var(--t-ink)}
-.tbl.lay.lay-path td:nth-child(2){margin-top:1cqh;font-family:var(--t-hand,cursive);font-size:3.4cqh;line-height:1.15;
+.tbl.lay.lay-path td:nth-child(2){margin-top:1cqh;font-family:var(--t-hand,cursive);font-size:3.4cqh;line-height:normal;
   color:var(--t-pen)}
 .tbl.core.lay.lay-path.spot tbody tr.focus{box-shadow:none;transform:none}
 """,
@@ -1544,11 +1544,11 @@ LAYOUT_CSS.update({
 .tbl.lay.lay-compare th:last-child{background:var(--t-amber-s);color:#7a4f00}
 .tbl.lay.lay-compare th[data-tone]::before{display:none}
 .tbl.lay.lay-compare tbody{display:block}
-.tbl.lay.lay-compare tbody tr td:nth-child(n){background:var(--t-teal-s);color:var(--t-ink);border-radius:0;padding:1.3cqh 2.4cqw;
-  text-align:left;font-weight:400;font-size:max(var(--tf,3.2cqh),3.2cqh);line-height:1.45}
+.tbl.lay.lay-compare tbody tr td:nth-child(n){background:var(--t-teal-s);color:var(--t-ink);border-radius:0;padding:1.1cqh 2.4cqw;
+  text-align:left;font-weight:400;font-size:max(var(--tf,3.2cqh),3.2cqh);line-height:1.38}
 .tbl.lay.lay-compare tbody tr td:last-child{background:var(--t-amber-s)}
 .tbl.lay.lay-compare tbody tr:last-child td:nth-child(n){border-radius:0 0 2.8cqh 2.8cqh;padding-top:2.4cqh;padding-bottom:2.8cqh;
-  font-family:var(--t-hand,cursive);font-size:calc(3.2cqh * 1.3);line-height:1.15;font-weight:700;color:var(--t-teal)}
+  font-family:var(--t-hand,cursive);font-size:calc(3.2cqh * 1.3);line-height:normal;font-weight:700;color:var(--t-teal)}
 .tbl.lay.lay-compare tbody tr:last-child td:last-child{color:#7a4f00}
 .tbl.lay.lay-compare .acc{display:inline-block;white-space:nowrap;font-weight:700;color:var(--t-ink);line-height:1.2;
   padding:.35cqh .7cqw;margin:-.35cqh -.2cqw;border:max(2px,.38cqh) solid var(--t-pen);border-radius:50%}
@@ -1863,7 +1863,7 @@ LOOK_CSS = {"teal": r"""
   --t-blue:""" + TEAL["blue"] + r""";--t-lilac:""" + TEAL["lilac"] + r""";
   --t-teal-s:#e5f0ef;--t-amber-s:#fbf0d5;--t-coral-s:#fce7e3;--t-blue-s:#e1f1f4;--t-lilac-s:#eee8f6;
   --t-pen:""" + TEAL["pen"] + r""";--t-sticky:""" + TEAL["sticky"] + r""";--t-rule:#c9e2e8;
-  --t-hand:var(--font-hand,"Caveat"),"Segoe Print","Bradley Hand","Chalkboard SE",cursive;
+  --t-hand:var(--font-hand,"Caveat"),"Ink Free","Bradley Hand","Segoe Print","Chalkboard SE",cursive;
   --sc-ink:var(--t-ink);--sc-muted:var(--t-ink2);--sc-muted2:#5d7270;--sc-faint:#9fb3b1;--sc-paper:#fff;
   --sc-note:var(--t-teal-s);--sc-line:#e2e8e6;--sc-right:var(--t-teal);--sc-right-bg:var(--t-teal-s);
   --sc-wrong:#b8352a;--sc-wrong-bg:var(--t-coral-s);--sc-gloss:#9a6406;--sc-gloss-bg:var(--t-amber-s);
@@ -1875,14 +1875,14 @@ LOOK_CSS = {"teal": r"""
 /* the teacher's notes, written while he teaches, in his hand: no card, his ink, a size that reads as body
    text does (§3); the board's own sentences stay in print */
 .plain.role-note:not([data-layer="fixed"]):not([data-oa-layer="fixed"]){background:none;border:0;
-  padding:.4cqh .6cqw;font-family:var(--t-hand);font-size:calc(3.2cqh * """ + str(HAND) + r""");line-height:1.18;
+  padding:.4cqh .6cqw;font-family:var(--t-hand);font-size:calc(3.2cqh * """ + str(HAND) + r""");line-height:normal;
   font-weight:500;color:var(--t-ink)}
 .plain.role-slide,.plain.role-note[data-layer="fixed"],.plain.role-note[data-oa-layer="fixed"]{background:#fff;
   box-shadow:0 .4cqh 1.6cqh rgba(11,60,59,.07)}
 /* his advice on a sticky note: yellow, soft corners, a very small tilt, his hand */
 .callout,.callout.warning,.callout.key_rule{background:var(--t-sticky);color:var(--t-ink);border:0;
   border-radius:.6cqh 2.6cqh 2.6cqh 2.6cqh;rotate:-.6deg;box-shadow:0 .7cqh 1.6cqh -.4cqh rgba(80,64,0,.22);
-  font-family:var(--t-hand);font-size:calc(3.2cqh * """ + str(HAND) + r""");line-height:1.15;font-weight:500}
+  font-family:var(--t-hand);font-size:calc(3.2cqh * """ + str(HAND) + r""");line-height:normal;font-weight:500}
 .callout .badge-c,.key_rule .badge-c,.warning .badge-c{background:var(--t-ink);color:var(--t-sticky);
   font-family:var(--font-plex,"IBM Plex Sans"),system-ui,sans-serif;font-size:2.4cqh;width:4cqh;height:4cqh}
 /* a grammar term: a white card ringed in lilac, its tag a lilac pill */
@@ -1899,13 +1899,17 @@ LOOK_CSS = {"teal": r"""
 .chg{background:#fff;box-shadow:0 .4cqh 1.6cqh rgba(11,60,59,.07);border-radius:2.6cqh}
 /* the contents board: a path of numbered circles, each in its colour in turn, one under the other, joined by
    a teal line (the owner's pattern 10, set vertically) */
-#cam > .blk.citem{flex:0 0 100%;background:none;padding:.2cqh 1cqw;position:relative;gap:2cqw}
-#cam:has(> .blk.citem){row-gap:1.2cqh}
+#cam > .blk.citem{flex:0 0 100%;background:none;padding:.2cqh 1cqw 2.5cqh;margin-bottom:-2.5cqh;position:relative;gap:2cqw;
+  box-sizing:border-box}
 .citem .cnum{position:relative;z-index:1;width:6.8cqh;height:6.8cqh;font-size:3cqh;font-weight:800;
   background:var(--c,var(--t-teal));color:var(--con,#fff)}
 .citem .ct{font-weight:700;font-size:3.7cqh;color:var(--t-ink)}
-#cam > .blk.citem:not(:last-child)::after{content:"";position:absolute;left:calc(1cqw + 3.4cqh - .3cqh);top:50%;
-  width:.6cqh;height:calc(100% + 1.2cqh);background:var(--t-teal);z-index:0}
+#cam:has(> .blk.citem){row-gap:2.5cqh}
+#cam > .blk.citem::before,#cam > .blk.citem::after{content:"";position:absolute;left:calc(1cqw + var(--t-cr,3.4cqh) - .3cqh);
+  width:.6cqh;background:var(--t-teal);z-index:0}
+#cam > .blk.citem::before{top:0;height:calc(50% - 1.25cqh)}
+#cam > .blk.citem::after{top:calc(50% - 1.25cqh);bottom:0}
+#cam > .blk.citem:first-child::before,#cam > .blk.citem:last-child::after{content:none}
 #cam > .blk.citem:nth-child(5n+1){--c:var(--t-amber);--con:var(--t-ink)}
 #cam > .blk.citem:nth-child(5n+2){--c:var(--t-blue);--con:var(--t-ink)}
 #cam > .blk.citem:nth-child(5n+3){--c:var(--t-lilac);--con:var(--t-ink)}
@@ -1918,7 +1922,7 @@ LOOK_CSS = {"teal": r"""
 :is(#marks,.oa-marks) .m-line,:is(#marks,.oa-marks) .m-tick{background:var(--t-pen)!important;border-radius:999px!important}
 :is(#marks,.oa-marks) .m-strike{background:var(--t-pen)!important;border-radius:999px!important}
 /* a fixed block enters as its board opens (§8g, ADR 050); the teal layouts' pieces enter in reading order */
-@keyframes t-enter{from{opacity:0;transform:translateY(1.6cqh)}to{opacity:1;transform:none}}
+@keyframes t-enter{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:none}}
 .blk:is([data-layer="fixed"],[data-oa-layer="fixed"]):not(.lay){animation:t-enter .45s cubic-bezier(.2,.7,.2,1) backwards}
 @media (prefers-reduced-motion: reduce){.blk:is([data-layer="fixed"],[data-oa-layer="fixed"]){animation:none}}
 
@@ -1961,16 +1965,33 @@ LOOK_CSS = {"teal": r"""
    narration marks there with the pen's circle or line, under or around the words (the lesson's cue overrides) */
 /* 7. a heading never leaves one or two words alone on its last line */
 .frame :is(.hdr,.ltitle,th,.cmp-h,.cardhd,.citem .ct,.chg-cap,.lbl){text-wrap:balance}
-/* 4. use the frame: the contents in two columns, large; the sentence's coloured parts as large tiles (pattern 2);
-   choice pills as large as the board allows */
-.frame #cam:has(> .blk.citem:nth-child(6)){display:grid;grid-auto-flow:column;grid-template-rows:repeat(4,minmax(0,1fr));
-  grid-template-columns:minmax(0,1fr) minmax(0,1fr);height:100%;column-gap:4cqw;row-gap:0;padding:1cqh 0}
-.frame #cam:has(> .blk.citem:nth-child(6)) > .blk.citem{gap:1.8cqw;align-self:stretch;align-items:center}
+/* 4. use the frame: six to eight contents items in two columns that fill the board, read down the first column
+   and then the second (`order`; the site fixes #cam as a wrapping row, so the items are set half wide); each
+   column's own line */
+.frame #cam:has(> .blk.citem:nth-child(6)) > .blk.citem{flex:0 0 calc(50% - 1cqw);min-height:17.5cqh;align-items:center;
+  gap:1.8cqw;--t-cr:5.5cqh}
 .frame #cam:has(> .blk.citem:nth-child(6)) .citem .cnum{width:11cqh;height:11cqh;font-size:5cqh}
 .frame #cam:has(> .blk.citem:nth-child(6)) .citem .ct{font-size:4.1cqh;line-height:1.2}
-.frame #cam:has(> .blk.citem:nth-child(6)) > .blk.citem:not(:last-child)::after{left:calc(1cqw + 5.5cqh - .3cqh);
-  height:100%}
-.frame #cam:has(> .blk.citem:nth-child(6)) > .blk.citem:nth-child(4)::after{content:none}
+/* six: three rows */
+.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(1){order:1}
+.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(2){order:3}
+.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(3){order:5}
+.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(4){order:3}
+.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(5){order:5}
+.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(6){order:7}
+.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(3)::after,
+.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(4)::before{content:none}
+/* seven or eight: four rows */
+.frame #cam:has(> .blk.citem:nth-child(7)) > .blk.citem:nth-child(1){order:1}
+.frame #cam:has(> .blk.citem:nth-child(7)) > .blk.citem:nth-child(2){order:3}
+.frame #cam:has(> .blk.citem:nth-child(7)) > .blk.citem:nth-child(3){order:5}
+.frame #cam:has(> .blk.citem:nth-child(7)) > .blk.citem:nth-child(4){order:7}
+.frame #cam:has(> .blk.citem:nth-child(7)) > .blk.citem:nth-child(5){order:2}
+.frame #cam:has(> .blk.citem:nth-child(7)) > .blk.citem:nth-child(6){order:4}
+.frame #cam:has(> .blk.citem:nth-child(7)) > .blk.citem:nth-child(7){order:6}
+.frame #cam:has(> .blk.citem:nth-child(7)) > .blk.citem:nth-child(8){order:8}
+.frame #cam:has(> .blk.citem:nth-child(7)) > .blk.citem:nth-child(4)::after,
+.frame #cam:has(> .blk.citem:nth-child(7)) > .blk.citem:nth-child(5)::before{content:none}
 .frame .tbl.lay.lay-coded tbody{gap:7cqh}
 .frame .tbl.lay.lay-coded tbody tr td:nth-child(n){font-size:calc(max(var(--tf,3.2cqh),3.2cqh) * 1.2);min-height:19cqh;
   padding:3cqh 1.8cqw;margin-top:6.4cqh;align-content:center}
@@ -1979,7 +2000,7 @@ LOOK_CSS = {"teal": r"""
 .frame .tbl.lay.lay-coded td[data-label]::before{top:-6.2cqh;font-size:2.6cqh}
 .frame .tbl.lay.lay-choices tbody tr td:nth-child(n){font-size:max(var(--tf,3.2cqh),3.9cqh);padding:1.7cqh 2.6cqw}
 .frame .tbl.lay.lay-choices td[data-label]{margin-top:4.6cqh}
-.frame .tbl.lay.lay-choices[data-titled] tbody tr td:nth-child(n){font-size:max(var(--tf,3.2cqh),3.1cqh);padding:.8cqh 2.2cqw}
+.frame .tbl.lay.lay-choices[data-titled] tbody tr td:nth-child(n){font-size:max(var(--tf,3.2cqh),3.1cqh);padding:.55cqh 2.2cqw}
 .frame .tbl.lay.lay-choices[data-titled] thead{float:left;margin:1.1cqh 1.6cqw 0 0}
 .frame .tbl.lay.lay-choices[data-titled] th{padding:0}
 /* a note and the word card it brings side by side, so a board's letter keeps its size */
@@ -1991,6 +2012,46 @@ LOOK_CSS = {"teal": r"""
 .frame .tbl.lay.lay-choices td[data-label]::before{top:-4.2cqh}
 .frame .tbl.lay.lay-paper[data-paper="sheet"] table{font-size:max(var(--tf,2.6cqh),4cqh)}
 .frame .tbl.lay.lay-paper[data-paper="sheet"]{padding:1.8cqh 1.8cqw 2cqh}
+
+/* --- ADR 050 amendment (2) (the site's player; the owner's addendum, 2026-11-01) --- */
+/* a tilted sticky note keeps clear of the board's right edge */
+.frame #cam > .callout{flex:0 0 96%;max-width:96%}
+/* a sticky note the player sets beside a table (its width the player's) stands straight: tilted, it passes the edge */
+.frame .callout.beside{rotate:none}
+/* one face for a set of equals: a recap's cards all in print when any of them is longer than a short note */
+.frame #cam:has(> .card.lay-badges.t-print) > .card.lay-badges .cardbd{font-family:var(--font-plex,"IBM Plex Sans"),system-ui,
+  sans-serif;font-size:3.2cqh;line-height:1.38;font-weight:400}
+/* headings and labels in coloured rounded boxes (the owner's Canva samples) */
+.frame .hdr .t{background:var(--t-teal-s);color:var(--t-teal-d);border-radius:999px;padding:.7cqh 2cqw;line-height:1.25}
+.frame .hdr .t:empty{background:none;padding:0}
+.frame .blk.ltitle{background:var(--t-teal);color:#fff;border-radius:2.8cqh;padding:3.2cqh 3.4cqw;
+  box-shadow:0 .8cqh 2.4cqh -.6cqh rgba(11,60,59,.35)}
+.frame #cam:has(> .blk.ltitle) > .blk.plain.role-note:not(.t-print){background:var(--t-blue-s);border-radius:2.4cqh;
+  padding:1.4cqh 2cqw}
+.frame #cam:has(> .blk.ltitle) > .blk.plain.role-note.t-print{background:#fff;border-radius:2.4cqh;padding:1.6cqh 2.2cqw;
+  box-shadow:inset .8cqh 0 0 var(--t-coral),0 .4cqh 1.6cqh rgba(11,60,59,.07)}
+.frame #cam:has(> .blk.ltitle) > .blk.plain.role-slide{background:var(--t-teal-s);border-radius:2.4cqh;box-shadow:none}
+.frame .tbl.lay.lay-paper th{display:table-cell}
+.frame .tbl.lay.lay-paper th:not(:empty){background:var(--t-teal);color:#fff;border-radius:999px 999px 999px 999px;
+  padding:.5cqh 1.4cqw;font-weight:700}
+.frame .tbl.lay.lay-paper th:nth-child(3):not(:empty){background:var(--t-amber);color:var(--t-ink-d)}
+.frame .tbl.lay.lay-paper thead tr{border-spacing:0}
+.frame .tbl.lay.lay-paper tbody td:first-child{color:var(--t-teal-d)}
+.frame .tbl.lay.lay-paper[data-paper="beside"] tbody td:first-child,.frame .tbl.lay.lay-paper[data-paper="sheet"] tbody td:first-child{
+  background:var(--t-teal-s)}
+.frame .tbl.lay.lay-wrongright th{border-radius:999px;padding:.5cqh 1.4cqw;justify-self:start;color:#fff;background:var(--t-pen)}
+.frame .tbl.lay.lay-wrongright th:last-child{background:var(--t-teal);color:#fff}
+.frame .tbl.lay.lay-ruled th{background:var(--t-teal-s);color:var(--t-teal-d);border-radius:999px}
+.frame .tbl.lay.lay-beforeafter th{background:var(--t-coral);color:var(--t-ink-d)}
+.frame .tbl.lay.lay-beforeafter th:last-child{background:var(--t-teal);color:#fff}
+.frame .tbl.lay.lay-compare thead tr th:nth-child(n){margin:1.4cqh 1.4cqw .4cqh;border-radius:2cqh;background:#cfe5e3;
+  padding:1.6cqh 1.6cqw}
+.frame .tbl.lay.lay-compare thead tr th:last-child{background:#f7dfa8}
+.frame .tbl.lay.lay-compare thead tr{background:none}
+.frame .tbl.lay.lay-compare thead tr th:nth-child(n){box-shadow:0 0 0 1.4cqh var(--t-teal-s)}
+.frame .tbl.lay.lay-compare thead tr th:last-child{box-shadow:0 0 0 1.4cqh var(--t-amber-s)}
+/* the paper of a sheet (the paper alone, as on board 3 of Word Order) larger, to use the board */
+.frame .tbl.lay.lay-paper[data-paper="sheet"] table{font-size:max(var(--tf,2.6cqh),4.5cqh)}
 .frame .card.lay-badges .cardhd{width:31cqh;height:31cqh;font-size:3.4cqh;padding:2cqh;text-wrap:balance;hyphens:none}
 """}
 

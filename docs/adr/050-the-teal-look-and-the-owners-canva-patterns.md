@@ -183,3 +183,46 @@ files byte for byte and 165,020 moments at the phone and laptop frames drawn ide
 difference; Word Order differs, as intended. Reading 5 is outside the proof, as before (it does not render on main). Writing 6 is rebuilt as
 draft.4 under these rules; its narration, audio and practice points are unchanged (95 utterances, every spoken word
 the same as draft.3).
+
+## Amendment (2), 2026-11-01: what the site's player does with a lesson, and the owner's addendum
+
+**What happened.** Draft.4 passed every engine check and was unreadable on the site: the boards shown whole drew their
+tables at a quarter of their size and the contents ran off the board. The engine's checks run on its reference player;
+the site plays a lesson with its own (siamingit/oetacademy-web, `packages/lesson-player`), and three of its rules differ
+in effect (read in its code at b08a7a7, and reproduced by rendering draft.4 with that player locally):
+
+1. **Its guard measures a board while it enters.** The teal look's pieces rose into place from 1.6% of the frame below
+   (`translateY`); during that, a table's rows lie outside its block, and the guard treats a block whose content runs
+   outside it ("spills") as a board that does not fit at any size. On a board shown whole (rule 52) its search then
+   runs to its floor, a quarter of the board's size. (The reference player's measuring runs without animation.)
+2. **The hand is not served there** (#227), and the device's hand (Segoe Print on Windows) is taller than Caveat: at the
+   look's fixed line height a note's words ran outside its block, the same spill.
+3. **Its own rules come last.** The site puts the lesson's stylesheet inside `.oa-lesson`, in the cascade layer
+   `oa-lesson` below the player's own rules, so a property the player sets (on `#cam`: display, direction, wrapping,
+   gaps; on a tight board's table: its padding) cannot be changed by the lesson, whatever its specificity, while on the
+   reference player a more specific lesson rule wins. The contents' two-column grid on `#cam` therefore never applied,
+   and the contents' line, drawn past each item, was another spill.
+
+**Decision (engine side, bundle 1.23 unchanged).** (a) A teal piece enters by growing from 97% of its size inside its
+box (`scale`, top-anchored), never by moving from outside it; a fixed block from 98%. (b) Every line in the hand takes
+the line height of the face that draws it (`normal`), and the hand's fallbacks start with Ink Free, the most compact
+handwriting face Windows ships. (c) The contents in two columns by the items' own widths and `order` (read down the
+first column, then the second), its line drawn inside each item; nothing sets a property of `#cam`. (d) The tilted
+sticky note keeps clear of the board's right edge. (e) No rule of the look may rely on overriding a property the site's
+player sets (the list is the site's `player.css`). (f) **Required check:** `check_site_player.py` plays the package
+with the site's own player and fails on a spill, a board the site draws smaller, or text under the minimum or 4.5:1
+(runbook step 18c); its screenshots go beside the engine player's in every report, and `publish_lesson.py
+--release` (draft or final, every lesson) refuses a package the check has not passed on, at every state, byte for byte
+(its bundle and stylesheet).
+
+**The owner's addendum (2026-11-01), rules for every lesson:**
+
+1. **One face per set of equals.** Items side by side as equals (recap cards, columns, pills, steps) use the same face,
+   size and weight: print for a set when any item is longer than a short note, the hand only when every item is one.
+2. **Headings and labels in coloured rounded boxes**, as in the owner's Canva samples: the title board's title in a
+   teal band and its opening lines each in its own box (the link to the earlier lesson and the lesson's topic on a soft
+   blue, the problem from a letter on white with a coral edge, the description on soft teal); the paper's labels
+   ("Mrs Holden's paper", "Her letter") as solid pills, its row labels ("Notes:") on soft teal; WRONG and RIGHT, AS
+   WRITTEN and PUT RIGHT as solid pills or panels; the comparison's heads as boxes inside their cards; the board's
+   title in a soft teal band in the header. The look's colours, rounded corners, 4.5:1 and the minimum sizes hold.
+3. **A board's content uses the board** (rule 4, applied to the paper alone: a sheet at 4.5% of the frame).
