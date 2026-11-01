@@ -628,6 +628,12 @@ ADR050_LAYOUTS = ("wrongright", "coded", "opener", "timeline", "columns", "parts
 T_ROW_COLOURS = ("opener", "timeline", "parts", "badges", "path")
 # three of a kind (badges on cards) take teal, amber and coral first, as on the owner's slides
 T_TRIO = (4, 0, 3, 1, 2)
+# ADR 050 amendment (1) (the owner's review of Word Order draft.3, 2026-11-01): a letter on its parts longer than
+# this flows in two columns, so its words keep their full size (rule 1); a note in the teacher's hand is short, about
+# 15 words at most (rule 2): a longer one is set in print (class `t-print`)
+PARTS_FLOW_CHARS = 700
+HAND_WORDS = 15
+HAND_TYPES = ("plain", "callout", "category_card")
 # a comparison's head: the words up to the first colon, when that is a short lead
 COMPARE_HEAD = re.compile(r"^([^:<]{3,90}:)( )(.+)$", re.S)
 WORD = re.compile(r"[A-Za-z0-9À-ɏ]+(?:['’.\-/&][A-Za-z0-9À-ɏ]+)*")
@@ -642,7 +648,7 @@ PAPER_BESIDE = 'data-paper="beside"'
 # an acronym's row opens with its letter, a colon and the part's name ("I: Introduce and identify")
 ACRONYM_CELL = re.compile(r"^[A-Z]: \S")
 # the layouts that draw `block_accents` (the words set in the layout's accent colour)
-ACCENT_LAYOUTS = ("skeleton",)
+ACCENT_LAYOUTS = ("skeleton", "compare")
 BINS = {"keep": "keep", "keep, briefly": "brief", "keep briefly": "brief", "leave out": "out"}
 BIN_LANES = (("keep", "Keep"), ("brief", "Keep briefly"), ("out", "Leave out"))
 TAGS = re.compile(r"<[^>]+>")
@@ -852,6 +858,8 @@ def _teal_root_attrs(layout: str, header: list, rows: list) -> str:
             out += ' data-cw="last"'
     if layout == "choices" and header and not all(h.strip() for h in header) and header[0].strip():
         out += ' data-titled=""'
+    if layout == "parts" and sum(len(_text(r[-1])) for r in rows) > PARTS_FLOW_CHARS:
+        out += ' data-flow="2"'
     return out
 
 
@@ -1202,7 +1210,7 @@ ADR048_LAYOUTS = ("pieces", "place", "tags", "front", "sides", "chips")
 # drawn in a lesson without the look still reads. The words, their order and every hook stay the table's.
 _T = ("--t-teal:#0b6e6d;--t-ink:#173d3c;--t-amber:#e2a72e;--t-coral:#e57063;--t-blue:#9ecfd8;"
       "--t-lilac:#b8a6d6;--t-teal-s:#e5f0ef;--t-amber-s:#fbf0d5;--t-coral-s:#fce7e3;--t-blue-s:#e1f1f4;"
-      "--t-lilac-s:#eee8f6;--t-pen:#cf3f3f")
+      "--t-lilac-s:#eee8f6;--t-pen:#c4362f")
 LAYOUT_CSS.update({
     "tset": r"""
 /* the teal look's colours in turn (ADR 050): amber, blue, lilac, coral, teal, each with its soft tint and
@@ -1367,6 +1375,24 @@ LAYOUT_CSS.update({
   border-radius:0 0 1.6cqh 1.6cqh;padding-bottom:1.8cqh}
 .tbl.lay.lay-parts td[data-dash]::before{content:"";display:block;height:2.6em;background:
   repeating-linear-gradient(180deg,transparent 0 .55em,var(--t-teal-s) .55em 1.05em,transparent 1.05em 1.3em)}
+/* a long letter (data-flow="2", ADR 050 amendment (1)): its words at full size, the paragraphs flowing down two
+   columns of one sheet, in reading order; each part's name a pill at the start of its paragraph */
+.tbl.lay.lay-parts[data-flow="2"]{position:relative;background:#fff;border:max(2px,.36cqh) solid var(--t-teal);
+  border-radius:1.8cqh;padding:0 1.3cqw;margin-top:1.4cqh}
+.tbl.lay.lay-parts[data-flow="2"] table{padding:2.2cqh 0 .5cqh}
+.tbl.lay.lay-parts[data-flow="2"] thead tr{display:block}
+.tbl.lay.lay-parts[data-flow="2"] th:first-child{display:none}
+.tbl.lay.lay-parts[data-flow="2"] th:last-child{display:block;position:absolute;left:1.6cqw;top:-1.6cqh;padding:.3cqh 1.2cqw;
+  line-height:1.2;text-align:left;color:#fff;background:var(--t-teal);border-radius:999px}
+.tbl.lay.lay-parts[data-flow="2"] tbody{display:block;column-count:2;column-gap:2.4cqw;
+  column-rule:max(1px,.18cqh) solid var(--t-teal-s)}
+.tbl.lay.lay-parts[data-flow="2"] tbody tr{display:block;orphans:2;widows:2;padding:0 0 .6cqh}
+.tbl.lay.lay-parts[data-flow="2"] tbody tr td:first-child{float:left;justify-self:auto;align-self:auto;
+  margin:.1cqh .8cqw 0 0;padding:.3cqh 1.1cqw;font-size:2.4cqh;line-height:1.1}
+.tbl.lay.lay-parts[data-flow="2"] td:first-child::after{content:none}
+.tbl.lay.lay-parts[data-flow="2"] tbody tr td:last-child{display:block;border:0;border-radius:1.2cqh;padding:0;
+  line-height:1.2;background:none}
+.tbl.lay.lay-parts[data-flow="2"] tbody tr td:last-child.active{background:var(--sc-active);box-shadow:0 0 0 .8cqh var(--sc-active)}
 .tbl.lay.lay-parts td.active,.tbl.core.lay.lay-parts.spot tbody tr.focus td.active{box-shadow:none}
 .tbl.lay.lay-parts td:last-child.active,.tbl.core.lay.lay-parts.spot tbody tr.focus td:last-child.active{
   background:var(--sc-active)}
@@ -1395,8 +1421,9 @@ LAYOUT_CSS.update({
 #cam > .card.lay-badges.on:not([data-layer="fixed"]):not([data-oa-layer="fixed"]){animation-name:t-pop}
 """,
     "ruled": r"""
-/* 7. a paragraph on ruled paper (ADR 050): a white sheet with blue rules and a red margin, the lines in a
-   learner's hand, their numbers in the margin; the narration's pen marks the errors, a sticky note advises */
+/* 7. a paragraph on ruled paper (ADR 050): a white sheet with blue rules and a red margin, the lines in print
+   (a learner's sentences are never in the hand: amendment (1), rule 2), their numbers in the margin; the
+   narration's pen circles the errors, a sticky note advises */
 .tbl.lay.lay-ruled{background:#fff;border-radius:1.6cqh;padding:2.2cqh 2.4cqw 2.6cqh;
   box-shadow:0 .6cqh 2.2cqh rgba(11,60,59,.08)}
 .tbl.lay.lay-ruled table{display:table;width:100%;border-collapse:collapse;table-layout:fixed}
@@ -1406,12 +1433,12 @@ LAYOUT_CSS.update({
 .tbl.lay.lay-ruled[data-cols="2"] col:first-child{width:7%!important} .tbl.lay.lay-ruled[data-cols="2"] col:last-child{width:93%!important}
 .tbl.lay.lay-ruled th{background:none;color:var(--sc-muted2,#5d7270);font-size:2.2cqh;line-height:1.3;font-weight:700;
   text-align:left;padding:0 1.2cqw 1.4cqh;border-radius:0;vertical-align:bottom}
-.tbl.lay.lay-ruled td{background:none;vertical-align:top;color:var(--t-ink);font-family:var(--t-hand,cursive);
-  font-size:calc(var(--tf,3.2cqh) * 1.3);line-height:1.42;font-weight:500;padding:0 1.2cqw;
-  background-image:repeating-linear-gradient(180deg,transparent 0 calc(1.42em - max(1px,.18cqh)),
-    var(--t-rule,#c9e2e8) calc(1.42em - max(1px,.18cqh)) 1.42em);background-origin:content-box;background-clip:content-box}
-.tbl.lay.lay-ruled[data-cols="2"] td:first-child{font-family:inherit;font-size:calc(var(--tf,3.2cqh) * .8);
-  line-height:calc(var(--tf,3.2cqh) * 1.3 * 1.42);color:var(--sc-muted2,#5d7270);text-align:right;padding-right:1.4cqw;
+.tbl.lay.lay-ruled td{background:none;vertical-align:top;color:var(--t-ink);
+  font-size:max(calc(var(--tf,3.2cqh) * 1.1),3.2cqh);line-height:1.7;font-weight:400;padding:0 1.2cqw;
+  background-image:repeating-linear-gradient(180deg,transparent 0 calc(1.7em - max(1px,.18cqh)),
+    var(--t-rule,#c9e2e8) calc(1.7em - max(1px,.18cqh)) 1.7em);background-origin:content-box;background-clip:content-box}
+.tbl.lay.lay-ruled[data-cols="2"] td:first-child{font-size:2.6cqh;
+  line-height:calc(max(calc(var(--tf,3.2cqh) * 1.1),3.2cqh) * 1.7);color:var(--sc-muted2,#5d7270);text-align:right;padding-right:1.4cqw;
   border-right:max(1px,.2cqh) solid #f1b5ae;background-image:none}
 .tbl.lay.lay-ruled td.active,.tbl.core.lay.lay-ruled.spot tbody tr.focus td.active{background-color:var(--sc-active);
   box-shadow:none}
@@ -1428,16 +1455,20 @@ LAYOUT_CSS.update({
 .tbl.lay.lay-beforeafter th:last-child{background:var(--t-teal-s);color:var(--t-teal)}
 .tbl.lay.lay-beforeafter th[data-tone]::before{display:none}
 .tbl.lay.lay-beforeafter td,.tbl.lay.lay-beforeafter td[data-tone]{position:relative;background:var(--t-coral-s);
-  color:var(--t-ink);padding:1.2cqh 2cqw 1.2cqh calc(2cqw + 10.4cqh);min-height:10.8cqh;border-radius:0;
+  color:var(--t-ink);padding:1.6cqh 2cqw 1.6cqh calc(2.4cqw + 13.6cqh);min-height:15.6cqh;border-radius:0;
   border-top:max(1px,.3cqh) solid #fff}
 .tbl.lay.lay-beforeafter td:last-child,.tbl.lay.lay-beforeafter td:last-child[data-tone]{background:var(--t-teal-s)}
 .tbl.lay.lay-beforeafter td .tw{color:var(--t-ink)}
 .tbl.lay.lay-beforeafter tbody tr:last-child td{border-radius:0 0 2.8cqh 2.8cqh;padding-bottom:2.4cqh}
-.tbl.lay.lay-beforeafter td[data-count]::before{content:attr(data-count) "\A words";white-space:pre;display:block;
-  position:absolute;left:2cqw;top:1.2cqh;width:8.8cqh;height:8.8cqh;border-radius:50%;background:var(--t-coral);
-  color:#fff;font-weight:800;font-size:2.1cqh;line-height:1.15;text-align:center;padding-top:2.2cqh;box-sizing:border-box;
+.tbl.lay.lay-beforeafter td[data-count]::before{content:attr(data-count);display:block;
+  position:absolute;left:2cqw;top:1.6cqh;width:12.4cqh;height:12.4cqh;border-radius:50%;background:var(--t-coral);
+  color:#0c2524;font-weight:800;font-size:5cqh;line-height:1;text-align:center;padding-top:2.1cqh;box-sizing:border-box;
   margin:0}
-.tbl.lay.lay-beforeafter td:last-child[data-count]::before{background:var(--t-teal)}
+.tbl.lay.lay-beforeafter td[data-count]::after{content:"words";display:block;position:absolute;left:2cqw;
+  top:calc(1.6cqh + 7.7cqh);width:12.4cqh;text-align:center;font-weight:800;font-size:2.4cqh;line-height:1;
+  color:#0c2524}
+.tbl.lay.lay-beforeafter td:last-child[data-count]::before{background:var(--t-teal);color:#fff}
+.tbl.lay.lay-beforeafter td:last-child[data-count]::after{color:#fff}
 .tbl.lay.lay-beforeafter td.active,.tbl.core.lay.lay-beforeafter.spot tbody tr.focus td.active{
   background-color:var(--sc-active);box-shadow:none}
 .tbl.core.lay.lay-beforeafter.spot tbody tr.focus{box-shadow:none;transform:none}
@@ -1501,17 +1532,26 @@ LAYOUT_CSS.update({
 .chg.lay-compare .chg-to .cmp-h{background:var(--t-coral-s);color:#a8392c}
 .chg.lay-compare.fx-lift{box-shadow:none}
 .chg.lay-compare.fx-lift :is(.chg-from,.chg-to){box-shadow:var(--sc-shadow)}
+/* as a table: two cards side by side, each its place's head, its example sentences one under another (the
+   words a sentence puts in that place ringed in the teacher's red pen: `block_accents`) and, in its last row,
+   the rule in his hand (the owner's Word Order slide 3; ADR 050 amendment (1)) */
 .tbl.lay.lay-compare table{display:block}
 .tbl.lay.lay-compare thead tr,.tbl.lay.lay-compare tbody tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  column-gap:2.6cqw}
-.tbl.lay.lay-compare thead tr th:nth-child(n){background:var(--t-teal);color:#fff;border-radius:999px;padding:1.2cqh 1.6cqw;text-align:center;
-  font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin:0 1.6cqw 1.4cqh}
-.tbl.lay.lay-compare th:last-child{background:var(--t-coral);color:var(--t-ink)}
+  column-gap:3cqw}
+.tbl.lay.lay-compare thead tr th:nth-child(n){background:var(--t-teal-s);color:var(--t-teal);border-radius:2.8cqh 2.8cqh 0 0;
+  padding:2.4cqh 2.4cqw 1.6cqh;text-align:left;font-size:3.6cqh;line-height:1.22;font-weight:800;letter-spacing:0;
+  text-transform:none;margin:0}
+.tbl.lay.lay-compare th:last-child{background:var(--t-amber-s);color:#7a4f00}
 .tbl.lay.lay-compare th[data-tone]::before{display:none}
-.tbl.lay.lay-compare tbody{display:flex;flex-direction:column;gap:1.1cqh}
-.tbl.lay.lay-compare tbody tr td:nth-child(n){background:var(--t-teal-s);color:var(--t-ink);border-radius:999px;padding:1.1cqh 1.8cqw;
-  text-align:center;font-weight:600}
-.tbl.lay.lay-compare td:last-child{background:var(--t-coral-s)}
+.tbl.lay.lay-compare tbody{display:block}
+.tbl.lay.lay-compare tbody tr td:nth-child(n){background:var(--t-teal-s);color:var(--t-ink);border-radius:0;padding:1.3cqh 2.4cqw;
+  text-align:left;font-weight:400;font-size:max(var(--tf,3.2cqh),3.2cqh);line-height:1.45}
+.tbl.lay.lay-compare tbody tr td:last-child{background:var(--t-amber-s)}
+.tbl.lay.lay-compare tbody tr:last-child td:nth-child(n){border-radius:0 0 2.8cqh 2.8cqh;padding-top:2.4cqh;padding-bottom:2.8cqh;
+  font-family:var(--t-hand,cursive);font-size:calc(3.2cqh * 1.3);line-height:1.15;font-weight:700;color:var(--t-teal)}
+.tbl.lay.lay-compare tbody tr:last-child td:last-child{color:#7a4f00}
+.tbl.lay.lay-compare .acc{display:inline-block;white-space:nowrap;font-weight:700;color:var(--t-ink);line-height:1.2;
+  padding:.35cqh .7cqw;margin:-.35cqh -.2cqw;border:max(2px,.38cqh) solid var(--t-pen);border-radius:50%}
 .tbl.lay.lay-compare td.active,.tbl.core.lay.lay-compare.spot tbody tr.focus td.active{background:var(--sc-active);
   box-shadow:none}
 .tbl.core.lay.lay-compare.spot tbody tr.focus{box-shadow:none;transform:none}
@@ -1606,7 +1646,7 @@ def accent_html(b: dict, html: str, phrases: list[str]) -> str:
 
 
 def layout_html(b: dict, html: str, section_title: str | None, layout: str | None = None,
-                accents: list[str] | None = None) -> str:
+                accents: list[str] | None = None, look: str | None = None) -> str:
     """A style C block's html with its layout and its criterion's colour:
 
     - every block of a section named after one of the six criteria takes that
@@ -1618,7 +1658,10 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
     - a block with a `layout` (sections.json `block_layouts`) takes `lay
       lay-<layout>` and the attributes that layout reads;
     - its `accents` (sections.json `block_accents`), on a layout that draws them
-      (ACCENT_LAYOUTS), each wrapped in a span `acc`.
+      (ACCENT_LAYOUTS), each wrapped in a span `acc`;
+    - in the teal look, a note the look sets in the teacher's hand that is longer
+      than HAND_WORDS words takes `t-print`: it is set in print (ADR 050
+      amendment (1), rule 2).
 
     The block's words, their order and its hooks never change (checked)."""
     before = _text(html)
@@ -1656,6 +1699,9 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
             raise SystemExit(f"REFUSED: sections.json block_accents: {b.get('id')} has the layout {layout!r}, which "
                              f"draws no accent ({', '.join(ACCENT_LAYOUTS)})")
         html = accent_html(b, html, accents)
+    if look == "teal" and t in HAND_TYPES and \
+            len(WORD.findall(str(b.get("text") or ""))) > HAND_WORDS:
+        html = _add_root(html, "t-print")
     if _text(html) != before:
         raise SystemExit(f"REFUSED: the layout of {b.get('id')} would change its words")
     return html
@@ -1806,7 +1852,7 @@ def effects(boards: list[dict], blocks: dict, zoom: bool = True, nozoom=()) -> N
 # the teacher's notes in a hand, his advice on sticky notes, his marks in red pen; the contents board a path.
 # ---------------------------------------------------------------------------
 TEAL = {"teal": "#0b6e6d", "ink": "#173d3c", "ground": "#faf8f4", "amber": "#e2a72e", "coral": "#e57063",
-        "blue": "#9ecfd8", "lilac": "#b8a6d6", "pen": "#cf3f3f", "sticky": "#f7e27f"}
+        "blue": "#9ecfd8", "lilac": "#b8a6d6", "pen": "#c4362f", "sticky": "#f7e27f"}
 HAND = 1.3          # the hand's size against body text: Caveat's x-height is about 0.4 em, IBM Plex's 0.52
 LOOK_CSS = {"teal": r"""
 /* --- The teal look (ADR 050; docs/02-DESIGN-SYSTEM.md §1b): teal with soft warm accents, light and airy;
@@ -1868,13 +1914,84 @@ LOOK_CSS = {"teal": r"""
 .citem.fx-lift{box-shadow:none;transform:translateX(calc(.6cqw * var(--sc-motion, 1)))}
 /* the teacher's red pen (§8): a circle is his ring, an underline and a strike his line; the marker stays */
 :is(#marks,.oa-marks) .m-circle{border:max(2px,.42cqh) solid var(--t-pen)!important;border-radius:50%!important;
-  box-shadow:0 0 0 max(1px,.08cqh) rgba(207,63,63,.25)!important}
+  box-shadow:0 0 0 max(1px,.08cqh) rgba(196,54,47,.25)!important}
 :is(#marks,.oa-marks) .m-line,:is(#marks,.oa-marks) .m-tick{background:var(--t-pen)!important;border-radius:999px!important}
 :is(#marks,.oa-marks) .m-strike{background:var(--t-pen)!important;border-radius:999px!important}
 /* a fixed block enters as its board opens (§8g, ADR 050); the teal layouts' pieces enter in reading order */
 @keyframes t-enter{from{opacity:0;transform:translateY(1.6cqh)}to{opacity:1;transform:none}}
 .blk:is([data-layer="fixed"],[data-oa-layer="fixed"]):not(.lay){animation:t-enter .45s cubic-bezier(.2,.7,.2,1) backwards}
 @media (prefers-reduced-motion: reduce){.blk:is([data-layer="fixed"],[data-oa-layer="fixed"]){animation:none}}
+
+/* --- Readable on a phone (ADR 050 amendment (1); the owner's review of Word Order draft.3, 2026-11-01;
+   docs/02-DESIGN-SYSTEM.md §7k). In the 1600x900 frame, running text at least 26 px (2.9cqh) and a label at least
+   20 px (2.3cqh); a hand note at 1.3 times that. Where a board does not fit at that size, its layout changes; its
+   text is never set smaller (check_text_size.py). A layout's rules come after the look's, so each rule here is
+   written under .frame to outrank them. --- */
+.frame{--t-ink-d:#0c2524;--t-label:2.4cqh;--t-run:2.9cqh;--t-wash:rgba(250,248,244,.6)}
+/* 1. no table set under the running size, whatever the fit chose; no label under the label size */
+.frame .tbl.core table{font-size:max(var(--tf,2.6cqh),var(--t-run))}
+.frame .tbl.lay td[data-label]::before,.frame .tbl.lay.lay-paper th,.frame .tbl.lay.lay-wrongright th,
+.frame .tbl.lay.lay-parts th,.frame .tbl.lay.lay-ruled th,.frame .term .lbl,.frame .term.tnote .lbl,
+.frame .gl-txt::before,.frame .gl-x::before,.frame .gl-m::before,.frame .tbl.lay.lay-coded td[data-label]::before,
+.frame .tbl.lay.lay-choices td[data-label]::before,.frame .tbl.lay.lay-opener tbody tr td:first-child,
+.frame .tbl.lay.lay-parts tbody tr td:first-child{font-size:var(--t-label)}
+/* the paper and the letter beside it at a size that fills the board (the owner: "make the paper and the letter
+   larger"), the paper's words in ink */
+.frame .tbl.lay.lay-paper table{font-size:max(var(--tf,2.6cqh),3.9cqh);line-height:1.36}
+.frame .tbl.lay.lay-paper td{color:var(--t-ink)}
+.frame .tbl.lay.lay-paper th{color:var(--t-ink2)}
+.frame .tbl.lay.lay-place[data-place="opening"] td:nth-child(3)::after{height:6.9cqh}
+.frame .tbl.lay.lay-place[data-place="request"] td:nth-child(3)::before{height:6.9cqh}
+/* 2. the hand is for short notes (about 15 words at most) and labels: a longer note is in print */
+.frame .blk.t-print:is(.plain,.callout){font-family:var(--font-plex,"IBM Plex Sans"),system-ui,sans-serif;font-size:3.2cqh;
+  line-height:1.42;font-weight:400}
+.frame .card.lay-badges.t-print .cardbd{font-family:var(--font-plex,"IBM Plex Sans"),system-ui,sans-serif;font-size:3.2cqh;
+  line-height:1.38;font-weight:400}
+/* 5. a row the spotlight is not on keeps its words as they are, at full contrast: only its ground is lighter */
+.frame .tbl.core.spot tbody tr:not(.focus) td,.frame .tbl.core.lay.spot tbody tr:not(.focus),
+.frame .tbl.core.spot.cellspot tbody tr td{opacity:1}
+.frame .tbl.core.spot:not(.lay-ruled) tbody tr:not(.focus) td,
+.frame .tbl.core.spot.cellspot:not(.lay-ruled) tbody tr td:not(.lit){background-image:linear-gradient(var(--t-wash),var(--t-wash))}
+.frame .tbl.core.spot tbody tr:not(.focus)[data-c],.frame .tbl.core.spot tbody tr:not(.focus) td[data-c]{--con:var(--t-ink-d)}
+/* words on coral, and on a mid teal, in the darkest ink or in white (4.5:1 or more) */
+.frame.frame :is(.lay,.lay-badges) [data-c="3"],.frame.frame .lay-badges[data-c="3"]{--con:var(--t-ink-d)}
+.frame #cam > .blk.citem:nth-child(5n+4){--con:var(--t-ink-d)}
+.frame .err .verdict{background:#b8352a}
+/* 6. a mark never hides the words it marks: on a coloured tile the marker's band would sit on them, so the
+   narration marks there with the pen's circle or line, under or around the words (the lesson's cue overrides) */
+/* 7. a heading never leaves one or two words alone on its last line */
+.frame :is(.hdr,.ltitle,th,.cmp-h,.cardhd,.citem .ct,.chg-cap,.lbl){text-wrap:balance}
+/* 4. use the frame: the contents in two columns, large; the sentence's coloured parts as large tiles (pattern 2);
+   choice pills as large as the board allows */
+.frame #cam:has(> .blk.citem:nth-child(6)){display:grid;grid-auto-flow:column;grid-template-rows:repeat(4,minmax(0,1fr));
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);height:100%;column-gap:4cqw;row-gap:0;padding:1cqh 0}
+.frame #cam:has(> .blk.citem:nth-child(6)) > .blk.citem{gap:1.8cqw;align-self:stretch;align-items:center}
+.frame #cam:has(> .blk.citem:nth-child(6)) .citem .cnum{width:11cqh;height:11cqh;font-size:5cqh}
+.frame #cam:has(> .blk.citem:nth-child(6)) .citem .ct{font-size:4.1cqh;line-height:1.2}
+.frame #cam:has(> .blk.citem:nth-child(6)) > .blk.citem:not(:last-child)::after{left:calc(1cqw + 5.5cqh - .3cqh);
+  height:100%}
+.frame #cam:has(> .blk.citem:nth-child(6)) > .blk.citem:nth-child(4)::after{content:none}
+.frame .tbl.lay.lay-coded tbody{gap:7cqh}
+.frame .tbl.lay.lay-coded tbody tr td:nth-child(n){font-size:calc(max(var(--tf,3.2cqh),3.2cqh) * 1.2);min-height:19cqh;
+  padding:3cqh 1.8cqw;margin-top:6.4cqh;align-content:center}
+.frame .tbl.lay.lay-coded tbody tr td:not(:last-child){flex:0 0 auto;min-width:11cqw}
+.frame .tbl.lay.lay-coded tbody tr td:last-child{flex:1 1 0}
+.frame .tbl.lay.lay-coded td[data-label]::before{top:-6.2cqh;font-size:2.6cqh}
+.frame .tbl.lay.lay-choices tbody tr td:nth-child(n){font-size:max(var(--tf,3.2cqh),3.9cqh);padding:1.7cqh 2.6cqw}
+.frame .tbl.lay.lay-choices td[data-label]{margin-top:4.6cqh}
+.frame .tbl.lay.lay-choices[data-titled] tbody tr td:nth-child(n){font-size:max(var(--tf,3.2cqh),3.1cqh);padding:.8cqh 2.2cqw}
+.frame .tbl.lay.lay-choices[data-titled] thead{float:left;margin:1.1cqh 1.6cqw 0 0}
+.frame .tbl.lay.lay-choices[data-titled] th{padding:0}
+/* a note and the word card it brings side by side, so a board's letter keeps its size */
+.frame #cam > .blk.plain:has(+ .blk.gl){flex:1 1 46%;max-width:50%}
+.frame #cam > .blk.plain + .blk.gl{flex:1 1 44%}
+.frame .gl-w{font-size:3.2cqh}
+/* a word card's "Word" chip beside its word, not on a line of its own */
+.frame .gl-txt::before{float:left;margin:.6cqh 1.2cqw 0 0}
+.frame .tbl.lay.lay-choices td[data-label]::before{top:-4.2cqh}
+.frame .tbl.lay.lay-paper[data-paper="sheet"] table{font-size:max(var(--tf,2.6cqh),4cqh)}
+.frame .tbl.lay.lay-paper[data-paper="sheet"]{padding:1.8cqh 1.8cqw 2cqh}
+.frame .card.lay-badges .cardhd{width:31cqh;height:31cqh;font-size:3.4cqh;padding:2cqh;text-wrap:balance;hyphens:none}
 """}
 
 

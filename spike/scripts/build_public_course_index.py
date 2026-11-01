@@ -144,6 +144,8 @@ def curated() -> dict:
 
 _ANSWERS: dict[str, tuple] = {}
 RUN = 6          # this many words in a row of a set's own wording is the set's text (ADR 026)
+SAMPLE_RUN = 8   # and of a Writing lesson's samples (as the release check's transcript runs): a shorter run of a
+                 # paper or a key is common wording ("in the task and the plan")
 ID_KEYS = {"item_id", "stimulus_id", "set_id", "option_id", "gap_id", "id", "content_hash"}
 
 
@@ -227,6 +229,16 @@ class Lesson:
             import practice_set
             self.ps = practice_set.load(L)
         self.answers, self.runs, self.text_titles = own_answers(self.ps["set_id"]) if self.ps else ([], set(), set())
+        # a Writing lesson's own samples (its papers and model letters, read from the private exercises
+        # repository): no line here quotes SAMPLE_RUN words of them in a row (draft.4 of Word Order, 2026-11-01: a sticky
+        # note putting a model letter's sentence right is a rule of its board, and rules are listed here)
+        self.sample_runs = set()
+        samples = L / "analysis" / "samples"
+        if samples.is_dir():
+            import check_release_answers as cra
+            for f in sorted(samples.rglob("*.md")):
+                w = cra.norm(f.read_text(encoding="utf-8")).split()
+                self.sample_runs.update(tuple(w[k:k + SAMPLE_RUN]) for k in range(len(w) - SAMPLE_RUN + 1))
         self.withheld = 0
         self.renumber = self._renumber()
 
@@ -245,9 +257,14 @@ class Lesson:
         head, sep, tail = title.partition(" — ")
         return head if sep and cra.norm(tail) in self.text_titles else title
 
+    def quotes_sample(self, text: str) -> bool:
+        import check_release_answers as cra
+        w = cra.norm(text or "").split()
+        return any(tuple(w[k:k + SAMPLE_RUN]) in self.sample_runs for k in range(len(w) - SAMPLE_RUN + 1))
+
     def keep(self, text: str) -> bool:
-        """False, and counted, for a line that names an answer of the lesson's set."""
-        if self.names_answer(text):
+        """False, and counted, for a line that names an answer of the lesson's set or quotes its samples."""
+        if self.names_answer(text) or self.quotes_sample(text):
             self.withheld += 1
             return False
         return True

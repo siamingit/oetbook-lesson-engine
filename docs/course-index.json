@@ -55319,7 +55319,7 @@
        "points": [
         {
          "text": "the lesson title, then what the lesson is about",
-         "block": "page-3_k14",
+         "block": "page-3_k01",
          "start_s": 0.0,
          "start": "0:00"
         }
@@ -55333,9 +55333,9 @@
        "points": [
         {
          "text": "each category, revealed as it is named",
-         "block": "page-3_k15",
-         "start_s": 71.55,
-         "start": "1:11"
+         "block": "page-3_k06",
+         "start_s": 72.932,
+         "start": "1:12"
         }
        ]
       }
@@ -55376,7 +55376,7 @@
        "points": [
         {
          "text": "the paper's own sentence",
-         "block": "pages-04-05_k17",
+         "block": "pages-04-05_k01",
          "start_s": 112.762,
          "start": "1:52"
         },
@@ -55408,7 +55408,7 @@
        "points": [
         {
          "text": "who, what, where, when, why",
-         "block": "pages-04-05_k18",
+         "block": "pages-04-05_k07",
          "start_s": 189.723,
          "start": "3:09"
         },
@@ -55509,7 +55509,7 @@
        "points": [
         {
          "text": "the request from the plan",
-         "block": "pages-06-07_k11",
+         "block": "pages-06-07_k01",
          "start_s": 306.498,
          "start": "5:06"
         },
@@ -55529,7 +55529,7 @@
        "points": [
         {
          "text": "Mrs Dawson's plan and her letter",
-         "block": "pages-06-07_k12",
+         "block": "pages-06-07_k05",
          "start_s": 349.008,
          "start": "5:49"
         },
@@ -55612,7 +55612,7 @@
        "points": [
         {
          "text": "discharged home today",
-         "block": "page-8_k14",
+         "block": "page-8_k01",
          "start_s": 463.218,
          "start": "7:43"
         },
@@ -55638,7 +55638,7 @@
        "points": [
         {
          "text": "where the adverb goes",
-         "block": "page-8_k15",
+         "block": "page-8_k06",
          "start_s": 541.254,
          "start": "9:01"
         },
@@ -55733,7 +55733,7 @@
        "points": [
         {
          "text": "three phrases at the start",
-         "block": "page-9_k09",
+         "block": "page-9_k01",
          "start_s": 682.606,
          "start": "11:22"
         },
@@ -55829,7 +55829,7 @@
        "points": [
         {
          "text": "the paragraph, read whole",
-         "block": "pages-10-11_k20",
+         "block": "pages-10-11_k01",
          "start_s": 797.466,
          "start": "13:17"
         },
@@ -55873,7 +55873,7 @@
        "points": [
         {
          "text": "as written, and put right",
-         "block": "pages-10-11_k21",
+         "block": "pages-10-11_k08",
          "start_s": 893.806,
          "start": "14:53"
         },
@@ -55905,7 +55905,7 @@
        "points": [
         {
          "text": "as written, and put right",
-         "block": "pages-10-11_k22",
+         "block": "pages-10-11_k14",
          "start_s": 972.906,
          "start": "16:12"
         },
@@ -56011,13 +56011,13 @@
        "start": "18:34",
        "points": [
         {
-         "text": "The two places",
-         "block": "pages-12-13_k09",
+         "text": "the two places",
+         "block": "pages-12-13_k01",
          "start_s": 1114.025,
          "start": "18:34"
         },
         {
-         "text": "The families",
+         "text": "the families",
          "block": "pages-12-13_k02",
          "start_s": 1137.015,
          "start": "18:57"
@@ -56032,7 +56032,7 @@
        "points": [
         {
          "text": "four sentences, two places",
-         "block": "pages-12-13_k10",
+         "block": "pages-12-13_k03",
          "start_s": 1146.575,
          "start": "19:06"
         },
@@ -56095,7 +56095,7 @@
        "points": [
         {
          "text": "the letter",
-         "block": "page-16_k11",
+         "block": "page-16_k01",
          "start_s": 1251.667,
          "start": "20:51"
         },
@@ -56168,9 +56168,9 @@
        "points": [
         {
          "text": "Recap",
-         "block": "added-01_k04",
-         "start_s": 1397.439,
-         "start": "23:17"
+         "block": "added-01_k01",
+         "start_s": 1402.998,
+         "start": "23:22"
         }
        ]
       }
@@ -56291,7 +56291,7 @@
    ],
    "withheld": {
     "listening_panel_words": 0,
-    "lines_naming_an_answer": 0
+    "lines_naming_an_answer": 1
    },
    "practice_set": null,
    "deck_exercises": [],
@@ -64664,6 +64664,6 @@
   "references": 131,
   "topic_index": 403,
   "withheld_panel_words": 139,
-  "withheld_answer_lines": 9
+  "withheld_answer_lines": 10
  }
 }

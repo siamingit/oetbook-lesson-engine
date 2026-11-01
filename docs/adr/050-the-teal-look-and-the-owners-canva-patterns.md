@@ -113,3 +113,69 @@ pattern is carried by the engine is the agent's under that brief (ADR 005).
   from the mark's time, rule 53's way), with the data the engine would send.
 - To reverse: remove `lesson.look` from a lesson (its stylesheet returns to style C's); remove the look and the
   layouts from `style_c.py`. No lesson built before this record changes either way.
+
+## Amendment (1), 2026-11-01: readable on a phone (the owner's review of Word Order draft.3)
+
+The owner liked the look of draft.3 and found many graphic and layout faults, and text too small to read. His brief
+(2026-11-01, in chat) set seven general rules, to be recorded here and in the design system and checked on every
+board, and a fix for boards 02, 04, 06, 07, 10, 12, 13 and 15.
+
+**The rules** (every lesson in the teal look; docs/02-DESIGN-SYSTEM.md §7k, "Readable on a phone"):
+
+1. **Minimum text size.** In the 1600x900 frame, running text at least 26 px and a label at least 20 px, so it stays
+   readable on a phone. Where content does not fit at that size the layout changes (two columns, fewer lines shown,
+   the spotlight); the text is never set smaller.
+2. **The hand only for short notes.** The handwriting face only for the teacher's short notes (about 15 words at most)
+   and labels; learner sentences, letters and paragraphs in print, with the red pen's marks on top.
+3. **No illustration unless it explains the point.** This replaces ADR 021's "a picture on every board" for a lesson in
+   the teal look: a board has a picture only where the picture explains.
+4. **Use the frame.** No board with a large empty half: the content sized up, or the space used for the example the
+   narration gives.
+5. **Dimmed rows stay readable.** A row the spotlight is not on keeps a contrast of at least 4.5:1: it is dimmed by a
+   lighter ground, never by greying its words out.
+6. **A mark never hides its words.** An underline below the words, a circle around them; never a band across words
+   on a coloured tile.
+7. **No orphaned heading words.** A heading never wraps with one or two words alone on a line.
+
+**How the engine carries them** (`style_c.py`, the look's rules appended after style C's; the layouts' rules outranked
+by writing each under `.frame`):
+
+- (1) a table is never set under 2.9% of the frame (26 px), whatever the fit chose; labels at 2.4% (21.6 px); the fit
+  (`fit_boards.py`) takes 2.9% as a teal lesson's table floor (1.9% for every other lesson, unchanged), so a board
+  that does not fit has its notes cleared or is reported unfit instead of shrinking. A long letter on its parts
+  (`parts`, more than 700 characters) flows in two columns of one sheet, each part's name a pill at its paragraph's
+  start (`data-flow="2"`). The paper and the letter beside it are set at 3.5% (a sheet at 3.8%), in ink.
+- (2) `layout_html(..., look)`: in the teal look a plain note, an advice note or a recap card longer than 15 words takes
+  `t-print` and is set in print; the ruled paper's paragraph (pattern 7) is in print.
+- (3) a lesson's own `analysis/pictures.json` (the briefs kept under `removed`).
+- (4) the contents board in two columns over the whole board; the coloured parts (pattern 2) as large tiles; the
+  choice pills larger; a note and the word card it brings side by side.
+- (5) the spotlight's half opacity is replaced by a wash of the ground (60%) over the cells not lit; their words keep
+  their colour; words on coral in the darkest ink (#0c2524), the pen's red deepened to #c4362f (5.1:1 on the ground).
+- (6) per lesson, as before, by cue overrides (a marker band on a solid tile becomes the pen's circle or line).
+  `write_narration.py`: an utterance override may also add a phrase mark where the voice names it, its spoken words
+  unchanged (so no clip changes), every existing cue marker kept in order.
+- (7) `text-wrap: balance` on headings, table heads, comparison heads, card heads and contents titles; recap badges
+  large enough for their heads.
+- Pattern 11 as a table (`compare`): two cards side by side (teal and amber), each its place's head, its example
+  sentences one under another with the words in that place ringed in the pen (`block_accents`, now drawn by `compare`
+  as well as `skeleton`), and in its last row the rule in the hand (the owner's Word Order slide 3). Pattern 8's word
+  counts in larger circles (12.4% of the frame, the count at 5%).
+
+**The check.** `spike/scripts/check_text_size.py` (the readability check) drives the player to every moment a board
+changes at the 1600x900 frame and fails any text under its minimum (a hand line counted at its size / 1.3), any line of
+text under 4.5:1 against what is drawn behind it (every opacity and wash counted), any wrapped heading with a line of
+one or two words, and any board that at its fullest leaves more than 40% of its height or width empty. The runner runs
+it on the silent preview and on the player of every lesson in the teal look, after the wide-font check (the owner:
+"check them on every board").
+
+**The public course index** (`build_public_course_index.py`) now also leaves out a line that quotes eight words in a
+row of the lesson's own samples (its papers, model letters and keys, read from the private exercises repository): board
+10's sticky note puts a model letter's sentence right, and a board's rules are listed in the index. Six words of a sample
+are too common to tell ("in the task and the plan"); eight is the release check's length for a transcript. No other
+lesson's entry changes.
+
+**Consequences.** Only a lesson in the teal look changes (the look's rules, the ADR 050 layouts and the teal fit floor
+reach no other lesson); the render comparison of every built lesson is in the pull request. Writing 6 is rebuilt as
+draft.4 under these rules; its narration, audio and practice points are unchanged (95 utterances, every spoken word
+the same as draft.3).

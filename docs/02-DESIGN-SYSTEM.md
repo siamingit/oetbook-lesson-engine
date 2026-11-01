@@ -1136,6 +1136,28 @@ may vary its arrangement between lessons. The pattern of each board is logged wi
 | `path` | 10 Steps on a curved path | one or two columns (the step, a note) | numbered circles alternately low and high on a teal curve (an empty drawing), the step in bold, the note in the hand |
 | `compare` | 11 Two compared | a comparison; or a table of two columns | two things side by side, framed in teal and coral; each head (a comparison's words up to its first colon, `cmp-h`; or the column's label) a pill, the rest under it |
 
+**Readable on a phone** (ADR 050 amendment (1); the owner's review of Word Order draft.3, 2026-11-01). Seven rules
+for every board of a lesson in the teal look, checked on every board by `check_text_size.py` (the runner runs it on
+the silent preview and the player):
+
+1. **Minimum size**: in the 1600x900 frame, running text at least 26 px (2.9% of the frame) and a label at least 20 px
+   (2.3%; the look sets labels at 2.4%); a line in the hand counts at its size divided by 1.3. Where content does not
+   fit at that size, change the layout (two columns, fewer lines shown, the spotlight): never shrink the text. A
+   table is never set under 2.9% (the fit's floor in this look); a long letter on its parts flows in two columns.
+2. **The hand** only for the teacher's short notes (about 15 words at most) and labels; a longer note (`t-print`),
+   a learner's sentences, a letter or a paragraph in print, the red pen's marks on top.
+3. **No illustration unless it explains the point** (replaces ADR 021's picture on every board, in this look).
+4. **Use the frame**: no board with a large empty half (the check: at its fullest, no more than 40% of its height
+   or width empty); size the content up, or use the room for the example the narration gives.
+5. **Dimmed rows readable**: the spotlight dims a row with a lighter ground (a wash of the ground over its cells), never
+   by greying its words; every line at 4.5:1 or more.
+6. **Marks never hide words**: an underline under the words, a circle around them; on a solid tile or pill the
+   narration marks with the pen's circle or line, never the marker's band.
+7. **Headings**: never one or two words alone on a line (`text-wrap: balance`, and room enough).
+
+Pattern 11 as a table (`compare`, two columns): two cards, each its place's head, its example sentences one under
+another with the words in that place ringed in the pen (`block_accents`), its last row the rule in the hand.
+
 **Accents and boards marked no-zoom** (ADR 049). `block_accents` (`{"<bundle block id>": ["phrase", ...]}`) names the words a layout sets in its accent colour: each phrase is found exactly once in the block's words, never split by a tag, and wrapped in a span `acc`, by a layout that draws it (`skeleton`: the purpose words, in the Purpose colour; green stays reserved for "right", §5); the words never change. `boards_nozoom` (`["<board id>", ...]`) names boards shown whole (`boards_fit` "whole") on which the style C zoom is not written either (§8g, rule 55): the whole table stays in view at every moment on every device, and the spotlight and the marks alone show the line being taught. For a table whose rows are to be seen together, as the ISBAR parts on one letter.
 
 **The paper** (owner, 2026-10-27; ADR 045). A Writing lesson shows the paper wherever a board draws on it,

@@ -9128,6 +9128,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - Description: Learn the order of words in a letter sentence: who, what, where, when, why; the verb and its object together; a time phrase first with a comma; where also, then and frequency adverbs go; a paragraph and a letter corrected.
 - Original session: folder `source`: `source/video.mp4`, 52:48 long, partial hash `e580eb78f48235f0`; deck `source/slides.pdf`, 17 pages
   - Session 6 of the Persian Writing course, «Word Orders» (52:48, 17 slides in the Vocabulary template): the order subject, verb, object, place, time, reason (who, what, where, when, why); the verb and its object together; a time phrase first with a comma; also and then in the middle position; adverbial phrases and signal words at the start of a sentence; a learner's paragraph corrected line by line; a letter with gaps. The last lesson of the general Writing course (ADR 047 decision 1). Every example on the deck is the teacher's own sentence of unknown origin, a learner's paragraph (third-party) or a practice letter of unknown origin, and every point is rebuilt on our samples oa-ws-nur-0002, oa-ws-med-0002, oa-ws-nur-0001, oa-ws-med-0003, oa-ws-med-0001 and oa-ws-nur-0003 at oetacademy-exercises 5320d19 (ADR 040).
+- Left out: 1 lines that name an answer of the lesson's practice set or quote its wording (ADR 026)
 
 ### Sections
 
@@ -9136,7 +9137,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 0:00 **Title board**
   - 0:00 the lesson title, then what the lesson is about
 - 1:11 **Contents board**
-  - 1:11 each category, revealed as it is named
+  - 1:12 each category, revealed as it is named
 
 #### 1:52 Who, what, where, when, why (`pages-04-05`, deck)
 
@@ -9247,8 +9248,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 #### 18:34 Signal words: the start or the end (`pages-12-13`, deck)
 
 - 18:34 **Where a signal word goes**
-  - 18:34 The two places
-  - 18:57 The families
+  - 18:34 the two places
+  - 18:57 the families
 - 19:06 **At the start, or at the end**
   - 19:06 four sentences, two places
   - 19:22 context
@@ -9272,7 +9273,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 #### 23:17 Closing (`added-01`, closing)
 
 - 23:17 **Closing**
-  - 23:17 Recap
+  - 23:22 Recap
 
 ### OET facts
 
