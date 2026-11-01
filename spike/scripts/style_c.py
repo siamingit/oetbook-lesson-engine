@@ -574,14 +574,14 @@ LAYOUTS = {
     "skeleton": (("table",), False, (2,)),
     # ADR 048 (the Word Order redesign, 2026-11-01): forms drawn for what a board teaches
     "pieces": (("table",), False, None),      # a sentence as its pieces in a row, each under its label
-    "skeleton": (("table",), False, (3,)),    # the paper beside the part's place on a letter of dashed lines
+    "place": (("table",), False, (3,)),       # the paper beside the part's place on a letter of dashed lines
     "tags": (("table",), False, (2,)),        # a sentence on paper, the note on it as a tag at its end
     "front": (("table",), False, (3,)),       # the kind, the phrase that opens the sentence, the rest
     "sides": (("table",), False, (3,)),       # one case, its two versions side by side
     "chips": (("table",), False, None),       # short phrases as chips in a row (a word bank), row by row
 }
-# a skeleton's letter column names the part's place after a colon ("Her letter: the request")
-SKELETON_PLACES = ("opening", "body", "request", "closing")
+# a `place` layout's letter column names the part's place after a colon ("Her letter: the request")
+PLACE_NAMES = ("opening", "body", "request", "closing")
 # The paper (ADR 045): the line every Writing paper opens its notes with (fact
 # 44), set in bold on the paper, and the labels of its Writing Task box
 PAPER_TODAY = "Assume that today's date is"
@@ -757,15 +757,15 @@ def _table_html(b: dict, html: str, layout: str) -> str:
         # it beside the part of the letter it feeds (a third column)
         form = "beside" if len(header or (rows or [[]])[0]) == 3 else "sheet"
         return _add_root(html, "lay lay-paper", " " + PAPER_BESIDE if form == "beside" else ' data-paper="sheet"')
-    if layout == "skeleton":
+    if layout == "place":
         # the paper beside the letter (ADR 045), the part of the letter drawn in
         # its place on a small letter of dashed lines (the owner's Request slide,
         # ADR 048): the place is named after a colon in the letter column's label
         tail = header[2].rsplit(":", 1)[-1].strip().lower().split() if len(header) == 3 and ":" in header[2] else []
         place = tail[-1] if tail else "body"          # "Her letter: the request" names the request
-        if place not in SKELETON_PLACES:
+        if place not in PLACE_NAMES:
             place = "body"
-        return _add_root(html, "lay lay-paper lay-skeleton", f" {PAPER_BESIDE} data-place=\"{place}\"")
+        return _add_root(html, "lay lay-paper lay-place", f" {PAPER_BESIDE} data-place=\"{place}\"")
     return _add_root(html, "lay lay-" + layout + size)
 
 
@@ -1000,30 +1000,30 @@ LAYOUT_CSS.update({
   box-shadow:none;border-radius:1.6cqh}
 .tbl.core.lay.lay-pieces.spot tbody tr.focus{box-shadow:none;transform:none}
 """,
-    "skeleton": r"""
-/* the paper beside a letter skeleton (ADR 048, the owner's Request slide): the
+    "place": r"""
+/* the paper beside the part's place (ADR 048, the owner's Request slide): the
    part of the letter on a small white letter whose other lines are dashes, in
    its place (data-place: opening, body, request, closing) */
-.tbl.lay.lay-skeleton[data-paper="beside"] td:nth-child(3){background:#fff;border:max(1px,.14cqh) solid #d7d4e0;
+.tbl.lay.lay-place[data-paper="beside"] td:nth-child(3){background:#fff;border:max(1px,.14cqh) solid #d7d4e0;
   border-left:3.6cqh solid transparent;background-clip:padding-box;border-radius:.7cqh;
   box-shadow:0 .5cqh .9cqh -.4cqh rgba(20,32,31,.16);padding:1cqh 1.4cqw 1.2cqh}
-.tbl.lay.lay-skeleton td:nth-child(3)::before,.tbl.lay.lay-skeleton td:nth-child(3)::after{content:"";display:block;
+.tbl.lay.lay-place td:nth-child(3)::before,.tbl.lay.lay-place td:nth-child(3)::after{content:"";display:block;
   background:repeating-linear-gradient(90deg,#c9c6d4 0 1.1cqw,transparent 1.1cqw 1.8cqw);
   -webkit-mask:repeating-linear-gradient(180deg,#000 0 .26cqh,transparent .26cqh 2.3cqh);
   mask:repeating-linear-gradient(180deg,#000 0 .26cqh,transparent .26cqh 2.3cqh)}
-.tbl.lay.lay-skeleton td:nth-child(3)::before{margin-bottom:1cqh;width:60%}
-.tbl.lay.lay-skeleton td:nth-child(3)::after{margin-top:1cqh}
-.tbl.lay.lay-skeleton[data-place="opening"] td:nth-child(3)::before{height:4.6cqh;width:38%}
-.tbl.lay.lay-skeleton[data-place="opening"] td:nth-child(3)::after{height:11.5cqh}
-.tbl.lay.lay-skeleton[data-place="body"] td:nth-child(3)::before{height:6.9cqh}
-.tbl.lay.lay-skeleton[data-place="body"] td:nth-child(3)::after{height:6.9cqh}
-.tbl.lay.lay-skeleton[data-place="request"] td:nth-child(3)::before{height:11.5cqh;width:100%}
-.tbl.lay.lay-skeleton[data-place="request"] td:nth-child(3)::after{height:4.6cqh;width:30%}
-.tbl.lay.lay-skeleton[data-place="closing"] td:nth-child(3)::before{height:13.8cqh;width:100%}
-.tbl.lay.lay-skeleton[data-place="closing"] td:nth-child(3)::after{content:none}
-.tbl.lay.lay-skeleton tr[data-solo] td:nth-child(3){background:none;border:0;box-shadow:none}
-.tbl.lay.lay-skeleton tr[data-solo] td:nth-child(3)::before,.tbl.lay.lay-skeleton tr[data-solo] td:nth-child(3)::after{content:none}
-.tbl.core.lay.lay-skeleton.spot tbody tr.focus td:nth-child(3).active{background:var(--sc-active);background-clip:padding-box}
+.tbl.lay.lay-place td:nth-child(3)::before{margin-bottom:1cqh;width:60%}
+.tbl.lay.lay-place td:nth-child(3)::after{margin-top:1cqh}
+.tbl.lay.lay-place[data-place="opening"] td:nth-child(3)::before{height:4.6cqh;width:38%}
+.tbl.lay.lay-place[data-place="opening"] td:nth-child(3)::after{height:11.5cqh}
+.tbl.lay.lay-place[data-place="body"] td:nth-child(3)::before{height:6.9cqh}
+.tbl.lay.lay-place[data-place="body"] td:nth-child(3)::after{height:6.9cqh}
+.tbl.lay.lay-place[data-place="request"] td:nth-child(3)::before{height:11.5cqh;width:100%}
+.tbl.lay.lay-place[data-place="request"] td:nth-child(3)::after{height:4.6cqh;width:30%}
+.tbl.lay.lay-place[data-place="closing"] td:nth-child(3)::before{height:13.8cqh;width:100%}
+.tbl.lay.lay-place[data-place="closing"] td:nth-child(3)::after{content:none}
+.tbl.lay.lay-place tr[data-solo] td:nth-child(3){background:none;border:0;box-shadow:none}
+.tbl.lay.lay-place tr[data-solo] td:nth-child(3)::before,.tbl.lay.lay-place tr[data-solo] td:nth-child(3)::after{content:none}
+.tbl.core.lay.lay-place.spot tbody tr.focus td:nth-child(3).active{background:var(--sc-active);background-clip:padding-box}
 """,
     "tags": r"""
 /* tags (ADR 048): a sentence on paper, the note on it (where a word sits) as a
@@ -1094,7 +1094,7 @@ LAYOUT_CSS.update({
 .tbl.core.lay.lay-chips.spot tbody tr.focus{box-shadow:none;transform:none}
 """,
 })
-ADR048_LAYOUTS = ("pieces", "skeleton", "tags", "front", "sides", "chips")
+ADR048_LAYOUTS = ("pieces", "place", "tags", "front", "sides", "chips")
 ROOT_CLASS = re.compile(r'^<div class="([^"]*)"')
 
 

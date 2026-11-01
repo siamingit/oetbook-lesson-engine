@@ -446,7 +446,7 @@ if __name__ == "__main__":
 
 class ADR048Layouts(unittest.TestCase):
     """ADR 048: the six layouts of the Word Order redesign are classes on the table and rules appended
-    only to a lesson that uses them; a skeleton reads the part's place from the letter column's label."""
+    only to a lesson that uses them; a place reads the part's place from the letter column's label."""
 
     def _table(self, header, rows, core=True):
         body = "".join("<tr>" + "".join(f'<td data-col="{c}">{x}</td>' for c, x in enumerate(r)) + "</tr>" for r in rows)
@@ -457,7 +457,7 @@ class ADR048Layouts(unittest.TestCase):
     def test_adr048_layouts(self):
         cases = {
             "pieces": (["Who", "What"], [["I", "visited him"]]),
-            "skeleton": (["Her paper", "", "Her letter: the request"], [["Plan:", "a line", "a sentence"]]),
+            "place": (["Her paper", "", "Her letter: the request"], [["Plan:", "a line", "a sentence"]]),
             "tags": (["The sentence", "The place"], [["I would also go", "after would"]]),
             "front": (["Kind", "The phrase first", "Then the sentence"], [["Time", "On Monday,", "she came."]]),
             "sides": (["Purpose", "At the start", "At the end"], [["Date", "On Monday, she came.", "She came on Monday."]]),
@@ -471,15 +471,15 @@ class ADR048Layouts(unittest.TestCase):
             css = style_c.layout_css({"x": {**b, "html": out}})
             self.assertIn(style_c.LAYOUT_CSS[lay], css, lay)
             self.assertEqual(style_c.layout_css({"x": b}), "", lay)
-        b = self._table(*cases["skeleton"])
-        out = style_c.layout_html(b, b["html"], None, "skeleton")
+        b = self._table(*cases["place"])
+        out = style_c.layout_html(b, b["html"], None, "place")
         self.assertIn('data-place="request"', out)
         self.assertIn("lay-paper", out)
         self.assertIn(style_c.PAPER_BESIDE, out)
         b = self._table(["Her paper", "", "Her letter"], [["Plan:", "a line", "a sentence"]])
-        self.assertIn('data-place="body"', style_c.layout_html(b, b["html"], None, "skeleton"))
-        # a working table may take pieces and chips; the skeleton needs three columns
+        self.assertIn('data-place="body"', style_c.layout_html(b, b["html"], None, "place"))
+        # a working table may take pieces and chips; the place needs three columns
         b = self._table(["Who", "What"], [["I", "visited him"]], core=False)
         self.assertIn("lay-pieces", style_c.layout_html(b, b["html"], None, "pieces"))
-        self.assertIsNotNone(style_c.check_layout("x", self._table(["a", "b"], [["1", "2"]]), "skeleton"))
+        self.assertIsNotNone(style_c.check_layout("x", self._table(["a", "b"], [["1", "2"]]), "place"))
 
