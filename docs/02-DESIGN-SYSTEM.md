@@ -1172,6 +1172,14 @@ and AS WRITTEN/PUT RIGHT as solid pills or panels, comparison heads as boxes, th
 Pattern 11 as a table (`compare`, two columns): two cards, each its place's head, its example sentences one under
 another with the words in that place ringed in the pen (`block_accents`), its last row the rule in the hand.
 
+**Writing 7 in the look** (ADR 050 amendment (3)). The owner's ISBAR parts (`acronym`): white bands, each letter on a
+solid rounded tile in its colour in turn, the name bold beside it, never zoomed. His letter skeletons (`skeleton`): two
+white sheets framed in teal and coral with their names as pills, the body as grey lines, the purpose words and the
+request expanded in the Purpose colour. The `path` sets its steps at 3.6% and its notes in the hand at 3.9% on larger
+circles; a `timeline` of four markers or more is set vertically, a marker longer than a number is a pill, and a lit
+marker keeps its colour. The criterion's monogram is a label (at least 20 px). A contents title of five words or fewer
+that cannot keep a line of three words (`ct-one`) sets the whole contents one step smaller, so it stays on one line.
+
 **Accents and boards marked no-zoom** (ADR 049). `block_accents` (`{"<bundle block id>": ["phrase", ...]}`) names the words a layout sets in its accent colour: each phrase is found exactly once in the block's words, never split by a tag, and wrapped in a span `acc`, by a layout that draws it (`skeleton`: the purpose words, in the Purpose colour; green stays reserved for "right", §5); the words never change. `boards_nozoom` (`["<board id>", ...]`) names boards shown whole (`boards_fit` "whole") on which the style C zoom is not written either (§8g, rule 55): the whole table stays in view at every moment on every device, and the spotlight and the marks alone show the line being taught. For a table whose rows are to be seen together, as the ISBAR parts on one letter.
 
 **The paper** (owner, 2026-10-27; ADR 045). A Writing lesson shows the paper wherever a board draws on it,

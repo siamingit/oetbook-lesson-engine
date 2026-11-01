@@ -230,3 +230,42 @@ on the site's own player: 66 of 66 states pass.
    WRITTEN and PUT RIGHT as solid pills or panels; the comparison's heads as boxes inside their cards; the board's
    title in a soft teal band in the header. The look's colours, rounded corners, 4.5:1 and the minimum sizes hold.
 3. **A board's content uses the board** (rule 4, applied to the paper alone: a sheet at 4.5% of the frame).
+
+## Amendment (3), 2026-11-01: Writing 7 in the teal look (the owner's ISBAR and Request boards; a path and a timeline that use the board)
+
+**Context.** The owner's brief of 2026-11-01: redesign every board of Writing 7 (Organising the Letter) in the teal
+look, as Word Order was; its ISBAR board and its Request board are his own designs (ADR 049: `acronym`, never zoomed;
+`skeleton`), to be kept and only brought into the look. Built under amendments (1) and (2), four things in the shared
+code fell short: the two ADR 049 layouts had no rules in the look (they drew in style C's amber and cream); the
+`path` (pattern 10) set its handwritten notes at 23.5 px, under rule 1's 26 px, and like the `timeline` (pattern 3)
+left most of a board empty (rule 4); the timeline's markers are 13% circles that clip anything longer than a number
+("15 to 21 October"), and a lit marker in teal turned white on the spotlight's yellow (1.15:1); the criterion's
+monogram ("O&L") was a 17 px label; and the contents title "The request and closing paragraph" (five words) wraps
+into a line of two words at the contents' size (rule 7) whatever its balance.
+
+**Decision** (`style_c.py`; bundle unchanged; no rule reaches a lesson that does not use what it draws):
+
+1. `layout_css(blocks, look)`: in the teal look, a lesson that uses `acronym` or `skeleton` also takes
+   `acronym_teal` / `skeleton_teal`. ISBAR: each part a white band, its letter large and bold on a solid rounded tile
+   in its colour in turn (pattern 2's amber, blue, lilac, coral, teal), the name bold beside it, the heads as pills.
+   The letter skeletons: two white sheets framed in teal and coral (pattern 11), their names as pills (the first cut
+   inside the gap its cell carries), a paragraph not written out as pattern 5's grey lines, the purpose words and the
+   request expanded at the end in the Purpose colour (ADR 049, unchanged).
+2. The `path`: larger circles on a taller curve, the step at 3.6% and the note in the hand at 3.9% (27 px counted);
+   five steps or more keep the first geometry with the words at their minimums. The `timeline`: a marker longer than a
+   number is a pill; a lit marker keeps its colour, ringed; four markers or more read down the board, each on a teal
+   line beside its words (the pattern set vertically, as the contents path is; decision 3: a pattern may vary its
+   arrangement).
+3. `crit_teal`, emitted in the teal look where a criterion's card is used: the monogram in a larger circle, at 2.5%
+   for three letters (22.5 px).
+4. `ct-one`: in the teal look, a contents title of five words or fewer and more than 28 characters takes the class,
+   and a contents board that has one sets every title one step smaller (3.5%, one size for the set: the owner's
+   addendum, rule 1) with smaller circles, so the title keeps its line. No built lesson's title but Writing 7's is one.
+
+**Consequences.** Only Writing 7 changes: it is the one built lesson that uses `acronym`, `skeleton`, `path` or
+`timeline` as a table layout, a criterion card in the teal look, or a long contents title in the teal look.
+Proven by the render comparison (runbook, "Changing shared code"): `render_compare.py` snapshots `before-w07t` on main
+at 16d44a8 and `after-w07t` on this change, 2026-11-01, Writing 7 as it stands before its redesign (no look): **28 of 28
+built lessons identical**, 850 data files byte for byte and 167,268 moments at the phone and laptop frames drawn
+identically, with no board timing difference. Reading 5 is outside the proof, as before (it does not render on main).
+Writing 7 is then rebuilt in the look: every engine check, the readability check (0 findings) and the site's player.

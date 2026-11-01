@@ -600,3 +600,40 @@ class TealLook(unittest.TestCase):
         with self.assertRaises(SystemExit):
             lay(["a", "b"], [["x y", "x y"]], "compare", ["x y"])                 # found twice: refused
         self.assertIn(".frame .tbl.core table{font-size:max(var(--tf,2.6cqh),var(--t-run))}", style_c.LOOK_CSS["teal"])
+
+    def test_writing_7_in_the_teal_look(self):
+        """ADR 050 amendment (3): the owner's two Writing 7 layouts take their teal rules only in the teal look; the
+        criterion's monogram and a one-line contents title likewise; a lesson without them gets none of it."""
+        acr = ADR048Layouts._table(self, ["Part", "Letter"], [["I: Introduce", "I am writing."]], True)
+        acr["html"] = style_c.layout_html(acr, acr["html"], None, "acronym")
+        sk = ADR048Layouts._table(self, ["A", "B"], [["I write.", "She goes home."], ["", ""],
+                                                     ["Please advise.", "Please check."]], True)
+        sk["html"] = style_c.layout_html(sk, sk["html"], None, "skeleton")
+        blocks = {"a": acr, "s": sk}
+        self.assertEqual(style_c.layout_css(blocks), style_c.LAYOUT_CSS["acronym"] + style_c.LAYOUT_CSS["skeleton"])
+        self.assertEqual(style_c.layout_css(blocks, "teal"),
+                         style_c.LAYOUT_CSS["acronym"] + style_c.LAYOUT_CSS["skeleton"]
+                         + style_c.LAYOUT_CSS["acronym_teal"] + style_c.LAYOUT_CSS["skeleton_teal"])
+        self.assertEqual(style_c.layout_css({}, "teal"), "")
+        # the criterion's card: its monogram at the label size, in the teal look only
+        crit = {"id": "x", "type": "term_box", "label": "The criterion", "term": "Organisation and Layout"}
+        crit["html"] = style_c.layout_html(crit, '<div class="blk term tnote" data-id="x"><span class="lbl">The '
+                                           'criterion</span></div>', "Organisation and Layout")
+        self.assertIn("crit", crit["html"])
+        self.assertEqual(style_c.layout_css({"c": crit}), "")
+        self.assertEqual(style_c.layout_css({"c": crit}, "teal"), style_c.LAYOUT_CSS["crit_teal"])
+        # a contents title of five words or fewer, too long for a line: one line, the set one step smaller
+        item = lambda t: {"id": "k", "type": "contents_item", "text": t,  # noqa: E731
+                          "html": f'<div class="blk citem" data-id="k"><span class="cnum" data-n="6"></span><div>'
+                                  f'<div class="ct">{t}</div><div class="cs"></div></div></div>'}
+        one = item("The request and closing paragraph")
+        self.assertIn("ct-one", style_c.layout_html(one, one["html"], None, None, None, "teal"))
+        self.assertNotIn("ct-one", style_c.layout_html(one, one["html"], None))
+        for t in ("Who, what, where, when, why", "The verb and its object; the time first"):
+            self.assertNotIn("ct-one", style_c.layout_html(item(t), item(t)["html"], None, None, None, "teal"), t)
+        one["html"] = style_c.layout_html(one, one["html"], None, None, None, "teal")
+        self.assertEqual(style_c.layout_css({"k": one}, "teal"), style_c.LAYOUT_CSS["contents_one"])
+        # the path and the timeline: readable and using the board, in their own rules (reaching only their users)
+        self.assertIn(".frame .tbl.lay.lay-path td:nth-child(2){margin-top:1.2cqh;font-size:3.9cqh}",
+                      style_c.LAYOUT_CSS["path"])
+        self.assertIn("td:first-child.active", style_c.LAYOUT_CSS["timeline"])
