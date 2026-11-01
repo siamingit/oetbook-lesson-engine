@@ -195,7 +195,7 @@ class CommittedIndex(unittest.TestCase):
         data["totals"] = ix.totals(data)
         self.write(data, j, m)
         errs = ix.verify(j, m)
-        self.assertEqual(errs, [f"lesson {gone['id']} has a curated entry but is not in the index"])
+        self.assertEqual(errs, [f"lesson {gone['id']} has a curated entry but is not in the index"] + [f"{e['id']}: a reference to {gone['id']} {r['section']} does not resolve" for e in data["lessons"] for r in e["links"]["refers_to"] if r["lesson"] == gone["id"]])
 
     def test_a_field_the_schema_does_not_know_fails(self):
         data, j, m = self.copy()
