@@ -68,8 +68,15 @@ def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
                 "tags": None, "exercise_item": None, "anchor": typ == "lesson_title",
                 "provenance": prov, "from_beats": beats, "note": note}
 
-    title = blk("k01", "lesson_title", tb["title"],
-                note="The deck's lesson title, slide " + str(sec["lesson"].get("page")))
+    # a lesson with no source (ADR 047) has no deck: its title is the maintainer's,
+    # and every block of it is authored (ADR 018)
+    if paths.no_source(sec):
+        title = blk("k01", "lesson_title", tb["title"], prov="authored",
+                    note="The lesson's title, set by " + str(sec["lesson"].get("title_by"))
+                         + " (ADR 047: a lesson with no source has no deck)")
+    else:
+        title = blk("k01", "lesson_title", tb["title"],
+                    note="The deck's lesson title, slide " + str(sec["lesson"].get("page")))
     # The title board shows what the narration describes (ADR 014): the
     # lesson's own intro blocks (sections.json `intro_board`: a link to the
     # previous lesson, a problem from a letter), then the description, what
@@ -95,7 +102,8 @@ def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
                  label=str(n), prov=c.get("provenance") or "source-derived",
                  note=("Category " + str(n) + " of the contents slide, with its sections"
                        if c["sections"] else "Section " + str(n) + " of the lesson, by its title "
-                       "(sections.json); the deck has no contents slide"))
+                       "(sections.json); " + ("a lesson with no source has no deck (ADR 047)"
+                                              if paths.no_source(sec) else "the deck has no contents slide")))
              for n, c in enumerate(cb["categories"], 1)]
     # a picture on each board (ADR 021), from the agent's briefs in pictures.json
     from write_screens import load_pictures, gloss_alt
@@ -194,9 +202,12 @@ def main() -> None:
     title = sec["lesson"]["title"]
     # No contents slide: one item per section, with no sections listed under it.
     # A title the maintainer set is his wording; one read from a heading is the deck's.
+    import paths
+    no_source = paths.no_source(sec)          # ADR 047: no deck; every block authored
     cats = sec.get("categories") or [
         {"title": s["title"], "sections": [],
-         "item_provenance": "maintainer" if s.get("status") == "maintainer" else "source-derived"}
+         "item_provenance": "authored" if no_source else
+                            "maintainer" if s.get("status") == "maintainer" else "source-derived"}
         for s in sec["sections"]]
     desc = sec["lesson"].get("description")
     boards = {
@@ -208,8 +219,10 @@ def main() -> None:
                                       "UNKNOWN: a one-line English description of the lesson is "
                                       "to be written by the maintainer; rendered as a placeholder "
                                       "until then (docs/00-PRODUCT.md §2a).",
-                  "provenance": "source-derived: the deck's title slide, page "
-                                + str(sec["lesson"].get("page"))
+                  "provenance": ("authored: the maintainer's title; a lesson with no source "
+                                 "has no deck (ADR 047)" if no_source else
+                                 "source-derived: the deck's title slide, page "
+                                 + str(sec["lesson"].get("page")))
                                 + ("; description: maintainer's own words (sections.json)"
                                    if desc else "")},
         "contents": {"id": "lesson.contents", "kind": "contents",
@@ -221,8 +234,9 @@ def main() -> None:
                                     + str(sec.get("contents_page")) + ", translated and corrected "
                                     "by the maintainer; section titles from sections.json")
                                    if sec.get("categories") else
-                                   "the lesson's sections, by their titles in sections.json; the "
-                                   "deck has no contents slide"},
+                                   "the lesson's sections, by their titles in sections.json; "
+                                   + ("a lesson with no source has no deck (ADR 047)" if no_source
+                                      else "the deck has no contents slide")},
     }
     out = lesson / "analysis" / "screens" / "lesson-boards.json"
     out.parent.mkdir(parents=True, exist_ok=True)

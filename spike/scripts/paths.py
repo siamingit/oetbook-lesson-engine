@@ -132,16 +132,32 @@ def boards_dir_for(lesson: Path, pages: list[int]) -> Path:
     return lesson / "generated" / section_tag(pages) / "boards"
 
 
+# A lesson with no recorded source (ADR 047): no video, no deck, no transcript.
+# Every section is authored (ADR 018) and so is its introduction, which takes
+# the slot just below the authored sections' (page-100), so every page-keyed
+# path works for it as for any introduction.
+NO_SOURCE_INTRO_PAGE = ADDED_BASE
+
+
+def no_source(info: dict) -> bool:
+    """A lesson built with no recorded source (sections.json `lesson.source`
+    "none", written by build_sections.py --no-source; ADR 047)."""
+    return (info.get("lesson") or {}).get("source") == "none"
+
+
 def intro_section(info: dict) -> dict | None:
     """The lesson's introduction as a section (docs/00-PRODUCT.md §2a), or
     None. Stored with the contents slide's page, whose interval is its source;
     in a deck with no contents slide, with the title slide's page, its source
     the recording's opening, whatever slide is on screen (sections.json
-    `intro`, maintainer 2026-09-24), carried here as `span`."""
+    `intro`, maintainer 2026-09-24), carried here as `span`. A lesson with no
+    source (ADR 047) has an authored introduction, with no span."""
     cp = info.get("contents_page")
     if cp:
         return {"title": "Introduction", "pages": [cp], "intro": True}
     it, tp = info.get("intro"), (info.get("lesson") or {}).get("page")
+    if it and tp and no_source(info):
+        return {"title": "Introduction", "pages": [tp], "intro": True}
     if it and tp:
         return {"title": "Introduction", "pages": [tp], "intro": True,
                 "span": [it["from_s"], it["to_s"]]}
