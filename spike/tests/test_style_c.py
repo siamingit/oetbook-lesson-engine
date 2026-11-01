@@ -204,6 +204,46 @@ class Layouts(unittest.TestCase):
         self.assertEqual(style_c.layout_css({"s": {**sheet, "html": o}}), style_c.LAYOUT_CSS["paper"])
         self.assertNotIn(style_c.LAYOUT_CSS["paper"].strip(), style_c.CSS)
 
+    def test_an_acronym_letter_and_name_in_their_own_spans(self):
+        # ADR 049: "I: Introduce and identify" drawn as the letter large in its own
+        # column and the name beside it; the colon stays in the words, at no size
+        b, h = self.core(["Part", "The letter"], [["I: Introduce and identify", "I am writing."],
+                                                    ["S: Situation", "Bruises appeared."]])
+        o = style_c.layout_html(b, h, None, "acronym")
+        self.assertIn("lay lay-acronym", o)
+        self.assertIn('<td data-col="0"><span class="ac-l">I</span><span class="ac-s">: </span>'
+                      '<span class="ac-n">Introduce and identify</span></td>', o)
+        self.assertEqual(style_c._text(o), style_c._text(h))       # the colon stays in the words
+        self.assertEqual(style_c.layout_css({"a": {**b, "html": o}}), style_c.LAYOUT_CSS["acronym"])
+        with self.assertRaises(SystemExit):           # a row that does not open with its letter
+            style_c.layout_html(*self.core(["Part", "The letter"], [["Introduce", "x"]]), None, "acronym")
+
+    def test_a_skeleton_dashes_ends_and_accents(self):
+        # ADR 049: two letters side by side; an empty paragraph with text below it
+        # is dashed lines, the last paragraph written out is the request expanded,
+        # the purpose words (block_accents) are wrapped once; no word changes
+        b, h = self.core(["Mr A's letter", "Mrs B's letter"], [
+            ["I am writing to ask for care.", "She returns home; please go on with her care."],
+            ["", ""], ["", "Please check her leg."], ["Please advise before 6 pm.", ""]])
+        o = style_c.layout_html(b, h, None, "skeleton", ["to ask for care", "go on with her care"])
+        self.assertIn("lay lay-skeleton", o)
+        self.assertIn('<td data-col="0" data-dash=""></td><td data-col="1" data-dash=""></td>', o)
+        self.assertIn('<tr data-row="2"><td data-col="0" data-dash=""></td><td data-col="1" data-end="">', o)
+        self.assertIn('<tr data-row="3"><td data-col="0" data-end="">Please advise', o)
+        self.assertIn('<td data-col="1" data-after=""></td></tr></tbody>', o)   # past a letter's end: its sheet has ended
+        self.assertIn('I am writing <span class="acc">to ask for care</span>.', o)
+        self.assertIn('please <span class="acc">go on with her care</span>.', o)
+        self.assertEqual(style_c._text(o), style_c._text(h))
+        self.assertEqual(style_c.layout_css({"s": {**b, "html": o}}), style_c.LAYOUT_CSS["skeleton"])
+        with self.assertRaises(SystemExit):           # a phrase not in the words
+            style_c.layout_html(b, h, None, "skeleton", ["to request"])
+        with self.assertRaises(SystemExit):           # a phrase found twice
+            style_c.layout_html(b, h, None, "skeleton", ["care"])
+        with self.assertRaises(SystemExit):           # an accent on a layout that draws none
+            style_c.layout_html(*self.core(["Part", "L"], [["I: A", "x"]]), None, "acronym", ["x"])
+        with self.assertRaises(SystemExit):           # a letter must open with a paragraph written out
+            style_c.layout_html(*self.core(["A", "B"], [["", "x"], ["y", ""]]), None, "skeleton")
+
 
 def bundle():
     blocks = {"c1": {"type": "contents_item"}, "c2": {"type": "contents_item"},
@@ -267,6 +307,17 @@ class Effects(unittest.TestCase):
         boards, blocks = bundle()
         blocks["doc"]["html"] = '<div class="blk tbl core lay lay-paper" data-paper="sheet">'
         style_c.effects(boards, blocks)
+        self.assertEqual([e["type"] for e in boards[2]["states"][0]["effects"]], ["zoom"])
+
+    def test_no_zoom_on_a_board_marked_no_zoom(self):
+        # ADR 049: a board shown whole that the lesson marks no-zoom keeps its
+        # spotlight and marks and takes no zoom; every other board as before
+        boards, blocks = bundle()
+        style_c.effects(boards, blocks, nozoom={"x_t3"})
+        self.assertEqual(boards[2]["states"][0]["effects"], [])
+        self.assertEqual(len(boards[0]["states"][0]["effects"]), 2)
+        boards, blocks = bundle()
+        style_c.effects(boards, blocks, nozoom={"x_t1"})
         self.assertEqual([e["type"] for e in boards[2]["states"][0]["effects"]], ["zoom"])
 
     def test_no_zoom_where_the_tables_are_not_documents(self):

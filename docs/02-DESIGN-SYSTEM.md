@@ -1075,11 +1075,15 @@ table board.
 | `vs` | a comparison of two options (not a change) | the two side by side, numbered 1 and 2 | Two openings (his try-it) |
 | `pair` | a table of four columns that is two lists of one kind side by side (a name and its examples, twice) | two tables with a gap between, each its own header; a row is still taught as one row, across both (ADR 043 amendment (3)) | Grammar 4's countable and uncountable nouns (slide 6: two tables side by side) |
 | `paper` | a Writing paper, or a piece of it: two columns (the paper's label, its lines); or the paper beside the letter: three (the label, the lines, the part of the letter they feed) (ADR 045) | two columns: a sheet of the paper, as in the exam: white, a hairline edge, a soft shadow, the labels bold in their own column, the date line bold, the Writing Task box grey. Three: each row a piece of that sheet, an arrow, the part of the letter on the letter's cream; never zoomed, so both stay in view | Writing 3: the guided look at the paper, the map board (slide 5) and every board that quotes a paper |
+| `acronym` | the parts of an acronym, a table of two columns: a letter, a colon and the part's name ("I: Introduce and identify"), and the part's text (ADR 049) | a row a part, on a tinted band: the letter large, bold and in the key-word amber in its own narrow column, the part's name in bold beside it (the colon stays in the words, drawn at no size), the text in the row; the spotlight lifts the part being taught and the marker marks its words; shown whole and marked no-zoom, so the whole table stays in view | Writing 7: the ISBAR approach (the owner's "ISBAR APPROACH" slide) |
+| `skeleton` | two letters side by side, a table of two columns, a paragraph a row: written out where the lesson reads it, empty where not (ADR 049) | each letter a sheet on the letter's cream: a paragraph written out in full (the opening, its purpose words in the Purpose colour: `block_accents`), a paragraph not written out as three short dashed lines drawn by the stylesheet (never a word), the last paragraph written out of each letter (the request expanded) in the Purpose colour; a letter that ends earlier leaves its sheet short | Writing 7: where the request goes (the owner's "Request" slide) |
 
 The forms and the layouts added in phase 2 and after (a `fix` of two columns, a `letter` of one, `pair`,
-`paper`) are drawn by rules appended to the stylesheet of a lesson that uses them only
+`paper`, `acronym`, `skeleton`) are drawn by rules appended to the stylesheet of a lesson that uses them only
 (`style_c.LAYOUT_CSS`), as the cell spotlight's are, so no other lesson's stylesheet changes; each form is
 told by its columns, so the block's html carries nothing new.
+
+**Accents and boards marked no-zoom** (ADR 049). `block_accents` (`{"<bundle block id>": ["phrase", ...]}`) names the words a layout sets in its accent colour: each phrase is found exactly once in the block's words, never split by a tag, and wrapped in a span `acc`, by a layout that draws it (`skeleton`: the purpose words, in the Purpose colour; green stays reserved for "right", §5); the words never change. `boards_nozoom` (`["<board id>", ...]`) names boards shown whole (`boards_fit` "whole") on which the style C zoom is not written either (§8g, rule 55): the whole table stays in view at every moment on every device, and the spotlight and the marks alone show the line being taught. For a table whose rows are to be seen together, as the ISBAR parts on one letter.
 
 **The paper** (owner, 2026-10-27; ADR 045). A Writing lesson shows the paper wherever a board draws on it,
 and always in this one look, so the learner knows it at once:
@@ -1406,7 +1410,9 @@ the effects with data (`style_c.effects`), deterministically:
 - **A document set well under body size** (its text 2.8% or less, or a board shown whole), in a
   Writing lesson (a letter, case notes; ADR 043): the **zoom**, from a mark the narration draws on a line until it moves on to a note or its sentence
   ends; a later mark takes the view on. Where the line is as wide as the board, or a note shown would
-  leave the view, the zoom is as small as it must be, or none.
+  leave the view, the zoom is as small as it must be, or none. A board the lesson marks no-zoom
+  (`boards_nozoom`, ADR 049) takes none: shown whole, it stays whole, its spotlight and marks alone showing
+  the line.
 - **A board with two or more fixed sentences or cards** (two openings side by side, an opening and
   its comparison): each is **lifted while the narration reads it**.
 - **Wrong phrases**: the **strike is drawn** as each is named. **Key words**: the **marker sweeps**
