@@ -7852,7 +7852,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | 1 | OET Writing: Overview | `writing-01-overview` | 19:05 | 7 | 2026-10-27 09:37 (siavash) |
 | 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 29:42 | 10 | 2026-10-26 23:34 (Siavash) |
 | 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:04 | 10 | 2026-10-31 23:18 (siavash) |
-| 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-10-31 10:22 (Siavash) |
+| 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-11-01 00:09 (siavash) |
 
 <a id="writing-01-overview"></a>
 
@@ -8570,7 +8570,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 4. OET Writing: The Opening Paragraph
 
 - Lesson ID and folder: `writing-04-introduction` (folder `writing-04-introduction`); course writing, lesson 4; length 32:12; bundle format 1.23
-- Status: approved by Siavash, 2026-10-31 10:22
+- Status: approved by siavash, 2026-11-01 00:09
 - Description: Learn to write the opening of an OET letter: one clear sentence that says who the patient is, what the main problem is and what you ask, with the grammar it needs.
 - Original session: folder `source`: `source/video.mp4`, 87:07 long, partial hash `1995ee2fa868b983`; deck `source/slides.pdf`, 19 pages
   - Writing Session 4 of the Persian Writing course, «نحوه نگارش Introduction» (Writing: introduction); every example on its slides is of unknown origin and is replaced by the openings of our six samples (oa-ws-med-0001 to -0003, oa-ws-nur-0001 to -0003) at oetacademy-exercises 5320d19 (ADR 040). The letter to a patient's relative (slides 15-16) and the pharmacy aside are dropped; the teacher's "Dear Doctor" for an unnamed reader is replaced by "Dear Sir or Madam ... Yours faithfully" (ADR 040 decision 7).
