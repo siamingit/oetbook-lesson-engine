@@ -3815,7 +3815,9 @@ def frame_css(lesson) -> str:
             + (PART_C_CSS if part_c else "") + (LISTENING_CSS if has_listening_set(lesson) else "")
             # style C (ADR 042): the look of a lesson whose sections.json says so,
             # last so it wins; every other lesson's stylesheet is unchanged
-            + (style_c.CSS if style_c.style_of(lesson) == "c" else ""))
+            + (style_c.CSS if style_c.style_of(lesson) == "c" else "")
+            # and the teal look over it (ADR 050), only where sections.json names it
+            + style_c.look_css(lesson))
 
 
 PAGE_CSS = """

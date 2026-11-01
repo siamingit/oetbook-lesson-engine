@@ -106,6 +106,31 @@ section title alone in the header; the board style's kinds of content (§7c) and
 size as a share of the frame, with its floors; nothing moves a word, every block fits, nothing over
 anything (§8a, §8b, §8d).
 
+### 1b. The teal look (ADR 050)
+
+The owner's Canva patterns of 2026-11-01 (`C:\OET\course\design-samples\canva\`), the base of every lesson
+built or redesigned from that day: a lesson names it in `analysis/sections.json` `lesson.look` ("teal"), and its
+`blocks.css` takes `style_c.LOOK_CSS["teal"]` after style C's rules. Style C's engine stays under it (the spotlight,
+lift, zoom, marks, effects and the bundle); a lesson without the look is unchanged.
+
+| Role | Value |
+|---|---|
+| Ground | warm white `#faf8f4`: the frame, header, board and controls; white cards and paper on it |
+| Brand and ink | teal `#0b6e6d`; ink `#173d3c`, muted `#536866` |
+| Accents (in turn: a part, a row, a pill) | amber `#e2a72e`, soft blue `#9ecfd8`, lilac `#b8a6d6`, coral `#e57063`, teal; each with its soft tint (`#fbf0d5`, `#e1f1f4`, `#eee8f6`, `#fce7e3`, `#e5f0ef`) |
+| Right, wrong | right teal; wrong coral and red (`#b8352a` ink); the six criteria keep their colours (§1a) |
+| The teacher's notes | a working note in his hand, Caveat 500, at 1.3 times body size (its x-height matches IBM Plex's at body size, §3), no card, in ink |
+| His advice | a callout on a yellow sticky note `#f7e27f`, soft corners, tilted 0.6 degrees, in his hand |
+| His pen (§8) | a circle is a red ring `#cf3f3f`; an underline and a strike a red line; the marker stays amber |
+| Shapes | pills and circles; radii 2.2 to 2.8% of the frame; only soft, low shadows; never a hard offset shadow |
+| The contents board | a path of numbered circles in turn's colours, joined by a teal line (the owner's pattern 10, set vertically) |
+| Motion (§8g) | a fixed block enters as its board opens; a pattern's pieces enter in reading order, 70 ms apart, 0.4 s each |
+| The board's own sentences, titles | IBM Plex Sans, as in §1a (the site's face) |
+
+The hand is embedded in the reference player from `spike/fonts/caveat.lock.json`; the site does not serve it yet
+(its policy loads fonts from itself only), so its player draws the hand in the device's own until it does (ADR 050
+decision 5).
+
 ### Vertical division
 
 | Band | Height | Contains |
@@ -1089,6 +1114,28 @@ The forms and the layouts added in phase 2 and after (a `fix` of two columns, a 
 (`style_c.LAYOUT_CSS`), as the cell spotlight's are, so no other lesson's stylesheet changes; each form is
 told by its columns, so the block's html carries nothing new.
 
+### 7k. The teal look's patterns (ADR 050)
+
+The owner's Canva patterns 1 to 11, each a layout named in `block_layouts` like any other (its rules appended only to
+a lesson that uses it; their colours fall back to the teal look's own). Every lesson in the teal look uses a varied
+mix of them, **no two boards in a row share a pattern** (the title, contents and closing boards count), and a pattern
+may vary its arrangement between lessons. The pattern of each board is logged with the slide it follows.
+
+| Layout | Pattern | Takes | Drawn as |
+|---|---|---|---|
+| `wrongright` | 1 Wrong and right | a table of two columns (wrong or as written; right or put right) | each pair a row: the wrong sentence in plain ink, a curved red-pen arrow, the right one in bold teal; the narration's pen circles mark the error |
+| `coded` | 2 A colour-coded sentence | a header naming each part; one or more rows of parts | each part a rounded tile in its colour, its label a pill of that colour above it, read left to right; typed in as the narration reaches it |
+| `opener` | 2 (a phrase first) | three columns: the kind, the phrase that opens the sentence, the rest | the kind a small pill, the opening phrase in a tile of that colour, then the rest in plain |
+| `timeline` | 3 A timeline | two or three columns: the marker (a date, a number), the event, a note | round markers in turn's colours on a teal line, the event under each in bold, the note in the hand |
+| `columns` | 4 Keep, shorten or leave out | two to four columns | solid pill heads (teal, amber, coral, blue), each column's cells soft pills of its colour; a column of short labels or places narrow (`data-cw`) |
+| `parts` | 5 A letter's parts | two columns: the part's name, its paragraph (empty where not written out) | one white sheet with a teal edge, each name a pill in its colour joined to its paragraph by a line; an empty paragraph as grey lines |
+| `badges` | 6 Key tips as badges | one or two columns (the point, a note); or a recap's category cards | solid circles holding the point, a note in the hand under each; cards side by side |
+| `ruled` | 7 A paragraph on ruled paper | one or two columns (the line's number, the line) | a white sheet with blue rules and a red margin, the lines in a learner's hand, the numbers in the margin |
+| `beforeafter` | 8 Before and after | two columns (before, after) | two panels, coral and teal, their heads in capitals; each sentence with its word count in a circle (counted from its words, `data-count`) |
+| `choices` | 9 Choice pills | short phrases, any columns | solid pills in turn's colours; each under its label when every column has one, else under the bank's name in the hand |
+| `path` | 10 Steps on a curved path | one or two columns (the step, a note) | numbered circles alternately low and high on a teal curve (an empty drawing), the step in bold, the note in the hand |
+| `compare` | 11 Two compared | a comparison; or a table of two columns | two things side by side, framed in teal and coral; each head (a comparison's words up to its first colon, `cmp-h`; or the column's label) a pill, the rest under it |
+
 **Accents and boards marked no-zoom** (ADR 049). `block_accents` (`{"<bundle block id>": ["phrase", ...]}`) names the words a layout sets in its accent colour: each phrase is found exactly once in the block's words, never split by a tag, and wrapped in a span `acc`, by a layout that draws it (`skeleton`: the purpose words, in the Purpose colour; green stays reserved for "right", §5); the words never change. `boards_nozoom` (`["<board id>", ...]`) names boards shown whole (`boards_fit` "whole") on which the style C zoom is not written either (§8g, rule 55): the whole table stays in view at every moment on every device, and the spotlight and the marks alone show the line being taught. For a table whose rows are to be seen together, as the ISBAR parts on one letter.
 
 **The paper** (owner, 2026-10-27; ADR 045). A Writing lesson shows the paper wherever a board draws on it,
@@ -1424,6 +1471,10 @@ the effects with data (`style_c.effects`), deterministically:
 - **Wrong phrases**: the **strike is drawn** as each is named. **Key words**: the **marker sweeps**
   in.
 - Never: on a picture, on a gloss's parts (they are written in, as before), or two lifts at once.
+- **The teal look** (ADR 050, §1b): a fixed block **enters** as its board opens (it fades in and rises 1.6% of the
+  frame, 0.45 s), and a pattern's pieces (§7k: rows, tiles, pills, steps) enter **in reading order**, 70 ms apart,
+  0.4 s each, before the narration reaches them; its marks are the teacher's red pen (a circle drawn whole at its
+  time: drawing it on in motion needs both players, ADR 050).
 - **Not the style C zoom** (ADR 043): a Grammar or Vocabulary table keeps rule 13's auto zoom (Grammar
   6's board shown whole keeps no zoom, the owner's 2026-10-12 exception); a Reading text keeps its lens,
   map and covering, a Listening transcript its box (ADR 026, ADR 030).
