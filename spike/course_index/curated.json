@@ -654,6 +654,84 @@
      "at": "added-02_t3.s1.u1"
     }
    ]
+  },
+  "writing-06-word-order": {
+   "session": "Session 6 of the Persian Writing course, «Word Orders» (52:48, 17 slides in the Vocabulary template): the order subject, verb, object, place, time, reason (who, what, where, when, why); the verb and its object together; a time phrase first with a comma; also and then in the middle position; adverbial phrases and signal words at the start of a sentence; a learner's paragraph corrected line by line; a letter with gaps. The last lesson of the general Writing course (ADR 047 decision 1). Every example on the deck is the teacher's own sentence of unknown origin, a learner's paragraph (third-party) or a practice letter of unknown origin, and every point is rebuilt on our samples oa-ws-nur-0002, oa-ws-med-0002, oa-ws-nur-0001, oa-ws-med-0003, oa-ws-med-0001 and oa-ws-nur-0003 at oetacademy-exercises 5320d19 (ADR 040).",
+   "facts": [
+    {
+     "fact": "writing-letter-date",
+     "at": "pages-04-05_t1.s2.u1"
+    },
+    {
+     "fact": "writing-style",
+     "at": "page-9_t1.s4.u2"
+    }
+   ],
+   "methods": [
+    {
+     "name": "Who, what, where, when, why (the teacher's method)",
+     "text": "A sentence is subject, verb, object; place, time and reason follow in that order.",
+     "at": "pages-04-05_t2.s1.u1"
+    },
+    {
+     "name": "The verb and its object together (the teacher's method)",
+     "text": "Nothing goes between a verb and its object; place, time and reason come after them.",
+     "at": "pages-06-07_t1.s2.u2"
+    },
+    {
+     "name": "The time first",
+     "text": "A time phrase or clause can start a sentence, with a comma, so the reader follows the dates; inside a joined sentence it keeps its place.",
+     "at": "pages-06-07_t2.s2.u2"
+    },
+    {
+     "name": "Also, then and frequency adverbs (the teacher's method)",
+     "text": "After the first helping verb (would also, has also been, is then); with no helping verb, before the main verb; never between the verb and its object.",
+     "at": "page-8_t2.s2.u1"
+    },
+    {
+     "name": "A phrase first only after a full stop (the teacher's method)",
+     "text": "Time, context, reason and contrast phrases start a sentence with a comma, only after a full stop; emphasis and mood words at most once, never about a habit.",
+     "at": "page-9_t1.s6.u1"
+    },
+    {
+     "name": "No signal word where the link is obvious (the teacher's method)",
+     "text": "Where the link between two sentences is obvious, no signal word; a signal word is not a show of level.",
+     "at": "pages-10-11_t1.s5.u1"
+    },
+    {
+     "name": "However for a full contrast; while or despite inside one sentence (the teacher's method)",
+     "text": "However starts a new sentence for a full contrast; while and despite carry a partial contrast inside one sentence; but joins two halves of one sentence.",
+     "at": "pages-10-11_t3.s4.u1"
+    },
+    {
+     "name": "A signal word at the start or at the end",
+     "text": "At the start of a sentence with a comma after it, or at the end with none; in the middle, place, time, reason.",
+     "at": "pages-12-13_t2.s1.u1"
+    }
+   ],
+   "continues_in": [],
+   "topics": [
+    {
+     "topic": "Word order",
+     "at": "pages-04-05_t2.s1.u1"
+    },
+    {
+     "topic": "Adverbial phrases",
+     "at": "page-9_t1.s1.u1"
+    },
+    {
+     "topic": "Signal words",
+     "at": "pages-12-13_t1.s1.u1"
+    },
+    {
+     "topic": "Contrast: however, while, despite, but",
+     "at": "pages-10-11_t3.s4.u1"
+    },
+    {
+     "topic": "Correcting a paragraph",
+     "at": "pages-10-11_t1.s1.u1"
+    }
+   ]
   }
  }
 }

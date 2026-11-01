@@ -66,6 +66,10 @@
   "writing-07-organisation": [
    907000,
    907999
+  ],
+  "writing-06-word-order": [
+   906000,
+   906999
   ]
  },
  "ids": [
@@ -3030,6 +3034,90 @@
    "lesson": "writing-07-organisation",
    "point": "closing-sentence",
    "slot": "sentence",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-906000",
+   "lesson": "writing-06-word-order",
+   "point": "pieces-order",
+   "slot": "order",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-906001",
+   "lesson": "writing-06-word-order",
+   "point": "time-first",
+   "slot": "sentence",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-906002",
+   "lesson": "writing-06-word-order",
+   "point": "also-place",
+   "slot": "sentence",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-906003",
+   "lesson": "writing-06-word-order",
+   "point": "contrast-inside",
+   "slot": "sentence",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-906004",
+   "lesson": "writing-06-word-order",
+   "point": "start-or-end",
+   "slot": "bank",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-906005",
+   "lesson": "writing-06-word-order",
+   "point": "start-or-end",
+   "slot": "gap-start",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-906006",
+   "lesson": "writing-06-word-order",
+   "point": "start-or-end",
+   "slot": "gap-end",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-906007",
+   "lesson": "writing-06-word-order",
+   "point": "letter-gaps",
+   "slot": "bank",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-906008",
+   "lesson": "writing-06-word-order",
+   "point": "letter-gaps",
+   "slot": "gap-despite",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-906009",
+   "lesson": "writing-06-word-order",
+   "point": "letter-gaps",
+   "slot": "gap-normally",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-906010",
+   "lesson": "writing-06-word-order",
+   "point": "letter-gaps",
+   "slot": "gap-date",
+   "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-906011",
+   "lesson": "writing-06-word-order",
+   "point": "letter-gaps",
+   "slot": "gap-reason",
    "issued": "2026-11-01"
   }
  ]
