@@ -732,6 +732,96 @@
      "at": "pages-10-11_t1.s1.u1"
     }
    ]
+  },
+  "writing-05-information-flow": {
+   "session": "Session 5 of the Persian Writing course, «OET Writing: Signal words and information flow» (72:08, 12 slides): the nine families of signal words, the words to avoid, a paragraph with a linking word on every sentence put right, time and tense on the timeline of a case, the four-column method (the note, the time reference, the tense, the sentence) worked through the official OET Nursing sample, and the request with modal verbs. The sixth lesson of the general Writing course (ADR 047). The official sample and the Mr Jones paragraph are never reused: every teaching point is rebuilt on our samples oa-ws-nur-0001, oa-ws-nur-0002, oa-ws-med-0003, oa-ws-med-0001, oa-ws-nur-0003 and oa-ws-med-0002 at oetacademy-exercises 5320d19 (ADR 040).",
+   "facts": [
+    {
+     "fact": "writing-style",
+     "at": "page-4_t1.s8.u3"
+    },
+    {
+     "fact": "writing-paraphrase-accuracy",
+     "at": "page-10_t1.s3.u1"
+    },
+    {
+     "fact": "writing-fit-the-case",
+     "at": "page-10_t2.s6.u1"
+    },
+    {
+     "fact": "writing-organisation",
+     "at": "page-11_t1.s4.u2"
+    }
+   ],
+   "methods": [
+    {
+     "name": "Few linking words (the teacher's method)",
+     "text": "If the link between two sentences is obvious, use no linking word; emphasis and empathy words at most once in a letter.",
+     "at": "page-6_t2.s8.u1"
+    },
+    {
+     "name": "Words to avoid (the teacher's method)",
+     "text": "Not besides, actually, firstly ... finally, on the other hand, meanwhile or it is important to note at the start of a sentence; then and also in the middle.",
+     "at": "page-5_t1.s1.u1"
+    },
+    {
+     "name": "The time word decides the tense",
+     "text": "A date or a year in the past: past simple; since a point in time, up to now: present perfect; what is true today: present; what is planned: will.",
+     "at": "page-7_t1.s1.u1"
+    },
+    {
+     "name": "From notes to sentences (the teacher's method)",
+     "text": "For each dated entry: the time reference, the tense, then one short sentence, in the order of the notes.",
+     "at": "pages-08-09_t6.s1.u1"
+    },
+    {
+     "name": "Dates: count from today, or keep (the teacher's method)",
+     "text": "Count a recent event from today (three weeks ago); keep the exact date where the reader needs it; the month or year alone for older history.",
+     "at": "pages-08-09_t7.s6.u2"
+    },
+    {
+     "name": "A synonym only when sure (the teacher's method)",
+     "text": "Use a synonym only when you are sure it means the same; otherwise borrow the note's word.",
+     "at": "page-10_t1.s3.u1"
+    },
+    {
+     "name": "Requests with would and could (the teacher's method)",
+     "text": "Frames with would and could (I would be grateful if ..., I would appreciate ...), a passive where who does it does not matter, and please with what you ask.",
+     "at": "page-10_t2.s1.u1"
+    },
+    {
+     "name": "Build the flow with the notes' time words (the teacher's method)",
+     "text": "The time words carry the history; other linking words once or twice in a letter at most.",
+     "at": "page-11_t2.s1.u1"
+    }
+   ],
+   "continues_in": [],
+   "topics": [
+    {
+     "topic": "Signal words",
+     "at": "page-4_t1.s1.u1"
+    },
+    {
+     "topic": "Linking words in a letter",
+     "at": "page-6_t2.s1.u1"
+    },
+    {
+     "topic": "Time references",
+     "at": "pages-08-09_t6.s1.u1"
+    },
+    {
+     "topic": "Tense from the time word",
+     "at": "page-7_t1.s1.u1"
+    },
+    {
+     "topic": "From case notes to sentences",
+     "at": "pages-08-09_t6.s1.u1"
+    },
+    {
+     "topic": "The request paragraph",
+     "at": "page-10_t2.s1.u1"
+    }
+   ]
   }
  }
 }
