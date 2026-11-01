@@ -26,6 +26,7 @@ import argparse
 import functools
 import http.server
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -152,7 +153,11 @@ def main() -> None:
     ap.add_argument("--width", type=int, default=1600)
     a = ap.parse_args()
     L = a.lesson_dir
-    pkg = a.package or next(iter(sorted((L / "generated" / "package").glob("*-draft"))), None)
+    # the lesson's newest draft package: the highest version (a lesson with a released v1 has a v1-draft beside its
+    # v2-draft, and "v1" sorts first)
+    drafts = sorted((L / "generated" / "package").glob("*-draft"),
+                    key=lambda p: int((re.search(r"-v(\d+)-draft$", p.name) or [0, 0])[1]))
+    pkg = a.package or (drafts[-1] if drafts else None)
     if not pkg or not (pkg / "bundle.json").exists():
         raise SystemExit("no package: build it first (publish_lesson.py --package --draft)")
     web, commit = site_code(a.clone, a.ref)
