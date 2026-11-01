@@ -176,6 +176,10 @@ are too common to tell ("in the task and the plan"); eight is the release check'
 lesson's entry changes.
 
 **Consequences.** Only a lesson in the teal look changes (the look's rules, the ADR 050 layouts and the teal fit floor
-reach no other lesson); the render comparison of every built lesson is in the pull request. Writing 6 is rebuilt as
+reach no other lesson). Proven by the render comparison (runbook, "Changing shared code"): `render_compare.py`
+snapshots `after-teal2` and `after-teal2r` on this change against ADR 050's `after-adr050` and `after-adr050r` (main's
+code is unchanged since them and no lesson file changed, 2026-11-01): **27 of 27 other lessons identical**, 820 data
+files byte for byte and 165,020 moments at the phone and laptop frames drawn identically, with no board timing
+difference; Word Order differs, as intended. Reading 5 is outside the proof, as before (it does not render on main). Writing 6 is rebuilt as
 draft.4 under these rules; its narration, audio and practice points are unchanged (95 utterances, every spoken word
 the same as draft.3).
