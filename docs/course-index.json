@@ -56,6 +56,7 @@
     "writing-02-assessment-criteria",
     "writing-03-letter-structure",
     "writing-04-introduction",
+    "writing-07-organisation",
     "writing-08-reading-the-task"
    ]
   }
@@ -50554,6 +50555,14 @@
       "start": "16:38"
      },
      {
+      "lesson": "writing-07-organisation",
+      "section": "pages-04-05-06",
+      "to_section": "page-18",
+      "utterance": "pages-04-05-06_t1.s1.u1",
+      "start_s": 87.21,
+      "start": "1:27"
+     },
+     {
       "lesson": "writing-08-reading-the-task",
       "section": "added-02",
       "to_section": "pages-09-10-11",
@@ -51923,6 +51932,30 @@
       "utterance": "pages-04-05_t2.s1.u1",
       "start_s": 222.159,
       "start": "3:42"
+     },
+     {
+      "lesson": "writing-07-organisation",
+      "section": "pages-04-05-06",
+      "to_section": "pages-04-05",
+      "utterance": "pages-04-05-06_t1.s2.u1",
+      "start_s": 104.14,
+      "start": "1:44"
+     },
+     {
+      "lesson": "writing-07-organisation",
+      "section": "pages-07-08-09",
+      "to_section": "page-10",
+      "utterance": "pages-07-08-09_t2.s1.u2",
+      "start_s": 353.333,
+      "start": "5:53"
+     },
+     {
+      "lesson": "writing-07-organisation",
+      "section": "added-02",
+      "to_section": "page-11",
+      "utterance": "added-02_t3.s6.u2",
+      "start_s": 1585.106,
+      "start": "26:25"
      },
      {
       "lesson": "writing-08-reading-the-task",
@@ -53591,7 +53624,16 @@
       "start": "16:38"
      }
     ],
-    "referred_to_by": [],
+    "referred_to_by": [
+     {
+      "lesson": "writing-07-organisation",
+      "section": "pages-07-08-09",
+      "to_section": "pages-12-13",
+      "utterance": "pages-07-08-09_t2.s1.u4",
+      "start_s": 392.157,
+      "start": "6:32"
+     }
+    ],
     "continues_in": [],
     "continues_from": [
      {
@@ -53600,6 +53642,1403 @@
       "source": "closing"
      }
     ]
+   }
+  },
+  {
+   "id": "writing-07-organisation",
+   "folder": "writing-07-organisation",
+   "title": "OET Writing: Organising the Letter",
+   "description": "Learn to organise the body of an OET letter: the ISBAR parts, paragraphs in time order or by theme, a quick plan of what goes in each paragraph, and the request and closing paragraph.",
+   "course": "writing",
+   "order": 7,
+   "length_s": 1632.074,
+   "length": "27:12",
+   "bundle_format": "1.23",
+   "status": "built",
+   "approval": null,
+   "source": {
+    "folder": "source",
+    "recording": "source/video.mp4",
+    "recording_duration_s": 1730.4,
+    "recording_partial_hash": "7739eb8d9c3f6385",
+    "deck": "source/slides.pdf",
+    "deck_pages": 17,
+    "same_recording_as": [],
+    "note": "Session 7 of the Persian Writing course, «Writing: How to Structure a letter» (28:50, 17 slides): Organisation and Layout recalled, no perfect template, the ISBAR approach, three letters read by their paragraphs, chronological or thematic order with the same letter both ways. The seventh lesson of the general Writing course (ADR 047), which also teaches two parts the recorded sessions never taught, planning the paragraphs and the request and closing paragraph, from the owner's recorded Nursing and Medicine Writing sessions. Every letter on the deck is of unknown or official origin and is rebuilt on our samples oa-ws-nur-0002, oa-ws-med-0003, oa-ws-med-0002, oa-ws-nur-0001 and oa-ws-nur-0003 at oetacademy-exercises 5320d19 (ADR 040)."
+   },
+   "categories": [],
+   "sections": [
+    {
+     "id": "page-3",
+     "title": "Introduction",
+     "kind": "intro",
+     "pages": [
+      3
+     ],
+     "category": null,
+     "start_s": 0.0,
+     "start": "0:00",
+     "end_s": 87.21,
+     "topics": [
+      {
+       "board": "page-3_t1",
+       "title": "Title board",
+       "start_s": 0.0,
+       "start": "0:00",
+       "points": [
+        {
+         "text": "the lesson title, then what the lesson is about",
+         "block": "page-3_k13",
+         "start_s": 0.0,
+         "start": "0:00"
+        }
+       ]
+      },
+      {
+       "board": "page-3_t2",
+       "title": "Contents board",
+       "start_s": 52.04,
+       "start": "0:52",
+       "points": [
+        {
+         "text": "each category, revealed as it is named",
+         "block": "page-3_k14",
+         "start_s": 52.04,
+         "start": "0:52"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "page-3_t1.s1.u2",
+       "lesson": "writing-08-reading-the-task",
+       "section": "added-04",
+       "provenance": "authored",
+       "start_s": 3.49,
+       "start": "0:03"
+      }
+     ]
+    },
+    {
+     "id": "pages-04-05-06",
+     "title": "Organisation and Layout",
+     "kind": "deck",
+     "pages": [
+      4,
+      5,
+      6
+     ],
+     "category": null,
+     "start_s": 87.21,
+     "start": "1:27",
+     "end_s": 240.653,
+     "topics": [
+      {
+       "board": "pages-04-05-06_t1",
+       "title": "The criterion, recalled",
+       "start_s": 87.21,
+       "start": "1:27",
+       "points": [
+        {
+         "text": "the criterion",
+         "block": "pages-04-05-06_k15",
+         "start_s": 87.21,
+         "start": "1:27"
+        },
+        {
+         "text": "layout",
+         "block": "pages-04-05-06_k03",
+         "start_s": 117.385,
+         "start": "1:57"
+        },
+        {
+         "text": "organisation",
+         "block": "pages-04-05-06_k04",
+         "start_s": 134.044,
+         "start": "2:14"
+        }
+       ]
+      },
+      {
+       "board": "pages-04-05-06_t2",
+       "title": "No perfect template",
+       "start_s": 160.003,
+       "start": "2:40",
+       "points": [
+        {
+         "text": "The warning",
+         "block": "pages-04-05-06_k16",
+         "start_s": 160.003,
+         "start": "2:40"
+        },
+        {
+         "text": "The word",
+         "block": "pages-04-05-06_k07",
+         "start_s": 167.294,
+         "start": "2:47"
+        },
+        {
+         "text": "OET's own words",
+         "block": "pages-04-05-06_k08",
+         "start_s": 181.577,
+         "start": "3:01"
+        }
+       ]
+      },
+      {
+       "board": "pages-04-05-06_t3",
+       "title": "Decide the order after the content",
+       "start_s": 199.313,
+       "start": "3:19",
+       "points": [
+        {
+         "text": "three steps",
+         "block": "pages-04-05-06_k17",
+         "start_s": 199.313,
+         "start": "3:19"
+        },
+        {
+         "text": "the lines",
+         "block": "pages-04-05-06_k12",
+         "start_s": 211.534,
+         "start": "3:31"
+        },
+        {
+         "text": "the order",
+         "block": "pages-04-05-06_k13",
+         "start_s": 218.633,
+         "start": "3:38"
+        },
+        {
+         "text": "the paragraphs",
+         "block": "pages-04-05-06_k14",
+         "start_s": 232.111,
+         "start": "3:52"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "pages-04-05-06_k06",
+       "kind": "warning",
+       "text": "My advice: there is no perfect template. Fit the order to the case.",
+       "start_s": 160.003,
+       "start": "2:40"
+      },
+      {
+       "block": "pages-04-05-06_k13",
+       "kind": "rule",
+       "text": "My advice: think before you write. What goes first? What goes together? What goes apart?",
+       "start_s": 218.633,
+       "start": "3:38"
+      }
+     ],
+     "terms": [
+      {
+       "block": "pages-04-05-06_k02",
+       "label": "The criterion",
+       "term": "Organisation and Layout",
+       "start_s": 95.509,
+       "start": "1:35"
+      }
+     ],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "pages-04-05-06_t1.s1.u1",
+       "lesson": "writing-02-assessment-criteria",
+       "section": "page-18",
+       "provenance": "source-derived",
+       "start_s": 87.21,
+       "start": "1:27"
+      },
+      {
+       "utterance": "pages-04-05-06_t1.s2.u1",
+       "lesson": "writing-03-letter-structure",
+       "section": "pages-04-05",
+       "provenance": "source-derived",
+       "start_s": 104.14,
+       "start": "1:44"
+      },
+      {
+       "utterance": "pages-04-05-06_t3.s2.u1",
+       "lesson": "writing-08-reading-the-task",
+       "section": "added-04",
+       "provenance": "authored",
+       "start_s": 209.103,
+       "start": "3:29"
+      }
+     ]
+    },
+    {
+     "id": "pages-07-08-09",
+     "title": "The ISBAR approach",
+     "kind": "deck",
+     "pages": [
+      7,
+      8,
+      9
+     ],
+     "category": null,
+     "start_s": 240.653,
+     "start": "4:00",
+     "end_s": 501.149,
+     "topics": [
+      {
+       "board": "pages-07-08-09_t1",
+       "title": "ISBAR on Mr Talbot's letter",
+       "start_s": 240.653,
+       "start": "4:00",
+       "points": [
+        {
+         "text": "the five parts",
+         "block": "pages-07-08-09_k19",
+         "start_s": 240.653,
+         "start": "4:00"
+        },
+        {
+         "text": "introduce and identify",
+         "block": "pages-07-08-09_k03",
+         "start_s": 274.563,
+         "start": "4:34"
+        },
+        {
+         "text": "situation",
+         "block": "pages-07-08-09_k04",
+         "start_s": 296.962,
+         "start": "4:56"
+        },
+        {
+         "text": "background",
+         "block": "pages-07-08-09_k05",
+         "start_s": 309.552,
+         "start": "5:09"
+        },
+        {
+         "text": "assessment",
+         "block": "pages-07-08-09_k06",
+         "start_s": 326.495,
+         "start": "5:26"
+        },
+        {
+         "text": "request",
+         "block": "pages-07-08-09_k07",
+         "start_s": 345.179,
+         "start": "5:45"
+        }
+       ]
+      },
+      {
+       "board": "pages-07-08-09_t2",
+       "title": "Where the request goes",
+       "start_s": 350.093,
+       "start": "5:50",
+       "points": [
+        {
+         "text": "Two cases",
+         "block": "pages-07-08-09_k20",
+         "start_s": 350.093,
+         "start": "5:50"
+        },
+        {
+         "text": "Several requests",
+         "block": "pages-07-08-09_k09",
+         "start_s": 356.143,
+         "start": "5:56"
+        },
+        {
+         "text": "One short request",
+         "block": "pages-07-08-09_k10",
+         "start_s": 375.657,
+         "start": "6:15"
+        },
+        {
+         "text": "OET's words",
+         "block": "pages-07-08-09_k11",
+         "start_s": 391.817,
+         "start": "6:31"
+        }
+       ]
+      },
+      {
+       "board": "pages-07-08-09_t3",
+       "title": "The body: situation, background, assessment",
+       "start_s": 403.757,
+       "start": "6:43",
+       "points": [
+        {
+         "text": "the body",
+         "block": "pages-07-08-09_k21",
+         "start_s": 403.757,
+         "start": "6:43"
+        },
+        {
+         "text": "the situation",
+         "block": "pages-07-08-09_k14",
+         "start_s": 417.545,
+         "start": "6:57"
+        },
+        {
+         "text": "background with the situation",
+         "block": "pages-07-08-09_k15",
+         "start_s": 425.244,
+         "start": "7:05"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-07-08-09_k17",
+         "start_s": 461.473,
+         "start": "7:41"
+        },
+        {
+         "text": "the answer",
+         "block": "pages-07-08-09_k18",
+         "start_s": 481.607,
+         "start": "8:01"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "pages-07-08-09_k11",
+       "kind": "rule",
+       "text": "OET: say the purpose early, and expand it at the end.",
+       "start_s": 391.817,
+       "start": "6:31"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "pages-07-08-09_t1.s1.u1",
+       "lesson": "writing-08-reading-the-task",
+       "section": "added-04",
+       "provenance": "source-derived",
+       "start_s": 240.653,
+       "start": "4:00"
+      },
+      {
+       "utterance": "pages-07-08-09_t2.s1.u2",
+       "lesson": "writing-03-letter-structure",
+       "section": "page-10",
+       "provenance": "source-derived",
+       "start_s": 353.333,
+       "start": "5:53"
+      },
+      {
+       "utterance": "pages-07-08-09_t2.s1.u4",
+       "lesson": "writing-04-introduction",
+       "section": "pages-12-13",
+       "provenance": "adapted",
+       "start_s": 392.157,
+       "start": "6:32"
+      }
+     ]
+    },
+    {
+     "id": "pages-10-11-12",
+     "title": "Three letters, three shapes",
+     "kind": "deck",
+     "pages": [
+      10,
+      11,
+      12
+     ],
+     "category": null,
+     "start_s": 501.149,
+     "start": "8:21",
+     "end_s": 773.034,
+     "topics": [
+      {
+       "board": "pages-10-11-12_t1",
+       "title": "Letter 1: Mrs Dawson, the classic shape",
+       "start_s": 501.149,
+       "start": "8:21",
+       "points": [
+        {
+         "text": "the classic shape",
+         "block": "pages-10-11-12_k27",
+         "start_s": 501.149,
+         "start": "8:21"
+        },
+        {
+         "text": "the opening",
+         "block": "pages-10-11-12_k03",
+         "start_s": 517.253,
+         "start": "8:37"
+        },
+        {
+         "text": "the situation now",
+         "block": "pages-10-11-12_k04",
+         "start_s": 525.601,
+         "start": "8:45"
+        },
+        {
+         "text": "her home",
+         "block": "pages-10-11-12_k06",
+         "start_s": 562.891,
+         "start": "9:22"
+        },
+        {
+         "text": "the requests",
+         "block": "pages-10-11-12_k08",
+         "start_s": 582.876,
+         "start": "9:42"
+        }
+       ]
+      },
+      {
+       "board": "pages-10-11-12_t2",
+       "title": "letter 2, Mrs Ashworth: the cause, today's lines",
+       "start_s": 585.889,
+       "start": "9:45",
+       "points": [
+        {
+         "text": "lines from four headings",
+         "block": "pages-10-11-12_k28",
+         "start_s": 585.889,
+         "start": "9:45"
+        },
+        {
+         "text": "the assessment line",
+         "block": "pages-10-11-12_k11",
+         "start_s": 610.115,
+         "start": "10:10"
+        },
+        {
+         "text": "since 9 October",
+         "block": "pages-10-11-12_k12",
+         "start_s": 623.568,
+         "start": "10:23"
+        },
+        {
+         "text": "two days without fluids",
+         "block": "pages-10-11-12_k13",
+         "start_s": 633.491,
+         "start": "10:33"
+        }
+       ]
+      },
+      {
+       "board": "pages-10-11-12_t3",
+       "title": "letter 2, Mrs Ashworth: the cause, the earlier lines",
+       "start_s": 640.344,
+       "start": "10:40",
+       "points": [
+        {
+         "text": "two earlier entries",
+         "block": "pages-10-11-12_k15",
+         "start_s": 640.014,
+         "start": "10:40"
+        },
+        {
+         "text": "the lithium she kept taking",
+         "block": "pages-10-11-12_k16",
+         "start_s": 655.37,
+         "start": "10:55"
+        },
+        {
+         "text": "the dose change",
+         "block": "pages-10-11-12_k17",
+         "start_s": 674.095,
+         "start": "11:14"
+        },
+        {
+         "text": "the normal level",
+         "block": "pages-10-11-12_k18",
+         "start_s": 685.877,
+         "start": "11:25"
+        }
+       ]
+      },
+      {
+       "board": "pages-10-11-12_t4",
+       "title": "Letter 3: Mrs Holden, in time order",
+       "start_s": 705.234,
+       "start": "11:45",
+       "points": [
+        {
+         "text": "several dated entries",
+         "block": "pages-10-11-12_k30",
+         "start_s": 705.234,
+         "start": "11:45"
+        },
+        {
+         "text": "the opening",
+         "block": "pages-10-11-12_k22",
+         "start_s": 723.387,
+         "start": "12:03"
+        },
+        {
+         "text": "the admission",
+         "block": "pages-10-11-12_k23",
+         "start_s": 735.259,
+         "start": "12:15"
+        },
+        {
+         "text": "treatment, and today",
+         "block": "pages-10-11-12_k24",
+         "start_s": 753.956,
+         "start": "12:33"
+        },
+        {
+         "text": "the advice",
+         "block": "pages-10-11-12_k25",
+         "start_s": 759.859,
+         "start": "12:39"
+        },
+        {
+         "text": "the requests",
+         "block": "pages-10-11-12_k26",
+         "start_s": 764.758,
+         "start": "12:44"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "pages-10-11-12_k19",
+       "kind": "rule",
+       "text": "Put lines together when the reader needs them together, whatever heading they came from.",
+       "start_s": 694.142,
+       "start": "11:34"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "pages-10-11-12_t1.s1.u1",
+       "lesson": "writing-03-letter-structure",
+       "section": "pages-04-05",
+       "provenance": "source-derived",
+       "start_s": 501.149,
+       "start": "8:21"
+      }
+     ]
+    },
+    {
+     "id": "pages-13-14-15-16",
+     "title": "Chronological or thematic",
+     "kind": "deck",
+     "pages": [
+      13,
+      14,
+      15,
+      16
+     ],
+     "category": null,
+     "start_s": 773.034,
+     "start": "12:53",
+     "end_s": 994.364,
+     "topics": [
+      {
+       "board": "pages-13-14-15-16_t1",
+       "title": "Two ways",
+       "start_s": 773.034,
+       "start": "12:53",
+       "points": [
+        {
+         "text": "The two ways",
+         "block": "pages-13-14-15-16_k25",
+         "start_s": 773.034,
+         "start": "12:53"
+        },
+        {
+         "text": "The word",
+         "block": "pages-13-14-15-16_k02",
+         "start_s": 787.366,
+         "start": "13:07"
+        },
+        {
+         "text": "OET's own advice",
+         "block": "pages-13-14-15-16_k03",
+         "start_s": 799.934,
+         "start": "13:19"
+        }
+       ]
+      },
+      {
+       "board": "pages-13-14-15-16_t2",
+       "title": "Chronologically: Mrs Holden's letter",
+       "start_s": 811.404,
+       "start": "13:31",
+       "points": [
+        {
+         "text": "around time",
+         "block": "pages-13-14-15-16_k26",
+         "start_s": 811.404,
+         "start": "13:31"
+        },
+        {
+         "text": "the first event",
+         "block": "pages-13-14-15-16_k06",
+         "start_s": 822.763,
+         "start": "13:42"
+        },
+        {
+         "text": "what was done",
+         "block": "pages-13-14-15-16_k07",
+         "start_s": 830.557,
+         "start": "13:50"
+        },
+        {
+         "text": "the advice",
+         "block": "pages-13-14-15-16_k08",
+         "start_s": 836.444,
+         "start": "13:56"
+        },
+        {
+         "text": "up to the requests",
+         "block": "pages-13-14-15-16_k09",
+         "start_s": 841.856,
+         "start": "14:01"
+        }
+       ]
+      },
+      {
+       "board": "pages-13-14-15-16_t3",
+       "title": "Thematically: Mrs Dawson's letter",
+       "start_s": 850.674,
+       "start": "14:10",
+       "points": [
+        {
+         "text": "by theme",
+         "block": "pages-13-14-15-16_k27",
+         "start_s": 850.674,
+         "start": "14:10"
+        },
+        {
+         "text": "the most important",
+         "block": "pages-13-14-15-16_k12",
+         "start_s": 859.805,
+         "start": "14:19"
+        },
+        {
+         "text": "the requests",
+         "block": "pages-13-14-15-16_k13",
+         "start_s": 873.095,
+         "start": "14:33"
+        },
+        {
+         "text": "only one time",
+         "block": "pages-13-14-15-16_k14",
+         "start_s": 876.647,
+         "start": "14:36"
+        }
+       ]
+      },
+      {
+       "board": "pages-13-14-15-16_t4",
+       "title": "The same letter both ways: Mrs Ashworth",
+       "start_s": 894.815,
+       "start": "14:54",
+       "points": [
+        {
+         "text": "an urgent referral",
+         "block": "pages-13-14-15-16_k28",
+         "start_s": 894.815,
+         "start": "14:54"
+        },
+        {
+         "text": "the opening",
+         "block": "pages-13-14-15-16_k18",
+         "start_s": 902.25,
+         "start": "15:02"
+        },
+        {
+         "text": "today first",
+         "block": "pages-13-14-15-16_k19",
+         "start_s": 919.582,
+         "start": "15:19"
+        },
+        {
+         "text": "then the lead-up",
+         "block": "pages-13-14-15-16_k20",
+         "start_s": 935.943,
+         "start": "15:35"
+        },
+        {
+         "text": "the requests",
+         "block": "pages-13-14-15-16_k21",
+         "start_s": 943.089,
+         "start": "15:43"
+        },
+        {
+         "text": "the other way, first",
+         "block": "pages-13-14-15-16_k22",
+         "start_s": 955.412,
+         "start": "15:55"
+        },
+        {
+         "text": "the other way, second",
+         "block": "pages-13-14-15-16_k23",
+         "start_s": 966.734,
+         "start": "16:06"
+        },
+        {
+         "text": "both are right",
+         "block": "pages-13-14-15-16_k24",
+         "start_s": 978.659,
+         "start": "16:18"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "pages-13-14-15-16_k24",
+       "kind": "rule",
+       "text": "My advice: both orders are right. Your analysis decides; there is no fixed format.",
+       "start_s": 978.659,
+       "start": "16:18"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-01",
+     "title": "Planning the paragraphs",
+     "kind": "authored",
+     "pages": [],
+     "category": null,
+     "start_s": 994.364,
+     "start": "16:34",
+     "end_s": 1286.419,
+     "topics": [
+      {
+       "board": "added-01_t1",
+       "title": "a five-line plan",
+       "start_s": 994.364,
+       "start": "16:34",
+       "points": [
+        {
+         "text": "the plan",
+         "block": "added-01_k26",
+         "start_s": 994.364,
+         "start": "16:34"
+        },
+        {
+         "text": "the opening",
+         "block": "added-01_k03",
+         "start_s": 1010.876,
+         "start": "16:50"
+        },
+        {
+         "text": "the situation now",
+         "block": "added-01_k04",
+         "start_s": 1018.424,
+         "start": "16:58"
+        },
+        {
+         "text": "what was done",
+         "block": "added-01_k05",
+         "start_s": 1025.195,
+         "start": "17:05"
+        },
+        {
+         "text": "the background",
+         "block": "added-01_k06",
+         "start_s": 1032.386,
+         "start": "17:12"
+        },
+        {
+         "text": "the requests",
+         "block": "added-01_k07",
+         "start_s": 1041.897,
+         "start": "17:21"
+        },
+        {
+         "text": "where to write it",
+         "block": "added-01_k08",
+         "start_s": 1044.738,
+         "start": "17:24"
+        }
+       ]
+      },
+      {
+       "board": "added-01_t2",
+       "title": "Mr Talbot's lines, sorted",
+       "start_s": 1064.424,
+       "start": "17:44",
+       "points": [
+        {
+         "text": "the lines, sorted",
+         "block": "added-01_k27",
+         "start_s": 1064.424,
+         "start": "17:44"
+        },
+        {
+         "text": "the opening",
+         "block": "added-01_k12",
+         "start_s": 1082.932,
+         "start": "18:02"
+        },
+        {
+         "text": "today's findings",
+         "block": "added-01_k13",
+         "start_s": 1097.97,
+         "start": "18:17"
+        },
+        {
+         "text": "the cause",
+         "block": "added-01_k14",
+         "start_s": 1109.403,
+         "start": "18:29"
+        },
+        {
+         "text": "your turn",
+         "block": "added-01_k15",
+         "start_s": 1126.094,
+         "start": "18:46"
+        },
+        {
+         "text": "the answer",
+         "block": "added-01_k16",
+         "start_s": 1159.923,
+         "start": "19:19"
+        },
+        {
+         "text": "the requests",
+         "block": "added-01_k17",
+         "start_s": 1184.483,
+         "start": "19:44"
+        }
+       ]
+      },
+      {
+       "board": "added-01_t3",
+       "title": "the order for an urgent letter",
+       "start_s": 1191.964,
+       "start": "19:51",
+       "points": [
+        {
+         "text": "Mrs Pritchard's paragraphs",
+         "block": "added-01_k19",
+         "start_s": 1191.637,
+         "start": "19:51"
+        },
+        {
+         "text": "your turn",
+         "block": "added-01_k20",
+         "start_s": 1217.676,
+         "start": "20:17"
+        },
+        {
+         "text": "the opening",
+         "block": "added-01_k21",
+         "start_s": 1239.041,
+         "start": "20:39"
+        },
+        {
+         "text": "this morning",
+         "block": "added-01_k22",
+         "start_s": 1246.555,
+         "start": "20:46"
+        },
+        {
+         "text": "her medicines",
+         "block": "added-01_k23",
+         "start_s": 1257.178,
+         "start": "20:57"
+        },
+        {
+         "text": "the background",
+         "block": "added-01_k24",
+         "start_s": 1266.954,
+         "start": "21:06"
+        },
+        {
+         "text": "the requests",
+         "block": "added-01_k25",
+         "start_s": 1274.401,
+         "start": "21:14"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-01_k02",
+       "kind": "rule",
+       "text": "My advice: before the body, write a five-line plan.",
+       "start_s": 999.471,
+       "start": "16:39"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "added-01_t1.s2.u1",
+       "lesson": "writing-04-introduction",
+       "section": "pages-12-13",
+       "provenance": "authored",
+       "start_s": 1008.884,
+       "start": "16:48"
+      },
+      {
+       "utterance": "added-01_t2.s1.u1",
+       "lesson": "writing-08-reading-the-task",
+       "section": "added-04",
+       "provenance": "authored",
+       "start_s": 1064.424,
+       "start": "17:44"
+      }
+     ]
+    },
+    {
+     "id": "added-02",
+     "title": "The request and closing paragraph",
+     "kind": "authored",
+     "pages": [],
+     "category": null,
+     "start_s": 1286.419,
+     "start": "21:26",
+     "end_s": 1595.176,
+     "topics": [
+      {
+       "board": "added-02_t1",
+       "title": "one request for each line of the plan",
+       "start_s": 1286.419,
+       "start": "21:26",
+       "points": [
+        {
+         "text": "Mr Talbot's plan and his requests",
+         "block": "added-02_k23",
+         "start_s": 1286.419,
+         "start": "21:26"
+        },
+        {
+         "text": "the first request",
+         "block": "added-02_k03",
+         "start_s": 1332.929,
+         "start": "22:12"
+        },
+        {
+         "text": "the second",
+         "block": "added-02_k04",
+         "start_s": 1353.695,
+         "start": "22:33"
+        },
+        {
+         "text": "the third",
+         "block": "added-02_k05",
+         "start_s": 1371.448,
+         "start": "22:51"
+        },
+        {
+         "text": "the order, and the tone",
+         "block": "added-02_k06",
+         "start_s": 1381.699,
+         "start": "23:01"
+        }
+       ]
+      },
+      {
+       "board": "added-02_t2",
+       "title": "a date, a condition, and the patient's agreement",
+       "start_s": 1403.379,
+       "start": "23:23",
+       "points": [
+        {
+         "text": "Mrs Holden's plan and her requests",
+         "block": "added-02_k09",
+         "start_s": 1403.058,
+         "start": "23:23"
+        },
+        {
+         "text": "your turn",
+         "block": "added-02_k10",
+         "start_s": 1422.661,
+         "start": "23:42"
+        },
+        {
+         "text": "the answer",
+         "block": "added-02_k11",
+         "start_s": 1449.52,
+         "start": "24:09"
+        },
+        {
+         "text": "a condition",
+         "block": "added-02_k12",
+         "start_s": 1480.033,
+         "start": "24:40"
+        },
+        {
+         "text": "after the restart",
+         "block": "added-02_k13",
+         "start_s": 1494.389,
+         "start": "24:54"
+        },
+        {
+         "text": "the agreement",
+         "block": "added-02_k14",
+         "start_s": 1499.319,
+         "start": "24:59"
+        }
+       ]
+      },
+      {
+       "board": "added-02_t3",
+       "title": "the closing sentence",
+       "start_s": 1520.373,
+       "start": "25:20",
+       "points": [
+        {
+         "text": "three letters, three closing sentences",
+         "block": "added-02_k16",
+         "start_s": 1520.082,
+         "start": "25:20"
+        },
+        {
+         "text": "a referral",
+         "block": "added-02_k17",
+         "start_s": 1533.912,
+         "start": "25:33"
+        },
+        {
+         "text": "a request for help",
+         "block": "added-02_k18",
+         "start_s": 1542.381,
+         "start": "25:42"
+        },
+        {
+         "text": "your turn",
+         "block": "added-02_k19",
+         "start_s": 1549.467,
+         "start": "25:49"
+        },
+        {
+         "text": "the answer",
+         "block": "added-02_k20",
+         "start_s": 1565.073,
+         "start": "26:05"
+        },
+        {
+         "text": "the other closing",
+         "block": "added-02_k21",
+         "start_s": 1576.345,
+         "start": "26:16"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-02_k02",
+       "kind": "rule",
+       "text": "My advice: one request for each action named in the task and the plan. Nothing more than the plan asks.",
+       "start_s": 1295.355,
+       "start": "21:35"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": [
+      {
+       "utterance": "added-02_t1.s1.u1",
+       "lesson": "writing-08-reading-the-task",
+       "section": "added-04",
+       "provenance": "authored",
+       "start_s": 1286.419,
+       "start": "21:26"
+      },
+      {
+       "utterance": "added-02_t3.s6.u2",
+       "lesson": "writing-03-letter-structure",
+       "section": "page-11",
+       "provenance": "authored",
+       "start_s": 1585.106,
+       "start": "26:25"
+      }
+     ]
+    },
+    {
+     "id": "added-03",
+     "title": "Closing",
+     "kind": "closing",
+     "pages": [],
+     "category": null,
+     "start_s": 1595.176,
+     "start": "26:35",
+     "end_s": 1632.074,
+     "topics": [
+      {
+       "board": "added-03_t1",
+       "title": "Closing",
+       "start_s": 1595.176,
+       "start": "26:35",
+       "points": [
+        {
+         "text": "Recap",
+         "block": "added-03_k04",
+         "start_s": 1595.176,
+         "start": "26:35"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    }
+   ],
+   "facts": [
+    {
+     "fact": "writing-organisation",
+     "text": "Organisation: one topic per paragraph, the most important information first; simply following the order of the case notes is a weakness (writing-facts 22, 40).",
+     "note": null,
+     "section": "pages-04-05-06",
+     "board": "pages-04-05-06_t1",
+     "utterance": "pages-04-05-06_t1.s1.u2",
+     "start_s": 95.82,
+     "start": "1:35"
+    },
+    {
+     "fact": "writing-criteria-scores",
+     "text": "Purpose is scored out of 3; each of the other five criteria is scored out of 7, on its own (writing-facts 9).",
+     "note": null,
+     "section": "pages-04-05-06",
+     "board": "pages-04-05-06_t1",
+     "utterance": "pages-04-05-06_t1.s3.u2",
+     "start_s": 134.383,
+     "start": "2:14"
+    },
+    {
+     "fact": "writing-no-fixed-layout",
+     "text": "There is no one required layout for the letter (writing-facts 24).",
+     "note": null,
+     "section": "pages-04-05-06",
+     "board": "pages-04-05-06_t2",
+     "utterance": "pages-04-05-06_t2.s1.u4",
+     "start_s": 181.903,
+     "start": "3:01"
+    },
+    {
+     "fact": "writing-paragraphs",
+     "text": "One topic in each paragraph; there is no fixed number of paragraphs (writing-facts 40).",
+     "note": null,
+     "section": "pages-04-05-06",
+     "board": "pages-04-05-06_t2",
+     "utterance": "pages-04-05-06_t2.s1.u4",
+     "start_s": 181.903,
+     "start": "3:01"
+    },
+    {
+     "fact": "writing-purpose",
+     "text": "Purpose: the reader sees at once why you are writing; the purpose is stated clearly at the start and expanded with more detail at the end of the letter (writing-facts 18, 30).",
+     "note": null,
+     "section": "pages-07-08-09",
+     "board": "pages-07-08-09_t2",
+     "utterance": "pages-07-08-09_t2.s1.u4",
+     "start_s": 392.157,
+     "start": "6:32"
+    },
+    {
+     "fact": "writing-selection-mistakes",
+     "text": "Three common mistakes in selecting: information the reader does not need, too much history, and similar information not grouped (writing-facts 36).",
+     "note": null,
+     "section": "pages-10-11-12",
+     "board": "pages-10-11-12_t3",
+     "utterance": "pages-10-11-12_t3.s4.u2",
+     "start_s": 694.474,
+     "start": "11:34"
+    },
+    {
+     "fact": "writing-closing-sentence",
+     "text": "A closing sentence commonly thanks the reader or offers contact; \"Thank you for ...\" and \"Please do not hesitate to contact me if you have any questions\" are both acceptable, neither required (writing-facts 39; ADR 040 decision 5).",
+     "note": null,
+     "section": "added-02",
+     "board": "added-02_t3",
+     "utterance": "added-02_t3.s6.u1",
+     "start_s": 1576.576,
+     "start": "26:16"
+    },
+    {
+     "fact": "writing-body-counted",
+     "text": "Only the body of the letter, its paragraphs, is counted (writing-facts 16).",
+     "note": null,
+     "section": "added-02",
+     "board": "added-02_t3",
+     "utterance": "added-02_t3.s6.u2",
+     "start_s": 1585.106,
+     "start": "26:25"
+    }
+   ],
+   "methods": [
+    {
+     "name": "No perfect template (the teacher's method)",
+     "text": "There is no perfect template: fit the order of the letter to the case.",
+     "section": "pages-04-05-06",
+     "board": "pages-04-05-06_t2",
+     "utterance": "pages-04-05-06_t2.s1.u1",
+     "start_s": 160.003,
+     "start": "2:40"
+    },
+    {
+     "name": "Think before you write (the teacher's method)",
+     "text": "After choosing the lines, decide the order: what goes first, what goes together, what goes apart.",
+     "section": "pages-04-05-06",
+     "board": "pages-04-05-06_t3",
+     "utterance": "pages-04-05-06_t3.s3.u1",
+     "start_s": 216.333,
+     "start": "3:36"
+    },
+    {
+     "name": "The ISBAR approach (the teacher's method)",
+     "text": "Five parts in order: introduce and identify, situation, background, assessment, request.",
+     "section": "pages-07-08-09",
+     "board": "pages-07-08-09_t1",
+     "utterance": "pages-07-08-09_t1.s1.u1",
+     "start_s": 240.653,
+     "start": "4:00"
+    },
+    {
+     "name": "Where the request goes",
+     "text": "Several requests: why you write in the opening, the requests at the end; one short request: in the opening too, expanded at the end.",
+     "section": "pages-07-08-09",
+     "board": "pages-07-08-09_t2",
+     "utterance": "pages-07-08-09_t2.s1.u2",
+     "start_s": 353.333,
+     "start": "5:53"
+    },
+    {
+     "name": "Chronologically or thematically",
+     "text": "Order the body around time, from the first event up to today, or by theme with the most important first; in an urgent letter, what has just happened comes first.",
+     "section": "pages-13-14-15-16",
+     "board": "pages-13-14-15-16_t1",
+     "utterance": "pages-13-14-15-16_t1.s1.u1",
+     "start_s": 773.034,
+     "start": "12:53"
+    },
+    {
+     "name": "Both orders can be right (the teacher's method)",
+     "text": "Your analysis decides which order serves the reader; there is no fixed format.",
+     "section": "pages-13-14-15-16",
+     "board": "pages-13-14-15-16_t4",
+     "utterance": "pages-13-14-15-16_t4.s8.u1",
+     "start_s": 979.004,
+     "start": "16:19"
+    },
+    {
+     "name": "A five-line plan (the teacher's method)",
+     "text": "Before the body: the opening; the situation now; what was done, and the cause; the background; the requests. Sort the kept lines under them and choose the order for the reader.",
+     "section": "added-01",
+     "board": "added-01_t1",
+     "utterance": "added-01_t1.s1.u1",
+     "start_s": 994.364,
+     "start": "16:34"
+    },
+    {
+     "name": "One request for each action (the teacher's method)",
+     "text": "One request for each action the task and the plan name, nothing the plan does not ask; each tied to its finding, with its deadline or condition; the most urgent first.",
+     "section": "added-02",
+     "board": "added-02_t1",
+     "utterance": "added-02_t1.s1.u1",
+     "start_s": 1286.419,
+     "start": "21:26"
+    }
+   ],
+   "vocabulary": [
+    {
+     "word": "template",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "pages-04-05-06",
+     "block": "pages-04-05-06_k07",
+     "start_s": 167.294,
+     "start": "2:47"
+    },
+    {
+     "word": "theme",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "pages-13-14-15-16",
+     "block": "pages-13-14-15-16_k02",
+     "start_s": 787.366,
+     "start": "13:07"
+    }
+   ],
+   "withheld": {
+    "listening_panel_words": 0,
+    "lines_naming_an_answer": 0
+   },
+   "practice_set": null,
+   "deck_exercises": [],
+   "links": {
+    "refers_to": [
+     {
+      "lesson": "writing-08-reading-the-task",
+      "section": "added-04",
+      "from_section": "page-3",
+      "utterance": "page-3_t1.s1.u2",
+      "start_s": 3.49,
+      "start": "0:03"
+     },
+     {
+      "lesson": "writing-02-assessment-criteria",
+      "section": "page-18",
+      "from_section": "pages-04-05-06",
+      "utterance": "pages-04-05-06_t1.s1.u1",
+      "start_s": 87.21,
+      "start": "1:27"
+     },
+     {
+      "lesson": "writing-03-letter-structure",
+      "section": "pages-04-05",
+      "from_section": "pages-04-05-06",
+      "utterance": "pages-04-05-06_t1.s2.u1",
+      "start_s": 104.14,
+      "start": "1:44"
+     },
+     {
+      "lesson": "writing-03-letter-structure",
+      "section": "page-10",
+      "from_section": "pages-07-08-09",
+      "utterance": "pages-07-08-09_t2.s1.u2",
+      "start_s": 353.333,
+      "start": "5:53"
+     },
+     {
+      "lesson": "writing-04-introduction",
+      "section": "pages-12-13",
+      "from_section": "pages-07-08-09",
+      "utterance": "pages-07-08-09_t2.s1.u4",
+      "start_s": 392.157,
+      "start": "6:32"
+     },
+     {
+      "lesson": "writing-03-letter-structure",
+      "section": "page-11",
+      "from_section": "added-02",
+      "utterance": "added-02_t3.s6.u2",
+      "start_s": 1585.106,
+      "start": "26:25"
+     }
+    ],
+    "referred_to_by": [],
+    "continues_in": [],
+    "continues_from": []
    }
   },
   {
@@ -54830,7 +56269,16 @@
       "start": "6:03"
      }
     ],
-    "referred_to_by": [],
+    "referred_to_by": [
+     {
+      "lesson": "writing-07-organisation",
+      "section": "page-3",
+      "to_section": "added-04",
+      "utterance": "page-3_t1.s1.u2",
+      "start_s": 3.49,
+      "start": "0:03"
+     }
+    ],
     "continues_in": [
      {
       "lesson": "writing-04-introduction",
@@ -55511,6 +56959,19 @@
      "start_s": 579.044,
      "start": "9:39",
      "source": "curated"
+    }
+   ]
+  },
+  {
+   "topic": "Chronological or thematic",
+   "key": "chronological or thematic",
+   "entries": [
+    {
+     "lesson": "writing-07-organisation",
+     "section": "pages-13-14-15-16",
+     "start_s": 773.034,
+     "start": "12:53",
+     "source": "section"
     }
    ]
   },
@@ -57485,6 +58946,19 @@
    ]
   },
   {
+   "topic": "Ordering the paragraphs",
+   "key": "ordering the paragraphs",
+   "entries": [
+    {
+     "lesson": "writing-07-organisation",
+     "section": "pages-13-14-15-16",
+     "start_s": 773.034,
+     "start": "12:53",
+     "source": "curated"
+    }
+   ]
+  },
+  {
    "topic": "Organisation and Layout",
    "key": "organisation and layout",
    "entries": [
@@ -57493,6 +58967,13 @@
      "section": "page-18",
      "start_s": 1492.948,
      "start": "24:52",
+     "source": "section"
+    },
+    {
+     "lesson": "writing-07-organisation",
+     "section": "pages-04-05-06",
+     "start_s": 87.21,
+     "start": "1:27",
      "source": "section"
     }
    ]
@@ -57900,6 +59381,32 @@
      "section": "page-6",
      "start_s": 547.391,
      "start": "9:07",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Planning a letter",
+   "key": "planning a letter",
+   "entries": [
+    {
+     "lesson": "writing-07-organisation",
+     "section": "added-01",
+     "start_s": 994.364,
+     "start": "16:34",
+     "source": "curated"
+    }
+   ]
+  },
+  {
+   "topic": "Planning the paragraphs",
+   "key": "planning the paragraphs",
+   "entries": [
+    {
+     "lesson": "writing-07-organisation",
+     "section": "added-01",
+     "start_s": 994.364,
+     "start": "16:34",
      "source": "section"
     }
    ]
@@ -59044,6 +60551,19 @@
    ]
   },
   {
+   "topic": "The closing sentence",
+   "key": "the closing sentence",
+   "entries": [
+    {
+     "lesson": "writing-07-organisation",
+     "section": "added-02",
+     "start_s": 1520.373,
+     "start": "25:20",
+     "source": "curated"
+    }
+   ]
+  },
+  {
    "topic": "The date",
    "key": "the date",
    "entries": [
@@ -59078,6 +60598,19 @@
      "section": "added-01",
      "start_s": 79.751,
      "start": "1:19",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "The ISBAR approach",
+   "key": "the isbar approach",
+   "entries": [
+    {
+     "lesson": "writing-07-organisation",
+     "section": "pages-07-08-09",
+     "start_s": 240.653,
+     "start": "4:00",
      "source": "section"
     }
    ]
@@ -59265,6 +60798,19 @@
    ]
   },
   {
+   "topic": "The request and closing paragraph",
+   "key": "the request and closing paragraph",
+   "entries": [
+    {
+     "lesson": "writing-07-organisation",
+     "section": "added-02",
+     "start_s": 1286.419,
+     "start": "21:26",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "The request at the end of the letter",
    "key": "the request at the end of the letter",
    "entries": [
@@ -59273,6 +60819,19 @@
      "section": "page-10",
      "start_s": 1366.238,
      "start": "22:46",
+     "source": "curated"
+    }
+   ]
+  },
+  {
+   "topic": "The request paragraph",
+   "key": "the request paragraph",
+   "entries": [
+    {
+     "lesson": "writing-07-organisation",
+     "section": "added-02",
+     "start_s": 1286.419,
+     "start": "21:26",
      "source": "curated"
     }
    ]
@@ -59351,6 +60910,19 @@
      "section": "pages-06-07",
      "start_s": 318.001,
      "start": "5:18",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Three letters, three shapes",
+   "key": "three letters, three shapes",
+   "entries": [
+    {
+     "lesson": "writing-07-organisation",
+     "section": "pages-10-11-12",
+     "start_s": 501.149,
+     "start": "8:21",
      "source": "section"
     }
    ]
@@ -59969,21 +61541,21 @@
   }
  ],
  "totals": {
-  "lessons": 26,
-  "sections": 247,
-  "topics": 569,
-  "teaching_points": 4282,
-  "rules": 264,
-  "warnings": 64,
-  "terms": 484,
+  "lessons": 27,
+  "sections": 255,
+  "topics": 592,
+  "teaching_points": 4387,
+  "rules": 270,
+  "warnings": 65,
+  "terms": 485,
   "wrong_examples": 275,
-  "facts": 166,
-  "methods": 50,
-  "vocabulary": 518,
+  "facts": 174,
+  "methods": 58,
+  "vocabulary": 520,
   "vocabulary_word_bank": 189,
   "practice_items": 62,
-  "references": 104,
-  "topic_index": 371,
+  "references": 110,
+  "topic_index": 380,
   "withheld_panel_words": 139,
   "withheld_answer_lines": 9
  }
