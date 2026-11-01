@@ -650,3 +650,24 @@ class TealLook(unittest.TestCase):
                          style_c.LAYOUT_CSS["paper"] + style_c.LAYOUT_CSS["paper_long"])
         self.assertNotIn("paper-long", beside("Please review her medicines.")[1])
         self.assertNotIn("paper-long", style_c.layout_html(b, b["html"], None, "paper"))
+    def test_long_pieces_fit_without_shrinking(self):
+        """ADR 050 amendment (4): a long two-column table in `columns` in two halves; a long teal sheet of the paper
+        at the fit's size. Each rule reaches only
+        a lesson that has such a block, so no other lesson's stylesheet changes; no word changes."""
+        lay = lambda header, rows, name, look=None: style_c.layout_html(  # noqa: E731
+            *(lambda b: (b, b["html"]))(self._table(header, rows)), None, name, None, look)
+        nine = [[f"Family {i}", f"word {i}, another {i}"] for i in range(9)]
+        four = nine[:4]
+        long_cols, short_cols = lay(["Family", "Words"], nine, "columns"), lay(["Family", "Words"], four, "columns")
+        self.assertIn('data-flow="2"', long_cols)
+        self.assertNotIn("data-flow", short_cols)
+        self.assertNotIn("data-flow", lay(["A", "B", "C"], [r + ["x"] for r in nine], "columns"))  # two columns only
+        self.assertIn(style_c.LAYOUT_CSS["columns2"], style_c.layout_css({"x": {"html": long_cols}}))
+        self.assertNotIn(style_c.LAYOUT_CSS["columns2"], style_c.layout_css({"x": {"html": short_cols}}))
+        sheet = [["12 May 2026", f"note {i}"] for i in range(6)]
+        long_teal, long_c = lay(["Her paper", ""], sheet, "paper", "teal"), lay(["Her paper", ""], sheet, "paper")
+        self.assertIn('data-long=""', long_teal)
+        self.assertNotIn("data-long", long_c)                                     # only in the teal look
+        self.assertNotIn("data-long", lay(["Her paper", ""], sheet[:5], "paper", "teal"))
+        self.assertIn(style_c.LAYOUT_CSS["sheetlong"], style_c.layout_css({"x": {"html": long_teal}}))
+        self.assertNotIn(style_c.LAYOUT_CSS["sheetlong"], style_c.layout_css({"x": {"html": long_c}}))

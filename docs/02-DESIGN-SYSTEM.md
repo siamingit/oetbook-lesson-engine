@@ -1155,6 +1155,8 @@ the silent preview and the player):
    narration marks with the pen's circle or line, never the marker's band.
 7. **Headings**: never one or two words alone on a line (`text-wrap: balance`, and room enough).
 
+**Long pieces** (ADR 050 amendment (4)): a table of a label and its words with eight rows or more in `columns` is drawn in two halves side by side (`data-flow="2"`); a teal sheet of the paper with six rows or more takes the fit's size, never under 2.9% (`data-long`), instead of 4.5%. Each rule reaches only a lesson that has such a block.
+
 **On the site's player too** (ADR 050 amendment (2)): every board is checked on the site's own player
 (`check_site_player.py`, runbook step 18c), which measures a board while it enters, does not serve the hand yet, and
 keeps its own rules above the lesson's. So: a piece enters by growing inside its box, never from outside it; the hand
