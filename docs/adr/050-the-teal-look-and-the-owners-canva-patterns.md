@@ -93,7 +93,11 @@ pattern is carried by the engine is the agent's under that brief (ADR 005).
 
 - **No built lesson changes**: a lesson without `lesson.look` takes none of the look's rules, and a layout's rules
   reach only a lesson that uses it. Proven by the render comparison of every built lesson before and after the change
-  (runbook, "Changing shared code"), in the pull request that carries this record.
+  (runbook, "Changing shared code"; `render_compare.py` snapshots `before-adr050` and `before-adr050r` on main at
+  7247039, `after-adr050` and `after-adr050r` on this change, 2026-11-01): **28 of 28 identical**, 850 data files byte
+  for byte (bundles, texts, stylesheets, timelines, fits) and 167,252 moments at the phone and laptop frames drawn
+  identically, with no board timing difference. Reading 5 is outside the proof, as it was for ADR 049: it does not
+  render on main (its closing audit fails because Writing 5 and 7 share its goodbye "Well done.").
 - Word Order (writing-06-word-order) is the trial: every board redesigned with the patterns, its narration, audio and
   practice points unchanged, a side-by-side PNG of each board with the pattern it follows in
   `C:\OET\course\design-samples\word-order-v2\`, and a new draft on the site. The other lessons move to the look when
@@ -101,6 +105,11 @@ pattern is carried by the engine is the agent's under that brief (ADR 005).
 - **Not done here, for the owner**: (a) the pen circle is drawn whole at its time, not drawn on in motion: a mark is
   redrawn by both players on every frame, so a drawing-on needs a change to each player's mark code (rule 53, the
   marker sweep's way) and to the site; (b) the site does not serve the hand yet (decision 5); (c) the display face
-  of his slides (a wide geometric sans) is not used: titles stay in IBM Plex Sans, the site's face.
+  of his slides (a wide geometric sans) is not used: titles stay in IBM Plex Sans, the site's face (the owner
+  agreed, 2026-11-01).
+- **Asked of the site** (2026-11-01, label from-lesson-engine): siamingit/oetacademy-web#227, serve Caveat as
+  `--font-hand` (a font is not a media type the package contract allows, and `font-src 'self'` refuses a `data:`
+  font); siamingit/oetacademy-web#228, draw a circle on in motion in a lesson whose `lesson.look` is "teal" (0.4 s
+  from the mark's time, rule 53's way), with the data the engine would send.
 - To reverse: remove `lesson.look` from a lesson (its stylesheet returns to style C's); remove the look and the
   layouts from `style_c.py`. No lesson built before this record changes either way.
