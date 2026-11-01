@@ -58,6 +58,10 @@
   "writing-03-letter-structure": [
    903000,
    903999
+  ],
+  "writing-08-reading-the-task": [
+   908000,
+   908999
   ]
  },
  "ids": [
@@ -2924,6 +2928,69 @@
    "lesson": "writing-03-letter-structure",
    "point": "sign-off",
    "slot": "faithfully",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-908000",
+   "lesson": "writing-08-reading-the-task",
+   "point": "ashworth-task",
+   "slot": "reader",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-908001",
+   "lesson": "writing-08-reading-the-task",
+   "point": "ashworth-task",
+   "slot": "request",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-908002",
+   "lesson": "writing-08-reading-the-task",
+   "point": "ashworth-task",
+   "slot": "urgency",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-908003",
+   "lesson": "writing-08-reading-the-task",
+   "point": "htn-line",
+   "slot": "line",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-908004",
+   "lesson": "writing-08-reading-the-task",
+   "point": "ramipril-line",
+   "slot": "line",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-908005",
+   "lesson": "writing-08-reading-the-task",
+   "point": "short-form",
+   "slot": "form",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-908006",
+   "lesson": "writing-08-reading-the-task",
+   "point": "ashworth-lines",
+   "slot": "dose-change",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-908007",
+   "lesson": "writing-08-reading-the-task",
+   "point": "ashworth-lines",
+   "slot": "last-dose",
+   "issued": "2026-10-31"
+  },
+  {
+   "id": "oa-writing-908008",
+   "lesson": "writing-08-reading-the-task",
+   "point": "ashworth-lines",
+   "slot": "fit-note",
    "issued": "2026-10-31"
   }
  ]
