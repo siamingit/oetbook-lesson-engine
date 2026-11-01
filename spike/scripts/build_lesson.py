@@ -51,6 +51,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import paths                                                      # noqa: E402
 import lesson_type                                                # noqa: E402
+import style_c                                                    # noqa: E402
 
 PY = sys.executable
 GATES = {
@@ -643,6 +644,9 @@ def stage_narration(L, a):
     # maintainer, 2026-10-08: a wider device font hides nothing on a Part B question
     # board; 2026-10-11: on any board of any lesson (the player's guard, every board)
     run(L, [str(HERE / "check_wide_font.py"), str(L), "--dir", d], "wide-font check (silent preview)")
+    if style_c.look_of(L) == "teal":
+        # ADR 050 amendment (1) (the owner, 2026-11-01): readable on a phone, checked on every board
+        run(L, [str(HERE / "check_text_size.py"), str(L), "--dir", d], "readability check (silent preview)")
     if lesson_type.has(L, "practice_checks"):
         # maintainer, 2026-10-07: no line inside a lens or zoom window is clipped
         run(L, [str(HERE / "check_lens.py"), str(L), "--dir", d], "lens check (silent preview)")
@@ -752,6 +756,9 @@ def stage_player(L, a):
     # maintainer, 2026-10-08: a wider device font hides nothing on a Part B question
     # board; 2026-10-11: on any board of any lesson (the player's guard, every board)
     run(L, [str(HERE / "check_wide_font.py"), str(L), "--dir", d], "wide-font check")
+    if style_c.look_of(L) == "teal":
+        # ADR 050 amendment (1) (the owner, 2026-11-01): readable on a phone, checked on every board
+        run(L, [str(HERE / "check_text_size.py"), str(L), "--dir", d], "readability check")
     if lesson_type.has(L, "doc_marks"):
         # ADR 026 (maintainer, 2026-10-06): every phrase of a text read aloud
         # has its mark, timed to the voice's own words

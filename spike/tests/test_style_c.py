@@ -576,3 +576,27 @@ class TealLook(unittest.TestCase):
         out = style_c.layout_html({"id": "s_k02", "type": "category_card"}, card, None, "badges")
         self.assertIn('lay-badges" data-c="0"', out)
         self.assertIn(style_c.LAYOUT_CSS["badges"], style_c.layout_css({"s_k02": {"html": out}}))
+
+    def test_readable_on_a_phone(self):
+        """ADR 050 amendment (1): a hand note over 15 words is set in print in the teal look only; a long letter on
+        its parts flows in two columns; the comparison of two places rings its accents; no word changes."""
+        long = "My advice: put a time first only at the start of a sentence. Inside a joined sentence, keep it in its place."
+        html = '<div class="blk role-note callout key_rule" data-id="x"><span class="badge-c">i</span>' + long + '</div>'
+        b = {"id": "x", "type": "callout", "text": long}
+        self.assertIn("t-print", style_c.layout_html(b, html, None, None, None, "teal"))
+        self.assertNotIn("t-print", style_c.layout_html(b, html, None))            # no look: as before
+        short = {"id": "x", "type": "callout", "text": "Keep the verb and its object together."}
+        self.assertNotIn("t-print", style_c.layout_html(short, html, None, None, None, "teal"))
+        para = "She was seen in clinic, and she was well. " * 5
+        lay = lambda header, rows, name, acc=None: style_c.layout_html(  # noqa: E731
+            *(lambda b: (b, b["html"]))(self._table(header, rows)), None, name, acc)
+        self.assertIn('data-flow="2"', lay(["Part", "Letter"], [["Opening", para], ["Body", para], ["End", para],
+                                                               ["Close", para]], "parts"))
+        self.assertNotIn('data-flow', lay(["Part", "Letter"], [["Opening", "Dear Dr X"]], "parts"))
+        out = lay(["At the start", "At the end"], [["On Monday, she came.", "She came on Monday."],
+                                                    ["Comes first", "Comes after"]], "compare", ["On Monday,", "on Monday"])
+        self.assertIn('<span class="acc">On Monday,</span>', out)
+        self.assertIn('<span class="acc">on Monday</span>', out)
+        with self.assertRaises(SystemExit):
+            lay(["a", "b"], [["x y", "x y"]], "compare", ["x y"])                 # found twice: refused
+        self.assertIn(".frame .tbl.core table{font-size:max(var(--tf,2.6cqh),var(--t-run))}", style_c.LOOK_CSS["teal"])

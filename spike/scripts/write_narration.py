@@ -2290,7 +2290,13 @@ def apply_utterance_overrides(out_dir: Path, model_out: dict) -> list[dict]:
     fix of one utterance's wording that must change nothing else (a position
     word, docs/02-DESIGN-SYSTEM.md §8c): its clip alone is made again. Applied
     before assembly on every render; the saved reply is never edited. The id is
-    the utterance's place in its state (t1.s3.u2 is the second of t1.s3)."""
+    the utterance's place in its state (t1.s3.u2 is the second of t1.s3).
+
+    With "cues": {"<new cue id>": {"type", "block", "text"[, "row", "col"]}}, the new words
+    may also place a new phrase mark (underline, circle, highlight) where the voice names
+    it (ADR 050 amendment (1), 2026-11-01: every slip the narration names is circled):
+    the spoken words must stay exactly as they were, so the clip is kept, and every cue
+    marker already there stays, in order."""
     p = out_dir / "overrides.json"
     if not p.exists():
         return []
@@ -2306,9 +2312,25 @@ def apply_utterance_overrides(out_dir: Path, model_out: dict) -> list[dict]:
                              f"{f['expect']!r}; retire or re-key the override")
         before = re.findall(r"\{\{c\d+\}\}", u["text_with_cues"])
         new = u["text_with_cues"].replace(f["expect"], f["text_with_cues"], 1)
-        if re.findall(r"\{\{c\d+\}\}", new) != before:
+        added = f.get("cues") or {}
+        ids = {c["id"] for c in u.get("cues") or []}
+        if [m for m in re.findall(r"\{\{c\d+\}\}", new) if m[2:-2] not in added] != before:
             raise SystemExit(f"overrides.json: utterance {uid}: the new words must keep every cue "
                              f"marker, in order ({before})")
+        if added:
+            if spoken(new) != spoken(u["text_with_cues"]):
+                raise SystemExit(f"overrides.json: utterance {uid}: a mark added by override changes no "
+                                 "spoken word")
+            for cid, c in added.items():
+                if cid in ids or new.count("{{" + cid + "}}") != 1:
+                    raise SystemExit(f"overrides.json: utterance {uid}: the added cue {cid} must be new and "
+                                     "placed once in the words")
+                if c.get("type") not in PHRASE_MARKS or not c.get("block") or not c.get("text"):
+                    raise SystemExit(f"overrides.json: utterance {uid}: the added cue {cid} is a phrase mark "
+                                     f"({sorted(PHRASE_MARKS)}) with its block and its words")
+                u["cues"].append({"id": cid, "type": c["type"], "block": c["block"], "text": c["text"],
+                                  "to_block": None, "to_text": None, "with": None, "seconds": None,
+                                  **{k: c[k] for k in ("row", "col") if k in c}})
         u["text_with_cues"] = new
         u["note"] = ((u.get("note") or "") + " " + (f.get("note") or "wording set by override")).strip()
         out.append({"severity": "info", "where": uid, "what": "words set by override: "

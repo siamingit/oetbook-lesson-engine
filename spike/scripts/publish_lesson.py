@@ -719,6 +719,20 @@ def release(L: Path, dry_run: bool, log=print, draft: bool = False) -> dict:
     if not tags_approved and not draft:
         blockers.append(f"the section tags of {lesson} are not approved: record it with its final approval "
                         f"(--approve-tags; {tags_path(L)})")
+    # ADR 050 amendment (2) (the owner, 2026-11-01): the package is sent only when the site's own player draws it
+    # right: check_site_player.py passed, at every state, on this very bundle and stylesheet (runbook step 18c)
+    site = L / "generated" / "site-player" / "site_player_check.json"
+    if not site.exists():
+        blockers.append("the site-player check has not run on this package: run check_site_player.py (runbook 18c)")
+    else:
+        import check_site_player
+        rep = read_json(site)
+        if rep.get("failures"):
+            blockers.append(f"the site-player check failed ({len(rep['failures'])} finding(s)); see {site}")
+        elif not rep.get("every_state"):
+            blockers.append("the site-player check ran on each board's fullest state only: run it on every state")
+        elif rep.get("package_fingerprint") != check_site_player.fingerprint(folder):
+            blockers.append("the site-player check ran on another build of the package: run it again")
     if any(s["teaches"] != tags[s["id"]] for s in manifest["sections"]):
         blockers.append("the package's tags are not the ones in the tags file: run --package again")
     with open(folder / "manifest.json", "rb") as a, zipfile.ZipFile(zpath) as z:

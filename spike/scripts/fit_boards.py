@@ -65,6 +65,9 @@ SMALL_PHONE = {"small phone": 590}
 QBOARD_FONTS = ["Arial", "Roboto"]
 TOLERANCE_PX = 1.0
 TABLE_FONT_MIN = 1.9          # cqh: docs/02-DESIGN-SYSTEM.md §7, Tables
+# a lesson in the teal look: a table's text is never set under the running size (ADR 050 amendment (1), rule 1;
+# style_c's --t-run): where the board does not fit, its notes are cleared or it is reported unfit
+TEAL_TABLE_FONT_MIN = 2.9
 # 1.16, a Part B question board (ADR 026, 2026-10-08): the extract's share of the
 # board's width, per cent, tried from the widest down (the question column takes
 # the room it needs, the extract the rest); its size, body size down to a floor
@@ -405,14 +408,14 @@ HARNESS = r"""
 
 
 def run(player: Path, width: int, init: dict, font: str = "", qonly: bool = False,
-        noq: bool = False) -> dict:
+        noq: bool = False, fmin: float = TABLE_FONT_MIN) -> dict:
     edge = next((e for e in EDGE if Path(e).exists()), None)
     if not edge:
         raise SystemExit("Edge not found; the fit needs a browser")
     harness = player.with_name("player_fit.html")
     html = player.read_text(encoding="utf-8")
     script = (HARNESS.replace("__WIDTH__", str(width)).replace("__TOL__", str(TOLERANCE_PX))
-              .replace("__FMIN__", str(TABLE_FONT_MIN)).replace("__SPLITS__", json.dumps(QBOARD_SPLITS))
+              .replace("__FMIN__", str(fmin)).replace("__SPLITS__", json.dumps(QBOARD_SPLITS))
               .replace("__QTOP__", str(QBOARD_FONT)).replace("__QMIN__", str(QBOARD_FONT_MIN))
               .replace("__FONT__", json.dumps(font)).replace("__QONLY__", "true" if qonly else "false")
               .replace("__NOQ__", "true" if noq else "false").replace("__PMAX__", "20").replace("__PMIN__", "10").replace("__INIT__", json.dumps(init)))
@@ -461,12 +464,14 @@ def main() -> None:
     # measured on a player built without any fit, so the plan is made from
     # scratch every time (a table already made smaller would look as if it fitted)
     folder = build(a.lesson_dir, silent=a.silent, out="lesson-fit", use_fit=False)
+    import style_c
+    fmin = TEAL_TABLE_FONT_MIN if style_c.look_of(a.lesson_dir) == "teal" else TABLE_FONT_MIN
     plan: dict = {"clears": {}, "fonts": {}, "tight": {}, "pics": {}}
     unfit: list = []
     ends: dict = {}
     qboards: dict = {}
     for name, width, font, qonly, noq in passes:
-        res = run(folder / "player.html", width, plan, font, qonly, noq)
+        res = run(folder / "player.html", width, plan, font, qonly, noq, fmin)
         plan = {"clears": res["clears"], "fonts": res["fonts"], "tight": res["tight"],
                 "pics": res.get("pics") or {}}
         if res.get("splits"):

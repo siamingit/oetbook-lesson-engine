@@ -725,7 +725,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                 # of 2026-10-26): classes and attributes on the block's html only
                 html_b = style_c.layout_html(nb, html_b, sec["title"],
                                              (info.get("block_layouts") or {}).get(nb["id"]),
-                                             (info.get("block_accents") or {}).get(nb["id"]))
+                                             (info.get("block_accents") or {}).get(nb["id"]),
+                                             style_c.look_of(L))
             if nb.get("image"):                      # 1.11: the file, relative to the bundle's folder
                 nb["image"] = {**nb["image"], "file": resolve_images(
                     IMAGE_TOKEN + "/" + nb["image"]["file"], out_dir, L)}
