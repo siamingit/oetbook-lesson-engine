@@ -215,6 +215,10 @@ with the site's own player and fails on a spill, a board the site draws smaller,
 --release` (draft or final, every lesson) refuses a package the check has not passed on, at every state, byte for byte
 (its bundle and stylesheet).
 
+**Proof.** Render comparison `after-teal3`/`after-teal3r` on this change against ADR 050's `after-adr050`/`after-adr050r`
+(no lesson file changed since): **27 of 27 other lessons identical**; Word Order differs, as intended. Writing 6 draft.5
+on the site's own player: 66 of 66 states pass.
+
 **The owner's addendum (2026-11-01), rules for every lesson:**
 
 1. **One face per set of equals.** Items side by side as equals (recap cards, columns, pills, steps) use the same face,
