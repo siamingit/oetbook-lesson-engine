@@ -1179,6 +1179,8 @@ request expanded in the Purpose colour. The `path` sets its steps at 3.6% and it
 circles; a `timeline` of four markers or more is set vertically, a marker longer than a number is a pill, and a lit
 marker keeps its colour. The criterion's monogram is a label (at least 20 px). A contents title of five words or fewer
 that cannot keep a line of three words (`ct-one`) sets the whole contents one step smaller, so it stays on one line.
+A letter of more than 330 characters beside its paper is set, with its paper, at 3.3% of the frame (`paper-long`) in
+the look, so it fits the site's player at full size.
 
 **Accents and boards marked no-zoom** (ADR 049). `block_accents` (`{"<bundle block id>": ["phrase", ...]}`) names the words a layout sets in its accent colour: each phrase is found exactly once in the block's words, never split by a tag, and wrapped in a span `acc`, by a layout that draws it (`skeleton`: the purpose words, in the Purpose colour; green stays reserved for "right", §5); the words never change. `boards_nozoom` (`["<board id>", ...]`) names boards shown whole (`boards_fit` "whole") on which the style C zoom is not written either (§8g, rule 55): the whole table stays in view at every moment on every device, and the spotlight and the marks alone show the line being taught. For a table whose rows are to be seen together, as the ISBAR parts on one letter.
 

@@ -269,3 +269,16 @@ at 16d44a8 and `after-w07t` on this change, 2026-11-01, Writing 7 as it stands b
 built lessons identical**, 850 data files byte for byte and 167,268 moments at the phone and laptop frames drawn
 identically, with no board timing difference. Reading 5 is outside the proof, as before (it does not render on main).
 Writing 7 is then rebuilt in the look: every engine check, the readability check (0 findings) and the site's player.
+
+**On the site's player** (the same day, check_site_player.py on Writing 7's draft package): the site's guard counts
+every note of a state from the state's start and has a shorter room than the reference player, so two boards were
+drawn smaller there: the letter skeletons (0.98) and the paper beside a long letter, Mr Talbot's three requests (0.94).
+(5) In the teal look, a letter of more than 330 characters beside its paper (`PAPER_LONG_CHARS`, the third column)
+takes `paper-long` and is set, with its paper, at 3.3% of the frame (29.7 px, over rule 1's 26 px) instead of the
+look's 3.9%; its rule is emitted only where used. Today only that board: every other built letter beside its paper is
+shorter in a teal lesson (Writing 3 has a longer one, outside the look). (6) The skeletons' grey lines a little closer
+and their sheets' top and foot a little tighter. The check also took the lesson's oldest draft package when a released
+v1 kept its draft folder (fixed in its own pull request: the newest draft).
+Proven by the render comparison: `before-w07s` (main's code) and `after-w07s` (this change), 2026-11-01, with Writing 7
+in the teal look: **27 of 28 other built lessons identical** (823 data files, 164,110 moments), no board timing
+difference; Writing 7 differs, as intended (its stylesheet, bundle and text: 7 files, 308 moments of boards 07 and 20).
