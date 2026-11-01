@@ -55467,14 +55467,7 @@
       }
      ],
      "terms": [],
-     "wrong_examples": [
-      {
-       "block": "pages-04-05_k04",
-       "text": "I visited for his routine warfarin check today at home Mr Graham Talbot.",
-       "start_s": 149.388,
-       "start": "2:29"
-      }
-     ],
+     "wrong_examples": [],
      "practice": [],
      "refs": [
       {
@@ -64662,7 +64655,7 @@
   "rules": 285,
   "warnings": 66,
   "terms": 488,
-  "wrong_examples": 279,
+  "wrong_examples": 278,
   "facts": 180,
   "methods": 74,
   "vocabulary": 523,
