@@ -9159,10 +9159,6 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 - 3:13 My advice: who, what, where, when, why. Place, then time, then reason.
 
-*Wrong sentences corrected*
-
-- 2:29 I visited for his routine warfarin check today at home Mr Graham Talbot.
-
 #### 5:06 The verb and its object; the time first (`pages-06-07`, deck)
 
 - 5:06 **The verb and its object together**
