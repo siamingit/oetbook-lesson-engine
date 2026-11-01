@@ -123,7 +123,9 @@ under that brief (ADR 005).
   §18 and docs/02-DESIGN-SYSTEM.md §7j point here.
 - **This record changes no built lesson by itself**: it adds skills and documents. Proven by the render comparison
   of every built lesson before and after the change (`render_compare.py` snapshots `before-adr048` on origin/main at
-  cabce5c and `after-adr048` on this change, 2026-11-01): the result is in the pull request and the report issue.
+  cabce5c and `after-adr048` on this change, 2026-11-01): **28 of 28 identical**, 838 data files byte for byte
+  (bundles, texts, stylesheets, timelines, fits) and 174,846 moments at the phone and laptop frames drawn identically,
+  with no board timing difference (Writing 5, being built in another session, has no player yet).
 - Word Order (writing-06-word-order) is the first lesson redesigned under this record, in one run after it: every
   board, the narration and its audio unchanged, the cues re-timed, its practice points with their IDs, a before/after
   contact sheet in `C:\OET\course\design-samples\`, and a new draft on the site (draft.2). The layouts it needs are
