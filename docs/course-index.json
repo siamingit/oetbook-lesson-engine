@@ -47848,8 +47848,8 @@
    "description": "Meet the OET Writing test: the one letter you write, the time you have, how it is scored, how to read the case notes and the task, and the parts of a good letter.",
    "course": "writing",
    "order": 1,
-   "length_s": 1145.318,
-   "length": "19:05",
+   "length_s": 1142.918,
+   "length": "19:02",
    "bundle_format": "1.22",
    "status": "approved",
    "approval": {
@@ -47888,7 +47888,7 @@
        "points": [
         {
          "text": "the lesson title, then what the lesson is about",
-         "block": "page-3_k11",
+         "block": "page-3_k01",
          "start_s": 0.0,
          "start": "0:00"
         }
@@ -47902,9 +47902,9 @@
        "points": [
         {
          "text": "each category, revealed as it is named",
-         "block": "page-3_k12",
-         "start_s": 56.13,
-         "start": "0:56"
+         "block": "page-3_k05",
+         "start_s": 58.241,
+         "start": "0:58"
         }
        ]
       }
@@ -47925,7 +47925,7 @@
      "category": null,
      "start_s": 91.711,
      "start": "1:31",
-     "end_s": 181.601,
+     "end_s": 180.401,
      "topics": [
       {
        "board": "page-4_t1",
@@ -47935,38 +47935,38 @@
        "points": [
         {
          "text": "The same for everyone, and what changes",
-         "block": "page-4_k06",
+         "block": "page-4_k01",
          "start_s": 91.711,
          "start": "1:31"
         },
         {
          "text": "A doctor's usual letter",
-         "block": "page-4_k03",
+         "block": "page-4_k02",
          "start_s": 112.311,
          "start": "1:52"
         },
         {
          "text": "Three kinds of letter in our samples",
-         "block": "page-4_k04",
-         "start_s": 139.777,
-         "start": "2:19"
+         "block": "page-4_k03",
+         "start_s": 138.577,
+         "start": "2:18"
         },
         {
          "text": "What to study first",
-         "block": "page-4_k05",
-         "start_s": 167.911,
-         "start": "2:47"
+         "block": "page-4_k04",
+         "start_s": 166.711,
+         "start": "2:46"
         }
        ]
       }
      ],
      "rules": [
       {
-       "block": "page-4_k05",
+       "block": "page-4_k04",
        "kind": "rule",
        "text": "Learn what is the same for every profession first. Then practise the topics of your own profession.",
-       "start_s": 167.911,
-       "start": "2:47"
+       "start_s": 166.711,
+       "start": "2:46"
       }
      ],
      "terms": [],
@@ -47982,63 +47982,63 @@
       5
      ],
      "category": null,
-     "start_s": 181.601,
-     "start": "3:01",
-     "end_s": 318.001,
+     "start_s": 180.401,
+     "start": "3:00",
+     "end_s": 316.801,
      "topics": [
       {
        "board": "page-5_t1",
        "title": "Five steps towards successful writing",
-       "start_s": 181.601,
-       "start": "3:01",
+       "start_s": 180.401,
+       "start": "3:00",
        "points": [
         {
          "text": "the five steps",
-         "block": "page-5_k10",
-         "start_s": 181.601,
-         "start": "3:01"
+         "block": "page-5_k01",
+         "start_s": 180.401,
+         "start": "3:00"
         },
         {
          "text": "grammar first",
          "block": "page-5_k02",
-         "start_s": 197.851,
-         "start": "3:17"
+         "start_s": 196.651,
+         "start": "3:16"
         },
         {
          "text": "vocabulary",
          "block": "page-5_k03",
-         "start_s": 222.2,
-         "start": "3:42"
+         "start_s": 221.0,
+         "start": "3:41"
         },
         {
          "text": "the word criteria",
          "block": "page-5_k04",
-         "start_s": 237.016,
-         "start": "3:57"
+         "start_s": 235.816,
+         "start": "3:55"
         },
         {
          "text": "why the criteria matter",
          "block": "page-5_k05",
-         "start_s": 250.671,
-         "start": "4:10"
+         "start_s": 249.471,
+         "start": "4:09"
         },
         {
          "text": "the general Writing lessons",
          "block": "page-5_k06",
-         "start_s": 269.031,
-         "start": "4:29"
+         "start_s": 267.831,
+         "start": "4:27"
         },
         {
          "text": "your own profession",
          "block": "page-5_k07",
-         "start_s": 286.01,
-         "start": "4:46"
+         "start_s": 284.81,
+         "start": "4:44"
         },
         {
          "text": "before all this",
          "block": "page-5_k08",
-         "start_s": 300.576,
-         "start": "5:00"
+         "start_s": 299.376,
+         "start": "4:59"
         }
        ]
       }
@@ -48048,8 +48048,8 @@
        "block": "page-5_k08",
        "kind": "rule",
        "text": "Before you start, look at one or two sample tasks and their model letters.",
-       "start_s": 300.576,
-       "start": "5:00"
+       "start_s": 299.376,
+       "start": "4:59"
       }
      ],
      "terms": [],
@@ -48061,16 +48061,16 @@
        "lesson": "grammar-08-paraphrasing",
        "section": "page-4",
        "provenance": "source-derived",
-       "start_s": 202.961,
-       "start": "3:22"
+       "start_s": 201.761,
+       "start": "3:21"
       },
       {
        "utterance": "page-5_t1.s2.u3",
        "lesson": "grammar-01-verb-tenses",
        "section": null,
        "provenance": "source-derived",
-       "start_s": 202.961,
-       "start": "3:22"
+       "start_s": 201.761,
+       "start": "3:21"
       }
      ]
     },
@@ -48083,151 +48083,133 @@
       7
      ],
      "category": null,
-     "start_s": 318.001,
-     "start": "5:18",
-     "end_s": 586.922,
+     "start_s": 316.801,
+     "start": "5:16",
+     "end_s": 583.322,
      "topics": [
       {
        "board": "pages-06-07_t1",
        "title": "What to expect and how it is scored",
-       "start_s": 318.001,
-       "start": "5:18",
+       "start_s": 316.801,
+       "start": "5:16",
        "points": [
         {
          "text": "three questions about the test",
-         "block": "pages-06-07_k21",
-         "start_s": 318.001,
-         "start": "5:18"
-        },
-        {
-         "text": "what you get and what you do",
-         "block": "pages-06-07_k02",
-         "start_s": 327.121,
-         "start": "5:27"
+         "block": "pages-06-07_k01",
+         "start_s": 316.801,
+         "start": "5:16"
         },
         {
          "text": "who reads the letter",
-         "block": "pages-06-07_k03",
-         "start_s": 344.041,
-         "start": "5:44"
-        },
-        {
-         "text": "the scale",
-         "block": "pages-06-07_k04",
-         "start_s": 353.132,
-         "start": "5:53"
+         "block": "pages-06-07_k02",
+         "start_s": 342.041,
+         "start": "5:42"
         },
         {
          "text": "grade B",
-         "block": "pages-06-07_k05",
-         "start_s": 361.691,
-         "start": "6:01"
-        },
-        {
-         "text": "a sample task",
-         "block": "pages-06-07_k07",
-         "start_s": 390.117,
-         "start": "6:30"
+         "block": "pages-06-07_k03",
+         "start_s": 358.891,
+         "start": "5:58"
         }
        ]
       },
       {
        "board": "pages-06-07_t2",
        "title": "The Writing test at a glance",
-       "start_s": 398.091,
-       "start": "6:38",
+       "start_s": 394.491,
+       "start": "6:34",
        "points": [
         {
          "text": "five things to know",
-         "block": "pages-06-07_k22",
-         "start_s": 398.091,
-         "start": "6:38"
+         "block": "pages-06-07_k05",
+         "start_s": 394.491,
+         "start": "6:34"
         },
         {
          "text": "what formal means",
-         "block": "pages-06-07_k09",
-         "start_s": 411.408,
-         "start": "6:51"
+         "block": "pages-06-07_k06",
+         "start_s": 407.808,
+         "start": "6:47"
         },
         {
          "text": "the shape of a formal letter",
-         "block": "pages-06-07_k10",
-         "start_s": 418.892,
-         "start": "6:58"
+         "block": "pages-06-07_k07",
+         "start_s": 415.292,
+         "start": "6:55"
         },
         {
          "text": "the word specific",
-         "block": "pages-06-07_k11",
-         "start_s": 439.513,
-         "start": "7:19"
+         "block": "pages-06-07_k08",
+         "start_s": 435.913,
+         "start": "7:15"
         },
         {
          "text": "your profession",
-         "block": "pages-06-07_k12",
-         "start_s": 454.312,
-         "start": "7:34"
+         "block": "pages-06-07_k09",
+         "start_s": 450.712,
+         "start": "7:30"
         },
         {
          "text": "reading time and writing time",
-         "block": "pages-06-07_k13",
-         "start_s": 477.392,
-         "start": "7:57"
+         "block": "pages-06-07_k10",
+         "start_s": 473.792,
+         "start": "7:53"
         },
         {
          "text": "the notes stay with you",
-         "block": "pages-06-07_k14",
-         "start_s": 493.202,
-         "start": "8:13"
+         "block": "pages-06-07_k11",
+         "start_s": 489.602,
+         "start": "8:09"
         },
         {
          "text": "the style",
-         "block": "pages-06-07_k15",
-         "start_s": 505.062,
-         "start": "8:25"
+         "block": "pages-06-07_k12",
+         "start_s": 501.462,
+         "start": "8:21"
         },
         {
          "text": "the body",
-         "block": "pages-06-07_k16",
-         "start_s": 518.562,
-         "start": "8:38"
+         "block": "pages-06-07_k13",
+         "start_s": 514.962,
+         "start": "8:34"
         },
         {
          "text": "a guide",
-         "block": "pages-06-07_k17",
-         "start_s": 538.924,
-         "start": "8:58"
+         "block": "pages-06-07_k14",
+         "start_s": 535.324,
+         "start": "8:55"
         },
         {
          "text": "too long or too short",
-         "block": "pages-06-07_k18",
-         "start_s": 547.143,
-         "start": "9:07"
+         "block": "pages-06-07_k15",
+         "start_s": 543.543,
+         "start": "9:03"
         },
         {
          "text": "my advice",
-         "block": "pages-06-07_k19",
-         "start_s": 562.692,
-         "start": "9:22"
+         "block": "pages-06-07_k16",
+         "start_s": 559.092,
+         "start": "9:19"
         }
        ]
       }
      ],
      "rules": [
       {
-       "block": "pages-06-07_k19",
+       "block": "pages-06-07_k16",
        "kind": "rule",
        "text": "My advice: ten or twelve words more or fewer do no harm.",
-       "start_s": 562.692,
-       "start": "9:22"
+       "start_s": 559.092,
+       "start": "9:19"
       }
      ],
      "terms": [
       {
-       "block": "pages-06-07_k09",
+       "block": "pages-06-07_k06",
        "label": "Meaning",
        "term": "Formal",
-       "start_s": 411.408,
-       "start": "6:51"
+       "start_s": 407.808,
+       "start": "6:47"
       }
      ],
      "wrong_examples": [],
@@ -48242,86 +48224,110 @@
       8
      ],
      "category": null,
-     "start_s": 586.922,
-     "start": "9:46",
-     "end_s": 844.356,
+     "start_s": 583.322,
+     "start": "9:43",
+     "end_s": 841.656,
      "topics": [
       {
        "board": "page-8_t1",
-       "title": "The case-notes paper: setting, notes, task",
-       "start_s": 586.922,
-       "start": "9:46",
+       "title": "the paper's head and the setting",
+       "start_s": 583.322,
+       "start": "9:43",
        "points": [
         {
-         "text": "the whole paper",
-         "block": "page-8_k12",
-         "start_s": 586.922,
-         "start": "9:46"
+         "text": "the paper's head and the setting",
+         "block": "page-8_k01",
+         "start_s": 583.322,
+         "start": "9:43"
         },
         {
          "text": "the setting",
          "block": "page-8_k02",
-         "start_s": 618.992,
-         "start": "10:18"
-        },
+         "start_s": 615.392,
+         "start": "10:15"
+        }
+       ]
+      },
+      {
+       "board": "page-8_t2",
+       "title": "the parts of the case notes",
+       "start_s": 646.925,
+       "start": "10:46",
+       "points": [
         {
-         "text": "the case notes",
-         "block": "page-8_k03",
-         "start_s": 649.991,
-         "start": "10:49"
-        },
+         "text": "the setting, then the notes, part by part",
+         "block": "page-8_k04",
+         "start_s": 646.691,
+         "start": "10:46"
+        }
+       ]
+      },
+      {
+       "board": "page-8_t3",
+       "title": "the Writing Task",
+       "start_s": 674.075,
+       "start": "11:14",
+       "points": [
         {
          "text": "the Writing Task tells you three things",
-         "block": "page-8_k04",
-         "start_s": 681.065,
-         "start": "11:21"
+         "block": "page-8_k06",
+         "start_s": 674.075,
+         "start": "11:14"
         },
         {
          "text": "In your answer: relevant",
-         "block": "page-8_k05",
-         "start_s": 705.47,
-         "start": "11:45"
+         "block": "page-8_k08",
+         "start_s": 702.47,
+         "start": "11:42"
         },
         {
          "text": "In your answer: expand",
-         "block": "page-8_k06",
-         "start_s": 731.639,
-         "start": "12:11"
-        },
+         "block": "page-8_k09",
+         "start_s": 728.639,
+         "start": "12:08"
+        }
+       ]
+      },
+      {
+       "board": "page-8_t4",
+       "title": "a note in the letter, and the rules",
+       "start_s": 749.165,
+       "start": "12:29",
+       "points": [
         {
          "text": "a relevant note, from the notes to the letter",
-         "block": "page-8_k07",
-         "start_s": 766.275,
-         "start": "12:46"
+         "block": "page-8_k10",
+         "start_s": 749.165,
+         "start": "12:29"
         },
         {
          "text": "an irrelevant note",
-         "block": "page-8_k09",
-         "start_s": 797.895,
-         "start": "13:17"
+         "block": "page-8_k12",
+         "start_s": 795.195,
+         "start": "13:15"
         },
         {
          "text": "no note form",
-         "block": "page-8_k10",
-         "start_s": 814.564,
-         "start": "13:34"
+         "block": "page-8_k13",
+         "start_s": 811.864,
+         "start": "13:31"
         },
         {
          "text": "the three parts of the paper",
-         "block": "page-8_k11",
-         "start_s": 827.585,
-         "start": "13:47"
+         "block": "page-8_k14",
+         "start_s": 824.885,
+         "start": "13:44"
         }
        ]
       }
      ],
      "rules": [
       {
-       "block": "page-8_k11",
+       "block": "page-8_k14",
        "kind": "rule",
        "text": "The paper has three parts: the setting, the case notes and the Writing Task.",
-       "start_s": 827.585,
-       "start": "13:47"
+       "start_s": 824.885,
+       "start": "13:44"
       }
      ],
      "terms": [],
@@ -48329,20 +48335,20 @@
      "practice": [],
      "refs": [
       {
-       "utterance": "page-8_t1.s3.u4",
+       "utterance": "page-8_t2.s1.u4",
        "lesson": "grammar-08-paraphrasing",
        "section": "page-4",
        "provenance": "source-derived",
-       "start_s": 668.765,
-       "start": "11:08"
+       "start_s": 665.465,
+       "start": "11:05"
       },
       {
-       "utterance": "page-8_t1.s5.u4",
+       "utterance": "page-8_t3.s2.u4",
        "lesson": "grammar-08-paraphrasing",
        "section": "page-6",
        "provenance": "source-derived",
-       "start_s": 718.815,
-       "start": "11:58"
+       "start_s": 715.815,
+       "start": "11:55"
       }
      ]
     },
@@ -48354,105 +48360,113 @@
       9
      ],
      "category": null,
-     "start_s": 844.356,
-     "start": "14:04",
-     "end_s": 1103.918,
+     "start_s": 841.656,
+     "start": "14:01",
+     "end_s": 1101.518,
      "topics": [
       {
        "board": "page-9_t1",
-       "title": "The parts of a letter",
-       "start_s": 844.356,
-       "start": "14:04",
+       "title": "the top of the letter",
+       "start_s": 841.656,
+       "start": "14:01",
        "points": [
         {
-         "text": "the whole letter",
-         "block": "page-9_k21",
-         "start_s": 844.356,
-         "start": "14:04"
+         "text": "the top of the letter",
+         "block": "page-9_k01",
+         "start_s": 841.656,
+         "start": "14:01"
         },
         {
          "text": "the address",
          "block": "page-9_k02",
-         "start_s": 861.455,
-         "start": "14:21"
+         "start_s": 858.755,
+         "start": "14:18"
         },
         {
          "text": "the date",
          "block": "page-9_k03",
-         "start_s": 874.573,
-         "start": "14:34"
+         "start_s": 871.873,
+         "start": "14:31"
         },
         {
          "text": "the greeting",
          "block": "page-9_k04",
-         "start_s": 885.474,
-         "start": "14:45"
+         "start_s": 882.774,
+         "start": "14:42"
         },
         {
-         "text": "Re",
+         "text": "the Re line",
          "block": "page-9_k05",
-         "start_s": 892.286,
-         "start": "14:52"
-        },
+         "start_s": 889.586,
+         "start": "14:49"
+        }
+       ]
+      },
+      {
+       "board": "page-9_t2",
+       "title": "from the introduction to the sign-off",
+       "start_s": 911.526,
+       "start": "15:11",
+       "points": [
         {
          "text": "the introduction",
          "block": "page-9_k07",
-         "start_s": 917.656,
-         "start": "15:17"
+         "start_s": 911.526,
+         "start": "15:11"
         },
         {
-         "text": "a new paragraph for a new topic",
+         "text": "the body paragraphs",
          "block": "page-9_k09",
-         "start_s": 938.425,
-         "start": "15:38"
+         "start_s": 936.025,
+         "start": "15:36"
         },
         {
-         "text": "the second body paragraph",
+         "text": "a second body paragraph",
          "block": "page-9_k10",
-         "start_s": 949.896,
-         "start": "15:49"
-        },
-        {
-         "text": "the word appreciate",
-         "block": "page-9_k11",
-         "start_s": 981.206,
-         "start": "16:21"
+         "start_s": 947.496,
+         "start": "15:47"
         },
         {
          "text": "the conclusion",
+         "block": "page-9_k11",
+         "start_s": 978.806,
+         "start": "16:18"
+        },
+        {
+         "text": "two requests",
          "block": "page-9_k12",
-         "start_s": 995.166,
-         "start": "16:35"
+         "start_s": 992.766,
+         "start": "16:32"
         },
         {
          "text": "the closing sentence",
          "block": "page-9_k14",
-         "start_s": 1018.305,
-         "start": "16:58"
+         "start_s": 1015.905,
+         "start": "16:55"
         },
         {
-         "text": "learn a few sentences",
+         "text": "my advice",
          "block": "page-9_k16",
-         "start_s": 1029.626,
-         "start": "17:09"
+         "start_s": 1027.226,
+         "start": "17:07"
         },
         {
          "text": "the sign-off",
          "block": "page-9_k17",
-         "start_s": 1050.697,
-         "start": "17:30"
+         "start_s": 1048.297,
+         "start": "17:28"
         },
         {
-         "text": "routine parts and the body",
+         "text": "the whole letter",
          "block": "page-9_k18",
-         "start_s": 1062.836,
-         "start": "17:42"
+         "start_s": 1060.436,
+         "start": "17:40"
         },
         {
-         "text": "counting on computer",
-         "block": "page-9_k20",
-         "start_s": 1088.366,
-         "start": "18:08"
+         "text": "the computer test",
+         "block": "page-9_k19",
+         "start_s": 1085.966,
+         "start": "18:05"
         }
        ]
       }
@@ -48462,8 +48476,8 @@
        "block": "page-9_k16",
        "kind": "rule",
        "text": "My advice: learn a few useful sentences like these, but do not memorise whole paragraphs.",
-       "start_s": 1029.626,
-       "start": "17:09"
+       "start_s": 1027.226,
+       "start": "17:07"
       }
      ],
      "terms": [
@@ -48471,8 +48485,8 @@
        "block": "page-9_k05",
        "label": "Meaning",
        "term": "Re",
-       "start_s": 892.286,
-       "start": "14:52"
+       "start_s": 889.586,
+       "start": "14:49"
       }
      ],
      "wrong_examples": [],
@@ -48485,27 +48499,21 @@
      "kind": "closing",
      "pages": [],
      "category": null,
-     "start_s": 1103.918,
-     "start": "18:23",
-     "end_s": 1145.318,
+     "start_s": 1101.518,
+     "start": "18:21",
+     "end_s": 1142.918,
      "topics": [
       {
        "board": "added-01_t1",
        "title": "Closing",
-       "start_s": 1103.918,
-       "start": "18:23",
+       "start_s": 1101.518,
+       "start": "18:21",
        "points": [
         {
          "text": "The three things to remember",
-         "block": "added-01_k04",
-         "start_s": 1103.918,
-         "start": "18:23"
-        },
-        {
-         "text": "The third thing",
-         "block": "added-01_k03",
-         "start_s": 1123.488,
-         "start": "18:43"
+         "block": "added-01_k01",
+         "start_s": 1105.848,
+         "start": "18:25"
         }
        ]
       }
@@ -48534,9 +48542,9 @@
      "note": null,
      "section": "page-4",
      "board": "page-4_t1",
-     "utterance": "page-4_t1.s2.u5",
-     "start_s": 158.101,
-     "start": "2:38"
+     "utterance": "page-4_t1.s1.u10",
+     "start_s": 156.901,
+     "start": "2:36"
     },
     {
      "fact": "writing-two-assessors",
@@ -48545,8 +48553,8 @@
      "section": "page-5",
      "board": "page-5_t1",
      "utterance": "page-5_t1.s4.u3",
-     "start_s": 239.921,
-     "start": "3:59"
+     "start_s": 238.721,
+     "start": "3:58"
     },
     {
      "fact": "writing-one-task",
@@ -48554,9 +48562,9 @@
      "note": null,
      "section": "pages-06-07",
      "board": "pages-06-07_t1",
-     "utterance": "pages-06-07_t1.s3.u1",
-     "start_s": 342.051,
-     "start": "5:42"
+     "utterance": "pages-06-07_t1.s2.u1",
+     "start_s": 340.051,
+     "start": "5:40"
     },
     {
      "fact": "writing-score-scale",
@@ -48564,9 +48572,9 @@
      "note": null,
      "section": "pages-06-07",
      "board": "pages-06-07_t1",
-     "utterance": "pages-06-07_t1.s4.u2",
-     "start_s": 353.451,
-     "start": "5:53"
+     "utterance": "pages-06-07_t1.s3.u2",
+     "start_s": 351.451,
+     "start": "5:51"
     },
     {
      "fact": "writing-grade-b",
@@ -48574,9 +48582,9 @@
      "note": null,
      "section": "pages-06-07",
      "board": "pages-06-07_t1",
-     "utterance": "pages-06-07_t1.s5.u1",
-     "start_s": 362.021,
-     "start": "6:02"
+     "utterance": "pages-06-07_t1.s3.u3",
+     "start_s": 359.221,
+     "start": "5:59"
     },
     {
      "fact": "writing-ielts",
@@ -48584,9 +48592,9 @@
      "note": null,
      "section": "pages-06-07",
      "board": "pages-06-07_t1",
-     "utterance": "pages-06-07_t1.s5.u3",
-     "start_s": 371.271,
-     "start": "6:11"
+     "utterance": "pages-06-07_t1.s3.u5",
+     "start_s": 368.471,
+     "start": "6:08"
     },
     {
      "fact": "writing-profession",
@@ -48595,8 +48603,8 @@
      "section": "pages-06-07",
      "board": "pages-06-07_t2",
      "utterance": "pages-06-07_t2.s5.u1",
-     "start_s": 454.662,
-     "start": "7:34"
+     "start_s": 451.062,
+     "start": "7:31"
     },
     {
      "fact": "writing-time",
@@ -48605,8 +48613,8 @@
      "section": "pages-06-07",
      "board": "pages-06-07_t2",
      "utterance": "pages-06-07_t2.s6.u1",
-     "start_s": 473.132,
-     "start": "7:53"
+     "start_s": 469.532,
+     "start": "7:49"
     },
     {
      "fact": "writing-reading-only",
@@ -48615,8 +48623,8 @@
      "section": "pages-06-07",
      "board": "pages-06-07_t2",
      "utterance": "pages-06-07_t2.s6.u3",
-     "start_s": 479.912,
-     "start": "7:59"
+     "start_s": 476.312,
+     "start": "7:56"
     },
     {
      "fact": "writing-notes-during-writing",
@@ -48625,8 +48633,8 @@
      "section": "pages-06-07",
      "board": "pages-06-07_t2",
      "utterance": "pages-06-07_t2.s7.u1",
-     "start_s": 493.432,
-     "start": "8:13"
+     "start_s": 489.832,
+     "start": "8:09"
     },
     {
      "fact": "writing-style",
@@ -48635,8 +48643,8 @@
      "section": "pages-06-07",
      "board": "pages-06-07_t2",
      "utterance": "pages-06-07_t2.s8.u2",
-     "start_s": 505.412,
-     "start": "8:25"
+     "start_s": 501.812,
+     "start": "8:21"
     },
     {
      "fact": "writing-body-counted",
@@ -48645,8 +48653,8 @@
      "section": "pages-06-07",
      "board": "pages-06-07_t2",
      "utterance": "pages-06-07_t2.s9.u2",
-     "start_s": 518.912,
-     "start": "8:38"
+     "start_s": 515.312,
+     "start": "8:35"
     },
     {
      "fact": "writing-word-guide",
@@ -48655,8 +48663,8 @@
      "section": "pages-06-07",
      "board": "pages-06-07_t2",
      "utterance": "pages-06-07_t2.s10.u1",
-     "start_s": 537.252,
-     "start": "8:57"
+     "start_s": 533.652,
+     "start": "8:53"
     },
     {
      "fact": "writing-length-signals",
@@ -48665,8 +48673,8 @@
      "section": "pages-06-07",
      "board": "pages-06-07_t2",
      "utterance": "pages-06-07_t2.s11.u1",
-     "start_s": 547.472,
-     "start": "9:07"
+     "start_s": 543.872,
+     "start": "9:03"
     },
     {
      "fact": "writing-address",
@@ -48675,8 +48683,8 @@
      "section": "page-9",
      "board": "page-9_t1",
      "utterance": "page-9_t1.s2.u1",
-     "start_s": 859.536,
-     "start": "14:19"
+     "start_s": 856.836,
+     "start": "14:16"
     },
     {
      "fact": "writing-re-line",
@@ -48685,28 +48693,28 @@
      "section": "page-9",
      "board": "page-9_t1",
      "utterance": "page-9_t1.s5.u2",
-     "start_s": 892.606,
-     "start": "14:52"
+     "start_s": 889.906,
+     "start": "14:49"
     },
     {
      "fact": "writing-sign-off",
      "text": "Sign with a job title, not your own name (writing-facts 25).",
      "note": "a job title, such as Doctor",
      "section": "page-9",
-     "board": "page-9_t1",
-     "utterance": "page-9_t1.s13.u2",
-     "start_s": 1051.026,
-     "start": "17:31"
+     "board": "page-9_t2",
+     "utterance": "page-9_t2.s8.u2",
+     "start_s": 1048.626,
+     "start": "17:28"
     },
     {
      "fact": "writing-computer-counter",
      "text": "On computer, the word counter counts every word typed, not only the body (writing-facts 17).",
      "note": null,
      "section": "page-9",
-     "board": "page-9_t1",
-     "utterance": "page-9_t1.s15.u1",
-     "start_s": 1088.716,
-     "start": "18:08"
+     "board": "page-9_t2",
+     "utterance": "page-9_t2.s10.u1",
+     "start_s": 1086.316,
+     "start": "18:06"
     }
    ],
    "methods": [
@@ -48716,8 +48724,8 @@
      "section": "page-5",
      "board": "page-5_t1",
      "utterance": "page-5_t1.s1.u1",
-     "start_s": 181.601,
-     "start": "3:01"
+     "start_s": 180.401,
+     "start": "3:00"
     },
     {
      "name": "The teacher's word-count advice",
@@ -48725,26 +48733,26 @@
      "section": "pages-06-07",
      "board": "pages-06-07_t2",
      "utterance": "pages-06-07_t2.s12.u1",
-     "start_s": 563.042,
-     "start": "9:23"
+     "start_s": 559.442,
+     "start": "9:19"
     },
     {
      "name": "Relevant or not",
      "text": "Keep the notes this reader needs, such as the patient's job when a cause at work is asked about; leave out the rest, such as hobbies.",
      "section": "page-8",
-     "board": "page-8_t1",
-     "utterance": "page-8_t1.s7.u5",
-     "start_s": 783.196,
-     "start": "13:03"
+     "board": "page-8_t4",
+     "utterance": "page-8_t4.s1.u5",
+     "start_s": 780.496,
+     "start": "13:00"
     },
     {
      "name": "The three parts of the case-notes paper",
      "text": "The setting (today's date, who you are, the patient), the case notes, and the Writing Task (letter type, reader, purpose).",
      "section": "page-8",
-     "board": "page-8_t1",
-     "utterance": "page-8_t1.s10.u1",
-     "start_s": 827.916,
-     "start": "13:47"
+     "board": "page-8_t4",
+     "utterance": "page-8_t4.s4.u1",
+     "start_s": 825.216,
+     "start": "13:45"
     }
    ],
    "vocabulary": [
@@ -48754,17 +48762,17 @@
      "lexicon": null,
      "section": "page-5",
      "block": "page-5_k04",
-     "start_s": 237.016,
-     "start": "3:57"
+     "start_s": 235.816,
+     "start": "3:55"
     },
     {
      "word": "specific",
      "kind": "gloss",
      "lexicon": null,
      "section": "pages-06-07",
-     "block": "pages-06-07_k11",
-     "start_s": 439.513,
-     "start": "7:19"
+     "block": "pages-06-07_k08",
+     "start_s": 435.913,
+     "start": "7:15"
     },
     {
      "word": "assume",
@@ -48772,26 +48780,26 @@
      "lexicon": null,
      "section": "page-8",
      "block": "page-8_k02",
-     "start_s": 618.992,
-     "start": "10:18"
+     "start_s": 615.392,
+     "start": "10:15"
     },
     {
      "word": "relevant",
      "kind": "gloss",
      "lexicon": null,
      "section": "page-8",
-     "block": "page-8_k05",
-     "start_s": 705.47,
-     "start": "11:45"
+     "block": "page-8_k08",
+     "start_s": 702.47,
+     "start": "11:42"
     },
     {
      "word": "expand",
      "kind": "gloss",
      "lexicon": null,
      "section": "page-8",
-     "block": "page-8_k06",
-     "start_s": 731.639,
-     "start": "12:11"
+     "block": "page-8_k09",
+     "start_s": 728.639,
+     "start": "12:08"
     },
     {
      "word": "appreciate",
@@ -48799,8 +48807,8 @@
      "lexicon": null,
      "section": "page-9",
      "block": "page-9_k11",
-     "start_s": 981.206,
-     "start": "16:21"
+     "start_s": 978.806,
+     "start": "16:18"
     }
    ],
    "withheld": {
@@ -59182,8 +59190,8 @@
     {
      "lesson": "writing-01-overview",
      "section": "page-9",
-     "start_s": 844.356,
-     "start": "14:04",
+     "start_s": 841.656,
+     "start": "14:01",
      "source": "section"
     }
    ]
@@ -59729,8 +59737,8 @@
     {
      "lesson": "writing-01-overview",
      "section": "page-8",
-     "start_s": 827.916,
-     "start": "13:47",
+     "start_s": 825.216,
+     "start": "13:45",
      "source": "curated"
     }
    ]
@@ -59833,8 +59841,8 @@
     {
      "lesson": "writing-01-overview",
      "section": "page-9",
-     "start_s": 1018.636,
-     "start": "16:58",
+     "start_s": 1016.236,
+     "start": "16:56",
      "source": "curated"
     }
    ]
@@ -61986,8 +61994,8 @@
     {
      "lesson": "writing-01-overview",
      "section": "page-9",
-     "start_s": 852.716,
-     "start": "14:12",
+     "start_s": 850.016,
+     "start": "14:10",
      "source": "curated"
     }
    ]
@@ -63238,8 +63246,8 @@
     {
      "lesson": "writing-01-overview",
      "section": "page-5",
-     "start_s": 181.601,
-     "start": "3:01",
+     "start_s": 180.401,
+     "start": "3:00",
      "source": "section"
     }
    ]
@@ -63526,8 +63534,8 @@
     {
      "lesson": "writing-01-overview",
      "section": "page-8",
-     "start_s": 586.922,
-     "start": "9:46",
+     "start_s": 583.322,
+     "start": "9:43",
      "source": "section"
     }
    ]
@@ -63923,8 +63931,8 @@
     {
      "lesson": "writing-01-overview",
      "section": "pages-06-07",
-     "start_s": 318.001,
-     "start": "5:18",
+     "start_s": 316.801,
+     "start": "5:16",
      "source": "section"
     }
    ]
@@ -64561,8 +64569,8 @@
     {
      "lesson": "writing-01-overview",
      "section": "pages-06-07",
-     "start_s": 518.912,
-     "start": "8:38",
+     "start_s": 515.312,
+     "start": "8:35",
      "source": "curated"
     }
    ]
@@ -64649,8 +64657,8 @@
  "totals": {
   "lessons": 29,
   "sections": 273,
-  "topics": 632,
-  "teaching_points": 4566,
+  "topics": 636,
+  "teaching_points": 4562,
   "rules": 284,
   "warnings": 66,
   "terms": 488,
