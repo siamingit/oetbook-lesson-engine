@@ -282,3 +282,35 @@ v1 kept its draft folder (fixed in its own pull request: the newest draft).
 Proven by the render comparison: `before-w07s` (main's code) and `after-w07s` (this change), 2026-11-01, with Writing 7
 in the teal look: **27 of 28 other built lessons identical** (823 data files, 164,110 moments), no board timing
 difference; Writing 7 differs, as intended (its stylesheet, bundle and text: 7 files, 308 moments of boards 07 and 20).
+
+## Amendment (4), 2026-11-01: long pieces fit without shrinking (Writing 5's redesign)
+
+**Context.** Writing 5 (Information Flow) was redesigned in the teal look under the owner's brief of 2026-11-01 (Word
+Order as the model). Its readability check (`check_text_size.py`) on the silent preview found two places where a
+pattern or the paper could not be drawn at rule 1's sizes, so the player's guard shrank the whole board (a third, the
+path's and the timeline's notes in the hand, was put right by amendment (3) the same day):
+
+- a table of a label and its words with nine rows (the nine families of signal words) in `columns` was taller than
+  the board at the look's table floor;
+- the look's paper sheet is set at 4.5% of the frame (the owner's addendum (3): a sheet uses the board). That suits a
+  short piece of the paper. A page of eight dated entries, with the note under it, cannot fit at that size.
+
+**Decision** (rule 1: where content does not fit, the layout changes and the text is never set smaller):
+
+1. A table of two columns and eight rows or more in `columns` is drawn in two halves side by side, read down the first
+   half and then the second (`data-flow="2"`). Each row keeps its label and its words, the label column at 30% of its
+   half. The columns' names are not drawn, because the labels name each row.
+2. A sheet of the paper with six rows or more, in a lesson in the teal look, takes the fit's size and is never set under
+   the look's table floor of 2.9% (`data-long`). A shorter sheet stays at 4.5%.
+3. The paper beside the letter at the long letter's size (amendment (3)'s `paper-long`, 3.3% of the frame, 29.7 px),
+   **chosen for a block** with the layout `paperlong`, in the teal look only. The site's player has a shorter room than
+   the reference player. On Writing 5's draft package (`check_site_player.py`) four boards were drawn at 91 to 96%:
+   each is a paper beside a letter whose paper and letter together run past 330 characters. Those boards are named, not
+   matched by length, because a rule on that length would also reach Writing 6's and Writing 7's built boards.
+
+Each rule is written only into a lesson that has such a block: the attribute is set by `layout_html`, and
+`layout_css` appends `columns2`, `sheetlong` or `paper_long` only where it finds one. No other lesson's bundle or stylesheet changes,
+Word Order's included.
+
+**Consequences.** No other built lesson changes. Proven by the render comparison (runbook, "Changing shared code"): `render_compare.py` snapshots `before-w5p` and `before-w5pr` on main at 8ea1f17, then `after-w5p` and `after-w5pr` on this change, 2026-11-02: **27 of 27 other built lessons identical**, 820 data files byte for byte and 163,572 moments at the phone and laptop frames drawn identically, with no board timing difference. Word Order and Writing 7 are among them. Reading 5 is outside the proof, as before. Writing 5 is outside it as well: it is the lesson this change is for, and it names `paperlong`, which main's code does not have. No other built lesson has a block any rule reaches: Writing 7's sheets have three rows, its `columns` table five, and no lesson but Writing 5 names `paperlong`. An earlier form of the change, without `paperlong` (on main at c9ffabd, Writing 5 not yet redesigned), was proven the same way: 28 of 28 identical.
+Writing 5 is redrawn under these rules. On the engine's player the readability check finds 0 findings in 356 moments; on the site's player `check_site_player.py` finds 0 failures in 112 moments.

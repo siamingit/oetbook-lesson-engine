@@ -620,6 +620,9 @@ LAYOUTS = {
     "choices": (("table",), False, None),               # 9  short phrases as coloured choice pills
     "path": (("table",), False, (1, 2)),                # 10 numbered steps on a curved path
     "compare": (("comparison", "table"), False, (2,)),  # 11 two things side by side, each framed, its head a pill
+    # ADR 050 amendment (4): the paper beside the letter at the long letter's size (`paper-long`), chosen for a board
+    # whose paper and letter do not fit the site's player at the paper's own size
+    "paperlong": (("table",), False, (3,)),
 }
 # The teal look's layouts (ADR 050), their rules appended only where used
 ADR050_LAYOUTS = ("wrongright", "coded", "opener", "timeline", "columns", "parts", "badges", "ruled",
@@ -632,6 +635,11 @@ T_TRIO = (4, 0, 3, 1, 2)
 # this flows in two columns, so its words keep their full size (rule 1); a note in the teacher's hand is short, about
 # 15 words at most (rule 2): a longer one is set in print (class `t-print`)
 PARTS_FLOW_CHARS = 700
+# rule 1 again: a table of two columns this long, in `columns`, is drawn in two halves side by side; a sheet of the
+# paper this long, in the teal look, takes the fit's size (never under the look's table floor) instead of the look's
+# 4.5%, which holds a short piece of the paper
+COLUMNS_FLOW_ROWS = 8
+SHEET_LONG_ROWS = 6
 HAND_WORDS = 15
 HAND_TYPES = ("plain", "callout", "category_card")
 # ADR 050 amendment (3), rule 7: a contents title longer than this, of five words or fewer, cannot keep a line of three
@@ -866,6 +874,8 @@ def _teal_root_attrs(layout: str, header: list, rows: list) -> str:
     if layout == "choices" and header and not all(h.strip() for h in header) and header[0].strip():
         out += ' data-titled=""'
     if layout == "parts" and sum(len(_text(r[-1])) for r in rows) > PARTS_FLOW_CHARS:
+        out += ' data-flow="2"'
+    if layout == "columns" and ncol == 2 and len(rows) >= COLUMNS_FLOW_ROWS:
         out += ' data-flow="2"'
     return out
 
@@ -1563,6 +1573,23 @@ LAYOUT_CSS.update({
   box-shadow:none}
 .tbl.core.lay.lay-compare.spot tbody tr.focus{box-shadow:none;transform:none}
 """,
+    # ADR 050 amendment (4): a long table of a label and its words in two halves side by side, read down the
+    # first, then the second; each row keeps its label and its words; the columns' names are not drawn (the labels
+    # name each row)
+    "columns2": r"""
+.tbl.lay.lay-columns[data-flow="2"] thead{display:none}
+.tbl.lay.lay-columns[data-flow="2"] tbody{display:grid;grid-auto-flow:column;column-gap:2.4cqw;
+  grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(var(--fr,4),auto)}
+.tbl.lay.lay-columns[data-flow="2"] tbody tr{grid-template-columns:minmax(0,30%) minmax(0,1fr)}
+.tbl.lay.lay-columns[data-flow="2"]:is([data-n="9"],[data-n="10"]){--fr:5}
+.tbl.lay.lay-columns[data-flow="2"]:is([data-n="11"],[data-n="12"]){--fr:6}
+.tbl.lay.lay-columns[data-flow="2"]:is([data-n="13"],[data-n="14"]){--fr:7}
+""",
+    # ADR 050 amendment (4): a long sheet of the paper (six rows or more) at the fit's size, never under the
+    # look's table floor, so its dated entries and the note under them fit the board at full size
+    "sheetlong": r"""
+.frame .tbl.lay.lay-paper[data-paper="sheet"][data-long] table{font-size:max(var(--tf,2.9cqh),2.9cqh)}
+""",
 })
 # The owner's two Writing 7 layouts in the teal look (ADR 050 amendment (3)): his ISBAR letters and his letter
 # skeletons keep their design and take the look's colours, pills and sheets. Appended after the layouts' own rules,
@@ -1692,6 +1719,7 @@ LAYOUT_CSS["crit_teal"] = r"""
 """
 
 ROOT_CLASS = re.compile(r'^<div class="([^"]*)"')
+ROOT_TAG = re.compile(r"^<div[^>]*>")
 
 
 def layout_css(blocks: dict, look: str | None = None) -> str:
@@ -1714,6 +1742,10 @@ def layout_css(blocks: dict, look: str | None = None) -> str:
             used.add("pair")
         if "lay-paper" in cls:
             used.add("paper")
+            if ' data-long=""' in ROOT_TAG.match(b["html"]).group(0):
+                used.add("sheetlong")
+        if "lay-columns" in cls and ' data-flow="2"' in ROOT_TAG.match(b["html"]).group(0):
+            used.add("columns2")
         if "lay-acronym" in cls:
             used.add("acronym")
         if "lay-skeleton" in cls:
@@ -1830,8 +1862,15 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
         why = check_layout(b.get("id", "?"), b, layout)
         if why:
             raise SystemExit("REFUSED: sections.json block_layouts: " + why)
+        if layout == "paperlong" and look != "teal":
+            raise SystemExit(f"REFUSED: sections.json block_layouts: {b.get('id')}: 'paperlong' is the teal look's")
         if t == "table":
-            html = _table_html(b, html, layout)
+            html = _table_html(b, html, "paper" if layout == "paperlong" else layout)
+            if layout == "paperlong":
+                html = _add_root(html, "paper-long")
+            if look == "teal" and layout == "paper" and len(b.get("header") or []) == 2 and \
+                    len(b.get("rows") or []) >= SHEET_LONG_ROWS:
+                html = _add_root(html, attrs=' data-long=""')
         elif layout == "compare":
             html = _add_root(compare_heads(html), "lay-compare")
         elif layout == "badges":
