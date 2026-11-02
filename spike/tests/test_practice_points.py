@@ -34,6 +34,16 @@ SELFCHECK = {"item_id": "oa-writing-900001", "type": "selfcheck", "number": 1,
              "tags": {"practises": ["writing.purpose.introduction"]}, "version": 1, "status": "active"}
 
 
+MARKING = {"key_points": ["the frame: I am writing to refer"],
+           "rule": "A referral opens with I am writing to refer.",
+           "common_errors": [{"wrong": "the request frame", "why": "The plan says refer."}]}
+AI_TEXT = dict(TEXT, scoring=dict(TEXT["scoring"], method="ai"), marking=MARKING, version=2)
+AI_SELF = dict(SELFCHECK, scoring={"method": "ai"}, version=2,
+               marking={"key_points": ["the frame", "his title and full name: Mr Tom Hale", "his age: a 16-year-old"],
+                        "rule": "The opening gives the frame, who the patient is and what you ask.",
+                        "common_errors": [{"wrong": "no article before the age", "why": "A countable noun needs a or an."}]})
+
+
 def utt(uid, cues):
     return {"id": uid, "cues": cues}
 
@@ -121,6 +131,19 @@ class PracticePoints(unittest.TestCase):
             (board(), {"frame": dict(POINT, items=[dict(SELFCHECK, item_id="oa-writing-900000")])}, "SELFCHECK-POINT"),
             (board(), {"frame": dict(POINT, items=[dict(SELFCHECK, item_id="oa-writing-900000",
                                                         points=SELFCHECK["points"][:1])])}, "2 to 10 points"),
+            # AI-assisted marking (contracts 1.14.0): the two fields go together, and no common error is a form
+            (board(), {"frame": dict(POINT, items=[dict(TEXT, scoring=dict(TEXT["scoring"], method="ai"))])}, "MARKING-AI"),
+            (board(), {"frame": dict(POINT, items=[dict(TEXT, marking=MARKING)])}, "MARKING-AI"),
+            (board(), {"frame": dict(POINT, items=[dict(AI_TEXT, marking=dict(MARKING, common_errors=[
+                {"wrong": "I'm writing to refer", "why": "x"}]))])}, "accepted form"),
+            (board(), {"frame": dict(POINT, items=[dict(AI_TEXT, marking=dict(MARKING, key_points=[]))])}, "key_points"),
+            (board(), {"frame": dict(POINT, items=[dict(AI_TEXT, marking=dict(MARKING, common_errors=[
+                {"wrong": "x", "why": "y", "fix": "z"}]))])}, "common_errors"),
+            (board(), {"frame": dict(POINT, items=[dict(TEXT, scoring=dict(TEXT["scoring"], method="exact"))])}, "scoring.method"),
+            (board(pause_text="practice: whole"), {"whole": dict(POINT, items=[dict(SELFCHECK, scoring={"method": "ai"})])},
+             "MARKING-AI"),
+            (board(pause_text="practice: whole"), {"whole": dict(POINT, items=[dict(AI_SELF, marking=dict(
+                AI_SELF["marking"], common_errors=[{"wrong": SELFCHECK["model"], "why": "x"}]))])}, "the model"),
         ]
         for bd, points, why in cases:
             with self.subTest(why=why), self.assertRaises(SystemExit) as e:
@@ -137,6 +160,21 @@ class PracticePoints(unittest.TestCase):
         self.assertEqual(pp.content_hash(SELFCHECK), pp.content_hash(tagged))
         self.assertNotEqual(pp.content_hash(SELFCHECK), pp.content_hash(
             dict(SELFCHECK, points=[dict(SELFCHECK["points"][0], text="Other"), SELFCHECK["points"][1]])))
+
+    def test_ai_marking_is_built_and_hashed(self):
+        """Contracts 1.14.0: `scoring.method: "ai"` and `marking` are carried whole, and are content (a new
+        hash, so a new item version); a self-check takes {method: ai} with its marking."""
+        bd = board()
+        self.assertTrue(pp.attach(self.lesson({"frame": dict(POINT, items=[AI_TEXT])}), [bd]))
+        it = bd["states"][0]["practice"][0]["items"][0]
+        self.assertEqual((it["scoring"]["method"], it["marking"], it["version"]), ("ai", MARKING, 2))
+        self.assertNotEqual(pp.content_hash(TEXT), pp.content_hash(AI_TEXT))
+        self.assertNotEqual(pp.content_hash(AI_TEXT), pp.content_hash(dict(AI_TEXT, marking=dict(MARKING, rule="Other."))))
+        bd = board(pause_text="practice: whole")
+        self.assertTrue(pp.attach(self.lesson({"whole": dict(POINT, items=[AI_SELF])}), [bd]))
+        it = bd["states"][0]["practice"][0]["items"][0]
+        self.assertEqual((it["scoring"], it["marking"]["key_points"][1]), ({"method": "ai"}, "his title and full name: Mr Tom Hale"))
+        self.assertNotEqual(pp.content_hash(SELFCHECK), pp.content_hash(AI_SELF))
 
     def test_an_errorspot_is_built(self):
         bd = board()

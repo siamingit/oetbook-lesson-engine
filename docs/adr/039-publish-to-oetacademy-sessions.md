@@ -513,3 +513,49 @@ brief of 2026-10-31 asked the engine to use it, starting with Writing 4.
 - The owner sees each lesson exactly as learners will, a few minutes after it is sent, before he approves it.
 - Fixes for differences between the engine's preview player and the site's are no longer made in the engine.
 - To reverse: a new amendment; the site's drafts stay a separate channel that a final release never touches.
+
+## Amendment — 2026-11-02: contracts 1.14.0 pinned (AI-assisted marking of typed practice answers; bundle format stays 1.23)
+
+### Context
+
+The site marks a learner's typed practice answer with AI help since 2026-11-01 (oetacademy-web ADR-0041; its issue #221
+is the specification for the engine; #225 the marking service, in production). Contracts `contracts-v1.14.0` (released
+2026-11-01, `oetacademy-contracts-1.14.0.zip`, SHA-256 `36977c417127aa6df7dba6a5b46d73207afa44be27afee0034d64adb85e8f313`)
+add the item fields: `scoring.method: "ai"` on a typed unit (a `text` item, a gapfill `gap`) and `{"method": "ai"}` on a
+`selfcheck`, each with `marking` (`key_points`, 1 to 8 short phrases; `rule`, one sentence; `common_errors`, 0 to 8 of
+`{wrong, why}`). The site marks deterministically first (an accepted form is Correct with no model call) and sends only
+a non-matching answer to its model with the unit's own data; the learner gets Correct, Not quite or Incorrect and one
+sentence; nothing typed is stored; when the model is off, slow or over budget the pop-up behaves as before. Additive:
+every 1.13.0 document stays valid, and an item without the fields is marked exactly as before. The owner's brief of
+2026-11-02 (Writing 4 in the teal look, with the site's AI marking on its practice points) asked the engine to pin it.
+
+### Decision
+
+1. **The lock** (`spike/publish/contracts.lock.json`) names `contracts-v1.14.0` and that SHA-256; the zip downloaded
+   with `gh` had that hash.
+2. **What 1.14.0 adds** (its release notes): `$defs/markingData` and an optional `marking` on `textItem`, `gap` and
+   `selfcheckItem` (`x-oa-visibility: after-submission`, inside `content_hash`); `typedScoring.method`, optional, `"ai"`
+   its only value; `selfcheckItem.scoring.method` takes `"ai"` beside `"self-check"`; the rule `MARKING-AI` (`LP-` in a
+   practice point: `method: "ai"` needs `marking`, `marking` goes with `method: "ai"`, no `common_errors[].wrong` is an
+   accepted form or the model) and `RP-MARKING-NOT-ALLOWED` (neither field in an exam part). Unchanged: the bundle
+   format (1.23), the session section tag list, taxonomy v2 and v3, the professions, and every rule for formats 1.8 to
+   1.23.
+3. **The engine's builder** (`practice_points.check_item`) ports `MARKING-AI`, so a lesson is refused before it is
+   built: the two fields go together; `key_points` 1 to 8 non-empty phrases, `rule` a non-empty sentence,
+   `common_errors` 0 to 8 of `{wrong, why}` and nothing else; no `wrong` equals an accepted form, or a self-check's model,
+   case, spacing and end punctuation aside; a typed unit's `scoring.method` is `"ai"` or absent. The fields are content:
+   a unit that gains them takes a new `content_hash`, and the lesson's generator raises its item `version` (the site's
+   data model: a new hash is a higher version). The reference player ignores the fields and marks by accepted forms,
+   as the site does when its model cannot answer. The rest of the 1.14.0 rules are checked by the site's own validator
+   at the tag (a clone of oetacademy-web at `contracts-v1.14.0`, `pnpm contracts:validate lesson <package folder>
+   --refuse-fixtures`, 0 errors), as before.
+4. **How the marking data is written**: docs/03-RUNBOOK.md, "Practice points: marking data for the site's AI marking".
+5. **Every earlier package still validates as before**: every package folder in the library checked with the engine's
+   check under contracts 1.13.0 and under 1.14.0: the same findings, line for line (the count and the result are in the
+   pull request).
+
+### Consequences
+
+- A lesson republished with the fields gets AI marking on those units at once, drafts included; a lesson without them is
+  unchanged. The tests that name the pinned version name 1.14.0.
+- To reverse: a new amendment pinning another release; the lock and this record change together.
