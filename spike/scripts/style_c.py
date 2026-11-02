@@ -623,6 +623,9 @@ LAYOUTS = {
     # ADR 050 amendment (4): the paper beside the letter at the long letter's size (`paper-long`), chosen for a board
     # whose paper and letter do not fit the site's player at the paper's own size
     "paperlong": (("table",), False, (3,)),
+    # ADR 050 amendment (5): the paper beside the letter at the fit's size (never under 2.9%), chosen for a board that
+    # does not fit the site's player at 3.3% either
+    "paperfit": (("table",), False, (3,)),
 }
 # The teal look's layouts (ADR 050), their rules appended only where used
 ADR050_LAYOUTS = ("wrongright", "coded", "opener", "timeline", "columns", "parts", "badges", "ruled",
@@ -631,6 +634,9 @@ ADR050_LAYOUTS = ("wrongright", "coded", "opener", "timeline", "columns", "parts
 T_ROW_COLOURS = ("opener", "timeline", "parts", "badges", "path")
 # three of a kind (badges on cards) take teal, amber and coral first, as on the owner's slides
 T_TRIO = (4, 0, 3, 1, 2)
+# a pill or a tile that carries a verdict (its label, or its own words) takes the verdict's colour (ADR 050 amendment
+# (5)): keep teal, keep briefly amber, leave out coral, the handouts' three answers (BIN_LANES)
+VERDICT_COLOUR = {"keep": 4, "keep briefly": 0, "leave out": 3}
 # ADR 050 amendment (1) (the owner's review of Word Order draft.3, 2026-11-01): a letter on its parts longer than
 # this flows in two columns, so its words keep their full size (rule 1); a note in the teacher's hand is short, about
 # 15 words at most (rule 2): a longer one is set in print (class `t-print`)
@@ -639,7 +645,8 @@ PARTS_FLOW_CHARS = 700
 # paper this long, in the teal look, takes the fit's size (never under the look's table floor) instead of the look's
 # 4.5%, which holds a short piece of the paper
 COLUMNS_FLOW_ROWS = 8
-SHEET_LONG_ROWS = 6
+SHEET_LONG_ROWS = 6             # rows, or lines drawn (amendment (5)): a row of several lines counts each
+SHEET_LINE_CHARS = 70           # about a line of the sheet at 4.5% of the frame: a longer line counts its wraps
 HAND_WORDS = 15
 HAND_TYPES = ("plain", "callout", "category_card")
 # ADR 050 amendment (3), rule 7: a contents title longer than this, of five words or fewer, cannot keep a line of three
@@ -727,6 +734,17 @@ def _cells(tr: str) -> list[str]:
     return re.findall(r"<td[^>]*>.*?</td>", tr, re.S)
 
 
+def _verdict_colour(header: list, c: int, txt: str, default: int) -> int:
+    """The colour of a pill or a tile: its verdict's (VERDICT_COLOUR), read from its column's label or, when the
+    header names no label for it, from its own words; else the colour in turn it would take."""
+    label = header[c] if header and c < len(header) and header[c].strip() else ""
+    for cand in (label, _text(txt)):
+        k = cand.strip().rstrip(":").strip().lower()
+        if k in VERDICT_COLOUR:
+            return VERDICT_COLOUR[k]
+    return default
+
+
 def _table_html(b: dict, html: str, layout: str) -> str:
     header = b.get("header") or []
     rows = b.get("rows") or []
@@ -740,7 +758,7 @@ def _table_html(b: dict, html: str, layout: str) -> str:
         if labelled and (c >= 1 or layout in ("pieces", "coded", "choices")) and c < len(header) and header[c].strip():
             out += f' data-label="{_html.escape(header[c], quote=True)}"'
         if layout == "coded":
-            out += f' data-c="{c % 5}"'
+            out += f' data-c="{_verdict_colour(header, c, txt, c % 5)}"'
         if layout == "beforeafter":
             out += f' data-count="{len(WORD.findall(_text(txt)))}"'
         return out
@@ -806,7 +824,7 @@ def _table_html(b: dict, html: str, layout: str) -> str:
                 elif not txt.strip() and r > last_txt[c]:
                     attrs += ' data-after=""'           # past the letter's end: its sheet has ended
             if layout == "choices":
-                attrs += f' data-c="{(r * len(row) + c) % 5}"'
+                attrs += f' data-c="{_verdict_colour(header, c, txt, (r * len(row) + c) % 5)}"'
             if layout == "parts" and c == 1 and not txt.strip():
                 attrs += ' data-dash=""'                # a part not written out: grey lines, never a word
             if layout in ("cards", "stack") and c >= 1 and header and \
@@ -856,6 +874,16 @@ def _table_html(b: dict, html: str, layout: str) -> str:
             html = html[:i] + path_curve(n) + html[i:]
         return html
     return _add_root(html, "lay lay-" + layout + size)
+
+
+def sheet_lines(rows: list) -> int:
+    """The lines a sheet of the paper draws (ADR 050 amendment (5)): a row's cells are set line by line (" / "
+    between the paper's lines, as its generators join them; the paper layout draws each on its own line), so a row
+    of several lines counts each of them, and a line longer than SHEET_LINE_CHARS counts the lines it wraps to at
+    the sheet's size; the taller cell counts."""
+    def lines(cell) -> int:
+        return sum(max(1, -(-len(_text(x).strip()) // SHEET_LINE_CHARS)) for x in str(cell).split(" / "))
+    return sum(max([lines(c) for c in r] or [1]) for r in rows)
 
 
 def _teal_root_attrs(layout: str, header: list, rows: list) -> str:
@@ -1706,10 +1734,36 @@ LAYOUT_CSS["contents_one"] = r"""
 .frame #cam:has(> .blk.citem.ct-one) > .blk.citem{gap:1.4cqw;--t-cr:5cqh}
 .frame #cam:has(> .blk.citem.ct-one) .citem .cnum{width:10cqh;height:10cqh;font-size:4.6cqh}
 """
+LAYOUT_CSS["contents_nine"] = r"""
+/* nine or ten contents items (ADR 050 amendment (5)): two columns of five rows, read down the first column and
+   then the second; the set one step smaller (one size for the set), so five rows fit the board */
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem{min-height:13.2cqh;gap:1.4cqw;--t-cr:4.6cqh}
+.frame #cam:has(> .blk.citem:nth-child(9)) .citem .cnum{width:9.2cqh;height:9.2cqh;font-size:4.2cqh}
+.frame #cam:has(> .blk.citem:nth-child(9)) .citem .ct{font-size:3.6cqh}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(1){order:1}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(2){order:3}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(3){order:5}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(4){order:7}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(5){order:9}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(6){order:2}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(7){order:4}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(8){order:6}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(9){order:8}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(10){order:10}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(4)::after,
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(5)::before{content:""}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(5)::after,
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(6)::before{content:none}
+"""
 LAYOUT_CSS["paper_long"] = r"""
 /* a long letter beside its paper in the teal look (ADR 050 amendment (3)): the paper and the letter at 3.3% of the
    frame, so they and the board's note fit at full size on the site's player too */
 .frame .tbl.lay.lay-paper.paper-long table{font-size:max(var(--tf,2.6cqh),3.3cqh)}
+"""
+LAYOUT_CSS["paper_fit"] = r"""
+/* the paper beside the letter at the fit's size in the teal look (ADR 050 amendment (5)), never under 2.9% (26 px):
+   for a board that the site's player, with its shorter room, does not draw whole at 3.3% either */
+.frame .tbl.lay.lay-paper.paper-fit table{font-size:max(var(--tf,2.6cqh),2.9cqh)}
 """
 LAYOUT_CSS["crit_teal"] = r"""
 /* the criterion's card in the teal look: its monogram at the label size or more (ADR 050 amendment (3), rule 1) */
@@ -1767,8 +1821,12 @@ def layout_css(blocks: dict, look: str | None = None) -> str:
             used.add("crit_teal")
     if any("ct-one" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split()) for b in blocks.values()):
         used.add("contents_one")
+    if look == "teal" and sum(1 for b in blocks.values() if b.get("type") == "contents_item") >= 9:
+        used.add("contents_nine")           # ADR 050 amendment (5): two columns of five rows
     if any("paper-long" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split()) for b in blocks.values()):
         used.add("paper_long")
+    if any("paper-fit" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split()) for b in blocks.values()):
+        used.add("paper_fit")
     return "".join(LAYOUT_CSS[k] for k in LAYOUT_CSS if k in used)
 
 
@@ -1862,14 +1920,16 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
         why = check_layout(b.get("id", "?"), b, layout)
         if why:
             raise SystemExit("REFUSED: sections.json block_layouts: " + why)
-        if layout == "paperlong" and look != "teal":
-            raise SystemExit(f"REFUSED: sections.json block_layouts: {b.get('id')}: 'paperlong' is the teal look's")
+        if layout in ("paperlong", "paperfit") and look != "teal":
+            raise SystemExit(f"REFUSED: sections.json block_layouts: {b.get('id')}: {layout!r} is the teal look's")
         if t == "table":
-            html = _table_html(b, html, "paper" if layout == "paperlong" else layout)
+            html = _table_html(b, html, "paper" if layout in ("paperlong", "paperfit") else layout)
             if layout == "paperlong":
                 html = _add_root(html, "paper-long")
+            if layout == "paperfit":
+                html = _add_root(html, "paper-fit")
             if look == "teal" and layout == "paper" and len(b.get("header") or []) == 2 and \
-                    len(b.get("rows") or []) >= SHEET_LONG_ROWS:
+                    sheet_lines(b.get("rows") or []) >= SHEET_LONG_ROWS:
                 html = _add_root(html, attrs=' data-long=""')
         elif layout == "compare":
             html = _add_root(compare_heads(html), "lay-compare")
