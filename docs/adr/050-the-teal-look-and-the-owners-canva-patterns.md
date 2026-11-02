@@ -314,3 +314,41 @@ Word Order's included.
 
 **Consequences.** No other built lesson changes. Proven by the render comparison (runbook, "Changing shared code"): `render_compare.py` snapshots `before-w5p` and `before-w5pr` on main at 8ea1f17, then `after-w5p` and `after-w5pr` on this change, 2026-11-02: **27 of 27 other built lessons identical**, 820 data files byte for byte and 163,572 moments at the phone and laptop frames drawn identically, with no board timing difference. Word Order and Writing 7 are among them. Reading 5 is outside the proof, as before. Writing 5 is outside it as well: it is the lesson this change is for, and it names `paperlong`, which main's code does not have. No other built lesson has a block any rule reaches: Writing 7's sheets have three rows, its `columns` table five, and no lesson but Writing 5 names `paperlong`. An earlier form of the change, without `paperlong` (on main at c9ffabd, Writing 5 not yet redesigned), was proven the same way: 28 of 28 identical.
 Writing 5 is redrawn under these rules. On the engine's player the readability check finds 0 findings in 356 moments; on the site's player `check_site_player.py` finds 0 failures in 112 moments.
+
+## Amendment (5), 2026-11-02: a contents of nine items, and a sheet long by its lines (Writing 3's redesign)
+
+**Context.** Writing 3 (Letter Structure) was redesigned in the teal look under the owner's brief of 2026-11-02 (Word
+Order, Information Flow and Organising the Letter as the model). Two things in the shared code fell short: the
+contents board's two columns (amendment (1), rule 4) are written for six to eight items, and Writing 3 lists nine
+(its ninth item took no `order`, so it was drawn first); and a sheet of the paper is long (amendment (4), `data-long`)
+by its rows alone, while Writing 3's tour of the paper sets a section's lines in one row ("Medical history:" with its
+five lines), so a sheet of three rows and thirteen lines was still set at 4.5% of the frame and ran off the board.
+
+**Decision** (`style_c.py`; bundle unchanged; each rule reaches only a lesson that has such a block):
+
+1. `contents_nine`, emitted in the teal look for a lesson of nine or ten contents items: two columns of five rows, read
+   down the first column and then the second, the set one step smaller (circles 9.2%, titles 3.6% of the frame, one size
+   for the set: the owner's addendum, rule 1), so five rows fit the board.
+2. A sheet of the paper is long when the lines it draws (`sheet_lines`: a row's cells line by line, " / " between the
+   paper's lines, a line longer than about 70 characters counting the lines it wraps to at the sheet's size, the taller
+   cell counted) are six or more, not only when its rows are; a long sheet takes the fit's size, never under 2.9%, as
+   amendment (4) says. (Writing 8's task sheets are three rows that wrap to nine lines or more.)
+3. A choice pill or a coded tile whose label is a verdict, Keep, Keep briefly or Leave out (the handouts' three answers),
+   or a pill whose own words are one, takes the verdict's colour, teal, amber or coral (`VERDICT_COLOUR`), instead of the
+   colour in turn; so a lesson that reads a paper line by line (Writing 8) shows each verdict by its colour, the pills
+   and the tiles alike (one meaning, one colour; the owner's addendum: one face per set).
+4. `paperfit`, chosen per block in the teal look like `paperlong`: the paper beside the letter at the fit's size, never
+   under 2.9% (26 px). For a board the site's player does not draw whole at 3.3% either (Writing 3's greeting and Re line:
+   three pairs with two long task sentences, and the term card for "Re" as its tallest note, 41 px over the site's room;
+   a declared split is refused there, the parts not being oversized).
+
+**Consequences.** No built lesson but Writing 3 and Writing 8 has nine contents items in the teal look, a teal sheet of
+fewer than six rows that draws six lines or more (Word Order's one sheet draws four with its wraps; Writing 5's sheets set
+one line a row and are long already; Writing 7 has no sheet), or a verdict on a pill or a tile. Proven by the render comparison (runbook, "Changing shared code"): `render_compare.py` snapshots
+`before-w03a`, `before-w03c` and `before-w03d` on main at 9f6c2c2 and `after-w03a`, `after-w03c` and `after-w03d` on this change,
+2026-11-02 (three lists, two checkouts each, run side by side): **24 of 24 built lessons identical**, 732 data files byte
+for byte and 155,360 moments at the phone and laptop frames drawn identically, with no board timing difference. Outside
+the proof: Reading 5, as before (it does not render on main); Writing 3, the lesson this change is for; and Writing 1, 2
+and 4, which three other sessions were redesigning in the teal look the same afternoon (their folders changed while the
+snapshots ran, and Writing 2 and 4 no longer render on main's code).
+

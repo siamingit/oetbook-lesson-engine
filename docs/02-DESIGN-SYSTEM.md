@@ -1124,7 +1124,7 @@ may vary its arrangement between lessons. The pattern of each board is logged wi
 | Layout | Pattern | Takes | Drawn as |
 |---|---|---|---|
 | `wrongright` | 1 Wrong and right | a table of two columns (wrong or as written; right or put right) | each pair a row: the wrong sentence in plain ink, a curved red-pen arrow, the right one in bold teal; the narration's pen circles mark the error |
-| `coded` | 2 A colour-coded sentence | a header naming each part; one or more rows of parts | each part a rounded tile in its colour, its label a pill of that colour above it, read left to right; typed in as the narration reaches it |
+| `coded` | 2 A colour-coded sentence | a header naming each part; one or more rows of parts | each part a rounded tile in its colour (a tile labelled with a verdict in the verdict's colour, as `choices`), its label a pill of that colour above it, read left to right; typed in as the narration reaches it |
 | `opener` | 2 (a phrase first) | three columns: the kind, the phrase that opens the sentence, the rest | the kind a small pill, the opening phrase in a tile of that colour, then the rest in plain |
 | `timeline` | 3 A timeline | two or three columns: the marker (a date, a number), the event, a note | round markers in turn's colours on a teal line, the event under each in bold, the note in the hand |
 | `columns` | 4 Keep, shorten or leave out | two to four columns | solid pill heads (teal, amber, coral, blue), each column's cells soft pills of its colour; a column of short labels or places narrow (`data-cw`) |
@@ -1132,7 +1132,7 @@ may vary its arrangement between lessons. The pattern of each board is logged wi
 | `badges` | 6 Key tips as badges | one or two columns (the point, a note); or a recap's category cards | solid circles holding the point, a note in the hand under each; cards side by side |
 | `ruled` | 7 A paragraph on ruled paper | one or two columns (the line's number, the line) | a white sheet with blue rules and a red margin, the lines in a learner's hand, the numbers in the margin |
 | `beforeafter` | 8 Before and after | two columns (before, after) | two panels, coral and teal, their heads in capitals; each sentence with its word count in a circle (counted from its words, `data-count`) |
-| `choices` | 9 Choice pills | short phrases, any columns | solid pills in turn's colours; each under its label when every column has one, else under the bank's name in the hand |
+| `choices` | 9 Choice pills | short phrases, any columns | solid pills in turn's colours (a pill labelled Keep, Keep briefly or Leave out, or that says one, in its verdict's colour: teal, amber, coral; amendment (5)); each under its label when every column has one, else under the bank's name in the hand |
 | `path` | 10 Steps on a curved path | one or two columns (the step, a note) | numbered circles alternately low and high on a teal curve (an empty drawing), the step in bold, the note in the hand |
 | `compare` | 11 Two compared | a comparison; or a table of two columns | two things side by side, framed in teal and coral; each head (a comparison's words up to its first colon, `cmp-h`; or the column's label) a pill, the rest under it |
 
@@ -1149,13 +1149,15 @@ the silent preview and the player):
 3. **No illustration unless it explains the point** (replaces ADR 021's picture on every board, in this look).
 4. **Use the frame**: no board with a large empty half (the check: at its fullest, no more than 40% of its height
    or width empty); size the content up, or use the room for the example the narration gives.
+   Six to eight contents items stand in two columns of three or four rows; nine or ten in two columns of five, the set
+   one step smaller (ADR 050 amendment (5)).
 5. **Dimmed rows readable**: the spotlight dims a row with a lighter ground (a wash of the ground over its cells), never
    by greying its words; every line at 4.5:1 or more.
 6. **Marks never hide words**: an underline under the words, a circle around them; on a solid tile or pill the
    narration marks with the pen's circle or line, never the marker's band.
 7. **Headings**: never one or two words alone on a line (`text-wrap: balance`, and room enough).
 
-**Long pieces** (ADR 050 amendment (4)): a table of a label and its words with eight rows or more in `columns` is drawn in two halves side by side (`data-flow="2"`); a teal sheet of the paper with six rows or more takes the fit's size, never under 2.9% (`data-long`), instead of 4.5%; `paperlong`, chosen per block in the teal look, draws the paper beside the letter at the long letter's size (3.3%) for a board that does not fit the site's player. Each rule reaches only a lesson that has such a block.
+**Long pieces** (ADR 050 amendment (4)): a table of a label and its words with eight rows or more in `columns` is drawn in two halves side by side (`data-flow="2"`); a teal sheet of the paper with six rows or more, or that draws six lines or more (a row's cells line by line, a long line counting its wraps; amendment (5)), takes the fit's size, never under 2.9% (`data-long`), instead of 4.5%; `paperlong`, chosen per block in the teal look, draws the paper beside the letter at the long letter's size (3.3%) for a board that does not fit the site's player; `paperfit` (amendment (5)) at the fit's size, never under 2.9%, for a board that does not fit there at 3.3% either. Each rule reaches only a lesson that has such a block.
 
 **On the site's player too** (ADR 050 amendment (2)): every board is checked on the site's own player
 (`check_site_player.py`, runbook step 18c), which measures a board while it enters, does not serve the hand yet, and

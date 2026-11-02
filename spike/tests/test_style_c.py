@@ -669,8 +669,42 @@ class TealLook(unittest.TestCase):
         self.assertIn('data-long=""', long_teal)
         self.assertNotIn("data-long", long_c)                                     # only in the teal look
         self.assertNotIn("data-long", lay(["Her paper", ""], sheet[:5], "paper", "teal"))
+        # amendment (5): a sheet of few rows that draws six lines or more is long too (Writing 3's paper tour)
+        lined = [["Medical history:", "1998 / 2012 / 2020"], ["Medications:", "one / two / three"]]
+        self.assertEqual(style_c.sheet_lines(lined), 6)
+        self.assertIn('data-long=""', lay(["Her paper", ""], lined, "paper", "teal"))
+        self.assertNotIn("data-long", lay(["Her paper", ""], lined[:1], "paper", "teal"))
+        wordy = [["Notes:", "You are a doctor on the acute medical ward at Brackenmere General Hospital. Mrs Lisa Holden "
+                            "is being discharged home today. Her GP was not involved in this admission."],
+                 ["Writing Task:", "Using the information in the case notes, write a letter of discharge to Dr Selcott, "
+                                   "outlining the admission and requesting monitoring of her kidney function and a review."]]
+        self.assertEqual(style_c.sheet_lines(wordy), 6)                       # two rows that wrap to six lines
+        self.assertIn('data-long=""', lay(["Her paper", ""], wordy, "paper", "teal"))
+        self.assertNotIn("data-long", lay(["Her paper", ""], lined, "paper"))
         self.assertIn(style_c.LAYOUT_CSS["sheetlong"], style_c.layout_css({"x": {"html": long_teal}}))
         self.assertNotIn(style_c.LAYOUT_CSS["sheetlong"], style_c.layout_css({"x": {"html": long_c}}))
+
+    def test_nine_contents_items_in_two_columns(self):
+        """ADR 050 amendment (5): a teal lesson of nine or ten contents items takes the two-columns-of-five rules;
+        eight or fewer, or any lesson without the look, do not."""
+        items = {f"k{i}": {"type": "contents_item", "html": '<div class="blk citem"></div>'} for i in range(9)}
+        self.assertIn(style_c.LAYOUT_CSS["contents_nine"], style_c.layout_css(items, "teal"))
+        self.assertNotIn("contents_nine", style_c.layout_css(items))
+        self.assertEqual(style_c.layout_css(items), "")
+        eight = dict(list(items.items())[:8])
+        self.assertNotIn(style_c.LAYOUT_CSS["contents_nine"], style_c.layout_css(eight, "teal"))
+
+    def test_a_verdict_colours_its_pill_or_tile(self):
+        """ADR 050 amendment (5): a choice pill or a coded tile labelled Keep, Keep briefly or Leave out, or a pill
+        whose words are one, takes the verdict's colour (teal 4, amber 0, coral 3); any other keeps its colour in turn."""
+        lay = lambda header, rows, name: style_c.layout_html(  # noqa: E731
+            *(lambda b: (b, b["html"]))(self._table(header, rows)), None, name, None, "teal")
+        self.assertIn('data-c="3"', lay(["Leave out"], [["the GP does not need it"]], "choices"))
+        self.assertIn('data-c="4"', lay(["Keep"], [["the main finding"]], "coded"))
+        self.assertIn('data-c="0"', lay(["Keep briefly"], [["in a few words"]], "coded"))
+        bank = lay(["Three answers", "", ""], [["keep", "keep briefly", "leave out"]], "choices")
+        self.assertEqual([m for m in __import__("re").findall(r'data-c="(\d)"', bank)], ["4", "0", "3"])
+        self.assertIn('data-c="0"', lay(["12 October"], [["the day she came in."]], "choices"))   # in turn, as before
 
     def test_paperlong_is_chosen_per_block(self):
         """ADR 050 amendment (4): `paperlong` draws the paper beside the letter at the long letter's size, chosen for a
@@ -684,3 +718,11 @@ class TealLook(unittest.TestCase):
         self.assertNotIn("paper-long", style_c.layout_html(b, b["html"], None, "paper", None, "teal"))
         with self.assertRaises(SystemExit):
             style_c.layout_html(b, b["html"], None, "paperlong")
+        # amendment (5): `paperfit`, the paper at the fit's size, the same way
+        fit = style_c.layout_html(b, b["html"], None, "paperfit", None, "teal")
+        self.assertIn("paper-fit", fit)
+        self.assertIn('data-paper="beside"', fit)
+        self.assertEqual(style_c.layout_css({"p": {**b, "html": fit}}, "teal"),
+                         style_c.LAYOUT_CSS["paper"] + style_c.LAYOUT_CSS["paper_fit"])
+        with self.assertRaises(SystemExit):
+            style_c.layout_html(b, b["html"], None, "paperfit")
