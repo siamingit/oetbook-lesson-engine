@@ -671,3 +671,16 @@ class TealLook(unittest.TestCase):
         self.assertNotIn("data-long", lay(["Her paper", ""], sheet[:5], "paper", "teal"))
         self.assertIn(style_c.LAYOUT_CSS["sheetlong"], style_c.layout_css({"x": {"html": long_teal}}))
         self.assertNotIn(style_c.LAYOUT_CSS["sheetlong"], style_c.layout_css({"x": {"html": long_c}}))
+
+    def test_paperlong_is_chosen_per_block(self):
+        """ADR 050 amendment (4): `paperlong` draws the paper beside the letter at the long letter's size, chosen for a
+        block; refused outside the teal look; its rules only where used."""
+        b = ADR048Layouts._table(self, ["", "A paper", "Her letter"], [["Plan:", "GP: review", "Please review."]], True)
+        out = style_c.layout_html(b, b["html"], None, "paperlong", None, "teal")
+        self.assertIn("paper-long", out)
+        self.assertIn('data-paper="beside"', out)
+        self.assertEqual(style_c.layout_css({"p": {**b, "html": out}}, "teal"),
+                         style_c.LAYOUT_CSS["paper"] + style_c.LAYOUT_CSS["paper_long"])
+        self.assertNotIn("paper-long", style_c.layout_html(b, b["html"], None, "paper", None, "teal"))
+        with self.assertRaises(SystemExit):
+            style_c.layout_html(b, b["html"], None, "paperlong")

@@ -620,6 +620,9 @@ LAYOUTS = {
     "choices": (("table",), False, None),               # 9  short phrases as coloured choice pills
     "path": (("table",), False, (1, 2)),                # 10 numbered steps on a curved path
     "compare": (("comparison", "table"), False, (2,)),  # 11 two things side by side, each framed, its head a pill
+    # ADR 050 amendment (4): the paper beside the letter at the long letter's size (`paper-long`), chosen for a board
+    # whose paper and letter do not fit the site's player at the paper's own size
+    "paperlong": (("table",), False, (3,)),
 }
 # The teal look's layouts (ADR 050), their rules appended only where used
 ADR050_LAYOUTS = ("wrongright", "coded", "opener", "timeline", "columns", "parts", "badges", "ruled",
@@ -1859,8 +1862,12 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
         why = check_layout(b.get("id", "?"), b, layout)
         if why:
             raise SystemExit("REFUSED: sections.json block_layouts: " + why)
+        if layout == "paperlong" and look != "teal":
+            raise SystemExit(f"REFUSED: sections.json block_layouts: {b.get('id')}: 'paperlong' is the teal look's")
         if t == "table":
-            html = _table_html(b, html, layout)
+            html = _table_html(b, html, "paper" if layout == "paperlong" else layout)
+            if layout == "paperlong":
+                html = _add_root(html, "paper-long")
             if look == "teal" and layout == "paper" and len(b.get("header") or []) == 2 and \
                     len(b.get("rows") or []) >= SHEET_LONG_ROWS:
                 html = _add_root(html, attrs=' data-long=""')

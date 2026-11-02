@@ -302,9 +302,14 @@ path's and the timeline's notes in the hand, was put right by amendment (3) the 
    half. The columns' names are not drawn, because the labels name each row.
 2. A sheet of the paper with six rows or more, in a lesson in the teal look, takes the fit's size and is never set under
    the look's table floor of 2.9% (`data-long`). A shorter sheet stays at 4.5%.
+3. The paper beside the letter at the long letter's size (amendment (3)'s `paper-long`, 3.3% of the frame, 29.7 px),
+   **chosen for a block** with the layout `paperlong`, in the teal look only. The site's player has a shorter room than
+   the reference player. On Writing 5's draft package (`check_site_player.py`) four boards were drawn at 91 to 96%:
+   each is a paper beside a letter whose paper and letter together run past 330 characters. Those boards are named, not
+   matched by length, because a rule on that length would also reach Writing 6's and Writing 7's built boards.
 
 Each rule is written only into a lesson that has such a block: the attribute is set by `layout_html`, and
-`layout_css` appends `columns2` or `sheetlong` only where it finds one. No other lesson's bundle or stylesheet changes,
+`layout_css` appends `columns2`, `sheetlong` or `paper_long` only where it finds one. No other lesson's bundle or stylesheet changes,
 Word Order's included.
 
 **Consequences.** No built lesson changes. Proven by the render comparison (runbook, "Changing shared code"): `render_compare.py` snapshots `before-w5n` and `before-w5nr` on main at c9ffabd (after amendment (3) and its site fix), then `after-w5n` and `after-w5nr` on this change, 2026-11-02: **28 of 28 built lessons identical**, 850 data files byte for byte and 167,258 moments at the phone and laptop frames drawn identically, with no board timing difference. This includes Word Order, Writing 7 and Writing 5, which was not yet redesigned on disk. Reading 5 is outside the proof, as before. During `before-w5n` another session wrote into Writing 7's folder (110 files), and the snapshot reported it. Writing 7 is not in that list, and it is identical in the second pair. No built lesson has a block either rule reaches: Writing 7's sheets have three rows, its `columns` table five.
