@@ -54,9 +54,17 @@ $3.62, while the screens stage was being rebuilt):
   code, prompt or rules, and releases it when the change is finished and
   checked. Holds are in `<L>/analysis/holds.json`; placing and releasing one is
   logged in the decision log; `--status` lists them.
-- A **paid model stage** (understanding, screens, narration, QA) whose code has
-  uncommitted changes is refused. Commit the finished change, or name the
-  stage with `--accept-uncommitted STAGE` for that run, which is logged.
+- A **paid model stage** (understanding, screens, narration; QA only when
+  Gemini is asked for) whose code has uncommitted changes is refused. Commit
+  the finished change, or name the stage with `--accept-uncommitted STAGE` for
+  that run, which is logged.
+- A **review pending** stop (ADR 051, from 2026-11-02): the line QA is done by
+  the Claude Code `line-reviewer` subagent, not by an API call. The QA stage
+  writes each pending section's `qa/request_passN.md`, lists them and stops
+  (exit 3). The session starts the subagent fresh on each request, saves its
+  reply, files it with `qa_narration.py <L> --pages ... --ingest REPLY.json
+  --pass N`, and runs the build again; it resumes after the stage. See "Line
+  QA" below.
 
 The runner orders the stages and checks them; it decides no content. Fixes at
 a gate (overrides, briefs, rulings, lexicon entries) are made by hand or with
@@ -67,7 +75,9 @@ the stage scripts below, then the runner continues.
 ## Before the first lesson
 
 - `.env` holds `ELEVENLABS_API_KEY` (Scribe), `ANTHROPIC_API_KEY` (Claude
-  Opus 5), `GEMINI_API_KEY` (QA) and `CARTESIA_API_KEY` (voice).
+  Opus 5), `GEMINI_API_KEY` (the screen log of a recording, and images; the
+  line QA only with `--qa-reviewer gemini`, ADR 051) and `CARTESIA_API_KEY`
+  (voice).
 - `.venv` is installed from `requirements.txt`; `ffmpeg`, `ffprobe` and
   Microsoft Edge (the mark check drives it headless) are on the machine.
 - `spike/lexicon.json` is synced to Cartesia:
@@ -237,7 +247,7 @@ marked **step** (ADR 005). Costs are Grammar 1's.
 | 11 | Opening boards and preview | `build_lesson_boards.py <L>`, `build_lesson_preview.py <L>`; a short list fits on one board (ADR 042): a style C lesson's contents board lists every part on one board, in two columns, and the stage fails one with more than 12 parts | sections, screens | `lesson-boards.json`, the introduction's `screens.json`, `analysis/screens/lesson-preview/index.html` | free |
 | 11b | Board layouts (a style C lesson) | **From 2026-11-01 a lesson is built in the teal look (ADR 050)**: `lesson.look` "teal" in `analysis/sections.json`, and every board drawn with one of the owner's Canva patterns (docs/02-DESIGN-SYSTEM.md §1b, §7k), a varied mix, no two boards in a row sharing a pattern, each board's pattern logged with the slide it follows. **This is also the design step of ADR 048** (docs/adr/048-creative-board-design.md): the agent first loads the project's design skills (`.claude/skills/`: `frontend-design`, `hallmark`, `ui-ux-pro-max`, `emil-design-eng`; their judgement, never their defaults), then designs every board for the one thing it teaches (a flow, a before/after, a letter skeleton, coloured initials, a timeline, a paper excerpt, a diagram, a comparison, an illustration), no two boards in a row alike, a plain table or text block only where nothing teaches the point better and the reason logged; a form the engine cannot draw is added to `style_c.py` in its own pull request with the render proof. Before step 15 (or, for a lesson redesigned after voicing, before its player is packaged) it renders the contact sheet of every board (`analysis/design/contact-sheet.png`), runs the `critique` skill on it, fixes what it finds and keeps the sheet and `analysis/design/critique.md`. The rest of this step is how a layout is named. The agent looks at each board beside the matching slide of the lesson's own deck and names, in `analysis/sections.json` `block_layouts` (`{"<bundle block id>": "<layout>"}`), the layout that carries the slide's visual idea over (docs/02-DESIGN-SYSTEM.md §7j: tiles, scores, cards, steps, flow, bins, fix, change, stack, notes, letter, checklist, vs, pair, paper), a visual in place of a plain table wherever the content allows; a table where a table is clearest is drawn as the handouts draw one. In a Writing lesson every table that quotes a paper is `paper` (ADR 045): a sheet of the paper (its label, its lines), or the paper beside the part of the letter it feeds; a lesson that takes a letter apart from a paper the learner has not seen first walks through that paper in an authored section, paged by its parts; and no board names a part of the paper, or points to a part of a letter, that is not on screen. Each board of the paper beside the letter is named `"whole"` in `boards_fit`; one whose pairs are too many to read is a declared split of its table by rows (ADR 045 amendment (1)). Logged in the decision log, board by board, with the slide each follows (owner, 2026-10-26; ADR 042 amendment (2)). `build_lesson_player.py` refuses a layout a block cannot take, one that would change a word, and a name that is not a block of the lesson; the fit (step 13, 17) measures the boards as laid out | screens, the deck | `analysis/sections.json` | free |
 | | **step screens** | approved by the agent and logged when every section's screens audit passes; the boards are reviewed with the narration at the next gate | | | |
-| 12 | Narration | `run_batch_stage.py <L> --stage narration --direct` (the introduction and every section; a section of more than 10 boards is drafted in parts and joined, ADR 022 amendment; every lesson type talks with the learner, each rapport utterance noted "RAPPORT: <kind>", and the audit fails a rapport sentence repeated or nearly repeated in the lesson, or filler, ADR 033), then `--stage qa1 --direct` (Gemini) | screens, understanding, ledgers, `length_budget.json` (not given to QA) | `analysis/narration/<section>/narration.json`, `qa/qa_pass1.json` | about $0.60 a section, QA $0.15 a pass |
+| 12 | Narration | `run_batch_stage.py <L> --stage narration --direct` (the introduction and every section; a section of more than 10 boards is drafted in parts and joined, ADR 022 amendment; every lesson type talks with the learner, each rapport utterance noted "RAPPORT: <kind>", and the audit fails a rapport sentence repeated or nearly repeated in the lesson, or filler, ADR 033), then `--stage qa1` (the line QA, ADR 051: the stage writes each section's `qa/request_pass1.md` and stops; the session runs the `line-reviewer` subagent on each, fresh, and files its reply with `qa_narration.py <L> --pages ... --ingest REPLY.json --pass 1`; `--qa-reviewer gemini` for the paid Gemini review, off by default) | screens, understanding, ledgers, `length_budget.json` (not given to QA); the QA request: the blind payload, the checklist, the lesson type's QA rules, and for a Writing lesson `docs/writing-facts.md` | `analysis/narration/<section>/narration.json`, `qa/request_pass1.md`, `qa/qa_pass1.json` | about $0.60 a section; QA free (Gemini: $0.15 a pass) |
 | 13 | Silent preview and review page | `fit_boards.py <L> --silent` (the fit, on the silent preview; ADR 011, ADR 020), `build_silent_preview.py <L>`, `check_overflow.py` and `check_overlap.py` on it, `build_narration_review.py <L>` | narration, screens | `generated/lesson-preview/silent/player.html`, `analysis/narration/lesson-review/index.html` | free |
 | | **GATE narration** | the maintainer watches the silent preview (screens and narration together), reads the QA findings and the decision log | | | |
 | 14 | Terms check | `check_terms.py <L> --pages ...` per section | narration, screens, keyterms, lexicon | `generated/<section>/boards/terms_check.json`, shared `generated/term_probes/` | a few thousand characters |
@@ -491,8 +501,9 @@ On Grammar 1's page 12 the screens call took 20,148 input and 15,995 output
 tokens, the narration call 15,752 and 18,683, so output is about 80% of each
 call's cost. The cached prefixes are about 5,200 tokens (screens), 3,100
 (narration) and 1,000 (understanding), estimated at 3.6 characters a token: at
-most about 2 cents saved per screens call. The QA prompt, about 1,700 tokens,
-is below Gemini's 4,096-token minimum and cannot cache.
+most about 2 cents saved per screens call. The Gemini QA prompt, about 1,700
+tokens, is below Gemini's 4,096-token minimum and cannot cache; since
+2026-11-02 the line QA is not an API call at all (ADR 051, "Line QA" below).
 
 Each request's closing task instruction stays after the page's data on
 purpose, since instructions read best after the material. It is short, so
@@ -514,6 +525,38 @@ $30 at full price.
 A dry run is free: `run_batch_stage.py <L> --stage STAGE --dry-run` builds
 every pending request, checks its shape (the Gemini request through the SDK's
 own types) and prints the count, size and estimate.
+
+## Line QA
+
+The line QA (ADR 051, from 2026-11-02; the owner's decision of 2026-11-01): every new or changed line of
+narration and on-screen text is reviewed by an independent reviewer that knows nothing of the build. The
+reviewer is the Claude Code `line-reviewer` subagent (`.claude/agents/line-reviewer.md`), started fresh for
+every review and given one request file and nothing else. The request (`qa_narration.py`) holds the checklist
+(the ten checks and the severities Gemini was sent, which carry the house rules of methodology §17, §17a and
+§17b), the lesson type's QA rules where one applies, the Writing fact sheet for a Writing lesson, the lines
+board by board with what is on screen (the blind payload: no transcript, no understanding, no provenance, no
+rulings), and the reply's schema.
+
+1. **Request.** `run_batch_stage.py <L> --stage qa1` (the runner's narration stage) writes
+   `analysis/narration/<section>/qa/request_pass1.md` for every narrated section without a pass 1, lists them,
+   and stops with exit 3. One section, or the rewritten states at a gate: `qa_narration.py <L> --pages ...
+   [--states ... --name decisions] --call`.
+2. **Review.** For each request the session starts the `line-reviewer` subagent, fresh, with the request's
+   path and nothing else, and saves the JSON it returns to a file. Several requests are reviewed in parallel,
+   one subagent each. A session that was already running when the agent definition was added starts a
+   general-purpose subagent with the definition's own instructions instead.
+3. **File.** `qa_narration.py <L> --pages ... --ingest REPLY.json --pass 1` (or `--name decisions`): the reply
+   is checked against the findings schema (a reply outside it is refused and nothing is filed), the review it
+   replaces is kept, and `qa/qa_pass1.json` is written in the same shape as a Gemini review, `meta.reviewer`
+   "claude", `cost_usd` 0. Then the build runs again and resumes.
+4. **Act.** As before: each finding is fixed, or rejected with its reason in `decisions.md`; the rewritten
+   states get one "decisions" pass; two passes at most (methodology §18).
+
+`--out DIR` on `--call` and `--ingest` writes the request and the findings under DIR, for a review of a
+released lesson whose folder must not change. The paid Gemini review is kept, off by default:
+`qa_narration.py --reviewer gemini --call`, `run_batch_stage.py --reviewer gemini`, `build_lesson.py
+--qa-reviewer gemini` (logged in the decision log). Gemini's other use, the screen log of a recording and an
+image if one is ever needed, is unchanged.
 
 ## Reporting
 
@@ -598,7 +641,11 @@ maintainer's own words goes into the page's ledger
 `analysis/narration/lesson-review/index.html`. Fix only the states concerned:
 write a brief and run `write_narration.py <L> --pages ... --states ... --brief
 FILE --call`, then one QA pass on those states:
-`qa_narration.py <L> --pages ... --states ... --name decisions --call`. A QA
+`qa_narration.py <L> --pages ... --states ... --name decisions --call` (writes
+`qa/request_decisions.md` and stops), the `line-reviewer` subagent on that
+file, then `qa_narration.py <L> --pages ... --states ... --name decisions
+--ingest REPLY.json` (ADR 051; `--reviewer gemini --call` for the paid
+review). A QA
 finding that is about on-screen text is a screens decision; a narrower true
 rule is applied to screen and narration together unless it contradicts a
 maintainer ruling (methodology §18). A mark on a table whose words are in more

@@ -120,6 +120,11 @@ def main() -> None:
                          "--call", "--pass", "1"])
                 print("\n".join(r.stdout.splitlines()[-12:]))
                 record(pages)
+                if r.returncode == 3:
+                    print(f"STOP: QA pass 1 of pages {pages} awaits the line-reviewer subagent "
+                          "(ADR 051): review the request above, file the reply with "
+                          "qa_narration.py --ingest, then run again")
+                    break
                 if r.returncode != 0:
                     print(f"STOP: QA pass 1 failed for pages {pages}: {r.stderr[-600:]}")
                     break
@@ -140,6 +145,11 @@ def main() -> None:
                  "--call", "--pass", "1"])
         print("\n".join(r.stdout.splitlines()[-12:]))
         s = record(pages)
+        if r.returncode == 3:
+            print(f"STOP: QA pass 1 of pages {pages} awaits the line-reviewer subagent (ADR 051): "
+                  "review the request above, file the reply with qa_narration.py --ingest, "
+                  "then run again")
+            break
         if r.returncode != 0:
             print(f"STOP: QA pass 1 failed for pages {pages}: {r.stderr[-600:]}")
             break

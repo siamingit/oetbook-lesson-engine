@@ -13,14 +13,19 @@ price, for an unattended run the maintainer asked for.
   screens        every section whose screens.json is missing or fails its audit
   narration      the introduction and every section whose narration is missing
                  or fails its audit
-  qa1, qa2       a whole-section QA pass (Gemini batch mode) for every narrated
-                 section that has not had it
+  qa1, qa2       a whole-section QA pass for every narrated section that has
+                 not had it. Since 2026-11-02 (ADR 051) the reviewer is the
+                 Claude Code line-reviewer subagent: the stage writes each
+                 section's qa/request_passN.md, lists them and stops (exit 3);
+                 the session reviews each and files the reply with
+                 qa_narration.py --ingest. --reviewer gemini runs the paid
+                 Gemini review instead (direct or batch), off by default.
 
-Anthropic stages go through the Message Batches API, QA through Gemini batch
-mode: both at half price (prices and sources in llm.py). Each request is built
-by the stage's own request_params() or gemini_request(), so a batch request
-and a direct call are the same request; the stable system prompt is cached
-with the 1-hour TTL, as Anthropic recommends for batches.
+Anthropic stages go through the Message Batches API, a Gemini QA through
+Gemini batch mode: both at half price (prices and sources in llm.py). Each
+request is built by the stage's own request_params() or gemini_request(), so a
+batch request and a direct call are the same request; the stable system prompt
+is cached with the 1-hour TTL, as Anthropic recommends for batches.
 
 --dry-run builds every request, checks its shape locally (the Gemini request
 through the SDK's own types), and prints the count, the size and an estimated
@@ -63,9 +68,12 @@ def audit_ok(p: Path) -> bool:
                                   for f in json.loads(p.read_text(encoding="utf-8"))["audit"])
 
 
-def jobs_for(L: Path, stage: str, include_done: bool = False, ttl: str = "1h") -> list[dict]:
+def jobs_for(L: Path, stage: str, include_done: bool = False, ttl: str = "1h",
+             reviewer: str | None = None) -> list[dict]:
     """The pending units of a stage: custom_id, the request, where the reply
-    goes, and how to render it afterwards."""
+    goes, and how to render it afterwards. `reviewer` (a QA stage): "claude",
+    the line-reviewer subagent, whose jobs carry the prepared review and no
+    request; or "gemini"."""
     info, secs = sections(L)
     jobs = []
     if stage == "understanding":
@@ -119,6 +127,11 @@ def jobs_for(L: Path, stage: str, include_done: bool = False, ttl: str = "1h") -
                                                       and not include_done):
                 continue
             prep = qn.prepare(L, s["pages"], n)
+            if (reviewer or qn.DEFAULT_REVIEWER) == "claude":
+                # ADR 051: reviewed by the line-reviewer subagent, not called
+                jobs.append({"custom_id": tag(s["pages"]), "provider": "claude", "prep": prep,
+                             "out": prep["out"] / f"request_pass{n}.md"})
+                continue
             out = prep["out"] / f"batch_pass{n}.json"
             jobs.append({"custom_id": tag(s["pages"]), "provider": "gemini",
                          "request": qn.gemini_request(prep["text"]), "out": out, "prep": prep,
@@ -142,7 +155,11 @@ def dry_run(stage: str, jobs: list[dict]) -> None:
     size = 0
     est = 0.0
     for j in jobs:
-        if j["provider"] == "gemini":
+        if j["provider"] == "claude":
+            import qa_narration as qn
+            body = qn.request_text(j["prep"])
+            tokens_in = len(body) / 3.6             # read by the subagent; not metered
+        elif j["provider"] == "gemini":
             from google.genai import types
             types.InlinedRequest.model_validate(j["request"])       # local shape check
             body = json.dumps(j["request"])
@@ -167,8 +184,34 @@ def dry_run(stage: str, jobs: list[dict]) -> None:
             assert "stream" not in j["params"], "a batch request cannot stream"
         size += len(body)
         print(f"  {j['custom_id']:<14} {len(body) / 1024:7.0f} KB  ~{tokens_in:7.0f} input tokens")
+    if jobs and jobs[0]["provider"] == "claude":
+        print(f"{len(jobs)} review requests, {size / 1e6:.2f} MB, for the line-reviewer subagent "
+              "(ADR 051): not metered, $0. Nothing written.")
+        return
     print(f"{len(jobs)} requests, {size / 1e6:.2f} MB; estimated ${est:.2f} at batch prices "
           f"(output estimated from Grammar 1; uncached input). No API call made.")
+
+
+def review_pending(L: Path, stage: str, jobs: list[dict]) -> None:
+    """A QA stage under the line-reviewer subagent (ADR 051): every pending
+    section's request is written, listed, and the run stops with exit status
+    PENDING_EXIT until the session has reviewed each and filed its reply
+    (qa_narration.py --ingest). Nothing is called, nothing is spent."""
+    import qa_narration as qn
+    n = stage[-1]
+    print(f"{stage}: {len(jobs)} section(s) await the line-reviewer subagent "
+          "(ADR 051; docs/03-RUNBOOK.md step 12). For each: start the subagent fresh on "
+          "the request file, save its reply, then file it with", flush=True)
+    print(f"  qa_narration.py {L} --pages PAGES --ingest REPLY.json --pass {n}")
+    for j in jobs:
+        path = j["prep"]["out"] / f"request_pass{n}.md"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(qn.request_text(j["prep"]), encoding="utf-8")
+        pages = ",".join(str(p) for p in sorted(j["prep"]["pages"]))
+        print(f"  {j['custom_id']:<14} --pages {pages:<8} {path}")
+    print(f"REVIEW PENDING: {len(jobs)} request(s) written; run the stage again once every "
+          "reply is filed")
+    sys.exit(qn.PENDING_EXIT)
 
 
 DIRECT_WORKERS = 4        # direct calls in flight at once
@@ -297,13 +340,17 @@ def main() -> None:
     ap.add_argument("--poll", type=int, default=60)
     ap.add_argument("--direct", action="store_true",
                     help="direct calls with the 5-minute cache instead of one batch")
+    ap.add_argument("--reviewer", choices=["claude", "gemini"], default=None,
+                    help="a QA stage's reviewer (ADR 051): the line-reviewer subagent (the "
+                         "default: requests written, the run stops until they are filed) or "
+                         "the paid Gemini review")
     a = ap.parse_args()
     L = a.lesson_dir
     state_path = L / "analysis" / "batches" / f"{a.stage}.json"
 
     resuming = state_path.exists() and not json.loads(state_path.read_text(encoding="utf-8")).get("collected")
     ttl = "5m" if a.direct and not resuming else "1h"
-    jobs = jobs_for(L, a.stage, include_done=a.all and a.dry_run, ttl=ttl)
+    jobs = jobs_for(L, a.stage, include_done=a.all and a.dry_run, ttl=ttl, reviewer=a.reviewer)
     if not jobs and not resuming:
         print(f"{a.stage}: nothing pending")
         return
@@ -311,6 +358,8 @@ def main() -> None:
     if a.dry_run:
         dry_run(a.stage.rstrip("12") if a.stage.startswith("qa") else a.stage, jobs)
         return
+    if jobs and jobs[0]["provider"] == "claude":
+        review_pending(L, a.stage, jobs)                 # exits: nothing to call
     if a.direct and not resuming:
         run_direct(L, a.stage, jobs)
         return
@@ -373,7 +422,9 @@ def main() -> None:
     done.write_text(json.dumps(state, indent=1), encoding="utf-8")
     state_path.unlink()
     if a.direct:
-        rest = jobs_for(L, a.stage, ttl="5m")
+        rest = jobs_for(L, a.stage, ttl="5m", reviewer=a.reviewer)
+        if rest and rest[0]["provider"] == "claude":
+            review_pending(L, a.stage, rest)
         if rest:
             run_direct(L, a.stage, rest)
             return
