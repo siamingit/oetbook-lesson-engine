@@ -60,6 +60,12 @@ ROOT_CAUSES = {"word-match", "mentioned-not-asked", "partial", "overgeneralisati
                "wrong-rule"}
 HASH_EXCLUDE = {"version", "content_hash", "status", "withdrawal", "tags", "admin"}
 SELFCHECK_MAX_WORDS = 40
+# AI-assisted marking (contracts 1.14.0; the site's ADR-0041, oetacademy-web#221; ADR 039 amendment of
+# 2026-11-02): a typed unit or a self-check may carry `scoring.method: "ai"` and `marking` {key_points,
+# rule, common_errors}; `marking` and `method` are content (inside the hash). MARKING-AI: the two go together,
+# and no common error's `wrong` is an accepted form (or the self-check's model).
+MARKING_MAX = 8
+MARKING_KEYS = {"key_points", "rule", "common_errors"}
 
 
 def path(L: Path) -> Path:
@@ -267,6 +273,9 @@ def check_item(item: dict, where: str, seen: set[str], ids_issued: dict[str, str
                     bad(f"root cause {w['root_cause']!r}")
             if t == "gapfill" and u["prompt"].count("____") != 1:
                 bad("a gap's prompt has exactly one ____")
+            if sc.get("method") not in (None, "ai"):
+                bad(f"a typed unit's scoring.method is 'ai' or absent, not {sc.get('method')!r}")
+            _check_marking(u, bad, sc["accepted"], "a typed unit")
         if t in ("choice", "wordbank"):
             key = u["scoring"]["key_option_id"]
             if key not in opts:
@@ -319,8 +328,43 @@ def _check_selfcheck(item: dict, bad) -> None:
         bad("self-check point ids are <item id>-c<n>, once each (SELFCHECK-POINT)")
     if any(not (p.get("tags") or {}).get("practises") for p in pts) or not (item.get("tags") or {}).get("practises"):
         bad("a self-check and each of its points need practises tags")
-    if item["scoring"] != {"method": "self-check"} or not item["feedback"].get("key"):
-        bad("a self-check's scoring is {method: self-check}, with a feedback key")
+    if item["scoring"] not in ({"method": "self-check"}, {"method": "ai"}) or not item["feedback"].get("key"):
+        bad("a self-check's scoring is {method: self-check} (or {method: ai} with marking, contracts 1.14.0), "
+            "with a feedback key")
+    _check_marking(item, bad, [item["model"]], "a self-check")
+
+
+def _norm_form(s: str) -> str:
+    return " ".join(str(s).split()).casefold().rstrip(".,;:!?")
+
+
+def _check_marking(u: dict, bad, accepted: list[str], what: str) -> None:
+    """MARKING-AI (contracts 1.14.0; the site's `LP-MARKING-AI`): `scoring.method: "ai"` needs `marking` and
+    `marking` goes with `method: "ai"`; `key_points` 1 to 8 short phrases, `rule` one sentence,
+    `common_errors` 0 to 8 of {wrong, why}; no `wrong` is an accepted form (or the self-check's model)."""
+    ai = (u.get("scoring") or {}).get("method") == "ai"
+    mk = u.get("marking")
+    if ai != (mk is not None):
+        bad(f"{what}: scoring.method 'ai' and marking go together (MARKING-AI)")
+    if not ai:
+        return
+    if not isinstance(mk, dict) or not MARKING_KEYS >= set(mk) or not {"key_points", "rule"} <= set(mk):
+        bad(f"{what}: marking is {{key_points, rule, common_errors}} (MARKING-AI)")
+    kp = mk["key_points"]
+    if not isinstance(kp, list) or not 1 <= len(kp) <= MARKING_MAX or \
+            any(not isinstance(k, str) or not k.strip() for k in kp):
+        bad(f"{what}: marking.key_points is 1 to {MARKING_MAX} short phrases (MARKING-AI)")
+    if not isinstance(mk["rule"], str) or not mk["rule"].strip():
+        bad(f"{what}: marking.rule is one sentence (MARKING-AI)")
+    ce = mk.get("common_errors", [])
+    if not isinstance(ce, list) or len(ce) > MARKING_MAX or any(
+            not isinstance(e, dict) or set(e) != {"wrong", "why"}
+            or any(not isinstance(e[k], str) or not e[k].strip() for k in ("wrong", "why")) for e in ce):
+        bad(f"{what}: marking.common_errors is 0 to {MARKING_MAX} of {{wrong, why}} (MARKING-AI)")
+    forms = {_norm_form(a) for a in accepted}
+    for e in ce:
+        if _norm_form(e["wrong"]) in forms:
+            bad(f"{what}: a common error's wrong form is an accepted form or the model (MARKING-AI): {e['wrong']!r}")
 
 
 # ---------------------------------------------------------------- attaching the points to the timeline

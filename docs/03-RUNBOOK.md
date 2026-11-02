@@ -402,6 +402,42 @@ snapshot (it allows `block_layouts` and the layouts' classes, nothing else new).
 change to shared code ("Changing shared code"); its rules go only into the stylesheet of a lesson that uses
 it, so every other lesson stays identical.
 
+### Practice points: marking data for the site's AI marking (contracts 1.14.0)
+
+From 2026-11-02 (ADR 039 amendment of 2026-11-02; oetacademy-web ADR-0041 and its issue #221, the specification) a
+typed practice unit (a `text` item, a gapfill `gap`) and a `selfcheck` may carry `scoring.method: "ai"` and a
+`marking` object. The site then marks a typed answer deterministically first (an accepted form is Correct at once) and
+sends only a non-matching answer to its model with the unit's own data; the learner gets **Correct**, **Not quite** or
+**Incorrect** and one sentence saying what to change. A unit without the fields is marked as before. The bundle format
+stays 1.23. The first lesson: Writing 4 (The Opening Paragraph), 2026-11-02.
+
+How the data is written, in the lesson's `analysis/authoring/gen_practice.py` (never in `practice.json` by hand):
+
+1. **Where.** On every typed unit and self-check where an exact-match verdict would mislead: greetings, names and
+   titles, ages, dates, frames, whole sentences. Never on choice, word bank, ordering or error-spotting items (not
+   typed): they keep working as today.
+2. **`key_points`**, 1 to 8 short phrases: what a right answer must have, in the order they appear in the answer,
+   factual and in the model answer's own words ("her title: Mrs", "her surname: Ashworth", "no full stop after Mrs").
+   For a self-check, the pieces its tick list names, each with the model's words.
+3. **`rule`**, one sentence: the one rule the unit practises, as the lesson states it (the fact sheet's words, or the
+   owner's advice as the narration gives it).
+4. **`common_errors`**, 0 to 8 of `{wrong, why}`: the mistakes the narration names right after the point, as
+   **patterns** the model should recognise ("adding her first name", "a full stop after Mrs", "no hyphens"), each with
+   one short `why`. Never an exact wrong form, never an accepted form or the model (the builder refuses it,
+   `MARKING-AI`). `feedback.wrong_answers` stay as they are: exact forms with three-part feedback, which the
+   deterministic marker and the fallback still use.
+5. **Version.** The fields are content, inside `content_hash`: raise the item's `version` when a unit gains or changes
+   them (for a gap, the gapfill item's); the builder recomputes the hashes.
+6. **Line QA** (ADR 051). The marking text is reviewed like narration: write a request file in the request format
+   (`qa_narration.py`'s checklist and reply schema, the units' prompts, accepted forms and marking fields as the
+   material), start the `line-reviewer` subagent fresh on that file alone, keep its reply under
+   `analysis/practice-marking-qa/`, act on each finding in the generator or reject it with its reason in
+   `decisions.md`.
+7. **Checks.** The builder's `MARKING-AI` at the player step; the site's validator at the pinned tag on the package
+   (`pnpm contracts:validate lesson <folder> --refuse-fixtures`, 0 errors); the pop-up tests as before (the engine's
+   player marks by accepted forms only: it has no model). The verdicts themselves are reviewed on the site's draft
+   page, so the report lists three test answers per unit (right, nearly right, wrong) for the owner to type there.
+
 ### Checks on every pull request (CI)
 
 Maintainer, 2026-10-06. `.github/workflows/checks.yml` runs on every pull
