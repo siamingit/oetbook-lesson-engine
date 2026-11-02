@@ -352,3 +352,18 @@ the proof: Reading 5, as before (it does not render on main); Writing 3, the les
 and 4, which three other sessions were redesigning in the teal look the same afternoon (their folders changed while the
 snapshots ran, and Writing 2 and 4 no longer render on main's code).
 
+## Amendment (6), 2026-11-02: the criterion's pill (Writing 2's redesign)
+
+**Context.** Writing 2 (Assessment Criteria) was redesigned in the teal look under the owner's brief of 2026-11-02. On a
+board whose own block is not a table (a paragraph of the letter, a comparison of two openings), the criterion's card
+(docs/02-DESIGN-SYSTEM.md §7k, "The criterion's card") is drawn as a definition pill (`defpill crit`), and style C sets
+a three-letter monogram ("G&S", "C&C") there at 1.9% of the frame: 17 px, under the 20 px label minimum of amendment
+(1). Amendment (3)'s `crit_teal` reaches only the card's other form (`term crit`, a side note on a table board).
+
+**Decision** (`style_c.py`, `LAYOUT_CSS["crit_pill_teal"]`, emitted by `layout_css` only for a lesson in the teal look
+whose blocks hold such a pill): the pill's monogram at 3.1% (2.4% for three letters, 21.6 px) in a circle of 7.2% that
+holds it, the pill padded and tall enough for the circle.
+
+**Consequences.** Only a teal lesson that draws a criterion's pill changes; today that is Writing 2 alone (Writing 7's
+card is a side note). Proven by the render comparison (runbook, "Changing shared code"), recorded in the pull request.
+

@@ -1755,6 +1755,16 @@ LAYOUT_CSS["contents_nine"] = r"""
 .frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(5)::after,
 .frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(6)::before{content:none}
 """
+# ADR 050 amendment (6) (Writing 2, 2026-11-02): on a board whose own block is not a table, the criterion's card is a
+# definition pill (`defpill crit`), whose three-letter monogram was set at 1.9% of the frame (17 px, under the 20 px
+# label minimum: Writing 2's Genre and Style and Conciseness and Clarity boards). In the teal look it takes the label
+# size or more, in a circle that holds it. Emitted only for a lesson in the teal look that draws such a pill.
+LAYOUT_CSS["crit_pill_teal"] = r"""
+/* the criterion's pill in the teal look: its monogram at the label size or more (ADR 050 amendment (6)) */
+.frame .defpill.crit{padding-left:10.4cqh;min-height:8cqh}
+.frame .defpill.crit::before{left:1.4cqh;width:7.2cqh;height:7.2cqh;margin-top:-3.6cqh;line-height:7.2cqh;font-size:3.1cqh}
+.frame .defpill.crit[data-mono-len="3"]::before{font-size:2.4cqh}
+"""
 LAYOUT_CSS["paper_long"] = r"""
 /* a long letter beside its paper in the teal look (ADR 050 amendment (3)): the paper and the letter at 3.3% of the
    frame, so they and the board's note fit at full size on the site's player too */
@@ -1823,6 +1833,9 @@ def layout_css(blocks: dict, look: str | None = None) -> str:
         used.add("contents_one")
     if look == "teal" and sum(1 for b in blocks.values() if b.get("type") == "contents_item") >= 9:
         used.add("contents_nine")           # ADR 050 amendment (5): two columns of five rows
+    if look == "teal" and any({"defpill", "crit"} <= set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split())
+                             for b in blocks.values()):
+        used.add("crit_pill_teal")
     if any("paper-long" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split()) for b in blocks.values()):
         used.add("paper_long")
     if any("paper-fit" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split()) for b in blocks.values()):

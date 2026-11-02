@@ -74,6 +74,10 @@
   "writing-05-information-flow": [
    905000,
    905999
+  ],
+  "writing-02-assessment-criteria": [
+   902000,
+   902999
   ]
  },
  "ids": [
@@ -3165,6 +3169,34 @@
    "point": "request-frame",
    "slot": "sentence",
    "issued": "2026-11-01"
+  },
+  {
+   "id": "oa-writing-902000",
+   "lesson": "writing-02-assessment-criteria",
+   "point": "which-opening",
+   "slot": "item",
+   "issued": "2026-11-02"
+  },
+  {
+   "id": "oa-writing-902001",
+   "lesson": "writing-02-assessment-criteria",
+   "point": "accurate-sentence",
+   "slot": "item",
+   "issued": "2026-11-02"
+  },
+  {
+   "id": "oa-writing-902002",
+   "lesson": "writing-02-assessment-criteria",
+   "point": "keep-or-leave",
+   "slot": "item",
+   "issued": "2026-11-02"
+  },
+  {
+   "id": "oa-writing-902003",
+   "lesson": "writing-02-assessment-criteria",
+   "point": "polite-request",
+   "slot": "item",
+   "issued": "2026-11-02"
   }
  ]
 }

@@ -633,6 +633,17 @@ class TealLook(unittest.TestCase):
             self.assertNotIn("ct-one", style_c.layout_html(item(t), item(t)["html"], None, None, None, "teal"), t)
         one["html"] = style_c.layout_html(one, one["html"], None, None, None, "teal")
         self.assertEqual(style_c.layout_css({"k": one}, "teal"), style_c.LAYOUT_CSS["contents_one"])
+
+    def test_a_criterion_pill_takes_the_teal_rule(self):
+        """ADR 050 amendment (6): a criterion's card drawn as a definition pill (a board with no table) takes the
+        rule that sets its monogram at the label size; a lesson without one, or outside the look, takes nothing."""
+        pill = {"k01": {"type": "term_box", "html": '<div class="blk role-note defpill crit" data-mono="G&amp;S" '
+                                                   'data-mono-len="3"><span>The criterion</span></div>'}}
+        note = {"k01": {"type": "term_box", "html": '<div class="blk role-note term tnote crit" data-mono="O&amp;L" '
+                                                   'data-mono-len="3"><span>The criterion</span></div>'}}
+        self.assertIn(style_c.LAYOUT_CSS["crit_pill_teal"], style_c.layout_css(pill, "teal"))
+        self.assertNotIn(style_c.LAYOUT_CSS["crit_pill_teal"], style_c.layout_css(note, "teal"))
+        self.assertEqual(style_c.layout_css(pill, None), "")
         # the path and the timeline: readable and using the board, in their own rules (reaching only their users)
         self.assertIn(".frame .tbl.lay.lay-path td:nth-child(2){margin-top:1.2cqh;font-size:3.9cqh}",
                       style_c.LAYOUT_CSS["path"])

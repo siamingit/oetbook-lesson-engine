@@ -441,36 +441,36 @@
     {"fact": "writing-ielts", "at": "page-5_t1.s4.u2"},
     {"fact": "writing-criteria-scores", "at": "page-5_t1.s6.u2"},
     {"fact": "writing-grade-b-profile", "at": "page-5_t1.s7.u1"},
-    {"fact": "writing-purpose", "at": "pages-06-07-08_t2.s6.u1"},
+    {"fact": "writing-purpose", "at": "pages-06-07-08_t2.s5.u1"},
     {"fact": "writing-content", "at": "pages-09-10-11_t2.s1.u1"},
-    {"fact": "writing-conciseness", "at": "pages-12-13-14_t1.s2.u1"},
-    {"fact": "writing-body-counted", "at": "pages-12-13-14_t1.s5.u1"},
-    {"fact": "writing-word-guide", "at": "pages-12-13-14_t1.s5.u1"},
-    {"fact": "writing-length-signals", "at": "pages-12-13-14_t1.s7.u1"},
-    {"fact": "writing-style", "at": "pages-15-16-17_t1.s1.u3"},
+    {"fact": "writing-conciseness", "at": "pages-12-13-14_t1.s1.u2"},
+    {"fact": "writing-body-counted", "at": "pages-12-13-14_t1.s4.u1"},
+    {"fact": "writing-word-guide", "at": "pages-12-13-14_t1.s4.u1"},
+    {"fact": "writing-length-signals", "at": "pages-12-13-14_t1.s6.u1"},
+    {"fact": "writing-style", "at": "pages-15-16-17_t1.s2.u1"},
     {"fact": "writing-abbreviations", "at": "pages-15-16-17_t3.s2.u1"},
-    {"fact": "writing-address", "at": "page-18_t1.s3.u1"},
-    {"fact": "writing-re-line", "at": "page-18_t1.s5.u1"},
-    {"fact": "writing-organisation", "at": "page-18_t1.s8.u2"},
-    {"fact": "writing-sign-off", "at": "page-18_t1.s11.u1", "note": "a job title, such as Doctor"},
-    {"fact": "writing-no-fixed-layout", "at": "page-18_t1.s12.u2"},
+    {"fact": "writing-address", "at": "page-18_t1.s2.u1"},
+    {"fact": "writing-re-line", "at": "page-18_t1.s4.u1"},
+    {"fact": "writing-organisation", "at": "page-18_t2.s2.u2"},
+    {"fact": "writing-sign-off", "at": "page-18_t2.s5.u1", "note": "a job title, such as Doctor"},
+    {"fact": "writing-no-fixed-layout", "at": "page-18_t2.s6.u2"},
     {"fact": "writing-language", "at": "page-4_t1.s9.u1"},
     {"fact": "writing-spelling", "at": "page-19_t1.s8.u1"}
    ],
    "methods": [
     {"name": "Read the paper in this order", "text": "The setting first, then the Writing Task, then the case notes line by line; ask who the reader is and what they will do.", "at": "pages-09-10-11_t1.s1.u3"},
-    {"name": "Expanding the purpose (the teacher's method)", "text": "Say briefly in the opening why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.", "at": "pages-06-07-08_t2.s4.u1"},
-    {"name": "Keep, keep briefly or leave out", "text": "For each note, ask what this reader will do with it: lines that only look related are left out; lines that explain the problem are kept briefly.", "at": "pages-12-13-14_t2.s2.u3"},
-    {"name": "The teacher's word-count advice", "text": "Ten or twelve words more or fewer do no harm; what matters is that the reader gets everything they need, nothing they do not, and less important points briefly.", "at": "pages-12-13-14_t1.s6.u1"},
-    {"name": "The teacher's advice on style", "text": "Never firstly, secondly or finally in the letter; fortunately or unfortunately at most once, and never about a patient's habits.", "at": "pages-15-16-17_t2.s3.u1"}
+    {"name": "Expanding the purpose (the teacher's method)", "text": "Say briefly in the opening why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.", "at": "pages-06-07-08_t2.s3.u1"},
+    {"name": "Keep, keep briefly or leave out", "text": "For each note, ask what this reader will do with it: lines that only look related are left out; lines that explain the problem are kept briefly.", "at": "pages-12-13-14_t2.s1.u4"},
+    {"name": "The teacher's word-count advice", "text": "Ten or twelve words more or fewer do no harm; what matters is that the reader gets everything they need, nothing they do not, and less important points briefly.", "at": "pages-12-13-14_t1.s5.u1"},
+    {"name": "The teacher's advice on style", "text": "Never firstly, secondly or finally in the letter; fortunately or unfortunately at most once, and never about a patient's habits.", "at": "pages-15-16-17_t2.s4.u1"}
    ],
    "continues_in": [],
    "topics": [
     {"topic": "The six assessment criteria", "at": "page-4_t1.s1.u2"},
     {"topic": "Grade B in OET Writing", "at": "page-5_t1.s7.u1"},
-    {"topic": "Accuracy to the case notes", "at": "pages-09-10-11_t3.s2.u1"},
+    {"topic": "Accuracy to the case notes", "at": "pages-09-10-11_t3.s1.u2"},
     {"topic": "Abbreviations in the letter", "at": "pages-15-16-17_t3.s1.u4"},
-    {"topic": "Tense in the letter", "at": "pages-12-13-14_t3.s2.u1"}
+    {"topic": "Tense in the letter", "at": "pages-12-13-14_t3.s2.u6"}
    ]
   },
   "writing-03-letter-structure": {
