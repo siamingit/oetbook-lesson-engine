@@ -53797,8 +53797,8 @@
    "description": "Learn to keep the flow of information clear in an OET letter, with the time words that order a history and decide its tenses, the few linking words a letter needs and the ones to avoid, and the way a dated case note becomes a clear sentence, up to the request.",
    "course": "writing",
    "order": 5,
-   "length_s": 2252.27,
-   "length": "37:32",
+   "length_s": 2256.284,
+   "length": "37:36",
    "bundle_format": "1.23",
    "status": "built",
    "approval": null,
@@ -53834,7 +53834,7 @@
        "points": [
         {
          "text": "the lesson title, then what the lesson is about",
-         "block": "page-3_k14",
+         "block": "page-3_k01",
          "start_s": 0.0,
          "start": "0:00"
         }
@@ -53848,9 +53848,9 @@
        "points": [
         {
          "text": "each category, revealed as it is named",
-         "block": "page-3_k15",
-         "start_s": 78.395,
-         "start": "1:18"
+         "block": "page-3_k06",
+         "start_s": 79.945,
+         "start": "1:19"
         }
        ]
       }
@@ -53890,7 +53890,7 @@
        "points": [
         {
          "text": "the families",
-         "block": "page-4_k27",
+         "block": "page-4_k01",
          "start_s": 123.245,
          "start": "2:03"
         },
@@ -54699,13 +54699,6 @@
      ],
      "rules": [
       {
-       "block": "pages-08-09_k23",
-       "kind": "rule",
-       "text": "For each entry: the time reference, the tense, then the sentence.",
-       "start_s": 1507.361,
-       "start": "25:07"
-      },
-      {
        "block": "pages-08-09_k39",
        "kind": "rule",
        "text": "My advice: count a recent event from today. Keep the exact date where the reader needs it: a change of treatment, a test due, a last dose.",
@@ -55006,7 +54999,7 @@
      "category": null,
      "start_s": 2201.66,
      "start": "36:41",
-     "end_s": 2252.27,
+     "end_s": 2256.284,
      "topics": [
       {
        "board": "added-01_t1",
@@ -55016,9 +55009,9 @@
        "points": [
         {
          "text": "Recap",
-         "block": "added-01_k04",
-         "start_s": 2201.66,
-         "start": "36:41"
+         "block": "added-01_k01",
+         "start_s": 2204.803,
+         "start": "36:44"
         }
        ]
       }
@@ -64655,7 +64648,7 @@
   "sections": 273,
   "topics": 632,
   "teaching_points": 4566,
-  "rules": 285,
+  "rules": 284,
   "warnings": 66,
   "terms": 488,
   "wrong_examples": 278,
