@@ -56401,8 +56401,8 @@
    "description": "Learn to organise the body of an OET letter: the ISBAR parts, paragraphs in time order or by theme, a quick plan of what goes in each paragraph, and the request and closing paragraph.",
    "course": "writing",
    "order": 7,
-   "length_s": 1656.93,
-   "length": "27:36",
+   "length_s": 1659.493,
+   "length": "27:39",
    "bundle_format": "1.23",
    "status": "approved",
    "approval": {
@@ -56441,7 +56441,7 @@
        "points": [
         {
          "text": "the lesson title, then what the lesson is about",
-         "block": "page-3_k13",
+         "block": "page-3_k01",
          "start_s": 0.0,
          "start": "0:00"
         }
@@ -56455,9 +56455,9 @@
        "points": [
         {
          "text": "each category, revealed as it is named",
-         "block": "page-3_k14",
-         "start_s": 51.04,
-         "start": "0:51"
+         "block": "page-3_k06",
+         "start_s": 52.25,
+         "start": "0:52"
         }
        ]
       }
@@ -56499,7 +56499,7 @@
        "points": [
         {
          "text": "the criterion",
-         "block": "pages-04-05-06_k15",
+         "block": "pages-04-05-06_k01",
          "start_s": 86.56,
          "start": "1:26"
         },
@@ -56525,7 +56525,7 @@
        "points": [
         {
          "text": "The warning",
-         "block": "pages-04-05-06_k16",
+         "block": "pages-04-05-06_k06",
          "start_s": 159.353,
          "start": "2:39"
         },
@@ -56551,7 +56551,7 @@
        "points": [
         {
          "text": "three steps",
-         "block": "pages-04-05-06_k17",
+         "block": "pages-04-05-06_k10",
          "start_s": 198.663,
          "start": "3:18"
         },
@@ -56652,7 +56652,7 @@
        "points": [
         {
          "text": "the five parts",
-         "block": "pages-07-08-09_k21",
+         "block": "pages-07-08-09_k01",
          "start_s": 240.003,
          "start": "4:00"
         },
@@ -56696,7 +56696,7 @@
        "points": [
         {
          "text": "two letters as skeletons",
-         "block": "pages-07-08-09_k22",
+         "block": "pages-07-08-09_k08",
          "start_s": 348.531,
          "start": "5:48"
         },
@@ -56734,7 +56734,7 @@
        "points": [
         {
          "text": "the body",
-         "block": "pages-07-08-09_k23",
+         "block": "pages-07-08-09_k14",
          "start_s": 429.843,
          "start": "7:09"
         },
@@ -56826,7 +56826,7 @@
        "points": [
         {
          "text": "the classic shape",
-         "block": "pages-10-11-12_k27",
+         "block": "pages-10-11-12_k01",
          "start_s": 526.005,
          "start": "8:46"
         },
@@ -56864,7 +56864,7 @@
        "points": [
         {
          "text": "lines from four headings",
-         "block": "pages-10-11-12_k28",
+         "block": "pages-10-11-12_k09",
          "start_s": 610.745,
          "start": "10:10"
         },
@@ -56928,7 +56928,7 @@
        "points": [
         {
          "text": "several dated entries",
-         "block": "pages-10-11-12_k30",
+         "block": "pages-10-11-12_k20",
          "start_s": 730.09,
          "start": "12:10"
         },
@@ -57011,7 +57011,7 @@
        "points": [
         {
          "text": "The two ways",
-         "block": "pages-13-14-15-16_k25",
+         "block": "pages-13-14-15-16_k01",
          "start_s": 797.89,
          "start": "13:17"
         },
@@ -57037,7 +57037,7 @@
        "points": [
         {
          "text": "around time",
-         "block": "pages-13-14-15-16_k26",
+         "block": "pages-13-14-15-16_k04",
          "start_s": 836.26,
          "start": "13:56"
         },
@@ -57075,7 +57075,7 @@
        "points": [
         {
          "text": "by theme",
-         "block": "pages-13-14-15-16_k27",
+         "block": "pages-13-14-15-16_k10",
          "start_s": 875.53,
          "start": "14:35"
         },
@@ -57107,7 +57107,7 @@
        "points": [
         {
          "text": "an urgent referral",
-         "block": "pages-13-14-15-16_k28",
+         "block": "pages-13-14-15-16_k16",
          "start_s": 919.671,
          "start": "15:19"
         },
@@ -57188,7 +57188,7 @@
        "points": [
         {
          "text": "the plan",
-         "block": "added-01_k26",
+         "block": "added-01_k01",
          "start_s": 1019.22,
          "start": "16:59"
         },
@@ -57238,7 +57238,7 @@
        "points": [
         {
          "text": "the lines, sorted",
-         "block": "added-01_k27",
+         "block": "added-01_k10",
          "start_s": 1089.28,
          "start": "18:09"
         },
@@ -57380,7 +57380,7 @@
        "points": [
         {
          "text": "Mr Talbot's plan and his requests",
-         "block": "added-02_k23",
+         "block": "added-02_k01",
          "start_s": 1311.275,
          "start": "21:51"
         },
@@ -57503,7 +57503,7 @@
       {
        "block": "added-02_k02",
        "kind": "rule",
-       "text": "My advice: one request for each action named in the task and the plan. Nothing more than the plan asks.",
+       "text": "My advice: one request for each action in the task and the plan.",
        "start_s": 1320.211,
        "start": "22:00"
       }
@@ -57538,7 +57538,7 @@
      "category": null,
      "start_s": 1620.032,
      "start": "27:00",
-     "end_s": 1656.93,
+     "end_s": 1659.493,
      "topics": [
       {
        "board": "added-03_t1",
@@ -57548,9 +57548,9 @@
        "points": [
         {
          "text": "Recap",
-         "block": "added-03_k04",
-         "start_s": 1620.032,
-         "start": "27:00"
+         "block": "added-03_k01",
+         "start_s": 1623.486,
+         "start": "27:03"
         }
        ]
       }
