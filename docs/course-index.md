@@ -7868,7 +7868,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-11-01 00:09 (siavash) |
 | 5 | OET Writing: Information Flow | `writing-05-information-flow` | 37:32 | 9 | not yet |
 | 6 | OET Writing: Word Order | `writing-06-word-order` | 23:59 | 9 | 2026-11-01 19:35 (siavash) |
-| 7 | OET Writing: Organising the Letter | `writing-07-organisation` | 27:39 | 8 | 2026-11-01 10:08 (siavash) |
+| 7 | OET Writing: Organising the Letter | `writing-07-organisation` | 27:39 | 8 | 2026-11-02 00:54 (siavash) |
 | 8 | OET Writing: Reading the Task and the Case Notes | `writing-08-reading-the-task` | 23:18 | 8 | 2026-11-01 01:39 (siavash) |
 
 <a id="writing-01-overview"></a>
@@ -9317,7 +9317,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 7. OET Writing: Organising the Letter
 
 - Lesson ID and folder: `writing-07-organisation` (folder `writing-07-organisation`); course writing, lesson 7; length 27:39; bundle format 1.23
-- Status: approved by siavash, 2026-11-01 10:08
+- Status: approved by siavash, 2026-11-02 00:54
 - Description: Learn to organise the body of an OET letter: the ISBAR parts, paragraphs in time order or by theme, a quick plan of what goes in each paragraph, and the request and closing paragraph.
 - Original session: folder `source`: `source/video.mp4`, 28:50 long, partial hash `7739eb8d9c3f6385`; deck `source/slides.pdf`, 17 pages
   - Session 7 of the Persian Writing course, «Writing: How to Structure a letter» (28:50, 17 slides): Organisation and Layout recalled, no perfect template, the ISBAR approach, three letters read by their paragraphs, chronological or thematic order with the same letter both ways. The seventh lesson of the general Writing course (ADR 047), which also teaches two parts the recorded sessions never taught, planning the paragraphs and the request and closing paragraph, from the owner's recorded Nursing and Medicine Writing sessions. Every letter on the deck is of unknown or official origin and is rebuilt on our samples oa-ws-nur-0002, oa-ws-med-0003, oa-ws-med-0002, oa-ws-nur-0001 and oa-ws-nur-0003 at oetacademy-exercises 5320d19 (ADR 040).
