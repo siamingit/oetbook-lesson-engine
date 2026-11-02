@@ -645,6 +645,8 @@ HAND_TYPES = ("plain", "callout", "category_card")
 # ADR 050 amendment (3), rule 7: a contents title longer than this, of five words or fewer, cannot keep a line of three
 # words at the contents' size in its column; it is set on one line (`ct-one`), the set one step smaller
 CONTENTS_LINE_CHARS = 28
+# ADR 050 amendment (5): a teal contents of this many parts or more is set in five or six rows per column
+CONTENTS_DENSE_FROM = 9
 # a letter longer than this beside its paper (the paper's third column) is set at 3.3% of the frame in the teal look,
 # not the look's 3.9%, so the paper, the letter and the board's note fit on the site's player at full size (rule 1
 # holds: 29.7 px)
@@ -1706,6 +1708,47 @@ LAYOUT_CSS["contents_one"] = r"""
 .frame #cam:has(> .blk.citem.ct-one) > .blk.citem{gap:1.4cqw;--t-cr:5cqh}
 .frame #cam:has(> .blk.citem.ct-one) .citem .cnum{width:10cqh;height:10cqh;font-size:4.6cqh}
 """
+# ADR 050 amendment (5) (Writing 4, 2026-11-02): a contents of nine to twelve parts in the teal look. The look sets six
+# to eight items in two columns of three or four rows (17.5% each); nine or more overflowed the board, and the fit
+# cleared seven items. Five rows (nine or ten items) or six rows (eleven or twelve) per column, the circles and the
+# titles one step smaller (3.5%, as `ct-one`; a label at 4.2% or 3.6%: over 20 px). Only a lesson with that many
+# items takes these rules.
+LAYOUT_CSS["contents_dense"] = r"""
+/* nine to twelve contents items: five or six rows in two columns, the circles and titles one step smaller */
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem{min-height:13.2cqh;gap:1.4cqw;--t-cr:4.5cqh}
+.frame #cam:has(> .blk.citem:nth-child(9)) .citem .cnum{width:9cqh;height:9cqh;font-size:4.2cqh}
+.frame #cam:has(> .blk.citem:nth-child(9)) .citem .ct{font-size:3.5cqh}
+/* nine or ten: five rows, read down the first column and then the second */
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(1){order:1}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(2){order:3}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(3){order:5}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(4){order:7}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(5){order:9}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(6){order:2}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(7){order:4}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(8){order:6}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(9){order:8}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(10){order:10}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(4)::after,
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(5)::before{content:""}
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(5)::after,
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(6)::before{content:none}
+/* eleven or twelve: six rows */
+.frame #cam:has(> .blk.citem:nth-child(11)) > .blk.citem{min-height:11cqh;--t-cr:3.8cqh}
+.frame #cam:has(> .blk.citem:nth-child(11)) .citem .cnum{width:7.6cqh;height:7.6cqh;font-size:3.6cqh}
+.frame #cam:has(> .blk.citem:nth-child(11)) .citem .ct{font-size:3.2cqh}
+.frame #cam:has(> .blk.citem:nth-child(11)) > .blk.citem:nth-child(6){order:11}
+.frame #cam:has(> .blk.citem:nth-child(11)) > .blk.citem:nth-child(7){order:2}
+.frame #cam:has(> .blk.citem:nth-child(11)) > .blk.citem:nth-child(8){order:4}
+.frame #cam:has(> .blk.citem:nth-child(11)) > .blk.citem:nth-child(9){order:6}
+.frame #cam:has(> .blk.citem:nth-child(11)) > .blk.citem:nth-child(10){order:8}
+.frame #cam:has(> .blk.citem:nth-child(11)) > .blk.citem:nth-child(11){order:10}
+.frame #cam:has(> .blk.citem:nth-child(11)) > .blk.citem:nth-child(12){order:12}
+.frame #cam:has(> .blk.citem:nth-child(11)) > .blk.citem:nth-child(5)::after,
+.frame #cam:has(> .blk.citem:nth-child(11)) > .blk.citem:nth-child(6)::before{content:""}
+.frame #cam:has(> .blk.citem:nth-child(11)) > .blk.citem:nth-child(6)::after,
+.frame #cam:has(> .blk.citem:nth-child(11)) > .blk.citem:nth-child(7)::before{content:none}
+"""
 LAYOUT_CSS["paper_long"] = r"""
 /* a long letter beside its paper in the teal look (ADR 050 amendment (3)): the paper and the letter at 3.3% of the
    frame, so they and the board's note fit at full size on the site's player too */
@@ -1767,6 +1810,8 @@ def layout_css(blocks: dict, look: str | None = None) -> str:
             used.add("crit_teal")
     if any("ct-one" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split()) for b in blocks.values()):
         used.add("contents_one")
+    if look == "teal" and sum(1 for b in blocks.values() if b.get("type") == "contents_item") >= CONTENTS_DENSE_FROM:
+        used.add("contents_dense")
     if any("paper-long" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split()) for b in blocks.values()):
         used.add("paper_long")
     return "".join(LAYOUT_CSS[k] for k in LAYOUT_CSS if k in used)

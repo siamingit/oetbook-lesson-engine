@@ -1180,7 +1180,7 @@ white sheets framed in teal and coral with their names as pills, the body as gre
 request expanded in the Purpose colour. The `path` sets its steps at 3.6% and its notes in the hand at 3.9% on larger
 circles; a `timeline` of four markers or more is set vertically, a marker longer than a number is a pill, and a lit
 marker keeps its colour. The criterion's monogram is a label (at least 20 px). A contents title of five words or fewer
-that cannot keep a line of three words (`ct-one`) sets the whole contents one step smaller, so it stays on one line.
+that cannot keep a line of three words (`ct-one`) sets the whole contents one step smaller, so it stays on one line. A contents of nine to twelve parts (ADR 050 amendment (5), Writing 4) is set in five or six rows per column, its circles and titles one step smaller (3.5%); the rules reach only a lesson with that many parts.
 A letter of more than 330 characters beside its paper is set, with its paper, at 3.3% of the frame (`paper-long`) in
 the look, so it fits the site's player at full size.
 

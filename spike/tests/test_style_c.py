@@ -633,6 +633,19 @@ class TealLook(unittest.TestCase):
             self.assertNotIn("ct-one", style_c.layout_html(item(t), item(t)["html"], None, None, None, "teal"), t)
         one["html"] = style_c.layout_html(one, one["html"], None, None, None, "teal")
         self.assertEqual(style_c.layout_css({"k": one}, "teal"), style_c.LAYOUT_CSS["contents_one"])
+
+    def test_nine_or_more_contents_items_take_the_dense_path(self):
+        """ADR 050 amendment (5): a teal contents of nine to twelve parts is set in five or six rows per column; the
+        rules reach no lesson with eight or fewer, and no lesson outside the look."""
+        def item(n):
+            return {"type": "contents_item", "text": f"Part {n}", "html": f'<div class="blk citem"><span class="cnum">{n}</span>'
+                                                                        f'<span class="ct">Part {n}</span></div>'}
+        nine = {f"k{n:02d}": item(n) for n in range(1, 10)}
+        eight = {f"k{n:02d}": item(n) for n in range(1, 9)}
+        self.assertEqual(style_c.layout_css(nine, "teal"), style_c.LAYOUT_CSS["contents_dense"])
+        self.assertEqual(style_c.layout_css(eight, "teal"), "")
+        self.assertEqual(style_c.layout_css(nine, None), "")
+        self.assertIn("nth-child(9)", style_c.LAYOUT_CSS["contents_dense"])
         # the path and the timeline: readable and using the board, in their own rules (reaching only their users)
         self.assertIn(".frame .tbl.lay.lay-path td:nth-child(2){margin-top:1.2cqh;font-size:3.9cqh}",
                       style_c.LAYOUT_CSS["path"])
