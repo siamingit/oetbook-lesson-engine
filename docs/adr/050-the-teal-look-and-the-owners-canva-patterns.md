@@ -345,6 +345,10 @@ five lines), so a sheet of three rows and thirteen lines was still set at 4.5% o
 **Consequences.** No built lesson but Writing 3 and Writing 8 has nine contents items in the teal look, a teal sheet of
 fewer than six rows that draws six lines or more (Word Order's one sheet draws four with its wraps; Writing 5's sheets set
 one line a row and are long already; Writing 7 has no sheet), or a verdict on a pill or a tile. Proven by the render comparison (runbook, "Changing shared code"): `render_compare.py` snapshots
-`before-w03a`/`before-w03b` on main and `after-w03a`/`after-w03b` on this change, 2026-11-02 (RESULT). Reading 5 is outside the
-proof, as before; Writing 3 is the lesson this change is for.
+`before-w03a`, `before-w03c` and `before-w03d` on main at 9f6c2c2 and `after-w03a`, `after-w03c` and `after-w03d` on this change,
+2026-11-02 (three lists, two checkouts each, run side by side): **24 of 24 built lessons identical**, 732 data files byte
+for byte and 155,360 moments at the phone and laptop frames drawn identically, with no board timing difference. Outside
+the proof: Reading 5, as before (it does not render on main); Writing 3, the lesson this change is for; and Writing 1, 2
+and 4, which three other sessions were redesigning in the teal look the same afternoon (their folders changed while the
+snapshots ran, and Writing 2 and 4 no longer render on main's code).
 
