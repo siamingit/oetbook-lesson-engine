@@ -1,9 +1,23 @@
-"""Independent language QA on a page's narration. Gemini 3.1 Pro (ADR 002).
+"""Independent language QA on a page's narration: the line QA.
+
+Since 2026-11-02 (ADR 051, owner's decision of 2026-11-01) the reviewer is a
+Claude Code subagent, started fresh for every review with no context from the
+build (.claude/agents/line-reviewer.md). This script builds the review request
+it is given and files the findings it returns; it makes no call. Gemini 3.1 Pro
+(ADR 002) stays available with --reviewer gemini, off by default.
 
 Usage:
-  .venv/Scripts/python qa_narration.py <lesson_dir> --page 13 --show-prompt
-  .venv/Scripts/python qa_narration.py <lesson_dir> --page 13 --call [--pass N]
+  .venv/Scripts/python qa_narration.py <lesson_dir> --pages 13 --show-prompt
+  .venv/Scripts/python qa_narration.py <lesson_dir> --pages 13 --call [--pass N]
+      writes qa/request_<label>.md and stops (exit 3): the session runs the
+      line-reviewer subagent on that file (docs/03-RUNBOOK.md step 12) ...
+  .venv/Scripts/python qa_narration.py <lesson_dir> --pages 13 --ingest REPLY.json [--pass N]
+      ... and files its reply as qa/qa_<label>.json, checked against the schema
+  .venv/Scripts/python qa_narration.py <lesson_dir> --pages 13 --call --reviewer gemini
+      the Gemini review, a paid direct call (kept, off by default)
 
+--out DIR writes the request and the findings under DIR instead of the
+section's qa/ folder (a review of an approved lesson that must not be touched).
 --show-prompt assembles the request and prints it. No API call, no cost.
 
 qa_script.py adapted to the board model: the reviewer is given what the student
@@ -29,6 +43,15 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paths                                                    # noqa: E402
 from write_narration import MARK_TYPES, opt, spoken               # noqa: E402
+
+# The reviewer (ADR 051): "claude", the Claude Code line-reviewer subagent, by
+# default; "gemini", the paid Gemini review, only when asked for.
+REVIEWERS = ("claude", "gemini")
+DEFAULT_REVIEWER = "claude"
+CLAUDE_REVIEWER = ("Claude Code line-reviewer subagent (.claude/agents/line-reviewer.md), "
+                   "started fresh, given the request file only")
+PENDING_EXIT = 3          # --call under the claude reviewer: the request is written, not reviewed
+ROOT = Path(__file__).resolve().parents[2]
 
 # Held here since 2026-09-24, when qa_script.py (the slide-based reviewer they
 # came from) moved to spike/superseded/.
@@ -192,6 +215,22 @@ Quote the exact words you are objecting to inside the issue, so it can be found.
 
 If the narration is sound on a given check, say nothing about it. An empty findings \
 list is a valid result.\
+"""
+
+# A Writing lesson's reviewer is also given the fact sheet (ADR 051): every exam
+# fact a Writing lesson may state, verified on oet.com, with the owner's own
+# rules marked as his. Gemini was never given it.
+WRITING_FACTS = """\
+THIS IS A WRITING LESSON. Below is the project's Writing fact sheet \
+(docs/writing-facts.md): every fact about the OET Writing sub-test a lesson may \
+state, each VERIFIED on oet.com, NOT STATED OFFICIALLY, or an OWNER'S RULE (the \
+teacher's own advice, taught as his advice and never as an OET rule). Under check \
+3, report as `critical` a spoken or on-screen claim about the exam that contradicts \
+the sheet, states as an OET rule what the sheet marks NOT STATED OFFICIALLY or \
+OWNER'S RULE, or gives a number or a wording the sheet gives differently. The \
+sheet is reference material for you; its own wording is not under review.
+
+---- THE WRITING FACT SHEET ----
 """
 
 SCHEMA = {
@@ -370,12 +409,16 @@ def prepare(lesson: Path, pages: list[int], n_pass: int = 1, states: list[str] |
     import listening_rule                      # ADR 029
     if listening_rule.is_listening(lesson):
         text = listening_rule.QA + "\n\n" + text
+    import lesson_type                         # ADR 051: the fact sheet for a Writing lesson
+    if lesson_type.of(lesson) == "writing":
+        facts = (ROOT / "docs" / "writing-facts.md").read_text(encoding="utf-8").strip()
+        text = WRITING_FACTS + facts + "\n---- END OF THE FACT SHEET ----\n\n" + text
     if only:
         text =("ONLY SOME STATES ARE UNDER REVIEW: the ones below were just rewritten. "
                 "Judge them; earlier and later states are not shown and are not "
                 "missing content.\n\n" + text)
     return {"data": data, "text": text, "label": name or f"pass{n_pass}", "n_pass": n_pass,
-            "out": paths.narration_dir_for(lesson, pages) / "qa"}
+            "pages": pages, "out": paths.narration_dir_for(lesson, pages) / "qa"}
 
 
 def gemini_request(text: str) -> dict:
@@ -389,10 +432,83 @@ def gemini_request(text: str) -> dict:
                        "max_output_tokens": MAX_OUTPUT_TOKENS}}
 
 
-def finish(prep: dict, result_text: str, usage: dict, batch: bool, raw_text: str) -> Path:
+def request_text(prep: dict) -> str:
+    """The whole review as one document for the line-reviewer subagent (ADR
+    051): the instruction Gemini is sent as its system instruction, the lesson
+    exactly as Gemini is sent it, and the reply's shape. One source for both
+    reviewers, so the checklist is the same."""
+    return "\n\n".join([
+        f"# Line QA request: {prep['label']}, {len(prep['data']['ids'])} utterances\n\n"
+        "Everything below the next heading is the material under review and the rules "
+        "for judging it. Read nothing else. Reply with the JSON object described at the "
+        "end, and nothing before or after it.",
+        "## INSTRUCTION\n\n" + SYSTEM,
+        "## THE MATERIAL\n\n" + prep["text"],
+        "## REPLY\n\nOne JSON object matching this schema (draft 2020-12), and nothing "
+        "else: no prose, no code fence needed.\n\n```json\n"
+        + json.dumps(SCHEMA, indent=1) + "\n```",
+    ])
+
+
+def write_request(prep: dict, out_dir: Path | None = None) -> Path:
+    """Write the request the line-reviewer subagent is given, and say what to
+    do with it. Nothing is reviewed here; the exit status PENDING_EXIT tells
+    the caller so."""
+    out = out_dir or prep["out"]
+    out.mkdir(parents=True, exist_ok=True)
+    path = out / f"request_{prep['label']}.md"
+    path.write_text(request_text(prep), encoding="utf-8")
+    print(f"REVIEW PENDING: {len(prep['data']['ids'])} utterances await the line-reviewer "
+          f"subagent (ADR 051; docs/03-RUNBOOK.md step 12)")
+    print(f"  request: {path}")
+    print("  then:    qa_narration.py <L> --pages ... --ingest REPLY.json "
+          f"[--pass {prep['n_pass']} | --name {prep['label']}]")
+    return path
+
+
+def parse_reply(text: str) -> dict:
+    """The subagent's reply as the findings object, checked against SCHEMA. A
+    code fence around the JSON, or words before or after it, are tolerated;
+    anything that is not the schema's shape is refused, so a malformed review
+    is never filed."""
+    import jsonschema
+    s = text.strip()
+    if s.startswith("```"):
+        s = s.split("\n", 1)[1] if "\n" in s else ""
+        s = s.rsplit("```", 1)[0]
+    start, end = s.find("{"), s.rfind("}")
+    if start < 0 or end < 0:
+        raise SystemExit("REFUSED: the reply holds no JSON object; nothing was filed")
+    try:
+        obj = json.loads(s[start:end + 1])
+    except json.JSONDecodeError as e:
+        raise SystemExit(f"REFUSED: the reply is not valid JSON ({e}); nothing was filed")
+    try:
+        jsonschema.validate(obj, SCHEMA)
+    except jsonschema.ValidationError as e:
+        raise SystemExit(f"REFUSED: the reply does not match the findings schema "
+                         f"({e.message}); nothing was filed")
+    return obj
+
+
+def ingest(prep: dict, reply: Path, out_dir: Path | None = None) -> Path:
+    """File the line-reviewer subagent's reply as the review's findings, in
+    the same shape as a Gemini review and counted by the same code, at no
+    cost."""
+    raw = reply.read_text(encoding="utf-8")
+    obj = parse_reply(raw)
+    if out_dir:
+        prep = {**prep, "out": out_dir}
+    return finish(prep, json.dumps(obj), {"input": 0, "output": 0, "thought": 0, "cached": 0},
+                  False, raw, reviewer="claude")
+
+
+def finish(prep: dict, result_text: str, usage: dict, batch: bool, raw_text: str,
+           reviewer: str = "gemini") -> Path:
     """Write the review's raw response and its findings with their cost, the
-    same for a direct call and a batch result. `usage`: input, output,
-    thought and cached token counts."""
+    same for a direct call, a batch result and an ingested subagent reply.
+    `usage`: input, output, thought and cached token counts (zeros for the
+    subagent, which is not metered)."""
     import llm
     data, out, label, n_pass = prep["data"], prep["out"], prep["label"], prep["n_pass"]
     out.mkdir(parents=True, exist_ok=True)
@@ -401,11 +517,14 @@ def finish(prep: dict, result_text: str, usage: dict, batch: bool, raw_text: str
     (out / f"raw_response_{label}.json").write_text(raw_text, encoding="utf-8")
     result = json.loads(result_text)
     billable_output = usage["output"] + usage["thought"]
-    cost = llm.gemini_cost(usage["input"], billable_output, usage.get("cached", 0), batch)
+    cost = (llm.gemini_cost(usage["input"], billable_output, usage.get("cached", 0), batch)
+            if reviewer == "gemini" else 0.0)
     known = set(data["ids"]) | {"whole-page"}
     result["meta"] = {
-        "model": MODEL, "thinking_level": THINKING_LEVEL, "pass": n_pass,
-        "mode": "batch" if batch else "direct",
+        "reviewer": reviewer,
+        "model": MODEL if reviewer == "gemini" else CLAUDE_REVIEWER,
+        "thinking_level": THINKING_LEVEL if reviewer == "gemini" else None, "pass": n_pass,
+        "mode": "batch" if batch else ("direct" if reviewer == "gemini" else "subagent"),
         "reviewed_utterances": len(data["ids"]),
         "input_tokens": usage["input"], "cached_tokens": usage.get("cached", 0),
         "output_tokens": usage["output"], "thought_tokens": usage["thought"],
@@ -413,7 +532,9 @@ def finish(prep: dict, result_text: str, usage: dict, batch: bool, raw_text: str
         "cost_usd": round(cost, 4),
         "unknown_ids": sorted({f["utterance_id"] for f in result["findings"]} - known),
         "independent_of": "Persian transcript, understanding beats, provenance notes, "
-                          "rulings; given only a maintainer flag for check 8",
+                          "rulings; given only a maintainer flag for check 8"
+                          + ("; the build's session (a fresh subagent, given the request "
+                             "file only, ADR 051)" if reviewer == "claude" else ""),
     }
     path = out / f"qa_{label}.json"
     path.write_text(json.dumps(result, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -427,9 +548,12 @@ def finish(prep: dict, result_text: str, usage: dict, batch: bool, raw_text: str
         print(f"  {f['severity'].upper():8} {f['utterance_id']:>12} {f['check']:<22} "
               f"[{f['confidence']}] {f['issue']}")
         print(f"           fix: {f['proposed_fix']}")
-    print(f"tokens {usage['input']:,} in ({usage.get('cached', 0):,} cached) / "
-          f"{usage['output']:,} out + {usage['thought']:,} thinking | ${cost:.3f}"
-          + (" (batch)" if batch else ""))
+    if reviewer == "gemini":
+        print(f"tokens {usage['input']:,} in ({usage.get('cached', 0):,} cached) / "
+              f"{usage['output']:,} out + {usage['thought']:,} thinking | ${cost:.3f}"
+              + (" (batch)" if batch else ""))
+    else:
+        print("reviewer: the line-reviewer subagent, not metered | $0.000")
     if result["meta"]["unknown_ids"]:
         print("CHECK: findings on unknown ids: " + ", ".join(result["meta"]["unknown_ids"]))
     return path
@@ -444,8 +568,21 @@ def main() -> None:
     only = [s.strip() for s in (opt("--states") or "").split(",") if s.strip()]
     prep = prepare(lesson, pages, int(opt("--pass", "1")), only, opt("--name"))
     data, text = prep["data"], prep["text"]
+    reviewer = opt("--reviewer", DEFAULT_REVIEWER)
+    if reviewer not in REVIEWERS:
+        raise SystemExit(f"--reviewer must be one of {', '.join(REVIEWERS)}")
+    out_dir = Path(opt("--out")) if opt("--out") else None
+
+    if opt("--ingest"):
+        ingest(prep, Path(opt("--ingest")), out_dir)
+        return
 
     if "--call" not in sys.argv:
+        if reviewer == "claude":
+            print(request_text(prep))
+            print(f"\n{len(data['ids'])} utterances offered for review; reviewer: the "
+                  "line-reviewer subagent (ADR 051); nothing written")
+            return
         print("=" * 78)
         print("SYSTEM INSTRUCTION")
         print("=" * 78)
@@ -466,6 +603,11 @@ def main() -> None:
         print("no API call made")
         return
 
+    if reviewer == "claude":
+        write_request(prep, out_dir)
+        sys.exit(PENDING_EXIT)
+    if out_dir:
+        prep["out"] = out_dir
     call_direct(prep)
 
 

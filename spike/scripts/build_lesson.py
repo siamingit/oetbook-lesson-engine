@@ -179,7 +179,9 @@ def near_cap(L: Path) -> list[str]:
         if out >= NEAR_CAP * caps[stage]:
             found.append(f"{stage}: {out:,} of {caps[stage]:,} ({out / caps[stage]:.0%}) "
                          f"{p.relative_to(L)}")
-    cap = qa_narration.MAX_OUTPUT_TOKENS                   # Gemini: thinking counts toward it
+    # Gemini: thinking counts toward it. A subagent review (ADR 051) records no
+    # tokens, so it is never near the cap.
+    cap = qa_narration.MAX_OUTPUT_TOKENS
     for p in sorted(qa_reviews(L)):
         m = json.loads(p.read_text(encoding="utf-8")).get("meta", {})
         out = m.get("output_tokens", 0) + m.get("thought_tokens", 0)
@@ -219,7 +221,8 @@ def report_spend(L: Path, label: str, budget: float | None = None) -> None:
 
 def spent(L: Path) -> float:
     """Model spend so far, measured from the saved responses: Anthropic
-    (understanding, screens, narration and its splices) and Gemini (QA)."""
+    (understanding, screens, narration and its splices) and Gemini (a QA review
+    asked for with --qa-reviewer gemini; a subagent review costs 0, ADR 051)."""
     total = 0.0
     for p in (L / "analysis").rglob("raw_response*.json"):
         if "qa" in p.parts:
@@ -478,14 +481,22 @@ def batch(L, stage: str, pending: int, unit_est: float, a) -> None:
     for twice."""
     if pending == 0 and not (L / "analysis" / "batches" / f"{stage}.json").exists():
         return
+    extra = ["--reviewer", a.qa_reviewer] if stage.startswith("qa") else []
+    if unit_est == 0:
+        # a QA stage under the line-reviewer subagent (ADR 051): not paid, so
+        # neither the code guard nor the budget applies; the stage writes the
+        # requests and stops (exit 3) until every reply is filed
+        run(L, [str(HERE / "run_batch_stage.py"), str(L), "--stage", stage, "--direct"] + extra,
+            f"{stage}, {pending} review request(s) for the line-reviewer subagent")
+        return
     check_code(L, stage, a)
     if a.batch:
         afford(L, a.budget, pending * unit_est * 0.5, f"{stage}: {pending} units in one batch")
-        run(L, [str(HERE / "run_batch_stage.py"), str(L), "--stage", stage],
+        run(L, [str(HERE / "run_batch_stage.py"), str(L), "--stage", stage] + extra,
             f"{stage}, one batch of {pending}")
     else:
         afford(L, a.budget, pending * unit_est, f"{stage}: {pending} direct calls")
-        run(L, [str(HERE / "run_batch_stage.py"), str(L), "--stage", stage, "--direct"],
+        run(L, [str(HERE / "run_batch_stage.py"), str(L), "--stage", stage, "--direct"] + extra,
             f"{stage}, {pending} direct calls")
 
 
@@ -633,7 +644,13 @@ def stage_narration(L, a):
                      "maintainer's instruction in chat: no new full QA round after the fixes",
                      "run without --no-new-qa (qa1 on those sections)")
         qa = []
-    batch(L, "qa1", len(qa), EST["qa"], a)
+    if qa and a.qa_reviewer == "gemini":
+        # ADR 051: the paid Gemini review is the exception, asked for in chat
+        log_decision(L, "QA pass 1 by Gemini, not the line-reviewer subagent (--qa-reviewer gemini)",
+                     "reviewed by Gemini: " + ", ".join(s["title"] for s in qa),
+                     "maintainer's instruction in chat (ADR 051 keeps the Gemini review available)",
+                     "run without --qa-reviewer gemini")
+    batch(L, "qa1", len(qa), EST["qa"] if a.qa_reviewer == "gemini" else 0.0, a)
     # the silent preview is fitted and checked like the finished player (ADR
     # 011, ADR 020): every block inside the board, nothing over anything
     run(L, [str(HERE / "fit_boards.py"), str(L), "--silent"], "board fit (silent preview)")
@@ -814,6 +831,10 @@ def main() -> None:
                          "instruction: no new full QA round after fixes); logged")
     ap.add_argument("--accept-uncommitted", action="append", metavar="STAGE",
                     help="run this paid stage although its code is not committed (logged)")
+    ap.add_argument("--qa-reviewer", choices=["claude", "gemini"], default="claude",
+                    help="the line QA's reviewer (ADR 051): the Claude Code line-reviewer "
+                         "subagent (default, free: the run stops with the requests written until "
+                         "every reply is filed) or the paid Gemini review (logged)")
     a = ap.parse_args()
     if a.batch:
         raise SystemExit("batch mode is off (maintainer, 2026-09-30; docs/03-RUNBOOK.md, Cost "

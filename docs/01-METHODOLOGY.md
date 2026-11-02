@@ -888,7 +888,12 @@ How it is applied: the screen text changes by `overrides.json` (with an
 affected states is rewritten from a brief (`write_narration.py --states`),
 and those states alone get one QA pass (`qa_narration.py --states ...
 --name decisions`, written to `qa/qa_decisions.json`, never over pass 1 or
-2). A screen edit must not move a board's layout: the build compares every
+2). Since 2026-11-02 the QA reviewer is the Claude Code `line-reviewer`
+subagent, started fresh and given the request file only (ADR 051; runbook
+"Line QA"): `--call` writes the request, the session runs the subagent on
+it, and `--ingest` files its reply in the same shape as the Gemini reviews
+before it. The reviewer is independent by what it is given, not by who it
+is. A screen edit must not move a board's layout: the build compares every
 board's states and working blocks before and after, and a longer text that
 shifts an erase point is reworded until it fits (the Verb tenses
 "experience" box, 2026-09-24). Maintainer wording that replaces a rule goes
