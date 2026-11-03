@@ -18,8 +18,14 @@ scopeLessonStylesheet), bundles the site's LessonPlayer with esbuild, serves it 
 Edge to every state's fullest moment (`--boards`: each board's fullest state only). At each it records the site
 guard's verdict (data-oa-fit, data-oa-whole and why), measures every line of text as check_text_size.py does (26 px
 running, 20 px labels in the 1600x900 frame, a hand line at its size / 1.3; contrast 4.5:1) and takes a screenshot.
-Fails on: any block that spills; any board the site's guard draws smaller than its own size; any text under its
-minimum or under 4.5:1. Writes <lesson>/generated/site-player/ (site_player_check.json and one PNG per moment).
+Fails on: any block that spills; any board the site's guard draws smaller than its own size; and, in a lesson drawn
+in the teal look, any text under its minimum or under 4.5:1. Writes <lesson>/generated/site-player/
+(site_player_check.json and one PNG per moment).
+
+The readability rules are the teal look's (ADR 050 amendment (1)), as check_text_size.py is run only on a teal lesson;
+the owner, 2026-11-03 (ADR 050 amendment (9)): a lesson in another look (style C, released before the rules) is
+measured the same way, but its text sizes and contrasts are listed in the report as not applied, not failed. Spills
+and the site's guard are checked in every lesson.
 """
 
 import argparse
@@ -38,6 +44,7 @@ REPO = HERE.parents[1]
 HARNESS = REPO / "spike" / "site_player"
 WORK = REPO / "spike" / "out" / "site-player"
 RULES = {"run": 26.0, "label": 20.0, "contrast": 4.5, "hand": 1.3, "words": 4, "tol": 0.25}
+READABILITY = {"small text", "small label", "low contrast"}   # the probe's `found` kinds: the teal look's rules
 NODE = shutil.which("node") or "node"
 PNPM = shutil.which("pnpm") or "pnpm"
 GIT = shutil.which("git") or "git"
@@ -141,6 +148,24 @@ def serve(root: Path) -> tuple[http.server.ThreadingHTTPServer, int]:
     return httpd, httpd.server_address[1]
 
 
+def verdicts(res: list[dict], teal: bool) -> tuple[list[str], list[str]]:
+    """The probe's moments judged: (failures, readability findings not applied). A moment still loading, a block that
+    spills and a board the site's guard draws smaller fail in every lesson; a text under its minimum or under 4.5:1
+    fails in a teal lesson only (ADR 050 amendment (9)), and is listed as not applied in any other."""
+    fails, not_applied = [], []
+    for m in res:
+        if m.get("loading"):
+            fails.append(f"{m['name']} {m['board']}: the site's player still shows Loading: nothing was measured")
+        if "spills" in (m.get("why") or ""):
+            fails.append(f"{m['name']} {m['board']}: a block spills ({m['why']}), so the site's guard never fits the board")
+        if m.get("fit"):
+            fails.append(f"{m['name']} {m['board']}: the site's guard draws the board smaller ({m['fit']}; {m.get('why')})")
+        for f in m["found"]:
+            line = f"{m['name']} {m['board']}: {f['kind']} {f['value']} in {f['block']}: {f['text']!r}"
+            (fails if teal or f["kind"] not in READABILITY else not_applied).append(line)
+    return fails, not_applied
+
+
 def main() -> None:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     ap = argparse.ArgumentParser()
@@ -190,26 +215,24 @@ def main() -> None:
     if r.returncode:
         raise SystemExit("the site player's probe failed")
     res = json.loads((out / "probe.json").read_text(encoding="utf-8"))
-    fails = []
-    for m in res:
-        if m.get("loading"):
-            fails.append(f"{m['name']} {m['board']}: the site's player still shows Loading: nothing was measured")
-        if "spills" in (m.get("why") or ""):
-            fails.append(f"{m['name']} {m['board']}: a block spills ({m['why']}), so the site's guard never fits the board")
-        if m.get("fit"):
-            fails.append(f"{m['name']} {m['board']}: the site's guard draws the board smaller ({m['fit']}; {m.get('why')})")
-        for f in m["found"]:
-            fails.append(f"{m['name']} {m['board']}: {f['kind']} {f['value']} in {f['block']}: {f['text']!r}")
+    teal = style_c.look_of(L) == "teal"
+    fails, not_applied = verdicts(res, teal)
     report = {"site_commit": commit, "package": str(pkg), "package_fingerprint": fingerprint(pkg), "width": a.width,
-              "moments": len(res), "every_state": not a.boards, "failures": fails, "rules": RULES}
+              "moments": len(res), "every_state": not a.boards, "failures": fails, "rules": RULES,
+              "readability": "applied (the teal look)" if teal else
+                             "not applied: the lesson is not in the teal look (ADR 050 amendment (9))",
+              "readability_not_applied": not_applied}
     (out / "site_player_check.json").write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"site player (oetacademy-web {commit}) at {a.width}px: {len(res)} moment(s), {len(fails)} failure(s)")
+    if not teal:
+        print(f"  readability not applied (not the teal look, ADR 050 amendment (9)): {len(not_applied)} measured "
+              f"text(s) under the teal look's minimum or contrast, listed in the report")
     for f in fails[:40]:
         print("  " + f)
     if fails:
         raise SystemExit(f"site-player check failed: {len(fails)} finding(s); see {out / 'site_player_check.json'}")
-    print("site-player check passed: every board drawn at its own size on the site's player, no block spills, every "
-          "text at its minimum or larger and at 4.5:1 or more")
+    print("site-player check passed: every board drawn at its own size on the site's player, no block spills"
+          + (", every text at its minimum or larger and at 4.5:1 or more" if teal else ""))
 
 
 if __name__ == "__main__":

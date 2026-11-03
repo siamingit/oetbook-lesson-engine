@@ -431,3 +431,37 @@ by the render comparison (runbook, "Changing shared code"): `render_compare.py` 
 checkouts, run side by side): **27 of 27 built lessons identical**, 860 data files byte for byte and
 163,474 moments at the phone and laptop frames drawn identically, with no board timing difference. Outside the
 proof: Reading 5, as before (it does not render on main); and Writing 4, the lesson this change is for.
+
+## Amendment (9), 2026-11-03: the readability rules on the site's player apply to the teal look only
+
+**Context.** The owner's brief of 2026-11-03 adds the site's AI marking (contracts 1.14.0) to the practice points of
+the released lessons, re-released directly. Grammar 5 to 8 (style C, released 2026-10-31, before amendment (1) and the
+site-player check of amendment (2)) were rebuilt with only their marking changed, every engine check passing, and the
+released v5 packages themselves were then played on the site's own player (`check_site_player.py --boards`, site at
+cfdbf9e and 522dea3): Grammar 5 170 findings, Grammar 6 214, Grammar 7 5, Grammar 8 81. All but one are the teal look's
+readability rules of amendment (1) (26 px running text and 20 px labels at 1600x900, 4.5:1 contrast): style C boards
+draw table and example text at 17 to 22 px, and some style C table rows sit at about 3.1:1. The engine's own
+readability check, `check_text_size.py`, already runs only on a teal lesson (runbook step 17); the site-player check
+applied the same rules to every lesson, so `publish_lesson.py --release` refused every style C lesson whatever was
+changed in it. The one other finding is a real fit fault: Grammar 6's board pages-07-08_t2, which the site's guard
+draws at 0.81 (its table at 0.78).
+
+**Options considered.**
+
+- Restyle the style C boards to the teal look's sizes. A visible change to approved lessons, outside a marking brief;
+  the owner stopped the general restyle at phase 1 (ADR 043 amendment (4)).
+- Release with the failing report. `publish_lesson.py` refuses it, rightly: the report also carries the faults that
+  matter in every look.
+- Apply the readability rules only where they were made: the teal look (amendment (1)).
+
+**Decision** (the owner, 2026-11-03). `check_site_player.py` applies the text-size and contrast rules (26 px / 20 px /
+4.5:1) only to a lesson drawn in the teal look (`style_c.look_of(L) == "teal"`). In a lesson in another look the same
+texts are measured and listed in the report (`readability_not_applied`, with `readability` saying why), not failed. A
+block that spills, a board the site's guard draws smaller and a moment still loading fail in every lesson, as before.
+`publish_lesson.py` is unchanged: it still refuses a package without a passing every-state report on its bundle and
+stylesheet. Grammar 6 stays unreleased until its board is fixed under a brief of its own.
+
+**Consequences.** A style C lesson can be re-released when its boards fit on the site's player; its text sizes are
+what they were when it was approved, now on the record in each report. A teal lesson is checked exactly as before.
+Nothing a lesson draws changes: the check is not on any render path. Proven by the render comparison (runbook,
+"Changing shared code"): PROOF.
