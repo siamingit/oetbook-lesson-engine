@@ -7862,8 +7862,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | OET Writing: Overview | `writing-01-overview` | 19:02 | 7 | 2026-10-27 09:37 (siavash) |
-| 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 30:34 | 10 | 2026-10-26 23:34 (Siavash) |
+| 1 | OET Writing: Overview | `writing-01-overview` | 19:02 | 7 | 2026-11-03 08:33 (siavash) |
+| 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 30:34 | 10 | 2026-11-03 08:38 (siavash) |
 | 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:04 | 10 | 2026-11-02 15:49 (siavash) |
 | 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-11-01 00:09 (siavash) |
 | 5 | OET Writing: Information Flow | `writing-05-information-flow` | 37:36 | 9 | 2026-11-02 08:25 (siavash) |
@@ -7876,7 +7876,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 1. OET Writing: Overview
 
 - Lesson ID and folder: `writing-01-overview` (folder `writing-01-overview`); course writing, lesson 1; length 19:02; bundle format 1.22
-- Status: approved by siavash, 2026-10-27 09:37
+- Status: approved by siavash, 2026-11-03 08:33
 - Description: Meet the OET Writing test: the one letter you write, the time you have, how it is scored, how to read the case notes and the task, and the parts of a good letter.
 - Original session: folder `source`: `source/video.mp4`, 26:24 long, partial hash `62ec09d19c942acf`; deck `source/slides.pdf`, 10 pages
   - Writing Session 1 of the Persian Writing course, «جلسه رایتینگ: مقدمه‌ای بر رایتینگ» (Writing: an introduction), the first of the recorded Writing sessions; its official OET sample is replaced by our sample oa-ws-med-0001 at oetacademy-exercises 5320d19 (ADR 040).
@@ -8052,7 +8052,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 2. OET Writing: Assessment Criteria
 
 - Lesson ID and folder: `writing-02-assessment-criteria` (folder `writing-02-assessment-criteria`); course writing, lesson 2; length 30:34; bundle format 1.23
-- Status: approved by Siavash, 2026-10-26 23:34
+- Status: approved by siavash, 2026-11-03 08:38
 - Description: Learn the six criteria OET uses to assess your letter, how each one is scored, and what each one asks you to do when you write.
 - Original session: folder `source`: `source/video.mp4`, 48:38 long, partial hash `c14729b6930ac321`; deck `source/slides.pdf`, 21 pages
   - Writing Session 2 of the Persian Writing course, «جلسه رایتینگ: معیار های ارزیابی» (Writing: the assessment criteria); its official OET sample and the photo of OET's criteria table are replaced by our sample oa-ws-med-0002 (and short parts of oa-ws-nur-0001, oa-ws-nur-0002, oa-ws-med-0003) at oetacademy-exercises 5320d19, and an own-words criteria table (ADR 040).
