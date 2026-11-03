@@ -52123,7 +52123,7 @@
    "status": "approved",
    "approval": {
     "by": "siavash",
-    "on": "2026-11-01 00:09"
+    "on": "2026-11-02 16:06"
    },
    "source": {
     "folder": "source",
@@ -52157,7 +52157,7 @@
        "points": [
         {
          "text": "the lesson title, then what the lesson is about",
-         "block": "page-3_k15",
+         "block": "page-3_k01",
          "start_s": 0.0,
          "start": "0:00"
         }
@@ -52171,9 +52171,9 @@
        "points": [
         {
          "text": "each category, revealed as it is named",
-         "block": "page-3_k16",
-         "start_s": 55.992,
-         "start": "0:55"
+         "block": "page-3_k06",
+         "start_s": 65.534,
+         "start": "1:05"
         }
        ]
       }
@@ -52214,7 +52214,7 @@
        "points": [
         {
          "text": "the letter about Mrs Ashworth",
-         "block": "pages-04-05_k18",
+         "block": "pages-04-05_k01",
          "start_s": 116.674,
          "start": "1:56"
         },
@@ -52270,7 +52270,7 @@
        "points": [
         {
          "text": "from the paper to the letter",
-         "block": "pages-04-05_k19",
+         "block": "pages-04-05_k10",
          "start_s": 222.159,
          "start": "3:42"
         },
@@ -52371,7 +52371,7 @@
        "points": [
         {
          "text": "the paper beside the opening",
-         "block": "page-6_k19",
+         "block": "page-6_k01",
          "start_s": 338.103,
          "start": "5:38"
         },
@@ -52445,7 +52445,7 @@
        "points": [
         {
          "text": "his paper",
-         "block": "page-6_k20",
+         "block": "page-6_k15",
          "start_s": 532.536,
          "start": "8:52"
         },
@@ -52526,7 +52526,7 @@
        "points": [
         {
          "text": "the paper beside the opening",
-         "block": "pages-07-08_k20",
+         "block": "pages-07-08_k01",
          "start_s": 591.214,
          "start": "9:51"
         },
@@ -52564,7 +52564,7 @@
        "points": [
         {
          "text": "two more",
-         "block": "pages-07-08_k21",
+         "block": "pages-07-08_k07",
          "start_s": 664.854,
          "start": "11:04"
         },
@@ -52608,7 +52608,7 @@
        "points": [
         {
          "text": "wrong and right",
-         "block": "pages-07-08_k22",
+         "block": "pages-07-08_k14",
          "start_s": 757.505,
          "start": "12:37"
         },
@@ -52724,7 +52724,7 @@
        "points": [
         {
          "text": "wrong and right",
-         "block": "pages-09-10-11_k15",
+         "block": "pages-09-10-11_k01",
          "start_s": 826.156,
          "start": "13:46"
         },
@@ -52756,7 +52756,7 @@
        "points": [
         {
          "text": "wrong and right",
-         "block": "pages-09-10-11_k16",
+         "block": "pages-09-10-11_k05",
          "start_s": 875.543,
          "start": "14:35"
         },
@@ -52794,7 +52794,7 @@
        "points": [
         {
          "text": "wrong and right",
-         "block": "pages-09-10-11_k17",
+         "block": "pages-09-10-11_k10",
          "start_s": 925.743,
          "start": "15:25"
         },
@@ -52863,7 +52863,7 @@
        "points": [
         {
          "text": "the two parts",
-         "block": "pages-12-13_k25",
+         "block": "pages-12-13_k01",
          "start_s": 992.133,
          "start": "16:32"
         },
@@ -52907,7 +52907,7 @@
        "points": [
         {
          "text": "from the paper",
-         "block": "pages-12-13_k26",
+         "block": "pages-12-13_k07",
          "start_s": 1033.153,
          "start": "17:13"
         },
@@ -52951,7 +52951,7 @@
        "points": [
         {
          "text": "the paper beside the opening",
-         "block": "pages-12-13_k27",
+         "block": "pages-12-13_k15",
          "start_s": 1088.123,
          "start": "18:08"
         },
@@ -52989,7 +52989,7 @@
        "points": [
         {
          "text": "her paper",
-         "block": "pages-12-13_k28",
+         "block": "pages-12-13_k20",
          "start_s": 1163.675,
          "start": "19:23"
         },
@@ -53080,7 +53080,7 @@
        "points": [
         {
          "text": "the paper beside the opening",
-         "block": "page-14_k16",
+         "block": "page-14_k01",
          "start_s": 1205.125,
          "start": "20:05"
         },
@@ -53112,7 +53112,7 @@
        "points": [
         {
          "text": "her paper",
-         "block": "page-14_k17",
+         "block": "page-14_k05",
          "start_s": 1257.716,
          "start": "20:57"
         },
@@ -53132,7 +53132,7 @@
        "points": [
         {
          "text": "dates and times",
-         "block": "page-14_k18",
+         "block": "page-14_k09",
          "start_s": 1322.536,
          "start": "22:02"
         },
@@ -53209,7 +53209,7 @@
        "points": [
         {
          "text": "the paper beside the opening",
-         "block": "page-17_k20",
+         "block": "page-17_k01",
          "start_s": 1381.442,
          "start": "23:01"
         },
@@ -53253,7 +53253,7 @@
        "points": [
         {
          "text": "the paper beside the opening",
-         "block": "page-17_k21",
+         "block": "page-17_k08",
          "start_s": 1472.89,
          "start": "24:32"
         },
@@ -53303,7 +53303,7 @@
        "points": [
         {
          "text": "her paper",
-         "block": "page-17_k22",
+         "block": "page-17_k15",
          "start_s": 1540.913,
          "start": "25:40"
         },
@@ -53356,7 +53356,7 @@
        "points": [
         {
          "text": "frames",
-         "block": "page-18_k26",
+         "block": "page-18_k01",
          "start_s": 1612.312,
          "start": "26:52"
         },
@@ -53430,7 +53430,7 @@
        "points": [
         {
          "text": "six openings",
-         "block": "page-18_k27",
+         "block": "page-18_k13",
          "start_s": 1746.213,
          "start": "29:06"
         },
@@ -53462,7 +53462,7 @@
        "points": [
         {
          "text": "the paper beside the opening",
-         "block": "page-18_k28",
+         "block": "page-18_k17",
          "start_s": 1775.863,
          "start": "29:35"
         },
@@ -53500,7 +53500,7 @@
        "points": [
         {
          "text": "her paper",
-         "block": "page-18_k29",
+         "block": "page-18_k22",
          "start_s": 1834.715,
          "start": "30:34"
         },
@@ -53545,9 +53545,9 @@
        "points": [
         {
          "text": "Recap",
-         "block": "added-01_k04",
-         "start_s": 1882.889,
-         "start": "31:22"
+         "block": "added-01_k01",
+         "start_s": 1897.584,
+         "start": "31:37"
         }
        ]
       }
