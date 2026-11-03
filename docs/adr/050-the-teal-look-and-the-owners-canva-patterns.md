@@ -464,4 +464,12 @@ stylesheet. Grammar 6 stays unreleased until its board is fixed under a brief of
 **Consequences.** A style C lesson can be re-released when its boards fit on the site's player; its text sizes are
 what they were when it was approved, now on the record in each report. A teal lesson is checked exactly as before.
 Nothing a lesson draws changes: the check is not on any render path. Proven by the render comparison (runbook,
-"Changing shared code"): PROOF.
+"Changing shared code"): `render_compare.py` snapshots `before-sc9` and `before-sc9b` on main at 20f42c1 and
+`after-sc9` and `after-sc9b` on this change, 2026-11-03, both on one frozen copy of the library (other sessions
+were writing to it): **28 of 28 built lessons identical**, 879 data files byte for byte and 174,806 moments at the
+phone and laptop frames drawn identically, with no board timing difference. Outside the proof: Writing 4, whose
+re-render stops on its screens audit (a table larger than four columns by five rows) on main and on this change
+alike. The check itself: Writing 4 v3 (teal), every state, 126 moments, 0 failures on main's code (site at a1efc8c)
+and on this change (site at 40f546b), the readability rules applied; on this change at 40f546b,
+Grammar 5, 7 and 8 v5 pass, their 170, 5 and 81 readability findings now listed as not applied; Grammar 6 v5
+fails on its guard board alone.
