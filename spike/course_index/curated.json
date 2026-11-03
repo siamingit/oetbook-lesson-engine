@@ -483,7 +483,7 @@
     {"fact": "writing-re-line", "at": "page-8_t1.s9.u1"},
     {"fact": "writing-purpose", "at": "page-9_t1.s5.u3"},
     {"fact": "writing-paragraphs", "at": "page-9_t1.s9.u1"},
-    {"fact": "writing-content", "at": "page-10_t1.s10.u1"},
+    {"fact": "writing-content", "at": "page-10_t2.s6.u1"},
     {"fact": "writing-closing-sentence", "at": "page-11_t1.s3.u2"},
     {"fact": "writing-sign-off", "at": "page-11_t1.s6.u1", "note": "a job title, such as Nurse"}
    ],
@@ -491,14 +491,14 @@
     {"name": "Where each part comes from", "text": "The date from the date line at the top of the paper; the reader's name, address and the purpose from the Writing Task; the Re line from the patient details; the body from the notes; the request from the plan.", "at": "pages-04-05_t2.s2.u1"},
     {"name": "Setting out the address", "text": "Copy it from the Writing Task exactly, one part on each line, from the person to the town, keeping every capital letter.", "at": "page-7_t1.s9.u1"},
     {"name": "Expanding the purpose (the teacher's method)", "text": "Say briefly at the start why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.", "at": "page-9_t1.s6.u1"},
-    {"name": "From the plan to the request", "text": "Turn each line of the plan into a polite request, keeping its date, what to do and when; report what the patient said at its exact degree.", "at": "page-10_t1.s4.u2"}
+    {"name": "From the plan to the request", "text": "Turn each line of the plan into a polite request, keeping its date, what to do and when; report what the patient said at its exact degree.", "at": "page-10_t1.s3.u2"}
    ],
    "continues_in": [],
    "topics": [
     {"topic": "The parts of a letter", "at": "pages-04-05_t1.s2.u2"},
     {"topic": "The date at the top of the letter", "at": "page-6_t1.s9.u1"},
-    {"topic": "Greeting and Re line", "at": "page-8_t1.s3.u2"},
-    {"topic": "The request at the end of the letter", "at": "page-10_t1.s2.u1"},
+    {"topic": "Greeting and Re line", "at": "page-8_t1.s2.u2"},
+    {"topic": "The request at the end of the letter", "at": "page-10_t1.s1.u2"},
     {"topic": "Signing off", "at": "page-11_t1.s2.u1"}
    ]
   },

@@ -2,7 +2,7 @@
 
 What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.1; decision: `docs/adr/038-public-course-index.md`.
 
-29 lessons, 273 sections, 637 board topics, 4561 teaching points, 284 rules and 66 warnings, 488 terms, 180 OET facts, 74 methods, 523 vocabulary items (189 from the word bank), 62 practice questions and note forms, 131 links to other lessons, 403 topics in the topic index.
+29 lessons, 273 sections, 638 board topics, 4563 teaching points, 284 rules and 66 warnings, 488 terms, 180 OET facts, 74 methods, 523 vocabulary items (189 from the word bank), 62 practice questions and note forms, 131 links to other lessons, 403 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -2809,7 +2809,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 32:56, about section `added-03`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Genre and Style" at 24:42, about section `added-08`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:49, about section `page-5`
-- referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "Greeting and Re line" at 15:39, about section `page-14`
+- referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "Greeting and Re line" at 15:38, about section `page-14`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "The opening paragraph" at 4:36, about section `page-14`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 12:42, about section `added-04`
 - referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Now, and the request" at 29:31, about section `added-08`
@@ -7864,12 +7864,12 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 |---|---|---|---|---|---|
 | 1 | OET Writing: Overview | `writing-01-overview` | 19:02 | 7 | 2026-10-27 09:37 (siavash) |
 | 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 30:34 | 10 | 2026-10-26 23:34 (Siavash) |
-| 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:04 | 10 | 2026-10-31 23:18 (siavash) |
+| 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:04 | 10 | 2026-11-02 15:49 (siavash) |
 | 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-11-01 00:09 (siavash) |
 | 5 | OET Writing: Information Flow | `writing-05-information-flow` | 37:36 | 9 | 2026-11-02 08:25 (siavash) |
 | 6 | OET Writing: Word Order | `writing-06-word-order` | 23:59 | 9 | 2026-11-01 19:35 (siavash) |
 | 7 | OET Writing: Organising the Letter | `writing-07-organisation` | 27:39 | 8 | 2026-11-02 00:54 (siavash) |
-| 8 | OET Writing: Reading the Task and the Case Notes | `writing-08-reading-the-task` | 23:18 | 8 | 2026-11-01 01:39 (siavash) |
+| 8 | OET Writing: Reading the Task and the Case Notes | `writing-08-reading-the-task` | 23:18 | 8 | 2026-11-02 15:50 (siavash) |
 
 <a id="writing-01-overview"></a>
 
@@ -8346,7 +8346,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 3. OET Writing: Letter Structure
 
 - Lesson ID and folder: `writing-03-letter-structure` (folder `writing-03-letter-structure`); course writing, lesson 3; length 28:04; bundle format 1.23
-- Status: approved by siavash, 2026-10-31 23:18
+- Status: approved by siavash, 2026-11-02 15:49
 - Description: Learn the parts of a letter, from the address and the date to the request and the sign-off, and where each part comes from in the paper.
 - Original session: folder `source`: `source/video.mp4`, 25:04 long, partial hash `e5d98490267c5abe`; deck `source/slides.pdf`, 12 pages
   - Writing Session 3 of the Persian Writing course, «جلسه رایتینگ: ساختار نامه» (Writing: letter structure); its official OET sample (letter and case notes) is replaced by our samples oa-ws-nur-0001 (main), oa-ws-med-0002 (the dates) and oa-ws-nur-0003 (the address, greeting and Re line) at oetacademy-exercises 5320d19 (ADR 040). The teacher's exam-date rule is dropped by the owner (ADR 044).
@@ -8358,7 +8358,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 0:00 **Title board**
   - 0:00 the lesson title, then what the lesson is about
 - 1:02 **Contents board**
-  - 1:02 each category, revealed as it is named
+  - 1:04 each category, revealed as it is named
 
 #### 1:38 The Writing paper (`added-02`, authored)
 
@@ -8470,10 +8470,11 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 - 15:11 **Greeting and Re line**
   - 15:11 from the paper to the letter
-  - 15:18 from the paper
-  - 15:32 title and surname
-  - 15:39 a comma or not
-  - 15:59 your turn
+  - 15:17 from the paper
+  - 15:31 title and surname
+  - 15:38 a comma or not
+  - 15:58 your turn
+  - 16:15 two mistakes
   - 16:31 no name in the task
   - 16:47 the word Re
   - 17:00 your turn
@@ -8511,16 +8512,18 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 #### 22:39 The request (`page-10`, deck)
 
-- 22:39 **From the plan to the request**
+- 22:39 **The plan, and the first two requests**
   - 22:39 the discharge plan
   - 22:45 do not forget it
   - 23:11 your turn
-  - 23:29 the date and what to do if
+  - 23:28 the date and what to do if
   - 23:43 already taught
+- 23:52 **The last two requests**
+  - 23:52 the last two requests
   - 23:59 your turn
   - 24:25 her own words
   - 24:56 when
-  - 25:02 polite requests
+  - 25:03 polite requests
   - 25:12 why it matters
 
 *Warnings (common mistakes)*
@@ -8531,7 +8534,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 - 25:34 **Signing off**
   - 25:34 the end of the letter
-  - 25:37 three short lines
+  - 25:38 three short lines
   - 25:53 two closing sentences
   - 25:58 learn one or two
   - 26:10 sincerely or faithfully
@@ -8542,10 +8545,10 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 - 25:58 My advice: learn one or two closing sentences, and use them in your letters.
 
-#### 27:11 Closing (`added-01`, closing)
+#### 27:12 Closing (`added-01`, closing)
 
-- 27:11 **Closing**
-  - 27:11 Recap
+- 27:12 **Closing**
+  - 27:26 Recap
 
 ### OET facts
 
@@ -8556,7 +8559,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 17:29 (`writing-re-line`) The Re line gives the patient's full name and date of birth (writing-facts 26).
 - 19:49 (`writing-purpose`) Purpose: the reader sees at once why you are writing; the purpose is stated clearly at the start and expanded with more detail at the end of the letter (writing-facts 18, 30).
 - 21:10 (`writing-paragraphs`) One topic in each paragraph; there is no fixed number of paragraphs (writing-facts 40).
-- 25:12 (`writing-content`) Content: what this reader needs to continue care, with nothing important missing and the case notes represented accurately (writing-facts 19).
+- 25:13 (`writing-content`) Content: what this reader needs to continue care, with nothing important missing and the case notes represented accurately (writing-facts 19).
 - 25:54 (`writing-closing-sentence`) A closing sentence commonly thanks the reader or offers contact; "Thank you for ..." and "Please do not hesitate to contact me if you have any questions" are both acceptable, neither required (writing-facts 39; ADR 040 decision 5).
 - 26:17 (`writing-sign-off`) Sign with a job title, not your own name (writing-facts 25). *(a job title, such as Nurse)*
 
@@ -8565,7 +8568,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 8:20 **Where each part comes from**: The date from the date line at the top of the paper; the reader's name, address and the purpose from the Writing Task; the Re line from the patient details; the body from the notes; the request from the plan.
 - 14:39 **Setting out the address**: Copy it from the Writing Task exactly, one part on each line, from the person to the town, keeping every capital letter.
 - 20:00 **Expanding the purpose (the teacher's method)**: Say briefly at the start why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.
-- 23:29 **From the plan to the request**: Turn each line of the plan into a polite request, keeping its date, what to do and when; report what the patient said at its exact degree.
+- 23:28 **From the plan to the request**: Turn each line of the plan into a polite request, keeping its date, what to do and when; report what the patient said at its exact degree.
 
 ### Vocabulary
 
@@ -8579,7 +8582,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 1:52 refers to OET Writing: Overview (`writing-01-overview`), "The case notes" (in `added-02_t1.s1.u3`)
 - 4:44 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Content" (in `added-02_t7.s2.u1`)
 - 7:05 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Purpose" (in `pages-04-05_t1.s7.u3`)
-- 15:39 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Punctuation in OET letters" (in `page-8_t1.s4.u1`)
+- 15:38 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Punctuation in OET letters" (in `page-8_t1.s3.u1`)
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Introduction" at 0:06, about section `page-9`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "The opening paragraph" at 3:42, about section `page-8`
 - referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Signal words" at 7:18, about section `pages-04-05`
@@ -9551,7 +9554,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 8. OET Writing: Reading the Task and the Case Notes
 
 - Lesson ID and folder: `writing-08-reading-the-task` (folder `writing-08-reading-the-task`); course writing, lesson 8; length 23:18; bundle format 1.23
-- Status: approved by siavash, 2026-11-01 01:39
+- Status: approved by siavash, 2026-11-02 15:50
 - Description: Learn to read the Writing Task first, then the case notes with your reader in mind, and decide what goes into your letter: what to keep, what to keep briefly and what to leave out.
 - Original session: none (a lesson with no recording and no deck, ADR 047)
   - No recorded session: an authored lesson (ADR 047), the first authored session of the general Writing course and the fourth in its order. It follows the owner's method in his recorded Nursing and Medicine Writing sessions and his handout on planning a letter; its samples are oa-ws-nur-0002 (main), oa-ws-med-0002 and oa-ws-med-0003 at oetacademy-exercises 5320d19 (ADR 040).
@@ -9563,7 +9566,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 0:00 **Title board**
   - 0:00 the lesson title, then what the lesson is about
 - 0:48 **Contents board**
-  - 0:48 each category, revealed as it is named
+  - 0:49 each category, revealed as it is named
 
 #### 1:19 The five minutes (`added-01`, authored)
 
@@ -9723,7 +9726,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 #### 22:42 Closing (`added-07`, closing)
 
 - 22:42 **Closing**
-  - 22:42 Recap
+  - 22:46 Recap
 
 ### OET facts
 
@@ -10109,7 +10112,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The Reading test**: `reading-01-overview` 1:29
 - **The request**: `writing-03-letter-structure` 22:39
 - **The request and closing paragraph**: `writing-07-organisation` 21:51
-- **The request at the end of the letter**: `writing-03-letter-structure` 22:46
+- **The request at the end of the letter**: `writing-03-letter-structure` 22:45
 - **The request paragraph**: `writing-05-information-flow` 31:08; `writing-07-organisation` 21:51
 - **The six assessment criteria**: `writing-02-assessment-criteria` 1:27
 - **The six criteria**: `writing-02-assessment-criteria` 1:24
