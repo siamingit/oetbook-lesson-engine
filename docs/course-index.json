@@ -48889,9 +48889,9 @@
    "description": "Learn the six criteria OET uses to assess your letter, how each one is scored, and what each one asks you to do when you write.",
    "course": "writing",
    "order": 2,
-   "length_s": 1782.618,
-   "length": "29:42",
-   "bundle_format": "1.22",
+   "length_s": 1834.842,
+   "length": "30:34",
+   "bundle_format": "1.23",
    "status": "approved",
    "approval": {
     "by": "Siavash",
@@ -48929,7 +48929,7 @@
        "points": [
         {
          "text": "the lesson title, then what the lesson is about",
-         "block": "page-3_k15",
+         "block": "page-3_k01",
          "start_s": 0.0,
          "start": "0:00"
         }
@@ -48943,9 +48943,9 @@
        "points": [
         {
          "text": "each category, revealed as it is named",
-         "block": "page-3_k16",
-         "start_s": 51.77,
-         "start": "0:51"
+         "block": "page-3_k06",
+         "start_s": 53.154,
+         "start": "0:53"
         }
        ]
       }
@@ -48992,7 +48992,7 @@
        "points": [
         {
          "text": "six criteria",
-         "block": "page-4_k11",
+         "block": "page-4_k01",
          "start_s": 84.764,
          "start": "1:24"
         },
@@ -49079,7 +49079,7 @@
        "points": [
         {
          "text": "the score",
-         "block": "page-5_k11",
+         "block": "page-5_k01",
          "start_s": 241.056,
          "start": "4:01"
         },
@@ -49154,7 +49154,7 @@
      "category": null,
      "start_s": 357.237,
      "start": "5:57",
-     "end_s": 631.249,
+     "end_s": 639.259,
      "topics": [
       {
        "board": "pages-06-07-08_t1",
@@ -49164,7 +49164,7 @@
        "points": [
         {
          "text": "Fixed: the opening of a discharge letter",
-         "block": "pages-06-07-08_k19",
+         "block": "pages-06-07-08_k01",
          "start_s": 357.237,
          "start": "5:57"
         },
@@ -49183,7 +49183,7 @@
         {
          "text": "What the opening tells the reader",
          "block": "pages-06-07-08_k04",
-         "start_s": 432.974,
+         "start_s": 432.174,
          "start": "7:12"
         },
         {
@@ -49202,83 +49202,89 @@
        "points": [
         {
          "text": "the opening, the next paragraph, the last paragraph",
-         "block": "pages-06-07-08_k20",
+         "block": "pages-06-07-08_k06",
          "start_s": 469.339,
          "start": "7:49"
         },
         {
          "text": "OET's words",
          "block": "pages-06-07-08_k07",
-         "start_s": 472.699,
-         "start": "7:52"
+         "start_s": 471.899,
+         "start": "7:51"
         },
         {
          "text": "the opening says it briefly",
          "block": "pages-06-07-08_k08",
-         "start_s": 487.93,
+         "start_s": 487.13,
          "start": "8:07"
         },
         {
          "text": "my method",
          "block": "pages-06-07-08_k09",
-         "start_s": 494.912,
+         "start_s": 494.112,
          "start": "8:14"
         },
         {
          "text": "what the next paragraph adds",
          "block": "pages-06-07-08_k10",
-         "start_s": 506.089,
-         "start": "8:26"
+         "start_s": 505.289,
+         "start": "8:25"
         },
         {
          "text": "OET's definition",
          "block": "pages-06-07-08_k11",
-         "start_s": 524.191,
-         "start": "8:44"
+         "start_s": 523.391,
+         "start": "8:43"
         },
         {
          "text": "what the last paragraph adds",
          "block": "pages-06-07-08_k12",
-         "start_s": 533.779,
-         "start": "8:53"
+         "start_s": 532.979,
+         "start": "8:52"
         },
         {
          "text": "the purpose all through the letter",
          "block": "pages-06-07-08_k13",
-         "start_s": 553.589,
-         "start": "9:13"
+         "start_s": 552.789,
+         "start": "9:12"
         },
         {
          "text": "the score",
          "block": "pages-06-07-08_k14",
-         "start_s": 569.631,
-         "start": "9:29"
+         "start_s": 568.831,
+         "start": "9:28"
         }
        ]
       },
       {
        "board": "pages-06-07-08_t3",
        "title": "Try it: which opening?",
-       "start_s": 577.589,
-       "start": "9:37",
+       "start_s": 576.789,
+       "start": "9:36",
        "points": [
         {
          "text": "Fixed: two openings",
-         "block": "pages-06-07-08_k21",
-         "start_s": 577.589,
-         "start": "9:37"
+         "block": "pages-06-07-08_k15",
+         "start_s": 576.789,
+         "start": "9:36"
+        },
+        {
+         "text": "Your turn: which opening",
+         "block": "pages-06-07-08_k17",
+         "start_s": 603.379,
+         "start": "10:03"
         },
         {
          "text": "The answer",
-         "block": "pages-06-07-08_k17",
-         "start_s": 608.659,
-         "start": "10:08"
+         "block": "pages-06-07-08_k18",
+         "start_s": 616.669,
+         "start": "10:16"
         },
         {
          "text": "Why the first is weak",
-         "block": "pages-06-07-08_k18",
-         "start_s": 614.939,
-         "start": "10:14"
+         "block": "pages-06-07-08_k19",
+         "start_s": 622.949,
+         "start": "10:22"
         }
        ]
       }
@@ -49295,22 +49301,22 @@
        "block": "pages-06-07-08_k09",
        "kind": "rule",
        "text": "My advice: expand the purpose straight after, in the next paragraph.",
-       "start_s": 494.912,
+       "start_s": 494.112,
        "start": "8:14"
       },
       {
        "block": "pages-06-07-08_k11",
        "kind": "rule",
        "text": "OET: state the purpose clearly at the start, then expand it with more detail at the end of the letter.",
-       "start_s": 524.191,
-       "start": "8:44"
+       "start_s": 523.391,
+       "start": "8:43"
       },
       {
-       "block": "pages-06-07-08_k17",
+       "block": "pages-06-07-08_k18",
        "kind": "rule",
        "text": "The second opening: the reader knows at once why you are writing and what the problem is.",
-       "start_s": 608.659,
-       "start": "10:08"
+       "start_s": 616.669,
+       "start": "10:16"
       }
      ],
      "terms": [
@@ -49325,8 +49331,8 @@
        "block": "pages-06-07-08_k07",
        "label": "The criterion",
        "term": "Sufficiently expanded",
-       "start_s": 472.699,
-       "start": "7:52"
+       "start_s": 471.899,
+       "start": "7:51"
       }
      ],
      "wrong_examples": [],
@@ -49343,157 +49349,163 @@
       11
      ],
      "category": null,
-     "start_s": 631.249,
-     "start": "10:31",
-     "end_s": 953.692,
+     "start_s": 639.259,
+     "start": "10:39",
+     "end_s": 971.932,
      "topics": [
       {
        "board": "pages-09-10-11_t1",
        "title": "The reader: read the task first",
-       "start_s": 631.249,
-       "start": "10:31",
+       "start_s": 639.259,
+       "start": "10:39",
        "points": [
         {
          "text": "Fixed: the Writing Task",
-         "block": "pages-09-10-11_k23",
-         "start_s": 631.249,
-         "start": "10:31"
+         "block": "pages-09-10-11_k01",
+         "start_s": 639.259,
+         "start": "10:39"
         },
         {
          "text": "OET's words",
          "block": "pages-09-10-11_k02",
-         "start_s": 636.778,
-         "start": "10:36"
+         "start_s": 644.788,
+         "start": "10:44"
         },
         {
          "text": "Read the task first",
          "block": "pages-09-10-11_k03",
-         "start_s": 646.244,
-         "start": "10:46"
+         "start_s": 654.254,
+         "start": "10:54"
         },
         {
          "text": "Who am I writing to?",
          "block": "pages-09-10-11_k04",
-         "start_s": 686.269,
-         "start": "11:26"
+         "start_s": 693.479,
+         "start": "11:33"
         },
         {
          "text": "This reader",
          "block": "pages-09-10-11_k05",
-         "start_s": 690.909,
-         "start": "11:30"
+         "start_s": 698.919,
+         "start": "11:38"
         },
         {
          "text": "The same kind of note, two letters",
          "block": "pages-09-10-11_k06",
-         "start_s": 710.082,
-         "start": "11:50"
+         "start_s": 718.092,
+         "start": "11:58"
         },
         {
          "text": "The reader and the task decide",
          "block": "pages-09-10-11_k07",
-         "start_s": 732.049,
-         "start": "12:12"
+         "start_s": 739.259,
+         "start": "12:19"
         }
        ]
       },
       {
        "board": "pages-09-10-11_t2",
        "title": "What is needed to continue care",
-       "start_s": 745.969,
-       "start": "12:25",
+       "start_s": 753.179,
+       "start": "12:33",
        "points": [
         {
          "text": "OET's words",
          "block": "pages-09-10-11_k09",
-         "start_s": 745.619,
-         "start": "12:25"
+         "start_s": 752.829,
+         "start": "12:32"
         },
         {
          "text": "Fixed: the last paragraph",
-         "block": "pages-09-10-11_k24",
-         "start_s": 745.969,
-         "start": "12:25"
+         "block": "pages-09-10-11_k08",
+         "start_s": 753.179,
+         "start": "12:33"
         },
         {
          "text": "Key information",
          "block": "pages-09-10-11_k10",
-         "start_s": 754.279,
-         "start": "12:34"
+         "start_s": 761.489,
+         "start": "12:41"
         },
         {
          "text": "What you want from the reader",
          "block": "pages-09-10-11_k11",
-         "start_s": 759.859,
-         "start": "12:39"
+         "start_s": 767.069,
+         "start": "12:47"
         },
         {
          "text": "No fixed structure",
          "block": "pages-09-10-11_k12",
-         "start_s": 783.267,
-         "start": "13:03"
+         "start_s": 789.677,
+         "start": "13:09"
         },
         {
          "text": "A few sentences you can learn",
          "block": "pages-09-10-11_k13",
-         "start_s": 803.051,
-         "start": "13:23"
+         "start_s": 809.461,
+         "start": "13:29"
         },
         {
          "text": "Every profession",
          "block": "pages-09-10-11_k15",
-         "start_s": 819.242,
-         "start": "13:39"
+         "start_s": 824.852,
+         "start": "13:44"
         }
        ]
       },
       {
        "board": "pages-09-10-11_t3",
        "title": "Accurate: as the case notes say it",
-       "start_s": 839.252,
-       "start": "13:59",
+       "start_s": 844.862,
+       "start": "14:04",
        "points": [
         {
          "text": "accurate",
-         "block": "pages-09-10-11_k25",
-         "start_s": 839.252,
-         "start": "13:59"
+         "block": "pages-09-10-11_k16",
+         "start_s": 844.862,
+         "start": "14:04"
         },
         {
          "text": "OET's words",
          "block": "pages-09-10-11_k17",
-         "start_s": 843.228,
-         "start": "14:03"
+         "start_s": 848.038,
+         "start": "14:08"
         },
         {
          "text": "the place",
          "block": "pages-09-10-11_k18",
-         "start_s": 873.345,
-         "start": "14:33"
+         "start_s": 878.155,
+         "start": "14:38"
         },
         {
          "text": "withheld is not stopped",
          "block": "pages-09-10-11_k19",
-         "start_s": 890.532,
-         "start": "14:50"
+         "start_s": 895.342,
+         "start": "14:55"
         },
         {
          "text": "better is not normal",
          "block": "pages-09-10-11_k20",
-         "start_s": 908.375,
-         "start": "15:08"
+         "start_s": 913.185,
+         "start": "15:13"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-09-10-11_k21",
+         "start_s": 935.542,
+         "start": "15:35"
         },
         {
          "text": "how far she agrees",
-         "block": "pages-09-10-11_k21",
-         "start_s": 930.753,
-         "start": "15:30"
+         "block": "pages-09-10-11_k22",
+         "start_s": 948.993,
+         "start": "15:48"
         },
         {
          "text": "check every line",
-         "block": "pages-09-10-11_k22",
-         "start_s": 939.922,
-         "start": "15:39"
+         "block": "pages-09-10-11_k23",
+         "start_s": 958.162,
+         "start": "15:58"
         }
        ]
       }
@@ -49503,22 +49515,22 @@
        "block": "pages-09-10-11_k04",
        "kind": "rule",
        "text": "Ask yourself: who am I writing to, and what will they do?",
-       "start_s": 686.269,
-       "start": "11:26"
+       "start_s": 693.479,
+       "start": "11:33"
       },
       {
        "block": "pages-09-10-11_k12",
        "kind": "rule",
        "text": "My advice: do not memorise one structure for every letter. Each letter follows its own case notes.",
-       "start_s": 783.267,
-       "start": "13:03"
+       "start_s": 789.677,
+       "start": "13:09"
       },
       {
-       "block": "pages-09-10-11_k22",
+       "block": "pages-09-10-11_k23",
        "kind": "warning",
        "text": "Check the place, the numbers and every word of status against the case notes.",
-       "start_s": 939.922,
-       "start": "15:39"
+       "start_s": 958.162,
+       "start": "15:58"
       }
      ],
      "terms": [
@@ -49526,22 +49538,22 @@
        "block": "pages-09-10-11_k02",
        "label": "The criterion",
        "term": "Appropriate to the intended reader",
-       "start_s": 636.778,
-       "start": "10:36"
+       "start_s": 644.788,
+       "start": "10:44"
       },
       {
        "block": "pages-09-10-11_k09",
        "label": "The criterion",
        "term": "What is needed to continue care",
-       "start_s": 745.619,
-       "start": "12:25"
+       "start_s": 752.829,
+       "start": "12:32"
       },
       {
        "block": "pages-09-10-11_k17",
        "label": "The criterion",
        "term": "Accurately represents the case notes",
-       "start_s": 843.228,
-       "start": "14:03"
+       "start_s": 848.038,
+       "start": "14:08"
       }
      ],
      "wrong_examples": [],
@@ -49558,163 +49570,157 @@
       14
      ],
      "category": null,
-     "start_s": 953.692,
-     "start": "15:53",
-     "end_s": 1249.845,
+     "start_s": 971.932,
+     "start": "16:11",
+     "end_s": 1281.075,
      "topics": [
       {
        "board": "pages-12-13-14_t1",
        "title": "The length of the letter",
-       "start_s": 953.692,
-       "start": "15:53",
+       "start_s": 971.932,
+       "start": "16:11",
        "points": [
         {
          "text": "what is counted",
-         "block": "pages-12-13-14_k24",
-         "start_s": 953.692,
-         "start": "15:53"
+         "block": "pages-12-13-14_k01",
+         "start_s": 971.932,
+         "start": "16:11"
         },
         {
          "text": "OET's words",
          "block": "pages-12-13-14_k02",
-         "start_s": 960.142,
-         "start": "16:00"
+         "start_s": 977.582,
+         "start": "16:17"
         },
         {
          "text": "the task is made for it",
          "block": "pages-12-13-14_k03",
-         "start_s": 971.104,
-         "start": "16:11"
+         "start_s": 988.544,
+         "start": "16:28"
         },
         {
          "text": "not counted",
          "block": "pages-12-13-14_k04",
-         "start_s": 989.012,
-         "start": "16:29"
+         "start_s": 1006.452,
+         "start": "16:46"
         },
         {
          "text": "a guide",
          "block": "pages-12-13-14_k05",
-         "start_s": 995.334,
-         "start": "16:35"
+         "start_s": 1012.774,
+         "start": "16:52"
         },
         {
          "text": "my advice",
          "block": "pages-12-13-14_k06",
-         "start_s": 1001.074,
-         "start": "16:41"
+         "start_s": 1018.514,
+         "start": "16:58"
         },
         {
          "text": "much longer, much shorter",
          "block": "pages-12-13-14_k07",
-         "start_s": 1007.791,
-         "start": "16:47"
+         "start_s": 1025.231,
+         "start": "17:05"
         },
         {
          "text": "what matters",
          "block": "pages-12-13-14_k08",
-         "start_s": 1016.934,
-         "start": "16:56"
+         "start_s": 1034.374,
+         "start": "17:14"
         },
         {
          "text": "an example",
          "block": "pages-12-13-14_k09",
-         "start_s": 1026.824,
-         "start": "17:06"
+         "start_s": 1044.264,
+         "start": "17:24"
         },
         {
          "text": "not counted",
          "block": "pages-12-13-14_k10",
-         "start_s": 1044.407,
-         "start": "17:24"
+         "start_s": 1061.847,
+         "start": "17:41"
         }
        ]
       },
       {
        "board": "pages-12-13-14_t2",
        "title": "Summarise: keep, keep briefly, leave out",
-       "start_s": 1048.444,
-       "start": "17:28",
+       "start_s": 1065.884,
+       "start": "17:45",
        "points": [
         {
          "text": "the history in the case notes",
-         "block": "pages-12-13-14_k25",
-         "start_s": 1048.444,
-         "start": "17:28"
+         "block": "pages-12-13-14_k11",
+         "start_s": 1065.884,
+         "start": "17:45"
         },
         {
          "text": "the word summarise",
          "block": "pages-12-13-14_k12",
-         "start_s": 1053.591,
-         "start": "17:33"
+         "start_s": 1070.231,
+         "start": "17:50"
         },
         {
          "text": "old and unrelated",
          "block": "pages-12-13-14_k13",
-         "start_s": 1085.127,
-         "start": "18:05"
+         "start_s": 1101.767,
+         "start": "18:21"
         },
         {
          "text": "briefly",
          "block": "pages-12-13-14_k14",
-         "start_s": 1094.637,
-         "start": "18:14"
+         "start_s": 1111.277,
+         "start": "18:31"
         },
         {
          "text": "looks related",
          "block": "pages-12-13-14_k15",
-         "start_s": 1114.995,
-         "start": "18:34"
+         "start_s": 1131.635,
+         "start": "18:51"
         },
         {
          "text": "briefly",
          "block": "pages-12-13-14_k16",
-         "start_s": 1127.043,
-         "start": "18:47"
+         "start_s": 1143.683,
+         "start": "19:03"
+        },
+        {
+         "text": "your turn",
+         "block": "pages-12-13-14_k17",
+         "start_s": 1149.707,
+         "start": "19:09"
         },
         {
          "text": "looks related",
-         "block": "pages-12-13-14_k17",
-         "start_s": 1138.178,
-         "start": "18:58"
+         "block": "pages-12-13-14_k18",
+         "start_s": 1169.408,
+         "start": "19:29"
         },
         {
          "text": "gather related notes",
-         "block": "pages-12-13-14_k18",
-         "start_s": 1156.98,
-         "start": "19:16"
+         "block": "pages-12-13-14_k19",
+         "start_s": 1188.21,
+         "start": "19:48"
         }
        ]
       },
       {
        "board": "pages-12-13-14_t3",
        "title": "Clear: each fact in its time",
-       "start_s": 1192.933,
-       "start": "19:52",
+       "start_s": 1224.163,
+       "start": "20:24",
        "points": [
-        {
-         "text": "Fixed: a paragraph of the letter",
-         "block": "pages-12-13-14_k26",
-         "start_s": 1192.933,
-         "start": "19:52"
-        },
         {
          "text": "OET's words",
          "block": "pages-12-13-14_k21",
-         "start_s": 1194.903,
-         "start": "19:54"
+         "start_s": 1224.163,
+         "start": "20:24"
         },
         {
-         "text": "The verbs and their time",
-         "block": "pages-12-13-14_k22",
-         "start_s": 1208.684,
-         "start": "20:08"
-        },
-        {
-         "text": "The tense puts each fact in its time",
+         "text": "the verbs, their time, and the tense",
          "block": "pages-12-13-14_k23",
-         "start_s": 1229.925,
-         "start": "20:29"
+         "start_s": 1240.714,
+         "start": "20:40"
         }
        ]
       }
@@ -49724,15 +49730,15 @@
        "block": "pages-12-13-14_k06",
        "kind": "rule",
        "text": "My advice: ten or twelve words more or fewer do no harm.",
-       "start_s": 1001.074,
-       "start": "16:41"
+       "start_s": 1018.514,
+       "start": "16:58"
       },
       {
-       "block": "pages-12-13-14_k23",
+       "block": "pages-12-13-14_k24",
        "kind": "rule",
        "text": "The tense tells the reader what happened, what is true now and what comes next.",
-       "start_s": 1229.925,
-       "start": "20:29"
+       "start_s": 1261.155,
+       "start": "21:01"
       }
      ],
      "terms": [
@@ -49740,15 +49746,15 @@
        "block": "pages-12-13-14_k02",
        "label": "The criterion",
        "term": "Appropriate to the case and reader",
-       "start_s": 960.142,
-       "start": "16:00"
+       "start_s": 977.582,
+       "start": "16:17"
       },
       {
-       "block": "pages-12-13-14_k21",
+       "block": "pages-12-13-14_k22",
        "label": "The criterion",
        "term": "Presented clearly",
-       "start_s": 1194.903,
-       "start": "19:54"
+       "start_s": 1226.133,
+       "start": "20:26"
       }
      ],
      "wrong_examples": [],
@@ -49759,16 +49765,16 @@
        "lesson": "grammar-08-paraphrasing",
        "section": "page-8",
        "provenance": "source-derived",
-       "start_s": 1187.283,
-       "start": "19:47"
+       "start_s": 1218.513,
+       "start": "20:18"
       },
       {
-       "utterance": "pages-12-13-14_t3.s2.u2",
+       "utterance": "pages-12-13-14_t3.s2.u7",
        "lesson": "grammar-01-verb-tenses",
        "section": "page-11",
        "provenance": "authored",
-       "start_s": 1236.745,
-       "start": "20:36"
+       "start_s": 1267.975,
+       "start": "21:07"
       }
      ]
     },
@@ -49782,145 +49788,133 @@
       17
      ],
      "category": null,
-     "start_s": 1249.845,
-     "start": "20:49",
-     "end_s": 1492.948,
+     "start_s": 1281.075,
+     "start": "21:21",
+     "end_s": 1545.672,
      "topics": [
       {
        "board": "pages-15-16-17_t1",
        "title": "Clinical and factual",
-       "start_s": 1249.845,
-       "start": "20:49",
+       "start_s": 1281.075,
+       "start": "21:21",
        "points": [
         {
-         "text": "Fixed: a wrong sentence",
-         "block": "pages-15-16-17_k24",
-         "start_s": 1249.845,
-         "start": "20:49"
+         "text": "the social background",
+         "block": "pages-15-16-17_k01",
+         "start_s": 1281.075,
+         "start": "21:21"
         },
         {
-         "text": "The social background",
-         "block": "pages-15-16-17_k02",
-         "start_s": 1256.004,
-         "start": "20:56"
-        },
-        {
-         "text": "OET's words",
+         "text": "oET's words",
          "block": "pages-15-16-17_k03",
-         "start_s": 1267.195,
-         "start": "21:07"
-        },
-        {
-         "text": "Problem 1",
-         "block": "pages-15-16-17_k04",
-         "start_s": 1299.401,
+         "start_s": 1299.225,
          "start": "21:39"
         },
         {
-         "text": "Problem 2",
+         "text": "problem 1",
+         "block": "pages-15-16-17_k04",
+         "start_s": 1331.431,
+         "start": "22:11"
+        },
+        {
+         "text": "problem 2",
          "block": "pages-15-16-17_k05",
-         "start_s": 1306.233,
-         "start": "21:46"
+         "start_s": 1339.063,
+         "start": "22:19"
         },
         {
-         "text": "Problem 3",
+         "text": "problem 3",
          "block": "pages-15-16-17_k06",
-         "start_s": 1314.483,
-         "start": "21:54"
+         "start_s": 1348.113,
+         "start": "22:28"
         },
         {
-         "text": "My rule on fortunately",
+         "text": "my rule on fortunately",
          "block": "pages-15-16-17_k07",
-         "start_s": 1320.365,
-         "start": "22:00"
+         "start_s": 1353.995,
+         "start": "22:33"
         },
         {
-         "text": "For this reader",
+         "text": "for this reader",
          "block": "pages-15-16-17_k08",
-         "start_s": 1337.906,
-         "start": "22:17"
+         "start_s": 1371.536,
+         "start": "22:51"
         }
        ]
       },
       {
        "board": "pages-15-16-17_t2",
        "title": "Right for the reader: knowledge and polite requests",
-       "start_s": 1357.775,
-       "start": "22:37",
+       "start_s": 1391.405,
+       "start": "23:11",
        "points": [
         {
          "text": "Fixed: two wrong openings",
-         "block": "pages-15-16-17_k25",
-         "start_s": 1357.775,
-         "start": "22:37"
+         "block": "pages-15-16-17_k10",
+         "start_s": 1391.405,
+         "start": "23:11"
         },
         {
          "text": "OET's words",
-         "block": "pages-15-16-17_k12",
-         "start_s": 1376.697,
-         "start": "22:56"
+         "block": "pages-15-16-17_k11",
+         "start_s": 1410.327,
+         "start": "23:30"
         },
         {
          "text": "The first opening",
-         "block": "pages-15-16-17_k13",
-         "start_s": 1386.176,
-         "start": "23:06"
+         "block": "pages-15-16-17_k12",
+         "start_s": 1419.806,
+         "start": "23:39"
         },
         {
          "text": "The second opening: orders",
-         "block": "pages-15-16-17_k14",
-         "start_s": 1396.065,
-         "start": "23:16"
+         "block": "pages-15-16-17_k13",
+         "start_s": 1429.695,
+         "start": "23:49"
         },
         {
-         "text": "Polite requests in our letter",
-         "block": "pages-15-16-17_k15",
-         "start_s": 1402.761,
-         "start": "23:22"
+         "text": "Your turn: a polite request",
+         "block": "pages-15-16-17_k14",
+         "start_s": 1434.078,
+         "start": "23:54"
+        },
+        {
+         "text": "How our letter asks",
+         "block": "pages-15-16-17_k16",
+         "start_s": 1455.485,
+         "start": "24:15"
+        },
+        {
+         "text": "Polite requests",
+         "block": "pages-15-16-17_k18",
+         "start_s": 1469.942,
+         "start": "24:29"
         },
         {
          "text": "My rule on firstly",
-         "block": "pages-15-16-17_k18",
-         "start_s": 1422.797,
-         "start": "23:42"
+         "block": "pages-15-16-17_k19",
+         "start_s": 1475.521,
+         "start": "24:35"
         }
        ]
       },
       {
        "board": "pages-15-16-17_t3",
        "title": "Technical terms and abbreviations",
-       "start_s": 1433.068,
-       "start": "23:53",
+       "start_s": 1485.792,
+       "start": "24:45",
        "points": [
         {
          "text": "OET's words",
-         "block": "pages-15-16-17_k20",
-         "start_s": 1432.758,
-         "start": "23:52"
-        },
-        {
-         "text": "abbreviations for a GP",
-         "block": "pages-15-16-17_k26",
-         "start_s": 1433.068,
-         "start": "23:53"
-        },
-        {
-         "text": "abbreviate for the reader",
          "block": "pages-15-16-17_k21",
-         "start_s": 1463.117,
-         "start": "24:23"
+         "start_s": 1485.482,
+         "start": "24:45"
         },
         {
-         "text": "well-known abbreviations",
-         "block": "pages-15-16-17_k22",
-         "start_s": 1468.158,
-         "start": "24:28"
-        },
-        {
-         "text": "technical terms",
+         "text": "well-known abbreviations, and technical terms",
          "block": "pages-15-16-17_k23",
-         "start_s": 1478.328,
-         "start": "24:38"
+         "start_s": 1520.882,
+         "start": "25:20"
         }
        ]
       }
@@ -49930,15 +49924,15 @@
        "block": "pages-15-16-17_k07",
        "kind": "rule",
        "text": "My advice: use \"fortunately\" or \"unfortunately\" at most once in a letter, and never about a patient's habits.",
-       "start_s": 1320.365,
-       "start": "22:00"
+       "start_s": 1353.995,
+       "start": "22:33"
       },
       {
-       "block": "pages-15-16-17_k18",
+       "block": "pages-15-16-17_k19",
        "kind": "rule",
        "text": "My advice: never use \"firstly\", \"secondly\" or \"finally\" in your letter. Give each point in its own sentence.",
-       "start_s": 1422.797,
-       "start": "23:42"
+       "start_s": 1475.521,
+       "start": "24:35"
       }
      ],
      "terms": [
@@ -49946,42 +49940,30 @@
        "block": "pages-15-16-17_k03",
        "label": "The criterion",
        "term": "Clinical and factual",
-       "start_s": 1267.195,
-       "start": "21:07"
+       "start_s": 1299.225,
+       "start": "21:39"
       },
       {
-       "block": "pages-15-16-17_k12",
+       "block": "pages-15-16-17_k11",
        "label": "The criterion",
        "term": "Right for the reader's discipline and knowledge",
-       "start_s": 1376.697,
-       "start": "22:56"
+       "start_s": 1410.327,
+       "start": "23:30"
       },
       {
-       "block": "pages-15-16-17_k20",
+       "block": "pages-15-16-17_k21",
        "label": "The criterion",
        "term": "Technical terms, abbreviations and polite language",
-       "start_s": 1432.758,
-       "start": "23:52"
+       "start_s": 1485.482,
+       "start": "24:45"
       }
      ],
      "wrong_examples": [
       {
-       "block": "pages-15-16-17_k01",
-       "text": "You might be interested to know that Mrs Holden works at a school. She drinks quite a lot, which is a major concern, but luckily she doesn't smoke.",
-       "start_s": 1249.845,
-       "start": "20:49"
-      },
-      {
-       "block": "pages-15-16-17_k10",
-       "text": "Dear district nurse, here is a very technical description of Mrs Dawson's blood tests!",
-       "start_s": 1357.775,
-       "start": "22:37"
-      },
-      {
-       "block": "pages-15-16-17_k11",
-       "text": "Dear specialist, let me tell you what's what. Firstly, do this. Secondly, I think you should do that.",
-       "start_s": 1357.775,
-       "start": "22:37"
+       "block": "pages-15-16-17_k15",
+       "text": "I think you should check her BP and urea and electrolytes on 28 October.",
+       "start_s": 1438.721,
+       "start": "23:58"
       }
      ],
      "practice": [],
@@ -49991,8 +49973,8 @@
        "lesson": "grammar-07-punctuation",
        "section": "added-08",
        "provenance": "source-derived",
-       "start_s": 1482.878,
-       "start": "24:42"
+       "start_s": 1535.602,
+       "start": "25:35"
       }
      ]
     },
@@ -50004,105 +49986,113 @@
       18
      ],
      "category": null,
-     "start_s": 1492.948,
-     "start": "24:52",
-     "end_s": 1606.089,
+     "start_s": 1545.672,
+     "start": "25:45",
+     "end_s": 1658.313,
      "topics": [
       {
        "board": "page-18_t1",
-       "title": "The letter, part by part",
-       "start_s": 1492.948,
-       "start": "24:52",
+       "title": "the top of the letter",
+       "start_s": 1545.672,
+       "start": "25:45",
        "points": [
         {
-         "text": "the whole letter",
-         "block": "page-18_k14",
-         "start_s": 1492.948,
-         "start": "24:52"
+         "text": "the top of the letter",
+         "block": "page-18_k01",
+         "start_s": 1545.672,
+         "start": "25:45"
         },
         {
          "text": "OET's words",
          "block": "page-18_k02",
-         "start_s": 1499.467,
-         "start": "24:59"
+         "start_s": 1551.391,
+         "start": "25:51"
         },
         {
          "text": "copy the address",
          "block": "page-18_k03",
-         "start_s": 1512.36,
-         "start": "25:12"
+         "start_s": 1564.284,
+         "start": "26:04"
         },
         {
          "text": "the date",
          "block": "page-18_k04",
-         "start_s": 1521.338,
-         "start": "25:21"
+         "start_s": 1573.262,
+         "start": "26:13"
         },
         {
          "text": "the Re line",
          "block": "page-18_k05",
-         "start_s": 1528.731,
-         "start": "25:28"
+         "start_s": 1580.655,
+         "start": "26:20"
         },
         {
          "text": "the purpose first",
          "block": "page-18_k06",
-         "start_s": 1533.285,
-         "start": "25:33"
-        },
+         "start_s": 1585.209,
+         "start": "26:25"
+        }
+       ]
+      },
+      {
+       "board": "page-18_t2",
+       "title": "from what happened to the closing",
+       "start_s": 1592.862,
+       "start": "26:32",
+       "points": [
         {
          "text": "then the story in order",
-         "block": "page-18_k07",
-         "start_s": 1540.298,
-         "start": "25:40"
+         "block": "page-18_k08",
+         "start_s": 1592.522,
+         "start": "26:32"
         },
         {
          "text": "one topic, key information first",
-         "block": "page-18_k08",
-         "start_s": 1553.623,
-         "start": "25:53"
+         "block": "page-18_k09",
+         "start_s": 1605.847,
+         "start": "26:45"
         },
         {
          "text": "not the order of the case notes",
-         "block": "page-18_k09",
-         "start_s": 1570.054,
-         "start": "26:10"
+         "block": "page-18_k10",
+         "start_s": 1622.278,
+         "start": "27:02"
         },
         {
          "text": "the requests last",
-         "block": "page-18_k10",
-         "start_s": 1577.668,
-         "start": "26:17"
+         "block": "page-18_k11",
+         "start_s": 1629.892,
+         "start": "27:09"
         },
         {
          "text": "the sign-off",
-         "block": "page-18_k11",
-         "start_s": 1587.662,
-         "start": "26:27"
+         "block": "page-18_k12",
+         "start_s": 1639.886,
+         "start": "27:19"
         },
         {
          "text": "learn the layout once",
-         "block": "page-18_k12",
-         "start_s": 1591.701,
-         "start": "26:31"
+         "block": "page-18_k13",
+         "start_s": 1643.925,
+         "start": "27:23"
         }
        ]
       }
      ],
      "rules": [
       {
-       "block": "page-18_k08",
+       "block": "page-18_k09",
        "kind": "rule",
        "text": "One topic in each paragraph. Put the most important information first.",
-       "start_s": 1553.623,
-       "start": "25:53"
+       "start_s": 1605.847,
+       "start": "26:45"
       },
       {
-       "block": "page-18_k12",
+       "block": "page-18_k13",
        "kind": "rule",
        "text": "My advice: learn a clear layout once, and use it in every letter.",
-       "start_s": 1591.701,
-       "start": "26:31"
+       "start_s": 1643.925,
+       "start": "27:23"
       }
      ],
      "terms": [
@@ -50110,8 +50100,8 @@
        "block": "page-18_k02",
        "label": "The criterion",
        "term": "Appropriate, logical and clear",
-       "start_s": 1499.467,
-       "start": "24:59"
+       "start_s": 1551.391,
+       "start": "25:51"
       }
      ],
      "wrong_examples": [],
@@ -50126,69 +50116,69 @@
       19
      ],
      "category": null,
-     "start_s": 1606.089,
-     "start": "26:46",
-     "end_s": 1742.522,
+     "start_s": 1658.313,
+     "start": "27:38",
+     "end_s": 1794.746,
      "topics": [
       {
        "board": "page-19_t1",
        "title": "Language",
-       "start_s": 1606.089,
-       "start": "26:46",
+       "start_s": 1658.313,
+       "start": "27:38",
        "points": [
         {
          "text": "what OET looks for",
-         "block": "page-19_k11",
-         "start_s": 1606.089,
-         "start": "26:46"
+         "block": "page-19_k01",
+         "start_s": 1658.313,
+         "start": "27:38"
         },
         {
          "text": "meaning",
          "block": "page-19_k02",
-         "start_s": 1614.141,
-         "start": "26:54"
+         "start_s": 1666.365,
+         "start": "27:46"
         },
         {
          "text": "precise words",
          "block": "page-19_k03",
-         "start_s": 1621.588,
-         "start": "27:01"
+         "start_s": 1673.812,
+         "start": "27:53"
         },
         {
          "text": "your own words",
          "block": "page-19_k04",
-         "start_s": 1637.032,
-         "start": "27:17"
+         "start_s": 1689.256,
+         "start": "28:09"
         },
         {
          "text": "keep the medical words",
          "block": "page-19_k05",
-         "start_s": 1649.869,
-         "start": "27:29"
+         "start_s": 1702.093,
+         "start": "28:22"
         },
         {
          "text": "tense changes meaning",
          "block": "page-19_k06",
-         "start_s": 1670.746,
-         "start": "27:50"
+         "start_s": 1722.97,
+         "start": "28:42"
         },
         {
          "text": "not too long",
          "block": "page-19_k08",
-         "start_s": 1702.66,
-         "start": "28:22"
+         "start_s": 1754.884,
+         "start": "29:14"
         },
         {
          "text": "spelling",
          "block": "page-19_k09",
-         "start_s": 1722.439,
-         "start": "28:42"
+         "start_s": 1774.663,
+         "start": "29:34"
         },
         {
          "text": "punctuation",
          "block": "page-19_k10",
-         "start_s": 1732.075,
-         "start": "28:52"
+         "start_s": 1784.299,
+         "start": "29:44"
         }
        ]
       }
@@ -50203,32 +50193,32 @@
        "lesson": "grammar-08-paraphrasing",
        "section": "pages-09-10",
        "provenance": "source-derived",
-       "start_s": 1660.942,
-       "start": "27:40"
+       "start_s": 1713.166,
+       "start": "28:33"
       },
       {
        "utterance": "page-19_t1.s6.u5",
        "lesson": "grammar-01-verb-tenses",
        "section": null,
        "provenance": "source-derived",
-       "start_s": 1695.592,
-       "start": "28:15"
+       "start_s": 1747.816,
+       "start": "29:07"
       },
       {
        "utterance": "page-19_t1.s7.u2",
        "lesson": "grammar-05-complex-compound",
        "section": null,
        "provenance": "source-derived",
-       "start_s": 1711.452,
-       "start": "28:31"
+       "start_s": 1763.676,
+       "start": "29:23"
       },
       {
        "utterance": "page-19_t1.s9.u1",
        "lesson": "grammar-07-punctuation",
        "section": "page-5",
        "provenance": "source-derived",
-       "start_s": 1729.862,
-       "start": "28:49"
+       "start_s": 1782.086,
+       "start": "29:42"
       }
      ]
     },
@@ -50238,21 +50228,21 @@
      "kind": "closing",
      "pages": [],
      "category": null,
-     "start_s": 1742.522,
-     "start": "29:02",
-     "end_s": 1782.618,
+     "start_s": 1794.746,
+     "start": "29:54",
+     "end_s": 1834.842,
      "topics": [
       {
        "board": "added-01_t1",
        "title": "Closing",
-       "start_s": 1742.522,
-       "start": "29:02",
+       "start_s": 1794.746,
+       "start": "29:54",
        "points": [
         {
          "text": "Recap",
-         "block": "added-01_k04",
-         "start_s": 1742.522,
-         "start": "29:02"
+         "block": "added-01_k01",
+         "start_s": 1799.716,
+         "start": "29:59"
         }
        ]
       }
@@ -50351,8 +50341,8 @@
      "note": null,
      "section": "pages-06-07-08",
      "board": "pages-06-07-08_t2",
-     "utterance": "pages-06-07-08_t2.s6.u1",
-     "start_s": 522.859,
+     "utterance": "pages-06-07-08_t2.s5.u1",
+     "start_s": 522.059,
      "start": "8:42"
     },
     {
@@ -50362,8 +50352,8 @@
      "section": "pages-09-10-11",
      "board": "pages-09-10-11_t2",
      "utterance": "pages-09-10-11_t2.s1.u1",
-     "start_s": 745.969,
-     "start": "12:25"
+     "start_s": 753.179,
+     "start": "12:33"
     },
     {
      "fact": "writing-conciseness",
@@ -50371,9 +50361,9 @@
      "note": null,
      "section": "pages-12-13-14",
      "board": "pages-12-13-14_t1",
-     "utterance": "pages-12-13-14_t1.s2.u1",
-     "start_s": 960.492,
-     "start": "16:00"
+     "utterance": "pages-12-13-14_t1.s1.u2",
+     "start_s": 977.932,
+     "start": "16:17"
     },
     {
      "fact": "writing-body-counted",
@@ -50381,9 +50371,9 @@
      "note": null,
      "section": "pages-12-13-14",
      "board": "pages-12-13-14_t1",
-     "utterance": "pages-12-13-14_t1.s5.u1",
-     "start_s": 992.564,
-     "start": "16:32"
+     "utterance": "pages-12-13-14_t1.s4.u1",
+     "start_s": 1010.004,
+     "start": "16:50"
     },
     {
      "fact": "writing-word-guide",
@@ -50391,9 +50381,9 @@
      "note": null,
      "section": "pages-12-13-14",
      "board": "pages-12-13-14_t1",
-     "utterance": "pages-12-13-14_t1.s5.u1",
-     "start_s": 992.564,
-     "start": "16:32"
+     "utterance": "pages-12-13-14_t1.s4.u1",
+     "start_s": 1010.004,
+     "start": "16:50"
     },
     {
      "fact": "writing-length-signals",
@@ -50401,9 +50391,9 @@
      "note": null,
      "section": "pages-12-13-14",
      "board": "pages-12-13-14_t1",
-     "utterance": "pages-12-13-14_t1.s7.u1",
-     "start_s": 1008.104,
-     "start": "16:48"
+     "utterance": "pages-12-13-14_t1.s6.u1",
+     "start_s": 1025.544,
+     "start": "17:05"
     },
     {
      "fact": "writing-style",
@@ -50411,9 +50401,9 @@
      "note": null,
      "section": "pages-15-16-17",
      "board": "pages-15-16-17_t1",
-     "utterance": "pages-15-16-17_t1.s1.u3",
-     "start_s": 1267.535,
-     "start": "21:07"
+     "utterance": "pages-15-16-17_t1.s2.u1",
+     "start_s": 1299.565,
+     "start": "21:39"
     },
     {
      "fact": "writing-abbreviations",
@@ -50422,8 +50412,8 @@
      "section": "pages-15-16-17",
      "board": "pages-15-16-17_t3",
      "utterance": "pages-15-16-17_t3.s2.u1",
-     "start_s": 1468.438,
-     "start": "24:28"
+     "start_s": 1521.162,
+     "start": "25:21"
     },
     {
      "fact": "writing-address",
@@ -50431,9 +50421,9 @@
      "note": null,
      "section": "page-18",
      "board": "page-18_t1",
-     "utterance": "page-18_t1.s3.u1",
-     "start_s": 1509.288,
-     "start": "25:09"
+     "utterance": "page-18_t1.s2.u1",
+     "start_s": 1561.212,
+     "start": "26:01"
     },
     {
      "fact": "writing-re-line",
@@ -50441,39 +50431,39 @@
      "note": null,
      "section": "page-18",
      "board": "page-18_t1",
-     "utterance": "page-18_t1.s5.u1",
-     "start_s": 1525.628,
-     "start": "25:25"
+     "utterance": "page-18_t1.s4.u1",
+     "start_s": 1577.552,
+     "start": "26:17"
     },
     {
      "fact": "writing-organisation",
      "text": "Organisation: one topic per paragraph, the most important information first; simply following the order of the case notes is a weakness (writing-facts 22, 40).",
      "note": null,
      "section": "page-18",
-     "board": "page-18_t1",
-     "utterance": "page-18_t1.s8.u2",
-     "start_s": 1553.968,
-     "start": "25:53"
+     "board": "page-18_t2",
+     "utterance": "page-18_t2.s2.u2",
+     "start_s": 1606.192,
+     "start": "26:46"
     },
     {
      "fact": "writing-sign-off",
      "text": "Sign with a job title, not your own name (writing-facts 25).",
      "note": "a job title, such as Doctor",
      "section": "page-18",
-     "board": "page-18_t1",
-     "utterance": "page-18_t1.s11.u1",
-     "start_s": 1583.368,
-     "start": "26:23"
+     "board": "page-18_t2",
+     "utterance": "page-18_t2.s5.u1",
+     "start_s": 1635.592,
+     "start": "27:15"
     },
     {
      "fact": "writing-no-fixed-layout",
      "text": "There is no one required layout for the letter (writing-facts 24).",
      "note": null,
      "section": "page-18",
-     "board": "page-18_t1",
-     "utterance": "page-18_t1.s12.u2",
-     "start_s": 1599.818,
-     "start": "26:39"
+     "board": "page-18_t2",
+     "utterance": "page-18_t2.s6.u2",
+     "start_s": 1652.042,
+     "start": "27:32"
     },
     {
      "fact": "writing-spelling",
@@ -50482,8 +50472,8 @@
      "section": "page-19",
      "board": "page-19_t1",
      "utterance": "page-19_t1.s8.u1",
-     "start_s": 1720.752,
-     "start": "28:40"
+     "start_s": 1772.976,
+     "start": "29:32"
     }
    ],
    "methods": [
@@ -50492,9 +50482,9 @@
      "text": "Say briefly in the opening why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.",
      "section": "pages-06-07-08",
      "board": "pages-06-07-08_t2",
-     "utterance": "pages-06-07-08_t2.s4.u1",
-     "start_s": 493.379,
-     "start": "8:13"
+     "utterance": "pages-06-07-08_t2.s3.u1",
+     "start_s": 492.579,
+     "start": "8:12"
     },
     {
      "name": "Read the paper in this order",
@@ -50502,35 +50492,35 @@
      "section": "pages-09-10-11",
      "board": "pages-09-10-11_t1",
      "utterance": "pages-09-10-11_t1.s1.u3",
-     "start_s": 644.359,
-     "start": "10:44"
+     "start_s": 652.369,
+     "start": "10:52"
     },
     {
      "name": "The teacher's word-count advice",
      "text": "Ten or twelve words more or fewer do no harm; what matters is that the reader gets everything they need, nothing they do not, and less important points briefly.",
      "section": "pages-12-13-14",
      "board": "pages-12-13-14_t1",
-     "utterance": "pages-12-13-14_t1.s6.u1",
-     "start_s": 1001.394,
-     "start": "16:41"
+     "utterance": "pages-12-13-14_t1.s5.u1",
+     "start_s": 1018.834,
+     "start": "16:58"
     },
     {
      "name": "Keep, keep briefly or leave out",
      "text": "For each note, ask what this reader will do with it: lines that only look related are left out; lines that explain the problem are kept briefly.",
      "section": "pages-12-13-14",
      "board": "pages-12-13-14_t2",
-     "utterance": "pages-12-13-14_t2.s2.u3",
-     "start_s": 1065.441,
-     "start": "17:45"
+     "utterance": "pages-12-13-14_t2.s1.u4",
+     "start_s": 1082.081,
+     "start": "18:02"
     },
     {
      "name": "The teacher's advice on style",
      "text": "Never firstly, secondly or finally in the letter; fortunately or unfortunately at most once, and never about a patient's habits.",
      "section": "pages-15-16-17",
      "board": "pages-15-16-17_t2",
-     "utterance": "pages-15-16-17_t2.s3.u1",
-     "start_s": 1423.108,
-     "start": "23:43"
+     "utterance": "pages-15-16-17_t2.s4.u1",
+     "start_s": 1475.832,
+     "start": "24:35"
     }
    ],
    "vocabulary": [
@@ -50558,8 +50548,8 @@
      "lexicon": null,
      "section": "pages-12-13-14",
      "block": "pages-12-13-14_k12",
-     "start_s": 1053.591,
-     "start": "17:33"
+     "start_s": 1070.231,
+     "start": "17:50"
     }
    ],
    "withheld": {
@@ -59255,8 +59245,8 @@
     {
      "lesson": "writing-02-assessment-criteria",
      "section": "pages-15-16-17",
-     "start_s": 1463.428,
-     "start": "24:23",
+     "start_s": 1516.152,
+     "start": "25:16",
      "source": "curated"
     }
    ]
@@ -59268,8 +59258,8 @@
     {
      "lesson": "writing-02-assessment-criteria",
      "section": "pages-09-10-11",
-     "start_s": 843.572,
-     "start": "14:03",
+     "start_s": 848.382,
+     "start": "14:08",
      "source": "curated"
     }
    ]
@@ -60097,8 +60087,8 @@
     {
      "lesson": "writing-02-assessment-criteria",
      "section": "pages-12-13-14",
-     "start_s": 953.692,
-     "start": "15:53",
+     "start_s": 971.932,
+     "start": "16:11",
      "source": "section"
     }
    ]
@@ -60162,8 +60152,8 @@
     {
      "lesson": "writing-02-assessment-criteria",
      "section": "pages-09-10-11",
-     "start_s": 631.249,
-     "start": "10:31",
+     "start_s": 639.259,
+     "start": "10:39",
      "source": "section"
     }
    ]
@@ -60905,8 +60895,8 @@
     {
      "lesson": "writing-02-assessment-criteria",
      "section": "pages-15-16-17",
-     "start_s": 1249.845,
-     "start": "20:49",
+     "start_s": 1281.075,
+     "start": "21:21",
      "source": "section"
     }
    ]
@@ -61485,8 +61475,8 @@
     {
      "lesson": "writing-02-assessment-criteria",
      "section": "page-19",
-     "start_s": 1606.089,
-     "start": "26:46",
+     "start_s": 1658.313,
+     "start": "27:38",
      "source": "section"
     }
    ]
@@ -61883,8 +61873,8 @@
     {
      "lesson": "writing-02-assessment-criteria",
      "section": "page-18",
-     "start_s": 1492.948,
-     "start": "24:52",
+     "start_s": 1545.672,
+     "start": "25:45",
      "source": "section"
     },
     {
@@ -63469,8 +63459,8 @@
     {
      "lesson": "writing-02-assessment-criteria",
      "section": "pages-12-13-14",
-     "start_s": 1230.255,
-     "start": "20:30",
+     "start_s": 1261.485,
+     "start": "21:01",
      "source": "curated"
     }
    ]
@@ -64657,12 +64647,12 @@
  "totals": {
   "lessons": 29,
   "sections": 273,
-  "topics": 636,
-  "teaching_points": 4562,
+  "topics": 637,
+  "teaching_points": 4561,
   "rules": 284,
   "warnings": 66,
   "terms": 488,
-  "wrong_examples": 278,
+  "wrong_examples": 276,
   "facts": 180,
   "methods": 74,
   "vocabulary": 523,

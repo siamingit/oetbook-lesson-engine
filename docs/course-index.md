@@ -2,7 +2,7 @@
 
 What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.1; decision: `docs/adr/038-public-course-index.md`.
 
-29 lessons, 273 sections, 636 board topics, 4562 teaching points, 284 rules and 66 warnings, 488 terms, 180 OET facts, 74 methods, 523 vocabulary items (189 from the word bank), 62 practice questions and note forms, 131 links to other lessons, 403 topics in the topic index.
+29 lessons, 273 sections, 637 board topics, 4561 teaching points, 284 rules and 66 warnings, 488 terms, 180 OET facts, 74 methods, 523 vocabulary items (189 from the word bank), 62 practice questions and note forms, 131 links to other lessons, 403 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -7863,7 +7863,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
 | 1 | OET Writing: Overview | `writing-01-overview` | 19:02 | 7 | 2026-10-27 09:37 (siavash) |
-| 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 29:42 | 10 | 2026-10-26 23:34 (Siavash) |
+| 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 30:34 | 10 | 2026-10-26 23:34 (Siavash) |
 | 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:04 | 10 | 2026-10-31 23:18 (siavash) |
 | 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-11-01 00:09 (siavash) |
 | 5 | OET Writing: Information Flow | `writing-05-information-flow` | 37:36 | 9 | 2026-11-02 08:25 (siavash) |
@@ -8051,7 +8051,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 2. OET Writing: Assessment Criteria
 
-- Lesson ID and folder: `writing-02-assessment-criteria` (folder `writing-02-assessment-criteria`); course writing, lesson 2; length 29:42; bundle format 1.22
+- Lesson ID and folder: `writing-02-assessment-criteria` (folder `writing-02-assessment-criteria`); course writing, lesson 2; length 30:34; bundle format 1.23
 - Status: approved by Siavash, 2026-10-26 23:34
 - Description: Learn the six criteria OET uses to assess your letter, how each one is scored, and what each one asks you to do when you write.
 - Original session: folder `source`: `source/video.mp4`, 48:38 long, partial hash `c14729b6930ac321`; deck `source/slides.pdf`, 21 pages
@@ -8064,7 +8064,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 0:00 **Title board**
   - 0:00 the lesson title, then what the lesson is about
 - 0:51 **Contents board**
-  - 0:51 each category, revealed as it is named
+  - 0:53 each category, revealed as it is named
 
 *Wrong sentences corrected*
 
@@ -8110,179 +8110,177 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 7:37 The word withheld
 - 7:49 **Sufficiently expanded: the rest of the letter**
   - 7:49 the opening, the next paragraph, the last paragraph
-  - 7:52 OET's words
+  - 7:51 OET's words
   - 8:07 the opening says it briefly
   - 8:14 my method
-  - 8:26 what the next paragraph adds
-  - 8:44 OET's definition
-  - 8:53 what the last paragraph adds
-  - 9:13 the purpose all through the letter
-  - 9:29 the score
-- 9:37 **Try it: which opening?**
-  - 9:37 Fixed: two openings
-  - 10:08 The answer
-  - 10:14 Why the first is weak
+  - 8:25 what the next paragraph adds
+  - 8:43 OET's definition
+  - 8:52 what the last paragraph adds
+  - 9:12 the purpose all through the letter
+  - 9:28 the score
+- 9:36 **Try it: which opening?**
+  - 9:36 Fixed: two openings
+  - 10:03 Your turn: which opening
+  - 10:16 The answer
+  - 10:22 Why the first is weak
 
 *Rules on the boards*
 
 - 6:02 Do not learn the criteria word for word. Understand them: imagine you are the reader.
 - 8:14 My advice: expand the purpose straight after, in the next paragraph.
-- 8:44 OET: state the purpose clearly at the start, then expand it with more detail at the end of the letter.
-- 10:08 The second opening: the reader knows at once why you are writing and what the problem is.
+- 8:43 OET: state the purpose clearly at the start, then expand it with more detail at the end of the letter.
+- 10:16 The second opening: the reader knows at once why you are writing and what the problem is.
 
-*Terms*: Immediately apparent (The criterion, 6:24); Sufficiently expanded (The criterion, 7:52)
+*Terms*: Immediately apparent (The criterion, 6:24); Sufficiently expanded (The criterion, 7:51)
 
-#### 10:31 Content (`pages-09-10-11`, deck)
+#### 10:39 Content (`pages-09-10-11`, deck)
 
-- 10:31 **The reader: read the task first**
-  - 10:31 Fixed: the Writing Task
-  - 10:36 OET's words
-  - 10:46 Read the task first
-  - 11:26 Who am I writing to?
-  - 11:30 This reader
-  - 11:50 The same kind of note, two letters
-  - 12:12 The reader and the task decide
-- 12:25 **What is needed to continue care**
-  - 12:25 OET's words
-  - 12:25 Fixed: the last paragraph
-  - 12:34 Key information
-  - 12:39 What you want from the reader
-  - 13:03 No fixed structure
-  - 13:23 A few sentences you can learn
-  - 13:39 Every profession
-- 13:59 **Accurate: as the case notes say it**
-  - 13:59 accurate
-  - 14:03 OET's words
-  - 14:33 the place
-  - 14:50 withheld is not stopped
-  - 15:08 better is not normal
-  - 15:30 how far she agrees
-  - 15:39 check every line
+- 10:39 **The reader: read the task first**
+  - 10:39 Fixed: the Writing Task
+  - 10:44 OET's words
+  - 10:54 Read the task first
+  - 11:33 Who am I writing to?
+  - 11:38 This reader
+  - 11:58 The same kind of note, two letters
+  - 12:19 The reader and the task decide
+- 12:33 **What is needed to continue care**
+  - 12:32 OET's words
+  - 12:33 Fixed: the last paragraph
+  - 12:41 Key information
+  - 12:47 What you want from the reader
+  - 13:09 No fixed structure
+  - 13:29 A few sentences you can learn
+  - 13:44 Every profession
+- 14:04 **Accurate: as the case notes say it**
+  - 14:04 accurate
+  - 14:08 OET's words
+  - 14:38 the place
+  - 14:55 withheld is not stopped
+  - 15:13 better is not normal
+  - 15:35 your turn
+  - 15:48 how far she agrees
+  - 15:58 check every line
 
 *Rules on the boards*
 
-- 11:26 Ask yourself: who am I writing to, and what will they do?
-- 13:03 My advice: do not memorise one structure for every letter. Each letter follows its own case notes.
+- 11:33 Ask yourself: who am I writing to, and what will they do?
+- 13:09 My advice: do not memorise one structure for every letter. Each letter follows its own case notes.
 
 *Warnings (common mistakes)*
 
-- 15:39 Check the place, the numbers and every word of status against the case notes.
+- 15:58 Check the place, the numbers and every word of status against the case notes.
 
-*Terms*: Appropriate to the intended reader (The criterion, 10:36); What is needed to continue care (The criterion, 12:25); Accurately represents the case notes (The criterion, 14:03)
+*Terms*: Appropriate to the intended reader (The criterion, 10:44); What is needed to continue care (The criterion, 12:32); Accurately represents the case notes (The criterion, 14:08)
 
-#### 15:53 Conciseness and Clarity (`pages-12-13-14`, deck)
+#### 16:11 Conciseness and Clarity (`pages-12-13-14`, deck)
 
-- 15:53 **The length of the letter**
-  - 15:53 what is counted
-  - 16:00 OET's words
-  - 16:11 the task is made for it
-  - 16:29 not counted
-  - 16:35 a guide
-  - 16:41 my advice
-  - 16:47 much longer, much shorter
-  - 16:56 what matters
-  - 17:06 an example
-  - 17:24 not counted
-- 17:28 **Summarise: keep, keep briefly, leave out**
-  - 17:28 the history in the case notes
-  - 17:33 the word summarise
-  - 18:05 old and unrelated
-  - 18:14 briefly
-  - 18:34 looks related
-  - 18:47 briefly
-  - 18:58 looks related
-  - 19:16 gather related notes
-- 19:52 **Clear: each fact in its time**
-  - 19:52 Fixed: a paragraph of the letter
-  - 19:54 OET's words
-  - 20:08 The verbs and their time
-  - 20:29 The tense puts each fact in its time
-
-*Rules on the boards*
-
-- 16:41 My advice: ten or twelve words more or fewer do no harm.
-- 20:29 The tense tells the reader what happened, what is true now and what comes next.
-
-*Terms*: Appropriate to the case and reader (The criterion, 16:00); Presented clearly (The criterion, 19:54)
-
-#### 20:49 Genre and Style (`pages-15-16-17`, deck)
-
-- 20:49 **Clinical and factual**
-  - 20:49 Fixed: a wrong sentence
-  - 20:56 The social background
-  - 21:07 OET's words
-  - 21:39 Problem 1
-  - 21:46 Problem 2
-  - 21:54 Problem 3
-  - 22:00 My rule on fortunately
-  - 22:17 For this reader
-- 22:37 **Right for the reader: knowledge and polite requests**
-  - 22:37 Fixed: two wrong openings
-  - 22:56 OET's words
-  - 23:06 The first opening
-  - 23:16 The second opening: orders
-  - 23:22 Polite requests in our letter
-  - 23:42 My rule on firstly
-- 23:53 **Technical terms and abbreviations**
-  - 23:52 OET's words
-  - 23:53 abbreviations for a GP
-  - 24:23 abbreviate for the reader
-  - 24:28 well-known abbreviations
-  - 24:38 technical terms
+- 16:11 **The length of the letter**
+  - 16:11 what is counted
+  - 16:17 OET's words
+  - 16:28 the task is made for it
+  - 16:46 not counted
+  - 16:52 a guide
+  - 16:58 my advice
+  - 17:05 much longer, much shorter
+  - 17:14 what matters
+  - 17:24 an example
+  - 17:41 not counted
+- 17:45 **Summarise: keep, keep briefly, leave out**
+  - 17:45 the history in the case notes
+  - 17:50 the word summarise
+  - 18:21 old and unrelated
+  - 18:31 briefly
+  - 18:51 looks related
+  - 19:03 briefly
+  - 19:09 your turn
+  - 19:29 looks related
+  - 19:48 gather related notes
+- 20:24 **Clear: each fact in its time**
+  - 20:24 OET's words
+  - 20:40 the verbs, their time, and the tense
 
 *Rules on the boards*
 
-- 22:00 My advice: use "fortunately" or "unfortunately" at most once in a letter, and never about a patient's habits.
-- 23:42 My advice: never use "firstly", "secondly" or "finally" in your letter. Give each point in its own sentence.
+- 16:58 My advice: ten or twelve words more or fewer do no harm.
+- 21:01 The tense tells the reader what happened, what is true now and what comes next.
+
+*Terms*: Appropriate to the case and reader (The criterion, 16:17); Presented clearly (The criterion, 20:26)
+
+#### 21:21 Genre and Style (`pages-15-16-17`, deck)
+
+- 21:21 **Clinical and factual**
+  - 21:21 the social background
+  - 21:39 oET's words
+  - 22:11 problem 1
+  - 22:19 problem 2
+  - 22:28 problem 3
+  - 22:33 my rule on fortunately
+  - 22:51 for this reader
+- 23:11 **Right for the reader: knowledge and polite requests**
+  - 23:11 Fixed: two wrong openings
+  - 23:30 OET's words
+  - 23:39 The first opening
+  - 23:49 The second opening: orders
+  - 23:54 Your turn: a polite request
+  - 24:15 How our letter asks
+  - 24:29 Polite requests
+  - 24:35 My rule on firstly
+- 24:45 **Technical terms and abbreviations**
+  - 24:45 OET's words
+  - 25:20 well-known abbreviations, and technical terms
+
+*Rules on the boards*
+
+- 22:33 My advice: use "fortunately" or "unfortunately" at most once in a letter, and never about a patient's habits.
+- 24:35 My advice: never use "firstly", "secondly" or "finally" in your letter. Give each point in its own sentence.
 
 *Wrong sentences corrected*
 
-- 20:49 You might be interested to know that Mrs Holden works at a school. She drinks quite a lot, which is a major concern, but luckily she doesn't smoke.
-- 22:37 Dear district nurse, here is a very technical description of Mrs Dawson's blood tests!
-- 22:37 Dear specialist, let me tell you what's what. Firstly, do this. Secondly, I think you should do that.
+- 23:58 I think you should check her BP and urea and electrolytes on 28 October.
 
-*Terms*: Clinical and factual (The criterion, 21:07); Right for the reader's discipline and knowledge (The criterion, 22:56); Technical terms, abbreviations and polite language (The criterion, 23:52)
+*Terms*: Clinical and factual (The criterion, 21:39); Right for the reader's discipline and knowledge (The criterion, 23:30); Technical terms, abbreviations and polite language (The criterion, 24:45)
 
-#### 24:52 Organisation and Layout (`page-18`, deck)
+#### 25:45 Organisation and Layout (`page-18`, deck)
 
-- 24:52 **The letter, part by part**
-  - 24:52 the whole letter
-  - 24:59 OET's words
-  - 25:12 copy the address
-  - 25:21 the date
-  - 25:28 the Re line
-  - 25:33 the purpose first
-  - 25:40 then the story in order
-  - 25:53 one topic, key information first
-  - 26:10 not the order of the case notes
-  - 26:17 the requests last
-  - 26:27 the sign-off
-  - 26:31 learn the layout once
+- 25:45 **the top of the letter**
+  - 25:45 the top of the letter
+  - 25:51 OET's words
+  - 26:04 copy the address
+  - 26:13 the date
+  - 26:20 the Re line
+  - 26:25 the purpose first
+- 26:32 **from what happened to the closing**
+  - 26:32 then the story in order
+  - 26:45 one topic, key information first
+  - 27:02 not the order of the case notes
+  - 27:09 the requests last
+  - 27:19 the sign-off
+  - 27:23 learn the layout once
 
 *Rules on the boards*
 
-- 25:53 One topic in each paragraph. Put the most important information first.
-- 26:31 My advice: learn a clear layout once, and use it in every letter.
+- 26:45 One topic in each paragraph. Put the most important information first.
+- 27:23 My advice: learn a clear layout once, and use it in every letter.
 
-*Terms*: Appropriate, logical and clear (The criterion, 24:59)
+*Terms*: Appropriate, logical and clear (The criterion, 25:51)
 
-#### 26:46 Language (`page-19`, deck)
+#### 27:38 Language (`page-19`, deck)
 
-- 26:46 **Language**
-  - 26:46 what OET looks for
-  - 26:54 meaning
-  - 27:01 precise words
-  - 27:17 your own words
-  - 27:29 keep the medical words
-  - 27:50 tense changes meaning
-  - 28:22 not too long
-  - 28:42 spelling
-  - 28:52 punctuation
+- 27:38 **Language**
+  - 27:38 what OET looks for
+  - 27:46 meaning
+  - 27:53 precise words
+  - 28:09 your own words
+  - 28:22 keep the medical words
+  - 28:42 tense changes meaning
+  - 29:14 not too long
+  - 29:34 spelling
+  - 29:44 punctuation
 
-#### 29:02 Closing (`added-01`, closing)
+#### 29:54 Closing (`added-01`, closing)
 
-- 29:02 **Closing**
-  - 29:02 Recap
+- 29:54 **Closing**
+  - 29:59 Recap
 
 ### OET facts
 
@@ -8295,27 +8293,27 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 5:02 (`writing-criteria-scores`) Purpose is scored out of 3; each of the other five criteria is scored out of 7, on its own (writing-facts 9).
 - 5:27 (`writing-grade-b-profile`) For grade B, you need at least 2 out of 3 for Purpose and at least 5 out of 7 for each of the other five criteria (writing-facts 11).
 - 8:42 (`writing-purpose`) Purpose: the reader sees at once why you are writing; the purpose is stated clearly at the start and expanded with more detail at the end of the letter (writing-facts 18, 30).
-- 12:25 (`writing-content`) Content: what this reader needs to continue care, with nothing important missing and the case notes represented accurately (writing-facts 19).
-- 16:00 (`writing-conciseness`) Conciseness and Clarity: only the information the reader needs, and the case summarised and presented clearly (writing-facts 20).
-- 16:32 (`writing-body-counted`) Only the body of the letter, its paragraphs, is counted (writing-facts 16).
-- 16:32 (`writing-word-guide`) 180 to 200 words is a guide for the body, not a strict limit, with no automatic penalty (writing-facts 14).
-- 16:48 (`writing-length-signals`) Much longer usually means something the reader does not need; much shorter usually means something important is missing (writing-facts 15).
-- 21:07 (`writing-style`) The style is clinical and factual, with polite language and no personal feelings (writing-facts 21).
-- 24:28 (`writing-abbreviations`) Abbreviate for the reader and do not overdo it; abbreviations better known than their full form, such as MRI, BMI, CT and ECG, can be used (writing-facts 21, 38).
-- 25:09 (`writing-address`) Copy the reader's name and address from the task (writing-facts 24).
-- 25:25 (`writing-re-line`) The Re line gives the patient's full name and date of birth (writing-facts 26).
-- 25:53 (`writing-organisation`) Organisation: one topic per paragraph, the most important information first; simply following the order of the case notes is a weakness (writing-facts 22, 40).
-- 26:23 (`writing-sign-off`) Sign with a job title, not your own name (writing-facts 25). *(a job title, such as Doctor)*
-- 26:39 (`writing-no-fixed-layout`) There is no one required layout for the letter (writing-facts 24).
-- 28:40 (`writing-spelling`) Spelling does not need to be perfect for grade B (writing-facts 43).
+- 12:33 (`writing-content`) Content: what this reader needs to continue care, with nothing important missing and the case notes represented accurately (writing-facts 19).
+- 16:17 (`writing-conciseness`) Conciseness and Clarity: only the information the reader needs, and the case summarised and presented clearly (writing-facts 20).
+- 16:50 (`writing-body-counted`) Only the body of the letter, its paragraphs, is counted (writing-facts 16).
+- 16:50 (`writing-word-guide`) 180 to 200 words is a guide for the body, not a strict limit, with no automatic penalty (writing-facts 14).
+- 17:05 (`writing-length-signals`) Much longer usually means something the reader does not need; much shorter usually means something important is missing (writing-facts 15).
+- 21:39 (`writing-style`) The style is clinical and factual, with polite language and no personal feelings (writing-facts 21).
+- 25:21 (`writing-abbreviations`) Abbreviate for the reader and do not overdo it; abbreviations better known than their full form, such as MRI, BMI, CT and ECG, can be used (writing-facts 21, 38).
+- 26:01 (`writing-address`) Copy the reader's name and address from the task (writing-facts 24).
+- 26:17 (`writing-re-line`) The Re line gives the patient's full name and date of birth (writing-facts 26).
+- 26:46 (`writing-organisation`) Organisation: one topic per paragraph, the most important information first; simply following the order of the case notes is a weakness (writing-facts 22, 40).
+- 27:15 (`writing-sign-off`) Sign with a job title, not your own name (writing-facts 25). *(a job title, such as Doctor)*
+- 27:32 (`writing-no-fixed-layout`) There is no one required layout for the letter (writing-facts 24).
+- 29:32 (`writing-spelling`) Spelling does not need to be perfect for grade B (writing-facts 43).
 
 ### Exam methods and strategies
 
-- 8:13 **Expanding the purpose (the teacher's method)**: Say briefly in the opening why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.
-- 10:44 **Read the paper in this order**: The setting first, then the Writing Task, then the case notes line by line; ask who the reader is and what they will do.
-- 16:41 **The teacher's word-count advice**: Ten or twelve words more or fewer do no harm; what matters is that the reader gets everything they need, nothing they do not, and less important points briefly.
-- 17:45 **Keep, keep briefly or leave out**: For each note, ask what this reader will do with it: lines that only look related are left out; lines that explain the problem are kept briefly.
-- 23:43 **The teacher's advice on style**: Never firstly, secondly or finally in the letter; fortunately or unfortunately at most once, and never about a patient's habits.
+- 8:12 **Expanding the purpose (the teacher's method)**: Say briefly in the opening why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.
+- 10:52 **Read the paper in this order**: The setting first, then the Writing Task, then the case notes line by line; ask who the reader is and what they will do.
+- 16:58 **The teacher's word-count advice**: Ten or twelve words more or fewer do no harm; what matters is that the reader gets everything they need, nothing they do not, and less important points briefly.
+- 18:02 **Keep, keep briefly or leave out**: For each note, ask what this reader will do with it: lines that only look related are left out; lines that explain the problem are kept briefly.
+- 24:35 **The teacher's advice on style**: Never firstly, secondly or finally in the letter; fortunately or unfortunately at most once, and never about a patient's habits.
 
 ### Vocabulary
 
@@ -8323,7 +8321,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 - 1:38 criteria
 - 7:37 withheld
-- 17:33 summarise
+- 17:50 summarise
 
 ### Links to other lessons
 
@@ -9783,8 +9781,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **A target score for Part C**: `listening-04-part-c` 9:16
 - **A two-week history of**: `grammar-08-paraphrasing` 41:31
 - **a-**: `grammar-03-nominalization` 10:11
-- **Abbreviations in the letter**: `writing-02-assessment-criteria` 24:23
-- **Accuracy to the case notes**: `writing-02-assessment-criteria` 14:03
+- **Abbreviations in the letter**: `writing-02-assessment-criteria` 25:16
+- **Accuracy to the case notes**: `writing-02-assessment-criteria` 14:08
 - **Active**: `grammar-01-verb-tenses` 86:16
 - **active and passive**: `grammar-01-verb-tenses` 84:26; `grammar-02-verb-use` 35:19
 - **Active voice**: `grammar-02-verb-use` 36:23
@@ -9844,12 +9842,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Compound sentence**: `grammar-01-verb-tenses` 121:25; `grammar-05-complex-compound` 23:54; `grammar-08-paraphrasing` 7:33
 - **Compound sentences**: `grammar-07-punctuation` 14:30
 - **Comprehension**: `reading-04-part-c` 2:05
-- **Conciseness and Clarity**: `writing-02-assessment-criteria` 15:53
+- **Conciseness and Clarity**: `writing-02-assessment-criteria` 16:11
 - **Conditional clause**: `grammar-05-complex-compound` 37:33
 - **Conjunction**: `grammar-05-complex-compound` 8:00
 - **Conjunctive adverb**: `grammar-07-punctuation` 20:21
 - **Connectives**: `grammar-02-verb-use` 25:04
-- **Content**: `writing-02-assessment-criteria` 10:31
+- **Content**: `writing-02-assessment-criteria` 10:39
 - **Continuous**: `grammar-01-verb-tenses` 2:45
 - **Continuous tense**: `grammar-01-verb-tenses` 28:38
 - **continuous tenses**: `grammar-01-verb-tenses` 27:58
@@ -9904,7 +9902,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **future simple**: `grammar-01-verb-tenses` 20:16
 - **Gap fill**: `grammar-05-complex-compound` 32:43
 - **Gap fill: articles**: `grammar-04-articles` 60:25
-- **Genre and Style**: `writing-02-assessment-criteria` 20:49
+- **Genre and Style**: `writing-02-assessment-criteria` 21:21
 - **Gerund**: `grammar-05-complex-compound` 46:10
 - **Gist**: `reading-03-part-b` 2:13
 - **given that**: `grammar-06-clause` 54:21
@@ -9947,7 +9945,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Keeping a note brief**: `writing-08-reading-the-task` 18:16
 - **Key points to remember**: `vocabulary-02-collocations` 12:08
 - **Key words**: `reading-03-part-b` 10:13
-- **Language**: `writing-02-assessment-criteria` 26:46
+- **Language**: `writing-02-assessment-criteria` 27:38
 - **Linking words**: `listening-05-part-c-2` 2:52
 - **Linking words in a letter**: `writing-05-information-flow` 14:20
 - **Lists and series**: `grammar-07-punctuation` 27:56
@@ -9976,7 +9974,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **opinion signals**: `reading-04-part-c` 12:37
 - **Order**: `vocabulary-02-collocations` 63:02
 - **Ordering the paragraphs**: `writing-07-organisation` 13:17
-- **Organisation and Layout**: `writing-02-assessment-criteria` 24:52; `writing-07-organisation` 1:26
+- **Organisation and Layout**: `writing-02-assessment-criteria` 25:45; `writing-07-organisation` 1:26
 - **Paraphrase bridge**: `reading-05-part-c-2` 2:14
 - **paraphrasing**: `grammar-08-paraphrasing` 1:45
 - **Paraphrasing in eight steps**: `grammar-08-paraphrasing` 1:45
@@ -10084,7 +10082,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Target score**: `reading-02-part-a` 53:08; `reading-03-part-b` 55:50; `reading-04-part-c` 3:50
 - **Tempting wrong options**: `listening-03-part-b` 9:21
 - **Tense from the time word**: `writing-05-information-flow` 17:54
-- **Tense in the letter**: `writing-02-assessment-criteria` 20:30
+- **Tense in the letter**: `writing-02-assessment-criteria` 21:01
 - **The -ing form**: `grammar-01-verb-tenses` 8:21
 - **The -ing form (present participle)**: `grammar-06-clause` 22:31
 - **The address**: `writing-03-letter-structure` 13:00
