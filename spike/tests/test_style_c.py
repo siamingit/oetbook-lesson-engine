@@ -695,6 +695,26 @@ class TealLook(unittest.TestCase):
         self.assertIn(style_c.LAYOUT_CSS["sheetlong"], style_c.layout_css({"x": {"html": long_teal}}))
         self.assertNotIn(style_c.LAYOUT_CSS["sheetlong"], style_c.layout_css({"x": {"html": long_c}}))
 
+    def test_paperlook_keeps_a_sheet_at_the_looks_size(self):
+        """ADR 050 amendment (7): `paperlook` draws a sheet of the paper exactly as `paper` does, but never long, so it
+        keeps the look's size; chosen per block, in the teal look only, for a sheet of two columns; every sheet that
+        does not name it is marked long by its lines as before."""
+        lay = lambda header, rows, name, look=None: style_c.layout_html(  # noqa: E731
+            *(lambda b: (b, b["html"]))(self._table(header, rows)), None, name, None, look)
+        lined = [["Medical history:", "1998 / 2012 / 2020"], ["Medications:", "one / two / three"]]
+        sheet = [["12 May 2026", f"note {i}"] for i in range(6)]
+        for rows in (lined, sheet):
+            long_ = lay(["Her paper", ""], rows, "paper", "teal")
+            kept = lay(["Her paper", ""], rows, "paperlook", "teal")
+            self.assertIn('data-long=""', long_)                                  # amendment (5) unchanged
+            self.assertNotIn("data-long", kept)
+            self.assertEqual(kept, long_.replace(' data-long=""', "", 1))        # nothing else differs
+            self.assertEqual(style_c.layout_css({"x": {"html": kept}}, "teal"), style_c.LAYOUT_CSS["paper"])
+        with self.assertRaises(SystemExit):
+            lay(["Her paper", ""], lined, "paperlook")                            # the teal look's only
+        three = self._table(["", "A paper", "Her letter"], [["Plan:", "GP: review", "Please review."]])
+        self.assertIsNotNone(style_c.check_layout("k", three, "paperlook"))     # a sheet: two columns
+
     def test_nine_contents_items_in_two_columns(self):
         """ADR 050 amendment (5): a teal lesson of nine or ten contents items takes the two-columns-of-five rules;
         eight or fewer, or any lesson without the look, do not."""
