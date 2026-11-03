@@ -7865,7 +7865,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | 1 | OET Writing: Overview | `writing-01-overview` | 19:02 | 7 | 2026-11-03 08:33 (siavash) |
 | 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 30:34 | 10 | 2026-11-03 08:38 (siavash) |
 | 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:04 | 10 | 2026-11-02 15:49 (siavash) |
-| 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-11-01 00:09 (siavash) |
+| 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-11-02 16:06 (siavash) |
 | 5 | OET Writing: Information Flow | `writing-05-information-flow` | 37:36 | 9 | 2026-11-02 08:25 (siavash) |
 | 6 | OET Writing: Word Order | `writing-06-word-order` | 23:59 | 9 | 2026-11-01 19:35 (siavash) |
 | 7 | OET Writing: Organising the Letter | `writing-07-organisation` | 27:39 | 8 | 2026-11-02 00:54 (siavash) |
@@ -8598,7 +8598,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 4. OET Writing: The Opening Paragraph
 
 - Lesson ID and folder: `writing-04-introduction` (folder `writing-04-introduction`); course writing, lesson 4; length 32:12; bundle format 1.23
-- Status: approved by siavash, 2026-11-01 00:09
+- Status: approved by siavash, 2026-11-02 16:06
 - Description: Learn to write the opening of an OET letter: one clear sentence that says who the patient is, what the main problem is and what you ask, with the grammar it needs.
 - Original session: folder `source`: `source/video.mp4`, 87:07 long, partial hash `1995ee2fa868b983`; deck `source/slides.pdf`, 19 pages
   - Writing Session 4 of the Persian Writing course, «نحوه نگارش Introduction» (Writing: introduction); every example on its slides is of unknown origin and is replaced by the openings of our six samples (oa-ws-med-0001 to -0003, oa-ws-nur-0001 to -0003) at oetacademy-exercises 5320d19 (ADR 040). The letter to a patient's relative (slides 15-16) and the pharmacy aside are dropped; the teacher's "Dear Doctor" for an unnamed reader is replaced by "Dear Sir or Madam ... Yours faithfully" (ADR 040 decision 7).
@@ -8610,7 +8610,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 0:00 **Title board**
   - 0:00 the lesson title, then what the lesson is about
 - 0:55 **Contents board**
-  - 0:55 each category, revealed as it is named
+  - 1:05 each category, revealed as it is named
 
 #### 1:56 The opening paragraph (`pages-04-05`, deck)
 
@@ -8827,7 +8827,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 #### 31:22 Closing (`added-01`, closing)
 
 - 31:22 **Closing**
-  - 31:22 Recap
+  - 31:37 Recap
 
 ### OET facts
 
