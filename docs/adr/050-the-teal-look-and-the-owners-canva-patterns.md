@@ -367,3 +367,22 @@ holds it, the pill padded and tall enough for the circle.
 **Consequences.** Only a teal lesson that draws a criterion's pill changes; today that is Writing 2 alone (Writing 7's
 card is a side note). Proven by the render comparison (runbook, "Changing shared code"), recorded in the pull request.
 
+## Amendment (7), 2026-11-03: a sheet kept at the look's size (Writing 1's board 07)
+
+**Context.** The owner approved Writing 1 (Overview) v3 from its draft (2026-11-02). Its board 07, the paper's head and
+the setting, is a sheet of the paper whose text the draft set at the look's size (4% of the frame). Amendment (5), rule 2,
+merged after the draft was built, marks a sheet long when it draws six lines or more; this sheet draws seven, so the final
+build set it at the fit's size (3.2%, about 29 px) and left the lower third of the board empty. The owner chose (issue
+#160, 2026-11-03) to keep the draft's size for that board, without changing how rule 2 treats any other sheet.
+
+**Options considered.** (a) Raise the line count of rule 2: it would change every sheet near the limit, Writing 3's and
+Writing 8's included. (b) A lesson-wide switch: it would reach every sheet of the lesson. (c) A layout chosen per block,
+as `paperlong` and `paperfit` are: it reaches only the block that names it.
+
+**Decision** (c) (`style_c.py`, `LAYOUTS["paperlook"]`, in the teal look only, for a sheet of two columns): a block whose
+`block_layouts` entry is `paperlook` is drawn exactly as `paper` draws it, but it is never marked long, so it keeps the
+look's size and the fit tightens the board if it must, as before amendment (5). No rule, stylesheet or line count
+changes; every sheet named `paper` is treated as before.
+
+**Consequences.** Only a block that names `paperlook` changes; today that is Writing 1's page-8_k01 alone. Proven by the
+render comparison (runbook, "Changing shared code"), recorded in the pull request.

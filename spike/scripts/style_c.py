@@ -626,6 +626,9 @@ LAYOUTS = {
     # ADR 050 amendment (5): the paper beside the letter at the fit's size (never under 2.9%), chosen for a board that
     # does not fit the site's player at 3.3% either
     "paperfit": (("table",), False, (3,)),
+    # ADR 050 amendment (7): a sheet of the paper (two columns) kept at the look's size, never long (`data-long`)
+    # whatever its lines, chosen for a block whose board the owner approved at that size (Writing 1's paper head)
+    "paperlook": (("table",), False, (2,)),
 }
 # The teal look's layouts (ADR 050), their rules appended only where used
 ADR050_LAYOUTS = ("wrongright", "coded", "opener", "timeline", "columns", "parts", "badges", "ruled",
@@ -1933,10 +1936,10 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
         why = check_layout(b.get("id", "?"), b, layout)
         if why:
             raise SystemExit("REFUSED: sections.json block_layouts: " + why)
-        if layout in ("paperlong", "paperfit") and look != "teal":
+        if layout in ("paperlong", "paperfit", "paperlook") and look != "teal":
             raise SystemExit(f"REFUSED: sections.json block_layouts: {b.get('id')}: {layout!r} is the teal look's")
         if t == "table":
-            html = _table_html(b, html, "paper" if layout in ("paperlong", "paperfit") else layout)
+            html = _table_html(b, html, "paper" if layout in ("paperlong", "paperfit", "paperlook") else layout)
             if layout == "paperlong":
                 html = _add_root(html, "paper-long")
             if layout == "paperfit":
