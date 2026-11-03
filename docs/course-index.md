@@ -7864,7 +7864,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 |---|---|---|---|---|---|
 | 1 | OET Writing: Overview | `writing-01-overview` | 19:02 | 7 | 2026-11-03 08:33 (siavash) |
 | 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 30:34 | 10 | 2026-11-03 08:38 (siavash) |
-| 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:04 | 10 | 2026-11-02 15:49 (siavash) |
+| 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:04 | 10 | 2026-11-03 14:51 (siavash) |
 | 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-11-02 16:06 (siavash) |
 | 5 | OET Writing: Information Flow | `writing-05-information-flow` | 37:36 | 9 | 2026-11-02 08:25 (siavash) |
 | 6 | OET Writing: Word Order | `writing-06-word-order` | 23:59 | 9 | 2026-11-01 19:35 (siavash) |
@@ -8346,7 +8346,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 3. OET Writing: Letter Structure
 
 - Lesson ID and folder: `writing-03-letter-structure` (folder `writing-03-letter-structure`); course writing, lesson 3; length 28:04; bundle format 1.23
-- Status: approved by siavash, 2026-11-02 15:49
+- Status: approved by siavash, 2026-11-03 14:51
 - Description: Learn the parts of a letter, from the address and the date to the request and the sign-off, and where each part comes from in the paper.
 - Original session: folder `source`: `source/video.mp4`, 25:04 long, partial hash `e5d98490267c5abe`; deck `source/slides.pdf`, 12 pages
   - Writing Session 3 of the Persian Writing course, «جلسه رایتینگ: ساختار نامه» (Writing: letter structure); its official OET sample (letter and case notes) is replaced by our samples oa-ws-nur-0001 (main), oa-ws-med-0002 (the dates) and oa-ws-nur-0003 (the address, greeting and Re line) at oetacademy-exercises 5320d19 (ADR 040). The teacher's exam-date rule is dropped by the owner (ADR 044).
