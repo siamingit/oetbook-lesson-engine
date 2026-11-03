@@ -386,3 +386,48 @@ changes; every sheet named `paper` is treated as before.
 
 **Consequences.** Only a block that names `paperlook` changes; today that is Writing 1's page-8_k01 alone. Proven by the
 render comparison (runbook, "Changing shared code"), recorded in the pull request.
+## Amendment (8), 2026-11-03: long labels in the two halves (Writing 4's Opening frames board)
+
+**Context.** The owner approved Writing 4 (The Opening Paragraph) v3 on 2026-11-02 on one condition: board 23,
+Opening frames (page-18_t1, 29:04), eight frames and when each fits, a table of two columns and eight rows drawn in
+two halves (amendment (4)). On the site's player and on the engine's, the camera panned the board at the moments the
+whole table is marked and the learner is asked to match, and the top row slid under the heading. Measured in the
+engine's player, camera undone: at 1600x900 the table stood at 71% of the frame (its label column at 30% of a half
+wraps "I am writing to update you on the progress of …" to five lines and the grid pairs each row of the first half
+with its row of the second, 15 lines in all), and its two notes ran 74 px past the board; at the phone frames even one
+note ran past it. The owner asked that every row be fully visible at those moments, at 1600x900 on the site's player
+and in the engine's phone frames, with the narration and audio unchanged, and suggested a declared split or another
+layout that fits whole.
+
+**Options considered.**
+
+- A declared split into the table's two halves. Refused by the teaching: the matching state marks rows of both
+  halves (seeing and update in the first, in response and accepting in the second, then introduce and refer), and a
+  board is one run of states, so neither half could carry the match without losing its marks.
+- A plain table (no pattern). It is 585 px tall at 1600x900, still 22 px past the board with its two notes, and the
+  site's room is some 40 px shorter again; and it gives up the owner's pattern 4.
+- A wider label column in the two halves. At 40% of its half every label wraps to two lines or three, the grid pairs
+  11 lines instead of 15, and the table (at the look's floor, 2.9%) stands at 502 px instead of 637 px, so both notes
+  fit under it at 1600x900 and at the small phone frame.
+
+**Decision** (`style_c.py`; bundle unchanged; the rule reaches only a lesson that has such a block):
+
+1. A table in `columns` drawn in two halves (amendment (4)) whose longest label runs past 30 characters
+   (`COLUMNS_LONG_LABEL_CHARS`) takes `data-cw="long"`: its label column is 40% of its half instead of 30%
+   (`columns2long`, appended only where such a table is drawn). A table with a narrow column named already (`data-cw` first or last) keeps that. Short labels keep the
+   30% column, so no other two-halves table changes.
+
+**Consequences.** Writing 4's board 23 no longer needs its table set smaller: the fit keeps it at its own size
+(3.2% of the frame, 28.8 px at 1600x900, against 2.9% before), the board is not tight, and the camera never pans or
+zooms. At the answers of the matching point (after the pause) the task note ("Your turn: match each letter to its
+frame.") is cleared as the answer note appears, as a teacher wipes the board; while the learner matches, the whole
+table and the task are on the board. Measured in the engine's player at 1600x900, 1120, 812 and 590 px wide: every row
+of the table in view at every moment of the board. Nothing else on the board or in the lesson changes; no word, cue,
+clip or practice ID moves. No other built lesson has a two-halves table with long labels: Writing 5's (the nine
+families of signal words) has labels of 21 characters at most, and no other lesson's `columns` table has eight rows;
+the rule's CSS (`columns2long`) is appended only where such a table is drawn, so no other stylesheet changes. Proven
+by the render comparison (runbook, "Changing shared code"): `render_compare.py` snapshots `before-w04e` and
+`before-w04f` on main at 953de6a and `after-w04e` and `after-w04f` on this change, 2026-11-03 (two lists, two
+checkouts, run side by side): **27 of 27 built lessons identical**, 860 data files byte for byte and
+163,474 moments at the phone and laptop frames drawn identically, with no board timing difference. Outside the
+proof: Reading 5, as before (it does not render on main); and Writing 4, the lesson this change is for.

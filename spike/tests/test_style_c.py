@@ -675,6 +675,18 @@ class TealLook(unittest.TestCase):
         self.assertNotIn("data-flow", lay(["A", "B", "C"], [r + ["x"] for r in nine], "columns"))  # two columns only
         self.assertIn(style_c.LAYOUT_CSS["columns2"], style_c.layout_css({"x": {"html": long_cols}}))
         self.assertNotIn(style_c.LAYOUT_CSS["columns2"], style_c.layout_css({"x": {"html": short_cols}}))
+        # amendment (8): long labels in the two halves take the wider column (40% of the half); short ones do not
+        frames = [[f"I am writing to update you on the progress of {i}", f"when {i}"] for i in range(8)]
+        wide = lay(["Frame", "When it fits"], frames, "columns")
+        self.assertIn('data-flow="2"', wide)
+        self.assertIn('data-cw="long"', wide)
+        self.assertNotIn('data-cw="long"', long_cols)                              # labels of 8 characters
+        self.assertNotIn('data-cw="long"', lay(["Frame", "When"], frames[:4], "columns"))   # one column: no halves
+        self.assertIn('[data-flow="2"][data-cw="long"] tbody tr{grid-template-columns:minmax(0,40%)',
+                      style_c.LAYOUT_CSS["columns2long"])
+        self.assertIn(style_c.LAYOUT_CSS["columns2long"], style_c.layout_css({"x": {"html": wide}}))
+        self.assertNotIn(style_c.LAYOUT_CSS["columns2long"], style_c.layout_css({"x": {"html": long_cols}}))
+        self.assertNotIn("data-cw", style_c.LAYOUT_CSS["columns2"])            # the halves' own rules unchanged
         sheet = [["12 May 2026", f"note {i}"] for i in range(6)]
         long_teal, long_c = lay(["Her paper", ""], sheet, "paper", "teal"), lay(["Her paper", ""], sheet, "paper")
         self.assertIn('data-long=""', long_teal)

@@ -648,6 +648,9 @@ PARTS_FLOW_CHARS = 700
 # paper this long, in the teal look, takes the fit's size (never under the look's table floor) instead of the look's
 # 4.5%, which holds a short piece of the paper
 COLUMNS_FLOW_ROWS = 8
+# ADR 050 amendment (8): in the two halves, a column of long labels (the longest past this many characters) takes 40%
+# of its half instead of 30%, so a label wraps to two lines, not five, and the table with its notes fits the board whole
+COLUMNS_LONG_LABEL_CHARS = 30
 SHEET_LONG_ROWS = 6             # rows, or lines drawn (amendment (5)): a row of several lines counts each
 SHEET_LINE_CHARS = 70           # about a line of the sheet at 4.5% of the frame: a longer line counts its wraps
 HAND_WORDS = 15
@@ -908,6 +911,9 @@ def _teal_root_attrs(layout: str, header: list, rows: list) -> str:
         out += ' data-flow="2"'
     if layout == "columns" and ncol == 2 and len(rows) >= COLUMNS_FLOW_ROWS:
         out += ' data-flow="2"'
+        # amendment (8): long labels take the wider column of their half (never with a narrow column named above)
+        if longest[0] > COLUMNS_LONG_LABEL_CHARS and "data-cw" not in out:
+            out += ' data-cw="long"'
     return out
 
 
@@ -1616,6 +1622,11 @@ LAYOUT_CSS.update({
 .tbl.lay.lay-columns[data-flow="2"]:is([data-n="11"],[data-n="12"]){--fr:6}
 .tbl.lay.lay-columns[data-flow="2"]:is([data-n="13"],[data-n="14"]){--fr:7}
 """,
+    # ADR 050 amendment (8): in the two halves, long labels (`data-cw="long"`) take 40% of their half, so each wraps to
+    # two lines, not five; appended only to a lesson that has such a table
+    "columns2long": r"""
+.tbl.lay.lay-columns[data-flow="2"][data-cw="long"] tbody tr{grid-template-columns:minmax(0,40%) minmax(0,1fr)}
+""",
     # ADR 050 amendment (4): a long sheet of the paper (six rows or more) at the fit's size, never under the
     # look's table floor, so its dated entries and the note under them fit the board at full size
     "sheetlong": r"""
@@ -1813,6 +1824,8 @@ def layout_css(blocks: dict, look: str | None = None) -> str:
                 used.add("sheetlong")
         if "lay-columns" in cls and ' data-flow="2"' in ROOT_TAG.match(b["html"]).group(0):
             used.add("columns2")
+            if ' data-cw="long"' in ROOT_TAG.match(b["html"]).group(0):
+                used.add("columns2long")
         if "lay-acronym" in cls:
             used.add("acronym")
         if "lay-skeleton" in cls:
