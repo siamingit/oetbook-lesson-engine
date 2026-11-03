@@ -10132,8 +10132,8 @@
    "bundle_format": "1.23",
    "status": "approved",
    "approval": {
-    "by": "Siavash",
-    "on": "2026-10-31 12:46"
+    "by": "siavash",
+    "on": "2026-11-03 15:41"
    },
    "source": {
     "folder": "source",
@@ -11910,8 +11910,8 @@
       "section": "page-19",
       "to_section": null,
       "utterance": "page-19_t1.s7.u2",
-      "start_s": 1711.452,
-      "start": "28:31"
+      "start_s": 1763.676,
+      "start": "29:23"
      },
      {
       "lesson": "writing-05-information-flow",
@@ -13542,8 +13542,8 @@
    "bundle_format": "1.23",
    "status": "approved",
    "approval": {
-    "by": "Siavash",
-    "on": "2026-10-31 19:34"
+    "by": "siavash",
+    "on": "2026-11-03 15:41"
    },
    "source": {
     "folder": "source",
@@ -16470,16 +16470,16 @@
       "section": "pages-15-16-17",
       "to_section": "added-08",
       "utterance": "pages-15-16-17_t3.s2.u3",
-      "start_s": 1482.878,
-      "start": "24:42"
+      "start_s": 1535.602,
+      "start": "25:35"
      },
      {
       "lesson": "writing-02-assessment-criteria",
       "section": "page-19",
       "to_section": "page-5",
       "utterance": "page-19_t1.s9.u1",
-      "start_s": 1729.862,
-      "start": "28:49"
+      "start_s": 1782.086,
+      "start": "29:42"
      },
      {
       "lesson": "writing-03-letter-structure",
@@ -16552,8 +16552,8 @@
    "bundle_format": "1.23",
    "status": "approved",
    "approval": {
-    "by": "Siavash",
-    "on": "2026-10-31 16:42"
+    "by": "siavash",
+    "on": "2026-11-03 15:41"
    },
    "source": {
     "folder": "source",
@@ -18593,32 +18593,32 @@
       "section": "page-5",
       "to_section": "page-4",
       "utterance": "page-5_t1.s2.u3",
-      "start_s": 202.961,
-      "start": "3:22"
+      "start_s": 201.761,
+      "start": "3:21"
      },
      {
       "lesson": "writing-01-overview",
       "section": "page-8",
       "to_section": "page-6",
-      "utterance": "page-8_t1.s5.u4",
-      "start_s": 718.815,
-      "start": "11:58"
+      "utterance": "page-8_t3.s2.u4",
+      "start_s": 715.815,
+      "start": "11:55"
      },
      {
       "lesson": "writing-02-assessment-criteria",
       "section": "pages-12-13-14",
       "to_section": "page-8",
       "utterance": "pages-12-13-14_t2.s8.u5",
-      "start_s": 1187.283,
-      "start": "19:47"
+      "start_s": 1218.513,
+      "start": "20:18"
      },
      {
       "lesson": "writing-02-assessment-criteria",
       "section": "page-19",
       "to_section": "pages-09-10",
       "utterance": "page-19_t1.s5.u2",
-      "start_s": 1660.942,
-      "start": "27:40"
+      "start_s": 1713.166,
+      "start": "28:33"
      },
      {
       "lesson": "writing-05-information-flow",
