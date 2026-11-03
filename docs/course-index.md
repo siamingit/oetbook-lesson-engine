@@ -22,10 +22,10 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 | 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 62:40 | 5 | 2026-11-03 18:04 (siavash) |
 | 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 59:28 | 7 | 2026-10-31 12:13 (Siavash) |
 | 4 | Grammar for OET: Articles | `grammar-04-articles` | 67:59 | 9 | 2026-10-31 13:00 (Siavash) |
-| 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 66:38 | 8 | 2026-10-31 12:46 (Siavash) |
+| 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 66:38 | 8 | 2026-11-03 15:41 (siavash) |
 | 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 59:04 | 6 | 2026-10-31 13:24 (Siavash) |
-| 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 99:20 | 18 | 2026-10-31 19:34 (Siavash) |
-| 8 | Grammar for OET: Paraphrasing | `grammar-08-paraphrasing` | 63:39 | 7 | 2026-10-31 16:42 (Siavash) |
+| 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 99:20 | 18 | 2026-11-03 15:41 (siavash) |
+| 8 | Grammar for OET: Paraphrasing | `grammar-08-paraphrasing` | 63:39 | 7 | 2026-11-03 15:41 (siavash) |
 
 <a id="grammar-01-verb-tenses"></a>
 
@@ -1706,7 +1706,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 5. Grammar for OET: Complex sentences
 
 - Lesson ID and folder: `grammar-05-complex-compound` (folder `grammar-05-complex-compound`); course grammar, lesson 5; length 66:38; bundle format 1.23
-- Status: approved by Siavash, 2026-10-31 12:46
+- Status: approved by siavash, 2026-11-03 15:41
 - Description: Learn how to join two ideas in one complex sentence, with the right linking word and comma, for your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 65:06 long, partial hash `49e48848f0038580`; deck `source/slides.pdf`, 14 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -2013,7 +2013,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 10:27, about section `pages-11-12`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 7:48
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Avoid a series of short sentences" at 80:31
-- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:31
+- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 29:23
 - referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Signal words" at 4:02, about section `pages-11-12`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "A paragraph corrected" at 17:00, about section `page-7`
 - continues in Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`): Relative and participle clauses build on the clauses and joining words taught here.
@@ -2285,7 +2285,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 7. Grammar for OET: Punctuation
 
 - Lesson ID and folder: `grammar-07-punctuation` (folder `grammar-07-punctuation`); course grammar, lesson 7; length 99:20; bundle format 1.23
-- Status: approved by Siavash, 2026-10-31 19:34
+- Status: approved by siavash, 2026-11-03 15:41
 - Description: Learn to punctuate your OET letters: where to put commas, and how to use full stops, semicolons, colons, apostrophes, hyphens, capital letters, numbers and short forms correctly.
 - Original session: folder `source`: `source/video.mp4`, 33:26 long, partial hash `297821a41d0a0437`; deck `source/slides.pdf`, 18 pages
   - The recording teaches commas only; the second part (sections added-01 to added-09) is authored, with no recording (ADR 018).
@@ -2807,8 +2807,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Introduction" at 0:04
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 32:56, about section `added-05`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Combine" at 32:56, about section `added-03`
-- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Genre and Style" at 24:42, about section `added-08`
-- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:49, about section `page-5`
+- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Genre and Style" at 25:35, about section `added-08`
+- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 29:42, about section `page-5`
 - referred to by OET Writing: Letter Structure (`writing-03-letter-structure`), "Greeting and Re line" at 15:38, about section `page-14`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "The opening paragraph" at 4:36, about section `page-14`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 12:42, about section `added-04`
@@ -2823,7 +2823,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 8. Grammar for OET: Paraphrasing
 
 - Lesson ID and folder: `grammar-08-paraphrasing` (folder `grammar-08-paraphrasing`); course grammar, lesson 8; length 63:39; bundle format 1.23
-- Status: approved by Siavash, 2026-10-31 16:42
+- Status: approved by siavash, 2026-11-03 15:41
 - Description: Learn eight steps to turn case notes into clear, correct sentences for your OET letter.
 - Original session: folder `source`: `source/video.mp4`, 83:44 long, partial hash `2962a94a3786c811`; deck `source/slides.pdf`, 11 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -3128,10 +3128,10 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 32:56 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Capital letters" (in `page-7_t1.s18.u2`)
 - 32:56 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Apostrophes" (in `page-7_t1.s18.u2`)
 - 44:02 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-8_t1.s19.u2`)
-- referred to by OET Writing: Overview (`writing-01-overview`), "Steps towards successful writing" at 3:22, about section `page-4`
-- referred to by OET Writing: Overview (`writing-01-overview`), "The case notes" at 11:58, about section `page-6`
-- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Conciseness and Clarity" at 19:47, about section `page-8`
-- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 27:40, about section `pages-09-10`
+- referred to by OET Writing: Overview (`writing-01-overview`), "Steps towards successful writing" at 3:21, about section `page-4`
+- referred to by OET Writing: Overview (`writing-01-overview`), "The case notes" at 11:55, about section `page-6`
+- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Conciseness and Clarity" at 20:18, about section `page-8`
+- referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:33, about section `pages-09-10`
 - referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Now, and the request" at 30:03, about section `pages-09-10`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "The verb and its object; the time first" at 6:07, about section `page-8`
 
