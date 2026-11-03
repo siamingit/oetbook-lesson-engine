@@ -7866,9 +7866,9 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 30:34 | 10 | 2026-11-03 08:38 (siavash) |
 | 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:04 | 10 | 2026-11-03 14:51 (siavash) |
 | 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:12 | 10 | 2026-11-02 16:06 (siavash) |
-| 5 | OET Writing: Information Flow | `writing-05-information-flow` | 37:36 | 9 | 2026-11-02 08:25 (siavash) |
-| 6 | OET Writing: Word Order | `writing-06-word-order` | 23:59 | 9 | 2026-11-01 19:35 (siavash) |
-| 7 | OET Writing: Organising the Letter | `writing-07-organisation` | 27:39 | 8 | 2026-11-02 00:54 (siavash) |
+| 5 | OET Writing: Information Flow | `writing-05-information-flow` | 37:36 | 9 | 2026-11-03 14:36 (siavash) |
+| 6 | OET Writing: Word Order | `writing-06-word-order` | 23:59 | 9 | 2026-11-03 14:36 (siavash) |
+| 7 | OET Writing: Organising the Letter | `writing-07-organisation` | 27:39 | 8 | 2026-11-03 14:36 (siavash) |
 | 8 | OET Writing: Reading the Task and the Case Notes | `writing-08-reading-the-task` | 23:18 | 8 | 2026-11-02 15:50 (siavash) |
 
 <a id="writing-01-overview"></a>
@@ -8871,7 +8871,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 5. OET Writing: Information Flow
 
 - Lesson ID and folder: `writing-05-information-flow` (folder `writing-05-information-flow`); course writing, lesson 5; length 37:36; bundle format 1.23
-- Status: approved by siavash, 2026-11-02 08:25
+- Status: approved by siavash, 2026-11-03 14:36
 - Description: Learn to keep the flow of information clear in an OET letter, with the time words that order a history and decide its tenses, the few linking words a letter needs and the ones to avoid, and the way a dated case note becomes a clear sentence, up to the request.
 - Original session: folder `source`: `source/video.mp4`, 72:08 long, partial hash `5ba59af7698de6e3`; deck `source/slides.pdf`, 12 pages
   - Session 5 of the Persian Writing course, «OET Writing: Signal words and information flow» (72:08, 12 slides): the nine families of signal words, the words to avoid, a paragraph with a linking word on every sentence put right, time and tense on the timeline of a case, the four-column method (the note, the time reference, the tense, the sentence) worked through the official OET Nursing sample, and the request with modal verbs. The sixth lesson of the general Writing course (ADR 047). The official sample and the Mr Jones paragraph are never reused: every teaching point is rebuilt on our samples oa-ws-nur-0001, oa-ws-nur-0002, oa-ws-med-0003, oa-ws-med-0001, oa-ws-nur-0003 and oa-ws-med-0002 at oetacademy-exercises 5320d19 (ADR 040).
@@ -9124,7 +9124,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 6. OET Writing: Word Order
 
 - Lesson ID and folder: `writing-06-word-order` (folder `writing-06-word-order`); course writing, lesson 6; length 23:59; bundle format 1.23
-- Status: approved by siavash, 2026-11-01 19:35
+- Status: approved by siavash, 2026-11-03 14:36
 - Description: Learn the order of words in a letter sentence: who, what, where, when, why; the verb and its object together; a time phrase first with a comma; where also, then and frequency adverbs go; a paragraph and a letter corrected.
 - Original session: folder `source`: `source/video.mp4`, 52:48 long, partial hash `e580eb78f48235f0`; deck `source/slides.pdf`, 17 pages
   - Session 6 of the Persian Writing course, «Word Orders» (52:48, 17 slides in the Vocabulary template): the order subject, verb, object, place, time, reason (who, what, where, when, why); the verb and its object together; a time phrase first with a comma; also and then in the middle position; adverbial phrases and signal words at the start of a sentence; a learner's paragraph corrected line by line; a letter with gaps. The last lesson of the general Writing course (ADR 047 decision 1). Every example on the deck is the teacher's own sentence of unknown origin, a learner's paragraph (third-party) or a practice letter of unknown origin, and every point is rebuilt on our samples oa-ws-nur-0002, oa-ws-med-0002, oa-ws-nur-0001, oa-ws-med-0003, oa-ws-med-0001 and oa-ws-nur-0003 at oetacademy-exercises 5320d19 (ADR 040).
@@ -9317,7 +9317,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 7. OET Writing: Organising the Letter
 
 - Lesson ID and folder: `writing-07-organisation` (folder `writing-07-organisation`); course writing, lesson 7; length 27:39; bundle format 1.23
-- Status: approved by siavash, 2026-11-02 00:54
+- Status: approved by siavash, 2026-11-03 14:36
 - Description: Learn to organise the body of an OET letter: the ISBAR parts, paragraphs in time order or by theme, a quick plan of what goes in each paragraph, and the request and closing paragraph.
 - Original session: folder `source`: `source/video.mp4`, 28:50 long, partial hash `7739eb8d9c3f6385`; deck `source/slides.pdf`, 17 pages
   - Session 7 of the Persian Writing course, «Writing: How to Structure a letter» (28:50, 17 slides): Organisation and Layout recalled, no perfect template, the ISBAR approach, three letters read by their paragraphs, chronological or thematic order with the same letter both ways. The seventh lesson of the general Writing course (ADR 047), which also teaches two parts the recorded sessions never taught, planning the paragraphs and the request and closing paragraph, from the owner's recorded Nursing and Medicine Writing sessions. Every letter on the deck is of unknown or official origin and is rebuilt on our samples oa-ws-nur-0002, oa-ws-med-0003, oa-ws-med-0002, oa-ws-nur-0001 and oa-ws-nur-0003 at oetacademy-exercises 5320d19 (ADR 040).
