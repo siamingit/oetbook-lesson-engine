@@ -672,6 +672,13 @@ A fix to on-screen text is an override in the section's `overrides.json`
 a board's layout (methodology §18, too-broad rules). A decision in the
 maintainer's own words goes into the page's ledger
 (`analysis/script/page-N/applied.jsonl`) as `require` and `forbid` phrases.
+A narrated table board that does not fit the site's player is divided by its
+rows with `split` in the section's screens `overrides.json` (ADR 050 amendment
+(10)): the section's last topic, the thought that opens a state, the rows the
+first part keeps, the table and the new block id, two "Split: ..." titles. The
+section's screens and narration overrides then name the moved states by their
+new ids (`t<new>.s1` on); render screens, then narration, then the audio and
+the player; no clip is synthesised again.
 
 **narration** (gate). Watch `generated/lesson-preview/silent/player.html` and read
 `analysis/narration/lesson-review/index.html`. Fix only the states concerned:

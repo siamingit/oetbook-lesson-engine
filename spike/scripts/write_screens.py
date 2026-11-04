@@ -1698,6 +1698,112 @@ def place_added(boards: list[dict], blocks: dict[str, dict], added: list[dict]) 
                     blocks[a["id"]]["beside"] = dict(side)
 
 
+def split_topics(out_dir: Path, topics: list[dict], blocks: dict[str, dict],
+                 dropped: list[str]) -> list[dict]:
+    """A table board divided by its rows after it was narrated (overrides.json
+    `split`; ADR 050 amendment (10), Grammar 6 2026-11-04): each {"topic",
+    "at_thought", "titles": [first, second], "table", "rows", "id", "note"}
+    divides the section's last topic before the thought named. The thoughts
+    before it keep the topic and the table's first `rows` rows; the thoughts
+    from it on are a new topic, the other rows a table of their own under the
+    new id. Both parts are declared splits ("Split: ..."), held to the split
+    rules as a model's are. In the second part a thought's "Row N:" and the
+    table's typed cells count from its own first row; `split_rows` on each table
+    names where it starts in the slide's table. No other id changes."""
+    path = out_dir / "overrides.json"
+    spec = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    done = []
+    for sp in spec.get("split") or []:
+        t = next((x for x in topics if x["id"] == sp["topic"]), None)
+        if t is None or t is not topics[-1]:
+            raise SystemExit(f"overrides.json split: {sp['topic']} is not the section's last topic")
+        at = next((i for i, h in enumerate(t["thoughts"]) if h["id"] == sp["at_thought"]), 0)
+        if not at:
+            raise SystemExit(f"overrides.json split: {sp['at_thought']} is not a later thought "
+                             f"of {sp['topic']}")
+        tb = blocks.get(sp["table"])
+        if tb is None or tb["type"] != "table" or tb.get("map") or tb.get("doc") \
+                or tb.get("verdicts"):
+            raise SystemExit(f"overrides.json split: {sp['table']} is not a plain table")
+        n, rows = sp["rows"], tb["rows"]
+        if not 0 < n < len(rows):
+            raise SystemExit(f"overrides.json split: {n} rows of a table of {len(rows)}")
+        if sp["id"] in blocks or sp["id"] in dropped:
+            raise SystemExit(f"overrides.json split: {sp['id']} is already a block of this section")
+        if not all(x.lower().startswith("split:") for x in sp["titles"]):
+            raise SystemExit("overrides.json split: both titles start 'Split: '")
+        first, second = t["thoughts"][:at], t["thoughts"][at:]
+        if any(b["id"] == tb["id"] for h in second for b in h["blocks"]):
+            raise SystemExit(f"overrides.json split: {tb['id']} is in the second part")
+        for part, lo, hi in ((first, 1, n), (second, n + 1, len(rows))):
+            for h in part:
+                m = ROW_PURPOSE.match(h.get("purpose") or "")
+                if m and not lo <= int(m.group(1)) <= hi:
+                    raise SystemExit(f"overrides.json split: {h['id']} teaches row "
+                                     f"{m.group(1)}, not a row of its part")
+                if m and part is second:
+                    h["purpose"] = ROW_PURPOSE.sub(f"Row {int(m.group(1)) - n}:", h["purpose"], 1)
+        nb = {**json.loads(json.dumps(tb)), "id": sp["id"], "rows": rows[n:],
+              "split_rows": {"first": n, "of": len(rows)},
+              "note": ((tb.get("note") or "") + f" Rows {n + 1} to {len(rows)}, divided over a "
+                       "declared split (overrides.json split).").strip()}
+        tb["rows"], tb["split_rows"] = rows[:n], {"first": 0, "of": len(rows)}
+        if "typed" in tb:
+            nb["typed"] = [{**y, "row": y["row"] - n} for y in tb["typed"] or [] if y["row"] >= n]
+            tb["typed"] = [y for y in tb["typed"] or [] if y["row"] < n]
+        second[0]["blocks"].insert(0, nb)
+        blocks[nb["id"]] = nb
+        new_id = f"t{len(topics) + 1}"
+        t["thoughts"], t["title"], t["split"] = first, sp["titles"][0], sp["titles"][0][6:].strip()
+        topics.append({"title": sp["titles"][1], "from_beats": list(t["from_beats"]),
+                       "thoughts": second, "id": new_id, "split": sp["titles"][1][6:].strip(),
+                       **({"slide": t["slide"]} if "slide" in t else {})})
+        done.append({**sp, "new_topic": new_id})
+    return done
+
+
+def split_plan(boards: list[dict], splits: list[dict], planned: list[dict]) -> None:
+    """A kept (narrated) plan divided as its topic is (split_topics): the states
+    from the one that opens with the split's thought move to the new board,
+    numbered again from s1; `split_from` keeps the ids they had, by which the
+    section's narration reply names them (write_narration.py). Board fields
+    (label, fixed layer, its height, the table) come from this render's plan. A
+    plan already divided is left as it is."""
+    by_id = {bd["id"]: bd for bd in planned}
+    for sp in splits:
+        new_id = sp["new_topic"]
+        if any(bd["id"] == new_id for bd in boards):
+            continue
+        bd = next(b for b in boards if b["id"] == sp["topic"])
+        at = next((i for i, st in enumerate(bd["states"])
+                   if sp["at_thought"] in (st.get("thoughts") or [])), 0)
+        if not at or bd["states"][at]["thoughts"][0] != sp["at_thought"]:
+            raise SystemExit(f"overrides.json split: in the kept plan {sp['at_thought']} does "
+                             "not open a state; a board changes only where a state begins")
+        moved, bd["states"] = bd["states"][at:], bd["states"][:at]
+        two = {h for st in moved for h in st["thoughts"]}
+        erasures = bd["erasures"]
+        bd["erasures"] = [e for e in erasures if e["before_thought"] not in two]
+        old = {}
+        for k, st in enumerate(moved, 1):
+            old[f"{new_id}.s{k}"] = st["id"]
+            st["id"] = f"{new_id}.s{k}"
+            if st.get("row") is not None:
+                st["row"] -= sp["rows"]
+        nb = {**{k: v for k, v in by_id[new_id].items() if k not in ("states", "erasures")},
+              "states": moved, "erasures": [e for e in erasures if e["after_thought"] in two],
+              "split_from": {"board": sp["topic"], "table": sp["table"], "states": old}}
+        for k in ("label", "fixed", "fixed_height", "table", "table_fits"):
+            if k in by_id[sp["topic"]]:
+                bd[k] = by_id[sp["topic"]][k]
+        for b in (bd, nb):
+            if b.get("table"):          # a table board's states are its fixed layer's height
+                for st in b["states"]:
+                    st["height"] = b["fixed_height"]
+                    st["fill"] = round(b["fixed_height"] / CONTENT_BAND, 3)
+        boards.insert(boards.index(bd) + 1, nb)
+
+
 def assign_ids(topics: list[dict]) -> dict[str, dict]:
     """Document-order ids. Block ids never depend on the layout, so a re-layout
     never renumbers them and a narration cue written against k07 stays valid."""
@@ -3170,10 +3276,13 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             # the slide's table replaced by a ruling (ADR 026: Reading lesson 2's
             # word table, 2026-10-06): the board is held to the replacement
             st = {**st, **{k: st["replaced"][k] for k in ("header", "rows")}}
-        if len(st["rows"]) != nrows:
-            fail(bd["id"], f"the table has {nrows} rows and the slide's has {len(st['rows'])}; "
+        # a table divided by its rows (overrides.json split) is held to its own rows
+        part = tb.get("split_rows") or {"first": 0, "of": nrows}
+        if len(st["rows"]) != part["of"]:
+            fail(bd["id"], f"the table has {part['of']} rows and the slide's has {len(st['rows'])}; "
                            "a table is shown whole")
             continue
+        st = {**st, "rows": st["rows"][part["first"]:part["first"] + nrows]}
         # compared without slashes: " / " is a line break, and the typed
         # alternatives of a cell leave theirs behind when the typing is removed
         squash = lambda x: re.sub(r"\s+", " ", re.sub(r"[_/]", " ", x)).strip().lower()
@@ -4816,6 +4925,7 @@ def render(lesson: Path, page: int, data: dict) -> int:
     dropped = drop_blocks(out_dir, topics, blocks)
     pictures = add_pictures(lesson, pages, topics, blocks, dropped)
     overrides = apply_overrides(out_dir, blocks)
+    splits = split_topics(out_dir, topics, blocks, dropped)
     if all(paths.is_added(p) for p in pages):
         # An authored section (ADR 018): every block is the agent's, and none
         # is a printed exercise sentence (there is no slide)
@@ -4893,6 +5003,7 @@ def render(lesson: Path, page: int, data: dict) -> int:
     if saved and saved.get("raw_id") == raw.get("id") and all(
             i in blocks for bd in saved["boards"]
             for i in bd["fixed"] + [w for st in bd["states"] for w in st["working"]]):
+        split_plan(saved["boards"], splits, boards)
         place_added(saved["boards"], blocks, added)
         # ADR 021: the board's picture is the kept plan's first note, and only
         # there (a plan saved by an earlier render may hold it elsewhere)
@@ -4971,6 +5082,7 @@ def render(lesson: Path, page: int, data: dict) -> int:
         "overrides": overrides,
         **({"taken_out": {"blocks": dropped, "states": dropped_states}} if dropped else {}),
         "merged_splits": merges,
+        **({"split_by_override": splits} if splits else {}),
         **({"merged_topics": slide_merges} if slide_merges else {}),
         "summary_table_layout": table_layout,
         "corrections": model_out["corrections"],

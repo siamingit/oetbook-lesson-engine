@@ -1187,6 +1187,11 @@ A letter of more than 330 characters beside its paper is set, with its paper, at
 the look, so it fits the site's player at full size.
 A sheet of the paper named `paperlook` for its block (ADR 050 amendment (7)) keeps the look's size however many lines
 it draws: it is never long. It is chosen per block, for a board the owner approved at that size.
+Three fits for a style C board the site's player draws smaller (ADR 050 amendment (10)), each named per block, text
+never smaller: `twocol` keeps contents items in two columns beside the site's wider gap (named on every item of the
+board); `bandfit` makes a change card on a band as tall as its chevrons; `pillwrap` lets a definition pill's term wrap,
+its explanation under it. A narrated table board too tall for the site is divided by its rows with the section's
+screens `overrides.json` `split`, where a state begins, its narration unchanged.
 
 **Accents and boards marked no-zoom** (ADR 049). `block_accents` (`{"<bundle block id>": ["phrase", ...]}`) names the words a layout sets in its accent colour: each phrase is found exactly once in the block's words, never split by a tag, and wrapped in a span `acc`, by a layout that draws it (`skeleton`: the purpose words, in the Purpose colour; green stays reserved for "right", §5); the words never change. `boards_nozoom` (`["<board id>", ...]`) names boards shown whole (`boards_fit` "whole") on which the style C zoom is not written either (§8g, rule 55): the whole table stays in view at every moment on every device, and the spotlight and the marks alone show the line being taught. For a table whose rows are to be seen together, as the ISBAR parts on one letter.
 

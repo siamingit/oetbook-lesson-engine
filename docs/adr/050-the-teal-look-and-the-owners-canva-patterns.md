@@ -473,3 +473,58 @@ alike. The check itself: Writing 4 v3 (teal), every state, 126 moments, 0 failur
 and on this change (site at 40f546b), the readability rules applied; on this change at 40f546b,
 Grammar 5, 7 and 8 v5 pass, their 170, 5 and 81 readability findings now listed as not applied; Grammar 6 v5
 fails on its guard board alone.
+
+## Amendment (10), 2026-11-04: seven style C boards fitted for the site's player, and a narrated table divided by its rows
+
+**Context.** The owner's brief of 2026-11-04 releases the AI marking already written for Grammar 1, 3, 4 and 6 and
+Vocabulary 1, 2 and 3 (issues #172, #174, #175), held because one board in each is drawn smaller by the site's guard
+or spills on the site's player. The owner's decision: these lessons keep style C, not the teal look; only the named
+board changes, every other board stays byte-identical, and text is never made smaller, only rearranged. Measured on
+the site's player (oetacademy-web a69f43b), the causes are three. (a) Contents boards (Grammar 1 and 4, Vocabulary 1
+and 3): the site sets a gap of 2% of the frame between contents items, wider than the engine player's, so two items no
+longer sit side by side; the list falls to one column and runs onto the control bar (0.84 to 0.96). The empty picture
+slot beside Vocabulary 1's and 3's lists, and on Vocabulary 2's contents board, is a picture the site does not show
+there. (b) Grammar 3's change card k03 on its band: the band's chevrons are 12% of the frame tall, taller than the card,
+and stand 1 px outside it. (c) Vocabulary 2's definition pill "Verbs": its term may not shrink (`flex:none`), so its
+words run out of the pill. Grammar 6's board pages-07-08_t2 is a six-row table with its working, drawn at 0.81: it
+cannot be read whole at full size, and it is already narrated and voiced.
+
+**Options considered.**
+
+- The teal look's fits for these boards. Refused by the owner: the lessons keep style C.
+- Smaller text, or a tighter fit. Refused by the owner's rule: rearrange, never shrink.
+- A rule for every style C board. It would move boards the owner approved; the brief prefers per-lesson changes.
+- For Grammar 6, re-narrate the section over two boards. The brief keeps narration and audio unchanged.
+
+**Decision** (the owner's brief, 2026-11-04). Three layouts for style C, each named per block in the lesson's
+`sections.json` `block_layouts` and adding only its class (`lay-<name>`), their rules appended only to a lesson that
+uses them (`layout_css`), so no other lesson's stylesheet changes:
+
+- `twocol` (a contents item): the item takes half the row less half the site's gap, so the list stays in two columns
+  on the site's player; it is named on every item of the board.
+- `bandfit` (a change card on a band, `chg band`): the card is as tall as its chevrons, so they stay inside it; its
+  words and highlights are as before.
+- `pillwrap` (a definition pill, `defpill`): the term may wrap, and the explanation goes under it when the two do not
+  fit side by side.
+
+`bandfit` and `pillwrap` refuse a block drawn otherwise. A picture slot left empty on the site is removed by the
+lesson's `pictures.json` (`removed`), as any picture is.
+
+A narrated table board divided by its rows: the section's screens `overrides.json` takes
+`split: [{"topic", "at_thought", "rows", "table", "id", "titles", "note"}]`. The section's last topic is divided before
+the thought named; the thoughts before it keep the topic and the table's first `rows` rows; the thoughts from it on are
+a new topic with the other rows as a table of their own under the new block id. Both parts are declared splits
+(`Split: ...`, design system §2). In the second part a thought's "Row N:" and the table's typed cells count from its own
+first row; `split_rows` on each table names where it starts in the slide's table, and the slide-table audit holds each
+part to its own rows. A kept (narrated) plan is divided at the state that opens with that thought (refused where a
+thought does not open a state: a board changes only where a state begins); the moved states are numbered again on the
+new board, which records their old ids in `split_from`. `write_narration.py` renames the narration reply's states by
+`split_from` and points their cues on the divided table at the new one before anything else is applied, so the
+section's narration overrides name the states as the screens now do. No word, clip or timing changes: a board changes
+where a state, and so a sentence, begins. Refused: a topic that is not the section's last, a first thought, a table
+with a map, a document or verdicts, a row count outside the table, an id already in the section, a title without
+"Split:", the divided table in the second part, and a thought teaching a row of the other part.
+
+**Consequences.** Each layout reaches only a block named for it. Grammar 6's section gets a board more, its second
+part starting where the narration reaches row 4; every other section of every lesson is unchanged. Proven by the render
+comparison (runbook, "Changing shared code"): PROOF.
