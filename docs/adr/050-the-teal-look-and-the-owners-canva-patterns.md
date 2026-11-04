@@ -527,4 +527,10 @@ with a map, a document or verdicts, a row count outside the table, an id already
 
 **Consequences.** Each layout reaches only a block named for it. Grammar 6's section gets a board more, its second
 part starting where the narration reaches row 4; every other section of every lesson is unchanged. Proven by the render
-comparison (runbook, "Changing shared code"): PROOF.
+comparison (runbook, "Changing shared code"): `render_compare.py` snapshots `before-fit7` and `before-fit7b` on main
+at 018833c and `after-fit7` and `after-fit7b` on this change, 2026-11-04: **28 of 28 built lessons identical**, 879
+data files byte for byte and 174,814 moments at the phone and laptop frames drawn identically, with no board timing
+difference. Outside the proof, as in amendment (9): Writing 4, whose re-render stops on its screens audit on main and
+on this change alike. Two snapshots raised the alarm for files another session wrote while they ran (Reading 3's
+check reports and Reading 5's site-player screenshots, outputs of checks, not inputs of a render); both lessons
+compared identical. The new code reaches a lesson only when its own data names it, after this change.
