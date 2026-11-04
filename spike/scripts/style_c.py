@@ -629,6 +629,12 @@ LAYOUTS = {
     # ADR 050 amendment (7): a sheet of the paper (two columns) kept at the look's size, never long (`data-long`)
     # whatever its lines, chosen for a block whose board the owner approved at that size (Writing 1's paper head)
     "paperlook": (("table",), False, (2,)),
+    # ADR 050 amendment (10): three fits for a style C board that the site's player draws smaller, each chosen per
+    # block. A contents item set in two columns beside the site's wider gap (`twocol`); a change card on a band as tall
+    # as its chevrons (`bandfit`); a definition pill whose term wraps, its explanation under it (`pillwrap`)
+    "twocol": (("contents_item",), False, None),
+    "bandfit": (("comparison",), False, None),
+    "pillwrap": (("term_box",), False, None),
 }
 # The teal look's layouts (ADR 050), their rules appended only where used
 ADR050_LAYOUTS = ("wrongright", "coded", "opener", "timeline", "columns", "parts", "badges", "ruled",
@@ -1795,6 +1801,20 @@ LAYOUT_CSS["crit_teal"] = r"""
 .frame .term.crit::before{left:1.8cqh;width:8.4cqh;height:8.4cqh;margin-top:-4.2cqh;line-height:8.4cqh;font-size:3.2cqh}
 .frame .term.crit[data-mono-len="3"]::before{font-size:2.5cqh}
 """
+LAYOUT_CSS["twocol"] = r"""
+/* contents items in two columns on the site's player too (ADR 050 amendment (10)): the site's gap between them is
+   2% of the frame, wider than the board's own, so each item leaves half of it */
+.frame #cam > .blk.citem.lay-twocol{flex:0 0 calc(50% - 1.1cqw)}
+"""
+LAYOUT_CSS["bandfit"] = r"""
+/* a change card on a band as tall as its chevrons (ADR 050 amendment (10)), so they stay inside it */
+.frame .chg.band.lay-bandfit{min-height:12cqh;box-sizing:border-box}
+"""
+LAYOUT_CSS["pillwrap"] = r"""
+/* a definition pill whose term wraps, its explanation under it (ADR 050 amendment (10)) */
+.frame .defpill.lay-pillwrap{flex-wrap:wrap;row-gap:1.2cqh}
+.frame .defpill.lay-pillwrap .defterm{flex:0 1 auto}
+"""
 
 ROOT_CLASS = re.compile(r'^<div class="([^"]*)"')
 ROOT_TAG = re.compile(r"^<div[^>]*>")
@@ -1856,6 +1876,10 @@ def layout_css(blocks: dict, look: str | None = None) -> str:
         used.add("paper_long")
     if any("paper-fit" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split()) for b in blocks.values()):
         used.add("paper_fit")
+    for k in ("twocol", "bandfit", "pillwrap"):     # ADR 050 amendment (10)
+        if any("lay-" + k in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split())
+               for b in blocks.values()):
+            used.add(k)
     return "".join(LAYOUT_CSS[k] for k in LAYOUT_CSS if k in used)
 
 
@@ -1951,6 +1975,11 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
             raise SystemExit("REFUSED: sections.json block_layouts: " + why)
         if layout in ("paperlong", "paperfit", "paperlook") and look != "teal":
             raise SystemExit(f"REFUSED: sections.json block_layouts: {b.get('id')}: {layout!r} is the teal look's")
+        root = set((ROOT_CLASS.match(html) or [None, ""])[1].split())
+        for lay, need in (("bandfit", {"chg", "band"}), ("pillwrap", {"defpill"})):
+            if layout == lay and not need <= root:
+                raise SystemExit(f"REFUSED: sections.json block_layouts: {b.get('id')}: {lay!r} is for a block "
+                                 f"drawn as {' '.join(sorted(need))}")
         if t == "table":
             html = _table_html(b, html, "paper" if layout in ("paperlong", "paperfit", "paperlook") else layout)
             if layout == "paperlong":

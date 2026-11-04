@@ -2283,6 +2283,35 @@ def apply_cue_overrides(out_dir: Path, boards: list[dict]) -> list[dict]:
     return out
 
 
+def follow_split(data: dict, model_out: dict) -> list[dict]:
+    """A board divided after it was narrated (the screens' overrides.json
+    `split`, ADR 050 amendment (10)): the reply's states that moved to the new
+    board take their new ids (screens.json `split_from`), and their cues on the
+    divided table name the new table, before anything else is applied, so the
+    section's overrides name the states as the screens now do. No word changes."""
+    out = []
+    for bd in data["screens"]["boards"]:
+        sf = bd.get("split_from")
+        if not sf:
+            continue
+        new_of = {old: new for new, old in sf["states"].items()}
+        for mb in model_out["boards"]:
+            for ms in mb["states"]:
+                if ms["state"] not in new_of:
+                    continue
+                ms["state"] = new_of[ms["state"]]
+                for u in ms["utterances"]:
+                    for c in u["cues"]:
+                        for key in ("block", "to_block"):
+                            if c.get(key) == sf["table"]:
+                                c[key] = bd["table"]
+        out.append({"severity": "info", "where": bd["id"],
+                    "what": f"states {', '.join(sf['states'].values())} of board {sf['board']} "
+                            f"moved here (overrides.json split); cues on {sf['table']} name "
+                            f"{bd['table']}"})
+    return out
+
+
 def apply_utterance_overrides(out_dir: Path, model_out: dict) -> list[dict]:
     """An utterance's words set from the section's overrides.json (2026-09-27):
     {"utterances": {"<utterance id>": {"expect": the words it has now,
@@ -2344,7 +2373,8 @@ def render(lesson: Path, page: int, data: dict) -> int:
     raw = json.loads((out_dir / "raw_response.json").read_text(encoding="utf-8"))
     model_out = json.loads([b["text"] for b in raw["content"] if b["type"] == "text"][-1])
 
-    worded = apply_utterance_overrides(out_dir, model_out)
+    moved = follow_split(data, model_out)
+    worded = moved + apply_utterance_overrides(out_dir, model_out)
     boards, structural = assemble(data, model_out)
     if all(paths.is_added(p) for p in pages):
         # an authored section (ADR 018): every utterance is the agent's

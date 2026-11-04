@@ -737,6 +737,31 @@ class TealLook(unittest.TestCase):
         eight = dict(list(items.items())[:8])
         self.assertNotIn(style_c.LAYOUT_CSS["contents_nine"], style_c.layout_css(eight, "teal"))
 
+    def test_style_c_fits_for_the_sites_player(self):
+        """ADR 050 amendment (10): `twocol`, `bandfit` and `pillwrap` add only their class, their rules appended only
+        where used; each is for its own kind of block, and a lesson that names none is unchanged."""
+        cases = (("twocol", {"id": "k", "type": "contents_item", "text": "Articles"},
+                  '<div class="blk citem" data-id="k"><span class="cnum" data-n="1"></span><div><div class="ct">'
+                  'Articles</div></div></div>'),
+                 ("bandfit", {"id": "k", "type": "comparison", "band": "Nominalisation"},
+                  '<div class="blk role-note flow-card chg band" data-id="k" data-process="Nominalisation">'
+                  '<span class="chg-from">Analyse</span><span class="chg-to">Analysis</span></div>'),
+                 ("pillwrap", {"id": "k", "type": "term_box"},
+                  '<div class="blk defpill" data-id="k"><span class="defterm">Monitor, assessed</span>'
+                  '<span>Choose the form.</span></div>'))
+        for name, b, html in cases:
+            got = style_c.layout_html(b, html, None, name)
+            self.assertEqual(got, style_c._add_root(html, "lay-" + name))
+            self.assertEqual(style_c.layout_css({"x": {"html": got}}), style_c.LAYOUT_CSS[name])
+            self.assertEqual(style_c.layout_css({"x": {"html": html}}), "")
+        with self.assertRaises(SystemExit):     # a card with no band
+            style_c.layout_html({"id": "k", "type": "comparison"}, '<div class="blk chg" data-id="k">a</div>',
+                                None, "bandfit")
+        with self.assertRaises(SystemExit):     # a term drawn as a card, not a pill
+            style_c.layout_html({"id": "k", "type": "term_box"}, '<div class="blk term" data-id="k">a</div>',
+                                None, "pillwrap")
+        self.assertIsNotNone(style_c.check_layout("k", {"type": "table"}, "twocol"))
+
     def test_a_verdict_colours_its_pill_or_tile(self):
         """ADR 050 amendment (5): a choice pill or a coded tile labelled Keep, Keep briefly or Leave out, or a pill
         whose words are one, takes the verdict's colour (teal 4, amber 0, coral 3); any other keeps its colour in turn."""
