@@ -2,7 +2,7 @@
 
 What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.1; decision: `docs/adr/038-public-course-index.md`.
 
-29 lessons, 273 sections, 638 board topics, 4563 teaching points, 284 rules and 66 warnings, 488 terms, 180 OET facts, 74 methods, 523 vocabulary items (189 from the word bank), 62 practice questions and note forms, 131 links to other lessons, 403 topics in the topic index.
+29 lessons, 273 sections, 639 board topics, 4563 teaching points, 284 rules and 66 warnings, 488 terms, 180 OET facts, 74 methods, 523 vocabulary items (189 from the word bank), 62 practice questions and note forms, 131 links to other lessons, 403 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -18,12 +18,12 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 129:04 | 14 | 2026-10-31 10:33 (Siavash) |
+| 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 129:04 | 14 | 2026-11-04 12:53 (siavash) |
 | 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 62:40 | 5 | 2026-11-03 18:04 (siavash) |
-| 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 59:28 | 7 | 2026-10-31 12:13 (Siavash) |
-| 4 | Grammar for OET: Articles | `grammar-04-articles` | 67:59 | 9 | 2026-10-31 13:00 (Siavash) |
+| 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 59:28 | 7 | 2026-11-04 13:33 (siavash) |
+| 4 | Grammar for OET: Articles | `grammar-04-articles` | 67:59 | 9 | 2026-11-04 13:15 (siavash) |
 | 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 66:38 | 8 | 2026-11-03 15:41 (siavash) |
-| 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 59:04 | 6 | 2026-10-31 13:24 (Siavash) |
+| 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 59:04 | 6 | 2026-11-04 13:18 (siavash) |
 | 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 99:20 | 18 | 2026-11-03 15:41 (siavash) |
 | 8 | Grammar for OET: Paraphrasing | `grammar-08-paraphrasing` | 63:39 | 7 | 2026-11-03 15:41 (siavash) |
 
@@ -32,7 +32,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 ## 1. Grammar for OET: Verb Tenses
 
 - Lesson ID and folder: `grammar-01-verb-tenses` (folder `grammar-01-verb-tenses`); course grammar, lesson 1; length 129:04; bundle format 1.23
-- Status: approved by Siavash, 2026-10-31 10:33
+- Status: approved by siavash, 2026-11-04 12:53
 - Description: Learn the verb tenses, when to use each one, and how to use them in your OET writing.
 - Original session: folder `source`: `source/video.mp4`, 125:10 long, partial hash `8fd03776aa09bf2b`; deck `source/slides.pdf`, 19 pages
   - The Grammar 1 (Verb Tenses) session, in its newer recording, made after the deck was corrected; an older recording exists and is not the source (docs/01-METHODOLOGY.md §1, §8).
@@ -749,7 +749,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Compound or complex?" at 26:09, about section `page-15`
 - referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Gap fill" at 34:37, about section `page-9`
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Reduced relative clauses" at 21:15, about section `page-10`
-- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 41:50, about section `page-16`
+- referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 41:51, about section `page-16`
 - referred to by Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`), "Participle clauses" at 46:50
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 11:57, about section `page-15`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 5:08, about section `page-15`
@@ -763,7 +763,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by OET Writing: Overview (`writing-01-overview`), "Steps towards successful writing" at 3:22
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Conciseness and Clarity" at 20:36, about section `page-11`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:15
-- referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Time and tense" at 19:24, about section `page-11`
+- referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Time and tense" at 19:26, about section `page-11`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "Three errors to avoid" at 9:41, about section `page-14`
 - continues in Grammar for OET: Verb Use (`grammar-02-verb-use`): Verb Use practises choosing the tense, and the active or the passive, taught here.
 
@@ -1094,7 +1094,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 3. Grammar for OET: Nominalisation
 
 - Lesson ID and folder: `grammar-03-nominalization` (folder `grammar-03-nominalization`); course grammar, lesson 3; length 59:28; bundle format 1.23
-- Status: approved by Siavash, 2026-10-31 12:13
+- Status: approved by siavash, 2026-11-04 13:33
 - Description: Learn how to turn verbs and adjectives into nouns to write formal sentences from case notes, and how to turn nouns back into verbs.
 - Original session: folder `source`: `source/video.mp4`, 73:11 long, partial hash `4f8496a9f96ff0dc`; deck `source/slides.pdf`, 12 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -1390,7 +1390,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 4. Grammar for OET: Articles
 
 - Lesson ID and folder: `grammar-04-articles` (folder `grammar-04-articles`); course grammar, lesson 4; length 67:59; bundle format 1.23
-- Status: approved by Siavash, 2026-10-31 13:00
+- Status: approved by siavash, 2026-11-04 13:15
 - Description: Learn when to use a, an, the or no article, and how to use articles correctly in your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 54:32 long, partial hash `39acd9b8365dc034`; deck `source/slides.pdf`, 16 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -2025,7 +2025,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 6. Grammar for OET: Relative Clauses and Participle Clauses
 
 - Lesson ID and folder: `grammar-06-clause` (folder `grammar-06-clause`); course grammar, lesson 6; length 59:04; bundle format 1.23
-- Status: approved by Siavash, 2026-10-31 13:24
+- Status: approved by siavash, 2026-11-04 13:18
 - Description: Learn to add information with relative clauses, make them shorter, and join case notes with participle clauses in your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 79:14 long, partial hash `6ef7636e4afb83cb`; deck `source/slides.pdf`, 12 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -2110,7 +2110,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 19:25 Say which words are removed
   - 19:46 Why we reduce a relative clause
   - 19:57 Show one reduction as a change card
-- 20:28 **Case notes table: standard and reduced forms**
+- 20:28 **Case notes, rows 1 to 3**
   - 20:28 how the three columns work
   - 20:58 choosing the verb tense
   - 21:30 the extra information becomes a relative clause
@@ -2126,64 +2126,65 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 25:03 the pronoun repeats the subject
   - 25:12 the reduction
   - 25:40 the rule so far
+- 26:40 **Case notes, rows 4 to 6**
   - 26:39 framing the radiology rows
-  - 27:02 the orderly
-  - 27:39 the phrasal verb
+  - 27:03 the orderly
+  - 27:40 the phrasal verb
   - 27:50 gloss a hard word
   - 28:12 active verb and passive verb
   - 28:43 name the past participle
-  - 28:59 the passive rule
+  - 29:00 the passive rule
   - 29:17 when you cannot reduce
-  - 29:41 gloss a hard word
+  - 29:42 gloss a hard word
   - 30:12 a time clause, not a relative clause
   - 30:21 the repeated subject
-  - 30:30 passive verb again
-  - 31:02 the subject 'you' can go
-  - 31:08 X-ray as a verb
-  - 31:28 meaning of the sentence
+  - 30:31 passive verb again
+  - 31:03 the subject 'you' can go
+  - 31:09 X-ray as a verb
+  - 31:29 meaning of the sentence
 
 *Rules on the boards*
 
 - 25:40 In a relative clause, remove the relative pronoun. If the verb is active, use its -ing form, but not for one finished action in the past.
-- 28:59 With a passive verb, remove the relative pronoun and 'was'. Keep the past participle.
+- 29:00 With a passive verb, remove the relative pronoun and 'was'. Keep the past participle.
 
 *Warnings (common mistakes)*
 
 - 29:17 Use the -ing form only when the relative pronoun is the subject. In 'the tablets which she takes', 'which' is the object: you can only leave it out: 'the tablets she takes'.
 
-*Terms*: Reduced relative clause (New term, 19:08); Relative pronoun (Form, 19:32); radiates (Word, 21:59); The -ing form (present participle) (Form, 22:31); called away (Phrase, 27:39); Past participle (Form, 28:43)
+*Terms*: Reduced relative clause (New term, 19:08); Relative pronoun (Form, 19:32); radiates (Word, 21:59); The -ing form (present participle) (Form, 22:31); called away (Phrase, 27:40); Past participle (Form, 28:43)
 
 #### 33:19 Participle clauses (`pages-09-10`, deck)
 
 - 33:19 **Participle clauses: forms and rules**
   - 33:19 the three participle forms
-  - 33:21 Define the grammar term
+  - 33:22 Define the grammar term
   - 34:02 Why participle clauses are used
-  - 34:17 Show the long form and the reduced form side by side
+  - 34:18 Show the long form and the reduced form side by side
   - 34:52 What a participle clause can express
-  - 35:11 Link each meaning to a familiar connector
+  - 35:12 Link each meaning to a familiar connector
   - 35:38 State the same-subject rule
   - 35:51 Diagram 1: one shared subject
   - 36:29 Diagram 2: different subjects
   - 37:18 Name the fault
   - 37:33 The correct version of the wrong sentence
-  - 37:55 Participle clauses after conjunctions and prepositions
-  - 38:12 An example of the perfect participle
-- 39:35 **Case notes, standard sentence, participle clause**
-  - 39:35 what the three answer columns do
-  - 40:12 turn the two dates into a time expression
+  - 37:56 Participle clauses after conjunctions and prepositions
+  - 38:13 An example of the perfect participle
+- 39:36 **Case notes, standard sentence, participle clause**
+  - 39:36 what the three answer columns do
+  - 40:13 turn the two dates into a time expression
   - 40:27 the function
   - 40:40 check the subjects before reducing
   - 40:56 name the form used
-  - 41:18 the same case note written a second way
-  - 42:06 the form that is wrong here
+  - 41:19 the same case note written a second way
+  - 42:07 the form that is wrong here
   - 42:27 the rule for choosing the form
   - 43:08 reading the case note
   - 43:30 what follows 'due to'
-  - 44:03 what is deleted
+  - 44:04 what is deleted
   - 44:29 the version that breaks the same-subject rule
   - 45:03 hard words in the note and the sentence
-  - 45:53 find the real subject
+  - 45:54 find the real subject
   - 46:11 the second subject matches
   - 46:24 active, so the -ing form
   - 46:45 active and passive are needed in every row
@@ -2194,9 +2195,9 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 49:00 words in the case note
   - 49:41 words in the standard sentence
   - 49:58 the function
-  - 50:11 reducing the time clause
+  - 50:12 reducing the time clause
   - 50:42 the version that breaks the same-subject rule
-  - 52:20 how much to reduce
+  - 52:21 how much to reduce
 
 *Rules on the boards*
 
@@ -2204,11 +2205,11 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 *Wrong sentences corrected*
 
-- 42:06 Concerning about lower back pain
+- 42:07 Concerning about lower back pain
 - 44:29 Due to being a recently qualified teacher, her professional voice use may have contributed to the dysphonia.
 - 50:42 Being keen to return to work, I suggested she practise affirmations and meditations when feeling anxious.
 
-*Terms*: Present participle (Form, 33:19); Past participle (Form, 33:19); Perfect participle (Form, 33:19); Participle clause (Grammar term, 33:21); Dangling participle (Grammar term, 37:18); Be + -ed adjective (Grammar term, 41:38)
+*Terms*: Present participle (Form, 33:19); Past participle (Form, 33:19); Perfect participle (Form, 33:19); Participle clause (Grammar term, 33:22); Dangling participle (Grammar term, 37:18); Be + -ed adjective (Grammar term, 41:38)
 
 #### 52:37 Expressing reason with 'given' (`page-11`, deck)
 
@@ -2218,18 +2219,18 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 53:16 correct what 'given' expresses
   - 53:39 where 'given' is used in the letter
   - 54:02 what the two notes say
-  - 54:21 the form 'given that'
-  - 54:32 a second ending for the same sentence
+  - 54:22 the form 'given that'
+  - 54:33 a second ending for the same sentence
   - 54:58 the noun phrase version
-  - 55:24 the rule behind the two versions
+  - 55:25 the rule behind the two versions
   - 55:45 see that the two notes are a contrast
-  - 55:54 reject 'given' here
-  - 56:10 the word for a contrast
+  - 55:55 reject 'given' here
+  - 56:11 the word for a contrast
   - 56:46 read the case notes
   - 57:10 condense the detail
   - 57:25 what the sentence does
   - 57:36 close with the use of 'given'
-  - 57:46 why the word is worth learning
+  - 57:47 why the word is worth learning
 
 *Rules on the boards*
 
@@ -2238,9 +2239,9 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 *Wrong sentences corrected*
 
-- 55:54 Given his age, Mr X is in excellent physical condition.
+- 55:55 Given his age, Mr X is in excellent physical condition.
 
-*Terms*: given (New word, 52:54); given that (Form, 54:21); despite (Word for a contrast, 56:10)
+*Terms*: given (New word, 52:55); given that (Form, 54:22); despite (Word for a contrast, 56:11)
 
 ### Vocabulary
 
@@ -2250,24 +2251,24 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 9:10 cleansed
 - 17:16 Non-essential
 - 21:59 radiates
-- 27:02 orderly
-- 27:39 called away
+- 27:03 orderly
+- 27:40 called away
 - 27:50 scheduled
-- 29:41 postponement
+- 29:42 postponement
 - 45:03 friction
-- 45:26 detrimental
+- 45:27 detrimental
 - 49:00 coping strategies
-- 49:14 affirmations
+- 49:15 affirmations
 - 49:41 keen
-- 52:54 given
-- 54:39 capacity
+- 52:55 given
+- 54:40 capacity
 - 56:46 clumsy
 
 ### Links to other lessons
 
 - 0:10 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`) (in `page-3_t1.s1.u3`)
 - 21:15 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect continuous tenses" (in `pages-07-08_t2.s2.u4`)
-- 41:50 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `pages-09-10_t2.s6.u5`)
+- 41:51 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `pages-09-10_t2.s6.u5`)
 - 43:42 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Due to, despite, as well as" (in `pages-09-10_t2.s10.u2`)
 - 46:50 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `pages-09-10_t2.s17.u2`)
 - 47:32 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "What is a complex sentence?" (in `pages-09-10_t2.s19.u3`)
@@ -3142,16 +3143,16 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | Vocabulary for OET: Word Forms and Sentence Structure | `vocabulary-01-word-forms` | 93:45 | 8 | 2026-10-31 19:49 (Siavash) |
-| 2 | Vocabulary for OET: Verb + Noun Collocations | `vocabulary-02-collocations` | 81:17 | 13 | 2026-10-31 20:01 (Siavash) |
-| 3 | Vocabulary for OET: Adjective + Noun Collocations | `vocabulary-03-collocations-2` | 85:53 | 10 | 2026-10-31 20:19 (Siavash) |
+| 1 | Vocabulary for OET: Word Forms and Sentence Structure | `vocabulary-01-word-forms` | 93:45 | 8 | 2026-11-04 13:16 (siavash) |
+| 2 | Vocabulary for OET: Verb + Noun Collocations | `vocabulary-02-collocations` | 81:17 | 13 | 2026-11-04 13:16 (siavash) |
+| 3 | Vocabulary for OET: Adjective + Noun Collocations | `vocabulary-03-collocations-2` | 85:53 | 10 | 2026-11-04 13:17 (siavash) |
 
 <a id="vocabulary-01-word-forms"></a>
 
 ## 1. Vocabulary for OET: Word Forms and Sentence Structure
 
 - Lesson ID and folder: `vocabulary-01-word-forms` (folder `vocabulary-01-word-forms`); course vocabulary, lesson 1; length 93:45; bundle format 1.23
-- Status: approved by Siavash, 2026-10-31 19:49
+- Status: approved by siavash, 2026-11-04 13:16
 - Description: Learn to choose the right form of a word, and to join short sentences into clear ones, in your OET writing.
 - Original session: folder `source`: `source/video.mp4`, 103:52 long, partial hash `f58701e6ddc4ac40`; deck `source/slides.pdf`, 11 pages
   - Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).
@@ -3163,7 +3164,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 0:00 **Title board**
   - 0:00 the lesson title, then what the lesson is about
 - 1:19 **Contents board**
-  - 1:19 each category, revealed as it is named
+  - 1:23 each category, revealed as it is named
 
 #### 2:26 Choosing the right word form (`page-4`, deck)
 
@@ -3744,7 +3745,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 2. Vocabulary for OET: Verb + Noun Collocations
 
 - Lesson ID and folder: `vocabulary-02-collocations` (folder `vocabulary-02-collocations`); course vocabulary, lesson 2; length 81:17; bundle format 1.23
-- Status: approved by Siavash, 2026-10-31 20:01
+- Status: approved by siavash, 2026-11-04 13:16
 - Description: Learn verbs and nouns that go together, for your OET letters and for talking to patients.
 - Original session: folder `source`: `source/video.mp4`, 47:39 long, partial hash `f79f384eddc3c859`; deck `source/slides.pdf`, 16 pages
   - Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).
@@ -3757,7 +3758,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 0:00 **Title board**
   - 0:00 the lesson title, then what the lesson is about
 - 0:47 **Contents board**
-  - 0:47 each category, revealed as it is named
+  - 0:48 each category, revealed as it is named
 
 #### 1:31 What is a verb + noun collocation? (`page-4`, deck)
 
@@ -4207,7 +4208,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 3. Vocabulary for OET: Adjective + Noun Collocations
 
 - Lesson ID and folder: `vocabulary-03-collocations-2` (folder `vocabulary-03-collocations-2`); course vocabulary, lesson 3; length 85:53; bundle format 1.23
-- Status: approved by Siavash, 2026-10-31 20:19
+- Status: approved by siavash, 2026-11-04 13:17
 - Description: Learn adjectives and nouns that go together, and clear ways to describe pain, for your OET letters and for talking to patients.
 - Original session: folder `source`: `source/video.mp4`, 45:34 long, partial hash `b1576043dc5fe7aa`; deck `source/slides.pdf`, 15 pages
   - Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).
@@ -4219,7 +4220,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 0:00 **Title board**
   - 0:00 the lesson title, then what the lesson is about
 - 1:09 **Contents board**
-  - 1:09 each category, revealed as it is named
+  - 1:11 each category, revealed as it is named
 
 #### 1:59 What is an adjective + noun collocation? (`page-5`, deck)
 
