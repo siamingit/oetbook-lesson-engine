@@ -88,6 +88,10 @@ PAUSE_MAX_S = 10.0
 READING_TIME_MAX_S = 95.0      # the longest reading time of a Listening set (Part C, 90.3 s) and a margin
 PLAY_CUE_WORDS = 12            # the spoken cue before a recording is short
 PROVENANCE = ["source-derived", "adapted", "authored", "corrected", "maintainer"]
+# A Speaking lesson's patient lines (ADR 053): who says the line, and the feeling the role card
+# gives the patient (voices.SPEAKERS, voices.EMOTIONS); a line with neither is the teacher's.
+SPEAKERS = ["patient_f", "patient_m"]
+FEELINGS = ["worried", "upset"]
 
 # Free proxies. Real timing comes from TTS word timings later (methodology §6);
 # the level rule is judged by QA and a reviewer. These catch the worst cases
@@ -1140,15 +1144,22 @@ def build_messages(data: dict, rewrite: dict | None = None, chunk: dict | None =
 
 def schema_for(lesson: Path | None) -> dict:
     """The reply's schema: a Listening lesson's cues may also `play` a span of
-    its practice set's audio (ADR 029); every other lesson's is SCHEMA, unchanged."""
+    its practice set's audio (ADR 029); a Speaking lesson's utterance may be a
+    patient's (`speaker`, `emotion`, ADR 053); every other lesson's is SCHEMA, unchanged."""
     import copy
     import lesson_type
-    if lesson is None or not lesson_type.has(lesson, "exam_audio"):
+    exam = lesson is not None and lesson_type.has(lesson, "exam_audio")
+    speakers = lesson is not None and lesson_type.has(lesson, "speakers")
+    if not exam and not speakers:
         return SCHEMA
     s = copy.deepcopy(SCHEMA)
-    cue = s["properties"]["boards"]["items"]["properties"]["states"]["items"]["properties"][
-        "utterances"]["items"]["properties"]["cues"]["items"]
-    cue["properties"]["type"]["enum"] = CUE_TYPES + [PLAY]
+    utt = s["properties"]["boards"]["items"]["properties"]["states"]["items"]["properties"][
+        "utterances"]["items"]
+    if exam:
+        utt["properties"]["cues"]["items"]["properties"]["type"]["enum"] = CUE_TYPES + [PLAY]
+    if speakers:
+        utt["properties"]["speaker"] = {"enum": list(SPEAKERS)}
+        utt["properties"]["emotion"] = {"enum": list(FEELINGS)}
     return s
 
 
@@ -1417,7 +1428,10 @@ def assemble(data: dict, model_out: dict) -> tuple[list[dict], list[dict]]:
                                  "provenance": prov,
                                  "note": note,
                                  "refs": [{"lesson": r["lesson"], "section": r.get("section")}
-                                          for r in u.get("refs") or []]})
+                                          for r in u.get("refs") or []],
+                                 # a patient's line (ADR 053), only where there is one
+                                 **({"speaker": u["speaker"]} if u.get("speaker") else {}),
+                                 **({"emotion": u["emotion"]} if u.get("emotion") else {})})
             last = n == len(bd["states"]) - 1
             states.append({"id": s["id"], "working": list(s["working"]),
                            "utterances": out_utts,
@@ -2367,6 +2381,32 @@ def apply_utterance_overrides(out_dir: Path, model_out: dict) -> list[dict]:
     return out
 
 
+def speaker_findings(lesson: Path, boards: list[dict]) -> list[dict]:
+    """A patient's line (ADR 053) only in a lesson whose type has speakers, with a known
+    speaker, and a feeling only on a patient's line."""
+    import lesson_type
+    allowed = lesson_type.has(lesson, "speakers")
+    out = []
+    for bd in boards:
+        for s in bd["states"]:
+            for u in s["utterances"]:
+                who, feel = u.get("speaker"), u.get("emotion")
+                if who is None and feel is None:
+                    continue
+                where = u.get("id") or bd["id"]
+                if not allowed:
+                    out.append({"severity": "fail", "where": where, "what":
+                                "a speaker or emotion on a line of a lesson whose type has no "
+                                "speakers (ADR 053)"})
+                elif who not in SPEAKERS:
+                    out.append({"severity": "fail", "where": where, "what":
+                                f"speaker {who!r}: one of {', '.join(SPEAKERS)} (ADR 053)"})
+                elif feel is not None and feel not in FEELINGS:
+                    out.append({"severity": "fail", "where": where, "what":
+                                f"emotion {feel!r}: one of {', '.join(FEELINGS)} (ADR 053)"})
+    return out
+
+
 def render(lesson: Path, page: int, data: dict) -> int:
     pages = data.get("pages") or [page]
     out_dir = paths.narration_dir_for(lesson, pages)
@@ -2383,6 +2423,7 @@ def render(lesson: Path, page: int, data: dict) -> int:
                 for u in s["utterances"]:
                     u["provenance"] = "authored"
     structural += worded + apply_cue_overrides(out_dir, boards)
+    structural += speaker_findings(lesson, boards)
     findings = structural + audit(boards, data)
     import length_budget                       # ADR 023: warnings only, never a failure
     findings += length_budget.findings(

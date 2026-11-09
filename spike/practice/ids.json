@@ -78,6 +78,10 @@
   "writing-02-assessment-criteria": [
    902000,
    902999
+  ],
+  "speaking-01-the-test": [
+   970000,
+   970999
   ]
  },
  "ids": [
@@ -3197,6 +3201,104 @@
    "point": "polite-request",
    "slot": "item",
    "issued": "2026-11-02"
+  },
+  {
+   "id": "oa-speaking-970000",
+   "lesson": "speaking-01-the-test",
+   "point": "ask-again",
+   "slot": "line",
+   "issued": "2026-11-09"
+  },
+  {
+   "id": "oa-speaking-970001",
+   "lesson": "speaking-01-the-test",
+   "point": "slow-sentence",
+   "slot": "line",
+   "issued": "2026-11-09"
+  },
+  {
+   "id": "oa-speaking-970002",
+   "lesson": "speaking-01-the-test",
+   "point": "hypertension",
+   "slot": "answer",
+   "issued": "2026-11-09"
+  },
+  {
+   "id": "oa-speaking-970003",
+   "lesson": "speaking-01-the-test",
+   "point": "five-lines",
+   "slot": "line-a",
+   "issued": "2026-11-09"
+  },
+  {
+   "id": "oa-speaking-970004",
+   "lesson": "speaking-01-the-test",
+   "point": "five-lines",
+   "slot": "line-b",
+   "issued": "2026-11-09"
+  },
+  {
+   "id": "oa-speaking-970005",
+   "lesson": "speaking-01-the-test",
+   "point": "five-lines",
+   "slot": "line-d",
+   "issued": "2026-11-09"
+  },
+  {
+   "id": "oa-speaking-970006",
+   "lesson": "speaking-01-the-test",
+   "point": "cough",
+   "slot": "answer",
+   "issued": "2026-11-09"
+  },
+  {
+   "id": "oa-speaking-970007",
+   "lesson": "speaking-01-the-test",
+   "point": "closing-question",
+   "slot": "line",
+   "issued": "2026-11-09"
+  },
+  {
+   "id": "oa-speaking-970008",
+   "lesson": "speaking-01-the-test",
+   "point": "headaches",
+   "slot": "answer",
+   "issued": "2026-11-09"
+  },
+  {
+   "id": "oa-speaking-970009",
+   "lesson": "speaking-01-the-test",
+   "point": "rp-start",
+   "slot": "answer",
+   "issued": "2026-11-09"
+  },
+  {
+   "id": "oa-speaking-970010",
+   "lesson": "speaking-01-the-test",
+   "point": "rp-help",
+   "slot": "answer",
+   "issued": "2026-11-09"
+  },
+  {
+   "id": "oa-speaking-970011",
+   "lesson": "speaking-01-the-test",
+   "point": "rp-pain",
+   "slot": "answer",
+   "issued": "2026-11-09"
+  },
+  {
+   "id": "oa-speaking-970012",
+   "lesson": "speaking-01-the-test",
+   "point": "rp-reassure",
+   "slot": "answer",
+   "issued": "2026-11-09"
+  },
+  {
+   "id": "oa-speaking-970013",
+   "lesson": "speaking-01-the-test",
+   "point": "rp-whole",
+   "slot": "roleplay",
+   "issued": "2026-11-09"
   }
  ]
 }

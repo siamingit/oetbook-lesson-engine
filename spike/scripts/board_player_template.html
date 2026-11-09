@@ -202,6 +202,8 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
 #subtitle { flex: 1; min-height: 2.9em; padding: 7px 10px; background: #fff; border: 1px solid #e3e1d9; }
 #subtitle .provenance { display: inline-block; font-size: 11px; letter-spacing: .04em; text-transform: uppercase;
                         color: #888780; margin-right: 8px; }
+#subtitle .provenance.patient { color: #0b6e6d; font-weight: 600; }
+#subtitle.patient { border-left: 4px solid #0b6e6d; }
 #where { flex: none; color: #888780; font-variant-numeric: tabular-nums; }
 #failure { color: #a11d1d; }
 /* Silent preview: no audio, timing estimated from word counts. Marked so
@@ -408,6 +410,35 @@ textarea.pp-in { display: block; width: 100%; min-height: 110px; resize: vertica
   .pp-go { flex: 1; }
 }
 @media (prefers-reduced-motion: reduce) { body.pp-open .frame, body.pp-open #review { transition: none; } }
+/* 1.24 (ADR 053), a DRAFT: a speaking point's pop-up. The prompt and the model, Listen (and
+   Slowly), Record and play back on this device only (nothing is kept or sent; the site gives the
+   feedback), Skip after about 5 s, Continue once a recording is made. Only a lesson with speaking
+   points draws any of it. */
+.pp-body.pp-speak { grid-template-columns: minmax(0, 1fr); }
+.sp-focus { font-size: 13px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: #6b6860; margin: 0 0 6px; }
+.sp-say { font-size: 26px; line-height: 1.35; font-weight: 600; margin: 0 0 10px; color: #173d3c; }
+.sp-chunks { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; padding: 0; list-style: none; }
+.sp-chunks li { background: #e5f0ef; color: #173d3c; border-radius: 999px; padding: 4px 12px; font-size: 16px; }
+.sp-bubble { position: relative; background: #e1f1f4; border-radius: 16px 16px 16px 4px; padding: 10px 14px; margin: 4px 0 12px;
+             max-width: 34em; font-size: 18px; line-height: 1.45; color: #173d3c; }
+.sp-bubble .who { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #0b6e6d; }
+.sp-bubble.you { background: #0b6e6d; color: #fff; border-radius: 16px 16px 4px 16px; margin-left: auto; }
+.sp-bubble.you .who { color: #e5f0ef; }
+.sp-card { border: 1.5px solid #0b6e6d; border-radius: 12px; padding: 10px 14px; margin: 0 0 12px; }
+.sp-card h3 { margin: 0 0 4px; font-size: 18px; }
+.sp-card p { margin: 4px 0; }
+.sp-card ol { margin: 6px 0 0 1.2em; padding: 0; }
+.sp-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 8px 0; }
+.sp-btn { font: inherit; font-size: 16px; font-weight: 600; min-height: 44px; border-radius: 999px; cursor: pointer; padding: 6px 16px;
+          border: 1.5px solid #0b6e6d; background: #fff; color: #0b6e6d; }
+.sp-btn.rec { background: #c4362f; border-color: #c4362f; color: #fff; }
+.sp-btn.rec.on { animation: sp-pulse 1.2s ease-in-out infinite; }
+@keyframes sp-pulse { 50% { box-shadow: 0 0 0 6px rgba(196, 54, 47, .25); } }
+.sp-note { font-size: 14px; color: #6b6860; margin: 6px 0 0; }
+.sp-model { background: #eef3e0; border-radius: 10px; padding: 8px 12px; margin: 8px 0; }
+.sp-model .lab { display: block; font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: #3f5000; }
+.sp-mine { width: 100%; max-width: 360px; height: 40px; }
+@media (prefers-reduced-motion: reduce) { .sp-btn.rec.on { animation: none; } }
 </style>
 </head>
 <body>
@@ -499,6 +530,7 @@ let fxClock = 0;                  // the lesson time being drawn, for the effect
 const SC_OUT = 0.25;              // s: a note going by an erase or a clear (rule 53)
 // 1.18: a lesson with recordings of its practice set (utterances of kind "exam")
 const HAS_EXAM = utterances.some(u => u.kind === "exam");
+const HAS_SPEAKERS = utterances.some(u => u.speaker);   // 1.24 (ADR 053): a patient speaks
 if (SILENT && HAS_EXAM)
   // 1.19 (ADR 030): the silent preview plays the practice set's own recordings
   document.getElementById("silentBanner").innerHTML += " The recordings of the practice set play as released.";
@@ -2564,11 +2596,15 @@ function renderFrame(t) {
     frame.classList.toggle("rec", rec);
     if (rec) recTag.textContent = "Recording" + (u.exam && u.exam.label ? " \u00b7 " + u.exam.label : "");
   }
+  if (HAS_SPEAKERS) subtitleEl.classList.toggle("patient", !!(u && u.speaker && !state.failure));
   if (u && u.kind === "exam" && !state.failure) {
     subtitleEl.innerHTML = '<span class="provenance">recording</span>';
     subtitleEl.appendChild(document.createTextNode((u.exam.label || u.exam.stimulus) + ", " + u.exam.span));
   } else if (u && !state.failure) {
-    subtitleEl.innerHTML = '<span class="provenance">' + u.provenance + "</span>";
+    // 1.24 (ADR 053): a patient's line is labelled as the patient's
+    subtitleEl.innerHTML = u.speaker
+      ? '<span class="provenance patient">patient · ' + u.provenance + "</span>"
+      : '<span class="provenance">' + u.provenance + "</span>";
     subtitleEl.appendChild(document.createTextNode(u.text));
   } else if (!state.failure) {
     let pausing = null;
@@ -3217,7 +3253,123 @@ function ppSheet(ex) {
   s.appendChild(tb);
   return s;
 }
+// 1.24 (ADR 053): speaking items, a DRAFT of the site's contract (speaking_items.py)
+const SP_TYPES = new Set(["speak_repeat", "speak_respond", "roleplay"]);
+const SP_SKIP_S = 5;                        // the Skip button appears after about 5 s (the owner)
+let spAudio = null;
+function spPlay(src) {
+  if (spAudio) { spAudio.pause(); spAudio = null; }
+  spAudio = new Audio(src); spAudio.play().catch(() => {});
+}
+function spListen(label, src) {
+  const b = ppEl("button", "sp-btn", "\u25B6 " + ppEsc(label)); b.type = "button";
+  b.addEventListener("click", () => spPlay(src));
+  return b;
+}
+function spRecorder(onDone) {
+  // record and play back on this device only: nothing is kept after the pop-up closes, nothing is sent
+  const box = ppEl("div", "sp-rec"), row = ppEl("div", "sp-row");
+  const rec = ppEl("button", "sp-btn rec", "\u25CF Record"); rec.type = "button";
+  const note = ppEl("p", "sp-note", "Say it aloud. On the site you get feedback on what you say.");
+  row.appendChild(rec); box.appendChild(row); box.appendChild(note);
+  let mr = null, chunks = [], url = null, player = null, stream = null;
+  const stopAll = () => {
+    if (mr && mr.state === "recording") mr.stop();
+    if (stream) stream.getTracks().forEach(t => t.stop()); stream = null;
+  };
+  rec.addEventListener("click", async () => {
+    if (mr && mr.state === "recording") { mr.stop(); return; }
+    try {
+      if (!navigator.mediaDevices || !window.MediaRecorder) throw new Error("no recorder");
+      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    } catch (e) {
+      note.textContent = "The microphone is not available here. Say it aloud, then Continue.";
+      onDone(); return;
+    }
+    chunks = []; mr = new MediaRecorder(stream);
+    mr.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+    mr.onstop = () => {
+      if (stream) stream.getTracks().forEach(t => t.stop()); stream = null;
+      rec.classList.remove("on"); rec.innerHTML = "\u25CF Record again";
+      if (url) URL.revokeObjectURL(url);
+      url = URL.createObjectURL(new Blob(chunks, { type: mr.mimeType || "audio/webm" }));
+      if (!player) { player = ppEl("audio", "sp-mine"); player.controls = true; row.appendChild(player); }
+      player.src = url;
+      note.textContent = "Listen to yourself. On the site you get feedback on what you say.";
+      onDone();
+    };
+    mr.start(); rec.classList.add("on"); rec.innerHTML = "\u25A0 Stop";
+  });
+  return { el: box, cleanup: () => { stopAll(); if (url) URL.revokeObjectURL(url); } };
+}
+function spItem(it) {
+  const el = ppEl("div", "pp-item sp-item"), au = it.audio || {};
+  if (it.type === "speak_repeat") {
+    el.appendChild(ppEl("p", "sp-focus", ppEsc(it.focus)));
+    el.appendChild(ppEl("p", "sp-say", ppEsc(it.shown)));
+    if (it.chunks.length > 1) {
+      const ul = ppEl("ul", "sp-chunks"); ul.setAttribute("aria-label", "Say it in parts");
+      it.chunks.forEach(c => ul.appendChild(ppEl("li", "", ppEsc(c)))); el.appendChild(ul);
+    }
+    const row = ppEl("div", "sp-row");
+    if (au.normal) row.appendChild(spListen("Listen", au.normal));
+    if (au.slow) row.appendChild(spListen("Slowly", au.slow));
+    if (row.children.length) el.appendChild(row);
+    return { el, after: () => {} };
+  }
+  if (it.type === "speak_respond") {
+    el.appendChild(ppEl("p", "pr", ppInline(it.prompt)));
+    el.appendChild(ppEl("div", "sp-bubble", '<span class="who">Patient</span>' + ppEsc(it.patient_line)));
+    if (au.patient) { const row = ppEl("div", "sp-row"); row.appendChild(spListen("Hear the patient", au.patient)); el.appendChild(row); }
+    const model = ppEl("div", "sp-reveal"); model.hidden = true;
+    model.appendChild(ppEl("div", "sp-bubble you", '<span class="who">A model answer</span>' + ppEsc(it.model_answer)));
+    if (au.model) { const row = ppEl("div", "sp-row"); row.appendChild(spListen("Hear the model", au.model)); model.appendChild(row); }
+    const kp = ppEl("div", "sp-model", '<span class="lab">A good answer</span>');
+    const ul = ppEl("ul", "pp-list"); it.key_points.forEach(k => ul.appendChild(ppEl("li", "", "\u2713 " + ppEsc(k))));
+    kp.appendChild(ul); model.appendChild(kp);
+    el.appendChild(model);
+    return { el, after: () => { model.hidden = false; } };
+  }
+  // roleplay: the candidate's card only; the patient's card stays on the site's server
+  const c = ppEl("div", "sp-card");
+  c.innerHTML = "<h3>" + ppEsc(it.title) + "</h3><p><b>Setting:</b> " + ppEsc(it.setting) + "</p><p><b>You are:</b> " +
+    ppEsc(it.candidate.role) + "</p><p>" + ppEsc(it.candidate.background) + "</p><ol>" +
+    it.candidate.tasks.map(t => "<li>" + ppEsc(t) + "</li>").join("") + "</ol>";
+  el.appendChild(c);
+  el.appendChild(ppEl("p", "sp-note", "In the test: three minutes to prepare, then about five minutes to talk. " +
+    "On the site you talk to the patient and get a report."));
+  return { el, after: () => {} };
+}
+function openSpeaking(p) {
+  const layer = ppEl("div", "pp-layer"); layer.id = "ppLayer";
+  const card = ppEl("div", "pp-card");
+  card.setAttribute("role", "dialog"); card.setAttribute("aria-modal", "true"); card.setAttribute("aria-labelledby", "ppTask");
+  const head = ppEl("div", "pp-head", '<span class="pp-tag">Your turn \u00b7 speak</span>');
+  const task = ppEl("p", "pp-task", ppInline(p.task)); task.id = "ppTask"; head.appendChild(task);
+  const body = ppEl("div", "pp-body pp-speak");
+  const work = ppEl("section", "pp-work"); work.setAttribute("aria-label", "Speak");
+  const views = p.items.map(it => spItem(it));
+  views.forEach(v => work.appendChild(v.el));
+  const actions = ppEl("div", "pp-actions");
+  const skipBtn = ppEl("button", "pp-go alt", "Skip"); skipBtn.type = "button"; skipBtn.hidden = true;
+  const contBtn = ppEl("button", "pp-go", "Continue"); contBtn.type = "button"; contBtn.disabled = true;
+  const recd = spRecorder(() => { views.forEach(v => v.after()); contBtn.disabled = false; ppDone.set(p.id, { spoken: true }); });
+  work.appendChild(recd.el);
+  const timer = setTimeout(() => { skipBtn.hidden = false; }, SP_SKIP_S * 1000);
+  const finish = () => { clearTimeout(timer); recd.cleanup(); if (spAudio) { spAudio.pause(); spAudio = null; } closePractice(p); };
+  skipBtn.addEventListener("click", finish);
+  contBtn.addEventListener("click", finish);
+  actions.appendChild(skipBtn); actions.appendChild(contBtn);
+  work.appendChild(actions);
+  body.appendChild(work);
+  card.appendChild(head); card.appendChild(body); layer.appendChild(card);
+  document.body.appendChild(layer); document.body.classList.add("pp-open");
+  ppOpen = { p, layer };
+  if (ppDone.get(p.id)) { views.forEach(v => v.after()); contBtn.disabled = false; skipBtn.hidden = false; }
+  (work.querySelector("button") || contBtn).focus();
+}
 function openPractice(p) {
+  if (p.items.length && SP_TYPES.has(p.items[0].type)) return openSpeaking(p);
   const done = ppDone.get(p.id);
   const layer = ppEl("div", "pp-layer"); layer.id = "ppLayer";
   const card = ppEl("div", "pp-card");

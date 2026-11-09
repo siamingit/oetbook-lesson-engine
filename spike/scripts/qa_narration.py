@@ -151,7 +151,7 @@ usually false, and they are invented: the narration is not permitted to add teac
 the source did not contain, and a register judgement is teaching. Report a false \
 register claim as `critical`. The ONE exception: an utterance flagged \
 `maintainer: true` quotes the course maintainer's own ruling; do not report a \
-register claim there, but do still report its grammar if it is wrong.
+register claim there, but do still report its grammar if it is wrong. An utterance with a `speaker` (patient_f, patient_m) is a PATIENT's line in a role-play, said by a patient's voice, not the teacher's: judge it as what a patient says (short, natural speech), not as teaching; `emotion` says how it is said.
 9. Hard general words without a gloss. A general English word that an A2-B1 \
 learner is likely not to know (schedule, modification) must be explained the first \
 time it appears in this section: on screen by a gloss, a term box labelled WORD \
@@ -350,6 +350,11 @@ def payload(lesson: Path, pages: list[int]) -> dict:
                     item["marks"] = marks
                 if u["provenance"] == "maintainer":
                     item["maintainer"] = True
+                # a patient's line in a Speaking lesson (ADR 053): said by a patient voice, not the teacher
+                if u.get("speaker"):
+                    item["speaker"] = u["speaker"]
+                    if u.get("emotion"):
+                        item["emotion"] = u["emotion"]
                 utts.append(item)
             states.append({"state": s["id"], "utterances": utts,
                            "erased_after": s["erase_after"] is not None})

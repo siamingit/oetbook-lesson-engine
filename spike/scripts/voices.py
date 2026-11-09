@@ -18,6 +18,36 @@ COURTNEY = {"name": "courtney", "id": "16a4052e-1f11-47ac-95f5-9330bee062f9",
 
 BY_TYPE: dict[str, dict] = {}                  # every lesson type: Rupert (ADR 027 amendment)
 
+# The Speaking course's patients (ADR 027 amendment 2026-11-09, ADR 053): a narration line
+# with a `speaker` field is said by its patient, in sonic-3.6 at speed 0.8; a line without
+# one is the teacher's, in the lesson's voice, so nothing made before changes.
+GEMMA = {"name": "gemma", "id": "62ae83ad-4f6a-430b-af41-a9bede9286ca",
+         "speed": 0.8, "sentence_pause_s": 0.0}
+ARCHIE = {"name": "archie", "id": "ef191366-f52f-447a-a398-ed8c0f2943a1",
+          "speed": 0.8, "sentence_pause_s": 0.0}
+SPEAKERS = {"patient_f": GEMMA, "patient_m": ARCHIE}
+# A patient's feeling, from the role card, as the voice's emotion setting (ADR 053): only
+# where the card makes the patient worried or upset; every other line is a plain take.
+EMOTIONS = {"worried": "anxious", "upset": "frustrated"}
+
+
+def voice_for(speaker: str | None, lesson_voice: dict) -> dict:
+    """The voice of one narration line: its patient's, or the lesson's own."""
+    if speaker is None or speaker == "teacher":
+        return lesson_voice
+    if speaker not in SPEAKERS:
+        raise ValueError(f"unknown speaker {speaker!r}: one of teacher, {', '.join(SPEAKERS)}")
+    return SPEAKERS[speaker]
+
+
+def emotion_for(feeling: str | None) -> str | None:
+    """The voice's emotion setting for a patient's feeling, or None for a plain take."""
+    if feeling is None:
+        return None
+    if feeling not in EMOTIONS:
+        raise ValueError(f"unknown emotion {feeling!r}: one of {', '.join(EMOTIONS)}")
+    return EMOTIONS[feeling]
+
 SENTENCE_END = (".", "?", "!")
 
 

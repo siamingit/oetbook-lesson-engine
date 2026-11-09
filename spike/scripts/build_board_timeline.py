@@ -142,7 +142,10 @@ def lay_timeline(narr: dict, audio_index: dict, utterance_gap: float = 0.4,
                                  "cues": cues_out,
                                  # other lessons this utterance refers to (bundle 1.1)
                                  "refs": [{"lesson": r["lesson"], "section": r.get("section")}
-                                          for r in u.get("refs") or []]})
+                                          for r in u.get("refs") or []],
+                                 # a patient's line (ADR 053), only where there is one
+                                 **({"speaker": u["speaker"]} if u.get("speaker") else {}),
+                                 **({"emotion": u["emotion"]} if u.get("emotion") else {})})
                 t = utt_end
                 if played:
                     # the recording, an utterance of its own (kind "exam"), as released

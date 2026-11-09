@@ -556,6 +556,7 @@ class TealLook(unittest.TestCase):
             "choices": (["The bank", ""], [["also", "then"], ["often", "later"]]),
             "path": (["Step", "Note"], [["Read", "Who reads it?"], ["Plan", "Choose."], ["Write", "Go."]]),
             "compare": (["Referral", "Discharge"], [["Reason", "Admission"]]),
+            "dialogue": (["Who", "Says"], [["Patient", "I feel dizzy."], ["Nurse", "When did it start?"]]),
         }
         self.assertEqual(set(cases), set(style_c.ADR050_LAYOUTS))
         for lay, (header, rows) in cases.items():

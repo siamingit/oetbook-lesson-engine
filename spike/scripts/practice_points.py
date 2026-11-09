@@ -374,7 +374,40 @@ def _answer_shown(utts: list[dict], i: int) -> bool:
     return any(c["type"] in ("reveal", "type") for u in utts[i + 1:i + 3] for c in u["cues"])
 
 
-def attach(L: Path, boards: list[dict], sample: bool = False) -> bool:
+def _check_ids(item: dict, where: str, seen: set[str], ids_issued: dict[str, str], point: str) -> None:
+    """A speaking item's id (ADR 053): the same registry rules as every other item's."""
+    i = item.get("item_id") or ""
+    if not ITEM_ID_RE.match(i) or not BLOCK_LOW <= int(i[-6:]) <= BLOCK_HIGH:
+        raise SystemExit(f"REFUSED: practice item {where}: id {i!r} is not an item id of the engine's block")
+    if ids_issued.get(i) != point:
+        raise SystemExit(f"REFUSED: practice item {where}: id {i!r} was not issued for this lesson's "
+                         f"point {point!r} (spike/practice/ids.json)")
+    if i in seen:
+        raise SystemExit(f"REFUSED: practice item {where}: id {i!r} is used twice")
+    seen.add(i)
+
+
+def speaking_audio(L: Path, out_dir: Path | None) -> dict[str, dict[str, str]]:
+    """item id -> role -> the recording's path from the player in `out_dir` (ADR 053), from
+    generated/speaking-audio/index.json (synthesize_speaking.py); empty without either."""
+    import os
+    idx = L / "generated" / "speaking-audio" / "index.json"
+    if out_dir is None or not idx.exists():
+        return {}
+    d = json.loads(idx.read_text(encoding="utf-8"))
+    return {iid: {r: os.path.relpath(idx.parent / e["file"], out_dir).replace(os.sep, "/")
+                  for r, e in roles.items() if (idx.parent / e["file"]).exists()}
+            for iid, roles in d.get("items", {}).items()}
+
+
+def has_speaking(boards: list[dict]) -> bool:
+    """A lesson whose practice points hold speaking items (bundle 1.24, ADR 053)."""
+    import speaking_items
+    return any(speaking_items.is_speaking(it) for bd in boards for s in bd["states"]
+               for p in s.get("practice") or [] for it in p["items"])
+
+
+def attach(L: Path, boards: list[dict], sample: bool = False, audio_from: Path | None = None) -> bool:
     """Give each state the practice points of its pauses (`state.practice`) and each such pause
     the point's id (`cue.practice`). True when the lesson has any. Refuses a pause that names no
     point, a point no pause names (unless a sample build), a pause outside 3 to 10 seconds, and a
@@ -384,6 +417,10 @@ def attach(L: Path, boards: list[dict], sample: bool = False) -> bool:
         return False
     used, seen_ids = set(), set()
     ids_issued = issued(L.name)
+    import lesson_type
+    import speaking_items
+    speaking_lesson = lesson_type.of(L) == "speaking"
+    rec = speaking_audio(L, audio_from) if speaking_lesson else {}
     for bd in boards:
         utts = [u for s in bd["states"] for u in s["utterances"]]
         for s in bd["states"]:
@@ -406,9 +443,26 @@ def attach(L: Path, boards: list[dict], sample: bool = False) -> bool:
                     used.add(key)
                     p = pts[key]
                     pid = f"{bd['section']}_pp-{key}"
-                    items = [hashed(it) for it in p["items"]]
-                    for n, it in enumerate(items, 1):
-                        check_item(it, f"{key} #{n}", seen_ids, ids_issued, key)
+                    kinds = {speaking_items.is_speaking(it) for it in p["items"]}
+                    if True in kinds:
+                        # speaking items (ADR 053): a point of a Speaking lesson, speaking items alone,
+                        # checked against the site's draft contract and given to the player as the
+                        # learner's side of each item; not hashed (the draft has no content_hash)
+                        if not speaking_lesson:
+                            raise SystemExit(f"REFUSED: practice point {key!r}: speaking items in a lesson "
+                                             "whose type is not speaking (ADR 053)")
+                        if len(kinds) > 1:
+                            raise SystemExit(f"REFUSED: practice point {key!r}: speaking items and other "
+                                             "items in one point (ADR 053)")
+                        for n, it in enumerate(p["items"], 1):
+                            _check_ids(it, f"{key} #{n}", seen_ids, ids_issued, key)
+                            speaking_items.check(it, f"{key} #{n}")
+                        items = [speaking_items.browser_view(it, rec.get(it["item_id"]))
+                                 for it in p["items"]]
+                    else:
+                        items = [hashed(it) for it in p["items"]]
+                        for n, it in enumerate(items, 1):
+                            check_item(it, f"{key} #{n}", seen_ids, ids_issued, key)
                     if not 1 <= len(items) <= 3:
                         raise SystemExit(f"REFUSED: practice point {key!r}: 1 to 3 items (a handout's practice step)")
                     point = {"id": pid, "time": c["time"], "resume": c["time_end"],

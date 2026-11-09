@@ -27,8 +27,11 @@ TYPES = ("grammar", "vocabulary", "reading", "listening", "writing", "speaking")
 #                    spoken as context (ADR 029, ADR 032, ADR 035 amendment of 2026-10-16)
 #   source_terms     the runner runs check_source_terms.py (ADR 029; by hand for Reading)
 #   vocabulary_rule  the vocabulary rule (ADR 019)
+#   speakers         a narration line may be a patient's: `speaker` patient_f or patient_m,
+#                    said in the patient's voice, `emotion` worried or upset (ADR 053)
 FEATURES = {
     "vocabulary": {"vocabulary_rule"},
+    "speaking": {"speakers"},
     "reading": {"practice_set", "keyword_pairs", "doc_marks", "practice_checks", "delivery"},
     "listening": {"practice_set", "keyword_pairs", "doc_marks", "practice_checks", "delivery",
                   "exam_audio", "reading_time", "exam_numbers", "source_terms"},
