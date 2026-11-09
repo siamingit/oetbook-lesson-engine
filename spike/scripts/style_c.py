@@ -635,6 +635,9 @@ LAYOUTS = {
     "twocol": (("contents_item",), False, None),
     "bandfit": (("comparison",), False, None),
     "pillwrap": (("term_box",), False, None),
+    # ADR 050 amendment (12): wrong and right with tighter rows and a wider right-hand column (`wr-fit`), chosen for a
+    # board whose table and notes the site's player does not draw whole at the table's smallest text
+    "wrongrightfit": (("table",), False, (2,)),
 }
 # The teal look's layouts (ADR 050), their rules appended only where used
 ADR050_LAYOUTS = ("wrongright", "coded", "opener", "timeline", "columns", "parts", "badges", "ruled",
@@ -1815,6 +1818,15 @@ LAYOUT_CSS["pillwrap"] = r"""
 .frame .defpill.lay-pillwrap{flex-wrap:wrap;row-gap:1.2cqh}
 .frame .defpill.lay-pillwrap .defterm{flex:0 1 auto}
 """
+LAYOUT_CSS["wrongright_fit"] = r"""
+/* wrong and right in less height (ADR 050 amendment (12)): tighter rows, the arrow inside its row, and a wider column
+   for the right sentence, so a long one keeps one line; the text keeps its size */
+.frame .tbl.lay.lay-wrongright.wr-fit thead tr,.frame .tbl.lay.lay-wrongright.wr-fit tbody tr{
+  grid-template-columns:minmax(0,.55fr) 7.5cqw minmax(0,1.45fr)}
+.frame .tbl.lay.lay-wrongright.wr-fit tbody tr{padding:.6cqh 0}
+.frame .tbl.lay.lay-wrongright.wr-fit tbody tr:first-child{padding-top:.4cqh}
+.frame .tbl.lay.lay-wrongright.wr-fit td:last-child::before{height:2.6cqh;margin-top:-2.8cqh}
+"""
 
 ROOT_CLASS = re.compile(r'^<div class="([^"]*)"')
 ROOT_TAG = re.compile(r"^<div[^>]*>")
@@ -1876,6 +1888,8 @@ def layout_css(blocks: dict, look: str | None = None) -> str:
         used.add("paper_long")
     if any("paper-fit" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split()) for b in blocks.values()):
         used.add("paper_fit")
+    if any("wr-fit" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split()) for b in blocks.values()):
+        used.add("wrongright_fit")                  # ADR 050 amendment (12)
     for k in ("twocol", "bandfit", "pillwrap"):     # ADR 050 amendment (10)
         if any("lay-" + k in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split())
                for b in blocks.values()):
@@ -1973,7 +1987,7 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
         why = check_layout(b.get("id", "?"), b, layout)
         if why:
             raise SystemExit("REFUSED: sections.json block_layouts: " + why)
-        if layout in ("paperlong", "paperfit", "paperlook") and look != "teal":
+        if layout in ("paperlong", "paperfit", "paperlook", "wrongrightfit") and look != "teal":
             raise SystemExit(f"REFUSED: sections.json block_layouts: {b.get('id')}: {layout!r} is the teal look's")
         root = set((ROOT_CLASS.match(html) or [None, ""])[1].split())
         for lay, need in (("bandfit", {"chg", "band"}), ("pillwrap", {"defpill"})):
@@ -1981,11 +1995,14 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
                 raise SystemExit(f"REFUSED: sections.json block_layouts: {b.get('id')}: {lay!r} is for a block "
                                  f"drawn as {' '.join(sorted(need))}")
         if t == "table":
-            html = _table_html(b, html, "paper" if layout in ("paperlong", "paperfit", "paperlook") else layout)
+            html = _table_html(b, html, "paper" if layout in ("paperlong", "paperfit", "paperlook") else
+                               "wrongright" if layout == "wrongrightfit" else layout)
             if layout == "paperlong":
                 html = _add_root(html, "paper-long")
             if layout == "paperfit":
                 html = _add_root(html, "paper-fit")
+            if layout == "wrongrightfit":
+                html = _add_root(html, "wr-fit")
             if look == "teal" and layout == "paper" and len(b.get("header") or []) == 2 and \
                     sheet_lines(b.get("rows") or []) >= SHEET_LONG_ROWS:
                 html = _add_root(html, attrs=' data-long=""')

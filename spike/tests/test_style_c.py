@@ -821,3 +821,19 @@ class TealLook(unittest.TestCase):
                          style_c.LAYOUT_CSS["paper"] + style_c.LAYOUT_CSS["paper_fit"])
         with self.assertRaises(SystemExit):
             style_c.layout_html(b, b["html"], None, "paperfit")
+
+    def test_wrongrightfit_is_chosen_per_block(self):
+        """ADR 050 amendment (12): `wrongrightfit` draws wrong and right in less height, chosen for a block; the same
+        table as `wrongright` with the class `wr-fit`; refused outside the teal look; its rules only where used."""
+        b = ADR048Layouts._table(self, ["As written", "Put right"], [["Also she came.", "She also came."]])
+        out = style_c.layout_html(b, b["html"], None, "wrongrightfit", None, "teal")
+        self.assertIn("lay-wrongright", out)
+        self.assertIn("wr-fit", out)
+        self.assertEqual(out.replace(" wr-fit", ""), style_c.layout_html(b, b["html"], None, "wrongright", None, "teal"))
+        self.assertEqual(style_c.layout_css({"p": {**b, "html": out}}, "teal"),
+                         "".join(style_c.LAYOUT_CSS[k] for k in ("tset", "wrongright", "wrongright_fit")))
+        plain = style_c.layout_html(b, b["html"], None, "wrongright", None, "teal")
+        self.assertNotIn("wr-fit", style_c.layout_css({"p": {**b, "html": plain}}, "teal"))
+        self.assertIsNone(style_c.check_layout("k", b, "wrongrightfit"))
+        with self.assertRaises(SystemExit):
+            style_c.layout_html(b, b["html"], None, "wrongrightfit")
