@@ -88,9 +88,10 @@ owner reviews it. Full text: `C:\OET\lessons\_speaking-analysis\ANALYSIS.md`.
   cue, and speaking practice points. There are 75 points, 54 of them `speak_repeat`,
   `speak_respond` or `roleplay`. Each item carries the data the site's speaking types will
   need.
-- **Voices.** A second Cartesia voice for the patient is needed. A shortlist and an audition
-  are proposed; the owner chooses by ear. The engine needs a `speaker` field per narration
-  line, a shared-code change to be proved on every built lesson.
+- **Voices.** The patient is Gemma (female) or Archie (male), both on `sonic-3.6` at speed
+  0.8, chosen by the owner by ear on 2026-11-09 (ADR 027 amendment of 2026-11-09). Rupert
+  stays the teacher. The engine needs a `speaker` field per narration line, a shared-code
+  change to be proved on every built lesson.
 - **Handouts.** The sessions teach and practise the moves. H28 (questions) and H29 (lay terms,
   phrasal verbs) hold the full lists and are built after the sessions are scripted.
 - **Nine open questions** for the owner, each with a recommendation, are in §9 of the analysis.
