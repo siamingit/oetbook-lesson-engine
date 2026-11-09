@@ -132,3 +132,67 @@ Reading and Listening lessons to Rupert. Do not use Courtney."
   each, by the baseline's own definition.
 - It is a signal for the ear, not a judge of it; the final gate stays the
   maintainer's.
+
+## Amendment, 2026-11-09: the Speaking course's patient voices, Gemma and Archie
+
+Recorded at the owner's request (issue #190), after he chose by ear from a
+14-voice audition and two rounds of slower takes: "the Speaking course's
+patient voices are Gemma (female, 62ae83ad-4f6a-430b-af41-a9bede9286ca) and
+Archie (male, ef191366-f52f-447a-a398-ed8c0f2943a1), both on sonic-3.6 at
+speed 0.8. sonic-3 is rejected (Gemma sounded aggressive). Plain takes by
+default; the emotion setting (anxious, frustrated) only on lines where the
+role card makes the patient worried or upset. Rupert stays the teacher's
+voice, unchanged."
+
+### The voices
+
+- **Rupert stays the voice of every lesson**, as in the amendment above. In the
+  Speaking course he is the teacher, with no change to his model, speed or
+  lexicon.
+- **The patient (or carer) in a Speaking lesson is Gemma or Archie.** Both use
+  Cartesia `sonic-3.6` at speed 0.8, with default volume and nothing added to
+  the clip (no added pauses).
+
+  | Voice | Role | Cartesia voice id | Model | Speed |
+  |---|---|---|---|---|
+  | Gemma | female patient | `62ae83ad-4f6a-430b-af41-a9bede9286ca` | `sonic-3.6` | 0.8 |
+  | Archie | male patient | `ef191366-f52f-447a-a398-ed8c0f2943a1` | `sonic-3.6` | 0.8 |
+
+- **Plain takes by default.** Cartesia's emotion setting
+  (`generation_config.emotion`) is used only on a line where the role card
+  makes the patient worried (`anxious`) or upset (`frustrated`).
+- **Options considered and rejected.**
+  - The other twelve audition candidates.
+  - Speed 1.0, which the owner found too fast.
+  - The `sonic-3` model alias. It follows the speed setting more strongly, but
+    the owner rejected it by ear because Gemma sounded aggressive.
+
+### Pace, measured
+
+- On `sonic-3.6` the speed setting slows these two voices only a little.
+- Against 1.0, speed 0.8 changed the pace from 10% slower to 2% faster for
+  Gemma, and from 2% to 15% slower for Archie, depending on the line.
+- Measured from first word to last, the audition's takes at 0.8 ran at:
+
+  | Voice | Line 1 | Line 2 | Line 3 |
+  |---|---|---|---|
+  | Gemma | 164 wpm | 210–211 wpm | 187–191 wpm |
+  | Archie | 163 wpm | 202–216 wpm | 184–195 wpm |
+
+- **Takes at one speed vary by a few per cent.** Three takes of Gemma's first
+  line at 1.0 measured 161, 167 and 170 words a minute.
+- A later build may therefore render a few takes of each patient line and keep
+  the one closest to the target pace, measured from Cartesia's word
+  timestamps. **That is not built now**, and nothing in this amendment depends
+  on it.
+- The audition, every take's measurements and the settings are kept outside
+  the repository in `C:\OET\voice-audition\speaking\`: `audition.html`,
+  `voices.json` (key `decision`), and the scripts in `_scripts\`.
+
+### Consequences
+
+- A Speaking lesson has more than one voice. The engine needs a `speaker`
+  field per narration line (docs/speaking-facts.md). That is a shared-code
+  change. It is proved by rendering every built lesson before and after, and
+  is not part of this amendment.
+- No existing lesson changes: every lesson built so far has only Rupert.
