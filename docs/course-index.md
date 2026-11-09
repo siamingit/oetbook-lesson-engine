@@ -7867,7 +7867,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 30:54 | 10 | 2026-11-09 14:58 (siavash) |
 | 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:38 | 10 | 2026-11-09 14:58 (siavash) |
 | 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:49 | 10 | 2026-11-09 14:58 (siavash) |
-| 5 | OET Writing: Information Flow | `writing-05-information-flow` | 38:15 | 9 | 2026-11-09 14:58 (siavash) |
+| 5 | OET Writing: Information Flow | `writing-05-information-flow` | 38:15 | 9 | 2026-11-09 18:26 (siavash) |
 | 6 | OET Writing: Word Order | `writing-06-word-order` | 24:30 | 9 | 2026-11-09 14:59 (siavash) |
 | 7 | OET Writing: Organising the Letter | `writing-07-organisation` | 27:54 | 8 | 2026-11-09 11:36 (siavash) |
 | 8 | OET Writing: Reading the Task and the Case Notes | `writing-08-reading-the-task` | 23:24 | 8 | 2026-11-09 09:24 (siavash) |
@@ -8872,7 +8872,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 5. OET Writing: Information Flow
 
 - Lesson ID and folder: `writing-05-information-flow` (folder `writing-05-information-flow`); course writing, lesson 5; length 38:15; bundle format 1.23
-- Status: approved by siavash, 2026-11-09 14:58
+- Status: approved by siavash, 2026-11-09 18:26
 - Description: Learn to keep the flow of information clear in an OET letter, with the time words that order a history and help you choose its tenses, the few linking words a letter needs and the ones to avoid, and how a dated case note becomes a clear sentence, up to the request.
 - Original session: folder `source`: `source/video.mp4`, 72:08 long, partial hash `5ba59af7698de6e3`; deck `source/slides.pdf`, 12 pages
   - Session 5 of the Persian Writing course, «OET Writing: Signal words and information flow» (72:08, 12 slides): the nine families of signal words, the words to avoid, a paragraph with a linking word on every sentence put right, time and tense on the timeline of a case, the four-column method (the note, the time reference, the tense, the sentence) worked through the official OET Nursing sample, and the request with modal verbs. The sixth lesson of the general Writing course (ADR 047). The official sample and the Mr Jones paragraph are never reused: every teaching point is rebuilt on our samples oa-ws-nur-0001, oa-ws-nur-0002, oa-ws-med-0003, oa-ws-med-0001, oa-ws-nur-0003 and oa-ws-med-0002 at oetacademy-exercises 5320d19 (ADR 040).
