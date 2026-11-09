@@ -594,3 +594,37 @@ each (the player's and the silent preview's `bundle.json` and `text.json`) and i
 moves. Writing 4, which main does not build (issue #184), now builds: its screens audit passes with its three choices
 headers trimmed in its folder (nothing visible changes) and its three paper sheets exempt, and its `gen_screens.py`
 now stops when `write_screens.py` fails. No file under `C:\OET\lessons` changed during either snapshot.
+
+## Amendment (12), 2026-11-09: wrong and right in less height (Writing 5's Words to avoid board)
+
+**Context.** Writing 5's page-5_t1 ("Words to avoid", 10:21 to 12:58) is a `wrongright` table of eight rows, followed
+by notes (ADR 020): the table is at its smallest text (2.9% of the frame, 26 px at the site's 900 px frame, the
+readability minimum of amendment (1)), and the camera pans to show the notes as they come. In v5 the eighth row's
+advice runs to two lines and a second note comes in, so at 12:33 (b06-s09) the camera pans about 165 px and the second
+row sits partly under the title. The owner asked on #194 for the whole board with no pan, in its teal look: tighten
+the spacing, shorten row 7 or move the new note, and a plain table only if nothing else works.
+
+**Options considered.**
+
+- Smaller text. Refused: the table is at the readability minimum.
+- Shorter words in the eighth row, or the note elsewhere. Not needed: the owner approved those words in v5, and
+  spacing alone gives back the height. It also keeps the narration and the audio as they are.
+- A plain table, as Writing 2's page-4_t1 became. Not needed: the curved arrows and the two colours can stay.
+- Tighter spacing for every `wrongright` table. Refused: every other built board would move, and none of them pans.
+
+**Decision** (the owner's request on #194, 2026-11-09). A layout `wrongrightfit`, named per block in `block_layouts`,
+teal only (refused in another look, like the paper's layouts). It draws the same table as `wrongright` with the class
+`wr-fit`, and its rules (`LAYOUT_CSS["wrongright_fit"]`, sent only where used) change four things, never the text's
+size:
+
+1. the columns at 0.55 : 1.45 (were 1 : 1.08), so the right sentence, the longer one, keeps one line;
+2. each row's padding 0.6% of the frame above and below (was 1.5%), the first row's top 0.4%;
+3. the arrow 2.6% tall, inside its row (was 4.2%, reaching into the row above);
+4. nothing else: the colours, the pills, the arrow's shape and the marks are `wrongright`'s.
+
+**Consequences.** Only a block named `wrongrightfit` changes. Writing 5 v6 names it for page-5_k01; the whole board
+shows at every state with the camera still (b06-s09). Tests: `test_style_c.TealLook.test_wrongrightfit_is_chosen_per_block`.
+
+**Proof** (2026-11-09, `render_compare.py`, every built lesson). Before: main at `cedaef2`; after: this change. Every
+built lesson is identical: no lesson names the layout yet, so no rule and no class is written. No file under
+`C:\OET\lessons` changed during either snapshot.
