@@ -625,6 +625,6 @@ size:
 **Consequences.** Only a block named `wrongrightfit` changes. Writing 5 v6 names it for page-5_k01; the whole board
 shows at every state with the camera still (b06-s09). Tests: `test_style_c.TealLook.test_wrongrightfit_is_chosen_per_block`.
 
-**Proof** (2026-11-09, `render_compare.py`, every built lesson). Before: main at `cedaef2`; after: this change. Every
-built lesson is identical: no lesson names the layout yet, so no rule and no class is written. No file under
+**Proof** (2026-11-09, `render_compare.py`, every built lesson). Before: main at `cedaef2`; after: this change. All 29
+built lessons are identical (data files, every moment drawn, every board's time): no lesson names the layout yet, so no rule and no class is written. No file under
 `C:\OET\lessons` changed during either snapshot.
