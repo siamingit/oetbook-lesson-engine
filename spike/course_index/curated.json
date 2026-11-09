@@ -459,7 +459,7 @@
    ],
    "methods": [
     {"name": "Read the paper in this order", "text": "The setting first, then the Writing Task, then the case notes line by line; ask who the reader is and what they will do.", "at": "pages-09-10-11_t1.s1.u3"},
-    {"name": "Expanding the purpose (the teacher's method)", "text": "Say briefly in the opening why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.", "at": "pages-06-07-08_t2.s3.u1"},
+    {"name": "Explaining the problem after the opening (the teacher's method)", "text": "Say briefly in the opening why you are writing and what you ask; explain the problem straight after the opening, in the next paragraph; at the end, expand the purpose with the details of what you ask.", "at": "pages-06-07-08_t2.s3.u1"},
     {"name": "Keep, keep briefly or leave out", "text": "For each note, ask what this reader will do with it: lines that only look related are left out; lines that explain the problem are kept briefly.", "at": "pages-12-13-14_t2.s1.u4"},
     {"name": "The teacher's word-count advice", "text": "Ten or twelve words more or fewer do no harm; what matters is that the reader gets everything they need, nothing they do not, and less important points briefly.", "at": "pages-12-13-14_t1.s5.u1"},
     {"name": "The teacher's advice on style", "text": "Never firstly, secondly or finally in the letter; fortunately or unfortunately at most once, and never about a patient's habits.", "at": "pages-15-16-17_t2.s4.u1"}
@@ -490,7 +490,7 @@
    "methods": [
     {"name": "Where each part comes from", "text": "The date from the date line at the top of the paper; the reader's name, address and the purpose from the Writing Task; the Re line from the patient details; the body from the notes; the request from the plan.", "at": "pages-04-05_t2.s2.u1"},
     {"name": "Setting out the address", "text": "Copy it from the Writing Task exactly, one part on each line, from the person to the town, keeping every capital letter.", "at": "page-7_t1.s9.u1"},
-    {"name": "Expanding the purpose (the teacher's method)", "text": "Say briefly at the start why you are writing and what you ask; expand it straight after, in the next paragraph; give the requests in detail at the end.", "at": "page-9_t1.s6.u1"},
+    {"name": "Explaining the problem after the opening (the teacher's method)", "text": "Say briefly at the start why you are writing and what you ask; explain the problem straight after the opening, in the next paragraph; at the end, expand the purpose with the details of what you ask.", "at": "page-9_t1.s6.u1"},
     {"name": "From the plan to the request", "text": "Turn each line of the plan into a polite request, keeping its date, what to do and when; report what the patient said at its exact degree.", "at": "page-10_t1.s3.u2"}
    ],
    "continues_in": [],
@@ -513,7 +513,7 @@
    ],
    "methods": [
     {"name": "One clear opening sentence (the teacher's method)", "text": "Put the patient, the problem and what you ask in one clear sentence, two at most, and fit it to each case.", "at": "page-6_t1.s2.u2"},
-    {"name": "Expanding the purpose (the teacher's method)", "text": "Say briefly in the opening what you ask; expand it straight after, in the next paragraph; give each request in full at the end, never the same sentence twice.", "at": "pages-12-13_t1.s5.u1"},
+    {"name": "Explaining the problem after the opening (the teacher's method)", "text": "Say briefly in the opening what you ask; explain the problem straight after the opening, in the next paragraph; give each request in full at the end, never the same sentence twice.", "at": "pages-12-13_t1.s5.u1"},
     {"name": "Personal details in the opening (the teacher's method)", "text": "A personal detail, such as the patient's job, goes into the opening only if this reader needs it.", "at": "pages-12-13_t2.s5.u1"},
     {"name": "Time words counted from today (the teacher's method)", "text": "Turn the paper's dates into words counted from the letter's date: today, this morning, since yesterday.", "at": "page-14_t3.s2.u1"},
     {"name": "Five questions to plan the opening (the teacher's method)", "text": "Who, what, when, where and why, answered from the paper; one sentence or two.", "at": "page-17_t1.s1.u2"}
@@ -593,8 +593,8 @@
      "at": "pages-10-11_t1.s5.u1"
     },
     {
-     "name": "However for a full contrast; while or despite inside one sentence (the teacher's method)",
-     "text": "However starts a new sentence for a full contrast; while and despite carry a partial contrast inside one sentence; but joins two halves of one sentence.",
+     "name": "However links two sentences; but, although, while or despite inside one (the teacher's method)",
+     "text": "However links two sentences, usually first, with a comma; inside one sentence: but, although, while or despite.",
      "at": "pages-10-11_t3.s4.u1"
     },
     {
@@ -655,7 +655,7 @@
     },
     {
      "name": "Words to avoid (the teacher's method)",
-     "text": "Not besides, actually, firstly ... finally, on the other hand, meanwhile or it is important to note at the start of a sentence; then and also in the middle.",
+     "text": "Not besides, actually, firstly ... finally, on the other hand, meanwhile or it is important to note at the start of a sentence; also in the middle; then at the start or in the middle.",
      "at": "page-5_t1.s1.u1"
     },
     {
