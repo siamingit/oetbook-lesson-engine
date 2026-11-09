@@ -136,6 +136,18 @@ def write_tags(L: Path, tags: dict, approved=None) -> None:
         "lessons": {L.name: {"sections": [{"id": k, "teaches": v} for k, v in tags.items()]}}}), encoding="utf-8")
 
 
+def site_player_passed(L: Path, folder: Path, **change) -> None:
+    """A passing check_site_player.py report on the built package `folder` (ADR 050 amendment (2): the release
+    gate reads it); `change` overrides its fields, to make it fail."""
+    import check_site_player
+    rep = {"site_commit": "made-up", "package": str(folder), "package_fingerprint": check_site_player.fingerprint(folder),
+           "width": 1600, "moments": 3, "every_state": True, "failures": []}
+    rep.update(change)
+    out = L / "generated" / "site-player" / "site_player_check.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(rep), encoding="utf-8")
+
+
 def quiet(*_):
     pass
 
@@ -256,7 +268,8 @@ class Refusals(unittest.TestCase):
             pub.build(self.L, CONTRACTS, workers=2, log=quiet)
 
     def test_release_dry_run_creates_nothing(self):
-        pub.build(self.L, CONTRACTS, workers=2, log=quiet)
+        r = pub.build(self.L, CONTRACTS, workers=2, log=quiet)
+        site_player_passed(self.L, Path(r["folder"]))
         calls = []
 
         def fake_gh(*args):
@@ -277,8 +290,26 @@ class Refusals(unittest.TestCase):
         self.assertFalse(any("create" in c for c in calls))
         self.assertFalse(pub.record_path(self.L).exists())
 
+    def test_the_site_player_check_gates_the_release(self):
+        r = pub.build(self.L, CONTRACTS, workers=2, log=quiet)
+        write_tags(self.L, {"page-1": [], "page-2": ["grammar.verb-tenses.present-perfect"]},
+                   approved={"by": "siavash", "on": "2026-10-23"})
+        folder = Path(r["folder"])
+        cases = [(None, "has not run"), ({"failures": [{"rule": "made-up"}]}, "failed"),
+                 ({"every_state": False}, "fullest state only"), ({"package_fingerprint": "0" * 64}, "another build"),
+                 ({}, None)]
+        with mock.patch.object(pub, "gh", lambda *a: "[]"), mock.patch.object(pub.lp, "load", lambda: CONTRACTS):
+            for change, blocker in cases:
+                if change is not None:
+                    site_player_passed(self.L, folder, **change)
+                blockers = pub.release(self.L, dry_run=True, log=quiet)["blockers"]
+                self.assertEqual(len(blockers), 0 if blocker is None else 1, (change, blockers))
+                if blocker:
+                    self.assertIn(blocker, blockers[0])
+
     def test_release_checked_on_github_before_it_is_recorded(self):
-        pub.build(self.L, CONTRACTS, workers=2, log=quiet)
+        r = pub.build(self.L, CONTRACTS, workers=2, log=quiet)
+        site_player_passed(self.L, Path(r["folder"]))
         write_tags(self.L, {"page-1": [], "page-2": ["grammar.verb-tenses.present-perfect"]},
                    approved={"by": "siavash", "on": "2026-10-23"})
         tag = f"{LESSON}-v1"
@@ -323,6 +354,7 @@ class Refusals(unittest.TestCase):
     def test_a_draft_is_a_prerelease_numbered_after_the_lessons_drafts(self):
         r = pub.build(self.L, CONTRACTS, workers=2, log=quiet, draft=True)   # tags not approved: no matter
         folder, zpath = Path(r["folder"]), Path(r["zip"])
+        site_player_passed(self.L, folder)
         assets = [{"name": p.name, "size": p.stat().st_size, "digest": f"sha256:{lp.sha256_file(p)}"}
                   for p in (folder / "manifest.json", zpath)]
         tag = f"{LESSON}-v1-draft.3"
