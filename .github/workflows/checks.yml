@@ -30,19 +30,18 @@ jobs:
       # went stale while CI skipped them) a token is required: EXERCISES_RELEASES_TOKEN
       # reads oetacademy-web too (the owner's choice), CONTRACTS_READ_TOKEN first if
       # set. Without one the job fails rather than skip, as the release-answers job does.
-      # The runner has no ffmpeg; man-db's trigger can hang an apt install for many minutes, so it
-      # is switched off, with no recommended packages. The runner's Azure mirror crawled on
-      # 2026-10-23 (an install timed out), so apt uses the main archive (newer runner images list the mirror in /etc/apt/apt-mirrors.txt, 2026-10-26).
+      # The runner has no ffmpeg. The apt one (6.1) decodes an AAC file without the edit list's
+      # end trim, about 20 ms long, so the publish step's length check fails on files that pass
+      # with the owner's ffmpeg 9.0 (2026-11-09, #194). CI uses a static 9.0 build instead.
       - name: ffmpeg
-        timeout-minutes: 12
-        env:
-          DEBIAN_FRONTEND: noninteractive
+        timeout-minutes: 5
         run: |
-          command -v ffmpeg && exit 0
-          sudo rm -f /var/lib/man-db/auto-update
-          sudo sed -i 's|http://azure.archive.ubuntu.com|http://archive.ubuntu.com|g' /etc/apt/apt-mirrors.txt /etc/apt/sources.list.d/*.sources /etc/apt/sources.list 2>/dev/null || true
-          sudo apt-get update -q
-          sudo apt-get install -y -q --no-install-recommends ffmpeg
+          base=https://github.com/BtbN/FFmpeg-Builds/releases/download/latest
+          name=ffmpeg-n9.0-latest-linux64-gpl-9.0
+          curl -fsSL --retry 3 "$base/$name.tar.xz" -o "$RUNNER_TEMP/ffmpeg.tar.xz"
+          tar -xJf "$RUNNER_TEMP/ffmpeg.tar.xz" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/$name/bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/$name/bin/ffmpeg" -version | head -1
       - name: Pinned contracts
         env:
           GH_TOKEN: ${{ secrets.CONTRACTS_READ_TOKEN || secrets.EXERCISES_RELEASES_TOKEN }}
