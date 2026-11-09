@@ -2561,6 +2561,19 @@ def block_texts(b: dict) -> list[str]:
     return block_text_runs(b)
 
 
+def paper_sheets(lesson: Path, pages: list[int]) -> set[str]:
+    """The section's tables drawn as a paper sheet (sections.json `block_layouts` "paper", ADR 050
+    amendment (4)), by the section's own block ids. A sheet's one-line rows are the paper's lines, so
+    the table-size rule does not apply to them (ADR 050 amendment (11)); every other table rule does."""
+    try:
+        layouts = json.loads((lesson / "analysis" / "sections.json")
+                             .read_text(encoding="utf-8")).get("block_layouts") or {}
+    except (OSError, ValueError):
+        return set()
+    pre = paths.section_tag(pages) + "_"     # block_layouts is keyed by bundle id
+    return {bid[len(pre):] for bid, name in layouts.items() if name == "paper" and bid.startswith(pre)}
+
+
 def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
     """Deterministic checks. `fail` stops the run; `warn` is for the reviewer."""
     findings: list[dict] = []
@@ -2568,6 +2581,7 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
     warn = lambda where, what: findings.append({"severity": "warn", "where": where, "what": what})
 
     norm = lambda s: re.sub(r"\s+", " ", s).strip()
+    paper = paper_sheets(Path(data["lesson_dir"]), data["pages"])
     slide_lines = [norm(l) for l in data["slide_text"].splitlines() if l.strip()]
     # An exercise sentence is verbatim when it is in the slide text with its
     # whitespace normalised, as printed or with this section's registered deck
@@ -2778,7 +2792,7 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
                                       "to the other side or to another diagram")
         if t == "table":
             hdr = b.get("header") or []
-            if not b.get("core") and (len(hdr) > 4 or len(b.get("rows") or []) > 5):
+            if not b.get("core") and b["id"] not in paper and (len(hdr) > 4 or len(b.get("rows") or []) > 5):
                 fail(b["id"], "table larger than four columns by five rows")
             if any(len(r) != len(hdr) for r in (b.get("rows") or [])):
                 fail(b["id"], "table rows do not match the header width")

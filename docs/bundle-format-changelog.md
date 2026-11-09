@@ -1297,7 +1297,8 @@ The learner answers; Check marks it at once (the right answer and a short reason
 Check, closes the pop-up and the lesson goes on. Each answer is an attempt per scored unit, as a handout's practice step
 records it; nothing is scored as a test. The owner chose this pop-up himself (it is a blocking pop-up by design).
 
-A lesson is 1.23 only when it has practice points; every other lesson keeps its format byte for byte.
+A lesson is 1.23 only when it has practice points, or (from 2026-11-09) when it is in the teal look; every other lesson
+keeps its format byte for byte.
 
 ### Added: `boards[].states[].practice`
 
@@ -1370,6 +1371,17 @@ hyphen and article kept. Contractions and British and American spellings are lis
   owner's Writing-correction model and refused until it exists.
 - **`oet-typed-form-v1`** is accepted as proposed, with the site's test vectors (`test-vectors/oet-typed-form-v1.json`):
   **one** final mark is dropped ("a 47-year-old.." is wrong).
+
+### Added 2026-11-09: `lesson.look` (contracts 1.19.0)
+
+| Field | Type | Values | Meaning | When absent |
+|---|---|---|---|---|
+| `lesson.look` | string, optional, in `bundle.json` and `text.json` | `"teal"` (the only value) | The lesson is in the teal look (engine ADR 050): the site serves the hand font as `--font-hand`, which the lesson's `blocks.css` already names, and draws each circle mark on, clockwise from 9 o'clock, over 0.4 s | circles appear whole, and the hand font falls back to the stylesheet's own |
+
+The site added the field in contracts 1.19.0 (oetacademy-web #258, #259), with the rule `LP-LOOK`: the field only in a
+bundle or text of format 1.23 or later. The engine writes it for a lesson whose `sections.json` names `lesson.look`
+"teal" (a style C lesson only) and builds that lesson at 1.23 at least (ADR 050 amendment (11)); a style C lesson
+without a look is unchanged.
 
 ### Can a site that knows only 1.22 read 1.23?
 
@@ -1722,4 +1734,9 @@ completeness.
 1.22 bundle.boards[].focus[].cells
 1.22 bundle.boards[].focus[].cells[]
 1.22 bundle.boards[].focus[].cells[][]
+# 1.23, added 2026-11-09 (contracts 1.19.0): the teal look
+1.23 bundle.lesson.look
+1.23 bundle.lesson.look = "teal"
+1.23 text.lesson.look
+1.23 text.lesson.look = "teal"
 ```

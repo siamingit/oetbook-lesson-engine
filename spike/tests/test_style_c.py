@@ -439,6 +439,33 @@ class PackageCheck(unittest.TestCase):
                            "sections": []}, {"lesson": b["lesson"], "sections": []}, f)
             self.assertEqual(f.codes("error"), want)
 
+    def test_look_only_from_1_23(self):
+        """Contracts 1.19.0, LP-LOOK: lesson.look is a field of format 1.23 and later (ADR 050 amendment (11))."""
+        for version, want in (("1.23", []), ("1.22", ["LP-LOOK"])):
+            b = self.bundle(version)
+            b["lesson"]["look"] = "teal"
+            self.assertEqual(self.codes(b), want, version)
+            f = lp.Findings()
+            lp.check_text({"format_version": version, "lesson": dict(b["lesson"]), "sections": []},
+                          {"lesson": b["lesson"], "sections": []}, f)
+            self.assertEqual(f.codes("error"), want, version)
+
+
+class PaperSheets(unittest.TestCase):
+    """ADR 050 amendment (11): a table drawn as a paper sheet is exempt from the table-size rule; the
+    exemption is read from sections.json block_layouts, keyed by bundle id, for this section only."""
+
+    def test_only_the_sections_paper_tables(self):
+        import write_screens as ws
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / "analysis").mkdir()
+            (Path(d) / "analysis" / "sections.json").write_text(json.dumps({"block_layouts": {
+                "page-14_k05": "paper", "page-14_k08": "paperlong", "page-17_k15": "paper",
+                "page-14_k09": "letter"}}), encoding="utf-8")
+            self.assertEqual(ws.paper_sheets(Path(d), [14]), {"k05"})
+            self.assertEqual(ws.paper_sheets(Path(d), [12, 13]), set())
+            self.assertEqual(ws.paper_sheets(Path(d) / "missing", [14]), set())
+
 
 if __name__ == "__main__":
     unittest.main()
