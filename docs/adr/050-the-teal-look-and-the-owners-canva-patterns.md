@@ -534,3 +534,63 @@ difference. Outside the proof, as in amendment (9): Writing 4, whose re-render s
 on this change alike. Two snapshots raised the alarm for files another session wrote while they ran (Reading 3's
 check reports and Reading 5's site-player screenshots, outputs of checks, not inputs of a render); both lessons
 compared identical. The new code reaches a lesson only when its own data names it, after this change.
+
+## Amendment (11), 2026-11-09: the look sent to the site, and a paper sheet exempt from the table-size rule
+
+**Context.** The owner's brief of 2026-11-09 re-releases the eight Writing lessons, all in the teal look, once each.
+Two shared changes come first.
+
+(a) The site added the teal look to its contracts in 1.19.0 (oetacademy-web #258, #259, merged 2026-11-04): an
+optional `lesson.look`, `"teal"` its only value, in `bundle.json` and `text.json`, with the rule `LP-LOOK` (the field
+only at format 1.23 or later). With it the site serves the hand font as `--font-hand`, which the teal stylesheet
+already names (`--t-hand: var(--font-hand, "Caveat"), ...`), and draws each circle mark on, clockwise from 9 o'clock,
+over 0.4 s from its time on the lesson's clock (whole under reduced motion and after a seek). Without the field the
+site shows circles whole and falls back from the hand font. The engine pinned 1.14.0 and did not write the field, so
+no teal lesson on the site had either. The site's main validates contracts 1.20.0 (released after 1.19.0; 1.15 to 1.18
+and 1.20 change only lab and exercise sets, none a session bundle).
+
+(b) Writing 4's re-render stops on its screens audit (issue #184; amendments (9) and (10) left it outside their
+proofs). Three of its failures are paper sheets (`block_layouts` "paper"): a table whose six one-line rows are the
+sheet's lines, deliberately so (amendment (4): the sheet is drawn by its lines), which the audit's rule "no table
+larger than four columns by five rows" refuses. Its other three failures are choices tables whose header is one cell
+wider than their rows; those are the lesson's own data, put right in its folder.
+
+**Options considered.**
+
+- For (a): keep 1.14.0 and leave the site's look off. Refused: the owner's brief sends the look. Pin 1.19.0 exactly.
+  Refused: the brief asks for the latest release the site's main validates, 1.20.0.
+- For (b): split each sheet into tables of five rows. Refused: a sheet is one piece of paper, read whole. Exempt every
+  paper layout (`paperlong`, `paperfit`, `paperlook` too). Not needed: only "paper" sheets fail, and the brief names
+  "paper" alone; the others keep the rule until a lesson needs otherwise.
+
+**Decision** (the owner's brief, 2026-11-09).
+
+1. **Contracts 1.20.0 pinned**: `spike/publish/contracts.lock.json` names `contracts-v1.20.0`,
+   `oetacademy-contracts-1.20.0.zip`, SHA-256 `6e4d4d243ba2e4ce569f1412794c4cbfff26ee3b24d22fc2afddfe011497ead7`
+   (this is the lock change ADR 039's runbook step 18b asks to be recorded). `lesson_package.py` checks `LP-LOOK` in
+   `bundle.json` and `text.json` as the site states it; the rest of 1.20.0 is checked by the site's own validator at
+   the tag (step 18b).
+2. **`lesson.look` written for a teal lesson only**: `build_lesson_player.py` writes `lesson.look` "teal" in the
+   bundle and the text when the lesson's `sections.json` names `lesson.look` "teal" (a style C lesson only,
+   `style_c.look_of`), and builds that lesson at format 1.23 at least. A style C lesson without a look is unchanged,
+   byte for byte. Writing 1, the only teal lesson without practice points, so far built at 1.22, becomes 1.23.
+3. **A paper sheet is exempt from the table-size rule**: in the screens audit (`write_screens.py`), a table named
+   "paper" in the lesson's `sections.json` `block_layouts` is not held to four columns by five rows. Every other rule
+   on it stands (its rows match its header; the slide-table audit; the readability check of amendment (1)).
+
+**Consequences.** Every teal lesson's bundle and text gain one field at their next build; nothing else in any built
+lesson changes. The bundle format docs (docs/04-LESSON-BUNDLE.md, docs/bundle-format-changelog.md §9c and its field
+index) list `lesson.look`.
+
+**How the audit finds a paper sheet.** `block_layouts` is keyed by the block's bundle id (the section tag, then the
+block id: `page-14_k05`); the audit sees the block id alone. `write_screens.paper_sheets(lesson, pages)` returns the
+ids of the section being audited whose layout is "paper" (tests: `test_style_c.PaperSheets`).
+
+**Proof** (2026-11-09, `render_compare.py`, every built lesson in two parallel lists). Before: main at `879f54a`;
+after: this change. 28 lessons compared: the 21 grammar, listening, reading and vocabulary lessons are identical
+(every data file, every moment drawn, every board's time). The 7 Writing lessons that main builds differ in 4 files
+each (the player's and the silent preview's `bundle.json` and `text.json`) and in one place only, `lesson.look`
+"teal" added; Writing 1 also goes from format 1.22 to 1.23. Not one moment is drawn differently and no board's time
+moves. Writing 4, which main does not build (issue #184), now builds: its screens audit passes with its three choices
+headers trimmed in its folder (nothing visible changes) and its three paper sheets exempt, and its `gen_screens.py`
+now stops when `write_screens.py` fails. No file under `C:\OET\lessons` changed during either snapshot.

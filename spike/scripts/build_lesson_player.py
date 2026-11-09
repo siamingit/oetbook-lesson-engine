@@ -143,6 +143,11 @@ FIT_VALUES = ("whole",)
 # 1.23 (ADR 046): a lesson with practice points (its analysis/practice.json):
 # a state's `practice` and a pause cue's `practice` (rules 56 and 57)
 NEWEST_FORMAT_VERSION = "1.23"
+# The teal look (ADR 050 amendment (11), contracts 1.19.0 LP-LOOK): `lesson.look`
+# "teal" tells the site to draw the lesson's handwriting and circles; a field of
+# 1.23 and later, so a teal lesson is built at 1.23 at least. A lesson in style C
+# without a look keeps its bundle byte for byte
+LOOK_FORMAT_VERSION = "1.23"
 
 
 def vkey(v: str) -> tuple[int, ...]:
@@ -1068,7 +1073,9 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     # 1.23 (ADR 046): practice points, from the lesson's analysis/practice.json, on
     # the pauses that name them; a lesson without the file is built as before
     with_practice = practice_points.attach(L, boards_out, sample=bool(only))
+    look = style_c.look_of(L) if style else None
     newer = max([v for v in (declared_format(info),
+                             LOOK_FORMAT_VERSION if look == "teal" else None,
                              FIT_FORMAT_VERSION if any(bd.get("fit") for bd in boards_out) else None,
                              style_c.FORMAT_VERSION if style else None,
                              practice_points.FORMAT_VERSION if with_practice else None) if v],
@@ -1103,6 +1110,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                              for title, cid in cat_ids.items()]}
     if style:
         lesson["style"] = style             # 1.22: the lesson's look (ADR 042)
+    if look == "teal":
+        lesson["look"] = look               # 1.23: the teal look (ADR 050 amendment (11))
 
     first = next(iter(audio_index.values()))
     meta = {"silent": silent, **gaps, "wpm": wpm if silent else None,

@@ -20,7 +20,7 @@ rules contracts 1.9.0 add for bundle 1.21: `LP-FIT`, `LP-PROVENANCE`, `LP-HEARD`
 manifest names taxonomy v2 or v3, its keys checked against the version it names; and the three
 contracts 1.12.0 add for bundle 1.22: `LP-STYLE`, `LP-EFFECTS`, `LP-CELLS`; and of the rules
 contracts 1.13.0 add for bundle 1.23, the practice points' place and IDs: `LP-PRACTICE` (in part),
-`LP-ID-BLOCK`, `LP-FIXTURE`), with its codes (`LP-...`), plus one of the engine's own: no file
+`LP-ID-BLOCK`, `LP-FIXTURE`; and the one contracts 1.19.0 add, `LP-LOOK`), with its codes (`LP-...`), plus one of the engine's own: no file
 reference in the package points outside it (`PUB-OUTSIDE`). The site validates again at import and
 refuses a package with any error; a 1.23 package is also run through the site's own validator
 (`pnpm contracts:validate lesson <folder> --refuse-fixtures`, docs/03-RUNBOOK.md step 18b), which
@@ -494,6 +494,8 @@ def check_image(path: Path, p: str, f: Findings) -> None:
 def check_text(t: dict, b: dict, f: Findings) -> None:
     if "style" in t["lesson"] and version_tuple(t["format_version"]) < (1, 22):
         f.error("LP-STYLE", "text.json", "lesson.style is a field of format 1.22 and later")
+    if "look" in t["lesson"] and version_tuple(t["format_version"]) < (1, 23):
+        f.error("LP-LOOK", "text.json", "lesson.look is a field of format 1.23 and later")
     if t["lesson"]["id"] != b["lesson"]["id"]:
         f.error("LP-TEXT-MISMATCH", "text.json", "lesson id differs from bundle.json")
     key = [(s["id"], s["title"], s["start"], s["end"]) for s in t["sections"]]
@@ -739,12 +741,15 @@ def check_style(bundle: dict, f: Findings) -> None:
     lesson in style C has `effects` on every state and only then; each effect lies inside its state,
     in time order, on a block of its board, a zoom on the board's table and a row of it; a focus
     entry's `cells` only with a row and inside the board's table. Before 1.22 none of the three
-    fields is allowed. Each rule broken is its own finding, as the site reports it."""
+    fields is allowed. LP-LOOK (contracts 1.19.0): `lesson.look` only from 1.23. Each rule broken is its own finding, as the site reports it."""
     where = "bundle.json"
     at122 = version_tuple(bundle["format_version"]) >= (1, 22)
     style = "style" in bundle["lesson"]
     if style and not at122:
         f.error("LP-STYLE", where, "lesson.style is a field of bundle format 1.22 and later", "lesson")
+    if "look" in bundle["lesson"] and version_tuple(bundle["format_version"]) < (1, 23):
+        # The teal look (ADR 050, contracts 1.19.0): a lesson field of 1.23 and later.
+        f.error("LP-LOOK", where, "lesson.look is a field of bundle format 1.23 and later", "lesson")
     for x in bundle["boards"]:
         table = bundle["blocks"].get(x["table"]) if x.get("table") else None
         own = set(x.get("fixed") or []) | set(x.get("pinned") or {}) | ({x["table"]} if x.get("table") else set())

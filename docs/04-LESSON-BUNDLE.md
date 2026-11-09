@@ -32,7 +32,7 @@ and its motion, on 2026-10-26 (docs/adr/042-style-c-and-motion.md); 1.23, practi
 lesson is written in 1.13 only when it is a Reading lesson, and in 1.20 only when it
 is a Listening lesson; in 1.21 only when it has a board shown whole, or its
 `sections.json` declares 1.21 (`lesson.bundle_format`); in 1.22 only when it is in style C
-(`sections.json` `lesson.style` "c"); in 1.23 only when it has practice points (`analysis/practice.json`); every other lesson stays 1.12, byte for byte, until rebuilt.
+(`sections.json` `lesson.style` "c"); in 1.23 only when it has practice points (`analysis/practice.json`) or is in the teal look (`sections.json` `lesson.look` "teal", which the bundle carries as `lesson.look`, ADR 050 amendment (11)); every other lesson stays 1.12, byte for byte, until rebuilt.
 A change to it is a new format version (§3), recorded in a new ADR.
 
 | Version | Date | Change |
