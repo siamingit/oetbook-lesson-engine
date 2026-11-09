@@ -1196,6 +1196,11 @@ screens `overrides.json` `split`, where a state begins, its narration unchanged.
 tighter rows, the arrow inside its row and a wider column for the right sentence, the text at the same size. It is for
 a following board whose table and notes the site's player would otherwise pan to show.
 
+`columnsfit` (ADR 050 amendment (13)), named per block in the teal look, draws the two halves of a long `columns`
+table (two columns, eight rows or more, `data-flow="2"`) in less height: the label a quarter of its half, tighter cells
+and gaps, the text at the same size. It is refused for a table not drawn in two halves. It is for a board the site's
+player would otherwise pan to show.
+
 **Accents and boards marked no-zoom** (ADR 049). `block_accents` (`{"<bundle block id>": ["phrase", ...]}`) names the words a layout sets in its accent colour: each phrase is found exactly once in the block's words, never split by a tag, and wrapped in a span `acc`, by a layout that draws it (`skeleton`: the purpose words, in the Purpose colour; green stays reserved for "right", §5); the words never change. `boards_nozoom` (`["<board id>", ...]`) names boards shown whole (`boards_fit` "whole") on which the style C zoom is not written either (§8g, rule 55): the whole table stays in view at every moment on every device, and the spotlight and the marks alone show the line being taught. For a table whose rows are to be seen together, as the ISBAR parts on one letter.
 
 **The paper** (owner, 2026-10-27; ADR 045). A Writing lesson shows the paper wherever a board draws on it,

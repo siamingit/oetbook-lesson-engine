@@ -628,3 +628,40 @@ shows at every state with the camera still (b06-s09). Tests: `test_style_c.TealL
 **Proof** (2026-11-09, `render_compare.py`, every built lesson). Before: main at `cedaef2`; after: this change. All 29
 built lessons are identical (data files, every moment drawn, every board's time): no lesson names the layout yet, so no rule and no class is written. No file under
 `C:\OET\lessons` changed during either snapshot.
+
+## Amendment (13), 2026-11-09: the two halves of a columns table in less height (Writing 5's Signal words board)
+
+**Context.** Writing 5's page-4_t1 ("Signal words", 02:03 to 07:30) is a `columns` table of nine rows drawn in two
+halves (amendment (1)), its text at the smallest size (2.9% of the frame, 26 px at the site's 900 px frame). On the
+site the camera pans to show it: in v6, about 121 px at 07:28 (reported on #194), and at 10 of its 11 states, the most
+124 px at 05:54, with the top of the table under the title. The owner asked on #194 for the whole board with no pan,
+keeping its teal look, its words, narration and audio, by tightening spacing or widths as amendment (12) did.
+
+**Options considered.**
+
+- Smaller text. Refused: the table is at the readability minimum.
+- Shorter words. Refused by the request: the words, narration and audio stay.
+- Tighter spacing for every two-halves `columns` table. Refused: other built boards would move, and none of them pans.
+
+**Decision** (the owner's choice on 2026-11-09, "Engine PR like v6"). A layout `columnsfit`, named per block in
+`block_layouts`, teal only (refused in another look), and refused for a table not drawn in two halves. It draws the
+same table as `columns` with the class `col-fit`, and its rules (`LAYOUT_CSS["columns_fit"]`, sent only where used)
+change four things, never the text's size:
+
+1. the label 25% of its half (was 30%), so the words beside it take fewer lines; a long label wraps at a space,
+   never inside a word (Writing 5's "Advice (to a patient)" takes two lines, as the words beside it do);
+2. each cell's padding 0.8% of the frame high and 1.1% wide (was 1.3% and 1.6%);
+3. the gap between rows 0.7% of the frame (was 1.3%), between the halves 1.8% (was 2.4%), between a label and its
+   words 1% (was 1.6%);
+4. nothing else: the colours, the pills and the marks are `columns`'.
+
+**Consequences.** Only a block named `columnsfit` changes. Writing 5 v7 names it for page-4_k01; with it the fit's
+usual steps are enough: the table at 3.0 (was 2.9), and at 02:46, 05:23 and 06:56 the new note takes the place of the
+note before it (ADR 011 clears). On the site's player the whole board shows at every state with the camera still
+(30 moments, state ends and each reveal; at least 80 px free below). Tests:
+`test_style_c.TealLook.test_columnsfit_is_chosen_per_block`.
+
+
+**Proof** (2026-11-09, `render_compare.py`, every built lesson). Before: main at `3f9c6b8`; after: this change. All 29
+built lessons are identical (data files, every moment drawn, every board's time): no lesson names the layout yet, so
+no rule and no class is written. No file under `C:\OET\lessons` changed during either snapshot.

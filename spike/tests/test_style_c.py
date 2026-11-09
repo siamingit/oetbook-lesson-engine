@@ -837,3 +837,27 @@ class TealLook(unittest.TestCase):
         self.assertIsNone(style_c.check_layout("k", b, "wrongrightfit"))
         with self.assertRaises(SystemExit):
             style_c.layout_html(b, b["html"], None, "wrongrightfit")
+
+    def test_columnsfit_is_chosen_per_block(self):
+        """ADR 050 amendment (13): `columnsfit` draws the two halves of a long columns table in less height, chosen for
+        a block; the same table as `columns` with the class `col-fit`; refused outside the teal look and for a table
+        not drawn in two halves; its rules only where used."""
+        rows = [[f"Label {i}", f"Words for row {i}."] for i in range(9)]
+        b = ADR048Layouts._table(self, ["Use", "Words"], rows)
+        out = style_c.layout_html(b, b["html"], None, "columnsfit", None, "teal")
+        plain = style_c.layout_html(b, b["html"], None, "columns", None, "teal")
+        self.assertIn("lay-columns", out)
+        self.assertIn(' data-flow="2"', out)
+        self.assertIn("col-fit", out)
+        self.assertEqual(out.replace(" col-fit", ""), plain)
+        fit_css = style_c.layout_css({"p": {**b, "html": out}}, "teal")
+        plain_css = style_c.layout_css({"p": {**b, "html": plain}}, "teal")
+        self.assertIn(style_c.LAYOUT_CSS["columns_fit"], fit_css)
+        self.assertEqual(fit_css.replace(style_c.LAYOUT_CSS["columns_fit"], ""), plain_css)
+        self.assertNotIn("col-fit", plain_css)
+        self.assertIsNone(style_c.check_layout("k", b, "columnsfit"))
+        with self.assertRaises(SystemExit):
+            style_c.layout_html(b, b["html"], None, "columnsfit")
+        short = ADR048Layouts._table(self, ["Use", "Words"], rows[:3])
+        with self.assertRaises(SystemExit):
+            style_c.layout_html(short, short["html"], None, "columnsfit", None, "teal")
