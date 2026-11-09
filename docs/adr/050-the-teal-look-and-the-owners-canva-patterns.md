@@ -648,14 +648,17 @@ keeping its teal look, its words, narration and audio, by tightening spacing or 
 same table as `columns` with the class `col-fit`, and its rules (`LAYOUT_CSS["columns_fit"]`, sent only where used)
 change four things, never the text's size:
 
-1. the label 25% of its half (was 30%), so the words beside it take fewer lines; at 25% no label of Writing 5's
-   table breaks ("Advice (to a patient)" broke at 23%);
+1. the label 25% of its half (was 30%), so the words beside it take fewer lines; a long label wraps at a space,
+   never inside a word (Writing 5's "Advice (to a patient)" takes two lines, as the words beside it do);
 2. each cell's padding 0.8% of the frame high and 1.1% wide (was 1.3% and 1.6%);
 3. the gap between rows 0.7% of the frame (was 1.3%), between the halves 1.8% (was 2.4%), between a label and its
    words 1% (was 1.6%);
 4. nothing else: the colours, the pills and the marks are `columns`'.
 
-**Consequences.** Only a block named `columnsfit` changes. Writing 5 v7 names it for page-4_k01. Tests:
+**Consequences.** Only a block named `columnsfit` changes. Writing 5 v7 names it for page-4_k01; with it the fit's
+usual steps are enough: the table at 3.0 (was 2.9), and at 02:46, 05:23 and 06:56 the new note takes the place of the
+note before it (ADR 011 clears). On the site's player the whole board shows at every state with the camera still
+(30 moments, state ends and each reveal; at least 80 px free below). Tests:
 `test_style_c.TealLook.test_columnsfit_is_chosen_per_block`.
 
 
