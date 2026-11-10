@@ -665,3 +665,23 @@ note before it (ADR 011 clears). On the site's player the whole board shows at e
 **Proof** (2026-11-09, `render_compare.py`, every built lesson). Before: main at `3f9c6b8`; after: this change. All 29
 built lessons are identical (data files, every moment drawn, every board's time): no lesson names the layout yet, so
 no rule and no class is written. No file under `C:\OET\lessons` changed during either snapshot.
+
+## Amendment (14), 2026-11-10: a role-play's turns as speech bubbles (the `dialogue` layout, ADR 053)
+
+**Context.** The Speaking course shows short role-plays on the board: who speaks, and the line. A `parts` or
+`columns` table draws them as rows, and the learner cannot see at a glance which line is the patient's.
+
+**Options considered.**
+
+- A `parts` table with the speaker as its label. Refused: the turns read as a list of facts, not a talk.
+- A picture of a chat. Refused: the board's text must stay text (marks, the fit, the readability check).
+
+**Decision.** A layout `dialogue`, named per block in `block_layouts`, teal only, for a two-column table (who, line).
+Each row is a speech bubble with who speaks above it; the patient's (found by the label's first word,
+`style_c.DIALOGUE_PATIENT`) on the left in a soft blue bubble, the clinician's on the right in teal, and a
+clinician's line left empty (the learner's turn) as a dashed bubble. The label sits inside
+the bubble's padding-top, so it never covers the words; every text keeps 4.5:1 or more. Its rules
+(`LAYOUT_CSS["dialogue"]`) are sent only where used.
+
+**Consequences.** Only a block named `dialogue` changes; no built lesson names it (render proof of ADR 053). Speaking 1
+uses it for its role-play boards. Tests: `test_style_c` (the layout list) and `test_speaking`.

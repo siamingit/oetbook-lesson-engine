@@ -236,5 +236,28 @@ class Dialogue(unittest.TestCase):
         self.assertEqual(style_c._text(out), style_c._text(html))
 
 
+
+class StubFindingsTest(unittest.TestCase):
+    """ADR 053: the stub for the site-player check sets aside the two tag errors, and only them."""
+
+    def test_only_the_tag_errors_become_warnings(self):
+        import lesson_package as lp
+        f = lp.Findings()
+        f.error("LP-TEACHES-NOT-ALLOWED", "sections[0]", "not on the tag list", "speaking.start")
+        f.error("LP-TEACHES-NOT-ALLOWED", "sections[0]", "not on the tag list", "speaking.close")
+        f.error("LP-TEACHES-EMPTY", "sections[1]", "no tags")
+        f.error("LP-AUDIO-MISSING", "boards[0]", "no audio")
+        f.warning("LP-SOMETHING", "boards[1]", "a warning")
+        logged = []
+        out = publish_lesson.stub_findings(f, logged.append)
+        self.assertEqual(out.codes("error"), ["LP-AUDIO-MISSING"])
+        self.assertEqual(out.codes("warning"), ["LP-SOMETHING", "LP-TEACHES-EMPTY", "LP-TEACHES-NOT-ALLOWED"])
+        moved = next(i for i in out.items if i["code"] == "LP-TEACHES-NOT-ALLOWED")
+        self.assertEqual((moved["count"], moved["examples"]), (2, ["speaking.start", "speaking.close"]))
+        self.assertEqual(len(logged), 2)
+        # the lesson's own findings are untouched: a real package still fails them
+        self.assertEqual(f.codes("error"), ["LP-AUDIO-MISSING", "LP-TEACHES-EMPTY", "LP-TEACHES-NOT-ALLOWED"])
+
+
 if __name__ == "__main__":
     unittest.main()

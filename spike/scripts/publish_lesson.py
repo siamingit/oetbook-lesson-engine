@@ -481,6 +481,23 @@ def stub_speaking(bundle: dict) -> dict:
 
 STUB_DIR = Path(__file__).resolve().parents[2] / "spike" / "out" / "site-player-stub"
 
+# ADR 053: the pinned session section tag list has no speaking keys yet, so a speaking lesson's sections
+# cannot carry tags the contracts accept. The stub is never released, so for it alone these two errors are
+# warnings; a real package of the lesson still fails them until the contracts list speaking keys.
+STUB_SET_ASIDE = {"LP-TEACHES-NOT-ALLOWED", "LP-TEACHES-EMPTY"}
+
+
+def stub_findings(f: lp.Findings, log=print) -> lp.Findings:
+    out = lp.Findings()
+    for it in f.items:
+        sev = "warning" if it["code"] in STUB_SET_ASIDE else it["severity"]
+        if sev != it["severity"]:
+            log(f"stub only (ADR 053): {it['code']} ({it['count']}x) set aside as a warning")
+        for _ in range(it["count"]):
+            out.add(sev, it["code"], it["where"], it["message"])
+        out._groups[(sev, it["code"], it["where"], it["message"])]["examples"] = list(it["examples"])
+    return out
+
 
 def build(L: Path, contracts: lp.Contracts, workers: int | None = None, log=print, draft: bool = False,
           stub: bool = False) -> dict:
@@ -520,6 +537,8 @@ def build(L: Path, contracts: lp.Contracts, workers: int | None = None, log=prin
     try:
         report = _assemble(L, player, bundle, contracts, stage, version, approved, tags, retired, workers, f, log)
         f.extend(lp.validate_package(stage, contracts))
+        if stub:
+            f = stub_findings(f, log)
         manifest = read_json(stage / "manifest.json")
         if not stub and record["releases"] and record["releases"][-1].get("fingerprint") == fingerprint(manifest):
             shutil.rmtree(stage)

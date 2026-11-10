@@ -1856,6 +1856,12 @@ LAYOUT_CSS["dialogue"] = r"""
 .frame .tbl.lay.lay-dialogue tbody tr td:first-child{font-size:var(--t-label,2.4cqh)}
 .frame .tbl.lay.lay-dialogue tbody tr td+td{font-size:max(var(--tf,3.2cqh),3.2cqh)}
 @media (prefers-reduced-motion: reduce){.tbl.lay.lay-dialogue tbody tr{animation:none}}
+/* the spotlight on a dialogue: the wash goes on the bubble only, not on the speaker's name; the learner's teal
+   bubble, washed, takes the darkest ink, since white on a washed teal is unreadable (check_text_size, 2026-11-09).
+   Here, after the look's own wash rule, and so only in a lesson with a dialogue (the render proof, 2026-11-10) */
+.frame .tbl.core.lay-dialogue.spot tbody tr:not(.focus) td{background-image:none}
+.frame .tbl.core.lay-dialogue.spot tbody tr:not(.focus) td+td{background-image:linear-gradient(var(--t-wash),var(--t-wash))}
+.frame .tbl.core.lay-dialogue.spot tbody tr:not(.focus)[data-who="you"] td+td{color:var(--t-ink-d)}
 """
 LAYOUT_CSS["twocol"] = r"""
 /* contents items in two columns on the site's player too (ADR 050 amendment (10)): the site's gap between them is
@@ -2350,11 +2356,6 @@ LOOK_CSS = {"teal": r"""
 .frame .tbl.core.spot:not(.lay-ruled) tbody tr:not(.focus) td,
 .frame .tbl.core.spot.cellspot:not(.lay-ruled) tbody tr td:not(.lit){background-image:linear-gradient(var(--t-wash),var(--t-wash))}
 .frame .tbl.core.spot tbody tr:not(.focus)[data-c],.frame .tbl.core.spot tbody tr:not(.focus) td[data-c]{--con:var(--t-ink-d)}
-/* a dialogue (ADR 053): the wash goes on the bubble only, not on the speaker's name; the learner's teal bubble,
-   washed, takes the darkest ink, since white on a washed teal is unreadable (check_text_size, 2026-11-09) */
-.frame .tbl.core.lay-dialogue.spot tbody tr:not(.focus) td{background-image:none}
-.frame .tbl.core.lay-dialogue.spot tbody tr:not(.focus) td+td{background-image:linear-gradient(var(--t-wash),var(--t-wash))}
-.frame .tbl.core.lay-dialogue.spot tbody tr:not(.focus)[data-who="you"] td+td{color:var(--t-ink-d)}
 /* words on coral, and on a mid teal, in the darkest ink or in white (4.5:1 or more) */
 .frame.frame :is(.lay,.lay-badges) [data-c="3"],.frame.frame .lay-badges[data-c="3"]{--con:var(--t-ink-d)}
 .frame #cam > .blk.citem:nth-child(5n+4){--con:var(--t-ink-d)}
