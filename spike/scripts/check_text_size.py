@@ -10,7 +10,10 @@ Rules (the owner's review of Word Order draft.3, 2026-11-01; ADR 050 amendment (
      put on it. A line in the teacher's hand counts at its size divided by 1.3 (style_c.HAND: Caveat's x-height
      against IBM Plex's), so a hand note reads as body text does. A label is a table's head (th), a text set in
      capitals, a pseudo-element's words (a label drawn from a header, a count, a step's number), or a piece of
-     at most four words (a pill, a tile, a line number); anything longer is running text.
+     at most four words (a pill, a tile, a line number); anything longer is running text. A table body's cell in
+     its normal weight with a word in it (a cell, a speech bubble, a card's line, not a line number) and a contents
+     item's sections (a part, or the one line under an item) are running text however short (the lesson-engine
+     review of Speaking 1-3, 2026-11-10: "Four criteria" passed as a label).
   2. Every line of text has a contrast of at least 4.5:1 with what is behind it (WCAG 2 AA), counted after every
      opacity it is drawn under: a row dimmed by the spotlight must stay readable (dimmed with a lighter ground,
      never by greying its words out).
@@ -118,6 +121,10 @@ HARNESS = r"""
     }
     return el;
   }
+  // running text whatever its length (the lesson-engine review of Speaking 1-3, 2026-11-10): a line in a table's
+  // body set in its normal weight with a word in it (a cell, a bubble, a card's line; a line number stays a label),
+  // and a contents item's part
+  const running = (p, cs, t) => !!p.closest(".cp, .citem .cs") || (!!p.closest("tbody td") && parseInt(cs.fontWeight, 10) < 600 && /[A-Za-z]{2}/.test(t));
   const isHand = cs => /caveat|segoe print|bradley hand|chalkboard|cursive/i.test(cs.fontFamily.split(",")[0]);
   const found = new Map();
   const minimum = new Map();
@@ -143,7 +150,7 @@ HARNESS = r"""
       const piece = pieceOf(p);
       const pcs = getComputedStyle(piece);
       const label = piece.tagName === "TH" || !!p.closest("th") || cs.textTransform === "uppercase"
-                    || words(piece.innerText || piece.textContent) <= R.words;
+                    || (words(piece.innerText || piece.textContent) <= R.words && !running(p, cs, piece.innerText || piece.textContent));
       const hand = isHand(cs);
       const px = parseFloat(cs.fontSize) * scaleOf(p) * k;
       const eq = hand ? px / R.hand : px;
@@ -194,10 +201,15 @@ HARNESS = r"""
           const q = rg.getBoundingClientRect();
           if (!q.width) continue;
           const line = lines.find(l => Math.abs(l.top - q.top) < q.height / 2);
-          if (line) line.n++; else lines.push({ top: q.top, n: 1 });
+          if (line) { line.n++; line.last = m[0]; } else lines.push({ top: q.top, n: 1, last: m[0] });
         }
       }
-      if (lines.length > 1 && lines.some(l => l.n <= 2))
+      // a lesson title that breaks after its course's name ("OET Speaking:" above "Starting the Role-Play") keeps
+      // the name whole on its first line: that line is not one or two words left alone (the owner accepted the
+      // two-line title of Speaking 3, the lesson-engine review of 2026-11-10, point 7)
+      lines.sort((x, y) => x.top - y.top);
+      const named = h.matches(".ltitle") && lines.length === 2 && /:$/.test(lines[0].last || "");
+      if (lines.length > 1 && lines.some((l, i) => l.n <= 2 && !(named && i === 0)))
         add("heading wrap", bd, id, t, (h.innerText || "").replace(/\s+/g, " ").trim().slice(0, 60),
             { value: Math.min(...lines.map(l => l.n)), need: 3, lines: lines.length });
     }

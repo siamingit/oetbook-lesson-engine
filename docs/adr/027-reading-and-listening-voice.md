@@ -196,3 +196,10 @@ voice, unchanged."
   change. It is proved by rendering every built lesson before and after, and
   is not part of this amendment.
 - No existing lesson changes: every lesson built so far has only Rupert.
+
+### Built, 2026-11-10 (ADR 053)
+
+The `speaker` field is built as ADR 053 decision 1: a line with `speaker` patient_f is voiced by Gemma, patient_m by
+Archie, both sonic-3.6 at 0.8 (`voices.SPEAKERS`), and `emotion` worried / upset by Cartesia's `anxious` /
+`frustrated` (`voices.EMOTIONS`), only where the role card gives the feeling. A line with no `speaker` is Rupert's,
+as before; the render proof of ADR 053 shows every built lesson unchanged.

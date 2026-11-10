@@ -665,3 +665,75 @@ note before it (ADR 011 clears). On the site's player the whole board shows at e
 **Proof** (2026-11-09, `render_compare.py`, every built lesson). Before: main at `3f9c6b8`; after: this change. All 29
 built lessons are identical (data files, every moment drawn, every board's time): no lesson names the layout yet, so
 no rule and no class is written. No file under `C:\OET\lessons` changed during either snapshot.
+
+## Amendment (14), 2026-11-10: a role-play's turns as speech bubbles (the `dialogue` layout, ADR 053)
+
+**Context.** The Speaking course shows short role-plays on the board: who speaks, and the line. A `parts` or
+`columns` table draws them as rows, and the learner cannot see at a glance which line is the patient's.
+
+**Options considered.**
+
+- A `parts` table with the speaker as its label. Refused: the turns read as a list of facts, not a talk.
+- A picture of a chat. Refused: the board's text must stay text (marks, the fit, the readability check).
+
+**Decision.** A layout `dialogue`, named per block in `block_layouts`, teal only, for a two-column table (who, line).
+Each row is a speech bubble with who speaks above it; the patient's (found by the label's first word,
+`style_c.DIALOGUE_PATIENT`) on the left in a soft blue bubble, the clinician's on the right in teal, and a
+clinician's line left empty (the learner's turn) as a dashed bubble. The label sits inside
+the bubble's padding-top, so it never covers the words; every text keeps 4.5:1 or more. Its rules
+(`LAYOUT_CSS["dialogue"]`) are sent only where used.
+
+**Consequences.** Only a block named `dialogue` changes; no built lesson names it (render proof of ADR 053). Speaking 1
+uses it for its role-play boards. Tests: `test_style_c` (the layout list) and `test_speaking`.
+
+## Amendment (15), 2026-11-10: larger text where a board has room, what the readability check counts as running text, and the six-item contents order
+
+**Context.** The lesson-engine review of Speaking 1-3 (issue #202, 2026-11-10) read the site-player screenshots and
+found the dialogue bubbles, the role-play card tables, the criteria tables and the contents' sub-items well below
+26 px in the 1600x900 frame, while `check_text_size.py` passed them. The check took any text of four words or fewer
+as a label (20 px), so a short cell ("Four criteria"), a short bubble or a contents part passed at label size.
+The review also found the six-item contents drawn 1, 2 / 4, 3 / 5, 6, and asked that a lesson's contents use the
+number of items its content needs. Speaking 3's title wraps after "OET Speaking:", and the owner accepted the
+two-line title (the review, point 7).
+
+**Options considered.**
+
+- Raise every teal table's body size. Refused: a board that is full now would no longer fit, and every built lesson
+  would change.
+- Keep the four-word rule and list the speaking blocks as exceptions. Refused: the rule would still let a short
+  table cell pass at label size in the next lesson.
+- An exemption list per lesson for the title wrap. Refused: a title broken after its course's name is a rule for
+  every lesson, not a lesson's exception.
+
+**Decision.**
+
+1. `block_text` in `analysis/sections.json` (`{"<bundle block id>": <cqh>}`, 3.2 to 5.0) sets a teal table larger
+   than body size where its board has room; `build_lesson_player.py` applies it before the fit, which still makes a
+   table smaller where a board does not fit. The build refuses a lesson not in the teal look, an unknown block, a
+   block that is not a table, and a size outside the range.
+2. Running text, whatever its length, in `check_text_size.py` and the site-player probe: a contents item's part
+   (`.cp`), and a table body's cell in its normal weight with a word in it (two letters or more). A line number, a
+   bold label and a header stay labels.
+3. The `dialogue` layout's bubbles (amendment (14)) scale with the table's size (`--tf`): the gap, the padding, the
+   dashed bubble's height and the speaker's label, so `block_text` enlarges a dialogue whole.
+4. A contents item's sections at the running size (2.9cqh): its parts, and the one line of an item with one
+   section (no built teal lesson has such an item; Speaking 1's "Clinical communication" is the first).
+5. Six contents items read down the first column (1, 2, 3) and then the second (4, 5, 6): the orders 1, 3, 5 and
+   2, 4, 6. Before this they were 3, 5, 7 for items 4 to 6, and the board drew 1, 2 / 4, 3 / 5, 6.
+6. Rule 7 (a heading leaves no line of one or two words) accepts a lesson title of two lines whose first line ends
+   with a colon, the course's name ("OET Speaking:" above "Starting the Role-Play").
+
+**Consequences.** Only the teal look changes. `block_text` changes only a block that names it, and no built lesson
+does. The readability check with the new rule passes on the built teal lessons Writing 1 to 8 (their players, as
+released). The six-item order changes the contents board of a built teal lesson with six items: the render proof
+before and after this change is recorded in PR #201. The Speaking lessons use `block_text` on their tables and
+dialogues, and Speaking 1 and 3 group their sections into six contents items. Tests: `test_style_c` (the
+stylesheet's rules, and `build_lesson_player.check_block_text`'s refusals).
+
+**Proof** (2026-11-10, `render_compare.py`, every built lesson). Before: `916b45d`; after: this change. 21 of 29
+lessons identical. Writing 2 to 8 differ only in `blocks.css` (the new rules), with every moment drawn the same and no
+timing difference. Writing 1 is drawn differently on its contents board (page-3_t2, six items: now 1, 2, 3 down the
+first column and 4, 5, 6 down the second, its parts at the running size) and in the first three moments of the next board
+(page-4_t1, 91.7 to 97.8 s, while the contents leaves); every later moment is the same, and no timing differs. No file
+under `C:\OET\lessons` changed: Writing 1's live contents keeps the old order until it is rebuilt and released, which
+is the owner's call.

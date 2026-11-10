@@ -642,10 +642,18 @@ LAYOUTS = {
     # tighter cells and gaps (`col-fit`), chosen for a board the site's player does not draw whole at the table's
     # smallest text
     "columnsfit": (("table",), False, (2,)),
+    # ADR 053 (the Speaking course): a role-play's turns as speech bubbles, who speaks above each; the patient's turn
+    # on the left in a soft bubble, the clinician's on the right in teal; a clinician's line left empty is a dashed
+    # bubble, the learner's turn to speak
+    "dialogue": (("table",), False, (2,)),
 }
 # The teal look's layouts (ADR 050), their rules appended only where used
 ADR050_LAYOUTS = ("wrongright", "coded", "opener", "timeline", "columns", "parts", "badges", "ruled",
-                  "beforeafter", "choices", "path", "compare")
+                  "beforeafter", "choices", "path", "compare", "dialogue")
+# a dialogue's turn is the patient's side when its speaker is named so (ADR 053): the patient, someone speaking for
+# the patient, or a patient named by title ("Mrs Patel"); every other speaker is the clinician (the learner)
+DIALOGUE_PATIENT = ("patient", "carer", "parent", "mother", "father", "mum", "dad", "son", "daughter", "wife",
+                    "husband", "partner", "relative", "mr", "mrs", "ms", "miss")
 # a row's colour, in turn (ADR 050): amber, blue, lilac, coral, teal
 T_ROW_COLOURS = ("opener", "timeline", "parts", "badges", "path")
 # three of a kind (badges on cards) take teal, amber and coral first, as on the owner's slides
@@ -805,6 +813,8 @@ def _table_html(b: dict, html: str, layout: str) -> str:
             open_tr += ' data-yes=""'
         if layout in T_ROW_COLOURS:
             open_tr += f' data-c="{r % 5}"'
+        if layout == "dialogue" and row:
+            open_tr += f' data-who="{dialogue_who(row[0])}"'
         skip = 0
         if layout == "paper" and len(row) > 1:
             # a row with no label goes on in the box of the row above it
@@ -844,6 +854,8 @@ def _table_html(b: dict, html: str, layout: str) -> str:
                     attrs += ' data-after=""'           # past the letter's end: its sheet has ended
             if layout == "choices":
                 attrs += f' data-c="{_verdict_colour(header, c, txt, (r * len(row) + c) % 5)}"'
+            if layout == "dialogue" and c == 1 and not txt.strip() and dialogue_who(row[0]) == "you":
+                attrs += ' data-dash=""'                # the learner's turn: a dashed bubble, never a word
             if layout == "parts" and c == 1 and not txt.strip():
                 attrs += ' data-dash=""'                # a part not written out: grey lines, never a word
             if layout in ("cards", "stack") and c >= 1 and header and \
@@ -893,6 +905,13 @@ def _table_html(b: dict, html: str, layout: str) -> str:
             html = html[:i] + path_curve(n) + html[i:]
         return html
     return _add_root(html, "lay lay-" + layout + size)
+
+
+def dialogue_who(label: str) -> str:
+    """Whose turn a dialogue's row is (ADR 053): "patient" when its speaker is named as the patient's side
+    (DIALOGUE_PATIENT, the label's first word), "you" (the clinician, the learner) otherwise."""
+    first = (WORD.findall(_text(label)) or [""])[0].lower()
+    return "patient" if first in DIALOGUE_PATIENT else "you"
 
 
 def sheet_lines(rows: list) -> int:
@@ -1808,6 +1827,45 @@ LAYOUT_CSS["crit_teal"] = r"""
 .frame .term.crit::before{left:1.8cqh;width:8.4cqh;height:8.4cqh;margin-top:-4.2cqh;line-height:8.4cqh;font-size:3.2cqh}
 .frame .term.crit[data-mono-len="3"]::before{font-size:2.5cqh}
 """
+LAYOUT_CSS["dialogue"] = r"""
+/* a dialogue (ADR 053): each row a turn, who speaks small above a speech bubble. The patient's turn on the left,
+   a soft blue bubble; the clinician's on the right, teal; the learner's turn (an empty line) a dashed bubble. The
+   words and their order stay the table's; the rows enter one after another as the other patterns' do. The bubbles,
+   the gaps, the learner's dashed bubble and the speaker's name all scale with the table's text size, so a dialogue set
+   larger (sections.json `block_text`, ADR 050 amendment (15)) is large all through: these learners are A2-B1 and read
+   it on a phone (the lesson-engine review of Speaking 1-3, 2026-11-10) */
+.tbl.lay.lay-dialogue .tw{font-kerning:none;font-variant-ligatures:none}
+.tbl.lay.lay-dialogue td{overflow-wrap:break-word}
+.tbl.lay.lay-dialogue table{display:block;border:0;background:none;box-shadow:none}
+.tbl.lay.lay-dialogue thead{display:none}
+.tbl.lay.lay-dialogue tbody{display:flex;flex-direction:column;gap:calc(var(--tf,3.2cqh) * .5);padding-top:.6cqh}
+.tbl.lay.lay-dialogue tbody tr{display:flex;flex-direction:column;align-items:flex-start;max-width:84%;background:none;
+  border:0;animation:t-in .4s cubic-bezier(.2,.7,.2,1) backwards;transform-origin:0 0}
+.tbl.lay.lay-dialogue tbody tr[data-who="you"]{align-self:flex-end;align-items:flex-end;transform-origin:100% 0}
+.tbl.lay.lay-dialogue tbody tr td{display:block;border:0;padding:0;background:none;box-shadow:none}
+.tbl.lay.lay-dialogue tbody tr td:first-child{font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--t-teal);padding:0 1.6cqw .5cqh;line-height:1.2}
+.tbl.lay.lay-dialogue tbody tr[data-who="patient"] td:first-child{color:#2f6f7b}
+.tbl.lay.lay-dialogue tbody tr td+td{background:var(--t-blue-s);color:var(--t-ink);border-radius:3cqh 3cqh 3cqh .8cqh;
+  padding:calc(var(--tf,3.2cqh) * .45) 2.4cqw;line-height:1.35;font-weight:500}
+.tbl.lay.lay-dialogue tbody tr[data-who="you"] td+td{background:var(--t-teal);color:#fff;border-radius:3cqh 3cqh .8cqh 3cqh}
+.tbl.lay.lay-dialogue tbody tr[data-who="you"] td[data-dash]{background:#fff;min-width:32cqw;min-height:calc(var(--tf,3.2cqh) * 2.25);
+  box-sizing:border-box;border:max(2px,.35cqh) dashed var(--t-teal)}
+.tbl.lay.lay-dialogue td.active,.tbl.core.lay.lay-dialogue.spot tbody tr.focus td+td{box-shadow:0 0 0 .6cqh var(--sc-active)}
+.tbl.core.lay.lay-dialogue.spot tbody tr.focus{box-shadow:none;transform:none;background:none}
+/* a marked bubble takes the marker colour (the general .active rules win on the background), so its words are ink:
+   white on the marker is unreadable (check_text_size, 2026-11-09) */
+.tbl.core.lay.lay-dialogue tbody tr[data-who] td.active{color:var(--t-ink)}
+.frame .tbl.lay.lay-dialogue tbody tr td:first-child{font-size:max(calc(var(--tf,3.2cqh) * .72),var(--t-label,2.4cqh))}
+.frame .tbl.lay.lay-dialogue tbody tr td+td{font-size:max(var(--tf,3.2cqh),3.2cqh)}
+@media (prefers-reduced-motion: reduce){.tbl.lay.lay-dialogue tbody tr{animation:none}}
+/* the spotlight on a dialogue: the wash goes on the bubble only, not on the speaker's name; the learner's teal
+   bubble, washed, takes the darkest ink, since white on a washed teal is unreadable (check_text_size, 2026-11-09).
+   Here, after the look's own wash rule, and so only in a lesson with a dialogue (the render proof, 2026-11-10) */
+.frame .tbl.core.lay-dialogue.spot tbody tr:not(.focus) td{background-image:none}
+.frame .tbl.core.lay-dialogue.spot tbody tr:not(.focus) td+td{background-image:linear-gradient(var(--t-wash),var(--t-wash))}
+.frame .tbl.core.lay-dialogue.spot tbody tr:not(.focus)[data-who="you"] td+td{color:var(--t-ink-d)}
+"""
 LAYOUT_CSS["twocol"] = r"""
 /* contents items in two columns on the site's player too (ADR 050 amendment (10)): the site's gap between them is
    2% of the frame, wider than the board's own, so each item leaves half of it */
@@ -2309,6 +2367,12 @@ LOOK_CSS = {"teal": r"""
    narration marks there with the pen's circle or line, under or around the words (the lesson's cue overrides) */
 /* 7. a heading never leaves one or two words alone on its last line */
 .frame :is(.hdr,.ltitle,th,.cmp-h,.cardhd,.citem .ct,.chg-cap,.lbl){text-wrap:balance}
+/* 1. a contents item's parts (the sections under it) are running text, so at the running size, not a label's (the
+   lesson-engine review of Speaking 1-3, 2026-11-10; check_text_size measures them so since) */
+.frame .citem .cs.parts .cp{font-size:2.9cqh;line-height:1.25}
+/* and an item with one section under it: that section's line, at the same size (no built teal lesson has one
+   before Speaking 1) */
+.frame .citem .cs:not(.parts){font-size:2.9cqh;line-height:1.25}
 /* 4. use the frame: six to eight contents items in two columns that fill the board, read down the first column
    and then the second (`order`; the site fixes #cam as a wrapping row, so the items are set half wide); each
    column's own line */
@@ -2316,13 +2380,14 @@ LOOK_CSS = {"teal": r"""
   gap:1.8cqw;--t-cr:5.5cqh}
 .frame #cam:has(> .blk.citem:nth-child(6)) .citem .cnum{width:11cqh;height:11cqh;font-size:5cqh}
 .frame #cam:has(> .blk.citem:nth-child(6)) .citem .ct{font-size:4.1cqh;line-height:1.2}
-/* six: three rows */
+/* six: three rows, read down the first column (1, 2, 3), then the second (4, 5, 6): the orders 1, 3, 5
+   and 2, 4, 6 (before 2026-11-10 they were 3, 5, 7, and the board drew 1, 2 / 4, 3 / 5, 6) */
 .frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(1){order:1}
 .frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(2){order:3}
 .frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(3){order:5}
-.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(4){order:3}
-.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(5){order:5}
-.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(6){order:7}
+.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(4){order:2}
+.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(5){order:4}
+.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(6){order:6}
 .frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(3)::after,
 .frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(4)::before{content:none}
 /* seven or eight: four rows */

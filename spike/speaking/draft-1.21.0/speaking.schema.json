@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oetacademy.uk/contracts-drafts/speaking/speaking.schema.json",
+  "title": "Speaking Coach items (DRAFT, not released)",
+  "description": "A DRAFT for the next contracts version after main's, not part of any release: the three Speaking Coach item types of the prototype (ADR-0044 §6), speak_repeat (listen and repeat), speak_respond (a guided short answer) and roleplay (a role-play card for the AI patient). The released validator never loads this file. When the owner accepts the Speaking Coach, these types move into schemas/release-package.schema.json as a minor version, with RP-SPEAK-* rules (see README.md). All content is original: never official OET material.",
+  "type": "object",
+  "required": ["format", "draft_of", "items"],
+  "additionalProperties": false,
+  "properties": {
+    "format": { "const": "oetacademy-speaking-items" },
+    "draft_of": {
+      "description": "The contracts version this draft would become (the next minor after main's when the PR was opened).",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          { "$ref": "#/$defs/speakRepeat" },
+          { "$ref": "#/$defs/speakRespond" },
+          { "$ref": "#/$defs/roleplay" }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "itemId": {
+      "description": "oa-speak- and six digits. 990000-999999 are fixtures.",
+      "type": "string",
+      "pattern": "^oa-speak-\\d{6}$"
+    },
+    "profession": {
+      "description": "A profession key of the taxonomy (nursing, medicine, …), or null for every profession.",
+      "anyOf": [{ "type": "string", "pattern": "^[a-z][a-z-]*$" }, { "type": "null" }]
+    },
+    "text": { "type": "string", "minLength": 1 },
+    "audioFile": {
+      "description": "A recording in the package, checked as the lab's audio is (hash, bytes, duration).",
+      "type": "object",
+      "required": ["path", "media_type", "sha256", "bytes", "duration_s", "voice"],
+      "additionalProperties": false,
+      "properties": {
+        "path": { "type": "string", "pattern": "^audio/speaking/[a-z0-9.-]+\\.mp3$" },
+        "media_type": { "const": "audio/mpeg" },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "duration_s": { "type": "number", "exclusiveMinimum": 0 },
+        "voice": {
+          "description": "<accent>-<f|m>-<name>, as the lab's voices. Model sentences are British English (en-GB).",
+          "type": "string",
+          "pattern": "^(gb|us|au|nz)-(f|m)-[a-z]+$"
+        }
+      }
+    },
+    "speakRepeat": {
+      "type": "object",
+      "required": [
+        "type",
+        "id",
+        "profession",
+        "focus",
+        "shown",
+        "spoken",
+        "chunks",
+        "audio",
+        "pass_score"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "speak_repeat" },
+        "id": { "$ref": "#/$defs/itemId" },
+        "profession": { "$ref": "#/$defs/profession" },
+        "focus": {
+          "description": "What the sentence practises, for the card.",
+          "$ref": "#/$defs/text"
+        },
+        "shown": {
+          "description": "The sentence as the learner reads it (digits and units allowed).",
+          "$ref": "#/$defs/text"
+        },
+        "spoken": {
+          "description": "The sentence as it is said, in words: the pronunciation engine's reference text.",
+          "$ref": "#/$defs/text"
+        },
+        "chunks": {
+          "description": "The sense groups of `spoken`, in order, for the retry ladder (word, then chunk, then sentence). Joined with spaces they are `spoken` without its final punctuation (RP-SPEAK-CHUNKS).",
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": { "$ref": "#/$defs/text" }
+        },
+        "target_sounds": {
+          "description": "Optional: the IPA phonemes the sentence is written to practise (for the progress record and the study planner).",
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 4 },
+          "uniqueItems": true
+        },
+        "audio": {
+          "type": "object",
+          "required": ["normal", "slow"],
+          "additionalProperties": false,
+          "properties": {
+            "normal": { "$ref": "#/$defs/audioFile" },
+            "slow": {
+              "description": "The same voice at about 0.75 of the normal speed, every sound kept.",
+              "$ref": "#/$defs/audioFile"
+            }
+          }
+        },
+        "pass_score": {
+          "description": "At or above this overall score (0-100) the feedback says the sentence is clear. It never blocks the learner.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "speakRespond": {
+      "type": "object",
+      "required": [
+        "type",
+        "id",
+        "profession",
+        "prompt",
+        "patient_line",
+        "key_points",
+        "prepare_s",
+        "max_s"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "speak_respond" },
+        "id": { "$ref": "#/$defs/itemId" },
+        "profession": { "$ref": "#/$defs/profession" },
+        "prompt": {
+          "description": "The situation and the task, as the learner reads it.",
+          "$ref": "#/$defs/text"
+        },
+        "patient_line": {
+          "description": "The patient's question, spoken by the page.",
+          "$ref": "#/$defs/text"
+        },
+        "patient_audio": { "$ref": "#/$defs/audioFile" },
+        "patient_voice": {
+          "description": "Optional: the text-to-speech voice for the patient's line, <accent>-<f|m>-<name>.",
+          "type": "string",
+          "pattern": "^(gb|us|au|nz)-(f|m)-[a-z]+$"
+        },
+        "key_points": {
+          "description": "What a good answer covers: the marker's checklist, shown after the answer.",
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": { "$ref": "#/$defs/text" }
+        },
+        "model_answer": {
+          "description": "Optional: one good answer, shown after marking.",
+          "$ref": "#/$defs/text"
+        },
+        "prepare_s": { "type": "integer", "minimum": 0, "maximum": 120 },
+        "max_s": { "type": "integer", "minimum": 15, "maximum": 180 }
+      }
+    },
+    "roleplay": {
+      "type": "object",
+      "required": [
+        "type",
+        "id",
+        "profession",
+        "title",
+        "setting",
+        "candidate",
+        "patient",
+        "prepare_s",
+        "talk_s"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "roleplay" },
+        "id": { "$ref": "#/$defs/itemId" },
+        "profession": {
+          "description": "A role-play is for one profession.",
+          "type": "string",
+          "pattern": "^[a-z][a-z-]*$"
+        },
+        "title": { "$ref": "#/$defs/text" },
+        "setting": { "$ref": "#/$defs/text" },
+        "candidate": {
+          "description": "The learner's card.",
+          "type": "object",
+          "required": ["role", "background", "tasks"],
+          "additionalProperties": false,
+          "properties": {
+            "role": { "$ref": "#/$defs/text" },
+            "background": { "$ref": "#/$defs/text" },
+            "tasks": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 6,
+              "items": { "$ref": "#/$defs/text" }
+            }
+          }
+        },
+        "patient": {
+          "description": "The AI patient's card. Server-side only: never sent to the learner's browser before the report (x-oa-visibility assessor once in the release schema).",
+          "type": "object",
+          "required": ["name", "role", "persona", "emotion", "opening", "hidden", "concern"],
+          "additionalProperties": false,
+          "properties": {
+            "name": { "$ref": "#/$defs/text" },
+            "role": { "$ref": "#/$defs/text" },
+            "persona": { "description": "How the patient talks.", "$ref": "#/$defs/text" },
+            "emotion": {
+              "description": "How the patient feels at the start.",
+              "$ref": "#/$defs/text"
+            },
+            "opening": { "description": "The patient's first line.", "$ref": "#/$defs/text" },
+            "hidden": {
+              "description": "Facts the patient gives only when asked about them.",
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/text" }
+            },
+            "concern": {
+              "description": "The worry the learner should find and address; the report says whether it came up.",
+              "$ref": "#/$defs/text"
+            },
+            "voice": {
+              "description": "Optional: the text-to-speech voice, <accent>-<f|m>-<name>.",
+              "type": "string",
+              "pattern": "^(gb|us|au|nz)-(f|m)-[a-z]+$"
+            }
+          }
+        },
+        "prepare_s": { "description": "OET Speaking: three minutes to prepare.", "const": 180 },
+        "talk_s": { "description": "OET Speaking: about five minutes to talk.", "const": 300 }
+      }
+    }
+  }
+}

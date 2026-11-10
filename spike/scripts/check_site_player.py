@@ -176,8 +176,17 @@ def main() -> None:
     ap.add_argument("--ref", default="main")
     ap.add_argument("--boards", action="store_true", help="each board's fullest state only")
     ap.add_argument("--width", type=int, default=1600)
+    ap.add_argument("--stub-speaking", action="store_true",
+                    help="a lesson with speaking units (ADR 053): check its package without them, built "
+                         "under spike/out/site-player-stub/ (the site's player cannot play them yet)")
     a = ap.parse_args()
     L = a.lesson_dir
+    if a.stub_speaking:
+        sys.path.insert(0, str(HERE))
+        import lesson_package
+        import publish_lesson
+        a.package = Path(publish_lesson.build(L.resolve(), lesson_package.load(), stub=True, log=print)["folder"])
+        print(f"stub package (speaking units removed, ADR 053): {a.package}")
     # the lesson's newest draft package: the highest version (a lesson with a released v1 has a v1-draft beside its
     # v2-draft, and "v1" sorts first)
     drafts = sorted((L / "generated" / "package").glob("*-draft"),

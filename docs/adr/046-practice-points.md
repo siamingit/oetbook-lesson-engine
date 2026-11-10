@@ -243,3 +243,25 @@ has tried the prototype. A change after the site's answer is an amendment of thi
   restyle_proof on every published lesson against the after render. Both ran on one frozen copy of the library, because another session was writing to it. render_compare: 25 of 25 built lessons identical (every data file byte for byte, every drawn moment at phone and laptop, every board time). restyle_proof: 16 of the 25 published lessons pass. The 9 with practice points (Grammar 1-8, Writing 4) report only that their bundle is 1.23, not the restyle's 1.22, with 0 files changed. Unit tests:
   `test_practice_points.PracticePointNotes`.
 - To reverse: a new amendment; remove the field from a lesson's adds.
+
+## Amendment (4), 2026-11-10: speaking points (ADR 053)
+
+### Context
+
+The Speaking course's "your turn" moments are speaking pop-ups (the owner, #189 decision 8), with item types from the
+site's DRAFT speaking contract (draft of contracts 1.21.0), not yet released.
+
+### Decision
+
+- A Speaking lesson's practice.json may hold `speak_repeat`, `speak_respond` and `roleplay` items, checked by
+  `speaking_items.check` (ADR 053 decision 3). Their IDs are issued by the registry for skill `speaking`, each
+  lesson's range from 970000 (speaking-01-the-test 970000-970999).
+- A speaking point is placed and counted as every point: one of a series, and never instead of teaching (amendment
+  (2)); the learner speaks aloud often, so a Speaking lesson has more points than a Grammar one of the same length.
+- The point's pop-up in the engine's player: the prompt, Listen / Slowly, Record with playback on this device only,
+  Skip after about 5 s, then the model and what a good answer has.
+
+### Consequences
+
+- A lesson with speaking items is never published (ADR 053 decision 4) until the contracts are released.
+- Every other lesson's practice.json is checked as before. Tests: `spike/tests/test_speaking.py`.

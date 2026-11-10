@@ -49,8 +49,12 @@ from write_narration import spoken                                    # noqa: E4
 
 
 def cache_key(text: str, speed: float, salt: str, dict_id: str,
-              voice: dict = voices.RUPERT) -> str:
+              voice: dict = voices.RUPERT, emotion: str | None = None) -> str:
     basis = f"{text}|{voice['id']}|{MODEL_ID}|{speed:.3f}|{dict_id}|{salt}"
+    if emotion:
+        # only a patient line with a feeling (ADR 053) adds it, so every clip made before
+        # stays cached under the key it has
+        basis += f"|emotion:{emotion}"
     if voice["sentence_pause_s"]:
         # only a voice with added pauses (ADR 027) adds them to the key, so
         # every clip made before stays cached under the key it has
@@ -59,13 +63,14 @@ def cache_key(text: str, speed: float, salt: str, dict_id: str,
 
 
 def synthesize(client: Cartesia, text: str, speed: float, dict_id: str,
-               voice: dict = voices.RUPERT) -> dict:
+               voice: dict = voices.RUPERT, emotion: str | None = None) -> dict:
     """Cartesia SSE with word and phoneme timestamps, under the lexicon; the
     voice's sentence pauses added after (ADR 027)."""
     events = client.tts.sse(
         model_id=MODEL_ID, transcript=text, voice={"id": voice["id"]}, language="en",
         add_timestamps=True, add_phoneme_timestamps=True,
-        generation_config={"speed": speed}, pronunciation_dict_id=dict_id,
+        generation_config={"speed": speed, **({"emotion": emotion} if emotion else {})},
+        pronunciation_dict_id=dict_id,
         output_format={"container": "raw", "encoding": "pcm_s16le", "sample_rate": SAMPLE_RATE},
     )
     pcm = bytearray()
@@ -117,7 +122,7 @@ JOB_CHARACTERS_LIMIT = 2_000_000
 
 
 def synthesize_with_retry(client, text: str, speed: float, dict_id: str, uid: str,
-                          voice: dict = voices.RUPERT) -> dict:
+                          voice: dict = voices.RUPERT, emotion: str | None = None) -> dict:
     """Cartesia returns 429 over the concurrency limit and has returned
     intermittent quota and server errors (402, 429, 5xx) that clear within a
     minute. Wait and retry with backoff, with jitter so parallel workers do not
@@ -127,7 +132,7 @@ def synthesize_with_retry(client, text: str, speed: float, dict_id: str, uid: st
     import time
     for n, wait in enumerate(RETRY_WAITS_S + [None], 1):
         try:
-            return synthesize(client, text, speed, dict_id, voice)
+            return synthesize(client, text, speed, dict_id, voice, emotion)
         except Exception as e:
             msg = str(e).lower()
             transient = any(k in msg for k in ("402", "429", "quota", "rate", "limit",
@@ -190,14 +195,19 @@ def main() -> None:
     # a clip to make. Clips are then made in parallel (ADR 028) and the index is
     # assembled in narration order, so it is the same as a run one by one.
     plan: list[tuple[dict, str, list, str]] = []     # (utterance, text, terms, key)
-    to_make: dict[str, tuple[str, str, list]] = {}   # key -> (first uid, text, terms)
+    to_make: dict[str, tuple] = {}   # key -> (first uid, text, terms, voice, speed, emotion)
     for bd in narr["boards"]:
         for s in bd["states"]:
             for u in s["utterances"]:
                 text = spoken(u["text_with_cues"])
                 terms = lexicon.terms_in(text, lex)
                 salt = lexicon.cache_salt(text, lex)
-                key = cache_key(text, args.speed, salt, dict_id, voice)
+                # a patient's line in the patient's voice and speed (ADR 053); the rest
+                # in the lesson's, exactly as before
+                u_voice = voices.voice_for(u.get("speaker"), voice)
+                u_speed = args.speed if u_voice is voice else u_voice["speed"]
+                u_emotion = voices.emotion_for(u.get("emotion"))
+                key = cache_key(text, u_speed, salt, dict_id, u_voice, u_emotion)
                 if key not in by_hash and key not in to_make:
                     # New audio is never made with a pronunciation the maintainer
                     # has not approved by ear (methodology §20). A cached clip that
@@ -207,27 +217,28 @@ def main() -> None:
                         for t in unapproved:
                             blocked.setdefault(t, []).append(u["id"])
                         continue
-                    to_make[key] = (u["id"], text, terms)
+                    to_make[key] = (u["id"], text, terms, u_voice, u_speed, u_emotion)
                 plan.append((u, text, terms, key))
 
-    job_chars = sum(len(t) for _, t, _ in to_make.values())
+    job_chars = sum(len(m[1]) for m in to_make.values())
     if job_chars > JOB_CHARACTERS_LIMIT and not args.allow_large_job:
         raise SystemExit(f"REFUSED: this run would send {job_chars:,} characters, over "
                          f"{JOB_CHARACTERS_LIMIT:,}: tell the maintainer first (ADR 028), then "
                          "pass --allow-large-job.")
 
     def make(key: str) -> tuple[str, dict]:
-        uid, text, terms = to_make[key]
-        result = synthesize_with_retry(client, text, args.speed, dict_id, uid, voice)
+        uid, text, terms, u_voice, u_speed, u_emotion = to_make[key]
+        result = synthesize_with_retry(client, text, u_speed, dict_id, uid, u_voice, u_emotion)
         wav_path = audio_dir / f"{key}.wav"
         write_wav(wav_path, result["pcm"])
         problems = [p for p in (lexicon.phoneme_check(t, result["phonemes"], lex)
                                 for t in terms) if p]
         return key, {
-            "id": uid, "hash": key, "voice": voice["name"], "voice_id": voice["id"],
-            "model": MODEL_ID, "speed": args.speed,
-            **({"sentence_pause_s": voice["sentence_pause_s"]}
-               if voice["sentence_pause_s"] else {}),
+            "id": uid, "hash": key, "voice": u_voice["name"], "voice_id": u_voice["id"],
+            "model": MODEL_ID, "speed": u_speed,
+            **({"emotion": u_emotion} if u_emotion else {}),
+            **({"sentence_pause_s": u_voice["sentence_pause_s"]}
+               if u_voice["sentence_pause_s"] else {}),
             "pronunciation_dict_id": dict_id,
             "lexicon_version": lex["version"], "lexicon_terms": terms,
             "phoneme_check": "fail" if problems else ("ok" if terms else "n/a"),

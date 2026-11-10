@@ -46,6 +46,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paths                                                      # noqa: E402
 import lesson_type                                                # noqa: E402
+import voices                                                    # noqa: E402
 from build_board_bundle import block_tokens, norm, reading_runs   # noqa: E402
 from build_board_timeline import lay_timeline                     # noqa: E402
 from write_narration import spoken                                # noqa: E402
@@ -137,6 +138,8 @@ SPLIT_DEFAULT = 55
 # is written in 1.21; every other lesson keeps its format, byte for byte.
 FIT_FORMAT_VERSION = "1.21"
 FIT_VALUES = ("whole",)
+# sections.json `block_text`: a teal table's text size, in hundredths of the frame's height (body size 3.2 up)
+BLOCK_TEXT = (3.2, 5.0)
 # 1.22 (ADR 042): a lesson in style C (its sections.json's `lesson.style`):
 # `lesson.style` and each state's `effects` (rules 53 to 55); every other lesson
 # keeps its format, byte for byte
@@ -148,6 +151,11 @@ NEWEST_FORMAT_VERSION = "1.23"
 # 1.23 and later, so a teal lesson is built at 1.23 at least. A lesson in style C
 # without a look keeps its bundle byte for byte
 LOOK_FORMAT_VERSION = "1.23"
+# 1.24 (ADR 053), a DRAFT the site cannot play yet: a narration line's `speaker` (a patient's
+# line, in the patient's voice) and practice points of speaking items (speaking_items.py). Only
+# a lesson with either is written in it; publish_lesson.py refuses it until the site's contracts
+# have speaking items. Every other lesson keeps its format, byte for byte
+SPEAKING_FORMAT_VERSION = "1.24"
 
 
 def vkey(v: str) -> tuple[int, ...]:
@@ -500,7 +508,8 @@ def text_export(lesson: dict, sections: list[dict], boards: list[dict], blocks: 
             bds.append({"id": bid, "start": bd["start"],
                         "board_text": [{"block": i, "text": block_plain(blocks[i])} for i in ids],
                         "narration": [{"id": u["id"], "start": u["start"], "text": u["text"],
-                                       "refs": u["refs"]}
+                                       "refs": u["refs"],
+                                       **({"speaker": u["speaker"]} if u.get("speaker") else {})}
                                       for s in bd["states"] for u in s["utterances"]
                                       if u.get("kind") != "exam"]})
         out.append({"id": sec["id"], "title": sec["title"], "category": sec["category"],
@@ -719,6 +728,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                 nb["role"] = "slide"        # the title board's description: the lesson's own words
             if not info["lesson"].get("tense_lesson"):
                 nb["tense_neutral"] = True
+            if nb["id"] in (info.get("block_text") or {}) and nb["type"] == "table":
+                nb["font"] = info["block_text"][nb["id"]]  # a teal table set larger (ADR 050 amendment (15))
             if nb["id"] in (fit.get("fonts") or {}):
                 nb["font"] = fit["fonts"][nb["id"]]      # 1.8: smaller, so the table fits
             if nb["id"] in (fit.get("pics") or {}):
@@ -794,7 +805,10 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                             c[key] = pre + c[key]
                     ns["utterances"].append(nu)
                     if silent:
-                        audio_index[nu["id"]] = estimate(spoken(u["text_with_cues"]).split(), wpm)
+                        # a patient's line is said slower (ADR 053): estimated at its speed
+                        audio_index[nu["id"]] = estimate(
+                            spoken(u["text_with_cues"]).split(),
+                            wpm * voices.SPEAKERS[u["speaker"]]["speed"] if u.get("speaker") else wpm)
                     else:
                         e = sec_index.get(u["id"])
                         if not e or e.get("text") != spoken(u["text_with_cues"]):
@@ -1061,6 +1075,7 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             raise SystemExit("REFUSED: sections.json block_layouts in a lesson that is not in style C")
         if bid not in blocks_all and not only:
             raise SystemExit(f"REFUSED: sections.json block_layouts names {bid!r}, not a block of the lesson")
+    check_block_text(info, blocks_all, bool(style and style_c.look_of(L)), bool(only))
     # the words a layout sets in its accent colour (sections.json `block_accents`, ADR 049): a block with a
     # layout that draws them; each a list of phrases (checked on the block's html by style_c.layout_html)
     for bid, phrases in (info.get("block_accents") or {}).items():
@@ -1072,13 +1087,17 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
             raise SystemExit(f"REFUSED: sections.json block_accents {bid!r}: a list of phrases is needed")
     # 1.23 (ADR 046): practice points, from the lesson's analysis/practice.json, on
     # the pauses that name them; a lesson without the file is built as before
-    with_practice = practice_points.attach(L, boards_out, sample=bool(only))
+    with_practice = practice_points.attach(L, boards_out, sample=bool(only),
+                                           audio_from=None if silent else out_dir)
+    with_speaking = practice_points.has_speaking(boards_out) or any(
+        u.get("speaker") for bd in boards_out for s in bd["states"] for u in s["utterances"])
     look = style_c.look_of(L) if style else None
     newer = max([v for v in (declared_format(info),
                              LOOK_FORMAT_VERSION if look == "teal" else None,
                              FIT_FORMAT_VERSION if any(bd.get("fit") for bd in boards_out) else None,
                              style_c.FORMAT_VERSION if style else None,
-                             practice_points.FORMAT_VERSION if with_practice else None) if v],
+                             practice_points.FORMAT_VERSION if with_practice else None,
+                             SPEAKING_FORMAT_VERSION if with_speaking else None) if v],
                 key=vkey, default=None)
 
 
@@ -1164,6 +1183,23 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
     print(f"wrote {out_dir / 'player.html'}")
     return out_dir
 
+
+
+def check_block_text(info: dict, blocks_all: dict, teal: bool, only: bool = False) -> None:
+    """sections.json `block_text` (ADR 050 amendment (15)): a teal lesson's table set larger than body size, where
+    its board has room; the fit (fit_boards.py) makes it smaller again where it does not fit. Refused: a lesson not
+    in the teal look, a block not of the lesson (unless the build is of some boards only), a block that is not a
+    table, and a size outside BLOCK_TEXT."""
+    for bid, size in (info.get("block_text") or {}).items():
+        if not teal:
+            raise SystemExit("REFUSED: sections.json block_text in a lesson not in the teal look")
+        if bid not in blocks_all and not only:
+            raise SystemExit(f"REFUSED: sections.json block_text names {bid!r}, not a block of the lesson")
+        if bid in blocks_all and blocks_all[bid].get("type") != "table":
+            raise SystemExit(f"REFUSED: sections.json block_text names {bid!r}, which is not a table")
+        if not isinstance(size, (int, float)) or isinstance(size, bool) or not BLOCK_TEXT[0] <= size <= BLOCK_TEXT[1]:
+            raise SystemExit(f"REFUSED: sections.json block_text {bid!r}: a size from {BLOCK_TEXT[0]} to "
+                             f"{BLOCK_TEXT[1]} (cqh) is needed")
 
 def main() -> None:
     ap = argparse.ArgumentParser()

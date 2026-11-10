@@ -73,6 +73,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_course_index                                         # noqa: E402
 import lesson_package as lp                                       # noqa: E402
 import paths                                                      # noqa: E402
+import speaking_items                                             # noqa: E402
 
 SESSIONS_REPO = "siamingit/oetacademy-sessions"
 DRAFTS_RUN = ["workflow", "run", "content-pipeline.yml", "-R", "siamingit/oetacademy-web", "--ref", "main",
@@ -441,24 +442,92 @@ def check_zip(zpath: Path, folder: Path, f: lp.Findings) -> None:
         f.warning("PUB-ZIP-SIZE", "zip", "over 700 MB: tell the owner before publishing", f"{size} bytes")
 
 
-def build(L: Path, contracts: lp.Contracts, workers: int | None = None, log=print, draft: bool = False) -> dict:
+def speaking_units(bundle: dict) -> list[str]:
+    """What only the site's speaking contract could carry (ADR 053): a patient's narration line,
+    a practice point of speaking items, a bundle in format 1.24."""
+    out = [f"format {bundle.get('format_version')}"] if bundle.get("format_version") == "1.24" else []
+    for bd in bundle.get("boards") or []:
+        for st in bd.get("states") or []:
+            out += [u["id"] for u in st.get("utterances") or [] if u.get("speaker")]
+            out += [p["id"] for p in st.get("practice") or []
+                    if any(speaking_items.is_speaking(i) for i in p.get("items") or [])]
+    return out
+
+
+def stub_speaking(bundle: dict) -> dict:
+    """The bundle without its speaking units (ADR 053), for the site-player check only: a patient's
+    line as a plain narration line, a speaking point dropped with its pause cue's mark, the format
+    1.23. Never released: it is written outside the lesson (STUB_DIR) and named -stub."""
+    b = copy.deepcopy(bundle)
+    if b.get("format_version") == "1.24":
+        b["format_version"] = "1.23"
+    for bd in b.get("boards") or []:
+        for st in bd.get("states") or []:
+            for u in st.get("utterances") or []:
+                u.pop("speaker", None)
+                u.pop("emotion", None)
+            gone = {p["id"] for p in st.get("practice") or []
+                    if any(speaking_items.is_speaking(i) for i in p.get("items") or [])}
+            if "practice" in st:
+                st["practice"] = [p for p in st["practice"] if p["id"] not in gone]
+                if not st["practice"]:
+                    del st["practice"]
+            for u in st.get("utterances") or []:
+                for c in u.get("cues") or []:
+                    if c.get("practice") in gone:
+                        del c["practice"]
+    return b
+
+
+STUB_DIR = Path(__file__).resolve().parents[2] / "spike" / "out" / "site-player-stub"
+
+# ADR 053: the pinned session section tag list has no speaking keys yet, so a speaking lesson's sections
+# cannot carry tags the contracts accept. The stub is never released, so for it alone these two errors are
+# warnings; a real package of the lesson still fails them until the contracts list speaking keys.
+STUB_SET_ASIDE = {"LP-TEACHES-NOT-ALLOWED", "LP-TEACHES-EMPTY"}
+
+
+def stub_findings(f: lp.Findings, log=print) -> lp.Findings:
+    out = lp.Findings()
+    for it in f.items:
+        sev = "warning" if it["code"] in STUB_SET_ASIDE else it["severity"]
+        if sev != it["severity"]:
+            log(f"stub only (ADR 053): {it['code']} ({it['count']}x) set aside as a warning")
+        for _ in range(it["count"]):
+            out.add(sev, it["code"], it["where"], it["message"])
+        out._groups[(sev, it["code"], it["where"], it["message"])]["examples"] = list(it["examples"])
+    return out
+
+
+def build(L: Path, contracts: lp.Contracts, workers: int | None = None, log=print, draft: bool = False,
+          stub: bool = False) -> dict:
     """Writes the lesson's next package and its zip, or nothing if any check fails; a draft (ADR 039
-    amendment of 2026-10-31) has its own folder and zip and the draft's approval."""
+    amendment of 2026-10-31) has its own folder and zip and the draft's approval. `stub` (ADR 053):
+    the package of the lesson without its speaking units, for check_site_player.py alone, written
+    under STUB_DIR, never in the lesson and never released."""
     lesson = paths.lesson_id(L)
     player = L / "generated" / "lesson-player"
     bundle = read_json(player / "bundle.json")
+    if stub:
+        bundle, draft = stub_speaking(bundle), True
     if bundle["lesson"]["id"] != lesson:
         raise Refused(f"the bundle's lesson id {bundle['lesson']['id']} is not the folder's name {lesson}")
     if bundle["meta"].get("silent"):
         raise Refused("a silent preview is never published")
+    if speaking_units(bundle) and not speaking_items.RELEASED:
+        # ADR 053: the site's contracts have no speaking units yet; the draft (1.21.0) is not
+        # released, so no package or draft of such a lesson is made until it is
+        raise Refused("the lesson has speaking units (" + ", ".join(speaking_units(bundle)[:3]) + "): "
+                      "the site's contracts do not have them yet (ADR 053); it is never published, "
+                      "not even as a draft, until they are released")
     approved = draft_approval() if draft else final_gate(L)
     record = load_record(L)
     version = next_version(lesson, record)
-    name = package_name(lesson, version, draft)
+    name = package_name(lesson, version, draft) + ("-stub" if stub else "")
     tags, tags_approved = lesson_tags(L, bundle, contracts)
     retired = retirements(L, record, [s["id"] for s in bundle["sections"]], version)
 
-    out = package_dir(L)
+    out = STUB_DIR / lesson if stub else package_dir(L)
     out.mkdir(parents=True, exist_ok=True)
     stage = out / f".staging-{name}"
     if stage.exists():
@@ -468,8 +537,10 @@ def build(L: Path, contracts: lp.Contracts, workers: int | None = None, log=prin
     try:
         report = _assemble(L, player, bundle, contracts, stage, version, approved, tags, retired, workers, f, log)
         f.extend(lp.validate_package(stage, contracts))
+        if stub:
+            f = stub_findings(f, log)
         manifest = read_json(stage / "manifest.json")
-        if record["releases"] and record["releases"][-1].get("fingerprint") == fingerprint(manifest):
+        if not stub and record["releases"] and record["releases"][-1].get("fingerprint") == fingerprint(manifest):
             shutil.rmtree(stage)
             last = record["releases"][-1]["package_version"]
             log(f"{lesson}: unchanged since package version {last}; nothing to publish")
@@ -627,8 +698,19 @@ def _assemble(L, player, bundle, contracts, stage, version, approved, tags, reti
     media.sort(key=lambda m: m["path"])
 
     # The player files.
+    text = (player / "text.json").read_bytes()
+    if (b'"speaker"' in text or b'"format_version": "1.24"' in text) and not speaking_units(bundle):
+        # the stub of check_site_player.py (ADR 053): its text without the patients' marks
+        doc = json.loads(text)
+        if doc.get("format_version") == "1.24":
+            doc["format_version"] = "1.23"
+        for sec in doc.get("sections", []):
+            for bd in sec.get("boards") or []:
+                for n in bd.get("narration") or []:
+                    n.pop("speaker", None)
+        text = json.dumps(doc, ensure_ascii=False, indent=1).encode("utf-8")
     files = {"bundle": write_json(stage / "bundle.json", pub),
-             "text": (player / "text.json").read_bytes(), "stylesheet": (player / "blocks.css").read_bytes()}
+             "text": text, "stylesheet": (player / "blocks.css").read_bytes()}
     (stage / "text.json").write_bytes(files["text"])
     (stage / "blocks.css").write_bytes(files["stylesheet"])
 
@@ -710,6 +792,8 @@ def release(L: Path, dry_run: bool, log=print, draft: bool = False) -> dict:
         raise Refused("the package fails its checks:\n" + "\n".join(f.lines()))
     manifest = read_json(folder / "manifest.json")
     bundle = read_json(L / "generated" / "lesson-player" / "bundle.json")
+    if speaking_units(bundle) and not speaking_items.RELEASED:
+        raise Refused("the lesson has speaking units: never released until the site's contracts have them (ADR 053)")
     if draft and manifest["lesson"]["approved"]["by"] != draft_approval()["by"]:
         raise Refused("the manifest's approval is not a draft's")
     if not draft and manifest["lesson"]["approved"] != final_gate(L):
