@@ -1144,6 +1144,11 @@ the silent preview and the player):
    (2.3%; the look sets labels at 2.4%); a line in the hand counts at its size divided by 1.3. Where content does not
    fit at that size, change the layout (two columns, fewer lines shown, the spotlight): never shrink the text. A
    table is never set under 2.9% (the fit's floor in this look); a long letter on its parts flows in two columns.
+   Running text is any text of five words or more, and, whatever its length (amendment (15)), a contents item's
+   sections (`.cp`, or the one line of an item with one section) and a table body's cell in its normal weight
+   with a word in it; a line number, a bold label and a header stay labels. A teal table with room to spare may
+   be set larger, 3.2% to 5% (`block_text` in `analysis/sections.json`, by bundle block id); the `dialogue`
+   layout's bubbles scale with it.
 2. **The hand** only for the teacher's short notes (about 15 words at most) and labels; a longer note (`t-print`),
    a learner's sentences, a letter or a paragraph in print, the red pen's marks on top.
 3. **No illustration unless it explains the point** (replaces ADR 021's picture on every board, in this look).

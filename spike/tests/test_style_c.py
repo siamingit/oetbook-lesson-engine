@@ -629,6 +629,37 @@ class TealLook(unittest.TestCase):
             lay(["a", "b"], [["x y", "x y"]], "compare", ["x y"])                 # found twice: refused
         self.assertIn(".frame .tbl.core table{font-size:max(var(--tf,2.6cqh),var(--t-run))}", style_c.LOOK_CSS["teal"])
 
+    def test_readable_on_a_phone_amendment_15(self):
+        """ADR 050 amendment (15): a contents item's sections at the running size, one section or several; six items
+        read down the first column, then the second; the dialogue scales with its table's size."""
+        css = style_c.LOOK_CSS["teal"]
+        self.assertIn(".frame .citem .cs.parts .cp{font-size:2.9cqh;line-height:1.25}", css)
+        self.assertIn(".frame .citem .cs:not(.parts){font-size:2.9cqh;line-height:1.25}", css)
+        six = ".frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem"
+        orders = {n: int(css.split(f"{six}:nth-child({n}){{order:")[1].split("}")[0]) for n in range(1, 7)}
+        self.assertEqual(orders, {1: 1, 2: 3, 3: 5, 4: 2, 5: 4, 6: 6})
+        # a wrapping row of two: the items in order 1 2 / 3 4 / 5 6 put 1, 2, 3 in the first column
+        rows = sorted(orders, key=orders.get)
+        self.assertEqual([rows[i] for i in (0, 2, 4)], [1, 2, 3])
+        lay = style_c.LAYOUT_CSS["dialogue"]
+        self.assertIn("gap:calc(var(--tf,3.2cqh) * .5)", lay)
+        self.assertIn("min-height:calc(var(--tf,3.2cqh) * 2.25)", lay)
+
+    def test_block_text_refusals(self):
+        tbl, para = {"type": "table"}, {"type": "paragraph"}
+        blp.check_block_text({"block_text": {"a_k01": 4.4}}, {"a_k01": tbl}, teal=True)
+        blp.check_block_text({}, {}, teal=False)
+        blp.check_block_text({"block_text": {"gone": 4.4}}, {}, teal=True, only=True)
+        for info, blocks, teal in (({"block_text": {"a_k01": 4.4}}, {"a_k01": tbl}, False),
+                                   ({"block_text": {"gone": 4.4}}, {}, True),
+                                   ({"block_text": {"a_k01": 4.4}}, {"a_k01": para}, True),
+                                   ({"block_text": {"a_k01": 5.5}}, {"a_k01": tbl}, True),
+                                   ({"block_text": {"a_k01": 3.0}}, {"a_k01": tbl}, True),
+                                   ({"block_text": {"a_k01": True}}, {"a_k01": tbl}, True),
+                                   ({"block_text": {"a_k01": "4"}}, {"a_k01": tbl}, True)):
+            with self.assertRaises(SystemExit):
+                blp.check_block_text(info, blocks, teal)
+
     def test_writing_7_in_the_teal_look(self):
         """ADR 050 amendment (3): the owner's two Writing 7 layouts take their teal rules only in the teal look; the
         criterion's monogram and a one-line contents title likewise; a lesson without them gets none of it."""

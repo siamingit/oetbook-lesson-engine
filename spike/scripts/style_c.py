@@ -1830,13 +1830,16 @@ LAYOUT_CSS["crit_teal"] = r"""
 LAYOUT_CSS["dialogue"] = r"""
 /* a dialogue (ADR 053): each row a turn, who speaks small above a speech bubble. The patient's turn on the left,
    a soft blue bubble; the clinician's on the right, teal; the learner's turn (an empty line) a dashed bubble. The
-   words and their order stay the table's; the rows enter one after another as the other patterns' do */
+   words and their order stay the table's; the rows enter one after another as the other patterns' do. The bubbles,
+   the gaps, the learner's dashed bubble and the speaker's name all scale with the table's text size, so a dialogue set
+   larger (sections.json `block_text`, ADR 050 amendment (15)) is large all through: these learners are A2-B1 and read
+   it on a phone (the lesson-engine review of Speaking 1-3, 2026-11-10) */
 .tbl.lay.lay-dialogue .tw{font-kerning:none;font-variant-ligatures:none}
 .tbl.lay.lay-dialogue td{overflow-wrap:break-word}
 .tbl.lay.lay-dialogue table{display:block;border:0;background:none;box-shadow:none}
 .tbl.lay.lay-dialogue thead{display:none}
-.tbl.lay.lay-dialogue tbody{display:flex;flex-direction:column;gap:1.4cqh;padding-top:.6cqh}
-.tbl.lay.lay-dialogue tbody tr{display:flex;flex-direction:column;align-items:flex-start;max-width:80%;background:none;
+.tbl.lay.lay-dialogue tbody{display:flex;flex-direction:column;gap:calc(var(--tf,3.2cqh) * .5);padding-top:.6cqh}
+.tbl.lay.lay-dialogue tbody tr{display:flex;flex-direction:column;align-items:flex-start;max-width:84%;background:none;
   border:0;animation:t-in .4s cubic-bezier(.2,.7,.2,1) backwards;transform-origin:0 0}
 .tbl.lay.lay-dialogue tbody tr[data-who="you"]{align-self:flex-end;align-items:flex-end;transform-origin:100% 0}
 .tbl.lay.lay-dialogue tbody tr td{display:block;border:0;padding:0;background:none;box-shadow:none}
@@ -1844,16 +1847,16 @@ LAYOUT_CSS["dialogue"] = r"""
   color:var(--t-teal);padding:0 1.6cqw .5cqh;line-height:1.2}
 .tbl.lay.lay-dialogue tbody tr[data-who="patient"] td:first-child{color:#2f6f7b}
 .tbl.lay.lay-dialogue tbody tr td+td{background:var(--t-blue-s);color:var(--t-ink);border-radius:3cqh 3cqh 3cqh .8cqh;
-  padding:1.5cqh 2.2cqw;line-height:1.35;font-weight:500}
+  padding:calc(var(--tf,3.2cqh) * .45) 2.4cqw;line-height:1.35;font-weight:500}
 .tbl.lay.lay-dialogue tbody tr[data-who="you"] td+td{background:var(--t-teal);color:#fff;border-radius:3cqh 3cqh .8cqh 3cqh}
-.tbl.lay.lay-dialogue tbody tr[data-who="you"] td[data-dash]{background:#fff;min-width:24cqw;min-height:5.2cqh;
+.tbl.lay.lay-dialogue tbody tr[data-who="you"] td[data-dash]{background:#fff;min-width:32cqw;min-height:calc(var(--tf,3.2cqh) * 2.25);
   box-sizing:border-box;border:max(2px,.35cqh) dashed var(--t-teal)}
 .tbl.lay.lay-dialogue td.active,.tbl.core.lay.lay-dialogue.spot tbody tr.focus td+td{box-shadow:0 0 0 .6cqh var(--sc-active)}
 .tbl.core.lay.lay-dialogue.spot tbody tr.focus{box-shadow:none;transform:none;background:none}
 /* a marked bubble takes the marker colour (the general .active rules win on the background), so its words are ink:
    white on the marker is unreadable (check_text_size, 2026-11-09) */
 .tbl.core.lay.lay-dialogue tbody tr[data-who] td.active{color:var(--t-ink)}
-.frame .tbl.lay.lay-dialogue tbody tr td:first-child{font-size:var(--t-label,2.4cqh)}
+.frame .tbl.lay.lay-dialogue tbody tr td:first-child{font-size:max(calc(var(--tf,3.2cqh) * .72),var(--t-label,2.4cqh))}
 .frame .tbl.lay.lay-dialogue tbody tr td+td{font-size:max(var(--tf,3.2cqh),3.2cqh)}
 @media (prefers-reduced-motion: reduce){.tbl.lay.lay-dialogue tbody tr{animation:none}}
 /* the spotlight on a dialogue: the wash goes on the bubble only, not on the speaker's name; the learner's teal
@@ -2364,6 +2367,12 @@ LOOK_CSS = {"teal": r"""
    narration marks there with the pen's circle or line, under or around the words (the lesson's cue overrides) */
 /* 7. a heading never leaves one or two words alone on its last line */
 .frame :is(.hdr,.ltitle,th,.cmp-h,.cardhd,.citem .ct,.chg-cap,.lbl){text-wrap:balance}
+/* 1. a contents item's parts (the sections under it) are running text, so at the running size, not a label's (the
+   lesson-engine review of Speaking 1-3, 2026-11-10; check_text_size measures them so since) */
+.frame .citem .cs.parts .cp{font-size:2.9cqh;line-height:1.25}
+/* and an item with one section under it: that section's line, at the same size (no built teal lesson has one
+   before Speaking 1) */
+.frame .citem .cs:not(.parts){font-size:2.9cqh;line-height:1.25}
 /* 4. use the frame: six to eight contents items in two columns that fill the board, read down the first column
    and then the second (`order`; the site fixes #cam as a wrapping row, so the items are set half wide); each
    column's own line */
@@ -2371,13 +2380,14 @@ LOOK_CSS = {"teal": r"""
   gap:1.8cqw;--t-cr:5.5cqh}
 .frame #cam:has(> .blk.citem:nth-child(6)) .citem .cnum{width:11cqh;height:11cqh;font-size:5cqh}
 .frame #cam:has(> .blk.citem:nth-child(6)) .citem .ct{font-size:4.1cqh;line-height:1.2}
-/* six: three rows */
+/* six: three rows, read down the first column (1, 2, 3), then the second (4, 5, 6): the orders 1, 3, 5
+   and 2, 4, 6 (before 2026-11-10 they were 3, 5, 7, and the board drew 1, 2 / 4, 3 / 5, 6) */
 .frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(1){order:1}
 .frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(2){order:3}
 .frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(3){order:5}
-.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(4){order:3}
-.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(5){order:5}
-.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(6){order:7}
+.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(4){order:2}
+.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(5){order:4}
+.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(6){order:6}
 .frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(3)::after,
 .frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(4)::before{content:none}
 /* seven or eight: four rows */

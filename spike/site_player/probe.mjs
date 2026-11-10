@@ -42,6 +42,9 @@ const MEASURE = `(() => {
   };
   const words = s => s.trim().split(/\\s+/).filter(Boolean).length;
   const pieceOf = el => { for (let e = el; e && e !== cam; e = e.parentElement) { const d = getComputedStyle(e).display; if (d !== 'inline' && d !== 'contents') return e; } return el; };
+  // a table body's cell in its normal weight with a word in it, and a contents item's part, are running text
+  // (check_text_size.py)
+  const running = (p, cs, t) => !!p.closest('.cp, .citem .cs') || (!!p.closest('tbody td') && parseInt(cs.fontWeight, 10) < 600 && /[A-Za-z]{2}/.test(t));
   const isHand = cs => /caveat|ink free|segoe print|bradley hand|chalkboard|cursive/i.test(cs.fontFamily.split(',')[0]);
   const found = []; let minRun = 99, minLabel = 99;
   for (const el of cam.querySelectorAll(':scope > .blk')) {
@@ -56,7 +59,7 @@ const MEASURE = `(() => {
       if (![...rg.getClientRects()].some(q => q.width > 0 && q.right > A.left && q.left < A.right && q.bottom > A.top && q.top < A.bottom)) continue;
       const d = drawn(p, cs.color); if (d.alpha === 0 || d.op < 0.02) continue;
       const piece = pieceOf(p);
-      const label = piece.tagName === 'TH' || !!p.closest('th') || cs.textTransform === 'uppercase' || words(piece.innerText || piece.textContent) <= R.words;
+      const label = piece.tagName === 'TH' || !!p.closest('th') || cs.textTransform === 'uppercase' || (words(piece.innerText || piece.textContent) <= R.words && !running(p, cs, piece.innerText || piece.textContent));
       const px = parseFloat(cs.fontSize) * scaleOf(p) * k, eq = isHand(cs) ? px / R.hand : px;
       if (label) minLabel = Math.min(minLabel, eq); else minRun = Math.min(minRun, eq);
       const text = n.data.trim().slice(0, 48);
