@@ -3236,21 +3236,24 @@
    "lesson": "speaking-01-the-test",
    "point": "five-lines",
    "slot": "line-a",
-   "issued": "2026-11-09"
+   "issued": "2026-11-09",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-970004",
    "lesson": "speaking-01-the-test",
    "point": "five-lines",
    "slot": "line-b",
-   "issued": "2026-11-09"
+   "issued": "2026-11-09",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-970005",
    "lesson": "speaking-01-the-test",
    "point": "five-lines",
    "slot": "line-d",
-   "issued": "2026-11-09"
+   "issued": "2026-11-09",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-970006",
@@ -3327,14 +3330,16 @@
    "lesson": "speaking-02-reading-the-card",
    "point": "two-ways",
    "slot": "name-job",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-971003",
    "lesson": "speaking-02-reading-the-card",
    "point": "two-ways",
    "slot": "title-name",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-971004",
@@ -3376,21 +3381,24 @@
    "lesson": "speaking-02-reading-the-card",
    "point": "first-lines",
    "slot": "task-1",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-971010",
    "lesson": "speaking-02-reading-the-card",
    "point": "first-lines",
    "slot": "task-2",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-971011",
    "lesson": "speaking-02-reading-the-card",
    "point": "first-lines",
    "slot": "task-4",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-971012",
@@ -3453,35 +3461,40 @@
    "lesson": "speaking-03-starting",
    "point": "two-forms",
    "slot": "name-job",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-972002",
    "lesson": "speaking-03-starting",
    "point": "two-forms",
    "slot": "title-name",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-972003",
    "lesson": "speaking-03-starting",
    "point": "by-setting",
    "slot": "ward",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-972004",
    "lesson": "speaking-03-starting",
    "point": "by-setting",
    "slot": "x-ray",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-972005",
    "lesson": "speaking-03-starting",
    "point": "by-setting",
    "slot": "centre",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-972006",
@@ -3502,14 +3515,16 @@
    "lesson": "speaking-03-starting",
    "point": "role-why",
    "slot": "role",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-972009",
    "lesson": "speaking-03-starting",
    "point": "role-why",
    "slot": "why",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-972010",
@@ -3523,21 +3538,24 @@
    "lesson": "speaking-03-starting",
    "point": "warm-questions",
    "slot": "help",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-972012",
    "lesson": "speaking-03-starting",
    "point": "warm-questions",
    "slot": "brings",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-972013",
    "lesson": "speaking-03-starting",
    "point": "warm-questions",
    "slot": "could",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-12"
   },
   {
    "id": "oa-speaking-972014",
@@ -3601,6 +3619,174 @@
    "point": "rp2-whole",
    "slot": "roleplay",
    "issued": "2026-11-10"
+  },
+  {
+   "id": "oa-speaking-970014",
+   "lesson": "speaking-01-the-test",
+   "point": "match-skills",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-970015",
+   "lesson": "speaking-01-the-test",
+   "point": "match-skills",
+   "slot": "pair-1",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-970016",
+   "lesson": "speaking-01-the-test",
+   "point": "match-skills",
+   "slot": "pair-2",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-970017",
+   "lesson": "speaking-01-the-test",
+   "point": "match-skills",
+   "slot": "pair-3",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-970018",
+   "lesson": "speaking-01-the-test",
+   "point": "match-skills",
+   "slot": "pair-4",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-970019",
+   "lesson": "speaking-01-the-test",
+   "point": "match-skills",
+   "slot": "pair-5",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-971019",
+   "lesson": "speaking-02-reading-the-card",
+   "point": "way-name-job",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-971020",
+   "lesson": "speaking-02-reading-the-card",
+   "point": "way-title-name",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-970020",
+   "lesson": "speaking-01-the-test",
+   "point": "line-a",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-970021",
+   "lesson": "speaking-01-the-test",
+   "point": "line-b",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-970022",
+   "lesson": "speaking-01-the-test",
+   "point": "line-d",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-971021",
+   "lesson": "speaking-02-reading-the-card",
+   "point": "first-task-1",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-971022",
+   "lesson": "speaking-02-reading-the-card",
+   "point": "first-task-2",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-971023",
+   "lesson": "speaking-02-reading-the-card",
+   "point": "first-task-4",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-972023",
+   "lesson": "speaking-03-starting",
+   "point": "form-name-job",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-972024",
+   "lesson": "speaking-03-starting",
+   "point": "form-title-name",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-972025",
+   "lesson": "speaking-03-starting",
+   "point": "setting-ward",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-972026",
+   "lesson": "speaking-03-starting",
+   "point": "setting-x-ray",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-972027",
+   "lesson": "speaking-03-starting",
+   "point": "setting-centre",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-972028",
+   "lesson": "speaking-03-starting",
+   "point": "role",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-972029",
+   "lesson": "speaking-03-starting",
+   "point": "why-check",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-972030",
+   "lesson": "speaking-03-starting",
+   "point": "warm-help",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-972031",
+   "lesson": "speaking-03-starting",
+   "point": "warm-brings",
+   "slot": "item",
+   "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-972032",
+   "lesson": "speaking-03-starting",
+   "point": "warm-could",
+   "slot": "item",
+   "issued": "2026-11-12"
   }
  ]
 }

@@ -52,7 +52,10 @@ BLOCK_LOW, BLOCK_HIGH = 900000, 989999
 SLOT_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,39}$")
 PAUSE_MIN, PAUSE_MAX = 3.0, 10.0   # s: the fallback's pause (every pause is 0.5 to 10, §5)
 TYPES = {"choice", "text", "gapfill", "wordbank", "ordering",   # approved: ADR-0031 §3, ADR-0032
-         "selfcheck", "errorspot"}                              # selfcheck: contracts 1.13.0 (site #200)
+         "selfcheck", "errorspot",                              # selfcheck: contracts 1.13.0 (site #200)
+         "matching"}                                            # matchingItem (ADR-0032; ADR 054)
+MATCH_PAIRS = (2, 8)               # a matching item's active pairs
+MATCH_OPTIONS = (3, 9)             # and its options
 SCHEMES = {"oet-typed-v1", "oet-typed-form-v1"}                 # both accepted, contracts 1.13.0
 ROOT_CAUSES = {"word-match", "mentioned-not-asked", "partial", "overgeneralisation", "reversal",
                "wrong-referent", "world-knowledge", "speaker-confusion", "unaccepted-proposal",
@@ -213,10 +216,14 @@ def _has_float(obj) -> bool:
 
 
 def hashed(item: dict) -> dict:
-    """The item with its parts' and its own content_hash set (each part hashed alone)."""
+    """The item with its parts' and its own content_hash set (each part hashed alone; a withdrawn
+    pair keeps the hash it was withdrawn with)."""
     item = json.loads(json.dumps(item))
     for g in item.get("gaps") or []:
         g["content_hash"] = content_hash(g)
+    for pr in item.get("pairs") or []:
+        if pr.get("status") != "withdrawn":
+            pr["content_hash"] = content_hash(pr)
     item["content_hash"] = content_hash(item)
     return item
 
@@ -224,6 +231,8 @@ def hashed(item: dict) -> dict:
 # ---------------------------------------------------------------- the item contract, as far as it is checked here
 
 def _units(item: dict) -> list[dict]:
+    if item["type"] == "matching":
+        return [pr for pr in item.get("pairs") or [] if pr.get("status") != "withdrawn"]
     return item.get("gaps") if item["type"] in ("gapfill", "wordbank") else [item]
 
 
@@ -238,7 +247,8 @@ def check_item(item: dict, where: str, seen: set[str], ids_issued: dict[str, str
     t = item.get("type")
     if t not in TYPES:
         bad(f"type {t!r} is not an approved type ({', '.join(sorted(TYPES))})")
-    ids = [item["item_id"]] + [g["gap_id"] for g in item.get("gaps") or []]
+    ids = [item["item_id"]] + [g["gap_id"] for g in item.get("gaps") or []] + \
+        [pr["pair_id"] for pr in item.get("pairs") or []]
     for i in ids:
         if not ITEM_ID_RE.match(i):
             bad(f"id {i!r} is not an item id")
@@ -276,17 +286,47 @@ def check_item(item: dict, where: str, seen: set[str], ids_issued: dict[str, str
             if sc.get("method") not in (None, "ai"):
                 bad(f"a typed unit's scoring.method is 'ai' or absent, not {sc.get('method')!r}")
             _check_marking(u, bad, sc["accepted"], "a typed unit")
-        if t in ("choice", "wordbank"):
+        if t in ("choice", "wordbank", "matching"):
             key = u["scoring"]["key_option_id"]
             if key not in opts:
                 bad(f"key {key!r} is not an option of the item")
             fb = u["feedback"]["options"]
             if key in fb or not set(fb) <= opts:
                 bad("feedback on the key, or on an option the item does not have")
+    if t == "matching":
+        _check_matching(item, opts, bad)
     if t == "ordering":
         orders = item["scoring"]["accepted_orders"]
         if any(sorted(o) != sorted(opts) for o in orders) or item["display_order"] in orders:
             bad("an accepted order is not a permutation of the options, or the start is one")
+
+
+def _check_matching(item: dict, opts: set[str], bad) -> None:
+    """`matching` (matchingItem, ADR-0032): 2 to 8 pairs and 3 to 9 options, each option
+    <item id>-o<n>; REUSE-OPTIONS: without reuse_options, at least one option is no pair's key and no
+    option is the key of two pairs; KEY-LEAK: the keys in pair order are not the options' own order
+    (o1, o2, o3 ...); FEEDBACK: each pair explains at least one wrong option, never its key, only the
+    item's options; display_order is a permutation of the options."""
+    pairs = _units(item)
+    options = [o["option_id"] for o in item.get("options") or []]
+    if not MATCH_PAIRS[0] <= len(pairs) <= MATCH_PAIRS[1]:
+        bad(f"a matching item has {MATCH_PAIRS[0]} to {MATCH_PAIRS[1]} pairs, not {len(pairs)}")
+    if not MATCH_OPTIONS[0] <= len(options) <= MATCH_OPTIONS[1] or len(set(options)) != len(options):
+        bad(f"a matching item has {MATCH_OPTIONS[0]} to {MATCH_OPTIONS[1]} options, each once")
+    keys = [pr["scoring"]["key_option_id"] for pr in pairs]
+    if not item.get("reuse_options"):
+        if len(set(keys)) != len(keys):
+            bad("without reuse_options no option is the key of two pairs (REUSE-OPTIONS)")
+        if not set(options) - set(keys):
+            bad("without reuse_options at least one option is no pair's key, a distractor (REUSE-OPTIONS)")
+    if keys == [f"{item['item_id']}-o{n}" for n in range(1, len(keys) + 1)]:
+        bad("the keys in pair order are o1, o2, o3 ...: the answer shows in the options' order (KEY-LEAK)")
+    for pr in pairs:
+        fb = pr["feedback"].get("options") or {}
+        if not fb:
+            bad(f"pair {pr['pair_id']}: feedback on at least one wrong option (FEEDBACK)")
+    if sorted(item.get("display_order") or []) != sorted(options):
+        bad("display_order is not a permutation of the options")
 
 
 def _check_errorspot(item: dict, bad) -> None:

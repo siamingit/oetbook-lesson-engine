@@ -3,18 +3,28 @@ under the pronunciation lexicon, as synthesize_narration.py makes the narration'
 
     .venv/Scripts/python spike/scripts/synthesize_speaking.py <lesson_dir> [--dry-run]
 
+(ffmpeg on the PATH, with the rubberband filter: the gyan.dev full build, 9.0.1, has it.)
+
 Reads:  <lesson_dir>/analysis/practice.json      (the speaking items, speaking_items.py)
         spike/lexicon.json
 Writes: <lesson_dir>/generated/speaking-audio/<item_id>.<role>.wav
         <lesson_dir>/generated/speaking-audio/index.json
             {"format": "oetbook-speaking-audio", "version": 1,
              "items": {item_id: {role: {file, hash, voice, voice_id, model, speed, [emotion],
-                                        text, duration_s, characters, lexicon_terms, phoneme_check}}}}
+                                        text, duration_s, characters, lexicon_terms, phoneme_check,
+                                        [method, tempo, from]}}}}
 
 Each item's recordings are those speaking_items.ROLES names: a speak_repeat's model sentence in the
-teacher's voice at its speed and again slowly (SLOW_SPEED of it); a speak_respond's patient line in
-the patient's voice (patient_speaker, sonic-3.6 at 0.8, with the item's feeling where it has one)
-and its model answer in the teacher's. A role-play has none here: the site's patient speaks.
+teacher's voice at its speed, and the slow take; a speak_respond's patient line in the patient's
+voice (patient_speaker, sonic-3.6 at 0.8, with the item's feeling where it has one) and its model
+answer in the teacher's. A role-play has none here: the site's patient speaks.
+
+The slow take is never synthesised (ADR 054): it is the normal take stretched by ffmpeg's rubberband
+filter to SLOW_SPEED of its tempo, the pitch and every sound kept (SLOW_FILTER; chosen over atempo,
+C:/OET/scratch/speaking-build/slow-compare/CHOICE.md). Cartesia's own slow speed hardly slowed a
+sentence (1.00 to 1.07 of its length); this is always 1/0.75 of it. Its entry has `method`, `tempo`
+and `from` (the normal file), and a hash made of the normal take's hash and the filter, so it is
+made again exactly when the normal take or the filter changes. It costs no characters.
 
 As the narration's: a recording is reused while its words, voice, speed, feeling and every
 pronunciation it depends on are unchanged (synthesize_narration.cache_key); new audio is never made
@@ -24,14 +34,18 @@ would make and its characters.
 
 The site's own files (mp3, with sha256, bytes and duration in the contract) are made from these when
 the contracts are released (speaking_items.to_contract); until then the lesson's own player plays
-these recordings in its pop-up.
+these recordings in its pop-up. A speak_repeat's two takes go to the site as narration .m4a files
+(publish_lesson.py, contracts 1.22.0).
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import subprocess
 import sys
+import wave
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -41,6 +55,7 @@ import speaking_items                                                 # noqa: E4
 import voices                                                         # noqa: E402
 
 FORMAT = "oetbook-speaking-audio"
+SLOW_FILTER = f"rubberband=tempo={speaking_items.SLOW_SPEED:g}:pitch=1"
 
 
 def out_dir(L: Path) -> Path:
@@ -54,16 +69,40 @@ def items_of(L: Path) -> list[dict]:
 
 
 def plan(L: Path, lesson_voice: dict) -> list[dict]:
-    """One entry per recording: item id, role, text, voice, speed, emotion, file name."""
+    """One entry per recording: item id, role, text, voice, speed, emotion, file name; a slow take
+    also `from`, the normal take's file it is stretched from (never synthesised)."""
     out = []
     for it in items_of(L):
         for role, r in speaking_items.recordings(it).items():
             v = voices.voice_for(None if r["who"] == "teacher" else r["who"], lesson_voice)
-            speed = v["speed"] * (speaking_items.SLOW_SPEED if r["slow"] else 1.0)
-            out.append({"item": it["item_id"], "role": role, "text": r["text"], "voice": v,
-                        "speed": round(speed, 3), "emotion": voices.emotion_for(r["emotion"]),
-                        "file": f"{it['item_id']}.{role}.wav"})
+            e = {"item": it["item_id"], "role": role, "text": r["text"], "voice": v,
+                 "speed": round(v["speed"], 3), "emotion": voices.emotion_for(r["emotion"]),
+                 "file": f"{it['item_id']}.{role}.wav"}
+            if r["slow"]:
+                e["from"] = f"{it['item_id']}.normal.wav"
+            out.append(e)
     return out
+
+
+def slow_hash(normal_hash: str) -> str:
+    return hashlib.sha256(f"{normal_hash}|ffmpeg|{SLOW_FILTER}".encode("utf-8")).hexdigest()
+
+
+def wav_seconds(p: Path) -> float:
+    with wave.open(str(p)) as w:
+        return w.getnframes() / w.getframerate()
+
+
+def stretch(src: Path, dst: Path) -> None:
+    """The slow take: `src` at SLOW_SPEED of its tempo, the pitch kept (ffmpeg rubberband)."""
+    tmp = dst.with_name(dst.stem + ".part.wav")
+    r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(src), "-af", SLOW_FILTER, "-c:a", "pcm_s16le",
+                        str(tmp)], capture_output=True, text=True)
+    if r.returncode:
+        tmp.unlink(missing_ok=True)
+        raise SystemExit(f"the slow take of {src.name} was not made: ffmpeg needs the rubberband filter "
+                         f"(the gyan.dev full build has it). ffmpeg said: {r.stderr.strip()[-300:]}")
+    tmp.replace(dst)
 
 
 def main() -> None:
@@ -83,38 +122,54 @@ def main() -> None:
     by_hash = {e["hash"]: e for roles in old.get("items", {}).values() for e in roles.values()
                if (d / e["file"]).exists()}
 
-    if args.dry_run:
-        lex = lexicon.load()
+    from synthesize_narration import JOB_CHARACTERS_LIMIT, cache_key
+
+    def partition(lex: dict):
         dict_id = lex["cartesia"]["dict_id"]
-    else:
+        blocked, make, keep, slow = [], [], [], []
+        hashes = {}
+        for r in todo:
+            if "from" in r:
+                slow.append(r)
+                continue
+            salt = lexicon.cache_salt(r["text"], lex)
+            r["hash"] = cache_key(r["text"], r["speed"], salt, dict_id, r["voice"], r["emotion"])
+            r["terms"] = lexicon.terms_in(r["text"], lex)
+            hashes[(r["item"], r["file"])] = r["hash"]
+            if r["hash"] in by_hash:
+                keep.append(r)
+                continue
+            un = lexicon.unapproved_in(r["text"], lex)
+            if un:
+                blocked.append(f"{r['item']}.{r['role']}: {', '.join(un)}")
+                continue
+            make.append(r)
+        for r in slow:                      # made from the normal take; reused while it is unchanged
+            nh = hashes.get((r["item"], r["from"]))
+            r["hash"] = slow_hash(nh) if nh else None
+            (keep if r["hash"] in by_hash else make).append(r)
+        return dict_id, blocked, make, keep
+
+    lex = lexicon.load()
+    dict_id, blocked, make, keep = partition(lex)
+    synth = [r for r in make if "from" not in r]
+    client = sn = None
+    if synth and not args.dry_run:
         import synthesize_narration as sn
         from cartesia import Cartesia
         from synthesize_audio import api_key
         client = Cartesia(api_key=api_key())
         lex = lexicon.require_synced(client)
-        dict_id = lex["cartesia"]["dict_id"]
-    from synthesize_narration import JOB_CHARACTERS_LIMIT, cache_key
-
-    blocked, make, keep = [], [], []
-    for r in todo:
-        salt = lexicon.cache_salt(r["text"], lex)
-        r["hash"] = cache_key(r["text"], r["speed"], salt, dict_id, r["voice"], r["emotion"])
-        r["terms"] = lexicon.terms_in(r["text"], lex)
-        if r["hash"] in by_hash:
-            keep.append(r)
-            continue
-        un = lexicon.unapproved_in(r["text"], lex)
-        if un:
-            blocked.append(f"{r['item']}.{r['role']}: {', '.join(un)}")
-            continue
-        make.append(r)
-    chars = sum(len(r["text"]) for r in make)
-    print(f"{len(todo)} recordings: {len(keep)} reused, {len(make)} to make ({chars} characters), "
-          f"{len(blocked)} blocked")
+        dict_id, blocked, make, keep = partition(lex)
+        synth = [r for r in make if "from" not in r]
+    chars = sum(len(r["text"]) for r in synth)
+    print(f"{len(todo)} recordings: {len(keep)} reused, {len(synth)} to synthesise ({chars} characters), "
+          f"{len(make) - len(synth)} slow takes to stretch, {len(blocked)} blocked")
     if args.dry_run:
         for r in make:
-            print(f"  {r['file']}: {r['voice']['name']} {r['speed']:g}"
-                  f"{' ' + r['emotion'] if r['emotion'] else ''}: {r['text'][:70]}")
+            how = f"stretched from {r['from']} ({SLOW_FILTER})" if "from" in r else \
+                f"{r['voice']['name']} {r['speed']:g}{' ' + r['emotion'] if r['emotion'] else ''}"
+            print(f"  {r['file']}: {how}: {r['text'][:70]}")
         for b in blocked:
             print("  BLOCKED " + b)
         return
@@ -122,10 +177,11 @@ def main() -> None:
         raise SystemExit(f"REFUSED: {chars:,} characters, over {JOB_CHARACTERS_LIMIT:,}: tell the maintainer first")
 
     d.mkdir(parents=True, exist_ok=True)
-    from synthesize_audio import MODEL_ID, SAMPLE_RATE, write_wav
     failures = []
     made = {}
-    for r in make:
+    if synth:
+        from synthesize_audio import MODEL_ID, SAMPLE_RATE, write_wav
+    for r in synth:
         res = sn.synthesize_with_retry(client, r["text"], r["speed"], dict_id, r["file"], r["voice"], r["emotion"])
         write_wav(d / r["file"], res["pcm"])
         probs = [p for p in (lexicon.phoneme_check(t, res["phonemes"], lex) for t in r["terms"]) if p]
@@ -138,9 +194,27 @@ def main() -> None:
             "text": r["text"], "duration_s": round(len(res["pcm"]) / 2 / SAMPLE_RATE, 3),
             "characters": len(r["text"])}
         print(f"  made {r['file']} ({made[r['hash']]['duration_s']:.1f} s)", flush=True)
+    normal_hash = {(x["item"], x["file"]): x["hash"] for x in todo if "from" not in x}
+    for r in make:
+        if "from" not in r:
+            continue
+        h = normal_hash.get((r["item"], r["from"]))
+        src = (made.get(h) or by_hash.get(h)) if h else None
+        if src is None:
+            continue                                   # its normal take is blocked: nothing for it
+        stretch(d / src["file"], d / r["file"])
+        made[r["hash"]] = {
+            "file": r["file"], "hash": r["hash"], "voice": src["voice"], "voice_id": src["voice_id"],
+            "model": src["model"], "speed": round(src["speed"] * speaking_items.SLOW_SPEED, 3),
+            "method": f"ffmpeg {SLOW_FILTER}", "tempo": speaking_items.SLOW_SPEED, "from": src["file"],
+            **({"pronunciation_dict_id": src["pronunciation_dict_id"]} if "pronunciation_dict_id" in src else {}),
+            **({"lexicon_version": src["lexicon_version"]} if "lexicon_version" in src else {}),
+            "lexicon_terms": src.get("lexicon_terms", []), "phoneme_check": src.get("phoneme_check", "n/a"),
+            "text": r["text"], "duration_s": round(wav_seconds(d / r["file"]), 3), "characters": 0}
+        print(f"  stretched {r['file']} ({made[r['hash']]['duration_s']:.1f} s)", flush=True)
     items: dict = {}
     for r in todo:
-        e = made.get(r["hash"]) or by_hash.get(r["hash"])
+        e = (made.get(r["hash"]) or by_hash.get(r["hash"])) if r.get("hash") else None
         if e is None:
             continue                                   # blocked: nothing for it
         if e["file"] != r["file"]:

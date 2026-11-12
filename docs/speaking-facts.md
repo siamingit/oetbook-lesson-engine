@@ -13,6 +13,7 @@ are outside the repository, like Writing's:
 - **VERIFIED**: the agent read the quote on the named page on 2026-11-08 (page text through a
   fetch tool; the criteria PDF read directly).
 - **UNKNOWN**: not found on the pages read; never taught as an OET fact.
+- **OWNER**: stated by the owner, who corrected a fact; the date is given.
 
 ## Sources
 
@@ -42,12 +43,16 @@ are outside the repository, like Writing's:
 | 9 | Preparation: understand the patient's emotions (adjectives in the background), anticipate their expectations, notice where expectations differ, simplify medical language, plan the time per task, put first the tasks that need more discussion. | P | VERIFIED |
 | 10 | Starting: vary the opening to suit the situation; on a first meeting introduce yourself briefly and check the patient's name; if you have just examined the patient, skip the introduction; in an emergency, get to the point quickly; you may ask an older patient "Do you mind if I call you John?"; never add a title to a name the patient has given you. | B | VERIFIED |
 | 11 | The test is recorded and assessed by at least two trained OET assessors. | S, O | VERIFIED |
-| 12 | The role-plays are done with the interlocutor via Zoom. | S | VERIFIED |
+| 12 | The role-plays are done with the interlocutor, who plays the patient. The mode depends on how the test is taken: on paper at a test venue it is face to face, with the interlocutor in the room; on computer, and at home, it is online. (Corrected by the owner on 2026-11-12: the earlier "via Zoom" was wrong for paper tests.) | S, owner | OWNER (2026-11-12) |
 | 13 | Four linguistic criteria, each marked out of 6: Intelligibility; Fluency; Appropriateness of Language; Resources of Grammar and Expression. | R, C | VERIFIED |
 | 14 | Five clinical communication criteria, each marked out of 3: A Relationship building (A1–A4); B Understanding and incorporating the patient's perspective (B1–B3); C Providing structure (C1–C3); D Information gathering (D1–D5); E Information giving (E1–E5). | C | VERIFIED |
 | 15 | Scores are combined and converted to the 0–500 scale; grade B is "predominantly scores of 5 out of 6 on each linguistic criteria and 2 out of 3 for the clinical communication criteria". The conversion formula is UNKNOWN. | R, S | VERIFIED (formula UNKNOWN) |
 | 16 | Band 6 Intelligibility names "stress, intonation, rhythm" and says the first-language accent has no effect on understanding. Band 6 Appropriateness includes explaining technical matters in lay terms with no difficulty. Fluency band 4: "Delivery may be staccato or too fast/slow"; band 3: "Frequent pauses … Excessive use of fillers". | C | VERIFIED |
 | 17 | "Assessors do not count how many mistakes you make." | https://oet.com/post/study-skills-assessment-criteria | VERIFIED |
+
+## House rule: never name an app (owner, 2026-11-12)
+
+A lesson never names Zoom or any other app, and never says the Speaking test is a video call. Lessons say only that the interlocutor plays the patient. A line mentions the mode only when it truly needs it, and then it gives both ways: face to face on paper at a test venue, online on computer and at home (fact 12).
 
 UNKNOWN on the pages read: whether the interlocutor is a healthcare professional; the exact card
 layout on the current test; the score conversion formula; any change to Speaking since 2024.
@@ -69,7 +74,7 @@ owner reviews it. Full text: `C:\OET\lessons\_speaking-analysis\ANALYSIS.md`.
 - **Corrected from oet.com.** These come from the sessions and are not repeated in lessons:
   - "ticks" and negative marks: there are two assessors, bands of 0–6 and 0–3, and mistakes
     are not counted;
-  - a test centre: the test is now on Zoom;
+  - a test centre: corrected by the owner on 2026-11-12 (fact 12). On paper at a test venue the test is face to face; on computer and at home it is online;
   - "5 to 6 minutes";
   - "never ask the name": OET advises checking it;
   - "set phrases raise the score";

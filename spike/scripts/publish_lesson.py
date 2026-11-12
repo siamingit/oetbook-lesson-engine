@@ -72,7 +72,9 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_course_index                                         # noqa: E402
 import lesson_package as lp                                       # noqa: E402
+import lesson_type                                                # noqa: E402
 import paths                                                      # noqa: E402
+import practice_points                                            # noqa: E402
 import speaking_items                                             # noqa: E402
 
 SESSIONS_REPO = "siamingit/oetacademy-sessions"
@@ -363,6 +365,11 @@ def lesson_tags(L: Path, bundle: dict, contracts: lp.Contracts) -> tuple[dict[st
     if unknown:
         raise Refused(f"{p}: the tags of {L.name} use {unknown}, not keys of taxonomy v{tv}, the version the "
                       f"{course_of(L.name)} course's manifests name")
+    if lesson_type.of(L) == "speaking":
+        # ADR 054: the pinned session section tag list (1.22.0) has no speaking keys, so a Speaking lesson's
+        # sections teach nothing in its package (LP-TEACHES-EMPTY is waived for a speaking lesson); the keys in
+        # the tags file wait for the list
+        tags = {k: [] for k in tags}
     return tags, tags_approval(L, doc)
 
 
@@ -443,15 +450,94 @@ def check_zip(zpath: Path, folder: Path, f: lp.Findings) -> None:
 
 
 def speaking_units(bundle: dict) -> list[str]:
-    """What only the site's speaking contract could carry (ADR 053): a patient's narration line,
-    a practice point of speaking items, a bundle in format 1.24."""
+    """What the site's contracts cannot carry (ADR 053): a patient's narration line, a practice point
+    of speaking items not in their released form (a speak_repeat in its contract form, 1.22.0, is
+    carried; site_form makes it), a bundle in format 1.24."""
     out = [f"format {bundle.get('format_version')}"] if bundle.get("format_version") == "1.24" else []
     for bd in bundle.get("boards") or []:
         for st in bd.get("states") or []:
             out += [u["id"] for u in st.get("utterances") or [] if u.get("speaker")]
             out += [p["id"] for p in st.get("practice") or []
-                    if any(speaking_items.is_speaking(i) for i in p.get("items") or [])]
+                    if any(speaking_items.is_speaking(i) and not speaking_items.is_contract_form(i)
+                           for i in p.get("items") or [])]
     return out
+
+
+def site_form(L: Path, bundle: dict) -> tuple[dict, list[dict]]:
+    """A Speaking lesson's bundle as the site's contracts (1.22.0) carry it (ADR 054): format 1.23; a
+    patient's line a plain narration line (no speaker, no feeling); each speak_repeat point's item in
+    the released contract's shape (speaking_items.release_item, from analysis/practice.json), its two
+    recordings narration files (_assemble); every point of a type still in the draft (speak_respond,
+    roleplay) left out, its pause a plain pause, as stub_speaking leaves it. Returns the bundle and
+    the points left out [{point, key, types, items}]. LP-PRACTICE-ITEM: a speak_repeat is the only
+    item of its point; a point with more is refused here, by name."""
+    b = copy.deepcopy(bundle)
+    if b.get("format_version") == "1.24":
+        b["format_version"] = "1.23"
+    engine = {it["item_id"]: it for pt in (practice_points.load(L) or {}).values() for it in pt["items"]}
+    left_out = []
+    for bd in b.get("boards") or []:
+        for st in bd.get("states") or []:
+            for u in st.get("utterances") or []:
+                u.pop("speaker", None)
+                u.pop("emotion", None)
+            gone, keep = set(), []
+            for pt in st.get("practice") or []:
+                items = pt.get("items") or []
+                if not any(speaking_items.is_speaking(i) for i in items):
+                    keep.append(pt)
+                    continue
+                key = pt["id"].split("_pp-", 1)[-1]
+                if all(speaking_items.is_released(i) for i in items):
+                    if len(items) != 1:
+                        raise Refused(f"practice point {key!r} ({pt['id']}): LP-PRACTICE-ITEM: a speak_repeat is the "
+                                      f"only item of its point, and this one has {len(items)} "
+                                      f"({', '.join(i['item_id'] for i in items)}): make each its own point, with "
+                                      "its own pause (contracts 1.22.0)")
+                    if not isinstance(pt.get("excerpt"), dict):
+                        # contracts 1.22.0: every practice point carries an excerpt {sample, pin, title, rows};
+                        # a speaking point has no paper, so its excerpt is authored, as Grammar's are; none
+                        # is made up here
+                        raise Refused(f"practice point {key!r} ({pt['id']}): no excerpt: the site's contracts "
+                                      "(1.22.0) require one on every practice point; write it in "
+                                      "analysis/practice.json ({sample: <lesson id>, pin: \"authored for this "
+                                      "lesson\", title, rows: [{label, lines}]}) and build the lesson again")
+                    i = items[0]
+                    if not speaking_items.is_contract_form(i):
+                        e = engine.get(i["item_id"])
+                        if e is None:
+                            raise Refused(f"practice point {key!r}: {i['item_id']} is not in analysis/practice.json: "
+                                          "build the lesson again")
+                        i = speaking_items.release_item(e, 1, e.get("version", 1))
+                    keep.append({**pt, "items": [i]})
+                    continue
+                gone.add(pt["id"])
+                left_out.append({"point": pt["id"], "key": key, "types": sorted({i["type"] for i in items}),
+                                 "items": [i["item_id"] for i in items]})
+            if "practice" in st:
+                st["practice"] = keep
+                if not keep:
+                    del st["practice"]
+            for u in st.get("utterances") or []:
+                for c in u.get("cues") or []:
+                    if c.get("practice") in gone:
+                        del c["practice"]
+    return b, left_out
+
+
+def is_speaking_bundle(bundle: dict) -> bool:
+    """A bundle site_form changes: 1.24, a patient's line, or a speaking item."""
+    return bundle.get("format_version") == "1.24" or any(
+        u.get("speaker") or u.get("emotion") for bd in bundle.get("boards") or [] for st in bd.get("states") or []
+        for u in st.get("utterances") or []) or any(
+        speaking_items.is_speaking(i) for bd in bundle.get("boards") or [] for st in bd.get("states") or []
+        for pt in st.get("practice") or [] for i in pt.get("items") or [])
+
+
+def speak_repeat_items(bundle: dict) -> list[dict]:
+    """The released speak_repeat items of a site-form bundle, in board order."""
+    return [i for bd in bundle.get("boards") or [] for st in bd.get("states") or []
+            for pt in st.get("practice") or [] for i in pt.get("items") or [] if speaking_items.is_contract_form(i)]
 
 
 def stub_speaking(bundle: dict) -> dict:
@@ -514,12 +600,23 @@ def build(L: Path, contracts: lp.Contracts, workers: int | None = None, log=prin
         raise Refused(f"the bundle's lesson id {bundle['lesson']['id']} is not the folder's name {lesson}")
     if bundle["meta"].get("silent"):
         raise Refused("a silent preview is never published")
-    if speaking_units(bundle) and not speaking_items.RELEASED:
-        # ADR 053: the site's contracts have no speaking units yet; the draft (1.21.0) is not
-        # released, so no package or draft of such a lesson is made until it is
+    left_out = []
+    if not stub and is_speaking_bundle(bundle):
+        # ADR 054: contracts 1.22.0 carry a speak_repeat point; the draft's types (speak_respond,
+        # roleplay) are not released, so a draft leaves their points out and a final release refuses them
+        bundle, left_out = site_form(L, bundle)
+        if left_out:
+            log(f"{lesson}: {len(left_out)} speaking point(s) left out (not in the site's contracts yet):")
+            for x in left_out:
+                log(f"  {x['key']} ({x['point']}): {', '.join(x['types'])}: {', '.join(x['items'])}")
+            if not draft:
+                raise Refused(f"{len(left_out)} speaking point(s) are of types the site's contracts do not have yet "
+                              f"({', '.join(sorted({t for x in left_out for t in x['types']}))}: "
+                              f"{', '.join(x['key'] for x in left_out)}): a final release carries every point; "
+                              "only a --draft leaves them out")
+    if speaking_units(bundle):
         raise Refused("the lesson has speaking units (" + ", ".join(speaking_units(bundle)[:3]) + "): "
-                      "the site's contracts do not have them yet (ADR 053); it is never published, "
-                      "not even as a draft, until they are released")
+                      "the site's contracts do not have them (ADR 053)")
     approved = draft_approval() if draft else final_gate(L)
     record = load_record(L)
     version = next_version(lesson, record)
@@ -536,6 +633,8 @@ def build(L: Path, contracts: lp.Contracts, workers: int | None = None, log=prin
     f = lp.Findings()
     try:
         report = _assemble(L, player, bundle, contracts, stage, version, approved, tags, retired, workers, f, log)
+        if left_out or speak_repeat_items(bundle):
+            report["speaking_left_out"] = left_out
         f.extend(lp.validate_package(stage, contracts))
         if stub:
             f = stub_findings(f, log)
@@ -621,6 +720,26 @@ def _assemble(L, player, bundle, contracts, stage, version, approved, tags, reti
     for u in utts:
         if u.get("kind") != "exam":
             u["audio_file"] = names[u["audio_file"]]
+
+    # A speak_repeat's two recordings (contracts 1.22.0): narration files at the item's own paths, encoded
+    # from generated/speaking-audio/ (synthesize_speaking.py) as every narration file is.
+    rec_dir = L / "generated" / "speaking-audio"
+    for it in speak_repeat_items(pub):
+        for role, name in it["audio"].items():
+            wav = rec_dir / f"{it['item_id']}.{role}.wav"
+            if not wav.is_file():
+                f.error("PUB-SOURCE-MISSING", "audio", "a speak_repeat recording does not exist: run "
+                        "synthesize_speaking.py", f"{it['item_id']}: {wav.name}")
+                continue
+            cached = cache / f"speak-{lp.sha256_file(wav)[:16]}.m4a"
+            if not cached.exists():
+                encode(wav, cached)
+            shutil.copyfile(cached, stage / name)
+            t = timing(wav, stage / name)
+            timings[name] = t
+            timing_findings(t, name, f)
+            media.append({"path": name, "sha256": lp.sha256_file(stage / name), "bytes": (stage / name).stat().st_size,
+                          "mime": "audio/mp4", "duration_s": round(t["duration_s"], 6), "kind": "narration"})
 
     # MP3s: exam recordings and pronunciation clips, byte for byte, named by their own hash.
     sources, release = exam_sources(L)
@@ -792,8 +911,14 @@ def release(L: Path, dry_run: bool, log=print, draft: bool = False) -> dict:
         raise Refused("the package fails its checks:\n" + "\n".join(f.lines()))
     manifest = read_json(folder / "manifest.json")
     bundle = read_json(L / "generated" / "lesson-player" / "bundle.json")
-    if speaking_units(bundle) and not speaking_items.RELEASED:
-        raise Refused("the lesson has speaking units: never released until the site's contracts have them (ADR 053)")
+    if is_speaking_bundle(bundle):
+        site, left_out = site_form(L, bundle)
+        if left_out and not draft:
+            raise Refused(f"{len(left_out)} speaking point(s) of types the site's contracts do not have yet "
+                          f"({', '.join(x['key'] for x in left_out)}): a final release carries every point (ADR 054)")
+        bundle = site
+    if speaking_units(bundle):
+        raise Refused("the lesson has speaking units the site's contracts do not have (ADR 053)")
     if draft and manifest["lesson"]["approved"]["by"] != draft_approval()["by"]:
         raise Refused("the manifest's approval is not a draft's")
     if not draft and manifest["lesson"]["approved"] != final_gate(L):

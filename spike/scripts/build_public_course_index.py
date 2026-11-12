@@ -146,7 +146,7 @@ _ANSWERS: dict[str, tuple] = {}
 RUN = 6          # this many words in a row of a set's own wording is the set's text (ADR 026)
 SAMPLE_RUN = 8   # and of a Writing lesson's samples (as the release check's transcript runs): a shorter run of a
                  # paper or a key is common wording ("in the task and the plan")
-ID_KEYS = {"item_id", "stimulus_id", "set_id", "option_id", "gap_id", "id", "content_hash"}
+ID_KEYS = {"item_id", "stimulus_id", "set_id", "option_id", "gap_id", "pair_id", "id", "content_hash"}
 
 
 def set_strings(o):

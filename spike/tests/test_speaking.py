@@ -1,17 +1,20 @@
-"""The Speaking course's engine (ADR 053): a narration line's speaker and feeling, the speaking practice
-items of the site's draft contract behind speaking_items.py, their recordings, and the refusal to publish
-a lesson with speaking units before the site's contracts have them. A line with no speaker is the
-teacher's, so nothing built before changes."""
+"""The Speaking course's engine (ADR 053, ADR 054): a narration line's speaker and feeling, the speaking
+practice items behind speaking_items.py (speak_repeat in the site's contracts 1.22.0, the others still the
+draft's), their recordings (the slow take stretched from the normal one), and the site's form of a Speaking
+lesson's bundle: a speak_repeat point carried, the draft's types left out of a --draft and refused in a final
+release. A line with no speaker is the teacher's, so nothing built before changes."""
 
 import copy
 import hashlib
 import json
+import os
 import sys
 import tempfile
 import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+import lesson_package as lp  # noqa: E402
 import practice_points as pp  # noqa: E402
 import publish_lesson  # noqa: E402
 import speaking_items as si  # noqa: E402
@@ -40,6 +43,26 @@ ROLEPLAY = {"item_id": "oa-speaking-970002", "type": "roleplay", "profession": "
                         "emotion": "impatient", "opening": "I need to play on Saturday.",
                         "hidden": ["He has a match on Saturday"], "concern": "Missing the match."},
             "prepare_s": 180, "talk_s": 300}
+
+TAGGED = dict(REPEAT, tags={"practises": ["speaking.language.intelligibility"]})
+EXCERPT = {"sample": LESSON, "pin": "authored for this lesson", "title": "Say it",
+           "rows": [{"label": "", "lines": ["Can I check your full name, please?"]}]}
+
+
+def practice_item_validator():
+    """The bundle schema's practiceItem of the pinned contracts, or a skip where CI has none."""
+    from jsonschema import Draft202012Validator
+    from referencing import Registry, Resource
+    try:
+        c = lp.load(fetch_missing=False)
+    except SystemExit:
+        if os.environ.get("OETBOOK_CONTRACTS_OPTIONAL") == "1":
+            raise unittest.SkipTest("skipped: contracts not available in CI")
+        raise
+    schemas = [json.loads(b) for n, b in c.files.items() if n.startswith("schemas/") and n.endswith(".json")]
+    reg = Registry().with_resources((x["$id"], Resource.from_contents(x)) for x in schemas)
+    return Draft202012Validator(
+        {"$ref": "https://oetacademy.uk/contracts/v1/lesson-bundle.schema.json#/$defs/practiceItem"}, registry=reg)
 
 
 def utt(uid, cues, **kw):
@@ -151,9 +174,46 @@ class Items(unittest.TestCase):
                                                  "feel": {"task": "t", "excerpt": None, "items": [RESPOND, ROLEPLAY]}})
         got = {(r["item"], r["role"]): (r["voice"]["name"], r["speed"], r["emotion"]) for r in ss.plan(lesson, voices.RUPERT)}
         self.assertEqual(got, {("oa-speaking-970000", "normal"): ("rupert", 1.0, None),
-                               ("oa-speaking-970000", "slow"): ("rupert", 0.75, None),
+                               ("oa-speaking-970000", "slow"): ("rupert", 1.0, None),
                                ("oa-speaking-970001", "patient"): ("gemma", 0.8, "anxious"),
                                ("oa-speaking-970001", "model"): ("rupert", 1.0, None)})
+        # the slow take is the normal one stretched (ADR 054), never a voice of its own
+        slow = [r for r in ss.plan(lesson, voices.RUPERT) if r["role"] == "slow"]
+        self.assertEqual([r.get("from") for r in slow], ["oa-speaking-970000.normal.wav"])
+
+
+class Release(unittest.TestCase):
+    """A speak_repeat in the released contract's shape (contracts 1.22.0)."""
+
+    def test_the_released_shape(self):
+        c = si.release_item(TAGGED, 1, 1)
+        self.assertEqual(list(c), ["item_id", "type", "number", "focus", "shown", "spoken", "chunks", "audio",
+                                   "scoring", "tags", "version", "status", "content_hash"])
+        self.assertEqual(c["audio"], {"normal": "audio/speak-970000-normal.m4a", "slow": "audio/speak-970000-slow.m4a"})
+        self.assertEqual(c["tags"]["facets"]["profession"], ["nursing"])
+        self.assertNotIn("pass_score", c)
+        self.assertNotIn("profession", c)
+        self.assertEqual(c["content_hash"], pp.content_hash({k: v for k, v in c.items() if k != "content_hash"}))
+        self.assertTrue(si.is_contract_form(c))
+        self.assertFalse(si.is_contract_form(TAGGED))
+        self.assertEqual(TAGGED.get("tags"), {"practises": ["speaking.language.intelligibility"]})   # not changed
+
+    def test_refusals(self):
+        cases = [(REPEAT, "tags.practises"),
+                 (RESPOND, "not in the site's contracts"),
+                 (dict(TAGGED, shown="Can I check your name?"), "RP-SHOWN"),
+                 (dict(TAGGED, chunks=["Can I check", "your name"]), "RP-SPEAK-CHUNKS"),
+                 (dict(TAGGED, spoken="Take 2 tablets.", shown="Take 2 tablets.", chunks=["Take 2 tablets"]),
+                  "RP-SPEAK-NUMBERS")]
+        for it, why in cases:
+            with self.subTest(why=why):
+                with self.assertRaises(SystemExit) as e:
+                    si.release_item(it)
+                self.assertIn(why, str(e.exception))
+
+    def test_it_is_a_practice_item_of_the_pinned_contracts(self):
+        v = practice_item_validator()
+        self.assertEqual([e.message for e in v.iter_errors(si.release_item(TAGGED))], [])
 
 
 class Attach(unittest.TestCase):
@@ -171,8 +231,10 @@ class Attach(unittest.TestCase):
         bd = board()
         self.assertTrue(pp.attach(L, [bd]))
         p = bd["states"][0]["practice"][0]
-        self.assertEqual(p["items"][0]["contract_id"], "oa-speak-970000")
-        self.assertNotIn("content_hash", p["items"][0])
+        v = p["items"][0]
+        self.assertNotIn("contract_id", v)          # a speak_repeat keeps its own id (contracts 1.22.0)
+        self.assertEqual((v["item_id"], v["shown"], v["chunks"]), (REPEAT["item_id"], REPEAT["shown"], REPEAT["chunks"]))
+        self.assertNotIn("content_hash", v)
         self.assertTrue(pp.has_speaking([bd]))
 
     def test_speaking_items_only_in_a_speaking_lesson_and_alone(self):
@@ -209,15 +271,71 @@ class Publish(unittest.TestCase):
         self.assertNotIn("practice", s["boards"][0]["states"][0]["utterances"][0]["cues"][1])
         self.assertEqual(s["format_version"], "1.23")
 
-    def test_a_lesson_with_speaking_units_is_never_built_for_the_site(self):
-        self.assertFalse(si.RELEASED)
-        L = lesson_dir(LESSON, "speaking")
+    def site_bundle(self, respond=True, excerpt=EXCERPT, repeat_items=None):
+        """A bundle with a speak_repeat point (and a speak_respond point) and the lesson behind it."""
+        b = self.bundle()
+        st = b["boards"][0]["states"][0]
+        st["practice"][0]["excerpt"] = excerpt
+        if repeat_items is not None:
+            st["practice"][0]["items"] = repeat_items
+        points = {"x": {"task": "Say it.", "excerpt": excerpt, "items": [TAGGED]}}
+        if respond:
+            st["practice"].append({"id": "page-1_pp-feel", "excerpt": None, "items": [si.browser_view(RESPOND, None)]})
+            st["utterances"][1]["cues"].append({"id": "c2", "type": "pause", "text": "practice: feel", "seconds": 6.0,
+                                                "time": 11.0, "time_end": 17.0, "practice": "page-1_pp-feel"})
+            points["feel"] = {"task": "Answer her.", "excerpt": None, "items": [RESPOND]}
+        return lesson_dir(LESSON, "speaking", points), b
+
+    def test_the_site_form(self):
+        L, b = self.site_bundle()
+        self.assertTrue(publish_lesson.is_speaking_bundle(b))
+        before = copy.deepcopy(b)
+        s, left = publish_lesson.site_form(L, b)
+        self.assertEqual(b, before)
+        self.assertEqual(s["format_version"], "1.23")
+        self.assertNotIn("speaker", json.dumps(s))
+        self.assertEqual(publish_lesson.speaking_units(s), [])
+        st = s["boards"][0]["states"][0]
+        self.assertEqual([p["id"] for p in st["practice"]], ["page-1_pp-x"])
+        self.assertEqual(st["practice"][0]["items"], [si.release_item(TAGGED)])
+        self.assertEqual(left, [{"point": "page-1_pp-feel", "key": "feel", "types": ["speak_respond"],
+                                 "items": ["oa-speaking-970001"]}])
+        self.assertNotIn("practice", st["utterances"][1]["cues"][1])        # its pause is a plain pause
+        self.assertEqual(st["utterances"][0]["cues"][1]["practice"], "page-1_pp-x")
+        self.assertEqual(publish_lesson.speak_repeat_items(s), [si.release_item(TAGGED)])
+        f = lp.Findings()
+        lp.check_practice(s, f)
+        self.assertEqual(f.codes("error"), [])
+
+    def test_the_site_form_refusals(self):
+        for kw, why in ((dict(excerpt=None), "no excerpt"),
+                        (dict(repeat_items=[si.browser_view(REPEAT, None)] * 2), "LP-PRACTICE-ITEM")):
+            with self.subTest(why=why):
+                L, b = self.site_bundle(respond=False, **kw)
+                with self.assertRaises(publish_lesson.Refused) as e:
+                    publish_lesson.site_form(L, b)
+                self.assertIn(why, str(e.exception))
+
+    def test_a_final_release_carries_every_point(self):
+        L, b = self.site_bundle()
         (L / "generated" / "lesson-player").mkdir(parents=True)
-        (L / "generated" / "lesson-player" / "bundle.json").write_text(json.dumps(self.bundle()), encoding="utf-8")
-        for draft in (False, True):
-            with self.assertRaises(publish_lesson.Refused) as e:
-                publish_lesson.build(L, None, draft=draft)
-            self.assertIn("ADR 053", str(e.exception))
+        (L / "generated" / "lesson-player" / "bundle.json").write_text(json.dumps(b), encoding="utf-8")
+        with self.assertRaises(publish_lesson.Refused) as e:
+            publish_lesson.build(L, None, log=lambda *a: None, draft=False)
+        self.assertIn("only a --draft", str(e.exception))
+
+    def test_the_package_check_of_a_speak_repeat(self):
+        good = si.release_item(TAGGED)
+        cases = [([good, good], "LP-PRACTICE-ITEM"),
+                 ([dict(good, chunks=["Can I check", "your name"])], "LP-SPEAK-CHUNKS"),
+                 ([dict(good, spoken="Take 2 tablets.", shown="Take 2 tablets.", chunks=["Take 2 tablets"])],
+                  "LP-SPEAK-NUMBERS")]
+        for items, code in cases:
+            with self.subTest(code=code):
+                f = lp.Findings()
+                lp.check_practice({"format_version": "1.23", "boards": [{"states": [{"id": "s1", "utterances": [],
+                                   "practice": [{"id": "p", "items": items}]}]}]}, f)
+                self.assertIn(code, f.codes("error"))
 
 
 class Dialogue(unittest.TestCase):

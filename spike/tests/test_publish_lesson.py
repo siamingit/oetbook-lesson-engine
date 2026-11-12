@@ -173,7 +173,7 @@ class BuiltPackage(unittest.TestCase):
 
     def test_manifest(self):
         m = self.manifest["lesson"]
-        self.assertEqual(self.manifest["contracts_version"], "1.20.0")
+        self.assertEqual(self.manifest["contracts_version"], "1.22.0")
         self.assertEqual(self.manifest["taxonomy"], CONTRACTS.taxonomy_ref(2))       # a Grammar lesson: v2
         self.assertEqual(m["approved"], {"by": "siavash", "on": "2026-10-01"})
         self.assertEqual(m["package_version"], 1)
@@ -475,14 +475,14 @@ class PinnedContracts(unittest.TestCase):
         finally:
             shutil.rmtree(d)
 
-    def test_the_lock_pins_1_20_0(self):
+    def test_the_lock_pins_1_22_0(self):
         lk = lp.lock()
-        self.assertEqual((lk["tag"], lk["sha256"]), ("contracts-v1.20.0",
-                         "6e4d4d243ba2e4ce569f1412794c4cbfff26ee3b24d22fc2afddfe011497ead7"))
+        self.assertEqual((lk["tag"], lk["sha256"]), ("contracts-v1.22.0",
+                         "54f0fc9039b2a59b81628f2c486cc194b09afb702564c37b7452b7688ce54e2e"))
 
     @needs_contracts
-    def test_the_loaded_contracts_are_1_20_0(self):
-        self.assertEqual(CONTRACTS.version, "1.20.0")
+    def test_the_loaded_contracts_are_1_22_0(self):
+        self.assertEqual(CONTRACTS.version, "1.22.0")
         self.assertEqual(CONTRACTS.tag_taxonomy, {"id": "oetacademy-topics", "version": 3, "sha256":
                          "2742d1c707a59215fa5f07e240a48fceb8ab2f5318c829a617e10ea7fff3814c"})
         self.assertEqual(CONTRACTS.taxonomy_ref(2)["sha256"],
