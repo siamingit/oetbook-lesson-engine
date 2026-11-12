@@ -72,7 +72,6 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_course_index                                         # noqa: E402
 import lesson_package as lp                                       # noqa: E402
-import lesson_type                                                # noqa: E402
 import paths                                                      # noqa: E402
 import practice_points                                            # noqa: E402
 import speaking_items                                             # noqa: E402
@@ -365,11 +364,6 @@ def lesson_tags(L: Path, bundle: dict, contracts: lp.Contracts) -> tuple[dict[st
     if unknown:
         raise Refused(f"{p}: the tags of {L.name} use {unknown}, not keys of taxonomy v{tv}, the version the "
                       f"{course_of(L.name)} course's manifests name")
-    if lesson_type.of(L) == "speaking":
-        # ADR 054: the pinned session section tag list (1.22.0) has no speaking keys, so a Speaking lesson's
-        # sections teach nothing in its package (LP-TEACHES-EMPTY is waived for a speaking lesson); the keys in
-        # the tags file wait for the list
-        tags = {k: [] for k in tags}
     return tags, tags_approval(L, doc)
 
 

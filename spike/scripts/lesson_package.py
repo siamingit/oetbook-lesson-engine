@@ -547,9 +547,6 @@ def check_manifest(m: dict, folder: Path, c: Contracts, f: Findings) -> None:
             f.error("LP-PROFESSION-UNKNOWN", at, "unknown profession", str(p))
 
     professions_ok(m["lesson"]["professions"], f"{where} lesson.professions")
-    # ADR 054: the session section tag list (1.22.0) has no speaking keys, so a Speaking lesson's sections
-    # teach nothing; LP-TEACHES-EMPTY is waived for it, and for no other lesson
-    speaking_lesson = str((m.get("lesson") or {}).get("id") or "").startswith("speaking-")
     for s in m["sections"]:
         at = f"{where} sections[{s['id']}]"
         for key in s["teaches"]:
@@ -564,7 +561,7 @@ def check_manifest(m: dict, folder: Path, c: Contracts, f: Findings) -> None:
             elif node.get("status") == "retired":
                 f.error("LP-TOPIC-RETIRED", at, "retired in the taxonomy", key)
         nodes = [nodes_of[k] for k in s["teaches"] if k in nodes_of]
-        if not s["intro"] and not s["teaches"] and not speaking_lesson:
+        if not s["intro"] and not s["teaches"]:
             f.error("LP-TEACHES-EMPTY", at, "a teaching section needs at least one topic it teaches")
         elif nodes and all(n["level"] == "skill" for n in nodes):
             f.warning("LP-TEACHES-BROAD", f"{where} sections", "tagged with a skill only", s["id"])

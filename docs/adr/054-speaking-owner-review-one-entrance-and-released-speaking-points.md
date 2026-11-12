@@ -54,8 +54,8 @@ The owner reviewed Speaking 1 on 2026-11-12. Four points need shared code:
 
 ## Decision
 
-1. **One entrance per board** (board_player_template.html). A teal block is marked `data-entered` the first time
-   it is drawn. When a later state, an erase or a clear rebuilds it, it gets the class `entered`, and
+1. **One entrance per board** (board_player_template.html). Every block is marked `data-entered` the first time
+   it is drawn (in every lesson; the mark draws nothing by itself). When a later state, an erase or a clear rebuilds it, it gets the class `entered`, and
    `.frame .blk.entered.tbl.lay tbody tr, .frame .blk.entered.tbl.lay td {animation: none}`. The entrance plays
    once per board. Later states only add or mark things.
 2. **The contents line** (style_c.py, for a contents board with six items or more):
@@ -87,15 +87,18 @@ The owner reviewed Speaking 1 on 2026-11-12. Four points need shared code:
    - it is the only item of its point (LP-PRACTICE-ITEM). Points that held two or three lines are split; their
      unreleased IDs are retired in spike/practice/ids.json (`retired`, 2026-11-12), never reused.
 
-   Each speak_repeat point has an authored excerpt, because 1.22.0 requires one on every point. The pinned section
-   tag list has no speaking keys, so a Speaking lesson's sections teach nothing in its package; LP-TEACHES-EMPTY is
-   waived for a Speaking lesson only.
+   Each speak_repeat point has an authored excerpt, because 1.22.0 requires one on every point. A Speaking lesson's
+   sections carry their Speaking keys from the tags file, like any other lesson; no rule is waived. The pinned
+   session section tag list has no Speaking keys yet (the site's ADR-0034 Amendment 17: "Speaking stays off the
+   list"), so its package fails LP-TEACHES-NOT-ALLOWED, here and on the site, until the owner approves the
+   Speaking keys for the site's list. A closing section takes the lesson's main topic, as the Writing closings do.
 6. **The slow take** is the normal take through `rubberband=tempo=0.75` (synthesize_speaking.py, `SLOW_SPEED`).
    It costs no Cartesia characters and is made again only when the normal take changes.
 7. **The honest pop-up.** The local page cannot hear the learner, so it marks nothing. It shows the task, the
    patient's line, Listen and Slowly. "I said it" or Skip shows the model answer, plainly, with a note that the
    site checks the answer. Continue is never blocked.
-8. **A Speaking lesson may go to the site as a draft** (`publish_lesson.py --draft`, runbook 18a). Only its
+8. **A Speaking lesson may go to the site as a draft** (`publish_lesson.py --draft`, runbook 18a) once its
+   package passes, that is once the site lists the Speaking keys (decision 5). Only its
    speak_repeat points and its matching point go in. speak_respond and roleplay items stay in the lesson source, are
    left out of the package, and are listed by the report. A release still waits for the owner's final gate.
 
