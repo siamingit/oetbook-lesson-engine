@@ -81,6 +81,12 @@ HARNESS = r"""
     }
     return a.toString(16).padStart(8, "0") + b.toString(16).padStart(8, "0");
   }
+  // ADR 054: the player marks a block it has drawn (`data-entered`, and the class `entered` when a state
+  // rebuilds it) so that its entrance does not play again. With animation off, as here, the marks draw
+  // nothing, so they are left out of both fingerprints: a lesson differs only where it is drawn differently.
+  const unmark = c => c.replace(/(^|\s)entered(?=\s|$)/g, "");
+  const dom = () => frame.innerHTML.replace(/ data-entered="1"/g, "")
+    .replace(/class="([^"]*)"/g, (m, c) => 'class="' + unmark(c) + '"');
   const F = frame.getBoundingClientRect();
   const r1 = v => Math.round(v * 10) / 10;
   function geometry() {
@@ -90,7 +96,7 @@ HARNESS = r"""
       if (!r.width && !r.height) continue;
       const cs = getComputedStyle(el);
       if (cs.display === "none" || cs.visibility === "hidden") continue;
-      parts.push([el.tagName, el.getAttribute("class") || "", r1(r.left - F.left), r1(r.top - F.top),
+      parts.push([el.tagName, unmark(el.getAttribute("class") || ""), r1(r.left - F.left), r1(r.top - F.top),
                   r1(r.width), r1(r.height), cs.opacity, cs.color, cs.backgroundColor,
                   cs.borderColor, cs.outlineStyle, cs.boxShadow, cs.transform,
                   cs.fontSize, cs.fontWeight].join("|"));
@@ -117,7 +123,7 @@ HARNESS = r"""
     for (const t of [...times].filter(t => t >= bd.start && t < bd.until).sort((a, b) => a - b)) {
       lastRenderT = null;
       renderFrame(t);
-      moments.push([+t.toFixed(3), geometry(), h(frame.innerHTML)]);
+      moments.push([+t.toFixed(3), geometry(), h(dom())]);
     }
     out.push({ board: bd.id, start: bd.start, until: bd.until, moments });
   }

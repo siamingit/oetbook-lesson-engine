@@ -104,10 +104,17 @@ The owner reviewed Speaking 1 on 2026-11-12. Four points need shared code:
 
 ## Consequences
 
-- Every built lesson is rendered before and after (render_compare `sp-before` / `sp-after`). Decisions 1 and 2
+- Every built lesson is rendered before and after (render_compare `sp-before` / `sp-after2`). Decisions 1 and 2
   change what a teal lesson draws: entered rows no longer animate again, and the contents board is aligned. The
   comparison lists each lesson that differs, and the report names them. No built lesson is rebuilt or re-released
   by this ADR. Each takes the change only when it is next built, with the owner's approval.
+- Result (2026-11-12): 21 of 29 lessons identical (all style C). The 8 teal Writing lessons differ only on the
+  contents board (decision 2) and in the first moments of the board after it, where the only changed element is
+  the pen tip, at opacity 0, 4.5 px higher (checked element by element on Writing 1 and Writing 2). Nothing visible
+  changes outside the contents board.
+- render_compare's harness leaves the player's `entered` marks (`data-entered`, the class `entered`) out of both
+  fingerprints: with animation off they draw nothing, and without this every board after a rebuilt block would
+  differ by a class name alone.
 - A note for the site: the engine's RP-SHOWN would refuse the contracts' own golden speak_repeat ("Take 2
   tablets" shown, "Take two" spoken).
 - The slow take needs an ffmpeg with the `rubberband` filter. The owner's ffmpeg 9.0.1 (gyan.dev full build), which
