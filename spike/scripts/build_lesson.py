@@ -658,6 +658,9 @@ def stage_narration(L, a):
     d = str(L / "generated" / "lesson-preview" / "silent")
     run(L, [str(HERE / "check_overflow.py"), str(L), "--dir", d], "overflow check (silent preview)")
     run(L, [str(HERE / "check_overlap.py"), str(L), "--dir", d], "overlap check (silent preview)")
+    # ADR 056 (the owner, 2026-11-13): played through, every word a board shows is drawn, and every
+    # gloss card shows its whole meaning and example, word for word with its source
+    run(L, [str(HERE / "check_drawn_text.py"), str(L), "--dir", d], "drawn-text check (silent preview)")
     # maintainer, 2026-10-08: a wider device font hides nothing on a Part B question
     # board; 2026-10-11: on any board of any lesson (the player's guard, every board)
     run(L, [str(HERE / "check_wide_font.py"), str(L), "--dir", d], "wide-font check (silent preview)")
@@ -770,6 +773,9 @@ def stage_player(L, a):
     run(L, [str(HERE / "check_layout.py"), str(L), "--dir", d], "layout check")
     run(L, [str(HERE / "check_overflow.py"), str(L), "--dir", d], "overflow check")
     run(L, [str(HERE / "check_overlap.py"), str(L), "--dir", d], "overlap check")
+    # ADR 056 (the owner, 2026-11-13): played through, every word a board shows is drawn, and every
+    # gloss card shows its whole meaning and example, word for word with its source
+    run(L, [str(HERE / "check_drawn_text.py"), str(L), "--dir", d], "drawn-text check")
     # maintainer, 2026-10-08: a wider device font hides nothing on a Part B question
     # board; 2026-10-11: on any board of any lesson (the player's guard, every board)
     run(L, [str(HERE / "check_wide_font.py"), str(L), "--dir", d], "wide-font check")

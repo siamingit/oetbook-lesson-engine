@@ -3926,6 +3926,28 @@ def has_map(lesson) -> bool:
                                 for p in (Path(lesson) / "analysis" / "screens").glob("*/screens.json"))
 
 
+# ADR 056: a part drawn by a write-in (a gloss's meaning and example, a
+# clause's piece, a timeline's label) never holds the motion's last clip once
+# drawn. On an inline part that wraps, Chromium clips to its first line's box,
+# so a held clip hid every later line through playback (Speaking 2's gloss
+# cards, 2026-11-13). The engine's player does this in its own rules; this
+# line, in the stylesheet of a lesson that has such a part only, makes any
+# player that draws these parts with a held write-in (the site's) draw them
+# whole. A part with no motion is unchanged.
+WRITE_IN_PARTS = ("gl-m", "gl-x", "cl-piece", "cl-rm", "tl-arrow", "tl-marker", "tl-now", "tl-point", "tl-legend",
+                  "tl-pointer")
+WRITE_IN_CSS = """
+.gl-m,.gl-x,.cl-piece,.cl-rm,.tl-arrow .lab,.tl-marker .lab,.tl-now span,.tl-point span,.tl-legend,.tl-pointer .lab{
+  animation-fill-mode:backwards!important}
+"""
+_WRITE_IN_RE = re.compile(r'class="[^"]*\b(?:' + "|".join(WRITE_IN_PARTS) + r')\b')
+
+
+def write_in_css(htmls) -> str:
+    """WRITE_IN_CSS when any of the blocks' HTML has a part drawn by a write-in."""
+    return WRITE_IN_CSS if any(_WRITE_IN_RE.search(h or "") for h in htmls) else ""
+
+
 def frame_css(lesson) -> str:
     """The blocks' stylesheet for a lesson: FRAME_CSS, plus the Reading blocks'
     rules for a Reading lesson only (ADR 026), plus the map's for a lesson with
