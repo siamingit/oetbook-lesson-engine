@@ -1,6 +1,7 @@
 # ADR 054 — The owner's review of Speaking 1: one entrance per board, the contents line, and speaking points as the site releases them
 
-Date: 2026-11-12 (the owner's review of Speaking 1, 2026-11-12, points 2, 3, 4 and 7)
+Date: 2026-11-12 (the owner's review of Speaking 1, 2026-11-12, points 2, 3, 4 and 7). Decision 6 changed
+2026-11-13: the owner chose atempo for the slow take, by ear.
 
 Status: Accepted. It amends ADR 053 (a Speaking lesson may now go to the site as a **draft**: its speak_repeat
 points, and its matching point; never its speak_respond or roleplay items) and ADR 050 (the teal contents board).
@@ -48,9 +49,13 @@ The owner reviewed Speaking 1 on 2026-11-12. Four points need shared code:
    - (b) Use the released `matching` item (matchingItem, ADR-0032 on the site). (Chosen.)
 4. **The slow take.** Measured in C:/OET/scratch/speaking-build/slow-compare/CHOICE.md:
    - (a) Cartesia's own slow speed: 1.00-1.07 times as long, so not slower.
-   - (b) ffmpeg `atempo=0.75`: 1.325-1.328 times as long.
-   - (c) ffmpeg `rubberband=tempo=0.75`, which keeps the pitch: exactly 1.333 times as long. (Chosen.) It passed
-     the ear check: Scribe heard every slow take word for word, apart from "Doctor" written as "Dr.".
+   - (b) ffmpeg `atempo=0.75`, which keeps the pitch: 1.313-1.329 times as long. (Chosen by the owner, by ear,
+     2026-11-13: "the atempo slow takes sound more natural than rubberband".) It passed the ear check: Scribe heard
+     every slow take word for word (Speaking 1 6 of 6, Speaking 2 4 of 5, Speaking 3 10 of 11), apart from
+     "Doctor" written as "Dr." (971020, 972024).
+   - (c) ffmpeg `rubberband=tempo=0.75`, which keeps the pitch: exactly 1.333 times as long. Chosen first
+     (2026-11-12) on its exact length, before the owner listened; not taken since 2026-11-13. Its ear check gave
+     the same results as (b).
 
 ## Decision
 
@@ -92,8 +97,9 @@ The owner reviewed Speaking 1 on 2026-11-12. Four points need shared code:
    session section tag list has no Speaking keys yet (the site's ADR-0034 Amendment 17: "Speaking stays off the
    list"), so its package fails LP-TEACHES-NOT-ALLOWED, here and on the site, until the owner approves the
    Speaking keys for the site's list. A closing section takes the lesson's main topic, as the Writing closings do.
-6. **The slow take** is the normal take through `rubberband=tempo=0.75` (synthesize_speaking.py, `SLOW_SPEED`).
-   It costs no Cartesia characters and is made again only when the normal take changes.
+6. **The slow take** is the normal take through `atempo=0.75` (synthesize_speaking.py, `SLOW_FILTER` from
+   `SLOW_SPEED`), as the owner chose by ear on 2026-11-13. It costs no Cartesia characters and is made again only
+   when the normal take or the filter changes (the slow take's hash includes the filter).
 7. **The honest pop-up.** The local page cannot hear the learner, so it marks nothing. It shows the task, the
    patient's line, Listen and Slowly. "I said it" or Skip shows the model answer, plainly, with a note that the
    site checks the answer. Continue is never blocked.
@@ -117,12 +123,18 @@ The owner reviewed Speaking 1 on 2026-11-12. Four points need shared code:
   differ by a class name alone.
 - A note for the site: the engine's RP-SHOWN would refuse the contracts' own golden speak_repeat ("Take 2
   tablets" shown, "Take two" spoken).
-- The slow take needs an ffmpeg with the `rubberband` filter. The owner's ffmpeg 9.0.1 (gyan.dev full build), which
-  makes the releases, has it; synthesize_speaking.py stops with a clear message where it is missing.
+- The slow take uses ffmpeg's built-in `atempo` filter, which every ffmpeg build has (rubberband needed a build
+  with librubberband).
+- The switch to atempo (2026-11-13) re-made all 22 slow takes of Speaking 1-3 (6, 5 and 11) from the normal takes,
+  with 0 Cartesia characters. The rubberband takes are kept in
+  C:/OET/scratch/speaking-build/slow-compare/rubberband-backup-2026-11-13/<lesson>/. The bundles and players did
+  not change: they refer to the slow takes by path.
 
 To reverse:
 - Decision 1: remove the `entered` class and its rule.
 - Decision 2: remove the ADR 054 `#cam:has(> .blk.citem:nth-child(6))` rules (the aligned items, the raised circle,
   the lower first row, the one-piece line), and the seven-or-eight rule for shorter items, and restore `.citem.fx-lift`'s transform.
 - Decision 3: remove `opener_typed`.
+- Decision 6 (the filter): set `SLOW_FILTER` in synthesize_speaking.py back to `rubberband=tempo=...:pitch=1`
+  (with its check that the filter exists) and run synthesize_speaking.py again; only the slow takes are re-made.
 - Decisions 5-8: pin 1.20.0 again, and refuse speaking lessons in publish_lesson.py as ADR 053 did.

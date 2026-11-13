@@ -3,7 +3,7 @@ under the pronunciation lexicon, as synthesize_narration.py makes the narration'
 
     .venv/Scripts/python spike/scripts/synthesize_speaking.py <lesson_dir> [--dry-run]
 
-(ffmpeg on the PATH, with the rubberband filter: the gyan.dev full build, 9.0.1, has it.)
+(ffmpeg on the PATH; its atempo filter is in every build.)
 
 Reads:  <lesson_dir>/analysis/practice.json      (the speaking items, speaking_items.py)
         spike/lexicon.json
@@ -19,10 +19,11 @@ teacher's voice at its speed, and the slow take; a speak_respond's patient line 
 voice (patient_speaker, sonic-3.6 at 0.8, with the item's feeling where it has one) and its model
 answer in the teacher's. A role-play has none here: the site's patient speaks.
 
-The slow take is never synthesised (ADR 054): it is the normal take stretched by ffmpeg's rubberband
-filter to SLOW_SPEED of its tempo, the pitch and every sound kept (SLOW_FILTER; chosen over atempo,
-C:/OET/scratch/speaking-build/slow-compare/CHOICE.md). Cartesia's own slow speed hardly slowed a
-sentence (1.00 to 1.07 of its length); this is always 1/0.75 of it. Its entry has `method`, `tempo`
+The slow take is never synthesised (ADR 054): it is the normal take stretched by ffmpeg's atempo
+filter to SLOW_SPEED of its tempo, the pitch and every sound kept (SLOW_FILTER; the owner chose atempo
+over rubberband by ear on 2026-11-13: it sounds more natural; C:/OET/scratch/speaking-build/slow-compare/
+CHOICE.md). Cartesia's own slow speed hardly slowed a sentence (1.00 to 1.07 of its length); this makes
+it about 1/0.75 of it (1.32-1.33). Its entry has `method`, `tempo`
 and `from` (the normal file), and a hash made of the normal take's hash and the filter, so it is
 made again exactly when the normal take or the filter changes. It costs no characters.
 
@@ -55,7 +56,7 @@ import speaking_items                                                 # noqa: E4
 import voices                                                         # noqa: E402
 
 FORMAT = "oetbook-speaking-audio"
-SLOW_FILTER = f"rubberband=tempo={speaking_items.SLOW_SPEED:g}:pitch=1"
+SLOW_FILTER = f"atempo={speaking_items.SLOW_SPEED:g}"
 
 
 def out_dir(L: Path) -> Path:
@@ -94,14 +95,13 @@ def wav_seconds(p: Path) -> float:
 
 
 def stretch(src: Path, dst: Path) -> None:
-    """The slow take: `src` at SLOW_SPEED of its tempo, the pitch kept (ffmpeg rubberband)."""
+    """The slow take: `src` at SLOW_SPEED of its tempo, the pitch kept (ffmpeg atempo)."""
     tmp = dst.with_name(dst.stem + ".part.wav")
     r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(src), "-af", SLOW_FILTER, "-c:a", "pcm_s16le",
                         str(tmp)], capture_output=True, text=True)
     if r.returncode:
         tmp.unlink(missing_ok=True)
-        raise SystemExit(f"the slow take of {src.name} was not made: ffmpeg needs the rubberband filter "
-                         f"(the gyan.dev full build has it). ffmpeg said: {r.stderr.strip()[-300:]}")
+        raise SystemExit(f"the slow take of {src.name} was not made. ffmpeg said: {r.stderr.strip()[-300:]}")
     tmp.replace(dst)
 
 
