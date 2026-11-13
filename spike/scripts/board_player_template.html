@@ -84,7 +84,12 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
    part appears at its own reveal cue and is drawn in motion, the way a
    teacher draws on a board. A part turned on after a seek, or long after its
    cue, carries .settled and appears complete with no replay. Every motion is
-   well under a second so it never lags the speech. */
+   well under a second so it never lags the speech.
+   ADR 056: a write-in never holds its last clip (fill backwards, not both).
+   On a part that is an inline span wrapping onto a second line, Chromium
+   clips to the first line's box: a held inset(0 0 0 0) hid every later line,
+   all through playback (Speaking 2, "reassure = To help someone feel less").
+   check_drawn_text.py plays each lesson through and fails a cut word. */
 .pt { opacity: 0; }
 .pt.on { opacity: 1; }
 @keyframes draw-x { from { clip-path: inset(-3cqh 100% -3cqh 0); } to { clip-path: inset(-3cqh -3cqh -3cqh 0); } }
@@ -96,13 +101,13 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
 @keyframes open-box { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @media (prefers-reduced-motion: no-preference) {
   .tl-arrow.on:not(.settled) .shaft { animation: draw-x .5s ease-out both; }
-  .tl-arrow.on:not(.settled) .lab { animation: write-in .35s ease-out .3s both; }
+  .tl-arrow.on:not(.settled) .lab { animation: write-in .35s ease-out .3s backwards; }
   .tl-period.on:not(.settled) { animation: draw-x .5s ease-out both; }
   .tl-marker.on:not(.settled) .tick, .tl-now.on:not(.settled), .tl-point.on:not(.settled) i { animation: drop-in .25s ease-out both; }
-  .tl-marker.on:not(.settled) .lab, .tl-now.on:not(.settled) span, .tl-point.on:not(.settled) span { animation: write-in .3s ease-out .15s both; }
+  .tl-marker.on:not(.settled) .lab, .tl-now.on:not(.settled) span, .tl-point.on:not(.settled) span { animation: write-in .3s ease-out .15s backwards; }
   .tl-series.on:not(.settled) .x { animation: pop-x .18s ease-out both; animation-delay: calc(var(--i) * var(--step)); }
-  .tl-legend.on:not(.settled) { animation: write-in .35s ease-out .3s both; }
-  .tl-pointer.on:not(.settled) .lab { animation: write-in .3s ease-out both; }
+  .tl-legend.on:not(.settled) { animation: write-in .35s ease-out .3s backwards; }
+  .tl-pointer.on:not(.settled) .lab { animation: write-in .3s ease-out backwards; }
   .tl-pointer.on:not(.settled) .pline { animation: draw-from-end .4s ease-out .15s both; }
   .tl-callout.on:not(.settled) .cobox { animation: open-box .3s ease-out both; transform-origin: var(--tri) 0; }
   .tl-callout.above.on:not(.settled) .cobox { transform-origin: var(--tri) 100%; }
@@ -110,7 +115,7 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
   /* the clause diagram (ADR 010): a piece is drawn in, the glue takes its
      colour, and at the join the tab slides across the gap into the notch.
      Only the tab, its neck and colours move: no word does (§8a). */
-  .cl-piece.on:not(.settled) { animation: write-in .45s ease-out both; }
+  .cl-piece.on:not(.settled) { animation: write-in .45s ease-out backwards; }
   .cl-bridge.on:not(.settled) { animation: drop-in .25s ease-out both; }
   .cl-glue.on:not(.settled) { animation: glue-in .35s ease-out both; }
   .cl-w.on:not(.settled)::after { animation: fade-in .3s ease-out both; }
@@ -120,10 +125,10 @@ body { display: flex; flex-direction: column; align-items: center; justify-conte
      is written in. A subject link's arc is redrawn on every render from where
      the words are, so it appears whole at its reveal. */
   .cl-emb.on:not(.settled) { animation: glue-in .4s ease-out both; }
-  .cl-rm.on:not(.settled) { animation: write-in .45s ease-out both; }
+  .cl-rm.on:not(.settled) { animation: write-in .45s ease-out backwards; }
   /* a gloss (ADR 013): its meaning and example are written in; its image
      (ADR 015) fades in */
-  .gl-m.on:not(.settled), .gl-x.on:not(.settled) { animation: write-in .4s ease-out both; }
+  .gl-m.on:not(.settled), .gl-x.on:not(.settled) { animation: write-in .4s ease-out backwards; }
   .gl-pic.on:not(.settled) { animation: fade-in .5s ease-out both; }
 }
 @keyframes glue-in { from { background: transparent; box-shadow: 0 0 0 .35cqh transparent; } }

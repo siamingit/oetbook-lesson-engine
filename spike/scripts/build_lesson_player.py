@@ -55,7 +55,7 @@ import style_c                                                    # noqa: E402
 import practice_points                                            # noqa: E402
 from write_screens import (FRAME_CSS, frame_css, has_map, TAG_LABELS, block_html, resolve_images, IMAGE_TOKEN,     # noqa: E402
                            block_text_runs, is_exercise_board, has_part_b, has_part_c, has_parts, AUDIO_TOKEN,
-                           EXAM_TOKEN)
+                           EXAM_TOKEN, write_in_css)
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
@@ -1150,6 +1150,8 @@ def build(L: Path, silent: bool, wpm: float = 135.0, only: list[str] | None = No
                                                   for f in bd.get("focus") or []) else "")
     # and the phase 2 layouts' rules (ADR 043 amendment (3)), likewise only where used
     css += style_c.layout_css(blocks_all, style_c.look_of(L)) if style else ""
+    # ADR 056: no write-in holds its last clip, in any player, where a block has such a part
+    css += write_in_css(b.get("html") for b in bundle["blocks"].values())
     (out_dir / "blocks.css").write_text(css.strip() +"\n", encoding="utf-8")
     (out_dir / "text.json").write_text(
         json.dumps(text_export(lesson, sections_out, boards_out, blocks_all, with_map, part_b, part_c, listening,
