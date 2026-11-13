@@ -3,6 +3,7 @@ fail in every lesson; a text under the teal look's minimum or contrast fails in 
 as not applied in a lesson in another look."""
 
 import json
+import os
 import sys
 import tempfile
 import unittest
@@ -62,6 +63,36 @@ class Verdicts(unittest.TestCase):
     def test_the_look_is_read_from_the_lesson(self):
         self.assertEqual(style_c.look_of(lesson("teal")), "teal")
         self.assertNotEqual(style_c.look_of(lesson()), "teal")
+
+
+
+class InstallLock(unittest.TestCase):
+    """Checks run side by side (runbook 18c) take turns at the fetch and at each commit's install."""
+
+    def setUp(self):
+        self.old, csp.WORK = csp.WORK, Path(tempfile.mkdtemp(prefix="oet-site-lock-"))
+
+    def tearDown(self):
+        csp.WORK = self.old
+
+    def test_lock_held_then_freed(self):
+        with csp.install_lock("web-abc"):
+            self.assertTrue((csp.WORK / "web-abc.lock").exists())
+        self.assertFalse((csp.WORK / "web-abc.lock").exists())
+
+    def test_a_held_lock_makes_the_other_run_wait_and_give_up(self):
+        with csp.install_lock("fetch"):
+            with self.assertRaises(SystemExit):
+                with csp.install_lock("fetch", wait_s=0):
+                    pass
+            self.assertTrue((csp.WORK / "fetch.lock").exists())
+
+    def test_a_left_over_lock_is_taken(self):
+        (csp.WORK / "fetch.lock").write_text("999999")
+        os.utime(csp.WORK / "fetch.lock", (0, 0))
+        with csp.install_lock("fetch", stale_s=60):
+            pass
+        self.assertFalse((csp.WORK / "fetch.lock").exists())
 
 
 if __name__ == "__main__":
