@@ -3309,7 +3309,8 @@
    "lesson": "speaking-01-the-test",
    "point": "rp-whole",
    "slot": "roleplay",
-   "issued": "2026-11-09"
+   "issued": "2026-11-09",
+   "retired": "2026-11-13"
   },
   {
    "id": "oa-speaking-971000",
@@ -3426,7 +3427,8 @@
    "lesson": "speaking-02-reading-the-card",
    "point": "rp2-whole",
    "slot": "roleplay",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-13"
   },
   {
    "id": "oa-speaking-971016",
@@ -3447,7 +3449,8 @@
    "lesson": "speaking-02-reading-the-card",
    "point": "rp3-whole",
    "slot": "roleplay",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-13"
   },
   {
    "id": "oa-speaking-972000",
@@ -3597,7 +3600,8 @@
    "lesson": "speaking-03-starting",
    "point": "rp1-whole",
    "slot": "roleplay",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-13"
   },
   {
    "id": "oa-speaking-972020",
@@ -3618,7 +3622,8 @@
    "lesson": "speaking-03-starting",
    "point": "rp2-whole",
    "slot": "roleplay",
-   "issued": "2026-11-10"
+   "issued": "2026-11-10",
+   "retired": "2026-11-13"
   },
   {
    "id": "oa-speaking-970014",
