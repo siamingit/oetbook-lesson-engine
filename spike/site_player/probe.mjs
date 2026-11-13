@@ -73,33 +73,67 @@ const MEASURE = `(() => {
            frame: [Math.round(frame.getBoundingClientRect().width), Math.round(frame.getBoundingClientRect().height)], found };
 })()`;
 
+// Safe beside other runs (runbook 18c): Edge picks a free port itself (--remote-debugging-port=0, read back from
+// DevToolsActivePort in its own profile), every call to it has a time limit, and a moment whose browser is lost
+// (it does not start, its connection drops or a call times out) is probed once more in a fresh browser.
+const CALL_MS = 60000;      // one DevTools call
+const START_MS = 30000;     // Edge up and its page connected
+class Lost extends Error {}
+const within = (p, ms, what) => {
+  let t;
+  return Promise.race([p, new Promise((_, no) => { t = setTimeout(() => no(new Lost(`${what}: no answer in ${ms / 1000} s`)), ms); })])
+    .finally(() => clearTimeout(t));
+};
+const fetchJson = async url => (await fetch(url, { signal: AbortSignal.timeout(2000) })).json();
+
 // One browser per moment: in one long session the player was left waiting on "Loading" for a later section.
 async function browser() {
   const prof = fs.mkdtempSync(path.join(os.tmpdir(), "oet-site-"));
-  const port = 9700 + Math.floor(Math.random() * 250);
-  const edge = spawn(EDGE, ["--headless=new", "--do-not-de-elevate", "--disable-gpu", "--mute-audio", `--remote-debugging-port=${port}`,
+  const edge = spawn(EDGE, ["--headless=new", "--do-not-de-elevate", "--disable-gpu", "--mute-audio", "--remote-debugging-port=0",
     `--user-data-dir=${prof}`, `--window-size=${W + 40},${Math.round(W * 9 / 16) + 400}`, "about:blank"], { stdio: "ignore" });
+  const kill = async () => {
+    try { if (process.platform === "win32") spawn("taskkill", ["/pid", String(edge.pid), "/T", "/F"], { stdio: "ignore" }); else edge.kill(); }
+    catch (e) { /* gone */ }
+    await sleep(400); try { fs.rmSync(prof, { recursive: true, force: true }); } catch (e) { /* locked */ } };
   let ws;
-  for (let i = 0; i < 80; i++) {
-    try { const l = await (await fetch(`http://127.0.0.1:${port}/json/list`)).json(); const p = l.find(x => x.type === "page");
-      if (p) { ws = new WebSocket(p.webSocketDebuggerUrl); break; } } catch (e) { /* not up yet */ }
-    await sleep(250);
-  }
-  await new Promise(r => ws.addEventListener("open", r, { once: true }));
+  try {
+    const until = Date.now() + START_MS;
+    while (!ws && Date.now() < until) {
+      try { const port = parseInt(fs.readFileSync(path.join(prof, "DevToolsActivePort"), "utf8").split("\n")[0], 10);
+        const p = (await fetchJson(`http://127.0.0.1:${port}/json/list`)).find(x => x.type === "page");
+        if (p) ws = new WebSocket(p.webSocketDebuggerUrl); } catch (e) { /* not up yet */ }
+      if (!ws) await sleep(250);
+    }
+    if (!ws) throw new Lost(`Edge did not start in ${START_MS / 1000} s`);
+    await within(new Promise((r, no) => { ws.addEventListener("open", r, { once: true });
+      ws.addEventListener("error", () => no(new Lost("connection refused")), { once: true }); }), START_MS, "connecting to Edge");
+  } catch (e) { await kill(); throw e; }
   let id = 0; const pending = new Map();
-  ws.addEventListener("message", ev => { const m = JSON.parse(ev.data); if (m.id && pending.has(m.id)) { pending.get(m.id)(m); pending.delete(m.id); } });
-  const send = (method, params = {}) => new Promise(r => { const i = ++id; pending.set(i, r); ws.send(JSON.stringify({ id: i, method, params })); });
+  ws.addEventListener("message", ev => { const m = JSON.parse(ev.data); if (m.id && pending.has(m.id)) { pending.get(m.id).ok(m); pending.delete(m.id); } });
+  ws.addEventListener("close", () => { for (const p of pending.values()) p.no(new Lost("connection to Edge closed")); pending.clear(); });
+  const send = (method, params = {}) => {
+    const i = ++id;
+    return within(new Promise((ok, no) => {
+      if (ws.readyState !== WebSocket.OPEN) return no(new Lost("connection to Edge closed"));
+      pending.set(i, { ok, no }); ws.send(JSON.stringify({ id: i, method, params })); }), CALL_MS, method)
+      .finally(() => pending.delete(i));
+  };
   const ev = async e => { const r = await send("Runtime.evaluate", { expression: e, awaitPromise: true, returnByValue: true });
     if (r.result?.exceptionDetails) throw new Error(JSON.stringify(r.result.exceptionDetails).slice(0, 400)); return r.result?.result?.value; };
-  await send("Page.enable");
-  await send("Emulation.setDeviceMetricsOverride", { width: W + 40, height: Math.round(W * 9 / 16) + 400, deviceScaleFactor: 1, mobile: false });
-  const close = async () => { ws.close(); edge.kill(); await sleep(400); try { fs.rmSync(prof, { recursive: true, force: true }); } catch (e) { /* locked */ } };
+  const close = async () => { try { ws.close(); } catch (e) { /* closed */ } await kill(); };
+  try {
+    await send("Page.enable");
+    await send("Emulation.setDeviceMetricsOverride", { width: W + 40, height: Math.round(W * 9 / 16) + 400, deviceScaleFactor: 1, mobile: false });
+  } catch (e) { await close(); throw e; }
   return { send, ev, close };
 }
 
-const out = [];
-for (const m of moments) {
+async function probe(m) {
   const { send, ev, close } = await browser();
+  try { return await probeIn(m, send, ev); } finally { await close(); }
+}
+
+async function probeIn(m, send, ev) {
   const url = `${base}?t=${m.t}`;
   await send("Page.navigate", { url });
   for (let i = 0; i < 160; i++) {
@@ -118,8 +152,19 @@ for (const m of moments) {
   const r = await ev(`(()=>{ const b=document.querySelector('.frame').getBoundingClientRect(); return [b.left,b.top,b.width,b.height]; })()`);
   const shot = await send("Page.captureScreenshot", { format: "png", clip: { x: r[0], y: r[1], width: r[2], height: r[3], scale: 1 } });
   fs.writeFileSync(path.join(outDir, m.name + ".png"), Buffer.from(shot.result.data, "base64"));
+  return res;
+}
+
+const out = [];
+for (const m of moments) {
+  let res;
+  try { res = await probe(m); }
+  catch (e) {
+    if (!(e instanceof Lost)) throw e;
+    process.stdout.write(`${m.name}: browser lost (${e.message}); once more in a fresh browser\n`);
+    res = await probe(m);
+  }
   out.push({ ...m, ...res });
   process.stdout.write(`${m.name} ${m.board || ""} fit=${res.fit || "-"} whole=${res.whole ?? "-"} loading=${res.loading} min ${res.minRun}/${res.minLabel} findings ${res.found.length}\n`);
-  await close();
 }
 fs.writeFileSync(path.join(outDir, "probe.json"), JSON.stringify(out, null, 1));

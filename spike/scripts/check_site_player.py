@@ -29,14 +29,17 @@ and the site's guard are checked in every lesson.
 """
 
 import argparse
+import contextlib
 import functools
 import http.server
 import json
+import os
 import re
 import shutil
 import subprocess
 import sys
 import threading
+import time
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -67,17 +70,54 @@ def fingerprint(pkg: Path) -> str:
     return h.hexdigest()
 
 
+@contextlib.contextmanager
+def install_lock(name: str, wait_s: int = 3600, stale_s: int = 3600):
+    """One install of the site's code at a time in this checkout: a run beside another (runbook 18c) waits for the
+    other's install instead of deleting the folder it is filling. A lock older than stale_s (the install's own limit)
+    is taken as left over by a run that died."""
+    WORK.mkdir(parents=True, exist_ok=True)
+    lock = WORK / f"{name}.lock"
+    until = time.time() + wait_s
+    while True:
+        try:
+            fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            break
+        except FileExistsError:
+            try:
+                if time.time() - lock.stat().st_mtime > stale_s:
+                    lock.unlink()
+                    continue
+            except FileNotFoundError:
+                continue
+            if time.time() > until:
+                raise SystemExit(f"{lock} has been held for over {wait_s} s: remove it if no check is installing")
+            time.sleep(2)
+    try:
+        os.write(fd, str(os.getpid()).encode())
+        os.close(fd)
+        yield
+    finally:
+        lock.unlink(missing_ok=True)
+
+
 def site_code(clone: Path, ref: str) -> tuple[Path, str]:
     """The site's code at `ref`, exported from the local clone once per commit, its dependencies installed."""
-    sh([GIT, "fetch", "-q", "origin", ref], cwd=clone)
-    commit = sh([GIT, "rev-parse", "--short", "FETCH_HEAD"], cwd=clone).strip()
+    with install_lock("fetch"):
+        sh([GIT, "fetch", "-q", "origin", ref], cwd=clone)
+        commit = sh([GIT, "rev-parse", "--short", "FETCH_HEAD"], cwd=clone).strip()
     web = WORK / f"web-{commit}"
+    with install_lock(f"web-{commit}"):
+        install(clone, commit, web)
+    return web, commit
+
+
+def install(clone: Path, commit: str, web: Path) -> None:
     if not (web / "node_modules").exists():
         if web.exists():
             shutil.rmtree(web)
         web.mkdir(parents=True)
         archive = WORK / f"web-{commit}.tar"
-        sh([GIT, "archive", "-o", str(archive), "FETCH_HEAD"], cwd=clone)
+        sh([GIT, "archive", "-o", str(archive), commit], cwd=clone)   # not FETCH_HEAD: another run may fetch meanwhile
         import tarfile
         with tarfile.open(archive) as tf:
             tf.extractall(web, filter="data")
@@ -195,32 +235,38 @@ def main() -> None:
     if not pkg or not (pkg / "bundle.json").exists():
         raise SystemExit("no package: build it first (publish_lesson.py --package --draft)")
     web, commit = site_code(a.clone, a.ref)
-    h = web / "apps" / "web" / "harness"
+    # the harness folder is this run's own (the lesson and the process in its name) and is removed after it: two
+    # checks from one checkout at once once wrote into one folder, and one passed on the other's package
+    h = web / "apps" / "web" / f"harness-{L.resolve().name}-{os.getpid()}"
     if h.exists():
         shutil.rmtree(h)
     shutil.copytree(HARNESS, h)
-    sys.path.insert(0, str(HERE))
-    import style_c
-    (h / "fonts.css").write_text(style_c.font_css(None), encoding="utf-8")
-    print(sh([NODE, "prep.ts", str(pkg), "out"], cwd=h).strip().splitlines()[-1])
-    sh([NODE, str(esbuild(web)), "entry.tsx", "--bundle", "--outfile=out/app.js", "--loader:.css=css", "--jsx=automatic",
-        "--format=esm", "--define:process.env.NODE_ENV=\"production\""], cwd=h)
-    if (pkg / "audio").exists():
-        shutil.copytree(pkg / "audio", h / "pkg" / "audio")
-    bundle = json.loads((pkg / "bundle.json").read_text(encoding="utf-8"))
-    ms = moments(bundle, a.boards)
-    out = L / "generated" / "site-player"
-    if out.exists():
-        shutil.rmtree(out)
-    out.mkdir(parents=True)
-    (out / "moments.json").write_text(json.dumps(ms), encoding="utf-8")
-    httpd, port = serve(h)
     try:
-        r = subprocess.run([NODE, str(HARNESS / "probe.mjs"), f"http://127.0.0.1:{port}/index.html", str(out / "moments.json"),
-                            str(a.width), str(out), json.dumps(RULES)], text=True, encoding="utf-8", errors="replace",
-                           timeout=7200)
+        sys.path.insert(0, str(HERE))
+        import style_c
+        (h / "fonts.css").write_text(style_c.font_css(None), encoding="utf-8")
+        print(sh([NODE, "prep.ts", str(pkg), "out"], cwd=h).strip().splitlines()[-1])
+        sh([NODE, str(esbuild(web)), "entry.tsx", "--bundle", "--outfile=out/app.js", "--loader:.css=css", "--jsx=automatic",
+            "--format=esm", "--define:process.env.NODE_ENV=\"production\""], cwd=h)
+        if (pkg / "audio").exists():
+            shutil.copytree(pkg / "audio", h / "pkg" / "audio")
+        bundle = json.loads((pkg / "bundle.json").read_text(encoding="utf-8"))
+        ms = moments(bundle, a.boards)
+        out = L / "generated" / "site-player"
+        if out.exists():
+            shutil.rmtree(out)
+        out.mkdir(parents=True)
+        (out / "moments.json").write_text(json.dumps(ms), encoding="utf-8")
+        httpd, port = serve(h)
+        try:
+            r = subprocess.run([NODE, str(HARNESS / "probe.mjs"), f"http://127.0.0.1:{port}/index.html", str(out / "moments.json"),
+                                str(a.width), str(out), json.dumps(RULES)], text=True, encoding="utf-8", errors="replace",
+                               timeout=7200)
+        finally:
+            httpd.shutdown()
+            httpd.server_close()
     finally:
-        httpd.shutdown()
+        shutil.rmtree(h, ignore_errors=True)
     if r.returncode:
         raise SystemExit("the site player's probe failed")
     res = json.loads((out / "probe.json").read_text(encoding="utf-8"))
