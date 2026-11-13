@@ -1182,21 +1182,24 @@
    "lesson": "grammar-04-articles",
    "point": "spot-the-right-one",
    "slot": "item",
-   "issued": "2026-10-31"
+   "issued": "2026-10-31",
+   "retired": "2026-11-13"
   },
   {
    "id": "oa-grammar-953017",
    "lesson": "grammar-04-articles",
    "point": "spot-the-right-one",
    "slot": "item-2",
-   "issued": "2026-10-31"
+   "issued": "2026-10-31",
+   "retired": "2026-11-13"
   },
   {
    "id": "oa-grammar-953018",
    "lesson": "grammar-04-articles",
    "point": "spot-the-right-one",
    "slot": "item-3",
-   "issued": "2026-10-31"
+   "issued": "2026-10-31",
+   "retired": "2026-11-13"
   },
   {
    "id": "oa-grammar-953019",
@@ -1413,7 +1416,8 @@
    "lesson": "grammar-05-complex-compound",
    "point": "choose-conjunction",
    "slot": "gap-4",
-   "issued": "2026-10-31"
+   "issued": "2026-10-31",
+   "retired": "2026-11-13"
   },
   {
    "id": "oa-grammar-954012",
@@ -1460,23 +1464,26 @@
   {
    "id": "oa-grammar-954018",
    "lesson": "grammar-05-complex-compound",
-   "point": "due-to-despite",
-   "slot": "item-2",
-   "issued": "2026-10-31"
+   "point": "as-well-as-ing",
+   "slot": "item",
+   "issued": "2026-10-31",
+   "split_from": "due-to-despite item-2, 2026-11-13 (#207)"
   },
   {
    "id": "oa-grammar-954019",
    "lesson": "grammar-05-complex-compound",
-   "point": "due-to-despite",
-   "slot": "item-3",
-   "issued": "2026-10-31"
+   "point": "as-well-as-list",
+   "slot": "item",
+   "issued": "2026-10-31",
+   "split_from": "due-to-despite item-3, 2026-11-13 (#207)"
   },
   {
    "id": "oa-grammar-954020",
    "lesson": "grammar-05-complex-compound",
-   "point": "despite-although",
-   "slot": "item-1",
-   "issued": "2026-10-31"
+   "point": "despite-of",
+   "slot": "item",
+   "issued": "2026-10-31",
+   "split_from": "despite-although item-1, 2026-11-13 (#207)"
   },
   {
    "id": "oa-grammar-954021",
@@ -1497,7 +1504,8 @@
    "lesson": "grammar-05-complex-compound",
    "point": "notes-to-one",
    "slot": "item-2",
-   "issued": "2026-10-31"
+   "issued": "2026-10-31",
+   "retired": "2026-11-13"
   },
   {
    "id": "oa-grammar-955000",
@@ -1805,14 +1813,16 @@
    "lesson": "grammar-07-punctuation",
    "point": "whole-sentence",
    "slot": "item-1",
-   "issued": "2026-10-31"
+   "issued": "2026-10-31",
+   "retired": "2026-11-13"
   },
   {
    "id": "oa-grammar-956028",
    "lesson": "grammar-07-punctuation",
    "point": "whole-sentence",
    "slot": "item-2",
-   "issued": "2026-10-31"
+   "issued": "2026-10-31",
+   "retired": "2026-11-13"
   },
   {
    "id": "oa-grammar-957000",
@@ -1875,7 +1885,8 @@
    "lesson": "grammar-08-paraphrasing",
    "point": "combine",
    "slot": "item-1",
-   "issued": "2026-10-31"
+   "issued": "2026-10-31",
+   "retired": "2026-11-13"
   },
   {
    "id": "oa-grammar-957009",
@@ -1903,7 +1914,8 @@
    "lesson": "grammar-08-paraphrasing",
    "point": "rearrange",
    "slot": "item-1",
-   "issued": "2026-10-31"
+   "issued": "2026-10-31",
+   "retired": "2026-11-13"
   },
   {
    "id": "oa-grammar-957013",
@@ -1924,7 +1936,8 @@
    "lesson": "grammar-08-paraphrasing",
    "point": "synonyms",
    "slot": "item-2",
-   "issued": "2026-10-31"
+   "issued": "2026-10-31",
+   "retired": "2026-11-13"
   },
   {
    "id": "oa-grammar-957016",
