@@ -1896,6 +1896,17 @@ LAYOUT_CSS["wrongright_fit"] = r"""
 .frame .tbl.lay.lay-wrongright.wr-fit tbody tr:first-child{padding-top:.4cqh}
 .frame .tbl.lay.lay-wrongright.wr-fit td:last-child::before{height:2.6cqh;margin-top:-2.8cqh}
 """
+# ADR 054 (the owner's review of Speaking 1, 2026-11-12, point 4): an opener table whose third column is typed live
+# holds example lines written as the teacher explains each row, so they are drawn in the teacher's hand (the
+# timeline's and the path's hand lines), a little larger than print, each typed part on its own line. Emitted only
+# for a lesson with such a table, so every other lesson's blocks.css is unchanged.
+LAYOUT_CSS["opener_typed"] = r"""
+/* an opener's typed example lines in the teacher's hand (ADR 054) */
+.frame .tbl.lay.lay-opener td:nth-child(3) .tw{font-family:var(--t-hand,cursive);font-size:1.31em;line-height:1;
+  font-weight:600;color:var(--t-teal);font-kerning:normal}
+/* five rows of two hand-written lines, and the task under them, fit the board with no pan */
+.frame .tbl.lay.lay-opener:has(td:nth-child(3) .tw) tbody{gap:1cqh}
+"""
 
 ROOT_CLASS = re.compile(r'^<div class="([^"]*)"')
 ROOT_TAG = re.compile(r"^<div[^>]*>")
@@ -1961,6 +1972,9 @@ def layout_css(blocks: dict, look: str | None = None) -> str:
         used.add("wrongright_fit")                  # ADR 050 amendment (12)
     if any("col-fit" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split()) for b in blocks.values()):
         used.add("columns_fit")                     # ADR 050 amendment (13)
+    if any("lay-opener" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split())
+           and 'data-typed="' in (b.get("html") or "") for b in blocks.values()):
+        used.add("opener_typed")                    # ADR 054
     for k in ("twocol", "bandfit", "pillwrap"):     # ADR 050 amendment (10)
         if any("lay-" + k in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split())
                for b in blocks.values()):
@@ -2317,7 +2331,11 @@ LOOK_CSS = {"teal": r"""
 #cam > .blk.citem:nth-child(5n+3){--c:var(--t-lilac);--con:var(--t-ink)}
 #cam > .blk.citem:nth-child(5n+4){--c:var(--t-coral);--con:var(--t-ink)}
 #cam > .blk.citem:nth-child(5n){--c:var(--t-teal);--con:#fff}
-.citem.fx-lift{box-shadow:none;transform:translateX(calc(.6cqw * var(--sc-motion, 1)))}
+.citem.fx-lift{box-shadow:none;transform:none}
+/* the item the teacher is on: its words move a little, its circle stays on the line (the owner's review of
+   Speaking 1, 2026-11-12, point 3: the whole item moved, and its circle left the line; ADR 054) */
+.citem.fx-lift > div{transform:translateX(calc(.6cqw * var(--sc-motion, 1)))}
+@media (prefers-reduced-motion: reduce){.citem.fx-lift > div{transform:none}}
 /* the teacher's red pen (§8): a circle is his ring, an underline and a strike his line; the marker stays */
 :is(#marks,.oa-marks) .m-circle{border:max(2px,.42cqh) solid var(--t-pen)!important;border-radius:50%!important;
   box-shadow:0 0 0 max(1px,.08cqh) rgba(196,54,47,.25)!important}
@@ -2401,6 +2419,32 @@ LOOK_CSS = {"teal": r"""
 .frame #cam:has(> .blk.citem:nth-child(7)) > .blk.citem:nth-child(8){order:8}
 .frame #cam:has(> .blk.citem:nth-child(7)) > .blk.citem:nth-child(4)::after,
 .frame #cam:has(> .blk.citem:nth-child(7)) > .blk.citem:nth-child(5)::before{content:none}
+/* one clean line down each column, every item aligned the same way (the owner's review of Speaking 1, 2026-11-12,
+   point 3; ADR 054). The two columns share each row's height, so an item beside a taller one was stretched, its
+   circle centred lower than the others and the line drawn in two pieces around it. Now every circle sits at the top
+   of its item, centred on the title's first line (the circle is raised, not the words lowered: a margin made each
+   item taller, so seven or eight no longer fitted on one board, and words moved down ran past the item's box, which
+   the site's guard counts as a spill and draws the whole board smaller), and the line runs unbroken from each circle's
+   centre to the next: an item's box ends where the next one starts (its margin of -2.5cqh meets the row gap of
+   2.5cqh), so its ::after runs from its circle to its foot and the next item's ::before from its top to its circle,
+   each inside its own box. */
+.frame #cam:has(> .blk.citem:nth-child(6)) > .blk.citem{align-items:flex-start}
+.frame #cam:has(> .blk.citem:nth-child(6)) > .blk.citem::before{top:0;height:2.7cqh}
+.frame #cam:has(> .blk.citem:nth-child(6)) > .blk.citem::after{top:2.7cqh;bottom:0;height:auto}
+.frame #cam:has(> .blk.citem:nth-child(6)) .citem .cnum{margin-top:calc(2.5cqh - var(--t-cr))}
+/* the first row (the first item of each column) is set lower by as much as its circle is raised, so no circle is
+   cut at the top of the board */
+.frame #cam:has(> .blk.citem:nth-child(6)) > .blk.citem:first-child,
+.frame #cam:has(> .blk.citem:nth-child(6)):not(:has(> .blk.citem:nth-child(7))) > .blk.citem:nth-child(4),
+.frame #cam:has(> .blk.citem:nth-child(7)):not(:has(> .blk.citem:nth-child(9))) > .blk.citem:nth-child(5),
+.frame #cam:has(> .blk.citem:nth-child(9)) > .blk.citem:nth-child(6){margin-top:calc(var(--t-cr) - 2.5cqh)}
+/* seven or eight: a column of four pays for that lower first row with shorter items: at least 16.5cqh high, not
+   17.5cqh (a title and two lines still fill more), and 1cqh below each item, not 2.5cqh (its padding, its negative
+   margin and the row gap together, so each box still ends where the next starts and the line is unbroken). Without
+   it Speaking 2's seven items were 4 px taller than the small phone's board and the fit cleared the first three */
+.frame #cam:has(> .blk.citem:nth-child(7)):not(:has(> .blk.citem:nth-child(9))){row-gap:1cqh}
+.frame #cam:has(> .blk.citem:nth-child(7)):not(:has(> .blk.citem:nth-child(9))) > .blk.citem{min-height:16.5cqh;
+  padding-bottom:1cqh;margin-bottom:-1cqh}
 .frame .tbl.lay.lay-coded tbody{gap:7cqh}
 .frame .tbl.lay.lay-coded tbody tr td:nth-child(n){font-size:calc(max(var(--tf,3.2cqh),3.2cqh) * 1.2);min-height:19cqh;
   padding:3cqh 1.8cqw;margin-top:6.4cqh;align-content:center}

@@ -43,6 +43,26 @@ AI_SELF = dict(SELFCHECK, scoring={"method": "ai"}, version=2,
                         "rule": "The opening gives the frame, who the patient is and what you ask.",
                         "common_errors": [{"wrong": "no article before the age", "why": "A countable noun needs a or an."}]})
 
+# matching (ADR 054): the item 900000 with three pairs 900002-900004 (issued for the point in setUp), one distractor
+O = [f"oa-writing-900000-o{n}" for n in range(1, 5)]
+
+
+def pair(n, pid, key, wrong=3, **kw):
+    return {"pair_id": f"oa-writing-{pid}", "number": n, "prompt": ["refer", "request", "advise"][n - 1],
+            "scoring": {"key_option_id": O[key]},
+            "feedback": {"key": "The **verb** and its noun.",
+                         "options": {O[wrong]: {"why_wrong": "Not with this verb.", "root_cause": "word-match",
+                                                "correct": "the right noun"}}},
+            "tags": {"practises": ["writing.language.vocabulary"]}, "status": "active", **kw}
+
+
+MATCH = {"item_id": "oa-writing-900000", "type": "matching", "numbers": [1, 3],
+         "title": "Match each verb with its noun.", "left_heading": "Verb", "right_heading": "Noun",
+         "options": [{"option_id": o, "text": t} for o, t in zip(O, ["a patient", "a review", "rest", "a form"])],
+         "display_order": [O[2], O[0], O[3], O[1]], "shuffle_allowed": True, "reuse_options": False,
+         "pairs": [pair(1, 900002, 1), pair(2, 900003, 2), pair(3, 900004, 0)],
+         "tags": {"practises": ["writing.language.vocabulary"]}, "version": 1, "status": "active"}
+
 
 def utt(uid, cues):
     return {"id": uid, "cues": cues}
@@ -181,6 +201,64 @@ class PracticePoints(unittest.TestCase):
         self.assertTrue(pp.attach(self.lesson({"frame": dict(POINT, items=[ERRSPOT])}), [bd]))
         self.assertEqual(bd["states"][0]["practice"][0]["items"][0]["type"], "errorspot")
 
+    def issue_pairs(self):
+        self.assertEqual([pp.issue(LESSON, "frame", f"pair-{n}") for n in (1, 2, 3)],
+                         ["oa-writing-900002", "oa-writing-900003", "oa-writing-900004"])
+
+    def test_a_matching_item_is_built(self):
+        self.issue_pairs()
+        bd = board()
+        self.assertTrue(pp.attach(self.lesson({"frame": dict(POINT, items=[MATCH])}), [bd]))
+        it = bd["states"][0]["practice"][0]["items"][0]
+        self.assertEqual(it["type"], "matching")
+        for pr in it["pairs"]:
+            self.assertEqual(pr["content_hash"], pp.content_hash({k: v for k, v in pr.items() if k != "content_hash"}))
+        # a pair's tags stay out of the hashes, its prompt is in them
+        self.assertEqual(pp.hashed(MATCH)["content_hash"], pp.hashed(dict(MATCH, pairs=[
+            dict(pr, tags={"practises": ["writing.language.grammar"]}) for pr in MATCH["pairs"]]))["content_hash"])
+        self.assertNotEqual(pp.hashed(MATCH)["content_hash"], pp.hashed(dict(MATCH, pairs=[
+            dict(MATCH["pairs"][0], prompt="send")] + MATCH["pairs"][1:]))["content_hash"])
+        # a withdrawn pair keeps the hash it was withdrawn with, and is not a unit
+        stub = {"pair_id": "oa-writing-900004", "status": "withdrawn", "content_hash": "sha256:" + "0" * 64,
+                "withdrawal": {"reason_code": "wrong-key", "reason": "x", "date": "2026-11-12", "package_version": 1}}
+        w = pp.hashed(dict(MATCH, pairs=MATCH["pairs"][:2] + [stub], options=MATCH["options"]))
+        self.assertEqual(w["pairs"][2]["content_hash"], stub["content_hash"])
+        self.assertEqual([u["pair_id"] for u in pp._units(w)], ["oa-writing-900002", "oa-writing-900003"])
+
+    def test_matching_refusals(self):
+        self.issue_pairs()
+        P = MATCH["pairs"]
+        three = dict(MATCH, options=MATCH["options"][:3], display_order=[O[2], O[0], O[1]],
+                     pairs=[pair(1, 900002, 1, wrong=0), pair(2, 900003, 2, wrong=0), pair(3, 900004, 0, wrong=1)])
+        ten = [{"option_id": f"oa-writing-900000-o{n}", "text": f"t{n}"} for n in range(1, 11)]
+        cases = [
+            (dict(MATCH, pairs=P[:1]), "2 to 8 pairs"),
+            (dict(MATCH, options=ten, display_order=[o["option_id"] for o in ten][::-1]), "3 to 9 options"),
+            (dict(MATCH, pairs=[P[0], pair(2, 900003, 1), P[2]]), "REUSE-OPTIONS"),            # o2 the key of two
+            (three, "REUSE-OPTIONS"),                                                          # no distractor
+            (dict(MATCH, pairs=[pair(1, 900002, 0), pair(2, 900003, 1), pair(3, 900004, 2)]), "KEY-LEAK"),
+            (dict(MATCH, pairs=[dict(P[0], feedback={"key": "x", "options": {}})] + P[1:]), "FEEDBACK"),
+            (dict(MATCH, pairs=[pair(1, 900002, 1, wrong=1)] + P[1:]), "feedback on the key"),
+            (dict(MATCH, display_order=O[:3]), "permutation"),
+            (dict(MATCH, pairs=P[:2] + [dict(P[2], pair_id="oa-writing-900009")]), "not issued"),
+            (dict(MATCH, pairs=[dict(P[0], tags={})] + P[1:]), "practises"),
+        ]
+        for item, why in cases:
+            with self.subTest(why=why):
+                with self.assertRaises(SystemExit) as e:
+                    pp.attach(self.lesson({"frame": dict(POINT, items=[item])}), [board()])
+                self.assertIn(why, str(e.exception))
+        # with reuse_options, one option may be the key of two pairs and no distractor is needed
+        bd = board()
+        self.assertTrue(pp.attach(self.lesson({"frame": dict(POINT, items=[dict(
+            MATCH, reuse_options=True, pairs=[P[0], pair(2, 900003, 1), P[2]])])}), [bd]))
+
+    def test_the_package_check_walks_pair_ids(self):
+        f = lp.Findings()
+        lp.check_practice({"format_version": "1.23", "boards": [{"states": [{"id": "s1", "utterances": [], "practice": [
+            {"items": [dict(MATCH, pairs=[dict(MATCH["pairs"][0], pair_id="oa-writing-990002")])]}]}]}]}, f)
+        self.assertEqual(sorted(set(f.codes("error"))), ["LP-FIXTURE"])
+
     def test_the_registry_issues_once_and_never_moves(self):
         self.assertEqual(pp.issue(LESSON, "frame", "item"), "oa-writing-900000")       # the same slot, the same id
         with self.assertRaises(SystemExit):                                                # a lesson with no range
@@ -220,6 +298,50 @@ class PracticePoints(unittest.TestCase):
         self.assertEqual(pp.FORMAT_VERSION, "1.23")
         self.assertEqual(blp.format_version("writing-04-x", newer=pp.FORMAT_VERSION), "1.23")
         self.assertEqual(blp.NEWEST_FORMAT_VERSION, "1.23")
+
+
+class MatchingContract(unittest.TestCase):
+    """Against the pinned contracts (1.22.0): the engine hashes the golden matching item (an exercises
+    item) as the factory does, and the item the engine builds is a practice item of the bundle schema."""
+
+    @classmethod
+    def setUpClass(cls):
+        import os
+        try:
+            cls.c = lp.load(fetch_missing=False)
+        except SystemExit:
+            if os.environ.get("OETBOOK_CONTRACTS_OPTIONAL") == "1":
+                raise unittest.SkipTest("skipped: contracts not available in CI")
+            raise
+
+    def golden(self):
+        g = json.loads(self.c.files["examples/exercise-types/golden.json"])
+
+        def walk(o):
+            if isinstance(o, dict):
+                if o.get("type") == "matching":
+                    yield o
+                for v in o.values():
+                    yield from walk(v)
+            elif isinstance(o, list):
+                for v in o:
+                    yield from walk(v)
+        return next(walk(g))
+
+    def test_the_golden_hashes(self):
+        g = self.golden()
+        h = pp.hashed(g)
+        self.assertEqual(h["content_hash"], g["content_hash"])
+        self.assertEqual([x["content_hash"] for x in h["pairs"]], [x["content_hash"] for x in g["pairs"]])
+
+    def test_the_built_item_is_a_practice_item(self):
+        from jsonschema import Draft202012Validator
+        from referencing import Registry, Resource
+        schemas = [json.loads(b) for n, b in self.c.files.items() if n.startswith("schemas/") and n.endswith(".json")]
+        reg = Registry().with_resources((x["$id"], Resource.from_contents(x)) for x in schemas)
+        v = Draft202012Validator({"$ref": "https://oetacademy.uk/contracts/v1/lesson-bundle.schema.json#/$defs/practiceItem"},
+                                 registry=reg)
+        self.assertEqual([e.message for e in v.iter_errors(pp.hashed(MATCH))], [])
 
 
 if __name__ == "__main__":

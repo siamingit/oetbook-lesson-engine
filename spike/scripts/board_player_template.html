@@ -380,6 +380,11 @@ textarea.pp-in { display: block; width: 100%; min-height: 110px; resize: vertica
 .pp-words .pp-chip:disabled { opacity: 1; cursor: default; color: #1f2a29; }
 .pp-words .pp-chip.span { border-color: #8c1b12; box-shadow: inset 0 0 0 1px #8c1b12; background: #fbeceb; }
 .pp-fb { margin: 8px 0 0; padding: 8px 12px; border-radius: 8px; font-size: 15.5px; line-height: 1.45; }
+.pp-match { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 8px 12px; align-items: center; margin: 8px 0; }
+.pp-match .hd { font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: #6b6860; }
+.pp-match .lt { font-weight: 600; }
+.pp-match .pp-in { width: 100%; }
+.pp-match .pp-fb { grid-column: 1 / -1; margin: 0 0 4px; }
 .pp-fb.ok { background: #eef3e0; color: #3f5000; }
 .pp-fb.no { background: #fbeceb; color: #8c1b12; }
 .pp-fb .mk { font-weight: 700; margin-right: 6px; }
@@ -410,10 +415,10 @@ textarea.pp-in { display: block; width: 100%; min-height: 110px; resize: vertica
   .pp-go { flex: 1; }
 }
 @media (prefers-reduced-motion: reduce) { body.pp-open .frame, body.pp-open #review { transition: none; } }
-/* 1.24 (ADR 053), a DRAFT: a speaking point's pop-up. The prompt and the model, Listen (and
-   Slowly), Record and play back on this device only (nothing is kept or sent; the site gives the
-   feedback), Skip after about 5 s, Continue once a recording is made. Only a lesson with speaking
-   points draws any of it. */
+/* A speaking point's pop-up (ADR 053; honest since ADR 054): the task, the patient's line, Listen
+   (and Slowly); "I said it", and Skip after about 5 s; then the model answer, plainly, and a note that
+   this page cannot hear the learner. No microphone, no ticks, nothing that looks like marking;
+   Continue is never blocked. Only a lesson with speaking points draws any of it. */
 .pp-body.pp-speak { grid-template-columns: minmax(0, 1fr); }
 .sp-focus { font-size: 13px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: #6b6860; margin: 0 0 6px; }
 .sp-say { font-size: 26px; line-height: 1.35; font-weight: 600; margin: 0 0 10px; color: #173d3c; }
@@ -431,14 +436,11 @@ textarea.pp-in { display: block; width: 100%; min-height: 110px; resize: vertica
 .sp-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 8px 0; }
 .sp-btn { font: inherit; font-size: 16px; font-weight: 600; min-height: 44px; border-radius: 999px; cursor: pointer; padding: 6px 16px;
           border: 1.5px solid #0b6e6d; background: #fff; color: #0b6e6d; }
-.sp-btn.rec { background: #c4362f; border-color: #c4362f; color: #fff; }
-.sp-btn.rec.on { animation: sp-pulse 1.2s ease-in-out infinite; }
-@keyframes sp-pulse { 50% { box-shadow: 0 0 0 6px rgba(196, 54, 47, .25); } }
 .sp-note { font-size: 14px; color: #6b6860; margin: 6px 0 0; }
-.sp-model { background: #eef3e0; border-radius: 10px; padding: 8px 12px; margin: 8px 0; }
-.sp-model .lab { display: block; font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: #3f5000; }
-.sp-mine { width: 100%; max-width: 360px; height: 40px; }
-@media (prefers-reduced-motion: reduce) { .sp-btn.rec.on { animation: none; } }
+.sp-model { background: #f4f3ef; border-radius: 10px; padding: 8px 12px; margin: 8px 0; font-size: 17px; line-height: 1.45; color: #1f2a29; }
+.sp-model .lab { display: block; font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: #6b6860; }
+/* a block already on the board: its rows and pills do not enter again when a state rebuilds it (ADR 054) */
+.frame .blk.entered.tbl.lay tbody tr,.frame .blk.entered.tbl.lay td{animation:none}
 </style>
 </head>
 <body>
@@ -994,6 +996,11 @@ function applyMarks(s, t, erased) {
       const look = guarding ? null : lookOf(el);     // (the guard's measuring is never shown)
       el.innerHTML = fresh.content.firstElementChild.innerHTML;
       if (look) setLook(el, look);
+      // the look's entrance (rows and pills in reading order) plays once, when the block is first drawn: a later
+      // state, an erase or a clear rebuilds the block, and the new rows must not enter again (the owner's review
+      // of Speaking 1, 2026-11-12, point 2: the board "disappears for a moment and comes back"; ADR 054). The
+      // site's player fills a block once per board, so it never needed this.
+      if (look) { if (el.dataset.entered) el.classList.add("entered"); else el.dataset.entered = "1"; }
       el.removeAttribute("data-focus");    // redraw the spotlight and the typing
     }
     WRAPS.clear();
@@ -3239,8 +3246,38 @@ function ppErrorspot(it, onChange) {
     show: () => el.appendChild(ppFeedback(fb)),
     restore: s => { chosen = s[0].answer.word; btns.forEach((b, k) => b.classList.toggle("sel", k + 1 === chosen)); if (inp) inp.value = s[0].answer.text; } };
 }
+// matching (matchingItem, ADR 054): each prompt on the left, a choice of the options beside it; Check marks
+// each pair right or wrong, with its feedback. A withdrawn pair is not shown.
+function ppMatching(it, onChange) {
+  const el = ppEl("div", "pp-item");
+  if (it.title) el.appendChild(ppEl("p", "pr", ppInline(it.title)));
+  const pairs = it.pairs.filter(pr => pr.status !== "withdrawn");
+  const grid = ppEl("div", "pp-match");
+  grid.appendChild(ppEl("span", "hd", ppEsc(it.left_heading || "")));
+  grid.appendChild(ppEl("span", "hd", ppEsc(it.right_heading || "")));
+  const sels = [], fbAt = [];
+  pairs.forEach(pr => {
+    const lt = ppEl("span", "lt", ppInline(pr.prompt)); grid.appendChild(lt);
+    const sel = ppEl("select", "pp-in");
+    sel.setAttribute("aria-label", (it.right_heading ? it.right_heading + " for " : "") + pr.prompt.replace(/\*\*/g, ""));
+    sel.appendChild(Object.assign(document.createElement("option"), { value: "", textContent: "Choose\u2026" }));
+    for (const id of it.display_order) sel.appendChild(Object.assign(document.createElement("option"), { value: id, textContent: ppOptionText(it, id).replace(/\*\*/g, "") }));
+    sel.addEventListener("change", onChange);
+    grid.appendChild(sel); sels.push(sel); fbAt.push(sel);
+  });
+  el.appendChild(grid);
+  let res = [];
+  return { el, first: sels[0], ready: () => sels.every(x => x.value !== ""),
+    check: () => { res = pairs.map((pr, i) => ({ right: sels[i].value === pr.scoring.key_option_id,
+                                                  why: pr.feedback.options[sels[i].value] || null,
+                                                  key: ppOptionText(it, pr.scoring.key_option_id), reason: pr.feedback.key }));
+                   sels.forEach(x => { x.disabled = true; });
+                   return pairs.map((pr, i) => ({ unit: pr.pair_id, version: it.version, answer: { option_id: sels[i].value }, right: res[i].right })); },
+    show: () => res.forEach((r, i) => fbAt[i].after(ppFeedback(r))),
+    restore: s => s.forEach((x, i) => { sels[i].value = x.answer.option_id; }) };
+}
 const PP_TYPES = { text: ppText, gapfill: ppGapfill, choice: ppChoice, wordbank: ppWordbank, ordering: ppOrdering,
-                   selfcheck: ppSelfcheck, errorspot: ppErrorspot };
+                   selfcheck: ppSelfcheck, errorspot: ppErrorspot, matching: ppMatching };
 function ppSheet(ex) {
   const s = ppEl("section", "pp-sheet"); s.setAttribute("aria-label", ex.title || "From the paper");
   s.appendChild(ppEl("div", "cap", ppEsc(ex.title || "From the paper")));
@@ -3253,9 +3290,12 @@ function ppSheet(ex) {
   s.appendChild(tb);
   return s;
 }
-// 1.24 (ADR 053): speaking items, a DRAFT of the site's contract (speaking_items.py)
+// Speaking items (ADR 053; speak_repeat released in contracts 1.22.0, the others still the draft): this
+// page cannot hear the learner, so it marks nothing (ADR 054): the task, the patient's line, Listen and
+// Slowly; "I said it" or Skip shows the model answer, plainly, and says so; Continue is never blocked.
 const SP_TYPES = new Set(["speak_repeat", "speak_respond", "roleplay"]);
 const SP_SKIP_S = 5;                        // the Skip button appears after about 5 s (the owner)
+const SP_NOTE = "This page cannot hear you. On the site, your answer is checked.";
 let spAudio = null;
 function spPlay(src) {
   if (spAudio) { spAudio.pause(); spAudio = null; }
@@ -3266,46 +3306,11 @@ function spListen(label, src) {
   b.addEventListener("click", () => spPlay(src));
   return b;
 }
-function spRecorder(onDone) {
-  // record and play back on this device only: nothing is kept after the pop-up closes, nothing is sent
-  const box = ppEl("div", "sp-rec"), row = ppEl("div", "sp-row");
-  const rec = ppEl("button", "sp-btn rec", "\u25CF Record"); rec.type = "button";
-  const note = ppEl("p", "sp-note", "Say it aloud. On the site you get feedback on what you say.");
-  row.appendChild(rec); box.appendChild(row); box.appendChild(note);
-  let mr = null, chunks = [], url = null, player = null, stream = null;
-  const stopAll = () => {
-    if (mr && mr.state === "recording") mr.stop();
-    if (stream) stream.getTracks().forEach(t => t.stop()); stream = null;
-  };
-  rec.addEventListener("click", async () => {
-    if (mr && mr.state === "recording") { mr.stop(); return; }
-    try {
-      if (!navigator.mediaDevices || !window.MediaRecorder) throw new Error("no recorder");
-      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    } catch (e) {
-      note.textContent = "The microphone is not available here. Say it aloud, then Continue.";
-      onDone(); return;
-    }
-    chunks = []; mr = new MediaRecorder(stream);
-    mr.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
-    mr.onstop = () => {
-      if (stream) stream.getTracks().forEach(t => t.stop()); stream = null;
-      rec.classList.remove("on"); rec.innerHTML = "\u25CF Record again";
-      if (url) URL.revokeObjectURL(url);
-      url = URL.createObjectURL(new Blob(chunks, { type: mr.mimeType || "audio/webm" }));
-      if (!player) { player = ppEl("audio", "sp-mine"); player.controls = true; row.appendChild(player); }
-      player.src = url;
-      note.textContent = "Listen to yourself. On the site you get feedback on what you say.";
-      onDone();
-    };
-    mr.start(); rec.classList.add("on"); rec.innerHTML = "\u25A0 Stop";
-  });
-  return { el: box, cleanup: () => { stopAll(); if (url) URL.revokeObjectURL(url); } };
-}
 function spItem(it) {
   const el = ppEl("div", "pp-item sp-item"), au = it.audio || {};
+  const model = ppEl("div", "sp-reveal"); model.hidden = true;
   if (it.type === "speak_repeat") {
-    el.appendChild(ppEl("p", "sp-focus", ppEsc(it.focus)));
+    if (it.focus) el.appendChild(ppEl("p", "sp-focus", ppEsc(it.focus)));
     el.appendChild(ppEl("p", "sp-say", ppEsc(it.shown)));
     if (it.chunks.length > 1) {
       const ul = ppEl("ul", "sp-chunks"); ul.setAttribute("aria-label", "Say it in parts");
@@ -3315,30 +3320,24 @@ function spItem(it) {
     if (au.normal) row.appendChild(spListen("Listen", au.normal));
     if (au.slow) row.appendChild(spListen("Slowly", au.slow));
     if (row.children.length) el.appendChild(row);
-    return { el, after: () => {} };
-  }
-  if (it.type === "speak_respond") {
+    model.appendChild(ppEl("div", "sp-model", '<span class="lab">The model</span>' + ppEsc(it.shown)));
+  } else if (it.type === "speak_respond") {
     el.appendChild(ppEl("p", "pr", ppInline(it.prompt)));
     el.appendChild(ppEl("div", "sp-bubble", '<span class="who">Patient</span>' + ppEsc(it.patient_line)));
     if (au.patient) { const row = ppEl("div", "sp-row"); row.appendChild(spListen("Hear the patient", au.patient)); el.appendChild(row); }
-    const model = ppEl("div", "sp-reveal"); model.hidden = true;
-    model.appendChild(ppEl("div", "sp-bubble you", '<span class="who">A model answer</span>' + ppEsc(it.model_answer)));
+    model.appendChild(ppEl("div", "sp-model", '<span class="lab">A model answer</span>' + ppEsc(it.model_answer)));
     if (au.model) { const row = ppEl("div", "sp-row"); row.appendChild(spListen("Hear the model", au.model)); model.appendChild(row); }
-    const kp = ppEl("div", "sp-model", '<span class="lab">A good answer</span>');
-    const ul = ppEl("ul", "pp-list"); it.key_points.forEach(k => ul.appendChild(ppEl("li", "", "\u2713 " + ppEsc(k))));
-    kp.appendChild(ul); model.appendChild(kp);
-    el.appendChild(model);
-    return { el, after: () => { model.hidden = false; } };
+  } else {
+    // roleplay: the candidate's card only; the patient's card stays on the site's server
+    const c = ppEl("div", "sp-card");
+    c.innerHTML = "<h3>" + ppEsc(it.title) + "</h3><p><b>Setting:</b> " + ppEsc(it.setting) + "</p><p><b>You are:</b> " +
+      ppEsc(it.candidate.role) + "</p><p>" + ppEsc(it.candidate.background) + "</p><ol>" +
+      it.candidate.tasks.map(t => "<li>" + ppEsc(t) + "</li>").join("") + "</ol>";
+    el.appendChild(c);
+    el.appendChild(ppEl("p", "sp-note", "In the test: three minutes to prepare, then about five minutes to talk."));
   }
-  // roleplay: the candidate's card only; the patient's card stays on the site's server
-  const c = ppEl("div", "sp-card");
-  c.innerHTML = "<h3>" + ppEsc(it.title) + "</h3><p><b>Setting:</b> " + ppEsc(it.setting) + "</p><p><b>You are:</b> " +
-    ppEsc(it.candidate.role) + "</p><p>" + ppEsc(it.candidate.background) + "</p><ol>" +
-    it.candidate.tasks.map(t => "<li>" + ppEsc(t) + "</li>").join("") + "</ol>";
-  el.appendChild(c);
-  el.appendChild(ppEl("p", "sp-note", "In the test: three minutes to prepare, then about five minutes to talk. " +
-    "On the site you talk to the patient and get a report."));
-  return { el, after: () => {} };
+  el.appendChild(model);
+  return { el, after: () => { model.hidden = false; } };
 }
 function openSpeaking(p) {
   const layer = ppEl("div", "pp-layer"); layer.id = "ppLayer";
@@ -3350,23 +3349,29 @@ function openSpeaking(p) {
   const work = ppEl("section", "pp-work"); work.setAttribute("aria-label", "Speak");
   const views = p.items.map(it => spItem(it));
   views.forEach(v => work.appendChild(v.el));
+  const note = ppEl("p", "sp-note", SP_NOTE); note.setAttribute("role", "status"); note.hidden = true;
+  work.appendChild(note);
   const actions = ppEl("div", "pp-actions");
   const skipBtn = ppEl("button", "pp-go alt", "Skip"); skipBtn.type = "button"; skipBtn.hidden = true;
-  const contBtn = ppEl("button", "pp-go", "Continue"); contBtn.type = "button"; contBtn.disabled = true;
-  const recd = spRecorder(() => { views.forEach(v => v.after()); contBtn.disabled = false; ppDone.set(p.id, { spoken: true }); });
-  work.appendChild(recd.el);
-  const timer = setTimeout(() => { skipBtn.hidden = false; }, SP_SKIP_S * 1000);
-  const finish = () => { clearTimeout(timer); recd.cleanup(); if (spAudio) { spAudio.pause(); spAudio = null; } closePractice(p); };
-  skipBtn.addEventListener("click", finish);
+  const saidBtn = ppEl("button", "pp-go alt", "I said it"); saidBtn.type = "button";
+  const contBtn = ppEl("button", "pp-go", "Continue"); contBtn.type = "button";
+  const timer = setTimeout(() => { if (!ppDone.get(p.id)) skipBtn.hidden = false; }, SP_SKIP_S * 1000);
+  const reveal = (how) => {
+    views.forEach(v => v.after()); note.hidden = false; skipBtn.hidden = true; saidBtn.hidden = true;
+    ppDone.set(p.id, { spoken: how }); contBtn.focus();
+  };
+  const finish = () => { clearTimeout(timer); if (spAudio) { spAudio.pause(); spAudio = null; } closePractice(p); };
+  saidBtn.addEventListener("click", () => reveal("said"));
+  skipBtn.addEventListener("click", () => reveal("skipped"));
   contBtn.addEventListener("click", finish);
-  actions.appendChild(skipBtn); actions.appendChild(contBtn);
+  actions.appendChild(skipBtn); actions.appendChild(saidBtn); actions.appendChild(contBtn);
   work.appendChild(actions);
   body.appendChild(work);
   card.appendChild(head); card.appendChild(body); layer.appendChild(card);
   document.body.appendChild(layer); document.body.classList.add("pp-open");
   ppOpen = { p, layer };
-  if (ppDone.get(p.id)) { views.forEach(v => v.after()); contBtn.disabled = false; skipBtn.hidden = false; }
-  (work.querySelector("button") || contBtn).focus();
+  if (ppDone.get(p.id)) reveal(ppDone.get(p.id).spoken);
+  else (work.querySelector("button") || contBtn).focus();
 }
 function openPractice(p) {
   if (p.items.length && SP_TYPES.has(p.items[0].type)) return openSpeaking(p);

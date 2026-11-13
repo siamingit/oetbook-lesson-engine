@@ -1,17 +1,22 @@
-"""The Speaking course's engine (ADR 053): a narration line's speaker and feeling, the speaking practice
-items of the site's draft contract behind speaking_items.py, their recordings, and the refusal to publish
-a lesson with speaking units before the site's contracts have them. A line with no speaker is the
+"""The Speaking course's engine (ADR 053, ADR 054, ADR 055): a narration line's speaker and feeling, the
+speaking practice items behind speaking_items.py (speak_repeat in the site's contracts 1.22.0, speak_respond
+in 1.25.0, roleplay in 1.26.0), the cue rule, their recordings (the slow take stretched from the normal one),
+and the site's form of a Speaking lesson's bundle: every speaking point carried; a type the contracts did not
+carry would be left out of a --draft and refused in a final release. A line with no speaker is the
 teacher's, so nothing built before changes."""
 
 import copy
 import hashlib
 import json
+import os
 import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+import lesson_package as lp  # noqa: E402
 import practice_points as pp  # noqa: E402
 import publish_lesson  # noqa: E402
 import speaking_items as si  # noqa: E402
@@ -30,16 +35,41 @@ REPEAT = {"item_id": "oa-speaking-970000", "type": "speak_repeat", "profession":
 RESPOND = {"item_id": "oa-speaking-970001", "type": "speak_respond", "profession": "nursing",
            "prompt": "The patient is worried. Show that you understand.", "patient_line": "I'm really scared about this.",
            "patient_speaker": "patient_f", "patient_emotion": "worried",
-           "key_points": ["Name the feeling", "Offer help"], "prepare_s": 10, "max_s": 30,
-           "model_answer": "I can see this is worrying for you. Let's talk it through together."}
+           "cues": [{"text": "Show you understand", "match": ["understand", "can see"], "example": "I understand."},
+                    {"text": "Offer to talk it through", "match": ["talk it through", "talk about it"],
+                     "example": "Let's talk about it."}],
+           "prepare_s": 10, "max_s": 30,
+           "model_answer": "I can see this is worrying for you. Let's talk it through together.",
+           "tags": {"practises": ["speaking.relationship-building.empathy"]}}
 ROLEPLAY = {"item_id": "oa-speaking-970002", "type": "roleplay", "profession": "nursing", "title": "A sore ankle",
-            "setting": "A community clinic", "patient_speaker": "patient_m",
-            "candidate": {"role": "Nurse", "background": "Mr Ben Cole hurt his ankle playing football.",
+            "length": "whole", "setting": "A community clinic", "patient_speaker": "patient_m",
+            "candidate": {"role": "Nurse", "role_line": "You are a nurse. You are talking to a patient who hurt an ankle.",
+                          "background": "Mr Ben Cole hurt his ankle playing football.",
                           "tasks": ["Find out how it happened", "Explain rest and ice", "Reassure him"]},
-            "patient": {"name": "Ben Cole", "role": "Patient", "persona": "A keen footballer, 24.",
+            "patient": {"name": "Ben Cole", "role": "the patient", "persona": "A keen footballer, 24. He speaks fast.",
                         "emotion": "impatient", "opening": "I need to play on Saturday.",
                         "hidden": ["He has a match on Saturday"], "concern": "Missing the match."},
-            "prepare_s": 180, "talk_s": 300}
+            "prepare_s": 180, "talk_s": 300, "tags": {"practises": ["speaking.profession-role-plays.role-play-cards"]}}
+
+TAGGED = dict(REPEAT, tags={"practises": ["speaking.language.intelligibility"]})
+EXCERPT = {"sample": LESSON, "pin": "authored for this lesson", "title": "Say it",
+           "rows": [{"label": "", "lines": ["Can I check your full name, please?"]}]}
+
+
+def practice_item_validator():
+    """The bundle schema's practiceItem of the pinned contracts, or a skip where CI has none."""
+    from jsonschema import Draft202012Validator
+    from referencing import Registry, Resource
+    try:
+        c = lp.load(fetch_missing=False)
+    except SystemExit:
+        if os.environ.get("OETBOOK_CONTRACTS_OPTIONAL") == "1":
+            raise unittest.SkipTest("skipped: contracts not available in CI")
+        raise
+    schemas = [json.loads(b) for n, b in c.files.items() if n.startswith("schemas/") and n.endswith(".json")]
+    reg = Registry().with_resources((x["$id"], Resource.from_contents(x)) for x in schemas)
+    return Draft202012Validator(
+        {"$ref": "https://oetacademy.uk/contracts/v1/lesson-bundle.schema.json#/$defs/practiceItem"}, registry=reg)
 
 
 def utt(uid, cues, **kw):
@@ -114,29 +144,64 @@ class Narration(unittest.TestCase):
 
 
 class Items(unittest.TestCase):
-    def test_each_type_passes_the_draft_contract(self):
+    def test_each_type_passes_the_released_rules(self):
         for it in (REPEAT, RESPOND, ROLEPLAY):
             si.check(it, it["type"])
-            doc = si.contract_doc([si.to_contract(it)])
-            self.assertEqual(si.contract_findings(doc), [], it["type"])
-        self.assertEqual(si.to_contract(REPEAT)["id"], "oa-speak-970000")
-        self.assertEqual(si.to_contract(RESPOND)["patient_voice"], "gb-f-gemma")
-        self.assertEqual(si.to_contract(ROLEPLAY)["patient"]["voice"], "gb-m-archie")
-        for it in (REPEAT, RESPOND, ROLEPLAY):
-            self.assertFalse(si.ENGINE_ONLY & set(si.to_contract(it)), it["type"])
+        self.assertEqual(si.RELEASED_TYPES, ("speak_repeat", "speak_respond", "roleplay"))
 
     def test_refusals(self):
+        cue = RESPOND["cues"][1]
         bad = [dict(REPEAT, chunks=["Can I check", "your name"]),           # RP-SPEAK-CHUNKS
                dict(REPEAT, spoken="Take 2 tablets.", shown="Take 2 tablets.", chunks=["Take 2 tablets"]),
+               dict(REPEAT, shown="Can I check your name?"),                # RP-SPEAK-SHOWN
                {k: v for k, v in RESPOND.items() if k != "model_answer"},
                dict(RESPOND, patient_speaker="nurse"),
+               dict(RESPOND, key_points=["Name the feeling"]),             # the old field
+               dict(RESPOND, cues=RESPOND["cues"][:1]),                     # 2 to 4 cues
+               dict(RESPOND, model_answer="I can see this is worrying for you."),   # cue 2 not said
+               dict(RESPOND, cues=[RESPOND["cues"][0], dict(cue, example="We can sit down.")]),  # its example
+               dict(RESPOND, cues=[RESPOND["cues"][0], dict(cue, match=["Talk it through"])]),  # not lower-case
+               dict(RESPOND, patient_line="I've been scared for 2 days."),  # RP-SPEAK-NUMBERS
+               dict(RESPOND, max_s=120),
                dict(ROLEPLAY, patient_emotion="worried"),
+               dict(ROLEPLAY, length="medium"),
+               dict(ROLEPLAY, candidate=dict(ROLEPLAY["candidate"], tasks=["One", "Two"])),   # whole: 3 to 6
+               dict(ROLEPLAY, length="short", candidate=dict(ROLEPLAY["candidate"], tasks=["1", "2", "3", "4"])),
+               dict(ROLEPLAY, candidate={k: v for k, v in ROLEPLAY["candidate"].items() if k != "role_line"}),
+               dict(ROLEPLAY, patient=dict(ROLEPLAY["patient"], opening="I play in 2 days.")),
                dict(REPEAT, audio={}),
                dict(REPEAT, item_id="oa-writing-970000"),
                dict(ROLEPLAY, patient=dict(ROLEPLAY["patient"], hidden=[]))]
         for n, it in enumerate(bad):
             with self.assertRaises(SystemExit, msg=n):
                 si.check(it, str(n))
+
+
+class Cues(unittest.TestCase):
+    """The site's cue rule as the engine reads it (cross-checked with the site's own code, in scratch)."""
+
+    def said(self, match, text):
+        return si.cue_said(match if isinstance(match, list) else [match], text)
+
+    def test_words(self):
+        self.assertEqual(si.cue_words("I can't — won't! Don't worry, it's 24 hours."),
+                         ["i", "can", "not", "will", "not", "|", "do", "not", "worry", "it's", "twenty", "four", "hours", "|"])
+        self.assertEqual(si.cue_words("Take 3 or 17 \u2018tablets\u2019"), ["take", "three", "or", "tablets"])
+
+    def test_phrases(self):
+        self.assertTrue(self.said("ask question*", "Can I ask you some questions?"))     # two words between
+        self.assertFalse(self.said("ask question*", "Can I ask you a few more questions?"))   # three
+        self.assertTrue(self.said("hold breath", "Hold your breaths"))                      # a plural s
+        self.assertFalse(self.said("breath", "Breathe out"))                               # no * ending
+        self.assertTrue(self.said("breath* out", "Breathe out"))
+        self.assertFalse(self.said("nice see", "That's nice. See you."))                   # never across a break
+
+    def test_negation(self):
+        self.assertFalse(self.said("need operation", "You won't need an operation."))
+        self.assertTrue(self.said("not need operation", "You won't need an operation."))
+        self.assertFalse(self.said("worry", "Don't worry."))
+        self.assertTrue(self.said("worry", "No. Worry is normal."))                          # the break stops it
+        self.assertTrue(self.said("walk*", "Not now, but later gentle walking helps."))      # more than three back
 
     def test_the_player_never_gets_the_patients_card(self):
         v = si.browser_view(ROLEPLAY, None)
@@ -151,9 +216,75 @@ class Items(unittest.TestCase):
                                                  "feel": {"task": "t", "excerpt": None, "items": [RESPOND, ROLEPLAY]}})
         got = {(r["item"], r["role"]): (r["voice"]["name"], r["speed"], r["emotion"]) for r in ss.plan(lesson, voices.RUPERT)}
         self.assertEqual(got, {("oa-speaking-970000", "normal"): ("rupert", 1.0, None),
-                               ("oa-speaking-970000", "slow"): ("rupert", 0.75, None),
+                               ("oa-speaking-970000", "slow"): ("rupert", 1.0, None),
                                ("oa-speaking-970001", "patient"): ("gemma", 0.8, "anxious"),
                                ("oa-speaking-970001", "model"): ("rupert", 1.0, None)})
+        # the slow take is the normal one stretched (ADR 054), never a voice of its own
+        slow = [r for r in ss.plan(lesson, voices.RUPERT) if r["role"] == "slow"]
+        self.assertEqual([r.get("from") for r in slow], ["oa-speaking-970000.normal.wav"])
+
+
+class Release(unittest.TestCase):
+    """The spoken items in the released contracts' shape (1.22.0, 1.25.0, 1.26.0)."""
+
+    def test_the_released_shape(self):
+        c = si.release_item(TAGGED, 1, 1)
+        self.assertEqual(list(c), ["item_id", "type", "number", "focus", "shown", "spoken", "chunks", "audio",
+                                   "scoring", "tags", "version", "status", "content_hash"])
+        self.assertEqual(c["audio"], {"normal": "audio/speak-970000-normal.m4a", "slow": "audio/speak-970000-slow.m4a"})
+        self.assertEqual(c["tags"]["facets"]["profession"], ["nursing"])
+        self.assertNotIn("pass_score", c)
+        self.assertNotIn("profession", c)
+        self.assertEqual(c["content_hash"], pp.content_hash({k: v for k, v in c.items() if k != "content_hash"}))
+        self.assertTrue(si.is_contract_form(c))
+        self.assertFalse(si.is_contract_form(TAGGED))
+        self.assertEqual(TAGGED.get("tags"), {"practises": ["speaking.language.intelligibility"]})   # not changed
+
+    def test_the_released_respond(self):
+        c = si.release_item(RESPOND, 1, 1)
+        self.assertEqual(list(c), ["item_id", "type", "number", "task", "patient_line", "audio", "cues", "model_answer",
+                                   "max_s", "scoring", "tags", "version", "status", "content_hash"])
+        self.assertEqual(c["audio"], {"normal": "audio/speak-970001-patient.m4a"})     # the model is the site's voice
+        self.assertEqual((c["task"], c["scoring"]), (RESPOND["prompt"], {"method": "ai"}))
+        self.assertEqual(c["cues"], RESPOND["cues"])
+        self.assertEqual(c["tags"]["facets"]["profession"], ["nursing"])
+        self.assertFalse({"prepare_s", "patient_speaker", "patient_emotion", "profession"} & set(c))
+        self.assertTrue(si.is_contract_form(c))
+
+    def test_the_released_roleplay(self):
+        c = si.release_item(ROLEPLAY, 1, 1)
+        self.assertEqual(list(c), ["item_id", "type", "number", "length", "card", "patient", "patient_card", "scoring",
+                                   "tags", "version", "status", "content_hash"])
+        self.assertEqual(c["card"], {"setting": "A community clinic", "role": ROLEPLAY["candidate"]["role_line"],
+                                     "background": ROLEPLAY["candidate"]["background"],
+                                     "tasks": ROLEPLAY["candidate"]["tasks"]})
+        self.assertEqual(c["patient"], {"name": "Ben Cole", "role": "the patient", "opening": "I need to play on Saturday.",
+                                        "voice": "patient-m"})
+        self.assertEqual(set(c["patient_card"]), {"persona", "emotion", "concern", "hidden"})
+        self.assertNotIn("audio", c)
+        self.assertNotIn("title", json.dumps(c))
+
+    def test_refusals(self):
+        cases = [(REPEAT, "tags.practises"),
+                 ({k: v for k, v in RESPOND.items() if k != "tags"}, "tags.practises"),
+                 (dict(RESPOND, model_answer="I can see this is worrying."), "RP-SPEAK-CUES"),
+                 (dict(ROLEPLAY, length="short", candidate=dict(ROLEPLAY["candidate"], tasks=list("abcd"))),
+                  "RP-ROLEPLAY-TASKS"),
+                 (dict(REPEAT, type="speak_listen"), "not in the site's contracts"),
+                 (dict(TAGGED, shown="Can I check your name?"), "RP-SPEAK-SHOWN"),
+                 (dict(TAGGED, chunks=["Can I check", "your name"]), "RP-SPEAK-CHUNKS"),
+                 (dict(TAGGED, spoken="Take 2 tablets.", shown="Take 2 tablets.", chunks=["Take 2 tablets"]),
+                  "RP-SPEAK-NUMBERS")]
+        for it, why in cases:
+            with self.subTest(why=why):
+                with self.assertRaises(SystemExit) as e:
+                    si.release_item(it)
+                self.assertIn(why, str(e.exception))
+
+    def test_it_is_a_practice_item_of_the_pinned_contracts(self):
+        v = practice_item_validator()
+        for it in (TAGGED, RESPOND, ROLEPLAY):
+            self.assertEqual([e.message for e in v.iter_errors(si.release_item(it))], [], it["type"])
 
 
 class Attach(unittest.TestCase):
@@ -171,8 +302,10 @@ class Attach(unittest.TestCase):
         bd = board()
         self.assertTrue(pp.attach(L, [bd]))
         p = bd["states"][0]["practice"][0]
-        self.assertEqual(p["items"][0]["contract_id"], "oa-speak-970000")
-        self.assertNotIn("content_hash", p["items"][0])
+        v = p["items"][0]
+        self.assertNotIn("contract_id", v)          # a speak_repeat keeps its own id (contracts 1.22.0)
+        self.assertEqual((v["item_id"], v["shown"], v["chunks"]), (REPEAT["item_id"], REPEAT["shown"], REPEAT["chunks"]))
+        self.assertNotIn("content_hash", v)
         self.assertTrue(pp.has_speaking([bd]))
 
     def test_speaking_items_only_in_a_speaking_lesson_and_alone(self):
@@ -209,15 +342,90 @@ class Publish(unittest.TestCase):
         self.assertNotIn("practice", s["boards"][0]["states"][0]["utterances"][0]["cues"][1])
         self.assertEqual(s["format_version"], "1.23")
 
-    def test_a_lesson_with_speaking_units_is_never_built_for_the_site(self):
-        self.assertFalse(si.RELEASED)
-        L = lesson_dir(LESSON, "speaking")
+    def site_bundle(self, respond=True, excerpt=EXCERPT, repeat_items=None):
+        """A bundle with a speak_repeat point (and a speak_respond point) and the lesson behind it."""
+        b = self.bundle()
+        st = b["boards"][0]["states"][0]
+        st["practice"][0]["excerpt"] = excerpt
+        if repeat_items is not None:
+            st["practice"][0]["items"] = repeat_items
+        points = {"x": {"task": "Say it.", "excerpt": excerpt, "items": [TAGGED]}}
+        if respond:
+            st["practice"].append({"id": "page-1_pp-feel", "excerpt": None, "items": [si.browser_view(RESPOND, None)]})
+            st["utterances"][1]["cues"].append({"id": "c2", "type": "pause", "text": "practice: feel", "seconds": 6.0,
+                                                "time": 11.0, "time_end": 17.0, "practice": "page-1_pp-feel"})
+            st["practice"][1]["excerpt"] = excerpt
+            points["feel"] = {"task": "Answer her.", "excerpt": excerpt, "items": [RESPOND]}
+        return lesson_dir(LESSON, "speaking", points), b
+
+    def test_the_site_form(self):
+        L, b = self.site_bundle()
+        self.assertTrue(publish_lesson.is_speaking_bundle(b))
+        before = copy.deepcopy(b)
+        s, left = publish_lesson.site_form(L, b)
+        self.assertEqual(b, before)
+        self.assertEqual(s["format_version"], "1.23")
+        self.assertNotIn("speaker", json.dumps(s))
+        self.assertEqual(publish_lesson.speaking_units(s), [])
+        st = s["boards"][0]["states"][0]
+        self.assertEqual([p["id"] for p in st["practice"]], ["page-1_pp-x", "page-1_pp-feel"])
+        self.assertEqual(st["practice"][0]["items"], [si.release_item(TAGGED)])
+        self.assertEqual(st["practice"][1]["items"], [si.release_item(RESPOND)])
+        self.assertEqual(left, [])                                            # no point is left out any more
+        self.assertEqual(st["utterances"][1]["cues"][1]["practice"], "page-1_pp-feel")
+        self.assertEqual(publish_lesson.spoken_items(s), [si.release_item(TAGGED), si.release_item(RESPOND)])
+        f = lp.Findings()
+        lp.check_practice(s, f)
+        self.assertEqual(f.codes("error"), [])
+
+    def test_a_type_the_contracts_do_not_carry_is_left_out_of_a_draft(self):
+        L, b = self.site_bundle()
+        with mock.patch.object(si, "RELEASED_TYPES", ("speak_repeat",)):
+            s, left = publish_lesson.site_form(L, b)
+        st = s["boards"][0]["states"][0]
+        self.assertEqual([p["id"] for p in st["practice"]], ["page-1_pp-x"])
+        self.assertEqual(left, [{"point": "page-1_pp-feel", "key": "feel", "types": ["speak_respond"],
+                                 "items": ["oa-speaking-970001"]}])
+        self.assertNotIn("practice", st["utterances"][1]["cues"][1])        # its pause is a plain pause
+
+    def test_the_site_form_refusals(self):
+        for kw, why in ((dict(excerpt=None), "no excerpt"),
+                        (dict(repeat_items=[si.browser_view(REPEAT, None)] * 2), "LP-PRACTICE-ITEM")):
+            with self.subTest(why=why):
+                L, b = self.site_bundle(respond=False, **kw)
+                with self.assertRaises(publish_lesson.Refused) as e:
+                    publish_lesson.site_form(L, b)
+                self.assertIn(why, str(e.exception))
+
+    def test_a_final_release_carries_every_point(self):
+        L, b = self.site_bundle()
         (L / "generated" / "lesson-player").mkdir(parents=True)
-        (L / "generated" / "lesson-player" / "bundle.json").write_text(json.dumps(self.bundle()), encoding="utf-8")
-        for draft in (False, True):
-            with self.assertRaises(publish_lesson.Refused) as e:
-                publish_lesson.build(L, None, draft=draft)
-            self.assertIn("ADR 053", str(e.exception))
+        (L / "generated" / "lesson-player" / "bundle.json").write_text(json.dumps(b), encoding="utf-8")
+        with mock.patch.object(si, "RELEASED_TYPES", ("speak_repeat",)), \
+                self.assertRaises(publish_lesson.Refused) as e:
+            publish_lesson.build(L, None, log=lambda *a: None, draft=False)
+        self.assertIn("only a --draft", str(e.exception))
+
+    def test_the_package_check_of_the_spoken_items(self):
+        good, resp, rp = si.release_item(TAGGED), si.release_item(RESPOND), si.release_item(ROLEPLAY)
+        cue = resp["cues"][1]
+        cases = [([good, good], "LP-PRACTICE-ITEM"),
+                 ([resp, good], "LP-PRACTICE-ITEM"),
+                 ([dict(good, chunks=["Can I check", "your name"])], "LP-SPEAK-CHUNKS"),
+                 ([dict(good, spoken="Take 2 tablets.", shown="Take 2 tablets.", chunks=["Take 2 tablets"])],
+                  "LP-SPEAK-NUMBERS"),
+                 ([dict(good, shown="Can I check your name?")], "LP-SPEAK-SHOWN"),
+                 ([dict(resp, model_answer="I can see this is worrying.")], "LP-SPEAK-CUES"),
+                 ([dict(resp, cues=[resp["cues"][0], dict(cue, example="Sit down.")])], "LP-SPEAK-CUES"),
+                 ([dict(resp, patient_line="It hurts, 3 times.")], "LP-SPEAK-NUMBERS"),
+                 ([dict(rp, card=dict(rp["card"], tasks=["a", "b"]))], "LP-ROLEPLAY-TASKS"),
+                 ([dict(rp, patient=dict(rp["patient"], opening="In 2 days."))], "LP-SPEAK-NUMBERS")]
+        for items, code in cases:
+            with self.subTest(code=code):
+                f = lp.Findings()
+                lp.check_practice({"format_version": "1.23", "boards": [{"states": [{"id": "s1", "utterances": [],
+                                   "practice": [{"id": "p", "items": items}]}]}]}, f)
+                self.assertIn(code, f.codes("error"))
 
 
 class Dialogue(unittest.TestCase):
