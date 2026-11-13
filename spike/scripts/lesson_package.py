@@ -669,15 +669,16 @@ def check_manifest_against_bundle(m: dict, b: dict, f: Findings) -> None:
             f.error("LP-EXAM-HASH", where, "exam.sha256 differs from the file's sha256", u["id"])
         if ex and file.get("exam") and ex["stimulus"] != file["exam"]["stimulus"]:
             f.error("LP-EXAM-SOURCE", where, "exam.stimulus differs from the file's", u["id"])
-    for it in speak_repeats(b):
+    for it in spoken_items(b):
         a = it.get("audio") or {}
         files = {}
-        for role in ("normal", "slow"):
-            if role in a:
-                files[role] = audio_of(a[role], "narration")
-                if not files[role]:
-                    f.error("LP-AUDIO-UNLISTED", where, f"a speak_repeat's {role} recording is not in manifest "
-                            "media as narration", it["item_id"])
+        for role in a:
+            files[role] = audio_of(a[role], "narration")
+            if not files[role]:
+                f.error("LP-AUDIO-UNLISTED", where, f"a {it['type']}'s {role} recording is not in manifest "
+                        "media as narration", it["item_id"])
+        if it["type"] != "speak_repeat":
+            continue
         if a.get("normal") and a.get("normal") == a.get("slow"):
             f.error("LP-SPEAK-AUDIO", where, "a speak_repeat's normal and slow recordings are the same file",
                     it["item_id"])
@@ -715,7 +716,7 @@ def references(bundle: dict, css: str) -> list[tuple[str, str]]:
     out = []
     for u in utterances_of(bundle):
         out.append((u["id"], u["audio_file"]))
-    for it in speak_repeats(bundle):
+    for it in spoken_items(bundle):
         for role, path in (it.get("audio") or {}).items():
             out.append((f"{it['item_id']}.audio.{role}", path))
     for block in bundle["blocks"].values():
@@ -816,10 +817,13 @@ def check_style(bundle: dict, f: Findings) -> None:
 PRACTICE_ID = re.compile(r"^oa-[a-z]+-([0-9]{6})(-[oc][0-9]+)?$")
 
 
-def speak_repeats(bundle: dict) -> list[dict]:
-    """The bundle's speak_repeat practice items (contracts 1.22.0)."""
+SPOKEN = ("speak_repeat", "speak_respond", "roleplay")   # contracts 1.22.0, 1.25.0, 1.26.0
+
+
+def spoken_items(bundle: dict) -> list[dict]:
+    """The bundle's spoken practice items, every type (speak_repeat, speak_respond, roleplay)."""
     return [i for bd in bundle.get("boards") or [] for s in bd.get("states") or []
-            for p in s.get("practice") or [] for i in p.get("items") or [] if i.get("type") == "speak_repeat"]
+            for p in s.get("practice") or [] for i in p.get("items") or [] if i.get("type") in SPOKEN]
 
 
 def check_speak_repeat(it: dict, f: Findings, where: str = "bundle.json") -> None:
@@ -833,11 +837,54 @@ def check_speak_repeat(it: dict, f: Findings, where: str = "bundle.json") -> Non
     if re.search(r"[0-9]", spoken):
         f.error("LP-SPEAK-NUMBERS", where, "`spoken` has a digit: numbers are written as they are said",
                 it.get("item_id"))
+    plain = lambda t: re.sub(r"[.?!]+$", "", (t or "").strip()).lower()  # noqa: E731
+    if plain(it.get("shown")) != plain(spoken):
+        f.error("LP-SPEAK-SHOWN", where, "`shown` does not read word for word as `spoken` (only capitals and the "
+                "final . ? or ! may differ)", it.get("item_id"))
+
+
+def check_speak_respond(it: dict, f: Findings, where: str = "bundle.json") -> None:
+    """A speak_respond's rules its schema cannot say (contracts 1.25.0; RP- in a release package):
+    LP-SPEAK-CUES (the model answer says every cue, and each cue's example says its own cue, by the
+    cue's match words, as the site's cue rule reads them) and LP-SPEAK-NUMBERS (no digit in
+    patient_line, model_answer or an example)."""
+    import speaking_items
+    iid = it.get("item_id")
+    for n, c in enumerate(it.get("cues") or [], 1):
+        m = c.get("match") or []
+        if not speaking_items.cue_said(m, it.get("model_answer") or ""):
+            f.error("LP-SPEAK-CUES", where, "the model answer does not say a cue by its match words",
+                    f"{iid}: cue {n} ({c.get('text')})")
+        if not speaking_items.cue_said(m, c.get("example") or ""):
+            f.error("LP-SPEAK-CUES", where, "a cue's example does not say its cue by its match words",
+                    f"{iid}: cue {n} ({c.get('text')})")
+        if re.search(r"[0-9]", c.get("example") or ""):
+            f.error("LP-SPEAK-NUMBERS", where, "a cue's example has a digit", f"{iid}: cue {n}")
+    for k in ("patient_line", "model_answer"):
+        if re.search(r"[0-9]", it.get(k) or ""):
+            f.error("LP-SPEAK-NUMBERS", where, f"`{k}` has a digit: numbers are written as they are said", iid)
+
+
+def check_roleplay(it: dict, f: Findings, where: str = "bundle.json") -> None:
+    """A role-play's rules its schema cannot say (contracts 1.26.0): LP-ROLEPLAY-TASKS (two or three
+    tasks for a short one, three to six for a whole one) and LP-SPEAK-NUMBERS (no digit in the
+    patient's opening)."""
+    tasks = (it.get("card") or {}).get("tasks") or []
+    lo, hi = {"short": (2, 3), "whole": (3, 6)}.get(it.get("length"), (0, -1))
+    if not lo <= len(tasks) <= hi:
+        f.error("LP-ROLEPLAY-TASKS", where, f"a {it.get('length')} role-play has {lo} to {hi} tasks",
+                f"{it.get('item_id')}: {len(tasks)}")
+    if re.search(r"[0-9]", (it.get("patient") or {}).get("opening") or ""):
+        f.error("LP-SPEAK-NUMBERS", where, "the patient's opening has a digit", it.get("item_id"))
+
+
+SPOKEN_CHECKS = {"speak_repeat": check_speak_repeat, "speak_respond": check_speak_respond,
+                 "roleplay": check_roleplay}
 
 
 def check_practice(bundle: dict, f: Findings) -> None:
-    """LP-PRACTICE-ITEM, LP-SPEAK-CHUNKS and LP-SPEAK-NUMBERS (contracts 1.22.0: a speak_repeat alone in
-    its point), LP-PRACTICE (its first half: practice points only from 1.23), LP-ID-BLOCK and LP-FIXTURE
+    """LP-PRACTICE-ITEM (a spoken item alone in its point), the spoken items' own rules (SPOKEN_CHECKS:
+    LP-SPEAK-CHUNKS, -NUMBERS, -SHOWN, -CUES, LP-ROLEPLAY-TASKS), LP-PRACTICE (its first half: practice points only from 1.23), LP-ID-BLOCK and LP-FIXTURE
     (contracts 1.13.0): every ID of a practice item (the item, its parts, options and self-check
     points) is in the lesson engine's block, 900000-989999; a fixture ID (990000-999999) is refused,
     as the site refuses it in production. The rest of the practice rules are the site's validator's."""
@@ -862,12 +909,12 @@ def check_practice(bundle: dict, f: Findings) -> None:
                 f.error("LP-PRACTICE", where, "practice is a field of bundle format 1.23 and later", s["id"])
             for p in s.get("practice") or []:
                 items = p.get("items") or []
-                if any(i.get("type") == "speak_repeat" for i in items) and len(items) != 1:
-                    f.error("LP-PRACTICE-ITEM", where, "a speak_repeat is the only item of its practice point",
+                if any(i.get("type") in SPOKEN for i in items) and len(items) != 1:
+                    f.error("LP-PRACTICE-ITEM", where, "a spoken item is the only item of its practice point",
                             f"{p.get('id')}: {len(items)} items")
                 for i in items:
-                    if i.get("type") == "speak_repeat":
-                        check_speak_repeat(i, f, where)
+                    if i.get("type") in SPOKEN_CHECKS:
+                        SPOKEN_CHECKS[i["type"]](i, f, where)
                 for i in ids(p.get("items")):
                     m = PRACTICE_ID.match(i)
                     n = int(m[1]) if m else -1

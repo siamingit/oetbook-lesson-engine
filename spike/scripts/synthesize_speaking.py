@@ -33,10 +33,10 @@ with a lexicon term not yet approved by ear; every lexicon term is checked in th
 over JOB_CHARACTERS_LIMIT stops. --dry-run makes nothing and sends nothing: it lists what a run
 would make and its characters.
 
-The site's own files (mp3, with sha256, bytes and duration in the contract) are made from these when
-the contracts are released (speaking_items.to_contract); until then the lesson's own player plays
-these recordings in its pop-up. A speak_repeat's two takes go to the site as narration .m4a files
-(publish_lesson.py, contracts 1.22.0).
+The lesson's own player plays these recordings in its pop-up. The site gets some of them as narration
+.m4a files (publish_lesson.py, speaking_items.CONTRACT_AUDIO): a speak_repeat's two takes (contracts
+1.22.0) and a speak_respond's patient line (1.25.0); a speak_respond's model answer is read on the site
+by its own voice, and a role-play has no recording.
 """
 
 from __future__ import annotations

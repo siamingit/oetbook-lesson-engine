@@ -445,8 +445,9 @@ def check_zip(zpath: Path, folder: Path, f: lp.Findings) -> None:
 
 def speaking_units(bundle: dict) -> list[str]:
     """What the site's contracts cannot carry (ADR 053): a patient's narration line, a practice point
-    of speaking items not in their released form (a speak_repeat in its contract form, 1.22.0, is
-    carried; site_form makes it), a bundle in format 1.24."""
+    of speaking items not in their released form (a spoken item in its contract form is carried:
+    speak_repeat 1.22.0, speak_respond 1.25.0, roleplay 1.26.0; site_form makes it), a bundle in
+    format 1.24."""
     out = [f"format {bundle.get('format_version')}"] if bundle.get("format_version") == "1.24" else []
     for bd in bundle.get("boards") or []:
         for st in bd.get("states") or []:
@@ -458,13 +459,15 @@ def speaking_units(bundle: dict) -> list[str]:
 
 
 def site_form(L: Path, bundle: dict) -> tuple[dict, list[dict]]:
-    """A Speaking lesson's bundle as the site's contracts (1.22.0) carry it (ADR 054): format 1.23; a
-    patient's line a plain narration line (no speaker, no feeling); each speak_repeat point's item in
-    the released contract's shape (speaking_items.release_item, from analysis/practice.json), its two
-    recordings narration files (_assemble); every point of a type still in the draft (speak_respond,
-    roleplay) left out, its pause a plain pause, as stub_speaking leaves it. Returns the bundle and
-    the points left out [{point, key, types, items}]. LP-PRACTICE-ITEM: a speak_repeat is the only
-    item of its point; a point with more is refused here, by name."""
+    """A Speaking lesson's bundle as the site's contracts carry it (ADR 054, ADR 055): format 1.23; a
+    patient's line a plain narration line (no speaker, no feeling); each speaking point's item in the
+    released contract's shape (speaking_items.release_item, from analysis/practice.json), its
+    recordings narration files (_assemble: a speak_repeat's normal and slow, a speak_respond's
+    patient line; a role-play has none). Every spoken type is released, so a point is left out only
+    if its type is not (none now); a point left out has its pause a plain pause, as stub_speaking
+    leaves it. Returns the bundle and the points left out [{point, key, types, items}].
+    LP-PRACTICE-ITEM: a spoken item is the only item of its point; a point with more is refused here,
+    by name."""
     b = copy.deepcopy(bundle)
     if b.get("format_version") == "1.24":
         b["format_version"] = "1.23"
@@ -484,10 +487,10 @@ def site_form(L: Path, bundle: dict) -> tuple[dict, list[dict]]:
                 key = pt["id"].split("_pp-", 1)[-1]
                 if all(speaking_items.is_released(i) for i in items):
                     if len(items) != 1:
-                        raise Refused(f"practice point {key!r} ({pt['id']}): LP-PRACTICE-ITEM: a speak_repeat is the "
+                        raise Refused(f"practice point {key!r} ({pt['id']}): LP-PRACTICE-ITEM: a spoken item is the "
                                       f"only item of its point, and this one has {len(items)} "
                                       f"({', '.join(i['item_id'] for i in items)}): make each its own point, with "
-                                      "its own pause (contracts 1.22.0)")
+                                      "its own pause (the site's contracts)")
                     if not isinstance(pt.get("excerpt"), dict):
                         # contracts 1.22.0: every practice point carries an excerpt {sample, pin, title, rows};
                         # a speaking point has no paper, so its excerpt is authored, as Grammar's are; none
@@ -528,8 +531,8 @@ def is_speaking_bundle(bundle: dict) -> bool:
         for pt in st.get("practice") or [] for i in pt.get("items") or [])
 
 
-def speak_repeat_items(bundle: dict) -> list[dict]:
-    """The released speak_repeat items of a site-form bundle, in board order."""
+def spoken_items(bundle: dict) -> list[dict]:
+    """The released spoken items of a site-form bundle (every speaking type), in board order."""
     return [i for bd in bundle.get("boards") or [] for st in bd.get("states") or []
             for pt in st.get("practice") or [] for i in pt.get("items") or [] if speaking_items.is_contract_form(i)]
 
@@ -596,8 +599,8 @@ def build(L: Path, contracts: lp.Contracts, workers: int | None = None, log=prin
         raise Refused("a silent preview is never published")
     left_out = []
     if not stub and is_speaking_bundle(bundle):
-        # ADR 054: contracts 1.22.0 carry a speak_repeat point; the draft's types (speak_respond,
-        # roleplay) are not released, so a draft leaves their points out and a final release refuses them
+        # ADR 054, ADR 055: the contracts carry every spoken type; a point of a type they do not carry
+        # would be left out of a draft and refused in a final release
         bundle, left_out = site_form(L, bundle)
         if left_out:
             log(f"{lesson}: {len(left_out)} speaking point(s) left out (not in the site's contracts yet):")
@@ -627,7 +630,7 @@ def build(L: Path, contracts: lp.Contracts, workers: int | None = None, log=prin
     f = lp.Findings()
     try:
         report = _assemble(L, player, bundle, contracts, stage, version, approved, tags, retired, workers, f, log)
-        if left_out or speak_repeat_items(bundle):
+        if left_out or spoken_items(bundle):
             report["speaking_left_out"] = left_out
         f.extend(lp.validate_package(stage, contracts))
         if stub:
@@ -715,14 +718,16 @@ def _assemble(L, player, bundle, contracts, stage, version, approved, tags, reti
         if u.get("kind") != "exam":
             u["audio_file"] = names[u["audio_file"]]
 
-    # A speak_repeat's two recordings (contracts 1.22.0): narration files at the item's own paths, encoded
-    # from generated/speaking-audio/ (synthesize_speaking.py) as every narration file is.
+    # A spoken item's recordings: narration files at the item's own paths (a speak_repeat's normal and
+    # slow, contracts 1.22.0; a speak_respond's patient line, 1.25.0), encoded from
+    # generated/speaking-audio/ (synthesize_speaking.py) as every narration file is.
     rec_dir = L / "generated" / "speaking-audio"
-    for it in speak_repeat_items(pub):
-        for role, name in it["audio"].items():
-            wav = rec_dir / f"{it['item_id']}.{role}.wav"
+    for it in spoken_items(pub):
+        for role, name in (it.get("audio") or {}).items():
+            rec = speaking_items.CONTRACT_AUDIO[it["type"]][role]
+            wav = rec_dir / f"{it['item_id']}.{rec}.wav"
             if not wav.is_file():
-                f.error("PUB-SOURCE-MISSING", "audio", "a speak_repeat recording does not exist: run "
+                f.error("PUB-SOURCE-MISSING", "audio", f"a {it['type']} recording does not exist: run "
                         "synthesize_speaking.py", f"{it['item_id']}: {wav.name}")
                 continue
             cached = cache / f"speak-{lp.sha256_file(wav)[:16]}.m4a"

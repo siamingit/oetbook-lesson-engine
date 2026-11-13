@@ -173,7 +173,7 @@ class BuiltPackage(unittest.TestCase):
 
     def test_manifest(self):
         m = self.manifest["lesson"]
-        self.assertEqual(self.manifest["contracts_version"], "1.22.0")
+        self.assertEqual(self.manifest["contracts_version"], "1.27.0")
         self.assertEqual(self.manifest["taxonomy"], CONTRACTS.taxonomy_ref(2))       # a Grammar lesson: v2
         self.assertEqual(m["approved"], {"by": "siavash", "on": "2026-10-01"})
         self.assertEqual(m["package_version"], 1)
@@ -236,8 +236,10 @@ class Refusals(unittest.TestCase):
         self.assertEqual(left, [])
 
     def test_a_failing_package_is_not_written(self):
-        write_tags(self.L, {"page-1": [], "page-2": ["speaking"]})         # not on the session tag list
-        with self.assertRaises(pub.Refused) as e:
+        write_tags(self.L, {"page-1": [], "page-2": ["speaking"]})
+        # every key of taxonomy v2 and v3 is on the list since contracts 1.27.0, so take one off it here
+        off = [k for k in CONTRACTS.tag_keys if k != "speaking"]
+        with mock.patch.object(CONTRACTS, "tag_keys", off), self.assertRaises(pub.Refused) as e:
             pub.build(self.L, CONTRACTS, workers=2, log=quiet)
         self.assertIn("LP-TEACHES-NOT-ALLOWED", str(e.exception))
         self.assert_nothing_written()
@@ -475,14 +477,15 @@ class PinnedContracts(unittest.TestCase):
         finally:
             shutil.rmtree(d)
 
-    def test_the_lock_pins_1_22_0(self):
+    def test_the_lock_pins_1_27_0(self):
         lk = lp.lock()
-        self.assertEqual((lk["tag"], lk["sha256"]), ("contracts-v1.22.0",
-                         "54f0fc9039b2a59b81628f2c486cc194b09afb702564c37b7452b7688ce54e2e"))
+        self.assertEqual((lk["tag"], lk["sha256"]), ("contracts-v1.27.0",
+                         "752a0ab789359dea2a1d844db018db705544c2492f5f635f69e10ba53490b42e"))
 
     @needs_contracts
-    def test_the_loaded_contracts_are_1_22_0(self):
-        self.assertEqual(CONTRACTS.version, "1.22.0")
+    def test_the_loaded_contracts_are_1_27_0(self):
+        self.assertEqual(CONTRACTS.version, "1.27.0")
+        self.assertEqual(sum(1 for k in CONTRACTS.tag_keys if k.split(".")[0] == "speaking"), 31)   # #304
         self.assertEqual(CONTRACTS.tag_taxonomy, {"id": "oetacademy-topics", "version": 3, "sha256":
                          "2742d1c707a59215fa5f07e240a48fceb8ab2f5318c829a617e10ea7fff3814c"})
         self.assertEqual(CONTRACTS.taxonomy_ref(2)["sha256"],
