@@ -105,3 +105,18 @@ check_text_size.py, as every teal board.
   playing format 1.24 (`speaker` on a line, speaking pop-ups).
 - To reverse: lines without `speaker` and a practice.json without speaking items build exactly as before; remove the
   `speakers` lesson type to refuse the fields again.
+
+## Amendment (1), 2026-11-14: the site-player check runs on the real speaking packages
+
+Context: since contracts 1.27.0 (ADR 055) every speaking item type is in the released contracts, and the speaking
+lessons are built as real draft packages. Decision 4's `check_site_player.py --stub-speaking` is now a trap: the
+practice-rule audit (issue #207, Batch 1 report) ran it on Speaking 1-3 as this ADR said; the check passed, but
+publish refused its report, because the report fingerprints the stub's bundle (`package_fingerprint`) and publish
+compares it with the package it sends (`publish_lesson.py`, the runbook 18c gate).
+
+Decision: run `check_site_player.py` on a speaking lesson's real package, draft or release, with no flag, as for
+every other lesson (runbook 18c). `--stub-speaking` stays only as a diagnostic: it checks how the site's player
+draws the lesson without its speaking units, and its report never clears publish. Nothing else in decision 4
+changes, and no code behaves differently: only the flag's help text says this now.
+
+To reverse: restore the help text; the flag and `publish_lesson.stub_speaking` are unchanged.

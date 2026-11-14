@@ -217,8 +217,9 @@ def main() -> None:
     ap.add_argument("--boards", action="store_true", help="each board's fullest state only")
     ap.add_argument("--width", type=int, default=1600)
     ap.add_argument("--stub-speaking", action="store_true",
-                    help="a lesson with speaking units (ADR 053): check its package without them, built "
-                         "under spike/out/site-player-stub/ (the site's player cannot play them yet)")
+                    help="diagnostic only (ADR 053 amendment (1)): check a speaking lesson's package without its "
+                         "speaking units, built under spike/out/site-player-stub/. Its report never clears publish "
+                         "(it fingerprints the stub): run speaking lessons on their real package, with no flag")
     a = ap.parse_args()
     L = a.lesson_dir
     if a.stub_speaking:
