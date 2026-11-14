@@ -18,21 +18,21 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 129:04 | 14 | 2026-11-04 12:53 (siavash) |
-| 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 62:40 | 5 | 2026-11-03 18:04 (siavash) |
-| 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 59:28 | 7 | 2026-11-04 13:33 (siavash) |
-| 4 | Grammar for OET: Articles | `grammar-04-articles` | 67:59 | 9 | 2026-11-04 13:15 (siavash) |
-| 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 66:38 | 8 | 2026-11-03 15:41 (siavash) |
-| 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 59:04 | 6 | 2026-11-04 13:18 (siavash) |
-| 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 99:20 | 18 | 2026-11-03 15:41 (siavash) |
-| 8 | Grammar for OET: Paraphrasing | `grammar-08-paraphrasing` | 63:39 | 7 | 2026-11-03 15:41 (siavash) |
+| 1 | Grammar for OET: Verb Tenses | `grammar-01-verb-tenses` | 129:04 | 14 | 2026-11-13 20:11 (siavash) |
+| 2 | Grammar for OET: Verb Use | `grammar-02-verb-use` | 62:40 | 5 | 2026-11-13 20:11 (siavash) |
+| 3 | Grammar for OET: Nominalisation | `grammar-03-nominalization` | 59:28 | 7 | 2026-11-13 20:08 (siavash) |
+| 4 | Grammar for OET: Articles | `grammar-04-articles` | 67:08 | 9 | 2026-11-13 20:08 (siavash) |
+| 5 | Grammar for OET: Complex sentences | `grammar-05-complex-compound` | 67:38 | 8 | 2026-11-14 08:36 (siavash) |
+| 6 | Grammar for OET: Relative Clauses and Participle Clauses | `grammar-06-clause` | 59:04 | 6 | 2026-11-13 20:08 (siavash) |
+| 7 | Grammar for OET: Punctuation | `grammar-07-punctuation` | 98:07 | 18 | 2026-11-13 20:08 (siavash) |
+| 8 | Grammar for OET: Paraphrasing | `grammar-08-paraphrasing` | 63:22 | 7 | 2026-11-14 08:37 (siavash) |
 
 <a id="grammar-01-verb-tenses"></a>
 
 ## 1. Grammar for OET: Verb Tenses
 
 - Lesson ID and folder: `grammar-01-verb-tenses` (folder `grammar-01-verb-tenses`); course grammar, lesson 1; length 129:04; bundle format 1.23
-- Status: approved by siavash, 2026-11-04 12:53
+- Status: approved by siavash, 2026-11-13 20:11
 - Description: Learn the verb tenses, when to use each one, and how to use them in your OET writing.
 - Original session: folder `source`: `source/video.mp4`, 125:10 long, partial hash `8fd03776aa09bf2b`; deck `source/slides.pdf`, 19 pages
   - The Grammar 1 (Verb Tenses) session, in its newer recording, made after the deck was corrected; an older recording exists and is not the source (docs/01-METHODOLOGY.md §1, §8).
@@ -754,12 +754,12 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by Grammar for OET: Punctuation (`grammar-07-punctuation`), "Complex sentences" at 11:57, about section `page-15`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 5:08, about section `page-15`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Expand" at 16:29
-- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Rearrange" at 44:02, about section `page-9`
+- referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Rearrange" at 43:56, about section `page-9`
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Medical terms: vocabulary and word form" at 27:50, about section `page-15`
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Key points to remember" at 16:51, about section `page-9`
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Treat" at 53:30, about section `page-15`
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Schedule" at 58:48, about section `page-16`
-- referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Practice: conditions and types of pain" at 24:14, about section `page-10`
+- referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Practice: conditions and types of pain" at 23:52, about section `page-10`
 - referred to by OET Writing: Overview (`writing-01-overview`), "Steps towards successful writing" at 3:21
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Conciseness and Clarity" at 21:11, about section `page-11`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 29:26
@@ -773,7 +773,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 2. Grammar for OET: Verb Use
 
 - Lesson ID and folder: `grammar-02-verb-use` (folder `grammar-02-verb-use`); course grammar, lesson 2; length 62:40; bundle format 1.23
-- Status: approved by siavash, 2026-11-03 18:04
+- Status: approved by siavash, 2026-11-13 20:11
 - Description: Learn how to choose the right tense and the right voice when you turn case notes into sentences for your OET letter.
 - Original session: folder `source`: `source/video.mp4`, 75:02 long, partial hash `678ddc1608d757d6`; deck `source/slides.pdf`, 10 pages
   - The Grammar 2 (Verb Use) session, recorded at 1284 x 720 (docs/01-METHODOLOGY.md §1).
@@ -1094,7 +1094,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 3. Grammar for OET: Nominalisation
 
 - Lesson ID and folder: `grammar-03-nominalization` (folder `grammar-03-nominalization`); course grammar, lesson 3; length 59:28; bundle format 1.23
-- Status: approved by siavash, 2026-11-04 13:33
+- Status: approved by siavash, 2026-11-13 20:08
 - Description: Learn how to turn verbs and adjectives into nouns to write formal sentences from case notes, and how to turn nouns back into verbs.
 - Original session: folder `source`: `source/video.mp4`, 73:11 long, partial hash `4f8496a9f96ff0dc`; deck `source/slides.pdf`, 12 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -1380,7 +1380,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 55:50 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Passive forms of the verb tenses" (in `page-11_t1.s12.u4`)
 - referred to by Grammar for OET: Articles (`grammar-04-articles`), "Introduction" at 0:16
 - referred to by Grammar for OET: Articles (`grammar-04-articles`), "Spot the correct sentence" at 55:46, about section `pages-04-05`
-- referred to by Grammar for OET: Articles (`grammar-04-articles`), "Gap fill: articles" at 63:41, about section `page-6`
+- referred to by Grammar for OET: Articles (`grammar-04-articles`), "Gap fill: articles" at 62:49, about section `page-6`
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Paraphrasing in eight steps" at 5:43
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Adjectives and nouns" at 31:57
 
@@ -1389,8 +1389,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 4. Grammar for OET: Articles
 
-- Lesson ID and folder: `grammar-04-articles` (folder `grammar-04-articles`); course grammar, lesson 4; length 67:59; bundle format 1.23
-- Status: approved by siavash, 2026-11-04 13:15
+- Lesson ID and folder: `grammar-04-articles` (folder `grammar-04-articles`); course grammar, lesson 4; length 67:08; bundle format 1.23
+- Status: approved by siavash, 2026-11-13 20:08
 - Description: Learn when to use a, an, the or no article, and how to use articles correctly in your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 54:32 long, partial hash `39acd9b8365dc034`; deck `source/slides.pdf`, 16 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -1647,33 +1647,33 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 *Terms*: Zero article (Grammar term, 49:50); Nominalisation (Grammar term, 55:27)
 
-#### 60:25 Gap fill: articles (`page-15`, deck)
+#### 59:34 Gap fill: articles (`page-15`, deck)
 
-- 60:25 **Gap-fill letter: choosing the articles**
-  - 60:25 the task - 13 gaps in a referral letter, each needing a, an, the, or no article
-  - 60:56 gap 1 - 'the first child'
-  - 61:09 gap 2 - 'a family of 5'
-  - 61:31 gaps 3 and 4 - first mention of a measurement
-  - 61:51 what 'febrile' means, taught correctly
-  - 62:04 gap 5 - 'over the next two days'
-  - 62:53 gap 6 - 'the fever', already mentioned
-  - 63:04 gap 6 - the possessive option
-  - 63:20 naming the process of making a noun from a verb or adjective
-  - 63:57 condensing a symptom list into one word
-  - 64:33 gaps 7 and 8 - a new reading takes 'a' again
-  - 64:45 warning - do not switch to 'the' for the second reading
-  - 65:02 gap 9 - 'over the legs' or 'over her legs'
-  - 65:24 gaps 10 and 11 - the blood result
-  - 65:41 gap 12 - 'based on the above'
-  - 65:59 gap 13 - 'as a stat dose'
-  - 66:08 what a stat dose is
-  - 66:23 close the letter and check the whole set of answers
+- 59:34 **Gap-fill letter: choosing the articles**
+  - 59:34 the task - 13 gaps in a referral letter, each needing a, an, the, or no article
+  - 60:04 gap 1 - 'the first child'
+  - 60:18 gap 2 - 'a family of 5'
+  - 60:40 gaps 3 and 4 - first mention of a measurement
+  - 60:59 what 'febrile' means, taught correctly
+  - 61:13 gap 5 - 'over the next two days'
+  - 62:02 gap 6 - 'the fever', already mentioned
+  - 62:12 gap 6 - the possessive option
+  - 62:28 naming the process of making a noun from a verb or adjective
+  - 63:06 condensing a symptom list into one word
+  - 63:41 gaps 7 and 8 - a new reading takes 'a' again
+  - 63:54 warning - do not switch to 'the' for the second reading
+  - 64:11 gap 9 - 'over the legs' or 'over her legs'
+  - 64:33 gaps 10 and 11 - the blood result
+  - 64:50 gap 12 - 'based on the above'
+  - 65:08 gap 13 - 'as a stat dose'
+  - 65:16 what a stat dose is
+  - 65:32 close the letter and check the whole set of answers
 
 *Warnings (common mistakes)*
 
-- 64:45 Do not write 'the temperature of 40.2'. The word 'temperature' came earlier, but this reading is new, so we use 'a'.
+- 63:54 Do not write 'the temperature of 40.2'. The word 'temperature' came earlier, but this reading is new, so we use 'a'.
 
-*Terms*: From case notes to one word (Term, 63:20); Stat dose (Term, 66:08)
+*Terms*: From case notes to one word (Term, 62:28); Stat dose (Term, 65:16)
 
 ### Vocabulary
 
@@ -1685,18 +1685,18 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 41:19 surgery
 - 50:44 Underwent
 - 57:50 Ongoing
-- 62:32 Deteriorate
+- 61:41 Deteriorate
 
 ### Links to other lessons
 
 - 0:16 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`) (in `page-3_t1.s1.u4`)
 - 55:46 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`), "What is nominalisation?" (in `pages-13-14_t2.s5.u2`)
-- 63:41 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Physical symptoms" (in `page-15_t1.s9.u3`)
+- 62:49 refers to Grammar for OET: Nominalisation (`grammar-03-nominalization`), "Physical symptoms" (in `page-15_t1.s9.u3`)
 - referred to by Grammar for OET: Complex sentences (`grammar-05-complex-compound`), "Introduction" at 0:09
 - referred to by Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Expand" at 12:34
 - referred to by Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Choosing the right word form" at 9:59, about section `page-6`
 - referred to by Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`), "Prescribe" at 49:21, about section `page-6`
-- referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Types of pain" at 20:29, about section `page-6`
+- referred to by Vocabulary for OET: Adjective + Noun Collocations (`vocabulary-03-collocations-2`), "Types of pain" at 20:17, about section `page-6`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 10:39, about section `pages-11-12`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 13:34, about section `page-6`
 
@@ -1705,8 +1705,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 5. Grammar for OET: Complex sentences
 
-- Lesson ID and folder: `grammar-05-complex-compound` (folder `grammar-05-complex-compound`); course grammar, lesson 5; length 66:38; bundle format 1.23
-- Status: approved by siavash, 2026-11-03 15:41
+- Lesson ID and folder: `grammar-05-complex-compound` (folder `grammar-05-complex-compound`); course grammar, lesson 5; length 67:38; bundle format 1.23
+- Status: approved by siavash, 2026-11-14 08:36
 - Description: Learn how to join two ideas in one complex sentence, with the right linking word and comma, for your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 65:06 long, partial hash `49e48848f0038580`; deck `source/slides.pdf`, 14 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -1874,114 +1874,114 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 39:42 the comma rule for both word orders
   - 40:14 a clause of reason
   - 40:31 one action must come first
-  - 42:17 the gap opens a relative clause
-  - 42:30 which or who
-  - 42:47 no extra pronoun after which or who
-  - 43:10 why there is a comma before the gap
-  - 43:29 who, and who it points back to
-  - 43:44 why there is a comma before the gap
-  - 43:55 writing the age modifier
-  - 45:01 using these conjunctions in letter writing
+  - 42:06 the gap opens a relative clause
+  - 42:19 which or who
+  - 42:36 no extra pronoun after which or who
+  - 42:59 why there is a comma before the gap
+  - 43:18 who, and who it points back to
+  - 43:33 why there is a comma before the gap
+  - 43:44 writing the age modifier
+  - 45:03 using these conjunctions in letter writing
 
 *Rules on the boards*
 
-- 45:01 Use these joining words to join your case notes into complex sentences. Choose the word by the link you need: time, contrast, reason, condition or extra information.
+- 45:03 Use these joining words to join your case notes into complex sentences. Choose the word by the link you need: time, contrast, reason, condition or extra information.
 
 *Wrong sentences corrected*
 
-- 42:52 Pre-eclampsia, which it led to an emergency caesarean section.
+- 42:41 Pre-eclampsia, which it led to an emergency caesarean section.
 
-*Terms*: Conditional clause (Form, 37:33); Relative clause (Form, 42:17); 16-year-old (Form, 43:55)
+*Terms*: Conditional clause (Form, 37:33); Relative clause (Form, 42:06); 16-year-old (Form, 43:44)
 
-#### 45:35 Due to, despite, as well as (`pages-11-12`, deck)
+#### 45:36 Due to, despite, as well as (`pages-11-12`, deck)
 
-- 45:35 **the rule and due to, despite, as well as**
-  - 45:35 Show the pattern these three words take, with the first model sentence
-  - 45:35 Show the model sentence and reject the clause version
-  - 45:35 Show the model sentence and its function
-  - 46:01 Define the grammar term 'clause'
-  - 46:10 Define 'gerund' in English, without the first-language grammar term
-  - 46:33 Analyse what follows 'due to' in the model sentence
-  - 46:47 Give the meaning of 'due to'
-  - 46:57 Show that 'due to' works best with a noun
-  - 47:10 Change card, part one: 'because' takes a clause
-  - 47:26 Change card, part two: 'because of' and 'due to' take a noun
-  - 48:14 Show how the clause turns into the gerund phrase
-  - 48:21 Give the meaning of 'despite'
-  - 48:31 Separate 'despite' from 'in spite of'
-  - 48:46 Show the form of 'despite' that does take a clause
-  - 49:00 Note the difference: although takes a dependent clause
-  - 49:33 Consolidate the two meanings
-  - 50:03 Show when to use it in OET writing
-  - 50:17 Teach the punctuation pattern shared by all three examples
-  - 50:36 Check the second halves and restate the rule
-- 50:57 **Listing findings with as well as**
-  - 50:57 Show the two versions of the findings sentence
-  - 51:15 Start from the main clause
-  - 51:33 Reject 'has blood pressure'
-  - 51:38 Give the correct wording for raised pressure
-  - 51:54 Punctuating a list of findings
-  - 52:04 Point out the articles in the list
-  - 52:18 Why the writer chooses 'as well as'
-  - 52:22 Contrast the comma version with the 'and' version
-  - 52:50 State the rule for the item before 'as well as'
+- 45:36 **the rule and due to, despite, as well as**
+  - 45:36 Show the pattern these three words take, with the first model sentence
+  - 45:36 Show the model sentence and reject the clause version
+  - 45:36 Show the model sentence and its function
+  - 46:02 Define the grammar term 'clause'
+  - 46:11 Define 'gerund' in English, without the first-language grammar term
+  - 46:34 Analyse what follows 'due to' in the model sentence
+  - 46:48 Give the meaning of 'due to'
+  - 46:58 Show that 'due to' works best with a noun
+  - 47:12 Change card, part one: 'because' takes a clause
+  - 47:28 Change card, part two: 'because of' and 'due to' take a noun
+  - 48:15 Show how the clause turns into the gerund phrase
+  - 48:23 Give the meaning of 'despite'
+  - 48:32 Separate 'despite' from 'in spite of'
+  - 48:47 Show the form of 'despite' that does take a clause
+  - 49:02 Note the difference: although takes a dependent clause
+  - 49:35 Consolidate the two meanings
+  - 50:57 Show when to use it in OET writing
+  - 51:11 Teach the punctuation pattern shared by all three examples
+  - 51:30 Check the second halves and restate the rule
+- 52:27 **Listing findings with as well as**
+  - 52:27 Show the two versions of the findings sentence
+  - 52:45 Start from the main clause
+  - 53:03 Reject 'has blood pressure'
+  - 53:08 Give the correct wording for raised pressure
+  - 53:24 Punctuating a list of findings
+  - 53:34 Point out the articles in the list
+  - 53:48 Why the writer chooses 'as well as'
+  - 53:52 Contrast the comma version with the 'and' version
+  - 54:20 State the rule for the item before 'as well as'
 
 *Rules on the boards*
 
-- 50:46 After due to, despite and as well as, use a noun or an -ing form, never a clause.
-- 52:50 Before 'as well as', join the other items with 'and': then 'as well as' clearly adds the last finding.
+- 51:40 After due to, despite and as well as, use a noun or an -ing form, never a clause.
+- 54:20 Before 'as well as', join the other items with 'and': then 'as well as' clearly adds the last finding.
 
 *Wrong sentences corrected*
 
-- 47:59 Despite he use a local anaesthetic
-- 51:33 The patient has blood pressure.
+- 48:00 Despite he use a local anaesthetic
+- 53:03 The patient has blood pressure.
 
-*Terms*: Clause (Term, 46:01); Gerund (Form, 46:10); Independent clause (Term, 50:17)
+*Terms*: Clause (Term, 46:02); Gerund (Form, 46:11); Independent clause (Term, 51:11)
 
-#### 54:24 Correct the sentences (`page-13`, deck)
+#### 55:25 Correct the sentences (`page-13`, deck)
 
-- 54:24 **Correct the sentences table**
-  - 54:24 what the class does with this table
-  - 55:04 the meaning of intermittent pain
-  - 55:28 the missing comma
-  - 55:45 'of' never follows 'despite'
-  - 55:58 the two correct forms
-  - 56:14 adding the second problem with 'as well as'
-  - 56:32 the forms of 'swell'
-  - 56:45 the verbs used with treatment and medication
-  - 57:16 the meaning of deteriorated
-  - 57:41 the meaning of distance vision
-  - 58:04 where 'Although' can stand
-  - 58:19 the two clauses joined with 'Although'
-  - 58:56 keeping the original order with 'However'
-  - 59:31 why 'due to' cannot be used here
-  - 59:40 the two ways to write the cause
-  - 60:16 the meaning of passed away
-  - 60:43 the only fault
-  - 60:50 the comma goes between the clauses
-  - 61:08 the rule to remember
-  - 62:51 the same fault as row 3
-  - 62:58 the two ways to fix it
-  - 63:26 the meaning of shelter
-  - 63:57 the meaning of reluctant
-  - 64:09 where the fault is
-  - 64:30 what a gerund is
-  - 64:35 clause or gerund after 'as well as'
-  - 66:17 the rule for these linking words
+- 55:25 **Correct the sentences table**
+  - 55:25 what the class does with this table
+  - 56:04 the meaning of intermittent pain
+  - 56:29 the missing comma
+  - 56:45 'of' never follows 'despite'
+  - 56:58 the two correct forms
+  - 57:14 adding the second problem with 'as well as'
+  - 58:19 the forms of 'swell'
+  - 58:32 the verbs used with treatment and medication
+  - 59:04 the meaning of deteriorated
+  - 59:28 the meaning of distance vision
+  - 59:51 where 'Although' can stand
+  - 60:07 the two clauses joined with 'Although'
+  - 60:43 keeping the original order with 'However'
+  - 61:18 why 'due to' cannot be used here
+  - 61:27 the two ways to write the cause
+  - 62:04 the meaning of passed away
+  - 62:30 the only fault
+  - 62:37 the comma goes between the clauses
+  - 62:55 the rule to remember
+  - 64:23 the same fault as row 3
+  - 64:30 the two ways to fix it
+  - 64:58 the meaning of shelter
+  - 65:30 the meaning of reluctant
+  - 65:41 where the fault is
+  - 66:02 what a gerund is
+  - 66:08 clause or gerund after 'as well as'
+  - 67:17 the rule for these linking words
 
 *Rules on the boards*
 
-- 61:08 When the dependent clause comes first, the comma goes at the end of that clause, not after Although.
+- 62:55 When the dependent clause comes first, the comma goes at the end of that clause, not after Although.
 
 *Warnings (common mistakes)*
 
-- 66:17 Due to, despite and as well as are followed by a noun or a gerund, never by a clause.
+- 67:17 Due to, despite and as well as are followed by a noun or a gerund, never by a clause.
 
 *Wrong sentences corrected*
 
-- 55:45 Despite of the treatment
+- 56:45 Despite of the treatment
 
-*Terms*: Swollen (Form, 56:32); Gerund (Grammar term, 64:30)
+*Terms*: Swollen (Form, 58:19); Gerund (Grammar term, 66:02)
 
 ### Vocabulary
 
@@ -1991,13 +1991,13 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 10:34 Hoist
 - 31:34 Insists
 - 37:45 hesitate
-- 51:03 Elevated
-- 55:04 Intermittent
-- 57:16 Deteriorated
-- 57:41 Distance vision
-- 60:16 Passed away
-- 63:26 Shelter
-- 63:57 Reluctant
+- 52:33 Elevated
+- 56:04 Intermittent
+- 59:04 Deteriorated
+- 59:28 Distance vision
+- 62:04 Passed away
+- 64:58 Shelter
+- 65:30 Reluctant
 
 ### Links to other lessons
 
@@ -2025,7 +2025,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 6. Grammar for OET: Relative Clauses and Participle Clauses
 
 - Lesson ID and folder: `grammar-06-clause` (folder `grammar-06-clause`); course grammar, lesson 6; length 59:04; bundle format 1.23
-- Status: approved by siavash, 2026-11-04 13:18
+- Status: approved by siavash, 2026-11-13 20:08
 - Description: Learn to add information with relative clauses, make them shorter, and join case notes with participle clauses in your OET letters.
 - Original session: folder `source`: `source/video.mp4`, 79:14 long, partial hash `6ef7636e4afb83cb`; deck `source/slides.pdf`, 12 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -2285,8 +2285,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 7. Grammar for OET: Punctuation
 
-- Lesson ID and folder: `grammar-07-punctuation` (folder `grammar-07-punctuation`); course grammar, lesson 7; length 99:20; bundle format 1.23
-- Status: approved by siavash, 2026-11-03 15:41
+- Lesson ID and folder: `grammar-07-punctuation` (folder `grammar-07-punctuation`); course grammar, lesson 7; length 98:07; bundle format 1.23
+- Status: approved by siavash, 2026-11-13 20:08
 - Description: Learn to punctuate your OET letters: where to put commas, and how to use full stops, semicolons, colons, apostrophes, hyphens, capital letters, numbers and short forms correctly.
 - Original session: folder `source`: `source/video.mp4`, 33:26 long, partial hash `297821a41d0a0437`; deck `source/slides.pdf`, 18 pages
   - The recording teaches commas only; the second part (sections added-01 to added-09) is authored, with no recording (ADR 018).
@@ -2760,11 +2760,11 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 96:39 Step 5: follow-up as a noun
   - 96:49 Step 5: reading 2/52
   - 97:01 The whole paragraph as the answer
-  - 99:04 The checking rule to take away
+  - 97:50 The checking rule to take away
 
 *Rules on the boards*
 
-- 99:04 Check full stops, commas, hyphens, capital letters and short forms in every letter you write. Correct punctuation makes your letter clear for the reader.
+- 97:50 Check full stops, commas, hyphens, capital letters and short forms in every letter you write. Correct punctuation makes your letter clear for the reader.
 
 *Wrong sentences corrected*
 
@@ -2823,8 +2823,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 8. Grammar for OET: Paraphrasing
 
-- Lesson ID and folder: `grammar-08-paraphrasing` (folder `grammar-08-paraphrasing`); course grammar, lesson 8; length 63:39; bundle format 1.23
-- Status: approved by siavash, 2026-11-03 15:41
+- Lesson ID and folder: `grammar-08-paraphrasing` (folder `grammar-08-paraphrasing`); course grammar, lesson 8; length 63:22; bundle format 1.23
+- Status: approved by siavash, 2026-11-14 08:37
 - Description: Learn eight steps to turn case notes into clear, correct sentences for your OET letter.
 - Original session: folder `source`: `source/video.mp4`, 83:44 long, partial hash `2962a94a3786c811`; deck `source/slides.pdf`, 11 pages
   - The docs record nothing more about this session than its recording and deck.
@@ -3000,93 +3000,93 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 *Terms*: Combine (Step, 28:12); Non-compliant (Case note word, 29:44); Unmotivated (Case note word, 30:38); However (Linking word, 33:49); Compliant with (Form, 34:17)
 
-#### 37:55 Rearrange (`page-8`, deck)
+#### 37:49 Rearrange (`page-8`, deck)
 
-- 37:55 **Case notes rearranged into a letter**
-  - 37:55 the notes are a set of events in time
-  - 38:17 the tense follows the time
-  - 38:32 the order of the notes is the writer's choice
-  - 38:48 the task and the patient
-  - 39:05 the three events drawn on a time line
-  - 40:04 the date becomes today
-  - 40:14 simple past for her visit
-  - 40:33 gloss of intermittent
-  - 40:52 the pain score
-  - 41:01 the pain continues to now
-  - 41:31 the form for how long a problem has lasted
-  - 41:43 the word that joins the other symptoms
-  - 41:57 three lines become one sentence
-  - 42:14 what to leave out
-  - 42:34 gloss of pop
-  - 42:45 simple past for the incident
-  - 43:12 how when joins the two clauses
-  - 43:42 the time word while
-  - 43:54 past perfect for the earlier period
-  - 44:15 the form for the time before onset
-  - 44:28 closing summary of the whole rewrite
-
-*Rules on the boards*
-
-- 44:28 Paraphrase the notes, keep what is relevant, drop what is not, and put the events in a clear order. With correct grammar, accurate vocabulary and clear sentences, a letter can move from grade C to grade B or A.
-
-*Terms*: 3/10 (Case notes, 40:52); A two-week history of (Form, 41:31); Concomitant (New word, 41:43); While (Time words, 43:42); Prior to onset (Form, 44:15)
-
-#### 46:18 Synonyms (`pages-09-10`, deck)
-
-- 46:18 **Dental case notes: synonyms for conditions and symptoms**
-  - 46:18 the case notes and the question behind the task
-  - 46:42 what a synonym is
-  - 46:54 which words stay and which change
-  - 47:21 one word changed for another
-  - 47:30 the task line and the abbreviations
-  - 47:56 how we will work through the notes
-  - 48:14 the first visit becomes 'was first advised'
-  - 48:40 what DO stands for
-  - 48:52 60% possibility becomes 'might'
-  - 49:14 what 'wishes to delay' means
-  - 49:28 reluctant
-  - 49:53 the reason for the delay
-  - 50:10 what financial constraints means, and a second wording
-  - 50:35 'complains: pain' becomes 'painful'
-  - 51:01 the word 'scheduled'
-  - 51:25 'gone away' becomes asymptomatic
-  - 51:43 the prefix a-
-  - 52:18 linking the two sentences
-  - 52:42 the changes we made in these notes
-  - 53:10 build a store of synonyms before the exam
-  - 54:33 dates become time expressions
-- 55:03 **Pharmacy case notes: patient-friendly synonyms**
-  - 55:03 the style of this letter
-  - 55:16 what patient friendly language means
-  - 55:31 the reader decides the words
-  - 55:48 whose case notes these are
-  - 56:13 abbreviations the patient cannot read
-  - 56:27 how the prescription is reported
-  - 57:04 prn written in plain words
-  - 57:23 max 4 hrly written in plain words
-  - 57:44 what to do when no synonym comes to mind
-  - 58:14 the abbreviations in this line
-  - 58:21 abbreviations belong to each profession
-  - 58:41 why the second medication is given
-  - 59:01 tds written out for the patient
-  - 59:22 keep one word, change the other
-  - 59:37 the word 'cramps'
-  - 59:54 the side effects in the letter
-  - 60:19 what impaired alertness means
-  - 60:36 the warning in the letter
-  - 60:54 how the warning opens
-  - 61:18 leave out what is too technical
-  - 61:28 patient-friendly words for the terms in these notes
-  - 61:53 the rule for choosing the words
-  - 63:16 the paraphrasing techniques together
+- 37:49 **Case notes rearranged into a letter**
+  - 37:49 the notes are a set of events in time
+  - 38:11 the tense follows the time
+  - 38:27 the order of the notes is the writer's choice
+  - 38:42 the task and the patient
+  - 38:59 the three events drawn on a time line
+  - 39:58 the date becomes today
+  - 40:08 simple past for her visit
+  - 40:28 gloss of intermittent
+  - 40:47 the pain score
+  - 40:55 the pain continues to now
+  - 41:25 the form for how long a problem has lasted
+  - 41:37 the word that joins the other symptoms
+  - 41:51 three lines become one sentence
+  - 42:08 what to leave out
+  - 42:28 gloss of pop
+  - 42:39 simple past for the incident
+  - 43:06 how when joins the two clauses
+  - 43:36 the time word while
+  - 43:48 past perfect for the earlier period
+  - 44:09 the form for the time before onset
+  - 44:22 closing summary of the whole rewrite
 
 *Rules on the boards*
 
-- 53:10 Learn your synonyms before the exam. 'Asymptomatic' works in a letter to a health professional, not in a letter to a patient.
-- 57:44 When you cannot find a synonym, say the meaning in your own simplest words, then write that sentence down.
-- 61:53 The reader decides your words. In a letter to a patient, change any medical wording the patient would not understand for an everyday word.
+- 44:22 Paraphrase the notes, keep what is relevant, drop what is not, and put the events in a clear order. With correct grammar, accurate vocabulary and clear sentences, a letter can move from grade C to grade B or A.
 
-*Terms*: Synonym (New word, 46:42); DO tunnel (Abbreviation, 48:40); Reluctant (New word, 49:32); Financial constraints (New words, 50:10); Asymptomatic (New word, 51:43); Subsequently (Linking word, 52:23); Initially (Time words, 54:49); Patient friendly language (Style, 55:16); Present perfect passive (Form, 56:41); prn and tds (Abbreviations, 58:14); Counteract (New word, 58:45); Impaired alertness (New words, 60:19)
+*Terms*: 3/10 (Case notes, 40:47); A two-week history of (Form, 41:25); Concomitant (New word, 41:37); While (Time words, 43:36); Prior to onset (Form, 44:09)
+
+#### 46:11 Synonyms (`pages-09-10`, deck)
+
+- 46:11 **Dental case notes: synonyms for conditions and symptoms**
+  - 46:11 the case notes and the question behind the task
+  - 46:34 what a synonym is
+  - 46:47 which words stay and which change
+  - 47:13 one word changed for another
+  - 47:22 the task line and the abbreviations
+  - 47:48 how we will work through the notes
+  - 48:07 the first visit becomes 'was first advised'
+  - 48:32 what DO stands for
+  - 48:44 60% possibility becomes 'might'
+  - 49:07 what 'wishes to delay' means
+  - 49:21 reluctant
+  - 49:46 the reason for the delay
+  - 50:02 what financial constraints means, and a second wording
+  - 50:28 'complains: pain' becomes 'painful'
+  - 50:53 the word 'scheduled'
+  - 51:18 'gone away' becomes asymptomatic
+  - 51:36 the prefix a-
+  - 52:10 linking the two sentences
+  - 52:35 the changes we made in these notes
+  - 53:02 build a store of synonyms before the exam
+  - 54:15 dates become time expressions
+- 54:46 **Pharmacy case notes: patient-friendly synonyms**
+  - 54:46 the style of this letter
+  - 54:58 what patient friendly language means
+  - 55:14 the reader decides the words
+  - 55:31 whose case notes these are
+  - 55:56 abbreviations the patient cannot read
+  - 56:09 how the prescription is reported
+  - 56:47 prn written in plain words
+  - 57:06 max 4 hrly written in plain words
+  - 57:27 what to do when no synonym comes to mind
+  - 57:57 the abbreviations in this line
+  - 58:03 abbreviations belong to each profession
+  - 58:23 why the second medication is given
+  - 58:43 tds written out for the patient
+  - 59:05 keep one word, change the other
+  - 59:20 the word 'cramps'
+  - 59:36 the side effects in the letter
+  - 60:01 what impaired alertness means
+  - 60:18 the warning in the letter
+  - 60:37 how the warning opens
+  - 61:00 leave out what is too technical
+  - 61:10 patient-friendly words for the terms in these notes
+  - 61:35 the rule for choosing the words
+  - 62:59 the paraphrasing techniques together
+
+*Rules on the boards*
+
+- 53:02 Learn your synonyms before the exam. 'Asymptomatic' works in a letter to a health professional, not in a letter to a patient.
+- 57:27 When you cannot find a synonym, say the meaning in your own simplest words, then write that sentence down.
+- 61:35 The reader decides your words. In a letter to a patient, change any medical wording the patient would not understand for an everyday word.
+
+*Terms*: Synonym (New word, 46:34); DO tunnel (Abbreviation, 48:32); Reluctant (New word, 49:24); Financial constraints (New words, 50:02); Asymptomatic (New word, 51:36); Subsequently (Linking word, 52:16); Initially (Time words, 54:31); Patient friendly language (Style, 54:58); Present perfect passive (Form, 56:24); prn and tds (Abbreviations, 57:57); Counteract (New word, 58:27); Impaired alertness (New words, 60:01)
 
 ### OET facts
 
@@ -3107,16 +3107,16 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 30:38 Unmotivated
 - 30:50 Intermittently
 - 35:20 Occasional
-- 40:33 Intermittent
-- 41:43 Concomitant
-- 42:34 Pop
-- 49:32 Reluctant
-- 50:10 Financial constraints
-- 51:01 Scheduled
-- 51:43 Asymptomatic
-- 58:45 Counteract
-- 59:37 Cramps
-- 60:19 Impaired alertness
+- 40:28 Intermittent
+- 41:37 Concomitant
+- 42:28 Pop
+- 49:24 Reluctant
+- 50:02 Financial constraints
+- 50:53 Scheduled
+- 51:36 Asymptomatic
+- 58:27 Counteract
+- 59:20 Cramps
+- 60:01 Impaired alertness
 
 ### Links to other lessons
 
@@ -3128,7 +3128,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 16:29 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `page-5_t1.s21.u1`)
 - 32:56 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Capital letters" (in `page-7_t1.s18.u2`)
 - 32:56 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Apostrophes" (in `page-7_t1.s18.u2`)
-- 44:02 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-8_t1.s19.u2`)
+- 43:56 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect tenses" (in `page-8_t1.s19.u2`)
 - referred to by OET Writing: Overview (`writing-01-overview`), "Steps towards successful writing" at 3:21, about section `page-4`
 - referred to by OET Writing: Overview (`writing-01-overview`), "The case notes" at 11:59, about section `page-6`
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Conciseness and Clarity" at 20:22, about section `page-8`
@@ -3143,16 +3143,16 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | Vocabulary for OET: Word Forms and Sentence Structure | `vocabulary-01-word-forms` | 93:45 | 8 | 2026-11-04 13:16 (siavash) |
-| 2 | Vocabulary for OET: Verb + Noun Collocations | `vocabulary-02-collocations` | 81:17 | 13 | 2026-11-04 13:16 (siavash) |
-| 3 | Vocabulary for OET: Adjective + Noun Collocations | `vocabulary-03-collocations-2` | 85:53 | 10 | 2026-11-04 13:17 (siavash) |
+| 1 | Vocabulary for OET: Word Forms and Sentence Structure | `vocabulary-01-word-forms` | 93:45 | 8 | 2026-11-14 00:53 (siavash) |
+| 2 | Vocabulary for OET: Verb + Noun Collocations | `vocabulary-02-collocations` | 80:06 | 13 | 2026-11-14 00:53 (siavash) |
+| 3 | Vocabulary for OET: Adjective + Noun Collocations | `vocabulary-03-collocations-2` | 84:27 | 10 | 2026-11-14 09:06 (siavash) |
 
 <a id="vocabulary-01-word-forms"></a>
 
 ## 1. Vocabulary for OET: Word Forms and Sentence Structure
 
 - Lesson ID and folder: `vocabulary-01-word-forms` (folder `vocabulary-01-word-forms`); course vocabulary, lesson 1; length 93:45; bundle format 1.23
-- Status: approved by siavash, 2026-11-04 13:16
+- Status: approved by siavash, 2026-11-14 00:53
 - Description: Learn to choose the right form of a word, and to join short sentences into clear ones, in your OET writing.
 - Original session: folder `source`: `source/video.mp4`, 103:52 long, partial hash `f58701e6ddc4ac40`; deck `source/slides.pdf`, 11 pages
   - Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).
@@ -3744,8 +3744,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 2. Vocabulary for OET: Verb + Noun Collocations
 
-- Lesson ID and folder: `vocabulary-02-collocations` (folder `vocabulary-02-collocations`); course vocabulary, lesson 2; length 81:17; bundle format 1.23
-- Status: approved by siavash, 2026-11-04 13:16
+- Lesson ID and folder: `vocabulary-02-collocations` (folder `vocabulary-02-collocations`); course vocabulary, lesson 2; length 80:06; bundle format 1.23
+- Status: approved by siavash, 2026-11-14 00:53
 - Description: Learn verbs and nouns that go together, for your OET letters and for talking to patients.
 - Original session: folder `source`: `source/video.mp4`, 47:39 long, partial hash `f79f384eddc3c859`; deck `source/slides.pdf`, 16 pages
   - Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).
@@ -4102,16 +4102,16 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 78:17 Gloss the key word 'monitor'
   - 78:36 Collect 'monitor' collocations
   - 78:48 Gloss 'improve'
-- 80:13 **Item 10: discuss test results**
-  - 80:13 Gloss the key word 'discuss' before the answer
-  - 80:32 Give the answer and the reason
-  - 80:46 Explain the phrase 'during the consultation'
-  - 80:54 Speaking example with the key word
-  - 81:02 Close with the main idea of the exercise
+- 79:01 **Item 10: discuss test results**
+  - 79:01 Gloss the key word 'discuss' before the answer
+  - 79:21 Give the answer and the reason
+  - 79:35 Explain the phrase 'during the consultation'
+  - 79:42 Speaking example with the key word
+  - 79:51 Close with the main idea of the exercise
 
 *Rules on the boards*
 
-- 81:02 For each noun, learn the verb or verbs that go with it. Another verb may not give the right meaning.
+- 79:51 For each noun, learn the verb or verbs that go with it. Another verb may not give the right meaning.
 
 *Wrong sentences corrected*
 
@@ -4135,9 +4135,9 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 76:26 The nurse will __________ an injection to reduce the patient's symptoms.
 - 77:01 The physiotherapist __________ assistance to help the patient walk again.
 - 77:57 We will __________ your condition over the next few days to see if it improves.
-- 80:13 The doctor __________ the test results during the consultation.
+- 79:01 The doctor __________ the test results during the consultation.
 
-*Terms*: Monitor, assessed, prescribe, performed, conduct, administered, administer, provided, monitor, discussed (Verbs, 70:39); Conduct a scan, perform a scan, carry out a scan (Collocations, 75:04); Administer pain relief, administer medication, administer an injection (Collocations, 76:07); Provide assistance, provide support, provide care (Collocations, 77:40); Monitor blood pressure, monitor a patient, monitor a condition (Collocations, 78:36); During the consultation (Phrase, 80:46)
+*Terms*: Monitor, assessed, prescribe, performed, conduct, administered, administer, provided, monitor, discussed (Verbs, 70:39); Conduct a scan, perform a scan, carry out a scan (Collocations, 75:04); Administer pain relief, administer medication, administer an injection (Collocations, 76:07); Provide assistance, provide support, provide care (Collocations, 77:40); Monitor blood pressure, monitor a patient, monitor a condition (Collocations, 78:36); During the consultation (Phrase, 79:35)
 
 ### Vocabulary
 
@@ -4185,8 +4185,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 76:49 reduce
 - 77:22 assistance
 - 78:48 improve
-- 80:20 discuss
-- 80:46 During the consultation
+- 79:09 discuss
+- 79:35 During the consultation
 
 ### Practice material
 
@@ -4207,8 +4207,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 3. Vocabulary for OET: Adjective + Noun Collocations
 
-- Lesson ID and folder: `vocabulary-03-collocations-2` (folder `vocabulary-03-collocations-2`); course vocabulary, lesson 3; length 85:53; bundle format 1.23
-- Status: approved by siavash, 2026-11-04 13:17
+- Lesson ID and folder: `vocabulary-03-collocations-2` (folder `vocabulary-03-collocations-2`); course vocabulary, lesson 3; length 84:27; bundle format 1.23
+- Status: approved by siavash, 2026-11-14 09:06
 - Description: Learn adjectives and nouns that go together, and clear ways to describe pain, for your OET letters and for talking to patients.
 - Original session: folder `source`: `source/video.mp4`, 45:34 long, partial hash `b1576043dc5fe7aa`; deck `source/slides.pdf`, 15 pages
   - Built in night run 1 (2026-09-29) from a recording that lists words and gives one or two examples each (ADR 019; docs/03-RUNBOOK.md).
@@ -4282,345 +4282,345 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 *Terms*: Adjective and noun (Form, 6:54); Adjective (Adjective, 7:19); Noun (Noun, 7:46); Severe (Collocations, 8:43); ICU (Short form, 10:53)
 
-#### 12:44 Types of pain (`page-8`, deck)
+#### 12:32 Types of pain (`page-8`, deck)
 
-- 12:44 **Types of pain: adjective and noun collocations**
-  - 12:44 introduce the matching task
-  - 13:06 why these collocations matter
-  - 13:24 gloss throbbing pain
-  - 14:05 second example, talking to a patient
-  - 14:11 typical cases from the source
-  - 14:26 the words inside definition e
-  - 14:43 gloss dull pain
-  - 15:13 second example, talking to a patient
-  - 15:19 near-synonym, aching pain
-  - 15:47 one more pain word patients use
-  - 15:58 gloss constant pain
-  - 16:23 second example, talking to a patient
-  - 16:30 gloss chronic pain
-  - 17:04 second example, talking to a patient
-  - 17:12 constant and chronic are not the same
-  - 17:42 gloss excruciating pain
-  - 18:10 second example, talking to a patient
-  - 18:17 excruciating is stronger than severe
-  - 18:43 strength words
-  - 19:01 gloss nagging pain
-  - 19:28 the verb behind the adjective
-  - 19:43 second example, talking to a patient
-  - 19:53 gloss the word slight
-  - 20:17 countability of pain
-  - 20:37 gloss sharp pain
-  - 21:04 second example, talking to a patient
-  - 21:12 two more sharp-type pain words
-  - 21:32 closing note for the whole set
-
-*Rules on the boards*
-
-- 21:32 You do not need the exact dictionary definition of each type of pain. Know roughly what each one means.
-
-*Terms*: a steady continuous beat (Words in the definition, 14:26); burning pain (More pain words, 15:47); mild, moderate, severe (Strength words, 18:43); nag (verb), nagging (adjective) (Word family, 19:28); a slight but continuous pain (Grammar note, 20:17); stabbing pain, shooting pain (More pain words, 21:12)
-
-#### 22:54 Practice: conditions and types of pain (`page-9`, deck)
-
-- 22:54 **the task, throbbing pain and dull pain, constant pain and chronic pain, excruciating, nagging and sharp pain**
-  - 22:54 Set the practice task and name the first two pain types
-  - 22:54 Name the last three pain types
-  - 23:10 Gloss the key collocation 'throbbing pain'
-  - 23:32 Speaking example and a written example with 'throbbing pain'
-  - 23:48 The model patient sentence and the tense behind it
-  - 24:21 Draw the time of the throbbing-pain sentence
-  - 24:51 Add what makes the pain worse
-  - 25:01 Gloss the key phrase 'get worse'
-  - 25:15 Speaking example with 'get worse' and the grammar word for it
-  - 25:26 Gloss the key collocation 'dull pain'
-  - 25:45 Speaking example with 'dull pain'
-  - 26:01 The model patient sentence for dull pain
-  - 26:22 Why 'a dull pain' takes 'a'
-  - 26:33 Choosing the word the patient uses
-  - 26:45 Describe how bad the dull pain is
-  - 27:02 Gloss the key word 'uncomfortable'
-  - 27:18 How to say 'uncomfortable' and how a clinician uses it
-  - 27:36 Word family around 'comfortable'
-  - 27:47 Gloss the key phrase 'go away'
-  - 28:00 Speaking example with 'go away'
-  - 28:09 Name the second part of the practice
-  - 28:19 Gloss the key collocation 'constant pain'
-  - 28:34 Speaking example with 'constant'
-  - 28:42 The model patient sentence for constant pain
-  - 29:02 Gloss the key phrase 'deal with'
-  - 29:14 The preposition 'with' is always needed
-  - 29:33 The second use of 'deal with': handle a problem
-  - 29:44 'Deal with' used about illness
-  - 29:56 Gloss the key collocation 'chronic pain'
-  - 30:16 Adjectives that pair with 'pain'
-  - 31:23 Say that treatment has not helped
-  - 31:32 Gloss the key verb 'ease'
-  - 31:49 The form 'eased' after 'has', and a speaking example
-  - 32:06 A longer sentence with 'ease' and its two uses
-  - 32:20 Recap the useful expressions from these examples
-  - 32:43 Gloss the key collocation 'excruciating pain'
-  - 33:03 Speaking example with 'excruciating'
-  - 33:11 The model patient sentence and the past form 'woke up'
-  - 33:31 The preposition with a body part
-  - 33:36 Warn about small prepositions
-  - 33:48 Make the description stronger with 'so ... that'
-  - 34:03 Teach 'even' as an intensifier
-  - 34:15 Gloss the key collocation 'nagging pain'
-  - 34:33 Speaking example with 'nagging pain'
-  - 34:41 The model sentence for nagging pain, in the right tense
-  - 35:01 Gloss the key verb 'bother'
-  - 35:13 Speaking example with 'bother'
-  - 35:20 Describe how strong the nagging pain is
-  - 35:37 Gloss the key verb 'carry'
-  - 35:49 Gloss the key collocation 'sharp pain'
-  - 36:06 The model sentence for sharp pain and its onset
-  - 36:29 Gloss the key word 'workout'
-  - 36:41 Speaking example with 'sharp pain'
-  - 37:55 Questions that use these collocations in a history
-  - 38:04 One more history question, with the reason for using them
-  - 38:16 Not every adjective goes with 'pain'
-  - 38:21 The rule to take away
+- 12:32 **Types of pain: adjective and noun collocations**
+  - 12:32 introduce the matching task
+  - 12:54 why these collocations matter
+  - 13:12 gloss throbbing pain
+  - 13:53 second example, talking to a patient
+  - 13:59 typical cases from the source
+  - 14:14 the words inside definition e
+  - 14:31 gloss dull pain
+  - 15:01 second example, talking to a patient
+  - 15:07 near-synonym, aching pain
+  - 15:35 one more pain word patients use
+  - 15:46 gloss constant pain
+  - 16:11 second example, talking to a patient
+  - 16:18 gloss chronic pain
+  - 16:52 second example, talking to a patient
+  - 17:00 constant and chronic are not the same
+  - 17:30 gloss excruciating pain
+  - 17:58 second example, talking to a patient
+  - 18:05 excruciating is stronger than severe
+  - 18:31 strength words
+  - 18:49 gloss nagging pain
+  - 19:16 the verb behind the adjective
+  - 19:31 second example, talking to a patient
+  - 19:41 gloss the word slight
+  - 20:05 countability of pain
+  - 20:25 gloss sharp pain
+  - 20:52 second example, talking to a patient
+  - 21:00 two more sharp-type pain words
+  - 21:19 closing note for the whole set
 
 *Rules on the boards*
 
-- 38:21 A noun takes some adjectives and not others. Learn these pairs by heart so you can use them in Speaking and Writing.
+- 21:19 You do not need the exact dictionary definition of each type of pain. Know roughly what each one means.
+
+*Terms*: a steady continuous beat (Words in the definition, 14:14); burning pain (More pain words, 15:35); mild, moderate, severe (Strength words, 18:31); nag (verb), nagging (adjective) (Word family, 19:16); a slight but continuous pain (Grammar note, 20:05); stabbing pain, shooting pain (More pain words, 21:00)
+
+#### 22:32 Practice: conditions and types of pain (`page-9`, deck)
+
+- 22:32 **the task, throbbing pain and dull pain, constant pain and chronic pain, excruciating, nagging and sharp pain**
+  - 22:32 Set the practice task and name the first two pain types
+  - 22:32 Name the last three pain types
+  - 22:47 Gloss the key collocation 'throbbing pain'
+  - 23:10 Speaking example and a written example with 'throbbing pain'
+  - 23:26 The model patient sentence and the tense behind it
+  - 23:59 Draw the time of the throbbing-pain sentence
+  - 24:29 Add what makes the pain worse
+  - 24:39 Gloss the key phrase 'get worse'
+  - 24:53 Speaking example with 'get worse' and the grammar word for it
+  - 25:04 Gloss the key collocation 'dull pain'
+  - 25:23 Speaking example with 'dull pain'
+  - 25:39 The model patient sentence for dull pain
+  - 26:00 Why 'a dull pain' takes 'a'
+  - 26:11 Choosing the word the patient uses
+  - 26:23 Describe how bad the dull pain is
+  - 26:40 Gloss the key word 'uncomfortable'
+  - 26:56 How to say 'uncomfortable' and how a clinician uses it
+  - 27:14 Word family around 'comfortable'
+  - 27:25 Gloss the key phrase 'go away'
+  - 27:38 Speaking example with 'go away'
+  - 27:47 Name the second part of the practice
+  - 27:57 Gloss the key collocation 'constant pain'
+  - 28:12 Speaking example with 'constant'
+  - 28:20 The model patient sentence for constant pain
+  - 28:40 Gloss the key phrase 'deal with'
+  - 28:52 The preposition 'with' is always needed
+  - 29:11 The second use of 'deal with': handle a problem
+  - 29:22 'Deal with' used about illness
+  - 29:34 Gloss the key collocation 'chronic pain'
+  - 29:54 Adjectives that pair with 'pain'
+  - 31:01 Say that treatment has not helped
+  - 31:10 Gloss the key verb 'ease'
+  - 31:27 The form 'eased' after 'has', and a speaking example
+  - 31:44 A longer sentence with 'ease' and its two uses
+  - 31:58 Recap the useful expressions from these examples
+  - 32:21 Gloss the key collocation 'excruciating pain'
+  - 32:41 Speaking example with 'excruciating'
+  - 32:49 The model patient sentence and the past form 'woke up'
+  - 33:08 The preposition with a body part
+  - 33:14 Warn about small prepositions
+  - 33:26 Make the description stronger with 'so ... that'
+  - 33:40 Teach 'even' as an intensifier
+  - 33:53 Gloss the key collocation 'nagging pain'
+  - 34:11 Speaking example with 'nagging pain'
+  - 34:19 The model sentence for nagging pain, in the right tense
+  - 34:39 Gloss the key verb 'bother'
+  - 34:51 Speaking example with 'bother'
+  - 34:58 Describe how strong the nagging pain is
+  - 35:15 Gloss the key verb 'carry'
+  - 35:27 Gloss the key collocation 'sharp pain'
+  - 35:44 The model sentence for sharp pain and its onset
+  - 36:07 Gloss the key word 'workout'
+  - 36:19 Speaking example with 'sharp pain'
+  - 37:33 Questions that use these collocations in a history
+  - 37:41 One more history question, with the reason for using them
+  - 37:54 Not every adjective goes with 'pain'
+  - 37:59 The rule to take away
+
+*Rules on the boards*
+
+- 37:59 A noun takes some adjectives and not others. Learn these pairs by heart so you can use them in Speaking and Writing.
 
 *Warnings (common mistakes)*
 
-- 33:36 Students often get these small prepositions wrong. The pain is in a part of the body.
+- 33:14 Students often get these small prepositions wrong. The pain is in a part of the body.
 
 *Wrong sentences corrected*
 
-- 33:31 On my stomach.
-- 38:20 Big pain.
+- 33:08 On my stomach.
+- 37:57 Big pain.
 
-*Terms*: present perfect continuous (Form, 24:03); get + adjective (Pattern, 25:19); pain (Collocations, 25:50); a (indefinite article) (Grammar word, 26:22); uncomfortable (Saying the word, 27:18); comfort, comfortable, uncomfortable (Word family, 27:36); deal with (Form, 29:14); pain (Collocations, 30:16); has not eased (Form, 31:49); woke up (Form, 33:23); so ... that (Form, 33:52); even (New word, 34:03)
+*Terms*: present perfect continuous (Form, 23:40); get + adjective (Pattern, 24:57); pain (Collocations, 25:27); a (indefinite article) (Grammar word, 26:00); uncomfortable (Saying the word, 26:56); comfort, comfortable, uncomfortable (Word family, 27:14); deal with (Form, 28:52); pain (Collocations, 29:54); has not eased (Form, 31:27); woke up (Form, 33:00); so ... that (Form, 33:30); even (New word, 33:40)
 
-#### 38:47 Common descriptions (`page-10`, deck)
+#### 38:25 Common descriptions (`page-10`, deck)
 
-- 38:47 **mild reaction and temporary discomfort, normal response, unusual symptom and serious concern**
-  - 38:47 Put the two printed sentences on the board and frame what these phrases are for
-  - 38:47 The printed sentence for this collocation
-  - 38:47 The two printed sentences and where they are used
-  - 39:16 Key word: mild reaction
-  - 39:34 Speaking example with mild reaction
-  - 39:47 The opposite of mild on the same scale
-  - 40:12 The frame 'You may have ...' explained in English
-  - 40:30 Key word: sore
-  - 40:51 How a patient uses 'sore'
-  - 41:02 A small amount of soreness
-  - 41:12 Word class of sore and soreness
-  - 41:27 Key word: discomfort
-  - 41:44 Sore or discomfort: the difference in English
-  - 42:07 Patient voice: not sore, but uncomfortable
-  - 42:30 Second patient example with discomfort
-  - 42:41 Key word: temporary
-  - 42:57 The collocation temporary discomfort
-  - 43:17 Speaking example with temporary discomfort
-  - 43:51 Key word: normal response
-  - 44:08 Word family of response
-  - 44:15 What 'response' means with a medicine
-  - 44:40 Key word: settle
-  - 44:54 Settle with pain, said to the patient
-  - 45:06 Settle with a time
-  - 45:21 Settle without treatment
-  - 45:32 Settle with down
-  - 45:41 One more speaking example with settle
-  - 46:13 Key word: unusual symptom
-  - 46:31 Speaking example with unusual symptom
-  - 46:50 Key word: notice
-  - 47:07 Key word: serious concern
-  - 47:22 The two words inside the collocation, and a speaking example
-  - 47:43 Hard general word in the printed sentence
-  - 48:00 Key word: worsen
-  - 48:20 Where the ending goes: worsen or get worse
-  - 48:38 Worsen in a clinical sentence
-  - 48:51 Get worse in a clinical sentence
-  - 49:04 One more speaking example with get worse
+- 38:25 **mild reaction and temporary discomfort, normal response, unusual symptom and serious concern**
+  - 38:25 Put the two printed sentences on the board and frame what these phrases are for
+  - 38:25 The printed sentence for this collocation
+  - 38:25 The two printed sentences and where they are used
+  - 38:54 Key word: mild reaction
+  - 39:11 Speaking example with mild reaction
+  - 39:25 The opposite of mild on the same scale
+  - 39:50 The frame 'You may have ...' explained in English
+  - 40:08 Key word: sore
+  - 40:29 How a patient uses 'sore'
+  - 40:40 A small amount of soreness
+  - 40:49 Word class of sore and soreness
+  - 41:04 Key word: discomfort
+  - 41:21 Sore or discomfort: the difference in English
+  - 41:45 Patient voice: not sore, but uncomfortable
+  - 42:08 Second patient example with discomfort
+  - 42:19 Key word: temporary
+  - 42:35 The collocation temporary discomfort
+  - 42:54 Speaking example with temporary discomfort
+  - 43:29 Key word: normal response
+  - 43:46 Word family of response
+  - 43:53 What 'response' means with a medicine
+  - 44:18 Key word: settle
+  - 44:32 Settle with pain, said to the patient
+  - 44:43 Settle with a time
+  - 44:58 Settle without treatment
+  - 45:10 Settle with down
+  - 45:19 One more speaking example with settle
+  - 45:51 Key word: unusual symptom
+  - 46:09 Speaking example with unusual symptom
+  - 46:28 Key word: notice
+  - 46:45 Key word: serious concern
+  - 47:00 The two words inside the collocation, and a speaking example
+  - 47:21 Hard general word in the printed sentence
+  - 47:38 Key word: worsen
+  - 47:58 Where the ending goes: worsen or get worse
+  - 48:16 Worsen in a clinical sentence
+  - 48:29 Get worse in a clinical sentence
+  - 48:41 One more speaking example with get worse
 
-*Terms*: You may have ... (Phrase, 40:12); sore, soreness (Word family, 41:12); uncomfortable, discomfort (Word family, 42:14); temporary discomfort (Collocation, 42:57); respond, response (Word family, 44:08); settle down (Word form, 45:32)
+*Terms*: You may have ... (Phrase, 39:50); sore, soreness (Word family, 40:49); uncomfortable, discomfort (Word family, 41:52); temporary discomfort (Collocation, 42:35); respond, response (Word family, 43:46); settle down (Word form, 45:10)
 
-#### 50:39 Giving reassurance (`page-11`, deck)
+#### 50:20 Giving reassurance (`page-11`, deck)
 
-- 50:39 **Good chance and low risk, Full support and quick check, Clear explanation**
-  - 50:39 Show the first two model sentences and name what they are for
-  - 50:39 Show the next two model sentences
-  - 50:39 Show the last model sentence
-  - 50:57 Gloss the key collocation 'a good chance'
-  - 51:17 Second example of 'a good chance', said to a patient
-  - 51:40 The optional 'that' after 'chance'
-  - 52:02 Gloss the verb pattern 'respond well to the treatment'
-  - 52:19 Second example of the verb pattern, said to a patient
-  - 52:51 Gloss the key collocation 'a low risk'
-  - 53:06 Second example of 'a low risk', said to a patient
-  - 53:31 The two meanings of 'carry'
-  - 53:55 Widen the vocabulary around 'risk'
-  - 54:21 Gloss the key collocation 'full support'
-  - 54:36 Second example of 'full support', said to a patient
-  - 55:00 Gloss 'throughout'
-  - 55:12 Contrast 'during' and 'throughout'
-  - 55:31 The fever example with 'during'
-  - 55:55 The fever example with 'throughout'
-  - 56:28 Gloss the key collocation 'a quick check'
-  - 56:43 Second example of 'a quick check', said to a patient, and the verb that goes with it
-  - 57:05 Gloss 'properly' from the purpose clause
-  - 57:35 Gloss the key collocation 'a clear explanation'
-  - 57:51 Second example of the phrase, said to a patient
-  - 58:15 The phrase takes different endings
-  - 58:39 When to use the whole phrase
-  - 58:52 Word family and collocations of 'explanation'
+- 50:20 **Good chance and low risk, Full support and quick check, Clear explanation**
+  - 50:19 Show the first two model sentences and name what they are for
+  - 50:20 Show the next two model sentences
+  - 50:20 Show the last model sentence
+  - 50:37 Gloss the key collocation 'a good chance'
+  - 50:57 Second example of 'a good chance', said to a patient
+  - 51:20 The optional 'that' after 'chance'
+  - 51:43 Gloss the verb pattern 'respond well to the treatment'
+  - 51:59 Second example of the verb pattern, said to a patient
+  - 52:32 Gloss the key collocation 'a low risk'
+  - 52:46 Second example of 'a low risk', said to a patient
+  - 53:12 The two meanings of 'carry'
+  - 53:35 Widen the vocabulary around 'risk'
+  - 54:01 Gloss the key collocation 'full support'
+  - 54:17 Second example of 'full support', said to a patient
+  - 54:40 Gloss 'throughout'
+  - 54:52 Contrast 'during' and 'throughout'
+  - 55:11 The fever example with 'during'
+  - 55:36 The fever example with 'throughout'
+  - 56:08 Gloss the key collocation 'a quick check'
+  - 56:23 Second example of 'a quick check', said to a patient, and the verb that goes with it
+  - 56:45 Gloss 'properly' from the purpose clause
+  - 57:15 Gloss the key collocation 'a clear explanation'
+  - 57:31 Second example of the phrase, said to a patient
+  - 57:56 The phrase takes different endings
+  - 58:19 When to use the whole phrase
+  - 58:32 Word family and collocations of 'explanation'
 
-*Terms*: There is a good chance (that) … (Form, 51:40); risk (Collocations, 53:55); do a quick check (Form, 56:51); explain, explanation (Word family, 58:52); explanation (Collocations, 59:06)
+*Terms*: There is a good chance (that) … (Form, 51:20); risk (Collocations, 53:35); do a quick check (Form, 56:32); explain, explanation (Word family, 58:32); explanation (Collocations, 58:47)
 
-#### 60:29 Instructions and advice (`page-12`, deck)
+#### 60:09 Instructions and advice (`page-12`, deck)
 
-- 60:29 **regular check-up and simple exercise, balanced diet and daily routine**
-  - 60:29 Put the slide's first two model sentences on the board and frame the task
-  - 60:29 Put the slide's other two model sentences on the board
-  - 61:01 Define the word collocation the first time it is used here
-  - 61:16 Key word moment: gloss regular check-up
-  - 61:40 Second example of regular check-up, said to a patient
-  - 61:53 Widen the vocabulary around check-up
-  - 62:09 Key word moment: gloss the phrasal verb come in
-  - 62:22 Show the two uses of come in side by side
-  - 62:51 Come in used to ask a patient to attend again
-  - 63:02 Came in used to report a patient's attendance to a colleague
-  - 63:20 Key word moment: gloss simple exercise
-  - 63:37 Second example of simple exercise, said to a patient
-  - 63:52 Gloss the verb strengthen from the model sentence
-  - 64:12 Word families for strengthen and daily
-  - 65:01 Key word moment: gloss balanced diet
-  - 65:21 Second example of balanced diet, said to a patient
-  - 65:34 Contrast a good diet with a balanced diet for precision
-  - 65:57 Key word moment: gloss maintain
-  - 66:14 The form after try to, with one more example
-  - 66:46 Key word moment: gloss daily routine
-  - 67:03 Second example of daily routine, said to a patient
-  - 67:18 The pattern it helps to, with one more example
-  - 67:44 Key word moment: gloss include
-  - 67:56 Show what is included and where
-  - 68:13 Closing study habit for collocations
+- 60:09 **regular check-up and simple exercise, balanced diet and daily routine**
+  - 60:09 Put the slide's first two model sentences on the board and frame the task
+  - 60:09 Put the slide's other two model sentences on the board
+  - 60:41 Define the word collocation the first time it is used here
+  - 60:56 Key word moment: gloss regular check-up
+  - 61:20 Second example of regular check-up, said to a patient
+  - 61:34 Widen the vocabulary around check-up
+  - 61:49 Key word moment: gloss the phrasal verb come in
+  - 62:02 Show the two uses of come in side by side
+  - 62:31 Come in used to ask a patient to attend again
+  - 62:43 Came in used to report a patient's attendance to a colleague
+  - 63:00 Key word moment: gloss simple exercise
+  - 63:17 Second example of simple exercise, said to a patient
+  - 63:32 Gloss the verb strengthen from the model sentence
+  - 63:52 Word families for strengthen and daily
+  - 64:41 Key word moment: gloss balanced diet
+  - 65:02 Second example of balanced diet, said to a patient
+  - 65:14 Contrast a good diet with a balanced diet for precision
+  - 65:37 Key word moment: gloss maintain
+  - 65:54 The form after try to, with one more example
+  - 66:27 Key word moment: gloss daily routine
+  - 66:43 Second example of daily routine, said to a patient
+  - 66:58 The pattern it helps to, with one more example
+  - 67:24 Key word moment: gloss include
+  - 67:36 Show what is included and where
+  - 67:53 Closing study habit for collocations
 
 *Rules on the boards*
 
-- 68:13 Most sentences you read contain one or two collocations. Write them down and review them often. After a few reviews you will start to use them in your own sentences.
+- 67:53 Most sentences you read contain one or two collocations. Write them down and review them often. After a few reviews you will start to use them in your own sentences.
 
-*Terms*: collocation (Key word, 61:01); check-up (Collocations, 61:53); strong, strengthen, strength (Word family, 64:12); day, daily (Word family, 64:26); try to + simple verb (Form, 66:14); It helps to ... (Pattern, 67:18)
+*Terms*: collocation (Key word, 60:41); check-up (Collocations, 61:34); strong, strengthen, strength (Word family, 63:52); day, daily (Word family, 64:06); try to + simple verb (Form, 65:54); It helps to ... (Pattern, 66:58)
 
-#### 69:30 Collocations in a letter (`page-13`, deck)
+#### 69:10 Collocations in a letter (`page-13`, deck)
 
-- 69:30 **Letter extract: adjective and noun collocations**
-  - 69:30 show the letter and set the task
-  - 69:51 name the key term
-  - 70:07 list the pairs in the first paragraph
-  - 70:24 gloss persistent cough
-  - 70:40 persistent cough with the patient
-  - 70:50 gloss throbbing headaches
-  - 71:06 gloss heavy cold
-  - 71:19 the pair is fixed
-  - 71:30 gloss muscular aches
-  - 71:46 gloss itchy rash
-  - 72:03 itchy rash with the patient
-  - 72:11 gloss serious disease
-  - 72:27 list the pairs in the second paragraph
-  - 72:40 gloss high temperature
-  - 72:55 high temperature with the patient
-  - 73:04 high temperature is a fixed pair
-  - 73:14 gloss lethargic
-  - 73:29 gloss heavy smoker
-  - 73:45 heavy smoker with the patient
-  - 73:50 heavy smoker is a fixed pair
-  - 73:58 more nouns that go with heavy
-  - 74:11 gloss with regard to
-  - 74:27 list the pairs in the third paragraph
-  - 74:40 gloss current condition
-  - 74:55 gloss balanced diet
-  - 75:09 balanced diet with the patient
-  - 75:19 word family for balanced
-  - 75:33 adjective and noun, or noun and noun
-  - 76:02 the rule to remember
+- 69:10 **Letter extract: adjective and noun collocations**
+  - 69:10 show the letter and set the task
+  - 69:31 name the key term
+  - 69:48 list the pairs in the first paragraph
+  - 70:05 gloss persistent cough
+  - 70:20 persistent cough with the patient
+  - 70:31 gloss throbbing headaches
+  - 70:46 gloss heavy cold
+  - 70:59 the pair is fixed
+  - 71:10 gloss muscular aches
+  - 71:26 gloss itchy rash
+  - 71:43 itchy rash with the patient
+  - 71:51 gloss serious disease
+  - 72:07 list the pairs in the second paragraph
+  - 72:20 gloss high temperature
+  - 72:35 high temperature with the patient
+  - 72:44 high temperature is a fixed pair
+  - 72:55 gloss lethargic
+  - 73:10 gloss heavy smoker
+  - 73:25 heavy smoker with the patient
+  - 73:30 heavy smoker is a fixed pair
+  - 73:38 more nouns that go with heavy
+  - 73:51 gloss with regard to
+  - 74:08 list the pairs in the third paragraph
+  - 74:20 gloss current condition
+  - 74:35 gloss balanced diet
+  - 74:49 balanced diet with the patient
+  - 74:59 word family for balanced
+  - 75:13 adjective and noun, or noun and noun
+  - 75:42 the rule to remember
 
 *Rules on the boards*
 
-- 76:02 Learn the two words of a pair together. A word with a similar meaning often sounds wrong: a heavy cold, not a big cold.
+- 75:42 Learn the two words of a pair together. A word with a similar meaning often sounds wrong: a heavy cold, not a big cold.
 
 *Wrong sentences corrected*
 
-- 71:23 A big cold
-- 73:10 A big temperature
-- 73:55 A big smoker
+- 71:04 A big cold
+- 72:50 A big temperature
+- 73:36 A big smoker
 
-*Terms*: Collocation (Key word, 69:51); Heavy (Collocations, 73:58); Balance (Word family, 75:19)
+*Terms*: Collocation (Key word, 69:31); Heavy (Collocations, 73:38); Balance (Word family, 74:59)
 
-#### 76:18 Practice: complete the sentences (`page-14`, deck)
+#### 75:58 Practice: complete the sentences (`page-14`, deck)
 
-- 76:18 **instruction and sentences 1 to 4**
-  - 76:18 Show the task and the first four gapped sentences
-- 77:04 **sentences 5 to 8**
-  - 77:04 Show the last four gapped sentences
-- 77:45 **Item 1: chronic pain**
-  - 77:45 Show the sentence under discussion and give the answer
-  - 78:03 Gloss the key word chronic
-  - 78:18 Second example, said to a patient
-  - 78:28 The second accepted answer
-  - 78:39 Widen the vocabulary: collocations with chronic
-- 78:47 **Item 2: persistent cough**
-  - 78:47 Show the sentence under discussion and give the answer
-  - 79:05 Gloss the key word persistent
-  - 79:21 Second example, said to a patient
-  - 79:28 Widen the vocabulary: word family
-- 79:40 **Item 3: exercise regime**
-  - 79:40 Show the sentence under discussion and give the answer
-  - 79:55 Gloss the hard general word 'implement' from the printed sentence
-  - 80:09 Gloss the key collocation exercise regime
-  - 80:27 Point out that this pair is noun plus noun
-  - 80:47 Second example, said to a patient
-- 80:55 **Item 4: sharp pain**
-  - 80:55 Show the sentence under discussion and give the answer
-  - 81:13 Gloss the key word sharp
-  - 81:29 Second example, said to a patient
-  - 81:35 Widen the vocabulary: near-synonym contrast
-- 81:51 **Item 5: a heavy cold**
-  - 81:51 Show the sentence under discussion and give the answer
-  - 82:03 Gloss the key collocation heavy cold
-  - 82:21 Reject the wrong adjective with this noun
-  - 82:28 Second example, said to a patient
-- 82:35 **Item 6: a heavy smoker**
-  - 82:35 Show the sentence under discussion and give the answer
-  - 82:45 Widen the vocabulary: other nouns after heavy
-  - 82:54 Second example, said to a patient
-- 82:59 **Item 7: constant pain**
-  - 82:59 Show the sentence under discussion and give the answer
-  - 83:16 Gloss the key word constant
-  - 83:32 Second example, said to a patient
-  - 83:39 Widen the vocabulary: chronic and constant side by side
-- 83:57 **Item 8: an itchy rash**
-  - 83:57 Show the sentence under discussion and give the answer
-  - 84:11 Gloss the key word itchy
-  - 84:26 The article before this adjective
-  - 84:33 Second example, said to a patient
+- 75:58 **instruction and sentences 1 to 4**
+  - 75:58 Show the task and the first four gapped sentences
+- 76:44 **sentences 5 to 8**
+  - 76:44 Show the last four gapped sentences
+- 77:25 **Item 1: chronic pain**
+  - 77:25 Show the sentence under discussion and give the answer
+  - 77:43 Gloss the key word chronic
+  - 77:58 Second example, said to a patient
+  - 78:09 The second accepted answer
+  - 78:19 Widen the vocabulary: collocations with chronic
+- 78:27 **Item 2: persistent cough**
+  - 78:27 Show the sentence under discussion and give the answer
+  - 78:45 Gloss the key word persistent
+  - 79:01 Second example, said to a patient
+  - 79:08 Widen the vocabulary: word family
+- 79:21 **Item 3: exercise regime**
+  - 79:21 Show the sentence under discussion and give the answer
+  - 79:36 Gloss the hard general word 'implement' from the printed sentence
+  - 79:49 Gloss the key collocation exercise regime
+  - 80:08 Point out that this pair is noun plus noun
+  - 80:27 Second example, said to a patient
+- 80:35 **Item 4: sharp pain**
+  - 80:35 Show the sentence under discussion and give the answer
+  - 80:53 Gloss the key word sharp
+  - 81:09 Second example, said to a patient
+  - 81:15 Widen the vocabulary: near-synonym contrast
+- 81:31 **Item 5: a heavy cold**
+  - 81:31 Show the sentence under discussion and give the answer
+  - 81:44 Gloss the key collocation heavy cold
+  - 82:01 Reject the wrong adjective with this noun
+  - 82:09 Second example, said to a patient
+- 82:15 **Item 6: a heavy smoker**
+  - 82:15 Show the sentence under discussion and give the answer
+  - 82:26 Widen the vocabulary: other nouns after heavy
+  - 82:34 Second example, said to a patient
+- 82:39 **Item 7: constant pain**
+  - 82:39 Show the sentence under discussion and give the answer
+  - 82:56 Gloss the key word constant
+  - 83:12 Second example, said to a patient
+  - 83:19 Widen the vocabulary: chronic and constant side by side
+- 83:38 **Item 8: an itchy rash**
+  - 83:38 Show the sentence under discussion and give the answer
+  - 83:51 Gloss the key word itchy
+  - 84:06 The article before this adjective
+  - 84:13 Second example, said to a patient
 
 *Wrong sentences corrected*
 
-- 76:18 I have ______ pain in my lower back. It's been there for years.
-- 76:18 The patient presented complaining of a ______ cough which she had had for 5 weeks.
-- 76:18 You'll need to implement an ______ regime in order to get back to full fitness.
-- 76:18 I felt a sudden ______ pain in my right side. It came on quickly and was very severe.
-- 77:04 He thought he had the flu, but in fact it was just a very ______ cold.
-- 77:04 She is a ______ smoker and smokes about 20 cigarettes a day.
-- 77:04 Mr Gates has a ______ pain in his shoulder which never goes away.
-- 77:04 He has an ______ rash which has spread to his forearms and hands.
-- 77:45 I have ______ pain in my lower back. It's been there for years.
-- 78:47 The patient presented complaining of a ______ cough which she had had for 5 weeks.
-- 79:40 You'll need to implement an ______ regime in order to get back to full fitness.
-- 80:55 I felt a sudden ______ pain in my right side. It came on quickly and was very severe.
-- 81:51 He thought he had the flu, but in fact it was just a very ______ cold.
-- 82:21 A big cold.
-- 82:35 She is a ______ smoker and smokes about 20 cigarettes a day.
-- 82:59 Mr Gates has a ______ pain in his shoulder which never goes away.
-- 83:57 He has an ______ rash which has spread to his forearms and hands.
+- 75:58 I have ______ pain in my lower back. It's been there for years.
+- 75:58 The patient presented complaining of a ______ cough which she had had for 5 weeks.
+- 75:58 You'll need to implement an ______ regime in order to get back to full fitness.
+- 75:58 I felt a sudden ______ pain in my right side. It came on quickly and was very severe.
+- 76:44 He thought he had the flu, but in fact it was just a very ______ cold.
+- 76:44 She is a ______ smoker and smokes about 20 cigarettes a day.
+- 76:44 Mr Gates has a ______ pain in his shoulder which never goes away.
+- 76:44 He has an ______ rash which has spread to his forearms and hands.
+- 77:25 I have ______ pain in my lower back. It's been there for years.
+- 78:27 The patient presented complaining of a ______ cough which she had had for 5 weeks.
+- 79:21 You'll need to implement an ______ regime in order to get back to full fitness.
+- 80:35 I felt a sudden ______ pain in my right side. It came on quickly and was very severe.
+- 81:31 He thought he had the flu, but in fact it was just a very ______ cold.
+- 82:01 A big cold.
+- 82:15 She is a ______ smoker and smokes about 20 cigarettes a day.
+- 82:39 Mr Gates has a ______ pain in his shoulder which never goes away.
+- 83:38 He has an ______ rash which has spread to his forearms and hands.
 
-*Terms*: Chronic (Collocations, 78:39); Persistent (Word family, 79:28); Exercise regime (Form, 80:27); Heavy (Collocations, 82:45); An itchy rash (Form, 84:26)
+*Terms*: Chronic (Collocations, 78:19); Persistent (Word family, 79:08); Exercise regime (Form, 80:08); Heavy (Collocations, 82:26); An itchy rash (Form, 84:06)
 
 ### Vocabulary
 
@@ -4630,70 +4630,70 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 4:46 chronic disease
 - 9:26 Acute infection
 - 10:26 Intensive care
-- 13:24 throbbing pain
-- 14:43 dull pain
-- 15:58 constant pain
-- 16:30 chronic pain
-- 17:42 excruciating pain
-- 19:01 nagging pain
-- 19:53 slight
-- 20:37 sharp pain
-- 25:01 get worse
-- 27:02 uncomfortable
-- 27:47 go away
-- 29:02 deal with
-- 31:32 ease
-- 34:03 even
-- 35:01 bother
-- 35:37 carry
-- 36:29 workout
-- 39:16 mild reaction
-- 40:12 You may have ...
-- 40:30 sore
-- 41:27 discomfort
-- 42:41 temporary
-- 43:51 normal response
-- 44:40 settle
-- 46:13 unusual symptom
-- 46:50 notice
-- 47:07 serious concern
-- 47:43 hesitate
-- 48:00 worsen
-- 50:57 a good chance
-- 52:02 respond well to the treatment
-- 52:51 a low risk
-- 54:21 full support
-- 55:00 throughout
-- 56:28 a quick check
-- 57:05 properly
-- 57:35 a clear explanation
-- 61:16 a regular check-up
-- 62:09 come in
-- 63:20 a simple exercise
-- 63:52 strengthen
-- 65:01 a balanced diet
-- 65:57 maintain
-- 66:46 daily routine
-- 67:44 include
-- 70:24 Persistent cough
-- 70:50 Throbbing headaches
-- 71:06 Heavy cold
-- 71:30 Muscular aches
-- 71:46 Itchy rash
-- 72:11 Serious disease
-- 72:40 High temperature
-- 73:14 Lethargic
-- 73:29 Heavy smoker
-- 74:11 With regard to
-- 74:40 Current condition
-- 74:55 Balanced diet
-- 78:03 Chronic
-- 79:05 Persistent
-- 79:55 Implement
-- 80:09 Exercise regime
-- 81:13 Sharp
-- 83:16 Constant
-- 84:11 Itchy
+- 13:12 throbbing pain
+- 14:31 dull pain
+- 15:46 constant pain
+- 16:18 chronic pain
+- 17:30 excruciating pain
+- 18:49 nagging pain
+- 19:41 slight
+- 20:25 sharp pain
+- 24:39 get worse
+- 26:40 uncomfortable
+- 27:25 go away
+- 28:40 deal with
+- 31:10 ease
+- 33:40 even
+- 34:39 bother
+- 35:15 carry
+- 36:07 workout
+- 38:54 mild reaction
+- 39:50 You may have ...
+- 40:08 sore
+- 41:04 discomfort
+- 42:19 temporary
+- 43:29 normal response
+- 44:18 settle
+- 45:51 unusual symptom
+- 46:28 notice
+- 46:45 serious concern
+- 47:21 hesitate
+- 47:38 worsen
+- 50:37 a good chance
+- 51:43 respond well to the treatment
+- 52:32 a low risk
+- 54:01 full support
+- 54:40 throughout
+- 56:08 a quick check
+- 56:45 properly
+- 57:15 a clear explanation
+- 60:56 a regular check-up
+- 61:49 come in
+- 63:00 a simple exercise
+- 63:32 strengthen
+- 64:41 a balanced diet
+- 65:37 maintain
+- 66:27 daily routine
+- 67:24 include
+- 70:05 Persistent cough
+- 70:31 Throbbing headaches
+- 70:46 Heavy cold
+- 71:10 Muscular aches
+- 71:26 Itchy rash
+- 71:51 Serious disease
+- 72:20 High temperature
+- 72:55 Lethargic
+- 73:10 Heavy smoker
+- 73:51 With regard to
+- 74:20 Current condition
+- 74:35 Balanced diet
+- 77:43 Chronic
+- 78:45 Persistent
+- 79:36 Implement
+- 79:49 Exercise regime
+- 80:53 Sharp
+- 82:56 Constant
+- 83:51 Itchy
 
 ### Practice material
 
@@ -4702,8 +4702,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ### Links to other lessons
 
 - 0:11 refers to Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`) (in `page-3_t1.s1.u2`)
-- 20:29 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `page-8_t1.s24.u3`)
-- 24:14 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect continuous tenses" (in `page-9_t1.s2.u6`)
+- 20:17 refers to Grammar for OET: Articles (`grammar-04-articles`), "Countable and uncountable nouns" (in `page-8_t1.s24.u3`)
+- 23:52 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`), "Usage: perfect continuous tenses" (in `page-9_t1.s2.u6`)
 - continues from Vocabulary for OET: Verb + Noun Collocations (`vocabulary-02-collocations`): Adjective + noun collocations follow the verb + noun collocations taught here.
 
 
@@ -7865,11 +7865,11 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 |---|---|---|---|---|---|
 | 1 | OET Writing: Overview | `writing-01-overview` | 19:06 | 7 | 2026-11-09 12:20 (siavash) |
 | 2 | OET Writing: Assessment Criteria | `writing-02-assessment-criteria` | 30:54 | 10 | 2026-11-09 14:58 (siavash) |
-| 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:38 | 10 | 2026-11-09 14:58 (siavash) |
-| 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:49 | 10 | 2026-11-09 14:58 (siavash) |
-| 5 | OET Writing: Information Flow | `writing-05-information-flow` | 38:15 | 9 | 2026-11-09 21:12 (siavash) |
-| 6 | OET Writing: Word Order | `writing-06-word-order` | 24:30 | 9 | 2026-11-09 14:59 (siavash) |
-| 7 | OET Writing: Organising the Letter | `writing-07-organisation` | 27:54 | 8 | 2026-11-09 11:36 (siavash) |
+| 3 | OET Writing: Letter Structure | `writing-03-letter-structure` | 28:38 | 10 | 2026-11-14 00:46 (siavash) |
+| 4 | OET Writing: The Opening Paragraph | `writing-04-introduction` | 32:52 | 10 | 2026-11-14 08:58 (siavash) |
+| 5 | OET Writing: Information Flow | `writing-05-information-flow` | 38:15 | 9 | 2026-11-14 00:53 (siavash) |
+| 6 | OET Writing: Word Order | `writing-06-word-order` | 24:21 | 9 | 2026-11-14 08:54 (siavash) |
+| 7 | OET Writing: Organising the Letter | `writing-07-organisation` | 27:54 | 8 | 2026-11-14 08:47 (siavash) |
 | 8 | OET Writing: Reading the Task and the Case Notes | `writing-08-reading-the-task` | 23:24 | 8 | 2026-11-09 09:24 (siavash) |
 
 <a id="writing-01-overview"></a>
@@ -8347,7 +8347,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 3. OET Writing: Letter Structure
 
 - Lesson ID and folder: `writing-03-letter-structure` (folder `writing-03-letter-structure`); course writing, lesson 3; length 28:38; bundle format 1.23
-- Status: approved by siavash, 2026-11-09 14:58
+- Status: approved by siavash, 2026-11-14 00:46
 - Description: Learn the parts of a letter, from the address and the date to the request and the sign-off, and where each part comes from in the paper.
 - Original session: folder `source`: `source/video.mp4`, 25:04 long, partial hash `e5d98490267c5abe`; deck `source/slides.pdf`, 12 pages
   - Writing Session 3 of the Persian Writing course, «جلسه رایتینگ: ساختار نامه» (Writing: letter structure); its official OET sample (letter and case notes) is replaced by our samples oa-ws-nur-0001 (main), oa-ws-med-0002 (the dates) and oa-ws-nur-0003 (the address, greeting and Re line) at oetacademy-exercises 5320d19 (ADR 040). The teacher's exam-date rule is dropped by the owner (ADR 044).
@@ -8598,8 +8598,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 4. OET Writing: The Opening Paragraph
 
-- Lesson ID and folder: `writing-04-introduction` (folder `writing-04-introduction`); course writing, lesson 4; length 32:49; bundle format 1.23
-- Status: approved by siavash, 2026-11-09 14:58
+- Lesson ID and folder: `writing-04-introduction` (folder `writing-04-introduction`); course writing, lesson 4; length 32:52; bundle format 1.23
+- Status: approved by siavash, 2026-11-14 08:58
 - Description: Learn to write the opening of an OET letter: one clear sentence that says who the patient is, what the main problem is and what you ask, with the grammar it needs.
 - Original session: folder `source`: `source/video.mp4`, 87:07 long, partial hash `1995ee2fa868b983`; deck `source/slides.pdf`, 19 pages
   - Writing Session 4 of the Persian Writing course, «نحوه نگارش Introduction» (Writing: introduction); every example on its slides is of unknown origin and is replaced by the openings of our six samples (oa-ws-med-0001 to -0003, oa-ws-nur-0001 to -0003) at oetacademy-exercises 5320d19 (ADR 040). The letter to a patient's relative (slides 15-16) and the pharmacy aside are dropped; the teacher's "Dear Doctor" for an unnamed reader is replaced by "Dear Sir or Madam ... Yours faithfully" (ADR 040 decision 7).
@@ -8806,29 +8806,29 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 28:39 in response
   - 28:48 accepting
   - 28:53 your turn
-- 29:42 **How our six letters open**
-  - 29:42 six openings
-  - 29:48 two ways
-  - 29:54 the patient first
-  - 30:00 fit it
-- 30:12 **Mrs Dawson's opening, piece by piece**
-  - 30:12 the paper beside the opening
-  - 30:16 a discharge
-  - 30:31 the start
-  - 30:49 after
-  - 31:05 what you ask
-- 31:11 **Her whole opening**
-  - 31:11 her paper
-  - 31:29 the model
+- 29:46 **How our six letters open**
+  - 29:46 six openings
+  - 29:51 two ways
+  - 29:57 the patient first
+  - 30:04 fit it
+- 30:15 **Mrs Dawson's opening, piece by piece**
+  - 30:15 the paper beside the opening
+  - 30:19 a discharge
+  - 30:35 the start
+  - 30:52 after
+  - 31:08 what you ask
+- 31:14 **Her whole opening**
+  - 31:14 her paper
+  - 31:32 the model
 
 *Rules on the boards*
 
-- 30:00 Learn the frames. Then fit each one to the case.
+- 30:04 Learn the frames. Then fit each one to the case.
 
-#### 31:59 Closing (`added-01`, closing)
+#### 32:02 Closing (`added-01`, closing)
 
-- 31:59 **Closing**
-  - 32:14 Recap
+- 32:02 **Closing**
+  - 32:17 Recap
 
 ### OET facts
 
@@ -8872,7 +8872,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 5. OET Writing: Information Flow
 
 - Lesson ID and folder: `writing-05-information-flow` (folder `writing-05-information-flow`); course writing, lesson 5; length 38:15; bundle format 1.23
-- Status: approved by siavash, 2026-11-09 21:12
+- Status: approved by siavash, 2026-11-14 00:53
 - Description: Learn to keep the flow of information clear in an OET letter, with the time words that order a history and help you choose its tenses, the few linking words a letter needs and the ones to avoid, and how a dated case note becomes a clear sentence, up to the request.
 - Original session: folder `source`: `source/video.mp4`, 72:08 long, partial hash `5ba59af7698de6e3`; deck `source/slides.pdf`, 12 pages
   - Session 5 of the Persian Writing course, «OET Writing: Signal words and information flow» (72:08, 12 slides): the nine families of signal words, the words to avoid, a paragraph with a linking word on every sentence put right, time and tense on the timeline of a case, the four-column method (the note, the time reference, the tense, the sentence) worked through the official OET Nursing sample, and the request with modal verbs. The sixth lesson of the general Writing course (ADR 047). The official sample and the Mr Jones paragraph are never reused: every teaching point is rebuilt on our samples oa-ws-nur-0001, oa-ws-nur-0002, oa-ws-med-0003, oa-ws-med-0001, oa-ws-nur-0003 and oa-ws-med-0002 at oetacademy-exercises 5320d19 (ADR 040).
@@ -9124,8 +9124,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 6. OET Writing: Word Order
 
-- Lesson ID and folder: `writing-06-word-order` (folder `writing-06-word-order`); course writing, lesson 6; length 24:30; bundle format 1.23
-- Status: approved by siavash, 2026-11-09 14:59
+- Lesson ID and folder: `writing-06-word-order` (folder `writing-06-word-order`); course writing, lesson 6; length 24:21; bundle format 1.23
+- Status: approved by siavash, 2026-11-14 08:54
 - Description: Learn the order of words in a letter sentence: who, what, where, when, why; the verb and its object together; a time phrase first with a comma; where also, then and frequency adverbs go; a paragraph and a letter corrected.
 - Original session: folder `source`: `source/video.mp4`, 52:48 long, partial hash `e580eb78f48235f0`; deck `source/slides.pdf`, 17 pages
   - Session 6 of the Persian Writing course, «Word Orders» (52:48, 17 slides in the Vocabulary template): the order subject, verb, object, place, time, reason (who, what, where, when, why); the verb and its object together; a time phrase first with a comma; also and then in the middle position; adverbial phrases and signal words at the start of a sentence; a learner's paragraph corrected line by line; a letter with gaps. The last lesson of the general Writing course (ADR 047 decision 1). Every example on the deck is the teacher's own sentence of unknown origin, a learner's paragraph (third-party) or a practice letter of unknown origin, and every point is rebuilt on our samples oa-ws-nur-0002, oa-ws-med-0002, oa-ws-nur-0001, oa-ws-med-0003, oa-ws-med-0001 and oa-ws-nur-0003 at oetacademy-exercises 5320d19 (ADR 040).
@@ -9265,16 +9265,16 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
   - 21:22 the letter
   - 21:42 the opening
   - 22:01 a time, a reason, a contrast
-  - 22:32 your turn
-  - 22:53 despite
-  - 23:02 her medicines
-  - 23:22 normally, and a date at the end
-  - 23:37 a reason first
+  - 22:30 the other four gaps
+  - 22:44 despite
+  - 22:53 her medicines
+  - 23:13 normally, and a date at the end
+  - 23:27 a reason first
 
-#### 23:48 Closing (`added-01`, closing)
+#### 23:39 Closing (`added-01`, closing)
 
-- 23:48 **Closing**
-  - 23:54 Recap
+- 23:39 **Closing**
+  - 23:44 Recap
 
 ### OET facts
 
@@ -9318,7 +9318,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 7. OET Writing: Organising the Letter
 
 - Lesson ID and folder: `writing-07-organisation` (folder `writing-07-organisation`); course writing, lesson 7; length 27:54; bundle format 1.23
-- Status: approved by siavash, 2026-11-09 11:36
+- Status: approved by siavash, 2026-11-14 08:47
 - Description: Learn to organise the body of an OET letter: the ISBAR parts, paragraphs in time order or by theme, a quick plan of what goes in each paragraph, and the request and closing paragraph.
 - Original session: folder `source`: `source/video.mp4`, 28:50 long, partial hash `7739eb8d9c3f6385`; deck `source/slides.pdf`, 17 pages
   - Session 7 of the Persian Writing course, «Writing: How to Structure a letter» (28:50, 17 slides): Organisation and Layout recalled, no perfect template, the ISBAR approach, three letters read by their paragraphs, chronological or thematic order with the same letter both ways. The seventh lesson of the general Writing course (ADR 047), which also teaches two parts the recorded sessions never taught, planning the paragraphs and the request and closing paragraph, from the owner's recorded Nursing and Medicine Writing sessions. Every letter on the deck is of unknown or official origin and is rebuilt on our samples oa-ws-nur-0002, oa-ws-med-0003, oa-ws-med-0002, oa-ws-nur-0001 and oa-ws-nur-0003 at oetacademy-exercises 5320d19 (ADR 040).
@@ -9773,7 +9773,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 Each topic or term, then each lesson that teaches it and the first moment there.
 
-- **a (indefinite article)**: `vocabulary-03-collocations-2` 26:22
+- **a (indefinite article)**: `vocabulary-03-collocations-2` 26:00
 - **a fifty-year-old teacher**: `grammar-08-paraphrasing` 23:00
 - **A letter with gaps**: `writing-06-word-order` 21:22
 - **A needle in a haystack**: `reading-02-part-a` 1:48
@@ -9783,7 +9783,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **A sample letter**: `writing-01-overview` 14:05
 - **A target score for Part B**: `listening-03-part-b` 11:46
 - **A target score for Part C**: `listening-04-part-c` 9:16
-- **A two-week history of**: `grammar-08-paraphrasing` 41:31
+- **A two-week history of**: `grammar-08-paraphrasing` 41:25
 - **a-**: `grammar-03-nominalization` 10:11
 - **Abbreviations in the letter**: `writing-02-assessment-criteria` 25:20
 - **Accuracy to the case notes**: `writing-02-assessment-criteria` 14:09
@@ -9799,7 +9799,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Administer**: `vocabulary-02-collocations` 19:07
 - **Adverbial phrases**: `writing-06-word-order` 11:30
 - **Although**: `grammar-05-complex-compound` 11:48
-- **An itchy rash**: `vocabulary-03-collocations-2` 84:26
+- **An itchy rash**: `vocabulary-03-collocations-2` 84:06
 - **Apostrophe**: `grammar-07-punctuation` 60:42
 - **Apostrophes**: `grammar-07-punctuation` 60:34
 - **Appositive**: `writing-04-introduction` 10:08
@@ -9830,14 +9830,14 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Chunking**: `reading-02-part-a` 18:43
 - **Clause**: `grammar-05-complex-compound` 3:57
 - **Closing sentence**: `writing-01-overview` 16:59
-- **Collocation**: `vocabulary-02-collocations` 1:35; `vocabulary-03-collocations-2` 61:01
-- **Collocations in a letter**: `vocabulary-03-collocations-2` 69:30
+- **Collocation**: `vocabulary-02-collocations` 1:35; `vocabulary-03-collocations-2` 60:41
+- **Collocations in a letter**: `vocabulary-03-collocations-2` 69:10
 - **Colon (:)**: `grammar-07-punctuation` 54:59
 - **Combine**: `grammar-08-paraphrasing` 28:08
 - **Comma splice**: `grammar-07-punctuation` 22:11
 - **commas**: `grammar-07-punctuation` 2:32
 - **Commas: overview**: `grammar-07-punctuation` 2:32
-- **Common descriptions**: `vocabulary-03-collocations-2` 38:47
+- **Common descriptions**: `vocabulary-03-collocations-2` 38:25
 - **Common mistakes**: `grammar-07-punctuation` 43:20
 - **complex sentence**: `grammar-05-complex-compound` 2:13; `grammar-07-punctuation` 5:41; `grammar-08-paraphrasing` 7:40
 - **Complex sentences**: `grammar-07-punctuation` 5:36
@@ -9860,7 +9860,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Contrast: however, while, despite, but**: `writing-06-word-order` 17:14
 - **Coordinating conjunction**: `grammar-05-complex-compound` 24:15
 - **Core skills**: `reading-03-part-b` 7:47
-- **Correct the sentences**: `grammar-05-complex-compound` 54:24
+- **Correct the sentences**: `grammar-05-complex-compound` 55:25
 - **Correcting a paragraph**: `writing-06-word-order` 13:31
 - **Countable and uncountable nouns**: `grammar-04-articles` 10:02
 - **Countable noun**: `grammar-02-verb-use` 15:31; `grammar-04-articles` 17:58
@@ -9868,7 +9868,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Critical thinking**: `reading-04-part-c` 8:39
 - **Dangling participle**: `grammar-06-clause` 37:18
 - **Dates, times and units**: `grammar-07-punctuation` 82:36
-- **deal with**: `vocabulary-03-collocations-2` 29:14
+- **deal with**: `vocabulary-03-collocations-2` 28:52
 - **Decision**: `grammar-01-verb-tenses` 26:52
 - **Defining and non-defining**: `grammar-06-clause` 10:36
 - **defining and non-defining relative clauses**: `grammar-06-clause` 10:36
@@ -9876,14 +9876,14 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Denominalisation**: `grammar-03-nominalization` 51:34
 - **Dependent clause**: `grammar-05-complex-compound` 4:34; `grammar-07-punctuation` 6:42
 - **dis-**: `vocabulary-01-word-forms` 75:13
-- **do a quick check**: `vocabulary-03-collocations-2` 56:51
-- **DO tunnel**: `grammar-08-paraphrasing` 48:40
+- **do a quick check**: `vocabulary-03-collocations-2` 56:32
+- **DO tunnel**: `grammar-08-paraphrasing` 48:32
 - **Dos and don'ts**: `reading-02-part-a` 49:21
 - **Due to**: `grammar-05-complex-compound` 11:55; `grammar-07-punctuation` 10:15
-- **Due to, despite, as well as**: `grammar-05-complex-compound` 45:35
+- **Due to, despite, as well as**: `grammar-05-complex-compound` 45:36
 - **e.g**: `grammar-07-punctuation` 79:39
 - **Emphasis**: `listening-04-part-c` 8:56
-- **Exercise regime**: `vocabulary-03-collocations-2` 80:27
+- **Exercise regime**: `vocabulary-03-collocations-2` 80:08
 - **Expand**: `grammar-08-paraphrasing` 2:39
 - **Expressing reason with 'given'**: `grammar-06-clause` 52:37
 - **FANBOYS**: `grammar-05-complex-compound` 24:24; `grammar-07-punctuation` 14:58
@@ -9895,7 +9895,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Formal time-related expressions**: `grammar-03-nominalization` 40:51
 - **Four steps towards success**: `reading-01-overview` 15:14
 - **From case notes to a sentence**: `grammar-05-complex-compound` 9:49
-- **From case notes to one word**: `grammar-04-articles` 63:20
+- **From case notes to one word**: `grammar-04-articles` 62:28
 - **From case notes to sentences**: `writing-05-information-flow` 25:42
 - **From notes to sentences**: `writing-05-information-flow` 21:54
 - **From the plan**: `writing-04-introduction` 20:27
@@ -9905,17 +9905,17 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **future perfect**: `grammar-01-verb-tenses` 42:20
 - **future simple**: `grammar-01-verb-tenses` 20:16
 - **Gap fill**: `grammar-05-complex-compound` 32:43
-- **Gap fill: articles**: `grammar-04-articles` 60:25
+- **Gap fill: articles**: `grammar-04-articles` 59:34
 - **Genre and Style**: `writing-02-assessment-criteria` 21:24
-- **Gerund**: `grammar-05-complex-compound` 46:10
+- **Gerund**: `grammar-05-complex-compound` 46:11
 - **Gist**: `reading-03-part-b` 2:13
 - **given that**: `grammar-06-clause` 54:22
-- **Giving reassurance**: `vocabulary-03-collocations-2` 50:39
+- **Giving reassurance**: `vocabulary-03-collocations-2` 50:20
 - **Grade B in OET Writing**: `writing-02-assessment-criteria` 5:22
 - **Greeting and Re line**: `writing-03-letter-structure` 15:13; `writing-04-introduction` 3:42
 - **Had smoked**: `grammar-01-verb-tenses` 53:39
 - **Has been scheduled**: `grammar-01-verb-tenses` 96:52
-- **has not eased**: `vocabulary-03-collocations-2` 31:49
+- **has not eased**: `vocabulary-03-collocations-2` 31:27
 - **Has smoked**: `grammar-01-verb-tenses` 54:36
 - **hedging**: `reading-04-part-c` 12:37
 - **Hedging word**: `reading-04-part-c` 14:44
@@ -9939,9 +9939,9 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Indefinite article**: `grammar-04-articles` 10:52
 - **Independent clause**: `grammar-05-complex-compound` 4:15; `grammar-07-punctuation` 6:58
 - **Infinitive**: `grammar-01-verb-tenses` 6:43
-- **Initially**: `grammar-08-paraphrasing` 54:49
+- **Initially**: `grammar-08-paraphrasing` 54:31
 - **instead of which**: `vocabulary-01-word-forms` 63:38
-- **Instructions and advice**: `vocabulary-03-collocations-2` 60:29
+- **Instructions and advice**: `vocabulary-03-collocations-2` 60:09
 - **interview**: `listening-05-part-c-2` 4:40
 - **Introductory phrase**: `grammar-07-punctuation` 23:21
 - **Introductory phrases**: `grammar-07-punctuation` 23:16
@@ -9996,7 +9996,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Past participle**: `grammar-01-verb-tenses` 11:09; `grammar-06-clause` 28:43
 - **Past perfect**: `grammar-01-verb-tenses` 24:20
 - **past simple**: `grammar-01-verb-tenses` 20:16
-- **Patient friendly language**: `grammar-08-paraphrasing` 55:16
+- **Patient friendly language**: `grammar-08-paraphrasing` 54:58
 - **Perfect**: `grammar-01-verb-tenses` 3:05
 - **Perfect continuous**: `grammar-01-verb-tenses` 3:24
 - **perfect continuous tenses**: `grammar-01-verb-tenses` 44:34
@@ -10015,11 +10015,11 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Prescribe**: `vocabulary-02-collocations` 44:43
 - **Present participle**: `grammar-06-clause` 33:19
 - **present perfect**: `grammar-01-verb-tenses` 38:26; `grammar-02-verb-use` 11:52; `grammar-08-paraphrasing` 16:20
-- **present perfect continuous**: `vocabulary-03-collocations-2` 24:03
-- **present perfect passive**: `grammar-02-verb-use` 60:30; `grammar-08-paraphrasing` 56:41
+- **present perfect continuous**: `vocabulary-03-collocations-2` 23:40
+- **present perfect passive**: `grammar-02-verb-use` 60:30; `grammar-08-paraphrasing` 56:24
 - **present simple**: `grammar-01-verb-tenses` 20:16
-- **Prior to onset**: `grammar-08-paraphrasing` 44:15
-- **prn and tds**: `grammar-08-paraphrasing` 58:14
+- **Prior to onset**: `grammar-08-paraphrasing` 44:09
+- **prn and tds**: `grammar-08-paraphrasing` 57:57
 - **Provide**: `vocabulary-02-collocations` 25:33
 - **Punctuation in OET letters**: `grammar-07-punctuation` 39:46
 - **Purpose**: `writing-02-assessment-criteria` 5:57; `writing-04-introduction` 16:51
@@ -10031,7 +10031,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Reading test overview**: `reading-01-overview` 3:33
 - **Reading the notes for your reader**: `writing-08-reading-the-task` 7:43
 - **Reading the Writing Task**: `writing-08-reading-the-task` 3:14
-- **Rearrange**: `grammar-08-paraphrasing` 37:55
+- **Rearrange**: `grammar-08-paraphrasing` 37:49
 - **Recent visits and the plan**: `writing-08-reading-the-task` 12:41
 - **Reduced relative clause**: `grammar-06-clause` 19:08
 - **Reduced relative clauses**: `grammar-06-clause` 19:08
@@ -10063,13 +10063,13 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Signposts and tempting options**: `listening-04-part-c` 6:39
 - **Skim**: `reading-02-part-a` 17:42
 - **Skimming**: `reading-02-part-a` 12:17
-- **so ... that**: `vocabulary-03-collocations-2` 33:52
+- **so ... that**: `vocabulary-03-collocations-2` 33:30
 - **So far**: `grammar-01-verb-tenses` 82:04
 - **Specific noun**: `grammar-04-articles` 34:28
 - **Specific nouns**: `grammar-04-articles` 33:45
 - **Spot the correct sentence**: `grammar-04-articles` 49:22
 - **Spot the errors**: `writing-04-introduction` 14:05
-- **Stat dose**: `grammar-04-articles` 66:08
+- **Stat dose**: `grammar-04-articles` 65:16
 - **stative verb**: `grammar-01-verb-tenses` 73:52
 - **Steps towards successful writing**: `writing-01-overview` 3:00
 - **Strategies for Part A**: `listening-02-part-a` 2:25
@@ -10078,11 +10078,11 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Subordinate clause**: `grammar-05-complex-compound` 7:41
 - **Subordinating conjunction**: `grammar-05-complex-compound` 27:58
 - **Subordinating conjunctions**: `grammar-05-complex-compound` 15:44
-- **Subsequently**: `grammar-08-paraphrasing` 52:23
+- **Subsequently**: `grammar-08-paraphrasing` 52:16
 - **suggestive of**: `grammar-03-nominalization` 12:02
-- **Swollen**: `grammar-05-complex-compound` 56:32
+- **Swollen**: `grammar-05-complex-compound` 58:19
 - **symptomatic**: `grammar-03-nominalization` 9:53
-- **Synonyms**: `grammar-08-paraphrasing` 46:18
+- **Synonyms**: `grammar-08-paraphrasing` 46:11
 - **Target score**: `reading-02-part-a` 53:08; `reading-03-part-b` 55:50; `reading-04-part-c` 3:50
 - **Tempting wrong options**: `listening-03-part-b` 9:21
 - **Tense from the time word**: `writing-05-information-flow` 18:13
@@ -10134,8 +10134,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Top tips**: `reading-02-part-a` 17:27
 - **Treat**: `vocabulary-02-collocations` 50:42
 - **Treatment**: `grammar-03-nominalization` 31:03
-- **try to + simple verb**: `vocabulary-03-collocations-2` 66:14
-- **Types of pain**: `vocabulary-03-collocations-2` 12:44
+- **try to + simple verb**: `vocabulary-03-collocations-2` 65:54
+- **Types of pain**: `vocabulary-03-collocations-2` 12:32
 - **Uncountable nouns: non-specific**: `grammar-04-articles` 25:07
 - **undergo (past: underwent)**: `grammar-04-articles` 26:44
 - **US**: `grammar-04-articles` 15:41
@@ -10161,13 +10161,13 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **What Part C tests**: `listening-04-part-c` 3:47
 - **What you hear in Part C**: `listening-04-part-c` 2:29
 - **which**: `vocabulary-01-word-forms` 70:53
-- **While**: `grammar-08-paraphrasing` 43:42
+- **While**: `grammar-08-paraphrasing` 43:36
 - **While you listen: signal words**: `listening-03-part-b` 6:58; `listening-04-part-c` 8:00
 - **who**: `vocabulary-01-word-forms` 69:49
 - **Who speaks, and a target score**: `listening-02-part-a` 15:40
 - **Who, what, where, when, why**: `writing-06-word-order` 1:52
 - **Will have smoked**: `grammar-01-verb-tenses` 56:10
-- **woke up**: `vocabulary-03-collocations-2` 33:23
+- **woke up**: `vocabulary-03-collocations-2` 33:00
 - **Word bank**: `reading-03-part-b` 57:12
 - **Word count of the letter body**: `writing-01-overview` 8:36
 - **word forms**: `vocabulary-01-word-forms` 2:26
