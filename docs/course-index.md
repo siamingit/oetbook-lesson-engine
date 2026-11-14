@@ -1,8 +1,8 @@
 # Course index
 
-What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.1; decision: `docs/adr/038-public-course-index.md`.
+What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.2; decision: `docs/adr/038-public-course-index.md`.
 
-29 lessons, 273 sections, 639 board topics, 4563 teaching points, 284 rules and 66 warnings, 488 terms, 180 OET facts, 74 methods, 523 vocabulary items (189 from the word bank), 62 practice questions and note forms, 131 links to other lessons, 403 topics in the topic index.
+32 lessons, 318 sections, 687 board topics, 4772 teaching points, 317 rules and 66 warnings, 488 terms, 180 OET facts, 74 methods, 539 vocabulary items (189 from the word bank), 62 practice questions and note forms, 131 links to other lessons, 438 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -11,6 +11,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 - Reading: [Reading for OET: Overview](#reading-01-overview), [Reading for OET: Part A](#reading-02-part-a), [Reading for OET: Part B](#reading-03-part-b), [Reading Part C (1)](#reading-04-part-c), [Reading Part C (2): More Practice](#reading-05-part-c-2)
 - Listening: [OET Listening: Overview](#listening-01-overview), [OET Listening: Part A](#listening-02-part-a), [OET Listening: Part B](#listening-03-part-b), [OET Listening: Part C (1)](#listening-04-part-c), [OET Listening: Part C (2)](#listening-05-part-c-2)
 - Writing: [OET Writing: Overview](#writing-01-overview), [OET Writing: Assessment Criteria](#writing-02-assessment-criteria), [OET Writing: Letter Structure](#writing-03-letter-structure), [OET Writing: The Opening Paragraph](#writing-04-introduction), [OET Writing: Information Flow](#writing-05-information-flow), [OET Writing: Word Order](#writing-06-word-order), [OET Writing: Organising the Letter](#writing-07-organisation), [OET Writing: Reading the Task and the Case Notes](#writing-08-reading-the-task)
+- Speaking: [OET Speaking: The Test and the Role-Play](#speaking-01-the-test), [OET Speaking: Reading the Card](#speaking-02-reading-the-card), [OET Speaking: Starting the Role-Play](#speaking-03-starting)
 
 ---
 
@@ -9769,17 +9770,641 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ---
 
+# Speaking
+
+| # | Lesson | Lesson ID | Length | Sections | Approved |
+|---|---|---|---|---|---|
+| 1 | OET Speaking: The Test and the Role-Play | `speaking-01-the-test` | 23:22 | 12 | 2026-11-14 11:40 (siavash) |
+| 2 | OET Speaking: Reading the Card | `speaking-02-reading-the-card` | 26:12 | 16 | 2026-11-14 12:05 (siavash) |
+| 3 | OET Speaking: Starting the Role-Play | `speaking-03-starting` | 23:31 | 17 | 2026-11-14 11:54 (siavash) |
+
+<a id="speaking-01-the-test"></a>
+
+## 1. OET Speaking: The Test and the Role-Play
+
+- Lesson ID and folder: `speaking-01-the-test` (folder `speaking-01-the-test`); course speaking, lesson 1; length 23:22; bundle format 1.24
+- Status: approved by siavash, 2026-11-14 11:40
+- Description: Learn how the OET Speaking test works, how it is marked, and the shape of a role-play, and say your first lines with a patient.
+- Original session: none (a lesson with no recording and no deck, ADR 047)
+  - An authored lesson (ADR 047), the first of the Speaking course. Its method follows the owner's recorded Speaking session "Speaking Overview" (S1): the test day, who is who, the criteria, the five stages and his closing advice. Every exam fact is checked against docs/speaking-facts.md and corrected where the session differs; no OET sample material is used (#189 (9)).
+- Parts: The test; The marks; Clinical communication; A role-play; Your first card; Your first role-play
+
+### Sections
+
+#### 0:00 Introduction (`page-100`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 0:51 **Contents board**
+  - 0:52 each category, revealed as it is named
+
+#### 1:34 The test day (`added-01`, authored)
+
+- 1:34 **The test day**
+  - 1:34 the test day
+  - 1:54 the ID check
+  - 2:05 the warm-up
+  - 2:20 role-play 1
+  - 2:34 role-play 2
+  - 2:48 missing a word
+  - 3:10 your turn
+
+*Rules on the boards*
+
+- 3:18 Short and kind. Never just 'What?'
+
+#### 3:30 People and the card (`added-02`, authored)
+
+- 3:30 **People and the card**
+  - 3:30 Who is who
+  - 3:38 Two hard words
+  - 4:29 Your voice counts
+  - 4:44 Your card
+  - 5:00 Not every task
+
+*Rules on the boards*
+
+- 4:29 So talk to the patient. The assessors mark what they hear.
+- 5:00 You do not have to finish every task. Move through as many as you can.
+
+#### 5:19 How you are marked (`added-03`, authored)
+
+- 5:19 **How you are marked**
+  - 5:19 two groups of criteria
+  - 5:47 a hard word
+  - 6:09 grade B
+  - 6:23 mistakes
+
+*Rules on the boards*
+
+- 6:09 Grade B: mostly 5 out of 6 for language, and 2 out of 3 for clinical communication.
+- 6:23 OET says: "Assessors do not count how many mistakes you make."
+
+#### 6:41 The language criteria (`added-04`, authored)
+
+- 6:41 **The language criteria**
+  - 6:41 the language criteria
+  - 7:03 intelligibility
+  - 7:27 fluency
+  - 7:48 your turn
+  - 8:09 appropriateness
+  - 8:34 your turn
+  - 8:46 the model
+  - 9:05 grammar and expression
+  - 9:18 different words
+
+*Wrong sentences corrected*
+
+- 7:14 Don't: speak too fast, or too quietly.
+- 7:36 Don't: stop for a long time, or say 'um' again and again.
+- 8:15 Don't: use medical words like 'hypertension' without saying what they mean.
+- 9:11 Don't say: 'When the pain start?'
+
+#### 9:31 Five skills with patients (`added-05`, authored)
+
+- 9:31 **Five skills with patients**
+  - 9:31 five skills
+  - 9:57 relationship building
+  - 10:26 the patient's perspective
+  - 10:53 providing structure
+  - 11:11 match A to C
+  - 11:24 the answers A to C
+  - 11:45 information gathering
+  - 12:11 information giving
+  - 12:21 match C to E
+  - 12:34 the answers C to E
+  - 12:45 say them
+  - 13:14 a patient speaks
+  - 13:33 the model
+
+*Rules on the boards*
+
+- 11:24 What comes next: C. The patient's ideas: B.
+- 12:34 Explaining, then checking: E. Questions to find out more: D.
+- 12:59 Say them often. Then they come easily in the test.
+
+*Wrong sentences corrected*
+
+- 10:02 Don't: hear a worry, and go on to the next question.
+- 10:30 Don't: talk only about the illness.
+- 10:59 Don't: ask many at once: 'How long? Where? Is it bad?'
+- 11:52 Don't: stop the patient while they are talking.
+- 12:15 Don't: give a lot of information at once.
+
+#### 13:46 The five stages (`added-06`, authored)
+
+- 13:46 **The five stages**
+  - 13:46 the shape of a role-play
+  - 14:13 the history
+  - 14:40 reassure
+  - 15:04 sum up
+  - 15:19 the end
+  - 15:33 concern
+  - 15:43 your turn
+  - 15:53 the model
+
+*Rules on the boards*
+
+- 13:56 You lead the conversation.
+
+#### 16:01 Starting a role-play (`added-07`, authored)
+
+- 16:01 **Starting a role-play**
+  - 16:01 the start
+  - 16:25 who you are
+  - 16:54 the main problem
+  - 17:05 your turn
+
+#### 17:33 A role-play card (`added-08`, authored)
+
+- 17:33 **A role-play card**
+  - 17:33 the card
+  - 18:21 the scenario
+  - 18:40 the tasks
+  - 19:28 the facts
+  - 19:37 prepare
+
+*Rules on the boards*
+
+- 19:37 Three minutes before you start: read the tasks, and make notes.
+
+#### 19:57 Your role-play: the start (`added-09`, authored)
+
+- 19:57 **Your role-play: the start**
+  - 19:57 the start of the role-play
+  - 20:08 your turn
+
+#### 20:51 Your role-play: the rest (`added-10`, authored)
+
+- 20:51 **Your role-play: the rest**
+  - 20:51 the rest of the role-play
+  - 21:00 your turn
+  - 22:01 the end
+  - 22:14 the five steps
+
+*Rules on the boards*
+
+- 22:14 Start, ask, explain, reassure, and end.
+
+#### 22:27 Closing (`added-11`, closing)
+
+- 22:27 **Closing**
+  - 22:31 Recap
+  - 23:04 Say them aloud
+
+*Rules on the boards*
+
+- 23:04 Say them aloud: 'Oh, I'm sorry to hear that.' 'Can I ask you some questions?'
+
+### Vocabulary
+
+First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
+
+- 3:38 interlocutor
+- 4:09 assessor
+- 5:47 criteria
+- 14:13 history
+- 14:40 reassure
+- 15:04 sum up
+- 15:33 concern
+
+### Links to other lessons
+
+- continues in OET Speaking: Reading the Card (`speaking-02-reading-the-card`): the closing names it as the next lesson
+
+
+<a id="speaking-02-reading-the-card"></a>
+
+## 2. OET Speaking: Reading the Card
+
+- Lesson ID and folder: `speaking-02-reading-the-card` (folder `speaking-02-reading-the-card`); course speaking, lesson 2; length 26:12; bundle format 1.24
+- Status: approved by siavash, 2026-11-14 12:05
+- Description: Learn how to read a role-play card in three minutes: what to read first, what to note, and how to turn the tasks into your first sentences.
+- Original session: none (a lesson with no recording and no deck, ADR 047)
+  - An authored lesson (ADR 047), the second of the Speaking course. Its method is the owner's way of reading the role-play card in his recorded sessions "Speaking Overview" (S1) and "Starting the Role-Play" (S2); the three cards are the lesson's own, and every exam fact comes from docs/speaking-facts.md (#189 (9)).
+- Parts: Before you speak; The place and you; The patient; Tasks and brackets; Your notes; Card 2: a pharmacy; Card 3 and the end
+
+### Sections
+
+#### 0:00 Introduction (`page-100`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 0:55 **Contents board**
+  - 0:57 each category, revealed as it is named
+
+#### 1:45 Your three minutes (`added-01`, authored)
+
+- 1:45 **Your three minutes**
+  - 1:45 three minutes
+  - 2:16 read it all
+  - 2:36 notes
+  - 2:51 your first lines
+  - 2:59 look back
+  - 3:14 short notes
+
+*Rules on the boards*
+
+- 2:59 In the role-play, you can look at the card at any time.
+
+#### 3:23 What to read first (`added-02`, authored)
+
+- 3:23 **What to read first**
+  - 3:23 card 1
+  - 3:51 the setting
+  - 4:03 who you are
+  - 4:27 the scenario
+  - 4:42 the tasks
+  - 5:00 a hard word
+
+#### 5:33 The setting (`added-03`, authored)
+
+- 5:33 **The setting**
+  - 5:33 met before?
+  - 5:39 the place
+  - 6:14 a first meeting
+  - 6:35 the model, first meeting
+  - 6:56 met before
+  - 7:07 the model, met before
+
+#### 7:21 Who you are (`added-04`, authored)
+
+- 7:21 **Who you are**
+  - 7:21 two ways
+  - 7:57 the card
+  - 8:12 your shift
+  - 8:33 say both
+
+#### 8:55 The patient's name (`added-05`, authored)
+
+- 8:55 **The patient's name**
+  - 8:55 the name
+  - 9:25 the person you talk with
+  - 9:48 your turn
+  - 10:11 another patient
+  - 10:31 the model
+
+*Rules on the boards*
+
+- 9:25 Don't guess Mr or Mrs: use the name and title the patient gives you, and if you are unsure, use 'you'.
+
+#### 10:45 Feeling words (`added-06`, authored)
+
+- 10:45 **Feeling words**
+  - 11:04 Feeling words
+  - 11:30 The tone
+  - 11:47 A different view
+  - 12:16 The model
+
+*Rules on the boards*
+
+- 11:30 The feeling word tells you your tone: how your voice sounds.
+
+#### 12:33 The tasks (`added-07`, authored)
+
+- 12:33 **The tasks**
+  - 12:33 the tasks of card 1
+  - 13:14 in order
+  - 13:23 your time
+  - 13:42 the end
+
+*Rules on the boards*
+
+- 13:42 You do not have to finish every task. But move through the tasks.
+
+#### 13:57 The brackets (`added-08`, authored)
+
+- 13:57 **The brackets**
+  - 13:57 a task and its brackets
+  - 14:13 the facts
+  - 14:24 two hard words
+  - 14:51 the question
+  - 15:05 the model
+
+*Rules on the boards*
+
+- 14:13 The brackets give you the facts. Use them. You don't need to look for more.
+
+#### 15:31 What to note (`added-09`, authored)
+
+- 15:31 **What to note**
+  - 15:31 your notes
+  - 15:54 key words
+  - 16:11 her questions
+  - 16:27 words, not sentences
+  - 16:46 the model
+
+#### 16:56 Tasks into sentences (`added-10`, authored)
+
+- 16:56 **Tasks into sentences**
+  - 16:56 first sentences
+  - 17:22 explain
+  - 17:46 say them
+  - 18:18 a question
+  - 18:34 the model
+
+*Rules on the boards*
+
+- 18:12 Say them often. Then they come easily.
+
+#### 18:44 A pharmacy card (`added-11`, authored)
+
+- 18:44 **A pharmacy card**
+  - 18:44 card 2
+  - 19:20 the feeling
+  - 19:48 the brackets
+
+#### 20:27 Pharmacy role-play (`added-12`, authored)
+
+- 20:27 **Pharmacy role-play**
+  - 20:27 the pharmacy role-play
+  - 20:54 a hard phrase
+  - 21:09 your turn
+  - 22:16 calm and kind
+
+*Rules on the boards*
+
+- 22:16 Stay calm and kind. Do every task on the card.
+
+#### 22:25 A follow-up card (`added-13`, authored)
+
+- 22:25 **A follow-up card**
+  - 22:25 card 3
+  - 22:48 met before
+  - 23:03 the feeling
+  - 23:53 the first line
+
+#### 23:59 Follow-up role-play (`added-14`, authored)
+
+- 23:59 **Follow-up role-play**
+  - 23:59 the follow-up role-play
+  - 24:07 your turn
+  - 25:11 start warmly
+
+*Rules on the boards*
+
+- 25:11 Start warmly. Do every task on the card.
+
+#### 25:20 Closing (`added-15`, closing)
+
+- 25:20 **Closing**
+  - 25:27 Recap
+  - 25:42 Practise
+
+*Rules on the boards*
+
+- 25:42 Practise: one card, three minutes. Read it, make notes, then say your first lines aloud.
+
+### Vocabulary
+
+First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
+
+- 5:00 reassure
+- 8:12 shift
+- 14:24 walking frame
+- 14:39 crutches
+- 20:54 fed up
+
+### Links to other lessons
+
+- continues in OET Speaking: Starting the Role-Play (`speaking-03-starting`): the closing names it as the next lesson
+- continues from OET Speaking: The Test and the Role-Play (`speaking-01-the-test`): the closing names it as the next lesson
+
+
+<a id="speaking-03-starting"></a>
+
+## 3. OET Speaking: Starting the Role-Play
+
+- Lesson ID and folder: `speaking-03-starting` (folder `speaking-03-starting`); course speaking, lesson 3; length 23:31; bundle format 1.24
+- Status: approved by siavash, 2026-11-14 11:54
+- Description: Learn the first minute of the role-play: greet the patient, say who you are, check the name, say why you are there, and ask your first question.
+- Original session: none (a lesson with no recording and no deck, ADR 047)
+  - An authored lesson (ADR 047), the third of the Speaking course. Its method is the owner's recorded session "Starting the Role-Play" (S2): his four steps, a first meeting or met before, introductions by setting and opening questions; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md (#189 (9)).
+- Parts: The first minute; The patient's name; Why you are there; The first question; Card 1: first meeting; Card 2 and the end
+
+### Sections
+
+#### 0:00 Introduction (`page-100`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 0:57 **Contents board**
+  - 0:59 each category, revealed as it is named
+
+#### 1:45 You lead the start (`added-01`, authored)
+
+- 1:45 **You lead the start**
+  - 1:45 four steps
+  - 2:08 greet
+  - 2:18 who you are
+  - 2:29 your role
+  - 2:41 why
+  - 2:57 keep it short
+
+*Rules on the boards*
+
+- 1:49 You start the talk. The patient waits for you.
+- 2:57 Keep the start short. The role-play is only about five minutes.
+
+#### 3:08 Greeting the patient (`added-02`, authored)
+
+- 3:08 **Greeting the patient**
+  - 3:08 which greeting?
+  - 3:25 a word
+  - 3:33 the time of day
+  - 3:45 your voice
+  - 3:55 say it
+  - 4:06 the model
+
+#### 4:15 Who you are (`added-03`, authored)
+
+- 4:15 **Who you are**
+  - 4:15 two ways
+  - 4:52 the card
+  - 5:07 one of
+  - 5:21 say both
+
+*Rules on the boards*
+
+- 5:14 The first way: your name, then your job. Keep it short.
+
+#### 5:46 Introductions by setting (`added-04`, authored)
+
+- 5:46 **Introductions by setting**
+  - 5:46 by setting
+  - 6:05 a word
+  - 6:23 the place
+  - 6:34 a pharmacy
+  - 6:48 say three
+
+#### 7:12 Checking the name (`added-05`, authored)
+
+- 7:12 **Checking the name**
+  - 7:12 the name
+  - 7:30 the check
+  - 7:39 from the card
+  - 7:59 your turn
+  - 8:15 the model
+
+*Rules on the boards*
+
+- 7:30 On a first meeting, check the patient's name.
+
+#### 8:36 Names and titles (`added-06`, authored)
+
+- 8:36 **Names and titles**
+  - 8:36 what did the patient say?
+  - 8:50 the person you talk with
+  - 9:18 no title added
+  - 9:37 your turn
+  - 9:52 the model
+
+*Rules on the boards*
+
+- 8:50 Don't guess Mr or Mrs: use the name and title the patient gives you, and if you are unsure, use 'you'.
+
+#### 10:03 Your role and why (`added-07`, authored)
+
+- 10:03 **Your role and why**
+  - 10:03 your role and why
+  - 10:16 your role
+  - 10:34 why
+  - 10:46 the check
+  - 11:04 say them
+
+*Rules on the boards*
+
+- 10:46 Then check: 'Is that all right with you?' It shows respect.
+
+#### 11:30 Met before or not (`added-08`, authored)
+
+- 11:30 **Met before or not**
+  - 11:35 Three starts
+  - 11:55 The card tells you
+  - 12:04 An emergency
+  - 12:25 Your turn
+  - 12:34 The model
+
+*Rules on the boards*
+
+- 11:55 The card tells you if you have met the patient before.
+
+#### 12:46 Opening questions (`added-09`, authored)
+
+- 12:46 **Opening questions**
+  - 12:46 opening questions
+  - 13:04 open
+  - 13:27 polite
+  - 13:35 your tone
+  - 14:01 say them
+
+*Rules on the boards*
+
+- 13:35 Say it in a warm voice. The tone (the feeling in your voice) matters, not only the words.
+
+#### 14:28 The patient's first line (`added-10`, authored)
+
+- 14:28 **The patient's first line**
+  - 14:28 the first line
+  - 14:40 listen
+  - 14:48 your turn
+  - 15:04 short
+  - 15:22 another
+  - 15:38 the model
+
+*Rules on the boards*
+
+- 15:04 First a short answer: 'I'm sorry to hear that.' Then a question.
+
+#### 15:47 Into the history (`added-11`, authored)
+
+- 15:47 **Into the history**
+  - 15:47 from hello to the history
+  - 16:00 a question
+  - 16:13 listen
+  - 16:28 your turn
+  - 16:44 the model
+
+#### 16:52 A first-meeting card (`added-12`, authored)
+
+- 16:52 **A first-meeting card**
+  - 16:52 card 1
+  - 17:42 first meeting
+  - 17:54 the feeling
+  - 18:08 task 1
+
+#### 18:43 First-meeting role-play (`added-13`, authored)
+
+- 18:43 **First-meeting role-play**
+  - 18:43 the first-meeting role-play
+  - 18:51 your turn
+  - 19:48 a first meeting
+
+*Rules on the boards*
+
+- 19:48 Greet, say who you are, check the name, thank the patient, and explain today's visit.
+
+#### 19:59 A follow-up card (`added-14`, authored)
+
+- 19:59 **A follow-up card**
+  - 19:59 card 2
+  - 20:09 a community nurse
+  - 20:31 a word
+  - 20:44 met before
+  - 21:07 the first line
+
+#### 21:26 Follow-up role-play (`added-15`, authored)
+
+- 21:26 **Follow-up role-play**
+  - 21:26 the follow-up role-play
+  - 21:33 your turn
+  - 22:27 a warm hello
+
+*Rules on the boards*
+
+- 22:27 A warm hello. No long introduction.
+
+#### 22:41 Closing (`added-16`, closing)
+
+- 22:41 **Closing**
+  - 22:46 Recap
+  - 22:58 Practise
+
+*Rules on the boards*
+
+- 22:58 Practise: choose a job and a place. Say the first minute aloud, five times.
+
+### Vocabulary
+
+First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
+
+- 3:25 greet
+- 6:05 radiographer
+- 17:26 sprain
+- 20:31 dressing
+
+### Links to other lessons
+
+- continues from OET Speaking: Reading the Card (`speaking-02-reading-the-card`): the closing names it as the next lesson
+
+
+---
+
 # Topic index
 
 Each topic or term, then each lesson that teaches it and the first moment there.
 
 - **a (indefinite article)**: `vocabulary-03-collocations-2` 26:00
 - **a fifty-year-old teacher**: `grammar-08-paraphrasing` 23:00
+- **A first-meeting card**: `speaking-03-starting` 16:52
+- **A follow-up card**: `speaking-02-reading-the-card` 22:25; `speaking-03-starting` 19:59
 - **A letter with gaps**: `writing-06-word-order` 21:22
 - **A needle in a haystack**: `reading-02-part-a` 1:48
 - **A or an**: `grammar-04-articles` 11:27
 - **A paragraph corrected**: `writing-06-word-order` 13:31
+- **A pharmacy card**: `speaking-02-reading-the-card` 18:44
 - **A quick review of the method**: `reading-05-part-c-2` 1:23; `listening-05-part-c-2` 1:10
+- **A role-play card**: `speaking-01-the-test` 17:33
 - **A sample letter**: `writing-01-overview` 14:05
 - **A target score for Part B**: `listening-03-part-b` 11:46
 - **A target score for Part C**: `listening-04-part-c` 9:16
@@ -9824,6 +10449,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Case notes and the Writing Task**: `writing-01-overview` 13:48
 - **Case notes: error correction**: `grammar-01-verb-tenses` 114:53
 - **Case-note abbreviations**: `grammar-07-punctuation` 87:44
+- **Checking the name**: `speaking-03-starting` 7:12
 - **Choosing the right word form**: `vocabulary-01-word-forms` 2:26
 - **choosing the tense**: `grammar-02-verb-use` 9:39
 - **Chronological or thematic**: `writing-07-organisation` 13:26
@@ -9888,9 +10514,13 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Expressing reason with 'given'**: `grammar-06-clause` 52:37
 - **FANBOYS**: `grammar-05-complex-compound` 24:24; `grammar-07-punctuation` 14:58
 - **Fast reading**: `reading-01-overview` 13:36
+- **Feeling words**: `speaking-02-reading-the-card` 10:45
 - **Final practice**: `grammar-07-punctuation` 92:07
+- **First-meeting role-play**: `speaking-03-starting` 18:43
 - **Five questions**: `writing-04-introduction` 23:32
+- **Five skills with patients**: `speaking-01-the-test` 9:31
 - **Follow-up**: `grammar-07-punctuation` 96:39
+- **Follow-up role-play**: `speaking-02-reading-the-card` 23:59; `speaking-03-starting` 21:26
 - **For and since**: `grammar-01-verb-tenses` 39:20
 - **Formal time-related expressions**: `grammar-03-nominalization` 40:51
 - **Four steps towards success**: `reading-01-overview` 15:14
@@ -9913,6 +10543,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Giving reassurance**: `vocabulary-03-collocations-2` 50:20
 - **Grade B in OET Writing**: `writing-02-assessment-criteria` 5:22
 - **Greeting and Re line**: `writing-03-letter-structure` 15:13; `writing-04-introduction` 3:42
+- **Greeting the patient**: `speaking-03-starting` 3:08
 - **Had smoked**: `grammar-01-verb-tenses` 53:39
 - **Has been scheduled**: `grammar-01-verb-tenses` 96:52
 - **has not eased**: `vocabulary-03-collocations-2` 31:27
@@ -9929,6 +10560,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **How to improve your listening**: `listening-01-overview` 10:12
 - **How to practise**: `listening-02-part-a` 14:12
 - **How verb + noun collocations are formed**: `vocabulary-02-collocations` 7:11
+- **How you are marked**: `speaking-01-the-test` 5:19
 - **How your letter is scored**: `writing-02-assessment-criteria` 4:02
 - **However**: `grammar-08-paraphrasing` 33:49
 - **HTN**: `grammar-02-verb-use` 19:55
@@ -9943,6 +10575,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **instead of which**: `vocabulary-01-word-forms` 63:38
 - **Instructions and advice**: `vocabulary-03-collocations-2` 60:09
 - **interview**: `listening-05-part-c-2` 4:40
+- **Into the history**: `speaking-03-starting` 15:47
 - **Introductory phrase**: `grammar-07-punctuation` 23:21
 - **Introductory phrases**: `grammar-07-punctuation` 23:16
 - **Joining sentences with relative pronouns**: `vocabulary-01-word-forms` 43:34
@@ -9958,9 +10591,11 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Main point or detail?**: `listening-03-part-b` 3:46
 - **May have been triggered**: `grammar-01-verb-tenses` 126:18
 - **Medical terms: vocabulary and word form**: `vocabulary-01-word-forms` 18:59
+- **Met before or not**: `speaking-03-starting` 11:30
 - **Monitor**: `vocabulary-02-collocations` 32:01
 - **Multiple choice**: `reading-01-overview` 7:48; `listening-01-overview` 3:38
 - **Multiple choice (3 options)**: `reading-03-part-b` 6:29
+- **Names and titles**: `speaking-03-starting` 8:36
 - **neither of which**: `vocabulary-01-word-forms` 64:31
 - **Nominalisation**: `grammar-03-nominalization` 1:57; `grammar-04-articles` 55:27; `grammar-08-paraphrasing` 5:29
 - **Non-defining clause**: `grammar-07-punctuation` 36:11
@@ -9975,6 +10610,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **one of which**: `vocabulary-01-word-forms` 67:44
 - **One test for every profession**: `writing-01-overview` 1:31
 - **Opening frames**: `writing-04-introduction` 27:22
+- **Opening questions**: `speaking-03-starting` 12:46
 - **opinion signals**: `reading-04-part-c` 12:37
 - **Order**: `vocabulary-02-collocations` 63:02
 - **Ordering the paragraphs**: `writing-07-organisation` 13:26
@@ -9997,6 +10633,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Past perfect**: `grammar-01-verb-tenses` 24:20
 - **past simple**: `grammar-01-verb-tenses` 20:16
 - **Patient friendly language**: `grammar-08-paraphrasing` 54:58
+- **People and the card**: `speaking-01-the-test` 3:30
 - **Perfect**: `grammar-01-verb-tenses` 3:05
 - **Perfect continuous**: `grammar-01-verb-tenses` 3:24
 - **perfect continuous tenses**: `grammar-01-verb-tenses` 44:34
@@ -10005,6 +10642,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Perfect tenses on a timeline**: `grammar-01-verb-tenses` 53:02
 - **Perform**: `vocabulary-02-collocations` 37:59
 - **Peripheral vision**: `reading-02-part-a` 18:23
+- **Pharmacy role-play**: `speaking-02-reading-the-card` 20:27
 - **phrase**: `writing-06-word-order` 11:37
 - **Phrases at the start of a sentence**: `writing-06-word-order` 11:30
 - **Physical symptoms**: `grammar-03-nominalization` 9:07
@@ -10069,6 +10707,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Specific nouns**: `grammar-04-articles` 33:45
 - **Spot the correct sentence**: `grammar-04-articles` 49:22
 - **Spot the errors**: `writing-04-introduction` 14:05
+- **Starting a role-play**: `speaking-01-the-test` 16:01
 - **Stat dose**: `grammar-04-articles` 65:16
 - **stative verb**: `grammar-01-verb-tenses` 73:52
 - **Steps towards successful writing**: `writing-01-overview` 3:00
@@ -10084,6 +10723,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **symptomatic**: `grammar-03-nominalization` 9:53
 - **Synonyms**: `grammar-08-paraphrasing` 46:11
 - **Target score**: `reading-02-part-a` 53:08; `reading-03-part-b` 55:50; `reading-04-part-c` 3:50
+- **Tasks into sentences**: `speaking-02-reading-the-card` 16:56
 - **Tempting wrong options**: `listening-03-part-b` 9:21
 - **Tense from the time word**: `writing-05-information-flow` 18:13
 - **Tense in the letter**: `writing-02-assessment-criteria` 21:05
@@ -10091,13 +10731,16 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The -ing form (present participle)**: `grammar-06-clause` 22:31
 - **The address**: `writing-03-letter-structure` 13:01
 - **The body**: `writing-03-letter-structure` 18:34
+- **The brackets**: `speaking-02-reading-the-card` 13:57
 - **The case notes**: `writing-01-overview` 9:46
 - **The closing sentence**: `writing-07-organisation` 25:56
 - **The date**: `writing-03-letter-structure` 10:22
 - **The date at the top of the letter**: `writing-03-letter-structure` 12:52
 - **The five minutes**: `writing-08-reading-the-task` 1:19
+- **The five stages**: `speaking-01-the-test` 13:46
 - **The flow of a whole letter**: `writing-05-information-flow` 34:45
 - **The ISBAR approach**: `writing-07-organisation` 4:07
+- **The language criteria**: `speaking-01-the-test` 6:41
 - **The Listening test**: `listening-01-overview` 1:12
 - **The opening paragraph**: `writing-04-introduction` 1:56
 - **The other day**: `grammar-01-verb-tenses` 80:57
@@ -10107,6 +10750,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The parts of a letter**: `writing-03-letter-structure` 5:28
 - **the passive**: `grammar-01-verb-tenses` 67:12
 - **The patient's age in the opening**: `writing-04-introduction` 12:45
+- **The patient's first line**: `speaking-03-starting` 14:28
+- **The patient's name**: `speaking-02-reading-the-card` 8:55
 - **The perfect forms**: `grammar-01-verb-tenses` 53:05
 - **The QAT method**: `reading-03-part-b` 11:23
 - **The QTA method**: `reading-04-part-c` 19:31
@@ -10115,10 +10760,13 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The request and closing paragraph**: `writing-07-organisation` 22:02
 - **The request at the end of the letter**: `writing-03-letter-structure` 23:01
 - **The request paragraph**: `writing-05-information-flow` 31:47; `writing-07-organisation` 22:02
+- **The setting**: `speaking-02-reading-the-card` 5:33
 - **The six assessment criteria**: `writing-02-assessment-criteria` 1:27
 - **The six criteria**: `writing-02-assessment-criteria` 1:24
 - **The six questions, then the whole interview**: `listening-05-part-c-2` 4:40
 - **The six questions, then the whole talk**: `listening-04-part-c` 9:36
+- **The tasks**: `speaking-02-reading-the-card` 12:33
+- **The test day**: `speaking-01-the-test` 1:34
 - **The verb and its object; the time first**: `writing-06-word-order` 5:06
 - **The Writing paper**: `writing-03-letter-structure` 1:38
 - **The Writing test**: `writing-01-overview` 5:16
@@ -10159,12 +10807,15 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **What is nominalisation?**: `grammar-03-nominalization` 1:57
 - **What Part B tests**: `reading-03-part-b` 1:38
 - **What Part C tests**: `listening-04-part-c` 3:47
+- **What to note**: `speaking-02-reading-the-card` 15:31
+- **What to read first**: `speaking-02-reading-the-card` 3:23
 - **What you hear in Part C**: `listening-04-part-c` 2:29
 - **which**: `vocabulary-01-word-forms` 70:53
 - **While**: `grammar-08-paraphrasing` 43:36
 - **While you listen: signal words**: `listening-03-part-b` 6:58; `listening-04-part-c` 8:00
 - **who**: `vocabulary-01-word-forms` 69:49
 - **Who speaks, and a target score**: `listening-02-part-a` 15:40
+- **Who you are**: `speaking-02-reading-the-card` 7:21; `speaking-03-starting` 4:15
 - **Who, what, where, when, why**: `writing-06-word-order` 1:52
 - **Will have smoked**: `grammar-01-verb-tenses` 56:10
 - **woke up**: `vocabulary-03-collocations-2` 33:00
@@ -10174,5 +10825,10 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Word meaning**: `reading-02-part-a` 56:52
 - **Word order**: `writing-06-word-order` 3:09
 - **Words to avoid**: `writing-05-information-flow` 10:13
+- **You lead the start**: `speaking-03-starting` 1:45
+- **Your role and why**: `speaking-03-starting` 10:03
+- **Your role-play: the rest**: `speaking-01-the-test` 20:51
+- **Your role-play: the start**: `speaking-01-the-test` 19:57
+- **Your three minutes**: `speaking-02-reading-the-card` 1:45
 - **Your turn: a doctor's notes**: `writing-08-reading-the-task` 21:09
 - **Zero article**: `grammar-04-articles` 49:50

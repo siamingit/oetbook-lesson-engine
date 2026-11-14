@@ -147,3 +147,24 @@ index, so the index gains its fifth course:
   docs/writing-facts.md states it, with the fact sheet's number in brackets.
 - The 21 lessons already indexed are unchanged, except that the lessons the new one refers to
   (Paraphrasing, Verb Tenses) list it under `referred_to_by` (checked by a diff of the JSON).
+
+## Amendment, 2026-11-14: the Speaking course (schema 1.2)
+
+Under the brief of 2026-11-14 (oetacademy-web #318: "add the three Speaking lessons to docs/course-index.json at v1,
+in course order"), Speaking 1-3 enter the public index, so the index gains its sixth course:
+
+- **Schema 1.2**: `speaking` is added to the course enumerations (`courses[].id`, `lessons[].course`); the courses'
+  order is Grammar, Vocabulary, Reading, Listening, Writing, Speaking. Nothing is removed or renamed; a 1.1 reader
+  that ignores the Speaking course reads every other lesson as before.
+- `build_public_course_index.py` lists the course (`COURSES`); nothing else in the builder changes. A Speaking
+  lesson has no practice set and no deck exercises; its speaking points (ADR 053, ADR 055) are not read by the
+  builder, so no item's wording or model answer enters the index.
+- Each Speaking lesson has a curated entry (`--verify` requires one) with its `session` note only: what the docs
+  record about its source (the owner's recorded sessions S1 and S2, ADR 047, docs/speaking-facts.md) and empty
+  `facts`, `methods`, `continues_in` and `topics`. The Speaking facts are numbers of `docs/speaking-facts.md`, which
+  the builder does not read (an integer fact is a Listening fact), and anchoring each fact and method to the utterance
+  that teaches it is reviewed work for a later index change. Until then the lessons are indexed from their own files
+  (sections, boards, terms, the closing's next lesson). The index has no version field: v1 shows as `status`
+  `approved` with the final gate's `approval`.
+- The 29 lessons already indexed are unchanged (checked by a diff of the JSON, lesson by lesson).
+- To reverse: remove `speaking` from `COURSES` and the two enumerations, set the schema back to 1.1, and rebuild.

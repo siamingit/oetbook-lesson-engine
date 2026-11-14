@@ -3667,23 +3667,26 @@
   {
    "id": "oa-speaking-970015",
    "lesson": "speaking-01-the-test",
-   "point": "match-skills",
+   "point": "match-skills-2",
    "slot": "pair-1",
-   "issued": "2026-11-12"
+   "issued": "2026-11-12",
+   "split_from": "match-skills pair-1, 2026-11-14 (oetacademy-web #318)"
   },
   {
    "id": "oa-speaking-970016",
    "lesson": "speaking-01-the-test",
    "point": "match-skills",
    "slot": "pair-2",
-   "issued": "2026-11-12"
+   "issued": "2026-11-12",
+   "retired": "2026-11-14"
   },
   {
    "id": "oa-speaking-970017",
    "lesson": "speaking-01-the-test",
-   "point": "match-skills",
+   "point": "match-skills-2",
    "slot": "pair-3",
-   "issued": "2026-11-12"
+   "issued": "2026-11-12",
+   "split_from": "match-skills pair-3, 2026-11-14 (oetacademy-web #318)"
   },
   {
    "id": "oa-speaking-970018",
@@ -3982,6 +3985,13 @@
    "id": "oa-speaking-974021",
    "lesson": "speaking-10-sounding-clear",
    "point": "part-condition",
+   "slot": "item",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-970023",
+   "lesson": "speaking-01-the-test",
+   "point": "match-skills-2",
    "slot": "item",
    "issued": "2026-11-14"
   }

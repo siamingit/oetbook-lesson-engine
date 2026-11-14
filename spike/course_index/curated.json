@@ -822,6 +822,27 @@
      "at": "added-02_t3.s1.u1"
     }
    ]
+  },
+  "speaking-01-the-test": {
+   "session": "An authored lesson (ADR 047), the first of the Speaking course. Its method follows the owner's recorded Speaking session \"Speaking Overview\" (S1): the test day, who is who, the criteria, the five stages and his closing advice. Every exam fact is checked against docs/speaking-facts.md and corrected where the session differs; no OET sample material is used (#189 (9)).",
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
+  },
+  "speaking-02-reading-the-card": {
+   "session": "An authored lesson (ADR 047), the second of the Speaking course. Its method is the owner's way of reading the role-play card in his recorded sessions \"Speaking Overview\" (S1) and \"Starting the Role-Play\" (S2); the three cards are the lesson's own, and every exam fact comes from docs/speaking-facts.md (#189 (9)).",
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
+  },
+  "speaking-03-starting": {
+   "session": "An authored lesson (ADR 047), the third of the Speaking course. Its method is the owner's recorded session \"Starting the Role-Play\" (S2): his four steps, a first meeting or met before, introductions by setting and opening questions; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md (#189 (9)).",
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
   }
  }
 }
