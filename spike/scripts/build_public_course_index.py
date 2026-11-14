@@ -54,9 +54,10 @@ CURATED = ROOT / "spike" / "course_index" / "curated.json"
 FACTS_MD = DOCS / "listening-facts.md"
 
 FORMAT = "oetbook-public-course-index"
-SCHEMA_VERSION = "1.1"           # 1.1 (2026-10-25): the Writing course
+SCHEMA_VERSION = "1.2"           # 1.1 (2026-10-25): the Writing course; 1.2 (2026-11-14): the Speaking course
 COURSES = [("grammar", "Grammar"), ("vocabulary", "Vocabulary"),
-           ("reading", "Reading"), ("listening", "Listening"), ("writing", "Writing")]
+           ("reading", "Reading"), ("listening", "Listening"), ("writing", "Writing"),
+           ("speaking", "Speaking")]
 PRACTICE_COURSES = ("reading", "listening")
 
 # A thought's or a board's label may open with the layout's own words (ADR 007,
