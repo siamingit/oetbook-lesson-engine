@@ -90,6 +90,10 @@
   "speaking-03-starting": [
    972000,
    972999
+  ],
+  "speaking-10-sounding-clear": [
+   974000,
+   974999
   ]
  },
  "ids": [
@@ -3820,6 +3824,166 @@
    "point": "warm-could",
    "slot": "item",
    "issued": "2026-11-12"
+  },
+  {
+   "id": "oa-speaking-974000",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "chunk-pain",
+   "slot": "line",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974001",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "chunk-tablet",
+   "slot": "line",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974002",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "stress-appointment",
+   "slot": "line",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974003",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "stress-allergic",
+   "slot": "line",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974004",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "match-stress",
+   "slot": "item",
+   "issued": "2026-11-14",
+   "retired": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974005",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "match-stress",
+   "slot": "pair-1",
+   "issued": "2026-11-14",
+   "retired": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974006",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "match-stress",
+   "slot": "pair-2",
+   "issued": "2026-11-14",
+   "retired": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974007",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "match-stress",
+   "slot": "pair-3",
+   "issued": "2026-11-14",
+   "retired": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974008",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "match-stress",
+   "slot": "pair-4",
+   "issued": "2026-11-14",
+   "retired": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974009",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "match-stress",
+   "slot": "pair-5",
+   "issued": "2026-11-14",
+   "retired": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974010",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "key-meals",
+   "slot": "line",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974011",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "correct-weeks",
+   "slot": "answer",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974012",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "rise-right",
+   "slot": "line",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974013",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "rise-sense",
+   "slot": "line",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974014",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "fall-where",
+   "slot": "line",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974015",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "fall-long",
+   "slot": "line",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974016",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "warm-sorry",
+   "slot": "line",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974017",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "sound-st",
+   "slot": "line",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974018",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "sound-p",
+   "slot": "line",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974019",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "sound-w",
+   "slot": "line",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974020",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "sound-end",
+   "slot": "line",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974021",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "part-condition",
+   "slot": "item",
+   "issued": "2026-11-14"
   }
  ]
 }
