@@ -102,6 +102,10 @@
   "speaking-11-keeping-going": [
    976000,
    976999
+  ],
+  "speaking-05-taking-a-history": [
+   975000,
+   975999
   ]
  },
  "ids": [
@@ -5022,6 +5026,330 @@
    "id": "oa-speaking-976048",
    "lesson": "speaking-11-keeping-going",
    "point": "rp-back",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975000",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "match-heading",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975001",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "match-heading",
+   "slot": "pair-1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975002",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "match-heading",
+   "slot": "pair-2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975003",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "which-heading",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975004",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "rep-swelling",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975005",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "rsp-where",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975006",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "next-uses",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975007",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "match-onset",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975008",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "match-onset",
+   "slot": "pair-1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975009",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "match-onset",
+   "slot": "pair-2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975010",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "match-onset",
+   "slot": "pair-3",
+   "issued": "2026-11-15",
+   "retired": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975011",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "order-would-know",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975012",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "next-ask",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975013",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "gap-scale",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975014",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "gap-scale",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975015",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "gap-scale",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975016",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "rsp-travel",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975017",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "rep-time",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975018",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "spot-provokes",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975019",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "rsp-other",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975020",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "other-day",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975021",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "wb-relief",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975022",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "wb-relief",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975023",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "wb-relief",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975024",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "gap-affect",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975025",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "gap-affect",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975026",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "gap-affect",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975027",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "spot-does",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975028",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "rsp-echo",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975029",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "order-mentioned",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975030",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "rep-sensitive",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975031",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "see-why",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975032",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "match-card",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975033",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "match-card",
+   "slot": "pair-1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975034",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "match-card",
+   "slot": "pair-2",
+   "issued": "2026-11-15",
+   "retired": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975035",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "match-card",
+   "slot": "pair-3",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975036",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "brackets",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975037",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "rsp-before",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975038",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "reply-worried",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975039",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "wb-assure",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975040",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "wb-assure",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975041",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "wb-assure",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975042",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "order-steps",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975043",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "type-mentioned",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975044",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "rp-understand",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-975045",
+   "lesson": "speaking-05-taking-a-history",
+   "point": "rp-truth",
    "slot": "answer",
    "issued": "2026-11-15"
   }
