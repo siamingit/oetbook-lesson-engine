@@ -4124,6 +4124,286 @@
    "point": "rp-scale",
    "slot": "answer",
    "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-974022",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "chunk-choose",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974023",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "chunk-say",
+   "slot": "line",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974024",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "verbs-care",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974025",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "verbs-care",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974026",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "verbs-care",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974027",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "word-symptom",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974028",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "stress-specialist",
+   "slot": "line",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974029",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "family-prescribe",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974030",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "family-prescribe",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974031",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "family-prescribe",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974032",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "lay-match",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974033",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "lay-match",
+   "slot": "pair1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974034",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "lay-match",
+   "slot": "pair2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974035",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "lay-explain",
+   "slot": "line",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974036",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "time-phrases",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974037",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "time-phrases",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974038",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "time-phrases",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974039",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "key-hours",
+   "slot": "line",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974040",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "correct-cream",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974041",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "order-allergies",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974042",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "q-forms",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974043",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "q-forms",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974044",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "q-forms",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974045",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "q-errorspot",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974046",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "warm-choose",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974047",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "warm-reply",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974048",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "s-words",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974049",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "s-words",
+   "slot": "pair1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974050",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "s-words",
+   "slot": "pair2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974051",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "p-words",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974052",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "p-words",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974053",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "p-words",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974054",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "w-word",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974055",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "ed-sounds",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974056",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "ed-sounds",
+   "slot": "pair1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974057",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "ed-sounds",
+   "slot": "pair2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974058",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "family-breath",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974059",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "family-breath",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974060",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "family-breath",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-974061",
+   "lesson": "speaking-10-sounding-clear",
+   "point": "breath-line",
+   "slot": "line",
+   "issued": "2026-11-15"
   }
  ]
 }
