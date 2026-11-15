@@ -54,7 +54,8 @@ CURATED = ROOT / "spike" / "course_index" / "curated.json"
 FACTS_MD = DOCS / "listening-facts.md"
 
 FORMAT = "oetbook-public-course-index"
-SCHEMA_VERSION = "1.2"           # 1.1 (2026-10-25): the Writing course; 1.2 (2026-11-14): the Speaking course
+SCHEMA_VERSION = "1.3"           # 1.1 (2026-10-25): the Writing course; 1.2 (2026-11-14): the Speaking course;
+                                 # 1.3 (2026-11-15): a lesson's place in its course (`position`, ADR 038 amendment)
 COURSES = [("grammar", "Grammar"), ("vocabulary", "Vocabulary"),
            ("reading", "Reading"), ("listening", "Listening"), ("writing", "Writing"),
            ("speaking", "Speaking")]
@@ -503,11 +504,19 @@ def source_of(L: Lesson) -> dict:
             "same_recording_as": [], "note": None}
 
 
+def position_of(meta: dict, order: int) -> int:
+    """A lesson's place in its course: the number in its id, unless the curated entry gives another. A lesson id is
+    permanent (AGENTS.md §10b), so a lesson made later for an earlier place keeps its id (Speaking 4 is
+    speaking-10-sounding-clear) and the curated `position` says where it stands (ADR 038 amendment, 2026-11-15)."""
+    return meta.get("position", order)
+
+
 def lesson_entry(L: Lesson, cur: dict, facts_text: dict) -> dict:
     config = read(L.L / "analysis" / "sections.json")
     gates = L.L / "analysis" / "gates.json"
     final = read(gates).get("final") if gates.exists() else None
     meta = cur.get("lessons", {}).get(L.id, {})
+    order = int(L.id.split("-")[1])
     src = source_of(L)
     src["note"] = meta.get("session")
     sections = [section_entry(L, s, config) for s in L.bundle["sections"]]
@@ -536,7 +545,7 @@ def lesson_entry(L: Lesson, cur: dict, facts_text: dict) -> dict:
             if c["lesson"] not in {n["lesson"] for n in nxt}]
     return {"id": L.id, "folder": L.L.name, "title": L.bundle["lesson"]["title"],
             "description": L.bundle["lesson"].get("description"),
-            "course": L.course, "order": int(L.id.split("-")[1]),
+            "course": L.course, "order": order, "position": position_of(meta, order),
             "length_s": round(L.bundle["meta"]["total_duration_s"], 3),
             "length": mmss(L.bundle["meta"]["total_duration_s"]),
             "bundle_format": L.bundle["format_version"],
@@ -576,7 +585,7 @@ def build(lessons_dir: Path) -> dict:
     facts_text = listening_facts()
     entries = [lesson_entry(Lesson(L), cur, facts_text) for L in built_lessons(lessons_dir)]
     order = {c: n for n, (c, _) in enumerate(COURSES)}
-    entries.sort(key=lambda e: (order[e["course"]], e["order"], e["id"]))
+    entries.sort(key=lambda e: (order[e["course"]], e["position"], e["id"]))
     by_id = {e["id"]: e for e in entries}
 
     by_hash: dict[str, list[str]] = {}
@@ -723,7 +732,7 @@ def markdown(ix: dict) -> str:
         out += ["| # | Lesson | Lesson ID | Length | Sections | Approved |", "|---|---|---|---|---|---|"]
         for e in (x for x in ix["lessons"] if x["course"] == c["id"]):
             ap = f"{e['approval']['on']} ({e['approval']['by']})" if e["approval"] else "not yet"
-            out.append(f"| {e['order']} | {md_text(e['title'])} | `{e['id']}` | {e['length']} | "
+            out.append(f"| {e['position']} | {md_text(e['title'])} | `{e['id']}` | {e['length']} | "
                        f"{len(e['sections'])} | {md_text(ap)} |")
         for e in (x for x in ix["lessons"] if x["course"] == c["id"]):
             out += lesson_md(e, where)
@@ -737,9 +746,10 @@ def markdown(ix: dict) -> str:
 
 def lesson_md(e: dict, where) -> list[str]:
     src = e["source"]
-    out = ["", f"<a id=\"{e['id']}\"></a>", "", f"## {e['order']}. {md_text(e['title'])}", "",
+    out = ["", f"<a id=\"{e['id']}\"></a>", "", f"## {e['position']}. {md_text(e['title'])}", "",
            f"- Lesson ID and folder: `{e['id']}` (folder `{e['folder']}`); course {e['course']}, "
-           f"lesson {e['order']}; length {e['length']}; bundle format {e['bundle_format']}",
+           f"lesson {e['position']}" + (f" (its id's number is {e['order']:02d})" if e["position"] != e["order"] else "")
+           + f"; length {e['length']}; bundle format {e['bundle_format']}",
            "- Status: " + (f"approved by {md_text(e['approval']['by'])}, {e['approval']['on']}"
                            if e["approval"] else "built, final gate not approved")]
     if e["description"]:
@@ -895,7 +905,8 @@ def verify(json_path: Path = JSON_OUT, md_path: Path = MD_OUT, curated_path: Pat
     if ix["totals"] != totals(ix):
         errs.append("totals do not match the lessons")
     ids = [e["id"] for e in ix["lessons"]]
-    cur = set((read(curated_path).get("lessons") or {}).keys())
+    cur_lessons = read(curated_path).get("lessons") or {}
+    cur = set(cur_lessons.keys())
     errs += [f"lesson {i} has a curated entry but is not in the index" for i in sorted(cur - set(ids))]
     errs += [f"lesson {i} is in the index but has no curated entry (spike/course_index/curated.json)"
              for i in ids if i not in cur]
@@ -908,6 +919,14 @@ def verify(json_path: Path = JSON_OUT, md_path: Path = MD_OUT, curated_path: Pat
             errs.append(f"{e['id']}: its folder is {e['folder']!r} (ADR 032: the id is the folder's name)")
         if not e["id"].startswith(f"{e['course']}-{e['order']:02d}-"):
             errs.append(f"{e['id']}: course {e['course']} and order {e['order']} do not match its id")
+        if e["id"] in cur and e["position"] != position_of(cur_lessons[e["id"]], e["order"]):
+            errs.append(f"{e['id']}: position {e['position']} is not its curated place in the course")
+    for c, es in courses.items():
+        pos = [e["position"] for e in es]
+        if len(pos) != len(set(pos)):
+            errs.append(f"course {c}: two lessons have the same position")
+        if pos != sorted(pos):
+            errs.append(f"course {c}: its lessons are not in the order of their positions")
     for c in ix["courses"]:
         if c["lessons"] != [e["id"] for e in courses[c["id"]]]:
             errs.append(f"course {c['id']}: its lesson list does not match the lessons")

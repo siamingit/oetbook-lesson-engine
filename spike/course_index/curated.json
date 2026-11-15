@@ -843,6 +843,22 @@
    "methods": [],
    "continues_in": [],
    "topics": []
+  },
+  "speaking-10-sounding-clear": {
+   "session": "An authored lesson (ADR 047, no recorded source), the fourth of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first (ADR 057, #212): speaking in chunks, word stress, the key word in a line, and the voice for checks, questions and kindness, each with many lines for every profession and the words, verbs and forms that go with them. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 4.",
+   "position": 4,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
+  },
+  "speaking-04-asking-questions": {
+   "session": "An authored lesson (ADR 047), the fifth of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first (ADR 057, #212). Its method is the first half of the owner's recorded session \"Information Gathering\" (S3), in his order: the kinds of question, open, focused and closed questions, direct and indirect questions, asking permission, questions about pain and the words for it, and the questions to avoid; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its place in the course is 5.",
+   "position": 5,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
   }
  }
 }
