@@ -49,6 +49,7 @@ are outside the repository, like Writing's:
 | 15 | Scores are combined and converted to the 0–500 scale; grade B is "predominantly scores of 5 out of 6 on each linguistic criteria and 2 out of 3 for the clinical communication criteria". The conversion formula is UNKNOWN. | R, S | VERIFIED (formula UNKNOWN) |
 | 16 | Band 6 Intelligibility names "stress, intonation, rhythm" and says the first-language accent has no effect on understanding. Band 6 Appropriateness includes explaining technical matters in lay terms with no difficulty. Fluency band 4: "Delivery may be staccato or too fast/slow"; band 3: "Frequent pauses … Excessive use of fillers". | C | VERIFIED |
 | 17 | "Assessors do not count how many mistakes you make." | https://oet.com/post/study-skills-assessment-criteria | VERIFIED |
+| 18 | The information-gathering indicators, word for word: D1 "facilitating the patient's narrative with active listening techniques, minimising interruption"; D2 "using initially open questions, appropriately moving to closed questions"; D3 "NOT using compound questions/leading questions"; D4 "clarifying statements which are vague or need amplification"; D5 "summarising information to encourage correction/invite further information". (Read by the agent in the criteria PDF, page 2, on 2026-11-14, for Asking Questions, issue #212.) | C | VERIFIED |
 
 ## House rule: never name an app (owner, 2026-11-12)
 
