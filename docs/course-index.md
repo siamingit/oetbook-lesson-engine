@@ -1,8 +1,8 @@
 # Course index
 
-What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.2; decision: `docs/adr/038-public-course-index.md`.
+What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.3; decision: `docs/adr/038-public-course-index.md`.
 
-32 lessons, 318 sections, 687 board topics, 4772 teaching points, 317 rules and 66 warnings, 488 terms, 180 OET facts, 74 methods, 539 vocabulary items (189 from the word bank), 62 practice questions and note forms, 131 links to other lessons, 438 topics in the topic index.
+34 lessons, 378 sections, 749 board topics, 5082 teaching points, 352 rules and 66 warnings, 488 terms, 180 OET facts, 74 methods, 554 vocabulary items (189 from the word bank), 62 practice questions and note forms, 131 links to other lessons, 494 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -11,7 +11,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 - Reading: [Reading for OET: Overview](#reading-01-overview), [Reading for OET: Part A](#reading-02-part-a), [Reading for OET: Part B](#reading-03-part-b), [Reading Part C (1)](#reading-04-part-c), [Reading Part C (2): More Practice](#reading-05-part-c-2)
 - Listening: [OET Listening: Overview](#listening-01-overview), [OET Listening: Part A](#listening-02-part-a), [OET Listening: Part B](#listening-03-part-b), [OET Listening: Part C (1)](#listening-04-part-c), [OET Listening: Part C (2)](#listening-05-part-c-2)
 - Writing: [OET Writing: Overview](#writing-01-overview), [OET Writing: Assessment Criteria](#writing-02-assessment-criteria), [OET Writing: Letter Structure](#writing-03-letter-structure), [OET Writing: The Opening Paragraph](#writing-04-introduction), [OET Writing: Information Flow](#writing-05-information-flow), [OET Writing: Word Order](#writing-06-word-order), [OET Writing: Organising the Letter](#writing-07-organisation), [OET Writing: Reading the Task and the Case Notes](#writing-08-reading-the-task)
-- Speaking: [OET Speaking: The Test and the Role-Play](#speaking-01-the-test), [OET Speaking: Reading the Card](#speaking-02-reading-the-card), [OET Speaking: Starting the Role-Play](#speaking-03-starting)
+- Speaking: [OET Speaking: The Test and the Role-Play](#speaking-01-the-test), [OET Speaking: Reading the Card](#speaking-02-reading-the-card), [OET Speaking: Starting the Role-Play](#speaking-03-starting), [OET Speaking: Sounding Clear](#speaking-10-sounding-clear), [OET Speaking: Asking Questions](#speaking-04-asking-questions)
 
 ---
 
@@ -9777,6 +9777,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | 1 | OET Speaking: The Test and the Role-Play | `speaking-01-the-test` | 23:22 | 12 | 2026-11-14 11:40 (siavash) |
 | 2 | OET Speaking: Reading the Card | `speaking-02-reading-the-card` | 26:12 | 16 | 2026-11-14 12:05 (siavash) |
 | 3 | OET Speaking: Starting the Role-Play | `speaking-03-starting` | 23:31 | 17 | 2026-11-14 11:54 (siavash) |
+| 4 | OET Speaking: Sounding Clear | `speaking-10-sounding-clear` | 33:12 | 24 | 2026-11-15 18:45 (siavash) |
+| 5 | OET Speaking: Asking Questions | `speaking-04-asking-questions` | 44:45 | 36 | 2026-11-15 18:45 (siavash) |
 
 <a id="speaking-01-the-test"></a>
 
@@ -10388,6 +10390,745 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - continues from OET Speaking: Reading the Card (`speaking-02-reading-the-card`): the closing names it as the next lesson
 
 
+<a id="speaking-10-sounding-clear"></a>
+
+## 4. OET Speaking: Sounding Clear
+
+- Lesson ID and folder: `speaking-10-sounding-clear` (folder `speaking-10-sounding-clear`); course speaking, lesson 4 (its id's number is 10); length 33:12; bundle format 1.24
+- Status: approved by siavash, 2026-11-15 18:45
+- Description: Learn to sound clear to the patient. You will hear many lines for every profession. Speak in chunks (= short groups of words). Stress (= say strongly) the right part of a word, and the key word in a line. Use your voice for checks, questions and kindness. Learn the words, verbs and forms that go with these lines.
+- Original session: none (a lesson with no recording and no deck, ADR 047)
+  - An authored lesson (ADR 047, no recorded source), the fourth of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first (ADR 057, #212): speaking in chunks, word stress, the key word in a line, and the voice for checks, questions and kindness, each with many lines for every profession and the words, verbs and forms that go with them. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 4.
+- Parts: Chunks and pauses; Words for care; Stress in a line; Up, down and warm; Kind words, clear sounds; Endings and forms
+
+### Sections
+
+#### 0:00 Introduction (`page-100`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 0:56 **Contents board**
+  - 0:58 each category, revealed as it is named
+
+#### 1:54 What the test wants (`added-01`, authored)
+
+- 1:54 **What the test wants**
+  - 2:03 Three things
+  - 2:17 Intelligibility
+  - 2:38 Your accent
+
+*Rules on the boards*
+
+- 2:17 Intelligibility: the patient understands you easily. It is one of four language criteria, each marked out of 6.
+
+#### 3:00 Speaking in chunks (`added-02`, authored)
+
+- 3:00 **Speaking in chunks**
+  - 3:00 three chunks
+  - 3:13 a word
+  - 3:25 the pause
+  - 3:42 say it
+
+*Rules on the boards*
+
+- 3:25 Pause a little between chunks, not inside them.
+
+#### 4:00 Where to pause (`added-03`, authored)
+
+- 4:00 **Where to pause**
+  - 4:00 inside or between
+  - 4:03 the mark
+  - 4:31 not too many
+  - 4:40 say it
+
+*Rules on the boards*
+
+- 4:31 Too many pauses make you hard to understand.
+
+#### 4:57 Lines in chunks (`added-04`, authored)
+
+- 4:57 **Lines in chunks**
+  - 4:57 the bank
+  - 5:08 nurse
+  - 5:14 pharmacist
+  - 5:20 physiotherapist
+  - 5:27 dentist
+  - 5:34 dietitian
+  - 5:42 radiographer
+  - 5:49 the pattern
+  - 6:03 choose
+  - 6:17 say it
+
+*Rules on the boards*
+
+- 5:49 Each chunk is one idea. Often: what to do, then how, when or where.
+
+#### 6:35 Words for care (`added-05`, authored)
+
+- 6:35 **Words for care**
+  - 6:35 six verbs
+  - 6:48 rest
+  - 6:56 avoid
+  - 7:05 keep
+  - 7:12 apply
+  - 7:22 book
+  - 7:32 come back
+  - 7:39 grammar
+  - 7:59 choose
+
+*Rules on the boards*
+
+- 7:39 Advice often starts with the verb: Rest... Avoid... Keep...
+
+#### 8:13 Word stress (`added-06`, authored)
+
+- 8:13 **Word stress**
+  - 8:13 the strong part
+  - 8:21 a word
+  - 8:48 how
+  - 9:02 say it
+
+*Rules on the boards*
+
+- 8:48 Say the strong part longer, louder and a little higher.
+
+#### 9:21 Medical words (`added-07`, authored)
+
+- 9:21 **Medical words**
+  - 9:21 six words
+  - 9:29 symptom
+  - 9:40 diabetes
+  - 9:52 emergency
+  - 10:04 specialist
+  - 10:15 appetite
+  - 10:24 antibiotic
+  - 10:36 choose
+  - 10:51 say it
+
+#### 11:08 Longer words (`added-08`, authored)
+
+- 11:08 **Longer words**
+  - 11:08 the strong part moves
+  - 11:37 the rule
+  - 11:58 say it
+  - 12:11 a new word
+  - 12:27 word families
+  - 12:44 choose
+
+*Rules on the boards*
+
+- 11:37 Words ending in -tion or -ic usually stress the syllable before the last one.
+- 12:27 examine: the verb, what you do. examination: the noun, the thing.
+
+#### 13:02 Plain words (`added-09`, authored)
+
+- 13:02 **Plain words**
+  - 13:02 medical and plain
+  - 13:06 why
+  - 13:19 hypertension
+  - 13:26 analgesic
+  - 13:32 fracture
+  - 13:39 nausea
+  - 13:45 insomnia
+  - 13:52 oral
+  - 13:59 match
+  - 14:15 say it
+
+*Rules on the boards*
+
+- 13:06 Use plain words with patients. In the test, you get marks for explaining medical words simply.
+
+#### 14:29 The key word (`added-10`, authored)
+
+- 14:29 **The key word**
+  - 14:29 key words
+  - 14:56 the rule
+  - 15:10 say it
+
+*Rules on the boards*
+
+- 14:56 Stress the word the patient must not miss.
+
+#### 15:31 Times and doses (`added-11`, authored)
+
+- 15:31 **Times and doses**
+  - 15:31 six phrases
+  - 15:43 once
+  - 15:50 twice
+  - 15:57 every
+  - 16:04 for
+  - 16:12 before
+  - 16:19 at night
+  - 16:24 grammar
+  - 16:48 choose
+  - 17:03 say it
+
+*Rules on the boards*
+
+- 16:24 Every + a time: how often. For + a length of time: how long.
+
+#### 17:19 Correcting with stress (`added-12`, authored)
+
+- 17:19 **Correcting with stress**
+  - 17:19 a correction
+  - 17:29 the rule
+  - 17:45 your turn
+  - 18:00 the model
+  - 18:07 once more
+  - 18:22 the model, again
+
+*Rules on the boards*
+
+- 17:29 To correct, stress the word that changes.
+
+#### 18:29 Checks that rise (`added-13`, authored)
+
+- 18:29 **Checks that rise**
+  - 18:29 six checks
+  - 18:41 all right
+  - 18:44 sense
+  - 18:48 comfortable
+  - 18:51 lift
+  - 18:57 before
+  - 19:01 questions
+  - 19:06 the rule
+  - 19:25 say them
+  - 19:46 order
+
+*Rules on the boards*
+
+- 19:06 A yes/no check usually goes up at the end.
+
+#### 20:02 Questions that fall (`added-14`, authored)
+
+- 20:02 **Questions that fall**
+  - 20:02 going down
+  - 20:16 where
+  - 20:20 how long
+  - 20:24 when
+  - 20:28 what
+  - 20:32 how often
+  - 20:38 an instruction
+  - 20:44 the rule
+  - 20:56 ask them
+
+*Rules on the boards*
+
+- 20:44 A question with a question word, or an instruction, usually goes down at the end.
+
+#### 21:18 Making questions (`added-15`, authored)
+
+- 21:18 **Making questions**
+  - 21:18 three times
+  - 21:27 now
+  - 21:36 the past
+  - 21:44 until now
+  - 21:48 the rule
+  - 21:57 choose
+  - 22:11 spot
+
+*Rules on the boards*
+
+- 21:48 How long + have you had: from then until now.
+
+#### 22:26 A warm voice (`added-16`, authored)
+
+- 22:26 **A warm voice**
+  - 22:26 flat or warm
+  - 22:45 how
+  - 22:53 say it
+
+#### 23:08 Kind words (`added-17`, authored)
+
+- 23:08 **Kind words**
+  - 23:08 five patients
+  - 23:24 worried
+  - 23:32 slept
+  - 23:41 worse
+  - 23:49 needles
+  - 23:59 forgetting
+  - 24:03 the words
+  - 24:08 choose
+  - 24:22 reply
+  - 24:38 the model
+
+*Rules on the boards*
+
+- 24:03 Name the feeling, then offer help.
+
+#### 24:44 S at the start (`added-18`, authored)
+
+- 24:44 **S at the start**
+  - 24:44 s and another sound
+  - 24:55 who
+  - 25:10 stitches
+  - 25:17 scan
+  - 25:25 swelling
+  - 25:32 match
+  - 25:48 say it
+
+*Rules on the boards*
+
+- 25:00 Start with the s. Add no sound before it.
+
+#### 26:03 The P sound (`added-19`, authored)
+
+- 26:03 **The P sound**
+  - 26:03 p or b
+  - 26:24 test it
+  - 26:39 p words
+  - 26:53 choose
+  - 27:05 say it
+
+*Rules on the boards*
+
+- 26:39 pulse: the beat of your heart, for example in your wrist.
+
+#### 27:22 The W sound (`added-20`, authored)
+
+- 27:22 **The W sound**
+  - 27:22 three steps
+  - 27:40 w or v
+  - 27:58 w words
+  - 28:13 choose
+  - 28:27 say it
+
+*Rules on the boards*
+
+- 27:58 wound: a cut or a break in the skin. ward: a hospital room with beds.
+
+#### 28:43 Sounds at the end (`added-21`, authored)
+
+- 28:43 **Sounds at the end**
+  - 28:43 -ed three ways
+  - 29:06 checked
+  - 29:12 stopped
+  - 29:18 changed
+  - 29:25 moved
+  - 29:31 started
+  - 29:38 needed
+  - 29:44 the rule
+  - 30:06 match
+  - 30:22 say it
+
+*Rules on the boards*
+
+- 29:44 After t or d, -ed adds a beat. After other sounds, it adds no beat.
+
+#### 30:37 Verb or noun (`added-22`, authored)
+
+- 30:37 **Verb or noun**
+  - 30:37 four pairs
+  - 30:50 breathe
+  - 31:01 advise
+  - 31:13 bleed
+  - 31:19 lose
+  - 31:26 grammar
+  - 31:55 choose
+  - 32:09 say it
+
+*Rules on the boards*
+
+- 31:26 Use the verb after 'try to', 'please' or the person who does it: try to breathe, please breathe, you breathe. Use the noun after 'a', 'the' or 'some'. Advice and blood never take 'a' on their own: say 'some advice', 'a little blood'.
+
+#### 32:26 Closing (`added-23`, closing)
+
+- 32:26 **Closing**
+  - 32:33 Recap
+  - 32:49 Practise
+
+*Rules on the boards*
+
+- 32:49 Practise: say five lines from this lesson every day. Record them, listen, and say them again.
+
+### Vocabulary
+
+First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
+
+- 3:13 chunk
+- 8:21 syllable
+
+
+<a id="speaking-04-asking-questions"></a>
+
+## 5. OET Speaking: Asking Questions
+
+- Lesson ID and folder: `speaking-04-asking-questions` (folder `speaking-04-asking-questions`); course speaking, lesson 5 (its id's number is 04); length 44:45; bundle format 1.24
+- Status: approved by siavash, 2026-11-15 18:45
+- Description: Learn to ask the patient many kinds of question: open, closed and indirect questions, and questions about pain, with the words and the grammar for them. Learn which questions to avoid.
+- Original session: none (a lesson with no recording and no deck, ADR 047)
+  - An authored lesson (ADR 047), the fifth of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first (ADR 057, #212). Its method is the first half of the owner's recorded session "Information Gathering" (S3), in his order: the kinds of question, open, focused and closed questions, direct and indirect questions, asking permission, questions about pain and the words for it, and the questions to avoid; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its place in the course is 5.
+- Parts: Listening and checking; Open questions; Time and closed questions; Indirect questions; Asking about pain; Questions in the criteria; Practise and finish
+
+### Sections
+
+#### 0:00 Introduction (`page-100`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 0:44 **Contents board**
+  - 0:46 each category, revealed as it is named
+
+#### 1:37 Why we ask questions (`added-01`, authored)
+
+- 1:37 **Why we ask questions**
+  - 1:37 why we ask
+  - 2:09 in the criteria
+
+*Rules on the boards*
+
+- 2:09 Information gathering is part of the OET assessment criteria.
+
+#### 2:18 Listening sounds (`added-02`, authored)
+
+- 2:18 **Listening sounds**
+  - 2:18 listening sounds
+  - 2:58 aloud, not a nod
+  - 3:18 your turn
+  - 3:35 the model
+
+*Rules on the boards*
+
+- 2:58 Say them aloud. The test is recorded.
+
+#### 3:46 Asking what they mean (`added-03`, authored)
+
+- 3:46 **Asking what they mean**
+  - 3:46 what they mean
+  - 4:27 two words
+  - 5:01 your turn
+  - 5:15 the model
+
+#### 5:22 Checking they understand (`added-04`, authored)
+
+- 5:22 **Checking they understand**
+  - 5:22 then check
+  - 6:08 a phrase
+  - 6:19 in the criteria
+  - 6:25 your turn
+  - 6:37 the answer
+
+*Rules on the boards*
+
+- 6:19 Check that the patient has understood.
+
+#### 6:43 Summing up (`added-05`, authored)
+
+- 6:43 **Summing up**
+  - 6:43 sum it up
+  - 7:10 another
+  - 7:16 in the criteria
+  - 7:23 choose
+  - 7:35 the answer
+
+*Rules on the boards*
+
+- 7:16 Sum up, so the patient can correct you.
+
+#### 7:42 Asking for more (`added-06`, authored)
+
+- 7:42 **Asking for more**
+  - 7:42 ask for more
+  - 8:13 a word
+  - 8:25 your turn
+  - 8:40 the model
+
+#### 8:47 Three kinds of question (`added-07`, authored)
+
+- 8:47 **Three kinds of question**
+  - 8:47 three kinds
+  - 9:04 open
+  - 9:18 focused
+  - 9:37 closed
+  - 9:42 the order
+  - 9:53 match them
+  - 10:06 the answers
+
+*Rules on the boards*
+
+- 9:42 Start with open questions. Then move to closed ones.
+- 10:06 How long: focused. Describe: open.
+
+#### 10:15 Open questions (`added-08`, authored)
+
+- 10:15 **Open questions**
+  - 10:15 open questions
+  - 10:45 short ones
+  - 10:59 your turn
+  - 11:09 the model
+
+#### 11:16 What open questions do (`added-09`, authored)
+
+- 11:16 **What open questions do**
+  - 11:16 what they do
+  - 11:53 a word
+  - 12:05 who leads
+  - 12:16 choose
+  - 12:27 the answer
+
+#### 12:42 Verbs for open questions (`added-10`, authored)
+
+- 12:42 **Verbs for open questions**
+  - 12:42 the verbs
+  - 13:06 explain
+  - 13:19 find the mistake
+  - 13:32 the answer
+
+#### 13:38 Question words (`added-11`, authored)
+
+- 13:38 **Question words**
+  - 13:38 question words
+  - 14:24 a phrase
+  - 14:36 choose the word
+  - 14:48 the answers
+  - 15:01 say it
+
+#### 15:21 How long, how often (`added-12`, authored)
+
+- 15:21 **How long, how often**
+  - 15:21 how long, how often
+  - 15:55 time words
+  - 16:10 your turn
+  - 16:23 the model
+  - 16:28 for or since
+  - 16:39 for and since
+
+#### 16:58 How long have you...? (`added-13`, authored)
+
+- 16:58 **How long have you...?**
+  - 16:58 the parts
+  - 17:29 have or has
+  - 17:42 fill the gaps
+  - 17:53 the answers
+
+#### 18:03 Questions about habits (`added-14`, authored)
+
+- 18:03 **Questions about habits**
+  - 18:03 two ways to ask
+  - 18:17 why
+  - 18:36 more
+  - 18:45 say it
+
+#### 19:05 Closed questions (`added-15`, authored)
+
+- 19:05 **Closed questions**
+  - 19:05 closed questions
+  - 19:34 when
+  - 19:47 say it
+
+*Rules on the boards*
+
+- 19:34 Use closed questions to check facts, after the open ones.
+
+#### 20:04 Do, does and did (`added-16`, authored)
+
+- 20:04 **Do, does and did**
+  - 20:04 helper verbs
+  - 20:35 do or does
+  - 20:47 did
+  - 20:55 choose
+  - 21:08 the answers
+
+#### 21:24 No negative questions (`added-17`, authored)
+
+- 21:24 **No negative questions**
+  - 21:24 negative or plain
+  - 21:37 blame
+  - 21:58 plain
+  - 22:04 choose
+  - 22:16 the answer
+
+#### 22:21 Direct or indirect (`added-18`, authored)
+
+- 22:21 **Direct or indirect**
+  - 22:21 direct or indirect
+  - 22:55 which is better
+  - 23:18 the frame
+  - 23:25 softer
+  - 23:41 say it
+  - 24:08 if or whether
+
+#### 24:33 Frames to start with (`added-19`, authored)
+
+- 24:33 **Frames to start with**
+  - 24:33 frames
+  - 24:59 mix them
+  - 25:03 your turn
+  - 25:17 the model
+
+*Rules on the boards*
+
+- 24:59 Mix the frames. Don't start every question with 'Can you'.
+
+#### 25:24 Indirect word order (`added-20`, authored)
+
+- 25:24 **Indirect word order**
+  - 25:24 the parts
+  - 25:50 no did
+  - 26:00 yes or no
+  - 26:08 choose
+  - 26:20 the answer
+  - 26:26 write it
+  - 26:40 a model
+
+#### 26:49 What they are for (`added-21`, authored)
+
+- 26:49 **What they are for**
+  - 26:49 four uses
+  - 27:20 a word
+  - 27:33 open
+  - 27:49 say it
+
+#### 28:12 Asking permission (`added-22`, authored)
+
+- 28:12 **Asking permission**
+  - 28:12 asking permission
+  - 28:36 the answer
+  - 28:47 your turn
+  - 29:01 the model
+
+*Rules on the boards*
+
+- 28:36 To 'Do you mind ...?', the answer 'No, not at all' means: yes, you can ask.
+
+#### 29:08 From open to closed (`added-23`, authored)
+
+- 29:08 **From open to closed**
+  - 29:08 from open to closed
+  - 29:42 a word
+  - 29:53 your turn
+  - 30:09 the model
+
+#### 30:16 How the pain feels (`added-24`, authored)
+
+- 30:16 **How the pain feels**
+  - 30:16 kinds of pain
+  - 30:58 in a sentence
+  - 31:05 match them
+  - 31:17 the answers
+
+#### 31:23 How bad it is (`added-25`, authored)
+
+- 31:23 **How bad it is**
+  - 31:23 how bad
+  - 32:00 choose
+  - 32:11 the answers
+
+#### 32:38 When and where (`added-26`, authored)
+
+- 32:38 **When and where**
+  - 32:38 time and place
+  - 33:21 say it
+  - 33:39 choose
+  - 33:52 the answer
+
+#### 34:02 Word families (`added-27`, authored)
+
+- 34:02 **Word families**
+  - 34:02 word families
+  - 34:51 fill the gaps
+  - 35:01 the answers
+  - 35:12 find the mistake
+  - 35:25 the answer
+
+#### 35:33 The patient's ideas (`added-28`, authored)
+
+- 35:33 **The patient's ideas**
+  - 35:33 ideas and concerns
+  - 36:13 a word
+  - 36:26 your turn
+  - 36:40 the model
+
+#### 36:48 Questions when you explain (`added-29`, authored)
+
+- 36:48 **Questions when you explain**
+  - 36:48 when you explain
+  - 37:19 a word
+  - 37:31 match them
+  - 37:44 the answers
+
+#### 37:52 No leading questions (`added-30`, authored)
+
+- 37:52 **No leading questions**
+  - 37:52 leading or not
+  - 38:17 the answer in it
+  - 38:29 find the mistake
+  - 38:42 the answer
+  - 38:55 say it
+
+*Rules on the boards*
+
+- 38:21 Don't ask leading questions. Ask, and let the patient answer.
+
+#### 39:21 One at a time (`added-31`, authored)
+
+- 39:21 **One at a time**
+  - 39:21 avoid, ask instead
+  - 39:37 a word
+  - 39:49 three in one
+  - 40:03 assume nothing
+  - 40:13 choose
+  - 40:26 the answer
+
+*Rules on the boards*
+
+- 39:55 Ask one thing at a time.
+
+#### 40:31 Good or not? (`added-32`, authored)
+
+- 40:31 **Good or not?**
+  - 40:31 the quiz
+  - 41:14 choose
+  - 41:25 the answer
+
+#### 41:31 A history card (`added-33`, authored)
+
+- 41:31 **A history card**
+  - 41:31 the card
+  - 42:11 worried
+  - 42:27 task 2
+  - 42:40 task 3
+
+#### 42:52 A short role-play (`added-34`, authored)
+
+- 42:52 **A short role-play**
+  - 42:52 the role-play
+  - 43:06 your turn
+  - 43:51 open, then focused
+
+*Rules on the boards*
+
+- 43:51 An open question first, then focused ones. And be kind: the patient is worried.
+
+#### 44:01 Closing (`added-35`, closing)
+
+- 44:01 **Closing**
+  - 44:04 Recap
+  - 44:21 Practise
+
+*Rules on the boards*
+
+- 44:21 Practise: choose a symptom. Ask about it: open, then focused, then closed.
+
+### Vocabulary
+
+First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
+
+- 4:27 continuous
+- 4:38 intermittent
+- 6:08 go over
+- 8:13 troubling
+- 11:53 catheter
+- 14:24 How do you find ...?
+- 27:20 consent
+- 29:42 relieve
+- 32:18 hardly
+- 36:13 expectations
+- 37:19 dialysis
+- 39:37 recreational drugs
+- 41:44 review
+
+
 ---
 
 # Topic index
@@ -10398,6 +11139,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **a fifty-year-old teacher**: `grammar-08-paraphrasing` 23:00
 - **A first-meeting card**: `speaking-03-starting` 16:52
 - **A follow-up card**: `speaking-02-reading-the-card` 22:25; `speaking-03-starting` 19:59
+- **A history card**: `speaking-04-asking-questions` 41:31
 - **A letter with gaps**: `writing-06-word-order` 21:22
 - **A needle in a haystack**: `reading-02-part-a` 1:48
 - **A or an**: `grammar-04-articles` 11:27
@@ -10406,9 +11148,11 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **A quick review of the method**: `reading-05-part-c-2` 1:23; `listening-05-part-c-2` 1:10
 - **A role-play card**: `speaking-01-the-test` 17:33
 - **A sample letter**: `writing-01-overview` 14:05
+- **A short role-play**: `speaking-04-asking-questions` 42:52
 - **A target score for Part B**: `listening-03-part-b` 11:46
 - **A target score for Part C**: `listening-04-part-c` 9:16
 - **A two-week history of**: `grammar-08-paraphrasing` 41:25
+- **A warm voice**: `speaking-10-sounding-clear` 22:26
 - **a-**: `grammar-03-nominalization` 10:11
 - **Abbreviations in the letter**: `writing-02-assessment-criteria` 25:20
 - **Accuracy to the case notes**: `writing-02-assessment-criteria` 14:09
@@ -10432,6 +11176,9 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Appositives and ages**: `writing-04-introduction` 9:59
 - **article**: `grammar-02-verb-use` 62:02
 - **Articles**: `grammar-04-articles` 2:00; `grammar-08-paraphrasing` 12:29
+- **Asking for more**: `speaking-04-asking-questions` 7:42
+- **Asking permission**: `speaking-04-asking-questions` 28:12
+- **Asking what they mean**: `speaking-04-asking-questions` 3:46
 - **Avoid a series of short sentences**: `vocabulary-01-word-forms` 68:43
 - **Avoid sentences that are too long**: `vocabulary-01-word-forms` 81:29
 - **Be + -ed adjective**: `grammar-06-clause` 41:38
@@ -10450,11 +11197,14 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Case notes: error correction**: `grammar-01-verb-tenses` 114:53
 - **Case-note abbreviations**: `grammar-07-punctuation` 87:44
 - **Checking the name**: `speaking-03-starting` 7:12
+- **Checking they understand**: `speaking-04-asking-questions` 5:22
+- **Checks that rise**: `speaking-10-sounding-clear` 18:29
 - **Choosing the right word form**: `vocabulary-01-word-forms` 2:26
 - **choosing the tense**: `grammar-02-verb-use` 9:39
 - **Chronological or thematic**: `writing-07-organisation` 13:26
 - **Chunking**: `reading-02-part-a` 18:43
 - **Clause**: `grammar-05-complex-compound` 3:57
+- **Closed questions**: `speaking-04-asking-questions` 19:05
 - **Closing sentence**: `writing-01-overview` 16:59
 - **Collocation**: `vocabulary-02-collocations` 1:35; `vocabulary-03-collocations-2` 60:41
 - **Collocations in a letter**: `vocabulary-03-collocations-2` 69:10
@@ -10488,6 +11238,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Core skills**: `reading-03-part-b` 7:47
 - **Correct the sentences**: `grammar-05-complex-compound` 55:25
 - **Correcting a paragraph**: `writing-06-word-order` 13:31
+- **Correcting with stress**: `speaking-10-sounding-clear` 17:19
 - **Countable and uncountable nouns**: `grammar-04-articles` 10:02
 - **Countable noun**: `grammar-02-verb-use` 15:31; `grammar-04-articles` 17:58
 - **Countable nouns: non-specific**: `grammar-04-articles` 17:32
@@ -10501,9 +11252,11 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **defining relative clause**: `vocabulary-01-word-forms` 69:56
 - **Denominalisation**: `grammar-03-nominalization` 51:34
 - **Dependent clause**: `grammar-05-complex-compound` 4:34; `grammar-07-punctuation` 6:42
+- **Direct or indirect**: `speaking-04-asking-questions` 22:21
 - **dis-**: `vocabulary-01-word-forms` 75:13
 - **do a quick check**: `vocabulary-03-collocations-2` 56:32
 - **DO tunnel**: `grammar-08-paraphrasing` 48:32
+- **Do, does and did**: `speaking-04-asking-questions` 20:04
 - **Dos and don'ts**: `reading-02-part-a` 49:21
 - **Due to**: `grammar-05-complex-compound` 11:55; `grammar-07-punctuation` 10:15
 - **Due to, despite, as well as**: `grammar-05-complex-compound` 45:36
@@ -10524,10 +11277,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **For and since**: `grammar-01-verb-tenses` 39:20
 - **Formal time-related expressions**: `grammar-03-nominalization` 40:51
 - **Four steps towards success**: `reading-01-overview` 15:14
+- **Frames to start with**: `speaking-04-asking-questions` 24:33
 - **From case notes to a sentence**: `grammar-05-complex-compound` 9:49
 - **From case notes to one word**: `grammar-04-articles` 62:28
 - **From case notes to sentences**: `writing-05-information-flow` 25:42
 - **From notes to sentences**: `writing-05-information-flow` 21:54
+- **From open to closed**: `speaking-04-asking-questions` 29:08
 - **From the plan**: `writing-04-introduction` 20:27
 - **From what you hear to the notes**: `listening-02-part-a` 12:25
 - **from which**: `vocabulary-01-word-forms` 60:01
@@ -10541,6 +11296,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Gist**: `reading-03-part-b` 2:13
 - **given that**: `grammar-06-clause` 54:22
 - **Giving reassurance**: `vocabulary-03-collocations-2` 50:20
+- **Good or not?**: `speaking-04-asking-questions` 40:31
 - **Grade B in OET Writing**: `writing-02-assessment-criteria` 5:22
 - **Greeting and Re line**: `writing-03-letter-structure` 15:13; `writing-04-introduction` 3:42
 - **Greeting the patient**: `speaking-03-starting` 3:08
@@ -10552,9 +11308,13 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Hedging word**: `reading-04-part-c` 14:44
 - **Helping verb**: `grammar-01-verb-tenses` 3:47; `writing-06-word-order` 9:11
 - **How adjective + noun collocations are formed**: `vocabulary-03-collocations-2` 6:49
+- **How bad it is**: `speaking-04-asking-questions` 31:23
+- **How long have you...?**: `speaking-04-asking-questions` 16:58
+- **How long, how often**: `speaking-04-asking-questions` 15:21
 - **How much to keep**: `writing-08-reading-the-task` 18:09
 - **How Part A is built**: `reading-02-part-a` 4:19
 - **How Part A is marked**: `listening-02-part-a` 6:23
+- **How the pain feels**: `speaking-04-asking-questions` 30:16
 - **How the test runs**: `listening-01-overview` 5:51
 - **How to identify opinions**: `reading-04-part-c` 12:37
 - **How to improve your listening**: `listening-01-overview` 10:12
@@ -10570,6 +11330,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **ICU**: `vocabulary-03-collocations-2` 10:53
 - **Indefinite article**: `grammar-04-articles` 10:52
 - **Independent clause**: `grammar-05-complex-compound` 4:15; `grammar-07-punctuation` 6:58
+- **Indirect word order**: `speaking-04-asking-questions` 25:24
 - **Infinitive**: `grammar-01-verb-tenses` 6:43
 - **Initially**: `grammar-08-paraphrasing` 54:31
 - **instead of which**: `vocabulary-01-word-forms` 63:38
@@ -10582,21 +11343,29 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Keeping a note brief**: `writing-08-reading-the-task` 18:21
 - **Key points to remember**: `vocabulary-02-collocations` 12:08
 - **Key words**: `reading-03-part-b` 10:13
+- **Kind words**: `speaking-10-sounding-clear` 23:08
 - **Language**: `writing-02-assessment-criteria` 27:56
+- **Lines in chunks**: `speaking-10-sounding-clear` 4:57
 - **Linking words**: `listening-05-part-c-2` 2:52
 - **Linking words in a letter**: `writing-05-information-flow` 14:40
+- **Listening sounds**: `speaking-04-asking-questions` 2:18
 - **Lists and series**: `grammar-07-punctuation` 27:56
+- **Longer words**: `speaking-10-sounding-clear` 11:08
 - **Main clause**: `reading-04-part-c` 18:06
 - **Main clause (independent clause)**: `grammar-07-punctuation` 24:05
 - **Main point or detail?**: `listening-03-part-b` 3:46
+- **Making questions**: `speaking-10-sounding-clear` 21:18
 - **May have been triggered**: `grammar-01-verb-tenses` 126:18
 - **Medical terms: vocabulary and word form**: `vocabulary-01-word-forms` 18:59
+- **Medical words**: `speaking-10-sounding-clear` 9:21
 - **Met before or not**: `speaking-03-starting` 11:30
 - **Monitor**: `vocabulary-02-collocations` 32:01
 - **Multiple choice**: `reading-01-overview` 7:48; `listening-01-overview` 3:38
 - **Multiple choice (3 options)**: `reading-03-part-b` 6:29
 - **Names and titles**: `speaking-03-starting` 8:36
 - **neither of which**: `vocabulary-01-word-forms` 64:31
+- **No leading questions**: `speaking-04-asking-questions` 37:52
+- **No negative questions**: `speaking-04-asking-questions` 21:24
 - **Nominalisation**: `grammar-03-nominalization` 1:57; `grammar-04-articles` 55:27; `grammar-08-paraphrasing` 5:29
 - **Non-defining clause**: `grammar-07-punctuation` 36:11
 - **non-defining relative clause**: `vocabulary-01-word-forms` 71:01
@@ -10607,8 +11376,10 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Object**: `grammar-01-verb-tenses` 86:12
 - **Occasionally**: `grammar-01-verb-tenses` 78:06
 - **Omit**: `grammar-08-paraphrasing` 6:18
+- **One at a time**: `speaking-04-asking-questions` 39:21
 - **one of which**: `vocabulary-01-word-forms` 67:44
 - **One test for every profession**: `writing-01-overview` 1:31
+- **Open questions**: `speaking-04-asking-questions` 10:15
 - **Opening frames**: `writing-04-introduction` 27:22
 - **Opening questions**: `speaking-03-starting` 12:46
 - **opinion signals**: `reading-04-part-c` 12:37
@@ -10646,6 +11417,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **phrase**: `writing-06-word-order` 11:37
 - **Phrases at the start of a sentence**: `writing-06-word-order` 11:30
 - **Physical symptoms**: `grammar-03-nominalization` 9:07
+- **Plain words**: `speaking-10-sounding-clear` 13:02
 - **Planning a letter**: `writing-07-organisation` 17:09
 - **Planning the paragraphs**: `writing-07-organisation` 17:09
 - **Podcasts and talks**: `listening-01-overview` 13:08
@@ -10662,6 +11434,10 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Punctuation in OET letters**: `grammar-07-punctuation` 39:46
 - **Purpose**: `writing-02-assessment-criteria` 5:57; `writing-04-introduction` 16:51
 - **QTA**: `reading-04-part-c` 19:34
+- **Question words**: `speaking-04-asking-questions` 13:38
+- **Questions about habits**: `speaking-04-asking-questions` 18:03
+- **Questions that fall**: `speaking-10-sounding-clear` 20:02
+- **Questions when you explain**: `speaking-04-asking-questions` 36:48
 - **Reading Part B: strategies**: `reading-03-part-b` 7:47
 - **Reading Part C: the meaning behind the words**: `reading-04-part-c` 1:40
 - **Reading skills**: `reading-01-overview` 8:44
@@ -10681,6 +11457,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **relative pronouns**: `vocabulary-01-word-forms` 43:34
 - **ROM**: `grammar-01-verb-tenses` 127:40
 - **Run-on sentence**: `grammar-07-punctuation` 50:17
+- **S at the start**: `speaking-10-sounding-clear` 24:44
 - **Scanning**: `reading-02-part-a` 20:43
 - **Schedule**: `vocabulary-02-collocations` 56:16
 - **Scoring the Reading test**: `reading-01-overview` 12:44
@@ -10703,6 +11480,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Skimming**: `reading-02-part-a` 12:17
 - **so ... that**: `vocabulary-03-collocations-2` 33:30
 - **So far**: `grammar-01-verb-tenses` 82:04
+- **Sounds at the end**: `speaking-10-sounding-clear` 28:43
+- **Speaking in chunks**: `speaking-10-sounding-clear` 3:00
 - **Specific noun**: `grammar-04-articles` 34:28
 - **Specific nouns**: `grammar-04-articles` 33:45
 - **Spot the correct sentence**: `grammar-04-articles` 49:22
@@ -10719,6 +11498,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Subordinating conjunctions**: `grammar-05-complex-compound` 15:44
 - **Subsequently**: `grammar-08-paraphrasing` 52:16
 - **suggestive of**: `grammar-03-nominalization` 12:02
+- **Summing up**: `speaking-04-asking-questions` 6:43
 - **Swollen**: `grammar-05-complex-compound` 58:19
 - **symptomatic**: `grammar-03-nominalization` 9:53
 - **Synonyms**: `grammar-08-paraphrasing` 46:11
@@ -10740,10 +11520,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The five stages**: `speaking-01-the-test` 13:46
 - **The flow of a whole letter**: `writing-05-information-flow` 34:45
 - **The ISBAR approach**: `writing-07-organisation` 4:07
+- **The key word**: `speaking-10-sounding-clear` 14:29
 - **The language criteria**: `speaking-01-the-test` 6:41
 - **The Listening test**: `listening-01-overview` 1:12
 - **The opening paragraph**: `writing-04-introduction` 1:56
 - **The other day**: `grammar-01-verb-tenses` 80:57
+- **The P sound**: `speaking-10-sounding-clear` 26:03
 - **The Part A format**: `listening-02-part-a` 1:11
 - **The Part B format**: `listening-03-part-b` 1:25
 - **The Part C format**: `listening-04-part-c` 1:27
@@ -10751,6 +11533,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **the passive**: `grammar-01-verb-tenses` 67:12
 - **The patient's age in the opening**: `writing-04-introduction` 12:45
 - **The patient's first line**: `speaking-03-starting` 14:28
+- **The patient's ideas**: `speaking-04-asking-questions` 35:33
 - **The patient's name**: `speaking-02-reading-the-card` 8:55
 - **The perfect forms**: `grammar-01-verb-tenses` 53:05
 - **The QAT method**: `reading-03-part-b` 11:23
@@ -10768,9 +11551,11 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The tasks**: `speaking-02-reading-the-card` 12:33
 - **The test day**: `speaking-01-the-test` 1:34
 - **The verb and its object; the time first**: `writing-06-word-order` 5:06
+- **The W sound**: `speaking-10-sounding-clear` 27:22
 - **The Writing paper**: `writing-03-letter-structure` 1:38
 - **The Writing test**: `writing-01-overview` 5:16
 - **Three errors to avoid**: `writing-06-word-order` 7:44
+- **Three kinds of question**: `speaking-04-asking-questions` 8:47
 - **Three letters, three shapes**: `writing-07-organisation` 8:54
 - **Time**: `listening-04-part-c` 8:41
 - **Time and tense**: `writing-05-information-flow` 18:13
@@ -10778,6 +11563,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Time marker**: `grammar-01-verb-tenses` 34:20; `grammar-02-verb-use` 4:01
 - **Time markers**: `grammar-01-verb-tenses` 13:15
 - **Time references**: `writing-05-information-flow` 25:42
+- **Times and doses**: `speaking-10-sounding-clear` 15:31
 - **Too many linking words**: `writing-05-information-flow` 13:39
 - **Top tips**: `reading-02-part-a` 17:27
 - **Treat**: `vocabulary-02-collocations` 50:42
@@ -10793,23 +11579,30 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Usage: simple tenses**: `grammar-01-verb-tenses` 20:16
 - **Verb + noun collocation**: `vocabulary-02-collocations` 1:49
 - **verb + noun collocations**: `vocabulary-02-collocations` 1:31
+- **Verb or noun**: `speaking-10-sounding-clear` 30:37
 - **Verb tense**: `grammar-02-verb-use` 2:28
 - **Verb tense: error correction**: `grammar-01-verb-tenses` 65:34
 - **Verb tenses**: `grammar-01-verb-tenses` 2:07
 - **Verb tenses: a quick review**: `grammar-02-verb-use` 2:22
 - **Verb use: active or passive**: `grammar-02-verb-use` 40:35
 - **Verb use: choosing the tense**: `grammar-02-verb-use` 9:39
+- **Verbs for open questions**: `speaking-04-asking-questions` 12:42
 - **Vocabulary warm-up: patient history**: `listening-02-part-a` 8:09
 - **What each part tests**: `listening-01-overview` 7:24
 - **What is a complex sentence?**: `grammar-05-complex-compound` 2:13
 - **What is a verb + noun collocation?**: `vocabulary-02-collocations` 1:31
 - **What is an adjective + noun collocation?**: `vocabulary-03-collocations-2` 1:59
 - **What is nominalisation?**: `grammar-03-nominalization` 1:57
+- **What open questions do**: `speaking-04-asking-questions` 11:16
 - **What Part B tests**: `reading-03-part-b` 1:38
 - **What Part C tests**: `listening-04-part-c` 3:47
+- **What the test wants**: `speaking-10-sounding-clear` 1:54
+- **What they are for**: `speaking-04-asking-questions` 26:49
 - **What to note**: `speaking-02-reading-the-card` 15:31
 - **What to read first**: `speaking-02-reading-the-card` 3:23
 - **What you hear in Part C**: `listening-04-part-c` 2:29
+- **When and where**: `speaking-04-asking-questions` 32:38
+- **Where to pause**: `speaking-10-sounding-clear` 4:00
 - **which**: `vocabulary-01-word-forms` 70:53
 - **While**: `grammar-08-paraphrasing` 43:36
 - **While you listen: signal words**: `listening-03-part-b` 6:58; `listening-04-part-c` 8:00
@@ -10817,13 +11610,17 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Who speaks, and a target score**: `listening-02-part-a` 15:40
 - **Who you are**: `speaking-02-reading-the-card` 7:21; `speaking-03-starting` 4:15
 - **Who, what, where, when, why**: `writing-06-word-order` 1:52
+- **Why we ask questions**: `speaking-04-asking-questions` 1:37
 - **Will have smoked**: `grammar-01-verb-tenses` 56:10
 - **woke up**: `vocabulary-03-collocations-2` 33:00
 - **Word bank**: `reading-03-part-b` 57:12
 - **Word count of the letter body**: `writing-01-overview` 8:36
+- **Word families**: `speaking-04-asking-questions` 34:02
 - **word forms**: `vocabulary-01-word-forms` 2:26
 - **Word meaning**: `reading-02-part-a` 56:52
 - **Word order**: `writing-06-word-order` 3:09
+- **Word stress**: `speaking-10-sounding-clear` 8:13
+- **Words for care**: `speaking-10-sounding-clear` 6:35
 - **Words to avoid**: `writing-05-information-flow` 10:13
 - **You lead the start**: `speaking-03-starting` 1:45
 - **Your role and why**: `speaking-03-starting` 10:03

@@ -140,6 +140,16 @@ class Build(unittest.TestCase):
         with mock.patch.object(ix, "CURATED", self.cur), self.assertRaises(SystemExit):
             ix.build(self.lessons)
 
+    def test_position_is_the_order_unless_curated(self):
+        self.assertEqual(self.lesson["position"], 1)
+        cur = json.loads(self.cur.read_text(encoding="utf-8"))
+        cur["lessons"]["grammar-01-made-up"]["position"] = 3
+        self.cur.write_text(json.dumps(cur), encoding="utf-8")
+        with mock.patch.object(ix, "CURATED", self.cur):
+            e = ix.build(self.lessons)["lessons"][0]
+        self.assertEqual((e["order"], e["position"]), (1, 3))
+        self.assertIn("lesson 3 (its id's number is 01)", " ".join(ix.lesson_md(e, lambda *a: "")))
+
     def test_same_inputs_same_bytes(self):
         with mock.patch.object(ix, "CURATED", self.cur):
             self.assertEqual(ix.to_json(ix.build(self.lessons)), ix.to_json(self.index))
@@ -203,6 +213,20 @@ class CommittedIndex(unittest.TestCase):
         bad["lessons"][0]["narration_text"] = "words"
         self.write(bad, j, m)
         self.assertTrue(any("not in the schema" in e for e in ix.verify(j, m)))
+
+    def test_speaking_lessons_stand_in_their_course_places(self):
+        data, _, _ = self.copy()
+        sp = next(c for c in data["courses"] if c["id"] == "speaking")["lessons"]
+        self.assertEqual(sp[3:5], ["speaking-10-sounding-clear", "speaking-04-asking-questions"])
+
+    def test_a_position_that_is_not_curated_fails(self):
+        data, j, m = self.copy()
+        e = next(x for x in data["lessons"] if x["id"] == "speaking-10-sounding-clear")
+        e["position"] = 6
+        self.write(data, j, m)
+        errs = ix.verify(j, m)
+        self.assertIn("speaking-10-sounding-clear: position 6 is not its curated place in the course", errs)
+        self.assertIn("course speaking: its lessons are not in the order of their positions", errs)
 
     def test_no_narration_or_board_text_field(self):
         data, _, _ = self.copy()

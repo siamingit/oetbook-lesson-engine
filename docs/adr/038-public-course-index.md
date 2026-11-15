@@ -168,3 +168,29 @@ in course order"), Speaking 1-3 enter the public index, so the index gains its s
   `approved` with the final gate's `approval`.
 - The 29 lessons already indexed are unchanged (checked by a diff of the JSON, lesson by lesson).
 - To reverse: remove `speaking` from `COURSES` and the two enumerations, set the schema back to 1.1, and rebuild.
+
+## Amendment, 2026-11-15: a lesson's place in its course (schema 1.3)
+
+Under the brief of 2026-11-15 (issue #212: "Add them to docs/course-index.json in the Speaking course, in course
+order after Speaking 3: course 4 Sounding Clear, course 5 Asking Questions"), Speaking 4 and 5 enter the index. Their
+ids are `speaking-10-sounding-clear` and `speaking-04-asking-questions`: they were made before their places were
+settled, and a lesson id is permanent (AGENTS.md §10b). `order`, taken from the id, would put Asking Questions (4)
+before Sounding Clear (10), against the course order the owner gave. So:
+
+- **Schema 1.3**: every lesson gains `position`, its place in its course (an integer from 1). `order` stays what it
+  was, the number in the id, and `--verify` still checks it against the id. Nothing is removed or renamed; a 1.2
+  reader that ignores `position` reads every lesson as before, but lists Speaking 4 and 5 in `courses[].lessons`
+  order, which now follows `position`.
+- `position` is the order, unless the lesson's curated entry gives `"position": <n>`. Only the two new lessons give
+  one: 4 for `speaking-10-sounding-clear`, 5 for `speaking-04-asking-questions`. The lessons and each course's list
+  are sorted by (course, position, id). `--verify` fails a lesson whose position is not its curated place, two
+  lessons of a course with the same position, and a course whose lessons are not in the order of their positions.
+- The Markdown numbers a lesson by its position (the table's `#`, the heading). Where the two differ, the lesson's
+  line also gives its id's number ("lesson 4 (its id's number is 10)"). For every other lesson the two are equal, so
+  its Markdown is unchanged.
+- Both lessons' curated entries hold the `session` note and the position, with empty `facts`, `methods`,
+  `continues_in` and `topics`, as Speaking 1-3 (amendment of 2026-11-14).
+- The 32 lessons already indexed are unchanged apart from the new field (checked by a diff of the JSON, lesson by
+  lesson, with `position` removed).
+- To reverse: remove `position` from the builder, the schema and the two curated entries, set the schema back to
+  1.2, and rebuild.
