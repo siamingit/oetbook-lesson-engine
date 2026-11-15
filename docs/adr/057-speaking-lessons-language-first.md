@@ -32,7 +32,7 @@ The rule, as the owner wrote it, and how a lesson follows it with the engine as 
 1. **Language is the main content.** The tips frame the lesson. Its core is the language the learner can use.
    For each thing a lesson teaches, a **bank of model sentences**: usually 6-12, all different, natural and
    useful. They come from many professions and settings: nurse, doctor, pharmacist, physiotherapist, dentist,
-   occupational therapist, dietitian, speech pathologist, radiographer and others, on a ward, in a clinic, a GP
+   occupational therapist, speech pathologist, radiographer and others, on a ward, in a clinic, a GP
    surgery, a pharmacy or a patient's home. Patients' lines vary too: worried and calm, short and long.
    - *How:* a bank is a board table (one row per sentence, with a column for who says it, where). The narration
      reads each row once, with a highlight, and then a pause cue of about 1-1.5 s
