@@ -58,3 +58,19 @@ No live lesson has `lines`, so the new path is used only by Asking Questions.
 - The player's contents menu still lists the sections under their category, as before.
 - Any later lesson with more sections than the contents board can list one per line can use `lines`, under the
   same checks.
+
+## Amendment (1), 2026-11-15: Asking Questions uses 15 lines, not 28
+
+The Consequences above say Asking Questions groups its 35 sections into "7 parts of 4 lines". That was the first
+try, and it did not fit. The contents board sets its parts in a wrapping row, two at a time: part 1 beside part 5,
+part 2 beside part 6, part 3 beside part 7, then part 4 alone. Each row is as tall as the taller part in it, so the
+column 1 to 4 only fits when few parts are tall. With 28 lines, and again with 16 lines (two parts of 3 lines,
+beside parts 1 and 2), the fit cleared parts 1 to 3 before part 4 entered, and `check_board_page.py` failed the
+board (ADR 042: the contents fits on one board).
+
+The lesson as built for v1-draft.3 has 7 parts, six of 2 lines and one of 3: 15 lines in all, as Speaking 2 (15 lines, one
+part of 3). Each line stands for one to four sections of its part, such as "Checking and summing up" for "Asking
+what they mean", "Checking they understand", "Summing up" and "Asking for more". The decision is unchanged: at most
+4 lines a part is the engine's limit (`CONTENTS_LINES_MAX`), and how many a lesson uses is an authoring choice, made
+so the board fits. A lesson of 7 parts fits when at most one part has 3 lines. Nothing in the engine changes with
+this amendment.
