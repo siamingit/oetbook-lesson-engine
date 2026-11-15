@@ -23,6 +23,36 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 # the most parts a contents board lists on one board, two columns of six (ADR 042)
 CONTENTS_MAX = 12
+# the most short lines under one part, when a category gives its own `lines` (ADR 058)
+CONTENTS_LINES_MAX = 4
+
+
+def category_lines(c: dict) -> list[str] | None:
+    """A category's own short lines (sections.json `lines`, ADR 058), or None.
+    Each line is {"text", "sections"}: the words under the part, and the
+    sections they stand for. Together the lines hold the category's sections,
+    each once, in order; a line's words carry no " · " (it is the separator)."""
+    lines = c.get("lines")
+    if not lines:
+        return None
+    got = [t for ln in lines for t in ln["sections"]]
+    if got != list(c["sections"]):
+        raise SystemExit(f"REFUSED: category {c['title']!r}: its lines hold {got}, not its sections "
+                         f"{list(c['sections'])} in order (ADR 058)")
+    if len(lines) > CONTENTS_LINES_MAX:
+        raise SystemExit(f"REFUSED: category {c['title']!r} has {len(lines)} lines; at most "
+                         f"{CONTENTS_LINES_MAX} (ADR 058)")
+    for ln in lines:
+        if not ln["text"].strip() or " · " in ln["text"] or not ln["sections"]:
+            raise SystemExit(f"REFUSED: category {c['title']!r}: line {ln['text']!r} is empty, holds no "
+                             "section, or carries ' · ' (ADR 058)")
+    return [ln["text"] for ln in lines]
+
+
+def covered_sections(categories: list[dict] | None) -> set[str]:
+    """The sections a category's own lines stand for (ADR 058): listed on the
+    contents board by their line, not by name."""
+    return {t for c in categories or [] if category_lines(c) for t in c["sections"]}
 
 # a block's provenance, as the bundle carries it (AGENTS.md §9; docs/04-LESSON-BUNDLE.md §5)
 PROVENANCES = ("source-derived", "adapted", "corrected", "authored", "maintainer")
@@ -98,9 +128,12 @@ def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
     dprov, dnote = description_provenance(tb.get("description_provenance"))
     desc = blk(f"k{len(extra) + 2:02d}", "plain", tb["description"] or "", prov=dprov, note=dnote)
     first = len(extra) + 2
-    items = [blk(f"k{n + first:02d}", "contents_item", c["title"], " · ".join(c["sections"]) or None,
+    items = [blk(f"k{n + first:02d}", "contents_item", c["title"],
+                 " · ".join(category_lines(c) or c["sections"]) or None,
                  label=str(n), prov=c.get("provenance") or "source-derived",
-                 note=("Category " + str(n) + " of the contents slide, with its sections"
+                 note=("Category " + str(n) + ", with its own short lines for its sections (ADR 058)"
+                       if category_lines(c) else
+                       "Category " + str(n) + " of the contents slide, with its sections"
                        if c["sections"] else "Section " + str(n) + " of the lesson, by its title "
                        "(sections.json); " + ("a lesson with no source has no deck (ADR 047)"
                                               if paths.no_source(sec) else "the deck has no contents slide")))
@@ -152,7 +185,8 @@ def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
     findings = []
     # every section of the lesson is on the contents board by name, authored
     # ones included (maintainer, 2026-09-29; docs/00-PRODUCT.md §2a)
-    for title in missing_sections([s["title"] for s in sec["sections"]], items):
+    for title in missing_sections([s["title"] for s in sec["sections"]], items,
+                                  covered_sections(cb["categories"])):
         findings.append({"severity": "fail", "where": "t2",
                          "what": f"section {title!r} is not listed on the contents board"})
     for bd in out_boards:
@@ -186,10 +220,11 @@ def write_intro_screens(lesson: Path, sec: dict, boards: dict) -> None:
         raise SystemExit("introduction boards: " + "; ".join(f["what"] for f in findings))
 
 
-def missing_sections(titles: list[str], items: list[dict]) -> list[str]:
+def missing_sections(titles: list[str], items: list[dict], covered: set[str] = frozenset()) -> list[str]:
     """Section titles that no contents item names: as its own item, or in a
-    category's list of sections (" · ")."""
-    listed = set()
+    category's list of sections (" · "); `covered`, the sections a category's
+    own lines stand for (ADR 058), count as listed."""
+    listed = set(covered)
     for b in items:
         listed.add(b.get("text"))
         listed.update(x.strip() for x in (b.get("explanation") or "").split(" · "))
@@ -228,6 +263,7 @@ def main() -> None:
         "contents": {"id": "lesson.contents", "kind": "contents",
                      "heading": "What you will learn",
                      "categories": [{"title": c["title"], "sections": c["sections"],
+                                     **({"lines": c["lines"]} if c.get("lines") else {}),
                                      **({"provenance": c["item_provenance"]}
                                         if "item_provenance" in c else {})} for c in cats],
                      "provenance": ("source-derived: the deck's contents slide, page "
