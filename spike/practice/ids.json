@@ -94,6 +94,10 @@
   "speaking-10-sounding-clear": [
    974000,
    974999
+  ],
+  "speaking-04-asking-questions": [
+   973000,
+   973999
   ]
  },
  "ids": [
@@ -3993,6 +3997,132 @@
    "lesson": "speaking-01-the-test",
    "point": "match-skills-2",
    "slot": "item",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973000",
+   "lesson": "speaking-04-asking-questions",
+   "point": "match-kinds",
+   "slot": "item",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973001",
+   "lesson": "speaking-04-asking-questions",
+   "point": "match-kinds",
+   "slot": "pair-1",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973002",
+   "lesson": "speaking-04-asking-questions",
+   "point": "match-kinds",
+   "slot": "pair-2",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973003",
+   "lesson": "speaking-04-asking-questions",
+   "point": "open-headache",
+   "slot": "answer",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973004",
+   "lesson": "speaking-04-asking-questions",
+   "point": "focus-when",
+   "slot": "item",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973005",
+   "lesson": "speaking-04-asking-questions",
+   "point": "habit-exercise",
+   "slot": "item",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973006",
+   "lesson": "speaking-04-asking-questions",
+   "point": "closed-allergy",
+   "slot": "item",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973007",
+   "lesson": "speaking-04-asking-questions",
+   "point": "no-negative",
+   "slot": "item",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973008",
+   "lesson": "speaking-04-asking-questions",
+   "point": "indirect-asthma",
+   "slot": "item",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973009",
+   "lesson": "speaking-04-asking-questions",
+   "point": "order-where",
+   "slot": "item",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973010",
+   "lesson": "speaking-04-asking-questions",
+   "point": "order-concerns-say",
+   "slot": "item",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973011",
+   "lesson": "speaking-04-asking-questions",
+   "point": "permission-diet",
+   "slot": "answer",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973012",
+   "lesson": "speaking-04-asking-questions",
+   "point": "funnel-often",
+   "slot": "answer",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973013",
+   "lesson": "speaking-04-asking-questions",
+   "point": "pain-constant",
+   "slot": "item",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973014",
+   "lesson": "speaking-04-asking-questions",
+   "point": "leading-severe",
+   "slot": "item",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973015",
+   "lesson": "speaking-04-asking-questions",
+   "point": "best-question",
+   "slot": "item",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973016",
+   "lesson": "speaking-04-asking-questions",
+   "point": "rp-where",
+   "slot": "answer",
+   "issued": "2026-11-14"
+  },
+  {
+   "id": "oa-speaking-973017",
+   "lesson": "speaking-04-asking-questions",
+   "point": "rp-scale",
+   "slot": "answer",
    "issued": "2026-11-14"
   }
  ]
