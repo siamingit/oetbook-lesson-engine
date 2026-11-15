@@ -98,6 +98,10 @@
   "speaking-04-asking-questions": [
    973000,
    973999
+  ],
+  "speaking-11-keeping-going": [
+   976000,
+   976999
   ]
  },
  "ids": [
@@ -4676,6 +4680,349 @@
    "lesson": "speaking-04-asking-questions",
    "point": "gap-swollen",
    "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976000",
+   "lesson": "speaking-11-keeping-going",
+   "point": "pause-which",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976001",
+   "lesson": "speaking-11-keeping-going",
+   "point": "chunk-check",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976002",
+   "lesson": "speaking-11-keeping-going",
+   "point": "order-seem",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976003",
+   "lesson": "speaking-11-keeping-going",
+   "point": "spot-seems",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976004",
+   "lesson": "speaking-11-keeping-going",
+   "point": "exchange-words",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976005",
+   "lesson": "speaking-11-keeping-going",
+   "point": "exchange-words",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976006",
+   "lesson": "speaking-11-keeping-going",
+   "point": "exchange-words",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976007",
+   "lesson": "speaking-11-keeping-going",
+   "point": "think-moment",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976008",
+   "lesson": "speaking-11-keeping-going",
+   "point": "filler-better",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976009",
+   "lesson": "speaking-11-keeping-going",
+   "point": "hard-question",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976010",
+   "lesson": "speaking-11-keeping-going",
+   "point": "match-verbs",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976011",
+   "lesson": "speaking-11-keeping-going",
+   "point": "match-verbs",
+   "slot": "pair-1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976012",
+   "lesson": "speaking-11-keeping-going",
+   "point": "match-verbs",
+   "slot": "pair-2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976013",
+   "lesson": "speaking-11-keeping-going",
+   "point": "match-verbs",
+   "slot": "pair-3",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976014",
+   "lesson": "speaking-11-keeping-going",
+   "point": "gap-bear",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976015",
+   "lesson": "speaking-11-keeping-going",
+   "point": "gap-bear",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976016",
+   "lesson": "speaking-11-keeping-going",
+   "point": "gap-bear",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976017",
+   "lesson": "speaking-11-keeping-going",
+   "point": "catch-that",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976018",
+   "lesson": "speaking-11-keeping-going",
+   "point": "check-mean",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976019",
+   "lesson": "speaking-11-keeping-going",
+   "point": "pretend-not",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976020",
+   "lesson": "speaking-11-keeping-going",
+   "point": "gap-mind-ing",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976021",
+   "lesson": "speaking-11-keeping-going",
+   "point": "gap-mind-ing",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976022",
+   "lesson": "speaking-11-keeping-going",
+   "point": "gap-mind-ing",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976023",
+   "lesson": "speaking-11-keeping-going",
+   "point": "spot-mind-to",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976024",
+   "lesson": "speaking-11-keeping-going",
+   "point": "put-another-way",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976025",
+   "lesson": "speaking-11-keeping-going",
+   "point": "type-correct",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976026",
+   "lesson": "speaking-11-keeping-going",
+   "point": "blank-card",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976027",
+   "lesson": "speaking-11-keeping-going",
+   "point": "blank-card",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976028",
+   "lesson": "speaking-11-keeping-going",
+   "point": "blank-card",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976029",
+   "lesson": "speaking-11-keeping-going",
+   "point": "let-me-form",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976030",
+   "lesson": "speaking-11-keeping-going",
+   "point": "signpost-explain",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976031",
+   "lesson": "speaking-11-keeping-going",
+   "point": "signpost-flare",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976032",
+   "lesson": "speaking-11-keeping-going",
+   "point": "order-move-on",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976033",
+   "lesson": "speaking-11-keeping-going",
+   "point": "like-to-about",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976034",
+   "lesson": "speaking-11-keeping-going",
+   "point": "like-to-about",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976035",
+   "lesson": "speaking-11-keeping-going",
+   "point": "like-to-about",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976036",
+   "lesson": "speaking-11-keeping-going",
+   "point": "spot-like-asking",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976037",
+   "lesson": "speaking-11-keeping-going",
+   "point": "link-back",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976038",
+   "lesson": "speaking-11-keeping-going",
+   "point": "back-track",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976039",
+   "lesson": "speaking-11-keeping-going",
+   "point": "tasks-all",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976040",
+   "lesson": "speaking-11-keeping-going",
+   "point": "quickly-explain",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976041",
+   "lesson": "speaking-11-keeping-going",
+   "point": "speed-fast",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976042",
+   "lesson": "speaking-11-keeping-going",
+   "point": "match-phrase",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976043",
+   "lesson": "speaking-11-keeping-going",
+   "point": "match-phrase",
+   "slot": "pair-1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976044",
+   "lesson": "speaking-11-keeping-going",
+   "point": "match-phrase",
+   "slot": "pair-2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976045",
+   "lesson": "speaking-11-keeping-going",
+   "point": "match-phrase",
+   "slot": "pair-3",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976046",
+   "lesson": "speaking-11-keeping-going",
+   "point": "routine-chain",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976047",
+   "lesson": "speaking-11-keeping-going",
+   "point": "rp-good-q",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-976048",
+   "lesson": "speaking-11-keeping-going",
+   "point": "rp-back",
+   "slot": "answer",
    "issued": "2026-11-15"
   }
  ]
