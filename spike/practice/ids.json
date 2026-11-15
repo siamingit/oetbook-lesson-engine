@@ -4404,6 +4404,279 @@
    "point": "breath-line",
    "slot": "line",
    "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973018",
+   "lesson": "speaking-04-asking-questions",
+   "point": "listen-sorry",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973019",
+   "lesson": "speaking-04-asking-questions",
+   "point": "clarify-funny",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973020",
+   "lesson": "speaking-04-asking-questions",
+   "point": "order-go-over",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973021",
+   "lesson": "speaking-04-asking-questions",
+   "point": "summary-or-clear",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973022",
+   "lesson": "speaking-04-asking-questions",
+   "point": "more-dizzy",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973023",
+   "lesson": "speaking-04-asking-questions",
+   "point": "open-which",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973024",
+   "lesson": "speaking-04-asking-questions",
+   "point": "spot-explain-me",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973025",
+   "lesson": "speaking-04-asking-questions",
+   "point": "qwords",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973026",
+   "lesson": "speaking-04-asking-questions",
+   "point": "qwords",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973027",
+   "lesson": "speaking-04-asking-questions",
+   "point": "qwords",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973028",
+   "lesson": "speaking-04-asking-questions",
+   "point": "often-headaches",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973029",
+   "lesson": "speaking-04-asking-questions",
+   "point": "for-since",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973030",
+   "lesson": "speaking-04-asking-questions",
+   "point": "for-since",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973031",
+   "lesson": "speaking-04-asking-questions",
+   "point": "for-since",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973032",
+   "lesson": "speaking-04-asking-questions",
+   "point": "gap-how-long",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973033",
+   "lesson": "speaking-04-asking-questions",
+   "point": "gap-how-long",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973034",
+   "lesson": "speaking-04-asking-questions",
+   "point": "aux-wordbank",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973035",
+   "lesson": "speaking-04-asking-questions",
+   "point": "aux-wordbank",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973036",
+   "lesson": "speaking-04-asking-questions",
+   "point": "aux-wordbank",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973037",
+   "lesson": "speaking-04-asking-questions",
+   "point": "frame-wonder",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973038",
+   "lesson": "speaking-04-asking-questions",
+   "point": "type-indirect",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973039",
+   "lesson": "speaking-04-asking-questions",
+   "point": "match-pain-feel",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973040",
+   "lesson": "speaking-04-asking-questions",
+   "point": "match-pain-feel",
+   "slot": "pair-1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973041",
+   "lesson": "speaking-04-asking-questions",
+   "point": "match-pain-feel",
+   "slot": "pair-2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973042",
+   "lesson": "speaking-04-asking-questions",
+   "point": "pain-strength",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973043",
+   "lesson": "speaking-04-asking-questions",
+   "point": "pain-strength",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973044",
+   "lesson": "speaking-04-asking-questions",
+   "point": "pain-strength",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973045",
+   "lesson": "speaking-04-asking-questions",
+   "point": "lay-sick",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973046",
+   "lesson": "speaking-04-asking-questions",
+   "point": "gap-swollen",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973047",
+   "lesson": "speaking-04-asking-questions",
+   "point": "gap-swollen",
+   "slot": "gap1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973048",
+   "lesson": "speaking-04-asking-questions",
+   "point": "spot-breathe",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973049",
+   "lesson": "speaking-04-asking-questions",
+   "point": "ice-worry",
+   "slot": "answer",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973050",
+   "lesson": "speaking-04-asking-questions",
+   "point": "match-e",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973051",
+   "lesson": "speaking-04-asking-questions",
+   "point": "match-e",
+   "slot": "pair-1",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973052",
+   "lesson": "speaking-04-asking-questions",
+   "point": "match-e",
+   "slot": "pair-2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973053",
+   "lesson": "speaking-04-asking-questions",
+   "point": "spot-severe-is",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973054",
+   "lesson": "speaking-04-asking-questions",
+   "point": "quiz-fine",
+   "slot": "item",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973055",
+   "lesson": "speaking-04-asking-questions",
+   "point": "gap-how-long",
+   "slot": "gap2",
+   "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-973056",
+   "lesson": "speaking-04-asking-questions",
+   "point": "gap-swollen",
+   "slot": "gap2",
+   "issued": "2026-11-15"
   }
  ]
 }
