@@ -148,10 +148,16 @@ def check(lesson: Path, page, out_dir: Path | None = None) -> list[str]:
     # the contents board lists every section by name, authored ones included
     # (maintainer, 2026-09-29; docs/00-PRODUCT.md §2a)
     if any(s.get("intro") for s in bundle.get("sections") or []):
-        from build_lesson_boards import missing_sections
+        from build_lesson_boards import missing_sections, category_lines
         items = [b for b in blocks.values() if b.get("type") == "contents_item"]
+        # a category's own short lines stand for its sections (ADR 058), when
+        # the board shows that part with exactly those lines
+        shown = {(b.get("text"), b.get("explanation")) for b in items}
+        cats = (json.loads(sp.read_text(encoding="utf-8")).get("categories") or []) if sp.exists() else []
+        covered = {t for c in cats if category_lines(c)
+                   and (c["title"], " · ".join(category_lines(c))) in shown for t in c["sections"]}
         for title in missing_sections([s["title"] for s in bundle["sections"] if not s.get("intro")],
-                                      items):
+                                      items, covered):
             problems.append(f"contents board: section {title!r} is not listed")
     # the board style is the standard (ADR 008): no block drawn in the old style
     import board_style
