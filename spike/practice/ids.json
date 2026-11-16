@@ -115,6 +115,10 @@
    977000,
    977999
   ],
+  "speaking-08-explaining": [
+   979000,
+   979999
+  ],
   "speaking-09-giving-advice": [
    980000,
    980999
@@ -6063,6 +6067,335 @@
    "lesson": "speaking-06-patient-concerns",
    "point": "which-part",
    "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979000",
+   "lesson": "speaking-08-explaining",
+   "point": "choose-clear",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979001",
+   "lesson": "speaking-08-explaining",
+   "point": "choose-note",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979002",
+   "lesson": "speaking-08-explaining",
+   "point": "match-plain",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979003",
+   "lesson": "speaking-08-explaining",
+   "point": "match-plain",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979004",
+   "lesson": "speaking-08-explaining",
+   "point": "match-plain",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979005",
+   "lesson": "speaking-08-explaining",
+   "point": "match-plain",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979006",
+   "lesson": "speaking-08-explaining",
+   "point": "wb-called",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979007",
+   "lesson": "speaking-08-explaining",
+   "point": "wb-called",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979008",
+   "lesson": "speaking-08-explaining",
+   "point": "wb-called",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979009",
+   "lesson": "speaking-08-explaining",
+   "point": "gf-verbs",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979010",
+   "lesson": "speaking-08-explaining",
+   "point": "gf-verbs",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979011",
+   "lesson": "speaking-08-explaining",
+   "point": "gf-verbs",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979012",
+   "lesson": "speaking-08-explaining",
+   "point": "say-afraid",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979013",
+   "lesson": "speaking-08-explaining",
+   "point": "say-know",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979014",
+   "lesson": "speaking-08-explaining",
+   "point": "choose-start",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979015",
+   "lesson": "speaking-08-explaining",
+   "point": "resp-yellow",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979016",
+   "lesson": "speaking-08-explaining",
+   "point": "choose-build",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979017",
+   "lesson": "speaking-08-explaining",
+   "point": "spot-about",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979018",
+   "lesson": "speaking-08-explaining",
+   "point": "order-map",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979019",
+   "lesson": "speaking-08-explaining",
+   "point": "say-map",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979020",
+   "lesson": "speaking-08-explaining",
+   "point": "choose-three",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979021",
+   "lesson": "speaking-08-explaining",
+   "point": "type-split",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979022",
+   "lesson": "speaking-08-explaining",
+   "point": "wb-cause",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979023",
+   "lesson": "speaking-08-explaining",
+   "point": "wb-cause",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979024",
+   "lesson": "speaking-08-explaining",
+   "point": "wb-cause",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979025",
+   "lesson": "speaking-08-explaining",
+   "point": "wb-cause",
+   "slot": "gap3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979026",
+   "lesson": "speaking-08-explaining",
+   "point": "choose-leadto",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979027",
+   "lesson": "speaking-08-explaining",
+   "point": "resp-dressing",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979028",
+   "lesson": "speaking-08-explaining",
+   "point": "choose-open",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979029",
+   "lesson": "speaking-08-explaining",
+   "point": "say-manage",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979030",
+   "lesson": "speaking-08-explaining",
+   "point": "resp-catch",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979031",
+   "lesson": "speaking-08-explaining",
+   "point": "match-mistake",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979032",
+   "lesson": "speaking-08-explaining",
+   "point": "match-mistake",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979033",
+   "lesson": "speaking-08-explaining",
+   "point": "match-mistake",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979034",
+   "lesson": "speaking-08-explaining",
+   "point": "match-mistake",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979035",
+   "lesson": "speaking-08-explaining",
+   "point": "rp-understand",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979036",
+   "lesson": "speaking-08-explaining",
+   "point": "rp-chunk",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979037",
+   "lesson": "speaking-08-explaining",
+   "point": "match-task",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979038",
+   "lesson": "speaking-08-explaining",
+   "point": "match-task",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979039",
+   "lesson": "speaking-08-explaining",
+   "point": "match-task",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979040",
+   "lesson": "speaking-08-explaining",
+   "point": "match-task",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979041",
+   "lesson": "speaking-08-explaining",
+   "point": "choose-prof",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979042",
+   "lesson": "speaking-08-explaining",
+   "point": "spot-make",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979043",
+   "lesson": "speaking-08-explaining",
+   "point": "choose-bank",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979044",
+   "lesson": "speaking-08-explaining",
+   "point": "gf-model",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979045",
+   "lesson": "speaking-08-explaining",
+   "point": "gf-model",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-979046",
+   "lesson": "speaking-08-explaining",
+   "point": "gf-model",
+   "slot": "gap2",
    "issued": "2026-11-16"
   },
   {
