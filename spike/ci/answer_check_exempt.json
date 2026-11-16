@@ -89,6 +89,7 @@
   {"item": "oa-vocabulary-000024", "form": "key", "why": "a common verb, in the repository's prose, comments and code everywhere; never about the practice set (placement releases of 2026-11-12)", "by": "agent 2026-11-12"},
   {"item": "oa-vocabulary-000026", "form": "key", "why": "a common verb, in the repository's prose, comments and code everywhere; never about the practice set (placement releases of 2026-11-12)", "by": "agent 2026-11-12"},
   {"item": "oa-vocabulary-000030", "form": "key", "why": "a plural noun about pictures in the vendored design skill hallmark; never about the practice set (placement releases of 2026-11-12)", "by": "agent 2026-11-12"},
-  {"item": "oa-vocabulary-000033", "form": "key", "why": "a past-tense verb in the lessons' own case notes in the course index; never about the practice set (placement releases of 2026-11-12)", "by": "agent 2026-11-12"}
+  {"item": "oa-vocabulary-000033", "form": "key", "why": "a past-tense verb in the lessons' own case notes in the course index; never about the practice set (placement releases of 2026-11-12)", "by": "agent 2026-11-12"},
+  {"item": "oa-listening-000009", "form": "accepted[2]", "why": "a word of the clinical term for the warning signs given at the end of a consultation, which Speaking 14 (speaking-14-ending) teaches by name in its board titles, read into the course index; never about the practice set (issue #236)", "by": "agent 2026-11-16"}
  ]
 }
