@@ -72,7 +72,9 @@
     "speaking-10-sounding-clear",
     "speaking-04-asking-questions",
     "speaking-05-taking-a-history",
-    "speaking-11-keeping-going"
+    "speaking-11-keeping-going",
+    "speaking-06-patient-concerns",
+    "speaking-12-empathy-and-reassurance"
    ]
   }
  ],
@@ -70164,6 +70166,3908 @@
     "continues_in": [],
     "continues_from": []
    }
+  },
+  {
+   "id": "speaking-06-patient-concerns",
+   "folder": "speaking-06-patient-concerns",
+   "title": "OET Speaking: Finding the Patient's Concerns",
+   "description": "Learn to hear a patient's worry, even when they only hint at it. Explore it with open questions about their ideas, concerns and expectations. Then acknowledge the worry, check you've understood it, and link your explanation to it.",
+   "course": "speaking",
+   "order": 6,
+   "position": 8,
+   "length_s": 2227.386,
+   "length": "37:07",
+   "bundle_format": "1.24",
+   "status": "approved",
+   "approval": {
+    "by": "siavash",
+    "on": "2026-11-16 11:53"
+   },
+   "source": {
+    "folder": "source",
+    "recording": null,
+    "recording_duration_s": null,
+    "recording_partial_hash": null,
+    "deck": null,
+    "deck_pages": null,
+    "same_recording_as": [],
+    "note": "An authored lesson (ADR 047), the eighth of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first, in everyday spoken English (ADR 057, #212, #227). Its method is the first part of the owner's recorded session S4 (pages 1-11), in his order: the worries patients have in each profession, what they say and what they only hint at, open invitations, the ideas, concerns and expectations behind a worry, asking more than once, finding out before explaining, acknowledging the worry, checking you have understood it and linking the explanation to it; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 8."
+   },
+   "categories": [
+    {
+     "id": "c1",
+     "title": "What patients worry about",
+     "sections": [
+      "added-01",
+      "added-02",
+      "added-03",
+      "added-04",
+      "added-05",
+      "added-06",
+      "added-07",
+      "added-08"
+     ]
+    },
+    {
+     "id": "c2",
+     "title": "Hearing a concern",
+     "sections": [
+      "added-09",
+      "added-10",
+      "added-11",
+      "added-12"
+     ]
+    },
+    {
+     "id": "c3",
+     "title": "Open invitations",
+     "sections": [
+      "added-13",
+      "added-14",
+      "added-15"
+     ]
+    },
+    {
+     "id": "c4",
+     "title": "Ideas, concerns, expectations",
+     "sections": [
+      "added-16",
+      "added-17",
+      "added-18",
+      "added-19",
+      "added-20",
+      "added-21"
+     ]
+    },
+    {
+     "id": "c5",
+     "title": "Explore before explaining",
+     "sections": [
+      "added-22",
+      "added-23",
+      "added-24",
+      "added-25"
+     ]
+    },
+    {
+     "id": "c6",
+     "title": "Acknowledge, then move on",
+     "sections": [
+      "added-26",
+      "added-27",
+      "added-28",
+      "added-29"
+     ]
+    },
+    {
+     "id": "c7",
+     "title": "Check and link",
+     "sections": [
+      "added-30",
+      "added-31",
+      "added-32",
+      "added-33",
+      "added-34"
+     ]
+    }
+   ],
+   "sections": [
+    {
+     "id": "page-100",
+     "title": "Introduction",
+     "kind": "intro",
+     "pages": [
+      100
+     ],
+     "category": null,
+     "start_s": 0.0,
+     "start": "0:00",
+     "end_s": 109.699,
+     "topics": [
+      {
+       "board": "page-100_t1",
+       "title": "Title board",
+       "start_s": 0.0,
+       "start": "0:00",
+       "points": [
+        {
+         "text": "the lesson title, then what the lesson is about",
+         "block": "page-100_k01",
+         "start_s": 0.0,
+         "start": "0:00"
+        }
+       ]
+      },
+      {
+       "board": "page-100_t2",
+       "title": "Contents board",
+       "start_s": 65.89,
+       "start": "1:05",
+       "points": [
+        {
+         "text": "each category, revealed as it is named",
+         "block": "page-100_k06",
+         "start_s": 67.819,
+         "start": "1:07"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-01",
+     "title": "Saying you're worried",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 109.699,
+     "start": "1:49",
+     "end_s": 180.864,
+     "topics": [
+      {
+       "board": "added-01_t1",
+       "title": "Saying you're worried",
+       "start_s": 109.699,
+       "start": "1:49",
+       "points": [
+        {
+         "text": "the parts",
+         "block": "added-01_k01",
+         "start_s": 109.699,
+         "start": "1:49"
+        },
+        {
+         "text": "concerned",
+         "block": "added-01_k02",
+         "start_s": 143.874,
+         "start": "2:23"
+        },
+        {
+         "text": "your turn",
+         "block": "added-01_k03",
+         "start_s": 158.909,
+         "start": "2:38"
+        },
+        {
+         "text": "the answers",
+         "block": "added-01_k04",
+         "start_s": 171.469,
+         "start": "2:51"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-01_k02",
+       "kind": "rule",
+       "text": "Concerned means worried. Anxious means worried and nervous. After be, both work like worried.",
+       "start_s": 143.874,
+       "start": "2:23"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-02",
+     "title": "Getting the words right",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 180.864,
+     "start": "3:00",
+     "end_s": 237.554,
+     "topics": [
+      {
+       "board": "added-02_t1",
+       "title": "Getting the words right",
+       "start_s": 180.864,
+       "start": "3:00",
+       "points": [
+        {
+         "text": "right and wrong",
+         "block": "added-02_k01",
+         "start_s": 180.864,
+         "start": "3:00"
+        },
+        {
+         "text": "the rule",
+         "block": "added-02_k02",
+         "start_s": 207.464,
+         "start": "3:27"
+        },
+        {
+         "text": "your turn",
+         "block": "added-02_k03",
+         "start_s": 218.724,
+         "start": "3:38"
+        },
+        {
+         "text": "the answer",
+         "block": "added-02_k04",
+         "start_s": 230.402,
+         "start": "3:50"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-02_k02",
+       "kind": "rule",
+       "text": "With about: be + worried, concerned or anxious + about + a noun or an -ing word",
+       "start_s": 207.464,
+       "start": "3:27"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-03",
+     "title": "Common worries",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 237.554,
+     "start": "3:57",
+     "end_s": 310.308,
+     "topics": [
+      {
+       "board": "added-03_t1",
+       "title": "Common worries",
+       "start_s": 237.554,
+       "start": "3:57",
+       "points": [
+        {
+         "text": "what patients worry about",
+         "block": "added-03_k01",
+         "start_s": 237.554,
+         "start": "3:57"
+        },
+        {
+         "text": "manage",
+         "block": "added-03_k02",
+         "start_s": 273.828,
+         "start": "4:33"
+        },
+        {
+         "text": "match them",
+         "block": "added-03_k03",
+         "start_s": 285.638,
+         "start": "4:45"
+        },
+        {
+         "text": "the answers",
+         "block": "added-03_k04",
+         "start_s": 298.418,
+         "start": "4:58"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-04",
+     "title": "Worries by profession",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 310.308,
+     "start": "5:10",
+     "end_s": 378.508,
+     "topics": [
+      {
+       "board": "added-04_t1",
+       "title": "Worries by profession",
+       "start_s": 310.308,
+       "start": "5:10",
+       "points": [
+        {
+         "text": "by profession",
+         "block": "added-04_k01",
+         "start_s": 310.308,
+         "start": "5:10"
+        },
+        {
+         "text": "read role-plays",
+         "block": "added-04_k02",
+         "start_s": 344.438,
+         "start": "5:44"
+        },
+        {
+         "text": "choose",
+         "block": "added-04_k03",
+         "start_s": 355.487,
+         "start": "5:55"
+        },
+        {
+         "text": "the answer",
+         "block": "added-04_k04",
+         "start_s": 369.588,
+         "start": "6:09"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-04_k02",
+       "kind": "rule",
+       "text": "Read role-plays for your profession. Notice what the patient is worried about.",
+       "start_s": 344.438,
+       "start": "5:44"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-05",
+     "title": "Going home",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 378.508,
+     "start": "6:18",
+     "end_s": 442.979,
+     "topics": [
+      {
+       "board": "added-05_t1",
+       "title": "Going home",
+       "start_s": 378.508,
+       "start": "6:18",
+       "points": [
+        {
+         "text": "four questions",
+         "block": "added-05_k01",
+         "start_s": 378.508,
+         "start": "6:18"
+        },
+        {
+         "text": "listen to the answer",
+         "block": "added-05_k02",
+         "start_s": 407.259,
+         "start": "6:47"
+        },
+        {
+         "text": "your turn",
+         "block": "added-05_k04",
+         "start_s": 418.795,
+         "start": "6:58"
+        },
+        {
+         "text": "the model",
+         "block": "added-05_k06",
+         "start_s": 435.212,
+         "start": "7:15"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-06",
+     "title": "Before a scan",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 442.979,
+     "start": "7:22",
+     "end_s": 506.0,
+     "topics": [
+      {
+       "board": "added-06_t1",
+       "title": "Before a scan",
+       "start_s": 442.979,
+       "start": "7:22",
+       "points": [
+        {
+         "text": "ask about the worry",
+         "block": "added-06_k01",
+         "start_s": 442.979,
+         "start": "7:22"
+        },
+        {
+         "text": "so far",
+         "block": "added-06_k02",
+         "start_s": 471.499,
+         "start": "7:51"
+        },
+        {
+         "text": "choose",
+         "block": "added-06_k03",
+         "start_s": 480.898,
+         "start": "8:00"
+        },
+        {
+         "text": "the answer",
+         "block": "added-06_k04",
+         "start_s": 495.099,
+         "start": "8:15"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-07",
+     "title": "A new medicine",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 506.0,
+     "start": "8:26",
+     "end_s": 559.271,
+     "topics": [
+      {
+       "board": "added-07_t1",
+       "title": "A new medicine",
+       "start_s": 506.0,
+       "start": "8:26",
+       "points": [
+        {
+         "text": "three questions",
+         "block": "added-07_k01",
+         "start_s": 506.0,
+         "start": "8:26"
+        },
+        {
+         "text": "listen to the answer",
+         "block": "added-07_k02",
+         "start_s": 529.501,
+         "start": "8:49"
+        },
+        {
+         "text": "put it in order",
+         "block": "added-07_k04",
+         "start_s": 540.721,
+         "start": "9:00"
+        },
+        {
+         "text": "the answer",
+         "block": "added-07_k05",
+         "start_s": 552.521,
+         "start": "9:12"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-08",
+     "title": "Someone else's worry",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 559.271,
+     "start": "9:19",
+     "end_s": 616.303,
+     "topics": [
+      {
+       "board": "added-08_t1",
+       "title": "Someone else's worry",
+       "start_s": 559.271,
+       "start": "9:19",
+       "points": [
+        {
+         "text": "a relative's worry",
+         "block": "added-08_k01",
+         "start_s": 559.271,
+         "start": "9:19"
+        },
+        {
+         "text": "not herself",
+         "block": "added-08_k02",
+         "start_s": 585.573,
+         "start": "9:45"
+        },
+        {
+         "text": "your turn",
+         "block": "added-08_k03",
+         "start_s": 594.813,
+         "start": "9:54"
+        },
+        {
+         "text": "the answers",
+         "block": "added-08_k04",
+         "start_s": 607.543,
+         "start": "10:07"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-09",
+     "title": "Said or hinted",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 616.303,
+     "start": "10:16",
+     "end_s": 683.218,
+     "topics": [
+      {
+       "board": "added-09_t1",
+       "title": "Said or hinted",
+       "start_s": 616.303,
+       "start": "10:16",
+       "points": [
+        {
+         "text": "said or hinted",
+         "block": "added-09_k01",
+         "start_s": 616.303,
+         "start": "10:16"
+        },
+        {
+         "text": "the voice",
+         "block": "added-09_k02",
+         "start_s": 644.793,
+         "start": "10:44"
+        },
+        {
+         "text": "the face",
+         "block": "added-09_k03",
+         "start_s": 653.394,
+         "start": "10:53"
+        },
+        {
+         "text": "choose",
+         "block": "added-09_k04",
+         "start_s": 662.296,
+         "start": "11:02"
+        },
+        {
+         "text": "the answer",
+         "block": "added-09_k05",
+         "start_s": 673.856,
+         "start": "11:13"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-09_k02",
+       "kind": "rule",
+       "text": "Listen to the voice too. A worried voice is a cue.",
+       "start_s": 644.793,
+       "start": "10:44"
+      },
+      {
+       "block": "added-09_k03",
+       "kind": "rule",
+       "text": "In a face-to-face test, the face can show it too.",
+       "start_s": 653.394,
+       "start": "10:53"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-10",
+     "title": "Words that hint",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 683.218,
+     "start": "11:23",
+     "end_s": 747.329,
+     "topics": [
+      {
+       "board": "added-10_t1",
+       "title": "Words that hint",
+       "start_s": 683.218,
+       "start": "11:23",
+       "points": [
+        {
+         "text": "hints",
+         "block": "added-10_k01",
+         "start_s": 683.218,
+         "start": "11:23"
+        },
+        {
+         "text": "the small words",
+         "block": "added-10_k02",
+         "start_s": 722.706,
+         "start": "12:02"
+        },
+        {
+         "text": "choose",
+         "block": "added-10_k03",
+         "start_s": 730.729,
+         "start": "12:10"
+        },
+        {
+         "text": "the answer",
+         "block": "added-10_k04",
+         "start_s": 741.908,
+         "start": "12:21"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-10_k02",
+       "kind": "rule",
+       "text": "Listen for: not sure, maybe, but, my friend had, I just hope.",
+       "start_s": 722.706,
+       "start": "12:02"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-11",
+     "title": "Hints in long answers",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 747.329,
+     "start": "12:27",
+     "end_s": 808.032,
+     "topics": [
+      {
+       "board": "added-11_t1",
+       "title": "Hints in long answers",
+       "start_s": 747.329,
+       "start": "12:27",
+       "points": [
+        {
+         "text": "a long answer",
+         "block": "added-11_k01",
+         "start_s": 747.329,
+         "start": "12:27"
+        },
+        {
+         "text": "answer the hint",
+         "block": "added-11_k02",
+         "start_s": 770.338,
+         "start": "12:50"
+        },
+        {
+         "text": "choose",
+         "block": "added-11_k04",
+         "start_s": 779.319,
+         "start": "12:59"
+        },
+        {
+         "text": "the answer",
+         "block": "added-11_k06",
+         "start_s": 799.679,
+         "start": "13:19"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-11_k02",
+       "kind": "rule",
+       "text": "Answer the hint, not only the good news.",
+       "start_s": 770.338,
+       "start": "12:50"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-12",
+     "title": "Answering a hint",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 808.032,
+     "start": "13:28",
+     "end_s": 863.002,
+     "topics": [
+      {
+       "board": "added-12_t1",
+       "title": "Answering a hint",
+       "start_s": 808.032,
+       "start": "13:28",
+       "points": [
+        {
+         "text": "three steps",
+         "block": "added-12_k01",
+         "start_s": 808.032,
+         "start": "13:28"
+        },
+        {
+         "text": "the patient answers",
+         "block": "added-12_k02",
+         "start_s": 832.152,
+         "start": "13:52"
+        },
+        {
+         "text": "your turn",
+         "block": "added-12_k03",
+         "start_s": 839.229,
+         "start": "13:59"
+        },
+        {
+         "text": "the model",
+         "block": "added-12_k05",
+         "start_s": 855.042,
+         "start": "14:15"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-13",
+     "title": "Opening the door",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 863.002,
+     "start": "14:23",
+     "end_s": 939.552,
+     "topics": [
+      {
+       "board": "added-13_t1",
+       "title": "Opening the door",
+       "start_s": 863.002,
+       "start": "14:23",
+       "points": [
+        {
+         "text": "the steps",
+         "block": "added-13_k01",
+         "start_s": 863.002,
+         "start": "14:23"
+        },
+        {
+         "text": "the notes",
+         "block": "added-13_k02",
+         "start_s": 905.562,
+         "start": "15:05"
+        },
+        {
+         "text": "put them in order",
+         "block": "added-13_k03",
+         "start_s": 917.112,
+         "start": "15:17"
+        },
+        {
+         "text": "the answer",
+         "block": "added-13_k04",
+         "start_s": 929.301,
+         "start": "15:29"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-13_k02",
+       "kind": "rule",
+       "text": "Start from the notes, then check: Is that right?",
+       "start_s": 905.562,
+       "start": "15:05"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-14",
+     "title": "Open invitations",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 939.552,
+     "start": "15:39",
+     "end_s": 1003.942,
+     "topics": [
+      {
+       "board": "added-14_t1",
+       "title": "Open invitations",
+       "start_s": 939.552,
+       "start": "15:39",
+       "points": [
+        {
+         "text": "invitations",
+         "block": "added-14_k01",
+         "start_s": 939.552,
+         "start": "15:39"
+        },
+        {
+         "text": "then listen",
+         "block": "added-14_k02",
+         "start_s": 975.849,
+         "start": "16:15"
+        },
+        {
+         "text": "your turn",
+         "block": "added-14_k03",
+         "start_s": 982.591,
+         "start": "16:22"
+        },
+        {
+         "text": "the model",
+         "block": "added-14_k05",
+         "start_s": 996.962,
+         "start": "16:36"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-14_k02",
+       "kind": "rule",
+       "text": "Then stop, and listen. Let the patient finish.",
+       "start_s": 975.849,
+       "start": "16:15"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-15",
+     "title": "Words for the visit",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 1003.942,
+     "start": "16:43",
+     "end_s": 1058.932,
+     "topics": [
+      {
+       "board": "added-15_t1",
+       "title": "Words for the visit",
+       "start_s": 1003.942,
+       "start": "16:43",
+       "points": [
+        {
+         "text": "four words",
+         "block": "added-15_k01",
+         "start_s": 1003.942,
+         "start": "16:43"
+        },
+        {
+         "text": "your turn",
+         "block": "added-15_k02",
+         "start_s": 1039.682,
+         "start": "17:19"
+        },
+        {
+         "text": "the answers",
+         "block": "added-15_k03",
+         "start_s": 1051.242,
+         "start": "17:31"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-16",
+     "title": "The three things",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1058.932,
+     "start": "17:38",
+     "end_s": 1119.132,
+     "topics": [
+      {
+       "board": "added-16_t1",
+       "title": "The three things",
+       "start_s": 1058.932,
+       "start": "17:38",
+       "points": [
+        {
+         "text": "three things",
+         "block": "added-16_k01",
+         "start_s": 1058.932,
+         "start": "17:38"
+        },
+        {
+         "text": "in the criteria",
+         "block": "added-16_k02",
+         "start_s": 1081.472,
+         "start": "18:01"
+        },
+        {
+         "text": "match them",
+         "block": "added-16_k03",
+         "start_s": 1091.662,
+         "start": "18:11"
+        },
+        {
+         "text": "the answers",
+         "block": "added-16_k04",
+         "start_s": 1106.038,
+         "start": "18:26"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-16_k02",
+       "kind": "rule",
+       "text": "It's in the criteria: finding out and exploring the patient's ideas, concerns and expectations.",
+       "start_s": 1081.472,
+       "start": "18:01"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-17",
+     "title": "Asking about ideas",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1119.132,
+     "start": "18:39",
+     "end_s": 1175.043,
+     "topics": [
+      {
+       "board": "added-17_t1",
+       "title": "Asking about ideas",
+       "start_s": 1119.132,
+       "start": "18:39",
+       "points": [
+        {
+         "text": "ideas",
+         "block": "added-17_k01",
+         "start_s": 1119.132,
+         "start": "18:39"
+        },
+        {
+         "text": "why ask",
+         "block": "added-17_k02",
+         "start_s": 1149.919,
+         "start": "19:09"
+        },
+        {
+         "text": "choose",
+         "block": "added-17_k03",
+         "start_s": 1155.633,
+         "start": "19:15"
+        },
+        {
+         "text": "the answer",
+         "block": "added-17_k04",
+         "start_s": 1168.312,
+         "start": "19:28"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-17_k02",
+       "kind": "rule",
+       "text": "The patient's idea may be wrong. Then you know what to explain.",
+       "start_s": 1149.919,
+       "start": "19:09"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-18",
+     "title": "Asking about worries",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1175.043,
+     "start": "19:35",
+     "end_s": 1244.753,
+     "topics": [
+      {
+       "board": "added-18_t1",
+       "title": "Asking about worries",
+       "start_s": 1175.043,
+       "start": "19:35",
+       "points": [
+        {
+         "text": "concerns",
+         "block": "added-18_k01",
+         "start_s": 1175.043,
+         "start": "19:35"
+        },
+        {
+         "text": "particularly",
+         "block": "added-18_k02",
+         "start_s": 1205.283,
+         "start": "20:05"
+        },
+        {
+         "text": "your turn",
+         "block": "added-18_k03",
+         "start_s": 1221.0,
+         "start": "20:21"
+        },
+        {
+         "text": "the model",
+         "block": "added-18_k05",
+         "start_s": 1237.742,
+         "start": "20:37"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-19",
+     "title": "Keep the first part",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1244.753,
+     "start": "20:44",
+     "end_s": 1301.344,
+     "topics": [
+      {
+       "board": "added-19_t1",
+       "title": "Keep the first part",
+       "start_s": 1244.753,
+       "start": "20:44",
+       "points": [
+        {
+         "text": "keep and change",
+         "block": "added-19_k01",
+         "start_s": 1244.753,
+         "start": "20:44"
+        },
+        {
+         "text": "learn one",
+         "block": "added-19_k02",
+         "start_s": 1271.543,
+         "start": "21:11"
+        },
+        {
+         "text": "your turn",
+         "block": "added-19_k03",
+         "start_s": 1279.891,
+         "start": "21:19"
+        },
+        {
+         "text": "the model",
+         "block": "added-19_k04",
+         "start_s": 1294.413,
+         "start": "21:34"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-19_k02",
+       "kind": "rule",
+       "text": "Learn one good question well. Then change the end for each patient.",
+       "start_s": 1271.543,
+       "start": "21:11"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-20",
+     "title": "Asking about hopes",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1301.344,
+     "start": "21:41",
+     "end_s": 1361.014,
+     "topics": [
+      {
+       "board": "added-20_t1",
+       "title": "Asking about hopes",
+       "start_s": 1301.344,
+       "start": "21:41",
+       "points": [
+        {
+         "text": "hopes",
+         "block": "added-20_k01",
+         "start_s": 1301.344,
+         "start": "21:41"
+        },
+        {
+         "text": "you may also hear",
+         "block": "added-20_k02",
+         "start_s": 1332.074,
+         "start": "22:12"
+        },
+        {
+         "text": "put it in order",
+         "block": "added-20_k03",
+         "start_s": 1343.304,
+         "start": "22:23"
+        },
+        {
+         "text": "the answer",
+         "block": "added-20_k04",
+         "start_s": 1354.652,
+         "start": "22:34"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-21",
+     "title": "Worried or worrying",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1361.014,
+     "start": "22:41",
+     "end_s": 1409.764,
+     "topics": [
+      {
+       "board": "added-21_t1",
+       "title": "Worried or worrying",
+       "start_s": 1361.014,
+       "start": "22:41",
+       "points": [
+        {
+         "text": "two words",
+         "block": "added-21_k01",
+         "start_s": 1361.014,
+         "start": "22:41"
+        },
+        {
+         "text": "two verbs",
+         "block": "added-21_k02",
+         "start_s": 1375.802,
+         "start": "22:55"
+        },
+        {
+         "text": "your turn",
+         "block": "added-21_k04",
+         "start_s": 1387.164,
+         "start": "23:07"
+        },
+        {
+         "text": "the answers",
+         "block": "added-21_k05",
+         "start_s": 1399.353,
+         "start": "23:19"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-22",
+     "title": "Ask more than once",
+     "kind": "authored",
+     "pages": [],
+     "category": "c5",
+     "start_s": 1409.764,
+     "start": "23:29",
+     "end_s": 1474.39,
+     "topics": [
+      {
+       "board": "added-22_t1",
+       "title": "Ask more than once",
+       "start_s": 1409.764,
+       "start": "23:29",
+       "points": [
+        {
+         "text": "three times",
+         "block": "added-22_k01",
+         "start_s": 1409.764,
+         "start": "23:29"
+        },
+        {
+         "text": "the second answer",
+         "block": "added-22_k02",
+         "start_s": 1445.244,
+         "start": "24:05"
+        },
+        {
+         "text": "choose",
+         "block": "added-22_k03",
+         "start_s": 1455.02,
+         "start": "24:15"
+        },
+        {
+         "text": "the answer",
+         "block": "added-22_k04",
+         "start_s": 1467.859,
+         "start": "24:27"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-22_k02",
+       "kind": "rule",
+       "text": "The second answer is often the real worry.",
+       "start_s": 1445.244,
+       "start": "24:05"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-23",
+     "title": "Explore, then explain",
+     "kind": "authored",
+     "pages": [],
+     "category": "c5",
+     "start_s": 1474.39,
+     "start": "24:34",
+     "end_s": 1535.6,
+     "topics": [
+      {
+       "board": "added-23_t1",
+       "title": "Explore, then explain",
+       "start_s": 1474.39,
+       "start": "24:34",
+       "points": [
+        {
+         "text": "instead",
+         "block": "added-23_k01",
+         "start_s": 1474.39,
+         "start": "24:34"
+        },
+        {
+         "text": "why",
+         "block": "added-23_k02",
+         "start_s": 1506.399,
+         "start": "25:06"
+        },
+        {
+         "text": "choose",
+         "block": "added-23_k03",
+         "start_s": 1513.078,
+         "start": "25:13"
+        },
+        {
+         "text": "the answer",
+         "block": "added-23_k05",
+         "start_s": 1527.25,
+         "start": "25:27"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-23_k02",
+       "kind": "rule",
+       "text": "Find out first. Then you explain what the patient needs.",
+       "start_s": 1506.399,
+       "start": "25:06"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-24",
+     "title": "A worried mother",
+     "kind": "authored",
+     "pages": [],
+     "category": "c5",
+     "start_s": 1535.6,
+     "start": "25:35",
+     "end_s": 1591.94,
+     "topics": [
+      {
+       "board": "added-24_t1",
+       "title": "A worried mother",
+       "start_s": 1535.6,
+       "start": "25:35",
+       "points": [
+        {
+         "text": "the exchange",
+         "block": "added-24_k01",
+         "start_s": 1535.6,
+         "start": "25:35"
+        },
+        {
+         "text": "your turn",
+         "block": "added-24_k02",
+         "start_s": 1564.4,
+         "start": "26:04"
+        },
+        {
+         "text": "all three",
+         "block": "added-24_k04",
+         "start_s": 1581.869,
+         "start": "26:21"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-24_k04",
+       "kind": "rule",
+       "text": "Ideas, concerns, expectations: now you know all three.",
+       "start_s": 1581.869,
+       "start": "26:21"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-25",
+     "title": "Words for symptoms",
+     "kind": "authored",
+     "pages": [],
+     "category": "c5",
+     "start_s": 1591.94,
+     "start": "26:31",
+     "end_s": 1653.581,
+     "topics": [
+      {
+       "board": "added-25_t1",
+       "title": "Words for symptoms",
+       "start_s": 1591.94,
+       "start": "26:31",
+       "points": [
+        {
+         "text": "words",
+         "block": "added-25_k01",
+         "start_s": 1591.94,
+         "start": "26:31"
+        },
+        {
+         "text": "patients' words",
+         "block": "added-25_k02",
+         "start_s": 1620.78,
+         "start": "27:00"
+        },
+        {
+         "text": "match them",
+         "block": "added-25_k03",
+         "start_s": 1630.621,
+         "start": "27:10"
+        },
+        {
+         "text": "the answers",
+         "block": "added-25_k04",
+         "start_s": 1643.871,
+         "start": "27:23"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-25_k02",
+       "kind": "rule",
+       "text": "Patients may use words like these. Use the same words back.",
+       "start_s": 1620.78,
+       "start": "27:00"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-26",
+     "title": "Which reply?",
+     "kind": "authored",
+     "pages": [],
+     "category": "c6",
+     "start_s": 1653.581,
+     "start": "27:33",
+     "end_s": 1707.452,
+     "topics": [
+      {
+       "board": "added-26_t1",
+       "title": "Which reply?",
+       "start_s": 1653.581,
+       "start": "27:33",
+       "points": [
+        {
+         "text": "two replies",
+         "block": "added-26_k01",
+         "start_s": 1653.581,
+         "start": "27:33"
+        },
+        {
+         "text": "why it works",
+         "block": "added-26_k02",
+         "start_s": 1670.638,
+         "start": "27:50"
+        },
+        {
+         "text": "choose",
+         "block": "added-26_k03",
+         "start_s": 1682.839,
+         "start": "28:02"
+        },
+        {
+         "text": "the answer",
+         "block": "added-26_k05",
+         "start_s": 1698.771,
+         "start": "28:18"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-26_k02",
+       "kind": "rule",
+       "text": "It answers what the mother said, then it moves on.",
+       "start_s": 1670.638,
+       "start": "27:50"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-27",
+     "title": "Acknowledge it first",
+     "kind": "authored",
+     "pages": [],
+     "category": "c6",
+     "start_s": 1707.452,
+     "start": "28:27",
+     "end_s": 1777.991,
+     "topics": [
+      {
+       "board": "added-27_t1",
+       "title": "Acknowledge it first",
+       "start_s": 1707.452,
+       "start": "28:27",
+       "points": [
+        {
+         "text": "acknowledge",
+         "block": "added-27_k01",
+         "start_s": 1707.452,
+         "start": "28:27"
+        },
+        {
+         "text": "short",
+         "block": "added-27_k02",
+         "start_s": 1743.537,
+         "start": "29:03"
+        },
+        {
+         "text": "your turn",
+         "block": "added-27_k03",
+         "start_s": 1754.828,
+         "start": "29:14"
+        },
+        {
+         "text": "the model",
+         "block": "added-27_k05",
+         "start_s": 1769.099,
+         "start": "29:29"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-27_k02",
+       "kind": "rule",
+       "text": "Acknowledge the worry: show you've heard it. Keep it short, then go on.",
+       "start_s": 1743.537,
+       "start": "29:03"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-28",
+     "title": "Not yet, but",
+     "kind": "authored",
+     "pages": [],
+     "category": "c6",
+     "start_s": 1777.991,
+     "start": "29:37",
+     "end_s": 1845.727,
+     "topics": [
+      {
+       "board": "added-28_t1",
+       "title": "Not yet, but",
+       "start_s": 1777.991,
+       "start": "29:37",
+       "points": [
+        {
+         "text": "two parts",
+         "block": "added-28_k01",
+         "start_s": 1777.991,
+         "start": "29:37"
+        },
+        {
+         "text": "once",
+         "block": "added-28_k02",
+         "start_s": 1812.145,
+         "start": "30:12"
+        },
+        {
+         "text": "your turn",
+         "block": "added-28_k04",
+         "start_s": 1825.597,
+         "start": "30:25"
+        },
+        {
+         "text": "the answer",
+         "block": "added-28_k05",
+         "start_s": 1838.126,
+         "start": "30:38"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-28_k03",
+       "kind": "rule",
+       "text": "Once + it + has + healed: after it has healed",
+       "start_s": 1819.317,
+       "start": "30:19"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-29",
+     "title": "Moving on",
+     "kind": "authored",
+     "pages": [],
+     "category": "c6",
+     "start_s": 1845.727,
+     "start": "30:45",
+     "end_s": 1904.789,
+     "topics": [
+      {
+       "board": "added-29_t1",
+       "title": "Moving on",
+       "start_s": 1845.727,
+       "start": "30:45",
+       "points": [
+        {
+         "text": "the steps",
+         "block": "added-29_k01",
+         "start_s": 1845.727,
+         "start": "30:45"
+        },
+        {
+         "text": "from Keeping Going",
+         "block": "added-29_k02",
+         "start_s": 1870.232,
+         "start": "31:10"
+        },
+        {
+         "text": "put them in order",
+         "block": "added-29_k03",
+         "start_s": 1884.649,
+         "start": "31:24"
+        },
+        {
+         "text": "the answer",
+         "block": "added-29_k04",
+         "start_s": 1895.091,
+         "start": "31:35"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-29_k02",
+       "kind": "rule",
+       "text": "Now let me explain… Is it okay if we move on to…?",
+       "start_s": 1870.232,
+       "start": "31:10"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-30",
+     "title": "Check you've understood",
+     "kind": "authored",
+     "pages": [],
+     "category": "c7",
+     "start_s": 1904.789,
+     "start": "31:44",
+     "end_s": 1987.197,
+     "topics": [
+      {
+       "board": "added-30_t1",
+       "title": "Check you've understood",
+       "start_s": 1904.789,
+       "start": "31:44",
+       "points": [
+        {
+         "text": "checking",
+         "block": "added-30_k01",
+         "start_s": 1904.789,
+         "start": "31:44"
+        },
+        {
+         "text": "why check",
+         "block": "added-30_k02",
+         "start_s": 1941.494,
+         "start": "32:21"
+        },
+        {
+         "text": "your turn",
+         "block": "added-30_k03",
+         "start_s": 1963.377,
+         "start": "32:43"
+        },
+        {
+         "text": "the model",
+         "block": "added-30_k05",
+         "start_s": 1978.109,
+         "start": "32:58"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-30_k02",
+       "kind": "rule",
+       "text": "If you've got it wrong, the patient can correct you.",
+       "start_s": 1941.494,
+       "start": "32:21"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-31",
+     "title": "How does that sound?",
+     "kind": "authored",
+     "pages": [],
+     "category": "c7",
+     "start_s": 1987.197,
+     "start": "33:07",
+     "end_s": 2052.647,
+     "topics": [
+      {
+       "board": "added-31_t1",
+       "title": "How does that sound?",
+       "start_s": 1987.197,
+       "start": "33:07",
+       "points": [
+        {
+         "text": "after you explain",
+         "block": "added-31_k01",
+         "start_s": 1987.197,
+         "start": "33:07"
+        },
+        {
+         "text": "don't forget",
+         "block": "added-31_k02",
+         "start_s": 2021.787,
+         "start": "33:41"
+        },
+        {
+         "text": "your turn",
+         "block": "added-31_k03",
+         "start_s": 2029.695,
+         "start": "33:49"
+        },
+        {
+         "text": "the model",
+         "block": "added-31_k04",
+         "start_s": 2044.738,
+         "start": "34:04"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-31_k02",
+       "kind": "rule",
+       "text": "On test day, it's easy to forget these questions. Ask one after each plan.",
+       "start_s": 2021.787,
+       "start": "33:41"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-32",
+     "title": "Linking to the worry",
+     "kind": "authored",
+     "pages": [],
+     "category": "c7",
+     "start_s": 2052.647,
+     "start": "34:12",
+     "end_s": 2117.415,
+     "topics": [
+      {
+       "board": "added-32_t1",
+       "title": "Linking to the worry",
+       "start_s": 2052.647,
+       "start": "34:12",
+       "points": [
+        {
+         "text": "link it",
+         "block": "added-32_k01",
+         "start_s": 2052.647,
+         "start": "34:12"
+        },
+        {
+         "text": "in the criteria",
+         "block": "added-32_k02",
+         "start_s": 2083.73,
+         "start": "34:43"
+        },
+        {
+         "text": "your turn",
+         "block": "added-32_k03",
+         "start_s": 2094.613,
+         "start": "34:54"
+        },
+        {
+         "text": "the model",
+         "block": "added-32_k04",
+         "start_s": 2109.365,
+         "start": "35:09"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-32_k02",
+       "kind": "rule",
+       "text": "It's in the criteria: relating your explanation to the patient's ideas, concerns and expectations.",
+       "start_s": 2083.73,
+       "start": "34:43"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-33",
+     "title": "A short exchange",
+     "kind": "authored",
+     "pages": [],
+     "category": "c7",
+     "start_s": 2117.415,
+     "start": "35:17",
+     "end_s": 2179.586,
+     "topics": [
+      {
+       "board": "added-33_t1",
+       "title": "A short exchange",
+       "start_s": 2117.415,
+       "start": "35:17",
+       "points": [
+        {
+         "text": "the exchange",
+         "block": "added-33_k01",
+         "start_s": 2117.415,
+         "start": "35:17"
+        },
+        {
+         "text": "your turn",
+         "block": "added-33_k02",
+         "start_s": 2127.126,
+         "start": "35:27"
+        },
+        {
+         "text": "then explain",
+         "block": "added-33_k06",
+         "start_s": 2171.526,
+         "start": "36:11"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-33_k06",
+       "kind": "rule",
+       "text": "Explore, check, then explain from the worry.",
+       "start_s": 2171.526,
+       "start": "36:11"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-34",
+     "title": "Closing",
+     "kind": "closing",
+     "pages": [],
+     "category": "c7",
+     "start_s": 2179.586,
+     "start": "36:19",
+     "end_s": 2227.386,
+     "topics": [
+      {
+       "board": "added-34_t1",
+       "title": "Closing",
+       "start_s": 2179.586,
+       "start": "36:19",
+       "points": [
+        {
+         "text": "Recap",
+         "block": "added-34_k01",
+         "start_s": 2182.589,
+         "start": "36:22"
+        },
+        {
+         "text": "Practise",
+         "block": "added-34_k04",
+         "start_s": 2204.685,
+         "start": "36:44"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-34_k04",
+       "kind": "rule",
+       "text": "Practise: pick a worry patients often have in your profession. Ask about it in three ways.",
+       "start_s": 2204.685,
+       "start": "36:44"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    }
+   ],
+   "facts": [],
+   "methods": [],
+   "vocabulary": [],
+   "withheld": {
+    "listening_panel_words": 0,
+    "lines_naming_an_answer": 0
+   },
+   "practice_set": null,
+   "deck_exercises": [],
+   "links": {
+    "refers_to": [],
+    "referred_to_by": [],
+    "continues_in": [],
+    "continues_from": []
+   }
+  },
+  {
+   "id": "speaking-12-empathy-and-reassurance",
+   "folder": "speaking-12-empathy-and-reassurance",
+   "title": "OET Speaking: Showing Empathy and Reassuring",
+   "description": "Learn to show empathy and reassure a worried patient. Name the feeling gently. Show it makes sense. Give a short, kind answer before you explain. Reassure with real facts, not false promises. Give the patient time.",
+   "course": "speaking",
+   "order": 12,
+   "position": 9,
+   "length_s": 2142.159,
+   "length": "35:42",
+   "bundle_format": "1.24",
+   "status": "approved",
+   "approval": {
+    "by": "siavash",
+    "on": "2026-11-16 11:53"
+   },
+   "source": {
+    "folder": "source",
+    "recording": null,
+    "recording_duration_s": null,
+    "recording_partial_hash": null,
+    "deck": null,
+    "deck_pages": null,
+    "same_recording_as": [],
+    "note": "An authored lesson (ADR 047), the ninth of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first, in everyday spoken English (ADR 057, #212, #227): naming the patient's feeling gently, showing it makes sense, the owner's response B from his recorded session S4 (page 9: acknowledge the feeling, show you understand, reassure with what you will do, check), a short kind answer before the explanation, safe reassurance with real facts and no false promises, and giving the patient time; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 9."
+   },
+   "categories": [
+    {
+     "id": "c1",
+     "title": "Naming the feeling",
+     "sections": [
+      "added-01",
+      "added-02",
+      "added-03",
+      "added-04"
+     ]
+    },
+    {
+     "id": "c2",
+     "title": "It makes sense",
+     "sections": [
+      "added-05",
+      "added-06",
+      "added-07",
+      "added-08"
+     ]
+    },
+    {
+     "id": "c3",
+     "title": "Response B",
+     "sections": [
+      "added-09",
+      "added-10",
+      "added-11",
+      "added-12"
+     ]
+    },
+    {
+     "id": "c4",
+     "title": "Safe reassurance",
+     "sections": [
+      "added-13",
+      "added-14",
+      "added-15",
+      "added-16"
+     ]
+    },
+    {
+     "id": "c5",
+     "title": "Honest and warm",
+     "sections": [
+      "added-17",
+      "added-18",
+      "added-19",
+      "added-20"
+     ]
+    },
+    {
+     "id": "c6",
+     "title": "Time and the task",
+     "sections": [
+      "added-21",
+      "added-22",
+      "added-23",
+      "added-24"
+     ]
+    },
+    {
+     "id": "c7",
+     "title": "Practise and finish",
+     "sections": [
+      "added-25",
+      "added-26"
+     ]
+    }
+   ],
+   "sections": [
+    {
+     "id": "page-100",
+     "title": "Introduction",
+     "kind": "intro",
+     "pages": [
+      100
+     ],
+     "category": null,
+     "start_s": 0.0,
+     "start": "0:00",
+     "end_s": 89.509,
+     "topics": [
+      {
+       "board": "page-100_t1",
+       "title": "Title board",
+       "start_s": 0.0,
+       "start": "0:00",
+       "points": [
+        {
+         "text": "the lesson title, then what the lesson is about",
+         "block": "page-100_k01",
+         "start_s": 0.0,
+         "start": "0:00"
+        }
+       ]
+      },
+      {
+       "board": "page-100_t2",
+       "title": "Contents board",
+       "start_s": 50.419,
+       "start": "0:50",
+       "points": [
+        {
+         "text": "each category, revealed as it is named",
+         "block": "page-100_k06",
+         "start_s": 52.379,
+         "start": "0:52"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-01",
+     "title": "Hear the feeling",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 89.509,
+     "start": "1:29",
+     "end_s": 219.944,
+     "topics": [
+      {
+       "board": "added-01_t1",
+       "title": "Hear the feeling",
+       "start_s": 89.509,
+       "start": "1:29",
+       "points": [
+        {
+         "text": "the feeling behind the words",
+         "block": "added-01_k01",
+         "start_s": 89.509,
+         "start": "1:29"
+        },
+        {
+         "text": "a phrase",
+         "block": "added-01_k02",
+         "start_s": 160.797,
+         "start": "2:40"
+        },
+        {
+         "text": "listen for it",
+         "block": "added-01_k03",
+         "start_s": 176.863,
+         "start": "2:56"
+        },
+        {
+         "text": "match",
+         "block": "added-01_k05",
+         "start_s": 192.324,
+         "start": "3:12"
+        },
+        {
+         "text": "the answers",
+         "block": "added-01_k06",
+         "start_s": 205.154,
+         "start": "3:25"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-01_k03",
+       "kind": "rule",
+       "text": "Listen for the feeling behind the words.",
+       "start_s": 176.863,
+       "start": "2:56"
+      },
+      {
+       "block": "added-01_k06",
+       "kind": "rule",
+       "text": "Frustrated: Nobody has told me anything for hours. Scared: What if it doesn't get better? Embarrassed: Sorry, this is probably a silly question.",
+       "start_s": 205.154,
+       "start": "3:25"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-02",
+     "title": "Name it gently",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 219.944,
+     "start": "3:39",
+     "end_s": 331.528,
+     "topics": [
+      {
+       "board": "added-02_t1",
+       "title": "Name it gently",
+       "start_s": 219.944,
+       "start": "3:39",
+       "points": [
+        {
+         "text": "ways to start",
+         "block": "added-02_k01",
+         "start_s": 219.944,
+         "start": "3:39"
+        },
+        {
+         "text": "the grammar",
+         "block": "added-02_k02",
+         "start_s": 260.784,
+         "start": "4:20"
+        },
+        {
+         "text": "then check",
+         "block": "added-02_k04",
+         "start_s": 282.394,
+         "start": "4:42"
+        },
+        {
+         "text": "find it",
+         "block": "added-02_k05",
+         "start_s": 290.074,
+         "start": "4:50"
+        },
+        {
+         "text": "the answer",
+         "block": "added-02_k06",
+         "start_s": 304.203,
+         "start": "5:04"
+        },
+        {
+         "text": "your turn",
+         "block": "added-02_k07",
+         "start_s": 310.814,
+         "start": "5:10"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-02_k02",
+       "kind": "rule",
+       "text": "You seem worried. You look tired. No 'like' before the feeling word.",
+       "start_s": 260.784,
+       "start": "4:20"
+      },
+      {
+       "block": "added-02_k04",
+       "kind": "rule",
+       "text": "Then check: Is that right?",
+       "start_s": 282.394,
+       "start": "4:42"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-03",
+     "title": "Words for feelings",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 331.528,
+     "start": "5:31",
+     "end_s": 402.445,
+     "topics": [
+      {
+       "board": "added-03_t1",
+       "title": "Words for feelings",
+       "start_s": 331.528,
+       "start": "5:31",
+       "points": [
+        {
+         "text": "four words",
+         "block": "added-03_k01",
+         "start_s": 331.528,
+         "start": "5:31"
+        },
+        {
+         "text": "listen again",
+         "block": "added-03_k02",
+         "start_s": 373.868,
+         "start": "6:13"
+        },
+        {
+         "text": "choose",
+         "block": "added-03_k03",
+         "start_s": 386.095,
+         "start": "6:26"
+        },
+        {
+         "text": "the answer",
+         "block": "added-03_k04",
+         "start_s": 396.394,
+         "start": "6:36"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-03_k02",
+       "kind": "rule",
+       "text": "Anxious, frustrated, overwhelmed, relieved.",
+       "start_s": 373.868,
+       "start": "6:13"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-04",
+     "title": "More -ed and -ing",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 402.445,
+     "start": "6:42",
+     "end_s": 492.663,
+     "topics": [
+      {
+       "board": "added-04_t1",
+       "title": "More -ed and -ing",
+       "start_s": 402.445,
+       "start": "6:42",
+       "points": [
+        {
+         "text": "-ed and -ing",
+         "block": "added-04_k01",
+         "start_s": 402.445,
+         "start": "6:42"
+        },
+        {
+         "text": "the rule",
+         "block": "added-04_k02",
+         "start_s": 441.478,
+         "start": "7:21"
+        },
+        {
+         "text": "a word",
+         "block": "added-04_k03",
+         "start_s": 456.444,
+         "start": "7:36"
+        },
+        {
+         "text": "choose",
+         "block": "added-04_k04",
+         "start_s": 470.983,
+         "start": "7:50"
+        },
+        {
+         "text": "the answers",
+         "block": "added-04_k05",
+         "start_s": 483.818,
+         "start": "8:03"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-04_k02",
+       "kind": "rule",
+       "text": "-ed: how a person feels. -ing: what makes them feel it.",
+       "start_s": 441.478,
+       "start": "7:21"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-05",
+     "title": "Guess, don't tell",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 492.663,
+     "start": "8:12",
+     "end_s": 579.637,
+     "topics": [
+      {
+       "board": "added-05_t1",
+       "title": "Guess, don't tell",
+       "start_s": 492.663,
+       "start": "8:12",
+       "points": [
+        {
+         "text": "instead",
+         "block": "added-05_k01",
+         "start_s": 492.663,
+         "start": "8:12"
+        },
+        {
+         "text": "a phrase",
+         "block": "added-05_k02",
+         "start_s": 527.784,
+         "start": "8:47"
+        },
+        {
+         "text": "why",
+         "block": "added-05_k03",
+         "start_s": 541.722,
+         "start": "9:01"
+        },
+        {
+         "text": "choose",
+         "block": "added-05_k05",
+         "start_s": 555.91,
+         "start": "9:15"
+        },
+        {
+         "text": "the answer",
+         "block": "added-05_k07",
+         "start_s": 572.426,
+         "start": "9:32"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-05_k03",
+       "kind": "rule",
+       "text": "The patient knows how they feel. You can only guess.",
+       "start_s": 541.722,
+       "start": "9:01"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-06",
+     "title": "A lot of people",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 579.637,
+     "start": "9:39",
+     "end_s": 666.825,
+     "topics": [
+      {
+       "board": "added-06_t1",
+       "title": "A lot of people",
+       "start_s": 579.637,
+       "start": "9:39",
+       "points": [
+        {
+         "text": "it's normal",
+         "block": "added-06_k01",
+         "start_s": 579.637,
+         "start": "9:39"
+        },
+        {
+         "text": "would",
+         "block": "added-06_k02",
+         "start_s": 625.76,
+         "start": "10:25"
+        },
+        {
+         "text": "then listen",
+         "block": "added-06_k03",
+         "start_s": 637.17,
+         "start": "10:37"
+        },
+        {
+         "text": "your turn",
+         "block": "added-06_k04",
+         "start_s": 647.73,
+         "start": "10:47"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-06_k02",
+       "kind": "rule",
+       "text": "Anyone would feel the same: 'would' here talks about an imagined situation.",
+       "start_s": 625.76,
+       "start": "10:25"
+      },
+      {
+       "block": "added-06_k03",
+       "kind": "rule",
+       "text": "Say it's normal. Then listen. Don't end the conversation there.",
+       "start_s": 637.17,
+       "start": "10:37"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-07",
+     "title": "It's hard when",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 666.825,
+     "start": "11:06",
+     "end_s": 755.725,
+     "topics": [
+      {
+       "board": "added-07_t1",
+       "title": "It's hard when",
+       "start_s": 666.825,
+       "start": "11:06",
+       "points": [
+        {
+         "text": "why it's hard",
+         "block": "added-07_k01",
+         "start_s": 666.825,
+         "start": "11:06"
+        },
+        {
+         "text": "a phrase",
+         "block": "added-07_k02",
+         "start_s": 704.581,
+         "start": "11:44"
+        },
+        {
+         "text": "the grammar",
+         "block": "added-07_k03",
+         "start_s": 719.785,
+         "start": "11:59"
+        },
+        {
+         "text": "type",
+         "block": "added-07_k04",
+         "start_s": 735.435,
+         "start": "12:15"
+        },
+        {
+         "text": "the answers",
+         "block": "added-07_k05",
+         "start_s": 747.045,
+         "start": "12:27"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-07_k03",
+       "kind": "rule",
+       "text": "It's hard when + a sentence. It's not easy to + a verb.",
+       "start_s": 719.785,
+       "start": "11:59"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-08",
+     "title": "Words and phrases",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 755.725,
+     "start": "12:35",
+     "end_s": 896.863,
+     "topics": [
+      {
+       "board": "added-08_t1",
+       "title": "Words and phrases",
+       "start_s": 755.725,
+       "start": "12:35",
+       "points": [
+        {
+         "text": "the words",
+         "block": "added-08_k01",
+         "start_s": 755.725,
+         "start": "12:35"
+        },
+        {
+         "text": "acknowledge",
+         "block": "added-08_k02",
+         "start_s": 770.465,
+         "start": "12:50"
+        },
+        {
+         "text": "reassure",
+         "block": "added-08_k03",
+         "start_s": 788.681,
+         "start": "13:08"
+        },
+        {
+         "text": "cope",
+         "block": "added-08_k04",
+         "start_s": 805.553,
+         "start": "13:25"
+        },
+        {
+         "text": "put your mind at rest",
+         "block": "added-08_k05",
+         "start_s": 820.0,
+         "start": "13:40"
+        },
+        {
+         "text": "shaken",
+         "block": "added-08_k06",
+         "start_s": 837.834,
+         "start": "13:57"
+        },
+        {
+         "text": "match",
+         "block": "added-08_k07",
+         "start_s": 853.103,
+         "start": "14:13"
+        },
+        {
+         "text": "the answers",
+         "block": "added-08_k08",
+         "start_s": 865.783,
+         "start": "14:25"
+        },
+        {
+         "text": "type",
+         "block": "added-08_k09",
+         "start_s": 877.323,
+         "start": "14:37"
+        },
+        {
+         "text": "the words",
+         "block": "added-08_k10",
+         "start_s": 888.963,
+         "start": "14:48"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-08_k08",
+       "kind": "rule",
+       "text": "Cope: manage something hard. Acknowledge: show you have heard and understood. Reassure: help someone worry less.",
+       "start_s": 865.783,
+       "start": "14:25"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-09",
+     "title": "Two responses",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 896.863,
+     "start": "14:56",
+     "end_s": 1003.564,
+     "topics": [
+      {
+       "board": "added-09_t1",
+       "title": "Two responses",
+       "start_s": 896.863,
+       "start": "14:56",
+       "points": [
+        {
+         "text": "the patient",
+         "block": "added-09_k01",
+         "start_s": 896.863,
+         "start": "14:56"
+        },
+        {
+         "text": "a phrase",
+         "block": "added-09_k02",
+         "start_s": 924.389,
+         "start": "15:24"
+        },
+        {
+         "text": "two responses",
+         "block": "added-09_k04",
+         "start_s": 939.024,
+         "start": "15:39"
+        },
+        {
+         "text": "why B",
+         "block": "added-09_k05",
+         "start_s": 961.954,
+         "start": "16:01"
+        },
+        {
+         "text": "choose",
+         "block": "added-09_k07",
+         "start_s": 980.274,
+         "start": "16:20"
+        },
+        {
+         "text": "the answer",
+         "block": "added-09_k08",
+         "start_s": 992.514,
+         "start": "16:32"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-09_k05",
+       "kind": "rule",
+       "text": "A says 'I understand', then explains. B shows the nurse understands.",
+       "start_s": 961.954,
+       "start": "16:01"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-10",
+     "title": "Response B in steps",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 1003.564,
+     "start": "16:43",
+     "end_s": 1060.741,
+     "topics": [
+      {
+       "board": "added-10_t1",
+       "title": "Response B in steps",
+       "start_s": 1003.564,
+       "start": "16:43",
+       "points": [
+        {
+         "text": "the steps",
+         "block": "added-10_k01",
+         "start_s": 1003.564,
+         "start": "16:43"
+        },
+        {
+         "text": "short",
+         "block": "added-10_k02",
+         "start_s": 1034.2,
+         "start": "17:14"
+        },
+        {
+         "text": "order",
+         "block": "added-10_k03",
+         "start_s": 1039.63,
+         "start": "17:19"
+        },
+        {
+         "text": "the answer",
+         "block": "added-10_k04",
+         "start_s": 1050.69,
+         "start": "17:30"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-10_k02",
+       "kind": "rule",
+       "text": "Four short steps. Then explain.",
+       "start_s": 1034.2,
+       "start": "17:14"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-11",
+     "title": "Then signpost, explain",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 1060.741,
+     "start": "17:40",
+     "end_s": 1135.491,
+     "topics": [
+      {
+       "board": "added-11_t1",
+       "title": "Then signpost, explain",
+       "start_s": 1060.741,
+       "start": "17:40",
+       "points": [
+        {
+         "text": "the order",
+         "block": "added-11_k01",
+         "start_s": 1060.741,
+         "start": "17:40"
+        },
+        {
+         "text": "a word",
+         "block": "added-11_k02",
+         "start_s": 1089.87,
+         "start": "18:09"
+        },
+        {
+         "text": "the criteria",
+         "block": "added-11_k03",
+         "start_s": 1103.191,
+         "start": "18:23"
+        },
+        {
+         "text": "your turn",
+         "block": "added-11_k04",
+         "start_s": 1109.698,
+         "start": "18:29"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-11_k02",
+       "kind": "rule",
+       "text": "You may also hear: apply. It means to put something on the skin or a wound.",
+       "start_s": 1089.87,
+       "start": "18:09"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-12",
+     "title": "Your turn with B",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 1135.491,
+     "start": "18:55",
+     "end_s": 1211.711,
+     "topics": [
+      {
+       "board": "added-12_t1",
+       "title": "Your turn with B",
+       "start_s": 1135.491,
+       "start": "18:55",
+       "points": [
+        {
+         "text": "the case",
+         "block": "added-12_k01",
+         "start_s": 1135.491,
+         "start": "18:55"
+        },
+        {
+         "text": "a word",
+         "block": "added-12_k02",
+         "start_s": 1153.793,
+         "start": "19:13"
+        },
+        {
+         "text": "no blame",
+         "block": "added-12_k03",
+         "start_s": 1169.031,
+         "start": "19:29"
+        },
+        {
+         "text": "your turn",
+         "block": "added-12_k04",
+         "start_s": 1184.741,
+         "start": "19:44"
+        },
+        {
+         "text": "the model",
+         "block": "added-12_k06",
+         "start_s": 1199.896,
+         "start": "19:59"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-12_k03",
+       "kind": "rule",
+       "text": "Don't blame them. 'You did the right thing' helps.",
+       "start_s": 1169.031,
+       "start": "19:29"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-13",
+     "title": "No false promises",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1211.711,
+     "start": "20:11",
+     "end_s": 1299.069,
+     "topics": [
+      {
+       "board": "added-13_t1",
+       "title": "No false promises",
+       "start_s": 1211.711,
+       "start": "20:11",
+       "points": [
+        {
+         "text": "instead",
+         "block": "added-13_k01",
+         "start_s": 1211.711,
+         "start": "20:11"
+        },
+        {
+         "text": "a phrase",
+         "block": "added-13_k02",
+         "start_s": 1248.072,
+         "start": "20:48"
+        },
+        {
+         "text": "why",
+         "block": "added-13_k03",
+         "start_s": 1264.267,
+         "start": "21:04"
+        },
+        {
+         "text": "choose",
+         "block": "added-13_k04",
+         "start_s": 1271.818,
+         "start": "21:11"
+        },
+        {
+         "text": "the answer",
+         "block": "added-13_k06",
+         "start_s": 1287.207,
+         "start": "21:27"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-13_k03",
+       "kind": "rule",
+       "text": "If a promise does not come true, the patient stops trusting you.",
+       "start_s": 1264.267,
+       "start": "21:04"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-14",
+     "title": "Reassure with facts",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1299.069,
+     "start": "21:39",
+     "end_s": 1354.91,
+     "topics": [
+      {
+       "board": "added-14_t1",
+       "title": "Reassure with facts",
+       "start_s": 1299.069,
+       "start": "21:39",
+       "points": [
+        {
+         "text": "real facts",
+         "block": "added-14_k01",
+         "start_s": 1299.069,
+         "start": "21:39"
+        },
+        {
+         "text": "true facts",
+         "block": "added-14_k02",
+         "start_s": 1328.52,
+         "start": "22:08"
+        },
+        {
+         "text": "your turn",
+         "block": "added-14_k04",
+         "start_s": 1338.506,
+         "start": "22:18"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-14_k02",
+       "kind": "rule",
+       "text": "Only say what's true for this patient.",
+       "start_s": 1328.52,
+       "start": "22:08"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-15",
+     "title": "The right thing",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1354.91,
+     "start": "22:34",
+     "end_s": 1423.657,
+     "topics": [
+      {
+       "board": "added-15_t1",
+       "title": "The right thing",
+       "start_s": 1354.91,
+       "start": "22:34",
+       "points": [
+        {
+         "text": "the right thing",
+         "block": "added-15_k01",
+         "start_s": 1354.91,
+         "start": "22:34"
+        },
+        {
+         "text": "the grammar",
+         "block": "added-15_k02",
+         "start_s": 1384.817,
+         "start": "23:04"
+        },
+        {
+         "text": "type",
+         "block": "added-15_k04",
+         "start_s": 1405.777,
+         "start": "23:25"
+        },
+        {
+         "text": "the answers",
+         "block": "added-15_k05",
+         "start_s": 1416.266,
+         "start": "23:36"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-15_k02",
+       "kind": "rule",
+       "text": "You did the right thing + -ing: coming, calling. Thank you for + -ing: letting.",
+       "start_s": 1384.817,
+       "start": "23:04"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-16",
+     "title": "Will or should",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1423.657,
+     "start": "23:43",
+     "end_s": 1500.038,
+     "topics": [
+      {
+       "board": "added-16_t1",
+       "title": "Will or should",
+       "start_s": 1423.657,
+       "start": "23:43",
+       "points": [
+        {
+         "text": "will and should",
+         "block": "added-16_k01",
+         "start_s": 1423.657,
+         "start": "23:43"
+        },
+        {
+         "text": "a phrase",
+         "block": "added-16_k02",
+         "start_s": 1457.654,
+         "start": "24:17"
+        },
+        {
+         "text": "the rule",
+         "block": "added-16_k03",
+         "start_s": 1471.906,
+         "start": "24:31"
+        },
+        {
+         "text": "choose",
+         "block": "added-16_k04",
+         "start_s": 1479.387,
+         "start": "24:39"
+        },
+        {
+         "text": "the answers",
+         "block": "added-16_k05",
+         "start_s": 1491.587,
+         "start": "24:51"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-16_k03",
+       "kind": "rule",
+       "text": "Your actions: will. The results: should, usually, most people.",
+       "start_s": 1471.906,
+       "start": "24:31"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-17",
+     "title": "When you don't know",
+     "kind": "authored",
+     "pages": [],
+     "category": "c5",
+     "start_s": 1500.038,
+     "start": "25:00",
+     "end_s": 1557.818,
+     "topics": [
+      {
+       "board": "added-17_t1",
+       "title": "When you don't know",
+       "start_s": 1500.038,
+       "start": "25:00",
+       "points": [
+        {
+         "text": "the steps",
+         "block": "added-17_k01",
+         "start_s": 1500.038,
+         "start": "25:00"
+        },
+        {
+         "text": "I'm afraid",
+         "block": "added-17_k02",
+         "start_s": 1524.0,
+         "start": "25:24"
+        },
+        {
+         "text": "your turn",
+         "block": "added-17_k03",
+         "start_s": 1530.533,
+         "start": "25:30"
+        },
+        {
+         "text": "the model",
+         "block": "added-17_k05",
+         "start_s": 1547.683,
+         "start": "25:47"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-17_k02",
+       "kind": "rule",
+       "text": "I'm afraid: we say it before news the patient won't like. It isn't about fear.",
+       "start_s": 1524.0,
+       "start": "25:24"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-18",
+     "title": "Say it another way",
+     "kind": "authored",
+     "pages": [],
+     "category": "c5",
+     "start_s": 1557.818,
+     "start": "25:57",
+     "end_s": 1643.708,
+     "topics": [
+      {
+       "board": "added-18_t1",
+       "title": "Say it another way",
+       "start_s": 1557.818,
+       "start": "25:57",
+       "points": [
+        {
+         "text": "reply to what they say",
+         "block": "added-18_k01",
+         "start_s": 1557.818,
+         "start": "25:57"
+        },
+        {
+         "text": "a phrase",
+         "block": "added-18_k02",
+         "start_s": 1601.066,
+         "start": "26:41"
+        },
+        {
+         "text": "match",
+         "block": "added-18_k03",
+         "start_s": 1615.328,
+         "start": "26:55"
+        },
+        {
+         "text": "the answers",
+         "block": "added-18_k04",
+         "start_s": 1627.926,
+         "start": "27:07"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-18_k04",
+       "kind": "rule",
+       "text": "My mum's ill, and the kids are off school: That's a lot to deal with. I've been up all night with the baby: No wonder you're tired. We waited three hours to see you: That's a long time to wait.",
+       "start_s": 1627.926,
+       "start": "27:07"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-19",
+     "title": "Must be, no wonder",
+     "kind": "authored",
+     "pages": [],
+     "category": "c5",
+     "start_s": 1643.708,
+     "start": "27:23",
+     "end_s": 1715.055,
+     "topics": [
+      {
+       "board": "added-19_t1",
+       "title": "Must be, no wonder",
+       "start_s": 1643.708,
+       "start": "27:23",
+       "points": [
+        {
+         "text": "ways to start",
+         "block": "added-19_k01",
+         "start_s": 1643.708,
+         "start": "27:23"
+        },
+        {
+         "text": "the grammar",
+         "block": "added-19_k02",
+         "start_s": 1672.345,
+         "start": "27:52"
+        },
+        {
+         "text": "find it",
+         "block": "added-19_k04",
+         "start_s": 1693.305,
+         "start": "28:13"
+        },
+        {
+         "text": "the answer",
+         "block": "added-19_k05",
+         "start_s": 1706.325,
+         "start": "28:26"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-19_k02",
+       "kind": "rule",
+       "text": "Must be + how they feel, or how it is. No 'to': That must be hard.",
+       "start_s": 1672.345,
+       "start": "27:52"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-20",
+     "title": "Say it warmly",
+     "kind": "authored",
+     "pages": [],
+     "category": "c5",
+     "start_s": 1715.055,
+     "start": "28:35",
+     "end_s": 1767.506,
+     "topics": [
+      {
+       "board": "added-20_t1",
+       "title": "Say it warmly",
+       "start_s": 1715.055,
+       "start": "28:35",
+       "points": [
+        {
+         "text": "the stress",
+         "block": "added-20_k01",
+         "start_s": 1715.055,
+         "start": "28:35"
+        },
+        {
+         "text": "warm",
+         "block": "added-20_k02",
+         "start_s": 1745.375,
+         "start": "29:05"
+        },
+        {
+         "text": "your turn",
+         "block": "added-20_k03",
+         "start_s": 1750.515,
+         "start": "29:10"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-20_k02",
+       "kind": "rule",
+       "text": "Slow down a little. A warm voice helps the patient feel you're listening.",
+       "start_s": 1745.375,
+       "start": "29:05"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-21",
+     "title": "Give them time",
+     "kind": "authored",
+     "pages": [],
+     "category": "c6",
+     "start_s": 1767.506,
+     "start": "29:27",
+     "end_s": 1823.976,
+     "topics": [
+      {
+       "board": "added-21_t1",
+       "title": "Give them time",
+       "start_s": 1767.506,
+       "start": "29:27",
+       "points": [
+        {
+         "text": "give time",
+         "block": "added-21_k01",
+         "start_s": 1767.506,
+         "start": "29:27"
+        },
+        {
+         "text": "then listen",
+         "block": "added-21_k02",
+         "start_s": 1789.679,
+         "start": "29:49"
+        },
+        {
+         "text": "choose",
+         "block": "added-21_k04",
+         "start_s": 1801.895,
+         "start": "30:01"
+        },
+        {
+         "text": "the answer",
+         "block": "added-21_k06",
+         "start_s": 1817.616,
+         "start": "30:17"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-21_k02",
+       "kind": "rule",
+       "text": "Say one line. Then stop, and listen.",
+       "start_s": 1789.679,
+       "start": "29:49"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-22",
+     "title": "Keep it about them",
+     "kind": "authored",
+     "pages": [],
+     "category": "c6",
+     "start_s": 1823.976,
+     "start": "30:23",
+     "end_s": 1871.299,
+     "topics": [
+      {
+       "board": "added-22_t1",
+       "title": "Keep it about them",
+       "start_s": 1823.976,
+       "start": "30:23",
+       "points": [
+        {
+         "text": "instead",
+         "block": "added-22_k01",
+         "start_s": 1823.976,
+         "start": "30:23"
+        },
+        {
+         "text": "why",
+         "block": "added-22_k02",
+         "start_s": 1844.649,
+         "start": "30:44"
+        },
+        {
+         "text": "type",
+         "block": "added-22_k04",
+         "start_s": 1853.619,
+         "start": "30:53"
+        },
+        {
+         "text": "the answer",
+         "block": "added-22_k05",
+         "start_s": 1865.363,
+         "start": "31:05"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-22_k02",
+       "kind": "rule",
+       "text": "The role-play is about the patient's feelings, not yours.",
+       "start_s": 1844.649,
+       "start": "30:44"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-23",
+     "title": "One kind line",
+     "kind": "authored",
+     "pages": [],
+     "category": "c6",
+     "start_s": 1871.299,
+     "start": "31:11",
+     "end_s": 1960.21,
+     "topics": [
+      {
+       "board": "added-23_t1",
+       "title": "One kind line",
+       "start_s": 1871.299,
+       "start": "31:11",
+       "points": [
+        {
+         "text": "the order",
+         "block": "added-23_k01",
+         "start_s": 1871.299,
+         "start": "31:11"
+        },
+        {
+         "text": "a word",
+         "block": "added-23_k02",
+         "start_s": 1908.456,
+         "start": "31:48"
+        },
+        {
+         "text": "lead",
+         "block": "added-23_k03",
+         "start_s": 1919.71,
+         "start": "31:59"
+        },
+        {
+         "text": "order",
+         "block": "added-23_k04",
+         "start_s": 1930.11,
+         "start": "32:10"
+        },
+        {
+         "text": "the answer",
+         "block": "added-23_k05",
+         "start_s": 1942.1,
+         "start": "32:22"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-23_k02",
+       "kind": "rule",
+       "text": "A shock: something bad you didn't expect.",
+       "start_s": 1908.456,
+       "start": "31:48"
+      },
+      {
+       "block": "added-23_k03",
+       "kind": "rule",
+       "text": "You take the lead, kindly. (You start and guide the talk.)",
+       "start_s": 1919.71,
+       "start": "31:59"
+      },
+      {
+       "block": "added-23_k06",
+       "kind": "rule",
+       "text": "Take in: fully understand news.",
+       "start_s": 1954.02,
+       "start": "32:34"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-24",
+     "title": "Back to the task",
+     "kind": "authored",
+     "pages": [],
+     "category": "c6",
+     "start_s": 1960.21,
+     "start": "32:40",
+     "end_s": 2022.164,
+     "topics": [
+      {
+       "board": "added-24_t1",
+       "title": "Back to the task",
+       "start_s": 1960.21,
+       "start": "32:40",
+       "points": [
+        {
+         "text": "ways back",
+         "block": "added-24_k01",
+         "start_s": 1960.21,
+         "start": "32:40"
+        },
+        {
+         "text": "kind, then the task",
+         "block": "added-24_k02",
+         "start_s": 1990.65,
+         "start": "33:10"
+        },
+        {
+         "text": "your turn",
+         "block": "added-24_k03",
+         "start_s": 1995.421,
+         "start": "33:15"
+        },
+        {
+         "text": "the model",
+         "block": "added-24_k05",
+         "start_s": 2013.05,
+         "start": "33:33"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-24_k02",
+       "kind": "rule",
+       "text": "A kind line, then the task. Both, in that order.",
+       "start_s": 1990.65,
+       "start": "33:10"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-25",
+     "title": "A worried patient",
+     "kind": "authored",
+     "pages": [],
+     "category": "c7",
+     "start_s": 2022.164,
+     "start": "33:42",
+     "end_s": 2098.399,
+     "topics": [
+      {
+       "board": "added-25_t1",
+       "title": "A worried patient",
+       "start_s": 2022.164,
+       "start": "33:42",
+       "points": [
+        {
+         "text": "the exchange",
+         "block": "added-25_k01",
+         "start_s": 2022.164,
+         "start": "33:42"
+        },
+        {
+         "text": "your turn",
+         "block": "added-25_k02",
+         "start_s": 2041.494,
+         "start": "34:01"
+        },
+        {
+         "text": "kind and honest",
+         "block": "added-25_k06",
+         "start_s": 2091.098,
+         "start": "34:51"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-25_k06",
+       "kind": "rule",
+       "text": "Name the feeling. Then a real fact, not a promise.",
+       "start_s": 2091.098,
+       "start": "34:51"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-26",
+     "title": "Closing",
+     "kind": "closing",
+     "pages": [],
+     "category": "c7",
+     "start_s": 2098.399,
+     "start": "34:58",
+     "end_s": 2142.159,
+     "topics": [
+      {
+       "board": "added-26_t1",
+       "title": "Closing",
+       "start_s": 2098.399,
+       "start": "34:58",
+       "points": [
+        {
+         "text": "Recap",
+         "block": "added-26_k01",
+         "start_s": 2101.461,
+         "start": "35:01"
+        },
+        {
+         "text": "Practise",
+         "block": "added-26_k04",
+         "start_s": 2118.654,
+         "start": "35:18"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-26_k04",
+       "kind": "rule",
+       "text": "Practise: when a friend tells you about a worry, name the feeling. Then say one kind line.",
+       "start_s": 2118.654,
+       "start": "35:18"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    }
+   ],
+   "facts": [],
+   "methods": [],
+   "vocabulary": [
+    {
+     "word": "fed up",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-01",
+     "block": "added-01_k02",
+     "start_s": 160.797,
+     "start": "2:40"
+    },
+    {
+     "word": "frightened",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-04",
+     "block": "added-04_k03",
+     "start_s": 456.444,
+     "start": "7:36"
+    },
+    {
+     "word": "a fright",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-05",
+     "block": "added-05_k02",
+     "start_s": 527.784,
+     "start": "8:47"
+    },
+    {
+     "word": "catch your breath",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-07",
+     "block": "added-07_k02",
+     "start_s": 704.581,
+     "start": "11:44"
+    },
+    {
+     "word": "acknowledge",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-08",
+     "block": "added-08_k02",
+     "start_s": 770.465,
+     "start": "12:50"
+    },
+    {
+     "word": "reassure",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-08",
+     "block": "added-08_k03",
+     "start_s": 788.681,
+     "start": "13:08"
+    },
+    {
+     "word": "cope",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-08",
+     "block": "added-08_k04",
+     "start_s": 805.553,
+     "start": "13:25"
+    },
+    {
+     "word": "put your mind at rest",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-08",
+     "block": "added-08_k05",
+     "start_s": 820.0,
+     "start": "13:40"
+    },
+    {
+     "word": "shaken",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-08",
+     "block": "added-08_k06",
+     "start_s": 837.834,
+     "start": "13:57"
+    },
+    {
+     "word": "look away",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-09",
+     "block": "added-09_k02",
+     "start_s": 924.389,
+     "start": "15:24"
+    },
+    {
+     "word": "grab",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-09",
+     "block": "added-09_k03",
+     "start_s": 932.134,
+     "start": "15:32"
+    },
+    {
+     "word": "guilty",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-12",
+     "block": "added-12_k02",
+     "start_s": 1153.793,
+     "start": "19:13"
+    },
+    {
+     "word": "a sharp scratch",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-13",
+     "block": "added-13_k02",
+     "start_s": 1248.072,
+     "start": "20:48"
+    },
+    {
+     "word": "keep an eye on",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-16",
+     "block": "added-16_k02",
+     "start_s": 1457.654,
+     "start": "24:17"
+    },
+    {
+     "word": "deal with",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-18",
+     "block": "added-18_k02",
+     "start_s": 1601.066,
+     "start": "26:41"
+    }
+   ],
+   "withheld": {
+    "listening_panel_words": 0,
+    "lines_naming_an_answer": 0
+   },
+   "practice_set": null,
+   "deck_exercises": [],
+   "links": {
+    "refers_to": [],
+    "referred_to_by": [],
+    "continues_in": [],
+    "continues_from": []
+   }
   }
  ],
  "topic_index": [
@@ -70279,6 +74183,19 @@
    ]
   },
   {
+   "topic": "A lot of people",
+   "key": "a lot of people",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-06",
+     "start_s": 579.637,
+     "start": "9:39",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "A needle in a haystack",
    "key": "a needle in a haystack",
    "entries": [
@@ -70287,6 +74204,19 @@
      "section": "page-4",
      "start_s": 108.68,
      "start": "1:48",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "A new medicine",
+   "key": "a new medicine",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-07",
+     "start_s": 506.0,
+     "start": "8:26",
      "source": "section"
     }
    ]
@@ -70390,6 +74320,19 @@
    ]
   },
   {
+   "topic": "A short exchange",
+   "key": "a short exchange",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-33",
+     "start_s": 2117.415,
+     "start": "35:17",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "A short role-play",
    "key": "a short role-play",
    "entries": [
@@ -70482,6 +74425,32 @@
    ]
   },
   {
+   "topic": "A worried mother",
+   "key": "a worried mother",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-24",
+     "start_s": 1535.6,
+     "start": "25:35",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "A worried patient",
+   "key": "a worried patient",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-25",
+     "start_s": 2022.164,
+     "start": "33:42",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "A wrong number",
    "key": "a wrong number",
    "entries": [
@@ -70530,6 +74499,19 @@
      "start_s": 849.482,
      "start": "14:09",
      "source": "curated"
+    }
+   ]
+  },
+  {
+   "topic": "Acknowledge it first",
+   "key": "acknowledge it first",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-27",
+     "start_s": 1707.452,
+     "start": "28:27",
+     "source": "section"
     }
    ]
   },
@@ -70736,6 +74718,19 @@
    ]
   },
   {
+   "topic": "Answering a hint",
+   "key": "answering a hint",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-12",
+     "start_s": 808.032,
+     "start": "13:28",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Apostrophe",
    "key": "apostrophe",
    "entries": [
@@ -70830,6 +74825,58 @@
      "start_s": 749.612,
      "start": "12:29",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Ask more than once",
+   "key": "ask more than once",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-22",
+     "start_s": 1409.764,
+     "start": "23:29",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Asking about hopes",
+   "key": "asking about hopes",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-20",
+     "start_s": 1301.344,
+     "start": "21:41",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Asking about ideas",
+   "key": "asking about ideas",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-17",
+     "start_s": 1119.132,
+     "start": "18:39",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Asking about worries",
+   "key": "asking about worries",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-18",
+     "start_s": 1175.043,
+     "start": "19:35",
+     "source": "section"
     }
    ]
   },
@@ -70938,6 +74985,19 @@
    ]
   },
   {
+   "topic": "Back to the task",
+   "key": "back to the task",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-24",
+     "start_s": 1960.21,
+     "start": "32:40",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Be + -ed adjective",
    "key": "be + -ed adjective",
    "entries": [
@@ -70973,6 +75033,19 @@
      "start_s": 925.34,
      "start": "15:25",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Before a scan",
+   "key": "before a scan",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-06",
+     "start_s": 442.979,
+     "start": "7:22",
+     "source": "section"
     }
    ]
   },
@@ -71141,6 +75214,19 @@
      "section": "added-08",
      "start_s": 5264.087,
      "start": "87:44",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Check you've understood",
+   "key": "check youve understood",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-30",
+     "start_s": 1904.789,
+     "start": "31:44",
      "source": "section"
     }
    ]
@@ -71421,6 +75507,19 @@
      "section": "pages-15-16",
      "start_s": 2600.445,
      "start": "43:20",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Common worries",
+   "key": "common worries",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-03",
+     "start_s": 237.554,
+     "start": "3:57",
      "source": "section"
     }
    ]
@@ -72164,6 +76263,19 @@
    ]
   },
   {
+   "topic": "Explore, then explain",
+   "key": "explore, then explain",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-23",
+     "start_s": 1474.39,
+     "start": "24:34",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Expressing reason with 'given'",
    "key": "expressing reason with given",
    "entries": [
@@ -72581,6 +76693,19 @@
    ]
   },
   {
+   "topic": "Getting the words right",
+   "key": "getting the words right",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-02",
+     "start_s": 180.864,
+     "start": "3:00",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Gist",
    "key": "gist",
    "entries": [
@@ -72590,6 +76715,19 @@
      "start_s": 133.319,
      "start": "2:13",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Give them time",
+   "key": "give them time",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-21",
+     "start_s": 1767.506,
+     "start": "29:27",
+     "source": "section"
     }
    ]
   },
@@ -72615,6 +76753,19 @@
      "section": "page-11",
      "start_s": 3020.233,
      "start": "50:20",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Going home",
+   "key": "going home",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-05",
+     "start_s": 378.508,
+     "start": "6:18",
      "source": "section"
     }
    ]
@@ -72679,6 +76830,19 @@
    ]
   },
   {
+   "topic": "Guess, don't tell",
+   "key": "guess, dont tell",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-05",
+     "start_s": 492.663,
+     "start": "8:12",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Had smoked",
    "key": "had smoked",
    "entries": [
@@ -72731,6 +76895,19 @@
    ]
   },
   {
+   "topic": "Hear the feeling",
+   "key": "hear the feeling",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-01",
+     "start_s": 89.509,
+     "start": "1:29",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "hedging",
    "key": "hedging",
    "entries": [
@@ -72777,6 +76954,19 @@
    ]
   },
   {
+   "topic": "Hints in long answers",
+   "key": "hints in long answers",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-11",
+     "start_s": 747.329,
+     "start": "12:27",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "How adjective + noun collocations are formed",
    "key": "how adjective + noun collocations are formed",
    "entries": [
@@ -72805,6 +76995,19 @@
      "section": "added-09",
      "start_s": 652.939,
      "start": "10:52",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "How does that sound?",
+   "key": "how does that sound",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-31",
+     "start_s": 1987.197,
+     "start": "33:07",
      "source": "section"
     }
    ]
@@ -73259,6 +77462,19 @@
    ]
   },
   {
+   "topic": "It's hard when",
+   "key": "its hard when",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-07",
+     "start_s": 666.825,
+     "start": "11:06",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Joining sentences with relative pronouns",
    "key": "joining sentences with relative pronouns",
    "entries": [
@@ -73267,6 +77483,32 @@
      "section": "page-7",
      "start_s": 2614.25,
      "start": "43:34",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Keep it about them",
+   "key": "keep it about them",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-22",
+     "start_s": 1823.976,
+     "start": "30:23",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Keep the first part",
+   "key": "keep the first part",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-19",
+     "start_s": 1244.753,
+     "start": "20:44",
      "source": "section"
     }
    ]
@@ -73371,6 +77613,19 @@
      "section": "added-20",
      "start_s": 1571.302,
      "start": "26:11",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Linking to the worry",
+   "key": "linking to the worry",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-32",
+     "start_s": 2052.647,
+     "start": "34:12",
      "source": "section"
     }
    ]
@@ -73571,6 +77826,32 @@
    ]
   },
   {
+   "topic": "More -ed and -ing",
+   "key": "more -ed and -ing",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-04",
+     "start_s": 402.445,
+     "start": "6:42",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Moving on",
+   "key": "moving on",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-29",
+     "start_s": 1845.727,
+     "start": "30:45",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Multiple choice",
    "key": "multiple choice",
    "entries": [
@@ -73600,6 +77881,32 @@
      "start_s": 389.012,
      "start": "6:29",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Must be, no wonder",
+   "key": "must be, no wonder",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-19",
+     "start_s": 1643.708,
+     "start": "27:23",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Name it gently",
+   "key": "name it gently",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-02",
+     "start_s": 219.944,
+     "start": "3:39",
+     "source": "section"
     }
    ]
   },
@@ -73638,6 +77945,19 @@
      "section": "added-11",
      "start_s": 939.858,
      "start": "15:39",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "No false promises",
+   "key": "no false promises",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-13",
+     "start_s": 1211.711,
+     "start": "20:11",
      "source": "section"
     }
    ]
@@ -73748,6 +78068,19 @@
    ]
   },
   {
+   "topic": "Not yet, but",
+   "key": "not yet, but",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-28",
+     "start_s": 1777.991,
+     "start": "29:37",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Noun endings",
    "key": "noun endings",
    "entries": [
@@ -73826,6 +78159,19 @@
    ]
   },
   {
+   "topic": "One kind line",
+   "key": "one kind line",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-23",
+     "start_s": 1871.299,
+     "start": "31:11",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "one of which",
    "key": "one of which",
    "entries": [
@@ -73847,6 +78193,19 @@
      "section": "page-4",
      "start_s": 91.711,
      "start": "1:31",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Open invitations",
+   "key": "open invitations",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-14",
+     "start_s": 939.552,
+     "start": "15:39",
      "source": "section"
     }
    ]
@@ -73886,6 +78245,19 @@
      "section": "added-09",
      "start_s": 766.531,
      "start": "12:46",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Opening the door",
+   "key": "opening the door",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-13",
+     "start_s": 863.002,
+     "start": "14:23",
      "source": "section"
     }
    ]
@@ -74840,6 +79212,19 @@
    ]
   },
   {
+   "topic": "Reassure with facts",
+   "key": "reassure with facts",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-14",
+     "start_s": 1299.069,
+     "start": "21:39",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Recent visits and the plan",
    "key": "recent visits and the plan",
    "entries": [
@@ -75012,6 +79397,19 @@
    ]
   },
   {
+   "topic": "Response B in steps",
+   "key": "response b in steps",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-10",
+     "start_s": 1003.564,
+     "start": "16:43",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "ROM",
    "key": "rom",
    "entries": [
@@ -75046,6 +79444,58 @@
      "section": "added-18",
      "start_s": 1484.843,
      "start": "24:44",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Said or hinted",
+   "key": "said or hinted",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-09",
+     "start_s": 616.303,
+     "start": "10:16",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Say it another way",
+   "key": "say it another way",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-18",
+     "start_s": 1557.818,
+     "start": "25:57",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Say it warmly",
+   "key": "say it warmly",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-20",
+     "start_s": 1715.055,
+     "start": "28:35",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Saying you're worried",
+   "key": "saying youre worried",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-01",
+     "start_s": 109.699,
+     "start": "1:49",
      "source": "section"
     }
    ]
@@ -75380,6 +79830,19 @@
      "start_s": 4924.517,
      "start": "82:04",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Someone else's worry",
+   "key": "someone elses worry",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-08",
+     "start_s": 559.271,
+     "start": "9:19",
+     "source": "section"
     }
    ]
   },
@@ -76278,6 +80741,19 @@
    ]
   },
   {
+   "topic": "The right thing",
+   "key": "the right thing",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-15",
+     "start_s": 1354.91,
+     "start": "22:34",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "The setting",
    "key": "the setting",
    "entries": [
@@ -76369,6 +80845,19 @@
    ]
   },
   {
+   "topic": "The three things",
+   "key": "the three things",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-16",
+     "start_s": 1058.932,
+     "start": "17:38",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "The verb and its object; the time first",
    "key": "the verb and its object; the time first",
    "entries": [
@@ -76416,6 +80905,19 @@
      "section": "pages-06-07",
      "start_s": 316.801,
      "start": "5:16",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Then signpost, explain",
+   "key": "then signpost, explain",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-11",
+     "start_s": 1060.741,
+     "start": "17:40",
      "source": "section"
     }
    ]
@@ -76644,6 +81146,19 @@
      "section": "added-01",
      "start_s": 83.633,
      "start": "1:23",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Two responses",
+   "key": "two responses",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-09",
+     "start_s": 896.863,
+     "start": "14:56",
      "source": "section"
     }
    ]
@@ -77169,6 +81684,19 @@
    ]
   },
   {
+   "topic": "When you don't know",
+   "key": "when you dont know",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-17",
+     "start_s": 1500.038,
+     "start": "25:00",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "When you go blank",
    "key": "when you go blank",
    "entries": [
@@ -77242,6 +81770,19 @@
      "section": "added-25",
      "start_s": 1886.665,
      "start": "31:26",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Which reply?",
+   "key": "which reply",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-26",
+     "start_s": 1653.581,
+     "start": "27:33",
      "source": "section"
     }
    ]
@@ -77365,6 +81906,19 @@
    ]
   },
   {
+   "topic": "Will or should",
+   "key": "will or should",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-16",
+     "start_s": 1423.657,
+     "start": "23:43",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "woke up",
    "key": "woke up",
    "entries": [
@@ -77469,6 +82023,19 @@
    ]
   },
   {
+   "topic": "Words and phrases",
+   "key": "words and phrases",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-08",
+     "start_s": 755.725,
+     "start": "12:35",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Words and verbs",
    "key": "words and verbs",
    "entries": [
@@ -77490,6 +82057,58 @@
      "section": "added-05",
      "start_s": 395.539,
      "start": "6:35",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Words for feelings",
+   "key": "words for feelings",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-03",
+     "start_s": 331.528,
+     "start": "5:31",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Words for symptoms",
+   "key": "words for symptoms",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-25",
+     "start_s": 1591.94,
+     "start": "26:31",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Words for the visit",
+   "key": "words for the visit",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-15",
+     "start_s": 1003.942,
+     "start": "16:43",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Words that hint",
+   "key": "words that hint",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-10",
+     "start_s": 683.218,
+     "start": "11:23",
      "source": "section"
     }
    ]
@@ -77529,6 +82148,32 @@
      "section": "added-19",
      "start_s": 1362.244,
      "start": "22:42",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Worried or worrying",
+   "key": "worried or worrying",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-21",
+     "start_s": 1361.014,
+     "start": "22:41",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Worries by profession",
+   "key": "worries by profession",
+   "entries": [
+    {
+     "lesson": "speaking-06-patient-concerns",
+     "section": "added-04",
+     "start_s": 310.308,
+     "start": "5:10",
      "source": "section"
     }
    ]
@@ -77612,6 +82257,19 @@
    ]
   },
   {
+   "topic": "Your turn with B",
+   "key": "your turn with b",
+   "entries": [
+    {
+     "lesson": "speaking-12-empathy-and-reassurance",
+     "section": "added-12",
+     "start_s": 1135.491,
+     "start": "18:55",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Your turn: a doctor's notes",
    "key": "your turn: a doctors notes",
    "entries": [
@@ -77639,21 +82297,21 @@
   }
  ],
  "totals": {
-  "lessons": 36,
-  "sections": 438,
-  "topics": 811,
-  "teaching_points": 5336,
-  "rules": 394,
+  "lessons": 38,
+  "sections": 500,
+  "topics": 875,
+  "teaching_points": 5589,
+  "rules": 450,
   "warnings": 66,
   "terms": 488,
   "wrong_examples": 285,
   "facts": 180,
   "methods": 74,
-  "vocabulary": 576,
+  "vocabulary": 591,
   "vocabulary_word_bank": 189,
   "practice_items": 62,
   "references": 131,
-  "topic_index": 545,
+  "topic_index": 603,
   "withheld_panel_words": 139,
   "withheld_answer_lines": 10
  }
