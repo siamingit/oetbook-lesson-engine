@@ -110,6 +110,10 @@
   "speaking-12-empathy-and-reassurance": [
    978000,
    978999
+  ],
+  "speaking-06-patient-concerns": [
+   977000,
+   977999
   ]
  },
  "ids": [
@@ -5684,6 +5688,377 @@
    "lesson": "speaking-12-empathy-and-reassurance",
    "point": "rp-long",
    "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977000",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "wb-concerned",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977001",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "wb-concerned",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977002",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "wb-concerned",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977003",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "spot-concerned",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977004",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "match-worry",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977005",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "match-worry",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977006",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "match-worry",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977007",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "match-worry",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977008",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "which-radiographer",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977009",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "which-hint",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977010",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "hint-means",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977011",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "rsp-cue",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977012",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "order-door",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977013",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "rsp-invite",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977014",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "gap-visit",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977015",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "gap-visit",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977016",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "gap-visit",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977017",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "match-ice",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977018",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "match-ice",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977019",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "match-ice",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977020",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "match-ice",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977021",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "ask-idea",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977022",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "rsp-worry",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977023",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "cue-keep",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977024",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "order-hoping",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977025",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "wb-worrying",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977026",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "wb-worrying",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977027",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "wb-worrying",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977028",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "ask-more",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977029",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "explore-first",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977030",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "rp-hope",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977031",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "match-symptom",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977032",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "match-symptom",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977033",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "match-symptom",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977034",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "match-symptom",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977035",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "reply-ack",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977036",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "rsp-ack",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977037",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "gap-once",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977038",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "gap-once",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977039",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "gap-once",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977040",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "order-moveon",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977041",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "rsp-check",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977042",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "rep-sound",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977043",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "type-link",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977044",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "rp-explore",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977045",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "rp-check",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977046",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "rsp-home",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977047",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "scan-first",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977048",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "order-heard",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977049",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "wb-relative",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977050",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "wb-relative",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977051",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "wb-relative",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-977052",
+   "lesson": "speaking-06-patient-concerns",
+   "point": "which-part",
+   "slot": "item",
    "issued": "2026-11-16"
   }
  ]
