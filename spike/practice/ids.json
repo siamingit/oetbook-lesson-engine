@@ -122,6 +122,10 @@
   "speaking-09-giving-advice": [
    980000,
    980999
+  ],
+  "speaking-13-angry-or-upset": [
+   982000,
+   982999
   ]
  },
  "ids": [
@@ -6851,6 +6855,391 @@
    "lesson": "speaking-08-explaining",
    "point": "choose-back",
    "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982000",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "match-help",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982001",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "match-help",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982002",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "match-help",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982003",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "match-help",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982004",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "first-do",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982005",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "rep-thanks",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982006",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "no-argue",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982007",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "rsp-first",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982008",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "order-steps",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982009",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "wb-however",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982010",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "wb-however",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982011",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "wb-however",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982012",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "gap-soon",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982013",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "gap-soon",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982014",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "gap-soon",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982015",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "option-now",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982016",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "rsp-ed",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982017",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "spot-why",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982018",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "appreciate-means",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982019",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "rep-do",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982020",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "sorry-blame",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982021",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "gap-sorry",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982022",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "gap-sorry",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982023",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "gap-sorry",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982024",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "rsp-colleague",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982025",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "short-line",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982026",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "rsp-anxious",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982027",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "wb-upset",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982028",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "wb-upset",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982029",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "wb-upset",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982030",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "wb-upset",
+   "slot": "gap3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982031",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "rsp-upset",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982032",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "order-no",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982033",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "wb-afraid",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982034",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "wb-afraid",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982035",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "wb-afraid",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982036",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "match-reason",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982037",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "match-reason",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982038",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "match-reason",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982039",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "match-reason",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982040",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "typed-instead",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982041",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "order-why",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982042",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "rsp-notes",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982043",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "match-words",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982044",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "match-words",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982045",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "match-words",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982046",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "match-words",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982047",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "no-blame",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982048",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "rsp-spots",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982049",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "match-question",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982050",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "match-question",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982051",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "match-question",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982052",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "match-question",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982053",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "rp-feel",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-982054",
+   "lesson": "speaking-13-angry-or-upset",
+   "point": "rp-colleague",
+   "slot": "answer",
    "issued": "2026-11-16"
   }
  ]
