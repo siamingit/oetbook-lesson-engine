@@ -126,6 +126,10 @@
   "speaking-13-angry-or-upset": [
    982000,
    982999
+  ],
+  "speaking-14-ending": [
+   983000,
+   983999
   ]
  },
  "ids": [
@@ -7239,6 +7243,370 @@
    "id": "oa-speaking-982054",
    "lesson": "speaking-13-angry-or-upset",
    "point": "rp-colleague",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983000",
+   "lesson": "speaking-14-ending",
+   "point": "match-step",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983001",
+   "lesson": "speaking-14-ending",
+   "point": "match-step",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983002",
+   "lesson": "speaking-14-ending",
+   "point": "match-step",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983003",
+   "lesson": "speaking-14-ending",
+   "point": "match-step",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983004",
+   "lesson": "speaking-14-ending",
+   "point": "plan-time",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983005",
+   "lesson": "speaking-14-ending",
+   "point": "wb-words",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983006",
+   "lesson": "speaking-14-ending",
+   "point": "wb-words",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983007",
+   "lesson": "speaking-14-ending",
+   "point": "wb-words",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983008",
+   "lesson": "speaking-14-ending",
+   "point": "choose-sum",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983009",
+   "lesson": "speaking-14-ending",
+   "point": "order-sum",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983010",
+   "lesson": "speaking-14-ending",
+   "point": "rep-sum",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983011",
+   "lesson": "speaking-14-ending",
+   "point": "spot-list",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983012",
+   "lesson": "speaking-14-ending",
+   "point": "rsp-back",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983013",
+   "lesson": "speaking-14-ending",
+   "point": "choose-correct",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983014",
+   "lesson": "speaking-14-ending",
+   "point": "type-else",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983015",
+   "lesson": "speaking-14-ending",
+   "point": "gap-check",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983016",
+   "lesson": "speaking-14-ending",
+   "point": "gap-check",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983017",
+   "lesson": "speaking-14-ending",
+   "point": "gap-check",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983018",
+   "lesson": "speaking-14-ending",
+   "point": "choose-net",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983019",
+   "lesson": "speaking-14-ending",
+   "point": "match-sign",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983020",
+   "lesson": "speaking-14-ending",
+   "point": "match-sign",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983021",
+   "lesson": "speaking-14-ending",
+   "point": "match-sign",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983022",
+   "lesson": "speaking-14-ending",
+   "point": "match-sign",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983023",
+   "lesson": "speaking-14-ending",
+   "point": "type-net",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983024",
+   "lesson": "speaking-14-ending",
+   "point": "gap-if",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983025",
+   "lesson": "speaking-14-ending",
+   "point": "gap-if",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983026",
+   "lesson": "speaking-14-ending",
+   "point": "gap-if",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983027",
+   "lesson": "speaking-14-ending",
+   "point": "rep-net",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983028",
+   "lesson": "speaking-14-ending",
+   "point": "choose-calm",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983029",
+   "lesson": "speaking-14-ending",
+   "point": "wb-time",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983030",
+   "lesson": "speaking-14-ending",
+   "point": "wb-time",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983031",
+   "lesson": "speaking-14-ending",
+   "point": "wb-time",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983032",
+   "lesson": "speaking-14-ending",
+   "point": "choose-next",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983033",
+   "lesson": "speaking-14-ending",
+   "point": "wb-follow",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983034",
+   "lesson": "speaking-14-ending",
+   "point": "wb-follow",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983035",
+   "lesson": "speaking-14-ending",
+   "point": "wb-follow",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983036",
+   "lesson": "speaking-14-ending",
+   "point": "gap-will",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983037",
+   "lesson": "speaking-14-ending",
+   "point": "gap-will",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983038",
+   "lesson": "speaking-14-ending",
+   "point": "gap-will",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983039",
+   "lesson": "speaking-14-ending",
+   "point": "spot-on",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983040",
+   "lesson": "speaking-14-ending",
+   "point": "rsp-next",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983041",
+   "lesson": "speaking-14-ending",
+   "point": "rep-close",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983042",
+   "lesson": "speaking-14-ending",
+   "point": "match-close",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983043",
+   "lesson": "speaking-14-ending",
+   "point": "match-close",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983044",
+   "lesson": "speaking-14-ending",
+   "point": "match-close",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983045",
+   "lesson": "speaking-14-ending",
+   "point": "match-close",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983046",
+   "lesson": "speaking-14-ending",
+   "point": "choose-time",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983047",
+   "lesson": "speaking-14-ending",
+   "point": "rep-time",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983048",
+   "lesson": "speaking-14-ending",
+   "point": "rsp-short",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983049",
+   "lesson": "speaking-14-ending",
+   "point": "order-end",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983050",
+   "lesson": "speaking-14-ending",
+   "point": "rp-sum",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-983051",
+   "lesson": "speaking-14-ending",
+   "point": "rp-close",
    "slot": "answer",
    "issued": "2026-11-16"
   }
