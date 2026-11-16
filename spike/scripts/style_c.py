@@ -642,6 +642,9 @@ LAYOUTS = {
     # tighter cells and gaps (`col-fit`), chosen for a board the site's player does not draw whole at the table's
     # smallest text
     "columnsfit": (("table",), False, (2,)),
+    # ADR 050 amendment (16): an opener with less space between and inside its rows (`op-fit`), chosen for a board
+    # the site's player does not draw whole at the table's smallest text (Speaking 1's five skills)
+    "openerfit": (("table",), False, (3,)),
     # ADR 053 (the Speaking course): a role-play's turns as speech bubbles, who speaks above each; the patient's turn
     # on the left in a soft bubble, the clinician's on the right in teal; a clinician's line left empty is a dashed
     # bubble, the learner's turn to speak
@@ -1887,6 +1890,16 @@ LAYOUT_CSS["columns_fit"] = r"""
 .frame .tbl.lay.lay-columns.col-fit[data-flow="2"] tbody tr{grid-template-columns:minmax(0,25%) minmax(0,1fr);column-gap:1cqw}
 .frame .tbl.lay.lay-columns.col-fit tbody tr td:nth-child(n){padding:.8cqh 1.1cqw}
 """
+LAYOUT_CSS["opener_fit"] = r"""
+/* an opener in less height (ADR 050 amendment (16)): each skill's pill sits on the top edge of its tile like a tab,
+   the rows are closer, and the hand-written lines a little tighter; the text keeps its size */
+.frame .tbl.lay.lay-opener.op-fit tbody{gap:.2cqh}
+.frame .tbl.lay.lay-opener.op-fit tr{row-gap:0}
+.frame .tbl.lay.lay-opener.op-fit tbody tr td:first-child{padding:.3cqh 1.4cqw;position:relative;z-index:1;
+  margin-bottom:-.8cqh}
+.frame .tbl.lay.lay-opener.op-fit tbody tr td:nth-child(2){padding:1cqh 1.4cqw .3cqh}
+.frame .tbl.lay.lay-opener.op-fit td:nth-child(3) .tw{line-height:.95}
+"""
 LAYOUT_CSS["wrongright_fit"] = r"""
 /* wrong and right in less height (ADR 050 amendment (12)): tighter rows, the arrow inside its row, and a wider column
    for the right sentence, so a long one keeps one line; the text keeps its size */
@@ -1972,6 +1985,8 @@ def layout_css(blocks: dict, look: str | None = None) -> str:
         used.add("wrongright_fit")                  # ADR 050 amendment (12)
     if any("col-fit" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split()) for b in blocks.values()):
         used.add("columns_fit")                     # ADR 050 amendment (13)
+    if any("op-fit" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split()) for b in blocks.values()):
+        used.add("opener_fit")                      # ADR 050 amendment (16)
     if any("lay-opener" in set((ROOT_CLASS.match(b.get("html") or "") or [None, ""])[1].split())
            and 'data-typed="' in (b.get("html") or "") for b in blocks.values()):
         used.add("opener_typed")                    # ADR 054
@@ -2072,7 +2087,8 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
         why = check_layout(b.get("id", "?"), b, layout)
         if why:
             raise SystemExit("REFUSED: sections.json block_layouts: " + why)
-        if layout in ("paperlong", "paperfit", "paperlook", "wrongrightfit", "columnsfit") and look != "teal":
+        if layout in ("paperlong", "paperfit", "paperlook", "wrongrightfit", "columnsfit",
+                      "openerfit") and look != "teal":
             raise SystemExit(f"REFUSED: sections.json block_layouts: {b.get('id')}: {layout!r} is the teal look's")
         root = set((ROOT_CLASS.match(html) or [None, ""])[1].split())
         for lay, need in (("bandfit", {"chg", "band"}), ("pillwrap", {"defpill"})):
@@ -2082,7 +2098,8 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
         if t == "table":
             html = _table_html(b, html, "paper" if layout in ("paperlong", "paperfit", "paperlook") else
                                "wrongright" if layout == "wrongrightfit" else
-                               "columns" if layout == "columnsfit" else layout)
+                               "columns" if layout == "columnsfit" else
+                               "opener" if layout == "openerfit" else layout)
             if layout == "paperlong":
                 html = _add_root(html, "paper-long")
             if layout == "paperfit":
@@ -2094,6 +2111,8 @@ def layout_html(b: dict, html: str, section_title: str | None, layout: str | Non
                     raise SystemExit(f"REFUSED: sections.json block_layouts: {b.get('id')} is columnsfit, which fits "
                                      f"only a two-column table drawn in two halves ({COLUMNS_FLOW_ROWS} rows or more)")
                 html = _add_root(html, "col-fit")
+            if layout == "openerfit":
+                html = _add_root(html, "op-fit")
             if look == "teal" and layout == "paper" and len(b.get("header") or []) == 2 and \
                     sheet_lines(b.get("rows") or []) >= SHEET_LONG_ROWS:
                 html = _add_root(html, attrs=' data-long=""')
