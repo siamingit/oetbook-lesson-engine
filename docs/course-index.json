@@ -70,7 +70,9 @@
     "speaking-02-reading-the-card",
     "speaking-03-starting",
     "speaking-10-sounding-clear",
-    "speaking-04-asking-questions"
+    "speaking-04-asking-questions",
+    "speaking-05-taking-a-history",
+    "speaking-11-keeping-going"
    ]
   }
  ],
@@ -66351,6 +66353,3817 @@
     "continues_in": [],
     "continues_from": []
    }
+  },
+  {
+   "id": "speaking-05-taking-a-history",
+   "folder": "speaking-05-taking-a-history",
+   "title": "OET Speaking: Taking a History",
+   "description": "Learn to take a history of a pain, step by step, with a question for each thing you need to know. Use the patient's answers, pick up their cues (small signs of what the patient feels or needs), and speak with a worried carer.",
+   "course": "speaking",
+   "order": 5,
+   "position": 6,
+   "length_s": 2238.971,
+   "length": "37:18",
+   "bundle_format": "1.24",
+   "status": "approved",
+   "approval": {
+    "by": "siavash",
+    "on": "2026-11-16 01:33"
+   },
+   "source": {
+    "folder": "source",
+    "recording": null,
+    "recording_duration_s": null,
+    "recording_partial_hash": null,
+    "deck": null,
+    "deck_pages": null,
+    "same_recording_as": [],
+    "note": "An authored lesson (ADR 047), the sixth of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first (ADR 057, #212, #222). Its method is the second half of the owner's recorded session \"Information Gathering\" (S3), in his order, going on from Asking Questions: where the pain is, when it started and how long, what it is like and how bad, where it goes and when it comes, what makes it worse or helps, other symptoms, echoing back, a sensitive topic, the role-play card and its brackets, showing you understand, words that reassure and explaining in steps; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 6."
+   },
+   "categories": [
+    {
+     "id": "c1",
+     "title": "The questions to ask",
+     "sections": [
+      "added-01",
+      "added-02",
+      "added-03"
+     ]
+    },
+    {
+     "id": "c2",
+     "title": "Where, when, how long",
+     "sections": [
+      "added-04",
+      "added-05",
+      "added-06",
+      "added-07",
+      "added-08"
+     ]
+    },
+    {
+     "id": "c3",
+     "title": "How bad, what helps",
+     "sections": [
+      "added-09",
+      "added-10",
+      "added-11",
+      "added-12",
+      "added-13",
+      "added-14"
+     ]
+    },
+    {
+     "id": "c4",
+     "title": "Words that sound alike",
+     "sections": [
+      "added-15",
+      "added-16",
+      "added-17"
+     ]
+    },
+    {
+     "id": "c5",
+     "title": "Picking up cues",
+     "sections": [
+      "added-18",
+      "added-19",
+      "added-20",
+      "added-21"
+     ]
+    },
+    {
+     "id": "c6",
+     "title": "Reading a card",
+     "sections": [
+      "added-22",
+      "added-23",
+      "added-24"
+     ]
+    },
+    {
+     "id": "c7",
+     "title": "A worried carer",
+     "sections": [
+      "added-25",
+      "added-26",
+      "added-27",
+      "added-28",
+      "added-29",
+      "added-30"
+     ]
+    }
+   ],
+   "sections": [
+    {
+     "id": "page-100",
+     "title": "Introduction",
+     "kind": "intro",
+     "pages": [
+      100
+     ],
+     "category": null,
+     "start_s": 0.0,
+     "start": "0:00",
+     "end_s": 96.791,
+     "topics": [
+      {
+       "board": "page-100_t1",
+       "title": "Title board",
+       "start_s": 0.0,
+       "start": "0:00",
+       "points": [
+        {
+         "text": "the lesson title, then what the lesson is about",
+         "block": "page-100_k01",
+         "start_s": 0.0,
+         "start": "0:00"
+        }
+       ]
+      },
+      {
+       "board": "page-100_t2",
+       "title": "Contents board",
+       "start_s": 52.661,
+       "start": "0:52",
+       "points": [
+        {
+         "text": "each category, revealed as it is named",
+         "block": "page-100_k06",
+         "start_s": 54.601,
+         "start": "0:54"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-01",
+     "title": "Ten things to ask",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 96.791,
+     "start": "1:36",
+     "end_s": 176.384,
+     "topics": [
+      {
+       "board": "added-01_t1",
+       "title": "Ten things to ask",
+       "start_s": 96.791,
+       "start": "1:36",
+       "points": [
+        {
+         "text": "the first five",
+         "block": "added-01_k01",
+         "start_s": 96.791,
+         "start": "1:36"
+        },
+        {
+         "text": "any symptom",
+         "block": "added-01_k02",
+         "start_s": 142.76,
+         "start": "2:22"
+        },
+        {
+         "text": "match them",
+         "block": "added-01_k03",
+         "start_s": 151.944,
+         "start": "2:31"
+        },
+        {
+         "text": "the answers",
+         "block": "added-01_k04",
+         "start_s": 164.024,
+         "start": "2:44"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-01_k02",
+       "kind": "rule",
+       "text": "Ask about any symptom like this: a pain, a cough, a rash.",
+       "start_s": 142.76,
+       "start": "2:22"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-02",
+     "title": "Five more things",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 176.384,
+     "start": "2:56",
+     "end_s": 232.767,
+     "topics": [
+      {
+       "board": "added-02_t1",
+       "title": "Five more things",
+       "start_s": 176.384,
+       "start": "2:56",
+       "points": [
+        {
+         "text": "five more",
+         "block": "added-02_k01",
+         "start_s": 176.384,
+         "start": "2:56"
+        },
+        {
+         "text": "not a script",
+         "block": "added-02_k02",
+         "start_s": 205.544,
+         "start": "3:25"
+        },
+        {
+         "text": "choose",
+         "block": "added-02_k03",
+         "start_s": 214.687,
+         "start": "3:34"
+        },
+        {
+         "text": "the answer",
+         "block": "added-02_k04",
+         "start_s": 226.027,
+         "start": "3:46"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-02_k02",
+       "kind": "rule",
+       "text": "You won't ask all ten in every role-play. They are a list to choose from.",
+       "start_s": 205.544,
+       "start": "3:25"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-03",
+     "title": "Learn the sentences",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 232.767,
+     "start": "3:52",
+     "end_s": 287.797,
+     "topics": [
+      {
+       "board": "added-03_t1",
+       "title": "Learn the sentences",
+       "start_s": 232.767,
+       "start": "3:52",
+       "points": [
+        {
+         "text": "one question, many patients",
+         "block": "added-03_k01",
+         "start_s": 232.767,
+         "start": "3:52"
+        },
+        {
+         "text": "the answers too",
+         "block": "added-03_k02",
+         "start_s": 261.297,
+         "start": "4:21"
+        },
+        {
+         "text": "your turn",
+         "block": "added-03_k03",
+         "start_s": 268.747,
+         "start": "4:28"
+        },
+        {
+         "text": "the model",
+         "block": "added-03_k04",
+         "start_s": 281.667,
+         "start": "4:41"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-03_k02",
+       "kind": "rule",
+       "text": "Learn the patient's answers too. You'll hear them in the role-plays.",
+       "start_s": 261.297,
+       "start": "4:21"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-04",
+     "title": "Where the pain is",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 287.797,
+     "start": "4:47",
+     "end_s": 364.671,
+     "topics": [
+      {
+       "board": "added-04_t1",
+       "title": "Where the pain is",
+       "start_s": 287.797,
+       "start": "4:47",
+       "points": [
+        {
+         "text": "where",
+         "block": "added-04_k01",
+         "start_s": 287.797,
+         "start": "4:47"
+        },
+        {
+         "text": "the word order",
+         "block": "added-04_k02",
+         "start_s": 325.624,
+         "start": "5:25"
+        },
+        {
+         "text": "your turn",
+         "block": "added-04_k03",
+         "start_s": 341.249,
+         "start": "5:41"
+        },
+        {
+         "text": "the model",
+         "block": "added-04_k05",
+         "start_s": 357.72,
+         "start": "5:57"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-05",
+     "title": "Using the answer",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 364.671,
+     "start": "6:04",
+     "end_s": 424.933,
+     "topics": [
+      {
+       "board": "added-05_t1",
+       "title": "Using the answer",
+       "start_s": 364.671,
+       "start": "6:04",
+       "points": [
+        {
+         "text": "three steps",
+         "block": "added-05_k01",
+         "start_s": 364.671,
+         "start": "6:04"
+        },
+        {
+         "text": "it shows",
+         "block": "added-05_k02",
+         "start_s": 389.462,
+         "start": "6:29"
+        },
+        {
+         "text": "choose",
+         "block": "added-05_k03",
+         "start_s": 396.867,
+         "start": "6:36"
+        },
+        {
+         "text": "the answer",
+         "block": "added-05_k05",
+         "start_s": 413.456,
+         "start": "6:53"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-05_k02",
+       "kind": "rule",
+       "text": "It shows the patient that you are listening.",
+       "start_s": 389.462,
+       "start": "6:29"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-06",
+     "title": "When it started",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 424.933,
+     "start": "7:04",
+     "end_s": 496.593,
+     "topics": [
+      {
+       "board": "added-06_t1",
+       "title": "When it started",
+       "start_s": 424.933,
+       "start": "7:04",
+       "points": [
+        {
+         "text": "when",
+         "block": "added-06_k01",
+         "start_s": 424.933,
+         "start": "7:04"
+        },
+        {
+         "text": "two words",
+         "block": "added-06_k02",
+         "start_s": 453.269,
+         "start": "7:33"
+        },
+        {
+         "text": "match them",
+         "block": "added-06_k04",
+         "start_s": 475.872,
+         "start": "7:55"
+        },
+        {
+         "text": "the answers",
+         "block": "added-06_k05",
+         "start_s": 487.222,
+         "start": "8:07"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-07",
+     "title": "How long",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 496.593,
+     "start": "8:16",
+     "end_s": 588.304,
+     "topics": [
+      {
+       "board": "added-07_t1",
+       "title": "How long",
+       "start_s": 496.593,
+       "start": "8:16",
+       "points": [
+        {
+         "text": "how long",
+         "block": "added-07_k01",
+         "start_s": 496.593,
+         "start": "8:16"
+        },
+        {
+         "text": "let me see",
+         "block": "added-07_k02",
+         "start_s": 534.666,
+         "start": "8:54"
+        },
+        {
+         "text": "the words",
+         "block": "added-07_k03",
+         "start_s": 544.114,
+         "start": "9:04"
+        },
+        {
+         "text": "put it in order",
+         "block": "added-07_k05",
+         "start_s": 569.244,
+         "start": "9:29"
+        },
+        {
+         "text": "the answer",
+         "block": "added-07_k06",
+         "start_s": 581.784,
+         "start": "9:41"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-08",
+     "title": "What it's like",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 588.304,
+     "start": "9:48",
+     "end_s": 652.939,
+     "topics": [
+      {
+       "board": "added-08_t1",
+       "title": "What it's like",
+       "start_s": 588.304,
+       "start": "9:48",
+       "points": [
+        {
+         "text": "what it's like",
+         "block": "added-08_k01",
+         "start_s": 588.304,
+         "start": "9:48"
+        },
+        {
+         "text": "Right: don't ask again",
+         "block": "added-08_k02",
+         "start_s": 613.788,
+         "start": "10:13"
+        },
+        {
+         "text": "choose",
+         "block": "added-08_k03",
+         "start_s": 627.138,
+         "start": "10:27"
+        },
+        {
+         "text": "the answer",
+         "block": "added-08_k04",
+         "start_s": 643.797,
+         "start": "10:43"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-08_k02",
+       "kind": "rule",
+       "text": "Listen for what the patient has already told you. Don't ask about it again.",
+       "start_s": 613.788,
+       "start": "10:13"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-09",
+     "title": "How bad it is",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 652.939,
+     "start": "10:52",
+     "end_s": 729.52,
+     "topics": [
+      {
+       "board": "added-09_t1",
+       "title": "How bad it is",
+       "start_s": 652.939,
+       "start": "10:52",
+       "points": [
+        {
+         "text": "how bad",
+         "block": "added-09_k01",
+         "start_s": 652.939,
+         "start": "10:52"
+        },
+        {
+         "text": "two words",
+         "block": "added-09_k02",
+         "start_s": 697.301,
+         "start": "11:37"
+        },
+        {
+         "text": "your turn",
+         "block": "added-09_k03",
+         "start_s": 706.42,
+         "start": "11:46"
+        },
+        {
+         "text": "the answer",
+         "block": "added-09_k04",
+         "start_s": 719.788,
+         "start": "11:59"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-10",
+     "title": "Where it goes",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 729.52,
+     "start": "12:09",
+     "end_s": 812.82,
+     "topics": [
+      {
+       "board": "added-10_t1",
+       "title": "Where it goes",
+       "start_s": 729.52,
+       "start": "12:09",
+       "points": [
+        {
+         "text": "where it goes",
+         "block": "added-10_k01",
+         "start_s": 729.52,
+         "start": "12:09"
+        },
+        {
+         "text": "the words",
+         "block": "added-10_k02",
+         "start_s": 766.853,
+         "start": "12:46"
+        },
+        {
+         "text": "your turn",
+         "block": "added-10_k04",
+         "start_s": 789.188,
+         "start": "13:09"
+        },
+        {
+         "text": "the model",
+         "block": "added-10_k06",
+         "start_s": 804.09,
+         "start": "13:24"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-11",
+     "title": "When it comes",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 812.82,
+     "start": "13:32",
+     "end_s": 870.834,
+     "topics": [
+      {
+       "board": "added-11_t1",
+       "title": "When it comes",
+       "start_s": 812.82,
+       "start": "13:32",
+       "points": [
+        {
+         "text": "when it comes",
+         "block": "added-11_k01",
+         "start_s": 812.82,
+         "start": "13:32"
+        },
+        {
+         "text": "a phrase",
+         "block": "added-11_k02",
+         "start_s": 840.414,
+         "start": "14:00"
+        },
+        {
+         "text": "your turn",
+         "block": "added-11_k03",
+         "start_s": 854.54,
+         "start": "14:14"
+        },
+        {
+         "text": "the model",
+         "block": "added-11_k04",
+         "start_s": 864.34,
+         "start": "14:24"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-12",
+     "title": "What makes it worse",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 870.834,
+     "start": "14:30",
+     "end_s": 961.475,
+     "topics": [
+      {
+       "board": "added-12_t1",
+       "title": "What makes it worse",
+       "start_s": 870.834,
+       "start": "14:30",
+       "points": [
+        {
+         "text": "the question",
+         "block": "added-12_k01",
+         "start_s": 870.834,
+         "start": "14:30"
+        },
+        {
+         "text": "the words",
+         "block": "added-12_k02",
+         "start_s": 902.12,
+         "start": "15:02"
+        },
+        {
+         "text": "the -s",
+         "block": "added-12_k04",
+         "start_s": 918.948,
+         "start": "15:18"
+        },
+        {
+         "text": "find the mistake",
+         "block": "added-12_k05",
+         "start_s": 939.045,
+         "start": "15:39"
+        },
+        {
+         "text": "the answer",
+         "block": "added-12_k06",
+         "start_s": 953.285,
+         "start": "15:53"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-12_k04",
+       "kind": "rule",
+       "text": "Anything takes a singular verb: anything makes, anything provokes.",
+       "start_s": 918.948,
+       "start": "15:18"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-13",
+     "title": "Other symptoms",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 961.475,
+     "start": "16:01",
+     "end_s": 1049.778,
+     "topics": [
+      {
+       "board": "added-13_t1",
+       "title": "Other symptoms",
+       "start_s": 961.475,
+       "start": "16:01",
+       "points": [
+        {
+         "text": "other symptoms",
+         "block": "added-13_k01",
+         "start_s": 961.475,
+         "start": "16:01"
+        },
+        {
+         "text": "you may also hear",
+         "block": "added-13_k02",
+         "start_s": 995.762,
+         "start": "16:35"
+        },
+        {
+         "text": "go with",
+         "block": "added-13_k04",
+         "start_s": 1015.269,
+         "start": "16:55"
+        },
+        {
+         "text": "your turn",
+         "block": "added-13_k05",
+         "start_s": 1026.186,
+         "start": "17:06"
+        },
+        {
+         "text": "the model",
+         "block": "added-13_k07",
+         "start_s": 1042.346,
+         "start": "17:22"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-14",
+     "title": "What helps",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 1049.778,
+     "start": "17:29",
+     "end_s": 1120.9,
+     "topics": [
+      {
+       "board": "added-14_t1",
+       "title": "What helps",
+       "start_s": 1049.778,
+       "start": "17:29",
+       "points": [
+        {
+         "text": "what the patient tried",
+         "block": "added-14_k01",
+         "start_s": 1049.778,
+         "start": "17:29"
+        },
+        {
+         "text": "names",
+         "block": "added-14_k02",
+         "start_s": 1084.568,
+         "start": "18:04"
+        },
+        {
+         "text": "choose",
+         "block": "added-14_k03",
+         "start_s": 1098.598,
+         "start": "18:18"
+        },
+        {
+         "text": "the answer",
+         "block": "added-14_k04",
+         "start_s": 1111.048,
+         "start": "18:31"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-15",
+     "title": "Relieve or relief",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1120.9,
+     "start": "18:40",
+     "end_s": 1176.4,
+     "topics": [
+      {
+       "board": "added-15_t1",
+       "title": "Relieve or relief",
+       "start_s": 1120.9,
+       "start": "18:40",
+       "points": [
+        {
+         "text": "two words",
+         "block": "added-15_k01",
+         "start_s": 1120.9,
+         "start": "18:40"
+        },
+        {
+         "text": "more",
+         "block": "added-15_k02",
+         "start_s": 1139.459,
+         "start": "18:59"
+        },
+        {
+         "text": "your turn",
+         "block": "added-15_k03",
+         "start_s": 1154.49,
+         "start": "19:14"
+        },
+        {
+         "text": "the answers",
+         "block": "added-15_k04",
+         "start_s": 1166.99,
+         "start": "19:26"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-16",
+     "title": "Affect or effect",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1176.4,
+     "start": "19:36",
+     "end_s": 1225.64,
+     "topics": [
+      {
+       "board": "added-16_t1",
+       "title": "Affect or effect",
+       "start_s": 1176.4,
+       "start": "19:36",
+       "points": [
+        {
+         "text": "two words",
+         "block": "added-16_k01",
+         "start_s": 1176.4,
+         "start": "19:36"
+        },
+        {
+         "text": "your turn",
+         "block": "added-16_k02",
+         "start_s": 1206.09,
+         "start": "20:06"
+        },
+        {
+         "text": "the answers",
+         "block": "added-16_k03",
+         "start_s": 1217.496,
+         "start": "20:17"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-17",
+     "title": "Does in a question",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1225.64,
+     "start": "20:25",
+     "end_s": 1290.632,
+     "topics": [
+      {
+       "board": "added-17_t1",
+       "title": "Does in a question",
+       "start_s": 1225.64,
+       "start": "20:25",
+       "points": [
+        {
+         "text": "put right",
+         "block": "added-17_k01",
+         "start_s": 1225.64,
+         "start": "20:25"
+        },
+        {
+         "text": "why",
+         "block": "added-17_k02",
+         "start_s": 1247.05,
+         "start": "20:47"
+        },
+        {
+         "text": "find the mistake",
+         "block": "added-17_k03",
+         "start_s": 1271.392,
+         "start": "21:11"
+        },
+        {
+         "text": "the answer",
+         "block": "added-17_k04",
+         "start_s": 1284.149,
+         "start": "21:24"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-18",
+     "title": "Echoing back",
+     "kind": "authored",
+     "pages": [],
+     "category": "c5",
+     "start_s": 1290.632,
+     "start": "21:30",
+     "end_s": 1362.244,
+     "topics": [
+      {
+       "board": "added-18_t1",
+       "title": "Echoing back",
+       "start_s": 1290.632,
+       "start": "21:30",
+       "points": [
+        {
+         "text": "echo back",
+         "block": "added-18_k01",
+         "start_s": 1290.632,
+         "start": "21:30"
+        },
+        {
+         "text": "in the criteria",
+         "block": "added-18_k02",
+         "start_s": 1329.899,
+         "start": "22:09"
+        },
+        {
+         "text": "your turn",
+         "block": "added-18_k03",
+         "start_s": 1339.37,
+         "start": "22:19"
+        },
+        {
+         "text": "the model",
+         "block": "added-18_k05",
+         "start_s": 1353.749,
+         "start": "22:33"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-18_k02",
+       "kind": "rule",
+       "text": "It's in the criteria: picking up the patient's cues (small signs in the patient's words).",
+       "start_s": 1329.899,
+       "start": "22:09"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-19",
+     "title": "Words to echo with",
+     "kind": "authored",
+     "pages": [],
+     "category": "c5",
+     "start_s": 1362.244,
+     "start": "22:42",
+     "end_s": 1407.974,
+     "topics": [
+      {
+       "board": "added-19_t1",
+       "title": "Words to echo with",
+       "start_s": 1362.244,
+       "start": "22:42",
+       "points": [
+        {
+         "text": "ways to start",
+         "block": "added-19_k01",
+         "start_s": 1362.244,
+         "start": "22:42"
+        },
+        {
+         "text": "vary them",
+         "block": "added-19_k02",
+         "start_s": 1385.424,
+         "start": "23:05"
+        },
+        {
+         "text": "put it in order",
+         "block": "added-19_k03",
+         "start_s": 1390.104,
+         "start": "23:10"
+        },
+        {
+         "text": "the answer",
+         "block": "added-19_k04",
+         "start_s": 1400.414,
+         "start": "23:20"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-19_k02",
+       "kind": "rule",
+       "text": "Use different starts, so your echoes are not all the same.",
+       "start_s": 1385.424,
+       "start": "23:05"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-20",
+     "title": "A sensitive topic",
+     "kind": "authored",
+     "pages": [],
+     "category": "c5",
+     "start_s": 1407.974,
+     "start": "23:27",
+     "end_s": 1484.644,
+     "topics": [
+      {
+       "board": "added-20_t1",
+       "title": "A sensitive topic",
+       "start_s": 1407.974,
+       "start": "23:27",
+       "points": [
+        {
+         "text": "three steps",
+         "block": "added-20_k01",
+         "start_s": 1407.974,
+         "start": "23:27"
+        },
+        {
+         "text": "a word",
+         "block": "added-20_k02",
+         "start_s": 1446.667,
+         "start": "24:06"
+        },
+        {
+         "text": "your turn",
+         "block": "added-20_k03",
+         "start_s": 1465.534,
+         "start": "24:25"
+        },
+        {
+         "text": "the model",
+         "block": "added-20_k04",
+         "start_s": 1475.524,
+         "start": "24:35"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-21",
+     "title": "I can see why",
+     "kind": "authored",
+     "pages": [],
+     "category": "c5",
+     "start_s": 1484.644,
+     "start": "24:44",
+     "end_s": 1552.407,
+     "topics": [
+      {
+       "board": "added-21_t1",
+       "title": "I can see why",
+       "start_s": 1484.644,
+       "start": "24:44",
+       "points": [
+        {
+         "text": "I can see why",
+         "block": "added-21_k01",
+         "start_s": 1484.644,
+         "start": "24:44"
+        },
+        {
+         "text": "the pattern",
+         "block": "added-21_k02",
+         "start_s": 1519.479,
+         "start": "25:19"
+        },
+        {
+         "text": "choose",
+         "block": "added-21_k03",
+         "start_s": 1529.826,
+         "start": "25:29"
+        },
+        {
+         "text": "the answer",
+         "block": "added-21_k05",
+         "start_s": 1543.836,
+         "start": "25:43"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-22",
+     "title": "A carer's card",
+     "kind": "authored",
+     "pages": [],
+     "category": "c6",
+     "start_s": 1552.407,
+     "start": "25:52",
+     "end_s": 1659.459,
+     "topics": [
+      {
+       "board": "added-22_t1",
+       "title": "A carer's card",
+       "start_s": 1552.407,
+       "start": "25:52",
+       "points": [
+        {
+         "text": "the card",
+         "block": "added-22_k01",
+         "start_s": 1552.407,
+         "start": "25:52"
+        },
+        {
+         "text": "worried",
+         "block": "added-22_k03",
+         "start_s": 1595.535,
+         "start": "26:35"
+        },
+        {
+         "text": "the tasks",
+         "block": "added-22_k04",
+         "start_s": 1628.586,
+         "start": "27:08"
+        },
+        {
+         "text": "match",
+         "block": "added-22_k05",
+         "start_s": 1637.338,
+         "start": "27:17"
+        },
+        {
+         "text": "the answers",
+         "block": "added-22_k06",
+         "start_s": 1650.368,
+         "start": "27:30"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-23",
+     "title": "The brackets",
+     "kind": "authored",
+     "pages": [],
+     "category": "c6",
+     "start_s": 1659.459,
+     "start": "27:39",
+     "end_s": 1709.979,
+     "topics": [
+      {
+       "board": "added-23_t1",
+       "title": "The brackets",
+       "start_s": 1659.459,
+       "start": "27:39",
+       "points": [
+        {
+         "text": "brackets",
+         "block": "added-23_k01",
+         "start_s": 1659.459,
+         "start": "27:39"
+        },
+        {
+         "text": "use them as ideas",
+         "block": "added-23_k02",
+         "start_s": 1683.819,
+         "start": "28:03"
+        },
+        {
+         "text": "choose",
+         "block": "added-23_k03",
+         "start_s": 1693.139,
+         "start": "28:13"
+        },
+        {
+         "text": "the answer",
+         "block": "added-23_k04",
+         "start_s": 1704.219,
+         "start": "28:24"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-23_k02",
+       "kind": "rule",
+       "text": "The brackets are ideas to use, in your own words. You don't have to use them all.",
+       "start_s": 1683.819,
+       "start": "28:03"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-24",
+     "title": "Before you explain",
+     "kind": "authored",
+     "pages": [],
+     "category": "c6",
+     "start_s": 1709.979,
+     "start": "28:29",
+     "end_s": 1808.728,
+     "topics": [
+      {
+       "board": "added-24_t1",
+       "title": "Before you explain",
+       "start_s": 1709.979,
+       "start": "28:29",
+       "points": [
+        {
+         "text": "before you start",
+         "block": "added-24_k01",
+         "start_s": 1709.979,
+         "start": "28:29"
+        },
+        {
+         "text": "why first",
+         "block": "added-24_k02",
+         "start_s": 1749.723,
+         "start": "29:09"
+        },
+        {
+         "text": "what they know",
+         "block": "added-24_k03",
+         "start_s": 1770.213,
+         "start": "29:30"
+        },
+        {
+         "text": "your turn",
+         "block": "added-24_k04",
+         "start_s": 1783.998,
+         "start": "29:43"
+        },
+        {
+         "text": "the model",
+         "block": "added-24_k06",
+         "start_s": 1800.843,
+         "start": "30:00"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-24_k02",
+       "kind": "rule",
+       "text": "Ask first. Then you can explain what the patient needs to hear.",
+       "start_s": 1749.723,
+       "start": "29:09"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-25",
+     "title": "Showing you understand",
+     "kind": "authored",
+     "pages": [],
+     "category": "c7",
+     "start_s": 1808.728,
+     "start": "30:08",
+     "end_s": 1875.038,
+     "topics": [
+      {
+       "board": "added-25_t1",
+       "title": "Showing you understand",
+       "start_s": 1808.728,
+       "start": "30:08",
+       "points": [
+        {
+         "text": "instead",
+         "block": "added-25_k01",
+         "start_s": 1808.728,
+         "start": "30:08"
+        },
+        {
+         "text": "why",
+         "block": "added-25_k02",
+         "start_s": 1834.118,
+         "start": "30:34"
+        },
+        {
+         "text": "choose",
+         "block": "added-25_k03",
+         "start_s": 1853.751,
+         "start": "30:53"
+        },
+        {
+         "text": "the answer",
+         "block": "added-25_k05",
+         "start_s": 1867.678,
+         "start": "31:07"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-25_k02",
+       "kind": "rule",
+       "text": "Show you understand first. 'Don't worry' can sound as if the worry doesn't matter.",
+       "start_s": 1834.118,
+       "start": "30:34"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-26",
+     "title": "Words that reassure",
+     "kind": "authored",
+     "pages": [],
+     "category": "c7",
+     "start_s": 1875.038,
+     "start": "31:15",
+     "end_s": 1974.262,
+     "topics": [
+      {
+       "board": "added-26_t1",
+       "title": "Words that reassure",
+       "start_s": 1875.038,
+       "start": "31:15",
+       "points": [
+        {
+         "text": "reassure",
+         "block": "added-26_k01",
+         "start_s": 1875.038,
+         "start": "31:15"
+        },
+        {
+         "text": "the words",
+         "block": "added-26_k02",
+         "start_s": 1908.095,
+         "start": "31:48"
+        },
+        {
+         "text": "assure",
+         "block": "added-26_k04",
+         "start_s": 1926.82,
+         "start": "32:06"
+        },
+        {
+         "text": "a real fact",
+         "block": "added-26_k05",
+         "start_s": 1939.211,
+         "start": "32:19"
+        },
+        {
+         "text": "your turn",
+         "block": "added-26_k06",
+         "start_s": 1952.692,
+         "start": "32:32"
+        },
+        {
+         "text": "the answers",
+         "block": "added-26_k07",
+         "start_s": 1965.332,
+         "start": "32:45"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-26_k05",
+       "kind": "rule",
+       "text": "After 'in good hands', give a real fact. Don't stop after the phrase.",
+       "start_s": 1939.211,
+       "start": "32:19"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-27",
+     "title": "Explaining in steps",
+     "kind": "authored",
+     "pages": [],
+     "category": "c7",
+     "start_s": 1974.262,
+     "start": "32:54",
+     "end_s": 2057.514,
+     "topics": [
+      {
+       "board": "added-27_t1",
+       "title": "Explaining in steps",
+       "start_s": 1974.262,
+       "start": "32:54",
+       "points": [
+        {
+         "text": "the steps",
+         "block": "added-27_k01",
+         "start_s": 1974.262,
+         "start": "32:54"
+        },
+        {
+         "text": "words",
+         "block": "added-27_k02",
+         "start_s": 2003.867,
+         "start": "33:23"
+        },
+        {
+         "text": "put them in order",
+         "block": "added-27_k04",
+         "start_s": 2034.754,
+         "start": "33:54"
+        },
+        {
+         "text": "the answer",
+         "block": "added-27_k05",
+         "start_s": 2046.264,
+         "start": "34:06"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-28",
+     "title": "Telling the truth",
+     "kind": "authored",
+     "pages": [],
+     "category": "c7",
+     "start_s": 2057.514,
+     "start": "34:17",
+     "end_s": 2123.064,
+     "topics": [
+      {
+       "board": "added-28_t1",
+       "title": "Telling the truth",
+       "start_s": 2057.514,
+       "start": "34:17",
+       "points": [
+        {
+         "text": "the truth",
+         "block": "added-28_k01",
+         "start_s": 2057.514,
+         "start": "34:17"
+        },
+        {
+         "text": "asked again",
+         "block": "added-28_k02",
+         "start_s": 2082.834,
+         "start": "34:42"
+        },
+        {
+         "text": "your turn",
+         "block": "added-28_k03",
+         "start_s": 2097.774,
+         "start": "34:57"
+        },
+        {
+         "text": "the model",
+         "block": "added-28_k04",
+         "start_s": 2113.023,
+         "start": "35:13"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-29",
+     "title": "A short role-play",
+     "kind": "authored",
+     "pages": [],
+     "category": "c7",
+     "start_s": 2123.064,
+     "start": "35:23",
+     "end_s": 2191.411,
+     "topics": [
+      {
+       "board": "added-29_t1",
+       "title": "A short role-play",
+       "start_s": 2123.064,
+       "start": "35:23",
+       "points": [
+        {
+         "text": "the role-play",
+         "block": "added-29_k01",
+         "start_s": 2123.064,
+         "start": "35:23"
+        },
+        {
+         "text": "your turn",
+         "block": "added-29_k02",
+         "start_s": 2136.604,
+         "start": "35:36"
+        },
+        {
+         "text": "understand, then explain",
+         "block": "added-29_k06",
+         "start_s": 2182.839,
+         "start": "36:22"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-29_k06",
+       "kind": "rule",
+       "text": "Show you understand first. Then explain, in steps, and tell the truth.",
+       "start_s": 2182.839,
+       "start": "36:22"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-30",
+     "title": "Closing",
+     "kind": "closing",
+     "pages": [],
+     "category": "c7",
+     "start_s": 2191.411,
+     "start": "36:31",
+     "end_s": 2238.971,
+     "topics": [
+      {
+       "board": "added-30_t1",
+       "title": "Closing",
+       "start_s": 2191.411,
+       "start": "36:31",
+       "points": [
+        {
+         "text": "Recap",
+         "block": "added-30_k01",
+         "start_s": 2194.461,
+         "start": "36:34"
+        },
+        {
+         "text": "Practise",
+         "block": "added-30_k04",
+         "start_s": 2215.53,
+         "start": "36:55"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-30_k04",
+       "kind": "rule",
+       "text": "Practise: choose a pain. Ask the ten questions, and use each answer.",
+       "start_s": 2215.53,
+       "start": "36:55"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    }
+   ],
+   "facts": [],
+   "methods": [],
+   "vocabulary": [
+    {
+     "word": "come on",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-06",
+     "block": "added-06_k02",
+     "start_s": 453.269,
+     "start": "7:33"
+    },
+    {
+     "word": "gradually",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-06",
+     "block": "added-06_k03",
+     "start_s": 462.364,
+     "start": "7:42"
+    },
+    {
+     "word": "Let me see",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-07",
+     "block": "added-07_k02",
+     "start_s": 534.666,
+     "start": "8:54"
+    },
+    {
+     "word": "rate",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-09",
+     "block": "added-09_k02",
+     "start_s": 697.301,
+     "start": "11:37"
+    },
+    {
+     "word": "shoulder blade",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-10",
+     "block": "added-10_k02",
+     "start_s": 766.853,
+     "start": "12:46"
+    },
+    {
+     "word": "at any particular time",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-11",
+     "block": "added-11_k02",
+     "start_s": 840.414,
+     "start": "14:00"
+    },
+    {
+     "word": "provoke",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-12",
+     "block": "added-12_k02",
+     "start_s": 902.12,
+     "start": "15:02"
+    },
+    {
+     "word": "aware of",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-13",
+     "block": "added-13_k02",
+     "start_s": 995.762,
+     "start": "16:35"
+    },
+    {
+     "word": "go with",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-13",
+     "block": "added-13_k04",
+     "start_s": 1015.269,
+     "start": "16:55"
+    },
+    {
+     "word": "sensitive",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-20",
+     "block": "added-20_k02",
+     "start_s": 1446.667,
+     "start": "24:06"
+    },
+    {
+     "word": "keyhole surgery",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-22",
+     "block": "added-22_k02",
+     "start_s": 1572.241,
+     "start": "26:12"
+    },
+    {
+     "word": "in good hands",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-26",
+     "block": "added-26_k02",
+     "start_s": 1908.095,
+     "start": "31:48"
+    },
+    {
+     "word": "assure",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-26",
+     "block": "added-26_k04",
+     "start_s": 1926.82,
+     "start": "32:06"
+    },
+    {
+     "word": "tummy",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-27",
+     "block": "added-27_k02",
+     "start_s": 2003.867,
+     "start": "33:23"
+    }
+   ],
+   "withheld": {
+    "listening_panel_words": 0,
+    "lines_naming_an_answer": 0
+   },
+   "practice_set": null,
+   "deck_exercises": [],
+   "links": {
+    "refers_to": [],
+    "referred_to_by": [],
+    "continues_in": [],
+    "continues_from": []
+   }
+  },
+  {
+   "id": "speaking-11-keeping-going",
+   "folder": "speaking-11-keeping-going",
+   "title": "OET Speaking: Keeping Going",
+   "description": "Learn to keep the role-play going: pause after each chunk and check, buy time to think, ask again when you don't understand, correct a mistake, move between tasks, and use the five minutes well.",
+   "course": "speaking",
+   "order": 11,
+   "position": 7,
+   "length_s": 2114.451,
+   "length": "35:14",
+   "bundle_format": "1.24",
+   "status": "approved",
+   "approval": {
+    "by": "siavash",
+    "on": "2026-11-16 01:33"
+   },
+   "source": {
+    "folder": "source",
+    "recording": null,
+    "recording_duration_s": null,
+    "recording_partial_hash": null,
+    "deck": null,
+    "deck_pages": null,
+    "same_recording_as": [],
+    "note": "An authored lesson (ADR 047), the seventh of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first (ADR 057, #222): keeping the role-play moving, with the planned pause the owner teaches in his recorded session S5, checks after a chunk, thinking-time phrases, asking to repeat and checking meaning, correcting yourself, what to do after a blank, signposting the next task, getting back on track and managing the five minutes; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 7."
+   },
+   "categories": [
+    {
+     "id": "c1",
+     "title": "Planned pauses",
+     "sections": [
+      "added-01",
+      "added-02",
+      "added-03",
+      "added-04"
+     ]
+    },
+    {
+     "id": "c2",
+     "title": "Buying thinking time",
+     "sections": [
+      "added-05",
+      "added-06",
+      "added-07",
+      "added-08"
+     ]
+    },
+    {
+     "id": "c3",
+     "title": "When you don't understand",
+     "sections": [
+      "added-09",
+      "added-10",
+      "added-11",
+      "added-12"
+     ]
+    },
+    {
+     "id": "c4",
+     "title": "After a mistake",
+     "sections": [
+      "added-13",
+      "added-14",
+      "added-15",
+      "added-16"
+     ]
+    },
+    {
+     "id": "c5",
+     "title": "Moving between tasks",
+     "sections": [
+      "added-17",
+      "added-18",
+      "added-19",
+      "added-20"
+     ]
+    },
+    {
+     "id": "c6",
+     "title": "Back on track",
+     "sections": [
+      "added-21",
+      "added-22",
+      "added-23",
+      "added-24"
+     ]
+    },
+    {
+     "id": "c7",
+     "title": "Practise and finish",
+     "sections": [
+      "added-25",
+      "added-26",
+      "added-27",
+      "added-28"
+     ]
+    }
+   ],
+   "sections": [
+    {
+     "id": "page-100",
+     "title": "Introduction",
+     "kind": "intro",
+     "pages": [
+      100
+     ],
+     "category": null,
+     "start_s": 0.0,
+     "start": "0:00",
+     "end_s": 83.633,
+     "topics": [
+      {
+       "board": "page-100_t1",
+       "title": "Title board",
+       "start_s": 0.0,
+       "start": "0:00",
+       "points": [
+        {
+         "text": "the lesson title, then what the lesson is about",
+         "block": "page-100_k01",
+         "start_s": 0.0,
+         "start": "0:00"
+        }
+       ]
+      },
+      {
+       "board": "page-100_t2",
+       "title": "Contents board",
+       "start_s": 45.133,
+       "start": "0:45",
+       "points": [
+        {
+         "text": "each category, revealed as it is named",
+         "block": "page-100_k06",
+         "start_s": 47.123,
+         "start": "0:47"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-01",
+     "title": "Two kinds of pause",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 83.633,
+     "start": "1:23",
+     "end_s": 162.601,
+     "topics": [
+      {
+       "board": "added-01_t1",
+       "title": "Two kinds of pause",
+       "start_s": 83.633,
+       "start": "1:23",
+       "points": [
+        {
+         "text": "two kinds",
+         "block": "added-01_k01",
+         "start_s": 83.633,
+         "start": "1:23"
+        },
+        {
+         "text": "you choose it",
+         "block": "added-01_k02",
+         "start_s": 127.32,
+         "start": "2:07"
+        },
+        {
+         "text": "in the criteria",
+         "block": "added-01_k03",
+         "start_s": 133.828,
+         "start": "2:13"
+        },
+        {
+         "text": "choose",
+         "block": "added-01_k04",
+         "start_s": 145.46,
+         "start": "2:25"
+        },
+        {
+         "text": "the answer",
+         "block": "added-01_k05",
+         "start_s": 156.42,
+         "start": "2:36"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-01_k02",
+       "kind": "rule",
+       "text": "A planned pause is not a hesitation. You choose it.",
+       "start_s": 127.32,
+       "start": "2:07"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-02",
+     "title": "Pause after a chunk",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 162.601,
+     "start": "2:42",
+     "end_s": 265.484,
+     "topics": [
+      {
+       "board": "added-02_t1",
+       "title": "Pause after a chunk",
+       "start_s": 162.601,
+       "start": "2:42",
+       "points": [
+        {
+         "text": "a chunk, then a pause",
+         "block": "added-02_k01",
+         "start_s": 162.601,
+         "start": "2:42"
+        },
+        {
+         "text": "a word",
+         "block": "added-02_k02",
+         "start_s": 210.975,
+         "start": "3:30"
+        },
+        {
+         "text": "let them answer",
+         "block": "added-02_k03",
+         "start_s": 227.373,
+         "start": "3:47"
+        },
+        {
+         "text": "your turn",
+         "block": "added-02_k05",
+         "start_s": 237.55,
+         "start": "3:57"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-02_k03",
+       "kind": "rule",
+       "text": "Pause to allow the patient to respond.",
+       "start_s": 227.373,
+       "start": "3:47"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-03",
+     "title": "Checks after a chunk",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 265.484,
+     "start": "4:25",
+     "end_s": 379.316,
+     "topics": [
+      {
+       "board": "added-03_t1",
+       "title": "Checks after a chunk",
+       "start_s": 265.484,
+       "start": "4:25",
+       "points": [
+        {
+         "text": "short checks",
+         "block": "added-03_k01",
+         "start_s": 265.484,
+         "start": "4:25"
+        },
+        {
+         "text": "a phrase",
+         "block": "added-03_k02",
+         "start_s": 304.082,
+         "start": "5:04"
+        },
+        {
+         "text": "more checks",
+         "block": "added-03_k03",
+         "start_s": 321.314,
+         "start": "5:21"
+        },
+        {
+         "text": "in the criteria",
+         "block": "added-03_k04",
+         "start_s": 331.173,
+         "start": "5:31"
+        },
+        {
+         "text": "order",
+         "block": "added-03_k05",
+         "start_s": 337.763,
+         "start": "5:37"
+        },
+        {
+         "text": "the answer",
+         "block": "added-03_k06",
+         "start_s": 349.293,
+         "start": "5:49"
+        },
+        {
+         "text": "find it",
+         "block": "added-03_k07",
+         "start_s": 354.633,
+         "start": "5:54"
+        },
+        {
+         "text": "the correction",
+         "block": "added-03_k08",
+         "start_s": 368.744,
+         "start": "6:08"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-03_k02",
+       "kind": "rule",
+       "text": "Go over: explain or check carefully, step by step.",
+       "start_s": 304.082,
+       "start": "5:04"
+      },
+      {
+       "block": "added-03_k03",
+       "kind": "rule",
+       "text": "More short checks: All right? Is this clear? Do you understand so far?",
+       "start_s": 321.314,
+       "start": "5:21"
+      },
+      {
+       "block": "added-03_k04",
+       "kind": "rule",
+       "text": "Check that the patient has understood.",
+       "start_s": 331.173,
+       "start": "5:31"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-04",
+     "title": "An exchange",
+     "kind": "authored",
+     "pages": [],
+     "category": "c1",
+     "start_s": 379.316,
+     "start": "6:19",
+     "end_s": 447.368,
+     "topics": [
+      {
+       "board": "added-04_t1",
+       "title": "An exchange",
+       "start_s": 379.316,
+       "start": "6:19",
+       "points": [
+        {
+         "text": "the steps",
+         "block": "added-04_k01",
+         "start_s": 379.316,
+         "start": "6:19"
+        },
+        {
+         "text": "listen",
+         "block": "added-04_k02",
+         "start_s": 401.156,
+         "start": "6:41"
+        },
+        {
+         "text": "relax",
+         "block": "added-04_k04",
+         "start_s": 419.288,
+         "start": "6:59"
+        },
+        {
+         "text": "your turn",
+         "block": "added-04_k05",
+         "start_s": 426.138,
+         "start": "7:06"
+        },
+        {
+         "text": "the answers",
+         "block": "added-04_k06",
+         "start_s": 437.958,
+         "start": "7:17"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-04_k02",
+       "kind": "rule",
+       "text": "Use the answer to choose what to say next.",
+       "start_s": 401.156,
+       "start": "6:41"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-05",
+     "title": "Thinking-time phrases",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 447.368,
+     "start": "7:27",
+     "end_s": 518.608,
+     "topics": [
+      {
+       "board": "added-05_t1",
+       "title": "Thinking-time phrases",
+       "start_s": 447.368,
+       "start": "7:27",
+       "points": [
+        {
+         "text": "buying time",
+         "block": "added-05_k01",
+         "start_s": 447.368,
+         "start": "7:27"
+        },
+        {
+         "text": "a dentist",
+         "block": "added-05_k02",
+         "start_s": 488.138,
+         "start": "8:08"
+        },
+        {
+         "text": "once more",
+         "block": "added-05_k03",
+         "start_s": 495.543,
+         "start": "8:15"
+        },
+        {
+         "text": "your turn",
+         "block": "added-05_k04",
+         "start_s": 502.978,
+         "start": "8:22"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-06",
+     "title": "Fillers: a few",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 518.608,
+     "start": "8:38",
+     "end_s": 588.833,
+     "topics": [
+      {
+       "board": "added-06_t1",
+       "title": "Fillers: a few",
+       "start_s": 518.608,
+       "start": "8:38",
+       "points": [
+        {
+         "text": "fillers or a phrase",
+         "block": "added-06_k01",
+         "start_s": 518.608,
+         "start": "8:38"
+        },
+        {
+         "text": "in the criteria",
+         "block": "added-06_k02",
+         "start_s": 556.474,
+         "start": "9:16"
+        },
+        {
+         "text": "one phrase",
+         "block": "added-06_k03",
+         "start_s": 566.242,
+         "start": "9:26"
+        },
+        {
+         "text": "choose",
+         "block": "added-06_k04",
+         "start_s": 571.263,
+         "start": "9:31"
+        },
+        {
+         "text": "the answer",
+         "block": "added-06_k05",
+         "start_s": 581.893,
+         "start": "9:41"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-06_k03",
+       "kind": "rule",
+       "text": "One phrase, then go on.",
+       "start_s": 566.242,
+       "start": "9:26"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-07",
+     "title": "A hard question",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 588.833,
+     "start": "9:48",
+     "end_s": 650.543,
+     "topics": [
+      {
+       "board": "added-07_t1",
+       "title": "A hard question",
+       "start_s": 588.833,
+       "start": "9:48",
+       "points": [
+        {
+         "text": "buy time, then answer",
+         "block": "added-07_k01",
+         "start_s": 588.833,
+         "start": "9:48"
+        },
+        {
+         "text": "don't guess",
+         "block": "added-07_k02",
+         "start_s": 622.473,
+         "start": "10:22"
+        },
+        {
+         "text": "your turn",
+         "block": "added-07_k03",
+         "start_s": 629.09,
+         "start": "10:29"
+        },
+        {
+         "text": "the model",
+         "block": "added-07_k05",
+         "start_s": 642.493,
+         "start": "10:42"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-07_k02",
+       "kind": "rule",
+       "text": "If you don't know the answer, say what you'll do. Don't guess.",
+       "start_s": 622.473,
+       "start": "10:22"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-08",
+     "title": "Words and verbs",
+     "kind": "authored",
+     "pages": [],
+     "category": "c2",
+     "start_s": 650.543,
+     "start": "10:50",
+     "end_s": 791.128,
+     "topics": [
+      {
+       "board": "added-08_t1",
+       "title": "Words and verbs",
+       "start_s": 650.543,
+       "start": "10:50",
+       "points": [
+        {
+         "text": "the words",
+         "block": "added-08_k01",
+         "start_s": 650.543,
+         "start": "10:50"
+        },
+        {
+         "text": "hesitate",
+         "block": "added-08_k02",
+         "start_s": 663.091,
+         "start": "11:03"
+        },
+        {
+         "text": "a filler",
+         "block": "added-08_k03",
+         "start_s": 678.892,
+         "start": "11:18"
+        },
+        {
+         "text": "go blank",
+         "block": "added-08_k04",
+         "start_s": 695.635,
+         "start": "11:35"
+        },
+        {
+         "text": "lose track",
+         "block": "added-08_k05",
+         "start_s": 712.713,
+         "start": "11:52"
+        },
+        {
+         "text": "bear with me",
+         "block": "added-08_k06",
+         "start_s": 734.416,
+         "start": "12:14"
+        },
+        {
+         "text": "match",
+         "block": "added-08_k07",
+         "start_s": 748.913,
+         "start": "12:28"
+        },
+        {
+         "text": "the answers",
+         "block": "added-08_k08",
+         "start_s": 761.273,
+         "start": "12:41"
+        },
+        {
+         "text": "type",
+         "block": "added-08_k09",
+         "start_s": 772.438,
+         "start": "12:52"
+        },
+        {
+         "text": "the words",
+         "block": "added-08_k10",
+         "start_s": 783.944,
+         "start": "13:03"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-08_k08",
+       "kind": "rule",
+       "text": "Go blank: suddenly forget everything. Hesitate: stop, because you're not sure. Bear with me: please wait a moment.",
+       "start_s": 761.273,
+       "start": "12:41"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-09",
+     "title": "Asking to repeat",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 791.128,
+     "start": "13:11",
+     "end_s": 860.718,
+     "topics": [
+      {
+       "board": "added-09_t1",
+       "title": "Asking to repeat",
+       "start_s": 791.128,
+       "start": "13:11",
+       "points": [
+        {
+         "text": "say it again",
+         "block": "added-09_k01",
+         "start_s": 791.128,
+         "start": "13:11"
+        },
+        {
+         "text": "a patient",
+         "block": "added-09_k02",
+         "start_s": 824.888,
+         "start": "13:44"
+        },
+        {
+         "text": "your turn",
+         "block": "added-09_k03",
+         "start_s": 843.921,
+         "start": "14:03"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-10",
+     "title": "Checking what they mean",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 860.718,
+     "start": "14:20",
+     "end_s": 939.858,
+     "topics": [
+      {
+       "board": "added-10_t1",
+       "title": "Checking what they mean",
+       "start_s": 860.718,
+       "start": "14:20",
+       "points": [
+        {
+         "text": "check it",
+         "block": "added-10_k01",
+         "start_s": 860.718,
+         "start": "14:20"
+        },
+        {
+         "text": "in the criteria",
+         "block": "added-10_k02",
+         "start_s": 902.276,
+         "start": "15:02"
+        },
+        {
+         "text": "your turn",
+         "block": "added-10_k03",
+         "start_s": 917.127,
+         "start": "15:17"
+        },
+        {
+         "text": "the model",
+         "block": "added-10_k05",
+         "start_s": 932.413,
+         "start": "15:32"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-10_k02",
+       "kind": "rule",
+       "text": "Clarify (make clear) what is vague (not clear). Sum up (say it again, in short), so the patient can correct you.",
+       "start_s": 902.276,
+       "start": "15:02"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-11",
+     "title": "Never pretend",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 939.858,
+     "start": "15:39",
+     "end_s": 999.499,
+     "topics": [
+      {
+       "board": "added-11_t1",
+       "title": "Never pretend",
+       "start_s": 939.858,
+       "start": "15:39",
+       "points": [
+        {
+         "text": "pretend or ask",
+         "block": "added-11_k01",
+         "start_s": 939.858,
+         "start": "15:39"
+        },
+        {
+         "text": "why",
+         "block": "added-11_k02",
+         "start_s": 970.028,
+         "start": "16:10"
+        },
+        {
+         "text": "choose",
+         "block": "added-11_k03",
+         "start_s": 979.739,
+         "start": "16:19"
+        },
+        {
+         "text": "the answer",
+         "block": "added-11_k04",
+         "start_s": 993.398,
+         "start": "16:33"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-11_k02",
+       "kind": "rule",
+       "text": "If you pretend, you can miss something important.",
+       "start_s": 970.028,
+       "start": "16:10"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-12",
+     "title": "Would you mind?",
+     "kind": "authored",
+     "pages": [],
+     "category": "c3",
+     "start_s": 999.499,
+     "start": "16:39",
+     "end_s": 1066.59,
+     "topics": [
+      {
+       "board": "added-12_t1",
+       "title": "Would you mind?",
+       "start_s": 999.499,
+       "start": "16:39",
+       "points": [
+        {
+         "text": "two frames",
+         "block": "added-12_k01",
+         "start_s": 999.499,
+         "start": "16:39"
+        },
+        {
+         "text": "mind + -ing",
+         "block": "added-12_k02",
+         "start_s": 1024.559,
+         "start": "17:04"
+        },
+        {
+         "text": "type",
+         "block": "added-12_k03",
+         "start_s": 1030.44,
+         "start": "17:10"
+        },
+        {
+         "text": "the answers",
+         "block": "added-12_k04",
+         "start_s": 1040.982,
+         "start": "17:20"
+        },
+        {
+         "text": "find it",
+         "block": "added-12_k05",
+         "start_s": 1047.84,
+         "start": "17:27"
+        },
+        {
+         "text": "the correction",
+         "block": "added-12_k06",
+         "start_s": 1060.66,
+         "start": "17:40"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-12_k02",
+       "kind": "rule",
+       "text": "Would you mind + -ing: saying, speaking, spelling.",
+       "start_s": 1024.559,
+       "start": "17:04"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-13",
+     "title": "Correcting yourself",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1066.59,
+     "start": "17:46",
+     "end_s": 1136.72,
+     "topics": [
+      {
+       "board": "added-13_t1",
+       "title": "Correcting yourself",
+       "start_s": 1066.59,
+       "start": "17:46",
+       "points": [
+        {
+         "text": "correct and go on",
+         "block": "added-13_k01",
+         "start_s": 1066.59,
+         "start": "17:46"
+        },
+        {
+         "text": "mistakes",
+         "block": "added-13_k02",
+         "start_s": 1096.08,
+         "start": "18:16"
+        },
+        {
+         "text": "a physio",
+         "block": "added-13_k03",
+         "start_s": 1109.73,
+         "start": "18:29"
+        },
+        {
+         "text": "your turn",
+         "block": "added-13_k04",
+         "start_s": 1119.906,
+         "start": "18:39"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-13_k02",
+       "kind": "rule",
+       "text": "Assessors do not count how many mistakes you make.",
+       "start_s": 1096.08,
+       "start": "18:16"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-14",
+     "title": "A wrong number",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1136.72,
+     "start": "18:56",
+     "end_s": 1203.258,
+     "topics": [
+      {
+       "board": "added-14_t1",
+       "title": "A wrong number",
+       "start_s": 1136.72,
+       "start": "18:56",
+       "points": [
+        {
+         "text": "a number",
+         "block": "added-14_k01",
+         "start_s": 1136.72,
+         "start": "18:56"
+        },
+        {
+         "text": "say it again",
+         "block": "added-14_k02",
+         "start_s": 1170.927,
+         "start": "19:30"
+        },
+        {
+         "text": "your turn",
+         "block": "added-14_k03",
+         "start_s": 1178.768,
+         "start": "19:38"
+        },
+        {
+         "text": "the model",
+         "block": "added-14_k05",
+         "start_s": 1196.857,
+         "start": "19:56"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-14_k02",
+       "kind": "rule",
+       "text": "Say the right number, day or time again, clearly.",
+       "start_s": 1170.927,
+       "start": "19:30"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-15",
+     "title": "When you go blank",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1203.258,
+     "start": "20:03",
+     "end_s": 1268.798,
+     "topics": [
+      {
+       "board": "added-15_t1",
+       "title": "When you go blank",
+       "start_s": 1203.258,
+       "start": "20:03",
+       "points": [
+        {
+         "text": "the steps",
+         "block": "added-15_k01",
+         "start_s": 1203.258,
+         "start": "20:03"
+        },
+        {
+         "text": "a short sentence",
+         "block": "added-15_k02",
+         "start_s": 1228.335,
+         "start": "20:28"
+        },
+        {
+         "text": "not every task",
+         "block": "added-15_k03",
+         "start_s": 1240.257,
+         "start": "20:40"
+        },
+        {
+         "text": "your turn",
+         "block": "added-15_k04",
+         "start_s": 1248.928,
+         "start": "20:48"
+        },
+        {
+         "text": "the answers",
+         "block": "added-15_k05",
+         "start_s": 1260.542,
+         "start": "21:00"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-15_k03",
+       "kind": "rule",
+       "text": "You don't have to do every task.",
+       "start_s": 1240.257,
+       "start": "20:40"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-16",
+     "title": "I mean, let me",
+     "kind": "authored",
+     "pages": [],
+     "category": "c4",
+     "start_s": 1268.798,
+     "start": "21:08",
+     "end_s": 1323.048,
+     "topics": [
+      {
+       "board": "added-16_t1",
+       "title": "I mean, let me",
+       "start_s": 1268.798,
+       "start": "21:08",
+       "points": [
+        {
+         "text": "two frames",
+         "block": "added-16_k01",
+         "start_s": 1268.798,
+         "start": "21:08"
+        },
+        {
+         "text": "no to",
+         "block": "added-16_k02",
+         "start_s": 1301.933,
+         "start": "21:41"
+        },
+        {
+         "text": "choose",
+         "block": "added-16_k03",
+         "start_s": 1305.978,
+         "start": "21:45"
+        },
+        {
+         "text": "the answer",
+         "block": "added-16_k04",
+         "start_s": 1317.208,
+         "start": "21:57"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-16_k02",
+       "kind": "rule",
+       "text": "Let me check. Not: let me to check.",
+       "start_s": 1301.933,
+       "start": "21:41"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-17",
+     "title": "Signposting the next task",
+     "kind": "authored",
+     "pages": [],
+     "category": "c5",
+     "start_s": 1323.048,
+     "start": "22:03",
+     "end_s": 1435.822,
+     "topics": [
+      {
+       "board": "added-17_t1",
+       "title": "Signposting the next task",
+       "start_s": 1323.048,
+       "start": "22:03",
+       "points": [
+        {
+         "text": "signposts",
+         "block": "added-17_k01",
+         "start_s": 1323.048,
+         "start": "22:03"
+        },
+        {
+         "text": "a word",
+         "block": "added-17_k02",
+         "start_s": 1355.283,
+         "start": "22:35"
+        },
+        {
+         "text": "structure",
+         "block": "added-17_k03",
+         "start_s": 1376.515,
+         "start": "22:56"
+        },
+        {
+         "text": "your turn",
+         "block": "added-17_k04",
+         "start_s": 1387.077,
+         "start": "23:07"
+        },
+        {
+         "text": "the model",
+         "block": "added-17_k06",
+         "start_s": 1407.647,
+         "start": "23:27"
+        },
+        {
+         "text": "say it",
+         "block": "added-17_k07",
+         "start_s": 1414.467,
+         "start": "23:34"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-17_k03",
+       "kind": "rule",
+       "text": "Signposts make each step clear.",
+       "start_s": 1376.515,
+       "start": "22:56"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-18",
+     "title": "Asking to move on",
+     "kind": "authored",
+     "pages": [],
+     "category": "c5",
+     "start_s": 1435.822,
+     "start": "23:55",
+     "end_s": 1501.342,
+     "topics": [
+      {
+       "board": "added-18_t1",
+       "title": "Asking to move on",
+       "start_s": 1435.822,
+       "start": "23:55",
+       "points": [
+        {
+         "text": "moving on",
+         "block": "added-18_k01",
+         "start_s": 1435.822,
+         "start": "23:55"
+        },
+        {
+         "text": "a phrase",
+         "block": "added-18_k02",
+         "start_s": 1463.443,
+         "start": "24:23"
+        },
+        {
+         "text": "you lead",
+         "block": "added-18_k03",
+         "start_s": 1475.837,
+         "start": "24:35"
+        },
+        {
+         "text": "order",
+         "block": "added-18_k04",
+         "start_s": 1483.222,
+         "start": "24:43"
+        },
+        {
+         "text": "the answer",
+         "block": "added-18_k05",
+         "start_s": 1494.779,
+         "start": "24:54"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-18_k02",
+       "kind": "rule",
+       "text": "Move on: go to the next thing.",
+       "start_s": 1463.443,
+       "start": "24:23"
+      },
+      {
+       "block": "added-18_k03",
+       "kind": "rule",
+       "text": "You lead: you decide when to move on.",
+       "start_s": 1475.837,
+       "start": "24:35"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-19",
+     "title": "I'd like to",
+     "kind": "authored",
+     "pages": [],
+     "category": "c5",
+     "start_s": 1501.342,
+     "start": "25:01",
+     "end_s": 1571.302,
+     "topics": [
+      {
+       "board": "added-19_t1",
+       "title": "I'd like to",
+       "start_s": 1501.342,
+       "start": "25:01",
+       "points": [
+        {
+         "text": "two frames",
+         "block": "added-19_k01",
+         "start_s": 1501.342,
+         "start": "25:01"
+        },
+        {
+         "text": "to, twice",
+         "block": "added-19_k02",
+         "start_s": 1526.302,
+         "start": "25:26"
+        },
+        {
+         "text": "your turn",
+         "block": "added-19_k03",
+         "start_s": 1535.422,
+         "start": "25:35"
+        },
+        {
+         "text": "the answers",
+         "block": "added-19_k04",
+         "start_s": 1546.022,
+         "start": "25:46"
+        },
+        {
+         "text": "find it",
+         "block": "added-19_k05",
+         "start_s": 1552.102,
+         "start": "25:52"
+        },
+        {
+         "text": "the correction",
+         "block": "added-19_k06",
+         "start_s": 1564.942,
+         "start": "26:04"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-19_k02",
+       "kind": "rule",
+       "text": "I'd like to + a verb: I'd like to ask. Move on to + a noun: move on to your work.",
+       "start_s": 1526.302,
+       "start": "25:26"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-20",
+     "title": "Linking back",
+     "kind": "authored",
+     "pages": [],
+     "category": "c5",
+     "start_s": 1571.302,
+     "start": "26:11",
+     "end_s": 1624.731,
+     "topics": [
+      {
+       "board": "added-20_t1",
+       "title": "Linking back",
+       "start_s": 1571.302,
+       "start": "26:11",
+       "points": [
+        {
+         "text": "link back",
+         "block": "added-20_k01",
+         "start_s": 1571.302,
+         "start": "26:11"
+        },
+        {
+         "text": "listening",
+         "block": "added-20_k02",
+         "start_s": 1595.102,
+         "start": "26:35"
+        },
+        {
+         "text": "your turn",
+         "block": "added-20_k03",
+         "start_s": 1601.17,
+         "start": "26:41"
+        },
+        {
+         "text": "the model",
+         "block": "added-20_k05",
+         "start_s": 1617.04,
+         "start": "26:57"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-20_k02",
+       "kind": "rule",
+       "text": "You mentioned... You said... Earlier, you said...",
+       "start_s": 1595.102,
+       "start": "26:35"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-21",
+     "title": "Back on track",
+     "kind": "authored",
+     "pages": [],
+     "category": "c6",
+     "start_s": 1624.731,
+     "start": "27:04",
+     "end_s": 1710.813,
+     "topics": [
+      {
+       "board": "added-21_t1",
+       "title": "Back on track",
+       "start_s": 1624.731,
+       "start": "27:04",
+       "points": [
+        {
+         "text": "too sharp or kind",
+         "block": "added-21_k01",
+         "start_s": 1624.731,
+         "start": "27:04"
+        },
+        {
+         "text": "a phrase",
+         "block": "added-21_k02",
+         "start_s": 1662.72,
+         "start": "27:42"
+        },
+        {
+         "text": "two steps",
+         "block": "added-21_k03",
+         "start_s": 1676.958,
+         "start": "27:56"
+        },
+        {
+         "text": "your turn",
+         "block": "added-21_k04",
+         "start_s": 1682.508,
+         "start": "28:02"
+        },
+        {
+         "text": "the model",
+         "block": "added-21_k06",
+         "start_s": 1703.021,
+         "start": "28:23"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-21_k03",
+       "kind": "rule",
+       "text": "First a kind word, then the topic.",
+       "start_s": 1676.958,
+       "start": "27:56"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-22",
+     "title": "The five minutes",
+     "kind": "authored",
+     "pages": [],
+     "category": "c6",
+     "start_s": 1710.813,
+     "start": "28:30",
+     "end_s": 1771.883,
+     "topics": [
+      {
+       "board": "added-22_t1",
+       "title": "The five minutes",
+       "start_s": 1710.813,
+       "start": "28:30",
+       "points": [
+        {
+         "text": "the time",
+         "block": "added-22_k01",
+         "start_s": 1710.813,
+         "start": "28:30"
+        },
+        {
+         "text": "all the tasks",
+         "block": "added-22_k02",
+         "start_s": 1745.173,
+         "start": "29:05"
+        },
+        {
+         "text": "choose",
+         "block": "added-22_k03",
+         "start_s": 1753.623,
+         "start": "29:13"
+        },
+        {
+         "text": "the answer",
+         "block": "added-22_k04",
+         "start_s": 1764.553,
+         "start": "29:24"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-22_k02",
+       "kind": "rule",
+       "text": "You do not have to do all the tasks.",
+       "start_s": 1745.173,
+       "start": "29:05"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-23",
+     "title": "When time is short",
+     "kind": "authored",
+     "pages": [],
+     "category": "c6",
+     "start_s": 1771.883,
+     "start": "29:31",
+     "end_s": 1823.794,
+     "topics": [
+      {
+       "board": "added-23_t1",
+       "title": "When time is short",
+       "start_s": 1771.883,
+       "start": "29:31",
+       "points": [
+        {
+         "text": "time is short",
+         "block": "added-23_k01",
+         "start_s": 1771.883,
+         "start": "29:31"
+        },
+        {
+         "text": "main point",
+         "block": "added-23_k02",
+         "start_s": 1795.181,
+         "start": "29:55"
+        },
+        {
+         "text": "your turn",
+         "block": "added-23_k03",
+         "start_s": 1804.173,
+         "start": "30:04"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-23_k02",
+       "kind": "rule",
+       "text": "Give the main point. Don't try to say everything fast.",
+       "start_s": 1795.181,
+       "start": "29:55"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-24",
+     "title": "A steady speed",
+     "kind": "authored",
+     "pages": [],
+     "category": "c6",
+     "start_s": 1823.794,
+     "start": "30:23",
+     "end_s": 1886.665,
+     "topics": [
+      {
+       "board": "added-24_t1",
+       "title": "A steady speed",
+       "start_s": 1823.794,
+       "start": "30:23",
+       "points": [
+        {
+         "text": "speed",
+         "block": "added-24_k01",
+         "start_s": 1823.794,
+         "start": "30:23"
+        },
+        {
+         "text": "in the criteria",
+         "block": "added-24_k02",
+         "start_s": 1844.731,
+         "start": "30:44"
+        },
+        {
+         "text": "sounding clear",
+         "block": "added-24_k03",
+         "start_s": 1859.604,
+         "start": "30:59"
+        },
+        {
+         "text": "choose",
+         "block": "added-24_k04",
+         "start_s": 1867.605,
+         "start": "31:07"
+        },
+        {
+         "text": "the answer",
+         "block": "added-24_k05",
+         "start_s": 1879.055,
+         "start": "31:19"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-24_k03",
+       "kind": "rule",
+       "text": "Speak in chunks, as in the lesson Sounding Clear.",
+       "start_s": 1859.604,
+       "start": "30:59"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-25",
+     "title": "Which phrase?",
+     "kind": "authored",
+     "pages": [],
+     "category": "c7",
+     "start_s": 1886.665,
+     "start": "31:26",
+     "end_s": 1953.157,
+     "topics": [
+      {
+       "board": "added-25_t1",
+       "title": "Which phrase?",
+       "start_s": 1886.665,
+       "start": "31:26",
+       "points": [
+        {
+         "text": "situations",
+         "block": "added-25_k01",
+         "start_s": 1886.665,
+         "start": "31:26"
+        },
+        {
+         "text": "match",
+         "block": "added-25_k02",
+         "start_s": 1921.927,
+         "start": "32:01"
+        },
+        {
+         "text": "the answers",
+         "block": "added-25_k03",
+         "start_s": 1936.483,
+         "start": "32:16"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-25_k03",
+       "kind": "rule",
+       "text": "You're not sure what the patient means: Sorry, do you mean every day? Your mind goes blank: Let me just check my notes. You're speaking too fast: Slow down, and pause.",
+       "start_s": 1936.483,
+       "start": "32:16"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-26",
+     "title": "Make it a routine",
+     "kind": "authored",
+     "pages": [],
+     "category": "c7",
+     "start_s": 1953.157,
+     "start": "32:33",
+     "end_s": 2000.516,
+     "topics": [
+      {
+       "board": "added-26_t1",
+       "title": "Make it a routine",
+       "start_s": 1953.157,
+       "start": "32:33",
+       "points": [
+        {
+         "text": "a routine",
+         "block": "added-26_k01",
+         "start_s": 1953.157,
+         "start": "32:33"
+        },
+        {
+         "text": "your turn",
+         "block": "added-26_k02",
+         "start_s": 1975.297,
+         "start": "32:55"
+        }
+       ]
+      }
+     ],
+     "rules": [],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-27",
+     "title": "A short role-play",
+     "kind": "authored",
+     "pages": [],
+     "category": "c7",
+     "start_s": 2000.516,
+     "start": "33:20",
+     "end_s": 2068.731,
+     "topics": [
+      {
+       "board": "added-27_t1",
+       "title": "A short role-play",
+       "start_s": 2000.516,
+       "start": "33:20",
+       "points": [
+        {
+         "text": "the role-play",
+         "block": "added-27_k01",
+         "start_s": 2000.516,
+         "start": "33:20"
+        },
+        {
+         "text": "your turn",
+         "block": "added-27_k02",
+         "start_s": 2015.528,
+         "start": "33:35"
+        },
+        {
+         "text": "keep going",
+         "block": "added-27_k06",
+         "start_s": 2060.93,
+         "start": "34:20"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-27_k06",
+       "kind": "rule",
+       "text": "Buy time when you need it. Then a kind word, and back to the task.",
+       "start_s": 2060.93,
+       "start": "34:20"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    },
+    {
+     "id": "added-28",
+     "title": "Closing",
+     "kind": "closing",
+     "pages": [],
+     "category": "c7",
+     "start_s": 2068.731,
+     "start": "34:28",
+     "end_s": 2114.451,
+     "topics": [
+      {
+       "board": "added-28_t1",
+       "title": "Closing",
+       "start_s": 2068.731,
+       "start": "34:28",
+       "points": [
+        {
+         "text": "Recap",
+         "block": "added-28_k01",
+         "start_s": 2071.685,
+         "start": "34:31"
+        },
+        {
+         "text": "Practise",
+         "block": "added-28_k04",
+         "start_s": 2090.68,
+         "start": "34:50"
+        }
+       ]
+      }
+     ],
+     "rules": [
+      {
+       "block": "added-28_k04",
+       "kind": "rule",
+       "text": "Practise: explain something simple in chunks. Pause and check after each one.",
+       "start_s": 2090.68,
+       "start": "34:50"
+      }
+     ],
+     "terms": [],
+     "wrong_examples": [],
+     "practice": [],
+     "refs": []
+    }
+   ],
+   "facts": [],
+   "methods": [],
+   "vocabulary": [
+    {
+     "word": "a chunk",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-02",
+     "block": "added-02_k02",
+     "start_s": 210.975,
+     "start": "3:30"
+    },
+    {
+     "word": "hesitate",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-08",
+     "block": "added-08_k02",
+     "start_s": 663.091,
+     "start": "11:03"
+    },
+    {
+     "word": "a filler",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-08",
+     "block": "added-08_k03",
+     "start_s": 678.892,
+     "start": "11:18"
+    },
+    {
+     "word": "go blank",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-08",
+     "block": "added-08_k04",
+     "start_s": 695.635,
+     "start": "11:35"
+    },
+    {
+     "word": "lose track",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-08",
+     "block": "added-08_k05",
+     "start_s": 712.713,
+     "start": "11:52"
+    },
+    {
+     "word": "bear with me",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-08",
+     "block": "added-08_k06",
+     "start_s": 734.416,
+     "start": "12:14"
+    },
+    {
+     "word": "a signpost",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-17",
+     "block": "added-17_k02",
+     "start_s": 1355.283,
+     "start": "22:35"
+    },
+    {
+     "word": "go back to",
+     "kind": "gloss",
+     "lexicon": null,
+     "section": "added-21",
+     "block": "added-21_k02",
+     "start_s": 1662.72,
+     "start": "27:42"
+    }
+   ],
+   "withheld": {
+    "listening_panel_words": 0,
+    "lines_naming_an_answer": 0
+   },
+   "practice_set": null,
+   "deck_exercises": [],
+   "links": {
+    "refers_to": [],
+    "referred_to_by": [],
+    "continues_in": [],
+    "continues_from": []
+   }
   }
  ],
  "topic_index": [
@@ -66364,6 +70177,19 @@
      "start_s": 1560.595,
      "start": "26:00",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "A carer's card",
+   "key": "a carers card",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-22",
+     "start_s": 1552.407,
+     "start": "25:52",
+     "source": "section"
     }
    ]
   },
@@ -66409,6 +70235,19 @@
      "section": "added-14",
      "start_s": 1199.189,
      "start": "19:59",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "A hard question",
+   "key": "a hard question",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-07",
+     "start_s": 588.833,
+     "start": "9:48",
      "source": "section"
     }
    ]
@@ -66538,6 +70377,19 @@
    ]
   },
   {
+   "topic": "A sensitive topic",
+   "key": "a sensitive topic",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-20",
+     "start_s": 1407.974,
+     "start": "23:27",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "A short role-play",
    "key": "a short role-play",
    "entries": [
@@ -66546,6 +70398,33 @@
      "section": "added-34",
      "start_s": 2572.441,
      "start": "42:52",
+     "source": "section"
+    },
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-29",
+     "start_s": 2123.064,
+     "start": "35:23",
+     "source": "section"
+    },
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-27",
+     "start_s": 2000.516,
+     "start": "33:20",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "A steady speed",
+   "key": "a steady speed",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-24",
+     "start_s": 1823.794,
+     "start": "30:23",
      "source": "section"
     }
    ]
@@ -66598,6 +70477,19 @@
      "section": "added-16",
      "start_s": 1346.162,
      "start": "22:26",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "A wrong number",
+   "key": "a wrong number",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-14",
+     "start_s": 1136.72,
+     "start": "18:56",
      "source": "section"
     }
    ]
@@ -66792,6 +70684,19 @@
    ]
   },
   {
+   "topic": "Affect or effect",
+   "key": "affect or effect",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-16",
+     "start_s": 1176.4,
+     "start": "19:36",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Although",
    "key": "although",
    "entries": [
@@ -66801,6 +70706,19 @@
      "start_s": 708.072,
      "start": "11:48",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "An exchange",
+   "key": "an exchange",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-04",
+     "start_s": 379.316,
+     "start": "6:19",
+     "source": "section"
     }
    ]
   },
@@ -66942,6 +70860,32 @@
    ]
   },
   {
+   "topic": "Asking to move on",
+   "key": "asking to move on",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-18",
+     "start_s": 1435.822,
+     "start": "23:55",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Asking to repeat",
+   "key": "asking to repeat",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-09",
+     "start_s": 791.128,
+     "start": "13:11",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Asking what they mean",
    "key": "asking what they mean",
    "entries": [
@@ -66976,6 +70920,19 @@
      "section": "page-10",
      "start_s": 4889.832,
      "start": "81:29",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Back on track",
+   "key": "back on track",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-21",
+     "start_s": 1624.731,
+     "start": "27:04",
      "source": "section"
     }
    ]
@@ -67029,6 +70986,19 @@
      "start_s": 2979.905,
      "start": "49:39",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Before you explain",
+   "key": "before you explain",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-24",
+     "start_s": 1709.979,
+     "start": "28:29",
+     "source": "section"
     }
    ]
   },
@@ -67197,6 +71167,32 @@
      "section": "added-04",
      "start_s": 322.298,
      "start": "5:22",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Checking what they mean",
+   "key": "checking what they mean",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-10",
+     "start_s": 860.718,
+     "start": "14:20",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Checks after a chunk",
+   "key": "checks after a chunk",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-03",
+     "start_s": 265.484,
+     "start": "4:25",
      "source": "section"
     }
    ]
@@ -67770,6 +71766,19 @@
    ]
   },
   {
+   "topic": "Correcting yourself",
+   "key": "correcting yourself",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-13",
+     "start_s": 1066.59,
+     "start": "17:46",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Countable and uncountable nouns",
    "key": "countable and uncountable nouns",
    "entries": [
@@ -68018,6 +72027,19 @@
    ]
   },
   {
+   "topic": "Does in a question",
+   "key": "does in a question",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-17",
+     "start_s": 1225.64,
+     "start": "20:25",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Dos and don'ts",
    "key": "dos and donts",
    "entries": [
@@ -68077,6 +72099,19 @@
    ]
   },
   {
+   "topic": "Echoing back",
+   "key": "echoing back",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-18",
+     "start_s": 1290.632,
+     "start": "21:30",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Emphasis",
    "key": "emphasis",
    "entries": [
@@ -68112,6 +72147,19 @@
      "start_s": 159.81,
      "start": "2:39",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Explaining in steps",
+   "key": "explaining in steps",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-27",
+     "start_s": 1974.262,
+     "start": "32:54",
+     "source": "section"
     }
    ]
   },
@@ -68175,6 +72223,19 @@
    ]
   },
   {
+   "topic": "Fillers: a few",
+   "key": "fillers: a few",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-06",
+     "start_s": 518.608,
+     "start": "8:38",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Final practice",
    "key": "final practice",
    "entries": [
@@ -68196,6 +72257,19 @@
      "section": "added-13",
      "start_s": 1123.069,
      "start": "18:43",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Five more things",
+   "key": "five more things",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-02",
+     "start_s": 176.384,
+     "start": "2:56",
      "source": "section"
     }
    ]
@@ -68725,6 +72799,26 @@
      "start_s": 1883.788,
      "start": "31:23",
      "source": "section"
+    },
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-09",
+     "start_s": 652.939,
+     "start": "10:52",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "How long",
+   "key": "how long",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-07",
+     "start_s": 496.593,
+     "start": "8:16",
+     "source": "section"
     }
    ]
   },
@@ -68950,6 +73044,32 @@
    ]
   },
   {
+   "topic": "I can see why",
+   "key": "i can see why",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-21",
+     "start_s": 1484.644,
+     "start": "24:44",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "I mean, let me",
+   "key": "i mean, let me",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-16",
+     "start_s": 1268.798,
+     "start": "21:08",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "i.e",
    "key": "i.e",
    "entries": [
@@ -68972,6 +73092,19 @@
      "start_s": 653.278,
      "start": "10:53",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "I'd like to",
+   "key": "id like to",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-19",
+     "start_s": 1501.342,
+     "start": "25:01",
+     "source": "section"
     }
    ]
   },
@@ -69204,6 +73337,19 @@
    ]
   },
   {
+   "topic": "Learn the sentences",
+   "key": "learn the sentences",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-03",
+     "start_s": 232.767,
+     "start": "3:52",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Lines in chunks",
    "key": "lines in chunks",
    "entries": [
@@ -69212,6 +73358,19 @@
      "section": "added-04",
      "start_s": 297.544,
      "start": "4:57",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Linking back",
+   "key": "linking back",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-20",
+     "start_s": 1571.302,
+     "start": "26:11",
      "source": "section"
     }
    ]
@@ -69316,6 +73475,19 @@
      "section": "page-5",
      "start_s": 226.941,
      "start": "3:46",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Make it a routine",
+   "key": "make it a routine",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-26",
+     "start_s": 1953.157,
+     "start": "32:33",
      "source": "section"
     }
    ]
@@ -69454,6 +73626,19 @@
      "start_s": 3871.856,
      "start": "64:31",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Never pretend",
+   "key": "never pretend",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-11",
+     "start_s": 939.858,
+     "start": "15:39",
+     "source": "section"
     }
    ]
   },
@@ -69765,6 +73950,19 @@
    ]
   },
   {
+   "topic": "Other symptoms",
+   "key": "other symptoms",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-13",
+     "start_s": 961.475,
+     "start": "16:01",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Paraphrase bridge",
    "key": "paraphrase bridge",
    "entries": [
@@ -70051,6 +74249,19 @@
      "start_s": 3298.976,
      "start": "54:58",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Pause after a chunk",
+   "key": "pause after a chunk",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-02",
+     "start_s": 162.601,
+     "start": "2:42",
+     "source": "section"
     }
    ]
   },
@@ -70788,6 +74999,19 @@
    ]
   },
   {
+   "topic": "Relieve or relief",
+   "key": "relieve or relief",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-15",
+     "start_s": 1120.9,
+     "start": "18:40",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "ROM",
    "key": "rom",
    "entries": [
@@ -70977,6 +75201,19 @@
    ]
   },
   {
+   "topic": "Showing you understand",
+   "key": "showing you understand",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-25",
+     "start_s": 1808.728,
+     "start": "30:08",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Signal word",
    "key": "signal word",
    "entries": [
@@ -71044,6 +75281,19 @@
      "section": "page-11",
      "start_s": 1550.741,
      "start": "25:50",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Signposting the next task",
+   "key": "signposting the next task",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-17",
+     "start_s": 1323.048,
+     "start": "22:03",
      "source": "section"
     }
    ]
@@ -71474,6 +75724,19 @@
    ]
   },
   {
+   "topic": "Telling the truth",
+   "key": "telling the truth",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-28",
+     "start_s": 2057.514,
+     "start": "34:17",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Tempting wrong options",
    "key": "tempting wrong options",
    "entries": [
@@ -71482,6 +75745,19 @@
      "section": "page-8",
      "start_s": 561.653,
      "start": "9:21",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Ten things to ask",
+   "key": "ten things to ask",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-01",
+     "start_s": 96.791,
+     "start": "1:36",
      "source": "section"
     }
    ]
@@ -71574,6 +75850,13 @@
      "start_s": 837.216,
      "start": "13:57",
      "source": "section"
+    },
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-23",
+     "start_s": 1659.459,
+     "start": "27:39",
+     "source": "section"
     }
    ]
   },
@@ -71638,6 +75921,13 @@
      "section": "added-01",
      "start_s": 79.751,
      "start": "1:19",
+     "source": "section"
+    },
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-22",
+     "start_s": 1710.813,
+     "start": "28:30",
      "source": "section"
     }
    ]
@@ -72131,6 +76421,19 @@
    ]
   },
   {
+   "topic": "Thinking-time phrases",
+   "key": "thinking-time phrases",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-05",
+     "start_s": 447.368,
+     "start": "7:27",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Three errors to avoid",
    "key": "three errors to avoid",
    "entries": [
@@ -72333,6 +76636,19 @@
    ]
   },
   {
+   "topic": "Two kinds of pause",
+   "key": "two kinds of pause",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-01",
+     "start_s": 83.633,
+     "start": "1:23",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Types of pain",
    "key": "types of pain",
    "entries": [
@@ -72432,6 +76748,19 @@
      "section": "page-7",
      "start_s": 1216.12,
      "start": "20:16",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Using the answer",
+   "key": "using the answer",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-05",
+     "start_s": 364.671,
+     "start": "6:04",
      "source": "section"
     }
    ]
@@ -72593,6 +76922,19 @@
    ]
   },
   {
+   "topic": "What helps",
+   "key": "what helps",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-14",
+     "start_s": 1049.778,
+     "start": "17:29",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "What is a complex sentence?",
    "key": "what is a complex sentence",
    "entries": [
@@ -72640,6 +76982,32 @@
      "section": "pages-04-05",
      "start_s": 117.021,
      "start": "1:57",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "What it's like",
+   "key": "what its like",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-08",
+     "start_s": 588.304,
+     "start": "9:48",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "What makes it worse",
+   "key": "what makes it worse",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-12",
+     "start_s": 870.834,
+     "start": "14:30",
      "source": "section"
     }
    ]
@@ -72762,6 +77130,84 @@
    ]
   },
   {
+   "topic": "When it comes",
+   "key": "when it comes",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-11",
+     "start_s": 812.82,
+     "start": "13:32",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "When it started",
+   "key": "when it started",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-06",
+     "start_s": 424.933,
+     "start": "7:04",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "When time is short",
+   "key": "when time is short",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-23",
+     "start_s": 1771.883,
+     "start": "29:31",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "When you go blank",
+   "key": "when you go blank",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-15",
+     "start_s": 1203.258,
+     "start": "20:03",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Where it goes",
+   "key": "where it goes",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-10",
+     "start_s": 729.52,
+     "start": "12:09",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Where the pain is",
+   "key": "where the pain is",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-04",
+     "start_s": 287.797,
+     "start": "4:47",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Where to pause",
    "key": "where to pause",
    "entries": [
@@ -72784,6 +77230,19 @@
      "start_s": 4253.135,
      "start": "70:53",
      "source": "term"
+    }
+   ]
+  },
+  {
+   "topic": "Which phrase?",
+   "key": "which phrase",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-25",
+     "start_s": 1886.665,
+     "start": "31:26",
+     "source": "section"
     }
    ]
   },
@@ -73010,6 +77469,19 @@
    ]
   },
   {
+   "topic": "Words and verbs",
+   "key": "words and verbs",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-08",
+     "start_s": 650.543,
+     "start": "10:50",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Words for care",
    "key": "words for care",
    "entries": [
@@ -73023,6 +77495,19 @@
    ]
   },
   {
+   "topic": "Words that reassure",
+   "key": "words that reassure",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-26",
+     "start_s": 1875.038,
+     "start": "31:15",
+     "source": "section"
+    }
+   ]
+  },
+  {
    "topic": "Words to avoid",
    "key": "words to avoid",
    "entries": [
@@ -73031,6 +77516,32 @@
      "section": "page-5",
      "start_s": 613.253,
      "start": "10:13",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Words to echo with",
+   "key": "words to echo with",
+   "entries": [
+    {
+     "lesson": "speaking-05-taking-a-history",
+     "section": "added-19",
+     "start_s": 1362.244,
+     "start": "22:42",
+     "source": "section"
+    }
+   ]
+  },
+  {
+   "topic": "Would you mind?",
+   "key": "would you mind",
+   "entries": [
+    {
+     "lesson": "speaking-11-keeping-going",
+     "section": "added-12",
+     "start_s": 999.499,
+     "start": "16:39",
      "source": "section"
     }
    ]
@@ -73128,21 +77639,21 @@
   }
  ],
  "totals": {
-  "lessons": 34,
-  "sections": 378,
-  "topics": 749,
-  "teaching_points": 5082,
-  "rules": 352,
+  "lessons": 36,
+  "sections": 438,
+  "topics": 811,
+  "teaching_points": 5336,
+  "rules": 394,
   "warnings": 66,
   "terms": 488,
   "wrong_examples": 285,
   "facts": 180,
   "methods": 74,
-  "vocabulary": 554,
+  "vocabulary": 576,
   "vocabulary_word_bank": 189,
   "practice_items": 62,
   "references": 131,
-  "topic_index": 494,
+  "topic_index": 545,
   "withheld_panel_words": 139,
   "withheld_answer_lines": 10
  }
