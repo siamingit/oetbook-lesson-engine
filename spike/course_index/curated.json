@@ -859,6 +859,22 @@
    "methods": [],
    "continues_in": [],
    "topics": []
+  },
+  "speaking-05-taking-a-history": {
+   "session": "An authored lesson (ADR 047), the sixth of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first (ADR 057, #212, #222). Its method is the second half of the owner's recorded session \"Information Gathering\" (S3), in his order, going on from Asking Questions: where the pain is, when it started and how long, what it is like and how bad, where it goes and when it comes, what makes it worse or helps, other symptoms, echoing back, a sensitive topic, the role-play card and its brackets, showing you understand, words that reassure and explaining in steps; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 6.",
+   "position": 6,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
+  },
+  "speaking-11-keeping-going": {
+   "session": "An authored lesson (ADR 047), the seventh of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first (ADR 057, #222): keeping the role-play moving, with the planned pause the owner teaches in his recorded session S5, checks after a chunk, thinking-time phrases, asking to repeat and checking meaning, correcting yourself, what to do after a blank, signposting the next task, getting back on track and managing the five minutes; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 7.",
+   "position": 7,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
   }
  }
 }
