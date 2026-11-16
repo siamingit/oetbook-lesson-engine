@@ -130,6 +130,10 @@
   "speaking-14-ending": [
    983000,
    983999
+  ],
+  "speaking-07-persuading": [
+   981000,
+   981999
   ]
  },
  "ids": [
@@ -7607,6 +7611,426 @@
    "id": "oa-speaking-983051",
    "lesson": "speaking-14-ending",
    "point": "rp-close",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981000",
+   "lesson": "speaking-07-persuading",
+   "point": "reluct-mean",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981001",
+   "lesson": "speaking-07-persuading",
+   "point": "match-reason",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981002",
+   "lesson": "speaking-07-persuading",
+   "point": "match-reason",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981003",
+   "lesson": "speaking-07-persuading",
+   "point": "match-reason",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981004",
+   "lesson": "speaking-07-persuading",
+   "point": "match-reason",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981005",
+   "lesson": "speaking-07-persuading",
+   "point": "wb-reluct",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981006",
+   "lesson": "speaking-07-persuading",
+   "point": "wb-reluct",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981007",
+   "lesson": "speaking-07-persuading",
+   "point": "wb-reluct",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981008",
+   "lesson": "speaking-07-persuading",
+   "point": "ack-first",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981009",
+   "lesson": "speaking-07-persuading",
+   "point": "order-but",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981010",
+   "lesson": "speaking-07-persuading",
+   "point": "rep-feel",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981011",
+   "lesson": "speaking-07-persuading",
+   "point": "wb-ask",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981012",
+   "lesson": "speaking-07-persuading",
+   "point": "wb-ask",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981013",
+   "lesson": "speaking-07-persuading",
+   "point": "wb-ask",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981014",
+   "lesson": "speaking-07-persuading",
+   "point": "wb-ask",
+   "slot": "gap3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981015",
+   "lesson": "speaking-07-persuading",
+   "point": "order-steps",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981016",
+   "lesson": "speaking-07-persuading",
+   "point": "fit-worry",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981017",
+   "lesson": "speaking-07-persuading",
+   "point": "match-belief",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981018",
+   "lesson": "speaking-07-persuading",
+   "point": "match-belief",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981019",
+   "lesson": "speaking-07-persuading",
+   "point": "match-belief",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981020",
+   "lesson": "speaking-07-persuading",
+   "point": "match-belief",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981021",
+   "lesson": "speaking-07-persuading",
+   "point": "wb-actually",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981022",
+   "lesson": "speaking-07-persuading",
+   "point": "wb-actually",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981023",
+   "lesson": "speaking-07-persuading",
+   "point": "wb-actually",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981024",
+   "lesson": "speaking-07-persuading",
+   "point": "rsp-read",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981025",
+   "lesson": "speaking-07-persuading",
+   "point": "spot-will",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981026",
+   "lesson": "speaking-07-persuading",
+   "point": "gap-progress",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981027",
+   "lesson": "speaking-07-persuading",
+   "point": "gap-progress",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981028",
+   "lesson": "speaking-07-persuading",
+   "point": "gap-progress",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981029",
+   "lesson": "speaking-07-persuading",
+   "point": "match-plain",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981030",
+   "lesson": "speaking-07-persuading",
+   "point": "match-plain",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981031",
+   "lesson": "speaking-07-persuading",
+   "point": "match-plain",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981032",
+   "lesson": "speaking-07-persuading",
+   "point": "match-plain",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981033",
+   "lesson": "speaking-07-persuading",
+   "point": "rsp-goal",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981034",
+   "lesson": "speaking-07-persuading",
+   "point": "first-step",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981035",
+   "lesson": "speaking-07-persuading",
+   "point": "wb-start",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981036",
+   "lesson": "speaking-07-persuading",
+   "point": "wb-start",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981037",
+   "lesson": "speaking-07-persuading",
+   "point": "wb-start",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981038",
+   "lesson": "speaking-07-persuading",
+   "point": "match-halfway",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981039",
+   "lesson": "speaking-07-persuading",
+   "point": "match-halfway",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981040",
+   "lesson": "speaking-07-persuading",
+   "point": "match-halfway",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981041",
+   "lesson": "speaking-07-persuading",
+   "point": "match-halfway",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981042",
+   "lesson": "speaking-07-persuading",
+   "point": "gap-instead",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981043",
+   "lesson": "speaking-07-persuading",
+   "point": "gap-instead",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981044",
+   "lesson": "speaking-07-persuading",
+   "point": "gap-instead",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981045",
+   "lesson": "speaking-07-persuading",
+   "point": "rsp-busy",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981046",
+   "lesson": "speaking-07-persuading",
+   "point": "rsp-benefit",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981047",
+   "lesson": "speaking-07-persuading",
+   "point": "new-words",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981048",
+   "lesson": "speaking-07-persuading",
+   "point": "wb-endup",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981049",
+   "lesson": "speaking-07-persuading",
+   "point": "wb-endup",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981050",
+   "lesson": "speaking-07-persuading",
+   "point": "wb-endup",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981051",
+   "lesson": "speaking-07-persuading",
+   "point": "odds-plain",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981052",
+   "lesson": "speaking-07-persuading",
+   "point": "spot-article",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981053",
+   "lesson": "speaking-07-persuading",
+   "point": "type-kind",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981054",
+   "lesson": "speaking-07-persuading",
+   "point": "gap-up",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981055",
+   "lesson": "speaking-07-persuading",
+   "point": "gap-up",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981056",
+   "lesson": "speaking-07-persuading",
+   "point": "gap-up",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981057",
+   "lesson": "speaking-07-persuading",
+   "point": "rep-mind",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981058",
+   "lesson": "speaking-07-persuading",
+   "point": "rsp-belief",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-981059",
+   "lesson": "speaking-07-persuading",
+   "point": "rsp-decide",
    "slot": "answer",
    "issued": "2026-11-16"
   }
