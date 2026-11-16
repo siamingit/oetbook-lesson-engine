@@ -106,6 +106,10 @@
   "speaking-05-taking-a-history": [
    975000,
    975999
+  ],
+  "speaking-12-empathy-and-reassurance": [
+   978000,
+   978999
   ]
  },
  "ids": [
@@ -5352,6 +5356,335 @@
    "point": "rp-truth",
    "slot": "answer",
    "issued": "2026-11-15"
+  },
+  {
+   "id": "oa-speaking-978000",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "match-feel",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978001",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "match-feel",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978002",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "match-feel",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978003",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "match-feel",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978004",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "spot-look",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978005",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "say-seem",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978006",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "choose-word",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978007",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "wb-ed-ing",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978008",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "wb-ed-ing",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978009",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "wb-ed-ing",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978010",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "choose-guess",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978011",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "say-normal",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978012",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "gap-hard",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978013",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "gap-hard",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978014",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "gap-hard",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978015",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "match-verbs",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978016",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "match-verbs",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978017",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "match-verbs",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978018",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "match-verbs",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978019",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "gap-mind",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978020",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "gap-mind",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978021",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "gap-mind",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978022",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "choose-b",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978023",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "order-b",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978024",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "sign-explain",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978025",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "respond-b",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978026",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "choose-safe",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978027",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "say-fact",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978028",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "gap-right",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978029",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "gap-right",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978030",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "gap-right",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978031",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "wb-will",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978032",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "wb-will",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978033",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "wb-will",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978034",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "respond-unsure",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978035",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "match-vary",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978036",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "match-vary",
+   "slot": "pair-1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978037",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "match-vary",
+   "slot": "pair-2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978038",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "match-vary",
+   "slot": "pair-3",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978039",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "spot-must",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978040",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "say-warm",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978041",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "choose-time",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978042",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "type-them",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978043",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "order-kind",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978044",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "respond-task",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978045",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "rp-scared",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-978046",
+   "lesson": "speaking-12-empathy-and-reassurance",
+   "point": "rp-long",
+   "slot": "answer",
+   "issued": "2026-11-16"
   }
  ]
 }
