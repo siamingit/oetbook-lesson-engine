@@ -6803,6 +6803,48 @@
    "point": "rp-check",
    "slot": "answer",
    "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-980058",
+   "lesson": "speaking-09-giving-advice",
+   "point": "wb-when",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-980059",
+   "lesson": "speaking-09-giving-advice",
+   "point": "wb-when",
+   "slot": "gap1",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-980060",
+   "lesson": "speaking-09-giving-advice",
+   "point": "wb-when",
+   "slot": "gap2",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-980061",
+   "lesson": "speaking-09-giving-advice",
+   "point": "spot-partner",
+   "slot": "item",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-980062",
+   "lesson": "speaking-09-giving-advice",
+   "point": "rsp-frame",
+   "slot": "answer",
+   "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-980063",
+   "lesson": "speaking-09-giving-advice",
+   "point": "carer-line",
+   "slot": "item",
+   "issued": "2026-11-16"
   }
  ]
 }
