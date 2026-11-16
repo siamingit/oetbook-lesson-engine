@@ -891,6 +891,46 @@
    "methods": [],
    "continues_in": [],
    "topics": []
+  },
+  "speaking-08-explaining": {
+   "session": "An authored lesson (ADR 047), the tenth of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first, in everyday spoken English (ADR 057, #212, #231). Its method is the owner's recorded session S5, in his order: what the card asks and planning first, plain words for medical terms and a word bank for each profession, everyday verbs, finding out what the patient knows and building on it, saying what is coming with a map, small chunks of three at most (the teacher's advice), cause and result in plain words, explaining a test, checks at the end with a say-back check, and a first look at advice; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 10.",
+   "position": 10,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
+  },
+  "speaking-09-giving-advice": {
+   "session": "An authored lesson (ADR 047), the eleventh of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first, in everyday spoken English (ADR 057, #212, #231). Its method is the owner's recorded session S6 (pages 1-13), in his order: what each profession advises on, advise and advice, gentle, neutral and strong frames and when to be strong, how the voice changes a frame, clear steps and softer advice, asking before advising, building on the patient's habits, saying why and linking it to the worry, offering a choice and starting small, asking how the patient feels about it, signposting, and three pieces of advice at most; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 11.",
+   "position": 11,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
+  },
+  "speaking-07-persuading": {
+   "session": "An authored lesson (ADR 047), the twelfth of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first, in everyday spoken English (ADR 057, #212, #236). Its method is the owner's recorded sessions S4 (pages 12-17) and S6 (page 14), in his order: why patients say no, acknowledging first, asking what is stopping them and answering the real reason, putting a wrong belief right gently, benefits in plain words, a manageable first step and meeting halfway, saying the risk kindly without scaring the patient, and leaving the decision and the door open with the patient; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 12.",
+   "position": 12,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
+  },
+  "speaking-13-angry-or-upset": {
+   "session": "An authored lesson (ADR 047), the thirteenth of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first, in everyday spoken English (ADR 057, #212, #236). Its method is the owner's recorded session S4 (page 18), in his order: his three cases, his four steps (the feeling, the reason, an option for now and a question) and his summary, with new material on staying calm and never arguing back, saying sorry without blaming a colleague, anxious and upset patients, requests you can't meet, and words and questions without judging; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 13.",
+   "position": 13,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
+  },
+  "speaking-14-ending": {
+   "session": "An authored lesson (ADR 047, no recorded source), the fourteenth and last of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first, in everyday spoken English (ADR 057, #212, #236): leaving time for the end, summing up the plan in two or three points, a say-back check and any other questions, safety-netting (the warning signs, what to do and how quickly), the next step (who does what, and when), a warm close that fits the patient, finishing when time is up, and a map of the five minutes that names the lesson for each stage; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 14.",
+   "position": 14,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
   }
  }
 }
