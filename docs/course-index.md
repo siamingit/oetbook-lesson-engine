@@ -2,7 +2,7 @@
 
 What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.3; decision: `docs/adr/038-public-course-index.md`.
 
-36 lessons, 438 sections, 811 board topics, 5336 teaching points, 394 rules and 66 warnings, 488 terms, 180 OET facts, 74 methods, 576 vocabulary items (189 from the word bank), 62 practice questions and note forms, 131 links to other lessons, 545 topics in the topic index.
+38 lessons, 500 sections, 875 board topics, 5589 teaching points, 450 rules and 66 warnings, 488 terms, 180 OET facts, 74 methods, 591 vocabulary items (189 from the word bank), 62 practice questions and note forms, 131 links to other lessons, 603 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -11,7 +11,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 - Reading: [Reading for OET: Overview](#reading-01-overview), [Reading for OET: Part A](#reading-02-part-a), [Reading for OET: Part B](#reading-03-part-b), [Reading Part C (1)](#reading-04-part-c), [Reading Part C (2): More Practice](#reading-05-part-c-2)
 - Listening: [OET Listening: Overview](#listening-01-overview), [OET Listening: Part A](#listening-02-part-a), [OET Listening: Part B](#listening-03-part-b), [OET Listening: Part C (1)](#listening-04-part-c), [OET Listening: Part C (2)](#listening-05-part-c-2)
 - Writing: [OET Writing: Overview](#writing-01-overview), [OET Writing: Assessment Criteria](#writing-02-assessment-criteria), [OET Writing: Letter Structure](#writing-03-letter-structure), [OET Writing: The Opening Paragraph](#writing-04-introduction), [OET Writing: Information Flow](#writing-05-information-flow), [OET Writing: Word Order](#writing-06-word-order), [OET Writing: Organising the Letter](#writing-07-organisation), [OET Writing: Reading the Task and the Case Notes](#writing-08-reading-the-task)
-- Speaking: [OET Speaking: The Test and the Role-Play](#speaking-01-the-test), [OET Speaking: Reading the Card](#speaking-02-reading-the-card), [OET Speaking: Starting the Role-Play](#speaking-03-starting), [OET Speaking: Sounding Clear](#speaking-10-sounding-clear), [OET Speaking: Asking Questions](#speaking-04-asking-questions), [OET Speaking: Taking a History](#speaking-05-taking-a-history), [OET Speaking: Keeping Going](#speaking-11-keeping-going)
+- Speaking: [OET Speaking: The Test and the Role-Play](#speaking-01-the-test), [OET Speaking: Reading the Card](#speaking-02-reading-the-card), [OET Speaking: Starting the Role-Play](#speaking-03-starting), [OET Speaking: Sounding Clear](#speaking-10-sounding-clear), [OET Speaking: Asking Questions](#speaking-04-asking-questions), [OET Speaking: Taking a History](#speaking-05-taking-a-history), [OET Speaking: Keeping Going](#speaking-11-keeping-going), [OET Speaking: Finding the Patient's Concerns](#speaking-06-patient-concerns), [OET Speaking: Showing Empathy and Reassuring](#speaking-12-empathy-and-reassurance)
 
 ---
 
@@ -9781,6 +9781,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 | 5 | OET Speaking: Asking Questions | `speaking-04-asking-questions` | 44:45 | 36 | 2026-11-15 18:45 (siavash) |
 | 6 | OET Speaking: Taking a History | `speaking-05-taking-a-history` | 37:18 | 31 | 2026-11-16 01:33 (siavash) |
 | 7 | OET Speaking: Keeping Going | `speaking-11-keeping-going` | 35:14 | 29 | 2026-11-16 01:33 (siavash) |
+| 8 | OET Speaking: Finding the Patient's Concerns | `speaking-06-patient-concerns` | 37:07 | 35 | 2026-11-16 11:53 (siavash) |
+| 9 | OET Speaking: Showing Empathy and Reassuring | `speaking-12-empathy-and-reassurance` | 35:42 | 27 | 2026-11-16 11:53 (siavash) |
 
 <a id="speaking-01-the-test"></a>
 
@@ -11846,6 +11848,763 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 27:42 go back to
 
 
+<a id="speaking-06-patient-concerns"></a>
+
+## 8. OET Speaking: Finding the Patient's Concerns
+
+- Lesson ID and folder: `speaking-06-patient-concerns` (folder `speaking-06-patient-concerns`); course speaking, lesson 8 (its id's number is 06); length 37:07; bundle format 1.24
+- Status: approved by siavash, 2026-11-16 11:53
+- Description: Learn to hear a patient's worry, even when they only hint at it. Explore it with open questions about their ideas, concerns and expectations. Then acknowledge the worry, check you've understood it, and link your explanation to it.
+- Original session: none (a lesson with no recording and no deck, ADR 047)
+  - An authored lesson (ADR 047), the eighth of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first, in everyday spoken English (ADR 057, #212, #227). Its method is the first part of the owner's recorded session S4 (pages 1-11), in his order: the worries patients have in each profession, what they say and what they only hint at, open invitations, the ideas, concerns and expectations behind a worry, asking more than once, finding out before explaining, acknowledging the worry, checking you have understood it and linking the explanation to it; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 8.
+- Parts: What patients worry about; Hearing a concern; Open invitations; Ideas, concerns, expectations; Explore before explaining; Acknowledge, then move on; Check and link
+
+### Sections
+
+#### 0:00 Introduction (`page-100`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 1:05 **Contents board**
+  - 1:07 each category, revealed as it is named
+
+#### 1:49 Saying you're worried (`added-01`, authored)
+
+- 1:49 **Saying you're worried**
+  - 1:49 the parts
+  - 2:23 concerned
+  - 2:38 your turn
+  - 2:51 the answers
+
+*Rules on the boards*
+
+- 2:23 Concerned means worried. Anxious means worried and nervous. After be, both work like worried.
+
+#### 3:00 Getting the words right (`added-02`, authored)
+
+- 3:00 **Getting the words right**
+  - 3:00 right and wrong
+  - 3:27 the rule
+  - 3:38 your turn
+  - 3:50 the answer
+
+*Rules on the boards*
+
+- 3:27 With about: be + worried, concerned or anxious + about + a noun or an -ing word
+
+#### 3:57 Common worries (`added-03`, authored)
+
+- 3:57 **Common worries**
+  - 3:57 what patients worry about
+  - 4:33 manage
+  - 4:45 match them
+  - 4:58 the answers
+
+#### 5:10 Worries by profession (`added-04`, authored)
+
+- 5:10 **Worries by profession**
+  - 5:10 by profession
+  - 5:44 read role-plays
+  - 5:55 choose
+  - 6:09 the answer
+
+*Rules on the boards*
+
+- 5:44 Read role-plays for your profession. Notice what the patient is worried about.
+
+#### 6:18 Going home (`added-05`, authored)
+
+- 6:18 **Going home**
+  - 6:18 four questions
+  - 6:47 listen to the answer
+  - 6:58 your turn
+  - 7:15 the model
+
+#### 7:22 Before a scan (`added-06`, authored)
+
+- 7:22 **Before a scan**
+  - 7:22 ask about the worry
+  - 7:51 so far
+  - 8:00 choose
+  - 8:15 the answer
+
+#### 8:26 A new medicine (`added-07`, authored)
+
+- 8:26 **A new medicine**
+  - 8:26 three questions
+  - 8:49 listen to the answer
+  - 9:00 put it in order
+  - 9:12 the answer
+
+#### 9:19 Someone else's worry (`added-08`, authored)
+
+- 9:19 **Someone else's worry**
+  - 9:19 a relative's worry
+  - 9:45 not herself
+  - 9:54 your turn
+  - 10:07 the answers
+
+#### 10:16 Said or hinted (`added-09`, authored)
+
+- 10:16 **Said or hinted**
+  - 10:16 said or hinted
+  - 10:44 the voice
+  - 10:53 the face
+  - 11:02 choose
+  - 11:13 the answer
+
+*Rules on the boards*
+
+- 10:44 Listen to the voice too. A worried voice is a cue.
+- 10:53 In a face-to-face test, the face can show it too.
+
+#### 11:23 Words that hint (`added-10`, authored)
+
+- 11:23 **Words that hint**
+  - 11:23 hints
+  - 12:02 the small words
+  - 12:10 choose
+  - 12:21 the answer
+
+*Rules on the boards*
+
+- 12:02 Listen for: not sure, maybe, but, my friend had, I just hope.
+
+#### 12:27 Hints in long answers (`added-11`, authored)
+
+- 12:27 **Hints in long answers**
+  - 12:27 a long answer
+  - 12:50 answer the hint
+  - 12:59 choose
+  - 13:19 the answer
+
+*Rules on the boards*
+
+- 12:50 Answer the hint, not only the good news.
+
+#### 13:28 Answering a hint (`added-12`, authored)
+
+- 13:28 **Answering a hint**
+  - 13:28 three steps
+  - 13:52 the patient answers
+  - 13:59 your turn
+  - 14:15 the model
+
+#### 14:23 Opening the door (`added-13`, authored)
+
+- 14:23 **Opening the door**
+  - 14:23 the steps
+  - 15:05 the notes
+  - 15:17 put them in order
+  - 15:29 the answer
+
+*Rules on the boards*
+
+- 15:05 Start from the notes, then check: Is that right?
+
+#### 15:39 Open invitations (`added-14`, authored)
+
+- 15:39 **Open invitations**
+  - 15:39 invitations
+  - 16:15 then listen
+  - 16:22 your turn
+  - 16:36 the model
+
+*Rules on the boards*
+
+- 16:15 Then stop, and listen. Let the patient finish.
+
+#### 16:43 Words for the visit (`added-15`, authored)
+
+- 16:43 **Words for the visit**
+  - 16:43 four words
+  - 17:19 your turn
+  - 17:31 the answers
+
+#### 17:38 The three things (`added-16`, authored)
+
+- 17:38 **The three things**
+  - 17:38 three things
+  - 18:01 in the criteria
+  - 18:11 match them
+  - 18:26 the answers
+
+*Rules on the boards*
+
+- 18:01 It's in the criteria: finding out and exploring the patient's ideas, concerns and expectations.
+
+#### 18:39 Asking about ideas (`added-17`, authored)
+
+- 18:39 **Asking about ideas**
+  - 18:39 ideas
+  - 19:09 why ask
+  - 19:15 choose
+  - 19:28 the answer
+
+*Rules on the boards*
+
+- 19:09 The patient's idea may be wrong. Then you know what to explain.
+
+#### 19:35 Asking about worries (`added-18`, authored)
+
+- 19:35 **Asking about worries**
+  - 19:35 concerns
+  - 20:05 particularly
+  - 20:21 your turn
+  - 20:37 the model
+
+#### 20:44 Keep the first part (`added-19`, authored)
+
+- 20:44 **Keep the first part**
+  - 20:44 keep and change
+  - 21:11 learn one
+  - 21:19 your turn
+  - 21:34 the model
+
+*Rules on the boards*
+
+- 21:11 Learn one good question well. Then change the end for each patient.
+
+#### 21:41 Asking about hopes (`added-20`, authored)
+
+- 21:41 **Asking about hopes**
+  - 21:41 hopes
+  - 22:12 you may also hear
+  - 22:23 put it in order
+  - 22:34 the answer
+
+#### 22:41 Worried or worrying (`added-21`, authored)
+
+- 22:41 **Worried or worrying**
+  - 22:41 two words
+  - 22:55 two verbs
+  - 23:07 your turn
+  - 23:19 the answers
+
+#### 23:29 Ask more than once (`added-22`, authored)
+
+- 23:29 **Ask more than once**
+  - 23:29 three times
+  - 24:05 the second answer
+  - 24:15 choose
+  - 24:27 the answer
+
+*Rules on the boards*
+
+- 24:05 The second answer is often the real worry.
+
+#### 24:34 Explore, then explain (`added-23`, authored)
+
+- 24:34 **Explore, then explain**
+  - 24:34 instead
+  - 25:06 why
+  - 25:13 choose
+  - 25:27 the answer
+
+*Rules on the boards*
+
+- 25:06 Find out first. Then you explain what the patient needs.
+
+#### 25:35 A worried mother (`added-24`, authored)
+
+- 25:35 **A worried mother**
+  - 25:35 the exchange
+  - 26:04 your turn
+  - 26:21 all three
+
+*Rules on the boards*
+
+- 26:21 Ideas, concerns, expectations: now you know all three.
+
+#### 26:31 Words for symptoms (`added-25`, authored)
+
+- 26:31 **Words for symptoms**
+  - 26:31 words
+  - 27:00 patients' words
+  - 27:10 match them
+  - 27:23 the answers
+
+*Rules on the boards*
+
+- 27:00 Patients may use words like these. Use the same words back.
+
+#### 27:33 Which reply? (`added-26`, authored)
+
+- 27:33 **Which reply?**
+  - 27:33 two replies
+  - 27:50 why it works
+  - 28:02 choose
+  - 28:18 the answer
+
+*Rules on the boards*
+
+- 27:50 It answers what the mother said, then it moves on.
+
+#### 28:27 Acknowledge it first (`added-27`, authored)
+
+- 28:27 **Acknowledge it first**
+  - 28:27 acknowledge
+  - 29:03 short
+  - 29:14 your turn
+  - 29:29 the model
+
+*Rules on the boards*
+
+- 29:03 Acknowledge the worry: show you've heard it. Keep it short, then go on.
+
+#### 29:37 Not yet, but (`added-28`, authored)
+
+- 29:37 **Not yet, but**
+  - 29:37 two parts
+  - 30:12 once
+  - 30:25 your turn
+  - 30:38 the answer
+
+*Rules on the boards*
+
+- 30:19 Once + it + has + healed: after it has healed
+
+#### 30:45 Moving on (`added-29`, authored)
+
+- 30:45 **Moving on**
+  - 30:45 the steps
+  - 31:10 from Keeping Going
+  - 31:24 put them in order
+  - 31:35 the answer
+
+*Rules on the boards*
+
+- 31:10 Now let me explain… Is it okay if we move on to…?
+
+#### 31:44 Check you've understood (`added-30`, authored)
+
+- 31:44 **Check you've understood**
+  - 31:44 checking
+  - 32:21 why check
+  - 32:43 your turn
+  - 32:58 the model
+
+*Rules on the boards*
+
+- 32:21 If you've got it wrong, the patient can correct you.
+
+#### 33:07 How does that sound? (`added-31`, authored)
+
+- 33:07 **How does that sound?**
+  - 33:07 after you explain
+  - 33:41 don't forget
+  - 33:49 your turn
+  - 34:04 the model
+
+*Rules on the boards*
+
+- 33:41 On test day, it's easy to forget these questions. Ask one after each plan.
+
+#### 34:12 Linking to the worry (`added-32`, authored)
+
+- 34:12 **Linking to the worry**
+  - 34:12 link it
+  - 34:43 in the criteria
+  - 34:54 your turn
+  - 35:09 the model
+
+*Rules on the boards*
+
+- 34:43 It's in the criteria: relating your explanation to the patient's ideas, concerns and expectations.
+
+#### 35:17 A short exchange (`added-33`, authored)
+
+- 35:17 **A short exchange**
+  - 35:17 the exchange
+  - 35:27 your turn
+  - 36:11 then explain
+
+*Rules on the boards*
+
+- 36:11 Explore, check, then explain from the worry.
+
+#### 36:19 Closing (`added-34`, closing)
+
+- 36:19 **Closing**
+  - 36:22 Recap
+  - 36:44 Practise
+
+*Rules on the boards*
+
+- 36:44 Practise: pick a worry patients often have in your profession. Ask about it in three ways.
+
+
+<a id="speaking-12-empathy-and-reassurance"></a>
+
+## 9. OET Speaking: Showing Empathy and Reassuring
+
+- Lesson ID and folder: `speaking-12-empathy-and-reassurance` (folder `speaking-12-empathy-and-reassurance`); course speaking, lesson 9 (its id's number is 12); length 35:42; bundle format 1.24
+- Status: approved by siavash, 2026-11-16 11:53
+- Description: Learn to show empathy and reassure a worried patient. Name the feeling gently. Show it makes sense. Give a short, kind answer before you explain. Reassure with real facts, not false promises. Give the patient time.
+- Original session: none (a lesson with no recording and no deck, ADR 047)
+  - An authored lesson (ADR 047), the ninth of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first, in everyday spoken English (ADR 057, #212, #227): naming the patient's feeling gently, showing it makes sense, the owner's response B from his recorded session S4 (page 9: acknowledge the feeling, show you understand, reassure with what you will do, check), a short kind answer before the explanation, safe reassurance with real facts and no false promises, and giving the patient time; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 9.
+- Parts: Naming the feeling; It makes sense; Response B; Safe reassurance; Honest and warm; Time and the task; Practise and finish
+
+### Sections
+
+#### 0:00 Introduction (`page-100`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 0:50 **Contents board**
+  - 0:52 each category, revealed as it is named
+
+#### 1:29 Hear the feeling (`added-01`, authored)
+
+- 1:29 **Hear the feeling**
+  - 1:29 the feeling behind the words
+  - 2:40 a phrase
+  - 2:56 listen for it
+  - 3:12 match
+  - 3:25 the answers
+
+*Rules on the boards*
+
+- 2:56 Listen for the feeling behind the words.
+- 3:25 Frustrated: Nobody has told me anything for hours. Scared: What if it doesn't get better? Embarrassed: Sorry, this is probably a silly question.
+
+#### 3:39 Name it gently (`added-02`, authored)
+
+- 3:39 **Name it gently**
+  - 3:39 ways to start
+  - 4:20 the grammar
+  - 4:42 then check
+  - 4:50 find it
+  - 5:04 the answer
+  - 5:10 your turn
+
+*Rules on the boards*
+
+- 4:20 You seem worried. You look tired. No 'like' before the feeling word.
+- 4:42 Then check: Is that right?
+
+#### 5:31 Words for feelings (`added-03`, authored)
+
+- 5:31 **Words for feelings**
+  - 5:31 four words
+  - 6:13 listen again
+  - 6:26 choose
+  - 6:36 the answer
+
+*Rules on the boards*
+
+- 6:13 Anxious, frustrated, overwhelmed, relieved.
+
+#### 6:42 More -ed and -ing (`added-04`, authored)
+
+- 6:42 **More -ed and -ing**
+  - 6:42 -ed and -ing
+  - 7:21 the rule
+  - 7:36 a word
+  - 7:50 choose
+  - 8:03 the answers
+
+*Rules on the boards*
+
+- 7:21 -ed: how a person feels. -ing: what makes them feel it.
+
+#### 8:12 Guess, don't tell (`added-05`, authored)
+
+- 8:12 **Guess, don't tell**
+  - 8:12 instead
+  - 8:47 a phrase
+  - 9:01 why
+  - 9:15 choose
+  - 9:32 the answer
+
+*Rules on the boards*
+
+- 9:01 The patient knows how they feel. You can only guess.
+
+#### 9:39 A lot of people (`added-06`, authored)
+
+- 9:39 **A lot of people**
+  - 9:39 it's normal
+  - 10:25 would
+  - 10:37 then listen
+  - 10:47 your turn
+
+*Rules on the boards*
+
+- 10:25 Anyone would feel the same: 'would' here talks about an imagined situation.
+- 10:37 Say it's normal. Then listen. Don't end the conversation there.
+
+#### 11:06 It's hard when (`added-07`, authored)
+
+- 11:06 **It's hard when**
+  - 11:06 why it's hard
+  - 11:44 a phrase
+  - 11:59 the grammar
+  - 12:15 type
+  - 12:27 the answers
+
+*Rules on the boards*
+
+- 11:59 It's hard when + a sentence. It's not easy to + a verb.
+
+#### 12:35 Words and phrases (`added-08`, authored)
+
+- 12:35 **Words and phrases**
+  - 12:35 the words
+  - 12:50 acknowledge
+  - 13:08 reassure
+  - 13:25 cope
+  - 13:40 put your mind at rest
+  - 13:57 shaken
+  - 14:13 match
+  - 14:25 the answers
+  - 14:37 type
+  - 14:48 the words
+
+*Rules on the boards*
+
+- 14:25 Cope: manage something hard. Acknowledge: show you have heard and understood. Reassure: help someone worry less.
+
+#### 14:56 Two responses (`added-09`, authored)
+
+- 14:56 **Two responses**
+  - 14:56 the patient
+  - 15:24 a phrase
+  - 15:39 two responses
+  - 16:01 why B
+  - 16:20 choose
+  - 16:32 the answer
+
+*Rules on the boards*
+
+- 16:01 A says 'I understand', then explains. B shows the nurse understands.
+
+#### 16:43 Response B in steps (`added-10`, authored)
+
+- 16:43 **Response B in steps**
+  - 16:43 the steps
+  - 17:14 short
+  - 17:19 order
+  - 17:30 the answer
+
+*Rules on the boards*
+
+- 17:14 Four short steps. Then explain.
+
+#### 17:40 Then signpost, explain (`added-11`, authored)
+
+- 17:40 **Then signpost, explain**
+  - 17:40 the order
+  - 18:09 a word
+  - 18:23 the criteria
+  - 18:29 your turn
+
+*Rules on the boards*
+
+- 18:09 You may also hear: apply. It means to put something on the skin or a wound.
+
+#### 18:55 Your turn with B (`added-12`, authored)
+
+- 18:55 **Your turn with B**
+  - 18:55 the case
+  - 19:13 a word
+  - 19:29 no blame
+  - 19:44 your turn
+  - 19:59 the model
+
+*Rules on the boards*
+
+- 19:29 Don't blame them. 'You did the right thing' helps.
+
+#### 20:11 No false promises (`added-13`, authored)
+
+- 20:11 **No false promises**
+  - 20:11 instead
+  - 20:48 a phrase
+  - 21:04 why
+  - 21:11 choose
+  - 21:27 the answer
+
+*Rules on the boards*
+
+- 21:04 If a promise does not come true, the patient stops trusting you.
+
+#### 21:39 Reassure with facts (`added-14`, authored)
+
+- 21:39 **Reassure with facts**
+  - 21:39 real facts
+  - 22:08 true facts
+  - 22:18 your turn
+
+*Rules on the boards*
+
+- 22:08 Only say what's true for this patient.
+
+#### 22:34 The right thing (`added-15`, authored)
+
+- 22:34 **The right thing**
+  - 22:34 the right thing
+  - 23:04 the grammar
+  - 23:25 type
+  - 23:36 the answers
+
+*Rules on the boards*
+
+- 23:04 You did the right thing + -ing: coming, calling. Thank you for + -ing: letting.
+
+#### 23:43 Will or should (`added-16`, authored)
+
+- 23:43 **Will or should**
+  - 23:43 will and should
+  - 24:17 a phrase
+  - 24:31 the rule
+  - 24:39 choose
+  - 24:51 the answers
+
+*Rules on the boards*
+
+- 24:31 Your actions: will. The results: should, usually, most people.
+
+#### 25:00 When you don't know (`added-17`, authored)
+
+- 25:00 **When you don't know**
+  - 25:00 the steps
+  - 25:24 I'm afraid
+  - 25:30 your turn
+  - 25:47 the model
+
+*Rules on the boards*
+
+- 25:24 I'm afraid: we say it before news the patient won't like. It isn't about fear.
+
+#### 25:57 Say it another way (`added-18`, authored)
+
+- 25:57 **Say it another way**
+  - 25:57 reply to what they say
+  - 26:41 a phrase
+  - 26:55 match
+  - 27:07 the answers
+
+*Rules on the boards*
+
+- 27:07 My mum's ill, and the kids are off school: That's a lot to deal with. I've been up all night with the baby: No wonder you're tired. We waited three hours to see you: That's a long time to wait.
+
+#### 27:23 Must be, no wonder (`added-19`, authored)
+
+- 27:23 **Must be, no wonder**
+  - 27:23 ways to start
+  - 27:52 the grammar
+  - 28:13 find it
+  - 28:26 the answer
+
+*Rules on the boards*
+
+- 27:52 Must be + how they feel, or how it is. No 'to': That must be hard.
+
+#### 28:35 Say it warmly (`added-20`, authored)
+
+- 28:35 **Say it warmly**
+  - 28:35 the stress
+  - 29:05 warm
+  - 29:10 your turn
+
+*Rules on the boards*
+
+- 29:05 Slow down a little. A warm voice helps the patient feel you're listening.
+
+#### 29:27 Give them time (`added-21`, authored)
+
+- 29:27 **Give them time**
+  - 29:27 give time
+  - 29:49 then listen
+  - 30:01 choose
+  - 30:17 the answer
+
+*Rules on the boards*
+
+- 29:49 Say one line. Then stop, and listen.
+
+#### 30:23 Keep it about them (`added-22`, authored)
+
+- 30:23 **Keep it about them**
+  - 30:23 instead
+  - 30:44 why
+  - 30:53 type
+  - 31:05 the answer
+
+*Rules on the boards*
+
+- 30:44 The role-play is about the patient's feelings, not yours.
+
+#### 31:11 One kind line (`added-23`, authored)
+
+- 31:11 **One kind line**
+  - 31:11 the order
+  - 31:48 a word
+  - 31:59 lead
+  - 32:10 order
+  - 32:22 the answer
+
+*Rules on the boards*
+
+- 31:48 A shock: something bad you didn't expect.
+- 31:59 You take the lead, kindly. (You start and guide the talk.)
+- 32:34 Take in: fully understand news.
+
+#### 32:40 Back to the task (`added-24`, authored)
+
+- 32:40 **Back to the task**
+  - 32:40 ways back
+  - 33:10 kind, then the task
+  - 33:15 your turn
+  - 33:33 the model
+
+*Rules on the boards*
+
+- 33:10 A kind line, then the task. Both, in that order.
+
+#### 33:42 A worried patient (`added-25`, authored)
+
+- 33:42 **A worried patient**
+  - 33:42 the exchange
+  - 34:01 your turn
+  - 34:51 kind and honest
+
+*Rules on the boards*
+
+- 34:51 Name the feeling. Then a real fact, not a promise.
+
+#### 34:58 Closing (`added-26`, closing)
+
+- 34:58 **Closing**
+  - 35:01 Recap
+  - 35:18 Practise
+
+*Rules on the boards*
+
+- 35:18 Practise: when a friend tells you about a worry, name the feeling. Then say one kind line.
+
+### Vocabulary
+
+First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
+
+- 2:40 fed up
+- 7:36 frightened
+- 8:47 a fright
+- 11:44 catch your breath
+- 12:50 acknowledge
+- 13:08 reassure
+- 13:25 cope
+- 13:40 put your mind at rest
+- 13:57 shaken
+- 15:24 look away
+- 15:32 grab
+- 19:13 guilty
+- 20:48 a sharp scratch
+- 24:17 keep an eye on
+- 26:41 deal with
+
+
 ---
 
 # Topic index
@@ -11860,7 +12619,9 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **A hard question**: `speaking-11-keeping-going` 9:48
 - **A history card**: `speaking-04-asking-questions` 41:31
 - **A letter with gaps**: `writing-06-word-order` 21:22
+- **A lot of people**: `speaking-12-empathy-and-reassurance` 9:39
 - **A needle in a haystack**: `reading-02-part-a` 1:48
+- **A new medicine**: `speaking-06-patient-concerns` 8:26
 - **A or an**: `grammar-04-articles` 11:27
 - **A paragraph corrected**: `writing-06-word-order` 13:31
 - **A pharmacy card**: `speaking-02-reading-the-card` 18:44
@@ -11868,16 +12629,20 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **A role-play card**: `speaking-01-the-test` 17:33
 - **A sample letter**: `writing-01-overview` 14:05
 - **A sensitive topic**: `speaking-05-taking-a-history` 23:27
+- **A short exchange**: `speaking-06-patient-concerns` 35:17
 - **A short role-play**: `speaking-04-asking-questions` 42:52; `speaking-05-taking-a-history` 35:23; `speaking-11-keeping-going` 33:20
 - **A steady speed**: `speaking-11-keeping-going` 30:23
 - **A target score for Part B**: `listening-03-part-b` 11:46
 - **A target score for Part C**: `listening-04-part-c` 9:16
 - **A two-week history of**: `grammar-08-paraphrasing` 41:25
 - **A warm voice**: `speaking-10-sounding-clear` 22:26
+- **A worried mother**: `speaking-06-patient-concerns` 25:35
+- **A worried patient**: `speaking-12-empathy-and-reassurance` 33:42
 - **A wrong number**: `speaking-11-keeping-going` 18:56
 - **a-**: `grammar-03-nominalization` 10:11
 - **Abbreviations in the letter**: `writing-02-assessment-criteria` 25:20
 - **Accuracy to the case notes**: `writing-02-assessment-criteria` 14:09
+- **Acknowledge it first**: `speaking-06-patient-concerns` 28:27
 - **Active**: `grammar-01-verb-tenses` 86:16
 - **active and passive**: `grammar-01-verb-tenses` 84:26; `grammar-02-verb-use` 35:19
 - **Active voice**: `grammar-02-verb-use` 36:23
@@ -11893,6 +12658,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Although**: `grammar-05-complex-compound` 11:48
 - **An exchange**: `speaking-11-keeping-going` 6:19
 - **An itchy rash**: `vocabulary-03-collocations-2` 84:06
+- **Answering a hint**: `speaking-06-patient-concerns` 13:28
 - **Apostrophe**: `grammar-07-punctuation` 60:42
 - **Apostrophes**: `grammar-07-punctuation` 60:34
 - **Appositive**: `writing-04-introduction` 10:08
@@ -11900,6 +12666,10 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Appositives and ages**: `writing-04-introduction` 9:59
 - **article**: `grammar-02-verb-use` 62:02
 - **Articles**: `grammar-04-articles` 2:00; `grammar-08-paraphrasing` 12:29
+- **Ask more than once**: `speaking-06-patient-concerns` 23:29
+- **Asking about hopes**: `speaking-06-patient-concerns` 21:41
+- **Asking about ideas**: `speaking-06-patient-concerns` 18:39
+- **Asking about worries**: `speaking-06-patient-concerns` 19:35
 - **Asking for more**: `speaking-04-asking-questions` 7:42
 - **Asking permission**: `speaking-04-asking-questions` 28:12
 - **Asking to move on**: `speaking-11-keeping-going` 23:55
@@ -11908,9 +12678,11 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Avoid a series of short sentences**: `vocabulary-01-word-forms` 68:43
 - **Avoid sentences that are too long**: `vocabulary-01-word-forms` 81:29
 - **Back on track**: `speaking-11-keeping-going` 27:04
+- **Back to the task**: `speaking-12-empathy-and-reassurance` 32:40
 - **Be + -ed adjective**: `grammar-06-clause` 41:38
 - **Be verb plus past participle**: `grammar-01-verb-tenses` 88:58
 - **been**: `grammar-01-verb-tenses` 15:25
+- **Before a scan**: `speaking-06-patient-concerns` 7:22
 - **Before he quit**: `grammar-01-verb-tenses` 49:39
 - **Before you explain**: `speaking-05-taking-a-history` 28:29
 - **Before you listen**: `listening-03-part-b` 5:03
@@ -11924,6 +12696,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Case notes and the Writing Task**: `writing-01-overview` 13:48
 - **Case notes: error correction**: `grammar-01-verb-tenses` 114:53
 - **Case-note abbreviations**: `grammar-07-punctuation` 87:44
+- **Check you've understood**: `speaking-06-patient-concerns` 31:44
 - **Checking the name**: `speaking-03-starting` 7:12
 - **Checking they understand**: `speaking-04-asking-questions` 5:22
 - **Checking what they mean**: `speaking-11-keeping-going` 14:20
@@ -11945,6 +12718,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Commas: overview**: `grammar-07-punctuation` 2:32
 - **Common descriptions**: `vocabulary-03-collocations-2` 38:25
 - **Common mistakes**: `grammar-07-punctuation` 43:20
+- **Common worries**: `speaking-06-patient-concerns` 3:57
 - **complex sentence**: `grammar-05-complex-compound` 2:13; `grammar-07-punctuation` 5:41; `grammar-08-paraphrasing` 7:40
 - **Complex sentences**: `grammar-07-punctuation` 5:36
 - **Compliant with**: `grammar-08-paraphrasing` 34:17
@@ -11998,6 +12772,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Exercise regime**: `vocabulary-03-collocations-2` 80:08
 - **Expand**: `grammar-08-paraphrasing` 2:39
 - **Explaining in steps**: `speaking-05-taking-a-history` 32:54
+- **Explore, then explain**: `speaking-06-patient-concerns` 24:34
 - **Expressing reason with 'given'**: `grammar-06-clause` 52:37
 - **FANBOYS**: `grammar-05-complex-compound` 24:24; `grammar-07-punctuation` 14:58
 - **Fast reading**: `reading-01-overview` 13:36
@@ -12029,22 +12804,29 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Gap fill: articles**: `grammar-04-articles` 59:34
 - **Genre and Style**: `writing-02-assessment-criteria` 21:24
 - **Gerund**: `grammar-05-complex-compound` 46:11
+- **Getting the words right**: `speaking-06-patient-concerns` 3:00
 - **Gist**: `reading-03-part-b` 2:13
+- **Give them time**: `speaking-12-empathy-and-reassurance` 29:27
 - **given that**: `grammar-06-clause` 54:22
 - **Giving reassurance**: `vocabulary-03-collocations-2` 50:20
+- **Going home**: `speaking-06-patient-concerns` 6:18
 - **Good or not?**: `speaking-04-asking-questions` 40:31
 - **Grade B in OET Writing**: `writing-02-assessment-criteria` 5:22
 - **Greeting and Re line**: `writing-03-letter-structure` 15:13; `writing-04-introduction` 3:42
 - **Greeting the patient**: `speaking-03-starting` 3:08
+- **Guess, don't tell**: `speaking-12-empathy-and-reassurance` 8:12
 - **Had smoked**: `grammar-01-verb-tenses` 53:39
 - **Has been scheduled**: `grammar-01-verb-tenses` 96:52
 - **has not eased**: `vocabulary-03-collocations-2` 31:27
 - **Has smoked**: `grammar-01-verb-tenses` 54:36
+- **Hear the feeling**: `speaking-12-empathy-and-reassurance` 1:29
 - **hedging**: `reading-04-part-c` 12:37
 - **Hedging word**: `reading-04-part-c` 14:44
 - **Helping verb**: `grammar-01-verb-tenses` 3:47; `writing-06-word-order` 9:11
+- **Hints in long answers**: `speaking-06-patient-concerns` 12:27
 - **How adjective + noun collocations are formed**: `vocabulary-03-collocations-2` 6:49
 - **How bad it is**: `speaking-04-asking-questions` 31:23; `speaking-05-taking-a-history` 10:52
+- **How does that sound?**: `speaking-06-patient-concerns` 33:07
 - **How long**: `speaking-05-taking-a-history` 8:16
 - **How long have you...?**: `speaking-04-asking-questions` 16:58
 - **How long, how often**: `speaking-04-asking-questions` 15:21
@@ -12079,7 +12861,10 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Into the history**: `speaking-03-starting` 15:47
 - **Introductory phrase**: `grammar-07-punctuation` 23:21
 - **Introductory phrases**: `grammar-07-punctuation` 23:16
+- **It's hard when**: `speaking-12-empathy-and-reassurance` 11:06
 - **Joining sentences with relative pronouns**: `vocabulary-01-word-forms` 43:34
+- **Keep it about them**: `speaking-12-empathy-and-reassurance` 30:23
+- **Keep the first part**: `speaking-06-patient-concerns` 20:44
 - **Keeping a note brief**: `writing-08-reading-the-task` 18:21
 - **Key points to remember**: `vocabulary-02-collocations` 12:08
 - **Key words**: `reading-03-part-b` 10:13
@@ -12088,6 +12873,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Learn the sentences**: `speaking-05-taking-a-history` 3:52
 - **Lines in chunks**: `speaking-10-sounding-clear` 4:57
 - **Linking back**: `speaking-11-keeping-going` 26:11
+- **Linking to the worry**: `speaking-06-patient-concerns` 34:12
 - **Linking words**: `listening-05-part-c-2` 2:52
 - **Linking words in a letter**: `writing-05-information-flow` 14:40
 - **Listening sounds**: `speaking-04-asking-questions` 2:18
@@ -12103,11 +12889,16 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Medical words**: `speaking-10-sounding-clear` 9:21
 - **Met before or not**: `speaking-03-starting` 11:30
 - **Monitor**: `vocabulary-02-collocations` 32:01
+- **More -ed and -ing**: `speaking-12-empathy-and-reassurance` 6:42
+- **Moving on**: `speaking-06-patient-concerns` 30:45
 - **Multiple choice**: `reading-01-overview` 7:48; `listening-01-overview` 3:38
 - **Multiple choice (3 options)**: `reading-03-part-b` 6:29
+- **Must be, no wonder**: `speaking-12-empathy-and-reassurance` 27:23
+- **Name it gently**: `speaking-12-empathy-and-reassurance` 3:39
 - **Names and titles**: `speaking-03-starting` 8:36
 - **neither of which**: `vocabulary-01-word-forms` 64:31
 - **Never pretend**: `speaking-11-keeping-going` 15:39
+- **No false promises**: `speaking-12-empathy-and-reassurance` 20:11
 - **No leading questions**: `speaking-04-asking-questions` 37:52
 - **No negative questions**: `speaking-04-asking-questions` 21:24
 - **Nominalisation**: `grammar-03-nominalization` 1:57; `grammar-04-articles` 55:27; `grammar-08-paraphrasing` 5:29
@@ -12115,17 +12906,21 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **non-defining relative clause**: `vocabulary-01-word-forms` 71:01
 - **Non-physical complaints**: `grammar-03-nominalization` 21:13
 - **Non-specific**: `grammar-04-articles` 18:15
+- **Not yet, but**: `speaking-06-patient-concerns` 29:37
 - **Noun endings**: `vocabulary-01-word-forms` 18:13
 - **Now, and the request**: `writing-05-information-flow` 30:06
 - **Object**: `grammar-01-verb-tenses` 86:12
 - **Occasionally**: `grammar-01-verb-tenses` 78:06
 - **Omit**: `grammar-08-paraphrasing` 6:18
 - **One at a time**: `speaking-04-asking-questions` 39:21
+- **One kind line**: `speaking-12-empathy-and-reassurance` 31:11
 - **one of which**: `vocabulary-01-word-forms` 67:44
 - **One test for every profession**: `writing-01-overview` 1:31
+- **Open invitations**: `speaking-06-patient-concerns` 15:39
 - **Open questions**: `speaking-04-asking-questions` 10:15
 - **Opening frames**: `writing-04-introduction` 27:22
 - **Opening questions**: `speaking-03-starting` 12:46
+- **Opening the door**: `speaking-06-patient-concerns` 14:23
 - **opinion signals**: `reading-04-part-c` 12:37
 - **Order**: `vocabulary-02-collocations` 63:02
 - **Ordering the paragraphs**: `writing-07-organisation` 13:26
@@ -12192,6 +12987,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Reading the notes for your reader**: `writing-08-reading-the-task` 7:43
 - **Reading the Writing Task**: `writing-08-reading-the-task` 3:14
 - **Rearrange**: `grammar-08-paraphrasing` 37:49
+- **Reassure with facts**: `speaking-12-empathy-and-reassurance` 21:39
 - **Recent visits and the plan**: `writing-08-reading-the-task` 12:41
 - **Reduced relative clause**: `grammar-06-clause` 19:08
 - **Reduced relative clauses**: `grammar-06-clause` 19:08
@@ -12202,9 +12998,14 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Relative pronoun**: `grammar-06-clause` 19:32; `vocabulary-01-word-forms` 45:26
 - **relative pronouns**: `vocabulary-01-word-forms` 43:34
 - **Relieve or relief**: `speaking-05-taking-a-history` 18:40
+- **Response B in steps**: `speaking-12-empathy-and-reassurance` 16:43
 - **ROM**: `grammar-01-verb-tenses` 127:40
 - **Run-on sentence**: `grammar-07-punctuation` 50:17
 - **S at the start**: `speaking-10-sounding-clear` 24:44
+- **Said or hinted**: `speaking-06-patient-concerns` 10:16
+- **Say it another way**: `speaking-12-empathy-and-reassurance` 25:57
+- **Say it warmly**: `speaking-12-empathy-and-reassurance` 28:35
+- **Saying you're worried**: `speaking-06-patient-concerns` 1:49
 - **Scanning**: `reading-02-part-a` 20:43
 - **Schedule**: `vocabulary-02-collocations` 56:16
 - **Scoring the Reading test**: `reading-01-overview` 12:44
@@ -12229,6 +13030,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Skimming**: `reading-02-part-a` 12:17
 - **so ... that**: `vocabulary-03-collocations-2` 33:30
 - **So far**: `grammar-01-verb-tenses` 82:04
+- **Someone else's worry**: `speaking-06-patient-concerns` 9:19
 - **Sounds at the end**: `speaking-10-sounding-clear` 28:43
 - **Speaking in chunks**: `speaking-10-sounding-clear` 3:00
 - **Specific noun**: `grammar-04-articles` 34:28
@@ -12294,6 +13096,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The request and closing paragraph**: `writing-07-organisation` 22:02
 - **The request at the end of the letter**: `writing-03-letter-structure` 23:01
 - **The request paragraph**: `writing-05-information-flow` 31:47; `writing-07-organisation` 22:02
+- **The right thing**: `speaking-12-empathy-and-reassurance` 22:34
 - **The setting**: `speaking-02-reading-the-card` 5:33
 - **The six assessment criteria**: `writing-02-assessment-criteria` 1:27
 - **The six criteria**: `writing-02-assessment-criteria` 1:24
@@ -12301,10 +13104,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The six questions, then the whole talk**: `listening-04-part-c` 9:36
 - **The tasks**: `speaking-02-reading-the-card` 12:33
 - **The test day**: `speaking-01-the-test` 1:34
+- **The three things**: `speaking-06-patient-concerns` 17:38
 - **The verb and its object; the time first**: `writing-06-word-order` 5:06
 - **The W sound**: `speaking-10-sounding-clear` 27:22
 - **The Writing paper**: `writing-03-letter-structure` 1:38
 - **The Writing test**: `writing-01-overview` 5:16
+- **Then signpost, explain**: `speaking-12-empathy-and-reassurance` 17:40
 - **Thinking-time phrases**: `speaking-11-keeping-going` 7:27
 - **Three errors to avoid**: `writing-06-word-order` 7:44
 - **Three kinds of question**: `speaking-04-asking-questions` 8:47
@@ -12322,6 +13127,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Treatment**: `grammar-03-nominalization` 31:03
 - **try to + simple verb**: `vocabulary-03-collocations-2` 65:54
 - **Two kinds of pause**: `speaking-11-keeping-going` 1:23
+- **Two responses**: `speaking-12-empathy-and-reassurance` 14:56
 - **Types of pain**: `vocabulary-03-collocations-2` 12:32
 - **Uncountable nouns: non-specific**: `grammar-04-articles` 25:07
 - **undergo (past: underwent)**: `grammar-04-articles` 26:44
@@ -12362,12 +13168,14 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **When it comes**: `speaking-05-taking-a-history` 13:32
 - **When it started**: `speaking-05-taking-a-history` 7:04
 - **When time is short**: `speaking-11-keeping-going` 29:31
+- **When you don't know**: `speaking-12-empathy-and-reassurance` 25:00
 - **When you go blank**: `speaking-11-keeping-going` 20:03
 - **Where it goes**: `speaking-05-taking-a-history` 12:09
 - **Where the pain is**: `speaking-05-taking-a-history` 4:47
 - **Where to pause**: `speaking-10-sounding-clear` 4:00
 - **which**: `vocabulary-01-word-forms` 70:53
 - **Which phrase?**: `speaking-11-keeping-going` 31:26
+- **Which reply?**: `speaking-06-patient-concerns` 27:33
 - **While**: `grammar-08-paraphrasing` 43:36
 - **While you listen: signal words**: `listening-03-part-b` 6:58; `listening-04-part-c` 8:00
 - **who**: `vocabulary-01-word-forms` 69:49
@@ -12376,6 +13184,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Who, what, where, when, why**: `writing-06-word-order` 1:52
 - **Why we ask questions**: `speaking-04-asking-questions` 1:37
 - **Will have smoked**: `grammar-01-verb-tenses` 56:10
+- **Will or should**: `speaking-12-empathy-and-reassurance` 23:43
 - **woke up**: `vocabulary-03-collocations-2` 33:00
 - **Word bank**: `reading-03-part-b` 57:12
 - **Word count of the letter body**: `writing-01-overview` 8:36
@@ -12384,16 +13193,24 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Word meaning**: `reading-02-part-a` 56:52
 - **Word order**: `writing-06-word-order` 3:09
 - **Word stress**: `speaking-10-sounding-clear` 8:13
+- **Words and phrases**: `speaking-12-empathy-and-reassurance` 12:35
 - **Words and verbs**: `speaking-11-keeping-going` 10:50
 - **Words for care**: `speaking-10-sounding-clear` 6:35
+- **Words for feelings**: `speaking-12-empathy-and-reassurance` 5:31
+- **Words for symptoms**: `speaking-06-patient-concerns` 26:31
+- **Words for the visit**: `speaking-06-patient-concerns` 16:43
+- **Words that hint**: `speaking-06-patient-concerns` 11:23
 - **Words that reassure**: `speaking-05-taking-a-history` 31:15
 - **Words to avoid**: `writing-05-information-flow` 10:13
 - **Words to echo with**: `speaking-05-taking-a-history` 22:42
+- **Worried or worrying**: `speaking-06-patient-concerns` 22:41
+- **Worries by profession**: `speaking-06-patient-concerns` 5:10
 - **Would you mind?**: `speaking-11-keeping-going` 16:39
 - **You lead the start**: `speaking-03-starting` 1:45
 - **Your role and why**: `speaking-03-starting` 10:03
 - **Your role-play: the rest**: `speaking-01-the-test` 20:51
 - **Your role-play: the start**: `speaking-01-the-test` 19:57
 - **Your three minutes**: `speaking-02-reading-the-card` 1:45
+- **Your turn with B**: `speaking-12-empathy-and-reassurance` 18:55
 - **Your turn: a doctor's notes**: `writing-08-reading-the-task` 21:09
 - **Zero article**: `grammar-04-articles` 49:50

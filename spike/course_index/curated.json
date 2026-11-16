@@ -875,6 +875,22 @@
    "methods": [],
    "continues_in": [],
    "topics": []
+  },
+  "speaking-06-patient-concerns": {
+   "session": "An authored lesson (ADR 047), the eighth of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first, in everyday spoken English (ADR 057, #212, #227). Its method is the first part of the owner's recorded session S4 (pages 1-11), in his order: the worries patients have in each profession, what they say and what they only hint at, open invitations, the ideas, concerns and expectations behind a worry, asking more than once, finding out before explaining, acknowledging the worry, checking you have understood it and linking the explanation to it; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 8.",
+   "position": 8,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
+  },
+  "speaking-12-empathy-and-reassurance": {
+   "session": "An authored lesson (ADR 047), the ninth of the Speaking course, built to the owner's rule that a Speaking lesson teaches language first, in everyday spoken English (ADR 057, #212, #227): naming the patient's feeling gently, showing it makes sense, the owner's response B from his recorded session S4 (page 9: acknowledge the feeling, show you understand, reassure with what you will do, check), a short kind answer before the explanation, safe reassurance with real facts and no false promises, and giving the patient time; the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id keeps the number it was made with (AGENTS.md 10b); its place in the course is 9.",
+   "position": 9,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
   }
  }
 }
