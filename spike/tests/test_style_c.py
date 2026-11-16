@@ -893,3 +893,22 @@ class TealLook(unittest.TestCase):
         short = ADR048Layouts._table(self, ["Use", "Words"], rows[:3])
         with self.assertRaises(SystemExit):
             style_c.layout_html(short, short["html"], None, "columnsfit", None, "teal")
+
+    def test_openerfit_is_chosen_per_block(self):
+        """ADR 050 amendment (16): `openerfit` draws an opener in less height, chosen for a block; the same table as
+        `opener` with the class `op-fit`; refused outside the teal look; its rules only where used."""
+        rows = [[f"Kind {i}", f"Phrase {i}.", f"An example line {i}."] for i in range(5)]
+        b = ADR048Layouts._table(self, ["Kind", "Phrase", "Example"], rows)
+        out = style_c.layout_html(b, b["html"], None, "openerfit", None, "teal")
+        plain = style_c.layout_html(b, b["html"], None, "opener", None, "teal")
+        self.assertIn("lay-opener", out)
+        self.assertIn("op-fit", out)
+        self.assertEqual(out.replace(" op-fit", ""), plain)
+        fit_css = style_c.layout_css({"p": {**b, "html": out}}, "teal")
+        plain_css = style_c.layout_css({"p": {**b, "html": plain}}, "teal")
+        self.assertIn(style_c.LAYOUT_CSS["opener_fit"], fit_css)
+        self.assertEqual(fit_css.replace(style_c.LAYOUT_CSS["opener_fit"], ""), plain_css)
+        self.assertNotIn("op-fit", plain_css)
+        self.assertIsNone(style_c.check_layout("k", b, "openerfit"))
+        with self.assertRaises(SystemExit):
+            style_c.layout_html(b, b["html"], None, "openerfit")

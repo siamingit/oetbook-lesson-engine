@@ -737,3 +737,40 @@ first column and 4, 5, 6 down the second, its parts at the running size) and in 
 (page-4_t1, 91.7 to 97.8 s, while the contents leaves); every later moment is the same, and no timing differs. No file
 under `C:\OET\lessons` changed: Writing 1's live contents keeps the old order until it is rebuilt and released, which
 is the owner's call.
+
+## Amendment (16), 2026-11-16: an opener in less height (Speaking 1's "Five skills with patients" board)
+
+**Context.** Speaking 1's added-05 ("Five skills with patients", 09:31 to 13:44) is an `opener` table of five rows:
+each skill's pill above its card, and a hand-written line beside it. The board is taller than the frame, so the
+camera pans to show it. In v1 it moved up to 45 px at 1366x768 and 44 px at 915x412, in 7 and 11 of its 13 states, and
+the title then covers the first pill, "A Relationship building". The owner, on issue #242: "the camera pan hides the
+label 'A Relationship building' under the title. Remove the pan." and "Nothing else changes."
+
+**Options considered.**
+
+- Smaller text. Refused: the owner asked that nothing else changes, and the cards are at body size.
+- Fewer or shorter words. Refused for the same reason: the words, narration and audio stay.
+- Tighter spacing for every `opener` table. Refused: other built boards would move, and none of them pans.
+- Only smaller gaps between the rows. Tried: the phone still moved 23 px.
+
+**Decision.** A layout `openerfit`, named per block in `block_layouts`, teal only (refused in another look). It draws
+the same table as `opener` with the class `op-fit`, and its rules (`LAYOUT_CSS["opener_fit"]`, sent only where used)
+change the spacing, never the text's size:
+
+1. each skill's pill sits on the top edge of its card, like a tab (it overlaps the card by 0.8% of the frame and is
+   drawn above it), instead of a line above it;
+2. the gap between rows 0.2% of the frame (was 1.8%), and no gap between a pill and its card (was 0.7%);
+3. the pill's padding 0.3% of the frame high (was 0.7%), and the card's 1% at the top and 0.3% at the bottom (was
+   1.1%);
+4. the hand-written lines' line height 0.95;
+5. nothing else: the colours, the pills' words, the marks and the text sizes are `opener`'s.
+
+**Consequences.** Only a block named `openerfit` changes. Speaking 1 v2 names it for added-05_k01. With it the whole
+board shows with the camera still at every state, at 1366x768 and 915x412 in the engine's player and at 1600x900 and
+915x412 in the site's. Tests: `test_style_c.TealLook.test_openerfit_is_chosen_per_block`.
+
+**Proof** (2026-11-16). `build_lesson_player.build()` was run on every lesson in the library (C:\OET\lessons), normal
+and silent, once with the scripts at main (`515b407`) and once with this change. Every file write was captured in
+memory and hashed, so no lesson was touched. 42 lessons give identical hashes. The only one that differs is Speaking 1,
+the only lesson that names the layout (the old scripts refuse it: "'openerfit' is not a layout"). Before Speaking 1
+named it, all 43 were identical.
