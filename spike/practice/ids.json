@@ -8046,7 +8046,8 @@
    "lesson": "speaking-03-starting",
    "point": "match-step",
    "slot": "pair-1",
-   "issued": "2026-11-16"
+   "issued": "2026-11-16",
+   "retired": "2026-11-17"
   },
   {
    "id": "oa-speaking-972035",
@@ -8165,7 +8166,8 @@
    "lesson": "speaking-03-starting",
    "point": "match-reply",
    "slot": "pair-3",
-   "issued": "2026-11-16"
+   "issued": "2026-11-16",
+   "retired": "2026-11-17"
   },
   {
    "id": "oa-speaking-972052",
