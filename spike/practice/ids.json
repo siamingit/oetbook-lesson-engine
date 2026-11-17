@@ -8250,6 +8250,41 @@
    "point": "order-start",
    "slot": "item",
    "issued": "2026-11-16"
+  },
+  {
+   "id": "oa-speaking-971024",
+   "lesson": "speaking-02-reading-the-card",
+   "point": "verb-ascertain",
+   "slot": "item",
+   "issued": "2026-11-17"
+  },
+  {
+   "id": "oa-speaking-971025",
+   "lesson": "speaking-02-reading-the-card",
+   "point": "wb-verbs",
+   "slot": "item",
+   "issued": "2026-11-17"
+  },
+  {
+   "id": "oa-speaking-971026",
+   "lesson": "speaking-02-reading-the-card",
+   "point": "wb-verbs",
+   "slot": "gap1",
+   "issued": "2026-11-17"
+  },
+  {
+   "id": "oa-speaking-971027",
+   "lesson": "speaking-02-reading-the-card",
+   "point": "wb-verbs",
+   "slot": "gap2",
+   "issued": "2026-11-17"
+  },
+  {
+   "id": "oa-speaking-971028",
+   "lesson": "speaking-02-reading-the-card",
+   "point": "spot-reassure",
+   "slot": "item",
+   "issued": "2026-11-17"
   }
  ]
 }
