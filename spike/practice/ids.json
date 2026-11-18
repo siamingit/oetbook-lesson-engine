@@ -143,7 +143,7 @@
    984000,
    984999
   ],
-  "medicine-writing-03": [
+  "medicine-05-discharge-letter": [
    988000,
    988999
   ],
@@ -8973,273 +8973,273 @@
   },
   {
    "id": "oa-writing-988000",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "task-asks",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988001",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "gp-new",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988002",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "hist-thyroid",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988003",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "med-dose",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988004",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "today-sort",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988005",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "today-sort",
    "slot": "p-hot",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988006",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "today-sort",
    "slot": "p-hay",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988007",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "tsh-pending",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988008",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "re-stop",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988009",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "open-first",
    "slot": "sentence",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988010",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "open-purpose",
    "slot": "sentence",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988011",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "today-first",
    "slot": "sentence",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988012",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "failed-worked",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988013",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "failed-worked",
    "slot": "g-fail",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988014",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "failed-worked",
    "slot": "g-work",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988015",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "tests-group",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988016",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "change-words",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988017",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "change-words",
    "slot": "p-up",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988018",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "change-words",
    "slot": "p-down",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988019",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "change-words",
    "slot": "p-stop",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988020",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "as-you-know",
    "slot": "sentence",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988021",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "cause-may",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988022",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "req-cardio",
    "slot": "sentence",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988023",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "tsh-order",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988024",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "end-named",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988025",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "check-hrs",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988026",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "ecg-rate",
    "slot": "sentence",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988027",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "time-today",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988028",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "time-today",
    "slot": "p-wks",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988029",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "time-today",
    "slot": "p-mth",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988030",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "advice-999",
    "slot": "sentence",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988031",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "gp-check",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988032",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "tense-ago",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988033",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "her-wish",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988034",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "plan-sort",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988035",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "plan-sort",
    "slot": "p-999",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988036",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "plan-sort",
    "slot": "p-tsh",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988037",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "plan-sort",
    "slot": "p-home",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-988038",
-   "lesson": "medicine-writing-03",
+   "lesson": "medicine-05-discharge-letter",
    "point": "dose-unit",
    "slot": "item",
    "issued": "2026-11-18"
