@@ -150,6 +150,10 @@
   "medicine-writing-01": [
    986000,
    986999
+  ],
+  "medicine-writing-02": [
+   987000,
+   987999
   ]
  },
  "ids": [
@@ -9791,6 +9795,216 @@
    "lesson": "medicine-speaking-02",
    "point": "c2-close",
    "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987000",
+   "lesson": "medicine-writing-02",
+   "point": "ask-what",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987001",
+   "lesson": "medicine-writing-02",
+   "point": "new-reader",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987002",
+   "lesson": "medicine-writing-02",
+   "point": "background",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987003",
+   "lesson": "medicine-writing-02",
+   "point": "background",
+   "slot": "job",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987004",
+   "lesson": "medicine-writing-02",
+   "point": "background",
+   "slot": "football",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987005",
+   "lesson": "medicine-writing-02",
+   "point": "keep-history",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987006",
+   "lesson": "medicine-writing-02",
+   "point": "trap-dose",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987007",
+   "lesson": "medicine-writing-02",
+   "point": "bp-readings",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987008",
+   "lesson": "medicine-writing-02",
+   "point": "today-leave",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987009",
+   "lesson": "medicine-writing-02",
+   "point": "plan-first",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987010",
+   "lesson": "medicine-writing-02",
+   "point": "order-plan",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987011",
+   "lesson": "medicine-writing-02",
+   "point": "greet",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987012",
+   "lesson": "medicine-writing-02",
+   "point": "top-forms",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987013",
+   "lesson": "medicine-writing-02",
+   "point": "top-forms",
+   "slot": "date",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987014",
+   "lesson": "medicine-writing-02",
+   "point": "top-forms",
+   "slot": "dob",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987015",
+   "lesson": "medicine-writing-02",
+   "point": "open-whole",
+   "slot": "sentence",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987016",
+   "lesson": "medicine-writing-02",
+   "point": "mood-now",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987017",
+   "lesson": "medicine-writing-02",
+   "point": "tense-gaps",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987018",
+   "lesson": "medicine-writing-02",
+   "point": "tense-gaps",
+   "slot": "work",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987019",
+   "lesson": "medicine-writing-02",
+   "point": "tense-gaps",
+   "slot": "leave",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987020",
+   "lesson": "medicine-writing-02",
+   "point": "risk-exact",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987021",
+   "lesson": "medicine-writing-02",
+   "point": "safety-passive",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987022",
+   "lesson": "medicine-writing-02",
+   "point": "cbt-tense",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987023",
+   "lesson": "medicine-writing-02",
+   "point": "bp-doubt",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987024",
+   "lesson": "medicine-writing-02",
+   "point": "request",
+   "slot": "sentence",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987025",
+   "lesson": "medicine-writing-02",
+   "point": "length",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987026",
+   "lesson": "medicine-writing-02",
+   "point": "tone",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987027",
+   "lesson": "medicine-writing-02",
+   "point": "short-forms",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987028",
+   "lesson": "medicine-writing-02",
+   "point": "short-forms",
+   "slot": "and",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987029",
+   "lesson": "medicine-writing-02",
+   "point": "short-forms",
+   "slot": "maybe",
    "issued": "2026-11-18"
   }
  ]
