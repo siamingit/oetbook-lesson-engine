@@ -147,7 +147,7 @@
    988000,
    988999
   ],
-  "medicine-writing-01": [
+  "medicine-03-notes-readers-medicines": [
    986000,
    986999
   ],
@@ -9246,378 +9246,378 @@
   },
   {
    "id": "oa-writing-986000",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "where-work",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986001",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "where-work",
    "slot": "pair-1",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986002",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "where-work",
    "slot": "pair-2",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986003",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "where-work",
    "slot": "pair-3",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986004",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "know-patient",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986005",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "same-notes",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986006",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "who-reads",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986007",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "who-reads",
    "slot": "pair-1",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986008",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "who-reads",
    "slot": "pair-2",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986009",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "who-reads",
    "slot": "pair-3",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986010",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "explain-term",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986011",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "knows-new",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986012",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "purpose-match",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986013",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "purpose-match",
    "slot": "pair-1",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986014",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "purpose-match",
    "slot": "pair-2",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986015",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "purpose-match",
    "slot": "pair-3",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986016",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "urgent-first",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986017",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "letter-type",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986018",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "six-q",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986019",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "plain-language",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986020",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "ongoing",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986021",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "headings",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986022",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "headings",
    "slot": "pair-1",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986023",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "headings",
    "slot": "pair-2",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986024",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "headings",
    "slot": "pair-3",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986025",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "relevant",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986026",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "social-covers",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986027",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "clinical-words",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986028",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "fair-words",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986029",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "abbrev-reader",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986030",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "tests",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986031",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "tests",
    "slot": "pair-1",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986032",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "tests",
    "slot": "pair-2",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986033",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "tests",
    "slot": "pair-3",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986034",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "symbols",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986035",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "symbols",
    "slot": "pair-1",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986036",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "symbols",
    "slot": "pair-2",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986037",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "symbols",
    "slot": "pair-3",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986038",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "routes",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986039",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "routes",
    "slot": "pair-1",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986040",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "routes",
    "slot": "pair-2",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986041",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "routes",
    "slot": "pair-3",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986042",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "freq",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986043",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "freq",
    "slot": "gap1",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986044",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "freq",
    "slot": "gap2",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986045",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "route-verbs",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986046",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "route-verbs",
    "slot": "gap1",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986047",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "route-verbs",
    "slot": "gap2",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986048",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "non-pharma",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986049",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "letter-phrase",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986050",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "finish",
    "slot": "item",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986051",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "finish",
    "slot": "pair-1",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986052",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "finish",
    "slot": "pair-2",
    "issued": "2026-11-18"
   },
   {
    "id": "oa-writing-986053",
-   "lesson": "medicine-writing-01",
+   "lesson": "medicine-03-notes-readers-medicines",
    "point": "finish",
    "slot": "pair-3",
    "issued": "2026-11-18"
