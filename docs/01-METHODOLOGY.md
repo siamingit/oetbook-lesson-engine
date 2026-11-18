@@ -611,6 +611,12 @@ as a ruling; the utterance carrying it is `adapted` with a note naming the
 ruling, and `maintainer` only if its whole wording is the maintainer's (see
 "Provenance `maintainer`" below).
 
+A role-play card of our own, shown word for word, is the source saying so
+(ADR 059, 2026-11-18): its block carries `set_card` ("oa-ss-med-0008 RP2"),
+and the screens audit's register check skips it, as it skips a released
+document. The forbidden phrases still apply, and a block that paraphrases a
+card must not carry `set_card`.
+
 ### Provenance `maintainer` — tightened 2026-09-24
 
 `maintainer` is only for text whose **whole wording** the maintainer

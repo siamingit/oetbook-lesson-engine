@@ -1222,6 +1222,9 @@ REGISTER_WORDS = re.compile(
 # often than" added the same day for "You will meet this tense much less often
 # than the other tenses" (page 14): a frequency claim is a register claim.
 
+# ADR 059: a block's `set_card` names one of our own speaking sets and the card it quotes word for word.
+CARD_REF = re.compile(r"oa-ss-[a-z]+-\d{4} RP[12]")
+
 NON_LATIN = re.compile(r"[؀-ۿݐ-ݿﭐ-﷿ﹰ-﻿]")
 
 
@@ -2969,6 +2972,11 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
     # 2. never-on-screen strings, Persian script, register claims
     forbids = fixed_forbids(data.get("lesson_dir")) + data["forbids"]
     for b in blocks.values():
+        # ADR 059: `set_card` names the set and card a block quotes word for word ("oa-ss-med-0008 RP2").
+        # It lifts the register check only; the forbidden phrases still apply.
+        if "set_card" in b and not (isinstance(b["set_card"], str) and CARD_REF.fullmatch(b["set_card"])):
+            fail(b["id"], f"set_card {b['set_card']!r}: give the set and card it quotes, as 'oa-ss-med-0008 RP2' "
+                          "(ADR 059)")
         as_released = bool(b.get("doc") or b.get("map") or b.get("question") or b.get("vocab")
                            or b.get("vocab_table"))
         for text in block_texts(b):
@@ -2984,7 +2992,8 @@ def audit(out: dict, data: dict, blocks: dict) -> list[dict]:
             defines_slide_word = (b["type"] == "term_box" and (b.get("term") or "").lower()
                                   in set(re.findall(r"[a-z]+", data["slide_text"].lower())))
             released = bool(b.get("doc") or b.get("map") or b.get("question")     # ADR 026: as released
-                            or b.get("vocab") or b.get("vocab_table"))         # the word bank's own words (1.15)
+                            or b.get("vocab") or b.get("vocab_table")          # the word bank's own words (1.15)
+                            or b.get("set_card"))       # ADR 059: a role-play card's own words
             if b["provenance"] != "maintainer" and not defines_slide_word and not released:
                 # A register word that the slide itself prints is content being
                 # taught (a signal-words table lists "rarely"), not a claim.
