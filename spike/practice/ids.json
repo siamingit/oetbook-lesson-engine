@@ -138,6 +138,10 @@
   "medicine-speaking-02": [
    985000,
    985999
+  ],
+  "medicine-speaking-01": [
+   984000,
+   984999
   ]
  },
  "ids": [
@@ -8577,6 +8581,377 @@
    "lesson": "medicine-speaking-02",
    "point": "rp-card2",
    "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984000",
+   "lesson": "medicine-speaking-01",
+   "point": "set-first",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984001",
+   "lesson": "medicine-speaking-01",
+   "point": "rep-gp",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984002",
+   "lesson": "medicine-speaking-01",
+   "point": "rsp-ed",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984003",
+   "lesson": "medicine-speaking-01",
+   "point": "wb-ward",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984004",
+   "lesson": "medicine-speaking-01",
+   "point": "wb-ward",
+   "slot": "gap1",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984005",
+   "lesson": "medicine-speaking-01",
+   "point": "wb-ward",
+   "slot": "gap2",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984006",
+   "lesson": "medicine-speaking-01",
+   "point": "match-setting",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984007",
+   "lesson": "medicine-speaking-01",
+   "point": "match-setting",
+   "slot": "pair-1",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984008",
+   "lesson": "medicine-speaking-01",
+   "point": "match-setting",
+   "slot": "pair-2",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984009",
+   "lesson": "medicine-speaking-01",
+   "point": "match-setting",
+   "slot": "pair-3",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984010",
+   "lesson": "medicine-speaking-01",
+   "point": "verb-insist",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984011",
+   "lesson": "medicine-speaking-01",
+   "point": "rep-duty",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984012",
+   "lesson": "medicine-speaking-01",
+   "point": "open-ward",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984013",
+   "lesson": "medicine-speaking-01",
+   "point": "spot-howlong",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984014",
+   "lesson": "medicine-speaking-01",
+   "point": "gap-pain",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984015",
+   "lesson": "medicine-speaking-01",
+   "point": "gap-pain",
+   "slot": "gap1",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984016",
+   "lesson": "medicine-speaking-01",
+   "point": "gap-pain",
+   "slot": "gap2",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984017",
+   "lesson": "medicine-speaking-01",
+   "point": "rep-prescribe",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984018",
+   "lesson": "medicine-speaking-01",
+   "point": "gap-refer",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984019",
+   "lesson": "medicine-speaking-01",
+   "point": "gap-refer",
+   "slot": "gap1",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984020",
+   "lesson": "medicine-speaking-01",
+   "point": "gap-refer",
+   "slot": "gap2",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984021",
+   "lesson": "medicine-speaking-01",
+   "point": "wb-tests",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984022",
+   "lesson": "medicine-speaking-01",
+   "point": "wb-tests",
+   "slot": "gap1",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984023",
+   "lesson": "medicine-speaking-01",
+   "point": "wb-tests",
+   "slot": "gap2",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984024",
+   "lesson": "medicine-speaking-01",
+   "point": "spot-try",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984025",
+   "lesson": "medicine-speaking-01",
+   "point": "rsp-strap",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984026",
+   "lesson": "medicine-speaking-01",
+   "point": "rsp-refer",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984027",
+   "lesson": "medicine-speaking-01",
+   "point": "kind-patient",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984028",
+   "lesson": "medicine-speaking-01",
+   "point": "rep-stopping",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984029",
+   "lesson": "medicine-speaking-01",
+   "point": "type-judge",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984030",
+   "lesson": "medicine-speaking-01",
+   "point": "rsp-injection",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984031",
+   "lesson": "medicine-speaking-01",
+   "point": "rep-bullet",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984032",
+   "lesson": "medicine-speaking-01",
+   "point": "rsp-alarm",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984033",
+   "lesson": "medicine-speaking-01",
+   "point": "rsp-lazy",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984034",
+   "lesson": "medicine-speaking-01",
+   "point": "rsp-track",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984035",
+   "lesson": "medicine-speaking-01",
+   "point": "rsp-told",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984036",
+   "lesson": "medicine-speaking-01",
+   "point": "choice-warning",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984037",
+   "lesson": "medicine-speaking-01",
+   "point": "rep-honest",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984038",
+   "lesson": "medicine-speaking-01",
+   "point": "order-news",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984039",
+   "lesson": "medicine-speaking-01",
+   "point": "rep-shock",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984040",
+   "lesson": "medicine-speaking-01",
+   "point": "rep-comfortable",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984041",
+   "lesson": "medicine-speaking-01",
+   "point": "match-check",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984042",
+   "lesson": "medicine-speaking-01",
+   "point": "match-check",
+   "slot": "pair-1",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984043",
+   "lesson": "medicine-speaking-01",
+   "point": "match-check",
+   "slot": "pair-2",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984044",
+   "lesson": "medicine-speaking-01",
+   "point": "match-check",
+   "slot": "pair-3",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984045",
+   "lesson": "medicine-speaking-01",
+   "point": "rsp-shock",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984046",
+   "lesson": "medicine-speaking-01",
+   "point": "rsp-plan",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984047",
+   "lesson": "medicine-speaking-01",
+   "point": "gap-improved",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984048",
+   "lesson": "medicine-speaking-01",
+   "point": "gap-improved",
+   "slot": "gap1",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984049",
+   "lesson": "medicine-speaking-01",
+   "point": "gap-improved",
+   "slot": "gap2",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984050",
+   "lesson": "medicine-speaking-01",
+   "point": "rep-safety",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984051",
+   "lesson": "medicine-speaking-01",
+   "point": "rsp-review",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-984052",
+   "lesson": "medicine-speaking-01",
+   "point": "rsp-close",
+   "slot": "answer",
    "issued": "2026-11-18"
   }
  ]
