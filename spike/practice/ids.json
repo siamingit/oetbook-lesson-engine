@@ -8330,7 +8330,8 @@
    "lesson": "medicine-speaking-02",
    "point": "feel-match",
    "slot": "pair-2",
-   "issued": "2026-11-18"
+   "issued": "2026-11-18",
+   "retired": "2026-11-18"
   },
   {
    "id": "oa-speaking-985004",
@@ -8435,7 +8436,8 @@
    "lesson": "medicine-speaking-02",
    "point": "match-plan",
    "slot": "pair-3",
-   "issued": "2026-11-18"
+   "issued": "2026-11-18",
+   "retired": "2026-11-18"
   },
   {
    "id": "oa-speaking-985019",
@@ -8477,7 +8479,8 @@
    "lesson": "medicine-speaking-02",
    "point": "match-side",
    "slot": "pair-2",
-   "issued": "2026-11-18"
+   "issued": "2026-11-18",
+   "retired": "2026-11-18"
   },
   {
    "id": "oa-speaking-985025",
