@@ -8330,7 +8330,8 @@
    "lesson": "medicine-speaking-02",
    "point": "feel-match",
    "slot": "pair-2",
-   "issued": "2026-11-18"
+   "issued": "2026-11-18",
+   "retired": "2026-11-18"
   },
   {
    "id": "oa-speaking-985004",
@@ -8435,7 +8436,8 @@
    "lesson": "medicine-speaking-02",
    "point": "match-plan",
    "slot": "pair-3",
-   "issued": "2026-11-18"
+   "issued": "2026-11-18",
+   "retired": "2026-11-18"
   },
   {
    "id": "oa-speaking-985019",
@@ -8477,7 +8479,8 @@
    "lesson": "medicine-speaking-02",
    "point": "match-side",
    "slot": "pair-2",
-   "issued": "2026-11-18"
+   "issued": "2026-11-18",
+   "retired": "2026-11-18"
   },
   {
    "id": "oa-speaking-985025",
@@ -8533,7 +8536,8 @@
    "lesson": "medicine-speaking-02",
    "point": "rp-card1",
    "slot": "item",
-   "issued": "2026-11-18"
+   "issued": "2026-11-18",
+   "retired": "2026-11-18"
   },
   {
    "id": "oa-speaking-985033",
@@ -8589,7 +8593,8 @@
    "lesson": "medicine-speaking-02",
    "point": "rp-card2",
    "slot": "item",
-   "issued": "2026-11-18"
+   "issued": "2026-11-18",
+   "retired": "2026-11-18"
   },
   {
    "id": "oa-speaking-984000",
@@ -9611,6 +9616,181 @@
    "lesson": "medicine-writing-01",
    "point": "finish",
    "slot": "pair-3",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985041",
+   "lesson": "medicine-speaking-02",
+   "point": "c1-start",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985042",
+   "lesson": "medicine-speaking-02",
+   "point": "c1-pain",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985043",
+   "lesson": "medicine-speaking-02",
+   "point": "c1-work",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985044",
+   "lesson": "medicine-speaking-02",
+   "point": "c1-sum",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985045",
+   "lesson": "medicine-speaking-02",
+   "point": "c1-told",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985046",
+   "lesson": "medicine-speaking-02",
+   "point": "c1-result",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985047",
+   "lesson": "medicine-speaking-02",
+   "point": "c1-plan",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985048",
+   "lesson": "medicine-speaking-02",
+   "point": "c1-ack",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985049",
+   "lesson": "medicine-speaking-02",
+   "point": "c1-why",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985050",
+   "lesson": "medicine-speaking-02",
+   "point": "c1-phone",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985051",
+   "lesson": "medicine-speaking-02",
+   "point": "c1-drive",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985052",
+   "lesson": "medicine-speaking-02",
+   "point": "c1-tomorrow",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985053",
+   "lesson": "medicine-speaking-02",
+   "point": "c1-end",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985054",
+   "lesson": "medicine-speaking-02",
+   "point": "c1-close",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985055",
+   "lesson": "medicine-speaking-02",
+   "point": "c2-start",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985056",
+   "lesson": "medicine-speaking-02",
+   "point": "c2-knows",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985057",
+   "lesson": "medicine-speaking-02",
+   "point": "c2-day",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985058",
+   "lesson": "medicine-speaking-02",
+   "point": "c2-seats",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985059",
+   "lesson": "medicine-speaking-02",
+   "point": "c2-sum",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985060",
+   "lesson": "medicine-speaking-02",
+   "point": "c2-explain",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985061",
+   "lesson": "medicine-speaking-02",
+   "point": "c2-cause",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985062",
+   "lesson": "medicine-speaking-02",
+   "point": "c2-sleep",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985063",
+   "lesson": "medicine-speaking-02",
+   "point": "c2-advice",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985064",
+   "lesson": "medicine-speaking-02",
+   "point": "c2-course",
+   "slot": "answer",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-speaking-985065",
+   "lesson": "medicine-speaking-02",
+   "point": "c2-close",
+   "slot": "answer",
    "issued": "2026-11-18"
   }
  ]
