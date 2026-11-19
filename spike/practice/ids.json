@@ -9921,35 +9921,40 @@
    "lesson": "medicine-04-referral-letter",
    "point": "tense-gaps",
    "slot": "item",
-   "issued": "2026-11-18"
+   "issued": "2026-11-18",
+   "retired": "2026-11-18"
   },
   {
    "id": "oa-writing-987018",
    "lesson": "medicine-04-referral-letter",
    "point": "tense-gaps",
    "slot": "work",
-   "issued": "2026-11-18"
+   "issued": "2026-11-18",
+   "retired": "2026-11-18"
   },
   {
    "id": "oa-writing-987019",
    "lesson": "medicine-04-referral-letter",
    "point": "tense-gaps",
    "slot": "leave",
-   "issued": "2026-11-18"
+   "issued": "2026-11-18",
+   "retired": "2026-11-18"
   },
   {
    "id": "oa-writing-987020",
    "lesson": "medicine-04-referral-letter",
    "point": "risk-exact",
    "slot": "item",
-   "issued": "2026-11-18"
+   "issued": "2026-11-18",
+   "retired": "2026-11-18"
   },
   {
    "id": "oa-writing-987021",
    "lesson": "medicine-04-referral-letter",
    "point": "safety-passive",
    "slot": "item",
-   "issued": "2026-11-18"
+   "issued": "2026-11-18",
+   "retired": "2026-11-18"
   },
   {
    "id": "oa-writing-987022",
@@ -10005,6 +10010,90 @@
    "lesson": "medicine-04-referral-letter",
    "point": "short-forms",
    "slot": "maybe",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987030",
+   "lesson": "medicine-04-referral-letter",
+   "point": "work-errors",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987031",
+   "lesson": "medicine-04-referral-letter",
+   "point": "off-sick",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987032",
+   "lesson": "medicine-04-referral-letter",
+   "point": "risk-write",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987033",
+   "lesson": "medicine-04-referral-letter",
+   "point": "protective",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987034",
+   "lesson": "medicine-04-referral-letter",
+   "point": "safety-plan",
+   "slot": "sentence",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987035",
+   "lesson": "medicine-04-referral-letter",
+   "point": "past-episodes",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987036",
+   "lesson": "medicine-04-referral-letter",
+   "point": "began",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987037",
+   "lesson": "medicine-04-referral-letter",
+   "point": "tried",
+   "slot": "sentence",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987038",
+   "lesson": "medicine-04-referral-letter",
+   "point": "bloods",
+   "slot": "item",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987039",
+   "lesson": "medicine-04-referral-letter",
+   "point": "bp-rise",
+   "slot": "sentence",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987040",
+   "lesson": "medicine-04-referral-letter",
+   "point": "dose-plan",
+   "slot": "sentence",
+   "issued": "2026-11-18"
+  },
+  {
+   "id": "oa-writing-987041",
+   "lesson": "medicine-04-referral-letter",
+   "point": "declines",
+   "slot": "item",
    "issued": "2026-11-18"
   }
  ]
