@@ -54,11 +54,12 @@ CURATED = ROOT / "spike" / "course_index" / "curated.json"
 FACTS_MD = DOCS / "listening-facts.md"
 
 FORMAT = "oetbook-public-course-index"
-SCHEMA_VERSION = "1.3"           # 1.1 (2026-10-25): the Writing course; 1.2 (2026-11-14): the Speaking course;
-                                 # 1.3 (2026-11-15): a lesson's place in its course (`position`, ADR 038 amendment)
+SCHEMA_VERSION = "1.4"           # 1.1 (2026-10-25): the Writing course; 1.2 (2026-11-14): the Speaking course;
+                                 # 1.3 (2026-11-15): a lesson's place in its course (`position`, ADR 038 amendment);
+                                 # 1.4 (2026-11-21): the Medicine course, OET for Doctors (issue #265)
 COURSES = [("grammar", "Grammar"), ("vocabulary", "Vocabulary"),
            ("reading", "Reading"), ("listening", "Listening"), ("writing", "Writing"),
-           ("speaking", "Speaking")]
+           ("speaking", "Speaking"), ("medicine", "OET for Doctors")]
 PRACTICE_COURSES = ("reading", "listening")
 
 # A thought's or a board's label may open with the layout's own words (ADR 007,

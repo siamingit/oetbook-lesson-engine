@@ -194,3 +194,22 @@ before Sounding Clear (10), against the course order the owner gave. So:
   lesson, with `position` removed).
 - To reverse: remove `position` from the builder, the schema and the two curated entries, set the schema back to
   1.2, and rebuild.
+
+## Amendment, 2026-11-21: the Medicine course, OET for Doctors (schema 1.4)
+
+Under the owner-approved release brief of 2026-11-19 (issue #265, step 3: "Update the course index
+(docs/course-index.json) with the five lessons and their `position` in a new course entry"), the five lessons of the
+Medicine profession course enter the public index, so the index gains its seventh course:
+
+- **Schema 1.4**: `medicine` is added to the course enumerations (`courses[].id`, `lessons[].course`) and to the
+  lesson id pattern; the course's title is "OET for Doctors", the site's name for it (oetacademy-web ADR-0053, #366).
+  The courses' order is Grammar, Vocabulary, Reading, Listening, Writing, Speaking, OET for Doctors. Nothing is
+  removed or renamed; a 1.3 reader that ignores the new course reads every other lesson as before.
+- `build_public_course_index.py` lists the course (`COURSES`); nothing else in the builder changes. The course mixes
+  Speaking lessons (medicine-01, medicine-02) and Writing lessons (medicine-03 to medicine-05); the builder indexes
+  each from its own files, as for the Speaking course.
+- Each lesson has a curated entry with its `session` note and its `position` (1-5, the number in its id), with empty
+  `facts`, `methods`, `continues_in` and `topics`, as for Speaking (amendment of 2026-11-14).
+- The lessons already indexed are unchanged (checked by a diff of the JSON, lesson by lesson).
+- To reverse: remove `medicine` from `COURSES`, the two enumerations and the id pattern, remove the five curated
+  entries, set the schema back to 1.3, and rebuild.

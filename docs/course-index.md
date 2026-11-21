@@ -1,8 +1,8 @@
 # Course index
 
-What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.3; decision: `docs/adr/038-public-course-index.md`.
+What each lesson teaches, and where. Generated from `docs/course-index.json` by `spike/scripts/build_public_course_index.py`; never edit it by hand. Schema: `docs/course-index.schema.json`, version 1.4; decision: `docs/adr/038-public-course-index.md`.
 
-43 lessons, 664 sections, 1044 board topics, 6194 teaching points, 569 rules and 66 warnings, 488 terms, 180 OET facts, 74 methods, 591 vocabulary items (189 from the word bank), 62 practice questions and note forms, 131 links to other lessons, 750 topics in the topic index.
+48 lessons, 818 sections, 1204 board topics, 6886 teaching points, 638 rules and 66 warnings, 488 terms, 180 OET facts, 74 methods, 606 vocabulary items (189 from the word bank), 62 practice questions and note forms, 161 links to other lessons, 889 topics in the topic index.
 
 Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boards, blocks, utterances) are the lesson bundle's (docs/04-LESSON-BUNDLE.md §4).
 
@@ -12,6 +12,7 @@ Times are minutes:seconds into the lesson's player. Ids (lessons, sections, boar
 - Listening: [OET Listening: Overview](#listening-01-overview), [OET Listening: Part A](#listening-02-part-a), [OET Listening: Part B](#listening-03-part-b), [OET Listening: Part C (1)](#listening-04-part-c), [OET Listening: Part C (2)](#listening-05-part-c-2)
 - Writing: [OET Writing: Overview](#writing-01-overview), [OET Writing: Assessment Criteria](#writing-02-assessment-criteria), [OET Writing: Letter Structure](#writing-03-letter-structure), [OET Writing: The Opening Paragraph](#writing-04-introduction), [OET Writing: Information Flow](#writing-05-information-flow), [OET Writing: Word Order](#writing-06-word-order), [OET Writing: Organising the Letter](#writing-07-organisation), [OET Writing: Reading the Task and the Case Notes](#writing-08-reading-the-task)
 - Speaking: [OET Speaking: The Test and the Role-Play](#speaking-01-the-test), [OET Speaking: Reading the Card](#speaking-02-reading-the-card), [OET Speaking: Starting the Role-Play](#speaking-03-starting), [OET Speaking: Sounding Clear](#speaking-10-sounding-clear), [OET Speaking: Asking Questions](#speaking-04-asking-questions), [OET Speaking: Taking a History](#speaking-05-taking-a-history), [OET Speaking: Keeping Going](#speaking-11-keeping-going), [OET Speaking: Finding the Patient's Concerns](#speaking-06-patient-concerns), [OET Speaking: Showing Empathy and Reassuring](#speaking-12-empathy-and-reassurance), [OET Speaking: Explaining Clearly](#speaking-08-explaining), [OET Speaking: Giving Advice](#speaking-09-giving-advice), [OET Speaking: Persuading a Reluctant Patient](#speaking-07-persuading), [OET Speaking: When a Patient Is Angry or Upset](#speaking-13-angry-or-upset), [OET Speaking: Ending the Role-Play](#speaking-14-ending)
+- OET for Doctors: [OET Speaking for Doctors: A Doctor's Language](#medicine-01-doctors-language), [OET Speaking for Doctors: A Whole Role-Play](#medicine-02-whole-role-play), [OET Writing for Doctors: Notes, Readers and Medicines](#medicine-03-notes-readers-medicines), [OET Writing for Doctors: A Referral Letter](#medicine-04-referral-letter), [OET Writing for Doctors: A Discharge Letter](#medicine-05-discharge-letter)
 
 ---
 
@@ -766,6 +767,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 29:26
 - referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Time and tense" at 19:43, about section `page-11`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "Three errors to avoid" at 9:42, about section `page-14`
+- referred to by OET Writing for Doctors: A Referral Letter (`medicine-04-referral-letter`), "How he is today" at 19:13
 - continues in Grammar for OET: Verb Use (`grammar-02-verb-use`): Verb Use practises choosing the tense, and the active or the passive, taught here.
 
 
@@ -2017,6 +2019,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 29:41
 - referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Signal words" at 4:10, about section `pages-11-12`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "A paragraph corrected" at 17:14, about section `page-7`
+- referred to by OET Writing for Doctors: A Referral Letter (`medicine-04-referral-letter`), "Blood pressure" at 32:09
 - continues in Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`): Relative and participle clauses build on the clauses and joining words taught here.
 - continues in Grammar for OET: Punctuation (`grammar-07-punctuation`): Punctuation teaches the comma in complex and compound sentences.
 
@@ -2279,6 +2282,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Relative clauses" at 7:34, about section `pages-04-05`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Relative clauses" at 8:41, about section `page-6`
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Appositives and ages" at 12:22, about section `pages-07-08`
+- referred to by OET Writing for Doctors: A Referral Letter (`medicine-04-referral-letter`), "What you ask for" at 36:24
 - continues from Grammar for OET: Complex sentences (`grammar-05-complex-compound`): Relative and participle clauses build on the clauses and joining words taught here.
 
 
@@ -2817,6 +2821,9 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Now, and the request" at 30:10, about section `added-08`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "The verb and its object; the time first" at 7:07, about section `page-10`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "A paragraph corrected" at 16:09, about section `added-02`
+- referred to by OET Writing for Doctors: Notes, Readers and Medicines (`medicine-03-notes-readers-medicines`), "Abbreviations by reader" at 25:00
+- referred to by OET Writing for Doctors: A Referral Letter (`medicine-04-referral-letter`), "How he is today" at 16:57
+- referred to by OET Writing for Doctors: A Discharge Letter (`medicine-05-discharge-letter`), "What happened today" at 17:59
 - continues from Grammar for OET: Complex sentences (`grammar-05-complex-compound`): Punctuation teaches the comma in complex and compound sentences.
 
 
@@ -3136,6 +3143,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Language" at 28:51, about section `pages-09-10`
 - referred to by OET Writing: Information Flow (`writing-05-information-flow`), "Now, and the request" at 30:41, about section `pages-09-10`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "The verb and its object; the time first" at 6:07, about section `page-8`
+- referred to by OET Writing for Doctors: A Referral Letter (`medicine-04-referral-letter`), "What was tried" at 30:00
+- referred to by OET Writing for Doctors: A Discharge Letter (`medicine-05-discharge-letter`), "What happened today" at 17:43
 
 
 ---
@@ -8341,6 +8350,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by OET Writing: The Opening Paragraph (`writing-04-introduction`), "Purpose" at 16:58, about section `pages-06-07-08`
 - referred to by OET Writing: Organising the Letter (`writing-07-organisation`), "Organisation and Layout" at 1:26, about section `page-18`
 - referred to by OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`), "Reading the Writing Task" at 6:05, about section `pages-09-10-11`
+- referred to by OET Writing for Doctors: Notes, Readers and Medicines (`medicine-03-notes-readers-medicines`), "Why you write" at 10:31
 
 
 <a id="writing-03-letter-structure"></a>
@@ -8593,6 +8603,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by OET Writing: Organising the Letter (`writing-07-organisation`), "The request and closing paragraph" at 27:00, about section `page-11`
 - referred to by OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`), "Introduction" at 0:03, about section `pages-04-05`
 - referred to by OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`), "The five minutes" at 1:25, about section `added-02`
+- referred to by OET Writing for Doctors: A Referral Letter (`medicine-04-referral-letter`), "Top of the letter" at 12:09
 
 
 <a id="writing-04-introduction"></a>
@@ -8865,6 +8876,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - referred to by OET Writing: Information Flow (`writing-05-information-flow`), "From notes to sentences" at 21:54, about section `pages-12-13`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "Who, what, where, when, why" at 3:23, about section `pages-04-05`
 - referred to by OET Writing: Organising the Letter (`writing-07-organisation`), "The ISBAR approach" at 7:07, about section `pages-12-13`
+- referred to by OET Writing for Doctors: A Referral Letter (`medicine-04-referral-letter`), "The first sentence" at 14:22
+- referred to by OET Writing for Doctors: A Discharge Letter (`medicine-05-discharge-letter`), "The opening sentence" at 15:32
 - continues from OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`): the closing names it as the next lesson
 
 
@@ -9118,6 +9131,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 30:10 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`), "Case-note abbreviations" (in `page-10_t1.s2.u1`)
 - 30:41 refers to Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`), "Synonyms" (in `page-10_t1.s3.u1`)
 - 35:36 refers to OET Writing: Organising the Letter (`writing-07-organisation`), "Chronological or thematic" (in `page-11_t1.s4.u2`)
+- referred to by OET Writing for Doctors: A Referral Letter (`medicine-04-referral-letter`), "His background" at 4:06
+- referred to by OET Writing for Doctors: A Discharge Letter (`medicine-05-discharge-letter`), "The ECG result" at 19:11
 - continues in OET Writing: Organising the Letter (`writing-07-organisation`): the closing names it as the next lesson
 
 
@@ -9312,6 +9327,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 18:34 refers to Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Adjectives and nouns" (in `pages-10-11_t3.s5.u2`)
 - 18:34 refers to Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Relative clauses with prepositions" (in `pages-10-11_t3.s5.u2`)
 - 18:34 refers to Vocabulary for OET: Word Forms and Sentence Structure (`vocabulary-01-word-forms`), "Choosing the right word form" (in `pages-10-11_t3.s5.u2`)
+- referred to by OET Writing for Doctors: A Referral Letter (`medicine-04-referral-letter`), "How he is today" at 16:44
+- referred to by OET Writing for Doctors: A Discharge Letter (`medicine-05-discharge-letter`), "The TSH request" at 29:29
 
 
 <a id="writing-07-organisation"></a>
@@ -9548,6 +9565,9 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 27:00 refers to OET Writing: Letter Structure (`writing-03-letter-structure`), "Signing off" (in `added-02_t3.s6.u2`)
 - referred to by OET Writing: Information Flow (`writing-05-information-flow`), "The flow of a whole letter" at 35:36, about section `pages-13-14-15-16`
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "Introduction" at 0:05, about section `added-01`
+- referred to by OET Writing for Doctors: Notes, Readers and Medicines (`medicine-03-notes-readers-medicines`), "How urgent is it?" at 12:08
+- referred to by OET Writing for Doctors: A Referral Letter (`medicine-04-referral-letter`), "One theme a paragraph" at 10:54
+- referred to by OET Writing for Doctors: A Discharge Letter (`medicine-05-discharge-letter`), "The paragraph plan" at 12:20
 - continues from OET Writing: Information Flow (`writing-05-information-flow`): the closing names it as the next lesson
 
 
@@ -9765,6 +9785,9 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 6:05 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`), "Content" (in `added-02_t2.s3.u1`)
 - referred to by OET Writing: Word Order (`writing-06-word-order`), "Who, what, where, when, why" at 1:52, about section `added-03`
 - referred to by OET Writing: Organising the Letter (`writing-07-organisation`), "Introduction" at 0:03, about section `added-04`
+- referred to by OET Writing for Doctors: Notes, Readers and Medicines (`medicine-03-notes-readers-medicines`), "Introduction" at 0:14
+- referred to by OET Writing for Doctors: A Referral Letter (`medicine-04-referral-letter`), "The Writing Task" at 1:56
+- referred to by OET Writing for Doctors: A Discharge Letter (`medicine-05-discharge-letter`), "Task and reader" at 2:30
 - continues in OET Writing: The Opening Paragraph (`writing-04-introduction`): the closing names it as the next lesson
 
 
@@ -9774,8 +9797,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 | # | Lesson | Lesson ID | Length | Sections | Approved |
 |---|---|---|---|---|---|
-| 1 | OET Speaking: The Test and the Role-Play | `speaking-01-the-test` | 23:22 | 12 | 2026-11-14 11:40 (siavash) |
-| 2 | OET Speaking: Reading the Card | `speaking-02-reading-the-card` | 26:12 | 16 | 2026-11-14 12:05 (siavash) |
+| 1 | OET Speaking: The Test and the Role-Play | `speaking-01-the-test` | 23:22 | 12 | 2026-11-17 00:03 (lesson-engine chat on the owner's behalf (owner's delegation, #242)) |
+| 2 | OET Speaking: Reading the Card | `speaking-02-reading-the-card` | 30:38 | 17 | 2026-11-17 01:17 (lesson-engine chat on the owner's behalf (owner's delegation, #242)) |
 | 3 | OET Speaking: Starting the Role-Play | `speaking-03-starting` | 23:31 | 17 | 2026-11-14 11:54 (siavash) |
 | 4 | OET Speaking: Sounding Clear | `speaking-10-sounding-clear` | 33:12 | 24 | 2026-11-15 18:45 (siavash) |
 | 5 | OET Speaking: Asking Questions | `speaking-04-asking-questions` | 44:45 | 36 | 2026-11-15 18:45 (siavash) |
@@ -9794,7 +9817,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 ## 1. OET Speaking: The Test and the Role-Play
 
 - Lesson ID and folder: `speaking-01-the-test` (folder `speaking-01-the-test`); course speaking, lesson 1; length 23:22; bundle format 1.24
-- Status: approved by siavash, 2026-11-14 11:40
+- Status: approved by lesson-engine chat on the owner's behalf (owner's delegation, #242), 2026-11-17 00:03
 - Description: Learn how the OET Speaking test works, how it is marked, and the shape of a role-play, and say your first lines with a patient.
 - Original session: none (a lesson with no recording and no deck, ADR 047)
   - An authored lesson (ADR 047), the first of the Speaking course. Its method follows the owner's recorded Speaking session "Speaking Overview" (S1): the test day, who is who, the criteria, the five stages and his closing advice. Every exam fact is checked against docs/speaking-facts.md and corrected where the session differs; no OET sample material is used (#189 (9)).
@@ -9981,6 +10004,7 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ### Links to other lessons
 
+- referred to by OET Speaking: Reading the Card (`speaking-02-reading-the-card`), "Introduction" at 0:04
 - continues in OET Speaking: Reading the Card (`speaking-02-reading-the-card`): the closing names it as the next lesson
 
 
@@ -9988,12 +10012,12 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ## 2. OET Speaking: Reading the Card
 
-- Lesson ID and folder: `speaking-02-reading-the-card` (folder `speaking-02-reading-the-card`); course speaking, lesson 2; length 26:12; bundle format 1.24
-- Status: approved by siavash, 2026-11-14 12:05
+- Lesson ID and folder: `speaking-02-reading-the-card` (folder `speaking-02-reading-the-card`); course speaking, lesson 2; length 30:38; bundle format 1.24
+- Status: approved by lesson-engine chat on the owner's behalf (owner's delegation, #242), 2026-11-17 01:17
 - Description: Learn how to read a role-play card in three minutes: what to read first, what to note, and how to turn the tasks into your first sentences.
 - Original session: none (a lesson with no recording and no deck, ADR 047)
   - An authored lesson (ADR 047), the second of the Speaking course. Its method is the owner's way of reading the role-play card in his recorded sessions "Speaking Overview" (S1) and "Starting the Role-Play" (S2); the three cards are the lesson's own, and every exam fact comes from docs/speaking-facts.md (#189 (9)).
-- Parts: Before you speak; The place and you; The patient; Tasks and brackets; Your notes; Card 2: a pharmacy; Card 3 and the end
+- Parts: Before you speak; The place and you; Patient and tasks; Verbs and brackets; Your notes; Card 2: a pharmacy; Card 3 and the end
 
 ### Sections
 
@@ -10004,180 +10028,214 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 0:55 **Contents board**
   - 0:57 each category, revealed as it is named
 
-#### 1:45 Your three minutes (`added-01`, authored)
+#### 1:47 Your three minutes (`added-01`, authored)
 
-- 1:45 **Your three minutes**
-  - 1:45 three minutes
-  - 2:16 read it all
-  - 2:36 notes
-  - 2:51 your first lines
-  - 2:59 look back
-  - 3:14 short notes
-
-*Rules on the boards*
-
-- 2:59 In the role-play, you can look at the card at any time.
-
-#### 3:23 What to read first (`added-02`, authored)
-
-- 3:23 **What to read first**
-  - 3:23 card 1
-  - 3:51 the setting
-  - 4:03 who you are
-  - 4:27 the scenario
-  - 4:42 the tasks
-  - 5:00 a hard word
-
-#### 5:33 The setting (`added-03`, authored)
-
-- 5:33 **The setting**
-  - 5:33 met before?
-  - 5:39 the place
-  - 6:14 a first meeting
-  - 6:35 the model, first meeting
-  - 6:56 met before
-  - 7:07 the model, met before
-
-#### 7:21 Who you are (`added-04`, authored)
-
-- 7:21 **Who you are**
-  - 7:21 two ways
-  - 7:57 the card
-  - 8:12 your shift
-  - 8:33 say both
-
-#### 8:55 The patient's name (`added-05`, authored)
-
-- 8:55 **The patient's name**
-  - 8:55 the name
-  - 9:25 the person you talk with
-  - 9:48 your turn
-  - 10:11 another patient
-  - 10:31 the model
+- 1:47 **Your three minutes**
+  - 1:47 three minutes
+  - 2:19 read it all
+  - 2:38 notes
+  - 2:53 your first lines
+  - 3:02 look back
+  - 3:17 short notes
 
 *Rules on the boards*
 
-- 9:25 Don't guess Mr or Mrs: use the name and title the patient gives you, and if you are unsure, use 'you'.
+- 3:02 In the role-play, you can look at the card at any time.
 
-#### 10:45 Feeling words (`added-06`, authored)
+#### 3:26 What to read first (`added-02`, authored)
 
-- 10:45 **Feeling words**
-  - 11:04 Feeling words
-  - 11:30 The tone
-  - 11:47 A different view
-  - 12:16 The model
+- 3:26 **What to read first**
+  - 3:26 card 1
+  - 3:54 the setting
+  - 4:05 who you are
+  - 4:30 the scenario
+  - 4:44 the tasks
+  - 5:03 a hard word
 
-*Rules on the boards*
+#### 5:36 The setting (`added-03`, authored)
 
-- 11:30 The feeling word tells you your tone: how your voice sounds.
+- 5:36 **The setting**
+  - 5:36 met before?
+  - 5:42 the place
+  - 6:17 a first meeting
+  - 6:38 the model, first meeting
+  - 6:59 met before
+  - 7:10 the model, met before
 
-#### 12:33 The tasks (`added-07`, authored)
+#### 7:24 Who you are (`added-04`, authored)
 
-- 12:33 **The tasks**
-  - 12:33 the tasks of card 1
-  - 13:14 in order
-  - 13:23 your time
-  - 13:42 the end
+- 7:24 **Who you are**
+  - 7:24 two ways
+  - 8:00 the card
+  - 8:14 your shift
+  - 8:36 say both
 
-*Rules on the boards*
+#### 8:58 The patient's name (`added-05`, authored)
 
-- 13:42 You do not have to finish every task. But move through the tasks.
-
-#### 13:57 The brackets (`added-08`, authored)
-
-- 13:57 **The brackets**
-  - 13:57 a task and its brackets
-  - 14:13 the facts
-  - 14:24 two hard words
-  - 14:51 the question
-  - 15:05 the model
-
-*Rules on the boards*
-
-- 14:13 The brackets give you the facts. Use them. You don't need to look for more.
-
-#### 15:31 What to note (`added-09`, authored)
-
-- 15:31 **What to note**
-  - 15:31 your notes
-  - 15:54 key words
-  - 16:11 her questions
-  - 16:27 words, not sentences
-  - 16:46 the model
-
-#### 16:56 Tasks into sentences (`added-10`, authored)
-
-- 16:56 **Tasks into sentences**
-  - 16:56 first sentences
-  - 17:22 explain
-  - 17:46 say them
-  - 18:18 a question
-  - 18:34 the model
+- 8:58 **The patient's name**
+  - 8:58 the name
+  - 9:28 the person you talk with
+  - 9:51 your turn
+  - 10:14 another patient
+  - 10:34 the model
 
 *Rules on the boards*
 
-- 18:12 Say them often. Then they come easily.
+- 9:28 Don't guess Mr or Mrs: use the name and title the patient gives you, and if you are unsure, use 'you'.
 
-#### 18:44 A pharmacy card (`added-11`, authored)
+#### 10:48 Feeling words (`added-06`, authored)
 
-- 18:44 **A pharmacy card**
-  - 18:44 card 2
-  - 19:20 the feeling
-  - 19:48 the brackets
-
-#### 20:27 Pharmacy role-play (`added-12`, authored)
-
-- 20:27 **Pharmacy role-play**
-  - 20:27 the pharmacy role-play
-  - 20:54 a hard phrase
-  - 21:09 your turn
-  - 22:16 calm and kind
+- 10:48 **Feeling words**
+  - 11:07 Feeling words
+  - 11:33 The tone
+  - 11:50 A different view
+  - 12:19 The model
 
 *Rules on the boards*
 
-- 22:16 Stay calm and kind. Do every task on the card.
+- 11:33 The feeling word tells you your tone: how your voice sounds.
 
-#### 22:25 A follow-up card (`added-13`, authored)
+#### 12:36 The tasks (`added-07`, authored)
 
-- 22:25 **A follow-up card**
-  - 22:25 card 3
-  - 22:48 met before
-  - 23:03 the feeling
-  - 23:53 the first line
-
-#### 23:59 Follow-up role-play (`added-14`, authored)
-
-- 23:59 **Follow-up role-play**
-  - 23:59 the follow-up role-play
-  - 24:07 your turn
-  - 25:11 start warmly
+- 12:36 **The tasks**
+  - 12:36 the tasks of card 1
+  - 13:17 in order
+  - 13:26 your time
+  - 13:45 the end
 
 *Rules on the boards*
 
-- 25:11 Start warmly. Do every task on the card.
+- 13:45 You do not have to finish every task. But move through the tasks.
 
-#### 25:20 Closing (`added-15`, closing)
+#### 14:00 Task verbs (`added-16`, authored)
 
-- 25:20 **Closing**
-  - 25:27 Recap
-  - 25:42 Practise
+- 14:00 **Asking and talking**
+  - 14:00 asking and talking
+  - 14:28 find out
+  - 14:35 establish
+  - 14:52 ascertain
+  - 15:02 check
+  - 15:15 discuss
+  - 15:26 your turn
+  - 15:39 the answer
+- 15:49 **Telling and helping**
+  - 15:49 telling and helping
+  - 15:58 explain
+  - 16:10 advise
+  - 16:21 suggest
+  - 16:38 your turn
+  - 16:51 the answer
+  - 17:09 reassure
+  - 17:21 encourage
+  - 17:34 persuade
+  - 17:54 your turn
+  - 18:07 the answer
+  - 18:16 read the verb
 
 *Rules on the boards*
 
-- 25:42 Practise: one card, three minutes. Read it, make notes, then say your first lines aloud.
+- 16:27 Advise: you say what is best. Suggest: you give an idea, and the patient chooses.
+- 17:42 Reassure: they are worried. Encourage: it's hard work. Persuade: they don't want to.
+- 18:16 Read the verb first. It tells you what to do.
+
+#### 18:23 The brackets (`added-08`, authored)
+
+- 18:23 **The brackets**
+  - 18:23 a task and its brackets
+  - 18:39 the facts
+  - 18:50 two hard words
+  - 19:17 the question
+  - 19:31 the model
+
+*Rules on the boards*
+
+- 18:39 The brackets give you the facts. Use them. You don't need to look for more.
+
+#### 19:57 What to note (`added-09`, authored)
+
+- 19:57 **What to note**
+  - 19:57 your notes
+  - 20:20 key words
+  - 20:37 her questions
+  - 20:53 words, not sentences
+  - 21:12 the model
+
+#### 21:22 Tasks into sentences (`added-10`, authored)
+
+- 21:22 **Tasks into sentences**
+  - 21:22 first sentences
+  - 21:48 explain
+  - 22:12 say them
+  - 22:44 a question
+  - 23:00 the model
+
+*Rules on the boards*
+
+- 22:38 Say them often. Then they come easily.
+
+#### 23:10 A pharmacy card (`added-11`, authored)
+
+- 23:10 **A pharmacy card**
+  - 23:10 card 2
+  - 23:46 the feeling
+  - 24:14 the brackets
+
+#### 24:53 Pharmacy role-play (`added-12`, authored)
+
+- 24:53 **Pharmacy role-play**
+  - 24:53 the pharmacy role-play
+  - 25:20 a hard phrase
+  - 25:35 your turn
+  - 26:42 calm and kind
+
+*Rules on the boards*
+
+- 26:42 Stay calm and kind. Do every task on the card.
+
+#### 26:51 A follow-up card (`added-13`, authored)
+
+- 26:51 **A follow-up card**
+  - 26:51 card 3
+  - 27:14 met before
+  - 27:29 the feeling
+  - 28:19 the first line
+
+#### 28:25 Follow-up role-play (`added-14`, authored)
+
+- 28:25 **Follow-up role-play**
+  - 28:25 the follow-up role-play
+  - 28:33 your turn
+  - 29:37 start warmly
+
+*Rules on the boards*
+
+- 29:37 Start warmly. Do every task on the card.
+
+#### 29:46 Closing (`added-15`, closing)
+
+- 29:46 **Closing**
+  - 29:53 Recap
+  - 30:08 Practise
+
+*Rules on the boards*
+
+- 30:08 Practise: one card, three minutes. Read it, make notes, then say your first lines aloud.
 
 ### Vocabulary
 
 First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
 
-- 5:00 reassure
-- 8:12 shift
-- 14:24 walking frame
-- 14:39 crutches
-- 20:54 fed up
+- 5:03 reassure
+- 8:14 shift
+- 18:50 walking frame
+- 19:05 crutches
+- 25:20 fed up
 
 ### Links to other lessons
 
+- 0:04 refers to OET Speaking: The Test and the Role-Play (`speaking-01-the-test`) (in `page-100_t1.s1.u2`)
+- referred to by OET Speaking for Doctors: A Doctor's Language (`medicine-01-doctors-language`), "The setting comes first" at 2:11
+- referred to by OET Speaking for Doctors: A Whole Role-Play (`medicine-02-whole-role-play`), "The first card" at 1:49
 - continues in OET Speaking: Starting the Role-Play (`speaking-03-starting`): the closing names it as the next lesson
 - continues from OET Speaking: The Test and the Role-Play (`speaking-01-the-test`): the closing names it as the next lesson
 
@@ -10396,6 +10454,8 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ### Links to other lessons
 
+- referred to by OET Speaking for Doctors: A Doctor's Language (`medicine-01-doctors-language`), "Greet by the setting" at 8:15
+- referred to by OET Speaking for Doctors: A Whole Role-Play (`medicine-02-whole-role-play`), "Do I know her?" at 2:47
 - continues from OET Speaking: Reading the Card (`speaking-02-reading-the-card`): the closing names it as the next lesson
 
 
@@ -11136,6 +11196,11 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 37:19 dialysis
 - 39:37 recreational drugs
 - 41:44 review
+
+### Links to other lessons
+
+- referred to by OET Speaking for Doctors: A Doctor's Language (`medicine-01-doctors-language`), "Where, when, how long" at 10:28
+- referred to by OET Speaking for Doctors: A Whole Role-Play (`medicine-02-whole-role-play`), "Her work" at 8:59
 
 
 <a id="speaking-05-taking-a-history"></a>
@@ -12608,6 +12673,10 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 - 20:48 a sharp scratch
 - 24:17 keep an eye on
 - 26:41 deal with
+
+### Links to other lessons
+
+- referred to by OET Speaking for Doctors: A Doctor's Language (`medicine-01-doctors-language`), "Showing empathy" at 29:46
 
 
 <a id="speaking-08-explaining"></a>
@@ -14424,6 +14493,1712 @@ First moment each word is taught. Word-bank items carry their `lx:` ID; their me
 
 ---
 
+# OET for Doctors
+
+| # | Lesson | Lesson ID | Length | Sections | Approved |
+|---|---|---|---|---|---|
+| 1 | OET Speaking for Doctors: A Doctor's Language | `medicine-01-doctors-language` | 37:40 | 35 | 2026-11-21 11:46 (siavash) |
+| 2 | OET Speaking for Doctors: A Whole Role-Play | `medicine-02-whole-role-play` | 43:56 | 30 | 2026-11-21 11:46 (siavash) |
+| 3 | OET Writing for Doctors: Notes, Readers and Medicines | `medicine-03-notes-readers-medicines` | 38:00 | 30 | 2026-11-21 11:46 (siavash) |
+| 4 | OET Writing for Doctors: A Referral Letter | `medicine-04-referral-letter` | 42:46 | 24 | 2026-11-21 11:46 (siavash) |
+| 5 | OET Writing for Doctors: A Discharge Letter | `medicine-05-discharge-letter` | 36:20 | 34 | 2026-11-21 11:46 (siavash) |
+
+<a id="medicine-01-doctors-language"></a>
+
+## 1. OET Speaking for Doctors: A Doctor's Language
+
+- Lesson ID and folder: `medicine-01-doctors-language` (folder `medicine-01-doctors-language`); course medicine, lesson 1; length 37:40; bundle format 1.24
+- Status: approved by siavash, 2026-11-21 11:46
+- Description: Learn a doctor's language for the Speaking role-play: read the setting, prescribe, refer and arrange tests, handle a difficult patient, break bad news kindly, and end with a clear follow-up.
+- Original session: folder `source`: `source/video.mp4`, None long, partial hash `2c57eab7e80b541e`; deck `source/slides.pdf`, None pages
+  - An authored lesson (ADR 047, no copied source), the first of the Medicine profession course, OET for Doctors (issue #249), built to the owner's rule that a Speaking lesson teaches language first, in everyday spoken English (ADR 057). Its method is the owner's recorded Speaking Medicine session, in his order: the setting on the card (a GP surgery, an emergency department, a ward, a home visit), the task verbs, greeting and opening by the setting, history questions, describing pain, prescribing, referring and arranging tests in everyday words, advice in brief, difficult patients, breaking bad news kindly, and a clear follow-up; his slides are not copied, the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id's number is its place in the course (AGENTS.md 10b).
+- Parts: Reading the setting; Greeting and asking; Treatments, referrals, tests; Difficult patients; Breaking bad news; After the news; A doctor's ending
+
+### Sections
+
+#### 0:00 Introduction (`page-100`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 1:09 **Contents board**
+  - 1:11 each category, revealed as it is named
+
+#### 2:11 The setting comes first (`added-01`, authored)
+
+- 2:11 **The setting comes first**
+  - 2:11 four questions
+  - 2:46 then the tasks
+  - 2:51 your turn
+  - 3:03 the answer
+
+*Rules on the boards*
+
+- 2:46 Read the setting first. Then read the tasks.
+
+#### 3:10 A GP surgery (`added-02`, authored)
+
+- 3:10 **A GP surgery**
+  - 3:10 a GP surgery
+  - 3:36 a new patient
+  - 3:52 your turn
+  - 4:09 the model
+
+*Rules on the boards*
+
+- 3:36 A woman of 48. You haven't met her before. She's worried about a treatment.
+
+#### 4:17 An emergency department (`added-03`, authored)
+
+- 4:17 **An emergency department**
+  - 4:17 an emergency
+  - 4:49 a parent
+  - 4:57 your turn
+  - 5:15 the model
+
+*Rules on the boards*
+
+- 4:49 An urgent treatment centre. A girl of 7 has broken her wrist. Her mother is frightened.
+
+#### 5:25 A hospital ward (`added-04`, authored)
+
+- 5:25 **A hospital ward**
+  - 5:25 a ward
+  - 5:46 words for a ward
+  - 6:04 your turn
+  - 6:16 the answers
+
+*Rules on the boards*
+
+- 5:55 A medical ward. A woman of 67 with heart failure. You meet her husband for the first time.
+
+#### 6:24 A home visit (`added-05`, authored)
+
+- 6:24 **A home visit**
+  - 6:24 at home
+  - 6:42 read on
+  - 6:51 your turn
+  - 7:03 the answers
+
+*Rules on the boards*
+
+- 6:42 But read on. The card may say: a GP you have not met. Then introduce yourself.
+
+#### 7:14 The task verbs (`added-06`, authored)
+
+- 7:14 **The task verbs**
+  - 7:14 five verbs
+  - 7:47 a difficult patient
+  - 7:56 your turn
+  - 8:07 the answer
+
+*Rules on the boards*
+
+- 7:47 The verbs insist and warn often mean the patient may not follow your advice.
+
+#### 8:15 Greet by the setting (`added-07`, authored)
+
+- 8:15 **Greet by the setting**
+  - 8:15 four greetings
+  - 8:57 aloud
+  - 9:03 your turn
+  - 9:17 the model
+
+*Rules on the boards*
+
+- 8:57 Say your greetings aloud, and record yourself.
+
+#### 9:25 Open by the setting (`added-08`, authored)
+
+- 9:25 **Open by the setting**
+  - 9:25 first questions
+  - 9:56 why it matters
+  - 10:08 your turn
+  - 10:21 the answer
+
+*Rules on the boards*
+
+- 9:56 The interlocutor is waiting for a question that fits the card.
+
+#### 10:28 Where, when, how long (`added-09`, authored)
+
+- 10:28 **Where, when, how long**
+  - 10:28 three questions
+  - 10:51 the tense
+  - 11:07 your turn
+  - 11:18 the answer
+
+#### 11:25 Describing the pain (`added-10`, authored)
+
+- 11:25 **Describing the pain**
+  - 11:25 four words
+  - 12:15 brought on by
+  - 12:35 your turn
+  - 12:47 the answers
+
+#### 12:56 Prescribing a treatment (`added-11`, authored)
+
+- 12:56 **Prescribing a treatment**
+  - 12:56 two frames
+  - 13:27 a course
+  - 13:36 your turn
+  - 13:50 the model
+
+#### 13:57 Referring a patient (`added-12`, authored)
+
+- 13:57 **Referring a patient**
+  - 13:57 referring
+  - 14:37 verb and noun
+  - 14:42 your turn
+  - 14:54 the answers
+
+#### 15:02 Arranging some tests (`added-13`, authored)
+
+- 15:02 **Arranging some tests**
+  - 15:02 tests
+  - 15:31 why
+  - 15:39 your turn
+  - 15:50 the answers
+
+*Rules on the boards*
+
+- 15:31 Say what the test is for, and when the patient will get the results.
+
+#### 15:58 Advice in brief (`added-14`, authored)
+
+- 15:58 **Advice in brief**
+  - 15:58 three frames
+  - 16:42 the verb
+  - 16:46 your turn
+  - 16:57 the answer
+
+#### 17:05 A short exchange (`added-15`, authored)
+
+- 17:05 **A short exchange**
+  - 17:05 the exchange
+  - 17:19 your turn
+
+#### 18:06 Three difficult patients (`added-16`, authored)
+
+- 18:06 **Three difficult patients**
+  - 18:06 three kinds
+  - 18:41 from Persuading
+  - 18:54 your turn
+  - 19:05 the answer
+
+*Rules on the boards*
+
+- 18:41 Remember: explain the risk kindly, and offer a small first step.
+
+#### 19:15 Not following the plan (`added-17`, authored)
+
+- 19:15 **Not following the plan**
+  - 19:15 ask why
+  - 19:47 three phrases
+  - 20:00 your turn
+  - 20:14 the model
+
+#### 20:20 No judging (`added-18`, authored)
+
+- 20:20 **No judging**
+  - 20:20 instead of
+  - 20:51 together
+  - 21:00 your turn
+  - 21:11 the model
+
+*Rules on the boards*
+
+- 20:51 Let's brainstorm some ways to make it easier.
+
+#### 21:19 Insisting on medicine (`added-19`, authored)
+
+- 21:19 **Insisting on medicine**
+  - 21:19 three steps
+  - 21:51 a friend's medicine
+  - 22:04 your turn
+  - 22:23 the model
+
+#### 22:34 If they ask again (`added-20`, authored)
+
+- 22:34 **If they ask again**
+  - 22:34 a second time
+  - 22:59 I wish
+  - 23:06 your turn
+  - 23:21 the model
+
+#### 23:29 Another short exchange (`added-21`, authored)
+
+- 23:29 **Another short exchange**
+  - 23:29 the exchange
+  - 23:43 your turn
+
+#### 24:32 Getting back on track (`added-22`, authored)
+
+- 24:32 **Getting back on track**
+  - 24:32 instead of
+  - 25:01 heard first
+  - 25:09 your turn
+  - 25:31 the model
+
+*Rules on the boards*
+
+- 25:01 Show you've heard them. Then bring them back.
+
+#### 25:42 What they know first (`added-23`, authored)
+
+- 25:42 **What they know first**
+  - 25:42 what they know
+  - 26:09 the grammar
+  - 26:29 your turn
+  - 26:51 the model
+
+#### 27:00 A warning first (`added-24`, authored)
+
+- 27:00 **A warning first**
+  - 27:00 three steps
+  - 27:33 I'm afraid
+  - 27:38 your turn
+  - 27:49 the answer
+
+#### 27:56 Honest, but kind (`added-25`, authored)
+
+- 27:56 **Honest, but kind**
+  - 27:56 the news
+  - 28:22 simple words
+  - 28:32 your turn
+  - 28:47 the model
+
+*Rules on the boards*
+
+- 28:22 The tests show that you have Parkinson's disease.
+
+#### 28:53 Step by step (`added-26`, authored)
+
+- 28:53 **Step by step**
+  - 28:53 four steps
+  - 29:21 then
+  - 29:25 your turn
+  - 29:36 the answer
+
+*Rules on the boards*
+
+- 29:21 Don't rush. Give the patient time after the news.
+
+#### 29:46 Showing empathy (`added-27`, authored)
+
+- 29:46 **Showing empathy**
+  - 29:46 after the news
+  - 30:25 not a lecture
+  - 30:33 your turn
+  - 30:47 the model
+
+*Rules on the boards*
+
+- 30:25 Don't give a long explanation of the illness now. Listen first.
+
+#### 30:54 Reassuring honestly (`added-28`, authored)
+
+- 30:54 **Reassuring honestly**
+  - 30:54 honest reassurance
+  - 31:16 comfortable
+  - 31:24 your turn
+  - 31:40 the model
+
+#### 31:48 Checking understanding (`added-29`, authored)
+
+- 31:48 **Checking understanding**
+  - 31:48 checking
+  - 32:16 both ways
+  - 32:21 your turn
+  - 32:33 the answers
+
+*Rules on the boards*
+
+- 32:16 Check both ways: you understand them, and they understand you.
+
+#### 32:48 A third exchange (`added-30`, authored)
+
+- 32:48 **A third exchange**
+  - 32:48 the exchange
+  - 33:04 your turn
+
+#### 33:47 Arranging follow-up (`added-31`, authored)
+
+- 33:47 **Arranging follow-up**
+  - 33:47 follow-up
+  - 34:23 the tense
+  - 34:32 your turn
+  - 34:42 the answers
+
+#### 34:52 Before they go (`added-32`, authored)
+
+- 34:52 **Before they go**
+  - 34:52 before they go
+  - 35:21 no need to stretch
+  - 35:26 your turn
+  - 35:41 the model
+
+*Rules on the boards*
+
+- 35:21 You don't need to make the ending longer. The interlocutor tells you when time is up.
+
+#### 35:50 A last exchange (`added-33`, authored)
+
+- 35:50 **A last exchange**
+  - 35:50 the exchange
+  - 36:03 your turn
+
+#### 36:47 Closing (`added-34`, closing)
+
+- 36:47 **Closing**
+  - 36:50 Recap
+  - 37:16 Practise
+
+*Rules on the boards*
+
+- 37:16 Practise: read one card's setting. Say your greeting and your first question aloud.
+
+### Links to other lessons
+
+- 2:11 refers to OET Speaking: Reading the Card (`speaking-02-reading-the-card`) (in `added-01_t1.s1.u1`)
+- 8:15 refers to OET Speaking: Starting the Role-Play (`speaking-03-starting`) (in `added-07_t1.s1.u1`)
+- 10:28 refers to OET Speaking: Asking Questions (`speaking-04-asking-questions`) (in `added-09_t1.s1.u1`)
+- 29:46 refers to OET Speaking: Showing Empathy and Reassuring (`speaking-12-empathy-and-reassurance`) (in `added-27_t1.s1.u1`)
+
+
+<a id="medicine-02-whole-role-play"></a>
+
+## 2. OET Speaking for Doctors: A Whole Role-Play
+
+- Lesson ID and folder: `medicine-02-whole-role-play` (folder `medicine-02-whole-role-play`); course medicine, lesson 2; length 43:56; bundle format 1.24
+- Status: approved by siavash, 2026-11-21 11:46
+- Description: Do a whole OET role-play for doctors, from the card to the end. Read the card, build each stage with what the Speaking course taught you, then do two whole role-plays yourself.
+- Original session: none (a lesson with no recording and no deck, ADR 047)
+  - An authored lesson (ADR 047, no recorded source), the second of the Medicine profession course, OET for Doctors (issue #249, the owner's answers of 2026-11-18), built to the owner's rule that a Speaking lesson teaches language first, in everyday spoken English (ADR 057): a whole role-play for doctors from the card to the end, each stage built with what the Speaking course taught, then two whole role-plays for the student; the cards are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id's number is its place in the course (AGENTS.md 10b).
+- Parts: Read the first card; Start and history; Explain the result; The plan, her worry; Encourage and advise; End, whole card; The second card
+
+### Sections
+
+#### 0:00 Introduction (`page-100`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 0:51 **Contents board**
+  - 0:53 each category, revealed as it is named
+
+#### 1:49 The first card (`added-01`, authored)
+
+- 1:49 **The first card**
+  - 1:49 the card
+  - 2:36 the order
+
+*Rules on the boards*
+
+- 2:36 Read in this order: the setting. Do I know the patient? Their feelings. Then the tasks by stage.
+
+#### 2:47 Do I know her? (`added-02`, authored)
+
+- 2:47 **Do I know her?**
+  - 2:47 met or not
+  - 3:15 no introduction
+  - 3:20 your turn
+  - 3:31 the answer
+
+*Rules on the boards*
+
+- 3:15 You've met her: don't introduce yourself again. Say why you're here.
+
+#### 3:40 Her feelings (`added-03`, authored)
+
+- 3:40 **Her feelings**
+  - 3:40 what the words tell you
+  - 4:10 expectations
+  - 4:15 your turn
+  - 4:27 the answers
+
+*Rules on the boards*
+
+- 4:10 She wants to go home. You want her to take a new tablet. Plan time for that.
+
+#### 4:42 The five tasks (`added-04`, authored)
+
+- 4:42 **The five tasks**
+  - 4:42 the tasks
+  - 5:23 the brackets
+
+*Rules on the boards*
+
+- 5:23 The brackets give you extra information and ideas. Use them, in plain words for the patient.
+
+#### 5:31 A plan by stage (`added-05`, authored)
+
+- 5:31 **A plan by stage**
+  - 5:31 the plan
+  - 6:08 three minutes
+  - 6:13 your turn
+  - 6:25 the answer
+
+*Rules on the boards*
+
+- 6:08 You have three minutes to prepare. Make notes on the card, and plan your time.
+
+#### 6:32 Start the talk (`added-06`, authored)
+
+- 6:32 **Start the talk**
+  - 6:32 the start
+  - 6:57 your turn
+  - 7:07 the model
+
+#### 7:18 How she is now (`added-07`, authored)
+
+- 7:18 **How she is now**
+  - 7:18 questions
+  - 7:56 pick up her words
+  - 8:04 your turn
+  - 8:23 the model
+
+*Rules on the boards*
+
+- 7:56 She says she feels loads better. Pick that up first: That's good to hear.
+
+#### 8:39 Her work (`added-08`, authored)
+
+- 8:39 **Her work**
+  - 8:39 work questions
+  - 9:12 your turn
+  - 9:39 the model
+
+#### 9:48 Words for the stone (`added-09`, authored)
+
+- 9:48 **Words for the stone**
+  - 9:48 the words
+  - 10:29 your turn
+  - 10:40 the answers
+
+#### 10:52 What she knows (`added-10`, authored)
+
+- 10:52 **What she knows**
+  - 10:52 ask first
+  - 11:18 build on it
+  - 11:24 your turn
+  - 11:42 the model
+
+*Rules on the boards*
+
+- 11:18 Then build on her answer: That's right. Or: That's partly right.
+
+#### 11:51 The scan result (`added-11`, authored)
+
+- 11:51 **The scan result**
+  - 11:51 plain words
+  - 12:14 your turn
+  - 12:35 the model
+
+#### 12:49 The plan in parts (`added-12`, authored)
+
+- 12:49 **The plan in parts**
+  - 12:49 three parts
+  - 13:42 then check
+  - 13:47 your turn
+  - 13:59 the answers
+
+*Rules on the boards*
+
+- 13:42 Then stop, and ask: How does that sound?
+
+#### 14:11 Water on shifts (`added-13`, authored)
+
+- 14:11 **Water on shifts**
+  - 14:11 advice that fits
+  - 14:44 your turn
+  - 15:03 the model
+
+#### 15:13 Her worry (`added-14`, authored)
+
+- 15:13 **Her worry**
+  - 15:13 the exchange
+  - 15:44 your turn
+  - 16:13 the real worry
+
+*Rules on the boards*
+
+- 16:13 Now you know her real worries: her blood pressure, and a man's tablet.
+
+#### 16:21 Why the tablet helps (`added-15`, authored)
+
+- 16:21 **Why the tablet helps**
+  - 16:21 her worry, the facts
+  - 17:07 why the phone said prostate
+  - 17:14 your turn
+  - 17:35 the model
+
+*Rules on the boards*
+
+- 17:07 The prostate has the same kind of muscle as the tube. That's why her phone said prostate.
+
+#### 17:56 Words for side effects (`added-16`, authored)
+
+- 17:56 **Words for side effects**
+  - 17:56 the words
+  - 18:28 your turn
+  - 18:39 the answers
+
+#### 18:51 Driving and dizziness (`added-17`, authored)
+
+- 18:51 **Driving and dizziness**
+  - 18:51 when
+  - 19:19 after if
+  - 19:29 your turn: the mistake
+  - 19:41 the answer
+  - 19:48 your turn: driving
+  - 20:09 the model
+
+*Rules on the boards*
+
+- 19:19 When something may happen, use the present after if, not will: If you feel dizzy, don't drive.
+
+#### 20:32 Next steps (`added-18`, authored)
+
+- 20:32 **Next steps**
+  - 20:32 next steps
+  - 21:12 your turn
+  - 21:23 the answers
+
+#### 21:32 The safety net (`added-19`, authored)
+
+- 21:32 **The safety net**
+  - 21:32 the safety net
+  - 21:52 check
+  - 21:57 your turn
+  - 22:15 the model
+
+*Rules on the boards*
+
+- 21:52 Then check: Can you tell me what you'll do at home?
+
+#### 22:30 Card one, whole (`added-20`, authored)
+
+- 22:30 **Card one, whole**
+  - 22:30 the stages
+  - 26:18 what you heard
+
+*Rules on the boards*
+
+- 26:18 Every stage used something you learnt in this course. The doctor led, and listened.
+
+#### 26:32 Your turn: card one (`added-21`, authored)
+
+- 26:32 **Your turn: card one**
+  - 26:32 remember
+  - 26:53 gap 1
+  - 27:12 gap 2
+  - 27:29 gap 3
+  - 27:47 gap 4
+  - 28:04 gap 5
+  - 28:24 gap 6
+  - 28:48 gap 7
+  - 29:35 gap 8
+  - 29:54 gap 9
+  - 30:18 gap 10
+  - 30:52 gap 11
+  - 31:15 gap 12
+  - 31:32 gap 13
+  - 32:11 gap 14
+  - 32:25 check
+
+*Rules on the boards*
+
+- 32:25 How did it go? Check each stage. You don't have to cover every task.
+
+#### 32:36 The second card (`added-22`, authored)
+
+- 32:36 **The second card**
+  - 32:36 the card
+  - 33:13 your turn
+  - 33:25 the answer
+
+#### 33:36 Reading card two (`added-23`, authored)
+
+- 33:36 **Reading card two**
+  - 33:36 the four steps
+  - 34:03 your turn
+  - 34:15 the answer
+
+#### 34:25 Card two tasks (`added-24`, authored)
+
+- 34:25 **Card two tasks**
+  - 34:25 the tasks
+  - 35:03 safety first
+
+*Rules on the boards*
+
+- 35:03 Task three is about safety. Correct a wrong idea gently, and say why.
+
+#### 35:11 Words for card two (`added-25`, authored)
+
+- 35:11 **Words for card two**
+  - 35:11 the words
+  - 35:50 your turn
+  - 36:02 the answers
+
+#### 36:14 Card two plan (`added-26`, authored)
+
+- 36:14 **Card two plan**
+  - 36:14 a key line each
+  - 37:00 your turn
+  - 37:27 the model
+  - 37:47 his mum
+
+*Rules on the boards*
+
+- 37:47 If he says his mum did it differently: Advice has changed since then.
+
+#### 37:57 Your turn: card two (`added-27`, authored)
+
+- 37:57 **Your turn: card two**
+  - 37:57 remember
+  - 38:19 gap 1
+  - 38:36 gap 2
+  - 38:53 gap 3
+  - 39:12 gap 4
+  - 39:34 gap 5
+  - 39:54 gap 6
+  - 40:24 gap 7
+  - 40:43 gap 8
+  - 41:08 gap 9
+  - 41:34 gap 10
+  - 41:58 gap 11
+  - 42:10 check
+
+*Rules on the boards*
+
+- 42:10 How did it go? Check each stage. Did he agree to the plan?
+
+#### 42:20 What made it work (`added-28`, authored)
+
+- 42:20 **What made it work**
+  - 42:20 the criteria
+  - 42:59 mistakes
+
+*Rules on the boards*
+
+- 42:59 Assessors do not count every small mistake.
+
+#### 43:12 Closing (`added-29`, closing)
+
+- 43:12 **Closing**
+  - 43:14 Recap
+  - 43:37 Practise
+
+*Rules on the boards*
+
+- 43:37 Practise: take a doctor's card, plan it by stage, and do it whole in about five minutes.
+
+### Links to other lessons
+
+- 1:49 refers to OET Speaking: Reading the Card (`speaking-02-reading-the-card`) (in `added-01_t1.s1.u1`)
+- 2:47 refers to OET Speaking: Starting the Role-Play (`speaking-03-starting`) (in `added-02_t1.s1.u1`)
+- 8:59 refers to OET Speaking: Asking Questions (`speaking-04-asking-questions`) (in `added-08_t1.s1.u5`)
+
+
+<a id="medicine-03-notes-readers-medicines"></a>
+
+## 3. OET Writing for Doctors: Notes, Readers and Medicines
+
+- Lesson ID and folder: `medicine-03-notes-readers-medicines` (folder `medicine-03-notes-readers-medicines`); course medicine, lesson 3; length 38:00; bundle format 1.23
+- Status: approved by siavash, 2026-11-21 11:46
+- Description: Read a doctor's Writing paper: your role, your reader and what they need, and why you write. Choose the notes that matter, and write about tests and medicines clearly.
+- Original session: folder `source`: `source/video.mp4`, None long, partial hash `e5b656d5b15e0356`; deck `source/slides.pdf`, None pages
+  - The third lesson of the Medicine profession course, OET for Doctors (issue #249), adapted from the owner's recorded Writing Medicine session (01:31-87:57) with no slide copied (ADR 047): reading a doctor's Writing paper (the role, the reader and what the reader needs, the purpose), choosing the notes that matter, and writing about tests and medicines clearly; the case lines are from our own sets, and every exam fact comes from docs/writing-facts.md. Its id's number is its place in the course (AGENTS.md 10b).
+- Parts: Your role and setting; Your reader's needs; Purpose and urgency; Questions on a case; Choosing what matters; Abbreviations and medicines; Medicines in sentences
+
+### Sections
+
+#### 0:00 Introduction (`page-100`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 1:04 **Contents board**
+  - 1:06 each category, revealed as it is named
+
+#### 2:06 Read before you write (`added-01`, authored)
+
+- 2:06 **Read before you write**
+  - 2:06 three parts
+  - 2:45 first thing
+
+*Rules on the boards*
+
+- 2:45 In the setting, find your role, and how you know the patient.
+
+#### 3:06 Where you work (`added-02`, authored)
+
+- 3:06 **Where you work**
+  - 3:06 four settings
+  - 3:36 other settings
+  - 3:48 a setting
+  - 3:57 your turn
+  - 4:10 the answers
+
+#### 4:27 How you know them (`added-03`, authored)
+
+- 4:27 **How you know them**
+  - 4:27 two settings
+  - 4:54 why it matters
+  - 4:58 your turn
+  - 5:11 the answer
+
+*Rules on the boards*
+
+- 4:54 How you know the patient helps you decide what goes in your letter.
+
+#### 5:19 Same notes, different readers (`added-04`, authored)
+
+- 5:19 **Same notes, different readers**
+  - 5:19 two readers
+  - 5:56 the reader decides
+  - 6:10 your turn
+  - 6:23 the answer
+
+*Rules on the boards*
+
+- 5:56 Same notes, different reader: different notes are relevant.
+
+#### 6:30 Who you write to (`added-05`, authored)
+
+- 6:30 **Who you write to**
+  - 6:30 six readers
+  - 7:12 a gloss
+  - 7:35 your turn
+  - 7:48 the answers
+
+#### 8:02 Words for your reader (`added-06`, authored)
+
+- 8:02 **Words for your reader**
+  - 8:02 notes and letter
+  - 8:42 the rule
+  - 8:59 your turn
+  - 9:14 the answer
+
+*Rules on the boards*
+
+- 8:42 A reader who knows the term: medical terms are fine. A reader who may not know it: explain the term, or use everyday words.
+
+#### 9:22 Does the reader know? (`added-07`, authored)
+
+- 9:22 **Does the reader know?**
+  - 9:22 Mr Lawson's paper
+  - 9:56 what is new
+  - 10:09 your turn
+  - 10:20 the answer
+
+*Rules on the boards*
+
+- 9:56 A GP who knows the patient needs what is new: the clinic's results and plan.
+
+#### 10:31 Why you write (`added-08`, authored)
+
+- 10:31 **Why you write**
+  - 10:31 nine purposes
+  - 11:00 hazards
+  - 11:25 a referral
+  - 11:29 your turn
+  - 11:45 the answers
+
+#### 12:01 How urgent is it? (`added-09`, authored)
+
+- 12:01 **How urgent is it?**
+  - 12:01 urgency and order
+  - 12:31 his example
+  - 12:53 your turn
+  - 13:06 the answer
+
+#### 13:18 Purpose and letter type (`added-10`, authored)
+
+- 13:18 **Purpose and letter type**
+  - 13:18 six letters
+  - 14:06 the nurse and the OT
+  - 14:22 your turn
+  - 14:42 the answer
+
+*Rules on the boards*
+
+- 14:06 In these two referrals, the occupational therapist assesses the home, and the community nurse gives ongoing care.
+
+#### 14:48 Six questions (`added-11`, authored)
+
+- 14:48 **Six questions**
+  - 14:48 Mr Lawson's paper
+  - 15:02 the first three
+  - 15:38 advice or handover
+  - 15:48 your turn
+  - 16:03 the answer
+
+*Rules on the boards*
+
+- 15:38 A letter to hand over part of a patient's care is not a letter asking for advice.
+
+#### 16:14 Language and urgency (`added-12`, authored)
+
+- 16:14 **Language and urgency**
+  - 16:14 not this, this
+  - 16:52 four levels
+  - 17:21 your turn
+  - 17:34 the answer
+
+*Rules on the boards*
+
+- 17:12 Mr Lawson: moderate. The GP takes over on 2 December.
+
+#### 17:45 Ongoing care (`added-13`, authored)
+
+- 17:45 **Ongoing care**
+  - 17:45 Mr Lawson's ongoing care
+  - 18:25 the review decides
+  - 18:30 your turn
+  - 18:42 the answer
+
+*Rules on the boards*
+
+- 18:25 Here, the care continues until a review decides what comes next.
+
+#### 18:57 Headings help you (`added-14`, authored)
+
+- 18:57 **Headings help you**
+  - 18:57 Mr Bradshaw's paper
+  - 19:20 other headings
+  - 19:36 your turn
+  - 19:49 the answers
+
+*Rules on the boards*
+
+- 19:29 Headings help you find information fast.
+
+#### 20:02 Relevant or not? (`added-15`, authored)
+
+- 20:02 **Relevant or not?**
+  - 20:02 keep or leave out
+  - 20:45 why
+  - 20:57 your turn
+  - 21:09 the answer
+
+*Rules on the boards*
+
+- 20:45 If the reader does not need a note, leave it out: it makes the letter too long.
+
+#### 21:16 What social history covers (`added-16`, authored)
+
+- 21:16 **What social history covers**
+  - 21:16 social history
+  - 21:51 only if relevant
+  - 22:01 your turn
+  - 22:14 the answer
+
+*Rules on the boards*
+
+- 21:51 Keep social history only if it is relevant, like a job linked to the complaint.
+
+#### 22:24 Clinical words (`added-17`, authored)
+
+- 22:24 **Clinical words**
+  - 22:24 the fact, in clinical words
+  - 23:08 a gloss
+  - 23:18 your turn
+  - 23:34 the answer
+
+#### 23:43 Fair, not judging (`added-18`, authored)
+
+- 23:43 **Fair, not judging**
+  - 23:43 not this, this
+  - 24:25 a gloss
+  - 24:37 your turn
+  - 24:49 the answer
+
+#### 25:00 Abbreviations by reader (`added-19`, authored)
+
+- 25:00 **Abbreviations by reader**
+  - 25:00 notes and letter
+  - 25:51 the reader decides
+  - 26:02 your turn
+  - 26:18 the answer
+
+*Rules on the boards*
+
+- 25:51 Use a short form on its own only if it is standard and your reader knows it.
+
+#### 26:32 Tests and findings (`added-20`, authored)
+
+- 26:32 **Tests and findings**
+  - 26:32 Mr Lawson's results
+  - 27:03 more short forms
+  - 27:24 your turn
+  - 27:38 the answers
+
+#### 27:51 Symbols (`added-21`, authored)
+
+- 27:51 **Symbols**
+  - 27:51 symbols
+  - 28:32 your turn
+  - 28:44 the answers
+
+#### 28:53 More symbols, care words (`added-22`, authored)
+
+- 28:53 **More symbols, care words**
+  - 28:53 care words
+  - 29:18 in situ
+
+#### 29:30 Routes (`added-23`, authored)
+
+- 29:30 **Routes**
+  - 29:30 routes
+  - 30:01 more routes
+  - 30:23 elixir
+  - 30:36 in our papers
+  - 30:49 your turn
+  - 31:01 the answers
+
+#### 31:13 How often (`added-24`, authored)
+
+- 31:13 **How often**
+  - 31:13 how often
+  - 31:49 prn
+  - 31:53 once a week
+  - 32:06 your turn
+  - 32:19 the answer
+
+*Rules on the boards*
+
+- 31:53 Low-dose methotrexate is taken once a week, not once a day.
+
+#### 32:28 Route verbs (`added-25`, authored)
+
+- 32:28 **Route verbs**
+  - 32:28 route verbs
+  - 33:02 instil
+  - 33:10 the passive
+  - 33:19 relieve, relief
+  - 33:34 your turn
+  - 33:47 the answer
+
+*Rules on the boards*
+
+- 33:10 Use the passive when it does not matter who gives the medicine.
+
+#### 33:56 Treatments without medicines (`added-26`, authored)
+
+- 33:56 **Treatments without medicines**
+  - 33:56 two kinds
+  - 34:26 more without medicines
+  - 34:48 your turn
+  - 35:02 the answer
+
+#### 35:09 Letter phrases (`added-27`, authored)
+
+- 35:09 **Letter phrases**
+  - 35:09 four phrases
+  - 35:46 in speaking
+  - 35:52 your turn
+  - 36:04 the answer
+
+*Rules on the boards*
+
+- 35:46 In speaking, say it to the patient: I'd encourage you to continue your stretches.
+
+#### 36:10 Finish the phrases (`added-28`, authored)
+
+- 36:10 **Finish the phrases**
+  - 36:10 beginnings and endings
+  - 36:36 to, with, on
+  - 36:48 your turn
+  - 37:00 the answers
+
+*Rules on the boards*
+
+- 36:36 After 'advised to' and 'encouraged to', a verb. After 'managed with' and 'commenced on', a medicine or a treatment.
+
+#### 37:13 Closing (`added-29`, closing)
+
+- 37:13 **Closing**
+  - 37:16 Recap
+  - 37:38 Practise
+
+*Rules on the boards*
+
+- 37:38 Practise: take a case of your own. Name your reader and what they need. Then write one sentence about a medicine.
+
+### Vocabulary
+
+First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
+
+- 7:12 allied health professional
+- 11:00 hazards
+- 15:21 shared care
+- 23:08 socially isolated
+- 24:25 widower
+- 30:23 elixir
+- 33:19 relieve, relief
+
+### Links to other lessons
+
+- 0:14 refers to OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`) (in `page-100_t1.s1.u2`)
+- 10:31 refers to OET Writing: Assessment Criteria (`writing-02-assessment-criteria`) (in `added-08_t1.s1.u1`)
+- 12:08 refers to OET Writing: Organising the Letter (`writing-07-organisation`) (in `added-09_t1.s1.u2`)
+- 25:00 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`) (in `added-19_t1.s1.u1`)
+
+
+<a id="medicine-04-referral-letter"></a>
+
+## 4. OET Writing for Doctors: A Referral Letter
+
+- Lesson ID and folder: `medicine-04-referral-letter` (folder `medicine-04-referral-letter`); course medicine, lesson 4; length 42:46; bundle format 1.23
+- Status: approved by siavash, 2026-11-21 11:46
+- Description: Write a whole referral letter, slowly, step by step. Read the task, choose the notes a new reader needs, and plan the paragraphs. Then write each part yourself before you see the model, and check the length, the tone and the short forms.
+- Original session: none (a lesson with no recording and no deck, ADR 047)
+  - An authored lesson (ADR 047, no recorded source), the fourth of the Medicine profession course, OET for Doctors (issue #249, the owner's answers of 2026-11-18): a whole referral letter written step by step, from the task, the notes a new reader needs and the paragraph plan to each part, written by the student before the model, and a check of length, tone and short forms; the case notes are our own set oa-ws-med-0008, shown whole in the lesson, and every exam fact comes from docs/writing-facts.md. Its id's number is its place in the course (AGENTS.md 10b).
+- Parts: Read the task; Select the notes; Plan the paragraphs; The opening; The body; The whole letter
+
+### Sections
+
+#### 0:00 Introduction (`page-100`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 0:58 **Contents board**
+  - 1:00 each category, revealed as it is named
+
+#### 1:41 The Writing Task (`added-01`, authored)
+
+- 1:41 **The Writing Task**
+  - 1:41 the task
+  - 2:07 who am I
+  - 2:17 who is my reader
+  - 2:26 does she know him
+  - 2:39 your turn
+  - 2:56 the answer
+
+#### 3:09 A new reader (`added-02`, authored)
+
+- 3:09 **A new reader**
+  - 3:09 what she needs
+  - 3:35 not everything
+  - 3:43 your turn
+  - 3:57 the answer
+
+*Rules on the boards*
+
+- 3:35 A new reader needs more background, but not everything.
+
+#### 4:06 His background (`added-03`, authored)
+
+- 4:06 **His background**
+  - 4:06 his background
+  - 4:20 the address
+  - 4:25 his household
+  - 4:34 the smaller lines
+  - 4:47 your turn
+  - 5:01 the answers
+
+#### 5:11 History and medicines (`added-04`, authored)
+
+- 5:11 **History and medicines**
+  - 5:11 his history
+  - 5:19 his family
+  - 5:25 the old problems
+  - 5:33 no allergies
+  - 5:40 your turn
+  - 5:52 the answer
+  - 6:10 the dose
+  - 6:25 the dose answer
+
+#### 6:42 The three visits (`added-05`, authored)
+
+- 6:42 **The three visits**
+  - 6:42 the visits
+  - 6:53 the higher dose
+  - 7:03 the old progress
+  - 7:11 work and leave
+  - 7:35 the blood tests
+  - 7:48 your turn
+  - 8:08 the answer
+
+#### 8:25 Today's visit (`added-06`, authored)
+
+- 8:25 **Today's visit**
+  - 8:25 today
+  - 8:32 his mood
+  - 8:39 the risk
+  - 8:58 home readings
+  - 9:04 the assessment
+  - 9:24 your turn
+  - 9:36 the answer
+
+#### 9:50 The plan (`added-07`, authored)
+
+- 9:50 **The plan**
+  - 9:50 the plan
+  - 9:57 your turn
+  - 10:07 the answer
+  - 10:18 the dose stays
+  - 10:35 the safety plan
+
+#### 10:54 One theme a paragraph (`added-08`, authored)
+
+- 10:54 **One theme a paragraph**
+  - 10:54 one theme
+  - 11:14 three to five
+  - 11:19 today first
+
+*Rules on the boards*
+
+- 11:14 Most letters have three to five paragraphs. There is no fixed number.
+
+#### 11:33 This letter's plan (`added-09`, authored)
+
+- 11:33 **This letter's plan**
+  - 11:33 your turn
+  - 11:38 the task
+  - 11:50 the plan
+
+#### 12:09 Top of the letter (`added-10`, authored)
+
+- 12:09 **Top of the letter**
+  - 12:09 the top
+  - 12:19 the address
+  - 12:31 copied exactly
+  - 12:45 your turn, the dates
+  - 13:05 the date
+  - 13:17 your turn, the greeting
+  - 13:34 the greeting
+  - 13:46 only a job title
+  - 14:02 the Re line
+  - 14:16 the date of birth
+
+*Rules on the boards*
+
+- 13:46 Only a job title? Dear Consultant Psychiatrist, or Dear Sir or Madam. Both end: Yours faithfully.
+
+#### 14:22 The first sentence (`added-11`, authored)
+
+- 14:22 **The first sentence**
+  - 14:22 the paper beside the opening
+  - 14:34 your turn
+  - 14:50 the frame
+  - 15:02 his age and job
+  - 15:13 what you ask
+  - 15:24 how soon
+  - 15:42 no learnt phrase
+
+*Rules on the boards*
+
+- 15:42 Build it from this paper. A sentence learnt by heart does not fit every letter.
+
+#### 15:50 How he is today (`added-12`, authored)
+
+- 15:50 **How he is today**
+  - 15:50 the paper beside paragraph 2
+  - 16:13 why his mood first
+  - 16:28 your turn, his mood
+  - 16:44 the time first
+  - 17:14 the subject and the verb
+  - 17:28 check yours
+  - 17:42 your turn, his work
+  - 18:02 the subject
+  - 18:24 the past
+  - 18:34 check yours
+  - 18:45 your turn, his sick leave
+  - 19:03 the subject and the verb
+  - 19:27 not four weeks
+  - 19:36 the same subject
+  - 19:55 check yours
+  - 20:07 the paragraph so far
+
+#### 20:26 The risk, exactly (`added-13`, authored)
+
+- 20:26 **The risk, exactly**
+  - 20:26 the paper beside the risk
+  - 20:44 your turn, the risk
+  - 21:01 the subject and the verb
+  - 21:17 the details
+  - 21:39 check yours
+  - 21:53 why one sentence
+  - 22:13 protective factor
+  - 22:30 your turn, the protective factor
+  - 22:45 one short sentence
+  - 23:00 check yours
+  - 23:10 why here
+
+#### 23:25 The safety plan (`added-14`, authored)
+
+- 23:25 **The safety plan**
+  - 23:25 the paper beside the plan
+  - 23:35 the passive
+  - 23:50 your turn
+  - 24:11 the passive
+  - 24:36 a list
+  - 25:01 check yours
+  - 25:12 two tenses
+  - 25:27 what is left out
+
+#### 25:39 His history (`added-15`, authored)
+
+- 25:39 **His history**
+  - 25:39 the paper beside paragraph 3
+  - 25:50 time order
+  - 26:05 your turn, the past episodes
+  - 26:22 the subject and the past
+  - 26:39 the details
+  - 26:53 on sertraline
+  - 27:03 check yours
+  - 27:20 your turn, this episode
+  - 27:37 a point in time
+  - 27:53 check yours
+  - 28:01 current
+
+#### 28:12 What was tried (`added-16`, authored)
+
+- 28:12 **What was tried**
+  - 28:12 the paper beside paragraph 3
+  - 28:19 your turn, the tense
+  - 28:44 the answer
+  - 28:51 your turn, what was tried
+  - 29:10 a long subject
+  - 29:27 why the treatment first
+  - 29:42 one more treatment
+  - 30:00 the verb
+  - 30:15 check yours
+  - 30:24 your turn, the blood tests
+  - 30:40 the subject and the detail
+  - 31:07 check yours
+  - 31:17 why the tests
+
+#### 31:29 Blood pressure (`added-17`, authored)
+
+- 31:29 **Blood pressure**
+  - 31:29 the paper beside paragraph 4
+  - 31:35 why she needs this
+  - 31:48 your turn, the rise
+  - 32:08 the time first
+  - 32:28 the subject and the verb
+  - 32:44 the numbers
+  - 33:06 both numbers
+  - 33:17 check yours
+  - 33:38 your turn, the doubt
+  - 33:53 may be
+  - 34:02 your turn, the plan
+  - 34:22 the cause
+  - 34:39 the result
+  - 34:50 the condition
+  - 35:12 check yours
+  - 35:25 three links
+
+#### 35:43 What you ask for (`added-18`, authored)
+
+- 35:43 **What you ask for**
+  - 35:43 the paper beside paragraph 5
+  - 35:49 your turn, the request
+  - 36:04 asking, not telling
+  - 36:23 which
+  - 36:37 one sentence
+  - 36:49 check yours
+  - 36:56 your turn, what he declines
+  - 37:12 his choice
+  - 37:29 check yours
+  - 37:39 why she needs this
+  - 37:53 the close
+
+#### 38:11 The whole letter (`added-19`, authored)
+
+- 38:11 **The whole letter**
+  - 38:11 the letter
+  - 39:06 the close
+
+#### 39:18 Check the length (`added-20`, authored)
+
+- 39:18 **Check the length**
+  - 39:18 the count
+  - 39:34 your turn
+  - 39:47 the answer
+
+*Rules on the boards*
+
+- 40:01 Much longer usually means information the reader does not need, or poor organisation.
+
+#### 40:15 Check the tone (`added-21`, authored)
+
+- 40:15 **Check the tone**
+  - 40:15 three checks
+  - 40:35 your turn
+  - 40:53 the answer
+
+#### 41:09 Check the short forms (`added-22`, authored)
+
+- 41:09 **Check the short forms**
+  - 41:09 in full
+  - 41:22 keep some
+  - 41:43 your turn
+  - 41:56 the answer
+
+*Rules on the boards*
+
+- 41:22 For a doctor, you can keep these short forms: BP, ECG, mg, mmHg.
+
+#### 42:07 Closing (`added-23`, closing)
+
+- 42:07 **Closing**
+  - 42:11 Recap
+  - 42:31 Next
+
+*Rules on the boards*
+
+- 42:31 Next: A Discharge Letter, to a GP who knows the patient.
+
+### Vocabulary
+
+First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
+
+- 22:13 protective factor
+
+### Links to other lessons
+
+- 1:56 refers to OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`) (in `added-01_t1.s1.u2`)
+- 4:06 refers to OET Writing: Information Flow (`writing-05-information-flow`) (in `added-03_t1.s1.u1`)
+- 10:54 refers to OET Writing: Organising the Letter (`writing-07-organisation`) (in `added-08_t1.s1.u1`)
+- 12:09 refers to OET Writing: Letter Structure (`writing-03-letter-structure`) (in `added-10_t1.s1.u1`)
+- 14:22 refers to OET Writing: The Opening Paragraph (`writing-04-introduction`) (in `added-11_t1.s1.u1`)
+- 16:44 refers to OET Writing: Word Order (`writing-06-word-order`) (in `added-12_t1.s3.u1`)
+- 16:57 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`) (in `added-12_t1.s3.u2`)
+- 19:13 refers to Grammar for OET: Verb Tenses (`grammar-01-verb-tenses`) (in `added-12_t1.s11.u2`)
+- 30:00 refers to Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`) (in `added-16_t1.s7.u1`)
+- 32:09 refers to Grammar for OET: Complex sentences (`grammar-05-complex-compound`) (in `added-17_t1.s3.u1`)
+- 36:24 refers to Grammar for OET: Relative Clauses and Participle Clauses (`grammar-06-clause`) (in `added-18_t1.s3.u1`)
+
+
+<a id="medicine-05-discharge-letter"></a>
+
+## 5. OET Writing for Doctors: A Discharge Letter
+
+- Lesson ID and folder: `medicine-05-discharge-letter` (folder `medicine-05-discharge-letter`); course medicine, lesson 5; length 36:20; bundle format 1.23
+- Status: approved by siavash, 2026-11-21 11:46
+- Description: Write a whole discharge letter to a GP who knows the patient. Read the task, keep only what is new to him, and plan five paragraphs. Write each part yourself before you see the model, with clear words for a medicine change, then check the letter.
+- Original session: none (a lesson with no recording and no deck, ADR 047)
+  - An authored lesson (ADR 047, no recorded source), the fifth and last of the Medicine profession course, OET for Doctors (issue #249, the owner's answers of 2026-11-18): a whole discharge letter to a GP who knows the patient, keeping only what is new to him, in five planned paragraphs written by the student before the model, with clear words for a medicine change and a final check; the case notes are our own set oa-ws-med-0004, shown whole in the lesson, and every exam fact comes from docs/writing-facts.md. Its id's number is its place in the course (AGENTS.md 10b).
+- Parts: Read the task; Select the notes; Plan the paragraphs; The opening; The body; The requests; The whole letter
+
+### Sections
+
+#### 0:00 Introduction (`page-100`, intro)
+
+- 0:00 **Title board**
+  - 0:00 the lesson title, then what the lesson is about
+- 1:16 **Contents board**
+  - 1:18 each category, revealed as it is named
+
+#### 2:03 Task and reader (`added-01`, authored)
+
+- 2:03 **Task and reader**
+  - 2:03 Mrs Dawson's task
+  - 2:43 who am I
+  - 2:48 who is my reader
+  - 2:54 does he know her
+  - 3:11 your turn
+  - 3:22 what do I ask
+  - 3:38 how urgent is it
+  - 3:56 today's date
+
+#### 4:04 What the GP knows (`added-02`, authored)
+
+- 4:04 **What the GP knows**
+  - 4:04 he knows, new to him
+  - 4:29 your turn
+  - 4:38 the answer
+
+#### 4:51 Her history (`added-03`, authored)
+
+- 4:51 **Her history**
+  - 4:51 her history
+  - 5:15 her family and work
+  - 5:32 your turn
+  - 5:42 the answer
+  - 5:53 old problems
+  - 6:08 palpitations before
+  - 6:15 allergies
+
+#### 6:29 Her medicines (`added-04`, authored)
+
+- 6:29 **Her medicines**
+  - 6:29 her medicines
+  - 6:39 levothyroxine
+  - 7:04 your turn
+  - 7:13 the answer
+  - 7:27 cetirizine
+  - 7:33 the wrist
+
+#### 7:38 Today's visit (`added-05`, authored)
+
+- 7:38 **Today's visit**
+  - 7:38 today
+  - 7:50 what she felt
+  - 8:03 no syncope
+  - 8:22 your turn
+  - 8:35 hot and shaky
+  - 8:48 hay fever
+  - 9:00 two heart rates
+  - 9:15 normal findings
+
+#### 9:20 Results and treatment (`added-06`, authored)
+
+- 9:20 **Results and treatment**
+  - 9:20 results and treatment
+  - 9:30 the ECG
+  - 9:52 the normal tests
+  - 10:11 your turn
+  - 10:20 the answer
+  - 10:38 failed, then worked
+  - 10:51 the repeat ECG
+  - 11:01 three hours
+
+#### 11:07 Assessment and plan (`added-07`, authored)
+
+- 11:07 **Assessment and plan**
+  - 11:07 the assessment and the plan
+  - 11:20 the assessment
+  - 11:33 advice and her wish
+  - 11:52 home today
+  - 12:04 the requests
+
+#### 12:20 The paragraph plan (`added-08`, authored)
+
+- 12:20 **The paragraph plan**
+  - 12:19 five paragraphs
+
+#### 13:00 Why this order (`added-09`, authored)
+
+- 13:00 **Why this order**
+  - 13:00 first, then, last
+  - 13:28 the thyroid paragraph
+
+#### 13:39 Address and date (`added-10`, authored)
+
+- 13:39 **Address and date**
+  - 13:39 the frame
+  - 13:53 the address
+  - 14:07 the date
+  - 14:14 in full
+
+#### 14:29 Greeting and Re line (`added-11`, authored)
+
+- 14:29 **Greeting and Re line**
+  - 14:29 the greeting
+  - 14:55 the Re line
+  - 15:07 her date of birth
+  - 15:15 your turn
+  - 15:26 the answer
+
+#### 15:32 The opening sentence (`added-12`, authored)
+
+- 15:32 **The opening sentence**
+  - 15:32 the opening sentence
+  - 16:03 who, and today
+  - 16:25 the diagnosis
+  - 16:30 what is not there
+
+#### 16:44 The purpose sentence (`added-13`, authored)
+
+- 16:44 **The purpose sentence**
+  - 16:44 the purpose
+
+#### 17:24 What happened today (`added-14`, authored)
+
+- 17:24 **What happened today**
+  - 17:24 what happened
+  - 17:47 she developed
+  - 18:02 and, but
+
+#### 18:21 The ECG result (`added-15`, authored)
+
+- 18:21 **The ECG result**
+  - 18:21 the ECG
+  - 18:44 showed
+  - 18:56 one rate
+  - 19:11 known first
+  - 19:23 not the note
+
+#### 19:33 Failed, then worked (`added-16`, authored)
+
+- 19:33 **Failed, then worked**
+  - 19:33 the treatment
+  - 19:55 no effect
+  - 20:04 restored
+
+#### 20:20 Results and progress (`added-17`, authored)
+
+- 20:20 **Results and progress**
+  - 20:20 the tests
+  - 20:44 in a group
+  - 20:57 three hours
+
+#### 21:05 Medicine change words (`added-18`, authored)
+
+- 21:05 **Medicine change words**
+  - 21:05 the notes, the letter
+  - 21:45 your turn
+  - 21:54 the answer
+
+#### 22:03 As you know (`added-19`, authored)
+
+- 22:03 **As you know**
+  - 22:03 the dose change
+  - 22:25 as you know
+  - 22:42 was increased
+  - 22:51 six weeks ago
+
+#### 22:58 Time from today (`added-20`, authored)
+
+- 22:58 **Time from today**
+  - 22:58 the notes, the letter
+  - 23:20 in words
+  - 23:31 your turn
+  - 23:41 the answer
+  - 23:47 no dates
+
+#### 23:57 A possible cause (`added-21`, authored)
+
+- 23:57 **A possible cause**
+  - 23:57 a possible cause
+  - 24:07 has felt
+  - 24:17 has lost
+  - 24:28 your turn
+  - 24:52 may have contributed
+
+#### 25:00 Tense from the time (`added-22`, authored)
+
+- 25:00 **Tense from the time**
+  - 25:00 the time word
+  - 25:22 ago, for
+  - 25:33 your turn
+  - 25:42 the answer
+
+#### 25:50 Her discharge advice (`added-23`, authored)
+
+- 25:50 **Her discharge advice**
+  - 25:50 her advice
+  - 26:16 she was taught
+  - 26:28 despite this
+  - 26:38 exact
+
+#### 26:50 Her wish, no decision (`added-24`, authored)
+
+- 26:50 **Her wish, no decision**
+  - 26:50 her wish
+  - 27:13 a wish
+  - 27:22 pt becomes she
+
+*Rules on the boards*
+
+- 27:13 A wish, not a decision.
+- 27:15 Not: she has decided to have it. Not: she has said no. Nothing is decided.
+
+#### 27:34 The plan, sorted (`added-25`, authored)
+
+- 27:34 **The plan, sorted**
+  - 27:34 the plan lines
+  - 27:42 refer cardiology
+  - 27:46 the copies
+  - 27:53 your turn
+  - 28:05 the advice
+  - 28:11 the TSH
+  - 28:15 discharge home
+
+#### 28:20 The cardiology request (`added-26`, authored)
+
+- 28:20 **The cardiology request**
+  - 28:20 the first request
+  - 28:40 grateful
+  - 28:55 where, and why
+  - 29:06 routine
+
+#### 29:16 The TSH request (`added-27`, authored)
+
+- 29:16 **The TSH request**
+  - 29:16 the second request
+  - 29:34 also
+  - 29:51 suppressed
+  - 30:03 exact asks
+
+#### 30:15 The close (`added-28`, authored)
+
+- 30:15 **The close**
+  - 30:15 the close
+  - 30:34 the copies
+  - 30:43 sincerely
+  - 30:49 your role
+
+*Rules on the boards*
+
+- 30:54 A line like 'Please do not hesitate to contact me' is optional. It is not part of the word count.
+
+#### 31:09 The whole letter (`added-29`, authored)
+
+- 31:09 **The whole letter**
+  - 31:09 the letter
+  - 33:06 the close
+
+#### 33:15 Check the letter (`added-30`, authored)
+
+- 33:15 **Check the letter**
+  - 33:15 three checks
+  - 33:43 your turn
+  - 33:56 the answer
+
+#### 34:06 Check the numbers (`added-31`, authored)
+
+- 34:06 **Check the numbers**
+  - 34:06 the numbers
+  - 34:31 the unit
+  - 34:36 your turn
+  - 34:46 the answer
+
+#### 34:56 Read as the GP (`added-32`, authored)
+
+- 34:56 **Read as the GP**
+  - 34:56 Read as Dr Nadkarni
+  - 35:11 Your turn
+  - 35:23 The answer
+
+#### 35:31 Closing (`added-33`, closing)
+
+- 35:31 **Closing**
+  - 35:33 Recap
+  - 36:03 Practise
+
+*Rules on the boards*
+
+- 36:03 Practise: write this letter again tomorrow, without looking at ours. Then compare.
+
+### Vocabulary
+
+First moment each word is taught. Word-bank items carry their `lx:` ID; their meanings stay in the exercises repository.
+
+- 6:43 levothyroxine
+- 8:07 syncope
+- 9:34 tachycardia
+- 9:57 troponin
+- 11:38 catheter ablation
+- 24:28 over-replacement
+- 29:51 suppressed
+
+### Links to other lessons
+
+- 2:30 refers to OET Writing: Reading the Task and the Case Notes (`writing-08-reading-the-task`) (in `added-01_t1.s1.u3`)
+- 12:20 refers to OET Writing: Organising the Letter (`writing-07-organisation`) (in `added-08_t1.s1.u1`)
+- 15:32 refers to OET Writing: The Opening Paragraph (`writing-04-introduction`) (in `added-12_t1.s1.u1`)
+- 17:43 refers to Grammar for OET: Paraphrasing (`grammar-08-paraphrasing`) (in `added-14_t1.s2.u1`)
+- 17:59 refers to Grammar for OET: Punctuation (`grammar-07-punctuation`) (in `added-14_t1.s3.u1`)
+- 19:11 refers to OET Writing: Information Flow (`writing-05-information-flow`) (in `added-15_t1.s4.u1`)
+- 29:29 refers to OET Writing: Word Order (`writing-06-word-order`) (in `added-27_t1.s2.u1`)
+
+
+---
+
 # Topic index
 
 Each topic or term, then each lesson that teaches it and the first moment there.
@@ -14432,34 +16207,44 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **A carer's card**: `speaking-05-taking-a-history` 25:52
 - **a fifty-year-old teacher**: `grammar-08-paraphrasing` 23:00
 - **A first-meeting card**: `speaking-03-starting` 16:52
-- **A follow-up card**: `speaking-02-reading-the-card` 22:25; `speaking-03-starting` 19:59
+- **A follow-up card**: `speaking-02-reading-the-card` 26:51; `speaking-03-starting` 19:59
+- **A GP surgery**: `medicine-01-doctors-language` 3:10
 - **A hard question**: `speaking-11-keeping-going` 9:48
 - **A history card**: `speaking-04-asking-questions` 41:31
+- **A home visit**: `medicine-01-doctors-language` 6:24
+- **A hospital ward**: `medicine-01-doctors-language` 5:25
+- **A last exchange**: `medicine-01-doctors-language` 35:50
 - **A letter with gaps**: `writing-06-word-order` 21:22
 - **A list of steps**: `speaking-14-ending` 8:18
 - **A lot of people**: `speaking-12-empathy-and-reassurance` 9:39
 - **A model explanation**: `speaking-08-explaining` 34:59
 - **A needle in a haystack**: `reading-02-part-a` 1:48
 - **A new medicine**: `speaking-06-patient-concerns` 8:26
+- **A new reader**: `medicine-04-referral-letter` 3:09
 - **A or an**: `grammar-04-articles` 11:27
 - **A paragraph corrected**: `writing-06-word-order` 13:31
-- **A pharmacy card**: `speaking-02-reading-the-card` 18:44
+- **A pharmacy card**: `speaking-02-reading-the-card` 23:10
+- **A plan by stage**: `medicine-02-whole-role-play` 5:31
+- **A possible cause**: `medicine-05-discharge-letter` 23:57
 - **A quick review of the method**: `reading-05-part-c-2` 1:23; `listening-05-part-c-2` 1:10
 - **A role-play card**: `speaking-01-the-test` 17:33
 - **A sample letter**: `writing-01-overview` 14:05
 - **A sensitive topic**: `speaking-05-taking-a-history` 23:27
-- **A short exchange**: `speaking-06-patient-concerns` 35:17; `speaking-09-giving-advice` 34:56; `speaking-07-persuading` 22:34; `speaking-13-angry-or-upset` 33:41; `speaking-14-ending` 27:56
+- **A short exchange**: `speaking-06-patient-concerns` 35:17; `speaking-09-giving-advice` 34:56; `speaking-07-persuading` 22:34; `speaking-13-angry-or-upset` 33:41; `speaking-14-ending` 27:56; `medicine-01-doctors-language` 17:05
 - **A short role-play**: `speaking-04-asking-questions` 42:52; `speaking-05-taking-a-history` 35:23; `speaking-11-keeping-going` 33:20
 - **A steady speed**: `speaking-11-keeping-going` 30:23
 - **A target score for Part B**: `listening-03-part-b` 11:46
 - **A target score for Part C**: `listening-04-part-c` 9:16
+- **A third exchange**: `medicine-01-doctors-language` 32:48
 - **A two-week history of**: `grammar-08-paraphrasing` 41:25
 - **A warm voice**: `speaking-10-sounding-clear` 22:26
+- **A warning first**: `medicine-01-doctors-language` 27:00
 - **A worried mother**: `speaking-06-patient-concerns` 25:35
 - **A worried parent**: `speaking-08-explaining` 37:10
 - **A worried patient**: `speaking-12-empathy-and-reassurance` 33:42
 - **A wrong number**: `speaking-11-keeping-going` 18:56
 - **a-**: `grammar-03-nominalization` 10:11
+- **Abbreviations by reader**: `medicine-03-notes-readers-medicines` 25:00
 - **Abbreviations in the letter**: `writing-02-assessment-criteria` 25:20
 - **About a colleague**: `speaking-13-angry-or-upset` 17:55
 - **Accuracy to the case notes**: `writing-02-assessment-criteria` 14:09
@@ -14470,6 +16255,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **active and passive**: `grammar-01-verb-tenses` 84:26; `grammar-02-verb-use` 35:19
 - **Active voice**: `grammar-02-verb-use` 36:23
 - **Active vs passive**: `grammar-01-verb-tenses` 84:26
+- **Address and date**: `medicine-05-discharge-letter` 13:39
 - **adjective + noun collocations**: `vocabulary-03-collocations-2` 1:59
 - **Adjective and noun**: `vocabulary-03-collocations-2` 6:54
 - **Adjective and noun collocation**: `vocabulary-03-collocations-2` 2:22
@@ -14477,19 +16263,21 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Adjectives and nouns**: `vocabulary-01-word-forms` 31:14
 - **Administer**: `vocabulary-02-collocations` 19:07
 - **Adverbial phrases**: `writing-06-word-order` 11:30
+- **Advice in brief**: `medicine-01-doctors-language` 15:58
 - **Advice: a first look**: `speaking-08-explaining` 34:34
 - **Advise or advice**: `speaking-09-giving-advice` 7:15
 - **Advising a carer**: `speaking-09-giving-advice` 33:54
 - **Affect or effect**: `speaking-05-taking-a-history` 19:36
 - **Although**: `grammar-05-complex-compound` 11:48
 - **An anxious patient**: `speaking-13-angry-or-upset` 18:48
+- **An emergency department**: `medicine-01-doctors-language` 4:17
 - **An exchange**: `speaking-11-keeping-going` 6:19
 - **An infection, some pain**: `speaking-07-persuading` 26:26
 - **An itchy rash**: `vocabulary-03-collocations-2` 84:06
 - **An option for now**: `speaking-13-angry-or-upset` 10:39
 - **An upset patient**: `speaking-13-angry-or-upset` 20:45
 - **Angry, anxious or upset**: `speaking-13-angry-or-upset` 2:01
-- **Another short exchange**: `speaking-07-persuading` 29:46
+- **Another short exchange**: `speaking-07-persuading` 29:46; `medicine-01-doctors-language` 23:29
 - **Answer the real reason**: `speaking-07-persuading` 10:22
 - **Answer, then check**: `speaking-14-ending` 11:48
 - **Answering a hint**: `speaking-06-patient-concerns` 13:28
@@ -14500,9 +16288,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Appositive structure**: `grammar-06-clause` 12:49
 - **Appositives and ages**: `writing-04-introduction` 9:59
 - **Appreciate: two meanings**: `speaking-13-angry-or-upset` 13:42
+- **Arranging follow-up**: `medicine-01-doctors-language` 33:47
+- **Arranging some tests**: `medicine-01-doctors-language` 15:02
 - **article**: `grammar-02-verb-use` 62:02
 - **Articles**: `grammar-04-articles` 2:00; `grammar-08-paraphrasing` 12:29
 - **As soon as**: `speaking-13-angry-or-upset` 9:49
+- **As you know**: `medicine-05-discharge-letter` 22:03
 - **Ask before you advise**: `speaking-09-giving-advice` 18:50
 - **Ask more than once**: `speaking-06-patient-concerns` 23:29
 - **Ask what's stopping them**: `speaking-07-persuading` 8:27
@@ -14515,6 +16306,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Asking to move on**: `speaking-11-keeping-going` 23:55
 - **Asking to repeat**: `speaking-11-keeping-going` 13:11
 - **Asking what they mean**: `speaking-04-asking-questions` 3:46
+- **Assessment and plan**: `medicine-05-discharge-letter` 11:07
 - **Avoid a series of short sentences**: `vocabulary-01-word-forms` 68:43
 - **Avoid sentences that are too long**: `vocabulary-01-word-forms` 81:29
 - **Avoiding problems**: `speaking-09-giving-advice` 6:13
@@ -14525,10 +16317,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **been**: `grammar-01-verb-tenses` 15:25
 - **Before a scan**: `speaking-06-patient-concerns` 7:22
 - **Before he quit**: `grammar-01-verb-tenses` 49:39
+- **Before they go**: `medicine-01-doctors-language` 34:52
 - **Before you explain**: `speaking-05-taking-a-history` 28:29
 - **Before you listen**: `listening-03-part-b` 5:03
 - **Before you listen: ninety seconds**: `listening-04-part-c` 5:21
 - **Benefits with if**: `speaking-07-persuading` 14:37
+- **Blood pressure**: `medicine-04-referral-letter` 31:29
 - **Brackets**: `grammar-07-punctuation` 90:02
 - **Brackets, quotation marks, slashes and dashes**: `grammar-07-punctuation` 77:19
 - **Build a word bank**: `speaking-08-explaining` 10:27
@@ -14537,15 +16331,24 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **By monitoring your symptoms**: `vocabulary-02-collocations` 36:31
 - **c/o**: `grammar-03-nominalization` 16:48
 - **Capital letters**: `grammar-07-punctuation` 71:26
+- **Card one, whole**: `medicine-02-whole-role-play` 22:30
+- **Card two plan**: `medicine-02-whole-role-play` 36:14
+- **Card two tasks**: `medicine-02-whole-role-play` 34:25
 - **Care at home**: `speaking-09-giving-advice` 4:24
 - **Case notes**: `grammar-01-verb-tenses` 115:03
 - **Case notes and the Writing Task**: `writing-01-overview` 13:48
 - **Case notes: error correction**: `grammar-01-verb-tenses` 114:53
 - **Case-note abbreviations**: `grammar-07-punctuation` 87:44
 - **Cause and result**: `speaking-08-explaining` 25:10
+- **Check the length**: `medicine-04-referral-letter` 39:18
+- **Check the letter**: `medicine-05-discharge-letter` 33:15
+- **Check the numbers**: `medicine-05-discharge-letter` 34:06
+- **Check the short forms**: `medicine-04-referral-letter` 41:09
+- **Check the tone**: `medicine-04-referral-letter` 40:15
 - **Check you've understood**: `speaking-06-patient-concerns` 31:44
 - **Checking the name**: `speaking-03-starting` 7:12
 - **Checking they understand**: `speaking-04-asking-questions` 5:22
+- **Checking understanding**: `medicine-01-doctors-language` 31:48
 - **Checking what they mean**: `speaking-11-keeping-going` 14:20
 - **Checks after a chunk**: `speaking-11-keeping-going` 4:25
 - **Checks at the end**: `speaking-08-explaining` 30:14
@@ -14557,6 +16360,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Clause**: `grammar-05-complex-compound` 3:57
 - **Clear steps, softer advice**: `speaking-09-giving-advice` 16:10
 - **Clear, not scary**: `speaking-14-ending` 17:09
+- **Clinical words**: `medicine-03-notes-readers-medicines` 22:24
 - **Close warmly**: `speaking-14-ending` 22:38
 - **Closed questions**: `speaking-04-asking-questions` 19:05
 - **Closing sentence**: `writing-01-overview` 16:59
@@ -14610,16 +16414,20 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **defining relative clause**: `vocabulary-01-word-forms` 69:56
 - **Denominalisation**: `grammar-03-nominalization` 51:34
 - **Dependent clause**: `grammar-05-complex-compound` 4:34; `grammar-07-punctuation` 6:42
+- **Describing the pain**: `medicine-01-doctors-language` 11:25
 - **Direct or indirect**: `speaking-04-asking-questions` 22:21
 - **dis-**: `vocabulary-01-word-forms` 75:13
 - **do a quick check**: `vocabulary-03-collocations-2` 56:32
+- **Do I know her?**: `medicine-02-whole-role-play` 2:47
 - **DO tunnel**: `grammar-08-paraphrasing` 48:32
 - **Do, does and did**: `speaking-04-asking-questions` 20:04
 - **Does in a question**: `speaking-05-taking-a-history` 20:25
+- **Does the reader know?**: `medicine-03-notes-readers-medicines` 9:22
 - **Don't argue back**: `speaking-13-angry-or-upset` 4:46
 - **Don't repeat yourself**: `speaking-07-persuading` 23:33
 - **Don't scare the patient**: `speaking-07-persuading` 27:18
 - **Dos and don'ts**: `reading-02-part-a` 49:21
+- **Driving and dizziness**: `medicine-02-whole-role-play` 18:51
 - **Due to**: `grammar-05-complex-compound` 11:55; `grammar-07-punctuation` 10:15
 - **Due to, despite, as well as**: `grammar-05-complex-compound` 45:36
 - **e.g**: `grammar-07-punctuation` 79:39
@@ -14634,12 +16442,15 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Explaining in steps**: `speaking-05-taking-a-history` 32:54
 - **Explore, then explain**: `speaking-06-patient-concerns` 24:34
 - **Expressing reason with 'given'**: `grammar-06-clause` 52:37
+- **Failed, then worked**: `medicine-05-discharge-letter` 19:33
+- **Fair, not judging**: `medicine-03-notes-readers-medicines` 23:43
 - **FANBOYS**: `grammar-05-complex-compound` 24:24; `grammar-07-punctuation` 14:58
 - **Fast reading**: `reading-01-overview` 13:36
 - **Feeling first**: `speaking-13-angry-or-upset` 5:49
-- **Feeling words**: `speaking-02-reading-the-card` 10:45
+- **Feeling words**: `speaking-02-reading-the-card` 10:48
 - **Fillers: a few**: `speaking-11-keeping-going` 8:38
 - **Final practice**: `grammar-07-punctuation` 92:07
+- **Finish the phrases**: `medicine-03-notes-readers-medicines` 36:10
 - **Finish, then close**: `speaking-14-ending` 25:26
 - **First-meeting role-play**: `speaking-03-starting` 18:43
 - **Fit the close**: `speaking-14-ending` 23:30
@@ -14647,7 +16458,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Five questions**: `writing-04-introduction` 23:32
 - **Five skills with patients**: `speaking-01-the-test` 9:31
 - **Follow-up**: `grammar-07-punctuation` 96:39
-- **Follow-up role-play**: `speaking-02-reading-the-card` 23:59; `speaking-03-starting` 21:26
+- **Follow-up role-play**: `speaking-02-reading-the-card` 28:25; `speaking-03-starting` 21:26
 - **For and since**: `grammar-01-verb-tenses` 39:20
 - **Formal time-related expressions**: `grammar-03-nominalization` 40:51
 - **Four steps**: `speaking-13-angry-or-upset` 7:13
@@ -14670,6 +16481,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Gentle frames**: `speaking-09-giving-advice` 9:16
 - **Gerund**: `grammar-05-complex-compound` 46:11
 - **Get, to get, getting**: `speaking-09-giving-advice` 14:04
+- **Getting back on track**: `medicine-01-doctors-language` 24:32
 - **Getting the words right**: `speaking-06-patient-concerns` 3:00
 - **Gist**: `reading-03-part-b` 2:13
 - **Give a clear reason**: `speaking-13-angry-or-upset` 25:02
@@ -14681,35 +16493,53 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Going home**: `speaking-06-patient-concerns` 6:18
 - **Good or not?**: `speaking-04-asking-questions` 40:31
 - **Grade B in OET Writing**: `writing-02-assessment-criteria` 5:22
-- **Greeting and Re line**: `writing-03-letter-structure` 15:13; `writing-04-introduction` 3:42
+- **Greet by the setting**: `medicine-01-doctors-language` 8:15
+- **Greeting and Re line**: `writing-03-letter-structure` 15:13; `writing-04-introduction` 3:42; `medicine-05-discharge-letter` 14:29
 - **Greeting the patient**: `speaking-03-starting` 3:08
 - **Guess, don't tell**: `speaking-12-empathy-and-reassurance` 8:12
 - **Had smoked**: `grammar-01-verb-tenses` 53:39
 - **Has been scheduled**: `grammar-01-verb-tenses` 96:52
 - **has not eased**: `vocabulary-03-collocations-2` 31:27
 - **Has smoked**: `grammar-01-verb-tenses` 54:36
+- **Headings help you**: `medicine-03-notes-readers-medicines` 18:57
 - **Hear the feeling**: `speaking-12-empathy-and-reassurance` 1:29
 - **hedging**: `reading-04-part-c` 12:37
 - **Hedging word**: `reading-04-part-c` 14:44
 - **Helping verb**: `grammar-01-verb-tenses` 3:47; `writing-06-word-order` 9:11
+- **Her discharge advice**: `medicine-05-discharge-letter` 25:50
+- **Her feelings**: `medicine-02-whole-role-play` 3:40
+- **Her history**: `medicine-05-discharge-letter` 4:51
+- **Her medicines**: `medicine-05-discharge-letter` 6:29
+- **Her wish, no decision**: `medicine-05-discharge-letter` 26:50
+- **Her work**: `medicine-02-whole-role-play` 8:39
+- **Her worry**: `medicine-02-whole-role-play` 15:13
 - **Hints in long answers**: `speaking-06-patient-concerns` 12:27
+- **His background**: `medicine-04-referral-letter` 4:06
+- **His history**: `medicine-04-referral-letter` 25:39
+- **History and medicines**: `medicine-04-referral-letter` 5:11
+- **Honest, but kind**: `medicine-01-doctors-language` 27:56
 - **How adjective + noun collocations are formed**: `vocabulary-03-collocations-2` 6:49
 - **How bad it is**: `speaking-04-asking-questions` 31:23; `speaking-05-taking-a-history` 10:52
 - **How do they feel?**: `speaking-09-giving-advice` 26:57
 - **How does that sound?**: `speaking-06-patient-concerns` 33:07
+- **How he is today**: `medicine-04-referral-letter` 15:50
 - **How long**: `speaking-05-taking-a-history` 8:16
 - **How long have you...?**: `speaking-04-asking-questions` 16:58
 - **How long, how often**: `speaking-04-asking-questions` 15:21
 - **How much to keep**: `writing-08-reading-the-task` 18:09
+- **How often**: `medicine-03-notes-readers-medicines` 31:13
 - **How Part A is built**: `reading-02-part-a` 4:19
 - **How Part A is marked**: `listening-02-part-a` 6:23
+- **How she is now**: `medicine-02-whole-role-play` 7:18
 - **How the pain feels**: `speaking-04-asking-questions` 30:16
 - **How the test runs**: `listening-01-overview` 5:51
 - **How to identify opinions**: `reading-04-part-c` 12:37
 - **How to improve your listening**: `listening-01-overview` 10:12
 - **How to practise**: `listening-02-part-a` 14:12
+- **How urgent is it?**: `medicine-03-notes-readers-medicines` 12:01
 - **How verb + noun collocations are formed**: `vocabulary-02-collocations` 7:11
 - **How you are marked**: `speaking-01-the-test` 5:19
+- **How you know them**: `medicine-03-notes-readers-medicines` 4:27
 - **How your letter is scored**: `writing-02-assessment-criteria` 4:02
 - **However**: `grammar-08-paraphrasing` 33:49
 - **However: the reason**: `speaking-13-angry-or-upset` 8:29
@@ -14723,6 +16553,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **ICU**: `vocabulary-03-collocations-2` 10:53
 - **I'd like to**: `speaking-11-keeping-going` 25:01
 - **If it gets worse**: `speaking-14-ending` 15:21
+- **If they ask again**: `medicine-01-doctors-language` 22:34
 - **I'll, we'll, you'll**: `speaking-14-ending` 20:24
 - **I'm afraid I can't**: `speaking-13-angry-or-upset` 24:07
 - **Indefinite article**: `grammar-04-articles` 10:52
@@ -14730,6 +16561,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Indirect word order**: `speaking-04-asking-questions` 25:24
 - **Infinitive**: `grammar-01-verb-tenses` 6:43
 - **Initially**: `grammar-08-paraphrasing` 54:31
+- **Insisting on medicine**: `medicine-01-doctors-language` 21:19
 - **Instead of "Don't worry"**: `speaking-07-persuading` 7:42
 - **instead of which**: `vocabulary-01-word-forms` 63:38
 - **Instructions and advice**: `vocabulary-03-collocations-2` 60:09
@@ -14747,10 +16579,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Key words**: `reading-03-part-b` 10:13
 - **Kind words**: `speaking-10-sounding-clear` 23:08
 - **Language**: `writing-02-assessment-criteria` 27:56
+- **Language and urgency**: `medicine-03-notes-readers-medicines` 16:14
 - **Learn the sentences**: `speaking-05-taking-a-history` 3:52
 - **Leave the door open**: `speaking-07-persuading` 28:51
 - **Leave time for it**: `speaking-14-ending` 3:19
 - **Let them finish**: `speaking-13-angry-or-upset` 4:01
+- **Letter phrases**: `medicine-03-notes-readers-medicines` 35:09
 - **Lines in chunks**: `speaking-10-sounding-clear` 4:57
 - **Link to their worry**: `speaking-09-giving-advice` 23:23
 - **Linking back**: `speaking-11-keeping-going` 26:11
@@ -14774,12 +16608,14 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Medical terms: vocabulary and word form**: `vocabulary-01-word-forms` 18:59
 - **Medical to plain**: `speaking-08-explaining` 6:19
 - **Medical words**: `speaking-10-sounding-clear` 9:21
+- **Medicine change words**: `medicine-05-discharge-letter` 21:05
 - **Meet them halfway**: `speaking-07-persuading` 20:33
 - **Met before or not**: `speaking-03-starting` 11:30
 - **Monitor**: `vocabulary-02-collocations` 32:01
 - **More -ed and -ing**: `speaking-12-empathy-and-reassurance` 6:42
 - **More advice, new words**: `speaking-09-giving-advice` 31:39
 - **More risk words**: `speaking-07-persuading` 25:27
+- **More symbols, care words**: `medicine-03-notes-readers-medicines` 28:53
 - **Moving on**: `speaking-06-patient-concerns` 30:45
 - **Multiple choice**: `reading-01-overview` 7:48; `listening-01-overview` 3:38
 - **Multiple choice (3 options)**: `reading-03-part-b` 6:29
@@ -14790,7 +16626,9 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **neither of which**: `vocabulary-01-word-forms` 64:31
 - **Neutral and strong**: `speaking-09-giving-advice` 11:04
 - **Never pretend**: `speaking-11-keeping-going` 15:39
+- **Next steps**: `medicine-02-whole-role-play` 20:32
 - **No false promises**: `speaking-12-empathy-and-reassurance` 20:11
+- **No judging**: `medicine-01-doctors-language` 20:20
 - **No leading questions**: `speaking-04-asking-questions` 37:52
 - **No negative questions**: `speaking-04-asking-questions` 21:24
 - **Nominalisation**: `grammar-03-nominalization` 1:57; `grammar-04-articles` 55:27; `grammar-08-paraphrasing` 5:29
@@ -14798,6 +16636,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **non-defining relative clause**: `vocabulary-01-word-forms` 71:01
 - **Non-physical complaints**: `grammar-03-nominalization` 21:13
 - **Non-specific**: `grammar-04-articles` 18:15
+- **Not following the plan**: `medicine-01-doctors-language` 19:15
 - **Not yet, but**: `speaking-06-patient-concerns` 29:37
 - **Noun endings**: `vocabulary-01-word-forms` 18:13
 - **Now, and the request**: `writing-05-information-flow` 30:06
@@ -14813,7 +16652,10 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **One kind line**: `speaking-12-empathy-and-reassurance` 31:11
 - **one of which**: `vocabulary-01-word-forms` 67:44
 - **One test for every profession**: `writing-01-overview` 1:31
+- **One theme a paragraph**: `medicine-04-referral-letter` 10:54
 - **One-line closes**: `speaking-14-ending` 26:08
+- **Ongoing care**: `medicine-03-notes-readers-medicines` 17:45
+- **Open by the setting**: `medicine-01-doctors-language` 9:25
 - **Open invitations**: `speaking-06-patient-concerns` 15:39
 - **Open questions**: `speaking-04-asking-questions` 10:15
 - **Opening frames**: `writing-04-introduction` 27:22
@@ -14853,7 +16695,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Perfect tenses on a timeline**: `grammar-01-verb-tenses` 53:02
 - **Perform**: `vocabulary-02-collocations` 37:59
 - **Peripheral vision**: `reading-02-part-a` 18:23
-- **Pharmacy role-play**: `speaking-02-reading-the-card` 20:27
+- **Pharmacy role-play**: `speaking-02-reading-the-card` 24:53
 - **phrase**: `writing-06-word-order` 11:37
 - **Phrases at the start of a sentence**: `writing-06-word-order` 11:30
 - **Physical symptoms**: `grammar-03-nominalization` 9:07
@@ -14865,6 +16707,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Podcasts and talks**: `listening-01-overview` 13:08
 - **Prediction**: `grammar-01-verb-tenses` 26:06
 - **Prescribe**: `vocabulary-02-collocations` 44:43
+- **Prescribing a treatment**: `medicine-01-doctors-language` 12:56
 - **Present participle**: `grammar-06-clause` 33:19
 - **present perfect**: `grammar-01-verb-tenses` 38:26; `grammar-02-verb-use` 11:52; `grammar-08-paraphrasing` 16:20
 - **present perfect continuous**: `vocabulary-03-collocations-2` 23:40
@@ -14875,6 +16718,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Provide**: `vocabulary-02-collocations` 25:33
 - **Punctuation in OET letters**: `grammar-07-punctuation` 39:46
 - **Purpose**: `writing-02-assessment-criteria` 5:57; `writing-04-introduction` 16:51
+- **Purpose and letter type**: `medicine-03-notes-readers-medicines` 13:18
 - **Put it right gently**: `speaking-07-persuading` 12:33
 - **QTA**: `reading-04-part-c` 19:34
 - **Question words**: `speaking-04-asking-questions` 13:38
@@ -14883,6 +16727,9 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Questions that fall**: `speaking-10-sounding-clear` 20:02
 - **Questions when you explain**: `speaking-04-asking-questions` 36:48
 - **Questions without blame**: `speaking-13-angry-or-upset` 30:29
+- **Read as the GP**: `medicine-05-discharge-letter` 34:56
+- **Read before you write**: `medicine-03-notes-readers-medicines` 2:06
+- **Reading card two**: `medicine-02-whole-role-play` 33:36
 - **Reading Part B: strategies**: `reading-03-part-b` 7:47
 - **Reading Part C: the meaning behind the words**: `reading-04-part-c` 1:40
 - **Reading skills**: `reading-01-overview` 8:44
@@ -14892,25 +16739,33 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Reading the Writing Task**: `writing-08-reading-the-task` 3:14
 - **Rearrange**: `grammar-08-paraphrasing` 37:49
 - **Reassure with facts**: `speaking-12-empathy-and-reassurance` 21:39
+- **Reassuring honestly**: `medicine-01-doctors-language` 30:54
 - **Recent visits and the plan**: `writing-08-reading-the-task` 12:41
 - **Reduced relative clause**: `grammar-06-clause` 19:08
 - **Reduced relative clauses**: `grammar-06-clause` 19:08
+- **Referring a patient**: `medicine-01-doctors-language` 13:57
 - **Regular verb**: `grammar-01-verb-tenses` 5:44
 - **Relative clause**: `grammar-05-complex-compound` 19:03; `grammar-06-clause` 2:00; `grammar-07-punctuation` 44:11; `vocabulary-01-word-forms` 45:38; `writing-04-introduction` 7:38
 - **Relative clauses**: `grammar-06-clause` 2:00; `writing-04-introduction` 5:45
 - **Relative clauses with prepositions**: `vocabulary-01-word-forms` 56:51
 - **Relative pronoun**: `grammar-06-clause` 19:32; `vocabulary-01-word-forms` 45:26
 - **relative pronouns**: `vocabulary-01-word-forms` 43:34
+- **Relevant or not?**: `medicine-03-notes-readers-medicines` 20:02
 - **Relieve or relief**: `speaking-05-taking-a-history` 18:40
 - **Requests you can't meet**: `speaking-13-angry-or-upset` 22:49
 - **Response B in steps**: `speaking-12-empathy-and-reassurance` 16:43
+- **Results and progress**: `medicine-05-discharge-letter` 20:20
+- **Results and treatment**: `medicine-05-discharge-letter` 9:20
 - **ROM**: `grammar-01-verb-tenses` 127:40
+- **Route verbs**: `medicine-03-notes-readers-medicines` 32:28
+- **Routes**: `medicine-03-notes-readers-medicines` 29:30
 - **Rules in plain words**: `speaking-13-angry-or-upset` 28:14
 - **Run-on sentence**: `grammar-07-punctuation` 50:17
 - **S at the start**: `speaking-10-sounding-clear` 24:44
 - **Safety nets by profession**: `speaking-14-ending` 16:11
 - **Said or hinted**: `speaking-06-patient-concerns` 10:16
 - **Same advice, new words**: `speaking-09-giving-advice` 30:28
+- **Same notes, different readers**: `medicine-03-notes-readers-medicines` 5:19
 - **Say it another way**: `speaking-12-empathy-and-reassurance` 25:57
 - **Say it back**: `speaking-14-ending` 9:09
 - **Say it warmly**: `speaking-12-empathy-and-reassurance` 28:35
@@ -14929,6 +16784,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Sentence**: `grammar-07-punctuation` 49:39
 - **Sentence completion**: `reading-01-overview` 7:04; `reading-02-part-a` 50:30
 - **Should be monitored**: `vocabulary-02-collocations` 33:33
+- **Showing empathy**: `medicine-01-doctors-language` 29:46
 - **Showing you understand**: `speaking-05-taking-a-history` 30:08
 - **Signal word**: `grammar-01-verb-tenses` 76:44
 - **Signal words**: `writing-05-information-flow` 2:03; `writing-06-word-order` 19:01
@@ -14939,6 +16795,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Signposting the next task**: `speaking-11-keeping-going` 22:03
 - **signposts**: `listening-04-part-c` 6:39; `listening-05-part-c-2` 2:40
 - **Signposts and tempting options**: `listening-04-part-c` 6:39
+- **Six questions**: `medicine-03-notes-readers-medicines` 14:48
 - **Skim**: `reading-02-part-a` 17:42
 - **Skimming**: `reading-02-part-a` 12:17
 - **Small swaps**: `speaking-07-persuading` 21:41
@@ -14955,10 +16812,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Spot the correct sentence**: `grammar-04-articles` 49:22
 - **Spot the errors**: `writing-04-introduction` 14:05
 - **Start small**: `speaking-09-giving-advice` 26:14
+- **Start the talk**: `medicine-02-whole-role-play` 6:32
 - **Starting a role-play**: `speaking-01-the-test` 16:01
 - **Stat dose**: `grammar-04-articles` 65:16
 - **stative verb**: `grammar-01-verb-tenses` 73:52
 - **Stay calm**: `speaking-13-angry-or-upset` 3:09
+- **Step by step**: `medicine-01-doctors-language` 28:53
 - **Steps towards successful writing**: `writing-01-overview` 3:00
 - **Strategies for Part A**: `listening-02-part-a` 2:25
 - **Subject**: `grammar-01-verb-tenses` 86:06; `grammar-02-verb-use` 42:34; `grammar-08-paraphrasing` 11:00
@@ -14972,27 +16831,38 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Summaries by profession**: `speaking-14-ending` 7:18
 - **Summing up**: `speaking-04-asking-questions` 6:43
 - **Swollen**: `grammar-05-complex-compound` 58:19
+- **Symbols**: `medicine-03-notes-readers-medicines` 27:51
 - **symptomatic**: `grammar-03-nominalization` 9:53
 - **Synonyms**: `grammar-08-paraphrasing` 46:11
 - **Target score**: `reading-02-part-a` 53:08; `reading-03-part-b` 55:50; `reading-04-part-c` 3:50
-- **Tasks into sentences**: `speaking-02-reading-the-card` 16:56
+- **Task and reader**: `medicine-05-discharge-letter` 2:03
+- **Task verbs**: `speaking-02-reading-the-card` 14:00
+- **Tasks into sentences**: `speaking-02-reading-the-card` 21:22
 - **Telling the truth**: `speaking-05-taking-a-history` 34:17
 - **Tempting wrong options**: `listening-03-part-b` 9:21
 - **Ten things to ask**: `speaking-05-taking-a-history` 1:36
+- **Tense from the time**: `medicine-05-discharge-letter` 25:00
 - **Tense from the time word**: `writing-05-information-flow` 18:13
 - **Tense in the letter**: `writing-02-assessment-criteria` 21:05
+- **Tests and findings**: `medicine-03-notes-readers-medicines` 26:32
 - **The -ing form**: `grammar-01-verb-tenses` 8:21
 - **The -ing form (present participle)**: `grammar-06-clause` 22:31
 - **The address**: `writing-03-letter-structure` 13:01
 - **The body**: `writing-03-letter-structure` 18:34
-- **The brackets**: `speaking-02-reading-the-card` 13:57; `speaking-05-taking-a-history` 27:39
+- **The brackets**: `speaking-02-reading-the-card` 18:23; `speaking-05-taking-a-history` 27:39
+- **The cardiology request**: `medicine-05-discharge-letter` 28:20
 - **The case notes**: `writing-01-overview` 9:46
+- **The close**: `medicine-05-discharge-letter` 30:15
 - **The closing sentence**: `writing-07-organisation` 25:56
 - **The date**: `writing-03-letter-structure` 10:22
 - **The date at the top of the letter**: `writing-03-letter-structure` 12:52
+- **The ECG result**: `medicine-05-discharge-letter` 18:21
 - **The end in order**: `speaking-14-ending` 26:51
+- **The first card**: `medicine-02-whole-role-play` 1:49
+- **The first sentence**: `medicine-04-referral-letter` 14:22
 - **The five minutes**: `writing-08-reading-the-task` 1:19; `speaking-11-keeping-going` 28:30; `speaking-14-ending` 28:56
 - **The five stages**: `speaking-01-the-test` 13:46
+- **The five tasks**: `medicine-02-whole-role-play` 4:42
 - **The flow of a whole letter**: `writing-05-information-flow` 34:45
 - **The ISBAR approach**: `writing-07-organisation` 4:07
 - **The key word**: `speaking-10-sounding-clear` 14:29
@@ -15000,8 +16870,10 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The last stage**: `speaking-14-ending` 2:01
 - **The Listening test**: `listening-01-overview` 1:12
 - **The opening paragraph**: `writing-04-introduction` 1:56
+- **The opening sentence**: `medicine-05-discharge-letter` 15:32
 - **The other day**: `grammar-01-verb-tenses` 80:57
 - **The P sound**: `speaking-10-sounding-clear` 26:03
+- **The paragraph plan**: `medicine-05-discharge-letter` 12:20
 - **The Part A format**: `listening-02-part-a` 1:11
 - **The Part B format**: `listening-03-part-b` 1:25
 - **The Part C format**: `listening-04-part-c` 1:27
@@ -15010,8 +16882,12 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The patient's age in the opening**: `writing-04-introduction` 12:45
 - **The patient's first line**: `speaking-03-starting` 14:28
 - **The patient's ideas**: `speaking-04-asking-questions` 35:33
-- **The patient's name**: `speaking-02-reading-the-card` 8:55
+- **The patient's name**: `speaking-02-reading-the-card` 8:58
 - **The perfect forms**: `grammar-01-verb-tenses` 53:05
+- **The plan**: `medicine-04-referral-letter` 9:50
+- **The plan in parts**: `medicine-02-whole-role-play` 12:49
+- **The plan, sorted**: `medicine-05-discharge-letter` 27:34
+- **The purpose sentence**: `medicine-05-discharge-letter` 16:44
 - **The QAT method**: `reading-03-part-b` 11:23
 - **The QTA method**: `reading-04-part-c` 19:31
 - **The Reading test**: `reading-01-overview` 1:29
@@ -15022,26 +16898,39 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **The right frames**: `speaking-09-giving-advice` 15:18
 - **The right question**: `speaking-13-angry-or-upset` 32:40
 - **The right thing**: `speaking-12-empathy-and-reassurance` 22:34
+- **The risk, exactly**: `medicine-04-referral-letter` 20:26
 - **The risk, said kindly**: `speaking-07-persuading` 24:22
-- **The setting**: `speaking-02-reading-the-card` 5:33
+- **The safety net**: `medicine-02-whole-role-play` 21:32
+- **The safety plan**: `medicine-04-referral-letter` 23:25
+- **The scan result**: `medicine-02-whole-role-play` 11:51
+- **The second card**: `medicine-02-whole-role-play` 32:36
+- **The setting**: `speaking-02-reading-the-card` 5:36
+- **The setting comes first**: `medicine-01-doctors-language` 2:11
 - **The six assessment criteria**: `writing-02-assessment-criteria` 1:27
 - **The six criteria**: `writing-02-assessment-criteria` 1:24
 - **The six questions, then the whole interview**: `listening-05-part-c-2` 4:40
 - **The six questions, then the whole talk**: `listening-04-part-c` 9:36
 - **The steps, when anxious**: `speaking-13-angry-or-upset` 19:42
 - **The steps, when upset**: `speaking-13-angry-or-upset` 21:44
-- **The tasks**: `speaking-02-reading-the-card` 12:33
+- **The task verbs**: `medicine-01-doctors-language` 7:14
+- **The tasks**: `speaking-02-reading-the-card` 12:36
 - **The test day**: `speaking-01-the-test` 1:34
 - **The three things**: `speaking-06-patient-concerns` 17:38
+- **The three visits**: `medicine-04-referral-letter` 6:42
+- **The TSH request**: `medicine-05-discharge-letter` 29:16
 - **The verb and its object; the time first**: `writing-06-word-order` 5:06
 - **The W sound**: `speaking-10-sounding-clear` 27:22
+- **The whole letter**: `medicine-04-referral-letter` 38:11; `medicine-05-discharge-letter` 31:09
 - **The Writing paper**: `writing-03-letter-structure` 1:38
+- **The Writing Task**: `medicine-04-referral-letter` 1:41
 - **The Writing test**: `writing-01-overview` 5:16
 - **Their side of it**: `speaking-13-angry-or-upset` 31:26
 - **Then signpost, explain**: `speaking-12-empathy-and-reassurance` 17:40
 - **Thinking-time phrases**: `speaking-11-keeping-going` 7:27
+- **This letter's plan**: `medicine-04-referral-letter` 11:33
 - **Three at most**: `speaking-08-explaining` 22:51; `speaking-09-giving-advice` 29:39
 - **Three common mistakes**: `speaking-08-explaining` 36:07
+- **Three difficult patients**: `medicine-01-doctors-language` 18:06
 - **Three errors to avoid**: `writing-06-word-order` 7:44
 - **Three explanations**: `speaking-08-explaining` 1:45
 - **Three kinds of question**: `speaking-04-asking-questions` 8:47
@@ -15050,15 +16939,19 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Three ways to start**: `speaking-08-explaining` 16:02
 - **Time**: `listening-04-part-c` 8:41
 - **Time and tense**: `writing-05-information-flow` 18:13
+- **Time from today**: `medicine-05-discharge-letter` 22:58
 - **Time management in Part A**: `reading-02-part-a` 7:53
 - **Time marker**: `grammar-01-verb-tenses` 34:20; `grammar-02-verb-use` 4:01
 - **Time markers**: `grammar-01-verb-tenses` 13:15
 - **Time references**: `writing-05-information-flow` 25:42
 - **Times and doses**: `speaking-10-sounding-clear` 15:31
+- **Today's visit**: `medicine-04-referral-letter` 8:25; `medicine-05-discharge-letter` 7:38
 - **Too many linking words**: `writing-05-information-flow` 13:39
+- **Top of the letter**: `medicine-04-referral-letter` 12:09
 - **Top tips**: `reading-02-part-a` 17:27
 - **Treat**: `vocabulary-02-collocations` 50:42
 - **Treatment**: `grammar-03-nominalization` 31:03
+- **Treatments without medicines**: `medicine-03-notes-readers-medicines` 33:56
 - **try to + simple verb**: `vocabulary-03-collocations-2` 65:54
 - **Two kinds of pause**: `speaking-11-keeping-going` 1:23
 - **Two or three points**: `speaking-14-ending` 6:29
@@ -15088,8 +16981,10 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Verbs for open questions**: `speaking-04-asking-questions` 12:42
 - **Vocabulary warm-up: patient history**: `listening-02-part-a` 8:09
 - **Warning signs**: `speaking-14-ending` 13:31
+- **Water on shifts**: `medicine-02-whole-role-play` 14:11
 - **What do they know?**: `speaking-08-explaining` 14:39
 - **What each part tests**: `listening-01-overview` 7:24
+- **What happened today**: `medicine-05-discharge-letter` 17:24
 - **What happens next**: `speaking-14-ending` 18:49
 - **What helps**: `speaking-05-taking-a-history` 17:29
 - **What is a complex sentence?**: `grammar-05-complex-compound` 2:13
@@ -15097,6 +16992,7 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **What is an adjective + noun collocation?**: `vocabulary-03-collocations-2` 1:59
 - **What is nominalisation?**: `grammar-03-nominalization` 1:57
 - **What it's like**: `speaking-05-taking-a-history` 9:48
+- **What made it work**: `medicine-02-whole-role-play` 42:20
 - **What makes it worse**: `speaking-05-taking-a-history` 14:30
 - **What matters to them**: `speaking-07-persuading` 17:38
 - **What OET looks for**: `speaking-08-explaining` 3:04
@@ -15104,13 +17000,19 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **What Part B tests**: `reading-03-part-b` 1:38
 - **What Part C tests**: `listening-04-part-c` 3:47
 - **What safety nets are**: `speaking-14-ending` 12:39
+- **What she knows**: `medicine-02-whole-role-play` 10:52
+- **What social history covers**: `medicine-03-notes-readers-medicines` 21:16
 - **What the card asks**: `speaking-08-explaining` 3:45
+- **What the GP knows**: `medicine-05-discharge-letter` 4:04
 - **What the test wants**: `speaking-10-sounding-clear` 1:54
 - **What they are for**: `speaking-04-asking-questions` 26:49
+- **What they know first**: `medicine-01-doctors-language` 25:42
 - **What to do**: `speaking-14-ending` 14:33
-- **What to note**: `speaking-02-reading-the-card` 15:31
-- **What to read first**: `speaking-02-reading-the-card` 3:23
+- **What to note**: `speaking-02-reading-the-card` 19:57
+- **What to read first**: `speaking-02-reading-the-card` 3:26
+- **What was tried**: `medicine-04-referral-letter` 28:12
 - **What you advise on**: `speaking-09-giving-advice` 2:04
+- **What you ask for**: `medicine-04-referral-letter` 35:43
 - **What you hear in Part C**: `listening-04-part-c` 2:29
 - **When and how often**: `speaking-09-giving-advice` 5:15
 - **When and where**: `speaking-04-asking-questions` 32:38
@@ -15125,6 +17027,8 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Where it goes**: `speaking-05-taking-a-history` 12:09
 - **Where the pain is**: `speaking-05-taking-a-history` 4:47
 - **Where to pause**: `speaking-10-sounding-clear` 4:00
+- **Where you work**: `medicine-03-notes-readers-medicines` 3:06
+- **Where, when, how long**: `medicine-01-doctors-language` 10:28
 - **which**: `vocabulary-01-word-forms` 70:53
 - **Which phrase?**: `speaking-11-keeping-going` 31:26
 - **Which reply?**: `speaking-06-patient-concerns` 27:33
@@ -15133,10 +17037,14 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **who**: `vocabulary-01-word-forms` 69:49
 - **Who does what**: `speaking-14-ending` 21:48
 - **Who speaks, and a target score**: `listening-02-part-a` 15:40
-- **Who you are**: `speaking-02-reading-the-card` 7:21; `speaking-03-starting` 4:15
+- **Who you are**: `speaking-02-reading-the-card` 7:24; `speaking-03-starting` 4:15
+- **Who you write to**: `medicine-03-notes-readers-medicines` 6:30
 - **Who, what, where, when, why**: `writing-06-word-order` 1:52
 - **Why patients say no**: `speaking-07-persuading` 3:16
+- **Why the tablet helps**: `medicine-02-whole-role-play` 16:21
+- **Why this order**: `medicine-05-discharge-letter` 13:00
 - **Why we ask questions**: `speaking-04-asking-questions` 1:37
+- **Why you write**: `medicine-03-notes-readers-medicines` 10:31
 - **Why you're frustrated**: `speaking-13-angry-or-upset` 12:50
 - **Will have smoked**: `grammar-01-verb-tenses` 56:10
 - **Will or should**: `speaking-12-empathy-and-reassurance` 23:43
@@ -15152,14 +17060,18 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Words and phrases**: `speaking-12-empathy-and-reassurance` 12:35
 - **Words and verbs**: `speaking-11-keeping-going` 10:50
 - **Words by profession**: `speaking-08-explaining` 9:09
+- **Words for card two**: `medicine-02-whole-role-play` 35:11
 - **Words for care**: `speaking-10-sounding-clear` 6:35
 - **Words for feelings**: `speaking-12-empathy-and-reassurance` 5:31
 - **Words for follow-up**: `speaking-14-ending` 19:41
 - **Words for reasons**: `speaking-09-giving-advice` 24:24
 - **Words for saying no**: `speaking-07-persuading` 4:07
+- **Words for side effects**: `medicine-02-whole-role-play` 17:56
 - **Words for symptoms**: `speaking-06-patient-concerns` 26:31
 - **Words for the end**: `speaking-14-ending` 4:24
+- **Words for the stone**: `medicine-02-whole-role-play` 9:48
 - **Words for the visit**: `speaking-06-patient-concerns` 16:43
+- **Words for your reader**: `medicine-03-notes-readers-medicines` 8:02
 - **Words that hint**: `speaking-06-patient-concerns` 11:23
 - **Words that reassure**: `speaking-05-taking-a-history` 31:15
 - **Words to avoid**: `writing-05-information-flow` 10:13
@@ -15173,8 +17085,10 @@ Each topic or term, then each lesson that teaches it and the first moment there.
 - **Your role and why**: `speaking-03-starting` 10:03
 - **Your role-play: the rest**: `speaking-01-the-test` 20:51
 - **Your role-play: the start**: `speaking-01-the-test` 19:57
-- **Your three minutes**: `speaking-02-reading-the-card` 1:45
+- **Your three minutes**: `speaking-02-reading-the-card` 1:47
 - **Your turn with B**: `speaking-12-empathy-and-reassurance` 18:55
 - **Your turn: a doctor's notes**: `writing-08-reading-the-task` 21:09
+- **Your turn: card one**: `medicine-02-whole-role-play` 26:32
+- **Your turn: card two**: `medicine-02-whole-role-play` 37:57
 - **Your voice changes it**: `speaking-09-giving-advice` 13:05
 - **Zero article**: `grammar-04-articles` 49:50
