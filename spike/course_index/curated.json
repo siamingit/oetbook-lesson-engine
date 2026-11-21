@@ -931,6 +931,46 @@
    "methods": [],
    "continues_in": [],
    "topics": []
+  },
+  "medicine-01-doctors-language": {
+   "session": "An authored lesson (ADR 047, no copied source), the first of the Medicine profession course, OET for Doctors (issue #249), built to the owner's rule that a Speaking lesson teaches language first, in everyday spoken English (ADR 057). Its method is the owner's recorded Speaking Medicine session, in his order: the setting on the card (a GP surgery, an emergency department, a ward, a home visit), the task verbs, greeting and opening by the setting, history questions, describing pain, prescribing, referring and arranging tests in everyday words, advice in brief, difficult patients, breaking bad news kindly, and a clear follow-up; his slides are not copied, the cases are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id's number is its place in the course (AGENTS.md 10b).",
+   "position": 1,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
+  },
+  "medicine-02-whole-role-play": {
+   "session": "An authored lesson (ADR 047, no recorded source), the second of the Medicine profession course, OET for Doctors (issue #249, the owner's answers of 2026-11-18), built to the owner's rule that a Speaking lesson teaches language first, in everyday spoken English (ADR 057): a whole role-play for doctors from the card to the end, each stage built with what the Speaking course taught, then two whole role-plays for the student; the cards are the lesson's own, and every exam fact comes from docs/speaking-facts.md. Its id's number is its place in the course (AGENTS.md 10b).",
+   "position": 2,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
+  },
+  "medicine-03-notes-readers-medicines": {
+   "session": "The third lesson of the Medicine profession course, OET for Doctors (issue #249), adapted from the owner's recorded Writing Medicine session (01:31-87:57) with no slide copied (ADR 047): reading a doctor's Writing paper (the role, the reader and what the reader needs, the purpose), choosing the notes that matter, and writing about tests and medicines clearly; the case lines are from our own sets, and every exam fact comes from docs/writing-facts.md. Its id's number is its place in the course (AGENTS.md 10b).",
+   "position": 3,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
+  },
+  "medicine-04-referral-letter": {
+   "session": "An authored lesson (ADR 047, no recorded source), the fourth of the Medicine profession course, OET for Doctors (issue #249, the owner's answers of 2026-11-18): a whole referral letter written step by step, from the task, the notes a new reader needs and the paragraph plan to each part, written by the student before the model, and a check of length, tone and short forms; the case notes are our own set oa-ws-med-0008, shown whole in the lesson, and every exam fact comes from docs/writing-facts.md. Its id's number is its place in the course (AGENTS.md 10b).",
+   "position": 4,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
+  },
+  "medicine-05-discharge-letter": {
+   "session": "An authored lesson (ADR 047, no recorded source), the fifth and last of the Medicine profession course, OET for Doctors (issue #249, the owner's answers of 2026-11-18): a whole discharge letter to a GP who knows the patient, keeping only what is new to him, in five planned paragraphs written by the student before the model, with clear words for a medicine change and a final check; the case notes are our own set oa-ws-med-0004, shown whole in the lesson, and every exam fact comes from docs/writing-facts.md. Its id's number is its place in the course (AGENTS.md 10b).",
+   "position": 5,
+   "facts": [],
+   "methods": [],
+   "continues_in": [],
+   "topics": []
   }
  }
 }
